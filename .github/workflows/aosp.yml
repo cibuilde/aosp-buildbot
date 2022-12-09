@@ -248,16 +248,6 @@ jobs:
     - name: Checkout
       uses: actions/checkout@main
 
-    - name: Copy and Link
-      run: |
-        export ROOTDIR=$(pwd)
-        pushd aosp
-        cp build/make/core/root.mk Makefile
-        ln -sf make/CleanSpec.mk build/ && ln -sf make/core build/
-        ln -sf make/target build/ && ln -sf make/tools build/
-        ln -sf build/soong/root.bp Android.bp
-        popd
-
     - name: Restore Cache build/make
       id: build_make
       uses: actions/cache@v3
@@ -363,6 +353,15 @@ jobs:
         path: "aosp/prebuilts/clang/host/linux-x86"
         key: "prebuilts_clang_host_linux-x86@$BRANCH"
         restore-keys: "prebuilts_clang_host_linux-x86@$BRANCH"
+    - name: Copy and Link
+      run: |
+        export ROOTDIR=$(pwd)
+        pushd aosp
+        cp build/make/core/root.mk Makefile
+        ln -sf make/CleanSpec.mk build/ && ln -sf make/core build/
+        ln -sf make/target build/ && ln -sf make/tools build/
+        ln -sf build/soong/root.bp Android.bp
+        popd
     - name: Restore Cache external/libcxx
       id: external_libcxx
       uses: actions/cache@v3
@@ -471,16 +470,6 @@ jobs:
     - name: Checkout
       uses: actions/checkout@main
 
-    - name: Copy and Link
-      run: |
-        export ROOTDIR=$(pwd)
-        pushd aosp
-        cp build/make/core/root.mk Makefile
-        ln -sf make/CleanSpec.mk build/ && ln -sf make/core build/
-        ln -sf make/target build/ && ln -sf make/tools build/
-        ln -sf build/soong/root.bp Android.bp
-        popd
-
     - name: Restore Cache build/make
       id: build_make
       uses: actions/cache@v3
@@ -586,6 +575,15 @@ jobs:
         path: "aosp/prebuilts/clang/host/linux-x86"
         key: "prebuilts_clang_host_linux-x86@$BRANCH"
         restore-keys: "prebuilts_clang_host_linux-x86@$BRANCH"
+    - name: Copy and Link
+      run: |
+        export ROOTDIR=$(pwd)
+        pushd aosp
+        cp build/make/core/root.mk Makefile
+        ln -sf make/CleanSpec.mk build/ && ln -sf make/core build/
+        ln -sf make/target build/ && ln -sf make/tools build/
+        ln -sf build/soong/root.bp Android.bp
+        popd
     - name: Restore Cache external/libcxxabi
       id: external_libcxxabi
       uses: actions/cache@v3
@@ -695,16 +693,6 @@ jobs:
     - name: Checkout
       uses: actions/checkout@main
 
-    - name: Copy and Link
-      run: |
-        export ROOTDIR=$(pwd)
-        pushd aosp
-        cp build/make/core/root.mk Makefile
-        ln -sf make/CleanSpec.mk build/ && ln -sf make/core build/
-        ln -sf make/target build/ && ln -sf make/tools build/
-        ln -sf build/soong/root.bp Android.bp
-        popd
-
     - name: Restore Cache build/make
       id: build_make
       uses: actions/cache@v3
@@ -810,6 +798,15 @@ jobs:
         path: "aosp/prebuilts/clang/host/linux-x86"
         key: "prebuilts_clang_host_linux-x86@$BRANCH"
         restore-keys: "prebuilts_clang_host_linux-x86@$BRANCH"
+    - name: Copy and Link
+      run: |
+        export ROOTDIR=$(pwd)
+        pushd aosp
+        cp build/make/core/root.mk Makefile
+        ln -sf make/CleanSpec.mk build/ && ln -sf make/core build/
+        ln -sf make/target build/ && ln -sf make/tools build/
+        ln -sf build/soong/root.bp Android.bp
+        popd
     - name: Restore Cache external/libcxx
       id: external_libcxx
       uses: actions/cache@v3
