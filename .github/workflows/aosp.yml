@@ -184,6 +184,13 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@main
+    - name: Restore Cache build/soong
+      id: build_soong
+      uses: actions/cache@v3
+      with:
+        path: "aosp/build/soong"
+        key: "build_soong@$BRANCH"
+        restore-keys: "build_soong@$BRANCH"
     - name: Download get_clang_version.py and Link go
       run: |
         export ROOTDIR=$(pwd)
@@ -251,6 +258,111 @@ jobs:
         ln -sf build/soong/root.bp Android.bp
         popd
 
+    - name: Restore Cache build/make
+      id: build_make
+      uses: actions/cache@v3
+      with:
+        path: "aosp/build/make"
+        key: "build_make@$BRANCH"
+        restore-keys: "build_make@$BRANCH"
+    - name: Restore Cache build/blueprint
+      id: build_blueprint
+      uses: actions/cache@v3
+      with:
+        path: "aosp/build/blueprint"
+        key: "build_blueprint@$BRANCH"
+        restore-keys: "build_blueprint@$BRANCH"
+    - name: Restore Cache build/soong
+      id: build_soong
+      uses: actions/cache@v3
+      with:
+        path: "aosp/build/soong"
+        key: "build_soong@$BRANCH"
+        restore-keys: "build_soong@$BRANCH"
+    - name: Restore Cache bionic
+      id: bionic
+      uses: actions/cache@v3
+      with:
+        path: "aosp/bionic"
+        key: "bionic@$BRANCH"
+        restore-keys: "bionic@$BRANCH"
+    - name: Restore Cache external/golang-protobuf
+      id: external_golang-protobuf
+      uses: actions/cache@v3
+      with:
+        path: "aosp/external/golang-protobuf"
+        key: "external_golang-protobuf@$BRANCH"
+        restore-keys: "external_golang-protobuf@$BRANCH"
+    - name: Restore Cache external/starlark-go
+      id: external_starlark-go
+      uses: actions/cache@v3
+      with:
+        path: "aosp/external/starlark-go"
+        key: "external_starlark-go@$BRANCH"
+        restore-keys: "external_starlark-go@$BRANCH"
+    - name: Restore Cache system/core
+      id: system_core
+      uses: actions/cache@v3
+      with:
+        path: "aosp/system/core"
+        key: "system_core@$BRANCH"
+        restore-keys: "system_core@$BRANCH"
+    - name: Restore Cache system/libbase
+      id: system_libbase
+      uses: actions/cache@v3
+      with:
+        path: "aosp/system/libbase"
+        key: "system_libbase@$BRANCH"
+        restore-keys: "system_libbase@$BRANCH"
+    - name: Restore Cache system/libhwbinder
+      id: system_libhwbinder
+      uses: actions/cache@v3
+      with:
+        path: "aosp/system/libhwbinder"
+        key: "system_libhwbinder@$BRANCH"
+        restore-keys: "system_libhwbinder@$BRANCH"
+    - name: Restore Cache system/logging
+      id: system_logging
+      uses: actions/cache@v3
+      with:
+        path: "aosp/system/logging"
+        key: "system_logging@$BRANCH"
+        restore-keys: "system_logging@$BRANCH"
+    - name: Restore Cache system/sepolicy
+      id: system_sepolicy
+      uses: actions/cache@v3
+      with:
+        path: "aosp/system/sepolicy"
+        key: "system_sepolicy@$BRANCH"
+        restore-keys: "system_sepolicy@$BRANCH"
+    - name: Restore Cache kernel/configs
+      id: kernel_configs
+      uses: actions/cache@v3
+      with:
+        path: "aosp/kernel/configs"
+        key: "kernel_configs@$BRANCH"
+        restore-keys: "kernel_configs@$BRANCH"
+    - name: Restore Cache prebuilts/build-tools
+      id: prebuilts_build-tools
+      uses: actions/cache@v3
+      with:
+        path: "aosp/prebuilts/build-tools"
+        key: "prebuilts_build-tools@$BRANCH"
+        restore-keys: "prebuilts_build-tools@$BRANCH"
+    - name: Restore Cache prebuilts/clang-tools
+      id: prebuilts_clang-tools
+      uses: actions/cache@v3
+      with:
+        path: "aosp/prebuilts/clang-tools"
+        key: "prebuilts_clang-tools@$BRANCH"
+        restore-keys: "prebuilts_clang-tools@$BRANCH"
+    - name: Restore Cache prebuilts/clang/host/linux-x86
+      id: prebuilts_clang_host_linux-x86
+      uses: actions/cache@v3
+      with:
+        path: "aosp/prebuilts/clang/host/linux-x86"
+        key: "prebuilts_clang_host_linux-x86@$BRANCH"
+        restore-keys: "prebuilts_clang_host_linux-x86@$BRANCH"
     - name: Restore Cache external/libcxx
       id: external_libcxx
       uses: actions/cache@v3
@@ -281,59 +393,60 @@ jobs:
         export ROOTDIR=$(pwd)
         pushd aosp
         export TOP=$(pwd)
-        $TOP/prebuilts/build-tools/linux-x86/bin/ninja -f out/combined-aosp_x86_64.ninja out/soong/.intermediates/external/libcxx/libc++/android_recovery_x86_64_shared/libc++.so out/soong/.intermediates/external/libcxx/libc++/android_vendor.31_x86_64_shared/libc++.so out/soong/.intermediates/external/libcxx/libc++/android_vendor.31_x86_x86_64_shared/libc++.so out/soong/.intermediates/external/libcxx/libc++/android_x86_64_shared/libc++.so out/soong/.intermediates/external/libcxx/libc++/android_x86_64_shared_apex10000/libc++.so out/soong/.intermediates/external/libcxx/libc++/android_x86_64_shared_apex29/libc++.so out/soong/.intermediates/external/libcxx/libc++/android_x86_64_shared_apex31/libc++.so out/soong/.intermediates/external/libcxx/libc++/android_x86_x86_64_shared/libc++.so out/soong/.intermediates/external/libcxx/libc++/android_x86_x86_64_shared_apex10000/libc++.so out/soong/.intermediates/external/libcxx/libc++/android_x86_x86_64_shared_apex29/libc++.so out/soong/.intermediates/external/libcxx/libc++/android_x86_x86_64_shared_apex31/libc++.so out/soong/.intermediates/external/libcxx/libc++/linux_glibc_x86_64_shared/libc++.so out/soong/.intermediates/external/libcxx/libc++fs/android_recovery_x86_64_static/libc++fs.a out/soong/.intermediates/external/libcxx/libc++fs/android_x86_64_static/libc++fs.a out/soong/.intermediates/external/libcxx/libc++fs/android_x86_x86_64_static/libc++fs.a out/soong/.intermediates/external/libcxx/libc++fs/linux_glibc_x86_64_static/libc++fs.a out/soong/.intermediates/external/libcxx/libc++_static/android_recovery_x86_64_static/libc++_static.a out/soong/.intermediates/external/libcxx/libc++_static/android_recovery_x86_64_static_lto-thin/libc++_static.a out/soong/.intermediates/external/libcxx/libc++_static/android_vendor.31_x86_64_static/libc++_static.a out/soong/.intermediates/external/libcxx/libc++_static/android_vendor.31_x86_64_static_lto-thin/libc++_static.a out/soong/.intermediates/external/libcxx/libc++_static/android_vendor.31_x86_x86_64_static/libc++_static.a out/soong/.intermediates/external/libcxx/libc++_static/android_vendor.31_x86_x86_64_static_cfi/libc++_static.a out/soong/.intermediates/external/libcxx/libc++_static/android_vendor.31_x86_x86_64_static_lto-thin/libc++_static.a out/soong/.intermediates/external/libcxx/libc++_static/android_x86_64_static/libc++_static.a out/soong/.intermediates/external/libcxx/libc++_static/android_x86_64_static_apex10000/libc++_static.a out/soong/.intermediates/external/libcxx/libc++_static/android_x86_64_static_apex29/libc++_static.a out/soong/.intermediates/external/libcxx/libc++_static/android_x86_64_static_apex30/libc++_static.a out/soong/.intermediates/external/libcxx/libc++_static/android_x86_64_static_apex31/libc++_static.a out/soong/.intermediates/external/libcxx/libc++_static/android_x86_64_static_cfi/libc++_static.a out/soong/.intermediates/external/libcxx/libc++_static/android_x86_64_static_cfi_apex29/libc++_static.a out/soong/.intermediates/external/libcxx/libc++_static/android_x86_64_static_cfi_lto-thin/libc++_static.a out/soong/.intermediates/external/libcxx/libc++_static/android_x86_64_static_cfi_lto-thin_apex29/libc++_static.a out/soong/.intermediates/external/libcxx/libc++_static/android_x86_64_static_lto-thin/libc++_static.a out/soong/.intermediates/external/libcxx/libc++_static/android_x86_64_static_lto-thin_apex29/libc++_static.a out/soong/.intermediates/external/libcxx/libc++_static/android_x86_64_static_lto-thin_apex30/libc++_static.a out/soong/.intermediates/external/libcxx/libc++_static/android_x86_64_static_lto-thin_apex31/libc++_static.a out/soong/.intermediates/external/libcxx/libc++_static/android_x86_x86_64_static/libc++_static.a out/soong/.intermediates/external/libcxx/libc++_static/android_x86_x86_64_static_apex10000/libc++_static.a out/soong/.intermediates/external/libcxx/libc++_static/android_x86_x86_64_static_apex29/libc++_static.a out/soong/.intermediates/external/libcxx/libc++_static/android_x86_x86_64_static_apex30/libc++_static.a out/soong/.intermediates/external/libcxx/libc++_static/android_x86_x86_64_static_apex31/libc++_static.a out/soong/.intermediates/external/libcxx/libc++_static/android_x86_x86_64_static_cfi/libc++_static.a out/soong/.intermediates/external/libcxx/libc++_static/android_x86_x86_64_static_lto-thin/libc++_static.a out/soong/.intermediates/external/libcxx/libc++_static/android_x86_x86_64_static_lto-thin_apex30/libc++_static.a out/soong/.intermediates/external/libcxx/libc++_static/android_x86_x86_64_static_lto-thin_apex31/libc++_static.a out/soong/.intermediates/external/libcxx/libc++_static/linux_glibc_x86_64_static/libc++_static.a
+        outputs=$($ROOTDIR/filter-outputs.py out/soong/.intermediates/external/libcxx/libc++/android_recovery_x86_64_shared/libc++.so out/soong/.intermediates/external/libcxx/libc++/android_vendor.31_x86_64_shared/libc++.so out/soong/.intermediates/external/libcxx/libc++/android_vendor.31_x86_x86_64_shared/libc++.so out/soong/.intermediates/external/libcxx/libc++/android_x86_64_shared/libc++.so out/soong/.intermediates/external/libcxx/libc++/android_x86_64_shared_apex10000/libc++.so out/soong/.intermediates/external/libcxx/libc++/android_x86_64_shared_apex29/libc++.so out/soong/.intermediates/external/libcxx/libc++/android_x86_64_shared_apex31/libc++.so out/soong/.intermediates/external/libcxx/libc++/android_x86_x86_64_shared/libc++.so out/soong/.intermediates/external/libcxx/libc++/android_x86_x86_64_shared_apex10000/libc++.so out/soong/.intermediates/external/libcxx/libc++/android_x86_x86_64_shared_apex29/libc++.so out/soong/.intermediates/external/libcxx/libc++/android_x86_x86_64_shared_apex31/libc++.so out/soong/.intermediates/external/libcxx/libc++/linux_glibc_x86_64_shared/libc++.so out/soong/.intermediates/external/libcxx/libc++fs/android_recovery_x86_64_static/libc++fs.a out/soong/.intermediates/external/libcxx/libc++fs/android_x86_64_static/libc++fs.a out/soong/.intermediates/external/libcxx/libc++fs/android_x86_x86_64_static/libc++fs.a out/soong/.intermediates/external/libcxx/libc++fs/linux_glibc_x86_64_static/libc++fs.a out/soong/.intermediates/external/libcxx/libc++_static/android_recovery_x86_64_static/libc++_static.a out/soong/.intermediates/external/libcxx/libc++_static/android_recovery_x86_64_static_lto-thin/libc++_static.a out/soong/.intermediates/external/libcxx/libc++_static/android_vendor.31_x86_64_static/libc++_static.a out/soong/.intermediates/external/libcxx/libc++_static/android_vendor.31_x86_64_static_lto-thin/libc++_static.a out/soong/.intermediates/external/libcxx/libc++_static/android_vendor.31_x86_x86_64_static/libc++_static.a out/soong/.intermediates/external/libcxx/libc++_static/android_vendor.31_x86_x86_64_static_cfi/libc++_static.a out/soong/.intermediates/external/libcxx/libc++_static/android_vendor.31_x86_x86_64_static_lto-thin/libc++_static.a out/soong/.intermediates/external/libcxx/libc++_static/android_x86_64_static/libc++_static.a out/soong/.intermediates/external/libcxx/libc++_static/android_x86_64_static_apex10000/libc++_static.a out/soong/.intermediates/external/libcxx/libc++_static/android_x86_64_static_apex29/libc++_static.a out/soong/.intermediates/external/libcxx/libc++_static/android_x86_64_static_apex30/libc++_static.a out/soong/.intermediates/external/libcxx/libc++_static/android_x86_64_static_apex31/libc++_static.a out/soong/.intermediates/external/libcxx/libc++_static/android_x86_64_static_cfi/libc++_static.a out/soong/.intermediates/external/libcxx/libc++_static/android_x86_64_static_cfi_apex29/libc++_static.a out/soong/.intermediates/external/libcxx/libc++_static/android_x86_64_static_cfi_lto-thin/libc++_static.a out/soong/.intermediates/external/libcxx/libc++_static/android_x86_64_static_cfi_lto-thin_apex29/libc++_static.a out/soong/.intermediates/external/libcxx/libc++_static/android_x86_64_static_lto-thin/libc++_static.a out/soong/.intermediates/external/libcxx/libc++_static/android_x86_64_static_lto-thin_apex29/libc++_static.a out/soong/.intermediates/external/libcxx/libc++_static/android_x86_64_static_lto-thin_apex30/libc++_static.a out/soong/.intermediates/external/libcxx/libc++_static/android_x86_64_static_lto-thin_apex31/libc++_static.a out/soong/.intermediates/external/libcxx/libc++_static/android_x86_x86_64_static/libc++_static.a out/soong/.intermediates/external/libcxx/libc++_static/android_x86_x86_64_static_apex10000/libc++_static.a out/soong/.intermediates/external/libcxx/libc++_static/android_x86_x86_64_static_apex29/libc++_static.a out/soong/.intermediates/external/libcxx/libc++_static/android_x86_x86_64_static_apex30/libc++_static.a out/soong/.intermediates/external/libcxx/libc++_static/android_x86_x86_64_static_apex31/libc++_static.a out/soong/.intermediates/external/libcxx/libc++_static/android_x86_x86_64_static_cfi/libc++_static.a out/soong/.intermediates/external/libcxx/libc++_static/android_x86_x86_64_static_lto-thin/libc++_static.a out/soong/.intermediates/external/libcxx/libc++_static/android_x86_x86_64_static_lto-thin_apex30/libc++_static.a out/soong/.intermediates/external/libcxx/libc++_static/android_x86_x86_64_static_lto-thin_apex31/libc++_static.a out/soong/.intermediates/external/libcxx/libc++_static/linux_glibc_x86_64_static/libc++_static.a)
+        $TOP/prebuilts/build-tools/linux-x86/bin/ninja -f out/combined-aosp_x86_64.ninja $outputs
         popd
     - name: copy target external_libcxx-0
       run: |
         export ROOTDIR=$(pwd)
         export TOP=$(pwd)
         pushd aosp
-        mkdir -p prebuiltlibs/external/libcxx/android_recovery_x86_64_shared/ && cp out/soong/.intermediates/external/libcxx/libc++/android_recovery_x86_64_shared/libc++.so prebuiltlibs/external/libcxx/android_recovery_x86_64_shared/
-        mkdir -p prebuiltlibs/external/libcxx/android_vendor.31_x86_64_shared/ && cp out/soong/.intermediates/external/libcxx/libc++/android_vendor.31_x86_64_shared/libc++.so prebuiltlibs/external/libcxx/android_vendor.31_x86_64_shared/
-        mkdir -p prebuiltlibs/external/libcxx/android_vendor.31_x86_x86_64_shared/ && cp out/soong/.intermediates/external/libcxx/libc++/android_vendor.31_x86_x86_64_shared/libc++.so prebuiltlibs/external/libcxx/android_vendor.31_x86_x86_64_shared/
-        mkdir -p prebuiltlibs/external/libcxx/android_x86_64_shared/ && cp out/soong/.intermediates/external/libcxx/libc++/android_x86_64_shared/libc++.so prebuiltlibs/external/libcxx/android_x86_64_shared/
-        mkdir -p prebuiltlibs/external/libcxx/android_x86_64_shared_apex10000/ && cp out/soong/.intermediates/external/libcxx/libc++/android_x86_64_shared_apex10000/libc++.so prebuiltlibs/external/libcxx/android_x86_64_shared_apex10000/
-        mkdir -p prebuiltlibs/external/libcxx/android_x86_64_shared_apex29/ && cp out/soong/.intermediates/external/libcxx/libc++/android_x86_64_shared_apex29/libc++.so prebuiltlibs/external/libcxx/android_x86_64_shared_apex29/
-        mkdir -p prebuiltlibs/external/libcxx/android_x86_64_shared_apex31/ && cp out/soong/.intermediates/external/libcxx/libc++/android_x86_64_shared_apex31/libc++.so prebuiltlibs/external/libcxx/android_x86_64_shared_apex31/
-        mkdir -p prebuiltlibs/external/libcxx/android_x86_x86_64_shared/ && cp out/soong/.intermediates/external/libcxx/libc++/android_x86_x86_64_shared/libc++.so prebuiltlibs/external/libcxx/android_x86_x86_64_shared/
-        mkdir -p prebuiltlibs/external/libcxx/android_x86_x86_64_shared_apex10000/ && cp out/soong/.intermediates/external/libcxx/libc++/android_x86_x86_64_shared_apex10000/libc++.so prebuiltlibs/external/libcxx/android_x86_x86_64_shared_apex10000/
-        mkdir -p prebuiltlibs/external/libcxx/android_x86_x86_64_shared_apex29/ && cp out/soong/.intermediates/external/libcxx/libc++/android_x86_x86_64_shared_apex29/libc++.so prebuiltlibs/external/libcxx/android_x86_x86_64_shared_apex29/
-        mkdir -p prebuiltlibs/external/libcxx/android_x86_x86_64_shared_apex31/ && cp out/soong/.intermediates/external/libcxx/libc++/android_x86_x86_64_shared_apex31/libc++.so prebuiltlibs/external/libcxx/android_x86_x86_64_shared_apex31/
-        mkdir -p prebuiltlibs/external/libcxx/linux_glibc_x86_64_shared/ && cp out/soong/.intermediates/external/libcxx/libc++/linux_glibc_x86_64_shared/libc++.so prebuiltlibs/external/libcxx/linux_glibc_x86_64_shared/
-        mkdir -p prebuiltlibs/external/libcxx/android_recovery_x86_64_static/ && cp out/soong/.intermediates/external/libcxx/libc++fs/android_recovery_x86_64_static/libc++fs.a prebuiltlibs/external/libcxx/android_recovery_x86_64_static/
-        mkdir -p prebuiltlibs/external/libcxx/android_x86_64_static/ && cp out/soong/.intermediates/external/libcxx/libc++fs/android_x86_64_static/libc++fs.a prebuiltlibs/external/libcxx/android_x86_64_static/
-        mkdir -p prebuiltlibs/external/libcxx/android_x86_x86_64_static/ && cp out/soong/.intermediates/external/libcxx/libc++fs/android_x86_x86_64_static/libc++fs.a prebuiltlibs/external/libcxx/android_x86_x86_64_static/
-        mkdir -p prebuiltlibs/external/libcxx/linux_glibc_x86_64_static/ && cp out/soong/.intermediates/external/libcxx/libc++fs/linux_glibc_x86_64_static/libc++fs.a prebuiltlibs/external/libcxx/linux_glibc_x86_64_static/
-        mkdir -p prebuiltlibs/external/libcxx/android_recovery_x86_64_static/ && cp out/soong/.intermediates/external/libcxx/libc++_static/android_recovery_x86_64_static/libc++_static.a prebuiltlibs/external/libcxx/android_recovery_x86_64_static/
-        mkdir -p prebuiltlibs/external/libcxx/android_recovery_x86_64_static_lto-thin/ && cp out/soong/.intermediates/external/libcxx/libc++_static/android_recovery_x86_64_static_lto-thin/libc++_static.a prebuiltlibs/external/libcxx/android_recovery_x86_64_static_lto-thin/
-        mkdir -p prebuiltlibs/external/libcxx/android_vendor.31_x86_64_static/ && cp out/soong/.intermediates/external/libcxx/libc++_static/android_vendor.31_x86_64_static/libc++_static.a prebuiltlibs/external/libcxx/android_vendor.31_x86_64_static/
-        mkdir -p prebuiltlibs/external/libcxx/android_vendor.31_x86_64_static_lto-thin/ && cp out/soong/.intermediates/external/libcxx/libc++_static/android_vendor.31_x86_64_static_lto-thin/libc++_static.a prebuiltlibs/external/libcxx/android_vendor.31_x86_64_static_lto-thin/
-        mkdir -p prebuiltlibs/external/libcxx/android_vendor.31_x86_x86_64_static/ && cp out/soong/.intermediates/external/libcxx/libc++_static/android_vendor.31_x86_x86_64_static/libc++_static.a prebuiltlibs/external/libcxx/android_vendor.31_x86_x86_64_static/
-        mkdir -p prebuiltlibs/external/libcxx/android_vendor.31_x86_x86_64_static_cfi/ && cp out/soong/.intermediates/external/libcxx/libc++_static/android_vendor.31_x86_x86_64_static_cfi/libc++_static.a prebuiltlibs/external/libcxx/android_vendor.31_x86_x86_64_static_cfi/
-        mkdir -p prebuiltlibs/external/libcxx/android_vendor.31_x86_x86_64_static_lto-thin/ && cp out/soong/.intermediates/external/libcxx/libc++_static/android_vendor.31_x86_x86_64_static_lto-thin/libc++_static.a prebuiltlibs/external/libcxx/android_vendor.31_x86_x86_64_static_lto-thin/
-        mkdir -p prebuiltlibs/external/libcxx/android_x86_64_static/ && cp out/soong/.intermediates/external/libcxx/libc++_static/android_x86_64_static/libc++_static.a prebuiltlibs/external/libcxx/android_x86_64_static/
-        mkdir -p prebuiltlibs/external/libcxx/android_x86_64_static_apex10000/ && cp out/soong/.intermediates/external/libcxx/libc++_static/android_x86_64_static_apex10000/libc++_static.a prebuiltlibs/external/libcxx/android_x86_64_static_apex10000/
-        mkdir -p prebuiltlibs/external/libcxx/android_x86_64_static_apex29/ && cp out/soong/.intermediates/external/libcxx/libc++_static/android_x86_64_static_apex29/libc++_static.a prebuiltlibs/external/libcxx/android_x86_64_static_apex29/
-        mkdir -p prebuiltlibs/external/libcxx/android_x86_64_static_apex30/ && cp out/soong/.intermediates/external/libcxx/libc++_static/android_x86_64_static_apex30/libc++_static.a prebuiltlibs/external/libcxx/android_x86_64_static_apex30/
-        mkdir -p prebuiltlibs/external/libcxx/android_x86_64_static_apex31/ && cp out/soong/.intermediates/external/libcxx/libc++_static/android_x86_64_static_apex31/libc++_static.a prebuiltlibs/external/libcxx/android_x86_64_static_apex31/
-        mkdir -p prebuiltlibs/external/libcxx/android_x86_64_static_cfi/ && cp out/soong/.intermediates/external/libcxx/libc++_static/android_x86_64_static_cfi/libc++_static.a prebuiltlibs/external/libcxx/android_x86_64_static_cfi/
-        mkdir -p prebuiltlibs/external/libcxx/android_x86_64_static_cfi_apex29/ && cp out/soong/.intermediates/external/libcxx/libc++_static/android_x86_64_static_cfi_apex29/libc++_static.a prebuiltlibs/external/libcxx/android_x86_64_static_cfi_apex29/
-        mkdir -p prebuiltlibs/external/libcxx/android_x86_64_static_cfi_lto-thin/ && cp out/soong/.intermediates/external/libcxx/libc++_static/android_x86_64_static_cfi_lto-thin/libc++_static.a prebuiltlibs/external/libcxx/android_x86_64_static_cfi_lto-thin/
-        mkdir -p prebuiltlibs/external/libcxx/android_x86_64_static_cfi_lto-thin_apex29/ && cp out/soong/.intermediates/external/libcxx/libc++_static/android_x86_64_static_cfi_lto-thin_apex29/libc++_static.a prebuiltlibs/external/libcxx/android_x86_64_static_cfi_lto-thin_apex29/
-        mkdir -p prebuiltlibs/external/libcxx/android_x86_64_static_lto-thin/ && cp out/soong/.intermediates/external/libcxx/libc++_static/android_x86_64_static_lto-thin/libc++_static.a prebuiltlibs/external/libcxx/android_x86_64_static_lto-thin/
-        mkdir -p prebuiltlibs/external/libcxx/android_x86_64_static_lto-thin_apex29/ && cp out/soong/.intermediates/external/libcxx/libc++_static/android_x86_64_static_lto-thin_apex29/libc++_static.a prebuiltlibs/external/libcxx/android_x86_64_static_lto-thin_apex29/
-        mkdir -p prebuiltlibs/external/libcxx/android_x86_64_static_lto-thin_apex30/ && cp out/soong/.intermediates/external/libcxx/libc++_static/android_x86_64_static_lto-thin_apex30/libc++_static.a prebuiltlibs/external/libcxx/android_x86_64_static_lto-thin_apex30/
-        mkdir -p prebuiltlibs/external/libcxx/android_x86_64_static_lto-thin_apex31/ && cp out/soong/.intermediates/external/libcxx/libc++_static/android_x86_64_static_lto-thin_apex31/libc++_static.a prebuiltlibs/external/libcxx/android_x86_64_static_lto-thin_apex31/
-        mkdir -p prebuiltlibs/external/libcxx/android_x86_x86_64_static/ && cp out/soong/.intermediates/external/libcxx/libc++_static/android_x86_x86_64_static/libc++_static.a prebuiltlibs/external/libcxx/android_x86_x86_64_static/
-        mkdir -p prebuiltlibs/external/libcxx/android_x86_x86_64_static_apex10000/ && cp out/soong/.intermediates/external/libcxx/libc++_static/android_x86_x86_64_static_apex10000/libc++_static.a prebuiltlibs/external/libcxx/android_x86_x86_64_static_apex10000/
-        mkdir -p prebuiltlibs/external/libcxx/android_x86_x86_64_static_apex29/ && cp out/soong/.intermediates/external/libcxx/libc++_static/android_x86_x86_64_static_apex29/libc++_static.a prebuiltlibs/external/libcxx/android_x86_x86_64_static_apex29/
-        mkdir -p prebuiltlibs/external/libcxx/android_x86_x86_64_static_apex30/ && cp out/soong/.intermediates/external/libcxx/libc++_static/android_x86_x86_64_static_apex30/libc++_static.a prebuiltlibs/external/libcxx/android_x86_x86_64_static_apex30/
-        mkdir -p prebuiltlibs/external/libcxx/android_x86_x86_64_static_apex31/ && cp out/soong/.intermediates/external/libcxx/libc++_static/android_x86_x86_64_static_apex31/libc++_static.a prebuiltlibs/external/libcxx/android_x86_x86_64_static_apex31/
-        mkdir -p prebuiltlibs/external/libcxx/android_x86_x86_64_static_cfi/ && cp out/soong/.intermediates/external/libcxx/libc++_static/android_x86_x86_64_static_cfi/libc++_static.a prebuiltlibs/external/libcxx/android_x86_x86_64_static_cfi/
-        mkdir -p prebuiltlibs/external/libcxx/android_x86_x86_64_static_lto-thin/ && cp out/soong/.intermediates/external/libcxx/libc++_static/android_x86_x86_64_static_lto-thin/libc++_static.a prebuiltlibs/external/libcxx/android_x86_x86_64_static_lto-thin/
-        mkdir -p prebuiltlibs/external/libcxx/android_x86_x86_64_static_lto-thin_apex30/ && cp out/soong/.intermediates/external/libcxx/libc++_static/android_x86_x86_64_static_lto-thin_apex30/libc++_static.a prebuiltlibs/external/libcxx/android_x86_x86_64_static_lto-thin_apex30/
-        mkdir -p prebuiltlibs/external/libcxx/android_x86_x86_64_static_lto-thin_apex31/ && cp out/soong/.intermediates/external/libcxx/libc++_static/android_x86_x86_64_static_lto-thin_apex31/libc++_static.a prebuiltlibs/external/libcxx/android_x86_x86_64_static_lto-thin_apex31/
-        mkdir -p prebuiltlibs/external/libcxx/linux_glibc_x86_64_static/ && cp out/soong/.intermediates/external/libcxx/libc++_static/linux_glibc_x86_64_static/libc++_static.a prebuiltlibs/external/libcxx/linux_glibc_x86_64_static/
+        [ -e out/soong/.intermediates/external/libcxx/libc++/android_recovery_x86_64_shared/libc++.so ] && mkdir -p prebuiltlibs/external/libcxx/android_recovery_x86_64_shared/ && cp out/soong/.intermediates/external/libcxx/libc++/android_recovery_x86_64_shared/libc++.so prebuiltlibs/external/libcxx/android_recovery_x86_64_shared/ || true
+        [ -e out/soong/.intermediates/external/libcxx/libc++/android_vendor.31_x86_64_shared/libc++.so ] && mkdir -p prebuiltlibs/external/libcxx/android_vendor.31_x86_64_shared/ && cp out/soong/.intermediates/external/libcxx/libc++/android_vendor.31_x86_64_shared/libc++.so prebuiltlibs/external/libcxx/android_vendor.31_x86_64_shared/ || true
+        [ -e out/soong/.intermediates/external/libcxx/libc++/android_vendor.31_x86_x86_64_shared/libc++.so ] && mkdir -p prebuiltlibs/external/libcxx/android_vendor.31_x86_x86_64_shared/ && cp out/soong/.intermediates/external/libcxx/libc++/android_vendor.31_x86_x86_64_shared/libc++.so prebuiltlibs/external/libcxx/android_vendor.31_x86_x86_64_shared/ || true
+        [ -e out/soong/.intermediates/external/libcxx/libc++/android_x86_64_shared/libc++.so ] && mkdir -p prebuiltlibs/external/libcxx/android_x86_64_shared/ && cp out/soong/.intermediates/external/libcxx/libc++/android_x86_64_shared/libc++.so prebuiltlibs/external/libcxx/android_x86_64_shared/ || true
+        [ -e out/soong/.intermediates/external/libcxx/libc++/android_x86_64_shared_apex10000/libc++.so ] && mkdir -p prebuiltlibs/external/libcxx/android_x86_64_shared_apex10000/ && cp out/soong/.intermediates/external/libcxx/libc++/android_x86_64_shared_apex10000/libc++.so prebuiltlibs/external/libcxx/android_x86_64_shared_apex10000/ || true
+        [ -e out/soong/.intermediates/external/libcxx/libc++/android_x86_64_shared_apex29/libc++.so ] && mkdir -p prebuiltlibs/external/libcxx/android_x86_64_shared_apex29/ && cp out/soong/.intermediates/external/libcxx/libc++/android_x86_64_shared_apex29/libc++.so prebuiltlibs/external/libcxx/android_x86_64_shared_apex29/ || true
+        [ -e out/soong/.intermediates/external/libcxx/libc++/android_x86_64_shared_apex31/libc++.so ] && mkdir -p prebuiltlibs/external/libcxx/android_x86_64_shared_apex31/ && cp out/soong/.intermediates/external/libcxx/libc++/android_x86_64_shared_apex31/libc++.so prebuiltlibs/external/libcxx/android_x86_64_shared_apex31/ || true
+        [ -e out/soong/.intermediates/external/libcxx/libc++/android_x86_x86_64_shared/libc++.so ] && mkdir -p prebuiltlibs/external/libcxx/android_x86_x86_64_shared/ && cp out/soong/.intermediates/external/libcxx/libc++/android_x86_x86_64_shared/libc++.so prebuiltlibs/external/libcxx/android_x86_x86_64_shared/ || true
+        [ -e out/soong/.intermediates/external/libcxx/libc++/android_x86_x86_64_shared_apex10000/libc++.so ] && mkdir -p prebuiltlibs/external/libcxx/android_x86_x86_64_shared_apex10000/ && cp out/soong/.intermediates/external/libcxx/libc++/android_x86_x86_64_shared_apex10000/libc++.so prebuiltlibs/external/libcxx/android_x86_x86_64_shared_apex10000/ || true
+        [ -e out/soong/.intermediates/external/libcxx/libc++/android_x86_x86_64_shared_apex29/libc++.so ] && mkdir -p prebuiltlibs/external/libcxx/android_x86_x86_64_shared_apex29/ && cp out/soong/.intermediates/external/libcxx/libc++/android_x86_x86_64_shared_apex29/libc++.so prebuiltlibs/external/libcxx/android_x86_x86_64_shared_apex29/ || true
+        [ -e out/soong/.intermediates/external/libcxx/libc++/android_x86_x86_64_shared_apex31/libc++.so ] && mkdir -p prebuiltlibs/external/libcxx/android_x86_x86_64_shared_apex31/ && cp out/soong/.intermediates/external/libcxx/libc++/android_x86_x86_64_shared_apex31/libc++.so prebuiltlibs/external/libcxx/android_x86_x86_64_shared_apex31/ || true
+        [ -e out/soong/.intermediates/external/libcxx/libc++/linux_glibc_x86_64_shared/libc++.so ] && mkdir -p prebuiltlibs/external/libcxx/linux_glibc_x86_64_shared/ && cp out/soong/.intermediates/external/libcxx/libc++/linux_glibc_x86_64_shared/libc++.so prebuiltlibs/external/libcxx/linux_glibc_x86_64_shared/ || true
+        [ -e out/soong/.intermediates/external/libcxx/libc++fs/android_recovery_x86_64_static/libc++fs.a ] && mkdir -p prebuiltlibs/external/libcxx/android_recovery_x86_64_static/ && cp out/soong/.intermediates/external/libcxx/libc++fs/android_recovery_x86_64_static/libc++fs.a prebuiltlibs/external/libcxx/android_recovery_x86_64_static/ || true
+        [ -e out/soong/.intermediates/external/libcxx/libc++fs/android_x86_64_static/libc++fs.a ] && mkdir -p prebuiltlibs/external/libcxx/android_x86_64_static/ && cp out/soong/.intermediates/external/libcxx/libc++fs/android_x86_64_static/libc++fs.a prebuiltlibs/external/libcxx/android_x86_64_static/ || true
+        [ -e out/soong/.intermediates/external/libcxx/libc++fs/android_x86_x86_64_static/libc++fs.a ] && mkdir -p prebuiltlibs/external/libcxx/android_x86_x86_64_static/ && cp out/soong/.intermediates/external/libcxx/libc++fs/android_x86_x86_64_static/libc++fs.a prebuiltlibs/external/libcxx/android_x86_x86_64_static/ || true
+        [ -e out/soong/.intermediates/external/libcxx/libc++fs/linux_glibc_x86_64_static/libc++fs.a ] && mkdir -p prebuiltlibs/external/libcxx/linux_glibc_x86_64_static/ && cp out/soong/.intermediates/external/libcxx/libc++fs/linux_glibc_x86_64_static/libc++fs.a prebuiltlibs/external/libcxx/linux_glibc_x86_64_static/ || true
+        [ -e out/soong/.intermediates/external/libcxx/libc++_static/android_recovery_x86_64_static/libc++_static.a ] && mkdir -p prebuiltlibs/external/libcxx/android_recovery_x86_64_static/ && cp out/soong/.intermediates/external/libcxx/libc++_static/android_recovery_x86_64_static/libc++_static.a prebuiltlibs/external/libcxx/android_recovery_x86_64_static/ || true
+        [ -e out/soong/.intermediates/external/libcxx/libc++_static/android_recovery_x86_64_static_lto-thin/libc++_static.a ] && mkdir -p prebuiltlibs/external/libcxx/android_recovery_x86_64_static_lto-thin/ && cp out/soong/.intermediates/external/libcxx/libc++_static/android_recovery_x86_64_static_lto-thin/libc++_static.a prebuiltlibs/external/libcxx/android_recovery_x86_64_static_lto-thin/ || true
+        [ -e out/soong/.intermediates/external/libcxx/libc++_static/android_vendor.31_x86_64_static/libc++_static.a ] && mkdir -p prebuiltlibs/external/libcxx/android_vendor.31_x86_64_static/ && cp out/soong/.intermediates/external/libcxx/libc++_static/android_vendor.31_x86_64_static/libc++_static.a prebuiltlibs/external/libcxx/android_vendor.31_x86_64_static/ || true
+        [ -e out/soong/.intermediates/external/libcxx/libc++_static/android_vendor.31_x86_64_static_lto-thin/libc++_static.a ] && mkdir -p prebuiltlibs/external/libcxx/android_vendor.31_x86_64_static_lto-thin/ && cp out/soong/.intermediates/external/libcxx/libc++_static/android_vendor.31_x86_64_static_lto-thin/libc++_static.a prebuiltlibs/external/libcxx/android_vendor.31_x86_64_static_lto-thin/ || true
+        [ -e out/soong/.intermediates/external/libcxx/libc++_static/android_vendor.31_x86_x86_64_static/libc++_static.a ] && mkdir -p prebuiltlibs/external/libcxx/android_vendor.31_x86_x86_64_static/ && cp out/soong/.intermediates/external/libcxx/libc++_static/android_vendor.31_x86_x86_64_static/libc++_static.a prebuiltlibs/external/libcxx/android_vendor.31_x86_x86_64_static/ || true
+        [ -e out/soong/.intermediates/external/libcxx/libc++_static/android_vendor.31_x86_x86_64_static_cfi/libc++_static.a ] && mkdir -p prebuiltlibs/external/libcxx/android_vendor.31_x86_x86_64_static_cfi/ && cp out/soong/.intermediates/external/libcxx/libc++_static/android_vendor.31_x86_x86_64_static_cfi/libc++_static.a prebuiltlibs/external/libcxx/android_vendor.31_x86_x86_64_static_cfi/ || true
+        [ -e out/soong/.intermediates/external/libcxx/libc++_static/android_vendor.31_x86_x86_64_static_lto-thin/libc++_static.a ] && mkdir -p prebuiltlibs/external/libcxx/android_vendor.31_x86_x86_64_static_lto-thin/ && cp out/soong/.intermediates/external/libcxx/libc++_static/android_vendor.31_x86_x86_64_static_lto-thin/libc++_static.a prebuiltlibs/external/libcxx/android_vendor.31_x86_x86_64_static_lto-thin/ || true
+        [ -e out/soong/.intermediates/external/libcxx/libc++_static/android_x86_64_static/libc++_static.a ] && mkdir -p prebuiltlibs/external/libcxx/android_x86_64_static/ && cp out/soong/.intermediates/external/libcxx/libc++_static/android_x86_64_static/libc++_static.a prebuiltlibs/external/libcxx/android_x86_64_static/ || true
+        [ -e out/soong/.intermediates/external/libcxx/libc++_static/android_x86_64_static_apex10000/libc++_static.a ] && mkdir -p prebuiltlibs/external/libcxx/android_x86_64_static_apex10000/ && cp out/soong/.intermediates/external/libcxx/libc++_static/android_x86_64_static_apex10000/libc++_static.a prebuiltlibs/external/libcxx/android_x86_64_static_apex10000/ || true
+        [ -e out/soong/.intermediates/external/libcxx/libc++_static/android_x86_64_static_apex29/libc++_static.a ] && mkdir -p prebuiltlibs/external/libcxx/android_x86_64_static_apex29/ && cp out/soong/.intermediates/external/libcxx/libc++_static/android_x86_64_static_apex29/libc++_static.a prebuiltlibs/external/libcxx/android_x86_64_static_apex29/ || true
+        [ -e out/soong/.intermediates/external/libcxx/libc++_static/android_x86_64_static_apex30/libc++_static.a ] && mkdir -p prebuiltlibs/external/libcxx/android_x86_64_static_apex30/ && cp out/soong/.intermediates/external/libcxx/libc++_static/android_x86_64_static_apex30/libc++_static.a prebuiltlibs/external/libcxx/android_x86_64_static_apex30/ || true
+        [ -e out/soong/.intermediates/external/libcxx/libc++_static/android_x86_64_static_apex31/libc++_static.a ] && mkdir -p prebuiltlibs/external/libcxx/android_x86_64_static_apex31/ && cp out/soong/.intermediates/external/libcxx/libc++_static/android_x86_64_static_apex31/libc++_static.a prebuiltlibs/external/libcxx/android_x86_64_static_apex31/ || true
+        [ -e out/soong/.intermediates/external/libcxx/libc++_static/android_x86_64_static_cfi/libc++_static.a ] && mkdir -p prebuiltlibs/external/libcxx/android_x86_64_static_cfi/ && cp out/soong/.intermediates/external/libcxx/libc++_static/android_x86_64_static_cfi/libc++_static.a prebuiltlibs/external/libcxx/android_x86_64_static_cfi/ || true
+        [ -e out/soong/.intermediates/external/libcxx/libc++_static/android_x86_64_static_cfi_apex29/libc++_static.a ] && mkdir -p prebuiltlibs/external/libcxx/android_x86_64_static_cfi_apex29/ && cp out/soong/.intermediates/external/libcxx/libc++_static/android_x86_64_static_cfi_apex29/libc++_static.a prebuiltlibs/external/libcxx/android_x86_64_static_cfi_apex29/ || true
+        [ -e out/soong/.intermediates/external/libcxx/libc++_static/android_x86_64_static_cfi_lto-thin/libc++_static.a ] && mkdir -p prebuiltlibs/external/libcxx/android_x86_64_static_cfi_lto-thin/ && cp out/soong/.intermediates/external/libcxx/libc++_static/android_x86_64_static_cfi_lto-thin/libc++_static.a prebuiltlibs/external/libcxx/android_x86_64_static_cfi_lto-thin/ || true
+        [ -e out/soong/.intermediates/external/libcxx/libc++_static/android_x86_64_static_cfi_lto-thin_apex29/libc++_static.a ] && mkdir -p prebuiltlibs/external/libcxx/android_x86_64_static_cfi_lto-thin_apex29/ && cp out/soong/.intermediates/external/libcxx/libc++_static/android_x86_64_static_cfi_lto-thin_apex29/libc++_static.a prebuiltlibs/external/libcxx/android_x86_64_static_cfi_lto-thin_apex29/ || true
+        [ -e out/soong/.intermediates/external/libcxx/libc++_static/android_x86_64_static_lto-thin/libc++_static.a ] && mkdir -p prebuiltlibs/external/libcxx/android_x86_64_static_lto-thin/ && cp out/soong/.intermediates/external/libcxx/libc++_static/android_x86_64_static_lto-thin/libc++_static.a prebuiltlibs/external/libcxx/android_x86_64_static_lto-thin/ || true
+        [ -e out/soong/.intermediates/external/libcxx/libc++_static/android_x86_64_static_lto-thin_apex29/libc++_static.a ] && mkdir -p prebuiltlibs/external/libcxx/android_x86_64_static_lto-thin_apex29/ && cp out/soong/.intermediates/external/libcxx/libc++_static/android_x86_64_static_lto-thin_apex29/libc++_static.a prebuiltlibs/external/libcxx/android_x86_64_static_lto-thin_apex29/ || true
+        [ -e out/soong/.intermediates/external/libcxx/libc++_static/android_x86_64_static_lto-thin_apex30/libc++_static.a ] && mkdir -p prebuiltlibs/external/libcxx/android_x86_64_static_lto-thin_apex30/ && cp out/soong/.intermediates/external/libcxx/libc++_static/android_x86_64_static_lto-thin_apex30/libc++_static.a prebuiltlibs/external/libcxx/android_x86_64_static_lto-thin_apex30/ || true
+        [ -e out/soong/.intermediates/external/libcxx/libc++_static/android_x86_64_static_lto-thin_apex31/libc++_static.a ] && mkdir -p prebuiltlibs/external/libcxx/android_x86_64_static_lto-thin_apex31/ && cp out/soong/.intermediates/external/libcxx/libc++_static/android_x86_64_static_lto-thin_apex31/libc++_static.a prebuiltlibs/external/libcxx/android_x86_64_static_lto-thin_apex31/ || true
+        [ -e out/soong/.intermediates/external/libcxx/libc++_static/android_x86_x86_64_static/libc++_static.a ] && mkdir -p prebuiltlibs/external/libcxx/android_x86_x86_64_static/ && cp out/soong/.intermediates/external/libcxx/libc++_static/android_x86_x86_64_static/libc++_static.a prebuiltlibs/external/libcxx/android_x86_x86_64_static/ || true
+        [ -e out/soong/.intermediates/external/libcxx/libc++_static/android_x86_x86_64_static_apex10000/libc++_static.a ] && mkdir -p prebuiltlibs/external/libcxx/android_x86_x86_64_static_apex10000/ && cp out/soong/.intermediates/external/libcxx/libc++_static/android_x86_x86_64_static_apex10000/libc++_static.a prebuiltlibs/external/libcxx/android_x86_x86_64_static_apex10000/ || true
+        [ -e out/soong/.intermediates/external/libcxx/libc++_static/android_x86_x86_64_static_apex29/libc++_static.a ] && mkdir -p prebuiltlibs/external/libcxx/android_x86_x86_64_static_apex29/ && cp out/soong/.intermediates/external/libcxx/libc++_static/android_x86_x86_64_static_apex29/libc++_static.a prebuiltlibs/external/libcxx/android_x86_x86_64_static_apex29/ || true
+        [ -e out/soong/.intermediates/external/libcxx/libc++_static/android_x86_x86_64_static_apex30/libc++_static.a ] && mkdir -p prebuiltlibs/external/libcxx/android_x86_x86_64_static_apex30/ && cp out/soong/.intermediates/external/libcxx/libc++_static/android_x86_x86_64_static_apex30/libc++_static.a prebuiltlibs/external/libcxx/android_x86_x86_64_static_apex30/ || true
+        [ -e out/soong/.intermediates/external/libcxx/libc++_static/android_x86_x86_64_static_apex31/libc++_static.a ] && mkdir -p prebuiltlibs/external/libcxx/android_x86_x86_64_static_apex31/ && cp out/soong/.intermediates/external/libcxx/libc++_static/android_x86_x86_64_static_apex31/libc++_static.a prebuiltlibs/external/libcxx/android_x86_x86_64_static_apex31/ || true
+        [ -e out/soong/.intermediates/external/libcxx/libc++_static/android_x86_x86_64_static_cfi/libc++_static.a ] && mkdir -p prebuiltlibs/external/libcxx/android_x86_x86_64_static_cfi/ && cp out/soong/.intermediates/external/libcxx/libc++_static/android_x86_x86_64_static_cfi/libc++_static.a prebuiltlibs/external/libcxx/android_x86_x86_64_static_cfi/ || true
+        [ -e out/soong/.intermediates/external/libcxx/libc++_static/android_x86_x86_64_static_lto-thin/libc++_static.a ] && mkdir -p prebuiltlibs/external/libcxx/android_x86_x86_64_static_lto-thin/ && cp out/soong/.intermediates/external/libcxx/libc++_static/android_x86_x86_64_static_lto-thin/libc++_static.a prebuiltlibs/external/libcxx/android_x86_x86_64_static_lto-thin/ || true
+        [ -e out/soong/.intermediates/external/libcxx/libc++_static/android_x86_x86_64_static_lto-thin_apex30/libc++_static.a ] && mkdir -p prebuiltlibs/external/libcxx/android_x86_x86_64_static_lto-thin_apex30/ && cp out/soong/.intermediates/external/libcxx/libc++_static/android_x86_x86_64_static_lto-thin_apex30/libc++_static.a prebuiltlibs/external/libcxx/android_x86_x86_64_static_lto-thin_apex30/ || true
+        [ -e out/soong/.intermediates/external/libcxx/libc++_static/android_x86_x86_64_static_lto-thin_apex31/libc++_static.a ] && mkdir -p prebuiltlibs/external/libcxx/android_x86_x86_64_static_lto-thin_apex31/ && cp out/soong/.intermediates/external/libcxx/libc++_static/android_x86_x86_64_static_lto-thin_apex31/libc++_static.a prebuiltlibs/external/libcxx/android_x86_x86_64_static_lto-thin_apex31/ || true
+        [ -e out/soong/.intermediates/external/libcxx/libc++_static/linux_glibc_x86_64_static/libc++_static.a ] && mkdir -p prebuiltlibs/external/libcxx/linux_glibc_x86_64_static/ && cp out/soong/.intermediates/external/libcxx/libc++_static/linux_glibc_x86_64_static/libc++_static.a prebuiltlibs/external/libcxx/linux_glibc_x86_64_static/ || true
         cp -r out/soong/ninja/external/libcxx prebuiltlibs/external/libcxx/external_libcxx-0
         grep '|external/libcxx' out/soong/module-info.txt >> prebuiltlibs/external/libcxx/MODULES
         du -ad1 external/libcxx | sort -rnk1 > prebuiltlibs/external/libcxx/.SIZE
@@ -368,6 +481,111 @@ jobs:
         ln -sf build/soong/root.bp Android.bp
         popd
 
+    - name: Restore Cache build/make
+      id: build_make
+      uses: actions/cache@v3
+      with:
+        path: "aosp/build/make"
+        key: "build_make@$BRANCH"
+        restore-keys: "build_make@$BRANCH"
+    - name: Restore Cache build/blueprint
+      id: build_blueprint
+      uses: actions/cache@v3
+      with:
+        path: "aosp/build/blueprint"
+        key: "build_blueprint@$BRANCH"
+        restore-keys: "build_blueprint@$BRANCH"
+    - name: Restore Cache build/soong
+      id: build_soong
+      uses: actions/cache@v3
+      with:
+        path: "aosp/build/soong"
+        key: "build_soong@$BRANCH"
+        restore-keys: "build_soong@$BRANCH"
+    - name: Restore Cache bionic
+      id: bionic
+      uses: actions/cache@v3
+      with:
+        path: "aosp/bionic"
+        key: "bionic@$BRANCH"
+        restore-keys: "bionic@$BRANCH"
+    - name: Restore Cache external/golang-protobuf
+      id: external_golang-protobuf
+      uses: actions/cache@v3
+      with:
+        path: "aosp/external/golang-protobuf"
+        key: "external_golang-protobuf@$BRANCH"
+        restore-keys: "external_golang-protobuf@$BRANCH"
+    - name: Restore Cache external/starlark-go
+      id: external_starlark-go
+      uses: actions/cache@v3
+      with:
+        path: "aosp/external/starlark-go"
+        key: "external_starlark-go@$BRANCH"
+        restore-keys: "external_starlark-go@$BRANCH"
+    - name: Restore Cache system/core
+      id: system_core
+      uses: actions/cache@v3
+      with:
+        path: "aosp/system/core"
+        key: "system_core@$BRANCH"
+        restore-keys: "system_core@$BRANCH"
+    - name: Restore Cache system/libbase
+      id: system_libbase
+      uses: actions/cache@v3
+      with:
+        path: "aosp/system/libbase"
+        key: "system_libbase@$BRANCH"
+        restore-keys: "system_libbase@$BRANCH"
+    - name: Restore Cache system/libhwbinder
+      id: system_libhwbinder
+      uses: actions/cache@v3
+      with:
+        path: "aosp/system/libhwbinder"
+        key: "system_libhwbinder@$BRANCH"
+        restore-keys: "system_libhwbinder@$BRANCH"
+    - name: Restore Cache system/logging
+      id: system_logging
+      uses: actions/cache@v3
+      with:
+        path: "aosp/system/logging"
+        key: "system_logging@$BRANCH"
+        restore-keys: "system_logging@$BRANCH"
+    - name: Restore Cache system/sepolicy
+      id: system_sepolicy
+      uses: actions/cache@v3
+      with:
+        path: "aosp/system/sepolicy"
+        key: "system_sepolicy@$BRANCH"
+        restore-keys: "system_sepolicy@$BRANCH"
+    - name: Restore Cache kernel/configs
+      id: kernel_configs
+      uses: actions/cache@v3
+      with:
+        path: "aosp/kernel/configs"
+        key: "kernel_configs@$BRANCH"
+        restore-keys: "kernel_configs@$BRANCH"
+    - name: Restore Cache prebuilts/build-tools
+      id: prebuilts_build-tools
+      uses: actions/cache@v3
+      with:
+        path: "aosp/prebuilts/build-tools"
+        key: "prebuilts_build-tools@$BRANCH"
+        restore-keys: "prebuilts_build-tools@$BRANCH"
+    - name: Restore Cache prebuilts/clang-tools
+      id: prebuilts_clang-tools
+      uses: actions/cache@v3
+      with:
+        path: "aosp/prebuilts/clang-tools"
+        key: "prebuilts_clang-tools@$BRANCH"
+        restore-keys: "prebuilts_clang-tools@$BRANCH"
+    - name: Restore Cache prebuilts/clang/host/linux-x86
+      id: prebuilts_clang_host_linux-x86
+      uses: actions/cache@v3
+      with:
+        path: "aosp/prebuilts/clang/host/linux-x86"
+        key: "prebuilts_clang_host_linux-x86@$BRANCH"
+        restore-keys: "prebuilts_clang_host_linux-x86@$BRANCH"
     - name: Restore Cache external/libcxxabi
       id: external_libcxxabi
       uses: actions/cache@v3
@@ -398,60 +616,61 @@ jobs:
         export ROOTDIR=$(pwd)
         pushd aosp
         export TOP=$(pwd)
-        $TOP/prebuilts/build-tools/linux-x86/bin/ninja -f out/combined-aosp_x86_64.ninja out/soong/.intermediates/external/libcxxabi/libc++demangle/android_recovery_x86_64_static/libc++demangle.a out/soong/.intermediates/external/libcxxabi/libc++demangle/android_recovery_x86_64_static_lto-thin/libc++demangle.a out/soong/.intermediates/external/libcxxabi/libc++demangle/android_vendor.31_x86_64_static/libc++demangle.a out/soong/.intermediates/external/libcxxabi/libc++demangle/android_vendor.31_x86_64_static_lto-thin/libc++demangle.a out/soong/.intermediates/external/libcxxabi/libc++demangle/android_vendor.31_x86_x86_64_static/libc++demangle.a out/soong/.intermediates/external/libcxxabi/libc++demangle/android_vendor.31_x86_x86_64_static_lto-thin/libc++demangle.a out/soong/.intermediates/external/libcxxabi/libc++demangle/android_x86_64_static/libc++demangle.a out/soong/.intermediates/external/libcxxabi/libc++demangle/android_x86_64_static_apex10000/libc++demangle.a out/soong/.intermediates/external/libcxxabi/libc++demangle/android_x86_64_static_apex29/libc++demangle.a out/soong/.intermediates/external/libcxxabi/libc++demangle/android_x86_64_static_apex30/libc++demangle.a out/soong/.intermediates/external/libcxxabi/libc++demangle/android_x86_64_static_apex31/libc++demangle.a out/soong/.intermediates/external/libcxxabi/libc++demangle/android_x86_64_static_lto-thin/libc++demangle.a out/soong/.intermediates/external/libcxxabi/libc++demangle/android_x86_64_static_lto-thin_apex29/libc++demangle.a out/soong/.intermediates/external/libcxxabi/libc++demangle/android_x86_64_static_lto-thin_apex30/libc++demangle.a out/soong/.intermediates/external/libcxxabi/libc++demangle/android_x86_64_static_lto-thin_apex31/libc++demangle.a out/soong/.intermediates/external/libcxxabi/libc++demangle/android_x86_x86_64_static/libc++demangle.a out/soong/.intermediates/external/libcxxabi/libc++demangle/android_x86_x86_64_static_apex10000/libc++demangle.a out/soong/.intermediates/external/libcxxabi/libc++demangle/android_x86_x86_64_static_apex29/libc++demangle.a out/soong/.intermediates/external/libcxxabi/libc++demangle/android_x86_x86_64_static_apex30/libc++demangle.a out/soong/.intermediates/external/libcxxabi/libc++demangle/android_x86_x86_64_static_apex31/libc++demangle.a out/soong/.intermediates/external/libcxxabi/libc++demangle/android_x86_x86_64_static_lto-thin/libc++demangle.a out/soong/.intermediates/external/libcxxabi/libc++demangle/android_x86_x86_64_static_lto-thin_apex30/libc++demangle.a out/soong/.intermediates/external/libcxxabi/libc++demangle/android_x86_x86_64_static_lto-thin_apex31/libc++demangle.a out/soong/.intermediates/external/libcxxabi/libc++abi/android_recovery_x86_64_static/libc++abi.a out/soong/.intermediates/external/libcxxabi/libc++abi/android_recovery_x86_64_static_lto-thin/libc++abi.a out/soong/.intermediates/external/libcxxabi/libc++abi/android_vendor.31_x86_64_static/libc++abi.a out/soong/.intermediates/external/libcxxabi/libc++abi/android_vendor.31_x86_64_static_lto-thin/libc++abi.a out/soong/.intermediates/external/libcxxabi/libc++abi/android_vendor.31_x86_x86_64_static/libc++abi.a out/soong/.intermediates/external/libcxxabi/libc++abi/android_vendor.31_x86_x86_64_static_lto-thin/libc++abi.a out/soong/.intermediates/external/libcxxabi/libc++abi/android_x86_64_static/libc++abi.a out/soong/.intermediates/external/libcxxabi/libc++abi/android_x86_64_static_apex10000/libc++abi.a out/soong/.intermediates/external/libcxxabi/libc++abi/android_x86_64_static_apex29/libc++abi.a out/soong/.intermediates/external/libcxxabi/libc++abi/android_x86_64_static_apex30/libc++abi.a out/soong/.intermediates/external/libcxxabi/libc++abi/android_x86_64_static_apex31/libc++abi.a out/soong/.intermediates/external/libcxxabi/libc++abi/android_x86_64_static_lto-thin/libc++abi.a out/soong/.intermediates/external/libcxxabi/libc++abi/android_x86_64_static_lto-thin_apex29/libc++abi.a out/soong/.intermediates/external/libcxxabi/libc++abi/android_x86_64_static_lto-thin_apex30/libc++abi.a out/soong/.intermediates/external/libcxxabi/libc++abi/android_x86_64_static_lto-thin_apex31/libc++abi.a out/soong/.intermediates/external/libcxxabi/libc++abi/android_x86_x86_64_static/libc++abi.a out/soong/.intermediates/external/libcxxabi/libc++abi/android_x86_x86_64_static_apex10000/libc++abi.a out/soong/.intermediates/external/libcxxabi/libc++abi/android_x86_x86_64_static_apex29/libc++abi.a out/soong/.intermediates/external/libcxxabi/libc++abi/android_x86_x86_64_static_apex30/libc++abi.a out/soong/.intermediates/external/libcxxabi/libc++abi/android_x86_x86_64_static_apex31/libc++abi.a out/soong/.intermediates/external/libcxxabi/libc++abi/android_x86_x86_64_static_lto-thin/libc++abi.a out/soong/.intermediates/external/libcxxabi/libc++abi/android_x86_x86_64_static_lto-thin_apex30/libc++abi.a out/soong/.intermediates/external/libcxxabi/libc++abi/android_x86_x86_64_static_lto-thin_apex31/libc++abi.a out/soong/.intermediates/external/libcxxabi/libc++abi/linux_glibc_x86_64_static/libc++abi.a
+        outputs=$($ROOTDIR/filter-outputs.py out/soong/.intermediates/external/libcxxabi/libc++demangle/android_recovery_x86_64_static/libc++demangle.a out/soong/.intermediates/external/libcxxabi/libc++demangle/android_recovery_x86_64_static_lto-thin/libc++demangle.a out/soong/.intermediates/external/libcxxabi/libc++demangle/android_vendor.31_x86_64_static/libc++demangle.a out/soong/.intermediates/external/libcxxabi/libc++demangle/android_vendor.31_x86_64_static_lto-thin/libc++demangle.a out/soong/.intermediates/external/libcxxabi/libc++demangle/android_vendor.31_x86_x86_64_static/libc++demangle.a out/soong/.intermediates/external/libcxxabi/libc++demangle/android_vendor.31_x86_x86_64_static_lto-thin/libc++demangle.a out/soong/.intermediates/external/libcxxabi/libc++demangle/android_x86_64_static/libc++demangle.a out/soong/.intermediates/external/libcxxabi/libc++demangle/android_x86_64_static_apex10000/libc++demangle.a out/soong/.intermediates/external/libcxxabi/libc++demangle/android_x86_64_static_apex29/libc++demangle.a out/soong/.intermediates/external/libcxxabi/libc++demangle/android_x86_64_static_apex30/libc++demangle.a out/soong/.intermediates/external/libcxxabi/libc++demangle/android_x86_64_static_apex31/libc++demangle.a out/soong/.intermediates/external/libcxxabi/libc++demangle/android_x86_64_static_lto-thin/libc++demangle.a out/soong/.intermediates/external/libcxxabi/libc++demangle/android_x86_64_static_lto-thin_apex29/libc++demangle.a out/soong/.intermediates/external/libcxxabi/libc++demangle/android_x86_64_static_lto-thin_apex30/libc++demangle.a out/soong/.intermediates/external/libcxxabi/libc++demangle/android_x86_64_static_lto-thin_apex31/libc++demangle.a out/soong/.intermediates/external/libcxxabi/libc++demangle/android_x86_x86_64_static/libc++demangle.a out/soong/.intermediates/external/libcxxabi/libc++demangle/android_x86_x86_64_static_apex10000/libc++demangle.a out/soong/.intermediates/external/libcxxabi/libc++demangle/android_x86_x86_64_static_apex29/libc++demangle.a out/soong/.intermediates/external/libcxxabi/libc++demangle/android_x86_x86_64_static_apex30/libc++demangle.a out/soong/.intermediates/external/libcxxabi/libc++demangle/android_x86_x86_64_static_apex31/libc++demangle.a out/soong/.intermediates/external/libcxxabi/libc++demangle/android_x86_x86_64_static_lto-thin/libc++demangle.a out/soong/.intermediates/external/libcxxabi/libc++demangle/android_x86_x86_64_static_lto-thin_apex30/libc++demangle.a out/soong/.intermediates/external/libcxxabi/libc++demangle/android_x86_x86_64_static_lto-thin_apex31/libc++demangle.a out/soong/.intermediates/external/libcxxabi/libc++abi/android_recovery_x86_64_static/libc++abi.a out/soong/.intermediates/external/libcxxabi/libc++abi/android_recovery_x86_64_static_lto-thin/libc++abi.a out/soong/.intermediates/external/libcxxabi/libc++abi/android_vendor.31_x86_64_static/libc++abi.a out/soong/.intermediates/external/libcxxabi/libc++abi/android_vendor.31_x86_64_static_lto-thin/libc++abi.a out/soong/.intermediates/external/libcxxabi/libc++abi/android_vendor.31_x86_x86_64_static/libc++abi.a out/soong/.intermediates/external/libcxxabi/libc++abi/android_vendor.31_x86_x86_64_static_lto-thin/libc++abi.a out/soong/.intermediates/external/libcxxabi/libc++abi/android_x86_64_static/libc++abi.a out/soong/.intermediates/external/libcxxabi/libc++abi/android_x86_64_static_apex10000/libc++abi.a out/soong/.intermediates/external/libcxxabi/libc++abi/android_x86_64_static_apex29/libc++abi.a out/soong/.intermediates/external/libcxxabi/libc++abi/android_x86_64_static_apex30/libc++abi.a out/soong/.intermediates/external/libcxxabi/libc++abi/android_x86_64_static_apex31/libc++abi.a out/soong/.intermediates/external/libcxxabi/libc++abi/android_x86_64_static_lto-thin/libc++abi.a out/soong/.intermediates/external/libcxxabi/libc++abi/android_x86_64_static_lto-thin_apex29/libc++abi.a out/soong/.intermediates/external/libcxxabi/libc++abi/android_x86_64_static_lto-thin_apex30/libc++abi.a out/soong/.intermediates/external/libcxxabi/libc++abi/android_x86_64_static_lto-thin_apex31/libc++abi.a out/soong/.intermediates/external/libcxxabi/libc++abi/android_x86_x86_64_static/libc++abi.a out/soong/.intermediates/external/libcxxabi/libc++abi/android_x86_x86_64_static_apex10000/libc++abi.a out/soong/.intermediates/external/libcxxabi/libc++abi/android_x86_x86_64_static_apex29/libc++abi.a out/soong/.intermediates/external/libcxxabi/libc++abi/android_x86_x86_64_static_apex30/libc++abi.a out/soong/.intermediates/external/libcxxabi/libc++abi/android_x86_x86_64_static_apex31/libc++abi.a out/soong/.intermediates/external/libcxxabi/libc++abi/android_x86_x86_64_static_lto-thin/libc++abi.a out/soong/.intermediates/external/libcxxabi/libc++abi/android_x86_x86_64_static_lto-thin_apex30/libc++abi.a out/soong/.intermediates/external/libcxxabi/libc++abi/android_x86_x86_64_static_lto-thin_apex31/libc++abi.a out/soong/.intermediates/external/libcxxabi/libc++abi/linux_glibc_x86_64_static/libc++abi.a)
+        $TOP/prebuilts/build-tools/linux-x86/bin/ninja -f out/combined-aosp_x86_64.ninja $outputs
         popd
     - name: copy target external_libcxxabi-0
       run: |
         export ROOTDIR=$(pwd)
         export TOP=$(pwd)
         pushd aosp
-        mkdir -p prebuiltlibs/external/libcxxabi/android_recovery_x86_64_static/ && cp out/soong/.intermediates/external/libcxxabi/libc++demangle/android_recovery_x86_64_static/libc++demangle.a prebuiltlibs/external/libcxxabi/android_recovery_x86_64_static/
-        mkdir -p prebuiltlibs/external/libcxxabi/android_recovery_x86_64_static_lto-thin/ && cp out/soong/.intermediates/external/libcxxabi/libc++demangle/android_recovery_x86_64_static_lto-thin/libc++demangle.a prebuiltlibs/external/libcxxabi/android_recovery_x86_64_static_lto-thin/
-        mkdir -p prebuiltlibs/external/libcxxabi/android_vendor.31_x86_64_static/ && cp out/soong/.intermediates/external/libcxxabi/libc++demangle/android_vendor.31_x86_64_static/libc++demangle.a prebuiltlibs/external/libcxxabi/android_vendor.31_x86_64_static/
-        mkdir -p prebuiltlibs/external/libcxxabi/android_vendor.31_x86_64_static_lto-thin/ && cp out/soong/.intermediates/external/libcxxabi/libc++demangle/android_vendor.31_x86_64_static_lto-thin/libc++demangle.a prebuiltlibs/external/libcxxabi/android_vendor.31_x86_64_static_lto-thin/
-        mkdir -p prebuiltlibs/external/libcxxabi/android_vendor.31_x86_x86_64_static/ && cp out/soong/.intermediates/external/libcxxabi/libc++demangle/android_vendor.31_x86_x86_64_static/libc++demangle.a prebuiltlibs/external/libcxxabi/android_vendor.31_x86_x86_64_static/
-        mkdir -p prebuiltlibs/external/libcxxabi/android_vendor.31_x86_x86_64_static_lto-thin/ && cp out/soong/.intermediates/external/libcxxabi/libc++demangle/android_vendor.31_x86_x86_64_static_lto-thin/libc++demangle.a prebuiltlibs/external/libcxxabi/android_vendor.31_x86_x86_64_static_lto-thin/
-        mkdir -p prebuiltlibs/external/libcxxabi/android_x86_64_static/ && cp out/soong/.intermediates/external/libcxxabi/libc++demangle/android_x86_64_static/libc++demangle.a prebuiltlibs/external/libcxxabi/android_x86_64_static/
-        mkdir -p prebuiltlibs/external/libcxxabi/android_x86_64_static_apex10000/ && cp out/soong/.intermediates/external/libcxxabi/libc++demangle/android_x86_64_static_apex10000/libc++demangle.a prebuiltlibs/external/libcxxabi/android_x86_64_static_apex10000/
-        mkdir -p prebuiltlibs/external/libcxxabi/android_x86_64_static_apex29/ && cp out/soong/.intermediates/external/libcxxabi/libc++demangle/android_x86_64_static_apex29/libc++demangle.a prebuiltlibs/external/libcxxabi/android_x86_64_static_apex29/
-        mkdir -p prebuiltlibs/external/libcxxabi/android_x86_64_static_apex30/ && cp out/soong/.intermediates/external/libcxxabi/libc++demangle/android_x86_64_static_apex30/libc++demangle.a prebuiltlibs/external/libcxxabi/android_x86_64_static_apex30/
-        mkdir -p prebuiltlibs/external/libcxxabi/android_x86_64_static_apex31/ && cp out/soong/.intermediates/external/libcxxabi/libc++demangle/android_x86_64_static_apex31/libc++demangle.a prebuiltlibs/external/libcxxabi/android_x86_64_static_apex31/
-        mkdir -p prebuiltlibs/external/libcxxabi/android_x86_64_static_lto-thin/ && cp out/soong/.intermediates/external/libcxxabi/libc++demangle/android_x86_64_static_lto-thin/libc++demangle.a prebuiltlibs/external/libcxxabi/android_x86_64_static_lto-thin/
-        mkdir -p prebuiltlibs/external/libcxxabi/android_x86_64_static_lto-thin_apex29/ && cp out/soong/.intermediates/external/libcxxabi/libc++demangle/android_x86_64_static_lto-thin_apex29/libc++demangle.a prebuiltlibs/external/libcxxabi/android_x86_64_static_lto-thin_apex29/
-        mkdir -p prebuiltlibs/external/libcxxabi/android_x86_64_static_lto-thin_apex30/ && cp out/soong/.intermediates/external/libcxxabi/libc++demangle/android_x86_64_static_lto-thin_apex30/libc++demangle.a prebuiltlibs/external/libcxxabi/android_x86_64_static_lto-thin_apex30/
-        mkdir -p prebuiltlibs/external/libcxxabi/android_x86_64_static_lto-thin_apex31/ && cp out/soong/.intermediates/external/libcxxabi/libc++demangle/android_x86_64_static_lto-thin_apex31/libc++demangle.a prebuiltlibs/external/libcxxabi/android_x86_64_static_lto-thin_apex31/
-        mkdir -p prebuiltlibs/external/libcxxabi/android_x86_x86_64_static/ && cp out/soong/.intermediates/external/libcxxabi/libc++demangle/android_x86_x86_64_static/libc++demangle.a prebuiltlibs/external/libcxxabi/android_x86_x86_64_static/
-        mkdir -p prebuiltlibs/external/libcxxabi/android_x86_x86_64_static_apex10000/ && cp out/soong/.intermediates/external/libcxxabi/libc++demangle/android_x86_x86_64_static_apex10000/libc++demangle.a prebuiltlibs/external/libcxxabi/android_x86_x86_64_static_apex10000/
-        mkdir -p prebuiltlibs/external/libcxxabi/android_x86_x86_64_static_apex29/ && cp out/soong/.intermediates/external/libcxxabi/libc++demangle/android_x86_x86_64_static_apex29/libc++demangle.a prebuiltlibs/external/libcxxabi/android_x86_x86_64_static_apex29/
-        mkdir -p prebuiltlibs/external/libcxxabi/android_x86_x86_64_static_apex30/ && cp out/soong/.intermediates/external/libcxxabi/libc++demangle/android_x86_x86_64_static_apex30/libc++demangle.a prebuiltlibs/external/libcxxabi/android_x86_x86_64_static_apex30/
-        mkdir -p prebuiltlibs/external/libcxxabi/android_x86_x86_64_static_apex31/ && cp out/soong/.intermediates/external/libcxxabi/libc++demangle/android_x86_x86_64_static_apex31/libc++demangle.a prebuiltlibs/external/libcxxabi/android_x86_x86_64_static_apex31/
-        mkdir -p prebuiltlibs/external/libcxxabi/android_x86_x86_64_static_lto-thin/ && cp out/soong/.intermediates/external/libcxxabi/libc++demangle/android_x86_x86_64_static_lto-thin/libc++demangle.a prebuiltlibs/external/libcxxabi/android_x86_x86_64_static_lto-thin/
-        mkdir -p prebuiltlibs/external/libcxxabi/android_x86_x86_64_static_lto-thin_apex30/ && cp out/soong/.intermediates/external/libcxxabi/libc++demangle/android_x86_x86_64_static_lto-thin_apex30/libc++demangle.a prebuiltlibs/external/libcxxabi/android_x86_x86_64_static_lto-thin_apex30/
-        mkdir -p prebuiltlibs/external/libcxxabi/android_x86_x86_64_static_lto-thin_apex31/ && cp out/soong/.intermediates/external/libcxxabi/libc++demangle/android_x86_x86_64_static_lto-thin_apex31/libc++demangle.a prebuiltlibs/external/libcxxabi/android_x86_x86_64_static_lto-thin_apex31/
-        mkdir -p prebuiltlibs/external/libcxxabi/android_recovery_x86_64_static/ && cp out/soong/.intermediates/external/libcxxabi/libc++abi/android_recovery_x86_64_static/libc++abi.a prebuiltlibs/external/libcxxabi/android_recovery_x86_64_static/
-        mkdir -p prebuiltlibs/external/libcxxabi/android_recovery_x86_64_static_lto-thin/ && cp out/soong/.intermediates/external/libcxxabi/libc++abi/android_recovery_x86_64_static_lto-thin/libc++abi.a prebuiltlibs/external/libcxxabi/android_recovery_x86_64_static_lto-thin/
-        mkdir -p prebuiltlibs/external/libcxxabi/android_vendor.31_x86_64_static/ && cp out/soong/.intermediates/external/libcxxabi/libc++abi/android_vendor.31_x86_64_static/libc++abi.a prebuiltlibs/external/libcxxabi/android_vendor.31_x86_64_static/
-        mkdir -p prebuiltlibs/external/libcxxabi/android_vendor.31_x86_64_static_lto-thin/ && cp out/soong/.intermediates/external/libcxxabi/libc++abi/android_vendor.31_x86_64_static_lto-thin/libc++abi.a prebuiltlibs/external/libcxxabi/android_vendor.31_x86_64_static_lto-thin/
-        mkdir -p prebuiltlibs/external/libcxxabi/android_vendor.31_x86_x86_64_static/ && cp out/soong/.intermediates/external/libcxxabi/libc++abi/android_vendor.31_x86_x86_64_static/libc++abi.a prebuiltlibs/external/libcxxabi/android_vendor.31_x86_x86_64_static/
-        mkdir -p prebuiltlibs/external/libcxxabi/android_vendor.31_x86_x86_64_static_lto-thin/ && cp out/soong/.intermediates/external/libcxxabi/libc++abi/android_vendor.31_x86_x86_64_static_lto-thin/libc++abi.a prebuiltlibs/external/libcxxabi/android_vendor.31_x86_x86_64_static_lto-thin/
-        mkdir -p prebuiltlibs/external/libcxxabi/android_x86_64_static/ && cp out/soong/.intermediates/external/libcxxabi/libc++abi/android_x86_64_static/libc++abi.a prebuiltlibs/external/libcxxabi/android_x86_64_static/
-        mkdir -p prebuiltlibs/external/libcxxabi/android_x86_64_static_apex10000/ && cp out/soong/.intermediates/external/libcxxabi/libc++abi/android_x86_64_static_apex10000/libc++abi.a prebuiltlibs/external/libcxxabi/android_x86_64_static_apex10000/
-        mkdir -p prebuiltlibs/external/libcxxabi/android_x86_64_static_apex29/ && cp out/soong/.intermediates/external/libcxxabi/libc++abi/android_x86_64_static_apex29/libc++abi.a prebuiltlibs/external/libcxxabi/android_x86_64_static_apex29/
-        mkdir -p prebuiltlibs/external/libcxxabi/android_x86_64_static_apex30/ && cp out/soong/.intermediates/external/libcxxabi/libc++abi/android_x86_64_static_apex30/libc++abi.a prebuiltlibs/external/libcxxabi/android_x86_64_static_apex30/
-        mkdir -p prebuiltlibs/external/libcxxabi/android_x86_64_static_apex31/ && cp out/soong/.intermediates/external/libcxxabi/libc++abi/android_x86_64_static_apex31/libc++abi.a prebuiltlibs/external/libcxxabi/android_x86_64_static_apex31/
-        mkdir -p prebuiltlibs/external/libcxxabi/android_x86_64_static_lto-thin/ && cp out/soong/.intermediates/external/libcxxabi/libc++abi/android_x86_64_static_lto-thin/libc++abi.a prebuiltlibs/external/libcxxabi/android_x86_64_static_lto-thin/
-        mkdir -p prebuiltlibs/external/libcxxabi/android_x86_64_static_lto-thin_apex29/ && cp out/soong/.intermediates/external/libcxxabi/libc++abi/android_x86_64_static_lto-thin_apex29/libc++abi.a prebuiltlibs/external/libcxxabi/android_x86_64_static_lto-thin_apex29/
-        mkdir -p prebuiltlibs/external/libcxxabi/android_x86_64_static_lto-thin_apex30/ && cp out/soong/.intermediates/external/libcxxabi/libc++abi/android_x86_64_static_lto-thin_apex30/libc++abi.a prebuiltlibs/external/libcxxabi/android_x86_64_static_lto-thin_apex30/
-        mkdir -p prebuiltlibs/external/libcxxabi/android_x86_64_static_lto-thin_apex31/ && cp out/soong/.intermediates/external/libcxxabi/libc++abi/android_x86_64_static_lto-thin_apex31/libc++abi.a prebuiltlibs/external/libcxxabi/android_x86_64_static_lto-thin_apex31/
-        mkdir -p prebuiltlibs/external/libcxxabi/android_x86_x86_64_static/ && cp out/soong/.intermediates/external/libcxxabi/libc++abi/android_x86_x86_64_static/libc++abi.a prebuiltlibs/external/libcxxabi/android_x86_x86_64_static/
-        mkdir -p prebuiltlibs/external/libcxxabi/android_x86_x86_64_static_apex10000/ && cp out/soong/.intermediates/external/libcxxabi/libc++abi/android_x86_x86_64_static_apex10000/libc++abi.a prebuiltlibs/external/libcxxabi/android_x86_x86_64_static_apex10000/
-        mkdir -p prebuiltlibs/external/libcxxabi/android_x86_x86_64_static_apex29/ && cp out/soong/.intermediates/external/libcxxabi/libc++abi/android_x86_x86_64_static_apex29/libc++abi.a prebuiltlibs/external/libcxxabi/android_x86_x86_64_static_apex29/
-        mkdir -p prebuiltlibs/external/libcxxabi/android_x86_x86_64_static_apex30/ && cp out/soong/.intermediates/external/libcxxabi/libc++abi/android_x86_x86_64_static_apex30/libc++abi.a prebuiltlibs/external/libcxxabi/android_x86_x86_64_static_apex30/
-        mkdir -p prebuiltlibs/external/libcxxabi/android_x86_x86_64_static_apex31/ && cp out/soong/.intermediates/external/libcxxabi/libc++abi/android_x86_x86_64_static_apex31/libc++abi.a prebuiltlibs/external/libcxxabi/android_x86_x86_64_static_apex31/
-        mkdir -p prebuiltlibs/external/libcxxabi/android_x86_x86_64_static_lto-thin/ && cp out/soong/.intermediates/external/libcxxabi/libc++abi/android_x86_x86_64_static_lto-thin/libc++abi.a prebuiltlibs/external/libcxxabi/android_x86_x86_64_static_lto-thin/
-        mkdir -p prebuiltlibs/external/libcxxabi/android_x86_x86_64_static_lto-thin_apex30/ && cp out/soong/.intermediates/external/libcxxabi/libc++abi/android_x86_x86_64_static_lto-thin_apex30/libc++abi.a prebuiltlibs/external/libcxxabi/android_x86_x86_64_static_lto-thin_apex30/
-        mkdir -p prebuiltlibs/external/libcxxabi/android_x86_x86_64_static_lto-thin_apex31/ && cp out/soong/.intermediates/external/libcxxabi/libc++abi/android_x86_x86_64_static_lto-thin_apex31/libc++abi.a prebuiltlibs/external/libcxxabi/android_x86_x86_64_static_lto-thin_apex31/
-        mkdir -p prebuiltlibs/external/libcxxabi/linux_glibc_x86_64_static/ && cp out/soong/.intermediates/external/libcxxabi/libc++abi/linux_glibc_x86_64_static/libc++abi.a prebuiltlibs/external/libcxxabi/linux_glibc_x86_64_static/
+        [ -e out/soong/.intermediates/external/libcxxabi/libc++demangle/android_recovery_x86_64_static/libc++demangle.a ] && mkdir -p prebuiltlibs/external/libcxxabi/android_recovery_x86_64_static/ && cp out/soong/.intermediates/external/libcxxabi/libc++demangle/android_recovery_x86_64_static/libc++demangle.a prebuiltlibs/external/libcxxabi/android_recovery_x86_64_static/ || true
+        [ -e out/soong/.intermediates/external/libcxxabi/libc++demangle/android_recovery_x86_64_static_lto-thin/libc++demangle.a ] && mkdir -p prebuiltlibs/external/libcxxabi/android_recovery_x86_64_static_lto-thin/ && cp out/soong/.intermediates/external/libcxxabi/libc++demangle/android_recovery_x86_64_static_lto-thin/libc++demangle.a prebuiltlibs/external/libcxxabi/android_recovery_x86_64_static_lto-thin/ || true
+        [ -e out/soong/.intermediates/external/libcxxabi/libc++demangle/android_vendor.31_x86_64_static/libc++demangle.a ] && mkdir -p prebuiltlibs/external/libcxxabi/android_vendor.31_x86_64_static/ && cp out/soong/.intermediates/external/libcxxabi/libc++demangle/android_vendor.31_x86_64_static/libc++demangle.a prebuiltlibs/external/libcxxabi/android_vendor.31_x86_64_static/ || true
+        [ -e out/soong/.intermediates/external/libcxxabi/libc++demangle/android_vendor.31_x86_64_static_lto-thin/libc++demangle.a ] && mkdir -p prebuiltlibs/external/libcxxabi/android_vendor.31_x86_64_static_lto-thin/ && cp out/soong/.intermediates/external/libcxxabi/libc++demangle/android_vendor.31_x86_64_static_lto-thin/libc++demangle.a prebuiltlibs/external/libcxxabi/android_vendor.31_x86_64_static_lto-thin/ || true
+        [ -e out/soong/.intermediates/external/libcxxabi/libc++demangle/android_vendor.31_x86_x86_64_static/libc++demangle.a ] && mkdir -p prebuiltlibs/external/libcxxabi/android_vendor.31_x86_x86_64_static/ && cp out/soong/.intermediates/external/libcxxabi/libc++demangle/android_vendor.31_x86_x86_64_static/libc++demangle.a prebuiltlibs/external/libcxxabi/android_vendor.31_x86_x86_64_static/ || true
+        [ -e out/soong/.intermediates/external/libcxxabi/libc++demangle/android_vendor.31_x86_x86_64_static_lto-thin/libc++demangle.a ] && mkdir -p prebuiltlibs/external/libcxxabi/android_vendor.31_x86_x86_64_static_lto-thin/ && cp out/soong/.intermediates/external/libcxxabi/libc++demangle/android_vendor.31_x86_x86_64_static_lto-thin/libc++demangle.a prebuiltlibs/external/libcxxabi/android_vendor.31_x86_x86_64_static_lto-thin/ || true
+        [ -e out/soong/.intermediates/external/libcxxabi/libc++demangle/android_x86_64_static/libc++demangle.a ] && mkdir -p prebuiltlibs/external/libcxxabi/android_x86_64_static/ && cp out/soong/.intermediates/external/libcxxabi/libc++demangle/android_x86_64_static/libc++demangle.a prebuiltlibs/external/libcxxabi/android_x86_64_static/ || true
+        [ -e out/soong/.intermediates/external/libcxxabi/libc++demangle/android_x86_64_static_apex10000/libc++demangle.a ] && mkdir -p prebuiltlibs/external/libcxxabi/android_x86_64_static_apex10000/ && cp out/soong/.intermediates/external/libcxxabi/libc++demangle/android_x86_64_static_apex10000/libc++demangle.a prebuiltlibs/external/libcxxabi/android_x86_64_static_apex10000/ || true
+        [ -e out/soong/.intermediates/external/libcxxabi/libc++demangle/android_x86_64_static_apex29/libc++demangle.a ] && mkdir -p prebuiltlibs/external/libcxxabi/android_x86_64_static_apex29/ && cp out/soong/.intermediates/external/libcxxabi/libc++demangle/android_x86_64_static_apex29/libc++demangle.a prebuiltlibs/external/libcxxabi/android_x86_64_static_apex29/ || true
+        [ -e out/soong/.intermediates/external/libcxxabi/libc++demangle/android_x86_64_static_apex30/libc++demangle.a ] && mkdir -p prebuiltlibs/external/libcxxabi/android_x86_64_static_apex30/ && cp out/soong/.intermediates/external/libcxxabi/libc++demangle/android_x86_64_static_apex30/libc++demangle.a prebuiltlibs/external/libcxxabi/android_x86_64_static_apex30/ || true
+        [ -e out/soong/.intermediates/external/libcxxabi/libc++demangle/android_x86_64_static_apex31/libc++demangle.a ] && mkdir -p prebuiltlibs/external/libcxxabi/android_x86_64_static_apex31/ && cp out/soong/.intermediates/external/libcxxabi/libc++demangle/android_x86_64_static_apex31/libc++demangle.a prebuiltlibs/external/libcxxabi/android_x86_64_static_apex31/ || true
+        [ -e out/soong/.intermediates/external/libcxxabi/libc++demangle/android_x86_64_static_lto-thin/libc++demangle.a ] && mkdir -p prebuiltlibs/external/libcxxabi/android_x86_64_static_lto-thin/ && cp out/soong/.intermediates/external/libcxxabi/libc++demangle/android_x86_64_static_lto-thin/libc++demangle.a prebuiltlibs/external/libcxxabi/android_x86_64_static_lto-thin/ || true
+        [ -e out/soong/.intermediates/external/libcxxabi/libc++demangle/android_x86_64_static_lto-thin_apex29/libc++demangle.a ] && mkdir -p prebuiltlibs/external/libcxxabi/android_x86_64_static_lto-thin_apex29/ && cp out/soong/.intermediates/external/libcxxabi/libc++demangle/android_x86_64_static_lto-thin_apex29/libc++demangle.a prebuiltlibs/external/libcxxabi/android_x86_64_static_lto-thin_apex29/ || true
+        [ -e out/soong/.intermediates/external/libcxxabi/libc++demangle/android_x86_64_static_lto-thin_apex30/libc++demangle.a ] && mkdir -p prebuiltlibs/external/libcxxabi/android_x86_64_static_lto-thin_apex30/ && cp out/soong/.intermediates/external/libcxxabi/libc++demangle/android_x86_64_static_lto-thin_apex30/libc++demangle.a prebuiltlibs/external/libcxxabi/android_x86_64_static_lto-thin_apex30/ || true
+        [ -e out/soong/.intermediates/external/libcxxabi/libc++demangle/android_x86_64_static_lto-thin_apex31/libc++demangle.a ] && mkdir -p prebuiltlibs/external/libcxxabi/android_x86_64_static_lto-thin_apex31/ && cp out/soong/.intermediates/external/libcxxabi/libc++demangle/android_x86_64_static_lto-thin_apex31/libc++demangle.a prebuiltlibs/external/libcxxabi/android_x86_64_static_lto-thin_apex31/ || true
+        [ -e out/soong/.intermediates/external/libcxxabi/libc++demangle/android_x86_x86_64_static/libc++demangle.a ] && mkdir -p prebuiltlibs/external/libcxxabi/android_x86_x86_64_static/ && cp out/soong/.intermediates/external/libcxxabi/libc++demangle/android_x86_x86_64_static/libc++demangle.a prebuiltlibs/external/libcxxabi/android_x86_x86_64_static/ || true
+        [ -e out/soong/.intermediates/external/libcxxabi/libc++demangle/android_x86_x86_64_static_apex10000/libc++demangle.a ] && mkdir -p prebuiltlibs/external/libcxxabi/android_x86_x86_64_static_apex10000/ && cp out/soong/.intermediates/external/libcxxabi/libc++demangle/android_x86_x86_64_static_apex10000/libc++demangle.a prebuiltlibs/external/libcxxabi/android_x86_x86_64_static_apex10000/ || true
+        [ -e out/soong/.intermediates/external/libcxxabi/libc++demangle/android_x86_x86_64_static_apex29/libc++demangle.a ] && mkdir -p prebuiltlibs/external/libcxxabi/android_x86_x86_64_static_apex29/ && cp out/soong/.intermediates/external/libcxxabi/libc++demangle/android_x86_x86_64_static_apex29/libc++demangle.a prebuiltlibs/external/libcxxabi/android_x86_x86_64_static_apex29/ || true
+        [ -e out/soong/.intermediates/external/libcxxabi/libc++demangle/android_x86_x86_64_static_apex30/libc++demangle.a ] && mkdir -p prebuiltlibs/external/libcxxabi/android_x86_x86_64_static_apex30/ && cp out/soong/.intermediates/external/libcxxabi/libc++demangle/android_x86_x86_64_static_apex30/libc++demangle.a prebuiltlibs/external/libcxxabi/android_x86_x86_64_static_apex30/ || true
+        [ -e out/soong/.intermediates/external/libcxxabi/libc++demangle/android_x86_x86_64_static_apex31/libc++demangle.a ] && mkdir -p prebuiltlibs/external/libcxxabi/android_x86_x86_64_static_apex31/ && cp out/soong/.intermediates/external/libcxxabi/libc++demangle/android_x86_x86_64_static_apex31/libc++demangle.a prebuiltlibs/external/libcxxabi/android_x86_x86_64_static_apex31/ || true
+        [ -e out/soong/.intermediates/external/libcxxabi/libc++demangle/android_x86_x86_64_static_lto-thin/libc++demangle.a ] && mkdir -p prebuiltlibs/external/libcxxabi/android_x86_x86_64_static_lto-thin/ && cp out/soong/.intermediates/external/libcxxabi/libc++demangle/android_x86_x86_64_static_lto-thin/libc++demangle.a prebuiltlibs/external/libcxxabi/android_x86_x86_64_static_lto-thin/ || true
+        [ -e out/soong/.intermediates/external/libcxxabi/libc++demangle/android_x86_x86_64_static_lto-thin_apex30/libc++demangle.a ] && mkdir -p prebuiltlibs/external/libcxxabi/android_x86_x86_64_static_lto-thin_apex30/ && cp out/soong/.intermediates/external/libcxxabi/libc++demangle/android_x86_x86_64_static_lto-thin_apex30/libc++demangle.a prebuiltlibs/external/libcxxabi/android_x86_x86_64_static_lto-thin_apex30/ || true
+        [ -e out/soong/.intermediates/external/libcxxabi/libc++demangle/android_x86_x86_64_static_lto-thin_apex31/libc++demangle.a ] && mkdir -p prebuiltlibs/external/libcxxabi/android_x86_x86_64_static_lto-thin_apex31/ && cp out/soong/.intermediates/external/libcxxabi/libc++demangle/android_x86_x86_64_static_lto-thin_apex31/libc++demangle.a prebuiltlibs/external/libcxxabi/android_x86_x86_64_static_lto-thin_apex31/ || true
+        [ -e out/soong/.intermediates/external/libcxxabi/libc++abi/android_recovery_x86_64_static/libc++abi.a ] && mkdir -p prebuiltlibs/external/libcxxabi/android_recovery_x86_64_static/ && cp out/soong/.intermediates/external/libcxxabi/libc++abi/android_recovery_x86_64_static/libc++abi.a prebuiltlibs/external/libcxxabi/android_recovery_x86_64_static/ || true
+        [ -e out/soong/.intermediates/external/libcxxabi/libc++abi/android_recovery_x86_64_static_lto-thin/libc++abi.a ] && mkdir -p prebuiltlibs/external/libcxxabi/android_recovery_x86_64_static_lto-thin/ && cp out/soong/.intermediates/external/libcxxabi/libc++abi/android_recovery_x86_64_static_lto-thin/libc++abi.a prebuiltlibs/external/libcxxabi/android_recovery_x86_64_static_lto-thin/ || true
+        [ -e out/soong/.intermediates/external/libcxxabi/libc++abi/android_vendor.31_x86_64_static/libc++abi.a ] && mkdir -p prebuiltlibs/external/libcxxabi/android_vendor.31_x86_64_static/ && cp out/soong/.intermediates/external/libcxxabi/libc++abi/android_vendor.31_x86_64_static/libc++abi.a prebuiltlibs/external/libcxxabi/android_vendor.31_x86_64_static/ || true
+        [ -e out/soong/.intermediates/external/libcxxabi/libc++abi/android_vendor.31_x86_64_static_lto-thin/libc++abi.a ] && mkdir -p prebuiltlibs/external/libcxxabi/android_vendor.31_x86_64_static_lto-thin/ && cp out/soong/.intermediates/external/libcxxabi/libc++abi/android_vendor.31_x86_64_static_lto-thin/libc++abi.a prebuiltlibs/external/libcxxabi/android_vendor.31_x86_64_static_lto-thin/ || true
+        [ -e out/soong/.intermediates/external/libcxxabi/libc++abi/android_vendor.31_x86_x86_64_static/libc++abi.a ] && mkdir -p prebuiltlibs/external/libcxxabi/android_vendor.31_x86_x86_64_static/ && cp out/soong/.intermediates/external/libcxxabi/libc++abi/android_vendor.31_x86_x86_64_static/libc++abi.a prebuiltlibs/external/libcxxabi/android_vendor.31_x86_x86_64_static/ || true
+        [ -e out/soong/.intermediates/external/libcxxabi/libc++abi/android_vendor.31_x86_x86_64_static_lto-thin/libc++abi.a ] && mkdir -p prebuiltlibs/external/libcxxabi/android_vendor.31_x86_x86_64_static_lto-thin/ && cp out/soong/.intermediates/external/libcxxabi/libc++abi/android_vendor.31_x86_x86_64_static_lto-thin/libc++abi.a prebuiltlibs/external/libcxxabi/android_vendor.31_x86_x86_64_static_lto-thin/ || true
+        [ -e out/soong/.intermediates/external/libcxxabi/libc++abi/android_x86_64_static/libc++abi.a ] && mkdir -p prebuiltlibs/external/libcxxabi/android_x86_64_static/ && cp out/soong/.intermediates/external/libcxxabi/libc++abi/android_x86_64_static/libc++abi.a prebuiltlibs/external/libcxxabi/android_x86_64_static/ || true
+        [ -e out/soong/.intermediates/external/libcxxabi/libc++abi/android_x86_64_static_apex10000/libc++abi.a ] && mkdir -p prebuiltlibs/external/libcxxabi/android_x86_64_static_apex10000/ && cp out/soong/.intermediates/external/libcxxabi/libc++abi/android_x86_64_static_apex10000/libc++abi.a prebuiltlibs/external/libcxxabi/android_x86_64_static_apex10000/ || true
+        [ -e out/soong/.intermediates/external/libcxxabi/libc++abi/android_x86_64_static_apex29/libc++abi.a ] && mkdir -p prebuiltlibs/external/libcxxabi/android_x86_64_static_apex29/ && cp out/soong/.intermediates/external/libcxxabi/libc++abi/android_x86_64_static_apex29/libc++abi.a prebuiltlibs/external/libcxxabi/android_x86_64_static_apex29/ || true
+        [ -e out/soong/.intermediates/external/libcxxabi/libc++abi/android_x86_64_static_apex30/libc++abi.a ] && mkdir -p prebuiltlibs/external/libcxxabi/android_x86_64_static_apex30/ && cp out/soong/.intermediates/external/libcxxabi/libc++abi/android_x86_64_static_apex30/libc++abi.a prebuiltlibs/external/libcxxabi/android_x86_64_static_apex30/ || true
+        [ -e out/soong/.intermediates/external/libcxxabi/libc++abi/android_x86_64_static_apex31/libc++abi.a ] && mkdir -p prebuiltlibs/external/libcxxabi/android_x86_64_static_apex31/ && cp out/soong/.intermediates/external/libcxxabi/libc++abi/android_x86_64_static_apex31/libc++abi.a prebuiltlibs/external/libcxxabi/android_x86_64_static_apex31/ || true
+        [ -e out/soong/.intermediates/external/libcxxabi/libc++abi/android_x86_64_static_lto-thin/libc++abi.a ] && mkdir -p prebuiltlibs/external/libcxxabi/android_x86_64_static_lto-thin/ && cp out/soong/.intermediates/external/libcxxabi/libc++abi/android_x86_64_static_lto-thin/libc++abi.a prebuiltlibs/external/libcxxabi/android_x86_64_static_lto-thin/ || true
+        [ -e out/soong/.intermediates/external/libcxxabi/libc++abi/android_x86_64_static_lto-thin_apex29/libc++abi.a ] && mkdir -p prebuiltlibs/external/libcxxabi/android_x86_64_static_lto-thin_apex29/ && cp out/soong/.intermediates/external/libcxxabi/libc++abi/android_x86_64_static_lto-thin_apex29/libc++abi.a prebuiltlibs/external/libcxxabi/android_x86_64_static_lto-thin_apex29/ || true
+        [ -e out/soong/.intermediates/external/libcxxabi/libc++abi/android_x86_64_static_lto-thin_apex30/libc++abi.a ] && mkdir -p prebuiltlibs/external/libcxxabi/android_x86_64_static_lto-thin_apex30/ && cp out/soong/.intermediates/external/libcxxabi/libc++abi/android_x86_64_static_lto-thin_apex30/libc++abi.a prebuiltlibs/external/libcxxabi/android_x86_64_static_lto-thin_apex30/ || true
+        [ -e out/soong/.intermediates/external/libcxxabi/libc++abi/android_x86_64_static_lto-thin_apex31/libc++abi.a ] && mkdir -p prebuiltlibs/external/libcxxabi/android_x86_64_static_lto-thin_apex31/ && cp out/soong/.intermediates/external/libcxxabi/libc++abi/android_x86_64_static_lto-thin_apex31/libc++abi.a prebuiltlibs/external/libcxxabi/android_x86_64_static_lto-thin_apex31/ || true
+        [ -e out/soong/.intermediates/external/libcxxabi/libc++abi/android_x86_x86_64_static/libc++abi.a ] && mkdir -p prebuiltlibs/external/libcxxabi/android_x86_x86_64_static/ && cp out/soong/.intermediates/external/libcxxabi/libc++abi/android_x86_x86_64_static/libc++abi.a prebuiltlibs/external/libcxxabi/android_x86_x86_64_static/ || true
+        [ -e out/soong/.intermediates/external/libcxxabi/libc++abi/android_x86_x86_64_static_apex10000/libc++abi.a ] && mkdir -p prebuiltlibs/external/libcxxabi/android_x86_x86_64_static_apex10000/ && cp out/soong/.intermediates/external/libcxxabi/libc++abi/android_x86_x86_64_static_apex10000/libc++abi.a prebuiltlibs/external/libcxxabi/android_x86_x86_64_static_apex10000/ || true
+        [ -e out/soong/.intermediates/external/libcxxabi/libc++abi/android_x86_x86_64_static_apex29/libc++abi.a ] && mkdir -p prebuiltlibs/external/libcxxabi/android_x86_x86_64_static_apex29/ && cp out/soong/.intermediates/external/libcxxabi/libc++abi/android_x86_x86_64_static_apex29/libc++abi.a prebuiltlibs/external/libcxxabi/android_x86_x86_64_static_apex29/ || true
+        [ -e out/soong/.intermediates/external/libcxxabi/libc++abi/android_x86_x86_64_static_apex30/libc++abi.a ] && mkdir -p prebuiltlibs/external/libcxxabi/android_x86_x86_64_static_apex30/ && cp out/soong/.intermediates/external/libcxxabi/libc++abi/android_x86_x86_64_static_apex30/libc++abi.a prebuiltlibs/external/libcxxabi/android_x86_x86_64_static_apex30/ || true
+        [ -e out/soong/.intermediates/external/libcxxabi/libc++abi/android_x86_x86_64_static_apex31/libc++abi.a ] && mkdir -p prebuiltlibs/external/libcxxabi/android_x86_x86_64_static_apex31/ && cp out/soong/.intermediates/external/libcxxabi/libc++abi/android_x86_x86_64_static_apex31/libc++abi.a prebuiltlibs/external/libcxxabi/android_x86_x86_64_static_apex31/ || true
+        [ -e out/soong/.intermediates/external/libcxxabi/libc++abi/android_x86_x86_64_static_lto-thin/libc++abi.a ] && mkdir -p prebuiltlibs/external/libcxxabi/android_x86_x86_64_static_lto-thin/ && cp out/soong/.intermediates/external/libcxxabi/libc++abi/android_x86_x86_64_static_lto-thin/libc++abi.a prebuiltlibs/external/libcxxabi/android_x86_x86_64_static_lto-thin/ || true
+        [ -e out/soong/.intermediates/external/libcxxabi/libc++abi/android_x86_x86_64_static_lto-thin_apex30/libc++abi.a ] && mkdir -p prebuiltlibs/external/libcxxabi/android_x86_x86_64_static_lto-thin_apex30/ && cp out/soong/.intermediates/external/libcxxabi/libc++abi/android_x86_x86_64_static_lto-thin_apex30/libc++abi.a prebuiltlibs/external/libcxxabi/android_x86_x86_64_static_lto-thin_apex30/ || true
+        [ -e out/soong/.intermediates/external/libcxxabi/libc++abi/android_x86_x86_64_static_lto-thin_apex31/libc++abi.a ] && mkdir -p prebuiltlibs/external/libcxxabi/android_x86_x86_64_static_lto-thin_apex31/ && cp out/soong/.intermediates/external/libcxxabi/libc++abi/android_x86_x86_64_static_lto-thin_apex31/libc++abi.a prebuiltlibs/external/libcxxabi/android_x86_x86_64_static_lto-thin_apex31/ || true
+        [ -e out/soong/.intermediates/external/libcxxabi/libc++abi/linux_glibc_x86_64_static/libc++abi.a ] && mkdir -p prebuiltlibs/external/libcxxabi/linux_glibc_x86_64_static/ && cp out/soong/.intermediates/external/libcxxabi/libc++abi/linux_glibc_x86_64_static/libc++abi.a prebuiltlibs/external/libcxxabi/linux_glibc_x86_64_static/ || true
         cp -r out/soong/ninja/external/libcxxabi prebuiltlibs/external/libcxxabi/external_libcxxabi-0
         grep '|external/libcxxabi' out/soong/module-info.txt >> prebuiltlibs/external/libcxxabi/MODULES
         du -ad1 external/libcxxabi | sort -rnk1 > prebuiltlibs/external/libcxxabi/.SIZE
@@ -486,6 +705,111 @@ jobs:
         ln -sf build/soong/root.bp Android.bp
         popd
 
+    - name: Restore Cache build/make
+      id: build_make
+      uses: actions/cache@v3
+      with:
+        path: "aosp/build/make"
+        key: "build_make@$BRANCH"
+        restore-keys: "build_make@$BRANCH"
+    - name: Restore Cache build/blueprint
+      id: build_blueprint
+      uses: actions/cache@v3
+      with:
+        path: "aosp/build/blueprint"
+        key: "build_blueprint@$BRANCH"
+        restore-keys: "build_blueprint@$BRANCH"
+    - name: Restore Cache build/soong
+      id: build_soong
+      uses: actions/cache@v3
+      with:
+        path: "aosp/build/soong"
+        key: "build_soong@$BRANCH"
+        restore-keys: "build_soong@$BRANCH"
+    - name: Restore Cache bionic
+      id: bionic
+      uses: actions/cache@v3
+      with:
+        path: "aosp/bionic"
+        key: "bionic@$BRANCH"
+        restore-keys: "bionic@$BRANCH"
+    - name: Restore Cache external/golang-protobuf
+      id: external_golang-protobuf
+      uses: actions/cache@v3
+      with:
+        path: "aosp/external/golang-protobuf"
+        key: "external_golang-protobuf@$BRANCH"
+        restore-keys: "external_golang-protobuf@$BRANCH"
+    - name: Restore Cache external/starlark-go
+      id: external_starlark-go
+      uses: actions/cache@v3
+      with:
+        path: "aosp/external/starlark-go"
+        key: "external_starlark-go@$BRANCH"
+        restore-keys: "external_starlark-go@$BRANCH"
+    - name: Restore Cache system/core
+      id: system_core
+      uses: actions/cache@v3
+      with:
+        path: "aosp/system/core"
+        key: "system_core@$BRANCH"
+        restore-keys: "system_core@$BRANCH"
+    - name: Restore Cache system/libbase
+      id: system_libbase
+      uses: actions/cache@v3
+      with:
+        path: "aosp/system/libbase"
+        key: "system_libbase@$BRANCH"
+        restore-keys: "system_libbase@$BRANCH"
+    - name: Restore Cache system/libhwbinder
+      id: system_libhwbinder
+      uses: actions/cache@v3
+      with:
+        path: "aosp/system/libhwbinder"
+        key: "system_libhwbinder@$BRANCH"
+        restore-keys: "system_libhwbinder@$BRANCH"
+    - name: Restore Cache system/logging
+      id: system_logging
+      uses: actions/cache@v3
+      with:
+        path: "aosp/system/logging"
+        key: "system_logging@$BRANCH"
+        restore-keys: "system_logging@$BRANCH"
+    - name: Restore Cache system/sepolicy
+      id: system_sepolicy
+      uses: actions/cache@v3
+      with:
+        path: "aosp/system/sepolicy"
+        key: "system_sepolicy@$BRANCH"
+        restore-keys: "system_sepolicy@$BRANCH"
+    - name: Restore Cache kernel/configs
+      id: kernel_configs
+      uses: actions/cache@v3
+      with:
+        path: "aosp/kernel/configs"
+        key: "kernel_configs@$BRANCH"
+        restore-keys: "kernel_configs@$BRANCH"
+    - name: Restore Cache prebuilts/build-tools
+      id: prebuilts_build-tools
+      uses: actions/cache@v3
+      with:
+        path: "aosp/prebuilts/build-tools"
+        key: "prebuilts_build-tools@$BRANCH"
+        restore-keys: "prebuilts_build-tools@$BRANCH"
+    - name: Restore Cache prebuilts/clang-tools
+      id: prebuilts_clang-tools
+      uses: actions/cache@v3
+      with:
+        path: "aosp/prebuilts/clang-tools"
+        key: "prebuilts_clang-tools@$BRANCH"
+        restore-keys: "prebuilts_clang-tools@$BRANCH"
+    - name: Restore Cache prebuilts/clang/host/linux-x86
+      id: prebuilts_clang_host_linux-x86
+      uses: actions/cache@v3
+      with:
+        path: "aosp/prebuilts/clang/host/linux-x86"
+        key: "prebuilts_clang_host_linux-x86@$BRANCH"
+        restore-keys: "prebuilts_clang_host_linux-x86@$BRANCH"
     - name: Restore Cache external/libcxx
       id: external_libcxx
       uses: actions/cache@v3
@@ -552,17 +876,18 @@ jobs:
         export ROOTDIR=$(pwd)
         pushd aosp
         export TOP=$(pwd)
-        $TOP/prebuilts/build-tools/linux-x86/bin/ninja -f out/combined-aosp_x86_64.ninja out/soong/.intermediates/external/zstd/libzstd/android_recovery_x86_64_static/libzstd.a out/soong/.intermediates/external/zstd/libzstd/android_x86_64_static/libzstd.a out/soong/.intermediates/external/zstd/libzstd/android_x86_64_static_apex10000/libzstd.a out/soong/.intermediates/external/zstd/libzstd/android_x86_64_static_cfi_lto-thin/libzstd.a
+        outputs=$($ROOTDIR/filter-outputs.py out/soong/.intermediates/external/zstd/libzstd/android_recovery_x86_64_static/libzstd.a out/soong/.intermediates/external/zstd/libzstd/android_x86_64_static/libzstd.a out/soong/.intermediates/external/zstd/libzstd/android_x86_64_static_apex10000/libzstd.a out/soong/.intermediates/external/zstd/libzstd/android_x86_64_static_cfi_lto-thin/libzstd.a)
+        $TOP/prebuilts/build-tools/linux-x86/bin/ninja -f out/combined-aosp_x86_64.ninja $outputs
         popd
     - name: copy target external_zstd-0
       run: |
         export ROOTDIR=$(pwd)
         export TOP=$(pwd)
         pushd aosp
-        mkdir -p prebuiltlibs/external/zstd/android_recovery_x86_64_static/ && cp out/soong/.intermediates/external/zstd/libzstd/android_recovery_x86_64_static/libzstd.a prebuiltlibs/external/zstd/android_recovery_x86_64_static/
-        mkdir -p prebuiltlibs/external/zstd/android_x86_64_static/ && cp out/soong/.intermediates/external/zstd/libzstd/android_x86_64_static/libzstd.a prebuiltlibs/external/zstd/android_x86_64_static/
-        mkdir -p prebuiltlibs/external/zstd/android_x86_64_static_apex10000/ && cp out/soong/.intermediates/external/zstd/libzstd/android_x86_64_static_apex10000/libzstd.a prebuiltlibs/external/zstd/android_x86_64_static_apex10000/
-        mkdir -p prebuiltlibs/external/zstd/android_x86_64_static_cfi_lto-thin/ && cp out/soong/.intermediates/external/zstd/libzstd/android_x86_64_static_cfi_lto-thin/libzstd.a prebuiltlibs/external/zstd/android_x86_64_static_cfi_lto-thin/
+        [ -e out/soong/.intermediates/external/zstd/libzstd/android_recovery_x86_64_static/libzstd.a ] && mkdir -p prebuiltlibs/external/zstd/android_recovery_x86_64_static/ && cp out/soong/.intermediates/external/zstd/libzstd/android_recovery_x86_64_static/libzstd.a prebuiltlibs/external/zstd/android_recovery_x86_64_static/ || true
+        [ -e out/soong/.intermediates/external/zstd/libzstd/android_x86_64_static/libzstd.a ] && mkdir -p prebuiltlibs/external/zstd/android_x86_64_static/ && cp out/soong/.intermediates/external/zstd/libzstd/android_x86_64_static/libzstd.a prebuiltlibs/external/zstd/android_x86_64_static/ || true
+        [ -e out/soong/.intermediates/external/zstd/libzstd/android_x86_64_static_apex10000/libzstd.a ] && mkdir -p prebuiltlibs/external/zstd/android_x86_64_static_apex10000/ && cp out/soong/.intermediates/external/zstd/libzstd/android_x86_64_static_apex10000/libzstd.a prebuiltlibs/external/zstd/android_x86_64_static_apex10000/ || true
+        [ -e out/soong/.intermediates/external/zstd/libzstd/android_x86_64_static_cfi_lto-thin/libzstd.a ] && mkdir -p prebuiltlibs/external/zstd/android_x86_64_static_cfi_lto-thin/ && cp out/soong/.intermediates/external/zstd/libzstd/android_x86_64_static_cfi_lto-thin/libzstd.a prebuiltlibs/external/zstd/android_x86_64_static_cfi_lto-thin/ || true
         cp -r out/soong/ninja/external/zstd prebuiltlibs/external/zstd/external_zstd-0
         grep '|external/zstd' out/soong/module-info.txt >> prebuiltlibs/external/zstd/MODULES
         du -ad1 external/zstd | sort -rnk1 > prebuiltlibs/external/zstd/.SIZE
