@@ -186,7 +186,7 @@ jobs:
     - name: Download get_clang_version.py and Link go
       run: |
         export ROOTDIR=$(pwd)
-        pushd aosp
+        mkdir -p aosp && pushd aosp
         curl "https://android.googlesource.com/platform/build/soong/+/refs/heads/master/scripts/get_clang_version.py?format=TEXT" | base64 -d > $ROOTDIR/get_clang_version.py
         mkdir -p prebuilts/go && touch prebuilts/go/.out-dir
         ln -sf $GOROOT_1_19_X64 prebuilts/go/linux-x86
