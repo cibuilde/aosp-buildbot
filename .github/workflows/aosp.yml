@@ -8,15 +8,15 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@main
-    - name: Restore Cache build
-      id: build
+    - name: Restore Cache build/make
+      id: build_make
       uses: actions/cache@v3
       with:
-        path: "aosp/build"
-        key: "build@$BRANCH"
-        restore-keys: "build@$BRANCH"
-    - name: Clone project build
-      if: steps.build.outputs.cache-hit != 'true'
+        path: "aosp/build/make"
+        key: "build_make@$BRANCH"
+        restore-keys: "build_make@$BRANCH"
+    - name: Clone project build/make
+      if: steps.build_make.outputs.cache-hit != 'true'
       run: |
         export ROOTDIR=$(pwd)
         mkdir -p aosp && pushd aosp
@@ -179,6 +179,7 @@ jobs:
         source $ROOTDIR/envsetup.sh
         clone_depth kernel/configs
   clone_prebuilts:
+    needs: [clone_bootstrap]
     runs-on: ubuntu-22.04
     steps:
     - name: Checkout
