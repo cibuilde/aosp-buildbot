@@ -196,8 +196,6 @@ jobs:
         export ROOTDIR=$(pwd)
         mkdir -p aosp && pushd aosp
         curl "https://android.googlesource.com/platform/build/soong/+/refs/heads/master/scripts/get_clang_version.py?format=TEXT" | base64 -d > $ROOTDIR/get_clang_version.py
-        mkdir -p prebuilts/go && touch prebuilts/go/.out-dir
-        ln -sf $GOROOT_1_19_X64 prebuilts/go/linux-x86
         popd
     - name: Restore Cache prebuilts/build-tools
       id: prebuilts_build-tools
@@ -361,6 +359,8 @@ jobs:
         ln -sf make/CleanSpec.mk build/ && ln -sf make/core build/
         ln -sf make/target build/ && ln -sf make/tools build/
         ln -sf build/soong/root.bp Android.bp
+        mkdir -p prebuilts/go && touch prebuilts/go/.out-dir
+        ln -sf $GOROOT_1_19_X64 prebuilts/go/linux-x86
         popd
     - name: Restore Cache external/libcxx
       id: external_libcxx
@@ -583,6 +583,8 @@ jobs:
         ln -sf make/CleanSpec.mk build/ && ln -sf make/core build/
         ln -sf make/target build/ && ln -sf make/tools build/
         ln -sf build/soong/root.bp Android.bp
+        mkdir -p prebuilts/go && touch prebuilts/go/.out-dir
+        ln -sf $GOROOT_1_19_X64 prebuilts/go/linux-x86
         popd
     - name: Restore Cache external/libcxxabi
       id: external_libcxxabi
@@ -806,6 +808,8 @@ jobs:
         ln -sf make/CleanSpec.mk build/ && ln -sf make/core build/
         ln -sf make/target build/ && ln -sf make/tools build/
         ln -sf build/soong/root.bp Android.bp
+        mkdir -p prebuilts/go && touch prebuilts/go/.out-dir
+        ln -sf $GOROOT_1_19_X64 prebuilts/go/linux-x86
         popd
     - name: Restore Cache external/libcxx
       id: external_libcxx
