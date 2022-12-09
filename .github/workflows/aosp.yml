@@ -1,0 +1,1196 @@
+name: AOSP Build
+on: push
+env:
+  BRANCH: android-12.0.0_r1
+jobs:
+  external_libcxx-0:
+    runs-on: ubuntu-22.04
+    steps:
+
+    - name: Restore Cache build
+      id: build
+      uses: actions/cache@v3
+      with:
+        path: "aosp/build"
+        key: "build@$BRANCH"
+        restore-keys: "build@$BRANCH"
+    - name: Clone project build
+      if: steps.build.outputs.cache-hit != 'true'
+      run: |
+        export ROOTDIR=$(pwd)
+        source $ROOTDIR/envsetup.sh
+        clone_depth_platform build
+        mv build make && mkdir build && mv make build/
+        sed -i 's/^PRODUCT_EXTRA_VNDK_VERSIONS/#PRODUCT_EXTRA_VNDK_VERSIONS/g' build/make/target/product/gsi_release.mk
+    - name: Save Cache build
+      uses: actions/cache@v3
+      with:
+        path: "aosp/build"
+        key: "build@$BRANCH"
+        store-keys: "build@$BRANCH"
+    - name: Restore Cache build/blueprint
+      id: build_blueprint
+      uses: actions/cache@v3
+      with:
+        path: "aosp/build/blueprint"
+        key: "build_blueprint@$BRANCH"
+        restore-keys: "build_blueprint@$BRANCH"
+    - name: Clone project build/blueprint
+      if: steps.build_blueprint.outputs.cache-hit != 'true'
+      run: |
+        export ROOTDIR=$(pwd)
+        source $ROOTDIR/envsetup.sh
+        clone_depth_platform build/blueprint
+    - name: Save Cache build/blueprint
+      uses: actions/cache@v3
+      with:
+        path: "aosp/build/blueprint"
+        key: "build_blueprint@$BRANCH"
+        store-keys: "build_blueprint@$BRANCH"
+    - name: Restore Cache build/soong
+      id: build_soong
+      uses: actions/cache@v3
+      with:
+        path: "aosp/build/soong"
+        key: "build_soong@$BRANCH"
+        restore-keys: "build_soong@$BRANCH"
+    - name: Clone project build/soong
+      if: steps.build_soong.outputs.cache-hit != 'true'
+      run: |
+        export ROOTDIR=$(pwd)
+        source $ROOTDIR/envsetup.sh
+        clone_depth_platform build/soong
+    - name: Save Cache build/soong
+      uses: actions/cache@v3
+      with:
+        path: "aosp/build/soong"
+        key: "build_soong@$BRANCH"
+        store-keys: "build_soong@$BRANCH"
+    - name: Restore Cache bionic
+      id: bionic
+      uses: actions/cache@v3
+      with:
+        path: "aosp/bionic"
+        key: "bionic@$BRANCH"
+        restore-keys: "bionic@$BRANCH"
+    - name: Clone project bionic
+      if: steps.bionic.outputs.cache-hit != 'true'
+      run: |
+        export ROOTDIR=$(pwd)
+        source $ROOTDIR/envsetup.sh
+        clone_depth_platform bionic
+    - name: Save Cache bionic
+      uses: actions/cache@v3
+      with:
+        path: "aosp/bionic"
+        key: "bionic@$BRANCH"
+        store-keys: "bionic@$BRANCH"
+    - name: Restore Cache external/golang-protobuf
+      id: external_golang-protobuf
+      uses: actions/cache@v3
+      with:
+        path: "aosp/external/golang-protobuf"
+        key: "external_golang-protobuf@$BRANCH"
+        restore-keys: "external_golang-protobuf@$BRANCH"
+    - name: Clone project external/golang-protobuf
+      if: steps.external_golang-protobuf.outputs.cache-hit != 'true'
+      run: |
+        export ROOTDIR=$(pwd)
+        source $ROOTDIR/envsetup.sh
+        clone_depth_platform external/golang-protobuf
+    - name: Save Cache external/golang-protobuf
+      uses: actions/cache@v3
+      with:
+        path: "aosp/external/golang-protobuf"
+        key: "external_golang-protobuf@$BRANCH"
+        store-keys: "external_golang-protobuf@$BRANCH"
+    - name: Restore Cache external/starlark-go
+      id: external_starlark-go
+      uses: actions/cache@v3
+      with:
+        path: "aosp/external/starlark-go"
+        key: "external_starlark-go@$BRANCH"
+        restore-keys: "external_starlark-go@$BRANCH"
+    - name: Clone project external/starlark-go
+      if: steps.external_starlark-go.outputs.cache-hit != 'true'
+      run: |
+        export ROOTDIR=$(pwd)
+        source $ROOTDIR/envsetup.sh
+        clone_depth_platform external/starlark-go
+    - name: Save Cache external/starlark-go
+      uses: actions/cache@v3
+      with:
+        path: "aosp/external/starlark-go"
+        key: "external_starlark-go@$BRANCH"
+        store-keys: "external_starlark-go@$BRANCH"
+    - name: Restore Cache system/core
+      id: system_core
+      uses: actions/cache@v3
+      with:
+        path: "aosp/system/core"
+        key: "system_core@$BRANCH"
+        restore-keys: "system_core@$BRANCH"
+    - name: Clone project system/core
+      if: steps.system_core.outputs.cache-hit != 'true'
+      run: |
+        export ROOTDIR=$(pwd)
+        source $ROOTDIR/envsetup.sh
+        clone_depth_platform system/core
+    - name: Save Cache system/core
+      uses: actions/cache@v3
+      with:
+        path: "aosp/system/core"
+        key: "system_core@$BRANCH"
+        store-keys: "system_core@$BRANCH"
+    - name: Restore Cache system/libbase
+      id: system_libbase
+      uses: actions/cache@v3
+      with:
+        path: "aosp/system/libbase"
+        key: "system_libbase@$BRANCH"
+        restore-keys: "system_libbase@$BRANCH"
+    - name: Clone project system/libbase
+      if: steps.system_libbase.outputs.cache-hit != 'true'
+      run: |
+        export ROOTDIR=$(pwd)
+        source $ROOTDIR/envsetup.sh
+        clone_depth_platform system/libbase
+    - name: Save Cache system/libbase
+      uses: actions/cache@v3
+      with:
+        path: "aosp/system/libbase"
+        key: "system_libbase@$BRANCH"
+        store-keys: "system_libbase@$BRANCH"
+    - name: Restore Cache system/logging
+      id: system_logging
+      uses: actions/cache@v3
+      with:
+        path: "aosp/system/logging"
+        key: "system_logging@$BRANCH"
+        restore-keys: "system_logging@$BRANCH"
+    - name: Clone project system/logging
+      if: steps.system_logging.outputs.cache-hit != 'true'
+      run: |
+        export ROOTDIR=$(pwd)
+        source $ROOTDIR/envsetup.sh
+        clone_depth_platform system/logging
+    - name: Save Cache system/logging
+      uses: actions/cache@v3
+      with:
+        path: "aosp/system/logging"
+        key: "system_logging@$BRANCH"
+        store-keys: "system_logging@$BRANCH"
+    - name: Restore Cache system/sepolicy
+      id: system_sepolicy
+      uses: actions/cache@v3
+      with:
+        path: "aosp/system/sepolicy"
+        key: "system_sepolicy@$BRANCH"
+        restore-keys: "system_sepolicy@$BRANCH"
+    - name: Clone project system/sepolicy
+      if: steps.system_sepolicy.outputs.cache-hit != 'true'
+      run: |
+        export ROOTDIR=$(pwd)
+        source $ROOTDIR/envsetup.sh
+        clone_depth_platform system/sepolicy
+    - name: Save Cache system/sepolicy
+      uses: actions/cache@v3
+      with:
+        path: "aosp/system/sepolicy"
+        key: "system_sepolicy@$BRANCH"
+        store-keys: "system_sepolicy@$BRANCH"
+    - name: Restore Cache kernel/config
+      id: kernel_config
+      uses: actions/cache@v3
+      with:
+        path: "aosp/kernel/config"
+        key: "kernel_config@$BRANCH"
+        restore-keys: "kernel_config@$BRANCH"
+    - name: Clone project kernel/config
+      if: steps.kernel_config.outputs.cache-hit != 'true'
+      run: |
+        export ROOTDIR=$(pwd)
+        source $ROOTDIR/envsetup.sh
+        clone_depth kernel/config
+    - name: Save Cache kernel/config
+      uses: actions/cache@v3
+      with:
+        path: "aosp/kernel/config"
+        key: "kernel_config@$BRANCH"
+        store-keys: "kernel_config@$BRANCH"
+    - name: Copy and Link
+      run: |
+        export ROOTDIR=$(pwd)
+        pushd aosp
+        cp build/make/core/root.mk Makefile
+        ln -sf make/CleanSpec.mk build/ && ln -sf make/core build/
+        ln -sf make/target build/ && ln -sf make/tools build/
+        ln -sf build/soong/root.bp Android.bp
+        popd
+    - name: Download get_clang_version.py and Link go
+      run: |
+        export ROOTDIR=$(pwd)
+        pushd aosp
+        curl "https://android.googlesource.com/platform/build/soong/+/refs/heads/master/scripts/get_clang_version.py?format=TEXT" | base64 -d > $ROOTDIR/get_clang_version.py
+        mkdir -p prebuilts/go && touch prebuilts/go/.out-dir
+        ln -sf $GOROOT_1_19_X64 prebuilts/go/linux-x86
+        popd
+    - name: Restore Cache prebuilts/build-tools
+      id: prebuilts_build-tools
+      uses: actions/cache@v3
+      with:
+        path: "aosp/prebuilts/build-tools"
+        key: "prebuilts_build-tools@$BRANCH"
+        restore-keys: "prebuilts_build-tools@$BRANCH"
+    - name: Clone project prebuilts/build-tools
+      if: steps.prebuilts_build-tools.outputs.cache-hit != 'true'
+      run: |
+        export ROOTDIR=$(pwd)
+        source $ROOTDIR/envsetup.sh
+        clone_sparse prebuilts/build-tools linux-x86/bin linux-x86/lib64 path common
+    - name: Save Cache prebuilts/build-tools
+      uses: actions/cache@v3
+      with:
+        path: "aosp/prebuilts/build-tools"
+        key: "prebuilts_build-tools@$BRANCH"
+        store-keys: "prebuilts_build-tools@$BRANCH"
+    - name: Restore Cache prebuilts/clang-tools
+      id: prebuilts_clang-tools
+      uses: actions/cache@v3
+      with:
+        path: "aosp/prebuilts/clang-tools"
+        key: "prebuilts_clang-tools@$BRANCH"
+        restore-keys: "prebuilts_clang-tools@$BRANCH"
+    - name: Clone project prebuilts/clang-tools
+      if: steps.prebuilts_clang-tools.outputs.cache-hit != 'true'
+      run: |
+        export ROOTDIR=$(pwd)
+        source $ROOTDIR/envsetup.sh
+        clone_sparse prebuilts/clang-tools linux-x86/bin linux-x86/lib64/clang
+    - name: Save Cache prebuilts/clang-tools
+      uses: actions/cache@v3
+      with:
+        path: "aosp/prebuilts/clang-tools"
+        key: "prebuilts_clang-tools@$BRANCH"
+        store-keys: "prebuilts_clang-tools@$BRANCH"
+    - name: Restore Cache prebuilts/clang/host/linux-x86
+      id: prebuilts_clang_host_linux-x86
+      uses: actions/cache@v3
+      with:
+        path: "aosp/prebuilts/clang/host/linux-x86"
+        key: "prebuilts_clang_host_linux-x86@$BRANCH"
+        restore-keys: "prebuilts_clang_host_linux-x86@$BRANCH"
+    - name: Clone project prebuilts/clang/host/linux-x86
+      if: steps.prebuilts_clang_host_linux-x86.outputs.cache-hit != 'true'
+      run: |
+        export ROOTDIR=$(pwd)
+        source $ROOTDIR/envsetup.sh
+        clone_sparse prebuilts/clang/host/linux-x86 $(python ${ROOTDIR}/get_clang_version.py) soong
+    - name: Save Cache prebuilts/clang/host/linux-x86
+      uses: actions/cache@v3
+      with:
+        path: "aosp/prebuilts/clang/host/linux-x86"
+        key: "prebuilts_clang_host_linux-x86@$BRANCH"
+        store-keys: "prebuilts_clang_host_linux-x86@$BRANCH"
+
+    - name: Restore Cache external/libcxx
+      id: external_libcxx
+      uses: actions/cache@v3
+      with:
+        path: "aosp/external/libcxx"
+        key: "external_libcxx@$BRANCH"
+        restore-keys: "external_libcxx@$BRANCH"
+    - name: Clone project external/libcxx
+      if: steps.external_libcxx.outputs.cache-hit != 'true'
+      run: |
+        export ROOTDIR=$(pwd)
+        source $ROOTDIR/envsetup.sh
+        clone_depth_platform external/libcxx
+    - name: Save Cache external/libcxx
+      uses: actions/cache@v3
+      with:
+        path: "aosp/external/libcxx"
+        key: "external_libcxx@$BRANCH"
+        store-keys: "external_libcxx@$BRANCH"
+    - name: Start Soong
+      run: |
+        export ROOTDIR=$(pwd)
+        pushd aosp
+        export TOP=$(pwd)
+        mkdir -p out/soong/.minibootstrap out/soong/.bootstrap/bin
+        ln -sf $ROOTDIR/soong_build out/soong/.bootstrap/bin
+        ln -sf $ROOTDIR/bpglob out/soong/.minibootstrap
+        cp $ROOTDIR/ckati prebuilts/build-tools/linux-x86/bin
+        GOROOT=$TOP/prebuilts/go/linux-x86 $ROOTDIR/soong_ui --make-mode --skip-soong-tests --skip-write-modules -j1 TARGET_PRODUCT=aosp_x86_64 TARGET_BUILD_VARIANT=eng ALLOW_MISSING_DEPENDENCIES=true BUILD_BROKEN_DISABLE_BAZEL=1 nothing
+        popd
+    - name: build target external_libcxx-0
+      run: |
+        export ROOTDIR=$(pwd)
+        pushd aosp
+        export TOP=$(pwd)
+        $TOP/prebuilts/build-tools/linux-x86/bin/ninja -f out/combined-aosp_x86_64.ninja out/soong/.intermediates/external/libcxx/libc++/android_recovery_x86_64_shared/libc++.so out/soong/.intermediates/external/libcxx/libc++/android_vendor.31_x86_64_shared/libc++.so out/soong/.intermediates/external/libcxx/libc++/android_vendor.31_x86_x86_64_shared/libc++.so out/soong/.intermediates/external/libcxx/libc++/android_x86_64_shared/libc++.so out/soong/.intermediates/external/libcxx/libc++/android_x86_64_shared_apex10000/libc++.so out/soong/.intermediates/external/libcxx/libc++/android_x86_64_shared_apex29/libc++.so out/soong/.intermediates/external/libcxx/libc++/android_x86_64_shared_apex31/libc++.so out/soong/.intermediates/external/libcxx/libc++/android_x86_x86_64_shared/libc++.so out/soong/.intermediates/external/libcxx/libc++/android_x86_x86_64_shared_apex10000/libc++.so out/soong/.intermediates/external/libcxx/libc++/android_x86_x86_64_shared_apex29/libc++.so out/soong/.intermediates/external/libcxx/libc++/android_x86_x86_64_shared_apex31/libc++.so out/soong/.intermediates/external/libcxx/libc++/linux_glibc_x86_64_shared/libc++.so out/soong/.intermediates/external/libcxx/libc++fs/android_recovery_x86_64_static/libc++fs.a out/soong/.intermediates/external/libcxx/libc++fs/android_x86_64_static/libc++fs.a out/soong/.intermediates/external/libcxx/libc++fs/android_x86_x86_64_static/libc++fs.a out/soong/.intermediates/external/libcxx/libc++fs/linux_glibc_x86_64_static/libc++fs.a out/soong/.intermediates/external/libcxx/libc++_static/android_recovery_x86_64_static/libc++_static.a out/soong/.intermediates/external/libcxx/libc++_static/android_recovery_x86_64_static_lto-thin/libc++_static.a out/soong/.intermediates/external/libcxx/libc++_static/android_vendor.31_x86_64_static/libc++_static.a out/soong/.intermediates/external/libcxx/libc++_static/android_vendor.31_x86_64_static_lto-thin/libc++_static.a out/soong/.intermediates/external/libcxx/libc++_static/android_vendor.31_x86_x86_64_static/libc++_static.a out/soong/.intermediates/external/libcxx/libc++_static/android_vendor.31_x86_x86_64_static_cfi/libc++_static.a out/soong/.intermediates/external/libcxx/libc++_static/android_vendor.31_x86_x86_64_static_lto-thin/libc++_static.a out/soong/.intermediates/external/libcxx/libc++_static/android_x86_64_static/libc++_static.a out/soong/.intermediates/external/libcxx/libc++_static/android_x86_64_static_apex10000/libc++_static.a out/soong/.intermediates/external/libcxx/libc++_static/android_x86_64_static_apex29/libc++_static.a out/soong/.intermediates/external/libcxx/libc++_static/android_x86_64_static_apex30/libc++_static.a out/soong/.intermediates/external/libcxx/libc++_static/android_x86_64_static_apex31/libc++_static.a out/soong/.intermediates/external/libcxx/libc++_static/android_x86_64_static_cfi/libc++_static.a out/soong/.intermediates/external/libcxx/libc++_static/android_x86_64_static_cfi_apex29/libc++_static.a out/soong/.intermediates/external/libcxx/libc++_static/android_x86_64_static_cfi_lto-thin/libc++_static.a out/soong/.intermediates/external/libcxx/libc++_static/android_x86_64_static_cfi_lto-thin_apex29/libc++_static.a out/soong/.intermediates/external/libcxx/libc++_static/android_x86_64_static_lto-thin/libc++_static.a out/soong/.intermediates/external/libcxx/libc++_static/android_x86_64_static_lto-thin_apex29/libc++_static.a out/soong/.intermediates/external/libcxx/libc++_static/android_x86_64_static_lto-thin_apex30/libc++_static.a out/soong/.intermediates/external/libcxx/libc++_static/android_x86_64_static_lto-thin_apex31/libc++_static.a out/soong/.intermediates/external/libcxx/libc++_static/android_x86_x86_64_static/libc++_static.a out/soong/.intermediates/external/libcxx/libc++_static/android_x86_x86_64_static_apex10000/libc++_static.a out/soong/.intermediates/external/libcxx/libc++_static/android_x86_x86_64_static_apex29/libc++_static.a out/soong/.intermediates/external/libcxx/libc++_static/android_x86_x86_64_static_apex30/libc++_static.a out/soong/.intermediates/external/libcxx/libc++_static/android_x86_x86_64_static_apex31/libc++_static.a out/soong/.intermediates/external/libcxx/libc++_static/android_x86_x86_64_static_cfi/libc++_static.a out/soong/.intermediates/external/libcxx/libc++_static/android_x86_x86_64_static_lto-thin/libc++_static.a out/soong/.intermediates/external/libcxx/libc++_static/android_x86_x86_64_static_lto-thin_apex30/libc++_static.a out/soong/.intermediates/external/libcxx/libc++_static/android_x86_x86_64_static_lto-thin_apex31/libc++_static.a out/soong/.intermediates/external/libcxx/libc++_static/linux_glibc_x86_64_static/libc++_static.a
+        popd
+    - name: copy target external_libcxx-0
+      run: |
+        export ROOTDIR=$(pwd)
+        export TOP=$(pwd)
+        pushd aosp
+        mkdir -p prebuiltlibs/external/libcxx/android_recovery_x86_64_shared/ && cp out/soong/.intermediates/external/libcxx/libc++/android_recovery_x86_64_shared/libc++.so prebuiltlibs/external/libcxx/android_recovery_x86_64_shared/
+        mkdir -p prebuiltlibs/external/libcxx/android_vendor.31_x86_64_shared/ && cp out/soong/.intermediates/external/libcxx/libc++/android_vendor.31_x86_64_shared/libc++.so prebuiltlibs/external/libcxx/android_vendor.31_x86_64_shared/
+        mkdir -p prebuiltlibs/external/libcxx/android_vendor.31_x86_x86_64_shared/ && cp out/soong/.intermediates/external/libcxx/libc++/android_vendor.31_x86_x86_64_shared/libc++.so prebuiltlibs/external/libcxx/android_vendor.31_x86_x86_64_shared/
+        mkdir -p prebuiltlibs/external/libcxx/android_x86_64_shared/ && cp out/soong/.intermediates/external/libcxx/libc++/android_x86_64_shared/libc++.so prebuiltlibs/external/libcxx/android_x86_64_shared/
+        mkdir -p prebuiltlibs/external/libcxx/android_x86_64_shared_apex10000/ && cp out/soong/.intermediates/external/libcxx/libc++/android_x86_64_shared_apex10000/libc++.so prebuiltlibs/external/libcxx/android_x86_64_shared_apex10000/
+        mkdir -p prebuiltlibs/external/libcxx/android_x86_64_shared_apex29/ && cp out/soong/.intermediates/external/libcxx/libc++/android_x86_64_shared_apex29/libc++.so prebuiltlibs/external/libcxx/android_x86_64_shared_apex29/
+        mkdir -p prebuiltlibs/external/libcxx/android_x86_64_shared_apex31/ && cp out/soong/.intermediates/external/libcxx/libc++/android_x86_64_shared_apex31/libc++.so prebuiltlibs/external/libcxx/android_x86_64_shared_apex31/
+        mkdir -p prebuiltlibs/external/libcxx/android_x86_x86_64_shared/ && cp out/soong/.intermediates/external/libcxx/libc++/android_x86_x86_64_shared/libc++.so prebuiltlibs/external/libcxx/android_x86_x86_64_shared/
+        mkdir -p prebuiltlibs/external/libcxx/android_x86_x86_64_shared_apex10000/ && cp out/soong/.intermediates/external/libcxx/libc++/android_x86_x86_64_shared_apex10000/libc++.so prebuiltlibs/external/libcxx/android_x86_x86_64_shared_apex10000/
+        mkdir -p prebuiltlibs/external/libcxx/android_x86_x86_64_shared_apex29/ && cp out/soong/.intermediates/external/libcxx/libc++/android_x86_x86_64_shared_apex29/libc++.so prebuiltlibs/external/libcxx/android_x86_x86_64_shared_apex29/
+        mkdir -p prebuiltlibs/external/libcxx/android_x86_x86_64_shared_apex31/ && cp out/soong/.intermediates/external/libcxx/libc++/android_x86_x86_64_shared_apex31/libc++.so prebuiltlibs/external/libcxx/android_x86_x86_64_shared_apex31/
+        mkdir -p prebuiltlibs/external/libcxx/linux_glibc_x86_64_shared/ && cp out/soong/.intermediates/external/libcxx/libc++/linux_glibc_x86_64_shared/libc++.so prebuiltlibs/external/libcxx/linux_glibc_x86_64_shared/
+        mkdir -p prebuiltlibs/external/libcxx/android_recovery_x86_64_static/ && cp out/soong/.intermediates/external/libcxx/libc++fs/android_recovery_x86_64_static/libc++fs.a prebuiltlibs/external/libcxx/android_recovery_x86_64_static/
+        mkdir -p prebuiltlibs/external/libcxx/android_x86_64_static/ && cp out/soong/.intermediates/external/libcxx/libc++fs/android_x86_64_static/libc++fs.a prebuiltlibs/external/libcxx/android_x86_64_static/
+        mkdir -p prebuiltlibs/external/libcxx/android_x86_x86_64_static/ && cp out/soong/.intermediates/external/libcxx/libc++fs/android_x86_x86_64_static/libc++fs.a prebuiltlibs/external/libcxx/android_x86_x86_64_static/
+        mkdir -p prebuiltlibs/external/libcxx/linux_glibc_x86_64_static/ && cp out/soong/.intermediates/external/libcxx/libc++fs/linux_glibc_x86_64_static/libc++fs.a prebuiltlibs/external/libcxx/linux_glibc_x86_64_static/
+        mkdir -p prebuiltlibs/external/libcxx/android_recovery_x86_64_static/ && cp out/soong/.intermediates/external/libcxx/libc++_static/android_recovery_x86_64_static/libc++_static.a prebuiltlibs/external/libcxx/android_recovery_x86_64_static/
+        mkdir -p prebuiltlibs/external/libcxx/android_recovery_x86_64_static_lto-thin/ && cp out/soong/.intermediates/external/libcxx/libc++_static/android_recovery_x86_64_static_lto-thin/libc++_static.a prebuiltlibs/external/libcxx/android_recovery_x86_64_static_lto-thin/
+        mkdir -p prebuiltlibs/external/libcxx/android_vendor.31_x86_64_static/ && cp out/soong/.intermediates/external/libcxx/libc++_static/android_vendor.31_x86_64_static/libc++_static.a prebuiltlibs/external/libcxx/android_vendor.31_x86_64_static/
+        mkdir -p prebuiltlibs/external/libcxx/android_vendor.31_x86_64_static_lto-thin/ && cp out/soong/.intermediates/external/libcxx/libc++_static/android_vendor.31_x86_64_static_lto-thin/libc++_static.a prebuiltlibs/external/libcxx/android_vendor.31_x86_64_static_lto-thin/
+        mkdir -p prebuiltlibs/external/libcxx/android_vendor.31_x86_x86_64_static/ && cp out/soong/.intermediates/external/libcxx/libc++_static/android_vendor.31_x86_x86_64_static/libc++_static.a prebuiltlibs/external/libcxx/android_vendor.31_x86_x86_64_static/
+        mkdir -p prebuiltlibs/external/libcxx/android_vendor.31_x86_x86_64_static_cfi/ && cp out/soong/.intermediates/external/libcxx/libc++_static/android_vendor.31_x86_x86_64_static_cfi/libc++_static.a prebuiltlibs/external/libcxx/android_vendor.31_x86_x86_64_static_cfi/
+        mkdir -p prebuiltlibs/external/libcxx/android_vendor.31_x86_x86_64_static_lto-thin/ && cp out/soong/.intermediates/external/libcxx/libc++_static/android_vendor.31_x86_x86_64_static_lto-thin/libc++_static.a prebuiltlibs/external/libcxx/android_vendor.31_x86_x86_64_static_lto-thin/
+        mkdir -p prebuiltlibs/external/libcxx/android_x86_64_static/ && cp out/soong/.intermediates/external/libcxx/libc++_static/android_x86_64_static/libc++_static.a prebuiltlibs/external/libcxx/android_x86_64_static/
+        mkdir -p prebuiltlibs/external/libcxx/android_x86_64_static_apex10000/ && cp out/soong/.intermediates/external/libcxx/libc++_static/android_x86_64_static_apex10000/libc++_static.a prebuiltlibs/external/libcxx/android_x86_64_static_apex10000/
+        mkdir -p prebuiltlibs/external/libcxx/android_x86_64_static_apex29/ && cp out/soong/.intermediates/external/libcxx/libc++_static/android_x86_64_static_apex29/libc++_static.a prebuiltlibs/external/libcxx/android_x86_64_static_apex29/
+        mkdir -p prebuiltlibs/external/libcxx/android_x86_64_static_apex30/ && cp out/soong/.intermediates/external/libcxx/libc++_static/android_x86_64_static_apex30/libc++_static.a prebuiltlibs/external/libcxx/android_x86_64_static_apex30/
+        mkdir -p prebuiltlibs/external/libcxx/android_x86_64_static_apex31/ && cp out/soong/.intermediates/external/libcxx/libc++_static/android_x86_64_static_apex31/libc++_static.a prebuiltlibs/external/libcxx/android_x86_64_static_apex31/
+        mkdir -p prebuiltlibs/external/libcxx/android_x86_64_static_cfi/ && cp out/soong/.intermediates/external/libcxx/libc++_static/android_x86_64_static_cfi/libc++_static.a prebuiltlibs/external/libcxx/android_x86_64_static_cfi/
+        mkdir -p prebuiltlibs/external/libcxx/android_x86_64_static_cfi_apex29/ && cp out/soong/.intermediates/external/libcxx/libc++_static/android_x86_64_static_cfi_apex29/libc++_static.a prebuiltlibs/external/libcxx/android_x86_64_static_cfi_apex29/
+        mkdir -p prebuiltlibs/external/libcxx/android_x86_64_static_cfi_lto-thin/ && cp out/soong/.intermediates/external/libcxx/libc++_static/android_x86_64_static_cfi_lto-thin/libc++_static.a prebuiltlibs/external/libcxx/android_x86_64_static_cfi_lto-thin/
+        mkdir -p prebuiltlibs/external/libcxx/android_x86_64_static_cfi_lto-thin_apex29/ && cp out/soong/.intermediates/external/libcxx/libc++_static/android_x86_64_static_cfi_lto-thin_apex29/libc++_static.a prebuiltlibs/external/libcxx/android_x86_64_static_cfi_lto-thin_apex29/
+        mkdir -p prebuiltlibs/external/libcxx/android_x86_64_static_lto-thin/ && cp out/soong/.intermediates/external/libcxx/libc++_static/android_x86_64_static_lto-thin/libc++_static.a prebuiltlibs/external/libcxx/android_x86_64_static_lto-thin/
+        mkdir -p prebuiltlibs/external/libcxx/android_x86_64_static_lto-thin_apex29/ && cp out/soong/.intermediates/external/libcxx/libc++_static/android_x86_64_static_lto-thin_apex29/libc++_static.a prebuiltlibs/external/libcxx/android_x86_64_static_lto-thin_apex29/
+        mkdir -p prebuiltlibs/external/libcxx/android_x86_64_static_lto-thin_apex30/ && cp out/soong/.intermediates/external/libcxx/libc++_static/android_x86_64_static_lto-thin_apex30/libc++_static.a prebuiltlibs/external/libcxx/android_x86_64_static_lto-thin_apex30/
+        mkdir -p prebuiltlibs/external/libcxx/android_x86_64_static_lto-thin_apex31/ && cp out/soong/.intermediates/external/libcxx/libc++_static/android_x86_64_static_lto-thin_apex31/libc++_static.a prebuiltlibs/external/libcxx/android_x86_64_static_lto-thin_apex31/
+        mkdir -p prebuiltlibs/external/libcxx/android_x86_x86_64_static/ && cp out/soong/.intermediates/external/libcxx/libc++_static/android_x86_x86_64_static/libc++_static.a prebuiltlibs/external/libcxx/android_x86_x86_64_static/
+        mkdir -p prebuiltlibs/external/libcxx/android_x86_x86_64_static_apex10000/ && cp out/soong/.intermediates/external/libcxx/libc++_static/android_x86_x86_64_static_apex10000/libc++_static.a prebuiltlibs/external/libcxx/android_x86_x86_64_static_apex10000/
+        mkdir -p prebuiltlibs/external/libcxx/android_x86_x86_64_static_apex29/ && cp out/soong/.intermediates/external/libcxx/libc++_static/android_x86_x86_64_static_apex29/libc++_static.a prebuiltlibs/external/libcxx/android_x86_x86_64_static_apex29/
+        mkdir -p prebuiltlibs/external/libcxx/android_x86_x86_64_static_apex30/ && cp out/soong/.intermediates/external/libcxx/libc++_static/android_x86_x86_64_static_apex30/libc++_static.a prebuiltlibs/external/libcxx/android_x86_x86_64_static_apex30/
+        mkdir -p prebuiltlibs/external/libcxx/android_x86_x86_64_static_apex31/ && cp out/soong/.intermediates/external/libcxx/libc++_static/android_x86_x86_64_static_apex31/libc++_static.a prebuiltlibs/external/libcxx/android_x86_x86_64_static_apex31/
+        mkdir -p prebuiltlibs/external/libcxx/android_x86_x86_64_static_cfi/ && cp out/soong/.intermediates/external/libcxx/libc++_static/android_x86_x86_64_static_cfi/libc++_static.a prebuiltlibs/external/libcxx/android_x86_x86_64_static_cfi/
+        mkdir -p prebuiltlibs/external/libcxx/android_x86_x86_64_static_lto-thin/ && cp out/soong/.intermediates/external/libcxx/libc++_static/android_x86_x86_64_static_lto-thin/libc++_static.a prebuiltlibs/external/libcxx/android_x86_x86_64_static_lto-thin/
+        mkdir -p prebuiltlibs/external/libcxx/android_x86_x86_64_static_lto-thin_apex30/ && cp out/soong/.intermediates/external/libcxx/libc++_static/android_x86_x86_64_static_lto-thin_apex30/libc++_static.a prebuiltlibs/external/libcxx/android_x86_x86_64_static_lto-thin_apex30/
+        mkdir -p prebuiltlibs/external/libcxx/android_x86_x86_64_static_lto-thin_apex31/ && cp out/soong/.intermediates/external/libcxx/libc++_static/android_x86_x86_64_static_lto-thin_apex31/libc++_static.a prebuiltlibs/external/libcxx/android_x86_x86_64_static_lto-thin_apex31/
+        mkdir -p prebuiltlibs/external/libcxx/linux_glibc_x86_64_static/ && cp out/soong/.intermediates/external/libcxx/libc++_static/linux_glibc_x86_64_static/libc++_static.a prebuiltlibs/external/libcxx/linux_glibc_x86_64_static/
+        cp -r out/soong/ninja/external/libcxx prebuiltlibs/external/libcxx/external_libcxx-0
+        grep '|external/libcxx' out/soong/module-info.txt >> prebuiltlibs/external/libcxx/MODULES
+        du -ad1 external/libcxx | sort -rnk1 > prebuiltlibs/external/libcxx/.SIZE
+        popd
+    - name: write Android.bp external_libcxx-0
+      run: |
+        export ROOTDIR=$(pwd)
+        export TOP=$(pwd)
+        pushd aosp
+        echo "cc_prebuilt_library_shared {\n\tname: \"libc++\",\n\tdevice_supported: true,\n\thost_supported: true,\n\tvendor_available: true,\n\trecovery_available: true,\n\tandroid_recovery_x86_64_shared: \"android_recovery_x86_64_shared/libc++.so\",\n\tandroid_vendor_31_x86_64_shared: \"android_vendor.31_x86_64_shared/libc++.so\",\n\tandroid_vendor_31_x86_x86_64_shared: \"android_vendor.31_x86_x86_64_shared/libc++.so\",\n\tandroid_x86_64_shared: \"android_x86_64_shared/libc++.so\",\n\tandroid_x86_64_shared_apex10000: \"android_x86_64_shared_apex10000/libc++.so\",\n\tandroid_x86_64_shared_apex29: \"android_x86_64_shared_apex29/libc++.so\",\n\tandroid_x86_64_shared_apex31: \"android_x86_64_shared_apex31/libc++.so\",\n\tandroid_x86_x86_64_shared: \"android_x86_x86_64_shared/libc++.so\",\n\tandroid_x86_x86_64_shared_apex10000: \"android_x86_x86_64_shared_apex10000/libc++.so\",\n\tandroid_x86_x86_64_shared_apex29: \"android_x86_x86_64_shared_apex29/libc++.so\",\n\tandroid_x86_x86_64_shared_apex31: \"android_x86_x86_64_shared_apex31/libc++.so\",\n\tlinux_glibc_x86_64_shared: \"linux_glibc_x86_64_shared/libc++.so\",\n\tsrcs: [\"android_x86_64_shared/libc++.so\"],\n\ttarget: { host: { compile_multilib: \"64\",  }, android: { compile_multilib: \"both\",  }, },\n\trequired: [],\n\tmin_sdk_version: \"apex_inherit\", stl: \"none\", vndk: { enabled: true, }, apex_available: [\"//apex_available:anyapex\",\"//apex_available:platform\",], \n\tprefer: true,\n\tstrip: { none: true, },\n}\ncc_prebuilt_library_static {\n\tname: \"libc++fs\",\n\tdevice_supported: true,\n\thost_supported: true,\n\tvendor_available: false,\n\trecovery_available: true,\n\tandroid_recovery_x86_64_static: \"android_recovery_x86_64_static/libc++fs.a\",\n\tandroid_x86_64_static: \"android_x86_64_static/libc++fs.a\",\n\tandroid_x86_x86_64_static: \"android_x86_x86_64_static/libc++fs.a\",\n\tlinux_glibc_x86_64_static: \"linux_glibc_x86_64_static/libc++fs.a\",\n\tsrcs: [\"android_recovery_x86_64_static/libc++fs.a\"],\n\ttarget: { host: { compile_multilib: \"64\",  }, android: { compile_multilib: \"both\",  }, },\n\trequired: [],\n\tstl: \"none\", \n\tprefer: true,\n\tstrip: { none: true, },\n}\ncc_prebuilt_library_static {\n\tname: \"libc++_static\",\n\tdevice_supported: true,\n\thost_supported: true,\n\tvendor_available: true,\n\trecovery_available: true,\n\tandroid_recovery_x86_64_static: \"android_recovery_x86_64_static/libc++_static.a\",\n\tandroid_recovery_x86_64_static_lto_thin: \"android_recovery_x86_64_static_lto-thin/libc++_static.a\",\n\tandroid_vendor_31_x86_64_static: \"android_vendor.31_x86_64_static/libc++_static.a\",\n\tandroid_vendor_31_x86_64_static_lto_thin: \"android_vendor.31_x86_64_static_lto-thin/libc++_static.a\",\n\tandroid_vendor_31_x86_x86_64_static: \"android_vendor.31_x86_x86_64_static/libc++_static.a\",\n\tandroid_vendor_31_x86_x86_64_static_cfi: \"android_vendor.31_x86_x86_64_static_cfi/libc++_static.a\",\n\tandroid_vendor_31_x86_x86_64_static_lto_thin: \"android_vendor.31_x86_x86_64_static_lto-thin/libc++_static.a\",\n\tandroid_x86_64_static: \"android_x86_64_static/libc++_static.a\",\n\tandroid_x86_64_static_apex10000: \"android_x86_64_static_apex10000/libc++_static.a\",\n\tandroid_x86_64_static_apex29: \"android_x86_64_static_apex29/libc++_static.a\",\n\tandroid_x86_64_static_apex30: \"android_x86_64_static_apex30/libc++_static.a\",\n\tandroid_x86_64_static_apex31: \"android_x86_64_static_apex31/libc++_static.a\",\n\tandroid_x86_64_static_cfi: \"android_x86_64_static_cfi/libc++_static.a\",\n\tandroid_x86_64_static_cfi_apex29: \"android_x86_64_static_cfi_apex29/libc++_static.a\",\n\tandroid_x86_64_static_cfi_lto_thin: \"android_x86_64_static_cfi_lto-thin/libc++_static.a\",\n\tandroid_x86_64_static_cfi_lto_thin_apex29: \"android_x86_64_static_cfi_lto-thin_apex29/libc++_static.a\",\n\tandroid_x86_64_static_lto_thin: \"android_x86_64_static_lto-thin/libc++_static.a\",\n\tandroid_x86_64_static_lto_thin_apex29: \"android_x86_64_static_lto-thin_apex29/libc++_static.a\",\n\tandroid_x86_64_static_lto_thin_apex30: \"android_x86_64_static_lto-thin_apex30/libc++_static.a\",\n\tandroid_x86_64_static_lto_thin_apex31: \"android_x86_64_static_lto-thin_apex31/libc++_static.a\",\n\tandroid_x86_x86_64_static: \"android_x86_x86_64_static/libc++_static.a\",\n\tandroid_x86_x86_64_static_apex10000: \"android_x86_x86_64_static_apex10000/libc++_static.a\",\n\tandroid_x86_x86_64_static_apex29: \"android_x86_x86_64_static_apex29/libc++_static.a\",\n\tandroid_x86_x86_64_static_apex30: \"android_x86_x86_64_static_apex30/libc++_static.a\",\n\tandroid_x86_x86_64_static_apex31: \"android_x86_x86_64_static_apex31/libc++_static.a\",\n\tandroid_x86_x86_64_static_cfi: \"android_x86_x86_64_static_cfi/libc++_static.a\",\n\tandroid_x86_x86_64_static_lto_thin: \"android_x86_x86_64_static_lto-thin/libc++_static.a\",\n\tandroid_x86_x86_64_static_lto_thin_apex30: \"android_x86_x86_64_static_lto-thin_apex30/libc++_static.a\",\n\tandroid_x86_x86_64_static_lto_thin_apex31: \"android_x86_x86_64_static_lto-thin_apex31/libc++_static.a\",\n\tlinux_glibc_x86_64_static: \"linux_glibc_x86_64_static/libc++_static.a\",\n\tsrcs: [\"android_recovery_x86_64_static/libc++_static.a\"],\n\ttarget: { host: { compile_multilib: \"64\",  }, android: { compile_multilib: \"both\",  }, },\n\trequired: [],\n\tmin_sdk_version: \"apex_inherit\", stl: \"none\", apex_available: [\"//apex_available:anyapex\",\"//apex_available:platform\",], \n\tprefer: true,\n\tstrip: { none: true, },\n}" >> prebuiltlibs/external/libcxx/Android.bp
+        echo "\n" >> prebuiltlibs/external/libcxx/Android.bp
+        popd
+    - name: Archive external_libcxx-0
+      uses: actions/upload-artifact@v3
+      with:
+        name: external_libcxx-0
+        path: aosp/prebuiltlibs/external/libcxx
+  external_libcxxabi-0:
+    runs-on: ubuntu-22.04
+    steps:
+
+    - name: Restore Cache build
+      id: build
+      uses: actions/cache@v3
+      with:
+        path: "aosp/build"
+        key: "build@$BRANCH"
+        restore-keys: "build@$BRANCH"
+    - name: Clone project build
+      if: steps.build.outputs.cache-hit != 'true'
+      run: |
+        export ROOTDIR=$(pwd)
+        source $ROOTDIR/envsetup.sh
+        clone_depth_platform build
+        mv build make && mkdir build && mv make build/
+        sed -i 's/^PRODUCT_EXTRA_VNDK_VERSIONS/#PRODUCT_EXTRA_VNDK_VERSIONS/g' build/make/target/product/gsi_release.mk
+    - name: Save Cache build
+      uses: actions/cache@v3
+      with:
+        path: "aosp/build"
+        key: "build@$BRANCH"
+        store-keys: "build@$BRANCH"
+    - name: Restore Cache build/blueprint
+      id: build_blueprint
+      uses: actions/cache@v3
+      with:
+        path: "aosp/build/blueprint"
+        key: "build_blueprint@$BRANCH"
+        restore-keys: "build_blueprint@$BRANCH"
+    - name: Clone project build/blueprint
+      if: steps.build_blueprint.outputs.cache-hit != 'true'
+      run: |
+        export ROOTDIR=$(pwd)
+        source $ROOTDIR/envsetup.sh
+        clone_depth_platform build/blueprint
+    - name: Save Cache build/blueprint
+      uses: actions/cache@v3
+      with:
+        path: "aosp/build/blueprint"
+        key: "build_blueprint@$BRANCH"
+        store-keys: "build_blueprint@$BRANCH"
+    - name: Restore Cache build/soong
+      id: build_soong
+      uses: actions/cache@v3
+      with:
+        path: "aosp/build/soong"
+        key: "build_soong@$BRANCH"
+        restore-keys: "build_soong@$BRANCH"
+    - name: Clone project build/soong
+      if: steps.build_soong.outputs.cache-hit != 'true'
+      run: |
+        export ROOTDIR=$(pwd)
+        source $ROOTDIR/envsetup.sh
+        clone_depth_platform build/soong
+    - name: Save Cache build/soong
+      uses: actions/cache@v3
+      with:
+        path: "aosp/build/soong"
+        key: "build_soong@$BRANCH"
+        store-keys: "build_soong@$BRANCH"
+    - name: Restore Cache bionic
+      id: bionic
+      uses: actions/cache@v3
+      with:
+        path: "aosp/bionic"
+        key: "bionic@$BRANCH"
+        restore-keys: "bionic@$BRANCH"
+    - name: Clone project bionic
+      if: steps.bionic.outputs.cache-hit != 'true'
+      run: |
+        export ROOTDIR=$(pwd)
+        source $ROOTDIR/envsetup.sh
+        clone_depth_platform bionic
+    - name: Save Cache bionic
+      uses: actions/cache@v3
+      with:
+        path: "aosp/bionic"
+        key: "bionic@$BRANCH"
+        store-keys: "bionic@$BRANCH"
+    - name: Restore Cache external/golang-protobuf
+      id: external_golang-protobuf
+      uses: actions/cache@v3
+      with:
+        path: "aosp/external/golang-protobuf"
+        key: "external_golang-protobuf@$BRANCH"
+        restore-keys: "external_golang-protobuf@$BRANCH"
+    - name: Clone project external/golang-protobuf
+      if: steps.external_golang-protobuf.outputs.cache-hit != 'true'
+      run: |
+        export ROOTDIR=$(pwd)
+        source $ROOTDIR/envsetup.sh
+        clone_depth_platform external/golang-protobuf
+    - name: Save Cache external/golang-protobuf
+      uses: actions/cache@v3
+      with:
+        path: "aosp/external/golang-protobuf"
+        key: "external_golang-protobuf@$BRANCH"
+        store-keys: "external_golang-protobuf@$BRANCH"
+    - name: Restore Cache external/starlark-go
+      id: external_starlark-go
+      uses: actions/cache@v3
+      with:
+        path: "aosp/external/starlark-go"
+        key: "external_starlark-go@$BRANCH"
+        restore-keys: "external_starlark-go@$BRANCH"
+    - name: Clone project external/starlark-go
+      if: steps.external_starlark-go.outputs.cache-hit != 'true'
+      run: |
+        export ROOTDIR=$(pwd)
+        source $ROOTDIR/envsetup.sh
+        clone_depth_platform external/starlark-go
+    - name: Save Cache external/starlark-go
+      uses: actions/cache@v3
+      with:
+        path: "aosp/external/starlark-go"
+        key: "external_starlark-go@$BRANCH"
+        store-keys: "external_starlark-go@$BRANCH"
+    - name: Restore Cache system/core
+      id: system_core
+      uses: actions/cache@v3
+      with:
+        path: "aosp/system/core"
+        key: "system_core@$BRANCH"
+        restore-keys: "system_core@$BRANCH"
+    - name: Clone project system/core
+      if: steps.system_core.outputs.cache-hit != 'true'
+      run: |
+        export ROOTDIR=$(pwd)
+        source $ROOTDIR/envsetup.sh
+        clone_depth_platform system/core
+    - name: Save Cache system/core
+      uses: actions/cache@v3
+      with:
+        path: "aosp/system/core"
+        key: "system_core@$BRANCH"
+        store-keys: "system_core@$BRANCH"
+    - name: Restore Cache system/libbase
+      id: system_libbase
+      uses: actions/cache@v3
+      with:
+        path: "aosp/system/libbase"
+        key: "system_libbase@$BRANCH"
+        restore-keys: "system_libbase@$BRANCH"
+    - name: Clone project system/libbase
+      if: steps.system_libbase.outputs.cache-hit != 'true'
+      run: |
+        export ROOTDIR=$(pwd)
+        source $ROOTDIR/envsetup.sh
+        clone_depth_platform system/libbase
+    - name: Save Cache system/libbase
+      uses: actions/cache@v3
+      with:
+        path: "aosp/system/libbase"
+        key: "system_libbase@$BRANCH"
+        store-keys: "system_libbase@$BRANCH"
+    - name: Restore Cache system/logging
+      id: system_logging
+      uses: actions/cache@v3
+      with:
+        path: "aosp/system/logging"
+        key: "system_logging@$BRANCH"
+        restore-keys: "system_logging@$BRANCH"
+    - name: Clone project system/logging
+      if: steps.system_logging.outputs.cache-hit != 'true'
+      run: |
+        export ROOTDIR=$(pwd)
+        source $ROOTDIR/envsetup.sh
+        clone_depth_platform system/logging
+    - name: Save Cache system/logging
+      uses: actions/cache@v3
+      with:
+        path: "aosp/system/logging"
+        key: "system_logging@$BRANCH"
+        store-keys: "system_logging@$BRANCH"
+    - name: Restore Cache system/sepolicy
+      id: system_sepolicy
+      uses: actions/cache@v3
+      with:
+        path: "aosp/system/sepolicy"
+        key: "system_sepolicy@$BRANCH"
+        restore-keys: "system_sepolicy@$BRANCH"
+    - name: Clone project system/sepolicy
+      if: steps.system_sepolicy.outputs.cache-hit != 'true'
+      run: |
+        export ROOTDIR=$(pwd)
+        source $ROOTDIR/envsetup.sh
+        clone_depth_platform system/sepolicy
+    - name: Save Cache system/sepolicy
+      uses: actions/cache@v3
+      with:
+        path: "aosp/system/sepolicy"
+        key: "system_sepolicy@$BRANCH"
+        store-keys: "system_sepolicy@$BRANCH"
+    - name: Restore Cache kernel/config
+      id: kernel_config
+      uses: actions/cache@v3
+      with:
+        path: "aosp/kernel/config"
+        key: "kernel_config@$BRANCH"
+        restore-keys: "kernel_config@$BRANCH"
+    - name: Clone project kernel/config
+      if: steps.kernel_config.outputs.cache-hit != 'true'
+      run: |
+        export ROOTDIR=$(pwd)
+        source $ROOTDIR/envsetup.sh
+        clone_depth kernel/config
+    - name: Save Cache kernel/config
+      uses: actions/cache@v3
+      with:
+        path: "aosp/kernel/config"
+        key: "kernel_config@$BRANCH"
+        store-keys: "kernel_config@$BRANCH"
+    - name: Copy and Link
+      run: |
+        export ROOTDIR=$(pwd)
+        pushd aosp
+        cp build/make/core/root.mk Makefile
+        ln -sf make/CleanSpec.mk build/ && ln -sf make/core build/
+        ln -sf make/target build/ && ln -sf make/tools build/
+        ln -sf build/soong/root.bp Android.bp
+        popd
+    - name: Download get_clang_version.py and Link go
+      run: |
+        export ROOTDIR=$(pwd)
+        pushd aosp
+        curl "https://android.googlesource.com/platform/build/soong/+/refs/heads/master/scripts/get_clang_version.py?format=TEXT" | base64 -d > $ROOTDIR/get_clang_version.py
+        mkdir -p prebuilts/go && touch prebuilts/go/.out-dir
+        ln -sf $GOROOT_1_19_X64 prebuilts/go/linux-x86
+        popd
+    - name: Restore Cache prebuilts/build-tools
+      id: prebuilts_build-tools
+      uses: actions/cache@v3
+      with:
+        path: "aosp/prebuilts/build-tools"
+        key: "prebuilts_build-tools@$BRANCH"
+        restore-keys: "prebuilts_build-tools@$BRANCH"
+    - name: Clone project prebuilts/build-tools
+      if: steps.prebuilts_build-tools.outputs.cache-hit != 'true'
+      run: |
+        export ROOTDIR=$(pwd)
+        source $ROOTDIR/envsetup.sh
+        clone_sparse prebuilts/build-tools linux-x86/bin linux-x86/lib64 path common
+    - name: Save Cache prebuilts/build-tools
+      uses: actions/cache@v3
+      with:
+        path: "aosp/prebuilts/build-tools"
+        key: "prebuilts_build-tools@$BRANCH"
+        store-keys: "prebuilts_build-tools@$BRANCH"
+    - name: Restore Cache prebuilts/clang-tools
+      id: prebuilts_clang-tools
+      uses: actions/cache@v3
+      with:
+        path: "aosp/prebuilts/clang-tools"
+        key: "prebuilts_clang-tools@$BRANCH"
+        restore-keys: "prebuilts_clang-tools@$BRANCH"
+    - name: Clone project prebuilts/clang-tools
+      if: steps.prebuilts_clang-tools.outputs.cache-hit != 'true'
+      run: |
+        export ROOTDIR=$(pwd)
+        source $ROOTDIR/envsetup.sh
+        clone_sparse prebuilts/clang-tools linux-x86/bin linux-x86/lib64/clang
+    - name: Save Cache prebuilts/clang-tools
+      uses: actions/cache@v3
+      with:
+        path: "aosp/prebuilts/clang-tools"
+        key: "prebuilts_clang-tools@$BRANCH"
+        store-keys: "prebuilts_clang-tools@$BRANCH"
+    - name: Restore Cache prebuilts/clang/host/linux-x86
+      id: prebuilts_clang_host_linux-x86
+      uses: actions/cache@v3
+      with:
+        path: "aosp/prebuilts/clang/host/linux-x86"
+        key: "prebuilts_clang_host_linux-x86@$BRANCH"
+        restore-keys: "prebuilts_clang_host_linux-x86@$BRANCH"
+    - name: Clone project prebuilts/clang/host/linux-x86
+      if: steps.prebuilts_clang_host_linux-x86.outputs.cache-hit != 'true'
+      run: |
+        export ROOTDIR=$(pwd)
+        source $ROOTDIR/envsetup.sh
+        clone_sparse prebuilts/clang/host/linux-x86 $(python ${ROOTDIR}/get_clang_version.py) soong
+    - name: Save Cache prebuilts/clang/host/linux-x86
+      uses: actions/cache@v3
+      with:
+        path: "aosp/prebuilts/clang/host/linux-x86"
+        key: "prebuilts_clang_host_linux-x86@$BRANCH"
+        store-keys: "prebuilts_clang_host_linux-x86@$BRANCH"
+
+    - name: Restore Cache external/libcxxabi
+      id: external_libcxxabi
+      uses: actions/cache@v3
+      with:
+        path: "aosp/external/libcxxabi"
+        key: "external_libcxxabi@$BRANCH"
+        restore-keys: "external_libcxxabi@$BRANCH"
+    - name: Clone project external/libcxxabi
+      if: steps.external_libcxxabi.outputs.cache-hit != 'true'
+      run: |
+        export ROOTDIR=$(pwd)
+        source $ROOTDIR/envsetup.sh
+        clone_depth_platform external/libcxxabi
+    - name: Save Cache external/libcxxabi
+      uses: actions/cache@v3
+      with:
+        path: "aosp/external/libcxxabi"
+        key: "external_libcxxabi@$BRANCH"
+        store-keys: "external_libcxxabi@$BRANCH"
+    - name: Start Soong
+      run: |
+        export ROOTDIR=$(pwd)
+        pushd aosp
+        export TOP=$(pwd)
+        mkdir -p out/soong/.minibootstrap out/soong/.bootstrap/bin
+        ln -sf $ROOTDIR/soong_build out/soong/.bootstrap/bin
+        ln -sf $ROOTDIR/bpglob out/soong/.minibootstrap
+        cp $ROOTDIR/ckati prebuilts/build-tools/linux-x86/bin
+        GOROOT=$TOP/prebuilts/go/linux-x86 $ROOTDIR/soong_ui --make-mode --skip-soong-tests --skip-write-modules -j1 TARGET_PRODUCT=aosp_x86_64 TARGET_BUILD_VARIANT=eng ALLOW_MISSING_DEPENDENCIES=true BUILD_BROKEN_DISABLE_BAZEL=1 nothing
+        popd
+    - name: build target external_libcxxabi-0
+      run: |
+        export ROOTDIR=$(pwd)
+        pushd aosp
+        export TOP=$(pwd)
+        $TOP/prebuilts/build-tools/linux-x86/bin/ninja -f out/combined-aosp_x86_64.ninja out/soong/.intermediates/external/libcxxabi/libc++demangle/android_recovery_x86_64_static/libc++demangle.a out/soong/.intermediates/external/libcxxabi/libc++demangle/android_recovery_x86_64_static_lto-thin/libc++demangle.a out/soong/.intermediates/external/libcxxabi/libc++demangle/android_vendor.31_x86_64_static/libc++demangle.a out/soong/.intermediates/external/libcxxabi/libc++demangle/android_vendor.31_x86_64_static_lto-thin/libc++demangle.a out/soong/.intermediates/external/libcxxabi/libc++demangle/android_vendor.31_x86_x86_64_static/libc++demangle.a out/soong/.intermediates/external/libcxxabi/libc++demangle/android_vendor.31_x86_x86_64_static_lto-thin/libc++demangle.a out/soong/.intermediates/external/libcxxabi/libc++demangle/android_x86_64_static/libc++demangle.a out/soong/.intermediates/external/libcxxabi/libc++demangle/android_x86_64_static_apex10000/libc++demangle.a out/soong/.intermediates/external/libcxxabi/libc++demangle/android_x86_64_static_apex29/libc++demangle.a out/soong/.intermediates/external/libcxxabi/libc++demangle/android_x86_64_static_apex30/libc++demangle.a out/soong/.intermediates/external/libcxxabi/libc++demangle/android_x86_64_static_apex31/libc++demangle.a out/soong/.intermediates/external/libcxxabi/libc++demangle/android_x86_64_static_lto-thin/libc++demangle.a out/soong/.intermediates/external/libcxxabi/libc++demangle/android_x86_64_static_lto-thin_apex29/libc++demangle.a out/soong/.intermediates/external/libcxxabi/libc++demangle/android_x86_64_static_lto-thin_apex30/libc++demangle.a out/soong/.intermediates/external/libcxxabi/libc++demangle/android_x86_64_static_lto-thin_apex31/libc++demangle.a out/soong/.intermediates/external/libcxxabi/libc++demangle/android_x86_x86_64_static/libc++demangle.a out/soong/.intermediates/external/libcxxabi/libc++demangle/android_x86_x86_64_static_apex10000/libc++demangle.a out/soong/.intermediates/external/libcxxabi/libc++demangle/android_x86_x86_64_static_apex29/libc++demangle.a out/soong/.intermediates/external/libcxxabi/libc++demangle/android_x86_x86_64_static_apex30/libc++demangle.a out/soong/.intermediates/external/libcxxabi/libc++demangle/android_x86_x86_64_static_apex31/libc++demangle.a out/soong/.intermediates/external/libcxxabi/libc++demangle/android_x86_x86_64_static_lto-thin/libc++demangle.a out/soong/.intermediates/external/libcxxabi/libc++demangle/android_x86_x86_64_static_lto-thin_apex30/libc++demangle.a out/soong/.intermediates/external/libcxxabi/libc++demangle/android_x86_x86_64_static_lto-thin_apex31/libc++demangle.a out/soong/.intermediates/external/libcxxabi/libc++abi/android_recovery_x86_64_static/libc++abi.a out/soong/.intermediates/external/libcxxabi/libc++abi/android_recovery_x86_64_static_lto-thin/libc++abi.a out/soong/.intermediates/external/libcxxabi/libc++abi/android_vendor.31_x86_64_static/libc++abi.a out/soong/.intermediates/external/libcxxabi/libc++abi/android_vendor.31_x86_64_static_lto-thin/libc++abi.a out/soong/.intermediates/external/libcxxabi/libc++abi/android_vendor.31_x86_x86_64_static/libc++abi.a out/soong/.intermediates/external/libcxxabi/libc++abi/android_vendor.31_x86_x86_64_static_lto-thin/libc++abi.a out/soong/.intermediates/external/libcxxabi/libc++abi/android_x86_64_static/libc++abi.a out/soong/.intermediates/external/libcxxabi/libc++abi/android_x86_64_static_apex10000/libc++abi.a out/soong/.intermediates/external/libcxxabi/libc++abi/android_x86_64_static_apex29/libc++abi.a out/soong/.intermediates/external/libcxxabi/libc++abi/android_x86_64_static_apex30/libc++abi.a out/soong/.intermediates/external/libcxxabi/libc++abi/android_x86_64_static_apex31/libc++abi.a out/soong/.intermediates/external/libcxxabi/libc++abi/android_x86_64_static_lto-thin/libc++abi.a out/soong/.intermediates/external/libcxxabi/libc++abi/android_x86_64_static_lto-thin_apex29/libc++abi.a out/soong/.intermediates/external/libcxxabi/libc++abi/android_x86_64_static_lto-thin_apex30/libc++abi.a out/soong/.intermediates/external/libcxxabi/libc++abi/android_x86_64_static_lto-thin_apex31/libc++abi.a out/soong/.intermediates/external/libcxxabi/libc++abi/android_x86_x86_64_static/libc++abi.a out/soong/.intermediates/external/libcxxabi/libc++abi/android_x86_x86_64_static_apex10000/libc++abi.a out/soong/.intermediates/external/libcxxabi/libc++abi/android_x86_x86_64_static_apex29/libc++abi.a out/soong/.intermediates/external/libcxxabi/libc++abi/android_x86_x86_64_static_apex30/libc++abi.a out/soong/.intermediates/external/libcxxabi/libc++abi/android_x86_x86_64_static_apex31/libc++abi.a out/soong/.intermediates/external/libcxxabi/libc++abi/android_x86_x86_64_static_lto-thin/libc++abi.a out/soong/.intermediates/external/libcxxabi/libc++abi/android_x86_x86_64_static_lto-thin_apex30/libc++abi.a out/soong/.intermediates/external/libcxxabi/libc++abi/android_x86_x86_64_static_lto-thin_apex31/libc++abi.a out/soong/.intermediates/external/libcxxabi/libc++abi/linux_glibc_x86_64_static/libc++abi.a
+        popd
+    - name: copy target external_libcxxabi-0
+      run: |
+        export ROOTDIR=$(pwd)
+        export TOP=$(pwd)
+        pushd aosp
+        mkdir -p prebuiltlibs/external/libcxxabi/android_recovery_x86_64_static/ && cp out/soong/.intermediates/external/libcxxabi/libc++demangle/android_recovery_x86_64_static/libc++demangle.a prebuiltlibs/external/libcxxabi/android_recovery_x86_64_static/
+        mkdir -p prebuiltlibs/external/libcxxabi/android_recovery_x86_64_static_lto-thin/ && cp out/soong/.intermediates/external/libcxxabi/libc++demangle/android_recovery_x86_64_static_lto-thin/libc++demangle.a prebuiltlibs/external/libcxxabi/android_recovery_x86_64_static_lto-thin/
+        mkdir -p prebuiltlibs/external/libcxxabi/android_vendor.31_x86_64_static/ && cp out/soong/.intermediates/external/libcxxabi/libc++demangle/android_vendor.31_x86_64_static/libc++demangle.a prebuiltlibs/external/libcxxabi/android_vendor.31_x86_64_static/
+        mkdir -p prebuiltlibs/external/libcxxabi/android_vendor.31_x86_64_static_lto-thin/ && cp out/soong/.intermediates/external/libcxxabi/libc++demangle/android_vendor.31_x86_64_static_lto-thin/libc++demangle.a prebuiltlibs/external/libcxxabi/android_vendor.31_x86_64_static_lto-thin/
+        mkdir -p prebuiltlibs/external/libcxxabi/android_vendor.31_x86_x86_64_static/ && cp out/soong/.intermediates/external/libcxxabi/libc++demangle/android_vendor.31_x86_x86_64_static/libc++demangle.a prebuiltlibs/external/libcxxabi/android_vendor.31_x86_x86_64_static/
+        mkdir -p prebuiltlibs/external/libcxxabi/android_vendor.31_x86_x86_64_static_lto-thin/ && cp out/soong/.intermediates/external/libcxxabi/libc++demangle/android_vendor.31_x86_x86_64_static_lto-thin/libc++demangle.a prebuiltlibs/external/libcxxabi/android_vendor.31_x86_x86_64_static_lto-thin/
+        mkdir -p prebuiltlibs/external/libcxxabi/android_x86_64_static/ && cp out/soong/.intermediates/external/libcxxabi/libc++demangle/android_x86_64_static/libc++demangle.a prebuiltlibs/external/libcxxabi/android_x86_64_static/
+        mkdir -p prebuiltlibs/external/libcxxabi/android_x86_64_static_apex10000/ && cp out/soong/.intermediates/external/libcxxabi/libc++demangle/android_x86_64_static_apex10000/libc++demangle.a prebuiltlibs/external/libcxxabi/android_x86_64_static_apex10000/
+        mkdir -p prebuiltlibs/external/libcxxabi/android_x86_64_static_apex29/ && cp out/soong/.intermediates/external/libcxxabi/libc++demangle/android_x86_64_static_apex29/libc++demangle.a prebuiltlibs/external/libcxxabi/android_x86_64_static_apex29/
+        mkdir -p prebuiltlibs/external/libcxxabi/android_x86_64_static_apex30/ && cp out/soong/.intermediates/external/libcxxabi/libc++demangle/android_x86_64_static_apex30/libc++demangle.a prebuiltlibs/external/libcxxabi/android_x86_64_static_apex30/
+        mkdir -p prebuiltlibs/external/libcxxabi/android_x86_64_static_apex31/ && cp out/soong/.intermediates/external/libcxxabi/libc++demangle/android_x86_64_static_apex31/libc++demangle.a prebuiltlibs/external/libcxxabi/android_x86_64_static_apex31/
+        mkdir -p prebuiltlibs/external/libcxxabi/android_x86_64_static_lto-thin/ && cp out/soong/.intermediates/external/libcxxabi/libc++demangle/android_x86_64_static_lto-thin/libc++demangle.a prebuiltlibs/external/libcxxabi/android_x86_64_static_lto-thin/
+        mkdir -p prebuiltlibs/external/libcxxabi/android_x86_64_static_lto-thin_apex29/ && cp out/soong/.intermediates/external/libcxxabi/libc++demangle/android_x86_64_static_lto-thin_apex29/libc++demangle.a prebuiltlibs/external/libcxxabi/android_x86_64_static_lto-thin_apex29/
+        mkdir -p prebuiltlibs/external/libcxxabi/android_x86_64_static_lto-thin_apex30/ && cp out/soong/.intermediates/external/libcxxabi/libc++demangle/android_x86_64_static_lto-thin_apex30/libc++demangle.a prebuiltlibs/external/libcxxabi/android_x86_64_static_lto-thin_apex30/
+        mkdir -p prebuiltlibs/external/libcxxabi/android_x86_64_static_lto-thin_apex31/ && cp out/soong/.intermediates/external/libcxxabi/libc++demangle/android_x86_64_static_lto-thin_apex31/libc++demangle.a prebuiltlibs/external/libcxxabi/android_x86_64_static_lto-thin_apex31/
+        mkdir -p prebuiltlibs/external/libcxxabi/android_x86_x86_64_static/ && cp out/soong/.intermediates/external/libcxxabi/libc++demangle/android_x86_x86_64_static/libc++demangle.a prebuiltlibs/external/libcxxabi/android_x86_x86_64_static/
+        mkdir -p prebuiltlibs/external/libcxxabi/android_x86_x86_64_static_apex10000/ && cp out/soong/.intermediates/external/libcxxabi/libc++demangle/android_x86_x86_64_static_apex10000/libc++demangle.a prebuiltlibs/external/libcxxabi/android_x86_x86_64_static_apex10000/
+        mkdir -p prebuiltlibs/external/libcxxabi/android_x86_x86_64_static_apex29/ && cp out/soong/.intermediates/external/libcxxabi/libc++demangle/android_x86_x86_64_static_apex29/libc++demangle.a prebuiltlibs/external/libcxxabi/android_x86_x86_64_static_apex29/
+        mkdir -p prebuiltlibs/external/libcxxabi/android_x86_x86_64_static_apex30/ && cp out/soong/.intermediates/external/libcxxabi/libc++demangle/android_x86_x86_64_static_apex30/libc++demangle.a prebuiltlibs/external/libcxxabi/android_x86_x86_64_static_apex30/
+        mkdir -p prebuiltlibs/external/libcxxabi/android_x86_x86_64_static_apex31/ && cp out/soong/.intermediates/external/libcxxabi/libc++demangle/android_x86_x86_64_static_apex31/libc++demangle.a prebuiltlibs/external/libcxxabi/android_x86_x86_64_static_apex31/
+        mkdir -p prebuiltlibs/external/libcxxabi/android_x86_x86_64_static_lto-thin/ && cp out/soong/.intermediates/external/libcxxabi/libc++demangle/android_x86_x86_64_static_lto-thin/libc++demangle.a prebuiltlibs/external/libcxxabi/android_x86_x86_64_static_lto-thin/
+        mkdir -p prebuiltlibs/external/libcxxabi/android_x86_x86_64_static_lto-thin_apex30/ && cp out/soong/.intermediates/external/libcxxabi/libc++demangle/android_x86_x86_64_static_lto-thin_apex30/libc++demangle.a prebuiltlibs/external/libcxxabi/android_x86_x86_64_static_lto-thin_apex30/
+        mkdir -p prebuiltlibs/external/libcxxabi/android_x86_x86_64_static_lto-thin_apex31/ && cp out/soong/.intermediates/external/libcxxabi/libc++demangle/android_x86_x86_64_static_lto-thin_apex31/libc++demangle.a prebuiltlibs/external/libcxxabi/android_x86_x86_64_static_lto-thin_apex31/
+        mkdir -p prebuiltlibs/external/libcxxabi/android_recovery_x86_64_static/ && cp out/soong/.intermediates/external/libcxxabi/libc++abi/android_recovery_x86_64_static/libc++abi.a prebuiltlibs/external/libcxxabi/android_recovery_x86_64_static/
+        mkdir -p prebuiltlibs/external/libcxxabi/android_recovery_x86_64_static_lto-thin/ && cp out/soong/.intermediates/external/libcxxabi/libc++abi/android_recovery_x86_64_static_lto-thin/libc++abi.a prebuiltlibs/external/libcxxabi/android_recovery_x86_64_static_lto-thin/
+        mkdir -p prebuiltlibs/external/libcxxabi/android_vendor.31_x86_64_static/ && cp out/soong/.intermediates/external/libcxxabi/libc++abi/android_vendor.31_x86_64_static/libc++abi.a prebuiltlibs/external/libcxxabi/android_vendor.31_x86_64_static/
+        mkdir -p prebuiltlibs/external/libcxxabi/android_vendor.31_x86_64_static_lto-thin/ && cp out/soong/.intermediates/external/libcxxabi/libc++abi/android_vendor.31_x86_64_static_lto-thin/libc++abi.a prebuiltlibs/external/libcxxabi/android_vendor.31_x86_64_static_lto-thin/
+        mkdir -p prebuiltlibs/external/libcxxabi/android_vendor.31_x86_x86_64_static/ && cp out/soong/.intermediates/external/libcxxabi/libc++abi/android_vendor.31_x86_x86_64_static/libc++abi.a prebuiltlibs/external/libcxxabi/android_vendor.31_x86_x86_64_static/
+        mkdir -p prebuiltlibs/external/libcxxabi/android_vendor.31_x86_x86_64_static_lto-thin/ && cp out/soong/.intermediates/external/libcxxabi/libc++abi/android_vendor.31_x86_x86_64_static_lto-thin/libc++abi.a prebuiltlibs/external/libcxxabi/android_vendor.31_x86_x86_64_static_lto-thin/
+        mkdir -p prebuiltlibs/external/libcxxabi/android_x86_64_static/ && cp out/soong/.intermediates/external/libcxxabi/libc++abi/android_x86_64_static/libc++abi.a prebuiltlibs/external/libcxxabi/android_x86_64_static/
+        mkdir -p prebuiltlibs/external/libcxxabi/android_x86_64_static_apex10000/ && cp out/soong/.intermediates/external/libcxxabi/libc++abi/android_x86_64_static_apex10000/libc++abi.a prebuiltlibs/external/libcxxabi/android_x86_64_static_apex10000/
+        mkdir -p prebuiltlibs/external/libcxxabi/android_x86_64_static_apex29/ && cp out/soong/.intermediates/external/libcxxabi/libc++abi/android_x86_64_static_apex29/libc++abi.a prebuiltlibs/external/libcxxabi/android_x86_64_static_apex29/
+        mkdir -p prebuiltlibs/external/libcxxabi/android_x86_64_static_apex30/ && cp out/soong/.intermediates/external/libcxxabi/libc++abi/android_x86_64_static_apex30/libc++abi.a prebuiltlibs/external/libcxxabi/android_x86_64_static_apex30/
+        mkdir -p prebuiltlibs/external/libcxxabi/android_x86_64_static_apex31/ && cp out/soong/.intermediates/external/libcxxabi/libc++abi/android_x86_64_static_apex31/libc++abi.a prebuiltlibs/external/libcxxabi/android_x86_64_static_apex31/
+        mkdir -p prebuiltlibs/external/libcxxabi/android_x86_64_static_lto-thin/ && cp out/soong/.intermediates/external/libcxxabi/libc++abi/android_x86_64_static_lto-thin/libc++abi.a prebuiltlibs/external/libcxxabi/android_x86_64_static_lto-thin/
+        mkdir -p prebuiltlibs/external/libcxxabi/android_x86_64_static_lto-thin_apex29/ && cp out/soong/.intermediates/external/libcxxabi/libc++abi/android_x86_64_static_lto-thin_apex29/libc++abi.a prebuiltlibs/external/libcxxabi/android_x86_64_static_lto-thin_apex29/
+        mkdir -p prebuiltlibs/external/libcxxabi/android_x86_64_static_lto-thin_apex30/ && cp out/soong/.intermediates/external/libcxxabi/libc++abi/android_x86_64_static_lto-thin_apex30/libc++abi.a prebuiltlibs/external/libcxxabi/android_x86_64_static_lto-thin_apex30/
+        mkdir -p prebuiltlibs/external/libcxxabi/android_x86_64_static_lto-thin_apex31/ && cp out/soong/.intermediates/external/libcxxabi/libc++abi/android_x86_64_static_lto-thin_apex31/libc++abi.a prebuiltlibs/external/libcxxabi/android_x86_64_static_lto-thin_apex31/
+        mkdir -p prebuiltlibs/external/libcxxabi/android_x86_x86_64_static/ && cp out/soong/.intermediates/external/libcxxabi/libc++abi/android_x86_x86_64_static/libc++abi.a prebuiltlibs/external/libcxxabi/android_x86_x86_64_static/
+        mkdir -p prebuiltlibs/external/libcxxabi/android_x86_x86_64_static_apex10000/ && cp out/soong/.intermediates/external/libcxxabi/libc++abi/android_x86_x86_64_static_apex10000/libc++abi.a prebuiltlibs/external/libcxxabi/android_x86_x86_64_static_apex10000/
+        mkdir -p prebuiltlibs/external/libcxxabi/android_x86_x86_64_static_apex29/ && cp out/soong/.intermediates/external/libcxxabi/libc++abi/android_x86_x86_64_static_apex29/libc++abi.a prebuiltlibs/external/libcxxabi/android_x86_x86_64_static_apex29/
+        mkdir -p prebuiltlibs/external/libcxxabi/android_x86_x86_64_static_apex30/ && cp out/soong/.intermediates/external/libcxxabi/libc++abi/android_x86_x86_64_static_apex30/libc++abi.a prebuiltlibs/external/libcxxabi/android_x86_x86_64_static_apex30/
+        mkdir -p prebuiltlibs/external/libcxxabi/android_x86_x86_64_static_apex31/ && cp out/soong/.intermediates/external/libcxxabi/libc++abi/android_x86_x86_64_static_apex31/libc++abi.a prebuiltlibs/external/libcxxabi/android_x86_x86_64_static_apex31/
+        mkdir -p prebuiltlibs/external/libcxxabi/android_x86_x86_64_static_lto-thin/ && cp out/soong/.intermediates/external/libcxxabi/libc++abi/android_x86_x86_64_static_lto-thin/libc++abi.a prebuiltlibs/external/libcxxabi/android_x86_x86_64_static_lto-thin/
+        mkdir -p prebuiltlibs/external/libcxxabi/android_x86_x86_64_static_lto-thin_apex30/ && cp out/soong/.intermediates/external/libcxxabi/libc++abi/android_x86_x86_64_static_lto-thin_apex30/libc++abi.a prebuiltlibs/external/libcxxabi/android_x86_x86_64_static_lto-thin_apex30/
+        mkdir -p prebuiltlibs/external/libcxxabi/android_x86_x86_64_static_lto-thin_apex31/ && cp out/soong/.intermediates/external/libcxxabi/libc++abi/android_x86_x86_64_static_lto-thin_apex31/libc++abi.a prebuiltlibs/external/libcxxabi/android_x86_x86_64_static_lto-thin_apex31/
+        mkdir -p prebuiltlibs/external/libcxxabi/linux_glibc_x86_64_static/ && cp out/soong/.intermediates/external/libcxxabi/libc++abi/linux_glibc_x86_64_static/libc++abi.a prebuiltlibs/external/libcxxabi/linux_glibc_x86_64_static/
+        cp -r out/soong/ninja/external/libcxxabi prebuiltlibs/external/libcxxabi/external_libcxxabi-0
+        grep '|external/libcxxabi' out/soong/module-info.txt >> prebuiltlibs/external/libcxxabi/MODULES
+        du -ad1 external/libcxxabi | sort -rnk1 > prebuiltlibs/external/libcxxabi/.SIZE
+        popd
+    - name: write Android.bp external_libcxxabi-0
+      run: |
+        export ROOTDIR=$(pwd)
+        export TOP=$(pwd)
+        pushd aosp
+        echo "cc_prebuilt_library_static {\n\tname: \"libc++demangle\",\n\tdevice_supported: true,\n\thost_supported: false,\n\tvendor_available: true,\n\trecovery_available: true,\n\tandroid_recovery_x86_64_static: \"android_recovery_x86_64_static/libc++demangle.a\",\n\tandroid_recovery_x86_64_static_lto_thin: \"android_recovery_x86_64_static_lto-thin/libc++demangle.a\",\n\tandroid_vendor_31_x86_64_static: \"android_vendor.31_x86_64_static/libc++demangle.a\",\n\tandroid_vendor_31_x86_64_static_lto_thin: \"android_vendor.31_x86_64_static_lto-thin/libc++demangle.a\",\n\tandroid_vendor_31_x86_x86_64_static: \"android_vendor.31_x86_x86_64_static/libc++demangle.a\",\n\tandroid_vendor_31_x86_x86_64_static_lto_thin: \"android_vendor.31_x86_x86_64_static_lto-thin/libc++demangle.a\",\n\tandroid_x86_64_static: \"android_x86_64_static/libc++demangle.a\",\n\tandroid_x86_64_static_apex10000: \"android_x86_64_static_apex10000/libc++demangle.a\",\n\tandroid_x86_64_static_apex29: \"android_x86_64_static_apex29/libc++demangle.a\",\n\tandroid_x86_64_static_apex30: \"android_x86_64_static_apex30/libc++demangle.a\",\n\tandroid_x86_64_static_apex31: \"android_x86_64_static_apex31/libc++demangle.a\",\n\tandroid_x86_64_static_lto_thin: \"android_x86_64_static_lto-thin/libc++demangle.a\",\n\tandroid_x86_64_static_lto_thin_apex29: \"android_x86_64_static_lto-thin_apex29/libc++demangle.a\",\n\tandroid_x86_64_static_lto_thin_apex30: \"android_x86_64_static_lto-thin_apex30/libc++demangle.a\",\n\tandroid_x86_64_static_lto_thin_apex31: \"android_x86_64_static_lto-thin_apex31/libc++demangle.a\",\n\tandroid_x86_x86_64_static: \"android_x86_x86_64_static/libc++demangle.a\",\n\tandroid_x86_x86_64_static_apex10000: \"android_x86_x86_64_static_apex10000/libc++demangle.a\",\n\tandroid_x86_x86_64_static_apex29: \"android_x86_x86_64_static_apex29/libc++demangle.a\",\n\tandroid_x86_x86_64_static_apex30: \"android_x86_x86_64_static_apex30/libc++demangle.a\",\n\tandroid_x86_x86_64_static_apex31: \"android_x86_x86_64_static_apex31/libc++demangle.a\",\n\tandroid_x86_x86_64_static_lto_thin: \"android_x86_x86_64_static_lto-thin/libc++demangle.a\",\n\tandroid_x86_x86_64_static_lto_thin_apex30: \"android_x86_x86_64_static_lto-thin_apex30/libc++demangle.a\",\n\tandroid_x86_x86_64_static_lto_thin_apex31: \"android_x86_x86_64_static_lto-thin_apex31/libc++demangle.a\",\n\tsrcs: [\"android_recovery_x86_64_static/libc++demangle.a\"],\n\ttarget: { android: { compile_multilib: \"both\",  }, },\n\trequired: [],\n\tmin_sdk_version: \"apex_inherit\", stl: \"none\", apex_available: [\"//apex_available:anyapex\",\"//apex_available:platform\",], \n\tprefer: true,\n\tstrip: { none: true, },\n}\ncc_prebuilt_library_static {\n\tname: \"libc++abi\",\n\tdevice_supported: true,\n\thost_supported: true,\n\tvendor_available: true,\n\trecovery_available: true,\n\tandroid_recovery_x86_64_static: \"android_recovery_x86_64_static/libc++abi.a\",\n\tandroid_recovery_x86_64_static_lto_thin: \"android_recovery_x86_64_static_lto-thin/libc++abi.a\",\n\tandroid_vendor_31_x86_64_static: \"android_vendor.31_x86_64_static/libc++abi.a\",\n\tandroid_vendor_31_x86_64_static_lto_thin: \"android_vendor.31_x86_64_static_lto-thin/libc++abi.a\",\n\tandroid_vendor_31_x86_x86_64_static: \"android_vendor.31_x86_x86_64_static/libc++abi.a\",\n\tandroid_vendor_31_x86_x86_64_static_lto_thin: \"android_vendor.31_x86_x86_64_static_lto-thin/libc++abi.a\",\n\tandroid_x86_64_static: \"android_x86_64_static/libc++abi.a\",\n\tandroid_x86_64_static_apex10000: \"android_x86_64_static_apex10000/libc++abi.a\",\n\tandroid_x86_64_static_apex29: \"android_x86_64_static_apex29/libc++abi.a\",\n\tandroid_x86_64_static_apex30: \"android_x86_64_static_apex30/libc++abi.a\",\n\tandroid_x86_64_static_apex31: \"android_x86_64_static_apex31/libc++abi.a\",\n\tandroid_x86_64_static_lto_thin: \"android_x86_64_static_lto-thin/libc++abi.a\",\n\tandroid_x86_64_static_lto_thin_apex29: \"android_x86_64_static_lto-thin_apex29/libc++abi.a\",\n\tandroid_x86_64_static_lto_thin_apex30: \"android_x86_64_static_lto-thin_apex30/libc++abi.a\",\n\tandroid_x86_64_static_lto_thin_apex31: \"android_x86_64_static_lto-thin_apex31/libc++abi.a\",\n\tandroid_x86_x86_64_static: \"android_x86_x86_64_static/libc++abi.a\",\n\tandroid_x86_x86_64_static_apex10000: \"android_x86_x86_64_static_apex10000/libc++abi.a\",\n\tandroid_x86_x86_64_static_apex29: \"android_x86_x86_64_static_apex29/libc++abi.a\",\n\tandroid_x86_x86_64_static_apex30: \"android_x86_x86_64_static_apex30/libc++abi.a\",\n\tandroid_x86_x86_64_static_apex31: \"android_x86_x86_64_static_apex31/libc++abi.a\",\n\tandroid_x86_x86_64_static_lto_thin: \"android_x86_x86_64_static_lto-thin/libc++abi.a\",\n\tandroid_x86_x86_64_static_lto_thin_apex30: \"android_x86_x86_64_static_lto-thin_apex30/libc++abi.a\",\n\tandroid_x86_x86_64_static_lto_thin_apex31: \"android_x86_x86_64_static_lto-thin_apex31/libc++abi.a\",\n\tlinux_glibc_x86_64_static: \"linux_glibc_x86_64_static/libc++abi.a\",\n\tsrcs: [\"android_recovery_x86_64_static/libc++abi.a\"],\n\ttarget: { host: { compile_multilib: \"64\",  }, android: { compile_multilib: \"both\",  }, },\n\trequired: [],\n\tmin_sdk_version: \"apex_inherit\", stl: \"none\", apex_available: [\"//apex_available:anyapex\",\"//apex_available:platform\",], \n\tprefer: true,\n\tstrip: { none: true, },\n}" >> prebuiltlibs/external/libcxxabi/Android.bp
+        echo "\n" >> prebuiltlibs/external/libcxxabi/Android.bp
+        popd
+    - name: Archive external_libcxxabi-0
+      uses: actions/upload-artifact@v3
+      with:
+        name: external_libcxxabi-0
+        path: aosp/prebuiltlibs/external/libcxxabi
+  external_zstd-0:
+    runs-on: ubuntu-22.04
+    needs: [external_libcxx-0,external_libcxxabi-0]
+    steps:
+
+    - name: Restore Cache build
+      id: build
+      uses: actions/cache@v3
+      with:
+        path: "aosp/build"
+        key: "build@$BRANCH"
+        restore-keys: "build@$BRANCH"
+    - name: Clone project build
+      if: steps.build.outputs.cache-hit != 'true'
+      run: |
+        export ROOTDIR=$(pwd)
+        source $ROOTDIR/envsetup.sh
+        clone_depth_platform build
+        mv build make && mkdir build && mv make build/
+        sed -i 's/^PRODUCT_EXTRA_VNDK_VERSIONS/#PRODUCT_EXTRA_VNDK_VERSIONS/g' build/make/target/product/gsi_release.mk
+    - name: Save Cache build
+      uses: actions/cache@v3
+      with:
+        path: "aosp/build"
+        key: "build@$BRANCH"
+        store-keys: "build@$BRANCH"
+    - name: Restore Cache build/blueprint
+      id: build_blueprint
+      uses: actions/cache@v3
+      with:
+        path: "aosp/build/blueprint"
+        key: "build_blueprint@$BRANCH"
+        restore-keys: "build_blueprint@$BRANCH"
+    - name: Clone project build/blueprint
+      if: steps.build_blueprint.outputs.cache-hit != 'true'
+      run: |
+        export ROOTDIR=$(pwd)
+        source $ROOTDIR/envsetup.sh
+        clone_depth_platform build/blueprint
+    - name: Save Cache build/blueprint
+      uses: actions/cache@v3
+      with:
+        path: "aosp/build/blueprint"
+        key: "build_blueprint@$BRANCH"
+        store-keys: "build_blueprint@$BRANCH"
+    - name: Restore Cache build/soong
+      id: build_soong
+      uses: actions/cache@v3
+      with:
+        path: "aosp/build/soong"
+        key: "build_soong@$BRANCH"
+        restore-keys: "build_soong@$BRANCH"
+    - name: Clone project build/soong
+      if: steps.build_soong.outputs.cache-hit != 'true'
+      run: |
+        export ROOTDIR=$(pwd)
+        source $ROOTDIR/envsetup.sh
+        clone_depth_platform build/soong
+    - name: Save Cache build/soong
+      uses: actions/cache@v3
+      with:
+        path: "aosp/build/soong"
+        key: "build_soong@$BRANCH"
+        store-keys: "build_soong@$BRANCH"
+    - name: Restore Cache bionic
+      id: bionic
+      uses: actions/cache@v3
+      with:
+        path: "aosp/bionic"
+        key: "bionic@$BRANCH"
+        restore-keys: "bionic@$BRANCH"
+    - name: Clone project bionic
+      if: steps.bionic.outputs.cache-hit != 'true'
+      run: |
+        export ROOTDIR=$(pwd)
+        source $ROOTDIR/envsetup.sh
+        clone_depth_platform bionic
+    - name: Save Cache bionic
+      uses: actions/cache@v3
+      with:
+        path: "aosp/bionic"
+        key: "bionic@$BRANCH"
+        store-keys: "bionic@$BRANCH"
+    - name: Restore Cache external/golang-protobuf
+      id: external_golang-protobuf
+      uses: actions/cache@v3
+      with:
+        path: "aosp/external/golang-protobuf"
+        key: "external_golang-protobuf@$BRANCH"
+        restore-keys: "external_golang-protobuf@$BRANCH"
+    - name: Clone project external/golang-protobuf
+      if: steps.external_golang-protobuf.outputs.cache-hit != 'true'
+      run: |
+        export ROOTDIR=$(pwd)
+        source $ROOTDIR/envsetup.sh
+        clone_depth_platform external/golang-protobuf
+    - name: Save Cache external/golang-protobuf
+      uses: actions/cache@v3
+      with:
+        path: "aosp/external/golang-protobuf"
+        key: "external_golang-protobuf@$BRANCH"
+        store-keys: "external_golang-protobuf@$BRANCH"
+    - name: Restore Cache external/starlark-go
+      id: external_starlark-go
+      uses: actions/cache@v3
+      with:
+        path: "aosp/external/starlark-go"
+        key: "external_starlark-go@$BRANCH"
+        restore-keys: "external_starlark-go@$BRANCH"
+    - name: Clone project external/starlark-go
+      if: steps.external_starlark-go.outputs.cache-hit != 'true'
+      run: |
+        export ROOTDIR=$(pwd)
+        source $ROOTDIR/envsetup.sh
+        clone_depth_platform external/starlark-go
+    - name: Save Cache external/starlark-go
+      uses: actions/cache@v3
+      with:
+        path: "aosp/external/starlark-go"
+        key: "external_starlark-go@$BRANCH"
+        store-keys: "external_starlark-go@$BRANCH"
+    - name: Restore Cache system/core
+      id: system_core
+      uses: actions/cache@v3
+      with:
+        path: "aosp/system/core"
+        key: "system_core@$BRANCH"
+        restore-keys: "system_core@$BRANCH"
+    - name: Clone project system/core
+      if: steps.system_core.outputs.cache-hit != 'true'
+      run: |
+        export ROOTDIR=$(pwd)
+        source $ROOTDIR/envsetup.sh
+        clone_depth_platform system/core
+    - name: Save Cache system/core
+      uses: actions/cache@v3
+      with:
+        path: "aosp/system/core"
+        key: "system_core@$BRANCH"
+        store-keys: "system_core@$BRANCH"
+    - name: Restore Cache system/libbase
+      id: system_libbase
+      uses: actions/cache@v3
+      with:
+        path: "aosp/system/libbase"
+        key: "system_libbase@$BRANCH"
+        restore-keys: "system_libbase@$BRANCH"
+    - name: Clone project system/libbase
+      if: steps.system_libbase.outputs.cache-hit != 'true'
+      run: |
+        export ROOTDIR=$(pwd)
+        source $ROOTDIR/envsetup.sh
+        clone_depth_platform system/libbase
+    - name: Save Cache system/libbase
+      uses: actions/cache@v3
+      with:
+        path: "aosp/system/libbase"
+        key: "system_libbase@$BRANCH"
+        store-keys: "system_libbase@$BRANCH"
+    - name: Restore Cache system/logging
+      id: system_logging
+      uses: actions/cache@v3
+      with:
+        path: "aosp/system/logging"
+        key: "system_logging@$BRANCH"
+        restore-keys: "system_logging@$BRANCH"
+    - name: Clone project system/logging
+      if: steps.system_logging.outputs.cache-hit != 'true'
+      run: |
+        export ROOTDIR=$(pwd)
+        source $ROOTDIR/envsetup.sh
+        clone_depth_platform system/logging
+    - name: Save Cache system/logging
+      uses: actions/cache@v3
+      with:
+        path: "aosp/system/logging"
+        key: "system_logging@$BRANCH"
+        store-keys: "system_logging@$BRANCH"
+    - name: Restore Cache system/sepolicy
+      id: system_sepolicy
+      uses: actions/cache@v3
+      with:
+        path: "aosp/system/sepolicy"
+        key: "system_sepolicy@$BRANCH"
+        restore-keys: "system_sepolicy@$BRANCH"
+    - name: Clone project system/sepolicy
+      if: steps.system_sepolicy.outputs.cache-hit != 'true'
+      run: |
+        export ROOTDIR=$(pwd)
+        source $ROOTDIR/envsetup.sh
+        clone_depth_platform system/sepolicy
+    - name: Save Cache system/sepolicy
+      uses: actions/cache@v3
+      with:
+        path: "aosp/system/sepolicy"
+        key: "system_sepolicy@$BRANCH"
+        store-keys: "system_sepolicy@$BRANCH"
+    - name: Restore Cache kernel/config
+      id: kernel_config
+      uses: actions/cache@v3
+      with:
+        path: "aosp/kernel/config"
+        key: "kernel_config@$BRANCH"
+        restore-keys: "kernel_config@$BRANCH"
+    - name: Clone project kernel/config
+      if: steps.kernel_config.outputs.cache-hit != 'true'
+      run: |
+        export ROOTDIR=$(pwd)
+        source $ROOTDIR/envsetup.sh
+        clone_depth kernel/config
+    - name: Save Cache kernel/config
+      uses: actions/cache@v3
+      with:
+        path: "aosp/kernel/config"
+        key: "kernel_config@$BRANCH"
+        store-keys: "kernel_config@$BRANCH"
+    - name: Copy and Link
+      run: |
+        export ROOTDIR=$(pwd)
+        pushd aosp
+        cp build/make/core/root.mk Makefile
+        ln -sf make/CleanSpec.mk build/ && ln -sf make/core build/
+        ln -sf make/target build/ && ln -sf make/tools build/
+        ln -sf build/soong/root.bp Android.bp
+        popd
+    - name: Download get_clang_version.py and Link go
+      run: |
+        export ROOTDIR=$(pwd)
+        pushd aosp
+        curl "https://android.googlesource.com/platform/build/soong/+/refs/heads/master/scripts/get_clang_version.py?format=TEXT" | base64 -d > $ROOTDIR/get_clang_version.py
+        mkdir -p prebuilts/go && touch prebuilts/go/.out-dir
+        ln -sf $GOROOT_1_19_X64 prebuilts/go/linux-x86
+        popd
+    - name: Restore Cache prebuilts/build-tools
+      id: prebuilts_build-tools
+      uses: actions/cache@v3
+      with:
+        path: "aosp/prebuilts/build-tools"
+        key: "prebuilts_build-tools@$BRANCH"
+        restore-keys: "prebuilts_build-tools@$BRANCH"
+    - name: Clone project prebuilts/build-tools
+      if: steps.prebuilts_build-tools.outputs.cache-hit != 'true'
+      run: |
+        export ROOTDIR=$(pwd)
+        source $ROOTDIR/envsetup.sh
+        clone_sparse prebuilts/build-tools linux-x86/bin linux-x86/lib64 path common
+    - name: Save Cache prebuilts/build-tools
+      uses: actions/cache@v3
+      with:
+        path: "aosp/prebuilts/build-tools"
+        key: "prebuilts_build-tools@$BRANCH"
+        store-keys: "prebuilts_build-tools@$BRANCH"
+    - name: Restore Cache prebuilts/clang-tools
+      id: prebuilts_clang-tools
+      uses: actions/cache@v3
+      with:
+        path: "aosp/prebuilts/clang-tools"
+        key: "prebuilts_clang-tools@$BRANCH"
+        restore-keys: "prebuilts_clang-tools@$BRANCH"
+    - name: Clone project prebuilts/clang-tools
+      if: steps.prebuilts_clang-tools.outputs.cache-hit != 'true'
+      run: |
+        export ROOTDIR=$(pwd)
+        source $ROOTDIR/envsetup.sh
+        clone_sparse prebuilts/clang-tools linux-x86/bin linux-x86/lib64/clang
+    - name: Save Cache prebuilts/clang-tools
+      uses: actions/cache@v3
+      with:
+        path: "aosp/prebuilts/clang-tools"
+        key: "prebuilts_clang-tools@$BRANCH"
+        store-keys: "prebuilts_clang-tools@$BRANCH"
+    - name: Restore Cache prebuilts/clang/host/linux-x86
+      id: prebuilts_clang_host_linux-x86
+      uses: actions/cache@v3
+      with:
+        path: "aosp/prebuilts/clang/host/linux-x86"
+        key: "prebuilts_clang_host_linux-x86@$BRANCH"
+        restore-keys: "prebuilts_clang_host_linux-x86@$BRANCH"
+    - name: Clone project prebuilts/clang/host/linux-x86
+      if: steps.prebuilts_clang_host_linux-x86.outputs.cache-hit != 'true'
+      run: |
+        export ROOTDIR=$(pwd)
+        source $ROOTDIR/envsetup.sh
+        clone_sparse prebuilts/clang/host/linux-x86 $(python ${ROOTDIR}/get_clang_version.py) soong
+    - name: Save Cache prebuilts/clang/host/linux-x86
+      uses: actions/cache@v3
+      with:
+        path: "aosp/prebuilts/clang/host/linux-x86"
+        key: "prebuilts_clang_host_linux-x86@$BRANCH"
+        store-keys: "prebuilts_clang_host_linux-x86@$BRANCH"
+
+    - name: Restore Cache external/libcxx
+      id: external_libcxx
+      uses: actions/cache@v3
+      with:
+        path: "aosp/external/libcxx"
+        key: "external_libcxx@$BRANCH"
+        restore-keys: "external_libcxx@$BRANCH"
+    - name: Clone project external/libcxx
+      if: steps.external_libcxx.outputs.cache-hit != 'true'
+      run: |
+        export ROOTDIR=$(pwd)
+        source $ROOTDIR/envsetup.sh
+        clone_depth_platform external/libcxx
+    - name: Save Cache external/libcxx
+      uses: actions/cache@v3
+      with:
+        path: "aosp/external/libcxx"
+        key: "external_libcxx@$BRANCH"
+        store-keys: "external_libcxx@$BRANCH"
+    - name: Restore Cache external/libcxxabi
+      id: external_libcxxabi
+      uses: actions/cache@v3
+      with:
+        path: "aosp/external/libcxxabi"
+        key: "external_libcxxabi@$BRANCH"
+        restore-keys: "external_libcxxabi@$BRANCH"
+    - name: Clone project external/libcxxabi
+      if: steps.external_libcxxabi.outputs.cache-hit != 'true'
+      run: |
+        export ROOTDIR=$(pwd)
+        source $ROOTDIR/envsetup.sh
+        clone_depth_platform external/libcxxabi
+    - name: Save Cache external/libcxxabi
+      uses: actions/cache@v3
+      with:
+        path: "aosp/external/libcxxabi"
+        key: "external_libcxxabi@$BRANCH"
+        store-keys: "external_libcxxabi@$BRANCH"
+    - name: Download artifact external/libcxx#0
+      uses: actions/download-artifact@v3
+      with:
+        name: external/libcxx#0
+    - name: Download artifact external/libcxxabi#0
+      uses: actions/download-artifact@v3
+      with:
+        name: external/libcxxabi#0
+    - name: Restore Cache external/zstd
+      id: external_zstd
+      uses: actions/cache@v3
+      with:
+        path: "aosp/external/zstd"
+        key: "external_zstd@$BRANCH"
+        restore-keys: "external_zstd@$BRANCH"
+    - name: Clone project external/zstd
+      if: steps.external_zstd.outputs.cache-hit != 'true'
+      run: |
+        export ROOTDIR=$(pwd)
+        source $ROOTDIR/envsetup.sh
+        clone_depth_platform external/zstd
+    - name: Save Cache external/zstd
+      uses: actions/cache@v3
+      with:
+        path: "aosp/external/zstd"
+        key: "external_zstd@$BRANCH"
+        store-keys: "external_zstd@$BRANCH"
+    - name: Start Soong
+      run: |
+        export ROOTDIR=$(pwd)
+        pushd aosp
+        export TOP=$(pwd)
+        mkdir -p out/soong/.minibootstrap out/soong/.bootstrap/bin
+        ln -sf $ROOTDIR/soong_build out/soong/.bootstrap/bin
+        ln -sf $ROOTDIR/bpglob out/soong/.minibootstrap
+        cp $ROOTDIR/ckati prebuilts/build-tools/linux-x86/bin
+        GOROOT=$TOP/prebuilts/go/linux-x86 $ROOTDIR/soong_ui --make-mode --skip-soong-tests --skip-write-modules -j1 TARGET_PRODUCT=aosp_x86_64 TARGET_BUILD_VARIANT=eng ALLOW_MISSING_DEPENDENCIES=true BUILD_BROKEN_DISABLE_BAZEL=1 nothing
+        popd
+    - name: build target external_zstd-0
+      run: |
+        export ROOTDIR=$(pwd)
+        pushd aosp
+        export TOP=$(pwd)
+        $TOP/prebuilts/build-tools/linux-x86/bin/ninja -f out/combined-aosp_x86_64.ninja out/soong/.intermediates/external/zstd/libzstd/android_recovery_x86_64_static/libzstd.a out/soong/.intermediates/external/zstd/libzstd/android_x86_64_static/libzstd.a out/soong/.intermediates/external/zstd/libzstd/android_x86_64_static_apex10000/libzstd.a out/soong/.intermediates/external/zstd/libzstd/android_x86_64_static_cfi_lto-thin/libzstd.a
+        popd
+    - name: copy target external_zstd-0
+      run: |
+        export ROOTDIR=$(pwd)
+        export TOP=$(pwd)
+        pushd aosp
+        mkdir -p prebuiltlibs/external/zstd/android_recovery_x86_64_static/ && cp out/soong/.intermediates/external/zstd/libzstd/android_recovery_x86_64_static/libzstd.a prebuiltlibs/external/zstd/android_recovery_x86_64_static/
+        mkdir -p prebuiltlibs/external/zstd/android_x86_64_static/ && cp out/soong/.intermediates/external/zstd/libzstd/android_x86_64_static/libzstd.a prebuiltlibs/external/zstd/android_x86_64_static/
+        mkdir -p prebuiltlibs/external/zstd/android_x86_64_static_apex10000/ && cp out/soong/.intermediates/external/zstd/libzstd/android_x86_64_static_apex10000/libzstd.a prebuiltlibs/external/zstd/android_x86_64_static_apex10000/
+        mkdir -p prebuiltlibs/external/zstd/android_x86_64_static_cfi_lto-thin/ && cp out/soong/.intermediates/external/zstd/libzstd/android_x86_64_static_cfi_lto-thin/libzstd.a prebuiltlibs/external/zstd/android_x86_64_static_cfi_lto-thin/
+        cp -r out/soong/ninja/external/zstd prebuiltlibs/external/zstd/external_zstd-0
+        grep '|external/zstd' out/soong/module-info.txt >> prebuiltlibs/external/zstd/MODULES
+        du -ad1 external/zstd | sort -rnk1 > prebuiltlibs/external/zstd/.SIZE
+        popd
+    - name: write Android.bp external_zstd-0
+      run: |
+        export ROOTDIR=$(pwd)
+        export TOP=$(pwd)
+        pushd aosp
+        echo "cc_prebuilt_library {\n\tname: \"libzstd\",\n\tdevice_supported: true,\n\thost_supported: false,\n\tvendor_available: false,\n\trecovery_available: true,\n\tandroid_recovery_x86_64_static: \"android_recovery_x86_64_static/libzstd.a\",\n\tandroid_x86_64_static: \"android_x86_64_static/libzstd.a\",\n\tandroid_x86_64_static_apex10000: \"android_x86_64_static_apex10000/libzstd.a\",\n\tandroid_x86_64_static_cfi_lto_thin: \"android_x86_64_static_cfi_lto-thin/libzstd.a\",\n\tsrcs: [\"android_recovery_x86_64_static/libzstd.a\"],\n\ttarget: { android: { compile_multilib: \"64\",  }, },\n\trequired: [],\n\tapex_available: [\"//apex_available:platform\",\"com.android.adbd\",], \n\tprefer: true,\n\tstrip: { none: true, },\n}" >> prebuiltlibs/external/zstd/Android.bp
+        echo "\n" >> prebuiltlibs/external/zstd/Android.bp
+        popd
+    - name: Archive external_zstd-0
+      uses: actions/upload-artifact@v3
+      with:
+        name: external_zstd-0
+        path: aosp/prebuiltlibs/external/zstd
