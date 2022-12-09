@@ -24,12 +24,6 @@ jobs:
         clone_depth_platform build
         mv build make && mkdir build && mv make build/
         sed -i 's/^PRODUCT_EXTRA_VNDK_VERSIONS/#PRODUCT_EXTRA_VNDK_VERSIONS/g' build/make/target/product/gsi_release.mk
-    - name: Save Cache build
-      uses: actions/cache@v3
-      with:
-        path: "aosp/build"
-        key: "build@$BRANCH"
-        store-keys: "build@$BRANCH"
     - name: Restore Cache build/blueprint
       id: build_blueprint
       uses: actions/cache@v3
@@ -43,12 +37,6 @@ jobs:
         export ROOTDIR=$(pwd)
         source $ROOTDIR/envsetup.sh
         clone_depth_platform build/blueprint
-    - name: Save Cache build/blueprint
-      uses: actions/cache@v3
-      with:
-        path: "aosp/build/blueprint"
-        key: "build_blueprint@$BRANCH"
-        store-keys: "build_blueprint@$BRANCH"
     - name: Restore Cache build/soong
       id: build_soong
       uses: actions/cache@v3
@@ -62,12 +50,6 @@ jobs:
         export ROOTDIR=$(pwd)
         source $ROOTDIR/envsetup.sh
         clone_depth_platform build/soong
-    - name: Save Cache build/soong
-      uses: actions/cache@v3
-      with:
-        path: "aosp/build/soong"
-        key: "build_soong@$BRANCH"
-        store-keys: "build_soong@$BRANCH"
     - name: Restore Cache bionic
       id: bionic
       uses: actions/cache@v3
@@ -81,12 +63,6 @@ jobs:
         export ROOTDIR=$(pwd)
         source $ROOTDIR/envsetup.sh
         clone_depth_platform bionic
-    - name: Save Cache bionic
-      uses: actions/cache@v3
-      with:
-        path: "aosp/bionic"
-        key: "bionic@$BRANCH"
-        store-keys: "bionic@$BRANCH"
     - name: Restore Cache external/golang-protobuf
       id: external_golang-protobuf
       uses: actions/cache@v3
@@ -100,12 +76,6 @@ jobs:
         export ROOTDIR=$(pwd)
         source $ROOTDIR/envsetup.sh
         clone_depth_platform external/golang-protobuf
-    - name: Save Cache external/golang-protobuf
-      uses: actions/cache@v3
-      with:
-        path: "aosp/external/golang-protobuf"
-        key: "external_golang-protobuf@$BRANCH"
-        store-keys: "external_golang-protobuf@$BRANCH"
     - name: Restore Cache external/starlark-go
       id: external_starlark-go
       uses: actions/cache@v3
@@ -119,12 +89,6 @@ jobs:
         export ROOTDIR=$(pwd)
         source $ROOTDIR/envsetup.sh
         clone_depth_platform external/starlark-go
-    - name: Save Cache external/starlark-go
-      uses: actions/cache@v3
-      with:
-        path: "aosp/external/starlark-go"
-        key: "external_starlark-go@$BRANCH"
-        store-keys: "external_starlark-go@$BRANCH"
     - name: Restore Cache system/core
       id: system_core
       uses: actions/cache@v3
@@ -138,12 +102,6 @@ jobs:
         export ROOTDIR=$(pwd)
         source $ROOTDIR/envsetup.sh
         clone_depth_platform system/core
-    - name: Save Cache system/core
-      uses: actions/cache@v3
-      with:
-        path: "aosp/system/core"
-        key: "system_core@$BRANCH"
-        store-keys: "system_core@$BRANCH"
     - name: Restore Cache system/libbase
       id: system_libbase
       uses: actions/cache@v3
@@ -157,12 +115,6 @@ jobs:
         export ROOTDIR=$(pwd)
         source $ROOTDIR/envsetup.sh
         clone_depth_platform system/libbase
-    - name: Save Cache system/libbase
-      uses: actions/cache@v3
-      with:
-        path: "aosp/system/libbase"
-        key: "system_libbase@$BRANCH"
-        store-keys: "system_libbase@$BRANCH"
     - name: Restore Cache system/logging
       id: system_logging
       uses: actions/cache@v3
@@ -176,12 +128,6 @@ jobs:
         export ROOTDIR=$(pwd)
         source $ROOTDIR/envsetup.sh
         clone_depth_platform system/logging
-    - name: Save Cache system/logging
-      uses: actions/cache@v3
-      with:
-        path: "aosp/system/logging"
-        key: "system_logging@$BRANCH"
-        store-keys: "system_logging@$BRANCH"
     - name: Restore Cache system/sepolicy
       id: system_sepolicy
       uses: actions/cache@v3
@@ -195,12 +141,6 @@ jobs:
         export ROOTDIR=$(pwd)
         source $ROOTDIR/envsetup.sh
         clone_depth_platform system/sepolicy
-    - name: Save Cache system/sepolicy
-      uses: actions/cache@v3
-      with:
-        path: "aosp/system/sepolicy"
-        key: "system_sepolicy@$BRANCH"
-        store-keys: "system_sepolicy@$BRANCH"
     - name: Restore Cache kernel/configs
       id: kernel_configs
       uses: actions/cache@v3
@@ -214,12 +154,6 @@ jobs:
         export ROOTDIR=$(pwd)
         source $ROOTDIR/envsetup.sh
         clone_depth kernel/configs
-    - name: Save Cache kernel/configs
-      uses: actions/cache@v3
-      with:
-        path: "aosp/kernel/configs"
-        key: "kernel_configs@$BRANCH"
-        store-keys: "kernel_configs@$BRANCH"
     - name: Copy and Link
       run: |
         export ROOTDIR=$(pwd)
@@ -250,12 +184,6 @@ jobs:
         export ROOTDIR=$(pwd)
         source $ROOTDIR/envsetup.sh
         clone_sparse prebuilts/build-tools linux-x86/bin linux-x86/lib64 path common
-    - name: Save Cache prebuilts/build-tools
-      uses: actions/cache@v3
-      with:
-        path: "aosp/prebuilts/build-tools"
-        key: "prebuilts_build-tools@$BRANCH"
-        store-keys: "prebuilts_build-tools@$BRANCH"
     - name: Restore Cache prebuilts/clang-tools
       id: prebuilts_clang-tools
       uses: actions/cache@v3
@@ -269,12 +197,6 @@ jobs:
         export ROOTDIR=$(pwd)
         source $ROOTDIR/envsetup.sh
         clone_sparse prebuilts/clang-tools linux-x86/bin linux-x86/lib64/clang
-    - name: Save Cache prebuilts/clang-tools
-      uses: actions/cache@v3
-      with:
-        path: "aosp/prebuilts/clang-tools"
-        key: "prebuilts_clang-tools@$BRANCH"
-        store-keys: "prebuilts_clang-tools@$BRANCH"
     - name: Restore Cache prebuilts/clang/host/linux-x86
       id: prebuilts_clang_host_linux-x86
       uses: actions/cache@v3
@@ -288,12 +210,6 @@ jobs:
         export ROOTDIR=$(pwd)
         source $ROOTDIR/envsetup.sh
         clone_sparse prebuilts/clang/host/linux-x86 $(python ${ROOTDIR}/get_clang_version.py) soong
-    - name: Save Cache prebuilts/clang/host/linux-x86
-      uses: actions/cache@v3
-      with:
-        path: "aosp/prebuilts/clang/host/linux-x86"
-        key: "prebuilts_clang_host_linux-x86@$BRANCH"
-        store-keys: "prebuilts_clang_host_linux-x86@$BRANCH"
 
     - name: Restore Cache external/libcxx
       id: external_libcxx
@@ -308,12 +224,6 @@ jobs:
         export ROOTDIR=$(pwd)
         source $ROOTDIR/envsetup.sh
         clone_depth_platform external/libcxx
-    - name: Save Cache external/libcxx
-      uses: actions/cache@v3
-      with:
-        path: "aosp/external/libcxx"
-        key: "external_libcxx@$BRANCH"
-        store-keys: "external_libcxx@$BRANCH"
     - name: Start Soong
       run: |
         export ROOTDIR=$(pwd)
@@ -421,12 +331,6 @@ jobs:
         clone_depth_platform build
         mv build make && mkdir build && mv make build/
         sed -i 's/^PRODUCT_EXTRA_VNDK_VERSIONS/#PRODUCT_EXTRA_VNDK_VERSIONS/g' build/make/target/product/gsi_release.mk
-    - name: Save Cache build
-      uses: actions/cache@v3
-      with:
-        path: "aosp/build"
-        key: "build@$BRANCH"
-        store-keys: "build@$BRANCH"
     - name: Restore Cache build/blueprint
       id: build_blueprint
       uses: actions/cache@v3
@@ -440,12 +344,6 @@ jobs:
         export ROOTDIR=$(pwd)
         source $ROOTDIR/envsetup.sh
         clone_depth_platform build/blueprint
-    - name: Save Cache build/blueprint
-      uses: actions/cache@v3
-      with:
-        path: "aosp/build/blueprint"
-        key: "build_blueprint@$BRANCH"
-        store-keys: "build_blueprint@$BRANCH"
     - name: Restore Cache build/soong
       id: build_soong
       uses: actions/cache@v3
@@ -459,12 +357,6 @@ jobs:
         export ROOTDIR=$(pwd)
         source $ROOTDIR/envsetup.sh
         clone_depth_platform build/soong
-    - name: Save Cache build/soong
-      uses: actions/cache@v3
-      with:
-        path: "aosp/build/soong"
-        key: "build_soong@$BRANCH"
-        store-keys: "build_soong@$BRANCH"
     - name: Restore Cache bionic
       id: bionic
       uses: actions/cache@v3
@@ -478,12 +370,6 @@ jobs:
         export ROOTDIR=$(pwd)
         source $ROOTDIR/envsetup.sh
         clone_depth_platform bionic
-    - name: Save Cache bionic
-      uses: actions/cache@v3
-      with:
-        path: "aosp/bionic"
-        key: "bionic@$BRANCH"
-        store-keys: "bionic@$BRANCH"
     - name: Restore Cache external/golang-protobuf
       id: external_golang-protobuf
       uses: actions/cache@v3
@@ -497,12 +383,6 @@ jobs:
         export ROOTDIR=$(pwd)
         source $ROOTDIR/envsetup.sh
         clone_depth_platform external/golang-protobuf
-    - name: Save Cache external/golang-protobuf
-      uses: actions/cache@v3
-      with:
-        path: "aosp/external/golang-protobuf"
-        key: "external_golang-protobuf@$BRANCH"
-        store-keys: "external_golang-protobuf@$BRANCH"
     - name: Restore Cache external/starlark-go
       id: external_starlark-go
       uses: actions/cache@v3
@@ -516,12 +396,6 @@ jobs:
         export ROOTDIR=$(pwd)
         source $ROOTDIR/envsetup.sh
         clone_depth_platform external/starlark-go
-    - name: Save Cache external/starlark-go
-      uses: actions/cache@v3
-      with:
-        path: "aosp/external/starlark-go"
-        key: "external_starlark-go@$BRANCH"
-        store-keys: "external_starlark-go@$BRANCH"
     - name: Restore Cache system/core
       id: system_core
       uses: actions/cache@v3
@@ -535,12 +409,6 @@ jobs:
         export ROOTDIR=$(pwd)
         source $ROOTDIR/envsetup.sh
         clone_depth_platform system/core
-    - name: Save Cache system/core
-      uses: actions/cache@v3
-      with:
-        path: "aosp/system/core"
-        key: "system_core@$BRANCH"
-        store-keys: "system_core@$BRANCH"
     - name: Restore Cache system/libbase
       id: system_libbase
       uses: actions/cache@v3
@@ -554,12 +422,6 @@ jobs:
         export ROOTDIR=$(pwd)
         source $ROOTDIR/envsetup.sh
         clone_depth_platform system/libbase
-    - name: Save Cache system/libbase
-      uses: actions/cache@v3
-      with:
-        path: "aosp/system/libbase"
-        key: "system_libbase@$BRANCH"
-        store-keys: "system_libbase@$BRANCH"
     - name: Restore Cache system/logging
       id: system_logging
       uses: actions/cache@v3
@@ -573,12 +435,6 @@ jobs:
         export ROOTDIR=$(pwd)
         source $ROOTDIR/envsetup.sh
         clone_depth_platform system/logging
-    - name: Save Cache system/logging
-      uses: actions/cache@v3
-      with:
-        path: "aosp/system/logging"
-        key: "system_logging@$BRANCH"
-        store-keys: "system_logging@$BRANCH"
     - name: Restore Cache system/sepolicy
       id: system_sepolicy
       uses: actions/cache@v3
@@ -592,12 +448,6 @@ jobs:
         export ROOTDIR=$(pwd)
         source $ROOTDIR/envsetup.sh
         clone_depth_platform system/sepolicy
-    - name: Save Cache system/sepolicy
-      uses: actions/cache@v3
-      with:
-        path: "aosp/system/sepolicy"
-        key: "system_sepolicy@$BRANCH"
-        store-keys: "system_sepolicy@$BRANCH"
     - name: Restore Cache kernel/configs
       id: kernel_configs
       uses: actions/cache@v3
@@ -611,12 +461,6 @@ jobs:
         export ROOTDIR=$(pwd)
         source $ROOTDIR/envsetup.sh
         clone_depth kernel/configs
-    - name: Save Cache kernel/configs
-      uses: actions/cache@v3
-      with:
-        path: "aosp/kernel/configs"
-        key: "kernel_configs@$BRANCH"
-        store-keys: "kernel_configs@$BRANCH"
     - name: Copy and Link
       run: |
         export ROOTDIR=$(pwd)
@@ -647,12 +491,6 @@ jobs:
         export ROOTDIR=$(pwd)
         source $ROOTDIR/envsetup.sh
         clone_sparse prebuilts/build-tools linux-x86/bin linux-x86/lib64 path common
-    - name: Save Cache prebuilts/build-tools
-      uses: actions/cache@v3
-      with:
-        path: "aosp/prebuilts/build-tools"
-        key: "prebuilts_build-tools@$BRANCH"
-        store-keys: "prebuilts_build-tools@$BRANCH"
     - name: Restore Cache prebuilts/clang-tools
       id: prebuilts_clang-tools
       uses: actions/cache@v3
@@ -666,12 +504,6 @@ jobs:
         export ROOTDIR=$(pwd)
         source $ROOTDIR/envsetup.sh
         clone_sparse prebuilts/clang-tools linux-x86/bin linux-x86/lib64/clang
-    - name: Save Cache prebuilts/clang-tools
-      uses: actions/cache@v3
-      with:
-        path: "aosp/prebuilts/clang-tools"
-        key: "prebuilts_clang-tools@$BRANCH"
-        store-keys: "prebuilts_clang-tools@$BRANCH"
     - name: Restore Cache prebuilts/clang/host/linux-x86
       id: prebuilts_clang_host_linux-x86
       uses: actions/cache@v3
@@ -685,12 +517,6 @@ jobs:
         export ROOTDIR=$(pwd)
         source $ROOTDIR/envsetup.sh
         clone_sparse prebuilts/clang/host/linux-x86 $(python ${ROOTDIR}/get_clang_version.py) soong
-    - name: Save Cache prebuilts/clang/host/linux-x86
-      uses: actions/cache@v3
-      with:
-        path: "aosp/prebuilts/clang/host/linux-x86"
-        key: "prebuilts_clang_host_linux-x86@$BRANCH"
-        store-keys: "prebuilts_clang_host_linux-x86@$BRANCH"
 
     - name: Restore Cache external/libcxxabi
       id: external_libcxxabi
@@ -705,12 +531,6 @@ jobs:
         export ROOTDIR=$(pwd)
         source $ROOTDIR/envsetup.sh
         clone_depth_platform external/libcxxabi
-    - name: Save Cache external/libcxxabi
-      uses: actions/cache@v3
-      with:
-        path: "aosp/external/libcxxabi"
-        key: "external_libcxxabi@$BRANCH"
-        store-keys: "external_libcxxabi@$BRANCH"
     - name: Start Soong
       run: |
         export ROOTDIR=$(pwd)
@@ -820,12 +640,6 @@ jobs:
         clone_depth_platform build
         mv build make && mkdir build && mv make build/
         sed -i 's/^PRODUCT_EXTRA_VNDK_VERSIONS/#PRODUCT_EXTRA_VNDK_VERSIONS/g' build/make/target/product/gsi_release.mk
-    - name: Save Cache build
-      uses: actions/cache@v3
-      with:
-        path: "aosp/build"
-        key: "build@$BRANCH"
-        store-keys: "build@$BRANCH"
     - name: Restore Cache build/blueprint
       id: build_blueprint
       uses: actions/cache@v3
@@ -839,12 +653,6 @@ jobs:
         export ROOTDIR=$(pwd)
         source $ROOTDIR/envsetup.sh
         clone_depth_platform build/blueprint
-    - name: Save Cache build/blueprint
-      uses: actions/cache@v3
-      with:
-        path: "aosp/build/blueprint"
-        key: "build_blueprint@$BRANCH"
-        store-keys: "build_blueprint@$BRANCH"
     - name: Restore Cache build/soong
       id: build_soong
       uses: actions/cache@v3
@@ -858,12 +666,6 @@ jobs:
         export ROOTDIR=$(pwd)
         source $ROOTDIR/envsetup.sh
         clone_depth_platform build/soong
-    - name: Save Cache build/soong
-      uses: actions/cache@v3
-      with:
-        path: "aosp/build/soong"
-        key: "build_soong@$BRANCH"
-        store-keys: "build_soong@$BRANCH"
     - name: Restore Cache bionic
       id: bionic
       uses: actions/cache@v3
@@ -877,12 +679,6 @@ jobs:
         export ROOTDIR=$(pwd)
         source $ROOTDIR/envsetup.sh
         clone_depth_platform bionic
-    - name: Save Cache bionic
-      uses: actions/cache@v3
-      with:
-        path: "aosp/bionic"
-        key: "bionic@$BRANCH"
-        store-keys: "bionic@$BRANCH"
     - name: Restore Cache external/golang-protobuf
       id: external_golang-protobuf
       uses: actions/cache@v3
@@ -896,12 +692,6 @@ jobs:
         export ROOTDIR=$(pwd)
         source $ROOTDIR/envsetup.sh
         clone_depth_platform external/golang-protobuf
-    - name: Save Cache external/golang-protobuf
-      uses: actions/cache@v3
-      with:
-        path: "aosp/external/golang-protobuf"
-        key: "external_golang-protobuf@$BRANCH"
-        store-keys: "external_golang-protobuf@$BRANCH"
     - name: Restore Cache external/starlark-go
       id: external_starlark-go
       uses: actions/cache@v3
@@ -915,12 +705,6 @@ jobs:
         export ROOTDIR=$(pwd)
         source $ROOTDIR/envsetup.sh
         clone_depth_platform external/starlark-go
-    - name: Save Cache external/starlark-go
-      uses: actions/cache@v3
-      with:
-        path: "aosp/external/starlark-go"
-        key: "external_starlark-go@$BRANCH"
-        store-keys: "external_starlark-go@$BRANCH"
     - name: Restore Cache system/core
       id: system_core
       uses: actions/cache@v3
@@ -934,12 +718,6 @@ jobs:
         export ROOTDIR=$(pwd)
         source $ROOTDIR/envsetup.sh
         clone_depth_platform system/core
-    - name: Save Cache system/core
-      uses: actions/cache@v3
-      with:
-        path: "aosp/system/core"
-        key: "system_core@$BRANCH"
-        store-keys: "system_core@$BRANCH"
     - name: Restore Cache system/libbase
       id: system_libbase
       uses: actions/cache@v3
@@ -953,12 +731,6 @@ jobs:
         export ROOTDIR=$(pwd)
         source $ROOTDIR/envsetup.sh
         clone_depth_platform system/libbase
-    - name: Save Cache system/libbase
-      uses: actions/cache@v3
-      with:
-        path: "aosp/system/libbase"
-        key: "system_libbase@$BRANCH"
-        store-keys: "system_libbase@$BRANCH"
     - name: Restore Cache system/logging
       id: system_logging
       uses: actions/cache@v3
@@ -972,12 +744,6 @@ jobs:
         export ROOTDIR=$(pwd)
         source $ROOTDIR/envsetup.sh
         clone_depth_platform system/logging
-    - name: Save Cache system/logging
-      uses: actions/cache@v3
-      with:
-        path: "aosp/system/logging"
-        key: "system_logging@$BRANCH"
-        store-keys: "system_logging@$BRANCH"
     - name: Restore Cache system/sepolicy
       id: system_sepolicy
       uses: actions/cache@v3
@@ -991,12 +757,6 @@ jobs:
         export ROOTDIR=$(pwd)
         source $ROOTDIR/envsetup.sh
         clone_depth_platform system/sepolicy
-    - name: Save Cache system/sepolicy
-      uses: actions/cache@v3
-      with:
-        path: "aosp/system/sepolicy"
-        key: "system_sepolicy@$BRANCH"
-        store-keys: "system_sepolicy@$BRANCH"
     - name: Restore Cache kernel/configs
       id: kernel_configs
       uses: actions/cache@v3
@@ -1010,12 +770,6 @@ jobs:
         export ROOTDIR=$(pwd)
         source $ROOTDIR/envsetup.sh
         clone_depth kernel/configs
-    - name: Save Cache kernel/configs
-      uses: actions/cache@v3
-      with:
-        path: "aosp/kernel/configs"
-        key: "kernel_configs@$BRANCH"
-        store-keys: "kernel_configs@$BRANCH"
     - name: Copy and Link
       run: |
         export ROOTDIR=$(pwd)
@@ -1046,12 +800,6 @@ jobs:
         export ROOTDIR=$(pwd)
         source $ROOTDIR/envsetup.sh
         clone_sparse prebuilts/build-tools linux-x86/bin linux-x86/lib64 path common
-    - name: Save Cache prebuilts/build-tools
-      uses: actions/cache@v3
-      with:
-        path: "aosp/prebuilts/build-tools"
-        key: "prebuilts_build-tools@$BRANCH"
-        store-keys: "prebuilts_build-tools@$BRANCH"
     - name: Restore Cache prebuilts/clang-tools
       id: prebuilts_clang-tools
       uses: actions/cache@v3
@@ -1065,12 +813,6 @@ jobs:
         export ROOTDIR=$(pwd)
         source $ROOTDIR/envsetup.sh
         clone_sparse prebuilts/clang-tools linux-x86/bin linux-x86/lib64/clang
-    - name: Save Cache prebuilts/clang-tools
-      uses: actions/cache@v3
-      with:
-        path: "aosp/prebuilts/clang-tools"
-        key: "prebuilts_clang-tools@$BRANCH"
-        store-keys: "prebuilts_clang-tools@$BRANCH"
     - name: Restore Cache prebuilts/clang/host/linux-x86
       id: prebuilts_clang_host_linux-x86
       uses: actions/cache@v3
@@ -1084,12 +826,6 @@ jobs:
         export ROOTDIR=$(pwd)
         source $ROOTDIR/envsetup.sh
         clone_sparse prebuilts/clang/host/linux-x86 $(python ${ROOTDIR}/get_clang_version.py) soong
-    - name: Save Cache prebuilts/clang/host/linux-x86
-      uses: actions/cache@v3
-      with:
-        path: "aosp/prebuilts/clang/host/linux-x86"
-        key: "prebuilts_clang_host_linux-x86@$BRANCH"
-        store-keys: "prebuilts_clang_host_linux-x86@$BRANCH"
 
     - name: Restore Cache external/libcxx
       id: external_libcxx
@@ -1104,12 +840,6 @@ jobs:
         export ROOTDIR=$(pwd)
         source $ROOTDIR/envsetup.sh
         clone_depth_platform external/libcxx
-    - name: Save Cache external/libcxx
-      uses: actions/cache@v3
-      with:
-        path: "aosp/external/libcxx"
-        key: "external_libcxx@$BRANCH"
-        store-keys: "external_libcxx@$BRANCH"
     - name: Restore Cache external/libcxxabi
       id: external_libcxxabi
       uses: actions/cache@v3
@@ -1123,12 +853,6 @@ jobs:
         export ROOTDIR=$(pwd)
         source $ROOTDIR/envsetup.sh
         clone_depth_platform external/libcxxabi
-    - name: Save Cache external/libcxxabi
-      uses: actions/cache@v3
-      with:
-        path: "aosp/external/libcxxabi"
-        key: "external_libcxxabi@$BRANCH"
-        store-keys: "external_libcxxabi@$BRANCH"
     - name: Download artifact external/libcxx#0
       uses: actions/download-artifact@v3
       with:
@@ -1150,12 +874,6 @@ jobs:
         export ROOTDIR=$(pwd)
         source $ROOTDIR/envsetup.sh
         clone_depth_platform external/zstd
-    - name: Save Cache external/zstd
-      uses: actions/cache@v3
-      with:
-        path: "aosp/external/zstd"
-        key: "external_zstd@$BRANCH"
-        store-keys: "external_zstd@$BRANCH"
     - name: Start Soong
       run: |
         export ROOTDIR=$(pwd)
