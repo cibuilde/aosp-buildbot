@@ -20,6 +20,7 @@ jobs:
       if: steps.build.outputs.cache-hit != 'true'
       run: |
         export ROOTDIR=$(pwd)
+        mkdir -p aosp && pushd aosp
         source $ROOTDIR/envsetup.sh
         clone_depth_platform build
         mv build make && mkdir build && mv make build/
@@ -35,6 +36,7 @@ jobs:
       if: steps.build_blueprint.outputs.cache-hit != 'true'
       run: |
         export ROOTDIR=$(pwd)
+        mkdir -p aosp && pushd aosp
         source $ROOTDIR/envsetup.sh
         clone_depth_platform build/blueprint
     - name: Restore Cache build/soong
@@ -48,6 +50,7 @@ jobs:
       if: steps.build_soong.outputs.cache-hit != 'true'
       run: |
         export ROOTDIR=$(pwd)
+        mkdir -p aosp && pushd aosp
         source $ROOTDIR/envsetup.sh
         clone_depth_platform build/soong
     - name: Restore Cache bionic
@@ -61,6 +64,7 @@ jobs:
       if: steps.bionic.outputs.cache-hit != 'true'
       run: |
         export ROOTDIR=$(pwd)
+        mkdir -p aosp && pushd aosp
         source $ROOTDIR/envsetup.sh
         clone_depth_platform bionic
     - name: Restore Cache external/golang-protobuf
@@ -74,6 +78,7 @@ jobs:
       if: steps.external_golang-protobuf.outputs.cache-hit != 'true'
       run: |
         export ROOTDIR=$(pwd)
+        mkdir -p aosp && pushd aosp
         source $ROOTDIR/envsetup.sh
         clone_depth_platform external/golang-protobuf
     - name: Restore Cache external/starlark-go
@@ -87,6 +92,7 @@ jobs:
       if: steps.external_starlark-go.outputs.cache-hit != 'true'
       run: |
         export ROOTDIR=$(pwd)
+        mkdir -p aosp && pushd aosp
         source $ROOTDIR/envsetup.sh
         clone_depth_platform external/starlark-go
     - name: Restore Cache system/core
@@ -100,6 +106,7 @@ jobs:
       if: steps.system_core.outputs.cache-hit != 'true'
       run: |
         export ROOTDIR=$(pwd)
+        mkdir -p aosp && pushd aosp
         source $ROOTDIR/envsetup.sh
         clone_depth_platform system/core
     - name: Restore Cache system/libbase
@@ -113,6 +120,7 @@ jobs:
       if: steps.system_libbase.outputs.cache-hit != 'true'
       run: |
         export ROOTDIR=$(pwd)
+        mkdir -p aosp && pushd aosp
         source $ROOTDIR/envsetup.sh
         clone_depth_platform system/libbase
     - name: Restore Cache system/logging
@@ -126,6 +134,7 @@ jobs:
       if: steps.system_logging.outputs.cache-hit != 'true'
       run: |
         export ROOTDIR=$(pwd)
+        mkdir -p aosp && pushd aosp
         source $ROOTDIR/envsetup.sh
         clone_depth_platform system/logging
     - name: Restore Cache system/sepolicy
@@ -139,6 +148,7 @@ jobs:
       if: steps.system_sepolicy.outputs.cache-hit != 'true'
       run: |
         export ROOTDIR=$(pwd)
+        mkdir -p aosp && pushd aosp
         source $ROOTDIR/envsetup.sh
         clone_depth_platform system/sepolicy
     - name: Restore Cache kernel/configs
@@ -152,6 +162,7 @@ jobs:
       if: steps.kernel_configs.outputs.cache-hit != 'true'
       run: |
         export ROOTDIR=$(pwd)
+        mkdir -p aosp && pushd aosp
         source $ROOTDIR/envsetup.sh
         clone_depth kernel/configs
     - name: Copy and Link
@@ -182,6 +193,7 @@ jobs:
       if: steps.prebuilts_build-tools.outputs.cache-hit != 'true'
       run: |
         export ROOTDIR=$(pwd)
+        mkdir -p aosp && pushd aosp
         source $ROOTDIR/envsetup.sh
         clone_sparse prebuilts/build-tools linux-x86/bin linux-x86/lib64 path common
     - name: Restore Cache prebuilts/clang-tools
@@ -195,6 +207,7 @@ jobs:
       if: steps.prebuilts_clang-tools.outputs.cache-hit != 'true'
       run: |
         export ROOTDIR=$(pwd)
+        mkdir -p aosp && pushd aosp
         source $ROOTDIR/envsetup.sh
         clone_sparse prebuilts/clang-tools linux-x86/bin linux-x86/lib64/clang
     - name: Restore Cache prebuilts/clang/host/linux-x86
@@ -208,6 +221,7 @@ jobs:
       if: steps.prebuilts_clang_host_linux-x86.outputs.cache-hit != 'true'
       run: |
         export ROOTDIR=$(pwd)
+        mkdir -p aosp && pushd aosp
         source $ROOTDIR/envsetup.sh
         clone_sparse prebuilts/clang/host/linux-x86 $(python ${ROOTDIR}/get_clang_version.py) soong
 
@@ -222,6 +236,7 @@ jobs:
       if: steps.external_libcxx.outputs.cache-hit != 'true'
       run: |
         export ROOTDIR=$(pwd)
+        mkdir -p aosp && pushd aosp
         source $ROOTDIR/envsetup.sh
         clone_depth_platform external/libcxx
     - name: Start Soong
@@ -327,6 +342,7 @@ jobs:
       if: steps.build.outputs.cache-hit != 'true'
       run: |
         export ROOTDIR=$(pwd)
+        mkdir -p aosp && pushd aosp
         source $ROOTDIR/envsetup.sh
         clone_depth_platform build
         mv build make && mkdir build && mv make build/
@@ -342,6 +358,7 @@ jobs:
       if: steps.build_blueprint.outputs.cache-hit != 'true'
       run: |
         export ROOTDIR=$(pwd)
+        mkdir -p aosp && pushd aosp
         source $ROOTDIR/envsetup.sh
         clone_depth_platform build/blueprint
     - name: Restore Cache build/soong
@@ -355,6 +372,7 @@ jobs:
       if: steps.build_soong.outputs.cache-hit != 'true'
       run: |
         export ROOTDIR=$(pwd)
+        mkdir -p aosp && pushd aosp
         source $ROOTDIR/envsetup.sh
         clone_depth_platform build/soong
     - name: Restore Cache bionic
@@ -368,6 +386,7 @@ jobs:
       if: steps.bionic.outputs.cache-hit != 'true'
       run: |
         export ROOTDIR=$(pwd)
+        mkdir -p aosp && pushd aosp
         source $ROOTDIR/envsetup.sh
         clone_depth_platform bionic
     - name: Restore Cache external/golang-protobuf
@@ -381,6 +400,7 @@ jobs:
       if: steps.external_golang-protobuf.outputs.cache-hit != 'true'
       run: |
         export ROOTDIR=$(pwd)
+        mkdir -p aosp && pushd aosp
         source $ROOTDIR/envsetup.sh
         clone_depth_platform external/golang-protobuf
     - name: Restore Cache external/starlark-go
@@ -394,6 +414,7 @@ jobs:
       if: steps.external_starlark-go.outputs.cache-hit != 'true'
       run: |
         export ROOTDIR=$(pwd)
+        mkdir -p aosp && pushd aosp
         source $ROOTDIR/envsetup.sh
         clone_depth_platform external/starlark-go
     - name: Restore Cache system/core
@@ -407,6 +428,7 @@ jobs:
       if: steps.system_core.outputs.cache-hit != 'true'
       run: |
         export ROOTDIR=$(pwd)
+        mkdir -p aosp && pushd aosp
         source $ROOTDIR/envsetup.sh
         clone_depth_platform system/core
     - name: Restore Cache system/libbase
@@ -420,6 +442,7 @@ jobs:
       if: steps.system_libbase.outputs.cache-hit != 'true'
       run: |
         export ROOTDIR=$(pwd)
+        mkdir -p aosp && pushd aosp
         source $ROOTDIR/envsetup.sh
         clone_depth_platform system/libbase
     - name: Restore Cache system/logging
@@ -433,6 +456,7 @@ jobs:
       if: steps.system_logging.outputs.cache-hit != 'true'
       run: |
         export ROOTDIR=$(pwd)
+        mkdir -p aosp && pushd aosp
         source $ROOTDIR/envsetup.sh
         clone_depth_platform system/logging
     - name: Restore Cache system/sepolicy
@@ -446,6 +470,7 @@ jobs:
       if: steps.system_sepolicy.outputs.cache-hit != 'true'
       run: |
         export ROOTDIR=$(pwd)
+        mkdir -p aosp && pushd aosp
         source $ROOTDIR/envsetup.sh
         clone_depth_platform system/sepolicy
     - name: Restore Cache kernel/configs
@@ -459,6 +484,7 @@ jobs:
       if: steps.kernel_configs.outputs.cache-hit != 'true'
       run: |
         export ROOTDIR=$(pwd)
+        mkdir -p aosp && pushd aosp
         source $ROOTDIR/envsetup.sh
         clone_depth kernel/configs
     - name: Copy and Link
@@ -489,6 +515,7 @@ jobs:
       if: steps.prebuilts_build-tools.outputs.cache-hit != 'true'
       run: |
         export ROOTDIR=$(pwd)
+        mkdir -p aosp && pushd aosp
         source $ROOTDIR/envsetup.sh
         clone_sparse prebuilts/build-tools linux-x86/bin linux-x86/lib64 path common
     - name: Restore Cache prebuilts/clang-tools
@@ -502,6 +529,7 @@ jobs:
       if: steps.prebuilts_clang-tools.outputs.cache-hit != 'true'
       run: |
         export ROOTDIR=$(pwd)
+        mkdir -p aosp && pushd aosp
         source $ROOTDIR/envsetup.sh
         clone_sparse prebuilts/clang-tools linux-x86/bin linux-x86/lib64/clang
     - name: Restore Cache prebuilts/clang/host/linux-x86
@@ -515,6 +543,7 @@ jobs:
       if: steps.prebuilts_clang_host_linux-x86.outputs.cache-hit != 'true'
       run: |
         export ROOTDIR=$(pwd)
+        mkdir -p aosp && pushd aosp
         source $ROOTDIR/envsetup.sh
         clone_sparse prebuilts/clang/host/linux-x86 $(python ${ROOTDIR}/get_clang_version.py) soong
 
@@ -529,6 +558,7 @@ jobs:
       if: steps.external_libcxxabi.outputs.cache-hit != 'true'
       run: |
         export ROOTDIR=$(pwd)
+        mkdir -p aosp && pushd aosp
         source $ROOTDIR/envsetup.sh
         clone_depth_platform external/libcxxabi
     - name: Start Soong
@@ -636,6 +666,7 @@ jobs:
       if: steps.build.outputs.cache-hit != 'true'
       run: |
         export ROOTDIR=$(pwd)
+        mkdir -p aosp && pushd aosp
         source $ROOTDIR/envsetup.sh
         clone_depth_platform build
         mv build make && mkdir build && mv make build/
@@ -651,6 +682,7 @@ jobs:
       if: steps.build_blueprint.outputs.cache-hit != 'true'
       run: |
         export ROOTDIR=$(pwd)
+        mkdir -p aosp && pushd aosp
         source $ROOTDIR/envsetup.sh
         clone_depth_platform build/blueprint
     - name: Restore Cache build/soong
@@ -664,6 +696,7 @@ jobs:
       if: steps.build_soong.outputs.cache-hit != 'true'
       run: |
         export ROOTDIR=$(pwd)
+        mkdir -p aosp && pushd aosp
         source $ROOTDIR/envsetup.sh
         clone_depth_platform build/soong
     - name: Restore Cache bionic
@@ -677,6 +710,7 @@ jobs:
       if: steps.bionic.outputs.cache-hit != 'true'
       run: |
         export ROOTDIR=$(pwd)
+        mkdir -p aosp && pushd aosp
         source $ROOTDIR/envsetup.sh
         clone_depth_platform bionic
     - name: Restore Cache external/golang-protobuf
@@ -690,6 +724,7 @@ jobs:
       if: steps.external_golang-protobuf.outputs.cache-hit != 'true'
       run: |
         export ROOTDIR=$(pwd)
+        mkdir -p aosp && pushd aosp
         source $ROOTDIR/envsetup.sh
         clone_depth_platform external/golang-protobuf
     - name: Restore Cache external/starlark-go
@@ -703,6 +738,7 @@ jobs:
       if: steps.external_starlark-go.outputs.cache-hit != 'true'
       run: |
         export ROOTDIR=$(pwd)
+        mkdir -p aosp && pushd aosp
         source $ROOTDIR/envsetup.sh
         clone_depth_platform external/starlark-go
     - name: Restore Cache system/core
@@ -716,6 +752,7 @@ jobs:
       if: steps.system_core.outputs.cache-hit != 'true'
       run: |
         export ROOTDIR=$(pwd)
+        mkdir -p aosp && pushd aosp
         source $ROOTDIR/envsetup.sh
         clone_depth_platform system/core
     - name: Restore Cache system/libbase
@@ -729,6 +766,7 @@ jobs:
       if: steps.system_libbase.outputs.cache-hit != 'true'
       run: |
         export ROOTDIR=$(pwd)
+        mkdir -p aosp && pushd aosp
         source $ROOTDIR/envsetup.sh
         clone_depth_platform system/libbase
     - name: Restore Cache system/logging
@@ -742,6 +780,7 @@ jobs:
       if: steps.system_logging.outputs.cache-hit != 'true'
       run: |
         export ROOTDIR=$(pwd)
+        mkdir -p aosp && pushd aosp
         source $ROOTDIR/envsetup.sh
         clone_depth_platform system/logging
     - name: Restore Cache system/sepolicy
@@ -755,6 +794,7 @@ jobs:
       if: steps.system_sepolicy.outputs.cache-hit != 'true'
       run: |
         export ROOTDIR=$(pwd)
+        mkdir -p aosp && pushd aosp
         source $ROOTDIR/envsetup.sh
         clone_depth_platform system/sepolicy
     - name: Restore Cache kernel/configs
@@ -768,6 +808,7 @@ jobs:
       if: steps.kernel_configs.outputs.cache-hit != 'true'
       run: |
         export ROOTDIR=$(pwd)
+        mkdir -p aosp && pushd aosp
         source $ROOTDIR/envsetup.sh
         clone_depth kernel/configs
     - name: Copy and Link
@@ -798,6 +839,7 @@ jobs:
       if: steps.prebuilts_build-tools.outputs.cache-hit != 'true'
       run: |
         export ROOTDIR=$(pwd)
+        mkdir -p aosp && pushd aosp
         source $ROOTDIR/envsetup.sh
         clone_sparse prebuilts/build-tools linux-x86/bin linux-x86/lib64 path common
     - name: Restore Cache prebuilts/clang-tools
@@ -811,6 +853,7 @@ jobs:
       if: steps.prebuilts_clang-tools.outputs.cache-hit != 'true'
       run: |
         export ROOTDIR=$(pwd)
+        mkdir -p aosp && pushd aosp
         source $ROOTDIR/envsetup.sh
         clone_sparse prebuilts/clang-tools linux-x86/bin linux-x86/lib64/clang
     - name: Restore Cache prebuilts/clang/host/linux-x86
@@ -824,6 +867,7 @@ jobs:
       if: steps.prebuilts_clang_host_linux-x86.outputs.cache-hit != 'true'
       run: |
         export ROOTDIR=$(pwd)
+        mkdir -p aosp && pushd aosp
         source $ROOTDIR/envsetup.sh
         clone_sparse prebuilts/clang/host/linux-x86 $(python ${ROOTDIR}/get_clang_version.py) soong
 
@@ -838,6 +882,7 @@ jobs:
       if: steps.external_libcxx.outputs.cache-hit != 'true'
       run: |
         export ROOTDIR=$(pwd)
+        mkdir -p aosp && pushd aosp
         source $ROOTDIR/envsetup.sh
         clone_depth_platform external/libcxx
     - name: Restore Cache external/libcxxabi
@@ -851,6 +896,7 @@ jobs:
       if: steps.external_libcxxabi.outputs.cache-hit != 'true'
       run: |
         export ROOTDIR=$(pwd)
+        mkdir -p aosp && pushd aosp
         source $ROOTDIR/envsetup.sh
         clone_depth_platform external/libcxxabi
     - name: Download artifact external/libcxx#0
@@ -872,6 +918,7 @@ jobs:
       if: steps.external_zstd.outputs.cache-hit != 'true'
       run: |
         export ROOTDIR=$(pwd)
+        mkdir -p aosp && pushd aosp
         source $ROOTDIR/envsetup.sh
         clone_depth_platform external/zstd
     - name: Start Soong
