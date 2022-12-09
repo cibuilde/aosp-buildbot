@@ -6,6 +6,8 @@ jobs:
   external_libcxx-0:
     runs-on: ubuntu-22.04
     steps:
+    - name: Checkout
+      uses: actions/checkout@main
 
     - name: Restore Cache build
       id: build
@@ -401,6 +403,8 @@ jobs:
   external_libcxxabi-0:
     runs-on: ubuntu-22.04
     steps:
+    - name: Checkout
+      uses: actions/checkout@main
 
     - name: Restore Cache build
       id: build
@@ -798,6 +802,8 @@ jobs:
     runs-on: ubuntu-22.04
     needs: [external_libcxx-0,external_libcxxabi-0]
     steps:
+    - name: Checkout
+      uses: actions/checkout@main
 
     - name: Restore Cache build
       id: build
