@@ -253,6 +253,20 @@ jobs:
         mkdir -p aosp && pushd aosp
         source $ROOTDIR/envsetup.sh
         clone_sparse prebuilts/clang/host/linux-x86 $(python ${ROOTDIR}/get_clang_version.py) soong
+    - name: Restore Cache prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8
+      id: prebuilts_gcc_linux-x86_host_x86_64-linux-glibc2_17-4_8
+      uses: actions/cache@v3
+      with:
+        path: "aosp/prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8"
+        key: "prebuilts_gcc_linux-x86_host_x86_64-linux-glibc2_17-4_8@$BRANCH"
+        restore-keys: "prebuilts_gcc_linux-x86_host_x86_64-linux-glibc2_17-4_8@$BRANCH"
+    - name: Clone project prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8
+      if: steps.prebuilts_gcc_linux-x86_host_x86_64-linux-glibc2_17-4_8.outputs.cache-hit != 'true'
+      run: |
+        export ROOTDIR=$(pwd)
+        mkdir -p aosp && pushd aosp
+        source $ROOTDIR/envsetup.sh
+        clone_sparse prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8 sysroot lib/gcc/x86_64-linux/4.8.3 x86_64-linux/lib64
     - name: Restore Cache prebuilts/ndk
       id: prebuilts_ndk
       uses: actions/cache@v3
@@ -389,6 +403,13 @@ jobs:
         path: "aosp/prebuilts/clang/host/linux-x86"
         key: "prebuilts_clang_host_linux-x86@$BRANCH"
         restore-keys: "prebuilts_clang_host_linux-x86@$BRANCH"
+    - name: Restore Cache prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8
+      id: prebuilts_gcc_linux-x86_host_x86_64-linux-glibc2_17-4_8
+      uses: actions/cache@v3
+      with:
+        path: "aosp/prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8"
+        key: "prebuilts_gcc_linux-x86_host_x86_64-linux-glibc2_17-4_8@$BRANCH"
+        restore-keys: "prebuilts_gcc_linux-x86_host_x86_64-linux-glibc2_17-4_8@$BRANCH"
     - name: Restore Cache prebuilts/ndk
       id: prebuilts_ndk
       uses: actions/cache@v3
@@ -678,6 +699,13 @@ jobs:
         path: "aosp/prebuilts/clang/host/linux-x86"
         key: "prebuilts_clang_host_linux-x86@$BRANCH"
         restore-keys: "prebuilts_clang_host_linux-x86@$BRANCH"
+    - name: Restore Cache prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8
+      id: prebuilts_gcc_linux-x86_host_x86_64-linux-glibc2_17-4_8
+      uses: actions/cache@v3
+      with:
+        path: "aosp/prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8"
+        key: "prebuilts_gcc_linux-x86_host_x86_64-linux-glibc2_17-4_8@$BRANCH"
+        restore-keys: "prebuilts_gcc_linux-x86_host_x86_64-linux-glibc2_17-4_8@$BRANCH"
     - name: Restore Cache prebuilts/ndk
       id: prebuilts_ndk
       uses: actions/cache@v3
@@ -1026,6 +1054,13 @@ jobs:
         path: "aosp/prebuilts/clang/host/linux-x86"
         key: "prebuilts_clang_host_linux-x86@$BRANCH"
         restore-keys: "prebuilts_clang_host_linux-x86@$BRANCH"
+    - name: Restore Cache prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8
+      id: prebuilts_gcc_linux-x86_host_x86_64-linux-glibc2_17-4_8
+      uses: actions/cache@v3
+      with:
+        path: "aosp/prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8"
+        key: "prebuilts_gcc_linux-x86_host_x86_64-linux-glibc2_17-4_8@$BRANCH"
+        restore-keys: "prebuilts_gcc_linux-x86_host_x86_64-linux-glibc2_17-4_8@$BRANCH"
     - name: Restore Cache prebuilts/ndk
       id: prebuilts_ndk
       uses: actions/cache@v3
@@ -1387,6 +1422,13 @@ jobs:
         path: "aosp/prebuilts/clang/host/linux-x86"
         key: "prebuilts_clang_host_linux-x86@$BRANCH"
         restore-keys: "prebuilts_clang_host_linux-x86@$BRANCH"
+    - name: Restore Cache prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8
+      id: prebuilts_gcc_linux-x86_host_x86_64-linux-glibc2_17-4_8
+      uses: actions/cache@v3
+      with:
+        path: "aosp/prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8"
+        key: "prebuilts_gcc_linux-x86_host_x86_64-linux-glibc2_17-4_8@$BRANCH"
+        restore-keys: "prebuilts_gcc_linux-x86_host_x86_64-linux-glibc2_17-4_8@$BRANCH"
     - name: Restore Cache prebuilts/ndk
       id: prebuilts_ndk
       uses: actions/cache@v3
