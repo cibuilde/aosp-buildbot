@@ -1054,6 +1054,11 @@ jobs:
       with:
         name: external_scudo-0
         path: aosp/prebuiltlibs/external/scudo
+    - name: Download artifact external_arm-optimized-routines-0
+      uses: actions/download-artifact@v3
+      with:
+        name: external_arm-optimized-routines-0
+        path: aosp/prebuiltlibs/external/arm-optimized-routines
     - name: Restore Cache external/libcxx
       id: external_libcxx
       uses: actions/cache@v3
@@ -1434,6 +1439,11 @@ jobs:
       with:
         name: external_scudo-0
         path: aosp/prebuiltlibs/external/scudo
+    - name: Download artifact external_arm-optimized-routines-0
+      uses: actions/download-artifact@v3
+      with:
+        name: external_arm-optimized-routines-0
+        path: aosp/prebuiltlibs/external/arm-optimized-routines
     - name: Restore Cache external/zstd
       id: external_zstd
       uses: actions/cache@v3
