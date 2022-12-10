@@ -1037,11 +1037,6 @@ jobs:
         mkdir -p prebuilts/go && touch prebuilts/go/.out-dir
         ln -sf $GOROOT_1_19_X64 prebuilts/go/linux-x86
         popd
-    - name: Download artifact bionic-0
-      uses: actions/download-artifact@v3
-      with:
-        name: bionic-0
-        path: aosp/prebuiltlibs/bionic
     - name: Restore Cache external/libcxx
       id: external_libcxx
       uses: actions/cache@v3
@@ -1056,11 +1051,6 @@ jobs:
         mkdir -p aosp && pushd aosp
         source $ROOTDIR/envsetup.sh
         clone_depth_platform external/libcxx
-    - name: Download artifact bionic-0
-      uses: actions/download-artifact@v3
-      with:
-        name: bionic-0
-        path: aosp/prebuiltlibs/bionic
     - name: Restore Cache external/libcxxabi
       id: external_libcxxabi
       uses: actions/cache@v3
@@ -1410,11 +1400,6 @@ jobs:
       with:
         name: external_libcxxabi-0
         path: aosp/prebuiltlibs/external/libcxxabi
-    - name: Download artifact bionic-0
-      uses: actions/download-artifact@v3
-      with:
-        name: bionic-0
-        path: aosp/prebuiltlibs/bionic
     - name: Restore Cache external/zstd
       id: external_zstd
       uses: actions/cache@v3
