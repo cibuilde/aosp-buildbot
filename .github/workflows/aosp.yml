@@ -259,6 +259,9 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@main
+    - uses: actions/setup-python@v4
+      with:
+        python-version: "2.7"
 
     - name: Restore Cache build/make
       id: build_make
@@ -552,6 +555,9 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@main
+    - uses: actions/setup-python@v4
+      with:
+        python-version: "2.7"
 
     - name: Restore Cache build/make
       id: build_make
@@ -904,6 +910,9 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@main
+    - uses: actions/setup-python@v4
+      with:
+        python-version: "2.7"
 
     - name: Restore Cache build/make
       id: build_make
@@ -1236,6 +1245,9 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@main
+    - uses: actions/setup-python@v4
+      with:
+        python-version: "2.7"
 
     - name: Restore Cache build/make
       id: build_make
