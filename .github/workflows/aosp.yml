@@ -527,7 +527,7 @@ jobs:
         path: aosp/prebuiltlibs/external/arm-optimized-routines
   build_step_1:
     runs-on: ubuntu-22.04
-    needs: [build_step_0,build_step_undefined,clone_bootstrap,clone_prebuilts]
+    needs: [build_step_0,clone_bootstrap,clone_prebuilts]
     steps:
     - name: Checkout
       uses: actions/checkout@main
@@ -698,10 +698,6 @@ jobs:
       uses: actions/download-artifact@v3
       with:
         name: external_scudo-0
-    - name: Download artifact bionic-0
-      uses: actions/download-artifact@v3
-      with:
-        name: bionic-0
     - name: Download artifact external_arm-optimized-routines-0
       uses: actions/download-artifact@v3
       with:
