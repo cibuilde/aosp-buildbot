@@ -66,6 +66,20 @@ jobs:
         mkdir -p aosp && pushd aosp
         source $ROOTDIR/envsetup.sh
         clone_depth_platform bionic
+    - name: Restore Cache external/gwp_asan
+      id: external_gwp_asan
+      uses: actions/cache@v3
+      with:
+        path: "aosp/external/gwp_asan"
+        key: "external_gwp_asan@$BRANCH"
+        restore-keys: "external_gwp_asan@$BRANCH"
+    - name: Clone project external/gwp_asan
+      if: steps.external_gwp_asan.outputs.cache-hit != 'true'
+      run: |
+        export ROOTDIR=$(pwd)
+        mkdir -p aosp && pushd aosp
+        source $ROOTDIR/envsetup.sh
+        clone_depth_platform external/gwp_asan
     - name: Restore Cache external/golang-protobuf
       id: external_golang-protobuf
       uses: actions/cache@v3
@@ -291,6 +305,13 @@ jobs:
         path: "aosp/bionic"
         key: "bionic@$BRANCH"
         restore-keys: "bionic@$BRANCH"
+    - name: Restore Cache external/gwp_asan
+      id: external_gwp_asan
+      uses: actions/cache@v3
+      with:
+        path: "aosp/external/gwp_asan"
+        key: "external_gwp_asan@$BRANCH"
+        restore-keys: "external_gwp_asan@$BRANCH"
     - name: Restore Cache external/golang-protobuf
       id: external_golang-protobuf
       uses: actions/cache@v3
@@ -386,20 +407,6 @@ jobs:
         mkdir -p prebuilts/go && touch prebuilts/go/.out-dir
         ln -sf $GOROOT_1_19_X64 prebuilts/go/linux-x86
         popd
-    - name: Restore Cache external/gwp_asan
-      id: external_gwp_asan
-      uses: actions/cache@v3
-      with:
-        path: "aosp/external/gwp_asan"
-        key: "external_gwp_asan@$BRANCH"
-        restore-keys: "external_gwp_asan@$BRANCH"
-    - name: Clone project external/gwp_asan
-      if: steps.external_gwp_asan.outputs.cache-hit != 'true'
-      run: |
-        export ROOTDIR=$(pwd)
-        mkdir -p aosp && pushd aosp
-        source $ROOTDIR/envsetup.sh
-        clone_depth_platform external/gwp_asan
     - name: Restore Cache external/scudo
       id: external_scudo
       uses: actions/cache@v3
@@ -587,6 +594,13 @@ jobs:
         path: "aosp/bionic"
         key: "bionic@$BRANCH"
         restore-keys: "bionic@$BRANCH"
+    - name: Restore Cache external/gwp_asan
+      id: external_gwp_asan
+      uses: actions/cache@v3
+      with:
+        path: "aosp/external/gwp_asan"
+        key: "external_gwp_asan@$BRANCH"
+        restore-keys: "external_gwp_asan@$BRANCH"
     - name: Restore Cache external/golang-protobuf
       id: external_golang-protobuf
       uses: actions/cache@v3
@@ -682,20 +696,6 @@ jobs:
         mkdir -p prebuilts/go && touch prebuilts/go/.out-dir
         ln -sf $GOROOT_1_19_X64 prebuilts/go/linux-x86
         popd
-    - name: Restore Cache external/gwp_asan
-      id: external_gwp_asan
-      uses: actions/cache@v3
-      with:
-        path: "aosp/external/gwp_asan"
-        key: "external_gwp_asan@$BRANCH"
-        restore-keys: "external_gwp_asan@$BRANCH"
-    - name: Clone project external/gwp_asan
-      if: steps.external_gwp_asan.outputs.cache-hit != 'true'
-      run: |
-        export ROOTDIR=$(pwd)
-        mkdir -p aosp && pushd aosp
-        source $ROOTDIR/envsetup.sh
-        clone_depth_platform external/gwp_asan
     - name: Restore Cache external/scudo
       id: external_scudo
       uses: actions/cache@v3
@@ -942,6 +942,13 @@ jobs:
         path: "aosp/bionic"
         key: "bionic@$BRANCH"
         restore-keys: "bionic@$BRANCH"
+    - name: Restore Cache external/gwp_asan
+      id: external_gwp_asan
+      uses: actions/cache@v3
+      with:
+        path: "aosp/external/gwp_asan"
+        key: "external_gwp_asan@$BRANCH"
+        restore-keys: "external_gwp_asan@$BRANCH"
     - name: Restore Cache external/golang-protobuf
       id: external_golang-protobuf
       uses: actions/cache@v3
@@ -1037,6 +1044,16 @@ jobs:
         mkdir -p prebuilts/go && touch prebuilts/go/.out-dir
         ln -sf $GOROOT_1_19_X64 prebuilts/go/linux-x86
         popd
+    - name: Download artifact external_gwp_asan-0
+      uses: actions/download-artifact@v3
+      with:
+        name: external_gwp_asan-0
+        path: aosp/prebuiltlibs/external/gwp_asan
+    - name: Download artifact external_scudo-0
+      uses: actions/download-artifact@v3
+      with:
+        name: external_scudo-0
+        path: aosp/prebuiltlibs/external/scudo
     - name: Restore Cache external/libcxx
       id: external_libcxx
       uses: actions/cache@v3
@@ -1267,6 +1284,13 @@ jobs:
         path: "aosp/bionic"
         key: "bionic@$BRANCH"
         restore-keys: "bionic@$BRANCH"
+    - name: Restore Cache external/gwp_asan
+      id: external_gwp_asan
+      uses: actions/cache@v3
+      with:
+        path: "aosp/external/gwp_asan"
+        key: "external_gwp_asan@$BRANCH"
+        restore-keys: "external_gwp_asan@$BRANCH"
     - name: Restore Cache external/golang-protobuf
       id: external_golang-protobuf
       uses: actions/cache@v3
@@ -1400,6 +1424,16 @@ jobs:
       with:
         name: external_libcxxabi-0
         path: aosp/prebuiltlibs/external/libcxxabi
+    - name: Download artifact external_gwp_asan-0
+      uses: actions/download-artifact@v3
+      with:
+        name: external_gwp_asan-0
+        path: aosp/prebuiltlibs/external/gwp_asan
+    - name: Download artifact external_scudo-0
+      uses: actions/download-artifact@v3
+      with:
+        name: external_scudo-0
+        path: aosp/prebuiltlibs/external/scudo
     - name: Restore Cache external/zstd
       id: external_zstd
       uses: actions/cache@v3
