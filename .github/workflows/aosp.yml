@@ -66,6 +66,20 @@ jobs:
         mkdir -p aosp && pushd aosp
         source $ROOTDIR/envsetup.sh
         clone_depth_platform bionic
+    - name: Restore Cache external/compiler-rt
+      id: external_compiler-rt
+      uses: actions/cache@v3
+      with:
+        path: "aosp/external/compiler-rt"
+        key: "external_compiler-rt@$BRANCH"
+        restore-keys: "external_compiler-rt@$BRANCH"
+    - name: Clone project external/compiler-rt
+      if: steps.external_compiler-rt.outputs.cache-hit != 'true'
+      run: |
+        export ROOTDIR=$(pwd)
+        mkdir -p aosp && pushd aosp
+        source $ROOTDIR/envsetup.sh
+        clone_depth_platform external/compiler-rt
     - name: Restore Cache external/gwp_asan
       id: external_gwp_asan
       uses: actions/cache@v3
@@ -319,6 +333,13 @@ jobs:
         path: "aosp/bionic"
         key: "bionic@$BRANCH"
         restore-keys: "bionic@$BRANCH"
+    - name: Restore Cache external/compiler-rt
+      id: external_compiler-rt
+      uses: actions/cache@v3
+      with:
+        path: "aosp/external/compiler-rt"
+        key: "external_compiler-rt@$BRANCH"
+        restore-keys: "external_compiler-rt@$BRANCH"
     - name: Restore Cache external/gwp_asan
       id: external_gwp_asan
       uses: actions/cache@v3
@@ -615,6 +636,13 @@ jobs:
         path: "aosp/bionic"
         key: "bionic@$BRANCH"
         restore-keys: "bionic@$BRANCH"
+    - name: Restore Cache external/compiler-rt
+      id: external_compiler-rt
+      uses: actions/cache@v3
+      with:
+        path: "aosp/external/compiler-rt"
+        key: "external_compiler-rt@$BRANCH"
+        restore-keys: "external_compiler-rt@$BRANCH"
     - name: Restore Cache external/gwp_asan
       id: external_gwp_asan
       uses: actions/cache@v3
@@ -970,6 +998,13 @@ jobs:
         path: "aosp/bionic"
         key: "bionic@$BRANCH"
         restore-keys: "bionic@$BRANCH"
+    - name: Restore Cache external/compiler-rt
+      id: external_compiler-rt
+      uses: actions/cache@v3
+      with:
+        path: "aosp/external/compiler-rt"
+        key: "external_compiler-rt@$BRANCH"
+        restore-keys: "external_compiler-rt@$BRANCH"
     - name: Restore Cache external/gwp_asan
       id: external_gwp_asan
       uses: actions/cache@v3
@@ -1079,20 +1114,6 @@ jobs:
         mkdir -p prebuilts/go && touch prebuilts/go/.out-dir
         ln -sf $GOROOT_1_19_X64 prebuilts/go/linux-x86
         popd
-    - name: Restore Cache external/compiler-rt
-      id: external_compiler-rt
-      uses: actions/cache@v3
-      with:
-        path: "aosp/external/compiler-rt"
-        key: "external_compiler-rt@$BRANCH"
-        restore-keys: "external_compiler-rt@$BRANCH"
-    - name: Clone project external/compiler-rt
-      if: steps.external_compiler-rt.outputs.cache-hit != 'true'
-      run: |
-        export ROOTDIR=$(pwd)
-        mkdir -p aosp && pushd aosp
-        source $ROOTDIR/envsetup.sh
-        clone_depth_platform external/compiler-rt
     - name: Download artifact external_gwp_asan-0
       uses: actions/download-artifact@v3
       with:
@@ -1338,6 +1359,13 @@ jobs:
         path: "aosp/bionic"
         key: "bionic@$BRANCH"
         restore-keys: "bionic@$BRANCH"
+    - name: Restore Cache external/compiler-rt
+      id: external_compiler-rt
+      uses: actions/cache@v3
+      with:
+        path: "aosp/external/compiler-rt"
+        key: "external_compiler-rt@$BRANCH"
+        restore-keys: "external_compiler-rt@$BRANCH"
     - name: Restore Cache external/gwp_asan
       id: external_gwp_asan
       uses: actions/cache@v3
