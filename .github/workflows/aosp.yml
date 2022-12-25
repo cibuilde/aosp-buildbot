@@ -1542,11 +1542,35 @@ jobs:
         mkdir -p prebuilts/go && touch prebuilts/go/.out-dir
         ln -sf $GOROOT_1_19_X64 prebuilts/go/linux-x86
         popd
-    - name: Download artifact bionic-0
+    - name: Restore Cache external/gwp_asan/
+      id: external_gwp_asan_
+      uses: actions/cache@v3
+      with:
+        path: "aosp/external/gwp_asan/"
+        key: "external_gwp_asan_@$BRANCH"
+        restore-keys: "external_gwp_asan_@$BRANCH"
+    - name: Clone project external/gwp_asan/
+      if: steps.external_gwp_asan_.outputs.cache-hit != 'true'
+      run: |
+        export ROOTDIR=$(pwd)
+        mkdir -p aosp && pushd aosp
+        source $ROOTDIR/envsetup.sh
+        clone_depth_platform external/gwp_asan/
+    - name: Download artifact external_gwp_asan-0
       uses: actions/download-artifact@v3
       with:
-        name: bionic-0
-        path: aosp/prebuiltlibs/bionic/
+        name: external_gwp_asan-0
+        path: aosp/prebuiltlibs/external/gwp_asan/
+    - name: Download artifact external_scudo-0
+      uses: actions/download-artifact@v3
+      with:
+        name: external_scudo-0
+        path: aosp/prebuiltlibs/external/scudo/
+    - name: Download artifact external_arm-optimized-routines-0
+      uses: actions/download-artifact@v3
+      with:
+        name: external_arm-optimized-routines-0
+        path: aosp/prebuiltlibs/external/arm-optimized-routines/
     - name: Start Soong
       run: |
         export ROOTDIR=$(pwd)
@@ -1803,11 +1827,35 @@ jobs:
         mkdir -p prebuilts/go && touch prebuilts/go/.out-dir
         ln -sf $GOROOT_1_19_X64 prebuilts/go/linux-x86
         popd
-    - name: Download artifact bionic-0
+    - name: Restore Cache external/gwp_asan/
+      id: external_gwp_asan_
+      uses: actions/cache@v3
+      with:
+        path: "aosp/external/gwp_asan/"
+        key: "external_gwp_asan_@$BRANCH"
+        restore-keys: "external_gwp_asan_@$BRANCH"
+    - name: Clone project external/gwp_asan/
+      if: steps.external_gwp_asan_.outputs.cache-hit != 'true'
+      run: |
+        export ROOTDIR=$(pwd)
+        mkdir -p aosp && pushd aosp
+        source $ROOTDIR/envsetup.sh
+        clone_depth_platform external/gwp_asan/
+    - name: Download artifact external_gwp_asan-0
       uses: actions/download-artifact@v3
       with:
-        name: bionic-0
-        path: aosp/prebuiltlibs/bionic/
+        name: external_gwp_asan-0
+        path: aosp/prebuiltlibs/external/gwp_asan/
+    - name: Download artifact external_scudo-0
+      uses: actions/download-artifact@v3
+      with:
+        name: external_scudo-0
+        path: aosp/prebuiltlibs/external/scudo/
+    - name: Download artifact external_arm-optimized-routines-0
+      uses: actions/download-artifact@v3
+      with:
+        name: external_arm-optimized-routines-0
+        path: aosp/prebuiltlibs/external/arm-optimized-routines/
     - name: Download artifact external_libcxxabi-0
       uses: actions/download-artifact@v3
       with:
@@ -2068,11 +2116,35 @@ jobs:
         mkdir -p prebuilts/go && touch prebuilts/go/.out-dir
         ln -sf $GOROOT_1_19_X64 prebuilts/go/linux-x86
         popd
-    - name: Download artifact bionic-0
+    - name: Restore Cache external/gwp_asan/
+      id: external_gwp_asan_
+      uses: actions/cache@v3
+      with:
+        path: "aosp/external/gwp_asan/"
+        key: "external_gwp_asan_@$BRANCH"
+        restore-keys: "external_gwp_asan_@$BRANCH"
+    - name: Clone project external/gwp_asan/
+      if: steps.external_gwp_asan_.outputs.cache-hit != 'true'
+      run: |
+        export ROOTDIR=$(pwd)
+        mkdir -p aosp && pushd aosp
+        source $ROOTDIR/envsetup.sh
+        clone_depth_platform external/gwp_asan/
+    - name: Download artifact external_gwp_asan-0
       uses: actions/download-artifact@v3
       with:
-        name: bionic-0
-        path: aosp/prebuiltlibs/bionic/
+        name: external_gwp_asan-0
+        path: aosp/prebuiltlibs/external/gwp_asan/
+    - name: Download artifact external_scudo-0
+      uses: actions/download-artifact@v3
+      with:
+        name: external_scudo-0
+        path: aosp/prebuiltlibs/external/scudo/
+    - name: Download artifact external_arm-optimized-routines-0
+      uses: actions/download-artifact@v3
+      with:
+        name: external_arm-optimized-routines-0
+        path: aosp/prebuiltlibs/external/arm-optimized-routines/
     - name: Download artifact external_libcxx-0
       uses: actions/download-artifact@v3
       with:
