@@ -1166,6 +1166,11 @@ jobs:
         mkdir -p prebuilts/go && touch prebuilts/go/.out-dir
         ln -sf $GOROOT_1_19_X64 prebuilts/go/linux-x86
         popd
+    - name: Download artifact external_gwp_asan-0
+      uses: actions/download-artifact@v3
+      with:
+        name: external_gwp_asan-0
+        path: aosp/prebuiltlibs/external/gwp_asan/
     - name: Restore Cache external/scudo
       id: external_scudo
       uses: actions/cache@v3
@@ -1537,6 +1542,11 @@ jobs:
         mkdir -p prebuilts/go && touch prebuilts/go/.out-dir
         ln -sf $GOROOT_1_19_X64 prebuilts/go/linux-x86
         popd
+    - name: Download artifact bionic-0
+      uses: actions/download-artifact@v3
+      with:
+        name: bionic-0
+        path: aosp/prebuiltlibs/bionic/
     - name: Start Soong
       run: |
         export ROOTDIR=$(pwd)
@@ -1793,6 +1803,16 @@ jobs:
         mkdir -p prebuilts/go && touch prebuilts/go/.out-dir
         ln -sf $GOROOT_1_19_X64 prebuilts/go/linux-x86
         popd
+    - name: Download artifact bionic-0
+      uses: actions/download-artifact@v3
+      with:
+        name: bionic-0
+        path: aosp/prebuiltlibs/bionic/
+    - name: Download artifact external_libcxxabi-0
+      uses: actions/download-artifact@v3
+      with:
+        name: external_libcxxabi-0
+        path: aosp/prebuiltlibs/external/libcxxabi/
     - name: Start Soong
       run: |
         export ROOTDIR=$(pwd)
@@ -2048,6 +2068,21 @@ jobs:
         mkdir -p prebuilts/go && touch prebuilts/go/.out-dir
         ln -sf $GOROOT_1_19_X64 prebuilts/go/linux-x86
         popd
+    - name: Download artifact bionic-0
+      uses: actions/download-artifact@v3
+      with:
+        name: bionic-0
+        path: aosp/prebuiltlibs/bionic/
+    - name: Download artifact external_libcxx-0
+      uses: actions/download-artifact@v3
+      with:
+        name: external_libcxx-0
+        path: aosp/prebuiltlibs/external/libcxx/
+    - name: Download artifact external_libcxxabi-0
+      uses: actions/download-artifact@v3
+      with:
+        name: external_libcxxabi-0
+        path: aosp/prebuiltlibs/external/libcxxabi/
     - name: Restore Cache external/zstd
       id: external_zstd
       uses: actions/cache@v3
