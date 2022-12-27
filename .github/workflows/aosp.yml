@@ -973,20 +973,6 @@ jobs:
         mkdir -p prebuilts/go && touch prebuilts/go/.out-dir
         ln -sf $GOROOT_1_19_X64 prebuilts/go/linux-x86
         popd
-    - name: Restore Cache prebuilts/rust
-      id: prebuilts_rust
-      uses: actions/cache@v3
-      with:
-        path: "aosp/prebuilts/rust"
-        key: "prebuilts_rust@$BRANCH"
-        restore-keys: "prebuilts_rust@$BRANCH"
-    - name: Clone project prebuilts/rust
-      if: steps.prebuilts_rust.outputs.cache-hit != 'true'
-      run: |
-        export ROOTDIR=$(pwd)
-        mkdir -p aosp && pushd aosp
-        source $ROOTDIR/envsetup.sh
-        clone_depth_platform prebuilts/rust
     - name: Restore Cache external/rust/crates/either
       id: external_rust_crates_either
       uses: actions/cache@v3
@@ -1218,20 +1204,6 @@ jobs:
         mkdir -p prebuilts/go && touch prebuilts/go/.out-dir
         ln -sf $GOROOT_1_19_X64 prebuilts/go/linux-x86
         popd
-    - name: Restore Cache prebuilts/rust
-      id: prebuilts_rust
-      uses: actions/cache@v3
-      with:
-        path: "aosp/prebuilts/rust"
-        key: "prebuilts_rust@$BRANCH"
-        restore-keys: "prebuilts_rust@$BRANCH"
-    - name: Clone project prebuilts/rust
-      if: steps.prebuilts_rust.outputs.cache-hit != 'true'
-      run: |
-        export ROOTDIR=$(pwd)
-        mkdir -p aosp && pushd aosp
-        source $ROOTDIR/envsetup.sh
-        clone_depth_platform prebuilts/rust
     - name: Restore Cache external/rust/crates/glob
       id: external_rust_crates_glob
       uses: actions/cache@v3
@@ -1463,20 +1435,6 @@ jobs:
         mkdir -p prebuilts/go && touch prebuilts/go/.out-dir
         ln -sf $GOROOT_1_19_X64 prebuilts/go/linux-x86
         popd
-    - name: Restore Cache prebuilts/rust
-      id: prebuilts_rust
-      uses: actions/cache@v3
-      with:
-        path: "aosp/prebuilts/rust"
-        key: "prebuilts_rust@$BRANCH"
-        restore-keys: "prebuilts_rust@$BRANCH"
-    - name: Clone project prebuilts/rust
-      if: steps.prebuilts_rust.outputs.cache-hit != 'true'
-      run: |
-        export ROOTDIR=$(pwd)
-        mkdir -p aosp && pushd aosp
-        source $ROOTDIR/envsetup.sh
-        clone_depth_platform prebuilts/rust
     - name: Restore Cache external/rust/crates/lazycell
       id: external_rust_crates_lazycell
       uses: actions/cache@v3
@@ -1708,20 +1666,6 @@ jobs:
         mkdir -p prebuilts/go && touch prebuilts/go/.out-dir
         ln -sf $GOROOT_1_19_X64 prebuilts/go/linux-x86
         popd
-    - name: Restore Cache prebuilts/rust
-      id: prebuilts_rust
-      uses: actions/cache@v3
-      with:
-        path: "aosp/prebuilts/rust"
-        key: "prebuilts_rust@$BRANCH"
-        restore-keys: "prebuilts_rust@$BRANCH"
-    - name: Clone project prebuilts/rust
-      if: steps.prebuilts_rust.outputs.cache-hit != 'true'
-      run: |
-        export ROOTDIR=$(pwd)
-        mkdir -p aosp && pushd aosp
-        source $ROOTDIR/envsetup.sh
-        clone_depth_platform prebuilts/rust
     - name: Restore Cache external/rust/crates/paste
       id: external_rust_crates_paste
       uses: actions/cache@v3
@@ -1953,20 +1897,6 @@ jobs:
         mkdir -p prebuilts/go && touch prebuilts/go/.out-dir
         ln -sf $GOROOT_1_19_X64 prebuilts/go/linux-x86
         popd
-    - name: Restore Cache prebuilts/rust
-      id: prebuilts_rust
-      uses: actions/cache@v3
-      with:
-        path: "aosp/prebuilts/rust"
-        key: "prebuilts_rust@$BRANCH"
-        restore-keys: "prebuilts_rust@$BRANCH"
-    - name: Clone project prebuilts/rust
-      if: steps.prebuilts_rust.outputs.cache-hit != 'true'
-      run: |
-        export ROOTDIR=$(pwd)
-        mkdir -p aosp && pushd aosp
-        source $ROOTDIR/envsetup.sh
-        clone_depth_platform prebuilts/rust
     - name: Restore Cache external/rust/crates/peeking_take_while
       id: external_rust_crates_peeking_take_while
       uses: actions/cache@v3
@@ -2198,20 +2128,6 @@ jobs:
         mkdir -p prebuilts/go && touch prebuilts/go/.out-dir
         ln -sf $GOROOT_1_19_X64 prebuilts/go/linux-x86
         popd
-    - name: Restore Cache prebuilts/rust
-      id: prebuilts_rust
-      uses: actions/cache@v3
-      with:
-        path: "aosp/prebuilts/rust"
-        key: "prebuilts_rust@$BRANCH"
-        restore-keys: "prebuilts_rust@$BRANCH"
-    - name: Clone project prebuilts/rust
-      if: steps.prebuilts_rust.outputs.cache-hit != 'true'
-      run: |
-        export ROOTDIR=$(pwd)
-        mkdir -p aosp && pushd aosp
-        source $ROOTDIR/envsetup.sh
-        clone_depth_platform prebuilts/rust
     - name: Restore Cache external/rust/crates/proc-macro-hack
       id: external_rust_crates_proc-macro-hack
       uses: actions/cache@v3
@@ -2443,20 +2359,6 @@ jobs:
         mkdir -p prebuilts/go && touch prebuilts/go/.out-dir
         ln -sf $GOROOT_1_19_X64 prebuilts/go/linux-x86
         popd
-    - name: Restore Cache prebuilts/rust
-      id: prebuilts_rust
-      uses: actions/cache@v3
-      with:
-        path: "aosp/prebuilts/rust"
-        key: "prebuilts_rust@$BRANCH"
-        restore-keys: "prebuilts_rust@$BRANCH"
-    - name: Clone project prebuilts/rust
-      if: steps.prebuilts_rust.outputs.cache-hit != 'true'
-      run: |
-        export ROOTDIR=$(pwd)
-        mkdir -p aosp && pushd aosp
-        source $ROOTDIR/envsetup.sh
-        clone_depth_platform prebuilts/rust
     - name: Restore Cache external/rust/crates/regex-syntax
       id: external_rust_crates_regex-syntax
       uses: actions/cache@v3
@@ -2688,20 +2590,6 @@ jobs:
         mkdir -p prebuilts/go && touch prebuilts/go/.out-dir
         ln -sf $GOROOT_1_19_X64 prebuilts/go/linux-x86
         popd
-    - name: Restore Cache prebuilts/rust
-      id: prebuilts_rust
-      uses: actions/cache@v3
-      with:
-        path: "aosp/prebuilts/rust"
-        key: "prebuilts_rust@$BRANCH"
-        restore-keys: "prebuilts_rust@$BRANCH"
-    - name: Clone project prebuilts/rust
-      if: steps.prebuilts_rust.outputs.cache-hit != 'true'
-      run: |
-        export ROOTDIR=$(pwd)
-        mkdir -p aosp && pushd aosp
-        source $ROOTDIR/envsetup.sh
-        clone_depth_platform prebuilts/rust
     - name: Restore Cache external/rust/crates/rustc-hash
       id: external_rust_crates_rustc-hash
       uses: actions/cache@v3
@@ -2933,20 +2821,6 @@ jobs:
         mkdir -p prebuilts/go && touch prebuilts/go/.out-dir
         ln -sf $GOROOT_1_19_X64 prebuilts/go/linux-x86
         popd
-    - name: Restore Cache prebuilts/rust
-      id: prebuilts_rust
-      uses: actions/cache@v3
-      with:
-        path: "aosp/prebuilts/rust"
-        key: "prebuilts_rust@$BRANCH"
-        restore-keys: "prebuilts_rust@$BRANCH"
-    - name: Clone project prebuilts/rust
-      if: steps.prebuilts_rust.outputs.cache-hit != 'true'
-      run: |
-        export ROOTDIR=$(pwd)
-        mkdir -p aosp && pushd aosp
-        source $ROOTDIR/envsetup.sh
-        clone_depth_platform prebuilts/rust
     - name: Restore Cache external/rust/crates/shlex
       id: external_rust_crates_shlex
       uses: actions/cache@v3
@@ -3178,20 +3052,6 @@ jobs:
         mkdir -p prebuilts/go && touch prebuilts/go/.out-dir
         ln -sf $GOROOT_1_19_X64 prebuilts/go/linux-x86
         popd
-    - name: Restore Cache prebuilts/rust
-      id: prebuilts_rust
-      uses: actions/cache@v3
-      with:
-        path: "aosp/prebuilts/rust"
-        key: "prebuilts_rust@$BRANCH"
-        restore-keys: "prebuilts_rust@$BRANCH"
-    - name: Clone project prebuilts/rust
-      if: steps.prebuilts_rust.outputs.cache-hit != 'true'
-      run: |
-        export ROOTDIR=$(pwd)
-        mkdir -p aosp && pushd aosp
-        source $ROOTDIR/envsetup.sh
-        clone_depth_platform prebuilts/rust
     - name: Restore Cache external/rust/crates/termcolor
       id: external_rust_crates_termcolor
       uses: actions/cache@v3
@@ -3423,20 +3283,6 @@ jobs:
         mkdir -p prebuilts/go && touch prebuilts/go/.out-dir
         ln -sf $GOROOT_1_19_X64 prebuilts/go/linux-x86
         popd
-    - name: Restore Cache prebuilts/rust
-      id: prebuilts_rust
-      uses: actions/cache@v3
-      with:
-        path: "aosp/prebuilts/rust"
-        key: "prebuilts_rust@$BRANCH"
-        restore-keys: "prebuilts_rust@$BRANCH"
-    - name: Clone project prebuilts/rust
-      if: steps.prebuilts_rust.outputs.cache-hit != 'true'
-      run: |
-        export ROOTDIR=$(pwd)
-        mkdir -p aosp && pushd aosp
-        source $ROOTDIR/envsetup.sh
-        clone_depth_platform prebuilts/rust
     - name: Restore Cache external/rust/crates/textwrap
       id: external_rust_crates_textwrap
       uses: actions/cache@v3
@@ -3668,20 +3514,6 @@ jobs:
         mkdir -p prebuilts/go && touch prebuilts/go/.out-dir
         ln -sf $GOROOT_1_19_X64 prebuilts/go/linux-x86
         popd
-    - name: Restore Cache prebuilts/rust
-      id: prebuilts_rust
-      uses: actions/cache@v3
-      with:
-        path: "aosp/prebuilts/rust"
-        key: "prebuilts_rust@$BRANCH"
-        restore-keys: "prebuilts_rust@$BRANCH"
-    - name: Clone project prebuilts/rust
-      if: steps.prebuilts_rust.outputs.cache-hit != 'true'
-      run: |
-        export ROOTDIR=$(pwd)
-        mkdir -p aosp && pushd aosp
-        source $ROOTDIR/envsetup.sh
-        clone_depth_platform prebuilts/rust
     - name: Restore Cache external/rust/crates/unicode-width
       id: external_rust_crates_unicode-width
       uses: actions/cache@v3
@@ -3913,20 +3745,6 @@ jobs:
         mkdir -p prebuilts/go && touch prebuilts/go/.out-dir
         ln -sf $GOROOT_1_19_X64 prebuilts/go/linux-x86
         popd
-    - name: Restore Cache prebuilts/rust
-      id: prebuilts_rust
-      uses: actions/cache@v3
-      with:
-        path: "aosp/prebuilts/rust"
-        key: "prebuilts_rust@$BRANCH"
-        restore-keys: "prebuilts_rust@$BRANCH"
-    - name: Clone project prebuilts/rust
-      if: steps.prebuilts_rust.outputs.cache-hit != 'true'
-      run: |
-        export ROOTDIR=$(pwd)
-        mkdir -p aosp && pushd aosp
-        source $ROOTDIR/envsetup.sh
-        clone_depth_platform prebuilts/rust
     - name: Restore Cache external/rust/crates/unicode-xid
       id: external_rust_crates_unicode-xid
       uses: actions/cache@v3
