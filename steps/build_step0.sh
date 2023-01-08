@@ -1,4 +1,3 @@
-set -xe
 rm -rf $GITHUB_WORKSPACE/steps/genout0.sh
 echo 'set -xe' > $GITHUB_WORKSPACE/steps/genout0.sh
 echo 'export TOP=$(pwd)' >> $GITHUB_WORKSPACE/steps/genout0.sh

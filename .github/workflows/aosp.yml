@@ -18,6 +18,18 @@ jobs:
         path: aosp/external/arm-optimized-routines
         key: external_arm-optimized-routines@${{ env.branch }}
         restore-keys: external_arm-optimized-routines@${{ env.branch }}
+    - name: Restore Cache external/scudo
+      id: external_scudo
+      uses: actions/cache@v3
+      with:
+        path: aosp/external/scudo
+        key: external_scudo@${{ env.branch }}
+        restore-keys: external_scudo@${{ env.branch }}
+    - name: Clone project external/scudo
+      if: steps.external_scudo.outputs.cache-hit != 'true'
+      run: |
+        source $GITHUB_WORKSPACE/envsetup.sh
+        clone_depth_platform external/scudo
     - name: Clone project external/arm-optimized-routines
       if: steps.external_arm-optimized-routines.outputs.cache-hit != 'true'
       run: |
@@ -45,7 +57,12 @@ jobs:
       run: |
         pushd aosp
         ls -l $(pwd)
-        cat $GITHUB_WORKSPACE/steps/genout0.sh
+        bash $GITHUB_WORKSPACE/steps/genout0.sh
+    - name: Archive soong-ninja
+      uses: actions/upload-artifact@v3
+      with:
+        name: soong-ninja
+        path: aosp/out/soong/ninja
     - name: Archive external_arm-optimized-routines-0
       uses: actions/upload-artifact@v3
       with:
