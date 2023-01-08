@@ -40,12 +40,12 @@ jobs:
         pushd aosp
         export TOP=$(pwd)
         GOROOT=$TOP/prebuilts/go/linux-x86 $GITHUB_WORKSPACE/soong_ui --make-mode --skip-soong-tests --skip-write-modules -j1 TARGET_PRODUCT=aosp_x86_64 TARGET_BUILD_VARIANT=eng ALLOW_MISSING_DEPENDENCIES=true BUILD_BROKEN_DISABLE_BAZEL=1 nothing
-    - name: build target external_arm-optimized-routines-0
+        $GITHUB_WORKSPACE/steps/build_step0.sh
+    - name: Build Step 0
       run: |
         pushd aosp
-        bash $GITHUB_WORKSPACE/steps/build_step0.sh
         ls -l $(pwd)
-        bash $GITHUB_WORKSPACE/steps/genout0.sh
+        cat $GITHUB_WORKSPACE/steps/genout0.sh
     - name: Archive external_arm-optimized-routines-0
       uses: actions/upload-artifact@v3
       with:

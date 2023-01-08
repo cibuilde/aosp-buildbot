@@ -34,6 +34,7 @@ const genBuildScript = (prop, outFile, androidbp) => {
 			cp_cmds.push(`mkdir -p prebuiltlibs/${proj_path}/${output.filedir} && cp ${output.path} prebuiltlibs/${proj_path}/${output.filedir}`)
 		})
 		if (outputs.size < 1) {
+			fs.appendFileSync(outFile, `mkdir -p prebuiltlibs/${proj_path}/\n`)
 			fs.appendFileSync(outFile, `printf '${JSON.stringify(Array.from(miss).join('\n'))}' >> prebuiltlibs/${proj_path}/missing.txt\n`)
 			return
 		}
