@@ -709,11 +709,6 @@ jobs:
       with:
         name: external_scudo-0
         path: aosp/prebuiltlibs/external/scudo
-    - name: Download artifact bionic-0
-      uses: actions/download-artifact@v3
-      with:
-        name: bionic-0
-        path: aosp/prebuiltlibs/bionic
     - name: Download artifact system_core-0
       uses: actions/download-artifact@v3
       with:
