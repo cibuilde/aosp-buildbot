@@ -6,6 +6,7 @@ const ignoreModules = [
 	'libc',
 	'libm',
 	'libdl',
+	'libpropertyinfoparser',
 	//'crtbrand',
 	//'crtbegin_so',
 	//'crtbegin_static',
