@@ -41,7 +41,7 @@ jobs:
         export TOP=$(pwd)
         GOROOT=$TOP/prebuilts/go/linux-x86 $GITHUB_WORKSPACE/soong_ui --make-mode --skip-soong-tests --skip-write-modules -j1 TARGET_PRODUCT=aosp_x86_64 TARGET_BUILD_VARIANT=eng ALLOW_MISSING_DEPENDENCIES=true BUILD_BROKEN_DISABLE_BAZEL=1 nothing
         $GITHUB_WORKSPACE/steps/build_step0.sh
-    - name: Build Step 0
+    - name: Build Step-0
       run: |
         pushd aosp
         ls -l $(pwd)
