@@ -7,6 +7,7 @@ jobs:
 
   build_step0:
     runs-on: ubuntu-latest
+    
     steps:
     - name: Checkout
       uses: actions/checkout@main
@@ -422,6 +423,11 @@ jobs:
       with:
         name: external_arm-optimized-routines-0
         path: aosp/prebuiltlibs/external/arm-optimized-routines
+    - name: Archive external_gwp_asan-0
+      uses: actions/upload-artifact@v3
+      with:
+        name: external_gwp_asan-0
+        path: aosp/prebuiltlibs/external/gwp_asan
     - name: Archive external_rust_crates_bitflags-0
       uses: actions/upload-artifact@v3
       with:
@@ -567,6 +573,11 @@ jobs:
       with:
         name: external_scudo-0
         path: aosp/prebuiltlibs/external/scudo
+    - name: Archive system_core-0
+      uses: actions/upload-artifact@v3
+      with:
+        name: system_core-0
+        path: aosp/prebuiltlibs/system/core
 
   build_step1:
     runs-on: ubuntu-latest
@@ -765,6 +776,11 @@ jobs:
         pushd aosp
         bash $GITHUB_WORKSPACE/steps/genout1.sh
 
+    - name: Archive bionic-0
+      uses: actions/upload-artifact@v3
+      with:
+        name: bionic-0
+        path: aosp/prebuiltlibs/bionic
     - name: Archive external_rust_crates_nom-0
       uses: actions/upload-artifact@v3
       with:
