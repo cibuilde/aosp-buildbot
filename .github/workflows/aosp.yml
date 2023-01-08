@@ -8,12 +8,12 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@main
+    - name: Call Composite Action bootstrap
+      uses: ./.github/actions/bootstrap
+      id: bootstrap
     - uses: actions/setup-python@v4
       with:
         python-version: "2.7"
-    - name: Call Composite Action bootstrap
-      uses: ./actions/bootstrap
-      id: bootstrap
     - name: Restore Cache external/arm-optimized-routines
       id: external_arm-optimized-routines
       uses: actions/cache@v3
