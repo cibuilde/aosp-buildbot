@@ -1,9 +1,7 @@
 name: AOSP Build
 on: push
-inputs:
-  branch:
-    required: false
-    default: 'android-12.0.0_r1'
+env:
+  branch: 'android-12.0.0_r1'
 jobs:
   external_arm-optimized-routines-0:
     runs-on: ubuntu-latest
@@ -18,8 +16,8 @@ jobs:
       uses: actions/cache@v3
       with:
         path: "aosp/external/arm-optimized-routines"
-        key: external_arm-optimized-routines@${{ inputs.branch }}
-        restore-keys: external_arm-optimized-routines@${{ inputs.branch }}
+        key: external_arm-optimized-routines@${{ env.branch }}
+        restore-keys: external_arm-optimized-routines@${{ env.branch }}
     - name: Clone project external/arm-optimized-routines
       if: steps.external_arm-optimized-routines.outputs.cache-hit != 'true'
       run: |
@@ -30,8 +28,8 @@ jobs:
       uses: actions/cache@v3
       with:
         path: "aosp/external/rust/crates/bitflags"
-        key: external_rust_crates_bitflags@${{ inputs.branch }}
-        restore-keys: external_rust_crates_bitflags@${{ inputs.branch }}
+        key: external_rust_crates_bitflags@${{ env.branch }}
+        restore-keys: external_rust_crates_bitflags@${{ env.branch }}
     - name: Clone project external/rust/crates/bitflags
       if: steps.external_rust_crates_bitflags.outputs.cache-hit != 'true'
       run: |
