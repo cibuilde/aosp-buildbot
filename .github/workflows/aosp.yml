@@ -11,13 +11,6 @@ jobs:
     - name: Call Composite Action bootstrap
       uses: ./.github/actions/bootstrap
       id: bootstrap
-    - name: Restore Cache external/arm-optimized-routines
-      id: external_arm-optimized-routines
-      uses: actions/cache@v3
-      with:
-        path: aosp/external/arm-optimized-routines
-        key: external_arm-optimized-routines@${{ env.branch }}
-        restore-keys: external_arm-optimized-routines@${{ env.branch }}
     - name: Restore Cache external/scudo
       id: external_scudo
       uses: actions/cache@v3
@@ -28,11 +21,20 @@ jobs:
     - name: Clone project external/scudo
       if: steps.external_scudo.outputs.cache-hit != 'true'
       run: |
+        pushd aosp
         source $GITHUB_WORKSPACE/envsetup.sh
         clone_depth_platform external/scudo
+    - name: Restore Cache external/arm-optimized-routines
+      id: external_arm-optimized-routines
+      uses: actions/cache@v3
+      with:
+        path: aosp/external/arm-optimized-routines
+        key: external_arm-optimized-routines@${{ env.branch }}
+        restore-keys: external_arm-optimized-routines@${{ env.branch }}
     - name: Clone project external/arm-optimized-routines
       if: steps.external_arm-optimized-routines.outputs.cache-hit != 'true'
       run: |
+        pushd aosp
         source $GITHUB_WORKSPACE/envsetup.sh
         clone_depth_platform external/arm-optimized-routines
     - name: Restore Cache external/rust/crates/bitflags
@@ -45,6 +47,7 @@ jobs:
     - name: Clone project external/rust/crates/bitflags
       if: steps.external_rust_crates_bitflags.outputs.cache-hit != 'true'
       run: |
+        pushd aosp
         source $GITHUB_WORKSPACE/envsetup.sh
         clone_depth_platform external/rust/crates/bitflags
     - name: Start Soong
@@ -56,13 +59,12 @@ jobs:
     - name: Build Step-0
       run: |
         pushd aosp
-        ls -l $(pwd)
         bash $GITHUB_WORKSPACE/steps/genout0.sh
-    - name: Archive soong-ninja
-      uses: actions/upload-artifact@v3
-      with:
-        name: soong-ninja
-        path: aosp/out/soong/ninja
+        #- name: Archive soong-ninja
+        #  uses: actions/upload-artifact@v3
+        #  with:
+        #    name: soong-ninja
+        #    path: aosp/out/soong/ninja
     - name: Archive external_arm-optimized-routines-0
       uses: actions/upload-artifact@v3
       with:

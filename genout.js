@@ -35,7 +35,7 @@ const genBuildScript = (prop, outFile, androidbp) => {
 		})
 		if (outputs.size < 1) {
 			fs.appendFileSync(outFile, `mkdir -p prebuiltlibs/${proj_path}/\n`)
-			fs.appendFileSync(outFile, `printf '${JSON.stringify(Array.from(miss).join('\n'))}' >> prebuiltlibs/${proj_path}/missing.txt\n`)
+			fs.appendFileSync(outFile, `printf '${Array.from(miss).join('\n')}' >> prebuiltlibs/${proj_path}/missing.txt\n`)
 			return
 		}
         //console.log(`\noutputs=$($HOME/aosp-buildbot/filter-outputs.py ${Array.from(outputs).join(' ')})`)
