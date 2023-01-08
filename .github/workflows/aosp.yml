@@ -15,7 +15,7 @@ jobs:
       id: external_arm-optimized-routines
       uses: actions/cache@v3
       with:
-        path: "aosp/external/arm-optimized-routines"
+        path: aosp/external/arm-optimized-routines
         key: external_arm-optimized-routines@${{ env.branch }}
         restore-keys: external_arm-optimized-routines@${{ env.branch }}
     - name: Clone project external/arm-optimized-routines
@@ -27,7 +27,7 @@ jobs:
       id: external_rust_crates_bitflags
       uses: actions/cache@v3
       with:
-        path: "aosp/external/rust/crates/bitflags"
+        path: aosp/external/rust/crates/bitflags
         key: external_rust_crates_bitflags@${{ env.branch }}
         restore-keys: external_rust_crates_bitflags@${{ env.branch }}
     - name: Clone project external/rust/crates/bitflags
@@ -39,7 +39,7 @@ jobs:
       run: |
         pushd aosp
         export TOP=$(pwd)
-        GOROOT=$TOP/prebuilts/go/linux-x86 $ROOTDIR/soong_ui --make-mode --skip-soong-tests --skip-write-modules -j1 TARGET_PRODUCT=aosp_x86_64 TARGET_BUILD_VARIANT=eng ALLOW_MISSING_DEPENDENCIES=true BUILD_BROKEN_DISABLE_BAZEL=1 nothing
+        GOROOT=$TOP/prebuilts/go/linux-x86 $GITHUB_WORKSPACE/soong_ui --make-mode --skip-soong-tests --skip-write-modules -j1 TARGET_PRODUCT=aosp_x86_64 TARGET_BUILD_VARIANT=eng ALLOW_MISSING_DEPENDENCIES=true BUILD_BROKEN_DISABLE_BAZEL=1 nothing
     - name: build target external_arm-optimized-routines-0
       run: |
         pushd aosp
