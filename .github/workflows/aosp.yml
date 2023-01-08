@@ -1,7 +1,9 @@
 name: AOSP Build
 on: push
-env:
-  BRANCH: android-12.0.0_r1
+inputs:
+  branch:
+    required: false
+    default: 'android-12.0.0_r1'
 jobs:
   external_arm-optimized-routines-0:
     runs-on: ubuntu-latest
@@ -11,71 +13,52 @@ jobs:
     - name: Call Composite Action bootstrap
       uses: ./.github/actions/bootstrap
       id: bootstrap
-    - uses: actions/setup-python@v4
-      with:
-        python-version: "2.7"
     - name: Restore Cache external/arm-optimized-routines
       id: external_arm-optimized-routines
       uses: actions/cache@v3
       with:
         path: "aosp/external/arm-optimized-routines"
-        key: "external_arm-optimized-routines@$BRANCH"
-        restore-keys: "external_arm-optimized-routines@$BRANCH"
+        key: external_arm-optimized-routines@${{ inputs.branch }}
+        restore-keys: external_arm-optimized-routines@${{ inputs.branch }}
     - name: Clone project external/arm-optimized-routines
       if: steps.external_arm-optimized-routines.outputs.cache-hit != 'true'
       run: |
-        export ROOTDIR=$(pwd)
-        mkdir -p aosp && pushd aosp
-        source $ROOTDIR/envsetup.sh
+        source $GITHUB_WORKSPACE/envsetup.sh
         clone_depth_platform external/arm-optimized-routines
+    - name: Restore Cache external/rust/crates/bitflags
+      id: external_rust_crates_bitflags
+      uses: actions/cache@v3
+      with:
+        path: "aosp/external/rust/crates/bitflags"
+        key: external_rust_crates_bitflags@${{ inputs.branch }}
+        restore-keys: external_rust_crates_bitflags@${{ inputs.branch }}
+    - name: Clone project external/rust/crates/bitflags
+      if: steps.external_rust_crates_bitflags.outputs.cache-hit != 'true'
+      run: |
+        source $GITHUB_WORKSPACE/envsetup.sh
+        clone_depth_platform external/rust/crates/bitflags
     - name: Start Soong
       run: |
-        export ROOTDIR=$(pwd)
         pushd aosp
         export TOP=$(pwd)
-        mkdir -p out/soong/.minibootstrap out/soong/.bootstrap/bin
-        ln -sf $ROOTDIR/soong_build out/soong/.bootstrap/bin
-        ln -sf $ROOTDIR/bpglob out/soong/.minibootstrap
-        cp $ROOTDIR/ckati prebuilts/build-tools/linux-x86/bin
         GOROOT=$TOP/prebuilts/go/linux-x86 $ROOTDIR/soong_ui --make-mode --skip-soong-tests --skip-write-modules -j1 TARGET_PRODUCT=aosp_x86_64 TARGET_BUILD_VARIANT=eng ALLOW_MISSING_DEPENDENCIES=true BUILD_BROKEN_DISABLE_BAZEL=1 nothing
-        popd
     - name: build target external_arm-optimized-routines-0
       run: |
-        export ROOTDIR=$(pwd)
         pushd aosp
-        export TOP=$(pwd)
-        outputs=$($ROOTDIR/filter-outputs.py out/soong/.intermediates/external/arm-optimized-routines/libarm-optimized-routines-string/android_recovery_x86_64_static/libarm-optimized-routines-string.a out/soong/.intermediates/external/arm-optimized-routines/libarm-optimized-routines-string/android_x86_64_static/libarm-optimized-routines-string.a out/soong/.intermediates/external/arm-optimized-routines/libarm-optimized-routines-string/android_x86_64_static_apex10000/libarm-optimized-routines-string.a out/soong/.intermediates/external/arm-optimized-routines/libarm-optimized-routines-string/android_x86_x86_64_static/libarm-optimized-routines-string.a out/soong/.intermediates/external/arm-optimized-routines/libarm-optimized-routines-string/android_x86_x86_64_static_apex10000/libarm-optimized-routines-string.a out/soong/.intermediates/external/arm-optimized-routines/libarm-optimized-routines-math/android_recovery_x86_64_static/libarm-optimized-routines-math.a out/soong/.intermediates/external/arm-optimized-routines/libarm-optimized-routines-math/android_x86_64_static/libarm-optimized-routines-math.a out/soong/.intermediates/external/arm-optimized-routines/libarm-optimized-routines-math/android_x86_64_static_apex10000/libarm-optimized-routines-math.a out/soong/.intermediates/external/arm-optimized-routines/libarm-optimized-routines-math/android_x86_x86_64_static/libarm-optimized-routines-math.a out/soong/.intermediates/external/arm-optimized-routines/libarm-optimized-routines-math/android_x86_x86_64_static_apex10000/libarm-optimized-routines-math.a)
-        $TOP/prebuilts/build-tools/linux-x86/bin/ninja -f out/combined-aosp_x86_64.ninja $outputs
-        popd
-    - name: copy target external_arm-optimized-routines-0
-      run: |
-        export ROOTDIR=$(pwd)
-        export TOP=$(pwd)
-        pushd aosp
-        [ -e out/soong/.intermediates/external/arm-optimized-routines/libarm-optimized-routines-string/android_recovery_x86_64_static/libarm-optimized-routines-string.a ] && mkdir -p prebuiltlibs/external/arm-optimized-routines/android_recovery_x86_64_static/ && cp out/soong/.intermediates/external/arm-optimized-routines/libarm-optimized-routines-string/android_recovery_x86_64_static/libarm-optimized-routines-string.a prebuiltlibs/external/arm-optimized-routines/android_recovery_x86_64_static/ || true
-        [ -e out/soong/.intermediates/external/arm-optimized-routines/libarm-optimized-routines-string/android_x86_64_static/libarm-optimized-routines-string.a ] && mkdir -p prebuiltlibs/external/arm-optimized-routines/android_x86_64_static/ && cp out/soong/.intermediates/external/arm-optimized-routines/libarm-optimized-routines-string/android_x86_64_static/libarm-optimized-routines-string.a prebuiltlibs/external/arm-optimized-routines/android_x86_64_static/ || true
-        [ -e out/soong/.intermediates/external/arm-optimized-routines/libarm-optimized-routines-string/android_x86_64_static_apex10000/libarm-optimized-routines-string.a ] && mkdir -p prebuiltlibs/external/arm-optimized-routines/android_x86_64_static_apex10000/ && cp out/soong/.intermediates/external/arm-optimized-routines/libarm-optimized-routines-string/android_x86_64_static_apex10000/libarm-optimized-routines-string.a prebuiltlibs/external/arm-optimized-routines/android_x86_64_static_apex10000/ || true
-        [ -e out/soong/.intermediates/external/arm-optimized-routines/libarm-optimized-routines-string/android_x86_x86_64_static/libarm-optimized-routines-string.a ] && mkdir -p prebuiltlibs/external/arm-optimized-routines/android_x86_x86_64_static/ && cp out/soong/.intermediates/external/arm-optimized-routines/libarm-optimized-routines-string/android_x86_x86_64_static/libarm-optimized-routines-string.a prebuiltlibs/external/arm-optimized-routines/android_x86_x86_64_static/ || true
-        [ -e out/soong/.intermediates/external/arm-optimized-routines/libarm-optimized-routines-string/android_x86_x86_64_static_apex10000/libarm-optimized-routines-string.a ] && mkdir -p prebuiltlibs/external/arm-optimized-routines/android_x86_x86_64_static_apex10000/ && cp out/soong/.intermediates/external/arm-optimized-routines/libarm-optimized-routines-string/android_x86_x86_64_static_apex10000/libarm-optimized-routines-string.a prebuiltlibs/external/arm-optimized-routines/android_x86_x86_64_static_apex10000/ || true
-        [ -e out/soong/.intermediates/external/arm-optimized-routines/libarm-optimized-routines-math/android_recovery_x86_64_static/libarm-optimized-routines-math.a ] && mkdir -p prebuiltlibs/external/arm-optimized-routines/android_recovery_x86_64_static/ && cp out/soong/.intermediates/external/arm-optimized-routines/libarm-optimized-routines-math/android_recovery_x86_64_static/libarm-optimized-routines-math.a prebuiltlibs/external/arm-optimized-routines/android_recovery_x86_64_static/ || true
-        [ -e out/soong/.intermediates/external/arm-optimized-routines/libarm-optimized-routines-math/android_x86_64_static/libarm-optimized-routines-math.a ] && mkdir -p prebuiltlibs/external/arm-optimized-routines/android_x86_64_static/ && cp out/soong/.intermediates/external/arm-optimized-routines/libarm-optimized-routines-math/android_x86_64_static/libarm-optimized-routines-math.a prebuiltlibs/external/arm-optimized-routines/android_x86_64_static/ || true
-        [ -e out/soong/.intermediates/external/arm-optimized-routines/libarm-optimized-routines-math/android_x86_64_static_apex10000/libarm-optimized-routines-math.a ] && mkdir -p prebuiltlibs/external/arm-optimized-routines/android_x86_64_static_apex10000/ && cp out/soong/.intermediates/external/arm-optimized-routines/libarm-optimized-routines-math/android_x86_64_static_apex10000/libarm-optimized-routines-math.a prebuiltlibs/external/arm-optimized-routines/android_x86_64_static_apex10000/ || true
-        [ -e out/soong/.intermediates/external/arm-optimized-routines/libarm-optimized-routines-math/android_x86_x86_64_static/libarm-optimized-routines-math.a ] && mkdir -p prebuiltlibs/external/arm-optimized-routines/android_x86_x86_64_static/ && cp out/soong/.intermediates/external/arm-optimized-routines/libarm-optimized-routines-math/android_x86_x86_64_static/libarm-optimized-routines-math.a prebuiltlibs/external/arm-optimized-routines/android_x86_x86_64_static/ || true
-        [ -e out/soong/.intermediates/external/arm-optimized-routines/libarm-optimized-routines-math/android_x86_x86_64_static_apex10000/libarm-optimized-routines-math.a ] && mkdir -p prebuiltlibs/external/arm-optimized-routines/android_x86_x86_64_static_apex10000/ && cp out/soong/.intermediates/external/arm-optimized-routines/libarm-optimized-routines-math/android_x86_x86_64_static_apex10000/libarm-optimized-routines-math.a prebuiltlibs/external/arm-optimized-routines/android_x86_x86_64_static_apex10000/ || true
-        cp -r out/soong/ninja/external/arm-optimized-routines prebuiltlibs/external/arm-optimized-routines/external_arm-optimized-routines-0
-        grep '|external/arm-optimized-routines' out/soong/module-info.txt >> prebuiltlibs/external/arm-optimized-routines/MODULES
-        du -ad1 external/arm-optimized-routines | sort -rnk1 > prebuiltlibs/external/arm-optimized-routines/.SIZE
-        popd
-    - name: write Android.bp external_arm-optimized-routines-0
-      run: |
-        export ROOTDIR=$(pwd)
-        export TOP=$(pwd)
-        pushd aosp
-        printf "cc_prebuilt_library_static {\n\tname: \"libarm-optimized-routines-string\",\n\tdevice_supported: true,\n\thost_supported: false,\n\tvendor_available: false,\n\trecovery_available: true,\n\tandroid_recovery_x86_64_static: \"android_recovery_x86_64_static/libarm-optimized-routines-string.a\",\n\tandroid_x86_64_static: \"android_x86_64_static/libarm-optimized-routines-string.a\",\n\tandroid_x86_64_static_apex10000: \"android_x86_64_static_apex10000/libarm-optimized-routines-string.a\",\n\tandroid_x86_x86_64_static: \"android_x86_x86_64_static/libarm-optimized-routines-string.a\",\n\tandroid_x86_x86_64_static_apex10000: \"android_x86_x86_64_static_apex10000/libarm-optimized-routines-string.a\",\n\tsrcs: [\"android_recovery_x86_64_static/libarm-optimized-routines-string.a\"],\n\ttarget: { android: { compile_multilib: \"both\",  }, },\n\trequired: [],\n\tsystem_shared_libs: [\"\",], stl: \"none\", apex_available: [\"//apex_available:platform\",\"com.android.runtime\",], \n\tprefer: true,\n\tstrip: { none: true, },\n}\ncc_prebuilt_library_static {\n\tname: \"libarm-optimized-routines-math\",\n\tdevice_supported: true,\n\thost_supported: false,\n\tvendor_available: false,\n\trecovery_available: true,\n\tandroid_recovery_x86_64_static: \"android_recovery_x86_64_static/libarm-optimized-routines-math.a\",\n\tandroid_x86_64_static: \"android_x86_64_static/libarm-optimized-routines-math.a\",\n\tandroid_x86_64_static_apex10000: \"android_x86_64_static_apex10000/libarm-optimized-routines-math.a\",\n\tandroid_x86_x86_64_static: \"android_x86_x86_64_static/libarm-optimized-routines-math.a\",\n\tandroid_x86_x86_64_static_apex10000: \"android_x86_x86_64_static_apex10000/libarm-optimized-routines-math.a\",\n\tsrcs: [\"android_recovery_x86_64_static/libarm-optimized-routines-math.a\"],\n\ttarget: { android: { compile_multilib: \"both\",  }, },\n\trequired: [],\n\tsystem_shared_libs: [\"\",], stl: \"none\", apex_available: [\"//apex_available:platform\",\"com.android.runtime\",], \n\tprefer: true,\n\tstrip: { none: true, },\n}" >> prebuiltlibs/external/arm-optimized-routines/Android.bp
-        printf "\n" >> prebuiltlibs/external/arm-optimized-routines/Android.bp
-        popd
+        bash $GITHUB_WORKSPACE/steps/build_step0.sh
+        bash $GITHUB_WORKSPACE/steps/genout0.sh
     - name: Archive external_arm-optimized-routines-0
       uses: actions/upload-artifact@v3
       with:
         name: external_arm-optimized-routines-0
         path: aosp/prebuiltlibs/external/arm-optimized-routines
+    - name: Archive external_gwp_asan-0
+      uses: actions/upload-artifact@v3
+      with:
+        name: external_gwp_asan-0
+        path: aosp/prebuiltlibs/external/gwp_asan
+    - name: Archive external_rust_crates_bitflags-0
+      uses: actions/upload-artifact@v3
+      with:
+        name: external_rust_crates_bitflags-0
+        path: aosp/prebuiltlibs/external/rust/crates/bitflags

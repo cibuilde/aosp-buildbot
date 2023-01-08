@@ -1,8 +1,9 @@
 name: 'bootstrap'
 description: 'Clone and Cache Projects'
-#inputs:
-#  branches:
-#    required: true
+inputs:
+  branch:
+    required: false
+    default: 'android-12.0.0_r1'
 #outputs:
 #  greeting:
 #    required: true
@@ -11,13 +12,16 @@ runs:
   steps:
     - name: Checkout
       uses: actions/checkout@main
+    - uses: actions/setup-python@v4
+      with:
+        python-version: "2.7"
     - name: Restore Cache build/make
       id: build_make
       uses: actions/cache@v3
       with:
         path: "aosp/build/make"
-        key: "build_make@$BRANCH"
-        restore-keys: "build_make@$BRANCH"
+        key: build_make@${{ inputs.branch }}
+        restore-keys: build_make@${{ inputs.branch }}
     - name: Clone project build/make
       if: steps.build_make.outputs.cache-hit != 'true'
       shell: bash
@@ -32,8 +36,8 @@ runs:
       uses: actions/cache@v3
       with:
         path: "aosp/build/blueprint"
-        key: "build_blueprint@$BRANCH"
-        restore-keys: "build_blueprint@$BRANCH"
+        key: build_blueprint@${{ inputs.branch }}
+        restore-keys: build_blueprint@${{ inputs.branch }}
     - name: Clone project build/blueprint
       if: steps.build_blueprint.outputs.cache-hit != 'true'
       shell: bash
@@ -46,8 +50,8 @@ runs:
       uses: actions/cache@v3
       with:
         path: "aosp/build/soong"
-        key: "build_soong@$BRANCH"
-        restore-keys: "build_soong@$BRANCH"
+        key: build_soong@${{ inputs.branch }}
+        restore-keys: build_soong@${{ inputs.branch }}
     - name: Clone project build/soong
       if: steps.build_soong.outputs.cache-hit != 'true'
       shell: bash
@@ -60,8 +64,8 @@ runs:
       uses: actions/cache@v3
       with:
         path: "aosp/bionic"
-        key: "bionic@$BRANCH"
-        restore-keys: "bionic@$BRANCH"
+        key: bionic@${{ inputs.branch }}
+        restore-keys: bionic@${{ inputs.branch }}
     - name: Clone project bionic
       if: steps.bionic.outputs.cache-hit != 'true'
       shell: bash
@@ -74,8 +78,8 @@ runs:
       uses: actions/cache@v3
       with:
         path: "aosp/external/libcxx"
-        key: "external_libcxx@$BRANCH"
-        restore-keys: "external_libcxx@$BRANCH"
+        key: external_libcxx@${{ inputs.branch }}
+        restore-keys: external_libcxx@${{ inputs.branch }}
     - name: Clone project external/libcxx
       if: steps.external_libcxx.outputs.cache-hit != 'true'
       shell: bash
@@ -88,8 +92,8 @@ runs:
       uses: actions/cache@v3
       with:
         path: "aosp/external/libcxxabi"
-        key: "external_libcxxabi@$BRANCH"
-        restore-keys: "external_libcxxabi@$BRANCH"
+        key: external_libcxxabi@${{ inputs.branch }}
+        restore-keys: external_libcxxabi@${{ inputs.branch }}
     - name: Clone project external/libcxxabi
       if: steps.external_libcxxabi.outputs.cache-hit != 'true'
       shell: bash
@@ -102,8 +106,8 @@ runs:
       uses: actions/cache@v3
       with:
         path: "aosp/external/compiler-rt"
-        key: "external_compiler-rt@$BRANCH"
-        restore-keys: "external_compiler-rt@$BRANCH"
+        key: external_compiler-rt@${{ inputs.branch }}
+        restore-keys: external_compiler-rt@${{ inputs.branch }}
     - name: Clone project external/compiler-rt
       if: steps.external_compiler-rt.outputs.cache-hit != 'true'
       shell: bash
@@ -116,8 +120,8 @@ runs:
       uses: actions/cache@v3
       with:
         path: "aosp/external/gwp_asan"
-        key: "external_gwp_asan@$BRANCH"
-        restore-keys: "external_gwp_asan@$BRANCH"
+        key: external_gwp_asan@${{ inputs.branch }}
+        restore-keys: external_gwp_asan@${{ inputs.branch }}
     - name: Clone project external/gwp_asan
       if: steps.external_gwp_asan.outputs.cache-hit != 'true'
       shell: bash
@@ -130,8 +134,8 @@ runs:
       uses: actions/cache@v3
       with:
         path: "aosp/external/golang-protobuf"
-        key: "external_golang-protobuf@$BRANCH"
-        restore-keys: "external_golang-protobuf@$BRANCH"
+        key: external_golang-protobuf@${{ inputs.branch }}
+        restore-keys: external_golang-protobuf@${{ inputs.branch }}
     - name: Clone project external/golang-protobuf
       if: steps.external_golang-protobuf.outputs.cache-hit != 'true'
       shell: bash
@@ -144,8 +148,8 @@ runs:
       uses: actions/cache@v3
       with:
         path: "aosp/external/starlark-go"
-        key: "external_starlark-go@$BRANCH"
-        restore-keys: "external_starlark-go@$BRANCH"
+        key: external_starlark-go@${{ inputs.branch }}
+        restore-keys: external_starlark-go@${{ inputs.branch }}
     - name: Clone project external/starlark-go
       if: steps.external_starlark-go.outputs.cache-hit != 'true'
       shell: bash
@@ -158,8 +162,8 @@ runs:
       uses: actions/cache@v3
       with:
         path: "aosp/system/core"
-        key: "system_core@$BRANCH"
-        restore-keys: "system_core@$BRANCH"
+        key: system_core@${{ inputs.branch }}
+        restore-keys: system_core@${{ inputs.branch }}
     - name: Clone project system/core
       if: steps.system_core.outputs.cache-hit != 'true'
       shell: bash
@@ -172,8 +176,8 @@ runs:
       uses: actions/cache@v3
       with:
         path: "aosp/system/libbase"
-        key: "system_libbase@$BRANCH"
-        restore-keys: "system_libbase@$BRANCH"
+        key: system_libbase@${{ inputs.branch }}
+        restore-keys: system_libbase@${{ inputs.branch }}
     - name: Clone project system/libbase
       if: steps.system_libbase.outputs.cache-hit != 'true'
       shell: bash
@@ -186,8 +190,8 @@ runs:
       uses: actions/cache@v3
       with:
         path: "aosp/system/libhwbinder"
-        key: "system_libhwbinder@$BRANCH"
-        restore-keys: "system_libhwbinder@$BRANCH"
+        key: system_libhwbinder@${{ inputs.branch }}
+        restore-keys: system_libhwbinder@${{ inputs.branch }}
     - name: Clone project system/libhwbinder
       if: steps.system_libhwbinder.outputs.cache-hit != 'true'
       shell: bash
@@ -200,8 +204,8 @@ runs:
       uses: actions/cache@v3
       with:
         path: "aosp/system/logging"
-        key: "system_logging@$BRANCH"
-        restore-keys: "system_logging@$BRANCH"
+        key: system_logging@${{ inputs.branch }}
+        restore-keys: system_logging@${{ inputs.branch }}
     - name: Clone project system/logging
       if: steps.system_logging.outputs.cache-hit != 'true'
       shell: bash
@@ -214,8 +218,8 @@ runs:
       uses: actions/cache@v3
       with:
         path: "aosp/system/sepolicy"
-        key: "system_sepolicy@$BRANCH"
-        restore-keys: "system_sepolicy@$BRANCH"
+        key: system_sepolicy@${{ inputs.branch }}
+        restore-keys: system_sepolicy@${{ inputs.branch }}
     - name: Clone project system/sepolicy
       if: steps.system_sepolicy.outputs.cache-hit != 'true'
       shell: bash
@@ -228,8 +232,8 @@ runs:
       uses: actions/cache@v3
       with:
         path: "aosp/kernel/configs"
-        key: "kernel_configs@$BRANCH"
-        restore-keys: "kernel_configs@$BRANCH"
+        key: kernel_configs@${{ inputs.branch }}
+        restore-keys: kernel_configs@${{ inputs.branch }}
     - name: Clone project kernel/configs
       if: steps.kernel_configs.outputs.cache-hit != 'true'
       shell: bash
@@ -249,8 +253,8 @@ runs:
       uses: actions/cache@v3
       with:
         path: "aosp/prebuilts/build-tools"
-        key: "prebuilts_build-tools@$BRANCH"
-        restore-keys: "prebuilts_build-tools@$BRANCH"
+        key: prebuilts_build-tools@${{ inputs.branch }}
+        restore-keys: prebuilts_build-tools@${{ inputs.branch }}
     - name: Clone project prebuilts/build-tools
       if: steps.prebuilts_build-tools.outputs.cache-hit != 'true'
       shell: bash
@@ -263,8 +267,8 @@ runs:
       uses: actions/cache@v3
       with:
         path: "aosp/prebuilts/clang-tools"
-        key: "prebuilts_clang-tools@$BRANCH"
-        restore-keys: "prebuilts_clang-tools@$BRANCH"
+        key: prebuilts_clang-tools@${{ inputs.branch }}
+        restore-keys: prebuilts_clang-tools@${{ inputs.branch }}
     - name: Clone project prebuilts/clang-tools
       if: steps.prebuilts_clang-tools.outputs.cache-hit != 'true'
       shell: bash
@@ -277,8 +281,8 @@ runs:
       uses: actions/cache@v3
       with:
         path: "aosp/prebuilts/clang/host/linux-x86"
-        key: "prebuilts_clang_host_linux-x86@$BRANCH"
-        restore-keys: "prebuilts_clang_host_linux-x86@$BRANCH"
+        key: prebuilts_clang_host_linux-x86@${{ inputs.branch }}
+        restore-keys: prebuilts_clang_host_linux-x86@${{ inputs.branch }}
     - name: Clone project prebuilts/clang/host/linux-x86
       if: steps.prebuilts_clang_host_linux-x86.outputs.cache-hit != 'true'
       shell: bash
@@ -291,8 +295,8 @@ runs:
       uses: actions/cache@v3
       with:
         path: "aosp/prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8"
-        key: "prebuilts_gcc_linux-x86_host_x86_64-linux-glibc2_17-4_8@$BRANCH"
-        restore-keys: "prebuilts_gcc_linux-x86_host_x86_64-linux-glibc2_17-4_8@$BRANCH"
+        key: prebuilts_gcc_linux-x86_host_x86_64-linux-glibc2_17-4_8@${{ inputs.branch }}
+        restore-keys: prebuilts_gcc_linux-x86_host_x86_64-linux-glibc2_17-4_8@${{ inputs.branch }}
     - name: Clone project prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8
       if: steps.prebuilts_gcc_linux-x86_host_x86_64-linux-glibc2_17-4_8.outputs.cache-hit != 'true'
       shell: bash
@@ -305,8 +309,8 @@ runs:
       uses: actions/cache@v3
       with:
         path: "aosp/prebuilts/ndk"
-        key: "prebuilts_ndk@$BRANCH"
-        restore-keys: "prebuilts_ndk@$BRANCH"
+        key: prebuilts_ndk@${{ inputs.branch }}
+        restore-keys: prebuilts_ndk@${{ inputs.branch }}
     - name: Clone project prebuilts/ndk
       if: steps.prebuilts_ndk.outputs.cache-hit != 'true'
       shell: bash
@@ -319,8 +323,8 @@ runs:
       uses: actions/cache@v3
       with:
         path: "aosp/prebuilts/rust"
-        key: "prebuilts_rust@$BRANCH"
-        restore-keys: "prebuilts_rust@$BRANCH"
+        key: prebuilts_rust@${{ inputs.branch }}
+        restore-keys: prebuilts_rust@${{ inputs.branch }}
     - name: Clone project prebuilts/rust
       if: steps.prebuilts_rust.outputs.cache-hit != 'true'
       shell: bash
@@ -331,7 +335,6 @@ runs:
     - name: Copy and Link
       shell: bash
       run: |
-        export ROOTDIR=$(pwd)
         pushd aosp
         cp build/make/core/root.mk Makefile
         ln -sf make/CleanSpec.mk build/ && ln -sf make/core build/
@@ -339,4 +342,8 @@ runs:
         ln -sf build/soong/root.bp Android.bp
         mkdir -p prebuilts/go && touch prebuilts/go/.out-dir
         ln -sf $GOROOT_1_19_X64 prebuilts/go/linux-x86
+        mkdir -p out/soong/.minibootstrap out/soong/.bootstrap/bin
+        ln -sf $GITHUB_WORKSPACE/soong_build out/soong/.bootstrap/bin
+        ln -sf $GITHUB_WORKSPACE/bpglob out/soong/.minibootstrap
+        cp $GITHUB_WORKSPACE/ckati prebuilts/build-tools/linux-x86/bin
         popd
