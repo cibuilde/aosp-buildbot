@@ -20,6 +20,7 @@ runs:
         restore-keys: "build_make@$BRANCH"
     - name: Clone project build/make
       if: steps.build_make.outputs.cache-hit != 'true'
+      shell: bash
       run: |
         mkdir -p aosp && pushd aosp
         source $GITHUB_WORKSPACE/envsetup.sh
@@ -35,6 +36,7 @@ runs:
         restore-keys: "build_blueprint@$BRANCH"
     - name: Clone project build/blueprint
       if: steps.build_blueprint.outputs.cache-hit != 'true'
+      shell: bash
       run: |
         mkdir -p aosp && pushd aosp
         source $GITHUB_WORKSPACE/envsetup.sh
@@ -48,6 +50,7 @@ runs:
         restore-keys: "build_soong@$BRANCH"
     - name: Clone project build/soong
       if: steps.build_soong.outputs.cache-hit != 'true'
+      shell: bash
       run: |
         mkdir -p aosp && pushd aosp
         source $GITHUB_WORKSPACE/envsetup.sh
@@ -61,6 +64,7 @@ runs:
         restore-keys: "bionic@$BRANCH"
     - name: Clone project bionic
       if: steps.bionic.outputs.cache-hit != 'true'
+      shell: bash
       run: |
         mkdir -p aosp && pushd aosp
         source $GITHUB_WORKSPACE/envsetup.sh
@@ -74,6 +78,7 @@ runs:
         restore-keys: "external_libcxx@$BRANCH"
     - name: Clone project external/libcxx
       if: steps.external_libcxx.outputs.cache-hit != 'true'
+      shell: bash
       run: |
         mkdir -p aosp && pushd aosp
         source $GITHUB_WORKSPACE/envsetup.sh
@@ -87,6 +92,7 @@ runs:
         restore-keys: "external_libcxxabi@$BRANCH"
     - name: Clone project external/libcxxabi
       if: steps.external_libcxxabi.outputs.cache-hit != 'true'
+      shell: bash
       run: |
         mkdir -p aosp && pushd aosp
         source $GITHUB_WORKSPACE/envsetup.sh
@@ -100,6 +106,7 @@ runs:
         restore-keys: "external_compiler-rt@$BRANCH"
     - name: Clone project external/compiler-rt
       if: steps.external_compiler-rt.outputs.cache-hit != 'true'
+      shell: bash
       run: |
         mkdir -p aosp && pushd aosp
         source $GITHUB_WORKSPACE/envsetup.sh
@@ -113,6 +120,7 @@ runs:
         restore-keys: "external_gwp_asan@$BRANCH"
     - name: Clone project external/gwp_asan
       if: steps.external_gwp_asan.outputs.cache-hit != 'true'
+      shell: bash
       run: |
         mkdir -p aosp && pushd aosp
         source $GITHUB_WORKSPACE/envsetup.sh
@@ -126,6 +134,7 @@ runs:
         restore-keys: "external_golang-protobuf@$BRANCH"
     - name: Clone project external/golang-protobuf
       if: steps.external_golang-protobuf.outputs.cache-hit != 'true'
+      shell: bash
       run: |
         mkdir -p aosp && pushd aosp
         source $GITHUB_WORKSPACE/envsetup.sh
@@ -139,6 +148,7 @@ runs:
         restore-keys: "external_starlark-go@$BRANCH"
     - name: Clone project external/starlark-go
       if: steps.external_starlark-go.outputs.cache-hit != 'true'
+      shell: bash
       run: |
         mkdir -p aosp && pushd aosp
         source $GITHUB_WORKSPACE/envsetup.sh
@@ -152,6 +162,7 @@ runs:
         restore-keys: "system_core@$BRANCH"
     - name: Clone project system/core
       if: steps.system_core.outputs.cache-hit != 'true'
+      shell: bash
       run: |
         mkdir -p aosp && pushd aosp
         source $GITHUB_WORKSPACE/envsetup.sh
@@ -165,6 +176,7 @@ runs:
         restore-keys: "system_libbase@$BRANCH"
     - name: Clone project system/libbase
       if: steps.system_libbase.outputs.cache-hit != 'true'
+      shell: bash
       run: |
         mkdir -p aosp && pushd aosp
         source $GITHUB_WORKSPACE/envsetup.sh
@@ -178,6 +190,7 @@ runs:
         restore-keys: "system_libhwbinder@$BRANCH"
     - name: Clone project system/libhwbinder
       if: steps.system_libhwbinder.outputs.cache-hit != 'true'
+      shell: bash
       run: |
         mkdir -p aosp && pushd aosp
         source $GITHUB_WORKSPACE/envsetup.sh
@@ -191,6 +204,7 @@ runs:
         restore-keys: "system_logging@$BRANCH"
     - name: Clone project system/logging
       if: steps.system_logging.outputs.cache-hit != 'true'
+      shell: bash
       run: |
         mkdir -p aosp && pushd aosp
         source $GITHUB_WORKSPACE/envsetup.sh
@@ -204,6 +218,7 @@ runs:
         restore-keys: "system_sepolicy@$BRANCH"
     - name: Clone project system/sepolicy
       if: steps.system_sepolicy.outputs.cache-hit != 'true'
+      shell: bash
       run: |
         mkdir -p aosp && pushd aosp
         source $GITHUB_WORKSPACE/envsetup.sh
@@ -217,12 +232,14 @@ runs:
         restore-keys: "kernel_configs@$BRANCH"
     - name: Clone project kernel/configs
       if: steps.kernel_configs.outputs.cache-hit != 'true'
+      shell: bash
       run: |
         mkdir -p aosp && pushd aosp
         source $GITHUB_WORKSPACE/envsetup.sh
         clone_depth kernel/configs
 
     - name: Download get_clang_version.py and Link go
+      shell: bash
       run: |
         mkdir -p aosp && pushd aosp
         curl "https://android.googlesource.com/platform/build/soong/+/refs/heads/master/scripts/get_clang_version.py?format=TEXT" | base64 -d > $GITHUB_WORKSPACE/get_clang_version.py
@@ -236,6 +253,7 @@ runs:
         restore-keys: "prebuilts_build-tools@$BRANCH"
     - name: Clone project prebuilts/build-tools
       if: steps.prebuilts_build-tools.outputs.cache-hit != 'true'
+      shell: bash
       run: |
         mkdir -p aosp && pushd aosp
         source $GITHUB_WORKSPACE/envsetup.sh
@@ -249,6 +267,7 @@ runs:
         restore-keys: "prebuilts_clang-tools@$BRANCH"
     - name: Clone project prebuilts/clang-tools
       if: steps.prebuilts_clang-tools.outputs.cache-hit != 'true'
+      shell: bash
       run: |
         mkdir -p aosp && pushd aosp
         source $GITHUB_WORKSPACE/envsetup.sh
@@ -262,6 +281,7 @@ runs:
         restore-keys: "prebuilts_clang_host_linux-x86@$BRANCH"
     - name: Clone project prebuilts/clang/host/linux-x86
       if: steps.prebuilts_clang_host_linux-x86.outputs.cache-hit != 'true'
+      shell: bash
       run: |
         mkdir -p aosp && pushd aosp
         source $GITHUB_WORKSPACE/envsetup.sh
@@ -275,6 +295,7 @@ runs:
         restore-keys: "prebuilts_gcc_linux-x86_host_x86_64-linux-glibc2_17-4_8@$BRANCH"
     - name: Clone project prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8
       if: steps.prebuilts_gcc_linux-x86_host_x86_64-linux-glibc2_17-4_8.outputs.cache-hit != 'true'
+      shell: bash
       run: |
         mkdir -p aosp && pushd aosp
         source $GITHUB_WORKSPACE/envsetup.sh
@@ -288,6 +309,7 @@ runs:
         restore-keys: "prebuilts_ndk@$BRANCH"
     - name: Clone project prebuilts/ndk
       if: steps.prebuilts_ndk.outputs.cache-hit != 'true'
+      shell: bash
       run: |
         mkdir -p aosp && pushd aosp
         source $GITHUB_WORKSPACE/envsetup.sh
@@ -301,11 +323,13 @@ runs:
         restore-keys: "prebuilts_rust@$BRANCH"
     - name: Clone project prebuilts/rust
       if: steps.prebuilts_rust.outputs.cache-hit != 'true'
+      shell: bash
       run: |
         mkdir -p aosp && pushd aosp
         source $GITHUB_WORKSPACE/envsetup.sh
         clone_sparse prebuilts/rust bootstrap linux-x86/1.51.0
     - name: Copy and Link
+      shell: bash
       run: |
         export ROOTDIR=$(pwd)
         pushd aosp
