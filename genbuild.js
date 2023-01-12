@@ -3,83 +3,123 @@ const fs            = require('fs');
 const text = fs.readFileSync(process.argv.pop());
 const modules = JSON.parse(text)
 
+const parse_variant = (variant) => {
+	let platform = '', recovery = false, vendor = false, arch = 0, lto = false, type = '', sdk = false, apex = false
+	let sdkVersion = '', apexVersion = ''
+	const parts = variant.split('_')
+	for (let i = 0; i < parts.length; ++i) {
+		const p = parts[i]
+		if (p == 'android') {
+			platform = p
+		} else if (p == 'recovery') {
+			recovery = true
+		} else if (p == 'shared') {
+			type = 'shared'
+		} else if (p == 'static') {
+			type = 'static'
+		} else if (p == 'object') {
+			type = 'object'
+		} else if (p == 'lto-thin') {
+			lto = true
+		} else if (p.startsWith('vendor')) {
+			vendor = true
+		} else if (p == 'x86') {
+			if (i+1 < parts.length && parts[i+1] == '64') {
+				++i
+				if (arch == 0) {
+					arch = 64
+				}
+			} else {
+				arch = 32
+			}
+		} else if (p == 'sdk') {
+			sdk = true
+			let version = parseInt(parts[i+1])
+			if (i+1 < parts.length && version) {
+				++i
+				sdkVersion = version
+			}
+		} else if (p.startsWith('apex')) {
+			apex = true
+			apexVersion = p.slice(4)
+		}
+	}
+	//console.log(variant)
+	return {
+		platform,
+		type,
+		recovery,
+		vendor,
+		arch,
+		lto,
+		sdk,
+		sdkVersion,
+		apex,
+		apexVersion,
+	}
+}
+
 let lto_static = new Set()
 let lto_shared = new Set()
-let apex = new Map()
+let apex_map = new Map()
+let lto_map = new Map()
+lto_map.set('static', new Set())
+lto_map.set('shared', new Set())
 const parse_apex_sdk = (name, type, variant) => {
-	let separator = '_x86_64_'
-	if (type == 'static') {
-		separator = '_static_'
-	} else if (type == 'shared') {
-		separator = '_shared_'
-	} else if (type == 'object') {
-		separator = '_x86_64_'
-	}
-	const parts = variant.split(separator)
-	let apexVersion = '10000'
-	let sdk = false
-	let sdkVersion = 'current'
-	if (parts[1].startsWith('lto-thin')) {
-		if (type == 'static') {
-			lto_static.add(name)
-		} else if (type == 'shared') {
-			lto_shared.add(name)
-		} else {
-			process.exit(-1)
-		}
-		return
-	} else if (parts[1].startsWith('apex')) {
-		apexVersion = parts[1].slice(4)
-	} else if (parts[1].startsWith('sdk')) {
-		sdk = true
-		const substr = parts[1].slice(4)
-		if (substr.startsWith('apex')) {
-			apexVersion = substr.slice(4)
-		} else {
-			const sdkparts = substr.split('_')
-			if (parseInt(sdkparts)) {
-				sdkVersion = sdkparts[0]
-			}
-			if (sdkparts[1].startsWith('apex')) {
-				apexVersion = sdkparts[1].slice(4)
+	let prop = parse_variant(variant)
+	if (prop.apex) {
+		let key = prop.apexVersion
+		if (prop.sdk) {
+			key += '_sdk'
+			if (prop.sdkVersion.length > 0) {
+				key += '_' + prop.sdkVersion
 			}
 		}
-	} else {
-		process.exit(-1)
+		if (prop.lto) {
+			key += '_lto'
+		}
+		if (!apex_map.has(key)) {
+			apex_map.set(key, {
+				apexVersion: prop.apexVersion,
+				static: new Set(),
+				shared: new Set(),
+				object: new Set(),
+				sdk: prop.sdk,
+				sdkVersion: prop.sdkVersion,
+				lto: prop.lto,
+			})
+		}
+		let apex = apex_map.get(key)
+		apex[type].add(name)
+	} else if (prop.lto) {
+		lto_map.get(type).add(name)
 	}
-	let key = sdk ? apexVersion+'_sdk_'+sdkVersion : apexVersion
-	if (!apex.has(key)) {
-		apex.set(key, {
-			static: new Set(),
-			shared: new Set(),
-			object: new Set(),
-		})
-	}
-	let obj = apex.get(key)
-	obj[type].add(name)
 }
 modules.forEach(prop => {
-	//if (prop.project_path.startsWith('external/rust')) {
-	//	return
-	//}
+	if (prop.project_path.startsWith('external/rust')) {
+		return
+	}
 		prop.outputs.forEach((output) => {
 			//console.log(ninjaFile)
 			if (!fs.existsSync(output.ninja)) {
 				//console.log(output)
+				//parse_variant(output.filedir.slice(0, -1))
 				parse_apex_sdk(prop.name, output.type, output.filedir.slice(0, -1))
 				return
 			}
 		})
 })
-if (lto_shared.size > 0 || lto_static.size > 0) {
+if (lto_map.get('static').size > 0 || lto_map.get('shared').size > 0) {
 	console.log(`
 cc_binary {
   name: "voiddep-lto",
   srcs: [ "util.cpp", ],
+  recovery_available: true,
+  vendor_available: true,
   compile_multilib: "both",
   multilib: { lib32: { suffix: "32", }, lib64: { suffix: "64", }, },
-  static_libs: ${JSON.stringify(Array.from(lto_static))},
-  shared_libs: ${JSON.stringify(Array.from(lto_shared))},
+  static_libs: ${JSON.stringify(Array.from(lto_map.get('static')))},
+  shared_libs: ${JSON.stringify(Array.from(lto_map.get('shared')))},
   stl: "none",
   target: { android: { lto: { thin: true, }, }, },
 }`)
@@ -99,12 +139,11 @@ apex_key {
   private_key: "com.android.prebuilts.pem",
 }`)
 let apex_libs = new Map()
-apex.forEach((obj, key) => {
+apex_map.forEach((apex, key) => {
 	let objectStr = ''
-	obj.object.forEach(o => objectStr += '":'+o+'", ')
-	if (key.includes('sdk')) {
-		const parts = key.split('_sdk_')
-		let apexVersion = parts[0]
+	apex.object.forEach(o => objectStr += '":'+o+'", ')
+	if (apex.sdk) {
+		let apexVersion = apex.apexVersion
 		if (!apex_libs.has(apexVersion)) {
 			apex_libs.set(apexVersion, {
 				apps: [],
@@ -112,35 +151,32 @@ apex.forEach((obj, key) => {
 			})
 		}
 		apex_libs.get(apexVersion).apps.push(`voiddep${key}`)
-		//console.log(parts)
-		//console.log(key)
-		//console.log(obj)
 		console.log(`
 cc_library {
   name: "libvoiddep${key}",
   srcs: [ "util.cpp", ${objectStr}],
-  static_libs: ${JSON.stringify(Array.from(obj.static))},
-  shared_libs: ${JSON.stringify(Array.from(obj.shared))},
-  apex_available: [ "com.android.prebuilts-${parts[0]}", ],
+  static_libs: ${JSON.stringify(Array.from(apex.static))},
+  shared_libs: ${JSON.stringify(Array.from(apex.shared))},
+  apex_available: [ "com.android.prebuilts-${apex.apexVersion}", ],
   stl: "none",
-  min_sdk_version: "${parts[1]}",
+  min_sdk_version: "${apex.sdkVersion.length > 0 ? apex.sdkVersion : apex.apexVersion}",
   sdk_version: "current",
 }
 android_app {
   name: "voiddep${key}",
   sdk_version: "system_current",
-  min_sdk_version: "${parts[1]}",
-  target_sdk_version: "${parts[1]}",
+  min_sdk_version: "${apex.sdkVersion.length > 0 ? apex.sdkVersion : apex.apexVersion}",
+  ${apex.sdkVersion.length > 0 ? `\n  target_sdk_version: "${apex.sdkVersion}",`: ''}
   certificate: "platform",
   srcs: [ "void.java", ],
   resource_dirs: [ "res", ],
   manifest: "AndroidManifest.xml",
   jni_libs: ["libvoiddep${key}"],
   use_embedded_native_libs: true,
-  apex_available: [ "com.android.prebuilts-${parts[0]}", ],
+  apex_available: [ "com.android.prebuilts-${apex.apexVersion}", ],
 }`)
 	} else {
-		let apexVersion = key
+		let apexVersion = apex.apexVersion
 		if (!apex_libs.has(apexVersion)) {
 			apex_libs.set(apexVersion, {
 				apps: [],
@@ -154,15 +190,16 @@ cc_binary {
   srcs: [ "util.cpp", ${objectStr}],
   compile_multilib: "both",
   multilib: { lib32: { suffix: "32", }, lib64: { suffix: "64", }, },
-  static_libs: ${JSON.stringify(Array.from(obj.static))},
-  shared_libs: ${JSON.stringify(Array.from(obj.shared))},
-  apex_available: [ "com.android.prebuilts-${key}", ],
-  min_sdk_version: "${key == '10000' ? 'apex_inherit' : key}",
-  stl: "none", ${obj.static.has('libc') ? '\n  static_executable: true,' : ''}
+  static_libs: ${JSON.stringify(Array.from(apex.static))},
+  shared_libs: ${JSON.stringify(Array.from(apex.shared))},
+  apex_available: [ "com.android.prebuilts-${apexVersion}", ],
+  min_sdk_version: "${apexVersion == '10000' ? 'apex_inherit' : apexVersion}",
+  stl: "none", ${apex.static.has('libc') ? '\n  static_executable: true,' : ''}
+  ${apex.lto ? 'target: { android: { lto: { thin: true, }, }, },' : ''}
 }`)
 	}
 })
-apex_libs.forEach((obj, key) => {
+apex_libs.forEach((apex, key) => {
 console.log(`
 apex {
   name: "com.android.prebuilts-${key}",
@@ -171,9 +208,9 @@ apex {
   native_shared_libs: [],
   binaries: [],
   prebuilts: [],
-  apps: ${JSON.stringify(obj.apps)},
+  apps: ${JSON.stringify(apex.apps)},
   multilib: { both: {
-    binaries: ${JSON.stringify(obj.binaries)},
+    binaries: ${JSON.stringify(apex.binaries)},
   }, },
   key: "com.android.prebuilts.key",
   certificate: "com.android.prebuilts.certificate",

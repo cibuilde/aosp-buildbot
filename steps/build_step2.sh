@@ -192,3 +192,19 @@ tar cf external_rust_crates_quote-0.tar.xz -C prebuiltlibs/external/rust/crates/
 printf "rust_prebuilt_library {\n\tname: \"libregex\",\n\tdevice_supported: false,\n\thost_supported: true,\n\tcrate_name: \"regex\",\n\tvendor_available: false,\n\tsrcs: [\"libregex.rlib\"],\n\tmultiple_variants: true,\n\ttarget: { host: { compile_multilib: \"64\",  }, },\n\trequired: [],\n\tstrip: { none: true, },\n}" > prebuiltlibs/external/rust/crates/regex/Android.bp
 cp -r out/soong/ninja/external/rust/crates/regex/ prebuiltlibs/external/rust/crates/regex/external_rust_crates_regex-0
 tar cf external_rust_crates_regex-0.tar.xz -C prebuiltlibs/external/rust/crates/regex/ .
+rm -rf external/zlib
+rm -rf external/bc
+rm -rf external/brotli
+rm -rf external/bzip2
+rm -rf external/expat
+rm -rf external/fft2d
+rm -rf external/libfuse
+rm -rf external/lua
+rm -rf external/lzma
+rm -rf external/marisa-trie
+rm -rf external/mksh
+rm -rf external/one-true-awk
+rm -rf external/pcre
+rm -rf external/rust/crates/cexpr
+rm -rf external/rust/crates/quote
+rm -rf external/rust/crates/regex

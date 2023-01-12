@@ -175,3 +175,33 @@ mkdir -p prebuiltlibs/system/core/property_service/libpropertyinfoparser/include
 printf "cc_prebuilt_library_static {\n\tname: \"libpropertyinfoparser\",\n\tdevice_supported: true,\n\thost_supported: false,\n\tvendor_available: false,\n\trecovery_available: true,\n\tsrcs: [\"libpropertyinfoparser.a\"],\n\tmultiple_variants: true,\n\tobjs: [\"libpropertyinfoparser/property_info_parser.o\"],\n\ttarget: { android: { compile_multilib: \"both\",  }, },\n\trequired: [],\n\tsystem_shared_libs: [\"\",], stl: \"none\", \n\tprefer: true,\n\tstrip: { none: true, },\n\texport_include_dirs: [\"property_service/libpropertyinfoparser/include\"],\n}" > prebuiltlibs/system/core/Android.bp
 cp -r out/soong/ninja/system/core/ prebuiltlibs/system/core/system_core-0
 tar cf system_core-0.tar.xz -C prebuiltlibs/system/core/ .
+rm -rf external/arm-optimized-routines
+rm -rf external/rust/crates/bitflags
+rm -rf external/rust/crates/bytes
+rm -rf external/rust/crates/either
+rm -rf external/rust/crates/fallible-iterator
+rm -rf external/rust/crates/fallible-streaming-iterator
+rm -rf external/rust/crates/futures-core
+rm -rf external/rust/crates/futures-io
+rm -rf external/rust/crates/futures-sink
+rm -rf external/rust/crates/futures-task
+rm -rf external/rust/crates/glob
+rm -rf external/rust/crates/lazycell
+rm -rf external/rust/crates/memchr
+rm -rf external/rust/crates/paste
+rm -rf external/rust/crates/peeking_take_while
+rm -rf external/rust/crates/pin-project-lite
+rm -rf external/rust/crates/pin-utils
+rm -rf external/rust/crates/proc-macro-hack
+rm -rf external/rust/crates/proc-macro-nested
+rm -rf external/rust/crates/regex-syntax
+rm -rf external/rust/crates/rustc-hash
+rm -rf external/rust/crates/scopeguard
+rm -rf external/rust/crates/shlex
+rm -rf external/rust/crates/slab
+rm -rf external/rust/crates/smallvec
+rm -rf external/rust/crates/termcolor
+rm -rf external/rust/crates/textwrap
+rm -rf external/rust/crates/unicode-width
+rm -rf external/rust/crates/unicode-xid
+rm -rf external/scudo

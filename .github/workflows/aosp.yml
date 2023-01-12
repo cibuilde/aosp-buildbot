@@ -5,16 +5,6 @@ env:
   branch: 'android-12.0.0_r1'
 jobs:
 
-  build_step0:
-    runs-on: ubuntu-latest
-    
-    steps:
-    - name: Checkout
-      uses: actions/checkout@main
-    - name: Call Composite Action bootstrap
-      uses: ./.github/actions/bootstrap
-      id: bootstrap
-
     - name: Restore Cache external/arm-optimized-routines
       id: external_arm-optimized-routines
       uses: actions/cache@v3
@@ -406,7 +396,6 @@ jobs:
         source $GITHUB_WORKSPACE/envsetup.sh
         clone_depth_platform external/scudo
 
-
     - name: Build Step-0
       run: |
         pushd aosp
@@ -574,16 +563,6 @@ jobs:
         name: system_core-0
         path: aosp/prebuiltlibs/system/core
 
-  build_step1:
-    runs-on: ubuntu-latest
-    needs: [build_step0]
-    steps:
-    - name: Checkout
-      uses: actions/checkout@main
-    - name: Call Composite Action bootstrap
-      uses: ./.github/actions/bootstrap
-      id: bootstrap
-
     - name: Restore Cache external/rust/crates/nom
       id: external_rust_crates_nom
       uses: actions/cache@v3
@@ -689,72 +668,6 @@ jobs:
         source $GITHUB_WORKSPACE/envsetup.sh
         clone_depth_platform external/rust/crates/proc-macro2
 
-    - name: Download artifact external_arm-optimized-routines-0
-      uses: actions/download-artifact@v3
-      with:
-        name: external_arm-optimized-routines-0
-        path: aosp/prebuiltlibs/external/arm-optimized-routines
-    - name: Download artifact external_gwp_asan-0
-      uses: actions/download-artifact@v3
-      with:
-        name: external_gwp_asan-0
-        path: aosp/prebuiltlibs/external/gwp_asan
-    - name: Download artifact external_scudo-0
-      uses: actions/download-artifact@v3
-      with:
-        name: external_scudo-0
-        path: aosp/prebuiltlibs/external/scudo
-    - name: Download artifact system_core-0
-      uses: actions/download-artifact@v3
-      with:
-        name: system_core-0
-        path: aosp/prebuiltlibs/system/core
-    - name: Download artifact external_rust_crates_memchr-0
-      uses: actions/download-artifact@v3
-      with:
-        name: external_rust_crates_memchr-0
-        path: aosp/prebuiltlibs/external/rust/crates/memchr
-    - name: Download artifact external_rust_crates_bytes-0
-      uses: actions/download-artifact@v3
-      with:
-        name: external_rust_crates_bytes-0
-        path: aosp/prebuiltlibs/external/rust/crates/bytes
-    - name: Download artifact external_rust_crates_bitflags-0
-      uses: actions/download-artifact@v3
-      with:
-        name: external_rust_crates_bitflags-0
-        path: aosp/prebuiltlibs/external/rust/crates/bitflags
-    - name: Download artifact external_rust_crates_textwrap-0
-      uses: actions/download-artifact@v3
-      with:
-        name: external_rust_crates_textwrap-0
-        path: aosp/prebuiltlibs/external/rust/crates/textwrap
-    - name: Download artifact external_rust_crates_termcolor-0
-      uses: actions/download-artifact@v3
-      with:
-        name: external_rust_crates_termcolor-0
-        path: aosp/prebuiltlibs/external/rust/crates/termcolor
-    - name: Download artifact external_rust_crates_unicode-width-0
-      uses: actions/download-artifact@v3
-      with:
-        name: external_rust_crates_unicode-width-0
-        path: aosp/prebuiltlibs/external/rust/crates/unicode-width
-    - name: Download artifact external_rust_crates_futures-core-0
-      uses: actions/download-artifact@v3
-      with:
-        name: external_rust_crates_futures-core-0
-        path: aosp/prebuiltlibs/external/rust/crates/futures-core
-    - name: Download artifact external_rust_crates_scopeguard-0
-      uses: actions/download-artifact@v3
-      with:
-        name: external_rust_crates_scopeguard-0
-        path: aosp/prebuiltlibs/external/rust/crates/scopeguard
-    - name: Download artifact external_rust_crates_unicode-xid-0
-      uses: actions/download-artifact@v3
-      with:
-        name: external_rust_crates_unicode-xid-0
-        path: aosp/prebuiltlibs/external/rust/crates/unicode-xid
-
     - name: Build Step-1
       run: |
         pushd aosp
@@ -806,16 +719,6 @@ jobs:
       with:
         name: external_rust_crates_proc-macro2-0
         path: aosp/prebuiltlibs/external/rust/crates/proc-macro2
-
-  build_step2:
-    runs-on: ubuntu-latest
-    needs: [build_step1]
-    steps:
-    - name: Checkout
-      uses: actions/checkout@main
-    - name: Call Composite Action bootstrap
-      uses: ./.github/actions/bootstrap
-      id: bootstrap
 
     - name: Restore Cache external/zlib
       id: external_zlib
@@ -1025,37 +928,6 @@ jobs:
         pushd aosp
         source $GITHUB_WORKSPACE/envsetup.sh
         clone_depth_platform external/rust/crates/regex
-
-    - name: Download artifact bionic-0
-      uses: actions/download-artifact@v3
-      with:
-        name: bionic-0
-        path: aosp/prebuiltlibs/bionic
-    - name: Download artifact external_rust_crates_nom-0
-      uses: actions/download-artifact@v3
-      with:
-        name: external_rust_crates_nom-0
-        path: aosp/prebuiltlibs/external/rust/crates/nom
-    - name: Download artifact external_rust_crates_proc-macro2-0
-      uses: actions/download-artifact@v3
-      with:
-        name: external_rust_crates_proc-macro2-0
-        path: aosp/prebuiltlibs/external/rust/crates/proc-macro2
-    - name: Download artifact external_rust_crates_aho-corasick-0
-      uses: actions/download-artifact@v3
-      with:
-        name: external_rust_crates_aho-corasick-0
-        path: aosp/prebuiltlibs/external/rust/crates/aho-corasick
-    - name: Download artifact external_rust_crates_memchr-0
-      uses: actions/download-artifact@v3
-      with:
-        name: external_rust_crates_memchr-0
-        path: aosp/prebuiltlibs/external/rust/crates/memchr
-    - name: Download artifact external_rust_crates_regex-syntax-0
-      uses: actions/download-artifact@v3
-      with:
-        name: external_rust_crates_regex-syntax-0
-        path: aosp/prebuiltlibs/external/rust/crates/regex-syntax
 
     - name: Build Step-2
       run: |
