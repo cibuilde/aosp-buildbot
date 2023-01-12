@@ -1,0 +1,3083 @@
+[
+  {
+    "name": "libc_bionic_ndk",
+    "project_path": "bionic/",
+    "outputs": [
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc_bionic_ndk.a",
+        "filedir": "android_recovery_x86_64_static/",
+        "path": "out/soong/.intermediates/bionic/libc/libc_bionic_ndk/android_recovery_x86_64_static/libc_bionic_ndk.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/libc_bionic_ndk@android_recovery_x86_64_static.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc_bionic_ndk.a",
+        "filedir": "android_x86_64_static/",
+        "path": "out/soong/.intermediates/bionic/libc/libc_bionic_ndk/android_x86_64_static/libc_bionic_ndk.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/libc_bionic_ndk@android_x86_64_static.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc_bionic_ndk.a",
+        "filedir": "android_x86_64_static_apex10000/",
+        "path": "out/soong/.intermediates/bionic/libc/libc_bionic_ndk/android_x86_64_static_apex10000/libc_bionic_ndk.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/libc_bionic_ndk@android_x86_64_static_apex10000.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc_bionic_ndk.a",
+        "filedir": "android_x86_x86_64_static/",
+        "path": "out/soong/.intermediates/bionic/libc/libc_bionic_ndk/android_x86_x86_64_static/libc_bionic_ndk.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/libc_bionic_ndk@android_x86_x86_64_static.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc_bionic_ndk.a",
+        "filedir": "android_x86_x86_64_static_apex10000/",
+        "path": "out/soong/.intermediates/bionic/libc/libc_bionic_ndk/android_x86_x86_64_static_apex10000/libc_bionic_ndk.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/libc_bionic_ndk@android_x86_x86_64_static_apex10000.ninja"
+      }
+    ]
+  },
+  {
+    "name": "libc_bionic_systrace",
+    "project_path": "bionic/",
+    "outputs": [
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc_bionic_systrace.a",
+        "filedir": "android_recovery_x86_64_static/",
+        "path": "out/soong/.intermediates/bionic/libc/libc_bionic_systrace/android_recovery_x86_64_static/libc_bionic_systrace.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/libc_bionic_systrace@android_recovery_x86_64_static.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc_bionic_systrace.a",
+        "filedir": "android_x86_64_static/",
+        "path": "out/soong/.intermediates/bionic/libc/libc_bionic_systrace/android_x86_64_static/libc_bionic_systrace.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/libc_bionic_systrace@android_x86_64_static.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc_bionic_systrace.a",
+        "filedir": "android_x86_64_static_apex10000/",
+        "path": "out/soong/.intermediates/bionic/libc/libc_bionic_systrace/android_x86_64_static_apex10000/libc_bionic_systrace.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/libc_bionic_systrace@android_x86_64_static_apex10000.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc_bionic_systrace.a",
+        "filedir": "android_x86_x86_64_static/",
+        "path": "out/soong/.intermediates/bionic/libc/libc_bionic_systrace/android_x86_x86_64_static/libc_bionic_systrace.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/libc_bionic_systrace@android_x86_x86_64_static.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc_bionic_systrace.a",
+        "filedir": "android_x86_x86_64_static_apex10000/",
+        "path": "out/soong/.intermediates/bionic/libc/libc_bionic_systrace/android_x86_x86_64_static_apex10000/libc_bionic_systrace.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/libc_bionic_systrace@android_x86_x86_64_static_apex10000.ninja"
+      }
+    ]
+  },
+  {
+    "name": "libc_pthread",
+    "project_path": "bionic/",
+    "outputs": [
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc_pthread.a",
+        "filedir": "android_recovery_x86_64_static/",
+        "path": "out/soong/.intermediates/bionic/libc/libc_pthread/android_recovery_x86_64_static/libc_pthread.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/libc_pthread@android_recovery_x86_64_static.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc_pthread.a",
+        "filedir": "android_x86_64_static/",
+        "path": "out/soong/.intermediates/bionic/libc/libc_pthread/android_x86_64_static/libc_pthread.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/libc_pthread@android_x86_64_static.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc_pthread.a",
+        "filedir": "android_x86_64_static_apex10000/",
+        "path": "out/soong/.intermediates/bionic/libc/libc_pthread/android_x86_64_static_apex10000/libc_pthread.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/libc_pthread@android_x86_64_static_apex10000.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc_pthread.a",
+        "filedir": "android_x86_x86_64_static/",
+        "path": "out/soong/.intermediates/bionic/libc/libc_pthread/android_x86_x86_64_static/libc_pthread.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/libc_pthread@android_x86_x86_64_static.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc_pthread.a",
+        "filedir": "android_x86_x86_64_static_apex10000/",
+        "path": "out/soong/.intermediates/bionic/libc/libc_pthread/android_x86_x86_64_static_apex10000/libc_pthread.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/libc_pthread@android_x86_x86_64_static_apex10000.ninja"
+      }
+    ]
+  },
+  {
+    "name": "libc_syscalls",
+    "project_path": "bionic/",
+    "outputs": [
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc_syscalls.a",
+        "filedir": "android_recovery_x86_64_static/",
+        "path": "out/soong/.intermediates/bionic/libc/libc_syscalls/android_recovery_x86_64_static/libc_syscalls.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/libc_syscalls@android_recovery_x86_64_static.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc_syscalls.a",
+        "filedir": "android_x86_64_static/",
+        "path": "out/soong/.intermediates/bionic/libc/libc_syscalls/android_x86_64_static/libc_syscalls.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/libc_syscalls@android_x86_64_static.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc_syscalls.a",
+        "filedir": "android_x86_64_static_apex10000/",
+        "path": "out/soong/.intermediates/bionic/libc/libc_syscalls/android_x86_64_static_apex10000/libc_syscalls.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/libc_syscalls@android_x86_64_static_apex10000.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc_syscalls.a",
+        "filedir": "android_x86_x86_64_static/",
+        "path": "out/soong/.intermediates/bionic/libc/libc_syscalls/android_x86_x86_64_static/libc_syscalls.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/libc_syscalls@android_x86_x86_64_static.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc_syscalls.a",
+        "filedir": "android_x86_x86_64_static_apex10000/",
+        "path": "out/soong/.intermediates/bionic/libc/libc_syscalls/android_x86_x86_64_static_apex10000/libc_syscalls.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/libc_syscalls@android_x86_x86_64_static_apex10000.ninja"
+      }
+    ]
+  },
+  {
+    "name": "libc_common",
+    "project_path": "bionic/",
+    "outputs": [
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc_common.a",
+        "filedir": "android_recovery_x86_64_static/",
+        "path": "out/soong/.intermediates/bionic/libc/libc_common/android_recovery_x86_64_static/libc_common.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/libc_common@android_recovery_x86_64_static.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc_common.a",
+        "filedir": "android_x86_64_static/",
+        "path": "out/soong/.intermediates/bionic/libc/libc_common/android_x86_64_static/libc_common.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/libc_common@android_x86_64_static.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc_common.a",
+        "filedir": "android_x86_64_static_apex10000/",
+        "path": "out/soong/.intermediates/bionic/libc/libc_common/android_x86_64_static_apex10000/libc_common.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/libc_common@android_x86_64_static_apex10000.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc_common.a",
+        "filedir": "android_x86_x86_64_static/",
+        "path": "out/soong/.intermediates/bionic/libc/libc_common/android_x86_x86_64_static/libc_common.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/libc_common@android_x86_x86_64_static.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc_common.a",
+        "filedir": "android_x86_x86_64_static_apex10000/",
+        "path": "out/soong/.intermediates/bionic/libc/libc_common/android_x86_x86_64_static_apex10000/libc_common.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/libc_common@android_x86_x86_64_static_apex10000.ninja"
+      }
+    ]
+  },
+  {
+    "name": "libc_static_dispatch",
+    "project_path": "bionic/",
+    "outputs": [
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc_static_dispatch.a",
+        "filedir": "android_x86_64_static/",
+        "path": "out/soong/.intermediates/bionic/libc/libc_static_dispatch/android_x86_64_static/libc_static_dispatch.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/libc_static_dispatch@android_x86_64_static.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc_static_dispatch.a",
+        "filedir": "android_x86_64_static_apex10000/",
+        "path": "out/soong/.intermediates/bionic/libc/libc_static_dispatch/android_x86_64_static_apex10000/libc_static_dispatch.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/libc_static_dispatch@android_x86_64_static_apex10000.ninja"
+      }
+    ]
+  },
+  {
+    "name": "libc_dynamic_dispatch",
+    "project_path": "bionic/",
+    "outputs": [
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc_dynamic_dispatch.a",
+        "filedir": "android_recovery_x86_64_static/",
+        "path": "out/soong/.intermediates/bionic/libc/libc_dynamic_dispatch/android_recovery_x86_64_static/libc_dynamic_dispatch.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/libc_dynamic_dispatch@android_recovery_x86_64_static.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc_dynamic_dispatch.a",
+        "filedir": "android_x86_64_static/",
+        "path": "out/soong/.intermediates/bionic/libc/libc_dynamic_dispatch/android_x86_64_static/libc_dynamic_dispatch.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/libc_dynamic_dispatch@android_x86_64_static.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc_dynamic_dispatch.a",
+        "filedir": "android_x86_64_static_apex10000/",
+        "path": "out/soong/.intermediates/bionic/libc/libc_dynamic_dispatch/android_x86_64_static_apex10000/libc_dynamic_dispatch.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/libc_dynamic_dispatch@android_x86_64_static_apex10000.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc_dynamic_dispatch.a",
+        "filedir": "android_x86_x86_64_static/",
+        "path": "out/soong/.intermediates/bionic/libc/libc_dynamic_dispatch/android_x86_x86_64_static/libc_dynamic_dispatch.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/libc_dynamic_dispatch@android_x86_x86_64_static.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc_dynamic_dispatch.a",
+        "filedir": "android_x86_x86_64_static_apex10000/",
+        "path": "out/soong/.intermediates/bionic/libc/libc_dynamic_dispatch/android_x86_x86_64_static_apex10000/libc_dynamic_dispatch.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/libc_dynamic_dispatch@android_x86_x86_64_static_apex10000.ninja"
+      }
+    ]
+  },
+  {
+    "name": "libc_common_static",
+    "project_path": "bionic/",
+    "outputs": [
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc_common_static.a",
+        "filedir": "android_x86_64_static/",
+        "path": "out/soong/.intermediates/bionic/libc/libc_common_static/android_x86_64_static/libc_common_static.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/libc_common_static@android_x86_64_static.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc_common_static.a",
+        "filedir": "android_x86_64_static_apex10000/",
+        "path": "out/soong/.intermediates/bionic/libc/libc_common_static/android_x86_64_static_apex10000/libc_common_static.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/libc_common_static@android_x86_64_static_apex10000.ninja"
+      }
+    ]
+  },
+  {
+    "name": "libc_common_shared",
+    "project_path": "bionic/",
+    "outputs": [
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc_common_shared.a",
+        "filedir": "android_recovery_x86_64_static/",
+        "path": "out/soong/.intermediates/bionic/libc/libc_common_shared/android_recovery_x86_64_static/libc_common_shared.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/libc_common_shared@android_recovery_x86_64_static.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc_common_shared.a",
+        "filedir": "android_x86_64_static/",
+        "path": "out/soong/.intermediates/bionic/libc/libc_common_shared/android_x86_64_static/libc_common_shared.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/libc_common_shared@android_x86_64_static.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc_common_shared.a",
+        "filedir": "android_x86_64_static_apex10000/",
+        "path": "out/soong/.intermediates/bionic/libc/libc_common_shared/android_x86_64_static_apex10000/libc_common_shared.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/libc_common_shared@android_x86_64_static_apex10000.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc_common_shared.a",
+        "filedir": "android_x86_x86_64_static/",
+        "path": "out/soong/.intermediates/bionic/libc/libc_common_shared/android_x86_x86_64_static/libc_common_shared.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/libc_common_shared@android_x86_x86_64_static.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc_common_shared.a",
+        "filedir": "android_x86_x86_64_static_apex10000/",
+        "path": "out/soong/.intermediates/bionic/libc/libc_common_shared/android_x86_x86_64_static_apex10000/libc_common_shared.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/libc_common_shared@android_x86_x86_64_static_apex10000.ninja"
+      }
+    ]
+  },
+  {
+    "name": "libc_unwind_static",
+    "project_path": "bionic/",
+    "outputs": [
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc_unwind_static.a",
+        "filedir": "android_recovery_x86_64_static/",
+        "path": "out/soong/.intermediates/bionic/libc/libc_unwind_static/android_recovery_x86_64_static/libc_unwind_static.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/libc_unwind_static@android_recovery_x86_64_static.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc_unwind_static.a",
+        "filedir": "android_x86_64_static/",
+        "path": "out/soong/.intermediates/bionic/libc/libc_unwind_static/android_x86_64_static/libc_unwind_static.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/libc_unwind_static@android_x86_64_static.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc_unwind_static.a",
+        "filedir": "android_x86_64_static_apex10000/",
+        "path": "out/soong/.intermediates/bionic/libc/libc_unwind_static/android_x86_64_static_apex10000/libc_unwind_static.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/libc_unwind_static@android_x86_64_static_apex10000.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc_unwind_static.a",
+        "filedir": "android_x86_x86_64_static/",
+        "path": "out/soong/.intermediates/bionic/libc/libc_unwind_static/android_x86_x86_64_static/libc_unwind_static.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/libc_unwind_static@android_x86_x86_64_static.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc_unwind_static.a",
+        "filedir": "android_x86_x86_64_static_apex10000/",
+        "path": "out/soong/.intermediates/bionic/libc/libc_unwind_static/android_x86_x86_64_static_apex10000/libc_unwind_static.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/libc_unwind_static@android_x86_x86_64_static_apex10000.ninja"
+      }
+    ]
+  },
+  {
+    "name": "libc_nomalloc",
+    "project_path": "bionic/",
+    "outputs": [
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc_nomalloc.a",
+        "filedir": "android_recovery_x86_64_static/",
+        "path": "out/soong/.intermediates/bionic/libc/libc_nomalloc/android_recovery_x86_64_static/libc_nomalloc.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/libc_nomalloc@android_recovery_x86_64_static.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc_nomalloc.a",
+        "filedir": "android_x86_64_static/",
+        "path": "out/soong/.intermediates/bionic/libc/libc_nomalloc/android_x86_64_static/libc_nomalloc.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/libc_nomalloc@android_x86_64_static.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc_nomalloc.a",
+        "filedir": "android_x86_64_static_apex10000/",
+        "path": "out/soong/.intermediates/bionic/libc/libc_nomalloc/android_x86_64_static_apex10000/libc_nomalloc.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/libc_nomalloc@android_x86_64_static_apex10000.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc_nomalloc.a",
+        "filedir": "android_x86_x86_64_static/",
+        "path": "out/soong/.intermediates/bionic/libc/libc_nomalloc/android_x86_x86_64_static/libc_nomalloc.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/libc_nomalloc@android_x86_x86_64_static.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc_nomalloc.a",
+        "filedir": "android_x86_x86_64_static_apex10000/",
+        "path": "out/soong/.intermediates/bionic/libc/libc_nomalloc/android_x86_x86_64_static_apex10000/libc_nomalloc.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/libc_nomalloc@android_x86_x86_64_static_apex10000.ninja"
+      }
+    ]
+  },
+  {
+    "name": "libc_bootstrap",
+    "project_path": "bionic/",
+    "outputs": [
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc_bootstrap.a",
+        "filedir": "android_recovery_x86_64_static/",
+        "path": "out/soong/.intermediates/bionic/libc/libc_bootstrap/android_recovery_x86_64_static/libc_bootstrap.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/libc_bootstrap@android_recovery_x86_64_static.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc_bootstrap.a",
+        "filedir": "android_x86_64_static/",
+        "path": "out/soong/.intermediates/bionic/libc/libc_bootstrap/android_x86_64_static/libc_bootstrap.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/libc_bootstrap@android_x86_64_static.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc_bootstrap.a",
+        "filedir": "android_x86_64_static_apex10000/",
+        "path": "out/soong/.intermediates/bionic/libc/libc_bootstrap/android_x86_64_static_apex10000/libc_bootstrap.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/libc_bootstrap@android_x86_64_static_apex10000.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc_bootstrap.a",
+        "filedir": "android_x86_x86_64_static/",
+        "path": "out/soong/.intermediates/bionic/libc/libc_bootstrap/android_x86_x86_64_static/libc_bootstrap.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/libc_bootstrap@android_x86_x86_64_static.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc_bootstrap.a",
+        "filedir": "android_x86_x86_64_static_apex10000/",
+        "path": "out/soong/.intermediates/bionic/libc/libc_bootstrap/android_x86_x86_64_static_apex10000/libc_bootstrap.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/libc_bootstrap@android_x86_x86_64_static_apex10000.ninja"
+      }
+    ]
+  },
+  {
+    "name": "crtbrand",
+    "project_path": "bionic/",
+    "outputs": [
+      {
+        "variant": "cc_object",
+        "type": "object",
+        "filename": "crtbrand.o",
+        "filedir": "android_recovery_x86_64/",
+        "path": "out/soong/.intermediates/bionic/libc/crtbrand/android_recovery_x86_64/obj/bionic/libc/arch-common/bionic/crtbrand.o",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/crtbrand@android_recovery_x86_64.ninja"
+      },
+      {
+        "variant": "cc_object",
+        "type": "object",
+        "filename": "crtbrand.o",
+        "filedir": "android_vendor.31_x86_64/",
+        "path": "out/soong/.intermediates/bionic/libc/crtbrand/android_vendor.31_x86_64/obj/bionic/libc/arch-common/bionic/crtbrand.o",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/crtbrand@android_vendor.31_x86_64.ninja"
+      },
+      {
+        "variant": "cc_object",
+        "type": "object",
+        "filename": "crtbrand.o",
+        "filedir": "android_vendor.31_x86_x86_64/",
+        "path": "out/soong/.intermediates/bionic/libc/crtbrand/android_vendor.31_x86_x86_64/obj/bionic/libc/arch-common/bionic/crtbrand.o",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/crtbrand@android_vendor.31_x86_x86_64.ninja"
+      },
+      {
+        "variant": "cc_object",
+        "type": "object",
+        "filename": "crtbrand.o",
+        "filedir": "android_x86_64/",
+        "path": "out/soong/.intermediates/bionic/libc/crtbrand/android_x86_64/obj/bionic/libc/arch-common/bionic/crtbrand.o",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/crtbrand@android_x86_64.ninja"
+      },
+      {
+        "variant": "cc_object",
+        "type": "object",
+        "filename": "crtbrand.o",
+        "filedir": "android_x86_64_apex10000/",
+        "path": "out/soong/.intermediates/bionic/libc/crtbrand/android_x86_64_apex10000/obj/bionic/libc/arch-common/bionic/crtbrand.o",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/crtbrand@android_x86_64_apex10000.ninja"
+      },
+      {
+        "variant": "cc_object",
+        "type": "object",
+        "filename": "crtbrand.o",
+        "filedir": "android_x86_64_apex29/",
+        "path": "out/soong/.intermediates/bionic/libc/crtbrand/android_x86_64_apex29/obj/bionic/libc/arch-common/bionic/crtbrand.o",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/crtbrand@android_x86_64_apex29.ninja"
+      },
+      {
+        "variant": "cc_object",
+        "type": "object",
+        "filename": "crtbrand.o",
+        "filedir": "android_x86_64_apex30/",
+        "path": "out/soong/.intermediates/bionic/libc/crtbrand/android_x86_64_apex30/obj/bionic/libc/arch-common/bionic/crtbrand.o",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/crtbrand@android_x86_64_apex30.ninja"
+      },
+      {
+        "variant": "cc_object",
+        "type": "object",
+        "filename": "crtbrand.o",
+        "filedir": "android_x86_64_apex31/",
+        "path": "out/soong/.intermediates/bionic/libc/crtbrand/android_x86_64_apex31/obj/bionic/libc/arch-common/bionic/crtbrand.o",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/crtbrand@android_x86_64_apex31.ninja"
+      },
+      {
+        "variant": "cc_object",
+        "type": "object",
+        "filename": "crtbrand.o",
+        "filedir": "android_x86_64_sdk_29/",
+        "path": "out/soong/.intermediates/bionic/libc/crtbrand/android_x86_64_sdk_29/obj/bionic/libc/arch-common/bionic/crtbrand.o",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/crtbrand@android_x86_64_sdk_29.ninja"
+      },
+      {
+        "variant": "cc_object",
+        "type": "object",
+        "filename": "crtbrand.o",
+        "filedir": "android_x86_64_sdk_29_apex30/",
+        "path": "out/soong/.intermediates/bionic/libc/crtbrand/android_x86_64_sdk_29_apex30/obj/bionic/libc/arch-common/bionic/crtbrand.o",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/crtbrand@android_x86_64_sdk_29_apex30.ninja"
+      },
+      {
+        "variant": "cc_object",
+        "type": "object",
+        "filename": "crtbrand.o",
+        "filedir": "android_x86_64_sdk_30/",
+        "path": "out/soong/.intermediates/bionic/libc/crtbrand/android_x86_64_sdk_30/obj/bionic/libc/arch-common/bionic/crtbrand.o",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/crtbrand@android_x86_64_sdk_30.ninja"
+      },
+      {
+        "variant": "cc_object",
+        "type": "object",
+        "filename": "crtbrand.o",
+        "filedir": "android_x86_64_sdk_30_apex30/",
+        "path": "out/soong/.intermediates/bionic/libc/crtbrand/android_x86_64_sdk_30_apex30/obj/bionic/libc/arch-common/bionic/crtbrand.o",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/crtbrand@android_x86_64_sdk_30_apex30.ninja"
+      },
+      {
+        "variant": "cc_object",
+        "type": "object",
+        "filename": "crtbrand.o",
+        "filedir": "android_x86_64_sdk_current/",
+        "path": "out/soong/.intermediates/bionic/libc/crtbrand/android_x86_64_sdk_current/obj/bionic/libc/arch-common/bionic/crtbrand.o",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/crtbrand@android_x86_64_sdk_current.ninja"
+      },
+      {
+        "variant": "cc_object",
+        "type": "object",
+        "filename": "crtbrand.o",
+        "filedir": "android_x86_x86_64/",
+        "path": "out/soong/.intermediates/bionic/libc/crtbrand/android_x86_x86_64/obj/bionic/libc/arch-common/bionic/crtbrand.o",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/crtbrand@android_x86_x86_64.ninja"
+      },
+      {
+        "variant": "cc_object",
+        "type": "object",
+        "filename": "crtbrand.o",
+        "filedir": "android_x86_x86_64_apex10000/",
+        "path": "out/soong/.intermediates/bionic/libc/crtbrand/android_x86_x86_64_apex10000/obj/bionic/libc/arch-common/bionic/crtbrand.o",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/crtbrand@android_x86_x86_64_apex10000.ninja"
+      },
+      {
+        "variant": "cc_object",
+        "type": "object",
+        "filename": "crtbrand.o",
+        "filedir": "android_x86_x86_64_apex29/",
+        "path": "out/soong/.intermediates/bionic/libc/crtbrand/android_x86_x86_64_apex29/obj/bionic/libc/arch-common/bionic/crtbrand.o",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/crtbrand@android_x86_x86_64_apex29.ninja"
+      },
+      {
+        "variant": "cc_object",
+        "type": "object",
+        "filename": "crtbrand.o",
+        "filedir": "android_x86_x86_64_apex30/",
+        "path": "out/soong/.intermediates/bionic/libc/crtbrand/android_x86_x86_64_apex30/obj/bionic/libc/arch-common/bionic/crtbrand.o",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/crtbrand@android_x86_x86_64_apex30.ninja"
+      },
+      {
+        "variant": "cc_object",
+        "type": "object",
+        "filename": "crtbrand.o",
+        "filedir": "android_x86_x86_64_apex31/",
+        "path": "out/soong/.intermediates/bionic/libc/crtbrand/android_x86_x86_64_apex31/obj/bionic/libc/arch-common/bionic/crtbrand.o",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/crtbrand@android_x86_x86_64_apex31.ninja"
+      }
+    ]
+  },
+  {
+    "name": "crtbegin_so",
+    "project_path": "bionic/",
+    "outputs": [
+      {
+        "variant": "cc_object",
+        "type": "object",
+        "filename": "crtbegin_so.o",
+        "filedir": "android_recovery_x86_64/",
+        "path": "out/soong/.intermediates/bionic/libc/crtbegin_so/android_recovery_x86_64/crtbegin_so.o",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/crtbegin_so@android_recovery_x86_64.ninja"
+      },
+      {
+        "variant": "cc_object",
+        "type": "object",
+        "filename": "crtbegin_so.o",
+        "filedir": "android_vendor.31_x86_64/",
+        "path": "out/soong/.intermediates/bionic/libc/crtbegin_so/android_vendor.31_x86_64/crtbegin_so.o",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/crtbegin_so@android_vendor.31_x86_64.ninja"
+      },
+      {
+        "variant": "cc_object",
+        "type": "object",
+        "filename": "crtbegin_so.o",
+        "filedir": "android_vendor.31_x86_x86_64/",
+        "path": "out/soong/.intermediates/bionic/libc/crtbegin_so/android_vendor.31_x86_x86_64/crtbegin_so.o",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/crtbegin_so@android_vendor.31_x86_x86_64.ninja"
+      },
+      {
+        "variant": "cc_object",
+        "type": "object",
+        "filename": "crtbegin_so.o",
+        "filedir": "android_x86_64/",
+        "path": "out/soong/.intermediates/bionic/libc/crtbegin_so/android_x86_64/crtbegin_so.o",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/crtbegin_so@android_x86_64.ninja"
+      },
+      {
+        "variant": "cc_object",
+        "type": "object",
+        "filename": "crtbegin_so.o",
+        "filedir": "android_x86_64_apex10000/",
+        "path": "out/soong/.intermediates/bionic/libc/crtbegin_so/android_x86_64_apex10000/crtbegin_so.o",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/crtbegin_so@android_x86_64_apex10000.ninja"
+      },
+      {
+        "variant": "cc_object",
+        "type": "object",
+        "filename": "crtbegin_so.o",
+        "filedir": "android_x86_64_apex29/",
+        "path": "out/soong/.intermediates/bionic/libc/crtbegin_so/android_x86_64_apex29/crtbegin_so.o",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/crtbegin_so@android_x86_64_apex29.ninja"
+      },
+      {
+        "variant": "cc_object",
+        "type": "object",
+        "filename": "crtbegin_so.o",
+        "filedir": "android_x86_64_apex30/",
+        "path": "out/soong/.intermediates/bionic/libc/crtbegin_so/android_x86_64_apex30/crtbegin_so.o",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/crtbegin_so@android_x86_64_apex30.ninja"
+      },
+      {
+        "variant": "cc_object",
+        "type": "object",
+        "filename": "crtbegin_so.o",
+        "filedir": "android_x86_64_apex31/",
+        "path": "out/soong/.intermediates/bionic/libc/crtbegin_so/android_x86_64_apex31/crtbegin_so.o",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/crtbegin_so@android_x86_64_apex31.ninja"
+      },
+      {
+        "variant": "cc_object",
+        "type": "object",
+        "filename": "crtbegin_so.o",
+        "filedir": "android_x86_64_sdk_29/",
+        "path": "out/soong/.intermediates/bionic/libc/crtbegin_so/android_x86_64_sdk_29/crtbegin_so.o",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/crtbegin_so@android_x86_64_sdk_29.ninja"
+      },
+      {
+        "variant": "cc_object",
+        "type": "object",
+        "filename": "crtbegin_so.o",
+        "filedir": "android_x86_64_sdk_29_apex30/",
+        "path": "out/soong/.intermediates/bionic/libc/crtbegin_so/android_x86_64_sdk_29_apex30/crtbegin_so.o",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/crtbegin_so@android_x86_64_sdk_29_apex30.ninja"
+      },
+      {
+        "variant": "cc_object",
+        "type": "object",
+        "filename": "crtbegin_so.o",
+        "filedir": "android_x86_64_sdk_30/",
+        "path": "out/soong/.intermediates/bionic/libc/crtbegin_so/android_x86_64_sdk_30/crtbegin_so.o",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/crtbegin_so@android_x86_64_sdk_30.ninja"
+      },
+      {
+        "variant": "cc_object",
+        "type": "object",
+        "filename": "crtbegin_so.o",
+        "filedir": "android_x86_64_sdk_30_apex30/",
+        "path": "out/soong/.intermediates/bionic/libc/crtbegin_so/android_x86_64_sdk_30_apex30/crtbegin_so.o",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/crtbegin_so@android_x86_64_sdk_30_apex30.ninja"
+      },
+      {
+        "variant": "cc_object",
+        "type": "object",
+        "filename": "crtbegin_so.o",
+        "filedir": "android_x86_64_sdk_current/",
+        "path": "out/soong/.intermediates/bionic/libc/crtbegin_so/android_x86_64_sdk_current/crtbegin_so.o",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/crtbegin_so@android_x86_64_sdk_current.ninja"
+      },
+      {
+        "variant": "cc_object",
+        "type": "object",
+        "filename": "crtbegin_so.o",
+        "filedir": "android_x86_x86_64/",
+        "path": "out/soong/.intermediates/bionic/libc/crtbegin_so/android_x86_x86_64/crtbegin_so.o",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/crtbegin_so@android_x86_x86_64.ninja"
+      },
+      {
+        "variant": "cc_object",
+        "type": "object",
+        "filename": "crtbegin_so.o",
+        "filedir": "android_x86_x86_64_apex10000/",
+        "path": "out/soong/.intermediates/bionic/libc/crtbegin_so/android_x86_x86_64_apex10000/crtbegin_so.o",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/crtbegin_so@android_x86_x86_64_apex10000.ninja"
+      },
+      {
+        "variant": "cc_object",
+        "type": "object",
+        "filename": "crtbegin_so.o",
+        "filedir": "android_x86_x86_64_apex29/",
+        "path": "out/soong/.intermediates/bionic/libc/crtbegin_so/android_x86_x86_64_apex29/crtbegin_so.o",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/crtbegin_so@android_x86_x86_64_apex29.ninja"
+      },
+      {
+        "variant": "cc_object",
+        "type": "object",
+        "filename": "crtbegin_so.o",
+        "filedir": "android_x86_x86_64_apex30/",
+        "path": "out/soong/.intermediates/bionic/libc/crtbegin_so/android_x86_x86_64_apex30/crtbegin_so.o",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/crtbegin_so@android_x86_x86_64_apex30.ninja"
+      },
+      {
+        "variant": "cc_object",
+        "type": "object",
+        "filename": "crtbegin_so.o",
+        "filedir": "android_x86_x86_64_apex31/",
+        "path": "out/soong/.intermediates/bionic/libc/crtbegin_so/android_x86_x86_64_apex31/crtbegin_so.o",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/crtbegin_so@android_x86_x86_64_apex31.ninja"
+      }
+    ]
+  },
+  {
+    "name": "libc_init_static",
+    "project_path": "bionic/",
+    "outputs": [
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc_init_static.a",
+        "filedir": "android_recovery_x86_64_static/",
+        "path": "out/soong/.intermediates/bionic/libc/libc_init_static/android_recovery_x86_64_static/libc_init_static.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/libc_init_static@android_recovery_x86_64_static.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc_init_static.a",
+        "filedir": "android_x86_64_static/",
+        "path": "out/soong/.intermediates/bionic/libc/libc_init_static/android_x86_64_static/libc_init_static.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/libc_init_static@android_x86_64_static.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc_init_static.a",
+        "filedir": "android_x86_64_static_apex10000/",
+        "path": "out/soong/.intermediates/bionic/libc/libc_init_static/android_x86_64_static_apex10000/libc_init_static.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/libc_init_static@android_x86_64_static_apex10000.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc_init_static.a",
+        "filedir": "android_x86_x86_64_static/",
+        "path": "out/soong/.intermediates/bionic/libc/libc_init_static/android_x86_x86_64_static/libc_init_static.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/libc_init_static@android_x86_x86_64_static.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc_init_static.a",
+        "filedir": "android_x86_x86_64_static_apex10000/",
+        "path": "out/soong/.intermediates/bionic/libc/libc_init_static/android_x86_x86_64_static_apex10000/libc_init_static.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/libc_init_static@android_x86_x86_64_static_apex10000.ninja"
+      }
+    ]
+  },
+  {
+    "name": "crtend_so",
+    "project_path": "bionic/",
+    "outputs": [
+      {
+        "variant": "cc_object",
+        "type": "object",
+        "filename": "crtend_so.o",
+        "filedir": "android_recovery_x86_64/",
+        "path": "out/soong/.intermediates/bionic/libc/crtend_so/android_recovery_x86_64/obj/bionic/libc/arch-common/bionic/crtend_so.o",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/crtend_so@android_recovery_x86_64.ninja"
+      },
+      {
+        "variant": "cc_object",
+        "type": "object",
+        "filename": "crtend_so.o",
+        "filedir": "android_vendor.31_x86_64/",
+        "path": "out/soong/.intermediates/bionic/libc/crtend_so/android_vendor.31_x86_64/obj/bionic/libc/arch-common/bionic/crtend_so.o",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/crtend_so@android_vendor.31_x86_64.ninja"
+      },
+      {
+        "variant": "cc_object",
+        "type": "object",
+        "filename": "crtend_so.o",
+        "filedir": "android_vendor.31_x86_x86_64/",
+        "path": "out/soong/.intermediates/bionic/libc/crtend_so/android_vendor.31_x86_x86_64/obj/bionic/libc/arch-common/bionic/crtend_so.o",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/crtend_so@android_vendor.31_x86_x86_64.ninja"
+      },
+      {
+        "variant": "cc_object",
+        "type": "object",
+        "filename": "crtend_so.o",
+        "filedir": "android_x86_64/",
+        "path": "out/soong/.intermediates/bionic/libc/crtend_so/android_x86_64/obj/bionic/libc/arch-common/bionic/crtend_so.o",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/crtend_so@android_x86_64.ninja"
+      },
+      {
+        "variant": "cc_object",
+        "type": "object",
+        "filename": "crtend_so.o",
+        "filedir": "android_x86_64_apex10000/",
+        "path": "out/soong/.intermediates/bionic/libc/crtend_so/android_x86_64_apex10000/obj/bionic/libc/arch-common/bionic/crtend_so.o",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/crtend_so@android_x86_64_apex10000.ninja"
+      },
+      {
+        "variant": "cc_object",
+        "type": "object",
+        "filename": "crtend_so.o",
+        "filedir": "android_x86_64_apex29/",
+        "path": "out/soong/.intermediates/bionic/libc/crtend_so/android_x86_64_apex29/obj/bionic/libc/arch-common/bionic/crtend_so.o",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/crtend_so@android_x86_64_apex29.ninja"
+      },
+      {
+        "variant": "cc_object",
+        "type": "object",
+        "filename": "crtend_so.o",
+        "filedir": "android_x86_64_apex30/",
+        "path": "out/soong/.intermediates/bionic/libc/crtend_so/android_x86_64_apex30/obj/bionic/libc/arch-common/bionic/crtend_so.o",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/crtend_so@android_x86_64_apex30.ninja"
+      },
+      {
+        "variant": "cc_object",
+        "type": "object",
+        "filename": "crtend_so.o",
+        "filedir": "android_x86_64_apex31/",
+        "path": "out/soong/.intermediates/bionic/libc/crtend_so/android_x86_64_apex31/obj/bionic/libc/arch-common/bionic/crtend_so.o",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/crtend_so@android_x86_64_apex31.ninja"
+      },
+      {
+        "variant": "cc_object",
+        "type": "object",
+        "filename": "crtend_so.o",
+        "filedir": "android_x86_64_sdk_29/",
+        "path": "out/soong/.intermediates/bionic/libc/crtend_so/android_x86_64_sdk_29/obj/bionic/libc/arch-common/bionic/crtend_so.o",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/crtend_so@android_x86_64_sdk_29.ninja"
+      },
+      {
+        "variant": "cc_object",
+        "type": "object",
+        "filename": "crtend_so.o",
+        "filedir": "android_x86_64_sdk_29_apex30/",
+        "path": "out/soong/.intermediates/bionic/libc/crtend_so/android_x86_64_sdk_29_apex30/obj/bionic/libc/arch-common/bionic/crtend_so.o",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/crtend_so@android_x86_64_sdk_29_apex30.ninja"
+      },
+      {
+        "variant": "cc_object",
+        "type": "object",
+        "filename": "crtend_so.o",
+        "filedir": "android_x86_64_sdk_30/",
+        "path": "out/soong/.intermediates/bionic/libc/crtend_so/android_x86_64_sdk_30/obj/bionic/libc/arch-common/bionic/crtend_so.o",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/crtend_so@android_x86_64_sdk_30.ninja"
+      },
+      {
+        "variant": "cc_object",
+        "type": "object",
+        "filename": "crtend_so.o",
+        "filedir": "android_x86_64_sdk_30_apex30/",
+        "path": "out/soong/.intermediates/bionic/libc/crtend_so/android_x86_64_sdk_30_apex30/obj/bionic/libc/arch-common/bionic/crtend_so.o",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/crtend_so@android_x86_64_sdk_30_apex30.ninja"
+      },
+      {
+        "variant": "cc_object",
+        "type": "object",
+        "filename": "crtend_so.o",
+        "filedir": "android_x86_64_sdk_current/",
+        "path": "out/soong/.intermediates/bionic/libc/crtend_so/android_x86_64_sdk_current/obj/bionic/libc/arch-common/bionic/crtend_so.o",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/crtend_so@android_x86_64_sdk_current.ninja"
+      },
+      {
+        "variant": "cc_object",
+        "type": "object",
+        "filename": "crtend_so.o",
+        "filedir": "android_x86_x86_64/",
+        "path": "out/soong/.intermediates/bionic/libc/crtend_so/android_x86_x86_64/obj/bionic/libc/arch-common/bionic/crtend_so.o",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/crtend_so@android_x86_x86_64.ninja"
+      },
+      {
+        "variant": "cc_object",
+        "type": "object",
+        "filename": "crtend_so.o",
+        "filedir": "android_x86_x86_64_apex10000/",
+        "path": "out/soong/.intermediates/bionic/libc/crtend_so/android_x86_x86_64_apex10000/obj/bionic/libc/arch-common/bionic/crtend_so.o",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/crtend_so@android_x86_x86_64_apex10000.ninja"
+      },
+      {
+        "variant": "cc_object",
+        "type": "object",
+        "filename": "crtend_so.o",
+        "filedir": "android_x86_x86_64_apex29/",
+        "path": "out/soong/.intermediates/bionic/libc/crtend_so/android_x86_x86_64_apex29/obj/bionic/libc/arch-common/bionic/crtend_so.o",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/crtend_so@android_x86_x86_64_apex29.ninja"
+      },
+      {
+        "variant": "cc_object",
+        "type": "object",
+        "filename": "crtend_so.o",
+        "filedir": "android_x86_x86_64_apex30/",
+        "path": "out/soong/.intermediates/bionic/libc/crtend_so/android_x86_x86_64_apex30/obj/bionic/libc/arch-common/bionic/crtend_so.o",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/crtend_so@android_x86_x86_64_apex30.ninja"
+      },
+      {
+        "variant": "cc_object",
+        "type": "object",
+        "filename": "crtend_so.o",
+        "filedir": "android_x86_x86_64_apex31/",
+        "path": "out/soong/.intermediates/bionic/libc/crtend_so/android_x86_x86_64_apex31/obj/bionic/libc/arch-common/bionic/crtend_so.o",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/crtend_so@android_x86_x86_64_apex31.ninja"
+      }
+    ]
+  },
+  {
+    "name": "crtbegin_static",
+    "project_path": "bionic/",
+    "outputs": [
+      {
+        "variant": "cc_object",
+        "type": "object",
+        "filename": "crtbegin_static.o",
+        "filedir": "android_x86_64/",
+        "path": "out/soong/.intermediates/bionic/libc/crtbegin_static/android_x86_64/crtbegin_static.o",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/crtbegin_static@android_x86_64.ninja"
+      },
+      {
+        "variant": "cc_object",
+        "type": "object",
+        "filename": "crtbegin_static.o",
+        "filedir": "android_x86_64_apex10000/",
+        "path": "out/soong/.intermediates/bionic/libc/crtbegin_static/android_x86_64_apex10000/crtbegin_static.o",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/crtbegin_static@android_x86_64_apex10000.ninja"
+      }
+    ]
+  },
+  {
+    "name": "crtbegin_dynamic",
+    "project_path": "bionic/",
+    "outputs": [
+      {
+        "variant": "cc_object",
+        "type": "object",
+        "filename": "crtbegin_dynamic.o",
+        "filedir": "android_recovery_x86_64/",
+        "path": "out/soong/.intermediates/bionic/libc/crtbegin_dynamic/android_recovery_x86_64/crtbegin_dynamic.o",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/crtbegin_dynamic@android_recovery_x86_64.ninja"
+      },
+      {
+        "variant": "cc_object",
+        "type": "object",
+        "filename": "crtbegin_dynamic.o",
+        "filedir": "android_vendor.31_x86_64/",
+        "path": "out/soong/.intermediates/bionic/libc/crtbegin_dynamic/android_vendor.31_x86_64/crtbegin_dynamic.o",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/crtbegin_dynamic@android_vendor.31_x86_64.ninja"
+      },
+      {
+        "variant": "cc_object",
+        "type": "object",
+        "filename": "crtbegin_dynamic.o",
+        "filedir": "android_vendor.31_x86_x86_64/",
+        "path": "out/soong/.intermediates/bionic/libc/crtbegin_dynamic/android_vendor.31_x86_x86_64/crtbegin_dynamic.o",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/crtbegin_dynamic@android_vendor.31_x86_x86_64.ninja"
+      },
+      {
+        "variant": "cc_object",
+        "type": "object",
+        "filename": "crtbegin_dynamic.o",
+        "filedir": "android_x86_64/",
+        "path": "out/soong/.intermediates/bionic/libc/crtbegin_dynamic/android_x86_64/crtbegin_dynamic.o",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/crtbegin_dynamic@android_x86_64.ninja"
+      },
+      {
+        "variant": "cc_object",
+        "type": "object",
+        "filename": "crtbegin_dynamic.o",
+        "filedir": "android_x86_64_apex10000/",
+        "path": "out/soong/.intermediates/bionic/libc/crtbegin_dynamic/android_x86_64_apex10000/crtbegin_dynamic.o",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/crtbegin_dynamic@android_x86_64_apex10000.ninja"
+      },
+      {
+        "variant": "cc_object",
+        "type": "object",
+        "filename": "crtbegin_dynamic.o",
+        "filedir": "android_x86_64_apex29/",
+        "path": "out/soong/.intermediates/bionic/libc/crtbegin_dynamic/android_x86_64_apex29/crtbegin_dynamic.o",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/crtbegin_dynamic@android_x86_64_apex29.ninja"
+      },
+      {
+        "variant": "cc_object",
+        "type": "object",
+        "filename": "crtbegin_dynamic.o",
+        "filedir": "android_x86_64_apex30/",
+        "path": "out/soong/.intermediates/bionic/libc/crtbegin_dynamic/android_x86_64_apex30/crtbegin_dynamic.o",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/crtbegin_dynamic@android_x86_64_apex30.ninja"
+      },
+      {
+        "variant": "cc_object",
+        "type": "object",
+        "filename": "crtbegin_dynamic.o",
+        "filedir": "android_x86_64_apex31/",
+        "path": "out/soong/.intermediates/bionic/libc/crtbegin_dynamic/android_x86_64_apex31/crtbegin_dynamic.o",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/crtbegin_dynamic@android_x86_64_apex31.ninja"
+      },
+      {
+        "variant": "cc_object",
+        "type": "object",
+        "filename": "crtbegin_dynamic.o",
+        "filedir": "android_x86_x86_64/",
+        "path": "out/soong/.intermediates/bionic/libc/crtbegin_dynamic/android_x86_x86_64/crtbegin_dynamic.o",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/crtbegin_dynamic@android_x86_x86_64.ninja"
+      },
+      {
+        "variant": "cc_object",
+        "type": "object",
+        "filename": "crtbegin_dynamic.o",
+        "filedir": "android_x86_x86_64_apex10000/",
+        "path": "out/soong/.intermediates/bionic/libc/crtbegin_dynamic/android_x86_x86_64_apex10000/crtbegin_dynamic.o",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/crtbegin_dynamic@android_x86_x86_64_apex10000.ninja"
+      },
+      {
+        "variant": "cc_object",
+        "type": "object",
+        "filename": "crtbegin_dynamic.o",
+        "filedir": "android_x86_x86_64_apex29/",
+        "path": "out/soong/.intermediates/bionic/libc/crtbegin_dynamic/android_x86_x86_64_apex29/crtbegin_dynamic.o",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/crtbegin_dynamic@android_x86_x86_64_apex29.ninja"
+      },
+      {
+        "variant": "cc_object",
+        "type": "object",
+        "filename": "crtbegin_dynamic.o",
+        "filedir": "android_x86_x86_64_apex31/",
+        "path": "out/soong/.intermediates/bionic/libc/crtbegin_dynamic/android_x86_x86_64_apex31/crtbegin_dynamic.o",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/crtbegin_dynamic@android_x86_x86_64_apex31.ninja"
+      }
+    ]
+  },
+  {
+    "name": "crtend_android",
+    "project_path": "bionic/",
+    "outputs": [
+      {
+        "variant": "cc_object",
+        "type": "object",
+        "filename": "crtend_android.o",
+        "filedir": "android_recovery_x86_64/",
+        "path": "out/soong/.intermediates/bionic/libc/crtend_android/android_recovery_x86_64/obj/bionic/libc/arch-common/bionic/crtend.o",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/crtend_android@android_recovery_x86_64.ninja"
+      },
+      {
+        "variant": "cc_object",
+        "type": "object",
+        "filename": "crtend_android.o",
+        "filedir": "android_vendor.31_x86_64/",
+        "path": "out/soong/.intermediates/bionic/libc/crtend_android/android_vendor.31_x86_64/obj/bionic/libc/arch-common/bionic/crtend.o",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/crtend_android@android_vendor.31_x86_64.ninja"
+      },
+      {
+        "variant": "cc_object",
+        "type": "object",
+        "filename": "crtend_android.o",
+        "filedir": "android_vendor.31_x86_x86_64/",
+        "path": "out/soong/.intermediates/bionic/libc/crtend_android/android_vendor.31_x86_x86_64/obj/bionic/libc/arch-common/bionic/crtend.o",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/crtend_android@android_vendor.31_x86_x86_64.ninja"
+      },
+      {
+        "variant": "cc_object",
+        "type": "object",
+        "filename": "crtend_android.o",
+        "filedir": "android_x86_64/",
+        "path": "out/soong/.intermediates/bionic/libc/crtend_android/android_x86_64/obj/bionic/libc/arch-common/bionic/crtend.o",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/crtend_android@android_x86_64.ninja"
+      },
+      {
+        "variant": "cc_object",
+        "type": "object",
+        "filename": "crtend_android.o",
+        "filedir": "android_x86_64_apex10000/",
+        "path": "out/soong/.intermediates/bionic/libc/crtend_android/android_x86_64_apex10000/obj/bionic/libc/arch-common/bionic/crtend.o",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/crtend_android@android_x86_64_apex10000.ninja"
+      },
+      {
+        "variant": "cc_object",
+        "type": "object",
+        "filename": "crtend_android.o",
+        "filedir": "android_x86_64_apex29/",
+        "path": "out/soong/.intermediates/bionic/libc/crtend_android/android_x86_64_apex29/obj/bionic/libc/arch-common/bionic/crtend.o",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/crtend_android@android_x86_64_apex29.ninja"
+      },
+      {
+        "variant": "cc_object",
+        "type": "object",
+        "filename": "crtend_android.o",
+        "filedir": "android_x86_64_apex30/",
+        "path": "out/soong/.intermediates/bionic/libc/crtend_android/android_x86_64_apex30/obj/bionic/libc/arch-common/bionic/crtend.o",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/crtend_android@android_x86_64_apex30.ninja"
+      },
+      {
+        "variant": "cc_object",
+        "type": "object",
+        "filename": "crtend_android.o",
+        "filedir": "android_x86_64_apex31/",
+        "path": "out/soong/.intermediates/bionic/libc/crtend_android/android_x86_64_apex31/obj/bionic/libc/arch-common/bionic/crtend.o",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/crtend_android@android_x86_64_apex31.ninja"
+      },
+      {
+        "variant": "cc_object",
+        "type": "object",
+        "filename": "crtend_android.o",
+        "filedir": "android_x86_x86_64/",
+        "path": "out/soong/.intermediates/bionic/libc/crtend_android/android_x86_x86_64/obj/bionic/libc/arch-common/bionic/crtend.o",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/crtend_android@android_x86_x86_64.ninja"
+      },
+      {
+        "variant": "cc_object",
+        "type": "object",
+        "filename": "crtend_android.o",
+        "filedir": "android_x86_x86_64_apex10000/",
+        "path": "out/soong/.intermediates/bionic/libc/crtend_android/android_x86_x86_64_apex10000/obj/bionic/libc/arch-common/bionic/crtend.o",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/crtend_android@android_x86_x86_64_apex10000.ninja"
+      },
+      {
+        "variant": "cc_object",
+        "type": "object",
+        "filename": "crtend_android.o",
+        "filedir": "android_x86_x86_64_apex29/",
+        "path": "out/soong/.intermediates/bionic/libc/crtend_android/android_x86_x86_64_apex29/obj/bionic/libc/arch-common/bionic/crtend.o",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/crtend_android@android_x86_x86_64_apex29.ninja"
+      },
+      {
+        "variant": "cc_object",
+        "type": "object",
+        "filename": "crtend_android.o",
+        "filedir": "android_x86_x86_64_apex31/",
+        "path": "out/soong/.intermediates/bionic/libc/crtend_android/android_x86_x86_64_apex31/obj/bionic/libc/arch-common/bionic/crtend.o",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/crtend_android@android_x86_x86_64_apex31.ninja"
+      }
+    ]
+  },
+  {
+    "name": "libc_init_dynamic",
+    "project_path": "bionic/",
+    "outputs": [
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc_init_dynamic.a",
+        "filedir": "android_recovery_x86_64_static/",
+        "path": "out/soong/.intermediates/bionic/libc/libc_init_dynamic/android_recovery_x86_64_static/libc_init_dynamic.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/libc_init_dynamic@android_recovery_x86_64_static.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc_init_dynamic.a",
+        "filedir": "android_x86_64_static/",
+        "path": "out/soong/.intermediates/bionic/libc/libc_init_dynamic/android_x86_64_static/libc_init_dynamic.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/libc_init_dynamic@android_x86_64_static.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc_init_dynamic.a",
+        "filedir": "android_x86_64_static_apex10000/",
+        "path": "out/soong/.intermediates/bionic/libc/libc_init_dynamic/android_x86_64_static_apex10000/libc_init_dynamic.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/libc_init_dynamic@android_x86_64_static_apex10000.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc_init_dynamic.a",
+        "filedir": "android_x86_x86_64_static/",
+        "path": "out/soong/.intermediates/bionic/libc/libc_init_dynamic/android_x86_x86_64_static/libc_init_dynamic.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/libc_init_dynamic@android_x86_x86_64_static.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc_init_dynamic.a",
+        "filedir": "android_x86_x86_64_static_apex10000/",
+        "path": "out/soong/.intermediates/bionic/libc/libc_init_dynamic/android_x86_x86_64_static_apex10000/libc_init_dynamic.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/libc_init_dynamic@android_x86_x86_64_static_apex10000.ninja"
+      }
+    ]
+  },
+  {
+    "name": "libc_tzcode",
+    "project_path": "bionic/",
+    "outputs": [
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc_tzcode.a",
+        "filedir": "android_recovery_x86_64_static/",
+        "path": "out/soong/.intermediates/bionic/libc/libc_tzcode/android_recovery_x86_64_static/libc_tzcode.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/libc_tzcode@android_recovery_x86_64_static.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc_tzcode.a",
+        "filedir": "android_x86_64_static/",
+        "path": "out/soong/.intermediates/bionic/libc/libc_tzcode/android_x86_64_static/libc_tzcode.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/libc_tzcode@android_x86_64_static.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc_tzcode.a",
+        "filedir": "android_x86_64_static_apex10000/",
+        "path": "out/soong/.intermediates/bionic/libc/libc_tzcode/android_x86_64_static_apex10000/libc_tzcode.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/libc_tzcode@android_x86_64_static_apex10000.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc_tzcode.a",
+        "filedir": "android_x86_x86_64_static/",
+        "path": "out/soong/.intermediates/bionic/libc/libc_tzcode/android_x86_x86_64_static/libc_tzcode.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/libc_tzcode@android_x86_x86_64_static.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc_tzcode.a",
+        "filedir": "android_x86_x86_64_static_apex10000/",
+        "path": "out/soong/.intermediates/bionic/libc/libc_tzcode/android_x86_x86_64_static_apex10000/libc_tzcode.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/libc_tzcode@android_x86_x86_64_static_apex10000.ninja"
+      }
+    ]
+  },
+  {
+    "name": "libc_dns",
+    "project_path": "bionic/",
+    "outputs": [
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc_dns.a",
+        "filedir": "android_recovery_x86_64_static/",
+        "path": "out/soong/.intermediates/bionic/libc/libc_dns/android_recovery_x86_64_static/libc_dns.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/libc_dns@android_recovery_x86_64_static.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc_dns.a",
+        "filedir": "android_x86_64_static/",
+        "path": "out/soong/.intermediates/bionic/libc/libc_dns/android_x86_64_static/libc_dns.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/libc_dns@android_x86_64_static.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc_dns.a",
+        "filedir": "android_x86_64_static_apex10000/",
+        "path": "out/soong/.intermediates/bionic/libc/libc_dns/android_x86_64_static_apex10000/libc_dns.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/libc_dns@android_x86_64_static_apex10000.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc_dns.a",
+        "filedir": "android_x86_x86_64_static/",
+        "path": "out/soong/.intermediates/bionic/libc/libc_dns/android_x86_x86_64_static/libc_dns.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/libc_dns@android_x86_x86_64_static.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc_dns.a",
+        "filedir": "android_x86_x86_64_static_apex10000/",
+        "path": "out/soong/.intermediates/bionic/libc/libc_dns/android_x86_x86_64_static_apex10000/libc_dns.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/libc_dns@android_x86_x86_64_static_apex10000.ninja"
+      }
+    ]
+  },
+  {
+    "name": "libc_freebsd",
+    "project_path": "bionic/",
+    "outputs": [
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc_freebsd.a",
+        "filedir": "android_recovery_x86_64_static/",
+        "path": "out/soong/.intermediates/bionic/libc/libc_freebsd/android_recovery_x86_64_static/libc_freebsd.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/libc_freebsd@android_recovery_x86_64_static.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc_freebsd.a",
+        "filedir": "android_x86_64_static/",
+        "path": "out/soong/.intermediates/bionic/libc/libc_freebsd/android_x86_64_static/libc_freebsd.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/libc_freebsd@android_x86_64_static.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc_freebsd.a",
+        "filedir": "android_x86_64_static_apex10000/",
+        "path": "out/soong/.intermediates/bionic/libc/libc_freebsd/android_x86_64_static_apex10000/libc_freebsd.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/libc_freebsd@android_x86_64_static_apex10000.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc_freebsd.a",
+        "filedir": "android_x86_x86_64_static/",
+        "path": "out/soong/.intermediates/bionic/libc/libc_freebsd/android_x86_x86_64_static/libc_freebsd.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/libc_freebsd@android_x86_x86_64_static.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc_freebsd.a",
+        "filedir": "android_x86_x86_64_static_apex10000/",
+        "path": "out/soong/.intermediates/bionic/libc/libc_freebsd/android_x86_x86_64_static_apex10000/libc_freebsd.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/libc_freebsd@android_x86_x86_64_static_apex10000.ninja"
+      }
+    ]
+  },
+  {
+    "name": "libc_freebsd_large_stack",
+    "project_path": "bionic/",
+    "outputs": [
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc_freebsd_large_stack.a",
+        "filedir": "android_recovery_x86_64_static/",
+        "path": "out/soong/.intermediates/bionic/libc/libc_freebsd_large_stack/android_recovery_x86_64_static/libc_freebsd_large_stack.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/libc_freebsd_large_stack@android_recovery_x86_64_static.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc_freebsd_large_stack.a",
+        "filedir": "android_x86_64_static/",
+        "path": "out/soong/.intermediates/bionic/libc/libc_freebsd_large_stack/android_x86_64_static/libc_freebsd_large_stack.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/libc_freebsd_large_stack@android_x86_64_static.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc_freebsd_large_stack.a",
+        "filedir": "android_x86_64_static_apex10000/",
+        "path": "out/soong/.intermediates/bionic/libc/libc_freebsd_large_stack/android_x86_64_static_apex10000/libc_freebsd_large_stack.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/libc_freebsd_large_stack@android_x86_64_static_apex10000.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc_freebsd_large_stack.a",
+        "filedir": "android_x86_x86_64_static/",
+        "path": "out/soong/.intermediates/bionic/libc/libc_freebsd_large_stack/android_x86_x86_64_static/libc_freebsd_large_stack.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/libc_freebsd_large_stack@android_x86_x86_64_static.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc_freebsd_large_stack.a",
+        "filedir": "android_x86_x86_64_static_apex10000/",
+        "path": "out/soong/.intermediates/bionic/libc/libc_freebsd_large_stack/android_x86_x86_64_static_apex10000/libc_freebsd_large_stack.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/libc_freebsd_large_stack@android_x86_x86_64_static_apex10000.ninja"
+      }
+    ]
+  },
+  {
+    "name": "libc_netbsd",
+    "project_path": "bionic/",
+    "outputs": [
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc_netbsd.a",
+        "filedir": "android_recovery_x86_64_static/",
+        "path": "out/soong/.intermediates/bionic/libc/libc_netbsd/android_recovery_x86_64_static/libc_netbsd.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/libc_netbsd@android_recovery_x86_64_static.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc_netbsd.a",
+        "filedir": "android_x86_64_static/",
+        "path": "out/soong/.intermediates/bionic/libc/libc_netbsd/android_x86_64_static/libc_netbsd.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/libc_netbsd@android_x86_64_static.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc_netbsd.a",
+        "filedir": "android_x86_64_static_apex10000/",
+        "path": "out/soong/.intermediates/bionic/libc/libc_netbsd/android_x86_64_static_apex10000/libc_netbsd.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/libc_netbsd@android_x86_64_static_apex10000.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc_netbsd.a",
+        "filedir": "android_x86_x86_64_static/",
+        "path": "out/soong/.intermediates/bionic/libc/libc_netbsd/android_x86_x86_64_static/libc_netbsd.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/libc_netbsd@android_x86_x86_64_static.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc_netbsd.a",
+        "filedir": "android_x86_x86_64_static_apex10000/",
+        "path": "out/soong/.intermediates/bionic/libc/libc_netbsd/android_x86_x86_64_static_apex10000/libc_netbsd.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/libc_netbsd@android_x86_x86_64_static_apex10000.ninja"
+      }
+    ]
+  },
+  {
+    "name": "libc_openbsd_ndk",
+    "project_path": "bionic/",
+    "outputs": [
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc_openbsd_ndk.a",
+        "filedir": "android_recovery_x86_64_static/",
+        "path": "out/soong/.intermediates/bionic/libc/libc_openbsd_ndk/android_recovery_x86_64_static/libc_openbsd_ndk.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/libc_openbsd_ndk@android_recovery_x86_64_static.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc_openbsd_ndk.a",
+        "filedir": "android_x86_64_static/",
+        "path": "out/soong/.intermediates/bionic/libc/libc_openbsd_ndk/android_x86_64_static/libc_openbsd_ndk.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/libc_openbsd_ndk@android_x86_64_static.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc_openbsd_ndk.a",
+        "filedir": "android_x86_64_static_apex10000/",
+        "path": "out/soong/.intermediates/bionic/libc/libc_openbsd_ndk/android_x86_64_static_apex10000/libc_openbsd_ndk.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/libc_openbsd_ndk@android_x86_64_static_apex10000.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc_openbsd_ndk.a",
+        "filedir": "android_x86_x86_64_static/",
+        "path": "out/soong/.intermediates/bionic/libc/libc_openbsd_ndk/android_x86_x86_64_static/libc_openbsd_ndk.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/libc_openbsd_ndk@android_x86_x86_64_static.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc_openbsd_ndk.a",
+        "filedir": "android_x86_x86_64_static_apex10000/",
+        "path": "out/soong/.intermediates/bionic/libc/libc_openbsd_ndk/android_x86_x86_64_static_apex10000/libc_openbsd_ndk.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/libc_openbsd_ndk@android_x86_x86_64_static_apex10000.ninja"
+      }
+    ]
+  },
+  {
+    "name": "libc_openbsd_large_stack",
+    "project_path": "bionic/",
+    "outputs": [
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc_openbsd_large_stack.a",
+        "filedir": "android_recovery_x86_64_static/",
+        "path": "out/soong/.intermediates/bionic/libc/libc_openbsd_large_stack/android_recovery_x86_64_static/libc_openbsd_large_stack.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/libc_openbsd_large_stack@android_recovery_x86_64_static.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc_openbsd_large_stack.a",
+        "filedir": "android_x86_64_static/",
+        "path": "out/soong/.intermediates/bionic/libc/libc_openbsd_large_stack/android_x86_64_static/libc_openbsd_large_stack.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/libc_openbsd_large_stack@android_x86_64_static.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc_openbsd_large_stack.a",
+        "filedir": "android_x86_64_static_apex10000/",
+        "path": "out/soong/.intermediates/bionic/libc/libc_openbsd_large_stack/android_x86_64_static_apex10000/libc_openbsd_large_stack.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/libc_openbsd_large_stack@android_x86_64_static_apex10000.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc_openbsd_large_stack.a",
+        "filedir": "android_x86_x86_64_static/",
+        "path": "out/soong/.intermediates/bionic/libc/libc_openbsd_large_stack/android_x86_x86_64_static/libc_openbsd_large_stack.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/libc_openbsd_large_stack@android_x86_x86_64_static.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc_openbsd_large_stack.a",
+        "filedir": "android_x86_x86_64_static_apex10000/",
+        "path": "out/soong/.intermediates/bionic/libc/libc_openbsd_large_stack/android_x86_x86_64_static_apex10000/libc_openbsd_large_stack.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/libc_openbsd_large_stack@android_x86_x86_64_static_apex10000.ninja"
+      }
+    ]
+  },
+  {
+    "name": "libc_openbsd",
+    "project_path": "bionic/",
+    "outputs": [
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc_openbsd.a",
+        "filedir": "android_recovery_x86_64_static/",
+        "path": "out/soong/.intermediates/bionic/libc/libc_openbsd/android_recovery_x86_64_static/libc_openbsd.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/libc_openbsd@android_recovery_x86_64_static.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc_openbsd.a",
+        "filedir": "android_x86_64_static/",
+        "path": "out/soong/.intermediates/bionic/libc/libc_openbsd/android_x86_64_static/libc_openbsd.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/libc_openbsd@android_x86_64_static.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc_openbsd.a",
+        "filedir": "android_x86_64_static_apex10000/",
+        "path": "out/soong/.intermediates/bionic/libc/libc_openbsd/android_x86_64_static_apex10000/libc_openbsd.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/libc_openbsd@android_x86_64_static_apex10000.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc_openbsd.a",
+        "filedir": "android_x86_x86_64_static/",
+        "path": "out/soong/.intermediates/bionic/libc/libc_openbsd/android_x86_x86_64_static/libc_openbsd.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/libc_openbsd@android_x86_x86_64_static.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc_openbsd.a",
+        "filedir": "android_x86_x86_64_static_apex10000/",
+        "path": "out/soong/.intermediates/bionic/libc/libc_openbsd/android_x86_x86_64_static_apex10000/libc_openbsd.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/libc_openbsd@android_x86_x86_64_static_apex10000.ninja"
+      }
+    ]
+  },
+  {
+    "name": "libc_gdtoa",
+    "project_path": "bionic/",
+    "outputs": [
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc_gdtoa.a",
+        "filedir": "android_recovery_x86_64_static/",
+        "path": "out/soong/.intermediates/bionic/libc/libc_gdtoa/android_recovery_x86_64_static/libc_gdtoa.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/libc_gdtoa@android_recovery_x86_64_static.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc_gdtoa.a",
+        "filedir": "android_x86_64_static/",
+        "path": "out/soong/.intermediates/bionic/libc/libc_gdtoa/android_x86_64_static/libc_gdtoa.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/libc_gdtoa@android_x86_64_static.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc_gdtoa.a",
+        "filedir": "android_x86_64_static_apex10000/",
+        "path": "out/soong/.intermediates/bionic/libc/libc_gdtoa/android_x86_64_static_apex10000/libc_gdtoa.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/libc_gdtoa@android_x86_64_static_apex10000.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc_gdtoa.a",
+        "filedir": "android_x86_x86_64_static/",
+        "path": "out/soong/.intermediates/bionic/libc/libc_gdtoa/android_x86_x86_64_static/libc_gdtoa.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/libc_gdtoa@android_x86_x86_64_static.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc_gdtoa.a",
+        "filedir": "android_x86_x86_64_static_apex10000/",
+        "path": "out/soong/.intermediates/bionic/libc/libc_gdtoa/android_x86_x86_64_static_apex10000/libc_gdtoa.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/libc_gdtoa@android_x86_x86_64_static_apex10000.ninja"
+      }
+    ]
+  },
+  {
+    "name": "libc_fortify",
+    "project_path": "bionic/",
+    "outputs": [
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc_fortify.a",
+        "filedir": "android_recovery_x86_64_static/",
+        "path": "out/soong/.intermediates/bionic/libc/libc_fortify/android_recovery_x86_64_static/libc_fortify.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/libc_fortify@android_recovery_x86_64_static.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc_fortify.a",
+        "filedir": "android_x86_64_static/",
+        "path": "out/soong/.intermediates/bionic/libc/libc_fortify/android_x86_64_static/libc_fortify.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/libc_fortify@android_x86_64_static.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc_fortify.a",
+        "filedir": "android_x86_64_static_apex10000/",
+        "path": "out/soong/.intermediates/bionic/libc/libc_fortify/android_x86_64_static_apex10000/libc_fortify.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/libc_fortify@android_x86_64_static_apex10000.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc_fortify.a",
+        "filedir": "android_x86_x86_64_static/",
+        "path": "out/soong/.intermediates/bionic/libc/libc_fortify/android_x86_x86_64_static/libc_fortify.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/libc_fortify@android_x86_x86_64_static.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc_fortify.a",
+        "filedir": "android_x86_x86_64_static_apex10000/",
+        "path": "out/soong/.intermediates/bionic/libc/libc_fortify/android_x86_x86_64_static_apex10000/libc_fortify.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/libc_fortify@android_x86_x86_64_static_apex10000.ninja"
+      }
+    ]
+  },
+  {
+    "name": "libc_bionic",
+    "project_path": "bionic/",
+    "outputs": [
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc_bionic.a",
+        "filedir": "android_recovery_x86_64_static/",
+        "path": "out/soong/.intermediates/bionic/libc/libc_bionic/android_recovery_x86_64_static/libc_bionic.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/libc_bionic@android_recovery_x86_64_static.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc_bionic.a",
+        "filedir": "android_x86_64_static/",
+        "path": "out/soong/.intermediates/bionic/libc/libc_bionic/android_x86_64_static/libc_bionic.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/libc_bionic@android_x86_64_static.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc_bionic.a",
+        "filedir": "android_x86_64_static_apex10000/",
+        "path": "out/soong/.intermediates/bionic/libc/libc_bionic/android_x86_64_static_apex10000/libc_bionic.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/libc_bionic@android_x86_64_static_apex10000.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc_bionic.a",
+        "filedir": "android_x86_x86_64_static/",
+        "path": "out/soong/.intermediates/bionic/libc/libc_bionic/android_x86_x86_64_static/libc_bionic.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/libc_bionic@android_x86_x86_64_static.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc_bionic.a",
+        "filedir": "android_x86_x86_64_static_apex10000/",
+        "path": "out/soong/.intermediates/bionic/libc/libc_bionic/android_x86_x86_64_static_apex10000/libc_bionic.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/libc_bionic@android_x86_x86_64_static_apex10000.ninja"
+      }
+    ]
+  },
+  {
+    "name": "libasync_safe",
+    "project_path": "bionic/",
+    "outputs": [
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libasync_safe.a",
+        "filedir": "android_recovery_x86_64_static/",
+        "path": "out/soong/.intermediates/bionic/libc/async_safe/libasync_safe/android_recovery_x86_64_static/libasync_safe.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/async_safe/libasync_safe@android_recovery_x86_64_static.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libasync_safe.a",
+        "filedir": "android_vendor.31_x86_64_static/",
+        "path": "out/soong/.intermediates/bionic/libc/async_safe/libasync_safe/android_vendor.31_x86_64_static/libasync_safe.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/async_safe/libasync_safe@android_vendor.31_x86_64_static.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libasync_safe.a",
+        "filedir": "android_vendor.31_x86_x86_64_static/",
+        "path": "out/soong/.intermediates/bionic/libc/async_safe/libasync_safe/android_vendor.31_x86_x86_64_static/libasync_safe.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/async_safe/libasync_safe@android_vendor.31_x86_x86_64_static.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libasync_safe.a",
+        "filedir": "android_x86_64_static/",
+        "path": "out/soong/.intermediates/bionic/libc/async_safe/libasync_safe/android_x86_64_static/libasync_safe.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/async_safe/libasync_safe@android_x86_64_static.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libasync_safe.a",
+        "filedir": "android_x86_64_static_apex10000/",
+        "path": "out/soong/.intermediates/bionic/libc/async_safe/libasync_safe/android_x86_64_static_apex10000/libasync_safe.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/async_safe/libasync_safe@android_x86_64_static_apex10000.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libasync_safe.a",
+        "filedir": "android_x86_64_static_apex31/",
+        "path": "out/soong/.intermediates/bionic/libc/async_safe/libasync_safe/android_x86_64_static_apex31/libasync_safe.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/async_safe/libasync_safe@android_x86_64_static_apex31.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libasync_safe.a",
+        "filedir": "android_x86_64_static_lto-thin/",
+        "path": "out/soong/.intermediates/bionic/libc/async_safe/libasync_safe/android_x86_64_static_lto-thin/libasync_safe.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/async_safe/libasync_safe@android_x86_64_static_lto-thin.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libasync_safe.a",
+        "filedir": "android_x86_x86_64_static/",
+        "path": "out/soong/.intermediates/bionic/libc/async_safe/libasync_safe/android_x86_x86_64_static/libasync_safe.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/async_safe/libasync_safe@android_x86_x86_64_static.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libasync_safe.a",
+        "filedir": "android_x86_x86_64_static_apex10000/",
+        "path": "out/soong/.intermediates/bionic/libc/async_safe/libasync_safe/android_x86_x86_64_static_apex10000/libasync_safe.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/async_safe/libasync_safe@android_x86_x86_64_static_apex10000.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libasync_safe.a",
+        "filedir": "android_x86_x86_64_static_apex31/",
+        "path": "out/soong/.intermediates/bionic/libc/async_safe/libasync_safe/android_x86_x86_64_static_apex31/libasync_safe.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/async_safe/libasync_safe@android_x86_x86_64_static_apex31.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libasync_safe.a",
+        "filedir": "android_x86_x86_64_static_lto-thin/",
+        "path": "out/soong/.intermediates/bionic/libc/async_safe/libasync_safe/android_x86_x86_64_static_lto-thin/libasync_safe.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/async_safe/libasync_safe@android_x86_x86_64_static_lto-thin.ninja"
+      }
+    ]
+  },
+  {
+    "name": "libdl_android",
+    "project_path": "bionic/",
+    "outputs": [
+      {
+        "variant": "cc_library",
+        "type": "static",
+        "filename": "libdl_android.a",
+        "filedir": "android_recovery_x86_64_static/",
+        "path": "out/soong/.intermediates/bionic/libdl/libdl_android/android_recovery_x86_64_static/libdl_android.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libdl/libdl_android@android_recovery_x86_64_static.ninja"
+      },
+      {
+        "variant": "cc_library",
+        "type": "shared",
+        "filename": "libdl_android.so",
+        "filedir": "android_x86_64_shared/",
+        "path": "out/soong/.intermediates/bionic/libdl/libdl_android/android_x86_64_shared/libdl_android.so",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libdl/libdl_android@android_x86_64_shared.ninja"
+      },
+      {
+        "variant": "cc_library",
+        "type": "shared",
+        "filename": "libdl_android.so",
+        "filedir": "android_x86_64_shared_apex10000/",
+        "path": "out/soong/.intermediates/bionic/libdl/libdl_android/android_x86_64_shared_apex10000/libdl_android.so",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libdl/libdl_android@android_x86_64_shared_apex10000.ninja"
+      },
+      {
+        "variant": "cc_library",
+        "type": "static",
+        "filename": "libdl_android.a",
+        "filedir": "android_x86_64_static/",
+        "path": "out/soong/.intermediates/bionic/libdl/libdl_android/android_x86_64_static/libdl_android.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libdl/libdl_android@android_x86_64_static.ninja"
+      },
+      {
+        "variant": "cc_library",
+        "type": "static",
+        "filename": "libdl_android.a",
+        "filedir": "android_x86_64_static_apex10000/",
+        "path": "out/soong/.intermediates/bionic/libdl/libdl_android/android_x86_64_static_apex10000/libdl_android.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libdl/libdl_android@android_x86_64_static_apex10000.ninja"
+      },
+      {
+        "variant": "cc_library",
+        "type": "shared",
+        "filename": "libdl_android.so",
+        "filedir": "android_x86_x86_64_shared/",
+        "path": "out/soong/.intermediates/bionic/libdl/libdl_android/android_x86_x86_64_shared/libdl_android.so",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libdl/libdl_android@android_x86_x86_64_shared.ninja"
+      },
+      {
+        "variant": "cc_library",
+        "type": "shared",
+        "filename": "libdl_android.so",
+        "filedir": "android_x86_x86_64_shared_apex10000/",
+        "path": "out/soong/.intermediates/bionic/libdl/libdl_android/android_x86_x86_64_shared_apex10000/libdl_android.so",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libdl/libdl_android@android_x86_x86_64_shared_apex10000.ninja"
+      },
+      {
+        "variant": "cc_library",
+        "type": "static",
+        "filename": "libdl_android.a",
+        "filedir": "android_x86_x86_64_static/",
+        "path": "out/soong/.intermediates/bionic/libdl/libdl_android/android_x86_x86_64_static/libdl_android.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libdl/libdl_android@android_x86_x86_64_static.ninja"
+      },
+      {
+        "variant": "cc_library",
+        "type": "static",
+        "filename": "libdl_android.a",
+        "filedir": "android_x86_x86_64_static_apex10000/",
+        "path": "out/soong/.intermediates/bionic/libdl/libdl_android/android_x86_x86_64_static_apex10000/libdl_android.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libdl/libdl_android@android_x86_x86_64_static_apex10000.ninja"
+      }
+    ]
+  },
+  {
+    "name": "libdl_static",
+    "project_path": "bionic/",
+    "outputs": [
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libdl_static.a",
+        "filedir": "android_recovery_x86_64_static/",
+        "path": "out/soong/.intermediates/bionic/libdl/libdl_static/android_recovery_x86_64_static/libdl_static.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libdl/libdl_static@android_recovery_x86_64_static.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libdl_static.a",
+        "filedir": "android_x86_64_static/",
+        "path": "out/soong/.intermediates/bionic/libdl/libdl_static/android_x86_64_static/libdl_static.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libdl/libdl_static@android_x86_64_static.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libdl_static.a",
+        "filedir": "android_x86_64_static_apex10000/",
+        "path": "out/soong/.intermediates/bionic/libdl/libdl_static/android_x86_64_static_apex10000/libdl_static.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libdl/libdl_static@android_x86_64_static_apex10000.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libdl_static.a",
+        "filedir": "android_x86_x86_64_static/",
+        "path": "out/soong/.intermediates/bionic/libdl/libdl_static/android_x86_x86_64_static/libdl_static.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libdl/libdl_static@android_x86_x86_64_static.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libdl_static.a",
+        "filedir": "android_x86_x86_64_static_apex10000/",
+        "path": "out/soong/.intermediates/bionic/libdl/libdl_static/android_x86_x86_64_static_apex10000/libdl_static.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libdl/libdl_static@android_x86_x86_64_static_apex10000.ninja"
+      }
+    ]
+  },
+  {
+    "name": "libdl",
+    "project_path": "bionic/",
+    "outputs": [
+      {
+        "variant": "cc_library",
+        "type": "shared",
+        "filename": "libdl.so",
+        "filedir": "android_recovery_x86_64_shared/",
+        "path": "out/soong/.intermediates/bionic/libdl/libdl/android_recovery_x86_64_shared/libdl.so",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libdl/libdl@android_recovery_x86_64_shared.ninja"
+      },
+      {
+        "variant": "cc_library",
+        "type": "shared",
+        "filename": "libdl.so",
+        "filedir": "android_vendor.31_x86_64_shared/",
+        "path": "out/soong/.intermediates/bionic/libdl/libdl/android_vendor.31_x86_64_shared/libdl.so",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libdl/libdl@android_vendor.31_x86_64_shared.ninja"
+      },
+      {
+        "variant": "cc_library",
+        "type": "shared",
+        "filename": "libdl.so",
+        "filedir": "android_vendor.31_x86_x86_64_shared/",
+        "path": "out/soong/.intermediates/bionic/libdl/libdl/android_vendor.31_x86_x86_64_shared/libdl.so",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libdl/libdl@android_vendor.31_x86_x86_64_shared.ninja"
+      },
+      {
+        "variant": "cc_library",
+        "type": "shared",
+        "filename": "libdl.so",
+        "filedir": "android_x86_64_shared/",
+        "path": "out/soong/.intermediates/bionic/libdl/libdl/android_x86_64_shared/libdl.so",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libdl/libdl@android_x86_64_shared.ninja"
+      },
+      {
+        "variant": "cc_library",
+        "type": "shared",
+        "filename": "libdl.so",
+        "filedir": "android_x86_64_shared_apex10000/",
+        "path": "out/soong/.intermediates/bionic/libdl/libdl/android_x86_64_shared_apex10000/libdl.so",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libdl/libdl@android_x86_64_shared_apex10000.ninja"
+      },
+      {
+        "variant": "cc_library",
+        "type": "shared",
+        "filename": "libdl.so",
+        "filedir": "android_x86_64_shared_current/",
+        "path": "out/soong/.intermediates/bionic/libdl/libdl/android_x86_64_shared_current/libdl.so",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libdl/libdl@android_x86_64_shared_current.ninja"
+      },
+      {
+        "variant": "cc_library",
+        "type": "static",
+        "filename": "libdl.a",
+        "filedir": "android_x86_64_static/",
+        "path": "out/soong/.intermediates/bionic/libdl/libdl/android_x86_64_static/libdl.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libdl/libdl@android_x86_64_static.ninja"
+      },
+      {
+        "variant": "cc_library",
+        "type": "shared",
+        "filename": "libdl.so",
+        "filedir": "android_x86_x86_64_shared/",
+        "path": "out/soong/.intermediates/bionic/libdl/libdl/android_x86_x86_64_shared/libdl.so",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libdl/libdl@android_x86_x86_64_shared.ninja"
+      },
+      {
+        "variant": "cc_library",
+        "type": "shared",
+        "filename": "libdl.so",
+        "filedir": "android_x86_x86_64_shared_apex10000/",
+        "path": "out/soong/.intermediates/bionic/libdl/libdl/android_x86_x86_64_shared_apex10000/libdl.so",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libdl/libdl@android_x86_x86_64_shared_apex10000.ninja"
+      },
+      {
+        "variant": "cc_library",
+        "type": "shared",
+        "filename": "libdl.so",
+        "filedir": "android_x86_x86_64_shared_current/",
+        "path": "out/soong/.intermediates/bionic/libdl/libdl/android_x86_x86_64_shared_current/libdl.so",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libdl/libdl@android_x86_x86_64_shared_current.ninja"
+      }
+    ]
+  },
+  {
+    "name": "ld-android",
+    "project_path": "bionic/",
+    "outputs": [
+      {
+        "variant": "cc_library",
+        "type": "shared",
+        "filename": "ld-android.so",
+        "filedir": "android_recovery_x86_64_shared/",
+        "path": "out/soong/.intermediates/bionic/linker/ld-android/android_recovery_x86_64_shared/ld-android.so",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/linker/ld-android@android_recovery_x86_64_shared.ninja"
+      },
+      {
+        "variant": "cc_library",
+        "type": "shared",
+        "filename": "ld-android.so",
+        "filedir": "android_x86_64_shared/",
+        "path": "out/soong/.intermediates/bionic/linker/ld-android/android_x86_64_shared/ld-android.so",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/linker/ld-android@android_x86_64_shared.ninja"
+      },
+      {
+        "variant": "cc_library",
+        "type": "shared",
+        "filename": "ld-android.so",
+        "filedir": "android_x86_64_shared_apex10000/",
+        "path": "out/soong/.intermediates/bionic/linker/ld-android/android_x86_64_shared_apex10000/ld-android.so",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/linker/ld-android@android_x86_64_shared_apex10000.ninja"
+      },
+      {
+        "variant": "cc_library",
+        "type": "shared",
+        "filename": "ld-android.so",
+        "filedir": "android_x86_x86_64_shared/",
+        "path": "out/soong/.intermediates/bionic/linker/ld-android/android_x86_x86_64_shared/ld-android.so",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/linker/ld-android@android_x86_x86_64_shared.ninja"
+      },
+      {
+        "variant": "cc_library",
+        "type": "shared",
+        "filename": "ld-android.so",
+        "filedir": "android_x86_x86_64_shared_apex10000/",
+        "path": "out/soong/.intermediates/bionic/linker/ld-android/android_x86_x86_64_shared_apex10000/ld-android.so",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/linker/ld-android@android_x86_x86_64_shared_apex10000.ninja"
+      }
+    ]
+  },
+  {
+    "name": "libc_nopthread",
+    "project_path": "bionic/",
+    "outputs": [
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc_nopthread.a",
+        "filedir": "android_recovery_x86_64_static/",
+        "path": "out/soong/.intermediates/bionic/libc/libc_nopthread/android_recovery_x86_64_static/libc_nopthread.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/libc_nopthread@android_recovery_x86_64_static.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc_nopthread.a",
+        "filedir": "android_x86_64_static/",
+        "path": "out/soong/.intermediates/bionic/libc/libc_nopthread/android_x86_64_static/libc_nopthread.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/libc_nopthread@android_x86_64_static.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc_nopthread.a",
+        "filedir": "android_x86_64_static_apex10000/",
+        "path": "out/soong/.intermediates/bionic/libc/libc_nopthread/android_x86_64_static_apex10000/libc_nopthread.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/libc_nopthread@android_x86_64_static_apex10000.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc_nopthread.a",
+        "filedir": "android_x86_x86_64_static/",
+        "path": "out/soong/.intermediates/bionic/libc/libc_nopthread/android_x86_x86_64_static/libc_nopthread.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/libc_nopthread@android_x86_x86_64_static.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc_nopthread.a",
+        "filedir": "android_x86_x86_64_static_apex10000/",
+        "path": "out/soong/.intermediates/bionic/libc/libc_nopthread/android_x86_x86_64_static_apex10000/libc_nopthread.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/libc_nopthread@android_x86_x86_64_static_apex10000.ninja"
+      }
+    ]
+  },
+  {
+    "name": "libc",
+    "project_path": "bionic/",
+    "outputs": [
+      {
+        "variant": "cc_library",
+        "type": "shared",
+        "filename": "libc.so",
+        "filedir": "android_recovery_x86_64_shared/",
+        "path": "out/soong/.intermediates/bionic/libc/libc/android_recovery_x86_64_shared/libc.so",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/libc@android_recovery_x86_64_shared.ninja"
+      },
+      {
+        "variant": "cc_library",
+        "type": "shared",
+        "filename": "libc.so",
+        "filedir": "android_vendor.31_x86_64_shared/",
+        "path": "out/soong/.intermediates/bionic/libc/libc/android_vendor.31_x86_64_shared/libc.so",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/libc@android_vendor.31_x86_64_shared.ninja"
+      },
+      {
+        "variant": "cc_library",
+        "type": "shared",
+        "filename": "libc.so",
+        "filedir": "android_vendor.31_x86_x86_64_shared/",
+        "path": "out/soong/.intermediates/bionic/libc/libc/android_vendor.31_x86_x86_64_shared/libc.so",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/libc@android_vendor.31_x86_x86_64_shared.ninja"
+      },
+      {
+        "variant": "cc_library",
+        "type": "shared",
+        "filename": "libc.so",
+        "filedir": "android_x86_64_shared/",
+        "path": "out/soong/.intermediates/bionic/libc/libc/android_x86_64_shared/libc.so",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/libc@android_x86_64_shared.ninja"
+      },
+      {
+        "variant": "cc_library",
+        "type": "shared",
+        "filename": "libc.so",
+        "filedir": "android_x86_64_shared_apex10000/",
+        "path": "out/soong/.intermediates/bionic/libc/libc/android_x86_64_shared_apex10000/libc.so",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/libc@android_x86_64_shared_apex10000.ninja"
+      },
+      {
+        "variant": "cc_library",
+        "type": "shared",
+        "filename": "libc.so",
+        "filedir": "android_x86_64_shared_current/",
+        "path": "out/soong/.intermediates/bionic/libc/libc/android_x86_64_shared_current/libc.so",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/libc@android_x86_64_shared_current.ninja"
+      },
+      {
+        "variant": "cc_library",
+        "type": "static",
+        "filename": "libc.a",
+        "filedir": "android_x86_64_static/",
+        "path": "out/soong/.intermediates/bionic/libc/libc/android_x86_64_static/libc.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/libc@android_x86_64_static.ninja"
+      },
+      {
+        "variant": "cc_library",
+        "type": "static",
+        "filename": "libc.a",
+        "filedir": "android_x86_64_static_apex10000/",
+        "path": "out/soong/.intermediates/bionic/libc/libc/android_x86_64_static_apex10000/libc.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/libc@android_x86_64_static_apex10000.ninja"
+      },
+      {
+        "variant": "cc_library",
+        "type": "shared",
+        "filename": "libc.so",
+        "filedir": "android_x86_x86_64_shared/",
+        "path": "out/soong/.intermediates/bionic/libc/libc/android_x86_x86_64_shared/libc.so",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/libc@android_x86_x86_64_shared.ninja"
+      },
+      {
+        "variant": "cc_library",
+        "type": "shared",
+        "filename": "libc.so",
+        "filedir": "android_x86_x86_64_shared_apex10000/",
+        "path": "out/soong/.intermediates/bionic/libc/libc/android_x86_x86_64_shared_apex10000/libc.so",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/libc@android_x86_x86_64_shared_apex10000.ninja"
+      },
+      {
+        "variant": "cc_library",
+        "type": "shared",
+        "filename": "libc.so",
+        "filedir": "android_x86_x86_64_shared_current/",
+        "path": "out/soong/.intermediates/bionic/libc/libc/android_x86_x86_64_shared_current/libc.so",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/libc@android_x86_x86_64_shared_current.ninja"
+      }
+    ]
+  },
+  {
+    "name": "libstdc++",
+    "project_path": "bionic/",
+    "outputs": [
+      {
+        "variant": "cc_library",
+        "type": "static",
+        "filename": "libstdc++.a",
+        "filedir": "android_recovery_x86_64_static/",
+        "path": "out/soong/.intermediates/bionic/libc/libstdc++/android_recovery_x86_64_static/libstdc++.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/libstdc++@android_recovery_x86_64_static.ninja"
+      },
+      {
+        "variant": "cc_library",
+        "type": "shared",
+        "filename": "libstdc++.so",
+        "filedir": "android_x86_64_shared/",
+        "path": "out/soong/.intermediates/bionic/libc/libstdc++/android_x86_64_shared/libstdc++.so",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/libstdc++@android_x86_64_shared.ninja"
+      },
+      {
+        "variant": "cc_library",
+        "type": "static",
+        "filename": "libstdc++.a",
+        "filedir": "android_x86_64_static/",
+        "path": "out/soong/.intermediates/bionic/libc/libstdc++/android_x86_64_static/libstdc++.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/libstdc++@android_x86_64_static.ninja"
+      },
+      {
+        "variant": "cc_library",
+        "type": "static",
+        "filename": "libstdc++.a",
+        "filedir": "android_x86_64_static_apex10000/",
+        "path": "out/soong/.intermediates/bionic/libc/libstdc++/android_x86_64_static_apex10000/libstdc++.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/libstdc++@android_x86_64_static_apex10000.ninja"
+      },
+      {
+        "variant": "cc_library",
+        "type": "shared",
+        "filename": "libstdc++.so",
+        "filedir": "android_x86_x86_64_shared/",
+        "path": "out/soong/.intermediates/bionic/libc/libstdc++/android_x86_x86_64_shared/libstdc++.so",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/libstdc++@android_x86_x86_64_shared.ninja"
+      },
+      {
+        "variant": "cc_library",
+        "type": "static",
+        "filename": "libstdc++.a",
+        "filedir": "android_x86_x86_64_static/",
+        "path": "out/soong/.intermediates/bionic/libc/libstdc++/android_x86_x86_64_static/libstdc++.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/libstdc++@android_x86_x86_64_static.ninja"
+      },
+      {
+        "variant": "cc_library",
+        "type": "static",
+        "filename": "libstdc++.a",
+        "filedir": "android_x86_x86_64_static_apex10000/",
+        "path": "out/soong/.intermediates/bionic/libc/libstdc++/android_x86_x86_64_static_apex10000/libstdc++.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/libstdc++@android_x86_x86_64_static_apex10000.ninja"
+      }
+    ]
+  },
+  {
+    "name": "libc.ndk",
+    "project_path": "bionic/",
+    "outputs": [
+      {
+        "variant": "ndk_library",
+        "type": "shared",
+        "filename": "libc.ndk.so",
+        "filedir": "android_x86_64_sdk_shared_21/",
+        "path": "out/soong/.intermediates/bionic/libc/libc.ndk/android_x86_64_sdk_shared_21/libc.so",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/libc.ndk@android_x86_64_sdk_shared_21.ninja"
+      },
+      {
+        "variant": "ndk_library",
+        "type": "shared",
+        "filename": "libc.ndk.so",
+        "filedir": "android_x86_64_sdk_shared_29/",
+        "path": "out/soong/.intermediates/bionic/libc/libc.ndk/android_x86_64_sdk_shared_29/libc.so",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/libc.ndk@android_x86_64_sdk_shared_29.ninja"
+      },
+      {
+        "variant": "ndk_library",
+        "type": "shared",
+        "filename": "libc.ndk.so",
+        "filedir": "android_x86_64_sdk_shared_30/",
+        "path": "out/soong/.intermediates/bionic/libc/libc.ndk/android_x86_64_sdk_shared_30/libc.so",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/libc.ndk@android_x86_64_sdk_shared_30.ninja"
+      },
+      {
+        "variant": "ndk_library",
+        "type": "shared",
+        "filename": "libc.ndk.so",
+        "filedir": "android_x86_64_sdk_shared_current/",
+        "path": "out/soong/.intermediates/bionic/libc/libc.ndk/android_x86_64_sdk_shared_current/libc.so",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/libc.ndk@android_x86_64_sdk_shared_current.ninja"
+      }
+    ]
+  },
+  {
+    "name": "libstdc++.ndk",
+    "project_path": "bionic/",
+    "outputs": [
+      {
+        "variant": "ndk_library",
+        "type": "shared",
+        "filename": "libstdc++.ndk.so",
+        "filedir": "android_x86_64_sdk_shared_21/",
+        "path": "out/soong/.intermediates/bionic/libc/libstdc++.ndk/android_x86_64_sdk_shared_21/libstdc++.so",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/libstdc++.ndk@android_x86_64_sdk_shared_21.ninja"
+      },
+      {
+        "variant": "ndk_library",
+        "type": "shared",
+        "filename": "libstdc++.ndk.so",
+        "filedir": "android_x86_64_sdk_shared_29/",
+        "path": "out/soong/.intermediates/bionic/libc/libstdc++.ndk/android_x86_64_sdk_shared_29/libstdc++.so",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/libstdc++.ndk@android_x86_64_sdk_shared_29.ninja"
+      },
+      {
+        "variant": "ndk_library",
+        "type": "shared",
+        "filename": "libstdc++.ndk.so",
+        "filedir": "android_x86_64_sdk_shared_current/",
+        "path": "out/soong/.intermediates/bionic/libc/libstdc++.ndk/android_x86_64_sdk_shared_current/libstdc++.so",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/libstdc++.ndk@android_x86_64_sdk_shared_current.ninja"
+      }
+    ]
+  },
+  {
+    "name": "libsystemproperties",
+    "project_path": "bionic/",
+    "outputs": [
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libsystemproperties.a",
+        "filedir": "android_recovery_x86_64_static/",
+        "path": "out/soong/.intermediates/bionic/libc/system_properties/libsystemproperties/android_recovery_x86_64_static/libsystemproperties.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/system_properties/libsystemproperties@android_recovery_x86_64_static.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libsystemproperties.a",
+        "filedir": "android_x86_64_static/",
+        "path": "out/soong/.intermediates/bionic/libc/system_properties/libsystemproperties/android_x86_64_static/libsystemproperties.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/system_properties/libsystemproperties@android_x86_64_static.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libsystemproperties.a",
+        "filedir": "android_x86_64_static_apex10000/",
+        "path": "out/soong/.intermediates/bionic/libc/system_properties/libsystemproperties/android_x86_64_static_apex10000/libsystemproperties.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/system_properties/libsystemproperties@android_x86_64_static_apex10000.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libsystemproperties.a",
+        "filedir": "android_x86_x86_64_static/",
+        "path": "out/soong/.intermediates/bionic/libc/system_properties/libsystemproperties/android_x86_x86_64_static/libsystemproperties.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/system_properties/libsystemproperties@android_x86_x86_64_static.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libsystemproperties.a",
+        "filedir": "android_x86_x86_64_static_apex10000/",
+        "path": "out/soong/.intermediates/bionic/libc/system_properties/libsystemproperties/android_x86_x86_64_static_apex10000/libsystemproperties.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libc/system_properties/libsystemproperties@android_x86_x86_64_static_apex10000.ninja"
+      }
+    ]
+  },
+  {
+    "name": "libdl.ndk",
+    "project_path": "bionic/",
+    "outputs": [
+      {
+        "variant": "ndk_library",
+        "type": "shared",
+        "filename": "libdl.ndk.so",
+        "filedir": "android_x86_64_sdk_shared_21/",
+        "path": "out/soong/.intermediates/bionic/libdl/libdl.ndk/android_x86_64_sdk_shared_21/libdl.so",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libdl/libdl.ndk@android_x86_64_sdk_shared_21.ninja"
+      },
+      {
+        "variant": "ndk_library",
+        "type": "shared",
+        "filename": "libdl.ndk.so",
+        "filedir": "android_x86_64_sdk_shared_29/",
+        "path": "out/soong/.intermediates/bionic/libdl/libdl.ndk/android_x86_64_sdk_shared_29/libdl.so",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libdl/libdl.ndk@android_x86_64_sdk_shared_29.ninja"
+      },
+      {
+        "variant": "ndk_library",
+        "type": "shared",
+        "filename": "libdl.ndk.so",
+        "filedir": "android_x86_64_sdk_shared_30/",
+        "path": "out/soong/.intermediates/bionic/libdl/libdl.ndk/android_x86_64_sdk_shared_30/libdl.so",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libdl/libdl.ndk@android_x86_64_sdk_shared_30.ninja"
+      },
+      {
+        "variant": "ndk_library",
+        "type": "shared",
+        "filename": "libdl.ndk.so",
+        "filedir": "android_x86_64_sdk_shared_current/",
+        "path": "out/soong/.intermediates/bionic/libdl/libdl.ndk/android_x86_64_sdk_shared_current/libdl.so",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libdl/libdl.ndk@android_x86_64_sdk_shared_current.ninja"
+      }
+    ]
+  },
+  {
+    "name": "libm",
+    "project_path": "bionic/",
+    "outputs": [
+      {
+        "variant": "cc_library",
+        "type": "shared",
+        "filename": "libm.so",
+        "filedir": "android_recovery_x86_64_shared/",
+        "path": "out/soong/.intermediates/bionic/libm/libm/android_recovery_x86_64_shared/libm.so",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libm/libm@android_recovery_x86_64_shared.ninja"
+      },
+      {
+        "variant": "cc_library",
+        "type": "static",
+        "filename": "libm.a",
+        "filedir": "android_recovery_x86_64_static/",
+        "path": "out/soong/.intermediates/bionic/libm/libm/android_recovery_x86_64_static/libm.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libm/libm@android_recovery_x86_64_static.ninja"
+      },
+      {
+        "variant": "cc_library",
+        "type": "shared",
+        "filename": "libm.so",
+        "filedir": "android_vendor.31_x86_64_shared/",
+        "path": "out/soong/.intermediates/bionic/libm/libm/android_vendor.31_x86_64_shared/libm.so",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libm/libm@android_vendor.31_x86_64_shared.ninja"
+      },
+      {
+        "variant": "cc_library",
+        "type": "shared",
+        "filename": "libm.so",
+        "filedir": "android_vendor.31_x86_x86_64_shared/",
+        "path": "out/soong/.intermediates/bionic/libm/libm/android_vendor.31_x86_x86_64_shared/libm.so",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libm/libm@android_vendor.31_x86_x86_64_shared.ninja"
+      },
+      {
+        "variant": "cc_library",
+        "type": "shared",
+        "filename": "libm.so",
+        "filedir": "android_x86_64_shared/",
+        "path": "out/soong/.intermediates/bionic/libm/libm/android_x86_64_shared/libm.so",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libm/libm@android_x86_64_shared.ninja"
+      },
+      {
+        "variant": "cc_library",
+        "type": "shared",
+        "filename": "libm.so",
+        "filedir": "android_x86_64_shared_apex10000/",
+        "path": "out/soong/.intermediates/bionic/libm/libm/android_x86_64_shared_apex10000/libm.so",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libm/libm@android_x86_64_shared_apex10000.ninja"
+      },
+      {
+        "variant": "cc_library",
+        "type": "shared",
+        "filename": "libm.so",
+        "filedir": "android_x86_64_shared_current/",
+        "path": "out/soong/.intermediates/bionic/libm/libm/android_x86_64_shared_current/libm.so",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libm/libm@android_x86_64_shared_current.ninja"
+      },
+      {
+        "variant": "cc_library",
+        "type": "static",
+        "filename": "libm.a",
+        "filedir": "android_x86_64_static/",
+        "path": "out/soong/.intermediates/bionic/libm/libm/android_x86_64_static/libm.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libm/libm@android_x86_64_static.ninja"
+      },
+      {
+        "variant": "cc_library",
+        "type": "static",
+        "filename": "libm.a",
+        "filedir": "android_x86_64_static_apex10000/",
+        "path": "out/soong/.intermediates/bionic/libm/libm/android_x86_64_static_apex10000/libm.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libm/libm@android_x86_64_static_apex10000.ninja"
+      },
+      {
+        "variant": "cc_library",
+        "type": "shared",
+        "filename": "libm.so",
+        "filedir": "android_x86_x86_64_shared/",
+        "path": "out/soong/.intermediates/bionic/libm/libm/android_x86_x86_64_shared/libm.so",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libm/libm@android_x86_x86_64_shared.ninja"
+      },
+      {
+        "variant": "cc_library",
+        "type": "shared",
+        "filename": "libm.so",
+        "filedir": "android_x86_x86_64_shared_apex10000/",
+        "path": "out/soong/.intermediates/bionic/libm/libm/android_x86_x86_64_shared_apex10000/libm.so",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libm/libm@android_x86_x86_64_shared_apex10000.ninja"
+      },
+      {
+        "variant": "cc_library",
+        "type": "shared",
+        "filename": "libm.so",
+        "filedir": "android_x86_x86_64_shared_current/",
+        "path": "out/soong/.intermediates/bionic/libm/libm/android_x86_x86_64_shared_current/libm.so",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libm/libm@android_x86_x86_64_shared_current.ninja"
+      },
+      {
+        "variant": "cc_library",
+        "type": "static",
+        "filename": "libm.a",
+        "filedir": "android_x86_x86_64_static/",
+        "path": "out/soong/.intermediates/bionic/libm/libm/android_x86_x86_64_static/libm.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libm/libm@android_x86_x86_64_static.ninja"
+      },
+      {
+        "variant": "cc_library",
+        "type": "static",
+        "filename": "libm.a",
+        "filedir": "android_x86_x86_64_static_apex10000/",
+        "path": "out/soong/.intermediates/bionic/libm/libm/android_x86_x86_64_static_apex10000/libm.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libm/libm@android_x86_x86_64_static_apex10000.ninja"
+      }
+    ]
+  },
+  {
+    "name": "libm.ndk",
+    "project_path": "bionic/",
+    "outputs": [
+      {
+        "variant": "ndk_library",
+        "type": "shared",
+        "filename": "libm.ndk.so",
+        "filedir": "android_x86_64_sdk_shared_21/",
+        "path": "out/soong/.intermediates/bionic/libm/libm.ndk/android_x86_64_sdk_shared_21/libm.so",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libm/libm.ndk@android_x86_64_sdk_shared_21.ninja"
+      },
+      {
+        "variant": "ndk_library",
+        "type": "shared",
+        "filename": "libm.ndk.so",
+        "filedir": "android_x86_64_sdk_shared_29/",
+        "path": "out/soong/.intermediates/bionic/libm/libm.ndk/android_x86_64_sdk_shared_29/libm.so",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libm/libm.ndk@android_x86_64_sdk_shared_29.ninja"
+      },
+      {
+        "variant": "ndk_library",
+        "type": "shared",
+        "filename": "libm.ndk.so",
+        "filedir": "android_x86_64_sdk_shared_30/",
+        "path": "out/soong/.intermediates/bionic/libm/libm.ndk/android_x86_64_sdk_shared_30/libm.so",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libm/libm.ndk@android_x86_64_sdk_shared_30.ninja"
+      },
+      {
+        "variant": "ndk_library",
+        "type": "shared",
+        "filename": "libm.ndk.so",
+        "filedir": "android_x86_64_sdk_shared_current/",
+        "path": "out/soong/.intermediates/bionic/libm/libm.ndk/android_x86_64_sdk_shared_current/libm.so",
+        "objs": [],
+        "ninja": "out/soong/ninja/bionic/libm/libm.ndk@android_x86_64_sdk_shared_current.ninja"
+      }
+    ]
+  },
+  {
+    "name": "libnom",
+    "project_path": "external/rust/crates/nom/",
+    "outputs": [
+      {
+        "variant": "rust_library",
+        "type": "rlib",
+        "filename": "libnom.rlib",
+        "filedir": "linux_glibc_x86_64_rlib_rlib-std/",
+        "path": "out/soong/.intermediates/external/rust/crates/nom/libnom/linux_glibc_x86_64_rlib_rlib-std/libnom.rlib",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/rust/crates/nom/libnom@linux_glibc_x86_64_rlib_rlib-std.ninja"
+      }
+    ]
+  },
+  {
+    "name": "libprotobuf",
+    "project_path": "external/rust/crates/protobuf/",
+    "outputs": [
+      {
+        "variant": "rust_library",
+        "type": "rlib",
+        "filename": "libprotobuf.rlib",
+        "filedir": "android_x86_64_rlib_rlib-std/",
+        "path": "out/soong/.intermediates/external/rust/crates/protobuf/libprotobuf/android_x86_64_rlib_rlib-std/libprotobuf.rlib",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/rust/crates/protobuf/libprotobuf@android_x86_64_rlib_rlib-std.ninja"
+      },
+      {
+        "variant": "rust_library",
+        "type": "rlib",
+        "filename": "libprotobuf.rlib",
+        "filedir": "android_x86_x86_64_rlib_rlib-std/",
+        "path": "out/soong/.intermediates/external/rust/crates/protobuf/libprotobuf/android_x86_x86_64_rlib_rlib-std/libprotobuf.rlib",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/rust/crates/protobuf/libprotobuf@android_x86_x86_64_rlib_rlib-std.ninja"
+      }
+    ]
+  },
+  {
+    "name": "libaho_corasick",
+    "project_path": "external/rust/crates/aho-corasick/",
+    "outputs": [
+      {
+        "variant": "rust_library",
+        "type": "rlib",
+        "filename": "libaho_corasick.rlib",
+        "filedir": "linux_glibc_x86_64_rlib_rlib-std/",
+        "path": "out/soong/.intermediates/external/rust/crates/aho-corasick/libaho_corasick/linux_glibc_x86_64_rlib_rlib-std/libaho_corasick.rlib",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/rust/crates/aho-corasick/libaho_corasick@linux_glibc_x86_64_rlib_rlib-std.ninja"
+      }
+    ]
+  },
+  {
+    "name": "libclap",
+    "project_path": "external/rust/crates/clap/",
+    "outputs": [
+      {
+        "variant": "rust_library",
+        "type": "rlib",
+        "filename": "libclap.rlib",
+        "filedir": "linux_glibc_x86_64_rlib_rlib-std/",
+        "path": "out/soong/.intermediates/external/rust/crates/clap/libclap/linux_glibc_x86_64_rlib_rlib-std/libclap.rlib",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/rust/crates/clap/libclap@linux_glibc_x86_64_rlib_rlib-std.ninja"
+      }
+    ]
+  },
+  {
+    "name": "libcodespan_reporting",
+    "project_path": "external/rust/crates/codespan-reporting/",
+    "outputs": [
+      {
+        "variant": "rust_library",
+        "type": "rlib",
+        "filename": "libcodespan_reporting.rlib",
+        "filedir": "linux_glibc_x86_64_rlib_rlib-std/",
+        "path": "out/soong/.intermediates/external/rust/crates/codespan-reporting/libcodespan_reporting/linux_glibc_x86_64_rlib_rlib-std/libcodespan_reporting.rlib",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/rust/crates/codespan-reporting/libcodespan_reporting@linux_glibc_x86_64_rlib_rlib-std.ninja"
+      }
+    ]
+  },
+  {
+    "name": "libfutures_channel",
+    "project_path": "external/rust/crates/futures-channel/",
+    "outputs": [
+      {
+        "variant": "rust_library",
+        "type": "rlib",
+        "filename": "libfutures_channel.rlib",
+        "filedir": "android_x86_64_rlib_rlib-std/",
+        "path": "out/soong/.intermediates/external/rust/crates/futures-channel/libfutures_channel/android_x86_64_rlib_rlib-std/libfutures_channel.rlib",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/rust/crates/futures-channel/libfutures_channel@android_x86_64_rlib_rlib-std.ninja"
+      },
+      {
+        "variant": "rust_library",
+        "type": "rlib",
+        "filename": "libfutures_channel.rlib",
+        "filedir": "android_x86_x86_64_rlib_rlib-std/",
+        "path": "out/soong/.intermediates/external/rust/crates/futures-channel/libfutures_channel/android_x86_x86_64_rlib_rlib-std/libfutures_channel.rlib",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/rust/crates/futures-channel/libfutures_channel@android_x86_x86_64_rlib_rlib-std.ninja"
+      }
+    ]
+  },
+  {
+    "name": "liblock_api",
+    "project_path": "external/rust/crates/lock_api/",
+    "outputs": [
+      {
+        "variant": "rust_library",
+        "type": "rlib",
+        "filename": "liblock_api.rlib",
+        "filedir": "android_x86_64_rlib_rlib-std/",
+        "path": "out/soong/.intermediates/external/rust/crates/lock_api/liblock_api/android_x86_64_rlib_rlib-std/liblock_api.rlib",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/rust/crates/lock_api/liblock_api@android_x86_64_rlib_rlib-std.ninja"
+      },
+      {
+        "variant": "rust_library",
+        "type": "rlib",
+        "filename": "liblock_api.rlib",
+        "filedir": "android_x86_x86_64_rlib_rlib-std/",
+        "path": "out/soong/.intermediates/external/rust/crates/lock_api/liblock_api/android_x86_x86_64_rlib_rlib-std/liblock_api.rlib",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/rust/crates/lock_api/liblock_api@android_x86_x86_64_rlib_rlib-std.ninja"
+      }
+    ]
+  },
+  {
+    "name": "libproc_macro2",
+    "project_path": "external/rust/crates/proc-macro2/",
+    "outputs": [
+      {
+        "variant": "rust_library_host",
+        "type": "rlib",
+        "filename": "libproc_macro2.rlib",
+        "filedir": "linux_glibc_x86_64_rlib_rlib-std/",
+        "path": "out/soong/.intermediates/external/rust/crates/proc-macro2/libproc_macro2/linux_glibc_x86_64_rlib_rlib-std/libproc_macro2.rlib",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/rust/crates/proc-macro2/libproc_macro2@linux_glibc_x86_64_rlib_rlib-std.ninja"
+      }
+    ]
+  }
+]

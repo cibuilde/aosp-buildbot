@@ -1,0 +1,822 @@
+[
+  {
+    "name": "libarm-optimized-routines-string",
+    "project_path": "external/arm-optimized-routines/",
+    "outputs": [
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libarm-optimized-routines-string.a",
+        "filedir": "android_recovery_x86_64_static/",
+        "path": "out/soong/.intermediates/external/arm-optimized-routines/libarm-optimized-routines-string/android_recovery_x86_64_static/libarm-optimized-routines-string.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/arm-optimized-routines/libarm-optimized-routines-string@android_recovery_x86_64_static.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libarm-optimized-routines-string.a",
+        "filedir": "android_x86_64_static/",
+        "path": "out/soong/.intermediates/external/arm-optimized-routines/libarm-optimized-routines-string/android_x86_64_static/libarm-optimized-routines-string.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/arm-optimized-routines/libarm-optimized-routines-string@android_x86_64_static.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libarm-optimized-routines-string.a",
+        "filedir": "android_x86_64_static_apex10000/",
+        "path": "out/soong/.intermediates/external/arm-optimized-routines/libarm-optimized-routines-string/android_x86_64_static_apex10000/libarm-optimized-routines-string.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/arm-optimized-routines/libarm-optimized-routines-string@android_x86_64_static_apex10000.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libarm-optimized-routines-string.a",
+        "filedir": "android_x86_x86_64_static/",
+        "path": "out/soong/.intermediates/external/arm-optimized-routines/libarm-optimized-routines-string/android_x86_x86_64_static/libarm-optimized-routines-string.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/arm-optimized-routines/libarm-optimized-routines-string@android_x86_x86_64_static.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libarm-optimized-routines-string.a",
+        "filedir": "android_x86_x86_64_static_apex10000/",
+        "path": "out/soong/.intermediates/external/arm-optimized-routines/libarm-optimized-routines-string/android_x86_x86_64_static_apex10000/libarm-optimized-routines-string.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/arm-optimized-routines/libarm-optimized-routines-string@android_x86_x86_64_static_apex10000.ninja"
+      }
+    ]
+  },
+  {
+    "name": "libarm-optimized-routines-math",
+    "project_path": "external/arm-optimized-routines/",
+    "outputs": [
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libarm-optimized-routines-math.a",
+        "filedir": "android_recovery_x86_64_static/",
+        "path": "out/soong/.intermediates/external/arm-optimized-routines/libarm-optimized-routines-math/android_recovery_x86_64_static/libarm-optimized-routines-math.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/arm-optimized-routines/libarm-optimized-routines-math@android_recovery_x86_64_static.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libarm-optimized-routines-math.a",
+        "filedir": "android_x86_64_static/",
+        "path": "out/soong/.intermediates/external/arm-optimized-routines/libarm-optimized-routines-math/android_x86_64_static/libarm-optimized-routines-math.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/arm-optimized-routines/libarm-optimized-routines-math@android_x86_64_static.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libarm-optimized-routines-math.a",
+        "filedir": "android_x86_64_static_apex10000/",
+        "path": "out/soong/.intermediates/external/arm-optimized-routines/libarm-optimized-routines-math/android_x86_64_static_apex10000/libarm-optimized-routines-math.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/arm-optimized-routines/libarm-optimized-routines-math@android_x86_64_static_apex10000.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libarm-optimized-routines-math.a",
+        "filedir": "android_x86_x86_64_static/",
+        "path": "out/soong/.intermediates/external/arm-optimized-routines/libarm-optimized-routines-math/android_x86_x86_64_static/libarm-optimized-routines-math.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/arm-optimized-routines/libarm-optimized-routines-math@android_x86_x86_64_static.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libarm-optimized-routines-math.a",
+        "filedir": "android_x86_x86_64_static_apex10000/",
+        "path": "out/soong/.intermediates/external/arm-optimized-routines/libarm-optimized-routines-math/android_x86_x86_64_static_apex10000/libarm-optimized-routines-math.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/arm-optimized-routines/libarm-optimized-routines-math@android_x86_x86_64_static_apex10000.ninja"
+      }
+    ]
+  },
+  {
+    "name": "gwp_asan",
+    "project_path": "external/gwp_asan/",
+    "outputs": [
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "gwp_asan.a",
+        "filedir": "android_recovery_x86_64_static/",
+        "path": "out/soong/.intermediates/external/gwp_asan/gwp_asan/android_recovery_x86_64_static/gwp_asan.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/gwp_asan/gwp_asan@android_recovery_x86_64_static.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "gwp_asan.a",
+        "filedir": "android_x86_64_static/",
+        "path": "out/soong/.intermediates/external/gwp_asan/gwp_asan/android_x86_64_static/gwp_asan.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/gwp_asan/gwp_asan@android_x86_64_static.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "gwp_asan.a",
+        "filedir": "android_x86_64_static_apex10000/",
+        "path": "out/soong/.intermediates/external/gwp_asan/gwp_asan/android_x86_64_static_apex10000/gwp_asan.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/gwp_asan/gwp_asan@android_x86_64_static_apex10000.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "gwp_asan.a",
+        "filedir": "android_x86_x86_64_static/",
+        "path": "out/soong/.intermediates/external/gwp_asan/gwp_asan/android_x86_x86_64_static/gwp_asan.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/gwp_asan/gwp_asan@android_x86_x86_64_static.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "gwp_asan.a",
+        "filedir": "android_x86_x86_64_static_apex10000/",
+        "path": "out/soong/.intermediates/external/gwp_asan/gwp_asan/android_x86_x86_64_static_apex10000/gwp_asan.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/gwp_asan/gwp_asan@android_x86_x86_64_static_apex10000.ninja"
+      }
+    ]
+  },
+  {
+    "name": "libbitflags",
+    "project_path": "external/rust/crates/bitflags/",
+    "outputs": [
+      {
+        "variant": "rust_library",
+        "type": "rlib",
+        "filename": "libbitflags.rlib",
+        "filedir": "android_x86_64_rlib_rlib-std/",
+        "path": "out/soong/.intermediates/external/rust/crates/bitflags/libbitflags/android_x86_64_rlib_rlib-std/libbitflags.rlib",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/rust/crates/bitflags/libbitflags@android_x86_64_rlib_rlib-std.ninja"
+      },
+      {
+        "variant": "rust_library",
+        "type": "rlib",
+        "filename": "libbitflags.rlib",
+        "filedir": "android_x86_x86_64_rlib_rlib-std/",
+        "path": "out/soong/.intermediates/external/rust/crates/bitflags/libbitflags/android_x86_x86_64_rlib_rlib-std/libbitflags.rlib",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/rust/crates/bitflags/libbitflags@android_x86_x86_64_rlib_rlib-std.ninja"
+      },
+      {
+        "variant": "rust_library",
+        "type": "rlib",
+        "filename": "libbitflags.rlib",
+        "filedir": "linux_glibc_x86_64_rlib_rlib-std/",
+        "path": "out/soong/.intermediates/external/rust/crates/bitflags/libbitflags/linux_glibc_x86_64_rlib_rlib-std/libbitflags.rlib",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/rust/crates/bitflags/libbitflags@linux_glibc_x86_64_rlib_rlib-std.ninja"
+      }
+    ]
+  },
+  {
+    "name": "libbytes",
+    "project_path": "external/rust/crates/bytes/",
+    "outputs": [
+      {
+        "variant": "rust_library",
+        "type": "rlib",
+        "filename": "libbytes.rlib",
+        "filedir": "android_x86_64_rlib_rlib-std/",
+        "path": "out/soong/.intermediates/external/rust/crates/bytes/libbytes/android_x86_64_rlib_rlib-std/libbytes.rlib",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/rust/crates/bytes/libbytes@android_x86_64_rlib_rlib-std.ninja"
+      },
+      {
+        "variant": "rust_library",
+        "type": "rlib",
+        "filename": "libbytes.rlib",
+        "filedir": "android_x86_x86_64_rlib_rlib-std/",
+        "path": "out/soong/.intermediates/external/rust/crates/bytes/libbytes/android_x86_x86_64_rlib_rlib-std/libbytes.rlib",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/rust/crates/bytes/libbytes@android_x86_x86_64_rlib_rlib-std.ninja"
+      }
+    ]
+  },
+  {
+    "name": "libeither",
+    "project_path": "external/rust/crates/either/",
+    "outputs": [
+      {
+        "variant": "rust_library",
+        "type": "rlib",
+        "filename": "libeither.rlib",
+        "filedir": "linux_glibc_x86_64_rlib_rlib-std/",
+        "path": "out/soong/.intermediates/external/rust/crates/either/libeither/linux_glibc_x86_64_rlib_rlib-std/libeither.rlib",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/rust/crates/either/libeither@linux_glibc_x86_64_rlib_rlib-std.ninja"
+      }
+    ]
+  },
+  {
+    "name": "libfallible_iterator",
+    "project_path": "external/rust/crates/fallible-iterator/",
+    "outputs": [
+      {
+        "variant": "rust_library",
+        "type": "rlib",
+        "filename": "libfallible_iterator.rlib",
+        "filedir": "android_x86_64_rlib_rlib-std/",
+        "path": "out/soong/.intermediates/external/rust/crates/fallible-iterator/libfallible_iterator/android_x86_64_rlib_rlib-std/libfallible_iterator.rlib",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/rust/crates/fallible-iterator/libfallible_iterator@android_x86_64_rlib_rlib-std.ninja"
+      }
+    ]
+  },
+  {
+    "name": "libfallible_streaming_iterator",
+    "project_path": "external/rust/crates/fallible-streaming-iterator/",
+    "outputs": [
+      {
+        "variant": "rust_library",
+        "type": "rlib",
+        "filename": "libfallible_streaming_iterator.rlib",
+        "filedir": "android_x86_64_rlib_rlib-std/",
+        "path": "out/soong/.intermediates/external/rust/crates/fallible-streaming-iterator/libfallible_streaming_iterator/android_x86_64_rlib_rlib-std/libfallible_streaming_iterator.rlib",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/rust/crates/fallible-streaming-iterator/libfallible_streaming_iterator@android_x86_64_rlib_rlib-std.ninja"
+      }
+    ]
+  },
+  {
+    "name": "libfutures_core",
+    "project_path": "external/rust/crates/futures-core/",
+    "outputs": [
+      {
+        "variant": "rust_library",
+        "type": "rlib",
+        "filename": "libfutures_core.rlib",
+        "filedir": "android_x86_64_rlib_rlib-std/",
+        "path": "out/soong/.intermediates/external/rust/crates/futures-core/libfutures_core/android_x86_64_rlib_rlib-std/libfutures_core.rlib",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/rust/crates/futures-core/libfutures_core@android_x86_64_rlib_rlib-std.ninja"
+      },
+      {
+        "variant": "rust_library",
+        "type": "rlib",
+        "filename": "libfutures_core.rlib",
+        "filedir": "android_x86_x86_64_rlib_rlib-std/",
+        "path": "out/soong/.intermediates/external/rust/crates/futures-core/libfutures_core/android_x86_x86_64_rlib_rlib-std/libfutures_core.rlib",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/rust/crates/futures-core/libfutures_core@android_x86_x86_64_rlib_rlib-std.ninja"
+      }
+    ]
+  },
+  {
+    "name": "libfutures_io",
+    "project_path": "external/rust/crates/futures-io/",
+    "outputs": [
+      {
+        "variant": "rust_library",
+        "type": "rlib",
+        "filename": "libfutures_io.rlib",
+        "filedir": "android_x86_64_rlib_rlib-std/",
+        "path": "out/soong/.intermediates/external/rust/crates/futures-io/libfutures_io/android_x86_64_rlib_rlib-std/libfutures_io.rlib",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/rust/crates/futures-io/libfutures_io@android_x86_64_rlib_rlib-std.ninja"
+      },
+      {
+        "variant": "rust_library",
+        "type": "rlib",
+        "filename": "libfutures_io.rlib",
+        "filedir": "android_x86_x86_64_rlib_rlib-std/",
+        "path": "out/soong/.intermediates/external/rust/crates/futures-io/libfutures_io/android_x86_x86_64_rlib_rlib-std/libfutures_io.rlib",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/rust/crates/futures-io/libfutures_io@android_x86_x86_64_rlib_rlib-std.ninja"
+      }
+    ]
+  },
+  {
+    "name": "libfutures_sink",
+    "project_path": "external/rust/crates/futures-sink/",
+    "outputs": [
+      {
+        "variant": "rust_library",
+        "type": "rlib",
+        "filename": "libfutures_sink.rlib",
+        "filedir": "android_x86_64_rlib_rlib-std/",
+        "path": "out/soong/.intermediates/external/rust/crates/futures-sink/libfutures_sink/android_x86_64_rlib_rlib-std/libfutures_sink.rlib",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/rust/crates/futures-sink/libfutures_sink@android_x86_64_rlib_rlib-std.ninja"
+      },
+      {
+        "variant": "rust_library",
+        "type": "rlib",
+        "filename": "libfutures_sink.rlib",
+        "filedir": "android_x86_x86_64_rlib_rlib-std/",
+        "path": "out/soong/.intermediates/external/rust/crates/futures-sink/libfutures_sink/android_x86_x86_64_rlib_rlib-std/libfutures_sink.rlib",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/rust/crates/futures-sink/libfutures_sink@android_x86_x86_64_rlib_rlib-std.ninja"
+      }
+    ]
+  },
+  {
+    "name": "libfutures_task",
+    "project_path": "external/rust/crates/futures-task/",
+    "outputs": [
+      {
+        "variant": "rust_library",
+        "type": "rlib",
+        "filename": "libfutures_task.rlib",
+        "filedir": "android_x86_64_rlib_rlib-std/",
+        "path": "out/soong/.intermediates/external/rust/crates/futures-task/libfutures_task/android_x86_64_rlib_rlib-std/libfutures_task.rlib",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/rust/crates/futures-task/libfutures_task@android_x86_64_rlib_rlib-std.ninja"
+      },
+      {
+        "variant": "rust_library",
+        "type": "rlib",
+        "filename": "libfutures_task.rlib",
+        "filedir": "android_x86_x86_64_rlib_rlib-std/",
+        "path": "out/soong/.intermediates/external/rust/crates/futures-task/libfutures_task/android_x86_x86_64_rlib_rlib-std/libfutures_task.rlib",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/rust/crates/futures-task/libfutures_task@android_x86_x86_64_rlib_rlib-std.ninja"
+      }
+    ]
+  },
+  {
+    "name": "libglob",
+    "project_path": "external/rust/crates/glob/",
+    "outputs": [
+      {
+        "variant": "rust_library",
+        "type": "rlib",
+        "filename": "libglob.rlib",
+        "filedir": "linux_glibc_x86_64_rlib_rlib-std/",
+        "path": "out/soong/.intermediates/external/rust/crates/glob/libglob/linux_glibc_x86_64_rlib_rlib-std/libglob.rlib",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/rust/crates/glob/libglob@linux_glibc_x86_64_rlib_rlib-std.ninja"
+      }
+    ]
+  },
+  {
+    "name": "liblazycell",
+    "project_path": "external/rust/crates/lazycell/",
+    "outputs": [
+      {
+        "variant": "rust_library",
+        "type": "rlib",
+        "filename": "liblazycell.rlib",
+        "filedir": "linux_glibc_x86_64_rlib_rlib-std/",
+        "path": "out/soong/.intermediates/external/rust/crates/lazycell/liblazycell/linux_glibc_x86_64_rlib_rlib-std/liblazycell.rlib",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/rust/crates/lazycell/liblazycell@linux_glibc_x86_64_rlib_rlib-std.ninja"
+      }
+    ]
+  },
+  {
+    "name": "libmemchr",
+    "project_path": "external/rust/crates/memchr/",
+    "outputs": [
+      {
+        "variant": "rust_library",
+        "type": "rlib",
+        "filename": "libmemchr.rlib",
+        "filedir": "android_x86_64_rlib_rlib-std/",
+        "path": "out/soong/.intermediates/external/rust/crates/memchr/libmemchr/android_x86_64_rlib_rlib-std/libmemchr.rlib",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/rust/crates/memchr/libmemchr@android_x86_64_rlib_rlib-std.ninja"
+      },
+      {
+        "variant": "rust_library",
+        "type": "rlib",
+        "filename": "libmemchr.rlib",
+        "filedir": "android_x86_x86_64_rlib_rlib-std/",
+        "path": "out/soong/.intermediates/external/rust/crates/memchr/libmemchr/android_x86_x86_64_rlib_rlib-std/libmemchr.rlib",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/rust/crates/memchr/libmemchr@android_x86_x86_64_rlib_rlib-std.ninja"
+      },
+      {
+        "variant": "rust_library",
+        "type": "rlib",
+        "filename": "libmemchr.rlib",
+        "filedir": "linux_glibc_x86_64_rlib_rlib-std/",
+        "path": "out/soong/.intermediates/external/rust/crates/memchr/libmemchr/linux_glibc_x86_64_rlib_rlib-std/libmemchr.rlib",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/rust/crates/memchr/libmemchr@linux_glibc_x86_64_rlib_rlib-std.ninja"
+      }
+    ]
+  },
+  {
+    "name": "libpaste",
+    "project_path": "external/rust/crates/paste/",
+    "outputs": [
+      {
+        "variant": "rust_proc_macro",
+        "type": "shared",
+        "filename": "libpaste.so",
+        "filedir": "linux_glibc_x86_64/",
+        "path": "out/soong/.intermediates/external/rust/crates/paste/libpaste/linux_glibc_x86_64/libpaste.so",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/rust/crates/paste/libpaste@linux_glibc_x86_64.ninja"
+      }
+    ]
+  },
+  {
+    "name": "libpeeking_take_while",
+    "project_path": "external/rust/crates/peeking_take_while/",
+    "outputs": [
+      {
+        "variant": "rust_library",
+        "type": "rlib",
+        "filename": "libpeeking_take_while.rlib",
+        "filedir": "linux_glibc_x86_64_rlib_rlib-std/",
+        "path": "out/soong/.intermediates/external/rust/crates/peeking_take_while/libpeeking_take_while/linux_glibc_x86_64_rlib_rlib-std/libpeeking_take_while.rlib",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/rust/crates/peeking_take_while/libpeeking_take_while@linux_glibc_x86_64_rlib_rlib-std.ninja"
+      }
+    ]
+  },
+  {
+    "name": "libpin_project_lite",
+    "project_path": "external/rust/crates/pin-project-lite/",
+    "outputs": [
+      {
+        "variant": "rust_library",
+        "type": "rlib",
+        "filename": "libpin_project_lite.rlib",
+        "filedir": "android_x86_64_rlib_rlib-std/",
+        "path": "out/soong/.intermediates/external/rust/crates/pin-project-lite/libpin_project_lite/android_x86_64_rlib_rlib-std/libpin_project_lite.rlib",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/rust/crates/pin-project-lite/libpin_project_lite@android_x86_64_rlib_rlib-std.ninja"
+      },
+      {
+        "variant": "rust_library",
+        "type": "rlib",
+        "filename": "libpin_project_lite.rlib",
+        "filedir": "android_x86_x86_64_rlib_rlib-std/",
+        "path": "out/soong/.intermediates/external/rust/crates/pin-project-lite/libpin_project_lite/android_x86_x86_64_rlib_rlib-std/libpin_project_lite.rlib",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/rust/crates/pin-project-lite/libpin_project_lite@android_x86_x86_64_rlib_rlib-std.ninja"
+      }
+    ]
+  },
+  {
+    "name": "libpin_utils",
+    "project_path": "external/rust/crates/pin-utils/",
+    "outputs": [
+      {
+        "variant": "rust_library",
+        "type": "rlib",
+        "filename": "libpin_utils.rlib",
+        "filedir": "android_x86_64_rlib_rlib-std/",
+        "path": "out/soong/.intermediates/external/rust/crates/pin-utils/libpin_utils/android_x86_64_rlib_rlib-std/libpin_utils.rlib",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/rust/crates/pin-utils/libpin_utils@android_x86_64_rlib_rlib-std.ninja"
+      },
+      {
+        "variant": "rust_library",
+        "type": "rlib",
+        "filename": "libpin_utils.rlib",
+        "filedir": "android_x86_x86_64_rlib_rlib-std/",
+        "path": "out/soong/.intermediates/external/rust/crates/pin-utils/libpin_utils/android_x86_x86_64_rlib_rlib-std/libpin_utils.rlib",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/rust/crates/pin-utils/libpin_utils@android_x86_x86_64_rlib_rlib-std.ninja"
+      }
+    ]
+  },
+  {
+    "name": "libproc_macro_hack",
+    "project_path": "external/rust/crates/proc-macro-hack/",
+    "outputs": [
+      {
+        "variant": "rust_proc_macro",
+        "type": "shared",
+        "filename": "libproc_macro_hack.so",
+        "filedir": "linux_glibc_x86_64/",
+        "path": "out/soong/.intermediates/external/rust/crates/proc-macro-hack/libproc_macro_hack/linux_glibc_x86_64/libproc_macro_hack.so",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/rust/crates/proc-macro-hack/libproc_macro_hack@linux_glibc_x86_64.ninja"
+      }
+    ]
+  },
+  {
+    "name": "libproc_macro_nested",
+    "project_path": "external/rust/crates/proc-macro-nested/",
+    "outputs": [
+      {
+        "variant": "rust_library",
+        "type": "rlib",
+        "filename": "libproc_macro_nested.rlib",
+        "filedir": "android_x86_64_rlib_rlib-std/",
+        "path": "out/soong/.intermediates/external/rust/crates/proc-macro-nested/libproc_macro_nested/android_x86_64_rlib_rlib-std/libproc_macro_nested.rlib",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/rust/crates/proc-macro-nested/libproc_macro_nested@android_x86_64_rlib_rlib-std.ninja"
+      },
+      {
+        "variant": "rust_library",
+        "type": "rlib",
+        "filename": "libproc_macro_nested.rlib",
+        "filedir": "android_x86_x86_64_rlib_rlib-std/",
+        "path": "out/soong/.intermediates/external/rust/crates/proc-macro-nested/libproc_macro_nested/android_x86_x86_64_rlib_rlib-std/libproc_macro_nested.rlib",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/rust/crates/proc-macro-nested/libproc_macro_nested@android_x86_x86_64_rlib_rlib-std.ninja"
+      }
+    ]
+  },
+  {
+    "name": "libregex_syntax",
+    "project_path": "external/rust/crates/regex-syntax/",
+    "outputs": [
+      {
+        "variant": "rust_library",
+        "type": "rlib",
+        "filename": "libregex_syntax.rlib",
+        "filedir": "linux_glibc_x86_64_rlib_rlib-std/",
+        "path": "out/soong/.intermediates/external/rust/crates/regex-syntax/libregex_syntax/linux_glibc_x86_64_rlib_rlib-std/libregex_syntax.rlib",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/rust/crates/regex-syntax/libregex_syntax@linux_glibc_x86_64_rlib_rlib-std.ninja"
+      }
+    ]
+  },
+  {
+    "name": "librustc_hash",
+    "project_path": "external/rust/crates/rustc-hash/",
+    "outputs": [
+      {
+        "variant": "rust_library",
+        "type": "rlib",
+        "filename": "librustc_hash.rlib",
+        "filedir": "linux_glibc_x86_64_rlib_rlib-std/",
+        "path": "out/soong/.intermediates/external/rust/crates/rustc-hash/librustc_hash/linux_glibc_x86_64_rlib_rlib-std/librustc_hash.rlib",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/rust/crates/rustc-hash/librustc_hash@linux_glibc_x86_64_rlib_rlib-std.ninja"
+      }
+    ]
+  },
+  {
+    "name": "libscopeguard",
+    "project_path": "external/rust/crates/scopeguard/",
+    "outputs": [
+      {
+        "variant": "rust_library",
+        "type": "rlib",
+        "filename": "libscopeguard.rlib",
+        "filedir": "android_x86_64_rlib_rlib-std/",
+        "path": "out/soong/.intermediates/external/rust/crates/scopeguard/libscopeguard/android_x86_64_rlib_rlib-std/libscopeguard.rlib",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/rust/crates/scopeguard/libscopeguard@android_x86_64_rlib_rlib-std.ninja"
+      },
+      {
+        "variant": "rust_library",
+        "type": "rlib",
+        "filename": "libscopeguard.rlib",
+        "filedir": "android_x86_x86_64_rlib_rlib-std/",
+        "path": "out/soong/.intermediates/external/rust/crates/scopeguard/libscopeguard/android_x86_x86_64_rlib_rlib-std/libscopeguard.rlib",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/rust/crates/scopeguard/libscopeguard@android_x86_x86_64_rlib_rlib-std.ninja"
+      }
+    ]
+  },
+  {
+    "name": "libshlex",
+    "project_path": "external/rust/crates/shlex/",
+    "outputs": [
+      {
+        "variant": "rust_library_host",
+        "type": "rlib",
+        "filename": "libshlex.rlib",
+        "filedir": "linux_glibc_x86_64_rlib_rlib-std/",
+        "path": "out/soong/.intermediates/external/rust/crates/shlex/libshlex/linux_glibc_x86_64_rlib_rlib-std/libshlex.rlib",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/rust/crates/shlex/libshlex@linux_glibc_x86_64_rlib_rlib-std.ninja"
+      }
+    ]
+  },
+  {
+    "name": "libslab",
+    "project_path": "external/rust/crates/slab/",
+    "outputs": [
+      {
+        "variant": "rust_library",
+        "type": "rlib",
+        "filename": "libslab.rlib",
+        "filedir": "android_x86_64_rlib_rlib-std/",
+        "path": "out/soong/.intermediates/external/rust/crates/slab/libslab/android_x86_64_rlib_rlib-std/libslab.rlib",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/rust/crates/slab/libslab@android_x86_64_rlib_rlib-std.ninja"
+      },
+      {
+        "variant": "rust_library",
+        "type": "rlib",
+        "filename": "libslab.rlib",
+        "filedir": "android_x86_x86_64_rlib_rlib-std/",
+        "path": "out/soong/.intermediates/external/rust/crates/slab/libslab/android_x86_x86_64_rlib_rlib-std/libslab.rlib",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/rust/crates/slab/libslab@android_x86_x86_64_rlib_rlib-std.ninja"
+      }
+    ]
+  },
+  {
+    "name": "libsmallvec",
+    "project_path": "external/rust/crates/smallvec/",
+    "outputs": [
+      {
+        "variant": "rust_library",
+        "type": "rlib",
+        "filename": "libsmallvec.rlib",
+        "filedir": "android_x86_64_rlib_rlib-std/",
+        "path": "out/soong/.intermediates/external/rust/crates/smallvec/libsmallvec/android_x86_64_rlib_rlib-std/libsmallvec.rlib",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/rust/crates/smallvec/libsmallvec@android_x86_64_rlib_rlib-std.ninja"
+      },
+      {
+        "variant": "rust_library",
+        "type": "rlib",
+        "filename": "libsmallvec.rlib",
+        "filedir": "android_x86_x86_64_rlib_rlib-std/",
+        "path": "out/soong/.intermediates/external/rust/crates/smallvec/libsmallvec/android_x86_x86_64_rlib_rlib-std/libsmallvec.rlib",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/rust/crates/smallvec/libsmallvec@android_x86_x86_64_rlib_rlib-std.ninja"
+      }
+    ]
+  },
+  {
+    "name": "libtermcolor",
+    "project_path": "external/rust/crates/termcolor/",
+    "outputs": [
+      {
+        "variant": "rust_library",
+        "type": "rlib",
+        "filename": "libtermcolor.rlib",
+        "filedir": "linux_glibc_x86_64_rlib_rlib-std/",
+        "path": "out/soong/.intermediates/external/rust/crates/termcolor/libtermcolor/linux_glibc_x86_64_rlib_rlib-std/libtermcolor.rlib",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/rust/crates/termcolor/libtermcolor@linux_glibc_x86_64_rlib_rlib-std.ninja"
+      }
+    ]
+  },
+  {
+    "name": "libtextwrap",
+    "project_path": "external/rust/crates/textwrap/",
+    "outputs": [
+      {
+        "variant": "rust_library",
+        "type": "rlib",
+        "filename": "libtextwrap.rlib",
+        "filedir": "linux_glibc_x86_64_rlib_rlib-std/",
+        "path": "out/soong/.intermediates/external/rust/crates/textwrap/libtextwrap/linux_glibc_x86_64_rlib_rlib-std/libtextwrap.rlib",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/rust/crates/textwrap/libtextwrap@linux_glibc_x86_64_rlib_rlib-std.ninja"
+      }
+    ]
+  },
+  {
+    "name": "libunicode_width",
+    "project_path": "external/rust/crates/unicode-width/",
+    "outputs": [
+      {
+        "variant": "rust_library",
+        "type": "rlib",
+        "filename": "libunicode_width.rlib",
+        "filedir": "linux_glibc_x86_64_rlib_rlib-std/",
+        "path": "out/soong/.intermediates/external/rust/crates/unicode-width/libunicode_width/linux_glibc_x86_64_rlib_rlib-std/libunicode_width.rlib",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/rust/crates/unicode-width/libunicode_width@linux_glibc_x86_64_rlib_rlib-std.ninja"
+      }
+    ]
+  },
+  {
+    "name": "libunicode_xid",
+    "project_path": "external/rust/crates/unicode-xid/",
+    "outputs": [
+      {
+        "variant": "rust_library",
+        "type": "rlib",
+        "filename": "libunicode_xid.rlib",
+        "filedir": "linux_glibc_x86_64_rlib_rlib-std/",
+        "path": "out/soong/.intermediates/external/rust/crates/unicode-xid/libunicode_xid/linux_glibc_x86_64_rlib_rlib-std/libunicode_xid.rlib",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/rust/crates/unicode-xid/libunicode_xid@linux_glibc_x86_64_rlib_rlib-std.ninja"
+      }
+    ]
+  },
+  {
+    "name": "libscudo",
+    "project_path": "external/scudo/",
+    "outputs": [
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libscudo.a",
+        "filedir": "android_recovery_x86_64_static/",
+        "path": "out/soong/.intermediates/external/scudo/libscudo/android_recovery_x86_64_static/libscudo.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/scudo/libscudo@android_recovery_x86_64_static.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libscudo.a",
+        "filedir": "android_x86_64_static/",
+        "path": "out/soong/.intermediates/external/scudo/libscudo/android_x86_64_static/libscudo.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/scudo/libscudo@android_x86_64_static.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libscudo.a",
+        "filedir": "android_x86_64_static_apex10000/",
+        "path": "out/soong/.intermediates/external/scudo/libscudo/android_x86_64_static_apex10000/libscudo.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/scudo/libscudo@android_x86_64_static_apex10000.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libscudo.a",
+        "filedir": "android_x86_x86_64_static/",
+        "path": "out/soong/.intermediates/external/scudo/libscudo/android_x86_x86_64_static/libscudo.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/scudo/libscudo@android_x86_x86_64_static.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libscudo.a",
+        "filedir": "android_x86_x86_64_static_apex10000/",
+        "path": "out/soong/.intermediates/external/scudo/libscudo/android_x86_x86_64_static_apex10000/libscudo.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/scudo/libscudo@android_x86_x86_64_static_apex10000.ninja"
+      }
+    ]
+  },
+  {
+    "name": "libpropertyinfoparser",
+    "project_path": "system/core/",
+    "outputs": [
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libpropertyinfoparser.a",
+        "filedir": "android_recovery_x86_64_static/",
+        "path": "out/soong/.intermediates/system/core/property_service/libpropertyinfoparser/libpropertyinfoparser/android_recovery_x86_64_static/libpropertyinfoparser.a",
+        "objs": [
+          "libpropertyinfoparser/property_info_parser.o"
+        ],
+        "ninja": "out/soong/ninja/system/core/property_service/libpropertyinfoparser/libpropertyinfoparser@android_recovery_x86_64_static.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libpropertyinfoparser.a",
+        "filedir": "android_x86_64_static/",
+        "path": "out/soong/.intermediates/system/core/property_service/libpropertyinfoparser/libpropertyinfoparser/android_x86_64_static/libpropertyinfoparser.a",
+        "objs": [
+          "libpropertyinfoparser/property_info_parser.o"
+        ],
+        "ninja": "out/soong/ninja/system/core/property_service/libpropertyinfoparser/libpropertyinfoparser@android_x86_64_static.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libpropertyinfoparser.a",
+        "filedir": "android_x86_64_static_apex10000/",
+        "path": "out/soong/.intermediates/system/core/property_service/libpropertyinfoparser/libpropertyinfoparser/android_x86_64_static_apex10000/libpropertyinfoparser.a",
+        "objs": [
+          "libpropertyinfoparser/property_info_parser.o"
+        ],
+        "ninja": "out/soong/ninja/system/core/property_service/libpropertyinfoparser/libpropertyinfoparser@android_x86_64_static_apex10000.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libpropertyinfoparser.a",
+        "filedir": "android_x86_x86_64_static/",
+        "path": "out/soong/.intermediates/system/core/property_service/libpropertyinfoparser/libpropertyinfoparser/android_x86_x86_64_static/libpropertyinfoparser.a",
+        "objs": [
+          "libpropertyinfoparser/property_info_parser.o"
+        ],
+        "ninja": "out/soong/ninja/system/core/property_service/libpropertyinfoparser/libpropertyinfoparser@android_x86_x86_64_static.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libpropertyinfoparser.a",
+        "filedir": "android_x86_x86_64_static_apex10000/",
+        "path": "out/soong/.intermediates/system/core/property_service/libpropertyinfoparser/libpropertyinfoparser/android_x86_x86_64_static_apex10000/libpropertyinfoparser.a",
+        "objs": [
+          "libpropertyinfoparser/property_info_parser.o"
+        ],
+        "ninja": "out/soong/ninja/system/core/property_service/libpropertyinfoparser/libpropertyinfoparser@android_x86_x86_64_static_apex10000.ninja"
+      }
+    ]
+  }
+]
