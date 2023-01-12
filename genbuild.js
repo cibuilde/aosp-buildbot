@@ -36,8 +36,8 @@ const parse_variant = (variant) => {
 			sdk = true
 			let version = parseInt(parts[i+1])
 			if (i+1 < parts.length && version) {
+				sdkVersion = parts[i+1]
 				++i
-				sdkVersion = version
 			}
 		} else if (p.startsWith('apex')) {
 			apex = true
@@ -105,7 +105,6 @@ modules.forEach(prop => {
 				//console.log(output)
 				//parse_variant(output.filedir.slice(0, -1))
 				parse_apex_sdk(prop.name, output.type, output.filedir.slice(0, -1))
-				return
 			}
 		})
 })
@@ -165,8 +164,7 @@ cc_library {
 android_app {
   name: "voiddep${key}",
   sdk_version: "system_current",
-  min_sdk_version: "${apex.sdkVersion.length > 0 ? apex.sdkVersion : apex.apexVersion}",
-  ${apex.sdkVersion.length > 0 ? `\n  target_sdk_version: "${apex.sdkVersion}",`: ''}
+  min_sdk_version: "${apex.sdkVersion.length > 0 ? apex.sdkVersion : apex.apexVersion}",${apex.sdkVersion.length > 0 ? `\n  target_sdk_version: "${apex.sdkVersion}",`: ''}
   certificate: "platform",
   srcs: [ "void.java", ],
   resource_dirs: [ "res", ],
