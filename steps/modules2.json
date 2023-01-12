@@ -1,0 +1,1253 @@
+[
+  {
+    "name": "minigzip",
+    "project_path": "external/zlib/",
+    "outputs": [
+      {
+        "variant": "cc_binary_host",
+        "type": "binary",
+        "filename": "minigzip",
+        "filedir": "linux_glibc_x86_64/",
+        "path": "out/soong/.intermediates/external/zlib/minigzip/linux_glibc_x86_64/minigzip",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/zlib/minigzip@linux_glibc_x86_64.ninja"
+      }
+    ]
+  },
+  {
+    "name": "libz",
+    "project_path": "external/zlib/",
+    "outputs": [
+      {
+        "variant": "cc_library",
+        "type": "shared",
+        "filename": "libz.so",
+        "filedir": "android_recovery_x86_64_shared/",
+        "path": "out/soong/.intermediates/external/zlib/libz/android_recovery_x86_64_shared/libz.so",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/zlib/libz@android_recovery_x86_64_shared.ninja"
+      },
+      {
+        "variant": "cc_library",
+        "type": "static",
+        "filename": "libz.a",
+        "filedir": "android_recovery_x86_64_static/",
+        "path": "out/soong/.intermediates/external/zlib/libz/android_recovery_x86_64_static/libz.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/zlib/libz@android_recovery_x86_64_static.ninja"
+      },
+      {
+        "variant": "cc_library",
+        "type": "shared",
+        "filename": "libz.so",
+        "filedir": "android_vendor.31_x86_64_shared/",
+        "path": "out/soong/.intermediates/external/zlib/libz/android_vendor.31_x86_64_shared/libz.so",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/zlib/libz@android_vendor.31_x86_64_shared.ninja"
+      },
+      {
+        "variant": "cc_library",
+        "type": "shared",
+        "filename": "libz.so",
+        "filedir": "android_vendor.31_x86_64_shared_29/",
+        "path": "out/soong/.intermediates/external/zlib/libz/android_vendor.31_x86_64_shared_29/libz.so",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/zlib/libz@android_vendor.31_x86_64_shared_29.ninja"
+      },
+      {
+        "variant": "cc_library",
+        "type": "shared",
+        "filename": "libz.so",
+        "filedir": "android_vendor.31_x86_64_shared_30/",
+        "path": "out/soong/.intermediates/external/zlib/libz/android_vendor.31_x86_64_shared_30/libz.so",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/zlib/libz@android_vendor.31_x86_64_shared_30.ninja"
+      },
+      {
+        "variant": "cc_library",
+        "type": "shared",
+        "filename": "libz.so",
+        "filedir": "android_vendor.31_x86_64_shared_current/",
+        "path": "out/soong/.intermediates/external/zlib/libz/android_vendor.31_x86_64_shared_current/libz.so",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/zlib/libz@android_vendor.31_x86_64_shared_current.ninja"
+      },
+      {
+        "variant": "cc_library",
+        "type": "shared",
+        "filename": "libz.so",
+        "filedir": "android_vendor.31_x86_x86_64_shared/",
+        "path": "out/soong/.intermediates/external/zlib/libz/android_vendor.31_x86_x86_64_shared/libz.so",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/zlib/libz@android_vendor.31_x86_x86_64_shared.ninja"
+      },
+      {
+        "variant": "cc_library",
+        "type": "shared",
+        "filename": "libz.so",
+        "filedir": "android_vendor.31_x86_x86_64_shared_29/",
+        "path": "out/soong/.intermediates/external/zlib/libz/android_vendor.31_x86_x86_64_shared_29/libz.so",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/zlib/libz@android_vendor.31_x86_x86_64_shared_29.ninja"
+      },
+      {
+        "variant": "cc_library",
+        "type": "shared",
+        "filename": "libz.so",
+        "filedir": "android_vendor.31_x86_x86_64_shared_30/",
+        "path": "out/soong/.intermediates/external/zlib/libz/android_vendor.31_x86_x86_64_shared_30/libz.so",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/zlib/libz@android_vendor.31_x86_x86_64_shared_30.ninja"
+      },
+      {
+        "variant": "cc_library",
+        "type": "shared",
+        "filename": "libz.so",
+        "filedir": "android_vendor.31_x86_x86_64_shared_current/",
+        "path": "out/soong/.intermediates/external/zlib/libz/android_vendor.31_x86_x86_64_shared_current/libz.so",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/zlib/libz@android_vendor.31_x86_x86_64_shared_current.ninja"
+      },
+      {
+        "variant": "cc_library",
+        "type": "shared",
+        "filename": "libz.so",
+        "filedir": "android_x86_64_shared/",
+        "path": "out/soong/.intermediates/external/zlib/libz/android_x86_64_shared/libz.so",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/zlib/libz@android_x86_64_shared.ninja"
+      },
+      {
+        "variant": "cc_library",
+        "type": "static",
+        "filename": "libz.a",
+        "filedir": "android_x86_64_static/",
+        "path": "out/soong/.intermediates/external/zlib/libz/android_x86_64_static/libz.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/zlib/libz@android_x86_64_static.ninja"
+      },
+      {
+        "variant": "cc_library",
+        "type": "static",
+        "filename": "libz.a",
+        "filedir": "android_x86_64_static_apex10000/",
+        "path": "out/soong/.intermediates/external/zlib/libz/android_x86_64_static_apex10000/libz.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/zlib/libz@android_x86_64_static_apex10000.ninja"
+      },
+      {
+        "variant": "cc_library",
+        "type": "shared",
+        "filename": "libz.so",
+        "filedir": "android_x86_x86_64_shared/",
+        "path": "out/soong/.intermediates/external/zlib/libz/android_x86_x86_64_shared/libz.so",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/zlib/libz@android_x86_x86_64_shared.ninja"
+      },
+      {
+        "variant": "cc_library",
+        "type": "static",
+        "filename": "libz.a",
+        "filedir": "android_x86_x86_64_static/",
+        "path": "out/soong/.intermediates/external/zlib/libz/android_x86_x86_64_static/libz.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/zlib/libz@android_x86_x86_64_static.ninja"
+      },
+      {
+        "variant": "cc_library",
+        "type": "static",
+        "filename": "libz.a",
+        "filedir": "android_x86_x86_64_static_apex10000/",
+        "path": "out/soong/.intermediates/external/zlib/libz/android_x86_x86_64_static_apex10000/libz.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/zlib/libz@android_x86_x86_64_static_apex10000.ninja"
+      },
+      {
+        "variant": "cc_library",
+        "type": "shared",
+        "filename": "libz.so",
+        "filedir": "linux_glibc_x86_64_shared/",
+        "path": "out/soong/.intermediates/external/zlib/libz/linux_glibc_x86_64_shared/libz-host.so",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/zlib/libz@linux_glibc_x86_64_shared.ninja"
+      },
+      {
+        "variant": "cc_library",
+        "type": "static",
+        "filename": "libz.a",
+        "filedir": "linux_glibc_x86_64_static/",
+        "path": "out/soong/.intermediates/external/zlib/libz/linux_glibc_x86_64_static/libz.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/zlib/libz@linux_glibc_x86_64_static.ninja"
+      }
+    ]
+  },
+  {
+    "name": "libz_stable",
+    "project_path": "external/zlib/",
+    "outputs": [
+      {
+        "variant": "cc_library",
+        "type": "shared",
+        "filename": "libz_stable.so",
+        "filedir": "android_vendor.31_x86_64_shared/",
+        "path": "out/soong/.intermediates/external/zlib/libz_stable/android_vendor.31_x86_64_shared/libz_stable.so",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/zlib/libz_stable@android_vendor.31_x86_64_shared.ninja"
+      },
+      {
+        "variant": "cc_library",
+        "type": "static",
+        "filename": "libz_stable.a",
+        "filedir": "android_vendor.31_x86_64_static/",
+        "path": "out/soong/.intermediates/external/zlib/libz_stable/android_vendor.31_x86_64_static/libz_stable.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/zlib/libz_stable@android_vendor.31_x86_64_static.ninja"
+      }
+    ]
+  },
+  {
+    "name": "libz.ndk",
+    "project_path": "external/zlib/",
+    "outputs": [
+      {
+        "variant": "ndk_library",
+        "type": "shared",
+        "filename": "libz.ndk.so",
+        "filedir": "android_x86_64_sdk_shared_current/",
+        "path": "out/soong/.intermediates/external/zlib/libz.ndk/android_x86_64_sdk_shared_current/libz.so",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/zlib/libz.ndk@android_x86_64_sdk_shared_current.ninja"
+      }
+    ]
+  },
+  {
+    "name": "bc",
+    "project_path": "external/bc/",
+    "outputs": [
+      {
+        "variant": "cc_binary",
+        "type": "binary",
+        "filename": "bc",
+        "filedir": "android_x86_64/",
+        "path": "out/soong/.intermediates/external/bc/bc/android_x86_64/bc",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/bc/bc@android_x86_64.ninja"
+      }
+    ]
+  },
+  {
+    "name": "libbrotli",
+    "project_path": "external/brotli/",
+    "outputs": [
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libbrotli.a",
+        "filedir": "android_recovery_x86_64_static/",
+        "path": "out/soong/.intermediates/external/brotli/libbrotli/android_recovery_x86_64_static/libbrotli.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/brotli/libbrotli@android_recovery_x86_64_static.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libbrotli.a",
+        "filedir": "android_vendor.31_x86_64_static/",
+        "path": "out/soong/.intermediates/external/brotli/libbrotli/android_vendor.31_x86_64_static/libbrotli.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/brotli/libbrotli@android_vendor.31_x86_64_static.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libbrotli.a",
+        "filedir": "android_x86_64_static/",
+        "path": "out/soong/.intermediates/external/brotli/libbrotli/android_x86_64_static/libbrotli.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/brotli/libbrotli@android_x86_64_static.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libbrotli.a",
+        "filedir": "android_x86_64_static_apex10000/",
+        "path": "out/soong/.intermediates/external/brotli/libbrotli/android_x86_64_static_apex10000/libbrotli.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/brotli/libbrotli@android_x86_64_static_apex10000.ninja"
+      }
+    ]
+  },
+  {
+    "name": "libbz",
+    "project_path": "external/bzip2/",
+    "outputs": [
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libbz.a",
+        "filedir": "android_vendor.31_x86_64_static/",
+        "path": "out/soong/.intermediates/external/bzip2/libbz/android_vendor.31_x86_64_static/libbz.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/bzip2/libbz@android_vendor.31_x86_64_static.ninja"
+      }
+    ]
+  },
+  {
+    "name": "bzip2",
+    "project_path": "external/bzip2/",
+    "outputs": [
+      {
+        "variant": "cc_binary",
+        "type": "binary",
+        "filename": "bzip2",
+        "filedir": "android_x86_64/",
+        "path": "out/soong/.intermediates/external/bzip2/bzip2/android_x86_64/bzip2",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/bzip2/bzip2@android_x86_64.ninja"
+      }
+    ]
+  },
+  {
+    "name": "libexpat",
+    "project_path": "external/expat/",
+    "outputs": [
+      {
+        "variant": "cc_library",
+        "type": "shared",
+        "filename": "libexpat.so",
+        "filedir": "android_vendor.31_x86_64_shared/",
+        "path": "out/soong/.intermediates/external/expat/libexpat/android_vendor.31_x86_64_shared/libexpat.so",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/expat/libexpat@android_vendor.31_x86_64_shared.ninja"
+      },
+      {
+        "variant": "cc_library",
+        "type": "static",
+        "filename": "libexpat.a",
+        "filedir": "android_vendor.31_x86_64_static/",
+        "path": "out/soong/.intermediates/external/expat/libexpat/android_vendor.31_x86_64_static/libexpat.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/expat/libexpat@android_vendor.31_x86_64_static.ninja"
+      },
+      {
+        "variant": "cc_library",
+        "type": "shared",
+        "filename": "libexpat.so",
+        "filedir": "android_vendor.31_x86_x86_64_shared/",
+        "path": "out/soong/.intermediates/external/expat/libexpat/android_vendor.31_x86_x86_64_shared/libexpat.so",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/expat/libexpat@android_vendor.31_x86_x86_64_shared.ninja"
+      },
+      {
+        "variant": "cc_library",
+        "type": "static",
+        "filename": "libexpat.a",
+        "filedir": "android_vendor.31_x86_x86_64_static/",
+        "path": "out/soong/.intermediates/external/expat/libexpat/android_vendor.31_x86_x86_64_static/libexpat.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/expat/libexpat@android_vendor.31_x86_x86_64_static.ninja"
+      },
+      {
+        "variant": "cc_library",
+        "type": "shared",
+        "filename": "libexpat.so",
+        "filedir": "android_x86_64_shared/",
+        "path": "out/soong/.intermediates/external/expat/libexpat/android_x86_64_shared/libexpat.so",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/expat/libexpat@android_x86_64_shared.ninja"
+      },
+      {
+        "variant": "cc_library",
+        "type": "shared",
+        "filename": "libexpat.so",
+        "filedir": "android_x86_64_shared_apex31/",
+        "path": "out/soong/.intermediates/external/expat/libexpat/android_x86_64_shared_apex31/libexpat.so",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/expat/libexpat@android_x86_64_shared_apex31.ninja"
+      },
+      {
+        "variant": "cc_library",
+        "type": "shared",
+        "filename": "libexpat.so",
+        "filedir": "android_x86_x86_64_shared/",
+        "path": "out/soong/.intermediates/external/expat/libexpat/android_x86_x86_64_shared/libexpat.so",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/expat/libexpat@android_x86_x86_64_shared.ninja"
+      },
+      {
+        "variant": "cc_library",
+        "type": "shared",
+        "filename": "libexpat.so",
+        "filedir": "android_x86_x86_64_shared_apex31/",
+        "path": "out/soong/.intermediates/external/expat/libexpat/android_x86_x86_64_shared_apex31/libexpat.so",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/expat/libexpat@android_x86_x86_64_shared_apex31.ninja"
+      },
+      {
+        "variant": "cc_library",
+        "type": "shared",
+        "filename": "libexpat.so",
+        "filedir": "linux_glibc_x86_64_shared/",
+        "path": "out/soong/.intermediates/external/expat/libexpat/linux_glibc_x86_64_shared/libexpat-host.so",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/expat/libexpat@linux_glibc_x86_64_shared.ninja"
+      },
+      {
+        "variant": "cc_library",
+        "type": "static",
+        "filename": "libexpat.a",
+        "filedir": "linux_glibc_x86_64_static/",
+        "path": "out/soong/.intermediates/external/expat/libexpat/linux_glibc_x86_64_static/libexpat.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/expat/libexpat@linux_glibc_x86_64_static.ninja"
+      }
+    ]
+  },
+  {
+    "name": "libfft2d",
+    "project_path": "external/fft2d/",
+    "outputs": [
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libfft2d.a",
+        "filedir": "android_x86_64_sdk_static_apex30/",
+        "path": "out/soong/.intermediates/external/fft2d/libfft2d/android_x86_64_sdk_static_apex30/libfft2d.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/fft2d/libfft2d@android_x86_64_sdk_static_apex30.ninja"
+      }
+    ]
+  },
+  {
+    "name": "libc++demangle",
+    "project_path": "external/libcxxabi/",
+    "outputs": [
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc++demangle.a",
+        "filedir": "android_recovery_x86_64_static/",
+        "path": "out/soong/.intermediates/external/libcxxabi/libc++demangle/android_recovery_x86_64_static/libc++demangle.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/libcxxabi/libc++demangle@android_recovery_x86_64_static.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc++demangle.a",
+        "filedir": "android_recovery_x86_64_static_lto-thin/",
+        "path": "out/soong/.intermediates/external/libcxxabi/libc++demangle/android_recovery_x86_64_static_lto-thin/libc++demangle.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/libcxxabi/libc++demangle@android_recovery_x86_64_static_lto-thin.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc++demangle.a",
+        "filedir": "android_vendor.31_x86_64_static/",
+        "path": "out/soong/.intermediates/external/libcxxabi/libc++demangle/android_vendor.31_x86_64_static/libc++demangle.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/libcxxabi/libc++demangle@android_vendor.31_x86_64_static.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc++demangle.a",
+        "filedir": "android_vendor.31_x86_64_static_lto-thin/",
+        "path": "out/soong/.intermediates/external/libcxxabi/libc++demangle/android_vendor.31_x86_64_static_lto-thin/libc++demangle.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/libcxxabi/libc++demangle@android_vendor.31_x86_64_static_lto-thin.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc++demangle.a",
+        "filedir": "android_vendor.31_x86_x86_64_static/",
+        "path": "out/soong/.intermediates/external/libcxxabi/libc++demangle/android_vendor.31_x86_x86_64_static/libc++demangle.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/libcxxabi/libc++demangle@android_vendor.31_x86_x86_64_static.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc++demangle.a",
+        "filedir": "android_vendor.31_x86_x86_64_static_lto-thin/",
+        "path": "out/soong/.intermediates/external/libcxxabi/libc++demangle/android_vendor.31_x86_x86_64_static_lto-thin/libc++demangle.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/libcxxabi/libc++demangle@android_vendor.31_x86_x86_64_static_lto-thin.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc++demangle.a",
+        "filedir": "android_x86_64_static/",
+        "path": "out/soong/.intermediates/external/libcxxabi/libc++demangle/android_x86_64_static/libc++demangle.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/libcxxabi/libc++demangle@android_x86_64_static.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc++demangle.a",
+        "filedir": "android_x86_64_static_apex10000/",
+        "path": "out/soong/.intermediates/external/libcxxabi/libc++demangle/android_x86_64_static_apex10000/libc++demangle.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/libcxxabi/libc++demangle@android_x86_64_static_apex10000.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc++demangle.a",
+        "filedir": "android_x86_64_static_apex29/",
+        "path": "out/soong/.intermediates/external/libcxxabi/libc++demangle/android_x86_64_static_apex29/libc++demangle.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/libcxxabi/libc++demangle@android_x86_64_static_apex29.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc++demangle.a",
+        "filedir": "android_x86_64_static_apex30/",
+        "path": "out/soong/.intermediates/external/libcxxabi/libc++demangle/android_x86_64_static_apex30/libc++demangle.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/libcxxabi/libc++demangle@android_x86_64_static_apex30.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc++demangle.a",
+        "filedir": "android_x86_64_static_apex31/",
+        "path": "out/soong/.intermediates/external/libcxxabi/libc++demangle/android_x86_64_static_apex31/libc++demangle.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/libcxxabi/libc++demangle@android_x86_64_static_apex31.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc++demangle.a",
+        "filedir": "android_x86_64_static_lto-thin/",
+        "path": "out/soong/.intermediates/external/libcxxabi/libc++demangle/android_x86_64_static_lto-thin/libc++demangle.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/libcxxabi/libc++demangle@android_x86_64_static_lto-thin.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc++demangle.a",
+        "filedir": "android_x86_64_static_lto-thin_apex29/",
+        "path": "out/soong/.intermediates/external/libcxxabi/libc++demangle/android_x86_64_static_lto-thin_apex29/libc++demangle.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/libcxxabi/libc++demangle@android_x86_64_static_lto-thin_apex29.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc++demangle.a",
+        "filedir": "android_x86_64_static_lto-thin_apex30/",
+        "path": "out/soong/.intermediates/external/libcxxabi/libc++demangle/android_x86_64_static_lto-thin_apex30/libc++demangle.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/libcxxabi/libc++demangle@android_x86_64_static_lto-thin_apex30.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc++demangle.a",
+        "filedir": "android_x86_64_static_lto-thin_apex31/",
+        "path": "out/soong/.intermediates/external/libcxxabi/libc++demangle/android_x86_64_static_lto-thin_apex31/libc++demangle.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/libcxxabi/libc++demangle@android_x86_64_static_lto-thin_apex31.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc++demangle.a",
+        "filedir": "android_x86_x86_64_static/",
+        "path": "out/soong/.intermediates/external/libcxxabi/libc++demangle/android_x86_x86_64_static/libc++demangle.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/libcxxabi/libc++demangle@android_x86_x86_64_static.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc++demangle.a",
+        "filedir": "android_x86_x86_64_static_apex10000/",
+        "path": "out/soong/.intermediates/external/libcxxabi/libc++demangle/android_x86_x86_64_static_apex10000/libc++demangle.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/libcxxabi/libc++demangle@android_x86_x86_64_static_apex10000.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc++demangle.a",
+        "filedir": "android_x86_x86_64_static_apex29/",
+        "path": "out/soong/.intermediates/external/libcxxabi/libc++demangle/android_x86_x86_64_static_apex29/libc++demangle.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/libcxxabi/libc++demangle@android_x86_x86_64_static_apex29.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc++demangle.a",
+        "filedir": "android_x86_x86_64_static_apex30/",
+        "path": "out/soong/.intermediates/external/libcxxabi/libc++demangle/android_x86_x86_64_static_apex30/libc++demangle.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/libcxxabi/libc++demangle@android_x86_x86_64_static_apex30.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc++demangle.a",
+        "filedir": "android_x86_x86_64_static_apex31/",
+        "path": "out/soong/.intermediates/external/libcxxabi/libc++demangle/android_x86_x86_64_static_apex31/libc++demangle.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/libcxxabi/libc++demangle@android_x86_x86_64_static_apex31.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc++demangle.a",
+        "filedir": "android_x86_x86_64_static_lto-thin/",
+        "path": "out/soong/.intermediates/external/libcxxabi/libc++demangle/android_x86_x86_64_static_lto-thin/libc++demangle.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/libcxxabi/libc++demangle@android_x86_x86_64_static_lto-thin.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc++demangle.a",
+        "filedir": "android_x86_x86_64_static_lto-thin_apex30/",
+        "path": "out/soong/.intermediates/external/libcxxabi/libc++demangle/android_x86_x86_64_static_lto-thin_apex30/libc++demangle.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/libcxxabi/libc++demangle@android_x86_x86_64_static_lto-thin_apex30.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc++demangle.a",
+        "filedir": "android_x86_x86_64_static_lto-thin_apex31/",
+        "path": "out/soong/.intermediates/external/libcxxabi/libc++demangle/android_x86_x86_64_static_lto-thin_apex31/libc++demangle.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/libcxxabi/libc++demangle@android_x86_x86_64_static_lto-thin_apex31.ninja"
+      }
+    ]
+  },
+  {
+    "name": "libc++abi",
+    "project_path": "external/libcxxabi/",
+    "outputs": [
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc++abi.a",
+        "filedir": "android_recovery_x86_64_static/",
+        "path": "out/soong/.intermediates/external/libcxxabi/libc++abi/android_recovery_x86_64_static/libc++abi.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/libcxxabi/libc++abi@android_recovery_x86_64_static.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc++abi.a",
+        "filedir": "android_recovery_x86_64_static_lto-thin/",
+        "path": "out/soong/.intermediates/external/libcxxabi/libc++abi/android_recovery_x86_64_static_lto-thin/libc++abi.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/libcxxabi/libc++abi@android_recovery_x86_64_static_lto-thin.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc++abi.a",
+        "filedir": "android_vendor.31_x86_64_static/",
+        "path": "out/soong/.intermediates/external/libcxxabi/libc++abi/android_vendor.31_x86_64_static/libc++abi.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/libcxxabi/libc++abi@android_vendor.31_x86_64_static.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc++abi.a",
+        "filedir": "android_vendor.31_x86_64_static_lto-thin/",
+        "path": "out/soong/.intermediates/external/libcxxabi/libc++abi/android_vendor.31_x86_64_static_lto-thin/libc++abi.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/libcxxabi/libc++abi@android_vendor.31_x86_64_static_lto-thin.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc++abi.a",
+        "filedir": "android_vendor.31_x86_x86_64_static/",
+        "path": "out/soong/.intermediates/external/libcxxabi/libc++abi/android_vendor.31_x86_x86_64_static/libc++abi.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/libcxxabi/libc++abi@android_vendor.31_x86_x86_64_static.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc++abi.a",
+        "filedir": "android_vendor.31_x86_x86_64_static_lto-thin/",
+        "path": "out/soong/.intermediates/external/libcxxabi/libc++abi/android_vendor.31_x86_x86_64_static_lto-thin/libc++abi.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/libcxxabi/libc++abi@android_vendor.31_x86_x86_64_static_lto-thin.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc++abi.a",
+        "filedir": "android_x86_64_static/",
+        "path": "out/soong/.intermediates/external/libcxxabi/libc++abi/android_x86_64_static/libc++abi.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/libcxxabi/libc++abi@android_x86_64_static.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc++abi.a",
+        "filedir": "android_x86_64_static_apex10000/",
+        "path": "out/soong/.intermediates/external/libcxxabi/libc++abi/android_x86_64_static_apex10000/libc++abi.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/libcxxabi/libc++abi@android_x86_64_static_apex10000.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc++abi.a",
+        "filedir": "android_x86_64_static_apex29/",
+        "path": "out/soong/.intermediates/external/libcxxabi/libc++abi/android_x86_64_static_apex29/libc++abi.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/libcxxabi/libc++abi@android_x86_64_static_apex29.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc++abi.a",
+        "filedir": "android_x86_64_static_apex30/",
+        "path": "out/soong/.intermediates/external/libcxxabi/libc++abi/android_x86_64_static_apex30/libc++abi.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/libcxxabi/libc++abi@android_x86_64_static_apex30.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc++abi.a",
+        "filedir": "android_x86_64_static_apex31/",
+        "path": "out/soong/.intermediates/external/libcxxabi/libc++abi/android_x86_64_static_apex31/libc++abi.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/libcxxabi/libc++abi@android_x86_64_static_apex31.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc++abi.a",
+        "filedir": "android_x86_64_static_lto-thin/",
+        "path": "out/soong/.intermediates/external/libcxxabi/libc++abi/android_x86_64_static_lto-thin/libc++abi.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/libcxxabi/libc++abi@android_x86_64_static_lto-thin.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc++abi.a",
+        "filedir": "android_x86_64_static_lto-thin_apex29/",
+        "path": "out/soong/.intermediates/external/libcxxabi/libc++abi/android_x86_64_static_lto-thin_apex29/libc++abi.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/libcxxabi/libc++abi@android_x86_64_static_lto-thin_apex29.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc++abi.a",
+        "filedir": "android_x86_64_static_lto-thin_apex30/",
+        "path": "out/soong/.intermediates/external/libcxxabi/libc++abi/android_x86_64_static_lto-thin_apex30/libc++abi.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/libcxxabi/libc++abi@android_x86_64_static_lto-thin_apex30.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc++abi.a",
+        "filedir": "android_x86_64_static_lto-thin_apex31/",
+        "path": "out/soong/.intermediates/external/libcxxabi/libc++abi/android_x86_64_static_lto-thin_apex31/libc++abi.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/libcxxabi/libc++abi@android_x86_64_static_lto-thin_apex31.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc++abi.a",
+        "filedir": "android_x86_x86_64_static/",
+        "path": "out/soong/.intermediates/external/libcxxabi/libc++abi/android_x86_x86_64_static/libc++abi.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/libcxxabi/libc++abi@android_x86_x86_64_static.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc++abi.a",
+        "filedir": "android_x86_x86_64_static_apex10000/",
+        "path": "out/soong/.intermediates/external/libcxxabi/libc++abi/android_x86_x86_64_static_apex10000/libc++abi.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/libcxxabi/libc++abi@android_x86_x86_64_static_apex10000.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc++abi.a",
+        "filedir": "android_x86_x86_64_static_apex29/",
+        "path": "out/soong/.intermediates/external/libcxxabi/libc++abi/android_x86_x86_64_static_apex29/libc++abi.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/libcxxabi/libc++abi@android_x86_x86_64_static_apex29.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc++abi.a",
+        "filedir": "android_x86_x86_64_static_apex30/",
+        "path": "out/soong/.intermediates/external/libcxxabi/libc++abi/android_x86_x86_64_static_apex30/libc++abi.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/libcxxabi/libc++abi@android_x86_x86_64_static_apex30.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc++abi.a",
+        "filedir": "android_x86_x86_64_static_apex31/",
+        "path": "out/soong/.intermediates/external/libcxxabi/libc++abi/android_x86_x86_64_static_apex31/libc++abi.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/libcxxabi/libc++abi@android_x86_x86_64_static_apex31.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc++abi.a",
+        "filedir": "android_x86_x86_64_static_lto-thin/",
+        "path": "out/soong/.intermediates/external/libcxxabi/libc++abi/android_x86_x86_64_static_lto-thin/libc++abi.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/libcxxabi/libc++abi@android_x86_x86_64_static_lto-thin.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc++abi.a",
+        "filedir": "android_x86_x86_64_static_lto-thin_apex30/",
+        "path": "out/soong/.intermediates/external/libcxxabi/libc++abi/android_x86_x86_64_static_lto-thin_apex30/libc++abi.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/libcxxabi/libc++abi@android_x86_x86_64_static_lto-thin_apex30.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc++abi.a",
+        "filedir": "android_x86_x86_64_static_lto-thin_apex31/",
+        "path": "out/soong/.intermediates/external/libcxxabi/libc++abi/android_x86_x86_64_static_lto-thin_apex31/libc++abi.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/libcxxabi/libc++abi@android_x86_x86_64_static_lto-thin_apex31.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc++abi.a",
+        "filedir": "linux_glibc_x86_64_static/",
+        "path": "out/soong/.intermediates/external/libcxxabi/libc++abi/linux_glibc_x86_64_static/libc++abi.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/libcxxabi/libc++abi@linux_glibc_x86_64_static.ninja"
+      }
+    ]
+  },
+  {
+    "name": "libfuse",
+    "project_path": "external/libfuse/",
+    "outputs": [
+      {
+        "variant": "cc_library",
+        "type": "shared",
+        "filename": "libfuse.so",
+        "filedir": "android_x86_64_sdk_shared/",
+        "path": "out/soong/.intermediates/external/libfuse/libfuse/android_x86_64_sdk_shared/libfuse.so",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/libfuse/libfuse@android_x86_64_sdk_shared.ninja"
+      },
+      {
+        "variant": "cc_library",
+        "type": "shared",
+        "filename": "libfuse.so",
+        "filedir": "android_x86_64_sdk_shared_apex30/",
+        "path": "out/soong/.intermediates/external/libfuse/libfuse/android_x86_64_sdk_shared_apex30/libfuse.so",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/libfuse/libfuse@android_x86_64_sdk_shared_apex30.ninja"
+      }
+    ]
+  },
+  {
+    "name": "liblua",
+    "project_path": "external/lua/",
+    "outputs": [
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "liblua.a",
+        "filedir": "android_x86_64_sdk_static_apex30/",
+        "path": "out/soong/.intermediates/external/lua/liblua/android_x86_64_sdk_static_apex30/liblua.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/lua/liblua@android_x86_64_sdk_static_apex30.ninja"
+      }
+    ]
+  },
+  {
+    "name": "liblzma",
+    "project_path": "external/lzma/",
+    "outputs": [
+      {
+        "variant": "cc_library",
+        "type": "shared",
+        "filename": "liblzma.so",
+        "filedir": "android_recovery_x86_64_shared/",
+        "path": "out/soong/.intermediates/external/lzma/C/liblzma/android_recovery_x86_64_shared/liblzma.so",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/lzma/C/liblzma@android_recovery_x86_64_shared.ninja"
+      },
+      {
+        "variant": "cc_library",
+        "type": "static",
+        "filename": "liblzma.a",
+        "filedir": "android_recovery_x86_64_static/",
+        "path": "out/soong/.intermediates/external/lzma/C/liblzma/android_recovery_x86_64_static/liblzma.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/lzma/C/liblzma@android_recovery_x86_64_static.ninja"
+      },
+      {
+        "variant": "cc_library",
+        "type": "shared",
+        "filename": "liblzma.so",
+        "filedir": "android_vendor.31_x86_64_shared/",
+        "path": "out/soong/.intermediates/external/lzma/C/liblzma/android_vendor.31_x86_64_shared/liblzma.so",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/lzma/C/liblzma@android_vendor.31_x86_64_shared.ninja"
+      },
+      {
+        "variant": "cc_library",
+        "type": "shared",
+        "filename": "liblzma.so",
+        "filedir": "android_vendor.31_x86_x86_64_shared/",
+        "path": "out/soong/.intermediates/external/lzma/C/liblzma/android_vendor.31_x86_x86_64_shared/liblzma.so",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/lzma/C/liblzma@android_vendor.31_x86_x86_64_shared.ninja"
+      },
+      {
+        "variant": "cc_library",
+        "type": "shared",
+        "filename": "liblzma.so",
+        "filedir": "android_x86_64_shared/",
+        "path": "out/soong/.intermediates/external/lzma/C/liblzma/android_x86_64_shared/liblzma.so",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/lzma/C/liblzma@android_x86_64_shared.ninja"
+      },
+      {
+        "variant": "cc_library",
+        "type": "shared",
+        "filename": "liblzma.so",
+        "filedir": "android_x86_64_shared_apex10000/",
+        "path": "out/soong/.intermediates/external/lzma/C/liblzma/android_x86_64_shared_apex10000/liblzma.so",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/lzma/C/liblzma@android_x86_64_shared_apex10000.ninja"
+      },
+      {
+        "variant": "cc_library",
+        "type": "shared",
+        "filename": "liblzma.so",
+        "filedir": "android_x86_64_shared_apex31/",
+        "path": "out/soong/.intermediates/external/lzma/C/liblzma/android_x86_64_shared_apex31/liblzma.so",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/lzma/C/liblzma@android_x86_64_shared_apex31.ninja"
+      },
+      {
+        "variant": "cc_library",
+        "type": "static",
+        "filename": "liblzma.a",
+        "filedir": "android_x86_64_static/",
+        "path": "out/soong/.intermediates/external/lzma/C/liblzma/android_x86_64_static/liblzma.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/lzma/C/liblzma@android_x86_64_static.ninja"
+      },
+      {
+        "variant": "cc_library",
+        "type": "static",
+        "filename": "liblzma.a",
+        "filedir": "android_x86_64_static_apex10000/",
+        "path": "out/soong/.intermediates/external/lzma/C/liblzma/android_x86_64_static_apex10000/liblzma.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/lzma/C/liblzma@android_x86_64_static_apex10000.ninja"
+      },
+      {
+        "variant": "cc_library",
+        "type": "shared",
+        "filename": "liblzma.so",
+        "filedir": "android_x86_x86_64_shared/",
+        "path": "out/soong/.intermediates/external/lzma/C/liblzma/android_x86_x86_64_shared/liblzma.so",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/lzma/C/liblzma@android_x86_x86_64_shared.ninja"
+      },
+      {
+        "variant": "cc_library",
+        "type": "shared",
+        "filename": "liblzma.so",
+        "filedir": "android_x86_x86_64_shared_apex10000/",
+        "path": "out/soong/.intermediates/external/lzma/C/liblzma/android_x86_x86_64_shared_apex10000/liblzma.so",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/lzma/C/liblzma@android_x86_x86_64_shared_apex10000.ninja"
+      },
+      {
+        "variant": "cc_library",
+        "type": "shared",
+        "filename": "liblzma.so",
+        "filedir": "android_x86_x86_64_shared_apex31/",
+        "path": "out/soong/.intermediates/external/lzma/C/liblzma/android_x86_x86_64_shared_apex31/liblzma.so",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/lzma/C/liblzma@android_x86_x86_64_shared_apex31.ninja"
+      },
+      {
+        "variant": "cc_library",
+        "type": "static",
+        "filename": "liblzma.a",
+        "filedir": "android_x86_x86_64_static/",
+        "path": "out/soong/.intermediates/external/lzma/C/liblzma/android_x86_x86_64_static/liblzma.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/lzma/C/liblzma@android_x86_x86_64_static.ninja"
+      },
+      {
+        "variant": "cc_library",
+        "type": "static",
+        "filename": "liblzma.a",
+        "filedir": "android_x86_x86_64_static_apex10000/",
+        "path": "out/soong/.intermediates/external/lzma/C/liblzma/android_x86_x86_64_static_apex10000/liblzma.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/lzma/C/liblzma@android_x86_x86_64_static_apex10000.ninja"
+      },
+      {
+        "variant": "cc_library",
+        "type": "shared",
+        "filename": "liblzma.so",
+        "filedir": "linux_glibc_x86_64_shared/",
+        "path": "out/soong/.intermediates/external/lzma/C/liblzma/linux_glibc_x86_64_shared/liblzma.so",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/lzma/C/liblzma@linux_glibc_x86_64_shared.ninja"
+      },
+      {
+        "variant": "cc_library",
+        "type": "static",
+        "filename": "liblzma.a",
+        "filedir": "linux_glibc_x86_64_static/",
+        "path": "out/soong/.intermediates/external/lzma/C/liblzma/linux_glibc_x86_64_static/liblzma.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/lzma/C/liblzma@linux_glibc_x86_64_static.ninja"
+      }
+    ]
+  },
+  {
+    "name": "marisa-trie",
+    "project_path": "external/marisa-trie/",
+    "outputs": [
+      {
+        "variant": "cc_library",
+        "type": "static",
+        "filename": "marisa-trie.a",
+        "filedir": "android_x86_64_sdk_static_apex30/",
+        "path": "out/soong/.intermediates/external/marisa-trie/marisa-trie/android_x86_64_sdk_static_apex30/marisa-trie.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/marisa-trie/marisa-trie@android_x86_64_sdk_static_apex30.ninja"
+      }
+    ]
+  },
+  {
+    "name": "sh",
+    "project_path": "external/mksh/",
+    "outputs": [
+      {
+        "variant": "cc_binary",
+        "type": "binary",
+        "filename": "sh",
+        "filedir": "android_recovery_x86_64/",
+        "path": "out/soong/.intermediates/external/mksh/sh/android_recovery_x86_64/sh",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/mksh/sh@android_recovery_x86_64.ninja"
+      },
+      {
+        "variant": "cc_binary",
+        "type": "binary",
+        "filename": "sh",
+        "filedir": "android_x86_64/",
+        "path": "out/soong/.intermediates/external/mksh/sh/android_x86_64/sh",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/mksh/sh@android_x86_64.ninja"
+      }
+    ]
+  },
+  {
+    "name": "sh_vendor",
+    "project_path": "external/mksh/",
+    "outputs": [
+      {
+        "variant": "cc_binary",
+        "type": "binary",
+        "filename": "sh_vendor",
+        "filedir": "android_vendor.31_x86_64/",
+        "path": "out/soong/.intermediates/external/mksh/sh_vendor/android_vendor.31_x86_64/sh",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/mksh/sh_vendor@android_vendor.31_x86_64.ninja"
+      }
+    ]
+  },
+  {
+    "name": "awk",
+    "project_path": "external/one-true-awk/",
+    "outputs": [
+      {
+        "variant": "cc_binary",
+        "type": "binary",
+        "filename": "awk",
+        "filedir": "android_x86_64/",
+        "path": "out/soong/.intermediates/external/one-true-awk/awk/android_x86_64/awk",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/one-true-awk/awk@android_x86_64.ninja"
+      }
+    ]
+  },
+  {
+    "name": "awk_vendor",
+    "project_path": "external/one-true-awk/",
+    "outputs": [
+      {
+        "variant": "cc_binary",
+        "type": "binary",
+        "filename": "awk_vendor",
+        "filedir": "android_vendor.31_x86_64/",
+        "path": "out/soong/.intermediates/external/one-true-awk/awk_vendor/android_vendor.31_x86_64/awk",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/one-true-awk/awk_vendor@android_vendor.31_x86_64.ninja"
+      }
+    ]
+  },
+  {
+    "name": "libpcre2",
+    "project_path": "external/pcre/",
+    "outputs": [
+      {
+        "variant": "cc_library",
+        "type": "shared",
+        "filename": "libpcre2.so",
+        "filedir": "android_recovery_x86_64_shared/",
+        "path": "out/soong/.intermediates/external/pcre/libpcre2/android_recovery_x86_64_shared/libpcre2.so",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/pcre/libpcre2@android_recovery_x86_64_shared.ninja"
+      },
+      {
+        "variant": "cc_library",
+        "type": "shared",
+        "filename": "libpcre2.so",
+        "filedir": "android_vendor.31_x86_64_shared/",
+        "path": "out/soong/.intermediates/external/pcre/libpcre2/android_vendor.31_x86_64_shared/libpcre2.so",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/pcre/libpcre2@android_vendor.31_x86_64_shared.ninja"
+      },
+      {
+        "variant": "cc_library",
+        "type": "shared",
+        "filename": "libpcre2.so",
+        "filedir": "android_vendor.31_x86_x86_64_shared/",
+        "path": "out/soong/.intermediates/external/pcre/libpcre2/android_vendor.31_x86_x86_64_shared/libpcre2.so",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/pcre/libpcre2@android_vendor.31_x86_x86_64_shared.ninja"
+      },
+      {
+        "variant": "cc_library",
+        "type": "shared",
+        "filename": "libpcre2.so",
+        "filedir": "android_x86_64_shared/",
+        "path": "out/soong/.intermediates/external/pcre/libpcre2/android_x86_64_shared/libpcre2.so",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/pcre/libpcre2@android_x86_64_shared.ninja"
+      },
+      {
+        "variant": "cc_library",
+        "type": "static",
+        "filename": "libpcre2.a",
+        "filedir": "android_x86_64_static/",
+        "path": "out/soong/.intermediates/external/pcre/libpcre2/android_x86_64_static/libpcre2.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/pcre/libpcre2@android_x86_64_static.ninja"
+      },
+      {
+        "variant": "cc_library",
+        "type": "shared",
+        "filename": "libpcre2.so",
+        "filedir": "android_x86_x86_64_shared/",
+        "path": "out/soong/.intermediates/external/pcre/libpcre2/android_x86_x86_64_shared/libpcre2.so",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/pcre/libpcre2@android_x86_x86_64_shared.ninja"
+      },
+      {
+        "variant": "cc_library",
+        "type": "shared",
+        "filename": "libpcre2.so",
+        "filedir": "linux_glibc_x86_64_shared/",
+        "path": "out/soong/.intermediates/external/pcre/libpcre2/linux_glibc_x86_64_shared/libpcre2.so",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/pcre/libpcre2@linux_glibc_x86_64_shared.ninja"
+      },
+      {
+        "variant": "cc_library",
+        "type": "static",
+        "filename": "libpcre2.a",
+        "filedir": "linux_glibc_x86_64_static/",
+        "path": "out/soong/.intermediates/external/pcre/libpcre2/linux_glibc_x86_64_static/libpcre2.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/pcre/libpcre2@linux_glibc_x86_64_static.ninja"
+      }
+    ]
+  },
+  {
+    "name": "libcexpr",
+    "project_path": "external/rust/crates/cexpr/",
+    "outputs": [
+      {
+        "variant": "rust_library",
+        "type": "rlib",
+        "filename": "libcexpr.rlib",
+        "filedir": "linux_glibc_x86_64_rlib_rlib-std/",
+        "path": "out/soong/.intermediates/external/rust/crates/cexpr/libcexpr/linux_glibc_x86_64_rlib_rlib-std/libcexpr.rlib",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/rust/crates/cexpr/libcexpr@linux_glibc_x86_64_rlib_rlib-std.ninja"
+      }
+    ]
+  },
+  {
+    "name": "libquote",
+    "project_path": "external/rust/crates/quote/",
+    "outputs": [
+      {
+        "variant": "rust_library_host",
+        "type": "rlib",
+        "filename": "libquote.rlib",
+        "filedir": "linux_glibc_x86_64_rlib_rlib-std/",
+        "path": "out/soong/.intermediates/external/rust/crates/quote/libquote/linux_glibc_x86_64_rlib_rlib-std/libquote.rlib",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/rust/crates/quote/libquote@linux_glibc_x86_64_rlib_rlib-std.ninja"
+      }
+    ]
+  },
+  {
+    "name": "libregex",
+    "project_path": "external/rust/crates/regex/",
+    "outputs": [
+      {
+        "variant": "rust_library",
+        "type": "rlib",
+        "filename": "libregex.rlib",
+        "filedir": "linux_glibc_x86_64_rlib_rlib-std/",
+        "path": "out/soong/.intermediates/external/rust/crates/regex/libregex/linux_glibc_x86_64_rlib_rlib-std/libregex.rlib",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/rust/crates/regex/libregex@linux_glibc_x86_64_rlib_rlib-std.ninja"
+      }
+    ]
+  }
+]

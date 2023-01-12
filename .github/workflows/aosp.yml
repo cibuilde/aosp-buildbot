@@ -806,3 +806,345 @@ jobs:
       with:
         name: external_rust_crates_proc-macro2-0
         path: aosp/prebuiltlibs/external/rust/crates/proc-macro2
+
+  build_step2:
+    runs-on: ubuntu-latest
+    needs: [build_step1]
+    steps:
+    - name: Checkout
+      uses: actions/checkout@main
+    - name: Call Composite Action bootstrap
+      uses: ./.github/actions/bootstrap
+      id: bootstrap
+
+    - name: Restore Cache external/zlib
+      id: external_zlib
+      uses: actions/cache@v3
+      with:
+        path: aosp/external/zlib
+        key: external_zlib@${{ env.branch }}
+        restore-keys: external_zlib@${{ env.branch }}
+    - name: Clone project external/zlib
+      if: steps.external_zlib.outputs.cache-hit != 'true'
+      run: |
+        pushd aosp
+        source $GITHUB_WORKSPACE/envsetup.sh
+        clone_depth_platform external/zlib
+    - name: Restore Cache external/bc
+      id: external_bc
+      uses: actions/cache@v3
+      with:
+        path: aosp/external/bc
+        key: external_bc@${{ env.branch }}
+        restore-keys: external_bc@${{ env.branch }}
+    - name: Clone project external/bc
+      if: steps.external_bc.outputs.cache-hit != 'true'
+      run: |
+        pushd aosp
+        source $GITHUB_WORKSPACE/envsetup.sh
+        clone_depth_platform external/bc
+    - name: Restore Cache external/brotli
+      id: external_brotli
+      uses: actions/cache@v3
+      with:
+        path: aosp/external/brotli
+        key: external_brotli@${{ env.branch }}
+        restore-keys: external_brotli@${{ env.branch }}
+    - name: Clone project external/brotli
+      if: steps.external_brotli.outputs.cache-hit != 'true'
+      run: |
+        pushd aosp
+        source $GITHUB_WORKSPACE/envsetup.sh
+        clone_depth_platform external/brotli
+    - name: Restore Cache external/bzip2
+      id: external_bzip2
+      uses: actions/cache@v3
+      with:
+        path: aosp/external/bzip2
+        key: external_bzip2@${{ env.branch }}
+        restore-keys: external_bzip2@${{ env.branch }}
+    - name: Clone project external/bzip2
+      if: steps.external_bzip2.outputs.cache-hit != 'true'
+      run: |
+        pushd aosp
+        source $GITHUB_WORKSPACE/envsetup.sh
+        clone_depth_platform external/bzip2
+    - name: Restore Cache external/expat
+      id: external_expat
+      uses: actions/cache@v3
+      with:
+        path: aosp/external/expat
+        key: external_expat@${{ env.branch }}
+        restore-keys: external_expat@${{ env.branch }}
+    - name: Clone project external/expat
+      if: steps.external_expat.outputs.cache-hit != 'true'
+      run: |
+        pushd aosp
+        source $GITHUB_WORKSPACE/envsetup.sh
+        clone_depth_platform external/expat
+    - name: Restore Cache external/fft2d
+      id: external_fft2d
+      uses: actions/cache@v3
+      with:
+        path: aosp/external/fft2d
+        key: external_fft2d@${{ env.branch }}
+        restore-keys: external_fft2d@${{ env.branch }}
+    - name: Clone project external/fft2d
+      if: steps.external_fft2d.outputs.cache-hit != 'true'
+      run: |
+        pushd aosp
+        source $GITHUB_WORKSPACE/envsetup.sh
+        clone_depth_platform external/fft2d
+    - name: Restore Cache external/libfuse
+      id: external_libfuse
+      uses: actions/cache@v3
+      with:
+        path: aosp/external/libfuse
+        key: external_libfuse@${{ env.branch }}
+        restore-keys: external_libfuse@${{ env.branch }}
+    - name: Clone project external/libfuse
+      if: steps.external_libfuse.outputs.cache-hit != 'true'
+      run: |
+        pushd aosp
+        source $GITHUB_WORKSPACE/envsetup.sh
+        clone_depth_platform external/libfuse
+    - name: Restore Cache external/lua
+      id: external_lua
+      uses: actions/cache@v3
+      with:
+        path: aosp/external/lua
+        key: external_lua@${{ env.branch }}
+        restore-keys: external_lua@${{ env.branch }}
+    - name: Clone project external/lua
+      if: steps.external_lua.outputs.cache-hit != 'true'
+      run: |
+        pushd aosp
+        source $GITHUB_WORKSPACE/envsetup.sh
+        clone_depth_platform external/lua
+    - name: Restore Cache external/lzma
+      id: external_lzma
+      uses: actions/cache@v3
+      with:
+        path: aosp/external/lzma
+        key: external_lzma@${{ env.branch }}
+        restore-keys: external_lzma@${{ env.branch }}
+    - name: Clone project external/lzma
+      if: steps.external_lzma.outputs.cache-hit != 'true'
+      run: |
+        pushd aosp
+        source $GITHUB_WORKSPACE/envsetup.sh
+        clone_depth_platform external/lzma
+    - name: Restore Cache external/marisa-trie
+      id: external_marisa-trie
+      uses: actions/cache@v3
+      with:
+        path: aosp/external/marisa-trie
+        key: external_marisa-trie@${{ env.branch }}
+        restore-keys: external_marisa-trie@${{ env.branch }}
+    - name: Clone project external/marisa-trie
+      if: steps.external_marisa-trie.outputs.cache-hit != 'true'
+      run: |
+        pushd aosp
+        source $GITHUB_WORKSPACE/envsetup.sh
+        clone_depth_platform external/marisa-trie
+    - name: Restore Cache external/mksh
+      id: external_mksh
+      uses: actions/cache@v3
+      with:
+        path: aosp/external/mksh
+        key: external_mksh@${{ env.branch }}
+        restore-keys: external_mksh@${{ env.branch }}
+    - name: Clone project external/mksh
+      if: steps.external_mksh.outputs.cache-hit != 'true'
+      run: |
+        pushd aosp
+        source $GITHUB_WORKSPACE/envsetup.sh
+        clone_depth_platform external/mksh
+    - name: Restore Cache external/one-true-awk
+      id: external_one-true-awk
+      uses: actions/cache@v3
+      with:
+        path: aosp/external/one-true-awk
+        key: external_one-true-awk@${{ env.branch }}
+        restore-keys: external_one-true-awk@${{ env.branch }}
+    - name: Clone project external/one-true-awk
+      if: steps.external_one-true-awk.outputs.cache-hit != 'true'
+      run: |
+        pushd aosp
+        source $GITHUB_WORKSPACE/envsetup.sh
+        clone_depth_platform external/one-true-awk
+    - name: Restore Cache external/pcre
+      id: external_pcre
+      uses: actions/cache@v3
+      with:
+        path: aosp/external/pcre
+        key: external_pcre@${{ env.branch }}
+        restore-keys: external_pcre@${{ env.branch }}
+    - name: Clone project external/pcre
+      if: steps.external_pcre.outputs.cache-hit != 'true'
+      run: |
+        pushd aosp
+        source $GITHUB_WORKSPACE/envsetup.sh
+        clone_depth_platform external/pcre
+    - name: Restore Cache external/rust/crates/cexpr
+      id: external_rust_crates_cexpr
+      uses: actions/cache@v3
+      with:
+        path: aosp/external/rust/crates/cexpr
+        key: external_rust_crates_cexpr@${{ env.branch }}
+        restore-keys: external_rust_crates_cexpr@${{ env.branch }}
+    - name: Clone project external/rust/crates/cexpr
+      if: steps.external_rust_crates_cexpr.outputs.cache-hit != 'true'
+      run: |
+        pushd aosp
+        source $GITHUB_WORKSPACE/envsetup.sh
+        clone_depth_platform external/rust/crates/cexpr
+    - name: Restore Cache external/rust/crates/quote
+      id: external_rust_crates_quote
+      uses: actions/cache@v3
+      with:
+        path: aosp/external/rust/crates/quote
+        key: external_rust_crates_quote@${{ env.branch }}
+        restore-keys: external_rust_crates_quote@${{ env.branch }}
+    - name: Clone project external/rust/crates/quote
+      if: steps.external_rust_crates_quote.outputs.cache-hit != 'true'
+      run: |
+        pushd aosp
+        source $GITHUB_WORKSPACE/envsetup.sh
+        clone_depth_platform external/rust/crates/quote
+    - name: Restore Cache external/rust/crates/regex
+      id: external_rust_crates_regex
+      uses: actions/cache@v3
+      with:
+        path: aosp/external/rust/crates/regex
+        key: external_rust_crates_regex@${{ env.branch }}
+        restore-keys: external_rust_crates_regex@${{ env.branch }}
+    - name: Clone project external/rust/crates/regex
+      if: steps.external_rust_crates_regex.outputs.cache-hit != 'true'
+      run: |
+        pushd aosp
+        source $GITHUB_WORKSPACE/envsetup.sh
+        clone_depth_platform external/rust/crates/regex
+
+    - name: Download artifact bionic-0
+      uses: actions/download-artifact@v3
+      with:
+        name: bionic-0
+        path: aosp/prebuiltlibs/bionic
+    - name: Download artifact external_rust_crates_nom-0
+      uses: actions/download-artifact@v3
+      with:
+        name: external_rust_crates_nom-0
+        path: aosp/prebuiltlibs/external/rust/crates/nom
+    - name: Download artifact external_rust_crates_proc-macro2-0
+      uses: actions/download-artifact@v3
+      with:
+        name: external_rust_crates_proc-macro2-0
+        path: aosp/prebuiltlibs/external/rust/crates/proc-macro2
+    - name: Download artifact external_rust_crates_aho-corasick-0
+      uses: actions/download-artifact@v3
+      with:
+        name: external_rust_crates_aho-corasick-0
+        path: aosp/prebuiltlibs/external/rust/crates/aho-corasick
+    - name: Download artifact external_rust_crates_memchr-0
+      uses: actions/download-artifact@v3
+      with:
+        name: external_rust_crates_memchr-0
+        path: aosp/prebuiltlibs/external/rust/crates/memchr
+    - name: Download artifact external_rust_crates_regex-syntax-0
+      uses: actions/download-artifact@v3
+      with:
+        name: external_rust_crates_regex-syntax-0
+        path: aosp/prebuiltlibs/external/rust/crates/regex-syntax
+
+    - name: Build Step-2
+      run: |
+        pushd aosp
+        export TOP=$(pwd)
+        $GITHUB_WORKSPACE/steps/build_step2.sh
+
+    - name: Archive external_zlib-0
+      uses: actions/upload-artifact@v3
+      with:
+        name: external_zlib-0
+        path: aosp/prebuiltlibs/external/zlib
+    - name: Archive external_bc-0
+      uses: actions/upload-artifact@v3
+      with:
+        name: external_bc-0
+        path: aosp/prebuiltlibs/external/bc
+    - name: Archive external_brotli-0
+      uses: actions/upload-artifact@v3
+      with:
+        name: external_brotli-0
+        path: aosp/prebuiltlibs/external/brotli
+    - name: Archive external_bzip2-0
+      uses: actions/upload-artifact@v3
+      with:
+        name: external_bzip2-0
+        path: aosp/prebuiltlibs/external/bzip2
+    - name: Archive external_expat-0
+      uses: actions/upload-artifact@v3
+      with:
+        name: external_expat-0
+        path: aosp/prebuiltlibs/external/expat
+    - name: Archive external_fft2d-0
+      uses: actions/upload-artifact@v3
+      with:
+        name: external_fft2d-0
+        path: aosp/prebuiltlibs/external/fft2d
+    - name: Archive external_libcxxabi-0
+      uses: actions/upload-artifact@v3
+      with:
+        name: external_libcxxabi-0
+        path: aosp/prebuiltlibs/external/libcxxabi
+    - name: Archive external_libfuse-0
+      uses: actions/upload-artifact@v3
+      with:
+        name: external_libfuse-0
+        path: aosp/prebuiltlibs/external/libfuse
+    - name: Archive external_lua-0
+      uses: actions/upload-artifact@v3
+      with:
+        name: external_lua-0
+        path: aosp/prebuiltlibs/external/lua
+    - name: Archive external_lzma-0
+      uses: actions/upload-artifact@v3
+      with:
+        name: external_lzma-0
+        path: aosp/prebuiltlibs/external/lzma
+    - name: Archive external_marisa-trie-0
+      uses: actions/upload-artifact@v3
+      with:
+        name: external_marisa-trie-0
+        path: aosp/prebuiltlibs/external/marisa-trie
+    - name: Archive external_mksh-0
+      uses: actions/upload-artifact@v3
+      with:
+        name: external_mksh-0
+        path: aosp/prebuiltlibs/external/mksh
+    - name: Archive external_one-true-awk-0
+      uses: actions/upload-artifact@v3
+      with:
+        name: external_one-true-awk-0
+        path: aosp/prebuiltlibs/external/one-true-awk
+    - name: Archive external_pcre-0
+      uses: actions/upload-artifact@v3
+      with:
+        name: external_pcre-0
+        path: aosp/prebuiltlibs/external/pcre
+    - name: Archive external_rust_crates_cexpr-0
+      uses: actions/upload-artifact@v3
+      with:
+        name: external_rust_crates_cexpr-0
+        path: aosp/prebuiltlibs/external/rust/crates/cexpr
+    - name: Archive external_rust_crates_quote-0
+      uses: actions/upload-artifact@v3
+      with:
+        name: external_rust_crates_quote-0
+        path: aosp/prebuiltlibs/external/rust/crates/quote
+    - name: Archive external_rust_crates_regex-0
+      uses: actions/upload-artifact@v3
+      with:
+        name: external_rust_crates_regex-0
+        path: aosp/prebuiltlibs/external/rust/crates/regex
