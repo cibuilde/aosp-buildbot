@@ -1,6 +1,5 @@
 const fs            = require('fs');
 
-const outFile = process.argv.pop()
 const text = fs.readFileSync(process.argv.pop());
 const modules = JSON.parse(text)
 
