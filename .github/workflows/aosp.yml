@@ -5,6 +5,16 @@ env:
   branch: 'android-12.0.0_r1'
 jobs:
 
+  build_step0:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout
+      uses: actions/checkout@main
+    - name: Call Composite Action bootstrap
+      uses: ./.github/actions/bootstrap
+      id: bootstrap
+
     - name: Restore Cache external/arm-optimized-routines
       id: external_arm-optimized-routines
       uses: actions/cache@v3
