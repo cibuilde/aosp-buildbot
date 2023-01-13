@@ -1,0 +1,449 @@
+[
+  {
+    "name": "libc++",
+    "project_path": "external/libcxx/",
+    "outputs": [
+      {
+        "variant": "cc_library_shared",
+        "type": "shared",
+        "filename": "libc++.so",
+        "filedir": "android_recovery_x86_64_shared/",
+        "path": "out/soong/.intermediates/external/libcxx/libc++/android_recovery_x86_64_shared/libc++.so",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/libcxx/libc++@android_recovery_x86_64_shared.ninja"
+      },
+      {
+        "variant": "cc_library_shared",
+        "type": "shared",
+        "filename": "libc++.so",
+        "filedir": "android_vendor.31_x86_64_shared/",
+        "path": "out/soong/.intermediates/external/libcxx/libc++/android_vendor.31_x86_64_shared/libc++.so",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/libcxx/libc++@android_vendor.31_x86_64_shared.ninja"
+      },
+      {
+        "variant": "cc_library_shared",
+        "type": "shared",
+        "filename": "libc++.so",
+        "filedir": "android_vendor.31_x86_x86_64_shared/",
+        "path": "out/soong/.intermediates/external/libcxx/libc++/android_vendor.31_x86_x86_64_shared/libc++.so",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/libcxx/libc++@android_vendor.31_x86_x86_64_shared.ninja"
+      },
+      {
+        "variant": "cc_library_shared",
+        "type": "shared",
+        "filename": "libc++.so",
+        "filedir": "android_x86_64_shared/",
+        "path": "out/soong/.intermediates/external/libcxx/libc++/android_x86_64_shared/libc++.so",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/libcxx/libc++@android_x86_64_shared.ninja"
+      },
+      {
+        "variant": "cc_library_shared",
+        "type": "shared",
+        "filename": "libc++.so",
+        "filedir": "android_x86_64_shared_apex10000/",
+        "path": "out/soong/.intermediates/external/libcxx/libc++/android_x86_64_shared_apex10000/libc++.so",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/libcxx/libc++@android_x86_64_shared_apex10000.ninja"
+      },
+      {
+        "variant": "cc_library_shared",
+        "type": "shared",
+        "filename": "libc++.so",
+        "filedir": "android_x86_64_shared_apex29/",
+        "path": "out/soong/.intermediates/external/libcxx/libc++/android_x86_64_shared_apex29/libc++.so",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/libcxx/libc++@android_x86_64_shared_apex29.ninja"
+      },
+      {
+        "variant": "cc_library_shared",
+        "type": "shared",
+        "filename": "libc++.so",
+        "filedir": "android_x86_64_shared_apex31/",
+        "path": "out/soong/.intermediates/external/libcxx/libc++/android_x86_64_shared_apex31/libc++.so",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/libcxx/libc++@android_x86_64_shared_apex31.ninja"
+      },
+      {
+        "variant": "cc_library_shared",
+        "type": "shared",
+        "filename": "libc++.so",
+        "filedir": "android_x86_x86_64_shared/",
+        "path": "out/soong/.intermediates/external/libcxx/libc++/android_x86_x86_64_shared/libc++.so",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/libcxx/libc++@android_x86_x86_64_shared.ninja"
+      },
+      {
+        "variant": "cc_library_shared",
+        "type": "shared",
+        "filename": "libc++.so",
+        "filedir": "android_x86_x86_64_shared_apex10000/",
+        "path": "out/soong/.intermediates/external/libcxx/libc++/android_x86_x86_64_shared_apex10000/libc++.so",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/libcxx/libc++@android_x86_x86_64_shared_apex10000.ninja"
+      },
+      {
+        "variant": "cc_library_shared",
+        "type": "shared",
+        "filename": "libc++.so",
+        "filedir": "android_x86_x86_64_shared_apex29/",
+        "path": "out/soong/.intermediates/external/libcxx/libc++/android_x86_x86_64_shared_apex29/libc++.so",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/libcxx/libc++@android_x86_x86_64_shared_apex29.ninja"
+      },
+      {
+        "variant": "cc_library_shared",
+        "type": "shared",
+        "filename": "libc++.so",
+        "filedir": "android_x86_x86_64_shared_apex31/",
+        "path": "out/soong/.intermediates/external/libcxx/libc++/android_x86_x86_64_shared_apex31/libc++.so",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/libcxx/libc++@android_x86_x86_64_shared_apex31.ninja"
+      },
+      {
+        "variant": "cc_library_shared",
+        "type": "shared",
+        "filename": "libc++.so",
+        "filedir": "linux_glibc_x86_64_shared/",
+        "path": "out/soong/.intermediates/external/libcxx/libc++/linux_glibc_x86_64_shared/libc++.so",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/libcxx/libc++@linux_glibc_x86_64_shared.ninja"
+      }
+    ]
+  },
+  {
+    "name": "libc++fs",
+    "project_path": "external/libcxx/",
+    "outputs": [
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc++fs.a",
+        "filedir": "android_recovery_x86_64_static/",
+        "path": "out/soong/.intermediates/external/libcxx/libc++fs/android_recovery_x86_64_static/libc++fs.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/libcxx/libc++fs@android_recovery_x86_64_static.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc++fs.a",
+        "filedir": "android_x86_64_static/",
+        "path": "out/soong/.intermediates/external/libcxx/libc++fs/android_x86_64_static/libc++fs.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/libcxx/libc++fs@android_x86_64_static.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc++fs.a",
+        "filedir": "android_x86_x86_64_static/",
+        "path": "out/soong/.intermediates/external/libcxx/libc++fs/android_x86_x86_64_static/libc++fs.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/libcxx/libc++fs@android_x86_x86_64_static.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc++fs.a",
+        "filedir": "linux_glibc_x86_64_static/",
+        "path": "out/soong/.intermediates/external/libcxx/libc++fs/linux_glibc_x86_64_static/libc++fs.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/libcxx/libc++fs@linux_glibc_x86_64_static.ninja"
+      }
+    ]
+  },
+  {
+    "name": "libc++_static",
+    "project_path": "external/libcxx/",
+    "outputs": [
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc++_static.a",
+        "filedir": "android_recovery_x86_64_static/",
+        "path": "out/soong/.intermediates/external/libcxx/libc++_static/android_recovery_x86_64_static/libc++_static.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/libcxx/libc++_static@android_recovery_x86_64_static.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc++_static.a",
+        "filedir": "android_recovery_x86_64_static_lto-thin/",
+        "path": "out/soong/.intermediates/external/libcxx/libc++_static/android_recovery_x86_64_static_lto-thin/libc++_static.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/libcxx/libc++_static@android_recovery_x86_64_static_lto-thin.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc++_static.a",
+        "filedir": "android_vendor.31_x86_64_static/",
+        "path": "out/soong/.intermediates/external/libcxx/libc++_static/android_vendor.31_x86_64_static/libc++_static.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/libcxx/libc++_static@android_vendor.31_x86_64_static.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc++_static.a",
+        "filedir": "android_vendor.31_x86_64_static_lto-thin/",
+        "path": "out/soong/.intermediates/external/libcxx/libc++_static/android_vendor.31_x86_64_static_lto-thin/libc++_static.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/libcxx/libc++_static@android_vendor.31_x86_64_static_lto-thin.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc++_static.a",
+        "filedir": "android_vendor.31_x86_x86_64_static/",
+        "path": "out/soong/.intermediates/external/libcxx/libc++_static/android_vendor.31_x86_x86_64_static/libc++_static.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/libcxx/libc++_static@android_vendor.31_x86_x86_64_static.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc++_static.a",
+        "filedir": "android_vendor.31_x86_x86_64_static_cfi/",
+        "path": "out/soong/.intermediates/external/libcxx/libc++_static/android_vendor.31_x86_x86_64_static_cfi/libc++_static.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/libcxx/libc++_static@android_vendor.31_x86_x86_64_static_cfi.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc++_static.a",
+        "filedir": "android_vendor.31_x86_x86_64_static_lto-thin/",
+        "path": "out/soong/.intermediates/external/libcxx/libc++_static/android_vendor.31_x86_x86_64_static_lto-thin/libc++_static.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/libcxx/libc++_static@android_vendor.31_x86_x86_64_static_lto-thin.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc++_static.a",
+        "filedir": "android_x86_64_static/",
+        "path": "out/soong/.intermediates/external/libcxx/libc++_static/android_x86_64_static/libc++_static.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/libcxx/libc++_static@android_x86_64_static.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc++_static.a",
+        "filedir": "android_x86_64_static_apex10000/",
+        "path": "out/soong/.intermediates/external/libcxx/libc++_static/android_x86_64_static_apex10000/libc++_static.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/libcxx/libc++_static@android_x86_64_static_apex10000.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc++_static.a",
+        "filedir": "android_x86_64_static_apex29/",
+        "path": "out/soong/.intermediates/external/libcxx/libc++_static/android_x86_64_static_apex29/libc++_static.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/libcxx/libc++_static@android_x86_64_static_apex29.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc++_static.a",
+        "filedir": "android_x86_64_static_apex30/",
+        "path": "out/soong/.intermediates/external/libcxx/libc++_static/android_x86_64_static_apex30/libc++_static.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/libcxx/libc++_static@android_x86_64_static_apex30.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc++_static.a",
+        "filedir": "android_x86_64_static_apex31/",
+        "path": "out/soong/.intermediates/external/libcxx/libc++_static/android_x86_64_static_apex31/libc++_static.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/libcxx/libc++_static@android_x86_64_static_apex31.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc++_static.a",
+        "filedir": "android_x86_64_static_cfi/",
+        "path": "out/soong/.intermediates/external/libcxx/libc++_static/android_x86_64_static_cfi/libc++_static.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/libcxx/libc++_static@android_x86_64_static_cfi.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc++_static.a",
+        "filedir": "android_x86_64_static_cfi_apex29/",
+        "path": "out/soong/.intermediates/external/libcxx/libc++_static/android_x86_64_static_cfi_apex29/libc++_static.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/libcxx/libc++_static@android_x86_64_static_cfi_apex29.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc++_static.a",
+        "filedir": "android_x86_64_static_cfi_lto-thin/",
+        "path": "out/soong/.intermediates/external/libcxx/libc++_static/android_x86_64_static_cfi_lto-thin/libc++_static.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/libcxx/libc++_static@android_x86_64_static_cfi_lto-thin.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc++_static.a",
+        "filedir": "android_x86_64_static_cfi_lto-thin_apex29/",
+        "path": "out/soong/.intermediates/external/libcxx/libc++_static/android_x86_64_static_cfi_lto-thin_apex29/libc++_static.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/libcxx/libc++_static@android_x86_64_static_cfi_lto-thin_apex29.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc++_static.a",
+        "filedir": "android_x86_64_static_lto-thin/",
+        "path": "out/soong/.intermediates/external/libcxx/libc++_static/android_x86_64_static_lto-thin/libc++_static.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/libcxx/libc++_static@android_x86_64_static_lto-thin.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc++_static.a",
+        "filedir": "android_x86_64_static_lto-thin_apex29/",
+        "path": "out/soong/.intermediates/external/libcxx/libc++_static/android_x86_64_static_lto-thin_apex29/libc++_static.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/libcxx/libc++_static@android_x86_64_static_lto-thin_apex29.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc++_static.a",
+        "filedir": "android_x86_64_static_lto-thin_apex30/",
+        "path": "out/soong/.intermediates/external/libcxx/libc++_static/android_x86_64_static_lto-thin_apex30/libc++_static.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/libcxx/libc++_static@android_x86_64_static_lto-thin_apex30.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc++_static.a",
+        "filedir": "android_x86_64_static_lto-thin_apex31/",
+        "path": "out/soong/.intermediates/external/libcxx/libc++_static/android_x86_64_static_lto-thin_apex31/libc++_static.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/libcxx/libc++_static@android_x86_64_static_lto-thin_apex31.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc++_static.a",
+        "filedir": "android_x86_x86_64_static/",
+        "path": "out/soong/.intermediates/external/libcxx/libc++_static/android_x86_x86_64_static/libc++_static.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/libcxx/libc++_static@android_x86_x86_64_static.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc++_static.a",
+        "filedir": "android_x86_x86_64_static_apex10000/",
+        "path": "out/soong/.intermediates/external/libcxx/libc++_static/android_x86_x86_64_static_apex10000/libc++_static.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/libcxx/libc++_static@android_x86_x86_64_static_apex10000.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc++_static.a",
+        "filedir": "android_x86_x86_64_static_apex29/",
+        "path": "out/soong/.intermediates/external/libcxx/libc++_static/android_x86_x86_64_static_apex29/libc++_static.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/libcxx/libc++_static@android_x86_x86_64_static_apex29.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc++_static.a",
+        "filedir": "android_x86_x86_64_static_apex30/",
+        "path": "out/soong/.intermediates/external/libcxx/libc++_static/android_x86_x86_64_static_apex30/libc++_static.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/libcxx/libc++_static@android_x86_x86_64_static_apex30.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc++_static.a",
+        "filedir": "android_x86_x86_64_static_apex31/",
+        "path": "out/soong/.intermediates/external/libcxx/libc++_static/android_x86_x86_64_static_apex31/libc++_static.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/libcxx/libc++_static@android_x86_x86_64_static_apex31.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc++_static.a",
+        "filedir": "android_x86_x86_64_static_cfi/",
+        "path": "out/soong/.intermediates/external/libcxx/libc++_static/android_x86_x86_64_static_cfi/libc++_static.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/libcxx/libc++_static@android_x86_x86_64_static_cfi.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc++_static.a",
+        "filedir": "android_x86_x86_64_static_lto-thin/",
+        "path": "out/soong/.intermediates/external/libcxx/libc++_static/android_x86_x86_64_static_lto-thin/libc++_static.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/libcxx/libc++_static@android_x86_x86_64_static_lto-thin.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc++_static.a",
+        "filedir": "android_x86_x86_64_static_lto-thin_apex30/",
+        "path": "out/soong/.intermediates/external/libcxx/libc++_static/android_x86_x86_64_static_lto-thin_apex30/libc++_static.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/libcxx/libc++_static@android_x86_x86_64_static_lto-thin_apex30.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc++_static.a",
+        "filedir": "android_x86_x86_64_static_lto-thin_apex31/",
+        "path": "out/soong/.intermediates/external/libcxx/libc++_static/android_x86_x86_64_static_lto-thin_apex31/libc++_static.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/libcxx/libc++_static@android_x86_x86_64_static_lto-thin_apex31.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libc++_static.a",
+        "filedir": "linux_glibc_x86_64_static/",
+        "path": "out/soong/.intermediates/external/libcxx/libc++_static/linux_glibc_x86_64_static/libc++_static.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/libcxx/libc++_static@linux_glibc_x86_64_static.ninja"
+      }
+    ]
+  },
+  {
+    "name": "libsyn",
+    "project_path": "external/rust/crates/syn/",
+    "outputs": [
+      {
+        "variant": "rust_library_host",
+        "type": "rlib",
+        "filename": "libsyn.rlib",
+        "filedir": "linux_glibc_x86_64_rlib_rlib-std/",
+        "path": "out/soong/.intermediates/external/rust/crates/syn/libsyn/linux_glibc_x86_64_rlib_rlib-std/libsyn.rlib",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/rust/crates/syn/libsyn@linux_glibc_x86_64_rlib_rlib-std.ninja"
+      }
+    ]
+  }
+]

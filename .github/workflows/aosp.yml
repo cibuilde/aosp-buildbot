@@ -416,162 +416,162 @@ jobs:
       uses: actions/upload-artifact@v3
       with:
         name: external_arm-optimized-routines-0
-        path: aosp/prebuiltlibs/external/arm-optimized-routines
+        path: aosp/external_arm-optimized-routines-0.tar.xz
     - name: Archive external_gwp_asan-0
       uses: actions/upload-artifact@v3
       with:
         name: external_gwp_asan-0
-        path: aosp/prebuiltlibs/external/gwp_asan
+        path: aosp/external_gwp_asan-0.tar.xz
     - name: Archive external_rust_crates_bitflags-0
       uses: actions/upload-artifact@v3
       with:
         name: external_rust_crates_bitflags-0
-        path: aosp/prebuiltlibs/external/rust/crates/bitflags
+        path: aosp/external_rust_crates_bitflags-0.tar.xz
     - name: Archive external_rust_crates_bytes-0
       uses: actions/upload-artifact@v3
       with:
         name: external_rust_crates_bytes-0
-        path: aosp/prebuiltlibs/external/rust/crates/bytes
+        path: aosp/external_rust_crates_bytes-0.tar.xz
     - name: Archive external_rust_crates_either-0
       uses: actions/upload-artifact@v3
       with:
         name: external_rust_crates_either-0
-        path: aosp/prebuiltlibs/external/rust/crates/either
+        path: aosp/external_rust_crates_either-0.tar.xz
     - name: Archive external_rust_crates_fallible-iterator-0
       uses: actions/upload-artifact@v3
       with:
         name: external_rust_crates_fallible-iterator-0
-        path: aosp/prebuiltlibs/external/rust/crates/fallible-iterator
+        path: aosp/external_rust_crates_fallible-iterator-0.tar.xz
     - name: Archive external_rust_crates_fallible-streaming-iterator-0
       uses: actions/upload-artifact@v3
       with:
         name: external_rust_crates_fallible-streaming-iterator-0
-        path: aosp/prebuiltlibs/external/rust/crates/fallible-streaming-iterator
+        path: aosp/external_rust_crates_fallible-streaming-iterator-0.tar.xz
     - name: Archive external_rust_crates_futures-core-0
       uses: actions/upload-artifact@v3
       with:
         name: external_rust_crates_futures-core-0
-        path: aosp/prebuiltlibs/external/rust/crates/futures-core
+        path: aosp/external_rust_crates_futures-core-0.tar.xz
     - name: Archive external_rust_crates_futures-io-0
       uses: actions/upload-artifact@v3
       with:
         name: external_rust_crates_futures-io-0
-        path: aosp/prebuiltlibs/external/rust/crates/futures-io
+        path: aosp/external_rust_crates_futures-io-0.tar.xz
     - name: Archive external_rust_crates_futures-sink-0
       uses: actions/upload-artifact@v3
       with:
         name: external_rust_crates_futures-sink-0
-        path: aosp/prebuiltlibs/external/rust/crates/futures-sink
+        path: aosp/external_rust_crates_futures-sink-0.tar.xz
     - name: Archive external_rust_crates_futures-task-0
       uses: actions/upload-artifact@v3
       with:
         name: external_rust_crates_futures-task-0
-        path: aosp/prebuiltlibs/external/rust/crates/futures-task
+        path: aosp/external_rust_crates_futures-task-0.tar.xz
     - name: Archive external_rust_crates_glob-0
       uses: actions/upload-artifact@v3
       with:
         name: external_rust_crates_glob-0
-        path: aosp/prebuiltlibs/external/rust/crates/glob
+        path: aosp/external_rust_crates_glob-0.tar.xz
     - name: Archive external_rust_crates_lazycell-0
       uses: actions/upload-artifact@v3
       with:
         name: external_rust_crates_lazycell-0
-        path: aosp/prebuiltlibs/external/rust/crates/lazycell
+        path: aosp/external_rust_crates_lazycell-0.tar.xz
     - name: Archive external_rust_crates_memchr-0
       uses: actions/upload-artifact@v3
       with:
         name: external_rust_crates_memchr-0
-        path: aosp/prebuiltlibs/external/rust/crates/memchr
+        path: aosp/external_rust_crates_memchr-0.tar.xz
     - name: Archive external_rust_crates_paste-0
       uses: actions/upload-artifact@v3
       with:
         name: external_rust_crates_paste-0
-        path: aosp/prebuiltlibs/external/rust/crates/paste
+        path: aosp/external_rust_crates_paste-0.tar.xz
     - name: Archive external_rust_crates_peeking_take_while-0
       uses: actions/upload-artifact@v3
       with:
         name: external_rust_crates_peeking_take_while-0
-        path: aosp/prebuiltlibs/external/rust/crates/peeking_take_while
+        path: aosp/external_rust_crates_peeking_take_while-0.tar.xz
     - name: Archive external_rust_crates_pin-project-lite-0
       uses: actions/upload-artifact@v3
       with:
         name: external_rust_crates_pin-project-lite-0
-        path: aosp/prebuiltlibs/external/rust/crates/pin-project-lite
+        path: aosp/external_rust_crates_pin-project-lite-0.tar.xz
     - name: Archive external_rust_crates_pin-utils-0
       uses: actions/upload-artifact@v3
       with:
         name: external_rust_crates_pin-utils-0
-        path: aosp/prebuiltlibs/external/rust/crates/pin-utils
+        path: aosp/external_rust_crates_pin-utils-0.tar.xz
     - name: Archive external_rust_crates_proc-macro-hack-0
       uses: actions/upload-artifact@v3
       with:
         name: external_rust_crates_proc-macro-hack-0
-        path: aosp/prebuiltlibs/external/rust/crates/proc-macro-hack
+        path: aosp/external_rust_crates_proc-macro-hack-0.tar.xz
     - name: Archive external_rust_crates_proc-macro-nested-0
       uses: actions/upload-artifact@v3
       with:
         name: external_rust_crates_proc-macro-nested-0
-        path: aosp/prebuiltlibs/external/rust/crates/proc-macro-nested
+        path: aosp/external_rust_crates_proc-macro-nested-0.tar.xz
     - name: Archive external_rust_crates_regex-syntax-0
       uses: actions/upload-artifact@v3
       with:
         name: external_rust_crates_regex-syntax-0
-        path: aosp/prebuiltlibs/external/rust/crates/regex-syntax
+        path: aosp/external_rust_crates_regex-syntax-0.tar.xz
     - name: Archive external_rust_crates_rustc-hash-0
       uses: actions/upload-artifact@v3
       with:
         name: external_rust_crates_rustc-hash-0
-        path: aosp/prebuiltlibs/external/rust/crates/rustc-hash
+        path: aosp/external_rust_crates_rustc-hash-0.tar.xz
     - name: Archive external_rust_crates_scopeguard-0
       uses: actions/upload-artifact@v3
       with:
         name: external_rust_crates_scopeguard-0
-        path: aosp/prebuiltlibs/external/rust/crates/scopeguard
+        path: aosp/external_rust_crates_scopeguard-0.tar.xz
     - name: Archive external_rust_crates_shlex-0
       uses: actions/upload-artifact@v3
       with:
         name: external_rust_crates_shlex-0
-        path: aosp/prebuiltlibs/external/rust/crates/shlex
+        path: aosp/external_rust_crates_shlex-0.tar.xz
     - name: Archive external_rust_crates_slab-0
       uses: actions/upload-artifact@v3
       with:
         name: external_rust_crates_slab-0
-        path: aosp/prebuiltlibs/external/rust/crates/slab
+        path: aosp/external_rust_crates_slab-0.tar.xz
     - name: Archive external_rust_crates_smallvec-0
       uses: actions/upload-artifact@v3
       with:
         name: external_rust_crates_smallvec-0
-        path: aosp/prebuiltlibs/external/rust/crates/smallvec
+        path: aosp/external_rust_crates_smallvec-0.tar.xz
     - name: Archive external_rust_crates_termcolor-0
       uses: actions/upload-artifact@v3
       with:
         name: external_rust_crates_termcolor-0
-        path: aosp/prebuiltlibs/external/rust/crates/termcolor
+        path: aosp/external_rust_crates_termcolor-0.tar.xz
     - name: Archive external_rust_crates_textwrap-0
       uses: actions/upload-artifact@v3
       with:
         name: external_rust_crates_textwrap-0
-        path: aosp/prebuiltlibs/external/rust/crates/textwrap
+        path: aosp/external_rust_crates_textwrap-0.tar.xz
     - name: Archive external_rust_crates_unicode-width-0
       uses: actions/upload-artifact@v3
       with:
         name: external_rust_crates_unicode-width-0
-        path: aosp/prebuiltlibs/external/rust/crates/unicode-width
+        path: aosp/external_rust_crates_unicode-width-0.tar.xz
     - name: Archive external_rust_crates_unicode-xid-0
       uses: actions/upload-artifact@v3
       with:
         name: external_rust_crates_unicode-xid-0
-        path: aosp/prebuiltlibs/external/rust/crates/unicode-xid
+        path: aosp/external_rust_crates_unicode-xid-0.tar.xz
     - name: Archive external_scudo-0
       uses: actions/upload-artifact@v3
       with:
         name: external_scudo-0
-        path: aosp/prebuiltlibs/external/scudo
+        path: aosp/external_scudo-0.tar.xz
     - name: Archive system_core-0
       uses: actions/upload-artifact@v3
       with:
         name: system_core-0
-        path: aosp/prebuiltlibs/system/core
+        path: aosp/system_core-0.tar.xz
 
     - name: Restore Cache external/rust/crates/nom
       id: external_rust_crates_nom
@@ -688,47 +688,47 @@ jobs:
       uses: actions/upload-artifact@v3
       with:
         name: bionic-0
-        path: aosp/prebuiltlibs/bionic
+        path: aosp/bionic-0.tar.xz
     - name: Archive external_rust_crates_nom-0
       uses: actions/upload-artifact@v3
       with:
         name: external_rust_crates_nom-0
-        path: aosp/prebuiltlibs/external/rust/crates/nom
+        path: aosp/external_rust_crates_nom-0.tar.xz
     - name: Archive external_rust_crates_protobuf-0
       uses: actions/upload-artifact@v3
       with:
         name: external_rust_crates_protobuf-0
-        path: aosp/prebuiltlibs/external/rust/crates/protobuf
+        path: aosp/external_rust_crates_protobuf-0.tar.xz
     - name: Archive external_rust_crates_aho-corasick-0
       uses: actions/upload-artifact@v3
       with:
         name: external_rust_crates_aho-corasick-0
-        path: aosp/prebuiltlibs/external/rust/crates/aho-corasick
+        path: aosp/external_rust_crates_aho-corasick-0.tar.xz
     - name: Archive external_rust_crates_clap-0
       uses: actions/upload-artifact@v3
       with:
         name: external_rust_crates_clap-0
-        path: aosp/prebuiltlibs/external/rust/crates/clap
+        path: aosp/external_rust_crates_clap-0.tar.xz
     - name: Archive external_rust_crates_codespan-reporting-0
       uses: actions/upload-artifact@v3
       with:
         name: external_rust_crates_codespan-reporting-0
-        path: aosp/prebuiltlibs/external/rust/crates/codespan-reporting
+        path: aosp/external_rust_crates_codespan-reporting-0.tar.xz
     - name: Archive external_rust_crates_futures-channel-0
       uses: actions/upload-artifact@v3
       with:
         name: external_rust_crates_futures-channel-0
-        path: aosp/prebuiltlibs/external/rust/crates/futures-channel
+        path: aosp/external_rust_crates_futures-channel-0.tar.xz
     - name: Archive external_rust_crates_lock_api-0
       uses: actions/upload-artifact@v3
       with:
         name: external_rust_crates_lock_api-0
-        path: aosp/prebuiltlibs/external/rust/crates/lock_api
+        path: aosp/external_rust_crates_lock_api-0.tar.xz
     - name: Archive external_rust_crates_proc-macro2-0
       uses: actions/upload-artifact@v3
       with:
         name: external_rust_crates_proc-macro2-0
-        path: aosp/prebuiltlibs/external/rust/crates/proc-macro2
+        path: aosp/external_rust_crates_proc-macro2-0.tar.xz
 
     - name: Restore Cache external/zlib
       id: external_zlib
@@ -949,84 +949,115 @@ jobs:
       uses: actions/upload-artifact@v3
       with:
         name: external_zlib-0
-        path: aosp/prebuiltlibs/external/zlib
+        path: aosp/external_zlib-0.tar.xz
     - name: Archive external_bc-0
       uses: actions/upload-artifact@v3
       with:
         name: external_bc-0
-        path: aosp/prebuiltlibs/external/bc
+        path: aosp/external_bc-0.tar.xz
     - name: Archive external_brotli-0
       uses: actions/upload-artifact@v3
       with:
         name: external_brotli-0
-        path: aosp/prebuiltlibs/external/brotli
+        path: aosp/external_brotli-0.tar.xz
     - name: Archive external_bzip2-0
       uses: actions/upload-artifact@v3
       with:
         name: external_bzip2-0
-        path: aosp/prebuiltlibs/external/bzip2
+        path: aosp/external_bzip2-0.tar.xz
     - name: Archive external_expat-0
       uses: actions/upload-artifact@v3
       with:
         name: external_expat-0
-        path: aosp/prebuiltlibs/external/expat
+        path: aosp/external_expat-0.tar.xz
     - name: Archive external_fft2d-0
       uses: actions/upload-artifact@v3
       with:
         name: external_fft2d-0
-        path: aosp/prebuiltlibs/external/fft2d
+        path: aosp/external_fft2d-0.tar.xz
     - name: Archive external_libcxxabi-0
       uses: actions/upload-artifact@v3
       with:
         name: external_libcxxabi-0
-        path: aosp/prebuiltlibs/external/libcxxabi
+        path: aosp/external_libcxxabi-0.tar.xz
     - name: Archive external_libfuse-0
       uses: actions/upload-artifact@v3
       with:
         name: external_libfuse-0
-        path: aosp/prebuiltlibs/external/libfuse
+        path: aosp/external_libfuse-0.tar.xz
     - name: Archive external_lua-0
       uses: actions/upload-artifact@v3
       with:
         name: external_lua-0
-        path: aosp/prebuiltlibs/external/lua
+        path: aosp/external_lua-0.tar.xz
     - name: Archive external_lzma-0
       uses: actions/upload-artifact@v3
       with:
         name: external_lzma-0
-        path: aosp/prebuiltlibs/external/lzma
+        path: aosp/external_lzma-0.tar.xz
     - name: Archive external_marisa-trie-0
       uses: actions/upload-artifact@v3
       with:
         name: external_marisa-trie-0
-        path: aosp/prebuiltlibs/external/marisa-trie
+        path: aosp/external_marisa-trie-0.tar.xz
     - name: Archive external_mksh-0
       uses: actions/upload-artifact@v3
       with:
         name: external_mksh-0
-        path: aosp/prebuiltlibs/external/mksh
+        path: aosp/external_mksh-0.tar.xz
     - name: Archive external_one-true-awk-0
       uses: actions/upload-artifact@v3
       with:
         name: external_one-true-awk-0
-        path: aosp/prebuiltlibs/external/one-true-awk
+        path: aosp/external_one-true-awk-0.tar.xz
     - name: Archive external_pcre-0
       uses: actions/upload-artifact@v3
       with:
         name: external_pcre-0
-        path: aosp/prebuiltlibs/external/pcre
+        path: aosp/external_pcre-0.tar.xz
     - name: Archive external_rust_crates_cexpr-0
       uses: actions/upload-artifact@v3
       with:
         name: external_rust_crates_cexpr-0
-        path: aosp/prebuiltlibs/external/rust/crates/cexpr
+        path: aosp/external_rust_crates_cexpr-0.tar.xz
     - name: Archive external_rust_crates_quote-0
       uses: actions/upload-artifact@v3
       with:
         name: external_rust_crates_quote-0
-        path: aosp/prebuiltlibs/external/rust/crates/quote
+        path: aosp/external_rust_crates_quote-0.tar.xz
     - name: Archive external_rust_crates_regex-0
       uses: actions/upload-artifact@v3
       with:
         name: external_rust_crates_regex-0
-        path: aosp/prebuiltlibs/external/rust/crates/regex
+        path: aosp/external_rust_crates_regex-0.tar.xz
+
+    - name: Restore Cache external/rust/crates/syn
+      id: external_rust_crates_syn
+      uses: actions/cache@v3
+      with:
+        path: aosp/external/rust/crates/syn
+        key: external_rust_crates_syn@${{ env.branch }}
+        restore-keys: external_rust_crates_syn@${{ env.branch }}
+    - name: Clone project external/rust/crates/syn
+      if: steps.external_rust_crates_syn.outputs.cache-hit != 'true'
+      run: |
+        pushd aosp
+        source $GITHUB_WORKSPACE/envsetup.sh
+        clone_depth_platform external/rust/crates/syn
+
+    - name: Build Step-3
+      run: |
+        pushd aosp
+        export TOP=$(pwd)
+        $GITHUB_WORKSPACE/steps/build_step3.sh
+
+    - name: Archive external_libcxx-0
+      uses: actions/upload-artifact@v3
+      with:
+        name: external_libcxx-0
+        path: aosp/external_libcxx-0.tar.xz
+    - name: Archive external_rust_crates_syn-0
+      uses: actions/upload-artifact@v3
+      with:
+        name: external_rust_crates_syn-0
+        path: aosp/external_rust_crates_syn-0.tar.xz
