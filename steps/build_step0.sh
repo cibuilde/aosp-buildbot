@@ -80,101 +80,101 @@ mkdir -p prebuiltlibs/system/core/android_x86_x86_64_static_apex10000/ && cp out
 cp -r out/soong/.intermediates/system/core/property_service/libpropertyinfoparser/libpropertyinfoparser/android_x86_x86_64_static_apex10000/obj/system/core/property_service/libpropertyinfoparser prebuiltlibs/system/core/android_x86_x86_64_static_apex10000/
 printf "cc_prebuilt_library_static {\n\tname: \"libarm-optimized-routines-string\",\n\tdevice_supported: true,\n\thost_supported: false,\n\tvendor_available: false,\n\trecovery_available: true,\n\tsrcs: [\"libarm-optimized-routines-string.a\"],\n\tmultiple_variants: true,\n\ttarget: { android: { compile_multilib: \"both\",  }, },\n\trequired: [],\n\tsystem_shared_libs: [\"\",], stl: \"none\", apex_available: [\"//apex_available:platform\",\"com.android.runtime\",], \n\tprefer: true,\n\tstrip: { none: true, },\n}\ncc_prebuilt_library_static {\n\tname: \"libarm-optimized-routines-math\",\n\tdevice_supported: true,\n\thost_supported: false,\n\tvendor_available: false,\n\trecovery_available: true,\n\tsrcs: [\"libarm-optimized-routines-math.a\"],\n\tmultiple_variants: true,\n\ttarget: { android: { compile_multilib: \"both\",  }, },\n\trequired: [],\n\tsystem_shared_libs: [\"\",], stl: \"none\", apex_available: [\"//apex_available:platform\",\"com.android.runtime\",], \n\tprefer: true,\n\tstrip: { none: true, },\n}" > prebuiltlibs/external/arm-optimized-routines/Android.bp
 cp -r out/soong/ninja/external/arm-optimized-routines/ prebuiltlibs/external/arm-optimized-routines/external_arm-optimized-routines-0
-tar cf external_arm-optimized-routines-0.tar.xz -C prebuiltlibs/external/arm-optimized-routines/ .
+tar cfJ external_arm-optimized-routines-0.tar.xz -C prebuiltlibs/external/arm-optimized-routines/ .
 printf "cc_prebuilt_library_static {\n\tname: \"gwp_asan\",\n\tdevice_supported: true,\n\thost_supported: false,\n\tvendor_available: false,\n\trecovery_available: true,\n\tsrcs: [\"gwp_asan.a\"],\n\tmultiple_variants: true,\n\ttarget: { android: { compile_multilib: \"both\",  }, },\n\trequired: [],\n\tmin_sdk_version: \"S\", system_shared_libs: [\"\",], stl: \"none\", apex_available: [\"//apex_available:platform\",\"com.android.runtime\",\"com.android.media.swcodec\",], \n\tprefer: true,\n\tstrip: { none: true, },\n}" > prebuiltlibs/external/gwp_asan/Android.bp
 cp -r out/soong/ninja/external/gwp_asan/ prebuiltlibs/external/gwp_asan/external_gwp_asan-0
-tar cf external_gwp_asan-0.tar.xz -C prebuiltlibs/external/gwp_asan/ .
+tar cfJ external_gwp_asan-0.tar.xz -C prebuiltlibs/external/gwp_asan/ .
 printf "rust_prebuilt_library {\n\tname: \"libbitflags\",\n\tdevice_supported: true,\n\thost_supported: true,\n\tcrate_name: \"bitflags\",\n\tvendor_available: false,\n\tsrcs: [\"libbitflags.rlib\"],\n\tmultiple_variants: true,\n\ttarget: { host: { compile_multilib: \"64\",  }, android: { compile_multilib: \"both\",  }, },\n\trequired: [],\n\tapex_available: [\"//apex_available:platform\",\"com.android.virt\",], \n\tstrip: { none: true, },\n}" > prebuiltlibs/external/rust/crates/bitflags/Android.bp
 cp -r out/soong/ninja/external/rust/crates/bitflags/ prebuiltlibs/external/rust/crates/bitflags/external_rust_crates_bitflags-0
-tar cf external_rust_crates_bitflags-0.tar.xz -C prebuiltlibs/external/rust/crates/bitflags/ .
+tar cfJ external_rust_crates_bitflags-0.tar.xz -C prebuiltlibs/external/rust/crates/bitflags/ .
 printf "rust_prebuilt_library {\n\tname: \"libbytes\",\n\tdevice_supported: true,\n\thost_supported: false,\n\tcrate_name: \"bytes\",\n\tvendor_available: false,\n\tsrcs: [\"libbytes.rlib\"],\n\tmultiple_variants: true,\n\ttarget: { android: { compile_multilib: \"both\",  }, },\n\trequired: [],\n\tmin_sdk_version: \"29\", apex_available: [\"//apex_available:platform\",\"com.android.resolv\",\"com.android.virt\",], \n\tstrip: { none: true, },\n}" > prebuiltlibs/external/rust/crates/bytes/Android.bp
 cp -r out/soong/ninja/external/rust/crates/bytes/ prebuiltlibs/external/rust/crates/bytes/external_rust_crates_bytes-0
-tar cf external_rust_crates_bytes-0.tar.xz -C prebuiltlibs/external/rust/crates/bytes/ .
+tar cfJ external_rust_crates_bytes-0.tar.xz -C prebuiltlibs/external/rust/crates/bytes/ .
 printf "rust_prebuilt_library {\n\tname: \"libeither\",\n\tdevice_supported: false,\n\thost_supported: true,\n\tcrate_name: \"either\",\n\tvendor_available: false,\n\tsrcs: [\"libeither.rlib\"],\n\tmultiple_variants: true,\n\ttarget: { host: { compile_multilib: \"64\",  }, },\n\trequired: [],\n\tstrip: { none: true, },\n}" > prebuiltlibs/external/rust/crates/either/Android.bp
 cp -r out/soong/ninja/external/rust/crates/either/ prebuiltlibs/external/rust/crates/either/external_rust_crates_either-0
-tar cf external_rust_crates_either-0.tar.xz -C prebuiltlibs/external/rust/crates/either/ .
+tar cfJ external_rust_crates_either-0.tar.xz -C prebuiltlibs/external/rust/crates/either/ .
 printf "rust_prebuilt_library {\n\tname: \"libfallible_iterator\",\n\tdevice_supported: true,\n\thost_supported: false,\n\tcrate_name: \"fallible_iterator\",\n\tvendor_available: false,\n\tsrcs: [\"libfallible_iterator.rlib\"],\n\tmultiple_variants: true,\n\ttarget: { android: { compile_multilib: \"64\",  }, },\n\trequired: [],\n\tstrip: { none: true, },\n}" > prebuiltlibs/external/rust/crates/fallible-iterator/Android.bp
 cp -r out/soong/ninja/external/rust/crates/fallible-iterator/ prebuiltlibs/external/rust/crates/fallible-iterator/external_rust_crates_fallible-iterator-0
-tar cf external_rust_crates_fallible-iterator-0.tar.xz -C prebuiltlibs/external/rust/crates/fallible-iterator/ .
+tar cfJ external_rust_crates_fallible-iterator-0.tar.xz -C prebuiltlibs/external/rust/crates/fallible-iterator/ .
 printf "rust_prebuilt_library {\n\tname: \"libfallible_streaming_iterator\",\n\tdevice_supported: true,\n\thost_supported: false,\n\tcrate_name: \"fallible_streaming_iterator\",\n\tvendor_available: false,\n\tsrcs: [\"libfallible_streaming_iterator.rlib\"],\n\tmultiple_variants: true,\n\ttarget: { android: { compile_multilib: \"64\",  }, },\n\trequired: [],\n\tstrip: { none: true, },\n}" > prebuiltlibs/external/rust/crates/fallible-streaming-iterator/Android.bp
 cp -r out/soong/ninja/external/rust/crates/fallible-streaming-iterator/ prebuiltlibs/external/rust/crates/fallible-streaming-iterator/external_rust_crates_fallible-streaming-iterator-0
-tar cf external_rust_crates_fallible-streaming-iterator-0.tar.xz -C prebuiltlibs/external/rust/crates/fallible-streaming-iterator/ .
+tar cfJ external_rust_crates_fallible-streaming-iterator-0.tar.xz -C prebuiltlibs/external/rust/crates/fallible-streaming-iterator/ .
 printf "rust_prebuilt_library {\n\tname: \"libfutures_core\",\n\tdevice_supported: true,\n\thost_supported: false,\n\tcrate_name: \"futures_core\",\n\tvendor_available: false,\n\tsrcs: [\"libfutures_core.rlib\"],\n\tmultiple_variants: true,\n\ttarget: { android: { compile_multilib: \"both\",  }, },\n\trequired: [],\n\tapex_available: [\"//apex_available:platform\",\"com.android.virt\",], \n\tstrip: { none: true, },\n}" > prebuiltlibs/external/rust/crates/futures-core/Android.bp
 cp -r out/soong/ninja/external/rust/crates/futures-core/ prebuiltlibs/external/rust/crates/futures-core/external_rust_crates_futures-core-0
-tar cf external_rust_crates_futures-core-0.tar.xz -C prebuiltlibs/external/rust/crates/futures-core/ .
+tar cfJ external_rust_crates_futures-core-0.tar.xz -C prebuiltlibs/external/rust/crates/futures-core/ .
 printf "rust_prebuilt_library {\n\tname: \"libfutures_io\",\n\tdevice_supported: true,\n\thost_supported: false,\n\tcrate_name: \"futures_io\",\n\tvendor_available: false,\n\tsrcs: [\"libfutures_io.rlib\"],\n\tmultiple_variants: true,\n\ttarget: { android: { compile_multilib: \"both\",  }, },\n\trequired: [],\n\tapex_available: [\"//apex_available:platform\",\"com.android.virt\",], \n\tstrip: { none: true, },\n}" > prebuiltlibs/external/rust/crates/futures-io/Android.bp
 cp -r out/soong/ninja/external/rust/crates/futures-io/ prebuiltlibs/external/rust/crates/futures-io/external_rust_crates_futures-io-0
-tar cf external_rust_crates_futures-io-0.tar.xz -C prebuiltlibs/external/rust/crates/futures-io/ .
+tar cfJ external_rust_crates_futures-io-0.tar.xz -C prebuiltlibs/external/rust/crates/futures-io/ .
 printf "rust_prebuilt_library {\n\tname: \"libfutures_sink\",\n\tdevice_supported: true,\n\thost_supported: false,\n\tcrate_name: \"futures_sink\",\n\tvendor_available: false,\n\tsrcs: [\"libfutures_sink.rlib\"],\n\tmultiple_variants: true,\n\ttarget: { android: { compile_multilib: \"both\",  }, },\n\trequired: [],\n\tapex_available: [\"//apex_available:platform\",\"com.android.virt\",], \n\tstrip: { none: true, },\n}" > prebuiltlibs/external/rust/crates/futures-sink/Android.bp
 cp -r out/soong/ninja/external/rust/crates/futures-sink/ prebuiltlibs/external/rust/crates/futures-sink/external_rust_crates_futures-sink-0
-tar cf external_rust_crates_futures-sink-0.tar.xz -C prebuiltlibs/external/rust/crates/futures-sink/ .
+tar cfJ external_rust_crates_futures-sink-0.tar.xz -C prebuiltlibs/external/rust/crates/futures-sink/ .
 printf "rust_prebuilt_library {\n\tname: \"libfutures_task\",\n\tdevice_supported: true,\n\thost_supported: false,\n\tcrate_name: \"futures_task\",\n\tvendor_available: false,\n\tsrcs: [\"libfutures_task.rlib\"],\n\tmultiple_variants: true,\n\ttarget: { android: { compile_multilib: \"both\",  }, },\n\trequired: [],\n\tapex_available: [\"//apex_available:platform\",\"com.android.virt\",], \n\tstrip: { none: true, },\n}" > prebuiltlibs/external/rust/crates/futures-task/Android.bp
 cp -r out/soong/ninja/external/rust/crates/futures-task/ prebuiltlibs/external/rust/crates/futures-task/external_rust_crates_futures-task-0
-tar cf external_rust_crates_futures-task-0.tar.xz -C prebuiltlibs/external/rust/crates/futures-task/ .
+tar cfJ external_rust_crates_futures-task-0.tar.xz -C prebuiltlibs/external/rust/crates/futures-task/ .
 printf "rust_prebuilt_library {\n\tname: \"libglob\",\n\tdevice_supported: false,\n\thost_supported: true,\n\tcrate_name: \"glob\",\n\tvendor_available: false,\n\tsrcs: [\"libglob.rlib\"],\n\tmultiple_variants: true,\n\ttarget: { host: { compile_multilib: \"64\",  }, },\n\trequired: [],\n\tstrip: { none: true, },\n}" > prebuiltlibs/external/rust/crates/glob/Android.bp
 cp -r out/soong/ninja/external/rust/crates/glob/ prebuiltlibs/external/rust/crates/glob/external_rust_crates_glob-0
-tar cf external_rust_crates_glob-0.tar.xz -C prebuiltlibs/external/rust/crates/glob/ .
+tar cfJ external_rust_crates_glob-0.tar.xz -C prebuiltlibs/external/rust/crates/glob/ .
 printf "rust_prebuilt_library {\n\tname: \"liblazycell\",\n\tdevice_supported: false,\n\thost_supported: true,\n\tcrate_name: \"lazycell\",\n\tvendor_available: false,\n\tsrcs: [\"liblazycell.rlib\"],\n\tmultiple_variants: true,\n\ttarget: { host: { compile_multilib: \"64\",  }, },\n\trequired: [],\n\tstrip: { none: true, },\n}" > prebuiltlibs/external/rust/crates/lazycell/Android.bp
 cp -r out/soong/ninja/external/rust/crates/lazycell/ prebuiltlibs/external/rust/crates/lazycell/external_rust_crates_lazycell-0
-tar cf external_rust_crates_lazycell-0.tar.xz -C prebuiltlibs/external/rust/crates/lazycell/ .
+tar cfJ external_rust_crates_lazycell-0.tar.xz -C prebuiltlibs/external/rust/crates/lazycell/ .
 printf "rust_prebuilt_library {\n\tname: \"libmemchr\",\n\tdevice_supported: true,\n\thost_supported: true,\n\tcrate_name: \"memchr\",\n\tvendor_available: false,\n\tsrcs: [\"libmemchr.rlib\"],\n\tmultiple_variants: true,\n\ttarget: { host: { compile_multilib: \"64\",  }, android: { compile_multilib: \"both\",  }, },\n\trequired: [],\n\tmin_sdk_version: \"29\", apex_available: [\"//apex_available:platform\",\"com.android.resolv\",\"com.android.virt\",], \n\tstrip: { none: true, },\n}" > prebuiltlibs/external/rust/crates/memchr/Android.bp
 cp -r out/soong/ninja/external/rust/crates/memchr/ prebuiltlibs/external/rust/crates/memchr/external_rust_crates_memchr-0
-tar cf external_rust_crates_memchr-0.tar.xz -C prebuiltlibs/external/rust/crates/memchr/ .
+tar cfJ external_rust_crates_memchr-0.tar.xz -C prebuiltlibs/external/rust/crates/memchr/ .
 printf "rust_prebuilt_proc_macro {\n\tname: \"libpaste\",\n\tdevice_supported: false,\n\thost_supported: true,\n\tcrate_name: \"paste\",\n\tvendor_available: false,\n\tsrcs: [\"libpaste.so\"],\n\tmultiple_variants: true,\n\ttarget: { host: { compile_multilib: \"64\",  }, },\n\trequired: [],\n\tstrip: { none: true, },\n}" > prebuiltlibs/external/rust/crates/paste/Android.bp
 cp -r out/soong/ninja/external/rust/crates/paste/ prebuiltlibs/external/rust/crates/paste/external_rust_crates_paste-0
-tar cf external_rust_crates_paste-0.tar.xz -C prebuiltlibs/external/rust/crates/paste/ .
+tar cfJ external_rust_crates_paste-0.tar.xz -C prebuiltlibs/external/rust/crates/paste/ .
 printf "rust_prebuilt_library {\n\tname: \"libpeeking_take_while\",\n\tdevice_supported: false,\n\thost_supported: true,\n\tcrate_name: \"peeking_take_while\",\n\tvendor_available: false,\n\tsrcs: [\"libpeeking_take_while.rlib\"],\n\tmultiple_variants: true,\n\ttarget: { host: { compile_multilib: \"64\",  }, },\n\trequired: [],\n\tstrip: { none: true, },\n}" > prebuiltlibs/external/rust/crates/peeking_take_while/Android.bp
 cp -r out/soong/ninja/external/rust/crates/peeking_take_while/ prebuiltlibs/external/rust/crates/peeking_take_while/external_rust_crates_peeking_take_while-0
-tar cf external_rust_crates_peeking_take_while-0.tar.xz -C prebuiltlibs/external/rust/crates/peeking_take_while/ .
+tar cfJ external_rust_crates_peeking_take_while-0.tar.xz -C prebuiltlibs/external/rust/crates/peeking_take_while/ .
 printf "rust_prebuilt_library {\n\tname: \"libpin_project_lite\",\n\tdevice_supported: true,\n\thost_supported: false,\n\tcrate_name: \"pin_project_lite\",\n\tvendor_available: false,\n\tsrcs: [\"libpin_project_lite.rlib\"],\n\tmultiple_variants: true,\n\ttarget: { android: { compile_multilib: \"both\",  }, },\n\trequired: [],\n\tmin_sdk_version: \"29\", apex_available: [\"//apex_available:platform\",\"com.android.resolv\",\"com.android.virt\",], \n\tstrip: { none: true, },\n}" > prebuiltlibs/external/rust/crates/pin-project-lite/Android.bp
 cp -r out/soong/ninja/external/rust/crates/pin-project-lite/ prebuiltlibs/external/rust/crates/pin-project-lite/external_rust_crates_pin-project-lite-0
-tar cf external_rust_crates_pin-project-lite-0.tar.xz -C prebuiltlibs/external/rust/crates/pin-project-lite/ .
+tar cfJ external_rust_crates_pin-project-lite-0.tar.xz -C prebuiltlibs/external/rust/crates/pin-project-lite/ .
 printf "rust_prebuilt_library {\n\tname: \"libpin_utils\",\n\tdevice_supported: true,\n\thost_supported: false,\n\tcrate_name: \"pin_utils\",\n\tvendor_available: false,\n\tsrcs: [\"libpin_utils.rlib\"],\n\tmultiple_variants: true,\n\ttarget: { android: { compile_multilib: \"both\",  }, },\n\trequired: [],\n\tapex_available: [\"//apex_available:platform\",\"com.android.virt\",], \n\tstrip: { none: true, },\n}" > prebuiltlibs/external/rust/crates/pin-utils/Android.bp
 cp -r out/soong/ninja/external/rust/crates/pin-utils/ prebuiltlibs/external/rust/crates/pin-utils/external_rust_crates_pin-utils-0
-tar cf external_rust_crates_pin-utils-0.tar.xz -C prebuiltlibs/external/rust/crates/pin-utils/ .
+tar cfJ external_rust_crates_pin-utils-0.tar.xz -C prebuiltlibs/external/rust/crates/pin-utils/ .
 printf "rust_prebuilt_proc_macro {\n\tname: \"libproc_macro_hack\",\n\tdevice_supported: false,\n\thost_supported: true,\n\tcrate_name: \"proc_macro_hack\",\n\tvendor_available: false,\n\tsrcs: [\"libproc_macro_hack.so\"],\n\tmultiple_variants: true,\n\ttarget: { host: { compile_multilib: \"64\",  }, },\n\trequired: [],\n\tstrip: { none: true, },\n}" > prebuiltlibs/external/rust/crates/proc-macro-hack/Android.bp
 cp -r out/soong/ninja/external/rust/crates/proc-macro-hack/ prebuiltlibs/external/rust/crates/proc-macro-hack/external_rust_crates_proc-macro-hack-0
-tar cf external_rust_crates_proc-macro-hack-0.tar.xz -C prebuiltlibs/external/rust/crates/proc-macro-hack/ .
+tar cfJ external_rust_crates_proc-macro-hack-0.tar.xz -C prebuiltlibs/external/rust/crates/proc-macro-hack/ .
 printf "rust_prebuilt_library {\n\tname: \"libproc_macro_nested\",\n\tdevice_supported: true,\n\thost_supported: false,\n\tcrate_name: \"proc_macro_nested\",\n\tvendor_available: false,\n\tsrcs: [\"libproc_macro_nested.rlib\"],\n\tmultiple_variants: true,\n\ttarget: { android: { compile_multilib: \"both\",  }, },\n\trequired: [],\n\tapex_available: [\"//apex_available:platform\",\"com.android.virt\",], \n\tstrip: { none: true, },\n}" > prebuiltlibs/external/rust/crates/proc-macro-nested/Android.bp
 cp -r out/soong/ninja/external/rust/crates/proc-macro-nested/ prebuiltlibs/external/rust/crates/proc-macro-nested/external_rust_crates_proc-macro-nested-0
-tar cf external_rust_crates_proc-macro-nested-0.tar.xz -C prebuiltlibs/external/rust/crates/proc-macro-nested/ .
+tar cfJ external_rust_crates_proc-macro-nested-0.tar.xz -C prebuiltlibs/external/rust/crates/proc-macro-nested/ .
 printf "rust_prebuilt_library {\n\tname: \"libregex_syntax\",\n\tdevice_supported: false,\n\thost_supported: true,\n\tcrate_name: \"regex_syntax\",\n\tvendor_available: false,\n\tsrcs: [\"libregex_syntax.rlib\"],\n\tmultiple_variants: true,\n\ttarget: { host: { compile_multilib: \"64\",  }, },\n\trequired: [],\n\tstrip: { none: true, },\n}" > prebuiltlibs/external/rust/crates/regex-syntax/Android.bp
 cp -r out/soong/ninja/external/rust/crates/regex-syntax/ prebuiltlibs/external/rust/crates/regex-syntax/external_rust_crates_regex-syntax-0
-tar cf external_rust_crates_regex-syntax-0.tar.xz -C prebuiltlibs/external/rust/crates/regex-syntax/ .
+tar cfJ external_rust_crates_regex-syntax-0.tar.xz -C prebuiltlibs/external/rust/crates/regex-syntax/ .
 printf "rust_prebuilt_library {\n\tname: \"librustc_hash\",\n\tdevice_supported: false,\n\thost_supported: true,\n\tcrate_name: \"rustc_hash\",\n\tvendor_available: false,\n\tsrcs: [\"librustc_hash.rlib\"],\n\tmultiple_variants: true,\n\ttarget: { host: { compile_multilib: \"64\",  }, },\n\trequired: [],\n\tstrip: { none: true, },\n}" > prebuiltlibs/external/rust/crates/rustc-hash/Android.bp
 cp -r out/soong/ninja/external/rust/crates/rustc-hash/ prebuiltlibs/external/rust/crates/rustc-hash/external_rust_crates_rustc-hash-0
-tar cf external_rust_crates_rustc-hash-0.tar.xz -C prebuiltlibs/external/rust/crates/rustc-hash/ .
+tar cfJ external_rust_crates_rustc-hash-0.tar.xz -C prebuiltlibs/external/rust/crates/rustc-hash/ .
 printf "rust_prebuilt_library {\n\tname: \"libscopeguard\",\n\tdevice_supported: true,\n\thost_supported: false,\n\tcrate_name: \"scopeguard\",\n\tvendor_available: false,\n\tsrcs: [\"libscopeguard.rlib\"],\n\tmultiple_variants: true,\n\ttarget: { android: { compile_multilib: \"both\",  }, },\n\trequired: [],\n\tstrip: { none: true, },\n}" > prebuiltlibs/external/rust/crates/scopeguard/Android.bp
 cp -r out/soong/ninja/external/rust/crates/scopeguard/ prebuiltlibs/external/rust/crates/scopeguard/external_rust_crates_scopeguard-0
-tar cf external_rust_crates_scopeguard-0.tar.xz -C prebuiltlibs/external/rust/crates/scopeguard/ .
+tar cfJ external_rust_crates_scopeguard-0.tar.xz -C prebuiltlibs/external/rust/crates/scopeguard/ .
 printf "rust_prebuilt_library {\n\tname: \"libshlex\",\n\tdevice_supported: false,\n\thost_supported: true,\n\tcrate_name: \"shlex\",\n\tvendor_available: false,\n\tsrcs: [\"libshlex.rlib\"],\n\tmultiple_variants: true,\n\ttarget: { host: { compile_multilib: \"64\",  }, },\n\trequired: [],\n\tstrip: { none: true, },\n}" > prebuiltlibs/external/rust/crates/shlex/Android.bp
 cp -r out/soong/ninja/external/rust/crates/shlex/ prebuiltlibs/external/rust/crates/shlex/external_rust_crates_shlex-0
-tar cf external_rust_crates_shlex-0.tar.xz -C prebuiltlibs/external/rust/crates/shlex/ .
+tar cfJ external_rust_crates_shlex-0.tar.xz -C prebuiltlibs/external/rust/crates/shlex/ .
 printf "rust_prebuilt_library {\n\tname: \"libslab\",\n\tdevice_supported: true,\n\thost_supported: false,\n\tcrate_name: \"slab\",\n\tvendor_available: false,\n\tsrcs: [\"libslab.rlib\"],\n\tmultiple_variants: true,\n\ttarget: { android: { compile_multilib: \"both\",  }, },\n\trequired: [],\n\tapex_available: [\"//apex_available:platform\",\"com.android.virt\",], \n\tstrip: { none: true, },\n}" > prebuiltlibs/external/rust/crates/slab/Android.bp
 cp -r out/soong/ninja/external/rust/crates/slab/ prebuiltlibs/external/rust/crates/slab/external_rust_crates_slab-0
-tar cf external_rust_crates_slab-0.tar.xz -C prebuiltlibs/external/rust/crates/slab/ .
+tar cfJ external_rust_crates_slab-0.tar.xz -C prebuiltlibs/external/rust/crates/slab/ .
 printf "rust_prebuilt_library {\n\tname: \"libsmallvec\",\n\tdevice_supported: true,\n\thost_supported: false,\n\tcrate_name: \"smallvec\",\n\tvendor_available: false,\n\tsrcs: [\"libsmallvec.rlib\"],\n\tmultiple_variants: true,\n\ttarget: { android: { compile_multilib: \"both\",  }, },\n\trequired: [],\n\tapex_available: [\"//apex_available:platform\",\"com.android.virt\",], \n\tstrip: { none: true, },\n}" > prebuiltlibs/external/rust/crates/smallvec/Android.bp
 cp -r out/soong/ninja/external/rust/crates/smallvec/ prebuiltlibs/external/rust/crates/smallvec/external_rust_crates_smallvec-0
-tar cf external_rust_crates_smallvec-0.tar.xz -C prebuiltlibs/external/rust/crates/smallvec/ .
+tar cfJ external_rust_crates_smallvec-0.tar.xz -C prebuiltlibs/external/rust/crates/smallvec/ .
 printf "rust_prebuilt_library {\n\tname: \"libtermcolor\",\n\tdevice_supported: false,\n\thost_supported: true,\n\tcrate_name: \"termcolor\",\n\tvendor_available: false,\n\tsrcs: [\"libtermcolor.rlib\"],\n\tmultiple_variants: true,\n\ttarget: { host: { compile_multilib: \"64\",  }, },\n\trequired: [],\n\tstrip: { none: true, },\n}" > prebuiltlibs/external/rust/crates/termcolor/Android.bp
 cp -r out/soong/ninja/external/rust/crates/termcolor/ prebuiltlibs/external/rust/crates/termcolor/external_rust_crates_termcolor-0
-tar cf external_rust_crates_termcolor-0.tar.xz -C prebuiltlibs/external/rust/crates/termcolor/ .
+tar cfJ external_rust_crates_termcolor-0.tar.xz -C prebuiltlibs/external/rust/crates/termcolor/ .
 printf "rust_prebuilt_library {\n\tname: \"libtextwrap\",\n\tdevice_supported: false,\n\thost_supported: true,\n\tcrate_name: \"textwrap\",\n\tvendor_available: false,\n\tsrcs: [\"libtextwrap.rlib\"],\n\tmultiple_variants: true,\n\ttarget: { host: { compile_multilib: \"64\",  }, },\n\trequired: [],\n\tapex_available: [\"//apex_available:platform\",\"com.android.virt\",], \n\tstrip: { none: true, },\n}" > prebuiltlibs/external/rust/crates/textwrap/Android.bp
 cp -r out/soong/ninja/external/rust/crates/textwrap/ prebuiltlibs/external/rust/crates/textwrap/external_rust_crates_textwrap-0
-tar cf external_rust_crates_textwrap-0.tar.xz -C prebuiltlibs/external/rust/crates/textwrap/ .
+tar cfJ external_rust_crates_textwrap-0.tar.xz -C prebuiltlibs/external/rust/crates/textwrap/ .
 printf "rust_prebuilt_library {\n\tname: \"libunicode_width\",\n\tdevice_supported: false,\n\thost_supported: true,\n\tcrate_name: \"unicode_width\",\n\tvendor_available: false,\n\tsrcs: [\"libunicode_width.rlib\"],\n\tmultiple_variants: true,\n\ttarget: { host: { compile_multilib: \"64\",  }, },\n\trequired: [],\n\tstrip: { none: true, },\n}" > prebuiltlibs/external/rust/crates/unicode-width/Android.bp
 cp -r out/soong/ninja/external/rust/crates/unicode-width/ prebuiltlibs/external/rust/crates/unicode-width/external_rust_crates_unicode-width-0
-tar cf external_rust_crates_unicode-width-0.tar.xz -C prebuiltlibs/external/rust/crates/unicode-width/ .
+tar cfJ external_rust_crates_unicode-width-0.tar.xz -C prebuiltlibs/external/rust/crates/unicode-width/ .
 printf "rust_prebuilt_library {\n\tname: \"libunicode_xid\",\n\tdevice_supported: false,\n\thost_supported: true,\n\tcrate_name: \"unicode_xid\",\n\tvendor_available: false,\n\tsrcs: [\"libunicode_xid.rlib\"],\n\tmultiple_variants: true,\n\ttarget: { host: { compile_multilib: \"64\",  }, },\n\trequired: [],\n\tstrip: { none: true, },\n}" > prebuiltlibs/external/rust/crates/unicode-xid/Android.bp
 cp -r out/soong/ninja/external/rust/crates/unicode-xid/ prebuiltlibs/external/rust/crates/unicode-xid/external_rust_crates_unicode-xid-0
-tar cf external_rust_crates_unicode-xid-0.tar.xz -C prebuiltlibs/external/rust/crates/unicode-xid/ .
+tar cfJ external_rust_crates_unicode-xid-0.tar.xz -C prebuiltlibs/external/rust/crates/unicode-xid/ .
 printf "cc_prebuilt_library_static {\n\tname: \"libscudo\",\n\tdevice_supported: true,\n\thost_supported: false,\n\tvendor_available: false,\n\trecovery_available: true,\n\tsrcs: [\"libscudo.a\"],\n\tmultiple_variants: true,\n\ttarget: { android: { compile_multilib: \"both\",  }, },\n\trequired: [],\n\tsystem_shared_libs: [\"\",], stl: \"none\", \n\tprefer: true,\n\tstrip: { none: true, },\n}" > prebuiltlibs/external/scudo/Android.bp
 cp -r out/soong/ninja/external/scudo/ prebuiltlibs/external/scudo/external_scudo-0
-tar cf external_scudo-0.tar.xz -C prebuiltlibs/external/scudo/ .
+tar cfJ external_scudo-0.tar.xz -C prebuiltlibs/external/scudo/ .
 mkdir -p prebuiltlibs/system/core/property_service/libpropertyinfoparser/include && cp -r system/core/property_service/libpropertyinfoparser/include/* prebuiltlibs/system/core/property_service/libpropertyinfoparser/include/
 printf "cc_prebuilt_library_static {\n\tname: \"libpropertyinfoparser\",\n\tdevice_supported: true,\n\thost_supported: false,\n\tvendor_available: false,\n\trecovery_available: true,\n\tsrcs: [\"libpropertyinfoparser.a\"],\n\tmultiple_variants: true,\n\tobjs: [\"libpropertyinfoparser/property_info_parser.o\"],\n\ttarget: { android: { compile_multilib: \"both\",  }, },\n\trequired: [],\n\tsystem_shared_libs: [\"\",], stl: \"none\", \n\tprefer: true,\n\tstrip: { none: true, },\n\texport_include_dirs: [\"property_service/libpropertyinfoparser/include\"],\n}" > prebuiltlibs/system/core/Android.bp
 cp -r out/soong/ninja/system/core/ prebuiltlibs/system/core/system_core-0
-tar cf system_core-0.tar.xz -C prebuiltlibs/system/core/ .
+tar cfJ system_core-0.tar.xz -C prebuiltlibs/system/core/ .
 rm -rf external/arm-optimized-routines
 rm -rf external/rust/crates/bitflags
 rm -rf external/rust/crates/bytes

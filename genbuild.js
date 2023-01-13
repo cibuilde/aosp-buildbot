@@ -4,7 +4,8 @@ const text = fs.readFileSync(process.argv.pop());
 const modules = JSON.parse(text)
 
 const parse_variant = (variant) => {
-	let platform = '', recovery = false, vendor = false, arch = 0, lto = false, type = '', sdk = false, apex = false
+	let platform = '', type = '', recovery = false, vendor = false, arch = 0
+	let lto = false, cfi = false, sdk = false, apex = false
 	let sdkVersion = '', apexVersion = ''
 	const parts = variant.split('_')
 	for (let i = 0; i < parts.length; ++i) {
@@ -21,6 +22,8 @@ const parse_variant = (variant) => {
 			type = 'object'
 		} else if (p == 'lto-thin') {
 			lto = true
+		} else if (p == 'cfi') {
+			cfi = true
 		} else if (p.startsWith('vendor')) {
 			vendor = true
 		} else if (p == 'x86') {
@@ -52,6 +55,7 @@ const parse_variant = (variant) => {
 		vendor,
 		arch,
 		lto,
+		cfi,
 		sdk,
 		sdkVersion,
 		apex,
@@ -59,12 +63,16 @@ const parse_variant = (variant) => {
 	}
 }
 
-let lto_static = new Set()
-let lto_shared = new Set()
 let apex_map = new Map()
 let lto_map = new Map()
+let cfi_map = new Map()
+let cfi_lto_map = new Map()
 lto_map.set('static', new Set())
 lto_map.set('shared', new Set())
+cfi_map.set('static', new Set())
+cfi_map.set('shared', new Set())
+cfi_lto_map.set('static', new Set())
+cfi_lto_map.set('shared', new Set())
 const parse_apex_sdk = (name, type, variant) => {
 	let prop = parse_variant(variant)
 	if (prop.apex) {
@@ -74,6 +82,9 @@ const parse_apex_sdk = (name, type, variant) => {
 			if (prop.sdkVersion.length > 0) {
 				key += '_' + prop.sdkVersion
 			}
+		}
+		if (prop.cfi) {
+			key += '_cfi'
 		}
 		if (prop.lto) {
 			key += '_lto'
@@ -87,18 +98,25 @@ const parse_apex_sdk = (name, type, variant) => {
 				sdk: prop.sdk,
 				sdkVersion: prop.sdkVersion,
 				lto: prop.lto,
+				cfi: prop.cfi,
 			})
 		}
 		let apex = apex_map.get(key)
 		apex[type].add(name)
-	} else if (prop.lto) {
-		lto_map.get(type).add(name)
+	} else {
+		if (prop.lto && prop.cfi) {
+			cfi_lto_map.get(type).add(name)
+		} else if (prop.lto) {
+			lto_map.get(type).add(name)
+		} else if (prop.cfi) {
+			cfi_map.get(type).add(name)
+		}
 	}
 }
 modules.forEach(prop => {
-	if (prop.project_path.startsWith('external/rust')) {
-		return
-	}
+	//if (!prop.project_path.startsWith('external/libcxx')) {
+	//	return
+	//}
 		prop.outputs.forEach((output) => {
 			//console.log(ninjaFile)
 			if (!fs.existsSync(output.ninja)) {
@@ -108,6 +126,21 @@ modules.forEach(prop => {
 			}
 		})
 })
+if (cfi_map.get('static').size > 0 || cfi_map.get('shared').size > 0) {
+	console.log(`
+cc_binary {
+  name: "voiddep-cfi",
+  srcs: [ "util.cpp", ],
+  recovery_available: true,
+  vendor_available: true,
+  compile_multilib: "both",
+  multilib: { lib32: { suffix: "32", }, lib64: { suffix: "64", }, },
+  static_libs: ${JSON.stringify(Array.from(cfi_map.get('static')))},
+  shared_libs: ${JSON.stringify(Array.from(cfi_map.get('shared')))},
+  stl: "none",
+  sanitize: { cfi: true, },
+}`)
+}
 if (lto_map.get('static').size > 0 || lto_map.get('shared').size > 0) {
 	console.log(`
 cc_binary {
@@ -194,6 +227,7 @@ cc_binary {
   min_sdk_version: "${apexVersion == '10000' ? 'apex_inherit' : apexVersion}",
   stl: "none", ${apex.static.has('libc') ? '\n  static_executable: true,' : ''}
   ${apex.lto ? 'target: { android: { lto: { thin: true, }, }, },' : ''}
+  ${apex.cfi ? 'sanitize: { cfi: true, },' : ''}
 }`)
 	}
 })
