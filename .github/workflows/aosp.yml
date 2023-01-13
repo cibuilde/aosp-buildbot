@@ -411,6 +411,7 @@ jobs:
         pushd aosp
         export TOP=$(pwd)
         $GITHUB_WORKSPACE/steps/build_step0.sh
+        df -h
 
     - name: Archive external_arm-optimized-routines-0
       uses: actions/upload-artifact@v3
@@ -683,6 +684,7 @@ jobs:
         pushd aosp
         export TOP=$(pwd)
         $GITHUB_WORKSPACE/steps/build_step1.sh
+        df -h
 
     - name: Archive bionic-0
       uses: actions/upload-artifact@v3
@@ -944,6 +946,7 @@ jobs:
         pushd aosp
         export TOP=$(pwd)
         $GITHUB_WORKSPACE/steps/build_step2.sh
+        df -h
 
     - name: Archive external_zlib-0
       uses: actions/upload-artifact@v3
@@ -1050,6 +1053,7 @@ jobs:
         pushd aosp
         export TOP=$(pwd)
         $GITHUB_WORKSPACE/steps/build_step3.sh
+        df -h
 
     - name: Archive external_libcxx-0
       uses: actions/upload-artifact@v3
