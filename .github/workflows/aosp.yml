@@ -1703,19 +1703,6 @@ jobs:
         pushd aosp
         source $GITHUB_WORKSPACE/envsetup.sh
         clone_depth_platform external/vixl
-    - name: Restore Cache art
-      id: art
-      uses: actions/cache@v3
-      with:
-        path: aosp/art
-        key: art@${{ env.branch }}
-        restore-keys: art@${{ env.branch }}
-    - name: Clone project art
-      if: steps.art.outputs.cache-hit != 'true'
-      run: |
-        pushd aosp
-        source $GITHUB_WORKSPACE/envsetup.sh
-        clone_depth_platform art
     - name: Restore Cache external/webp
       id: external_webp
       uses: actions/cache@v3
