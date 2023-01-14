@@ -417,7 +417,7 @@ jobs:
 
     - uses: ncipollo/release-action@main
       with:
-		name: 'build_step0'
+        name: 'build_step0'
         artifacts: "aosp/external_arm-optimized-routines-0.tar.xz,aosp/external_gwp_asan-0.tar.xz,aosp/external_rust_crates_bitflags-0.tar.xz,aosp/external_rust_crates_bytes-0.tar.xz,aosp/external_rust_crates_either-0.tar.xz,aosp/external_rust_crates_fallible-iterator-0.tar.xz,aosp/external_rust_crates_fallible-streaming-iterator-0.tar.xz,aosp/external_rust_crates_futures-core-0.tar.xz,aosp/external_rust_crates_futures-io-0.tar.xz,aosp/external_rust_crates_futures-sink-0.tar.xz,aosp/external_rust_crates_futures-task-0.tar.xz,aosp/external_rust_crates_glob-0.tar.xz,aosp/external_rust_crates_lazycell-0.tar.xz,aosp/external_rust_crates_memchr-0.tar.xz,aosp/external_rust_crates_paste-0.tar.xz,aosp/external_rust_crates_peeking_take_while-0.tar.xz,aosp/external_rust_crates_pin-project-lite-0.tar.xz,aosp/external_rust_crates_pin-utils-0.tar.xz,aosp/external_rust_crates_proc-macro-hack-0.tar.xz,aosp/external_rust_crates_proc-macro-nested-0.tar.xz,aosp/external_rust_crates_regex-syntax-0.tar.xz,aosp/external_rust_crates_rustc-hash-0.tar.xz,aosp/external_rust_crates_scopeguard-0.tar.xz,aosp/external_rust_crates_shlex-0.tar.xz,aosp/external_rust_crates_slab-0.tar.xz,aosp/external_rust_crates_smallvec-0.tar.xz,aosp/external_rust_crates_termcolor-0.tar.xz,aosp/external_rust_crates_textwrap-0.tar.xz,aosp/external_rust_crates_unicode-width-0.tar.xz,aosp/external_rust_crates_unicode-xid-0.tar.xz,aosp/external_scudo-0.tar.xz,aosp/system_core-0.tar.xz"
-		removeArtifacts: true
-		allowUpdates: true
+        removeArtifacts: true
+        allowUpdates: true
