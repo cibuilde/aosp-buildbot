@@ -51,168 +51,6 @@
     ]
   },
   {
-    "name": "liblog_event_list",
-    "project_path": "system/logging/",
-    "outputs": [
-      {
-        "variant": "rust_library",
-        "type": "rlib",
-        "filename": "liblog_event_list.rlib",
-        "filedir": "android_x86_64_rlib_rlib-std/",
-        "path": "out/soong/.intermediates/system/logging/rust/liblog_event_list/android_x86_64_rlib_rlib-std/liblog_event_list.rlib",
-        "objs": [],
-        "ninja": "out/soong/ninja/system/logging/rust/liblog_event_list@android_x86_64_rlib_rlib-std.ninja"
-      }
-    ]
-  },
-  {
-    "name": "liblog",
-    "project_path": "system/logging/",
-    "outputs": [
-      {
-        "variant": "cc_library",
-        "type": "shared",
-        "filename": "liblog.so",
-        "filedir": "android_recovery_x86_64_shared/",
-        "path": "out/soong/.intermediates/system/logging/liblog/liblog/android_recovery_x86_64_shared/liblog.so",
-        "objs": [],
-        "ninja": "out/soong/ninja/system/logging/liblog/liblog@android_recovery_x86_64_shared.ninja"
-      },
-      {
-        "variant": "cc_library",
-        "type": "static",
-        "filename": "liblog.a",
-        "filedir": "android_recovery_x86_64_static/",
-        "path": "out/soong/.intermediates/system/logging/liblog/liblog/android_recovery_x86_64_static/liblog.a",
-        "objs": [],
-        "ninja": "out/soong/ninja/system/logging/liblog/liblog@android_recovery_x86_64_static.ninja"
-      },
-      {
-        "variant": "cc_library",
-        "type": "shared",
-        "filename": "liblog.so",
-        "filedir": "android_vendor.31_x86_64_shared/",
-        "path": "out/soong/.intermediates/system/logging/liblog/liblog/android_vendor.31_x86_64_shared/liblog.so",
-        "objs": [],
-        "ninja": "out/soong/ninja/system/logging/liblog/liblog@android_vendor.31_x86_64_shared.ninja"
-      },
-      {
-        "variant": "cc_library",
-        "type": "shared",
-        "filename": "liblog.so",
-        "filedir": "android_vendor.31_x86_x86_64_shared/",
-        "path": "out/soong/.intermediates/system/logging/liblog/liblog/android_vendor.31_x86_x86_64_shared/liblog.so",
-        "objs": [],
-        "ninja": "out/soong/ninja/system/logging/liblog/liblog@android_vendor.31_x86_x86_64_shared.ninja"
-      },
-      {
-        "variant": "cc_library",
-        "type": "shared",
-        "filename": "liblog.so",
-        "filedir": "android_x86_64_shared/",
-        "path": "out/soong/.intermediates/system/logging/liblog/liblog/android_x86_64_shared/liblog.so",
-        "objs": [],
-        "ninja": "out/soong/ninja/system/logging/liblog/liblog@android_x86_64_shared.ninja"
-      },
-      {
-        "variant": "cc_library",
-        "type": "static",
-        "filename": "liblog.a",
-        "filedir": "android_x86_64_static/",
-        "path": "out/soong/.intermediates/system/logging/liblog/liblog/android_x86_64_static/liblog.a",
-        "objs": [],
-        "ninja": "out/soong/ninja/system/logging/liblog/liblog@android_x86_64_static.ninja"
-      },
-      {
-        "variant": "cc_library",
-        "type": "static",
-        "filename": "liblog.a",
-        "filedir": "android_x86_64_static_apex10000/",
-        "path": "out/soong/.intermediates/system/logging/liblog/liblog/android_x86_64_static_apex10000/liblog.a",
-        "objs": [],
-        "ninja": "out/soong/ninja/system/logging/liblog/liblog@android_x86_64_static_apex10000.ninja"
-      },
-      {
-        "variant": "cc_library",
-        "type": "shared",
-        "filename": "liblog.so",
-        "filedir": "android_x86_x86_64_shared/",
-        "path": "out/soong/.intermediates/system/logging/liblog/liblog/android_x86_x86_64_shared/liblog.so",
-        "objs": [],
-        "ninja": "out/soong/ninja/system/logging/liblog/liblog@android_x86_x86_64_shared.ninja"
-      },
-      {
-        "variant": "cc_library",
-        "type": "static",
-        "filename": "liblog.a",
-        "filedir": "android_x86_x86_64_static/",
-        "path": "out/soong/.intermediates/system/logging/liblog/liblog/android_x86_x86_64_static/liblog.a",
-        "objs": [],
-        "ninja": "out/soong/ninja/system/logging/liblog/liblog@android_x86_x86_64_static.ninja"
-      },
-      {
-        "variant": "cc_library",
-        "type": "static",
-        "filename": "liblog.a",
-        "filedir": "android_x86_x86_64_static_apex10000/",
-        "path": "out/soong/.intermediates/system/logging/liblog/liblog/android_x86_x86_64_static_apex10000/liblog.a",
-        "objs": [],
-        "ninja": "out/soong/ninja/system/logging/liblog/liblog@android_x86_x86_64_static_apex10000.ninja"
-      },
-      {
-        "variant": "cc_library",
-        "type": "shared",
-        "filename": "liblog.so",
-        "filedir": "linux_glibc_x86_64_shared/",
-        "path": "out/soong/.intermediates/system/logging/liblog/liblog/linux_glibc_x86_64_shared/liblog.so",
-        "objs": [],
-        "ninja": "out/soong/ninja/system/logging/liblog/liblog@linux_glibc_x86_64_shared.ninja"
-      },
-      {
-        "variant": "cc_library",
-        "type": "static",
-        "filename": "liblog.a",
-        "filedir": "linux_glibc_x86_64_static/",
-        "path": "out/soong/.intermediates/system/logging/liblog/liblog/linux_glibc_x86_64_static/liblog.a",
-        "objs": [],
-        "ninja": "out/soong/ninja/system/logging/liblog/liblog@linux_glibc_x86_64_static.ninja"
-      }
-    ]
-  },
-  {
-    "name": "liblog.ndk",
-    "project_path": "system/logging/",
-    "outputs": [
-      {
-        "variant": "ndk_library",
-        "type": "shared",
-        "filename": "liblog.ndk.so",
-        "filedir": "android_x86_64_sdk_shared_21/",
-        "path": "out/soong/.intermediates/system/logging/liblog/liblog.ndk/android_x86_64_sdk_shared_21/liblog.so",
-        "objs": [],
-        "ninja": "out/soong/ninja/system/logging/liblog/liblog.ndk@android_x86_64_sdk_shared_21.ninja"
-      },
-      {
-        "variant": "ndk_library",
-        "type": "shared",
-        "filename": "liblog.ndk.so",
-        "filedir": "android_x86_64_sdk_shared_29/",
-        "path": "out/soong/.intermediates/system/logging/liblog/liblog.ndk/android_x86_64_sdk_shared_29/liblog.so",
-        "objs": [],
-        "ninja": "out/soong/ninja/system/logging/liblog/liblog.ndk@android_x86_64_sdk_shared_29.ninja"
-      },
-      {
-        "variant": "ndk_library",
-        "type": "shared",
-        "filename": "liblog.ndk.so",
-        "filedir": "android_x86_64_sdk_shared_current/",
-        "path": "out/soong/.intermediates/system/logging/liblog/liblog.ndk/android_x86_64_sdk_shared_current/liblog.so",
-        "objs": [],
-        "ninja": "out/soong/ninja/system/logging/liblog/liblog.ndk@android_x86_64_sdk_shared_current.ninja"
-      }
-    ]
-  },
-  {
     "name": "libjpeg",
     "project_path": "external/libjpeg-turbo/",
     "outputs": [
@@ -485,6 +323,192 @@
         "path": "out/soong/.intermediates/external/libvpx/libwebm/libwebm/android_x86_x86_64_static_cfi/libwebm.a",
         "objs": [],
         "ninja": "out/soong/ninja/external/libvpx/libwebm/libwebm@android_x86_x86_64_static_cfi.ninja"
+      }
+    ]
+  },
+  {
+    "name": "libLLVM_android",
+    "project_path": "external/llvm/",
+    "outputs": [
+      {
+        "variant": "cc_library",
+        "type": "shared",
+        "filename": "libLLVM_android.so",
+        "filedir": "android_x86_64_shared/",
+        "path": "out/soong/.intermediates/external/llvm/libLLVM_android/android_x86_64_shared/libLLVM_android.so",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/llvm/libLLVM_android@android_x86_64_shared.ninja"
+      }
+    ]
+  },
+  {
+    "name": "libLLVMBitReader",
+    "project_path": "external/llvm/",
+    "outputs": [
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libLLVMBitReader.a",
+        "filedir": "android_vendor.31_x86_64_static/",
+        "path": "out/soong/.intermediates/external/llvm/lib/Bitcode/Reader/libLLVMBitReader/android_vendor.31_x86_64_static/libLLVMBitReader.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/llvm/lib/Bitcode/Reader/libLLVMBitReader@android_vendor.31_x86_64_static.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libLLVMBitReader.a",
+        "filedir": "android_vendor.31_x86_x86_64_static/",
+        "path": "out/soong/.intermediates/external/llvm/lib/Bitcode/Reader/libLLVMBitReader/android_vendor.31_x86_x86_64_static/libLLVMBitReader.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/llvm/lib/Bitcode/Reader/libLLVMBitReader@android_vendor.31_x86_x86_64_static.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libLLVMBitReader.a",
+        "filedir": "android_x86_64_static/",
+        "path": "out/soong/.intermediates/external/llvm/lib/Bitcode/Reader/libLLVMBitReader/android_x86_64_static/libLLVMBitReader.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/llvm/lib/Bitcode/Reader/libLLVMBitReader@android_x86_64_static.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libLLVMBitReader.a",
+        "filedir": "android_x86_x86_64_static/",
+        "path": "out/soong/.intermediates/external/llvm/lib/Bitcode/Reader/libLLVMBitReader/android_x86_x86_64_static/libLLVMBitReader.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/llvm/lib/Bitcode/Reader/libLLVMBitReader@android_x86_x86_64_static.ninja"
+      }
+    ]
+  },
+  {
+    "name": "libLLVMCore",
+    "project_path": "external/llvm/",
+    "outputs": [
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libLLVMCore.a",
+        "filedir": "android_vendor.31_x86_64_static/",
+        "path": "out/soong/.intermediates/external/llvm/lib/IR/libLLVMCore/android_vendor.31_x86_64_static/libLLVMCore.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/llvm/lib/IR/libLLVMCore@android_vendor.31_x86_64_static.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libLLVMCore.a",
+        "filedir": "android_vendor.31_x86_x86_64_static/",
+        "path": "out/soong/.intermediates/external/llvm/lib/IR/libLLVMCore/android_vendor.31_x86_x86_64_static/libLLVMCore.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/llvm/lib/IR/libLLVMCore@android_vendor.31_x86_x86_64_static.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libLLVMCore.a",
+        "filedir": "android_x86_64_static/",
+        "path": "out/soong/.intermediates/external/llvm/lib/IR/libLLVMCore/android_x86_64_static/libLLVMCore.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/llvm/lib/IR/libLLVMCore@android_x86_64_static.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libLLVMCore.a",
+        "filedir": "android_x86_x86_64_static/",
+        "path": "out/soong/.intermediates/external/llvm/lib/IR/libLLVMCore/android_x86_x86_64_static/libLLVMCore.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/llvm/lib/IR/libLLVMCore@android_x86_x86_64_static.ninja"
+      }
+    ]
+  },
+  {
+    "name": "libLLVMMC",
+    "project_path": "external/llvm/",
+    "outputs": [
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libLLVMMC.a",
+        "filedir": "android_x86_64_static/",
+        "path": "out/soong/.intermediates/external/llvm/lib/MC/libLLVMMC/android_x86_64_static/libLLVMMC.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/llvm/lib/MC/libLLVMMC@android_x86_64_static.ninja"
+      }
+    ]
+  },
+  {
+    "name": "libLLVMMCParser",
+    "project_path": "external/llvm/",
+    "outputs": [
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libLLVMMCParser.a",
+        "filedir": "android_x86_64_static/",
+        "path": "out/soong/.intermediates/external/llvm/lib/MC/MCParser/libLLVMMCParser/android_x86_64_static/libLLVMMCParser.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/llvm/lib/MC/MCParser/libLLVMMCParser@android_x86_64_static.ninja"
+      }
+    ]
+  },
+  {
+    "name": "libLLVMObject",
+    "project_path": "external/llvm/",
+    "outputs": [
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libLLVMObject.a",
+        "filedir": "android_x86_64_static/",
+        "path": "out/soong/.intermediates/external/llvm/lib/Object/libLLVMObject/android_x86_64_static/libLLVMObject.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/llvm/lib/Object/libLLVMObject@android_x86_64_static.ninja"
+      }
+    ]
+  },
+  {
+    "name": "libLLVMSupport",
+    "project_path": "external/llvm/",
+    "outputs": [
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libLLVMSupport.a",
+        "filedir": "android_vendor.31_x86_64_static/",
+        "path": "out/soong/.intermediates/external/llvm/lib/Support/libLLVMSupport/android_vendor.31_x86_64_static/libLLVMSupport.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/llvm/lib/Support/libLLVMSupport@android_vendor.31_x86_64_static.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libLLVMSupport.a",
+        "filedir": "android_vendor.31_x86_x86_64_static/",
+        "path": "out/soong/.intermediates/external/llvm/lib/Support/libLLVMSupport/android_vendor.31_x86_x86_64_static/libLLVMSupport.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/llvm/lib/Support/libLLVMSupport@android_vendor.31_x86_x86_64_static.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libLLVMSupport.a",
+        "filedir": "android_x86_64_static/",
+        "path": "out/soong/.intermediates/external/llvm/lib/Support/libLLVMSupport/android_x86_64_static/libLLVMSupport.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/llvm/lib/Support/libLLVMSupport@android_x86_64_static.ninja"
+      },
+      {
+        "variant": "cc_library_static",
+        "type": "static",
+        "filename": "libLLVMSupport.a",
+        "filedir": "android_x86_x86_64_static/",
+        "path": "out/soong/.intermediates/external/llvm/lib/Support/libLLVMSupport/android_x86_x86_64_static/libLLVMSupport.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/external/llvm/lib/Support/libLLVMSupport@android_x86_x86_64_static.ninja"
       }
     ]
   },
@@ -767,21 +791,6 @@
         "path": "out/soong/.intermediates/external/tinyalsa/libtinyalsa/android_x86_x86_64_shared/libtinyalsa.so",
         "objs": [],
         "ninja": "out/soong/ninja/external/tinyalsa/libtinyalsa@android_x86_x86_64_shared.ninja"
-      }
-    ]
-  },
-  {
-    "name": "ld.mc",
-    "project_path": "frameworks/compile/mclinker/",
-    "outputs": [
-      {
-        "variant": "cc_binary",
-        "type": "binary",
-        "filename": "ld.mc",
-        "filedir": "android_x86_64/",
-        "path": "out/soong/.intermediates/frameworks/compile/mclinker/tools/mcld/ld.mc/android_x86_64/ld.mc",
-        "objs": [],
-        "ninja": "out/soong/ninja/frameworks/compile/mclinker/tools/mcld/ld.mc@android_x86_64.ninja"
       }
     ]
   },
@@ -1986,177 +1995,6 @@
     ]
   },
   {
-    "name": "libLLVMBitReader",
-    "project_path": "external/llvm/",
-    "outputs": [
-      {
-        "variant": "cc_library_static",
-        "type": "static",
-        "filename": "libLLVMBitReader.a",
-        "filedir": "android_vendor.31_x86_64_static/",
-        "path": "out/soong/.intermediates/external/llvm/lib/Bitcode/Reader/libLLVMBitReader/android_vendor.31_x86_64_static/libLLVMBitReader.a",
-        "objs": [],
-        "ninja": "out/soong/ninja/external/llvm/lib/Bitcode/Reader/libLLVMBitReader@android_vendor.31_x86_64_static.ninja"
-      },
-      {
-        "variant": "cc_library_static",
-        "type": "static",
-        "filename": "libLLVMBitReader.a",
-        "filedir": "android_vendor.31_x86_x86_64_static/",
-        "path": "out/soong/.intermediates/external/llvm/lib/Bitcode/Reader/libLLVMBitReader/android_vendor.31_x86_x86_64_static/libLLVMBitReader.a",
-        "objs": [],
-        "ninja": "out/soong/ninja/external/llvm/lib/Bitcode/Reader/libLLVMBitReader@android_vendor.31_x86_x86_64_static.ninja"
-      },
-      {
-        "variant": "cc_library_static",
-        "type": "static",
-        "filename": "libLLVMBitReader.a",
-        "filedir": "android_x86_64_static/",
-        "path": "out/soong/.intermediates/external/llvm/lib/Bitcode/Reader/libLLVMBitReader/android_x86_64_static/libLLVMBitReader.a",
-        "objs": [],
-        "ninja": "out/soong/ninja/external/llvm/lib/Bitcode/Reader/libLLVMBitReader@android_x86_64_static.ninja"
-      },
-      {
-        "variant": "cc_library_static",
-        "type": "static",
-        "filename": "libLLVMBitReader.a",
-        "filedir": "android_x86_x86_64_static/",
-        "path": "out/soong/.intermediates/external/llvm/lib/Bitcode/Reader/libLLVMBitReader/android_x86_x86_64_static/libLLVMBitReader.a",
-        "objs": [],
-        "ninja": "out/soong/ninja/external/llvm/lib/Bitcode/Reader/libLLVMBitReader@android_x86_x86_64_static.ninja"
-      }
-    ]
-  },
-  {
-    "name": "libLLVMCore",
-    "project_path": "external/llvm/",
-    "outputs": [
-      {
-        "variant": "cc_library_static",
-        "type": "static",
-        "filename": "libLLVMCore.a",
-        "filedir": "android_vendor.31_x86_64_static/",
-        "path": "out/soong/.intermediates/external/llvm/lib/IR/libLLVMCore/android_vendor.31_x86_64_static/libLLVMCore.a",
-        "objs": [],
-        "ninja": "out/soong/ninja/external/llvm/lib/IR/libLLVMCore@android_vendor.31_x86_64_static.ninja"
-      },
-      {
-        "variant": "cc_library_static",
-        "type": "static",
-        "filename": "libLLVMCore.a",
-        "filedir": "android_vendor.31_x86_x86_64_static/",
-        "path": "out/soong/.intermediates/external/llvm/lib/IR/libLLVMCore/android_vendor.31_x86_x86_64_static/libLLVMCore.a",
-        "objs": [],
-        "ninja": "out/soong/ninja/external/llvm/lib/IR/libLLVMCore@android_vendor.31_x86_x86_64_static.ninja"
-      },
-      {
-        "variant": "cc_library_static",
-        "type": "static",
-        "filename": "libLLVMCore.a",
-        "filedir": "android_x86_64_static/",
-        "path": "out/soong/.intermediates/external/llvm/lib/IR/libLLVMCore/android_x86_64_static/libLLVMCore.a",
-        "objs": [],
-        "ninja": "out/soong/ninja/external/llvm/lib/IR/libLLVMCore@android_x86_64_static.ninja"
-      },
-      {
-        "variant": "cc_library_static",
-        "type": "static",
-        "filename": "libLLVMCore.a",
-        "filedir": "android_x86_x86_64_static/",
-        "path": "out/soong/.intermediates/external/llvm/lib/IR/libLLVMCore/android_x86_x86_64_static/libLLVMCore.a",
-        "objs": [],
-        "ninja": "out/soong/ninja/external/llvm/lib/IR/libLLVMCore@android_x86_x86_64_static.ninja"
-      }
-    ]
-  },
-  {
-    "name": "libLLVMMC",
-    "project_path": "external/llvm/",
-    "outputs": [
-      {
-        "variant": "cc_library_static",
-        "type": "static",
-        "filename": "libLLVMMC.a",
-        "filedir": "android_x86_64_static/",
-        "path": "out/soong/.intermediates/external/llvm/lib/MC/libLLVMMC/android_x86_64_static/libLLVMMC.a",
-        "objs": [],
-        "ninja": "out/soong/ninja/external/llvm/lib/MC/libLLVMMC@android_x86_64_static.ninja"
-      }
-    ]
-  },
-  {
-    "name": "libLLVMMCParser",
-    "project_path": "external/llvm/",
-    "outputs": [
-      {
-        "variant": "cc_library_static",
-        "type": "static",
-        "filename": "libLLVMMCParser.a",
-        "filedir": "android_x86_64_static/",
-        "path": "out/soong/.intermediates/external/llvm/lib/MC/MCParser/libLLVMMCParser/android_x86_64_static/libLLVMMCParser.a",
-        "objs": [],
-        "ninja": "out/soong/ninja/external/llvm/lib/MC/MCParser/libLLVMMCParser@android_x86_64_static.ninja"
-      }
-    ]
-  },
-  {
-    "name": "libLLVMObject",
-    "project_path": "external/llvm/",
-    "outputs": [
-      {
-        "variant": "cc_library_static",
-        "type": "static",
-        "filename": "libLLVMObject.a",
-        "filedir": "android_x86_64_static/",
-        "path": "out/soong/.intermediates/external/llvm/lib/Object/libLLVMObject/android_x86_64_static/libLLVMObject.a",
-        "objs": [],
-        "ninja": "out/soong/ninja/external/llvm/lib/Object/libLLVMObject@android_x86_64_static.ninja"
-      }
-    ]
-  },
-  {
-    "name": "libLLVMSupport",
-    "project_path": "external/llvm/",
-    "outputs": [
-      {
-        "variant": "cc_library_static",
-        "type": "static",
-        "filename": "libLLVMSupport.a",
-        "filedir": "android_vendor.31_x86_64_static/",
-        "path": "out/soong/.intermediates/external/llvm/lib/Support/libLLVMSupport/android_vendor.31_x86_64_static/libLLVMSupport.a",
-        "objs": [],
-        "ninja": "out/soong/ninja/external/llvm/lib/Support/libLLVMSupport@android_vendor.31_x86_64_static.ninja"
-      },
-      {
-        "variant": "cc_library_static",
-        "type": "static",
-        "filename": "libLLVMSupport.a",
-        "filedir": "android_vendor.31_x86_x86_64_static/",
-        "path": "out/soong/.intermediates/external/llvm/lib/Support/libLLVMSupport/android_vendor.31_x86_x86_64_static/libLLVMSupport.a",
-        "objs": [],
-        "ninja": "out/soong/ninja/external/llvm/lib/Support/libLLVMSupport@android_vendor.31_x86_x86_64_static.ninja"
-      },
-      {
-        "variant": "cc_library_static",
-        "type": "static",
-        "filename": "libLLVMSupport.a",
-        "filedir": "android_x86_64_static/",
-        "path": "out/soong/.intermediates/external/llvm/lib/Support/libLLVMSupport/android_x86_64_static/libLLVMSupport.a",
-        "objs": [],
-        "ninja": "out/soong/ninja/external/llvm/lib/Support/libLLVMSupport@android_x86_64_static.ninja"
-      },
-      {
-        "variant": "cc_library_static",
-        "type": "static",
-        "filename": "libLLVMSupport.a",
-        "filedir": "android_x86_x86_64_static/",
-        "path": "out/soong/.intermediates/external/llvm/lib/Support/libLLVMSupport/android_x86_x86_64_static/libLLVMSupport.a",
-        "objs": [],
-        "ninja": "out/soong/ninja/external/llvm/lib/Support/libLLVMSupport@android_x86_x86_64_static.ninja"
-      }
-    ]
-  },
-  {
     "name": "liblz4",
     "project_path": "external/lz4/",
     "outputs": [
@@ -2421,45 +2259,6 @@
     ]
   },
   {
-    "name": "libvixl",
-    "project_path": "external/vixl/",
-    "outputs": [
-      {
-        "variant": "art_cc_library",
-        "type": "static",
-        "filename": "libvixl.a",
-        "filedir": "android_x86_64_static_apex31/",
-        "path": "out/soong/.intermediates/external/vixl/libvixl/android_x86_64_static_apex31/libvixl.a",
-        "objs": [],
-        "ninja": "out/soong/ninja/external/vixl/libvixl@android_x86_64_static_apex31.ninja"
-      },
-      {
-        "variant": "art_cc_library",
-        "type": "static",
-        "filename": "libvixl.a",
-        "filedir": "android_x86_x86_64_static_apex31/",
-        "path": "out/soong/.intermediates/external/vixl/libvixl/android_x86_x86_64_static_apex31/libvixl.a",
-        "objs": [],
-        "ninja": "out/soong/ninja/external/vixl/libvixl@android_x86_x86_64_static_apex31.ninja"
-      }
-    ]
-  },
-  {
-    "name": "libvixld",
-    "project_path": "external/vixl/",
-    "outputs": [
-      {
-        "variant": "art_cc_library",
-        "type": "static",
-        "filename": "libvixld.a",
-        "filedir": "linux_glibc_x86_64_static/",
-        "path": "out/soong/.intermediates/external/vixl/libvixld/linux_glibc_x86_64_static/libvixld.a",
-        "objs": [],
-        "ninja": "out/soong/ninja/external/vixl/libvixld@linux_glibc_x86_64_static.ninja"
-      }
-    ]
-  },
-  {
     "name": "libwebp-decode",
     "project_path": "external/webp/",
     "outputs": [
@@ -2630,6 +2429,153 @@
         "path": "out/soong/.intermediates/frameworks/compile/slang/StripUnkAttr/libStripUnkAttr/android_x86_x86_64_static/libStripUnkAttr.a",
         "objs": [],
         "ninja": "out/soong/ninja/frameworks/compile/slang/StripUnkAttr/libStripUnkAttr@android_x86_x86_64_static.ninja"
+      }
+    ]
+  },
+  {
+    "name": "liblog",
+    "project_path": "system/logging/",
+    "outputs": [
+      {
+        "variant": "cc_library",
+        "type": "shared",
+        "filename": "liblog.so",
+        "filedir": "android_recovery_x86_64_shared/",
+        "path": "out/soong/.intermediates/system/logging/liblog/liblog/android_recovery_x86_64_shared/liblog.so",
+        "objs": [],
+        "ninja": "out/soong/ninja/system/logging/liblog/liblog@android_recovery_x86_64_shared.ninja"
+      },
+      {
+        "variant": "cc_library",
+        "type": "static",
+        "filename": "liblog.a",
+        "filedir": "android_recovery_x86_64_static/",
+        "path": "out/soong/.intermediates/system/logging/liblog/liblog/android_recovery_x86_64_static/liblog.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/system/logging/liblog/liblog@android_recovery_x86_64_static.ninja"
+      },
+      {
+        "variant": "cc_library",
+        "type": "shared",
+        "filename": "liblog.so",
+        "filedir": "android_vendor.31_x86_64_shared/",
+        "path": "out/soong/.intermediates/system/logging/liblog/liblog/android_vendor.31_x86_64_shared/liblog.so",
+        "objs": [],
+        "ninja": "out/soong/ninja/system/logging/liblog/liblog@android_vendor.31_x86_64_shared.ninja"
+      },
+      {
+        "variant": "cc_library",
+        "type": "shared",
+        "filename": "liblog.so",
+        "filedir": "android_vendor.31_x86_x86_64_shared/",
+        "path": "out/soong/.intermediates/system/logging/liblog/liblog/android_vendor.31_x86_x86_64_shared/liblog.so",
+        "objs": [],
+        "ninja": "out/soong/ninja/system/logging/liblog/liblog@android_vendor.31_x86_x86_64_shared.ninja"
+      },
+      {
+        "variant": "cc_library",
+        "type": "shared",
+        "filename": "liblog.so",
+        "filedir": "android_x86_64_shared/",
+        "path": "out/soong/.intermediates/system/logging/liblog/liblog/android_x86_64_shared/liblog.so",
+        "objs": [],
+        "ninja": "out/soong/ninja/system/logging/liblog/liblog@android_x86_64_shared.ninja"
+      },
+      {
+        "variant": "cc_library",
+        "type": "static",
+        "filename": "liblog.a",
+        "filedir": "android_x86_64_static/",
+        "path": "out/soong/.intermediates/system/logging/liblog/liblog/android_x86_64_static/liblog.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/system/logging/liblog/liblog@android_x86_64_static.ninja"
+      },
+      {
+        "variant": "cc_library",
+        "type": "static",
+        "filename": "liblog.a",
+        "filedir": "android_x86_64_static_apex10000/",
+        "path": "out/soong/.intermediates/system/logging/liblog/liblog/android_x86_64_static_apex10000/liblog.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/system/logging/liblog/liblog@android_x86_64_static_apex10000.ninja"
+      },
+      {
+        "variant": "cc_library",
+        "type": "shared",
+        "filename": "liblog.so",
+        "filedir": "android_x86_x86_64_shared/",
+        "path": "out/soong/.intermediates/system/logging/liblog/liblog/android_x86_x86_64_shared/liblog.so",
+        "objs": [],
+        "ninja": "out/soong/ninja/system/logging/liblog/liblog@android_x86_x86_64_shared.ninja"
+      },
+      {
+        "variant": "cc_library",
+        "type": "static",
+        "filename": "liblog.a",
+        "filedir": "android_x86_x86_64_static/",
+        "path": "out/soong/.intermediates/system/logging/liblog/liblog/android_x86_x86_64_static/liblog.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/system/logging/liblog/liblog@android_x86_x86_64_static.ninja"
+      },
+      {
+        "variant": "cc_library",
+        "type": "static",
+        "filename": "liblog.a",
+        "filedir": "android_x86_x86_64_static_apex10000/",
+        "path": "out/soong/.intermediates/system/logging/liblog/liblog/android_x86_x86_64_static_apex10000/liblog.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/system/logging/liblog/liblog@android_x86_x86_64_static_apex10000.ninja"
+      },
+      {
+        "variant": "cc_library",
+        "type": "shared",
+        "filename": "liblog.so",
+        "filedir": "linux_glibc_x86_64_shared/",
+        "path": "out/soong/.intermediates/system/logging/liblog/liblog/linux_glibc_x86_64_shared/liblog.so",
+        "objs": [],
+        "ninja": "out/soong/ninja/system/logging/liblog/liblog@linux_glibc_x86_64_shared.ninja"
+      },
+      {
+        "variant": "cc_library",
+        "type": "static",
+        "filename": "liblog.a",
+        "filedir": "linux_glibc_x86_64_static/",
+        "path": "out/soong/.intermediates/system/logging/liblog/liblog/linux_glibc_x86_64_static/liblog.a",
+        "objs": [],
+        "ninja": "out/soong/ninja/system/logging/liblog/liblog@linux_glibc_x86_64_static.ninja"
+      }
+    ]
+  },
+  {
+    "name": "liblog.ndk",
+    "project_path": "system/logging/",
+    "outputs": [
+      {
+        "variant": "ndk_library",
+        "type": "shared",
+        "filename": "liblog.ndk.so",
+        "filedir": "android_x86_64_sdk_shared_21/",
+        "path": "out/soong/.intermediates/system/logging/liblog/liblog.ndk/android_x86_64_sdk_shared_21/liblog.so",
+        "objs": [],
+        "ninja": "out/soong/ninja/system/logging/liblog/liblog.ndk@android_x86_64_sdk_shared_21.ninja"
+      },
+      {
+        "variant": "ndk_library",
+        "type": "shared",
+        "filename": "liblog.ndk.so",
+        "filedir": "android_x86_64_sdk_shared_29/",
+        "path": "out/soong/.intermediates/system/logging/liblog/liblog.ndk/android_x86_64_sdk_shared_29/liblog.so",
+        "objs": [],
+        "ninja": "out/soong/ninja/system/logging/liblog/liblog.ndk@android_x86_64_sdk_shared_29.ninja"
+      },
+      {
+        "variant": "ndk_library",
+        "type": "shared",
+        "filename": "liblog.ndk.so",
+        "filedir": "android_x86_64_sdk_shared_current/",
+        "path": "out/soong/.intermediates/system/logging/liblog/liblog.ndk/android_x86_64_sdk_shared_current/liblog.so",
+        "objs": [],
+        "ninja": "out/soong/ninja/system/logging/liblog/liblog.ndk@android_x86_64_sdk_shared_current.ninja"
       }
     ]
   },

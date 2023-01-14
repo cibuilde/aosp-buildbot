@@ -23,6 +23,14 @@ function clone_sparse() {
   sparse_setup "$@"
 }
 
+function clone_sparse_exclude() {
+  set -x
+  git clone --filter=tree:0 --single-branch --no-tags --sparse ${AOSP_PLATFORM_URL}$1 $1 -b ${BRANCH}
+  prj_path=$1
+  shift;
+  git -C $prj_path sparse-checkout set --no-cone '/*'  "$@"
+}
+
 function download_release() {
   curl -LJO https://github.com/cibuilde/aosp-buildbot/releases/download/$3/$1.tar.xz
   mkdir -p aosp/prebuiltlibs/$2 && tar xf $1.tar.xz -C aosp/prebuiltlibs/$2

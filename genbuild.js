@@ -95,6 +95,7 @@ const parse_apex_sdk = (name, type, variant) => {
 				static: new Set(),
 				shared: new Set(),
 				object: new Set(),
+				binary: new Set(),
 				sdk: prop.sdk,
 				sdkVersion: prop.sdkVersion,
 				lto: prop.lto,
@@ -114,7 +115,7 @@ const parse_apex_sdk = (name, type, variant) => {
 	}
 }
 modules.forEach(prop => {
-	//if (!prop.project_path.startsWith('external/libcxx')) {
+	//if (!prop.project_path.startsWith('external/boringssl')) {
 	//	return
 	//}
 		prop.outputs.forEach((output) => {
@@ -214,6 +215,7 @@ android_app {
 				binaries: [],
 			})
 		}
+		apex.binary.forEach(b => apex_libs.get(apexVersion).binaries.push(b))
 		apex_libs.get(apexVersion).binaries.push(`voiddep${key}`)
 console.log(`
 cc_binary {
