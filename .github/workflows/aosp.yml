@@ -1,6 +1,10 @@
 
 name: AOSP Build
 on: push
+#on:
+#  push:
+#    tags:
+#    - '*'
 env:
   branch: 'android-12.0.0_r1'
 jobs:
