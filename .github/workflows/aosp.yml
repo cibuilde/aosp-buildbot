@@ -1,19 +1,17 @@
 
 name: AOSP Build
-on: push
-#on:
-#  push:
-#    tags:
-#    - '*'
+on:
+  push:
+    tags:
+    - '*'
 env:
   branch: 'android-12.0.0_r1'
 jobs:
 
-  build_step0:
+  build_step1:
     runs-on: ubuntu-latest
     permissions:
       contents: write
-    
     steps:
     - name: Checkout
       uses: actions/checkout@main
@@ -21,407 +19,137 @@ jobs:
       uses: ./.github/actions/bootstrap
       id: bootstrap
 
-    - name: Restore Cache external/arm-optimized-routines
-      id: external_arm-optimized-routines
+    - name: Restore Cache external/rust/crates/nom
+      id: external_rust_crates_nom
       uses: actions/cache@v3
       with:
-        path: aosp/external/arm-optimized-routines
-        key: external_arm-optimized-routines@${{ env.branch }}
-        restore-keys: external_arm-optimized-routines@${{ env.branch }}
-    - name: Clone project external/arm-optimized-routines
-      if: steps.external_arm-optimized-routines.outputs.cache-hit != 'true'
+        path: aosp/external/rust/crates/nom
+        key: external_rust_crates_nom@${{ env.branch }}
+        restore-keys: external_rust_crates_nom@${{ env.branch }}
+    - name: Clone project external/rust/crates/nom
+      if: steps.external_rust_crates_nom.outputs.cache-hit != 'true'
       run: |
         pushd aosp
         source $GITHUB_WORKSPACE/envsetup.sh
-        clone_depth_platform external/arm-optimized-routines
-    - name: Restore Cache external/rust/crates/bitflags
-      id: external_rust_crates_bitflags
+        clone_depth_platform external/rust/crates/nom
+    - name: Restore Cache external/rust/crates/protobuf
+      id: external_rust_crates_protobuf
       uses: actions/cache@v3
       with:
-        path: aosp/external/rust/crates/bitflags
-        key: external_rust_crates_bitflags@${{ env.branch }}
-        restore-keys: external_rust_crates_bitflags@${{ env.branch }}
-    - name: Clone project external/rust/crates/bitflags
-      if: steps.external_rust_crates_bitflags.outputs.cache-hit != 'true'
+        path: aosp/external/rust/crates/protobuf
+        key: external_rust_crates_protobuf@${{ env.branch }}
+        restore-keys: external_rust_crates_protobuf@${{ env.branch }}
+    - name: Clone project external/rust/crates/protobuf
+      if: steps.external_rust_crates_protobuf.outputs.cache-hit != 'true'
       run: |
         pushd aosp
         source $GITHUB_WORKSPACE/envsetup.sh
-        clone_depth_platform external/rust/crates/bitflags
-    - name: Restore Cache external/rust/crates/bytes
-      id: external_rust_crates_bytes
+        clone_depth_platform external/rust/crates/protobuf
+    - name: Restore Cache external/rust/crates/aho-corasick
+      id: external_rust_crates_aho-corasick
       uses: actions/cache@v3
       with:
-        path: aosp/external/rust/crates/bytes
-        key: external_rust_crates_bytes@${{ env.branch }}
-        restore-keys: external_rust_crates_bytes@${{ env.branch }}
-    - name: Clone project external/rust/crates/bytes
-      if: steps.external_rust_crates_bytes.outputs.cache-hit != 'true'
+        path: aosp/external/rust/crates/aho-corasick
+        key: external_rust_crates_aho-corasick@${{ env.branch }}
+        restore-keys: external_rust_crates_aho-corasick@${{ env.branch }}
+    - name: Clone project external/rust/crates/aho-corasick
+      if: steps.external_rust_crates_aho-corasick.outputs.cache-hit != 'true'
       run: |
         pushd aosp
         source $GITHUB_WORKSPACE/envsetup.sh
-        clone_depth_platform external/rust/crates/bytes
-    - name: Restore Cache external/rust/crates/either
-      id: external_rust_crates_either
+        clone_depth_platform external/rust/crates/aho-corasick
+    - name: Restore Cache external/rust/crates/clap
+      id: external_rust_crates_clap
       uses: actions/cache@v3
       with:
-        path: aosp/external/rust/crates/either
-        key: external_rust_crates_either@${{ env.branch }}
-        restore-keys: external_rust_crates_either@${{ env.branch }}
-    - name: Clone project external/rust/crates/either
-      if: steps.external_rust_crates_either.outputs.cache-hit != 'true'
+        path: aosp/external/rust/crates/clap
+        key: external_rust_crates_clap@${{ env.branch }}
+        restore-keys: external_rust_crates_clap@${{ env.branch }}
+    - name: Clone project external/rust/crates/clap
+      if: steps.external_rust_crates_clap.outputs.cache-hit != 'true'
       run: |
         pushd aosp
         source $GITHUB_WORKSPACE/envsetup.sh
-        clone_depth_platform external/rust/crates/either
-    - name: Restore Cache external/rust/crates/fallible-iterator
-      id: external_rust_crates_fallible-iterator
+        clone_depth_platform external/rust/crates/clap
+    - name: Restore Cache external/rust/crates/codespan-reporting
+      id: external_rust_crates_codespan-reporting
       uses: actions/cache@v3
       with:
-        path: aosp/external/rust/crates/fallible-iterator
-        key: external_rust_crates_fallible-iterator@${{ env.branch }}
-        restore-keys: external_rust_crates_fallible-iterator@${{ env.branch }}
-    - name: Clone project external/rust/crates/fallible-iterator
-      if: steps.external_rust_crates_fallible-iterator.outputs.cache-hit != 'true'
+        path: aosp/external/rust/crates/codespan-reporting
+        key: external_rust_crates_codespan-reporting@${{ env.branch }}
+        restore-keys: external_rust_crates_codespan-reporting@${{ env.branch }}
+    - name: Clone project external/rust/crates/codespan-reporting
+      if: steps.external_rust_crates_codespan-reporting.outputs.cache-hit != 'true'
       run: |
         pushd aosp
         source $GITHUB_WORKSPACE/envsetup.sh
-        clone_depth_platform external/rust/crates/fallible-iterator
-    - name: Restore Cache external/rust/crates/fallible-streaming-iterator
-      id: external_rust_crates_fallible-streaming-iterator
+        clone_depth_platform external/rust/crates/codespan-reporting
+    - name: Restore Cache external/rust/crates/futures-channel
+      id: external_rust_crates_futures-channel
       uses: actions/cache@v3
       with:
-        path: aosp/external/rust/crates/fallible-streaming-iterator
-        key: external_rust_crates_fallible-streaming-iterator@${{ env.branch }}
-        restore-keys: external_rust_crates_fallible-streaming-iterator@${{ env.branch }}
-    - name: Clone project external/rust/crates/fallible-streaming-iterator
-      if: steps.external_rust_crates_fallible-streaming-iterator.outputs.cache-hit != 'true'
+        path: aosp/external/rust/crates/futures-channel
+        key: external_rust_crates_futures-channel@${{ env.branch }}
+        restore-keys: external_rust_crates_futures-channel@${{ env.branch }}
+    - name: Clone project external/rust/crates/futures-channel
+      if: steps.external_rust_crates_futures-channel.outputs.cache-hit != 'true'
       run: |
         pushd aosp
         source $GITHUB_WORKSPACE/envsetup.sh
-        clone_depth_platform external/rust/crates/fallible-streaming-iterator
-    - name: Restore Cache external/rust/crates/futures-core
-      id: external_rust_crates_futures-core
+        clone_depth_platform external/rust/crates/futures-channel
+    - name: Restore Cache external/rust/crates/lock_api
+      id: external_rust_crates_lock_api
       uses: actions/cache@v3
       with:
-        path: aosp/external/rust/crates/futures-core
-        key: external_rust_crates_futures-core@${{ env.branch }}
-        restore-keys: external_rust_crates_futures-core@${{ env.branch }}
-    - name: Clone project external/rust/crates/futures-core
-      if: steps.external_rust_crates_futures-core.outputs.cache-hit != 'true'
+        path: aosp/external/rust/crates/lock_api
+        key: external_rust_crates_lock_api@${{ env.branch }}
+        restore-keys: external_rust_crates_lock_api@${{ env.branch }}
+    - name: Clone project external/rust/crates/lock_api
+      if: steps.external_rust_crates_lock_api.outputs.cache-hit != 'true'
       run: |
         pushd aosp
         source $GITHUB_WORKSPACE/envsetup.sh
-        clone_depth_platform external/rust/crates/futures-core
-    - name: Restore Cache external/rust/crates/futures-io
-      id: external_rust_crates_futures-io
+        clone_depth_platform external/rust/crates/lock_api
+    - name: Restore Cache external/rust/crates/proc-macro2
+      id: external_rust_crates_proc-macro2
       uses: actions/cache@v3
       with:
-        path: aosp/external/rust/crates/futures-io
-        key: external_rust_crates_futures-io@${{ env.branch }}
-        restore-keys: external_rust_crates_futures-io@${{ env.branch }}
-    - name: Clone project external/rust/crates/futures-io
-      if: steps.external_rust_crates_futures-io.outputs.cache-hit != 'true'
+        path: aosp/external/rust/crates/proc-macro2
+        key: external_rust_crates_proc-macro2@${{ env.branch }}
+        restore-keys: external_rust_crates_proc-macro2@${{ env.branch }}
+    - name: Clone project external/rust/crates/proc-macro2
+      if: steps.external_rust_crates_proc-macro2.outputs.cache-hit != 'true'
       run: |
         pushd aosp
         source $GITHUB_WORKSPACE/envsetup.sh
-        clone_depth_platform external/rust/crates/futures-io
-    - name: Restore Cache external/rust/crates/futures-sink
-      id: external_rust_crates_futures-sink
-      uses: actions/cache@v3
-      with:
-        path: aosp/external/rust/crates/futures-sink
-        key: external_rust_crates_futures-sink@${{ env.branch }}
-        restore-keys: external_rust_crates_futures-sink@${{ env.branch }}
-    - name: Clone project external/rust/crates/futures-sink
-      if: steps.external_rust_crates_futures-sink.outputs.cache-hit != 'true'
-      run: |
-        pushd aosp
-        source $GITHUB_WORKSPACE/envsetup.sh
-        clone_depth_platform external/rust/crates/futures-sink
-    - name: Restore Cache external/rust/crates/futures-task
-      id: external_rust_crates_futures-task
-      uses: actions/cache@v3
-      with:
-        path: aosp/external/rust/crates/futures-task
-        key: external_rust_crates_futures-task@${{ env.branch }}
-        restore-keys: external_rust_crates_futures-task@${{ env.branch }}
-    - name: Clone project external/rust/crates/futures-task
-      if: steps.external_rust_crates_futures-task.outputs.cache-hit != 'true'
-      run: |
-        pushd aosp
-        source $GITHUB_WORKSPACE/envsetup.sh
-        clone_depth_platform external/rust/crates/futures-task
-    - name: Restore Cache external/rust/crates/glob
-      id: external_rust_crates_glob
-      uses: actions/cache@v3
-      with:
-        path: aosp/external/rust/crates/glob
-        key: external_rust_crates_glob@${{ env.branch }}
-        restore-keys: external_rust_crates_glob@${{ env.branch }}
-    - name: Clone project external/rust/crates/glob
-      if: steps.external_rust_crates_glob.outputs.cache-hit != 'true'
-      run: |
-        pushd aosp
-        source $GITHUB_WORKSPACE/envsetup.sh
-        clone_depth_platform external/rust/crates/glob
-    - name: Restore Cache external/rust/crates/lazycell
-      id: external_rust_crates_lazycell
-      uses: actions/cache@v3
-      with:
-        path: aosp/external/rust/crates/lazycell
-        key: external_rust_crates_lazycell@${{ env.branch }}
-        restore-keys: external_rust_crates_lazycell@${{ env.branch }}
-    - name: Clone project external/rust/crates/lazycell
-      if: steps.external_rust_crates_lazycell.outputs.cache-hit != 'true'
-      run: |
-        pushd aosp
-        source $GITHUB_WORKSPACE/envsetup.sh
-        clone_depth_platform external/rust/crates/lazycell
-    - name: Restore Cache external/rust/crates/memchr
-      id: external_rust_crates_memchr
-      uses: actions/cache@v3
-      with:
-        path: aosp/external/rust/crates/memchr
-        key: external_rust_crates_memchr@${{ env.branch }}
-        restore-keys: external_rust_crates_memchr@${{ env.branch }}
-    - name: Clone project external/rust/crates/memchr
-      if: steps.external_rust_crates_memchr.outputs.cache-hit != 'true'
-      run: |
-        pushd aosp
-        source $GITHUB_WORKSPACE/envsetup.sh
-        clone_depth_platform external/rust/crates/memchr
-    - name: Restore Cache external/rust/crates/paste
-      id: external_rust_crates_paste
-      uses: actions/cache@v3
-      with:
-        path: aosp/external/rust/crates/paste
-        key: external_rust_crates_paste@${{ env.branch }}
-        restore-keys: external_rust_crates_paste@${{ env.branch }}
-    - name: Clone project external/rust/crates/paste
-      if: steps.external_rust_crates_paste.outputs.cache-hit != 'true'
-      run: |
-        pushd aosp
-        source $GITHUB_WORKSPACE/envsetup.sh
-        clone_depth_platform external/rust/crates/paste
-    - name: Restore Cache external/rust/crates/peeking_take_while
-      id: external_rust_crates_peeking_take_while
-      uses: actions/cache@v3
-      with:
-        path: aosp/external/rust/crates/peeking_take_while
-        key: external_rust_crates_peeking_take_while@${{ env.branch }}
-        restore-keys: external_rust_crates_peeking_take_while@${{ env.branch }}
-    - name: Clone project external/rust/crates/peeking_take_while
-      if: steps.external_rust_crates_peeking_take_while.outputs.cache-hit != 'true'
-      run: |
-        pushd aosp
-        source $GITHUB_WORKSPACE/envsetup.sh
-        clone_depth_platform external/rust/crates/peeking_take_while
-    - name: Restore Cache external/rust/crates/pin-project-lite
-      id: external_rust_crates_pin-project-lite
-      uses: actions/cache@v3
-      with:
-        path: aosp/external/rust/crates/pin-project-lite
-        key: external_rust_crates_pin-project-lite@${{ env.branch }}
-        restore-keys: external_rust_crates_pin-project-lite@${{ env.branch }}
-    - name: Clone project external/rust/crates/pin-project-lite
-      if: steps.external_rust_crates_pin-project-lite.outputs.cache-hit != 'true'
-      run: |
-        pushd aosp
-        source $GITHUB_WORKSPACE/envsetup.sh
-        clone_depth_platform external/rust/crates/pin-project-lite
-    - name: Restore Cache external/rust/crates/pin-utils
-      id: external_rust_crates_pin-utils
-      uses: actions/cache@v3
-      with:
-        path: aosp/external/rust/crates/pin-utils
-        key: external_rust_crates_pin-utils@${{ env.branch }}
-        restore-keys: external_rust_crates_pin-utils@${{ env.branch }}
-    - name: Clone project external/rust/crates/pin-utils
-      if: steps.external_rust_crates_pin-utils.outputs.cache-hit != 'true'
-      run: |
-        pushd aosp
-        source $GITHUB_WORKSPACE/envsetup.sh
-        clone_depth_platform external/rust/crates/pin-utils
-    - name: Restore Cache external/rust/crates/proc-macro-hack
-      id: external_rust_crates_proc-macro-hack
-      uses: actions/cache@v3
-      with:
-        path: aosp/external/rust/crates/proc-macro-hack
-        key: external_rust_crates_proc-macro-hack@${{ env.branch }}
-        restore-keys: external_rust_crates_proc-macro-hack@${{ env.branch }}
-    - name: Clone project external/rust/crates/proc-macro-hack
-      if: steps.external_rust_crates_proc-macro-hack.outputs.cache-hit != 'true'
-      run: |
-        pushd aosp
-        source $GITHUB_WORKSPACE/envsetup.sh
-        clone_depth_platform external/rust/crates/proc-macro-hack
-    - name: Restore Cache external/rust/crates/proc-macro-nested
-      id: external_rust_crates_proc-macro-nested
-      uses: actions/cache@v3
-      with:
-        path: aosp/external/rust/crates/proc-macro-nested
-        key: external_rust_crates_proc-macro-nested@${{ env.branch }}
-        restore-keys: external_rust_crates_proc-macro-nested@${{ env.branch }}
-    - name: Clone project external/rust/crates/proc-macro-nested
-      if: steps.external_rust_crates_proc-macro-nested.outputs.cache-hit != 'true'
-      run: |
-        pushd aosp
-        source $GITHUB_WORKSPACE/envsetup.sh
-        clone_depth_platform external/rust/crates/proc-macro-nested
-    - name: Restore Cache external/rust/crates/regex-syntax
-      id: external_rust_crates_regex-syntax
-      uses: actions/cache@v3
-      with:
-        path: aosp/external/rust/crates/regex-syntax
-        key: external_rust_crates_regex-syntax@${{ env.branch }}
-        restore-keys: external_rust_crates_regex-syntax@${{ env.branch }}
-    - name: Clone project external/rust/crates/regex-syntax
-      if: steps.external_rust_crates_regex-syntax.outputs.cache-hit != 'true'
-      run: |
-        pushd aosp
-        source $GITHUB_WORKSPACE/envsetup.sh
-        clone_depth_platform external/rust/crates/regex-syntax
-    - name: Restore Cache external/rust/crates/rustc-hash
-      id: external_rust_crates_rustc-hash
-      uses: actions/cache@v3
-      with:
-        path: aosp/external/rust/crates/rustc-hash
-        key: external_rust_crates_rustc-hash@${{ env.branch }}
-        restore-keys: external_rust_crates_rustc-hash@${{ env.branch }}
-    - name: Clone project external/rust/crates/rustc-hash
-      if: steps.external_rust_crates_rustc-hash.outputs.cache-hit != 'true'
-      run: |
-        pushd aosp
-        source $GITHUB_WORKSPACE/envsetup.sh
-        clone_depth_platform external/rust/crates/rustc-hash
-    - name: Restore Cache external/rust/crates/scopeguard
-      id: external_rust_crates_scopeguard
-      uses: actions/cache@v3
-      with:
-        path: aosp/external/rust/crates/scopeguard
-        key: external_rust_crates_scopeguard@${{ env.branch }}
-        restore-keys: external_rust_crates_scopeguard@${{ env.branch }}
-    - name: Clone project external/rust/crates/scopeguard
-      if: steps.external_rust_crates_scopeguard.outputs.cache-hit != 'true'
-      run: |
-        pushd aosp
-        source $GITHUB_WORKSPACE/envsetup.sh
-        clone_depth_platform external/rust/crates/scopeguard
-    - name: Restore Cache external/rust/crates/shlex
-      id: external_rust_crates_shlex
-      uses: actions/cache@v3
-      with:
-        path: aosp/external/rust/crates/shlex
-        key: external_rust_crates_shlex@${{ env.branch }}
-        restore-keys: external_rust_crates_shlex@${{ env.branch }}
-    - name: Clone project external/rust/crates/shlex
-      if: steps.external_rust_crates_shlex.outputs.cache-hit != 'true'
-      run: |
-        pushd aosp
-        source $GITHUB_WORKSPACE/envsetup.sh
-        clone_depth_platform external/rust/crates/shlex
-    - name: Restore Cache external/rust/crates/slab
-      id: external_rust_crates_slab
-      uses: actions/cache@v3
-      with:
-        path: aosp/external/rust/crates/slab
-        key: external_rust_crates_slab@${{ env.branch }}
-        restore-keys: external_rust_crates_slab@${{ env.branch }}
-    - name: Clone project external/rust/crates/slab
-      if: steps.external_rust_crates_slab.outputs.cache-hit != 'true'
-      run: |
-        pushd aosp
-        source $GITHUB_WORKSPACE/envsetup.sh
-        clone_depth_platform external/rust/crates/slab
-    - name: Restore Cache external/rust/crates/smallvec
-      id: external_rust_crates_smallvec
-      uses: actions/cache@v3
-      with:
-        path: aosp/external/rust/crates/smallvec
-        key: external_rust_crates_smallvec@${{ env.branch }}
-        restore-keys: external_rust_crates_smallvec@${{ env.branch }}
-    - name: Clone project external/rust/crates/smallvec
-      if: steps.external_rust_crates_smallvec.outputs.cache-hit != 'true'
-      run: |
-        pushd aosp
-        source $GITHUB_WORKSPACE/envsetup.sh
-        clone_depth_platform external/rust/crates/smallvec
-    - name: Restore Cache external/rust/crates/termcolor
-      id: external_rust_crates_termcolor
-      uses: actions/cache@v3
-      with:
-        path: aosp/external/rust/crates/termcolor
-        key: external_rust_crates_termcolor@${{ env.branch }}
-        restore-keys: external_rust_crates_termcolor@${{ env.branch }}
-    - name: Clone project external/rust/crates/termcolor
-      if: steps.external_rust_crates_termcolor.outputs.cache-hit != 'true'
-      run: |
-        pushd aosp
-        source $GITHUB_WORKSPACE/envsetup.sh
-        clone_depth_platform external/rust/crates/termcolor
-    - name: Restore Cache external/rust/crates/textwrap
-      id: external_rust_crates_textwrap
-      uses: actions/cache@v3
-      with:
-        path: aosp/external/rust/crates/textwrap
-        key: external_rust_crates_textwrap@${{ env.branch }}
-        restore-keys: external_rust_crates_textwrap@${{ env.branch }}
-    - name: Clone project external/rust/crates/textwrap
-      if: steps.external_rust_crates_textwrap.outputs.cache-hit != 'true'
-      run: |
-        pushd aosp
-        source $GITHUB_WORKSPACE/envsetup.sh
-        clone_depth_platform external/rust/crates/textwrap
-    - name: Restore Cache external/rust/crates/unicode-width
-      id: external_rust_crates_unicode-width
-      uses: actions/cache@v3
-      with:
-        path: aosp/external/rust/crates/unicode-width
-        key: external_rust_crates_unicode-width@${{ env.branch }}
-        restore-keys: external_rust_crates_unicode-width@${{ env.branch }}
-    - name: Clone project external/rust/crates/unicode-width
-      if: steps.external_rust_crates_unicode-width.outputs.cache-hit != 'true'
-      run: |
-        pushd aosp
-        source $GITHUB_WORKSPACE/envsetup.sh
-        clone_depth_platform external/rust/crates/unicode-width
-    - name: Restore Cache external/rust/crates/unicode-xid
-      id: external_rust_crates_unicode-xid
-      uses: actions/cache@v3
-      with:
-        path: aosp/external/rust/crates/unicode-xid
-        key: external_rust_crates_unicode-xid@${{ env.branch }}
-        restore-keys: external_rust_crates_unicode-xid@${{ env.branch }}
-    - name: Clone project external/rust/crates/unicode-xid
-      if: steps.external_rust_crates_unicode-xid.outputs.cache-hit != 'true'
-      run: |
-        pushd aosp
-        source $GITHUB_WORKSPACE/envsetup.sh
-        clone_depth_platform external/rust/crates/unicode-xid
-    - name: Restore Cache external/scudo
-      id: external_scudo
-      uses: actions/cache@v3
-      with:
-        path: aosp/external/scudo
-        key: external_scudo@${{ env.branch }}
-        restore-keys: external_scudo@${{ env.branch }}
-    - name: Clone project external/scudo
-      if: steps.external_scudo.outputs.cache-hit != 'true'
-      run: |
-        pushd aosp
-        source $GITHUB_WORKSPACE/envsetup.sh
-        clone_depth_platform external/scudo
+        clone_depth_platform external/rust/crates/proc-macro2
 
-    - name: Build Step-0
+    - name: Download Release
+      run: |
+        download_release external_arm-optimized-routines-0 external/arm-optimized-routines build_step0
+        download_release external_gwp_asan-0 external/gwp_asan build_step0
+        download_release external_scudo-0 external/scudo build_step0
+        download_release system_core-0 system/core build_step0
+        download_release external_rust_crates_memchr-0 external/rust/crates/memchr build_step0
+        download_release external_rust_crates_bytes-0 external/rust/crates/bytes build_step0
+        download_release external_rust_crates_bitflags-0 external/rust/crates/bitflags build_step0
+        download_release external_rust_crates_textwrap-0 external/rust/crates/textwrap build_step0
+        download_release external_rust_crates_termcolor-0 external/rust/crates/termcolor build_step0
+        download_release external_rust_crates_unicode-width-0 external/rust/crates/unicode-width build_step0
+        download_release external_rust_crates_futures-core-0 external/rust/crates/futures-core build_step0
+        download_release external_rust_crates_scopeguard-0 external/rust/crates/scopeguard build_step0
+        download_release external_rust_crates_unicode-xid-0 external/rust/crates/unicode-xid build_step0
+
+    - name: Build Step-1
       run: |
         pushd aosp
         export TOP=$(pwd)
-        $GITHUB_WORKSPACE/steps/build_step0.sh
+        $GITHUB_WORKSPACE/steps/build_step1.sh
         df -h
 
     - uses: ncipollo/release-action@main
       with:
-        name: 'build_step0'
-        artifacts: "aosp/external_arm-optimized-routines-0.tar.xz,aosp/external_gwp_asan-0.tar.xz,aosp/external_rust_crates_bitflags-0.tar.xz,aosp/external_rust_crates_bytes-0.tar.xz,aosp/external_rust_crates_either-0.tar.xz,aosp/external_rust_crates_fallible-iterator-0.tar.xz,aosp/external_rust_crates_fallible-streaming-iterator-0.tar.xz,aosp/external_rust_crates_futures-core-0.tar.xz,aosp/external_rust_crates_futures-io-0.tar.xz,aosp/external_rust_crates_futures-sink-0.tar.xz,aosp/external_rust_crates_futures-task-0.tar.xz,aosp/external_rust_crates_glob-0.tar.xz,aosp/external_rust_crates_lazycell-0.tar.xz,aosp/external_rust_crates_memchr-0.tar.xz,aosp/external_rust_crates_paste-0.tar.xz,aosp/external_rust_crates_peeking_take_while-0.tar.xz,aosp/external_rust_crates_pin-project-lite-0.tar.xz,aosp/external_rust_crates_pin-utils-0.tar.xz,aosp/external_rust_crates_proc-macro-hack-0.tar.xz,aosp/external_rust_crates_proc-macro-nested-0.tar.xz,aosp/external_rust_crates_regex-syntax-0.tar.xz,aosp/external_rust_crates_rustc-hash-0.tar.xz,aosp/external_rust_crates_scopeguard-0.tar.xz,aosp/external_rust_crates_shlex-0.tar.xz,aosp/external_rust_crates_slab-0.tar.xz,aosp/external_rust_crates_smallvec-0.tar.xz,aosp/external_rust_crates_termcolor-0.tar.xz,aosp/external_rust_crates_textwrap-0.tar.xz,aosp/external_rust_crates_unicode-width-0.tar.xz,aosp/external_rust_crates_unicode-xid-0.tar.xz,aosp/external_scudo-0.tar.xz,aosp/system_core-0.tar.xz"
+        name: 'build_step1'
+        artifacts: "aosp/bionic-0.tar.xz,aosp/external_rust_crates_nom-0.tar.xz,aosp/external_rust_crates_protobuf-0.tar.xz,aosp/external_rust_crates_aho-corasick-0.tar.xz,aosp/external_rust_crates_clap-0.tar.xz,aosp/external_rust_crates_codespan-reporting-0.tar.xz,aosp/external_rust_crates_futures-channel-0.tar.xz,aosp/external_rust_crates_lock_api-0.tar.xz,aosp/external_rust_crates_proc-macro2-0.tar.xz"
         removeArtifacts: true
         allowUpdates: true
