@@ -591,4 +591,4 @@ tar cfJ external_jsoncpp-0.tar.xz -C prebuiltlibs/external/jsoncpp/ .
 mkdir -p prebuiltlibs/external/libcap/libcap/include && cp -r external/libcap/libcap/include/* prebuiltlibs/external/libcap/libcap/include/
 printf "cc_prebuilt_library {\n\tname: \"libcap\",\n\tdevice_supported: true,\n\thost_supported: true,\n\tvendor_available: true,\n\trecovery_available: true,\n\tstatic: { srcs: [\"libcap.a\"], },\n\tshared: { srcs: [\"libcap.so\"], },\n\tmultiple_variants: true,\n\ttarget: { host: { compile_multilib: \"64\",  }, android: { compile_multilib: \"both\",  }, },\n\trequired: [\"libc\",\"libdl\",\"libm\",\"libc++\"],\n\tmin_sdk_version: \"29\", vndk: { enabled: true, }, apex_available: [\"//apex_available:platform\",\"com.android.adbd\",\"com.android.media.swcodec\",\"com.android.virt\",], \n\tprefer: true,\n\tstrip: { none: true, },\n\texport_include_dirs: [\"libcap/include\"],\n}" > prebuiltlibs/external/libcap/Android.bp
 cp -r out/soong/ninja/external/libcap/ prebuiltlibs/external/libcap/external_libcap-0
-tar fJ external_libcap-0.tar.xz -C prebuiltlibs/external/libcap/ .
+tar cfJ external_libcap-0.tar.xz -C prebuiltlibs/external/libcap/ .
