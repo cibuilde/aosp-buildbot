@@ -126,6 +126,7 @@ jobs:
 
     - name: Download Release
       run: |
+        source $GITHUB_WORKSPACE/envsetup.sh
         download_release external_arm-optimized-routines-0 external/arm-optimized-routines build_step0
         download_release external_gwp_asan-0 external/gwp_asan build_step0
         download_release external_scudo-0 external/scudo build_step0
