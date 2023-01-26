@@ -31,6 +31,26 @@ function clone_sparse_exclude() {
   git -C $prj_path sparse-checkout set --no-cone '/*'  "$@"
 }
 
+function clone_project() {
+  branch=$1
+  project_name=$2
+  project_path=$3
+  shift;
+  shift;
+  shift;
+  mkdir -p ${project_path} && pushd ${project_path}
+  git init
+  git config --unset-all core.bare
+  git config remote.origin.url "https://android.googlesource.com/${project_name}"
+  git config remote.origin.fetch "+refs/heads/${branch}:refs/remotes/origin/${branch}"
+  git config extensions.partialclone origin
+  git sparse-checkout set --no-cone "$@"
+  git fetch origin --filter=tree:0 --depth=1 --no-tags --progress "+refs/heads/${branch}:refs/remotes/origin/${branch}"
+  echo $(git rev-parse --verify "refs/remotes/origin/${branch}^0") > .git/HEAD
+  git read-tree --reset -u -v HEAD
+  popd
+}
+
 function download_release() {
   curl -LJO https://github.com/cibuilde/aosp-buildbot/releases/download/$3/$1.tar.xz
   mkdir -p aosp/prebuiltlibs/$2 && tar xf $1.tar.xz -C aosp/prebuiltlibs/$2
