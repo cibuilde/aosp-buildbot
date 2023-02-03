@@ -26,7 +26,7 @@ apex_key {
 }
 cc_binary {
   name: "voiddep31",
-  srcs: [ "util.cpp", ":crtbrand", ":crtend_android", ":crtend_so", ":crtbegin_dynamic", ":crtbegin_so", ],
+  srcs: [ "util.cpp", ":crtbrand", ":crtbegin_dynamic", ":crtbegin_so", ":crtend_android", ":crtend_so", ],
   compile_multilib: "both",
   multilib: { lib32: { suffix: "32", }, lib64: { suffix: "64", }, },
   static_libs: ["libasync_safe"],
@@ -37,10 +37,10 @@ cc_binary {
 }
 cc_binary {
   name: "voiddep10000",
-  srcs: [ "util.cpp", ":crtbrand", ":crtend_android", ":crtend_so", ":crtbegin_dynamic", ":crtbegin_so", ":crtbegin_static", ],
+  srcs: [ "util.cpp", ":crtbrand", ":crtbegin_dynamic", ":crtbegin_so", ":crtbegin_static", ":crtend_android", ":crtend_so", ],
   compile_multilib: "both",
   multilib: { lib32: { suffix: "32", }, lib64: { suffix: "64", }, },
-  static_libs: ["ld-android","libasync_safe","libc_bionic","libc_bionic_systrace","libc_bootstrap","libc_dns","libc_dynamic_dispatch","libc_fortify","libc_freebsd","libc_freebsd_large_stack","libc_gdtoa","libc_init_dynamic","libc_init_static","libc_netbsd","libc_openbsd","libc_openbsd_large_stack","libc_openbsd_ndk","libc_pthread","libc_syscalls","libc_tzcode","libc_unwind_static","libdl_static","libarm-optimized-routines-math","libarm-optimized-routines-string","gwp_asan","libscudo","libpropertyinfoparser","libstdc++","libdl_android"],
+  static_libs: ["gwp_asan","ld-android","libarm-optimized-routines-math","libarm-optimized-routines-string","libasync_safe","libc_bionic","libc_bionic_systrace","libc_bootstrap","libc_dns","libc_dynamic_dispatch","libc_fortify","libc_freebsd","libc_freebsd_large_stack","libc_gdtoa","libc_init_dynamic","libc_init_static","libc_netbsd","libc_openbsd","libc_openbsd_large_stack","libc_openbsd_ndk","libc_pthread","libc_syscalls","libc_tzcode","libc_unwind_static","libdl_android","libdl_static","libpropertyinfoparser","libscudo"],
   shared_libs: ["ld-android","libdl","libdl_android"],
   apex_available: [ "com.android.prebuilts-10000", ],
   min_sdk_version: "apex_inherit",
@@ -51,12 +51,12 @@ rust_binary {
   srcs: [ "util.rs"],
   prefer_rlib: true,
   apex_available: [ "com.android.prebuilts-10000", ],
-  rustlibs: ["librand_ish","libbytes","libdowncast_rs"],
+  rustlibs: ["libbytes","libdowncast_rs","librand_ish"],
   min_sdk_version: "apex_inherit",
 }
 cc_binary {
   name: "voiddep29",
-  srcs: [ "util.cpp", ":crtbrand", ":crtend_android", ":crtend_so", ":crtbegin_dynamic", ":crtbegin_so", ],
+  srcs: [ "util.cpp", ":crtbrand", ":crtbegin_dynamic", ":crtbegin_so", ":crtend_android", ":crtend_so", ],
   compile_multilib: "both",
   multilib: { lib32: { suffix: "32", }, lib64: { suffix: "64", }, },
   static_libs: [],
@@ -67,7 +67,7 @@ cc_binary {
 }
 cc_library {
   name: "libvoiddep30_sdk_30",
-  srcs: [ "util.cpp", ":crtbrand", ":crtend_so", ":crtbegin_so", ],
+  srcs: [ "util.cpp", ":crtbrand", ":crtbegin_so", ":crtend_so", ],
   static_libs: [],
   shared_libs: [],
   apex_available: [ "com.android.prebuilts-30", ],
@@ -90,7 +90,7 @@ android_app {
 }
 cc_library {
   name: "libvoiddep30_sdk_29",
-  srcs: [ "util.cpp", ":crtbrand", ":crtend_so", ":crtbegin_so", ],
+  srcs: [ "util.cpp", ":crtbrand", ":crtbegin_so", ":crtend_so", ],
   static_libs: [],
   shared_libs: [],
   apex_available: [ "com.android.prebuilts-30", ],
@@ -113,7 +113,7 @@ android_app {
 }
 cc_binary {
   name: "voiddep30",
-  srcs: [ "util.cpp", ":crtbrand", ":crtend_android", ":crtend_so", ":crtbegin_dynamic", ":crtbegin_so", ],
+  srcs: [ "util.cpp", ":crtbrand", ":crtbegin_dynamic", ":crtbegin_so", ":crtend_android", ":crtend_so", ],
   compile_multilib: "both",
   multilib: { lib32: { suffix: "32", }, lib64: { suffix: "64", }, },
   static_libs: [],

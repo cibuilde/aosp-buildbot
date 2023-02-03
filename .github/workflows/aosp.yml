@@ -33,8 +33,6 @@ jobs:
         cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
         clone_depth_platform build
         mv build make && mkdir build && mv make build/
-        sed -i 's/$(call pretty-error, Invalid system modules $(my_system_modules))/#$(call pretty-error, Invalid system modules $(my_system_modules))/g' build/make/core/java_common.mk
-        sed -i 's/$(call pretty-error,Installable device module must have LOCAL_SOONG_DEX_JAR set)/#$(call pretty-error,Installable device module must have LOCAL_SOONG_DEX_JAR set)/g' build/make/core/soong_java_prebuilt.mk
         sed -i 's/^PRODUCT_EXTRA_VNDK_VERSIONS/#PRODUCT_EXTRA_VNDK_VERSIONS/g' build/make/target/product/gsi_release.mk
     - name: Restore Cache bionic
       id: bionic
@@ -132,30 +130,6 @@ jobs:
       run: |
         cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
         clone_depth_platform external/gwp_asan
-    - name: Restore Cache external/libcxx
-      id: external_libcxx
-      uses: actions/cache@v3
-      with:
-        path: aosp/external/libcxx
-        key: external_libcxx@${{ env.branch }}
-        restore-keys: external_libcxx@${{ env.branch }}
-    - name: Clone project external/libcxx
-      if: steps.external_libcxx.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        clone_depth_platform external/libcxx
-    - name: Restore Cache external/libcxxabi
-      id: external_libcxxabi
-      uses: actions/cache@v3
-      with:
-        path: aosp/external/libcxxabi
-        key: external_libcxxabi@${{ env.branch }}
-        restore-keys: external_libcxxabi@${{ env.branch }}
-    - name: Clone project external/libcxxabi
-      if: steps.external_libcxxabi.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        clone_depth_platform external/libcxxabi
     - name: Restore Cache external/rust/crates/bytes
       id: external_rust_crates_bytes
       uses: actions/cache@v3
@@ -396,30 +370,6 @@ jobs:
       run: |
         cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
         clone_depth_platform external/starlark-go
-    - name: Restore Cache frameworks/rs
-      id: frameworks_rs
-      uses: actions/cache@v3
-      with:
-        path: aosp/frameworks/rs
-        key: frameworks_rs@${{ env.branch }}
-        restore-keys: frameworks_rs@${{ env.branch }}
-    - name: Clone project frameworks/rs
-      if: steps.frameworks_rs.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        clone_depth_platform frameworks/rs
-    - name: Restore Cache frameworks/compile/slang
-      id: frameworks_compile_slang
-      uses: actions/cache@v3
-      with:
-        path: aosp/frameworks/compile/slang
-        key: frameworks_compile_slang@${{ env.branch }}
-        restore-keys: frameworks_compile_slang@${{ env.branch }}
-    - name: Clone project frameworks/compile/slang
-      if: steps.frameworks_compile_slang.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        clone_depth_platform frameworks/compile/slang
     - name: Restore Cache prebuilts/build-tools
       id: prebuilts_build-tools
       uses: actions/cache@v3
@@ -480,18 +430,6 @@ jobs:
       run: |
         cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
         clone_sparse prebuilts/rust bootstrap linux-x86/1.51.0
-    - name: Restore Cache prebuilts/sdk
-      id: prebuilts_sdk
-      uses: actions/cache@v3
-      with:
-        path: aosp/prebuilts/sdk
-        key: prebuilts_sdk@${{ env.branch }}
-        restore-keys: prebuilts_sdk@${{ env.branch }}
-    - name: Clone project prebuilts/sdk
-      if: steps.prebuilts_sdk.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        clone_sparse_exclude prebuilts/sdk "!/tools/windows" "!/tools/darwin" "!/*/test/" "!/**/android-non-updatable.jar"
     - name: Restore Cache system/bt
       id: system_bt
       uses: actions/cache@v3
@@ -556,14 +494,163 @@ jobs:
         cp $GITHUB_WORKSPACE/ckati prebuilts/build-tools/linux-x86/bin
         mkdir -p prebuiltlibs && cp $GITHUB_WORKSPACE/Android.bp prebuiltlibs/
         mkdir -p prebuiltlibs && cp $GITHUB_WORKSPACE/rust_prebuilt.list prebuiltlibs/
-        GOROOT=$TOP/prebuilts/go/linux-x86 $GITHUB_WORKSPACE/soong_ui --make-mode --skip-soong-tests --skip-write-modules -j1 TARGET_PRODUCT=aosp_x86_64 TARGET_BUILD_VARIANT=eng ALLOW_MISSING_DEPENDENCIES=true BUILD_BROKEN_DISABLE_BAZEL=1 nothing
+        GOROOT=$TOP/prebuilts/go/linux-x86 $GITHUB_WORKSPACE/soong_ui --make-mode --skip-ninja --skip-kati --skip-soong-tests --skip-write-modules -j1 TARGET_PRODUCT=aosp_x86_64 TARGET_BUILD_VARIANT=eng ALLOW_MISSING_DEPENDENCIES=true BUILD_BROKEN_DISABLE_BAZEL=1 nothing
         $GITHUB_WORKSPACE/build.sh
-        df -h
+        du -ah -d1 . |sort -h
 
-    - uses: ncipollo/release-action@main
+    - name: Archive bionic-0.tar.xz
+      uses: actions/upload-artifact@v3
+      with:
+        name: bionic-0.tar.xz
+        path: aosp/bionic-0.tar.xz
+    - name: Archive external_arm-optimized-routines-0.tar.xz
+      uses: actions/upload-artifact@v3
+      with:
+        name: external_arm-optimized-routines-0.tar.xz
+        path: aosp/external_arm-optimized-routines-0.tar.xz
+    - name: Archive external_crosvm-0.tar.xz
+      uses: actions/upload-artifact@v3
+      with:
+        name: external_crosvm-0.tar.xz
+        path: aosp/external_crosvm-0.tar.xz
+    - name: Archive external_gwp_asan-0.tar.xz
+      uses: actions/upload-artifact@v3
+      with:
+        name: external_gwp_asan-0.tar.xz
+        path: aosp/external_gwp_asan-0.tar.xz
+    - name: Archive external_rust_crates_bytes-0.tar.xz
+      uses: actions/upload-artifact@v3
+      with:
+        name: external_rust_crates_bytes-0.tar.xz
+        path: aosp/external_rust_crates_bytes-0.tar.xz
+    - name: Archive external_rust_crates_downcast-rs-0.tar.xz
+      uses: actions/upload-artifact@v3
+      with:
+        name: external_rust_crates_downcast-rs-0.tar.xz
+        path: aosp/external_rust_crates_downcast-rs-0.tar.xz
+    - name: Archive external_rust_crates_either-0.tar.xz
+      uses: actions/upload-artifact@v3
+      with:
+        name: external_rust_crates_either-0.tar.xz
+        path: aosp/external_rust_crates_either-0.tar.xz
+    - name: Archive external_rust_crates_fallible-iterator-0.tar.xz
+      uses: actions/upload-artifact@v3
+      with:
+        name: external_rust_crates_fallible-iterator-0.tar.xz
+        path: aosp/external_rust_crates_fallible-iterator-0.tar.xz
+    - name: Archive external_rust_crates_fallible-streaming-iterator-0.tar.xz
+      uses: actions/upload-artifact@v3
+      with:
+        name: external_rust_crates_fallible-streaming-iterator-0.tar.xz
+        path: aosp/external_rust_crates_fallible-streaming-iterator-0.tar.xz
+    - name: Archive external_rust_crates_glob-0.tar.xz
+      uses: actions/upload-artifact@v3
+      with:
+        name: external_rust_crates_glob-0.tar.xz
+        path: aosp/external_rust_crates_glob-0.tar.xz
+    - name: Archive external_rust_crates_lazycell-0.tar.xz
+      uses: actions/upload-artifact@v3
+      with:
+        name: external_rust_crates_lazycell-0.tar.xz
+        path: aosp/external_rust_crates_lazycell-0.tar.xz
+    - name: Archive external_rust_crates_paste-0.tar.xz
+      uses: actions/upload-artifact@v3
+      with:
+        name: external_rust_crates_paste-0.tar.xz
+        path: aosp/external_rust_crates_paste-0.tar.xz
+    - name: Archive external_rust_crates_peeking_take_while-0.tar.xz
+      uses: actions/upload-artifact@v3
+      with:
+        name: external_rust_crates_peeking_take_while-0.tar.xz
+        path: aosp/external_rust_crates_peeking_take_while-0.tar.xz
+    - name: Archive external_rust_crates_proc-macro-hack-0.tar.xz
+      uses: actions/upload-artifact@v3
+      with:
+        name: external_rust_crates_proc-macro-hack-0.tar.xz
+        path: aosp/external_rust_crates_proc-macro-hack-0.tar.xz
+    - name: Archive external_rust_crates_regex-syntax-0.tar.xz
+      uses: actions/upload-artifact@v3
+      with:
+        name: external_rust_crates_regex-syntax-0.tar.xz
+        path: aosp/external_rust_crates_regex-syntax-0.tar.xz
+    - name: Archive external_rust_crates_rustc-hash-0.tar.xz
+      uses: actions/upload-artifact@v3
+      with:
+        name: external_rust_crates_rustc-hash-0.tar.xz
+        path: aosp/external_rust_crates_rustc-hash-0.tar.xz
+    - name: Archive external_rust_crates_scopeguard-0.tar.xz
+      uses: actions/upload-artifact@v3
+      with:
+        name: external_rust_crates_scopeguard-0.tar.xz
+        path: aosp/external_rust_crates_scopeguard-0.tar.xz
+    - name: Archive external_rust_crates_shlex-0.tar.xz
+      uses: actions/upload-artifact@v3
+      with:
+        name: external_rust_crates_shlex-0.tar.xz
+        path: aosp/external_rust_crates_shlex-0.tar.xz
+    - name: Archive external_rust_crates_termcolor-0.tar.xz
+      uses: actions/upload-artifact@v3
+      with:
+        name: external_rust_crates_termcolor-0.tar.xz
+        path: aosp/external_rust_crates_termcolor-0.tar.xz
+    - name: Archive external_rust_crates_unicode-segmentation-0.tar.xz
+      uses: actions/upload-artifact@v3
+      with:
+        name: external_rust_crates_unicode-segmentation-0.tar.xz
+        path: aosp/external_rust_crates_unicode-segmentation-0.tar.xz
+    - name: Archive external_rust_crates_unicode-width-0.tar.xz
+      uses: actions/upload-artifact@v3
+      with:
+        name: external_rust_crates_unicode-width-0.tar.xz
+        path: aosp/external_rust_crates_unicode-width-0.tar.xz
+    - name: Archive external_rust_crates_unicode-xid-0.tar.xz
+      uses: actions/upload-artifact@v3
+      with:
+        name: external_rust_crates_unicode-xid-0.tar.xz
+        path: aosp/external_rust_crates_unicode-xid-0.tar.xz
+    - name: Archive external_scudo-0.tar.xz
+      uses: actions/upload-artifact@v3
+      with:
+        name: external_scudo-0.tar.xz
+        path: aosp/external_scudo-0.tar.xz
+    - name: Archive system_bt-0.tar.xz
+      uses: actions/upload-artifact@v3
+      with:
+        name: system_bt-0.tar.xz
+        path: aosp/system_bt-0.tar.xz
+    - name: Archive system_core-0.tar.xz
+      uses: actions/upload-artifact@v3
+      with:
+        name: system_core-0.tar.xz
+        path: aosp/system_core-0.tar.xz
+
+    - uses: softprops/action-gh-release@master
       with:
         name: ${{ env.branch }}-0
-        artifacts: "aosp/bionic-0.tar.xz,aosp/external_arm-optimized-routines-0.tar.xz,aosp/external_crosvm-0.tar.xz,aosp/external_gwp_asan-0.tar.xz,aosp/external_rust_crates_bytes-0.tar.xz,aosp/external_rust_crates_downcast-rs-0.tar.xz,aosp/external_rust_crates_either-0.tar.xz,aosp/external_rust_crates_fallible-iterator-0.tar.xz,aosp/external_rust_crates_fallible-streaming-iterator-0.tar.xz,aosp/external_rust_crates_glob-0.tar.xz,aosp/external_rust_crates_lazycell-0.tar.xz,aosp/external_rust_crates_paste-0.tar.xz,aosp/external_rust_crates_peeking_take_while-0.tar.xz,aosp/external_rust_crates_proc-macro-hack-0.tar.xz,aosp/external_rust_crates_regex-syntax-0.tar.xz,aosp/external_rust_crates_rustc-hash-0.tar.xz,aosp/external_rust_crates_scopeguard-0.tar.xz,aosp/external_rust_crates_shlex-0.tar.xz,aosp/external_rust_crates_termcolor-0.tar.xz,aosp/external_rust_crates_unicode-segmentation-0.tar.xz,aosp/external_rust_crates_unicode-width-0.tar.xz,aosp/external_rust_crates_unicode-xid-0.tar.xz,aosp/external_scudo-0.tar.xz,aosp/frameworks_rs-0.tar.xz,aosp/system_bt-0.tar.xz,aosp/system_core-0.tar.xz"
-        tag: ${{ env.branch }}-0
-        removeArtifacts: true
-        allowUpdates: true
+        tag_name: ${{ env.branch }}-0
+        files: |
+          aosp/bionic-0.tar.xz
+          aosp/external_arm-optimized-routines-0.tar.xz
+          aosp/external_crosvm-0.tar.xz
+          aosp/external_gwp_asan-0.tar.xz
+          aosp/external_rust_crates_bytes-0.tar.xz
+          aosp/external_rust_crates_downcast-rs-0.tar.xz
+          aosp/external_rust_crates_either-0.tar.xz
+          aosp/external_rust_crates_fallible-iterator-0.tar.xz
+          aosp/external_rust_crates_fallible-streaming-iterator-0.tar.xz
+          aosp/external_rust_crates_glob-0.tar.xz
+          aosp/external_rust_crates_lazycell-0.tar.xz
+          aosp/external_rust_crates_paste-0.tar.xz
+          aosp/external_rust_crates_peeking_take_while-0.tar.xz
+          aosp/external_rust_crates_proc-macro-hack-0.tar.xz
+          aosp/external_rust_crates_regex-syntax-0.tar.xz
+          aosp/external_rust_crates_rustc-hash-0.tar.xz
+          aosp/external_rust_crates_scopeguard-0.tar.xz
+          aosp/external_rust_crates_shlex-0.tar.xz
+          aosp/external_rust_crates_termcolor-0.tar.xz
+          aosp/external_rust_crates_unicode-segmentation-0.tar.xz
+          aosp/external_rust_crates_unicode-width-0.tar.xz
+          aosp/external_rust_crates_unicode-xid-0.tar.xz
+          aosp/external_scudo-0.tar.xz
+          aosp/system_bt-0.tar.xz
+          aosp/system_core-0.tar.xz

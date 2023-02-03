@@ -35,9 +35,7 @@ function clone_project() {
   branch=$1
   project_name=$2
   project_path=$3
-  shift;
-  shift;
-  shift;
+  shift 3
   mkdir -p ${project_path} && pushd ${project_path}
   git init
   git config --unset-all core.bare
@@ -52,6 +50,10 @@ function clone_project() {
 }
 
 function download_release() {
-  curl -LJO https://github.com/cibuilde/aosp-buildbot/releases/download/$3/$1.tar.xz
-  mkdir -p aosp/prebuiltlibs/$2 && tar xf $1.tar.xz -C aosp/prebuiltlibs/$2
+  filename=$1
+  project_path=$2
+  build_tag=$3
+  shift 3
+  curl -LJO https://github.com/cibuilde/aosp-buildbot/releases/download/${build_tag}/${filename}.tar.xz
+  mkdir -p aosp/prebuiltlibs/${project_path} && tar xf ${filename}.tar.xz -C aosp/prebuiltlibs/${project_path} --exclude="ninja" "$@"
 }
