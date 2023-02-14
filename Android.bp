@@ -1,12 +1,24 @@
 
 cc_binary {
+  name: "voiddep-cfi",
+  srcs: [ "util.cpp", ],
+  recovery_available: true,
+  vendor_available: true,
+  compile_multilib: "both",
+  multilib: { lib32: { suffix: "32", }, lib64: { suffix: "64", }, },
+  static_libs: ["libFLAC","libarect","libaudioutils_fixedfft","libgsm","libhevcdec","libmedia_ndkformatpriv","libmediandk_format","libnetd_client","libogg","libstagefright_amrnbenc","libstagefright_amrwbdec","libstagefright_id3","libstagefright_m4vh263enc","libstagefright_mp3dec","libvpx","libwebm"],
+  shared_libs: ["libnetd_client","libvpx"],
+  stl: "none",
+  sanitize: { cfi: true, },
+}
+cc_binary {
   name: "voiddep-lto",
   srcs: [ "util.cpp", ],
   recovery_available: true,
   vendor_available: true,
   compile_multilib: "both",
   multilib: { lib32: { suffix: "32", }, lib64: { suffix: "64", }, },
-  static_libs: ["libc++demangle"],
+  static_libs: ["libarect","libgif","libserviceutils","libstatspull_lazy","libstatssocket_lazy","libwebp-decode","libwebp-encode"],
   shared_libs: [],
   stl: "none",
   target: { android: { lto: { thin: true, }, }, },
@@ -25,34 +37,42 @@ apex_key {
   private_key: "com.android.prebuilts.pem",
 }
 cc_binary {
-  name: "voiddep10000",
-  srcs: [ "util.cpp", ],
-  compile_multilib: "both",
-  multilib: { lib32: { suffix: "32", }, lib64: { suffix: "64", }, },
-  static_libs: ["libbrotli","libc++abi","libc++demangle","liblzma","libz"],
-  shared_libs: ["liblzma"],
-  apex_available: [ "com.android.prebuilts-10000", ],
-  min_sdk_version: "apex_inherit",
-  stl: "none", 
-}
-cc_binary {
   name: "voiddep31",
-  srcs: [ "util.cpp", ],
+  srcs: [ "util.cpp", ":asm_defines.s", ":bcm_object", ],
   compile_multilib: "both",
   multilib: { lib32: { suffix: "32", }, lib64: { suffix: "64", }, },
-  static_libs: ["libc++abi","libc++demangle","libexpat","liblzma"],
-  shared_libs: ["libexpat","liblzma"],
+  static_libs: ["fmtlib","libdt_socket","libfdlibm","libjdwp","liblz4","libnpt","libsigchain","libvixl"],
+  shared_libs: ["libcrypto","libdt_socket","libjdwp","liblz4","libnpt","libsigchain"],
   apex_available: [ "com.android.prebuilts-31", ],
   min_sdk_version: "31",
   stl: "none", 
 }
 cc_binary {
-  name: "voiddep29",
-  srcs: [ "util.cpp", ],
+  name: "voiddep10000",
+  srcs: [ "util.cpp", ":bcm_object", ":libminijail_gen_constants_obj", ":libminijail_gen_syscall_obj", ],
   compile_multilib: "both",
   multilib: { lib32: { suffix: "32", }, lib64: { suffix: "64", }, },
-  static_libs: ["libc++abi","libc++demangle"],
-  shared_libs: [],
+  static_libs: ["fmtlib","gwp_asan_crash_handler","libasyncio","libc_malloc_hooks","libcap","libdrm","libepoxy","libext2_uuid","libfdt","libffi","libicuuc_stubdata","libjsoncpp","liblog","liblz4","libminijail_generated","libssl","libzstd"],
+  shared_libs: ["libc_malloc_hooks","libcap","libcrypto","libdrm","libfdt","libjsoncpp"],
+  apex_available: [ "com.android.prebuilts-10000", ],
+  min_sdk_version: "apex_inherit",
+  stl: "none", 
+}
+rust_binary {
+  name: "voidrustrlib10000",
+  srcs: [ "util.rs"],
+  prefer_rlib: true,
+  apex_available: [ "com.android.prebuilts-10000", ],
+  rustlibs: ["libbit_field"],
+  min_sdk_version: "apex_inherit",
+}
+cc_binary {
+  name: "voiddep29",
+  srcs: [ "util.cpp", ":bcm_object", ":libminijail_gen_constants_obj", ":libminijail_gen_syscall_obj", ],
+  compile_multilib: "both",
+  multilib: { lib32: { suffix: "32", }, lib64: { suffix: "64", }, },
+  static_libs: ["fmtlib","libarect","libcap","libcodec2","libjsoncpp","libmath","libminijail_generated","libopus","libssl","libstagefright_amrnb_common","libstagefright_enc_common","libstagefright_m4vh263enc"],
+  shared_libs: ["libcap","libcodec2","libcrypto","libopus","libssl","libstagefright_amrnb_common","libstagefright_enc_common"],
   apex_available: [ "com.android.prebuilts-29", ],
   min_sdk_version: "29",
   stl: "none", 
@@ -62,8 +82,8 @@ cc_binary {
   srcs: [ "util.cpp", ],
   compile_multilib: "both",
   multilib: { lib32: { suffix: "32", }, lib64: { suffix: "64", }, },
-  static_libs: ["libc++abi","libc++demangle"],
-  shared_libs: [],
+  static_libs: ["fmtlib","libarect","libcrypto_static","libjsoncpp","libmath"],
+  shared_libs: ["libstatssocket"],
   apex_available: [ "com.android.prebuilts-30", ],
   min_sdk_version: "30",
   stl: "none", 
@@ -73,7 +93,7 @@ cc_binary {
   srcs: [ "util.cpp", ],
   compile_multilib: "both",
   multilib: { lib32: { suffix: "32", }, lib64: { suffix: "64", }, },
-  static_libs: ["libc++demangle"],
+  static_libs: ["libcpu_features","libcpu_features-utils"],
   shared_libs: [],
   apex_available: [ "com.android.prebuilts-31", ],
   min_sdk_version: "31",
@@ -81,22 +101,18 @@ cc_binary {
   target: { android: { lto: { thin: true, }, }, },
   
 }
-apex {
-  name: "com.android.prebuilts-10000",
+cc_binary {
+  name: "voiddep29_cfi",
+  srcs: [ "util.cpp", ],
   compile_multilib: "both",
-  manifest: "manifest.json",
-  native_shared_libs: [],
-  binaries: [],
-  prebuilts: [],
-  apps: [],
-  multilib: { both: {
-    binaries: ["voiddep10000"],
-  }, },
-  key: "com.android.prebuilts.key",
-  certificate: "com.android.prebuilts.certificate",
-  file_contexts: ":com.android.runtime-file_contexts",
-  min_sdk_version: "",
-  updatable: false,
+  multilib: { lib32: { suffix: "32", }, lib64: { suffix: "64", }, },
+  static_libs: ["codecs_g711dec","fmtlib","libFLAC","libarect","libaudioutils_fixedfft","libfifo","libgav1","libgsm","libhevcdec","libhevcenc","libjsoncpp","libstagefright_amrnbenc","libstagefright_amrwbdec","libstagefright_id3","libstagefright_mp3dec","libvpx","libwebm"],
+  shared_libs: ["libvpx"],
+  apex_available: [ "com.android.prebuilts-29", ],
+  min_sdk_version: "29",
+  stl: "none", 
+  
+  sanitize: { cfi: true, },
 }
 apex {
   name: "com.android.prebuilts-31",
@@ -116,6 +132,23 @@ apex {
   updatable: false,
 }
 apex {
+  name: "com.android.prebuilts-10000",
+  compile_multilib: "both",
+  manifest: "manifest.json",
+  native_shared_libs: [],
+  binaries: [],
+  prebuilts: [],
+  apps: [],
+  multilib: { both: {
+    binaries: ["voiddep10000","voidrustrlib10000"],
+  }, },
+  key: "com.android.prebuilts.key",
+  certificate: "com.android.prebuilts.certificate",
+  file_contexts: ":com.android.runtime-file_contexts",
+  min_sdk_version: "",
+  updatable: false,
+}
+apex {
   name: "com.android.prebuilts-29",
   compile_multilib: "both",
   manifest: "manifest.json",
@@ -124,7 +157,7 @@ apex {
   prebuilts: [],
   apps: [],
   multilib: { both: {
-    binaries: ["voiddep29"],
+    binaries: ["boringssl_self_test","voiddep29","voiddep29_cfi"],
   }, },
   key: "com.android.prebuilts.key",
   certificate: "com.android.prebuilts.certificate",
