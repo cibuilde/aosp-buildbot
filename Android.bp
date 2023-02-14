@@ -6,8 +6,8 @@ cc_binary {
   vendor_available: true,
   compile_multilib: "both",
   multilib: { lib32: { suffix: "32", }, lib64: { suffix: "64", }, },
-  static_libs: ["libFraunhoferAAC","libsonivox","libstagefright_amrnbdec","libstagefright_amrwbenc","libstagefright_m4vh263dec","libyuv","libyuv_static"],
-  shared_libs: ["libsonivox"],
+  static_libs: ["liblogd","libmedia_midiiowrapper","libnetdutils"],
+  shared_libs: ["libnetdutils"],
   stl: "none",
   sanitize: { cfi: true, },
 }
@@ -18,7 +18,7 @@ cc_binary {
   vendor_available: true,
   compile_multilib: "both",
   multilib: { lib32: { suffix: "32", }, lib64: { suffix: "64", }, },
-  static_libs: ["libnativehelper_lazy"],
+  static_libs: ["libtrace_proto","libziparchive_for_incfs"],
   shared_libs: [],
   stl: "none",
   target: { android: { lto: { thin: true, }, }, },
@@ -41,32 +41,19 @@ cc_binary {
   srcs: [ "util.cpp", ],
   compile_multilib: "both",
   multilib: { lib32: { suffix: "32", }, lib64: { suffix: "64", }, },
-  static_libs: ["libbase","libnativebridge"],
-  shared_libs: ["libandroidio","libbase","libnativebridge","libnativehelper"],
+  static_libs: ["libart-disassembler","libdexfile_support","libdt_fd_forward","libperfetto_client_experimental","libprocinfo","libziparchive","perfetto_trace_protos"],
+  shared_libs: ["libart-disassembler","libdt_fd_forward","libziparchive"],
   apex_available: [ "com.android.prebuilts-31", ],
   min_sdk_version: "31",
   stl: "none", 
-}
-cc_binary {
-  name: "voiddep29_cfi",
-  srcs: [ "util.cpp", ],
-  compile_multilib: "both",
-  multilib: { lib32: { suffix: "32", }, lib64: { suffix: "64", }, },
-  static_libs: ["libFraunhoferAAC","libbase","libprotobuf-cpp-lite","libsonivoxwithoutjet","libstagefright_amrnbdec","libstagefright_amrwbenc","libvorbisidec","libyuv","libyuv_static"],
-  shared_libs: [],
-  apex_available: [ "com.android.prebuilts-29", ],
-  min_sdk_version: "29",
-  stl: "none", 
-  
-  sanitize: { cfi: true, },
 }
 cc_binary {
   name: "voiddep10000",
   srcs: [ "util.cpp", ],
   compile_multilib: "both",
   multilib: { lib32: { suffix: "32", }, lib64: { suffix: "64", }, },
-  static_libs: ["libbase","libcrypto_utils","libgbm","libminijail","libprotobuf-cpp-lite","libwayland_client_static"],
-  shared_libs: ["libbase","libcrypto_utils","libminijail","libprotobuf-cpp-full","libprotobuf-cpp-lite"],
+  static_libs: ["icing-c-proto","lib_apex_manifest_proto_lite","lib_microdroid_signature_proto_lite","libadb_crypto","libadb_pairing_auth","libadb_pairing_connection","libadb_protos","libadb_sysdeps","libadb_tls_connection","libadbconnection_client","libadbconnection_server","libandroidicu_static","libandroidicuinit","libapexutil","libapp_processes_protos_lite","libc_malloc_debug_backtrace","libcdisk_spec","libcutils","libcutils_sockets","libdexfile_support","libdiagnose_usb","libdisplay_wl","libicu_static","libprocessgroup","libprocinfo","libsparse","libtombstone_proto","libtombstoned_client_static","libutils","libvirglrenderer","libziparchive"],
+  shared_libs: ["libadb_pairing_auth","libadb_pairing_connection","libadb_protos","libadbconnection_client","libandroidicu","libcutils","libcuttlefish_fs","libcuttlefish_utils","libicu","libicu_jni","libicui18n","libicuuc","libprocessgroup","libprocinfo","libutils"],
   apex_available: [ "com.android.prebuilts-10000", ],
   min_sdk_version: "apex_inherit",
   stl: "none", 
@@ -76,7 +63,7 @@ rust_binary {
   srcs: [ "util.rs"],
   prefer_rlib: true,
   apex_available: [ "com.android.prebuilts-10000", ],
-  rustlibs: ["libandroid_log_sys","libanyhow","libassertions","libasync_task","libbitflags","libcfg_if","libfutures_core","libfutures_io","libfutures_sink","libfutures_task","libitoa","liblazy_static","liblibc","libmemchr","libmemoffset","libpin_project_lite","libpin_utils","libproc_macro_nested","libryu","libserde","libslab","libsmallvec","libsync_rust","libsyscall_defines","libthiserror"],
+  rustlibs: ["libacpi_tables","libcdisk_spec_proto","libdata_model","libfutures_channel","libintrusive_collections","libkernel_cmdline","liblog_rust","libminijail_rust","libminijail_sys","libnum_cpus","libprotos","libserde_json","libshared_child","libtempfile"],
   min_sdk_version: "apex_inherit",
 }
 rust_binary {
@@ -84,7 +71,7 @@ rust_binary {
   srcs: [ "util.rs"],
   prefer_rlib: false,
   apex_available: [ "com.android.prebuilts-10000", ],
-  rustlibs: ["libandroid_log_sys","libanyhow","libassertions","libasync_task","libbitflags","libcfg_if","libfutures_core","libfutures_io","libfutures_sink","libfutures_task","libitoa","liblazy_static","liblibc","libmemchr","libmemoffset","libpin_project_lite","libpin_utils","libproc_macro_nested","libryu","libserde","libslab","libsmallvec","libsync_rust","libsyscall_defines","libtextwrap","libthiserror"],
+  rustlibs: ["libclap","libdata_model","libfutures_channel","libintrusive_collections","liblog_rust","libnix","libnum_cpus","libserde_json","libtempfile"],
   min_sdk_version: "apex_inherit",
 }
 cc_binary {
@@ -92,19 +79,32 @@ cc_binary {
   srcs: [ "util.cpp", ],
   compile_multilib: "both",
   multilib: { lib32: { suffix: "32", }, lib64: { suffix: "64", }, },
-  static_libs: ["libbase","libion","libstagefright_m4vh263dec"],
-  shared_libs: ["libbase","libion","libminijail"],
+  static_libs: ["libcutils","libcutils_sockets","libprocessgroup","libutils"],
+  shared_libs: ["libavservices_minijail","libcutils","libjavacrypto","libprocessgroup","libutils"],
   apex_available: [ "com.android.prebuilts-29", ],
   min_sdk_version: "29",
   stl: "none", 
+}
+cc_binary {
+  name: "voiddep29_cfi",
+  srcs: [ "util.cpp", ],
+  compile_multilib: "both",
+  multilib: { lib32: { suffix: "32", }, lib64: { suffix: "64", }, },
+  static_libs: ["libcutils","libcutils_sockets","libmedia_midiiowrapper","libnetdutils","libprocessgroup","libstatspush_compat","libsysutils","libutils","libwatchdog","stats_proto"],
+  shared_libs: [],
+  apex_available: [ "com.android.prebuilts-29", ],
+  min_sdk_version: "29",
+  stl: "none", 
+  
+  sanitize: { cfi: true, },
 }
 cc_binary {
   name: "voiddep30",
   srcs: [ "util.cpp", ],
   compile_multilib: "both",
   multilib: { lib32: { suffix: "32", }, lib64: { suffix: "64", }, },
-  static_libs: ["libbase","libprotobuf-cpp-lite"],
-  shared_libs: ["libstats_jni"],
+  static_libs: ["libclasspaths_proto","libcutils","libcutils_sockets","libmodules-utils-build","libprocessgroup","libprocpartition","libsdk_proto","libsysutils","libutils","philox_random"],
+  shared_libs: ["libservice-connectivity"],
   apex_available: [ "com.android.prebuilts-30", ],
   min_sdk_version: "30",
   stl: "none", 
@@ -118,29 +118,12 @@ apex {
   prebuilts: [],
   apps: [],
   multilib: { both: {
-    binaries: ["voiddep31"],
+    binaries: ["dalvikvm","voiddep31"],
   }, },
   key: "com.android.prebuilts.key",
   certificate: "com.android.prebuilts.certificate",
   file_contexts: ":com.android.runtime-file_contexts",
   min_sdk_version: "31",
-  updatable: false,
-}
-apex {
-  name: "com.android.prebuilts-29",
-  compile_multilib: "both",
-  manifest: "manifest.json",
-  native_shared_libs: [],
-  binaries: [],
-  prebuilts: [],
-  apps: [],
-  multilib: { both: {
-    binaries: ["voiddep29_cfi","voiddep29"],
-  }, },
-  key: "com.android.prebuilts.key",
-  certificate: "com.android.prebuilts.certificate",
-  file_contexts: ":com.android.runtime-file_contexts",
-  min_sdk_version: "29",
   updatable: false,
 }
 apex {
@@ -158,6 +141,23 @@ apex {
   certificate: "com.android.prebuilts.certificate",
   file_contexts: ":com.android.runtime-file_contexts",
   min_sdk_version: "",
+  updatable: false,
+}
+apex {
+  name: "com.android.prebuilts-29",
+  compile_multilib: "both",
+  manifest: "manifest.json",
+  native_shared_libs: [],
+  binaries: [],
+  prebuilts: [],
+  apps: [],
+  multilib: { both: {
+    binaries: ["voiddep29","voiddep29_cfi"],
+  }, },
+  key: "com.android.prebuilts.key",
+  certificate: "com.android.prebuilts.certificate",
+  file_contexts: ":com.android.runtime-file_contexts",
+  min_sdk_version: "29",
   updatable: false,
 }
 apex {
