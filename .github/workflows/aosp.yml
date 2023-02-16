@@ -1501,7 +1501,6 @@ jobs:
         mkdir -p prebuiltlibs && cp $GITHUB_WORKSPACE/rust_prebuilt.list prebuiltlibs/
         sed -i 's/libLLVM_android.so"],/libLLVM_android.so"],\n}, android_x86_64: { srcs: ["libLLVM_android.so"], }, android_x86: { srcs: ["libLLVM_android.so"],/g' prebuilts/sdk/tools/Android.bp
         sed -i 's/name: "libLLVM_android",/name: "libLLVM_android",\n device_supported: true, prefer: true,/g' prebuilts/sdk/tools/Android.bp
-        cat prebuilts/sdk/tools/Android.bp
         mv prebuiltlibs/external/llvm/libLLVM_android/android_x86_64_shared/libLLVM_android.so prebuilts/sdk/tools/
 
         rm -rf frameworks/proto_logging/stats/stats_log_api_gen
@@ -1510,21 +1509,246 @@ jobs:
         du -ah -d1 out/soong |sort -h
         du -ah -d1 . |sort -h
 
+    - name: Archive art-7.tar.xz
+      uses: actions/upload-artifact@v3
+      with:
+        name: art-7.tar.xz
+        path: aosp/art-7.tar.xz
+    - name: Archive bionic-7.tar.xz
+      uses: actions/upload-artifact@v3
+      with:
+        name: bionic-7.tar.xz
+        path: aosp/bionic-7.tar.xz
+    - name: Archive bootable_recovery-7.tar.xz
+      uses: actions/upload-artifact@v3
+      with:
+        name: bootable_recovery-7.tar.xz
+        path: aosp/bootable_recovery-7.tar.xz
+    - name: Archive device_generic_goldfish-opengl-7.tar.xz
+      uses: actions/upload-artifact@v3
+      with:
+        name: device_generic_goldfish-opengl-7.tar.xz
+        path: aosp/device_generic_goldfish-opengl-7.tar.xz
     - name: Archive device_google_cuttlefish-7.tar.xz
       uses: actions/upload-artifact@v3
       with:
         name: device_google_cuttlefish-7.tar.xz
         path: aosp/device_google_cuttlefish-7.tar.xz
+    - name: Archive external_android-clat-7.tar.xz
+      uses: actions/upload-artifact@v3
+      with:
+        name: external_android-clat-7.tar.xz
+        path: aosp/external_android-clat-7.tar.xz
+    - name: Archive external_crosvm-7.tar.xz
+      uses: actions/upload-artifact@v3
+      with:
+        name: external_crosvm-7.tar.xz
+        path: aosp/external_crosvm-7.tar.xz
+    - name: Archive external_dnsmasq-7.tar.xz
+      uses: actions/upload-artifact@v3
+      with:
+        name: external_dnsmasq-7.tar.xz
+        path: aosp/external_dnsmasq-7.tar.xz
+    - name: Archive external_e2fsprogs-7.tar.xz
+      uses: actions/upload-artifact@v3
+      with:
+        name: external_e2fsprogs-7.tar.xz
+        path: aosp/external_e2fsprogs-7.tar.xz
+    - name: Archive external_erofs-utils-7.tar.xz
+      uses: actions/upload-artifact@v3
+      with:
+        name: external_erofs-utils-7.tar.xz
+        path: aosp/external_erofs-utils-7.tar.xz
+    - name: Archive external_f2fs-tools-7.tar.xz
+      uses: actions/upload-artifact@v3
+      with:
+        name: external_f2fs-tools-7.tar.xz
+        path: aosp/external_f2fs-tools-7.tar.xz
+    - name: Archive external_harfbuzz_ng-7.tar.xz
+      uses: actions/upload-artifact@v3
+      with:
+        name: external_harfbuzz_ng-7.tar.xz
+        path: aosp/external_harfbuzz_ng-7.tar.xz
+    - name: Archive external_iproute2-7.tar.xz
+      uses: actions/upload-artifact@v3
+      with:
+        name: external_iproute2-7.tar.xz
+        path: aosp/external_iproute2-7.tar.xz
+    - name: Archive external_libavc-7.tar.xz
+      uses: actions/upload-artifact@v3
+      with:
+        name: external_libavc-7.tar.xz
+        path: aosp/external_libavc-7.tar.xz
+    - name: Archive external_libmpeg2-7.tar.xz
+      uses: actions/upload-artifact@v3
+      with:
+        name: external_libmpeg2-7.tar.xz
+        path: aosp/external_libmpeg2-7.tar.xz
+    - name: Archive external_libxml2-7.tar.xz
+      uses: actions/upload-artifact@v3
+      with:
+        name: external_libxml2-7.tar.xz
+        path: aosp/external_libxml2-7.tar.xz
+    - name: Archive external_mdnsresponder-7.tar.xz
+      uses: actions/upload-artifact@v3
+      with:
+        name: external_mdnsresponder-7.tar.xz
+        path: aosp/external_mdnsresponder-7.tar.xz
+    - name: Archive external_mtpd-7.tar.xz
+      uses: actions/upload-artifact@v3
+      with:
+        name: external_mtpd-7.tar.xz
+        path: aosp/external_mtpd-7.tar.xz
+    - name: Archive external_pdfium-7.tar.xz
+      uses: actions/upload-artifact@v3
+      with:
+        name: external_pdfium-7.tar.xz
+        path: aosp/external_pdfium-7.tar.xz
+    - name: Archive external_perfetto-7.tar.xz
+      uses: actions/upload-artifact@v3
+      with:
+        name: external_perfetto-7.tar.xz
+        path: aosp/external_perfetto-7.tar.xz
+    - name: Archive external_ppp-7.tar.xz
+      uses: actions/upload-artifact@v3
+      with:
+        name: external_ppp-7.tar.xz
+        path: aosp/external_ppp-7.tar.xz
+    - name: Archive external_rust_crates_ahash-7.tar.xz
+      uses: actions/upload-artifact@v3
+      with:
+        name: external_rust_crates_ahash-7.tar.xz
+        path: aosp/external_rust_crates_ahash-7.tar.xz
+    - name: Archive external_rust_crates_cexpr-7.tar.xz
+      uses: actions/upload-artifact@v3
+      with:
+        name: external_rust_crates_cexpr-7.tar.xz
+        path: aosp/external_rust_crates_cexpr-7.tar.xz
+    - name: Archive external_rust_crates_chrono-7.tar.xz
+      uses: actions/upload-artifact@v3
+      with:
+        name: external_rust_crates_chrono-7.tar.xz
+        path: aosp/external_rust_crates_chrono-7.tar.xz
+    - name: Archive external_rust_crates_clang-sys-7.tar.xz
+      uses: actions/upload-artifact@v3
+      with:
+        name: external_rust_crates_clang-sys-7.tar.xz
+        path: aosp/external_rust_crates_clang-sys-7.tar.xz
+    - name: Archive external_rust_crates_env_logger-7.tar.xz
+      uses: actions/upload-artifact@v3
+      with:
+        name: external_rust_crates_env_logger-7.tar.xz
+        path: aosp/external_rust_crates_env_logger-7.tar.xz
     - name: Archive external_rust_crates_flate2-7.tar.xz
       uses: actions/upload-artifact@v3
       with:
         name: external_rust_crates_flate2-7.tar.xz
         path: aosp/external_rust_crates_flate2-7.tar.xz
+    - name: Archive external_rust_crates_futures-util-7.tar.xz
+      uses: actions/upload-artifact@v3
+      with:
+        name: external_rust_crates_futures-util-7.tar.xz
+        path: aosp/external_rust_crates_futures-util-7.tar.xz
+    - name: Archive external_rust_crates_mio-7.tar.xz
+      uses: actions/upload-artifact@v3
+      with:
+        name: external_rust_crates_mio-7.tar.xz
+        path: aosp/external_rust_crates_mio-7.tar.xz
+    - name: Archive external_rust_crates_parking_lot_core-7.tar.xz
+      uses: actions/upload-artifact@v3
+      with:
+        name: external_rust_crates_parking_lot_core-7.tar.xz
+        path: aosp/external_rust_crates_parking_lot_core-7.tar.xz
+    - name: Archive external_rust_crates_rand_core-7.tar.xz
+      uses: actions/upload-artifact@v3
+      with:
+        name: external_rust_crates_rand_core-7.tar.xz
+        path: aosp/external_rust_crates_rand_core-7.tar.xz
+    - name: Archive external_rust_crates_regex-7.tar.xz
+      uses: actions/upload-artifact@v3
+      with:
+        name: external_rust_crates_regex-7.tar.xz
+        path: aosp/external_rust_crates_regex-7.tar.xz
+    - name: Archive external_rust_crates_structopt-7.tar.xz
+      uses: actions/upload-artifact@v3
+      with:
+        name: external_rust_crates_structopt-7.tar.xz
+        path: aosp/external_rust_crates_structopt-7.tar.xz
+    - name: Archive external_rust_cxx-7.tar.xz
+      uses: actions/upload-artifact@v3
+      with:
+        name: external_rust_cxx-7.tar.xz
+        path: aosp/external_rust_cxx-7.tar.xz
+    - name: Archive external_sfntly-7.tar.xz
+      uses: actions/upload-artifact@v3
+      with:
+        name: external_sfntly-7.tar.xz
+        path: aosp/external_sfntly-7.tar.xz
+    - name: Archive external_sqlite-7.tar.xz
+      uses: actions/upload-artifact@v3
+      with:
+        name: external_sqlite-7.tar.xz
+        path: aosp/external_sqlite-7.tar.xz
+    - name: Archive external_swiftshader-7.tar.xz
+      uses: actions/upload-artifact@v3
+      with:
+        name: external_swiftshader-7.tar.xz
+        path: aosp/external_swiftshader-7.tar.xz
+    - name: Archive external_toybox-7.tar.xz
+      uses: actions/upload-artifact@v3
+      with:
+        name: external_toybox-7.tar.xz
+        path: aosp/external_toybox-7.tar.xz
+    - name: Archive frameworks_av-7.tar.xz
+      uses: actions/upload-artifact@v3
+      with:
+        name: frameworks_av-7.tar.xz
+        path: aosp/frameworks_av-7.tar.xz
+    - name: Archive frameworks_base-7.tar.xz
+      uses: actions/upload-artifact@v3
+      with:
+        name: frameworks_base-7.tar.xz
+        path: aosp/frameworks_base-7.tar.xz
     - name: Archive frameworks_compile_libbcc-7.tar.xz
       uses: actions/upload-artifact@v3
       with:
         name: frameworks_compile_libbcc-7.tar.xz
         path: aosp/frameworks_compile_libbcc-7.tar.xz
+    - name: Archive frameworks_libs_net-7.tar.xz
+      uses: actions/upload-artifact@v3
+      with:
+        name: frameworks_libs_net-7.tar.xz
+        path: aosp/frameworks_libs_net-7.tar.xz
+    - name: Archive frameworks_native-7.tar.xz
+      uses: actions/upload-artifact@v3
+      with:
+        name: frameworks_native-7.tar.xz
+        path: aosp/frameworks_native-7.tar.xz
+    - name: Archive hardware_google_camera-7.tar.xz
+      uses: actions/upload-artifact@v3
+      with:
+        name: hardware_google_camera-7.tar.xz
+        path: aosp/hardware_google_camera-7.tar.xz
+    - name: Archive hardware_interfaces-7.tar.xz
+      uses: actions/upload-artifact@v3
+      with:
+        name: hardware_interfaces-7.tar.xz
+        path: aosp/hardware_interfaces-7.tar.xz
+    - name: Archive hardware_libhardware-7.tar.xz
+      uses: actions/upload-artifact@v3
+      with:
+        name: hardware_libhardware-7.tar.xz
+        path: aosp/hardware_libhardware-7.tar.xz
+    - name: Archive packages_modules_DnsResolver-7.tar.xz
+      uses: actions/upload-artifact@v3
+      with:
+        name: packages_modules_DnsResolver-7.tar.xz
+        path: aosp/packages_modules_DnsResolver-7.tar.xz
+    - name: Archive packages_modules_SdkExtensions-7.tar.xz
+      uses: actions/upload-artifact@v3
+      with:
+        name: packages_modules_SdkExtensions-7.tar.xz
+        path: aosp/packages_modules_SdkExtensions-7.tar.xz
     - name: Archive packages_modules_adb-7.tar.xz
       uses: actions/upload-artifact@v3
       with:
@@ -1535,14 +1759,191 @@ jobs:
       with:
         name: system_apex-7.tar.xz
         path: aosp/system_apex-7.tar.xz
+    - name: Archive system_bpf-7.tar.xz
+      uses: actions/upload-artifact@v3
+      with:
+        name: system_bpf-7.tar.xz
+        path: aosp/system_bpf-7.tar.xz
+    - name: Archive system_bt-7.tar.xz
+      uses: actions/upload-artifact@v3
+      with:
+        name: system_bt-7.tar.xz
+        path: aosp/system_bt-7.tar.xz
+    - name: Archive system_connectivity_wificond-7.tar.xz
+      uses: actions/upload-artifact@v3
+      with:
+        name: system_connectivity_wificond-7.tar.xz
+        path: aosp/system_connectivity_wificond-7.tar.xz
+    - name: Archive system_core-7.tar.xz
+      uses: actions/upload-artifact@v3
+      with:
+        name: system_core-7.tar.xz
+        path: aosp/system_core-7.tar.xz
+    - name: Archive system_extras-7.tar.xz
+      uses: actions/upload-artifact@v3
+      with:
+        name: system_extras-7.tar.xz
+        path: aosp/system_extras-7.tar.xz
+    - name: Archive system_keymaster-7.tar.xz
+      uses: actions/upload-artifact@v3
+      with:
+        name: system_keymaster-7.tar.xz
+        path: aosp/system_keymaster-7.tar.xz
+    - name: Archive system_libartpalette-7.tar.xz
+      uses: actions/upload-artifact@v3
+      with:
+        name: system_libartpalette-7.tar.xz
+        path: aosp/system_libartpalette-7.tar.xz
+    - name: Archive system_libfmq-7.tar.xz
+      uses: actions/upload-artifact@v3
+      with:
+        name: system_libfmq-7.tar.xz
+        path: aosp/system_libfmq-7.tar.xz
+    - name: Archive system_libhwbinder-7.tar.xz
+      uses: actions/upload-artifact@v3
+      with:
+        name: system_libhwbinder-7.tar.xz
+        path: aosp/system_libhwbinder-7.tar.xz
+    - name: Archive system_libvintf-7.tar.xz
+      uses: actions/upload-artifact@v3
+      with:
+        name: system_libvintf-7.tar.xz
+        path: aosp/system_libvintf-7.tar.xz
+    - name: Archive system_logging-7.tar.xz
+      uses: actions/upload-artifact@v3
+      with:
+        name: system_logging-7.tar.xz
+        path: aosp/system_logging-7.tar.xz
+    - name: Archive system_media-7.tar.xz
+      uses: actions/upload-artifact@v3
+      with:
+        name: system_media-7.tar.xz
+        path: aosp/system_media-7.tar.xz
+    - name: Archive system_memory_libdmabufheap-7.tar.xz
+      uses: actions/upload-artifact@v3
+      with:
+        name: system_memory_libdmabufheap-7.tar.xz
+        path: aosp/system_memory_libdmabufheap-7.tar.xz
+    - name: Archive system_memory_libmeminfo-7.tar.xz
+      uses: actions/upload-artifact@v3
+      with:
+        name: system_memory_libmeminfo-7.tar.xz
+        path: aosp/system_memory_libmeminfo-7.tar.xz
+    - name: Archive system_memory_libmemunreachable-7.tar.xz
+      uses: actions/upload-artifact@v3
+      with:
+        name: system_memory_libmemunreachable-7.tar.xz
+        path: aosp/system_memory_libmemunreachable-7.tar.xz
+    - name: Archive system_memory_lmkd-7.tar.xz
+      uses: actions/upload-artifact@v3
+      with:
+        name: system_memory_lmkd-7.tar.xz
+        path: aosp/system_memory_lmkd-7.tar.xz
+    - name: Archive system_sepolicy-7.tar.xz
+      uses: actions/upload-artifact@v3
+      with:
+        name: system_sepolicy-7.tar.xz
+        path: aosp/system_sepolicy-7.tar.xz
+    - name: Archive system_server_configurable_flags-7.tar.xz
+      uses: actions/upload-artifact@v3
+      with:
+        name: system_server_configurable_flags-7.tar.xz
+        path: aosp/system_server_configurable_flags-7.tar.xz
+    - name: Archive system_timezone-7.tar.xz
+      uses: actions/upload-artifact@v3
+      with:
+        name: system_timezone-7.tar.xz
+        path: aosp/system_timezone-7.tar.xz
+    - name: Archive system_tools_aidl-7.tar.xz
+      uses: actions/upload-artifact@v3
+      with:
+        name: system_tools_aidl-7.tar.xz
+        path: aosp/system_tools_aidl-7.tar.xz
+    - name: Archive system_tools_sysprop-7.tar.xz
+      uses: actions/upload-artifact@v3
+      with:
+        name: system_tools_sysprop-7.tar.xz
+        path: aosp/system_tools_sysprop-7.tar.xz
+    - name: Archive system_unwinding-7.tar.xz
+      uses: actions/upload-artifact@v3
+      with:
+        name: system_unwinding-7.tar.xz
+        path: aosp/system_unwinding-7.tar.xz
 
     - uses: softprops/action-gh-release@master
       with:
         name: ${{ env.branch }}-7
         tag_name: ${{ env.branch }}-7
         files: |
+          aosp/art-7.tar.xz
+          aosp/bionic-7.tar.xz
+          aosp/bootable_recovery-7.tar.xz
+          aosp/device_generic_goldfish-opengl-7.tar.xz
           aosp/device_google_cuttlefish-7.tar.xz
+          aosp/external_android-clat-7.tar.xz
+          aosp/external_crosvm-7.tar.xz
+          aosp/external_dnsmasq-7.tar.xz
+          aosp/external_e2fsprogs-7.tar.xz
+          aosp/external_erofs-utils-7.tar.xz
+          aosp/external_f2fs-tools-7.tar.xz
+          aosp/external_harfbuzz_ng-7.tar.xz
+          aosp/external_iproute2-7.tar.xz
+          aosp/external_libavc-7.tar.xz
+          aosp/external_libmpeg2-7.tar.xz
+          aosp/external_libxml2-7.tar.xz
+          aosp/external_mdnsresponder-7.tar.xz
+          aosp/external_mtpd-7.tar.xz
+          aosp/external_pdfium-7.tar.xz
+          aosp/external_perfetto-7.tar.xz
+          aosp/external_ppp-7.tar.xz
+          aosp/external_rust_crates_ahash-7.tar.xz
+          aosp/external_rust_crates_cexpr-7.tar.xz
+          aosp/external_rust_crates_chrono-7.tar.xz
+          aosp/external_rust_crates_clang-sys-7.tar.xz
+          aosp/external_rust_crates_env_logger-7.tar.xz
           aosp/external_rust_crates_flate2-7.tar.xz
+          aosp/external_rust_crates_futures-util-7.tar.xz
+          aosp/external_rust_crates_mio-7.tar.xz
+          aosp/external_rust_crates_parking_lot_core-7.tar.xz
+          aosp/external_rust_crates_rand_core-7.tar.xz
+          aosp/external_rust_crates_regex-7.tar.xz
+          aosp/external_rust_crates_structopt-7.tar.xz
+          aosp/external_rust_cxx-7.tar.xz
+          aosp/external_sfntly-7.tar.xz
+          aosp/external_sqlite-7.tar.xz
+          aosp/external_swiftshader-7.tar.xz
+          aosp/external_toybox-7.tar.xz
+          aosp/frameworks_av-7.tar.xz
+          aosp/frameworks_base-7.tar.xz
           aosp/frameworks_compile_libbcc-7.tar.xz
+          aosp/frameworks_libs_net-7.tar.xz
+          aosp/frameworks_native-7.tar.xz
+          aosp/hardware_google_camera-7.tar.xz
+          aosp/hardware_interfaces-7.tar.xz
+          aosp/hardware_libhardware-7.tar.xz
+          aosp/packages_modules_DnsResolver-7.tar.xz
+          aosp/packages_modules_SdkExtensions-7.tar.xz
           aosp/packages_modules_adb-7.tar.xz
           aosp/system_apex-7.tar.xz
+          aosp/system_bpf-7.tar.xz
+          aosp/system_bt-7.tar.xz
+          aosp/system_connectivity_wificond-7.tar.xz
+          aosp/system_core-7.tar.xz
+          aosp/system_extras-7.tar.xz
+          aosp/system_keymaster-7.tar.xz
+          aosp/system_libartpalette-7.tar.xz
+          aosp/system_libfmq-7.tar.xz
+          aosp/system_libhwbinder-7.tar.xz
+          aosp/system_libvintf-7.tar.xz
+          aosp/system_logging-7.tar.xz
+          aosp/system_media-7.tar.xz
+          aosp/system_memory_libdmabufheap-7.tar.xz
+          aosp/system_memory_libmeminfo-7.tar.xz
+          aosp/system_memory_libmemunreachable-7.tar.xz
+          aosp/system_memory_lmkd-7.tar.xz
+          aosp/system_sepolicy-7.tar.xz
+          aosp/system_server_configurable_flags-7.tar.xz
+          aosp/system_timezone-7.tar.xz
+          aosp/system_tools_aidl-7.tar.xz
+          aosp/system_tools_sysprop-7.tar.xz
+          aosp/system_unwinding-7.tar.xz
