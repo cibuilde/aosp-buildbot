@@ -54,6 +54,6 @@ function download_release() {
   project_path=$2
   build_tag=$3
   shift 3
-  curl -LJO https://github.com/cibuilde/aosp-buildbot/releases/download/${build_tag}/${filename}.tar.xz
+  curl -LJO --retry 5 https://github.com/cibuilde/aosp-buildbot/releases/download/${build_tag}/${filename}.tar.xz
   mkdir -p aosp/prebuiltlibs/${project_path} && tar xf ${filename}.tar.xz -C aosp/prebuiltlibs/${project_path} --exclude="ninja" "$@"
 }
