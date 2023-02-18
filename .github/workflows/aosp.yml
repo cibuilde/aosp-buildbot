@@ -1276,22 +1276,86 @@ jobs:
         ln -sf android_x86_64_static prebuiltlibs/packages/modules/adb/proto/libapp_processes_protos_lite/android_x86_64_shared
         sed -i 's/"gen"/"gen","gen\/external\/perfetto","gen\/external\/perfetto\/protos"/g' prebuiltlibs/external/perfetto/Android.bp
 
+        sed -i 's/libLLVM_android.so"],/libLLVM_android.so"],\n}, android_x86_64: { srcs: ["libLLVM_android.so"], }, android_x86: { srcs: ["libLLVM_android.so"],/g' prebuilts/sdk/tools/Android.bp
+        sed -i 's/name: "libLLVM_android",/name: "libLLVM_android",\n device_supported: true, prefer: true,/g' prebuilts/sdk/tools/Android.bp
+        mv prebuiltlibs/external/llvm/libLLVM_android/android_x86_64_shared/libLLVM_android.so prebuilts/sdk/tools/
+
         rm -rf frameworks/proto_logging/stats/stats_log_api_gen
         GOROOT=$TOP/prebuilts/go/linux-x86 $GITHUB_WORKSPACE/soong_ui --make-mode --skip-ninja --skip-kati --skip-soong-tests --skip-write-modules -j1 TARGET_PRODUCT=aosp_x86_64 TARGET_BUILD_VARIANT=eng ALLOW_MISSING_DEPENDENCIES=true BUILD_BROKEN_DISABLE_BAZEL=1 nothing
         $GITHUB_WORKSPACE/build.sh
         du -ah -d1 out/soong |sort -h
         du -ah -d1 . |sort -h
 
+    - name: Archive art-8.tar.xz
+      uses: actions/upload-artifact@v3
+      with:
+        name: art-8.tar.xz
+        path: aosp/art-8.tar.xz
+    - name: Archive bionic-8.tar.xz
+      uses: actions/upload-artifact@v3
+      with:
+        name: bionic-8.tar.xz
+        path: aosp/bionic-8.tar.xz
+    - name: Archive device_google_cuttlefish-8.tar.xz
+      uses: actions/upload-artifact@v3
+      with:
+        name: device_google_cuttlefish-8.tar.xz
+        path: aosp/device_google_cuttlefish-8.tar.xz
+    - name: Archive external_adhd-8.tar.xz
+      uses: actions/upload-artifact@v3
+      with:
+        name: external_adhd-8.tar.xz
+        path: aosp/external_adhd-8.tar.xz
+    - name: Archive external_dynamic_depth-8.tar.xz
+      uses: actions/upload-artifact@v3
+      with:
+        name: external_dynamic_depth-8.tar.xz
+        path: aosp/external_dynamic_depth-8.tar.xz
+    - name: Archive external_libchrome-8.tar.xz
+      uses: actions/upload-artifact@v3
+      with:
+        name: external_libchrome-8.tar.xz
+        path: aosp/external_libchrome-8.tar.xz
+    - name: Archive external_parameter-framework-8.tar.xz
+      uses: actions/upload-artifact@v3
+      with:
+        name: external_parameter-framework-8.tar.xz
+        path: aosp/external_parameter-framework-8.tar.xz
+    - name: Archive external_perfetto-8.tar.xz
+      uses: actions/upload-artifact@v3
+      with:
+        name: external_perfetto-8.tar.xz
+        path: aosp/external_perfetto-8.tar.xz
+    - name: Archive external_python_cpython2-8.tar.xz
+      uses: actions/upload-artifact@v3
+      with:
+        name: external_python_cpython2-8.tar.xz
+        path: aosp/external_python_cpython2-8.tar.xz
+    - name: Archive external_rust_crates_android_logger-8.tar.xz
+      uses: actions/upload-artifact@v3
+      with:
+        name: external_rust_crates_android_logger-8.tar.xz
+        path: aosp/external_rust_crates_android_logger-8.tar.xz
     - name: Archive external_rust_crates_bindgen-8.tar.xz
       uses: actions/upload-artifact@v3
       with:
         name: external_rust_crates_bindgen-8.tar.xz
         path: aosp/external_rust_crates_bindgen-8.tar.xz
+    - name: Archive external_rust_crates_futures-executor-8.tar.xz
+      uses: actions/upload-artifact@v3
+      with:
+        name: external_rust_crates_futures-executor-8.tar.xz
+        path: aosp/external_rust_crates_futures-executor-8.tar.xz
     - name: Archive external_rust_crates_hashbrown-8.tar.xz
       uses: actions/upload-artifact@v3
       with:
         name: external_rust_crates_hashbrown-8.tar.xz
         path: aosp/external_rust_crates_hashbrown-8.tar.xz
+    - name: Archive external_rust_crates_parking_lot-8.tar.xz
+      uses: actions/upload-artifact@v3
+      with:
+        name: external_rust_crates_parking_lot-8.tar.xz
+        path: aosp/external_rust_crates_parking_lot-8.tar.xz
     - name: Archive external_rust_crates_rand_chacha-8.tar.xz
       uses: actions/upload-artifact@v3
       with:
@@ -1307,14 +1371,146 @@ jobs:
       with:
         name: external_rust_crates_vmm_vhost-8.tar.xz
         path: aosp/external_rust_crates_vmm_vhost-8.tar.xz
+    - name: Archive external_rust_crates_zip-8.tar.xz
+      uses: actions/upload-artifact@v3
+      with:
+        name: external_rust_crates_zip-8.tar.xz
+        path: aosp/external_rust_crates_zip-8.tar.xz
+    - name: Archive frameworks_av-8.tar.xz
+      uses: actions/upload-artifact@v3
+      with:
+        name: frameworks_av-8.tar.xz
+        path: aosp/frameworks_av-8.tar.xz
+    - name: Archive frameworks_base-8.tar.xz
+      uses: actions/upload-artifact@v3
+      with:
+        name: frameworks_base-8.tar.xz
+        path: aosp/frameworks_base-8.tar.xz
+    - name: Archive frameworks_compile_slang-8.tar.xz
+      uses: actions/upload-artifact@v3
+      with:
+        name: frameworks_compile_slang-8.tar.xz
+        path: aosp/frameworks_compile_slang-8.tar.xz
+    - name: Archive frameworks_minikin-8.tar.xz
+      uses: actions/upload-artifact@v3
+      with:
+        name: frameworks_minikin-8.tar.xz
+        path: aosp/frameworks_minikin-8.tar.xz
+    - name: Archive frameworks_native-8.tar.xz
+      uses: actions/upload-artifact@v3
+      with:
+        name: frameworks_native-8.tar.xz
+        path: aosp/frameworks_native-8.tar.xz
+    - name: Archive hardware_interfaces-8.tar.xz
+      uses: actions/upload-artifact@v3
+      with:
+        name: hardware_interfaces-8.tar.xz
+        path: aosp/hardware_interfaces-8.tar.xz
+    - name: Archive hardware_ril-8.tar.xz
+      uses: actions/upload-artifact@v3
+      with:
+        name: hardware_ril-8.tar.xz
+        path: aosp/hardware_ril-8.tar.xz
+    - name: Archive packages_modules_Virtualization-8.tar.xz
+      uses: actions/upload-artifact@v3
+      with:
+        name: packages_modules_Virtualization-8.tar.xz
+        path: aosp/packages_modules_Virtualization-8.tar.xz
+    - name: Archive packages_modules_adb-8.tar.xz
+      uses: actions/upload-artifact@v3
+      with:
+        name: packages_modules_adb-8.tar.xz
+        path: aosp/packages_modules_adb-8.tar.xz
+    - name: Archive system_bt-8.tar.xz
+      uses: actions/upload-artifact@v3
+      with:
+        name: system_bt-8.tar.xz
+        path: aosp/system_bt-8.tar.xz
+    - name: Archive system_core-8.tar.xz
+      uses: actions/upload-artifact@v3
+      with:
+        name: system_core-8.tar.xz
+        path: aosp/system_core-8.tar.xz
+    - name: Archive system_extras-8.tar.xz
+      uses: actions/upload-artifact@v3
+      with:
+        name: system_extras-8.tar.xz
+        path: aosp/system_extras-8.tar.xz
+    - name: Archive system_incremental_delivery-8.tar.xz
+      uses: actions/upload-artifact@v3
+      with:
+        name: system_incremental_delivery-8.tar.xz
+        path: aosp/system_incremental_delivery-8.tar.xz
+    - name: Archive system_libhidl-8.tar.xz
+      uses: actions/upload-artifact@v3
+      with:
+        name: system_libhidl-8.tar.xz
+        path: aosp/system_libhidl-8.tar.xz
+    - name: Archive system_linkerconfig-8.tar.xz
+      uses: actions/upload-artifact@v3
+      with:
+        name: system_linkerconfig-8.tar.xz
+        path: aosp/system_linkerconfig-8.tar.xz
+    - name: Archive system_memory_libmeminfo-8.tar.xz
+      uses: actions/upload-artifact@v3
+      with:
+        name: system_memory_libmeminfo-8.tar.xz
+        path: aosp/system_memory_libmeminfo-8.tar.xz
+    - name: Archive system_netd-8.tar.xz
+      uses: actions/upload-artifact@v3
+      with:
+        name: system_netd-8.tar.xz
+        path: aosp/system_netd-8.tar.xz
+    - name: Archive system_security-8.tar.xz
+      uses: actions/upload-artifact@v3
+      with:
+        name: system_security-8.tar.xz
+        path: aosp/system_security-8.tar.xz
+    - name: Archive test_vts-testcase_hal-8.tar.xz
+      uses: actions/upload-artifact@v3
+      with:
+        name: test_vts-testcase_hal-8.tar.xz
+        path: aosp/test_vts-testcase_hal-8.tar.xz
 
     - uses: softprops/action-gh-release@master
       with:
         name: ${{ env.branch }}-8
         tag_name: ${{ env.branch }}-8
         files: |
+          aosp/art-8.tar.xz
+          aosp/bionic-8.tar.xz
+          aosp/device_google_cuttlefish-8.tar.xz
+          aosp/external_adhd-8.tar.xz
+          aosp/external_dynamic_depth-8.tar.xz
+          aosp/external_libchrome-8.tar.xz
+          aosp/external_parameter-framework-8.tar.xz
+          aosp/external_perfetto-8.tar.xz
+          aosp/external_python_cpython2-8.tar.xz
+          aosp/external_rust_crates_android_logger-8.tar.xz
           aosp/external_rust_crates_bindgen-8.tar.xz
+          aosp/external_rust_crates_futures-executor-8.tar.xz
           aosp/external_rust_crates_hashbrown-8.tar.xz
+          aosp/external_rust_crates_parking_lot-8.tar.xz
           aosp/external_rust_crates_rand_chacha-8.tar.xz
           aosp/external_rust_crates_tokio-8.tar.xz
           aosp/external_rust_crates_vmm_vhost-8.tar.xz
+          aosp/external_rust_crates_zip-8.tar.xz
+          aosp/frameworks_av-8.tar.xz
+          aosp/frameworks_base-8.tar.xz
+          aosp/frameworks_compile_slang-8.tar.xz
+          aosp/frameworks_minikin-8.tar.xz
+          aosp/frameworks_native-8.tar.xz
+          aosp/hardware_interfaces-8.tar.xz
+          aosp/hardware_ril-8.tar.xz
+          aosp/packages_modules_Virtualization-8.tar.xz
+          aosp/packages_modules_adb-8.tar.xz
+          aosp/system_bt-8.tar.xz
+          aosp/system_core-8.tar.xz
+          aosp/system_extras-8.tar.xz
+          aosp/system_incremental_delivery-8.tar.xz
+          aosp/system_libhidl-8.tar.xz
+          aosp/system_linkerconfig-8.tar.xz
+          aosp/system_memory_libmeminfo-8.tar.xz
+          aosp/system_netd-8.tar.xz
+          aosp/system_security-8.tar.xz
+          aosp/test_vts-testcase_hal-8.tar.xz
