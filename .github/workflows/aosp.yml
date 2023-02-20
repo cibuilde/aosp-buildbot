@@ -34,18 +34,6 @@ jobs:
         clone_depth_platform build
         mv build make && mkdir build && mv make build/
         sed -i 's/^PRODUCT_EXTRA_VNDK_VERSIONS/#PRODUCT_EXTRA_VNDK_VERSIONS/g' build/make/target/product/gsi_release.mk
-    - name: Restore Cache art
-      id: art
-      uses: actions/cache@v3
-      with:
-        path: aosp/art
-        key: art@${{ env.branch }}
-        restore-keys: art@${{ env.branch }}
-    - name: Clone project art
-      if: steps.art.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        clone_depth_platform art
     - name: Restore Cache bionic
       id: bionic
       uses: actions/cache@v3
@@ -634,6 +622,18 @@ jobs:
       run: |
         cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
         clone_sparse_exclude prebuilts/misc "!/common/robolectric" "!/darwin-x86" "!/darwin-x86_64" "!/gdbserver"
+    - name: Restore Cache prebuilts/ndk
+      id: prebuilts_ndk
+      uses: actions/cache@v3
+      with:
+        path: aosp/prebuilts/ndk
+        key: prebuilts_ndk@${{ env.branch }}
+        restore-keys: prebuilts_ndk@${{ env.branch }}
+    - name: Clone project prebuilts/ndk
+      if: steps.prebuilts_ndk.outputs.cache-hit != 'true'
+      run: |
+        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
+        clone_sparse prebuilts/ndk current
     - name: Restore Cache prebuilts/rust
       id: prebuilts_rust
       uses: actions/cache@v3
@@ -802,6 +802,18 @@ jobs:
       run: |
         cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
         clone_depth_platform system/libhidl
+    - name: Restore Cache system/libsysprop
+      id: system_libsysprop
+      uses: actions/cache@v3
+      with:
+        path: aosp/system/libsysprop
+        key: system_libsysprop@${{ env.branch }}
+        restore-keys: system_libsysprop@${{ env.branch }}
+    - name: Clone project system/libsysprop
+      if: steps.system_libsysprop.outputs.cache-hit != 'true'
+      run: |
+        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
+        clone_depth_platform system/libsysprop
     - name: Restore Cache system/libvintf
       id: system_libvintf
       uses: actions/cache@v3
@@ -1292,71 +1304,6 @@ jobs:
         du -ah -d1 out/soong |sort -h
         du -ah -d1 . |sort -h
 
-    - name: Archive art-9.tar.xz
-      uses: actions/upload-artifact@v3
-      with:
-        name: art-9.tar.xz
-        path: aosp/art-9.tar.xz
-    - name: Archive bionic-9.tar.xz
-      uses: actions/upload-artifact@v3
-      with:
-        name: bionic-9.tar.xz
-        path: aosp/bionic-9.tar.xz
-    - name: Archive device_google_cuttlefish-9.tar.xz
-      uses: actions/upload-artifact@v3
-      with:
-        name: device_google_cuttlefish-9.tar.xz
-        path: aosp/device_google_cuttlefish-9.tar.xz
-    - name: Archive external_Reactive-Extensions_RxCpp-9.tar.xz
-      uses: actions/upload-artifact@v3
-      with:
-        name: external_Reactive-Extensions_RxCpp-9.tar.xz
-        path: aosp/external_Reactive-Extensions_RxCpp-9.tar.xz
-    - name: Archive external_libbrillo-9.tar.xz
-      uses: actions/upload-artifact@v3
-      with:
-        name: external_libbrillo-9.tar.xz
-        path: aosp/external_libbrillo-9.tar.xz
-    - name: Archive external_puffin-9.tar.xz
-      uses: actions/upload-artifact@v3
-      with:
-        name: external_puffin-9.tar.xz
-        path: aosp/external_puffin-9.tar.xz
-    - name: Archive external_rust_crates_futures-9.tar.xz
-      uses: actions/upload-artifact@v3
-      with:
-        name: external_rust_crates_futures-9.tar.xz
-        path: aosp/external_rust_crates_futures-9.tar.xz
-    - name: Archive external_rust_crates_grpcio-sys-9.tar.xz
-      uses: actions/upload-artifact@v3
-      with:
-        name: external_rust_crates_grpcio-sys-9.tar.xz
-        path: aosp/external_rust_crates_grpcio-sys-9.tar.xz
-    - name: Archive external_rust_crates_hashlink-9.tar.xz
-      uses: actions/upload-artifact@v3
-      with:
-        name: external_rust_crates_hashlink-9.tar.xz
-        path: aosp/external_rust_crates_hashlink-9.tar.xz
-    - name: Archive external_rust_crates_libsqlite3-sys-9.tar.xz
-      uses: actions/upload-artifact@v3
-      with:
-        name: external_rust_crates_libsqlite3-sys-9.tar.xz
-        path: aosp/external_rust_crates_libsqlite3-sys-9.tar.xz
-    - name: Archive external_rust_crates_rand-9.tar.xz
-      uses: actions/upload-artifact@v3
-      with:
-        name: external_rust_crates_rand-9.tar.xz
-        path: aosp/external_rust_crates_rand-9.tar.xz
-    - name: Archive external_selinux-9.tar.xz
-      uses: actions/upload-artifact@v3
-      with:
-        name: external_selinux-9.tar.xz
-        path: aosp/external_selinux-9.tar.xz
-    - name: Archive frameworks_av-9.tar.xz
-      uses: actions/upload-artifact@v3
-      with:
-        name: frameworks_av-9.tar.xz
-        path: aosp/frameworks_av-9.tar.xz
     - name: Archive frameworks_base-9.tar.xz
       uses: actions/upload-artifact@v3
       with:
@@ -1367,21 +1314,11 @@ jobs:
       with:
         name: frameworks_native-9.tar.xz
         path: aosp/frameworks_native-9.tar.xz
-    - name: Archive frameworks_rs-9.tar.xz
-      uses: actions/upload-artifact@v3
-      with:
-        name: frameworks_rs-9.tar.xz
-        path: aosp/frameworks_rs-9.tar.xz
     - name: Archive hardware_interfaces-9.tar.xz
       uses: actions/upload-artifact@v3
       with:
         name: hardware_interfaces-9.tar.xz
         path: aosp/hardware_interfaces-9.tar.xz
-    - name: Archive hardware_libhardware_legacy-9.tar.xz
-      uses: actions/upload-artifact@v3
-      with:
-        name: hardware_libhardware_legacy-9.tar.xz
-        path: aosp/hardware_libhardware_legacy-9.tar.xz
     - name: Archive packages_modules_DnsResolver-9.tar.xz
       uses: actions/upload-artifact@v3
       with:
@@ -1392,86 +1329,21 @@ jobs:
       with:
         name: packages_modules_NeuralNetworks-9.tar.xz
         path: aosp/packages_modules_NeuralNetworks-9.tar.xz
-    - name: Archive packages_modules_StatsD-9.tar.xz
-      uses: actions/upload-artifact@v3
-      with:
-        name: packages_modules_StatsD-9.tar.xz
-        path: aosp/packages_modules_StatsD-9.tar.xz
-    - name: Archive packages_modules_Virtualization-9.tar.xz
-      uses: actions/upload-artifact@v3
-      with:
-        name: packages_modules_Virtualization-9.tar.xz
-        path: aosp/packages_modules_Virtualization-9.tar.xz
-    - name: Archive packages_modules_adb-9.tar.xz
-      uses: actions/upload-artifact@v3
-      with:
-        name: packages_modules_adb-9.tar.xz
-        path: aosp/packages_modules_adb-9.tar.xz
-    - name: Archive system_bt-9.tar.xz
-      uses: actions/upload-artifact@v3
-      with:
-        name: system_bt-9.tar.xz
-        path: aosp/system_bt-9.tar.xz
-    - name: Archive system_connectivity_wificond-9.tar.xz
-      uses: actions/upload-artifact@v3
-      with:
-        name: system_connectivity_wificond-9.tar.xz
-        path: aosp/system_connectivity_wificond-9.tar.xz
     - name: Archive system_core-9.tar.xz
       uses: actions/upload-artifact@v3
       with:
         name: system_core-9.tar.xz
         path: aosp/system_core-9.tar.xz
-    - name: Archive system_extras-9.tar.xz
-      uses: actions/upload-artifact@v3
-      with:
-        name: system_extras-9.tar.xz
-        path: aosp/system_extras-9.tar.xz
-    - name: Archive system_gsid-9.tar.xz
-      uses: actions/upload-artifact@v3
-      with:
-        name: system_gsid-9.tar.xz
-        path: aosp/system_gsid-9.tar.xz
     - name: Archive system_hardware_interfaces-9.tar.xz
       uses: actions/upload-artifact@v3
       with:
         name: system_hardware_interfaces-9.tar.xz
         path: aosp/system_hardware_interfaces-9.tar.xz
-    - name: Archive system_hwservicemanager-9.tar.xz
-      uses: actions/upload-artifact@v3
-      with:
-        name: system_hwservicemanager-9.tar.xz
-        path: aosp/system_hwservicemanager-9.tar.xz
-    - name: Archive system_iorap-9.tar.xz
-      uses: actions/upload-artifact@v3
-      with:
-        name: system_iorap-9.tar.xz
-        path: aosp/system_iorap-9.tar.xz
     - name: Archive system_keymaster-9.tar.xz
       uses: actions/upload-artifact@v3
       with:
         name: system_keymaster-9.tar.xz
         path: aosp/system_keymaster-9.tar.xz
-    - name: Archive system_libhidl-9.tar.xz
-      uses: actions/upload-artifact@v3
-      with:
-        name: system_libhidl-9.tar.xz
-        path: aosp/system_libhidl-9.tar.xz
-    - name: Archive system_libvintf-9.tar.xz
-      uses: actions/upload-artifact@v3
-      with:
-        name: system_libvintf-9.tar.xz
-        path: aosp/system_libvintf-9.tar.xz
-    - name: Archive system_logging-9.tar.xz
-      uses: actions/upload-artifact@v3
-      with:
-        name: system_logging-9.tar.xz
-        path: aosp/system_logging-9.tar.xz
-    - name: Archive system_memory_libmemtrack-9.tar.xz
-      uses: actions/upload-artifact@v3
-      with:
-        name: system_memory_libmemtrack-9.tar.xz
-        path: aosp/system_memory_libmemtrack-9.tar.xz
     - name: Archive system_netd-9.tar.xz
       uses: actions/upload-artifact@v3
       with:
@@ -1482,59 +1354,19 @@ jobs:
       with:
         name: system_security-9.tar.xz
         path: aosp/system_security-9.tar.xz
-    - name: Archive system_tools_aidl-9.tar.xz
-      uses: actions/upload-artifact@v3
-      with:
-        name: system_tools_aidl-9.tar.xz
-        path: aosp/system_tools_aidl-9.tar.xz
-    - name: Archive system_tools_hidl-9.tar.xz
-      uses: actions/upload-artifact@v3
-      with:
-        name: system_tools_hidl-9.tar.xz
-        path: aosp/system_tools_hidl-9.tar.xz
 
     - uses: softprops/action-gh-release@master
       with:
         name: ${{ env.branch }}-9
         tag_name: ${{ env.branch }}-9
         files: |
-          aosp/art-9.tar.xz
-          aosp/bionic-9.tar.xz
-          aosp/device_google_cuttlefish-9.tar.xz
-          aosp/external_Reactive-Extensions_RxCpp-9.tar.xz
-          aosp/external_libbrillo-9.tar.xz
-          aosp/external_puffin-9.tar.xz
-          aosp/external_rust_crates_futures-9.tar.xz
-          aosp/external_rust_crates_grpcio-sys-9.tar.xz
-          aosp/external_rust_crates_hashlink-9.tar.xz
-          aosp/external_rust_crates_libsqlite3-sys-9.tar.xz
-          aosp/external_rust_crates_rand-9.tar.xz
-          aosp/external_selinux-9.tar.xz
-          aosp/frameworks_av-9.tar.xz
           aosp/frameworks_base-9.tar.xz
           aosp/frameworks_native-9.tar.xz
-          aosp/frameworks_rs-9.tar.xz
           aosp/hardware_interfaces-9.tar.xz
-          aosp/hardware_libhardware_legacy-9.tar.xz
           aosp/packages_modules_DnsResolver-9.tar.xz
           aosp/packages_modules_NeuralNetworks-9.tar.xz
-          aosp/packages_modules_StatsD-9.tar.xz
-          aosp/packages_modules_Virtualization-9.tar.xz
-          aosp/packages_modules_adb-9.tar.xz
-          aosp/system_bt-9.tar.xz
-          aosp/system_connectivity_wificond-9.tar.xz
           aosp/system_core-9.tar.xz
-          aosp/system_extras-9.tar.xz
-          aosp/system_gsid-9.tar.xz
           aosp/system_hardware_interfaces-9.tar.xz
-          aosp/system_hwservicemanager-9.tar.xz
-          aosp/system_iorap-9.tar.xz
           aosp/system_keymaster-9.tar.xz
-          aosp/system_libhidl-9.tar.xz
-          aosp/system_libvintf-9.tar.xz
-          aosp/system_logging-9.tar.xz
-          aosp/system_memory_libmemtrack-9.tar.xz
           aosp/system_netd-9.tar.xz
           aosp/system_security-9.tar.xz
-          aosp/system_tools_aidl-9.tar.xz
-          aosp/system_tools_hidl-9.tar.xz
