@@ -1,170 +1,71 @@
-mkdir -p prebuiltlibs/frameworks/minikin/include
-rsync -ar --exclude=".git" --exclude="Android.bp" --exclude="Android.mk" frameworks/minikin/include/ prebuiltlibs/frameworks/minikin/include
-printf "cc_prebuilt_library_headers {\n  name: \"libminikin_headers\",\n  host_supported: true,\n  export_include_dirs: [\"include\"],\n  header_libs: [\"libgtest_prod_headers\"],\n  export_header_lib_headers: [\"libgtest_prod_headers\"],\n  target: {\n    windows: {\n      enabled: true,\n    },\n  },\n}\n" >> prebuiltlibs/frameworks/minikin/Android.bp
-tar cfJ frameworks_minikin-8.tar.xz -C prebuiltlibs/frameworks/minikin/ .
-mkdir -p prebuiltlibs/hardware/ril/include
-rsync -ar --exclude=".git" --exclude="Android.bp" --exclude="Android.mk" hardware/ril/include/ prebuiltlibs/hardware/ril/include
-printf "cc_prebuilt_library_headers {\n  name: \"ril_headers\",\n  vendor: true,\n  export_include_dirs: [\"include\"],\n}\n" >> prebuiltlibs/hardware/ril/Android.bp
-tar cfJ hardware_ril-8.tar.xz -C prebuiltlibs/hardware/ril/ .
-mkdir -p prebuiltlibs/system/incremental_delivery/incfs/include
-rsync -ar --exclude=".git" --exclude="Android.bp" --exclude="Android.mk" system/incremental_delivery/incfs/include/ prebuiltlibs/system/incremental_delivery/incfs/include
-mkdir -p prebuiltlibs/system/incremental_delivery/incfs/kernel-headers
-rsync -ar --exclude=".git" --exclude="Android.bp" --exclude="Android.mk" system/incremental_delivery/incfs/kernel-headers/ prebuiltlibs/system/incremental_delivery/incfs/kernel-headers
-printf "cc_prebuilt_library_headers {\n  name: \"libincfs_headers\",\n  export_include_dirs: [\"include/\",\"kernel-headers\"],\n  host_supported: true,\n  target: {\n    linux_bionic: {\n      enabled: true,\n    },\n  },\n}\n" >> prebuiltlibs/system/incremental_delivery/incfs/Android.bp
-tar cfJ system_incremental_delivery-8.tar.xz -C prebuiltlibs/system/incremental_delivery/ .
+mkdir -p prebuiltlibs/device/generic/goldfish-opengl/shared/qemupipe/include-types
+rsync -ar --exclude=".git" --exclude="Android.bp" --exclude="Android.mk" device/generic/goldfish-opengl/shared/qemupipe/include-types/ prebuiltlibs/device/generic/goldfish-opengl/shared/qemupipe/include-types
+printf "cc_prebuilt_library_headers {\n  name: \"libqemupipe-types.ranchu\",\n  vendor_available: true,\n  export_include_dirs: [\"include-types\"],\n}\n" >> prebuiltlibs/device/generic/goldfish-opengl/shared/qemupipe/Android.bp
+tar cfJ device_generic_goldfish-opengl-5.tar.xz -C prebuiltlibs/device/generic/goldfish-opengl/ .
+mkdir -p prebuiltlibs/external/avb/
+rsync -ar --exclude=".git" --exclude="Android.bp" --exclude="Android.mk" external/avb/ prebuiltlibs/external/avb/
+printf "cc_prebuilt_library_headers {\n  name: \"avb_headers\",\n  host_supported: true,\n  recovery_available: true,\n  export_include_dirs: [\".\"],\n  target: {\n    windows: {\n      enabled: true,\n    },\n  },\n}\n" >> prebuiltlibs/external/avb/Android.bp
+tar cfJ external_avb-5.tar.xz -C prebuiltlibs/external/avb/ .
+mkdir -p prebuiltlibs/external/clang/include
+rsync -ar --exclude=".git" --exclude="Android.bp" --exclude="Android.mk" external/clang/include/ prebuiltlibs/external/clang/include
+printf "cc_prebuilt_library_headers {\n  name: \"clang-headers\",\n  vendor_available: true,\n  product_available: true,\n  host_supported: true,\n  native_bridge_supported: true,\n  export_include_dirs: [\"include\"],\n  target: {\n    windows: {\n      enabled: true,\n    },\n  },\n}\n" >> prebuiltlibs/external/clang/Android.bp
+tar cfJ external_clang-5.tar.xz -C prebuiltlibs/external/clang/ .
+mkdir -p prebuiltlibs/frameworks/base/libs/hwui/apex/include
+rsync -ar --exclude=".git" --exclude="Android.bp" --exclude="Android.mk" frameworks/base/libs/hwui/apex/include/ prebuiltlibs/frameworks/base/libs/hwui/apex/include
+printf "cc_prebuilt_library_headers {\n  name: \"android_graphics_apex_headers\",\n  host_supported: true,\n  export_include_dirs: [\"apex/include\"],\n  target: {\n    windows: {\n      enabled: true,\n    },\n  },\n}\n" >> prebuiltlibs/frameworks/base/libs/hwui/Android.bp
+tar cfJ frameworks_base-5.tar.xz -C prebuiltlibs/frameworks/base/ .
+mkdir -p prebuiltlibs/system/memory/lmkd/libpsi/include
+rsync -ar --exclude=".git" --exclude="Android.bp" --exclude="Android.mk" system/memory/lmkd/libpsi/include/ prebuiltlibs/system/memory/lmkd/libpsi/include
+printf "cc_prebuilt_library_headers {\n  name: \"libpsi_headers\",\n  export_include_dirs: [\"include\"],\n  vendor_available: true,\n}\n" >> prebuiltlibs/system/memory/lmkd/libpsi/Android.bp
+tar cfJ system_memory_lmkd-5.tar.xz -C prebuiltlibs/system/memory/lmkd/ .
+mkdir -p prebuiltlibs/system/tools/hidl/metadata/include
+rsync -ar --exclude=".git" --exclude="Android.bp" --exclude="Android.mk" system/tools/hidl/metadata/include/ prebuiltlibs/system/tools/hidl/metadata/include
+printf "cc_prebuilt_library_headers {\n  name: \"libhidlmetadata_headers\",\n  product_available: true,\n  recovery_available: true,\n  host_supported: true,\n  export_include_dirs: [\"include\"],\n}\n" >> prebuiltlibs/system/tools/hidl/metadata/Android.bp
+tar cfJ system_tools_hidl-5.tar.xz -C prebuiltlibs/system/tools/hidl/ .
 
 start=`date +%s`
 ./prebuilts/build-tools/linux-x86/bin/ninja -f out/soong/build.ninja \
-out/soong/.intermediates/art/libartpalette/libartpalette/android_x86_64_shared_apex31/libartpalette.so \
-out/soong/.intermediates/art/libartpalette/libartpalette/android_x86_64_static_apex31/libartpalette.a \
-out/soong/.intermediates/art/libartpalette/libartpalette/android_x86_x86_64_shared_apex31/libartpalette.so \
-out/soong/.intermediates/art/libartpalette/libartpalette/android_x86_x86_64_static_apex31/libartpalette.a \
-out/soong/.intermediates/art/libartpalette/libartpalette/linux_glibc_x86_64_static/libartpalette.a \
-out/soong/.intermediates/art/libartbase/libartbase/android_x86_64_shared_apex31/libartbase.so \
-out/soong/.intermediates/art/libartbase/libartbase/android_x86_64_static_apex31/libartbase.a \
-out/soong/.intermediates/art/libartbase/libartbase/android_x86_x86_64_shared_apex31/libartbase.so \
-out/soong/.intermediates/art/libartbase/libartbase/android_x86_x86_64_static_apex31/libartbase.a \
-out/soong/.intermediates/art/libartbase/libartbase/linux_glibc_x86_64_static/libartbase.a \
-out/soong/.intermediates/art/libelffile/libelffile/android_x86_64_static_lto-thin_apex31/libelffile.a \
-out/soong/.intermediates/art/libelffile/libelffile/android_x86_x86_64_static_lto-thin_apex31/libelffile.a \
-out/soong/.intermediates/art/libelffile/libelffile/linux_glibc_x86_64_static/libelffile.a \
-out/soong/.intermediates/art/odrefresh/libodrstatslog/android_x86_64_static_lto-thin_apex31/libodrstatslog.a \
-out/soong/.intermediates/art/odrefresh/libodrstatslog/android_x86_x86_64_static_lto-thin_apex31/libodrstatslog.a \
-out/soong/.intermediates/art/odrefresh/libodrstatslog/linux_glibc_x86_64_static/libodrstatslog.a \
-out/soong/.intermediates/art/libartbase/libartbased/linux_glibc_x86_64_static/libartbased.a \
-out/soong/.intermediates/art/libelffile/libelffiled/linux_glibc_x86_64_static/libelffiled.a \
-out/soong/.intermediates/art/libdexfile/libdexfile/android_x86_64_shared_apex31/libdexfile.so \
-out/soong/.intermediates/art/libdexfile/libdexfile/android_x86_64_static_apex31/libdexfile.a \
-out/soong/.intermediates/art/libdexfile/libdexfile/android_x86_x86_64_shared_apex31/libdexfile.so \
-out/soong/.intermediates/art/libdexfile/libdexfile/android_x86_x86_64_static_apex31/libdexfile.a \
-out/soong/.intermediates/art/libdexfile/libdexfile/linux_glibc_x86_64_static/libdexfile.a \
-out/soong/.intermediates/art/dexdump/dexdump/linux_glibc_x86_64/dexdump \
-out/soong/.intermediates/art/dexdump/dexdump/android_x86_64_apex31/dexdump \
-out/soong/.intermediates/art/dexlist/dexlist/android_x86_64_apex31/dexlist \
-out/soong/.intermediates/art/tools/hiddenapi/hiddenapi/linux_glibc_x86_64/hiddenapi \
-out/soong/.intermediates/art/tools/veridex/veridex/linux_glibc_x86_64/veridex \
-out/soong/.intermediates/art/libdexfile/libdexfiled/linux_glibc_x86_64_static/libdexfiled.a \
-out/soong/.intermediates/art/libprofile/libprofile/android_x86_64_shared_apex31/libprofile.so \
-out/soong/.intermediates/art/libprofile/libprofile/android_x86_64_static_apex31/libprofile.a \
-out/soong/.intermediates/art/libprofile/libprofile/android_x86_x86_64_shared_apex31/libprofile.so \
-out/soong/.intermediates/art/libprofile/libprofile/android_x86_x86_64_static_apex31/libprofile.a \
-out/soong/.intermediates/art/libprofile/libprofile/linux_glibc_x86_64_static/libprofile.a \
-out/soong/.intermediates/art/dexlayout/libart-dexlayout/linux_glibc_x86_64_static/libart-dexlayout.a \
-out/soong/.intermediates/art/dexlayout/libart-dexlayout/android_x86_64_shared_apex31/libart-dexlayout.so \
-out/soong/.intermediates/art/dexlayout/libart-dexlayout/android_x86_64_static_apex31/libart-dexlayout.a \
-out/soong/.intermediates/art/dexlayout/libart-dexlayout/android_x86_x86_64_shared_apex31/libart-dexlayout.so \
-out/soong/.intermediates/art/dexlayout/libart-dexlayout/android_x86_x86_64_static_apex31/libart-dexlayout.a \
-out/soong/.intermediates/art/libprofile/libprofiled/linux_glibc_x86_64_static/libprofiled.a \
-out/soong/.intermediates/art/dexlayout/libartd-dexlayout/linux_glibc_x86_64_static/libartd-dexlayout.a \
-out/soong/.intermediates/art/profman/libprofman_static/linux_glibc_x86_64_static/libprofman_static.a \
-out/soong/.intermediates/art/profman/profman/linux_glibc_x86_64/profman \
-out/soong/.intermediates/art/profman/profman/android_x86_64_apex31/profman \
-out/soong/.intermediates/art/libnativeloader/libnativeloader/android_x86_64_shared_apex31/libnativeloader.so \
-out/soong/.intermediates/art/libnativeloader/libnativeloader/android_x86_64_static_apex31/libnativeloader.a \
-out/soong/.intermediates/art/libnativeloader/libnativeloader/android_x86_x86_64_shared_apex31/libnativeloader.so \
-out/soong/.intermediates/art/libnativeloader/libnativeloader/android_x86_x86_64_static_apex31/libnativeloader.a \
-out/soong/.intermediates/art/libnativeloader/libnativeloader/linux_glibc_x86_64_static/libnativeloader.a \
-out/soong/.intermediates/art/libnativeloader/libnativeloader/android_x86_64_shared_current/libnativeloader.so \
-out/soong/.intermediates/art/libnativeloader/libnativeloader/android_x86_x86_64_shared_current/libnativeloader.so \
-out/soong/.intermediates/art/libnativeloader/libnativeloader/android_x86_64_shared/libnativeloader.so \
-out/soong/.intermediates/art/libnativeloader/libnativeloader/android_x86_64_static/libnativeloader.a \
-out/soong/.intermediates/art/libnativeloader/libnativeloader/android_x86_x86_64_shared/libnativeloader.so \
-out/soong/.intermediates/art/libnativeloader/libnativeloader/android_x86_x86_64_static/libnativeloader.a \
+out/soong/.intermediates/art/libnativebridge/libnativebridge/android_x86_64_shared_apex31/libnativebridge.so \
+out/soong/.intermediates/art/libnativebridge/libnativebridge/android_x86_64_static_apex31/libnativebridge.a \
+out/soong/.intermediates/art/libnativebridge/libnativebridge/android_x86_x86_64_shared_apex31/libnativebridge.so \
+out/soong/.intermediates/art/libnativebridge/libnativebridge/android_x86_x86_64_static_apex31/libnativebridge.a \
+out/soong/.intermediates/art/libnativebridge/libnativebridge/linux_glibc_x86_64_static/libnativebridge.a \
+out/soong/.intermediates/art/libnativebridge/libnativebridge/android_x86_64_shared/libnativebridge.so \
+out/soong/.intermediates/art/libnativebridge/libnativebridge/android_x86_64_static/libnativebridge.a \
+out/soong/.intermediates/art/libnativebridge/libnativebridge/android_x86_x86_64_shared/libnativebridge.so \
+out/soong/.intermediates/art/libnativebridge/libnativebridge/android_x86_x86_64_static/libnativebridge.a \
+out/soong/.intermediates/art/libnativebridge/libnativebridge_lazy/android_x86_64_shared/libnativebridge_lazy.so \
+out/soong/.intermediates/art/libnativebridge/libnativebridge_lazy/android_x86_64_static/libnativebridge_lazy.a \
+out/soong/.intermediates/art/libnativebridge/libnativebridge_lazy/android_x86_x86_64_shared/libnativebridge_lazy.so \
+out/soong/.intermediates/art/libnativebridge/libnativebridge_lazy/android_x86_x86_64_static/libnativebridge_lazy.a \
+out/soong/.intermediates/art/libnativeloader/libnativeloader_lazy/android_x86_64_shared/libnativeloader_lazy.so \
+out/soong/.intermediates/art/libnativeloader/libnativeloader_lazy/android_x86_64_static/libnativeloader_lazy.a \
+out/soong/.intermediates/art/libnativeloader/libnativeloader_lazy/android_x86_x86_64_shared/libnativeloader_lazy.so \
+out/soong/.intermediates/art/libnativeloader/libnativeloader_lazy/android_x86_x86_64_static/libnativeloader_lazy.a \
 
 
-mkdir -p prebuiltlibs/art/libartpalette/libartpalette/android_x86_64_shared_apex31/ && cp out/soong/.intermediates/art/libartpalette/libartpalette/android_x86_64_shared_apex31/libartpalette.so prebuiltlibs/art/libartpalette/libartpalette/android_x86_64_shared_apex31/libartpalette.so
-mkdir -p prebuiltlibs/art/libartpalette/libartpalette/android_x86_64_static_apex31/ && cp out/soong/.intermediates/art/libartpalette/libartpalette/android_x86_64_static_apex31/libartpalette.a prebuiltlibs/art/libartpalette/libartpalette/android_x86_64_static_apex31/libartpalette.a
-mkdir -p prebuiltlibs/art/libartpalette/libartpalette/android_x86_x86_64_shared_apex31/ && cp out/soong/.intermediates/art/libartpalette/libartpalette/android_x86_x86_64_shared_apex31/libartpalette.so prebuiltlibs/art/libartpalette/libartpalette/android_x86_x86_64_shared_apex31/libartpalette.so
-mkdir -p prebuiltlibs/art/libartpalette/libartpalette/android_x86_x86_64_static_apex31/ && cp out/soong/.intermediates/art/libartpalette/libartpalette/android_x86_x86_64_static_apex31/libartpalette.a prebuiltlibs/art/libartpalette/libartpalette/android_x86_x86_64_static_apex31/libartpalette.a
-mkdir -p prebuiltlibs/art/libartpalette/libartpalette/linux_glibc_x86_64_static/ && cp out/soong/.intermediates/art/libartpalette/libartpalette/linux_glibc_x86_64_static/libartpalette.a prebuiltlibs/art/libartpalette/libartpalette/linux_glibc_x86_64_static/libartpalette.a
-mkdir -p prebuiltlibs/art/libartpalette/include
-rsync -ar --exclude=".git" --exclude="Android.bp" --exclude="Android.mk" art/libartpalette/include/ prebuiltlibs/art/libartpalette/include
-mkdir -p prebuiltlibs/art/libartbase/libartbase/android_x86_64_shared_apex31/ && cp out/soong/.intermediates/art/libartbase/libartbase/android_x86_64_shared_apex31/libartbase.so prebuiltlibs/art/libartbase/libartbase/android_x86_64_shared_apex31/libartbase.so
-mkdir -p prebuiltlibs/art/libartbase/libartbase/android_x86_64_static_apex31/ && cp out/soong/.intermediates/art/libartbase/libartbase/android_x86_64_static_apex31/libartbase.a prebuiltlibs/art/libartbase/libartbase/android_x86_64_static_apex31/libartbase.a
-mkdir -p prebuiltlibs/art/libartbase/libartbase/android_x86_x86_64_shared_apex31/ && cp out/soong/.intermediates/art/libartbase/libartbase/android_x86_x86_64_shared_apex31/libartbase.so prebuiltlibs/art/libartbase/libartbase/android_x86_x86_64_shared_apex31/libartbase.so
-mkdir -p prebuiltlibs/art/libartbase/libartbase/android_x86_x86_64_static_apex31/ && cp out/soong/.intermediates/art/libartbase/libartbase/android_x86_x86_64_static_apex31/libartbase.a prebuiltlibs/art/libartbase/libartbase/android_x86_x86_64_static_apex31/libartbase.a
-mkdir -p prebuiltlibs/art/libartbase/libartbase/linux_glibc_x86_64_static/ && cp out/soong/.intermediates/art/libartbase/libartbase/linux_glibc_x86_64_static/libartbase.a prebuiltlibs/art/libartbase/libartbase/linux_glibc_x86_64_static/libartbase.a
-mkdir -p prebuiltlibs/art/libartbase/
-rsync -ar --exclude=".git" --exclude="Android.bp" --exclude="Android.mk" art/libartbase/ prebuiltlibs/art/libartbase/
-mkdir -p prebuiltlibs/art/libelffile/libelffile/android_x86_64_static_lto-thin_apex31/ && cp out/soong/.intermediates/art/libelffile/libelffile/android_x86_64_static_lto-thin_apex31/libelffile.a prebuiltlibs/art/libelffile/libelffile/android_x86_64_static_lto-thin_apex31/libelffile.a
-mkdir -p prebuiltlibs/art/libelffile/libelffile/android_x86_x86_64_static_lto-thin_apex31/ && cp out/soong/.intermediates/art/libelffile/libelffile/android_x86_x86_64_static_lto-thin_apex31/libelffile.a prebuiltlibs/art/libelffile/libelffile/android_x86_x86_64_static_lto-thin_apex31/libelffile.a
-mkdir -p prebuiltlibs/art/libelffile/libelffile/linux_glibc_x86_64_static/ && cp out/soong/.intermediates/art/libelffile/libelffile/linux_glibc_x86_64_static/libelffile.a prebuiltlibs/art/libelffile/libelffile/linux_glibc_x86_64_static/libelffile.a
-mkdir -p prebuiltlibs/art/libelffile/
-rsync -ar --exclude=".git" --exclude="Android.bp" --exclude="Android.mk" art/libelffile/ prebuiltlibs/art/libelffile/
-mkdir -p prebuiltlibs/art/odrefresh/libodrstatslog/android_x86_64_static_lto-thin_apex31/ && cp out/soong/.intermediates/art/odrefresh/libodrstatslog/android_x86_64_static_lto-thin_apex31/libodrstatslog.a prebuiltlibs/art/odrefresh/libodrstatslog/android_x86_64_static_lto-thin_apex31/libodrstatslog.a
-mkdir -p prebuiltlibs/art/odrefresh/libodrstatslog/android_x86_x86_64_static_lto-thin_apex31/ && cp out/soong/.intermediates/art/odrefresh/libodrstatslog/android_x86_x86_64_static_lto-thin_apex31/libodrstatslog.a prebuiltlibs/art/odrefresh/libodrstatslog/android_x86_x86_64_static_lto-thin_apex31/libodrstatslog.a
-mkdir -p prebuiltlibs/art/odrefresh/libodrstatslog/linux_glibc_x86_64_static/ && cp out/soong/.intermediates/art/odrefresh/libodrstatslog/linux_glibc_x86_64_static/libodrstatslog.a prebuiltlibs/art/odrefresh/libodrstatslog/linux_glibc_x86_64_static/libodrstatslog.a
-mkdir -p prebuiltlibs/art/odrefresh/include
-rsync -ar --exclude=".git" --exclude="Android.bp" --exclude="Android.mk" art/odrefresh/include/ prebuiltlibs/art/odrefresh/include
-mkdir -p prebuiltlibs/art/libartbase/libartbased/linux_glibc_x86_64_static/ && cp out/soong/.intermediates/art/libartbase/libartbased/linux_glibc_x86_64_static/libartbased.a prebuiltlibs/art/libartbase/libartbased/linux_glibc_x86_64_static/libartbased.a
-mkdir -p prebuiltlibs/art/libartbase/
-rsync -ar --exclude=".git" --exclude="Android.bp" --exclude="Android.mk" art/libartbase/ prebuiltlibs/art/libartbase/
-mkdir -p prebuiltlibs/art/libelffile/libelffiled/linux_glibc_x86_64_static/ && cp out/soong/.intermediates/art/libelffile/libelffiled/linux_glibc_x86_64_static/libelffiled.a prebuiltlibs/art/libelffile/libelffiled/linux_glibc_x86_64_static/libelffiled.a
-mkdir -p prebuiltlibs/art/libelffile/
-rsync -ar --exclude=".git" --exclude="Android.bp" --exclude="Android.mk" art/libelffile/ prebuiltlibs/art/libelffile/
-mkdir -p prebuiltlibs/art/libdexfile/libdexfile/android_x86_64_shared_apex31/ && cp out/soong/.intermediates/art/libdexfile/libdexfile/android_x86_64_shared_apex31/libdexfile.so prebuiltlibs/art/libdexfile/libdexfile/android_x86_64_shared_apex31/libdexfile.so
-mkdir -p prebuiltlibs/art/libdexfile/libdexfile/android_x86_64_static_apex31/ && cp out/soong/.intermediates/art/libdexfile/libdexfile/android_x86_64_static_apex31/libdexfile.a prebuiltlibs/art/libdexfile/libdexfile/android_x86_64_static_apex31/libdexfile.a
-mkdir -p prebuiltlibs/art/libdexfile/libdexfile/android_x86_x86_64_shared_apex31/ && cp out/soong/.intermediates/art/libdexfile/libdexfile/android_x86_x86_64_shared_apex31/libdexfile.so prebuiltlibs/art/libdexfile/libdexfile/android_x86_x86_64_shared_apex31/libdexfile.so
-mkdir -p prebuiltlibs/art/libdexfile/libdexfile/android_x86_x86_64_static_apex31/ && cp out/soong/.intermediates/art/libdexfile/libdexfile/android_x86_x86_64_static_apex31/libdexfile.a prebuiltlibs/art/libdexfile/libdexfile/android_x86_x86_64_static_apex31/libdexfile.a
-mkdir -p prebuiltlibs/art/libdexfile/libdexfile/linux_glibc_x86_64_static/ && cp out/soong/.intermediates/art/libdexfile/libdexfile/linux_glibc_x86_64_static/libdexfile.a prebuiltlibs/art/libdexfile/libdexfile/linux_glibc_x86_64_static/libdexfile.a
-mkdir -p prebuiltlibs/art/libdexfile/
-rsync -ar --exclude=".git" --exclude="Android.bp" --exclude="Android.mk" art/libdexfile/ prebuiltlibs/art/libdexfile/
-mkdir -p prebuiltlibs/art/dexdump/dexdump/linux_glibc_x86_64/ && cp out/soong/.intermediates/art/dexdump/dexdump/linux_glibc_x86_64/dexdump prebuiltlibs/art/dexdump/dexdump/linux_glibc_x86_64/dexdump
-mkdir -p prebuiltlibs/art/dexdump/dexdump/android_x86_64_apex31/ && cp out/soong/.intermediates/art/dexdump/dexdump/android_x86_64_apex31/dexdump prebuiltlibs/art/dexdump/dexdump/android_x86_64_apex31/dexdump
-mkdir -p prebuiltlibs/art/dexlist/dexlist/android_x86_64_apex31/ && cp out/soong/.intermediates/art/dexlist/dexlist/android_x86_64_apex31/dexlist prebuiltlibs/art/dexlist/dexlist/android_x86_64_apex31/dexlist
-mkdir -p prebuiltlibs/art/tools/hiddenapi/hiddenapi/linux_glibc_x86_64/ && cp out/soong/.intermediates/art/tools/hiddenapi/hiddenapi/linux_glibc_x86_64/hiddenapi prebuiltlibs/art/tools/hiddenapi/hiddenapi/linux_glibc_x86_64/hiddenapi
-mkdir -p prebuiltlibs/art/tools/veridex/veridex/linux_glibc_x86_64/ && cp out/soong/.intermediates/art/tools/veridex/veridex/linux_glibc_x86_64/veridex prebuiltlibs/art/tools/veridex/veridex/linux_glibc_x86_64/veridex
-mkdir -p prebuiltlibs/art/libdexfile/libdexfiled/linux_glibc_x86_64_static/ && cp out/soong/.intermediates/art/libdexfile/libdexfiled/linux_glibc_x86_64_static/libdexfiled.a prebuiltlibs/art/libdexfile/libdexfiled/linux_glibc_x86_64_static/libdexfiled.a
-mkdir -p prebuiltlibs/art/libdexfile/
-rsync -ar --exclude=".git" --exclude="Android.bp" --exclude="Android.mk" art/libdexfile/ prebuiltlibs/art/libdexfile/
-mkdir -p prebuiltlibs/art/libprofile/libprofile/android_x86_64_shared_apex31/ && cp out/soong/.intermediates/art/libprofile/libprofile/android_x86_64_shared_apex31/libprofile.so prebuiltlibs/art/libprofile/libprofile/android_x86_64_shared_apex31/libprofile.so
-mkdir -p prebuiltlibs/art/libprofile/libprofile/android_x86_64_static_apex31/ && cp out/soong/.intermediates/art/libprofile/libprofile/android_x86_64_static_apex31/libprofile.a prebuiltlibs/art/libprofile/libprofile/android_x86_64_static_apex31/libprofile.a
-mkdir -p prebuiltlibs/art/libprofile/libprofile/android_x86_x86_64_shared_apex31/ && cp out/soong/.intermediates/art/libprofile/libprofile/android_x86_x86_64_shared_apex31/libprofile.so prebuiltlibs/art/libprofile/libprofile/android_x86_x86_64_shared_apex31/libprofile.so
-mkdir -p prebuiltlibs/art/libprofile/libprofile/android_x86_x86_64_static_apex31/ && cp out/soong/.intermediates/art/libprofile/libprofile/android_x86_x86_64_static_apex31/libprofile.a prebuiltlibs/art/libprofile/libprofile/android_x86_x86_64_static_apex31/libprofile.a
-mkdir -p prebuiltlibs/art/libprofile/libprofile/linux_glibc_x86_64_static/ && cp out/soong/.intermediates/art/libprofile/libprofile/linux_glibc_x86_64_static/libprofile.a prebuiltlibs/art/libprofile/libprofile/linux_glibc_x86_64_static/libprofile.a
-mkdir -p prebuiltlibs/art/libprofile/
-rsync -ar --exclude=".git" --exclude="Android.bp" --exclude="Android.mk" art/libprofile/ prebuiltlibs/art/libprofile/
-mkdir -p prebuiltlibs/art/dexlayout/libart-dexlayout/linux_glibc_x86_64_static/ && cp out/soong/.intermediates/art/dexlayout/libart-dexlayout/linux_glibc_x86_64_static/libart-dexlayout.a prebuiltlibs/art/dexlayout/libart-dexlayout/linux_glibc_x86_64_static/libart-dexlayout.a
-mkdir -p prebuiltlibs/art/dexlayout/libart-dexlayout/android_x86_64_shared_apex31/ && cp out/soong/.intermediates/art/dexlayout/libart-dexlayout/android_x86_64_shared_apex31/libart-dexlayout.so prebuiltlibs/art/dexlayout/libart-dexlayout/android_x86_64_shared_apex31/libart-dexlayout.so
-mkdir -p prebuiltlibs/art/dexlayout/libart-dexlayout/android_x86_64_static_apex31/ && cp out/soong/.intermediates/art/dexlayout/libart-dexlayout/android_x86_64_static_apex31/libart-dexlayout.a prebuiltlibs/art/dexlayout/libart-dexlayout/android_x86_64_static_apex31/libart-dexlayout.a
-mkdir -p prebuiltlibs/art/dexlayout/libart-dexlayout/android_x86_x86_64_shared_apex31/ && cp out/soong/.intermediates/art/dexlayout/libart-dexlayout/android_x86_x86_64_shared_apex31/libart-dexlayout.so prebuiltlibs/art/dexlayout/libart-dexlayout/android_x86_x86_64_shared_apex31/libart-dexlayout.so
-mkdir -p prebuiltlibs/art/dexlayout/libart-dexlayout/android_x86_x86_64_static_apex31/ && cp out/soong/.intermediates/art/dexlayout/libart-dexlayout/android_x86_x86_64_static_apex31/libart-dexlayout.a prebuiltlibs/art/dexlayout/libart-dexlayout/android_x86_x86_64_static_apex31/libart-dexlayout.a
-mkdir -p prebuiltlibs/art/dexlayout/
-rsync -ar --exclude=".git" --exclude="Android.bp" --exclude="Android.mk" art/dexlayout/ prebuiltlibs/art/dexlayout/
-mkdir -p prebuiltlibs/art/libprofile/libprofiled/linux_glibc_x86_64_static/ && cp out/soong/.intermediates/art/libprofile/libprofiled/linux_glibc_x86_64_static/libprofiled.a prebuiltlibs/art/libprofile/libprofiled/linux_glibc_x86_64_static/libprofiled.a
-mkdir -p prebuiltlibs/art/libprofile/
-rsync -ar --exclude=".git" --exclude="Android.bp" --exclude="Android.mk" art/libprofile/ prebuiltlibs/art/libprofile/
-mkdir -p prebuiltlibs/art/dexlayout/libartd-dexlayout/linux_glibc_x86_64_static/ && cp out/soong/.intermediates/art/dexlayout/libartd-dexlayout/linux_glibc_x86_64_static/libartd-dexlayout.a prebuiltlibs/art/dexlayout/libartd-dexlayout/linux_glibc_x86_64_static/libartd-dexlayout.a
-mkdir -p prebuiltlibs/art/dexlayout/
-rsync -ar --exclude=".git" --exclude="Android.bp" --exclude="Android.mk" art/dexlayout/ prebuiltlibs/art/dexlayout/
-mkdir -p prebuiltlibs/art/profman/libprofman_static/linux_glibc_x86_64_static/ && cp out/soong/.intermediates/art/profman/libprofman_static/linux_glibc_x86_64_static/libprofman_static.a prebuiltlibs/art/profman/libprofman_static/linux_glibc_x86_64_static/libprofman_static.a
-mkdir -p prebuiltlibs/art/profman/profman/linux_glibc_x86_64/ && cp out/soong/.intermediates/art/profman/profman/linux_glibc_x86_64/profman prebuiltlibs/art/profman/profman/linux_glibc_x86_64/profman
-mkdir -p prebuiltlibs/art/profman/profman/android_x86_64_apex31/ && cp out/soong/.intermediates/art/profman/profman/android_x86_64_apex31/profman prebuiltlibs/art/profman/profman/android_x86_64_apex31/profman
-mkdir -p prebuiltlibs/art/libnativeloader/libnativeloader/android_x86_64_shared_apex31/ && cp out/soong/.intermediates/art/libnativeloader/libnativeloader/android_x86_64_shared_apex31/libnativeloader.so prebuiltlibs/art/libnativeloader/libnativeloader/android_x86_64_shared_apex31/libnativeloader.so
-mkdir -p prebuiltlibs/art/libnativeloader/libnativeloader/android_x86_64_static_apex31/ && cp out/soong/.intermediates/art/libnativeloader/libnativeloader/android_x86_64_static_apex31/libnativeloader.a prebuiltlibs/art/libnativeloader/libnativeloader/android_x86_64_static_apex31/libnativeloader.a
-mkdir -p prebuiltlibs/art/libnativeloader/libnativeloader/android_x86_x86_64_shared_apex31/ && cp out/soong/.intermediates/art/libnativeloader/libnativeloader/android_x86_x86_64_shared_apex31/libnativeloader.so prebuiltlibs/art/libnativeloader/libnativeloader/android_x86_x86_64_shared_apex31/libnativeloader.so
-mkdir -p prebuiltlibs/art/libnativeloader/libnativeloader/android_x86_x86_64_static_apex31/ && cp out/soong/.intermediates/art/libnativeloader/libnativeloader/android_x86_x86_64_static_apex31/libnativeloader.a prebuiltlibs/art/libnativeloader/libnativeloader/android_x86_x86_64_static_apex31/libnativeloader.a
-mkdir -p prebuiltlibs/art/libnativeloader/libnativeloader/linux_glibc_x86_64_static/ && cp out/soong/.intermediates/art/libnativeloader/libnativeloader/linux_glibc_x86_64_static/libnativeloader.a prebuiltlibs/art/libnativeloader/libnativeloader/linux_glibc_x86_64_static/libnativeloader.a
-mkdir -p prebuiltlibs/art/libnativeloader/libnativeloader/android_x86_64_shared_current/ && cp out/soong/.intermediates/art/libnativeloader/libnativeloader/android_x86_64_shared_current/libnativeloader.so prebuiltlibs/art/libnativeloader/libnativeloader/android_x86_64_shared_current/libnativeloader.so
-mkdir -p prebuiltlibs/art/libnativeloader/libnativeloader/android_x86_x86_64_shared_current/ && cp out/soong/.intermediates/art/libnativeloader/libnativeloader/android_x86_x86_64_shared_current/libnativeloader.so prebuiltlibs/art/libnativeloader/libnativeloader/android_x86_x86_64_shared_current/libnativeloader.so
-mkdir -p prebuiltlibs/art/libnativeloader/libnativeloader/android_x86_64_shared/ && cp out/soong/.intermediates/art/libnativeloader/libnativeloader/android_x86_64_shared/libnativeloader.so prebuiltlibs/art/libnativeloader/libnativeloader/android_x86_64_shared/libnativeloader.so
-mkdir -p prebuiltlibs/art/libnativeloader/libnativeloader/android_x86_64_static/ && cp out/soong/.intermediates/art/libnativeloader/libnativeloader/android_x86_64_static/libnativeloader.a prebuiltlibs/art/libnativeloader/libnativeloader/android_x86_64_static/libnativeloader.a
-mkdir -p prebuiltlibs/art/libnativeloader/libnativeloader/android_x86_x86_64_shared/ && cp out/soong/.intermediates/art/libnativeloader/libnativeloader/android_x86_x86_64_shared/libnativeloader.so prebuiltlibs/art/libnativeloader/libnativeloader/android_x86_x86_64_shared/libnativeloader.so
-mkdir -p prebuiltlibs/art/libnativeloader/libnativeloader/android_x86_x86_64_static/ && cp out/soong/.intermediates/art/libnativeloader/libnativeloader/android_x86_x86_64_static/libnativeloader.a prebuiltlibs/art/libnativeloader/libnativeloader/android_x86_x86_64_static/libnativeloader.a
+mkdir -p prebuiltlibs/art/libnativebridge/libnativebridge/android_x86_64_shared_apex31/ && cp out/soong/.intermediates/art/libnativebridge/libnativebridge/android_x86_64_shared_apex31/libnativebridge.so prebuiltlibs/art/libnativebridge/libnativebridge/android_x86_64_shared_apex31/libnativebridge.so
+mkdir -p prebuiltlibs/art/libnativebridge/libnativebridge/android_x86_64_static_apex31/ && cp out/soong/.intermediates/art/libnativebridge/libnativebridge/android_x86_64_static_apex31/libnativebridge.a prebuiltlibs/art/libnativebridge/libnativebridge/android_x86_64_static_apex31/libnativebridge.a
+mkdir -p prebuiltlibs/art/libnativebridge/libnativebridge/android_x86_x86_64_shared_apex31/ && cp out/soong/.intermediates/art/libnativebridge/libnativebridge/android_x86_x86_64_shared_apex31/libnativebridge.so prebuiltlibs/art/libnativebridge/libnativebridge/android_x86_x86_64_shared_apex31/libnativebridge.so
+mkdir -p prebuiltlibs/art/libnativebridge/libnativebridge/android_x86_x86_64_static_apex31/ && cp out/soong/.intermediates/art/libnativebridge/libnativebridge/android_x86_x86_64_static_apex31/libnativebridge.a prebuiltlibs/art/libnativebridge/libnativebridge/android_x86_x86_64_static_apex31/libnativebridge.a
+mkdir -p prebuiltlibs/art/libnativebridge/libnativebridge/linux_glibc_x86_64_static/ && cp out/soong/.intermediates/art/libnativebridge/libnativebridge/linux_glibc_x86_64_static/libnativebridge.a prebuiltlibs/art/libnativebridge/libnativebridge/linux_glibc_x86_64_static/libnativebridge.a
+mkdir -p prebuiltlibs/art/libnativebridge/libnativebridge/android_x86_64_shared/ && cp out/soong/.intermediates/art/libnativebridge/libnativebridge/android_x86_64_shared/libnativebridge.so prebuiltlibs/art/libnativebridge/libnativebridge/android_x86_64_shared/libnativebridge.so
+mkdir -p prebuiltlibs/art/libnativebridge/libnativebridge/android_x86_64_static/ && cp out/soong/.intermediates/art/libnativebridge/libnativebridge/android_x86_64_static/libnativebridge.a prebuiltlibs/art/libnativebridge/libnativebridge/android_x86_64_static/libnativebridge.a
+mkdir -p prebuiltlibs/art/libnativebridge/libnativebridge/android_x86_x86_64_shared/ && cp out/soong/.intermediates/art/libnativebridge/libnativebridge/android_x86_x86_64_shared/libnativebridge.so prebuiltlibs/art/libnativebridge/libnativebridge/android_x86_x86_64_shared/libnativebridge.so
+mkdir -p prebuiltlibs/art/libnativebridge/libnativebridge/android_x86_x86_64_static/ && cp out/soong/.intermediates/art/libnativebridge/libnativebridge/android_x86_x86_64_static/libnativebridge.a prebuiltlibs/art/libnativebridge/libnativebridge/android_x86_x86_64_static/libnativebridge.a
+mkdir -p prebuiltlibs/art/libnativebridge/include
+rsync -ar --exclude=".git" --exclude="Android.bp" --exclude="Android.mk" art/libnativebridge/include/ prebuiltlibs/art/libnativebridge/include
+mkdir -p prebuiltlibs/art/libnativebridge/libnativebridge_lazy/android_x86_64_shared/ && cp out/soong/.intermediates/art/libnativebridge/libnativebridge_lazy/android_x86_64_shared/libnativebridge_lazy.so prebuiltlibs/art/libnativebridge/libnativebridge_lazy/android_x86_64_shared/libnativebridge_lazy.so
+mkdir -p prebuiltlibs/art/libnativebridge/libnativebridge_lazy/android_x86_64_static/ && cp out/soong/.intermediates/art/libnativebridge/libnativebridge_lazy/android_x86_64_static/libnativebridge_lazy.a prebuiltlibs/art/libnativebridge/libnativebridge_lazy/android_x86_64_static/libnativebridge_lazy.a
+mkdir -p prebuiltlibs/art/libnativebridge/libnativebridge_lazy/android_x86_x86_64_shared/ && cp out/soong/.intermediates/art/libnativebridge/libnativebridge_lazy/android_x86_x86_64_shared/libnativebridge_lazy.so prebuiltlibs/art/libnativebridge/libnativebridge_lazy/android_x86_x86_64_shared/libnativebridge_lazy.so
+mkdir -p prebuiltlibs/art/libnativebridge/libnativebridge_lazy/android_x86_x86_64_static/ && cp out/soong/.intermediates/art/libnativebridge/libnativebridge_lazy/android_x86_x86_64_static/libnativebridge_lazy.a prebuiltlibs/art/libnativebridge/libnativebridge_lazy/android_x86_x86_64_static/libnativebridge_lazy.a
+mkdir -p prebuiltlibs/art/libnativeloader/libnativeloader_lazy/android_x86_64_shared/ && cp out/soong/.intermediates/art/libnativeloader/libnativeloader_lazy/android_x86_64_shared/libnativeloader_lazy.so prebuiltlibs/art/libnativeloader/libnativeloader_lazy/android_x86_64_shared/libnativeloader_lazy.so
+mkdir -p prebuiltlibs/art/libnativeloader/libnativeloader_lazy/android_x86_64_static/ && cp out/soong/.intermediates/art/libnativeloader/libnativeloader_lazy/android_x86_64_static/libnativeloader_lazy.a prebuiltlibs/art/libnativeloader/libnativeloader_lazy/android_x86_64_static/libnativeloader_lazy.a
+mkdir -p prebuiltlibs/art/libnativeloader/libnativeloader_lazy/android_x86_x86_64_shared/ && cp out/soong/.intermediates/art/libnativeloader/libnativeloader_lazy/android_x86_x86_64_shared/libnativeloader_lazy.so prebuiltlibs/art/libnativeloader/libnativeloader_lazy/android_x86_x86_64_shared/libnativeloader_lazy.so
+mkdir -p prebuiltlibs/art/libnativeloader/libnativeloader_lazy/android_x86_x86_64_static/ && cp out/soong/.intermediates/art/libnativeloader/libnativeloader_lazy/android_x86_x86_64_static/libnativeloader_lazy.a prebuiltlibs/art/libnativeloader/libnativeloader_lazy/android_x86_x86_64_static/libnativeloader_lazy.a
 
-printf "cc_prebuilt_library {\n  name: \"libartpalette\",\n  visibility: [\"//prebuilts/module_sdk/art/current/host-exports\"],\n  arch: {\n    x86: {\n      avx2: {\n      },\n    },\n    x86_64: {\n      avx2: {\n      },\n    },\n  },\n  target: {\n    android: {\n      header_libs: [\"bionic_libc_platform_headers\"],\n      runtime_libs: [\"libartpalette-system\"],\n      shared_libs: [\"liblog\"],\n      version_script: \"libartpalette.map.txt\",\n    },\n    linux: {\n    },\n    linux_bionic: {\n      header_libs: [\"bionic_libc_platform_headers\",\"libbase_headers\"],\n      shared: {\n        shared_libs: [\"libbase\",\"liblog\"],\n      },\n      version_script: \"libartpalette.map.txt\",\n    },\n    darwin: {\n      enabled: true,\n      header_libs: [\"libbase_headers\"],\n      static_libs: [\"libbase\",\"liblog\"],\n    },\n    windows: {\n      enabled: true,\n      header_libs: [\"libbase_headers\"],\n      static_libs: [\"libbase\",\"liblog\"],\n    },\n    host: {\n    },\n    linux_glibc: {\n      header_libs: [\"libbase_headers\"],\n      shared: {\n        shared_libs: [\"libbase\",\"liblog\"],\n      },\n      version_script: \"libartpalette.map.txt\",\n    },\n  },\n  min_sdk_version: \"S\",\n  host_supported: true,\n  export_include_dirs: [\"include\"],\n  apex_available: [\"com.android.art\",\"com.android.art.debug\",\"com.android.runtime\"],\n  strip: {\n    none: true,\n  },\n  multiple_variants: true,\n  prefer: true,\n  static: {\n    srcs: [\"libartpalette.a\"],\n  },\n  shared: {\n    srcs: [\"libartpalette.so\"],\n  },\n}\n" >> prebuiltlibs/art/libartpalette/Android.bp
-printf "cc_prebuilt_library {\n  name: \"libartbase\",\n  visibility: [\"//prebuilts/module_sdk/art/current/host-exports\",\"//packages/modules/NetworkStack/tests:__subpackages__\"],\n  arch: {\n    x86: {\n      avx2: {\n      },\n    },\n    x86_64: {\n      avx2: {\n      },\n    },\n  },\n  target: {\n    android: {\n      header_libs: [\"bionic_libc_platform_headers\"],\n      static_libs: [\"libziparchive\"],\n      shared_libs: [\"libz\",\"liblog\",\"libartpalette\",\"libbase\"],\n      export_shared_lib_headers: [\"libbase\"],\n    },\n    linux: {\n    },\n    linux_bionic: {\n      header_libs: [\"bionic_libc_platform_headers\"],\n    },\n    darwin: {\n      enabled: true,\n    },\n    windows: {\n      enabled: true,\n      static_libs: [\"libziparchive\",\"libz\",\"liblog\",\"libartpalette\",\"libbase\"],\n      export_static_lib_headers: [\"libbase\"],\n      shared: {\n        enabled: false,\n      },\n    },\n    host: {\n    },\n    not_windows: {\n      static: {\n      },\n      shared_libs: [\"libziparchive\",\"libz\",\"liblog\",\"libartpalette\",\"libbase\"],\n      export_shared_lib_headers: [\"libbase\"],\n    },\n    android_arm: {\n      strip: {\n        keep_symbols_and_debug_frame: true,\n      },\n      pgo: {\n        profile_file: \"art/art_arm_arm64.profdata\",\n      },\n    },\n    android_arm64: {\n      strip: {\n        keep_symbols: true,\n      },\n      pgo: {\n        profile_file: \"art/art_arm_arm64.profdata\",\n      },\n    },\n    android_x86: {\n      strip: {\n        keep_symbols: true,\n      },\n      pgo: {\n        profile_file: \"art/art_x86_x86_64.profdata\",\n      },\n    },\n    android_x86_64: {\n      strip: {\n        keep_symbols: true,\n      },\n      pgo: {\n        profile_file: \"art/art_x86_x86_64.profdata\",\n      },\n    },\n  },\n  min_sdk_version: \"S\",\n  host_supported: true,\n  export_include_dirs: [\".\"],\n  pgo: {\n    sampling: true,\n  },\n  apex_available: [\"com.android.art\",\"com.android.art.debug\"],\n  shared_libs: [\"libbase\",\"libziparchive\"],\n  export_shared_lib_headers: [\"libbase\"],\n  strip: {\n    none: true,\n  },\n  multiple_variants: true,\n  prefer: true,\n  static: {\n    srcs: [\"libartbase.a\"],\n  },\n  shared: {\n    srcs: [\"libartbase.so\"],\n  },\n}\ncc_prebuilt_library {\n  name: \"libartbased\",\n  visibility: [\"//art:__subpackages__\"],\n  target: {\n    android: {\n      header_libs: [\"bionic_libc_platform_headers\"],\n      static_libs: [\"libziparchive\"],\n      shared_libs: [\"libz\",\"liblog\",\"libartpalette\",\"libbase\"],\n      export_shared_lib_headers: [\"libbase\"],\n    },\n    host: {\n    },\n    linux: {\n    },\n    linux_bionic: {\n      header_libs: [\"bionic_libc_platform_headers\"],\n    },\n    darwin: {\n      enabled: true,\n    },\n    windows: {\n      enabled: true,\n      static_libs: [\"libziparchive\",\"libz\",\"liblog\",\"libartpalette\",\"libbase\"],\n      export_static_lib_headers: [\"libbase\"],\n      shared: {\n        enabled: false,\n      },\n    },\n    not_windows: {\n      static: {\n      },\n      shared_libs: [\"libziparchive\",\"libz\",\"liblog\",\"libartpalette\",\"libbase\"],\n      export_shared_lib_headers: [\"libbase\"],\n    },\n  },\n  min_sdk_version: \"S\",\n  arch: {\n    x86: {\n      avx2: {\n      },\n    },\n    x86_64: {\n      avx2: {\n      },\n    },\n  },\n  host_supported: true,\n  export_include_dirs: [\".\"],\n  apex_available: [\"com.android.art.debug\"],\n  shared_libs: [\"libbase\",\"libziparchive\"],\n  export_shared_lib_headers: [\"libbase\"],\n  strip: {\n    none: true,\n  },\n  multiple_variants: true,\n  prefer: true,\n  srcs: [\"libartbased.a\"],\n}\n" >> prebuiltlibs/art/libartbase/Android.bp
-printf "cc_prebuilt_library_static {\n  name: \"libelffile\",\n  visibility: [\"//art:__subpackages__\"],\n  arch: {\n    x86: {\n      avx2: {\n      },\n    },\n    x86_64: {\n      avx2: {\n      },\n    },\n  },\n  target: {\n    android: {\n      header_libs: [\"bionic_libc_platform_headers\"],\n    },\n    linux: {\n    },\n    linux_bionic: {\n      header_libs: [\"bionic_libc_platform_headers\"],\n    },\n    darwin: {\n      enabled: false,\n    },\n    windows: {\n      enabled: false,\n    },\n    host: {\n    },\n  },\n  min_sdk_version: \"S\",\n  host_supported: true,\n  export_include_dirs: [\".\"],\n  shared_libs: [\"libbase\",\"liblzma\",\"libartbase\"],\n  apex_available: [\"com.android.art\",\"com.android.art.debug\"],\n  strip: {\n    none: true,\n  },\n  multiple_variants: true,\n  prefer: true,\n  srcs: [\"libelffile.a\"],\n}\ncc_prebuilt_library_static {\n  name: \"libelffiled\",\n  visibility: [\"//art:__subpackages__\"],\n  target: {\n    android: {\n      header_libs: [\"bionic_libc_platform_headers\"],\n    },\n    host: {\n    },\n    linux: {\n    },\n    linux_bionic: {\n      header_libs: [\"bionic_libc_platform_headers\"],\n    },\n    darwin: {\n      enabled: false,\n    },\n    windows: {\n      enabled: false,\n    },\n  },\n  min_sdk_version: \"S\",\n  arch: {\n    x86: {\n      avx2: {\n      },\n    },\n    x86_64: {\n      avx2: {\n      },\n    },\n  },\n  host_supported: true,\n  export_include_dirs: [\".\"],\n  shared_libs: [\"libbase\",\"liblzma\",\"libartbased\"],\n  apex_available: [\"com.android.art.debug\"],\n  strip: {\n    none: true,\n  },\n  multiple_variants: true,\n  prefer: true,\n  srcs: [\"libelffiled.a\"],\n}\n" >> prebuiltlibs/art/libelffile/Android.bp
-printf "cc_prebuilt_library_static {\n  name: \"libodrstatslog\",\n  visibility: [\"//art:__subpackages__\"],\n  arch: {\n    x86: {\n      avx2: {\n      },\n    },\n    x86_64: {\n      avx2: {\n      },\n    },\n  },\n  target: {\n    android: {\n      header_libs: [\"bionic_libc_platform_headers\"],\n      shared_libs: [\"libstatssocket\"],\n    },\n    linux: {\n    },\n    linux_bionic: {\n      header_libs: [\"bionic_libc_platform_headers\"],\n    },\n    darwin: {\n      enabled: false,\n    },\n    windows: {\n      enabled: false,\n    },\n    host: {\n    },\n  },\n  min_sdk_version: \"S\",\n  host_supported: true,\n  export_include_dirs: [\"include\"],\n  shared_libs: [\"libartbase\"],\n  apex_available: [\"com.android.art\",\"com.android.art.debug\"],\n  strip: {\n    none: true,\n  },\n  multiple_variants: true,\n  prefer: true,\n  srcs: [\"libodrstatslog.a\"],\n}\n" >> prebuiltlibs/art/odrefresh/Android.bp
-printf "cc_prebuilt_library {\n  name: \"libdexfile\",\n  visibility: [\"//external/perfetto\",\"//system/core/debuggerd\",\"//system/extras/simpleperf\",\"//system/unwinding/libunwindstack\"],\n  arch: {\n    x86: {\n      avx2: {\n      },\n    },\n    x86_64: {\n      avx2: {\n      },\n    },\n  },\n  target: {\n    android: {\n      header_libs: [\"bionic_libc_platform_headers\"],\n      static_libs: [\"libziparchive\"],\n      shared_libs: [\"libz\",\"libartpalette\",\"liblog\",\"libbase\",\"libartbase\"],\n      export_shared_lib_headers: [\"libbase\",\"libartbase\"],\n    },\n    linux: {\n    },\n    linux_bionic: {\n      header_libs: [\"bionic_libc_platform_headers\"],\n    },\n    darwin: {\n      enabled: true,\n    },\n    windows: {\n      enabled: true,\n      static_libs: [\"libziparchive\",\"libz\",\"libartpalette\",\"liblog\",\"libbase\",\"libartbase\"],\n      export_static_lib_headers: [\"libbase\",\"libartbase\"],\n      shared: {\n        enabled: false,\n      },\n    },\n    host: {\n    },\n    not_windows: {\n      shared_libs: [\"libziparchive\",\"libz\",\"libartpalette\",\"liblog\",\"libbase\",\"libartbase\"],\n      export_shared_lib_headers: [\"libbase\",\"libartbase\"],\n    },\n    android_arm: {\n      strip: {\n        keep_symbols_and_debug_frame: true,\n      },\n    },\n    android_arm64: {\n      strip: {\n        keep_symbols: true,\n      },\n    },\n    android_x86: {\n      strip: {\n        keep_symbols: true,\n      },\n    },\n    android_x86_64: {\n      strip: {\n        keep_symbols: true,\n      },\n    },\n  },\n  min_sdk_version: \"S\",\n  host_supported: true,\n  header_libs: [\"jni_headers\",\"libdexfile_external_headers\"],\n  export_header_lib_headers: [\"jni_headers\",\"libdexfile_external_headers\"],\n  export_include_dirs: [\".\"],\n  apex_available: [\"com.android.art\",\"com.android.art.debug\"],\n  stubs: {\n    symbol_file: \"libdexfile.map.txt\",\n    versions: [\"1\"],\n  },\n  strip: {\n    none: true,\n  },\n  multiple_variants: true,\n  prefer: true,\n  static: {\n    srcs: [\"libdexfile.a\"],\n  },\n  shared: {\n    srcs: [\"libdexfile.so\"],\n  },\n}\ncc_prebuilt_library {\n  name: \"libdexfiled\",\n  visibility: [\"//art:__subpackages__\"],\n  target: {\n    android: {\n      header_libs: [\"bionic_libc_platform_headers\"],\n      static_libs: [\"libziparchive\"],\n      shared_libs: [\"libz\",\"libartpalette\",\"liblog\",\"libbase\",\"libartbased\"],\n      export_shared_lib_headers: [\"libbase\",\"libartbased\"],\n    },\n    host: {\n    },\n    linux: {\n    },\n    linux_bionic: {\n      header_libs: [\"bionic_libc_platform_headers\"],\n    },\n    darwin: {\n      enabled: true,\n    },\n    windows: {\n      enabled: true,\n      static_libs: [\"libziparchive\",\"libz\",\"libartpalette\",\"liblog\",\"libbase\",\"libartbased\"],\n      export_static_lib_headers: [\"libbase\",\"libartbased\"],\n      shared: {\n        enabled: false,\n      },\n    },\n    not_windows: {\n      shared_libs: [\"libziparchive\",\"libz\",\"libartpalette\",\"liblog\",\"libbase\",\"libartbased\"],\n      export_shared_lib_headers: [\"libbase\",\"libartbased\"],\n    },\n  },\n  min_sdk_version: \"S\",\n  arch: {\n    x86: {\n      avx2: {\n      },\n    },\n    x86_64: {\n      avx2: {\n      },\n    },\n  },\n  host_supported: true,\n  header_libs: [\"jni_headers\",\"libdexfile_external_headers\"],\n  export_header_lib_headers: [\"jni_headers\",\"libdexfile_external_headers\"],\n  export_include_dirs: [\".\"],\n  apex_available: [\"com.android.art.debug\",\"com.android.art\"],\n  strip: {\n    none: true,\n  },\n  multiple_variants: true,\n  prefer: true,\n  srcs: [\"libdexfiled.a\"],\n}\n" >> prebuiltlibs/art/libdexfile/Android.bp
-printf "cc_prebuilt_binary {\n  name: \"dexdump\",\n  visibility: [\"//art:__subpackages__\"],\n  arch: {\n    x86: {\n      avx2: {\n      },\n    },\n    x86_64: {\n      avx2: {\n      },\n    },\n  },\n  target: {\n    android: {\n      header_libs: [\"bionic_libc_platform_headers\"],\n      shared_libs: [\"libdexfile\",\"libartbase\",\"libbase\"],\n    },\n    linux: {\n    },\n    linux_bionic: {\n      header_libs: [\"bionic_libc_platform_headers\"],\n    },\n    darwin: {\n      enabled: true,\n    },\n    windows: {\n      enabled: true,\n    },\n    host: {\n      stl: \"libc++_static\",\n      static_libs: [\"libdexfile\",\"libartbase\",\"libbase\",\"libartpalette\",\"liblog\",\"libz\",\"libziparchive\"],\n    },\n  },\n  min_sdk_version: \"S\",\n  host_supported: true,\n  apex_available: [\"com.android.art\",\"com.android.art.debug\"],\n  strip: {\n    none: true,\n  },\n  multiple_variants: true,\n  prefer: true,\n  srcs: [\"dexdump\"],\n}\n" >> prebuiltlibs/art/dexdump/Android.bp
-printf "cc_prebuilt_binary {\n  name: \"dexlist\",\n  visibility: [\"//art:__subpackages__\"],\n  arch: {\n    x86: {\n      avx2: {\n      },\n    },\n    x86_64: {\n      avx2: {\n      },\n    },\n  },\n  target: {\n    android: {\n      header_libs: [\"bionic_libc_platform_headers\"],\n    },\n    linux: {\n    },\n    linux_bionic: {\n      header_libs: [\"bionic_libc_platform_headers\"],\n    },\n    darwin: {\n      enabled: false,\n    },\n    windows: {\n      enabled: false,\n    },\n    host: {\n    },\n  },\n  min_sdk_version: \"S\",\n  host_supported: true,\n  shared_libs: [\"libdexfile\",\"libartbase\",\"libbase\"],\n  apex_available: [\"com.android.art\",\"com.android.art.debug\"],\n  strip: {\n    none: true,\n  },\n  multiple_variants: true,\n  prefer: true,\n  srcs: [\"dexlist\"],\n}\n" >> prebuiltlibs/art/dexlist/Android.bp
-printf "cc_prebuilt_binary {\n  name: \"hiddenapi\",\n  visibility: [\"//art:__subpackages__\"],\n  arch: {\n    x86: {\n      avx2: {\n      },\n    },\n    x86_64: {\n      avx2: {\n      },\n    },\n  },\n  target: {\n    android: {\n      header_libs: [\"bionic_libc_platform_headers\"],\n    },\n    linux: {\n    },\n    linux_bionic: {\n      header_libs: [\"bionic_libc_platform_headers\"],\n    },\n    darwin: {\n      enabled: true,\n    },\n    windows: {\n      enabled: false,\n    },\n    host: {\n      compile_multilib: \"64\",\n    },\n  },\n  min_sdk_version: \"S\",\n  host_supported: true,\n  device_supported: false,\n  stl: \"c++_static\",\n  static_libs: [\"libbase\"],\n  whole_static_libs: [\"libbase\",\"libartpalette\",\"liblog\",\"libz\",\"libziparchive\",\"libartbase\",\"libdexfile\"],\n  strip: {\n    none: true,\n  },\n  multiple_variants: true,\n  prefer: true,\n  srcs: [\"hiddenapi\"],\n}\n" >> prebuiltlibs/art/tools/hiddenapi/Android.bp
-printf "cc_prebuilt_binary {\n  name: \"veridex\",\n  visibility: [\"//art:__subpackages__\"],\n  arch: {\n    x86: {\n      avx2: {\n      },\n    },\n    x86_64: {\n      avx2: {\n      },\n    },\n  },\n  target: {\n    android: {\n      header_libs: [\"bionic_libc_platform_headers\"],\n    },\n    linux: {\n    },\n    linux_bionic: {\n      header_libs: [\"bionic_libc_platform_headers\"],\n    },\n    darwin: {\n      enabled: true,\n    },\n    windows: {\n      enabled: false,\n    },\n    host: {\n    },\n  },\n  min_sdk_version: \"S\",\n  host_supported: true,\n  stl: \"libc++_static\",\n  strip: {\n    none: true,\n  },\n  multiple_variants: true,\n  prefer: true,\n  srcs: [\"veridex\"],\n}\n" >> prebuiltlibs/art/tools/veridex/Android.bp
-printf "cc_prebuilt_library {\n  name: \"libprofile\",\n  visibility: [\"//art:__subpackages__\"],\n  arch: {\n    x86: {\n      avx2: {\n      },\n    },\n    x86_64: {\n      avx2: {\n      },\n    },\n  },\n  target: {\n    android: {\n      header_libs: [\"bionic_libc_platform_headers\"],\n      shared_libs: [\"libartpalette\",\"libbase\",\"libz\",\"libartbase\",\"libdexfile\"],\n      static_libs: [\"libziparchive\"],\n      export_shared_lib_headers: [\"libbase\"],\n    },\n    linux: {\n    },\n    linux_bionic: {\n      header_libs: [\"bionic_libc_platform_headers\"],\n    },\n    darwin: {\n      enabled: true,\n    },\n    windows: {\n      enabled: true,\n      static_libs: [\"libartpalette\",\"libziparchive\",\"libz\",\"libbase\",\"libartbase\",\"libdexfile\"],\n      export_static_lib_headers: [\"libbase\"],\n      shared: {\n        enabled: false,\n      },\n    },\n    host: {\n    },\n    not_windows: {\n      shared_libs: [\"libartpalette\",\"libziparchive\",\"libz\",\"libbase\",\"libartbase\",\"libdexfile\"],\n      export_shared_lib_headers: [\"libbase\"],\n    },\n    android_arm: {\n      strip: {\n        keep_symbols_and_debug_frame: true,\n      },\n    },\n    android_arm64: {\n      strip: {\n        keep_symbols: true,\n      },\n    },\n    android_x86: {\n      strip: {\n        keep_symbols: true,\n      },\n    },\n    android_x86_64: {\n      strip: {\n        keep_symbols: true,\n      },\n    },\n  },\n  min_sdk_version: \"S\",\n  host_supported: true,\n  export_include_dirs: [\".\"],\n  shared_libs: [\"libbase\",\"libziparchive\"],\n  export_shared_lib_headers: [\"libbase\"],\n  apex_available: [\"com.android.art\",\"com.android.art.debug\"],\n  strip: {\n    none: true,\n  },\n  multiple_variants: true,\n  prefer: true,\n  static: {\n    srcs: [\"libprofile.a\"],\n  },\n  shared: {\n    srcs: [\"libprofile.so\"],\n  },\n}\ncc_prebuilt_library {\n  name: \"libprofiled\",\n  visibility: [\"//art:__subpackages__\"],\n  target: {\n    android: {\n      header_libs: [\"bionic_libc_platform_headers\"],\n      shared_libs: [\"libartpalette\",\"libbase\",\"libz\",\"libartbased\",\"libdexfiled\"],\n      static_libs: [\"libziparchive\"],\n      export_shared_lib_headers: [\"libbase\"],\n    },\n    host: {\n    },\n    linux: {\n    },\n    linux_bionic: {\n      header_libs: [\"bionic_libc_platform_headers\"],\n    },\n    darwin: {\n      enabled: true,\n    },\n    windows: {\n      enabled: false,\n      static_libs: [\"libartpalette\",\"libziparchive\",\"libz\",\"libbase\",\"libartbased\",\"libdexfiled\"],\n      export_static_lib_headers: [\"libbase\"],\n    },\n    not_windows: {\n      shared_libs: [\"libartpalette\",\"libziparchive\",\"libz\",\"libbase\",\"libartbased\",\"libdexfiled\"],\n      export_shared_lib_headers: [\"libbase\"],\n    },\n  },\n  min_sdk_version: \"S\",\n  arch: {\n    x86: {\n      avx2: {\n      },\n    },\n    x86_64: {\n      avx2: {\n      },\n    },\n  },\n  host_supported: true,\n  export_include_dirs: [\".\"],\n  shared_libs: [\"libbase\",\"libziparchive\"],\n  export_shared_lib_headers: [\"libbase\"],\n  apex_available: [\"com.android.art.debug\",\"com.android.art\"],\n  strip: {\n    none: true,\n  },\n  multiple_variants: true,\n  prefer: true,\n  srcs: [\"libprofiled.a\"],\n}\n" >> prebuiltlibs/art/libprofile/Android.bp
-printf "cc_prebuilt_library {\n  name: \"libart-dexlayout\",\n  visibility: [\"//art:__subpackages__\"],\n  arch: {\n    x86: {\n      avx2: {\n      },\n    },\n    x86_64: {\n      avx2: {\n      },\n    },\n  },\n  target: {\n    android: {\n      header_libs: [\"bionic_libc_platform_headers\"],\n      shared_libs: [\"libartpalette\",\"libbase\",\"libartbase\",\"libdexfile\",\"libprofile\"],\n      lto: {\n        thin: true,\n      },\n    },\n    linux: {\n    },\n    linux_bionic: {\n      header_libs: [\"bionic_libc_platform_headers\"],\n    },\n    darwin: {\n      enabled: false,\n    },\n    windows: {\n      enabled: true,\n      static_libs: [\"libartpalette\",\"libbase\",\"libartbase\",\"libdexfile\",\"libprofile\"],\n      shared: {\n        enabled: false,\n      },\n    },\n    host: {\n    },\n    not_windows: {\n      shared_libs: [\"libartpalette\",\"libbase\",\"libartbase\",\"libdexfile\",\"libprofile\"],\n    },\n    android_arm64: {\n      pgo: {\n        profile_file: \"art/dex2oat_arm_arm64.profdata\",\n      },\n    },\n    android_arm: {\n      pgo: {\n        profile_file: \"art/dex2oat_arm_arm64.profdata\",\n      },\n    },\n    android_x86_64: {\n      pgo: {\n        profile_file: \"art/dex2oat_x86_x86_64.profdata\",\n      },\n    },\n    android_x86: {\n      pgo: {\n        profile_file: \"art/dex2oat_x86_x86_64.profdata\",\n      },\n    },\n  },\n  min_sdk_version: \"S\",\n  host_supported: true,\n  export_include_dirs: [\".\"],\n  shared_libs: [\"libz\"],\n  pgo: {\n    instrumentation: true,\n    benchmarks: [\"dex2oat\"],\n  },\n  apex_available: [\"com.android.art\",\"com.android.art.debug\"],\n  strip: {\n    none: true,\n  },\n  multiple_variants: true,\n  prefer: true,\n  static: {\n    srcs: [\"libart-dexlayout.a\"],\n  },\n  shared: {\n    srcs: [\"libart-dexlayout.so\"],\n  },\n}\ncc_prebuilt_library {\n  name: \"libartd-dexlayout\",\n  visibility: [\"//art:__subpackages__\"],\n  arch: {\n    x86: {\n      avx2: {\n      },\n    },\n    x86_64: {\n      avx2: {\n      },\n    },\n  },\n  target: {\n    android: {\n      header_libs: [\"bionic_libc_platform_headers\"],\n      shared_libs: [\"libartpalette\",\"libbase\",\"libartbased\",\"libdexfiled\",\"libprofiled\"],\n    },\n    linux: {\n    },\n    linux_bionic: {\n      header_libs: [\"bionic_libc_platform_headers\"],\n    },\n    darwin: {\n      enabled: false,\n    },\n    windows: {\n      enabled: false,\n      static_libs: [\"libartpalette\",\"libbase\",\"libartbased\",\"libdexfiled\",\"libprofiled\"],\n    },\n    host: {\n    },\n    not_windows: {\n      shared_libs: [\"libartpalette\",\"libbase\",\"libartbased\",\"libdexfiled\",\"libprofiled\"],\n    },\n  },\n  min_sdk_version: \"S\",\n  host_supported: true,\n  export_include_dirs: [\".\"],\n  shared_libs: [\"libz\"],\n  apex_available: [\"com.android.art.debug\",\"com.android.art\"],\n  strip: {\n    none: true,\n  },\n  multiple_variants: true,\n  prefer: true,\n  srcs: [\"libartd-dexlayout.a\"],\n}\n" >> prebuiltlibs/art/dexlayout/Android.bp
-printf "cc_prebuilt_library_static {\n  name: \"libprofman_static\",\n  visibility: [\"//art:__subpackages__\"],\n  arch: {\n    x86: {\n      avx2: {\n      },\n    },\n    x86_64: {\n      avx2: {\n      },\n    },\n  },\n  target: {\n    android: {\n      header_libs: [\"bionic_libc_platform_headers\"],\n    },\n    linux: {\n    },\n    linux_bionic: {\n      header_libs: [\"bionic_libc_platform_headers\"],\n    },\n    darwin: {\n      enabled: true,\n    },\n    windows: {\n      enabled: false,\n    },\n    host: {\n    },\n  },\n  min_sdk_version: \"S\",\n  whole_static_libs: [\"libbase\",\"libartpalette\",\"liblog\",\"libz\",\"libziparchive\",\"libartbase\",\"libdexfile\",\"libprofile\"],\n  device_supported: false,\n  host_supported: true,\n  strip: {\n    none: true,\n  },\n  multiple_variants: true,\n  prefer: true,\n  srcs: [\"libprofman_static.a\"],\n}\ncc_prebuilt_binary {\n  name: \"profman\",\n  visibility: [\"//art:__subpackages__\"],\n  arch: {\n    x86: {\n      avx2: {\n      },\n    },\n    x86_64: {\n      avx2: {\n      },\n    },\n  },\n  target: {\n    android: {\n      header_libs: [\"bionic_libc_platform_headers\"],\n      compile_multilib: \"first\",\n      shared_libs: [\"libbase\",\"libartbase\",\"libdexfile\",\"libprofile\"],\n    },\n    linux: {\n    },\n    linux_bionic: {\n      header_libs: [\"bionic_libc_platform_headers\"],\n    },\n    darwin: {\n      enabled: true,\n    },\n    windows: {\n      enabled: false,\n    },\n    host: {\n      whole_static_libs: [\"libbase\"],\n      static_libs: [\"libprofman_static\"],\n      stl: \"c++_static\",\n    },\n  },\n  min_sdk_version: \"S\",\n  host_supported: true,\n  apex_available: [\"com.android.art\",\"com.android.art.debug\"],\n  strip: {\n    none: true,\n  },\n  multiple_variants: true,\n  prefer: true,\n  srcs: [\"profman\"],\n}\n" >> prebuiltlibs/art/profman/Android.bp
-printf "cc_prebuilt_library {\n  name: \"libnativeloader\",\n  visibility: [\"//frameworks/base/cmds/app_process\",\"//frameworks/base/native/webview/loader\"],\n  arch: {\n    x86: {\n      avx2: {\n      },\n    },\n    x86_64: {\n      avx2: {\n      },\n    },\n  },\n  target: {\n    android: {\n      header_libs: [\"bionic_libc_platform_headers\"],\n      shared_libs: [\"libdl_android\"],\n      static_libs: [\"PlatformProperties\"],\n    },\n    linux: {\n    },\n    linux_bionic: {\n      header_libs: [\"bionic_libc_platform_headers\"],\n    },\n    darwin: {\n      enabled: false,\n    },\n    windows: {\n      enabled: false,\n    },\n    host: {\n    },\n    linux_glibc_x86: {\n    },\n    linux_glibc_x86_64: {\n    },\n  },\n  min_sdk_version: \"S\",\n  header_libs: [\"libnativeloader-headers\"],\n  export_header_lib_headers: [\"libnativeloader-headers\"],\n  apex_available: [\"com.android.art\",\"com.android.art.debug\"],\n  host_supported: true,\n  shared_libs: [\"liblog\",\"libnativebridge\",\"libbase\"],\n  stubs: {\n    symbol_file: \"libnativeloader.map.txt\",\n    versions: [\"1\"],\n  },\n  strip: {\n    none: true,\n  },\n  multiple_variants: true,\n  prefer: true,\n  static: {\n    srcs: [\"libnativeloader.a\"],\n  },\n  shared: {\n    srcs: [\"libnativeloader.so\"],\n  },\n}\n" >> prebuiltlibs/art/libnativeloader/Android.bp
+printf "cc_prebuilt_library {\n  name: \"libnativebridge\",\n  visibility: [\"//frameworks/base/cmds/app_process\",\"//frameworks/base/native/webview/loader/libwebviewchromium_loader\"],\n  arch: {\n    x86: {\n      avx2: {\n      },\n    },\n    x86_64: {\n      avx2: {\n      },\n    },\n  },\n  target: {\n    android: {\n      header_libs: [\"bionic_libc_platform_headers\",\"libnativeloader-headers\"],\n      shared_libs: [\"libdl_android\"],\n    },\n    linux: {\n    },\n    linux_bionic: {\n      header_libs: [\"bionic_libc_platform_headers\"],\n    },\n    darwin: {\n      enabled: false,\n    },\n    windows: {\n      enabled: false,\n    },\n    host: {\n    },\n  },\n  min_sdk_version: \"S\",\n  header_libs: [\"jni_headers\",\"libnativebridge-headers\"],\n  export_header_lib_headers: [\"jni_headers\",\"libnativebridge-headers\"],\n  apex_available: [\"com.android.art\",\"com.android.art.debug\"],\n  host_supported: true,\n  shared_libs: [\"liblog\"],\n  export_include_dirs: [\"include\"],\n  stubs: {\n    symbol_file: \"libnativebridge.map.txt\",\n    versions: [\"1\"],\n  },\n  strip: {\n    none: true,\n  },\n  multiple_variants: true,\n  prefer: true,\n  static: {\n    srcs: [\"libnativebridge.a\"],\n  },\n  shared: {\n    srcs: [\"libnativebridge.so\"],\n  },\n}\ncc_prebuilt_library {\n  name: \"libnativebridge_lazy\",\n  visibility: [\"//art/libnativebridge/tests\",\"//frameworks/base/core/jni\",\"//frameworks/native/opengl/libs\",\"//frameworks/native/vulkan/libvulkan\"],\n  arch: {\n    x86: {\n      avx2: {\n      },\n    },\n    x86_64: {\n      avx2: {\n      },\n    },\n  },\n  target: {\n    android: {\n      header_libs: [\"bionic_libc_platform_headers\"],\n    },\n    linux: {\n    },\n    linux_bionic: {\n      header_libs: [\"bionic_libc_platform_headers\"],\n    },\n    darwin: {\n      enabled: false,\n    },\n    windows: {\n      enabled: false,\n    },\n    host: {\n    },\n  },\n  min_sdk_version: \"S\",\n  header_libs: [\"jni_headers\",\"libnativebridge-headers\"],\n  export_header_lib_headers: [\"jni_headers\",\"libnativebridge-headers\"],\n  apex_available: [\"//apex_available:platform\",\"com.android.media\",\"com.android.media.swcodec\"],\n  host_supported: false,\n  runtime_libs: [\"libnativebridge\"],\n  shared_libs: [\"liblog\"],\n  strip: {\n    none: true,\n  },\n  multiple_variants: true,\n  prefer: true,\n  static: {\n    srcs: [\"libnativebridge_lazy.a\"],\n  },\n  shared: {\n    srcs: [\"libnativebridge_lazy.so\"],\n  },\n}\n" >> prebuiltlibs/art/libnativebridge/Android.bp
+printf "cc_prebuilt_library {\n  name: \"libnativeloader_lazy\",\n  visibility: [\"//frameworks/base/core/jni\",\"//frameworks/native/opengl/libs\",\"//frameworks/native/vulkan/libvulkan\"],\n  arch: {\n    x86: {\n      avx2: {\n      },\n    },\n    x86_64: {\n      avx2: {\n      },\n    },\n  },\n  target: {\n    android: {\n      header_libs: [\"bionic_libc_platform_headers\"],\n    },\n    linux: {\n    },\n    linux_bionic: {\n      header_libs: [\"bionic_libc_platform_headers\"],\n    },\n    darwin: {\n      enabled: false,\n    },\n    windows: {\n      enabled: false,\n    },\n    host: {\n    },\n  },\n  min_sdk_version: \"S\",\n  header_libs: [\"libnativeloader-headers\"],\n  export_header_lib_headers: [\"libnativeloader-headers\"],\n  apex_available: [\"//apex_available:platform\",\"com.android.media\",\"com.android.media.swcodec\"],\n  host_supported: false,\n  runtime_libs: [\"libnativeloader\"],\n  shared_libs: [\"liblog\"],\n  strip: {\n    none: true,\n  },\n  multiple_variants: true,\n  prefer: true,\n  static: {\n    srcs: [\"libnativeloader_lazy.a\"],\n  },\n  shared: {\n    srcs: [\"libnativeloader_lazy.so\"],\n  },\n}\n" >> prebuiltlibs/art/libnativeloader/Android.bp
 
 find out/soong/.intermediates/ -maxdepth 1 -mindepth 1 ! -name 'prebuilts' ! -name 'prebuiltlibs' ! -name 'bionic' ! -name 'build' ! -name 'system' -type d -exec rm -rf {} +
 if [ -d "out/soong/.intermediates/prebuiltlibs/" ]; then
@@ -173,10 +74,10 @@ fi
 if [ -d "out/soong/.intermediates/system/" ]; then
   find out/soong/.intermediates/system/ -maxdepth 1 -mindepth 1 ! -name 'logging' -type d -exec rm -rf {} +
 fi
-mkdir -p prebuiltlibs/art/ninja && rsync -ar out/soong/ninja/art/ prebuiltlibs/art/ninja/art-8
+mkdir -p prebuiltlibs/art/ninja && rsync -ar out/soong/ninja/art/ prebuiltlibs/art/ninja/art-5
 touch prebuiltlibs/art/ninja/.find-ignore
-tar cfJ art-8.tar.xz -C prebuiltlibs/art/ .
-ls -l art-8.tar.xz
+tar cfJ art-5.tar.xz -C prebuiltlibs/art/ .
+ls -l art-5.tar.xz
 df -h
 end=`date +%s`
 echo $((end-start))
@@ -191,90 +92,170 @@ echo 'build/make/'
 du -ah -d1 build/make/|sort -rh
 echo 'build/soong/'
 du -ah -d1 build/soong/|sort -rh
-echo 'development/'
-du -ah -d1 development/|sort -rh
-echo 'device/google/cuttlefish/'
-du -ah -d1 device/google/cuttlefish/|sort -rh
-echo 'external/adhd/'
-du -ah -d1 external/adhd/|sort -rh
+echo 'device/generic/goldfish-opengl/'
+du -ah -d1 device/generic/goldfish-opengl/|sort -rh
+echo 'external/aac/'
+du -ah -d1 external/aac/|sort -rh
+echo 'external/avb/'
+du -ah -d1 external/avb/|sort -rh
+echo 'external/bsdiff/'
+du -ah -d1 external/bsdiff/|sort -rh
+echo 'external/cblas/'
+du -ah -d1 external/cblas/|sort -rh
 echo 'external/clang/'
 du -ah -d1 external/clang/|sort -rh
 echo 'external/compiler-rt/'
 du -ah -d1 external/compiler-rt/|sort -rh
+echo 'external/conscrypt/'
+du -ah -d1 external/conscrypt/|sort -rh
 echo 'external/crosvm/'
 du -ah -d1 external/crosvm/|sort -rh
-echo 'external/dynamic_depth/'
-du -ah -d1 external/dynamic_depth/|sort -rh
+echo 'external/curl/'
+du -ah -d1 external/curl/|sort -rh
+echo 'external/dng_sdk/'
+du -ah -d1 external/dng_sdk/|sort -rh
+echo 'external/freetype/'
+du -ah -d1 external/freetype/|sort -rh
+echo 'external/fsverity-utils/'
+du -ah -d1 external/fsverity-utils/|sort -rh
+echo 'external/giflib/'
+du -ah -d1 external/giflib/|sort -rh
 echo 'external/golang-protobuf/'
 du -ah -d1 external/golang-protobuf/|sort -rh
-echo 'external/libchrome/'
-du -ah -d1 external/libchrome/|sort -rh
+echo 'external/gptfdisk/'
+du -ah -d1 external/gptfdisk/|sort -rh
+echo 'external/grpc-grpc/'
+du -ah -d1 external/grpc-grpc/|sort -rh
+echo 'external/image_io/'
+du -ah -d1 external/image_io/|sort -rh
+echo 'external/iputils/'
+du -ah -d1 external/iputils/|sort -rh
+echo 'external/iw/'
+du -ah -d1 external/iw/|sort -rh
+echo 'external/libcups/'
+du -ah -d1 external/libcups/|sort -rh
 echo 'external/libcxx/'
 du -ah -d1 external/libcxx/|sort -rh
 echo 'external/libcxxabi/'
 du -ah -d1 external/libcxxabi/|sort -rh
+echo 'external/libexif/'
+du -ah -d1 external/libexif/|sort -rh
+echo 'external/libffi/'
+du -ah -d1 external/libffi/|sort -rh
+echo 'external/libyuv/'
+du -ah -d1 external/libyuv/|sort -rh
 echo 'external/llvm/'
 du -ah -d1 external/llvm/|sort -rh
-echo 'external/nanopb-c/'
-du -ah -d1 external/nanopb-c/|sort -rh
-echo 'external/parameter-framework/'
-du -ah -d1 external/parameter-framework/|sort -rh
-echo 'external/perfetto/'
-du -ah -d1 external/perfetto/|sort -rh
+echo 'external/mesa3d/'
+du -ah -d1 external/mesa3d/|sort -rh
+echo 'external/minigbm/'
+du -ah -d1 external/minigbm/|sort -rh
+echo 'external/minijail/'
+du -ah -d1 external/minijail/|sort -rh
 echo 'external/protobuf/'
 du -ah -d1 external/protobuf/|sort -rh
 echo 'external/python/cpython2/'
 du -ah -d1 external/python/cpython2/|sort -rh
-echo 'external/python/six/'
-du -ah -d1 external/python/six/|sort -rh
-echo 'external/rust/crates/android_logger/'
-du -ah -d1 external/rust/crates/android_logger/|sort -rh
-echo 'external/rust/crates/bindgen/'
-du -ah -d1 external/rust/crates/bindgen/|sort -rh
-echo 'external/rust/crates/futures-executor/'
-du -ah -d1 external/rust/crates/futures-executor/|sort -rh
-echo 'external/rust/crates/hashbrown/'
-du -ah -d1 external/rust/crates/hashbrown/|sort -rh
-echo 'external/rust/crates/parking_lot/'
-du -ah -d1 external/rust/crates/parking_lot/|sort -rh
-echo 'external/rust/crates/rand_chacha/'
-du -ah -d1 external/rust/crates/rand_chacha/|sort -rh
-echo 'external/rust/crates/tokio/'
-du -ah -d1 external/rust/crates/tokio/|sort -rh
-echo 'external/rust/crates/vmm_vhost/'
-du -ah -d1 external/rust/crates/vmm_vhost/|sort -rh
-echo 'external/rust/crates/zip/'
-du -ah -d1 external/rust/crates/zip/|sort -rh
-echo 'external/rust/cxx/'
-du -ah -d1 external/rust/cxx/|sort -rh
-echo 'external/scudo/'
-du -ah -d1 external/scudo/|sort -rh
+echo 'external/rust/crates/android_log-sys/'
+du -ah -d1 external/rust/crates/android_log-sys/|sort -rh
+echo 'external/rust/crates/anyhow/'
+du -ah -d1 external/rust/crates/anyhow/|sort -rh
+echo 'external/rust/crates/async-task/'
+du -ah -d1 external/rust/crates/async-task/|sort -rh
+echo 'external/rust/crates/bitflags/'
+du -ah -d1 external/rust/crates/bitflags/|sort -rh
+echo 'external/rust/crates/byteorder/'
+du -ah -d1 external/rust/crates/byteorder/|sort -rh
+echo 'external/rust/crates/cfg-if/'
+du -ah -d1 external/rust/crates/cfg-if/|sort -rh
+echo 'external/rust/crates/futures-core/'
+du -ah -d1 external/rust/crates/futures-core/|sort -rh
+echo 'external/rust/crates/futures-io/'
+du -ah -d1 external/rust/crates/futures-io/|sort -rh
+echo 'external/rust/crates/futures-sink/'
+du -ah -d1 external/rust/crates/futures-sink/|sort -rh
+echo 'external/rust/crates/futures-task/'
+du -ah -d1 external/rust/crates/futures-task/|sort -rh
+echo 'external/rust/crates/itoa/'
+du -ah -d1 external/rust/crates/itoa/|sort -rh
+echo 'external/rust/crates/lazy_static/'
+du -ah -d1 external/rust/crates/lazy_static/|sort -rh
+echo 'external/rust/crates/libc/'
+du -ah -d1 external/rust/crates/libc/|sort -rh
+echo 'external/rust/crates/memchr/'
+du -ah -d1 external/rust/crates/memchr/|sort -rh
+echo 'external/rust/crates/memoffset/'
+du -ah -d1 external/rust/crates/memoffset/|sort -rh
+echo 'external/rust/crates/num-traits/'
+du -ah -d1 external/rust/crates/num-traits/|sort -rh
+echo 'external/rust/crates/pin-project-lite/'
+du -ah -d1 external/rust/crates/pin-project-lite/|sort -rh
+echo 'external/rust/crates/pin-utils/'
+du -ah -d1 external/rust/crates/pin-utils/|sort -rh
+echo 'external/rust/crates/ppv-lite86/'
+du -ah -d1 external/rust/crates/ppv-lite86/|sort -rh
+echo 'external/rust/crates/proc-macro-nested/'
+du -ah -d1 external/rust/crates/proc-macro-nested/|sort -rh
+echo 'external/rust/crates/ryu/'
+du -ah -d1 external/rust/crates/ryu/|sort -rh
+echo 'external/rust/crates/serde/'
+du -ah -d1 external/rust/crates/serde/|sort -rh
+echo 'external/rust/crates/slab/'
+du -ah -d1 external/rust/crates/slab/|sort -rh
+echo 'external/rust/crates/smallvec/'
+du -ah -d1 external/rust/crates/smallvec/|sort -rh
+echo 'external/rust/crates/structopt-derive/'
+du -ah -d1 external/rust/crates/structopt-derive/|sort -rh
+echo 'external/rust/crates/textwrap/'
+du -ah -d1 external/rust/crates/textwrap/|sort -rh
+echo 'external/rust/crates/thiserror/'
+du -ah -d1 external/rust/crates/thiserror/|sort -rh
+echo 'external/scrypt/'
+du -ah -d1 external/scrypt/|sort -rh
 echo 'external/skia/'
 du -ah -d1 external/skia/|sort -rh
+echo 'external/sonivox/'
+du -ah -d1 external/sonivox/|sort -rh
 echo 'external/starlark-go/'
 du -ah -d1 external/starlark-go/|sort -rh
+echo 'external/swiftshader/'
+du -ah -d1 external/swiftshader/|sort -rh
+echo 'external/tcpdump/'
+du -ah -d1 external/tcpdump/|sort -rh
+echo 'external/tinyxml2/'
+du -ah -d1 external/tinyxml2/|sort -rh
+echo 'external/tremolo/'
+du -ah -d1 external/tremolo/|sort -rh
+echo 'external/wayland/'
+du -ah -d1 external/wayland/|sort -rh
 echo 'frameworks/av/'
 du -ah -d1 frameworks/av/|sort -rh
 echo 'frameworks/base/'
 du -ah -d1 frameworks/base/|sort -rh
-echo 'frameworks/compile/slang/'
-du -ah -d1 frameworks/compile/slang/|sort -rh
-echo 'frameworks/minikin/'
-du -ah -d1 frameworks/minikin/|sort -rh
+echo 'frameworks/compile/libbcc/'
+du -ah -d1 frameworks/compile/libbcc/|sort -rh
+echo 'frameworks/compile/mclinker/'
+du -ah -d1 frameworks/compile/mclinker/|sort -rh
 echo 'frameworks/native/'
 du -ah -d1 frameworks/native/|sort -rh
+echo 'frameworks/rs/'
+du -ah -d1 frameworks/rs/|sort -rh
 echo 'hardware/interfaces/'
 du -ah -d1 hardware/interfaces/|sort -rh
 echo 'hardware/libhardware/'
 du -ah -d1 hardware/libhardware/|sort -rh
-echo 'hardware/ril/'
-du -ah -d1 hardware/ril/|sort -rh
 echo 'kernel/configs/'
 du -ah -d1 kernel/configs/|sort -rh
-echo 'packages/modules/Virtualization/'
-du -ah -d1 packages/modules/Virtualization/|sort -rh
-echo 'packages/modules/adb/'
-du -ah -d1 packages/modules/adb/|sort -rh
+echo 'libcore/'
+du -ah -d1 libcore/|sort -rh
+echo 'libnativehelper/'
+du -ah -d1 libnativehelper/|sort -rh
+echo 'packages/apps/Messaging/'
+du -ah -d1 packages/apps/Messaging/|sort -rh
+echo 'packages/modules/StatsD/'
+du -ah -d1 packages/modules/StatsD/|sort -rh
+echo 'packages/modules/common/'
+du -ah -d1 packages/modules/common/|sort -rh
 echo 'prebuilts/build-tools/'
 du -ah -d1 prebuilts/build-tools/|sort -rh
 echo 'prebuilts/clang-tools/'
@@ -283,58 +264,32 @@ echo 'prebuilts/clang/host/linux-x86/'
 du -ah -d1 prebuilts/clang/host/linux-x86/|sort -rh
 echo 'prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8/'
 du -ah -d1 prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8/|sort -rh
-echo 'prebuilts/jdk/jdk11/'
-du -ah -d1 prebuilts/jdk/jdk11/|sort -rh
-echo 'prebuilts/jdk/jdk8/'
-du -ah -d1 prebuilts/jdk/jdk8/|sort -rh
-echo 'prebuilts/misc/'
-du -ah -d1 prebuilts/misc/|sort -rh
 echo 'prebuilts/rust/'
 du -ah -d1 prebuilts/rust/|sort -rh
 echo 'prebuilts/sdk/'
 du -ah -d1 prebuilts/sdk/|sort -rh
-echo 'system/apex/'
-du -ah -d1 system/apex/|sort -rh
 echo 'system/bt/'
 du -ah -d1 system/bt/|sort -rh
 echo 'system/core/'
 du -ah -d1 system/core/|sort -rh
-echo 'system/extras/'
-du -ah -d1 system/extras/|sort -rh
-echo 'system/incremental_delivery/'
-du -ah -d1 system/incremental_delivery/|sort -rh
 echo 'system/libbase/'
 du -ah -d1 system/libbase/|sort -rh
-echo 'system/libhidl/'
-du -ah -d1 system/libhidl/|sort -rh
-echo 'system/libsysprop/'
-du -ah -d1 system/libsysprop/|sort -rh
-echo 'system/linkerconfig/'
-du -ah -d1 system/linkerconfig/|sort -rh
 echo 'system/logging/'
 du -ah -d1 system/logging/|sort -rh
 echo 'system/media/'
 du -ah -d1 system/media/|sort -rh
-echo 'system/memory/libmeminfo/'
-du -ah -d1 system/memory/libmeminfo/|sort -rh
-echo 'system/netd/'
-du -ah -d1 system/netd/|sort -rh
+echo 'system/memory/libion/'
+du -ah -d1 system/memory/libion/|sort -rh
+echo 'system/memory/lmkd/'
+du -ah -d1 system/memory/lmkd/|sort -rh
 echo 'system/security/'
 du -ah -d1 system/security/|sort -rh
 echo 'system/sepolicy/'
 du -ah -d1 system/sepolicy/|sort -rh
-echo 'system/server_configurable_flags/'
-du -ah -d1 system/server_configurable_flags/|sort -rh
 echo 'system/tools/aidl/'
 du -ah -d1 system/tools/aidl/|sort -rh
 echo 'system/tools/hidl/'
 du -ah -d1 system/tools/hidl/|sort -rh
-echo 'system/tools/xsdc/'
-du -ah -d1 system/tools/xsdc/|sort -rh
-echo 'system/unwinding/'
-du -ah -d1 system/unwinding/|sort -rh
-echo 'test/vts-testcase/hal/'
-du -ah -d1 test/vts-testcase/hal/|sort -rh
 echo 'prebuiltlibs/art/'
 du -ah -d1 prebuiltlibs/art/|sort -rh
 echo 'prebuiltlibs/bionic/'
@@ -349,10 +304,6 @@ echo 'prebuiltlibs/external/OpenCSD/'
 du -ah -d1 prebuiltlibs/external/OpenCSD/|sort -rh
 echo 'prebuiltlibs/external/aac/'
 du -ah -d1 prebuiltlibs/external/aac/|sort -rh
-echo 'prebuiltlibs/external/adhd/'
-du -ah -d1 prebuiltlibs/external/adhd/|sort -rh
-echo 'prebuiltlibs/external/android-clat/'
-du -ah -d1 prebuiltlibs/external/android-clat/|sort -rh
 echo 'prebuiltlibs/external/angle/'
 du -ah -d1 prebuiltlibs/external/angle/|sort -rh
 echo 'prebuiltlibs/external/arm-optimized-routines/'
@@ -389,20 +340,14 @@ echo 'prebuiltlibs/external/curl/'
 du -ah -d1 prebuiltlibs/external/curl/|sort -rh
 echo 'prebuiltlibs/external/dng_sdk/'
 du -ah -d1 prebuiltlibs/external/dng_sdk/|sort -rh
-echo 'prebuiltlibs/external/dnsmasq/'
-du -ah -d1 prebuiltlibs/external/dnsmasq/|sort -rh
 echo 'prebuiltlibs/external/drm_hwcomposer/'
 du -ah -d1 prebuiltlibs/external/drm_hwcomposer/|sort -rh
 echo 'prebuiltlibs/external/dtc/'
 du -ah -d1 prebuiltlibs/external/dtc/|sort -rh
-echo 'prebuiltlibs/external/dynamic_depth/'
-du -ah -d1 prebuiltlibs/external/dynamic_depth/|sort -rh
 echo 'prebuiltlibs/external/e2fsprogs/'
 du -ah -d1 prebuiltlibs/external/e2fsprogs/|sort -rh
 echo 'prebuiltlibs/external/eigen/'
 du -ah -d1 prebuiltlibs/external/eigen/|sort -rh
-echo 'prebuiltlibs/external/erofs-utils/'
-du -ah -d1 prebuiltlibs/external/erofs-utils/|sort -rh
 echo 'prebuiltlibs/external/expat/'
 du -ah -d1 prebuiltlibs/external/expat/|sort -rh
 echo 'prebuiltlibs/external/f2fs-tools/'
@@ -439,10 +384,6 @@ echo 'prebuiltlibs/external/grpc-grpc/'
 du -ah -d1 prebuiltlibs/external/grpc-grpc/|sort -rh
 echo 'prebuiltlibs/external/gwp_asan/'
 du -ah -d1 prebuiltlibs/external/gwp_asan/|sort -rh
-echo 'prebuiltlibs/external/harfbuzz_ng/'
-du -ah -d1 prebuiltlibs/external/harfbuzz_ng/|sort -rh
-echo 'prebuiltlibs/external/icing/'
-du -ah -d1 prebuiltlibs/external/icing/|sort -rh
 echo 'prebuiltlibs/external/icu/'
 du -ah -d1 prebuiltlibs/external/icu/|sort -rh
 echo 'prebuiltlibs/external/image_io/'
@@ -465,14 +406,8 @@ echo 'prebuiltlibs/external/jsoncpp/'
 du -ah -d1 prebuiltlibs/external/jsoncpp/|sort -rh
 echo 'prebuiltlibs/external/kmod/'
 du -ah -d1 prebuiltlibs/external/kmod/|sort -rh
-echo 'prebuiltlibs/external/libavc/'
-du -ah -d1 prebuiltlibs/external/libavc/|sort -rh
 echo 'prebuiltlibs/external/libcap/'
 du -ah -d1 prebuiltlibs/external/libcap/|sort -rh
-echo 'prebuiltlibs/external/libchrome/'
-du -ah -d1 prebuiltlibs/external/libchrome/|sort -rh
-echo 'prebuiltlibs/external/libcppbor/'
-du -ah -d1 prebuiltlibs/external/libcppbor/|sort -rh
 echo 'prebuiltlibs/external/libcups/'
 du -ah -d1 prebuiltlibs/external/libcups/|sort -rh
 echo 'prebuiltlibs/external/libcxx/'
@@ -501,8 +436,6 @@ echo 'prebuiltlibs/external/libjpeg-turbo/'
 du -ah -d1 prebuiltlibs/external/libjpeg-turbo/|sort -rh
 echo 'prebuiltlibs/external/libldac/'
 du -ah -d1 prebuiltlibs/external/libldac/|sort -rh
-echo 'prebuiltlibs/external/libmpeg2/'
-du -ah -d1 prebuiltlibs/external/libmpeg2/|sort -rh
 echo 'prebuiltlibs/external/libnl/'
 du -ah -d1 prebuiltlibs/external/libnl/|sort -rh
 echo 'prebuiltlibs/external/libogg/'
@@ -517,8 +450,6 @@ echo 'prebuiltlibs/external/libtextclassifier/'
 du -ah -d1 prebuiltlibs/external/libtextclassifier/|sort -rh
 echo 'prebuiltlibs/external/libvpx/'
 du -ah -d1 prebuiltlibs/external/libvpx/|sort -rh
-echo 'prebuiltlibs/external/libxml2/'
-du -ah -d1 prebuiltlibs/external/libxml2/|sort -rh
 echo 'prebuiltlibs/external/libyuv/'
 du -ah -d1 prebuiltlibs/external/libyuv/|sort -rh
 echo 'prebuiltlibs/external/llvm/'
@@ -527,8 +458,6 @@ echo 'prebuiltlibs/external/lz4/'
 du -ah -d1 prebuiltlibs/external/lz4/|sort -rh
 echo 'prebuiltlibs/external/lzma/'
 du -ah -d1 prebuiltlibs/external/lzma/|sort -rh
-echo 'prebuiltlibs/external/mdnsresponder/'
-du -ah -d1 prebuiltlibs/external/mdnsresponder/|sort -rh
 echo 'prebuiltlibs/external/mesa3d/'
 du -ah -d1 prebuiltlibs/external/mesa3d/|sort -rh
 echo 'prebuiltlibs/external/minigbm/'
@@ -539,8 +468,6 @@ echo 'prebuiltlibs/external/mksh/'
 du -ah -d1 prebuiltlibs/external/mksh/|sort -rh
 echo 'prebuiltlibs/external/modp_b64/'
 du -ah -d1 prebuiltlibs/external/modp_b64/|sort -rh
-echo 'prebuiltlibs/external/mtpd/'
-du -ah -d1 prebuiltlibs/external/mtpd/|sort -rh
 echo 'prebuiltlibs/external/nanopb-c/'
 du -ah -d1 prebuiltlibs/external/nanopb-c/|sort -rh
 echo 'prebuiltlibs/external/newfs_msdos/'
@@ -555,8 +482,6 @@ echo 'prebuiltlibs/external/pcre/'
 du -ah -d1 prebuiltlibs/external/pcre/|sort -rh
 echo 'prebuiltlibs/external/pdfium/'
 du -ah -d1 prebuiltlibs/external/pdfium/|sort -rh
-echo 'prebuiltlibs/external/perfetto/'
-du -ah -d1 prebuiltlibs/external/perfetto/|sort -rh
 echo 'prebuiltlibs/external/pffft/'
 du -ah -d1 prebuiltlibs/external/pffft/|sort -rh
 echo 'prebuiltlibs/external/piex/'
@@ -569,60 +494,34 @@ echo 'prebuiltlibs/external/python/cpython2/'
 du -ah -d1 prebuiltlibs/external/python/cpython2/|sort -rh
 echo 'prebuiltlibs/external/rnnoise/'
 du -ah -d1 prebuiltlibs/external/rnnoise/|sort -rh
-echo 'prebuiltlibs/external/rust/crates/ahash/'
-du -ah -d1 prebuiltlibs/external/rust/crates/ahash/|sort -rh
-echo 'prebuiltlibs/external/rust/crates/aho-corasick/'
-du -ah -d1 prebuiltlibs/external/rust/crates/aho-corasick/|sort -rh
 echo 'prebuiltlibs/external/rust/crates/android_log-sys/'
 du -ah -d1 prebuiltlibs/external/rust/crates/android_log-sys/|sort -rh
-echo 'prebuiltlibs/external/rust/crates/android_logger/'
-du -ah -d1 prebuiltlibs/external/rust/crates/android_logger/|sort -rh
 echo 'prebuiltlibs/external/rust/crates/anyhow/'
 du -ah -d1 prebuiltlibs/external/rust/crates/anyhow/|sort -rh
 echo 'prebuiltlibs/external/rust/crates/async-task/'
 du -ah -d1 prebuiltlibs/external/rust/crates/async-task/|sort -rh
 echo 'prebuiltlibs/external/rust/crates/async-trait/'
 du -ah -d1 prebuiltlibs/external/rust/crates/async-trait/|sort -rh
-echo 'prebuiltlibs/external/rust/crates/bindgen/'
-du -ah -d1 prebuiltlibs/external/rust/crates/bindgen/|sort -rh
 echo 'prebuiltlibs/external/rust/crates/bitflags/'
 du -ah -d1 prebuiltlibs/external/rust/crates/bitflags/|sort -rh
 echo 'prebuiltlibs/external/rust/crates/byteorder/'
 du -ah -d1 prebuiltlibs/external/rust/crates/byteorder/|sort -rh
 echo 'prebuiltlibs/external/rust/crates/bytes/'
 du -ah -d1 prebuiltlibs/external/rust/crates/bytes/|sort -rh
-echo 'prebuiltlibs/external/rust/crates/cexpr/'
-du -ah -d1 prebuiltlibs/external/rust/crates/cexpr/|sort -rh
 echo 'prebuiltlibs/external/rust/crates/cfg-if/'
 du -ah -d1 prebuiltlibs/external/rust/crates/cfg-if/|sort -rh
-echo 'prebuiltlibs/external/rust/crates/chrono/'
-du -ah -d1 prebuiltlibs/external/rust/crates/chrono/|sort -rh
-echo 'prebuiltlibs/external/rust/crates/clang-sys/'
-du -ah -d1 prebuiltlibs/external/rust/crates/clang-sys/|sort -rh
-echo 'prebuiltlibs/external/rust/crates/clap/'
-du -ah -d1 prebuiltlibs/external/rust/crates/clap/|sort -rh
 echo 'prebuiltlibs/external/rust/crates/codespan-reporting/'
 du -ah -d1 prebuiltlibs/external/rust/crates/codespan-reporting/|sort -rh
-echo 'prebuiltlibs/external/rust/crates/crc32fast/'
-du -ah -d1 prebuiltlibs/external/rust/crates/crc32fast/|sort -rh
 echo 'prebuiltlibs/external/rust/crates/downcast-rs/'
 du -ah -d1 prebuiltlibs/external/rust/crates/downcast-rs/|sort -rh
 echo 'prebuiltlibs/external/rust/crates/either/'
 du -ah -d1 prebuiltlibs/external/rust/crates/either/|sort -rh
-echo 'prebuiltlibs/external/rust/crates/env_logger/'
-du -ah -d1 prebuiltlibs/external/rust/crates/env_logger/|sort -rh
 echo 'prebuiltlibs/external/rust/crates/fallible-iterator/'
 du -ah -d1 prebuiltlibs/external/rust/crates/fallible-iterator/|sort -rh
 echo 'prebuiltlibs/external/rust/crates/fallible-streaming-iterator/'
 du -ah -d1 prebuiltlibs/external/rust/crates/fallible-streaming-iterator/|sort -rh
-echo 'prebuiltlibs/external/rust/crates/flate2/'
-du -ah -d1 prebuiltlibs/external/rust/crates/flate2/|sort -rh
-echo 'prebuiltlibs/external/rust/crates/futures-channel/'
-du -ah -d1 prebuiltlibs/external/rust/crates/futures-channel/|sort -rh
 echo 'prebuiltlibs/external/rust/crates/futures-core/'
 du -ah -d1 prebuiltlibs/external/rust/crates/futures-core/|sort -rh
-echo 'prebuiltlibs/external/rust/crates/futures-executor/'
-du -ah -d1 prebuiltlibs/external/rust/crates/futures-executor/|sort -rh
 echo 'prebuiltlibs/external/rust/crates/futures-io/'
 du -ah -d1 prebuiltlibs/external/rust/crates/futures-io/|sort -rh
 echo 'prebuiltlibs/external/rust/crates/futures-macro/'
@@ -631,24 +530,12 @@ echo 'prebuiltlibs/external/rust/crates/futures-sink/'
 du -ah -d1 prebuiltlibs/external/rust/crates/futures-sink/|sort -rh
 echo 'prebuiltlibs/external/rust/crates/futures-task/'
 du -ah -d1 prebuiltlibs/external/rust/crates/futures-task/|sort -rh
-echo 'prebuiltlibs/external/rust/crates/futures-util/'
-du -ah -d1 prebuiltlibs/external/rust/crates/futures-util/|sort -rh
-echo 'prebuiltlibs/external/rust/crates/getrandom/'
-du -ah -d1 prebuiltlibs/external/rust/crates/getrandom/|sort -rh
 echo 'prebuiltlibs/external/rust/crates/glob/'
 du -ah -d1 prebuiltlibs/external/rust/crates/glob/|sort -rh
 echo 'prebuiltlibs/external/rust/crates/grpcio-compiler/'
 du -ah -d1 prebuiltlibs/external/rust/crates/grpcio-compiler/|sort -rh
-echo 'prebuiltlibs/external/rust/crates/grpcio-sys/'
-du -ah -d1 prebuiltlibs/external/rust/crates/grpcio-sys/|sort -rh
-echo 'prebuiltlibs/external/rust/crates/hashbrown/'
-du -ah -d1 prebuiltlibs/external/rust/crates/hashbrown/|sort -rh
 echo 'prebuiltlibs/external/rust/crates/heck/'
 du -ah -d1 prebuiltlibs/external/rust/crates/heck/|sort -rh
-echo 'prebuiltlibs/external/rust/crates/instant/'
-du -ah -d1 prebuiltlibs/external/rust/crates/instant/|sort -rh
-echo 'prebuiltlibs/external/rust/crates/intrusive-collections/'
-du -ah -d1 prebuiltlibs/external/rust/crates/intrusive-collections/|sort -rh
 echo 'prebuiltlibs/external/rust/crates/itoa/'
 du -ah -d1 prebuiltlibs/external/rust/crates/itoa/|sort -rh
 echo 'prebuiltlibs/external/rust/crates/lazy_static/'
@@ -657,38 +544,16 @@ echo 'prebuiltlibs/external/rust/crates/lazycell/'
 du -ah -d1 prebuiltlibs/external/rust/crates/lazycell/|sort -rh
 echo 'prebuiltlibs/external/rust/crates/libc/'
 du -ah -d1 prebuiltlibs/external/rust/crates/libc/|sort -rh
-echo 'prebuiltlibs/external/rust/crates/libloading/'
-du -ah -d1 prebuiltlibs/external/rust/crates/libloading/|sort -rh
-echo 'prebuiltlibs/external/rust/crates/libz-sys/'
-du -ah -d1 prebuiltlibs/external/rust/crates/libz-sys/|sort -rh
 echo 'prebuiltlibs/external/rust/crates/lock_api/'
 du -ah -d1 prebuiltlibs/external/rust/crates/lock_api/|sort -rh
-echo 'prebuiltlibs/external/rust/crates/log/'
-du -ah -d1 prebuiltlibs/external/rust/crates/log/|sort -rh
-echo 'prebuiltlibs/external/rust/crates/macaddr/'
-du -ah -d1 prebuiltlibs/external/rust/crates/macaddr/|sort -rh
 echo 'prebuiltlibs/external/rust/crates/memchr/'
 du -ah -d1 prebuiltlibs/external/rust/crates/memchr/|sort -rh
 echo 'prebuiltlibs/external/rust/crates/memoffset/'
 du -ah -d1 prebuiltlibs/external/rust/crates/memoffset/|sort -rh
-echo 'prebuiltlibs/external/rust/crates/mio/'
-du -ah -d1 prebuiltlibs/external/rust/crates/mio/|sort -rh
-echo 'prebuiltlibs/external/rust/crates/nix/'
-du -ah -d1 prebuiltlibs/external/rust/crates/nix/|sort -rh
-echo 'prebuiltlibs/external/rust/crates/nom/'
-du -ah -d1 prebuiltlibs/external/rust/crates/nom/|sort -rh
 echo 'prebuiltlibs/external/rust/crates/num-derive/'
 du -ah -d1 prebuiltlibs/external/rust/crates/num-derive/|sort -rh
-echo 'prebuiltlibs/external/rust/crates/num-integer/'
-du -ah -d1 prebuiltlibs/external/rust/crates/num-integer/|sort -rh
 echo 'prebuiltlibs/external/rust/crates/num-traits/'
 du -ah -d1 prebuiltlibs/external/rust/crates/num-traits/|sort -rh
-echo 'prebuiltlibs/external/rust/crates/num_cpus/'
-du -ah -d1 prebuiltlibs/external/rust/crates/num_cpus/|sort -rh
-echo 'prebuiltlibs/external/rust/crates/parking_lot/'
-du -ah -d1 prebuiltlibs/external/rust/crates/parking_lot/|sort -rh
-echo 'prebuiltlibs/external/rust/crates/parking_lot_core/'
-du -ah -d1 prebuiltlibs/external/rust/crates/parking_lot_core/|sort -rh
 echo 'prebuiltlibs/external/rust/crates/paste/'
 du -ah -d1 prebuiltlibs/external/rust/crates/paste/|sort -rh
 echo 'prebuiltlibs/external/rust/crates/peeking_take_while/'
@@ -715,14 +580,8 @@ echo 'prebuiltlibs/external/rust/crates/protobuf/'
 du -ah -d1 prebuiltlibs/external/rust/crates/protobuf/|sort -rh
 echo 'prebuiltlibs/external/rust/crates/quote/'
 du -ah -d1 prebuiltlibs/external/rust/crates/quote/|sort -rh
-echo 'prebuiltlibs/external/rust/crates/rand_chacha/'
-du -ah -d1 prebuiltlibs/external/rust/crates/rand_chacha/|sort -rh
-echo 'prebuiltlibs/external/rust/crates/rand_core/'
-du -ah -d1 prebuiltlibs/external/rust/crates/rand_core/|sort -rh
 echo 'prebuiltlibs/external/rust/crates/regex-syntax/'
 du -ah -d1 prebuiltlibs/external/rust/crates/regex-syntax/|sort -rh
-echo 'prebuiltlibs/external/rust/crates/regex/'
-du -ah -d1 prebuiltlibs/external/rust/crates/regex/|sort -rh
 echo 'prebuiltlibs/external/rust/crates/remain/'
 du -ah -d1 prebuiltlibs/external/rust/crates/remain/|sort -rh
 echo 'prebuiltlibs/external/rust/crates/rustc-hash/'
@@ -735,10 +594,6 @@ echo 'prebuiltlibs/external/rust/crates/serde/'
 du -ah -d1 prebuiltlibs/external/rust/crates/serde/|sort -rh
 echo 'prebuiltlibs/external/rust/crates/serde_derive/'
 du -ah -d1 prebuiltlibs/external/rust/crates/serde_derive/|sort -rh
-echo 'prebuiltlibs/external/rust/crates/serde_json/'
-du -ah -d1 prebuiltlibs/external/rust/crates/serde_json/|sort -rh
-echo 'prebuiltlibs/external/rust/crates/shared_child/'
-du -ah -d1 prebuiltlibs/external/rust/crates/shared_child/|sort -rh
 echo 'prebuiltlibs/external/rust/crates/shlex/'
 du -ah -d1 prebuiltlibs/external/rust/crates/shlex/|sort -rh
 echo 'prebuiltlibs/external/rust/crates/slab/'
@@ -747,8 +602,6 @@ echo 'prebuiltlibs/external/rust/crates/smallvec/'
 du -ah -d1 prebuiltlibs/external/rust/crates/smallvec/|sort -rh
 echo 'prebuiltlibs/external/rust/crates/structopt-derive/'
 du -ah -d1 prebuiltlibs/external/rust/crates/structopt-derive/|sort -rh
-echo 'prebuiltlibs/external/rust/crates/structopt/'
-du -ah -d1 prebuiltlibs/external/rust/crates/structopt/|sort -rh
 echo 'prebuiltlibs/external/rust/crates/syn/'
 du -ah -d1 prebuiltlibs/external/rust/crates/syn/|sort -rh
 echo 'prebuiltlibs/external/rust/crates/termcolor/'
@@ -761,22 +614,12 @@ echo 'prebuiltlibs/external/rust/crates/thiserror/'
 du -ah -d1 prebuiltlibs/external/rust/crates/thiserror/|sort -rh
 echo 'prebuiltlibs/external/rust/crates/tokio-macros/'
 du -ah -d1 prebuiltlibs/external/rust/crates/tokio-macros/|sort -rh
-echo 'prebuiltlibs/external/rust/crates/tokio/'
-du -ah -d1 prebuiltlibs/external/rust/crates/tokio/|sort -rh
 echo 'prebuiltlibs/external/rust/crates/unicode-segmentation/'
 du -ah -d1 prebuiltlibs/external/rust/crates/unicode-segmentation/|sort -rh
 echo 'prebuiltlibs/external/rust/crates/unicode-width/'
 du -ah -d1 prebuiltlibs/external/rust/crates/unicode-width/|sort -rh
 echo 'prebuiltlibs/external/rust/crates/unicode-xid/'
 du -ah -d1 prebuiltlibs/external/rust/crates/unicode-xid/|sort -rh
-echo 'prebuiltlibs/external/rust/crates/uuid/'
-du -ah -d1 prebuiltlibs/external/rust/crates/uuid/|sort -rh
-echo 'prebuiltlibs/external/rust/crates/vmm_vhost/'
-du -ah -d1 prebuiltlibs/external/rust/crates/vmm_vhost/|sort -rh
-echo 'prebuiltlibs/external/rust/crates/which/'
-du -ah -d1 prebuiltlibs/external/rust/crates/which/|sort -rh
-echo 'prebuiltlibs/external/rust/crates/zip/'
-du -ah -d1 prebuiltlibs/external/rust/crates/zip/|sort -rh
 echo 'prebuiltlibs/external/rust/cxx/'
 du -ah -d1 prebuiltlibs/external/rust/cxx/|sort -rh
 echo 'prebuiltlibs/external/scrypt/'
@@ -785,34 +628,24 @@ echo 'prebuiltlibs/external/scudo/'
 du -ah -d1 prebuiltlibs/external/scudo/|sort -rh
 echo 'prebuiltlibs/external/selinux/'
 du -ah -d1 prebuiltlibs/external/selinux/|sort -rh
-echo 'prebuiltlibs/external/sfntly/'
-du -ah -d1 prebuiltlibs/external/sfntly/|sort -rh
 echo 'prebuiltlibs/external/sonic/'
 du -ah -d1 prebuiltlibs/external/sonic/|sort -rh
 echo 'prebuiltlibs/external/sonivox/'
 du -ah -d1 prebuiltlibs/external/sonivox/|sort -rh
 echo 'prebuiltlibs/external/speex/'
 du -ah -d1 prebuiltlibs/external/speex/|sort -rh
-echo 'prebuiltlibs/external/sqlite/'
-du -ah -d1 prebuiltlibs/external/sqlite/|sort -rh
 echo 'prebuiltlibs/external/strace/'
 du -ah -d1 prebuiltlibs/external/strace/|sort -rh
 echo 'prebuiltlibs/external/swiftshader/'
 du -ah -d1 prebuiltlibs/external/swiftshader/|sort -rh
 echo 'prebuiltlibs/external/tcpdump/'
 du -ah -d1 prebuiltlibs/external/tcpdump/|sort -rh
-echo 'prebuiltlibs/external/tensorflow/'
-du -ah -d1 prebuiltlibs/external/tensorflow/|sort -rh
 echo 'prebuiltlibs/external/tinyalsa/'
 du -ah -d1 prebuiltlibs/external/tinyalsa/|sort -rh
 echo 'prebuiltlibs/external/tinyxml2/'
 du -ah -d1 prebuiltlibs/external/tinyxml2/|sort -rh
-echo 'prebuiltlibs/external/toybox/'
-du -ah -d1 prebuiltlibs/external/toybox/|sort -rh
 echo 'prebuiltlibs/external/tremolo/'
 du -ah -d1 prebuiltlibs/external/tremolo/|sort -rh
-echo 'prebuiltlibs/external/virglrenderer/'
-du -ah -d1 prebuiltlibs/external/virglrenderer/|sort -rh
 echo 'prebuiltlibs/external/vixl/'
 du -ah -d1 prebuiltlibs/external/vixl/|sort -rh
 echo 'prebuiltlibs/external/vm_tools/p9/'
@@ -821,8 +654,6 @@ echo 'prebuiltlibs/external/wayland/'
 du -ah -d1 prebuiltlibs/external/wayland/|sort -rh
 echo 'prebuiltlibs/external/webp/'
 du -ah -d1 prebuiltlibs/external/webp/|sort -rh
-echo 'prebuiltlibs/external/webrtc/'
-du -ah -d1 prebuiltlibs/external/webrtc/|sort -rh
 echo 'prebuiltlibs/external/xz-embedded/'
 du -ah -d1 prebuiltlibs/external/xz-embedded/|sort -rh
 echo 'prebuiltlibs/external/zlib/'
@@ -839,32 +670,16 @@ echo 'prebuiltlibs/frameworks/compile/libbcc/'
 du -ah -d1 prebuiltlibs/frameworks/compile/libbcc/|sort -rh
 echo 'prebuiltlibs/frameworks/compile/mclinker/'
 du -ah -d1 prebuiltlibs/frameworks/compile/mclinker/|sort -rh
-echo 'prebuiltlibs/frameworks/compile/slang/'
-du -ah -d1 prebuiltlibs/frameworks/compile/slang/|sort -rh
-echo 'prebuiltlibs/frameworks/libs/modules-utils/'
-du -ah -d1 prebuiltlibs/frameworks/libs/modules-utils/|sort -rh
-echo 'prebuiltlibs/frameworks/libs/net/'
-du -ah -d1 prebuiltlibs/frameworks/libs/net/|sort -rh
-echo 'prebuiltlibs/frameworks/minikin/'
-du -ah -d1 prebuiltlibs/frameworks/minikin/|sort -rh
 echo 'prebuiltlibs/frameworks/native/'
 du -ah -d1 prebuiltlibs/frameworks/native/|sort -rh
-echo 'prebuiltlibs/frameworks/opt/net/wifi/'
-du -ah -d1 prebuiltlibs/frameworks/opt/net/wifi/|sort -rh
-echo 'prebuiltlibs/frameworks/proto_logging/'
-du -ah -d1 prebuiltlibs/frameworks/proto_logging/|sort -rh
 echo 'prebuiltlibs/frameworks/rs/'
 du -ah -d1 prebuiltlibs/frameworks/rs/|sort -rh
 echo 'prebuiltlibs/frameworks/wilhelm/'
 du -ah -d1 prebuiltlibs/frameworks/wilhelm/|sort -rh
-echo 'prebuiltlibs/hardware/google/camera/'
-du -ah -d1 prebuiltlibs/hardware/google/camera/|sort -rh
 echo 'prebuiltlibs/hardware/interfaces/'
 du -ah -d1 prebuiltlibs/hardware/interfaces/|sort -rh
 echo 'prebuiltlibs/hardware/libhardware/'
 du -ah -d1 prebuiltlibs/hardware/libhardware/|sort -rh
-echo 'prebuiltlibs/hardware/ril/'
-du -ah -d1 prebuiltlibs/hardware/ril/|sort -rh
 echo 'prebuiltlibs/libcore/'
 du -ah -d1 prebuiltlibs/libcore/|sort -rh
 echo 'prebuiltlibs/libnativehelper/'
@@ -873,32 +688,14 @@ echo 'prebuiltlibs/packages/apps/Messaging/'
 du -ah -d1 prebuiltlibs/packages/apps/Messaging/|sort -rh
 echo 'prebuiltlibs/packages/inputmethods/LatinIME/'
 du -ah -d1 prebuiltlibs/packages/inputmethods/LatinIME/|sort -rh
-echo 'prebuiltlibs/packages/modules/Connectivity/'
-du -ah -d1 prebuiltlibs/packages/modules/Connectivity/|sort -rh
 echo 'prebuiltlibs/packages/modules/DnsResolver/'
 du -ah -d1 prebuiltlibs/packages/modules/DnsResolver/|sort -rh
-echo 'prebuiltlibs/packages/modules/Gki/'
-du -ah -d1 prebuiltlibs/packages/modules/Gki/|sort -rh
-echo 'prebuiltlibs/packages/modules/NeuralNetworks/'
-du -ah -d1 prebuiltlibs/packages/modules/NeuralNetworks/|sort -rh
-echo 'prebuiltlibs/packages/modules/SdkExtensions/'
-du -ah -d1 prebuiltlibs/packages/modules/SdkExtensions/|sort -rh
 echo 'prebuiltlibs/packages/modules/StatsD/'
 du -ah -d1 prebuiltlibs/packages/modules/StatsD/|sort -rh
-echo 'prebuiltlibs/packages/modules/Virtualization/'
-du -ah -d1 prebuiltlibs/packages/modules/Virtualization/|sort -rh
-echo 'prebuiltlibs/packages/modules/adb/'
-du -ah -d1 prebuiltlibs/packages/modules/adb/|sort -rh
-echo 'prebuiltlibs/packages/modules/common/'
-du -ah -d1 prebuiltlibs/packages/modules/common/|sort -rh
-echo 'prebuiltlibs/system/apex/'
-du -ah -d1 prebuiltlibs/system/apex/|sort -rh
 echo 'prebuiltlibs/system/bpf/'
 du -ah -d1 prebuiltlibs/system/bpf/|sort -rh
 echo 'prebuiltlibs/system/bt/'
 du -ah -d1 prebuiltlibs/system/bt/|sort -rh
-echo 'prebuiltlibs/system/connectivity/wificond/'
-du -ah -d1 prebuiltlibs/system/connectivity/wificond/|sort -rh
 echo 'prebuiltlibs/system/core/'
 du -ah -d1 prebuiltlibs/system/core/|sort -rh
 echo 'prebuiltlibs/system/extras/'
@@ -907,72 +704,32 @@ echo 'prebuiltlibs/system/gatekeeper/'
 du -ah -d1 prebuiltlibs/system/gatekeeper/|sort -rh
 echo 'prebuiltlibs/system/gsid/'
 du -ah -d1 prebuiltlibs/system/gsid/|sort -rh
-echo 'prebuiltlibs/system/incremental_delivery/'
-du -ah -d1 prebuiltlibs/system/incremental_delivery/|sort -rh
 echo 'prebuiltlibs/system/keymaster/'
 du -ah -d1 prebuiltlibs/system/keymaster/|sort -rh
-echo 'prebuiltlibs/system/libartpalette/'
-du -ah -d1 prebuiltlibs/system/libartpalette/|sort -rh
 echo 'prebuiltlibs/system/libbase/'
 du -ah -d1 prebuiltlibs/system/libbase/|sort -rh
-echo 'prebuiltlibs/system/libfmq/'
-du -ah -d1 prebuiltlibs/system/libfmq/|sort -rh
 echo 'prebuiltlibs/system/libhidl/'
 du -ah -d1 prebuiltlibs/system/libhidl/|sort -rh
 echo 'prebuiltlibs/system/libhwbinder/'
 du -ah -d1 prebuiltlibs/system/libhwbinder/|sort -rh
-echo 'prebuiltlibs/system/libprocinfo/'
-du -ah -d1 prebuiltlibs/system/libprocinfo/|sort -rh
-echo 'prebuiltlibs/system/libvintf/'
-du -ah -d1 prebuiltlibs/system/libvintf/|sort -rh
-echo 'prebuiltlibs/system/libziparchive/'
-du -ah -d1 prebuiltlibs/system/libziparchive/|sort -rh
-echo 'prebuiltlibs/system/linkerconfig/'
-du -ah -d1 prebuiltlibs/system/linkerconfig/|sort -rh
 echo 'prebuiltlibs/system/logging/'
 du -ah -d1 prebuiltlibs/system/logging/|sort -rh
 echo 'prebuiltlibs/system/media/'
 du -ah -d1 prebuiltlibs/system/media/|sort -rh
-echo 'prebuiltlibs/system/memory/libdmabufheap/'
-du -ah -d1 prebuiltlibs/system/memory/libdmabufheap/|sort -rh
 echo 'prebuiltlibs/system/memory/libion/'
 du -ah -d1 prebuiltlibs/system/memory/libion/|sort -rh
-echo 'prebuiltlibs/system/memory/libmeminfo/'
-du -ah -d1 prebuiltlibs/system/memory/libmeminfo/|sort -rh
-echo 'prebuiltlibs/system/memory/libmemunreachable/'
-du -ah -d1 prebuiltlibs/system/memory/libmemunreachable/|sort -rh
 echo 'prebuiltlibs/system/memory/lmkd/'
 du -ah -d1 prebuiltlibs/system/memory/lmkd/|sort -rh
 echo 'prebuiltlibs/system/netd/'
 du -ah -d1 prebuiltlibs/system/netd/|sort -rh
-echo 'prebuiltlibs/system/nfc/'
-du -ah -d1 prebuiltlibs/system/nfc/|sort -rh
 echo 'prebuiltlibs/system/security/'
 du -ah -d1 prebuiltlibs/system/security/|sort -rh
 echo 'prebuiltlibs/system/sepolicy/'
 du -ah -d1 prebuiltlibs/system/sepolicy/|sort -rh
-echo 'prebuiltlibs/system/server_configurable_flags/'
-du -ah -d1 prebuiltlibs/system/server_configurable_flags/|sort -rh
-echo 'prebuiltlibs/system/timezone/'
-du -ah -d1 prebuiltlibs/system/timezone/|sort -rh
-echo 'prebuiltlibs/system/tools/aidl/'
-du -ah -d1 prebuiltlibs/system/tools/aidl/|sort -rh
 echo 'prebuiltlibs/system/tools/hidl/'
 du -ah -d1 prebuiltlibs/system/tools/hidl/|sort -rh
 echo 'prebuiltlibs/system/tools/mkbootimg/'
 du -ah -d1 prebuiltlibs/system/tools/mkbootimg/|sort -rh
-echo 'prebuiltlibs/system/tools/sysprop/'
-du -ah -d1 prebuiltlibs/system/tools/sysprop/|sort -rh
-echo 'prebuiltlibs/system/tools/xsdc/'
-du -ah -d1 prebuiltlibs/system/tools/xsdc/|sort -rh
-echo 'prebuiltlibs/system/unwinding/'
-du -ah -d1 prebuiltlibs/system/unwinding/|sort -rh
-echo 'prebuiltlibs/system/update_engine/'
-du -ah -d1 prebuiltlibs/system/update_engine/|sort -rh
-echo 'prebuiltlibs/system/vold/'
-du -ah -d1 prebuiltlibs/system/vold/|sort -rh
-echo 'prebuiltlibs/test/vts-testcase/hal/'
-du -ah -d1 prebuiltlibs/test/vts-testcase/hal/|sort -rh
 echo 'prebuiltlibs/tools/dexter/'
 du -ah -d1 prebuiltlibs/tools/dexter/|sort -rh
 echo 'prebuiltlibs/tools/security/'
