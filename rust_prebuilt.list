@@ -18,3 +18,8 @@ libunicode_segmentation
 libunicode_width
 libunicode_xid
 libbt_hci_custom_types
+libcodespan_reporting
+libheck
+liblock_api
+libproc_macro2
+libprotobuf
