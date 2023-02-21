@@ -1,16 +1,4 @@
 
-cc_binary {
-  name: "voiddep-lto",
-  srcs: [ "util.cpp", ],
-  recovery_available: true,
-  vendor_available: true,
-  compile_multilib: "both",
-  multilib: { lib32: { suffix: "32", }, lib64: { suffix: "64", }, },
-  static_libs: ["libasync_safe"],
-  shared_libs: [],
-  stl: "none",
-  target: { android: { lto: { thin: true, }, }, },
-}
 cc_prebuilt_binary {
   name: "dex2oatd",
   device_supported: false,
@@ -39,17 +27,18 @@ cc_binary {
   srcs: [ "util.cpp", ":crtbrand", ":crtbegin_dynamic", ":crtbegin_so", ":crtbegin_static", ":crtend_android", ":crtend_so", ],
   compile_multilib: "both",
   multilib: { lib32: { suffix: "32", }, lib64: { suffix: "64", }, },
-  static_libs: ["gwp_asan","ld-android","libarm-optimized-routines-math","libarm-optimized-routines-string","libasync_safe","libc_bionic","libc_bionic_systrace","libc_bootstrap","libc_dns","libc_dynamic_dispatch","libc_fortify","libc_freebsd","libc_freebsd_large_stack","libc_gdtoa","libc_init_dynamic","libc_init_static","libc_netbsd","libc_openbsd","libc_openbsd_large_stack","libc_openbsd_ndk","libc_pthread","libc_syscalls","libc_tzcode","libc_unwind_static","libdl_android","libdl_static","libpropertyinfoparser","libscudo"],
+  static_libs: ["gwp_asan","ld-android","libarm-optimized-routines-math","libarm-optimized-routines-string","libasync_safe","libc","libc_bionic","libc_bionic_ndk","libc_bionic_systrace","libc_bootstrap","libc_common_shared","libc_dns","libc_dynamic_dispatch","libc_fortify","libc_freebsd","libc_freebsd_large_stack","libc_gdtoa","libc_init_dynamic","libc_init_static","libc_netbsd","libc_nomalloc","libc_nopthread","libc_openbsd","libc_openbsd_large_stack","libc_openbsd_ndk","libc_pthread","libc_syscalls","libc_tzcode","libc_unwind_static","libdl_android","libdl_static","libm","libpropertyinfoparser","libscudo","libstdc++","libsystemproperties"],
   apex_available: [ "com.android.prebuilts-10000", ],
   min_sdk_version: "apex_inherit",
   stl: "none", 
+  static_executable: true,
 }
 rust_binary {
   name: "voidrustrlib10000",
   srcs: [ "util.rs"],
   prefer_rlib: true,
   apex_available: [ "com.android.prebuilts-10000", ],
-  rustlibs: ["libbytes","libdowncast_rs","librand_ish"],
+  rustlibs: ["libbytes","libdowncast_rs","libprotobuf","librand_ish"],
   min_sdk_version: "apex_inherit",
 }
 cc_binary {
@@ -137,7 +126,7 @@ apex {
   name: "com.android.prebuilts-10000",
   compile_multilib: "both",
   manifest: "manifest.json",
-  native_shared_libs: ["ld-android","libdl","libdl_android"],
+  native_shared_libs: ["ld-android","libc","libdl","libdl_android","libm"],
   binaries: [],
   prebuilts: [],
   apps: [],
