@@ -30,3 +30,12 @@ protoc-gen-rust
 libquote
 libproc_macro_error_attr
 libsyn
+libbit_field_derive
+libbit_field
+libenumn
+libpoll_token_derive
+libproc_macro_error
+libserde_derive
+libthiserror_impl
+libcxxbridge_macro
+libgddi_macros
