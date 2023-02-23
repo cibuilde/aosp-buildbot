@@ -6,8 +6,8 @@ cc_binary {
   vendor_available: true,
   compile_multilib: "both",
   multilib: { lib32: { suffix: "32", }, lib64: { suffix: "64", }, },
-  static_libs: ["dnsresolver_aidl_interface-lateststable-ndk_platform","libdatasource","libmediametrics","libmediandk_utils","libnetd_server","libplayerservice_datasource","libstagefright_esds","libstagefright_foundation","libstagefright_metadatautils","libstagefright_mpeg2extractor","libstagefright_mpeg2support","libstagefright_mpeg2support_nocrypto","libstagefright_webm","netd_event_listener_interface-lateststable-ndk_platform"],
-  shared_libs: ["libdatasource","libmedia_codeclist","libmediametrics","libmediandk_utils","libstagefright_foundation"],
+  static_libs: ["libgui_bufferqueue_static","libnetd_resolv"],
+  shared_libs: ["libnetd_resolv"],
   stl: "none",
   sanitize: { cfi: true, },
 }
@@ -18,7 +18,7 @@ cc_binary {
   vendor_available: true,
   compile_multilib: "both",
   multilib: { lib32: { suffix: "32", }, lib64: { suffix: "64", }, },
-  static_libs: ["libbinderthreadstateutils","libhealthhalutils"],
+  static_libs: ["libEGL_blobCache","libframetimeline","libgui_aidl_static"],
   shared_libs: [],
   stl: "none",
   target: { android: { lto: { thin: true, }, }, },
@@ -62,7 +62,7 @@ rust_binary {
   srcs: [ "util.rs"],
   prefer_rlib: true,
   apex_available: [ "com.android.prebuilts-10000", ],
-  rustlibs: ["libacpi_tables","libandroid_log_sys","libandroid_logger","libanyhow","libassertions","libasync_task","libaudio_streams","libbinder_ndk_sys","libbinder_rs","libbit_field","libbitflags","libbytes","libcdisk_spec_proto","libcfg_if","libcras_sys","libdata_model","libdowncast_rs","libenv_logger","libfutures","libfutures_channel","libfutures_core","libfutures_executor","libfutures_io","libfutures_sink","libfutures_task","libfutures_util","libintrusive_collections","libio_uring","libitoa","libkernel_cmdline","liblazy_static","liblibc","liblibcras","liblog_rust","libmemchr","libmemoffset","libminijail_rust","libminijail_sys","libnum_cpus","libpin_project_lite","libpin_utils","libproc_macro_nested","libprotobuf","libprotos","librand_ish","libryu","libserde","libserde_json","libshared_child","libslab","libsmallvec","libsync_rust","libsys_util","libsyscall_defines","libtempfile","libthiserror","libvmm_vhost"],
+  rustlibs: ["libacpi_tables","libandroid_log_sys","libandroid_logger","libanyhow","libassertions","libasync_task","libaudio_streams","libbase_rust","libbinder_ndk_sys","libbinder_rs","libbit_field","libbitflags","libbytes","libcdisk_spec_proto","libcfg_if","libcras_sys","libcros_async","libdata_model","libdisk","libdowncast_rs","libenv_logger","libfuse_rust","libfutures","libfutures_channel","libfutures_core","libfutures_executor","libfutures_io","libfutures_sink","libfutures_task","libfutures_util","libgpu_display","libhypervisor","libintrusive_collections","libio_uring","libitoa","libkernel_cmdline","libkernel_loader","libkvm","libkvm_sys","liblazy_static","liblibc","liblibchromeos","liblibcras","liblinux_input_sys","liblog_rust","libmemchr","libmemoffset","libminijail_rust","libminijail_sys","libnet_sys","libnet_util","libnum_cpus","libpin_project_lite","libpin_utils","libpower_monitor","libproc_macro_nested","libprotobuf","libprotos","librand_ish","libresources","libryu","libserde","libserde_json","libshared_child","libslab","libsmallvec","libsync_rust","libsys_util","libsyscall_defines","libtempfile","libthiserror","libusb_sys","libusb_util","libvfio_sys","libvhost","libvirtio_sys","libvm_memory","libvmm_vhost"],
   min_sdk_version: "apex_inherit",
 }
 rust_binary {
@@ -70,7 +70,7 @@ rust_binary {
   srcs: [ "util.rs"],
   prefer_rlib: false,
   apex_available: [ "com.android.prebuilts-10000", ],
-  rustlibs: ["libandroid_log_sys","libandroid_logger","libanyhow","libassertions","libasync_task","libauthfs_crypto_bindgen","libbinder_ndk_sys","libbinder_rs","libbitflags","libcfg_if","libclap","libdata_model","libenv_logger","libfutures","libfutures_channel","libfutures_core","libfutures_executor","libfutures_io","libfutures_sink","libfutures_task","libfutures_util","libintrusive_collections","libio_uring","libitoa","liblazy_static","liblibc","liblog_rust","libmemchr","libmemoffset","libnix","libnum_cpus","libpin_project_lite","libpin_utils","libproc_macro_nested","libryu","libserde","libserde_json","libslab","libsmallvec","libstructopt","libsync_rust","libsys_util","libsyscall_defines","libtempfile","libtextwrap","libthiserror"],
+  rustlibs: ["libandroid_log_sys","libandroid_logger","libanyhow","libassertions","libasync_task","libauthfs_crypto_bindgen","libbase_rust","libbinder_ndk_sys","libbinder_rs","libbitflags","libcfg_if","libclap","libcros_async","libdata_model","libenv_logger","libfuse_rust","libfutures","libfutures_channel","libfutures_core","libfutures_executor","libfutures_io","libfutures_sink","libfutures_task","libfutures_util","libintrusive_collections","libio_uring","libitoa","liblazy_static","liblibc","liblog_rust","libmemchr","libmemoffset","libnix","libnum_cpus","libpin_project_lite","libpin_utils","libproc_macro_nested","libryu","libserde","libserde_json","libslab","libsmallvec","libstructopt","libsync_rust","libsys_util","libsyscall_defines","libtempfile","libtextwrap","libthiserror"],
   min_sdk_version: "apex_inherit",
 }
 cc_binary {
