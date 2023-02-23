@@ -886,7 +886,7 @@ jobs:
         download_release external_pcre-2 external/pcre/ android-12.0.0_r1-2
         download_release external_pdfium-7 external/pdfium/ android-12.0.0_r1-7 --exclude="libpdfium-agg" --exclude="libpdfium-lcms2" --exclude="libpdfium-libopenjpeg2" --exclude="libpdfium-skia_shared" --exclude="libpdfium-third_party-base" --exclude="libpdfium-fxcrt" --exclude="libpdfium-cmaps" --exclude="libpdfium-fdrm" --exclude="libpdfium-fxge" --exclude="libpdfium-fxcodec" --exclude="libpdfium-parser" --exclude="libpdfium-font" --exclude="libpdfium-page" --exclude="libpdfium-edit" --exclude="libpdfium-fpdftext" --exclude="libpdfium-render" --exclude="libpdfium-fpdfdoc" --exclude="libpdfium-fxjs" --exclude="libpdfium-pwl" --exclude="libpdfium-formfiller" --exclude="libpdfium-fpdfsdk" --exclude="libpdfium"
         rm -rf external_pdfium-7.tar.xz
-        download_release external_perfetto-8 external/perfetto/ android-12.0.0_r1-8 --exclude="ipc_plugin" --exclude="perfetto_src_protozero_protoc_plugin_cppgen_plugin" --exclude="perfetto_trace_protos" --exclude="protozero_plugin" --exclude="libperfetto" --exclude="traced" --exclude="traced_probes" --exclude="perfetto" --exclude="trigger_perfetto" --exclude="heapprofd" --exclude="heapprofd_client_api" --exclude="heapprofd_client" --exclude="traced_perf" --exclude="libperfetto_android_internal"
+        download_release external_perfetto-8 external/perfetto/ android-12.0.0_r1-8 --exclude="ipc_plugin" --exclude="perfetto_src_protozero_protoc_plugin_cppgen_plugin" --exclude="perfetto_trace_protos" --exclude="protozero_plugin" --exclude="libperfetto" --exclude="traced" --exclude="traced_probes" --exclude="trigger_perfetto" --exclude="heapprofd" --exclude="heapprofd_client_api" --exclude="heapprofd_client" --exclude="traced_perf" --exclude="libperfetto_android_internal"
         rm -rf external_perfetto-8.tar.xz
         download_release external_pffft-4 external/pffft/ android-12.0.0_r1-4
         download_release external_piex-4 external/piex/ android-12.0.0_r1-4
@@ -1133,170 +1133,24 @@ jobs:
         sed -i 's/libLLVM_android.so"],/libLLVM_android.so"],\n}, android_x86_64: { srcs: ["libLLVM_android.so"], }, android_x86: { srcs: ["libLLVM_android.so"],/g' prebuilts/sdk/tools/Android.bp
         sed -i 's/name: "libLLVM_android",/name: "libLLVM_android",\n device_supported: true, prefer: true,/g' prebuilts/sdk/tools/Android.bp
         mv prebuiltlibs/external/llvm/libLLVM_android/android_x86_64_shared/libLLVM_android.so prebuilts/sdk/tools/
-
-        rm -rf frameworks/proto_logging/stats/stats_log_api_gen
         echo "eng.buildbot.$(date '+%Y%m%d.%H%M%S')" > out/soong/build_number.txt
         GOROOT=$TOP/prebuilts/go/linux-x86 $GITHUB_WORKSPACE/soong_ui --make-mode --skip-ninja --skip-kati --skip-soong-tests --skip-write-modules -j1 TARGET_PRODUCT=aosp_x86_64 TARGET_BUILD_VARIANT=eng ALLOW_MISSING_DEPENDENCIES=true BUILD_BROKEN_DISABLE_BAZEL=1 nothing
         $GITHUB_WORKSPACE/build.sh
         du -ah -d1 out/soong |sort -h
         du -ah -d1 . |sort -h
 
-    - name: Archive bootable_recovery-10.tar.xz
-      uses: actions/upload-artifact@v3
-      with:
-        name: bootable_recovery-10.tar.xz
-        path: aosp/bootable_recovery-10.tar.xz
-    - name: Archive device_google_cuttlefish-10.tar.xz
-      uses: actions/upload-artifact@v3
-      with:
-        name: device_google_cuttlefish-10.tar.xz
-        path: aosp/device_google_cuttlefish-10.tar.xz
-    - name: Archive external_avb-10.tar.xz
-      uses: actions/upload-artifact@v3
-      with:
-        name: external_avb-10.tar.xz
-        path: aosp/external_avb-10.tar.xz
-    - name: Archive external_crosvm-10.tar.xz
-      uses: actions/upload-artifact@v3
-      with:
-        name: external_crosvm-10.tar.xz
-        path: aosp/external_crosvm-10.tar.xz
-    - name: Archive external_ipsec-tools-10.tar.xz
-      uses: actions/upload-artifact@v3
-      with:
-        name: external_ipsec-tools-10.tar.xz
-        path: aosp/external_ipsec-tools-10.tar.xz
-    - name: Archive external_libchromeos-rs-10.tar.xz
-      uses: actions/upload-artifact@v3
-      with:
-        name: external_libchromeos-rs-10.tar.xz
-        path: aosp/external_libchromeos-rs-10.tar.xz
-    - name: Archive external_perfetto-10.tar.xz
-      uses: actions/upload-artifact@v3
-      with:
-        name: external_perfetto-10.tar.xz
-        path: aosp/external_perfetto-10.tar.xz
-    - name: Archive external_rust_crates_grpcio-10.tar.xz
-      uses: actions/upload-artifact@v3
-      with:
-        name: external_rust_crates_grpcio-10.tar.xz
-        path: aosp/external_rust_crates_grpcio-10.tar.xz
-    - name: Archive external_rust_crates_rusqlite-10.tar.xz
-      uses: actions/upload-artifact@v3
-      with:
-        name: external_rust_crates_rusqlite-10.tar.xz
-        path: aosp/external_rust_crates_rusqlite-10.tar.xz
-    - name: Archive external_vulkan-headers-10.tar.xz
-      uses: actions/upload-artifact@v3
-      with:
-        name: external_vulkan-headers-10.tar.xz
-        path: aosp/external_vulkan-headers-10.tar.xz
-    - name: Archive frameworks_av-10.tar.xz
-      uses: actions/upload-artifact@v3
-      with:
-        name: frameworks_av-10.tar.xz
-        path: aosp/frameworks_av-10.tar.xz
-    - name: Archive frameworks_base-10.tar.xz
-      uses: actions/upload-artifact@v3
-      with:
-        name: frameworks_base-10.tar.xz
-        path: aosp/frameworks_base-10.tar.xz
-    - name: Archive frameworks_native-10.tar.xz
-      uses: actions/upload-artifact@v3
-      with:
-        name: frameworks_native-10.tar.xz
-        path: aosp/frameworks_native-10.tar.xz
-    - name: Archive frameworks_proto_logging-10.tar.xz
-      uses: actions/upload-artifact@v3
-      with:
-        name: frameworks_proto_logging-10.tar.xz
-        path: aosp/frameworks_proto_logging-10.tar.xz
-    - name: Archive hardware_interfaces-10.tar.xz
-      uses: actions/upload-artifact@v3
-      with:
-        name: hardware_interfaces-10.tar.xz
-        path: aosp/hardware_interfaces-10.tar.xz
-    - name: Archive hardware_libhardware-10.tar.xz
-      uses: actions/upload-artifact@v3
-      with:
-        name: hardware_libhardware-10.tar.xz
-        path: aosp/hardware_libhardware-10.tar.xz
-    - name: Archive packages_apps_Bluetooth-10.tar.xz
-      uses: actions/upload-artifact@v3
-      with:
-        name: packages_apps_Bluetooth-10.tar.xz
-        path: aosp/packages_apps_Bluetooth-10.tar.xz
-    - name: Archive packages_modules_DnsResolver-10.tar.xz
-      uses: actions/upload-artifact@v3
-      with:
-        name: packages_modules_DnsResolver-10.tar.xz
-        path: aosp/packages_modules_DnsResolver-10.tar.xz
-    - name: Archive packages_modules_StatsD-10.tar.xz
-      uses: actions/upload-artifact@v3
-      with:
-        name: packages_modules_StatsD-10.tar.xz
-        path: aosp/packages_modules_StatsD-10.tar.xz
-    - name: Archive system_connectivity_wificond-10.tar.xz
-      uses: actions/upload-artifact@v3
-      with:
-        name: system_connectivity_wificond-10.tar.xz
-        path: aosp/system_connectivity_wificond-10.tar.xz
-    - name: Archive system_core-10.tar.xz
-      uses: actions/upload-artifact@v3
-      with:
-        name: system_core-10.tar.xz
-        path: aosp/system_core-10.tar.xz
     - name: Archive system_extras-10.tar.xz
       uses: actions/upload-artifact@v3
       with:
         name: system_extras-10.tar.xz
         path: aosp/system_extras-10.tar.xz
-    - name: Archive system_security-10.tar.xz
-      uses: actions/upload-artifact@v3
-      with:
-        name: system_security-10.tar.xz
-        path: aosp/system_security-10.tar.xz
-    - name: Archive system_update_engine-10.tar.xz
-      uses: actions/upload-artifact@v3
-      with:
-        name: system_update_engine-10.tar.xz
-        path: aosp/system_update_engine-10.tar.xz
-    - name: Archive system_vold-10.tar.xz
-      uses: actions/upload-artifact@v3
-      with:
-        name: system_vold-10.tar.xz
-        path: aosp/system_vold-10.tar.xz
 
     - uses: softprops/action-gh-release@master
       with:
         name: ${{ env.branch }}-10
         tag_name: ${{ env.branch }}-10
         files: |
-          aosp/bootable_recovery-10.tar.xz
-          aosp/device_google_cuttlefish-10.tar.xz
-          aosp/external_avb-10.tar.xz
-          aosp/external_crosvm-10.tar.xz
-          aosp/external_ipsec-tools-10.tar.xz
-          aosp/external_libchromeos-rs-10.tar.xz
-          aosp/external_perfetto-10.tar.xz
-          aosp/external_rust_crates_grpcio-10.tar.xz
-          aosp/external_rust_crates_rusqlite-10.tar.xz
-          aosp/external_vulkan-headers-10.tar.xz
-          aosp/frameworks_av-10.tar.xz
-          aosp/frameworks_base-10.tar.xz
-          aosp/frameworks_native-10.tar.xz
-          aosp/frameworks_proto_logging-10.tar.xz
-          aosp/hardware_interfaces-10.tar.xz
-          aosp/hardware_libhardware-10.tar.xz
-          aosp/packages_apps_Bluetooth-10.tar.xz
-          aosp/packages_modules_DnsResolver-10.tar.xz
-          aosp/packages_modules_StatsD-10.tar.xz
-          aosp/system_connectivity_wificond-10.tar.xz
-          aosp/system_core-10.tar.xz
           aosp/system_extras-10.tar.xz
-          aosp/system_security-10.tar.xz
-          aosp/system_update_engine-10.tar.xz
-          aosp/system_vold-10.tar.xz
 
 
     - uses: softprops/action-gh-release@master
