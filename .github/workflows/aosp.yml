@@ -7,7 +7,7 @@ on:
 env:
   branch: 'android-12.0.0_r1'
 jobs:
-  build_step10:
+  build_step11:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout
@@ -82,6 +82,18 @@ jobs:
       run: |
         cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
         clone_depth_platform build/soong
+    - name: Restore Cache device/generic/vulkan-cereal
+      id: device_generic_vulkan-cereal
+      uses: actions/cache@v3
+      with:
+        path: aosp/device/generic/vulkan-cereal
+        key: device_generic_vulkan-cereal@${{ env.branch }}
+        restore-keys: device_generic_vulkan-cereal@${{ env.branch }}
+    - name: Clone project device/generic/vulkan-cereal
+      if: steps.device_generic_vulkan-cereal.outputs.cache-hit != 'true'
+      run: |
+        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
+        clone_depth device/generic/vulkan-cereal
     - name: Restore Cache device/google/cuttlefish
       id: device_google_cuttlefish
       uses: actions/cache@v3
@@ -94,18 +106,30 @@ jobs:
       run: |
         cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
         clone_depth device/google/cuttlefish
-    - name: Restore Cache external/avb
-      id: external_avb
+    - name: Restore Cache external/aac
+      id: external_aac
       uses: actions/cache@v3
       with:
-        path: aosp/external/avb
-        key: external_avb@${{ env.branch }}
-        restore-keys: external_avb@${{ env.branch }}
-    - name: Clone project external/avb
-      if: steps.external_avb.outputs.cache-hit != 'true'
+        path: aosp/external/aac
+        key: external_aac@${{ env.branch }}
+        restore-keys: external_aac@${{ env.branch }}
+    - name: Clone project external/aac
+      if: steps.external_aac.outputs.cache-hit != 'true'
       run: |
         cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        clone_depth_platform external/avb
+        clone_depth_platform external/aac
+    - name: Restore Cache external/angle
+      id: external_angle
+      uses: actions/cache@v3
+      with:
+        path: aosp/external/angle
+        key: external_angle@${{ env.branch }}
+        restore-keys: external_angle@${{ env.branch }}
+    - name: Clone project external/angle
+      if: steps.external_angle.outputs.cache-hit != 'true'
+      run: |
+        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
+        clone_depth_platform external/angle
     - name: Restore Cache external/compiler-rt
       id: external_compiler-rt
       uses: actions/cache@v3
@@ -142,6 +166,18 @@ jobs:
       run: |
         cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
         clone_depth_platform external/crosvm
+    - name: Restore Cache external/drm_hwcomposer
+      id: external_drm_hwcomposer
+      uses: actions/cache@v3
+      with:
+        path: aosp/external/drm_hwcomposer
+        key: external_drm_hwcomposer@${{ env.branch }}
+        restore-keys: external_drm_hwcomposer@${{ env.branch }}
+    - name: Clone project external/drm_hwcomposer
+      if: steps.external_drm_hwcomposer.outputs.cache-hit != 'true'
+      run: |
+        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
+        clone_depth_platform external/drm_hwcomposer
     - name: Restore Cache external/golang-protobuf
       id: external_golang-protobuf
       uses: actions/cache@v3
@@ -154,18 +190,18 @@ jobs:
       run: |
         cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
         clone_depth_platform external/golang-protobuf
-    - name: Restore Cache external/ipsec-tools
-      id: external_ipsec-tools
+    - name: Restore Cache external/libavc
+      id: external_libavc
       uses: actions/cache@v3
       with:
-        path: aosp/external/ipsec-tools
-        key: external_ipsec-tools@${{ env.branch }}
-        restore-keys: external_ipsec-tools@${{ env.branch }}
-    - name: Clone project external/ipsec-tools
-      if: steps.external_ipsec-tools.outputs.cache-hit != 'true'
+        path: aosp/external/libavc
+        key: external_libavc@${{ env.branch }}
+        restore-keys: external_libavc@${{ env.branch }}
+    - name: Clone project external/libavc
+      if: steps.external_libavc.outputs.cache-hit != 'true'
       run: |
         cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        clone_depth_platform external/ipsec-tools
+        clone_depth_platform external/libavc
     - name: Restore Cache external/libchrome
       id: external_libchrome
       uses: actions/cache@v3
@@ -178,18 +214,54 @@ jobs:
       run: |
         cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
         clone_depth_platform external/libchrome
-    - name: Restore Cache external/libchromeos-rs
-      id: external_libchromeos-rs
+    - name: Restore Cache external/libldac
+      id: external_libldac
       uses: actions/cache@v3
       with:
-        path: aosp/external/libchromeos-rs
-        key: external_libchromeos-rs@${{ env.branch }}
-        restore-keys: external_libchromeos-rs@${{ env.branch }}
-    - name: Clone project external/libchromeos-rs
-      if: steps.external_libchromeos-rs.outputs.cache-hit != 'true'
+        path: aosp/external/libldac
+        key: external_libldac@${{ env.branch }}
+        restore-keys: external_libldac@${{ env.branch }}
+    - name: Clone project external/libldac
+      if: steps.external_libldac.outputs.cache-hit != 'true'
       run: |
         cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        clone_depth_platform external/libchromeos-rs
+        clone_depth_platform external/libldac
+    - name: Restore Cache external/libmpeg2
+      id: external_libmpeg2
+      uses: actions/cache@v3
+      with:
+        path: aosp/external/libmpeg2
+        key: external_libmpeg2@${{ env.branch }}
+        restore-keys: external_libmpeg2@${{ env.branch }}
+    - name: Clone project external/libmpeg2
+      if: steps.external_libmpeg2.outputs.cache-hit != 'true'
+      run: |
+        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
+        clone_depth_platform external/libmpeg2
+    - name: Restore Cache external/mdnsresponder
+      id: external_mdnsresponder
+      uses: actions/cache@v3
+      with:
+        path: aosp/external/mdnsresponder
+        key: external_mdnsresponder@${{ env.branch }}
+        restore-keys: external_mdnsresponder@${{ env.branch }}
+    - name: Clone project external/mdnsresponder
+      if: steps.external_mdnsresponder.outputs.cache-hit != 'true'
+      run: |
+        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
+        clone_depth_platform external/mdnsresponder
+    - name: Restore Cache external/minigbm
+      id: external_minigbm
+      uses: actions/cache@v3
+      with:
+        path: aosp/external/minigbm
+        key: external_minigbm@${{ env.branch }}
+        restore-keys: external_minigbm@${{ env.branch }}
+    - name: Clone project external/minigbm
+      if: steps.external_minigbm.outputs.cache-hit != 'true'
+      run: |
+        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
+        clone_depth_platform external/minigbm
     - name: Restore Cache external/perfetto
       id: external_perfetto
       uses: actions/cache@v3
@@ -226,30 +298,18 @@ jobs:
       run: |
         cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
         clone_depth_platform external/python/cpython2
-    - name: Restore Cache external/rust/crates/grpcio
-      id: external_rust_crates_grpcio
+    - name: Restore Cache external/rust/cxx
+      id: external_rust_cxx
       uses: actions/cache@v3
       with:
-        path: aosp/external/rust/crates/grpcio
-        key: external_rust_crates_grpcio@${{ env.branch }}
-        restore-keys: external_rust_crates_grpcio@${{ env.branch }}
-    - name: Clone project external/rust/crates/grpcio
-      if: steps.external_rust_crates_grpcio.outputs.cache-hit != 'true'
+        path: aosp/external/rust/cxx
+        key: external_rust_cxx@${{ env.branch }}
+        restore-keys: external_rust_cxx@${{ env.branch }}
+    - name: Clone project external/rust/cxx
+      if: steps.external_rust_cxx.outputs.cache-hit != 'true'
       run: |
         cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        clone_depth_platform external/rust/crates/grpcio
-    - name: Restore Cache external/rust/crates/rusqlite
-      id: external_rust_crates_rusqlite
-      uses: actions/cache@v3
-      with:
-        path: aosp/external/rust/crates/rusqlite
-        key: external_rust_crates_rusqlite@${{ env.branch }}
-        restore-keys: external_rust_crates_rusqlite@${{ env.branch }}
-    - name: Clone project external/rust/crates/rusqlite
-      if: steps.external_rust_crates_rusqlite.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        clone_depth_platform external/rust/crates/rusqlite
+        clone_depth_platform external/rust/cxx
     - name: Restore Cache external/skia
       id: external_skia
       uses: actions/cache@v3
@@ -262,6 +322,18 @@ jobs:
       run: |
         cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
         clone_depth_platform external/skia
+    - name: Restore Cache external/sonic
+      id: external_sonic
+      uses: actions/cache@v3
+      with:
+        path: aosp/external/sonic
+        key: external_sonic@${{ env.branch }}
+        restore-keys: external_sonic@${{ env.branch }}
+    - name: Clone project external/sonic
+      if: steps.external_sonic.outputs.cache-hit != 'true'
+      run: |
+        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
+        clone_depth_platform external/sonic
     - name: Restore Cache external/starlark-go
       id: external_starlark-go
       uses: actions/cache@v3
@@ -274,30 +346,30 @@ jobs:
       run: |
         cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
         clone_depth_platform external/starlark-go
-    - name: Restore Cache external/vulkan-headers
-      id: external_vulkan-headers
+    - name: Restore Cache external/swiftshader
+      id: external_swiftshader
       uses: actions/cache@v3
       with:
-        path: aosp/external/vulkan-headers
-        key: external_vulkan-headers@${{ env.branch }}
-        restore-keys: external_vulkan-headers@${{ env.branch }}
-    - name: Clone project external/vulkan-headers
-      if: steps.external_vulkan-headers.outputs.cache-hit != 'true'
+        path: aosp/external/swiftshader
+        key: external_swiftshader@${{ env.branch }}
+        restore-keys: external_swiftshader@${{ env.branch }}
+    - name: Clone project external/swiftshader
+      if: steps.external_swiftshader.outputs.cache-hit != 'true'
       run: |
         cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        clone_depth_platform external/vulkan-headers
-    - name: Restore Cache external/wayland
-      id: external_wayland
+        clone_depth_platform external/swiftshader
+    - name: Restore Cache external/vm_tools/p9
+      id: external_vm_tools_p9
       uses: actions/cache@v3
       with:
-        path: aosp/external/wayland
-        key: external_wayland@${{ env.branch }}
-        restore-keys: external_wayland@${{ env.branch }}
-    - name: Clone project external/wayland
-      if: steps.external_wayland.outputs.cache-hit != 'true'
+        path: aosp/external/vm_tools/p9
+        key: external_vm_tools_p9@${{ env.branch }}
+        restore-keys: external_vm_tools_p9@${{ env.branch }}
+    - name: Clone project external/vm_tools/p9
+      if: steps.external_vm_tools_p9.outputs.cache-hit != 'true'
       run: |
         cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        clone_depth_platform external/wayland
+        clone_depth_platform external/vm_tools/p9
     - name: Restore Cache frameworks/av
       id: frameworks_av
       uses: actions/cache@v3
@@ -358,6 +430,30 @@ jobs:
       run: |
         cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
         clone_depth_platform frameworks/proto_logging
+    - name: Restore Cache frameworks/rs
+      id: frameworks_rs
+      uses: actions/cache@v3
+      with:
+        path: aosp/frameworks/rs
+        key: frameworks_rs@${{ env.branch }}
+        restore-keys: frameworks_rs@${{ env.branch }}
+    - name: Clone project frameworks/rs
+      if: steps.frameworks_rs.outputs.cache-hit != 'true'
+      run: |
+        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
+        clone_depth_platform frameworks/rs
+    - name: Restore Cache hardware/google/camera
+      id: hardware_google_camera
+      uses: actions/cache@v3
+      with:
+        path: aosp/hardware/google/camera
+        key: hardware_google_camera@${{ env.branch }}
+        restore-keys: hardware_google_camera@${{ env.branch }}
+    - name: Clone project hardware/google/camera
+      if: steps.hardware_google_camera.outputs.cache-hit != 'true'
+      run: |
+        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
+        clone_depth_platform hardware/google/camera
     - name: Restore Cache hardware/interfaces
       id: hardware_interfaces
       uses: actions/cache@v3
@@ -370,30 +466,6 @@ jobs:
       run: |
         cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
         clone_depth_platform hardware/interfaces
-    - name: Restore Cache hardware/libhardware
-      id: hardware_libhardware
-      uses: actions/cache@v3
-      with:
-        path: aosp/hardware/libhardware
-        key: hardware_libhardware@${{ env.branch }}
-        restore-keys: hardware_libhardware@${{ env.branch }}
-    - name: Clone project hardware/libhardware
-      if: steps.hardware_libhardware.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        clone_depth_platform hardware/libhardware
-    - name: Restore Cache hardware/ril
-      id: hardware_ril
-      uses: actions/cache@v3
-      with:
-        path: aosp/hardware/ril
-        key: hardware_ril@${{ env.branch }}
-        restore-keys: hardware_ril@${{ env.branch }}
-    - name: Clone project hardware/ril
-      if: steps.hardware_ril.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        clone_depth_platform hardware/ril
     - name: Restore Cache kernel/configs
       id: kernel_configs
       uses: actions/cache@v3
@@ -406,78 +478,54 @@ jobs:
       run: |
         cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
         clone_depth kernel/configs
-    - name: Restore Cache packages/apps/Bluetooth
-      id: packages_apps_Bluetooth
+    - name: Restore Cache packages/apps/Gallery2
+      id: packages_apps_Gallery2
       uses: actions/cache@v3
       with:
-        path: aosp/packages/apps/Bluetooth
-        key: packages_apps_Bluetooth@${{ env.branch }}
-        restore-keys: packages_apps_Bluetooth@${{ env.branch }}
-    - name: Clone project packages/apps/Bluetooth
-      if: steps.packages_apps_Bluetooth.outputs.cache-hit != 'true'
+        path: aosp/packages/apps/Gallery2
+        key: packages_apps_Gallery2@${{ env.branch }}
+        restore-keys: packages_apps_Gallery2@${{ env.branch }}
+    - name: Clone project packages/apps/Gallery2
+      if: steps.packages_apps_Gallery2.outputs.cache-hit != 'true'
       run: |
         cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        clone_depth_platform packages/apps/Bluetooth
-    - name: Restore Cache packages/modules/DnsResolver
-      id: packages_modules_DnsResolver
+        clone_depth_platform packages/apps/Gallery2
+    - name: Restore Cache packages/modules/Gki
+      id: packages_modules_Gki
       uses: actions/cache@v3
       with:
-        path: aosp/packages/modules/DnsResolver
-        key: packages_modules_DnsResolver@${{ env.branch }}
-        restore-keys: packages_modules_DnsResolver@${{ env.branch }}
-    - name: Clone project packages/modules/DnsResolver
-      if: steps.packages_modules_DnsResolver.outputs.cache-hit != 'true'
+        path: aosp/packages/modules/Gki
+        key: packages_modules_Gki@${{ env.branch }}
+        restore-keys: packages_modules_Gki@${{ env.branch }}
+    - name: Clone project packages/modules/Gki
+      if: steps.packages_modules_Gki.outputs.cache-hit != 'true'
       run: |
         cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        clone_depth_platform packages/modules/DnsResolver
-    - name: Restore Cache packages/modules/Permission
-      id: packages_modules_Permission
+        clone_depth_platform packages/modules/Gki
+    - name: Restore Cache packages/modules/NeuralNetworks
+      id: packages_modules_NeuralNetworks
       uses: actions/cache@v3
       with:
-        path: aosp/packages/modules/Permission
-        key: packages_modules_Permission@${{ env.branch }}
-        restore-keys: packages_modules_Permission@${{ env.branch }}
-    - name: Clone project packages/modules/Permission
-      if: steps.packages_modules_Permission.outputs.cache-hit != 'true'
+        path: aosp/packages/modules/NeuralNetworks
+        key: packages_modules_NeuralNetworks@${{ env.branch }}
+        restore-keys: packages_modules_NeuralNetworks@${{ env.branch }}
+    - name: Clone project packages/modules/NeuralNetworks
+      if: steps.packages_modules_NeuralNetworks.outputs.cache-hit != 'true'
       run: |
         cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        clone_depth_platform packages/modules/Permission
-    - name: Restore Cache packages/modules/StatsD
-      id: packages_modules_StatsD
+        clone_depth_platform packages/modules/NeuralNetworks
+    - name: Restore Cache packages/modules/Virtualization
+      id: packages_modules_Virtualization
       uses: actions/cache@v3
       with:
-        path: aosp/packages/modules/StatsD
-        key: packages_modules_StatsD@${{ env.branch }}
-        restore-keys: packages_modules_StatsD@${{ env.branch }}
-    - name: Clone project packages/modules/StatsD
-      if: steps.packages_modules_StatsD.outputs.cache-hit != 'true'
+        path: aosp/packages/modules/Virtualization
+        key: packages_modules_Virtualization@${{ env.branch }}
+        restore-keys: packages_modules_Virtualization@${{ env.branch }}
+    - name: Clone project packages/modules/Virtualization
+      if: steps.packages_modules_Virtualization.outputs.cache-hit != 'true'
       run: |
         cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        clone_depth_platform packages/modules/StatsD
-    - name: Restore Cache packages/modules/adb
-      id: packages_modules_adb
-      uses: actions/cache@v3
-      with:
-        path: aosp/packages/modules/adb
-        key: packages_modules_adb@${{ env.branch }}
-        restore-keys: packages_modules_adb@${{ env.branch }}
-    - name: Clone project packages/modules/adb
-      if: steps.packages_modules_adb.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        clone_depth_platform packages/modules/adb
-    - name: Restore Cache packages/modules/common
-      id: packages_modules_common
-      uses: actions/cache@v3
-      with:
-        path: aosp/packages/modules/common
-        key: packages_modules_common@${{ env.branch }}
-        restore-keys: packages_modules_common@${{ env.branch }}
-    - name: Clone project packages/modules/common
-      if: steps.packages_modules_common.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        clone_depth_platform packages/modules/common
+        clone_depth_platform packages/modules/Virtualization
     - name: Restore Cache prebuilts/build-tools
       id: prebuilts_build-tools
       uses: actions/cache@v3
@@ -526,6 +574,54 @@ jobs:
       run: |
         cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
         clone_sparse prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8 sysroot lib/gcc/x86_64-linux/4.8.3 x86_64-linux/lib64 x86_64-linux/lib32
+    - name: Restore Cache prebuilts/jdk/jdk11
+      id: prebuilts_jdk_jdk11
+      uses: actions/cache@v3
+      with:
+        path: aosp/prebuilts/jdk/jdk11
+        key: prebuilts_jdk_jdk11@${{ env.branch }}
+        restore-keys: prebuilts_jdk_jdk11@${{ env.branch }}
+    - name: Clone project prebuilts/jdk/jdk11
+      if: steps.prebuilts_jdk_jdk11.outputs.cache-hit != 'true'
+      run: |
+        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
+        clone_sparse prebuilts/jdk/jdk11 linux-x86
+    - name: Restore Cache prebuilts/jdk/jdk8
+      id: prebuilts_jdk_jdk8
+      uses: actions/cache@v3
+      with:
+        path: aosp/prebuilts/jdk/jdk8
+        key: prebuilts_jdk_jdk8@${{ env.branch }}
+        restore-keys: prebuilts_jdk_jdk8@${{ env.branch }}
+    - name: Clone project prebuilts/jdk/jdk8
+      if: steps.prebuilts_jdk_jdk8.outputs.cache-hit != 'true'
+      run: |
+        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
+        clone_sparse prebuilts/jdk/jdk8 linux-x86
+    - name: Restore Cache prebuilts/misc
+      id: prebuilts_misc
+      uses: actions/cache@v3
+      with:
+        path: aosp/prebuilts/misc
+        key: prebuilts_misc@${{ env.branch }}
+        restore-keys: prebuilts_misc@${{ env.branch }}
+    - name: Clone project prebuilts/misc
+      if: steps.prebuilts_misc.outputs.cache-hit != 'true'
+      run: |
+        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
+        clone_sparse_exclude prebuilts/misc "!/common/robolectric" "!/darwin-x86" "!/darwin-x86_64" "!/gdbserver"
+    - name: Restore Cache prebuilts/ndk
+      id: prebuilts_ndk
+      uses: actions/cache@v3
+      with:
+        path: aosp/prebuilts/ndk
+        key: prebuilts_ndk@${{ env.branch }}
+        restore-keys: prebuilts_ndk@${{ env.branch }}
+    - name: Clone project prebuilts/ndk
+      if: steps.prebuilts_ndk.outputs.cache-hit != 'true'
+      run: |
+        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
+        clone_sparse prebuilts/ndk current
     - name: Restore Cache prebuilts/rust
       id: prebuilts_rust
       uses: actions/cache@v3
@@ -574,18 +670,6 @@ jobs:
       run: |
         cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
         clone_depth_platform system/bt
-    - name: Restore Cache system/connectivity/wificond
-      id: system_connectivity_wificond
-      uses: actions/cache@v3
-      with:
-        path: aosp/system/connectivity/wificond
-        key: system_connectivity_wificond@${{ env.branch }}
-        restore-keys: system_connectivity_wificond@${{ env.branch }}
-    - name: Clone project system/connectivity/wificond
-      if: steps.system_connectivity_wificond.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        clone_depth_platform system/connectivity/wificond
     - name: Restore Cache system/core
       id: system_core
       uses: actions/cache@v3
@@ -598,18 +682,6 @@ jobs:
       run: |
         cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
         clone_depth_platform system/core
-    - name: Restore Cache system/extras
-      id: system_extras
-      uses: actions/cache@v3
-      with:
-        path: aosp/system/extras
-        key: system_extras@${{ env.branch }}
-        restore-keys: system_extras@${{ env.branch }}
-    - name: Clone project system/extras
-      if: steps.system_extras.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        clone_sparse_exclude system/extras "!/simpleperf/scripts" "!/simpleperf/testdata" "!/simpleperf/demo" "!/simpleperf/doc" "!/memory_replay/traces" "!/ioshark/*.tgz" "!/ioshark/*.tar.gz"
     - name: Restore Cache system/gsid
       id: system_gsid
       uses: actions/cache@v3
@@ -658,6 +730,30 @@ jobs:
       run: |
         cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
         clone_depth_platform system/libhidl
+    - name: Restore Cache system/libhwbinder
+      id: system_libhwbinder
+      uses: actions/cache@v3
+      with:
+        path: aosp/system/libhwbinder
+        key: system_libhwbinder@${{ env.branch }}
+        restore-keys: system_libhwbinder@${{ env.branch }}
+    - name: Clone project system/libhwbinder
+      if: steps.system_libhwbinder.outputs.cache-hit != 'true'
+      run: |
+        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
+        clone_depth_platform system/libhwbinder
+    - name: Restore Cache system/libsysprop
+      id: system_libsysprop
+      uses: actions/cache@v3
+      with:
+        path: aosp/system/libsysprop
+        key: system_libsysprop@${{ env.branch }}
+        restore-keys: system_libsysprop@${{ env.branch }}
+    - name: Clone project system/libsysprop
+      if: steps.system_libsysprop.outputs.cache-hit != 'true'
+      run: |
+        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
+        clone_depth_platform system/libsysprop
     - name: Restore Cache system/logging
       id: system_logging
       uses: actions/cache@v3
@@ -694,6 +790,18 @@ jobs:
       run: |
         cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
         clone_depth_platform system/netd
+    - name: Restore Cache system/nfc
+      id: system_nfc
+      uses: actions/cache@v3
+      with:
+        path: aosp/system/nfc
+        key: system_nfc@${{ env.branch }}
+        restore-keys: system_nfc@${{ env.branch }}
+    - name: Clone project system/nfc
+      if: steps.system_nfc.outputs.cache-hit != 'true'
+      run: |
+        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
+        clone_depth_platform system/nfc
     - name: Restore Cache system/security
       id: system_security
       uses: actions/cache@v3
@@ -742,6 +850,18 @@ jobs:
       run: |
         cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
         clone_depth_platform system/tools/hidl
+    - name: Restore Cache system/tools/xsdc
+      id: system_tools_xsdc
+      uses: actions/cache@v3
+      with:
+        path: aosp/system/tools/xsdc
+        key: system_tools_xsdc@${{ env.branch }}
+        restore-keys: system_tools_xsdc@${{ env.branch }}
+    - name: Clone project system/tools/xsdc
+      if: steps.system_tools_xsdc.outputs.cache-hit != 'true'
+      run: |
+        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
+        clone_depth_platform system/tools/xsdc
     - name: Restore Cache system/update_engine
       id: system_update_engine
       uses: actions/cache@v3
@@ -754,36 +874,24 @@ jobs:
       run: |
         cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
         clone_depth_platform system/update_engine
-    - name: Restore Cache system/vold
-      id: system_vold
-      uses: actions/cache@v3
-      with:
-        path: aosp/system/vold
-        key: system_vold@${{ env.branch }}
-        restore-keys: system_vold@${{ env.branch }}
-    - name: Clone project system/vold
-      if: steps.system_vold.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        clone_depth_platform system/vold
 
     - name: Download Release
       run: |
         source $GITHUB_WORKSPACE/envsetup.sh
         download_release art-8 art/ android-12.0.0_r1-8
         download_release bionic-9 bionic/ android-12.0.0_r1-9
-        download_release bootable_recovery-7 bootable/recovery/ android-12.0.0_r1-7
+        download_release bootable_recovery-10 bootable/recovery/ android-12.0.0_r1-10
         download_release device_generic_goldfish-opengl-7 device/generic/goldfish-opengl/ android-12.0.0_r1-7
-        download_release device_google_cuttlefish-9 device/google/cuttlefish/ android-12.0.0_r1-9
+        download_release device_google_cuttlefish-10 device/google/cuttlefish/ android-12.0.0_r1-10
         download_release external_OpenCSD-5 external/OpenCSD/ android-12.0.0_r1-5
         download_release external_Reactive-Extensions_RxCpp-9 external/Reactive-Extensions/RxCpp/ android-12.0.0_r1-9
         download_release external_aac-5 external/aac/ android-12.0.0_r1-5
         download_release external_adhd-8 external/adhd/ android-12.0.0_r1-8
         download_release external_android-clat-7 external/android-clat/ android-12.0.0_r1-7
-        download_release external_angle-4 external/angle/ android-12.0.0_r1-4 --exclude="chrome_zlib" --exclude="third_party_zlib_google_compression_utils_portable" --exclude="third_party_vulkan_deps_spirv_tools_src_spvtools" --exclude="third_party_vulkan_deps_spirv_tools_src_spvtools_val"
+        download_release external_angle-4 external/angle/ android-12.0.0_r1-4 --exclude="angle_common" --exclude="angle_gpu_info_util" --exclude="angle_image_util" --exclude="angle_preprocessor" --exclude="angle_translator" --exclude="libGLESv2_angle" --exclude="libEGL_angle" --exclude="libGLESv1_CM_angle"
         rm -rf external_angle-4.tar.xz
         download_release external_arm-optimized-routines-0 external/arm-optimized-routines/ android-12.0.0_r1-0
-        download_release external_avb-5 external/avb/ android-12.0.0_r1-5
+        download_release external_avb-10 external/avb/ android-12.0.0_r1-10
         download_release external_bc-2 external/bc/ android-12.0.0_r1-2
         download_release external_bcc-4 external/bcc/ android-12.0.0_r1-4
         download_release external_boringssl-4 external/boringssl/ android-12.0.0_r1-4
@@ -796,7 +904,7 @@ jobs:
         download_release external_compiler-rt-5 external/compiler-rt/ android-12.0.0_r1-5
         download_release external_conscrypt-6 external/conscrypt/ android-12.0.0_r1-6
         download_release external_cpu_features-4 external/cpu_features/ android-12.0.0_r1-4
-        download_release external_crosvm-7 external/crosvm/ android-12.0.0_r1-7
+        download_release external_crosvm-10 external/crosvm/ android-12.0.0_r1-10
         download_release external_curl-5 external/curl/ android-12.0.0_r1-5
         download_release external_dng_sdk-5 external/dng_sdk/ android-12.0.0_r1-5
         download_release external_dnsmasq-7 external/dnsmasq/ android-12.0.0_r1-7
@@ -831,7 +939,7 @@ jobs:
         download_release external_image_io-5 external/image_io/ android-12.0.0_r1-5
         download_release external_iperf3-4 external/iperf3/ android-12.0.0_r1-4
         download_release external_iproute2-7 external/iproute2/ android-12.0.0_r1-7
-        download_release external_ipsec-tools-4 external/ipsec-tools/ android-12.0.0_r1-4
+        download_release external_ipsec-tools-10 external/ipsec-tools/ android-12.0.0_r1-10
         download_release external_iptables-4 external/iptables/ android-12.0.0_r1-4
         download_release external_iputils-5 external/iputils/ android-12.0.0_r1-5
         download_release external_iw-5 external/iw/ android-12.0.0_r1-5
@@ -842,6 +950,7 @@ jobs:
         download_release external_libbrillo-9 external/libbrillo/ android-12.0.0_r1-9
         download_release external_libcap-4 external/libcap/ android-12.0.0_r1-4
         download_release external_libchrome-8 external/libchrome/ android-12.0.0_r1-8
+        download_release external_libchromeos-rs-10 external/libchromeos-rs/ android-12.0.0_r1-10
         download_release external_libcppbor-6 external/libcppbor/ android-12.0.0_r1-6
         download_release external_libcups-5 external/libcups/ android-12.0.0_r1-5
         download_release external_libcxx-3 external/libcxx/ android-12.0.0_r1-3
@@ -886,8 +995,8 @@ jobs:
         download_release external_pcre-2 external/pcre/ android-12.0.0_r1-2
         download_release external_pdfium-7 external/pdfium/ android-12.0.0_r1-7 --exclude="libpdfium-agg" --exclude="libpdfium-lcms2" --exclude="libpdfium-libopenjpeg2" --exclude="libpdfium-skia_shared" --exclude="libpdfium-third_party-base" --exclude="libpdfium-fxcrt" --exclude="libpdfium-cmaps" --exclude="libpdfium-fdrm" --exclude="libpdfium-fxge" --exclude="libpdfium-fxcodec" --exclude="libpdfium-parser" --exclude="libpdfium-font" --exclude="libpdfium-page" --exclude="libpdfium-edit" --exclude="libpdfium-fpdftext" --exclude="libpdfium-render" --exclude="libpdfium-fpdfdoc" --exclude="libpdfium-fxjs" --exclude="libpdfium-pwl" --exclude="libpdfium-formfiller" --exclude="libpdfium-fpdfsdk" --exclude="libpdfium"
         rm -rf external_pdfium-7.tar.xz
-        download_release external_perfetto-8 external/perfetto/ android-12.0.0_r1-8 --exclude="ipc_plugin" --exclude="perfetto_src_protozero_protoc_plugin_cppgen_plugin" --exclude="perfetto_trace_protos" --exclude="protozero_plugin" --exclude="libperfetto" --exclude="traced" --exclude="traced_probes" --exclude="trigger_perfetto" --exclude="heapprofd" --exclude="heapprofd_client_api" --exclude="heapprofd_client" --exclude="traced_perf" --exclude="libperfetto_android_internal"
-        rm -rf external_perfetto-8.tar.xz
+        download_release external_perfetto-10 external/perfetto/ android-12.0.0_r1-10 --exclude="ipc_plugin" --exclude="perfetto_src_protozero_protoc_plugin_cppgen_plugin" --exclude="perfetto_trace_protos" --exclude="protozero_plugin" --exclude="libperfetto" --exclude="traced" --exclude="traced_probes" --exclude="libperfetto_client_experimental" --exclude="trigger_perfetto" --exclude="libstatslog_perfetto" --exclude="heapprofd" --exclude="heapprofd_client_api" --exclude="heapprofd_client" --exclude="traced_perf" --exclude="libperfetto_android_internal"
+        rm -rf external_perfetto-10.tar.xz
         download_release external_pffft-4 external/pffft/ android-12.0.0_r1-4
         download_release external_piex-4 external/piex/ android-12.0.0_r1-4
         download_release external_ppp-7 external/ppp/ android-12.0.0_r1-7
@@ -932,6 +1041,7 @@ jobs:
         download_release external_rust_crates_glob-0 external/rust/crates/glob/ android-12.0.0_r1-0
         download_release external_rust_crates_grpcio-compiler-2 external/rust/crates/grpcio-compiler/ android-12.0.0_r1-2
         download_release external_rust_crates_grpcio-sys-9 external/rust/crates/grpcio-sys/ android-12.0.0_r1-9
+        download_release external_rust_crates_grpcio-10 external/rust/crates/grpcio/ android-12.0.0_r1-10
         download_release external_rust_crates_hashbrown-8 external/rust/crates/hashbrown/ android-12.0.0_r1-8
         download_release external_rust_crates_hashlink-9 external/rust/crates/hashlink/ android-12.0.0_r1-9
         download_release external_rust_crates_heck-1 external/rust/crates/heck/ android-12.0.0_r1-1
@@ -977,6 +1087,7 @@ jobs:
         download_release external_rust_crates_regex-syntax-0 external/rust/crates/regex-syntax/ android-12.0.0_r1-0
         download_release external_rust_crates_regex-7 external/rust/crates/regex/ android-12.0.0_r1-7
         download_release external_rust_crates_remain-5 external/rust/crates/remain/ android-12.0.0_r1-5
+        download_release external_rust_crates_rusqlite-10 external/rust/crates/rusqlite/ android-12.0.0_r1-10
         download_release external_rust_crates_rustc-hash-0 external/rust/crates/rustc-hash/ android-12.0.0_r1-0
         download_release external_rust_crates_ryu-5 external/rust/crates/ryu/ android-12.0.0_r1-5
         download_release external_rust_crates_scopeguard-0 external/rust/crates/scopeguard/ android-12.0.0_r1-0
@@ -1013,7 +1124,7 @@ jobs:
         download_release external_speex-4 external/speex/ android-12.0.0_r1-4
         download_release external_sqlite-7 external/sqlite/ android-12.0.0_r1-7
         download_release external_strace-5 external/strace/ android-12.0.0_r1-5
-        download_release external_swiftshader-7 external/swiftshader/ android-12.0.0_r1-7 --exclude="libLLVM10_swiftshader" --exclude="swiftshader_debug" --exclude="swiftshader_astc" --exclude="swiftshader_marl" --exclude="swiftshader_spirv-tools" --exclude="libswiftshadervk_llvm_debug"
+        download_release external_swiftshader-7 external/swiftshader/ android-12.0.0_r1-7 --exclude="libswiftshader_compiler" --exclude="libswiftshader_llvm" --exclude="libEGL_swiftshader" --exclude="libGLESv1_CM_swiftshader" --exclude="libGLESv2_swiftshader" --exclude="vulkan.pastel"
         rm -rf external_swiftshader-7.tar.xz
         download_release external_tcpdump-5 external/tcpdump/ android-12.0.0_r1-5
         download_release external_tensorflow-6 external/tensorflow/ android-12.0.0_r1-6
@@ -1024,6 +1135,7 @@ jobs:
         download_release external_virglrenderer-6 external/virglrenderer/ android-12.0.0_r1-6
         download_release external_vixl-4 external/vixl/ android-12.0.0_r1-4
         download_release external_vm_tools_p9-5 external/vm_tools/p9/ android-12.0.0_r1-5
+        download_release external_vulkan-headers-10 external/vulkan-headers/ android-12.0.0_r1-10
         download_release external_wayland-5 external/wayland/ android-12.0.0_r1-5
         download_release external_webp-4 external/webp/ android-12.0.0_r1-4
         download_release external_webrtc-6 external/webrtc/ android-12.0.0_r1-6 --exclude="webrtc_aec_dump__null_aec_dump_factory" --exclude="webrtc_audio_processing__audio_processing_statistics" --exclude="webrtc_audio_processing__config" --exclude="webrtc_fft__fft" --exclude="webrtc_audio_coding__isac_vad" --exclude="webrtc_ooura__fft_size_128" --exclude="webrtc_ooura__fft_size_256" --exclude="webrtc_rtc_base__checks" --exclude="webrtc_memory__aligned_malloc" --exclude="webrtc_rtc_base__stringutils" --exclude="webrtc_rtc_base__timeutils" --exclude="webrtc_synchronization__yield_policy" --exclude="webrtc_rtc_base__rtc_event" --exclude="webrtc_units__data_size" --exclude="webrtc_units__time_delta" --exclude="webrtc_units__data_rate" --exclude="webrtc_units__timestamp" --exclude="webrtc_utility__cascaded_biquad_filter" --exclude="webrtc_utility__legacy_delay_estimator" --exclude="webrtc_utility__pffft_wrapper" --exclude="webrtc_rtc_base__platform_thread_types" --exclude="webrtc_rtc_base__platform_thread" --exclude="webrtc_spl_sqrt_floor__spl_sqrt_floor" --exclude="webrtc_synchronization__rw_lock_wrapper" --exclude="webrtc_synchronization__yield" --exclude="webrtc_rtc_base__criticalsection" --exclude="webrtc_system__file_wrapper" --exclude="webrtc_synchronization__mutex" --exclude="webrtc_rtc_base__logging" --exclude="webrtc_api__rtc_error" --exclude="webrtc_experiments__field_trial_parser" --exclude="webrtc_system_wrappers__field_trial" --exclude="webrtc_rtc_base__rtc_base_approved" --exclude="webrtc_agc2__biquad_filter" --exclude="webrtc_agc2__common" --exclude="webrtc_agc2__gain_applier" --exclude="webrtc_audio__aec3_config" --exclude="webrtc_audio__audio_frame_api" --exclude="webrtc_audio_processing__api" --exclude="webrtc_audio_processing__audio_frame_proxies" --exclude="webrtc_common_audio__fir_filter_factory" --exclude="webrtc_rnn_vad__rnn_vad" --exclude="webrtc_rtc_base__rtc_numerics" --exclude="webrtc_system_wrappers__metrics" --exclude="webrtc_system_wrappers__cpu_features_linux" --exclude="webrtc_system_wrappers__system_wrappers" --exclude="webrtc_common_audio__common_audio_cc" --exclude="webrtc_common_audio__common_audio_c" --exclude="webrtc_aecm__aecm_core" --exclude="webrtc_common_audio__common_audio" --exclude="webrtc_agc2__rnn_vad_with_level" --exclude="webrtc_agc__legacy_agc" --exclude="webrtc_audio_processing__apm_logging" --exclude="webrtc_agc2__fixed_digital" --exclude="webrtc_agc2__noise_level_estimator" --exclude="webrtc_agc2__adaptive_digital" --exclude="webrtc_audio_processing__audio_buffer" --exclude="webrtc_audio_processing__high_pass_filter" --exclude="webrtc_aec3__aec3" --exclude="webrtc_audio_processing__voice_detection" --exclude="webrtc_utility__audio_frame_operations" --exclude="webrtc_ns__ns" --exclude="webrtc_transient__transient_suppressor_impl" --exclude="webrtc_audio_processing__optionally_built_submodule_creators" --exclude="webrtc_vad__vad" --exclude="webrtc_agc__level_estimation" --exclude="webrtc_agc2__level_estimation_agc" --exclude="webrtc_agc__agc" --exclude="webrtc_audio_processing__audio_processing" --exclude="webrtc_audio_processing"
@@ -1032,43 +1144,44 @@ jobs:
         download_release external_zlib-2 external/zlib/ android-12.0.0_r1-2
         download_release external_zopfli-4 external/zopfli/ android-12.0.0_r1-4
         download_release external_zstd-4 external/zstd/ android-12.0.0_r1-4
-        download_release frameworks_av-9 frameworks/av/ android-12.0.0_r1-9
-        download_release frameworks_base-9 frameworks/base/ android-12.0.0_r1-9
+        download_release frameworks_av-10 frameworks/av/ android-12.0.0_r1-10
+        download_release frameworks_base-10 frameworks/base/ android-12.0.0_r1-10
         download_release frameworks_compile_libbcc-7 frameworks/compile/libbcc/ android-12.0.0_r1-7
         download_release frameworks_compile_mclinker-5 frameworks/compile/mclinker/ android-12.0.0_r1-5
         download_release frameworks_compile_slang-8 frameworks/compile/slang/ android-12.0.0_r1-8
         download_release frameworks_libs_modules-utils-6 frameworks/libs/modules-utils/ android-12.0.0_r1-6
         download_release frameworks_libs_net-7 frameworks/libs/net/ android-12.0.0_r1-7
         download_release frameworks_minikin-8 frameworks/minikin/ android-12.0.0_r1-8
-        download_release frameworks_native-9 frameworks/native/ android-12.0.0_r1-9
+        download_release frameworks_native-10 frameworks/native/ android-12.0.0_r1-10
         download_release frameworks_opt_net_wifi-6 frameworks/opt/net/wifi/ android-12.0.0_r1-6
-        download_release frameworks_proto_logging-6 frameworks/proto_logging/ android-12.0.0_r1-6
+        download_release frameworks_proto_logging-10 frameworks/proto_logging/ android-12.0.0_r1-10
         download_release frameworks_rs-9 frameworks/rs/ android-12.0.0_r1-9
         download_release frameworks_wilhelm-4 frameworks/wilhelm/ android-12.0.0_r1-4
         download_release hardware_google_camera-7 hardware/google/camera/ android-12.0.0_r1-7
-        download_release hardware_interfaces-9 hardware/interfaces/ android-12.0.0_r1-9
-        download_release hardware_libhardware-7 hardware/libhardware/ android-12.0.0_r1-7
+        download_release hardware_interfaces-10 hardware/interfaces/ android-12.0.0_r1-10
+        download_release hardware_libhardware-10 hardware/libhardware/ android-12.0.0_r1-10
         download_release hardware_libhardware_legacy-9 hardware/libhardware_legacy/ android-12.0.0_r1-9
         download_release hardware_ril-8 hardware/ril/ android-12.0.0_r1-8
         download_release libcore-5 libcore/ android-12.0.0_r1-5
         download_release libnativehelper-5 libnativehelper/ android-12.0.0_r1-5
+        download_release packages_apps_Bluetooth-10 packages/apps/Bluetooth/ android-12.0.0_r1-10
         download_release packages_apps_Messaging-5 packages/apps/Messaging/ android-12.0.0_r1-5
         download_release packages_inputmethods_LatinIME-4 packages/inputmethods/LatinIME/ android-12.0.0_r1-4
         download_release packages_modules_Connectivity-6 packages/modules/Connectivity/ android-12.0.0_r1-6
-        download_release packages_modules_DnsResolver-9 packages/modules/DnsResolver/ android-12.0.0_r1-9
+        download_release packages_modules_DnsResolver-10 packages/modules/DnsResolver/ android-12.0.0_r1-10
         download_release packages_modules_Gki-6 packages/modules/Gki/ android-12.0.0_r1-6
         download_release packages_modules_NeuralNetworks-9 packages/modules/NeuralNetworks/ android-12.0.0_r1-9
         download_release packages_modules_SdkExtensions-7 packages/modules/SdkExtensions/ android-12.0.0_r1-7
-        download_release packages_modules_StatsD-9 packages/modules/StatsD/ android-12.0.0_r1-9
+        download_release packages_modules_StatsD-10 packages/modules/StatsD/ android-12.0.0_r1-10
         download_release packages_modules_Virtualization-9 packages/modules/Virtualization/ android-12.0.0_r1-9
         download_release packages_modules_adb-9 packages/modules/adb/ android-12.0.0_r1-9
         download_release packages_modules_common-6 packages/modules/common/ android-12.0.0_r1-6
         download_release system_apex-7 system/apex/ android-12.0.0_r1-7
         download_release system_bpf-7 system/bpf/ android-12.0.0_r1-7
         download_release system_bt-9 system/bt/ android-12.0.0_r1-9
-        download_release system_connectivity_wificond-9 system/connectivity/wificond/ android-12.0.0_r1-9
-        download_release system_core-9 system/core/ android-12.0.0_r1-9
-        download_release system_extras-9 system/extras/ android-12.0.0_r1-9
+        download_release system_connectivity_wificond-10 system/connectivity/wificond/ android-12.0.0_r1-10
+        download_release system_core-10 system/core/ android-12.0.0_r1-10
+        download_release system_extras-10 system/extras/ android-12.0.0_r1-10
         download_release system_gatekeeper-5 system/gatekeeper/ android-12.0.0_r1-5
         download_release system_gsid-9 system/gsid/ android-12.0.0_r1-9
         download_release system_hardware_interfaces-9 system/hardware/interfaces/ android-12.0.0_r1-9
@@ -1095,7 +1208,7 @@ jobs:
         download_release system_memory_lmkd-7 system/memory/lmkd/ android-12.0.0_r1-7
         download_release system_netd-9 system/netd/ android-12.0.0_r1-9
         download_release system_nfc-6 system/nfc/ android-12.0.0_r1-6
-        download_release system_security-9 system/security/ android-12.0.0_r1-9
+        download_release system_security-10 system/security/ android-12.0.0_r1-10
         download_release system_sepolicy-7 system/sepolicy/ android-12.0.0_r1-7
         download_release system_server_configurable_flags-7 system/server_configurable_flags/ android-12.0.0_r1-7
         download_release system_timezone-7 system/timezone/ android-12.0.0_r1-7
@@ -1105,8 +1218,8 @@ jobs:
         download_release system_tools_sysprop-7 system/tools/sysprop/ android-12.0.0_r1-7
         download_release system_tools_xsdc-6 system/tools/xsdc/ android-12.0.0_r1-6
         download_release system_unwinding-7 system/unwinding/ android-12.0.0_r1-7
-        download_release system_update_engine-6 system/update_engine/ android-12.0.0_r1-6
-        download_release system_vold-6 system/vold/ android-12.0.0_r1-6
+        download_release system_update_engine-10 system/update_engine/ android-12.0.0_r1-10
+        download_release system_vold-10 system/vold/ android-12.0.0_r1-10
         download_release test_vts-testcase_hal-8 test/vts-testcase/hal/ android-12.0.0_r1-8
         download_release tools_dexter-4 tools/dexter/ android-12.0.0_r1-4
         download_release tools_security-5 tools/security/ android-12.0.0_r1-5
@@ -1139,18 +1252,162 @@ jobs:
         du -ah -d1 out/soong |sort -h
         du -ah -d1 . |sort -h
 
-    - name: Archive system_extras-10.tar.xz
+    - name: Archive bootable_recovery-11.tar.xz
       uses: actions/upload-artifact@v3
       with:
-        name: system_extras-10.tar.xz
-        path: aosp/system_extras-10.tar.xz
+        name: bootable_recovery-11.tar.xz
+        path: aosp/bootable_recovery-11.tar.xz
+    - name: Archive device_generic_vulkan-cereal-11.tar.xz
+      uses: actions/upload-artifact@v3
+      with:
+        name: device_generic_vulkan-cereal-11.tar.xz
+        path: aosp/device_generic_vulkan-cereal-11.tar.xz
+    - name: Archive device_google_cuttlefish-11.tar.xz
+      uses: actions/upload-artifact@v3
+      with:
+        name: device_google_cuttlefish-11.tar.xz
+        path: aosp/device_google_cuttlefish-11.tar.xz
+    - name: Archive external_angle-11.tar.xz
+      uses: actions/upload-artifact@v3
+      with:
+        name: external_angle-11.tar.xz
+        path: aosp/external_angle-11.tar.xz
+    - name: Archive external_drm_hwcomposer-11.tar.xz
+      uses: actions/upload-artifact@v3
+      with:
+        name: external_drm_hwcomposer-11.tar.xz
+        path: aosp/external_drm_hwcomposer-11.tar.xz
+    - name: Archive external_minigbm-11.tar.xz
+      uses: actions/upload-artifact@v3
+      with:
+        name: external_minigbm-11.tar.xz
+        path: aosp/external_minigbm-11.tar.xz
+    - name: Archive external_skia-11.tar.xz
+      uses: actions/upload-artifact@v3
+      with:
+        name: external_skia-11.tar.xz
+        path: aosp/external_skia-11.tar.xz
+    - name: Archive external_swiftshader-11.tar.xz
+      uses: actions/upload-artifact@v3
+      with:
+        name: external_swiftshader-11.tar.xz
+        path: aosp/external_swiftshader-11.tar.xz
+    - name: Archive external_vm_tools_p9-11.tar.xz
+      uses: actions/upload-artifact@v3
+      with:
+        name: external_vm_tools_p9-11.tar.xz
+        path: aosp/external_vm_tools_p9-11.tar.xz
+    - name: Archive frameworks_av-11.tar.xz
+      uses: actions/upload-artifact@v3
+      with:
+        name: frameworks_av-11.tar.xz
+        path: aosp/frameworks_av-11.tar.xz
+    - name: Archive frameworks_base-11.tar.xz
+      uses: actions/upload-artifact@v3
+      with:
+        name: frameworks_base-11.tar.xz
+        path: aosp/frameworks_base-11.tar.xz
+    - name: Archive frameworks_native-11.tar.xz
+      uses: actions/upload-artifact@v3
+      with:
+        name: frameworks_native-11.tar.xz
+        path: aosp/frameworks_native-11.tar.xz
+    - name: Archive frameworks_rs-11.tar.xz
+      uses: actions/upload-artifact@v3
+      with:
+        name: frameworks_rs-11.tar.xz
+        path: aosp/frameworks_rs-11.tar.xz
+    - name: Archive hardware_google_camera-11.tar.xz
+      uses: actions/upload-artifact@v3
+      with:
+        name: hardware_google_camera-11.tar.xz
+        path: aosp/hardware_google_camera-11.tar.xz
+    - name: Archive packages_apps_Gallery2-11.tar.xz
+      uses: actions/upload-artifact@v3
+      with:
+        name: packages_apps_Gallery2-11.tar.xz
+        path: aosp/packages_apps_Gallery2-11.tar.xz
+    - name: Archive packages_modules_NeuralNetworks-11.tar.xz
+      uses: actions/upload-artifact@v3
+      with:
+        name: packages_modules_NeuralNetworks-11.tar.xz
+        path: aosp/packages_modules_NeuralNetworks-11.tar.xz
+    - name: Archive packages_modules_Virtualization-11.tar.xz
+      uses: actions/upload-artifact@v3
+      with:
+        name: packages_modules_Virtualization-11.tar.xz
+        path: aosp/packages_modules_Virtualization-11.tar.xz
+    - name: Archive system_apex-11.tar.xz
+      uses: actions/upload-artifact@v3
+      with:
+        name: system_apex-11.tar.xz
+        path: aosp/system_apex-11.tar.xz
+    - name: Archive system_bt-11.tar.xz
+      uses: actions/upload-artifact@v3
+      with:
+        name: system_bt-11.tar.xz
+        path: aosp/system_bt-11.tar.xz
+    - name: Archive system_core-11.tar.xz
+      uses: actions/upload-artifact@v3
+      with:
+        name: system_core-11.tar.xz
+        path: aosp/system_core-11.tar.xz
+    - name: Archive system_gsid-11.tar.xz
+      uses: actions/upload-artifact@v3
+      with:
+        name: system_gsid-11.tar.xz
+        path: aosp/system_gsid-11.tar.xz
+    - name: Archive system_netd-11.tar.xz
+      uses: actions/upload-artifact@v3
+      with:
+        name: system_netd-11.tar.xz
+        path: aosp/system_netd-11.tar.xz
+    - name: Archive system_nfc-11.tar.xz
+      uses: actions/upload-artifact@v3
+      with:
+        name: system_nfc-11.tar.xz
+        path: aosp/system_nfc-11.tar.xz
+    - name: Archive system_security-11.tar.xz
+      uses: actions/upload-artifact@v3
+      with:
+        name: system_security-11.tar.xz
+        path: aosp/system_security-11.tar.xz
+    - name: Archive system_update_engine-11.tar.xz
+      uses: actions/upload-artifact@v3
+      with:
+        name: system_update_engine-11.tar.xz
+        path: aosp/system_update_engine-11.tar.xz
 
     - uses: softprops/action-gh-release@master
       with:
-        name: ${{ env.branch }}-10
-        tag_name: ${{ env.branch }}-10
+        name: ${{ env.branch }}-11
+        tag_name: ${{ env.branch }}-11
         files: |
-          aosp/system_extras-10.tar.xz
+          aosp/bootable_recovery-11.tar.xz
+          aosp/device_generic_vulkan-cereal-11.tar.xz
+          aosp/device_google_cuttlefish-11.tar.xz
+          aosp/external_angle-11.tar.xz
+          aosp/external_drm_hwcomposer-11.tar.xz
+          aosp/external_minigbm-11.tar.xz
+          aosp/external_skia-11.tar.xz
+          aosp/external_swiftshader-11.tar.xz
+          aosp/external_vm_tools_p9-11.tar.xz
+          aosp/frameworks_av-11.tar.xz
+          aosp/frameworks_base-11.tar.xz
+          aosp/frameworks_native-11.tar.xz
+          aosp/frameworks_rs-11.tar.xz
+          aosp/hardware_google_camera-11.tar.xz
+          aosp/packages_apps_Gallery2-11.tar.xz
+          aosp/packages_modules_NeuralNetworks-11.tar.xz
+          aosp/packages_modules_Virtualization-11.tar.xz
+          aosp/system_apex-11.tar.xz
+          aosp/system_bt-11.tar.xz
+          aosp/system_core-11.tar.xz
+          aosp/system_gsid-11.tar.xz
+          aosp/system_netd-11.tar.xz
+          aosp/system_nfc-11.tar.xz
+          aosp/system_security-11.tar.xz
+          aosp/system_update_engine-11.tar.xz
 
 
     - uses: softprops/action-gh-release@master
