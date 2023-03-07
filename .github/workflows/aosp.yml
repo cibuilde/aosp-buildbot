@@ -686,12 +686,6 @@ jobs:
         name: frameworks_rs-0.tar.xz
         path: aosp/frameworks_rs-0.tar.xz
 
-    - name: Archive prebuilts_rust-0.tar.xz
-      uses: actions/upload-artifact@v3
-      with:
-        name: prebuilts_rust-0.tar.xz
-        path: aosp/prebuilts_rust-0.tar.xz
-
     - name: Archive system_bt-0.tar.xz
       uses: actions/upload-artifact@v3
       with:
@@ -733,6 +727,213 @@ jobs:
           aosp/external_rust_crates_unicode-xid-0.tar.xz
           aosp/external_scudo-0.tar.xz
           aosp/frameworks_rs-0.tar.xz
-          aosp/prebuilts_rust-0.tar.xz
           aosp/system_bt-0.tar.xz
           aosp/system_core-0.tar.xz
+
+    - name: Restore Cache bionic-0.tar.xz
+      id: bionic-0
+      uses: actions/cache@v3
+      with:
+        path: aosp/bionic-0.tar.xz
+        key: bionic-0
+        restore-keys: bionic-0
+
+    - name: Restore Cache external_arm-optimized-routines-0.tar.xz
+      id: external_arm-optimized-routines-0
+      uses: actions/cache@v3
+      with:
+        path: aosp/external_arm-optimized-routines-0.tar.xz
+        key: external_arm-optimized-routines-0
+        restore-keys: external_arm-optimized-routines-0
+
+    - name: Restore Cache external_crosvm-0.tar.xz
+      id: external_crosvm-0
+      uses: actions/cache@v3
+      with:
+        path: aosp/external_crosvm-0.tar.xz
+        key: external_crosvm-0
+        restore-keys: external_crosvm-0
+
+    - name: Restore Cache external_gwp_asan-0.tar.xz
+      id: external_gwp_asan-0
+      uses: actions/cache@v3
+      with:
+        path: aosp/external_gwp_asan-0.tar.xz
+        key: external_gwp_asan-0
+        restore-keys: external_gwp_asan-0
+
+    - name: Restore Cache external_rust_crates_bytes-0.tar.xz
+      id: external_rust_crates_bytes-0
+      uses: actions/cache@v3
+      with:
+        path: aosp/external_rust_crates_bytes-0.tar.xz
+        key: external_rust_crates_bytes-0
+        restore-keys: external_rust_crates_bytes-0
+
+    - name: Restore Cache external_rust_crates_downcast-rs-0.tar.xz
+      id: external_rust_crates_downcast-rs-0
+      uses: actions/cache@v3
+      with:
+        path: aosp/external_rust_crates_downcast-rs-0.tar.xz
+        key: external_rust_crates_downcast-rs-0
+        restore-keys: external_rust_crates_downcast-rs-0
+
+    - name: Restore Cache external_rust_crates_either-0.tar.xz
+      id: external_rust_crates_either-0
+      uses: actions/cache@v3
+      with:
+        path: aosp/external_rust_crates_either-0.tar.xz
+        key: external_rust_crates_either-0
+        restore-keys: external_rust_crates_either-0
+
+    - name: Restore Cache external_rust_crates_fallible-iterator-0.tar.xz
+      id: external_rust_crates_fallible-iterator-0
+      uses: actions/cache@v3
+      with:
+        path: aosp/external_rust_crates_fallible-iterator-0.tar.xz
+        key: external_rust_crates_fallible-iterator-0
+        restore-keys: external_rust_crates_fallible-iterator-0
+
+    - name: Restore Cache external_rust_crates_fallible-streaming-iterator-0.tar.xz
+      id: external_rust_crates_fallible-streaming-iterator-0
+      uses: actions/cache@v3
+      with:
+        path: aosp/external_rust_crates_fallible-streaming-iterator-0.tar.xz
+        key: external_rust_crates_fallible-streaming-iterator-0
+        restore-keys: external_rust_crates_fallible-streaming-iterator-0
+
+    - name: Restore Cache external_rust_crates_glob-0.tar.xz
+      id: external_rust_crates_glob-0
+      uses: actions/cache@v3
+      with:
+        path: aosp/external_rust_crates_glob-0.tar.xz
+        key: external_rust_crates_glob-0
+        restore-keys: external_rust_crates_glob-0
+
+    - name: Restore Cache external_rust_crates_lazycell-0.tar.xz
+      id: external_rust_crates_lazycell-0
+      uses: actions/cache@v3
+      with:
+        path: aosp/external_rust_crates_lazycell-0.tar.xz
+        key: external_rust_crates_lazycell-0
+        restore-keys: external_rust_crates_lazycell-0
+
+    - name: Restore Cache external_rust_crates_paste-0.tar.xz
+      id: external_rust_crates_paste-0
+      uses: actions/cache@v3
+      with:
+        path: aosp/external_rust_crates_paste-0.tar.xz
+        key: external_rust_crates_paste-0
+        restore-keys: external_rust_crates_paste-0
+
+    - name: Restore Cache external_rust_crates_peeking_take_while-0.tar.xz
+      id: external_rust_crates_peeking_take_while-0
+      uses: actions/cache@v3
+      with:
+        path: aosp/external_rust_crates_peeking_take_while-0.tar.xz
+        key: external_rust_crates_peeking_take_while-0
+        restore-keys: external_rust_crates_peeking_take_while-0
+
+    - name: Restore Cache external_rust_crates_proc-macro-hack-0.tar.xz
+      id: external_rust_crates_proc-macro-hack-0
+      uses: actions/cache@v3
+      with:
+        path: aosp/external_rust_crates_proc-macro-hack-0.tar.xz
+        key: external_rust_crates_proc-macro-hack-0
+        restore-keys: external_rust_crates_proc-macro-hack-0
+
+    - name: Restore Cache external_rust_crates_regex-syntax-0.tar.xz
+      id: external_rust_crates_regex-syntax-0
+      uses: actions/cache@v3
+      with:
+        path: aosp/external_rust_crates_regex-syntax-0.tar.xz
+        key: external_rust_crates_regex-syntax-0
+        restore-keys: external_rust_crates_regex-syntax-0
+
+    - name: Restore Cache external_rust_crates_rustc-hash-0.tar.xz
+      id: external_rust_crates_rustc-hash-0
+      uses: actions/cache@v3
+      with:
+        path: aosp/external_rust_crates_rustc-hash-0.tar.xz
+        key: external_rust_crates_rustc-hash-0
+        restore-keys: external_rust_crates_rustc-hash-0
+
+    - name: Restore Cache external_rust_crates_scopeguard-0.tar.xz
+      id: external_rust_crates_scopeguard-0
+      uses: actions/cache@v3
+      with:
+        path: aosp/external_rust_crates_scopeguard-0.tar.xz
+        key: external_rust_crates_scopeguard-0
+        restore-keys: external_rust_crates_scopeguard-0
+
+    - name: Restore Cache external_rust_crates_shlex-0.tar.xz
+      id: external_rust_crates_shlex-0
+      uses: actions/cache@v3
+      with:
+        path: aosp/external_rust_crates_shlex-0.tar.xz
+        key: external_rust_crates_shlex-0
+        restore-keys: external_rust_crates_shlex-0
+
+    - name: Restore Cache external_rust_crates_termcolor-0.tar.xz
+      id: external_rust_crates_termcolor-0
+      uses: actions/cache@v3
+      with:
+        path: aosp/external_rust_crates_termcolor-0.tar.xz
+        key: external_rust_crates_termcolor-0
+        restore-keys: external_rust_crates_termcolor-0
+
+    - name: Restore Cache external_rust_crates_unicode-segmentation-0.tar.xz
+      id: external_rust_crates_unicode-segmentation-0
+      uses: actions/cache@v3
+      with:
+        path: aosp/external_rust_crates_unicode-segmentation-0.tar.xz
+        key: external_rust_crates_unicode-segmentation-0
+        restore-keys: external_rust_crates_unicode-segmentation-0
+
+    - name: Restore Cache external_rust_crates_unicode-width-0.tar.xz
+      id: external_rust_crates_unicode-width-0
+      uses: actions/cache@v3
+      with:
+        path: aosp/external_rust_crates_unicode-width-0.tar.xz
+        key: external_rust_crates_unicode-width-0
+        restore-keys: external_rust_crates_unicode-width-0
+
+    - name: Restore Cache external_rust_crates_unicode-xid-0.tar.xz
+      id: external_rust_crates_unicode-xid-0
+      uses: actions/cache@v3
+      with:
+        path: aosp/external_rust_crates_unicode-xid-0.tar.xz
+        key: external_rust_crates_unicode-xid-0
+        restore-keys: external_rust_crates_unicode-xid-0
+
+    - name: Restore Cache external_scudo-0.tar.xz
+      id: external_scudo-0
+      uses: actions/cache@v3
+      with:
+        path: aosp/external_scudo-0.tar.xz
+        key: external_scudo-0
+        restore-keys: external_scudo-0
+
+    - name: Restore Cache frameworks_rs-0.tar.xz
+      id: frameworks_rs-0
+      uses: actions/cache@v3
+      with:
+        path: aosp/frameworks_rs-0.tar.xz
+        key: frameworks_rs-0
+        restore-keys: frameworks_rs-0
+
+    - name: Restore Cache system_bt-0.tar.xz
+      id: system_bt-0
+      uses: actions/cache@v3
+      with:
+        path: aosp/system_bt-0.tar.xz
+        key: system_bt-0
+        restore-keys: system_bt-0
+
+    - name: Restore Cache system_core-0.tar.xz
+      id: system_core-0
+      uses: actions/cache@v3
+      with:
+        path: aosp/system_core-0.tar.xz
+        key: system_core-0
+        restore-keys: system_core-0
