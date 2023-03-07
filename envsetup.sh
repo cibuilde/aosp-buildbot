@@ -59,7 +59,7 @@ function extract_tar() {
   filename=$1
   project_path=$2
   shift 2
-  mkdir -p aosp/prebuiltlibs/${project_path} && tar xf ${filename} -C aosp/prebuiltlibs/${project_path} --exclude="ninja" "$@"
+  mkdir -p prebuiltlibs/${project_path} && tar xf ${filename} -C prebuiltlibs/${project_path} --exclude="ninja" "$@"
 }
 
 function clean_out_intermediates() {
