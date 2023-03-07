@@ -51,9 +51,20 @@ function clone_project() {
 
 function download_release() {
   filename=$1
+  build_tag=$2
+  curl -LJO --retry 5 https://github.com/cibuilde/aosp-buildbot/releases/download/${build_tag}/${filename}
+}
+
+function extract_tar() {
+  filename=$1
   project_path=$2
-  build_tag=$3
-  shift 3
-  curl -LJO --retry 5 https://github.com/cibuilde/aosp-buildbot/releases/download/${build_tag}/${filename}.tar.xz
-  mkdir -p aosp/prebuiltlibs/${project_path} && tar xf ${filename}.tar.xz -C aosp/prebuiltlibs/${project_path} --exclude="ninja" "$@"
+  shift 2
+  mkdir -p aosp/prebuiltlibs/${project_path} && tar xf ${filename} -C aosp/prebuiltlibs/${project_path} --exclude="ninja" "$@"
+}
+
+function clean_out_intermediates() {
+  find out/soong/.intermediates/ -maxdepth 1 -mindepth 1 ! -name 'prebuilts' ! -name 'prebuiltlibs' ! -name 'bionic' ! -name 'build' -type d -exec rm -rf {} +
+  if [ -d "out/soong/.intermediates/prebuiltlibs/" ]; then
+    find out/soong/.intermediates/prebuiltlibs -maxdepth 1 -mindepth 1 ! -name 'bionic' -type d -exec rm -rf {} +
+  fi
 }
