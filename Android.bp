@@ -38,7 +38,7 @@ apex_key {
 }
 cc_binary {
   name: "voiddep31",
-  srcs: [ "util.cpp", ":crtbrand", ":crtbegin_dynamic", ":crtbegin_so", ":crtend_android", ":crtend_so", ":asm_defines.s", ":bcm_object", ],
+  srcs: [ "util.cpp", ":crtbrand", ":crtbegin_dynamic", ":crtbegin_so", ":crtend_android", ":crtend_so", ":bcm_object", ":asm_defines.s", ],
   compile_multilib: "both",
   multilib: { lib32: { suffix: "32", }, lib64: { suffix: "64", }, },
   static_libs: ["fmtlib","libPlatformProperties","libadbconnection","libart","libart-dexlayout","libart-disassembler","libartbase","libartpalette","libasync_safe","libbase","libc++_static","libc++abi","libc++demangle","libdexfile","libdexfile_support","libdt_fd_forward","libdt_socket","libexpat","libfdlibm","libjdwp","liblz4","liblzma","libnativebridge","libnativehelper_compat_libc++","libnativeloader","libnpt","libopenjdkjvm","libopenjdkjvmti","libperfetto_client_experimental","libperfetto_hprof","libprocinfo","libprofile","libsigchain","libunwindstack","libvixl","libxml2","libziparchive","perfetto_trace_protos"],
@@ -87,6 +87,7 @@ cc_library {
   name: "libvoiddep30_sdk_30",
   srcs: [ "util.cpp", ":crtbrand", ":crtbegin_so", ":crtend_so", ],
   static_libs: [],
+  shared_libs: [],
   apex_available: [ "com.android.prebuilts-30", ],
   stl: "none",
   min_sdk_version: "30",
@@ -109,6 +110,7 @@ cc_library {
   name: "libvoiddep30_sdk_29",
   srcs: [ "util.cpp", ":crtbrand", ":crtbegin_so", ":crtend_so", ],
   static_libs: [],
+  shared_libs: [],
   apex_available: [ "com.android.prebuilts-30", ],
   stl: "none",
   min_sdk_version: "29",
@@ -165,6 +167,7 @@ cc_library {
   name: "libvoiddep30_sdk",
   srcs: [ "util.cpp", ],
   static_libs: ["fmtlib_ndk","libbase_ndk","libextservices","libfft2d","libfuse","liblua","libnativehelper_compat_libc++","libnetjniutils","libruy_static","libtetherutilsjni","libtextclassifier","libtextclassifier_abseil","libtextclassifier_hash_static","libtflite_static","libutf","marisa-trie","tflite_support"],
+  shared_libs: ["libextservices_jni","libfuse","libfuse_jni","libnativehelper_compat_libc++","libtetherutilsjni","libtextclassifier"],
   apex_available: [ "com.android.prebuilts-30", ],
   stl: "none",
   min_sdk_version: "30",
@@ -208,7 +211,7 @@ apex {
   prebuilts: [],
   apps: [],
   multilib: { both: {
-    binaries: ["mk_cdisk","vm","mk_payload","fd_server","virtmanager","authfs","crosvm","voiddep10000","voidrustrlib10000","voidrustdylib10000"],
+    binaries: ["mk_cdisk","mk_payload","virtmanager","vm","fd_server","authfs","crosvm","voiddep10000","voidrustrlib10000","voidrustdylib10000"],
   }, },
   key: "com.android.prebuilts.key",
   certificate: "com.android.prebuilts.certificate",

@@ -23,10 +23,3 @@ libheck
 liblock_api
 libproc_macro2
 libprotobuf
-libgrpcio_compiler
-grpc_rust_plugin
-libprotobuf_codegen
-protoc-gen-rust
-libquote
-libproc_macro_error_attr
-libsyn
