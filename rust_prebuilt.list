@@ -28,3 +28,5 @@ grpc_rust_plugin
 libprotobuf_codegen
 protoc-gen-rust
 libquote
+libproc_macro_error_attr
+libsyn
