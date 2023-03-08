@@ -2,12 +2,12 @@
 name: AOSP Build
 on:
   push:
-    branch:
+    branches:
     - main
 env:
   branch: 'android-12.0.0_r1'
 jobs:
-  build_step2:
+  build_step3:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout
@@ -74,58 +74,6 @@ jobs:
         cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
         clone_depth_platform build/soong
 
-    - name: Restore Cache external/bc
-      id: external_bc
-      uses: actions/cache@v3
-      with:
-        path: aosp/external/bc
-        key: external_bc@${{ env.branch }}
-        restore-keys: external_bc@${{ env.branch }}
-    - name: Clone project external/bc
-      if: steps.external_bc.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        clone_depth_platform external/bc
-
-    - name: Restore Cache external/brotli
-      id: external_brotli
-      uses: actions/cache@v3
-      with:
-        path: aosp/external/brotli
-        key: external_brotli@${{ env.branch }}
-        restore-keys: external_brotli@${{ env.branch }}
-    - name: Clone project external/brotli
-      if: steps.external_brotli.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        clone_depth_platform external/brotli
-
-    - name: Restore Cache external/bzip2
-      id: external_bzip2
-      uses: actions/cache@v3
-      with:
-        path: aosp/external/bzip2
-        key: external_bzip2@${{ env.branch }}
-        restore-keys: external_bzip2@${{ env.branch }}
-    - name: Clone project external/bzip2
-      if: steps.external_bzip2.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        clone_depth_platform external/bzip2
-
-    - name: Restore Cache external/expat
-      id: external_expat
-      uses: actions/cache@v3
-      with:
-        path: aosp/external/expat
-        key: external_expat@${{ env.branch }}
-        restore-keys: external_expat@${{ env.branch }}
-    - name: Clone project external/expat
-      if: steps.external_expat.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        clone_depth_platform external/expat
-
     - name: Restore Cache external/golang-protobuf
       id: external_golang-protobuf
       uses: actions/cache@v3
@@ -165,109 +113,31 @@ jobs:
         cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
         clone_depth_platform external/libcxxabi
 
-    - name: Restore Cache external/lzma
-      id: external_lzma
+    - name: Restore Cache external/rust/crates/proc-macro-error-attr
+      id: external_rust_crates_proc-macro-error-attr
       uses: actions/cache@v3
       with:
-        path: aosp/external/lzma
-        key: external_lzma@${{ env.branch }}
-        restore-keys: external_lzma@${{ env.branch }}
-    - name: Clone project external/lzma
-      if: steps.external_lzma.outputs.cache-hit != 'true'
+        path: aosp/external/rust/crates/proc-macro-error-attr
+        key: external_rust_crates_proc-macro-error-attr@${{ env.branch }}
+        restore-keys: external_rust_crates_proc-macro-error-attr@${{ env.branch }}
+    - name: Clone project external/rust/crates/proc-macro-error-attr
+      if: steps.external_rust_crates_proc-macro-error-attr.outputs.cache-hit != 'true'
       run: |
         cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        clone_depth_platform external/lzma
+        clone_depth_platform external/rust/crates/proc-macro-error-attr
 
-    - name: Restore Cache external/mksh
-      id: external_mksh
+    - name: Restore Cache external/rust/crates/syn
+      id: external_rust_crates_syn
       uses: actions/cache@v3
       with:
-        path: aosp/external/mksh
-        key: external_mksh@${{ env.branch }}
-        restore-keys: external_mksh@${{ env.branch }}
-    - name: Clone project external/mksh
-      if: steps.external_mksh.outputs.cache-hit != 'true'
+        path: aosp/external/rust/crates/syn
+        key: external_rust_crates_syn@${{ env.branch }}
+        restore-keys: external_rust_crates_syn@${{ env.branch }}
+    - name: Clone project external/rust/crates/syn
+      if: steps.external_rust_crates_syn.outputs.cache-hit != 'true'
       run: |
         cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        clone_depth_platform external/mksh
-
-    - name: Restore Cache external/one-true-awk
-      id: external_one-true-awk
-      uses: actions/cache@v3
-      with:
-        path: aosp/external/one-true-awk
-        key: external_one-true-awk@${{ env.branch }}
-        restore-keys: external_one-true-awk@${{ env.branch }}
-    - name: Clone project external/one-true-awk
-      if: steps.external_one-true-awk.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        clone_depth_platform external/one-true-awk
-
-    - name: Restore Cache external/pcre
-      id: external_pcre
-      uses: actions/cache@v3
-      with:
-        path: aosp/external/pcre
-        key: external_pcre@${{ env.branch }}
-        restore-keys: external_pcre@${{ env.branch }}
-    - name: Clone project external/pcre
-      if: steps.external_pcre.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        clone_depth_platform external/pcre
-
-    - name: Restore Cache external/rust/crates/grpcio-compiler
-      id: external_rust_crates_grpcio-compiler
-      uses: actions/cache@v3
-      with:
-        path: aosp/external/rust/crates/grpcio-compiler
-        key: external_rust_crates_grpcio-compiler@${{ env.branch }}
-        restore-keys: external_rust_crates_grpcio-compiler@${{ env.branch }}
-    - name: Clone project external/rust/crates/grpcio-compiler
-      if: steps.external_rust_crates_grpcio-compiler.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        clone_depth_platform external/rust/crates/grpcio-compiler
-
-    - name: Restore Cache external/rust/crates/protobuf-codegen
-      id: external_rust_crates_protobuf-codegen
-      uses: actions/cache@v3
-      with:
-        path: aosp/external/rust/crates/protobuf-codegen
-        key: external_rust_crates_protobuf-codegen@${{ env.branch }}
-        restore-keys: external_rust_crates_protobuf-codegen@${{ env.branch }}
-    - name: Clone project external/rust/crates/protobuf-codegen
-      if: steps.external_rust_crates_protobuf-codegen.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        clone_depth_platform external/rust/crates/protobuf-codegen
-
-    - name: Restore Cache external/rust/crates/quote
-      id: external_rust_crates_quote
-      uses: actions/cache@v3
-      with:
-        path: aosp/external/rust/crates/quote
-        key: external_rust_crates_quote@${{ env.branch }}
-        restore-keys: external_rust_crates_quote@${{ env.branch }}
-    - name: Clone project external/rust/crates/quote
-      if: steps.external_rust_crates_quote.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        clone_depth_platform external/rust/crates/quote
-
-    - name: Restore Cache external/selinux
-      id: external_selinux
-      uses: actions/cache@v3
-      with:
-        path: aosp/external/selinux
-        key: external_selinux@${{ env.branch }}
-        restore-keys: external_selinux@${{ env.branch }}
-    - name: Clone project external/selinux
-      if: steps.external_selinux.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        clone_depth_platform external/selinux
+        clone_depth_platform external/rust/crates/syn
 
     - name: Restore Cache external/starlark-go
       id: external_starlark-go
@@ -281,19 +151,6 @@ jobs:
       run: |
         cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
         clone_depth_platform external/starlark-go
-
-    - name: Restore Cache external/zlib
-      id: external_zlib
-      uses: actions/cache@v3
-      with:
-        path: aosp/external/zlib
-        key: external_zlib@${{ env.branch }}
-        restore-keys: external_zlib@${{ env.branch }}
-    - name: Clone project external/zlib
-      if: steps.external_zlib.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        clone_depth_platform external/zlib
 
     - name: Restore Cache prebuilts/build-tools
       id: prebuilts_build-tools
@@ -477,18 +334,44 @@ jobs:
         cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
         download_release external_gwp_asan-0.tar.xz android-12.0.0_r1-0
 
-    - name: Restore Cache external_rust_crates_bytes-0.tar.xz
-      id: external_rust_crates_bytes-0
+    - name: Restore Cache external_libcxx-2.tar.xz
+      id: external_libcxx-2
       uses: actions/cache@v3
       with:
-        path: aosp/external_rust_crates_bytes-0.tar.xz
-        key: external_rust_crates_bytes-0
-        restore-keys: external_rust_crates_bytes-0
-    - name: Clone project external_rust_crates_bytes-0.tar.xz
-      if: steps.external_rust_crates_bytes-0.outputs.cache-hit != 'true'
+        path: aosp/external_libcxx-2.tar.xz
+        key: external_libcxx-2
+        restore-keys: external_libcxx-2
+    - name: Clone project external_libcxx-2.tar.xz
+      if: steps.external_libcxx-2.outputs.cache-hit != 'true'
       run: |
         cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        download_release external_rust_crates_bytes-0.tar.xz android-12.0.0_r1-0
+        download_release external_libcxx-2.tar.xz android-12.0.0_r1-2
+
+    - name: Restore Cache external_libcxxabi-2.tar.xz
+      id: external_libcxxabi-2
+      uses: actions/cache@v3
+      with:
+        path: aosp/external_libcxxabi-2.tar.xz
+        key: external_libcxxabi-2
+        restore-keys: external_libcxxabi-2
+    - name: Clone project external_libcxxabi-2.tar.xz
+      if: steps.external_libcxxabi-2.outputs.cache-hit != 'true'
+      run: |
+        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
+        download_release external_libcxxabi-2.tar.xz android-12.0.0_r1-2
+
+    - name: Restore Cache external_pcre-2.tar.xz
+      id: external_pcre-2
+      uses: actions/cache@v3
+      with:
+        path: aosp/external_pcre-2.tar.xz
+        key: external_pcre-2
+        restore-keys: external_pcre-2
+    - name: Clone project external_pcre-2.tar.xz
+      if: steps.external_pcre-2.outputs.cache-hit != 'true'
+      run: |
+        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
+        download_release external_pcre-2.tar.xz android-12.0.0_r1-2
 
     - name: Restore Cache external_rust_crates_proc-macro2-1.tar.xz
       id: external_rust_crates_proc-macro2-1
@@ -503,18 +386,18 @@ jobs:
         cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
         download_release external_rust_crates_proc-macro2-1.tar.xz android-12.0.0_r1-1
 
-    - name: Restore Cache external_rust_crates_protobuf-1.tar.xz
-      id: external_rust_crates_protobuf-1
+    - name: Restore Cache external_rust_crates_quote-2.tar.xz
+      id: external_rust_crates_quote-2
       uses: actions/cache@v3
       with:
-        path: aosp/external_rust_crates_protobuf-1.tar.xz
-        key: external_rust_crates_protobuf-1
-        restore-keys: external_rust_crates_protobuf-1
-    - name: Clone project external_rust_crates_protobuf-1.tar.xz
-      if: steps.external_rust_crates_protobuf-1.outputs.cache-hit != 'true'
+        path: aosp/external_rust_crates_quote-2.tar.xz
+        key: external_rust_crates_quote-2
+        restore-keys: external_rust_crates_quote-2
+    - name: Clone project external_rust_crates_quote-2.tar.xz
+      if: steps.external_rust_crates_quote-2.outputs.cache-hit != 'true'
       run: |
         cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        download_release external_rust_crates_protobuf-1.tar.xz android-12.0.0_r1-1
+        download_release external_rust_crates_quote-2.tar.xz android-12.0.0_r1-2
 
     - name: Restore Cache external_rust_crates_unicode-xid-0.tar.xz
       id: external_rust_crates_unicode-xid-0
@@ -542,18 +425,18 @@ jobs:
         cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
         download_release external_scudo-0.tar.xz android-12.0.0_r1-0
 
-    - name: Restore Cache system_core-0.tar.xz
-      id: system_core-0
+    - name: Restore Cache external_selinux-2.tar.xz
+      id: external_selinux-2
       uses: actions/cache@v3
       with:
-        path: aosp/system_core-0.tar.xz
-        key: system_core-0
-        restore-keys: system_core-0
-    - name: Clone project system_core-0.tar.xz
-      if: steps.system_core-0.outputs.cache-hit != 'true'
+        path: aosp/external_selinux-2.tar.xz
+        key: external_selinux-2
+        restore-keys: external_selinux-2
+    - name: Clone project external_selinux-2.tar.xz
+      if: steps.external_selinux-2.outputs.cache-hit != 'true'
       run: |
         cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        download_release system_core-0.tar.xz android-12.0.0_r1-0
+        download_release external_selinux-2.tar.xz android-12.0.0_r1-2
 
     - name: Extract Artifacts
       run: |
@@ -561,12 +444,14 @@ jobs:
         extract_tar bionic-1.tar.xz bionic/
         extract_tar external_arm-optimized-routines-0.tar.xz external/arm-optimized-routines/
         extract_tar external_gwp_asan-0.tar.xz external/gwp_asan/
-        extract_tar external_rust_crates_bytes-0.tar.xz external/rust/crates/bytes/
+        extract_tar external_libcxx-2.tar.xz external/libcxx/
+        extract_tar external_libcxxabi-2.tar.xz external/libcxxabi/
+        extract_tar external_pcre-2.tar.xz external/pcre/
         extract_tar external_rust_crates_proc-macro2-1.tar.xz external/rust/crates/proc-macro2/
-        extract_tar external_rust_crates_protobuf-1.tar.xz external/rust/crates/protobuf/
+        extract_tar external_rust_crates_quote-2.tar.xz external/rust/crates/quote/
         extract_tar external_rust_crates_unicode-xid-0.tar.xz external/rust/crates/unicode-xid/
         extract_tar external_scudo-0.tar.xz external/scudo/
-        extract_tar system_core-0.tar.xz system/core/
+        extract_tar external_selinux-2.tar.xz external/selinux/
 
     - name: Start Soong
       run: |
@@ -590,251 +475,71 @@ jobs:
         mkdir -p prebuiltlibs && cp $GITHUB_WORKSPACE/rust_prebuilt.list prebuiltlibs/
         echo "eng.buildbot.$(date '+%Y%m%d.%H%M%S')" > out/soong/build_number.txt
         mkdir -p external/compiler-rt/lib/cfi/ && curl 'https://android.googlesource.com/platform/external/compiler-rt/+/android12-gsi/lib/cfi/cfi_blocklist.txt?format=TEXT' | base64 -d > external/compiler-rt/lib/cfi/cfi_blocklist.txt
-        $GITHUB_WORKSPACE/scripts/build2.sh
+        $GITHUB_WORKSPACE/scripts/build3.sh
         df -h
 
-    - name: Archive external_bc-2.tar.xz
+    - name: Archive external_libcxx-3.tar.xz
       uses: actions/upload-artifact@v3
       with:
-        name: external_bc-2.tar.xz
-        path: aosp/external_bc-2.tar.xz
+        name: external_libcxx-3.tar.xz
+        path: aosp/external_libcxx-3.tar.xz
 
-    - name: Archive external_brotli-2.tar.xz
+    - name: Archive external_rust_crates_proc-macro-error-attr-3.tar.xz
       uses: actions/upload-artifact@v3
       with:
-        name: external_brotli-2.tar.xz
-        path: aosp/external_brotli-2.tar.xz
+        name: external_rust_crates_proc-macro-error-attr-3.tar.xz
+        path: aosp/external_rust_crates_proc-macro-error-attr-3.tar.xz
 
-    - name: Archive external_bzip2-2.tar.xz
+    - name: Archive external_rust_crates_syn-3.tar.xz
       uses: actions/upload-artifact@v3
       with:
-        name: external_bzip2-2.tar.xz
-        path: aosp/external_bzip2-2.tar.xz
+        name: external_rust_crates_syn-3.tar.xz
+        path: aosp/external_rust_crates_syn-3.tar.xz
 
-    - name: Archive external_expat-2.tar.xz
+    - name: Archive system_sepolicy-3.tar.xz
       uses: actions/upload-artifact@v3
       with:
-        name: external_expat-2.tar.xz
-        path: aosp/external_expat-2.tar.xz
-
-    - name: Archive external_libcxx-2.tar.xz
-      uses: actions/upload-artifact@v3
-      with:
-        name: external_libcxx-2.tar.xz
-        path: aosp/external_libcxx-2.tar.xz
-
-    - name: Archive external_libcxxabi-2.tar.xz
-      uses: actions/upload-artifact@v3
-      with:
-        name: external_libcxxabi-2.tar.xz
-        path: aosp/external_libcxxabi-2.tar.xz
-
-    - name: Archive external_lzma-2.tar.xz
-      uses: actions/upload-artifact@v3
-      with:
-        name: external_lzma-2.tar.xz
-        path: aosp/external_lzma-2.tar.xz
-
-    - name: Archive external_mksh-2.tar.xz
-      uses: actions/upload-artifact@v3
-      with:
-        name: external_mksh-2.tar.xz
-        path: aosp/external_mksh-2.tar.xz
-
-    - name: Archive external_one-true-awk-2.tar.xz
-      uses: actions/upload-artifact@v3
-      with:
-        name: external_one-true-awk-2.tar.xz
-        path: aosp/external_one-true-awk-2.tar.xz
-
-    - name: Archive external_pcre-2.tar.xz
-      uses: actions/upload-artifact@v3
-      with:
-        name: external_pcre-2.tar.xz
-        path: aosp/external_pcre-2.tar.xz
-
-    - name: Archive external_rust_crates_grpcio-compiler-2.tar.xz
-      uses: actions/upload-artifact@v3
-      with:
-        name: external_rust_crates_grpcio-compiler-2.tar.xz
-        path: aosp/external_rust_crates_grpcio-compiler-2.tar.xz
-
-    - name: Archive external_rust_crates_protobuf-codegen-2.tar.xz
-      uses: actions/upload-artifact@v3
-      with:
-        name: external_rust_crates_protobuf-codegen-2.tar.xz
-        path: aosp/external_rust_crates_protobuf-codegen-2.tar.xz
-
-    - name: Archive external_rust_crates_quote-2.tar.xz
-      uses: actions/upload-artifact@v3
-      with:
-        name: external_rust_crates_quote-2.tar.xz
-        path: aosp/external_rust_crates_quote-2.tar.xz
-
-    - name: Archive external_selinux-2.tar.xz
-      uses: actions/upload-artifact@v3
-      with:
-        name: external_selinux-2.tar.xz
-        path: aosp/external_selinux-2.tar.xz
-
-    - name: Archive external_zlib-2.tar.xz
-      uses: actions/upload-artifact@v3
-      with:
-        name: external_zlib-2.tar.xz
-        path: aosp/external_zlib-2.tar.xz
-
-    - name: Archive system_core-2.tar.xz
-      uses: actions/upload-artifact@v3
-      with:
-        name: system_core-2.tar.xz
-        path: aosp/system_core-2.tar.xz
+        name: system_sepolicy-3.tar.xz
+        path: aosp/system_sepolicy-3.tar.xz
 
     - uses: softprops/action-gh-release@master
       with:
-        name: ${{ env.branch }}-2
-        tag_name: ${{ env.branch }}-2
+        name: ${{ env.branch }}-3
+        tag_name: ${{ env.branch }}-3
         files: |
-          aosp/external_bc-2.tar.xz
-          aosp/external_brotli-2.tar.xz
-          aosp/external_bzip2-2.tar.xz
-          aosp/external_expat-2.tar.xz
-          aosp/external_libcxx-2.tar.xz
-          aosp/external_libcxxabi-2.tar.xz
-          aosp/external_lzma-2.tar.xz
-          aosp/external_mksh-2.tar.xz
-          aosp/external_one-true-awk-2.tar.xz
-          aosp/external_pcre-2.tar.xz
-          aosp/external_rust_crates_grpcio-compiler-2.tar.xz
-          aosp/external_rust_crates_protobuf-codegen-2.tar.xz
-          aosp/external_rust_crates_quote-2.tar.xz
-          aosp/external_selinux-2.tar.xz
-          aosp/external_zlib-2.tar.xz
-          aosp/system_core-2.tar.xz
+          aosp/external_libcxx-3.tar.xz
+          aosp/external_rust_crates_proc-macro-error-attr-3.tar.xz
+          aosp/external_rust_crates_syn-3.tar.xz
+          aosp/system_sepolicy-3.tar.xz
 
-    - name: Restore Cache external_bc-2.tar.xz
-      id: external_bc-2
+    - name: Restore Cache external_libcxx-3.tar.xz
+      id: external_libcxx-3
       uses: actions/cache@v3
       with:
-        path: aosp/external_bc-2.tar.xz
-        key: external_bc-2
-        restore-keys: external_bc-2
+        path: aosp/external_libcxx-3.tar.xz
+        key: external_libcxx-3
+        restore-keys: external_libcxx-3
 
-    - name: Restore Cache external_brotli-2.tar.xz
-      id: external_brotli-2
+    - name: Restore Cache external_rust_crates_proc-macro-error-attr-3.tar.xz
+      id: external_rust_crates_proc-macro-error-attr-3
       uses: actions/cache@v3
       with:
-        path: aosp/external_brotli-2.tar.xz
-        key: external_brotli-2
-        restore-keys: external_brotli-2
+        path: aosp/external_rust_crates_proc-macro-error-attr-3.tar.xz
+        key: external_rust_crates_proc-macro-error-attr-3
+        restore-keys: external_rust_crates_proc-macro-error-attr-3
 
-    - name: Restore Cache external_bzip2-2.tar.xz
-      id: external_bzip2-2
+    - name: Restore Cache external_rust_crates_syn-3.tar.xz
+      id: external_rust_crates_syn-3
       uses: actions/cache@v3
       with:
-        path: aosp/external_bzip2-2.tar.xz
-        key: external_bzip2-2
-        restore-keys: external_bzip2-2
+        path: aosp/external_rust_crates_syn-3.tar.xz
+        key: external_rust_crates_syn-3
+        restore-keys: external_rust_crates_syn-3
 
-    - name: Restore Cache external_expat-2.tar.xz
-      id: external_expat-2
+    - name: Restore Cache system_sepolicy-3.tar.xz
+      id: system_sepolicy-3
       uses: actions/cache@v3
       with:
-        path: aosp/external_expat-2.tar.xz
-        key: external_expat-2
-        restore-keys: external_expat-2
-
-    - name: Restore Cache external_libcxx-2.tar.xz
-      id: external_libcxx-2
-      uses: actions/cache@v3
-      with:
-        path: aosp/external_libcxx-2.tar.xz
-        key: external_libcxx-2
-        restore-keys: external_libcxx-2
-
-    - name: Restore Cache external_libcxxabi-2.tar.xz
-      id: external_libcxxabi-2
-      uses: actions/cache@v3
-      with:
-        path: aosp/external_libcxxabi-2.tar.xz
-        key: external_libcxxabi-2
-        restore-keys: external_libcxxabi-2
-
-    - name: Restore Cache external_lzma-2.tar.xz
-      id: external_lzma-2
-      uses: actions/cache@v3
-      with:
-        path: aosp/external_lzma-2.tar.xz
-        key: external_lzma-2
-        restore-keys: external_lzma-2
-
-    - name: Restore Cache external_mksh-2.tar.xz
-      id: external_mksh-2
-      uses: actions/cache@v3
-      with:
-        path: aosp/external_mksh-2.tar.xz
-        key: external_mksh-2
-        restore-keys: external_mksh-2
-
-    - name: Restore Cache external_one-true-awk-2.tar.xz
-      id: external_one-true-awk-2
-      uses: actions/cache@v3
-      with:
-        path: aosp/external_one-true-awk-2.tar.xz
-        key: external_one-true-awk-2
-        restore-keys: external_one-true-awk-2
-
-    - name: Restore Cache external_pcre-2.tar.xz
-      id: external_pcre-2
-      uses: actions/cache@v3
-      with:
-        path: aosp/external_pcre-2.tar.xz
-        key: external_pcre-2
-        restore-keys: external_pcre-2
-
-    - name: Restore Cache external_rust_crates_grpcio-compiler-2.tar.xz
-      id: external_rust_crates_grpcio-compiler-2
-      uses: actions/cache@v3
-      with:
-        path: aosp/external_rust_crates_grpcio-compiler-2.tar.xz
-        key: external_rust_crates_grpcio-compiler-2
-        restore-keys: external_rust_crates_grpcio-compiler-2
-
-    - name: Restore Cache external_rust_crates_protobuf-codegen-2.tar.xz
-      id: external_rust_crates_protobuf-codegen-2
-      uses: actions/cache@v3
-      with:
-        path: aosp/external_rust_crates_protobuf-codegen-2.tar.xz
-        key: external_rust_crates_protobuf-codegen-2
-        restore-keys: external_rust_crates_protobuf-codegen-2
-
-    - name: Restore Cache external_rust_crates_quote-2.tar.xz
-      id: external_rust_crates_quote-2
-      uses: actions/cache@v3
-      with:
-        path: aosp/external_rust_crates_quote-2.tar.xz
-        key: external_rust_crates_quote-2
-        restore-keys: external_rust_crates_quote-2
-
-    - name: Restore Cache external_selinux-2.tar.xz
-      id: external_selinux-2
-      uses: actions/cache@v3
-      with:
-        path: aosp/external_selinux-2.tar.xz
-        key: external_selinux-2
-        restore-keys: external_selinux-2
-
-    - name: Restore Cache external_zlib-2.tar.xz
-      id: external_zlib-2
-      uses: actions/cache@v3
-      with:
-        path: aosp/external_zlib-2.tar.xz
-        key: external_zlib-2
-        restore-keys: external_zlib-2
-
-    - name: Restore Cache system_core-2.tar.xz
-      id: system_core-2
-      uses: actions/cache@v3
-      with:
-        path: aosp/system_core-2.tar.xz
-        key: system_core-2
-        restore-keys: system_core-2
+        path: aosp/system_sepolicy-3.tar.xz
+        key: system_sepolicy-3
+        restore-keys: system_sepolicy-3
