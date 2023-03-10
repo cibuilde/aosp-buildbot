@@ -7,7 +7,7 @@ on:
 env:
   branch: 'android-12.0.0_r1'
 jobs:
-  build_step4:
+  build_step5:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout
@@ -87,18 +87,44 @@ jobs:
         cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
         clone_depth_platform external/golang-protobuf
 
-    - name: Restore Cache external/libffi
-      id: external_libffi
+    - name: Restore Cache external/libcxx
+      id: external_libcxx
       uses: actions/cache@v3
       with:
-        path: aosp/external/libffi
-        key: external_libffi@${{ env.branch }}
-        restore-keys: external_libffi@${{ env.branch }}
-    - name: Clone project external/libffi
-      if: steps.external_libffi.outputs.cache-hit != 'true'
+        path: aosp/external/libcxx
+        key: external_libcxx@${{ env.branch }}
+        restore-keys: external_libcxx@${{ env.branch }}
+    - name: Clone project external/libcxx
+      if: steps.external_libcxx.outputs.cache-hit != 'true'
       run: |
         cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        clone_depth_platform external/libffi
+        clone_depth_platform external/libcxx
+
+    - name: Restore Cache external/libcxxabi
+      id: external_libcxxabi
+      uses: actions/cache@v3
+      with:
+        path: aosp/external/libcxxabi
+        key: external_libcxxabi@${{ env.branch }}
+        restore-keys: external_libcxxabi@${{ env.branch }}
+    - name: Clone project external/libcxxabi
+      if: steps.external_libcxxabi.outputs.cache-hit != 'true'
+      run: |
+        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
+        clone_depth_platform external/libcxxabi
+
+    - name: Restore Cache external/perfetto
+      id: external_perfetto
+      uses: actions/cache@v3
+      with:
+        path: aosp/external/perfetto
+        key: external_perfetto@${{ env.branch }}
+        restore-keys: external_perfetto@${{ env.branch }}
+    - name: Clone project external/perfetto
+      if: steps.external_perfetto.outputs.cache-hit != 'true'
+      run: |
+        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
+        clone_depth_platform external/perfetto
 
     - name: Restore Cache external/starlark-go
       id: external_starlark-go
@@ -112,6 +138,19 @@ jobs:
       run: |
         cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
         clone_depth_platform external/starlark-go
+
+    - name: Restore Cache external/wayland
+      id: external_wayland
+      uses: actions/cache@v3
+      with:
+        path: aosp/external/wayland
+        key: external_wayland@${{ env.branch }}
+        restore-keys: external_wayland@${{ env.branch }}
+    - name: Clone project external/wayland
+      if: steps.external_wayland.outputs.cache-hit != 'true'
+      run: |
+        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
+        clone_depth_platform external/wayland
 
     - name: Restore Cache prebuilts/build-tools
       id: prebuilts_build-tools
@@ -243,18 +282,18 @@ jobs:
         cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
         clone_depth_platform system/sepolicy
 
-    - name: Restore Cache bionic-1.tar.xz
-      id: bionic-1
+    - name: Restore Cache bionic-4.tar.xz
+      id: bionic-4
       uses: actions/cache@v3
       with:
-        path: aosp/bionic-1.tar.xz
-        key: bionic-1
-        restore-keys: bionic-1
-    - name: Clone project bionic-1.tar.xz
-      if: steps.bionic-1.outputs.cache-hit != 'true'
+        path: aosp/bionic-4.tar.xz
+        key: bionic-4
+        restore-keys: bionic-4
+    - name: Clone project bionic-4.tar.xz
+      if: steps.bionic-4.outputs.cache-hit != 'true'
       run: |
         cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        download_release bionic-1.tar.xz android-12.0.0_r1-1
+        download_release bionic-4.tar.xz android-12.0.0_r1-4
 
     - name: Restore Cache external_arm-optimized-routines-0.tar.xz
       id: external_arm-optimized-routines-0
@@ -269,18 +308,18 @@ jobs:
         cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
         download_release external_arm-optimized-routines-0.tar.xz android-12.0.0_r1-0
 
-    - name: Restore Cache external_gwp_asan-0.tar.xz
-      id: external_gwp_asan-0
+    - name: Restore Cache external_gwp_asan-4.tar.xz
+      id: external_gwp_asan-4
       uses: actions/cache@v3
       with:
-        path: aosp/external_gwp_asan-0.tar.xz
-        key: external_gwp_asan-0
-        restore-keys: external_gwp_asan-0
-    - name: Clone project external_gwp_asan-0.tar.xz
-      if: steps.external_gwp_asan-0.outputs.cache-hit != 'true'
+        path: aosp/external_gwp_asan-4.tar.xz
+        key: external_gwp_asan-4
+        restore-keys: external_gwp_asan-4
+    - name: Clone project external_gwp_asan-4.tar.xz
+      if: steps.external_gwp_asan-4.outputs.cache-hit != 'true'
       run: |
         cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        download_release external_gwp_asan-0.tar.xz android-12.0.0_r1-0
+        download_release external_gwp_asan-4.tar.xz android-12.0.0_r1-4
 
     - name: Restore Cache external_libcxx-3.tar.xz
       id: external_libcxx-3
@@ -308,6 +347,32 @@ jobs:
         cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
         download_release external_libcxxabi-2.tar.xz android-12.0.0_r1-2
 
+    - name: Restore Cache external_libffi-4.tar.xz
+      id: external_libffi-4
+      uses: actions/cache@v3
+      with:
+        path: aosp/external_libffi-4.tar.xz
+        key: external_libffi-4
+        restore-keys: external_libffi-4
+    - name: Clone project external_libffi-4.tar.xz
+      if: steps.external_libffi-4.outputs.cache-hit != 'true'
+      run: |
+        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
+        download_release external_libffi-4.tar.xz android-12.0.0_r1-4
+
+    - name: Restore Cache external_protobuf-4.tar.xz
+      id: external_protobuf-4
+      uses: actions/cache@v3
+      with:
+        path: aosp/external_protobuf-4.tar.xz
+        key: external_protobuf-4
+        restore-keys: external_protobuf-4
+    - name: Clone project external_protobuf-4.tar.xz
+      if: steps.external_protobuf-4.outputs.cache-hit != 'true'
+      run: |
+        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
+        download_release external_protobuf-4.tar.xz android-12.0.0_r1-4
+
     - name: Restore Cache external_scudo-0.tar.xz
       id: external_scudo-0
       uses: actions/cache@v3
@@ -321,15 +386,59 @@ jobs:
         cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
         download_release external_scudo-0.tar.xz android-12.0.0_r1-0
 
+    - name: Restore Cache external_wayland-4.tar.xz
+      id: external_wayland-4
+      uses: actions/cache@v3
+      with:
+        path: aosp/external_wayland-4.tar.xz
+        key: external_wayland-4
+        restore-keys: external_wayland-4
+    - name: Clone project external_wayland-4.tar.xz
+      if: steps.external_wayland-4.outputs.cache-hit != 'true'
+      run: |
+        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
+        download_release external_wayland-4.tar.xz android-12.0.0_r1-4
+
+    - name: Restore Cache external_zlib-2.tar.xz
+      id: external_zlib-2
+      uses: actions/cache@v3
+      with:
+        path: aosp/external_zlib-2.tar.xz
+        key: external_zlib-2
+        restore-keys: external_zlib-2
+    - name: Clone project external_zlib-2.tar.xz
+      if: steps.external_zlib-2.outputs.cache-hit != 'true'
+      run: |
+        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
+        download_release external_zlib-2.tar.xz android-12.0.0_r1-2
+
+    - name: Restore Cache system_logging-4.tar.xz
+      id: system_logging-4
+      uses: actions/cache@v3
+      with:
+        path: aosp/system_logging-4.tar.xz
+        key: system_logging-4
+        restore-keys: system_logging-4
+    - name: Clone project system_logging-4.tar.xz
+      if: steps.system_logging-4.outputs.cache-hit != 'true'
+      run: |
+        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
+        download_release system_logging-4.tar.xz android-12.0.0_r1-4
+
     - name: Extract Artifacts
       run: |
         cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        extract_tar bionic-1.tar.xz bionic/
+        extract_tar bionic-4.tar.xz bionic/
         extract_tar external_arm-optimized-routines-0.tar.xz external/arm-optimized-routines/
-        extract_tar external_gwp_asan-0.tar.xz external/gwp_asan/
+        extract_tar external_gwp_asan-4.tar.xz external/gwp_asan/
         extract_tar external_libcxx-3.tar.xz external/libcxx/
         extract_tar external_libcxxabi-2.tar.xz external/libcxxabi/
+        extract_tar external_libffi-4.tar.xz external/libffi/
+        extract_tar external_protobuf-4.tar.xz external/protobuf/
         extract_tar external_scudo-0.tar.xz external/scudo/
+        extract_tar external_wayland-4.tar.xz external/wayland/
+        extract_tar external_zlib-2.tar.xz external/zlib/
+        extract_tar system_logging-4.tar.xz system/logging/
 
     - name: Start Soong
       run: |
@@ -353,26 +462,41 @@ jobs:
         mkdir -p prebuiltlibs && cp $GITHUB_WORKSPACE/rust_prebuilt.list prebuiltlibs/
         echo "eng.buildbot.$(date '+%Y%m%d.%H%M%S')" > out/soong/build_number.txt
         mkdir -p external/compiler-rt/lib/cfi/ && curl 'https://android.googlesource.com/platform/external/compiler-rt/+/android12-gsi/lib/cfi/cfi_blocklist.txt?format=TEXT' | base64 -d > external/compiler-rt/lib/cfi/cfi_blocklist.txt
-        $GITHUB_WORKSPACE/scripts/build4.sh
+        $GITHUB_WORKSPACE/scripts/build5.sh
         df -h
 
     - uses: softprops/action-gh-release@master
       with:
-        name: ${{ env.branch }}-4
-        tag_name: ${{ env.branch }}-4
+        name: ${{ env.branch }}-5
+        tag_name: ${{ env.branch }}-5
         files: |
-          aosp/external_libffi-4.tar.xz
+          aosp/external_perfetto-5.tar.xz
+          aosp/external_wayland-5.tar.xz
 
-    - name: Archive external_libffi-4.tar.xz
+    - name: Archive external_perfetto-5.tar.xz
       uses: actions/upload-artifact@v3
       with:
-        name: external_libffi-4.tar.xz
-        path: aosp/external_libffi-4.tar.xz
+        name: external_perfetto-5.tar.xz
+        path: aosp/external_perfetto-5.tar.xz
 
-    - name: Restore Cache external_libffi-4.tar.xz
-      id: external_libffi-4
+    - name: Archive external_wayland-5.tar.xz
+      uses: actions/upload-artifact@v3
+      with:
+        name: external_wayland-5.tar.xz
+        path: aosp/external_wayland-5.tar.xz
+
+    - name: Restore Cache external_perfetto-5.tar.xz
+      id: external_perfetto-5
       uses: actions/cache@v3
       with:
-        path: aosp/external_libffi-4.tar.xz
-        key: external_libffi-4
-        restore-keys: external_libffi-4
+        path: aosp/external_perfetto-5.tar.xz
+        key: external_perfetto-5
+        restore-keys: external_perfetto-5
+
+    - name: Restore Cache external_wayland-5.tar.xz
+      id: external_wayland-5
+      uses: actions/cache@v3
+      with:
+        path: aosp/external_wayland-5.tar.xz
+        key: external_wayland-5
+        restore-keys: external_wayland-5
