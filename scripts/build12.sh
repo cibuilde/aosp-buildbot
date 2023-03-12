@@ -1,220 +1,171 @@
 source $GITHUB_WORKSPACE/envsetup.sh
 df -h
 
-
-sed -i 's/rust_prebuilt_rlib {$/rust_prebuilt_library {/' prebuiltlibs/packages/modules/Virtualization/authfs/Android.bp
-
 GOROOT=$TOP/prebuilts/go/linux-x86 $GITHUB_WORKSPACE/soong_ui --make-mode --skip-ninja --skip-kati --skip-soong-tests --skip-write-modules -j1 TARGET_PRODUCT=aosp_x86_64 TARGET_BUILD_VARIANT=eng ALLOW_MISSING_DEPENDENCIES=true BUILD_BROKEN_DISABLE_BAZEL=1 nothing
 
-rm -rf prebuiltlibs/art/libdexfile/libdexfile_support_static
-rm -rf prebuiltlibs/art/sigchainlib/libsigchain
-rm -rf prebuiltlibs/art/sigchainlib/libsigchain_fake
-rm -rf prebuiltlibs/art/libnativebridge/libnativebridge
-rm -rf prebuiltlibs/art/libnativebridge/libnativebridge_lazy
-rm -rf prebuiltlibs/art/tools/cpp-define-generator/asm_defines.s
+rm -rf prebuiltlibs/art/adbconnection/libadbconnection
+rm -rf prebuiltlibs/art/compiler/libart-compiler
+rm -rf prebuiltlibs/art/compiler/libartd-compiler
 rm -rf prebuiltlibs/art/dalvikvm/dalvikvm
+rm -rf prebuiltlibs/art/dex2oat/dex2oat
+rm -rf prebuiltlibs/art/dex2oat/dex2oatd
+rm -rf prebuiltlibs/art/dex2oat/libart-dex2oat
+rm -rf prebuiltlibs/art/dex2oat/libartd-dex2oat
+rm -rf prebuiltlibs/art/dex2oat/libdex2oatd_static
+rm -rf prebuiltlibs/art/dexdump/dexdump
+rm -rf prebuiltlibs/art/dexlayout/libart-dexlayout
+rm -rf prebuiltlibs/art/dexlayout/libartd-dexlayout
+rm -rf prebuiltlibs/art/dexlist/dexlist
+rm -rf prebuiltlibs/art/dexoptanalyzer/dexoptanalyzer
 rm -rf prebuiltlibs/art/disassembler/libart-disassembler
 rm -rf prebuiltlibs/art/disassembler/libartd-disassembler
 rm -rf prebuiltlibs/art/dt_fd_forward/libdt_fd_forward
-rm -rf prebuiltlibs/art/runtime/libstatslog_art
-rm -rf prebuiltlibs/art/libartpalette/libartpalette
 rm -rf prebuiltlibs/art/libartbase/libartbase
-rm -rf prebuiltlibs/art/libelffile/libelffile
-rm -rf prebuiltlibs/art/odrefresh/libodrstatslog
 rm -rf prebuiltlibs/art/libartbase/libartbased
-rm -rf prebuiltlibs/art/libelffile/libelffiled
+rm -rf prebuiltlibs/art/libartpalette/libartpalette
 rm -rf prebuiltlibs/art/libdexfile/libdexfile
-rm -rf prebuiltlibs/art/dexdump/dexdump
-rm -rf prebuiltlibs/art/dexlist/dexlist
-rm -rf prebuiltlibs/art/tools/hiddenapi/hiddenapi
 rm -rf prebuiltlibs/art/libdexfile/libdexfile_support
-rm -rf prebuiltlibs/art/tools/veridex/veridex
+rm -rf prebuiltlibs/art/libdexfile/libdexfile_support_static
 rm -rf prebuiltlibs/art/libdexfile/libdexfiled
-rm -rf prebuiltlibs/art/libprofile/libprofile
-rm -rf prebuiltlibs/art/dexlayout/libart-dexlayout
-rm -rf prebuiltlibs/art/libprofile/libprofiled
-rm -rf prebuiltlibs/art/dexlayout/libartd-dexlayout
-rm -rf prebuiltlibs/art/profman/libprofman_static
-rm -rf prebuiltlibs/art/profman/profman
+rm -rf prebuiltlibs/art/libelffile/libelffile
+rm -rf prebuiltlibs/art/libelffile/libelffiled
+rm -rf prebuiltlibs/art/libnativebridge/libnativebridge
+rm -rf prebuiltlibs/art/libnativebridge/libnativebridge_lazy
 rm -rf prebuiltlibs/art/libnativeloader/libnativeloader
 rm -rf prebuiltlibs/art/libnativeloader/libnativeloader_lazy
-rm -rf prebuiltlibs/art/runtime/libart
-rm -rf prebuiltlibs/art/dexoptanalyzer/dexoptanalyzer
-rm -rf prebuiltlibs/art/adbconnection/libadbconnection
-rm -rf prebuiltlibs/art/compiler/libart-compiler
-rm -rf prebuiltlibs/art/dex2oat/libart-dex2oat
-rm -rf prebuiltlibs/art/dex2oat/dex2oat
+rm -rf prebuiltlibs/art/libprofile/libprofile
+rm -rf prebuiltlibs/art/libprofile/libprofiled
 rm -rf prebuiltlibs/art/oatdump/liboatdump_static
+rm -rf prebuiltlibs/art/oatdump/oatdump
+rm -rf prebuiltlibs/art/odrefresh/libodrstatslog
+rm -rf prebuiltlibs/art/odrefresh/odrefresh
 rm -rf prebuiltlibs/art/openjdkjvmti/libopenjdkjvmti
 rm -rf prebuiltlibs/art/perfetto_hprof/libperfetto_hprof
-rm -rf prebuiltlibs/art/oatdump/oatdump
-rm -rf prebuiltlibs/art/odrefresh/odrefresh
+rm -rf prebuiltlibs/art/profman/libprofman_static
+rm -rf prebuiltlibs/art/profman/profman
+rm -rf prebuiltlibs/art/runtime/libart
 rm -rf prebuiltlibs/art/runtime/libartd
-rm -rf prebuiltlibs/art/compiler/libartd-compiler
-rm -rf prebuiltlibs/art/dex2oat/libartd-dex2oat
-rm -rf prebuiltlibs/art/dex2oat/libdex2oatd_static
-rm -rf prebuiltlibs/art/dex2oat/dex2oatd
+rm -rf prebuiltlibs/art/runtime/libstatslog_art
+rm -rf prebuiltlibs/art/sigchainlib/libsigchain
+rm -rf prebuiltlibs/art/sigchainlib/libsigchain_fake
+rm -rf prebuiltlibs/art/tools/cpp-define-generator/asm_defines.s
+rm -rf prebuiltlibs/art/tools/hiddenapi/hiddenapi
+rm -rf prebuiltlibs/art/tools/veridex/veridex
 
-rm -rf prebuiltlibs/external/llvm/lib/Support/libLLVMSupport
-rm -rf prebuiltlibs/external/llvm/lib/TableGen/libLLVMTableGen
-rm -rf prebuiltlibs/external/llvm/lib/Target/AArch64/AsmParser/libLLVMAArch64AsmParser
-rm -rf prebuiltlibs/external/llvm/lib/Target/AArch64/InstPrinter/libLLVMAArch64AsmPrinter
-rm -rf prebuiltlibs/external/llvm/lib/Target/AArch64/libLLVMAArch64CodeGen
-rm -rf prebuiltlibs/external/llvm/lib/Target/AArch64/MCTargetDesc/libLLVMAArch64Desc
-rm -rf prebuiltlibs/external/llvm/lib/Target/AArch64/Disassembler/libLLVMAArch64Disassembler
-rm -rf prebuiltlibs/external/llvm/lib/Target/AArch64/TargetInfo/libLLVMAArch64Info
-rm -rf prebuiltlibs/external/llvm/lib/Target/AArch64/Utils/libLLVMAArch64Utils
-rm -rf prebuiltlibs/external/llvm/lib/Target/ARM/AsmParser/libLLVMARMAsmParser
-rm -rf prebuiltlibs/external/llvm/lib/Target/ARM/InstPrinter/libLLVMARMAsmPrinter
-rm -rf prebuiltlibs/external/llvm/lib/Target/ARM/libLLVMARMCodeGen
-rm -rf prebuiltlibs/external/llvm/lib/Target/ARM/MCTargetDesc/libLLVMARMDesc
-rm -rf prebuiltlibs/external/llvm/lib/Target/ARM/Disassembler/libLLVMARMDisassembler
-rm -rf prebuiltlibs/external/llvm/lib/Target/ARM/TargetInfo/libLLVMARMInfo
 rm -rf prebuiltlibs/external/llvm/lib/Analysis/libLLVMAnalysis
 rm -rf prebuiltlibs/external/llvm/lib/AsmParser/libLLVMAsmParser
-rm -rf prebuiltlibs/external/llvm/lib/CodeGen/AsmPrinter/libLLVMAsmPrinter
 rm -rf prebuiltlibs/external/llvm/lib/Bitcode/Reader/libLLVMBitReader
 rm -rf prebuiltlibs/external/llvm/lib/Bitcode/Writer/libLLVMBitWriter
+rm -rf prebuiltlibs/external/llvm/lib/CodeGen/AsmPrinter/libLLVMAsmPrinter
+rm -rf prebuiltlibs/external/llvm/lib/CodeGen/GlobalISel/libLLVMGlobalISel
+rm -rf prebuiltlibs/external/llvm/lib/CodeGen/SelectionDAG/libLLVMSelectionDAG
 rm -rf prebuiltlibs/external/llvm/lib/CodeGen/libLLVMCodeGen
-rm -rf prebuiltlibs/external/llvm/lib/IR/libLLVMCore
 rm -rf prebuiltlibs/external/llvm/lib/DebugInfo/CodeView/libLLVMDebugInfoCodeView
 rm -rf prebuiltlibs/external/llvm/lib/DebugInfo/DWARF/libLLVMDebugInfoDWARF
 rm -rf prebuiltlibs/external/llvm/lib/DebugInfo/PDB/libLLVMDebugInfoPDB
+rm -rf prebuiltlibs/external/llvm/lib/DebugInfo/Symbolize/libLLVMSymbolize
+rm -rf prebuiltlibs/external/llvm/lib/ExecutionEngine/MCJIT/libLLVMMCJIT
+rm -rf prebuiltlibs/external/llvm/lib/ExecutionEngine/Orc/libLLVMOrcJIT
+rm -rf prebuiltlibs/external/llvm/lib/ExecutionEngine/RuntimeDyld/libLLVMRuntimeDyld
 rm -rf prebuiltlibs/external/llvm/lib/ExecutionEngine/libLLVMExecutionEngine
-rm -rf prebuiltlibs/external/llvm/lib/CodeGen/GlobalISel/libLLVMGlobalISel
+rm -rf prebuiltlibs/external/llvm/lib/IR/libLLVMCore
 rm -rf prebuiltlibs/external/llvm/lib/IRReader/libLLVMIRReader
-rm -rf prebuiltlibs/external/llvm/lib/Transforms/InstCombine/libLLVMInstCombine
-rm -rf prebuiltlibs/external/llvm/lib/Transforms/Instrumentation/libLLVMInstrumentation
 rm -rf prebuiltlibs/external/llvm/lib/LTO/libLLVMLTO
 rm -rf prebuiltlibs/external/llvm/lib/LibDriver/libLLVMLibDriver
 rm -rf prebuiltlibs/external/llvm/lib/Linker/libLLVMLinker
-rm -rf prebuiltlibs/external/llvm/lib/MC/libLLVMMC
 rm -rf prebuiltlibs/external/llvm/lib/MC/MCDisassembler/libLLVMMCDisassembler
-rm -rf prebuiltlibs/external/llvm/lib/ExecutionEngine/MCJIT/libLLVMMCJIT
 rm -rf prebuiltlibs/external/llvm/lib/MC/MCParser/libLLVMMCParser
+rm -rf prebuiltlibs/external/llvm/lib/MC/libLLVMMC
 rm -rf prebuiltlibs/external/llvm/lib/Object/libLLVMObject
 rm -rf prebuiltlibs/external/llvm/lib/Option/libLLVMOption
-rm -rf prebuiltlibs/external/llvm/lib/ExecutionEngine/Orc/libLLVMOrcJIT
-rm -rf prebuiltlibs/external/llvm/lib/ProfileData/libLLVMProfileData
 rm -rf prebuiltlibs/external/llvm/lib/ProfileData/Coverage/libLLVMProfileDataCoverage
-rm -rf prebuiltlibs/external/llvm/lib/ExecutionEngine/RuntimeDyld/libLLVMRuntimeDyld
-rm -rf prebuiltlibs/external/llvm/lib/Transforms/Scalar/libLLVMScalarOpts
-rm -rf prebuiltlibs/external/llvm/lib/CodeGen/SelectionDAG/libLLVMSelectionDAG
-rm -rf prebuiltlibs/external/llvm/lib/DebugInfo/Symbolize/libLLVMSymbolize
-rm -rf prebuiltlibs/external/llvm/lib/Target/libLLVMTarget
-rm -rf prebuiltlibs/external/llvm/lib/Transforms/ObjCARC/libLLVMTransformObjCARC
-rm -rf prebuiltlibs/external/llvm/lib/Transforms/Utils/libLLVMTransformUtils
-rm -rf prebuiltlibs/external/llvm/lib/Transforms/Vectorize/libLLVMVectorize
+rm -rf prebuiltlibs/external/llvm/lib/ProfileData/libLLVMProfileData
+rm -rf prebuiltlibs/external/llvm/lib/Support/libLLVMSupport
+rm -rf prebuiltlibs/external/llvm/lib/TableGen/libLLVMTableGen
+rm -rf prebuiltlibs/external/llvm/lib/Target/AArch64/AsmParser/libLLVMAArch64AsmParser
+rm -rf prebuiltlibs/external/llvm/lib/Target/AArch64/Disassembler/libLLVMAArch64Disassembler
+rm -rf prebuiltlibs/external/llvm/lib/Target/AArch64/InstPrinter/libLLVMAArch64AsmPrinter
+rm -rf prebuiltlibs/external/llvm/lib/Target/AArch64/MCTargetDesc/libLLVMAArch64Desc
+rm -rf prebuiltlibs/external/llvm/lib/Target/AArch64/TargetInfo/libLLVMAArch64Info
+rm -rf prebuiltlibs/external/llvm/lib/Target/AArch64/Utils/libLLVMAArch64Utils
+rm -rf prebuiltlibs/external/llvm/lib/Target/AArch64/libLLVMAArch64CodeGen
+rm -rf prebuiltlibs/external/llvm/lib/Target/ARM/AsmParser/libLLVMARMAsmParser
+rm -rf prebuiltlibs/external/llvm/lib/Target/ARM/Disassembler/libLLVMARMDisassembler
+rm -rf prebuiltlibs/external/llvm/lib/Target/ARM/InstPrinter/libLLVMARMAsmPrinter
+rm -rf prebuiltlibs/external/llvm/lib/Target/ARM/MCTargetDesc/libLLVMARMDesc
+rm -rf prebuiltlibs/external/llvm/lib/Target/ARM/TargetInfo/libLLVMARMInfo
+rm -rf prebuiltlibs/external/llvm/lib/Target/ARM/libLLVMARMCodeGen
 rm -rf prebuiltlibs/external/llvm/lib/Target/X86/AsmParser/libLLVMX86AsmParser
-rm -rf prebuiltlibs/external/llvm/lib/Target/X86/InstPrinter/libLLVMX86AsmPrinter
-rm -rf prebuiltlibs/external/llvm/lib/Target/X86/libLLVMX86CodeGen
-rm -rf prebuiltlibs/external/llvm/lib/Target/X86/MCTargetDesc/libLLVMX86Desc
 rm -rf prebuiltlibs/external/llvm/lib/Target/X86/Disassembler/libLLVMX86Disassembler
+rm -rf prebuiltlibs/external/llvm/lib/Target/X86/InstPrinter/libLLVMX86AsmPrinter
+rm -rf prebuiltlibs/external/llvm/lib/Target/X86/MCTargetDesc/libLLVMX86Desc
 rm -rf prebuiltlibs/external/llvm/lib/Target/X86/TargetInfo/libLLVMX86Info
 rm -rf prebuiltlibs/external/llvm/lib/Target/X86/Utils/libLLVMX86Utils
+rm -rf prebuiltlibs/external/llvm/lib/Target/X86/libLLVMX86CodeGen
+rm -rf prebuiltlibs/external/llvm/lib/Target/libLLVMTarget
 rm -rf prebuiltlibs/external/llvm/lib/Transforms/IPO/libLLVMipo
+rm -rf prebuiltlibs/external/llvm/lib/Transforms/InstCombine/libLLVMInstCombine
+rm -rf prebuiltlibs/external/llvm/lib/Transforms/Instrumentation/libLLVMInstrumentation
+rm -rf prebuiltlibs/external/llvm/lib/Transforms/ObjCARC/libLLVMTransformObjCARC
+rm -rf prebuiltlibs/external/llvm/lib/Transforms/Scalar/libLLVMScalarOpts
+rm -rf prebuiltlibs/external/llvm/lib/Transforms/Utils/libLLVMTransformUtils
+rm -rf prebuiltlibs/external/llvm/lib/Transforms/Vectorize/libLLVMVectorize
 rm -rf prebuiltlibs/external/llvm/libLLVM_android
 
-rm -rf prebuiltlibs/hardware/interfaces/confirmationui/support/android.hardware.confirmationui-support-lib
-rm -rf prebuiltlibs/hardware/interfaces/graphics/composer/2.1/utils/hwc2onfbadapter/libhwc2onfbadapter
+rm -rf prebuiltlibs/hardware/interfaces/atrace/1.0/android.hardware.atrace@1.0
+rm -rf prebuiltlibs/hardware/interfaces/atrace/1.0/default/android.hardware.atrace@1.0-service
+rm -rf prebuiltlibs/hardware/interfaces/audio/4.0/android.hardware.audio@4.0
+rm -rf prebuiltlibs/hardware/interfaces/audio/5.0/android.hardware.audio@5.0
+rm -rf prebuiltlibs/hardware/interfaces/audio/6.0/android.hardware.audio@6.0
+rm -rf prebuiltlibs/hardware/interfaces/audio/7.0/android.hardware.audio@7.0
+rm -rf prebuiltlibs/hardware/interfaces/audio/common/2.0/android.hardware.audio.common@2.0
+rm -rf prebuiltlibs/hardware/interfaces/audio/common/4.0/android.hardware.audio.common@4.0
+rm -rf prebuiltlibs/hardware/interfaces/audio/common/5.0/android.hardware.audio.common@5.0
+rm -rf prebuiltlibs/hardware/interfaces/audio/common/6.0/android.hardware.audio.common@6.0
+rm -rf prebuiltlibs/hardware/interfaces/audio/common/7.0/android.hardware.audio.common@7.0
 rm -rf prebuiltlibs/hardware/interfaces/audio/common/7.0/android.hardware.audio.common@7.0-enums
-rm -rf prebuiltlibs/hardware/interfaces/rebootescrow/aidl/default/libhadamardutils
+rm -rf prebuiltlibs/hardware/interfaces/audio/common/all-versions/default/android.hardware.audio.common-util
+rm -rf prebuiltlibs/hardware/interfaces/audio/common/all-versions/default/android.hardware.audio.common@4.0-util
+rm -rf prebuiltlibs/hardware/interfaces/audio/common/all-versions/default/android.hardware.audio.common@5.0-util
+rm -rf prebuiltlibs/hardware/interfaces/audio/common/all-versions/default/android.hardware.audio.common@6.0-util
+rm -rf prebuiltlibs/hardware/interfaces/audio/common/all-versions/default/android.hardware.audio.common@7.0-util
+rm -rf prebuiltlibs/hardware/interfaces/audio/common/all-versions/default/service/android.hardware.audio.service
+rm -rf prebuiltlibs/hardware/interfaces/audio/core/all-versions/default/android.hardware.audio@6.0-impl
+rm -rf prebuiltlibs/hardware/interfaces/audio/core/all-versions/default/util/android.hardware.audio@4.0-util
+rm -rf prebuiltlibs/hardware/interfaces/audio/core/all-versions/default/util/android.hardware.audio@5.0-util
+rm -rf prebuiltlibs/hardware/interfaces/audio/core/all-versions/default/util/android.hardware.audio@6.0-util
+rm -rf prebuiltlibs/hardware/interfaces/audio/core/all-versions/default/util/android.hardware.audio@7.0-util
+rm -rf prebuiltlibs/hardware/interfaces/audio/effect/4.0/android.hardware.audio.effect@4.0
+rm -rf prebuiltlibs/hardware/interfaces/audio/effect/5.0/android.hardware.audio.effect@5.0
+rm -rf prebuiltlibs/hardware/interfaces/audio/effect/6.0/android.hardware.audio.effect@6.0
+rm -rf prebuiltlibs/hardware/interfaces/audio/effect/7.0/android.hardware.audio.effect@7.0
+rm -rf prebuiltlibs/hardware/interfaces/audio/effect/all-versions/default/android.hardware.audio.effect@6.0-impl
+rm -rf prebuiltlibs/hardware/interfaces/audio/effect/all-versions/default/util/android.hardware.audio.effect@4.0-util
+rm -rf prebuiltlibs/hardware/interfaces/audio/effect/all-versions/default/util/android.hardware.audio.effect@5.0-util
+rm -rf prebuiltlibs/hardware/interfaces/audio/effect/all-versions/default/util/android.hardware.audio.effect@6.0-util
+rm -rf prebuiltlibs/hardware/interfaces/audio/effect/all-versions/default/util/android.hardware.audio.effect@7.0-util
+rm -rf prebuiltlibs/hardware/interfaces/authsecret/1.0/android.hardware.authsecret@1.0
+rm -rf prebuiltlibs/hardware/interfaces/authsecret/1.0/default/android.hardware.authsecret@1.0-service
 rm -rf prebuiltlibs/hardware/interfaces/authsecret/aidl/android.hardware.authsecret-V1-ndk_platform
 rm -rf prebuiltlibs/hardware/interfaces/authsecret/aidl/default/android.hardware.authsecret-service.example
 rm -rf prebuiltlibs/hardware/interfaces/automotive/occupant_awareness/aidl/android.hardware.automotive.occupant_awareness-V1-ndk_platform
 rm -rf prebuiltlibs/hardware/interfaces/biometrics/common/aidl/android.hardware.biometrics.common-V1-ndk_platform
-rm -rf prebuiltlibs/hardware/interfaces/common/aidl/android.hardware.common-V2-ndk_platform
-rm -rf prebuiltlibs/hardware/interfaces/common/support/libaidlcommonsupport
-rm -rf prebuiltlibs/hardware/interfaces/common/fmq/aidl/android.hardware.common.fmq-V1-ndk_platform
-rm -rf prebuiltlibs/hardware/interfaces/graphics/common/aidl/android.hardware.graphics.common-V2-ndk_platform
-rm -rf prebuiltlibs/hardware/interfaces/neuralnetworks/aidl/android.hardware.neuralnetworks-V1-ndk_platform
-rm -rf prebuiltlibs/hardware/interfaces/gnss/aidl/android.hardware.gnss-V1-cpp
-rm -rf prebuiltlibs/hardware/interfaces/gnss/aidl/android.hardware.gnss-V1-ndk_platform
-rm -rf prebuiltlibs/hardware/interfaces/health/storage/aidl/android.hardware.health.storage-V1-ndk_platform
-rm -rf prebuiltlibs/hardware/interfaces/keymaster/aidl/android.hardware.keymaster-V3-cpp
-rm -rf prebuiltlibs/hardware/interfaces/identity/aidl/android.hardware.identity-V3-cpp
-rm -rf prebuiltlibs/hardware/interfaces/keymaster/aidl/android.hardware.keymaster-V3-ndk_platform
-rm -rf prebuiltlibs/hardware/interfaces/biometrics/face/aidl/android.hardware.biometrics.face-V1-ndk_platform
-rm -rf prebuiltlibs/hardware/interfaces/biometrics/face/aidl/default/android.hardware.biometrics.face-service.example
-rm -rf prebuiltlibs/hardware/interfaces/biometrics/fingerprint/aidl/android.hardware.biometrics.fingerprint-V1-ndk_platform
-rm -rf prebuiltlibs/hardware/interfaces/biometrics/fingerprint/aidl/default/android.hardware.biometrics.fingerprint-service.example
-rm -rf prebuiltlibs/hardware/interfaces/identity/aidl/android.hardware.identity-V3-ndk_platform
-rm -rf prebuiltlibs/hardware/interfaces/light/aidl/android.hardware.light-V1-cpp
-rm -rf prebuiltlibs/hardware/interfaces/light/aidl/android.hardware.light-V1-ndk_platform
-rm -rf prebuiltlibs/hardware/interfaces/light/aidl/default/android.hardware.lights-service.example
-rm -rf prebuiltlibs/hardware/interfaces/memtrack/aidl/android.hardware.memtrack-V1-ndk_platform
-rm -rf prebuiltlibs/hardware/interfaces/memtrack/aidl/default/android.hardware.memtrack-service.example
-rm -rf prebuiltlibs/hardware/interfaces/oemlock/aidl/android.hardware.oemlock-V1-ndk_platform
-rm -rf prebuiltlibs/hardware/interfaces/oemlock/aidl/default/android.hardware.oemlock-service.example
-rm -rf prebuiltlibs/hardware/interfaces/power/aidl/android.hardware.power-V1-cpp
-rm -rf prebuiltlibs/hardware/interfaces/power/aidl/android.hardware.power-V2-cpp
-rm -rf prebuiltlibs/hardware/interfaces/power/aidl/android.hardware.power-V2-ndk_platform
-rm -rf prebuiltlibs/hardware/interfaces/power/aidl/default/android.hardware.power-service.example
-rm -rf prebuiltlibs/hardware/interfaces/power/stats/aidl/android.hardware.power.stats-V1-cpp
-rm -rf prebuiltlibs/hardware/interfaces/power/stats/aidl/android.hardware.power.stats-V1-ndk_platform
-rm -rf prebuiltlibs/hardware/interfaces/power/stats/aidl/default/android.hardware.power.stats-service.example
-rm -rf prebuiltlibs/hardware/interfaces/rebootescrow/aidl/android.hardware.rebootescrow-V1-ndk_platform
-rm -rf prebuiltlibs/hardware/interfaces/rebootescrow/aidl/default/librebootescrowdefaultimpl
-rm -rf prebuiltlibs/hardware/interfaces/rebootescrow/aidl/default/android.hardware.rebootescrow-service.default
-rm -rf prebuiltlibs/hardware/interfaces/security/secureclock/aidl/android.hardware.security.secureclock-V1-cpp
-rm -rf prebuiltlibs/hardware/interfaces/security/keymint/aidl/android.hardware.security.keymint-V1-cpp
-rm -rf prebuiltlibs/hardware/interfaces/security/secureclock/aidl/android.hardware.security.secureclock-V1-ndk_platform
-rm -rf prebuiltlibs/hardware/interfaces/security/keymint/aidl/android.hardware.security.keymint-V1-ndk_platform
-rm -rf prebuiltlibs/hardware/interfaces/security/keymint/support/libkeymint_support
-rm -rf prebuiltlibs/hardware/interfaces/security/sharedsecret/aidl/android.hardware.security.sharedsecret-V1-ndk_platform
-rm -rf prebuiltlibs/hardware/interfaces/vibrator/aidl/android.hardware.vibrator-V2-cpp
-rm -rf prebuiltlibs/hardware/interfaces/vibrator/aidl/android.hardware.vibrator-V2-ndk_platform
-rm -rf prebuiltlibs/hardware/interfaces/vibrator/aidl/default/libvibratorexampleimpl
-rm -rf prebuiltlibs/hardware/interfaces/vibrator/aidl/default/android.hardware.vibrator-service.example
-rm -rf prebuiltlibs/hardware/interfaces/weaver/aidl/android.hardware.weaver-V1-ndk_platform
-rm -rf prebuiltlibs/hardware/interfaces/weaver/aidl/default/android.hardware.weaver-service.example
-rm -rf prebuiltlibs/hardware/interfaces/graphics/composer/2.1/utils/hwc2on1adapter/libhwc2on1adapter
-rm -rf prebuiltlibs/hardware/interfaces/atrace/1.0/android.hardware.atrace@1.0
-rm -rf prebuiltlibs/hardware/interfaces/atrace/1.0/default/android.hardware.atrace@1.0-service
-rm -rf prebuiltlibs/hardware/interfaces/audio/common/all-versions/default/android.hardware.audio.common-util
-rm -rf prebuiltlibs/hardware/interfaces/audio/common/2.0/android.hardware.audio.common@2.0
-rm -rf prebuiltlibs/hardware/interfaces/soundtrigger/2.0/android.hardware.soundtrigger@2.0
-rm -rf prebuiltlibs/hardware/interfaces/soundtrigger/2.0/default/android.hardware.soundtrigger@2.0-core
-rm -rf prebuiltlibs/hardware/interfaces/tv/input/1.0/android.hardware.tv.input@1.0
-rm -rf prebuiltlibs/hardware/interfaces/audio/common/4.0/android.hardware.audio.common@4.0
-rm -rf prebuiltlibs/hardware/interfaces/audio/common/all-versions/default/android.hardware.audio.common@4.0-util
-rm -rf prebuiltlibs/hardware/interfaces/audio/effect/4.0/android.hardware.audio.effect@4.0
-rm -rf prebuiltlibs/hardware/interfaces/audio/effect/all-versions/default/util/android.hardware.audio.effect@4.0-util
-rm -rf prebuiltlibs/hardware/interfaces/audio/4.0/android.hardware.audio@4.0
-rm -rf prebuiltlibs/hardware/interfaces/audio/core/all-versions/default/util/android.hardware.audio@4.0-util
-rm -rf prebuiltlibs/hardware/interfaces/audio/common/5.0/android.hardware.audio.common@5.0
-rm -rf prebuiltlibs/hardware/interfaces/audio/common/all-versions/default/android.hardware.audio.common@5.0-util
-rm -rf prebuiltlibs/hardware/interfaces/audio/effect/5.0/android.hardware.audio.effect@5.0
-rm -rf prebuiltlibs/hardware/interfaces/audio/effect/all-versions/default/util/android.hardware.audio.effect@5.0-util
-rm -rf prebuiltlibs/hardware/interfaces/audio/5.0/android.hardware.audio@5.0
-rm -rf prebuiltlibs/hardware/interfaces/audio/core/all-versions/default/util/android.hardware.audio@5.0-util
-rm -rf prebuiltlibs/hardware/interfaces/bluetooth/audio/2.0/android.hardware.bluetooth.audio@2.0
-rm -rf prebuiltlibs/hardware/interfaces/bluetooth/audio/2.1/android.hardware.bluetooth.audio@2.1
-rm -rf prebuiltlibs/hardware/interfaces/bluetooth/audio/utils/libbluetooth_audio_session
-rm -rf prebuiltlibs/hardware/interfaces/bluetooth/audio/2.1/default/android.hardware.bluetooth.audio@2.1-impl
-rm -rf prebuiltlibs/hardware/interfaces/audio/common/6.0/android.hardware.audio.common@6.0
-rm -rf prebuiltlibs/hardware/interfaces/audio/common/all-versions/default/android.hardware.audio.common@6.0-util
-rm -rf prebuiltlibs/hardware/interfaces/audio/effect/6.0/android.hardware.audio.effect@6.0
-rm -rf prebuiltlibs/hardware/interfaces/audio/effect/all-versions/default/util/android.hardware.audio.effect@6.0-util
-rm -rf prebuiltlibs/hardware/interfaces/audio/6.0/android.hardware.audio@6.0
-rm -rf prebuiltlibs/hardware/interfaces/audio/core/all-versions/default/util/android.hardware.audio@6.0-util
-rm -rf prebuiltlibs/hardware/interfaces/audio/common/7.0/android.hardware.audio.common@7.0
-rm -rf prebuiltlibs/hardware/interfaces/audio/common/all-versions/default/android.hardware.audio.common@7.0-util
-rm -rf prebuiltlibs/hardware/interfaces/audio/effect/7.0/android.hardware.audio.effect@7.0
-rm -rf prebuiltlibs/hardware/interfaces/audio/effect/all-versions/default/util/android.hardware.audio.effect@7.0-util
-rm -rf prebuiltlibs/hardware/interfaces/audio/7.0/android.hardware.audio@7.0
-rm -rf prebuiltlibs/hardware/interfaces/audio/core/all-versions/default/util/android.hardware.audio@7.0-util
-rm -rf prebuiltlibs/hardware/interfaces/audio/common/all-versions/default/service/android.hardware.audio.service
-rm -rf prebuiltlibs/hardware/interfaces/authsecret/1.0/android.hardware.authsecret@1.0
-rm -rf prebuiltlibs/hardware/interfaces/authsecret/1.0/default/android.hardware.authsecret@1.0-service
 rm -rf prebuiltlibs/hardware/interfaces/biometrics/face/1.0/android.hardware.biometrics.face@1.0
 rm -rf prebuiltlibs/hardware/interfaces/biometrics/face/1.0/default/android.hardware.biometrics.face@1.0-service.example
+rm -rf prebuiltlibs/hardware/interfaces/biometrics/face/aidl/android.hardware.biometrics.face-V1-ndk_platform
+rm -rf prebuiltlibs/hardware/interfaces/biometrics/face/aidl/default/android.hardware.biometrics.face-service.example
 rm -rf prebuiltlibs/hardware/interfaces/biometrics/fingerprint/2.1/android.hardware.biometrics.fingerprint@2.1
 rm -rf prebuiltlibs/hardware/interfaces/biometrics/fingerprint/2.2/android.hardware.biometrics.fingerprint@2.2
 rm -rf prebuiltlibs/hardware/interfaces/biometrics/fingerprint/2.2/default/android.hardware.biometrics.fingerprint@2.2-service.example
-rm -rf prebuiltlibs/hardware/interfaces/bluetooth/a2dp/1.0/android.hardware.bluetooth.a2dp@1.0
+rm -rf prebuiltlibs/hardware/interfaces/biometrics/fingerprint/aidl/android.hardware.biometrics.fingerprint-V1-ndk_platform
+rm -rf prebuiltlibs/hardware/interfaces/biometrics/fingerprint/aidl/default/android.hardware.biometrics.fingerprint-service.example
 rm -rf prebuiltlibs/hardware/interfaces/bluetooth/1.0/android.hardware.bluetooth@1.0
 rm -rf prebuiltlibs/hardware/interfaces/bluetooth/1.1/android.hardware.bluetooth@1.1
+rm -rf prebuiltlibs/hardware/interfaces/bluetooth/a2dp/1.0/android.hardware.bluetooth.a2dp@1.0
+rm -rf prebuiltlibs/hardware/interfaces/bluetooth/audio/2.0/android.hardware.bluetooth.audio@2.0
+rm -rf prebuiltlibs/hardware/interfaces/bluetooth/audio/2.1/android.hardware.bluetooth.audio@2.1
+rm -rf prebuiltlibs/hardware/interfaces/bluetooth/audio/2.1/default/android.hardware.bluetooth.audio@2.1-impl
+rm -rf prebuiltlibs/hardware/interfaces/bluetooth/audio/utils/libbluetooth_audio_session
 rm -rf prebuiltlibs/hardware/interfaces/boot/1.0/android.hardware.boot@1.0
 rm -rf prebuiltlibs/hardware/interfaces/boot/1.1/android.hardware.boot@1.1
 rm -rf prebuiltlibs/hardware/interfaces/boot/1.1/default/boot_control/libboot_control
@@ -225,19 +176,35 @@ rm -rf prebuiltlibs/hardware/interfaces/broadcastradio/1.0/android.hardware.broa
 rm -rf prebuiltlibs/hardware/interfaces/broadcastradio/1.1/android.hardware.broadcastradio@1.1
 rm -rf prebuiltlibs/hardware/interfaces/broadcastradio/common/utils1x/android.hardware.broadcastradio@common-utils-1x-lib
 rm -rf prebuiltlibs/hardware/interfaces/camera/common/1.0/android.hardware.camera.common@1.0
+rm -rf prebuiltlibs/hardware/interfaces/camera/device/1.0/android.hardware.camera.device@1.0
+rm -rf prebuiltlibs/hardware/interfaces/camera/device/3.2/android.hardware.camera.device@3.2
+rm -rf prebuiltlibs/hardware/interfaces/camera/device/3.3/android.hardware.camera.device@3.3
+rm -rf prebuiltlibs/hardware/interfaces/camera/device/3.4/android.hardware.camera.device@3.4
+rm -rf prebuiltlibs/hardware/interfaces/camera/device/3.5/android.hardware.camera.device@3.5
+rm -rf prebuiltlibs/hardware/interfaces/camera/device/3.6/android.hardware.camera.device@3.6
+rm -rf prebuiltlibs/hardware/interfaces/camera/device/3.7/android.hardware.camera.device@3.7
 rm -rf prebuiltlibs/hardware/interfaces/camera/metadata/3.2/android.hardware.camera.metadata@3.2
 rm -rf prebuiltlibs/hardware/interfaces/camera/metadata/3.3/android.hardware.camera.metadata@3.3
 rm -rf prebuiltlibs/hardware/interfaces/camera/metadata/3.4/android.hardware.camera.metadata@3.4
 rm -rf prebuiltlibs/hardware/interfaces/camera/metadata/3.5/android.hardware.camera.metadata@3.5
 rm -rf prebuiltlibs/hardware/interfaces/camera/metadata/3.6/android.hardware.camera.metadata@3.6
+rm -rf prebuiltlibs/hardware/interfaces/camera/provider/2.4/android.hardware.camera.provider@2.4
+rm -rf prebuiltlibs/hardware/interfaces/camera/provider/2.5/android.hardware.camera.provider@2.5
+rm -rf prebuiltlibs/hardware/interfaces/camera/provider/2.6/android.hardware.camera.provider@2.6
+rm -rf prebuiltlibs/hardware/interfaces/camera/provider/2.7/android.hardware.camera.provider@2.7
 rm -rf prebuiltlibs/hardware/interfaces/cas/1.0/android.hardware.cas@1.0
-rm -rf prebuiltlibs/hardware/interfaces/cas/native/1.0/android.hardware.cas.native@1.0
 rm -rf prebuiltlibs/hardware/interfaces/cas/1.1/android.hardware.cas@1.1
 rm -rf prebuiltlibs/hardware/interfaces/cas/1.2/android.hardware.cas@1.2
 rm -rf prebuiltlibs/hardware/interfaces/cas/1.2/default/android.hardware.cas@1.2-service
+rm -rf prebuiltlibs/hardware/interfaces/cas/native/1.0/android.hardware.cas.native@1.0
+rm -rf prebuiltlibs/hardware/interfaces/common/aidl/android.hardware.common-V2-ndk_platform
+rm -rf prebuiltlibs/hardware/interfaces/common/fmq/aidl/android.hardware.common.fmq-V1-ndk_platform
+rm -rf prebuiltlibs/hardware/interfaces/common/support/libaidlcommonsupport
 rm -rf prebuiltlibs/hardware/interfaces/configstore/1.0/android.hardware.configstore@1.0
 rm -rf prebuiltlibs/hardware/interfaces/configstore/1.1/android.hardware.configstore@1.1
 rm -rf prebuiltlibs/hardware/interfaces/configstore/utils/android.hardware.configstore-utils
+rm -rf prebuiltlibs/hardware/interfaces/confirmationui/1.0/android.hardware.confirmationui@1.0
+rm -rf prebuiltlibs/hardware/interfaces/confirmationui/support/android.hardware.confirmationui-support-lib
 rm -rf prebuiltlibs/hardware/interfaces/contexthub/1.0/android.hardware.contexthub@1.0
 rm -rf prebuiltlibs/hardware/interfaces/contexthub/1.1/android.hardware.contexthub@1.1
 rm -rf prebuiltlibs/hardware/interfaces/contexthub/1.2/android.hardware.contexthub@1.2
@@ -255,201 +222,167 @@ rm -rf prebuiltlibs/hardware/interfaces/fastboot/1.1/android.hardware.fastboot@1
 rm -rf prebuiltlibs/hardware/interfaces/fastboot/1.1/default/android.hardware.fastboot@1.1-impl-mock
 rm -rf prebuiltlibs/hardware/interfaces/gatekeeper/1.0/android.hardware.gatekeeper@1.0
 rm -rf prebuiltlibs/hardware/interfaces/gatekeeper/1.0/software/android.hardware.gatekeeper@1.0-service.software
-rm -rf prebuiltlibs/hardware/interfaces/gnss/visibility_control/1.0/android.hardware.gnss.visibility_control@1.0
 rm -rf prebuiltlibs/hardware/interfaces/gnss/1.0/android.hardware.gnss@1.0
-rm -rf prebuiltlibs/hardware/interfaces/gnss/measurement_corrections/1.0/android.hardware.gnss.measurement_corrections@1.0
 rm -rf prebuiltlibs/hardware/interfaces/gnss/1.1/android.hardware.gnss@1.1
 rm -rf prebuiltlibs/hardware/interfaces/gnss/2.0/android.hardware.gnss@2.0
-rm -rf prebuiltlibs/hardware/interfaces/gnss/measurement_corrections/1.1/android.hardware.gnss.measurement_corrections@1.1
 rm -rf prebuiltlibs/hardware/interfaces/gnss/2.1/android.hardware.gnss@2.1
-rm -rf prebuiltlibs/hardware/interfaces/gnss/common/utils/default/android.hardware.gnss@common-default-lib
+rm -rf prebuiltlibs/hardware/interfaces/gnss/aidl/android.hardware.gnss-V1-cpp
+rm -rf prebuiltlibs/hardware/interfaces/gnss/aidl/android.hardware.gnss-V1-ndk_platform
 rm -rf prebuiltlibs/hardware/interfaces/gnss/aidl/default/android.hardware.gnss-service.example
+rm -rf prebuiltlibs/hardware/interfaces/gnss/common/utils/default/android.hardware.gnss@common-default-lib
+rm -rf prebuiltlibs/hardware/interfaces/gnss/measurement_corrections/1.0/android.hardware.gnss.measurement_corrections@1.0
+rm -rf prebuiltlibs/hardware/interfaces/gnss/measurement_corrections/1.1/android.hardware.gnss.measurement_corrections@1.1
+rm -rf prebuiltlibs/hardware/interfaces/gnss/visibility_control/1.0/android.hardware.gnss.visibility_control@1.0
+rm -rf prebuiltlibs/hardware/interfaces/graphics/allocator/2.0/android.hardware.graphics.allocator@2.0
+rm -rf prebuiltlibs/hardware/interfaces/graphics/allocator/3.0/android.hardware.graphics.allocator@3.0
+rm -rf prebuiltlibs/hardware/interfaces/graphics/allocator/4.0/android.hardware.graphics.allocator@4.0
+rm -rf prebuiltlibs/hardware/interfaces/graphics/bufferqueue/1.0/android.hardware.graphics.bufferqueue@1.0
+rm -rf prebuiltlibs/hardware/interfaces/graphics/bufferqueue/2.0/android.hardware.graphics.bufferqueue@2.0
 rm -rf prebuiltlibs/hardware/interfaces/graphics/common/1.0/android.hardware.graphics.common@1.0
-rm -rf prebuiltlibs/hardware/interfaces/camera/device/1.0/android.hardware.camera.device@1.0
-rm -rf prebuiltlibs/hardware/interfaces/camera/device/3.2/android.hardware.camera.device@3.2
-rm -rf prebuiltlibs/hardware/interfaces/camera/provider/2.4/android.hardware.camera.provider@2.4
-rm -rf prebuiltlibs/hardware/interfaces/camera/provider/2.5/android.hardware.camera.provider@2.5
-rm -rf prebuiltlibs/hardware/interfaces/camera/device/3.3/android.hardware.camera.device@3.3
-rm -rf prebuiltlibs/hardware/interfaces/camera/device/3.4/android.hardware.camera.device@3.4
-rm -rf prebuiltlibs/hardware/interfaces/camera/device/3.5/android.hardware.camera.device@3.5
-rm -rf prebuiltlibs/hardware/interfaces/camera/device/3.6/android.hardware.camera.device@3.6
-rm -rf prebuiltlibs/hardware/interfaces/camera/device/3.7/android.hardware.camera.device@3.7
-rm -rf prebuiltlibs/hardware/interfaces/camera/provider/2.6/android.hardware.camera.provider@2.6
-rm -rf prebuiltlibs/hardware/interfaces/camera/provider/2.7/android.hardware.camera.provider@2.7
 rm -rf prebuiltlibs/hardware/interfaces/graphics/common/1.1/android.hardware.graphics.common@1.1
 rm -rf prebuiltlibs/hardware/interfaces/graphics/common/1.2/android.hardware.graphics.common@1.2
-rm -rf prebuiltlibs/hardware/interfaces/graphics/bufferqueue/2.0/android.hardware.graphics.bufferqueue@2.0
+rm -rf prebuiltlibs/hardware/interfaces/graphics/common/aidl/android.hardware.graphics.common-V2-ndk_platform
 rm -rf prebuiltlibs/hardware/interfaces/graphics/composer/2.1/android.hardware.graphics.composer@2.1
+rm -rf prebuiltlibs/hardware/interfaces/graphics/composer/2.1/utils/hwc2on1adapter/libhwc2on1adapter
+rm -rf prebuiltlibs/hardware/interfaces/graphics/composer/2.1/utils/hwc2onfbadapter/libhwc2onfbadapter
+rm -rf prebuiltlibs/hardware/interfaces/graphics/composer/2.1/utils/resources/android.hardware.graphics.composer@2.1-resources
 rm -rf prebuiltlibs/hardware/interfaces/graphics/composer/2.2/android.hardware.graphics.composer@2.2
+rm -rf prebuiltlibs/hardware/interfaces/graphics/composer/2.2/utils/resources/android.hardware.graphics.composer@2.2-resources
 rm -rf prebuiltlibs/hardware/interfaces/graphics/composer/2.3/android.hardware.graphics.composer@2.3
 rm -rf prebuiltlibs/hardware/interfaces/graphics/composer/2.4/android.hardware.graphics.composer@2.4
+rm -rf prebuiltlibs/hardware/interfaces/graphics/composer/2.4/default/android.hardware.graphics.composer@2.4-service
 rm -rf prebuiltlibs/hardware/interfaces/graphics/mapper/2.0/android.hardware.graphics.mapper@2.0
-rm -rf prebuiltlibs/hardware/interfaces/graphics/allocator/2.0/android.hardware.graphics.allocator@2.0
 rm -rf prebuiltlibs/hardware/interfaces/graphics/mapper/2.1/android.hardware.graphics.mapper@2.1
 rm -rf prebuiltlibs/hardware/interfaces/graphics/mapper/3.0/android.hardware.graphics.mapper@3.0
-rm -rf prebuiltlibs/hardware/interfaces/graphics/allocator/3.0/android.hardware.graphics.allocator@3.0
 rm -rf prebuiltlibs/hardware/interfaces/graphics/mapper/4.0/android.hardware.graphics.mapper@4.0
-rm -rf prebuiltlibs/hardware/interfaces/graphics/allocator/4.0/android.hardware.graphics.allocator@4.0
-rm -rf prebuiltlibs/hardware/interfaces/graphics/composer/2.1/utils/resources/android.hardware.graphics.composer@2.1-resources
-rm -rf prebuiltlibs/hardware/interfaces/graphics/composer/2.2/utils/resources/android.hardware.graphics.composer@2.2-resources
-rm -rf prebuiltlibs/hardware/interfaces/graphics/composer/2.4/default/android.hardware.graphics.composer@2.4-service
-rm -rf prebuiltlibs/hardware/interfaces/media/1.0/android.hardware.media@1.0
-rm -rf prebuiltlibs/hardware/interfaces/graphics/bufferqueue/1.0/android.hardware.graphics.bufferqueue@1.0
-rm -rf prebuiltlibs/hardware/interfaces/media/omx/1.0/android.hardware.media.omx@1.0
-rm -rf prebuiltlibs/hardware/interfaces/health/storage/1.0/android.hardware.health.storage@1.0
 rm -rf prebuiltlibs/hardware/interfaces/health/1.0/android.hardware.health@1.0
+rm -rf prebuiltlibs/hardware/interfaces/health/1.0/default/android.hardware.health@1.0-convert
 rm -rf prebuiltlibs/hardware/interfaces/health/2.0/android.hardware.health@2.0
+rm -rf prebuiltlibs/hardware/interfaces/health/2.0/default/android.hardware.health@2.0-impl
+rm -rf prebuiltlibs/hardware/interfaces/health/2.0/default/android.hardware.health@2.0-impl-default
 rm -rf prebuiltlibs/hardware/interfaces/health/2.0/utils/libhealthhalutils/libhealthhalutils
 rm -rf prebuiltlibs/hardware/interfaces/health/2.0/utils/libhealthstoragedefault/libhealthstoragedefault
 rm -rf prebuiltlibs/hardware/interfaces/health/2.1/android.hardware.health@2.1
-rm -rf prebuiltlibs/hardware/interfaces/input/common/1.0/android.hardware.input.common@1.0
-rm -rf prebuiltlibs/hardware/interfaces/input/classifier/1.0/android.hardware.input.classifier@1.0
-rm -rf prebuiltlibs/hardware/interfaces/input/classifier/1.0/default/android.hardware.input.classifier@1.0-service.default
-rm -rf prebuiltlibs/hardware/interfaces/ir/1.0/android.hardware.ir@1.0
-rm -rf prebuiltlibs/hardware/interfaces/keymaster/3.0/android.hardware.keymaster@3.0
-rm -rf prebuiltlibs/hardware/interfaces/keymaster/4.0/android.hardware.keymaster@4.0
-rm -rf prebuiltlibs/hardware/interfaces/confirmationui/1.0/android.hardware.confirmationui@1.0
-rm -rf prebuiltlibs/hardware/interfaces/identity/support/android.hardware.identity-support-lib
+rm -rf prebuiltlibs/hardware/interfaces/health/2.1/default/android.hardware.health@2.1-service
+rm -rf prebuiltlibs/hardware/interfaces/health/storage/1.0/android.hardware.health.storage@1.0
+rm -rf prebuiltlibs/hardware/interfaces/health/storage/aidl/android.hardware.health.storage-V1-ndk_platform
+rm -rf prebuiltlibs/hardware/interfaces/health/utils/libhealth2impl/libhealth2impl
+rm -rf prebuiltlibs/hardware/interfaces/health/utils/libhealthloop/libhealthloop
+rm -rf prebuiltlibs/hardware/interfaces/identity/aidl/android.hardware.identity-V3-cpp
+rm -rf prebuiltlibs/hardware/interfaces/identity/aidl/android.hardware.identity-V3-ndk_platform
 rm -rf prebuiltlibs/hardware/interfaces/identity/aidl/default/android.hardware.identity-libeic-hal-common
 rm -rf prebuiltlibs/hardware/interfaces/identity/aidl/default/android.hardware.identity-libeic-library
 rm -rf prebuiltlibs/hardware/interfaces/identity/aidl/default/android.hardware.identity-service.example
-rm -rf prebuiltlibs/hardware/interfaces/keymaster/4.1/android.hardware.keymaster@4.1
+rm -rf prebuiltlibs/hardware/interfaces/identity/support/android.hardware.identity-support-lib
+rm -rf prebuiltlibs/hardware/interfaces/input/classifier/1.0/android.hardware.input.classifier@1.0
+rm -rf prebuiltlibs/hardware/interfaces/input/classifier/1.0/default/android.hardware.input.classifier@1.0-service.default
+rm -rf prebuiltlibs/hardware/interfaces/input/common/1.0/android.hardware.input.common@1.0
+rm -rf prebuiltlibs/hardware/interfaces/ir/1.0/android.hardware.ir@1.0
+rm -rf prebuiltlibs/hardware/interfaces/keymaster/3.0/android.hardware.keymaster@3.0
+rm -rf prebuiltlibs/hardware/interfaces/keymaster/4.0/android.hardware.keymaster@4.0
 rm -rf prebuiltlibs/hardware/interfaces/keymaster/4.0/support/libkeymaster4support
+rm -rf prebuiltlibs/hardware/interfaces/keymaster/4.1/android.hardware.keymaster@4.1
 rm -rf prebuiltlibs/hardware/interfaces/keymaster/4.1/support/libkeymaster4_1support
+rm -rf prebuiltlibs/hardware/interfaces/keymaster/aidl/android.hardware.keymaster-V3-cpp
+rm -rf prebuiltlibs/hardware/interfaces/keymaster/aidl/android.hardware.keymaster-V3-ndk_platform
 rm -rf prebuiltlibs/hardware/interfaces/light/2.0/android.hardware.light@2.0
+rm -rf prebuiltlibs/hardware/interfaces/light/aidl/android.hardware.light-V1-cpp
+rm -rf prebuiltlibs/hardware/interfaces/light/aidl/android.hardware.light-V1-ndk_platform
+rm -rf prebuiltlibs/hardware/interfaces/light/aidl/default/android.hardware.lights-service.example
 rm -rf prebuiltlibs/hardware/interfaces/light/utils/blank_screen
+rm -rf prebuiltlibs/hardware/interfaces/media/1.0/android.hardware.media@1.0
 rm -rf prebuiltlibs/hardware/interfaces/media/bufferpool/2.0/android.hardware.media.bufferpool@2.0
 rm -rf prebuiltlibs/hardware/interfaces/media/c2/1.0/android.hardware.media.c2@1.0
 rm -rf prebuiltlibs/hardware/interfaces/media/c2/1.1/android.hardware.media.c2@1.1
 rm -rf prebuiltlibs/hardware/interfaces/media/c2/1.2/android.hardware.media.c2@1.2
+rm -rf prebuiltlibs/hardware/interfaces/media/omx/1.0/android.hardware.media.omx@1.0
 rm -rf prebuiltlibs/hardware/interfaces/memtrack/1.0/android.hardware.memtrack@1.0
+rm -rf prebuiltlibs/hardware/interfaces/memtrack/aidl/android.hardware.memtrack-V1-ndk_platform
+rm -rf prebuiltlibs/hardware/interfaces/memtrack/aidl/default/android.hardware.memtrack-service.example
 rm -rf prebuiltlibs/hardware/interfaces/neuralnetworks/1.0/android.hardware.neuralnetworks@1.0
 rm -rf prebuiltlibs/hardware/interfaces/neuralnetworks/1.1/android.hardware.neuralnetworks@1.1
 rm -rf prebuiltlibs/hardware/interfaces/neuralnetworks/1.2/android.hardware.neuralnetworks@1.2
 rm -rf prebuiltlibs/hardware/interfaces/neuralnetworks/1.3/android.hardware.neuralnetworks@1.3
+rm -rf prebuiltlibs/hardware/interfaces/neuralnetworks/aidl/android.hardware.neuralnetworks-V1-ndk_platform
 rm -rf prebuiltlibs/hardware/interfaces/nfc/1.0/android.hardware.nfc@1.0
 rm -rf prebuiltlibs/hardware/interfaces/nfc/1.1/android.hardware.nfc@1.1
 rm -rf prebuiltlibs/hardware/interfaces/nfc/1.2/android.hardware.nfc@1.2
-rm -rf prebuiltlibs/hardware/interfaces/power/stats/1.0/android.hardware.power.stats@1.0
+rm -rf prebuiltlibs/hardware/interfaces/oemlock/aidl/android.hardware.oemlock-V1-ndk_platform
+rm -rf prebuiltlibs/hardware/interfaces/oemlock/aidl/default/android.hardware.oemlock-service.example
 rm -rf prebuiltlibs/hardware/interfaces/power/1.0/android.hardware.power@1.0
 rm -rf prebuiltlibs/hardware/interfaces/power/1.1/android.hardware.power@1.1
 rm -rf prebuiltlibs/hardware/interfaces/power/1.2/android.hardware.power@1.2
 rm -rf prebuiltlibs/hardware/interfaces/power/1.3/android.hardware.power@1.3
+rm -rf prebuiltlibs/hardware/interfaces/power/aidl/android.hardware.power-V1-cpp
+rm -rf prebuiltlibs/hardware/interfaces/power/aidl/android.hardware.power-V2-cpp
+rm -rf prebuiltlibs/hardware/interfaces/power/aidl/android.hardware.power-V2-ndk_platform
+rm -rf prebuiltlibs/hardware/interfaces/power/aidl/default/android.hardware.power-service.example
+rm -rf prebuiltlibs/hardware/interfaces/power/stats/1.0/android.hardware.power.stats@1.0
+rm -rf prebuiltlibs/hardware/interfaces/power/stats/aidl/android.hardware.power.stats-V1-cpp
+rm -rf prebuiltlibs/hardware/interfaces/power/stats/aidl/android.hardware.power.stats-V1-ndk_platform
+rm -rf prebuiltlibs/hardware/interfaces/power/stats/aidl/default/android.hardware.power.stats-service.example
 rm -rf prebuiltlibs/hardware/interfaces/radio/1.0/android.hardware.radio@1.0
-rm -rf prebuiltlibs/hardware/interfaces/radio/config/1.0/android.hardware.radio.config@1.0
-rm -rf prebuiltlibs/hardware/interfaces/radio/config/1.1/android.hardware.radio.config@1.1
-rm -rf prebuiltlibs/hardware/interfaces/radio/config/1.2/android.hardware.radio.config@1.2
-rm -rf prebuiltlibs/hardware/interfaces/radio/deprecated/1.0/android.hardware.radio.deprecated@1.0
 rm -rf prebuiltlibs/hardware/interfaces/radio/1.1/android.hardware.radio@1.1
 rm -rf prebuiltlibs/hardware/interfaces/radio/1.2/android.hardware.radio@1.2
 rm -rf prebuiltlibs/hardware/interfaces/radio/1.3/android.hardware.radio@1.3
 rm -rf prebuiltlibs/hardware/interfaces/radio/1.4/android.hardware.radio@1.4
 rm -rf prebuiltlibs/hardware/interfaces/radio/1.5/android.hardware.radio@1.5
 rm -rf prebuiltlibs/hardware/interfaces/radio/1.6/android.hardware.radio@1.6
+rm -rf prebuiltlibs/hardware/interfaces/radio/config/1.0/android.hardware.radio.config@1.0
+rm -rf prebuiltlibs/hardware/interfaces/radio/config/1.1/android.hardware.radio.config@1.1
+rm -rf prebuiltlibs/hardware/interfaces/radio/config/1.2/android.hardware.radio.config@1.2
 rm -rf prebuiltlibs/hardware/interfaces/radio/config/1.3/android.hardware.radio.config@1.3
+rm -rf prebuiltlibs/hardware/interfaces/radio/deprecated/1.0/android.hardware.radio.deprecated@1.0
+rm -rf prebuiltlibs/hardware/interfaces/rebootescrow/aidl/android.hardware.rebootescrow-V1-ndk_platform
+rm -rf prebuiltlibs/hardware/interfaces/rebootescrow/aidl/default/android.hardware.rebootescrow-service.default
+rm -rf prebuiltlibs/hardware/interfaces/rebootescrow/aidl/default/libhadamardutils
+rm -rf prebuiltlibs/hardware/interfaces/rebootescrow/aidl/default/librebootescrowdefaultimpl
 rm -rf prebuiltlibs/hardware/interfaces/renderscript/1.0/android.hardware.renderscript@1.0
 rm -rf prebuiltlibs/hardware/interfaces/secure_element/1.0/android.hardware.secure_element@1.0
+rm -rf prebuiltlibs/hardware/interfaces/security/keymint/aidl/android.hardware.security.keymint-V1-cpp
+rm -rf prebuiltlibs/hardware/interfaces/security/keymint/aidl/android.hardware.security.keymint-V1-ndk_platform
+rm -rf prebuiltlibs/hardware/interfaces/security/keymint/aidl/android.hardware.security.keymint-V1-rust
+rm -rf prebuiltlibs/hardware/interfaces/security/keymint/aidl/default/android.hardware.security.keymint-service
+rm -rf prebuiltlibs/hardware/interfaces/security/keymint/support/libkeymint_support
+rm -rf prebuiltlibs/hardware/interfaces/security/secureclock/aidl/android.hardware.security.secureclock-V1-cpp
+rm -rf prebuiltlibs/hardware/interfaces/security/secureclock/aidl/android.hardware.security.secureclock-V1-ndk_platform
+rm -rf prebuiltlibs/hardware/interfaces/security/secureclock/aidl/android.hardware.security.secureclock-V1-rust
+rm -rf prebuiltlibs/hardware/interfaces/security/sharedsecret/aidl/android.hardware.security.sharedsecret-V1-ndk_platform
+rm -rf prebuiltlibs/hardware/interfaces/security/sharedsecret/aidl/android.hardware.security.sharedsecret-V1-rust
 rm -rf prebuiltlibs/hardware/interfaces/sensors/1.0/android.hardware.sensors@1.0
 rm -rf prebuiltlibs/hardware/interfaces/sensors/1.0/default/android.hardware.sensors@1.0-convert
 rm -rf prebuiltlibs/hardware/interfaces/sensors/2.0/android.hardware.sensors@2.0
 rm -rf prebuiltlibs/hardware/interfaces/sensors/2.1/android.hardware.sensors@2.1
+rm -rf prebuiltlibs/hardware/interfaces/sensors/2.1/default/android.hardware.sensors@2.1-service.mock
+rm -rf prebuiltlibs/hardware/interfaces/sensors/common/default/2.X/android.hardware.sensors@2.X-shared-impl
+rm -rf prebuiltlibs/hardware/interfaces/soundtrigger/2.0/android.hardware.soundtrigger@2.0
+rm -rf prebuiltlibs/hardware/interfaces/soundtrigger/2.0/default/android.hardware.soundtrigger@2.0-core
 rm -rf prebuiltlibs/hardware/interfaces/tests/lazy/1.0/android.hardware.tests.lazy@1.0
 rm -rf prebuiltlibs/hardware/interfaces/tests/lazy/1.1/android.hardware.tests.lazy@1.1
 rm -rf prebuiltlibs/hardware/interfaces/thermal/1.0/android.hardware.thermal@1.0
 rm -rf prebuiltlibs/hardware/interfaces/thermal/2.0/android.hardware.thermal@2.0
 rm -rf prebuiltlibs/hardware/interfaces/thermal/2.0/default/android.hardware.thermal@2.0-service.mock
-rm -rf prebuiltlibs/hardware/interfaces/usb/gadget/1.0/android.hardware.usb.gadget@1.0
+rm -rf prebuiltlibs/hardware/interfaces/tv/input/1.0/android.hardware.tv.input@1.0
 rm -rf prebuiltlibs/hardware/interfaces/usb/1.0/android.hardware.usb@1.0
 rm -rf prebuiltlibs/hardware/interfaces/usb/1.0/default/android.hardware.usb@1.0-service
+rm -rf prebuiltlibs/hardware/interfaces/usb/gadget/1.0/android.hardware.usb.gadget@1.0
 rm -rf prebuiltlibs/hardware/interfaces/vibrator/1.0/android.hardware.vibrator@1.0
 rm -rf prebuiltlibs/hardware/interfaces/vibrator/1.1/android.hardware.vibrator@1.1
 rm -rf prebuiltlibs/hardware/interfaces/vibrator/1.2/android.hardware.vibrator@1.2
 rm -rf prebuiltlibs/hardware/interfaces/vibrator/1.3/android.hardware.vibrator@1.3
+rm -rf prebuiltlibs/hardware/interfaces/vibrator/aidl/android.hardware.vibrator-V2-cpp
+rm -rf prebuiltlibs/hardware/interfaces/vibrator/aidl/android.hardware.vibrator-V2-ndk_platform
+rm -rf prebuiltlibs/hardware/interfaces/vibrator/aidl/default/android.hardware.vibrator-service.example
+rm -rf prebuiltlibs/hardware/interfaces/vibrator/aidl/default/libvibratorexampleimpl
 rm -rf prebuiltlibs/hardware/interfaces/vr/1.0/android.hardware.vr@1.0
+rm -rf prebuiltlibs/hardware/interfaces/weaver/aidl/android.hardware.weaver-V1-ndk_platform
+rm -rf prebuiltlibs/hardware/interfaces/weaver/aidl/default/android.hardware.weaver-service.example
+rm -rf prebuiltlibs/hardware/interfaces/wifi/1.0/android.hardware.wifi@1.0
 rm -rf prebuiltlibs/hardware/interfaces/wifi/supplicant/1.0/android.hardware.wifi.supplicant@1.0
 rm -rf prebuiltlibs/hardware/interfaces/wifi/supplicant/1.1/android.hardware.wifi.supplicant@1.1
 rm -rf prebuiltlibs/hardware/interfaces/wifi/supplicant/1.2/android.hardware.wifi.supplicant@1.2
-rm -rf prebuiltlibs/hardware/interfaces/wifi/1.0/android.hardware.wifi@1.0
 rm -rf prebuiltlibs/hardware/interfaces/wifi/supplicant/1.3/android.hardware.wifi.supplicant@1.3
 rm -rf prebuiltlibs/hardware/interfaces/wifi/supplicant/1.4/android.hardware.wifi.supplicant@1.4
-rm -rf prebuiltlibs/hardware/interfaces/audio/effect/all-versions/default/android.hardware.audio.effect@6.0-impl
-rm -rf prebuiltlibs/hardware/interfaces/audio/core/all-versions/default/android.hardware.audio@6.0-impl
-rm -rf prebuiltlibs/hardware/interfaces/security/keymint/aidl/default/android.hardware.security.keymint-service
-rm -rf prebuiltlibs/hardware/interfaces/security/secureclock/aidl/android.hardware.security.secureclock-V1-rust
-rm -rf prebuiltlibs/hardware/interfaces/security/keymint/aidl/android.hardware.security.keymint-V1-rust
-rm -rf prebuiltlibs/hardware/interfaces/security/sharedsecret/aidl/android.hardware.security.sharedsecret-V1-rust
-rm -rf prebuiltlibs/hardware/interfaces/health/2.0/default/android.hardware.health@2.0-impl
-rm -rf prebuiltlibs/hardware/interfaces/health/2.0/default/android.hardware.health@2.0-impl-default
-rm -rf prebuiltlibs/hardware/interfaces/sensors/common/default/2.X/android.hardware.sensors@2.X-shared-impl
-rm -rf prebuiltlibs/hardware/interfaces/sensors/2.1/default/android.hardware.sensors@2.1-service.mock
-rm -rf prebuiltlibs/hardware/interfaces/health/2.1/default/android.hardware.health@2.1-service
-
-rm -rf prebuiltlibs/external/perfetto/ipc_plugin
-rm -rf prebuiltlibs/external/perfetto/perfetto_src_protozero_protoc_plugin_cppgen_plugin
-rm -rf prebuiltlibs/external/perfetto/protozero_plugin
-rm -rf prebuiltlibs/external/perfetto/libperfetto
-rm -rf prebuiltlibs/external/perfetto/traced
-rm -rf prebuiltlibs/external/perfetto/traced_probes
-rm -rf prebuiltlibs/external/perfetto/libperfetto_client_experimental
-rm -rf prebuiltlibs/external/perfetto/perfetto
-rm -rf prebuiltlibs/external/perfetto/trigger_perfetto
-rm -rf prebuiltlibs/external/perfetto/perfetto_trace_protos
-rm -rf prebuiltlibs/external/perfetto/libstatslog_perfetto
-rm -rf prebuiltlibs/external/perfetto/heapprofd
-rm -rf prebuiltlibs/external/perfetto/heapprofd_client_api
-rm -rf prebuiltlibs/external/perfetto/heapprofd_client
-rm -rf prebuiltlibs/external/perfetto/libperfetto_android_internal
-rm -rf prebuiltlibs/external/perfetto/traced_perf
-
-start=`date +%s`
-./prebuilts/build-tools/linux-x86/bin/ninja -f out/soong/build.ninja \
-  out/soong/.intermediates/external/swiftshader/src/libswiftshader_compiler/android_vendor.31_x86_64_static/libswiftshader_compiler.a \
-  out/soong/.intermediates/external/swiftshader/src/libswiftshader_compiler/android_vendor.31_x86_x86_64_static/libswiftshader_compiler.a \
-  out/soong/.intermediates/external/swiftshader/src/libswiftshader_llvm/android_vendor.31_x86_64_static/libswiftshader_llvm.a \
-  out/soong/.intermediates/external/swiftshader/src/libswiftshader_llvm/android_vendor.31_x86_x86_64_static/libswiftshader_llvm.a \
-  out/soong/.intermediates/external/swiftshader/src/libEGL_swiftshader/android_vendor.31_x86_64_shared/libEGL_swiftshader.so \
-  out/soong/.intermediates/external/swiftshader/src/libEGL_swiftshader/android_vendor.31_x86_x86_64_shared/libEGL_swiftshader.so \
-  out/soong/.intermediates/external/swiftshader/src/libGLESv1_CM_swiftshader/android_vendor.31_x86_64_shared/libGLESv1_CM_swiftshader.so \
-  out/soong/.intermediates/external/swiftshader/src/libGLESv1_CM_swiftshader/android_vendor.31_x86_x86_64_shared/libGLESv1_CM_swiftshader.so \
-  out/soong/.intermediates/external/swiftshader/src/libGLESv2_swiftshader/android_vendor.31_x86_64_shared/libGLESv2_swiftshader.so \
-  out/soong/.intermediates/external/swiftshader/src/libGLESv2_swiftshader/android_vendor.31_x86_x86_64_shared/libGLESv2_swiftshader.so \
-  out/soong/.intermediates/external/swiftshader/src/vulkan.pastel/android_vendor.31_x86_64_shared/vulkan.pastel.so \
-  out/soong/.intermediates/external/swiftshader/src/vulkan.pastel/android_vendor.31_x86_x86_64_shared/vulkan.pastel.so \
-  
-
-mkdir -p prebuiltlibs/external/swiftshader/src/libswiftshader_compiler/android_vendor.31_x86_64_static/ && mv out/soong/.intermediates/external/swiftshader/src/libswiftshader_compiler/android_vendor.31_x86_64_static/libswiftshader_compiler.a prebuiltlibs/external/swiftshader/src/libswiftshader_compiler/android_vendor.31_x86_64_static/libswiftshader_compiler.a
-mkdir -p prebuiltlibs/external/swiftshader/src/libswiftshader_compiler/android_vendor.31_x86_x86_64_static/ && mv out/soong/.intermediates/external/swiftshader/src/libswiftshader_compiler/android_vendor.31_x86_x86_64_static/libswiftshader_compiler.a prebuiltlibs/external/swiftshader/src/libswiftshader_compiler/android_vendor.31_x86_x86_64_static/libswiftshader_compiler.a
-mkdir -p prebuiltlibs/external/swiftshader/src/libswiftshader_llvm/android_vendor.31_x86_64_static/ && mv out/soong/.intermediates/external/swiftshader/src/libswiftshader_llvm/android_vendor.31_x86_64_static/libswiftshader_llvm.a prebuiltlibs/external/swiftshader/src/libswiftshader_llvm/android_vendor.31_x86_64_static/libswiftshader_llvm.a
-mkdir -p prebuiltlibs/external/swiftshader/src/libswiftshader_llvm/android_vendor.31_x86_x86_64_static/ && mv out/soong/.intermediates/external/swiftshader/src/libswiftshader_llvm/android_vendor.31_x86_x86_64_static/libswiftshader_llvm.a prebuiltlibs/external/swiftshader/src/libswiftshader_llvm/android_vendor.31_x86_x86_64_static/libswiftshader_llvm.a
-mkdir -p prebuiltlibs/external/swiftshader/src/libEGL_swiftshader/android_vendor.31_x86_64_shared/ && mv out/soong/.intermediates/external/swiftshader/src/libEGL_swiftshader/android_vendor.31_x86_64_shared/libEGL_swiftshader.so prebuiltlibs/external/swiftshader/src/libEGL_swiftshader/android_vendor.31_x86_64_shared/libEGL_swiftshader.so
-mkdir -p prebuiltlibs/external/swiftshader/src/libEGL_swiftshader/android_vendor.31_x86_x86_64_shared/ && mv out/soong/.intermediates/external/swiftshader/src/libEGL_swiftshader/android_vendor.31_x86_x86_64_shared/libEGL_swiftshader.so prebuiltlibs/external/swiftshader/src/libEGL_swiftshader/android_vendor.31_x86_x86_64_shared/libEGL_swiftshader.so
-mkdir -p prebuiltlibs/external/swiftshader/src/libGLESv1_CM_swiftshader/android_vendor.31_x86_64_shared/ && mv out/soong/.intermediates/external/swiftshader/src/libGLESv1_CM_swiftshader/android_vendor.31_x86_64_shared/libGLESv1_CM_swiftshader.so prebuiltlibs/external/swiftshader/src/libGLESv1_CM_swiftshader/android_vendor.31_x86_64_shared/libGLESv1_CM_swiftshader.so
-mkdir -p prebuiltlibs/external/swiftshader/src/libGLESv1_CM_swiftshader/android_vendor.31_x86_x86_64_shared/ && mv out/soong/.intermediates/external/swiftshader/src/libGLESv1_CM_swiftshader/android_vendor.31_x86_x86_64_shared/libGLESv1_CM_swiftshader.so prebuiltlibs/external/swiftshader/src/libGLESv1_CM_swiftshader/android_vendor.31_x86_x86_64_shared/libGLESv1_CM_swiftshader.so
-mkdir -p prebuiltlibs/external/swiftshader/src/libGLESv2_swiftshader/android_vendor.31_x86_64_shared/ && mv out/soong/.intermediates/external/swiftshader/src/libGLESv2_swiftshader/android_vendor.31_x86_64_shared/libGLESv2_swiftshader.so prebuiltlibs/external/swiftshader/src/libGLESv2_swiftshader/android_vendor.31_x86_64_shared/libGLESv2_swiftshader.so
-mkdir -p prebuiltlibs/external/swiftshader/src/libGLESv2_swiftshader/android_vendor.31_x86_x86_64_shared/ && mv out/soong/.intermediates/external/swiftshader/src/libGLESv2_swiftshader/android_vendor.31_x86_x86_64_shared/libGLESv2_swiftshader.so prebuiltlibs/external/swiftshader/src/libGLESv2_swiftshader/android_vendor.31_x86_x86_64_shared/libGLESv2_swiftshader.so
-mkdir -p prebuiltlibs/external/swiftshader/src/vulkan.pastel/android_vendor.31_x86_64_shared/ && mv out/soong/.intermediates/external/swiftshader/src/vulkan.pastel/android_vendor.31_x86_64_shared/vulkan.pastel.so prebuiltlibs/external/swiftshader/src/vulkan.pastel/android_vendor.31_x86_64_shared/vulkan.pastel.so
-mkdir -p prebuiltlibs/external/swiftshader/src/vulkan.pastel/android_vendor.31_x86_x86_64_shared/ && mv out/soong/.intermediates/external/swiftshader/src/vulkan.pastel/android_vendor.31_x86_x86_64_shared/vulkan.pastel.so prebuiltlibs/external/swiftshader/src/vulkan.pastel/android_vendor.31_x86_x86_64_shared/vulkan.pastel.so
-
-printf "cc_prebuilt_library_static {\n  name: \"libswiftshader_compiler\",\n  target: {\n    host: {\n      compile_multilib: \"64\",\n      header_libs: [\"swiftshader_host_headers\",\"swiftshader_platform_headers\",\"libnativebase_headers\"],\n      allow_undefined_symbols: true,\n    },\n    darwin: {\n      enabled: false,\n    },\n    android: {\n      relative_install_path: \"egl\",\n      header_libs: [\"swiftshader_platform_headers\",\"libnativebase_headers\"],\n      shared_libs: [\"android.hardware.graphics.mapper@3.0\",\"android.hardware.graphics.mapper@4.0\",\"libnativewindow\",\"libhardware\",\"libhidlbase\",\"libcutils\",\"libsync\",\"liblog\",\"libutils\"],\n      static_libs: [\"libarect\"],\n    },\n  },\n  vendor: true,\n  host_supported: true,\n  strip: {\n    none: true,\n  },\n  multiple_variants: true,\n  prefer: true,\n  srcs: [\"libswiftshader_compiler.a\"],\n}\n" >> prebuiltlibs/external/swiftshader/src/Android.bp
-printf "cc_prebuilt_library_static {\n  name: \"libswiftshader_llvm\",\n  target: {\n    host: {\n      compile_multilib: \"64\",\n      header_libs: [\"swiftshader_host_headers\",\"swiftshader_platform_headers\",\"libnativebase_headers\"],\n      allow_undefined_symbols: true,\n    },\n    darwin: {\n      enabled: false,\n    },\n    android: {\n      relative_install_path: \"egl\",\n      header_libs: [\"swiftshader_platform_headers\",\"libnativebase_headers\"],\n      shared_libs: [\"android.hardware.graphics.mapper@3.0\",\"android.hardware.graphics.mapper@4.0\",\"libnativewindow\",\"libhardware\",\"libhidlbase\",\"libcutils\",\"libsync\",\"liblog\",\"libutils\"],\n      static_libs: [\"libarect\"],\n    },\n  },\n  vendor: true,\n  host_supported: true,\n  static_libs: [\"libLLVM10_swiftshader\"],\n  shared_libs: [\"liblog\"],\n  strip: {\n    none: true,\n  },\n  multiple_variants: true,\n  prefer: true,\n  srcs: [\"libswiftshader_llvm.a\"],\n}\n" >> prebuiltlibs/external/swiftshader/src/Android.bp
-printf "cc_prebuilt_library_shared {\n  name: \"libEGL_swiftshader\",\n  target: {\n    host: {\n      compile_multilib: \"64\",\n      header_libs: [\"swiftshader_host_headers\",\"swiftshader_platform_headers\",\"libnativebase_headers\"],\n      allow_undefined_symbols: true,\n    },\n    darwin: {\n      enabled: false,\n    },\n    android: {\n      relative_install_path: \"egl\",\n      header_libs: [\"swiftshader_platform_headers\",\"libnativebase_headers\"],\n      shared_libs: [\"android.hardware.graphics.mapper@3.0\",\"android.hardware.graphics.mapper@4.0\",\"libnativewindow\",\"libhardware\",\"libhidlbase\",\"libcutils\",\"libsync\",\"liblog\",\"libutils\"],\n      static_libs: [\"libarect\"],\n    },\n  },\n  vendor: true,\n  host_supported: true,\n  version_script: \"OpenGL/libEGL/libEGL.lds\",\n  static_libs: [\"libswiftshader_llvm\",\"libLLVM10_swiftshader\"],\n  strip: {\n    none: true,\n  },\n  multiple_variants: true,\n  prefer: true,\n  srcs: [\"libEGL_swiftshader.so\"],\n}\n" >> prebuiltlibs/external/swiftshader/src/Android.bp
-printf "cc_prebuilt_library_shared {\n  name: \"libGLESv1_CM_swiftshader\",\n  target: {\n    host: {\n      compile_multilib: \"64\",\n      header_libs: [\"swiftshader_host_headers\",\"swiftshader_platform_headers\",\"libnativebase_headers\"],\n      allow_undefined_symbols: true,\n    },\n    darwin: {\n      enabled: false,\n    },\n    android: {\n      relative_install_path: \"egl\",\n      header_libs: [\"swiftshader_platform_headers\",\"libnativebase_headers\"],\n      shared_libs: [\"android.hardware.graphics.mapper@3.0\",\"android.hardware.graphics.mapper@4.0\",\"libnativewindow\",\"libhardware\",\"libhidlbase\",\"libcutils\",\"libsync\",\"liblog\",\"libutils\"],\n      static_libs: [\"libarect\"],\n    },\n  },\n  vendor: true,\n  host_supported: true,\n  version_script: \"OpenGL/libGLES_CM/libGLES_CM.lds\",\n  static_libs: [\"libswiftshader_llvm\",\"libLLVM10_swiftshader\"],\n  strip: {\n    none: true,\n  },\n  multiple_variants: true,\n  prefer: true,\n  srcs: [\"libGLESv1_CM_swiftshader.so\"],\n}\n" >> prebuiltlibs/external/swiftshader/src/Android.bp
-printf "cc_prebuilt_library_shared {\n  name: \"libGLESv2_swiftshader\",\n  target: {\n    host: {\n      compile_multilib: \"64\",\n      header_libs: [\"swiftshader_host_headers\",\"swiftshader_platform_headers\",\"libnativebase_headers\"],\n      allow_undefined_symbols: true,\n    },\n    darwin: {\n      enabled: false,\n    },\n    android: {\n      relative_install_path: \"egl\",\n      header_libs: [\"swiftshader_platform_headers\",\"libnativebase_headers\"],\n      shared_libs: [\"android.hardware.graphics.mapper@3.0\",\"android.hardware.graphics.mapper@4.0\",\"libnativewindow\",\"libhardware\",\"libhidlbase\",\"libcutils\",\"libsync\",\"liblog\",\"libutils\"],\n      static_libs: [\"libarect\"],\n    },\n  },\n  vendor: true,\n  host_supported: true,\n  version_script: \"OpenGL/libGLESv2/libGLESv2.lds\",\n  static_libs: [\"libswiftshader_llvm\",\"libLLVM10_swiftshader\",\"libswiftshader_compiler\"],\n  strip: {\n    none: true,\n  },\n  multiple_variants: true,\n  prefer: true,\n  srcs: [\"libGLESv2_swiftshader.so\"],\n}\n" >> prebuiltlibs/external/swiftshader/src/Android.bp
-printf "cc_prebuilt_library_shared {\n  name: \"vulkan.pastel\",\n  static_libs: [\"swiftshader_astc\",\"swiftshader_debug\",\"swiftshader_marl\",\"swiftshader_spirv-tools\",\"libswiftshadervk_llvm_debug\",\"libLLVM10_swiftshader\"],\n  target: {\n    host: {\n      compile_multilib: \"64\",\n    },\n    darwin: {\n      enabled: false,\n    },\n    android: {\n      relative_install_path: \"hw\",\n      header_libs: [\"swiftshader_platform_headers\",\"vulkan_headers\",\"hwvulkan_headers\"],\n      shared_libs: [\"android.hardware.graphics.mapper@3.0\",\"android.hardware.graphics.mapper@4.0\",\"libnativewindow\",\"libhardware\",\"libhidlbase\",\"libcutils\",\"libsync\",\"liblog\",\"libutils\"],\n      static_libs: [\"libarect\"],\n    },\n  },\n  vendor: true,\n  version_script: \"Vulkan/android_vk_swiftshader.lds\",\n  strip: {\n    none: true,\n  },\n  multiple_variants: true,\n  prefer: true,\n  srcs: [\"vulkan.pastel.so\"],\n}\n" >> prebuiltlibs/external/swiftshader/src/Android.bp
-
-df -h
-clean_out_intermediates
-mkdir -p prebuiltlibs/external/swiftshader/ninja && rsync -ar out/soong/ninja/external/swiftshader/ prebuiltlibs/external/swiftshader/ninja/external_swiftshader-12
-touch prebuiltlibs/external/swiftshader/ninja/.find-ignore
-tar cfJ external_swiftshader-12.tar.xz -C prebuiltlibs/external/swiftshader/ .
-ls -l external_swiftshader-12.tar.xz
-end=`date +%s`
-echo $((end-start))
-
-rm -rf prebuiltlibs/external/swiftshader/src/libEGL_swiftshader
-rm -rf prebuiltlibs/external/swiftshader/src/libGLESv1_CM_swiftshader
-rm -rf prebuiltlibs/external/swiftshader/src/libGLESv2_swiftshader
-rm -rf prebuiltlibs/external/swiftshader/src/vulkan.pastel
 
 start=`date +%s`
 ./prebuilts/build-tools/linux-x86/bin/ninja -f out/soong/build.ninja \
@@ -468,274 +401,6 @@ mkdir -p prebuiltlibs/external/skia/ninja && rsync -ar out/soong/ninja/external/
 touch prebuiltlibs/external/skia/ninja/.find-ignore
 tar cfJ external_skia-12.tar.xz -C prebuiltlibs/external/skia/ .
 ls -l external_skia-12.tar.xz
-end=`date +%s`
-echo $((end-start))
-
-rm -rf prebuiltlibs/external/skia/libskia_renderengine
-
-start=`date +%s`
-./prebuilts/build-tools/linux-x86/bin/ninja -f out/soong/build.ninja \
-  out/soong/.intermediates/device/generic/vulkan-cereal/third-party/angle/gfxstream_angle_stub/android_x86_64_static/gfxstream_angle_stub.a \
-  out/soong/.intermediates/device/generic/vulkan-cereal/third-party/angle/gfxstream_angle_stub/android_x86_64_static_apex10000/gfxstream_angle_stub.a \
-  out/soong/.intermediates/device/generic/vulkan-cereal/third-party/astc-codec/src/decoder/gfxstream_astc_codec/android_x86_64_static/gfxstream_astc_codec.a \
-  out/soong/.intermediates/device/generic/vulkan-cereal/third-party/astc-codec/src/decoder/gfxstream_astc_codec/android_x86_64_static_apex10000/gfxstream_astc_codec.a \
-  out/soong/.intermediates/device/generic/vulkan-cereal/stream-servers/compressedTextureFormats/gfxstream_compressedTextures/android_x86_64_static/gfxstream_compressedTextures.a \
-  out/soong/.intermediates/device/generic/vulkan-cereal/stream-servers/compressedTextureFormats/gfxstream_compressedTextures/android_x86_64_static_apex10000/gfxstream_compressedTextures.a \
-  out/soong/.intermediates/device/generic/vulkan-cereal/stream-servers/libGLSnapshot/gfxstream_glsnapshot/android_x86_64_static/gfxstream_glsnapshot.a \
-  out/soong/.intermediates/device/generic/vulkan-cereal/stream-servers/libGLSnapshot/gfxstream_glsnapshot/android_x86_64_static_apex10000/gfxstream_glsnapshot.a \
-  out/soong/.intermediates/device/generic/vulkan-cereal/third-party/lz4/gfxstream_lz4/android_x86_64_static/gfxstream_lz4.a \
-  out/soong/.intermediates/device/generic/vulkan-cereal/third-party/lz4/gfxstream_lz4/android_x86_64_static_apex10000/gfxstream_lz4.a \
-  out/soong/.intermediates/device/generic/vulkan-cereal/third-party/perfetto/perfetto-libperfettobase/android_x86_64_static/perfetto-libperfettobase.a \
-  out/soong/.intermediates/device/generic/vulkan-cereal/third-party/perfetto/perfetto-libperfettobase/android_x86_64_static_apex10000/perfetto-libperfettobase.a \
-  out/soong/.intermediates/device/generic/vulkan-cereal/third-party/perfetto/perfetto-libprotozero/android_x86_64_static/perfetto-libprotozero.a \
-  out/soong/.intermediates/device/generic/vulkan-cereal/third-party/perfetto/perfetto-libprotozero/android_x86_64_static_apex10000/perfetto-libprotozero.a \
-  out/soong/.intermediates/device/generic/vulkan-cereal/third-party/perfetto-tracing-only/perfetto-tracing-only/android_x86_64_static/perfetto-tracing-only.a \
-  out/soong/.intermediates/device/generic/vulkan-cereal/third-party/perfetto-tracing-only/perfetto-tracing-only/android_x86_64_static_apex10000/perfetto-tracing-only.a \
-  out/soong/.intermediates/device/generic/vulkan-cereal/base/gfxstream_base/android_x86_64_static/gfxstream_base.a \
-  out/soong/.intermediates/device/generic/vulkan-cereal/base/gfxstream_base/android_x86_64_static_apex10000/gfxstream_base.a \
-  out/soong/.intermediates/device/generic/vulkan-cereal/host-common/gfxstream_host_common/android_x86_64_static/gfxstream_host_common.a \
-  out/soong/.intermediates/device/generic/vulkan-cereal/host-common/gfxstream_host_common/android_x86_64_static_apex10000/gfxstream_host_common.a \
-  out/soong/.intermediates/device/generic/vulkan-cereal/stream-servers/apigen-codec-common/gfxstream_apigen_codec_common/android_x86_64_static/gfxstream_apigen_codec_common.a \
-  out/soong/.intermediates/device/generic/vulkan-cereal/stream-servers/apigen-codec-common/gfxstream_apigen_codec_common/android_x86_64_static_apex10000/gfxstream_apigen_codec_common.a \
-  out/soong/.intermediates/device/generic/vulkan-cereal/stream-servers/gles1_dec/gfxstream_gles1_dec/android_x86_64_static/gfxstream_gles1_dec.a \
-  out/soong/.intermediates/device/generic/vulkan-cereal/stream-servers/gles1_dec/gfxstream_gles1_dec/android_x86_64_static_apex10000/gfxstream_gles1_dec.a \
-  out/soong/.intermediates/device/generic/vulkan-cereal/stream-servers/gles2_dec/gfxstream_gles2_dec/android_x86_64_static/gfxstream_gles2_dec.a \
-  out/soong/.intermediates/device/generic/vulkan-cereal/stream-servers/gles2_dec/gfxstream_gles2_dec/android_x86_64_static_apex10000/gfxstream_gles2_dec.a \
-  out/soong/.intermediates/device/generic/vulkan-cereal/stream-servers/renderControl_dec/gfxstream_renderControl_dec/android_x86_64_static/gfxstream_renderControl_dec.a \
-  out/soong/.intermediates/device/generic/vulkan-cereal/stream-servers/renderControl_dec/gfxstream_renderControl_dec/android_x86_64_static_apex10000/gfxstream_renderControl_dec.a \
-  out/soong/.intermediates/device/generic/vulkan-cereal/stream-servers/glestranslator/GLcommon/gfxstream_translator_glcommon/android_x86_64_static/gfxstream_translator_glcommon.a \
-  out/soong/.intermediates/device/generic/vulkan-cereal/stream-servers/glestranslator/GLcommon/gfxstream_translator_glcommon/android_x86_64_static_apex10000/gfxstream_translator_glcommon.a \
-  out/soong/.intermediates/device/generic/vulkan-cereal/stream-servers/glestranslator/GLES_CM/gfxstream_translator_glescm/android_x86_64_static/gfxstream_translator_glescm.a \
-  out/soong/.intermediates/device/generic/vulkan-cereal/stream-servers/glestranslator/GLES_CM/gfxstream_translator_glescm/android_x86_64_static_apex10000/gfxstream_translator_glescm.a \
-  out/soong/.intermediates/device/generic/vulkan-cereal/stream-servers/glestranslator/GLES_V2/gfxstream_translator_glesv2/android_x86_64_static/gfxstream_translator_glesv2.a \
-  out/soong/.intermediates/device/generic/vulkan-cereal/stream-servers/glestranslator/GLES_V2/gfxstream_translator_glesv2/android_x86_64_static_apex10000/gfxstream_translator_glesv2.a \
-  out/soong/.intermediates/device/generic/vulkan-cereal/stream-servers/glestranslator/EGL/gfxstream_translator_egl/android_x86_64_static/gfxstream_translator_egl.a \
-  out/soong/.intermediates/device/generic/vulkan-cereal/stream-servers/glestranslator/EGL/gfxstream_translator_egl/android_x86_64_static_apex10000/gfxstream_translator_egl.a \
-  out/soong/.intermediates/device/generic/vulkan-cereal/stream-servers/OpenGLESDispatch/gfxstream_dispatch/android_x86_64_static/gfxstream_dispatch.a \
-  out/soong/.intermediates/device/generic/vulkan-cereal/stream-servers/OpenGLESDispatch/gfxstream_dispatch/android_x86_64_static_apex10000/gfxstream_dispatch.a \
-  out/soong/.intermediates/device/generic/vulkan-cereal/stream-servers/vulkan/cereal/gfxstream_vulkan_cereal_host/android_x86_64_static/gfxstream_vulkan_cereal_host.a \
-  out/soong/.intermediates/device/generic/vulkan-cereal/stream-servers/vulkan/cereal/gfxstream_vulkan_cereal_host/android_x86_64_static_apex10000/gfxstream_vulkan_cereal_host.a \
-  out/soong/.intermediates/device/generic/vulkan-cereal/stream-servers/vulkan/gfxstream_vulkan_server/android_x86_64_static/gfxstream_vulkan_server.a \
-  out/soong/.intermediates/device/generic/vulkan-cereal/stream-servers/vulkan/gfxstream_vulkan_server/android_x86_64_static_apex10000/gfxstream_vulkan_server.a \
-  out/soong/.intermediates/device/generic/vulkan-cereal/stream-servers/libgfxstream_backend/android_x86_64_shared/libgfxstream_backend.so \
-  out/soong/.intermediates/device/generic/vulkan-cereal/stream-servers/libgfxstream_backend/android_x86_64_shared_apex10000/libgfxstream_backend.so \
-  
-
-mkdir -p prebuiltlibs/device/generic/vulkan-cereal/third-party/angle/gfxstream_angle_stub/android_x86_64_static/ && mv out/soong/.intermediates/device/generic/vulkan-cereal/third-party/angle/gfxstream_angle_stub/android_x86_64_static/gfxstream_angle_stub.a prebuiltlibs/device/generic/vulkan-cereal/third-party/angle/gfxstream_angle_stub/android_x86_64_static/gfxstream_angle_stub.a
-mkdir -p prebuiltlibs/device/generic/vulkan-cereal/third-party/angle/gfxstream_angle_stub/android_x86_64_static_apex10000/ && mv out/soong/.intermediates/device/generic/vulkan-cereal/third-party/angle/gfxstream_angle_stub/android_x86_64_static_apex10000/gfxstream_angle_stub.a prebuiltlibs/device/generic/vulkan-cereal/third-party/angle/gfxstream_angle_stub/android_x86_64_static_apex10000/gfxstream_angle_stub.a
-mkdir -p prebuiltlibs/device/generic/vulkan-cereal/third-party/angle/src/libShaderTranslator
-rsync -ar --exclude=".git" --exclude="Android.bp" --exclude="Android.mk" device/generic/vulkan-cereal/third-party/angle/src/libShaderTranslator/ prebuiltlibs/device/generic/vulkan-cereal/third-party/angle/src/libShaderTranslator
-mkdir -p prebuiltlibs/device/generic/vulkan-cereal/third-party/astc-codec/src/decoder/gfxstream_astc_codec/android_x86_64_static/ && mv out/soong/.intermediates/device/generic/vulkan-cereal/third-party/astc-codec/src/decoder/gfxstream_astc_codec/android_x86_64_static/gfxstream_astc_codec.a prebuiltlibs/device/generic/vulkan-cereal/third-party/astc-codec/src/decoder/gfxstream_astc_codec/android_x86_64_static/gfxstream_astc_codec.a
-mkdir -p prebuiltlibs/device/generic/vulkan-cereal/third-party/astc-codec/src/decoder/gfxstream_astc_codec/android_x86_64_static_apex10000/ && mv out/soong/.intermediates/device/generic/vulkan-cereal/third-party/astc-codec/src/decoder/gfxstream_astc_codec/android_x86_64_static_apex10000/gfxstream_astc_codec.a prebuiltlibs/device/generic/vulkan-cereal/third-party/astc-codec/src/decoder/gfxstream_astc_codec/android_x86_64_static_apex10000/gfxstream_astc_codec.a
-mkdir -p prebuiltlibs/device/generic/vulkan-cereal/stream-servers/compressedTextureFormats/gfxstream_compressedTextures/android_x86_64_static/ && mv out/soong/.intermediates/device/generic/vulkan-cereal/stream-servers/compressedTextureFormats/gfxstream_compressedTextures/android_x86_64_static/gfxstream_compressedTextures.a prebuiltlibs/device/generic/vulkan-cereal/stream-servers/compressedTextureFormats/gfxstream_compressedTextures/android_x86_64_static/gfxstream_compressedTextures.a
-mkdir -p prebuiltlibs/device/generic/vulkan-cereal/stream-servers/compressedTextureFormats/gfxstream_compressedTextures/android_x86_64_static_apex10000/ && mv out/soong/.intermediates/device/generic/vulkan-cereal/stream-servers/compressedTextureFormats/gfxstream_compressedTextures/android_x86_64_static_apex10000/gfxstream_compressedTextures.a prebuiltlibs/device/generic/vulkan-cereal/stream-servers/compressedTextureFormats/gfxstream_compressedTextures/android_x86_64_static_apex10000/gfxstream_compressedTextures.a
-mkdir -p prebuiltlibs/device/generic/vulkan-cereal/stream-servers/libGLSnapshot/gfxstream_glsnapshot/android_x86_64_static/ && mv out/soong/.intermediates/device/generic/vulkan-cereal/stream-servers/libGLSnapshot/gfxstream_glsnapshot/android_x86_64_static/gfxstream_glsnapshot.a prebuiltlibs/device/generic/vulkan-cereal/stream-servers/libGLSnapshot/gfxstream_glsnapshot/android_x86_64_static/gfxstream_glsnapshot.a
-mkdir -p prebuiltlibs/device/generic/vulkan-cereal/stream-servers/libGLSnapshot/gfxstream_glsnapshot/android_x86_64_static_apex10000/ && mv out/soong/.intermediates/device/generic/vulkan-cereal/stream-servers/libGLSnapshot/gfxstream_glsnapshot/android_x86_64_static_apex10000/gfxstream_glsnapshot.a prebuiltlibs/device/generic/vulkan-cereal/stream-servers/libGLSnapshot/gfxstream_glsnapshot/android_x86_64_static_apex10000/gfxstream_glsnapshot.a
-mkdir -p prebuiltlibs/device/generic/vulkan-cereal/stream-servers/libGLSnapshot/
-rsync -ar --exclude=".git" --exclude="Android.bp" --exclude="Android.mk" device/generic/vulkan-cereal/stream-servers/libGLSnapshot/ prebuiltlibs/device/generic/vulkan-cereal/stream-servers/libGLSnapshot/
-mkdir -p prebuiltlibs/device/generic/vulkan-cereal/third-party/lz4/gfxstream_lz4/android_x86_64_static/ && mv out/soong/.intermediates/device/generic/vulkan-cereal/third-party/lz4/gfxstream_lz4/android_x86_64_static/gfxstream_lz4.a prebuiltlibs/device/generic/vulkan-cereal/third-party/lz4/gfxstream_lz4/android_x86_64_static/gfxstream_lz4.a
-mkdir -p prebuiltlibs/device/generic/vulkan-cereal/third-party/lz4/gfxstream_lz4/android_x86_64_static_apex10000/ && mv out/soong/.intermediates/device/generic/vulkan-cereal/third-party/lz4/gfxstream_lz4/android_x86_64_static_apex10000/gfxstream_lz4.a prebuiltlibs/device/generic/vulkan-cereal/third-party/lz4/gfxstream_lz4/android_x86_64_static_apex10000/gfxstream_lz4.a
-mkdir -p prebuiltlibs/device/generic/vulkan-cereal/third-party/lz4/
-rsync -ar --exclude=".git" --exclude="Android.bp" --exclude="Android.mk" device/generic/vulkan-cereal/third-party/lz4/ prebuiltlibs/device/generic/vulkan-cereal/third-party/lz4/
-mkdir -p prebuiltlibs/device/generic/vulkan-cereal/third-party/perfetto/perfetto-libperfettobase/android_x86_64_static/ && mv out/soong/.intermediates/device/generic/vulkan-cereal/third-party/perfetto/perfetto-libperfettobase/android_x86_64_static/perfetto-libperfettobase.a prebuiltlibs/device/generic/vulkan-cereal/third-party/perfetto/perfetto-libperfettobase/android_x86_64_static/perfetto-libperfettobase.a
-mkdir -p prebuiltlibs/device/generic/vulkan-cereal/third-party/perfetto/perfetto-libperfettobase/android_x86_64_static_apex10000/ && mv out/soong/.intermediates/device/generic/vulkan-cereal/third-party/perfetto/perfetto-libperfettobase/android_x86_64_static_apex10000/perfetto-libperfettobase.a prebuiltlibs/device/generic/vulkan-cereal/third-party/perfetto/perfetto-libperfettobase/android_x86_64_static_apex10000/perfetto-libperfettobase.a
-mkdir -p prebuiltlibs/device/generic/vulkan-cereal/third-party/perfetto/include
-rsync -ar --exclude=".git" --exclude="Android.bp" --exclude="Android.mk" device/generic/vulkan-cereal/third-party/perfetto/include/ prebuiltlibs/device/generic/vulkan-cereal/third-party/perfetto/include
-mkdir -p prebuiltlibs/device/generic/vulkan-cereal/third-party/perfetto/perfetto-libprotozero/android_x86_64_static/ && mv out/soong/.intermediates/device/generic/vulkan-cereal/third-party/perfetto/perfetto-libprotozero/android_x86_64_static/perfetto-libprotozero.a prebuiltlibs/device/generic/vulkan-cereal/third-party/perfetto/perfetto-libprotozero/android_x86_64_static/perfetto-libprotozero.a
-mkdir -p prebuiltlibs/device/generic/vulkan-cereal/third-party/perfetto/perfetto-libprotozero/android_x86_64_static_apex10000/ && mv out/soong/.intermediates/device/generic/vulkan-cereal/third-party/perfetto/perfetto-libprotozero/android_x86_64_static_apex10000/perfetto-libprotozero.a prebuiltlibs/device/generic/vulkan-cereal/third-party/perfetto/perfetto-libprotozero/android_x86_64_static_apex10000/perfetto-libprotozero.a
-mkdir -p prebuiltlibs/device/generic/vulkan-cereal/third-party/perfetto/include
-rsync -ar --exclude=".git" --exclude="Android.bp" --exclude="Android.mk" device/generic/vulkan-cereal/third-party/perfetto/include/ prebuiltlibs/device/generic/vulkan-cereal/third-party/perfetto/include
-mkdir -p prebuiltlibs/device/generic/vulkan-cereal/third-party/perfetto-tracing-only/perfetto-tracing-only/android_x86_64_static/ && mv out/soong/.intermediates/device/generic/vulkan-cereal/third-party/perfetto-tracing-only/perfetto-tracing-only/android_x86_64_static/perfetto-tracing-only.a prebuiltlibs/device/generic/vulkan-cereal/third-party/perfetto-tracing-only/perfetto-tracing-only/android_x86_64_static/perfetto-tracing-only.a
-mkdir -p prebuiltlibs/device/generic/vulkan-cereal/third-party/perfetto-tracing-only/perfetto-tracing-only/android_x86_64_static_apex10000/ && mv out/soong/.intermediates/device/generic/vulkan-cereal/third-party/perfetto-tracing-only/perfetto-tracing-only/android_x86_64_static_apex10000/perfetto-tracing-only.a prebuiltlibs/device/generic/vulkan-cereal/third-party/perfetto-tracing-only/perfetto-tracing-only/android_x86_64_static_apex10000/perfetto-tracing-only.a
-mkdir -p prebuiltlibs/device/generic/vulkan-cereal/third-party/perfetto-tracing-only/
-rsync -ar --exclude=".git" --exclude="Android.bp" --exclude="Android.mk" device/generic/vulkan-cereal/third-party/perfetto-tracing-only/ prebuiltlibs/device/generic/vulkan-cereal/third-party/perfetto-tracing-only/
-mkdir -p prebuiltlibs/device/generic/vulkan-cereal/base/gfxstream_base/android_x86_64_static/ && mv out/soong/.intermediates/device/generic/vulkan-cereal/base/gfxstream_base/android_x86_64_static/gfxstream_base.a prebuiltlibs/device/generic/vulkan-cereal/base/gfxstream_base/android_x86_64_static/gfxstream_base.a
-mkdir -p prebuiltlibs/device/generic/vulkan-cereal/base/gfxstream_base/android_x86_64_static_apex10000/ && mv out/soong/.intermediates/device/generic/vulkan-cereal/base/gfxstream_base/android_x86_64_static_apex10000/gfxstream_base.a prebuiltlibs/device/generic/vulkan-cereal/base/gfxstream_base/android_x86_64_static_apex10000/gfxstream_base.a
-mkdir -p prebuiltlibs/device/generic/vulkan-cereal/host-common/gfxstream_host_common/android_x86_64_static/ && mv out/soong/.intermediates/device/generic/vulkan-cereal/host-common/gfxstream_host_common/android_x86_64_static/gfxstream_host_common.a prebuiltlibs/device/generic/vulkan-cereal/host-common/gfxstream_host_common/android_x86_64_static/gfxstream_host_common.a
-mkdir -p prebuiltlibs/device/generic/vulkan-cereal/host-common/gfxstream_host_common/android_x86_64_static_apex10000/ && mv out/soong/.intermediates/device/generic/vulkan-cereal/host-common/gfxstream_host_common/android_x86_64_static_apex10000/gfxstream_host_common.a prebuiltlibs/device/generic/vulkan-cereal/host-common/gfxstream_host_common/android_x86_64_static_apex10000/gfxstream_host_common.a
-mkdir -p prebuiltlibs/device/generic/vulkan-cereal/stream-servers/apigen-codec-common/gfxstream_apigen_codec_common/android_x86_64_static/ && mv out/soong/.intermediates/device/generic/vulkan-cereal/stream-servers/apigen-codec-common/gfxstream_apigen_codec_common/android_x86_64_static/gfxstream_apigen_codec_common.a prebuiltlibs/device/generic/vulkan-cereal/stream-servers/apigen-codec-common/gfxstream_apigen_codec_common/android_x86_64_static/gfxstream_apigen_codec_common.a
-mkdir -p prebuiltlibs/device/generic/vulkan-cereal/stream-servers/apigen-codec-common/gfxstream_apigen_codec_common/android_x86_64_static_apex10000/ && mv out/soong/.intermediates/device/generic/vulkan-cereal/stream-servers/apigen-codec-common/gfxstream_apigen_codec_common/android_x86_64_static_apex10000/gfxstream_apigen_codec_common.a prebuiltlibs/device/generic/vulkan-cereal/stream-servers/apigen-codec-common/gfxstream_apigen_codec_common/android_x86_64_static_apex10000/gfxstream_apigen_codec_common.a
-mkdir -p prebuiltlibs/device/generic/vulkan-cereal/stream-servers/apigen-codec-common/
-rsync -ar --exclude=".git" --exclude="Android.bp" --exclude="Android.mk" device/generic/vulkan-cereal/stream-servers/apigen-codec-common/ prebuiltlibs/device/generic/vulkan-cereal/stream-servers/apigen-codec-common/
-mkdir -p prebuiltlibs/device/generic/vulkan-cereal/stream-servers/gles1_dec/gfxstream_gles1_dec/android_x86_64_static/ && mv out/soong/.intermediates/device/generic/vulkan-cereal/stream-servers/gles1_dec/gfxstream_gles1_dec/android_x86_64_static/gfxstream_gles1_dec.a prebuiltlibs/device/generic/vulkan-cereal/stream-servers/gles1_dec/gfxstream_gles1_dec/android_x86_64_static/gfxstream_gles1_dec.a
-mkdir -p prebuiltlibs/device/generic/vulkan-cereal/stream-servers/gles1_dec/gfxstream_gles1_dec/android_x86_64_static_apex10000/ && mv out/soong/.intermediates/device/generic/vulkan-cereal/stream-servers/gles1_dec/gfxstream_gles1_dec/android_x86_64_static_apex10000/gfxstream_gles1_dec.a prebuiltlibs/device/generic/vulkan-cereal/stream-servers/gles1_dec/gfxstream_gles1_dec/android_x86_64_static_apex10000/gfxstream_gles1_dec.a
-mkdir -p prebuiltlibs/device/generic/vulkan-cereal/stream-servers/gles2_dec/gfxstream_gles2_dec/android_x86_64_static/ && mv out/soong/.intermediates/device/generic/vulkan-cereal/stream-servers/gles2_dec/gfxstream_gles2_dec/android_x86_64_static/gfxstream_gles2_dec.a prebuiltlibs/device/generic/vulkan-cereal/stream-servers/gles2_dec/gfxstream_gles2_dec/android_x86_64_static/gfxstream_gles2_dec.a
-mkdir -p prebuiltlibs/device/generic/vulkan-cereal/stream-servers/gles2_dec/gfxstream_gles2_dec/android_x86_64_static_apex10000/ && mv out/soong/.intermediates/device/generic/vulkan-cereal/stream-servers/gles2_dec/gfxstream_gles2_dec/android_x86_64_static_apex10000/gfxstream_gles2_dec.a prebuiltlibs/device/generic/vulkan-cereal/stream-servers/gles2_dec/gfxstream_gles2_dec/android_x86_64_static_apex10000/gfxstream_gles2_dec.a
-mkdir -p prebuiltlibs/device/generic/vulkan-cereal/stream-servers/renderControl_dec/gfxstream_renderControl_dec/android_x86_64_static/ && mv out/soong/.intermediates/device/generic/vulkan-cereal/stream-servers/renderControl_dec/gfxstream_renderControl_dec/android_x86_64_static/gfxstream_renderControl_dec.a prebuiltlibs/device/generic/vulkan-cereal/stream-servers/renderControl_dec/gfxstream_renderControl_dec/android_x86_64_static/gfxstream_renderControl_dec.a
-mkdir -p prebuiltlibs/device/generic/vulkan-cereal/stream-servers/renderControl_dec/gfxstream_renderControl_dec/android_x86_64_static_apex10000/ && mv out/soong/.intermediates/device/generic/vulkan-cereal/stream-servers/renderControl_dec/gfxstream_renderControl_dec/android_x86_64_static_apex10000/gfxstream_renderControl_dec.a prebuiltlibs/device/generic/vulkan-cereal/stream-servers/renderControl_dec/gfxstream_renderControl_dec/android_x86_64_static_apex10000/gfxstream_renderControl_dec.a
-mkdir -p prebuiltlibs/device/generic/vulkan-cereal/stream-servers/glestranslator/GLcommon/gfxstream_translator_glcommon/android_x86_64_static/ && mv out/soong/.intermediates/device/generic/vulkan-cereal/stream-servers/glestranslator/GLcommon/gfxstream_translator_glcommon/android_x86_64_static/gfxstream_translator_glcommon.a prebuiltlibs/device/generic/vulkan-cereal/stream-servers/glestranslator/GLcommon/gfxstream_translator_glcommon/android_x86_64_static/gfxstream_translator_glcommon.a
-mkdir -p prebuiltlibs/device/generic/vulkan-cereal/stream-servers/glestranslator/GLcommon/gfxstream_translator_glcommon/android_x86_64_static_apex10000/ && mv out/soong/.intermediates/device/generic/vulkan-cereal/stream-servers/glestranslator/GLcommon/gfxstream_translator_glcommon/android_x86_64_static_apex10000/gfxstream_translator_glcommon.a prebuiltlibs/device/generic/vulkan-cereal/stream-servers/glestranslator/GLcommon/gfxstream_translator_glcommon/android_x86_64_static_apex10000/gfxstream_translator_glcommon.a
-mkdir -p prebuiltlibs/device/generic/vulkan-cereal/stream-servers/glestranslator/GLES_CM/gfxstream_translator_glescm/android_x86_64_static/ && mv out/soong/.intermediates/device/generic/vulkan-cereal/stream-servers/glestranslator/GLES_CM/gfxstream_translator_glescm/android_x86_64_static/gfxstream_translator_glescm.a prebuiltlibs/device/generic/vulkan-cereal/stream-servers/glestranslator/GLES_CM/gfxstream_translator_glescm/android_x86_64_static/gfxstream_translator_glescm.a
-mkdir -p prebuiltlibs/device/generic/vulkan-cereal/stream-servers/glestranslator/GLES_CM/gfxstream_translator_glescm/android_x86_64_static_apex10000/ && mv out/soong/.intermediates/device/generic/vulkan-cereal/stream-servers/glestranslator/GLES_CM/gfxstream_translator_glescm/android_x86_64_static_apex10000/gfxstream_translator_glescm.a prebuiltlibs/device/generic/vulkan-cereal/stream-servers/glestranslator/GLES_CM/gfxstream_translator_glescm/android_x86_64_static_apex10000/gfxstream_translator_glescm.a
-mkdir -p prebuiltlibs/device/generic/vulkan-cereal/stream-servers/glestranslator/GLES_V2/gfxstream_translator_glesv2/android_x86_64_static/ && mv out/soong/.intermediates/device/generic/vulkan-cereal/stream-servers/glestranslator/GLES_V2/gfxstream_translator_glesv2/android_x86_64_static/gfxstream_translator_glesv2.a prebuiltlibs/device/generic/vulkan-cereal/stream-servers/glestranslator/GLES_V2/gfxstream_translator_glesv2/android_x86_64_static/gfxstream_translator_glesv2.a
-mkdir -p prebuiltlibs/device/generic/vulkan-cereal/stream-servers/glestranslator/GLES_V2/gfxstream_translator_glesv2/android_x86_64_static_apex10000/ && mv out/soong/.intermediates/device/generic/vulkan-cereal/stream-servers/glestranslator/GLES_V2/gfxstream_translator_glesv2/android_x86_64_static_apex10000/gfxstream_translator_glesv2.a prebuiltlibs/device/generic/vulkan-cereal/stream-servers/glestranslator/GLES_V2/gfxstream_translator_glesv2/android_x86_64_static_apex10000/gfxstream_translator_glesv2.a
-mkdir -p prebuiltlibs/device/generic/vulkan-cereal/stream-servers/glestranslator/EGL/gfxstream_translator_egl/android_x86_64_static/ && mv out/soong/.intermediates/device/generic/vulkan-cereal/stream-servers/glestranslator/EGL/gfxstream_translator_egl/android_x86_64_static/gfxstream_translator_egl.a prebuiltlibs/device/generic/vulkan-cereal/stream-servers/glestranslator/EGL/gfxstream_translator_egl/android_x86_64_static/gfxstream_translator_egl.a
-mkdir -p prebuiltlibs/device/generic/vulkan-cereal/stream-servers/glestranslator/EGL/gfxstream_translator_egl/android_x86_64_static_apex10000/ && mv out/soong/.intermediates/device/generic/vulkan-cereal/stream-servers/glestranslator/EGL/gfxstream_translator_egl/android_x86_64_static_apex10000/gfxstream_translator_egl.a prebuiltlibs/device/generic/vulkan-cereal/stream-servers/glestranslator/EGL/gfxstream_translator_egl/android_x86_64_static_apex10000/gfxstream_translator_egl.a
-mkdir -p prebuiltlibs/device/generic/vulkan-cereal/stream-servers/OpenGLESDispatch/gfxstream_dispatch/android_x86_64_static/ && mv out/soong/.intermediates/device/generic/vulkan-cereal/stream-servers/OpenGLESDispatch/gfxstream_dispatch/android_x86_64_static/gfxstream_dispatch.a prebuiltlibs/device/generic/vulkan-cereal/stream-servers/OpenGLESDispatch/gfxstream_dispatch/android_x86_64_static/gfxstream_dispatch.a
-mkdir -p prebuiltlibs/device/generic/vulkan-cereal/stream-servers/OpenGLESDispatch/gfxstream_dispatch/android_x86_64_static_apex10000/ && mv out/soong/.intermediates/device/generic/vulkan-cereal/stream-servers/OpenGLESDispatch/gfxstream_dispatch/android_x86_64_static_apex10000/gfxstream_dispatch.a prebuiltlibs/device/generic/vulkan-cereal/stream-servers/OpenGLESDispatch/gfxstream_dispatch/android_x86_64_static_apex10000/gfxstream_dispatch.a
-mkdir -p prebuiltlibs/device/generic/vulkan-cereal/stream-servers/vulkan/cereal/gfxstream_vulkan_cereal_host/android_x86_64_static/ && mv out/soong/.intermediates/device/generic/vulkan-cereal/stream-servers/vulkan/cereal/gfxstream_vulkan_cereal_host/android_x86_64_static/gfxstream_vulkan_cereal_host.a prebuiltlibs/device/generic/vulkan-cereal/stream-servers/vulkan/cereal/gfxstream_vulkan_cereal_host/android_x86_64_static/gfxstream_vulkan_cereal_host.a
-mkdir -p prebuiltlibs/device/generic/vulkan-cereal/stream-servers/vulkan/cereal/gfxstream_vulkan_cereal_host/android_x86_64_static_apex10000/ && mv out/soong/.intermediates/device/generic/vulkan-cereal/stream-servers/vulkan/cereal/gfxstream_vulkan_cereal_host/android_x86_64_static_apex10000/gfxstream_vulkan_cereal_host.a prebuiltlibs/device/generic/vulkan-cereal/stream-servers/vulkan/cereal/gfxstream_vulkan_cereal_host/android_x86_64_static_apex10000/gfxstream_vulkan_cereal_host.a
-mkdir -p prebuiltlibs/device/generic/vulkan-cereal/stream-servers/vulkan/cereal/
-rsync -ar --exclude=".git" --exclude="Android.bp" --exclude="Android.mk" device/generic/vulkan-cereal/stream-servers/vulkan/cereal/ prebuiltlibs/device/generic/vulkan-cereal/stream-servers/vulkan/cereal/
-mkdir -p prebuiltlibs/device/generic/vulkan-cereal/stream-servers/vulkan/gfxstream_vulkan_server/android_x86_64_static/ && mv out/soong/.intermediates/device/generic/vulkan-cereal/stream-servers/vulkan/gfxstream_vulkan_server/android_x86_64_static/gfxstream_vulkan_server.a prebuiltlibs/device/generic/vulkan-cereal/stream-servers/vulkan/gfxstream_vulkan_server/android_x86_64_static/gfxstream_vulkan_server.a
-mkdir -p prebuiltlibs/device/generic/vulkan-cereal/stream-servers/vulkan/gfxstream_vulkan_server/android_x86_64_static_apex10000/ && mv out/soong/.intermediates/device/generic/vulkan-cereal/stream-servers/vulkan/gfxstream_vulkan_server/android_x86_64_static_apex10000/gfxstream_vulkan_server.a prebuiltlibs/device/generic/vulkan-cereal/stream-servers/vulkan/gfxstream_vulkan_server/android_x86_64_static_apex10000/gfxstream_vulkan_server.a
-mkdir -p prebuiltlibs/device/generic/vulkan-cereal/stream-servers/libgfxstream_backend/android_x86_64_shared/ && mv out/soong/.intermediates/device/generic/vulkan-cereal/stream-servers/libgfxstream_backend/android_x86_64_shared/libgfxstream_backend.so prebuiltlibs/device/generic/vulkan-cereal/stream-servers/libgfxstream_backend/android_x86_64_shared/libgfxstream_backend.so
-mkdir -p prebuiltlibs/device/generic/vulkan-cereal/stream-servers/libgfxstream_backend/android_x86_64_shared_apex10000/ && mv out/soong/.intermediates/device/generic/vulkan-cereal/stream-servers/libgfxstream_backend/android_x86_64_shared_apex10000/libgfxstream_backend.so prebuiltlibs/device/generic/vulkan-cereal/stream-servers/libgfxstream_backend/android_x86_64_shared_apex10000/libgfxstream_backend.so
-
-printf "cc_prebuilt_library_static {\n  name: \"gfxstream_angle_stub\",\n  target: {\n    host: {\n      compile_multilib: \"64\",\n    },\n    android: {\n      compile_multilib: \"64\",\n      shared_libs: [\"libnativewindow\"],\n    },\n    linux_bionic_arm64: {\n      enabled: true,\n    },\n  },\n  host_supported: true,\n  apex_available: [\"//apex_available:platform\",\"com.android.virt\"],\n  export_include_dirs: [\"src/libShaderTranslator\"],\n  strip: {\n    none: true,\n  },\n  multiple_variants: true,\n  prefer: true,\n  srcs: [\"gfxstream_angle_stub.a\"],\n}\n" >> prebuiltlibs/device/generic/vulkan-cereal/third-party/angle/Android.bp
-printf "cc_prebuilt_library_static {\n  name: \"gfxstream_astc_codec\",\n  target: {\n    host: {\n      compile_multilib: \"64\",\n    },\n    android: {\n      compile_multilib: \"64\",\n      shared_libs: [\"libnativewindow\"],\n    },\n    linux_bionic_arm64: {\n      enabled: true,\n    },\n  },\n  host_supported: true,\n  apex_available: [\"//apex_available:platform\",\"com.android.virt\"],\n  strip: {\n    none: true,\n  },\n  multiple_variants: true,\n  prefer: true,\n  srcs: [\"gfxstream_astc_codec.a\"],\n}\n" >> prebuiltlibs/device/generic/vulkan-cereal/third-party/astc-codec/src/decoder/Android.bp
-printf "cc_prebuilt_library_static {\n  name: \"gfxstream_compressedTextures\",\n  target: {\n    host: {\n      compile_multilib: \"64\",\n    },\n    android: {\n      compile_multilib: \"64\",\n      shared_libs: [\"libnativewindow\"],\n    },\n    linux_bionic_arm64: {\n      enabled: true,\n    },\n  },\n  host_supported: true,\n  apex_available: [\"//apex_available:platform\",\"com.android.virt\"],\n  strip: {\n    none: true,\n  },\n  multiple_variants: true,\n  prefer: true,\n  srcs: [\"gfxstream_compressedTextures.a\"],\n}\n" >> prebuiltlibs/device/generic/vulkan-cereal/stream-servers/compressedTextureFormats/Android.bp
-printf "cc_prebuilt_library_static {\n  name: \"gfxstream_glsnapshot\",\n  target: {\n    host: {\n      compile_multilib: \"64\",\n    },\n    android: {\n      compile_multilib: \"64\",\n      shared_libs: [\"libnativewindow\"],\n    },\n    linux_bionic_arm64: {\n      enabled: true,\n    },\n  },\n  host_supported: true,\n  apex_available: [\"//apex_available:platform\",\"com.android.virt\"],\n  export_include_dirs: [\".\"],\n  strip: {\n    none: true,\n  },\n  multiple_variants: true,\n  prefer: true,\n  srcs: [\"gfxstream_glsnapshot.a\"],\n}\n" >> prebuiltlibs/device/generic/vulkan-cereal/stream-servers/libGLSnapshot/Android.bp
-printf "cc_prebuilt_library_static {\n  name: \"gfxstream_lz4\",\n  target: {\n    host: {\n      compile_multilib: \"64\",\n    },\n    android: {\n      compile_multilib: \"64\",\n      shared_libs: [\"libnativewindow\"],\n    },\n    linux_bionic_arm64: {\n      enabled: true,\n    },\n  },\n  host_supported: true,\n  apex_available: [\"//apex_available:platform\",\"com.android.virt\"],\n  export_include_dirs: [\".\"],\n  strip: {\n    none: true,\n  },\n  multiple_variants: true,\n  prefer: true,\n  srcs: [\"gfxstream_lz4.a\"],\n}\n" >> prebuiltlibs/device/generic/vulkan-cereal/third-party/lz4/Android.bp
-printf "cc_prebuilt_library_static {\n  name: \"perfetto-libperfettobase\",\n  target: {\n    host: {\n      compile_multilib: \"64\",\n    },\n    android: {\n      compile_multilib: \"64\",\n      shared_libs: [\"libnativewindow\"],\n    },\n    linux_bionic_arm64: {\n      enabled: true,\n    },\n  },\n  host_supported: true,\n  apex_available: [\"//apex_available:platform\",\"com.android.virt\"],\n  shared_libs: [\"liblog\"],\n  export_include_dirs: [\"include\",\"include/perfetto/base/build_configs/android_tree\"],\n  strip: {\n    none: true,\n  },\n  multiple_variants: true,\n  prefer: true,\n  srcs: [\"perfetto-libperfettobase.a\"],\n}\n" >> prebuiltlibs/device/generic/vulkan-cereal/third-party/perfetto/Android.bp
-printf "cc_prebuilt_library_static {\n  name: \"perfetto-libprotozero\",\n  target: {\n    host: {\n      compile_multilib: \"64\",\n    },\n    android: {\n      compile_multilib: \"64\",\n      shared_libs: [\"libnativewindow\"],\n    },\n    linux_bionic_arm64: {\n      enabled: true,\n    },\n  },\n  host_supported: true,\n  apex_available: [\"//apex_available:platform\",\"com.android.virt\"],\n  whole_static_libs: [\"perfetto-libperfettobase\"],\n  export_include_dirs: [\"include\"],\n  strip: {\n    none: true,\n  },\n  multiple_variants: true,\n  prefer: true,\n  srcs: [\"perfetto-libprotozero.a\"],\n}\n" >> prebuiltlibs/device/generic/vulkan-cereal/third-party/perfetto/Android.bp
-printf "cc_prebuilt_library_static {\n  name: \"perfetto-tracing-only\",\n  target: {\n    host: {\n      compile_multilib: \"64\",\n    },\n    android: {\n      compile_multilib: \"64\",\n      shared_libs: [\"libnativewindow\"],\n    },\n    linux_bionic_arm64: {\n      enabled: true,\n    },\n  },\n  host_supported: true,\n  apex_available: [\"//apex_available:platform\",\"com.android.virt\"],\n  whole_static_libs: [\"perfetto-libprotozero\"],\n  export_include_dirs: [\".\"],\n  strip: {\n    none: true,\n  },\n  multiple_variants: true,\n  prefer: true,\n  srcs: [\"perfetto-tracing-only.a\"],\n}\n" >> prebuiltlibs/device/generic/vulkan-cereal/third-party/perfetto-tracing-only/Android.bp
-printf "cc_prebuilt_library_static {\n  name: \"gfxstream_base\",\n  target: {\n    host: {\n      compile_multilib: \"64\",\n    },\n    android: {\n      compile_multilib: \"64\",\n      shared_libs: [\"libnativewindow\"],\n    },\n    linux_bionic_arm64: {\n      enabled: true,\n    },\n  },\n  host_supported: true,\n  apex_available: [\"//apex_available:platform\",\"com.android.virt\"],\n  whole_static_libs: [\"perfetto-tracing-only\"],\n  static_libs: [\"gfxstream_lz4\"],\n  strip: {\n    none: true,\n  },\n  multiple_variants: true,\n  prefer: true,\n  srcs: [\"gfxstream_base.a\"],\n}\n" >> prebuiltlibs/device/generic/vulkan-cereal/base/Android.bp
-printf "cc_prebuilt_library_static {\n  name: \"gfxstream_host_common\",\n  target: {\n    host: {\n      compile_multilib: \"64\",\n    },\n    android: {\n      compile_multilib: \"64\",\n      shared_libs: [\"libnativewindow\"],\n    },\n    linux_bionic_arm64: {\n      enabled: true,\n    },\n  },\n  host_supported: true,\n  apex_available: [\"//apex_available:platform\",\"com.android.virt\"],\n  static_libs: [\"gfxstream_base\"],\n  strip: {\n    none: true,\n  },\n  multiple_variants: true,\n  prefer: true,\n  srcs: [\"gfxstream_host_common.a\"],\n}\n" >> prebuiltlibs/device/generic/vulkan-cereal/host-common/Android.bp
-printf "cc_prebuilt_library_static {\n  name: \"gfxstream_apigen_codec_common\",\n  target: {\n    host: {\n      compile_multilib: \"64\",\n    },\n    android: {\n      compile_multilib: \"64\",\n      shared_libs: [\"libnativewindow\"],\n    },\n    linux_bionic_arm64: {\n      enabled: true,\n    },\n  },\n  host_supported: true,\n  apex_available: [\"//apex_available:platform\",\"com.android.virt\"],\n  static_libs: [\"gfxstream_base\",\"gfxstream_host_common\"],\n  export_include_dirs: [\".\"],\n  strip: {\n    none: true,\n  },\n  multiple_variants: true,\n  prefer: true,\n  srcs: [\"gfxstream_apigen_codec_common.a\"],\n}\n" >> prebuiltlibs/device/generic/vulkan-cereal/stream-servers/apigen-codec-common/Android.bp
-printf "cc_prebuilt_library_static {\n  name: \"gfxstream_gles1_dec\",\n  target: {\n    host: {\n      compile_multilib: \"64\",\n    },\n    android: {\n      compile_multilib: \"64\",\n      shared_libs: [\"libnativewindow\"],\n    },\n    linux_bionic_arm64: {\n      enabled: true,\n    },\n  },\n  host_supported: true,\n  apex_available: [\"//apex_available:platform\",\"com.android.virt\"],\n  static_libs: [\"gfxstream_apigen_codec_common\",\"gfxstream_glsnapshot\"],\n  strip: {\n    none: true,\n  },\n  multiple_variants: true,\n  prefer: true,\n  srcs: [\"gfxstream_gles1_dec.a\"],\n}\n" >> prebuiltlibs/device/generic/vulkan-cereal/stream-servers/gles1_dec/Android.bp
-printf "cc_prebuilt_library_static {\n  name: \"gfxstream_gles2_dec\",\n  target: {\n    host: {\n      compile_multilib: \"64\",\n    },\n    android: {\n      compile_multilib: \"64\",\n      shared_libs: [\"libnativewindow\"],\n    },\n    linux_bionic_arm64: {\n      enabled: true,\n    },\n  },\n  host_supported: true,\n  apex_available: [\"//apex_available:platform\",\"com.android.virt\"],\n  static_libs: [\"gfxstream_apigen_codec_common\",\"gfxstream_glsnapshot\"],\n  strip: {\n    none: true,\n  },\n  multiple_variants: true,\n  prefer: true,\n  srcs: [\"gfxstream_gles2_dec.a\"],\n}\n" >> prebuiltlibs/device/generic/vulkan-cereal/stream-servers/gles2_dec/Android.bp
-printf "cc_prebuilt_library_static {\n  name: \"gfxstream_renderControl_dec\",\n  target: {\n    host: {\n      compile_multilib: \"64\",\n    },\n    android: {\n      compile_multilib: \"64\",\n      shared_libs: [\"libnativewindow\"],\n    },\n    linux_bionic_arm64: {\n      enabled: true,\n    },\n  },\n  host_supported: true,\n  apex_available: [\"//apex_available:platform\",\"com.android.virt\"],\n  static_libs: [\"gfxstream_apigen_codec_common\"],\n  strip: {\n    none: true,\n  },\n  multiple_variants: true,\n  prefer: true,\n  srcs: [\"gfxstream_renderControl_dec.a\"],\n}\n" >> prebuiltlibs/device/generic/vulkan-cereal/stream-servers/renderControl_dec/Android.bp
-printf "cc_prebuilt_library_static {\n  name: \"gfxstream_translator_glcommon\",\n  target: {\n    host: {\n      compile_multilib: \"64\",\n    },\n    android: {\n      compile_multilib: \"64\",\n      shared_libs: [\"libnativewindow\"],\n    },\n    linux_bionic_arm64: {\n      enabled: true,\n    },\n  },\n  host_supported: true,\n  apex_available: [\"//apex_available:platform\",\"com.android.virt\"],\n  static_libs: [\"gfxstream_base\",\"gfxstream_astc_codec\"],\n  strip: {\n    none: true,\n  },\n  multiple_variants: true,\n  prefer: true,\n  srcs: [\"gfxstream_translator_glcommon.a\"],\n}\n" >> prebuiltlibs/device/generic/vulkan-cereal/stream-servers/glestranslator/GLcommon/Android.bp
-printf "cc_prebuilt_library_static {\n  name: \"gfxstream_translator_glescm\",\n  target: {\n    host: {\n      compile_multilib: \"64\",\n    },\n    android: {\n      compile_multilib: \"64\",\n      shared_libs: [\"libnativewindow\"],\n    },\n    linux_bionic_arm64: {\n      enabled: true,\n    },\n  },\n  host_supported: true,\n  apex_available: [\"//apex_available:platform\",\"com.android.virt\"],\n  static_libs: [\"gfxstream_base\",\"gfxstream_apigen_codec_common\",\"gfxstream_translator_glcommon\"],\n  strip: {\n    none: true,\n  },\n  multiple_variants: true,\n  prefer: true,\n  srcs: [\"gfxstream_translator_glescm.a\"],\n}\n" >> prebuiltlibs/device/generic/vulkan-cereal/stream-servers/glestranslator/GLES_CM/Android.bp
-printf "cc_prebuilt_library_static {\n  name: \"gfxstream_translator_glesv2\",\n  target: {\n    host: {\n      compile_multilib: \"64\",\n    },\n    android: {\n      compile_multilib: \"64\",\n      shared_libs: [\"libnativewindow\"],\n    },\n    linux_bionic_arm64: {\n      enabled: true,\n    },\n  },\n  host_supported: true,\n  apex_available: [\"//apex_available:platform\",\"com.android.virt\"],\n  static_libs: [\"gfxstream_base\",\"gfxstream_apigen_codec_common\",\"gfxstream_translator_glcommon\",\"gfxstream_angle_stub\"],\n  strip: {\n    none: true,\n  },\n  multiple_variants: true,\n  prefer: true,\n  srcs: [\"gfxstream_translator_glesv2.a\"],\n}\n" >> prebuiltlibs/device/generic/vulkan-cereal/stream-servers/glestranslator/GLES_V2/Android.bp
-printf "cc_prebuilt_library_static {\n  name: \"gfxstream_translator_egl\",\n  target: {\n    host: {\n      compile_multilib: \"64\",\n    },\n    android: {\n      compile_multilib: \"64\",\n      shared_libs: [\"libnativewindow\"],\n    },\n    linux_bionic_arm64: {\n      enabled: true,\n    },\n  },\n  host_supported: true,\n  apex_available: [\"//apex_available:platform\",\"com.android.virt\"],\n  static_libs: [\"gfxstream_base\",\"gfxstream_astc_codec\",\"gfxstream_apigen_codec_common\",\"gfxstream_translator_glcommon\",\"gfxstream_translator_glescm\",\"gfxstream_translator_glesv2\"],\n  strip: {\n    none: true,\n  },\n  multiple_variants: true,\n  prefer: true,\n  srcs: [\"gfxstream_translator_egl.a\"],\n}\n" >> prebuiltlibs/device/generic/vulkan-cereal/stream-servers/glestranslator/EGL/Android.bp
-printf "cc_prebuilt_library_static {\n  name: \"gfxstream_dispatch\",\n  target: {\n    host: {\n      compile_multilib: \"64\",\n    },\n    android: {\n      compile_multilib: \"64\",\n      shared_libs: [\"libnativewindow\"],\n    },\n    linux_bionic_arm64: {\n      enabled: true,\n    },\n  },\n  host_supported: true,\n  apex_available: [\"//apex_available:platform\",\"com.android.virt\"],\n  static_libs: [\"gfxstream_base\",\"gfxstream_gles1_dec\",\"gfxstream_gles2_dec\",\"gfxstream_apigen_codec_common\",\"gfxstream_translator_egl\"],\n  strip: {\n    none: true,\n  },\n  multiple_variants: true,\n  prefer: true,\n  srcs: [\"gfxstream_dispatch.a\"],\n}\n" >> prebuiltlibs/device/generic/vulkan-cereal/stream-servers/OpenGLESDispatch/Android.bp
-printf "cc_prebuilt_library_static {\n  name: \"gfxstream_vulkan_cereal_host\",\n  target: {\n    host: {\n      compile_multilib: \"64\",\n    },\n    android: {\n      compile_multilib: \"64\",\n      shared_libs: [\"libnativewindow\"],\n    },\n    linux_bionic_arm64: {\n      enabled: true,\n    },\n  },\n  host_supported: true,\n  apex_available: [\"//apex_available:platform\",\"com.android.virt\"],\n  static_libs: [\"gfxstream_base\"],\n  export_include_dirs: [\".\"],\n  strip: {\n    none: true,\n  },\n  multiple_variants: true,\n  prefer: true,\n  srcs: [\"gfxstream_vulkan_cereal_host.a\"],\n}\n" >> prebuiltlibs/device/generic/vulkan-cereal/stream-servers/vulkan/cereal/Android.bp
-printf "cc_prebuilt_library_static {\n  name: \"gfxstream_vulkan_server\",\n  target: {\n    host: {\n      compile_multilib: \"64\",\n    },\n    android: {\n      compile_multilib: \"64\",\n      shared_libs: [\"libnativewindow\"],\n    },\n    linux_bionic_arm64: {\n      enabled: true,\n    },\n  },\n  host_supported: true,\n  apex_available: [\"//apex_available:platform\",\"com.android.virt\"],\n  static_libs: [\"gfxstream_base\",\"gfxstream_compressedTextures\",\"gfxstream_apigen_codec_common\",\"gfxstream_vulkan_cereal_host\"],\n  strip: {\n    none: true,\n  },\n  multiple_variants: true,\n  prefer: true,\n  srcs: [\"gfxstream_vulkan_server.a\"],\n}\n" >> prebuiltlibs/device/generic/vulkan-cereal/stream-servers/vulkan/Android.bp
-printf "cc_prebuilt_library_shared {\n  name: \"libgfxstream_backend\",\n  target: {\n    host: {\n      compile_multilib: \"64\",\n    },\n    android: {\n      compile_multilib: \"64\",\n      shared_libs: [\"libnativewindow\"],\n    },\n    linux_bionic_arm64: {\n      enabled: true,\n    },\n  },\n  host_supported: true,\n  apex_available: [\"//apex_available:platform\",\"com.android.virt\"],\n  static_libs: [\"gfxstream_base\",\"gfxstream_host_common\",\"gfxstream_apigen_codec_common\",\"gfxstream_glsnapshot\",\"gfxstream_translator_glcommon\",\"gfxstream_translator_egl\",\"gfxstream_translator_glescm\",\"gfxstream_translator_glesv2\",\"gfxstream_vulkan_cereal_host\",\"gfxstream_vulkan_server\",\"gfxstream_renderControl_dec\",\"gfxstream_gles1_dec\",\"gfxstream_gles2_dec\",\"gfxstream_dispatch\",\"gfxstream_astc_codec\",\"gfxstream_angle_stub\",\"gfxstream_lz4\",\"gfxstream_compressedTextures\"],\n  shared_libs: [\"liblog\"],\n  strip: {\n    none: true,\n  },\n  multiple_variants: true,\n  prefer: true,\n  srcs: [\"libgfxstream_backend.so\"],\n}\n" >> prebuiltlibs/device/generic/vulkan-cereal/stream-servers/Android.bp
-
-df -h
-clean_out_intermediates
-mkdir -p prebuiltlibs/device/generic/vulkan-cereal/ninja && rsync -ar out/soong/ninja/device/generic/vulkan-cereal/ prebuiltlibs/device/generic/vulkan-cereal/ninja/device_generic_vulkan-cereal-12
-touch prebuiltlibs/device/generic/vulkan-cereal/ninja/.find-ignore
-tar cfJ device_generic_vulkan-cereal-12.tar.xz -C prebuiltlibs/device/generic/vulkan-cereal/ .
-ls -l device_generic_vulkan-cereal-12.tar.xz
-end=`date +%s`
-echo $((end-start))
-
-start=`date +%s`
-./prebuilts/build-tools/linux-x86/bin/ninja -f out/soong/build.ninja \
-  out/soong/.intermediates/device/google/cuttlefish/guest/hals/health/android.hardware.health@2.1-impl-cuttlefish/android_vendor.31_x86_64_shared/android.hardware.health@2.0-impl-2.1-cuttlefish.so \
-  out/soong/.intermediates/device/google/cuttlefish/guest/hals/health/android.hardware.health@2.1-impl-cuttlefish/android_vendor.31_x86_x86_64_shared/android.hardware.health@2.0-impl-2.1-cuttlefish.so \
-  
-
-mkdir -p prebuiltlibs/device/google/cuttlefish/guest/hals/health/android.hardware.health@2.1-impl-cuttlefish/android_vendor.31_x86_64_shared/ && mv out/soong/.intermediates/device/google/cuttlefish/guest/hals/health/android.hardware.health@2.1-impl-cuttlefish/android_vendor.31_x86_64_shared/android.hardware.health@2.0-impl-2.1-cuttlefish.so prebuiltlibs/device/google/cuttlefish/guest/hals/health/android.hardware.health@2.1-impl-cuttlefish/android_vendor.31_x86_64_shared/android.hardware.health@2.1-impl-cuttlefish.so
-mkdir -p prebuiltlibs/device/google/cuttlefish/guest/hals/health/android.hardware.health@2.1-impl-cuttlefish/android_vendor.31_x86_x86_64_shared/ && mv out/soong/.intermediates/device/google/cuttlefish/guest/hals/health/android.hardware.health@2.1-impl-cuttlefish/android_vendor.31_x86_x86_64_shared/android.hardware.health@2.0-impl-2.1-cuttlefish.so prebuiltlibs/device/google/cuttlefish/guest/hals/health/android.hardware.health@2.1-impl-cuttlefish/android_vendor.31_x86_x86_64_shared/android.hardware.health@2.1-impl-cuttlefish.so
-
-printf "cc_prebuilt_library_shared {\n  name: \"android.hardware.health@2.1-impl-cuttlefish\",\n  stem: \"android.hardware.health@2.0-impl-2.1-cuttlefish\",\n  proprietary: true,\n  recovery_available: true,\n  relative_install_path: \"hw\",\n  static_libs: [\"android.hardware.health@1.0-convert\",\"libbatterymonitor\",\"libhealthloop\",\"libhealth2impl\"],\n  shared_libs: [\"libbase\",\"libcutils\",\"libhidlbase\",\"libutils\",\"android.hardware.health@2.0\",\"android.hardware.health@2.1\"],\n  strip: {\n    none: true,\n  },\n  multiple_variants: true,\n  prefer: true,\n  srcs: [\"android.hardware.health@2.1-impl-cuttlefish.so\"],\n}\n" >> prebuiltlibs/device/google/cuttlefish/guest/hals/health/Android.bp
-
-df -h
-clean_out_intermediates
-mkdir -p prebuiltlibs/device/google/cuttlefish/ninja && rsync -ar out/soong/ninja/device/google/cuttlefish/ prebuiltlibs/device/google/cuttlefish/ninja/device_google_cuttlefish-12
-touch prebuiltlibs/device/google/cuttlefish/ninja/.find-ignore
-tar cfJ device_google_cuttlefish-12.tar.xz -C prebuiltlibs/device/google/cuttlefish/ .
-ls -l device_google_cuttlefish-12.tar.xz
-end=`date +%s`
-echo $((end-start))
-
-start=`date +%s`
-./prebuilts/build-tools/linux-x86/bin/ninja -f out/soong/build.ninja \
-  out/soong/.intermediates/external/angle/angle_common/android_x86_64_static/angle_common.a \
-  out/soong/.intermediates/external/angle/angle_common/android_x86_x86_64_static/angle_common.a \
-  out/soong/.intermediates/external/angle/angle_gpu_info_util/android_x86_64_static/angle_gpu_info_util.a \
-  out/soong/.intermediates/external/angle/angle_gpu_info_util/android_x86_x86_64_static/angle_gpu_info_util.a \
-  out/soong/.intermediates/external/angle/angle_image_util/android_x86_64_static/angle_image_util.a \
-  out/soong/.intermediates/external/angle/angle_image_util/android_x86_x86_64_static/angle_image_util.a \
-  out/soong/.intermediates/external/angle/angle_preprocessor/android_x86_64_static/angle_preprocessor.a \
-  out/soong/.intermediates/external/angle/angle_preprocessor/android_x86_x86_64_static/angle_preprocessor.a \
-  out/soong/.intermediates/external/angle/angle_translator/android_x86_64_static/angle_translator.a \
-  out/soong/.intermediates/external/angle/angle_translator/android_x86_x86_64_static/angle_translator.a \
-  out/soong/.intermediates/external/angle/libGLESv2_angle/android_x86_64_shared/libGLESv2_angle.so \
-  out/soong/.intermediates/external/angle/libGLESv2_angle/android_x86_x86_64_shared/libGLESv2_angle.so \
-  out/soong/.intermediates/external/angle/libEGL_angle/android_x86_64_shared/libEGL_angle.so \
-  out/soong/.intermediates/external/angle/libEGL_angle/android_x86_x86_64_shared/libEGL_angle.so \
-  out/soong/.intermediates/external/angle/libGLESv1_CM_angle/android_x86_64_shared/libGLESv1_CM_angle.so \
-  out/soong/.intermediates/external/angle/libGLESv1_CM_angle/android_x86_x86_64_shared/libGLESv1_CM_angle.so \
-  
-
-mkdir -p prebuiltlibs/external/angle/angle_common/android_x86_64_static/ && mv out/soong/.intermediates/external/angle/angle_common/android_x86_64_static/angle_common.a prebuiltlibs/external/angle/angle_common/android_x86_64_static/angle_common.a
-mkdir -p prebuiltlibs/external/angle/angle_common/android_x86_x86_64_static/ && mv out/soong/.intermediates/external/angle/angle_common/android_x86_x86_64_static/angle_common.a prebuiltlibs/external/angle/angle_common/android_x86_x86_64_static/angle_common.a
-mkdir -p prebuiltlibs/external/angle/angle_gpu_info_util/android_x86_64_static/ && mv out/soong/.intermediates/external/angle/angle_gpu_info_util/android_x86_64_static/angle_gpu_info_util.a prebuiltlibs/external/angle/angle_gpu_info_util/android_x86_64_static/angle_gpu_info_util.a
-mkdir -p prebuiltlibs/external/angle/angle_gpu_info_util/android_x86_x86_64_static/ && mv out/soong/.intermediates/external/angle/angle_gpu_info_util/android_x86_x86_64_static/angle_gpu_info_util.a prebuiltlibs/external/angle/angle_gpu_info_util/android_x86_x86_64_static/angle_gpu_info_util.a
-mkdir -p prebuiltlibs/external/angle/angle_image_util/android_x86_64_static/ && mv out/soong/.intermediates/external/angle/angle_image_util/android_x86_64_static/angle_image_util.a prebuiltlibs/external/angle/angle_image_util/android_x86_64_static/angle_image_util.a
-mkdir -p prebuiltlibs/external/angle/angle_image_util/android_x86_x86_64_static/ && mv out/soong/.intermediates/external/angle/angle_image_util/android_x86_x86_64_static/angle_image_util.a prebuiltlibs/external/angle/angle_image_util/android_x86_x86_64_static/angle_image_util.a
-mkdir -p prebuiltlibs/external/angle/angle_preprocessor/android_x86_64_static/ && mv out/soong/.intermediates/external/angle/angle_preprocessor/android_x86_64_static/angle_preprocessor.a prebuiltlibs/external/angle/angle_preprocessor/android_x86_64_static/angle_preprocessor.a
-mkdir -p prebuiltlibs/external/angle/angle_preprocessor/android_x86_x86_64_static/ && mv out/soong/.intermediates/external/angle/angle_preprocessor/android_x86_x86_64_static/angle_preprocessor.a prebuiltlibs/external/angle/angle_preprocessor/android_x86_x86_64_static/angle_preprocessor.a
-mkdir -p prebuiltlibs/external/angle/angle_translator/android_x86_64_static/ && mv out/soong/.intermediates/external/angle/angle_translator/android_x86_64_static/angle_translator.a prebuiltlibs/external/angle/angle_translator/android_x86_64_static/angle_translator.a
-mkdir -p prebuiltlibs/external/angle/angle_translator/android_x86_x86_64_static/ && mv out/soong/.intermediates/external/angle/angle_translator/android_x86_x86_64_static/angle_translator.a prebuiltlibs/external/angle/angle_translator/android_x86_x86_64_static/angle_translator.a
-mkdir -p prebuiltlibs/external/angle/libGLESv2_angle/android_x86_64_shared/ && mv out/soong/.intermediates/external/angle/libGLESv2_angle/android_x86_64_shared/libGLESv2_angle.so prebuiltlibs/external/angle/libGLESv2_angle/android_x86_64_shared/libGLESv2_angle.so
-mkdir -p prebuiltlibs/external/angle/libGLESv2_angle/android_x86_x86_64_shared/ && mv out/soong/.intermediates/external/angle/libGLESv2_angle/android_x86_x86_64_shared/libGLESv2_angle.so prebuiltlibs/external/angle/libGLESv2_angle/android_x86_x86_64_shared/libGLESv2_angle.so
-mkdir -p prebuiltlibs/external/angle/libEGL_angle/android_x86_64_shared/ && mv out/soong/.intermediates/external/angle/libEGL_angle/android_x86_64_shared/libEGL_angle.so prebuiltlibs/external/angle/libEGL_angle/android_x86_64_shared/libEGL_angle.so
-mkdir -p prebuiltlibs/external/angle/libEGL_angle/android_x86_x86_64_shared/ && mv out/soong/.intermediates/external/angle/libEGL_angle/android_x86_x86_64_shared/libEGL_angle.so prebuiltlibs/external/angle/libEGL_angle/android_x86_x86_64_shared/libEGL_angle.so
-mkdir -p prebuiltlibs/external/angle/libGLESv1_CM_angle/android_x86_64_shared/ && mv out/soong/.intermediates/external/angle/libGLESv1_CM_angle/android_x86_64_shared/libGLESv1_CM_angle.so prebuiltlibs/external/angle/libGLESv1_CM_angle/android_x86_64_shared/libGLESv1_CM_angle.so
-mkdir -p prebuiltlibs/external/angle/libGLESv1_CM_angle/android_x86_x86_64_shared/ && mv out/soong/.intermediates/external/angle/libGLESv1_CM_angle/android_x86_x86_64_shared/libGLESv1_CM_angle.so prebuiltlibs/external/angle/libGLESv1_CM_angle/android_x86_x86_64_shared/libGLESv1_CM_angle.so
-
-printf "cc_prebuilt_library_static {\n  name: \"angle_common\",\n  stl: \"libc++_static\",\n  sdk_version: \"28\",\n  shared_libs: [\"liblog\",\"libnativewindow\"],\n  strip: {\n    none: true,\n  },\n  multiple_variants: true,\n  prefer: true,\n  srcs: [\"angle_common.a\"],\n}\n" >> prebuiltlibs/external/angle/Android.bp
-printf "cc_prebuilt_library_static {\n  name: \"angle_gpu_info_util\",\n  stl: \"libc++_static\",\n  static_libs: [\"angle_common\"],\n  shared_libs: [\"liblog\",\"libnativewindow\"],\n  sdk_version: \"28\",\n  strip: {\n    none: true,\n  },\n  multiple_variants: true,\n  prefer: true,\n  srcs: [\"angle_gpu_info_util.a\"],\n}\n" >> prebuiltlibs/external/angle/Android.bp
-printf "cc_prebuilt_library_static {\n  name: \"angle_image_util\",\n  stl: \"libc++_static\",\n  static_libs: [\"angle_common\"],\n  shared_libs: [\"liblog\",\"libnativewindow\"],\n  sdk_version: \"28\",\n  strip: {\n    none: true,\n  },\n  multiple_variants: true,\n  prefer: true,\n  srcs: [\"angle_image_util.a\"],\n}\n" >> prebuiltlibs/external/angle/Android.bp
-printf "cc_prebuilt_library_static {\n  stl: \"libc++_static\",\n  sdk_version: \"28\",\n  name: \"angle_preprocessor\",\n  static_libs: [\"angle_common\"],\n  shared_libs: [\"liblog\",\"libnativewindow\"],\n  strip: {\n    none: true,\n  },\n  multiple_variants: true,\n  prefer: true,\n  srcs: [\"angle_preprocessor.a\"],\n}\n" >> prebuiltlibs/external/angle/Android.bp
-printf "cc_prebuilt_library_static {\n  stl: \"libc++_static\",\n  sdk_version: \"28\",\n  name: \"angle_translator\",\n  static_libs: [\"angle_common\",\"angle_preprocessor\",\"third_party_vulkan_deps_spirv_tools_src_spvtools\",\"third_party_vulkan_deps_spirv_tools_src_spvtools_val\"],\n  shared_libs: [\"liblog\",\"libnativewindow\"],\n  strip: {\n    none: true,\n  },\n  multiple_variants: true,\n  prefer: true,\n  srcs: [\"angle_translator.a\"],\n}\n" >> prebuiltlibs/external/angle/Android.bp
-printf "cc_prebuilt_library_shared {\n  stl: \"libc++_static\",\n  sdk_version: \"28\",\n  name: \"libGLESv2_angle\",\n  static_libs: [\"chrome_zlib\",\"cpufeatures\",\"third_party_zlib_google_compression_utils_portable\",\"angle_common\",\"angle_gpu_info_util\",\"angle_image_util\",\"angle_preprocessor\",\"angle_translator\",\"third_party_vulkan_deps_spirv_tools_src_spvtools\",\"third_party_vulkan_deps_spirv_tools_src_spvtools_val\"],\n  shared_libs: [\"liblog\",\"libnativewindow\",\"libdl\",\"libm\"],\n  vendor: true,\n  target: {\n    android: {\n      relative_install_path: \"egl\",\n    },\n  },\n  strip: {\n    none: true,\n  },\n  multiple_variants: true,\n  prefer: true,\n  srcs: [\"libGLESv2_angle.so\"],\n}\n" >> prebuiltlibs/external/angle/Android.bp
-printf "cc_prebuilt_library_shared {\n  stl: \"libc++_static\",\n  sdk_version: \"28\",\n  name: \"libEGL_angle\",\n  vendor: true,\n  static_libs: [\"angle_common\",\"angle_gpu_info_util\",\"angle_image_util\",\"angle_preprocessor\",\"angle_translator\",\"chrome_zlib\",\"cpufeatures\",\"third_party_vulkan_deps_spirv_tools_src_spvtools\",\"third_party_vulkan_deps_spirv_tools_src_spvtools_val\",\"third_party_zlib_google_compression_utils_portable\"],\n  shared_libs: [\"libGLESv2_angle\",\"libdl\",\"liblog\",\"libm\",\"libnativewindow\"],\n  target: {\n    android: {\n      relative_install_path: \"egl\",\n    },\n  },\n  strip: {\n    none: true,\n  },\n  multiple_variants: true,\n  prefer: true,\n  srcs: [\"libEGL_angle.so\"],\n}\n" >> prebuiltlibs/external/angle/Android.bp
-printf "cc_prebuilt_library_shared {\n  stl: \"libc++_static\",\n  sdk_version: \"28\",\n  name: \"libGLESv1_CM_angle\",\n  vendor: true,\n  static_libs: [\"angle_common\",\"angle_gpu_info_util\",\"angle_image_util\",\"angle_preprocessor\",\"angle_translator\",\"chrome_zlib\",\"cpufeatures\",\"third_party_vulkan_deps_spirv_tools_src_spvtools\",\"third_party_vulkan_deps_spirv_tools_src_spvtools_val\",\"third_party_zlib_google_compression_utils_portable\"],\n  shared_libs: [\"libGLESv2_angle\",\"libdl\",\"libm\"],\n  target: {\n    android: {\n      relative_install_path: \"egl\",\n    },\n  },\n  strip: {\n    none: true,\n  },\n  multiple_variants: true,\n  prefer: true,\n  srcs: [\"libGLESv1_CM_angle.so\"],\n}\n" >> prebuiltlibs/external/angle/Android.bp
-
-df -h
-clean_out_intermediates
-mkdir -p prebuiltlibs/external/angle/ninja && rsync -ar out/soong/ninja/external/angle/ prebuiltlibs/external/angle/ninja/external_angle-12
-touch prebuiltlibs/external/angle/ninja/.find-ignore
-tar cfJ external_angle-12.tar.xz -C prebuiltlibs/external/angle/ .
-ls -l external_angle-12.tar.xz
-end=`date +%s`
-echo $((end-start))
-
-start=`date +%s`
-./prebuilts/build-tools/linux-x86/bin/ninja -f out/soong/build.ninja \
-  out/soong/.intermediates/external/drm_hwcomposer/hwcomposer.drm/android_vendor.31_x86_64_shared/hwcomposer.drm.so \
-  out/soong/.intermediates/external/drm_hwcomposer/hwcomposer.drm/android_vendor.31_x86_x86_64_shared/hwcomposer.drm.so \
-  
-
-mkdir -p prebuiltlibs/external/drm_hwcomposer/hwcomposer.drm/android_vendor.31_x86_64_shared/ && mv out/soong/.intermediates/external/drm_hwcomposer/hwcomposer.drm/android_vendor.31_x86_64_shared/hwcomposer.drm.so prebuiltlibs/external/drm_hwcomposer/hwcomposer.drm/android_vendor.31_x86_64_shared/hwcomposer.drm.so
-mkdir -p prebuiltlibs/external/drm_hwcomposer/hwcomposer.drm/android_vendor.31_x86_x86_64_shared/ && mv out/soong/.intermediates/external/drm_hwcomposer/hwcomposer.drm/android_vendor.31_x86_x86_64_shared/hwcomposer.drm.so prebuiltlibs/external/drm_hwcomposer/hwcomposer.drm/android_vendor.31_x86_x86_64_shared/hwcomposer.drm.so
-
-printf "cc_prebuilt_library_shared {\n  name: \"hwcomposer.drm\",\n  shared_libs: [\"libcutils\",\"libdrm\",\"libhardware\",\"libhidlbase\",\"liblog\",\"libsync\",\"libui\",\"libutils\"],\n  static_libs: [\"libdrmhwc_utils\"],\n  relative_install_path: \"hw\",\n  vendor: true,\n  strip: {\n    none: true,\n  },\n  multiple_variants: true,\n  prefer: true,\n  srcs: [\"hwcomposer.drm.so\"],\n}\n" >> prebuiltlibs/external/drm_hwcomposer/Android.bp
-
-df -h
-clean_out_intermediates
-mkdir -p prebuiltlibs/external/drm_hwcomposer/ninja && rsync -ar out/soong/ninja/external/drm_hwcomposer/ prebuiltlibs/external/drm_hwcomposer/ninja/external_drm_hwcomposer-12
-touch prebuiltlibs/external/drm_hwcomposer/ninja/.find-ignore
-tar cfJ external_drm_hwcomposer-12.tar.xz -C prebuiltlibs/external/drm_hwcomposer/ .
-ls -l external_drm_hwcomposer-12.tar.xz
-end=`date +%s`
-echo $((end-start))
-
-start=`date +%s`
-./prebuilts/build-tools/linux-x86/bin/ninja -f out/soong/build.ninja \
-  out/soong/.intermediates/external/minigbm/libminigbm_cros_gralloc/android_vendor.31_x86_64_static/libminigbm_cros_gralloc.a \
-  out/soong/.intermediates/external/minigbm/libminigbm_cros_gralloc/android_vendor.31_x86_x86_64_static/libminigbm_cros_gralloc.a \
-  out/soong/.intermediates/external/minigbm/cros_gralloc/gralloc4/android.hardware.graphics.allocator@4.0-service.minigbm/android_vendor.31_x86_64/android.hardware.graphics.allocator@4.0-service.minigbm \
-  out/soong/.intermediates/external/minigbm/cros_gralloc/gralloc4/android.hardware.graphics.mapper@4.0-impl.minigbm/android_vendor.31_x86_64_shared/android.hardware.graphics.mapper@4.0-impl.minigbm.so \
-  out/soong/.intermediates/external/minigbm/cros_gralloc/gralloc4/android.hardware.graphics.mapper@4.0-impl.minigbm/android_vendor.31_x86_x86_64_shared/android.hardware.graphics.mapper@4.0-impl.minigbm.so \
-  
-
-mkdir -p prebuiltlibs/external/minigbm/libminigbm_cros_gralloc/android_vendor.31_x86_64_static/ && mv out/soong/.intermediates/external/minigbm/libminigbm_cros_gralloc/android_vendor.31_x86_64_static/libminigbm_cros_gralloc.a prebuiltlibs/external/minigbm/libminigbm_cros_gralloc/android_vendor.31_x86_64_static/libminigbm_cros_gralloc.a
-mkdir -p prebuiltlibs/external/minigbm/libminigbm_cros_gralloc/android_vendor.31_x86_x86_64_static/ && mv out/soong/.intermediates/external/minigbm/libminigbm_cros_gralloc/android_vendor.31_x86_x86_64_static/libminigbm_cros_gralloc.a prebuiltlibs/external/minigbm/libminigbm_cros_gralloc/android_vendor.31_x86_x86_64_static/libminigbm_cros_gralloc.a
-mkdir -p prebuiltlibs/external/minigbm/
-rsync -ar --exclude=".git" --exclude="Android.bp" --exclude="Android.mk" external/minigbm/ prebuiltlibs/external/minigbm/
-mkdir -p prebuiltlibs/external/minigbm/cros_gralloc/gralloc4/android.hardware.graphics.allocator@4.0-service.minigbm/android_vendor.31_x86_64/ && mv out/soong/.intermediates/external/minigbm/cros_gralloc/gralloc4/android.hardware.graphics.allocator@4.0-service.minigbm/android_vendor.31_x86_64/android.hardware.graphics.allocator@4.0-service.minigbm prebuiltlibs/external/minigbm/cros_gralloc/gralloc4/android.hardware.graphics.allocator@4.0-service.minigbm/android_vendor.31_x86_64/android.hardware.graphics.allocator@4.0-service.minigbm
-mkdir -p prebuiltlibs/external/minigbm/cros_gralloc/gralloc4/android.hardware.graphics.mapper@4.0-impl.minigbm/android_vendor.31_x86_64_shared/ && mv out/soong/.intermediates/external/minigbm/cros_gralloc/gralloc4/android.hardware.graphics.mapper@4.0-impl.minigbm/android_vendor.31_x86_64_shared/android.hardware.graphics.mapper@4.0-impl.minigbm.so prebuiltlibs/external/minigbm/cros_gralloc/gralloc4/android.hardware.graphics.mapper@4.0-impl.minigbm/android_vendor.31_x86_64_shared/android.hardware.graphics.mapper@4.0-impl.minigbm.so
-mkdir -p prebuiltlibs/external/minigbm/cros_gralloc/gralloc4/android.hardware.graphics.mapper@4.0-impl.minigbm/android_vendor.31_x86_x86_64_shared/ && mv out/soong/.intermediates/external/minigbm/cros_gralloc/gralloc4/android.hardware.graphics.mapper@4.0-impl.minigbm/android_vendor.31_x86_x86_64_shared/android.hardware.graphics.mapper@4.0-impl.minigbm.so prebuiltlibs/external/minigbm/cros_gralloc/gralloc4/android.hardware.graphics.mapper@4.0-impl.minigbm/android_vendor.31_x86_x86_64_shared/android.hardware.graphics.mapper@4.0-impl.minigbm.so
-
-printf "cc_prebuilt_library_static {\n  name: \"libminigbm_cros_gralloc\",\n  header_libs: [\"libhardware_headers\",\"libnativebase_headers\",\"libnativewindow_headers\",\"libsystem_headers\"],\n  export_header_lib_headers: [\"libhardware_headers\",\"libnativebase_headers\",\"libnativewindow_headers\",\"libsystem_headers\"],\n  static_libs: [\"libarect\",\"libdrm\"],\n  export_static_lib_headers: [\"libarect\"],\n  vendor: true,\n  shared_libs: [\"libcutils\",\"libdrm\",\"libnativewindow\",\"libsync\",\"liblog\"],\n  relative_install_path: \"hw\",\n  export_include_dirs: [\".\"],\n  strip: {\n    none: true,\n  },\n  multiple_variants: true,\n  prefer: true,\n  srcs: [\"libminigbm_cros_gralloc.a\"],\n}\n" >> prebuiltlibs/external/minigbm/Android.bp
-printf "cc_prebuilt_binary {\n  name: \"android.hardware.graphics.allocator@4.0-service.minigbm\",\n  relative_install_path: \"hw\",\n  vendor: true,\n  vintf_fragments: [\"android.hardware.graphics.allocator@4.0.xml\"],\n  shared_libs: [\"android.hardware.graphics.allocator@4.0\",\"android.hardware.graphics.mapper@4.0\",\"libbase\",\"libcutils\",\"libgralloctypes\",\"libhidlbase\",\"liblog\",\"libsync\",\"libutils\"],\n  init_rc: [\"android.hardware.graphics.allocator@4.0-service.minigbm.rc\"],\n  strip: {\n    none: true,\n  },\n  multiple_variants: true,\n  prefer: true,\n  srcs: [\"android.hardware.graphics.allocator@4.0-service.minigbm\"],\n}\n" >> prebuiltlibs/external/minigbm/cros_gralloc/gralloc4/Android.bp
-printf "cc_prebuilt_library_shared {\n  name: \"android.hardware.graphics.mapper@4.0-impl.minigbm\",\n  relative_install_path: \"hw\",\n  vendor: true,\n  vintf_fragments: [\"android.hardware.graphics.mapper@4.0.xml\"],\n  shared_libs: [\"android.hardware.graphics.mapper@4.0\",\"libbase\",\"libcutils\",\"libgralloctypes\",\"libhidlbase\",\"liblog\",\"libsync\",\"libutils\"],\n  static_libs: [\"libdrm\",\"libminigbm_cros_gralloc\"],\n  strip: {\n    none: true,\n  },\n  multiple_variants: true,\n  prefer: true,\n  srcs: [\"android.hardware.graphics.mapper@4.0-impl.minigbm.so\"],\n}\n" >> prebuiltlibs/external/minigbm/cros_gralloc/gralloc4/Android.bp
-
-df -h
-clean_out_intermediates
-mkdir -p prebuiltlibs/external/minigbm/ninja && rsync -ar out/soong/ninja/external/minigbm/ prebuiltlibs/external/minigbm/ninja/external_minigbm-12
-touch prebuiltlibs/external/minigbm/ninja/.find-ignore
-tar cfJ external_minigbm-12.tar.xz -C prebuiltlibs/external/minigbm/ .
-ls -l external_minigbm-12.tar.xz
 end=`date +%s`
 echo $((end-start))
 
@@ -1304,36 +969,6 @@ echo $((end-start))
 
 start=`date +%s`
 ./prebuilts/build-tools/linux-x86/bin/ninja -f out/soong/build.ninja \
-  out/soong/.intermediates/frameworks/base/media/mca/filterfw/native/libfilterfw_native/android_x86_64_static/libfilterfw_native.a \
-  out/soong/.intermediates/frameworks/base/media/mca/filterfw/native/libfilterfw_native/android_x86_x86_64_static/libfilterfw_native.a \
-  out/soong/.intermediates/frameworks/base/media/jni/libmedia_jni_utils/android_x86_64_shared/libmedia_jni_utils.so \
-  out/soong/.intermediates/frameworks/base/media/jni/libmedia_jni_utils/android_x86_x86_64_shared/libmedia_jni_utils.so \
-  out/soong/.intermediates/frameworks/base/tools/validatekeymaps/validatekeymaps/linux_glibc_x86_64/validatekeymaps \
-  
-
-mkdir -p prebuiltlibs/frameworks/base/media/mca/filterfw/native/libfilterfw_native/android_x86_64_static/ && mv out/soong/.intermediates/frameworks/base/media/mca/filterfw/native/libfilterfw_native/android_x86_64_static/libfilterfw_native.a prebuiltlibs/frameworks/base/media/mca/filterfw/native/libfilterfw_native/android_x86_64_static/libfilterfw_native.a
-mkdir -p prebuiltlibs/frameworks/base/media/mca/filterfw/native/libfilterfw_native/android_x86_x86_64_static/ && mv out/soong/.intermediates/frameworks/base/media/mca/filterfw/native/libfilterfw_native/android_x86_x86_64_static/libfilterfw_native.a prebuiltlibs/frameworks/base/media/mca/filterfw/native/libfilterfw_native/android_x86_x86_64_static/libfilterfw_native.a
-mkdir -p prebuiltlibs/frameworks/base/media/jni/libmedia_jni_utils/android_x86_64_shared/ && mv out/soong/.intermediates/frameworks/base/media/jni/libmedia_jni_utils/android_x86_64_shared/libmedia_jni_utils.so prebuiltlibs/frameworks/base/media/jni/libmedia_jni_utils/android_x86_64_shared/libmedia_jni_utils.so
-mkdir -p prebuiltlibs/frameworks/base/media/jni/libmedia_jni_utils/android_x86_x86_64_shared/ && mv out/soong/.intermediates/frameworks/base/media/jni/libmedia_jni_utils/android_x86_x86_64_shared/libmedia_jni_utils.so prebuiltlibs/frameworks/base/media/jni/libmedia_jni_utils/android_x86_x86_64_shared/libmedia_jni_utils.so
-mkdir -p prebuiltlibs/frameworks/base/media/jni/
-rsync -ar --exclude=".git" --exclude="Android.bp" --exclude="Android.mk" frameworks/base/media/jni/ prebuiltlibs/frameworks/base/media/jni/
-mkdir -p prebuiltlibs/frameworks/base/tools/validatekeymaps/validatekeymaps/linux_glibc_x86_64/ && mv out/soong/.intermediates/frameworks/base/tools/validatekeymaps/validatekeymaps/linux_glibc_x86_64/validatekeymaps prebuiltlibs/frameworks/base/tools/validatekeymaps/validatekeymaps/linux_glibc_x86_64/validatekeymaps
-
-printf "cc_prebuilt_library_static {\n  name: \"libfilterfw_native\",\n  static_libs: [\"libarect\"],\n  shared_libs: [\"libgui\"],\n  strip: {\n    none: true,\n  },\n  multiple_variants: true,\n  prefer: true,\n  srcs: [\"libfilterfw_native.a\"],\n}\n" >> prebuiltlibs/frameworks/base/media/mca/filterfw/native/Android.bp
-printf "cc_prebuilt_library_shared {\n  name: \"libmedia_jni_utils\",\n  shared_libs: [\"liblog\",\"libui\",\"libutils\"],\n  export_include_dirs: [\".\"],\n  strip: {\n    none: true,\n  },\n  multiple_variants: true,\n  prefer: true,\n  srcs: [\"libmedia_jni_utils.so\"],\n}\n" >> prebuiltlibs/frameworks/base/media/jni/Android.bp
-printf "cc_prebuilt_binary {\n  name: \"validatekeymaps\",\n  target: {\n    linux_glibc: {\n      static_libs: [\"libbinder\"],\n    },\n  },\n  strip: {\n    none: true,\n  },\n  multiple_variants: true,\n  prefer: true,\n  host_supported: true,\n  device_supported: false,\n  srcs: [\"validatekeymaps\"],\n}\n" >> prebuiltlibs/frameworks/base/tools/validatekeymaps/Android.bp
-
-df -h
-clean_out_intermediates
-mkdir -p prebuiltlibs/frameworks/base/ninja && rsync -ar out/soong/ninja/frameworks/base/ prebuiltlibs/frameworks/base/ninja/frameworks_base-12
-touch prebuiltlibs/frameworks/base/ninja/.find-ignore
-tar cfJ frameworks_base-12.tar.xz -C prebuiltlibs/frameworks/base/ .
-ls -l frameworks_base-12.tar.xz
-end=`date +%s`
-echo $((end-start))
-
-start=`date +%s`
-./prebuilts/build-tools/linux-x86/bin/ninja -f out/soong/build.ninja \
   out/soong/.intermediates/frameworks/rs/cpp/libRScpp/android_x86_64_shared/libRScpp.so \
   out/soong/.intermediates/frameworks/rs/cpp/libRScpp/android_x86_64_static/libRScpp.a \
   out/soong/.intermediates/frameworks/rs/cpp/libRScpp/android_x86_x86_64_shared/libRScpp.so \
@@ -1415,24 +1050,6 @@ echo $((end-start))
 
 start=`date +%s`
 ./prebuilts/build-tools/linux-x86/bin/ninja -f out/soong/build.ninja \
-  out/soong/.intermediates/packages/apps/Gallery2/jni/libjni_eglfence/android_x86_64_shared/libjni_eglfence.so \
-  
-
-mkdir -p prebuiltlibs/packages/apps/Gallery2/jni/libjni_eglfence/android_x86_64_shared/ && mv out/soong/.intermediates/packages/apps/Gallery2/jni/libjni_eglfence/android_x86_64_shared/libjni_eglfence.so prebuiltlibs/packages/apps/Gallery2/jni/libjni_eglfence/android_x86_64_shared/libjni_eglfence.so
-
-printf "cc_prebuilt_library_shared {\n  name: \"libjni_eglfence\",\n  product_specific: true,\n  sdk_version: \"9\",\n  shared_libs: [\"liblog\",\"libEGL\"],\n  strip: {\n    none: true,\n  },\n  multiple_variants: true,\n  prefer: true,\n  srcs: [\"libjni_eglfence.so\"],\n}\n" >> prebuiltlibs/packages/apps/Gallery2/jni/Android.bp
-
-df -h
-clean_out_intermediates
-mkdir -p prebuiltlibs/packages/apps/Gallery2/ninja && rsync -ar out/soong/ninja/packages/apps/Gallery2/ prebuiltlibs/packages/apps/Gallery2/ninja/packages_apps_Gallery2-12
-touch prebuiltlibs/packages/apps/Gallery2/ninja/.find-ignore
-tar cfJ packages_apps_Gallery2-12.tar.xz -C prebuiltlibs/packages/apps/Gallery2/ .
-ls -l packages_apps_Gallery2-12.tar.xz
-end=`date +%s`
-echo $((end-start))
-
-start=`date +%s`
-./prebuilts/build-tools/linux-x86/bin/ninja -f out/soong/build.ninja \
   out/soong/.intermediates/packages/modules/NeuralNetworks/shim_and_sl/neuralnetworks_supportlibrary_loader/android_vendor.31_x86_64_static/neuralnetworks_supportlibrary_loader.a \
   out/soong/.intermediates/packages/modules/NeuralNetworks/common/neuralnetworks_types/android_x86_64_static_apex30/neuralnetworks_types.a \
   out/soong/.intermediates/packages/modules/NeuralNetworks/common/neuralnetworks_types/android_x86_x86_64_static_apex30/neuralnetworks_types.a \
@@ -1459,39 +1076,6 @@ mkdir -p prebuiltlibs/packages/modules/NeuralNetworks/ninja && rsync -ar out/soo
 touch prebuiltlibs/packages/modules/NeuralNetworks/ninja/.find-ignore
 tar cfJ packages_modules_NeuralNetworks-12.tar.xz -C prebuiltlibs/packages/modules/NeuralNetworks/ .
 ls -l packages_modules_NeuralNetworks-12.tar.xz
-end=`date +%s`
-echo $((end-start))
-
-start=`date +%s`
-./prebuilts/build-tools/linux-x86/bin/ninja -f out/soong/build.ninja \
-  out/soong/.intermediates/system/core/init/host_init_verifier/linux_glibc_x86_64/host_init_verifier \
-  out/soong/.intermediates/system/core/healthd/libhealthd_charger/android_x86_64_static/libhealthd_charger.a \
-  out/soong/.intermediates/system/core/healthd/libhealthd_charger_nops/android_recovery_x86_64_static/libhealthd_charger_nops.a \
-  out/soong/.intermediates/system/core/healthd/libhealthd_charger_nops/android_x86_64_static/libhealthd_charger_nops.a \
-  out/soong/.intermediates/system/core/healthd/charger/android_recovery_x86_64/charger \
-  out/soong/.intermediates/system/core/healthd/charger/android_x86_64/charger \
-  
-
-mkdir -p prebuiltlibs/system/core/init/host_init_verifier/linux_glibc_x86_64/ && mv out/soong/.intermediates/system/core/init/host_init_verifier/linux_glibc_x86_64/host_init_verifier prebuiltlibs/system/core/init/host_init_verifier/linux_glibc_x86_64/host_init_verifier
-mkdir -p prebuiltlibs/system/core/healthd/libhealthd_charger/android_x86_64_static/ && mv out/soong/.intermediates/system/core/healthd/libhealthd_charger/android_x86_64_static/libhealthd_charger.a prebuiltlibs/system/core/healthd/libhealthd_charger/android_x86_64_static/libhealthd_charger.a
-mkdir -p prebuiltlibs/system/core/healthd/
-rsync -ar --exclude=".git" --exclude="Android.bp" --exclude="Android.mk" system/core/healthd/ prebuiltlibs/system/core/healthd/
-mkdir -p prebuiltlibs/system/core/healthd/libhealthd_charger_nops/android_recovery_x86_64_static/ && mv out/soong/.intermediates/system/core/healthd/libhealthd_charger_nops/android_recovery_x86_64_static/libhealthd_charger_nops.a prebuiltlibs/system/core/healthd/libhealthd_charger_nops/android_recovery_x86_64_static/libhealthd_charger_nops.a
-mkdir -p prebuiltlibs/system/core/healthd/libhealthd_charger_nops/android_x86_64_static/ && mv out/soong/.intermediates/system/core/healthd/libhealthd_charger_nops/android_x86_64_static/libhealthd_charger_nops.a prebuiltlibs/system/core/healthd/libhealthd_charger_nops/android_x86_64_static/libhealthd_charger_nops.a
-mkdir -p prebuiltlibs/system/core/healthd/charger/android_recovery_x86_64/ && mv out/soong/.intermediates/system/core/healthd/charger/android_recovery_x86_64/charger prebuiltlibs/system/core/healthd/charger/android_recovery_x86_64/charger
-mkdir -p prebuiltlibs/system/core/healthd/charger/android_x86_64/ && mv out/soong/.intermediates/system/core/healthd/charger/android_x86_64/charger prebuiltlibs/system/core/healthd/charger/android_x86_64/charger
-
-printf "cc_prebuilt_binary {\n  name: \"host_init_verifier\",\n  host_supported: true,\n  whole_static_libs: [\"libcap\"],\n  shared_libs: [\"libcutils\",\"libhidl-gen-utils\",\"libhidlmetadata\",\"liblog\",\"libprocessgroup\",\"libprotobuf-cpp-lite\"],\n  target: {\n    android: {\n      enabled: false,\n    },\n    darwin: {\n      enabled: false,\n    },\n  },\n  strip: {\n    none: true,\n  },\n  multiple_variants: true,\n  prefer: true,\n  srcs: [\"host_init_verifier\"],\n}\n" >> prebuiltlibs/system/core/init/Android.bp
-printf "cc_prebuilt_library_static {\n  name: \"libhealthd_charger\",\n  export_include_dirs: [\".\",\"include\"],\n  static_libs: [\"android.hardware.health@1.0-convert\",\"libcharger_sysprop\",\"libhealthd_draw\",\"libhealthloop\",\"libhealth2impl\",\"libminui\"],\n  shared_libs: [\"android.hardware.health@2.1\",\"libbase\",\"libcutils\",\"liblog\",\"libpng\",\"libsuspend\",\"libutils\"],\n  strip: {\n    none: true,\n  },\n  multiple_variants: true,\n  prefer: true,\n  srcs: [\"libhealthd_charger.a\"],\n}\n" >> prebuiltlibs/system/core/healthd/Android.bp
-printf "cc_prebuilt_library_static {\n  name: \"libhealthd_charger_nops\",\n  recovery_available: true,\n  static_libs: [\"libhealthloop\",\"libhealth2impl\"],\n  shared_libs: [\"android.hardware.health@2.1\",\"libutils\"],\n  strip: {\n    none: true,\n  },\n  multiple_variants: true,\n  prefer: true,\n  srcs: [\"libhealthd_charger_nops.a\"],\n}\n" >> prebuiltlibs/system/core/healthd/Android.bp
-printf "cc_prebuilt_binary {\n  name: \"charger\",\n  shared_libs: [\"android.hardware.health@2.0\",\"android.hardware.health@2.1\",\"libbase\",\"libcutils\",\"libhidlbase\",\"liblog\",\"libutils\",\"libpng\"],\n  recovery_available: true,\n  target: {\n    recovery: {\n      exclude_shared_libs: [\"libpng\"],\n      exclude_static_libs: [\"libhealthd_draw\",\"libhealthd_charger\",\"libminui\",\"libsuspend\"],\n    },\n  },\n  strip: {\n    none: true,\n  },\n  multiple_variants: true,\n  prefer: true,\n  srcs: [\"charger\"],\n}\n" >> prebuiltlibs/system/core/healthd/Android.bp
-
-df -h
-clean_out_intermediates
-mkdir -p prebuiltlibs/system/core/ninja && rsync -ar out/soong/ninja/system/core/ prebuiltlibs/system/core/ninja/system_core-12
-touch prebuiltlibs/system/core/ninja/.find-ignore
-tar cfJ system_core-12.tar.xz -C prebuiltlibs/system/core/ .
-ls -l system_core-12.tar.xz
 end=`date +%s`
 echo $((end-start))
 
