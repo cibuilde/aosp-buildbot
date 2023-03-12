@@ -192,3 +192,13 @@ profcollectctl
 profcollectd
 libkeystore2_apc_compat-rust
 libkeystore2_selinux
+libp9
+authfs
+libbt_common
+libbt_facade_proto
+libbt_facade_helpers
+libbt_hal
+libbt_hci
+libbt_main
+libbt_shim_ffi
+libkeystore2_km_compat
