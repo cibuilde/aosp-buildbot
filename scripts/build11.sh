@@ -1,7 +1,355 @@
 source $GITHUB_WORKSPACE/envsetup.sh
 df -h
 
+
+sed -i 's/rust_prebuilt_rlib {$/rust_prebuilt_library {/' prebuiltlibs/packages/modules/Virtualization/authfs/Android.bp
+
 GOROOT=$TOP/prebuilts/go/linux-x86 $GITHUB_WORKSPACE/soong_ui --make-mode --skip-ninja --skip-kati --skip-soong-tests --skip-write-modules -j1 TARGET_PRODUCT=aosp_x86_64 TARGET_BUILD_VARIANT=eng ALLOW_MISSING_DEPENDENCIES=true BUILD_BROKEN_DISABLE_BAZEL=1 nothing
+
+rm -rf prebuiltlibs/external/llvm/lib/Support/libLLVMSupport
+rm -rf prebuiltlibs/external/llvm/lib/TableGen/libLLVMTableGen
+rm -rf prebuiltlibs/external/llvm/lib/Target/AArch64/AsmParser/libLLVMAArch64AsmParser
+rm -rf prebuiltlibs/external/llvm/lib/Target/AArch64/InstPrinter/libLLVMAArch64AsmPrinter
+rm -rf prebuiltlibs/external/llvm/lib/Target/AArch64/libLLVMAArch64CodeGen
+rm -rf prebuiltlibs/external/llvm/lib/Target/AArch64/MCTargetDesc/libLLVMAArch64Desc
+rm -rf prebuiltlibs/external/llvm/lib/Target/AArch64/Disassembler/libLLVMAArch64Disassembler
+rm -rf prebuiltlibs/external/llvm/lib/Target/AArch64/TargetInfo/libLLVMAArch64Info
+rm -rf prebuiltlibs/external/llvm/lib/Target/AArch64/Utils/libLLVMAArch64Utils
+rm -rf prebuiltlibs/external/llvm/lib/Target/ARM/AsmParser/libLLVMARMAsmParser
+rm -rf prebuiltlibs/external/llvm/lib/Target/ARM/InstPrinter/libLLVMARMAsmPrinter
+rm -rf prebuiltlibs/external/llvm/lib/Target/ARM/libLLVMARMCodeGen
+rm -rf prebuiltlibs/external/llvm/lib/Target/ARM/MCTargetDesc/libLLVMARMDesc
+rm -rf prebuiltlibs/external/llvm/lib/Target/ARM/Disassembler/libLLVMARMDisassembler
+rm -rf prebuiltlibs/external/llvm/lib/Target/ARM/TargetInfo/libLLVMARMInfo
+rm -rf prebuiltlibs/external/llvm/lib/Analysis/libLLVMAnalysis
+rm -rf prebuiltlibs/external/llvm/lib/AsmParser/libLLVMAsmParser
+rm -rf prebuiltlibs/external/llvm/lib/CodeGen/AsmPrinter/libLLVMAsmPrinter
+rm -rf prebuiltlibs/external/llvm/lib/Bitcode/Reader/libLLVMBitReader
+rm -rf prebuiltlibs/external/llvm/lib/Bitcode/Writer/libLLVMBitWriter
+rm -rf prebuiltlibs/external/llvm/lib/CodeGen/libLLVMCodeGen
+rm -rf prebuiltlibs/external/llvm/lib/IR/libLLVMCore
+rm -rf prebuiltlibs/external/llvm/lib/DebugInfo/CodeView/libLLVMDebugInfoCodeView
+rm -rf prebuiltlibs/external/llvm/lib/DebugInfo/DWARF/libLLVMDebugInfoDWARF
+rm -rf prebuiltlibs/external/llvm/lib/DebugInfo/PDB/libLLVMDebugInfoPDB
+rm -rf prebuiltlibs/external/llvm/lib/ExecutionEngine/libLLVMExecutionEngine
+rm -rf prebuiltlibs/external/llvm/lib/CodeGen/GlobalISel/libLLVMGlobalISel
+rm -rf prebuiltlibs/external/llvm/lib/IRReader/libLLVMIRReader
+rm -rf prebuiltlibs/external/llvm/lib/Transforms/InstCombine/libLLVMInstCombine
+rm -rf prebuiltlibs/external/llvm/lib/Transforms/Instrumentation/libLLVMInstrumentation
+rm -rf prebuiltlibs/external/llvm/lib/LTO/libLLVMLTO
+rm -rf prebuiltlibs/external/llvm/lib/LibDriver/libLLVMLibDriver
+rm -rf prebuiltlibs/external/llvm/lib/Linker/libLLVMLinker
+rm -rf prebuiltlibs/external/llvm/lib/MC/libLLVMMC
+rm -rf prebuiltlibs/external/llvm/lib/MC/MCDisassembler/libLLVMMCDisassembler
+rm -rf prebuiltlibs/external/llvm/lib/ExecutionEngine/MCJIT/libLLVMMCJIT
+rm -rf prebuiltlibs/external/llvm/lib/MC/MCParser/libLLVMMCParser
+rm -rf prebuiltlibs/external/llvm/lib/Object/libLLVMObject
+rm -rf prebuiltlibs/external/llvm/lib/Option/libLLVMOption
+rm -rf prebuiltlibs/external/llvm/lib/ExecutionEngine/Orc/libLLVMOrcJIT
+rm -rf prebuiltlibs/external/llvm/lib/ProfileData/libLLVMProfileData
+rm -rf prebuiltlibs/external/llvm/lib/ProfileData/Coverage/libLLVMProfileDataCoverage
+rm -rf prebuiltlibs/external/llvm/lib/ExecutionEngine/RuntimeDyld/libLLVMRuntimeDyld
+rm -rf prebuiltlibs/external/llvm/lib/Transforms/Scalar/libLLVMScalarOpts
+rm -rf prebuiltlibs/external/llvm/lib/CodeGen/SelectionDAG/libLLVMSelectionDAG
+rm -rf prebuiltlibs/external/llvm/lib/DebugInfo/Symbolize/libLLVMSymbolize
+rm -rf prebuiltlibs/external/llvm/lib/Target/libLLVMTarget
+rm -rf prebuiltlibs/external/llvm/lib/Transforms/ObjCARC/libLLVMTransformObjCARC
+rm -rf prebuiltlibs/external/llvm/lib/Transforms/Utils/libLLVMTransformUtils
+rm -rf prebuiltlibs/external/llvm/lib/Transforms/Vectorize/libLLVMVectorize
+rm -rf prebuiltlibs/external/llvm/lib/Target/X86/AsmParser/libLLVMX86AsmParser
+rm -rf prebuiltlibs/external/llvm/lib/Target/X86/InstPrinter/libLLVMX86AsmPrinter
+rm -rf prebuiltlibs/external/llvm/lib/Target/X86/libLLVMX86CodeGen
+rm -rf prebuiltlibs/external/llvm/lib/Target/X86/MCTargetDesc/libLLVMX86Desc
+rm -rf prebuiltlibs/external/llvm/lib/Target/X86/Disassembler/libLLVMX86Disassembler
+rm -rf prebuiltlibs/external/llvm/lib/Target/X86/TargetInfo/libLLVMX86Info
+rm -rf prebuiltlibs/external/llvm/lib/Target/X86/Utils/libLLVMX86Utils
+rm -rf prebuiltlibs/external/llvm/lib/Transforms/IPO/libLLVMipo
+rm -rf prebuiltlibs/external/llvm/libLLVM_android
+
+rm -rf prebuiltlibs/external/swiftshader/third_party/llvm-10.0/libLLVM10_swiftshader
+rm -rf prebuiltlibs/external/swiftshader/third_party/marl/swiftshader_marl
+rm -rf prebuiltlibs/external/swiftshader/third_party/SPIRV-Tools/swiftshader_spirv-tools
+rm -rf prebuiltlibs/external/swiftshader/src/swiftshader_debug
+rm -rf prebuiltlibs/external/swiftshader/third_party/astc-encoder/swiftshader_astc
+rm -rf prebuiltlibs/external/swiftshader/src/libswiftshadervk_llvm_debug
+
+rm -rf prebuiltlibs/hardware/interfaces/confirmationui/support/android.hardware.confirmationui-support-lib
+rm -rf prebuiltlibs/hardware/interfaces/graphics/composer/2.1/utils/hwc2onfbadapter/libhwc2onfbadapter
+rm -rf prebuiltlibs/hardware/interfaces/audio/common/7.0/android.hardware.audio.common@7.0-enums
+rm -rf prebuiltlibs/hardware/interfaces/rebootescrow/aidl/default/libhadamardutils
+rm -rf prebuiltlibs/hardware/interfaces/health/utils/libhealthloop/libhealthloop
+rm -rf prebuiltlibs/hardware/interfaces/authsecret/aidl/android.hardware.authsecret-V1-ndk_platform
+rm -rf prebuiltlibs/hardware/interfaces/authsecret/aidl/default/android.hardware.authsecret-service.example
+rm -rf prebuiltlibs/hardware/interfaces/automotive/occupant_awareness/aidl/android.hardware.automotive.occupant_awareness-V1-ndk_platform
+rm -rf prebuiltlibs/hardware/interfaces/biometrics/common/aidl/android.hardware.biometrics.common-V1-ndk_platform
+rm -rf prebuiltlibs/hardware/interfaces/common/aidl/android.hardware.common-V2-ndk_platform
+rm -rf prebuiltlibs/hardware/interfaces/common/support/libaidlcommonsupport
+rm -rf prebuiltlibs/hardware/interfaces/common/fmq/aidl/android.hardware.common.fmq-V1-ndk_platform
+rm -rf prebuiltlibs/hardware/interfaces/graphics/common/aidl/android.hardware.graphics.common-V2-ndk_platform
+rm -rf prebuiltlibs/hardware/interfaces/neuralnetworks/aidl/android.hardware.neuralnetworks-V1-ndk_platform
+rm -rf prebuiltlibs/hardware/interfaces/gnss/aidl/android.hardware.gnss-V1-cpp
+rm -rf prebuiltlibs/hardware/interfaces/gnss/aidl/android.hardware.gnss-V1-ndk_platform
+rm -rf prebuiltlibs/hardware/interfaces/health/storage/aidl/android.hardware.health.storage-V1-ndk_platform
+rm -rf prebuiltlibs/hardware/interfaces/keymaster/aidl/android.hardware.keymaster-V3-cpp
+rm -rf prebuiltlibs/hardware/interfaces/identity/aidl/android.hardware.identity-V3-cpp
+rm -rf prebuiltlibs/hardware/interfaces/keymaster/aidl/android.hardware.keymaster-V3-ndk_platform
+rm -rf prebuiltlibs/hardware/interfaces/biometrics/face/aidl/android.hardware.biometrics.face-V1-ndk_platform
+rm -rf prebuiltlibs/hardware/interfaces/biometrics/face/aidl/default/android.hardware.biometrics.face-service.example
+rm -rf prebuiltlibs/hardware/interfaces/biometrics/fingerprint/aidl/android.hardware.biometrics.fingerprint-V1-ndk_platform
+rm -rf prebuiltlibs/hardware/interfaces/biometrics/fingerprint/aidl/default/android.hardware.biometrics.fingerprint-service.example
+rm -rf prebuiltlibs/hardware/interfaces/identity/aidl/android.hardware.identity-V3-ndk_platform
+rm -rf prebuiltlibs/hardware/interfaces/light/aidl/android.hardware.light-V1-cpp
+rm -rf prebuiltlibs/hardware/interfaces/light/aidl/android.hardware.light-V1-ndk_platform
+rm -rf prebuiltlibs/hardware/interfaces/light/aidl/default/android.hardware.lights-service.example
+rm -rf prebuiltlibs/hardware/interfaces/memtrack/aidl/android.hardware.memtrack-V1-ndk_platform
+rm -rf prebuiltlibs/hardware/interfaces/memtrack/aidl/default/android.hardware.memtrack-service.example
+rm -rf prebuiltlibs/hardware/interfaces/oemlock/aidl/android.hardware.oemlock-V1-ndk_platform
+rm -rf prebuiltlibs/hardware/interfaces/oemlock/aidl/default/android.hardware.oemlock-service.example
+rm -rf prebuiltlibs/hardware/interfaces/power/aidl/android.hardware.power-V1-cpp
+rm -rf prebuiltlibs/hardware/interfaces/power/aidl/android.hardware.power-V2-cpp
+rm -rf prebuiltlibs/hardware/interfaces/power/aidl/android.hardware.power-V2-ndk_platform
+rm -rf prebuiltlibs/hardware/interfaces/power/aidl/default/android.hardware.power-service.example
+rm -rf prebuiltlibs/hardware/interfaces/power/stats/aidl/android.hardware.power.stats-V1-cpp
+rm -rf prebuiltlibs/hardware/interfaces/power/stats/aidl/android.hardware.power.stats-V1-ndk_platform
+rm -rf prebuiltlibs/hardware/interfaces/power/stats/aidl/default/android.hardware.power.stats-service.example
+rm -rf prebuiltlibs/hardware/interfaces/rebootescrow/aidl/android.hardware.rebootescrow-V1-ndk_platform
+rm -rf prebuiltlibs/hardware/interfaces/rebootescrow/aidl/default/librebootescrowdefaultimpl
+rm -rf prebuiltlibs/hardware/interfaces/rebootescrow/aidl/default/android.hardware.rebootescrow-service.default
+rm -rf prebuiltlibs/hardware/interfaces/security/secureclock/aidl/android.hardware.security.secureclock-V1-cpp
+rm -rf prebuiltlibs/hardware/interfaces/security/keymint/aidl/android.hardware.security.keymint-V1-cpp
+rm -rf prebuiltlibs/hardware/interfaces/security/secureclock/aidl/android.hardware.security.secureclock-V1-ndk_platform
+rm -rf prebuiltlibs/hardware/interfaces/security/keymint/aidl/android.hardware.security.keymint-V1-ndk_platform
+rm -rf prebuiltlibs/hardware/interfaces/security/keymint/support/libkeymint_support
+rm -rf prebuiltlibs/hardware/interfaces/security/sharedsecret/aidl/android.hardware.security.sharedsecret-V1-ndk_platform
+rm -rf prebuiltlibs/hardware/interfaces/vibrator/aidl/android.hardware.vibrator-V2-cpp
+rm -rf prebuiltlibs/hardware/interfaces/vibrator/aidl/android.hardware.vibrator-V2-ndk_platform
+rm -rf prebuiltlibs/hardware/interfaces/vibrator/aidl/default/libvibratorexampleimpl
+rm -rf prebuiltlibs/hardware/interfaces/vibrator/aidl/default/android.hardware.vibrator-service.example
+rm -rf prebuiltlibs/hardware/interfaces/weaver/aidl/android.hardware.weaver-V1-ndk_platform
+rm -rf prebuiltlibs/hardware/interfaces/weaver/aidl/default/android.hardware.weaver-service.example
+rm -rf prebuiltlibs/hardware/interfaces/graphics/composer/2.1/utils/hwc2on1adapter/libhwc2on1adapter
+rm -rf prebuiltlibs/hardware/interfaces/atrace/1.0/android.hardware.atrace@1.0
+rm -rf prebuiltlibs/hardware/interfaces/atrace/1.0/default/android.hardware.atrace@1.0-service
+rm -rf prebuiltlibs/hardware/interfaces/audio/common/all-versions/default/android.hardware.audio.common-util
+rm -rf prebuiltlibs/hardware/interfaces/audio/common/2.0/android.hardware.audio.common@2.0
+rm -rf prebuiltlibs/hardware/interfaces/soundtrigger/2.0/android.hardware.soundtrigger@2.0
+rm -rf prebuiltlibs/hardware/interfaces/soundtrigger/2.0/default/android.hardware.soundtrigger@2.0-core
+rm -rf prebuiltlibs/hardware/interfaces/tv/input/1.0/android.hardware.tv.input@1.0
+rm -rf prebuiltlibs/hardware/interfaces/audio/common/4.0/android.hardware.audio.common@4.0
+rm -rf prebuiltlibs/hardware/interfaces/audio/common/all-versions/default/android.hardware.audio.common@4.0-util
+rm -rf prebuiltlibs/hardware/interfaces/audio/effect/4.0/android.hardware.audio.effect@4.0
+rm -rf prebuiltlibs/hardware/interfaces/audio/effect/all-versions/default/util/android.hardware.audio.effect@4.0-util
+rm -rf prebuiltlibs/hardware/interfaces/audio/4.0/android.hardware.audio@4.0
+rm -rf prebuiltlibs/hardware/interfaces/audio/core/all-versions/default/util/android.hardware.audio@4.0-util
+rm -rf prebuiltlibs/hardware/interfaces/audio/common/5.0/android.hardware.audio.common@5.0
+rm -rf prebuiltlibs/hardware/interfaces/audio/common/all-versions/default/android.hardware.audio.common@5.0-util
+rm -rf prebuiltlibs/hardware/interfaces/audio/effect/5.0/android.hardware.audio.effect@5.0
+rm -rf prebuiltlibs/hardware/interfaces/audio/effect/all-versions/default/util/android.hardware.audio.effect@5.0-util
+rm -rf prebuiltlibs/hardware/interfaces/audio/5.0/android.hardware.audio@5.0
+rm -rf prebuiltlibs/hardware/interfaces/audio/core/all-versions/default/util/android.hardware.audio@5.0-util
+rm -rf prebuiltlibs/hardware/interfaces/bluetooth/audio/2.0/android.hardware.bluetooth.audio@2.0
+rm -rf prebuiltlibs/hardware/interfaces/bluetooth/audio/2.1/android.hardware.bluetooth.audio@2.1
+rm -rf prebuiltlibs/hardware/interfaces/bluetooth/audio/utils/libbluetooth_audio_session
+rm -rf prebuiltlibs/hardware/interfaces/bluetooth/audio/2.1/default/android.hardware.bluetooth.audio@2.1-impl
+rm -rf prebuiltlibs/hardware/interfaces/audio/common/6.0/android.hardware.audio.common@6.0
+rm -rf prebuiltlibs/hardware/interfaces/audio/common/all-versions/default/android.hardware.audio.common@6.0-util
+rm -rf prebuiltlibs/hardware/interfaces/audio/effect/6.0/android.hardware.audio.effect@6.0
+rm -rf prebuiltlibs/hardware/interfaces/audio/effect/all-versions/default/util/android.hardware.audio.effect@6.0-util
+rm -rf prebuiltlibs/hardware/interfaces/audio/6.0/android.hardware.audio@6.0
+rm -rf prebuiltlibs/hardware/interfaces/audio/core/all-versions/default/util/android.hardware.audio@6.0-util
+rm -rf prebuiltlibs/hardware/interfaces/audio/common/7.0/android.hardware.audio.common@7.0
+rm -rf prebuiltlibs/hardware/interfaces/audio/common/all-versions/default/android.hardware.audio.common@7.0-util
+rm -rf prebuiltlibs/hardware/interfaces/audio/effect/7.0/android.hardware.audio.effect@7.0
+rm -rf prebuiltlibs/hardware/interfaces/audio/effect/all-versions/default/util/android.hardware.audio.effect@7.0-util
+rm -rf prebuiltlibs/hardware/interfaces/audio/7.0/android.hardware.audio@7.0
+rm -rf prebuiltlibs/hardware/interfaces/audio/core/all-versions/default/util/android.hardware.audio@7.0-util
+rm -rf prebuiltlibs/hardware/interfaces/audio/common/all-versions/default/service/android.hardware.audio.service
+rm -rf prebuiltlibs/hardware/interfaces/authsecret/1.0/android.hardware.authsecret@1.0
+rm -rf prebuiltlibs/hardware/interfaces/authsecret/1.0/default/android.hardware.authsecret@1.0-service
+rm -rf prebuiltlibs/hardware/interfaces/biometrics/face/1.0/android.hardware.biometrics.face@1.0
+rm -rf prebuiltlibs/hardware/interfaces/biometrics/face/1.0/default/android.hardware.biometrics.face@1.0-service.example
+rm -rf prebuiltlibs/hardware/interfaces/biometrics/fingerprint/2.1/android.hardware.biometrics.fingerprint@2.1
+rm -rf prebuiltlibs/hardware/interfaces/biometrics/fingerprint/2.2/android.hardware.biometrics.fingerprint@2.2
+rm -rf prebuiltlibs/hardware/interfaces/biometrics/fingerprint/2.2/default/android.hardware.biometrics.fingerprint@2.2-service.example
+rm -rf prebuiltlibs/hardware/interfaces/bluetooth/a2dp/1.0/android.hardware.bluetooth.a2dp@1.0
+rm -rf prebuiltlibs/hardware/interfaces/bluetooth/1.0/android.hardware.bluetooth@1.0
+rm -rf prebuiltlibs/hardware/interfaces/bluetooth/1.1/android.hardware.bluetooth@1.1
+rm -rf prebuiltlibs/hardware/interfaces/boot/1.0/android.hardware.boot@1.0
+rm -rf prebuiltlibs/hardware/interfaces/boot/1.1/android.hardware.boot@1.1
+rm -rf prebuiltlibs/hardware/interfaces/boot/1.1/default/boot_control/libboot_control
+rm -rf prebuiltlibs/hardware/interfaces/boot/1.2/android.hardware.boot@1.2
+rm -rf prebuiltlibs/hardware/interfaces/boot/1.2/default/android.hardware.boot@1.2-impl
+rm -rf prebuiltlibs/hardware/interfaces/boot/1.2/default/android.hardware.boot@1.2-service
+rm -rf prebuiltlibs/hardware/interfaces/broadcastradio/1.0/android.hardware.broadcastradio@1.0
+rm -rf prebuiltlibs/hardware/interfaces/broadcastradio/1.1/android.hardware.broadcastradio@1.1
+rm -rf prebuiltlibs/hardware/interfaces/broadcastradio/common/utils1x/android.hardware.broadcastradio@common-utils-1x-lib
+rm -rf prebuiltlibs/hardware/interfaces/camera/common/1.0/android.hardware.camera.common@1.0
+rm -rf prebuiltlibs/hardware/interfaces/camera/metadata/3.2/android.hardware.camera.metadata@3.2
+rm -rf prebuiltlibs/hardware/interfaces/camera/metadata/3.3/android.hardware.camera.metadata@3.3
+rm -rf prebuiltlibs/hardware/interfaces/camera/metadata/3.4/android.hardware.camera.metadata@3.4
+rm -rf prebuiltlibs/hardware/interfaces/camera/metadata/3.5/android.hardware.camera.metadata@3.5
+rm -rf prebuiltlibs/hardware/interfaces/camera/metadata/3.6/android.hardware.camera.metadata@3.6
+rm -rf prebuiltlibs/hardware/interfaces/cas/1.0/android.hardware.cas@1.0
+rm -rf prebuiltlibs/hardware/interfaces/cas/native/1.0/android.hardware.cas.native@1.0
+rm -rf prebuiltlibs/hardware/interfaces/cas/1.1/android.hardware.cas@1.1
+rm -rf prebuiltlibs/hardware/interfaces/cas/1.2/android.hardware.cas@1.2
+rm -rf prebuiltlibs/hardware/interfaces/cas/1.2/default/android.hardware.cas@1.2-service
+rm -rf prebuiltlibs/hardware/interfaces/configstore/1.0/android.hardware.configstore@1.0
+rm -rf prebuiltlibs/hardware/interfaces/configstore/1.1/android.hardware.configstore@1.1
+rm -rf prebuiltlibs/hardware/interfaces/contexthub/1.0/android.hardware.contexthub@1.0
+rm -rf prebuiltlibs/hardware/interfaces/contexthub/1.1/android.hardware.contexthub@1.1
+rm -rf prebuiltlibs/hardware/interfaces/contexthub/1.2/android.hardware.contexthub@1.2
+rm -rf prebuiltlibs/hardware/interfaces/contexthub/1.2/default/android.hardware.contexthub@1.2-service.mock
+rm -rf prebuiltlibs/hardware/interfaces/drm/1.0/android.hardware.drm@1.0
+rm -rf prebuiltlibs/hardware/interfaces/drm/1.1/android.hardware.drm@1.1
+rm -rf prebuiltlibs/hardware/interfaces/drm/1.2/android.hardware.drm@1.2
+rm -rf prebuiltlibs/hardware/interfaces/drm/1.3/android.hardware.drm@1.3
+rm -rf prebuiltlibs/hardware/interfaces/drm/1.4/android.hardware.drm@1.4
+rm -rf prebuiltlibs/hardware/interfaces/dumpstate/1.0/android.hardware.dumpstate@1.0
+rm -rf prebuiltlibs/hardware/interfaces/dumpstate/1.1/android.hardware.dumpstate@1.1
+rm -rf prebuiltlibs/hardware/interfaces/dumpstate/1.1/default/android.hardware.dumpstate@1.1-service.example
+rm -rf prebuiltlibs/hardware/interfaces/fastboot/1.0/android.hardware.fastboot@1.0
+rm -rf prebuiltlibs/hardware/interfaces/fastboot/1.1/android.hardware.fastboot@1.1
+rm -rf prebuiltlibs/hardware/interfaces/fastboot/1.1/default/android.hardware.fastboot@1.1-impl-mock
+rm -rf prebuiltlibs/hardware/interfaces/gatekeeper/1.0/android.hardware.gatekeeper@1.0
+rm -rf prebuiltlibs/hardware/interfaces/gatekeeper/1.0/software/android.hardware.gatekeeper@1.0-service.software
+rm -rf prebuiltlibs/hardware/interfaces/gnss/visibility_control/1.0/android.hardware.gnss.visibility_control@1.0
+rm -rf prebuiltlibs/hardware/interfaces/gnss/1.0/android.hardware.gnss@1.0
+rm -rf prebuiltlibs/hardware/interfaces/gnss/measurement_corrections/1.0/android.hardware.gnss.measurement_corrections@1.0
+rm -rf prebuiltlibs/hardware/interfaces/gnss/1.1/android.hardware.gnss@1.1
+rm -rf prebuiltlibs/hardware/interfaces/gnss/2.0/android.hardware.gnss@2.0
+rm -rf prebuiltlibs/hardware/interfaces/gnss/measurement_corrections/1.1/android.hardware.gnss.measurement_corrections@1.1
+rm -rf prebuiltlibs/hardware/interfaces/gnss/2.1/android.hardware.gnss@2.1
+rm -rf prebuiltlibs/hardware/interfaces/gnss/common/utils/default/android.hardware.gnss@common-default-lib
+rm -rf prebuiltlibs/hardware/interfaces/gnss/aidl/default/android.hardware.gnss-service.example
+rm -rf prebuiltlibs/hardware/interfaces/graphics/common/1.0/android.hardware.graphics.common@1.0
+rm -rf prebuiltlibs/hardware/interfaces/camera/device/1.0/android.hardware.camera.device@1.0
+rm -rf prebuiltlibs/hardware/interfaces/camera/device/3.2/android.hardware.camera.device@3.2
+rm -rf prebuiltlibs/hardware/interfaces/camera/provider/2.4/android.hardware.camera.provider@2.4
+rm -rf prebuiltlibs/hardware/interfaces/camera/provider/2.5/android.hardware.camera.provider@2.5
+rm -rf prebuiltlibs/hardware/interfaces/camera/device/3.3/android.hardware.camera.device@3.3
+rm -rf prebuiltlibs/hardware/interfaces/camera/device/3.4/android.hardware.camera.device@3.4
+rm -rf prebuiltlibs/hardware/interfaces/camera/device/3.5/android.hardware.camera.device@3.5
+rm -rf prebuiltlibs/hardware/interfaces/camera/device/3.6/android.hardware.camera.device@3.6
+rm -rf prebuiltlibs/hardware/interfaces/camera/device/3.7/android.hardware.camera.device@3.7
+rm -rf prebuiltlibs/hardware/interfaces/camera/provider/2.6/android.hardware.camera.provider@2.6
+rm -rf prebuiltlibs/hardware/interfaces/camera/provider/2.7/android.hardware.camera.provider@2.7
+rm -rf prebuiltlibs/hardware/interfaces/graphics/common/1.1/android.hardware.graphics.common@1.1
+rm -rf prebuiltlibs/hardware/interfaces/graphics/common/1.2/android.hardware.graphics.common@1.2
+rm -rf prebuiltlibs/hardware/interfaces/graphics/bufferqueue/2.0/android.hardware.graphics.bufferqueue@2.0
+rm -rf prebuiltlibs/hardware/interfaces/graphics/composer/2.1/android.hardware.graphics.composer@2.1
+rm -rf prebuiltlibs/hardware/interfaces/graphics/composer/2.2/android.hardware.graphics.composer@2.2
+rm -rf prebuiltlibs/hardware/interfaces/graphics/composer/2.3/android.hardware.graphics.composer@2.3
+rm -rf prebuiltlibs/hardware/interfaces/graphics/composer/2.4/android.hardware.graphics.composer@2.4
+rm -rf prebuiltlibs/hardware/interfaces/graphics/mapper/2.0/android.hardware.graphics.mapper@2.0
+rm -rf prebuiltlibs/hardware/interfaces/graphics/allocator/2.0/android.hardware.graphics.allocator@2.0
+rm -rf prebuiltlibs/hardware/interfaces/graphics/mapper/2.1/android.hardware.graphics.mapper@2.1
+rm -rf prebuiltlibs/hardware/interfaces/graphics/mapper/3.0/android.hardware.graphics.mapper@3.0
+rm -rf prebuiltlibs/hardware/interfaces/graphics/allocator/3.0/android.hardware.graphics.allocator@3.0
+rm -rf prebuiltlibs/hardware/interfaces/graphics/mapper/4.0/android.hardware.graphics.mapper@4.0
+rm -rf prebuiltlibs/hardware/interfaces/graphics/allocator/4.0/android.hardware.graphics.allocator@4.0
+rm -rf prebuiltlibs/hardware/interfaces/graphics/composer/2.1/utils/resources/android.hardware.graphics.composer@2.1-resources
+rm -rf prebuiltlibs/hardware/interfaces/graphics/composer/2.2/utils/resources/android.hardware.graphics.composer@2.2-resources
+rm -rf prebuiltlibs/hardware/interfaces/graphics/composer/2.4/default/android.hardware.graphics.composer@2.4-service
+rm -rf prebuiltlibs/hardware/interfaces/media/1.0/android.hardware.media@1.0
+rm -rf prebuiltlibs/hardware/interfaces/graphics/bufferqueue/1.0/android.hardware.graphics.bufferqueue@1.0
+rm -rf prebuiltlibs/hardware/interfaces/media/omx/1.0/android.hardware.media.omx@1.0
+rm -rf prebuiltlibs/hardware/interfaces/health/storage/1.0/android.hardware.health.storage@1.0
+rm -rf prebuiltlibs/hardware/interfaces/health/1.0/android.hardware.health@1.0
+rm -rf prebuiltlibs/hardware/interfaces/health/1.0/default/android.hardware.health@1.0-convert
+rm -rf prebuiltlibs/hardware/interfaces/health/2.0/android.hardware.health@2.0
+rm -rf prebuiltlibs/hardware/interfaces/health/2.0/utils/libhealthhalutils/libhealthhalutils
+rm -rf prebuiltlibs/hardware/interfaces/health/2.0/utils/libhealthstoragedefault/libhealthstoragedefault
+rm -rf prebuiltlibs/hardware/interfaces/health/2.1/android.hardware.health@2.1
+rm -rf prebuiltlibs/hardware/interfaces/input/common/1.0/android.hardware.input.common@1.0
+rm -rf prebuiltlibs/hardware/interfaces/input/classifier/1.0/android.hardware.input.classifier@1.0
+rm -rf prebuiltlibs/hardware/interfaces/input/classifier/1.0/default/android.hardware.input.classifier@1.0-service.default
+rm -rf prebuiltlibs/hardware/interfaces/ir/1.0/android.hardware.ir@1.0
+rm -rf prebuiltlibs/hardware/interfaces/keymaster/3.0/android.hardware.keymaster@3.0
+rm -rf prebuiltlibs/hardware/interfaces/keymaster/4.0/android.hardware.keymaster@4.0
+rm -rf prebuiltlibs/hardware/interfaces/confirmationui/1.0/android.hardware.confirmationui@1.0
+rm -rf prebuiltlibs/hardware/interfaces/identity/support/android.hardware.identity-support-lib
+rm -rf prebuiltlibs/hardware/interfaces/identity/aidl/default/android.hardware.identity-libeic-hal-common
+rm -rf prebuiltlibs/hardware/interfaces/identity/aidl/default/android.hardware.identity-libeic-library
+rm -rf prebuiltlibs/hardware/interfaces/identity/aidl/default/android.hardware.identity-service.example
+rm -rf prebuiltlibs/hardware/interfaces/keymaster/4.1/android.hardware.keymaster@4.1
+rm -rf prebuiltlibs/hardware/interfaces/keymaster/4.0/support/libkeymaster4support
+rm -rf prebuiltlibs/hardware/interfaces/keymaster/4.1/support/libkeymaster4_1support
+rm -rf prebuiltlibs/hardware/interfaces/light/2.0/android.hardware.light@2.0
+rm -rf prebuiltlibs/hardware/interfaces/light/utils/blank_screen
+rm -rf prebuiltlibs/hardware/interfaces/media/bufferpool/2.0/android.hardware.media.bufferpool@2.0
+rm -rf prebuiltlibs/hardware/interfaces/media/c2/1.0/android.hardware.media.c2@1.0
+rm -rf prebuiltlibs/hardware/interfaces/media/c2/1.1/android.hardware.media.c2@1.1
+rm -rf prebuiltlibs/hardware/interfaces/media/c2/1.2/android.hardware.media.c2@1.2
+rm -rf prebuiltlibs/hardware/interfaces/memtrack/1.0/android.hardware.memtrack@1.0
+rm -rf prebuiltlibs/hardware/interfaces/neuralnetworks/1.0/android.hardware.neuralnetworks@1.0
+rm -rf prebuiltlibs/hardware/interfaces/neuralnetworks/1.1/android.hardware.neuralnetworks@1.1
+rm -rf prebuiltlibs/hardware/interfaces/neuralnetworks/1.2/android.hardware.neuralnetworks@1.2
+rm -rf prebuiltlibs/hardware/interfaces/neuralnetworks/1.3/android.hardware.neuralnetworks@1.3
+rm -rf prebuiltlibs/hardware/interfaces/nfc/1.0/android.hardware.nfc@1.0
+rm -rf prebuiltlibs/hardware/interfaces/nfc/1.1/android.hardware.nfc@1.1
+rm -rf prebuiltlibs/hardware/interfaces/nfc/1.2/android.hardware.nfc@1.2
+rm -rf prebuiltlibs/hardware/interfaces/power/stats/1.0/android.hardware.power.stats@1.0
+rm -rf prebuiltlibs/hardware/interfaces/power/1.0/android.hardware.power@1.0
+rm -rf prebuiltlibs/hardware/interfaces/power/1.1/android.hardware.power@1.1
+rm -rf prebuiltlibs/hardware/interfaces/power/1.2/android.hardware.power@1.2
+rm -rf prebuiltlibs/hardware/interfaces/power/1.3/android.hardware.power@1.3
+rm -rf prebuiltlibs/hardware/interfaces/radio/1.0/android.hardware.radio@1.0
+rm -rf prebuiltlibs/hardware/interfaces/radio/config/1.0/android.hardware.radio.config@1.0
+rm -rf prebuiltlibs/hardware/interfaces/radio/config/1.1/android.hardware.radio.config@1.1
+rm -rf prebuiltlibs/hardware/interfaces/radio/config/1.2/android.hardware.radio.config@1.2
+rm -rf prebuiltlibs/hardware/interfaces/radio/deprecated/1.0/android.hardware.radio.deprecated@1.0
+rm -rf prebuiltlibs/hardware/interfaces/radio/1.1/android.hardware.radio@1.1
+rm -rf prebuiltlibs/hardware/interfaces/radio/1.2/android.hardware.radio@1.2
+rm -rf prebuiltlibs/hardware/interfaces/radio/1.3/android.hardware.radio@1.3
+rm -rf prebuiltlibs/hardware/interfaces/radio/1.4/android.hardware.radio@1.4
+rm -rf prebuiltlibs/hardware/interfaces/radio/1.5/android.hardware.radio@1.5
+rm -rf prebuiltlibs/hardware/interfaces/radio/1.6/android.hardware.radio@1.6
+rm -rf prebuiltlibs/hardware/interfaces/radio/config/1.3/android.hardware.radio.config@1.3
+rm -rf prebuiltlibs/hardware/interfaces/renderscript/1.0/android.hardware.renderscript@1.0
+rm -rf prebuiltlibs/hardware/interfaces/secure_element/1.0/android.hardware.secure_element@1.0
+rm -rf prebuiltlibs/hardware/interfaces/sensors/1.0/android.hardware.sensors@1.0
+rm -rf prebuiltlibs/hardware/interfaces/sensors/2.0/android.hardware.sensors@2.0
+rm -rf prebuiltlibs/hardware/interfaces/sensors/2.1/android.hardware.sensors@2.1
+rm -rf prebuiltlibs/hardware/interfaces/tests/lazy/1.0/android.hardware.tests.lazy@1.0
+rm -rf prebuiltlibs/hardware/interfaces/tests/lazy/1.1/android.hardware.tests.lazy@1.1
+rm -rf prebuiltlibs/hardware/interfaces/thermal/1.0/android.hardware.thermal@1.0
+rm -rf prebuiltlibs/hardware/interfaces/thermal/2.0/android.hardware.thermal@2.0
+rm -rf prebuiltlibs/hardware/interfaces/thermal/2.0/default/android.hardware.thermal@2.0-service.mock
+rm -rf prebuiltlibs/hardware/interfaces/usb/gadget/1.0/android.hardware.usb.gadget@1.0
+rm -rf prebuiltlibs/hardware/interfaces/usb/1.0/android.hardware.usb@1.0
+rm -rf prebuiltlibs/hardware/interfaces/usb/1.0/default/android.hardware.usb@1.0-service
+rm -rf prebuiltlibs/hardware/interfaces/vibrator/1.0/android.hardware.vibrator@1.0
+rm -rf prebuiltlibs/hardware/interfaces/vibrator/1.1/android.hardware.vibrator@1.1
+rm -rf prebuiltlibs/hardware/interfaces/vibrator/1.2/android.hardware.vibrator@1.2
+rm -rf prebuiltlibs/hardware/interfaces/vibrator/1.3/android.hardware.vibrator@1.3
+rm -rf prebuiltlibs/hardware/interfaces/vr/1.0/android.hardware.vr@1.0
+rm -rf prebuiltlibs/hardware/interfaces/wifi/supplicant/1.0/android.hardware.wifi.supplicant@1.0
+rm -rf prebuiltlibs/hardware/interfaces/wifi/supplicant/1.1/android.hardware.wifi.supplicant@1.1
+rm -rf prebuiltlibs/hardware/interfaces/wifi/supplicant/1.2/android.hardware.wifi.supplicant@1.2
+rm -rf prebuiltlibs/hardware/interfaces/wifi/1.0/android.hardware.wifi@1.0
+rm -rf prebuiltlibs/hardware/interfaces/wifi/supplicant/1.3/android.hardware.wifi.supplicant@1.3
+rm -rf prebuiltlibs/hardware/interfaces/wifi/supplicant/1.4/android.hardware.wifi.supplicant@1.4
+rm -rf prebuiltlibs/hardware/interfaces/audio/effect/all-versions/default/android.hardware.audio.effect@6.0-impl
+rm -rf prebuiltlibs/hardware/interfaces/audio/core/all-versions/default/android.hardware.audio@6.0-impl
+rm -rf prebuiltlibs/hardware/interfaces/security/keymint/aidl/default/android.hardware.security.keymint-service
+rm -rf prebuiltlibs/hardware/interfaces/security/secureclock/aidl/android.hardware.security.secureclock-V1-rust
+rm -rf prebuiltlibs/hardware/interfaces/security/keymint/aidl/android.hardware.security.keymint-V1-rust
+rm -rf prebuiltlibs/hardware/interfaces/security/sharedsecret/aidl/android.hardware.security.sharedsecret-V1-rust
+
+rm -rf prebuiltlibs/external/perfetto/ipc_plugin
+rm -rf prebuiltlibs/external/perfetto/perfetto_src_protozero_protoc_plugin_cppgen_plugin
+rm -rf prebuiltlibs/external/perfetto/protozero_plugin
+rm -rf prebuiltlibs/external/perfetto/libperfetto
+rm -rf prebuiltlibs/external/perfetto/traced
+rm -rf prebuiltlibs/external/perfetto/traced_probes
+rm -rf prebuiltlibs/external/perfetto/perfetto
+rm -rf prebuiltlibs/external/perfetto/trigger_perfetto
+rm -rf prebuiltlibs/external/perfetto/libstatslog_perfetto
+rm -rf prebuiltlibs/external/perfetto/heapprofd
+rm -rf prebuiltlibs/external/perfetto/heapprofd_client
+rm -rf prebuiltlibs/external/perfetto/libperfetto_android_internal
+rm -rf prebuiltlibs/external/perfetto/traced_perf
 
 start=`date +%s`
 ./prebuilts/build-tools/linux-x86/bin/ninja -f out/soong/build.ninja \
@@ -52,10 +400,10 @@ mkdir -p prebuiltlibs/art/runtime/libart/android_x86_x86_64_static_apex31/ && mv
 mkdir -p prebuiltlibs/art/runtime/libart/linux_glibc_x86_64_static/ && mv out/soong/.intermediates/art/runtime/libart/linux_glibc_x86_64_static/libart.a prebuiltlibs/art/runtime/libart/linux_glibc_x86_64_static/libart.a
 mkdir -p prebuiltlibs/art/runtime/
 rsync -ar --exclude=".git" --exclude="Android.bp" --exclude="Android.mk" art/runtime/ prebuiltlibs/art/runtime/
-rsync -ar out/soong/.intermediates/art/tools/cpp-define-generator/cpp-define-generator-asm-support/android_x86_64_silvermont_apex31/gen prebuiltlibs/art/runtime/
-rsync -ar out/soong/.intermediates/art/tools/cpp-define-generator/cpp-define-generator-asm-support/android_x86_64_silvermont_apex31/gen prebuiltlibs/art/runtime/
-rsync -ar out/soong/.intermediates/art/tools/cpp-define-generator/cpp-define-generator-asm-support/android_x86_silvermont_silvermont_apex31/gen prebuiltlibs/art/runtime/
-rsync -ar out/soong/.intermediates/art/tools/cpp-define-generator/cpp-define-generator-asm-support/android_x86_silvermont_silvermont_apex31/gen prebuiltlibs/art/runtime/
+rsync -ar out/soong/.intermediates/art/tools/cpp-define-generator/cpp-define-generator-asm-support/android_x86_64_apex31/gen prebuiltlibs/art/runtime/
+rsync -ar out/soong/.intermediates/art/tools/cpp-define-generator/cpp-define-generator-asm-support/android_x86_64_apex31/gen prebuiltlibs/art/runtime/
+rsync -ar out/soong/.intermediates/art/tools/cpp-define-generator/cpp-define-generator-asm-support/android_x86_x86_64_apex31/gen prebuiltlibs/art/runtime/
+rsync -ar out/soong/.intermediates/art/tools/cpp-define-generator/cpp-define-generator-asm-support/android_x86_x86_64_apex31/gen prebuiltlibs/art/runtime/
 rsync -ar out/soong/.intermediates/art/tools/cpp-define-generator/cpp-define-generator-asm-support/linux_glibc_x86_64/gen prebuiltlibs/art/runtime/
 mkdir -p prebuiltlibs/art/dexoptanalyzer/dexoptanalyzer/android_x86_64_apex31/ && mv out/soong/.intermediates/art/dexoptanalyzer/dexoptanalyzer/android_x86_64_apex31/dexoptanalyzer prebuiltlibs/art/dexoptanalyzer/dexoptanalyzer/android_x86_64_apex31/dexoptanalyzer
 mkdir -p prebuiltlibs/art/adbconnection/libadbconnection/android_x86_64_shared_apex31/ && mv out/soong/.intermediates/art/adbconnection/libadbconnection/android_x86_64_shared_apex31/libadbconnection.so prebuiltlibs/art/adbconnection/libadbconnection/android_x86_64_shared_apex31/libadbconnection.so
@@ -129,28 +477,25 @@ ls -l art-11.tar.xz
 end=`date +%s`
 echo $((end-start))
 
-start=`date +%s`
-./prebuilts/build-tools/linux-x86/bin/ninja -f out/soong/build.ninja \
-  out/soong/.intermediates/frameworks/av/services/audioflinger/libaudioflinger/android_x86_64_shared/libaudioflinger.so \
-  out/soong/.intermediates/frameworks/av/services/oboeservice/libaaudioservice/android_x86_64_shared/libaaudioservice.so \
-  out/soong/.intermediates/frameworks/av/services/oboeservice/libaaudioservice/android_x86_64_static/libaaudioservice.a \
-  
-
-mkdir -p prebuiltlibs/frameworks/av/services/audioflinger/libaudioflinger/android_x86_64_shared/ && mv out/soong/.intermediates/frameworks/av/services/audioflinger/libaudioflinger/android_x86_64_shared/libaudioflinger.so prebuiltlibs/frameworks/av/services/audioflinger/libaudioflinger/android_x86_64_shared/libaudioflinger.so
-mkdir -p prebuiltlibs/frameworks/av/services/oboeservice/libaaudioservice/android_x86_64_shared/ && mv out/soong/.intermediates/frameworks/av/services/oboeservice/libaaudioservice/android_x86_64_shared/libaaudioservice.so prebuiltlibs/frameworks/av/services/oboeservice/libaaudioservice/android_x86_64_shared/libaaudioservice.so
-mkdir -p prebuiltlibs/frameworks/av/services/oboeservice/libaaudioservice/android_x86_64_static/ && mv out/soong/.intermediates/frameworks/av/services/oboeservice/libaaudioservice/android_x86_64_static/libaaudioservice.a prebuiltlibs/frameworks/av/services/oboeservice/libaaudioservice/android_x86_64_static/libaaudioservice.a
-
-printf "cc_prebuilt_library_shared {\n  name: \"libaudioflinger\",\n  shared_libs: [\"audioflinger-aidl-cpp\",\"audioclient-types-aidl-cpp\",\"av-types-aidl-cpp\",\"effect-aidl-cpp\",\"libaudioclient_aidl_conversion\",\"libaudiofoundation\",\"libaudiohal\",\"libaudioprocessing\",\"libaudiospdif\",\"libaudioutils\",\"libcutils\",\"libutils\",\"liblog\",\"libbinder\",\"libaudioclient\",\"libmedialogservice\",\"libmediametrics\",\"libmediautils\",\"libnbaio\",\"libnblog\",\"libpermission\",\"libpowermanager\",\"libmediautils\",\"libmemunreachable\",\"libmedia_helper\",\"libshmemcompat\",\"libvibrator\"],\n  static_libs: [\"libcpustats\",\"libsndfile\",\"libpermission\"],\n  export_shared_lib_headers: [\"libpermission\"],\n  sanitize: {\n    integer_overflow: true,\n  },\n  strip: {\n    none: true,\n  },\n  multiple_variants: true,\n  prefer: true,\n  srcs: [\"libaudioflinger.so\"],\n}\n" >> prebuiltlibs/frameworks/av/services/audioflinger/Android.bp
-printf "cc_prebuilt_library {\n  name: \"libaaudioservice\",\n  shared_libs: [\"libaaudio_internal\",\"libaudioclient\",\"libaudioflinger\",\"libaudioutils\",\"libmedia_helper\",\"libmediametrics\",\"libmediautils\",\"libbase\",\"libbinder\",\"libcutils\",\"liblog\",\"libutils\",\"aaudio-aidl-cpp\",\"framework-permission-aidl-cpp\",\"libaudioclient_aidl_conversion\"],\n  export_shared_lib_headers: [\"libaaudio_internal\",\"framework-permission-aidl-cpp\"],\n  strip: {\n    none: true,\n  },\n  multiple_variants: true,\n  prefer: true,\n  static: {\n    srcs: [\"libaaudioservice.a\"],\n  },\n  shared: {\n    srcs: [\"libaaudioservice.so\"],\n  },\n}\n" >> prebuiltlibs/frameworks/av/services/oboeservice/Android.bp
-
-df -h
-clean_out_intermediates
-mkdir -p prebuiltlibs/frameworks/av/ninja && rsync -ar out/soong/ninja/frameworks/av/ prebuiltlibs/frameworks/av/ninja/frameworks_av-11
-touch prebuiltlibs/frameworks/av/ninja/.find-ignore
-tar cfJ frameworks_av-11.tar.xz -C prebuiltlibs/frameworks/av/ .
-ls -l frameworks_av-11.tar.xz
-end=`date +%s`
-echo $((end-start))
+rm -rf prebuiltlibs/art/tools/cpp-define-generator/asm_defines.s
+rm -rf prebuiltlibs/art/dalvikvm/dalvikvm
+rm -rf prebuiltlibs/art/dt_fd_forward/libdt_fd_forward
+rm -rf prebuiltlibs/art/dexdump/dexdump
+rm -rf prebuiltlibs/art/dexlist/dexlist
+rm -rf prebuiltlibs/art/tools/hiddenapi/hiddenapi
+rm -rf prebuiltlibs/art/libdexfile/libdexfile_support
+rm -rf prebuiltlibs/art/tools/veridex/veridex
+rm -rf prebuiltlibs/art/profman/libprofman_static
+rm -rf prebuiltlibs/art/profman/profman
+rm -rf prebuiltlibs/art/dexoptanalyzer/dexoptanalyzer
+rm -rf prebuiltlibs/art/adbconnection/libadbconnection
+rm -rf prebuiltlibs/art/dex2oat/dex2oat
+rm -rf prebuiltlibs/art/openjdkjvm/libopenjdkjvm
+rm -rf prebuiltlibs/art/openjdkjvmti/libopenjdkjvmti
+rm -rf prebuiltlibs/art/perfetto_hprof/libperfetto_hprof
+rm -rf prebuiltlibs/art/oatdump/oatdump
+rm -rf prebuiltlibs/art/odrefresh/odrefresh
+rm -rf prebuiltlibs/art/dex2oat/dex2oatd
 
 start=`date +%s`
 ./prebuilts/build-tools/linux-x86/bin/ninja -f out/soong/build.ninja \
@@ -443,220 +788,6 @@ mkdir -p prebuiltlibs/frameworks/native/ninja && rsync -ar out/soong/ninja/frame
 touch prebuiltlibs/frameworks/native/ninja/.find-ignore
 tar cfJ frameworks_native-11.tar.xz -C prebuiltlibs/frameworks/native/ .
 ls -l frameworks_native-11.tar.xz
-end=`date +%s`
-echo $((end-start))
-
-start=`date +%s`
-./prebuilts/build-tools/linux-x86/bin/ninja -f out/soong/build.ninja \
-  out/soong/.intermediates/packages/modules/Virtualization/authfs/authfs/android_x86_64_apex10000/authfs \
-  
-
-mkdir -p prebuiltlibs/packages/modules/Virtualization/authfs/authfs/android_x86_64_apex10000/ && mv out/soong/.intermediates/packages/modules/Virtualization/authfs/authfs/android_x86_64_apex10000/authfs prebuiltlibs/packages/modules/Virtualization/authfs/authfs/android_x86_64_apex10000/authfs
-
-printf "cc_prebuilt_binary {\n  name: \"authfs\",\n  stl: \"none\",\n  prefer: true,\n  apex_available: [\"//apex_available:platform\",\"com.android.virt\"],\n  multiple_variants: true,\n  srcs: [\"authfs\"],\n}\n" >> prebuiltlibs/packages/modules/Virtualization/authfs/Android.bp
-
-df -h
-clean_out_intermediates
-mkdir -p prebuiltlibs/packages/modules/Virtualization/ninja && rsync -ar out/soong/ninja/packages/modules/Virtualization/ prebuiltlibs/packages/modules/Virtualization/ninja/packages_modules_Virtualization-11
-touch prebuiltlibs/packages/modules/Virtualization/ninja/.find-ignore
-tar cfJ packages_modules_Virtualization-11.tar.xz -C prebuiltlibs/packages/modules/Virtualization/ .
-ls -l packages_modules_Virtualization-11.tar.xz
-end=`date +%s`
-echo $((end-start))
-
-start=`date +%s`
-./prebuilts/build-tools/linux-x86/bin/ninja -f out/soong/build.ninja \
-  out/soong/.intermediates/system/bt/gd/rust/common/libbt_common/android_x86_64_rlib_rlib-std/libbt_common.rlib \
-  out/soong/.intermediates/system/bt/gd/rust/common/libbt_common/android_x86_x86_64_rlib_rlib-std/libbt_common.rlib \
-  out/soong/.intermediates/system/bt/gd/libbt_facade_proto/android_x86_64_rlib_rlib-std/libbt_facade_proto.rlib \
-  out/soong/.intermediates/system/bt/gd/libbt_facade_proto/android_x86_x86_64_rlib_rlib-std/libbt_facade_proto.rlib \
-  out/soong/.intermediates/system/bt/gd/rust/facade/libbt_facade_helpers/android_x86_64_rlib_rlib-std/libbt_facade_helpers.rlib \
-  out/soong/.intermediates/system/bt/gd/rust/facade/libbt_facade_helpers/android_x86_x86_64_rlib_rlib-std/libbt_facade_helpers.rlib \
-  out/soong/.intermediates/system/bt/gd/rust/hal/libbt_hal/android_x86_64_rlib_rlib-std/libbt_hal.rlib \
-  out/soong/.intermediates/system/bt/gd/rust/hal/libbt_hal/android_x86_x86_64_rlib_rlib-std/libbt_hal.rlib \
-  out/soong/.intermediates/system/bt/gd/rust/hci/libbt_hci/android_x86_64_rlib_rlib-std/libbt_hci.rlib \
-  out/soong/.intermediates/system/bt/gd/rust/hci/libbt_hci/android_x86_x86_64_rlib_rlib-std/libbt_hci.rlib \
-  out/soong/.intermediates/system/bt/gd/rust/main/libbt_main/android_x86_64_rlib_rlib-std/libbt_main.rlib \
-  out/soong/.intermediates/system/bt/gd/rust/main/libbt_main/android_x86_x86_64_rlib_rlib-std/libbt_main.rlib \
-  out/soong/.intermediates/system/bt/gd/rust/shim/libbt_shim_ffi/android_x86_64_static/libbt_shim_ffi.a \
-  out/soong/.intermediates/system/bt/gd/rust/shim/libbt_shim_ffi/android_x86_x86_64_static/libbt_shim_ffi.a \
-  out/soong/.intermediates/system/bt/gd/rust/shim/libbluetooth_rust_interop/android_x86_64_static/libbluetooth_rust_interop.a \
-  out/soong/.intermediates/system/bt/gd/rust/shim/libbluetooth_rust_interop/android_x86_x86_64_static/libbluetooth_rust_interop.a \
-  out/soong/.intermediates/system/bt/gd/libbluetooth_gd/android_x86_64_static/libbluetooth_gd.a \
-  out/soong/.intermediates/system/bt/gd/libbluetooth_gd/android_x86_x86_64_static/libbluetooth_gd.a \
-  out/soong/.intermediates/system/bt/audio_a2dp_hw/libaudio-a2dp-hw-utils/android_x86_64_static/libaudio-a2dp-hw-utils.a \
-  out/soong/.intermediates/system/bt/audio_a2dp_hw/libaudio-a2dp-hw-utils/android_x86_x86_64_static/libaudio-a2dp-hw-utils.a \
-  out/soong/.intermediates/system/bt/common/libbt-common/android_x86_64_static/libbt-common.a \
-  out/soong/.intermediates/system/bt/common/libbt-common/android_x86_x86_64_static/libbt-common.a \
-  out/soong/.intermediates/system/bt/hci/libbt-hci/android_x86_64_static/libbt-hci.a \
-  out/soong/.intermediates/system/bt/hci/libbt-hci/android_x86_x86_64_static/libbt-hci.a \
-  out/soong/.intermediates/system/bt/embdrv/sbc/decoder/libbt-sbc-decoder/android_x86_64_static/libbt-sbc-decoder.a \
-  out/soong/.intermediates/system/bt/embdrv/sbc/decoder/libbt-sbc-decoder/android_x86_x86_64_static/libbt-sbc-decoder.a \
-  out/soong/.intermediates/system/bt/embdrv/sbc/encoder/libbt-sbc-encoder/android_x86_64_static/libbt-sbc-encoder.a \
-  out/soong/.intermediates/system/bt/embdrv/sbc/encoder/libbt-sbc-encoder/android_x86_x86_64_static/libbt-sbc-encoder.a \
-  out/soong/.intermediates/system/bt/stack/libbt-stack/android_x86_64_static/libbt-stack.a \
-  out/soong/.intermediates/system/bt/stack/libbt-stack/android_x86_x86_64_static/libbt-stack.a \
-  out/soong/.intermediates/system/bt/utils/libbt-utils/android_x86_64_static/libbt-utils.a \
-  out/soong/.intermediates/system/bt/utils/libbt-utils/android_x86_x86_64_static/libbt-utils.a \
-  out/soong/.intermediates/system/bt/btcore/libbtcore/android_x86_64_static/libbtcore.a \
-  out/soong/.intermediates/system/bt/btcore/libbtcore/android_x86_x86_64_static/libbtcore.a \
-  out/soong/.intermediates/system/bt/device/libbtdevice/android_x86_64_static/libbtdevice.a \
-  out/soong/.intermediates/system/bt/device/libbtdevice/android_x86_x86_64_static/libbtdevice.a \
-  out/soong/.intermediates/system/bt/main/libbte/android_x86_64_static/libbte.a \
-  out/soong/.intermediates/system/bt/main/libbte/android_x86_x86_64_static/libbte.a \
-  out/soong/.intermediates/system/bt/embdrv/g722/libg722codec/android_x86_64_static/libg722codec.a \
-  out/soong/.intermediates/system/bt/embdrv/g722/libg722codec/android_x86_x86_64_static/libg722codec.a \
-  out/soong/.intermediates/system/bt/osi/libosi/android_x86_64_static/libosi.a \
-  out/soong/.intermediates/system/bt/osi/libosi/android_x86_x86_64_static/libosi.a \
-  out/soong/.intermediates/system/bt/audio_a2dp_hw/audio.a2dp.default/android_x86_64_shared/audio.a2dp.default.so \
-  out/soong/.intermediates/system/bt/audio_a2dp_hw/audio.a2dp.default/android_x86_64_static/audio.a2dp.default.a \
-  out/soong/.intermediates/system/bt/audio_a2dp_hw/audio.a2dp.default/android_x86_x86_64_shared/audio.a2dp.default.so \
-  out/soong/.intermediates/system/bt/audio_a2dp_hw/audio.a2dp.default/android_x86_x86_64_static/audio.a2dp.default.a \
-  out/soong/.intermediates/system/bt/audio_hearing_aid_hw/audio.hearing_aid.default/android_x86_64_shared/audio.hearing_aid.default.so \
-  out/soong/.intermediates/system/bt/audio_hearing_aid_hw/audio.hearing_aid.default/android_x86_64_static/audio.hearing_aid.default.a \
-  out/soong/.intermediates/system/bt/audio_hearing_aid_hw/audio.hearing_aid.default/android_x86_x86_64_shared/audio.hearing_aid.default.so \
-  out/soong/.intermediates/system/bt/audio_hearing_aid_hw/audio.hearing_aid.default/android_x86_x86_64_static/audio.hearing_aid.default.a \
-  out/soong/.intermediates/system/bt/profile/avrcp/avrcp-target-service/android_x86_64_static/avrcp-target-service.a \
-  out/soong/.intermediates/system/bt/profile/avrcp/avrcp-target-service/android_x86_x86_64_static/avrcp-target-service.a \
-  out/soong/.intermediates/system/bt/bta/libbt-bta/android_x86_64_static/libbt-bta.a \
-  out/soong/.intermediates/system/bt/bta/libbt-bta/android_x86_x86_64_static/libbt-bta.a \
-  out/soong/.intermediates/system/bt/audio_hal_interface/libbt-audio-hal-interface/android_x86_64_static/libbt-audio-hal-interface.a \
-  out/soong/.intermediates/system/bt/audio_hal_interface/libbt-audio-hal-interface/android_x86_x86_64_static/libbt-audio-hal-interface.a \
-  out/soong/.intermediates/system/bt/btif/libbtif/android_x86_64_static/libbtif.a \
-  out/soong/.intermediates/system/bt/btif/libbtif/android_x86_x86_64_static/libbtif.a \
-  out/soong/.intermediates/system/bt/udrv/libudrv-uipc/android_x86_64_static/libudrv-uipc.a \
-  out/soong/.intermediates/system/bt/udrv/libudrv-uipc/android_x86_x86_64_static/libudrv-uipc.a \
-  out/soong/.intermediates/system/bt/main/libbluetooth/android_x86_64_shared/libbluetooth.so \
-  out/soong/.intermediates/system/bt/main/libbluetooth/android_x86_x86_64_shared/libbluetooth.so \
-  
-
-mkdir -p prebuiltlibs/system/bt/gd/rust/common/libbt_common/android_x86_64_rlib_rlib-std/ && mv out/soong/.intermediates/system/bt/gd/rust/common/libbt_common/android_x86_64_rlib_rlib-std/libbt_common.rlib prebuiltlibs/system/bt/gd/rust/common/libbt_common/android_x86_64_rlib_rlib-std/libbt_common.rlib
-mkdir -p prebuiltlibs/system/bt/gd/rust/common/libbt_common/android_x86_x86_64_rlib_rlib-std/ && mv out/soong/.intermediates/system/bt/gd/rust/common/libbt_common/android_x86_x86_64_rlib_rlib-std/libbt_common.rlib prebuiltlibs/system/bt/gd/rust/common/libbt_common/android_x86_x86_64_rlib_rlib-std/libbt_common.rlib
-mkdir -p prebuiltlibs/system/bt/gd/libbt_facade_proto/android_x86_64_rlib_rlib-std/ && mv out/soong/.intermediates/system/bt/gd/libbt_facade_proto/android_x86_64_rlib_rlib-std/libbt_facade_proto.rlib prebuiltlibs/system/bt/gd/libbt_facade_proto/android_x86_64_rlib_rlib-std/libbt_facade_proto.rlib
-mkdir -p prebuiltlibs/system/bt/gd/libbt_facade_proto/android_x86_x86_64_rlib_rlib-std/ && mv out/soong/.intermediates/system/bt/gd/libbt_facade_proto/android_x86_x86_64_rlib_rlib-std/libbt_facade_proto.rlib prebuiltlibs/system/bt/gd/libbt_facade_proto/android_x86_x86_64_rlib_rlib-std/libbt_facade_proto.rlib
-mkdir -p prebuiltlibs/system/bt/gd/rust/facade/libbt_facade_helpers/android_x86_64_rlib_rlib-std/ && mv out/soong/.intermediates/system/bt/gd/rust/facade/libbt_facade_helpers/android_x86_64_rlib_rlib-std/libbt_facade_helpers.rlib prebuiltlibs/system/bt/gd/rust/facade/libbt_facade_helpers/android_x86_64_rlib_rlib-std/libbt_facade_helpers.rlib
-mkdir -p prebuiltlibs/system/bt/gd/rust/facade/libbt_facade_helpers/android_x86_x86_64_rlib_rlib-std/ && mv out/soong/.intermediates/system/bt/gd/rust/facade/libbt_facade_helpers/android_x86_x86_64_rlib_rlib-std/libbt_facade_helpers.rlib prebuiltlibs/system/bt/gd/rust/facade/libbt_facade_helpers/android_x86_x86_64_rlib_rlib-std/libbt_facade_helpers.rlib
-mkdir -p prebuiltlibs/system/bt/gd/rust/hal/libbt_hal/android_x86_64_rlib_rlib-std/ && mv out/soong/.intermediates/system/bt/gd/rust/hal/libbt_hal/android_x86_64_rlib_rlib-std/libbt_hal.rlib prebuiltlibs/system/bt/gd/rust/hal/libbt_hal/android_x86_64_rlib_rlib-std/libbt_hal.rlib
-mkdir -p prebuiltlibs/system/bt/gd/rust/hal/libbt_hal/android_x86_x86_64_rlib_rlib-std/ && mv out/soong/.intermediates/system/bt/gd/rust/hal/libbt_hal/android_x86_x86_64_rlib_rlib-std/libbt_hal.rlib prebuiltlibs/system/bt/gd/rust/hal/libbt_hal/android_x86_x86_64_rlib_rlib-std/libbt_hal.rlib
-mkdir -p prebuiltlibs/system/bt/gd/rust/hci/libbt_hci/android_x86_64_rlib_rlib-std/ && mv out/soong/.intermediates/system/bt/gd/rust/hci/libbt_hci/android_x86_64_rlib_rlib-std/libbt_hci.rlib prebuiltlibs/system/bt/gd/rust/hci/libbt_hci/android_x86_64_rlib_rlib-std/libbt_hci.rlib
-mkdir -p prebuiltlibs/system/bt/gd/rust/hci/libbt_hci/android_x86_x86_64_rlib_rlib-std/ && mv out/soong/.intermediates/system/bt/gd/rust/hci/libbt_hci/android_x86_x86_64_rlib_rlib-std/libbt_hci.rlib prebuiltlibs/system/bt/gd/rust/hci/libbt_hci/android_x86_x86_64_rlib_rlib-std/libbt_hci.rlib
-mkdir -p prebuiltlibs/system/bt/gd/rust/main/libbt_main/android_x86_64_rlib_rlib-std/ && mv out/soong/.intermediates/system/bt/gd/rust/main/libbt_main/android_x86_64_rlib_rlib-std/libbt_main.rlib prebuiltlibs/system/bt/gd/rust/main/libbt_main/android_x86_64_rlib_rlib-std/libbt_main.rlib
-mkdir -p prebuiltlibs/system/bt/gd/rust/main/libbt_main/android_x86_x86_64_rlib_rlib-std/ && mv out/soong/.intermediates/system/bt/gd/rust/main/libbt_main/android_x86_x86_64_rlib_rlib-std/libbt_main.rlib prebuiltlibs/system/bt/gd/rust/main/libbt_main/android_x86_x86_64_rlib_rlib-std/libbt_main.rlib
-mkdir -p prebuiltlibs/system/bt/gd/rust/shim/libbt_shim_ffi/android_x86_64_static/ && mv out/soong/.intermediates/system/bt/gd/rust/shim/libbt_shim_ffi/android_x86_64_static/libbt_shim_ffi.a prebuiltlibs/system/bt/gd/rust/shim/libbt_shim_ffi/android_x86_64_static/libbt_shim_ffi.a
-mkdir -p prebuiltlibs/system/bt/gd/rust/shim/libbt_shim_ffi/android_x86_x86_64_static/ && mv out/soong/.intermediates/system/bt/gd/rust/shim/libbt_shim_ffi/android_x86_x86_64_static/libbt_shim_ffi.a prebuiltlibs/system/bt/gd/rust/shim/libbt_shim_ffi/android_x86_x86_64_static/libbt_shim_ffi.a
-mkdir -p prebuiltlibs/system/bt/gd/rust/shim/libbluetooth_rust_interop/android_x86_64_static/ && mv out/soong/.intermediates/system/bt/gd/rust/shim/libbluetooth_rust_interop/android_x86_64_static/libbluetooth_rust_interop.a prebuiltlibs/system/bt/gd/rust/shim/libbluetooth_rust_interop/android_x86_64_static/libbluetooth_rust_interop.a
-mkdir -p prebuiltlibs/system/bt/gd/rust/shim/libbluetooth_rust_interop/android_x86_x86_64_static/ && mv out/soong/.intermediates/system/bt/gd/rust/shim/libbluetooth_rust_interop/android_x86_x86_64_static/libbluetooth_rust_interop.a prebuiltlibs/system/bt/gd/rust/shim/libbluetooth_rust_interop/android_x86_x86_64_static/libbluetooth_rust_interop.a
-rsync -ar out/soong/.intermediates/system/bt/gd/rust/shim/libbt_init_flags_bridge_header/gen prebuiltlibs/system/bt/gd/rust/shim/
-rsync -ar out/soong/.intermediates/system/bt/gd/rust/shim/libbt_shim_bridge_header/gen prebuiltlibs/system/bt/gd/rust/shim/
-rsync -ar out/soong/.intermediates/system/bt/gd/rust/shim/libbt_message_loop_thread_bridge_header/gen prebuiltlibs/system/bt/gd/rust/shim/
-rsync -ar out/soong/.intermediates/external/rust/cxx/cxx-bridge-header/gen prebuiltlibs/system/bt/gd/rust/shim/
-mkdir -p prebuiltlibs/system/bt/gd/libbluetooth_gd/android_x86_64_static/ && mv out/soong/.intermediates/system/bt/gd/libbluetooth_gd/android_x86_64_static/libbluetooth_gd.a prebuiltlibs/system/bt/gd/libbluetooth_gd/android_x86_64_static/libbluetooth_gd.a
-mkdir -p prebuiltlibs/system/bt/gd/libbluetooth_gd/android_x86_x86_64_static/ && mv out/soong/.intermediates/system/bt/gd/libbluetooth_gd/android_x86_x86_64_static/libbluetooth_gd.a prebuiltlibs/system/bt/gd/libbluetooth_gd/android_x86_x86_64_static/libbluetooth_gd.a
-mkdir -p prebuiltlibs/system/bt/audio_a2dp_hw/libaudio-a2dp-hw-utils/android_x86_64_static/ && mv out/soong/.intermediates/system/bt/audio_a2dp_hw/libaudio-a2dp-hw-utils/android_x86_64_static/libaudio-a2dp-hw-utils.a prebuiltlibs/system/bt/audio_a2dp_hw/libaudio-a2dp-hw-utils/android_x86_64_static/libaudio-a2dp-hw-utils.a
-mkdir -p prebuiltlibs/system/bt/audio_a2dp_hw/libaudio-a2dp-hw-utils/android_x86_x86_64_static/ && mv out/soong/.intermediates/system/bt/audio_a2dp_hw/libaudio-a2dp-hw-utils/android_x86_x86_64_static/libaudio-a2dp-hw-utils.a prebuiltlibs/system/bt/audio_a2dp_hw/libaudio-a2dp-hw-utils/android_x86_x86_64_static/libaudio-a2dp-hw-utils.a
-mkdir -p prebuiltlibs/system/bt/common/libbt-common/android_x86_64_static/ && mv out/soong/.intermediates/system/bt/common/libbt-common/android_x86_64_static/libbt-common.a prebuiltlibs/system/bt/common/libbt-common/android_x86_64_static/libbt-common.a
-mkdir -p prebuiltlibs/system/bt/common/libbt-common/android_x86_x86_64_static/ && mv out/soong/.intermediates/system/bt/common/libbt-common/android_x86_x86_64_static/libbt-common.a prebuiltlibs/system/bt/common/libbt-common/android_x86_x86_64_static/libbt-common.a
-mkdir -p prebuiltlibs/system/bt/hci/libbt-hci/android_x86_64_static/ && mv out/soong/.intermediates/system/bt/hci/libbt-hci/android_x86_64_static/libbt-hci.a prebuiltlibs/system/bt/hci/libbt-hci/android_x86_64_static/libbt-hci.a
-mkdir -p prebuiltlibs/system/bt/hci/libbt-hci/android_x86_x86_64_static/ && mv out/soong/.intermediates/system/bt/hci/libbt-hci/android_x86_x86_64_static/libbt-hci.a prebuiltlibs/system/bt/hci/libbt-hci/android_x86_x86_64_static/libbt-hci.a
-mkdir -p prebuiltlibs/system/bt/embdrv/sbc/decoder/libbt-sbc-decoder/android_x86_64_static/ && mv out/soong/.intermediates/system/bt/embdrv/sbc/decoder/libbt-sbc-decoder/android_x86_64_static/libbt-sbc-decoder.a prebuiltlibs/system/bt/embdrv/sbc/decoder/libbt-sbc-decoder/android_x86_64_static/libbt-sbc-decoder.a
-mkdir -p prebuiltlibs/system/bt/embdrv/sbc/decoder/libbt-sbc-decoder/android_x86_x86_64_static/ && mv out/soong/.intermediates/system/bt/embdrv/sbc/decoder/libbt-sbc-decoder/android_x86_x86_64_static/libbt-sbc-decoder.a prebuiltlibs/system/bt/embdrv/sbc/decoder/libbt-sbc-decoder/android_x86_x86_64_static/libbt-sbc-decoder.a
-mkdir -p prebuiltlibs/system/bt/embdrv/sbc/encoder/libbt-sbc-encoder/android_x86_64_static/ && mv out/soong/.intermediates/system/bt/embdrv/sbc/encoder/libbt-sbc-encoder/android_x86_64_static/libbt-sbc-encoder.a prebuiltlibs/system/bt/embdrv/sbc/encoder/libbt-sbc-encoder/android_x86_64_static/libbt-sbc-encoder.a
-mkdir -p prebuiltlibs/system/bt/embdrv/sbc/encoder/libbt-sbc-encoder/android_x86_x86_64_static/ && mv out/soong/.intermediates/system/bt/embdrv/sbc/encoder/libbt-sbc-encoder/android_x86_x86_64_static/libbt-sbc-encoder.a prebuiltlibs/system/bt/embdrv/sbc/encoder/libbt-sbc-encoder/android_x86_x86_64_static/libbt-sbc-encoder.a
-mkdir -p prebuiltlibs/system/bt/stack/libbt-stack/android_x86_64_static/ && mv out/soong/.intermediates/system/bt/stack/libbt-stack/android_x86_64_static/libbt-stack.a prebuiltlibs/system/bt/stack/libbt-stack/android_x86_64_static/libbt-stack.a
-mkdir -p prebuiltlibs/system/bt/stack/libbt-stack/android_x86_x86_64_static/ && mv out/soong/.intermediates/system/bt/stack/libbt-stack/android_x86_x86_64_static/libbt-stack.a prebuiltlibs/system/bt/stack/libbt-stack/android_x86_x86_64_static/libbt-stack.a
-mkdir -p prebuiltlibs/system/bt/utils/libbt-utils/android_x86_64_static/ && mv out/soong/.intermediates/system/bt/utils/libbt-utils/android_x86_64_static/libbt-utils.a prebuiltlibs/system/bt/utils/libbt-utils/android_x86_64_static/libbt-utils.a
-mkdir -p prebuiltlibs/system/bt/utils/libbt-utils/android_x86_x86_64_static/ && mv out/soong/.intermediates/system/bt/utils/libbt-utils/android_x86_x86_64_static/libbt-utils.a prebuiltlibs/system/bt/utils/libbt-utils/android_x86_x86_64_static/libbt-utils.a
-mkdir -p prebuiltlibs/system/bt/btcore/libbtcore/android_x86_64_static/ && mv out/soong/.intermediates/system/bt/btcore/libbtcore/android_x86_64_static/libbtcore.a prebuiltlibs/system/bt/btcore/libbtcore/android_x86_64_static/libbtcore.a
-mkdir -p prebuiltlibs/system/bt/btcore/libbtcore/android_x86_x86_64_static/ && mv out/soong/.intermediates/system/bt/btcore/libbtcore/android_x86_x86_64_static/libbtcore.a prebuiltlibs/system/bt/btcore/libbtcore/android_x86_x86_64_static/libbtcore.a
-mkdir -p prebuiltlibs/system/bt/device/libbtdevice/android_x86_64_static/ && mv out/soong/.intermediates/system/bt/device/libbtdevice/android_x86_64_static/libbtdevice.a prebuiltlibs/system/bt/device/libbtdevice/android_x86_64_static/libbtdevice.a
-mkdir -p prebuiltlibs/system/bt/device/libbtdevice/android_x86_x86_64_static/ && mv out/soong/.intermediates/system/bt/device/libbtdevice/android_x86_x86_64_static/libbtdevice.a prebuiltlibs/system/bt/device/libbtdevice/android_x86_x86_64_static/libbtdevice.a
-mkdir -p prebuiltlibs/system/bt/main/libbte/android_x86_64_static/ && mv out/soong/.intermediates/system/bt/main/libbte/android_x86_64_static/libbte.a prebuiltlibs/system/bt/main/libbte/android_x86_64_static/libbte.a
-mkdir -p prebuiltlibs/system/bt/main/libbte/android_x86_x86_64_static/ && mv out/soong/.intermediates/system/bt/main/libbte/android_x86_x86_64_static/libbte.a prebuiltlibs/system/bt/main/libbte/android_x86_x86_64_static/libbte.a
-mkdir -p prebuiltlibs/system/bt/embdrv/g722/libg722codec/android_x86_64_static/ && mv out/soong/.intermediates/system/bt/embdrv/g722/libg722codec/android_x86_64_static/libg722codec.a prebuiltlibs/system/bt/embdrv/g722/libg722codec/android_x86_64_static/libg722codec.a
-mkdir -p prebuiltlibs/system/bt/embdrv/g722/libg722codec/android_x86_x86_64_static/ && mv out/soong/.intermediates/system/bt/embdrv/g722/libg722codec/android_x86_x86_64_static/libg722codec.a prebuiltlibs/system/bt/embdrv/g722/libg722codec/android_x86_x86_64_static/libg722codec.a
-mkdir -p prebuiltlibs/system/bt/osi/libosi/android_x86_64_static/ && mv out/soong/.intermediates/system/bt/osi/libosi/android_x86_64_static/libosi.a prebuiltlibs/system/bt/osi/libosi/android_x86_64_static/libosi.a
-mkdir -p prebuiltlibs/system/bt/osi/libosi/android_x86_x86_64_static/ && mv out/soong/.intermediates/system/bt/osi/libosi/android_x86_x86_64_static/libosi.a prebuiltlibs/system/bt/osi/libosi/android_x86_x86_64_static/libosi.a
-mkdir -p prebuiltlibs/system/bt/audio_a2dp_hw/audio.a2dp.default/android_x86_64_shared/ && mv out/soong/.intermediates/system/bt/audio_a2dp_hw/audio.a2dp.default/android_x86_64_shared/audio.a2dp.default.so prebuiltlibs/system/bt/audio_a2dp_hw/audio.a2dp.default/android_x86_64_shared/audio.a2dp.default.so
-mkdir -p prebuiltlibs/system/bt/audio_a2dp_hw/audio.a2dp.default/android_x86_64_static/ && mv out/soong/.intermediates/system/bt/audio_a2dp_hw/audio.a2dp.default/android_x86_64_static/audio.a2dp.default.a prebuiltlibs/system/bt/audio_a2dp_hw/audio.a2dp.default/android_x86_64_static/audio.a2dp.default.a
-mkdir -p prebuiltlibs/system/bt/audio_a2dp_hw/audio.a2dp.default/android_x86_x86_64_shared/ && mv out/soong/.intermediates/system/bt/audio_a2dp_hw/audio.a2dp.default/android_x86_x86_64_shared/audio.a2dp.default.so prebuiltlibs/system/bt/audio_a2dp_hw/audio.a2dp.default/android_x86_x86_64_shared/audio.a2dp.default.so
-mkdir -p prebuiltlibs/system/bt/audio_a2dp_hw/audio.a2dp.default/android_x86_x86_64_static/ && mv out/soong/.intermediates/system/bt/audio_a2dp_hw/audio.a2dp.default/android_x86_x86_64_static/audio.a2dp.default.a prebuiltlibs/system/bt/audio_a2dp_hw/audio.a2dp.default/android_x86_x86_64_static/audio.a2dp.default.a
-mkdir -p prebuiltlibs/system/bt/audio_hearing_aid_hw/audio.hearing_aid.default/android_x86_64_shared/ && mv out/soong/.intermediates/system/bt/audio_hearing_aid_hw/audio.hearing_aid.default/android_x86_64_shared/audio.hearing_aid.default.so prebuiltlibs/system/bt/audio_hearing_aid_hw/audio.hearing_aid.default/android_x86_64_shared/audio.hearing_aid.default.so
-mkdir -p prebuiltlibs/system/bt/audio_hearing_aid_hw/audio.hearing_aid.default/android_x86_64_static/ && mv out/soong/.intermediates/system/bt/audio_hearing_aid_hw/audio.hearing_aid.default/android_x86_64_static/audio.hearing_aid.default.a prebuiltlibs/system/bt/audio_hearing_aid_hw/audio.hearing_aid.default/android_x86_64_static/audio.hearing_aid.default.a
-mkdir -p prebuiltlibs/system/bt/audio_hearing_aid_hw/audio.hearing_aid.default/android_x86_x86_64_shared/ && mv out/soong/.intermediates/system/bt/audio_hearing_aid_hw/audio.hearing_aid.default/android_x86_x86_64_shared/audio.hearing_aid.default.so prebuiltlibs/system/bt/audio_hearing_aid_hw/audio.hearing_aid.default/android_x86_x86_64_shared/audio.hearing_aid.default.so
-mkdir -p prebuiltlibs/system/bt/audio_hearing_aid_hw/audio.hearing_aid.default/android_x86_x86_64_static/ && mv out/soong/.intermediates/system/bt/audio_hearing_aid_hw/audio.hearing_aid.default/android_x86_x86_64_static/audio.hearing_aid.default.a prebuiltlibs/system/bt/audio_hearing_aid_hw/audio.hearing_aid.default/android_x86_x86_64_static/audio.hearing_aid.default.a
-mkdir -p prebuiltlibs/system/bt/profile/avrcp/avrcp-target-service/android_x86_64_static/ && mv out/soong/.intermediates/system/bt/profile/avrcp/avrcp-target-service/android_x86_64_static/avrcp-target-service.a prebuiltlibs/system/bt/profile/avrcp/avrcp-target-service/android_x86_64_static/avrcp-target-service.a
-mkdir -p prebuiltlibs/system/bt/profile/avrcp/avrcp-target-service/android_x86_x86_64_static/ && mv out/soong/.intermediates/system/bt/profile/avrcp/avrcp-target-service/android_x86_x86_64_static/avrcp-target-service.a prebuiltlibs/system/bt/profile/avrcp/avrcp-target-service/android_x86_x86_64_static/avrcp-target-service.a
-mkdir -p prebuiltlibs/system/bt/profile/avrcp/
-rsync -ar --exclude=".git" --exclude="Android.bp" --exclude="Android.mk" system/bt/profile/avrcp/ prebuiltlibs/system/bt/profile/avrcp/
-mkdir -p prebuiltlibs/system/bt/bta/libbt-bta/android_x86_64_static/ && mv out/soong/.intermediates/system/bt/bta/libbt-bta/android_x86_64_static/libbt-bta.a prebuiltlibs/system/bt/bta/libbt-bta/android_x86_64_static/libbt-bta.a
-mkdir -p prebuiltlibs/system/bt/bta/libbt-bta/android_x86_x86_64_static/ && mv out/soong/.intermediates/system/bt/bta/libbt-bta/android_x86_x86_64_static/libbt-bta.a prebuiltlibs/system/bt/bta/libbt-bta/android_x86_x86_64_static/libbt-bta.a
-mkdir -p prebuiltlibs/system/bt/audio_hal_interface/libbt-audio-hal-interface/android_x86_64_static/ && mv out/soong/.intermediates/system/bt/audio_hal_interface/libbt-audio-hal-interface/android_x86_64_static/libbt-audio-hal-interface.a prebuiltlibs/system/bt/audio_hal_interface/libbt-audio-hal-interface/android_x86_64_static/libbt-audio-hal-interface.a
-mkdir -p prebuiltlibs/system/bt/audio_hal_interface/libbt-audio-hal-interface/android_x86_x86_64_static/ && mv out/soong/.intermediates/system/bt/audio_hal_interface/libbt-audio-hal-interface/android_x86_x86_64_static/libbt-audio-hal-interface.a prebuiltlibs/system/bt/audio_hal_interface/libbt-audio-hal-interface/android_x86_x86_64_static/libbt-audio-hal-interface.a
-mkdir -p prebuiltlibs/system/bt/btif/libbtif/android_x86_64_static/ && mv out/soong/.intermediates/system/bt/btif/libbtif/android_x86_64_static/libbtif.a prebuiltlibs/system/bt/btif/libbtif/android_x86_64_static/libbtif.a
-mkdir -p prebuiltlibs/system/bt/btif/libbtif/android_x86_x86_64_static/ && mv out/soong/.intermediates/system/bt/btif/libbtif/android_x86_x86_64_static/libbtif.a prebuiltlibs/system/bt/btif/libbtif/android_x86_x86_64_static/libbtif.a
-mkdir -p prebuiltlibs/system/bt/udrv/libudrv-uipc/android_x86_64_static/ && mv out/soong/.intermediates/system/bt/udrv/libudrv-uipc/android_x86_64_static/libudrv-uipc.a prebuiltlibs/system/bt/udrv/libudrv-uipc/android_x86_64_static/libudrv-uipc.a
-mkdir -p prebuiltlibs/system/bt/udrv/libudrv-uipc/android_x86_x86_64_static/ && mv out/soong/.intermediates/system/bt/udrv/libudrv-uipc/android_x86_x86_64_static/libudrv-uipc.a prebuiltlibs/system/bt/udrv/libudrv-uipc/android_x86_x86_64_static/libudrv-uipc.a
-mkdir -p prebuiltlibs/system/bt/main/libbluetooth/android_x86_64_shared/ && mv out/soong/.intermediates/system/bt/main/libbluetooth/android_x86_64_shared/libbluetooth.so prebuiltlibs/system/bt/main/libbluetooth/android_x86_64_shared/libbluetooth.so
-mkdir -p prebuiltlibs/system/bt/main/libbluetooth/android_x86_x86_64_shared/ && mv out/soong/.intermediates/system/bt/main/libbluetooth/android_x86_x86_64_shared/libbluetooth.so prebuiltlibs/system/bt/main/libbluetooth/android_x86_x86_64_shared/libbluetooth.so
-
-printf "rust_prebuilt_rlib {\n  name: \"libbt_common\",\n  target: {\n    darwin: {\n      enabled: false,\n    },\n    android: {\n      rustlibs: [\"libandroid_logger\"],\n      whole_static_libs: [\"libbt_common_sys_prop_cxx\"],\n      shared_libs: [\"libcutils\"],\n    },\n    host: {\n      rustlibs: [\"libenv_logger\"],\n    },\n  },\n  host_supported: true,\n  crate_name: \"bt_common\",\n  edition: \"2018\",\n  rustlibs: [\"libtokio\",\"libnix\",\"liblazy_static\",\"liblog_rust\",\"libcxx\",\"libgrpcio\"],\n  proc_macros: [\"libpaste\"],\n  multiple_variants: true,\n  srcs: [\"libbt_common.rlib\"],\n}\n" >> prebuiltlibs/system/bt/gd/rust/common/Android.bp
-printf "rust_prebuilt_rlib {\n  name: \"libbt_facade_proto\",\n  crate_name: \"bt_facade_proto\",\n  host_supported: true,\n  multiple_variants: true,\n  srcs: [\"libbt_facade_proto.rlib\"],\n}\n" >> prebuiltlibs/system/bt/gd/Android.bp
-printf "rust_prebuilt_rlib {\n  name: \"libbt_facade_helpers\",\n  target: {\n    darwin: {\n      enabled: false,\n    },\n  },\n  host_supported: true,\n  crate_name: \"bt_facade_helpers\",\n  edition: \"2018\",\n  rustlibs: [\"libbt_facade_proto\",\"libbt_packets\",\"libbytes\",\"libfutures\",\"libgrpcio\",\"libtokio\",\"libprotobuf\",\"liblog_rust\",\"libcxx\"],\n  multiple_variants: true,\n  srcs: [\"libbt_facade_helpers.rlib\"],\n}\n" >> prebuiltlibs/system/bt/gd/rust/facade/Android.bp
-printf "rust_prebuilt_rlib {\n  name: \"libbt_hal\",\n  target: {\n    darwin: {\n      enabled: false,\n    },\n    android: {\n      whole_static_libs: [\"libbt_hidl_hal_cxx\"],\n      shared_libs: [\"android.hardware.bluetooth@1.0\",\"android.hardware.bluetooth@1.1\",\"libhidlbase\",\"libutils\"],\n    },\n  },\n  host_supported: true,\n  crate_name: \"bt_hal\",\n  edition: \"2018\",\n  rustlibs: [\"libbt_facade_proto\",\"libbt_packets\",\"libbytes\",\"libfutures\",\"libthiserror\",\"libgrpcio\",\"libtokio\",\"libprotobuf\",\"libgddi\",\"libcxx\",\"liblazy_static\",\"liblog_rust\",\"libbt_common\",\"libnum_traits\",\"libbt_facade_helpers\"],\n  proc_macros: [\"libnum_derive\"],\n  multiple_variants: true,\n  srcs: [\"libbt_hal.rlib\"],\n}\n" >> prebuiltlibs/system/bt/gd/rust/hal/Android.bp
-printf "rust_prebuilt_rlib {\n  name: \"libbt_hci\",\n  target: {\n    darwin: {\n      enabled: false,\n    },\n  },\n  host_supported: true,\n  crate_name: \"bt_hci\",\n  edition: \"2018\",\n  rustlibs: [\"libbt_hal\",\"libbt_facade_proto\",\"libbt_packets\",\"libbytes\",\"libfutures\",\"libgrpcio\",\"libnum_traits\",\"libthiserror\",\"libtokio\",\"libprotobuf\",\"libgddi\",\"liblog_rust\",\"libbt_common\",\"libbt_hci_custom_types\",\"libbt_facade_helpers\"],\n  proc_macros: [\"libnum_derive\"],\n  multiple_variants: true,\n  srcs: [\"libbt_hci.rlib\"],\n}\n" >> prebuiltlibs/system/bt/gd/rust/hci/Android.bp
-printf "rust_prebuilt_rlib {\n  name: \"libbt_main\",\n  target: {\n    darwin: {\n      enabled: false,\n    },\n  },\n  host_supported: true,\n  crate_name: \"bt_main\",\n  edition: \"2018\",\n  rustlibs: [\"libbt_hal\",\"libbt_hci\",\"libtokio\",\"libgddi\",\"libbt_common\",\"libgrpcio\"],\n  multiple_variants: true,\n  srcs: [\"libbt_main.rlib\"],\n}\n" >> prebuiltlibs/system/bt/gd/rust/main/Android.bp
-printf "cc_prebuilt_library_static {\n  name: \"libbt_shim_ffi\",\n  stl: \"none\",\n  prefer: true,\n  multiple_variants: true,\n  srcs: [\"libbt_shim_ffi.a\"],\n}\n" >> prebuiltlibs/system/bt/gd/rust/shim/Android.bp
-printf "cc_prebuilt_library_static {\n  name: \"libbluetooth_rust_interop\",\n  target: {\n    darwin: {\n      enabled: false,\n    },\n  },\n  header_libs: [\"libbt_callbacks_cxx_headers\"],\n  export_header_lib_headers: [\"libbt_callbacks_cxx_headers\"],\n  host_supported: true,\n  apex_available: [\"//apex_available:platform\",\"com.android.bluetooth.updatable\"],\n  shared_libs: [\"libchrome\"],\n  whole_static_libs: [\"libbt_shim_ffi\"],\n  export_include_dirs: [\"gen\"],\n  strip: {\n    none: true,\n  },\n  multiple_variants: true,\n  prefer: true,\n  srcs: [\"libbluetooth_rust_interop.a\"],\n}\n" >> prebuiltlibs/system/bt/gd/rust/shim/Android.bp
-printf "cc_prebuilt_library {\n  name: \"libbluetooth_gd\",\n  target: {\n    android: {\n      shared_libs: [\"liblog\",\"android.hardware.bluetooth@1.0\",\"android.hardware.bluetooth@1.1\",\"android.system.suspend.control-V1-ndk\",\"android.system.suspend@1.0\",\"libbinder_ndk\",\"libcutils\",\"libhidlbase\",\"libutils\",\"libstatslog\"],\n    },\n    host: {\n    },\n    darwin: {\n      enabled: false,\n    },\n    linux: {\n    },\n  },\n  sanitize: {\n    misc_undefined: [\"bounds\"],\n  },\n  host_supported: true,\n  shared_libs: [\"libchrome\",\"libcrypto\",\"libflatbuffers-cpp\",\"libgrpc++\",\"libgrpc_wrap\"],\n  static_libs: [\"libbluetooth-protos\",\"libbluetooth_rust_interop\",\"libbt-platform-protos-lite\"],\n  export_static_lib_headers: [\"libbluetooth_rust_interop\"],\n  strip: {\n    none: true,\n  },\n  multiple_variants: true,\n  prefer: true,\n  srcs: [\"libbluetooth_gd.a\"],\n}\n" >> prebuiltlibs/system/bt/gd/Android.bp
-printf "cc_prebuilt_library_static {\n  name: \"libaudio-a2dp-hw-utils\",\n  target: {\n    android: {\n      shared_libs: [\"android.hardware.bluetooth@1.0\",\"android.hardware.bluetooth@1.1\"],\n    },\n    darwin: {\n      enabled: false,\n    },\n  },\n  static_libs: [\"libbluetooth-types\",\"libbt-platform-protos-lite\",\"libbluetooth_rust_interop\",\"liblog\",\"libcutils\",\"libbluetooth_gd\",\"libbt_shim_ffi\"],\n  sanitize: {\n    misc_undefined: [\"bounds\"],\n  },\n  shared_libs: [\"libcutils\",\"libgrpc++\",\"libgrpc_wrap\",\"libhidlbase\",\"libstatslog\",\"libutils\"],\n  host_supported: true,\n  strip: {\n    none: true,\n  },\n  multiple_variants: true,\n  prefer: true,\n  srcs: [\"libaudio-a2dp-hw-utils.a\"],\n}\n" >> prebuiltlibs/system/bt/audio_a2dp_hw/Android.bp
-printf "cc_prebuilt_library_static {\n  name: \"libbt-common\",\n  target: {\n    android: {\n      shared_libs: [\"android.hardware.bluetooth@1.0\",\"android.hardware.bluetooth@1.1\"],\n    },\n    darwin: {\n      enabled: false,\n    },\n    host: {\n    },\n  },\n  static_libs: [\"libbluetooth-types\",\"libbt-platform-protos-lite\",\"libbluetooth_rust_interop\",\"liblog\",\"libcutils\",\"libbluetooth_gd\",\"libbt_shim_ffi\",\"libbt-protos-lite\"],\n  sanitize: {\n    misc_undefined: [\"bounds\"],\n  },\n  shared_libs: [\"libcutils\",\"libgrpc++\",\"libgrpc_wrap\",\"libhidlbase\",\"libstatslog\",\"libutils\",\"libcrypto\"],\n  host_supported: true,\n  strip: {\n    none: true,\n  },\n  multiple_variants: true,\n  prefer: true,\n  srcs: [\"libbt-common.a\"],\n}\n" >> prebuiltlibs/system/bt/common/Android.bp
-printf "cc_prebuilt_library_static {\n  name: \"libbt-hci\",\n  target: {\n    android: {\n      shared_libs: [\"android.hardware.bluetooth@1.0\",\"android.hardware.bluetooth@1.1\"],\n    },\n    darwin: {\n      enabled: false,\n    },\n  },\n  static_libs: [\"libbluetooth-types\",\"libbt-platform-protos-lite\",\"libbluetooth_rust_interop\",\"liblog\",\"libcutils\",\"libbluetooth_gd\",\"libbt_shim_ffi\"],\n  sanitize: {\n    misc_undefined: [\"bounds\"],\n  },\n  shared_libs: [\"libcutils\",\"libgrpc++\",\"libgrpc_wrap\",\"libhidlbase\",\"libstatslog\",\"libutils\",\"android.hardware.bluetooth@1.0\",\"android.hardware.bluetooth@1.1\"],\n  host_supported: true,\n  strip: {\n    none: true,\n  },\n  multiple_variants: true,\n  prefer: true,\n  srcs: [\"libbt-hci.a\"],\n}\n" >> prebuiltlibs/system/bt/hci/Android.bp
-printf "cc_prebuilt_library_static {\n  name: \"libbt-sbc-decoder\",\n  target: {\n    android: {\n      shared_libs: [\"android.hardware.bluetooth@1.0\",\"android.hardware.bluetooth@1.1\"],\n    },\n    darwin: {\n      enabled: false,\n    },\n  },\n  static_libs: [\"libbluetooth-types\",\"libbt-platform-protos-lite\",\"libbluetooth_rust_interop\",\"liblog\",\"libcutils\",\"libbluetooth_gd\",\"libbt_shim_ffi\"],\n  sanitize: {\n    misc_undefined: [\"bounds\"],\n  },\n  shared_libs: [\"libcutils\",\"libgrpc++\",\"libgrpc_wrap\",\"libhidlbase\",\"libstatslog\",\"libutils\"],\n  host_supported: true,\n  strip: {\n    none: true,\n  },\n  multiple_variants: true,\n  prefer: true,\n  srcs: [\"libbt-sbc-decoder.a\"],\n}\n" >> prebuiltlibs/system/bt/embdrv/sbc/decoder/Android.bp
-printf "cc_prebuilt_library_static {\n  name: \"libbt-sbc-encoder\",\n  target: {\n    android: {\n      shared_libs: [\"android.hardware.bluetooth@1.0\",\"android.hardware.bluetooth@1.1\"],\n    },\n    darwin: {\n      enabled: false,\n    },\n  },\n  static_libs: [\"libbluetooth-types\",\"libbt-platform-protos-lite\",\"libbluetooth_rust_interop\",\"liblog\",\"libcutils\",\"libbluetooth_gd\",\"libbt_shim_ffi\"],\n  sanitize: {\n    misc_undefined: [\"bounds\"],\n  },\n  shared_libs: [\"libcutils\",\"libgrpc++\",\"libgrpc_wrap\",\"libhidlbase\",\"libstatslog\",\"libutils\"],\n  host_supported: true,\n  strip: {\n    none: true,\n  },\n  multiple_variants: true,\n  prefer: true,\n  srcs: [\"libbt-sbc-encoder.a\"],\n}\n" >> prebuiltlibs/system/bt/embdrv/sbc/encoder/Android.bp
-printf "cc_prebuilt_library_static {\n  name: \"libbt-stack\",\n  target: {\n    android: {\n      shared_libs: [\"android.hardware.bluetooth@1.0\",\"android.hardware.bluetooth@1.1\"],\n    },\n    darwin: {\n      enabled: false,\n    },\n  },\n  static_libs: [\"libbluetooth-types\",\"libbt-platform-protos-lite\",\"libbluetooth_rust_interop\",\"liblog\",\"libcutils\",\"libbluetooth_gd\",\"libbt_shim_ffi\",\"libbt-hci\",\"libFraunhoferAAC\"],\n  sanitize: {\n    misc_undefined: [\"bounds\"],\n  },\n  shared_libs: [\"libcutils\",\"libgrpc++\",\"libgrpc_wrap\",\"libhidlbase\",\"libstatslog\",\"libutils\",\"liblog\",\"libcrypto\"],\n  required: [\"libldacBT_enc\",\"libldacBT_abr\"],\n  host_supported: true,\n  strip: {\n    none: true,\n  },\n  multiple_variants: true,\n  prefer: true,\n  srcs: [\"libbt-stack.a\"],\n}\n" >> prebuiltlibs/system/bt/stack/Android.bp
-printf "cc_prebuilt_library_static {\n  name: \"libbt-utils\",\n  target: {\n    android: {\n      shared_libs: [\"android.hardware.bluetooth@1.0\",\"android.hardware.bluetooth@1.1\"],\n    },\n    darwin: {\n      enabled: false,\n    },\n  },\n  static_libs: [\"libbluetooth-types\",\"libbt-platform-protos-lite\",\"libbluetooth_rust_interop\",\"liblog\",\"libcutils\",\"libbluetooth_gd\",\"libbt_shim_ffi\"],\n  sanitize: {\n    misc_undefined: [\"bounds\"],\n  },\n  shared_libs: [\"libcutils\",\"libgrpc++\",\"libgrpc_wrap\",\"libhidlbase\",\"libstatslog\",\"libutils\",\"libprocessgroup\"],\n  host_supported: true,\n  strip: {\n    none: true,\n  },\n  multiple_variants: true,\n  prefer: true,\n  srcs: [\"libbt-utils.a\"],\n}\n" >> prebuiltlibs/system/bt/utils/Android.bp
-printf "cc_prebuilt_library_static {\n  name: \"libbtcore\",\n  target: {\n    android: {\n      shared_libs: [\"android.hardware.bluetooth@1.0\",\"android.hardware.bluetooth@1.1\"],\n    },\n    darwin: {\n      enabled: false,\n    },\n    linux_glibc: {\n    },\n  },\n  static_libs: [\"libbluetooth-types\",\"libbt-platform-protos-lite\",\"libbluetooth_rust_interop\",\"liblog\",\"libcutils\",\"libbluetooth_gd\",\"libbt_shim_ffi\"],\n  sanitize: {\n    misc_undefined: [\"bounds\"],\n  },\n  shared_libs: [\"libcutils\",\"libgrpc++\",\"libgrpc_wrap\",\"libhidlbase\",\"libstatslog\",\"libutils\",\"liblog\"],\n  host_supported: true,\n  strip: {\n    none: true,\n  },\n  multiple_variants: true,\n  prefer: true,\n  srcs: [\"libbtcore.a\"],\n}\n" >> prebuiltlibs/system/bt/btcore/Android.bp
-printf "cc_prebuilt_library_static {\n  name: \"libbtdevice\",\n  target: {\n    android: {\n      shared_libs: [\"android.hardware.bluetooth@1.0\",\"android.hardware.bluetooth@1.1\"],\n    },\n    darwin: {\n      enabled: false,\n    },\n  },\n  static_libs: [\"libbluetooth-types\",\"libbt-platform-protos-lite\",\"libbluetooth_rust_interop\",\"liblog\",\"libcutils\",\"libbluetooth_gd\",\"libbt_shim_ffi\"],\n  sanitize: {\n    misc_undefined: [\"bounds\"],\n  },\n  shared_libs: [\"libcutils\",\"libgrpc++\",\"libgrpc_wrap\",\"libhidlbase\",\"libstatslog\",\"libutils\",\"liblog\"],\n  host_supported: true,\n  strip: {\n    none: true,\n  },\n  multiple_variants: true,\n  prefer: true,\n  srcs: [\"libbtdevice.a\"],\n}\n" >> prebuiltlibs/system/bt/device/Android.bp
-printf "cc_prebuilt_library_static {\n  name: \"libbte\",\n  target: {\n    android: {\n      shared_libs: [\"android.hardware.bluetooth@1.0\",\"android.hardware.bluetooth@1.1\"],\n    },\n    darwin: {\n      enabled: false,\n    },\n  },\n  static_libs: [\"libbluetooth-types\",\"libbt-platform-protos-lite\",\"libbluetooth_rust_interop\",\"liblog\",\"libcutils\",\"libbluetooth_gd\",\"libbt_shim_ffi\"],\n  sanitize: {\n    misc_undefined: [\"bounds\"],\n  },\n  shared_libs: [\"libcutils\",\"libgrpc++\",\"libgrpc_wrap\",\"libhidlbase\",\"libstatslog\",\"libutils\",\"libflatbuffers-cpp\"],\n  host_supported: true,\n  strip: {\n    none: true,\n  },\n  multiple_variants: true,\n  prefer: true,\n  srcs: [\"libbte.a\"],\n}\n" >> prebuiltlibs/system/bt/main/Android.bp
-printf "cc_prebuilt_library_static {\n  name: \"libg722codec\",\n  target: {\n    android: {\n      shared_libs: [\"android.hardware.bluetooth@1.0\",\"android.hardware.bluetooth@1.1\"],\n    },\n    darwin: {\n      enabled: false,\n    },\n  },\n  static_libs: [\"libbluetooth-types\",\"libbt-platform-protos-lite\",\"libbluetooth_rust_interop\",\"liblog\",\"libcutils\",\"libbluetooth_gd\",\"libbt_shim_ffi\"],\n  sanitize: {\n    misc_undefined: [\"bounds\"],\n  },\n  shared_libs: [\"libcutils\",\"libgrpc++\",\"libgrpc_wrap\",\"libhidlbase\",\"libstatslog\",\"libutils\"],\n  host_supported: true,\n  strip: {\n    none: true,\n  },\n  multiple_variants: true,\n  prefer: true,\n  srcs: [\"libg722codec.a\"],\n}\n" >> prebuiltlibs/system/bt/embdrv/g722/Android.bp
-printf "cc_prebuilt_library_static {\n  name: \"libosi\",\n  target: {\n    android: {\n      shared_libs: [\"android.hardware.bluetooth@1.0\",\"android.hardware.bluetooth@1.1\"],\n    },\n    darwin: {\n      enabled: false,\n    },\n    linux_glibc: {\n    },\n  },\n  static_libs: [\"libbluetooth-types\",\"libbt-platform-protos-lite\",\"libbluetooth_rust_interop\",\"liblog\",\"libcutils\",\"libbluetooth_gd\",\"libbt_shim_ffi\",\"libbt-protos-lite\"],\n  sanitize: {\n    misc_undefined: [\"bounds\"],\n  },\n  shared_libs: [\"libcutils\",\"libgrpc++\",\"libgrpc_wrap\",\"libhidlbase\",\"libstatslog\",\"libutils\",\"liblog\"],\n  host_supported: true,\n  strip: {\n    none: true,\n  },\n  multiple_variants: true,\n  prefer: true,\n  srcs: [\"libosi.a\"],\n}\n" >> prebuiltlibs/system/bt/osi/Android.bp
-printf "cc_prebuilt_library {\n  name: \"audio.a2dp.default\",\n  target: {\n    android: {\n      shared_libs: [\"android.hardware.bluetooth@1.0\",\"android.hardware.bluetooth@1.1\"],\n    },\n    darwin: {\n      enabled: false,\n    },\n  },\n  static_libs: [\"libbluetooth-types\",\"libbt-platform-protos-lite\",\"libbluetooth_rust_interop\",\"liblog\",\"libcutils\",\"libbluetooth_gd\",\"libbt_shim_ffi\",\"libosi\"],\n  sanitize: {\n    misc_undefined: [\"bounds\"],\n  },\n  shared_libs: [\"libcutils\",\"libgrpc++\",\"libgrpc_wrap\",\"libhidlbase\",\"libstatslog\",\"libutils\",\"liblog\"],\n  relative_install_path: \"hw\",\n  strip: {\n    none: true,\n  },\n  multiple_variants: true,\n  prefer: true,\n  static: {\n    srcs: [\"audio.a2dp.default.a\"],\n  },\n  shared: {\n    srcs: [\"audio.a2dp.default.so\"],\n  },\n}\n" >> prebuiltlibs/system/bt/audio_a2dp_hw/Android.bp
-printf "cc_prebuilt_library {\n  name: \"audio.hearing_aid.default\",\n  target: {\n    android: {\n      shared_libs: [\"android.hardware.bluetooth@1.0\",\"android.hardware.bluetooth@1.1\"],\n    },\n    darwin: {\n      enabled: false,\n    },\n  },\n  static_libs: [\"libbluetooth-types\",\"libbt-platform-protos-lite\",\"libbluetooth_rust_interop\",\"liblog\",\"libcutils\",\"libbluetooth_gd\",\"libbt_shim_ffi\",\"libosi\"],\n  sanitize: {\n    misc_undefined: [\"bounds\"],\n  },\n  shared_libs: [\"libcutils\",\"libgrpc++\",\"libgrpc_wrap\",\"libhidlbase\",\"libstatslog\",\"libutils\",\"liblog\"],\n  relative_install_path: \"hw\",\n  strip: {\n    none: true,\n  },\n  multiple_variants: true,\n  prefer: true,\n  static: {\n    srcs: [\"audio.hearing_aid.default.a\"],\n  },\n  shared: {\n    srcs: [\"audio.hearing_aid.default.so\"],\n  },\n}\n" >> prebuiltlibs/system/bt/audio_hearing_aid_hw/Android.bp
-printf "cc_prebuilt_library_static {\n  name: \"avrcp-target-service\",\n  target: {\n    android: {\n      shared_libs: [\"android.hardware.bluetooth@1.0\",\"android.hardware.bluetooth@1.1\"],\n    },\n    darwin: {\n      enabled: false,\n    },\n    host: {\n    },\n  },\n  static_libs: [\"libbluetooth-types\",\"libbt-platform-protos-lite\",\"libbluetooth_rust_interop\",\"liblog\",\"libcutils\",\"libbluetooth_gd\",\"libbt_shim_ffi\",\"lib-bt-packets\",\"libosi\"],\n  sanitize: {\n    misc_undefined: [\"bounds\"],\n  },\n  shared_libs: [\"libcutils\",\"libgrpc++\",\"libgrpc_wrap\",\"libhidlbase\",\"libstatslog\",\"libutils\",\"libchrome\"],\n  host_supported: true,\n  export_include_dirs: [\"./\"],\n  apex_available: [\"//apex_available:platform\",\"com.android.bluetooth.updatable\"],\n  strip: {\n    none: true,\n  },\n  multiple_variants: true,\n  prefer: true,\n  srcs: [\"avrcp-target-service.a\"],\n}\n" >> prebuiltlibs/system/bt/profile/avrcp/Android.bp
-printf "cc_prebuilt_library_static {\n  name: \"libbt-bta\",\n  target: {\n    android: {\n      shared_libs: [\"android.hardware.bluetooth@1.0\",\"android.hardware.bluetooth@1.1\"],\n    },\n    darwin: {\n      enabled: false,\n    },\n  },\n  static_libs: [\"libbluetooth-types\",\"libbt-platform-protos-lite\",\"libbluetooth_rust_interop\",\"liblog\",\"libcutils\",\"libbluetooth_gd\",\"libbt_shim_ffi\",\"avrcp-target-service\",\"lib-bt-packets\"],\n  sanitize: {\n    misc_undefined: [\"bounds\"],\n  },\n  shared_libs: [\"libcutils\",\"libgrpc++\",\"libgrpc_wrap\",\"libhidlbase\",\"libstatslog\",\"libutils\"],\n  host_supported: true,\n  strip: {\n    none: true,\n  },\n  multiple_variants: true,\n  prefer: true,\n  srcs: [\"libbt-bta.a\"],\n}\n" >> prebuiltlibs/system/bt/bta/Android.bp
-printf "cc_prebuilt_library_static {\n  name: \"libbt-audio-hal-interface\",\n  target: {\n    android: {\n      shared_libs: [\"android.hardware.bluetooth@1.0\",\"android.hardware.bluetooth@1.1\",\"libfmq\"],\n    },\n    darwin: {\n      enabled: false,\n    },\n    host: {\n    },\n  },\n  static_libs: [\"libbluetooth-types\",\"libbt-platform-protos-lite\",\"libbluetooth_rust_interop\",\"liblog\",\"libcutils\",\"libbluetooth_gd\",\"libbt_shim_ffi\",\"libosi\",\"libbt-common\"],\n  sanitize: {\n    misc_undefined: [\"bounds\"],\n  },\n  shared_libs: [\"libcutils\",\"libgrpc++\",\"libgrpc_wrap\",\"libhidlbase\",\"libstatslog\",\"libutils\",\"android.hardware.bluetooth.audio@2.0\",\"android.hardware.bluetooth.audio@2.1\"],\n  host_supported: true,\n  strip: {\n    none: true,\n  },\n  multiple_variants: true,\n  prefer: true,\n  srcs: [\"libbt-audio-hal-interface.a\"],\n}\n" >> prebuiltlibs/system/bt/audio_hal_interface/Android.bp
-printf "cc_prebuilt_library_static {\n  name: \"libbtif\",\n  target: {\n    android: {\n      shared_libs: [\"android.hardware.bluetooth@1.0\",\"android.hardware.bluetooth@1.1\",\"libaaudio\",\"libfmq\"],\n    },\n    darwin: {\n      enabled: false,\n    },\n    host: {\n    },\n  },\n  static_libs: [\"libbluetooth-types\",\"libbt-platform-protos-lite\",\"libbluetooth_rust_interop\",\"liblog\",\"libcutils\",\"libbluetooth_gd\",\"libbt_shim_ffi\"],\n  sanitize: {\n    misc_undefined: [\"bounds\"],\n  },\n  shared_libs: [\"libcutils\",\"libgrpc++\",\"libgrpc_wrap\",\"libhidlbase\",\"libstatslog\",\"libutils\",\"android.hardware.bluetooth.a2dp@1.0\",\"android.hardware.bluetooth.audio@2.0\",\"android.hardware.bluetooth.audio@2.1\",\"libcrypto\",\"liblog\",\"libtinyxml2\",\"libz\"],\n  whole_static_libs: [\"avrcp-target-service\",\"lib-bt-packets\",\"libbt-audio-hal-interface\",\"libaudio-a2dp-hw-utils\"],\n  host_supported: true,\n  strip: {\n    none: true,\n  },\n  multiple_variants: true,\n  prefer: true,\n  srcs: [\"libbtif.a\"],\n}\n" >> prebuiltlibs/system/bt/btif/Android.bp
-printf "cc_prebuilt_library_static {\n  name: \"libudrv-uipc\",\n  target: {\n    android: {\n      shared_libs: [\"android.hardware.bluetooth@1.0\",\"android.hardware.bluetooth@1.1\"],\n    },\n    darwin: {\n      enabled: false,\n    },\n  },\n  static_libs: [\"libbluetooth-types\",\"libbt-platform-protos-lite\",\"libbluetooth_rust_interop\",\"liblog\",\"libcutils\",\"libbluetooth_gd\",\"libbt_shim_ffi\"],\n  sanitize: {\n    misc_undefined: [\"bounds\"],\n  },\n  shared_libs: [\"libcutils\",\"libgrpc++\",\"libgrpc_wrap\",\"libhidlbase\",\"libstatslog\",\"libutils\"],\n  host_supported: true,\n  strip: {\n    none: true,\n  },\n  multiple_variants: true,\n  prefer: true,\n  srcs: [\"libudrv-uipc.a\"],\n}\n" >> prebuiltlibs/system/bt/udrv/Android.bp
-printf "cc_prebuilt_library_shared {\n  name: \"libbluetooth\",\n  target: {\n    android: {\n      shared_libs: [\"android.hardware.bluetooth@1.0\",\"android.hardware.bluetooth@1.1\",\"android.system.suspend.control-V1-ndk\",\"android.system.suspend@1.0\",\"libaaudio\",\"libfmq\"],\n      required: [\"libldacBT_enc\",\"libldacBT_abr\"],\n    },\n    darwin: {\n      enabled: false,\n    },\n  },\n  header_libs: [\"libbluetooth_headers\"],\n  static_libs: [\"libbluetooth-types\",\"libbt-platform-protos-lite\",\"libbluetooth_rust_interop\",\"liblog\",\"libcutils\",\"libbluetooth_gd\",\"libbt_shim_ffi\",\"libbte\",\"libbt-sbc-decoder\",\"libbt-sbc-encoder\",\"libFraunhoferAAC\",\"libg722codec\",\"libudrv-uipc\"],\n  sanitize: {\n    misc_undefined: [\"bounds\"],\n    never: true,\n  },\n  shared_libs: [\"libcutils\",\"libgrpc++\",\"libgrpc_wrap\",\"libhidlbase\",\"libstatslog\",\"libutils\",\"android.hardware.bluetooth.a2dp@1.0\",\"android.hardware.bluetooth.audio@2.0\",\"android.hardware.bluetooth.audio@2.1\",\"android.hardware.bluetooth@1.0\",\"android.hardware.bluetooth@1.1\",\"libbinder_ndk\",\"libcrypto\",\"libflatbuffers-cpp\",\"liblog\",\"libprocessgroup\",\"libprotobuf-cpp-lite\",\"libtinyxml2\",\"libz\"],\n  export_header_lib_headers: [\"libbluetooth_headers\"],\n  logtags: [\"../EventLogTags.logtags\"],\n  whole_static_libs: [\"libbt-bta\",\"libbt-common\",\"libbtdevice\",\"libbtif\",\"libbt-hci\",\"libbt-stack\",\"libbt-utils\",\"libbtcore\",\"libosi\",\"libbt-protos-lite\"],\n  required: [\"bt_did.conf\",\"bt_stack.conf\"],\n  host_supported: true,\n  strip: {\n    none: true,\n  },\n  multiple_variants: true,\n  prefer: true,\n  srcs: [\"libbluetooth.so\"],\n}\n" >> prebuiltlibs/system/bt/main/Android.bp
-
-df -h
-clean_out_intermediates
-mkdir -p prebuiltlibs/system/bt/ninja && rsync -ar out/soong/ninja/system/bt/ prebuiltlibs/system/bt/ninja/system_bt-11
-touch prebuiltlibs/system/bt/ninja/.find-ignore
-tar cfJ system_bt-11.tar.xz -C prebuiltlibs/system/bt/ .
-ls -l system_bt-11.tar.xz
-end=`date +%s`
-echo $((end-start))
-
-start=`date +%s`
-./prebuilts/build-tools/linux-x86/bin/ninja -f out/soong/build.ninja \
-  out/soong/.intermediates/system/tools/hidl/metadata/libhidlmetadata/linux_glibc_x86_64_shared/libhidlmetadata.so \
-  out/soong/.intermediates/system/tools/hidl/metadata/libhidlmetadata/linux_glibc_x86_64_static/libhidlmetadata.a \
-  
-
-mkdir -p prebuiltlibs/system/tools/hidl/metadata/libhidlmetadata/linux_glibc_x86_64_shared/ && mv out/soong/.intermediates/system/tools/hidl/metadata/libhidlmetadata/linux_glibc_x86_64_shared/libhidlmetadata.so prebuiltlibs/system/tools/hidl/metadata/libhidlmetadata/linux_glibc_x86_64_shared/libhidlmetadata.so
-mkdir -p prebuiltlibs/system/tools/hidl/metadata/libhidlmetadata/linux_glibc_x86_64_static/ && mv out/soong/.intermediates/system/tools/hidl/metadata/libhidlmetadata/linux_glibc_x86_64_static/libhidlmetadata.a prebuiltlibs/system/tools/hidl/metadata/libhidlmetadata/linux_glibc_x86_64_static/libhidlmetadata.a
-mkdir -p prebuiltlibs/system/tools/hidl/metadata/include
-rsync -ar --exclude=".git" --exclude="Android.bp" --exclude="Android.mk" system/tools/hidl/metadata/include/ prebuiltlibs/system/tools/hidl/metadata/include
-
-printf "cc_prebuilt_library {\n  name: \"libhidlmetadata\",\n  host_supported: true,\n  export_include_dirs: [\"include\"],\n  strip: {\n    none: true,\n  },\n  multiple_variants: true,\n  prefer: true,\n  static: {\n    srcs: [\"libhidlmetadata.a\"],\n  },\n  shared: {\n    srcs: [\"libhidlmetadata.so\"],\n  },\n}\n" >> prebuiltlibs/system/tools/hidl/metadata/Android.bp
-
-df -h
-clean_out_intermediates
-mkdir -p prebuiltlibs/system/tools/hidl/ninja && rsync -ar out/soong/ninja/system/tools/hidl/ prebuiltlibs/system/tools/hidl/ninja/system_tools_hidl-11
-touch prebuiltlibs/system/tools/hidl/ninja/.find-ignore
-tar cfJ system_tools_hidl-11.tar.xz -C prebuiltlibs/system/tools/hidl/ .
-ls -l system_tools_hidl-11.tar.xz
 end=`date +%s`
 echo $((end-start))
 
