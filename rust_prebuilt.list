@@ -202,3 +202,6 @@ libbt_hci
 libbt_main
 libbt_shim_ffi
 libkeystore2_km_compat
+libkeystore2
+liblegacykeystore-rust
+keystore2
