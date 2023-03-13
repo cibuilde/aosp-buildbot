@@ -335,26 +335,6 @@ rm -rf prebuiltlibs/hardware/interfaces/wifi/supplicant/1.4/android.hardware.wif
 
 start=`date +%s`
 ./prebuilts/build-tools/linux-x86/bin/ninja -f out/soong/build.ninja \
-  out/soong/.intermediates/external/neven/libFFTEm/android_x86_64_shared/libFFTEm.so \
-  out/soong/.intermediates/external/neven/libFFTEm/android_x86_x86_64_shared/libFFTEm.so \
-  
-
-mkdir -p prebuiltlibs/external/neven/libFFTEm/android_x86_64_shared/ && mv out/soong/.intermediates/external/neven/libFFTEm/android_x86_64_shared/libFFTEm.so prebuiltlibs/external/neven/libFFTEm/android_x86_64_shared/libFFTEm.so
-mkdir -p prebuiltlibs/external/neven/libFFTEm/android_x86_x86_64_shared/ && mv out/soong/.intermediates/external/neven/libFFTEm/android_x86_x86_64_shared/libFFTEm.so prebuiltlibs/external/neven/libFFTEm/android_x86_x86_64_shared/libFFTEm.so
-
-printf "cc_prebuilt_library_shared {\n  name: \"libFFTEm\",\n  shared_libs: [\"libnativehelper\",\"libutils\",\"liblog\",\"libjnigraphics\",\"libcutils\"],\n  required: [\"RFFspeed_501.bmd\",\"RFFstd_501.bmd\"],\n  strip: {\n    none: true,\n  },\n  multiple_variants: true,\n  prefer: true,\n  srcs: [\"libFFTEm.so\"],\n}\n" >> prebuiltlibs/external/neven/Android.bp
-
-df -h
-clean_out_intermediates
-mkdir -p prebuiltlibs/external/neven/ninja && rsync -ar out/soong/ninja/external/neven/ prebuiltlibs/external/neven/ninja/external_neven-15
-touch prebuiltlibs/external/neven/ninja/.find-ignore
-tar cfJ external_neven-15.tar.xz -C prebuiltlibs/external/neven/ .
-ls -l external_neven-15.tar.xz
-end=`date +%s`
-echo $((end-start))
-
-start=`date +%s`
-./prebuilts/build-tools/linux-x86/bin/ninja -f out/soong/build.ninja \
   out/soong/.intermediates/frameworks/av/camera/ndk/libcamera2ndk/android_x86_64_shared/libcamera2ndk.so \
   out/soong/.intermediates/frameworks/av/camera/ndk/libcamera2ndk/android_x86_x86_64_shared/libcamera2ndk.so \
   out/soong/.intermediates/frameworks/av/media/libmediatranscoding/libmediatranscoding/android_x86_64_shared_cfi_com.android.media/libmediatranscoding.so \
@@ -394,26 +374,6 @@ mkdir -p prebuiltlibs/frameworks/av/ninja && rsync -ar out/soong/ninja/framework
 touch prebuiltlibs/frameworks/av/ninja/.find-ignore
 tar cfJ frameworks_av-15.tar.xz -C prebuiltlibs/frameworks/av/ .
 ls -l frameworks_av-15.tar.xz
-end=`date +%s`
-echo $((end-start))
-
-start=`date +%s`
-./prebuilts/build-tools/linux-x86/bin/ninja -f out/soong/build.ninja \
-  out/soong/.intermediates/frameworks/ex/framesequence/jni/libframesequence/android_x86_64_shared/libframesequence.so \
-  out/soong/.intermediates/frameworks/ex/framesequence/jni/libframesequence/android_x86_x86_64_shared/libframesequence.so \
-  
-
-mkdir -p prebuiltlibs/frameworks/ex/framesequence/jni/libframesequence/android_x86_64_shared/ && mv out/soong/.intermediates/frameworks/ex/framesequence/jni/libframesequence/android_x86_64_shared/libframesequence.so prebuiltlibs/frameworks/ex/framesequence/jni/libframesequence/android_x86_64_shared/libframesequence.so
-mkdir -p prebuiltlibs/frameworks/ex/framesequence/jni/libframesequence/android_x86_x86_64_shared/ && mv out/soong/.intermediates/frameworks/ex/framesequence/jni/libframesequence/android_x86_x86_64_shared/libframesequence.so prebuiltlibs/frameworks/ex/framesequence/jni/libframesequence/android_x86_x86_64_shared/libframesequence.so
-
-printf "cc_prebuilt_library_shared {\n  name: \"libframesequence\",\n  static_libs: [\"libgif\"],\n  sdk_version: \"8\",\n  shared_libs: [\"libjnigraphics\",\"liblog\"],\n  product_specific: true,\n  strip: {\n    none: true,\n  },\n  multiple_variants: true,\n  prefer: true,\n  srcs: [\"libframesequence.so\"],\n}\n" >> prebuiltlibs/frameworks/ex/framesequence/jni/Android.bp
-
-df -h
-clean_out_intermediates
-mkdir -p prebuiltlibs/frameworks/ex/ninja && rsync -ar out/soong/ninja/frameworks/ex/ prebuiltlibs/frameworks/ex/ninja/frameworks_ex-15
-touch prebuiltlibs/frameworks/ex/ninja/.find-ignore
-tar cfJ frameworks_ex-15.tar.xz -C prebuiltlibs/frameworks/ex/ .
-ls -l frameworks_ex-15.tar.xz
 end=`date +%s`
 echo $((end-start))
 
@@ -459,24 +419,6 @@ echo $((end-start))
 
 start=`date +%s`
 ./prebuilts/build-tools/linux-x86/bin/ninja -f out/soong/build.ninja \
-  out/soong/.intermediates/packages/apps/Gallery2/jni/libjni_filtershow_filters/android_x86_64_shared/libjni_filtershow_filters.so \
-  
-
-mkdir -p prebuiltlibs/packages/apps/Gallery2/jni/libjni_filtershow_filters/android_x86_64_shared/ && mv out/soong/.intermediates/packages/apps/Gallery2/jni/libjni_filtershow_filters/android_x86_64_shared/libjni_filtershow_filters.so prebuiltlibs/packages/apps/Gallery2/jni/libjni_filtershow_filters/android_x86_64_shared/libjni_filtershow_filters.so
-
-printf "cc_prebuilt_library_shared {\n  name: \"libjni_filtershow_filters\",\n  product_specific: true,\n  sdk_version: \"9\",\n  shared_libs: [\"liblog\",\"libjnigraphics\"],\n  arch: {\n    arm: {\n    },\n  },\n  strip: {\n    none: true,\n  },\n  multiple_variants: true,\n  prefer: true,\n  srcs: [\"libjni_filtershow_filters.so\"],\n}\n" >> prebuiltlibs/packages/apps/Gallery2/jni/Android.bp
-
-df -h
-clean_out_intermediates
-mkdir -p prebuiltlibs/packages/apps/Gallery2/ninja && rsync -ar out/soong/ninja/packages/apps/Gallery2/ prebuiltlibs/packages/apps/Gallery2/ninja/packages_apps_Gallery2-15
-touch prebuiltlibs/packages/apps/Gallery2/ninja/.find-ignore
-tar cfJ packages_apps_Gallery2-15.tar.xz -C prebuiltlibs/packages/apps/Gallery2/ .
-ls -l packages_apps_Gallery2-15.tar.xz
-end=`date +%s`
-echo $((end-start))
-
-start=`date +%s`
-./prebuilts/build-tools/linux-x86/bin/ninja -f out/soong/build.ninja \
   out/soong/.intermediates/packages/modules/Connectivity/framework/libframework-connectivity-jni/android_x86_64_shared_apex30/libframework-connectivity-jni.so \
   out/soong/.intermediates/packages/modules/Connectivity/framework/libframework-connectivity-jni/android_x86_x86_64_shared_apex30/libframework-connectivity-jni.so \
   
@@ -492,49 +434,6 @@ mkdir -p prebuiltlibs/packages/modules/Connectivity/ninja && rsync -ar out/soong
 touch prebuiltlibs/packages/modules/Connectivity/ninja/.find-ignore
 tar cfJ packages_modules_Connectivity-15.tar.xz -C prebuiltlibs/packages/modules/Connectivity/ .
 ls -l packages_modules_Connectivity-15.tar.xz
-end=`date +%s`
-echo $((end-start))
-
-start=`date +%s`
-./prebuilts/build-tools/linux-x86/bin/ninja -f out/soong/build.ninja \
-  out/soong/.intermediates/packages/modules/ExtServices/native/libextservices/android_x86_64_sdk_static_apex30/libextservices.a \
-  out/soong/.intermediates/packages/modules/ExtServices/jni/libextservices_jni/android_x86_64_sdk_shared_apex30/libextservices_jni.so \
-  
-
-mkdir -p prebuiltlibs/packages/modules/ExtServices/native/libextservices/android_x86_64_sdk_static_apex30/ && mv out/soong/.intermediates/packages/modules/ExtServices/native/libextservices/android_x86_64_sdk_static_apex30/libextservices.a prebuiltlibs/packages/modules/ExtServices/native/libextservices/android_x86_64_sdk_static_apex30/libextservices.a
-mkdir -p prebuiltlibs/packages/modules/ExtServices/native/
-rsync -ar --exclude=".git" --exclude="Android.bp" --exclude="Android.mk" packages/modules/ExtServices/native/ prebuiltlibs/packages/modules/ExtServices/native/
-mkdir -p prebuiltlibs/packages/modules/ExtServices/jni/libextservices_jni/android_x86_64_sdk_shared_apex30/ && mv out/soong/.intermediates/packages/modules/ExtServices/jni/libextservices_jni/android_x86_64_sdk_shared_apex30/libextservices_jni.so prebuiltlibs/packages/modules/ExtServices/jni/libextservices_jni/android_x86_64_sdk_shared_apex30/libextservices_jni.so
-
-printf "cc_prebuilt_library_static {\n  name: \"libextservices\",\n  sdk_version: \"current\",\n  min_sdk_version: \"30\",\n  shared_libs: [\"libandroid\",\"liblog\"],\n  static_libs: [\"libfft2d\"],\n  export_include_dirs: [\".\"],\n  stl: \"libc++_static\",\n  apex_available: [\"//apex_available:platform\",\"com.android.extservices\"],\n  strip: {\n    none: true,\n  },\n  multiple_variants: true,\n  prefer: true,\n  srcs: [\"libextservices.a\"],\n}\n" >> prebuiltlibs/packages/modules/ExtServices/native/Android.bp
-printf "cc_prebuilt_library_shared {\n  name: \"libextservices_jni\",\n  sdk_version: \"current\",\n  min_sdk_version: \"30\",\n  shared_libs: [\"libandroid\",\"liblog\",\"libnativehelper_compat_libc++\"],\n  static_libs: [\"libextservices\",\"libfft2d\"],\n  stl: \"libc++_static\",\n  apex_available: [\"//apex_available:platform\",\"com.android.extservices\"],\n  strip: {\n    none: true,\n  },\n  multiple_variants: true,\n  prefer: true,\n  srcs: [\"libextservices_jni.so\"],\n}\n" >> prebuiltlibs/packages/modules/ExtServices/jni/Android.bp
-
-df -h
-clean_out_intermediates
-mkdir -p prebuiltlibs/packages/modules/ExtServices/ninja && rsync -ar out/soong/ninja/packages/modules/ExtServices/ prebuiltlibs/packages/modules/ExtServices/ninja/packages_modules_ExtServices-15
-touch prebuiltlibs/packages/modules/ExtServices/ninja/.find-ignore
-tar cfJ packages_modules_ExtServices-15.tar.xz -C prebuiltlibs/packages/modules/ExtServices/ .
-ls -l packages_modules_ExtServices-15.tar.xz
-end=`date +%s`
-echo $((end-start))
-
-start=`date +%s`
-./prebuilts/build-tools/linux-x86/bin/ninja -f out/soong/build.ninja \
-  out/soong/.intermediates/packages/providers/MediaProvider/jni/libfuse_jni/android_x86_64_sdk_shared_apex30/libfuse_jni.so \
-  
-
-mkdir -p prebuiltlibs/packages/providers/MediaProvider/jni/libfuse_jni/android_x86_64_sdk_shared_apex30/ && mv out/soong/.intermediates/packages/providers/MediaProvider/jni/libfuse_jni/android_x86_64_sdk_shared_apex30/libfuse_jni.so prebuiltlibs/packages/providers/MediaProvider/jni/libfuse_jni/android_x86_64_sdk_shared_apex30/libfuse_jni.so
-mkdir -p prebuiltlibs/packages/providers/MediaProvider/jni/include
-rsync -ar --exclude=".git" --exclude="Android.bp" --exclude="Android.mk" packages/providers/MediaProvider/jni/include/ prebuiltlibs/packages/providers/MediaProvider/jni/include
-
-printf "cc_prebuilt_library_shared {\n  name: \"libfuse_jni\",\n  export_include_dirs: [\"include\"],\n  shared_libs: [\"liblog\",\"libfuse\",\"libandroid\"],\n  static_libs: [\"libbase_ndk\"],\n  sdk_version: \"current\",\n  stl: \"c++_static\",\n  min_sdk_version: \"30\",\n  strip: {\n    none: true,\n  },\n  multiple_variants: true,\n  prefer: true,\n  srcs: [\"libfuse_jni.so\"],\n}\n" >> prebuiltlibs/packages/providers/MediaProvider/jni/Android.bp
-
-df -h
-clean_out_intermediates
-mkdir -p prebuiltlibs/packages/providers/MediaProvider/ninja && rsync -ar out/soong/ninja/packages/providers/MediaProvider/ prebuiltlibs/packages/providers/MediaProvider/ninja/packages_providers_MediaProvider-15
-touch prebuiltlibs/packages/providers/MediaProvider/ninja/.find-ignore
-tar cfJ packages_providers_MediaProvider-15.tar.xz -C prebuiltlibs/packages/providers/MediaProvider/ .
-ls -l packages_providers_MediaProvider-15.tar.xz
 end=`date +%s`
 echo $((end-start))
 

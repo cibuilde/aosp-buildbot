@@ -87,19 +87,6 @@ jobs:
         cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
         clone_depth_platform build/soong
 
-    - name: Restore Cache external/giflib
-      id: external_giflib
-      uses: actions/cache@v3
-      with:
-        path: aosp/external/giflib
-        key: external_giflib@${{ env.branch }}
-        restore-keys: external_giflib@${{ env.branch }}
-    - name: Clone project external/giflib
-      if: steps.external_giflib.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        clone_depth_platform external/giflib
-
     - name: Restore Cache external/golang-protobuf
       id: external_golang-protobuf
       uses: actions/cache@v3
@@ -151,19 +138,6 @@ jobs:
       run: |
         cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
         clone_sparse_exclude external/icu !/icu4c/source/test
-
-    - name: Restore Cache external/neven
-      id: external_neven
-      uses: actions/cache@v3
-      with:
-        path: aosp/external/neven
-        key: external_neven@${{ env.branch }}
-        restore-keys: external_neven@${{ env.branch }}
-    - name: Clone project external/neven
-      if: steps.external_neven.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        clone_depth_platform external/neven
 
     - name: Restore Cache external/protobuf
       id: external_protobuf
@@ -243,19 +217,6 @@ jobs:
         cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
         clone_sparse_exclude frameworks/base "!/data/sounds" "!/data/videos" "!/media/tests/contents" "!/docs" "!/native/graphics/jni/fuzz" "!/cmd/incidentd/testdata"
 
-    - name: Restore Cache frameworks/ex
-      id: frameworks_ex
-      uses: actions/cache@v3
-      with:
-        path: aosp/frameworks/ex
-        key: frameworks_ex@${{ env.branch }}
-        restore-keys: frameworks_ex@${{ env.branch }}
-    - name: Clone project frameworks/ex
-      if: steps.frameworks_ex.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        clone_depth_platform frameworks/ex
-
     - name: Restore Cache frameworks/hardware/interfaces
       id: frameworks_hardware_interfaces
       uses: actions/cache@v3
@@ -321,6 +282,19 @@ jobs:
         cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
         clone_depth_platform frameworks/rs
 
+    - name: Restore Cache hardware/interfaces
+      id: hardware_interfaces
+      uses: actions/cache@v3
+      with:
+        path: aosp/hardware/interfaces
+        key: hardware_interfaces@${{ env.branch }}
+        restore-keys: hardware_interfaces@${{ env.branch }}
+    - name: Clone project hardware/interfaces
+      if: steps.hardware_interfaces.outputs.cache-hit != 'true'
+      run: |
+        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
+        clone_depth_platform hardware/interfaces
+
     - name: Restore Cache hardware/libhardware
       id: hardware_libhardware
       uses: actions/cache@v3
@@ -347,6 +321,19 @@ jobs:
         cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
         clone_depth_platform hardware/libhardware_legacy
 
+    - name: Restore Cache kernel/configs
+      id: kernel_configs
+      uses: actions/cache@v3
+      with:
+        path: aosp/kernel/configs
+        key: kernel_configs@${{ env.branch }}
+        restore-keys: kernel_configs@${{ env.branch }}
+    - name: Clone project kernel/configs
+      if: steps.kernel_configs.outputs.cache-hit != 'true'
+      run: |
+        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
+        clone_depth kernel/configs
+
     - name: Restore Cache libnativehelper
       id: libnativehelper
       uses: actions/cache@v3
@@ -359,19 +346,6 @@ jobs:
       run: |
         cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
         clone_depth_platform libnativehelper
-
-    - name: Restore Cache packages/apps/Gallery2
-      id: packages_apps_Gallery2
-      uses: actions/cache@v3
-      with:
-        path: aosp/packages/apps/Gallery2
-        key: packages_apps_Gallery2@${{ env.branch }}
-        restore-keys: packages_apps_Gallery2@${{ env.branch }}
-    - name: Clone project packages/apps/Gallery2
-      if: steps.packages_apps_Gallery2.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        clone_depth_platform packages/apps/Gallery2
 
     - name: Restore Cache packages/modules/Connectivity
       id: packages_modules_Connectivity
@@ -399,19 +373,6 @@ jobs:
         cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
         clone_depth_platform packages/modules/DnsResolver
 
-    - name: Restore Cache packages/modules/ExtServices
-      id: packages_modules_ExtServices
-      uses: actions/cache@v3
-      with:
-        path: aosp/packages/modules/ExtServices
-        key: packages_modules_ExtServices@${{ env.branch }}
-        restore-keys: packages_modules_ExtServices@${{ env.branch }}
-    - name: Clone project packages/modules/ExtServices
-      if: steps.packages_modules_ExtServices.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        clone_depth_platform packages/modules/ExtServices
-
     - name: Restore Cache packages/modules/StatsD
       id: packages_modules_StatsD
       uses: actions/cache@v3
@@ -437,19 +398,6 @@ jobs:
       run: |
         cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
         clone_depth_platform packages/modules/common
-
-    - name: Restore Cache packages/providers/MediaProvider
-      id: packages_providers_MediaProvider
-      uses: actions/cache@v3
-      with:
-        path: aosp/packages/providers/MediaProvider
-        key: packages_providers_MediaProvider@${{ env.branch }}
-        restore-keys: packages_providers_MediaProvider@${{ env.branch }}
-    - name: Clone project packages/providers/MediaProvider
-      if: steps.packages_providers_MediaProvider.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        clone_depth_platform packages/providers/MediaProvider
 
     - name: Restore Cache prebuilts/build-tools
       id: prebuilts_build-tools
@@ -542,6 +490,19 @@ jobs:
         cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
         clone_sparse prebuilts/rust bootstrap linux-x86/1.51.0
 
+    - name: Restore Cache system/apex
+      id: system_apex
+      uses: actions/cache@v3
+      with:
+        path: aosp/system/apex
+        key: system_apex@${{ env.branch }}
+        restore-keys: system_apex@${{ env.branch }}
+    - name: Clone project system/apex
+      if: steps.system_apex.outputs.cache-hit != 'true'
+      run: |
+        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
+        clone_sparse_exclude system/apex !/tests
+
     - name: Restore Cache system/bpf
       id: system_bpf
       uses: actions/cache@v3
@@ -606,6 +567,19 @@ jobs:
       run: |
         cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
         clone_depth_platform system/libfmq
+
+    - name: Restore Cache system/libhidl
+      id: system_libhidl
+      uses: actions/cache@v3
+      with:
+        path: aosp/system/libhidl
+        key: system_libhidl@${{ env.branch }}
+        restore-keys: system_libhidl@${{ env.branch }}
+    - name: Clone project system/libhidl
+      if: steps.system_libhidl.outputs.cache-hit != 'true'
+      run: |
+        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
+        clone_depth_platform system/libhidl
 
     - name: Restore Cache system/libsysprop
       id: system_libsysprop
@@ -789,19 +763,6 @@ jobs:
         cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
         download_release external_expat-2.tar.xz android-12.0.0_r1-2
 
-    - name: Restore Cache external_fft2d-4.tar.xz
-      id: external_fft2d-4
-      uses: actions/cache@v3
-      with:
-        path: aosp/external_fft2d-4.tar.xz
-        key: external_fft2d-4
-        restore-keys: external_fft2d-4
-    - name: Clone project external_fft2d-4.tar.xz
-      if: steps.external_fft2d-4.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        download_release external_fft2d-4.tar.xz android-12.0.0_r1-4
-
     - name: Restore Cache external_fmtlib-4.tar.xz
       id: external_fmtlib-4
       uses: actions/cache@v3
@@ -893,19 +854,6 @@ jobs:
         cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
         download_release external_libcxxabi-2.tar.xz android-12.0.0_r1-2
 
-    - name: Restore Cache external_libfuse-4.tar.xz
-      id: external_libfuse-4
-      uses: actions/cache@v3
-      with:
-        path: aosp/external_libfuse-4.tar.xz
-        key: external_libfuse-4
-        restore-keys: external_libfuse-4
-    - name: Clone project external_libfuse-4.tar.xz
-      if: steps.external_libfuse-4.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        download_release external_libfuse-4.tar.xz android-12.0.0_r1-4
-
     - name: Restore Cache external_libgsm-4.tar.xz
       id: external_libgsm-4
       uses: actions/cache@v3
@@ -957,6 +905,19 @@ jobs:
       run: |
         cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
         download_release external_pdfium-7.tar.xz android-12.0.0_r1-7
+
+    - name: Restore Cache external_protobuf-5.tar.xz
+      id: external_protobuf-5
+      uses: actions/cache@v3
+      with:
+        path: aosp/external_protobuf-5.tar.xz
+        key: external_protobuf-5
+        restore-keys: external_protobuf-5
+    - name: Clone project external_protobuf-5.tar.xz
+      if: steps.external_protobuf-5.outputs.cache-hit != 'true'
+      run: |
+        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
+        download_release external_protobuf-5.tar.xz android-12.0.0_r1-5
 
     - name: Restore Cache external_scrypt-5.tar.xz
       id: external_scrypt-5
@@ -1165,19 +1126,6 @@ jobs:
       run: |
         cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
         download_release libnativehelper-5.tar.xz android-12.0.0_r1-5
-
-    - name: Restore Cache packages_apps_Gallery2-12.tar.xz
-      id: packages_apps_Gallery2-12
-      uses: actions/cache@v3
-      with:
-        path: aosp/packages_apps_Gallery2-12.tar.xz
-        key: packages_apps_Gallery2-12
-        restore-keys: packages_apps_Gallery2-12
-    - name: Clone project packages_apps_Gallery2-12.tar.xz
-      if: steps.packages_apps_Gallery2-12.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        download_release packages_apps_Gallery2-12.tar.xz android-12.0.0_r1-12
 
     - name: Restore Cache packages_modules_Connectivity-6.tar.xz
       id: packages_modules_Connectivity-6
@@ -1435,7 +1383,6 @@ jobs:
         extract_tar external_boringssl-4.tar.xz external/boringssl/ && du -ah -d1 prebuiltlibs/external/boringssl/|sort -rh
         extract_tar external_compiler-rt-5.tar.xz external/compiler-rt/ && du -ah -d1 prebuiltlibs/external/compiler-rt/|sort -rh
         extract_tar external_expat-2.tar.xz external/expat/ && du -ah -d1 prebuiltlibs/external/expat/|sort -rh
-        extract_tar external_fft2d-4.tar.xz external/fft2d/ && du -ah -d1 prebuiltlibs/external/fft2d/|sort -rh
         extract_tar external_fmtlib-4.tar.xz external/fmtlib/ && du -ah -d1 prebuiltlibs/external/fmtlib/|sort -rh
         extract_tar external_giflib-4.tar.xz external/giflib/ && du -ah -d1 prebuiltlibs/external/giflib/|sort -rh
         extract_tar external_gwp_asan-4.tar.xz external/gwp_asan/ && du -ah -d1 prebuiltlibs/external/gwp_asan/|sort -rh
@@ -1443,11 +1390,11 @@ jobs:
         extract_tar external_icu-6.tar.xz external/icu/ && du -ah -d1 prebuiltlibs/external/icu/|sort -rh
         extract_tar external_libcxx-3.tar.xz external/libcxx/ && du -ah -d1 prebuiltlibs/external/libcxx/|sort -rh
         extract_tar external_libcxxabi-2.tar.xz external/libcxxabi/ && du -ah -d1 prebuiltlibs/external/libcxxabi/|sort -rh
-        extract_tar external_libfuse-4.tar.xz external/libfuse/ && du -ah -d1 prebuiltlibs/external/libfuse/|sort -rh
         extract_tar external_libgsm-4.tar.xz external/libgsm/ && du -ah -d1 prebuiltlibs/external/libgsm/|sort -rh
         extract_tar external_libjpeg-turbo-4.tar.xz external/libjpeg-turbo/ && du -ah -d1 prebuiltlibs/external/libjpeg-turbo/|sort -rh
         extract_tar external_libxml2-7.tar.xz external/libxml2/ && du -ah -d1 prebuiltlibs/external/libxml2/|sort -rh
         extract_tar external_pdfium-7.tar.xz external/pdfium/ && du -ah -d1 prebuiltlibs/external/pdfium/|sort -rh
+        extract_tar external_protobuf-5.tar.xz external/protobuf/ && du -ah -d1 prebuiltlibs/external/protobuf/|sort -rh
         extract_tar external_scrypt-5.tar.xz external/scrypt/ && du -ah -d1 prebuiltlibs/external/scrypt/|sort -rh
         extract_tar external_scudo-0.tar.xz external/scudo/ && du -ah -d1 prebuiltlibs/external/scudo/|sort -rh
         extract_tar external_selinux-9.tar.xz external/selinux/ && du -ah -d1 prebuiltlibs/external/selinux/|sort -rh
@@ -1464,7 +1411,6 @@ jobs:
         extract_tar hardware_libhardware-10.tar.xz hardware/libhardware/ && du -ah -d1 prebuiltlibs/hardware/libhardware/|sort -rh
         extract_tar hardware_libhardware_legacy-10.tar.xz hardware/libhardware_legacy/ && du -ah -d1 prebuiltlibs/hardware/libhardware_legacy/|sort -rh
         extract_tar libnativehelper-5.tar.xz libnativehelper/ && du -ah -d1 prebuiltlibs/libnativehelper/|sort -rh
-        extract_tar packages_apps_Gallery2-12.tar.xz packages/apps/Gallery2/ && du -ah -d1 prebuiltlibs/packages/apps/Gallery2/|sort -rh
         extract_tar packages_modules_Connectivity-6.tar.xz packages/modules/Connectivity/ && du -ah -d1 prebuiltlibs/packages/modules/Connectivity/|sort -rh
         extract_tar packages_modules_StatsD-9.tar.xz packages/modules/StatsD/ && du -ah -d1 prebuiltlibs/packages/modules/StatsD/|sort -rh
         extract_tar system_bpf-7.tar.xz system/bpf/ && du -ah -d1 prebuiltlibs/system/bpf/|sort -rh
@@ -1489,34 +1435,30 @@ jobs:
         du -ah -d1 build/blueprint/|sort -rh && rm -rf build/blueprint/.git
         du -ah -d1 build/make/|sort -rh && rm -rf build/make/.git
         du -ah -d1 build/soong/|sort -rh && rm -rf build/soong/.git
-        du -ah -d1 external/giflib/|sort -rh && rm -rf external/giflib/.git
         du -ah -d1 external/golang-protobuf/|sort -rh && rm -rf external/golang-protobuf/.git
         du -ah -d1 external/googletest/|sort -rh && rm -rf external/googletest/.git
         du -ah -d1 external/gwp_asan/|sort -rh && rm -rf external/gwp_asan/.git
         du -ah -d1 external/icu/|sort -rh && rm -rf external/icu/.git
-        du -ah -d1 external/neven/|sort -rh && rm -rf external/neven/.git
         du -ah -d1 external/protobuf/|sort -rh && rm -rf external/protobuf/.git
         du -ah -d1 external/skia/|sort -rh && rm -rf external/skia/.git
         du -ah -d1 external/starlark-go/|sort -rh && rm -rf external/starlark-go/.git
         du -ah -d1 external/vulkan-headers/|sort -rh && rm -rf external/vulkan-headers/.git
         du -ah -d1 frameworks/av/|sort -rh && rm -rf frameworks/av/.git
         du -ah -d1 frameworks/base/|sort -rh && rm -rf frameworks/base/.git
-        du -ah -d1 frameworks/ex/|sort -rh && rm -rf frameworks/ex/.git
         du -ah -d1 frameworks/hardware/interfaces/|sort -rh && rm -rf frameworks/hardware/interfaces/.git
         du -ah -d1 frameworks/minikin/|sort -rh && rm -rf frameworks/minikin/.git
         du -ah -d1 frameworks/native/|sort -rh && rm -rf frameworks/native/.git
         du -ah -d1 frameworks/opt/net/voip/|sort -rh && rm -rf frameworks/opt/net/voip/.git
         du -ah -d1 frameworks/rs/|sort -rh && rm -rf frameworks/rs/.git
+        du -ah -d1 hardware/interfaces/|sort -rh && rm -rf hardware/interfaces/.git
         du -ah -d1 hardware/libhardware/|sort -rh && rm -rf hardware/libhardware/.git
         du -ah -d1 hardware/libhardware_legacy/|sort -rh && rm -rf hardware/libhardware_legacy/.git
+        du -ah -d1 kernel/configs/|sort -rh && rm -rf kernel/configs/.git
         du -ah -d1 libnativehelper/|sort -rh && rm -rf libnativehelper/.git
-        du -ah -d1 packages/apps/Gallery2/|sort -rh && rm -rf packages/apps/Gallery2/.git
         du -ah -d1 packages/modules/Connectivity/|sort -rh && rm -rf packages/modules/Connectivity/.git
         du -ah -d1 packages/modules/DnsResolver/|sort -rh && rm -rf packages/modules/DnsResolver/.git
-        du -ah -d1 packages/modules/ExtServices/|sort -rh && rm -rf packages/modules/ExtServices/.git
         du -ah -d1 packages/modules/StatsD/|sort -rh && rm -rf packages/modules/StatsD/.git
         du -ah -d1 packages/modules/common/|sort -rh && rm -rf packages/modules/common/.git
-        du -ah -d1 packages/providers/MediaProvider/|sort -rh && rm -rf packages/providers/MediaProvider/.git
         du -ah -d1 prebuilts/build-tools/|sort -rh && rm -rf prebuilts/build-tools/.git
         du -ah -d1 prebuilts/clang-tools/|sort -rh && rm -rf prebuilts/clang-tools/.git
         du -ah -d1 prebuilts/clang/host/linux-x86/|sort -rh && rm -rf prebuilts/clang/host/linux-x86/.git
@@ -1524,11 +1466,13 @@ jobs:
         du -ah -d1 prebuilts/misc/|sort -rh && rm -rf prebuilts/misc/.git
         du -ah -d1 prebuilts/ndk/|sort -rh && rm -rf prebuilts/ndk/.git
         du -ah -d1 prebuilts/rust/|sort -rh && rm -rf prebuilts/rust/.git
+        du -ah -d1 system/apex/|sort -rh && rm -rf system/apex/.git
         du -ah -d1 system/bpf/|sort -rh && rm -rf system/bpf/.git
         du -ah -d1 system/core/|sort -rh && rm -rf system/core/.git
         du -ah -d1 system/incremental_delivery/|sort -rh && rm -rf system/incremental_delivery/.git
         du -ah -d1 system/libbase/|sort -rh && rm -rf system/libbase/.git
         du -ah -d1 system/libfmq/|sort -rh && rm -rf system/libfmq/.git
+        du -ah -d1 system/libhidl/|sort -rh && rm -rf system/libhidl/.git
         du -ah -d1 system/libsysprop/|sort -rh && rm -rf system/libsysprop/.git
         du -ah -d1 system/logging/|sort -rh && rm -rf system/logging/.git
         du -ah -d1 system/media/|sort -rh && rm -rf system/media/.git
@@ -1570,33 +1514,16 @@ jobs:
         name: ${{ env.branch }}-15
         tag_name: ${{ env.branch }}-15
         files: |
-          aosp/external_neven-15.tar.xz
           aosp/frameworks_av-15.tar.xz
-          aosp/frameworks_ex-15.tar.xz
           aosp/frameworks_opt_net_voip-15.tar.xz
           aosp/frameworks_rs-15.tar.xz
-          aosp/packages_apps_Gallery2-15.tar.xz
           aosp/packages_modules_Connectivity-15.tar.xz
-          aosp/packages_modules_ExtServices-15.tar.xz
-          aosp/packages_providers_MediaProvider-15.tar.xz
-
-    - name: Archive external_neven-15.tar.xz
-      uses: actions/upload-artifact@v3
-      with:
-        name: external_neven-15.tar.xz
-        path: aosp/external_neven-15.tar.xz
 
     - name: Archive frameworks_av-15.tar.xz
       uses: actions/upload-artifact@v3
       with:
         name: frameworks_av-15.tar.xz
         path: aosp/frameworks_av-15.tar.xz
-
-    - name: Archive frameworks_ex-15.tar.xz
-      uses: actions/upload-artifact@v3
-      with:
-        name: frameworks_ex-15.tar.xz
-        path: aosp/frameworks_ex-15.tar.xz
 
     - name: Archive frameworks_opt_net_voip-15.tar.xz
       uses: actions/upload-artifact@v3
@@ -1610,37 +1537,11 @@ jobs:
         name: frameworks_rs-15.tar.xz
         path: aosp/frameworks_rs-15.tar.xz
 
-    - name: Archive packages_apps_Gallery2-15.tar.xz
-      uses: actions/upload-artifact@v3
-      with:
-        name: packages_apps_Gallery2-15.tar.xz
-        path: aosp/packages_apps_Gallery2-15.tar.xz
-
     - name: Archive packages_modules_Connectivity-15.tar.xz
       uses: actions/upload-artifact@v3
       with:
         name: packages_modules_Connectivity-15.tar.xz
         path: aosp/packages_modules_Connectivity-15.tar.xz
-
-    - name: Archive packages_modules_ExtServices-15.tar.xz
-      uses: actions/upload-artifact@v3
-      with:
-        name: packages_modules_ExtServices-15.tar.xz
-        path: aosp/packages_modules_ExtServices-15.tar.xz
-
-    - name: Archive packages_providers_MediaProvider-15.tar.xz
-      uses: actions/upload-artifact@v3
-      with:
-        name: packages_providers_MediaProvider-15.tar.xz
-        path: aosp/packages_providers_MediaProvider-15.tar.xz
-
-    - name: Restore Cache external_neven-15.tar.xz
-      id: external_neven-15
-      uses: actions/cache@v3
-      with:
-        path: aosp/external_neven-15.tar.xz
-        key: external_neven-15
-        restore-keys: external_neven-15
 
     - name: Restore Cache frameworks_av-15.tar.xz
       id: frameworks_av-15
@@ -1649,14 +1550,6 @@ jobs:
         path: aosp/frameworks_av-15.tar.xz
         key: frameworks_av-15
         restore-keys: frameworks_av-15
-
-    - name: Restore Cache frameworks_ex-15.tar.xz
-      id: frameworks_ex-15
-      uses: actions/cache@v3
-      with:
-        path: aosp/frameworks_ex-15.tar.xz
-        key: frameworks_ex-15
-        restore-keys: frameworks_ex-15
 
     - name: Restore Cache frameworks_opt_net_voip-15.tar.xz
       id: frameworks_opt_net_voip-15
@@ -1674,14 +1567,6 @@ jobs:
         key: frameworks_rs-15
         restore-keys: frameworks_rs-15
 
-    - name: Restore Cache packages_apps_Gallery2-15.tar.xz
-      id: packages_apps_Gallery2-15
-      uses: actions/cache@v3
-      with:
-        path: aosp/packages_apps_Gallery2-15.tar.xz
-        key: packages_apps_Gallery2-15
-        restore-keys: packages_apps_Gallery2-15
-
     - name: Restore Cache packages_modules_Connectivity-15.tar.xz
       id: packages_modules_Connectivity-15
       uses: actions/cache@v3
@@ -1689,19 +1574,3 @@ jobs:
         path: aosp/packages_modules_Connectivity-15.tar.xz
         key: packages_modules_Connectivity-15
         restore-keys: packages_modules_Connectivity-15
-
-    - name: Restore Cache packages_modules_ExtServices-15.tar.xz
-      id: packages_modules_ExtServices-15
-      uses: actions/cache@v3
-      with:
-        path: aosp/packages_modules_ExtServices-15.tar.xz
-        key: packages_modules_ExtServices-15
-        restore-keys: packages_modules_ExtServices-15
-
-    - name: Restore Cache packages_providers_MediaProvider-15.tar.xz
-      id: packages_providers_MediaProvider-15
-      uses: actions/cache@v3
-      with:
-        path: aosp/packages_providers_MediaProvider-15.tar.xz
-        key: packages_providers_MediaProvider-15
-        restore-keys: packages_providers_MediaProvider-15
