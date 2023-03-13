@@ -100,19 +100,6 @@ jobs:
         cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
         clone_depth_platform external/clang
 
-    - name: Restore Cache external/fdlibm
-      id: external_fdlibm
-      uses: actions/cache@v3
-      with:
-        path: aosp/external/fdlibm
-        key: external_fdlibm@${{ env.branch }}
-        restore-keys: external_fdlibm@${{ env.branch }}
-    - name: Clone project external/fdlibm
-      if: steps.external_fdlibm.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        clone_depth_platform external/fdlibm
-
     - name: Restore Cache external/flac
       id: external_flac
       uses: actions/cache@v3
@@ -138,19 +125,6 @@ jobs:
       run: |
         cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
         clone_depth_platform external/golang-protobuf
-
-    - name: Restore Cache external/googletest
-      id: external_googletest
-      uses: actions/cache@v3
-      with:
-        path: aosp/external/googletest
-        key: external_googletest@${{ env.branch }}
-        restore-keys: external_googletest@${{ env.branch }}
-    - name: Clone project external/googletest
-      if: steps.external_googletest.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        clone_depth_platform external/googletest
 
     - name: Restore Cache external/gwp_asan
       id: external_gwp_asan
@@ -295,19 +269,6 @@ jobs:
         cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
         clone_depth_platform external/starlark-go
 
-    - name: Restore Cache external/vulkan-headers
-      id: external_vulkan-headers
-      uses: actions/cache@v3
-      with:
-        path: aosp/external/vulkan-headers
-        key: external_vulkan-headers@${{ env.branch }}
-        restore-keys: external_vulkan-headers@${{ env.branch }}
-    - name: Clone project external/vulkan-headers
-      if: steps.external_vulkan-headers.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        clone_depth_platform external/vulkan-headers
-
     - name: Restore Cache frameworks/av
       id: frameworks_av
       uses: actions/cache@v3
@@ -347,19 +308,6 @@ jobs:
         cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
         clone_depth_platform frameworks/compile/libbcc
 
-    - name: Restore Cache frameworks/compile/slang
-      id: frameworks_compile_slang
-      uses: actions/cache@v3
-      with:
-        path: aosp/frameworks/compile/slang
-        key: frameworks_compile_slang@${{ env.branch }}
-        restore-keys: frameworks_compile_slang@${{ env.branch }}
-    - name: Clone project frameworks/compile/slang
-      if: steps.frameworks_compile_slang.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        clone_depth_platform frameworks/compile/slang
-
     - name: Restore Cache frameworks/hardware/interfaces
       id: frameworks_hardware_interfaces
       uses: actions/cache@v3
@@ -398,19 +346,6 @@ jobs:
       run: |
         cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
         clone_depth_platform frameworks/rs
-
-    - name: Restore Cache hardware/google/camera
-      id: hardware_google_camera
-      uses: actions/cache@v3
-      with:
-        path: aosp/hardware/google/camera
-        key: hardware_google_camera@${{ env.branch }}
-        restore-keys: hardware_google_camera@${{ env.branch }}
-    - name: Clone project hardware/google/camera
-      if: steps.hardware_google_camera.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        clone_depth_platform hardware/google/camera
 
     - name: Restore Cache hardware/interfaces
       id: hardware_interfaces
@@ -464,19 +399,6 @@ jobs:
         cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
         clone_depth kernel/configs
 
-    - name: Restore Cache libcore
-      id: libcore
-      uses: actions/cache@v3
-      with:
-        path: aosp/libcore
-        key: libcore@${{ env.branch }}
-        restore-keys: libcore@${{ env.branch }}
-    - name: Clone project libcore
-      if: steps.libcore.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        clone_depth_platform libcore
-
     - name: Restore Cache libnativehelper
       id: libnativehelper
       uses: actions/cache@v3
@@ -489,45 +411,6 @@ jobs:
       run: |
         cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
         clone_depth_platform libnativehelper
-
-    - name: Restore Cache packages/modules/NeuralNetworks
-      id: packages_modules_NeuralNetworks
-      uses: actions/cache@v3
-      with:
-        path: aosp/packages/modules/NeuralNetworks
-        key: packages_modules_NeuralNetworks@${{ env.branch }}
-        restore-keys: packages_modules_NeuralNetworks@${{ env.branch }}
-    - name: Clone project packages/modules/NeuralNetworks
-      if: steps.packages_modules_NeuralNetworks.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        clone_depth_platform packages/modules/NeuralNetworks
-
-    - name: Restore Cache packages/modules/StatsD
-      id: packages_modules_StatsD
-      uses: actions/cache@v3
-      with:
-        path: aosp/packages/modules/StatsD
-        key: packages_modules_StatsD@${{ env.branch }}
-        restore-keys: packages_modules_StatsD@${{ env.branch }}
-    - name: Clone project packages/modules/StatsD
-      if: steps.packages_modules_StatsD.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        clone_depth_platform packages/modules/StatsD
-
-    - name: Restore Cache packages/modules/common
-      id: packages_modules_common
-      uses: actions/cache@v3
-      with:
-        path: aosp/packages/modules/common
-        key: packages_modules_common@${{ env.branch }}
-        restore-keys: packages_modules_common@${{ env.branch }}
-    - name: Clone project packages/modules/common
-      if: steps.packages_modules_common.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        clone_depth_platform packages/modules/common
 
     - name: Restore Cache prebuilts/build-tools
       id: prebuilts_build-tools
@@ -620,6 +503,19 @@ jobs:
         cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
         clone_sparse prebuilts/rust bootstrap linux-x86/1.51.0
 
+    - name: Restore Cache prebuilts/sdk
+      id: prebuilts_sdk
+      uses: actions/cache@v3
+      with:
+        path: aosp/prebuilts/sdk
+        key: prebuilts_sdk@${{ env.branch }}
+        restore-keys: prebuilts_sdk@${{ env.branch }}
+    - name: Clone project prebuilts/sdk
+      if: steps.prebuilts_sdk.outputs.cache-hit != 'true'
+      run: |
+        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
+        clone_sparse_exclude prebuilts/sdk "!/tools/windows" "!/tools/darwin" "!/*/test/" "!/**/*.jar"
+
     - name: Restore Cache system/apex
       id: system_apex
       uses: actions/cache@v3
@@ -632,19 +528,6 @@ jobs:
       run: |
         cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
         clone_sparse_exclude system/apex !/tests
-
-    - name: Restore Cache system/bpf
-      id: system_bpf
-      uses: actions/cache@v3
-      with:
-        path: aosp/system/bpf
-        key: system_bpf@${{ env.branch }}
-        restore-keys: system_bpf@${{ env.branch }}
-    - name: Clone project system/bpf
-      if: steps.system_bpf.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        clone_depth_platform system/bpf
 
     - name: Restore Cache system/bt
       id: system_bt
@@ -789,19 +672,6 @@ jobs:
         cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
         clone_depth_platform system/netd
 
-    - name: Restore Cache system/security
-      id: system_security
-      uses: actions/cache@v3
-      with:
-        path: aosp/system/security
-        key: system_security@${{ env.branch }}
-        restore-keys: system_security@${{ env.branch }}
-    - name: Clone project system/security
-      if: steps.system_security.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        clone_depth_platform system/security
-
     - name: Restore Cache system/sepolicy
       id: system_sepolicy
       uses: actions/cache@v3
@@ -852,7 +722,7 @@ jobs:
       if: steps.system_unwinding.outputs.cache-hit != 'true'
       run: |
         cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        clone_depth_platform system/unwinding
+        clone_sparse_exclude system/unwinding "!/libunwindstack/tests/files" "!/libunwindstack/benchmarks/files" "!/libbacktrace/testdata"
 
     - name: Restore Cache art-11.tar.xz
       id: art-11
@@ -932,19 +802,6 @@ jobs:
         cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
         download_release external_expat-2.tar.xz android-12.0.0_r1-2
 
-    - name: Restore Cache external_fdlibm-4.tar.xz
-      id: external_fdlibm-4
-      uses: actions/cache@v3
-      with:
-        path: aosp/external_fdlibm-4.tar.xz
-        key: external_fdlibm-4
-        restore-keys: external_fdlibm-4
-    - name: Clone project external_fdlibm-4.tar.xz
-      if: steps.external_fdlibm-4.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        download_release external_fdlibm-4.tar.xz android-12.0.0_r1-4
-
     - name: Restore Cache external_flac-4.tar.xz
       id: external_flac-4
       uses: actions/cache@v3
@@ -970,19 +827,6 @@ jobs:
       run: |
         cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
         download_release external_fmtlib-4.tar.xz android-12.0.0_r1-4
-
-    - name: Restore Cache external_googletest-4.tar.xz
-      id: external_googletest-4
-      uses: actions/cache@v3
-      with:
-        path: aosp/external_googletest-4.tar.xz
-        key: external_googletest-4
-        restore-keys: external_googletest-4
-    - name: Clone project external_googletest-4.tar.xz
-      if: steps.external_googletest-4.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        download_release external_googletest-4.tar.xz android-12.0.0_r1-4
 
     - name: Restore Cache external_gwp_asan-4.tar.xz
       id: external_gwp_asan-4
@@ -1036,19 +880,6 @@ jobs:
         cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
         download_release external_libavc-7.tar.xz android-12.0.0_r1-7
 
-    - name: Restore Cache external_libcppbor-6.tar.xz
-      id: external_libcppbor-6
-      uses: actions/cache@v3
-      with:
-        path: aosp/external_libcppbor-6.tar.xz
-        key: external_libcppbor-6
-        restore-keys: external_libcppbor-6
-    - name: Clone project external_libcppbor-6.tar.xz
-      if: steps.external_libcppbor-6.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        download_release external_libcppbor-6.tar.xz android-12.0.0_r1-6
-
     - name: Restore Cache external_libcxx-3.tar.xz
       id: external_libcxx-3
       uses: actions/cache@v3
@@ -1074,19 +905,6 @@ jobs:
       run: |
         cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
         download_release external_libcxxabi-2.tar.xz android-12.0.0_r1-2
-
-    - name: Restore Cache external_libexif-5.tar.xz
-      id: external_libexif-5
-      uses: actions/cache@v3
-      with:
-        path: aosp/external_libexif-5.tar.xz
-        key: external_libexif-5
-        restore-keys: external_libexif-5
-    - name: Clone project external_libexif-5.tar.xz
-      if: steps.external_libexif-5.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        download_release external_libexif-5.tar.xz android-12.0.0_r1-5
 
     - name: Restore Cache external_libgav1-4.tar.xz
       id: external_libgav1-4
@@ -1127,19 +945,6 @@ jobs:
         cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
         download_release external_libhevc-4.tar.xz android-12.0.0_r1-4
 
-    - name: Restore Cache external_libjpeg-turbo-4.tar.xz
-      id: external_libjpeg-turbo-4
-      uses: actions/cache@v3
-      with:
-        path: aosp/external_libjpeg-turbo-4.tar.xz
-        key: external_libjpeg-turbo-4
-        restore-keys: external_libjpeg-turbo-4
-    - name: Clone project external_libjpeg-turbo-4.tar.xz
-      if: steps.external_libjpeg-turbo-4.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        download_release external_libjpeg-turbo-4.tar.xz android-12.0.0_r1-4
-
     - name: Restore Cache external_libmpeg2-7.tar.xz
       id: external_libmpeg2-7
       uses: actions/cache@v3
@@ -1165,19 +970,6 @@ jobs:
       run: |
         cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
         download_release external_libopus-4.tar.xz android-12.0.0_r1-4
-
-    - name: Restore Cache external_libpng-4.tar.xz
-      id: external_libpng-4
-      uses: actions/cache@v3
-      with:
-        path: aosp/external_libpng-4.tar.xz
-        key: external_libpng-4
-        restore-keys: external_libpng-4
-    - name: Clone project external_libpng-4.tar.xz
-      if: steps.external_libpng-4.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        download_release external_libpng-4.tar.xz android-12.0.0_r1-4
 
     - name: Restore Cache external_libvpx-4.tar.xz
       id: external_libvpx-4
@@ -1270,617 +1062,6 @@ jobs:
         cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
         download_release external_protobuf-5.tar.xz android-12.0.0_r1-5
 
-    - name: Restore Cache external_rust_crates_ahash-7.tar.xz
-      id: external_rust_crates_ahash-7
-      uses: actions/cache@v3
-      with:
-        path: aosp/external_rust_crates_ahash-7.tar.xz
-        key: external_rust_crates_ahash-7
-        restore-keys: external_rust_crates_ahash-7
-    - name: Clone project external_rust_crates_ahash-7.tar.xz
-      if: steps.external_rust_crates_ahash-7.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        download_release external_rust_crates_ahash-7.tar.xz android-12.0.0_r1-7
-
-    - name: Restore Cache external_rust_crates_aho-corasick-6.tar.xz
-      id: external_rust_crates_aho-corasick-6
-      uses: actions/cache@v3
-      with:
-        path: aosp/external_rust_crates_aho-corasick-6.tar.xz
-        key: external_rust_crates_aho-corasick-6
-        restore-keys: external_rust_crates_aho-corasick-6
-    - name: Clone project external_rust_crates_aho-corasick-6.tar.xz
-      if: steps.external_rust_crates_aho-corasick-6.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        download_release external_rust_crates_aho-corasick-6.tar.xz android-12.0.0_r1-6
-
-    - name: Restore Cache external_rust_crates_android_log-sys-5.tar.xz
-      id: external_rust_crates_android_log-sys-5
-      uses: actions/cache@v3
-      with:
-        path: aosp/external_rust_crates_android_log-sys-5.tar.xz
-        key: external_rust_crates_android_log-sys-5
-        restore-keys: external_rust_crates_android_log-sys-5
-    - name: Clone project external_rust_crates_android_log-sys-5.tar.xz
-      if: steps.external_rust_crates_android_log-sys-5.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        download_release external_rust_crates_android_log-sys-5.tar.xz android-12.0.0_r1-5
-
-    - name: Restore Cache external_rust_crates_android_logger-8.tar.xz
-      id: external_rust_crates_android_logger-8
-      uses: actions/cache@v3
-      with:
-        path: aosp/external_rust_crates_android_logger-8.tar.xz
-        key: external_rust_crates_android_logger-8
-        restore-keys: external_rust_crates_android_logger-8
-    - name: Clone project external_rust_crates_android_logger-8.tar.xz
-      if: steps.external_rust_crates_android_logger-8.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        download_release external_rust_crates_android_logger-8.tar.xz android-12.0.0_r1-8
-
-    - name: Restore Cache external_rust_crates_anyhow-5.tar.xz
-      id: external_rust_crates_anyhow-5
-      uses: actions/cache@v3
-      with:
-        path: aosp/external_rust_crates_anyhow-5.tar.xz
-        key: external_rust_crates_anyhow-5
-        restore-keys: external_rust_crates_anyhow-5
-    - name: Clone project external_rust_crates_anyhow-5.tar.xz
-      if: steps.external_rust_crates_anyhow-5.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        download_release external_rust_crates_anyhow-5.tar.xz android-12.0.0_r1-5
-
-    - name: Restore Cache external_rust_crates_bindgen-8.tar.xz
-      id: external_rust_crates_bindgen-8
-      uses: actions/cache@v3
-      with:
-        path: aosp/external_rust_crates_bindgen-8.tar.xz
-        key: external_rust_crates_bindgen-8
-        restore-keys: external_rust_crates_bindgen-8
-    - name: Clone project external_rust_crates_bindgen-8.tar.xz
-      if: steps.external_rust_crates_bindgen-8.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        download_release external_rust_crates_bindgen-8.tar.xz android-12.0.0_r1-8
-
-    - name: Restore Cache external_rust_crates_bitflags-5.tar.xz
-      id: external_rust_crates_bitflags-5
-      uses: actions/cache@v3
-      with:
-        path: aosp/external_rust_crates_bitflags-5.tar.xz
-        key: external_rust_crates_bitflags-5
-        restore-keys: external_rust_crates_bitflags-5
-    - name: Clone project external_rust_crates_bitflags-5.tar.xz
-      if: steps.external_rust_crates_bitflags-5.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        download_release external_rust_crates_bitflags-5.tar.xz android-12.0.0_r1-5
-
-    - name: Restore Cache external_rust_crates_cexpr-7.tar.xz
-      id: external_rust_crates_cexpr-7
-      uses: actions/cache@v3
-      with:
-        path: aosp/external_rust_crates_cexpr-7.tar.xz
-        key: external_rust_crates_cexpr-7
-        restore-keys: external_rust_crates_cexpr-7
-    - name: Clone project external_rust_crates_cexpr-7.tar.xz
-      if: steps.external_rust_crates_cexpr-7.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        download_release external_rust_crates_cexpr-7.tar.xz android-12.0.0_r1-7
-
-    - name: Restore Cache external_rust_crates_cfg-if-5.tar.xz
-      id: external_rust_crates_cfg-if-5
-      uses: actions/cache@v3
-      with:
-        path: aosp/external_rust_crates_cfg-if-5.tar.xz
-        key: external_rust_crates_cfg-if-5
-        restore-keys: external_rust_crates_cfg-if-5
-    - name: Clone project external_rust_crates_cfg-if-5.tar.xz
-      if: steps.external_rust_crates_cfg-if-5.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        download_release external_rust_crates_cfg-if-5.tar.xz android-12.0.0_r1-5
-
-    - name: Restore Cache external_rust_crates_clang-sys-7.tar.xz
-      id: external_rust_crates_clang-sys-7
-      uses: actions/cache@v3
-      with:
-        path: aosp/external_rust_crates_clang-sys-7.tar.xz
-        key: external_rust_crates_clang-sys-7
-        restore-keys: external_rust_crates_clang-sys-7
-    - name: Clone project external_rust_crates_clang-sys-7.tar.xz
-      if: steps.external_rust_crates_clang-sys-7.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        download_release external_rust_crates_clang-sys-7.tar.xz android-12.0.0_r1-7
-
-    - name: Restore Cache external_rust_crates_clap-6.tar.xz
-      id: external_rust_crates_clap-6
-      uses: actions/cache@v3
-      with:
-        path: aosp/external_rust_crates_clap-6.tar.xz
-        key: external_rust_crates_clap-6
-        restore-keys: external_rust_crates_clap-6
-    - name: Clone project external_rust_crates_clap-6.tar.xz
-      if: steps.external_rust_crates_clap-6.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        download_release external_rust_crates_clap-6.tar.xz android-12.0.0_r1-6
-
-    - name: Restore Cache external_rust_crates_either-0.tar.xz
-      id: external_rust_crates_either-0
-      uses: actions/cache@v3
-      with:
-        path: aosp/external_rust_crates_either-0.tar.xz
-        key: external_rust_crates_either-0
-        restore-keys: external_rust_crates_either-0
-    - name: Clone project external_rust_crates_either-0.tar.xz
-      if: steps.external_rust_crates_either-0.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        download_release external_rust_crates_either-0.tar.xz android-12.0.0_r1-0
-
-    - name: Restore Cache external_rust_crates_env_logger-7.tar.xz
-      id: external_rust_crates_env_logger-7
-      uses: actions/cache@v3
-      with:
-        path: aosp/external_rust_crates_env_logger-7.tar.xz
-        key: external_rust_crates_env_logger-7
-        restore-keys: external_rust_crates_env_logger-7
-    - name: Clone project external_rust_crates_env_logger-7.tar.xz
-      if: steps.external_rust_crates_env_logger-7.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        download_release external_rust_crates_env_logger-7.tar.xz android-12.0.0_r1-7
-
-    - name: Restore Cache external_rust_crates_fallible-iterator-0.tar.xz
-      id: external_rust_crates_fallible-iterator-0
-      uses: actions/cache@v3
-      with:
-        path: aosp/external_rust_crates_fallible-iterator-0.tar.xz
-        key: external_rust_crates_fallible-iterator-0
-        restore-keys: external_rust_crates_fallible-iterator-0
-    - name: Clone project external_rust_crates_fallible-iterator-0.tar.xz
-      if: steps.external_rust_crates_fallible-iterator-0.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        download_release external_rust_crates_fallible-iterator-0.tar.xz android-12.0.0_r1-0
-
-    - name: Restore Cache external_rust_crates_fallible-streaming-iterator-0.tar.xz
-      id: external_rust_crates_fallible-streaming-iterator-0
-      uses: actions/cache@v3
-      with:
-        path: aosp/external_rust_crates_fallible-streaming-iterator-0.tar.xz
-        key: external_rust_crates_fallible-streaming-iterator-0
-        restore-keys: external_rust_crates_fallible-streaming-iterator-0
-    - name: Clone project external_rust_crates_fallible-streaming-iterator-0.tar.xz
-      if: steps.external_rust_crates_fallible-streaming-iterator-0.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        download_release external_rust_crates_fallible-streaming-iterator-0.tar.xz android-12.0.0_r1-0
-
-    - name: Restore Cache external_rust_crates_getrandom-6.tar.xz
-      id: external_rust_crates_getrandom-6
-      uses: actions/cache@v3
-      with:
-        path: aosp/external_rust_crates_getrandom-6.tar.xz
-        key: external_rust_crates_getrandom-6
-        restore-keys: external_rust_crates_getrandom-6
-    - name: Clone project external_rust_crates_getrandom-6.tar.xz
-      if: steps.external_rust_crates_getrandom-6.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        download_release external_rust_crates_getrandom-6.tar.xz android-12.0.0_r1-6
-
-    - name: Restore Cache external_rust_crates_glob-0.tar.xz
-      id: external_rust_crates_glob-0
-      uses: actions/cache@v3
-      with:
-        path: aosp/external_rust_crates_glob-0.tar.xz
-        key: external_rust_crates_glob-0
-        restore-keys: external_rust_crates_glob-0
-    - name: Clone project external_rust_crates_glob-0.tar.xz
-      if: steps.external_rust_crates_glob-0.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        download_release external_rust_crates_glob-0.tar.xz android-12.0.0_r1-0
-
-    - name: Restore Cache external_rust_crates_hashbrown-8.tar.xz
-      id: external_rust_crates_hashbrown-8
-      uses: actions/cache@v3
-      with:
-        path: aosp/external_rust_crates_hashbrown-8.tar.xz
-        key: external_rust_crates_hashbrown-8
-        restore-keys: external_rust_crates_hashbrown-8
-    - name: Clone project external_rust_crates_hashbrown-8.tar.xz
-      if: steps.external_rust_crates_hashbrown-8.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        download_release external_rust_crates_hashbrown-8.tar.xz android-12.0.0_r1-8
-
-    - name: Restore Cache external_rust_crates_hashlink-9.tar.xz
-      id: external_rust_crates_hashlink-9
-      uses: actions/cache@v3
-      with:
-        path: aosp/external_rust_crates_hashlink-9.tar.xz
-        key: external_rust_crates_hashlink-9
-        restore-keys: external_rust_crates_hashlink-9
-    - name: Clone project external_rust_crates_hashlink-9.tar.xz
-      if: steps.external_rust_crates_hashlink-9.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        download_release external_rust_crates_hashlink-9.tar.xz android-12.0.0_r1-9
-
-    - name: Restore Cache external_rust_crates_lazy_static-5.tar.xz
-      id: external_rust_crates_lazy_static-5
-      uses: actions/cache@v3
-      with:
-        path: aosp/external_rust_crates_lazy_static-5.tar.xz
-        key: external_rust_crates_lazy_static-5
-        restore-keys: external_rust_crates_lazy_static-5
-    - name: Clone project external_rust_crates_lazy_static-5.tar.xz
-      if: steps.external_rust_crates_lazy_static-5.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        download_release external_rust_crates_lazy_static-5.tar.xz android-12.0.0_r1-5
-
-    - name: Restore Cache external_rust_crates_lazycell-0.tar.xz
-      id: external_rust_crates_lazycell-0
-      uses: actions/cache@v3
-      with:
-        path: aosp/external_rust_crates_lazycell-0.tar.xz
-        key: external_rust_crates_lazycell-0
-        restore-keys: external_rust_crates_lazycell-0
-    - name: Clone project external_rust_crates_lazycell-0.tar.xz
-      if: steps.external_rust_crates_lazycell-0.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        download_release external_rust_crates_lazycell-0.tar.xz android-12.0.0_r1-0
-
-    - name: Restore Cache external_rust_crates_libc-5.tar.xz
-      id: external_rust_crates_libc-5
-      uses: actions/cache@v3
-      with:
-        path: aosp/external_rust_crates_libc-5.tar.xz
-        key: external_rust_crates_libc-5
-        restore-keys: external_rust_crates_libc-5
-    - name: Clone project external_rust_crates_libc-5.tar.xz
-      if: steps.external_rust_crates_libc-5.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        download_release external_rust_crates_libc-5.tar.xz android-12.0.0_r1-5
-
-    - name: Restore Cache external_rust_crates_libloading-6.tar.xz
-      id: external_rust_crates_libloading-6
-      uses: actions/cache@v3
-      with:
-        path: aosp/external_rust_crates_libloading-6.tar.xz
-        key: external_rust_crates_libloading-6
-        restore-keys: external_rust_crates_libloading-6
-    - name: Clone project external_rust_crates_libloading-6.tar.xz
-      if: steps.external_rust_crates_libloading-6.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        download_release external_rust_crates_libloading-6.tar.xz android-12.0.0_r1-6
-
-    - name: Restore Cache external_rust_crates_libsqlite3-sys-9.tar.xz
-      id: external_rust_crates_libsqlite3-sys-9
-      uses: actions/cache@v3
-      with:
-        path: aosp/external_rust_crates_libsqlite3-sys-9.tar.xz
-        key: external_rust_crates_libsqlite3-sys-9
-        restore-keys: external_rust_crates_libsqlite3-sys-9
-    - name: Clone project external_rust_crates_libsqlite3-sys-9.tar.xz
-      if: steps.external_rust_crates_libsqlite3-sys-9.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        download_release external_rust_crates_libsqlite3-sys-9.tar.xz android-12.0.0_r1-9
-
-    - name: Restore Cache external_rust_crates_log-6.tar.xz
-      id: external_rust_crates_log-6
-      uses: actions/cache@v3
-      with:
-        path: aosp/external_rust_crates_log-6.tar.xz
-        key: external_rust_crates_log-6
-        restore-keys: external_rust_crates_log-6
-    - name: Clone project external_rust_crates_log-6.tar.xz
-      if: steps.external_rust_crates_log-6.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        download_release external_rust_crates_log-6.tar.xz android-12.0.0_r1-6
-
-    - name: Restore Cache external_rust_crates_memchr-5.tar.xz
-      id: external_rust_crates_memchr-5
-      uses: actions/cache@v3
-      with:
-        path: aosp/external_rust_crates_memchr-5.tar.xz
-        key: external_rust_crates_memchr-5
-        restore-keys: external_rust_crates_memchr-5
-    - name: Clone project external_rust_crates_memchr-5.tar.xz
-      if: steps.external_rust_crates_memchr-5.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        download_release external_rust_crates_memchr-5.tar.xz android-12.0.0_r1-5
-
-    - name: Restore Cache external_rust_crates_nix-6.tar.xz
-      id: external_rust_crates_nix-6
-      uses: actions/cache@v3
-      with:
-        path: aosp/external_rust_crates_nix-6.tar.xz
-        key: external_rust_crates_nix-6
-        restore-keys: external_rust_crates_nix-6
-    - name: Clone project external_rust_crates_nix-6.tar.xz
-      if: steps.external_rust_crates_nix-6.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        download_release external_rust_crates_nix-6.tar.xz android-12.0.0_r1-6
-
-    - name: Restore Cache external_rust_crates_nom-6.tar.xz
-      id: external_rust_crates_nom-6
-      uses: actions/cache@v3
-      with:
-        path: aosp/external_rust_crates_nom-6.tar.xz
-        key: external_rust_crates_nom-6
-        restore-keys: external_rust_crates_nom-6
-    - name: Clone project external_rust_crates_nom-6.tar.xz
-      if: steps.external_rust_crates_nom-6.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        download_release external_rust_crates_nom-6.tar.xz android-12.0.0_r1-6
-
-    - name: Restore Cache external_rust_crates_peeking_take_while-0.tar.xz
-      id: external_rust_crates_peeking_take_while-0
-      uses: actions/cache@v3
-      with:
-        path: aosp/external_rust_crates_peeking_take_while-0.tar.xz
-        key: external_rust_crates_peeking_take_while-0
-        restore-keys: external_rust_crates_peeking_take_while-0
-    - name: Clone project external_rust_crates_peeking_take_while-0.tar.xz
-      if: steps.external_rust_crates_peeking_take_while-0.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        download_release external_rust_crates_peeking_take_while-0.tar.xz android-12.0.0_r1-0
-
-    - name: Restore Cache external_rust_crates_ppv-lite86-5.tar.xz
-      id: external_rust_crates_ppv-lite86-5
-      uses: actions/cache@v3
-      with:
-        path: aosp/external_rust_crates_ppv-lite86-5.tar.xz
-        key: external_rust_crates_ppv-lite86-5
-        restore-keys: external_rust_crates_ppv-lite86-5
-    - name: Clone project external_rust_crates_ppv-lite86-5.tar.xz
-      if: steps.external_rust_crates_ppv-lite86-5.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        download_release external_rust_crates_ppv-lite86-5.tar.xz android-12.0.0_r1-5
-
-    - name: Restore Cache external_rust_crates_proc-macro2-1.tar.xz
-      id: external_rust_crates_proc-macro2-1
-      uses: actions/cache@v3
-      with:
-        path: aosp/external_rust_crates_proc-macro2-1.tar.xz
-        key: external_rust_crates_proc-macro2-1
-        restore-keys: external_rust_crates_proc-macro2-1
-    - name: Clone project external_rust_crates_proc-macro2-1.tar.xz
-      if: steps.external_rust_crates_proc-macro2-1.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        download_release external_rust_crates_proc-macro2-1.tar.xz android-12.0.0_r1-1
-
-    - name: Restore Cache external_rust_crates_quote-2.tar.xz
-      id: external_rust_crates_quote-2
-      uses: actions/cache@v3
-      with:
-        path: aosp/external_rust_crates_quote-2.tar.xz
-        key: external_rust_crates_quote-2
-        restore-keys: external_rust_crates_quote-2
-    - name: Clone project external_rust_crates_quote-2.tar.xz
-      if: steps.external_rust_crates_quote-2.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        download_release external_rust_crates_quote-2.tar.xz android-12.0.0_r1-2
-
-    - name: Restore Cache external_rust_crates_rand-9.tar.xz
-      id: external_rust_crates_rand-9
-      uses: actions/cache@v3
-      with:
-        path: aosp/external_rust_crates_rand-9.tar.xz
-        key: external_rust_crates_rand-9
-        restore-keys: external_rust_crates_rand-9
-    - name: Clone project external_rust_crates_rand-9.tar.xz
-      if: steps.external_rust_crates_rand-9.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        download_release external_rust_crates_rand-9.tar.xz android-12.0.0_r1-9
-
-    - name: Restore Cache external_rust_crates_rand_chacha-8.tar.xz
-      id: external_rust_crates_rand_chacha-8
-      uses: actions/cache@v3
-      with:
-        path: aosp/external_rust_crates_rand_chacha-8.tar.xz
-        key: external_rust_crates_rand_chacha-8
-        restore-keys: external_rust_crates_rand_chacha-8
-    - name: Clone project external_rust_crates_rand_chacha-8.tar.xz
-      if: steps.external_rust_crates_rand_chacha-8.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        download_release external_rust_crates_rand_chacha-8.tar.xz android-12.0.0_r1-8
-
-    - name: Restore Cache external_rust_crates_rand_core-7.tar.xz
-      id: external_rust_crates_rand_core-7
-      uses: actions/cache@v3
-      with:
-        path: aosp/external_rust_crates_rand_core-7.tar.xz
-        key: external_rust_crates_rand_core-7
-        restore-keys: external_rust_crates_rand_core-7
-    - name: Clone project external_rust_crates_rand_core-7.tar.xz
-      if: steps.external_rust_crates_rand_core-7.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        download_release external_rust_crates_rand_core-7.tar.xz android-12.0.0_r1-7
-
-    - name: Restore Cache external_rust_crates_regex-syntax-0.tar.xz
-      id: external_rust_crates_regex-syntax-0
-      uses: actions/cache@v3
-      with:
-        path: aosp/external_rust_crates_regex-syntax-0.tar.xz
-        key: external_rust_crates_regex-syntax-0
-        restore-keys: external_rust_crates_regex-syntax-0
-    - name: Clone project external_rust_crates_regex-syntax-0.tar.xz
-      if: steps.external_rust_crates_regex-syntax-0.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        download_release external_rust_crates_regex-syntax-0.tar.xz android-12.0.0_r1-0
-
-    - name: Restore Cache external_rust_crates_regex-7.tar.xz
-      id: external_rust_crates_regex-7
-      uses: actions/cache@v3
-      with:
-        path: aosp/external_rust_crates_regex-7.tar.xz
-        key: external_rust_crates_regex-7
-        restore-keys: external_rust_crates_regex-7
-    - name: Clone project external_rust_crates_regex-7.tar.xz
-      if: steps.external_rust_crates_regex-7.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        download_release external_rust_crates_regex-7.tar.xz android-12.0.0_r1-7
-
-    - name: Restore Cache external_rust_crates_rusqlite-10.tar.xz
-      id: external_rust_crates_rusqlite-10
-      uses: actions/cache@v3
-      with:
-        path: aosp/external_rust_crates_rusqlite-10.tar.xz
-        key: external_rust_crates_rusqlite-10
-        restore-keys: external_rust_crates_rusqlite-10
-    - name: Clone project external_rust_crates_rusqlite-10.tar.xz
-      if: steps.external_rust_crates_rusqlite-10.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        download_release external_rust_crates_rusqlite-10.tar.xz android-12.0.0_r1-10
-
-    - name: Restore Cache external_rust_crates_rustc-hash-0.tar.xz
-      id: external_rust_crates_rustc-hash-0
-      uses: actions/cache@v3
-      with:
-        path: aosp/external_rust_crates_rustc-hash-0.tar.xz
-        key: external_rust_crates_rustc-hash-0
-        restore-keys: external_rust_crates_rustc-hash-0
-    - name: Clone project external_rust_crates_rustc-hash-0.tar.xz
-      if: steps.external_rust_crates_rustc-hash-0.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        download_release external_rust_crates_rustc-hash-0.tar.xz android-12.0.0_r1-0
-
-    - name: Restore Cache external_rust_crates_shlex-0.tar.xz
-      id: external_rust_crates_shlex-0
-      uses: actions/cache@v3
-      with:
-        path: aosp/external_rust_crates_shlex-0.tar.xz
-        key: external_rust_crates_shlex-0
-        restore-keys: external_rust_crates_shlex-0
-    - name: Clone project external_rust_crates_shlex-0.tar.xz
-      if: steps.external_rust_crates_shlex-0.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        download_release external_rust_crates_shlex-0.tar.xz android-12.0.0_r1-0
-
-    - name: Restore Cache external_rust_crates_smallvec-5.tar.xz
-      id: external_rust_crates_smallvec-5
-      uses: actions/cache@v3
-      with:
-        path: aosp/external_rust_crates_smallvec-5.tar.xz
-        key: external_rust_crates_smallvec-5
-        restore-keys: external_rust_crates_smallvec-5
-    - name: Clone project external_rust_crates_smallvec-5.tar.xz
-      if: steps.external_rust_crates_smallvec-5.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        download_release external_rust_crates_smallvec-5.tar.xz android-12.0.0_r1-5
-
-    - name: Restore Cache external_rust_crates_syn-3.tar.xz
-      id: external_rust_crates_syn-3
-      uses: actions/cache@v3
-      with:
-        path: aosp/external_rust_crates_syn-3.tar.xz
-        key: external_rust_crates_syn-3
-        restore-keys: external_rust_crates_syn-3
-    - name: Clone project external_rust_crates_syn-3.tar.xz
-      if: steps.external_rust_crates_syn-3.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        download_release external_rust_crates_syn-3.tar.xz android-12.0.0_r1-3
-
-    - name: Restore Cache external_rust_crates_textwrap-5.tar.xz
-      id: external_rust_crates_textwrap-5
-      uses: actions/cache@v3
-      with:
-        path: aosp/external_rust_crates_textwrap-5.tar.xz
-        key: external_rust_crates_textwrap-5
-        restore-keys: external_rust_crates_textwrap-5
-    - name: Clone project external_rust_crates_textwrap-5.tar.xz
-      if: steps.external_rust_crates_textwrap-5.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        download_release external_rust_crates_textwrap-5.tar.xz android-12.0.0_r1-5
-
-    - name: Restore Cache external_rust_crates_thiserror-impl-4.tar.xz
-      id: external_rust_crates_thiserror-impl-4
-      uses: actions/cache@v3
-      with:
-        path: aosp/external_rust_crates_thiserror-impl-4.tar.xz
-        key: external_rust_crates_thiserror-impl-4
-        restore-keys: external_rust_crates_thiserror-impl-4
-    - name: Clone project external_rust_crates_thiserror-impl-4.tar.xz
-      if: steps.external_rust_crates_thiserror-impl-4.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        download_release external_rust_crates_thiserror-impl-4.tar.xz android-12.0.0_r1-4
-
-    - name: Restore Cache external_rust_crates_thiserror-5.tar.xz
-      id: external_rust_crates_thiserror-5
-      uses: actions/cache@v3
-      with:
-        path: aosp/external_rust_crates_thiserror-5.tar.xz
-        key: external_rust_crates_thiserror-5
-        restore-keys: external_rust_crates_thiserror-5
-    - name: Clone project external_rust_crates_thiserror-5.tar.xz
-      if: steps.external_rust_crates_thiserror-5.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        download_release external_rust_crates_thiserror-5.tar.xz android-12.0.0_r1-5
-
-    - name: Restore Cache external_rust_crates_unicode-xid-0.tar.xz
-      id: external_rust_crates_unicode-xid-0
-      uses: actions/cache@v3
-      with:
-        path: aosp/external_rust_crates_unicode-xid-0.tar.xz
-        key: external_rust_crates_unicode-xid-0
-        restore-keys: external_rust_crates_unicode-xid-0
-    - name: Clone project external_rust_crates_unicode-xid-0.tar.xz
-      if: steps.external_rust_crates_unicode-xid-0.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        download_release external_rust_crates_unicode-xid-0.tar.xz android-12.0.0_r1-0
-
-    - name: Restore Cache external_rust_crates_which-6.tar.xz
-      id: external_rust_crates_which-6
-      uses: actions/cache@v3
-      with:
-        path: aosp/external_rust_crates_which-6.tar.xz
-        key: external_rust_crates_which-6
-        restore-keys: external_rust_crates_which-6
-    - name: Clone project external_rust_crates_which-6.tar.xz
-      if: steps.external_rust_crates_which-6.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        download_release external_rust_crates_which-6.tar.xz android-12.0.0_r1-6
-
     - name: Restore Cache external_scudo-0.tar.xz
       id: external_scudo-0
       uses: actions/cache@v3
@@ -1893,19 +1074,6 @@ jobs:
       run: |
         cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
         download_release external_scudo-0.tar.xz android-12.0.0_r1-0
-
-    - name: Restore Cache external_selinux-9.tar.xz
-      id: external_selinux-9
-      uses: actions/cache@v3
-      with:
-        path: aosp/external_selinux-9.tar.xz
-        key: external_selinux-9
-        restore-keys: external_selinux-9
-    - name: Clone project external_selinux-9.tar.xz
-      if: steps.external_selinux-9.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        download_release external_selinux-9.tar.xz android-12.0.0_r1-9
 
     - name: Restore Cache external_sonic-4.tar.xz
       id: external_sonic-4
@@ -1932,19 +1100,6 @@ jobs:
       run: |
         cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
         download_release external_speex-4.tar.xz android-12.0.0_r1-4
-
-    - name: Restore Cache external_sqlite-7.tar.xz
-      id: external_sqlite-7
-      uses: actions/cache@v3
-      with:
-        path: aosp/external_sqlite-7.tar.xz
-        key: external_sqlite-7
-        restore-keys: external_sqlite-7
-    - name: Clone project external_sqlite-7.tar.xz
-      if: steps.external_sqlite-7.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        download_release external_sqlite-7.tar.xz android-12.0.0_r1-7
 
     - name: Restore Cache external_tinyxml2-5.tar.xz
       id: external_tinyxml2-5
@@ -2063,32 +1218,6 @@ jobs:
         cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
         download_release frameworks_native-11.tar.xz android-12.0.0_r1-11
 
-    - name: Restore Cache frameworks_rs-11.tar.xz
-      id: frameworks_rs-11
-      uses: actions/cache@v3
-      with:
-        path: aosp/frameworks_rs-11.tar.xz
-        key: frameworks_rs-11
-        restore-keys: frameworks_rs-11
-    - name: Clone project frameworks_rs-11.tar.xz
-      if: steps.frameworks_rs-11.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        download_release frameworks_rs-11.tar.xz android-12.0.0_r1-11
-
-    - name: Restore Cache hardware_google_camera-7.tar.xz
-      id: hardware_google_camera-7
-      uses: actions/cache@v3
-      with:
-        path: aosp/hardware_google_camera-7.tar.xz
-        key: hardware_google_camera-7
-        restore-keys: hardware_google_camera-7
-    - name: Clone project hardware_google_camera-7.tar.xz
-      if: steps.hardware_google_camera-7.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        download_release hardware_google_camera-7.tar.xz android-12.0.0_r1-7
-
     - name: Restore Cache hardware_interfaces-11.tar.xz
       id: hardware_interfaces-11
       uses: actions/cache@v3
@@ -2128,84 +1257,6 @@ jobs:
         cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
         download_release hardware_libhardware_legacy-10.tar.xz android-12.0.0_r1-10
 
-    - name: Restore Cache libcore-7.tar.xz
-      id: libcore-7
-      uses: actions/cache@v3
-      with:
-        path: aosp/libcore-7.tar.xz
-        key: libcore-7
-        restore-keys: libcore-7
-    - name: Clone project libcore-7.tar.xz
-      if: steps.libcore-7.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        download_release libcore-7.tar.xz android-12.0.0_r1-7
-
-    - name: Restore Cache libnativehelper-5.tar.xz
-      id: libnativehelper-5
-      uses: actions/cache@v3
-      with:
-        path: aosp/libnativehelper-5.tar.xz
-        key: libnativehelper-5
-        restore-keys: libnativehelper-5
-    - name: Clone project libnativehelper-5.tar.xz
-      if: steps.libnativehelper-5.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        download_release libnativehelper-5.tar.xz android-12.0.0_r1-5
-
-    - name: Restore Cache packages_modules_Gki-8.tar.xz
-      id: packages_modules_Gki-8
-      uses: actions/cache@v3
-      with:
-        path: aosp/packages_modules_Gki-8.tar.xz
-        key: packages_modules_Gki-8
-        restore-keys: packages_modules_Gki-8
-    - name: Clone project packages_modules_Gki-8.tar.xz
-      if: steps.packages_modules_Gki-8.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        download_release packages_modules_Gki-8.tar.xz android-12.0.0_r1-8
-
-    - name: Restore Cache packages_modules_NeuralNetworks-8.tar.xz
-      id: packages_modules_NeuralNetworks-8
-      uses: actions/cache@v3
-      with:
-        path: aosp/packages_modules_NeuralNetworks-8.tar.xz
-        key: packages_modules_NeuralNetworks-8
-        restore-keys: packages_modules_NeuralNetworks-8
-    - name: Clone project packages_modules_NeuralNetworks-8.tar.xz
-      if: steps.packages_modules_NeuralNetworks-8.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        download_release packages_modules_NeuralNetworks-8.tar.xz android-12.0.0_r1-8
-
-    - name: Restore Cache packages_modules_StatsD-9.tar.xz
-      id: packages_modules_StatsD-9
-      uses: actions/cache@v3
-      with:
-        path: aosp/packages_modules_StatsD-9.tar.xz
-        key: packages_modules_StatsD-9
-        restore-keys: packages_modules_StatsD-9
-    - name: Clone project packages_modules_StatsD-9.tar.xz
-      if: steps.packages_modules_StatsD-9.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        download_release packages_modules_StatsD-9.tar.xz android-12.0.0_r1-9
-
-    - name: Restore Cache system_bpf-7.tar.xz
-      id: system_bpf-7
-      uses: actions/cache@v3
-      with:
-        path: aosp/system_bpf-7.tar.xz
-        key: system_bpf-7
-        restore-keys: system_bpf-7
-    - name: Clone project system_bpf-7.tar.xz
-      if: steps.system_bpf-7.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        download_release system_bpf-7.tar.xz android-12.0.0_r1-7
-
     - name: Restore Cache system_core-11.tar.xz
       id: system_core-11
       uses: actions/cache@v3
@@ -2231,19 +1282,6 @@ jobs:
       run: |
         cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
         download_release system_hardware_interfaces-11.tar.xz android-12.0.0_r1-11
-
-    - name: Restore Cache system_keymaster-9.tar.xz
-      id: system_keymaster-9
-      uses: actions/cache@v3
-      with:
-        path: aosp/system_keymaster-9.tar.xz
-        key: system_keymaster-9
-        restore-keys: system_keymaster-9
-    - name: Clone project system_keymaster-9.tar.xz
-      if: steps.system_keymaster-9.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        download_release system_keymaster-9.tar.xz android-12.0.0_r1-9
 
     - name: Restore Cache system_libbase-5.tar.xz
       id: system_libbase-5
@@ -2297,45 +1335,6 @@ jobs:
         cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
         download_release system_libhwbinder-7.tar.xz android-12.0.0_r1-7
 
-    - name: Restore Cache system_libprocinfo-6.tar.xz
-      id: system_libprocinfo-6
-      uses: actions/cache@v3
-      with:
-        path: aosp/system_libprocinfo-6.tar.xz
-        key: system_libprocinfo-6
-        restore-keys: system_libprocinfo-6
-    - name: Clone project system_libprocinfo-6.tar.xz
-      if: steps.system_libprocinfo-6.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        download_release system_libprocinfo-6.tar.xz android-12.0.0_r1-6
-
-    - name: Restore Cache system_libvintf-9.tar.xz
-      id: system_libvintf-9
-      uses: actions/cache@v3
-      with:
-        path: aosp/system_libvintf-9.tar.xz
-        key: system_libvintf-9
-        restore-keys: system_libvintf-9
-    - name: Clone project system_libvintf-9.tar.xz
-      if: steps.system_libvintf-9.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        download_release system_libvintf-9.tar.xz android-12.0.0_r1-9
-
-    - name: Restore Cache system_libziparchive-6.tar.xz
-      id: system_libziparchive-6
-      uses: actions/cache@v3
-      with:
-        path: aosp/system_libziparchive-6.tar.xz
-        key: system_libziparchive-6
-        restore-keys: system_libziparchive-6
-    - name: Clone project system_libziparchive-6.tar.xz
-      if: steps.system_libziparchive-6.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        download_release system_libziparchive-6.tar.xz android-12.0.0_r1-6
-
     - name: Restore Cache system_logging-9.tar.xz
       id: system_logging-9
       uses: actions/cache@v3
@@ -2388,19 +1387,6 @@ jobs:
         cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
         download_release system_memory_libion-5.tar.xz android-12.0.0_r1-5
 
-    - name: Restore Cache system_memory_libmeminfo-8.tar.xz
-      id: system_memory_libmeminfo-8
-      uses: actions/cache@v3
-      with:
-        path: aosp/system_memory_libmeminfo-8.tar.xz
-        key: system_memory_libmeminfo-8
-        restore-keys: system_memory_libmeminfo-8
-    - name: Clone project system_memory_libmeminfo-8.tar.xz
-      if: steps.system_memory_libmeminfo-8.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        download_release system_memory_libmeminfo-8.tar.xz android-12.0.0_r1-8
-
     - name: Restore Cache system_memory_libmemunreachable-7.tar.xz
       id: system_memory_libmemunreachable-7
       uses: actions/cache@v3
@@ -2426,19 +1412,6 @@ jobs:
       run: |
         cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
         download_release system_netd-10.tar.xz android-12.0.0_r1-10
-
-    - name: Restore Cache system_security-11.tar.xz
-      id: system_security-11
-      uses: actions/cache@v3
-      with:
-        path: aosp/system_security-11.tar.xz
-        key: system_security-11
-        restore-keys: system_security-11
-    - name: Clone project system_security-11.tar.xz
-      if: steps.system_security-11.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        download_release system_security-11.tar.xz android-12.0.0_r1-11
 
     - name: Restore Cache system_tools_aidl-8.tar.xz
       id: system_tools_aidl-8
@@ -2501,25 +1474,19 @@ jobs:
         extract_tar external_arm-optimized-routines-0.tar.xz external/arm-optimized-routines/ && du -ah -d1 prebuiltlibs/external/arm-optimized-routines/|sort -rh
         extract_tar external_boringssl-4.tar.xz external/boringssl/ && du -ah -d1 prebuiltlibs/external/boringssl/|sort -rh
         extract_tar external_expat-2.tar.xz external/expat/ && du -ah -d1 prebuiltlibs/external/expat/|sort -rh
-        extract_tar external_fdlibm-4.tar.xz external/fdlibm/ && du -ah -d1 prebuiltlibs/external/fdlibm/|sort -rh
         extract_tar external_flac-4.tar.xz external/flac/ && du -ah -d1 prebuiltlibs/external/flac/|sort -rh
         extract_tar external_fmtlib-4.tar.xz external/fmtlib/ && du -ah -d1 prebuiltlibs/external/fmtlib/|sort -rh
-        extract_tar external_googletest-4.tar.xz external/googletest/ && du -ah -d1 prebuiltlibs/external/googletest/|sort -rh
         extract_tar external_gwp_asan-4.tar.xz external/gwp_asan/ && du -ah -d1 prebuiltlibs/external/gwp_asan/|sort -rh
         extract_tar external_icu-6.tar.xz external/icu/ && du -ah -d1 prebuiltlibs/external/icu/|sort -rh
         extract_tar external_jsoncpp-4.tar.xz external/jsoncpp/ && du -ah -d1 prebuiltlibs/external/jsoncpp/|sort -rh
         extract_tar external_libavc-7.tar.xz external/libavc/ && du -ah -d1 prebuiltlibs/external/libavc/|sort -rh
-        extract_tar external_libcppbor-6.tar.xz external/libcppbor/ && du -ah -d1 prebuiltlibs/external/libcppbor/|sort -rh
         extract_tar external_libcxx-3.tar.xz external/libcxx/ && du -ah -d1 prebuiltlibs/external/libcxx/|sort -rh
         extract_tar external_libcxxabi-2.tar.xz external/libcxxabi/ && du -ah -d1 prebuiltlibs/external/libcxxabi/|sort -rh
-        extract_tar external_libexif-5.tar.xz external/libexif/ && du -ah -d1 prebuiltlibs/external/libexif/|sort -rh
         extract_tar external_libgav1-4.tar.xz external/libgav1/ && du -ah -d1 prebuiltlibs/external/libgav1/|sort -rh
         extract_tar external_libgsm-4.tar.xz external/libgsm/ && du -ah -d1 prebuiltlibs/external/libgsm/|sort -rh
         extract_tar external_libhevc-4.tar.xz external/libhevc/ && du -ah -d1 prebuiltlibs/external/libhevc/|sort -rh
-        extract_tar external_libjpeg-turbo-4.tar.xz external/libjpeg-turbo/ && du -ah -d1 prebuiltlibs/external/libjpeg-turbo/|sort -rh
         extract_tar external_libmpeg2-7.tar.xz external/libmpeg2/ && du -ah -d1 prebuiltlibs/external/libmpeg2/|sort -rh
         extract_tar external_libopus-4.tar.xz external/libopus/ && du -ah -d1 prebuiltlibs/external/libopus/|sort -rh
-        extract_tar external_libpng-4.tar.xz external/libpng/ && du -ah -d1 prebuiltlibs/external/libpng/|sort -rh
         extract_tar external_libvpx-4.tar.xz external/libvpx/ && du -ah -d1 prebuiltlibs/external/libvpx/|sort -rh
         extract_tar external_libxml2-7.tar.xz external/libxml2/ && du -ah -d1 prebuiltlibs/external/libxml2/|sort -rh
         extract_tar external_libyuv-5.tar.xz external/libyuv/ && du -ah -d1 prebuiltlibs/external/libyuv/|sort -rh
@@ -2527,58 +1494,9 @@ jobs:
         extract_tar external_minijail-6.tar.xz external/minijail/ && du -ah -d1 prebuiltlibs/external/minijail/|sort -rh
         extract_tar external_parameter-framework-8.tar.xz external/parameter-framework/ && du -ah -d1 prebuiltlibs/external/parameter-framework/|sort -rh
         extract_tar external_protobuf-5.tar.xz external/protobuf/ && du -ah -d1 prebuiltlibs/external/protobuf/|sort -rh
-        extract_tar external_rust_crates_ahash-7.tar.xz external/rust/crates/ahash/ && du -ah -d1 prebuiltlibs/external/rust/crates/ahash/|sort -rh
-        extract_tar external_rust_crates_aho-corasick-6.tar.xz external/rust/crates/aho-corasick/ && du -ah -d1 prebuiltlibs/external/rust/crates/aho-corasick/|sort -rh
-        extract_tar external_rust_crates_android_log-sys-5.tar.xz external/rust/crates/android_log-sys/ && du -ah -d1 prebuiltlibs/external/rust/crates/android_log-sys/|sort -rh
-        extract_tar external_rust_crates_android_logger-8.tar.xz external/rust/crates/android_logger/ && du -ah -d1 prebuiltlibs/external/rust/crates/android_logger/|sort -rh
-        extract_tar external_rust_crates_anyhow-5.tar.xz external/rust/crates/anyhow/ && du -ah -d1 prebuiltlibs/external/rust/crates/anyhow/|sort -rh
-        extract_tar external_rust_crates_bindgen-8.tar.xz external/rust/crates/bindgen/ && du -ah -d1 prebuiltlibs/external/rust/crates/bindgen/|sort -rh
-        extract_tar external_rust_crates_bitflags-5.tar.xz external/rust/crates/bitflags/ && du -ah -d1 prebuiltlibs/external/rust/crates/bitflags/|sort -rh
-        extract_tar external_rust_crates_cexpr-7.tar.xz external/rust/crates/cexpr/ && du -ah -d1 prebuiltlibs/external/rust/crates/cexpr/|sort -rh
-        extract_tar external_rust_crates_cfg-if-5.tar.xz external/rust/crates/cfg-if/ && du -ah -d1 prebuiltlibs/external/rust/crates/cfg-if/|sort -rh
-        extract_tar external_rust_crates_clang-sys-7.tar.xz external/rust/crates/clang-sys/ && du -ah -d1 prebuiltlibs/external/rust/crates/clang-sys/|sort -rh
-        extract_tar external_rust_crates_clap-6.tar.xz external/rust/crates/clap/ && du -ah -d1 prebuiltlibs/external/rust/crates/clap/|sort -rh
-        extract_tar external_rust_crates_either-0.tar.xz external/rust/crates/either/ && du -ah -d1 prebuiltlibs/external/rust/crates/either/|sort -rh
-        extract_tar external_rust_crates_env_logger-7.tar.xz external/rust/crates/env_logger/ && du -ah -d1 prebuiltlibs/external/rust/crates/env_logger/|sort -rh
-        extract_tar external_rust_crates_fallible-iterator-0.tar.xz external/rust/crates/fallible-iterator/ && du -ah -d1 prebuiltlibs/external/rust/crates/fallible-iterator/|sort -rh
-        extract_tar external_rust_crates_fallible-streaming-iterator-0.tar.xz external/rust/crates/fallible-streaming-iterator/ && du -ah -d1 prebuiltlibs/external/rust/crates/fallible-streaming-iterator/|sort -rh
-        extract_tar external_rust_crates_getrandom-6.tar.xz external/rust/crates/getrandom/ && du -ah -d1 prebuiltlibs/external/rust/crates/getrandom/|sort -rh
-        extract_tar external_rust_crates_glob-0.tar.xz external/rust/crates/glob/ && du -ah -d1 prebuiltlibs/external/rust/crates/glob/|sort -rh
-        extract_tar external_rust_crates_hashbrown-8.tar.xz external/rust/crates/hashbrown/ && du -ah -d1 prebuiltlibs/external/rust/crates/hashbrown/|sort -rh
-        extract_tar external_rust_crates_hashlink-9.tar.xz external/rust/crates/hashlink/ && du -ah -d1 prebuiltlibs/external/rust/crates/hashlink/|sort -rh
-        extract_tar external_rust_crates_lazy_static-5.tar.xz external/rust/crates/lazy_static/ && du -ah -d1 prebuiltlibs/external/rust/crates/lazy_static/|sort -rh
-        extract_tar external_rust_crates_lazycell-0.tar.xz external/rust/crates/lazycell/ && du -ah -d1 prebuiltlibs/external/rust/crates/lazycell/|sort -rh
-        extract_tar external_rust_crates_libc-5.tar.xz external/rust/crates/libc/ && du -ah -d1 prebuiltlibs/external/rust/crates/libc/|sort -rh
-        extract_tar external_rust_crates_libloading-6.tar.xz external/rust/crates/libloading/ && du -ah -d1 prebuiltlibs/external/rust/crates/libloading/|sort -rh
-        extract_tar external_rust_crates_libsqlite3-sys-9.tar.xz external/rust/crates/libsqlite3-sys/ && du -ah -d1 prebuiltlibs/external/rust/crates/libsqlite3-sys/|sort -rh
-        extract_tar external_rust_crates_log-6.tar.xz external/rust/crates/log/ && du -ah -d1 prebuiltlibs/external/rust/crates/log/|sort -rh
-        extract_tar external_rust_crates_memchr-5.tar.xz external/rust/crates/memchr/ && du -ah -d1 prebuiltlibs/external/rust/crates/memchr/|sort -rh
-        extract_tar external_rust_crates_nix-6.tar.xz external/rust/crates/nix/ && du -ah -d1 prebuiltlibs/external/rust/crates/nix/|sort -rh
-        extract_tar external_rust_crates_nom-6.tar.xz external/rust/crates/nom/ && du -ah -d1 prebuiltlibs/external/rust/crates/nom/|sort -rh
-        extract_tar external_rust_crates_peeking_take_while-0.tar.xz external/rust/crates/peeking_take_while/ && du -ah -d1 prebuiltlibs/external/rust/crates/peeking_take_while/|sort -rh
-        extract_tar external_rust_crates_ppv-lite86-5.tar.xz external/rust/crates/ppv-lite86/ && du -ah -d1 prebuiltlibs/external/rust/crates/ppv-lite86/|sort -rh
-        extract_tar external_rust_crates_proc-macro2-1.tar.xz external/rust/crates/proc-macro2/ && du -ah -d1 prebuiltlibs/external/rust/crates/proc-macro2/|sort -rh
-        extract_tar external_rust_crates_quote-2.tar.xz external/rust/crates/quote/ && du -ah -d1 prebuiltlibs/external/rust/crates/quote/|sort -rh
-        extract_tar external_rust_crates_rand-9.tar.xz external/rust/crates/rand/ && du -ah -d1 prebuiltlibs/external/rust/crates/rand/|sort -rh
-        extract_tar external_rust_crates_rand_chacha-8.tar.xz external/rust/crates/rand_chacha/ && du -ah -d1 prebuiltlibs/external/rust/crates/rand_chacha/|sort -rh
-        extract_tar external_rust_crates_rand_core-7.tar.xz external/rust/crates/rand_core/ && du -ah -d1 prebuiltlibs/external/rust/crates/rand_core/|sort -rh
-        extract_tar external_rust_crates_regex-syntax-0.tar.xz external/rust/crates/regex-syntax/ && du -ah -d1 prebuiltlibs/external/rust/crates/regex-syntax/|sort -rh
-        extract_tar external_rust_crates_regex-7.tar.xz external/rust/crates/regex/ && du -ah -d1 prebuiltlibs/external/rust/crates/regex/|sort -rh
-        extract_tar external_rust_crates_rusqlite-10.tar.xz external/rust/crates/rusqlite/ && du -ah -d1 prebuiltlibs/external/rust/crates/rusqlite/|sort -rh
-        extract_tar external_rust_crates_rustc-hash-0.tar.xz external/rust/crates/rustc-hash/ && du -ah -d1 prebuiltlibs/external/rust/crates/rustc-hash/|sort -rh
-        extract_tar external_rust_crates_shlex-0.tar.xz external/rust/crates/shlex/ && du -ah -d1 prebuiltlibs/external/rust/crates/shlex/|sort -rh
-        extract_tar external_rust_crates_smallvec-5.tar.xz external/rust/crates/smallvec/ && du -ah -d1 prebuiltlibs/external/rust/crates/smallvec/|sort -rh
-        extract_tar external_rust_crates_syn-3.tar.xz external/rust/crates/syn/ && du -ah -d1 prebuiltlibs/external/rust/crates/syn/|sort -rh
-        extract_tar external_rust_crates_textwrap-5.tar.xz external/rust/crates/textwrap/ && du -ah -d1 prebuiltlibs/external/rust/crates/textwrap/|sort -rh
-        extract_tar external_rust_crates_thiserror-impl-4.tar.xz external/rust/crates/thiserror-impl/ && du -ah -d1 prebuiltlibs/external/rust/crates/thiserror-impl/|sort -rh
-        extract_tar external_rust_crates_thiserror-5.tar.xz external/rust/crates/thiserror/ && du -ah -d1 prebuiltlibs/external/rust/crates/thiserror/|sort -rh
-        extract_tar external_rust_crates_unicode-xid-0.tar.xz external/rust/crates/unicode-xid/ && du -ah -d1 prebuiltlibs/external/rust/crates/unicode-xid/|sort -rh
-        extract_tar external_rust_crates_which-6.tar.xz external/rust/crates/which/ && du -ah -d1 prebuiltlibs/external/rust/crates/which/|sort -rh
         extract_tar external_scudo-0.tar.xz external/scudo/ && du -ah -d1 prebuiltlibs/external/scudo/|sort -rh
-        extract_tar external_selinux-9.tar.xz external/selinux/ && du -ah -d1 prebuiltlibs/external/selinux/|sort -rh
         extract_tar external_sonic-4.tar.xz external/sonic/ && du -ah -d1 prebuiltlibs/external/sonic/|sort -rh
         extract_tar external_speex-4.tar.xz external/speex/ && du -ah -d1 prebuiltlibs/external/speex/|sort -rh
-        extract_tar external_sqlite-7.tar.xz external/sqlite/ && du -ah -d1 prebuiltlibs/external/sqlite/|sort -rh
         extract_tar external_tinyxml2-5.tar.xz external/tinyxml2/ && du -ah -d1 prebuiltlibs/external/tinyxml2/|sort -rh
         extract_tar external_tremolo-5.tar.xz external/tremolo/ && du -ah -d1 prebuiltlibs/external/tremolo/|sort -rh
         extract_tar external_zlib-2.tar.xz external/zlib/ && du -ah -d1 prebuiltlibs/external/zlib/|sort -rh
@@ -2588,35 +1506,21 @@ jobs:
         extract_tar frameworks_compile_slang-8.tar.xz frameworks/compile/slang/ && du -ah -d1 prebuiltlibs/frameworks/compile/slang/|sort -rh
         extract_tar frameworks_hardware_interfaces-10.tar.xz frameworks/hardware/interfaces/ && du -ah -d1 prebuiltlibs/frameworks/hardware/interfaces/|sort -rh
         extract_tar frameworks_native-11.tar.xz frameworks/native/ && du -ah -d1 prebuiltlibs/frameworks/native/|sort -rh
-        extract_tar frameworks_rs-11.tar.xz frameworks/rs/ && du -ah -d1 prebuiltlibs/frameworks/rs/|sort -rh
-        extract_tar hardware_google_camera-7.tar.xz hardware/google/camera/ && du -ah -d1 prebuiltlibs/hardware/google/camera/|sort -rh
         extract_tar hardware_interfaces-11.tar.xz hardware/interfaces/ && du -ah -d1 prebuiltlibs/hardware/interfaces/|sort -rh
         extract_tar hardware_libhardware-10.tar.xz hardware/libhardware/ && du -ah -d1 prebuiltlibs/hardware/libhardware/|sort -rh
         extract_tar hardware_libhardware_legacy-10.tar.xz hardware/libhardware_legacy/ && du -ah -d1 prebuiltlibs/hardware/libhardware_legacy/|sort -rh
-        extract_tar libcore-7.tar.xz libcore/ && du -ah -d1 prebuiltlibs/libcore/|sort -rh
-        extract_tar libnativehelper-5.tar.xz libnativehelper/ && du -ah -d1 prebuiltlibs/libnativehelper/|sort -rh
-        extract_tar packages_modules_Gki-8.tar.xz packages/modules/Gki/ && du -ah -d1 prebuiltlibs/packages/modules/Gki/|sort -rh
-        extract_tar packages_modules_NeuralNetworks-8.tar.xz packages/modules/NeuralNetworks/ && du -ah -d1 prebuiltlibs/packages/modules/NeuralNetworks/|sort -rh
-        extract_tar packages_modules_StatsD-9.tar.xz packages/modules/StatsD/ && du -ah -d1 prebuiltlibs/packages/modules/StatsD/|sort -rh
-        extract_tar system_bpf-7.tar.xz system/bpf/ && du -ah -d1 prebuiltlibs/system/bpf/|sort -rh
         extract_tar system_core-11.tar.xz system/core/ && du -ah -d1 prebuiltlibs/system/core/|sort -rh
         extract_tar system_hardware_interfaces-11.tar.xz system/hardware/interfaces/ && du -ah -d1 prebuiltlibs/system/hardware/interfaces/|sort -rh
-        extract_tar system_keymaster-9.tar.xz system/keymaster/ && du -ah -d1 prebuiltlibs/system/keymaster/|sort -rh
         extract_tar system_libbase-5.tar.xz system/libbase/ && du -ah -d1 prebuiltlibs/system/libbase/|sort -rh
         extract_tar system_libfmq-7.tar.xz system/libfmq/ && du -ah -d1 prebuiltlibs/system/libfmq/|sort -rh
         extract_tar system_libhidl-8.tar.xz system/libhidl/ && du -ah -d1 prebuiltlibs/system/libhidl/|sort -rh
         extract_tar system_libhwbinder-7.tar.xz system/libhwbinder/ && du -ah -d1 prebuiltlibs/system/libhwbinder/|sort -rh
-        extract_tar system_libprocinfo-6.tar.xz system/libprocinfo/ && du -ah -d1 prebuiltlibs/system/libprocinfo/|sort -rh
-        extract_tar system_libvintf-9.tar.xz system/libvintf/ && du -ah -d1 prebuiltlibs/system/libvintf/|sort -rh
-        extract_tar system_libziparchive-6.tar.xz system/libziparchive/ && du -ah -d1 prebuiltlibs/system/libziparchive/|sort -rh
         extract_tar system_logging-9.tar.xz system/logging/ && du -ah -d1 prebuiltlibs/system/logging/|sort -rh
         extract_tar system_media-7.tar.xz system/media/ && du -ah -d1 prebuiltlibs/system/media/|sort -rh
         extract_tar system_memory_libdmabufheap-7.tar.xz system/memory/libdmabufheap/ && du -ah -d1 prebuiltlibs/system/memory/libdmabufheap/|sort -rh
         extract_tar system_memory_libion-5.tar.xz system/memory/libion/ && du -ah -d1 prebuiltlibs/system/memory/libion/|sort -rh
-        extract_tar system_memory_libmeminfo-8.tar.xz system/memory/libmeminfo/ && du -ah -d1 prebuiltlibs/system/memory/libmeminfo/|sort -rh
         extract_tar system_memory_libmemunreachable-7.tar.xz system/memory/libmemunreachable/ && du -ah -d1 prebuiltlibs/system/memory/libmemunreachable/|sort -rh
         extract_tar system_netd-10.tar.xz system/netd/ && du -ah -d1 prebuiltlibs/system/netd/|sort -rh
-        extract_tar system_security-11.tar.xz system/security/ && du -ah -d1 prebuiltlibs/system/security/|sort -rh
         extract_tar system_tools_aidl-8.tar.xz system/tools/aidl/ && du -ah -d1 prebuiltlibs/system/tools/aidl/|sort -rh
         extract_tar system_tools_hidl-11.tar.xz system/tools/hidl/ && du -ah -d1 prebuiltlibs/system/tools/hidl/|sort -rh
         extract_tar system_tools_sysprop-7.tar.xz system/tools/sysprop/ && du -ah -d1 prebuiltlibs/system/tools/sysprop/|sort -rh
@@ -2627,10 +1531,8 @@ jobs:
         du -ah -d1 build/make/|sort -rh && rm -rf build/make/.git
         du -ah -d1 build/soong/|sort -rh && rm -rf build/soong/.git
         du -ah -d1 external/clang/|sort -rh && rm -rf external/clang/.git
-        du -ah -d1 external/fdlibm/|sort -rh && rm -rf external/fdlibm/.git
         du -ah -d1 external/flac/|sort -rh && rm -rf external/flac/.git
         du -ah -d1 external/golang-protobuf/|sort -rh && rm -rf external/golang-protobuf/.git
-        du -ah -d1 external/googletest/|sort -rh && rm -rf external/googletest/.git
         du -ah -d1 external/gwp_asan/|sort -rh && rm -rf external/gwp_asan/.git
         du -ah -d1 external/icu/|sort -rh && rm -rf external/icu/.git
         du -ah -d1 external/libavc/|sort -rh && rm -rf external/libavc/.git
@@ -2642,24 +1544,17 @@ jobs:
         du -ah -d1 external/skia/|sort -rh && rm -rf external/skia/.git
         du -ah -d1 external/sonic/|sort -rh && rm -rf external/sonic/.git
         du -ah -d1 external/starlark-go/|sort -rh && rm -rf external/starlark-go/.git
-        du -ah -d1 external/vulkan-headers/|sort -rh && rm -rf external/vulkan-headers/.git
         du -ah -d1 frameworks/av/|sort -rh && rm -rf frameworks/av/.git
         du -ah -d1 frameworks/base/|sort -rh && rm -rf frameworks/base/.git
         du -ah -d1 frameworks/compile/libbcc/|sort -rh && rm -rf frameworks/compile/libbcc/.git
-        du -ah -d1 frameworks/compile/slang/|sort -rh && rm -rf frameworks/compile/slang/.git
         du -ah -d1 frameworks/hardware/interfaces/|sort -rh && rm -rf frameworks/hardware/interfaces/.git
         du -ah -d1 frameworks/native/|sort -rh && rm -rf frameworks/native/.git
         du -ah -d1 frameworks/rs/|sort -rh && rm -rf frameworks/rs/.git
-        du -ah -d1 hardware/google/camera/|sort -rh && rm -rf hardware/google/camera/.git
         du -ah -d1 hardware/interfaces/|sort -rh && rm -rf hardware/interfaces/.git
         du -ah -d1 hardware/libhardware/|sort -rh && rm -rf hardware/libhardware/.git
         du -ah -d1 hardware/libhardware_legacy/|sort -rh && rm -rf hardware/libhardware_legacy/.git
         du -ah -d1 kernel/configs/|sort -rh && rm -rf kernel/configs/.git
-        du -ah -d1 libcore/|sort -rh && rm -rf libcore/.git
         du -ah -d1 libnativehelper/|sort -rh && rm -rf libnativehelper/.git
-        du -ah -d1 packages/modules/NeuralNetworks/|sort -rh && rm -rf packages/modules/NeuralNetworks/.git
-        du -ah -d1 packages/modules/StatsD/|sort -rh && rm -rf packages/modules/StatsD/.git
-        du -ah -d1 packages/modules/common/|sort -rh && rm -rf packages/modules/common/.git
         du -ah -d1 prebuilts/build-tools/|sort -rh && rm -rf prebuilts/build-tools/.git
         du -ah -d1 prebuilts/clang-tools/|sort -rh && rm -rf prebuilts/clang-tools/.git
         du -ah -d1 prebuilts/clang/host/linux-x86/|sort -rh && rm -rf prebuilts/clang/host/linux-x86/.git
@@ -2667,8 +1562,8 @@ jobs:
         du -ah -d1 prebuilts/misc/|sort -rh && rm -rf prebuilts/misc/.git
         du -ah -d1 prebuilts/ndk/|sort -rh && rm -rf prebuilts/ndk/.git
         du -ah -d1 prebuilts/rust/|sort -rh && rm -rf prebuilts/rust/.git
+        du -ah -d1 prebuilts/sdk/|sort -rh && rm -rf prebuilts/sdk/.git
         du -ah -d1 system/apex/|sort -rh && rm -rf system/apex/.git
-        du -ah -d1 system/bpf/|sort -rh && rm -rf system/bpf/.git
         du -ah -d1 system/bt/|sort -rh && rm -rf system/bt/.git
         du -ah -d1 system/core/|sort -rh && rm -rf system/core/.git
         du -ah -d1 system/hardware/interfaces/|sort -rh && rm -rf system/hardware/interfaces/.git
@@ -2680,7 +1575,6 @@ jobs:
         du -ah -d1 system/logging/|sort -rh && rm -rf system/logging/.git
         du -ah -d1 system/media/|sort -rh && rm -rf system/media/.git
         du -ah -d1 system/netd/|sort -rh && rm -rf system/netd/.git
-        du -ah -d1 system/security/|sort -rh && rm -rf system/security/.git
         du -ah -d1 system/sepolicy/|sort -rh && rm -rf system/sepolicy/.git
         du -ah -d1 system/tools/aidl/|sort -rh && rm -rf system/tools/aidl/.git
         du -ah -d1 system/tools/hidl/|sort -rh && rm -rf system/tools/hidl/.git
@@ -2708,6 +1602,8 @@ jobs:
         mkdir -p prebuiltlibs && cp $GITHUB_WORKSPACE/rust_prebuilt.list prebuiltlibs/
         echo "eng.buildbot.$(date '+%Y%m%d.%H%M%S')" > out/soong/build_number.txt
         mkdir -p external/compiler-rt/lib/cfi/ && curl 'https://android.googlesource.com/platform/external/compiler-rt/+/android12-gsi/lib/cfi/cfi_blocklist.txt?format=TEXT' | base64 -d > external/compiler-rt/lib/cfi/cfi_blocklist.txt
+        mkdir -p out/soong/host/linux-x86/lib64/ && cp prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8/sysroot/usr/lib/libncurses.so.5.9 out/soong/host/linux-x86/lib64/libncurses.so.5
+        mkdir -p out/soong/host/linux-x86/lib64/ && cp prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8/sysroot/usr/lib/libtinfo.so.5.9 out/soong/host/linux-x86/lib64/libtinfo.so.5
         $GITHUB_WORKSPACE/scripts/build12.sh
         df -h
 
@@ -2716,63 +1612,13 @@ jobs:
         name: ${{ env.branch }}-12
         tag_name: ${{ env.branch }}-12
         files: |
-          aosp/external_skia-12.tar.xz
           aosp/frameworks_av-12.tar.xz
-          aosp/frameworks_rs-12.tar.xz
-          aosp/hardware_google_camera-12.tar.xz
-          aosp/libcore-12.tar.xz
-          aosp/packages_modules_NeuralNetworks-12.tar.xz
-          aosp/system_security-12.tar.xz
-
-    - name: Archive external_skia-12.tar.xz
-      uses: actions/upload-artifact@v3
-      with:
-        name: external_skia-12.tar.xz
-        path: aosp/external_skia-12.tar.xz
 
     - name: Archive frameworks_av-12.tar.xz
       uses: actions/upload-artifact@v3
       with:
         name: frameworks_av-12.tar.xz
         path: aosp/frameworks_av-12.tar.xz
-
-    - name: Archive frameworks_rs-12.tar.xz
-      uses: actions/upload-artifact@v3
-      with:
-        name: frameworks_rs-12.tar.xz
-        path: aosp/frameworks_rs-12.tar.xz
-
-    - name: Archive hardware_google_camera-12.tar.xz
-      uses: actions/upload-artifact@v3
-      with:
-        name: hardware_google_camera-12.tar.xz
-        path: aosp/hardware_google_camera-12.tar.xz
-
-    - name: Archive libcore-12.tar.xz
-      uses: actions/upload-artifact@v3
-      with:
-        name: libcore-12.tar.xz
-        path: aosp/libcore-12.tar.xz
-
-    - name: Archive packages_modules_NeuralNetworks-12.tar.xz
-      uses: actions/upload-artifact@v3
-      with:
-        name: packages_modules_NeuralNetworks-12.tar.xz
-        path: aosp/packages_modules_NeuralNetworks-12.tar.xz
-
-    - name: Archive system_security-12.tar.xz
-      uses: actions/upload-artifact@v3
-      with:
-        name: system_security-12.tar.xz
-        path: aosp/system_security-12.tar.xz
-
-    - name: Restore Cache external_skia-12.tar.xz
-      id: external_skia-12
-      uses: actions/cache@v3
-      with:
-        path: aosp/external_skia-12.tar.xz
-        key: external_skia-12
-        restore-keys: external_skia-12
 
     - name: Restore Cache frameworks_av-12.tar.xz
       id: frameworks_av-12
@@ -2781,43 +1627,3 @@ jobs:
         path: aosp/frameworks_av-12.tar.xz
         key: frameworks_av-12
         restore-keys: frameworks_av-12
-
-    - name: Restore Cache frameworks_rs-12.tar.xz
-      id: frameworks_rs-12
-      uses: actions/cache@v3
-      with:
-        path: aosp/frameworks_rs-12.tar.xz
-        key: frameworks_rs-12
-        restore-keys: frameworks_rs-12
-
-    - name: Restore Cache hardware_google_camera-12.tar.xz
-      id: hardware_google_camera-12
-      uses: actions/cache@v3
-      with:
-        path: aosp/hardware_google_camera-12.tar.xz
-        key: hardware_google_camera-12
-        restore-keys: hardware_google_camera-12
-
-    - name: Restore Cache libcore-12.tar.xz
-      id: libcore-12
-      uses: actions/cache@v3
-      with:
-        path: aosp/libcore-12.tar.xz
-        key: libcore-12
-        restore-keys: libcore-12
-
-    - name: Restore Cache packages_modules_NeuralNetworks-12.tar.xz
-      id: packages_modules_NeuralNetworks-12
-      uses: actions/cache@v3
-      with:
-        path: aosp/packages_modules_NeuralNetworks-12.tar.xz
-        key: packages_modules_NeuralNetworks-12
-        restore-keys: packages_modules_NeuralNetworks-12
-
-    - name: Restore Cache system_security-12.tar.xz
-      id: system_security-12
-      uses: actions/cache@v3
-      with:
-        path: aosp/system_security-12.tar.xz
-        key: system_security-12
-        restore-keys: system_security-12

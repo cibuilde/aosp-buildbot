@@ -39,6 +39,7 @@ rm -rf prebuiltlibs/art/oatdump/liboatdump_static
 rm -rf prebuiltlibs/art/oatdump/oatdump
 rm -rf prebuiltlibs/art/odrefresh/libodrstatslog
 rm -rf prebuiltlibs/art/odrefresh/odrefresh
+rm -rf prebuiltlibs/art/openjdkjvm/libopenjdkjvm
 rm -rf prebuiltlibs/art/openjdkjvmti/libopenjdkjvmti
 rm -rf prebuiltlibs/art/perfetto_hprof/libperfetto_hprof
 rm -rf prebuiltlibs/art/profman/libprofman_static
@@ -176,6 +177,7 @@ rm -rf prebuiltlibs/hardware/interfaces/broadcastradio/1.0/android.hardware.broa
 rm -rf prebuiltlibs/hardware/interfaces/broadcastradio/1.1/android.hardware.broadcastradio@1.1
 rm -rf prebuiltlibs/hardware/interfaces/broadcastradio/common/utils1x/android.hardware.broadcastradio@common-utils-1x-lib
 rm -rf prebuiltlibs/hardware/interfaces/camera/common/1.0/android.hardware.camera.common@1.0
+rm -rf prebuiltlibs/hardware/interfaces/camera/common/1.0/default/android.hardware.camera.common@1.0-helper
 rm -rf prebuiltlibs/hardware/interfaces/camera/device/1.0/android.hardware.camera.device@1.0
 rm -rf prebuiltlibs/hardware/interfaces/camera/device/3.2/android.hardware.camera.device@3.2
 rm -rf prebuiltlibs/hardware/interfaces/camera/device/3.3/android.hardware.camera.device@3.3
@@ -383,26 +385,6 @@ rm -rf prebuiltlibs/hardware/interfaces/wifi/supplicant/1.1/android.hardware.wif
 rm -rf prebuiltlibs/hardware/interfaces/wifi/supplicant/1.2/android.hardware.wifi.supplicant@1.2
 rm -rf prebuiltlibs/hardware/interfaces/wifi/supplicant/1.3/android.hardware.wifi.supplicant@1.3
 rm -rf prebuiltlibs/hardware/interfaces/wifi/supplicant/1.4/android.hardware.wifi.supplicant@1.4
-
-start=`date +%s`
-./prebuilts/build-tools/linux-x86/bin/ninja -f out/soong/build.ninja \
-  out/soong/.intermediates/external/skia/libskia_renderengine/android_x86_64_static_lto-thin/libskia_renderengine.a \
-  
-
-mkdir -p prebuiltlibs/external/skia/libskia_renderengine/android_x86_64_static_lto-thin/ && mv out/soong/.intermediates/external/skia/libskia_renderengine/android_x86_64_static_lto-thin/libskia_renderengine.a prebuiltlibs/external/skia/libskia_renderengine/android_x86_64_static_lto-thin/libskia_renderengine.a
-mkdir -p prebuiltlibs/external/skia/
-rsync -ar --exclude=".git" --exclude="Android.bp" --exclude="Android.mk" external/skia/ prebuiltlibs/external/skia/
-
-printf "cc_prebuilt_library_static {\n  name: \"libskia_renderengine\",\n  export_include_dirs: [\"\",\"client_utils/android/\",\"include/android/\",\"include/c/\",\"include/codec/\",\"include/config/\",\"include/core/\",\"include/docs/\",\"include/effects/\",\"include/encode/\",\"include/gpu/\",\"include/pathops/\",\"include/ports/\",\"include/svg/\",\"include/utils/\",\"include/utils/mac/\",\"modules/particles/include/\",\"modules/skottie/include/\",\"modules/skparagraph/include/\",\"modules/skshaper/include/\",\"modules/svg/include/\",\"renderengine\"],\n  arch: {\n    arm: {\n      neon: {\n      },\n    },\n    arm64: {\n    },\n    x86: {\n    },\n    x86_64: {\n    },\n  },\n  target: {\n    android: {\n      shared_libs: [\"libEGL\",\"libGLESv2\",\"libvulkan\",\"libnativewindow\"],\n      export_shared_lib_headers: [\"libvulkan\"],\n    },\n  },\n  shared_libs: [\"libcutils\",\"liblog\",\"libpng\",\"libz\"],\n  static_libs: [\"libarect\"],\n  group_static_libs: true,\n  strip: {\n    none: true,\n  },\n  multiple_variants: true,\n  prefer: true,\n  srcs: [\"libskia_renderengine.a\"],\n}\n" >> prebuiltlibs/external/skia/Android.bp
-
-df -h
-clean_out_intermediates
-mkdir -p prebuiltlibs/external/skia/ninja && rsync -ar out/soong/ninja/external/skia/ prebuiltlibs/external/skia/ninja/external_skia-12
-touch prebuiltlibs/external/skia/ninja/.find-ignore
-tar cfJ external_skia-12.tar.xz -C prebuiltlibs/external/skia/ .
-ls -l external_skia-12.tar.xz
-end=`date +%s`
-echo $((end-start))
 
 start=`date +%s`
 ./prebuilts/build-tools/linux-x86/bin/ninja -f out/soong/build.ninja \
@@ -964,148 +946,6 @@ mkdir -p prebuiltlibs/frameworks/av/ninja && rsync -ar out/soong/ninja/framework
 touch prebuiltlibs/frameworks/av/ninja/.find-ignore
 tar cfJ frameworks_av-12.tar.xz -C prebuiltlibs/frameworks/av/ .
 ls -l frameworks_av-12.tar.xz
-end=`date +%s`
-echo $((end-start))
-
-start=`date +%s`
-./prebuilts/build-tools/linux-x86/bin/ninja -f out/soong/build.ninja \
-  out/soong/.intermediates/frameworks/rs/cpp/libRScpp/android_x86_64_shared/libRScpp.so \
-  out/soong/.intermediates/frameworks/rs/cpp/libRScpp/android_x86_64_static/libRScpp.a \
-  out/soong/.intermediates/frameworks/rs/cpp/libRScpp/android_x86_x86_64_shared/libRScpp.so \
-  out/soong/.intermediates/frameworks/rs/cpp/libRScpp/android_x86_x86_64_static/libRScpp.a \
-  
-
-mkdir -p prebuiltlibs/frameworks/rs/cpp/libRScpp/android_x86_64_shared/ && mv out/soong/.intermediates/frameworks/rs/cpp/libRScpp/android_x86_64_shared/libRScpp.so prebuiltlibs/frameworks/rs/cpp/libRScpp/android_x86_64_shared/libRScpp.so
-mkdir -p prebuiltlibs/frameworks/rs/cpp/libRScpp/android_x86_64_static/ && mv out/soong/.intermediates/frameworks/rs/cpp/libRScpp/android_x86_64_static/libRScpp.a prebuiltlibs/frameworks/rs/cpp/libRScpp/android_x86_64_static/libRScpp.a
-mkdir -p prebuiltlibs/frameworks/rs/cpp/libRScpp/android_x86_x86_64_shared/ && mv out/soong/.intermediates/frameworks/rs/cpp/libRScpp/android_x86_x86_64_shared/libRScpp.so prebuiltlibs/frameworks/rs/cpp/libRScpp/android_x86_x86_64_shared/libRScpp.so
-mkdir -p prebuiltlibs/frameworks/rs/cpp/libRScpp/android_x86_x86_64_static/ && mv out/soong/.intermediates/frameworks/rs/cpp/libRScpp/android_x86_x86_64_static/libRScpp.a prebuiltlibs/frameworks/rs/cpp/libRScpp/android_x86_x86_64_static/libRScpp.a
-mkdir -p prebuiltlibs/frameworks/rs/cpp/
-rsync -ar --exclude=".git" --exclude="Android.bp" --exclude="Android.mk" frameworks/rs/cpp/ prebuiltlibs/frameworks/rs/cpp/
-
-printf "cc_prebuilt_library {\n  name: \"libRScpp\",\n  header_libs: [\"jni_headers\",\"rs-headers\"],\n  export_header_lib_headers: [\"jni_headers\",\"rs-headers\"],\n  export_include_dirs: [\".\"],\n  shared_libs: [\"libdl\",\"liblog\",\"libgui\",\"libutils\"],\n  static_libs: [\"libRSDispatch\"],\n  strip: {\n    none: true,\n  },\n  multiple_variants: true,\n  prefer: true,\n  static: {\n    srcs: [\"libRScpp.a\"],\n  },\n  shared: {\n    srcs: [\"libRScpp.so\"],\n  },\n}\n" >> prebuiltlibs/frameworks/rs/cpp/Android.bp
-
-df -h
-clean_out_intermediates
-mkdir -p prebuiltlibs/frameworks/rs/ninja && rsync -ar out/soong/ninja/frameworks/rs/ prebuiltlibs/frameworks/rs/ninja/frameworks_rs-12
-touch prebuiltlibs/frameworks/rs/ninja/.find-ignore
-tar cfJ frameworks_rs-12.tar.xz -C prebuiltlibs/frameworks/rs/ .
-ls -l frameworks_rs-12.tar.xz
-end=`date +%s`
-echo $((end-start))
-
-start=`date +%s`
-./prebuilts/build-tools/linux-x86/bin/ninja -f out/soong/build.ninja \
-  out/soong/.intermediates/hardware/google/camera/common/hal/utils/libgooglecamerahalutils/android_vendor.31_x86_64_shared/libgooglecamerahalutils.so \
-  out/soong/.intermediates/hardware/google/camera/common/hal/utils/libgooglecamerahalutils/android_vendor.31_x86_x86_64_shared/libgooglecamerahalutils.so \
-  out/soong/.intermediates/hardware/google/camera/common/hal/google_camera_hal/libgooglecamerahal/android_vendor.31_x86_64_shared/libgooglecamerahal.so \
-  out/soong/.intermediates/hardware/google/camera/common/hal/hidl_service/android.hardware.camera.provider@2.7-service-google/android_vendor.31_x86_64/android.hardware.camera.provider@2.7-service-google \
-  out/soong/.intermediates/hardware/google/camera/devices/EmulatedCamera/hwl/libgooglecamerahwl_impl/android_vendor.31_x86_64_shared/libgooglecamerahwl_impl.so \
-  out/soong/.intermediates/hardware/google/camera/devices/EmulatedCamera/hwl/libgooglecamerahwl_impl/android_vendor.31_x86_x86_64_shared/libgooglecamerahwl_impl.so \
-  
-
-mkdir -p prebuiltlibs/hardware/google/camera/common/hal/utils/libgooglecamerahalutils/android_vendor.31_x86_64_shared/ && mv out/soong/.intermediates/hardware/google/camera/common/hal/utils/libgooglecamerahalutils/android_vendor.31_x86_64_shared/libgooglecamerahalutils.so prebuiltlibs/hardware/google/camera/common/hal/utils/libgooglecamerahalutils/android_vendor.31_x86_64_shared/libgooglecamerahalutils.so
-mkdir -p prebuiltlibs/hardware/google/camera/common/hal/utils/libgooglecamerahalutils/android_vendor.31_x86_x86_64_shared/ && mv out/soong/.intermediates/hardware/google/camera/common/hal/utils/libgooglecamerahalutils/android_vendor.31_x86_x86_64_shared/libgooglecamerahalutils.so prebuiltlibs/hardware/google/camera/common/hal/utils/libgooglecamerahalutils/android_vendor.31_x86_x86_64_shared/libgooglecamerahalutils.so
-mkdir -p prebuiltlibs/hardware/google/camera/common/hal/utils/
-rsync -ar --exclude=".git" --exclude="Android.bp" --exclude="Android.mk" hardware/google/camera/common/hal/utils/ prebuiltlibs/hardware/google/camera/common/hal/utils/
-mkdir -p prebuiltlibs/hardware/google/camera/common/hal/google_camera_hal/libgooglecamerahal/android_vendor.31_x86_64_shared/ && mv out/soong/.intermediates/hardware/google/camera/common/hal/google_camera_hal/libgooglecamerahal/android_vendor.31_x86_64_shared/libgooglecamerahal.so prebuiltlibs/hardware/google/camera/common/hal/google_camera_hal/libgooglecamerahal/android_vendor.31_x86_64_shared/libgooglecamerahal.so
-mkdir -p prebuiltlibs/hardware/google/camera/common/hal/google_camera_hal/
-rsync -ar --exclude=".git" --exclude="Android.bp" --exclude="Android.mk" hardware/google/camera/common/hal/google_camera_hal/ prebuiltlibs/hardware/google/camera/common/hal/google_camera_hal/
-mkdir -p prebuiltlibs/hardware/google/camera/common/hal/hidl_service/android.hardware.camera.provider@2.7-service-google/android_vendor.31_x86_64/ && mv out/soong/.intermediates/hardware/google/camera/common/hal/hidl_service/android.hardware.camera.provider@2.7-service-google/android_vendor.31_x86_64/android.hardware.camera.provider@2.7-service-google prebuiltlibs/hardware/google/camera/common/hal/hidl_service/android.hardware.camera.provider@2.7-service-google/android_vendor.31_x86_64/android.hardware.camera.provider@2.7-service-google
-mkdir -p prebuiltlibs/hardware/google/camera/devices/EmulatedCamera/hwl/libgooglecamerahwl_impl/android_vendor.31_x86_64_shared/ && mv out/soong/.intermediates/hardware/google/camera/devices/EmulatedCamera/hwl/libgooglecamerahwl_impl/android_vendor.31_x86_64_shared/libgooglecamerahwl_impl.so prebuiltlibs/hardware/google/camera/devices/EmulatedCamera/hwl/libgooglecamerahwl_impl/android_vendor.31_x86_64_shared/libgooglecamerahwl_impl.so
-mkdir -p prebuiltlibs/hardware/google/camera/devices/EmulatedCamera/hwl/libgooglecamerahwl_impl/android_vendor.31_x86_x86_64_shared/ && mv out/soong/.intermediates/hardware/google/camera/devices/EmulatedCamera/hwl/libgooglecamerahwl_impl/android_vendor.31_x86_x86_64_shared/libgooglecamerahwl_impl.so prebuiltlibs/hardware/google/camera/devices/EmulatedCamera/hwl/libgooglecamerahwl_impl/android_vendor.31_x86_x86_64_shared/libgooglecamerahwl_impl.so
-
-printf "cc_prebuilt_library_shared {\n  name: \"libgooglecamerahalutils\",\n  owner: \"google\",\n  vendor: true,\n  shared_libs: [\"lib_profiler\",\"libcamera_metadata\",\"libcutils\",\"libgrallocusage\",\"libhardware\",\"liblog\",\"libutils\",\"libui\",\"libsync\"],\n  export_shared_lib_headers: [\"lib_profiler\"],\n  export_include_dirs: [\".\"],\n  strip: {\n    none: true,\n  },\n  multiple_variants: true,\n  prefer: true,\n  srcs: [\"libgooglecamerahalutils.so\"],\n}\n" >> prebuiltlibs/hardware/google/camera/common/hal/utils/Android.bp
-printf "cc_prebuilt_library_shared {\n  name: \"libgooglecamerahal\",\n  header_libs: [\"libgooglecamerahal_headers\"],\n  owner: \"google\",\n  vendor: true,\n  compile_multilib: \"first\",\n  shared_libs: [\"android.hardware.graphics.mapper@2.0\",\"android.hardware.graphics.mapper@3.0\",\"android.hardware.graphics.mapper@4.0\",\"lib_profiler\",\"libbase\",\"libcamera_metadata\",\"libcutils\",\"libgooglecamerahalutils\",\"libhidlbase\",\"liblog\",\"libmeminfo\",\"libutils\",\"libsync\"],\n  export_include_dirs: [\".\"],\n  export_header_lib_headers: [\"libgooglecamerahal_headers\"],\n  export_shared_lib_headers: [\"lib_profiler\"],\n  strip: {\n    none: true,\n  },\n  multiple_variants: true,\n  prefer: true,\n  srcs: [\"libgooglecamerahal.so\"],\n}\n" >> prebuiltlibs/hardware/google/camera/common/hal/google_camera_hal/Android.bp
-printf "cc_prebuilt_binary {\n  name: \"android.hardware.camera.provider@2.7-service-google\",\n  vendor: true,\n  relative_install_path: \"hw\",\n  compile_multilib: \"first\",\n  shared_libs: [\"android.hardware.camera.device@3.2\",\"android.hardware.camera.device@3.3\",\"android.hardware.camera.device@3.4\",\"android.hardware.camera.device@3.5\",\"android.hardware.camera.device@3.6\",\"android.hardware.camera.device@3.7\",\"android.hardware.camera.provider@2.4\",\"android.hardware.camera.provider@2.5\",\"android.hardware.camera.provider@2.6\",\"android.hardware.camera.provider@2.7\",\"android.hardware.graphics.mapper@2.0\",\"android.hardware.graphics.mapper@3.0\",\"android.hardware.graphics.mapper@4.0\",\"android.hardware.thermal@2.0\",\"libbinder\",\"libbase\",\"libcamera_metadata\",\"libcutils\",\"libfmq\",\"libgooglecamerahal\",\"libgooglecamerahalutils\",\"libhidlbase\",\"liblog\",\"libutils\",\"lib_profiler\"],\n  export_shared_lib_headers: [\"lib_profiler\"],\n  vintf_fragments: [\"android.hardware.camera.provider@2.7-service-google.xml\"],\n  init_rc: [\"android.hardware.camera.provider@2.7-service-google.rc\"],\n  strip: {\n    none: true,\n  },\n  multiple_variants: true,\n  prefer: true,\n  srcs: [\"android.hardware.camera.provider@2.7-service-google\"],\n}\n" >> prebuiltlibs/hardware/google/camera/common/hal/hidl_service/Android.bp
-printf "cc_prebuilt_library_shared {\n  name: \"libgooglecamerahwl_impl\",\n  owner: \"google\",\n  proprietary: true,\n  shared_libs: [\"android.frameworks.sensorservice@1.0\",\"android.hardware.graphics.mapper@2.0\",\"android.hardware.graphics.mapper@3.0\",\"android.hardware.graphics.mapper@4.0\",\"android.hardware.camera.provider@2.4\",\"android.hardware.camera.provider@2.5\",\"android.hardware.camera.provider@2.6\",\"android.hardware.camera.provider@2.7\",\"android.hardware.sensors@1.0\",\"android.hidl.allocator@1.0\",\"lib_profiler\",\"libbase\",\"libcamera_metadata\",\"libcutils\",\"libexif\",\"libgralloctypes\",\"libhardware\",\"libhidlbase\",\"libgooglecamerahalutils\",\"libjpeg\",\"libjsoncpp\",\"liblog\",\"libsync\",\"libutils\",\"libyuv\"],\n  static_libs: [\"android.hardware.camera.common@1.0-helper\"],\n  strip: {\n    none: true,\n  },\n  multiple_variants: true,\n  prefer: true,\n  srcs: [\"libgooglecamerahwl_impl.so\"],\n}\n" >> prebuiltlibs/hardware/google/camera/devices/EmulatedCamera/hwl/Android.bp
-
-df -h
-clean_out_intermediates
-mkdir -p prebuiltlibs/hardware/google/camera/ninja && rsync -ar out/soong/ninja/hardware/google/camera/ prebuiltlibs/hardware/google/camera/ninja/hardware_google_camera-12
-touch prebuiltlibs/hardware/google/camera/ninja/.find-ignore
-tar cfJ hardware_google_camera-12.tar.xz -C prebuiltlibs/hardware/google/camera/ .
-ls -l hardware_google_camera-12.tar.xz
-end=`date +%s`
-echo $((end-start))
-
-start=`date +%s`
-./prebuilts/build-tools/linux-x86/bin/ninja -f out/soong/build.ninja \
-  out/soong/.intermediates/libcore/libopenjdk/android_x86_64_shared_apex31/libopenjdk.so \
-  out/soong/.intermediates/libcore/libopenjdk/android_x86_x86_64_shared_apex31/libopenjdk.so \
-  
-
-mkdir -p prebuiltlibs/libcore/libopenjdk/android_x86_64_shared_apex31/ && mv out/soong/.intermediates/libcore/libopenjdk/android_x86_64_shared_apex31/libopenjdk.so prebuiltlibs/libcore/libopenjdk/android_x86_64_shared_apex31/libopenjdk.so
-mkdir -p prebuiltlibs/libcore/libopenjdk/android_x86_x86_64_shared_apex31/ && mv out/soong/.intermediates/libcore/libopenjdk/android_x86_x86_64_shared_apex31/libopenjdk.so prebuiltlibs/libcore/libopenjdk/android_x86_x86_64_shared_apex31/libopenjdk.so
-
-printf "cc_prebuilt_library_shared {\n  name: \"libopenjdk\",\n  target: {\n    windows: {\n      enabled: false,\n    },\n    darwin: {\n      enabled: false,\n    },\n    linux_glibc: {\n    },\n    android: {\n      shared_libs: [\"libdl_android\"],\n    },\n  },\n  host_supported: true,\n  min_sdk_version: \"S\",\n  shared_libs: [\"libbase\",\"liblog\",\"libnativehelper\",\"libandroidio\",\"libcrypto\",\"libicu\",\"libz\",\"libopenjdkjvm\"],\n  static_libs: [\"libnativehelper_compat_libc++\",\"libfdlibm\"],\n  notice: \"ojluni/NOTICE\",\n  visibility: [\"//art/build/apex\"],\n  apex_available: [\"com.android.art\",\"com.android.art.debug\"],\n  strip: {\n    none: true,\n  },\n  multiple_variants: true,\n  prefer: true,\n  srcs: [\"libopenjdk.so\"],\n}\n" >> prebuiltlibs/libcore/Android.bp
-
-df -h
-clean_out_intermediates
-mkdir -p prebuiltlibs/libcore/ninja && rsync -ar out/soong/ninja/libcore/ prebuiltlibs/libcore/ninja/libcore-12
-touch prebuiltlibs/libcore/ninja/.find-ignore
-tar cfJ libcore-12.tar.xz -C prebuiltlibs/libcore/ .
-ls -l libcore-12.tar.xz
-end=`date +%s`
-echo $((end-start))
-
-start=`date +%s`
-./prebuilts/build-tools/linux-x86/bin/ninja -f out/soong/build.ninja \
-  out/soong/.intermediates/packages/modules/NeuralNetworks/shim_and_sl/neuralnetworks_supportlibrary_loader/android_vendor.31_x86_64_static/neuralnetworks_supportlibrary_loader.a \
-  out/soong/.intermediates/packages/modules/NeuralNetworks/common/neuralnetworks_types/android_x86_64_static_apex30/neuralnetworks_types.a \
-  out/soong/.intermediates/packages/modules/NeuralNetworks/common/neuralnetworks_types/android_x86_x86_64_static_apex30/neuralnetworks_types.a \
-  out/soong/.intermediates/packages/modules/NeuralNetworks/common/neuralnetworks_types/android_vendor.31_x86_64_static/neuralnetworks_types.a \
-  
-
-mkdir -p prebuiltlibs/packages/modules/NeuralNetworks/shim_and_sl/neuralnetworks_supportlibrary_loader/android_vendor.31_x86_64_static/ && mv out/soong/.intermediates/packages/modules/NeuralNetworks/shim_and_sl/neuralnetworks_supportlibrary_loader/android_vendor.31_x86_64_static/neuralnetworks_supportlibrary_loader.a prebuiltlibs/packages/modules/NeuralNetworks/shim_and_sl/neuralnetworks_supportlibrary_loader/android_vendor.31_x86_64_static/neuralnetworks_supportlibrary_loader.a
-mkdir -p prebuiltlibs/packages/modules/NeuralNetworks/shim_and_sl/include
-rsync -ar --exclude=".git" --exclude="Android.bp" --exclude="Android.mk" packages/modules/NeuralNetworks/shim_and_sl/include/ prebuiltlibs/packages/modules/NeuralNetworks/shim_and_sl/include
-mkdir -p prebuiltlibs/packages/modules/NeuralNetworks/shim_and_sl/public
-rsync -ar --exclude=".git" --exclude="Android.bp" --exclude="Android.mk" packages/modules/NeuralNetworks/shim_and_sl/public/ prebuiltlibs/packages/modules/NeuralNetworks/shim_and_sl/public
-mkdir -p prebuiltlibs/packages/modules/NeuralNetworks/common/neuralnetworks_types/android_x86_64_static_apex30/ && mv out/soong/.intermediates/packages/modules/NeuralNetworks/common/neuralnetworks_types/android_x86_64_static_apex30/neuralnetworks_types.a prebuiltlibs/packages/modules/NeuralNetworks/common/neuralnetworks_types/android_x86_64_static_apex30/neuralnetworks_types.a
-mkdir -p prebuiltlibs/packages/modules/NeuralNetworks/common/neuralnetworks_types/android_x86_x86_64_static_apex30/ && mv out/soong/.intermediates/packages/modules/NeuralNetworks/common/neuralnetworks_types/android_x86_x86_64_static_apex30/neuralnetworks_types.a prebuiltlibs/packages/modules/NeuralNetworks/common/neuralnetworks_types/android_x86_x86_64_static_apex30/neuralnetworks_types.a
-mkdir -p prebuiltlibs/packages/modules/NeuralNetworks/common/neuralnetworks_types/android_vendor.31_x86_64_static/ && mv out/soong/.intermediates/packages/modules/NeuralNetworks/common/neuralnetworks_types/android_vendor.31_x86_64_static/neuralnetworks_types.a prebuiltlibs/packages/modules/NeuralNetworks/common/neuralnetworks_types/android_vendor.31_x86_64_static/neuralnetworks_types.a
-mkdir -p prebuiltlibs/packages/modules/NeuralNetworks/common/include
-rsync -ar --exclude=".git" --exclude="Android.bp" --exclude="Android.mk" packages/modules/NeuralNetworks/common/include/ prebuiltlibs/packages/modules/NeuralNetworks/common/include
-
-printf "cc_prebuilt_library_static {\n  name: \"neuralnetworks_supportlibrary_loader\",\n  shared_libs: [\"libnativewindow\"],\n  apex_available: [\"//apex_available:platform\",\"com.android.neuralnetworks\",\"test_com.android.neuralnetworks\"],\n  export_include_dirs: [\"include\",\"public\"],\n  static_libs: [\"libarect\",\"libbase\"],\n  licenses: [\"Android-Apache-2.0\"],\n  vendor_available: true,\n  min_sdk_version: \"29\",\n  strip: {\n    none: true,\n  },\n  multiple_variants: true,\n  prefer: true,\n  srcs: [\"neuralnetworks_supportlibrary_loader.a\"],\n}\n" >> prebuiltlibs/packages/modules/NeuralNetworks/shim_and_sl/Android.bp
-printf "cc_prebuilt_library_static {\n  name: \"neuralnetworks_types\",\n  host_supported: false,\n  vendor_available: true,\n  apex_available: [\"//apex_available:platform\",\"com.android.neuralnetworks\",\"test_com.android.neuralnetworks\"],\n  min_sdk_version: \"30\",\n  target: {\n    android: {\n      shared_libs: [\"android.hidl.allocator@1.0\",\"android.hidl.memory@1.0\",\"libhidlbase\",\"libhidlmemory\",\"libnativewindow\"],\n      static_libs: [\"libarect\"],\n    },\n  },\n  export_include_dirs: [\"include\"],\n  shared_libs: [\"libbase\",\"libcutils\",\"libutils\"],\n  export_shared_lib_headers: [\"libbase\",\"libcutils\",\"libutils\"],\n  strip: {\n    none: true,\n  },\n  multiple_variants: true,\n  prefer: true,\n  srcs: [\"neuralnetworks_types.a\"],\n}\n" >> prebuiltlibs/packages/modules/NeuralNetworks/common/Android.bp
-
-df -h
-clean_out_intermediates
-mkdir -p prebuiltlibs/packages/modules/NeuralNetworks/ninja && rsync -ar out/soong/ninja/packages/modules/NeuralNetworks/ prebuiltlibs/packages/modules/NeuralNetworks/ninja/packages_modules_NeuralNetworks-12
-touch prebuiltlibs/packages/modules/NeuralNetworks/ninja/.find-ignore
-tar cfJ packages_modules_NeuralNetworks-12.tar.xz -C prebuiltlibs/packages/modules/NeuralNetworks/ .
-ls -l packages_modules_NeuralNetworks-12.tar.xz
-end=`date +%s`
-echo $((end-start))
-
-start=`date +%s`
-./prebuilts/build-tools/linux-x86/bin/ninja -f out/soong/build.ninja \
-  out/soong/.intermediates/system/security/keystore2/aidl/android.security.maintenance-rust/android_x86_64_rlib_rlib-std/libandroid_security_maintenance.rlib \
-  out/soong/.intermediates/system/security/keystore2/aidl/android.security.metrics-rust/android_x86_64_rlib_rlib-std/libandroid_security_metrics.rlib \
-  out/soong/.intermediates/system/security/keystore2/libkeystore2/android_x86_64_rlib_rlib-std/libkeystore2.rlib \
-  out/soong/.intermediates/system/security/keystore2/legacykeystore/liblegacykeystore-rust/android_x86_64_rlib_rlib-std/liblegacykeystore-rust.rlib \
-  out/soong/.intermediates/system/security/keystore2/keystore2/android_x86_64/keystore2 \
-  
-
-mkdir -p prebuiltlibs/system/security/keystore2/aidl/android.security.maintenance-rust/android_x86_64_rlib_rlib-std/ && mv out/soong/.intermediates/system/security/keystore2/aidl/android.security.maintenance-rust/android_x86_64_rlib_rlib-std/libandroid_security_maintenance.rlib prebuiltlibs/system/security/keystore2/aidl/android.security.maintenance-rust/android_x86_64_rlib_rlib-std/android.security.maintenance-rust.rlib
-mkdir -p prebuiltlibs/system/security/keystore2/aidl/android.security.metrics-rust/android_x86_64_rlib_rlib-std/ && mv out/soong/.intermediates/system/security/keystore2/aidl/android.security.metrics-rust/android_x86_64_rlib_rlib-std/libandroid_security_metrics.rlib prebuiltlibs/system/security/keystore2/aidl/android.security.metrics-rust/android_x86_64_rlib_rlib-std/android.security.metrics-rust.rlib
-mkdir -p prebuiltlibs/system/security/keystore2/libkeystore2/android_x86_64_rlib_rlib-std/ && mv out/soong/.intermediates/system/security/keystore2/libkeystore2/android_x86_64_rlib_rlib-std/libkeystore2.rlib prebuiltlibs/system/security/keystore2/libkeystore2/android_x86_64_rlib_rlib-std/libkeystore2.rlib
-mkdir -p prebuiltlibs/system/security/keystore2/legacykeystore/liblegacykeystore-rust/android_x86_64_rlib_rlib-std/ && mv out/soong/.intermediates/system/security/keystore2/legacykeystore/liblegacykeystore-rust/android_x86_64_rlib_rlib-std/liblegacykeystore-rust.rlib prebuiltlibs/system/security/keystore2/legacykeystore/liblegacykeystore-rust/android_x86_64_rlib_rlib-std/liblegacykeystore-rust.rlib
-mkdir -p prebuiltlibs/system/security/keystore2/keystore2/android_x86_64/ && mv out/soong/.intermediates/system/security/keystore2/keystore2/android_x86_64/keystore2 prebuiltlibs/system/security/keystore2/keystore2/android_x86_64/keystore2
-
-printf "\n" >> prebuiltlibs/system/security/keystore2/aidl/Android.bp
-printf "\n" >> prebuiltlibs/system/security/keystore2/aidl/Android.bp
-printf "rust_prebuilt_rlib {\n  name: \"libkeystore2\",\n  crate_name: \"keystore2\",\n  rustlibs: [\"android.hardware.security.keymint-V1-rust\",\"android.hardware.security.secureclock-V1-rust\",\"android.hardware.security.sharedsecret-V1-rust\",\"android.os.permissions_aidl-rust\",\"android.security.apc-rust\",\"android.security.authorization-rust\",\"android.security.compat-rust\",\"android.security.maintenance-rust\",\"android.security.metrics-rust\",\"android.security.remoteprovisioning-rust\",\"android.system.keystore2-V1-rust\",\"libanyhow\",\"libbinder_rs\",\"libcutils_bindgen\",\"libkeystore2_aaid-rust\",\"libkeystore2_apc_compat-rust\",\"libkeystore2_crypto_rust\",\"libkeystore2_km_compat\",\"libkeystore2_selinux\",\"libkeystore2_system_property-rust\",\"libkeystore2_vintf_rust\",\"liblazy_static\",\"liblibc\",\"liblibsqlite3_sys\",\"liblog_event_list\",\"liblog_rust\",\"librand\",\"librusqlite\",\"libthiserror\"],\n  shared_libs: [\"libcutils\"],\n  features: [\"watchdog\"],\n  multiple_variants: true,\n  srcs: [\"libkeystore2.rlib\"],\n}\n" >> prebuiltlibs/system/security/keystore2/Android.bp
-printf "rust_prebuilt_rlib {\n  name: \"liblegacykeystore-rust\",\n  crate_name: \"legacykeystore\",\n  rustlibs: [\"android.security.legacykeystore-rust\",\"libanyhow\",\"libbinder_rs\",\"libcutils_bindgen\",\"libkeystore2\",\"liblog_rust\",\"librusqlite\",\"libthiserror\"],\n  multiple_variants: true,\n  srcs: [\"liblegacykeystore-rust.rlib\"],\n}\n" >> prebuiltlibs/system/security/keystore2/legacykeystore/Android.bp
-printf "cc_prebuilt_binary {\n  name: \"keystore2\",\n  stl: \"none\",\n  prefer: true,\n  multiple_variants: true,\n  srcs: [\"keystore2\"],\n}\n" >> prebuiltlibs/system/security/keystore2/Android.bp
-
-df -h
-clean_out_intermediates
-mkdir -p prebuiltlibs/system/security/ninja && rsync -ar out/soong/ninja/system/security/ prebuiltlibs/system/security/ninja/system_security-12
-touch prebuiltlibs/system/security/ninja/.find-ignore
-tar cfJ system_security-12.tar.xz -C prebuiltlibs/system/security/ .
-ls -l system_security-12.tar.xz
 end=`date +%s`
 echo $((end-start))
 
