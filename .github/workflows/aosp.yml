@@ -7,7 +7,7 @@ on:
 env:
   branch: 'android-12.0.0_r1'
 jobs:
-  build_step15:
+  build_step16:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout
@@ -256,19 +256,6 @@ jobs:
         cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
         clone_depth_platform frameworks/native
 
-    - name: Restore Cache frameworks/opt/net/voip
-      id: frameworks_opt_net_voip
-      uses: actions/cache@v3
-      with:
-        path: aosp/frameworks/opt/net/voip
-        key: frameworks_opt_net_voip@${{ env.branch }}
-        restore-keys: frameworks_opt_net_voip@${{ env.branch }}
-    - name: Clone project frameworks/opt/net/voip
-      if: steps.frameworks_opt_net_voip.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        clone_depth_platform frameworks/opt/net/voip
-
     - name: Restore Cache frameworks/rs
       id: frameworks_rs
       uses: actions/cache@v3
@@ -281,6 +268,19 @@ jobs:
       run: |
         cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
         clone_depth_platform frameworks/rs
+
+    - name: Restore Cache frameworks/wilhelm
+      id: frameworks_wilhelm
+      uses: actions/cache@v3
+      with:
+        path: aosp/frameworks/wilhelm
+        key: frameworks_wilhelm@${{ env.branch }}
+        restore-keys: frameworks_wilhelm@${{ env.branch }}
+    - name: Clone project frameworks/wilhelm
+      if: steps.frameworks_wilhelm.outputs.cache-hit != 'true'
+      run: |
+        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
+        clone_depth_platform frameworks/wilhelm
 
     - name: Restore Cache hardware/interfaces
       id: hardware_interfaces
@@ -346,19 +346,6 @@ jobs:
       run: |
         cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
         clone_depth_platform libnativehelper
-
-    - name: Restore Cache packages/modules/Connectivity
-      id: packages_modules_Connectivity
-      uses: actions/cache@v3
-      with:
-        path: aosp/packages/modules/Connectivity
-        key: packages_modules_Connectivity@${{ env.branch }}
-        restore-keys: packages_modules_Connectivity@${{ env.branch }}
-    - name: Clone project packages/modules/Connectivity
-      if: steps.packages_modules_Connectivity.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        clone_depth_platform packages/modules/Connectivity
 
     - name: Restore Cache packages/modules/DnsResolver
       id: packages_modules_DnsResolver
@@ -828,6 +815,19 @@ jobs:
         cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
         download_release external_icu-6.tar.xz android-12.0.0_r1-6
 
+    - name: Restore Cache external_jsoncpp-4.tar.xz
+      id: external_jsoncpp-4
+      uses: actions/cache@v3
+      with:
+        path: aosp/external_jsoncpp-4.tar.xz
+        key: external_jsoncpp-4
+        restore-keys: external_jsoncpp-4
+    - name: Clone project external_jsoncpp-4.tar.xz
+      if: steps.external_jsoncpp-4.outputs.cache-hit != 'true'
+      run: |
+        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
+        download_release external_jsoncpp-4.tar.xz android-12.0.0_r1-4
+
     - name: Restore Cache external_libcxx-3.tar.xz
       id: external_libcxx-3
       uses: actions/cache@v3
@@ -854,19 +854,6 @@ jobs:
         cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
         download_release external_libcxxabi-2.tar.xz android-12.0.0_r1-2
 
-    - name: Restore Cache external_libgsm-4.tar.xz
-      id: external_libgsm-4
-      uses: actions/cache@v3
-      with:
-        path: aosp/external_libgsm-4.tar.xz
-        key: external_libgsm-4
-        restore-keys: external_libgsm-4
-    - name: Clone project external_libgsm-4.tar.xz
-      if: steps.external_libgsm-4.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        download_release external_libgsm-4.tar.xz android-12.0.0_r1-4
-
     - name: Restore Cache external_libjpeg-turbo-4.tar.xz
       id: external_libjpeg-turbo-4
       uses: actions/cache@v3
@@ -880,18 +867,44 @@ jobs:
         cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
         download_release external_libjpeg-turbo-4.tar.xz android-12.0.0_r1-4
 
-    - name: Restore Cache external_libxml2-7.tar.xz
-      id: external_libxml2-7
+    - name: Restore Cache external_libogg-4.tar.xz
+      id: external_libogg-4
       uses: actions/cache@v3
       with:
-        path: aosp/external_libxml2-7.tar.xz
-        key: external_libxml2-7
-        restore-keys: external_libxml2-7
-    - name: Clone project external_libxml2-7.tar.xz
-      if: steps.external_libxml2-7.outputs.cache-hit != 'true'
+        path: aosp/external_libogg-4.tar.xz
+        key: external_libogg-4
+        restore-keys: external_libogg-4
+    - name: Clone project external_libogg-4.tar.xz
+      if: steps.external_libogg-4.outputs.cache-hit != 'true'
       run: |
         cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        download_release external_libxml2-7.tar.xz android-12.0.0_r1-7
+        download_release external_libogg-4.tar.xz android-12.0.0_r1-4
+
+    - name: Restore Cache external_libvpx-4.tar.xz
+      id: external_libvpx-4
+      uses: actions/cache@v3
+      with:
+        path: aosp/external_libvpx-4.tar.xz
+        key: external_libvpx-4
+        restore-keys: external_libvpx-4
+    - name: Clone project external_libvpx-4.tar.xz
+      if: steps.external_libvpx-4.outputs.cache-hit != 'true'
+      run: |
+        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
+        download_release external_libvpx-4.tar.xz android-12.0.0_r1-4
+
+    - name: Restore Cache external_libyuv-5.tar.xz
+      id: external_libyuv-5
+      uses: actions/cache@v3
+      with:
+        path: aosp/external_libyuv-5.tar.xz
+        key: external_libyuv-5
+        restore-keys: external_libyuv-5
+    - name: Clone project external_libyuv-5.tar.xz
+      if: steps.external_libyuv-5.outputs.cache-hit != 'true'
+      run: |
+        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
+        download_release external_libyuv-5.tar.xz android-12.0.0_r1-5
 
     - name: Restore Cache external_pdfium-7.tar.xz
       id: external_pdfium-7
@@ -984,18 +997,18 @@ jobs:
         cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
         download_release external_zlib-2.tar.xz android-12.0.0_r1-2
 
-    - name: Restore Cache frameworks_av-13.tar.xz
-      id: frameworks_av-13
+    - name: Restore Cache frameworks_av-15.tar.xz
+      id: frameworks_av-15
       uses: actions/cache@v3
       with:
-        path: aosp/frameworks_av-13.tar.xz
-        key: frameworks_av-13
-        restore-keys: frameworks_av-13
-    - name: Clone project frameworks_av-13.tar.xz
-      if: steps.frameworks_av-13.outputs.cache-hit != 'true'
+        path: aosp/frameworks_av-15.tar.xz
+        key: frameworks_av-15
+        restore-keys: frameworks_av-15
+    - name: Clone project frameworks_av-15.tar.xz
+      if: steps.frameworks_av-15.outputs.cache-hit != 'true'
       run: |
         cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        download_release frameworks_av-13.tar.xz android-12.0.0_r1-13
+        download_release frameworks_av-15.tar.xz android-12.0.0_r1-15
 
     - name: Restore Cache frameworks_base-14.tar.xz
       id: frameworks_base-14
@@ -1049,31 +1062,31 @@ jobs:
         cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
         download_release frameworks_native-13.tar.xz android-12.0.0_r1-13
 
-    - name: Restore Cache frameworks_proto_logging-9.tar.xz
-      id: frameworks_proto_logging-9
+    - name: Restore Cache frameworks_rs-15.tar.xz
+      id: frameworks_rs-15
       uses: actions/cache@v3
       with:
-        path: aosp/frameworks_proto_logging-9.tar.xz
-        key: frameworks_proto_logging-9
-        restore-keys: frameworks_proto_logging-9
-    - name: Clone project frameworks_proto_logging-9.tar.xz
-      if: steps.frameworks_proto_logging-9.outputs.cache-hit != 'true'
+        path: aosp/frameworks_rs-15.tar.xz
+        key: frameworks_rs-15
+        restore-keys: frameworks_rs-15
+    - name: Clone project frameworks_rs-15.tar.xz
+      if: steps.frameworks_rs-15.outputs.cache-hit != 'true'
       run: |
         cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        download_release frameworks_proto_logging-9.tar.xz android-12.0.0_r1-9
+        download_release frameworks_rs-15.tar.xz android-12.0.0_r1-15
 
-    - name: Restore Cache frameworks_rs-14.tar.xz
-      id: frameworks_rs-14
+    - name: Restore Cache frameworks_wilhelm-4.tar.xz
+      id: frameworks_wilhelm-4
       uses: actions/cache@v3
       with:
-        path: aosp/frameworks_rs-14.tar.xz
-        key: frameworks_rs-14
-        restore-keys: frameworks_rs-14
-    - name: Clone project frameworks_rs-14.tar.xz
-      if: steps.frameworks_rs-14.outputs.cache-hit != 'true'
+        path: aosp/frameworks_wilhelm-4.tar.xz
+        key: frameworks_wilhelm-4
+        restore-keys: frameworks_wilhelm-4
+    - name: Clone project frameworks_wilhelm-4.tar.xz
+      if: steps.frameworks_wilhelm-4.outputs.cache-hit != 'true'
       run: |
         cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        download_release frameworks_rs-14.tar.xz android-12.0.0_r1-14
+        download_release frameworks_wilhelm-4.tar.xz android-12.0.0_r1-4
 
     - name: Restore Cache hardware_interfaces-13.tar.xz
       id: hardware_interfaces-13
@@ -1126,32 +1139,6 @@ jobs:
       run: |
         cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
         download_release libnativehelper-5.tar.xz android-12.0.0_r1-5
-
-    - name: Restore Cache packages_modules_Connectivity-6.tar.xz
-      id: packages_modules_Connectivity-6
-      uses: actions/cache@v3
-      with:
-        path: aosp/packages_modules_Connectivity-6.tar.xz
-        key: packages_modules_Connectivity-6
-        restore-keys: packages_modules_Connectivity-6
-    - name: Clone project packages_modules_Connectivity-6.tar.xz
-      if: steps.packages_modules_Connectivity-6.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        download_release packages_modules_Connectivity-6.tar.xz android-12.0.0_r1-6
-
-    - name: Restore Cache packages_modules_StatsD-9.tar.xz
-      id: packages_modules_StatsD-9
-      uses: actions/cache@v3
-      with:
-        path: aosp/packages_modules_StatsD-9.tar.xz
-        key: packages_modules_StatsD-9
-        restore-keys: packages_modules_StatsD-9
-    - name: Clone project packages_modules_StatsD-9.tar.xz
-      if: steps.packages_modules_StatsD-9.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        download_release packages_modules_StatsD-9.tar.xz android-12.0.0_r1-9
 
     - name: Restore Cache system_bpf-7.tar.xz
       id: system_bpf-7
@@ -1388,11 +1375,13 @@ jobs:
         extract_tar external_gwp_asan-4.tar.xz external/gwp_asan/ && du -ah -d1 prebuiltlibs/external/gwp_asan/|sort -rh
         extract_tar external_harfbuzz_ng-7.tar.xz external/harfbuzz_ng/ && du -ah -d1 prebuiltlibs/external/harfbuzz_ng/|sort -rh
         extract_tar external_icu-6.tar.xz external/icu/ && du -ah -d1 prebuiltlibs/external/icu/|sort -rh
+        extract_tar external_jsoncpp-4.tar.xz external/jsoncpp/ && du -ah -d1 prebuiltlibs/external/jsoncpp/|sort -rh
         extract_tar external_libcxx-3.tar.xz external/libcxx/ && du -ah -d1 prebuiltlibs/external/libcxx/|sort -rh
         extract_tar external_libcxxabi-2.tar.xz external/libcxxabi/ && du -ah -d1 prebuiltlibs/external/libcxxabi/|sort -rh
-        extract_tar external_libgsm-4.tar.xz external/libgsm/ && du -ah -d1 prebuiltlibs/external/libgsm/|sort -rh
         extract_tar external_libjpeg-turbo-4.tar.xz external/libjpeg-turbo/ && du -ah -d1 prebuiltlibs/external/libjpeg-turbo/|sort -rh
-        extract_tar external_libxml2-7.tar.xz external/libxml2/ && du -ah -d1 prebuiltlibs/external/libxml2/|sort -rh
+        extract_tar external_libogg-4.tar.xz external/libogg/ && du -ah -d1 prebuiltlibs/external/libogg/|sort -rh
+        extract_tar external_libvpx-4.tar.xz external/libvpx/ && du -ah -d1 prebuiltlibs/external/libvpx/|sort -rh
+        extract_tar external_libyuv-5.tar.xz external/libyuv/ && du -ah -d1 prebuiltlibs/external/libyuv/|sort -rh
         extract_tar external_pdfium-7.tar.xz external/pdfium/ && du -ah -d1 prebuiltlibs/external/pdfium/|sort -rh
         extract_tar external_protobuf-5.tar.xz external/protobuf/ && du -ah -d1 prebuiltlibs/external/protobuf/|sort -rh
         extract_tar external_scrypt-5.tar.xz external/scrypt/ && du -ah -d1 prebuiltlibs/external/scrypt/|sort -rh
@@ -1400,19 +1389,17 @@ jobs:
         extract_tar external_selinux-9.tar.xz external/selinux/ && du -ah -d1 prebuiltlibs/external/selinux/|sort -rh
         extract_tar external_sqlite-7.tar.xz external/sqlite/ && du -ah -d1 prebuiltlibs/external/sqlite/|sort -rh
         extract_tar external_zlib-2.tar.xz external/zlib/ && du -ah -d1 prebuiltlibs/external/zlib/|sort -rh
-        extract_tar frameworks_av-13.tar.xz frameworks/av/ && du -ah -d1 prebuiltlibs/frameworks/av/|sort -rh
+        extract_tar frameworks_av-15.tar.xz frameworks/av/ && du -ah -d1 prebuiltlibs/frameworks/av/|sort -rh
         extract_tar frameworks_base-14.tar.xz frameworks/base/ && du -ah -d1 prebuiltlibs/frameworks/base/|sort -rh
         extract_tar frameworks_hardware_interfaces-10.tar.xz frameworks/hardware/interfaces/ && du -ah -d1 prebuiltlibs/frameworks/hardware/interfaces/|sort -rh
         extract_tar frameworks_minikin-8.tar.xz frameworks/minikin/ && du -ah -d1 prebuiltlibs/frameworks/minikin/|sort -rh
         extract_tar frameworks_native-13.tar.xz frameworks/native/ && du -ah -d1 prebuiltlibs/frameworks/native/|sort -rh
-        extract_tar frameworks_proto_logging-9.tar.xz frameworks/proto_logging/ && du -ah -d1 prebuiltlibs/frameworks/proto_logging/|sort -rh
-        extract_tar frameworks_rs-14.tar.xz frameworks/rs/ && du -ah -d1 prebuiltlibs/frameworks/rs/|sort -rh
+        extract_tar frameworks_rs-15.tar.xz frameworks/rs/ && du -ah -d1 prebuiltlibs/frameworks/rs/|sort -rh
+        extract_tar frameworks_wilhelm-4.tar.xz frameworks/wilhelm/ && du -ah -d1 prebuiltlibs/frameworks/wilhelm/|sort -rh
         extract_tar hardware_interfaces-13.tar.xz hardware/interfaces/ && du -ah -d1 prebuiltlibs/hardware/interfaces/|sort -rh
         extract_tar hardware_libhardware-10.tar.xz hardware/libhardware/ && du -ah -d1 prebuiltlibs/hardware/libhardware/|sort -rh
         extract_tar hardware_libhardware_legacy-10.tar.xz hardware/libhardware_legacy/ && du -ah -d1 prebuiltlibs/hardware/libhardware_legacy/|sort -rh
         extract_tar libnativehelper-5.tar.xz libnativehelper/ && du -ah -d1 prebuiltlibs/libnativehelper/|sort -rh
-        extract_tar packages_modules_Connectivity-6.tar.xz packages/modules/Connectivity/ && du -ah -d1 prebuiltlibs/packages/modules/Connectivity/|sort -rh
-        extract_tar packages_modules_StatsD-9.tar.xz packages/modules/StatsD/ && du -ah -d1 prebuiltlibs/packages/modules/StatsD/|sort -rh
         extract_tar system_bpf-7.tar.xz system/bpf/ && du -ah -d1 prebuiltlibs/system/bpf/|sort -rh
         extract_tar system_core-12.tar.xz system/core/ && du -ah -d1 prebuiltlibs/system/core/|sort -rh
         extract_tar system_incremental_delivery-8.tar.xz system/incremental_delivery/ && du -ah -d1 prebuiltlibs/system/incremental_delivery/|sort -rh
@@ -1448,14 +1435,13 @@ jobs:
         du -ah -d1 frameworks/hardware/interfaces/|sort -rh && rm -rf frameworks/hardware/interfaces/.git
         du -ah -d1 frameworks/minikin/|sort -rh && rm -rf frameworks/minikin/.git
         du -ah -d1 frameworks/native/|sort -rh && rm -rf frameworks/native/.git
-        du -ah -d1 frameworks/opt/net/voip/|sort -rh && rm -rf frameworks/opt/net/voip/.git
         du -ah -d1 frameworks/rs/|sort -rh && rm -rf frameworks/rs/.git
+        du -ah -d1 frameworks/wilhelm/|sort -rh && rm -rf frameworks/wilhelm/.git
         du -ah -d1 hardware/interfaces/|sort -rh && rm -rf hardware/interfaces/.git
         du -ah -d1 hardware/libhardware/|sort -rh && rm -rf hardware/libhardware/.git
         du -ah -d1 hardware/libhardware_legacy/|sort -rh && rm -rf hardware/libhardware_legacy/.git
         du -ah -d1 kernel/configs/|sort -rh && rm -rf kernel/configs/.git
         du -ah -d1 libnativehelper/|sort -rh && rm -rf libnativehelper/.git
-        du -ah -d1 packages/modules/Connectivity/|sort -rh && rm -rf packages/modules/Connectivity/.git
         du -ah -d1 packages/modules/DnsResolver/|sort -rh && rm -rf packages/modules/DnsResolver/.git
         du -ah -d1 packages/modules/StatsD/|sort -rh && rm -rf packages/modules/StatsD/.git
         du -ah -d1 packages/modules/common/|sort -rh && rm -rf packages/modules/common/.git
@@ -1506,71 +1492,26 @@ jobs:
         mkdir -p external/compiler-rt/lib/cfi/ && curl 'https://android.googlesource.com/platform/external/compiler-rt/+/android12-gsi/lib/cfi/cfi_blocklist.txt?format=TEXT' | base64 -d > external/compiler-rt/lib/cfi/cfi_blocklist.txt
         mkdir -p out/soong/host/linux-x86/lib64/ && cp prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8/sysroot/usr/lib/libncurses.so.5.9 out/soong/host/linux-x86/lib64/libncurses.so.5
         mkdir -p out/soong/host/linux-x86/lib64/ && cp prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8/sysroot/usr/lib/libtinfo.so.5.9 out/soong/host/linux-x86/lib64/libtinfo.so.5
-        $GITHUB_WORKSPACE/scripts/build15.sh
+        $GITHUB_WORKSPACE/scripts/build16.sh
         df -h
 
     - uses: softprops/action-gh-release@master
       with:
-        name: ${{ env.branch }}-15
-        tag_name: ${{ env.branch }}-15
+        name: ${{ env.branch }}-16
+        tag_name: ${{ env.branch }}-16
         files: |
-          aosp/frameworks_av-15.tar.xz
-          aosp/frameworks_opt_net_voip-15.tar.xz
-          aosp/frameworks_rs-15.tar.xz
-          aosp/packages_modules_Connectivity-15.tar.xz
+          aosp/frameworks_wilhelm-16.tar.xz
 
-    - name: Archive frameworks_av-15.tar.xz
+    - name: Archive frameworks_wilhelm-16.tar.xz
       uses: actions/upload-artifact@v3
       with:
-        name: frameworks_av-15.tar.xz
-        path: aosp/frameworks_av-15.tar.xz
+        name: frameworks_wilhelm-16.tar.xz
+        path: aosp/frameworks_wilhelm-16.tar.xz
 
-    - name: Archive frameworks_opt_net_voip-15.tar.xz
-      uses: actions/upload-artifact@v3
-      with:
-        name: frameworks_opt_net_voip-15.tar.xz
-        path: aosp/frameworks_opt_net_voip-15.tar.xz
-
-    - name: Archive frameworks_rs-15.tar.xz
-      uses: actions/upload-artifact@v3
-      with:
-        name: frameworks_rs-15.tar.xz
-        path: aosp/frameworks_rs-15.tar.xz
-
-    - name: Archive packages_modules_Connectivity-15.tar.xz
-      uses: actions/upload-artifact@v3
-      with:
-        name: packages_modules_Connectivity-15.tar.xz
-        path: aosp/packages_modules_Connectivity-15.tar.xz
-
-    - name: Restore Cache frameworks_av-15.tar.xz
-      id: frameworks_av-15
+    - name: Restore Cache frameworks_wilhelm-16.tar.xz
+      id: frameworks_wilhelm-16
       uses: actions/cache@v3
       with:
-        path: aosp/frameworks_av-15.tar.xz
-        key: frameworks_av-15
-        restore-keys: frameworks_av-15
-
-    - name: Restore Cache frameworks_opt_net_voip-15.tar.xz
-      id: frameworks_opt_net_voip-15
-      uses: actions/cache@v3
-      with:
-        path: aosp/frameworks_opt_net_voip-15.tar.xz
-        key: frameworks_opt_net_voip-15
-        restore-keys: frameworks_opt_net_voip-15
-
-    - name: Restore Cache frameworks_rs-15.tar.xz
-      id: frameworks_rs-15
-      uses: actions/cache@v3
-      with:
-        path: aosp/frameworks_rs-15.tar.xz
-        key: frameworks_rs-15
-        restore-keys: frameworks_rs-15
-
-    - name: Restore Cache packages_modules_Connectivity-15.tar.xz
-      id: packages_modules_Connectivity-15
-      uses: actions/cache@v3
-      with:
-        path: aosp/packages_modules_Connectivity-15.tar.xz
-        key: packages_modules_Connectivity-15
-        restore-keys: packages_modules_Connectivity-15
+        path: aosp/frameworks_wilhelm-16.tar.xz
+        key: frameworks_wilhelm-16
+        restore-keys: frameworks_wilhelm-16
