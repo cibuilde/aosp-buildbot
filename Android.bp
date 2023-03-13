@@ -24,7 +24,7 @@ cc_binary {
   target: { android: { lto: { thin: true, }, }, },
 }
 cc_prebuilt_binary {
-  name: "dex2oatd.prebuilt",
+  name: "dex2oatd",
   device_supported: false,
   host_supported: true,
   stl: "none",
