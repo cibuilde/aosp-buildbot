@@ -205,3 +205,10 @@ libkeystore2_km_compat
 libkeystore2
 liblegacykeystore-rust
 keystore2
+librutabaga_gfx
+libvm_control
+libdevices
+libarch
+libx86_64_rust
+libcrosvm
+crosvm
