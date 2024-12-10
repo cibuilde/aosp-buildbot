@@ -53,6 +53,7 @@ function clone_sparse() {
     set -x
     git clone --filter=tree:0 --single-branch --no-tags --sparse ${AOSP_PLATFORM_URL}$1 $1 -b ${BRANCH}
     sparse_setup "$@"
+	#set +x
   fi
 }
 
@@ -72,6 +73,7 @@ function clone_sparse_exclude() {
     prj_path=$1
     shift;
     git -C $prj_path sparse-checkout set --no-cone '/*'  "$@"
+	#set +x
   fi
 }
 
@@ -79,7 +81,7 @@ function clone_project() {
   branch=$BRANCH
   project_name=$1
   project_path=$2
-  shift 3
+  shift 2
   mkdir -p ${project_path} && cd ${project_path}
   git init
   git config --unset-all core.bare
