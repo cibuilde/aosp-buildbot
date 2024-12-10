@@ -4,7 +4,7 @@ mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 source $GITHUB_WORKSPACE/envsetup.sh
 tar xf $GITHUB_WORKSPACE/ninja.tar.xz
 
-clone_project platform/build build/make
+clone_depth build/make platform/build
 
 echo "building fsverity-release-cert-der^android_x86_64"
 ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja fsverity-release-cert-der,android_x86_64

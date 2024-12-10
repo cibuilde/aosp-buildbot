@@ -6,14 +6,19 @@ function clone_depth() {
   local project_path=$1
   local path_key=${project_path//\//-}
   local cache_file="$GITHUB_WORKSPACE/cache/${path_key}.tar.xz"
-  
+  local project_name=$project_path
+    # Add check for additional arguments
+  if [ $# -gt 1 ]; then
+    local project_name=$2
+  fi
+
   if [ -f "$cache_file" ]; then
     echo "Cache hit: Extracting $cache_file to $project_path"
     mkdir -p "$project_path"
     tar xf "$cache_file" -C "$project_path"
   else
     echo "Cache miss: Cloning $project_path"
-    git clone --depth=1 ${GIT_AOSP_URL}$project_path $project_path -b ${BRANCH}
+    git clone --depth=1 ${GIT_AOSP_URL}$project_name $project_path -b ${BRANCH}
   fi
 }
 
@@ -78,6 +83,7 @@ function clone_sparse_exclude() {
 }
 
 function clone_project() {
+  set -x
   branch=$BRANCH
   project_name=$1
   project_path=$2

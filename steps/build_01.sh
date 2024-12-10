@@ -1,10 +1,10 @@
 set -e
 
+source steps/build_01/build_make.sh
 source steps/build_01/art.sh
 source steps/build_01/bionic.sh
 source steps/build_01/bootable_recovery.sh
 source steps/build_01/build_blueprint.sh
-source steps/build_01/build_make.sh
 source steps/build_01/build_soong.sh
 source steps/build_01/device_generic_vulkan-cereal.sh
 source steps/build_01/device_google_cuttlefish.sh
