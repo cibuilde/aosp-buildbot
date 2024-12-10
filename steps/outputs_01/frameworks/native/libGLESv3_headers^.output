@@ -1,0 +1,5 @@
+out/soong/ndk/sysroot/usr/include/GLES3/gl3.h
+out/soong/ndk/sysroot/usr/include/GLES3/gl31.h
+out/soong/ndk/sysroot/usr/include/GLES3/gl32.h
+out/soong/ndk/sysroot/usr/include/GLES3/gl3ext.h
+out/soong/ndk/sysroot/usr/include/GLES3/gl3platform.h

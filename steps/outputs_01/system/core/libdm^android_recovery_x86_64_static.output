@@ -1,0 +1,6 @@
+out/soong/.intermediates/system/core/fs_mgr/libdm/libdm/android_recovery_x86_64_static/libdm.a
+out/soong/.intermediates/system/core/fs_mgr/libdm/libdm/android_recovery_x86_64_static/obj/system/core/fs_mgr/libdm/dm.o
+out/soong/.intermediates/system/core/fs_mgr/libdm/libdm/android_recovery_x86_64_static/obj/system/core/fs_mgr/libdm/dm_table.o
+out/soong/.intermediates/system/core/fs_mgr/libdm/libdm/android_recovery_x86_64_static/obj/system/core/fs_mgr/libdm/dm_target.o
+out/soong/.intermediates/system/core/fs_mgr/libdm/libdm/android_recovery_x86_64_static/obj/system/core/fs_mgr/libdm/loop_control.o
+out/soong/.intermediates/system/core/fs_mgr/libdm/libdm/android_recovery_x86_64_static/obj/system/core/fs_mgr/libdm/utility.o

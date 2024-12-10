@@ -1,0 +1,8 @@
+out/soong/.intermediates/bootable/recovery/recovery_ui/librecovery_ui/android_recovery_x86_64_static/obj/bootable/recovery/recovery_ui/device.o
+out/soong/.intermediates/bootable/recovery/recovery_ui/librecovery_ui/android_recovery_x86_64_static/obj/bootable/recovery/recovery_ui/ethernet_device.o
+out/soong/.intermediates/bootable/recovery/recovery_ui/librecovery_ui/android_recovery_x86_64_static/obj/bootable/recovery/recovery_ui/ethernet_ui.o
+out/soong/.intermediates/bootable/recovery/recovery_ui/librecovery_ui/android_recovery_x86_64_static/obj/bootable/recovery/recovery_ui/screen_ui.o
+out/soong/.intermediates/bootable/recovery/recovery_ui/librecovery_ui/android_recovery_x86_64_static/obj/bootable/recovery/recovery_ui/stub_ui.o
+out/soong/.intermediates/bootable/recovery/recovery_ui/librecovery_ui/android_recovery_x86_64_static/obj/bootable/recovery/recovery_ui/ui.o
+out/soong/.intermediates/bootable/recovery/recovery_ui/librecovery_ui/android_recovery_x86_64_static/obj/bootable/recovery/recovery_ui/vr_ui.o
+out/soong/.intermediates/bootable/recovery/recovery_ui/librecovery_ui/android_recovery_x86_64_static/obj/bootable/recovery/recovery_ui/wear_ui.o

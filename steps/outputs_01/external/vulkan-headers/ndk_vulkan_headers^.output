@@ -1,0 +1,4 @@
+out/soong/ndk/sysroot/usr/include/vulkan/vk_platform.h
+out/soong/ndk/sysroot/usr/include/vulkan/vulkan.h
+out/soong/ndk/sysroot/usr/include/vulkan/vulkan_android.h
+out/soong/ndk/sysroot/usr/include/vulkan/vulkan_core.h

@@ -1,0 +1,7 @@
+out/soong/.intermediates/system/unwinding/libbacktrace/libbacktrace/linux_glibc_x86_64_static/obj/system/unwinding/libbacktrace/Backtrace.o
+out/soong/.intermediates/system/unwinding/libbacktrace/libbacktrace/linux_glibc_x86_64_static/obj/system/unwinding/libbacktrace/BacktraceCurrent.o
+out/soong/.intermediates/system/unwinding/libbacktrace/libbacktrace/linux_glibc_x86_64_static/obj/system/unwinding/libbacktrace/BacktraceMap.o
+out/soong/.intermediates/system/unwinding/libbacktrace/libbacktrace/linux_glibc_x86_64_static/obj/system/unwinding/libbacktrace/BacktracePtrace.o
+out/soong/.intermediates/system/unwinding/libbacktrace/libbacktrace/linux_glibc_x86_64_static/obj/system/unwinding/libbacktrace/ThreadEntry.o
+out/soong/.intermediates/system/unwinding/libbacktrace/libbacktrace/linux_glibc_x86_64_static/obj/system/unwinding/libbacktrace/UnwindStack.o
+out/soong/.intermediates/system/unwinding/libbacktrace/libbacktrace/linux_glibc_x86_64_static/obj/system/unwinding/libbacktrace/UnwindStackMap.o

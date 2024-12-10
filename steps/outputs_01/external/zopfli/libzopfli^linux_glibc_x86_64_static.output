@@ -1,0 +1,12 @@
+out/soong/.intermediates/external/zopfli/libzopfli/linux_glibc_x86_64_static/obj/external/zopfli/src/zopfli/blocksplitter.o
+out/soong/.intermediates/external/zopfli/libzopfli/linux_glibc_x86_64_static/obj/external/zopfli/src/zopfli/cache.o
+out/soong/.intermediates/external/zopfli/libzopfli/linux_glibc_x86_64_static/obj/external/zopfli/src/zopfli/deflate.o
+out/soong/.intermediates/external/zopfli/libzopfli/linux_glibc_x86_64_static/obj/external/zopfli/src/zopfli/gzip_container.o
+out/soong/.intermediates/external/zopfli/libzopfli/linux_glibc_x86_64_static/obj/external/zopfli/src/zopfli/hash.o
+out/soong/.intermediates/external/zopfli/libzopfli/linux_glibc_x86_64_static/obj/external/zopfli/src/zopfli/katajainen.o
+out/soong/.intermediates/external/zopfli/libzopfli/linux_glibc_x86_64_static/obj/external/zopfli/src/zopfli/lz77.o
+out/soong/.intermediates/external/zopfli/libzopfli/linux_glibc_x86_64_static/obj/external/zopfli/src/zopfli/squeeze.o
+out/soong/.intermediates/external/zopfli/libzopfli/linux_glibc_x86_64_static/obj/external/zopfli/src/zopfli/tree.o
+out/soong/.intermediates/external/zopfli/libzopfli/linux_glibc_x86_64_static/obj/external/zopfli/src/zopfli/util.o
+out/soong/.intermediates/external/zopfli/libzopfli/linux_glibc_x86_64_static/obj/external/zopfli/src/zopfli/zlib_container.o
+out/soong/.intermediates/external/zopfli/libzopfli/linux_glibc_x86_64_static/obj/external/zopfli/src/zopfli/zopfli_lib.o

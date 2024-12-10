@@ -1,0 +1,5 @@
+out/soong/.intermediates/art/libelffile/libelffile/linux_glibc_x86_64_static/obj/art/libelffile/elf/xz_utils.o
+out/soong/.intermediates/art/libelffile/libelffile/linux_glibc_x86_64_static/obj/art/libelffile/stream/buffered_output_stream.o
+out/soong/.intermediates/art/libelffile/libelffile/linux_glibc_x86_64_static/obj/art/libelffile/stream/file_output_stream.o
+out/soong/.intermediates/art/libelffile/libelffile/linux_glibc_x86_64_static/obj/art/libelffile/stream/output_stream.o
+out/soong/.intermediates/art/libelffile/libelffile/linux_glibc_x86_64_static/obj/art/libelffile/stream/vector_output_stream.o

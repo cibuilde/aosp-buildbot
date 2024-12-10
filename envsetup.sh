@@ -1,13 +1,35 @@
 export GIT_AOSP_URL="https://android.googlesource.com/"
 export AOSP_PLATFORM_URL="${GIT_AOSP_URL}platform/"
-export BRANCH="android-12.0.0_r1"
+export BRANCH="android12-gsi"
 
 function clone_depth() {
-  git clone --depth=1 ${GIT_AOSP_URL}$1 $1 -b ${BRANCH}
+  local project_path=$1
+  local path_key=${project_path//\//-}
+  local cache_file="$GITHUB_WORKSPACE/cache/${path_key}.tar.xz"
+  
+  if [ -f "$cache_file" ]; then
+    echo "Cache hit: Extracting $cache_file to $project_path"
+    mkdir -p "$project_path"
+    tar xf "$cache_file" -C "$project_path"
+  else
+    echo "Cache miss: Cloning $project_path"
+    git clone --depth=1 ${GIT_AOSP_URL}$project_path $project_path -b ${BRANCH}
+  fi
 }
 
 function clone_depth_platform() {
-  git clone --depth=1 ${AOSP_PLATFORM_URL}$1 $1 -b ${BRANCH}
+  local project_path=$1
+  local path_key=${project_path//\//-}
+  local cache_file="$GITHUB_WORKSPACE/cache/${path_key}.tar.xz"
+  
+  if [ -f "$cache_file" ]; then
+    echo "Cache hit: Extracting $cache_file to $project_path"
+    mkdir -p "$project_path"
+    tar xf "$cache_file" -C "$project_path"
+  else
+    echo "Cache miss: Cloning $project_path"
+    git clone --depth=1 ${AOSP_PLATFORM_URL}$1 $1 -b ${BRANCH}
+  fi
 }
 
 function sparse_setup() {
@@ -18,17 +40,39 @@ function sparse_setup() {
 }
 
 function clone_sparse() {
-  set -x
-  git clone --filter=tree:0 --single-branch --no-tags --sparse ${AOSP_PLATFORM_URL}$1 $1 -b ${BRANCH}
-  sparse_setup "$@"
+  local project_path=$1
+  local path_key=${project_path//\//-}
+  local cache_file="$GITHUB_WORKSPACE/cache/${path_key}.tar.xz"
+  
+  if [ -f "$cache_file" ]; then
+    echo "Cache hit: Extracting $cache_file to $project_path"
+    mkdir -p "$project_path"
+    tar xf "$cache_file" -C "$project_path"
+  else
+    echo "Cache miss: Cloning $project_path"
+    set -x
+    git clone --filter=tree:0 --single-branch --no-tags --sparse ${AOSP_PLATFORM_URL}$1 $1 -b ${BRANCH}
+    sparse_setup "$@"
+  fi
 }
 
 function clone_sparse_exclude() {
-  set -x
-  git clone --filter=tree:0 --single-branch --no-tags --sparse ${AOSP_PLATFORM_URL}$1 $1 -b ${BRANCH}
-  prj_path=$1
-  shift;
-  git -C $prj_path sparse-checkout set --no-cone '/*'  "$@"
+  local project_path=$1
+  local path_key=${project_path//\//-}
+  local cache_file="$GITHUB_WORKSPACE/cache/${path_key}.tar.xz"
+  
+  if [ -f "$cache_file" ]; then
+    echo "Cache hit: Extracting $cache_file to $project_path"
+    mkdir -p "$project_path"
+    tar xf "$cache_file" -C "$project_path"
+  else
+    echo "Cache miss: Cloning $project_path"
+    set -x
+    git clone --filter=tree:0 --single-branch --no-tags --sparse ${AOSP_PLATFORM_URL}$1 $1 -b ${BRANCH}
+    prj_path=$1
+    shift;
+    git -C $prj_path sparse-checkout set --no-cone '/*'  "$@"
+  fi
 }
 
 function clone_project() {
@@ -68,3 +112,4 @@ function clean_out_intermediates() {
     find out/soong/.intermediates/prebuiltlibs -maxdepth 1 -mindepth 1 ! -name 'bionic' -type d -exec rm -rf {} +
   fi
 }
+

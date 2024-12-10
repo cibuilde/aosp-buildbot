@@ -1,0 +1,3 @@
+out/soong/.intermediates/frameworks/native/opengl/libs/libEGL_blobCache/android_x86_64_static/libEGL_blobCache.a
+out/soong/.intermediates/frameworks/native/opengl/libs/libEGL_blobCache/android_x86_64_static/obj/frameworks/native/opengl/libs/EGL/BlobCache.sdump
+out/soong/.intermediates/frameworks/native/opengl/libs/libEGL_blobCache/android_x86_64_static/obj/frameworks/native/opengl/libs/EGL/FileBlobCache.sdump

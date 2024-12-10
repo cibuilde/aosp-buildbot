@@ -1,0 +1,14 @@
+out/soong/.intermediates/system/netd/libnetdutils/libnetdutils/android_x86_64_static_cfi_apex29/libnetdutils.a
+out/soong/.intermediates/system/netd/libnetdutils/libnetdutils/android_x86_64_static_cfi_apex29/obj/system/netd/libnetdutils/DumpWriter.sdump
+out/soong/.intermediates/system/netd/libnetdutils/libnetdutils/android_x86_64_static_cfi_apex29/obj/system/netd/libnetdutils/Fd.sdump
+out/soong/.intermediates/system/netd/libnetdutils/libnetdutils/android_x86_64_static_cfi_apex29/obj/system/netd/libnetdutils/InternetAddresses.sdump
+out/soong/.intermediates/system/netd/libnetdutils/libnetdutils/android_x86_64_static_cfi_apex29/obj/system/netd/libnetdutils/Log.sdump
+out/soong/.intermediates/system/netd/libnetdutils/libnetdutils/android_x86_64_static_cfi_apex29/obj/system/netd/libnetdutils/Netfilter.sdump
+out/soong/.intermediates/system/netd/libnetdutils/libnetdutils/android_x86_64_static_cfi_apex29/obj/system/netd/libnetdutils/Netlink.sdump
+out/soong/.intermediates/system/netd/libnetdutils/libnetdutils/android_x86_64_static_cfi_apex29/obj/system/netd/libnetdutils/Slice.sdump
+out/soong/.intermediates/system/netd/libnetdutils/libnetdutils/android_x86_64_static_cfi_apex29/obj/system/netd/libnetdutils/Socket.sdump
+out/soong/.intermediates/system/netd/libnetdutils/libnetdutils/android_x86_64_static_cfi_apex29/obj/system/netd/libnetdutils/SocketOption.sdump
+out/soong/.intermediates/system/netd/libnetdutils/libnetdutils/android_x86_64_static_cfi_apex29/obj/system/netd/libnetdutils/Status.sdump
+out/soong/.intermediates/system/netd/libnetdutils/libnetdutils/android_x86_64_static_cfi_apex29/obj/system/netd/libnetdutils/Syscalls.sdump
+out/soong/.intermediates/system/netd/libnetdutils/libnetdutils/android_x86_64_static_cfi_apex29/obj/system/netd/libnetdutils/UniqueFd.sdump
+out/soong/.intermediates/system/netd/libnetdutils/libnetdutils/android_x86_64_static_cfi_apex29/obj/system/netd/libnetdutils/UniqueFile.sdump

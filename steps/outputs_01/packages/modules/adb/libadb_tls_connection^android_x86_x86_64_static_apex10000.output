@@ -1,0 +1,3 @@
+out/soong/.intermediates/packages/modules/adb/tls/libadb_tls_connection/android_x86_x86_64_static_apex10000/libadb_tls_connection.a
+out/soong/.intermediates/packages/modules/adb/tls/libadb_tls_connection/android_x86_x86_64_static_apex10000/obj/packages/modules/adb/tls/adb_ca_list.sdump
+out/soong/.intermediates/packages/modules/adb/tls/libadb_tls_connection/android_x86_x86_64_static_apex10000/obj/packages/modules/adb/tls/tls_connection.sdump

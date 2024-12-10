@@ -1,0 +1,7 @@
+out/soong/.intermediates/external/python/cpython2/py2-c-module-_io/linux_glibc_x86_64_static/obj/external/python/cpython2/Modules/_io/_iomodule.o
+out/soong/.intermediates/external/python/cpython2/py2-c-module-_io/linux_glibc_x86_64_static/obj/external/python/cpython2/Modules/_io/bufferedio.o
+out/soong/.intermediates/external/python/cpython2/py2-c-module-_io/linux_glibc_x86_64_static/obj/external/python/cpython2/Modules/_io/bytesio.o
+out/soong/.intermediates/external/python/cpython2/py2-c-module-_io/linux_glibc_x86_64_static/obj/external/python/cpython2/Modules/_io/fileio.o
+out/soong/.intermediates/external/python/cpython2/py2-c-module-_io/linux_glibc_x86_64_static/obj/external/python/cpython2/Modules/_io/iobase.o
+out/soong/.intermediates/external/python/cpython2/py2-c-module-_io/linux_glibc_x86_64_static/obj/external/python/cpython2/Modules/_io/stringio.o
+out/soong/.intermediates/external/python/cpython2/py2-c-module-_io/linux_glibc_x86_64_static/obj/external/python/cpython2/Modules/_io/textio.o

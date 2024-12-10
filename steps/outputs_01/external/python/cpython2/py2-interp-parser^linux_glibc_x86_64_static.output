@@ -1,0 +1,13 @@
+out/soong/.intermediates/external/python/cpython2/py2-interp-parser/linux_glibc_x86_64_static/obj/external/python/cpython2/Parser/acceler.o
+out/soong/.intermediates/external/python/cpython2/py2-interp-parser/linux_glibc_x86_64_static/obj/external/python/cpython2/Parser/bitset.o
+out/soong/.intermediates/external/python/cpython2/py2-interp-parser/linux_glibc_x86_64_static/obj/external/python/cpython2/Parser/firstsets.o
+out/soong/.intermediates/external/python/cpython2/py2-interp-parser/linux_glibc_x86_64_static/obj/external/python/cpython2/Parser/grammar.o
+out/soong/.intermediates/external/python/cpython2/py2-interp-parser/linux_glibc_x86_64_static/obj/external/python/cpython2/Parser/grammar1.o
+out/soong/.intermediates/external/python/cpython2/py2-interp-parser/linux_glibc_x86_64_static/obj/external/python/cpython2/Parser/listnode.o
+out/soong/.intermediates/external/python/cpython2/py2-interp-parser/linux_glibc_x86_64_static/obj/external/python/cpython2/Parser/metagrammar.o
+out/soong/.intermediates/external/python/cpython2/py2-interp-parser/linux_glibc_x86_64_static/obj/external/python/cpython2/Parser/myreadline.o
+out/soong/.intermediates/external/python/cpython2/py2-interp-parser/linux_glibc_x86_64_static/obj/external/python/cpython2/Parser/node.o
+out/soong/.intermediates/external/python/cpython2/py2-interp-parser/linux_glibc_x86_64_static/obj/external/python/cpython2/Parser/parser.o
+out/soong/.intermediates/external/python/cpython2/py2-interp-parser/linux_glibc_x86_64_static/obj/external/python/cpython2/Parser/parsetok.o
+out/soong/.intermediates/external/python/cpython2/py2-interp-parser/linux_glibc_x86_64_static/obj/external/python/cpython2/Parser/pgen.o
+out/soong/.intermediates/external/python/cpython2/py2-interp-parser/linux_glibc_x86_64_static/obj/external/python/cpython2/Parser/tokenizer.o

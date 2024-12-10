@@ -2,1404 +2,3056 @@
 name: AOSP Build
 on:
   push:
-    branches:
-    - main
+    branches: main
 env:
-  branch: 'android-12.0.0_r1'
+  branch: 'android12-gsi'
 jobs:
-  build_step17:
+  build_01:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout
       uses: actions/checkout@main
-    - uses: actions/setup-python@v4
-      with:
-        python-version: "2.7"
-    - name: Download get_clang_version.py
-      run: |
-        curl 'https://android.googlesource.com/platform/build/soong/+/refs/heads/master/scripts/get_clang_version.py?format=TEXT' | base64 -d > $GITHUB_WORKSPACE/get_clang_version.py
-        mkdir -p aosp
 
-    - name: Restore Cache build/make
-      id: build_make
-      uses: actions/cache@v3
-      with:
-        path: aosp/build/make
-        key: build_make@${{ env.branch }}
-        restore-keys: build_make@${{ env.branch }}
-    - name: Clone project build/make
-      if: steps.build_make.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        clone_depth_platform build
-        mv build make && mkdir build && mv make build/
-        sed -i 's/^PRODUCT_EXTRA_VNDK_VERSIONS/#PRODUCT_EXTRA_VNDK_VERSIONS/g' build/make/target/product/gsi_release.mk
-
-    - name: Restore Cache art
+    - name: Restore Cache art.tar.xz
       id: art
-      uses: actions/cache@v3
+      uses: actions/cache@v4
       with:
-        path: aosp/art
-        key: art@${{ env.branch }}
-        restore-keys: art@${{ env.branch }}
-    - name: Clone project art
-      if: steps.art.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        clone_depth_platform art
+        path: cache/art.tar.xz
+        key: art@${ env.branch }
+        restore-keys: art@${ env.branch }
 
-    - name: Restore Cache bionic
+    - name: Restore Cache bionic.tar.xz
       id: bionic
-      uses: actions/cache@v3
+      uses: actions/cache@v4
       with:
-        path: aosp/bionic
-        key: bionic@${{ env.branch }}
-        restore-keys: bionic@${{ env.branch }}
-    - name: Clone project bionic
-      if: steps.bionic.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        clone_depth_platform bionic
+        path: cache/bionic.tar.xz
+        key: bionic@${ env.branch }
+        restore-keys: bionic@${ env.branch }
 
-    - name: Restore Cache build/blueprint
+    - name: Restore Cache bootable_recovery.tar.xz
+      id: bootable_recovery
+      uses: actions/cache@v4
+      with:
+        path: cache/bootable_recovery.tar.xz
+        key: bootable_recovery@${ env.branch }
+        restore-keys: bootable_recovery@${ env.branch }
+
+    - name: Restore Cache build_blueprint.tar.xz
       id: build_blueprint
-      uses: actions/cache@v3
+      uses: actions/cache@v4
       with:
-        path: aosp/build/blueprint
-        key: build_blueprint@${{ env.branch }}
-        restore-keys: build_blueprint@${{ env.branch }}
-    - name: Clone project build/blueprint
-      if: steps.build_blueprint.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        clone_depth_platform build/blueprint
+        path: cache/build_blueprint.tar.xz
+        key: build_blueprint@${ env.branch }
+        restore-keys: build_blueprint@${ env.branch }
 
-    - name: Restore Cache build/soong
+    - name: Restore Cache build_make.tar.xz
+      id: build_make
+      uses: actions/cache@v4
+      with:
+        path: cache/build_make.tar.xz
+        key: build_make@${ env.branch }
+        restore-keys: build_make@${ env.branch }
+
+    - name: Restore Cache build_soong.tar.xz
       id: build_soong
-      uses: actions/cache@v3
+      uses: actions/cache@v4
       with:
-        path: aosp/build/soong
-        key: build_soong@${{ env.branch }}
-        restore-keys: build_soong@${{ env.branch }}
-    - name: Clone project build/soong
-      if: steps.build_soong.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        clone_depth_platform build/soong
+        path: cache/build_soong.tar.xz
+        key: build_soong@${ env.branch }
+        restore-keys: build_soong@${ env.branch }
 
-    - name: Restore Cache external/golang-protobuf
+    - name: Restore Cache cts.tar.xz
+      id: cts
+      uses: actions/cache@v4
+      with:
+        path: cache/cts.tar.xz
+        key: cts@${ env.branch }
+        restore-keys: cts@${ env.branch }
+
+    - name: Restore Cache device_generic_vulkan-cereal.tar.xz
+      id: device_generic_vulkan-cereal
+      uses: actions/cache@v4
+      with:
+        path: cache/device_generic_vulkan-cereal.tar.xz
+        key: device_generic_vulkan-cereal@${ env.branch }
+        restore-keys: device_generic_vulkan-cereal@${ env.branch }
+
+    - name: Restore Cache device_google_cuttlefish.tar.xz
+      id: device_google_cuttlefish
+      uses: actions/cache@v4
+      with:
+        path: cache/device_google_cuttlefish.tar.xz
+        key: device_google_cuttlefish@${ env.branch }
+        restore-keys: device_google_cuttlefish@${ env.branch }
+
+    - name: Restore Cache device_google_cuttlefish_prebuilts.tar.xz
+      id: device_google_cuttlefish_prebuilts
+      uses: actions/cache@v4
+      with:
+        path: cache/device_google_cuttlefish_prebuilts.tar.xz
+        key: device_google_cuttlefish_prebuilts@${ env.branch }
+        restore-keys: device_google_cuttlefish_prebuilts@${ env.branch }
+
+    - name: Restore Cache external_OpenCSD.tar.xz
+      id: external_OpenCSD
+      uses: actions/cache@v4
+      with:
+        path: cache/external_OpenCSD.tar.xz
+        key: external_OpenCSD@${ env.branch }
+        restore-keys: external_OpenCSD@${ env.branch }
+
+    - name: Restore Cache external_aac.tar.xz
+      id: external_aac
+      uses: actions/cache@v4
+      with:
+        path: cache/external_aac.tar.xz
+        key: external_aac@${ env.branch }
+        restore-keys: external_aac@${ env.branch }
+
+    - name: Restore Cache external_angle.tar.xz
+      id: external_angle
+      uses: actions/cache@v4
+      with:
+        path: cache/external_angle.tar.xz
+        key: external_angle@${ env.branch }
+        restore-keys: external_angle@${ env.branch }
+
+    - name: Restore Cache external_apache-http.tar.xz
+      id: external_apache-http
+      uses: actions/cache@v4
+      with:
+        path: cache/external_apache-http.tar.xz
+        key: external_apache-http@${ env.branch }
+        restore-keys: external_apache-http@${ env.branch }
+
+    - name: Restore Cache external_arm-optimized-routines.tar.xz
+      id: external_arm-optimized-routines
+      uses: actions/cache@v4
+      with:
+        path: cache/external_arm-optimized-routines.tar.xz
+        key: external_arm-optimized-routines@${ env.branch }
+        restore-keys: external_arm-optimized-routines@${ env.branch }
+
+    - name: Restore Cache external_avb.tar.xz
+      id: external_avb
+      uses: actions/cache@v4
+      with:
+        path: cache/external_avb.tar.xz
+        key: external_avb@${ env.branch }
+        restore-keys: external_avb@${ env.branch }
+
+    - name: Restore Cache external_bcc.tar.xz
+      id: external_bcc
+      uses: actions/cache@v4
+      with:
+        path: cache/external_bcc.tar.xz
+        key: external_bcc@${ env.branch }
+        restore-keys: external_bcc@${ env.branch }
+
+    - name: Restore Cache external_boringssl.tar.xz
+      id: external_boringssl
+      uses: actions/cache@v4
+      with:
+        path: cache/external_boringssl.tar.xz
+        key: external_boringssl@${ env.branch }
+        restore-keys: external_boringssl@${ env.branch }
+
+    - name: Restore Cache external_brotli.tar.xz
+      id: external_brotli
+      uses: actions/cache@v4
+      with:
+        path: cache/external_brotli.tar.xz
+        key: external_brotli@${ env.branch }
+        restore-keys: external_brotli@${ env.branch }
+
+    - name: Restore Cache external_bsdiff.tar.xz
+      id: external_bsdiff
+      uses: actions/cache@v4
+      with:
+        path: cache/external_bsdiff.tar.xz
+        key: external_bsdiff@${ env.branch }
+        restore-keys: external_bsdiff@${ env.branch }
+
+    - name: Restore Cache external_bzip2.tar.xz
+      id: external_bzip2
+      uses: actions/cache@v4
+      with:
+        path: cache/external_bzip2.tar.xz
+        key: external_bzip2@${ env.branch }
+        restore-keys: external_bzip2@${ env.branch }
+
+    - name: Restore Cache external_compiler-rt.tar.xz
+      id: external_compiler-rt
+      uses: actions/cache@v4
+      with:
+        path: cache/external_compiler-rt.tar.xz
+        key: external_compiler-rt@${ env.branch }
+        restore-keys: external_compiler-rt@${ env.branch }
+
+    - name: Restore Cache external_conscrypt.tar.xz
+      id: external_conscrypt
+      uses: actions/cache@v4
+      with:
+        path: cache/external_conscrypt.tar.xz
+        key: external_conscrypt@${ env.branch }
+        restore-keys: external_conscrypt@${ env.branch }
+
+    - name: Restore Cache external_cpu_features.tar.xz
+      id: external_cpu_features
+      uses: actions/cache@v4
+      with:
+        path: cache/external_cpu_features.tar.xz
+        key: external_cpu_features@${ env.branch }
+        restore-keys: external_cpu_features@${ env.branch }
+
+    - name: Restore Cache external_curl.tar.xz
+      id: external_curl
+      uses: actions/cache@v4
+      with:
+        path: cache/external_curl.tar.xz
+        key: external_curl@${ env.branch }
+        restore-keys: external_curl@${ env.branch }
+
+    - name: Restore Cache external_dng_sdk.tar.xz
+      id: external_dng_sdk
+      uses: actions/cache@v4
+      with:
+        path: cache/external_dng_sdk.tar.xz
+        key: external_dng_sdk@${ env.branch }
+        restore-keys: external_dng_sdk@${ env.branch }
+
+    - name: Restore Cache external_dtc.tar.xz
+      id: external_dtc
+      uses: actions/cache@v4
+      with:
+        path: cache/external_dtc.tar.xz
+        key: external_dtc@${ env.branch }
+        restore-keys: external_dtc@${ env.branch }
+
+    - name: Restore Cache external_dynamic_depth.tar.xz
+      id: external_dynamic_depth
+      uses: actions/cache@v4
+      with:
+        path: cache/external_dynamic_depth.tar.xz
+        key: external_dynamic_depth@${ env.branch }
+        restore-keys: external_dynamic_depth@${ env.branch }
+
+    - name: Restore Cache external_e2fsprogs.tar.xz
+      id: external_e2fsprogs
+      uses: actions/cache@v4
+      with:
+        path: cache/external_e2fsprogs.tar.xz
+        key: external_e2fsprogs@${ env.branch }
+        restore-keys: external_e2fsprogs@${ env.branch }
+
+    - name: Restore Cache external_eigen.tar.xz
+      id: external_eigen
+      uses: actions/cache@v4
+      with:
+        path: cache/external_eigen.tar.xz
+        key: external_eigen@${ env.branch }
+        restore-keys: external_eigen@${ env.branch }
+
+    - name: Restore Cache external_expat.tar.xz
+      id: external_expat
+      uses: actions/cache@v4
+      with:
+        path: cache/external_expat.tar.xz
+        key: external_expat@${ env.branch }
+        restore-keys: external_expat@${ env.branch }
+
+    - name: Restore Cache external_f2fs-tools.tar.xz
+      id: external_f2fs-tools
+      uses: actions/cache@v4
+      with:
+        path: cache/external_f2fs-tools.tar.xz
+        key: external_f2fs-tools@${ env.branch }
+        restore-keys: external_f2fs-tools@${ env.branch }
+
+    - name: Restore Cache external_fdlibm.tar.xz
+      id: external_fdlibm
+      uses: actions/cache@v4
+      with:
+        path: cache/external_fdlibm.tar.xz
+        key: external_fdlibm@${ env.branch }
+        restore-keys: external_fdlibm@${ env.branch }
+
+    - name: Restore Cache external_fec.tar.xz
+      id: external_fec
+      uses: actions/cache@v4
+      with:
+        path: cache/external_fec.tar.xz
+        key: external_fec@${ env.branch }
+        restore-keys: external_fec@${ env.branch }
+
+    - name: Restore Cache external_flac.tar.xz
+      id: external_flac
+      uses: actions/cache@v4
+      with:
+        path: cache/external_flac.tar.xz
+        key: external_flac@${ env.branch }
+        restore-keys: external_flac@${ env.branch }
+
+    - name: Restore Cache external_flatbuffers.tar.xz
+      id: external_flatbuffers
+      uses: actions/cache@v4
+      with:
+        path: cache/external_flatbuffers.tar.xz
+        key: external_flatbuffers@${ env.branch }
+        restore-keys: external_flatbuffers@${ env.branch }
+
+    - name: Restore Cache external_fmtlib.tar.xz
+      id: external_fmtlib
+      uses: actions/cache@v4
+      with:
+        path: cache/external_fmtlib.tar.xz
+        key: external_fmtlib@${ env.branch }
+        restore-keys: external_fmtlib@${ env.branch }
+
+    - name: Restore Cache external_freetype.tar.xz
+      id: external_freetype
+      uses: actions/cache@v4
+      with:
+        path: cache/external_freetype.tar.xz
+        key: external_freetype@${ env.branch }
+        restore-keys: external_freetype@${ env.branch }
+
+    - name: Restore Cache external_fsverity-utils.tar.xz
+      id: external_fsverity-utils
+      uses: actions/cache@v4
+      with:
+        path: cache/external_fsverity-utils.tar.xz
+        key: external_fsverity-utils@${ env.branch }
+        restore-keys: external_fsverity-utils@${ env.branch }
+
+    - name: Restore Cache external_gemmlowp.tar.xz
+      id: external_gemmlowp
+      uses: actions/cache@v4
+      with:
+        path: cache/external_gemmlowp.tar.xz
+        key: external_gemmlowp@${ env.branch }
+        restore-keys: external_gemmlowp@${ env.branch }
+
+    - name: Restore Cache external_gflags.tar.xz
+      id: external_gflags
+      uses: actions/cache@v4
+      with:
+        path: cache/external_gflags.tar.xz
+        key: external_gflags@${ env.branch }
+        restore-keys: external_gflags@${ env.branch }
+
+    - name: Restore Cache external_giflib.tar.xz
+      id: external_giflib
+      uses: actions/cache@v4
+      with:
+        path: cache/external_giflib.tar.xz
+        key: external_giflib@${ env.branch }
+        restore-keys: external_giflib@${ env.branch }
+
+    - name: Restore Cache external_golang-protobuf.tar.xz
       id: external_golang-protobuf
-      uses: actions/cache@v3
+      uses: actions/cache@v4
       with:
-        path: aosp/external/golang-protobuf
-        key: external_golang-protobuf@${{ env.branch }}
-        restore-keys: external_golang-protobuf@${{ env.branch }}
-    - name: Clone project external/golang-protobuf
-      if: steps.external_golang-protobuf.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        clone_depth_platform external/golang-protobuf
+        path: cache/external_golang-protobuf.tar.xz
+        key: external_golang-protobuf@${ env.branch }
+        restore-keys: external_golang-protobuf@${ env.branch }
 
-    - name: Restore Cache external/googletest
+    - name: Restore Cache external_google-fonts_carrois-gothic-sc.tar.xz
+      id: external_google-fonts_carrois-gothic-sc
+      uses: actions/cache@v4
+      with:
+        path: cache/external_google-fonts_carrois-gothic-sc.tar.xz
+        key: external_google-fonts_carrois-gothic-sc@${ env.branch }
+        restore-keys: external_google-fonts_carrois-gothic-sc@${ env.branch }
+
+    - name: Restore Cache external_google-fonts_coming-soon.tar.xz
+      id: external_google-fonts_coming-soon
+      uses: actions/cache@v4
+      with:
+        path: cache/external_google-fonts_coming-soon.tar.xz
+        key: external_google-fonts_coming-soon@${ env.branch }
+        restore-keys: external_google-fonts_coming-soon@${ env.branch }
+
+    - name: Restore Cache external_google-fonts_cutive-mono.tar.xz
+      id: external_google-fonts_cutive-mono
+      uses: actions/cache@v4
+      with:
+        path: cache/external_google-fonts_cutive-mono.tar.xz
+        key: external_google-fonts_cutive-mono@${ env.branch }
+        restore-keys: external_google-fonts_cutive-mono@${ env.branch }
+
+    - name: Restore Cache external_google-fonts_dancing-script.tar.xz
+      id: external_google-fonts_dancing-script
+      uses: actions/cache@v4
+      with:
+        path: cache/external_google-fonts_dancing-script.tar.xz
+        key: external_google-fonts_dancing-script@${ env.branch }
+        restore-keys: external_google-fonts_dancing-script@${ env.branch }
+
+    - name: Restore Cache external_google-fonts_source-sans-pro.tar.xz
+      id: external_google-fonts_source-sans-pro
+      uses: actions/cache@v4
+      with:
+        path: cache/external_google-fonts_source-sans-pro.tar.xz
+        key: external_google-fonts_source-sans-pro@${ env.branch }
+        restore-keys: external_google-fonts_source-sans-pro@${ env.branch }
+
+    - name: Restore Cache external_google-fruit.tar.xz
+      id: external_google-fruit
+      uses: actions/cache@v4
+      with:
+        path: cache/external_google-fruit.tar.xz
+        key: external_google-fruit@${ env.branch }
+        restore-keys: external_google-fruit@${ env.branch }
+
+    - name: Restore Cache external_googletest.tar.xz
       id: external_googletest
-      uses: actions/cache@v3
+      uses: actions/cache@v4
       with:
-        path: aosp/external/googletest
-        key: external_googletest@${{ env.branch }}
-        restore-keys: external_googletest@${{ env.branch }}
-    - name: Clone project external/googletest
-      if: steps.external_googletest.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        clone_depth_platform external/googletest
+        path: cache/external_googletest.tar.xz
+        key: external_googletest@${ env.branch }
+        restore-keys: external_googletest@${ env.branch }
 
-    - name: Restore Cache external/gwp_asan
+    - name: Restore Cache external_gptfdisk.tar.xz
+      id: external_gptfdisk
+      uses: actions/cache@v4
+      with:
+        path: cache/external_gptfdisk.tar.xz
+        key: external_gptfdisk@${ env.branch }
+        restore-keys: external_gptfdisk@${ env.branch }
+
+    - name: Restore Cache external_grpc-grpc.tar.xz
+      id: external_grpc-grpc
+      uses: actions/cache@v4
+      with:
+        path: cache/external_grpc-grpc.tar.xz
+        key: external_grpc-grpc@${ env.branch }
+        restore-keys: external_grpc-grpc@${ env.branch }
+
+    - name: Restore Cache external_gwp_asan.tar.xz
       id: external_gwp_asan
-      uses: actions/cache@v3
+      uses: actions/cache@v4
       with:
-        path: aosp/external/gwp_asan
-        key: external_gwp_asan@${{ env.branch }}
-        restore-keys: external_gwp_asan@${{ env.branch }}
-    - name: Clone project external/gwp_asan
-      if: steps.external_gwp_asan.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        clone_depth_platform external/gwp_asan
+        path: cache/external_gwp_asan.tar.xz
+        key: external_gwp_asan@${ env.branch }
+        restore-keys: external_gwp_asan@${ env.branch }
 
-    - name: Restore Cache external/icu
+    - name: Restore Cache external_harfbuzz_ng.tar.xz
+      id: external_harfbuzz_ng
+      uses: actions/cache@v4
+      with:
+        path: cache/external_harfbuzz_ng.tar.xz
+        key: external_harfbuzz_ng@${ env.branch }
+        restore-keys: external_harfbuzz_ng@${ env.branch }
+
+    - name: Restore Cache external_icu.tar.xz
       id: external_icu
-      uses: actions/cache@v3
+      uses: actions/cache@v4
       with:
-        path: aosp/external/icu
-        key: external_icu@${{ env.branch }}
-        restore-keys: external_icu@${{ env.branch }}
-    - name: Clone project external/icu
-      if: steps.external_icu.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        clone_sparse_exclude external/icu !/icu4c/source/test
+        path: cache/external_icu.tar.xz
+        key: external_icu@${ env.branch }
+        restore-keys: external_icu@${ env.branch }
 
-    - name: Restore Cache external/protobuf
+    - name: Restore Cache external_image_io.tar.xz
+      id: external_image_io
+      uses: actions/cache@v4
+      with:
+        path: cache/external_image_io.tar.xz
+        key: external_image_io@${ env.branch }
+        restore-keys: external_image_io@${ env.branch }
+
+    - name: Restore Cache external_ipsec-tools.tar.xz
+      id: external_ipsec-tools
+      uses: actions/cache@v4
+      with:
+        path: cache/external_ipsec-tools.tar.xz
+        key: external_ipsec-tools@${ env.branch }
+        restore-keys: external_ipsec-tools@${ env.branch }
+
+    - name: Restore Cache external_iptables.tar.xz
+      id: external_iptables
+      uses: actions/cache@v4
+      with:
+        path: cache/external_iptables.tar.xz
+        key: external_iptables@${ env.branch }
+        restore-keys: external_iptables@${ env.branch }
+
+    - name: Restore Cache external_jsoncpp.tar.xz
+      id: external_jsoncpp
+      uses: actions/cache@v4
+      with:
+        path: cache/external_jsoncpp.tar.xz
+        key: external_jsoncpp@${ env.branch }
+        restore-keys: external_jsoncpp@${ env.branch }
+
+    - name: Restore Cache external_kmod.tar.xz
+      id: external_kmod
+      uses: actions/cache@v4
+      with:
+        path: cache/external_kmod.tar.xz
+        key: external_kmod@${ env.branch }
+        restore-keys: external_kmod@${ env.branch }
+
+    - name: Restore Cache external_libavc.tar.xz
+      id: external_libavc
+      uses: actions/cache@v4
+      with:
+        path: cache/external_libavc.tar.xz
+        key: external_libavc@${ env.branch }
+        restore-keys: external_libavc@${ env.branch }
+
+    - name: Restore Cache external_libcppbor.tar.xz
+      id: external_libcppbor
+      uses: actions/cache@v4
+      with:
+        path: cache/external_libcppbor.tar.xz
+        key: external_libcppbor@${ env.branch }
+        restore-keys: external_libcppbor@${ env.branch }
+
+    - name: Restore Cache external_libcxx.tar.xz
+      id: external_libcxx
+      uses: actions/cache@v4
+      with:
+        path: cache/external_libcxx.tar.xz
+        key: external_libcxx@${ env.branch }
+        restore-keys: external_libcxx@${ env.branch }
+
+    - name: Restore Cache external_libcxxabi.tar.xz
+      id: external_libcxxabi
+      uses: actions/cache@v4
+      with:
+        path: cache/external_libcxxabi.tar.xz
+        key: external_libcxxabi@${ env.branch }
+        restore-keys: external_libcxxabi@${ env.branch }
+
+    - name: Restore Cache external_libdrm.tar.xz
+      id: external_libdrm
+      uses: actions/cache@v4
+      with:
+        path: cache/external_libdrm.tar.xz
+        key: external_libdrm@${ env.branch }
+        restore-keys: external_libdrm@${ env.branch }
+
+    - name: Restore Cache external_libepoxy.tar.xz
+      id: external_libepoxy
+      uses: actions/cache@v4
+      with:
+        path: cache/external_libepoxy.tar.xz
+        key: external_libepoxy@${ env.branch }
+        restore-keys: external_libepoxy@${ env.branch }
+
+    - name: Restore Cache external_libevent.tar.xz
+      id: external_libevent
+      uses: actions/cache@v4
+      with:
+        path: cache/external_libevent.tar.xz
+        key: external_libevent@${ env.branch }
+        restore-keys: external_libevent@${ env.branch }
+
+    - name: Restore Cache external_libgav1.tar.xz
+      id: external_libgav1
+      uses: actions/cache@v4
+      with:
+        path: cache/external_libgav1.tar.xz
+        key: external_libgav1@${ env.branch }
+        restore-keys: external_libgav1@${ env.branch }
+
+    - name: Restore Cache external_libgsm.tar.xz
+      id: external_libgsm
+      uses: actions/cache@v4
+      with:
+        path: cache/external_libgsm.tar.xz
+        key: external_libgsm@${ env.branch }
+        restore-keys: external_libgsm@${ env.branch }
+
+    - name: Restore Cache external_libhevc.tar.xz
+      id: external_libhevc
+      uses: actions/cache@v4
+      with:
+        path: cache/external_libhevc.tar.xz
+        key: external_libhevc@${ env.branch }
+        restore-keys: external_libhevc@${ env.branch }
+
+    - name: Restore Cache external_libjpeg-turbo.tar.xz
+      id: external_libjpeg-turbo
+      uses: actions/cache@v4
+      with:
+        path: cache/external_libjpeg-turbo.tar.xz
+        key: external_libjpeg-turbo@${ env.branch }
+        restore-keys: external_libjpeg-turbo@${ env.branch }
+
+    - name: Restore Cache external_libmpeg2.tar.xz
+      id: external_libmpeg2
+      uses: actions/cache@v4
+      with:
+        path: cache/external_libmpeg2.tar.xz
+        key: external_libmpeg2@${ env.branch }
+        restore-keys: external_libmpeg2@${ env.branch }
+
+    - name: Restore Cache external_libnl.tar.xz
+      id: external_libnl
+      uses: actions/cache@v4
+      with:
+        path: cache/external_libnl.tar.xz
+        key: external_libnl@${ env.branch }
+        restore-keys: external_libnl@${ env.branch }
+
+    - name: Restore Cache external_libogg.tar.xz
+      id: external_libogg
+      uses: actions/cache@v4
+      with:
+        path: cache/external_libogg.tar.xz
+        key: external_libogg@${ env.branch }
+        restore-keys: external_libogg@${ env.branch }
+
+    - name: Restore Cache external_libopus.tar.xz
+      id: external_libopus
+      uses: actions/cache@v4
+      with:
+        path: cache/external_libopus.tar.xz
+        key: external_libopus@${ env.branch }
+        restore-keys: external_libopus@${ env.branch }
+
+    - name: Restore Cache external_libpcap.tar.xz
+      id: external_libpcap
+      uses: actions/cache@v4
+      with:
+        path: cache/external_libpcap.tar.xz
+        key: external_libpcap@${ env.branch }
+        restore-keys: external_libpcap@${ env.branch }
+
+    - name: Restore Cache external_libpng.tar.xz
+      id: external_libpng
+      uses: actions/cache@v4
+      with:
+        path: cache/external_libpng.tar.xz
+        key: external_libpng@${ env.branch }
+        restore-keys: external_libpng@${ env.branch }
+
+    - name: Restore Cache external_libtextclassifier.tar.xz
+      id: external_libtextclassifier
+      uses: actions/cache@v4
+      with:
+        path: cache/external_libtextclassifier.tar.xz
+        key: external_libtextclassifier@${ env.branch }
+        restore-keys: external_libtextclassifier@${ env.branch }
+
+    - name: Restore Cache external_libutf.tar.xz
+      id: external_libutf
+      uses: actions/cache@v4
+      with:
+        path: cache/external_libutf.tar.xz
+        key: external_libutf@${ env.branch }
+        restore-keys: external_libutf@${ env.branch }
+
+    - name: Restore Cache external_libvpx.tar.xz
+      id: external_libvpx
+      uses: actions/cache@v4
+      with:
+        path: cache/external_libvpx.tar.xz
+        key: external_libvpx@${ env.branch }
+        restore-keys: external_libvpx@${ env.branch }
+
+    - name: Restore Cache external_libxml2.tar.xz
+      id: external_libxml2
+      uses: actions/cache@v4
+      with:
+        path: cache/external_libxml2.tar.xz
+        key: external_libxml2@${ env.branch }
+        restore-keys: external_libxml2@${ env.branch }
+
+    - name: Restore Cache external_libyuv.tar.xz
+      id: external_libyuv
+      uses: actions/cache@v4
+      with:
+        path: cache/external_libyuv.tar.xz
+        key: external_libyuv@${ env.branch }
+        restore-keys: external_libyuv@${ env.branch }
+
+    - name: Restore Cache external_llvm.tar.xz
+      id: external_llvm
+      uses: actions/cache@v4
+      with:
+        path: cache/external_llvm.tar.xz
+        key: external_llvm@${ env.branch }
+        restore-keys: external_llvm@${ env.branch }
+
+    - name: Restore Cache external_lz4.tar.xz
+      id: external_lz4
+      uses: actions/cache@v4
+      with:
+        path: cache/external_lz4.tar.xz
+        key: external_lz4@${ env.branch }
+        restore-keys: external_lz4@${ env.branch }
+
+    - name: Restore Cache external_lzma.tar.xz
+      id: external_lzma
+      uses: actions/cache@v4
+      with:
+        path: cache/external_lzma.tar.xz
+        key: external_lzma@${ env.branch }
+        restore-keys: external_lzma@${ env.branch }
+
+    - name: Restore Cache external_mdnsresponder.tar.xz
+      id: external_mdnsresponder
+      uses: actions/cache@v4
+      with:
+        path: cache/external_mdnsresponder.tar.xz
+        key: external_mdnsresponder@${ env.branch }
+        restore-keys: external_mdnsresponder@${ env.branch }
+
+    - name: Restore Cache external_minigbm.tar.xz
+      id: external_minigbm
+      uses: actions/cache@v4
+      with:
+        path: cache/external_minigbm.tar.xz
+        key: external_minigbm@${ env.branch }
+        restore-keys: external_minigbm@${ env.branch }
+
+    - name: Restore Cache external_minijail.tar.xz
+      id: external_minijail
+      uses: actions/cache@v4
+      with:
+        path: cache/external_minijail.tar.xz
+        key: external_minijail@${ env.branch }
+        restore-keys: external_minijail@${ env.branch }
+
+    - name: Restore Cache external_mksh.tar.xz
+      id: external_mksh
+      uses: actions/cache@v4
+      with:
+        path: cache/external_mksh.tar.xz
+        key: external_mksh@${ env.branch }
+        restore-keys: external_mksh@${ env.branch }
+
+    - name: Restore Cache external_modp_b64.tar.xz
+      id: external_modp_b64
+      uses: actions/cache@v4
+      with:
+        path: cache/external_modp_b64.tar.xz
+        key: external_modp_b64@${ env.branch }
+        restore-keys: external_modp_b64@${ env.branch }
+
+    - name: Restore Cache external_nanopb-c.tar.xz
+      id: external_nanopb-c
+      uses: actions/cache@v4
+      with:
+        path: cache/external_nanopb-c.tar.xz
+        key: external_nanopb-c@${ env.branch }
+        restore-keys: external_nanopb-c@${ env.branch }
+
+    - name: Restore Cache external_neven.tar.xz
+      id: external_neven
+      uses: actions/cache@v4
+      with:
+        path: cache/external_neven.tar.xz
+        key: external_neven@${ env.branch }
+        restore-keys: external_neven@${ env.branch }
+
+    - name: Restore Cache external_noto-fonts.tar.xz
+      id: external_noto-fonts
+      uses: actions/cache@v4
+      with:
+        path: cache/external_noto-fonts.tar.xz
+        key: external_noto-fonts@${ env.branch }
+        restore-keys: external_noto-fonts@${ env.branch }
+
+    - name: Restore Cache external_oj-libjdwp.tar.xz
+      id: external_oj-libjdwp
+      uses: actions/cache@v4
+      with:
+        path: cache/external_oj-libjdwp.tar.xz
+        key: external_oj-libjdwp@${ env.branch }
+        restore-keys: external_oj-libjdwp@${ env.branch }
+
+    - name: Restore Cache external_parameter-framework.tar.xz
+      id: external_parameter-framework
+      uses: actions/cache@v4
+      with:
+        path: cache/external_parameter-framework.tar.xz
+        key: external_parameter-framework@${ env.branch }
+        restore-keys: external_parameter-framework@${ env.branch }
+
+    - name: Restore Cache external_pcre.tar.xz
+      id: external_pcre
+      uses: actions/cache@v4
+      with:
+        path: cache/external_pcre.tar.xz
+        key: external_pcre@${ env.branch }
+        restore-keys: external_pcre@${ env.branch }
+
+    - name: Restore Cache external_pdfium.tar.xz
+      id: external_pdfium
+      uses: actions/cache@v4
+      with:
+        path: cache/external_pdfium.tar.xz
+        key: external_pdfium@${ env.branch }
+        restore-keys: external_pdfium@${ env.branch }
+
+    - name: Restore Cache external_perfetto.tar.xz
+      id: external_perfetto
+      uses: actions/cache@v4
+      with:
+        path: cache/external_perfetto.tar.xz
+        key: external_perfetto@${ env.branch }
+        restore-keys: external_perfetto@${ env.branch }
+
+    - name: Restore Cache external_piex.tar.xz
+      id: external_piex
+      uses: actions/cache@v4
+      with:
+        path: cache/external_piex.tar.xz
+        key: external_piex@${ env.branch }
+        restore-keys: external_piex@${ env.branch }
+
+    - name: Restore Cache external_protobuf.tar.xz
       id: external_protobuf
-      uses: actions/cache@v3
+      uses: actions/cache@v4
       with:
-        path: aosp/external/protobuf
-        key: external_protobuf@${{ env.branch }}
-        restore-keys: external_protobuf@${{ env.branch }}
-    - name: Clone project external/protobuf
-      if: steps.external_protobuf.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        clone_depth_platform external/protobuf
+        path: cache/external_protobuf.tar.xz
+        key: external_protobuf@${ env.branch }
+        restore-keys: external_protobuf@${ env.branch }
 
-    - name: Restore Cache external/skia
+    - name: Restore Cache external_python_cpython2.tar.xz
+      id: external_python_cpython2
+      uses: actions/cache@v4
+      with:
+        path: cache/external_python_cpython2.tar.xz
+        key: external_python_cpython2@${ env.branch }
+        restore-keys: external_python_cpython2@${ env.branch }
+
+    - name: Restore Cache external_roboto-fonts.tar.xz
+      id: external_roboto-fonts
+      uses: actions/cache@v4
+      with:
+        path: cache/external_roboto-fonts.tar.xz
+        key: external_roboto-fonts@${ env.branch }
+        restore-keys: external_roboto-fonts@${ env.branch }
+
+    - name: Restore Cache external_rust_crates_bitflags.tar.xz
+      id: external_rust_crates_bitflags
+      uses: actions/cache@v4
+      with:
+        path: cache/external_rust_crates_bitflags.tar.xz
+        key: external_rust_crates_bitflags@${ env.branch }
+        restore-keys: external_rust_crates_bitflags@${ env.branch }
+
+    - name: Restore Cache external_rust_crates_bytes.tar.xz
+      id: external_rust_crates_bytes
+      uses: actions/cache@v4
+      with:
+        path: cache/external_rust_crates_bytes.tar.xz
+        key: external_rust_crates_bytes@${ env.branch }
+        restore-keys: external_rust_crates_bytes@${ env.branch }
+
+    - name: Restore Cache external_rust_crates_cfg-if.tar.xz
+      id: external_rust_crates_cfg-if
+      uses: actions/cache@v4
+      with:
+        path: cache/external_rust_crates_cfg-if.tar.xz
+        key: external_rust_crates_cfg-if@${ env.branch }
+        restore-keys: external_rust_crates_cfg-if@${ env.branch }
+
+    - name: Restore Cache external_rust_crates_either.tar.xz
+      id: external_rust_crates_either
+      uses: actions/cache@v4
+      with:
+        path: cache/external_rust_crates_either.tar.xz
+        key: external_rust_crates_either@${ env.branch }
+        restore-keys: external_rust_crates_either@${ env.branch }
+
+    - name: Restore Cache external_rust_crates_glob.tar.xz
+      id: external_rust_crates_glob
+      uses: actions/cache@v4
+      with:
+        path: cache/external_rust_crates_glob.tar.xz
+        key: external_rust_crates_glob@${ env.branch }
+        restore-keys: external_rust_crates_glob@${ env.branch }
+
+    - name: Restore Cache external_rust_crates_grpcio-sys.tar.xz
+      id: external_rust_crates_grpcio-sys
+      uses: actions/cache@v4
+      with:
+        path: cache/external_rust_crates_grpcio-sys.tar.xz
+        key: external_rust_crates_grpcio-sys@${ env.branch }
+        restore-keys: external_rust_crates_grpcio-sys@${ env.branch }
+
+    - name: Restore Cache external_rust_crates_lazy_static.tar.xz
+      id: external_rust_crates_lazy_static
+      uses: actions/cache@v4
+      with:
+        path: cache/external_rust_crates_lazy_static.tar.xz
+        key: external_rust_crates_lazy_static@${ env.branch }
+        restore-keys: external_rust_crates_lazy_static@${ env.branch }
+
+    - name: Restore Cache external_rust_crates_lazycell.tar.xz
+      id: external_rust_crates_lazycell
+      uses: actions/cache@v4
+      with:
+        path: cache/external_rust_crates_lazycell.tar.xz
+        key: external_rust_crates_lazycell@${ env.branch }
+        restore-keys: external_rust_crates_lazycell@${ env.branch }
+
+    - name: Restore Cache external_rust_crates_libc.tar.xz
+      id: external_rust_crates_libc
+      uses: actions/cache@v4
+      with:
+        path: cache/external_rust_crates_libc.tar.xz
+        key: external_rust_crates_libc@${ env.branch }
+        restore-keys: external_rust_crates_libc@${ env.branch }
+
+    - name: Restore Cache external_rust_crates_memchr.tar.xz
+      id: external_rust_crates_memchr
+      uses: actions/cache@v4
+      with:
+        path: cache/external_rust_crates_memchr.tar.xz
+        key: external_rust_crates_memchr@${ env.branch }
+        restore-keys: external_rust_crates_memchr@${ env.branch }
+
+    - name: Restore Cache external_rust_crates_paste.tar.xz
+      id: external_rust_crates_paste
+      uses: actions/cache@v4
+      with:
+        path: cache/external_rust_crates_paste.tar.xz
+        key: external_rust_crates_paste@${ env.branch }
+        restore-keys: external_rust_crates_paste@${ env.branch }
+
+    - name: Restore Cache external_rust_crates_peeking_take_while.tar.xz
+      id: external_rust_crates_peeking_take_while
+      uses: actions/cache@v4
+      with:
+        path: cache/external_rust_crates_peeking_take_while.tar.xz
+        key: external_rust_crates_peeking_take_while@${ env.branch }
+        restore-keys: external_rust_crates_peeking_take_while@${ env.branch }
+
+    - name: Restore Cache external_rust_crates_proc-macro-hack.tar.xz
+      id: external_rust_crates_proc-macro-hack
+      uses: actions/cache@v4
+      with:
+        path: cache/external_rust_crates_proc-macro-hack.tar.xz
+        key: external_rust_crates_proc-macro-hack@${ env.branch }
+        restore-keys: external_rust_crates_proc-macro-hack@${ env.branch }
+
+    - name: Restore Cache external_rust_crates_regex-syntax.tar.xz
+      id: external_rust_crates_regex-syntax
+      uses: actions/cache@v4
+      with:
+        path: cache/external_rust_crates_regex-syntax.tar.xz
+        key: external_rust_crates_regex-syntax@${ env.branch }
+        restore-keys: external_rust_crates_regex-syntax@${ env.branch }
+
+    - name: Restore Cache external_rust_crates_rustc-hash.tar.xz
+      id: external_rust_crates_rustc-hash
+      uses: actions/cache@v4
+      with:
+        path: cache/external_rust_crates_rustc-hash.tar.xz
+        key: external_rust_crates_rustc-hash@${ env.branch }
+        restore-keys: external_rust_crates_rustc-hash@${ env.branch }
+
+    - name: Restore Cache external_rust_crates_shlex.tar.xz
+      id: external_rust_crates_shlex
+      uses: actions/cache@v4
+      with:
+        path: cache/external_rust_crates_shlex.tar.xz
+        key: external_rust_crates_shlex@${ env.branch }
+        restore-keys: external_rust_crates_shlex@${ env.branch }
+
+    - name: Restore Cache external_rust_crates_termcolor.tar.xz
+      id: external_rust_crates_termcolor
+      uses: actions/cache@v4
+      with:
+        path: cache/external_rust_crates_termcolor.tar.xz
+        key: external_rust_crates_termcolor@${ env.branch }
+        restore-keys: external_rust_crates_termcolor@${ env.branch }
+
+    - name: Restore Cache external_rust_crates_textwrap.tar.xz
+      id: external_rust_crates_textwrap
+      uses: actions/cache@v4
+      with:
+        path: cache/external_rust_crates_textwrap.tar.xz
+        key: external_rust_crates_textwrap@${ env.branch }
+        restore-keys: external_rust_crates_textwrap@${ env.branch }
+
+    - name: Restore Cache external_rust_crates_unicode-segmentation.tar.xz
+      id: external_rust_crates_unicode-segmentation
+      uses: actions/cache@v4
+      with:
+        path: cache/external_rust_crates_unicode-segmentation.tar.xz
+        key: external_rust_crates_unicode-segmentation@${ env.branch }
+        restore-keys: external_rust_crates_unicode-segmentation@${ env.branch }
+
+    - name: Restore Cache external_rust_crates_unicode-width.tar.xz
+      id: external_rust_crates_unicode-width
+      uses: actions/cache@v4
+      with:
+        path: cache/external_rust_crates_unicode-width.tar.xz
+        key: external_rust_crates_unicode-width@${ env.branch }
+        restore-keys: external_rust_crates_unicode-width@${ env.branch }
+
+    - name: Restore Cache external_rust_crates_unicode-xid.tar.xz
+      id: external_rust_crates_unicode-xid
+      uses: actions/cache@v4
+      with:
+        path: cache/external_rust_crates_unicode-xid.tar.xz
+        key: external_rust_crates_unicode-xid@${ env.branch }
+        restore-keys: external_rust_crates_unicode-xid@${ env.branch }
+
+    - name: Restore Cache external_rust_cxx.tar.xz
+      id: external_rust_cxx
+      uses: actions/cache@v4
+      with:
+        path: cache/external_rust_cxx.tar.xz
+        key: external_rust_cxx@${ env.branch }
+        restore-keys: external_rust_cxx@${ env.branch }
+
+    - name: Restore Cache external_scrypt.tar.xz
+      id: external_scrypt
+      uses: actions/cache@v4
+      with:
+        path: cache/external_scrypt.tar.xz
+        key: external_scrypt@${ env.branch }
+        restore-keys: external_scrypt@${ env.branch }
+
+    - name: Restore Cache external_scudo.tar.xz
+      id: external_scudo
+      uses: actions/cache@v4
+      with:
+        path: cache/external_scudo.tar.xz
+        key: external_scudo@${ env.branch }
+        restore-keys: external_scudo@${ env.branch }
+
+    - name: Restore Cache external_selinux.tar.xz
+      id: external_selinux
+      uses: actions/cache@v4
+      with:
+        path: cache/external_selinux.tar.xz
+        key: external_selinux@${ env.branch }
+        restore-keys: external_selinux@${ env.branch }
+
+    - name: Restore Cache external_sfntly.tar.xz
+      id: external_sfntly
+      uses: actions/cache@v4
+      with:
+        path: cache/external_sfntly.tar.xz
+        key: external_sfntly@${ env.branch }
+        restore-keys: external_sfntly@${ env.branch }
+
+    - name: Restore Cache external_skia.tar.xz
       id: external_skia
-      uses: actions/cache@v3
+      uses: actions/cache@v4
       with:
-        path: aosp/external/skia
-        key: external_skia@${{ env.branch }}
-        restore-keys: external_skia@${{ env.branch }}
-    - name: Clone project external/skia
-      if: steps.external_skia.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        clone_sparse_exclude external/skia "!/site" "!/resources"
+        path: cache/external_skia.tar.xz
+        key: external_skia@${ env.branch }
+        restore-keys: external_skia@${ env.branch }
 
-    - name: Restore Cache external/starlark-go
-      id: external_starlark-go
-      uses: actions/cache@v3
+    - name: Restore Cache external_sonivox.tar.xz
+      id: external_sonivox
+      uses: actions/cache@v4
       with:
-        path: aosp/external/starlark-go
-        key: external_starlark-go@${{ env.branch }}
-        restore-keys: external_starlark-go@${{ env.branch }}
-    - name: Clone project external/starlark-go
-      if: steps.external_starlark-go.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        clone_depth_platform external/starlark-go
+        path: cache/external_sonivox.tar.xz
+        key: external_sonivox@${ env.branch }
+        restore-keys: external_sonivox@${ env.branch }
 
-    - name: Restore Cache external/vulkan-headers
+    - name: Restore Cache external_sqlite.tar.xz
+      id: external_sqlite
+      uses: actions/cache@v4
+      with:
+        path: cache/external_sqlite.tar.xz
+        key: external_sqlite@${ env.branch }
+        restore-keys: external_sqlite@${ env.branch }
+
+    - name: Restore Cache external_squashfs-tools.tar.xz
+      id: external_squashfs-tools
+      uses: actions/cache@v4
+      with:
+        path: cache/external_squashfs-tools.tar.xz
+        key: external_squashfs-tools@${ env.branch }
+        restore-keys: external_squashfs-tools@${ env.branch }
+
+    - name: Restore Cache external_tensorflow.tar.xz
+      id: external_tensorflow
+      uses: actions/cache@v4
+      with:
+        path: cache/external_tensorflow.tar.xz
+        key: external_tensorflow@${ env.branch }
+        restore-keys: external_tensorflow@${ env.branch }
+
+    - name: Restore Cache external_tinyalsa.tar.xz
+      id: external_tinyalsa
+      uses: actions/cache@v4
+      with:
+        path: cache/external_tinyalsa.tar.xz
+        key: external_tinyalsa@${ env.branch }
+        restore-keys: external_tinyalsa@${ env.branch }
+
+    - name: Restore Cache external_tinyxml2.tar.xz
+      id: external_tinyxml2
+      uses: actions/cache@v4
+      with:
+        path: cache/external_tinyxml2.tar.xz
+        key: external_tinyxml2@${ env.branch }
+        restore-keys: external_tinyxml2@${ env.branch }
+
+    - name: Restore Cache external_tremolo.tar.xz
+      id: external_tremolo
+      uses: actions/cache@v4
+      with:
+        path: cache/external_tremolo.tar.xz
+        key: external_tremolo@${ env.branch }
+        restore-keys: external_tremolo@${ env.branch }
+
+    - name: Restore Cache external_virglrenderer.tar.xz
+      id: external_virglrenderer
+      uses: actions/cache@v4
+      with:
+        path: cache/external_virglrenderer.tar.xz
+        key: external_virglrenderer@${ env.branch }
+        restore-keys: external_virglrenderer@${ env.branch }
+
+    - name: Restore Cache external_vixl.tar.xz
+      id: external_vixl
+      uses: actions/cache@v4
+      with:
+        path: cache/external_vixl.tar.xz
+        key: external_vixl@${ env.branch }
+        restore-keys: external_vixl@${ env.branch }
+
+    - name: Restore Cache external_vulkan-headers.tar.xz
       id: external_vulkan-headers
-      uses: actions/cache@v3
+      uses: actions/cache@v4
       with:
-        path: aosp/external/vulkan-headers
-        key: external_vulkan-headers@${{ env.branch }}
-        restore-keys: external_vulkan-headers@${{ env.branch }}
-    - name: Clone project external/vulkan-headers
-      if: steps.external_vulkan-headers.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        clone_depth_platform external/vulkan-headers
+        path: cache/external_vulkan-headers.tar.xz
+        key: external_vulkan-headers@${ env.branch }
+        restore-keys: external_vulkan-headers@${ env.branch }
 
-    - name: Restore Cache frameworks/av
+    - name: Restore Cache external_webp.tar.xz
+      id: external_webp
+      uses: actions/cache@v4
+      with:
+        path: cache/external_webp.tar.xz
+        key: external_webp@${ env.branch }
+        restore-keys: external_webp@${ env.branch }
+
+    - name: Restore Cache external_xz-embedded.tar.xz
+      id: external_xz-embedded
+      uses: actions/cache@v4
+      with:
+        path: cache/external_xz-embedded.tar.xz
+        key: external_xz-embedded@${ env.branch }
+        restore-keys: external_xz-embedded@${ env.branch }
+
+    - name: Restore Cache external_zlib.tar.xz
+      id: external_zlib
+      uses: actions/cache@v4
+      with:
+        path: cache/external_zlib.tar.xz
+        key: external_zlib@${ env.branch }
+        restore-keys: external_zlib@${ env.branch }
+
+    - name: Restore Cache external_zopfli.tar.xz
+      id: external_zopfli
+      uses: actions/cache@v4
+      with:
+        path: cache/external_zopfli.tar.xz
+        key: external_zopfli@${ env.branch }
+        restore-keys: external_zopfli@${ env.branch }
+
+    - name: Restore Cache external_zstd.tar.xz
+      id: external_zstd
+      uses: actions/cache@v4
+      with:
+        path: cache/external_zstd.tar.xz
+        key: external_zstd@${ env.branch }
+        restore-keys: external_zstd@${ env.branch }
+
+    - name: Restore Cache frameworks_av.tar.xz
       id: frameworks_av
-      uses: actions/cache@v3
+      uses: actions/cache@v4
       with:
-        path: aosp/frameworks/av
-        key: frameworks_av@${{ env.branch }}
-        restore-keys: frameworks_av@${{ env.branch }}
-    - name: Clone project frameworks/av
-      if: steps.frameworks_av.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        clone_sparse_exclude frameworks/av "!/media/libmediatranscoding/tests/assets/TranscodingTestAssets" "!/media/codec2/hidl/1.0/vts/functional/res"
+        path: cache/frameworks_av.tar.xz
+        key: frameworks_av@${ env.branch }
+        restore-keys: frameworks_av@${ env.branch }
 
-    - name: Restore Cache frameworks/base
+    - name: Restore Cache frameworks_base.tar.xz
       id: frameworks_base
-      uses: actions/cache@v3
+      uses: actions/cache@v4
       with:
-        path: aosp/frameworks/base
-        key: frameworks_base@${{ env.branch }}
-        restore-keys: frameworks_base@${{ env.branch }}
-    - name: Clone project frameworks/base
-      if: steps.frameworks_base.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        clone_sparse_exclude frameworks/base "!/data/sounds" "!/data/videos" "!/media/tests/contents" "!/docs" "!/native/graphics/jni/fuzz" "!/cmd/incidentd/testdata"
+        path: cache/frameworks_base.tar.xz
+        key: frameworks_base@${ env.branch }
+        restore-keys: frameworks_base@${ env.branch }
 
-    - name: Restore Cache frameworks/minikin
+    - name: Restore Cache frameworks_compile_libbcc.tar.xz
+      id: frameworks_compile_libbcc
+      uses: actions/cache@v4
+      with:
+        path: cache/frameworks_compile_libbcc.tar.xz
+        key: frameworks_compile_libbcc@${ env.branch }
+        restore-keys: frameworks_compile_libbcc@${ env.branch }
+
+    - name: Restore Cache frameworks_ex.tar.xz
+      id: frameworks_ex
+      uses: actions/cache@v4
+      with:
+        path: cache/frameworks_ex.tar.xz
+        key: frameworks_ex@${ env.branch }
+        restore-keys: frameworks_ex@${ env.branch }
+
+    - name: Restore Cache frameworks_libs_modules-utils.tar.xz
+      id: frameworks_libs_modules-utils
+      uses: actions/cache@v4
+      with:
+        path: cache/frameworks_libs_modules-utils.tar.xz
+        key: frameworks_libs_modules-utils@${ env.branch }
+        restore-keys: frameworks_libs_modules-utils@${ env.branch }
+
+    - name: Restore Cache frameworks_libs_net.tar.xz
+      id: frameworks_libs_net
+      uses: actions/cache@v4
+      with:
+        path: cache/frameworks_libs_net.tar.xz
+        key: frameworks_libs_net@${ env.branch }
+        restore-keys: frameworks_libs_net@${ env.branch }
+
+    - name: Restore Cache frameworks_minikin.tar.xz
       id: frameworks_minikin
-      uses: actions/cache@v3
+      uses: actions/cache@v4
       with:
-        path: aosp/frameworks/minikin
-        key: frameworks_minikin@${{ env.branch }}
-        restore-keys: frameworks_minikin@${{ env.branch }}
-    - name: Clone project frameworks/minikin
-      if: steps.frameworks_minikin.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        clone_depth_platform frameworks/minikin
+        path: cache/frameworks_minikin.tar.xz
+        key: frameworks_minikin@${ env.branch }
+        restore-keys: frameworks_minikin@${ env.branch }
 
-    - name: Restore Cache frameworks/native
+    - name: Restore Cache frameworks_native.tar.xz
       id: frameworks_native
-      uses: actions/cache@v3
+      uses: actions/cache@v4
       with:
-        path: aosp/frameworks/native
-        key: frameworks_native@${{ env.branch }}
-        restore-keys: frameworks_native@${{ env.branch }}
-    - name: Clone project frameworks/native
-      if: steps.frameworks_native.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        clone_depth_platform frameworks/native
+        path: cache/frameworks_native.tar.xz
+        key: frameworks_native@${ env.branch }
+        restore-keys: frameworks_native@${ env.branch }
 
-    - name: Restore Cache frameworks/wilhelm
+    - name: Restore Cache frameworks_opt_net_wifi.tar.xz
+      id: frameworks_opt_net_wifi
+      uses: actions/cache@v4
+      with:
+        path: cache/frameworks_opt_net_wifi.tar.xz
+        key: frameworks_opt_net_wifi@${ env.branch }
+        restore-keys: frameworks_opt_net_wifi@${ env.branch }
+
+    - name: Restore Cache frameworks_rs.tar.xz
+      id: frameworks_rs
+      uses: actions/cache@v4
+      with:
+        path: cache/frameworks_rs.tar.xz
+        key: frameworks_rs@${ env.branch }
+        restore-keys: frameworks_rs@${ env.branch }
+
+    - name: Restore Cache frameworks_wilhelm.tar.xz
       id: frameworks_wilhelm
-      uses: actions/cache@v3
+      uses: actions/cache@v4
       with:
-        path: aosp/frameworks/wilhelm
-        key: frameworks_wilhelm@${{ env.branch }}
-        restore-keys: frameworks_wilhelm@${{ env.branch }}
-    - name: Clone project frameworks/wilhelm
-      if: steps.frameworks_wilhelm.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        clone_depth_platform frameworks/wilhelm
+        path: cache/frameworks_wilhelm.tar.xz
+        key: frameworks_wilhelm@${ env.branch }
+        restore-keys: frameworks_wilhelm@${ env.branch }
 
-    - name: Restore Cache hardware/interfaces
+    - name: Restore Cache hardware_interfaces.tar.xz
       id: hardware_interfaces
-      uses: actions/cache@v3
+      uses: actions/cache@v4
       with:
-        path: aosp/hardware/interfaces
-        key: hardware_interfaces@${{ env.branch }}
-        restore-keys: hardware_interfaces@${{ env.branch }}
-    - name: Clone project hardware/interfaces
-      if: steps.hardware_interfaces.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        clone_depth_platform hardware/interfaces
+        path: cache/hardware_interfaces.tar.xz
+        key: hardware_interfaces@${ env.branch }
+        restore-keys: hardware_interfaces@${ env.branch }
 
-    - name: Restore Cache hardware/libhardware
+    - name: Restore Cache hardware_libhardware.tar.xz
       id: hardware_libhardware
-      uses: actions/cache@v3
+      uses: actions/cache@v4
       with:
-        path: aosp/hardware/libhardware
-        key: hardware_libhardware@${{ env.branch }}
-        restore-keys: hardware_libhardware@${{ env.branch }}
-    - name: Clone project hardware/libhardware
-      if: steps.hardware_libhardware.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        clone_depth_platform hardware/libhardware
+        path: cache/hardware_libhardware.tar.xz
+        key: hardware_libhardware@${ env.branch }
+        restore-keys: hardware_libhardware@${ env.branch }
 
-    - name: Restore Cache hardware/libhardware_legacy
+    - name: Restore Cache hardware_libhardware_legacy.tar.xz
       id: hardware_libhardware_legacy
-      uses: actions/cache@v3
+      uses: actions/cache@v4
       with:
-        path: aosp/hardware/libhardware_legacy
-        key: hardware_libhardware_legacy@${{ env.branch }}
-        restore-keys: hardware_libhardware_legacy@${{ env.branch }}
-    - name: Clone project hardware/libhardware_legacy
-      if: steps.hardware_libhardware_legacy.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        clone_depth_platform hardware/libhardware_legacy
+        path: cache/hardware_libhardware_legacy.tar.xz
+        key: hardware_libhardware_legacy@${ env.branch }
+        restore-keys: hardware_libhardware_legacy@${ env.branch }
 
-    - name: Restore Cache kernel/configs
-      id: kernel_configs
-      uses: actions/cache@v3
+    - name: Restore Cache hardware_ril.tar.xz
+      id: hardware_ril
+      uses: actions/cache@v4
       with:
-        path: aosp/kernel/configs
-        key: kernel_configs@${{ env.branch }}
-        restore-keys: kernel_configs@${{ env.branch }}
-    - name: Clone project kernel/configs
-      if: steps.kernel_configs.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        clone_depth kernel/configs
+        path: cache/hardware_ril.tar.xz
+        key: hardware_ril@${ env.branch }
+        restore-keys: hardware_ril@${ env.branch }
 
-    - name: Restore Cache libnativehelper
+    - name: Restore Cache libnativehelper.tar.xz
       id: libnativehelper
-      uses: actions/cache@v3
+      uses: actions/cache@v4
       with:
-        path: aosp/libnativehelper
-        key: libnativehelper@${{ env.branch }}
-        restore-keys: libnativehelper@${{ env.branch }}
-    - name: Clone project libnativehelper
-      if: steps.libnativehelper.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        clone_depth_platform libnativehelper
+        path: cache/libnativehelper.tar.xz
+        key: libnativehelper@${ env.branch }
+        restore-keys: libnativehelper@${ env.branch }
 
-    - name: Restore Cache packages/modules/DnsResolver
+    - name: Restore Cache packages_inputmethods_LatinIME.tar.xz
+      id: packages_inputmethods_LatinIME
+      uses: actions/cache@v4
+      with:
+        path: cache/packages_inputmethods_LatinIME.tar.xz
+        key: packages_inputmethods_LatinIME@${ env.branch }
+        restore-keys: packages_inputmethods_LatinIME@${ env.branch }
+
+    - name: Restore Cache packages_modules_Connectivity.tar.xz
+      id: packages_modules_Connectivity
+      uses: actions/cache@v4
+      with:
+        path: cache/packages_modules_Connectivity.tar.xz
+        key: packages_modules_Connectivity@${ env.branch }
+        restore-keys: packages_modules_Connectivity@${ env.branch }
+
+    - name: Restore Cache packages_modules_DnsResolver.tar.xz
       id: packages_modules_DnsResolver
-      uses: actions/cache@v3
+      uses: actions/cache@v4
       with:
-        path: aosp/packages/modules/DnsResolver
-        key: packages_modules_DnsResolver@${{ env.branch }}
-        restore-keys: packages_modules_DnsResolver@${{ env.branch }}
-    - name: Clone project packages/modules/DnsResolver
-      if: steps.packages_modules_DnsResolver.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        clone_depth_platform packages/modules/DnsResolver
+        path: cache/packages_modules_DnsResolver.tar.xz
+        key: packages_modules_DnsResolver@${ env.branch }
+        restore-keys: packages_modules_DnsResolver@${ env.branch }
 
-    - name: Restore Cache packages/modules/StatsD
+    - name: Restore Cache packages_modules_Gki.tar.xz
+      id: packages_modules_Gki
+      uses: actions/cache@v4
+      with:
+        path: cache/packages_modules_Gki.tar.xz
+        key: packages_modules_Gki@${ env.branch }
+        restore-keys: packages_modules_Gki@${ env.branch }
+
+    - name: Restore Cache packages_modules_IPsec.tar.xz
+      id: packages_modules_IPsec
+      uses: actions/cache@v4
+      with:
+        path: cache/packages_modules_IPsec.tar.xz
+        key: packages_modules_IPsec@${ env.branch }
+        restore-keys: packages_modules_IPsec@${ env.branch }
+
+    - name: Restore Cache packages_modules_NeuralNetworks.tar.xz
+      id: packages_modules_NeuralNetworks
+      uses: actions/cache@v4
+      with:
+        path: cache/packages_modules_NeuralNetworks.tar.xz
+        key: packages_modules_NeuralNetworks@${ env.branch }
+        restore-keys: packages_modules_NeuralNetworks@${ env.branch }
+
+    - name: Restore Cache packages_modules_SdkExtensions.tar.xz
+      id: packages_modules_SdkExtensions
+      uses: actions/cache@v4
+      with:
+        path: cache/packages_modules_SdkExtensions.tar.xz
+        key: packages_modules_SdkExtensions@${ env.branch }
+        restore-keys: packages_modules_SdkExtensions@${ env.branch }
+
+    - name: Restore Cache packages_modules_StatsD.tar.xz
       id: packages_modules_StatsD
-      uses: actions/cache@v3
+      uses: actions/cache@v4
       with:
-        path: aosp/packages/modules/StatsD
-        key: packages_modules_StatsD@${{ env.branch }}
-        restore-keys: packages_modules_StatsD@${{ env.branch }}
-    - name: Clone project packages/modules/StatsD
-      if: steps.packages_modules_StatsD.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        clone_depth_platform packages/modules/StatsD
+        path: cache/packages_modules_StatsD.tar.xz
+        key: packages_modules_StatsD@${ env.branch }
+        restore-keys: packages_modules_StatsD@${ env.branch }
 
-    - name: Restore Cache packages/modules/common
-      id: packages_modules_common
-      uses: actions/cache@v3
+    - name: Restore Cache packages_modules_Virtualization.tar.xz
+      id: packages_modules_Virtualization
+      uses: actions/cache@v4
       with:
-        path: aosp/packages/modules/common
-        key: packages_modules_common@${{ env.branch }}
-        restore-keys: packages_modules_common@${{ env.branch }}
-    - name: Clone project packages/modules/common
-      if: steps.packages_modules_common.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        clone_depth_platform packages/modules/common
+        path: cache/packages_modules_Virtualization.tar.xz
+        key: packages_modules_Virtualization@${ env.branch }
+        restore-keys: packages_modules_Virtualization@${ env.branch }
 
-    - name: Restore Cache prebuilts/build-tools
+    - name: Restore Cache packages_modules_Wifi.tar.xz
+      id: packages_modules_Wifi
+      uses: actions/cache@v4
+      with:
+        path: cache/packages_modules_Wifi.tar.xz
+        key: packages_modules_Wifi@${ env.branch }
+        restore-keys: packages_modules_Wifi@${ env.branch }
+
+    - name: Restore Cache packages_modules_adb.tar.xz
+      id: packages_modules_adb
+      uses: actions/cache@v4
+      with:
+        path: cache/packages_modules_adb.tar.xz
+        key: packages_modules_adb@${ env.branch }
+        restore-keys: packages_modules_adb@${ env.branch }
+
+    - name: Restore Cache packages_modules_vndk.tar.xz
+      id: packages_modules_vndk
+      uses: actions/cache@v4
+      with:
+        path: cache/packages_modules_vndk.tar.xz
+        key: packages_modules_vndk@${ env.branch }
+        restore-keys: packages_modules_vndk@${ env.branch }
+
+    - name: Restore Cache packages_providers_MediaProvider.tar.xz
+      id: packages_providers_MediaProvider
+      uses: actions/cache@v4
+      with:
+        path: cache/packages_providers_MediaProvider.tar.xz
+        key: packages_providers_MediaProvider@${ env.branch }
+        restore-keys: packages_providers_MediaProvider@${ env.branch }
+
+    - name: Restore Cache packages_wallpapers_LivePicker.tar.xz
+      id: packages_wallpapers_LivePicker
+      uses: actions/cache@v4
+      with:
+        path: cache/packages_wallpapers_LivePicker.tar.xz
+        key: packages_wallpapers_LivePicker@${ env.branch }
+        restore-keys: packages_wallpapers_LivePicker@${ env.branch }
+
+    - name: Restore Cache prebuilts_build-tools.tar.xz
       id: prebuilts_build-tools
-      uses: actions/cache@v3
+      uses: actions/cache@v4
       with:
-        path: aosp/prebuilts/build-tools
-        key: prebuilts_build-tools@${{ env.branch }}
-        restore-keys: prebuilts_build-tools@${{ env.branch }}
-    - name: Clone project prebuilts/build-tools
-      if: steps.prebuilts_build-tools.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        clone_sparse prebuilts/build-tools linux-x86/bin linux-x86/lib64 path common
+        path: cache/prebuilts_build-tools.tar.xz
+        key: prebuilts_build-tools@${ env.branch }
+        restore-keys: prebuilts_build-tools@${ env.branch }
 
-    - name: Restore Cache prebuilts/clang-tools
+    - name: Restore Cache prebuilts_clang-tools.tar.xz
       id: prebuilts_clang-tools
-      uses: actions/cache@v3
+      uses: actions/cache@v4
       with:
-        path: aosp/prebuilts/clang-tools
-        key: prebuilts_clang-tools@${{ env.branch }}
-        restore-keys: prebuilts_clang-tools@${{ env.branch }}
-    - name: Clone project prebuilts/clang-tools
-      if: steps.prebuilts_clang-tools.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        clone_sparse prebuilts/clang-tools linux-x86/bin linux-x86/lib64/clang
+        path: cache/prebuilts_clang-tools.tar.xz
+        key: prebuilts_clang-tools@${ env.branch }
+        restore-keys: prebuilts_clang-tools@${ env.branch }
 
-    - name: Restore Cache prebuilts/clang/host/linux-x86
+    - name: Restore Cache prebuilts_clang_host_linux-x86.tar.xz
       id: prebuilts_clang_host_linux-x86
-      uses: actions/cache@v3
+      uses: actions/cache@v4
       with:
-        path: aosp/prebuilts/clang/host/linux-x86
-        key: prebuilts_clang_host_linux-x86@${{ env.branch }}
-        restore-keys: prebuilts_clang_host_linux-x86@${{ env.branch }}
-    - name: Clone project prebuilts/clang/host/linux-x86
-      if: steps.prebuilts_clang_host_linux-x86.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        clone_sparse prebuilts/clang/host/linux-x86 $(python ${GITHUB_WORKSPACE}/get_clang_version.py) clang-r416183b soong
+        path: cache/prebuilts_clang_host_linux-x86.tar.xz
+        key: prebuilts_clang_host_linux-x86@${ env.branch }
+        restore-keys: prebuilts_clang_host_linux-x86@${ env.branch }
 
-    - name: Restore Cache prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8
-      id: prebuilts_gcc_linux-x86_host_x86_64-linux-glibc2_17-4_8
-      uses: actions/cache@v3
+    - name: Restore Cache prebuilts_gcc_linux-x86_aarch64_aarch64-linux-android-4.9.tar.xz
+      id: prebuilts_gcc_linux-x86_aarch64_aarch64-linux-android-4.9
+      uses: actions/cache@v4
       with:
-        path: aosp/prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8
-        key: prebuilts_gcc_linux-x86_host_x86_64-linux-glibc2_17-4_8@${{ env.branch }}
-        restore-keys: prebuilts_gcc_linux-x86_host_x86_64-linux-glibc2_17-4_8@${{ env.branch }}
-    - name: Clone project prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8
-      if: steps.prebuilts_gcc_linux-x86_host_x86_64-linux-glibc2_17-4_8.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        clone_sparse prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8 sysroot lib/gcc/x86_64-linux/4.8.3 x86_64-linux/lib64 x86_64-linux/lib32
+        path: cache/prebuilts_gcc_linux-x86_aarch64_aarch64-linux-android-4.9.tar.xz
+        key: prebuilts_gcc_linux-x86_aarch64_aarch64-linux-android-4.9@${ env.branch }
+        restore-keys: prebuilts_gcc_linux-x86_aarch64_aarch64-linux-android-4.9@${ env.branch }
 
-    - name: Restore Cache prebuilts/misc
+    - name: Restore Cache prebuilts_gcc_linux-x86_arm_arm-linux-androideabi-4.9.tar.xz
+      id: prebuilts_gcc_linux-x86_arm_arm-linux-androideabi-4.9
+      uses: actions/cache@v4
+      with:
+        path: cache/prebuilts_gcc_linux-x86_arm_arm-linux-androideabi-4.9.tar.xz
+        key: prebuilts_gcc_linux-x86_arm_arm-linux-androideabi-4.9@${ env.branch }
+        restore-keys: prebuilts_gcc_linux-x86_arm_arm-linux-androideabi-4.9@${ env.branch }
+
+    - name: Restore Cache prebuilts_gcc_linux-x86_host_x86_64-linux-glibc2.17-4.8.tar.xz
+      id: prebuilts_gcc_linux-x86_host_x86_64-linux-glibc2.17-4.8
+      uses: actions/cache@v4
+      with:
+        path: cache/prebuilts_gcc_linux-x86_host_x86_64-linux-glibc2.17-4.8.tar.xz
+        key: prebuilts_gcc_linux-x86_host_x86_64-linux-glibc2.17-4.8@${ env.branch }
+        restore-keys: prebuilts_gcc_linux-x86_host_x86_64-linux-glibc2.17-4.8@${ env.branch }
+
+    - name: Restore Cache prebuilts_gcc_linux-x86_x86_x86_64-linux-android-4.9.tar.xz
+      id: prebuilts_gcc_linux-x86_x86_x86_64-linux-android-4.9
+      uses: actions/cache@v4
+      with:
+        path: cache/prebuilts_gcc_linux-x86_x86_x86_64-linux-android-4.9.tar.xz
+        key: prebuilts_gcc_linux-x86_x86_x86_64-linux-android-4.9@${ env.branch }
+        restore-keys: prebuilts_gcc_linux-x86_x86_x86_64-linux-android-4.9@${ env.branch }
+
+    - name: Restore Cache prebuilts_go_linux-x86.tar.xz
+      id: prebuilts_go_linux-x86
+      uses: actions/cache@v4
+      with:
+        path: cache/prebuilts_go_linux-x86.tar.xz
+        key: prebuilts_go_linux-x86@${ env.branch }
+        restore-keys: prebuilts_go_linux-x86@${ env.branch }
+
+    - name: Restore Cache prebuilts_misc.tar.xz
       id: prebuilts_misc
-      uses: actions/cache@v3
+      uses: actions/cache@v4
       with:
-        path: aosp/prebuilts/misc
-        key: prebuilts_misc@${{ env.branch }}
-        restore-keys: prebuilts_misc@${{ env.branch }}
-    - name: Clone project prebuilts/misc
-      if: steps.prebuilts_misc.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        clone_sparse_exclude prebuilts/misc "!/common/robolectric" "!/darwin-x86" "!/darwin-x86_64" "!/gdbserver"
+        path: cache/prebuilts_misc.tar.xz
+        key: prebuilts_misc@${ env.branch }
+        restore-keys: prebuilts_misc@${ env.branch }
 
-    - name: Restore Cache prebuilts/ndk
+    - name: Restore Cache prebuilts_ndk.tar.xz
       id: prebuilts_ndk
-      uses: actions/cache@v3
+      uses: actions/cache@v4
       with:
-        path: aosp/prebuilts/ndk
-        key: prebuilts_ndk@${{ env.branch }}
-        restore-keys: prebuilts_ndk@${{ env.branch }}
-    - name: Clone project prebuilts/ndk
-      if: steps.prebuilts_ndk.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        clone_sparse prebuilts/ndk current
+        path: cache/prebuilts_ndk.tar.xz
+        key: prebuilts_ndk@${ env.branch }
+        restore-keys: prebuilts_ndk@${ env.branch }
 
-    - name: Restore Cache prebuilts/rust
+    - name: Restore Cache prebuilts_rust.tar.xz
       id: prebuilts_rust
-      uses: actions/cache@v3
+      uses: actions/cache@v4
       with:
-        path: aosp/prebuilts/rust
-        key: prebuilts_rust@${{ env.branch }}
-        restore-keys: prebuilts_rust@${{ env.branch }}
-    - name: Clone project prebuilts/rust
-      if: steps.prebuilts_rust.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        clone_sparse prebuilts/rust bootstrap linux-x86/1.51.0
+        path: cache/prebuilts_rust.tar.xz
+        key: prebuilts_rust@${ env.branch }
+        restore-keys: prebuilts_rust@${ env.branch }
 
-    - name: Restore Cache system/apex
+    - name: Restore Cache prebuilts_vndk_v28.tar.xz
+      id: prebuilts_vndk_v28
+      uses: actions/cache@v4
+      with:
+        path: cache/prebuilts_vndk_v28.tar.xz
+        key: prebuilts_vndk_v28@${ env.branch }
+        restore-keys: prebuilts_vndk_v28@${ env.branch }
+
+    - name: Restore Cache prebuilts_vndk_v29.tar.xz
+      id: prebuilts_vndk_v29
+      uses: actions/cache@v4
+      with:
+        path: cache/prebuilts_vndk_v29.tar.xz
+        key: prebuilts_vndk_v29@${ env.branch }
+        restore-keys: prebuilts_vndk_v29@${ env.branch }
+
+    - name: Restore Cache prebuilts_vndk_v30.tar.xz
+      id: prebuilts_vndk_v30
+      uses: actions/cache@v4
+      with:
+        path: cache/prebuilts_vndk_v30.tar.xz
+        key: prebuilts_vndk_v30@${ env.branch }
+        restore-keys: prebuilts_vndk_v30@${ env.branch }
+
+    - name: Restore Cache singletons.tar.xz
+      id: singletons
+      uses: actions/cache@v4
+      with:
+        path: cache/singletons.tar.xz
+        key: singletons@${ env.branch }
+        restore-keys: singletons@${ env.branch }
+
+    - name: Restore Cache system_apex.tar.xz
       id: system_apex
-      uses: actions/cache@v3
+      uses: actions/cache@v4
       with:
-        path: aosp/system/apex
-        key: system_apex@${{ env.branch }}
-        restore-keys: system_apex@${{ env.branch }}
-    - name: Clone project system/apex
-      if: steps.system_apex.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        clone_sparse_exclude system/apex !/tests
+        path: cache/system_apex.tar.xz
+        key: system_apex@${ env.branch }
+        restore-keys: system_apex@${ env.branch }
 
-    - name: Restore Cache system/bpf
+    - name: Restore Cache system_bpf.tar.xz
       id: system_bpf
-      uses: actions/cache@v3
+      uses: actions/cache@v4
       with:
-        path: aosp/system/bpf
-        key: system_bpf@${{ env.branch }}
-        restore-keys: system_bpf@${{ env.branch }}
-    - name: Clone project system/bpf
-      if: steps.system_bpf.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        clone_depth_platform system/bpf
+        path: cache/system_bpf.tar.xz
+        key: system_bpf@${ env.branch }
+        restore-keys: system_bpf@${ env.branch }
 
-    - name: Restore Cache system/core
+    - name: Restore Cache system_bpfprogs.tar.xz
+      id: system_bpfprogs
+      uses: actions/cache@v4
+      with:
+        path: cache/system_bpfprogs.tar.xz
+        key: system_bpfprogs@${ env.branch }
+        restore-keys: system_bpfprogs@${ env.branch }
+
+    - name: Restore Cache system_bt.tar.xz
+      id: system_bt
+      uses: actions/cache@v4
+      with:
+        path: cache/system_bt.tar.xz
+        key: system_bt@${ env.branch }
+        restore-keys: system_bt@${ env.branch }
+
+    - name: Restore Cache system_ca-certificates.tar.xz
+      id: system_ca-certificates
+      uses: actions/cache@v4
+      with:
+        path: cache/system_ca-certificates.tar.xz
+        key: system_ca-certificates@${ env.branch }
+        restore-keys: system_ca-certificates@${ env.branch }
+
+    - name: Restore Cache system_connectivity_wificond.tar.xz
+      id: system_connectivity_wificond
+      uses: actions/cache@v4
+      with:
+        path: cache/system_connectivity_wificond.tar.xz
+        key: system_connectivity_wificond@${ env.branch }
+        restore-keys: system_connectivity_wificond@${ env.branch }
+
+    - name: Restore Cache system_core.tar.xz
       id: system_core
-      uses: actions/cache@v3
+      uses: actions/cache@v4
       with:
-        path: aosp/system/core
-        key: system_core@${{ env.branch }}
-        restore-keys: system_core@${{ env.branch }}
-    - name: Clone project system/core
-      if: steps.system_core.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        clone_depth_platform system/core
+        path: cache/system_core.tar.xz
+        key: system_core@${ env.branch }
+        restore-keys: system_core@${ env.branch }
 
-    - name: Restore Cache system/incremental_delivery
+    - name: Restore Cache system_extras.tar.xz
+      id: system_extras
+      uses: actions/cache@v4
+      with:
+        path: cache/system_extras.tar.xz
+        key: system_extras@${ env.branch }
+        restore-keys: system_extras@${ env.branch }
+
+    - name: Restore Cache system_gsid.tar.xz
+      id: system_gsid
+      uses: actions/cache@v4
+      with:
+        path: cache/system_gsid.tar.xz
+        key: system_gsid@${ env.branch }
+        restore-keys: system_gsid@${ env.branch }
+
+    - name: Restore Cache system_incremental_delivery.tar.xz
       id: system_incremental_delivery
-      uses: actions/cache@v3
+      uses: actions/cache@v4
       with:
-        path: aosp/system/incremental_delivery
-        key: system_incremental_delivery@${{ env.branch }}
-        restore-keys: system_incremental_delivery@${{ env.branch }}
-    - name: Clone project system/incremental_delivery
-      if: steps.system_incremental_delivery.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        clone_depth_platform system/incremental_delivery
+        path: cache/system_incremental_delivery.tar.xz
+        key: system_incremental_delivery@${ env.branch }
+        restore-keys: system_incremental_delivery@${ env.branch }
 
-    - name: Restore Cache system/libbase
+    - name: Restore Cache system_keymaster.tar.xz
+      id: system_keymaster
+      uses: actions/cache@v4
+      with:
+        path: cache/system_keymaster.tar.xz
+        key: system_keymaster@${ env.branch }
+        restore-keys: system_keymaster@${ env.branch }
+
+    - name: Restore Cache system_libbase.tar.xz
       id: system_libbase
-      uses: actions/cache@v3
+      uses: actions/cache@v4
       with:
-        path: aosp/system/libbase
-        key: system_libbase@${{ env.branch }}
-        restore-keys: system_libbase@${{ env.branch }}
-    - name: Clone project system/libbase
-      if: steps.system_libbase.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        clone_depth_platform system/libbase
+        path: cache/system_libbase.tar.xz
+        key: system_libbase@${ env.branch }
+        restore-keys: system_libbase@${ env.branch }
 
-    - name: Restore Cache system/libfmq
+    - name: Restore Cache system_libfmq.tar.xz
       id: system_libfmq
-      uses: actions/cache@v3
+      uses: actions/cache@v4
       with:
-        path: aosp/system/libfmq
-        key: system_libfmq@${{ env.branch }}
-        restore-keys: system_libfmq@${{ env.branch }}
-    - name: Clone project system/libfmq
-      if: steps.system_libfmq.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        clone_depth_platform system/libfmq
+        path: cache/system_libfmq.tar.xz
+        key: system_libfmq@${ env.branch }
+        restore-keys: system_libfmq@${ env.branch }
 
-    - name: Restore Cache system/libhidl
-      id: system_libhidl
-      uses: actions/cache@v3
-      with:
-        path: aosp/system/libhidl
-        key: system_libhidl@${{ env.branch }}
-        restore-keys: system_libhidl@${{ env.branch }}
-    - name: Clone project system/libhidl
-      if: steps.system_libhidl.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        clone_depth_platform system/libhidl
-
-    - name: Restore Cache system/libhwbinder
+    - name: Restore Cache system_libhwbinder.tar.xz
       id: system_libhwbinder
-      uses: actions/cache@v3
+      uses: actions/cache@v4
       with:
-        path: aosp/system/libhwbinder
-        key: system_libhwbinder@${{ env.branch }}
-        restore-keys: system_libhwbinder@${{ env.branch }}
-    - name: Clone project system/libhwbinder
-      if: steps.system_libhwbinder.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        clone_depth_platform system/libhwbinder
+        path: cache/system_libhwbinder.tar.xz
+        key: system_libhwbinder@${ env.branch }
+        restore-keys: system_libhwbinder@${ env.branch }
 
-    - name: Restore Cache system/libsysprop
-      id: system_libsysprop
-      uses: actions/cache@v3
+    - name: Restore Cache system_libprocinfo.tar.xz
+      id: system_libprocinfo
+      uses: actions/cache@v4
       with:
-        path: aosp/system/libsysprop
-        key: system_libsysprop@${{ env.branch }}
-        restore-keys: system_libsysprop@${{ env.branch }}
-    - name: Clone project system/libsysprop
-      if: steps.system_libsysprop.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        clone_depth_platform system/libsysprop
+        path: cache/system_libprocinfo.tar.xz
+        key: system_libprocinfo@${ env.branch }
+        restore-keys: system_libprocinfo@${ env.branch }
 
-    - name: Restore Cache system/logging
+    - name: Restore Cache system_libvintf.tar.xz
+      id: system_libvintf
+      uses: actions/cache@v4
+      with:
+        path: cache/system_libvintf.tar.xz
+        key: system_libvintf@${ env.branch }
+        restore-keys: system_libvintf@${ env.branch }
+
+    - name: Restore Cache system_libziparchive.tar.xz
+      id: system_libziparchive
+      uses: actions/cache@v4
+      with:
+        path: cache/system_libziparchive.tar.xz
+        key: system_libziparchive@${ env.branch }
+        restore-keys: system_libziparchive@${ env.branch }
+
+    - name: Restore Cache system_logging.tar.xz
       id: system_logging
-      uses: actions/cache@v3
+      uses: actions/cache@v4
       with:
-        path: aosp/system/logging
-        key: system_logging@${{ env.branch }}
-        restore-keys: system_logging@${{ env.branch }}
-    - name: Clone project system/logging
-      if: steps.system_logging.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        clone_depth_platform system/logging
+        path: cache/system_logging.tar.xz
+        key: system_logging@${ env.branch }
+        restore-keys: system_logging@${ env.branch }
 
-    - name: Restore Cache system/netd
+    - name: Restore Cache system_media.tar.xz
+      id: system_media
+      uses: actions/cache@v4
+      with:
+        path: cache/system_media.tar.xz
+        key: system_media@${ env.branch }
+        restore-keys: system_media@${ env.branch }
+
+    - name: Restore Cache system_memory_libdmabufheap.tar.xz
+      id: system_memory_libdmabufheap
+      uses: actions/cache@v4
+      with:
+        path: cache/system_memory_libdmabufheap.tar.xz
+        key: system_memory_libdmabufheap@${ env.branch }
+        restore-keys: system_memory_libdmabufheap@${ env.branch }
+
+    - name: Restore Cache system_memory_libion.tar.xz
+      id: system_memory_libion
+      uses: actions/cache@v4
+      with:
+        path: cache/system_memory_libion.tar.xz
+        key: system_memory_libion@${ env.branch }
+        restore-keys: system_memory_libion@${ env.branch }
+
+    - name: Restore Cache system_memory_libmeminfo.tar.xz
+      id: system_memory_libmeminfo
+      uses: actions/cache@v4
+      with:
+        path: cache/system_memory_libmeminfo.tar.xz
+        key: system_memory_libmeminfo@${ env.branch }
+        restore-keys: system_memory_libmeminfo@${ env.branch }
+
+    - name: Restore Cache system_memory_libmemunreachable.tar.xz
+      id: system_memory_libmemunreachable
+      uses: actions/cache@v4
+      with:
+        path: cache/system_memory_libmemunreachable.tar.xz
+        key: system_memory_libmemunreachable@${ env.branch }
+        restore-keys: system_memory_libmemunreachable@${ env.branch }
+
+    - name: Restore Cache system_memory_lmkd.tar.xz
+      id: system_memory_lmkd
+      uses: actions/cache@v4
+      with:
+        path: cache/system_memory_lmkd.tar.xz
+        key: system_memory_lmkd@${ env.branch }
+        restore-keys: system_memory_lmkd@${ env.branch }
+
+    - name: Restore Cache system_netd.tar.xz
       id: system_netd
-      uses: actions/cache@v3
+      uses: actions/cache@v4
       with:
-        path: aosp/system/netd
-        key: system_netd@${{ env.branch }}
-        restore-keys: system_netd@${{ env.branch }}
-    - name: Clone project system/netd
-      if: steps.system_netd.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        clone_depth_platform system/netd
+        path: cache/system_netd.tar.xz
+        key: system_netd@${ env.branch }
+        restore-keys: system_netd@${ env.branch }
 
-    - name: Restore Cache system/sepolicy
+    - name: Restore Cache system_nfc.tar.xz
+      id: system_nfc
+      uses: actions/cache@v4
+      with:
+        path: cache/system_nfc.tar.xz
+        key: system_nfc@${ env.branch }
+        restore-keys: system_nfc@${ env.branch }
+
+    - name: Restore Cache system_security.tar.xz
+      id: system_security
+      uses: actions/cache@v4
+      with:
+        path: cache/system_security.tar.xz
+        key: system_security@${ env.branch }
+        restore-keys: system_security@${ env.branch }
+
+    - name: Restore Cache system_sepolicy.tar.xz
       id: system_sepolicy
-      uses: actions/cache@v3
+      uses: actions/cache@v4
       with:
-        path: aosp/system/sepolicy
-        key: system_sepolicy@${{ env.branch }}
-        restore-keys: system_sepolicy@${{ env.branch }}
-    - name: Clone project system/sepolicy
-      if: steps.system_sepolicy.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        clone_depth_platform system/sepolicy
+        path: cache/system_sepolicy.tar.xz
+        key: system_sepolicy@${ env.branch }
+        restore-keys: system_sepolicy@${ env.branch }
 
-    - name: Restore Cache system/tools/aidl
+    - name: Restore Cache system_server_configurable_flags.tar.xz
+      id: system_server_configurable_flags
+      uses: actions/cache@v4
+      with:
+        path: cache/system_server_configurable_flags.tar.xz
+        key: system_server_configurable_flags@${ env.branch }
+        restore-keys: system_server_configurable_flags@${ env.branch }
+
+    - name: Restore Cache system_timezone.tar.xz
+      id: system_timezone
+      uses: actions/cache@v4
+      with:
+        path: cache/system_timezone.tar.xz
+        key: system_timezone@${ env.branch }
+        restore-keys: system_timezone@${ env.branch }
+
+    - name: Restore Cache system_tools_aidl.tar.xz
       id: system_tools_aidl
-      uses: actions/cache@v3
+      uses: actions/cache@v4
       with:
-        path: aosp/system/tools/aidl
-        key: system_tools_aidl@${{ env.branch }}
-        restore-keys: system_tools_aidl@${{ env.branch }}
-    - name: Clone project system/tools/aidl
-      if: steps.system_tools_aidl.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        clone_depth_platform system/tools/aidl
+        path: cache/system_tools_aidl.tar.xz
+        key: system_tools_aidl@${ env.branch }
+        restore-keys: system_tools_aidl@${ env.branch }
 
-    - name: Restore Cache system/tools/hidl
+    - name: Restore Cache system_tools_hidl.tar.xz
       id: system_tools_hidl
-      uses: actions/cache@v3
+      uses: actions/cache@v4
       with:
-        path: aosp/system/tools/hidl
-        key: system_tools_hidl@${{ env.branch }}
-        restore-keys: system_tools_hidl@${{ env.branch }}
-    - name: Clone project system/tools/hidl
-      if: steps.system_tools_hidl.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        clone_depth_platform system/tools/hidl
+        path: cache/system_tools_hidl.tar.xz
+        key: system_tools_hidl@${ env.branch }
+        restore-keys: system_tools_hidl@${ env.branch }
 
-    - name: Restore Cache system/unwinding
+    - name: Restore Cache system_unwinding.tar.xz
       id: system_unwinding
-      uses: actions/cache@v3
+      uses: actions/cache@v4
       with:
-        path: aosp/system/unwinding
-        key: system_unwinding@${{ env.branch }}
-        restore-keys: system_unwinding@${{ env.branch }}
-    - name: Clone project system/unwinding
-      if: steps.system_unwinding.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        clone_sparse_exclude system/unwinding "!/libunwindstack/tests/files" "!/libunwindstack/benchmarks/files" "!/libbacktrace/testdata"
+        path: cache/system_unwinding.tar.xz
+        key: system_unwinding@${ env.branch }
+        restore-keys: system_unwinding@${ env.branch }
 
-    - name: Restore Cache art-11.tar.xz
-      id: art-11
-      uses: actions/cache@v3
+    - name: Restore Cache test_vts-testcase_hal.tar.xz
+      id: test_vts-testcase_hal
+      uses: actions/cache@v4
       with:
-        path: aosp/art-11.tar.xz
-        key: art-11
-        restore-keys: art-11
-    - name: Clone project art-11.tar.xz
-      if: steps.art-11.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        download_release art-11.tar.xz android-12.0.0_r1-11
+        path: cache/test_vts-testcase_hal.tar.xz
+        key: test_vts-testcase_hal@${ env.branch }
+        restore-keys: test_vts-testcase_hal@${ env.branch }
 
-    - name: Restore Cache bionic-11.tar.xz
-      id: bionic-11
-      uses: actions/cache@v3
+    - name: Restore Cache tools_dexter.tar.xz
+      id: tools_dexter
+      uses: actions/cache@v4
       with:
-        path: aosp/bionic-11.tar.xz
-        key: bionic-11
-        restore-keys: bionic-11
-    - name: Clone project bionic-11.tar.xz
-      if: steps.bionic-11.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        download_release bionic-11.tar.xz android-12.0.0_r1-11
-
-    - name: Restore Cache external_arm-optimized-routines-0.tar.xz
-      id: external_arm-optimized-routines-0
-      uses: actions/cache@v3
-      with:
-        path: aosp/external_arm-optimized-routines-0.tar.xz
-        key: external_arm-optimized-routines-0
-        restore-keys: external_arm-optimized-routines-0
-    - name: Clone project external_arm-optimized-routines-0.tar.xz
-      if: steps.external_arm-optimized-routines-0.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        download_release external_arm-optimized-routines-0.tar.xz android-12.0.0_r1-0
-
-    - name: Restore Cache external_boringssl-4.tar.xz
-      id: external_boringssl-4
-      uses: actions/cache@v3
-      with:
-        path: aosp/external_boringssl-4.tar.xz
-        key: external_boringssl-4
-        restore-keys: external_boringssl-4
-    - name: Clone project external_boringssl-4.tar.xz
-      if: steps.external_boringssl-4.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        download_release external_boringssl-4.tar.xz android-12.0.0_r1-4
-
-    - name: Restore Cache external_compiler-rt-5.tar.xz
-      id: external_compiler-rt-5
-      uses: actions/cache@v3
-      with:
-        path: aosp/external_compiler-rt-5.tar.xz
-        key: external_compiler-rt-5
-        restore-keys: external_compiler-rt-5
-    - name: Clone project external_compiler-rt-5.tar.xz
-      if: steps.external_compiler-rt-5.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        download_release external_compiler-rt-5.tar.xz android-12.0.0_r1-5
-
-    - name: Restore Cache external_fmtlib-4.tar.xz
-      id: external_fmtlib-4
-      uses: actions/cache@v3
-      with:
-        path: aosp/external_fmtlib-4.tar.xz
-        key: external_fmtlib-4
-        restore-keys: external_fmtlib-4
-    - name: Clone project external_fmtlib-4.tar.xz
-      if: steps.external_fmtlib-4.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        download_release external_fmtlib-4.tar.xz android-12.0.0_r1-4
-
-    - name: Restore Cache external_giflib-4.tar.xz
-      id: external_giflib-4
-      uses: actions/cache@v3
-      with:
-        path: aosp/external_giflib-4.tar.xz
-        key: external_giflib-4
-        restore-keys: external_giflib-4
-    - name: Clone project external_giflib-4.tar.xz
-      if: steps.external_giflib-4.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        download_release external_giflib-4.tar.xz android-12.0.0_r1-4
-
-    - name: Restore Cache external_gwp_asan-4.tar.xz
-      id: external_gwp_asan-4
-      uses: actions/cache@v3
-      with:
-        path: aosp/external_gwp_asan-4.tar.xz
-        key: external_gwp_asan-4
-        restore-keys: external_gwp_asan-4
-    - name: Clone project external_gwp_asan-4.tar.xz
-      if: steps.external_gwp_asan-4.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        download_release external_gwp_asan-4.tar.xz android-12.0.0_r1-4
-
-    - name: Restore Cache external_harfbuzz_ng-7.tar.xz
-      id: external_harfbuzz_ng-7
-      uses: actions/cache@v3
-      with:
-        path: aosp/external_harfbuzz_ng-7.tar.xz
-        key: external_harfbuzz_ng-7
-        restore-keys: external_harfbuzz_ng-7
-    - name: Clone project external_harfbuzz_ng-7.tar.xz
-      if: steps.external_harfbuzz_ng-7.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        download_release external_harfbuzz_ng-7.tar.xz android-12.0.0_r1-7
-
-    - name: Restore Cache external_icu-6.tar.xz
-      id: external_icu-6
-      uses: actions/cache@v3
-      with:
-        path: aosp/external_icu-6.tar.xz
-        key: external_icu-6
-        restore-keys: external_icu-6
-    - name: Clone project external_icu-6.tar.xz
-      if: steps.external_icu-6.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        download_release external_icu-6.tar.xz android-12.0.0_r1-6
-
-    - name: Restore Cache external_libcxx-3.tar.xz
-      id: external_libcxx-3
-      uses: actions/cache@v3
-      with:
-        path: aosp/external_libcxx-3.tar.xz
-        key: external_libcxx-3
-        restore-keys: external_libcxx-3
-    - name: Clone project external_libcxx-3.tar.xz
-      if: steps.external_libcxx-3.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        download_release external_libcxx-3.tar.xz android-12.0.0_r1-3
-
-    - name: Restore Cache external_libcxxabi-2.tar.xz
-      id: external_libcxxabi-2
-      uses: actions/cache@v3
-      with:
-        path: aosp/external_libcxxabi-2.tar.xz
-        key: external_libcxxabi-2
-        restore-keys: external_libcxxabi-2
-    - name: Clone project external_libcxxabi-2.tar.xz
-      if: steps.external_libcxxabi-2.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        download_release external_libcxxabi-2.tar.xz android-12.0.0_r1-2
-
-    - name: Restore Cache external_libjpeg-turbo-4.tar.xz
-      id: external_libjpeg-turbo-4
-      uses: actions/cache@v3
-      with:
-        path: aosp/external_libjpeg-turbo-4.tar.xz
-        key: external_libjpeg-turbo-4
-        restore-keys: external_libjpeg-turbo-4
-    - name: Clone project external_libjpeg-turbo-4.tar.xz
-      if: steps.external_libjpeg-turbo-4.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        download_release external_libjpeg-turbo-4.tar.xz android-12.0.0_r1-4
-
-    - name: Restore Cache external_pdfium-7.tar.xz
-      id: external_pdfium-7
-      uses: actions/cache@v3
-      with:
-        path: aosp/external_pdfium-7.tar.xz
-        key: external_pdfium-7
-        restore-keys: external_pdfium-7
-    - name: Clone project external_pdfium-7.tar.xz
-      if: steps.external_pdfium-7.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        download_release external_pdfium-7.tar.xz android-12.0.0_r1-7
-
-    - name: Restore Cache external_protobuf-5.tar.xz
-      id: external_protobuf-5
-      uses: actions/cache@v3
-      with:
-        path: aosp/external_protobuf-5.tar.xz
-        key: external_protobuf-5
-        restore-keys: external_protobuf-5
-    - name: Clone project external_protobuf-5.tar.xz
-      if: steps.external_protobuf-5.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        download_release external_protobuf-5.tar.xz android-12.0.0_r1-5
-
-    - name: Restore Cache external_scrypt-5.tar.xz
-      id: external_scrypt-5
-      uses: actions/cache@v3
-      with:
-        path: aosp/external_scrypt-5.tar.xz
-        key: external_scrypt-5
-        restore-keys: external_scrypt-5
-    - name: Clone project external_scrypt-5.tar.xz
-      if: steps.external_scrypt-5.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        download_release external_scrypt-5.tar.xz android-12.0.0_r1-5
-
-    - name: Restore Cache external_scudo-0.tar.xz
-      id: external_scudo-0
-      uses: actions/cache@v3
-      with:
-        path: aosp/external_scudo-0.tar.xz
-        key: external_scudo-0
-        restore-keys: external_scudo-0
-    - name: Clone project external_scudo-0.tar.xz
-      if: steps.external_scudo-0.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        download_release external_scudo-0.tar.xz android-12.0.0_r1-0
-
-    - name: Restore Cache external_selinux-9.tar.xz
-      id: external_selinux-9
-      uses: actions/cache@v3
-      with:
-        path: aosp/external_selinux-9.tar.xz
-        key: external_selinux-9
-        restore-keys: external_selinux-9
-    - name: Clone project external_selinux-9.tar.xz
-      if: steps.external_selinux-9.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        download_release external_selinux-9.tar.xz android-12.0.0_r1-9
-
-    - name: Restore Cache external_sqlite-7.tar.xz
-      id: external_sqlite-7
-      uses: actions/cache@v3
-      with:
-        path: aosp/external_sqlite-7.tar.xz
-        key: external_sqlite-7
-        restore-keys: external_sqlite-7
-    - name: Clone project external_sqlite-7.tar.xz
-      if: steps.external_sqlite-7.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        download_release external_sqlite-7.tar.xz android-12.0.0_r1-7
-
-    - name: Restore Cache external_zlib-2.tar.xz
-      id: external_zlib-2
-      uses: actions/cache@v3
-      with:
-        path: aosp/external_zlib-2.tar.xz
-        key: external_zlib-2
-        restore-keys: external_zlib-2
-    - name: Clone project external_zlib-2.tar.xz
-      if: steps.external_zlib-2.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        download_release external_zlib-2.tar.xz android-12.0.0_r1-2
-
-    - name: Restore Cache frameworks_av-15.tar.xz
-      id: frameworks_av-15
-      uses: actions/cache@v3
-      with:
-        path: aosp/frameworks_av-15.tar.xz
-        key: frameworks_av-15
-        restore-keys: frameworks_av-15
-    - name: Clone project frameworks_av-15.tar.xz
-      if: steps.frameworks_av-15.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        download_release frameworks_av-15.tar.xz android-12.0.0_r1-15
-
-    - name: Restore Cache frameworks_base-14.tar.xz
-      id: frameworks_base-14
-      uses: actions/cache@v3
-      with:
-        path: aosp/frameworks_base-14.tar.xz
-        key: frameworks_base-14
-        restore-keys: frameworks_base-14
-    - name: Clone project frameworks_base-14.tar.xz
-      if: steps.frameworks_base-14.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        download_release frameworks_base-14.tar.xz android-12.0.0_r1-14
-
-    - name: Restore Cache frameworks_minikin-8.tar.xz
-      id: frameworks_minikin-8
-      uses: actions/cache@v3
-      with:
-        path: aosp/frameworks_minikin-8.tar.xz
-        key: frameworks_minikin-8
-        restore-keys: frameworks_minikin-8
-    - name: Clone project frameworks_minikin-8.tar.xz
-      if: steps.frameworks_minikin-8.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        download_release frameworks_minikin-8.tar.xz android-12.0.0_r1-8
-
-    - name: Restore Cache frameworks_native-13.tar.xz
-      id: frameworks_native-13
-      uses: actions/cache@v3
-      with:
-        path: aosp/frameworks_native-13.tar.xz
-        key: frameworks_native-13
-        restore-keys: frameworks_native-13
-    - name: Clone project frameworks_native-13.tar.xz
-      if: steps.frameworks_native-13.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        download_release frameworks_native-13.tar.xz android-12.0.0_r1-13
-
-    - name: Restore Cache frameworks_wilhelm-16.tar.xz
-      id: frameworks_wilhelm-16
-      uses: actions/cache@v3
-      with:
-        path: aosp/frameworks_wilhelm-16.tar.xz
-        key: frameworks_wilhelm-16
-        restore-keys: frameworks_wilhelm-16
-    - name: Clone project frameworks_wilhelm-16.tar.xz
-      if: steps.frameworks_wilhelm-16.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        download_release frameworks_wilhelm-16.tar.xz android-12.0.0_r1-16
-
-    - name: Restore Cache hardware_interfaces-13.tar.xz
-      id: hardware_interfaces-13
-      uses: actions/cache@v3
-      with:
-        path: aosp/hardware_interfaces-13.tar.xz
-        key: hardware_interfaces-13
-        restore-keys: hardware_interfaces-13
-    - name: Clone project hardware_interfaces-13.tar.xz
-      if: steps.hardware_interfaces-13.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        download_release hardware_interfaces-13.tar.xz android-12.0.0_r1-13
-
-    - name: Restore Cache hardware_libhardware-10.tar.xz
-      id: hardware_libhardware-10
-      uses: actions/cache@v3
-      with:
-        path: aosp/hardware_libhardware-10.tar.xz
-        key: hardware_libhardware-10
-        restore-keys: hardware_libhardware-10
-    - name: Clone project hardware_libhardware-10.tar.xz
-      if: steps.hardware_libhardware-10.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        download_release hardware_libhardware-10.tar.xz android-12.0.0_r1-10
-
-    - name: Restore Cache hardware_libhardware_legacy-10.tar.xz
-      id: hardware_libhardware_legacy-10
-      uses: actions/cache@v3
-      with:
-        path: aosp/hardware_libhardware_legacy-10.tar.xz
-        key: hardware_libhardware_legacy-10
-        restore-keys: hardware_libhardware_legacy-10
-    - name: Clone project hardware_libhardware_legacy-10.tar.xz
-      if: steps.hardware_libhardware_legacy-10.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        download_release hardware_libhardware_legacy-10.tar.xz android-12.0.0_r1-10
-
-    - name: Restore Cache libnativehelper-5.tar.xz
-      id: libnativehelper-5
-      uses: actions/cache@v3
-      with:
-        path: aosp/libnativehelper-5.tar.xz
-        key: libnativehelper-5
-        restore-keys: libnativehelper-5
-    - name: Clone project libnativehelper-5.tar.xz
-      if: steps.libnativehelper-5.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        download_release libnativehelper-5.tar.xz android-12.0.0_r1-5
-
-    - name: Restore Cache system_bpf-7.tar.xz
-      id: system_bpf-7
-      uses: actions/cache@v3
-      with:
-        path: aosp/system_bpf-7.tar.xz
-        key: system_bpf-7
-        restore-keys: system_bpf-7
-    - name: Clone project system_bpf-7.tar.xz
-      if: steps.system_bpf-7.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        download_release system_bpf-7.tar.xz android-12.0.0_r1-7
-
-    - name: Restore Cache system_core-12.tar.xz
-      id: system_core-12
-      uses: actions/cache@v3
-      with:
-        path: aosp/system_core-12.tar.xz
-        key: system_core-12
-        restore-keys: system_core-12
-    - name: Clone project system_core-12.tar.xz
-      if: steps.system_core-12.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        download_release system_core-12.tar.xz android-12.0.0_r1-12
-
-    - name: Restore Cache system_incremental_delivery-8.tar.xz
-      id: system_incremental_delivery-8
-      uses: actions/cache@v3
-      with:
-        path: aosp/system_incremental_delivery-8.tar.xz
-        key: system_incremental_delivery-8
-        restore-keys: system_incremental_delivery-8
-    - name: Clone project system_incremental_delivery-8.tar.xz
-      if: steps.system_incremental_delivery-8.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        download_release system_incremental_delivery-8.tar.xz android-12.0.0_r1-8
-
-    - name: Restore Cache system_libbase-5.tar.xz
-      id: system_libbase-5
-      uses: actions/cache@v3
-      with:
-        path: aosp/system_libbase-5.tar.xz
-        key: system_libbase-5
-        restore-keys: system_libbase-5
-    - name: Clone project system_libbase-5.tar.xz
-      if: steps.system_libbase-5.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        download_release system_libbase-5.tar.xz android-12.0.0_r1-5
-
-    - name: Restore Cache system_libhidl-8.tar.xz
-      id: system_libhidl-8
-      uses: actions/cache@v3
-      with:
-        path: aosp/system_libhidl-8.tar.xz
-        key: system_libhidl-8
-        restore-keys: system_libhidl-8
-    - name: Clone project system_libhidl-8.tar.xz
-      if: steps.system_libhidl-8.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        download_release system_libhidl-8.tar.xz android-12.0.0_r1-8
-
-    - name: Restore Cache system_libhwbinder-7.tar.xz
-      id: system_libhwbinder-7
-      uses: actions/cache@v3
-      with:
-        path: aosp/system_libhwbinder-7.tar.xz
-        key: system_libhwbinder-7
-        restore-keys: system_libhwbinder-7
-    - name: Clone project system_libhwbinder-7.tar.xz
-      if: steps.system_libhwbinder-7.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        download_release system_libhwbinder-7.tar.xz android-12.0.0_r1-7
-
-    - name: Restore Cache system_libsysprop-8.tar.xz
-      id: system_libsysprop-8
-      uses: actions/cache@v3
-      with:
-        path: aosp/system_libsysprop-8.tar.xz
-        key: system_libsysprop-8
-        restore-keys: system_libsysprop-8
-    - name: Clone project system_libsysprop-8.tar.xz
-      if: steps.system_libsysprop-8.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        download_release system_libsysprop-8.tar.xz android-12.0.0_r1-8
-
-    - name: Restore Cache system_libvintf-9.tar.xz
-      id: system_libvintf-9
-      uses: actions/cache@v3
-      with:
-        path: aosp/system_libvintf-9.tar.xz
-        key: system_libvintf-9
-        restore-keys: system_libvintf-9
-    - name: Clone project system_libvintf-9.tar.xz
-      if: steps.system_libvintf-9.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        download_release system_libvintf-9.tar.xz android-12.0.0_r1-9
-
-    - name: Restore Cache system_libziparchive-6.tar.xz
-      id: system_libziparchive-6
-      uses: actions/cache@v3
-      with:
-        path: aosp/system_libziparchive-6.tar.xz
-        key: system_libziparchive-6
-        restore-keys: system_libziparchive-6
-    - name: Clone project system_libziparchive-6.tar.xz
-      if: steps.system_libziparchive-6.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        download_release system_libziparchive-6.tar.xz android-12.0.0_r1-6
-
-    - name: Restore Cache system_logging-9.tar.xz
-      id: system_logging-9
-      uses: actions/cache@v3
-      with:
-        path: aosp/system_logging-9.tar.xz
-        key: system_logging-9
-        restore-keys: system_logging-9
-    - name: Clone project system_logging-9.tar.xz
-      if: steps.system_logging-9.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        download_release system_logging-9.tar.xz android-12.0.0_r1-9
-
-    - name: Restore Cache system_media-7.tar.xz
-      id: system_media-7
-      uses: actions/cache@v3
-      with:
-        path: aosp/system_media-7.tar.xz
-        key: system_media-7
-        restore-keys: system_media-7
-    - name: Clone project system_media-7.tar.xz
-      if: steps.system_media-7.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        download_release system_media-7.tar.xz android-12.0.0_r1-7
-
-    - name: Restore Cache system_memory_libmeminfo-8.tar.xz
-      id: system_memory_libmeminfo-8
-      uses: actions/cache@v3
-      with:
-        path: aosp/system_memory_libmeminfo-8.tar.xz
-        key: system_memory_libmeminfo-8
-        restore-keys: system_memory_libmeminfo-8
-    - name: Clone project system_memory_libmeminfo-8.tar.xz
-      if: steps.system_memory_libmeminfo-8.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        download_release system_memory_libmeminfo-8.tar.xz android-12.0.0_r1-8
-
-    - name: Restore Cache system_memory_libmemtrack-10.tar.xz
-      id: system_memory_libmemtrack-10
-      uses: actions/cache@v3
-      with:
-        path: aosp/system_memory_libmemtrack-10.tar.xz
-        key: system_memory_libmemtrack-10
-        restore-keys: system_memory_libmemtrack-10
-    - name: Clone project system_memory_libmemtrack-10.tar.xz
-      if: steps.system_memory_libmemtrack-10.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        download_release system_memory_libmemtrack-10.tar.xz android-12.0.0_r1-10
-
-    - name: Restore Cache system_memory_libmemunreachable-7.tar.xz
-      id: system_memory_libmemunreachable-7
-      uses: actions/cache@v3
-      with:
-        path: aosp/system_memory_libmemunreachable-7.tar.xz
-        key: system_memory_libmemunreachable-7
-        restore-keys: system_memory_libmemunreachable-7
-    - name: Clone project system_memory_libmemunreachable-7.tar.xz
-      if: steps.system_memory_libmemunreachable-7.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        download_release system_memory_libmemunreachable-7.tar.xz android-12.0.0_r1-7
-
-    - name: Restore Cache system_netd-10.tar.xz
-      id: system_netd-10
-      uses: actions/cache@v3
-      with:
-        path: aosp/system_netd-10.tar.xz
-        key: system_netd-10
-        restore-keys: system_netd-10
-    - name: Clone project system_netd-10.tar.xz
-      if: steps.system_netd-10.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        download_release system_netd-10.tar.xz android-12.0.0_r1-10
-
-    - name: Restore Cache system_server_configurable_flags-7.tar.xz
-      id: system_server_configurable_flags-7
-      uses: actions/cache@v3
-      with:
-        path: aosp/system_server_configurable_flags-7.tar.xz
-        key: system_server_configurable_flags-7
-        restore-keys: system_server_configurable_flags-7
-    - name: Clone project system_server_configurable_flags-7.tar.xz
-      if: steps.system_server_configurable_flags-7.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        download_release system_server_configurable_flags-7.tar.xz android-12.0.0_r1-7
-
-    - name: Restore Cache system_tools_hidl-11.tar.xz
-      id: system_tools_hidl-11
-      uses: actions/cache@v3
-      with:
-        path: aosp/system_tools_hidl-11.tar.xz
-        key: system_tools_hidl-11
-        restore-keys: system_tools_hidl-11
-    - name: Clone project system_tools_hidl-11.tar.xz
-      if: steps.system_tools_hidl-11.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        download_release system_tools_hidl-11.tar.xz android-12.0.0_r1-11
-
-    - name: Restore Cache system_tools_sysprop-7.tar.xz
-      id: system_tools_sysprop-7
-      uses: actions/cache@v3
-      with:
-        path: aosp/system_tools_sysprop-7.tar.xz
-        key: system_tools_sysprop-7
-        restore-keys: system_tools_sysprop-7
-    - name: Clone project system_tools_sysprop-7.tar.xz
-      if: steps.system_tools_sysprop-7.outputs.cache-hit != 'true'
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        download_release system_tools_sysprop-7.tar.xz android-12.0.0_r1-7
-
-    - name: Extract Artifacts and Calculate Size
-      run: |
-        cd aosp && source $GITHUB_WORKSPACE/envsetup.sh
-        extract_tar art-11.tar.xz art/ && du -ah -d1 prebuiltlibs/art/|sort -rh
-        extract_tar bionic-11.tar.xz bionic/ && du -ah -d1 prebuiltlibs/bionic/|sort -rh
-        extract_tar external_arm-optimized-routines-0.tar.xz external/arm-optimized-routines/ && du -ah -d1 prebuiltlibs/external/arm-optimized-routines/|sort -rh
-        extract_tar external_boringssl-4.tar.xz external/boringssl/ && du -ah -d1 prebuiltlibs/external/boringssl/|sort -rh
-        extract_tar external_compiler-rt-5.tar.xz external/compiler-rt/ && du -ah -d1 prebuiltlibs/external/compiler-rt/|sort -rh
-        extract_tar external_fmtlib-4.tar.xz external/fmtlib/ && du -ah -d1 prebuiltlibs/external/fmtlib/|sort -rh
-        extract_tar external_giflib-4.tar.xz external/giflib/ && du -ah -d1 prebuiltlibs/external/giflib/|sort -rh
-        extract_tar external_gwp_asan-4.tar.xz external/gwp_asan/ && du -ah -d1 prebuiltlibs/external/gwp_asan/|sort -rh
-        extract_tar external_harfbuzz_ng-7.tar.xz external/harfbuzz_ng/ && du -ah -d1 prebuiltlibs/external/harfbuzz_ng/|sort -rh
-        extract_tar external_icu-6.tar.xz external/icu/ && du -ah -d1 prebuiltlibs/external/icu/|sort -rh
-        extract_tar external_libcxx-3.tar.xz external/libcxx/ && du -ah -d1 prebuiltlibs/external/libcxx/|sort -rh
-        extract_tar external_libcxxabi-2.tar.xz external/libcxxabi/ && du -ah -d1 prebuiltlibs/external/libcxxabi/|sort -rh
-        extract_tar external_libjpeg-turbo-4.tar.xz external/libjpeg-turbo/ && du -ah -d1 prebuiltlibs/external/libjpeg-turbo/|sort -rh
-        extract_tar external_pdfium-7.tar.xz external/pdfium/ && du -ah -d1 prebuiltlibs/external/pdfium/|sort -rh
-        extract_tar external_protobuf-5.tar.xz external/protobuf/ && du -ah -d1 prebuiltlibs/external/protobuf/|sort -rh
-        extract_tar external_scrypt-5.tar.xz external/scrypt/ && du -ah -d1 prebuiltlibs/external/scrypt/|sort -rh
-        extract_tar external_scudo-0.tar.xz external/scudo/ && du -ah -d1 prebuiltlibs/external/scudo/|sort -rh
-        extract_tar external_selinux-9.tar.xz external/selinux/ && du -ah -d1 prebuiltlibs/external/selinux/|sort -rh
-        extract_tar external_sqlite-7.tar.xz external/sqlite/ && du -ah -d1 prebuiltlibs/external/sqlite/|sort -rh
-        extract_tar external_zlib-2.tar.xz external/zlib/ && du -ah -d1 prebuiltlibs/external/zlib/|sort -rh
-        extract_tar frameworks_av-15.tar.xz frameworks/av/ && du -ah -d1 prebuiltlibs/frameworks/av/|sort -rh
-        extract_tar frameworks_base-14.tar.xz frameworks/base/ && du -ah -d1 prebuiltlibs/frameworks/base/|sort -rh
-        extract_tar frameworks_minikin-8.tar.xz frameworks/minikin/ && du -ah -d1 prebuiltlibs/frameworks/minikin/|sort -rh
-        extract_tar frameworks_native-13.tar.xz frameworks/native/ && du -ah -d1 prebuiltlibs/frameworks/native/|sort -rh
-        extract_tar frameworks_wilhelm-16.tar.xz frameworks/wilhelm/ && du -ah -d1 prebuiltlibs/frameworks/wilhelm/|sort -rh
-        extract_tar hardware_interfaces-13.tar.xz hardware/interfaces/ && du -ah -d1 prebuiltlibs/hardware/interfaces/|sort -rh
-        extract_tar hardware_libhardware-10.tar.xz hardware/libhardware/ && du -ah -d1 prebuiltlibs/hardware/libhardware/|sort -rh
-        extract_tar hardware_libhardware_legacy-10.tar.xz hardware/libhardware_legacy/ && du -ah -d1 prebuiltlibs/hardware/libhardware_legacy/|sort -rh
-        extract_tar libnativehelper-5.tar.xz libnativehelper/ && du -ah -d1 prebuiltlibs/libnativehelper/|sort -rh
-        extract_tar system_bpf-7.tar.xz system/bpf/ && du -ah -d1 prebuiltlibs/system/bpf/|sort -rh
-        extract_tar system_core-12.tar.xz system/core/ && du -ah -d1 prebuiltlibs/system/core/|sort -rh
-        extract_tar system_incremental_delivery-8.tar.xz system/incremental_delivery/ && du -ah -d1 prebuiltlibs/system/incremental_delivery/|sort -rh
-        extract_tar system_libbase-5.tar.xz system/libbase/ && du -ah -d1 prebuiltlibs/system/libbase/|sort -rh
-        extract_tar system_libhidl-8.tar.xz system/libhidl/ && du -ah -d1 prebuiltlibs/system/libhidl/|sort -rh
-        extract_tar system_libhwbinder-7.tar.xz system/libhwbinder/ && du -ah -d1 prebuiltlibs/system/libhwbinder/|sort -rh
-        extract_tar system_libsysprop-8.tar.xz system/libsysprop/ && du -ah -d1 prebuiltlibs/system/libsysprop/|sort -rh
-        extract_tar system_libvintf-9.tar.xz system/libvintf/ && du -ah -d1 prebuiltlibs/system/libvintf/|sort -rh
-        extract_tar system_libziparchive-6.tar.xz system/libziparchive/ && du -ah -d1 prebuiltlibs/system/libziparchive/|sort -rh
-        extract_tar system_logging-9.tar.xz system/logging/ && du -ah -d1 prebuiltlibs/system/logging/|sort -rh
-        extract_tar system_media-7.tar.xz system/media/ && du -ah -d1 prebuiltlibs/system/media/|sort -rh
-        extract_tar system_memory_libmeminfo-8.tar.xz system/memory/libmeminfo/ && du -ah -d1 prebuiltlibs/system/memory/libmeminfo/|sort -rh
-        extract_tar system_memory_libmemtrack-10.tar.xz system/memory/libmemtrack/ && du -ah -d1 prebuiltlibs/system/memory/libmemtrack/|sort -rh
-        extract_tar system_memory_libmemunreachable-7.tar.xz system/memory/libmemunreachable/ && du -ah -d1 prebuiltlibs/system/memory/libmemunreachable/|sort -rh
-        extract_tar system_netd-10.tar.xz system/netd/ && du -ah -d1 prebuiltlibs/system/netd/|sort -rh
-        extract_tar system_server_configurable_flags-7.tar.xz system/server_configurable_flags/ && du -ah -d1 prebuiltlibs/system/server_configurable_flags/|sort -rh
-        extract_tar system_tools_hidl-11.tar.xz system/tools/hidl/ && du -ah -d1 prebuiltlibs/system/tools/hidl/|sort -rh
-        extract_tar system_tools_sysprop-7.tar.xz system/tools/sysprop/ && du -ah -d1 prebuiltlibs/system/tools/sysprop/|sort -rh
-        du -ah -d1 art/|sort -rh && rm -rf art/.git
-        du -ah -d1 bionic/|sort -rh && rm -rf bionic/.git
-        du -ah -d1 build/blueprint/|sort -rh && rm -rf build/blueprint/.git
-        du -ah -d1 build/make/|sort -rh && rm -rf build/make/.git
-        du -ah -d1 build/soong/|sort -rh && rm -rf build/soong/.git
-        du -ah -d1 external/golang-protobuf/|sort -rh && rm -rf external/golang-protobuf/.git
-        du -ah -d1 external/googletest/|sort -rh && rm -rf external/googletest/.git
-        du -ah -d1 external/gwp_asan/|sort -rh && rm -rf external/gwp_asan/.git
-        du -ah -d1 external/icu/|sort -rh && rm -rf external/icu/.git
-        du -ah -d1 external/protobuf/|sort -rh && rm -rf external/protobuf/.git
-        du -ah -d1 external/skia/|sort -rh && rm -rf external/skia/.git
-        du -ah -d1 external/starlark-go/|sort -rh && rm -rf external/starlark-go/.git
-        du -ah -d1 external/vulkan-headers/|sort -rh && rm -rf external/vulkan-headers/.git
-        du -ah -d1 frameworks/av/|sort -rh && rm -rf frameworks/av/.git
-        du -ah -d1 frameworks/base/|sort -rh && rm -rf frameworks/base/.git
-        du -ah -d1 frameworks/minikin/|sort -rh && rm -rf frameworks/minikin/.git
-        du -ah -d1 frameworks/native/|sort -rh && rm -rf frameworks/native/.git
-        du -ah -d1 frameworks/wilhelm/|sort -rh && rm -rf frameworks/wilhelm/.git
-        du -ah -d1 hardware/interfaces/|sort -rh && rm -rf hardware/interfaces/.git
-        du -ah -d1 hardware/libhardware/|sort -rh && rm -rf hardware/libhardware/.git
-        du -ah -d1 hardware/libhardware_legacy/|sort -rh && rm -rf hardware/libhardware_legacy/.git
-        du -ah -d1 kernel/configs/|sort -rh && rm -rf kernel/configs/.git
-        du -ah -d1 libnativehelper/|sort -rh && rm -rf libnativehelper/.git
-        du -ah -d1 packages/modules/DnsResolver/|sort -rh && rm -rf packages/modules/DnsResolver/.git
-        du -ah -d1 packages/modules/StatsD/|sort -rh && rm -rf packages/modules/StatsD/.git
-        du -ah -d1 packages/modules/common/|sort -rh && rm -rf packages/modules/common/.git
-        du -ah -d1 prebuilts/build-tools/|sort -rh && rm -rf prebuilts/build-tools/.git
-        du -ah -d1 prebuilts/clang-tools/|sort -rh && rm -rf prebuilts/clang-tools/.git
-        du -ah -d1 prebuilts/clang/host/linux-x86/|sort -rh && rm -rf prebuilts/clang/host/linux-x86/.git
-        du -ah -d1 prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8/|sort -rh && rm -rf prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8/.git
-        du -ah -d1 prebuilts/misc/|sort -rh && rm -rf prebuilts/misc/.git
-        du -ah -d1 prebuilts/ndk/|sort -rh && rm -rf prebuilts/ndk/.git
-        du -ah -d1 prebuilts/rust/|sort -rh && rm -rf prebuilts/rust/.git
-        du -ah -d1 system/apex/|sort -rh && rm -rf system/apex/.git
-        du -ah -d1 system/bpf/|sort -rh && rm -rf system/bpf/.git
-        du -ah -d1 system/core/|sort -rh && rm -rf system/core/.git
-        du -ah -d1 system/incremental_delivery/|sort -rh && rm -rf system/incremental_delivery/.git
-        du -ah -d1 system/libbase/|sort -rh && rm -rf system/libbase/.git
-        du -ah -d1 system/libfmq/|sort -rh && rm -rf system/libfmq/.git
-        du -ah -d1 system/libhidl/|sort -rh && rm -rf system/libhidl/.git
-        du -ah -d1 system/libhwbinder/|sort -rh && rm -rf system/libhwbinder/.git
-        du -ah -d1 system/libsysprop/|sort -rh && rm -rf system/libsysprop/.git
-        du -ah -d1 system/logging/|sort -rh && rm -rf system/logging/.git
-        du -ah -d1 system/netd/|sort -rh && rm -rf system/netd/.git
-        du -ah -d1 system/sepolicy/|sort -rh && rm -rf system/sepolicy/.git
-        du -ah -d1 system/tools/aidl/|sort -rh && rm -rf system/tools/aidl/.git
-        du -ah -d1 system/tools/hidl/|sort -rh && rm -rf system/tools/hidl/.git
-        du -ah -d1 system/unwinding/|sort -rh && rm -rf system/unwinding/.git
+        path: cache/tools_dexter.tar.xz
+        key: tools_dexter@${ env.branch }
+        restore-keys: tools_dexter@${ env.branch }
 
     - name: Start Soong
-      run: |
-        pushd aosp
-        export TOP=$(pwd)
-        cp build/make/core/root.mk Makefile
-        ln -sf make/CleanSpec.mk build/ && ln -sf make/core build/
-        ln -sf make/target build/ && ln -sf make/tools build/
-        ln -sf build/soong/root.bp Android.bp
-        mkdir -p prebuilts/jdk && touch prebuilts/jdk/.find-ignore
-        mkdir -p prebuilts/jdk/jdk8 && mkdir -p prebuilts/jdk/jdk11
-        ln -sf $JAVA_HOME_8_X64 prebuilts/jdk/jdk8/linux-x86
-        ln -sf $JAVA_HOME_11_X64 prebuilts/jdk/jdk11/linux-x86
-        mkdir -p prebuilts/go && touch prebuilts/go/.find-ignore
-        ln -sf $GOROOT_1_19_X64 prebuilts/go/linux-x86
-        mkdir -p out/soong/.minibootstrap out/soong/.bootstrap/bin
-        ln -sf $GITHUB_WORKSPACE/soong_build out/soong/.bootstrap/bin
-        ln -sf $GITHUB_WORKSPACE/bpglob out/soong/.minibootstrap
-        cp $GITHUB_WORKSPACE/ckati prebuilts/build-tools/linux-x86/bin
-        mkdir -p prebuiltlibs && cp $GITHUB_WORKSPACE/Android.bp prebuiltlibs/
-        mkdir -p prebuiltlibs && cp $GITHUB_WORKSPACE/rust_prebuilt.list prebuiltlibs/
-        echo "eng.buildbot.$(date '+%Y%m%d.%H%M%S')" > out/soong/build_number.txt
-        mkdir -p external/compiler-rt/lib/cfi/ && curl 'https://android.googlesource.com/platform/external/compiler-rt/+/android12-gsi/lib/cfi/cfi_blocklist.txt?format=TEXT' | base64 -d > external/compiler-rt/lib/cfi/cfi_blocklist.txt
-        mkdir -p out/soong/host/linux-x86/lib64/ && cp prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8/sysroot/usr/lib/libncurses.so.5.9 out/soong/host/linux-x86/lib64/libncurses.so.5
-        mkdir -p out/soong/host/linux-x86/lib64/ && cp prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8/sysroot/usr/lib/libtinfo.so.5.9 out/soong/host/linux-x86/lib64/libtinfo.so.5
-        $GITHUB_WORKSPACE/scripts/build17.sh
-        df -h
+      run: bash steps/build_01.sh
 
-    - uses: softprops/action-gh-release@master
+    - uses: actions/upload-artifact@v4
       with:
-        name: ${{ env.branch }}-17
-        tag_name: ${{ env.branch }}-17
-        files: |
-          aosp/frameworks_base-17.tar.xz
+        name: external_jsoncpp
+        overwrite: true
+        path: external_jsoncpp.tar.xz
 
-    - name: Archive frameworks_base-17.tar.xz
-      uses: actions/upload-artifact@v3
+    - uses: actions/upload-artifact@v4
       with:
-        name: frameworks_base-17.tar.xz
-        path: aosp/frameworks_base-17.tar.xz
+        name: system_ca-certificates
+        overwrite: true
+        path: system_ca-certificates.tar.xz
 
-    - name: Restore Cache frameworks_base-17.tar.xz
-      id: frameworks_base-17
-      uses: actions/cache@v3
+    - uses: actions/upload-artifact@v4
       with:
-        path: aosp/frameworks_base-17.tar.xz
-        key: frameworks_base-17
-        restore-keys: frameworks_base-17
+        name: system_core
+        overwrite: true
+        path: system_core.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: frameworks_base
+        overwrite: true
+        path: frameworks_base.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: external_noto-fonts
+        overwrite: true
+        path: external_noto-fonts.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: system_extras
+        overwrite: true
+        path: system_extras.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: prebuilts_clang_host_linux-x86
+        overwrite: true
+        path: prebuilts_clang_host_linux-x86.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: bionic
+        overwrite: true
+        path: bionic.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: system_sepolicy
+        overwrite: true
+        path: system_sepolicy.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: external_angle
+        overwrite: true
+        path: external_angle.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: build_make
+        overwrite: true
+        path: build_make.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: prebuilts_vndk_v29
+        overwrite: true
+        path: prebuilts_vndk_v29.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: frameworks_native
+        overwrite: true
+        path: frameworks_native.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: system_libhwbinder
+        overwrite: true
+        path: system_libhwbinder.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: system_libprocinfo
+        overwrite: true
+        path: system_libprocinfo.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: system_unwinding
+        overwrite: true
+        path: system_unwinding.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: external_protobuf
+        overwrite: true
+        path: external_protobuf.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: system_timezone
+        overwrite: true
+        path: system_timezone.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: external_python_cpython2
+        overwrite: true
+        path: external_python_cpython2.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: device_generic_vulkan-cereal
+        overwrite: true
+        path: device_generic_vulkan-cereal.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: external_grpc-grpc
+        overwrite: true
+        path: external_grpc-grpc.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: external_fmtlib
+        overwrite: true
+        path: external_fmtlib.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: external_libcxxabi
+        overwrite: true
+        path: external_libcxxabi.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: external_mksh
+        overwrite: true
+        path: external_mksh.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: packages_modules_SdkExtensions
+        overwrite: true
+        path: packages_modules_SdkExtensions.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: system_libziparchive
+        overwrite: true
+        path: system_libziparchive.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: prebuilts_build-tools
+        overwrite: true
+        path: prebuilts_build-tools.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: art
+        overwrite: true
+        path: art.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: system_memory_libion
+        overwrite: true
+        path: system_memory_libion.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: external_roboto-fonts
+        overwrite: true
+        path: external_roboto-fonts.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: external_minijail
+        overwrite: true
+        path: external_minijail.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: external_libjpeg-turbo
+        overwrite: true
+        path: external_libjpeg-turbo.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: frameworks_av
+        overwrite: true
+        path: frameworks_av.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: external_e2fsprogs
+        overwrite: true
+        path: external_e2fsprogs.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: external_zlib
+        overwrite: true
+        path: external_zlib.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: packages_modules_adb
+        overwrite: true
+        path: packages_modules_adb.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: system_netd
+        overwrite: true
+        path: system_netd.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: external_arm-optimized-routines
+        overwrite: true
+        path: external_arm-optimized-routines.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: external_gwp_asan
+        overwrite: true
+        path: external_gwp_asan.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: external_icu
+        overwrite: true
+        path: external_icu.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: external_giflib
+        overwrite: true
+        path: external_giflib.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: system_bpf
+        overwrite: true
+        path: system_bpf.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: external_tinyxml2
+        overwrite: true
+        path: external_tinyxml2.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: external_bcc
+        overwrite: true
+        path: external_bcc.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: external_libxml2
+        overwrite: true
+        path: external_libxml2.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: system_bt
+        overwrite: true
+        path: system_bt.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: packages_modules_Connectivity
+        overwrite: true
+        path: packages_modules_Connectivity.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: system_libfmq
+        overwrite: true
+        path: system_libfmq.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: external_pdfium
+        overwrite: true
+        path: external_pdfium.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: external_skia
+        overwrite: true
+        path: external_skia.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: external_lz4
+        overwrite: true
+        path: external_lz4.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: build_soong
+        overwrite: true
+        path: build_soong.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: external_boringssl
+        overwrite: true
+        path: external_boringssl.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: external_cpu_features
+        overwrite: true
+        path: external_cpu_features.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: external_libpng
+        overwrite: true
+        path: external_libpng.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: external_llvm
+        overwrite: true
+        path: external_llvm.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: external_rust_crates_grpcio-sys
+        overwrite: true
+        path: external_rust_crates_grpcio-sys.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: singletons
+        overwrite: true
+        path: singletons.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: prebuilts_vndk_v30
+        overwrite: true
+        path: prebuilts_vndk_v30.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: external_scudo
+        overwrite: true
+        path: external_scudo.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: system_logging
+        overwrite: true
+        path: system_logging.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: packages_modules_Virtualization
+        overwrite: true
+        path: packages_modules_Virtualization.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: external_golang-protobuf
+        overwrite: true
+        path: external_golang-protobuf.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: packages_modules_NeuralNetworks
+        overwrite: true
+        path: packages_modules_NeuralNetworks.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: prebuilts_rust
+        overwrite: true
+        path: prebuilts_rust.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: external_avb
+        overwrite: true
+        path: external_avb.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: external_libepoxy
+        overwrite: true
+        path: external_libepoxy.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: external_libyuv
+        overwrite: true
+        path: external_libyuv.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: system_security
+        overwrite: true
+        path: system_security.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: prebuilts_misc
+        overwrite: true
+        path: prebuilts_misc.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: prebuilts_vndk_v28
+        overwrite: true
+        path: prebuilts_vndk_v28.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: external_libogg
+        overwrite: true
+        path: external_libogg.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: external_google-fonts_source-sans-pro
+        overwrite: true
+        path: external_google-fonts_source-sans-pro.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: external_piex
+        overwrite: true
+        path: external_piex.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: external_OpenCSD
+        overwrite: true
+        path: external_OpenCSD.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: external_f2fs-tools
+        overwrite: true
+        path: external_f2fs-tools.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: packages_inputmethods_LatinIME
+        overwrite: true
+        path: packages_inputmethods_LatinIME.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: external_iptables
+        overwrite: true
+        path: external_iptables.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: external_sfntly
+        overwrite: true
+        path: external_sfntly.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: external_libvpx
+        overwrite: true
+        path: external_libvpx.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: external_libevent
+        overwrite: true
+        path: external_libevent.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: external_mdnsresponder
+        overwrite: true
+        path: external_mdnsresponder.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: bootable_recovery
+        overwrite: true
+        path: bootable_recovery.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: tools_dexter
+        overwrite: true
+        path: tools_dexter.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: external_rust_crates_bitflags
+        overwrite: true
+        path: external_rust_crates_bitflags.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: external_ipsec-tools
+        overwrite: true
+        path: external_ipsec-tools.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: external_oj-libjdwp
+        overwrite: true
+        path: external_oj-libjdwp.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: external_bsdiff
+        overwrite: true
+        path: external_bsdiff.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: external_lzma
+        overwrite: true
+        path: external_lzma.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: external_google-fonts_carrois-gothic-sc
+        overwrite: true
+        path: external_google-fonts_carrois-gothic-sc.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: packages_wallpapers_LivePicker
+        overwrite: true
+        path: packages_wallpapers_LivePicker.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: external_dtc
+        overwrite: true
+        path: external_dtc.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: system_memory_libmemunreachable
+        overwrite: true
+        path: system_memory_libmemunreachable.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: external_rust_crates_termcolor
+        overwrite: true
+        path: external_rust_crates_termcolor.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: system_server_configurable_flags
+        overwrite: true
+        path: system_server_configurable_flags.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: external_fec
+        overwrite: true
+        path: external_fec.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: external_pcre
+        overwrite: true
+        path: external_pcre.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: packages_modules_IPsec
+        overwrite: true
+        path: packages_modules_IPsec.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: frameworks_rs
+        overwrite: true
+        path: frameworks_rs.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: hardware_interfaces
+        overwrite: true
+        path: hardware_interfaces.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: external_aac
+        overwrite: true
+        path: external_aac.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: packages_providers_MediaProvider
+        overwrite: true
+        path: packages_providers_MediaProvider.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: external_expat
+        overwrite: true
+        path: external_expat.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: external_libavc
+        overwrite: true
+        path: external_libavc.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: external_selinux
+        overwrite: true
+        path: external_selinux.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: system_tools_hidl
+        overwrite: true
+        path: system_tools_hidl.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: external_vixl
+        overwrite: true
+        path: external_vixl.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: external_dynamic_depth
+        overwrite: true
+        path: external_dynamic_depth.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: system_media
+        overwrite: true
+        path: system_media.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: external_xz-embedded
+        overwrite: true
+        path: external_xz-embedded.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: external_zopfli
+        overwrite: true
+        path: external_zopfli.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: external_gemmlowp
+        overwrite: true
+        path: external_gemmlowp.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: system_keymaster
+        overwrite: true
+        path: system_keymaster.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: external_libcxx
+        overwrite: true
+        path: external_libcxx.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: frameworks_compile_libbcc
+        overwrite: true
+        path: frameworks_compile_libbcc.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: device_google_cuttlefish_prebuilts
+        overwrite: true
+        path: device_google_cuttlefish_prebuilts.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: external_webp
+        overwrite: true
+        path: external_webp.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: frameworks_wilhelm
+        overwrite: true
+        path: frameworks_wilhelm.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: build_blueprint
+        overwrite: true
+        path: build_blueprint.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: external_google-fonts_coming-soon
+        overwrite: true
+        path: external_google-fonts_coming-soon.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: external_google-fruit
+        overwrite: true
+        path: external_google-fruit.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: prebuilts_ndk
+        overwrite: true
+        path: prebuilts_ndk.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: external_harfbuzz_ng
+        overwrite: true
+        path: external_harfbuzz_ng.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: external_libcppbor
+        overwrite: true
+        path: external_libcppbor.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: external_dng_sdk
+        overwrite: true
+        path: external_dng_sdk.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: external_gptfdisk
+        overwrite: true
+        path: external_gptfdisk.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: external_libdrm
+        overwrite: true
+        path: external_libdrm.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: external_rust_cxx
+        overwrite: true
+        path: external_rust_cxx.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: external_brotli
+        overwrite: true
+        path: external_brotli.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: external_googletest
+        overwrite: true
+        path: external_googletest.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: external_rust_crates_lazy_static
+        overwrite: true
+        path: external_rust_crates_lazy_static.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: external_fsverity-utils
+        overwrite: true
+        path: external_fsverity-utils.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: external_fdlibm
+        overwrite: true
+        path: external_fdlibm.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: system_incremental_delivery
+        overwrite: true
+        path: system_incremental_delivery.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: external_libhevc
+        overwrite: true
+        path: external_libhevc.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: external_flatbuffers
+        overwrite: true
+        path: external_flatbuffers.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: external_zstd
+        overwrite: true
+        path: external_zstd.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: system_nfc
+        overwrite: true
+        path: system_nfc.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: external_rust_crates_rustc-hash
+        overwrite: true
+        path: external_rust_crates_rustc-hash.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: external_compiler-rt
+        overwrite: true
+        path: external_compiler-rt.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: system_memory_libmeminfo
+        overwrite: true
+        path: system_memory_libmeminfo.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: external_parameter-framework
+        overwrite: true
+        path: external_parameter-framework.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: external_sonivox
+        overwrite: true
+        path: external_sonivox.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: device_google_cuttlefish
+        overwrite: true
+        path: device_google_cuttlefish.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: system_memory_lmkd
+        overwrite: true
+        path: system_memory_lmkd.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: external_modp_b64
+        overwrite: true
+        path: external_modp_b64.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: packages_modules_Wifi
+        overwrite: true
+        path: packages_modules_Wifi.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: external_tinyalsa
+        overwrite: true
+        path: external_tinyalsa.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: external_image_io
+        overwrite: true
+        path: external_image_io.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: external_rust_crates_glob
+        overwrite: true
+        path: external_rust_crates_glob.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: external_google-fonts_cutive-mono
+        overwrite: true
+        path: external_google-fonts_cutive-mono.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: frameworks_ex
+        overwrite: true
+        path: frameworks_ex.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: packages_modules_Gki
+        overwrite: true
+        path: packages_modules_Gki.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: external_rust_crates_proc-macro-hack
+        overwrite: true
+        path: external_rust_crates_proc-macro-hack.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: external_libpcap
+        overwrite: true
+        path: external_libpcap.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: external_rust_crates_unicode-width
+        overwrite: true
+        path: external_rust_crates_unicode-width.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: external_tensorflow
+        overwrite: true
+        path: external_tensorflow.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: external_sqlite
+        overwrite: true
+        path: external_sqlite.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: external_libtextclassifier
+        overwrite: true
+        path: external_libtextclassifier.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: frameworks_minikin
+        overwrite: true
+        path: frameworks_minikin.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: external_libnl
+        overwrite: true
+        path: external_libnl.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: external_libmpeg2
+        overwrite: true
+        path: external_libmpeg2.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: system_connectivity_wificond
+        overwrite: true
+        path: system_connectivity_wificond.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: external_rust_crates_libc
+        overwrite: true
+        path: external_rust_crates_libc.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: external_perfetto
+        overwrite: true
+        path: external_perfetto.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: external_libgsm
+        overwrite: true
+        path: external_libgsm.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: external_vulkan-headers
+        overwrite: true
+        path: external_vulkan-headers.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: system_bpfprogs
+        overwrite: true
+        path: system_bpfprogs.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: external_libutf
+        overwrite: true
+        path: external_libutf.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: external_neven
+        overwrite: true
+        path: external_neven.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: external_rust_crates_bytes
+        overwrite: true
+        path: external_rust_crates_bytes.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: external_rust_crates_unicode-xid
+        overwrite: true
+        path: external_rust_crates_unicode-xid.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: external_rust_crates_peeking_take_while
+        overwrite: true
+        path: external_rust_crates_peeking_take_while.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: external_conscrypt
+        overwrite: true
+        path: external_conscrypt.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: external_scrypt
+        overwrite: true
+        path: external_scrypt.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: external_google-fonts_dancing-script
+        overwrite: true
+        path: external_google-fonts_dancing-script.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: external_minigbm
+        overwrite: true
+        path: external_minigbm.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: system_apex
+        overwrite: true
+        path: system_apex.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: external_eigen
+        overwrite: true
+        path: external_eigen.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: packages_modules_StatsD
+        overwrite: true
+        path: packages_modules_StatsD.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: external_bzip2
+        overwrite: true
+        path: external_bzip2.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: libnativehelper
+        overwrite: true
+        path: libnativehelper.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: external_rust_crates_regex-syntax
+        overwrite: true
+        path: external_rust_crates_regex-syntax.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: external_freetype
+        overwrite: true
+        path: external_freetype.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: external_rust_crates_unicode-segmentation
+        overwrite: true
+        path: external_rust_crates_unicode-segmentation.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: external_virglrenderer
+        overwrite: true
+        path: external_virglrenderer.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: system_memory_libdmabufheap
+        overwrite: true
+        path: system_memory_libdmabufheap.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: external_rust_crates_shlex
+        overwrite: true
+        path: external_rust_crates_shlex.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: external_libopus
+        overwrite: true
+        path: external_libopus.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: external_rust_crates_cfg-if
+        overwrite: true
+        path: external_rust_crates_cfg-if.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: external_rust_crates_textwrap
+        overwrite: true
+        path: external_rust_crates_textwrap.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: system_libvintf
+        overwrite: true
+        path: system_libvintf.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: external_gflags
+        overwrite: true
+        path: external_gflags.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: external_apache-http
+        overwrite: true
+        path: external_apache-http.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: external_kmod
+        overwrite: true
+        path: external_kmod.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: frameworks_libs_modules-utils
+        overwrite: true
+        path: frameworks_libs_modules-utils.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: external_rust_crates_memchr
+        overwrite: true
+        path: external_rust_crates_memchr.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: external_libgav1
+        overwrite: true
+        path: external_libgav1.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: external_nanopb-c
+        overwrite: true
+        path: external_nanopb-c.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: external_rust_crates_either
+        overwrite: true
+        path: external_rust_crates_either.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: external_flac
+        overwrite: true
+        path: external_flac.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: system_gsid
+        overwrite: true
+        path: system_gsid.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: external_curl
+        overwrite: true
+        path: external_curl.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: external_rust_crates_lazycell
+        overwrite: true
+        path: external_rust_crates_lazycell.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: frameworks_opt_net_wifi
+        overwrite: true
+        path: frameworks_opt_net_wifi.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: external_tremolo
+        overwrite: true
+        path: external_tremolo.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: external_rust_crates_paste
+        overwrite: true
+        path: external_rust_crates_paste.tar.xz
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: test_vts-testcase_hal
+        overwrite: true
+        path: test_vts-testcase_hal.tar.xz
+

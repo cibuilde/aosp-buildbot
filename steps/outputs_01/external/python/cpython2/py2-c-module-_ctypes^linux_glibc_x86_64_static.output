@@ -1,0 +1,11 @@
+out/soong/.intermediates/external/python/cpython2/py2-c-module-_ctypes/linux_glibc_x86_64_static/obj/external/python/cpython2/Modules/_ctypes/_ctypes.o
+out/soong/.intermediates/external/python/cpython2/py2-c-module-_ctypes/linux_glibc_x86_64_static/obj/external/python/cpython2/Modules/_ctypes/callbacks.o
+out/soong/.intermediates/external/python/cpython2/py2-c-module-_ctypes/linux_glibc_x86_64_static/obj/external/python/cpython2/Modules/_ctypes/callproc.o
+out/soong/.intermediates/external/python/cpython2/py2-c-module-_ctypes/linux_glibc_x86_64_static/obj/external/python/cpython2/Modules/_ctypes/cfield.o
+out/soong/.intermediates/external/python/cpython2/py2-c-module-_ctypes/linux_glibc_x86_64_static/obj/external/python/cpython2/Modules/_ctypes/libffi/src/closures.o
+out/soong/.intermediates/external/python/cpython2/py2-c-module-_ctypes/linux_glibc_x86_64_static/obj/external/python/cpython2/Modules/_ctypes/libffi/src/prep_cif.o
+out/soong/.intermediates/external/python/cpython2/py2-c-module-_ctypes/linux_glibc_x86_64_static/obj/external/python/cpython2/Modules/_ctypes/libffi/src/x86/ffi.o
+out/soong/.intermediates/external/python/cpython2/py2-c-module-_ctypes/linux_glibc_x86_64_static/obj/external/python/cpython2/Modules/_ctypes/libffi/src/x86/ffi64.o
+out/soong/.intermediates/external/python/cpython2/py2-c-module-_ctypes/linux_glibc_x86_64_static/obj/external/python/cpython2/Modules/_ctypes/libffi/src/x86/sysv.o
+out/soong/.intermediates/external/python/cpython2/py2-c-module-_ctypes/linux_glibc_x86_64_static/obj/external/python/cpython2/Modules/_ctypes/libffi/src/x86/unix64.o
+out/soong/.intermediates/external/python/cpython2/py2-c-module-_ctypes/linux_glibc_x86_64_static/obj/external/python/cpython2/Modules/_ctypes/stgdict.o

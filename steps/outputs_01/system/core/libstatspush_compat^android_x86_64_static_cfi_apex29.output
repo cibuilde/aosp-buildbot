@@ -1,0 +1,4 @@
+out/soong/.intermediates/system/core/libstats/push_compat/libstatspush_compat/android_x86_64_static_cfi_apex29/libstatspush_compat.a
+out/soong/.intermediates/system/core/libstats/push_compat/libstatspush_compat/android_x86_64_static_cfi_apex29/obj/system/core/libstats/push_compat/StatsEventCompat.sdump
+out/soong/.intermediates/system/core/libstats/push_compat/libstatspush_compat/android_x86_64_static_cfi_apex29/obj/system/core/libstats/push_compat/stats_event_list.sdump
+out/soong/.intermediates/system/core/libstats/push_compat/libstatspush_compat/android_x86_64_static_cfi_apex29/obj/system/core/libstats/push_compat/statsd_writer.sdump

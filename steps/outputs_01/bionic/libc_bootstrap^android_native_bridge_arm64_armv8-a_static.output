@@ -1,0 +1,5 @@
+out/soong/.intermediates/bionic/libc/libc_bootstrap/android_native_bridge_arm64_armv8-a_static/obj/bionic/libc/arch-arm64/bionic/__set_tls.o
+out/soong/.intermediates/bionic/libc/libc_bootstrap/android_native_bridge_arm64_armv8-a_static/obj/bionic/libc/bionic/__libc_init_main_thread.o
+out/soong/.intermediates/bionic/libc/libc_bootstrap/android_native_bridge_arm64_armv8-a_static/obj/bionic/libc/bionic/__stack_chk_fail.o
+out/soong/.intermediates/bionic/libc/libc_bootstrap/android_native_bridge_arm64_armv8-a_static/obj/bionic/libc/bionic/bionic_call_ifunc_resolver.o
+out/soong/.intermediates/bionic/libc/libc_bootstrap/android_native_bridge_arm64_armv8-a_static/obj/bionic/libc/bionic/getauxval.o

@@ -1,0 +1,13 @@
+out/soong/.intermediates/device/generic/vulkan-cereal/third-party/perfetto/perfetto-libperfettobase/android_x86_64_static/obj/device/generic/vulkan-cereal/third-party/perfetto/src/base/logging.o
+out/soong/.intermediates/device/generic/vulkan-cereal/third-party/perfetto/perfetto-libperfettobase/android_x86_64_static/obj/device/generic/vulkan-cereal/third-party/perfetto/src/base/metatrace.o
+out/soong/.intermediates/device/generic/vulkan-cereal/third-party/perfetto/perfetto-libperfettobase/android_x86_64_static/obj/device/generic/vulkan-cereal/third-party/perfetto/src/base/paged_memory.o
+out/soong/.intermediates/device/generic/vulkan-cereal/third-party/perfetto/perfetto-libperfettobase/android_x86_64_static/obj/device/generic/vulkan-cereal/third-party/perfetto/src/base/string_splitter.o
+out/soong/.intermediates/device/generic/vulkan-cereal/third-party/perfetto/perfetto-libperfettobase/android_x86_64_static/obj/device/generic/vulkan-cereal/third-party/perfetto/src/base/string_utils.o
+out/soong/.intermediates/device/generic/vulkan-cereal/third-party/perfetto/perfetto-libperfettobase/android_x86_64_static/obj/device/generic/vulkan-cereal/third-party/perfetto/src/base/string_view.o
+out/soong/.intermediates/device/generic/vulkan-cereal/third-party/perfetto/perfetto-libperfettobase/android_x86_64_static/obj/device/generic/vulkan-cereal/third-party/perfetto/src/base/subprocess.o
+out/soong/.intermediates/device/generic/vulkan-cereal/third-party/perfetto/perfetto-libperfettobase/android_x86_64_static/obj/device/generic/vulkan-cereal/third-party/perfetto/src/base/thread_checker.o
+out/soong/.intermediates/device/generic/vulkan-cereal/third-party/perfetto/perfetto-libperfettobase/android_x86_64_static/obj/device/generic/vulkan-cereal/third-party/perfetto/src/base/time.o
+out/soong/.intermediates/device/generic/vulkan-cereal/third-party/perfetto/perfetto-libperfettobase/android_x86_64_static/obj/device/generic/vulkan-cereal/third-party/perfetto/src/base/uuid.o
+out/soong/.intermediates/device/generic/vulkan-cereal/third-party/perfetto/perfetto-libperfettobase/android_x86_64_static/obj/device/generic/vulkan-cereal/third-party/perfetto/src/base/virtual_destructors.o
+out/soong/.intermediates/device/generic/vulkan-cereal/third-party/perfetto/perfetto-libperfettobase/android_x86_64_static/obj/device/generic/vulkan-cereal/third-party/perfetto/src/base/waitable_event.o
+out/soong/.intermediates/device/generic/vulkan-cereal/third-party/perfetto/perfetto-libperfettobase/android_x86_64_static/obj/device/generic/vulkan-cereal/third-party/perfetto/src/base/watchdog_posix.o

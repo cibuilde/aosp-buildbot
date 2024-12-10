@@ -1,0 +1,3 @@
+out/soong/.intermediates/external/mdnsresponder/libmdnssd/android_x86_64_static/obj/external/mdnsresponder/mDNSShared/dnssd_clientlib.o
+out/soong/.intermediates/external/mdnsresponder/libmdnssd/android_x86_64_static/obj/external/mdnsresponder/mDNSShared/dnssd_clientstub.o
+out/soong/.intermediates/external/mdnsresponder/libmdnssd/android_x86_64_static/obj/external/mdnsresponder/mDNSShared/dnssd_ipc.o

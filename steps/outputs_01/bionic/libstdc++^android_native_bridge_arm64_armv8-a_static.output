@@ -1,0 +1,4 @@
+out/soong/.intermediates/bionic/libc/libstdc++/android_native_bridge_arm64_armv8-a_static/obj/bionic/libc/bionic/__cxa_guard.o
+out/soong/.intermediates/bionic/libc/libstdc++/android_native_bridge_arm64_armv8-a_static/obj/bionic/libc/bionic/__cxa_pure_virtual.o
+out/soong/.intermediates/bionic/libc/libstdc++/android_native_bridge_arm64_armv8-a_static/obj/bionic/libc/bionic/new.o
+out/soong/ndk/sysroot/usr/lib/aarch64-linux-android/libstdc++.a
