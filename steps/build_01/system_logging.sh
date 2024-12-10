@@ -10,6 +10,7 @@ clone_depth_platform external/compiler-rt
 clone_depth_platform external/fmtlib
 clone_depth_platform external/libcxx
 clone_depth_platform external/libcxxabi
+clone_depth_platform external/zlib
 clone_depth_platform external/zstd
 clone_depth_platform frameworks/av
 clone_depth_platform frameworks/native
@@ -138,6 +139,10 @@ fi
 mkdir -p $GITHUB_WORKSPACE/cache
 if [ ! -f "$GITHUB_WORKSPACE/cache/external_libcxxabi.tar.xz" ]; then
   tar cfJ $GITHUB_WORKSPACE/cache/external_libcxxabi.tar.xz -C $GITHUB_WORKSPACE/aosp/external/libcxxabi/ .
+fi
+mkdir -p $GITHUB_WORKSPACE/cache
+if [ ! -f "$GITHUB_WORKSPACE/cache/external_zlib.tar.xz" ]; then
+  tar cfJ $GITHUB_WORKSPACE/cache/external_zlib.tar.xz -C $GITHUB_WORKSPACE/aosp/external/zlib/ .
 fi
 mkdir -p $GITHUB_WORKSPACE/cache
 if [ ! -f "$GITHUB_WORKSPACE/cache/external_zstd.tar.xz" ]; then

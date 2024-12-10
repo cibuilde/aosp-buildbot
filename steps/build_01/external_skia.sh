@@ -4,6 +4,7 @@ mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 source $GITHUB_WORKSPACE/envsetup.sh
 tar xf $GITHUB_WORKSPACE/ninja.tar.xz
 
+clone_depth_platform art
 clone_depth_platform bionic
 clone_sparse cts libs/json
 clone_depth_platform external/dng_sdk
@@ -11,10 +12,14 @@ clone_depth_platform external/expat
 clone_depth_platform external/freetype
 clone_depth_platform external/libcxx
 clone_depth_platform external/libcxxabi
+clone_depth_platform external/libjpeg-turbo
+clone_depth_platform external/libpng
+clone_depth_platform external/piex
 clone_depth_platform external/sfntly
 clone_depth_platform external/skia
 clone_depth_platform external/vulkan-headers
 clone_depth_platform external/webp
+clone_depth_platform external/zlib
 clone_depth_platform frameworks/av
 clone_depth_platform frameworks/native
 clone_depth_platform hardware/libhardware
@@ -47,6 +52,10 @@ cd $GITHUB_WORKSPACE/
 tar cfJ external_skia.tar.xz -C $GITHUB_WORKSPACE/artifacts/external/skia/ .
 
 mkdir -p $GITHUB_WORKSPACE/cache
+if [ ! -f "$GITHUB_WORKSPACE/cache/art.tar.xz" ]; then
+  tar cfJ $GITHUB_WORKSPACE/cache/art.tar.xz -C $GITHUB_WORKSPACE/aosp/art/ .
+fi
+mkdir -p $GITHUB_WORKSPACE/cache
 if [ ! -f "$GITHUB_WORKSPACE/cache/bionic.tar.xz" ]; then
   tar cfJ $GITHUB_WORKSPACE/cache/bionic.tar.xz -C $GITHUB_WORKSPACE/aosp/bionic/ .
 fi
@@ -75,6 +84,18 @@ if [ ! -f "$GITHUB_WORKSPACE/cache/external_libcxxabi.tar.xz" ]; then
   tar cfJ $GITHUB_WORKSPACE/cache/external_libcxxabi.tar.xz -C $GITHUB_WORKSPACE/aosp/external/libcxxabi/ .
 fi
 mkdir -p $GITHUB_WORKSPACE/cache
+if [ ! -f "$GITHUB_WORKSPACE/cache/external_libjpeg-turbo.tar.xz" ]; then
+  tar cfJ $GITHUB_WORKSPACE/cache/external_libjpeg-turbo.tar.xz -C $GITHUB_WORKSPACE/aosp/external/libjpeg-turbo/ .
+fi
+mkdir -p $GITHUB_WORKSPACE/cache
+if [ ! -f "$GITHUB_WORKSPACE/cache/external_libpng.tar.xz" ]; then
+  tar cfJ $GITHUB_WORKSPACE/cache/external_libpng.tar.xz -C $GITHUB_WORKSPACE/aosp/external/libpng/ .
+fi
+mkdir -p $GITHUB_WORKSPACE/cache
+if [ ! -f "$GITHUB_WORKSPACE/cache/external_piex.tar.xz" ]; then
+  tar cfJ $GITHUB_WORKSPACE/cache/external_piex.tar.xz -C $GITHUB_WORKSPACE/aosp/external/piex/ .
+fi
+mkdir -p $GITHUB_WORKSPACE/cache
 if [ ! -f "$GITHUB_WORKSPACE/cache/external_sfntly.tar.xz" ]; then
   tar cfJ $GITHUB_WORKSPACE/cache/external_sfntly.tar.xz -C $GITHUB_WORKSPACE/aosp/external/sfntly/ .
 fi
@@ -89,6 +110,10 @@ fi
 mkdir -p $GITHUB_WORKSPACE/cache
 if [ ! -f "$GITHUB_WORKSPACE/cache/external_webp.tar.xz" ]; then
   tar cfJ $GITHUB_WORKSPACE/cache/external_webp.tar.xz -C $GITHUB_WORKSPACE/aosp/external/webp/ .
+fi
+mkdir -p $GITHUB_WORKSPACE/cache
+if [ ! -f "$GITHUB_WORKSPACE/cache/external_zlib.tar.xz" ]; then
+  tar cfJ $GITHUB_WORKSPACE/cache/external_zlib.tar.xz -C $GITHUB_WORKSPACE/aosp/external/zlib/ .
 fi
 mkdir -p $GITHUB_WORKSPACE/cache
 if [ ! -f "$GITHUB_WORKSPACE/cache/frameworks_av.tar.xz" ]; then

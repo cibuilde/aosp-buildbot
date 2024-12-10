@@ -8,6 +8,7 @@ clone_depth_platform bionic
 clone_depth_platform external/compiler-rt
 clone_depth_platform external/libcxx
 clone_depth_platform external/libcxxabi
+clone_depth_platform external/libjpeg-turbo
 clone_depth_platform external/libyuv
 clone_depth_platform frameworks/av
 clone_depth_platform frameworks/native
@@ -60,6 +61,10 @@ fi
 mkdir -p $GITHUB_WORKSPACE/cache
 if [ ! -f "$GITHUB_WORKSPACE/cache/external_libcxxabi.tar.xz" ]; then
   tar cfJ $GITHUB_WORKSPACE/cache/external_libcxxabi.tar.xz -C $GITHUB_WORKSPACE/aosp/external/libcxxabi/ .
+fi
+mkdir -p $GITHUB_WORKSPACE/cache
+if [ ! -f "$GITHUB_WORKSPACE/cache/external_libjpeg-turbo.tar.xz" ]; then
+  tar cfJ $GITHUB_WORKSPACE/cache/external_libjpeg-turbo.tar.xz -C $GITHUB_WORKSPACE/aosp/external/libjpeg-turbo/ .
 fi
 mkdir -p $GITHUB_WORKSPACE/cache
 if [ ! -f "$GITHUB_WORKSPACE/cache/external_libyuv.tar.xz" ]; then

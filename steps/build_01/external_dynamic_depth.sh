@@ -4,6 +4,7 @@ mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 source $GITHUB_WORKSPACE/envsetup.sh
 tar xf $GITHUB_WORKSPACE/ninja.tar.xz
 
+clone_depth_platform art
 clone_depth_platform bionic
 clone_depth_platform external/dynamic_depth
 clone_depth_platform external/fmtlib
@@ -34,6 +35,10 @@ rm -rf aosp
 cd $GITHUB_WORKSPACE/
 tar cfJ external_dynamic_depth.tar.xz -C $GITHUB_WORKSPACE/artifacts/external/dynamic_depth/ .
 
+mkdir -p $GITHUB_WORKSPACE/cache
+if [ ! -f "$GITHUB_WORKSPACE/cache/art.tar.xz" ]; then
+  tar cfJ $GITHUB_WORKSPACE/cache/art.tar.xz -C $GITHUB_WORKSPACE/aosp/art/ .
+fi
 mkdir -p $GITHUB_WORKSPACE/cache
 if [ ! -f "$GITHUB_WORKSPACE/cache/bionic.tar.xz" ]; then
   tar cfJ $GITHUB_WORKSPACE/cache/bionic.tar.xz -C $GITHUB_WORKSPACE/aosp/bionic/ .

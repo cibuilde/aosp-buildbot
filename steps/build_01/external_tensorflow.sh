@@ -5,9 +5,12 @@ source $GITHUB_WORKSPACE/envsetup.sh
 tar xf $GITHUB_WORKSPACE/ninja.tar.xz
 
 clone_depth_platform bionic
+clone_depth_platform external/eigen
 clone_depth_platform external/flatbuffers
+clone_depth_platform external/gemmlowp
 clone_depth_platform external/libcxx
 clone_depth_platform external/libcxxabi
+clone_depth_platform external/ruy
 clone_depth_platform external/tensorflow
 clone_depth_platform frameworks/av
 clone_depth_platform frameworks/native
@@ -41,8 +44,16 @@ if [ ! -f "$GITHUB_WORKSPACE/cache/bionic.tar.xz" ]; then
   tar cfJ $GITHUB_WORKSPACE/cache/bionic.tar.xz -C $GITHUB_WORKSPACE/aosp/bionic/ .
 fi
 mkdir -p $GITHUB_WORKSPACE/cache
+if [ ! -f "$GITHUB_WORKSPACE/cache/external_eigen.tar.xz" ]; then
+  tar cfJ $GITHUB_WORKSPACE/cache/external_eigen.tar.xz -C $GITHUB_WORKSPACE/aosp/external/eigen/ .
+fi
+mkdir -p $GITHUB_WORKSPACE/cache
 if [ ! -f "$GITHUB_WORKSPACE/cache/external_flatbuffers.tar.xz" ]; then
   tar cfJ $GITHUB_WORKSPACE/cache/external_flatbuffers.tar.xz -C $GITHUB_WORKSPACE/aosp/external/flatbuffers/ .
+fi
+mkdir -p $GITHUB_WORKSPACE/cache
+if [ ! -f "$GITHUB_WORKSPACE/cache/external_gemmlowp.tar.xz" ]; then
+  tar cfJ $GITHUB_WORKSPACE/cache/external_gemmlowp.tar.xz -C $GITHUB_WORKSPACE/aosp/external/gemmlowp/ .
 fi
 mkdir -p $GITHUB_WORKSPACE/cache
 if [ ! -f "$GITHUB_WORKSPACE/cache/external_libcxx.tar.xz" ]; then
@@ -51,6 +62,10 @@ fi
 mkdir -p $GITHUB_WORKSPACE/cache
 if [ ! -f "$GITHUB_WORKSPACE/cache/external_libcxxabi.tar.xz" ]; then
   tar cfJ $GITHUB_WORKSPACE/cache/external_libcxxabi.tar.xz -C $GITHUB_WORKSPACE/aosp/external/libcxxabi/ .
+fi
+mkdir -p $GITHUB_WORKSPACE/cache
+if [ ! -f "$GITHUB_WORKSPACE/cache/external_ruy.tar.xz" ]; then
+  tar cfJ $GITHUB_WORKSPACE/cache/external_ruy.tar.xz -C $GITHUB_WORKSPACE/aosp/external/ruy/ .
 fi
 mkdir -p $GITHUB_WORKSPACE/cache
 if [ ! -f "$GITHUB_WORKSPACE/cache/external_tensorflow.tar.xz" ]; then

@@ -5,6 +5,7 @@ source $GITHUB_WORKSPACE/envsetup.sh
 tar xf $GITHUB_WORKSPACE/ninja.tar.xz
 
 clone_depth_platform bionic
+clone_depth_platform external/bc
 clone_depth_platform external/bcc
 clone_depth_platform external/libcxx
 clone_depth_platform external/libcxxabi
@@ -37,6 +38,10 @@ tar cfJ external_bcc.tar.xz -C $GITHUB_WORKSPACE/artifacts/external/bcc/ .
 mkdir -p $GITHUB_WORKSPACE/cache
 if [ ! -f "$GITHUB_WORKSPACE/cache/bionic.tar.xz" ]; then
   tar cfJ $GITHUB_WORKSPACE/cache/bionic.tar.xz -C $GITHUB_WORKSPACE/aosp/bionic/ .
+fi
+mkdir -p $GITHUB_WORKSPACE/cache
+if [ ! -f "$GITHUB_WORKSPACE/cache/external_bc.tar.xz" ]; then
+  tar cfJ $GITHUB_WORKSPACE/cache/external_bc.tar.xz -C $GITHUB_WORKSPACE/aosp/external/bc/ .
 fi
 mkdir -p $GITHUB_WORKSPACE/cache
 if [ ! -f "$GITHUB_WORKSPACE/cache/external_bcc.tar.xz" ]; then

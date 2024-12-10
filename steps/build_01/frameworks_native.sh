@@ -4,8 +4,10 @@ mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 source $GITHUB_WORKSPACE/envsetup.sh
 tar xf $GITHUB_WORKSPACE/ninja.tar.xz
 
+clone_depth_platform art
 clone_depth_platform bionic
 clone_depth_platform build/soong
+clone_depth_platform external/bc
 clone_depth_platform external/bcc
 clone_depth_platform external/boringssl
 clone_depth_platform external/fmtlib
@@ -371,12 +373,20 @@ cd $GITHUB_WORKSPACE/
 tar cfJ frameworks_native.tar.xz -C $GITHUB_WORKSPACE/artifacts/frameworks/native/ .
 
 mkdir -p $GITHUB_WORKSPACE/cache
+if [ ! -f "$GITHUB_WORKSPACE/cache/art.tar.xz" ]; then
+  tar cfJ $GITHUB_WORKSPACE/cache/art.tar.xz -C $GITHUB_WORKSPACE/aosp/art/ .
+fi
+mkdir -p $GITHUB_WORKSPACE/cache
 if [ ! -f "$GITHUB_WORKSPACE/cache/bionic.tar.xz" ]; then
   tar cfJ $GITHUB_WORKSPACE/cache/bionic.tar.xz -C $GITHUB_WORKSPACE/aosp/bionic/ .
 fi
 mkdir -p $GITHUB_WORKSPACE/cache
 if [ ! -f "$GITHUB_WORKSPACE/cache/build_soong.tar.xz" ]; then
   tar cfJ $GITHUB_WORKSPACE/cache/build_soong.tar.xz -C $GITHUB_WORKSPACE/aosp/build/soong/ .
+fi
+mkdir -p $GITHUB_WORKSPACE/cache
+if [ ! -f "$GITHUB_WORKSPACE/cache/external_bc.tar.xz" ]; then
+  tar cfJ $GITHUB_WORKSPACE/cache/external_bc.tar.xz -C $GITHUB_WORKSPACE/aosp/external/bc/ .
 fi
 mkdir -p $GITHUB_WORKSPACE/cache
 if [ ! -f "$GITHUB_WORKSPACE/cache/external_bcc.tar.xz" ]; then

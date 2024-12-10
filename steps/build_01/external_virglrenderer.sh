@@ -9,6 +9,7 @@ clone_depth_platform external/libcxx
 clone_depth_platform external/libcxxabi
 clone_depth_platform external/libdrm
 clone_depth_platform external/libepoxy
+clone_depth_platform external/minigbm
 clone_depth_platform external/virglrenderer
 clone_depth_platform frameworks/av
 clone_depth_platform frameworks/native
@@ -50,6 +51,10 @@ fi
 mkdir -p $GITHUB_WORKSPACE/cache
 if [ ! -f "$GITHUB_WORKSPACE/cache/external_libepoxy.tar.xz" ]; then
   tar cfJ $GITHUB_WORKSPACE/cache/external_libepoxy.tar.xz -C $GITHUB_WORKSPACE/aosp/external/libepoxy/ .
+fi
+mkdir -p $GITHUB_WORKSPACE/cache
+if [ ! -f "$GITHUB_WORKSPACE/cache/external_minigbm.tar.xz" ]; then
+  tar cfJ $GITHUB_WORKSPACE/cache/external_minigbm.tar.xz -C $GITHUB_WORKSPACE/aosp/external/minigbm/ .
 fi
 mkdir -p $GITHUB_WORKSPACE/cache
 if [ ! -f "$GITHUB_WORKSPACE/cache/external_virglrenderer.tar.xz" ]; then

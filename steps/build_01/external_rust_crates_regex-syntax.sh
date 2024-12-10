@@ -4,6 +4,7 @@ mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 source $GITHUB_WORKSPACE/envsetup.sh
 tar xf $GITHUB_WORKSPACE/ninja.tar.xz
 
+clone_depth_platform external/rust/crates/regex
 clone_depth_platform external/rust/crates/regex-syntax
 clone_sparse prebuilts/clang/host/linux-x86 clang-r416183b1 clang-r416183b soong
 clone_sparse prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8 sysroot lib/gcc/x86_64-linux/4.8.3 x86_64-linux/lib64 x86_64-linux/lib32
@@ -19,6 +20,10 @@ rm -rf aosp
 cd $GITHUB_WORKSPACE/
 tar cfJ external_rust_crates_regex-syntax.tar.xz -C $GITHUB_WORKSPACE/artifacts/external/rust/crates/regex-syntax/ .
 
+mkdir -p $GITHUB_WORKSPACE/cache
+if [ ! -f "$GITHUB_WORKSPACE/cache/external_rust_crates_regex.tar.xz" ]; then
+  tar cfJ $GITHUB_WORKSPACE/cache/external_rust_crates_regex.tar.xz -C $GITHUB_WORKSPACE/aosp/external/rust/crates/regex/ .
+fi
 mkdir -p $GITHUB_WORKSPACE/cache
 if [ ! -f "$GITHUB_WORKSPACE/cache/external_rust_crates_regex-syntax.tar.xz" ]; then
   tar cfJ $GITHUB_WORKSPACE/cache/external_rust_crates_regex-syntax.tar.xz -C $GITHUB_WORKSPACE/aosp/external/rust/crates/regex-syntax/ .

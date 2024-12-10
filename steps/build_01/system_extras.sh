@@ -5,12 +5,15 @@ source $GITHUB_WORKSPACE/envsetup.sh
 tar xf $GITHUB_WORKSPACE/ninja.tar.xz
 
 clone_depth_platform bionic
+clone_depth_platform external/avb
 clone_depth_platform external/boringssl
+clone_depth_platform external/fec
 clone_depth_platform external/fmtlib
 clone_depth_platform external/libcxx
 clone_depth_platform external/libcxxabi
 clone_depth_platform external/protobuf
 clone_depth_platform external/squashfs-tools
+clone_depth_platform external/zlib
 clone_depth_platform frameworks/av
 clone_depth_platform frameworks/native
 clone_depth_platform hardware/libhardware
@@ -161,8 +164,16 @@ if [ ! -f "$GITHUB_WORKSPACE/cache/bionic.tar.xz" ]; then
   tar cfJ $GITHUB_WORKSPACE/cache/bionic.tar.xz -C $GITHUB_WORKSPACE/aosp/bionic/ .
 fi
 mkdir -p $GITHUB_WORKSPACE/cache
+if [ ! -f "$GITHUB_WORKSPACE/cache/external_avb.tar.xz" ]; then
+  tar cfJ $GITHUB_WORKSPACE/cache/external_avb.tar.xz -C $GITHUB_WORKSPACE/aosp/external/avb/ .
+fi
+mkdir -p $GITHUB_WORKSPACE/cache
 if [ ! -f "$GITHUB_WORKSPACE/cache/external_boringssl.tar.xz" ]; then
   tar cfJ $GITHUB_WORKSPACE/cache/external_boringssl.tar.xz -C $GITHUB_WORKSPACE/aosp/external/boringssl/ .
+fi
+mkdir -p $GITHUB_WORKSPACE/cache
+if [ ! -f "$GITHUB_WORKSPACE/cache/external_fec.tar.xz" ]; then
+  tar cfJ $GITHUB_WORKSPACE/cache/external_fec.tar.xz -C $GITHUB_WORKSPACE/aosp/external/fec/ .
 fi
 mkdir -p $GITHUB_WORKSPACE/cache
 if [ ! -f "$GITHUB_WORKSPACE/cache/external_fmtlib.tar.xz" ]; then
@@ -183,6 +194,10 @@ fi
 mkdir -p $GITHUB_WORKSPACE/cache
 if [ ! -f "$GITHUB_WORKSPACE/cache/external_squashfs-tools.tar.xz" ]; then
   tar cfJ $GITHUB_WORKSPACE/cache/external_squashfs-tools.tar.xz -C $GITHUB_WORKSPACE/aosp/external/squashfs-tools/ .
+fi
+mkdir -p $GITHUB_WORKSPACE/cache
+if [ ! -f "$GITHUB_WORKSPACE/cache/external_zlib.tar.xz" ]; then
+  tar cfJ $GITHUB_WORKSPACE/cache/external_zlib.tar.xz -C $GITHUB_WORKSPACE/aosp/external/zlib/ .
 fi
 mkdir -p $GITHUB_WORKSPACE/cache
 if [ ! -f "$GITHUB_WORKSPACE/cache/frameworks_av.tar.xz" ]; then

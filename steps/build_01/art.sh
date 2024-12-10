@@ -13,6 +13,7 @@ clone_depth_platform external/libcxxabi
 clone_depth_platform external/lzma
 clone_depth_platform external/oj-libjdwp
 clone_depth_platform external/vixl
+clone_depth_platform external/zlib
 clone_depth_platform frameworks/av
 clone_depth_platform frameworks/native
 clone_depth_platform hardware/libhardware
@@ -289,6 +290,10 @@ fi
 mkdir -p $GITHUB_WORKSPACE/cache
 if [ ! -f "$GITHUB_WORKSPACE/cache/external_vixl.tar.xz" ]; then
   tar cfJ $GITHUB_WORKSPACE/cache/external_vixl.tar.xz -C $GITHUB_WORKSPACE/aosp/external/vixl/ .
+fi
+mkdir -p $GITHUB_WORKSPACE/cache
+if [ ! -f "$GITHUB_WORKSPACE/cache/external_zlib.tar.xz" ]; then
+  tar cfJ $GITHUB_WORKSPACE/cache/external_zlib.tar.xz -C $GITHUB_WORKSPACE/aosp/external/zlib/ .
 fi
 mkdir -p $GITHUB_WORKSPACE/cache
 if [ ! -f "$GITHUB_WORKSPACE/cache/frameworks_av.tar.xz" ]; then

@@ -5,6 +5,7 @@ source $GITHUB_WORKSPACE/envsetup.sh
 tar xf $GITHUB_WORKSPACE/ninja.tar.xz
 
 clone_depth_platform bionic
+clone_sparse cts libs/json
 clone_depth_platform external/aac
 clone_depth_platform external/compiler-rt
 clone_depth_platform external/libcxx
@@ -43,6 +44,10 @@ tar cfJ external_aac.tar.xz -C $GITHUB_WORKSPACE/artifacts/external/aac/ .
 mkdir -p $GITHUB_WORKSPACE/cache
 if [ ! -f "$GITHUB_WORKSPACE/cache/bionic.tar.xz" ]; then
   tar cfJ $GITHUB_WORKSPACE/cache/bionic.tar.xz -C $GITHUB_WORKSPACE/aosp/bionic/ .
+fi
+mkdir -p $GITHUB_WORKSPACE/cache
+if [ ! -f "$GITHUB_WORKSPACE/cache/cts.tar.xz" ]; then
+  tar cfJ $GITHUB_WORKSPACE/cache/cts.tar.xz -C $GITHUB_WORKSPACE/aosp/cts/ .
 fi
 mkdir -p $GITHUB_WORKSPACE/cache
 if [ ! -f "$GITHUB_WORKSPACE/cache/external_aac.tar.xz" ]; then

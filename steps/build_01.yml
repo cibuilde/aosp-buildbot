@@ -12,7 +12,7 @@ jobs:
     - name: Checkout
       uses: actions/checkout@main
     - name: Install ninja
-      uses: sudo apt update && sudo apt install -y ninja-build
+      run: sudo apt update && sudo apt install -y ninja-build
     - name: Restore Cache art.tar.xz
       id: art
       uses: actions/cache@v4
@@ -125,6 +125,13 @@ jobs:
         path: cache/external_avb.tar.xz
         key: external_avb@${ env.branch }
         restore-keys: external_avb@${ env.branch }
+    - name: Restore Cache external_bc.tar.xz
+      id: external_bc
+      uses: actions/cache@v4
+      with:
+        path: cache/external_bc.tar.xz
+        key: external_bc@${ env.branch }
+        restore-keys: external_bc@${ env.branch }
     - name: Restore Cache external_bcc.tar.xz
       id: external_bcc
       uses: actions/cache@v4
@@ -762,6 +769,13 @@ jobs:
         path: cache/external_rust_crates_glob.tar.xz
         key: external_rust_crates_glob@${ env.branch }
         restore-keys: external_rust_crates_glob@${ env.branch }
+    - name: Restore Cache external_rust_crates_grpcio.tar.xz
+      id: external_rust_crates_grpcio
+      uses: actions/cache@v4
+      with:
+        path: cache/external_rust_crates_grpcio.tar.xz
+        key: external_rust_crates_grpcio@${ env.branch }
+        restore-keys: external_rust_crates_grpcio@${ env.branch }
     - name: Restore Cache external_rust_crates_grpcio-sys.tar.xz
       id: external_rust_crates_grpcio-sys
       uses: actions/cache@v4
@@ -818,6 +832,13 @@ jobs:
         path: cache/external_rust_crates_proc-macro-hack.tar.xz
         key: external_rust_crates_proc-macro-hack@${ env.branch }
         restore-keys: external_rust_crates_proc-macro-hack@${ env.branch }
+    - name: Restore Cache external_rust_crates_regex.tar.xz
+      id: external_rust_crates_regex
+      uses: actions/cache@v4
+      with:
+        path: cache/external_rust_crates_regex.tar.xz
+        key: external_rust_crates_regex@${ env.branch }
+        restore-keys: external_rust_crates_regex@${ env.branch }
     - name: Restore Cache external_rust_crates_regex-syntax.tar.xz
       id: external_rust_crates_regex-syntax
       uses: actions/cache@v4
@@ -881,6 +902,13 @@ jobs:
         path: cache/external_rust_cxx.tar.xz
         key: external_rust_cxx@${ env.branch }
         restore-keys: external_rust_cxx@${ env.branch }
+    - name: Restore Cache external_ruy.tar.xz
+      id: external_ruy
+      uses: actions/cache@v4
+      with:
+        path: cache/external_ruy.tar.xz
+        key: external_ruy@${ env.branch }
+        restore-keys: external_ruy@${ env.branch }
     - name: Restore Cache external_scrypt.tar.xz
       id: external_scrypt
       uses: actions/cache@v4
@@ -1126,6 +1154,13 @@ jobs:
         path: cache/hardware_ril.tar.xz
         key: hardware_ril@${ env.branch }
         restore-keys: hardware_ril@${ env.branch }
+    - name: Restore Cache libcore.tar.xz
+      id: libcore
+      uses: actions/cache@v4
+      with:
+        path: cache/libcore.tar.xz
+        key: libcore@${ env.branch }
+        restore-keys: libcore@${ env.branch }
     - name: Restore Cache libnativehelper.tar.xz
       id: libnativehelper
       uses: actions/cache@v4
@@ -1567,6 +1602,13 @@ jobs:
         path: cache/system_unwinding.tar.xz
         key: system_unwinding@${ env.branch }
         restore-keys: system_unwinding@${ env.branch }
+    - name: Restore Cache test_vts.tar.xz
+      id: test_vts
+      uses: actions/cache@v4
+      with:
+        path: cache/test_vts.tar.xz
+        key: test_vts@${ env.branch }
+        restore-keys: test_vts@${ env.branch }
     - name: Restore Cache test_vts-testcase_hal.tar.xz
       id: test_vts-testcase_hal
       uses: actions/cache@v4

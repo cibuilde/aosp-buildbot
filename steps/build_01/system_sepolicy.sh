@@ -4,6 +4,7 @@ mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 source $GITHUB_WORKSPACE/envsetup.sh
 tar xf $GITHUB_WORKSPACE/ninja.tar.xz
 
+clone_depth_platform art
 clone_depth device/google/cuttlefish
 clone_sparse prebuilts/build-tools linux-x86/bin linux-x86/lib64 path common
 clone_depth_platform system/sepolicy
@@ -188,6 +189,10 @@ rm -rf aosp
 cd $GITHUB_WORKSPACE/
 tar cfJ system_sepolicy.tar.xz -C $GITHUB_WORKSPACE/artifacts/system/sepolicy/ .
 
+mkdir -p $GITHUB_WORKSPACE/cache
+if [ ! -f "$GITHUB_WORKSPACE/cache/art.tar.xz" ]; then
+  tar cfJ $GITHUB_WORKSPACE/cache/art.tar.xz -C $GITHUB_WORKSPACE/aosp/art/ .
+fi
 mkdir -p $GITHUB_WORKSPACE/cache
 if [ ! -f "$GITHUB_WORKSPACE/cache/device_google_cuttlefish.tar.xz" ]; then
   tar cfJ $GITHUB_WORKSPACE/cache/device_google_cuttlefish.tar.xz -C $GITHUB_WORKSPACE/aosp/device/google/cuttlefish/ .

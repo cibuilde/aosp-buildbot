@@ -22,6 +22,7 @@ clone_depth_platform system/logging
 clone_depth_platform system/media
 clone_depth_platform system/tools/aidl
 clone_depth_platform system/tools/hidl
+clone_depth_platform test/vts
 clone_depth_platform test/vts-testcase/hal
 
 echo "building libassemblevintf^linux_glibc_x86_64_static"
@@ -105,6 +106,10 @@ fi
 mkdir -p $GITHUB_WORKSPACE/cache
 if [ ! -f "$GITHUB_WORKSPACE/cache/system_tools_hidl.tar.xz" ]; then
   tar cfJ $GITHUB_WORKSPACE/cache/system_tools_hidl.tar.xz -C $GITHUB_WORKSPACE/aosp/system/tools/hidl/ .
+fi
+mkdir -p $GITHUB_WORKSPACE/cache
+if [ ! -f "$GITHUB_WORKSPACE/cache/test_vts.tar.xz" ]; then
+  tar cfJ $GITHUB_WORKSPACE/cache/test_vts.tar.xz -C $GITHUB_WORKSPACE/aosp/test/vts/ .
 fi
 mkdir -p $GITHUB_WORKSPACE/cache
 if [ ! -f "$GITHUB_WORKSPACE/cache/test_vts-testcase_hal.tar.xz" ]; then

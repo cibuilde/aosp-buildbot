@@ -7,6 +7,7 @@ tar xf $GITHUB_WORKSPACE/ninja.tar.xz
 clone_depth_platform bionic
 clone_depth_platform external/brotli
 clone_depth_platform external/bsdiff
+clone_depth_platform external/bzip2
 clone_depth_platform external/libcxx
 clone_depth_platform external/libcxxabi
 clone_depth_platform frameworks/av
@@ -46,6 +47,10 @@ fi
 mkdir -p $GITHUB_WORKSPACE/cache
 if [ ! -f "$GITHUB_WORKSPACE/cache/external_bsdiff.tar.xz" ]; then
   tar cfJ $GITHUB_WORKSPACE/cache/external_bsdiff.tar.xz -C $GITHUB_WORKSPACE/aosp/external/bsdiff/ .
+fi
+mkdir -p $GITHUB_WORKSPACE/cache
+if [ ! -f "$GITHUB_WORKSPACE/cache/external_bzip2.tar.xz" ]; then
+  tar cfJ $GITHUB_WORKSPACE/cache/external_bzip2.tar.xz -C $GITHUB_WORKSPACE/aosp/external/bzip2/ .
 fi
 mkdir -p $GITHUB_WORKSPACE/cache
 if [ ! -f "$GITHUB_WORKSPACE/cache/external_libcxx.tar.xz" ]; then
