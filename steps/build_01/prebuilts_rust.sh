@@ -1,5 +1,6 @@
 set -e
 
+df -h
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 source $GITHUB_WORKSPACE/envsetup.sh
 tar xf $GITHUB_WORKSPACE/ninja.tar.xz
@@ -28,16 +29,23 @@ rm -rf aosp
 cd $GITHUB_WORKSPACE/
 tar cfJ prebuilts_rust.tar.xz -C $GITHUB_WORKSPACE/artifacts/prebuilts/rust/ .
 
+du -ah -d1
+
 mkdir -p $GITHUB_WORKSPACE/cache
 if [ ! -f "$GITHUB_WORKSPACE/cache/libcore.tar.xz" ]; then
+  echo "Compressing libcore -> libcore.tar.xz"
   tar cfJ $GITHUB_WORKSPACE/cache/libcore.tar.xz -C $GITHUB_WORKSPACE/aosp/libcore/ .
 fi
 mkdir -p $GITHUB_WORKSPACE/cache
 if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_clang_host_linux-x86.tar.xz" ]; then
+  echo "Compressing prebuilts/clang/host/linux-x86 -> prebuilts_clang_host_linux-x86.tar.xz"
   tar cfJ $GITHUB_WORKSPACE/cache/prebuilts_clang_host_linux-x86.tar.xz -C $GITHUB_WORKSPACE/aosp/prebuilts/clang/host/linux-x86/ .
 fi
 mkdir -p $GITHUB_WORKSPACE/cache
 if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_rust.tar.xz" ]; then
+  echo "Compressing prebuilts/rust -> prebuilts_rust.tar.xz"
   tar cfJ $GITHUB_WORKSPACE/cache/prebuilts_rust.tar.xz -C $GITHUB_WORKSPACE/aosp/prebuilts/rust/ .
 fi
+du -ah -d1 $GITHUB_WORKSPACE/cache
+
 rm -rf aosp

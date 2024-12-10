@@ -3,7 +3,7 @@ export AOSP_PLATFORM_URL="${GIT_AOSP_URL}platform/"
 export BRANCH="android12-gsi"
 
 function clone_depth() {
-  set -x
+  #set -x
   local project_path=$1
   local path_key=${project_path//\//_}
   local cache_file="$GITHUB_WORKSPACE/cache/${path_key}.tar.xz"
@@ -21,11 +21,11 @@ function clone_depth() {
     echo "Cache miss: Cloning $project_path"
     git clone --depth=1 ${GIT_AOSP_URL}$project_name $project_path -b ${BRANCH}
   fi
-  set +x
+  #set +x
 }
 
 function clone_depth_platform() {
-  set -x
+  #set -x
   local project_path=$1
   local path_key=${project_path//\//_}
   local cache_file="$GITHUB_WORKSPACE/cache/${path_key}.tar.xz"
@@ -38,7 +38,7 @@ function clone_depth_platform() {
     echo "Cache miss: Cloning $project_path"
     git clone --depth=1 ${AOSP_PLATFORM_URL}$1 $1 -b ${BRANCH}
   fi
-  set +x
+  #set +x
 }
 
 function sparse_setup() {
@@ -49,7 +49,7 @@ function sparse_setup() {
 }
 
 function clone_sparse() {
-  set -x
+  #set -x
   local project_path=$1
   local path_key=${project_path//\//_}
   local cache_file="$GITHUB_WORKSPACE/cache/${path_key}.tar.xz"
@@ -63,11 +63,11 @@ function clone_sparse() {
     git clone --filter=tree:0 --single-branch --no-tags --sparse ${AOSP_PLATFORM_URL}$1 $1 -b ${BRANCH}
     sparse_setup "$@"
   fi
-  set +x
+  #set +x
 }
 
 function clone_sparse_exclude() {
-  set -x
+  #set -x
   local project_path=$1
   local path_key=${project_path//\//_}
   local cache_file="$GITHUB_WORKSPACE/cache/${path_key}.tar.xz"
@@ -84,11 +84,11 @@ function clone_sparse_exclude() {
     shift;
     git -C $prj_path sparse-checkout set --no-cone '/*'  "$@"
   fi
-  set +x
+  #set +x
 }
 
 function clone_project() {
-  set -x
+  #set -x
   branch=$BRANCH
   project_name=$1
   project_path=$2
@@ -103,7 +103,7 @@ function clone_project() {
   git fetch origin --filter=tree:0 --depth=1 --no-tags --progress "+refs/heads/${branch}:refs/remotes/origin/${branch}"
   echo $(git rev-parse --verify "refs/remotes/origin/${branch}^0") > .git/HEAD
   git read-tree --reset -u -v HEAD
-  cd -
+  #cd -
 }
 
 function download_release() {

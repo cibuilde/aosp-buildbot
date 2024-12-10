@@ -1,5 +1,6 @@
 set -e
 
+df -h
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 source $GITHUB_WORKSPACE/envsetup.sh
 tar xf $GITHUB_WORKSPACE/ninja.tar.xz
@@ -46,8 +47,13 @@ rm -rf aosp
 cd $GITHUB_WORKSPACE/
 tar cfJ system_timezone.tar.xz -C $GITHUB_WORKSPACE/artifacts/system/timezone/ .
 
+du -ah -d1
+
 mkdir -p $GITHUB_WORKSPACE/cache
 if [ ! -f "$GITHUB_WORKSPACE/cache/system_timezone.tar.xz" ]; then
+  echo "Compressing system/timezone -> system_timezone.tar.xz"
   tar cfJ $GITHUB_WORKSPACE/cache/system_timezone.tar.xz -C $GITHUB_WORKSPACE/aosp/system/timezone/ .
 fi
+du -ah -d1 $GITHUB_WORKSPACE/cache
+
 rm -rf aosp

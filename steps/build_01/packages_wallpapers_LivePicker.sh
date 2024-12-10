@@ -1,5 +1,6 @@
 set -e
 
+df -h
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 source $GITHUB_WORKSPACE/envsetup.sh
 tar xf $GITHUB_WORKSPACE/ninja.tar.xz
@@ -16,8 +17,13 @@ rm -rf aosp
 cd $GITHUB_WORKSPACE/
 tar cfJ packages_wallpapers_LivePicker.tar.xz -C $GITHUB_WORKSPACE/artifacts/packages/wallpapers/LivePicker/ .
 
+du -ah -d1
+
 mkdir -p $GITHUB_WORKSPACE/cache
 if [ ! -f "$GITHUB_WORKSPACE/cache/packages_wallpapers_LivePicker.tar.xz" ]; then
+  echo "Compressing packages/wallpapers/LivePicker -> packages_wallpapers_LivePicker.tar.xz"
   tar cfJ $GITHUB_WORKSPACE/cache/packages_wallpapers_LivePicker.tar.xz -C $GITHUB_WORKSPACE/aosp/packages/wallpapers/LivePicker/ .
 fi
+du -ah -d1 $GITHUB_WORKSPACE/cache
+
 rm -rf aosp

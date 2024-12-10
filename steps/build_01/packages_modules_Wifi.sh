@@ -1,5 +1,6 @@
 set -e
 
+df -h
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 source $GITHUB_WORKSPACE/envsetup.sh
 tar xf $GITHUB_WORKSPACE/ninja.tar.xz
@@ -16,8 +17,13 @@ rm -rf aosp
 cd $GITHUB_WORKSPACE/
 tar cfJ packages_modules_Wifi.tar.xz -C $GITHUB_WORKSPACE/artifacts/packages/modules/Wifi/ .
 
+du -ah -d1
+
 mkdir -p $GITHUB_WORKSPACE/cache
 if [ ! -f "$GITHUB_WORKSPACE/cache/packages_modules_Wifi.tar.xz" ]; then
+  echo "Compressing packages/modules/Wifi -> packages_modules_Wifi.tar.xz"
   tar cfJ $GITHUB_WORKSPACE/cache/packages_modules_Wifi.tar.xz -C $GITHUB_WORKSPACE/aosp/packages/modules/Wifi/ .
 fi
+du -ah -d1 $GITHUB_WORKSPACE/cache
+
 rm -rf aosp

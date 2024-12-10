@@ -1,5 +1,6 @@
 set -e
 
+df -h
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 source $GITHUB_WORKSPACE/envsetup.sh
 tar xf $GITHUB_WORKSPACE/ninja.tar.xz
@@ -17,12 +18,18 @@ rm -rf aosp
 cd $GITHUB_WORKSPACE/
 tar cfJ device_google_cuttlefish_prebuilts.tar.xz -C $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish_prebuilts/ .
 
+du -ah -d1
+
 mkdir -p $GITHUB_WORKSPACE/cache
 if [ ! -f "$GITHUB_WORKSPACE/cache/device_google_cuttlefish.tar.xz" ]; then
+  echo "Compressing device/google/cuttlefish -> device_google_cuttlefish.tar.xz"
   tar cfJ $GITHUB_WORKSPACE/cache/device_google_cuttlefish.tar.xz -C $GITHUB_WORKSPACE/aosp/device/google/cuttlefish/ .
 fi
 mkdir -p $GITHUB_WORKSPACE/cache
 if [ ! -f "$GITHUB_WORKSPACE/cache/device_google_cuttlefish_prebuilts.tar.xz" ]; then
+  echo "Compressing device/google/cuttlefish_prebuilts -> device_google_cuttlefish_prebuilts.tar.xz"
   tar cfJ $GITHUB_WORKSPACE/cache/device_google_cuttlefish_prebuilts.tar.xz -C $GITHUB_WORKSPACE/aosp/device/google/cuttlefish_prebuilts/ .
 fi
+du -ah -d1 $GITHUB_WORKSPACE/cache
+
 rm -rf aosp
