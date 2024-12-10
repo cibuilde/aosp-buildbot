@@ -7,12 +7,12 @@ tar xf $GITHUB_WORKSPACE/ninja.tar.xz
 clone_sparse_exclude prebuilts/misc "!/common/robolectric" "!/darwin-x86" "!/darwin-x86_64" "!/gdbserver"
 
 echo "building gdbserver^android_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja gdbserver,android_x86_64
+ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja gdbserver,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/misc/gdbserver/gdbserver^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/prebuilts/misc/gdbserver^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/prebuilts/misc/gdbserver/gdbserver^android_x86_64
 
 echo "building gdbserver^android_x86_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja gdbserver,android_x86_x86_64
+ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja gdbserver,android_x86_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/misc/gdbserver/gdbserver^android_x86_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/prebuilts/misc/gdbserver^android_x86_x86_64.output . $GITHUB_WORKSPACE/artifacts/prebuilts/misc/gdbserver/gdbserver^android_x86_x86_64
 

@@ -22,57 +22,57 @@ clone_depth_platform system/logging
 clone_depth_platform system/media
 
 echo "building libz^android_native_bridge_arm64_armv8-a_static"
-prebuilts/build-tools/linux-x86/bin/ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libz,android_native_bridge_arm64_armv8-a_static
+ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libz,android_native_bridge_arm64_armv8-a_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/zlib/libz^android_native_bridge_arm64_armv8-a_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/zlib/libz^android_native_bridge_arm64_armv8-a_static.output . $GITHUB_WORKSPACE/artifacts/external/zlib/libz^android_native_bridge_arm64_armv8-a_static
 
 echo "building libz^android_native_bridge_arm_armv7-a-neon_static"
-prebuilts/build-tools/linux-x86/bin/ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libz,android_native_bridge_arm_armv7-a-neon_static
+ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libz,android_native_bridge_arm_armv7-a-neon_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/zlib/libz^android_native_bridge_arm_armv7-a-neon_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/zlib/libz^android_native_bridge_arm_armv7-a-neon_static.output . $GITHUB_WORKSPACE/artifacts/external/zlib/libz^android_native_bridge_arm_armv7-a-neon_static
 
 echo "building libz^android_recovery_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libz,android_recovery_x86_64_static
+ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libz,android_recovery_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/zlib/libz^android_recovery_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/zlib/libz^android_recovery_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/zlib/libz^android_recovery_x86_64_static
 
 echo "building libz^android_vendor_ramdisk_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libz,android_vendor_ramdisk_x86_64_static
+ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libz,android_vendor_ramdisk_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/zlib/libz^android_vendor_ramdisk_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/zlib/libz^android_vendor_ramdisk_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/zlib/libz^android_vendor_ramdisk_x86_64_static
 
 echo "building libz^android_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libz,android_x86_64_static
+ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libz,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/zlib/libz^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/zlib/libz^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/zlib/libz^android_x86_64_static
 
 echo "building libz^android_x86_64_static_apex10000"
-prebuilts/build-tools/linux-x86/bin/ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libz,android_x86_64_static_apex10000
+ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libz,android_x86_64_static_apex10000
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/zlib/libz^android_x86_64_static_apex10000
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/zlib/libz^android_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/external/zlib/libz^android_x86_64_static_apex10000
 
 echo "building libz^android_x86_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libz,android_x86_x86_64_static
+ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libz,android_x86_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/zlib/libz^android_x86_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/zlib/libz^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/zlib/libz^android_x86_x86_64_static
 
 echo "building libz^android_x86_x86_64_static_apex10000"
-prebuilts/build-tools/linux-x86/bin/ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libz,android_x86_x86_64_static_apex10000
+ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libz,android_x86_x86_64_static_apex10000
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/zlib/libz^android_x86_x86_64_static_apex10000
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/zlib/libz^android_x86_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/external/zlib/libz^android_x86_x86_64_static_apex10000
 
 echo "building libz^linux_glibc_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libz,linux_glibc_x86_64_static
+ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libz,linux_glibc_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/zlib/libz^linux_glibc_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/zlib/libz^linux_glibc_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/zlib/libz^linux_glibc_x86_64_static
 
 echo "building libz^linux_glibc_x86_static"
-prebuilts/build-tools/linux-x86/bin/ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libz,linux_glibc_x86_static
+ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libz,linux_glibc_x86_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/zlib/libz^linux_glibc_x86_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/zlib/libz^linux_glibc_x86_static.output . $GITHUB_WORKSPACE/artifacts/external/zlib/libz^linux_glibc_x86_static
 
 echo "building libz_headers^"
-prebuilts/build-tools/linux-x86/bin/ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libz_headers,
+ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libz_headers,
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/zlib/libz_headers^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/zlib/libz_headers^.output . $GITHUB_WORKSPACE/artifacts/external/zlib/libz_headers^
 

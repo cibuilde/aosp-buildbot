@@ -7,12 +7,12 @@ tar xf $GITHUB_WORKSPACE/ninja.tar.xz
 clone_depth_platform external/google-fonts/dancing-script
 
 echo "building DancingScript-Bold.ttf^android_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja DancingScript-Bold.ttf,android_x86_64
+ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja DancingScript-Bold.ttf,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/google-fonts/dancing-script/DancingScript-Bold.ttf^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/google-fonts/dancing-script/DancingScript-Bold.ttf^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/google-fonts/dancing-script/DancingScript-Bold.ttf^android_x86_64
 
 echo "building DancingScript-Regular.ttf^android_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja DancingScript-Regular.ttf,android_x86_64
+ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja DancingScript-Regular.ttf,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/google-fonts/dancing-script/DancingScript-Regular.ttf^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/google-fonts/dancing-script/DancingScript-Regular.ttf^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/google-fonts/dancing-script/DancingScript-Regular.ttf^android_x86_64
 

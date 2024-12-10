@@ -20,22 +20,22 @@ clone_depth_platform system/logging
 clone_depth_platform system/media
 
 echo "building libwebp-decode^android_x86_64_static_lto-thin"
-prebuilts/build-tools/linux-x86/bin/ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libwebp-decode,android_x86_64_static_lto-thin
+ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libwebp-decode,android_x86_64_static_lto-thin
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/webp/libwebp-decode^android_x86_64_static_lto-thin
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/webp/libwebp-decode^android_x86_64_static_lto-thin.output . $GITHUB_WORKSPACE/artifacts/external/webp/libwebp-decode^android_x86_64_static_lto-thin
 
 echo "building libwebp-decode^android_x86_x86_64_static_lto-thin"
-prebuilts/build-tools/linux-x86/bin/ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libwebp-decode,android_x86_x86_64_static_lto-thin
+ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libwebp-decode,android_x86_x86_64_static_lto-thin
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/webp/libwebp-decode^android_x86_x86_64_static_lto-thin
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/webp/libwebp-decode^android_x86_x86_64_static_lto-thin.output . $GITHUB_WORKSPACE/artifacts/external/webp/libwebp-decode^android_x86_x86_64_static_lto-thin
 
 echo "building libwebp-encode^android_x86_64_static_lto-thin"
-prebuilts/build-tools/linux-x86/bin/ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libwebp-encode,android_x86_64_static_lto-thin
+ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libwebp-encode,android_x86_64_static_lto-thin
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/webp/libwebp-encode^android_x86_64_static_lto-thin
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/webp/libwebp-encode^android_x86_64_static_lto-thin.output . $GITHUB_WORKSPACE/artifacts/external/webp/libwebp-encode^android_x86_64_static_lto-thin
 
 echo "building libwebp-encode^android_x86_x86_64_static_lto-thin"
-prebuilts/build-tools/linux-x86/bin/ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libwebp-encode,android_x86_x86_64_static_lto-thin
+ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libwebp-encode,android_x86_x86_64_static_lto-thin
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/webp/libwebp-encode^android_x86_x86_64_static_lto-thin
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/webp/libwebp-encode^android_x86_x86_64_static_lto-thin.output . $GITHUB_WORKSPACE/artifacts/external/webp/libwebp-encode^android_x86_x86_64_static_lto-thin
 

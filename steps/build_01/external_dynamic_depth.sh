@@ -25,7 +25,7 @@ clone_depth_platform system/logging
 clone_depth_platform system/media
 
 echo "building libdynamic_depth^android_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libdynamic_depth,android_x86_64_static
+ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libdynamic_depth,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/dynamic_depth/libdynamic_depth^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/dynamic_depth/libdynamic_depth^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/dynamic_depth/libdynamic_depth^android_x86_64_static
 

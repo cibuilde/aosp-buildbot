@@ -10,7 +10,7 @@ clone_sparse prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8 sysroot lib
 clone_sparse prebuilts/rust bootstrap linux-x86/1.51.0
 
 echo "building libproc_macro_hack^linux_glibc_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libproc_macro_hack,linux_glibc_x86_64
+ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libproc_macro_hack,linux_glibc_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/rust/crates/proc-macro-hack/libproc_macro_hack^linux_glibc_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/rust/crates/proc-macro-hack/libproc_macro_hack^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/rust/crates/proc-macro-hack/libproc_macro_hack^linux_glibc_x86_64
 

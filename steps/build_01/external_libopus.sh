@@ -21,7 +21,7 @@ clone_depth_platform system/logging
 clone_depth_platform system/media
 
 echo "building libopus^android_x86_64_static_apex29"
-prebuilts/build-tools/linux-x86/bin/ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libopus,android_x86_64_static_apex29
+ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libopus,android_x86_64_static_apex29
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/libopus/libopus^android_x86_64_static_apex29
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/libopus/libopus^android_x86_64_static_apex29.output . $GITHUB_WORKSPACE/artifacts/external/libopus/libopus^android_x86_64_static_apex29
 

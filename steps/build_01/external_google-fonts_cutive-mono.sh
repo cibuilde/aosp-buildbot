@@ -7,7 +7,7 @@ tar xf $GITHUB_WORKSPACE/ninja.tar.xz
 clone_depth_platform external/google-fonts/cutive-mono
 
 echo "building CutiveMono.ttf^android_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja CutiveMono.ttf,android_x86_64
+ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja CutiveMono.ttf,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/google-fonts/cutive-mono/CutiveMono.ttf^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/google-fonts/cutive-mono/CutiveMono.ttf^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/google-fonts/cutive-mono/CutiveMono.ttf^android_x86_64
 

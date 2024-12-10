@@ -24,17 +24,17 @@ clone_depth_platform system/memory/libion
 clone_depth_platform system/unwinding
 
 echo "building libdmabufheap^android_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libdmabufheap,android_x86_64_static
+ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libdmabufheap,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/memory/libdmabufheap/libdmabufheap^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/memory/libdmabufheap/libdmabufheap^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/memory/libdmabufheap/libdmabufheap^android_x86_64_static
 
 echo "building libdmabufheap^android_x86_64_static_apex29"
-prebuilts/build-tools/linux-x86/bin/ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libdmabufheap,android_x86_64_static_apex29
+ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libdmabufheap,android_x86_64_static_apex29
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/memory/libdmabufheap/libdmabufheap^android_x86_64_static_apex29
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/memory/libdmabufheap/libdmabufheap^android_x86_64_static_apex29.output . $GITHUB_WORKSPACE/artifacts/system/memory/libdmabufheap/libdmabufheap^android_x86_64_static_apex29
 
 echo "building libdmabufheap^android_x86_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libdmabufheap,android_x86_x86_64_static
+ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libdmabufheap,android_x86_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/memory/libdmabufheap/libdmabufheap^android_x86_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/memory/libdmabufheap/libdmabufheap^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/memory/libdmabufheap/libdmabufheap^android_x86_x86_64_static
 

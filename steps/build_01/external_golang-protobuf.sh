@@ -8,7 +8,7 @@ clone_depth_platform external/golang-protobuf
 clone_depth_platform prebuilts/go/linux-x86
 
 echo "building golang-protobuf-proto^linux_glibc_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja golang-protobuf-proto,linux_glibc_x86_64
+ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja golang-protobuf-proto,linux_glibc_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/golang-protobuf/golang-protobuf-proto^linux_glibc_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/golang-protobuf/golang-protobuf-proto^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/golang-protobuf/golang-protobuf-proto^linux_glibc_x86_64
 

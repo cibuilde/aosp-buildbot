@@ -20,12 +20,12 @@ clone_depth_platform system/logging
 clone_depth_platform system/media
 
 echo "building libfdlibm^android_x86_64_static_apex31"
-prebuilts/build-tools/linux-x86/bin/ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libfdlibm,android_x86_64_static_apex31
+ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libfdlibm,android_x86_64_static_apex31
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/fdlibm/libfdlibm^android_x86_64_static_apex31
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/fdlibm/libfdlibm^android_x86_64_static_apex31.output . $GITHUB_WORKSPACE/artifacts/external/fdlibm/libfdlibm^android_x86_64_static_apex31
 
 echo "building libfdlibm^android_x86_x86_64_static_apex31"
-prebuilts/build-tools/linux-x86/bin/ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libfdlibm,android_x86_x86_64_static_apex31
+ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libfdlibm,android_x86_x86_64_static_apex31
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/fdlibm/libfdlibm^android_x86_x86_64_static_apex31
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/fdlibm/libfdlibm^android_x86_x86_64_static_apex31.output . $GITHUB_WORKSPACE/artifacts/external/fdlibm/libfdlibm^android_x86_x86_64_static_apex31
 

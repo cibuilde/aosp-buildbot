@@ -19,27 +19,27 @@ clone_depth_platform system/logging
 clone_depth_platform system/media
 
 echo "building libexpat^android_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libexpat,android_x86_64_static
+ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libexpat,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/expat/libexpat^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/expat/libexpat^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/expat/libexpat^android_x86_64_static
 
 echo "building libexpat^android_x86_64_static_apex31"
-prebuilts/build-tools/linux-x86/bin/ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libexpat,android_x86_64_static_apex31
+ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libexpat,android_x86_64_static_apex31
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/expat/libexpat^android_x86_64_static_apex31
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/expat/libexpat^android_x86_64_static_apex31.output . $GITHUB_WORKSPACE/artifacts/external/expat/libexpat^android_x86_64_static_apex31
 
 echo "building libexpat^android_x86_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libexpat,android_x86_x86_64_static
+ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libexpat,android_x86_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/expat/libexpat^android_x86_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/expat/libexpat^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/expat/libexpat^android_x86_x86_64_static
 
 echo "building libexpat^android_x86_x86_64_static_apex31"
-prebuilts/build-tools/linux-x86/bin/ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libexpat,android_x86_x86_64_static_apex31
+ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libexpat,android_x86_x86_64_static_apex31
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/expat/libexpat^android_x86_x86_64_static_apex31
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/expat/libexpat^android_x86_x86_64_static_apex31.output . $GITHUB_WORKSPACE/artifacts/external/expat/libexpat^android_x86_x86_64_static_apex31
 
 echo "building libexpat^linux_glibc_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libexpat,linux_glibc_x86_64_static
+ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libexpat,linux_glibc_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/expat/libexpat^linux_glibc_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/expat/libexpat^linux_glibc_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/expat/libexpat^linux_glibc_x86_64_static
 

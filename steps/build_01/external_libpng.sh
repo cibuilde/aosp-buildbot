@@ -21,22 +21,22 @@ clone_depth_platform system/logging
 clone_depth_platform system/media
 
 echo "building libpng^android_recovery_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libpng,android_recovery_x86_64_static
+ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libpng,android_recovery_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/libpng/libpng^android_recovery_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/libpng/libpng^android_recovery_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/libpng/libpng^android_recovery_x86_64_static
 
 echo "building libpng^android_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libpng,android_x86_64_static
+ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libpng,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/libpng/libpng^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/libpng/libpng^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/libpng/libpng^android_x86_64_static
 
 echo "building libpng^android_x86_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libpng,android_x86_x86_64_static
+ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libpng,android_x86_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/libpng/libpng^android_x86_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/libpng/libpng^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/libpng/libpng^android_x86_x86_64_static
 
 echo "building libpng^linux_glibc_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libpng,linux_glibc_x86_64_static
+ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libpng,linux_glibc_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/libpng/libpng^linux_glibc_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/libpng/libpng^linux_glibc_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/libpng/libpng^linux_glibc_x86_64_static
 

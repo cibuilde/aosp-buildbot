@@ -26,27 +26,27 @@ clone_depth_platform system/logging
 clone_depth_platform system/media
 
 echo "building libavb^android_recovery_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libavb,android_recovery_x86_64_static
+ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libavb,android_recovery_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/avb/libavb^android_recovery_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/avb/libavb^android_recovery_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/avb/libavb^android_recovery_x86_64_static
 
 echo "building libavb^android_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libavb,android_x86_64_static
+ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libavb,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/avb/libavb^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/avb/libavb^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/avb/libavb^android_x86_64_static
 
 echo "building libavb^linux_glibc_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libavb,linux_glibc_x86_64_static
+ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libavb,linux_glibc_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/avb/libavb^linux_glibc_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/avb/libavb^linux_glibc_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/avb/libavb^linux_glibc_x86_64_static
 
 echo "building libavb^linux_glibc_x86_static"
-prebuilts/build-tools/linux-x86/bin/ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libavb,linux_glibc_x86_static
+ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libavb,linux_glibc_x86_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/avb/libavb^linux_glibc_x86_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/avb/libavb^linux_glibc_x86_static.output . $GITHUB_WORKSPACE/artifacts/external/avb/libavb^linux_glibc_x86_static
 
 echo "building libavb_user^android_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libavb_user,android_x86_64_static
+ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libavb_user,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/avb/libavb_user^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/avb/libavb_user^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/avb/libavb_user^android_x86_64_static
 

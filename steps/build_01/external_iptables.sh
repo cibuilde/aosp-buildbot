@@ -20,22 +20,22 @@ clone_depth_platform system/logging
 clone_depth_platform system/media
 
 echo "building libip4tc^android_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libip4tc,android_x86_64_static
+ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libip4tc,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/iptables/libiptc/libip4tc^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/iptables/libip4tc^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/iptables/libiptc/libip4tc^android_x86_64_static
 
 echo "building libip6tc^android_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libip6tc,android_x86_64_static
+ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libip6tc,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/iptables/libiptc/libip6tc^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/iptables/libip6tc^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/iptables/libiptc/libip6tc^android_x86_64_static
 
 echo "building libxtables^android_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libxtables,android_x86_64_static
+ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libxtables,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/iptables/libxtables/libxtables^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/iptables/libxtables^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/iptables/libxtables/libxtables^android_x86_64_static
 
 echo "building xtables.lock^android_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja xtables.lock,android_x86_64
+ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja xtables.lock,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/iptables/iptables/xtables.lock^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/iptables/xtables.lock^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/iptables/iptables/xtables.lock^android_x86_64
 

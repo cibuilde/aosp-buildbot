@@ -24,72 +24,72 @@ clone_depth_platform system/logging
 clone_depth_platform system/media
 
 echo "building com.android.adbd.init.rc^android_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja com.android.adbd.init.rc,android_x86_64
+ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja com.android.adbd.init.rc,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/adb/apex/com.android.adbd.init.rc^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/packages/modules/adb/com.android.adbd.init.rc^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/packages/modules/adb/apex/com.android.adbd.init.rc^android_x86_64
 
 echo "building libadb_pairing_auth^android_x86_64_static_apex10000"
-prebuilts/build-tools/linux-x86/bin/ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libadb_pairing_auth,android_x86_64_static_apex10000
+ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libadb_pairing_auth,android_x86_64_static_apex10000
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/adb/pairing_auth/libadb_pairing_auth^android_x86_64_static_apex10000
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/packages/modules/adb/libadb_pairing_auth^android_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/packages/modules/adb/pairing_auth/libadb_pairing_auth^android_x86_64_static_apex10000
 
 echo "building libadb_pairing_auth^android_x86_x86_64_static_apex10000"
-prebuilts/build-tools/linux-x86/bin/ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libadb_pairing_auth,android_x86_x86_64_static_apex10000
+ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libadb_pairing_auth,android_x86_x86_64_static_apex10000
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/adb/pairing_auth/libadb_pairing_auth^android_x86_x86_64_static_apex10000
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/packages/modules/adb/libadb_pairing_auth^android_x86_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/packages/modules/adb/pairing_auth/libadb_pairing_auth^android_x86_x86_64_static_apex10000
 
 echo "building libadb_sysdeps^android_recovery_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libadb_sysdeps,android_recovery_x86_64_static
+ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libadb_sysdeps,android_recovery_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/adb/libadb_sysdeps^android_recovery_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/packages/modules/adb/libadb_sysdeps^android_recovery_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/packages/modules/adb/libadb_sysdeps^android_recovery_x86_64_static
 
 echo "building libadb_sysdeps^android_x86_64_static_apex10000"
-prebuilts/build-tools/linux-x86/bin/ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libadb_sysdeps,android_x86_64_static_apex10000
+ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libadb_sysdeps,android_x86_64_static_apex10000
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/adb/libadb_sysdeps^android_x86_64_static_apex10000
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/packages/modules/adb/libadb_sysdeps^android_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/packages/modules/adb/libadb_sysdeps^android_x86_64_static_apex10000
 
 echo "building libadb_tls_connection^android_recovery_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libadb_tls_connection,android_recovery_x86_64_static
+ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libadb_tls_connection,android_recovery_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/adb/tls/libadb_tls_connection^android_recovery_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/packages/modules/adb/libadb_tls_connection^android_recovery_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/packages/modules/adb/tls/libadb_tls_connection^android_recovery_x86_64_static
 
 echo "building libadb_tls_connection^android_x86_64_static_apex10000"
-prebuilts/build-tools/linux-x86/bin/ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libadb_tls_connection,android_x86_64_static_apex10000
+ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libadb_tls_connection,android_x86_64_static_apex10000
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/adb/tls/libadb_tls_connection^android_x86_64_static_apex10000
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/packages/modules/adb/libadb_tls_connection^android_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/packages/modules/adb/tls/libadb_tls_connection^android_x86_64_static_apex10000
 
 echo "building libadb_tls_connection^android_x86_x86_64_static_apex10000"
-prebuilts/build-tools/linux-x86/bin/ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libadb_tls_connection,android_x86_x86_64_static_apex10000
+ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libadb_tls_connection,android_x86_x86_64_static_apex10000
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/adb/tls/libadb_tls_connection^android_x86_x86_64_static_apex10000
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/packages/modules/adb/libadb_tls_connection^android_x86_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/packages/modules/adb/tls/libadb_tls_connection^android_x86_x86_64_static_apex10000
 
 echo "building libadbconnection_client^android_x86_64_static_apex10000"
-prebuilts/build-tools/linux-x86/bin/ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libadbconnection_client,android_x86_64_static_apex10000
+ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libadbconnection_client,android_x86_64_static_apex10000
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/adb/libs/adbconnection/libadbconnection_client^android_x86_64_static_apex10000
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/packages/modules/adb/libadbconnection_client^android_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/packages/modules/adb/libs/adbconnection/libadbconnection_client^android_x86_64_static_apex10000
 
 echo "building libadbconnection_client^android_x86_x86_64_static_apex10000"
-prebuilts/build-tools/linux-x86/bin/ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libadbconnection_client,android_x86_x86_64_static_apex10000
+ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libadbconnection_client,android_x86_x86_64_static_apex10000
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/adb/libs/adbconnection/libadbconnection_client^android_x86_x86_64_static_apex10000
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/packages/modules/adb/libadbconnection_client^android_x86_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/packages/modules/adb/libs/adbconnection/libadbconnection_client^android_x86_x86_64_static_apex10000
 
 echo "building libadbconnection_server^android_recovery_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libadbconnection_server,android_recovery_x86_64_static
+ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libadbconnection_server,android_recovery_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/adb/libs/adbconnection/libadbconnection_server^android_recovery_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/packages/modules/adb/libadbconnection_server^android_recovery_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/packages/modules/adb/libs/adbconnection/libadbconnection_server^android_recovery_x86_64_static
 
 echo "building libadbconnection_server^android_x86_64_static_apex10000"
-prebuilts/build-tools/linux-x86/bin/ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libadbconnection_server,android_x86_64_static_apex10000
+ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libadbconnection_server,android_x86_64_static_apex10000
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/adb/libs/adbconnection/libadbconnection_server^android_x86_64_static_apex10000
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/packages/modules/adb/libadbconnection_server^android_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/packages/modules/adb/libs/adbconnection/libadbconnection_server^android_x86_64_static_apex10000
 
 echo "building libadbd^android_recovery_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libadbd,android_recovery_x86_64_static
+ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libadbd,android_recovery_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/adb/libadbd^android_recovery_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/packages/modules/adb/libadbd^android_recovery_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/packages/modules/adb/libadbd^android_recovery_x86_64_static
 
 echo "building libadbd^android_x86_64_static_apex10000"
-prebuilts/build-tools/linux-x86/bin/ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libadbd,android_x86_64_static_apex10000
+ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libadbd,android_x86_64_static_apex10000
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/adb/libadbd^android_x86_64_static_apex10000
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/packages/modules/adb/libadbd^android_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/packages/modules/adb/libadbd^android_x86_64_static_apex10000
 

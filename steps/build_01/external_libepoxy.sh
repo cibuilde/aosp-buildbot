@@ -20,7 +20,7 @@ clone_depth_platform system/logging
 clone_depth_platform system/media
 
 echo "building libepoxy^android_x86_64_static_apex10000"
-prebuilts/build-tools/linux-x86/bin/ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libepoxy,android_x86_64_static_apex10000
+ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libepoxy,android_x86_64_static_apex10000
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/libepoxy/libepoxy^android_x86_64_static_apex10000
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/libepoxy/libepoxy^android_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/external/libepoxy/libepoxy^android_x86_64_static_apex10000
 
