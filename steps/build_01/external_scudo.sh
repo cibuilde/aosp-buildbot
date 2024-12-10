@@ -2,7 +2,7 @@ set -e
 
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 source $GITHUB_WORKSPACE/envsetup.sh
-ln -sf $GITHUB_WORKSPACE/ninja .
+tar xf $GITHUB_WORKSPACE/ninja.tar.xz
 
 clone_depth_platform bionic
 clone_depth_platform external/scudo
@@ -21,42 +21,42 @@ clone_depth_platform system/logging
 clone_depth_platform system/media
 
 echo "building libscudo^android_native_bridge_arm64_armv8-a_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libscudo,android_native_bridge_arm64_armv8-a_static
+prebuilts/build-tools/linux-x86/bin/ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libscudo,android_native_bridge_arm64_armv8-a_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/scudo/libscudo^android_native_bridge_arm64_armv8-a_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/scudo/libscudo^android_native_bridge_arm64_armv8-a_static.output . $GITHUB_WORKSPACE/artifacts/external/scudo/libscudo^android_native_bridge_arm64_armv8-a_static
 
 echo "building libscudo^android_native_bridge_arm_armv7-a-neon_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libscudo,android_native_bridge_arm_armv7-a-neon_static
+prebuilts/build-tools/linux-x86/bin/ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libscudo,android_native_bridge_arm_armv7-a-neon_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/scudo/libscudo^android_native_bridge_arm_armv7-a-neon_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/scudo/libscudo^android_native_bridge_arm_armv7-a-neon_static.output . $GITHUB_WORKSPACE/artifacts/external/scudo/libscudo^android_native_bridge_arm_armv7-a-neon_static
 
 echo "building libscudo^android_recovery_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libscudo,android_recovery_x86_64_static
+prebuilts/build-tools/linux-x86/bin/ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libscudo,android_recovery_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/scudo/libscudo^android_recovery_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/scudo/libscudo^android_recovery_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/scudo/libscudo^android_recovery_x86_64_static
 
 echo "building libscudo^android_vendor_ramdisk_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libscudo,android_vendor_ramdisk_x86_64_static
+prebuilts/build-tools/linux-x86/bin/ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libscudo,android_vendor_ramdisk_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/scudo/libscudo^android_vendor_ramdisk_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/scudo/libscudo^android_vendor_ramdisk_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/scudo/libscudo^android_vendor_ramdisk_x86_64_static
 
 echo "building libscudo^android_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libscudo,android_x86_64_static
+prebuilts/build-tools/linux-x86/bin/ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libscudo,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/scudo/libscudo^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/scudo/libscudo^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/scudo/libscudo^android_x86_64_static
 
 echo "building libscudo^android_x86_64_static_apex10000"
-ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libscudo,android_x86_64_static_apex10000
+prebuilts/build-tools/linux-x86/bin/ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libscudo,android_x86_64_static_apex10000
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/scudo/libscudo^android_x86_64_static_apex10000
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/scudo/libscudo^android_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/external/scudo/libscudo^android_x86_64_static_apex10000
 
 echo "building libscudo^android_x86_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libscudo,android_x86_x86_64_static
+prebuilts/build-tools/linux-x86/bin/ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libscudo,android_x86_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/scudo/libscudo^android_x86_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/scudo/libscudo^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/scudo/libscudo^android_x86_x86_64_static
 
 echo "building libscudo^android_x86_x86_64_static_apex10000"
-ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libscudo,android_x86_x86_64_static_apex10000
+prebuilts/build-tools/linux-x86/bin/ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libscudo,android_x86_x86_64_static_apex10000
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/scudo/libscudo^android_x86_x86_64_static_apex10000
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/scudo/libscudo^android_x86_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/external/scudo/libscudo^android_x86_x86_64_static_apex10000
 

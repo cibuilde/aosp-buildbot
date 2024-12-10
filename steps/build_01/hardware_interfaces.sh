@@ -2,7 +2,7 @@ set -e
 
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 source $GITHUB_WORKSPACE/envsetup.sh
-ln -sf $GITHUB_WORKSPACE/ninja .
+tar xf $GITHUB_WORKSPACE/ninja.tar.xz
 
 clone_depth_platform bionic
 clone_depth_platform external/fmtlib
@@ -23,22 +23,22 @@ clone_depth_platform system/media
 clone_depth_platform system/unwinding
 
 echo "building android.hardware.hardware_keystore.xml^android_x86_64"
-ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja android.hardware.hardware_keystore.xml,android_x86_64
+prebuilts/build-tools/linux-x86/bin/ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja android.hardware.hardware_keystore.xml,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/security/keymint/aidl/default/android.hardware.hardware_keystore.xml^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/hardware/interfaces/android.hardware.hardware_keystore.xml^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/security/keymint/aidl/default/android.hardware.hardware_keystore.xml^android_x86_64
 
 echo "building android.hardware.identity_credential.xml^android_x86_64"
-ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja android.hardware.identity_credential.xml,android_x86_64
+prebuilts/build-tools/linux-x86/bin/ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja android.hardware.identity_credential.xml,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/identity/aidl/default/android.hardware.identity_credential.xml^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/hardware/interfaces/android.hardware.identity_credential.xml^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/identity/aidl/default/android.hardware.identity_credential.xml^android_x86_64
 
 echo "building libhealthloop^android_recovery_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libhealthloop,android_recovery_x86_64_static
+prebuilts/build-tools/linux-x86/bin/ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libhealthloop,android_recovery_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/health/utils/libhealthloop/libhealthloop^android_recovery_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/hardware/interfaces/libhealthloop^android_recovery_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/health/utils/libhealthloop/libhealthloop^android_recovery_x86_64_static
 
 echo "building libhealthloop^android_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libhealthloop,android_x86_64_static
+prebuilts/build-tools/linux-x86/bin/ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libhealthloop,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/health/utils/libhealthloop/libhealthloop^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/hardware/interfaces/libhealthloop^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/health/utils/libhealthloop/libhealthloop^android_x86_64_static
 

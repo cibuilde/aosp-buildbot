@@ -2,7 +2,7 @@ set -e
 
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 source $GITHUB_WORKSPACE/envsetup.sh
-ln -sf $GITHUB_WORKSPACE/ninja .
+tar xf $GITHUB_WORKSPACE/ninja.tar.xz
 
 clone_depth_platform external/rust/crates/glob
 clone_sparse prebuilts/clang/host/linux-x86 clang-r416183b1 clang-r416183b soong
@@ -10,7 +10,7 @@ clone_sparse prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8 sysroot lib
 clone_sparse prebuilts/rust bootstrap linux-x86/1.51.0
 
 echo "building libglob^linux_glibc_x86_64_rlib_rlib-std"
-ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libglob,linux_glibc_x86_64_rlib_rlib-std
+prebuilts/build-tools/linux-x86/bin/ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libglob,linux_glibc_x86_64_rlib_rlib-std
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/rust/crates/glob/libglob^linux_glibc_x86_64_rlib_rlib-std
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/rust/crates/glob/libglob^linux_glibc_x86_64_rlib_rlib-std.output . $GITHUB_WORKSPACE/artifacts/external/rust/crates/glob/libglob^linux_glibc_x86_64_rlib_rlib-std
 

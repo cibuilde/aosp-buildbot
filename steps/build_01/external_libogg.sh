@@ -2,7 +2,7 @@ set -e
 
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 source $GITHUB_WORKSPACE/envsetup.sh
-ln -sf $GITHUB_WORKSPACE/ninja .
+tar xf $GITHUB_WORKSPACE/ninja.tar.xz
 
 clone_depth_platform bionic
 clone_depth_platform external/compiler-rt
@@ -21,12 +21,12 @@ clone_depth_platform system/logging
 clone_depth_platform system/media
 
 echo "building libogg^android_x86_64_static_cfi"
-ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libogg,android_x86_64_static_cfi
+prebuilts/build-tools/linux-x86/bin/ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libogg,android_x86_64_static_cfi
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/libogg/libogg^android_x86_64_static_cfi
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/libogg/libogg^android_x86_64_static_cfi.output . $GITHUB_WORKSPACE/artifacts/external/libogg/libogg^android_x86_64_static_cfi
 
 echo "building libogg^android_x86_x86_64_static_cfi"
-ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libogg,android_x86_x86_64_static_cfi
+prebuilts/build-tools/linux-x86/bin/ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libogg,android_x86_x86_64_static_cfi
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/libogg/libogg^android_x86_x86_64_static_cfi
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/libogg/libogg^android_x86_x86_64_static_cfi.output . $GITHUB_WORKSPACE/artifacts/external/libogg/libogg^android_x86_x86_64_static_cfi
 

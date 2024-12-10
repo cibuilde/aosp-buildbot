@@ -2,7 +2,7 @@ set -e
 
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 source $GITHUB_WORKSPACE/envsetup.sh
-ln -sf $GITHUB_WORKSPACE/ninja .
+tar xf $GITHUB_WORKSPACE/ninja.tar.xz
 
 clone_depth_platform bionic
 clone_sparse prebuilts/clang/host/linux-x86 clang-r416183b1 clang-r416183b soong
@@ -11,7 +11,7 @@ clone_depth_platform system/bpfprogs
 clone_depth_platform system/core
 
 echo "building time_in_state.o^android_common"
-ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja time_in_state.o,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja time_in_state.o,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/bpfprogs/time_in_state.o^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/bpfprogs/time_in_state.o^android_common.output . $GITHUB_WORKSPACE/artifacts/system/bpfprogs/time_in_state.o^android_common
 

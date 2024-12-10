@@ -2,7 +2,7 @@ set -e
 
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 source $GITHUB_WORKSPACE/envsetup.sh
-ln -sf $GITHUB_WORKSPACE/ninja .
+tar xf $GITHUB_WORKSPACE/ninja.tar.xz
 
 clone_depth_platform bionic
 clone_depth_platform build/soong
@@ -21,7 +21,7 @@ clone_depth_platform system/logging
 clone_depth_platform system/media
 
 echo "building libmpeg2dec^android_x86_64_static_apex29"
-ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libmpeg2dec,android_x86_64_static_apex29
+prebuilts/build-tools/linux-x86/bin/ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libmpeg2dec,android_x86_64_static_apex29
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/libmpeg2/libmpeg2dec^android_x86_64_static_apex29
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/libmpeg2/libmpeg2dec^android_x86_64_static_apex29.output . $GITHUB_WORKSPACE/artifacts/external/libmpeg2/libmpeg2dec^android_x86_64_static_apex29
 

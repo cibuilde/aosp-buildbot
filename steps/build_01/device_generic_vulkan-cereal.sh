@@ -2,7 +2,7 @@ set -e
 
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 source $GITHUB_WORKSPACE/envsetup.sh
-ln -sf $GITHUB_WORKSPACE/ninja .
+tar xf $GITHUB_WORKSPACE/ninja.tar.xz
 
 clone_depth_platform bionic
 clone_depth device/generic/vulkan-cereal
@@ -20,182 +20,182 @@ clone_depth_platform system/logging
 clone_depth_platform system/media
 
 echo "building gfxstream_angle_stub^android_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja gfxstream_angle_stub,android_x86_64_static
+prebuilts/build-tools/linux-x86/bin/ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja gfxstream_angle_stub,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/device/generic/vulkan-cereal/third-party/angle/gfxstream_angle_stub^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/device/generic/vulkan-cereal/gfxstream_angle_stub^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/device/generic/vulkan-cereal/third-party/angle/gfxstream_angle_stub^android_x86_64_static
 
 echo "building gfxstream_angle_stub^android_x86_64_static_apex10000"
-ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja gfxstream_angle_stub,android_x86_64_static_apex10000
+prebuilts/build-tools/linux-x86/bin/ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja gfxstream_angle_stub,android_x86_64_static_apex10000
 mkdir -p $GITHUB_WORKSPACE/artifacts/device/generic/vulkan-cereal/third-party/angle/gfxstream_angle_stub^android_x86_64_static_apex10000
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/device/generic/vulkan-cereal/gfxstream_angle_stub^android_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/device/generic/vulkan-cereal/third-party/angle/gfxstream_angle_stub^android_x86_64_static_apex10000
 
 echo "building gfxstream_apigen_codec_common^android_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja gfxstream_apigen_codec_common,android_x86_64_static
+prebuilts/build-tools/linux-x86/bin/ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja gfxstream_apigen_codec_common,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/device/generic/vulkan-cereal/stream-servers/apigen-codec-common/gfxstream_apigen_codec_common^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/device/generic/vulkan-cereal/gfxstream_apigen_codec_common^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/device/generic/vulkan-cereal/stream-servers/apigen-codec-common/gfxstream_apigen_codec_common^android_x86_64_static
 
 echo "building gfxstream_apigen_codec_common^android_x86_64_static_apex10000"
-ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja gfxstream_apigen_codec_common,android_x86_64_static_apex10000
+prebuilts/build-tools/linux-x86/bin/ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja gfxstream_apigen_codec_common,android_x86_64_static_apex10000
 mkdir -p $GITHUB_WORKSPACE/artifacts/device/generic/vulkan-cereal/stream-servers/apigen-codec-common/gfxstream_apigen_codec_common^android_x86_64_static_apex10000
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/device/generic/vulkan-cereal/gfxstream_apigen_codec_common^android_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/device/generic/vulkan-cereal/stream-servers/apigen-codec-common/gfxstream_apigen_codec_common^android_x86_64_static_apex10000
 
 echo "building gfxstream_astc_codec^android_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja gfxstream_astc_codec,android_x86_64_static
+prebuilts/build-tools/linux-x86/bin/ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja gfxstream_astc_codec,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/device/generic/vulkan-cereal/third-party/astc-codec/src/decoder/gfxstream_astc_codec^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/device/generic/vulkan-cereal/gfxstream_astc_codec^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/device/generic/vulkan-cereal/third-party/astc-codec/src/decoder/gfxstream_astc_codec^android_x86_64_static
 
 echo "building gfxstream_astc_codec^android_x86_64_static_apex10000"
-ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja gfxstream_astc_codec,android_x86_64_static_apex10000
+prebuilts/build-tools/linux-x86/bin/ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja gfxstream_astc_codec,android_x86_64_static_apex10000
 mkdir -p $GITHUB_WORKSPACE/artifacts/device/generic/vulkan-cereal/third-party/astc-codec/src/decoder/gfxstream_astc_codec^android_x86_64_static_apex10000
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/device/generic/vulkan-cereal/gfxstream_astc_codec^android_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/device/generic/vulkan-cereal/third-party/astc-codec/src/decoder/gfxstream_astc_codec^android_x86_64_static_apex10000
 
 echo "building gfxstream_compressedTextures^android_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja gfxstream_compressedTextures,android_x86_64_static
+prebuilts/build-tools/linux-x86/bin/ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja gfxstream_compressedTextures,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/device/generic/vulkan-cereal/stream-servers/compressedTextureFormats/gfxstream_compressedTextures^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/device/generic/vulkan-cereal/gfxstream_compressedTextures^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/device/generic/vulkan-cereal/stream-servers/compressedTextureFormats/gfxstream_compressedTextures^android_x86_64_static
 
 echo "building gfxstream_compressedTextures^android_x86_64_static_apex10000"
-ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja gfxstream_compressedTextures,android_x86_64_static_apex10000
+prebuilts/build-tools/linux-x86/bin/ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja gfxstream_compressedTextures,android_x86_64_static_apex10000
 mkdir -p $GITHUB_WORKSPACE/artifacts/device/generic/vulkan-cereal/stream-servers/compressedTextureFormats/gfxstream_compressedTextures^android_x86_64_static_apex10000
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/device/generic/vulkan-cereal/gfxstream_compressedTextures^android_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/device/generic/vulkan-cereal/stream-servers/compressedTextureFormats/gfxstream_compressedTextures^android_x86_64_static_apex10000
 
 echo "building gfxstream_dispatch^android_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja gfxstream_dispatch,android_x86_64_static
+prebuilts/build-tools/linux-x86/bin/ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja gfxstream_dispatch,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/device/generic/vulkan-cereal/stream-servers/OpenGLESDispatch/gfxstream_dispatch^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/device/generic/vulkan-cereal/gfxstream_dispatch^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/device/generic/vulkan-cereal/stream-servers/OpenGLESDispatch/gfxstream_dispatch^android_x86_64_static
 
 echo "building gfxstream_dispatch^android_x86_64_static_apex10000"
-ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja gfxstream_dispatch,android_x86_64_static_apex10000
+prebuilts/build-tools/linux-x86/bin/ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja gfxstream_dispatch,android_x86_64_static_apex10000
 mkdir -p $GITHUB_WORKSPACE/artifacts/device/generic/vulkan-cereal/stream-servers/OpenGLESDispatch/gfxstream_dispatch^android_x86_64_static_apex10000
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/device/generic/vulkan-cereal/gfxstream_dispatch^android_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/device/generic/vulkan-cereal/stream-servers/OpenGLESDispatch/gfxstream_dispatch^android_x86_64_static_apex10000
 
 echo "building gfxstream_gles1_dec^android_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja gfxstream_gles1_dec,android_x86_64_static
+prebuilts/build-tools/linux-x86/bin/ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja gfxstream_gles1_dec,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/device/generic/vulkan-cereal/stream-servers/gles1_dec/gfxstream_gles1_dec^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/device/generic/vulkan-cereal/gfxstream_gles1_dec^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/device/generic/vulkan-cereal/stream-servers/gles1_dec/gfxstream_gles1_dec^android_x86_64_static
 
 echo "building gfxstream_gles1_dec^android_x86_64_static_apex10000"
-ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja gfxstream_gles1_dec,android_x86_64_static_apex10000
+prebuilts/build-tools/linux-x86/bin/ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja gfxstream_gles1_dec,android_x86_64_static_apex10000
 mkdir -p $GITHUB_WORKSPACE/artifacts/device/generic/vulkan-cereal/stream-servers/gles1_dec/gfxstream_gles1_dec^android_x86_64_static_apex10000
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/device/generic/vulkan-cereal/gfxstream_gles1_dec^android_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/device/generic/vulkan-cereal/stream-servers/gles1_dec/gfxstream_gles1_dec^android_x86_64_static_apex10000
 
 echo "building gfxstream_gles2_dec^android_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja gfxstream_gles2_dec,android_x86_64_static
+prebuilts/build-tools/linux-x86/bin/ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja gfxstream_gles2_dec,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/device/generic/vulkan-cereal/stream-servers/gles2_dec/gfxstream_gles2_dec^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/device/generic/vulkan-cereal/gfxstream_gles2_dec^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/device/generic/vulkan-cereal/stream-servers/gles2_dec/gfxstream_gles2_dec^android_x86_64_static
 
 echo "building gfxstream_gles2_dec^android_x86_64_static_apex10000"
-ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja gfxstream_gles2_dec,android_x86_64_static_apex10000
+prebuilts/build-tools/linux-x86/bin/ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja gfxstream_gles2_dec,android_x86_64_static_apex10000
 mkdir -p $GITHUB_WORKSPACE/artifacts/device/generic/vulkan-cereal/stream-servers/gles2_dec/gfxstream_gles2_dec^android_x86_64_static_apex10000
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/device/generic/vulkan-cereal/gfxstream_gles2_dec^android_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/device/generic/vulkan-cereal/stream-servers/gles2_dec/gfxstream_gles2_dec^android_x86_64_static_apex10000
 
 echo "building gfxstream_glsnapshot^android_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja gfxstream_glsnapshot,android_x86_64_static
+prebuilts/build-tools/linux-x86/bin/ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja gfxstream_glsnapshot,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/device/generic/vulkan-cereal/stream-servers/libGLSnapshot/gfxstream_glsnapshot^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/device/generic/vulkan-cereal/gfxstream_glsnapshot^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/device/generic/vulkan-cereal/stream-servers/libGLSnapshot/gfxstream_glsnapshot^android_x86_64_static
 
 echo "building gfxstream_glsnapshot^android_x86_64_static_apex10000"
-ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja gfxstream_glsnapshot,android_x86_64_static_apex10000
+prebuilts/build-tools/linux-x86/bin/ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja gfxstream_glsnapshot,android_x86_64_static_apex10000
 mkdir -p $GITHUB_WORKSPACE/artifacts/device/generic/vulkan-cereal/stream-servers/libGLSnapshot/gfxstream_glsnapshot^android_x86_64_static_apex10000
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/device/generic/vulkan-cereal/gfxstream_glsnapshot^android_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/device/generic/vulkan-cereal/stream-servers/libGLSnapshot/gfxstream_glsnapshot^android_x86_64_static_apex10000
 
 echo "building gfxstream_host_common^android_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja gfxstream_host_common,android_x86_64_static
+prebuilts/build-tools/linux-x86/bin/ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja gfxstream_host_common,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/device/generic/vulkan-cereal/host-common/gfxstream_host_common^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/device/generic/vulkan-cereal/gfxstream_host_common^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/device/generic/vulkan-cereal/host-common/gfxstream_host_common^android_x86_64_static
 
 echo "building gfxstream_host_common^android_x86_64_static_apex10000"
-ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja gfxstream_host_common,android_x86_64_static_apex10000
+prebuilts/build-tools/linux-x86/bin/ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja gfxstream_host_common,android_x86_64_static_apex10000
 mkdir -p $GITHUB_WORKSPACE/artifacts/device/generic/vulkan-cereal/host-common/gfxstream_host_common^android_x86_64_static_apex10000
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/device/generic/vulkan-cereal/gfxstream_host_common^android_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/device/generic/vulkan-cereal/host-common/gfxstream_host_common^android_x86_64_static_apex10000
 
 echo "building gfxstream_lz4^android_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja gfxstream_lz4,android_x86_64_static
+prebuilts/build-tools/linux-x86/bin/ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja gfxstream_lz4,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/device/generic/vulkan-cereal/third-party/lz4/gfxstream_lz4^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/device/generic/vulkan-cereal/gfxstream_lz4^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/device/generic/vulkan-cereal/third-party/lz4/gfxstream_lz4^android_x86_64_static
 
 echo "building gfxstream_lz4^android_x86_64_static_apex10000"
-ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja gfxstream_lz4,android_x86_64_static_apex10000
+prebuilts/build-tools/linux-x86/bin/ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja gfxstream_lz4,android_x86_64_static_apex10000
 mkdir -p $GITHUB_WORKSPACE/artifacts/device/generic/vulkan-cereal/third-party/lz4/gfxstream_lz4^android_x86_64_static_apex10000
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/device/generic/vulkan-cereal/gfxstream_lz4^android_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/device/generic/vulkan-cereal/third-party/lz4/gfxstream_lz4^android_x86_64_static_apex10000
 
 echo "building gfxstream_renderControl_dec^android_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja gfxstream_renderControl_dec,android_x86_64_static
+prebuilts/build-tools/linux-x86/bin/ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja gfxstream_renderControl_dec,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/device/generic/vulkan-cereal/stream-servers/renderControl_dec/gfxstream_renderControl_dec^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/device/generic/vulkan-cereal/gfxstream_renderControl_dec^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/device/generic/vulkan-cereal/stream-servers/renderControl_dec/gfxstream_renderControl_dec^android_x86_64_static
 
 echo "building gfxstream_renderControl_dec^android_x86_64_static_apex10000"
-ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja gfxstream_renderControl_dec,android_x86_64_static_apex10000
+prebuilts/build-tools/linux-x86/bin/ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja gfxstream_renderControl_dec,android_x86_64_static_apex10000
 mkdir -p $GITHUB_WORKSPACE/artifacts/device/generic/vulkan-cereal/stream-servers/renderControl_dec/gfxstream_renderControl_dec^android_x86_64_static_apex10000
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/device/generic/vulkan-cereal/gfxstream_renderControl_dec^android_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/device/generic/vulkan-cereal/stream-servers/renderControl_dec/gfxstream_renderControl_dec^android_x86_64_static_apex10000
 
 echo "building gfxstream_translator_egl^android_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja gfxstream_translator_egl,android_x86_64_static
+prebuilts/build-tools/linux-x86/bin/ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja gfxstream_translator_egl,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/device/generic/vulkan-cereal/stream-servers/glestranslator/EGL/gfxstream_translator_egl^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/device/generic/vulkan-cereal/gfxstream_translator_egl^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/device/generic/vulkan-cereal/stream-servers/glestranslator/EGL/gfxstream_translator_egl^android_x86_64_static
 
 echo "building gfxstream_translator_egl^android_x86_64_static_apex10000"
-ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja gfxstream_translator_egl,android_x86_64_static_apex10000
+prebuilts/build-tools/linux-x86/bin/ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja gfxstream_translator_egl,android_x86_64_static_apex10000
 mkdir -p $GITHUB_WORKSPACE/artifacts/device/generic/vulkan-cereal/stream-servers/glestranslator/EGL/gfxstream_translator_egl^android_x86_64_static_apex10000
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/device/generic/vulkan-cereal/gfxstream_translator_egl^android_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/device/generic/vulkan-cereal/stream-servers/glestranslator/EGL/gfxstream_translator_egl^android_x86_64_static_apex10000
 
 echo "building gfxstream_translator_glcommon^android_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja gfxstream_translator_glcommon,android_x86_64_static
+prebuilts/build-tools/linux-x86/bin/ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja gfxstream_translator_glcommon,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/device/generic/vulkan-cereal/stream-servers/glestranslator/GLcommon/gfxstream_translator_glcommon^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/device/generic/vulkan-cereal/gfxstream_translator_glcommon^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/device/generic/vulkan-cereal/stream-servers/glestranslator/GLcommon/gfxstream_translator_glcommon^android_x86_64_static
 
 echo "building gfxstream_translator_glcommon^android_x86_64_static_apex10000"
-ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja gfxstream_translator_glcommon,android_x86_64_static_apex10000
+prebuilts/build-tools/linux-x86/bin/ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja gfxstream_translator_glcommon,android_x86_64_static_apex10000
 mkdir -p $GITHUB_WORKSPACE/artifacts/device/generic/vulkan-cereal/stream-servers/glestranslator/GLcommon/gfxstream_translator_glcommon^android_x86_64_static_apex10000
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/device/generic/vulkan-cereal/gfxstream_translator_glcommon^android_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/device/generic/vulkan-cereal/stream-servers/glestranslator/GLcommon/gfxstream_translator_glcommon^android_x86_64_static_apex10000
 
 echo "building gfxstream_translator_glescm^android_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja gfxstream_translator_glescm,android_x86_64_static
+prebuilts/build-tools/linux-x86/bin/ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja gfxstream_translator_glescm,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/device/generic/vulkan-cereal/stream-servers/glestranslator/GLES_CM/gfxstream_translator_glescm^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/device/generic/vulkan-cereal/gfxstream_translator_glescm^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/device/generic/vulkan-cereal/stream-servers/glestranslator/GLES_CM/gfxstream_translator_glescm^android_x86_64_static
 
 echo "building gfxstream_translator_glescm^android_x86_64_static_apex10000"
-ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja gfxstream_translator_glescm,android_x86_64_static_apex10000
+prebuilts/build-tools/linux-x86/bin/ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja gfxstream_translator_glescm,android_x86_64_static_apex10000
 mkdir -p $GITHUB_WORKSPACE/artifacts/device/generic/vulkan-cereal/stream-servers/glestranslator/GLES_CM/gfxstream_translator_glescm^android_x86_64_static_apex10000
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/device/generic/vulkan-cereal/gfxstream_translator_glescm^android_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/device/generic/vulkan-cereal/stream-servers/glestranslator/GLES_CM/gfxstream_translator_glescm^android_x86_64_static_apex10000
 
 echo "building gfxstream_translator_glesv2^android_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja gfxstream_translator_glesv2,android_x86_64_static
+prebuilts/build-tools/linux-x86/bin/ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja gfxstream_translator_glesv2,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/device/generic/vulkan-cereal/stream-servers/glestranslator/GLES_V2/gfxstream_translator_glesv2^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/device/generic/vulkan-cereal/gfxstream_translator_glesv2^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/device/generic/vulkan-cereal/stream-servers/glestranslator/GLES_V2/gfxstream_translator_glesv2^android_x86_64_static
 
 echo "building gfxstream_translator_glesv2^android_x86_64_static_apex10000"
-ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja gfxstream_translator_glesv2,android_x86_64_static_apex10000
+prebuilts/build-tools/linux-x86/bin/ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja gfxstream_translator_glesv2,android_x86_64_static_apex10000
 mkdir -p $GITHUB_WORKSPACE/artifacts/device/generic/vulkan-cereal/stream-servers/glestranslator/GLES_V2/gfxstream_translator_glesv2^android_x86_64_static_apex10000
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/device/generic/vulkan-cereal/gfxstream_translator_glesv2^android_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/device/generic/vulkan-cereal/stream-servers/glestranslator/GLES_V2/gfxstream_translator_glesv2^android_x86_64_static_apex10000
 
 echo "building gfxstream_vulkan_cereal_host^android_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja gfxstream_vulkan_cereal_host,android_x86_64_static
+prebuilts/build-tools/linux-x86/bin/ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja gfxstream_vulkan_cereal_host,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/device/generic/vulkan-cereal/stream-servers/vulkan/cereal/gfxstream_vulkan_cereal_host^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/device/generic/vulkan-cereal/gfxstream_vulkan_cereal_host^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/device/generic/vulkan-cereal/stream-servers/vulkan/cereal/gfxstream_vulkan_cereal_host^android_x86_64_static
 
 echo "building gfxstream_vulkan_cereal_host^android_x86_64_static_apex10000"
-ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja gfxstream_vulkan_cereal_host,android_x86_64_static_apex10000
+prebuilts/build-tools/linux-x86/bin/ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja gfxstream_vulkan_cereal_host,android_x86_64_static_apex10000
 mkdir -p $GITHUB_WORKSPACE/artifacts/device/generic/vulkan-cereal/stream-servers/vulkan/cereal/gfxstream_vulkan_cereal_host^android_x86_64_static_apex10000
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/device/generic/vulkan-cereal/gfxstream_vulkan_cereal_host^android_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/device/generic/vulkan-cereal/stream-servers/vulkan/cereal/gfxstream_vulkan_cereal_host^android_x86_64_static_apex10000
 
 echo "building gfxstream_vulkan_server^android_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja gfxstream_vulkan_server,android_x86_64_static
+prebuilts/build-tools/linux-x86/bin/ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja gfxstream_vulkan_server,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/device/generic/vulkan-cereal/stream-servers/vulkan/gfxstream_vulkan_server^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/device/generic/vulkan-cereal/gfxstream_vulkan_server^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/device/generic/vulkan-cereal/stream-servers/vulkan/gfxstream_vulkan_server^android_x86_64_static
 
 echo "building gfxstream_vulkan_server^android_x86_64_static_apex10000"
-ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja gfxstream_vulkan_server,android_x86_64_static_apex10000
+prebuilts/build-tools/linux-x86/bin/ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja gfxstream_vulkan_server,android_x86_64_static_apex10000
 mkdir -p $GITHUB_WORKSPACE/artifacts/device/generic/vulkan-cereal/stream-servers/vulkan/gfxstream_vulkan_server^android_x86_64_static_apex10000
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/device/generic/vulkan-cereal/gfxstream_vulkan_server^android_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/device/generic/vulkan-cereal/stream-servers/vulkan/gfxstream_vulkan_server^android_x86_64_static_apex10000
 
 echo "building perfetto-libperfettobase^android_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja perfetto-libperfettobase,android_x86_64_static
+prebuilts/build-tools/linux-x86/bin/ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja perfetto-libperfettobase,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/device/generic/vulkan-cereal/third-party/perfetto/perfetto-libperfettobase^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/device/generic/vulkan-cereal/perfetto-libperfettobase^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/device/generic/vulkan-cereal/third-party/perfetto/perfetto-libperfettobase^android_x86_64_static
 
 echo "building perfetto-libperfettobase^android_x86_64_static_apex10000"
-ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja perfetto-libperfettobase,android_x86_64_static_apex10000
+prebuilts/build-tools/linux-x86/bin/ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja perfetto-libperfettobase,android_x86_64_static_apex10000
 mkdir -p $GITHUB_WORKSPACE/artifacts/device/generic/vulkan-cereal/third-party/perfetto/perfetto-libperfettobase^android_x86_64_static_apex10000
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/device/generic/vulkan-cereal/perfetto-libperfettobase^android_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/device/generic/vulkan-cereal/third-party/perfetto/perfetto-libperfettobase^android_x86_64_static_apex10000
 
