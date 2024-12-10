@@ -3,8 +3,9 @@ export AOSP_PLATFORM_URL="${GIT_AOSP_URL}platform/"
 export BRANCH="android12-gsi"
 
 function clone_depth() {
+  set -x
   local project_path=$1
-  local path_key=${project_path//\//-}
+  local path_key=${project_path//\//_}
   local cache_file="$GITHUB_WORKSPACE/cache/${path_key}.tar.xz"
   local project_name=$project_path
     # Add check for additional arguments
@@ -20,11 +21,13 @@ function clone_depth() {
     echo "Cache miss: Cloning $project_path"
     git clone --depth=1 ${GIT_AOSP_URL}$project_name $project_path -b ${BRANCH}
   fi
+  set +x
 }
 
 function clone_depth_platform() {
+  set -x
   local project_path=$1
-  local path_key=${project_path//\//-}
+  local path_key=${project_path//\//_}
   local cache_file="$GITHUB_WORKSPACE/cache/${path_key}.tar.xz"
   
   if [ -f "$cache_file" ]; then
@@ -35,6 +38,7 @@ function clone_depth_platform() {
     echo "Cache miss: Cloning $project_path"
     git clone --depth=1 ${AOSP_PLATFORM_URL}$1 $1 -b ${BRANCH}
   fi
+  set +x
 }
 
 function sparse_setup() {
@@ -45,8 +49,9 @@ function sparse_setup() {
 }
 
 function clone_sparse() {
+  set -x
   local project_path=$1
-  local path_key=${project_path//\//-}
+  local path_key=${project_path//\//_}
   local cache_file="$GITHUB_WORKSPACE/cache/${path_key}.tar.xz"
   
   if [ -f "$cache_file" ]; then
@@ -55,16 +60,16 @@ function clone_sparse() {
     tar xf "$cache_file" -C "$project_path"
   else
     echo "Cache miss: Cloning $project_path"
-    set -x
     git clone --filter=tree:0 --single-branch --no-tags --sparse ${AOSP_PLATFORM_URL}$1 $1 -b ${BRANCH}
     sparse_setup "$@"
-	#set +x
   fi
+  set +x
 }
 
 function clone_sparse_exclude() {
+  set -x
   local project_path=$1
-  local path_key=${project_path//\//-}
+  local path_key=${project_path//\//_}
   local cache_file="$GITHUB_WORKSPACE/cache/${path_key}.tar.xz"
   
   if [ -f "$cache_file" ]; then
@@ -78,8 +83,8 @@ function clone_sparse_exclude() {
     prj_path=$1
     shift;
     git -C $prj_path sparse-checkout set --no-cone '/*'  "$@"
-	#set +x
   fi
+  set +x
 }
 
 function clone_project() {
