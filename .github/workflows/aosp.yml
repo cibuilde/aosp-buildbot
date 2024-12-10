@@ -1429,7 +1429,7 @@ jobs:
         restore-keys: prebuilts_clang_host_linux-x86@${ env.branch }
 
     - name: Restore Cache prebuilts_gcc_linux-x86_aarch64_aarch64-linux-android-4.9.tar.xz
-      id: prebuilts_gcc_linux-x86_aarch64_aarch64-linux-android-4.9
+      id: prebuilts_gcc_linux-x86_aarch64_aarch64-linux-android-4-9
       uses: actions/cache@v4
       with:
         path: cache/prebuilts_gcc_linux-x86_aarch64_aarch64-linux-android-4.9.tar.xz
@@ -1437,7 +1437,7 @@ jobs:
         restore-keys: prebuilts_gcc_linux-x86_aarch64_aarch64-linux-android-4.9@${ env.branch }
 
     - name: Restore Cache prebuilts_gcc_linux-x86_arm_arm-linux-androideabi-4.9.tar.xz
-      id: prebuilts_gcc_linux-x86_arm_arm-linux-androideabi-4.9
+      id: prebuilts_gcc_linux-x86_arm_arm-linux-androideabi-4-9
       uses: actions/cache@v4
       with:
         path: cache/prebuilts_gcc_linux-x86_arm_arm-linux-androideabi-4.9.tar.xz
