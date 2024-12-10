@@ -12,7 +12,7 @@ jobs:
     - name: Checkout
       uses: actions/checkout@main
     - name: Install ninja
-      uses: sudo apt update && sudo apt install -y ninja-build
+      run: sudo apt update && sudo apt install -y ninja-build
     - name: Restore Cache art.tar.xz
       id: art
       uses: actions/cache@v4
