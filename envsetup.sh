@@ -76,11 +76,11 @@ function clone_sparse_exclude() {
 }
 
 function clone_project() {
-  branch=$1
-  project_name=$2
-  project_path=$3
+  branch=$BRANCH
+  project_name=$1
+  project_path=$2
   shift 3
-  mkdir -p ${project_path} && pushd ${project_path}
+  mkdir -p ${project_path} && cd ${project_path}
   git init
   git config --unset-all core.bare
   git config remote.origin.url "https://android.googlesource.com/${project_name}"
@@ -90,7 +90,7 @@ function clone_project() {
   git fetch origin --filter=tree:0 --depth=1 --no-tags --progress "+refs/heads/${branch}:refs/remotes/origin/${branch}"
   echo $(git rev-parse --verify "refs/remotes/origin/${branch}^0") > .git/HEAD
   git read-tree --reset -u -v HEAD
-  popd
+  cd -
 }
 
 function download_release() {
@@ -112,4 +112,3 @@ function clean_out_intermediates() {
     find out/soong/.intermediates/prebuiltlibs -maxdepth 1 -mindepth 1 ! -name 'bionic' -type d -exec rm -rf {} +
   fi
 }
-
