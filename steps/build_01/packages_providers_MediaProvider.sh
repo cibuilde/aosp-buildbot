@@ -2,8 +2,9 @@ set -e
 
 df -h
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
-source $GITHUB_WORKSPACE/envsetup.sh
 tar xf $GITHUB_WORKSPACE/ninja.tar.xz
+
+mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86 prebuilts/clang/host/linux-x86
 
 clone_depth_platform packages/providers/MediaProvider
 
@@ -19,7 +20,6 @@ tar cfJ packages_providers_MediaProvider.tar.xz -C $GITHUB_WORKSPACE/artifacts/p
 
 du -ah -d1
 
-mkdir -p $GITHUB_WORKSPACE/cache
 if [ ! -f "$GITHUB_WORKSPACE/cache/packages_providers_MediaProvider.tar.xz" ]; then
   echo "Compressing packages/providers/MediaProvider -> packages_providers_MediaProvider.tar.xz"
   tar cfJ $GITHUB_WORKSPACE/cache/packages_providers_MediaProvider.tar.xz -C $GITHUB_WORKSPACE/aosp/packages/providers/MediaProvider/ .

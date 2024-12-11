@@ -2,8 +2,9 @@ set -e
 
 df -h
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
-source $GITHUB_WORKSPACE/envsetup.sh
 tar xf $GITHUB_WORKSPACE/ninja.tar.xz
+
+mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86 prebuilts/clang/host/linux-x86
 
 clone_depth_platform external/google-fonts/source-sans-pro
 
@@ -44,7 +45,6 @@ tar cfJ external_google-fonts_source-sans-pro.tar.xz -C $GITHUB_WORKSPACE/artifa
 
 du -ah -d1
 
-mkdir -p $GITHUB_WORKSPACE/cache
 if [ ! -f "$GITHUB_WORKSPACE/cache/external_google-fonts_source-sans-pro.tar.xz" ]; then
   echo "Compressing external/google-fonts/source-sans-pro -> external_google-fonts_source-sans-pro.tar.xz"
   tar cfJ $GITHUB_WORKSPACE/cache/external_google-fonts_source-sans-pro.tar.xz -C $GITHUB_WORKSPACE/aosp/external/google-fonts/source-sans-pro/ .

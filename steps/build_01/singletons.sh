@@ -2,8 +2,9 @@ set -e
 
 df -h
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
-source $GITHUB_WORKSPACE/envsetup.sh
 tar xf $GITHUB_WORKSPACE/ninja.tar.xz
+
+mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86 prebuilts/clang/host/linux-x86
 
 clone_depth_platform art
 clone_depth_platform packages/modules/vndk
@@ -61,17 +62,14 @@ tar cfJ singletons.tar.xz -C $GITHUB_WORKSPACE/artifacts/singletons/ .
 
 du -ah -d1
 
-mkdir -p $GITHUB_WORKSPACE/cache
 if [ ! -f "$GITHUB_WORKSPACE/cache/art.tar.xz" ]; then
   echo "Compressing art -> art.tar.xz"
   tar cfJ $GITHUB_WORKSPACE/cache/art.tar.xz -C $GITHUB_WORKSPACE/aosp/art/ .
 fi
-mkdir -p $GITHUB_WORKSPACE/cache
 if [ ! -f "$GITHUB_WORKSPACE/cache/packages_modules_vndk.tar.xz" ]; then
   echo "Compressing packages/modules/vndk -> packages_modules_vndk.tar.xz"
   tar cfJ $GITHUB_WORKSPACE/cache/packages_modules_vndk.tar.xz -C $GITHUB_WORKSPACE/aosp/packages/modules/vndk/ .
 fi
-mkdir -p $GITHUB_WORKSPACE/cache
 if [ ! -f "$GITHUB_WORKSPACE/cache/singletons.tar.xz" ]; then
   echo "Compressing singletons -> singletons.tar.xz"
   tar cfJ $GITHUB_WORKSPACE/cache/singletons.tar.xz -C $GITHUB_WORKSPACE/aosp/singletons/ .

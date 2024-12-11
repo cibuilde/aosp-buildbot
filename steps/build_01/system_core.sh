@@ -2,8 +2,9 @@ set -e
 
 df -h
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
-source $GITHUB_WORKSPACE/envsetup.sh
 tar xf $GITHUB_WORKSPACE/ninja.tar.xz
+
+mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86 prebuilts/clang/host/linux-x86
 
 clone_depth_platform art
 clone_depth_platform bionic
@@ -25,7 +26,6 @@ clone_depth_platform hardware/libhardware_legacy
 clone_depth_platform hardware/ril
 clone_depth_platform packages/modules/StatsD
 clone_sparse prebuilts/clang-tools linux-x86/bin linux-x86/lib64/clang
-clone_sparse prebuilts/clang/host/linux-x86 clang-r416183b1 clang-r416183b soong
 clone_depth_platform prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9
 clone_depth_platform prebuilts/gcc/linux-x86/arm/arm-linux-androideabi-4.9
 clone_sparse prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8 sysroot lib/gcc/x86_64-linux/4.8.3 x86_64-linux/lib64 x86_64-linux/lib32
@@ -751,167 +751,134 @@ tar cfJ system_core.tar.xz -C $GITHUB_WORKSPACE/artifacts/system/core/ .
 
 du -ah -d1
 
-mkdir -p $GITHUB_WORKSPACE/cache
 if [ ! -f "$GITHUB_WORKSPACE/cache/art.tar.xz" ]; then
   echo "Compressing art -> art.tar.xz"
   tar cfJ $GITHUB_WORKSPACE/cache/art.tar.xz -C $GITHUB_WORKSPACE/aosp/art/ .
 fi
-mkdir -p $GITHUB_WORKSPACE/cache
 if [ ! -f "$GITHUB_WORKSPACE/cache/bionic.tar.xz" ]; then
   echo "Compressing bionic -> bionic.tar.xz"
   tar cfJ $GITHUB_WORKSPACE/cache/bionic.tar.xz -C $GITHUB_WORKSPACE/aosp/bionic/ .
 fi
-mkdir -p $GITHUB_WORKSPACE/cache
 if [ ! -f "$GITHUB_WORKSPACE/cache/external_avb.tar.xz" ]; then
   echo "Compressing external/avb -> external_avb.tar.xz"
   tar cfJ $GITHUB_WORKSPACE/cache/external_avb.tar.xz -C $GITHUB_WORKSPACE/aosp/external/avb/ .
 fi
-mkdir -p $GITHUB_WORKSPACE/cache
 if [ ! -f "$GITHUB_WORKSPACE/cache/external_boringssl.tar.xz" ]; then
   echo "Compressing external/boringssl -> external_boringssl.tar.xz"
   tar cfJ $GITHUB_WORKSPACE/cache/external_boringssl.tar.xz -C $GITHUB_WORKSPACE/aosp/external/boringssl/ .
 fi
-mkdir -p $GITHUB_WORKSPACE/cache
 if [ ! -f "$GITHUB_WORKSPACE/cache/external_brotli.tar.xz" ]; then
   echo "Compressing external/brotli -> external_brotli.tar.xz"
   tar cfJ $GITHUB_WORKSPACE/cache/external_brotli.tar.xz -C $GITHUB_WORKSPACE/aosp/external/brotli/ .
 fi
-mkdir -p $GITHUB_WORKSPACE/cache
 if [ ! -f "$GITHUB_WORKSPACE/cache/external_compiler-rt.tar.xz" ]; then
   echo "Compressing external/compiler-rt -> external_compiler-rt.tar.xz"
   tar cfJ $GITHUB_WORKSPACE/cache/external_compiler-rt.tar.xz -C $GITHUB_WORKSPACE/aosp/external/compiler-rt/ .
 fi
-mkdir -p $GITHUB_WORKSPACE/cache
 if [ ! -f "$GITHUB_WORKSPACE/cache/external_e2fsprogs.tar.xz" ]; then
   echo "Compressing external/e2fsprogs -> external_e2fsprogs.tar.xz"
   tar cfJ $GITHUB_WORKSPACE/cache/external_e2fsprogs.tar.xz -C $GITHUB_WORKSPACE/aosp/external/e2fsprogs/ .
 fi
-mkdir -p $GITHUB_WORKSPACE/cache
 if [ ! -f "$GITHUB_WORKSPACE/cache/external_fmtlib.tar.xz" ]; then
   echo "Compressing external/fmtlib -> external_fmtlib.tar.xz"
   tar cfJ $GITHUB_WORKSPACE/cache/external_fmtlib.tar.xz -C $GITHUB_WORKSPACE/aosp/external/fmtlib/ .
 fi
-mkdir -p $GITHUB_WORKSPACE/cache
 if [ ! -f "$GITHUB_WORKSPACE/cache/external_googletest.tar.xz" ]; then
   echo "Compressing external/googletest -> external_googletest.tar.xz"
   tar cfJ $GITHUB_WORKSPACE/cache/external_googletest.tar.xz -C $GITHUB_WORKSPACE/aosp/external/googletest/ .
 fi
-mkdir -p $GITHUB_WORKSPACE/cache
 if [ ! -f "$GITHUB_WORKSPACE/cache/external_jsoncpp.tar.xz" ]; then
   echo "Compressing external/jsoncpp -> external_jsoncpp.tar.xz"
   tar cfJ $GITHUB_WORKSPACE/cache/external_jsoncpp.tar.xz -C $GITHUB_WORKSPACE/aosp/external/jsoncpp/ .
 fi
-mkdir -p $GITHUB_WORKSPACE/cache
 if [ ! -f "$GITHUB_WORKSPACE/cache/external_libcxx.tar.xz" ]; then
   echo "Compressing external/libcxx -> external_libcxx.tar.xz"
   tar cfJ $GITHUB_WORKSPACE/cache/external_libcxx.tar.xz -C $GITHUB_WORKSPACE/aosp/external/libcxx/ .
 fi
-mkdir -p $GITHUB_WORKSPACE/cache
 if [ ! -f "$GITHUB_WORKSPACE/cache/external_libcxxabi.tar.xz" ]; then
   echo "Compressing external/libcxxabi -> external_libcxxabi.tar.xz"
   tar cfJ $GITHUB_WORKSPACE/cache/external_libcxxabi.tar.xz -C $GITHUB_WORKSPACE/aosp/external/libcxxabi/ .
 fi
-mkdir -p $GITHUB_WORKSPACE/cache
 if [ ! -f "$GITHUB_WORKSPACE/cache/external_zlib.tar.xz" ]; then
   echo "Compressing external/zlib -> external_zlib.tar.xz"
   tar cfJ $GITHUB_WORKSPACE/cache/external_zlib.tar.xz -C $GITHUB_WORKSPACE/aosp/external/zlib/ .
 fi
-mkdir -p $GITHUB_WORKSPACE/cache
 if [ ! -f "$GITHUB_WORKSPACE/cache/frameworks_av.tar.xz" ]; then
   echo "Compressing frameworks/av -> frameworks_av.tar.xz"
   tar cfJ $GITHUB_WORKSPACE/cache/frameworks_av.tar.xz -C $GITHUB_WORKSPACE/aosp/frameworks/av/ .
 fi
-mkdir -p $GITHUB_WORKSPACE/cache
 if [ ! -f "$GITHUB_WORKSPACE/cache/frameworks_native.tar.xz" ]; then
   echo "Compressing frameworks/native -> frameworks_native.tar.xz"
   tar cfJ $GITHUB_WORKSPACE/cache/frameworks_native.tar.xz -C $GITHUB_WORKSPACE/aosp/frameworks/native/ .
 fi
-mkdir -p $GITHUB_WORKSPACE/cache
 if [ ! -f "$GITHUB_WORKSPACE/cache/hardware_libhardware.tar.xz" ]; then
   echo "Compressing hardware/libhardware -> hardware_libhardware.tar.xz"
   tar cfJ $GITHUB_WORKSPACE/cache/hardware_libhardware.tar.xz -C $GITHUB_WORKSPACE/aosp/hardware/libhardware/ .
 fi
-mkdir -p $GITHUB_WORKSPACE/cache
 if [ ! -f "$GITHUB_WORKSPACE/cache/hardware_libhardware_legacy.tar.xz" ]; then
   echo "Compressing hardware/libhardware_legacy -> hardware_libhardware_legacy.tar.xz"
   tar cfJ $GITHUB_WORKSPACE/cache/hardware_libhardware_legacy.tar.xz -C $GITHUB_WORKSPACE/aosp/hardware/libhardware_legacy/ .
 fi
-mkdir -p $GITHUB_WORKSPACE/cache
 if [ ! -f "$GITHUB_WORKSPACE/cache/hardware_ril.tar.xz" ]; then
   echo "Compressing hardware/ril -> hardware_ril.tar.xz"
   tar cfJ $GITHUB_WORKSPACE/cache/hardware_ril.tar.xz -C $GITHUB_WORKSPACE/aosp/hardware/ril/ .
 fi
-mkdir -p $GITHUB_WORKSPACE/cache
 if [ ! -f "$GITHUB_WORKSPACE/cache/packages_modules_StatsD.tar.xz" ]; then
   echo "Compressing packages/modules/StatsD -> packages_modules_StatsD.tar.xz"
   tar cfJ $GITHUB_WORKSPACE/cache/packages_modules_StatsD.tar.xz -C $GITHUB_WORKSPACE/aosp/packages/modules/StatsD/ .
 fi
-mkdir -p $GITHUB_WORKSPACE/cache
 if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_clang-tools.tar.xz" ]; then
   echo "Compressing prebuilts/clang-tools -> prebuilts_clang-tools.tar.xz"
   tar cfJ $GITHUB_WORKSPACE/cache/prebuilts_clang-tools.tar.xz -C $GITHUB_WORKSPACE/aosp/prebuilts/clang-tools/ .
 fi
-mkdir -p $GITHUB_WORKSPACE/cache
 if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_clang_host_linux-x86.tar.xz" ]; then
   echo "Compressing prebuilts/clang/host/linux-x86 -> prebuilts_clang_host_linux-x86.tar.xz"
   tar cfJ $GITHUB_WORKSPACE/cache/prebuilts_clang_host_linux-x86.tar.xz -C $GITHUB_WORKSPACE/aosp/prebuilts/clang/host/linux-x86/ .
 fi
-mkdir -p $GITHUB_WORKSPACE/cache
 if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_gcc_linux-x86_aarch64_aarch64-linux-android-4.9.tar.xz" ]; then
   echo "Compressing prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9 -> prebuilts_gcc_linux-x86_aarch64_aarch64-linux-android-4.9.tar.xz"
   tar cfJ $GITHUB_WORKSPACE/cache/prebuilts_gcc_linux-x86_aarch64_aarch64-linux-android-4.9.tar.xz -C $GITHUB_WORKSPACE/aosp/prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9/ .
 fi
-mkdir -p $GITHUB_WORKSPACE/cache
 if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_gcc_linux-x86_arm_arm-linux-androideabi-4.9.tar.xz" ]; then
   echo "Compressing prebuilts/gcc/linux-x86/arm/arm-linux-androideabi-4.9 -> prebuilts_gcc_linux-x86_arm_arm-linux-androideabi-4.9.tar.xz"
   tar cfJ $GITHUB_WORKSPACE/cache/prebuilts_gcc_linux-x86_arm_arm-linux-androideabi-4.9.tar.xz -C $GITHUB_WORKSPACE/aosp/prebuilts/gcc/linux-x86/arm/arm-linux-androideabi-4.9/ .
 fi
-mkdir -p $GITHUB_WORKSPACE/cache
 if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_gcc_linux-x86_host_x86_64-linux-glibc2.17-4.8.tar.xz" ]; then
   echo "Compressing prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8 -> prebuilts_gcc_linux-x86_host_x86_64-linux-glibc2.17-4.8.tar.xz"
   tar cfJ $GITHUB_WORKSPACE/cache/prebuilts_gcc_linux-x86_host_x86_64-linux-glibc2.17-4.8.tar.xz -C $GITHUB_WORKSPACE/aosp/prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8/ .
 fi
-mkdir -p $GITHUB_WORKSPACE/cache
 if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_gcc_linux-x86_x86_x86_64-linux-android-4.9.tar.xz" ]; then
   echo "Compressing prebuilts/gcc/linux-x86/x86/x86_64-linux-android-4.9 -> prebuilts_gcc_linux-x86_x86_x86_64-linux-android-4.9.tar.xz"
   tar cfJ $GITHUB_WORKSPACE/cache/prebuilts_gcc_linux-x86_x86_x86_64-linux-android-4.9.tar.xz -C $GITHUB_WORKSPACE/aosp/prebuilts/gcc/linux-x86/x86/x86_64-linux-android-4.9/ .
 fi
-mkdir -p $GITHUB_WORKSPACE/cache
 if [ ! -f "$GITHUB_WORKSPACE/cache/system_core.tar.xz" ]; then
   echo "Compressing system/core -> system_core.tar.xz"
   tar cfJ $GITHUB_WORKSPACE/cache/system_core.tar.xz -C $GITHUB_WORKSPACE/aosp/system/core/ .
 fi
-mkdir -p $GITHUB_WORKSPACE/cache
 if [ ! -f "$GITHUB_WORKSPACE/cache/system_extras.tar.xz" ]; then
   echo "Compressing system/extras -> system_extras.tar.xz"
   tar cfJ $GITHUB_WORKSPACE/cache/system_extras.tar.xz -C $GITHUB_WORKSPACE/aosp/system/extras/ .
 fi
-mkdir -p $GITHUB_WORKSPACE/cache
 if [ ! -f "$GITHUB_WORKSPACE/cache/system_gsid.tar.xz" ]; then
   echo "Compressing system/gsid -> system_gsid.tar.xz"
   tar cfJ $GITHUB_WORKSPACE/cache/system_gsid.tar.xz -C $GITHUB_WORKSPACE/aosp/system/gsid/ .
 fi
-mkdir -p $GITHUB_WORKSPACE/cache
 if [ ! -f "$GITHUB_WORKSPACE/cache/system_libbase.tar.xz" ]; then
   echo "Compressing system/libbase -> system_libbase.tar.xz"
   tar cfJ $GITHUB_WORKSPACE/cache/system_libbase.tar.xz -C $GITHUB_WORKSPACE/aosp/system/libbase/ .
 fi
-mkdir -p $GITHUB_WORKSPACE/cache
 if [ ! -f "$GITHUB_WORKSPACE/cache/system_libprocinfo.tar.xz" ]; then
   echo "Compressing system/libprocinfo -> system_libprocinfo.tar.xz"
   tar cfJ $GITHUB_WORKSPACE/cache/system_libprocinfo.tar.xz -C $GITHUB_WORKSPACE/aosp/system/libprocinfo/ .
 fi
-mkdir -p $GITHUB_WORKSPACE/cache
 if [ ! -f "$GITHUB_WORKSPACE/cache/system_logging.tar.xz" ]; then
   echo "Compressing system/logging -> system_logging.tar.xz"
   tar cfJ $GITHUB_WORKSPACE/cache/system_logging.tar.xz -C $GITHUB_WORKSPACE/aosp/system/logging/ .
 fi
-mkdir -p $GITHUB_WORKSPACE/cache
 if [ ! -f "$GITHUB_WORKSPACE/cache/system_media.tar.xz" ]; then
   echo "Compressing system/media -> system_media.tar.xz"
   tar cfJ $GITHUB_WORKSPACE/cache/system_media.tar.xz -C $GITHUB_WORKSPACE/aosp/system/media/ .
 fi
-mkdir -p $GITHUB_WORKSPACE/cache
 if [ ! -f "$GITHUB_WORKSPACE/cache/system_unwinding.tar.xz" ]; then
   echo "Compressing system/unwinding -> system_unwinding.tar.xz"
   tar cfJ $GITHUB_WORKSPACE/cache/system_unwinding.tar.xz -C $GITHUB_WORKSPACE/aosp/system/unwinding/ .

@@ -2,12 +2,12 @@ set -e
 
 df -h
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
-source $GITHUB_WORKSPACE/envsetup.sh
 tar xf $GITHUB_WORKSPACE/ninja.tar.xz
+
+mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86 prebuilts/clang/host/linux-x86
 
 clone_depth_platform bionic
 clone_depth_platform packages/modules/Connectivity
-clone_sparse prebuilts/clang/host/linux-x86 clang-r416183b1 clang-r416183b soong
 clone_depth_platform system/bpf
 clone_depth_platform system/core
 
@@ -28,27 +28,22 @@ tar cfJ packages_modules_Connectivity.tar.xz -C $GITHUB_WORKSPACE/artifacts/pack
 
 du -ah -d1
 
-mkdir -p $GITHUB_WORKSPACE/cache
 if [ ! -f "$GITHUB_WORKSPACE/cache/bionic.tar.xz" ]; then
   echo "Compressing bionic -> bionic.tar.xz"
   tar cfJ $GITHUB_WORKSPACE/cache/bionic.tar.xz -C $GITHUB_WORKSPACE/aosp/bionic/ .
 fi
-mkdir -p $GITHUB_WORKSPACE/cache
 if [ ! -f "$GITHUB_WORKSPACE/cache/packages_modules_Connectivity.tar.xz" ]; then
   echo "Compressing packages/modules/Connectivity -> packages_modules_Connectivity.tar.xz"
   tar cfJ $GITHUB_WORKSPACE/cache/packages_modules_Connectivity.tar.xz -C $GITHUB_WORKSPACE/aosp/packages/modules/Connectivity/ .
 fi
-mkdir -p $GITHUB_WORKSPACE/cache
 if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_clang_host_linux-x86.tar.xz" ]; then
   echo "Compressing prebuilts/clang/host/linux-x86 -> prebuilts_clang_host_linux-x86.tar.xz"
   tar cfJ $GITHUB_WORKSPACE/cache/prebuilts_clang_host_linux-x86.tar.xz -C $GITHUB_WORKSPACE/aosp/prebuilts/clang/host/linux-x86/ .
 fi
-mkdir -p $GITHUB_WORKSPACE/cache
 if [ ! -f "$GITHUB_WORKSPACE/cache/system_bpf.tar.xz" ]; then
   echo "Compressing system/bpf -> system_bpf.tar.xz"
   tar cfJ $GITHUB_WORKSPACE/cache/system_bpf.tar.xz -C $GITHUB_WORKSPACE/aosp/system/bpf/ .
 fi
-mkdir -p $GITHUB_WORKSPACE/cache
 if [ ! -f "$GITHUB_WORKSPACE/cache/system_core.tar.xz" ]; then
   echo "Compressing system/core -> system_core.tar.xz"
   tar cfJ $GITHUB_WORKSPACE/cache/system_core.tar.xz -C $GITHUB_WORKSPACE/aosp/system/core/ .

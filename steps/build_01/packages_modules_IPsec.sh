@@ -2,8 +2,9 @@ set -e
 
 df -h
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
-source $GITHUB_WORKSPACE/envsetup.sh
 tar xf $GITHUB_WORKSPACE/ninja.tar.xz
+
+mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86 prebuilts/clang/host/linux-x86
 
 clone_depth_platform packages/modules/IPsec
 
@@ -19,7 +20,6 @@ tar cfJ packages_modules_IPsec.tar.xz -C $GITHUB_WORKSPACE/artifacts/packages/mo
 
 du -ah -d1
 
-mkdir -p $GITHUB_WORKSPACE/cache
 if [ ! -f "$GITHUB_WORKSPACE/cache/packages_modules_IPsec.tar.xz" ]; then
   echo "Compressing packages/modules/IPsec -> packages_modules_IPsec.tar.xz"
   tar cfJ $GITHUB_WORKSPACE/cache/packages_modules_IPsec.tar.xz -C $GITHUB_WORKSPACE/aosp/packages/modules/IPsec/ .

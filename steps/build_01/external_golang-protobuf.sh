@@ -2,8 +2,9 @@ set -e
 
 df -h
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
-source $GITHUB_WORKSPACE/envsetup.sh
 tar xf $GITHUB_WORKSPACE/ninja.tar.xz
+
+mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86 prebuilts/clang/host/linux-x86
 
 clone_depth_platform external/golang-protobuf
 clone_depth_platform prebuilts/go/linux-x86
@@ -20,12 +21,10 @@ tar cfJ external_golang-protobuf.tar.xz -C $GITHUB_WORKSPACE/artifacts/external/
 
 du -ah -d1
 
-mkdir -p $GITHUB_WORKSPACE/cache
 if [ ! -f "$GITHUB_WORKSPACE/cache/external_golang-protobuf.tar.xz" ]; then
   echo "Compressing external/golang-protobuf -> external_golang-protobuf.tar.xz"
   tar cfJ $GITHUB_WORKSPACE/cache/external_golang-protobuf.tar.xz -C $GITHUB_WORKSPACE/aosp/external/golang-protobuf/ .
 fi
-mkdir -p $GITHUB_WORKSPACE/cache
 if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_go_linux-x86.tar.xz" ]; then
   echo "Compressing prebuilts/go/linux-x86 -> prebuilts_go_linux-x86.tar.xz"
   tar cfJ $GITHUB_WORKSPACE/cache/prebuilts_go_linux-x86.tar.xz -C $GITHUB_WORKSPACE/aosp/prebuilts/go/linux-x86/ .

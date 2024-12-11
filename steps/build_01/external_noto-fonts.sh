@@ -2,8 +2,9 @@ set -e
 
 df -h
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
-source $GITHUB_WORKSPACE/envsetup.sh
 tar xf $GITHUB_WORKSPACE/ninja.tar.xz
+
+mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86 prebuilts/clang/host/linux-x86
 
 clone_depth_platform art
 clone_depth_platform external/noto-fonts
@@ -965,12 +966,10 @@ tar cfJ external_noto-fonts.tar.xz -C $GITHUB_WORKSPACE/artifacts/external/noto-
 
 du -ah -d1
 
-mkdir -p $GITHUB_WORKSPACE/cache
 if [ ! -f "$GITHUB_WORKSPACE/cache/art.tar.xz" ]; then
   echo "Compressing art -> art.tar.xz"
   tar cfJ $GITHUB_WORKSPACE/cache/art.tar.xz -C $GITHUB_WORKSPACE/aosp/art/ .
 fi
-mkdir -p $GITHUB_WORKSPACE/cache
 if [ ! -f "$GITHUB_WORKSPACE/cache/external_noto-fonts.tar.xz" ]; then
   echo "Compressing external/noto-fonts -> external_noto-fonts.tar.xz"
   tar cfJ $GITHUB_WORKSPACE/cache/external_noto-fonts.tar.xz -C $GITHUB_WORKSPACE/aosp/external/noto-fonts/ .

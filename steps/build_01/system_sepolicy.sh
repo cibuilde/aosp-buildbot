@@ -2,8 +2,9 @@ set -e
 
 df -h
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
-source $GITHUB_WORKSPACE/envsetup.sh
 tar xf $GITHUB_WORKSPACE/ninja.tar.xz
+
+mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86 prebuilts/clang/host/linux-x86
 
 clone_depth_platform art
 clone_depth device/google/cuttlefish
@@ -192,22 +193,18 @@ tar cfJ system_sepolicy.tar.xz -C $GITHUB_WORKSPACE/artifacts/system/sepolicy/ .
 
 du -ah -d1
 
-mkdir -p $GITHUB_WORKSPACE/cache
 if [ ! -f "$GITHUB_WORKSPACE/cache/art.tar.xz" ]; then
   echo "Compressing art -> art.tar.xz"
   tar cfJ $GITHUB_WORKSPACE/cache/art.tar.xz -C $GITHUB_WORKSPACE/aosp/art/ .
 fi
-mkdir -p $GITHUB_WORKSPACE/cache
 if [ ! -f "$GITHUB_WORKSPACE/cache/device_google_cuttlefish.tar.xz" ]; then
   echo "Compressing device/google/cuttlefish -> device_google_cuttlefish.tar.xz"
   tar cfJ $GITHUB_WORKSPACE/cache/device_google_cuttlefish.tar.xz -C $GITHUB_WORKSPACE/aosp/device/google/cuttlefish/ .
 fi
-mkdir -p $GITHUB_WORKSPACE/cache
 if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_build-tools.tar.xz" ]; then
   echo "Compressing prebuilts/build-tools -> prebuilts_build-tools.tar.xz"
   tar cfJ $GITHUB_WORKSPACE/cache/prebuilts_build-tools.tar.xz -C $GITHUB_WORKSPACE/aosp/prebuilts/build-tools/ .
 fi
-mkdir -p $GITHUB_WORKSPACE/cache
 if [ ! -f "$GITHUB_WORKSPACE/cache/system_sepolicy.tar.xz" ]; then
   echo "Compressing system/sepolicy -> system_sepolicy.tar.xz"
   tar cfJ $GITHUB_WORKSPACE/cache/system_sepolicy.tar.xz -C $GITHUB_WORKSPACE/aosp/system/sepolicy/ .

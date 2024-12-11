@@ -1,6 +1,6 @@
 export GIT_AOSP_URL="https://android.googlesource.com/"
 export AOSP_PLATFORM_URL="${GIT_AOSP_URL}platform/"
-export BRANCH="android12-gsi"
+export BRANCH="android-12.0.0_r1"
 
 function clone_depth() {
   #set -x
@@ -78,7 +78,7 @@ function clone_sparse_exclude() {
     tar xf "$cache_file" -C "$project_path"
   else
     echo "Cache miss: Cloning $project_path"
-    set -x
+    #set -x
     git clone --filter=tree:0 --single-branch --no-tags --sparse ${AOSP_PLATFORM_URL}$1 $1 -b ${BRANCH}
     prj_path=$1
     shift;
