@@ -18,7 +18,7 @@ ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja RFFstd_501.bmd,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/neven/RFFstd_501.bmd^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/neven/RFFstd_501.bmd^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/neven/RFFstd_501.bmd^android_x86_64
 
-rm -rf aosp
+rm -rf out
 
 cd $GITHUB_WORKSPACE/
 tar cfJ external_neven.tar.xz -C $GITHUB_WORKSPACE/artifacts/external/neven/ .

@@ -13,7 +13,7 @@ ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libmodules-utils-build,android_x
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/libs/modules-utils/build/libmodules-utils-build^android_x86_64_static_apex30
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/frameworks/libs/modules-utils/libmodules-utils-build^android_x86_64_static_apex30.output . $GITHUB_WORKSPACE/artifacts/frameworks/libs/modules-utils/build/libmodules-utils-build^android_x86_64_static_apex30
 
-rm -rf aosp
+rm -rf out
 
 cd $GITHUB_WORKSPACE/
 tar cfJ frameworks_libs_modules-utils.tar.xz -C $GITHUB_WORKSPACE/artifacts/frameworks/libs/modules-utils/ .

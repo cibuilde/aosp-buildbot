@@ -13,7 +13,7 @@ ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja CarroisGothicSC-Regular.ttf,andr
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/google-fonts/carrois-gothic-sc/CarroisGothicSC-Regular.ttf^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/google-fonts/carrois-gothic-sc/CarroisGothicSC-Regular.ttf^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/google-fonts/carrois-gothic-sc/CarroisGothicSC-Regular.ttf^android_x86_64
 
-rm -rf aosp
+rm -rf out
 
 cd $GITHUB_WORKSPACE/
 tar cfJ external_google-fonts_carrois-gothic-sc.tar.xz -C $GITHUB_WORKSPACE/artifacts/external/google-fonts/carrois-gothic-sc/ .

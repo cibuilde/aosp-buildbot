@@ -35,7 +35,7 @@ ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libgflags,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/gflags/libgflags^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/gflags/libgflags^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/gflags/libgflags^android_x86_64_static
 
-rm -rf aosp
+rm -rf out
 
 cd $GITHUB_WORKSPACE/
 tar cfJ external_gflags.tar.xz -C $GITHUB_WORKSPACE/artifacts/external/gflags/ .

@@ -202,7 +202,7 @@ ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja perfetto-libperfettobase,android
 mkdir -p $GITHUB_WORKSPACE/artifacts/device/generic/vulkan-cereal/third-party/perfetto/perfetto-libperfettobase^android_x86_64_static_apex10000
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/device/generic/vulkan-cereal/perfetto-libperfettobase^android_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/device/generic/vulkan-cereal/third-party/perfetto/perfetto-libperfettobase^android_x86_64_static_apex10000
 
-rm -rf aosp
+rm -rf out
 
 cd $GITHUB_WORKSPACE/
 tar cfJ device_generic_vulkan-cereal.tar.xz -C $GITHUB_WORKSPACE/artifacts/device/generic/vulkan-cereal/ .

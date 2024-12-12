@@ -27,7 +27,7 @@ ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libwificond_nl,android_x86_64_st
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/connectivity/wificond/libwificond_nl^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/connectivity/wificond/libwificond_nl^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/connectivity/wificond/libwificond_nl^android_x86_64_static
 
-rm -rf aosp
+rm -rf out
 
 cd $GITHUB_WORKSPACE/
 tar cfJ system_connectivity_wificond.tar.xz -C $GITHUB_WORKSPACE/artifacts/system/connectivity/wificond/ .

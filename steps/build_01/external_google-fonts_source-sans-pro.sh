@@ -38,7 +38,7 @@ ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja SourceSansPro-SemiBoldItalic.ttf
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/google-fonts/source-sans-pro/SourceSansPro-SemiBoldItalic.ttf^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/google-fonts/source-sans-pro/SourceSansPro-SemiBoldItalic.ttf^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/google-fonts/source-sans-pro/SourceSansPro-SemiBoldItalic.ttf^android_x86_64
 
-rm -rf aosp
+rm -rf out
 
 cd $GITHUB_WORKSPACE/
 tar cfJ external_google-fonts_source-sans-pro.tar.xz -C $GITHUB_WORKSPACE/artifacts/external/google-fonts/source-sans-pro/ .

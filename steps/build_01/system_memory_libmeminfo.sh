@@ -47,7 +47,7 @@ ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libmeminfo,android_x86_x86_64_st
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/memory/libmeminfo/libmeminfo^android_x86_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/memory/libmeminfo/libmeminfo^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/memory/libmeminfo/libmeminfo^android_x86_x86_64_static
 
-rm -rf aosp
+rm -rf out
 
 cd $GITHUB_WORKSPACE/
 tar cfJ system_memory_libmeminfo.tar.xz -C $GITHUB_WORKSPACE/artifacts/system/memory/libmeminfo/ .

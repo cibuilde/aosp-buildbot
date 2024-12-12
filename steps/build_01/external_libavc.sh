@@ -32,7 +32,7 @@ ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libavcenc,android_x86_64_static_
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/libavc/libavcenc^android_x86_64_static_cfi_apex29
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/libavc/libavcenc^android_x86_64_static_cfi_apex29.output . $GITHUB_WORKSPACE/artifacts/external/libavc/libavcenc^android_x86_64_static_cfi_apex29
 
-rm -rf aosp
+rm -rf out
 
 cd $GITHUB_WORKSPACE/
 tar cfJ external_libavc.tar.xz -C $GITHUB_WORKSPACE/artifacts/external/libavc/ .

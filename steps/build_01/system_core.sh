@@ -25,7 +25,6 @@ clone_depth_platform hardware/libhardware
 clone_depth_platform hardware/libhardware_legacy
 clone_depth_platform hardware/ril
 clone_depth_platform packages/modules/StatsD
-clone_sparse prebuilts/clang-tools linux-x86/bin linux-x86/lib64/clang
 clone_depth_platform prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9
 clone_depth_platform prebuilts/gcc/linux-x86/arm/arm-linux-androideabi-4.9
 clone_sparse prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8 sysroot lib/gcc/x86_64-linux/4.8.3 x86_64-linux/lib64 x86_64-linux/lib32
@@ -744,7 +743,7 @@ ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja ueventd.rc,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/rootdir/ueventd.rc^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/core/ueventd.rc^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/core/rootdir/ueventd.rc^android_x86_64
 
-rm -rf aosp
+rm -rf out
 
 cd $GITHUB_WORKSPACE/
 tar cfJ system_core.tar.xz -C $GITHUB_WORKSPACE/artifacts/system/core/ .
@@ -826,10 +825,6 @@ fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/packages_modules_StatsD.tar.xz" ]; then
   echo "Compressing packages/modules/StatsD -> packages_modules_StatsD.tar.xz"
   tar cfJ $GITHUB_WORKSPACE/cache/packages_modules_StatsD.tar.xz -C $GITHUB_WORKSPACE/aosp/packages/modules/StatsD/ .
-fi
-if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_clang-tools.tar.xz" ]; then
-  echo "Compressing prebuilts/clang-tools -> prebuilts_clang-tools.tar.xz"
-  tar cfJ $GITHUB_WORKSPACE/cache/prebuilts_clang-tools.tar.xz -C $GITHUB_WORKSPACE/aosp/prebuilts/clang-tools/ .
 fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_clang_host_linux-x86.tar.xz" ]; then
   echo "Compressing prebuilts/clang/host/linux-x86 -> prebuilts_clang_host_linux-x86.tar.xz"

@@ -16,7 +16,7 @@ ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja time_in_state.o,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/bpfprogs/time_in_state.o^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/bpfprogs/time_in_state.o^android_common.output . $GITHUB_WORKSPACE/artifacts/system/bpfprogs/time_in_state.o^android_common
 
-rm -rf aosp
+rm -rf out
 
 cd $GITHUB_WORKSPACE/
 tar cfJ system_bpfprogs.tar.xz -C $GITHUB_WORKSPACE/artifacts/system/bpfprogs/ .

@@ -44,7 +44,7 @@ ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libexpat,linux_glibc_x86_64_stat
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/expat/libexpat^linux_glibc_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/expat/libexpat^linux_glibc_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/expat/libexpat^linux_glibc_x86_64_static
 
-rm -rf aosp
+rm -rf out
 
 cd $GITHUB_WORKSPACE/
 tar cfJ external_expat.tar.xz -C $GITHUB_WORKSPACE/artifacts/external/expat/ .

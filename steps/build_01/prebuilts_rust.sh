@@ -24,7 +24,7 @@ ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libcore.rust_sysroot,android_x86
 mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/rust/libcore.rust_sysroot^android_x86_x86_64_rlib
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/prebuilts/rust/libcore.rust_sysroot^android_x86_x86_64_rlib.output . $GITHUB_WORKSPACE/artifacts/prebuilts/rust/libcore.rust_sysroot^android_x86_x86_64_rlib
 
-rm -rf aosp
+rm -rf out
 
 cd $GITHUB_WORKSPACE/
 tar cfJ prebuilts_rust.tar.xz -C $GITHUB_WORKSPACE/artifacts/prebuilts/rust/ .

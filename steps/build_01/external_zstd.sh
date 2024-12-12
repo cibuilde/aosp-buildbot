@@ -36,7 +36,7 @@ ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libzstd,android_x86_64_static_cf
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/zstd/libzstd^android_x86_64_static_cfi_lto-thin
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/zstd/libzstd^android_x86_64_static_cfi_lto-thin.output . $GITHUB_WORKSPACE/artifacts/external/zstd/libzstd^android_x86_64_static_cfi_lto-thin
 
-rm -rf aosp
+rm -rf out
 
 cd $GITHUB_WORKSPACE/
 tar cfJ external_zstd.tar.xz -C $GITHUB_WORKSPACE/artifacts/external/zstd/ .

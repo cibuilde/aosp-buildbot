@@ -28,7 +28,7 @@ ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja target_fs_config_gen,
 mkdir -p $GITHUB_WORKSPACE/artifacts/build/make/tools/fs_config/target_fs_config_gen^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/build/make/target_fs_config_gen^.output . $GITHUB_WORKSPACE/artifacts/build/make/tools/fs_config/target_fs_config_gen^
 
-rm -rf aosp
+rm -rf out
 
 cd $GITHUB_WORKSPACE/
 tar cfJ build_make.tar.xz -C $GITHUB_WORKSPACE/artifacts/build/make/ .

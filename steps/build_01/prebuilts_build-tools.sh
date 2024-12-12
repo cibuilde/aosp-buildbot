@@ -28,7 +28,7 @@ ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja prebuilt_py3-launcher-autorun,li
 mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/build-tools/prebuilt_py3-launcher-autorun^linux_glibc_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/prebuilts/build-tools/prebuilt_py3-launcher-autorun^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/prebuilts/build-tools/prebuilt_py3-launcher-autorun^linux_glibc_x86_64
 
-rm -rf aosp
+rm -rf out
 
 cd $GITHUB_WORKSPACE/
 tar cfJ prebuilts_build-tools.tar.xz -C $GITHUB_WORKSPACE/artifacts/prebuilts/build-tools/ .

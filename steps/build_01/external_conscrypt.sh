@@ -13,7 +13,7 @@ ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja com.android.conscrypt.ld.config.
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/conscrypt/apex/com.android.conscrypt.ld.config.txt^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/conscrypt/com.android.conscrypt.ld.config.txt^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/conscrypt/apex/com.android.conscrypt.ld.config.txt^android_x86_64
 
-rm -rf aosp
+rm -rf out
 
 cd $GITHUB_WORKSPACE/
 tar cfJ external_conscrypt.tar.xz -C $GITHUB_WORKSPACE/artifacts/external/conscrypt/ .

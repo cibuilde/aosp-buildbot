@@ -77,7 +77,7 @@ ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja librecovery_ui_default,android_r
 mkdir -p $GITHUB_WORKSPACE/artifacts/bootable/recovery/recovery_ui/librecovery_ui_default^android_recovery_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bootable/recovery/librecovery_ui_default^android_recovery_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bootable/recovery/recovery_ui/librecovery_ui_default^android_recovery_x86_64_static
 
-rm -rf aosp
+rm -rf out
 
 cd $GITHUB_WORKSPACE/
 tar cfJ bootable_recovery.tar.xz -C $GITHUB_WORKSPACE/artifacts/bootable/recovery/ .

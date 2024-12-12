@@ -1,5 +1,1 @@
 out/soong/.intermediates/system/core/libprocessgroup/libprocessgroup/android_x86_64_static_apex30/libprocessgroup.a
-out/soong/.intermediates/system/core/libprocessgroup/libprocessgroup/android_x86_64_static_apex30/obj/system/core/libprocessgroup/cgroup_map.sdump
-out/soong/.intermediates/system/core/libprocessgroup/libprocessgroup/android_x86_64_static_apex30/obj/system/core/libprocessgroup/processgroup.sdump
-out/soong/.intermediates/system/core/libprocessgroup/libprocessgroup/android_x86_64_static_apex30/obj/system/core/libprocessgroup/sched_policy.sdump
-out/soong/.intermediates/system/core/libprocessgroup/libprocessgroup/android_x86_64_static_apex30/obj/system/core/libprocessgroup/task_profiles.sdump

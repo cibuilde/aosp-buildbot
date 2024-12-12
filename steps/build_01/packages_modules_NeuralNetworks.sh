@@ -21,7 +21,6 @@ clone_depth_platform hardware/libhardware_legacy
 clone_depth_platform hardware/ril
 clone_depth_platform packages/modules/NeuralNetworks
 clone_sparse prebuilts/build-tools linux-x86/bin linux-x86/lib64 path common
-clone_sparse prebuilts/clang-tools linux-x86/bin linux-x86/lib64/clang
 clone_depth_platform prebuilts/gcc/linux-x86/x86/x86_64-linux-android-4.9
 clone_depth_platform system/core
 clone_depth_platform system/libbase
@@ -48,7 +47,7 @@ ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja philox_random,android_x86_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/NeuralNetworks/common/random/philox_random^android_x86_x86_64_static_apex30
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/packages/modules/NeuralNetworks/philox_random^android_x86_x86_64_static_apex30.output . $GITHUB_WORKSPACE/artifacts/packages/modules/NeuralNetworks/common/random/philox_random^android_x86_x86_64_static_apex30
 
-rm -rf aosp
+rm -rf out
 
 cd $GITHUB_WORKSPACE/
 tar cfJ packages_modules_NeuralNetworks.tar.xz -C $GITHUB_WORKSPACE/artifacts/packages/modules/NeuralNetworks/ .
@@ -114,10 +113,6 @@ fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_build-tools.tar.xz" ]; then
   echo "Compressing prebuilts/build-tools -> prebuilts_build-tools.tar.xz"
   tar cfJ $GITHUB_WORKSPACE/cache/prebuilts_build-tools.tar.xz -C $GITHUB_WORKSPACE/aosp/prebuilts/build-tools/ .
-fi
-if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_clang-tools.tar.xz" ]; then
-  echo "Compressing prebuilts/clang-tools -> prebuilts_clang-tools.tar.xz"
-  tar cfJ $GITHUB_WORKSPACE/cache/prebuilts_clang-tools.tar.xz -C $GITHUB_WORKSPACE/aosp/prebuilts/clang-tools/ .
 fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_clang_host_linux-x86.tar.xz" ]; then
   echo "Compressing prebuilts/clang/host/linux-x86 -> prebuilts_clang_host_linux-x86.tar.xz"

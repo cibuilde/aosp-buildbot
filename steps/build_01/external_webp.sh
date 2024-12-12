@@ -40,7 +40,7 @@ ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libwebp-encode,android_x86_x86_6
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/webp/libwebp-encode^android_x86_x86_64_static_lto-thin
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/webp/libwebp-encode^android_x86_x86_64_static_lto-thin.output . $GITHUB_WORKSPACE/artifacts/external/webp/libwebp-encode^android_x86_x86_64_static_lto-thin
 
-rm -rf aosp
+rm -rf out
 
 cd $GITHUB_WORKSPACE/
 tar cfJ external_webp.tar.xz -C $GITHUB_WORKSPACE/artifacts/external/webp/ .

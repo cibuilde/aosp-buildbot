@@ -1355,7 +1355,7 @@ ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libstdc++,android_x86_x86_64_sta
 mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libstdc++^android_x86_x86_64_static_apex10000
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libstdc++^android_x86_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libstdc++^android_x86_x86_64_static_apex10000
 
-rm -rf aosp
+rm -rf out
 
 cd $GITHUB_WORKSPACE/
 tar cfJ bionic.tar.xz -C $GITHUB_WORKSPACE/artifacts/bionic/ .

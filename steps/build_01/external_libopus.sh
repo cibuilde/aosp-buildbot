@@ -26,7 +26,7 @@ ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libopus,android_x86_64_static_ap
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/libopus/libopus^android_x86_64_static_apex29
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/libopus/libopus^android_x86_64_static_apex29.output . $GITHUB_WORKSPACE/artifacts/external/libopus/libopus^android_x86_64_static_apex29
 
-rm -rf aosp
+rm -rf out
 
 cd $GITHUB_WORKSPACE/
 tar cfJ external_libopus.tar.xz -C $GITHUB_WORKSPACE/artifacts/external/libopus/ .

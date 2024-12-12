@@ -62,7 +62,7 @@ ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libprocinfo,android_x86_x86_64_s
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/libprocinfo/libprocinfo^android_x86_x86_64_static_apex31
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/libprocinfo/libprocinfo^android_x86_x86_64_static_apex31.output . $GITHUB_WORKSPACE/artifacts/system/libprocinfo/libprocinfo^android_x86_x86_64_static_apex31
 
-rm -rf aosp
+rm -rf out
 
 cd $GITHUB_WORKSPACE/
 tar cfJ system_libprocinfo.tar.xz -C $GITHUB_WORKSPACE/artifacts/system/libprocinfo/ .

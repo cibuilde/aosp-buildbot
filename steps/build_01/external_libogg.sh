@@ -31,7 +31,7 @@ ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libogg,android_x86_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/libogg/libogg^android_x86_x86_64_static_cfi
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/libogg/libogg^android_x86_x86_64_static_cfi.output . $GITHUB_WORKSPACE/artifacts/external/libogg/libogg^android_x86_x86_64_static_cfi
 
-rm -rf aosp
+rm -rf out
 
 cd $GITHUB_WORKSPACE/
 tar cfJ external_libogg.tar.xz -C $GITHUB_WORKSPACE/artifacts/external/libogg/ .

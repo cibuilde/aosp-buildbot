@@ -45,7 +45,7 @@ ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libsndfile,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/media/audio_utils/libsndfile^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/media/libsndfile^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/media/audio_utils/libsndfile^android_x86_64_static
 
-rm -rf aosp
+rm -rf out
 
 cd $GITHUB_WORKSPACE/
 tar cfJ system_media.tar.xz -C $GITHUB_WORKSPACE/artifacts/system/media/ .

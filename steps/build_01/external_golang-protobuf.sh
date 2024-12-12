@@ -14,7 +14,7 @@ ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja golang-protobuf-proto,linux_glib
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/golang-protobuf/golang-protobuf-proto^linux_glibc_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/golang-protobuf/golang-protobuf-proto^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/golang-protobuf/golang-protobuf-proto^linux_glibc_x86_64
 
-rm -rf aosp
+rm -rf out
 
 cd $GITHUB_WORKSPACE/
 tar cfJ external_golang-protobuf.tar.xz -C $GITHUB_WORKSPACE/artifacts/external/golang-protobuf/ .

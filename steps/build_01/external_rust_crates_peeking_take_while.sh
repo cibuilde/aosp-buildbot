@@ -15,7 +15,7 @@ ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libpeeking_take_while,linux_glib
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/rust/crates/peeking_take_while/libpeeking_take_while^linux_glibc_x86_64_rlib_rlib-std
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/rust/crates/peeking_take_while/libpeeking_take_while^linux_glibc_x86_64_rlib_rlib-std.output . $GITHUB_WORKSPACE/artifacts/external/rust/crates/peeking_take_while/libpeeking_take_while^linux_glibc_x86_64_rlib_rlib-std
 
-rm -rf aosp
+rm -rf out
 
 cd $GITHUB_WORKSPACE/
 tar cfJ external_rust_crates_peeking_take_while.tar.xz -C $GITHUB_WORKSPACE/artifacts/external/rust/crates/peeking_take_while/ .

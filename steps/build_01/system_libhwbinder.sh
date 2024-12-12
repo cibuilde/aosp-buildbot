@@ -16,7 +16,6 @@ clone_depth_platform frameworks/native
 clone_depth_platform hardware/libhardware
 clone_depth_platform hardware/libhardware_legacy
 clone_depth_platform hardware/ril
-clone_sparse prebuilts/clang-tools linux-x86/bin linux-x86/lib64/clang
 clone_depth_platform prebuilts/gcc/linux-x86/x86/x86_64-linux-android-4.9
 clone_depth_platform system/core
 clone_depth_platform system/libbase
@@ -60,7 +59,7 @@ ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libhwbinder-impl-internal,androi
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/libhwbinder/libhwbinder-impl-internal^android_x86_x86_64_static_apex30
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/libhwbinder/libhwbinder-impl-internal^android_x86_x86_64_static_apex30.output . $GITHUB_WORKSPACE/artifacts/system/libhwbinder/libhwbinder-impl-internal^android_x86_x86_64_static_apex30
 
-rm -rf aosp
+rm -rf out
 
 cd $GITHUB_WORKSPACE/
 tar cfJ system_libhwbinder.tar.xz -C $GITHUB_WORKSPACE/artifacts/system/libhwbinder/ .
@@ -106,10 +105,6 @@ fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/hardware_ril.tar.xz" ]; then
   echo "Compressing hardware/ril -> hardware_ril.tar.xz"
   tar cfJ $GITHUB_WORKSPACE/cache/hardware_ril.tar.xz -C $GITHUB_WORKSPACE/aosp/hardware/ril/ .
-fi
-if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_clang-tools.tar.xz" ]; then
-  echo "Compressing prebuilts/clang-tools -> prebuilts_clang-tools.tar.xz"
-  tar cfJ $GITHUB_WORKSPACE/cache/prebuilts_clang-tools.tar.xz -C $GITHUB_WORKSPACE/aosp/prebuilts/clang-tools/ .
 fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_clang_host_linux-x86.tar.xz" ]; then
   echo "Compressing prebuilts/clang/host/linux-x86 -> prebuilts_clang_host_linux-x86.tar.xz"

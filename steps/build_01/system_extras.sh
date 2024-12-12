@@ -155,7 +155,7 @@ ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja preloads_copy.sh,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/extras/cppreopts/preloads_copy.sh^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/extras/preloads_copy.sh^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/extras/cppreopts/preloads_copy.sh^android_x86_64
 
-rm -rf aosp
+rm -rf out
 
 cd $GITHUB_WORKSPACE/
 tar cfJ system_extras.tar.xz -C $GITHUB_WORKSPACE/artifacts/system/extras/ .

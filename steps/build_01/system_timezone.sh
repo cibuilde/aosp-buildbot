@@ -43,7 +43,7 @@ ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja tzdata,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/timezone/output_data/iana/tzdata^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/timezone/tzdata^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/timezone/output_data/iana/tzdata^android_x86_64
 
-rm -rf aosp
+rm -rf out
 
 cd $GITHUB_WORKSPACE/
 tar cfJ system_timezone.tar.xz -C $GITHUB_WORKSPACE/artifacts/system/timezone/ .

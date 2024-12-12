@@ -186,7 +186,7 @@ ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja vendor_service_contexts,android_
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/sepolicy/vendor_service_contexts^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/sepolicy/vendor_service_contexts^android_common.output . $GITHUB_WORKSPACE/artifacts/system/sepolicy/vendor_service_contexts^android_common
 
-rm -rf aosp
+rm -rf out
 
 cd $GITHUB_WORKSPACE/
 tar cfJ system_sepolicy.tar.xz -C $GITHUB_WORKSPACE/artifacts/system/sepolicy/ .

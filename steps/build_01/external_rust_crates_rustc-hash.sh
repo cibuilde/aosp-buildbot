@@ -15,7 +15,7 @@ ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja librustc_hash,linux_glibc_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/rust/crates/rustc-hash/librustc_hash^linux_glibc_x86_64_rlib_rlib-std
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/rust/crates/rustc-hash/librustc_hash^linux_glibc_x86_64_rlib_rlib-std.output . $GITHUB_WORKSPACE/artifacts/external/rust/crates/rustc-hash/librustc_hash^linux_glibc_x86_64_rlib_rlib-std
 
-rm -rf aosp
+rm -rf out
 
 cd $GITHUB_WORKSPACE/
 tar cfJ external_rust_crates_rustc-hash.tar.xz -C $GITHUB_WORKSPACE/artifacts/external/rust/crates/rustc-hash/ .

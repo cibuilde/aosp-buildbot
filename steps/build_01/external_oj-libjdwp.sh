@@ -30,7 +30,7 @@ ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libnpt,android_x86_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/oj-libjdwp/libnpt^android_x86_x86_64_static_apex31
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/oj-libjdwp/libnpt^android_x86_x86_64_static_apex31.output . $GITHUB_WORKSPACE/artifacts/external/oj-libjdwp/libnpt^android_x86_x86_64_static_apex31
 
-rm -rf aosp
+rm -rf out
 
 cd $GITHUB_WORKSPACE/
 tar cfJ external_oj-libjdwp.tar.xz -C $GITHUB_WORKSPACE/artifacts/external/oj-libjdwp/ .

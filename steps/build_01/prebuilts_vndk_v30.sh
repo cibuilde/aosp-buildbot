@@ -33,7 +33,7 @@ ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja vndksp.libraries.30.txt,android_
 mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/vndk/v30/vndksp.libraries.30.txt^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/prebuilts/vndk/v30/vndksp.libraries.30.txt^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/prebuilts/vndk/v30/vndksp.libraries.30.txt^android_x86_64
 
-rm -rf aosp
+rm -rf out
 
 cd $GITHUB_WORKSPACE/
 tar cfJ prebuilts_vndk_v30.tar.xz -C $GITHUB_WORKSPACE/artifacts/prebuilts/vndk/v30/ .

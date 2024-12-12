@@ -1,6 +1,3 @@
 out/soong/.intermediates/bionic/libc/libstdc++/android_x86_64_static_apex10000/obj/bionic/libc/bionic/__cxa_guard.o
-out/soong/.intermediates/bionic/libc/libstdc++/android_x86_64_static_apex10000/obj/bionic/libc/bionic/__cxa_guard.sdump
 out/soong/.intermediates/bionic/libc/libstdc++/android_x86_64_static_apex10000/obj/bionic/libc/bionic/__cxa_pure_virtual.o
-out/soong/.intermediates/bionic/libc/libstdc++/android_x86_64_static_apex10000/obj/bionic/libc/bionic/__cxa_pure_virtual.sdump
 out/soong/.intermediates/bionic/libc/libstdc++/android_x86_64_static_apex10000/obj/bionic/libc/bionic/new.o
-out/soong/.intermediates/bionic/libc/libstdc++/android_x86_64_static_apex10000/obj/bionic/libc/bionic/new.sdump

@@ -21,7 +21,7 @@ ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja test.o,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/Connectivity/Tethering/bpf_progs/test.o^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/packages/modules/Connectivity/test.o^android_common.output . $GITHUB_WORKSPACE/artifacts/packages/modules/Connectivity/Tethering/bpf_progs/test.o^android_common
 
-rm -rf aosp
+rm -rf out
 
 cd $GITHUB_WORKSPACE/
 tar cfJ packages_modules_Connectivity.tar.xz -C $GITHUB_WORKSPACE/artifacts/packages/modules/Connectivity/ .

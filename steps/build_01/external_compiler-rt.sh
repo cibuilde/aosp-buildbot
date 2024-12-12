@@ -38,7 +38,7 @@ ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libcompiler_rt,android_x86_x86_6
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/compiler-rt/libcompiler_rt^android_x86_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/compiler-rt/libcompiler_rt^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/compiler-rt/libcompiler_rt^android_x86_x86_64_static
 
-rm -rf aosp
+rm -rf out
 
 cd $GITHUB_WORKSPACE/
 tar cfJ external_compiler-rt.tar.xz -C $GITHUB_WORKSPACE/artifacts/external/compiler-rt/ .

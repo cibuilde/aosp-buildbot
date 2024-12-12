@@ -31,7 +31,7 @@ ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja slicer_ndk_no_rtti,android_x86_6
 mkdir -p $GITHUB_WORKSPACE/artifacts/tools/dexter/slicer/slicer_ndk_no_rtti^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/tools/dexter/slicer_ndk_no_rtti^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/tools/dexter/slicer/slicer_ndk_no_rtti^android_x86_64_static
 
-rm -rf aosp
+rm -rf out
 
 cd $GITHUB_WORKSPACE/
 tar cfJ tools_dexter.tar.xz -C $GITHUB_WORKSPACE/artifacts/tools/dexter/ .

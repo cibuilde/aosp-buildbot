@@ -13,7 +13,7 @@ ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja org.apache.http.legacy.xml,andro
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/apache-http/org.apache.http.legacy.xml^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/apache-http/org.apache.http.legacy.xml^android_common.output . $GITHUB_WORKSPACE/artifacts/external/apache-http/org.apache.http.legacy.xml^android_common
 
-rm -rf aosp
+rm -rf out
 
 cd $GITHUB_WORKSPACE/
 tar cfJ external_apache-http.tar.xz -C $GITHUB_WORKSPACE/artifacts/external/apache-http/ .

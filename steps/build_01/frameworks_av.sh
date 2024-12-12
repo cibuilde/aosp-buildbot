@@ -351,7 +351,7 @@ ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja mediaswcodec.xml,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libstagefright/data/mediaswcodec.xml^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/frameworks/av/mediaswcodec.xml^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libstagefright/data/mediaswcodec.xml^android_x86_64
 
-rm -rf aosp
+rm -rf out
 
 cd $GITHUB_WORKSPACE/
 tar cfJ frameworks_av.tar.xz -C $GITHUB_WORKSPACE/artifacts/frameworks/av/ .

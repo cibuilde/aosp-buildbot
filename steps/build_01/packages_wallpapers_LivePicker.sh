@@ -13,7 +13,7 @@ ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja android.software.live_wallpaper.
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/wallpapers/LivePicker/android.software.live_wallpaper.xml^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/packages/wallpapers/LivePicker/android.software.live_wallpaper.xml^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/packages/wallpapers/LivePicker/android.software.live_wallpaper.xml^android_x86_64
 
-rm -rf aosp
+rm -rf out
 
 cd $GITHUB_WORKSPACE/
 tar cfJ packages_wallpapers_LivePicker.tar.xz -C $GITHUB_WORKSPACE/artifacts/packages/wallpapers/LivePicker/ .

@@ -80,7 +80,7 @@ ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libminijail_gen_syscall_obj,andr
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/minijail/libminijail_gen_syscall_obj^android_x86_64_apex29
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/minijail/libminijail_gen_syscall_obj^android_x86_64_apex29.output . $GITHUB_WORKSPACE/artifacts/external/minijail/libminijail_gen_syscall_obj^android_x86_64_apex29
 
-rm -rf aosp
+rm -rf out
 
 cd $GITHUB_WORKSPACE/
 tar cfJ external_minijail.tar.xz -C $GITHUB_WORKSPACE/artifacts/external/minijail/ .

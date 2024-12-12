@@ -31,7 +31,7 @@ ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libsfntly,android_x86_x86_64_sta
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/sfntly/libsfntly^android_x86_x86_64_static_lto-thin
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/sfntly/libsfntly^android_x86_x86_64_static_lto-thin.output . $GITHUB_WORKSPACE/artifacts/external/sfntly/libsfntly^android_x86_x86_64_static_lto-thin
 
-rm -rf aosp
+rm -rf out
 
 cd $GITHUB_WORKSPACE/
 tar cfJ external_sfntly.tar.xz -C $GITHUB_WORKSPACE/artifacts/external/sfntly/ .

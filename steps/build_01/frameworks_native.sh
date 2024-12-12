@@ -22,7 +22,6 @@ clone_depth_platform hardware/libhardware
 clone_depth_platform hardware/libhardware_legacy
 clone_depth_platform hardware/ril
 clone_depth_platform libnativehelper
-clone_sparse prebuilts/clang-tools linux-x86/bin linux-x86/lib64/clang
 clone_sparse prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8 sysroot lib/gcc/x86_64-linux/4.8.3 x86_64-linux/lib64 x86_64-linux/lib32
 clone_depth_platform prebuilts/gcc/linux-x86/x86/x86_64-linux-android-4.9
 clone_depth_platform system/bpf
@@ -368,7 +367,7 @@ ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja otapreopt_slot,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/native/cmds/installd/otapreopt_slot^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/frameworks/native/otapreopt_slot^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/frameworks/native/cmds/installd/otapreopt_slot^android_x86_64
 
-rm -rf aosp
+rm -rf out
 
 cd $GITHUB_WORKSPACE/
 tar cfJ frameworks_native.tar.xz -C $GITHUB_WORKSPACE/artifacts/frameworks/native/ .
@@ -438,10 +437,6 @@ fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/libnativehelper.tar.xz" ]; then
   echo "Compressing libnativehelper -> libnativehelper.tar.xz"
   tar cfJ $GITHUB_WORKSPACE/cache/libnativehelper.tar.xz -C $GITHUB_WORKSPACE/aosp/libnativehelper/ .
-fi
-if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_clang-tools.tar.xz" ]; then
-  echo "Compressing prebuilts/clang-tools -> prebuilts_clang-tools.tar.xz"
-  tar cfJ $GITHUB_WORKSPACE/cache/prebuilts_clang-tools.tar.xz -C $GITHUB_WORKSPACE/aosp/prebuilts/clang-tools/ .
 fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_clang_host_linux-x86.tar.xz" ]; then
   echo "Compressing prebuilts/clang/host/linux-x86 -> prebuilts_clang_host_linux-x86.tar.xz"

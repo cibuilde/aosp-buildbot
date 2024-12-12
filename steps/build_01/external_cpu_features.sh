@@ -36,7 +36,7 @@ ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libcpu_features-utils,linux_glib
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/cpu_features/libcpu_features-utils^linux_glibc_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/cpu_features/libcpu_features-utils^linux_glibc_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/cpu_features/libcpu_features-utils^linux_glibc_x86_64_static
 
-rm -rf aosp
+rm -rf out
 
 cd $GITHUB_WORKSPACE/
 tar cfJ external_cpu_features.tar.xz -C $GITHUB_WORKSPACE/artifacts/external/cpu_features/ .

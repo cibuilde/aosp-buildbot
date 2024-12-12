@@ -963,7 +963,7 @@ ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja target-cacert-wifi-ea93cb5b.0,an
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/ca-certificates/wfa_certs/target-cacert-wifi-ea93cb5b.0^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/ca-certificates/target-cacert-wifi-ea93cb5b.0^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/ca-certificates/wfa_certs/target-cacert-wifi-ea93cb5b.0^android_x86_64
 
-rm -rf aosp
+rm -rf out
 
 cd $GITHUB_WORKSPACE/
 tar cfJ system_ca-certificates.tar.xz -C $GITHUB_WORKSPACE/artifacts/system/ca-certificates/ .

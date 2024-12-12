@@ -72,6 +72,16 @@ ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja chrome_zlib,android_x86_x86_64_s
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/angle/chrome_zlib^android_x86_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/angle/chrome_zlib^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/angle/chrome_zlib^android_x86_x86_64_static
 
+echo "building libEGL_angle^android_x86_64_shared"
+ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libEGL_angle,android_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/angle/libEGL_angle^android_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/angle/libEGL_angle^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/external/angle/libEGL_angle^android_x86_64_shared
+
+echo "building libEGL_angle^android_x86_x86_64_shared"
+ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libEGL_angle,android_x86_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/angle/libEGL_angle^android_x86_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/angle/libEGL_angle^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/external/angle/libEGL_angle^android_x86_x86_64_shared
+
 echo "building third_party_zlib_google_compression_utils_portable^android_x86_64_static"
 ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja third_party_zlib_google_compression_utils_portable,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/angle/third_party_zlib_google_compression_utils_portable^android_x86_64_static
@@ -82,7 +92,7 @@ ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja third_party_zlib_google_compress
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/angle/third_party_zlib_google_compression_utils_portable^android_x86_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/angle/third_party_zlib_google_compression_utils_portable^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/angle/third_party_zlib_google_compression_utils_portable^android_x86_x86_64_static
 
-rm -rf aosp
+rm -rf out
 
 cd $GITHUB_WORKSPACE/
 tar cfJ external_angle.tar.xz -C $GITHUB_WORKSPACE/artifacts/external/angle/ .

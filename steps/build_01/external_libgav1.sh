@@ -27,7 +27,7 @@ ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libgav1,android_x86_64_static_cf
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/libgav1/libgav1^android_x86_64_static_cfi_apex29
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/libgav1/libgav1^android_x86_64_static_cfi_apex29.output . $GITHUB_WORKSPACE/artifacts/external/libgav1/libgav1^android_x86_64_static_cfi_apex29
 
-rm -rf aosp
+rm -rf out
 
 cd $GITHUB_WORKSPACE/
 tar cfJ external_libgav1.tar.xz -C $GITHUB_WORKSPACE/artifacts/external/libgav1/ .

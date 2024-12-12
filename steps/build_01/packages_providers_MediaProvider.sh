@@ -13,7 +13,7 @@ ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja preinstalled-packages-com.androi
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/providers/MediaProvider/preinstalled-packages-com.android.providers.media.module.xml^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/packages/providers/MediaProvider/preinstalled-packages-com.android.providers.media.module.xml^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/packages/providers/MediaProvider/preinstalled-packages-com.android.providers.media.module.xml^android_x86_64
 
-rm -rf aosp
+rm -rf out
 
 cd $GITHUB_WORKSPACE/
 tar cfJ packages_providers_MediaProvider.tar.xz -C $GITHUB_WORKSPACE/artifacts/packages/providers/MediaProvider/ .

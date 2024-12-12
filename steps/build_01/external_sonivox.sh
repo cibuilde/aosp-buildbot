@@ -36,7 +36,7 @@ ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libsonivoxwithoutjet,android_x86
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/sonivox/arm-wt-22k/libsonivoxwithoutjet^android_x86_64_static_cfi_apex29
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/sonivox/libsonivoxwithoutjet^android_x86_64_static_cfi_apex29.output . $GITHUB_WORKSPACE/artifacts/external/sonivox/arm-wt-22k/libsonivoxwithoutjet^android_x86_64_static_cfi_apex29
 
-rm -rf aosp
+rm -rf out
 
 cd $GITHUB_WORKSPACE/
 tar cfJ external_sonivox.tar.xz -C $GITHUB_WORKSPACE/artifacts/external/sonivox/ .

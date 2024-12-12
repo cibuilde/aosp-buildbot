@@ -55,7 +55,7 @@ ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja vndksp_libraries_txt,
 mkdir -p $GITHUB_WORKSPACE/artifacts/singletons/vndksp_libraries_txt^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/singletons/vndksp_libraries_txt^.output . $GITHUB_WORKSPACE/artifacts/singletons/vndksp_libraries_txt^
 
-rm -rf aosp
+rm -rf out
 
 cd $GITHUB_WORKSPACE/
 tar cfJ singletons.tar.xz -C $GITHUB_WORKSPACE/artifacts/singletons/ .

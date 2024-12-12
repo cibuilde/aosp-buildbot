@@ -40,7 +40,7 @@ ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja xtables.lock,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/iptables/iptables/xtables.lock^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/iptables/xtables.lock^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/iptables/iptables/xtables.lock^android_x86_64
 
-rm -rf aosp
+rm -rf out
 
 cd $GITHUB_WORKSPACE/
 tar cfJ external_iptables.tar.xz -C $GITHUB_WORKSPACE/artifacts/external/iptables/ .

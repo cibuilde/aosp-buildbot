@@ -47,7 +47,7 @@ ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libskia_renderengine,android_x86
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/skia/libskia_renderengine^android_x86_64_static_lto-thin
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/skia/libskia_renderengine^android_x86_64_static_lto-thin.output . $GITHUB_WORKSPACE/artifacts/external/skia/libskia_renderengine^android_x86_64_static_lto-thin
 
-rm -rf aosp
+rm -rf out
 
 cd $GITHUB_WORKSPACE/
 tar cfJ external_skia.tar.xz -C $GITHUB_WORKSPACE/artifacts/external/skia/ .

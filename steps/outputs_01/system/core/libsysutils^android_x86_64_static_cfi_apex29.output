@@ -1,8 +1,1 @@
 out/soong/.intermediates/system/core/libsysutils/libsysutils/android_x86_64_static_cfi_apex29/libsysutils.a
-out/soong/.intermediates/system/core/libsysutils/libsysutils/android_x86_64_static_cfi_apex29/obj/system/core/libsysutils/src/FrameworkCommand.sdump
-out/soong/.intermediates/system/core/libsysutils/libsysutils/android_x86_64_static_cfi_apex29/obj/system/core/libsysutils/src/FrameworkListener.sdump
-out/soong/.intermediates/system/core/libsysutils/libsysutils/android_x86_64_static_cfi_apex29/obj/system/core/libsysutils/src/NetlinkEvent.sdump
-out/soong/.intermediates/system/core/libsysutils/libsysutils/android_x86_64_static_cfi_apex29/obj/system/core/libsysutils/src/NetlinkListener.sdump
-out/soong/.intermediates/system/core/libsysutils/libsysutils/android_x86_64_static_cfi_apex29/obj/system/core/libsysutils/src/ServiceManager.sdump
-out/soong/.intermediates/system/core/libsysutils/libsysutils/android_x86_64_static_cfi_apex29/obj/system/core/libsysutils/src/SocketClient.sdump
-out/soong/.intermediates/system/core/libsysutils/libsysutils/android_x86_64_static_cfi_apex29/obj/system/core/libsysutils/src/SocketListener.sdump

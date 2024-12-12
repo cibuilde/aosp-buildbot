@@ -43,7 +43,7 @@ ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libwebm,android_x86_x86_64_stati
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/libvpx/libwebm/libwebm^android_x86_x86_64_static_cfi
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/libvpx/libwebm^android_x86_x86_64_static_cfi.output . $GITHUB_WORKSPACE/artifacts/external/libvpx/libwebm/libwebm^android_x86_x86_64_static_cfi
 
-rm -rf aosp
+rm -rf out
 
 cd $GITHUB_WORKSPACE/
 tar cfJ external_libvpx.tar.xz -C $GITHUB_WORKSPACE/artifacts/external/libvpx/ .

@@ -235,7 +235,7 @@ ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libpdfium-third_party-base,andro
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/pdfium/third_party/libpdfium-third_party-base^android_x86_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/pdfium/libpdfium-third_party-base^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/pdfium/third_party/libpdfium-third_party-base^android_x86_x86_64_static
 
-rm -rf aosp
+rm -rf out
 
 cd $GITHUB_WORKSPACE/
 tar cfJ external_pdfium.tar.xz -C $GITHUB_WORKSPACE/artifacts/external/pdfium/ .

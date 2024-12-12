@@ -28,7 +28,7 @@ ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja librecovery_ui_cuttlefish,androi
 mkdir -p $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/recovery/librecovery_ui_cuttlefish^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/device/google/cuttlefish/librecovery_ui_cuttlefish^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/recovery/librecovery_ui_cuttlefish^android_x86_64_static
 
-rm -rf aosp
+rm -rf out
 
 cd $GITHUB_WORKSPACE/
 tar cfJ device_google_cuttlefish.tar.xz -C $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/ .

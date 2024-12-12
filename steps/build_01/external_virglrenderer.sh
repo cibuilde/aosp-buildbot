@@ -28,7 +28,7 @@ ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libvirglrenderer,android_x86_64_
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/virglrenderer/libvirglrenderer^android_x86_64_static_apex10000
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/virglrenderer/libvirglrenderer^android_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/external/virglrenderer/libvirglrenderer^android_x86_64_static_apex10000
 
-rm -rf aosp
+rm -rf out
 
 cd $GITHUB_WORKSPACE/
 tar cfJ external_virglrenderer.tar.xz -C $GITHUB_WORKSPACE/artifacts/external/virglrenderer/ .

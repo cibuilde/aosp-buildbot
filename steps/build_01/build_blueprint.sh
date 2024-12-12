@@ -19,7 +19,7 @@ ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja blueprint-parser,linux_glibc_x86
 mkdir -p $GITHUB_WORKSPACE/artifacts/build/blueprint/blueprint-parser^linux_glibc_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/build/blueprint/blueprint-parser^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/build/blueprint/blueprint-parser^linux_glibc_x86_64
 
-rm -rf aosp
+rm -rf out
 
 cd $GITHUB_WORKSPACE/
 tar cfJ build_blueprint.tar.xz -C $GITHUB_WORKSPACE/artifacts/build/blueprint/ .

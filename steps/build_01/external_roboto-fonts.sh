@@ -18,7 +18,7 @@ ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja RobotoStatic-Regular.ttf,android
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/roboto-fonts/RobotoStatic-Regular.ttf^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/roboto-fonts/RobotoStatic-Regular.ttf^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/roboto-fonts/RobotoStatic-Regular.ttf^android_x86_64
 
-rm -rf aosp
+rm -rf out
 
 cd $GITHUB_WORKSPACE/
 tar cfJ external_roboto-fonts.tar.xz -C $GITHUB_WORKSPACE/artifacts/external/roboto-fonts/ .
