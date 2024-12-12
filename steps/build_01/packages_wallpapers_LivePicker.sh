@@ -16,13 +16,13 @@ rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/packages/wallpapers/
 rm -rf out
 
 cd $GITHUB_WORKSPACE/
-tar cfJ packages_wallpapers_LivePicker.tar.xz -C $GITHUB_WORKSPACE/artifacts/packages/wallpapers/LivePicker/ .
+tar cfJ packages_wallpapers_LivePicker.tar.zst -C $GITHUB_WORKSPACE/artifacts/packages/wallpapers/LivePicker/ .
 
 du -ah -d1
 
-if [ ! -f "$GITHUB_WORKSPACE/cache/packages_wallpapers_LivePicker.tar.xz" ]; then
-  echo "Compressing packages/wallpapers/LivePicker -> packages_wallpapers_LivePicker.tar.xz"
-  tar cfJ $GITHUB_WORKSPACE/cache/packages_wallpapers_LivePicker.tar.xz -C $GITHUB_WORKSPACE/aosp/packages/wallpapers/LivePicker/ .
+if [ ! -f "$GITHUB_WORKSPACE/cache/packages_wallpapers_LivePicker.tar.zst" ]; then
+  echo "Compressing packages/wallpapers/LivePicker -> packages_wallpapers_LivePicker.tar.zst"
+  tar cfJ $GITHUB_WORKSPACE/cache/packages_wallpapers_LivePicker.tar.zst -C $GITHUB_WORKSPACE/aosp/packages/wallpapers/LivePicker/ .
 fi
 du -ah -d1 $GITHUB_WORKSPACE/cache
 

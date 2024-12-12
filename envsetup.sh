@@ -1,6 +1,6 @@
 export GIT_AOSP_URL="https://android.googlesource.com/"
 export AOSP_PLATFORM_URL="${GIT_AOSP_URL}platform/"
-export BRANCH="android-12.0.0_r1"
+export BRANCH="android12-gsi"
 
 function clone_depth() {
   #set -x

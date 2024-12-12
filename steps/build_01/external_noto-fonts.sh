@@ -962,17 +962,17 @@ rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/noto-fonts/
 rm -rf out
 
 cd $GITHUB_WORKSPACE/
-tar cfJ external_noto-fonts.tar.xz -C $GITHUB_WORKSPACE/artifacts/external/noto-fonts/ .
+tar cfJ external_noto-fonts.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/noto-fonts/ .
 
 du -ah -d1
 
-if [ ! -f "$GITHUB_WORKSPACE/cache/art.tar.xz" ]; then
-  echo "Compressing art -> art.tar.xz"
-  tar cfJ $GITHUB_WORKSPACE/cache/art.tar.xz -C $GITHUB_WORKSPACE/aosp/art/ .
+if [ ! -f "$GITHUB_WORKSPACE/cache/art.tar.zst" ]; then
+  echo "Compressing art -> art.tar.zst"
+  tar cfJ $GITHUB_WORKSPACE/cache/art.tar.zst -C $GITHUB_WORKSPACE/aosp/art/ .
 fi
-if [ ! -f "$GITHUB_WORKSPACE/cache/external_noto-fonts.tar.xz" ]; then
-  echo "Compressing external/noto-fonts -> external_noto-fonts.tar.xz"
-  tar cfJ $GITHUB_WORKSPACE/cache/external_noto-fonts.tar.xz -C $GITHUB_WORKSPACE/aosp/external/noto-fonts/ .
+if [ ! -f "$GITHUB_WORKSPACE/cache/external_noto-fonts.tar.zst" ]; then
+  echo "Compressing external/noto-fonts -> external_noto-fonts.tar.zst"
+  tar cfJ $GITHUB_WORKSPACE/cache/external_noto-fonts.tar.zst -C $GITHUB_WORKSPACE/aosp/external/noto-fonts/ .
 fi
 du -ah -d1 $GITHUB_WORKSPACE/cache
 

@@ -36,13 +36,13 @@ rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/prebuilts/vndk/v28/v
 rm -rf out
 
 cd $GITHUB_WORKSPACE/
-tar cfJ prebuilts_vndk_v28.tar.xz -C $GITHUB_WORKSPACE/artifacts/prebuilts/vndk/v28/ .
+tar cfJ prebuilts_vndk_v28.tar.zst -C $GITHUB_WORKSPACE/artifacts/prebuilts/vndk/v28/ .
 
 du -ah -d1
 
-if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_vndk_v28.tar.xz" ]; then
-  echo "Compressing prebuilts/vndk/v28 -> prebuilts_vndk_v28.tar.xz"
-  tar cfJ $GITHUB_WORKSPACE/cache/prebuilts_vndk_v28.tar.xz -C $GITHUB_WORKSPACE/aosp/prebuilts/vndk/v28/ .
+if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_vndk_v28.tar.zst" ]; then
+  echo "Compressing prebuilts/vndk/v28 -> prebuilts_vndk_v28.tar.zst"
+  tar cfJ $GITHUB_WORKSPACE/cache/prebuilts_vndk_v28.tar.zst -C $GITHUB_WORKSPACE/aosp/prebuilts/vndk/v28/ .
 fi
 du -ah -d1 $GITHUB_WORKSPACE/cache
 

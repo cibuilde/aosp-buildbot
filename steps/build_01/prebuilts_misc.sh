@@ -21,13 +21,13 @@ rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/prebuilts/misc/gdbse
 rm -rf out
 
 cd $GITHUB_WORKSPACE/
-tar cfJ prebuilts_misc.tar.xz -C $GITHUB_WORKSPACE/artifacts/prebuilts/misc/ .
+tar cfJ prebuilts_misc.tar.zst -C $GITHUB_WORKSPACE/artifacts/prebuilts/misc/ .
 
 du -ah -d1
 
-if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_misc.tar.xz" ]; then
-  echo "Compressing prebuilts/misc -> prebuilts_misc.tar.xz"
-  tar cfJ $GITHUB_WORKSPACE/cache/prebuilts_misc.tar.xz -C $GITHUB_WORKSPACE/aosp/prebuilts/misc/ .
+if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_misc.tar.zst" ]; then
+  echo "Compressing prebuilts/misc -> prebuilts_misc.tar.zst"
+  tar cfJ $GITHUB_WORKSPACE/cache/prebuilts_misc.tar.zst -C $GITHUB_WORKSPACE/aosp/prebuilts/misc/ .
 fi
 du -ah -d1 $GITHUB_WORKSPACE/cache
 

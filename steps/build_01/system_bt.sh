@@ -21,13 +21,13 @@ rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/bt/bt_stack.c
 rm -rf out
 
 cd $GITHUB_WORKSPACE/
-tar cfJ system_bt.tar.xz -C $GITHUB_WORKSPACE/artifacts/system/bt/ .
+tar cfJ system_bt.tar.zst -C $GITHUB_WORKSPACE/artifacts/system/bt/ .
 
 du -ah -d1
 
-if [ ! -f "$GITHUB_WORKSPACE/cache/system_bt.tar.xz" ]; then
-  echo "Compressing system/bt -> system_bt.tar.xz"
-  tar cfJ $GITHUB_WORKSPACE/cache/system_bt.tar.xz -C $GITHUB_WORKSPACE/aosp/system/bt/ .
+if [ ! -f "$GITHUB_WORKSPACE/cache/system_bt.tar.zst" ]; then
+  echo "Compressing system/bt -> system_bt.tar.zst"
+  tar cfJ $GITHUB_WORKSPACE/cache/system_bt.tar.zst -C $GITHUB_WORKSPACE/aosp/system/bt/ .
 fi
 du -ah -d1 $GITHUB_WORKSPACE/cache
 

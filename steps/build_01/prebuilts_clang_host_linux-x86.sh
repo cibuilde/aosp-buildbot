@@ -56,17 +56,17 @@ rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/prebuilts/clang/host
 rm -rf out
 
 cd $GITHUB_WORKSPACE/
-tar cfJ prebuilts_clang_host_linux-x86.tar.xz -C $GITHUB_WORKSPACE/artifacts/prebuilts/clang/host/linux-x86/ .
+tar cfJ prebuilts_clang_host_linux-x86.tar.zst -C $GITHUB_WORKSPACE/artifacts/prebuilts/clang/host/linux-x86/ .
 
 du -ah -d1
 
-if [ ! -f "$GITHUB_WORKSPACE/cache/build_soong.tar.xz" ]; then
-  echo "Compressing build/soong -> build_soong.tar.xz"
-  tar cfJ $GITHUB_WORKSPACE/cache/build_soong.tar.xz -C $GITHUB_WORKSPACE/aosp/build/soong/ .
+if [ ! -f "$GITHUB_WORKSPACE/cache/build_soong.tar.zst" ]; then
+  echo "Compressing build/soong -> build_soong.tar.zst"
+  tar cfJ $GITHUB_WORKSPACE/cache/build_soong.tar.zst -C $GITHUB_WORKSPACE/aosp/build/soong/ .
 fi
-if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_clang_host_linux-x86.tar.xz" ]; then
-  echo "Compressing prebuilts/clang/host/linux-x86 -> prebuilts_clang_host_linux-x86.tar.xz"
-  tar cfJ $GITHUB_WORKSPACE/cache/prebuilts_clang_host_linux-x86.tar.xz -C $GITHUB_WORKSPACE/aosp/prebuilts/clang/host/linux-x86/ .
+if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_clang_host_linux-x86.tar.zst" ]; then
+  echo "Compressing prebuilts/clang/host/linux-x86 -> prebuilts_clang_host_linux-x86.tar.zst"
+  tar cfJ $GITHUB_WORKSPACE/cache/prebuilts_clang_host_linux-x86.tar.zst -C $GITHUB_WORKSPACE/aosp/prebuilts/clang/host/linux-x86/ .
 fi
 du -ah -d1 $GITHUB_WORKSPACE/cache
 

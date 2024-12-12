@@ -189,25 +189,25 @@ rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/sepolicy/vend
 rm -rf out
 
 cd $GITHUB_WORKSPACE/
-tar cfJ system_sepolicy.tar.xz -C $GITHUB_WORKSPACE/artifacts/system/sepolicy/ .
+tar cfJ system_sepolicy.tar.zst -C $GITHUB_WORKSPACE/artifacts/system/sepolicy/ .
 
 du -ah -d1
 
-if [ ! -f "$GITHUB_WORKSPACE/cache/art.tar.xz" ]; then
-  echo "Compressing art -> art.tar.xz"
-  tar cfJ $GITHUB_WORKSPACE/cache/art.tar.xz -C $GITHUB_WORKSPACE/aosp/art/ .
+if [ ! -f "$GITHUB_WORKSPACE/cache/art.tar.zst" ]; then
+  echo "Compressing art -> art.tar.zst"
+  tar cfJ $GITHUB_WORKSPACE/cache/art.tar.zst -C $GITHUB_WORKSPACE/aosp/art/ .
 fi
-if [ ! -f "$GITHUB_WORKSPACE/cache/device_google_cuttlefish.tar.xz" ]; then
-  echo "Compressing device/google/cuttlefish -> device_google_cuttlefish.tar.xz"
-  tar cfJ $GITHUB_WORKSPACE/cache/device_google_cuttlefish.tar.xz -C $GITHUB_WORKSPACE/aosp/device/google/cuttlefish/ .
+if [ ! -f "$GITHUB_WORKSPACE/cache/device_google_cuttlefish.tar.zst" ]; then
+  echo "Compressing device/google/cuttlefish -> device_google_cuttlefish.tar.zst"
+  tar cfJ $GITHUB_WORKSPACE/cache/device_google_cuttlefish.tar.zst -C $GITHUB_WORKSPACE/aosp/device/google/cuttlefish/ .
 fi
-if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_build-tools.tar.xz" ]; then
-  echo "Compressing prebuilts/build-tools -> prebuilts_build-tools.tar.xz"
-  tar cfJ $GITHUB_WORKSPACE/cache/prebuilts_build-tools.tar.xz -C $GITHUB_WORKSPACE/aosp/prebuilts/build-tools/ .
+if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_build-tools.tar.zst" ]; then
+  echo "Compressing prebuilts/build-tools -> prebuilts_build-tools.tar.zst"
+  tar cfJ $GITHUB_WORKSPACE/cache/prebuilts_build-tools.tar.zst -C $GITHUB_WORKSPACE/aosp/prebuilts/build-tools/ .
 fi
-if [ ! -f "$GITHUB_WORKSPACE/cache/system_sepolicy.tar.xz" ]; then
-  echo "Compressing system/sepolicy -> system_sepolicy.tar.xz"
-  tar cfJ $GITHUB_WORKSPACE/cache/system_sepolicy.tar.xz -C $GITHUB_WORKSPACE/aosp/system/sepolicy/ .
+if [ ! -f "$GITHUB_WORKSPACE/cache/system_sepolicy.tar.zst" ]; then
+  echo "Compressing system/sepolicy -> system_sepolicy.tar.zst"
+  tar cfJ $GITHUB_WORKSPACE/cache/system_sepolicy.tar.zst -C $GITHUB_WORKSPACE/aosp/system/sepolicy/ .
 fi
 du -ah -d1 $GITHUB_WORKSPACE/cache
 

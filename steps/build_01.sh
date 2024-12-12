@@ -4,8 +4,8 @@ source $GITHUB_WORKSPACE/envsetup.sh
 clone_sparse prebuilts/clang/host/linux-x86 clang-r416183b1 clang-r416183b soong
 
 mkdir -p $GITHUB_WORKSPACE/cache
-echo "Compressing prebuilts/clang/host/linux-x86 -> prebuilts_clang_host_linux-x86.tar.xz"
-tar cfJ $GITHUB_WORKSPACE/cache/prebuilts_clang_host_linux-x86.tar.xz -C $GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86/ .
+echo "Compressing prebuilts/clang/host/linux-x86 -> prebuilts_clang_host_linux-x86.tar.zst"
+tar cfJ $GITHUB_WORKSPACE/cache/prebuilts_clang_host_linux-x86.tar.zst -C $GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86/ .
 time source steps/build_01/art.sh
 time source steps/build_01/bionic.sh
 time source steps/build_01/bootable_recovery.sh

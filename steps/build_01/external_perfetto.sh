@@ -16,13 +16,13 @@ rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/perfetto/mm
 rm -rf out
 
 cd $GITHUB_WORKSPACE/
-tar cfJ external_perfetto.tar.xz -C $GITHUB_WORKSPACE/artifacts/external/perfetto/ .
+tar cfJ external_perfetto.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/perfetto/ .
 
 du -ah -d1
 
-if [ ! -f "$GITHUB_WORKSPACE/cache/external_perfetto.tar.xz" ]; then
-  echo "Compressing external/perfetto -> external_perfetto.tar.xz"
-  tar cfJ $GITHUB_WORKSPACE/cache/external_perfetto.tar.xz -C $GITHUB_WORKSPACE/aosp/external/perfetto/ .
+if [ ! -f "$GITHUB_WORKSPACE/cache/external_perfetto.tar.zst" ]; then
+  echo "Compressing external/perfetto -> external_perfetto.tar.zst"
+  tar cfJ $GITHUB_WORKSPACE/cache/external_perfetto.tar.zst -C $GITHUB_WORKSPACE/aosp/external/perfetto/ .
 fi
 du -ah -d1 $GITHUB_WORKSPACE/cache
 

@@ -16,13 +16,13 @@ rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/apache-http
 rm -rf out
 
 cd $GITHUB_WORKSPACE/
-tar cfJ external_apache-http.tar.xz -C $GITHUB_WORKSPACE/artifacts/external/apache-http/ .
+tar cfJ external_apache-http.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/apache-http/ .
 
 du -ah -d1
 
-if [ ! -f "$GITHUB_WORKSPACE/cache/external_apache-http.tar.xz" ]; then
-  echo "Compressing external/apache-http -> external_apache-http.tar.xz"
-  tar cfJ $GITHUB_WORKSPACE/cache/external_apache-http.tar.xz -C $GITHUB_WORKSPACE/aosp/external/apache-http/ .
+if [ ! -f "$GITHUB_WORKSPACE/cache/external_apache-http.tar.zst" ]; then
+  echo "Compressing external/apache-http -> external_apache-http.tar.zst"
+  tar cfJ $GITHUB_WORKSPACE/cache/external_apache-http.tar.zst -C $GITHUB_WORKSPACE/aosp/external/apache-http/ .
 fi
 du -ah -d1 $GITHUB_WORKSPACE/cache
 

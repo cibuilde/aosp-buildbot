@@ -16,13 +16,13 @@ rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/conscrypt/c
 rm -rf out
 
 cd $GITHUB_WORKSPACE/
-tar cfJ external_conscrypt.tar.xz -C $GITHUB_WORKSPACE/artifacts/external/conscrypt/ .
+tar cfJ external_conscrypt.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/conscrypt/ .
 
 du -ah -d1
 
-if [ ! -f "$GITHUB_WORKSPACE/cache/external_conscrypt.tar.xz" ]; then
-  echo "Compressing external/conscrypt -> external_conscrypt.tar.xz"
-  tar cfJ $GITHUB_WORKSPACE/cache/external_conscrypt.tar.xz -C $GITHUB_WORKSPACE/aosp/external/conscrypt/ .
+if [ ! -f "$GITHUB_WORKSPACE/cache/external_conscrypt.tar.zst" ]; then
+  echo "Compressing external/conscrypt -> external_conscrypt.tar.zst"
+  tar cfJ $GITHUB_WORKSPACE/cache/external_conscrypt.tar.zst -C $GITHUB_WORKSPACE/aosp/external/conscrypt/ .
 fi
 du -ah -d1 $GITHUB_WORKSPACE/cache
 

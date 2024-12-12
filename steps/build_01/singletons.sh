@@ -58,21 +58,21 @@ rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/singletons/vndksp_li
 rm -rf out
 
 cd $GITHUB_WORKSPACE/
-tar cfJ singletons.tar.xz -C $GITHUB_WORKSPACE/artifacts/singletons/ .
+tar cfJ singletons.tar.zst -C $GITHUB_WORKSPACE/artifacts/singletons/ .
 
 du -ah -d1
 
-if [ ! -f "$GITHUB_WORKSPACE/cache/art.tar.xz" ]; then
-  echo "Compressing art -> art.tar.xz"
-  tar cfJ $GITHUB_WORKSPACE/cache/art.tar.xz -C $GITHUB_WORKSPACE/aosp/art/ .
+if [ ! -f "$GITHUB_WORKSPACE/cache/art.tar.zst" ]; then
+  echo "Compressing art -> art.tar.zst"
+  tar cfJ $GITHUB_WORKSPACE/cache/art.tar.zst -C $GITHUB_WORKSPACE/aosp/art/ .
 fi
-if [ ! -f "$GITHUB_WORKSPACE/cache/packages_modules_vndk.tar.xz" ]; then
-  echo "Compressing packages/modules/vndk -> packages_modules_vndk.tar.xz"
-  tar cfJ $GITHUB_WORKSPACE/cache/packages_modules_vndk.tar.xz -C $GITHUB_WORKSPACE/aosp/packages/modules/vndk/ .
+if [ ! -f "$GITHUB_WORKSPACE/cache/packages_modules_vndk.tar.zst" ]; then
+  echo "Compressing packages/modules/vndk -> packages_modules_vndk.tar.zst"
+  tar cfJ $GITHUB_WORKSPACE/cache/packages_modules_vndk.tar.zst -C $GITHUB_WORKSPACE/aosp/packages/modules/vndk/ .
 fi
-if [ ! -f "$GITHUB_WORKSPACE/cache/singletons.tar.xz" ]; then
-  echo "Compressing singletons -> singletons.tar.xz"
-  tar cfJ $GITHUB_WORKSPACE/cache/singletons.tar.xz -C $GITHUB_WORKSPACE/aosp/singletons/ .
+if [ ! -f "$GITHUB_WORKSPACE/cache/singletons.tar.zst" ]; then
+  echo "Compressing singletons -> singletons.tar.zst"
+  tar cfJ $GITHUB_WORKSPACE/cache/singletons.tar.zst -C $GITHUB_WORKSPACE/aosp/singletons/ .
 fi
 du -ah -d1 $GITHUB_WORKSPACE/cache
 

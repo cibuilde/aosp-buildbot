@@ -21,13 +21,13 @@ rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/packages/modules/Sdk
 rm -rf out
 
 cd $GITHUB_WORKSPACE/
-tar cfJ packages_modules_SdkExtensions.tar.xz -C $GITHUB_WORKSPACE/artifacts/packages/modules/SdkExtensions/ .
+tar cfJ packages_modules_SdkExtensions.tar.zst -C $GITHUB_WORKSPACE/artifacts/packages/modules/SdkExtensions/ .
 
 du -ah -d1
 
-if [ ! -f "$GITHUB_WORKSPACE/cache/packages_modules_SdkExtensions.tar.xz" ]; then
-  echo "Compressing packages/modules/SdkExtensions -> packages_modules_SdkExtensions.tar.xz"
-  tar cfJ $GITHUB_WORKSPACE/cache/packages_modules_SdkExtensions.tar.xz -C $GITHUB_WORKSPACE/aosp/packages/modules/SdkExtensions/ .
+if [ ! -f "$GITHUB_WORKSPACE/cache/packages_modules_SdkExtensions.tar.zst" ]; then
+  echo "Compressing packages/modules/SdkExtensions -> packages_modules_SdkExtensions.tar.zst"
+  tar cfJ $GITHUB_WORKSPACE/cache/packages_modules_SdkExtensions.tar.zst -C $GITHUB_WORKSPACE/aosp/packages/modules/SdkExtensions/ .
 fi
 du -ah -d1 $GITHUB_WORKSPACE/cache
 

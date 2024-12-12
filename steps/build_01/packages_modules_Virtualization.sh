@@ -51,13 +51,13 @@ rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/packages/modules/Vir
 rm -rf out
 
 cd $GITHUB_WORKSPACE/
-tar cfJ packages_modules_Virtualization.tar.xz -C $GITHUB_WORKSPACE/artifacts/packages/modules/Virtualization/ .
+tar cfJ packages_modules_Virtualization.tar.zst -C $GITHUB_WORKSPACE/artifacts/packages/modules/Virtualization/ .
 
 du -ah -d1
 
-if [ ! -f "$GITHUB_WORKSPACE/cache/packages_modules_Virtualization.tar.xz" ]; then
-  echo "Compressing packages/modules/Virtualization -> packages_modules_Virtualization.tar.xz"
-  tar cfJ $GITHUB_WORKSPACE/cache/packages_modules_Virtualization.tar.xz -C $GITHUB_WORKSPACE/aosp/packages/modules/Virtualization/ .
+if [ ! -f "$GITHUB_WORKSPACE/cache/packages_modules_Virtualization.tar.zst" ]; then
+  echo "Compressing packages/modules/Virtualization -> packages_modules_Virtualization.tar.zst"
+  tar cfJ $GITHUB_WORKSPACE/cache/packages_modules_Virtualization.tar.zst -C $GITHUB_WORKSPACE/aosp/packages/modules/Virtualization/ .
 fi
 du -ah -d1 $GITHUB_WORKSPACE/cache
 

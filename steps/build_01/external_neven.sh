@@ -21,13 +21,13 @@ rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/neven/RFFst
 rm -rf out
 
 cd $GITHUB_WORKSPACE/
-tar cfJ external_neven.tar.xz -C $GITHUB_WORKSPACE/artifacts/external/neven/ .
+tar cfJ external_neven.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/neven/ .
 
 du -ah -d1
 
-if [ ! -f "$GITHUB_WORKSPACE/cache/external_neven.tar.xz" ]; then
-  echo "Compressing external/neven -> external_neven.tar.xz"
-  tar cfJ $GITHUB_WORKSPACE/cache/external_neven.tar.xz -C $GITHUB_WORKSPACE/aosp/external/neven/ .
+if [ ! -f "$GITHUB_WORKSPACE/cache/external_neven.tar.zst" ]; then
+  echo "Compressing external/neven -> external_neven.tar.zst"
+  tar cfJ $GITHUB_WORKSPACE/cache/external_neven.tar.zst -C $GITHUB_WORKSPACE/aosp/external/neven/ .
 fi
 du -ah -d1 $GITHUB_WORKSPACE/cache
 

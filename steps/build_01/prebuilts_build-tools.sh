@@ -31,13 +31,13 @@ rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/prebuilts/build-tool
 rm -rf out
 
 cd $GITHUB_WORKSPACE/
-tar cfJ prebuilts_build-tools.tar.xz -C $GITHUB_WORKSPACE/artifacts/prebuilts/build-tools/ .
+tar cfJ prebuilts_build-tools.tar.zst -C $GITHUB_WORKSPACE/artifacts/prebuilts/build-tools/ .
 
 du -ah -d1
 
-if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_build-tools.tar.xz" ]; then
-  echo "Compressing prebuilts/build-tools -> prebuilts_build-tools.tar.xz"
-  tar cfJ $GITHUB_WORKSPACE/cache/prebuilts_build-tools.tar.xz -C $GITHUB_WORKSPACE/aosp/prebuilts/build-tools/ .
+if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_build-tools.tar.zst" ]; then
+  echo "Compressing prebuilts/build-tools -> prebuilts_build-tools.tar.zst"
+  tar cfJ $GITHUB_WORKSPACE/cache/prebuilts_build-tools.tar.zst -C $GITHUB_WORKSPACE/aosp/prebuilts/build-tools/ .
 fi
 du -ah -d1 $GITHUB_WORKSPACE/cache
 

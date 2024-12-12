@@ -16,17 +16,17 @@ rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/frameworks/libs/modu
 rm -rf out
 
 cd $GITHUB_WORKSPACE/
-tar cfJ frameworks_libs_modules-utils.tar.xz -C $GITHUB_WORKSPACE/artifacts/frameworks/libs/modules-utils/ .
+tar cfJ frameworks_libs_modules-utils.tar.zst -C $GITHUB_WORKSPACE/artifacts/frameworks/libs/modules-utils/ .
 
 du -ah -d1
 
-if [ ! -f "$GITHUB_WORKSPACE/cache/frameworks_libs_modules-utils.tar.xz" ]; then
-  echo "Compressing frameworks/libs/modules-utils -> frameworks_libs_modules-utils.tar.xz"
-  tar cfJ $GITHUB_WORKSPACE/cache/frameworks_libs_modules-utils.tar.xz -C $GITHUB_WORKSPACE/aosp/frameworks/libs/modules-utils/ .
+if [ ! -f "$GITHUB_WORKSPACE/cache/frameworks_libs_modules-utils.tar.zst" ]; then
+  echo "Compressing frameworks/libs/modules-utils -> frameworks_libs_modules-utils.tar.zst"
+  tar cfJ $GITHUB_WORKSPACE/cache/frameworks_libs_modules-utils.tar.zst -C $GITHUB_WORKSPACE/aosp/frameworks/libs/modules-utils/ .
 fi
-if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_clang_host_linux-x86.tar.xz" ]; then
-  echo "Compressing prebuilts/clang/host/linux-x86 -> prebuilts_clang_host_linux-x86.tar.xz"
-  tar cfJ $GITHUB_WORKSPACE/cache/prebuilts_clang_host_linux-x86.tar.xz -C $GITHUB_WORKSPACE/aosp/prebuilts/clang/host/linux-x86/ .
+if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_clang_host_linux-x86.tar.zst" ]; then
+  echo "Compressing prebuilts/clang/host/linux-x86 -> prebuilts_clang_host_linux-x86.tar.zst"
+  tar cfJ $GITHUB_WORKSPACE/cache/prebuilts_clang_host_linux-x86.tar.zst -C $GITHUB_WORKSPACE/aosp/prebuilts/clang/host/linux-x86/ .
 fi
 du -ah -d1 $GITHUB_WORKSPACE/cache
 

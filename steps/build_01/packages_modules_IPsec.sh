@@ -16,13 +16,13 @@ rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/packages/modules/IPs
 rm -rf out
 
 cd $GITHUB_WORKSPACE/
-tar cfJ packages_modules_IPsec.tar.xz -C $GITHUB_WORKSPACE/artifacts/packages/modules/IPsec/ .
+tar cfJ packages_modules_IPsec.tar.zst -C $GITHUB_WORKSPACE/artifacts/packages/modules/IPsec/ .
 
 du -ah -d1
 
-if [ ! -f "$GITHUB_WORKSPACE/cache/packages_modules_IPsec.tar.xz" ]; then
-  echo "Compressing packages/modules/IPsec -> packages_modules_IPsec.tar.xz"
-  tar cfJ $GITHUB_WORKSPACE/cache/packages_modules_IPsec.tar.xz -C $GITHUB_WORKSPACE/aosp/packages/modules/IPsec/ .
+if [ ! -f "$GITHUB_WORKSPACE/cache/packages_modules_IPsec.tar.zst" ]; then
+  echo "Compressing packages/modules/IPsec -> packages_modules_IPsec.tar.zst"
+  tar cfJ $GITHUB_WORKSPACE/cache/packages_modules_IPsec.tar.zst -C $GITHUB_WORKSPACE/aosp/packages/modules/IPsec/ .
 fi
 du -ah -d1 $GITHUB_WORKSPACE/cache
 

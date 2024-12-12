@@ -21,13 +21,13 @@ rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/roboto-font
 rm -rf out
 
 cd $GITHUB_WORKSPACE/
-tar cfJ external_roboto-fonts.tar.xz -C $GITHUB_WORKSPACE/artifacts/external/roboto-fonts/ .
+tar cfJ external_roboto-fonts.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/roboto-fonts/ .
 
 du -ah -d1
 
-if [ ! -f "$GITHUB_WORKSPACE/cache/external_roboto-fonts.tar.xz" ]; then
-  echo "Compressing external/roboto-fonts -> external_roboto-fonts.tar.xz"
-  tar cfJ $GITHUB_WORKSPACE/cache/external_roboto-fonts.tar.xz -C $GITHUB_WORKSPACE/aosp/external/roboto-fonts/ .
+if [ ! -f "$GITHUB_WORKSPACE/cache/external_roboto-fonts.tar.zst" ]; then
+  echo "Compressing external/roboto-fonts -> external_roboto-fonts.tar.zst"
+  tar cfJ $GITHUB_WORKSPACE/cache/external_roboto-fonts.tar.zst -C $GITHUB_WORKSPACE/aosp/external/roboto-fonts/ .
 fi
 du -ah -d1 $GITHUB_WORKSPACE/cache
 

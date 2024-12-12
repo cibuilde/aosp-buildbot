@@ -27,21 +27,21 @@ rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/prebuilts/rust/libco
 rm -rf out
 
 cd $GITHUB_WORKSPACE/
-tar cfJ prebuilts_rust.tar.xz -C $GITHUB_WORKSPACE/artifacts/prebuilts/rust/ .
+tar cfJ prebuilts_rust.tar.zst -C $GITHUB_WORKSPACE/artifacts/prebuilts/rust/ .
 
 du -ah -d1
 
-if [ ! -f "$GITHUB_WORKSPACE/cache/libcore.tar.xz" ]; then
-  echo "Compressing libcore -> libcore.tar.xz"
-  tar cfJ $GITHUB_WORKSPACE/cache/libcore.tar.xz -C $GITHUB_WORKSPACE/aosp/libcore/ .
+if [ ! -f "$GITHUB_WORKSPACE/cache/libcore.tar.zst" ]; then
+  echo "Compressing libcore -> libcore.tar.zst"
+  tar cfJ $GITHUB_WORKSPACE/cache/libcore.tar.zst -C $GITHUB_WORKSPACE/aosp/libcore/ .
 fi
-if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_clang_host_linux-x86.tar.xz" ]; then
-  echo "Compressing prebuilts/clang/host/linux-x86 -> prebuilts_clang_host_linux-x86.tar.xz"
-  tar cfJ $GITHUB_WORKSPACE/cache/prebuilts_clang_host_linux-x86.tar.xz -C $GITHUB_WORKSPACE/aosp/prebuilts/clang/host/linux-x86/ .
+if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_clang_host_linux-x86.tar.zst" ]; then
+  echo "Compressing prebuilts/clang/host/linux-x86 -> prebuilts_clang_host_linux-x86.tar.zst"
+  tar cfJ $GITHUB_WORKSPACE/cache/prebuilts_clang_host_linux-x86.tar.zst -C $GITHUB_WORKSPACE/aosp/prebuilts/clang/host/linux-x86/ .
 fi
-if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_rust.tar.xz" ]; then
-  echo "Compressing prebuilts/rust -> prebuilts_rust.tar.xz"
-  tar cfJ $GITHUB_WORKSPACE/cache/prebuilts_rust.tar.xz -C $GITHUB_WORKSPACE/aosp/prebuilts/rust/ .
+if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_rust.tar.zst" ]; then
+  echo "Compressing prebuilts/rust -> prebuilts_rust.tar.zst"
+  tar cfJ $GITHUB_WORKSPACE/cache/prebuilts_rust.tar.zst -C $GITHUB_WORKSPACE/aosp/prebuilts/rust/ .
 fi
 du -ah -d1 $GITHUB_WORKSPACE/cache
 

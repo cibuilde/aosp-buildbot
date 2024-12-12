@@ -966,13 +966,13 @@ rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/ca-certificat
 rm -rf out
 
 cd $GITHUB_WORKSPACE/
-tar cfJ system_ca-certificates.tar.xz -C $GITHUB_WORKSPACE/artifacts/system/ca-certificates/ .
+tar cfJ system_ca-certificates.tar.zst -C $GITHUB_WORKSPACE/artifacts/system/ca-certificates/ .
 
 du -ah -d1
 
-if [ ! -f "$GITHUB_WORKSPACE/cache/system_ca-certificates.tar.xz" ]; then
-  echo "Compressing system/ca-certificates -> system_ca-certificates.tar.xz"
-  tar cfJ $GITHUB_WORKSPACE/cache/system_ca-certificates.tar.xz -C $GITHUB_WORKSPACE/aosp/system/ca-certificates/ .
+if [ ! -f "$GITHUB_WORKSPACE/cache/system_ca-certificates.tar.zst" ]; then
+  echo "Compressing system/ca-certificates -> system_ca-certificates.tar.zst"
+  tar cfJ $GITHUB_WORKSPACE/cache/system_ca-certificates.tar.zst -C $GITHUB_WORKSPACE/aosp/system/ca-certificates/ .
 fi
 du -ah -d1 $GITHUB_WORKSPACE/cache
 

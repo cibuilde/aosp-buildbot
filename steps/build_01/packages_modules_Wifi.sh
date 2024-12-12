@@ -16,13 +16,13 @@ rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/packages/modules/Wif
 rm -rf out
 
 cd $GITHUB_WORKSPACE/
-tar cfJ packages_modules_Wifi.tar.xz -C $GITHUB_WORKSPACE/artifacts/packages/modules/Wifi/ .
+tar cfJ packages_modules_Wifi.tar.zst -C $GITHUB_WORKSPACE/artifacts/packages/modules/Wifi/ .
 
 du -ah -d1
 
-if [ ! -f "$GITHUB_WORKSPACE/cache/packages_modules_Wifi.tar.xz" ]; then
-  echo "Compressing packages/modules/Wifi -> packages_modules_Wifi.tar.xz"
-  tar cfJ $GITHUB_WORKSPACE/cache/packages_modules_Wifi.tar.xz -C $GITHUB_WORKSPACE/aosp/packages/modules/Wifi/ .
+if [ ! -f "$GITHUB_WORKSPACE/cache/packages_modules_Wifi.tar.zst" ]; then
+  echo "Compressing packages/modules/Wifi -> packages_modules_Wifi.tar.zst"
+  tar cfJ $GITHUB_WORKSPACE/cache/packages_modules_Wifi.tar.zst -C $GITHUB_WORKSPACE/aosp/packages/modules/Wifi/ .
 fi
 du -ah -d1 $GITHUB_WORKSPACE/cache
 

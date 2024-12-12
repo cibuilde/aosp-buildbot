@@ -16,13 +16,13 @@ rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/frameworks/ex/sample
 rm -rf out
 
 cd $GITHUB_WORKSPACE/
-tar cfJ frameworks_ex.tar.xz -C $GITHUB_WORKSPACE/artifacts/frameworks/ex/ .
+tar cfJ frameworks_ex.tar.zst -C $GITHUB_WORKSPACE/artifacts/frameworks/ex/ .
 
 du -ah -d1
 
-if [ ! -f "$GITHUB_WORKSPACE/cache/frameworks_ex.tar.xz" ]; then
-  echo "Compressing frameworks/ex -> frameworks_ex.tar.xz"
-  tar cfJ $GITHUB_WORKSPACE/cache/frameworks_ex.tar.xz -C $GITHUB_WORKSPACE/aosp/frameworks/ex/ .
+if [ ! -f "$GITHUB_WORKSPACE/cache/frameworks_ex.tar.zst" ]; then
+  echo "Compressing frameworks/ex -> frameworks_ex.tar.zst"
+  tar cfJ $GITHUB_WORKSPACE/cache/frameworks_ex.tar.zst -C $GITHUB_WORKSPACE/aosp/frameworks/ex/ .
 fi
 du -ah -d1 $GITHUB_WORKSPACE/cache
 

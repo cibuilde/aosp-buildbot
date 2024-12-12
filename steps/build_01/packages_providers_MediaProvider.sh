@@ -16,13 +16,13 @@ rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/packages/providers/M
 rm -rf out
 
 cd $GITHUB_WORKSPACE/
-tar cfJ packages_providers_MediaProvider.tar.xz -C $GITHUB_WORKSPACE/artifacts/packages/providers/MediaProvider/ .
+tar cfJ packages_providers_MediaProvider.tar.zst -C $GITHUB_WORKSPACE/artifacts/packages/providers/MediaProvider/ .
 
 du -ah -d1
 
-if [ ! -f "$GITHUB_WORKSPACE/cache/packages_providers_MediaProvider.tar.xz" ]; then
-  echo "Compressing packages/providers/MediaProvider -> packages_providers_MediaProvider.tar.xz"
-  tar cfJ $GITHUB_WORKSPACE/cache/packages_providers_MediaProvider.tar.xz -C $GITHUB_WORKSPACE/aosp/packages/providers/MediaProvider/ .
+if [ ! -f "$GITHUB_WORKSPACE/cache/packages_providers_MediaProvider.tar.zst" ]; then
+  echo "Compressing packages/providers/MediaProvider -> packages_providers_MediaProvider.tar.zst"
+  tar cfJ $GITHUB_WORKSPACE/cache/packages_providers_MediaProvider.tar.zst -C $GITHUB_WORKSPACE/aosp/packages/providers/MediaProvider/ .
 fi
 du -ah -d1 $GITHUB_WORKSPACE/cache
 

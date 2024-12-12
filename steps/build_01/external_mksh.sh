@@ -21,13 +21,13 @@ rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/mksh/mkshrc
 rm -rf out
 
 cd $GITHUB_WORKSPACE/
-tar cfJ external_mksh.tar.xz -C $GITHUB_WORKSPACE/artifacts/external/mksh/ .
+tar cfJ external_mksh.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/mksh/ .
 
 du -ah -d1
 
-if [ ! -f "$GITHUB_WORKSPACE/cache/external_mksh.tar.xz" ]; then
-  echo "Compressing external/mksh -> external_mksh.tar.xz"
-  tar cfJ $GITHUB_WORKSPACE/cache/external_mksh.tar.xz -C $GITHUB_WORKSPACE/aosp/external/mksh/ .
+if [ ! -f "$GITHUB_WORKSPACE/cache/external_mksh.tar.zst" ]; then
+  echo "Compressing external/mksh -> external_mksh.tar.zst"
+  tar cfJ $GITHUB_WORKSPACE/cache/external_mksh.tar.zst -C $GITHUB_WORKSPACE/aosp/external/mksh/ .
 fi
 du -ah -d1 $GITHUB_WORKSPACE/cache
 

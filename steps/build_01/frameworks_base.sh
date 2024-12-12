@@ -308,125 +308,125 @@ rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/frameworks/base/xml2
 rm -rf out
 
 cd $GITHUB_WORKSPACE/
-tar cfJ frameworks_base.tar.xz -C $GITHUB_WORKSPACE/artifacts/frameworks/base/ .
+tar cfJ frameworks_base.tar.zst -C $GITHUB_WORKSPACE/artifacts/frameworks/base/ .
 
 du -ah -d1
 
-if [ ! -f "$GITHUB_WORKSPACE/cache/art.tar.xz" ]; then
-  echo "Compressing art -> art.tar.xz"
-  tar cfJ $GITHUB_WORKSPACE/cache/art.tar.xz -C $GITHUB_WORKSPACE/aosp/art/ .
+if [ ! -f "$GITHUB_WORKSPACE/cache/art.tar.zst" ]; then
+  echo "Compressing art -> art.tar.zst"
+  tar cfJ $GITHUB_WORKSPACE/cache/art.tar.zst -C $GITHUB_WORKSPACE/aosp/art/ .
 fi
-if [ ! -f "$GITHUB_WORKSPACE/cache/bionic.tar.xz" ]; then
-  echo "Compressing bionic -> bionic.tar.xz"
-  tar cfJ $GITHUB_WORKSPACE/cache/bionic.tar.xz -C $GITHUB_WORKSPACE/aosp/bionic/ .
+if [ ! -f "$GITHUB_WORKSPACE/cache/bionic.tar.zst" ]; then
+  echo "Compressing bionic -> bionic.tar.zst"
+  tar cfJ $GITHUB_WORKSPACE/cache/bionic.tar.zst -C $GITHUB_WORKSPACE/aosp/bionic/ .
 fi
-if [ ! -f "$GITHUB_WORKSPACE/cache/cts.tar.xz" ]; then
-  echo "Compressing cts -> cts.tar.xz"
-  tar cfJ $GITHUB_WORKSPACE/cache/cts.tar.xz -C $GITHUB_WORKSPACE/aosp/cts/ .
+if [ ! -f "$GITHUB_WORKSPACE/cache/cts.tar.zst" ]; then
+  echo "Compressing cts -> cts.tar.zst"
+  tar cfJ $GITHUB_WORKSPACE/cache/cts.tar.zst -C $GITHUB_WORKSPACE/aosp/cts/ .
 fi
-if [ ! -f "$GITHUB_WORKSPACE/cache/external_expat.tar.xz" ]; then
-  echo "Compressing external/expat -> external_expat.tar.xz"
-  tar cfJ $GITHUB_WORKSPACE/cache/external_expat.tar.xz -C $GITHUB_WORKSPACE/aosp/external/expat/ .
+if [ ! -f "$GITHUB_WORKSPACE/cache/external_expat.tar.zst" ]; then
+  echo "Compressing external/expat -> external_expat.tar.zst"
+  tar cfJ $GITHUB_WORKSPACE/cache/external_expat.tar.zst -C $GITHUB_WORKSPACE/aosp/external/expat/ .
 fi
-if [ ! -f "$GITHUB_WORKSPACE/cache/external_fmtlib.tar.xz" ]; then
-  echo "Compressing external/fmtlib -> external_fmtlib.tar.xz"
-  tar cfJ $GITHUB_WORKSPACE/cache/external_fmtlib.tar.xz -C $GITHUB_WORKSPACE/aosp/external/fmtlib/ .
+if [ ! -f "$GITHUB_WORKSPACE/cache/external_fmtlib.tar.zst" ]; then
+  echo "Compressing external/fmtlib -> external_fmtlib.tar.zst"
+  tar cfJ $GITHUB_WORKSPACE/cache/external_fmtlib.tar.zst -C $GITHUB_WORKSPACE/aosp/external/fmtlib/ .
 fi
-if [ ! -f "$GITHUB_WORKSPACE/cache/external_googletest.tar.xz" ]; then
-  echo "Compressing external/googletest -> external_googletest.tar.xz"
-  tar cfJ $GITHUB_WORKSPACE/cache/external_googletest.tar.xz -C $GITHUB_WORKSPACE/aosp/external/googletest/ .
+if [ ! -f "$GITHUB_WORKSPACE/cache/external_googletest.tar.zst" ]; then
+  echo "Compressing external/googletest -> external_googletest.tar.zst"
+  tar cfJ $GITHUB_WORKSPACE/cache/external_googletest.tar.zst -C $GITHUB_WORKSPACE/aosp/external/googletest/ .
 fi
-if [ ! -f "$GITHUB_WORKSPACE/cache/external_libcxx.tar.xz" ]; then
-  echo "Compressing external/libcxx -> external_libcxx.tar.xz"
-  tar cfJ $GITHUB_WORKSPACE/cache/external_libcxx.tar.xz -C $GITHUB_WORKSPACE/aosp/external/libcxx/ .
+if [ ! -f "$GITHUB_WORKSPACE/cache/external_libcxx.tar.zst" ]; then
+  echo "Compressing external/libcxx -> external_libcxx.tar.zst"
+  tar cfJ $GITHUB_WORKSPACE/cache/external_libcxx.tar.zst -C $GITHUB_WORKSPACE/aosp/external/libcxx/ .
 fi
-if [ ! -f "$GITHUB_WORKSPACE/cache/external_libcxxabi.tar.xz" ]; then
-  echo "Compressing external/libcxxabi -> external_libcxxabi.tar.xz"
-  tar cfJ $GITHUB_WORKSPACE/cache/external_libcxxabi.tar.xz -C $GITHUB_WORKSPACE/aosp/external/libcxxabi/ .
+if [ ! -f "$GITHUB_WORKSPACE/cache/external_libcxxabi.tar.zst" ]; then
+  echo "Compressing external/libcxxabi -> external_libcxxabi.tar.zst"
+  tar cfJ $GITHUB_WORKSPACE/cache/external_libcxxabi.tar.zst -C $GITHUB_WORKSPACE/aosp/external/libcxxabi/ .
 fi
-if [ ! -f "$GITHUB_WORKSPACE/cache/external_libpng.tar.xz" ]; then
-  echo "Compressing external/libpng -> external_libpng.tar.xz"
-  tar cfJ $GITHUB_WORKSPACE/cache/external_libpng.tar.xz -C $GITHUB_WORKSPACE/aosp/external/libpng/ .
+if [ ! -f "$GITHUB_WORKSPACE/cache/external_libpng.tar.zst" ]; then
+  echo "Compressing external/libpng -> external_libpng.tar.zst"
+  tar cfJ $GITHUB_WORKSPACE/cache/external_libpng.tar.zst -C $GITHUB_WORKSPACE/aosp/external/libpng/ .
 fi
-if [ ! -f "$GITHUB_WORKSPACE/cache/external_tinyxml2.tar.xz" ]; then
-  echo "Compressing external/tinyxml2 -> external_tinyxml2.tar.xz"
-  tar cfJ $GITHUB_WORKSPACE/cache/external_tinyxml2.tar.xz -C $GITHUB_WORKSPACE/aosp/external/tinyxml2/ .
+if [ ! -f "$GITHUB_WORKSPACE/cache/external_tinyxml2.tar.zst" ]; then
+  echo "Compressing external/tinyxml2 -> external_tinyxml2.tar.zst"
+  tar cfJ $GITHUB_WORKSPACE/cache/external_tinyxml2.tar.zst -C $GITHUB_WORKSPACE/aosp/external/tinyxml2/ .
 fi
-if [ ! -f "$GITHUB_WORKSPACE/cache/external_zlib.tar.xz" ]; then
-  echo "Compressing external/zlib -> external_zlib.tar.xz"
-  tar cfJ $GITHUB_WORKSPACE/cache/external_zlib.tar.xz -C $GITHUB_WORKSPACE/aosp/external/zlib/ .
+if [ ! -f "$GITHUB_WORKSPACE/cache/external_zlib.tar.zst" ]; then
+  echo "Compressing external/zlib -> external_zlib.tar.zst"
+  tar cfJ $GITHUB_WORKSPACE/cache/external_zlib.tar.zst -C $GITHUB_WORKSPACE/aosp/external/zlib/ .
 fi
-if [ ! -f "$GITHUB_WORKSPACE/cache/frameworks_av.tar.xz" ]; then
-  echo "Compressing frameworks/av -> frameworks_av.tar.xz"
-  tar cfJ $GITHUB_WORKSPACE/cache/frameworks_av.tar.xz -C $GITHUB_WORKSPACE/aosp/frameworks/av/ .
+if [ ! -f "$GITHUB_WORKSPACE/cache/frameworks_av.tar.zst" ]; then
+  echo "Compressing frameworks/av -> frameworks_av.tar.zst"
+  tar cfJ $GITHUB_WORKSPACE/cache/frameworks_av.tar.zst -C $GITHUB_WORKSPACE/aosp/frameworks/av/ .
 fi
-if [ ! -f "$GITHUB_WORKSPACE/cache/frameworks_base.tar.xz" ]; then
-  echo "Compressing frameworks/base -> frameworks_base.tar.xz"
-  tar cfJ $GITHUB_WORKSPACE/cache/frameworks_base.tar.xz -C $GITHUB_WORKSPACE/aosp/frameworks/base/ .
+if [ ! -f "$GITHUB_WORKSPACE/cache/frameworks_base.tar.zst" ]; then
+  echo "Compressing frameworks/base -> frameworks_base.tar.zst"
+  tar cfJ $GITHUB_WORKSPACE/cache/frameworks_base.tar.zst -C $GITHUB_WORKSPACE/aosp/frameworks/base/ .
 fi
-if [ ! -f "$GITHUB_WORKSPACE/cache/frameworks_native.tar.xz" ]; then
-  echo "Compressing frameworks/native -> frameworks_native.tar.xz"
-  tar cfJ $GITHUB_WORKSPACE/cache/frameworks_native.tar.xz -C $GITHUB_WORKSPACE/aosp/frameworks/native/ .
+if [ ! -f "$GITHUB_WORKSPACE/cache/frameworks_native.tar.zst" ]; then
+  echo "Compressing frameworks/native -> frameworks_native.tar.zst"
+  tar cfJ $GITHUB_WORKSPACE/cache/frameworks_native.tar.zst -C $GITHUB_WORKSPACE/aosp/frameworks/native/ .
 fi
-if [ ! -f "$GITHUB_WORKSPACE/cache/hardware_libhardware.tar.xz" ]; then
-  echo "Compressing hardware/libhardware -> hardware_libhardware.tar.xz"
-  tar cfJ $GITHUB_WORKSPACE/cache/hardware_libhardware.tar.xz -C $GITHUB_WORKSPACE/aosp/hardware/libhardware/ .
+if [ ! -f "$GITHUB_WORKSPACE/cache/hardware_libhardware.tar.zst" ]; then
+  echo "Compressing hardware/libhardware -> hardware_libhardware.tar.zst"
+  tar cfJ $GITHUB_WORKSPACE/cache/hardware_libhardware.tar.zst -C $GITHUB_WORKSPACE/aosp/hardware/libhardware/ .
 fi
-if [ ! -f "$GITHUB_WORKSPACE/cache/hardware_libhardware_legacy.tar.xz" ]; then
-  echo "Compressing hardware/libhardware_legacy -> hardware_libhardware_legacy.tar.xz"
-  tar cfJ $GITHUB_WORKSPACE/cache/hardware_libhardware_legacy.tar.xz -C $GITHUB_WORKSPACE/aosp/hardware/libhardware_legacy/ .
+if [ ! -f "$GITHUB_WORKSPACE/cache/hardware_libhardware_legacy.tar.zst" ]; then
+  echo "Compressing hardware/libhardware_legacy -> hardware_libhardware_legacy.tar.zst"
+  tar cfJ $GITHUB_WORKSPACE/cache/hardware_libhardware_legacy.tar.zst -C $GITHUB_WORKSPACE/aosp/hardware/libhardware_legacy/ .
 fi
-if [ ! -f "$GITHUB_WORKSPACE/cache/hardware_ril.tar.xz" ]; then
-  echo "Compressing hardware/ril -> hardware_ril.tar.xz"
-  tar cfJ $GITHUB_WORKSPACE/cache/hardware_ril.tar.xz -C $GITHUB_WORKSPACE/aosp/hardware/ril/ .
+if [ ! -f "$GITHUB_WORKSPACE/cache/hardware_ril.tar.zst" ]; then
+  echo "Compressing hardware/ril -> hardware_ril.tar.zst"
+  tar cfJ $GITHUB_WORKSPACE/cache/hardware_ril.tar.zst -C $GITHUB_WORKSPACE/aosp/hardware/ril/ .
 fi
-if [ ! -f "$GITHUB_WORKSPACE/cache/libnativehelper.tar.xz" ]; then
-  echo "Compressing libnativehelper -> libnativehelper.tar.xz"
-  tar cfJ $GITHUB_WORKSPACE/cache/libnativehelper.tar.xz -C $GITHUB_WORKSPACE/aosp/libnativehelper/ .
+if [ ! -f "$GITHUB_WORKSPACE/cache/libnativehelper.tar.zst" ]; then
+  echo "Compressing libnativehelper -> libnativehelper.tar.zst"
+  tar cfJ $GITHUB_WORKSPACE/cache/libnativehelper.tar.zst -C $GITHUB_WORKSPACE/aosp/libnativehelper/ .
 fi
-if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_clang_host_linux-x86.tar.xz" ]; then
-  echo "Compressing prebuilts/clang/host/linux-x86 -> prebuilts_clang_host_linux-x86.tar.xz"
-  tar cfJ $GITHUB_WORKSPACE/cache/prebuilts_clang_host_linux-x86.tar.xz -C $GITHUB_WORKSPACE/aosp/prebuilts/clang/host/linux-x86/ .
+if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_clang_host_linux-x86.tar.zst" ]; then
+  echo "Compressing prebuilts/clang/host/linux-x86 -> prebuilts_clang_host_linux-x86.tar.zst"
+  tar cfJ $GITHUB_WORKSPACE/cache/prebuilts_clang_host_linux-x86.tar.zst -C $GITHUB_WORKSPACE/aosp/prebuilts/clang/host/linux-x86/ .
 fi
-if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_gcc_linux-x86_host_x86_64-linux-glibc2.17-4.8.tar.xz" ]; then
-  echo "Compressing prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8 -> prebuilts_gcc_linux-x86_host_x86_64-linux-glibc2.17-4.8.tar.xz"
-  tar cfJ $GITHUB_WORKSPACE/cache/prebuilts_gcc_linux-x86_host_x86_64-linux-glibc2.17-4.8.tar.xz -C $GITHUB_WORKSPACE/aosp/prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8/ .
+if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_gcc_linux-x86_host_x86_64-linux-glibc2.17-4.8.tar.zst" ]; then
+  echo "Compressing prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8 -> prebuilts_gcc_linux-x86_host_x86_64-linux-glibc2.17-4.8.tar.zst"
+  tar cfJ $GITHUB_WORKSPACE/cache/prebuilts_gcc_linux-x86_host_x86_64-linux-glibc2.17-4.8.tar.zst -C $GITHUB_WORKSPACE/aosp/prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8/ .
 fi
-if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_gcc_linux-x86_x86_x86_64-linux-android-4.9.tar.xz" ]; then
-  echo "Compressing prebuilts/gcc/linux-x86/x86/x86_64-linux-android-4.9 -> prebuilts_gcc_linux-x86_x86_x86_64-linux-android-4.9.tar.xz"
-  tar cfJ $GITHUB_WORKSPACE/cache/prebuilts_gcc_linux-x86_x86_x86_64-linux-android-4.9.tar.xz -C $GITHUB_WORKSPACE/aosp/prebuilts/gcc/linux-x86/x86/x86_64-linux-android-4.9/ .
+if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_gcc_linux-x86_x86_x86_64-linux-android-4.9.tar.zst" ]; then
+  echo "Compressing prebuilts/gcc/linux-x86/x86/x86_64-linux-android-4.9 -> prebuilts_gcc_linux-x86_x86_x86_64-linux-android-4.9.tar.zst"
+  tar cfJ $GITHUB_WORKSPACE/cache/prebuilts_gcc_linux-x86_x86_x86_64-linux-android-4.9.tar.zst -C $GITHUB_WORKSPACE/aosp/prebuilts/gcc/linux-x86/x86/x86_64-linux-android-4.9/ .
 fi
-if [ ! -f "$GITHUB_WORKSPACE/cache/system_core.tar.xz" ]; then
-  echo "Compressing system/core -> system_core.tar.xz"
-  tar cfJ $GITHUB_WORKSPACE/cache/system_core.tar.xz -C $GITHUB_WORKSPACE/aosp/system/core/ .
+if [ ! -f "$GITHUB_WORKSPACE/cache/system_core.tar.zst" ]; then
+  echo "Compressing system/core -> system_core.tar.zst"
+  tar cfJ $GITHUB_WORKSPACE/cache/system_core.tar.zst -C $GITHUB_WORKSPACE/aosp/system/core/ .
 fi
-if [ ! -f "$GITHUB_WORKSPACE/cache/system_incremental_delivery.tar.xz" ]; then
-  echo "Compressing system/incremental_delivery -> system_incremental_delivery.tar.xz"
-  tar cfJ $GITHUB_WORKSPACE/cache/system_incremental_delivery.tar.xz -C $GITHUB_WORKSPACE/aosp/system/incremental_delivery/ .
+if [ ! -f "$GITHUB_WORKSPACE/cache/system_incremental_delivery.tar.zst" ]; then
+  echo "Compressing system/incremental_delivery -> system_incremental_delivery.tar.zst"
+  tar cfJ $GITHUB_WORKSPACE/cache/system_incremental_delivery.tar.zst -C $GITHUB_WORKSPACE/aosp/system/incremental_delivery/ .
 fi
-if [ ! -f "$GITHUB_WORKSPACE/cache/system_libbase.tar.xz" ]; then
-  echo "Compressing system/libbase -> system_libbase.tar.xz"
-  tar cfJ $GITHUB_WORKSPACE/cache/system_libbase.tar.xz -C $GITHUB_WORKSPACE/aosp/system/libbase/ .
+if [ ! -f "$GITHUB_WORKSPACE/cache/system_libbase.tar.zst" ]; then
+  echo "Compressing system/libbase -> system_libbase.tar.zst"
+  tar cfJ $GITHUB_WORKSPACE/cache/system_libbase.tar.zst -C $GITHUB_WORKSPACE/aosp/system/libbase/ .
 fi
-if [ ! -f "$GITHUB_WORKSPACE/cache/system_libziparchive.tar.xz" ]; then
-  echo "Compressing system/libziparchive -> system_libziparchive.tar.xz"
-  tar cfJ $GITHUB_WORKSPACE/cache/system_libziparchive.tar.xz -C $GITHUB_WORKSPACE/aosp/system/libziparchive/ .
+if [ ! -f "$GITHUB_WORKSPACE/cache/system_libziparchive.tar.zst" ]; then
+  echo "Compressing system/libziparchive -> system_libziparchive.tar.zst"
+  tar cfJ $GITHUB_WORKSPACE/cache/system_libziparchive.tar.zst -C $GITHUB_WORKSPACE/aosp/system/libziparchive/ .
 fi
-if [ ! -f "$GITHUB_WORKSPACE/cache/system_logging.tar.xz" ]; then
-  echo "Compressing system/logging -> system_logging.tar.xz"
-  tar cfJ $GITHUB_WORKSPACE/cache/system_logging.tar.xz -C $GITHUB_WORKSPACE/aosp/system/logging/ .
+if [ ! -f "$GITHUB_WORKSPACE/cache/system_logging.tar.zst" ]; then
+  echo "Compressing system/logging -> system_logging.tar.zst"
+  tar cfJ $GITHUB_WORKSPACE/cache/system_logging.tar.zst -C $GITHUB_WORKSPACE/aosp/system/logging/ .
 fi
-if [ ! -f "$GITHUB_WORKSPACE/cache/system_media.tar.xz" ]; then
-  echo "Compressing system/media -> system_media.tar.xz"
-  tar cfJ $GITHUB_WORKSPACE/cache/system_media.tar.xz -C $GITHUB_WORKSPACE/aosp/system/media/ .
+if [ ! -f "$GITHUB_WORKSPACE/cache/system_media.tar.zst" ]; then
+  echo "Compressing system/media -> system_media.tar.zst"
+  tar cfJ $GITHUB_WORKSPACE/cache/system_media.tar.zst -C $GITHUB_WORKSPACE/aosp/system/media/ .
 fi
-if [ ! -f "$GITHUB_WORKSPACE/cache/system_unwinding.tar.xz" ]; then
-  echo "Compressing system/unwinding -> system_unwinding.tar.xz"
-  tar cfJ $GITHUB_WORKSPACE/cache/system_unwinding.tar.xz -C $GITHUB_WORKSPACE/aosp/system/unwinding/ .
+if [ ! -f "$GITHUB_WORKSPACE/cache/system_unwinding.tar.zst" ]; then
+  echo "Compressing system/unwinding -> system_unwinding.tar.zst"
+  tar cfJ $GITHUB_WORKSPACE/cache/system_unwinding.tar.zst -C $GITHUB_WORKSPACE/aosp/system/unwinding/ .
 fi
-if [ ! -f "$GITHUB_WORKSPACE/cache/tools_dexter.tar.xz" ]; then
-  echo "Compressing tools/dexter -> tools_dexter.tar.xz"
-  tar cfJ $GITHUB_WORKSPACE/cache/tools_dexter.tar.xz -C $GITHUB_WORKSPACE/aosp/tools/dexter/ .
+if [ ! -f "$GITHUB_WORKSPACE/cache/tools_dexter.tar.zst" ]; then
+  echo "Compressing tools/dexter -> tools_dexter.tar.zst"
+  tar cfJ $GITHUB_WORKSPACE/cache/tools_dexter.tar.zst -C $GITHUB_WORKSPACE/aosp/tools/dexter/ .
 fi
 du -ah -d1 $GITHUB_WORKSPACE/cache
 

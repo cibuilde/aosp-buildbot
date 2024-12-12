@@ -16,13 +16,13 @@ rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/google-font
 rm -rf out
 
 cd $GITHUB_WORKSPACE/
-tar cfJ external_google-fonts_cutive-mono.tar.xz -C $GITHUB_WORKSPACE/artifacts/external/google-fonts/cutive-mono/ .
+tar cfJ external_google-fonts_cutive-mono.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/google-fonts/cutive-mono/ .
 
 du -ah -d1
 
-if [ ! -f "$GITHUB_WORKSPACE/cache/external_google-fonts_cutive-mono.tar.xz" ]; then
-  echo "Compressing external/google-fonts/cutive-mono -> external_google-fonts_cutive-mono.tar.xz"
-  tar cfJ $GITHUB_WORKSPACE/cache/external_google-fonts_cutive-mono.tar.xz -C $GITHUB_WORKSPACE/aosp/external/google-fonts/cutive-mono/ .
+if [ ! -f "$GITHUB_WORKSPACE/cache/external_google-fonts_cutive-mono.tar.zst" ]; then
+  echo "Compressing external/google-fonts/cutive-mono -> external_google-fonts_cutive-mono.tar.zst"
+  tar cfJ $GITHUB_WORKSPACE/cache/external_google-fonts_cutive-mono.tar.zst -C $GITHUB_WORKSPACE/aosp/external/google-fonts/cutive-mono/ .
 fi
 du -ah -d1 $GITHUB_WORKSPACE/cache
 
