@@ -69,10 +69,6 @@ if [ ! -f "$GITHUB_WORKSPACE/cache/packages_modules_vndk.tar.zst" ]; then
   echo "Compressing packages/modules/vndk -> packages_modules_vndk.tar.zst"
   tar cfJ $GITHUB_WORKSPACE/cache/packages_modules_vndk.tar.zst -C $GITHUB_WORKSPACE/aosp/packages/modules/vndk/ .
 fi
-if [ ! -f "$GITHUB_WORKSPACE/cache/singletons.tar.zst" ]; then
-  echo "Compressing singletons -> singletons.tar.zst"
-  tar cfJ $GITHUB_WORKSPACE/cache/singletons.tar.zst -C $GITHUB_WORKSPACE/aosp/singletons/ .
-fi
 du -ah -d1 $GITHUB_WORKSPACE/cache| sort -h
 
 rm -rf aosp

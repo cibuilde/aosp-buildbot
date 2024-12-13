@@ -6,8 +6,6 @@ tar xf $GITHUB_WORKSPACE/ninja.tar.zst
 clone_sparse prebuilts/clang/host/linux-x86 clang-r416183b1 clang-r416183b soong
 
 mkdir -p $GITHUB_WORKSPACE/cache
-echo "Compressing prebuilts/clang/host/linux-x86 -> prebuilts_clang_host_linux-x86.tar.zst"
-tar cfJ $GITHUB_WORKSPACE/cache/prebuilts_clang_host_linux-x86.tar.zst -C $GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86/ .
 
 time source steps/build_01/singletons.sh
 time source steps/build_01/system_apex.sh
@@ -218,3 +216,6 @@ time source steps/build_01/prebuilts_rust.sh
 time source steps/build_01/prebuilts_vndk_v28.sh
 time source steps/build_01/prebuilts_vndk_v29.sh
 time source steps/build_01/prebuilts_vndk_v30.sh
+
+echo "Compressing prebuilts/clang/host/linux-x86 -> prebuilts_clang_host_linux-x86.tar.zst"
+tar cfJ $GITHUB_WORKSPACE/cache/prebuilts_clang_host_linux-x86.tar.zst -C $GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86/ .
