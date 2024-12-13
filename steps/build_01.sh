@@ -9,14 +9,6 @@ mkdir -p $GITHUB_WORKSPACE/cache
 echo "Compressing prebuilts/clang/host/linux-x86 -> prebuilts_clang_host_linux-x86.tar.zst"
 tar cfJ $GITHUB_WORKSPACE/cache/prebuilts_clang_host_linux-x86.tar.zst -C $GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86/ .
 
-time source steps/build_01/prebuilts_build-tools.sh
-time source steps/build_01/prebuilts_clang_host_linux-x86.sh
-time source steps/build_01/prebuilts_misc.sh
-time source steps/build_01/prebuilts_ndk.sh
-time source steps/build_01/prebuilts_rust.sh
-time source steps/build_01/prebuilts_vndk_v28.sh
-time source steps/build_01/prebuilts_vndk_v29.sh
-time source steps/build_01/prebuilts_vndk_v30.sh
 time source steps/build_01/singletons.sh
 time source steps/build_01/system_apex.sh
 time source steps/build_01/system_bpf.sh
@@ -218,3 +210,11 @@ time source steps/build_01/packages_modules_Wifi.sh
 time source steps/build_01/packages_modules_adb.sh
 time source steps/build_01/packages_providers_MediaProvider.sh
 time source steps/build_01/packages_wallpapers_LivePicker.sh
+time source steps/build_01/prebuilts_build-tools.sh
+time source steps/build_01/prebuilts_clang_host_linux-x86.sh
+time source steps/build_01/prebuilts_misc.sh
+time source steps/build_01/prebuilts_ndk.sh
+time source steps/build_01/prebuilts_rust.sh
+time source steps/build_01/prebuilts_vndk_v28.sh
+time source steps/build_01/prebuilts_vndk_v29.sh
+time source steps/build_01/prebuilts_vndk_v30.sh

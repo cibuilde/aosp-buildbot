@@ -8,7 +8,6 @@ mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/
 
 clone_depth_platform art
 clone_depth_platform packages/modules/vndk
-clone_depth_platform singletons
 
 echo "building api_levels^"
 ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja api_levels,
