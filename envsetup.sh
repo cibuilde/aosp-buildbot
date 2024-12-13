@@ -6,7 +6,7 @@ function clone_depth() {
   #set -x
   local project_path=$1
   local path_key=${project_path//\//_}
-  local cache_file="$GITHUB_WORKSPACE/cache/${path_key}.tar.xz"
+  local cache_file="$GITHUB_WORKSPACE/cache/${path_key}.tar.zst"
   local project_name=$project_path
     # Add check for additional arguments
   if [ $# -gt 1 ]; then
@@ -28,7 +28,7 @@ function clone_depth_platform() {
   #set -x
   local project_path=$1
   local path_key=${project_path//\//_}
-  local cache_file="$GITHUB_WORKSPACE/cache/${path_key}.tar.xz"
+  local cache_file="$GITHUB_WORKSPACE/cache/${path_key}.tar.zst"
   
   if [ -f "$cache_file" ]; then
     echo "Cache hit: Extracting $cache_file to $project_path"
@@ -52,7 +52,7 @@ function clone_sparse() {
   #set -x
   local project_path=$1
   local path_key=${project_path//\//_}
-  local cache_file="$GITHUB_WORKSPACE/cache/${path_key}.tar.xz"
+  local cache_file="$GITHUB_WORKSPACE/cache/${path_key}.tar.zst"
   
   if [ -f "$cache_file" ]; then
     echo "Cache hit: Extracting $cache_file to $project_path"
@@ -70,7 +70,7 @@ function clone_sparse_exclude() {
   #set -x
   local project_path=$1
   local path_key=${project_path//\//_}
-  local cache_file="$GITHUB_WORKSPACE/cache/${path_key}.tar.xz"
+  local cache_file="$GITHUB_WORKSPACE/cache/${path_key}.tar.zst"
   
   if [ -f "$cache_file" ]; then
     echo "Cache hit: Extracting $cache_file to $project_path"

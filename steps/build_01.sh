@@ -1,6 +1,8 @@
 set -e
 
 source $GITHUB_WORKSPACE/envsetup.sh
+tar xf $GITHUB_WORKSPACE/ninja.tar.zst
+
 clone_sparse prebuilts/clang/host/linux-x86 clang-r416183b1 clang-r416183b soong
 
 mkdir -p $GITHUB_WORKSPACE/cache
