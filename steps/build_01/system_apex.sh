@@ -19,7 +19,7 @@ rm -rf out
 cd $GITHUB_WORKSPACE/
 tar cfJ system_apex.tar.zst -C $GITHUB_WORKSPACE/artifacts/system/apex/ .
 
-du -ah -d1
+du -ah -d1| sort -h
 
 if [ ! -f "$GITHUB_WORKSPACE/cache/cts.tar.zst" ]; then
   echo "Compressing cts -> cts.tar.zst"
@@ -29,6 +29,6 @@ if [ ! -f "$GITHUB_WORKSPACE/cache/system_apex.tar.zst" ]; then
   echo "Compressing system/apex -> system_apex.tar.zst"
   tar cfJ $GITHUB_WORKSPACE/cache/system_apex.tar.zst -C $GITHUB_WORKSPACE/aosp/system/apex/ .
 fi
-du -ah -d1 $GITHUB_WORKSPACE/cache
+du -ah -d1 $GITHUB_WORKSPACE/cache| sort -h
 
 rm -rf aosp

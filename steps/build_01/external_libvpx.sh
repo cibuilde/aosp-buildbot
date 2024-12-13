@@ -18,7 +18,7 @@ clone_depth_platform hardware/libhardware
 clone_depth_platform hardware/libhardware_legacy
 clone_depth_platform hardware/ril
 clone_depth_platform prebuilts/gcc/linux-x86/x86/x86_64-linux-android-4.9
-clone_sparse_exclude prebuilts/misc "!/common/robolectric" "!/darwin-x86" "!/darwin-x86_64" "!/gdbserver"
+clone_sparse_exclude prebuilts/misc "!/common/robolectric" "!/darwin-x86" "!/darwin-x86_64"
 clone_depth_platform system/core
 clone_depth_platform system/logging
 clone_depth_platform system/media
@@ -48,7 +48,7 @@ rm -rf out
 cd $GITHUB_WORKSPACE/
 tar cfJ external_libvpx.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/libvpx/ .
 
-du -ah -d1
+du -ah -d1| sort -h
 
 if [ ! -f "$GITHUB_WORKSPACE/cache/bionic.tar.zst" ]; then
   echo "Compressing bionic -> bionic.tar.zst"
@@ -118,6 +118,6 @@ if [ ! -f "$GITHUB_WORKSPACE/cache/system_media.tar.zst" ]; then
   echo "Compressing system/media -> system_media.tar.zst"
   tar cfJ $GITHUB_WORKSPACE/cache/system_media.tar.zst -C $GITHUB_WORKSPACE/aosp/system/media/ .
 fi
-du -ah -d1 $GITHUB_WORKSPACE/cache
+du -ah -d1 $GITHUB_WORKSPACE/cache| sort -h
 
 rm -rf aosp

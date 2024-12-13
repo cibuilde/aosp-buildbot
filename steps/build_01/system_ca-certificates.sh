@@ -968,12 +968,12 @@ rm -rf out
 cd $GITHUB_WORKSPACE/
 tar cfJ system_ca-certificates.tar.zst -C $GITHUB_WORKSPACE/artifacts/system/ca-certificates/ .
 
-du -ah -d1
+du -ah -d1| sort -h
 
 if [ ! -f "$GITHUB_WORKSPACE/cache/system_ca-certificates.tar.zst" ]; then
   echo "Compressing system/ca-certificates -> system_ca-certificates.tar.zst"
   tar cfJ $GITHUB_WORKSPACE/cache/system_ca-certificates.tar.zst -C $GITHUB_WORKSPACE/aosp/system/ca-certificates/ .
 fi
-du -ah -d1 $GITHUB_WORKSPACE/cache
+du -ah -d1 $GITHUB_WORKSPACE/cache| sort -h
 
 rm -rf aosp

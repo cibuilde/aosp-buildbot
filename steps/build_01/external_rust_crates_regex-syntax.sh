@@ -21,7 +21,7 @@ rm -rf out
 cd $GITHUB_WORKSPACE/
 tar cfJ external_rust_crates_regex-syntax.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/rust/crates/regex-syntax/ .
 
-du -ah -d1
+du -ah -d1| sort -h
 
 if [ ! -f "$GITHUB_WORKSPACE/cache/external_rust_crates_regex.tar.zst" ]; then
   echo "Compressing external/rust/crates/regex -> external_rust_crates_regex.tar.zst"
@@ -43,6 +43,6 @@ if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_rust.tar.zst" ]; then
   echo "Compressing prebuilts/rust -> prebuilts_rust.tar.zst"
   tar cfJ $GITHUB_WORKSPACE/cache/prebuilts_rust.tar.zst -C $GITHUB_WORKSPACE/aosp/prebuilts/rust/ .
 fi
-du -ah -d1 $GITHUB_WORKSPACE/cache
+du -ah -d1 $GITHUB_WORKSPACE/cache| sort -h
 
 rm -rf aosp

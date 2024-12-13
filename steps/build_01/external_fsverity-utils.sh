@@ -31,7 +31,7 @@ rm -rf out
 cd $GITHUB_WORKSPACE/
 tar cfJ external_fsverity-utils.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/fsverity-utils/ .
 
-du -ah -d1
+du -ah -d1| sort -h
 
 if [ ! -f "$GITHUB_WORKSPACE/cache/bionic.tar.zst" ]; then
   echo "Compressing bionic -> bionic.tar.zst"
@@ -93,6 +93,6 @@ if [ ! -f "$GITHUB_WORKSPACE/cache/system_media.tar.zst" ]; then
   echo "Compressing system/media -> system_media.tar.zst"
   tar cfJ $GITHUB_WORKSPACE/cache/system_media.tar.zst -C $GITHUB_WORKSPACE/aosp/system/media/ .
 fi
-du -ah -d1 $GITHUB_WORKSPACE/cache
+du -ah -d1 $GITHUB_WORKSPACE/cache| sort -h
 
 rm -rf aosp

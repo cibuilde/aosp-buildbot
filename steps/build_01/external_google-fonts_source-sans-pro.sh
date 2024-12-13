@@ -43,12 +43,12 @@ rm -rf out
 cd $GITHUB_WORKSPACE/
 tar cfJ external_google-fonts_source-sans-pro.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/google-fonts/source-sans-pro/ .
 
-du -ah -d1
+du -ah -d1| sort -h
 
 if [ ! -f "$GITHUB_WORKSPACE/cache/external_google-fonts_source-sans-pro.tar.zst" ]; then
   echo "Compressing external/google-fonts/source-sans-pro -> external_google-fonts_source-sans-pro.tar.zst"
   tar cfJ $GITHUB_WORKSPACE/cache/external_google-fonts_source-sans-pro.tar.zst -C $GITHUB_WORKSPACE/aosp/external/google-fonts/source-sans-pro/ .
 fi
-du -ah -d1 $GITHUB_WORKSPACE/cache
+du -ah -d1 $GITHUB_WORKSPACE/cache| sort -h
 
 rm -rf aosp

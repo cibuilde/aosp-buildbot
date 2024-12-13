@@ -18,12 +18,12 @@ rm -rf out
 cd $GITHUB_WORKSPACE/
 tar cfJ external_perfetto.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/perfetto/ .
 
-du -ah -d1
+du -ah -d1| sort -h
 
 if [ ! -f "$GITHUB_WORKSPACE/cache/external_perfetto.tar.zst" ]; then
   echo "Compressing external/perfetto -> external_perfetto.tar.zst"
   tar cfJ $GITHUB_WORKSPACE/cache/external_perfetto.tar.zst -C $GITHUB_WORKSPACE/aosp/external/perfetto/ .
 fi
-du -ah -d1 $GITHUB_WORKSPACE/cache
+du -ah -d1 $GITHUB_WORKSPACE/cache| sort -h
 
 rm -rf aosp

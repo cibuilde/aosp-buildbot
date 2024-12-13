@@ -18,12 +18,12 @@ rm -rf out
 cd $GITHUB_WORKSPACE/
 tar cfJ frameworks_ex.tar.zst -C $GITHUB_WORKSPACE/artifacts/frameworks/ex/ .
 
-du -ah -d1
+du -ah -d1| sort -h
 
 if [ ! -f "$GITHUB_WORKSPACE/cache/frameworks_ex.tar.zst" ]; then
   echo "Compressing frameworks/ex -> frameworks_ex.tar.zst"
   tar cfJ $GITHUB_WORKSPACE/cache/frameworks_ex.tar.zst -C $GITHUB_WORKSPACE/aosp/frameworks/ex/ .
 fi
-du -ah -d1 $GITHUB_WORKSPACE/cache
+du -ah -d1 $GITHUB_WORKSPACE/cache| sort -h
 
 rm -rf aosp

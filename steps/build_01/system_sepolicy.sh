@@ -191,7 +191,7 @@ rm -rf out
 cd $GITHUB_WORKSPACE/
 tar cfJ system_sepolicy.tar.zst -C $GITHUB_WORKSPACE/artifacts/system/sepolicy/ .
 
-du -ah -d1
+du -ah -d1| sort -h
 
 if [ ! -f "$GITHUB_WORKSPACE/cache/art.tar.zst" ]; then
   echo "Compressing art -> art.tar.zst"
@@ -209,6 +209,6 @@ if [ ! -f "$GITHUB_WORKSPACE/cache/system_sepolicy.tar.zst" ]; then
   echo "Compressing system/sepolicy -> system_sepolicy.tar.zst"
   tar cfJ $GITHUB_WORKSPACE/cache/system_sepolicy.tar.zst -C $GITHUB_WORKSPACE/aosp/system/sepolicy/ .
 fi
-du -ah -d1 $GITHUB_WORKSPACE/cache
+du -ah -d1 $GITHUB_WORKSPACE/cache| sort -h
 
 rm -rf aosp

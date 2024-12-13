@@ -24,7 +24,7 @@ rm -rf out
 cd $GITHUB_WORKSPACE/
 tar cfJ build_blueprint.tar.zst -C $GITHUB_WORKSPACE/artifacts/build/blueprint/ .
 
-du -ah -d1
+du -ah -d1| sort -h
 
 if [ ! -f "$GITHUB_WORKSPACE/cache/build_blueprint.tar.zst" ]; then
   echo "Compressing build/blueprint -> build_blueprint.tar.zst"
@@ -34,6 +34,6 @@ if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_go_linux-x86.tar.zst" ]; then
   echo "Compressing prebuilts/go/linux-x86 -> prebuilts_go_linux-x86.tar.zst"
   tar cfJ $GITHUB_WORKSPACE/cache/prebuilts_go_linux-x86.tar.zst -C $GITHUB_WORKSPACE/aosp/prebuilts/go/linux-x86/ .
 fi
-du -ah -d1 $GITHUB_WORKSPACE/cache
+du -ah -d1 $GITHUB_WORKSPACE/cache| sort -h
 
 rm -rf aosp

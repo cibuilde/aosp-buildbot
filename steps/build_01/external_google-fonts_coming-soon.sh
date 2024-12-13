@@ -18,12 +18,12 @@ rm -rf out
 cd $GITHUB_WORKSPACE/
 tar cfJ external_google-fonts_coming-soon.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/google-fonts/coming-soon/ .
 
-du -ah -d1
+du -ah -d1| sort -h
 
 if [ ! -f "$GITHUB_WORKSPACE/cache/external_google-fonts_coming-soon.tar.zst" ]; then
   echo "Compressing external/google-fonts/coming-soon -> external_google-fonts_coming-soon.tar.zst"
   tar cfJ $GITHUB_WORKSPACE/cache/external_google-fonts_coming-soon.tar.zst -C $GITHUB_WORKSPACE/aosp/external/google-fonts/coming-soon/ .
 fi
-du -ah -d1 $GITHUB_WORKSPACE/cache
+du -ah -d1 $GITHUB_WORKSPACE/cache| sort -h
 
 rm -rf aosp

@@ -48,12 +48,12 @@ rm -rf out
 cd $GITHUB_WORKSPACE/
 tar cfJ system_timezone.tar.zst -C $GITHUB_WORKSPACE/artifacts/system/timezone/ .
 
-du -ah -d1
+du -ah -d1| sort -h
 
 if [ ! -f "$GITHUB_WORKSPACE/cache/system_timezone.tar.zst" ]; then
   echo "Compressing system/timezone -> system_timezone.tar.zst"
   tar cfJ $GITHUB_WORKSPACE/cache/system_timezone.tar.zst -C $GITHUB_WORKSPACE/aosp/system/timezone/ .
 fi
-du -ah -d1 $GITHUB_WORKSPACE/cache
+du -ah -d1 $GITHUB_WORKSPACE/cache| sort -h
 
 rm -rf aosp

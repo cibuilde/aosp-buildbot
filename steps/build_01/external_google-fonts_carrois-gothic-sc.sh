@@ -18,12 +18,12 @@ rm -rf out
 cd $GITHUB_WORKSPACE/
 tar cfJ external_google-fonts_carrois-gothic-sc.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/google-fonts/carrois-gothic-sc/ .
 
-du -ah -d1
+du -ah -d1| sort -h
 
 if [ ! -f "$GITHUB_WORKSPACE/cache/external_google-fonts_carrois-gothic-sc.tar.zst" ]; then
   echo "Compressing external/google-fonts/carrois-gothic-sc -> external_google-fonts_carrois-gothic-sc.tar.zst"
   tar cfJ $GITHUB_WORKSPACE/cache/external_google-fonts_carrois-gothic-sc.tar.zst -C $GITHUB_WORKSPACE/aosp/external/google-fonts/carrois-gothic-sc/ .
 fi
-du -ah -d1 $GITHUB_WORKSPACE/cache
+du -ah -d1 $GITHUB_WORKSPACE/cache| sort -h
 
 rm -rf aosp

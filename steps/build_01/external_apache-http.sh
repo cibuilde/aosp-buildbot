@@ -18,12 +18,12 @@ rm -rf out
 cd $GITHUB_WORKSPACE/
 tar cfJ external_apache-http.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/apache-http/ .
 
-du -ah -d1
+du -ah -d1| sort -h
 
 if [ ! -f "$GITHUB_WORKSPACE/cache/external_apache-http.tar.zst" ]; then
   echo "Compressing external/apache-http -> external_apache-http.tar.zst"
   tar cfJ $GITHUB_WORKSPACE/cache/external_apache-http.tar.zst -C $GITHUB_WORKSPACE/aosp/external/apache-http/ .
 fi
-du -ah -d1 $GITHUB_WORKSPACE/cache
+du -ah -d1 $GITHUB_WORKSPACE/cache| sort -h
 
 rm -rf aosp

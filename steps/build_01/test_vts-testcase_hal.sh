@@ -36,7 +36,7 @@ rm -rf out
 cd $GITHUB_WORKSPACE/
 tar cfJ test_vts-testcase_hal.tar.zst -C $GITHUB_WORKSPACE/artifacts/test/vts-testcase/hal/ .
 
-du -ah -d1
+du -ah -d1| sort -h
 
 if [ ! -f "$GITHUB_WORKSPACE/cache/external_fmtlib.tar.zst" ]; then
   echo "Compressing external/fmtlib -> external_fmtlib.tar.zst"
@@ -118,6 +118,6 @@ if [ ! -f "$GITHUB_WORKSPACE/cache/test_vts-testcase_hal.tar.zst" ]; then
   echo "Compressing test/vts-testcase/hal -> test_vts-testcase_hal.tar.zst"
   tar cfJ $GITHUB_WORKSPACE/cache/test_vts-testcase_hal.tar.zst -C $GITHUB_WORKSPACE/aosp/test/vts-testcase/hal/ .
 fi
-du -ah -d1 $GITHUB_WORKSPACE/cache
+du -ah -d1 $GITHUB_WORKSPACE/cache| sort -h
 
 rm -rf aosp

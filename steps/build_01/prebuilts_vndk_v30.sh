@@ -38,12 +38,12 @@ rm -rf out
 cd $GITHUB_WORKSPACE/
 tar cfJ prebuilts_vndk_v30.tar.zst -C $GITHUB_WORKSPACE/artifacts/prebuilts/vndk/v30/ .
 
-du -ah -d1
+du -ah -d1| sort -h
 
 if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_vndk_v30.tar.zst" ]; then
   echo "Compressing prebuilts/vndk/v30 -> prebuilts_vndk_v30.tar.zst"
   tar cfJ $GITHUB_WORKSPACE/cache/prebuilts_vndk_v30.tar.zst -C $GITHUB_WORKSPACE/aosp/prebuilts/vndk/v30/ .
 fi
-du -ah -d1 $GITHUB_WORKSPACE/cache
+du -ah -d1 $GITHUB_WORKSPACE/cache| sort -h
 
 rm -rf aosp

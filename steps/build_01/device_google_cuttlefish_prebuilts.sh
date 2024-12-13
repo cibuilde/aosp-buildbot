@@ -19,7 +19,7 @@ rm -rf out
 cd $GITHUB_WORKSPACE/
 tar cfJ device_google_cuttlefish_prebuilts.tar.zst -C $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish_prebuilts/ .
 
-du -ah -d1
+du -ah -d1| sort -h
 
 if [ ! -f "$GITHUB_WORKSPACE/cache/device_google_cuttlefish.tar.zst" ]; then
   echo "Compressing device/google/cuttlefish -> device_google_cuttlefish.tar.zst"
@@ -29,6 +29,6 @@ if [ ! -f "$GITHUB_WORKSPACE/cache/device_google_cuttlefish_prebuilts.tar.zst" ]
   echo "Compressing device/google/cuttlefish_prebuilts -> device_google_cuttlefish_prebuilts.tar.zst"
   tar cfJ $GITHUB_WORKSPACE/cache/device_google_cuttlefish_prebuilts.tar.zst -C $GITHUB_WORKSPACE/aosp/device/google/cuttlefish_prebuilts/ .
 fi
-du -ah -d1 $GITHUB_WORKSPACE/cache
+du -ah -d1 $GITHUB_WORKSPACE/cache| sort -h
 
 rm -rf aosp

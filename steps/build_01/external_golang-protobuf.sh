@@ -19,7 +19,7 @@ rm -rf out
 cd $GITHUB_WORKSPACE/
 tar cfJ external_golang-protobuf.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/golang-protobuf/ .
 
-du -ah -d1
+du -ah -d1| sort -h
 
 if [ ! -f "$GITHUB_WORKSPACE/cache/external_golang-protobuf.tar.zst" ]; then
   echo "Compressing external/golang-protobuf -> external_golang-protobuf.tar.zst"
@@ -29,6 +29,6 @@ if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_go_linux-x86.tar.zst" ]; then
   echo "Compressing prebuilts/go/linux-x86 -> prebuilts_go_linux-x86.tar.zst"
   tar cfJ $GITHUB_WORKSPACE/cache/prebuilts_go_linux-x86.tar.zst -C $GITHUB_WORKSPACE/aosp/prebuilts/go/linux-x86/ .
 fi
-du -ah -d1 $GITHUB_WORKSPACE/cache
+du -ah -d1 $GITHUB_WORKSPACE/cache| sort -h
 
 rm -rf aosp

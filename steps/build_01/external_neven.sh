@@ -23,12 +23,12 @@ rm -rf out
 cd $GITHUB_WORKSPACE/
 tar cfJ external_neven.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/neven/ .
 
-du -ah -d1
+du -ah -d1| sort -h
 
 if [ ! -f "$GITHUB_WORKSPACE/cache/external_neven.tar.zst" ]; then
   echo "Compressing external/neven -> external_neven.tar.zst"
   tar cfJ $GITHUB_WORKSPACE/cache/external_neven.tar.zst -C $GITHUB_WORKSPACE/aosp/external/neven/ .
 fi
-du -ah -d1 $GITHUB_WORKSPACE/cache
+du -ah -d1 $GITHUB_WORKSPACE/cache| sort -h
 
 rm -rf aosp

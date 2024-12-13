@@ -33,12 +33,12 @@ rm -rf out
 cd $GITHUB_WORKSPACE/
 tar cfJ build_make.tar.zst -C $GITHUB_WORKSPACE/artifacts/build/make/ .
 
-du -ah -d1
+du -ah -d1| sort -h
 
 if [ ! -f "$GITHUB_WORKSPACE/cache/build_make.tar.zst" ]; then
   echo "Compressing build/make -> build_make.tar.zst"
   tar cfJ $GITHUB_WORKSPACE/cache/build_make.tar.zst -C $GITHUB_WORKSPACE/aosp/build/make/ .
 fi
-du -ah -d1 $GITHUB_WORKSPACE/cache
+du -ah -d1 $GITHUB_WORKSPACE/cache| sort -h
 
 rm -rf aosp
