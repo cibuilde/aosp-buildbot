@@ -2,8 +2,6 @@ set -e
 
 df -h
 
-rsync -a -r $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish_prebuilts/bootloader/cuttlefish_crosvm_bootloader^android_x86_64/ .
-
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 ln -sf $GITHUB_WORKSPACE/ninja .
 
@@ -13,6 +11,7 @@ clone_depth device/google/cuttlefish
 clone_depth device/google/cuttlefish_prebuilts
 clone_depth_platform packages/modules/Virtualization
 
+rsync -a -r $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish_prebuilts/bootloader/cuttlefish_crosvm_bootloader^android_x86_64/ .
 echo "building microdroid_bootloader^android_x86_64"
 ninja -f $GITHUB_WORKSPACE/steps/build_02.ninja microdroid_bootloader,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/Virtualization/microdroid/microdroid_bootloader^android_x86_64

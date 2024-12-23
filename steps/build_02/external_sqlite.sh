@@ -2,12 +2,6 @@ set -e
 
 df -h
 
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/sqlite/android/libsqlite3_android^android_x86_64_static/ .
-
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/sqlite/android/libsqlite3_android^android_x86_x86_64_static/ .
-
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/sqlite/android/libsqlite3_android^linux_glibc_x86_64_static/ .
-
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 ln -sf $GITHUB_WORKSPACE/ninja .
 
@@ -29,6 +23,9 @@ clone_depth_platform system/core
 clone_depth_platform system/logging
 clone_depth_platform system/media
 
+rsync -a -r $GITHUB_WORKSPACE/artifacts/external/sqlite/android/libsqlite3_android^android_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/artifacts/external/sqlite/android/libsqlite3_android^android_x86_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/artifacts/external/sqlite/android/libsqlite3_android^linux_glibc_x86_64_static/ .
 echo "building libsqlite^android_x86_64_static"
 ninja -f $GITHUB_WORKSPACE/steps/build_02.ninja libsqlite,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/sqlite/dist/libsqlite^android_x86_64_static

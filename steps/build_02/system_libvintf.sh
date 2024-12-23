@@ -2,14 +2,6 @@ set -e
 
 df -h
 
-rsync -a -r $GITHUB_WORKSPACE/artifacts/packages/modules/Gki/libkver/libkver^android_recovery_x86_64_static/ .
-
-rsync -a -r $GITHUB_WORKSPACE/artifacts/packages/modules/Gki/libkver/libkver^android_x86_64_static/ .
-
-rsync -a -r $GITHUB_WORKSPACE/artifacts/packages/modules/Gki/libkver/libkver^android_x86_x86_64_static/ .
-
-rsync -a -r $GITHUB_WORKSPACE/artifacts/packages/modules/Gki/libkver/libkver^linux_glibc_x86_64_static/ .
-
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 ln -sf $GITHUB_WORKSPACE/ninja .
 
@@ -38,6 +30,10 @@ clone_depth_platform system/media
 clone_depth_platform system/tools/aidl
 clone_depth_platform system/tools/hidl
 
+rsync -a -r $GITHUB_WORKSPACE/artifacts/packages/modules/Gki/libkver/libkver^android_recovery_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/artifacts/packages/modules/Gki/libkver/libkver^android_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/artifacts/packages/modules/Gki/libkver/libkver^android_x86_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/artifacts/packages/modules/Gki/libkver/libkver^linux_glibc_x86_64_static/ .
 echo "building libvintf^android_recovery_x86_64_static"
 ninja -f $GITHUB_WORKSPACE/steps/build_02.ninja libvintf,android_recovery_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/libvintf/libvintf^android_recovery_x86_64_static

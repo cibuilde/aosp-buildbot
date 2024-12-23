@@ -2,26 +2,6 @@ set -e
 
 df -h
 
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/gpr_base^android_x86_64_static/ .
-
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/gpr_base^android_x86_x86_64_static/ .
-
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libalts_util^android_x86_64_static/ .
-
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libalts_util^android_x86_x86_64_static/ .
-
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc++_codegen_base_src^android_x86_64_static/ .
-
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc++_codegen_base_src^android_x86_x86_64_static/ .
-
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_transport_chttp2_alpn^android_x86_64_static/ .
-
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_transport_chttp2_alpn^android_x86_x86_64_static/ .
-
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libtsi_interface^android_x86_64_static/ .
-
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libtsi_interface^android_x86_x86_64_static/ .
-
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 ln -sf $GITHUB_WORKSPACE/ninja .
 
@@ -45,6 +25,16 @@ clone_depth_platform system/core
 clone_depth_platform system/logging
 clone_depth_platform system/media
 
+rsync -a -r $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/gpr_base^android_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/gpr_base^android_x86_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libalts_util^android_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libalts_util^android_x86_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc++_codegen_base_src^android_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc++_codegen_base_src^android_x86_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_transport_chttp2_alpn^android_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_transport_chttp2_alpn^android_x86_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libtsi_interface^android_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libtsi_interface^android_x86_x86_64_static/ .
 echo "building libalts_frame_protector^android_x86_64_static"
 ninja -f $GITHUB_WORKSPACE/steps/build_02.ninja libalts_frame_protector,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libalts_frame_protector^android_x86_64_static

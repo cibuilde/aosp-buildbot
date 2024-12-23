@@ -2,14 +2,6 @@ set -e
 
 df -h
 
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/boringssl/bcm_object^linux_glibc_x86/ .
-
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/boringssl/bcm_object^linux_glibc_x86_64/ .
-
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/boringssl/bssl_ar^linux_glibc_x86_64/ .
-
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/boringssl/bssl_fipscommon^linux_glibc_x86_64/ .
-
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 ln -sf $GITHUB_WORKSPACE/ninja .
 
@@ -29,6 +21,10 @@ clone_depth_platform system/core
 clone_depth_platform system/logging
 clone_depth_platform system/media
 
+rsync -a -r $GITHUB_WORKSPACE/artifacts/external/boringssl/bcm_object^linux_glibc_x86/ .
+rsync -a -r $GITHUB_WORKSPACE/artifacts/external/boringssl/bcm_object^linux_glibc_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/artifacts/external/boringssl/bssl_ar^linux_glibc_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/artifacts/external/boringssl/bssl_fipscommon^linux_glibc_x86_64/ .
 echo "building bssl_inject_hash^linux_glibc_x86_64"
 ninja -f $GITHUB_WORKSPACE/steps/build_02.ninja bssl_inject_hash,linux_glibc_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/boringssl/bssl_inject_hash^linux_glibc_x86_64

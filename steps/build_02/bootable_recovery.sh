@@ -2,18 +2,6 @@ set -e
 
 df -h
 
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/libdrm/libdrm^android_recovery_x86_64_static/ .
-
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/libdrm/libdrm^android_x86_64_static/ .
-
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/libdrm/libdrm^android_x86_x86_64_static/ .
-
-rsync -a -r $GITHUB_WORKSPACE/artifacts/system/core/libsync/libsync^android_recovery_x86_64_static/ .
-
-rsync -a -r $GITHUB_WORKSPACE/artifacts/system/core/libsync/libsync^android_x86_64_static/ .
-
-rsync -a -r $GITHUB_WORKSPACE/artifacts/system/core/libsync/libsync^android_x86_x86_64_static/ .
-
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 ln -sf $GITHUB_WORKSPACE/ninja .
 
@@ -38,6 +26,12 @@ clone_depth_platform system/libbase
 clone_depth_platform system/logging
 clone_depth_platform system/media
 
+rsync -a -r $GITHUB_WORKSPACE/artifacts/external/libdrm/libdrm^android_recovery_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/artifacts/external/libdrm/libdrm^android_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/artifacts/external/libdrm/libdrm^android_x86_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/artifacts/system/core/libsync/libsync^android_recovery_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/artifacts/system/core/libsync/libsync^android_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/artifacts/system/core/libsync/libsync^android_x86_x86_64_static/ .
 echo "building libminui^android_recovery_x86_64_static"
 ninja -f $GITHUB_WORKSPACE/steps/build_02.ninja libminui,android_recovery_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/bootable/recovery/minui/libminui^android_recovery_x86_64_static

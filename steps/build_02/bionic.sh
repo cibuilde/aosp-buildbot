@@ -2,80 +2,6 @@ set -e
 
 df -h
 
-rsync -a -r $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbrand^android_product.31_x86_64/ .
-
-rsync -a -r $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbrand^android_recovery_x86_64/ .
-
-rsync -a -r $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbrand^android_vendor.31_x86_64/ .
-
-rsync -a -r $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbrand^android_vendor.31_x86_x86_64/ .
-
-rsync -a -r $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbrand^android_vendor_ramdisk_x86_64/ .
-
-rsync -a -r $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbrand^android_x86_64/ .
-
-rsync -a -r $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbrand^android_x86_64_apex10000/ .
-
-rsync -a -r $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbrand^android_x86_64_apex29/ .
-
-rsync -a -r $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbrand^android_x86_64_apex30/ .
-
-rsync -a -r $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbrand^android_x86_64_apex31/ .
-
-rsync -a -r $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbrand^android_x86_x86_64/ .
-
-rsync -a -r $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbrand^android_x86_x86_64_apex10000/ .
-
-rsync -a -r $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbrand^android_x86_x86_64_apex29/ .
-
-rsync -a -r $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbrand^android_x86_x86_64_apex30/ .
-
-rsync -a -r $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbrand^android_x86_x86_64_apex31/ .
-
-rsync -a -r $GITHUB_WORKSPACE/artifacts/bionic/linker/ld-android^android_recovery_x86_64_static/ .
-
-rsync -a -r $GITHUB_WORKSPACE/artifacts/bionic/linker/ld-android^android_vendor_ramdisk_x86_64_static/ .
-
-rsync -a -r $GITHUB_WORKSPACE/artifacts/bionic/linker/ld-android^android_x86_64_static/ .
-
-rsync -a -r $GITHUB_WORKSPACE/artifacts/bionic/linker/ld-android^android_x86_64_static_apex10000/ .
-
-rsync -a -r $GITHUB_WORKSPACE/artifacts/bionic/linker/ld-android^android_x86_x86_64_static/ .
-
-rsync -a -r $GITHUB_WORKSPACE/artifacts/bionic/linker/ld-android^android_x86_x86_64_static_apex10000/ .
-
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/arm-optimized-routines/libarm-optimized-routines-math^android_native_bridge_arm64_armv8-a_static/ .
-
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/arm-optimized-routines/libarm-optimized-routines-math^android_native_bridge_arm_armv7-a-neon_static/ .
-
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/arm-optimized-routines/libarm-optimized-routines-math^android_recovery_x86_64_static/ .
-
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/arm-optimized-routines/libarm-optimized-routines-math^android_vendor_ramdisk_x86_64_static/ .
-
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/arm-optimized-routines/libarm-optimized-routines-math^android_x86_64_static/ .
-
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/arm-optimized-routines/libarm-optimized-routines-math^android_x86_64_static_apex10000/ .
-
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/arm-optimized-routines/libarm-optimized-routines-math^android_x86_x86_64_static/ .
-
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/arm-optimized-routines/libarm-optimized-routines-math^android_x86_x86_64_static_apex10000/ .
-
-rsync -a -r $GITHUB_WORKSPACE/artifacts/system/core/property_service/libpropertyinfoparser/libpropertyinfoparser^android_native_bridge_arm64_armv8-a_static/ .
-
-rsync -a -r $GITHUB_WORKSPACE/artifacts/system/core/property_service/libpropertyinfoparser/libpropertyinfoparser^android_native_bridge_arm_armv7-a-neon_static/ .
-
-rsync -a -r $GITHUB_WORKSPACE/artifacts/system/core/property_service/libpropertyinfoparser/libpropertyinfoparser^android_recovery_x86_64_static/ .
-
-rsync -a -r $GITHUB_WORKSPACE/artifacts/system/core/property_service/libpropertyinfoparser/libpropertyinfoparser^android_vendor_ramdisk_x86_64_static/ .
-
-rsync -a -r $GITHUB_WORKSPACE/artifacts/system/core/property_service/libpropertyinfoparser/libpropertyinfoparser^android_x86_64_static/ .
-
-rsync -a -r $GITHUB_WORKSPACE/artifacts/system/core/property_service/libpropertyinfoparser/libpropertyinfoparser^android_x86_64_static_apex10000/ .
-
-rsync -a -r $GITHUB_WORKSPACE/artifacts/system/core/property_service/libpropertyinfoparser/libpropertyinfoparser^android_x86_x86_64_static/ .
-
-rsync -a -r $GITHUB_WORKSPACE/artifacts/system/core/property_service/libpropertyinfoparser/libpropertyinfoparser^android_x86_x86_64_static_apex10000/ .
-
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 ln -sf $GITHUB_WORKSPACE/ninja .
 
@@ -97,6 +23,43 @@ clone_depth_platform system/core
 clone_depth_platform system/logging
 clone_depth_platform system/media
 
+rsync -a -r $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbrand^android_product.31_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbrand^android_recovery_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbrand^android_vendor.31_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbrand^android_vendor.31_x86_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbrand^android_vendor_ramdisk_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbrand^android_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbrand^android_x86_64_apex10000/ .
+rsync -a -r $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbrand^android_x86_64_apex29/ .
+rsync -a -r $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbrand^android_x86_64_apex30/ .
+rsync -a -r $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbrand^android_x86_64_apex31/ .
+rsync -a -r $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbrand^android_x86_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbrand^android_x86_x86_64_apex10000/ .
+rsync -a -r $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbrand^android_x86_x86_64_apex29/ .
+rsync -a -r $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbrand^android_x86_x86_64_apex30/ .
+rsync -a -r $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbrand^android_x86_x86_64_apex31/ .
+rsync -a -r $GITHUB_WORKSPACE/artifacts/bionic/linker/ld-android^android_recovery_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/artifacts/bionic/linker/ld-android^android_vendor_ramdisk_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/artifacts/bionic/linker/ld-android^android_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/artifacts/bionic/linker/ld-android^android_x86_64_static_apex10000/ .
+rsync -a -r $GITHUB_WORKSPACE/artifacts/bionic/linker/ld-android^android_x86_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/artifacts/bionic/linker/ld-android^android_x86_x86_64_static_apex10000/ .
+rsync -a -r $GITHUB_WORKSPACE/artifacts/external/arm-optimized-routines/libarm-optimized-routines-math^android_native_bridge_arm64_armv8-a_static/ .
+rsync -a -r $GITHUB_WORKSPACE/artifacts/external/arm-optimized-routines/libarm-optimized-routines-math^android_native_bridge_arm_armv7-a-neon_static/ .
+rsync -a -r $GITHUB_WORKSPACE/artifacts/external/arm-optimized-routines/libarm-optimized-routines-math^android_recovery_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/artifacts/external/arm-optimized-routines/libarm-optimized-routines-math^android_vendor_ramdisk_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/artifacts/external/arm-optimized-routines/libarm-optimized-routines-math^android_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/artifacts/external/arm-optimized-routines/libarm-optimized-routines-math^android_x86_64_static_apex10000/ .
+rsync -a -r $GITHUB_WORKSPACE/artifacts/external/arm-optimized-routines/libarm-optimized-routines-math^android_x86_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/artifacts/external/arm-optimized-routines/libarm-optimized-routines-math^android_x86_x86_64_static_apex10000/ .
+rsync -a -r $GITHUB_WORKSPACE/artifacts/system/core/property_service/libpropertyinfoparser/libpropertyinfoparser^android_native_bridge_arm64_armv8-a_static/ .
+rsync -a -r $GITHUB_WORKSPACE/artifacts/system/core/property_service/libpropertyinfoparser/libpropertyinfoparser^android_native_bridge_arm_armv7-a-neon_static/ .
+rsync -a -r $GITHUB_WORKSPACE/artifacts/system/core/property_service/libpropertyinfoparser/libpropertyinfoparser^android_recovery_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/artifacts/system/core/property_service/libpropertyinfoparser/libpropertyinfoparser^android_vendor_ramdisk_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/artifacts/system/core/property_service/libpropertyinfoparser/libpropertyinfoparser^android_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/artifacts/system/core/property_service/libpropertyinfoparser/libpropertyinfoparser^android_x86_64_static_apex10000/ .
+rsync -a -r $GITHUB_WORKSPACE/artifacts/system/core/property_service/libpropertyinfoparser/libpropertyinfoparser^android_x86_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/artifacts/system/core/property_service/libpropertyinfoparser/libpropertyinfoparser^android_x86_x86_64_static_apex10000/ .
 echo "building crtbegin_dynamic^android_product.31_x86_64"
 ninja -f $GITHUB_WORKSPACE/steps/build_02.ninja crtbegin_dynamic,android_product.31_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_dynamic^android_product.31_x86_64

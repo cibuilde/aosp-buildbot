@@ -2,38 +2,6 @@ set -e
 
 df -h
 
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/fmtlib/fmtlib^android_recovery_x86_64_static/ .
-
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/fmtlib/fmtlib^android_vendor_ramdisk_x86_64_static/ .
-
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/fmtlib/fmtlib^android_x86_64_static/ .
-
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/fmtlib/fmtlib^android_x86_64_static_apex10000/ .
-
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/fmtlib/fmtlib^android_x86_64_static_apex29/ .
-
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/fmtlib/fmtlib^android_x86_64_static_apex30/ .
-
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/fmtlib/fmtlib^android_x86_64_static_apex31/ .
-
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/fmtlib/fmtlib^android_x86_64_static_cfi_apex29/ .
-
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/fmtlib/fmtlib^android_x86_x86_64_static/ .
-
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/fmtlib/fmtlib^android_x86_x86_64_static_apex10000/ .
-
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/fmtlib/fmtlib^android_x86_x86_64_static_apex29/ .
-
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/fmtlib/fmtlib^android_x86_x86_64_static_apex30/ .
-
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/fmtlib/fmtlib^android_x86_x86_64_static_apex31/ .
-
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/fmtlib/fmtlib^linux_glibc_x86_64_static/ .
-
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/fmtlib/fmtlib^linux_glibc_x86_static/ .
-
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/fmtlib/fmtlib_ndk^android_x86_64_static/ .
-
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 ln -sf $GITHUB_WORKSPACE/ninja .
 
@@ -56,6 +24,22 @@ clone_depth_platform system/libbase
 clone_depth_platform system/logging
 clone_depth_platform system/media
 
+rsync -a -r $GITHUB_WORKSPACE/artifacts/external/fmtlib/fmtlib^android_recovery_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/artifacts/external/fmtlib/fmtlib^android_vendor_ramdisk_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/artifacts/external/fmtlib/fmtlib^android_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/artifacts/external/fmtlib/fmtlib^android_x86_64_static_apex10000/ .
+rsync -a -r $GITHUB_WORKSPACE/artifacts/external/fmtlib/fmtlib^android_x86_64_static_apex29/ .
+rsync -a -r $GITHUB_WORKSPACE/artifacts/external/fmtlib/fmtlib^android_x86_64_static_apex30/ .
+rsync -a -r $GITHUB_WORKSPACE/artifacts/external/fmtlib/fmtlib^android_x86_64_static_apex31/ .
+rsync -a -r $GITHUB_WORKSPACE/artifacts/external/fmtlib/fmtlib^android_x86_64_static_cfi_apex29/ .
+rsync -a -r $GITHUB_WORKSPACE/artifacts/external/fmtlib/fmtlib^android_x86_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/artifacts/external/fmtlib/fmtlib^android_x86_x86_64_static_apex10000/ .
+rsync -a -r $GITHUB_WORKSPACE/artifacts/external/fmtlib/fmtlib^android_x86_x86_64_static_apex29/ .
+rsync -a -r $GITHUB_WORKSPACE/artifacts/external/fmtlib/fmtlib^android_x86_x86_64_static_apex30/ .
+rsync -a -r $GITHUB_WORKSPACE/artifacts/external/fmtlib/fmtlib^android_x86_x86_64_static_apex31/ .
+rsync -a -r $GITHUB_WORKSPACE/artifacts/external/fmtlib/fmtlib^linux_glibc_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/artifacts/external/fmtlib/fmtlib^linux_glibc_x86_static/ .
+rsync -a -r $GITHUB_WORKSPACE/artifacts/external/fmtlib/fmtlib_ndk^android_x86_64_static/ .
 echo "building libbase^android_recovery_x86_64_static"
 ninja -f $GITHUB_WORKSPACE/steps/build_02.ninja libbase,android_recovery_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/libbase/libbase^android_recovery_x86_64_static

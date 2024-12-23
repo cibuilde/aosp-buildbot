@@ -2,10 +2,6 @@ set -e
 
 df -h
 
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/pcre/libpcre2^linux_glibc_x86_64_static/ .
-
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/selinux/libsepol/libsepol^linux_glibc_x86_64_static/ .
-
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 ln -sf $GITHUB_WORKSPACE/ninja .
 
@@ -24,6 +20,8 @@ clone_depth_platform system/logging
 clone_depth_platform system/media
 clone_depth_platform system/sepolicy
 
+rsync -a -r $GITHUB_WORKSPACE/artifacts/external/pcre/libpcre2^linux_glibc_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/artifacts/external/selinux/libsepol/libsepol^linux_glibc_x86_64_static/ .
 echo "building checkseapp^linux_glibc_x86_64"
 ninja -f $GITHUB_WORKSPACE/steps/build_02.ninja checkseapp,linux_glibc_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/sepolicy/tools/checkseapp^linux_glibc_x86_64

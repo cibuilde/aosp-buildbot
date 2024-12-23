@@ -2,12 +2,6 @@ set -e
 
 df -h
 
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/libyuv/files/libyuv^android_x86_64_static_cfi/ .
-
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/libyuv/files/libyuv^android_x86_64_static_cfi_apex29/ .
-
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/libyuv/files/libyuv^android_x86_x86_64_static_cfi/ .
-
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 ln -sf $GITHUB_WORKSPACE/ninja .
 
@@ -15,6 +9,9 @@ mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/
 
 clone_depth_platform external/libyuv
 
+rsync -a -r $GITHUB_WORKSPACE/artifacts/external/libyuv/files/libyuv^android_x86_64_static_cfi/ .
+rsync -a -r $GITHUB_WORKSPACE/artifacts/external/libyuv/files/libyuv^android_x86_64_static_cfi_apex29/ .
+rsync -a -r $GITHUB_WORKSPACE/artifacts/external/libyuv/files/libyuv^android_x86_x86_64_static_cfi/ .
 echo "building libyuv_static^android_x86_64_static_cfi"
 ninja -f $GITHUB_WORKSPACE/steps/build_02.ninja libyuv_static,android_x86_64_static_cfi
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/libyuv/files/libyuv_static^android_x86_64_static_cfi
