@@ -12,6 +12,11 @@ clone_sparse prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8 sysroot lib
 clone_sparse prebuilts/rust bootstrap linux-x86/1.51.0
 
 
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_rust_crates_cfg-if.tar.zst --skip-existing
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/rust/crates/cfg-if
+tar xf $GITHUB_WORKSPACE/external_rust_crates_cfg-if.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/rust/crates/cfg-if/
+rsync -a -r $GITHUB_WORKSPACE/artifacts/external/rust/crates/cfg-if/libcfg_if^linux_glibc_x86_64_rlib_rlib-std/ .
+
 echo "building liblibloading^linux_glibc_x86_64_rlib_rlib-std"
 ninja -f $GITHUB_WORKSPACE/steps/build_02.ninja liblibloading,linux_glibc_x86_64_rlib_rlib-std
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/rust/crates/libloading/liblibloading^linux_glibc_x86_64_rlib_rlib-std

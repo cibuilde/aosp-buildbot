@@ -10,7 +10,23 @@ clone_depth_platform libcore
 clone_sparse prebuilts/rust bootstrap linux-x86/1.51.0
 
 gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern prebuilts_rust.tar.zst
+mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/rust
 tar xf $GITHUB_WORKSPACE/prebuilts_rust.tar.zst -C $GITHUB_WORKSPACE/artifacts/prebuilts/rust/
+
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern prebuilts_rust.tar.zst --skip-existing
+mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/rust
+tar xf $GITHUB_WORKSPACE/prebuilts_rust.tar.zst -C $GITHUB_WORKSPACE/artifacts/prebuilts/rust/
+rsync -a -r $GITHUB_WORKSPACE/artifacts/prebuilts/rust/libcore.rust_sysroot^android_x86_64_rlib/ .
+
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern prebuilts_rust.tar.zst --skip-existing
+mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/rust
+tar xf $GITHUB_WORKSPACE/prebuilts_rust.tar.zst -C $GITHUB_WORKSPACE/artifacts/prebuilts/rust/
+rsync -a -r $GITHUB_WORKSPACE/artifacts/prebuilts/rust/libcore.rust_sysroot^android_x86_64_rlib_apex10000/ .
+
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern prebuilts_rust.tar.zst --skip-existing
+mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/rust
+tar xf $GITHUB_WORKSPACE/prebuilts_rust.tar.zst -C $GITHUB_WORKSPACE/artifacts/prebuilts/rust/
+rsync -a -r $GITHUB_WORKSPACE/artifacts/prebuilts/rust/libcore.rust_sysroot^android_x86_x86_64_rlib/ .
 
 echo "building libcompiler_builtins.rust_sysroot^android_x86_64_rlib"
 ninja -f $GITHUB_WORKSPACE/steps/build_02.ninja libcompiler_builtins.rust_sysroot,android_x86_64_rlib

@@ -10,7 +10,28 @@ clone_depth_platform build/soong
 clone_depth_platform prebuilts/go/linux-x86
 
 gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern build_soong.tar.zst
+mkdir -p $GITHUB_WORKSPACE/artifacts/build/soong
 tar xf $GITHUB_WORKSPACE/build_soong.tar.zst -C $GITHUB_WORKSPACE/artifacts/build/soong/
+
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern build_soong.tar.zst --skip-existing
+mkdir -p $GITHUB_WORKSPACE/artifacts/build/soong
+tar xf $GITHUB_WORKSPACE/build_soong.tar.zst -C $GITHUB_WORKSPACE/artifacts/build/soong/
+rsync -a -r $GITHUB_WORKSPACE/artifacts/build/soong/third_party/zip/android-archive-zip^linux_glibc_x86_64/ .
+
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern build_soong.tar.zst --skip-existing
+mkdir -p $GITHUB_WORKSPACE/artifacts/build/soong
+tar xf $GITHUB_WORKSPACE/build_soong.tar.zst -C $GITHUB_WORKSPACE/artifacts/build/soong/
+rsync -a -r $GITHUB_WORKSPACE/artifacts/build/soong/androidmk/androidmk-parser^linux_glibc_x86_64/ .
+
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_golang-protobuf.tar.zst --skip-existing
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/golang-protobuf
+tar xf $GITHUB_WORKSPACE/external_golang-protobuf.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/golang-protobuf/
+rsync -a -r $GITHUB_WORKSPACE/artifacts/external/golang-protobuf/golang-protobuf-proto^linux_glibc_x86_64/ .
+
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern build_soong.tar.zst --skip-existing
+mkdir -p $GITHUB_WORKSPACE/artifacts/build/soong
+tar xf $GITHUB_WORKSPACE/build_soong.tar.zst -C $GITHUB_WORKSPACE/artifacts/build/soong/
+rsync -a -r $GITHUB_WORKSPACE/artifacts/build/soong/symbol_inject/soong-symbol_inject^linux_glibc_x86_64/ .
 
 echo "building sbox_proto^linux_glibc_x86_64"
 ninja -f $GITHUB_WORKSPACE/steps/build_02.ninja sbox_proto,linux_glibc_x86_64

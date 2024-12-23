@@ -13,6 +13,16 @@ clone_sparse prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8 sysroot lib
 clone_sparse prebuilts/rust bootstrap linux-x86/1.51.0
 
 
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_rust_crates_termcolor.tar.zst --skip-existing
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/rust/crates/termcolor
+tar xf $GITHUB_WORKSPACE/external_rust_crates_termcolor.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/rust/crates/termcolor/
+rsync -a -r $GITHUB_WORKSPACE/artifacts/external/rust/crates/termcolor/libtermcolor^linux_glibc_x86_64_rlib_rlib-std/ .
+
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_rust_crates_unicode-width.tar.zst --skip-existing
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/rust/crates/unicode-width
+tar xf $GITHUB_WORKSPACE/external_rust_crates_unicode-width.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/rust/crates/unicode-width/
+rsync -a -r $GITHUB_WORKSPACE/artifacts/external/rust/crates/unicode-width/libunicode_width^linux_glibc_x86_64_rlib_rlib-std/ .
+
 echo "building libcodespan_reporting^linux_glibc_x86_64_rlib_rlib-std"
 ninja -f $GITHUB_WORKSPACE/steps/build_02.ninja libcodespan_reporting,linux_glibc_x86_64_rlib_rlib-std
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/rust/crates/codespan-reporting/libcodespan_reporting^linux_glibc_x86_64_rlib_rlib-std

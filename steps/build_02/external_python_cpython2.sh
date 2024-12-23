@@ -26,7 +26,293 @@ clone_depth_platform system/logging
 clone_depth_platform system/media
 
 gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_python_cpython2.tar.zst
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/python/cpython2
 tar xf $GITHUB_WORKSPACE/external_python_cpython2.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/python/cpython2/
+
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_python_cpython2.tar.zst --skip-existing
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/python/cpython2
+tar xf $GITHUB_WORKSPACE/external_python_cpython2.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/python/cpython2/
+rsync -a -r $GITHUB_WORKSPACE/artifacts/external/python/cpython2/py2-c-module-_bisect^linux_glibc_x86_64_static/ .
+
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_python_cpython2.tar.zst --skip-existing
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/python/cpython2
+tar xf $GITHUB_WORKSPACE/external_python_cpython2.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/python/cpython2/
+rsync -a -r $GITHUB_WORKSPACE/artifacts/external/python/cpython2/py2-c-module-_codecs_cn^linux_glibc_x86_64_static/ .
+
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_python_cpython2.tar.zst --skip-existing
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/python/cpython2
+tar xf $GITHUB_WORKSPACE/external_python_cpython2.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/python/cpython2/
+rsync -a -r $GITHUB_WORKSPACE/artifacts/external/python/cpython2/py2-c-module-_codecs_hk^linux_glibc_x86_64_static/ .
+
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_python_cpython2.tar.zst --skip-existing
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/python/cpython2
+tar xf $GITHUB_WORKSPACE/external_python_cpython2.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/python/cpython2/
+rsync -a -r $GITHUB_WORKSPACE/artifacts/external/python/cpython2/py2-c-module-_codecs_iso2022^linux_glibc_x86_64_static/ .
+
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_python_cpython2.tar.zst --skip-existing
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/python/cpython2
+tar xf $GITHUB_WORKSPACE/external_python_cpython2.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/python/cpython2/
+rsync -a -r $GITHUB_WORKSPACE/artifacts/external/python/cpython2/py2-c-module-_codecs_jp^linux_glibc_x86_64_static/ .
+
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_python_cpython2.tar.zst --skip-existing
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/python/cpython2
+tar xf $GITHUB_WORKSPACE/external_python_cpython2.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/python/cpython2/
+rsync -a -r $GITHUB_WORKSPACE/artifacts/external/python/cpython2/py2-c-module-_codecs_kr^linux_glibc_x86_64_static/ .
+
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_python_cpython2.tar.zst --skip-existing
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/python/cpython2
+tar xf $GITHUB_WORKSPACE/external_python_cpython2.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/python/cpython2/
+rsync -a -r $GITHUB_WORKSPACE/artifacts/external/python/cpython2/py2-c-module-_codecs_tw^linux_glibc_x86_64_static/ .
+
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_python_cpython2.tar.zst --skip-existing
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/python/cpython2
+tar xf $GITHUB_WORKSPACE/external_python_cpython2.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/python/cpython2/
+rsync -a -r $GITHUB_WORKSPACE/artifacts/external/python/cpython2/py2-c-module-_collections^linux_glibc_x86_64_static/ .
+
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_python_cpython2.tar.zst --skip-existing
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/python/cpython2
+tar xf $GITHUB_WORKSPACE/external_python_cpython2.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/python/cpython2/
+rsync -a -r $GITHUB_WORKSPACE/artifacts/external/python/cpython2/py2-c-module-_csv^linux_glibc_x86_64_static/ .
+
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_python_cpython2.tar.zst --skip-existing
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/python/cpython2
+tar xf $GITHUB_WORKSPACE/external_python_cpython2.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/python/cpython2/
+rsync -a -r $GITHUB_WORKSPACE/artifacts/external/python/cpython2/py2-c-module-_ctypes^linux_glibc_x86_64_static/ .
+
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_python_cpython2.tar.zst --skip-existing
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/python/cpython2
+tar xf $GITHUB_WORKSPACE/external_python_cpython2.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/python/cpython2/
+rsync -a -r $GITHUB_WORKSPACE/artifacts/external/python/cpython2/py2-c-module-_ctypes_test^linux_glibc_x86_64_static/ .
+
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_python_cpython2.tar.zst --skip-existing
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/python/cpython2
+tar xf $GITHUB_WORKSPACE/external_python_cpython2.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/python/cpython2/
+rsync -a -r $GITHUB_WORKSPACE/artifacts/external/python/cpython2/py2-c-module-_functools^linux_glibc_x86_64_static/ .
+
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_python_cpython2.tar.zst --skip-existing
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/python/cpython2
+tar xf $GITHUB_WORKSPACE/external_python_cpython2.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/python/cpython2/
+rsync -a -r $GITHUB_WORKSPACE/artifacts/external/python/cpython2/py2-c-module-_heapq^linux_glibc_x86_64_static/ .
+
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_python_cpython2.tar.zst --skip-existing
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/python/cpython2
+tar xf $GITHUB_WORKSPACE/external_python_cpython2.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/python/cpython2/
+rsync -a -r $GITHUB_WORKSPACE/artifacts/external/python/cpython2/py2-c-module-_hotshot^linux_glibc_x86_64_static/ .
+
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_python_cpython2.tar.zst --skip-existing
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/python/cpython2
+tar xf $GITHUB_WORKSPACE/external_python_cpython2.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/python/cpython2/
+rsync -a -r $GITHUB_WORKSPACE/artifacts/external/python/cpython2/py2-c-module-_io^linux_glibc_x86_64_static/ .
+
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_python_cpython2.tar.zst --skip-existing
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/python/cpython2
+tar xf $GITHUB_WORKSPACE/external_python_cpython2.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/python/cpython2/
+rsync -a -r $GITHUB_WORKSPACE/artifacts/external/python/cpython2/py2-c-module-_json^linux_glibc_x86_64_static/ .
+
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_python_cpython2.tar.zst --skip-existing
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/python/cpython2
+tar xf $GITHUB_WORKSPACE/external_python_cpython2.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/python/cpython2/
+rsync -a -r $GITHUB_WORKSPACE/artifacts/external/python/cpython2/py2-c-module-_lsprof^linux_glibc_x86_64_static/ .
+
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_python_cpython2.tar.zst --skip-existing
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/python/cpython2
+tar xf $GITHUB_WORKSPACE/external_python_cpython2.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/python/cpython2/
+rsync -a -r $GITHUB_WORKSPACE/artifacts/external/python/cpython2/py2-c-module-_md5^linux_glibc_x86_64_static/ .
+
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_python_cpython2.tar.zst --skip-existing
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/python/cpython2
+tar xf $GITHUB_WORKSPACE/external_python_cpython2.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/python/cpython2/
+rsync -a -r $GITHUB_WORKSPACE/artifacts/external/python/cpython2/py2-c-module-_multibytecodec^linux_glibc_x86_64_static/ .
+
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_python_cpython2.tar.zst --skip-existing
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/python/cpython2
+tar xf $GITHUB_WORKSPACE/external_python_cpython2.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/python/cpython2/
+rsync -a -r $GITHUB_WORKSPACE/artifacts/external/python/cpython2/py2-c-module-_multiprocessing^linux_glibc_x86_64_static/ .
+
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_python_cpython2.tar.zst --skip-existing
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/python/cpython2
+tar xf $GITHUB_WORKSPACE/external_python_cpython2.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/python/cpython2/
+rsync -a -r $GITHUB_WORKSPACE/artifacts/external/python/cpython2/py2-c-module-_random^linux_glibc_x86_64_static/ .
+
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_python_cpython2.tar.zst --skip-existing
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/python/cpython2
+tar xf $GITHUB_WORKSPACE/external_python_cpython2.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/python/cpython2/
+rsync -a -r $GITHUB_WORKSPACE/artifacts/external/python/cpython2/py2-c-module-_sha256^linux_glibc_x86_64_static/ .
+
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_python_cpython2.tar.zst --skip-existing
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/python/cpython2
+tar xf $GITHUB_WORKSPACE/external_python_cpython2.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/python/cpython2/
+rsync -a -r $GITHUB_WORKSPACE/artifacts/external/python/cpython2/py2-c-module-_sha512^linux_glibc_x86_64_static/ .
+
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_python_cpython2.tar.zst --skip-existing
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/python/cpython2
+tar xf $GITHUB_WORKSPACE/external_python_cpython2.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/python/cpython2/
+rsync -a -r $GITHUB_WORKSPACE/artifacts/external/python/cpython2/py2-c-module-_sha^linux_glibc_x86_64_static/ .
+
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_python_cpython2.tar.zst --skip-existing
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/python/cpython2
+tar xf $GITHUB_WORKSPACE/external_python_cpython2.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/python/cpython2/
+rsync -a -r $GITHUB_WORKSPACE/artifacts/external/python/cpython2/py2-c-module-_socket^linux_glibc_x86_64_static/ .
+
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_python_cpython2.tar.zst --skip-existing
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/python/cpython2
+tar xf $GITHUB_WORKSPACE/external_python_cpython2.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/python/cpython2/
+rsync -a -r $GITHUB_WORKSPACE/artifacts/external/python/cpython2/py2-c-module-_sqlite3^linux_glibc_x86_64_static/ .
+
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_python_cpython2.tar.zst --skip-existing
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/python/cpython2
+tar xf $GITHUB_WORKSPACE/external_python_cpython2.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/python/cpython2/
+rsync -a -r $GITHUB_WORKSPACE/artifacts/external/python/cpython2/py2-c-module-_ssl^linux_glibc_x86_64_static/ .
+
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_python_cpython2.tar.zst --skip-existing
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/python/cpython2
+tar xf $GITHUB_WORKSPACE/external_python_cpython2.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/python/cpython2/
+rsync -a -r $GITHUB_WORKSPACE/artifacts/external/python/cpython2/py2-c-module-_struct^linux_glibc_x86_64_static/ .
+
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_python_cpython2.tar.zst --skip-existing
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/python/cpython2
+tar xf $GITHUB_WORKSPACE/external_python_cpython2.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/python/cpython2/
+rsync -a -r $GITHUB_WORKSPACE/artifacts/external/python/cpython2/py2-c-module-_testcapi^linux_glibc_x86_64_static/ .
+
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_python_cpython2.tar.zst --skip-existing
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/python/cpython2
+tar xf $GITHUB_WORKSPACE/external_python_cpython2.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/python/cpython2/
+rsync -a -r $GITHUB_WORKSPACE/artifacts/external/python/cpython2/py2-c-module-array^linux_glibc_x86_64_static/ .
+
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_python_cpython2.tar.zst --skip-existing
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/python/cpython2
+tar xf $GITHUB_WORKSPACE/external_python_cpython2.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/python/cpython2/
+rsync -a -r $GITHUB_WORKSPACE/artifacts/external/python/cpython2/py2-c-module-audioop^linux_glibc_x86_64_static/ .
+
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_python_cpython2.tar.zst --skip-existing
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/python/cpython2
+tar xf $GITHUB_WORKSPACE/external_python_cpython2.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/python/cpython2/
+rsync -a -r $GITHUB_WORKSPACE/artifacts/external/python/cpython2/py2-c-module-binascii^linux_glibc_x86_64_static/ .
+
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_python_cpython2.tar.zst --skip-existing
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/python/cpython2
+tar xf $GITHUB_WORKSPACE/external_python_cpython2.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/python/cpython2/
+rsync -a -r $GITHUB_WORKSPACE/artifacts/external/python/cpython2/py2-c-module-cPickle^linux_glibc_x86_64_static/ .
+
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_python_cpython2.tar.zst --skip-existing
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/python/cpython2
+tar xf $GITHUB_WORKSPACE/external_python_cpython2.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/python/cpython2/
+rsync -a -r $GITHUB_WORKSPACE/artifacts/external/python/cpython2/py2-c-module-cStringIO^linux_glibc_x86_64_static/ .
+
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_python_cpython2.tar.zst --skip-existing
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/python/cpython2
+tar xf $GITHUB_WORKSPACE/external_python_cpython2.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/python/cpython2/
+rsync -a -r $GITHUB_WORKSPACE/artifacts/external/python/cpython2/py2-c-module-cmath^linux_glibc_x86_64_static/ .
+
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_python_cpython2.tar.zst --skip-existing
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/python/cpython2
+tar xf $GITHUB_WORKSPACE/external_python_cpython2.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/python/cpython2/
+rsync -a -r $GITHUB_WORKSPACE/artifacts/external/python/cpython2/py2-c-module-datetime^linux_glibc_x86_64_static/ .
+
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_python_cpython2.tar.zst --skip-existing
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/python/cpython2
+tar xf $GITHUB_WORKSPACE/external_python_cpython2.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/python/cpython2/
+rsync -a -r $GITHUB_WORKSPACE/artifacts/external/python/cpython2/py2-c-module-fcntl^linux_glibc_x86_64_static/ .
+
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_python_cpython2.tar.zst --skip-existing
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/python/cpython2
+tar xf $GITHUB_WORKSPACE/external_python_cpython2.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/python/cpython2/
+rsync -a -r $GITHUB_WORKSPACE/artifacts/external/python/cpython2/py2-c-module-future_builtins^linux_glibc_x86_64_static/ .
+
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_python_cpython2.tar.zst --skip-existing
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/python/cpython2
+tar xf $GITHUB_WORKSPACE/external_python_cpython2.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/python/cpython2/
+rsync -a -r $GITHUB_WORKSPACE/artifacts/external/python/cpython2/py2-c-module-grp^linux_glibc_x86_64_static/ .
+
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_python_cpython2.tar.zst --skip-existing
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/python/cpython2
+tar xf $GITHUB_WORKSPACE/external_python_cpython2.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/python/cpython2/
+rsync -a -r $GITHUB_WORKSPACE/artifacts/external/python/cpython2/py2-c-module-itertools^linux_glibc_x86_64_static/ .
+
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_python_cpython2.tar.zst --skip-existing
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/python/cpython2
+tar xf $GITHUB_WORKSPACE/external_python_cpython2.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/python/cpython2/
+rsync -a -r $GITHUB_WORKSPACE/artifacts/external/python/cpython2/py2-c-module-math^linux_glibc_x86_64_static/ .
+
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_python_cpython2.tar.zst --skip-existing
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/python/cpython2
+tar xf $GITHUB_WORKSPACE/external_python_cpython2.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/python/cpython2/
+rsync -a -r $GITHUB_WORKSPACE/artifacts/external/python/cpython2/py2-c-module-mmap^linux_glibc_x86_64_static/ .
+
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_python_cpython2.tar.zst --skip-existing
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/python/cpython2
+tar xf $GITHUB_WORKSPACE/external_python_cpython2.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/python/cpython2/
+rsync -a -r $GITHUB_WORKSPACE/artifacts/external/python/cpython2/py2-c-module-operator^linux_glibc_x86_64_static/ .
+
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_python_cpython2.tar.zst --skip-existing
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/python/cpython2
+tar xf $GITHUB_WORKSPACE/external_python_cpython2.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/python/cpython2/
+rsync -a -r $GITHUB_WORKSPACE/artifacts/external/python/cpython2/py2-c-module-parser^linux_glibc_x86_64_static/ .
+
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_python_cpython2.tar.zst --skip-existing
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/python/cpython2
+tar xf $GITHUB_WORKSPACE/external_python_cpython2.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/python/cpython2/
+rsync -a -r $GITHUB_WORKSPACE/artifacts/external/python/cpython2/py2-c-module-pyexpat^linux_glibc_x86_64_static/ .
+
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_python_cpython2.tar.zst --skip-existing
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/python/cpython2
+tar xf $GITHUB_WORKSPACE/external_python_cpython2.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/python/cpython2/
+rsync -a -r $GITHUB_WORKSPACE/artifacts/external/python/cpython2/py2-c-module-resource^linux_glibc_x86_64_static/ .
+
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_python_cpython2.tar.zst --skip-existing
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/python/cpython2
+tar xf $GITHUB_WORKSPACE/external_python_cpython2.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/python/cpython2/
+rsync -a -r $GITHUB_WORKSPACE/artifacts/external/python/cpython2/py2-c-module-select^linux_glibc_x86_64_static/ .
+
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_python_cpython2.tar.zst --skip-existing
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/python/cpython2
+tar xf $GITHUB_WORKSPACE/external_python_cpython2.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/python/cpython2/
+rsync -a -r $GITHUB_WORKSPACE/artifacts/external/python/cpython2/py2-c-module-strop^linux_glibc_x86_64_static/ .
+
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_python_cpython2.tar.zst --skip-existing
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/python/cpython2
+tar xf $GITHUB_WORKSPACE/external_python_cpython2.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/python/cpython2/
+rsync -a -r $GITHUB_WORKSPACE/artifacts/external/python/cpython2/py2-c-module-syslog^linux_glibc_x86_64_static/ .
+
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_python_cpython2.tar.zst --skip-existing
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/python/cpython2
+tar xf $GITHUB_WORKSPACE/external_python_cpython2.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/python/cpython2/
+rsync -a -r $GITHUB_WORKSPACE/artifacts/external/python/cpython2/py2-c-module-termios^linux_glibc_x86_64_static/ .
+
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_python_cpython2.tar.zst --skip-existing
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/python/cpython2
+tar xf $GITHUB_WORKSPACE/external_python_cpython2.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/python/cpython2/
+rsync -a -r $GITHUB_WORKSPACE/artifacts/external/python/cpython2/py2-c-module-time^linux_glibc_x86_64_static/ .
+
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_python_cpython2.tar.zst --skip-existing
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/python/cpython2
+tar xf $GITHUB_WORKSPACE/external_python_cpython2.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/python/cpython2/
+rsync -a -r $GITHUB_WORKSPACE/artifacts/external/python/cpython2/py2-c-module-unicodedata^linux_glibc_x86_64_static/ .
+
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_python_cpython2.tar.zst --skip-existing
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/python/cpython2
+tar xf $GITHUB_WORKSPACE/external_python_cpython2.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/python/cpython2/
+rsync -a -r $GITHUB_WORKSPACE/artifacts/external/python/cpython2/py2-c-module-xxsubtype^linux_glibc_x86_64_static/ .
+
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_python_cpython2.tar.zst --skip-existing
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/python/cpython2
+tar xf $GITHUB_WORKSPACE/external_python_cpython2.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/python/cpython2/
+rsync -a -r $GITHUB_WORKSPACE/artifacts/external/python/cpython2/py2-c-module-zlib^linux_glibc_x86_64_static/ .
+
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_python_cpython2.tar.zst --skip-existing
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/python/cpython2
+tar xf $GITHUB_WORKSPACE/external_python_cpython2.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/python/cpython2/
+rsync -a -r $GITHUB_WORKSPACE/artifacts/external/python/cpython2/py2-interp-object^linux_glibc_x86_64_static/ .
+
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_python_cpython2.tar.zst --skip-existing
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/python/cpython2
+tar xf $GITHUB_WORKSPACE/external_python_cpython2.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/python/cpython2/
+rsync -a -r $GITHUB_WORKSPACE/artifacts/external/python/cpython2/py2-interp-parser^linux_glibc_x86_64_static/ .
+
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_python_cpython2.tar.zst --skip-existing
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/python/cpython2
+tar xf $GITHUB_WORKSPACE/external_python_cpython2.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/python/cpython2/
+rsync -a -r $GITHUB_WORKSPACE/artifacts/external/python/cpython2/py2-interp-python^linux_glibc_x86_64_static/ .
 
 echo "building py2-launcher-lib^linux_glibc_x86_64_static"
 ninja -f $GITHUB_WORKSPACE/steps/build_02.ninja py2-launcher-lib,linux_glibc_x86_64_static

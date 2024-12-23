@@ -13,6 +13,16 @@ clone_sparse prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8 sysroot lib
 clone_sparse prebuilts/rust bootstrap linux-x86/1.51.0
 
 
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_rust_crates_bitflags.tar.zst --skip-existing
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/rust/crates/bitflags
+tar xf $GITHUB_WORKSPACE/external_rust_crates_bitflags.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/rust/crates/bitflags/
+rsync -a -r $GITHUB_WORKSPACE/artifacts/external/rust/crates/bitflags/libbitflags^linux_glibc_x86_64_rlib_rlib-std/ .
+
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_rust_crates_textwrap.tar.zst --skip-existing
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/rust/crates/textwrap
+tar xf $GITHUB_WORKSPACE/external_rust_crates_textwrap.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/rust/crates/textwrap/
+rsync -a -r $GITHUB_WORKSPACE/artifacts/external/rust/crates/textwrap/libtextwrap^linux_glibc_x86_64_rlib_rlib-std/ .
+
 echo "building libclap^linux_glibc_x86_64_rlib_rlib-std"
 ninja -f $GITHUB_WORKSPACE/steps/build_02.ninja libclap,linux_glibc_x86_64_rlib_rlib-std
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/rust/crates/clap/libclap^linux_glibc_x86_64_rlib_rlib-std

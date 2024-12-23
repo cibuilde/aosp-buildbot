@@ -12,6 +12,11 @@ clone_sparse prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8 sysroot lib
 clone_sparse prebuilts/rust bootstrap linux-x86/1.51.0
 
 
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_rust_crates_unicode-xid.tar.zst --skip-existing
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/rust/crates/unicode-xid
+tar xf $GITHUB_WORKSPACE/external_rust_crates_unicode-xid.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/rust/crates/unicode-xid/
+rsync -a -r $GITHUB_WORKSPACE/artifacts/external/rust/crates/unicode-xid/libunicode_xid^linux_glibc_x86_64_rlib_rlib-std/ .
+
 echo "building libproc_macro2^linux_glibc_x86_64_rlib_rlib-std"
 ninja -f $GITHUB_WORKSPACE/steps/build_02.ninja libproc_macro2,linux_glibc_x86_64_rlib_rlib-std
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/rust/crates/proc-macro2/libproc_macro2^linux_glibc_x86_64_rlib_rlib-std

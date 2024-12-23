@@ -24,7 +24,13 @@ clone_depth_platform system/media
 clone_depth_platform system/unwinding
 
 gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern system_unwinding.tar.zst
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/unwinding
 tar xf $GITHUB_WORKSPACE/system_unwinding.tar.zst -C $GITHUB_WORKSPACE/artifacts/system/unwinding/
+
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern bionic.tar.zst --skip-existing
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic
+tar xf $GITHUB_WORKSPACE/bionic.tar.zst -C $GITHUB_WORKSPACE/artifacts/bionic/
+rsync -a -r $GITHUB_WORKSPACE/artifacts/bionic/libc/async_safe/libasync_safe^android_x86_64_static/ .
 
 echo "building libbacktrace_no_dex^android_x86_64_static"
 ninja -f $GITHUB_WORKSPACE/steps/build_02.ninja libbacktrace_no_dex,android_x86_64_static

@@ -26,7 +26,38 @@ clone_depth_platform system/logging
 clone_depth_platform system/media
 
 gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern bootable_recovery.tar.zst
+mkdir -p $GITHUB_WORKSPACE/artifacts/bootable/recovery
 tar xf $GITHUB_WORKSPACE/bootable_recovery.tar.zst -C $GITHUB_WORKSPACE/artifacts/bootable/recovery/
+
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_libdrm.tar.zst --skip-existing
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/libdrm
+tar xf $GITHUB_WORKSPACE/external_libdrm.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/libdrm/
+rsync -a -r $GITHUB_WORKSPACE/artifacts/external/libdrm/libdrm^android_recovery_x86_64_static/ .
+
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_libdrm.tar.zst --skip-existing
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/libdrm
+tar xf $GITHUB_WORKSPACE/external_libdrm.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/libdrm/
+rsync -a -r $GITHUB_WORKSPACE/artifacts/external/libdrm/libdrm^android_x86_64_static/ .
+
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_libdrm.tar.zst --skip-existing
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/libdrm
+tar xf $GITHUB_WORKSPACE/external_libdrm.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/libdrm/
+rsync -a -r $GITHUB_WORKSPACE/artifacts/external/libdrm/libdrm^android_x86_x86_64_static/ .
+
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern system_core.tar.zst --skip-existing
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/core
+tar xf $GITHUB_WORKSPACE/system_core.tar.zst -C $GITHUB_WORKSPACE/artifacts/system/core/
+rsync -a -r $GITHUB_WORKSPACE/artifacts/system/core/libsync/libsync^android_recovery_x86_64_static/ .
+
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern system_core.tar.zst --skip-existing
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/core
+tar xf $GITHUB_WORKSPACE/system_core.tar.zst -C $GITHUB_WORKSPACE/artifacts/system/core/
+rsync -a -r $GITHUB_WORKSPACE/artifacts/system/core/libsync/libsync^android_x86_64_static/ .
+
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern system_core.tar.zst --skip-existing
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/core
+tar xf $GITHUB_WORKSPACE/system_core.tar.zst -C $GITHUB_WORKSPACE/artifacts/system/core/
+rsync -a -r $GITHUB_WORKSPACE/artifacts/system/core/libsync/libsync^android_x86_x86_64_static/ .
 
 echo "building libminui^android_recovery_x86_64_static"
 ninja -f $GITHUB_WORKSPACE/steps/build_02.ninja libminui,android_recovery_x86_64_static

@@ -27,7 +27,13 @@ clone_depth_platform system/media
 clone_depth_platform system/unwinding
 
 gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern frameworks_base.tar.zst
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base
 tar xf $GITHUB_WORKSPACE/frameworks_base.tar.zst -C $GITHUB_WORKSPACE/artifacts/frameworks/base/
+
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern system_incremental_delivery.tar.zst --skip-existing
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/incremental_delivery
+tar xf $GITHUB_WORKSPACE/system_incremental_delivery.tar.zst -C $GITHUB_WORKSPACE/artifacts/system/incremental_delivery/
+rsync -a -r $GITHUB_WORKSPACE/artifacts/system/incremental_delivery/incfs/libincfs-utils^linux_glibc_x86_64_static/ .
 
 echo "building libandroidfw^linux_glibc_x86_64_static"
 ninja -f $GITHUB_WORKSPACE/steps/build_02.ninja libandroidfw,linux_glibc_x86_64_static

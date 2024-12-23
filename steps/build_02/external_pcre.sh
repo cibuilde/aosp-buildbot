@@ -11,7 +11,13 @@ clone_depth_platform external/pcre
 clone_sparse prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8 sysroot lib/gcc/x86_64-linux/4.8.3 x86_64-linux/lib64 x86_64-linux/lib32
 
 gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_pcre.tar.zst
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/pcre
 tar xf $GITHUB_WORKSPACE/external_pcre.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/pcre/
+
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_pcre.tar.zst --skip-existing
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/pcre
+tar xf $GITHUB_WORKSPACE/external_pcre.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/pcre/
+rsync -a -r $GITHUB_WORKSPACE/artifacts/external/pcre/libpcre2^linux_glibc_x86_64_static/ .
 
 echo "building libpcre2^linux_glibc_x86_64_shared"
 ninja -f $GITHUB_WORKSPACE/steps/build_02.ninja libpcre2,linux_glibc_x86_64_shared

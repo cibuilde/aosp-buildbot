@@ -21,7 +21,28 @@ clone_depth_platform system/logging
 clone_depth_platform system/media
 
 gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_boringssl.tar.zst
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/boringssl
 tar xf $GITHUB_WORKSPACE/external_boringssl.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/boringssl/
+
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_boringssl.tar.zst --skip-existing
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/boringssl
+tar xf $GITHUB_WORKSPACE/external_boringssl.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/boringssl/
+rsync -a -r $GITHUB_WORKSPACE/artifacts/external/boringssl/bcm_object^linux_glibc_x86/ .
+
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_boringssl.tar.zst --skip-existing
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/boringssl
+tar xf $GITHUB_WORKSPACE/external_boringssl.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/boringssl/
+rsync -a -r $GITHUB_WORKSPACE/artifacts/external/boringssl/bcm_object^linux_glibc_x86_64/ .
+
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_boringssl.tar.zst --skip-existing
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/boringssl
+tar xf $GITHUB_WORKSPACE/external_boringssl.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/boringssl/
+rsync -a -r $GITHUB_WORKSPACE/artifacts/external/boringssl/bssl_ar^linux_glibc_x86_64/ .
+
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_boringssl.tar.zst --skip-existing
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/boringssl
+tar xf $GITHUB_WORKSPACE/external_boringssl.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/boringssl/
+rsync -a -r $GITHUB_WORKSPACE/artifacts/external/boringssl/bssl_fipscommon^linux_glibc_x86_64/ .
 
 echo "building bssl_inject_hash^linux_glibc_x86_64"
 ninja -f $GITHUB_WORKSPACE/steps/build_02.ninja bssl_inject_hash,linux_glibc_x86_64

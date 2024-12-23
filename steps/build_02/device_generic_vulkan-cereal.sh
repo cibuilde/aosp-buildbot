@@ -22,7 +22,18 @@ clone_depth_platform system/logging
 clone_depth_platform system/media
 
 gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern device_generic_vulkan-cereal.tar.zst
+mkdir -p $GITHUB_WORKSPACE/artifacts/device/generic/vulkan-cereal
 tar xf $GITHUB_WORKSPACE/device_generic_vulkan-cereal.tar.zst -C $GITHUB_WORKSPACE/artifacts/device/generic/vulkan-cereal/
+
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern device_generic_vulkan-cereal.tar.zst --skip-existing
+mkdir -p $GITHUB_WORKSPACE/artifacts/device/generic/vulkan-cereal
+tar xf $GITHUB_WORKSPACE/device_generic_vulkan-cereal.tar.zst -C $GITHUB_WORKSPACE/artifacts/device/generic/vulkan-cereal/
+rsync -a -r $GITHUB_WORKSPACE/artifacts/device/generic/vulkan-cereal/third-party/perfetto/perfetto-libperfettobase^android_x86_64_static/ .
+
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern device_generic_vulkan-cereal.tar.zst --skip-existing
+mkdir -p $GITHUB_WORKSPACE/artifacts/device/generic/vulkan-cereal
+tar xf $GITHUB_WORKSPACE/device_generic_vulkan-cereal.tar.zst -C $GITHUB_WORKSPACE/artifacts/device/generic/vulkan-cereal/
+rsync -a -r $GITHUB_WORKSPACE/artifacts/device/generic/vulkan-cereal/third-party/perfetto/perfetto-libperfettobase^android_x86_64_static_apex10000/ .
 
 echo "building perfetto-libprotozero^android_x86_64_static"
 ninja -f $GITHUB_WORKSPACE/steps/build_02.ninja perfetto-libprotozero,android_x86_64_static
