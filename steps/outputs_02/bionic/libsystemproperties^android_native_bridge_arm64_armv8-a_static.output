@@ -1,0 +1,6 @@
+out/soong/.intermediates/bionic/libc/system_properties/libsystemproperties/android_native_bridge_arm64_armv8-a_static/obj/bionic/libc/system_properties/context_node.o
+out/soong/.intermediates/bionic/libc/system_properties/libsystemproperties/android_native_bridge_arm64_armv8-a_static/obj/bionic/libc/system_properties/contexts_serialized.o
+out/soong/.intermediates/bionic/libc/system_properties/libsystemproperties/android_native_bridge_arm64_armv8-a_static/obj/bionic/libc/system_properties/contexts_split.o
+out/soong/.intermediates/bionic/libc/system_properties/libsystemproperties/android_native_bridge_arm64_armv8-a_static/obj/bionic/libc/system_properties/prop_area.o
+out/soong/.intermediates/bionic/libc/system_properties/libsystemproperties/android_native_bridge_arm64_armv8-a_static/obj/bionic/libc/system_properties/prop_info.o
+out/soong/.intermediates/bionic/libc/system_properties/libsystemproperties/android_native_bridge_arm64_armv8-a_static/obj/bionic/libc/system_properties/system_properties.o
