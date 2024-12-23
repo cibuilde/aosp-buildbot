@@ -1,29 +1,8 @@
 set -e
 
 df -h
-mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
-ln -sf $GITHUB_WORKSPACE/ninja .
 
-mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86 prebuilts/clang/host/linux-x86
-
-clone_depth_platform art
-clone_depth_platform bionic
-clone_depth_platform external/boringssl
-clone_depth_platform external/grpc-grpc
-clone_depth_platform external/libcxx
-clone_depth_platform external/libcxxabi
-clone_depth_platform external/nanopb-c
-clone_depth_platform external/zlib
-clone_depth_platform frameworks/av
-clone_depth_platform frameworks/native
-clone_depth_platform hardware/libhardware
-clone_depth_platform hardware/libhardware_legacy
-clone_depth_platform hardware/ril
-clone_depth_platform prebuilts/gcc/linux-x86/x86/x86_64-linux-android-4.9
-clone_depth_platform system/core
-clone_depth_platform system/logging
-clone_depth_platform system/media
-
+cd $GITHUB_WORKSPACE/
 gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_grpc-grpc.tar.zst
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/grpc-grpc
 tar xf $GITHUB_WORKSPACE/external_grpc-grpc.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/
@@ -77,6 +56,29 @@ gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern ext
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/grpc-grpc
 tar xf $GITHUB_WORKSPACE/external_grpc-grpc.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/
 rsync -a -r $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libtsi_interface^android_x86_x86_64_static/ .
+
+mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
+ln -sf $GITHUB_WORKSPACE/ninja .
+
+mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86 prebuilts/clang/host/linux-x86
+
+clone_depth_platform art
+clone_depth_platform bionic
+clone_depth_platform external/boringssl
+clone_depth_platform external/grpc-grpc
+clone_depth_platform external/libcxx
+clone_depth_platform external/libcxxabi
+clone_depth_platform external/nanopb-c
+clone_depth_platform external/zlib
+clone_depth_platform frameworks/av
+clone_depth_platform frameworks/native
+clone_depth_platform hardware/libhardware
+clone_depth_platform hardware/libhardware_legacy
+clone_depth_platform hardware/ril
+clone_depth_platform prebuilts/gcc/linux-x86/x86/x86_64-linux-android-4.9
+clone_depth_platform system/core
+clone_depth_platform system/logging
+clone_depth_platform system/media
 
 echo "building libalts_frame_protector^android_x86_64_static"
 ninja -f $GITHUB_WORKSPACE/steps/build_02.ninja libalts_frame_protector,android_x86_64_static

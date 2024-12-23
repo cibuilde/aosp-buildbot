@@ -1,30 +1,8 @@
 set -e
 
 df -h
-mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
-ln -sf $GITHUB_WORKSPACE/ninja .
 
-mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86 prebuilts/clang/host/linux-x86
-
-clone_depth_platform bionic
-clone_depth_platform bootable/recovery
-clone_depth_platform external/fmtlib
-clone_depth_platform external/libcxx
-clone_depth_platform external/libcxxabi
-clone_depth_platform external/libdrm
-clone_depth_platform external/libpng
-clone_depth_platform external/zlib
-clone_depth_platform frameworks/av
-clone_depth_platform frameworks/native
-clone_depth_platform hardware/libhardware
-clone_depth_platform hardware/libhardware_legacy
-clone_depth_platform hardware/ril
-clone_depth_platform prebuilts/gcc/linux-x86/x86/x86_64-linux-android-4.9
-clone_depth_platform system/core
-clone_depth_platform system/libbase
-clone_depth_platform system/logging
-clone_depth_platform system/media
-
+cd $GITHUB_WORKSPACE/
 gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern bootable_recovery.tar.zst
 mkdir -p $GITHUB_WORKSPACE/artifacts/bootable/recovery
 tar xf $GITHUB_WORKSPACE/bootable_recovery.tar.zst -C $GITHUB_WORKSPACE/artifacts/bootable/recovery/
@@ -58,6 +36,30 @@ gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern sys
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/core
 tar xf $GITHUB_WORKSPACE/system_core.tar.zst -C $GITHUB_WORKSPACE/artifacts/system/core/
 rsync -a -r $GITHUB_WORKSPACE/artifacts/system/core/libsync/libsync^android_x86_x86_64_static/ .
+
+mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
+ln -sf $GITHUB_WORKSPACE/ninja .
+
+mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86 prebuilts/clang/host/linux-x86
+
+clone_depth_platform bionic
+clone_depth_platform bootable/recovery
+clone_depth_platform external/fmtlib
+clone_depth_platform external/libcxx
+clone_depth_platform external/libcxxabi
+clone_depth_platform external/libdrm
+clone_depth_platform external/libpng
+clone_depth_platform external/zlib
+clone_depth_platform frameworks/av
+clone_depth_platform frameworks/native
+clone_depth_platform hardware/libhardware
+clone_depth_platform hardware/libhardware_legacy
+clone_depth_platform hardware/ril
+clone_depth_platform prebuilts/gcc/linux-x86/x86/x86_64-linux-android-4.9
+clone_depth_platform system/core
+clone_depth_platform system/libbase
+clone_depth_platform system/logging
+clone_depth_platform system/media
 
 echo "building libminui^android_recovery_x86_64_static"
 ninja -f $GITHUB_WORKSPACE/steps/build_02.ninja libminui,android_recovery_x86_64_static

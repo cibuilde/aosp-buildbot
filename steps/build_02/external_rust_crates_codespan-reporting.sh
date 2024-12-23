@@ -1,17 +1,8 @@
 set -e
 
 df -h
-mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
-ln -sf $GITHUB_WORKSPACE/ninja .
 
-mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86 prebuilts/clang/host/linux-x86
-
-clone_depth_platform external/rust/crates/codespan-reporting
-clone_depth_platform external/rust/crates/termcolor
-clone_depth_platform external/rust/crates/unicode-width
-clone_sparse prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8 sysroot lib/gcc/x86_64-linux/4.8.3 x86_64-linux/lib64 x86_64-linux/lib32
-clone_sparse prebuilts/rust bootstrap linux-x86/1.51.0
-
+cd $GITHUB_WORKSPACE/
 
 gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_rust_crates_termcolor.tar.zst --skip-existing
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/rust/crates/termcolor
@@ -22,6 +13,17 @@ gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern ext
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/rust/crates/unicode-width
 tar xf $GITHUB_WORKSPACE/external_rust_crates_unicode-width.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/rust/crates/unicode-width/
 rsync -a -r $GITHUB_WORKSPACE/artifacts/external/rust/crates/unicode-width/libunicode_width^linux_glibc_x86_64_rlib_rlib-std/ .
+
+mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
+ln -sf $GITHUB_WORKSPACE/ninja .
+
+mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86 prebuilts/clang/host/linux-x86
+
+clone_depth_platform external/rust/crates/codespan-reporting
+clone_depth_platform external/rust/crates/termcolor
+clone_depth_platform external/rust/crates/unicode-width
+clone_sparse prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8 sysroot lib/gcc/x86_64-linux/4.8.3 x86_64-linux/lib64 x86_64-linux/lib32
+clone_sparse prebuilts/rust bootstrap linux-x86/1.51.0
 
 echo "building libcodespan_reporting^linux_glibc_x86_64_rlib_rlib-std"
 ninja -f $GITHUB_WORKSPACE/steps/build_02.ninja libcodespan_reporting,linux_glibc_x86_64_rlib_rlib-std

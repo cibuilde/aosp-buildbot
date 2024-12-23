@@ -1,26 +1,8 @@
 set -e
 
 df -h
-mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
-ln -sf $GITHUB_WORKSPACE/ninja .
 
-mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86 prebuilts/clang/host/linux-x86
-
-clone_depth_platform bionic
-clone_depth_platform external/compiler-rt
-clone_depth_platform external/libcxx
-clone_depth_platform external/libcxxabi
-clone_depth_platform frameworks/av
-clone_depth_platform frameworks/native
-clone_depth_platform hardware/libhardware
-clone_depth_platform hardware/libhardware_legacy
-clone_depth_platform hardware/ril
-clone_sparse prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8 sysroot lib/gcc/x86_64-linux/4.8.3 x86_64-linux/lib64 x86_64-linux/lib32
-clone_depth_platform prebuilts/gcc/linux-x86/x86/x86_64-linux-android-4.9
-clone_depth_platform system/core
-clone_depth_platform system/logging
-clone_depth_platform system/media
-
+cd $GITHUB_WORKSPACE/
 gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_libcxx.tar.zst
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/libcxx
 tar xf $GITHUB_WORKSPACE/external_libcxx.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/libcxx/
@@ -94,6 +76,26 @@ gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern ext
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/libcxxabi
 tar xf $GITHUB_WORKSPACE/external_libcxxabi.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/libcxxabi/
 rsync -a -r $GITHUB_WORKSPACE/artifacts/external/libcxxabi/libc++abi^linux_glibc_x86_static/ .
+
+mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
+ln -sf $GITHUB_WORKSPACE/ninja .
+
+mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86 prebuilts/clang/host/linux-x86
+
+clone_depth_platform bionic
+clone_depth_platform external/compiler-rt
+clone_depth_platform external/libcxx
+clone_depth_platform external/libcxxabi
+clone_depth_platform frameworks/av
+clone_depth_platform frameworks/native
+clone_depth_platform hardware/libhardware
+clone_depth_platform hardware/libhardware_legacy
+clone_depth_platform hardware/ril
+clone_sparse prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8 sysroot lib/gcc/x86_64-linux/4.8.3 x86_64-linux/lib64 x86_64-linux/lib32
+clone_depth_platform prebuilts/gcc/linux-x86/x86/x86_64-linux-android-4.9
+clone_depth_platform system/core
+clone_depth_platform system/logging
+clone_depth_platform system/media
 
 echo "building libc++_static^android_recovery_x86_64_static"
 ninja -f $GITHUB_WORKSPACE/steps/build_02.ninja libc++_static,android_recovery_x86_64_static

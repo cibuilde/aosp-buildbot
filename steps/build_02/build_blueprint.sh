@@ -1,14 +1,8 @@
 set -e
 
 df -h
-mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
-ln -sf $GITHUB_WORKSPACE/ninja .
 
-mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86 prebuilts/clang/host/linux-x86
-
-clone_depth_platform build/blueprint
-clone_depth_platform prebuilts/go/linux-x86
-
+cd $GITHUB_WORKSPACE/
 gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern build_blueprint.tar.zst
 mkdir -p $GITHUB_WORKSPACE/artifacts/build/blueprint
 tar xf $GITHUB_WORKSPACE/build_blueprint.tar.zst -C $GITHUB_WORKSPACE/artifacts/build/blueprint/
@@ -22,6 +16,14 @@ gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern bui
 mkdir -p $GITHUB_WORKSPACE/artifacts/build/blueprint
 tar xf $GITHUB_WORKSPACE/build_blueprint.tar.zst -C $GITHUB_WORKSPACE/artifacts/build/blueprint/
 rsync -a -r $GITHUB_WORKSPACE/artifacts/build/blueprint/blueprint-parser^linux_glibc_x86_64/ .
+
+mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
+ln -sf $GITHUB_WORKSPACE/ninja .
+
+mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86 prebuilts/clang/host/linux-x86
+
+clone_depth_platform build/blueprint
+clone_depth_platform prebuilts/go/linux-x86
 
 echo "building blueprint-pathtools^linux_glibc_x86_64"
 ninja -f $GITHUB_WORKSPACE/steps/build_02.ninja blueprint-pathtools,linux_glibc_x86_64

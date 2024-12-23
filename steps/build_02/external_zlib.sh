@@ -1,6 +1,17 @@
 set -e
 
 df -h
+
+cd $GITHUB_WORKSPACE/
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_zlib.tar.zst
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/zlib
+tar xf $GITHUB_WORKSPACE/external_zlib.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/zlib/
+
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_zlib.tar.zst --skip-existing
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/zlib
+tar xf $GITHUB_WORKSPACE/external_zlib.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/zlib/
+rsync -a -r $GITHUB_WORKSPACE/artifacts/external/zlib/libz^linux_glibc_x86_64_static/ .
+
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 ln -sf $GITHUB_WORKSPACE/ninja .
 
@@ -17,15 +28,6 @@ clone_sparse prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8 sysroot lib
 clone_depth_platform system/core
 clone_depth_platform system/logging
 clone_depth_platform system/media
-
-gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_zlib.tar.zst
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/zlib
-tar xf $GITHUB_WORKSPACE/external_zlib.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/zlib/
-
-gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_zlib.tar.zst --skip-existing
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/zlib
-tar xf $GITHUB_WORKSPACE/external_zlib.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/zlib/
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/zlib/libz^linux_glibc_x86_64_static/ .
 
 echo "building libz^linux_glibc_x86_64_shared"
 ninja -f $GITHUB_WORKSPACE/steps/build_02.ninja libz,linux_glibc_x86_64_shared

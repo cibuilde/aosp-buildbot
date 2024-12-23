@@ -1,27 +1,8 @@
 set -e
 
 df -h
-mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
-ln -sf $GITHUB_WORKSPACE/ninja .
 
-mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86 prebuilts/clang/host/linux-x86
-
-clone_depth_platform bionic
-clone_depth_platform build/soong
-clone_depth_platform external/gwp_asan
-clone_depth_platform frameworks/av
-clone_depth_platform frameworks/native
-clone_depth_platform hardware/libhardware
-clone_depth_platform hardware/libhardware_legacy
-clone_depth_platform hardware/ril
-clone_sparse prebuilts/build-tools linux-x86/bin linux-x86/lib64 path common
-clone_depth_platform prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9
-clone_depth_platform prebuilts/gcc/linux-x86/arm/arm-linux-androideabi-4.9
-clone_depth_platform prebuilts/gcc/linux-x86/x86/x86_64-linux-android-4.9
-clone_depth_platform system/core
-clone_depth_platform system/logging
-clone_depth_platform system/media
-
+cd $GITHUB_WORKSPACE/
 gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern bionic.tar.zst
 mkdir -p $GITHUB_WORKSPACE/artifacts/bionic
 tar xf $GITHUB_WORKSPACE/bionic.tar.zst -C $GITHUB_WORKSPACE/artifacts/bionic/
@@ -210,6 +191,27 @@ gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern sys
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/core
 tar xf $GITHUB_WORKSPACE/system_core.tar.zst -C $GITHUB_WORKSPACE/artifacts/system/core/
 rsync -a -r $GITHUB_WORKSPACE/artifacts/system/core/property_service/libpropertyinfoparser/libpropertyinfoparser^android_x86_x86_64_static_apex10000/ .
+
+mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
+ln -sf $GITHUB_WORKSPACE/ninja .
+
+mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86 prebuilts/clang/host/linux-x86
+
+clone_depth_platform bionic
+clone_depth_platform build/soong
+clone_depth_platform external/gwp_asan
+clone_depth_platform frameworks/av
+clone_depth_platform frameworks/native
+clone_depth_platform hardware/libhardware
+clone_depth_platform hardware/libhardware_legacy
+clone_depth_platform hardware/ril
+clone_sparse prebuilts/build-tools linux-x86/bin linux-x86/lib64 path common
+clone_depth_platform prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9
+clone_depth_platform prebuilts/gcc/linux-x86/arm/arm-linux-androideabi-4.9
+clone_depth_platform prebuilts/gcc/linux-x86/x86/x86_64-linux-android-4.9
+clone_depth_platform system/core
+clone_depth_platform system/logging
+clone_depth_platform system/media
 
 echo "building crtbegin_dynamic^android_product.31_x86_64"
 ninja -f $GITHUB_WORKSPACE/steps/build_02.ninja crtbegin_dynamic,android_product.31_x86_64

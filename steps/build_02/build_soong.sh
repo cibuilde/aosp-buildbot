@@ -1,14 +1,8 @@
 set -e
 
 df -h
-mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
-ln -sf $GITHUB_WORKSPACE/ninja .
 
-mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86 prebuilts/clang/host/linux-x86
-
-clone_depth_platform build/soong
-clone_depth_platform prebuilts/go/linux-x86
-
+cd $GITHUB_WORKSPACE/
 gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern build_soong.tar.zst
 mkdir -p $GITHUB_WORKSPACE/artifacts/build/soong
 tar xf $GITHUB_WORKSPACE/build_soong.tar.zst -C $GITHUB_WORKSPACE/artifacts/build/soong/
@@ -32,6 +26,14 @@ gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern bui
 mkdir -p $GITHUB_WORKSPACE/artifacts/build/soong
 tar xf $GITHUB_WORKSPACE/build_soong.tar.zst -C $GITHUB_WORKSPACE/artifacts/build/soong/
 rsync -a -r $GITHUB_WORKSPACE/artifacts/build/soong/symbol_inject/soong-symbol_inject^linux_glibc_x86_64/ .
+
+mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
+ln -sf $GITHUB_WORKSPACE/ninja .
+
+mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86 prebuilts/clang/host/linux-x86
+
+clone_depth_platform build/soong
+clone_depth_platform prebuilts/go/linux-x86
 
 echo "building sbox_proto^linux_glibc_x86_64"
 ninja -f $GITHUB_WORKSPACE/steps/build_02.ninja sbox_proto,linux_glibc_x86_64

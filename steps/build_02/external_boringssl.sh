@@ -1,25 +1,8 @@
 set -e
 
 df -h
-mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
-ln -sf $GITHUB_WORKSPACE/ninja .
 
-mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86 prebuilts/clang/host/linux-x86
-
-clone_depth_platform external/boringssl
-clone_depth_platform external/libcxx
-clone_depth_platform external/libcxxabi
-clone_depth_platform frameworks/av
-clone_depth_platform frameworks/native
-clone_depth_platform hardware/libhardware
-clone_depth_platform hardware/libhardware_legacy
-clone_depth_platform hardware/ril
-clone_sparse prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8 sysroot lib/gcc/x86_64-linux/4.8.3 x86_64-linux/lib64 x86_64-linux/lib32
-clone_depth_platform prebuilts/go/linux-x86
-clone_depth_platform system/core
-clone_depth_platform system/logging
-clone_depth_platform system/media
-
+cd $GITHUB_WORKSPACE/
 gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_boringssl.tar.zst
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/boringssl
 tar xf $GITHUB_WORKSPACE/external_boringssl.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/boringssl/
@@ -43,6 +26,25 @@ gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern ext
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/boringssl
 tar xf $GITHUB_WORKSPACE/external_boringssl.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/boringssl/
 rsync -a -r $GITHUB_WORKSPACE/artifacts/external/boringssl/bssl_fipscommon^linux_glibc_x86_64/ .
+
+mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
+ln -sf $GITHUB_WORKSPACE/ninja .
+
+mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86 prebuilts/clang/host/linux-x86
+
+clone_depth_platform external/boringssl
+clone_depth_platform external/libcxx
+clone_depth_platform external/libcxxabi
+clone_depth_platform frameworks/av
+clone_depth_platform frameworks/native
+clone_depth_platform hardware/libhardware
+clone_depth_platform hardware/libhardware_legacy
+clone_depth_platform hardware/ril
+clone_sparse prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8 sysroot lib/gcc/x86_64-linux/4.8.3 x86_64-linux/lib64 x86_64-linux/lib32
+clone_depth_platform prebuilts/go/linux-x86
+clone_depth_platform system/core
+clone_depth_platform system/logging
+clone_depth_platform system/media
 
 echo "building bssl_inject_hash^linux_glibc_x86_64"
 ninja -f $GITHUB_WORKSPACE/steps/build_02.ninja bssl_inject_hash,linux_glibc_x86_64

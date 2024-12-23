@@ -1,14 +1,8 @@
 set -e
 
 df -h
-mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
-ln -sf $GITHUB_WORKSPACE/ninja .
 
-mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86 prebuilts/clang/host/linux-x86
-
-clone_depth_platform libcore
-clone_sparse prebuilts/rust bootstrap linux-x86/1.51.0
-
+cd $GITHUB_WORKSPACE/
 gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern prebuilts_rust.tar.zst
 mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/rust
 tar xf $GITHUB_WORKSPACE/prebuilts_rust.tar.zst -C $GITHUB_WORKSPACE/artifacts/prebuilts/rust/
@@ -27,6 +21,14 @@ gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern pre
 mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/rust
 tar xf $GITHUB_WORKSPACE/prebuilts_rust.tar.zst -C $GITHUB_WORKSPACE/artifacts/prebuilts/rust/
 rsync -a -r $GITHUB_WORKSPACE/artifacts/prebuilts/rust/libcore.rust_sysroot^android_x86_x86_64_rlib/ .
+
+mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
+ln -sf $GITHUB_WORKSPACE/ninja .
+
+mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86 prebuilts/clang/host/linux-x86
+
+clone_depth_platform libcore
+clone_sparse prebuilts/rust bootstrap linux-x86/1.51.0
 
 echo "building libcompiler_builtins.rust_sysroot^android_x86_64_rlib"
 ninja -f $GITHUB_WORKSPACE/steps/build_02.ninja libcompiler_builtins.rust_sysroot,android_x86_64_rlib

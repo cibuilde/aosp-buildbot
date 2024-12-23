@@ -1,6 +1,27 @@
 set -e
 
 df -h
+
+cd $GITHUB_WORKSPACE/
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_cpu_features.tar.zst
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/cpu_features
+tar xf $GITHUB_WORKSPACE/external_cpu_features.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/cpu_features/
+
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_cpu_features.tar.zst --skip-existing
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/cpu_features
+tar xf $GITHUB_WORKSPACE/external_cpu_features.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/cpu_features/
+rsync -a -r $GITHUB_WORKSPACE/artifacts/external/cpu_features/libcpu_features-utils^android_x86_64_static_lto-thin_apex31/ .
+
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_cpu_features.tar.zst --skip-existing
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/cpu_features
+tar xf $GITHUB_WORKSPACE/external_cpu_features.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/cpu_features/
+rsync -a -r $GITHUB_WORKSPACE/artifacts/external/cpu_features/libcpu_features-utils^android_x86_x86_64_static_lto-thin_apex31/ .
+
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_cpu_features.tar.zst --skip-existing
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/cpu_features
+tar xf $GITHUB_WORKSPACE/external_cpu_features.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/cpu_features/
+rsync -a -r $GITHUB_WORKSPACE/artifacts/external/cpu_features/libcpu_features-utils^linux_glibc_x86_64_static/ .
+
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 ln -sf $GITHUB_WORKSPACE/ninja .
 
@@ -20,25 +41,6 @@ clone_depth_platform prebuilts/gcc/linux-x86/x86/x86_64-linux-android-4.9
 clone_depth_platform system/core
 clone_depth_platform system/logging
 clone_depth_platform system/media
-
-gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_cpu_features.tar.zst
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/cpu_features
-tar xf $GITHUB_WORKSPACE/external_cpu_features.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/cpu_features/
-
-gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_cpu_features.tar.zst --skip-existing
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/cpu_features
-tar xf $GITHUB_WORKSPACE/external_cpu_features.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/cpu_features/
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/cpu_features/libcpu_features-utils^android_x86_64_static_lto-thin_apex31/ .
-
-gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_cpu_features.tar.zst --skip-existing
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/cpu_features
-tar xf $GITHUB_WORKSPACE/external_cpu_features.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/cpu_features/
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/cpu_features/libcpu_features-utils^android_x86_x86_64_static_lto-thin_apex31/ .
-
-gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_cpu_features.tar.zst --skip-existing
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/cpu_features
-tar xf $GITHUB_WORKSPACE/external_cpu_features.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/cpu_features/
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/cpu_features/libcpu_features-utils^linux_glibc_x86_64_static/ .
 
 echo "building libcpu_features^android_x86_64_static_lto-thin_apex31"
 ninja -f $GITHUB_WORKSPACE/steps/build_02.ninja libcpu_features,android_x86_64_static_lto-thin_apex31

@@ -1,13 +1,8 @@
 set -e
 
 df -h
-mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
-ln -sf $GITHUB_WORKSPACE/ninja .
 
-mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86 prebuilts/clang/host/linux-x86
-
-clone_depth_platform external/libyuv
-
+cd $GITHUB_WORKSPACE/
 gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_libyuv.tar.zst
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/libyuv
 tar xf $GITHUB_WORKSPACE/external_libyuv.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/libyuv/
@@ -26,6 +21,13 @@ gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern ext
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/libyuv
 tar xf $GITHUB_WORKSPACE/external_libyuv.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/libyuv/
 rsync -a -r $GITHUB_WORKSPACE/artifacts/external/libyuv/files/libyuv^android_x86_x86_64_static_cfi/ .
+
+mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
+ln -sf $GITHUB_WORKSPACE/ninja .
+
+mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86 prebuilts/clang/host/linux-x86
+
+clone_depth_platform external/libyuv
 
 echo "building libyuv_static^android_x86_64_static_cfi"
 ninja -f $GITHUB_WORKSPACE/steps/build_02.ninja libyuv_static,android_x86_64_static_cfi
