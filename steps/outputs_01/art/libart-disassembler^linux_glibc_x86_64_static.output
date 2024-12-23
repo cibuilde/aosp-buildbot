@@ -1,4 +1,0 @@
-out/soong/.intermediates/art/disassembler/libart-disassembler/linux_glibc_x86_64_static/obj/art/disassembler/disassembler.o
-out/soong/.intermediates/art/disassembler/libart-disassembler/linux_glibc_x86_64_static/obj/art/disassembler/disassembler_arm.o
-out/soong/.intermediates/art/disassembler/libart-disassembler/linux_glibc_x86_64_static/obj/art/disassembler/disassembler_arm64.o
-out/soong/.intermediates/art/disassembler/libart-disassembler/linux_glibc_x86_64_static/obj/art/disassembler/disassembler_x86.o

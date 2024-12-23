@@ -8,6 +8,7 @@ mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/
 
 clone_depth_platform frameworks/libs/modules-utils
 
+
 echo "building libmodules-utils-build^android_x86_64_static_apex30"
 ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libmodules-utils-build,android_x86_64_static_apex30
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/libs/modules-utils/build/libmodules-utils-build^android_x86_64_static_apex30
@@ -17,16 +18,13 @@ rm -rf out
 
 cd $GITHUB_WORKSPACE/
 tar cfJ frameworks_libs_modules-utils.tar.zst -C $GITHUB_WORKSPACE/artifacts/frameworks/libs/modules-utils/ .
+gh release --repo cibuilde/aosp-buildbot upload android12-gsi_01 frameworks_libs_modules-utils.tar.zst --clobber
 
 du -ah -d1| sort -h
 
 if [ ! -f "$GITHUB_WORKSPACE/cache/frameworks_libs_modules-utils.tar.zst" ]; then
   echo "Compressing frameworks/libs/modules-utils -> frameworks_libs_modules-utils.tar.zst"
   tar cfJ $GITHUB_WORKSPACE/cache/frameworks_libs_modules-utils.tar.zst -C $GITHUB_WORKSPACE/aosp/frameworks/libs/modules-utils/ .
-fi
-if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_clang_host_linux-x86.tar.zst" ]; then
-  echo "Compressing prebuilts/clang/host/linux-x86 -> prebuilts_clang_host_linux-x86.tar.zst"
-  tar cfJ $GITHUB_WORKSPACE/cache/prebuilts_clang_host_linux-x86.tar.zst -C $GITHUB_WORKSPACE/aosp/prebuilts/clang/host/linux-x86/ .
 fi
 du -ah -d1 $GITHUB_WORKSPACE/cache| sort -h
 

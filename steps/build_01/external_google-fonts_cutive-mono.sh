@@ -8,6 +8,7 @@ mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/
 
 clone_depth_platform external/google-fonts/cutive-mono
 
+
 echo "building CutiveMono.ttf^android_x86_64"
 ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja CutiveMono.ttf,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/google-fonts/cutive-mono/CutiveMono.ttf^android_x86_64
@@ -17,6 +18,7 @@ rm -rf out
 
 cd $GITHUB_WORKSPACE/
 tar cfJ external_google-fonts_cutive-mono.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/google-fonts/cutive-mono/ .
+gh release --repo cibuilde/aosp-buildbot upload android12-gsi_01 external_google-fonts_cutive-mono.tar.zst --clobber
 
 du -ah -d1| sort -h
 

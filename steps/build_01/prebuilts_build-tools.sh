@@ -8,6 +8,7 @@ mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/
 
 clone_sparse prebuilts/build-tools linux-x86/bin linux-x86/lib64 path common
 
+
 echo "building bison^linux_glibc_x86_64"
 ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja bison,linux_glibc_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/build-tools/bison^linux_glibc_x86_64
@@ -32,6 +33,7 @@ rm -rf out
 
 cd $GITHUB_WORKSPACE/
 tar cfJ prebuilts_build-tools.tar.zst -C $GITHUB_WORKSPACE/artifacts/prebuilts/build-tools/ .
+gh release --repo cibuilde/aosp-buildbot upload android12-gsi_01 prebuilts_build-tools.tar.zst --clobber
 
 du -ah -d1| sort -h
 

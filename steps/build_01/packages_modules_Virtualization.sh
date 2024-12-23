@@ -8,6 +8,7 @@ mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/
 
 clone_depth_platform packages/modules/Virtualization
 
+
 echo "building com.android.virt.init.rc^android_x86_64"
 ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja com.android.virt.init.rc,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/Virtualization/apex/com.android.virt.init.rc^android_x86_64
@@ -52,6 +53,7 @@ rm -rf out
 
 cd $GITHUB_WORKSPACE/
 tar cfJ packages_modules_Virtualization.tar.zst -C $GITHUB_WORKSPACE/artifacts/packages/modules/Virtualization/ .
+gh release --repo cibuilde/aosp-buildbot upload android12-gsi_01 packages_modules_Virtualization.tar.zst --clobber
 
 du -ah -d1| sort -h
 

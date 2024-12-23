@@ -35,6 +35,7 @@ clone_depth_platform system/media
 clone_depth_platform system/unwinding
 clone_sparse_exclude tools/dexter !/testdata
 
+
 echo "building AndroidClock.ttf^android_x86_64"
 ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja AndroidClock.ttf,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/data/fonts/AndroidClock.ttf^android_x86_64
@@ -309,6 +310,7 @@ rm -rf out
 
 cd $GITHUB_WORKSPACE/
 tar cfJ frameworks_base.tar.zst -C $GITHUB_WORKSPACE/artifacts/frameworks/base/ .
+gh release --repo cibuilde/aosp-buildbot upload android12-gsi_01 frameworks_base.tar.zst --clobber
 
 du -ah -d1| sort -h
 
@@ -383,10 +385,6 @@ fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/libnativehelper.tar.zst" ]; then
   echo "Compressing libnativehelper -> libnativehelper.tar.zst"
   tar cfJ $GITHUB_WORKSPACE/cache/libnativehelper.tar.zst -C $GITHUB_WORKSPACE/aosp/libnativehelper/ .
-fi
-if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_clang_host_linux-x86.tar.zst" ]; then
-  echo "Compressing prebuilts/clang/host/linux-x86 -> prebuilts_clang_host_linux-x86.tar.zst"
-  tar cfJ $GITHUB_WORKSPACE/cache/prebuilts_clang_host_linux-x86.tar.zst -C $GITHUB_WORKSPACE/aosp/prebuilts/clang/host/linux-x86/ .
 fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_gcc_linux-x86_host_x86_64-linux-glibc2.17-4.8.tar.zst" ]; then
   echo "Compressing prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8 -> prebuilts_gcc_linux-x86_host_x86_64-linux-glibc2.17-4.8.tar.zst"

@@ -9,6 +9,7 @@ mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/
 clone_depth_platform art
 clone_depth_platform packages/modules/vndk
 
+
 echo "building api_levels^"
 ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja api_levels,
 mkdir -p $GITHUB_WORKSPACE/artifacts/singletons/api_levels^
@@ -58,6 +59,7 @@ rm -rf out
 
 cd $GITHUB_WORKSPACE/
 tar cfJ singletons.tar.zst -C $GITHUB_WORKSPACE/artifacts/singletons/ .
+gh release --repo cibuilde/aosp-buildbot upload android12-gsi_01 singletons.tar.zst --clobber
 
 du -ah -d1| sort -h
 

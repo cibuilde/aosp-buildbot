@@ -8,6 +8,7 @@ mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/
 
 clone_sparse_exclude prebuilts/misc "!/common/robolectric" "!/darwin-x86" "!/darwin-x86_64"
 
+
 echo "building gdbserver^android_x86_64"
 ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja gdbserver,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/misc/gdbserver/gdbserver^android_x86_64
@@ -22,6 +23,7 @@ rm -rf out
 
 cd $GITHUB_WORKSPACE/
 tar cfJ prebuilts_misc.tar.zst -C $GITHUB_WORKSPACE/artifacts/prebuilts/misc/ .
+gh release --repo cibuilde/aosp-buildbot upload android12-gsi_01 prebuilts_misc.tar.zst --clobber
 
 du -ah -d1| sort -h
 

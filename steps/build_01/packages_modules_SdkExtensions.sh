@@ -8,6 +8,7 @@ mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/
 
 clone_depth_platform packages/modules/SdkExtensions
 
+
 echo "building derive_classpath.rc^android_x86_64"
 ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja derive_classpath.rc,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/SdkExtensions/derive_classpath/derive_classpath.rc^android_x86_64
@@ -22,6 +23,7 @@ rm -rf out
 
 cd $GITHUB_WORKSPACE/
 tar cfJ packages_modules_SdkExtensions.tar.zst -C $GITHUB_WORKSPACE/artifacts/packages/modules/SdkExtensions/ .
+gh release --repo cibuilde/aosp-buildbot upload android12-gsi_01 packages_modules_SdkExtensions.tar.zst --clobber
 
 du -ah -d1| sort -h
 

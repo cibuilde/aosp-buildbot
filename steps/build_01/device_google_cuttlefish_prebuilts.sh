@@ -9,6 +9,7 @@ mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/
 clone_depth device/google/cuttlefish
 clone_depth device/google/cuttlefish_prebuilts
 
+
 echo "building cuttlefish_crosvm_bootloader^android_x86_64"
 ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja cuttlefish_crosvm_bootloader,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish_prebuilts/bootloader/cuttlefish_crosvm_bootloader^android_x86_64
@@ -18,6 +19,7 @@ rm -rf out
 
 cd $GITHUB_WORKSPACE/
 tar cfJ device_google_cuttlefish_prebuilts.tar.zst -C $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish_prebuilts/ .
+gh release --repo cibuilde/aosp-buildbot upload android12-gsi_01 device_google_cuttlefish_prebuilts.tar.zst --clobber
 
 du -ah -d1| sort -h
 

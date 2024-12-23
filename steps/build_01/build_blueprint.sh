@@ -9,6 +9,7 @@ mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/
 clone_depth_platform build/blueprint
 clone_depth_platform prebuilts/go/linux-x86
 
+
 echo "building blueprint-deptools^linux_glibc_x86_64"
 ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja blueprint-deptools,linux_glibc_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/build/blueprint/blueprint-deptools^linux_glibc_x86_64
@@ -23,6 +24,7 @@ rm -rf out
 
 cd $GITHUB_WORKSPACE/
 tar cfJ build_blueprint.tar.zst -C $GITHUB_WORKSPACE/artifacts/build/blueprint/ .
+gh release --repo cibuilde/aosp-buildbot upload android12-gsi_01 build_blueprint.tar.zst --clobber
 
 du -ah -d1| sort -h
 

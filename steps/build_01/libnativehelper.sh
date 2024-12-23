@@ -20,6 +20,7 @@ clone_depth_platform system/core
 clone_depth_platform system/logging
 clone_depth_platform system/media
 
+
 echo "building libnativehelper_compat_libc++^android_x86_64_static_apex31"
 ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libnativehelper_compat_libc++,android_x86_64_static_apex31
 mkdir -p $GITHUB_WORKSPACE/artifacts/libnativehelper/libnativehelper_compat_libc++^android_x86_64_static_apex31
@@ -54,6 +55,7 @@ rm -rf out
 
 cd $GITHUB_WORKSPACE/
 tar cfJ libnativehelper.tar.zst -C $GITHUB_WORKSPACE/artifacts/libnativehelper/ .
+gh release --repo cibuilde/aosp-buildbot upload android12-gsi_01 libnativehelper.tar.zst --clobber
 
 du -ah -d1| sort -h
 
@@ -92,10 +94,6 @@ fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/libnativehelper.tar.zst" ]; then
   echo "Compressing libnativehelper -> libnativehelper.tar.zst"
   tar cfJ $GITHUB_WORKSPACE/cache/libnativehelper.tar.zst -C $GITHUB_WORKSPACE/aosp/libnativehelper/ .
-fi
-if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_clang_host_linux-x86.tar.zst" ]; then
-  echo "Compressing prebuilts/clang/host/linux-x86 -> prebuilts_clang_host_linux-x86.tar.zst"
-  tar cfJ $GITHUB_WORKSPACE/cache/prebuilts_clang_host_linux-x86.tar.zst -C $GITHUB_WORKSPACE/aosp/prebuilts/clang/host/linux-x86/ .
 fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_gcc_linux-x86_x86_x86_64-linux-android-4.9.tar.zst" ]; then
   echo "Compressing prebuilts/gcc/linux-x86/x86/x86_64-linux-android-4.9 -> prebuilts_gcc_linux-x86_x86_x86_64-linux-android-4.9.tar.zst"

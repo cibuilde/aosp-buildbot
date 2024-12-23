@@ -11,6 +11,7 @@ clone_depth_platform packages/modules/Connectivity
 clone_depth_platform system/bpf
 clone_depth_platform system/core
 
+
 echo "building offload.o^android_common"
 ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja offload.o,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/Connectivity/Tethering/bpf_progs/offload.o^android_common
@@ -25,6 +26,7 @@ rm -rf out
 
 cd $GITHUB_WORKSPACE/
 tar cfJ packages_modules_Connectivity.tar.zst -C $GITHUB_WORKSPACE/artifacts/packages/modules/Connectivity/ .
+gh release --repo cibuilde/aosp-buildbot upload android12-gsi_01 packages_modules_Connectivity.tar.zst --clobber
 
 du -ah -d1| sort -h
 
@@ -35,10 +37,6 @@ fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/packages_modules_Connectivity.tar.zst" ]; then
   echo "Compressing packages/modules/Connectivity -> packages_modules_Connectivity.tar.zst"
   tar cfJ $GITHUB_WORKSPACE/cache/packages_modules_Connectivity.tar.zst -C $GITHUB_WORKSPACE/aosp/packages/modules/Connectivity/ .
-fi
-if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_clang_host_linux-x86.tar.zst" ]; then
-  echo "Compressing prebuilts/clang/host/linux-x86 -> prebuilts_clang_host_linux-x86.tar.zst"
-  tar cfJ $GITHUB_WORKSPACE/cache/prebuilts_clang_host_linux-x86.tar.zst -C $GITHUB_WORKSPACE/aosp/prebuilts/clang/host/linux-x86/ .
 fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/system_bpf.tar.zst" ]; then
   echo "Compressing system/bpf -> system_bpf.tar.zst"

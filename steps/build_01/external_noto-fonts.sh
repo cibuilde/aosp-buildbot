@@ -9,6 +9,7 @@ mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/
 clone_depth_platform art
 clone_depth_platform external/noto-fonts
 
+
 echo "building NotoColorEmoji.ttf^android_x86_64"
 ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja NotoColorEmoji.ttf,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/noto-fonts/emoji-compat/NotoColorEmoji.ttf^android_x86_64
@@ -963,6 +964,7 @@ rm -rf out
 
 cd $GITHUB_WORKSPACE/
 tar cfJ external_noto-fonts.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/noto-fonts/ .
+gh release --repo cibuilde/aosp-buildbot upload android12-gsi_01 external_noto-fonts.tar.zst --clobber
 
 du -ah -d1| sort -h
 

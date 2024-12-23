@@ -8,6 +8,7 @@ mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/
 
 clone_depth_platform external/vulkan-headers
 
+
 echo "building ndk_vulkan_headers^"
 ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja ndk_vulkan_headers,
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/vulkan-headers/ndk_vulkan_headers^
@@ -17,6 +18,7 @@ rm -rf out
 
 cd $GITHUB_WORKSPACE/
 tar cfJ external_vulkan-headers.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/vulkan-headers/ .
+gh release --repo cibuilde/aosp-buildbot upload android12-gsi_01 external_vulkan-headers.tar.zst --clobber
 
 du -ah -d1| sort -h
 

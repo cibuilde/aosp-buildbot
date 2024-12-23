@@ -21,6 +21,7 @@ clone_depth_platform system/core
 clone_depth_platform system/logging
 clone_depth_platform system/media
 
+
 echo "building libvixl^android_x86_64_static_apex31"
 ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libvixl,android_x86_64_static_apex31
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/vixl/libvixl^android_x86_64_static_apex31
@@ -31,11 +32,6 @@ ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libvixl,android_x86_x86_64_stati
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/vixl/libvixl^android_x86_x86_64_static_apex31
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/vixl/libvixl^android_x86_x86_64_static_apex31.output . $GITHUB_WORKSPACE/artifacts/external/vixl/libvixl^android_x86_x86_64_static_apex31
 
-echo "building libvixl^linux_glibc_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libvixl,linux_glibc_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/vixl/libvixl^linux_glibc_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/vixl/libvixl^linux_glibc_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/vixl/libvixl^linux_glibc_x86_64_static
-
 echo "building libvixld^linux_glibc_x86_64_static"
 ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libvixld,linux_glibc_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/vixl/libvixld^linux_glibc_x86_64_static
@@ -45,6 +41,7 @@ rm -rf out
 
 cd $GITHUB_WORKSPACE/
 tar cfJ external_vixl.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/vixl/ .
+gh release --repo cibuilde/aosp-buildbot upload android12-gsi_01 external_vixl.tar.zst --clobber
 
 du -ah -d1| sort -h
 
@@ -83,10 +80,6 @@ fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/hardware_ril.tar.zst" ]; then
   echo "Compressing hardware/ril -> hardware_ril.tar.zst"
   tar cfJ $GITHUB_WORKSPACE/cache/hardware_ril.tar.zst -C $GITHUB_WORKSPACE/aosp/hardware/ril/ .
-fi
-if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_clang_host_linux-x86.tar.zst" ]; then
-  echo "Compressing prebuilts/clang/host/linux-x86 -> prebuilts_clang_host_linux-x86.tar.zst"
-  tar cfJ $GITHUB_WORKSPACE/cache/prebuilts_clang_host_linux-x86.tar.zst -C $GITHUB_WORKSPACE/aosp/prebuilts/clang/host/linux-x86/ .
 fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_gcc_linux-x86_host_x86_64-linux-glibc2.17-4.8.tar.zst" ]; then
   echo "Compressing prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8 -> prebuilts_gcc_linux-x86_host_x86_64-linux-glibc2.17-4.8.tar.zst"

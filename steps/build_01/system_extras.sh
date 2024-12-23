@@ -30,6 +30,7 @@ clone_depth_platform system/libbase
 clone_depth_platform system/logging
 clone_depth_platform system/media
 
+
 echo "building checkpoint_gc^android_x86_64"
 ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja checkpoint_gc,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/extras/checkpoint_gc/checkpoint_gc^android_x86_64
@@ -159,6 +160,7 @@ rm -rf out
 
 cd $GITHUB_WORKSPACE/
 tar cfJ system_extras.tar.zst -C $GITHUB_WORKSPACE/artifacts/system/extras/ .
+gh release --repo cibuilde/aosp-buildbot upload android12-gsi_01 system_extras.tar.zst --clobber
 
 du -ah -d1| sort -h
 
@@ -225,10 +227,6 @@ fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/libnativehelper.tar.zst" ]; then
   echo "Compressing libnativehelper -> libnativehelper.tar.zst"
   tar cfJ $GITHUB_WORKSPACE/cache/libnativehelper.tar.zst -C $GITHUB_WORKSPACE/aosp/libnativehelper/ .
-fi
-if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_clang_host_linux-x86.tar.zst" ]; then
-  echo "Compressing prebuilts/clang/host/linux-x86 -> prebuilts_clang_host_linux-x86.tar.zst"
-  tar cfJ $GITHUB_WORKSPACE/cache/prebuilts_clang_host_linux-x86.tar.zst -C $GITHUB_WORKSPACE/aosp/prebuilts/clang/host/linux-x86/ .
 fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_gcc_linux-x86_host_x86_64-linux-glibc2.17-4.8.tar.zst" ]; then
   echo "Compressing prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8 -> prebuilts_gcc_linux-x86_host_x86_64-linux-glibc2.17-4.8.tar.zst"

@@ -8,6 +8,7 @@ mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/
 
 clone_depth_platform external/neven
 
+
 echo "building RFFspeed_501.bmd^android_x86_64"
 ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja RFFspeed_501.bmd,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/neven/RFFspeed_501.bmd^android_x86_64
@@ -22,6 +23,7 @@ rm -rf out
 
 cd $GITHUB_WORKSPACE/
 tar cfJ external_neven.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/neven/ .
+gh release --repo cibuilde/aosp-buildbot upload android12-gsi_01 external_neven.tar.zst --clobber
 
 du -ah -d1| sort -h
 

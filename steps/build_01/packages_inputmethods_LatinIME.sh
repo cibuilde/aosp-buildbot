@@ -21,6 +21,7 @@ clone_depth_platform system/core
 clone_depth_platform system/logging
 clone_depth_platform system/media
 
+
 echo "building libjni_latinime^android_x86_64_static"
 ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libjni_latinime,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/inputmethods/LatinIME/native/jni/libjni_latinime^android_x86_64_static
@@ -30,6 +31,7 @@ rm -rf out
 
 cd $GITHUB_WORKSPACE/
 tar cfJ packages_inputmethods_LatinIME.tar.zst -C $GITHUB_WORKSPACE/artifacts/packages/inputmethods/LatinIME/ .
+gh release --repo cibuilde/aosp-buildbot upload android12-gsi_01 packages_inputmethods_LatinIME.tar.zst --clobber
 
 du -ah -d1| sort -h
 
@@ -72,10 +74,6 @@ fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/packages_inputmethods_LatinIME.tar.zst" ]; then
   echo "Compressing packages/inputmethods/LatinIME -> packages_inputmethods_LatinIME.tar.zst"
   tar cfJ $GITHUB_WORKSPACE/cache/packages_inputmethods_LatinIME.tar.zst -C $GITHUB_WORKSPACE/aosp/packages/inputmethods/LatinIME/ .
-fi
-if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_clang_host_linux-x86.tar.zst" ]; then
-  echo "Compressing prebuilts/clang/host/linux-x86 -> prebuilts_clang_host_linux-x86.tar.zst"
-  tar cfJ $GITHUB_WORKSPACE/cache/prebuilts_clang_host_linux-x86.tar.zst -C $GITHUB_WORKSPACE/aosp/prebuilts/clang/host/linux-x86/ .
 fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_gcc_linux-x86_x86_x86_64-linux-android-4.9.tar.zst" ]; then
   echo "Compressing prebuilts/gcc/linux-x86/x86/x86_64-linux-android-4.9 -> prebuilts_gcc_linux-x86_x86_x86_64-linux-android-4.9.tar.zst"

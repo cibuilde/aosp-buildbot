@@ -23,6 +23,7 @@ clone_depth_platform system/logging
 clone_depth_platform system/media
 clone_depth_platform system/server_configurable_flags
 
+
 echo "building server_configurable_flags^android_x86_64_static"
 ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja server_configurable_flags,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/server_configurable_flags/libflags/server_configurable_flags^android_x86_64_static
@@ -47,6 +48,7 @@ rm -rf out
 
 cd $GITHUB_WORKSPACE/
 tar cfJ system_server_configurable_flags.tar.zst -C $GITHUB_WORKSPACE/artifacts/system/server_configurable_flags/ .
+gh release --repo cibuilde/aosp-buildbot upload android12-gsi_01 system_server_configurable_flags.tar.zst --clobber
 
 du -ah -d1| sort -h
 
@@ -89,10 +91,6 @@ fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/hardware_ril.tar.zst" ]; then
   echo "Compressing hardware/ril -> hardware_ril.tar.zst"
   tar cfJ $GITHUB_WORKSPACE/cache/hardware_ril.tar.zst -C $GITHUB_WORKSPACE/aosp/hardware/ril/ .
-fi
-if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_clang_host_linux-x86.tar.zst" ]; then
-  echo "Compressing prebuilts/clang/host/linux-x86 -> prebuilts_clang_host_linux-x86.tar.zst"
-  tar cfJ $GITHUB_WORKSPACE/cache/prebuilts_clang_host_linux-x86.tar.zst -C $GITHUB_WORKSPACE/aosp/prebuilts/clang/host/linux-x86/ .
 fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_gcc_linux-x86_x86_x86_64-linux-android-4.9.tar.zst" ]; then
   echo "Compressing prebuilts/gcc/linux-x86/x86/x86_64-linux-android-4.9 -> prebuilts_gcc_linux-x86_x86_x86_64-linux-android-4.9.tar.zst"

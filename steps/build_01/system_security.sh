@@ -27,6 +27,7 @@ clone_depth_platform system/security
 clone_depth_platform system/tools/aidl
 clone_depth_platform system/tools/hidl
 
+
 echo "building libkeystore2_aaid^android_x86_64_static"
 ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libkeystore2_aaid,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aaid/libkeystore2_aaid^android_x86_64_static
@@ -46,6 +47,7 @@ rm -rf out
 
 cd $GITHUB_WORKSPACE/
 tar cfJ system_security.tar.zst -C $GITHUB_WORKSPACE/artifacts/system/security/ .
+gh release --repo cibuilde/aosp-buildbot upload android12-gsi_01 system_security.tar.zst --clobber
 
 du -ah -d1| sort -h
 
@@ -92,10 +94,6 @@ fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/packages_modules_Gki.tar.zst" ]; then
   echo "Compressing packages/modules/Gki -> packages_modules_Gki.tar.zst"
   tar cfJ $GITHUB_WORKSPACE/cache/packages_modules_Gki.tar.zst -C $GITHUB_WORKSPACE/aosp/packages/modules/Gki/ .
-fi
-if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_clang_host_linux-x86.tar.zst" ]; then
-  echo "Compressing prebuilts/clang/host/linux-x86 -> prebuilts_clang_host_linux-x86.tar.zst"
-  tar cfJ $GITHUB_WORKSPACE/cache/prebuilts_clang_host_linux-x86.tar.zst -C $GITHUB_WORKSPACE/aosp/prebuilts/clang/host/linux-x86/ .
 fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_gcc_linux-x86_x86_x86_64-linux-android-4.9.tar.zst" ]; then
   echo "Compressing prebuilts/gcc/linux-x86/x86/x86_64-linux-android-4.9 -> prebuilts_gcc_linux-x86_x86_x86_64-linux-android-4.9.tar.zst"

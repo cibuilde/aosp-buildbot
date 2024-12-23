@@ -20,6 +20,7 @@ clone_depth_platform system/core
 clone_depth_platform system/logging
 clone_depth_platform system/media
 
+
 echo "building libsepol^android_x86_64_static"
 ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libsepol,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/selinux/libsepol/libsepol^android_x86_64_static
@@ -34,6 +35,7 @@ rm -rf out
 
 cd $GITHUB_WORKSPACE/
 tar cfJ external_selinux.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/selinux/ .
+gh release --repo cibuilde/aosp-buildbot upload android12-gsi_01 external_selinux.tar.zst --clobber
 
 du -ah -d1| sort -h
 
@@ -68,10 +70,6 @@ fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_build-tools.tar.zst" ]; then
   echo "Compressing prebuilts/build-tools -> prebuilts_build-tools.tar.zst"
   tar cfJ $GITHUB_WORKSPACE/cache/prebuilts_build-tools.tar.zst -C $GITHUB_WORKSPACE/aosp/prebuilts/build-tools/ .
-fi
-if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_clang_host_linux-x86.tar.zst" ]; then
-  echo "Compressing prebuilts/clang/host/linux-x86 -> prebuilts_clang_host_linux-x86.tar.zst"
-  tar cfJ $GITHUB_WORKSPACE/cache/prebuilts_clang_host_linux-x86.tar.zst -C $GITHUB_WORKSPACE/aosp/prebuilts/clang/host/linux-x86/ .
 fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_gcc_linux-x86_host_x86_64-linux-glibc2.17-4.8.tar.zst" ]; then
   echo "Compressing prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8 -> prebuilts_gcc_linux-x86_host_x86_64-linux-glibc2.17-4.8.tar.zst"

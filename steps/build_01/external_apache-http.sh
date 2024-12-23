@@ -8,6 +8,7 @@ mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/
 
 clone_depth_platform external/apache-http
 
+
 echo "building org.apache.http.legacy.xml^android_common"
 ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja org.apache.http.legacy.xml,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/apache-http/org.apache.http.legacy.xml^android_common
@@ -17,6 +18,7 @@ rm -rf out
 
 cd $GITHUB_WORKSPACE/
 tar cfJ external_apache-http.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/apache-http/ .
+gh release --repo cibuilde/aosp-buildbot upload android12-gsi_01 external_apache-http.tar.zst --clobber
 
 du -ah -d1| sort -h
 

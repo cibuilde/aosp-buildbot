@@ -10,6 +10,7 @@ clone_depth_platform external/rust/crates/peeking_take_while
 clone_sparse prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8 sysroot lib/gcc/x86_64-linux/4.8.3 x86_64-linux/lib64 x86_64-linux/lib32
 clone_sparse prebuilts/rust bootstrap linux-x86/1.51.0
 
+
 echo "building libpeeking_take_while^linux_glibc_x86_64_rlib_rlib-std"
 ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libpeeking_take_while,linux_glibc_x86_64_rlib_rlib-std
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/rust/crates/peeking_take_while/libpeeking_take_while^linux_glibc_x86_64_rlib_rlib-std
@@ -19,16 +20,13 @@ rm -rf out
 
 cd $GITHUB_WORKSPACE/
 tar cfJ external_rust_crates_peeking_take_while.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/rust/crates/peeking_take_while/ .
+gh release --repo cibuilde/aosp-buildbot upload android12-gsi_01 external_rust_crates_peeking_take_while.tar.zst --clobber
 
 du -ah -d1| sort -h
 
 if [ ! -f "$GITHUB_WORKSPACE/cache/external_rust_crates_peeking_take_while.tar.zst" ]; then
   echo "Compressing external/rust/crates/peeking_take_while -> external_rust_crates_peeking_take_while.tar.zst"
   tar cfJ $GITHUB_WORKSPACE/cache/external_rust_crates_peeking_take_while.tar.zst -C $GITHUB_WORKSPACE/aosp/external/rust/crates/peeking_take_while/ .
-fi
-if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_clang_host_linux-x86.tar.zst" ]; then
-  echo "Compressing prebuilts/clang/host/linux-x86 -> prebuilts_clang_host_linux-x86.tar.zst"
-  tar cfJ $GITHUB_WORKSPACE/cache/prebuilts_clang_host_linux-x86.tar.zst -C $GITHUB_WORKSPACE/aosp/prebuilts/clang/host/linux-x86/ .
 fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_gcc_linux-x86_host_x86_64-linux-glibc2.17-4.8.tar.zst" ]; then
   echo "Compressing prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8 -> prebuilts_gcc_linux-x86_host_x86_64-linux-glibc2.17-4.8.tar.zst"

@@ -8,6 +8,7 @@ mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/
 
 clone_depth_platform external/google-fonts/source-sans-pro
 
+
 echo "building SourceSansPro-Bold.ttf^android_x86_64"
 ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja SourceSansPro-Bold.ttf,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/google-fonts/source-sans-pro/SourceSansPro-Bold.ttf^android_x86_64
@@ -42,6 +43,7 @@ rm -rf out
 
 cd $GITHUB_WORKSPACE/
 tar cfJ external_google-fonts_source-sans-pro.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/google-fonts/source-sans-pro/ .
+gh release --repo cibuilde/aosp-buildbot upload android12-gsi_01 external_google-fonts_source-sans-pro.tar.zst --clobber
 
 du -ah -d1| sort -h
 

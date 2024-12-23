@@ -30,6 +30,7 @@ clone_depth_platform system/libziparchive
 clone_depth_platform system/logging
 clone_depth_platform system/media
 
+
 echo "building asm_defines.s^android_x86_64_apex31"
 ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja asm_defines.s,android_x86_64_apex31
 mkdir -p $GITHUB_WORKSPACE/artifacts/art/tools/cpp-define-generator/asm_defines.s^android_x86_64_apex31
@@ -55,11 +56,6 @@ ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libart-dexlayout,android_x86_x86
 mkdir -p $GITHUB_WORKSPACE/artifacts/art/dexlayout/libart-dexlayout^android_x86_x86_64_static_apex31
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/art/libart-dexlayout^android_x86_x86_64_static_apex31.output . $GITHUB_WORKSPACE/artifacts/art/dexlayout/libart-dexlayout^android_x86_x86_64_static_apex31
 
-echo "building libart-dexlayout^linux_glibc_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libart-dexlayout,linux_glibc_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/art/dexlayout/libart-dexlayout^linux_glibc_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/art/libart-dexlayout^linux_glibc_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/art/dexlayout/libart-dexlayout^linux_glibc_x86_64_static
-
 echo "building libart-disassembler^android_x86_64_static_apex31"
 ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libart-disassembler,android_x86_64_static_apex31
 mkdir -p $GITHUB_WORKSPACE/artifacts/art/disassembler/libart-disassembler^android_x86_64_static_apex31
@@ -69,11 +65,6 @@ echo "building libart-disassembler^android_x86_x86_64_static_apex31"
 ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libart-disassembler,android_x86_x86_64_static_apex31
 mkdir -p $GITHUB_WORKSPACE/artifacts/art/disassembler/libart-disassembler^android_x86_x86_64_static_apex31
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/art/libart-disassembler^android_x86_x86_64_static_apex31.output . $GITHUB_WORKSPACE/artifacts/art/disassembler/libart-disassembler^android_x86_x86_64_static_apex31
-
-echo "building libart-disassembler^linux_glibc_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libart-disassembler,linux_glibc_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/art/disassembler/libart-disassembler^linux_glibc_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/art/libart-disassembler^linux_glibc_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/art/disassembler/libart-disassembler^linux_glibc_x86_64_static
 
 echo "building libartd-dexlayout^linux_glibc_x86_64_static"
 ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libartd-dexlayout,linux_glibc_x86_64_static
@@ -154,11 +145,6 @@ echo "building libelffile^android_x86_x86_64_static_lto-thin_apex31"
 ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libelffile,android_x86_x86_64_static_lto-thin_apex31
 mkdir -p $GITHUB_WORKSPACE/artifacts/art/libelffile/libelffile^android_x86_x86_64_static_lto-thin_apex31
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/art/libelffile^android_x86_x86_64_static_lto-thin_apex31.output . $GITHUB_WORKSPACE/artifacts/art/libelffile/libelffile^android_x86_x86_64_static_lto-thin_apex31
-
-echo "building libelffile^linux_glibc_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libelffile,linux_glibc_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/art/libelffile/libelffile^linux_glibc_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/art/libelffile^linux_glibc_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/art/libelffile/libelffile^linux_glibc_x86_64_static
 
 echo "building libelffiled^linux_glibc_x86_64_static"
 ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libelffiled,linux_glibc_x86_64_static
@@ -254,6 +240,7 @@ rm -rf out
 
 cd $GITHUB_WORKSPACE/
 tar cfJ art.tar.zst -C $GITHUB_WORKSPACE/artifacts/art/ .
+gh release --repo cibuilde/aosp-buildbot upload android12-gsi_01 art.tar.zst --clobber
 
 du -ah -d1| sort -h
 
@@ -320,10 +307,6 @@ fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/libnativehelper.tar.zst" ]; then
   echo "Compressing libnativehelper -> libnativehelper.tar.zst"
   tar cfJ $GITHUB_WORKSPACE/cache/libnativehelper.tar.zst -C $GITHUB_WORKSPACE/aosp/libnativehelper/ .
-fi
-if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_clang_host_linux-x86.tar.zst" ]; then
-  echo "Compressing prebuilts/clang/host/linux-x86 -> prebuilts_clang_host_linux-x86.tar.zst"
-  tar cfJ $GITHUB_WORKSPACE/cache/prebuilts_clang_host_linux-x86.tar.zst -C $GITHUB_WORKSPACE/aosp/prebuilts/clang/host/linux-x86/ .
 fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_gcc_linux-x86_host_x86_64-linux-glibc2.17-4.8.tar.zst" ]; then
   echo "Compressing prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8 -> prebuilts_gcc_linux-x86_host_x86_64-linux-glibc2.17-4.8.tar.zst"

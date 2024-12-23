@@ -30,6 +30,7 @@ clone_depth_platform system/logging
 clone_depth_platform system/media
 clone_depth_platform system/unwinding
 
+
 echo "building common_libc^"
 ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja common_libc,
 mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/common_libc^
@@ -1359,6 +1360,7 @@ rm -rf out
 
 cd $GITHUB_WORKSPACE/
 tar cfJ bionic.tar.zst -C $GITHUB_WORKSPACE/artifacts/bionic/ .
+gh release --repo cibuilde/aosp-buildbot upload android12-gsi_01 bionic.tar.zst --clobber
 
 du -ah -d1| sort -h
 
@@ -1417,10 +1419,6 @@ fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_clang-tools.tar.zst" ]; then
   echo "Compressing prebuilts/clang-tools -> prebuilts_clang-tools.tar.zst"
   tar cfJ $GITHUB_WORKSPACE/cache/prebuilts_clang-tools.tar.zst -C $GITHUB_WORKSPACE/aosp/prebuilts/clang-tools/ .
-fi
-if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_clang_host_linux-x86.tar.zst" ]; then
-  echo "Compressing prebuilts/clang/host/linux-x86 -> prebuilts_clang_host_linux-x86.tar.zst"
-  tar cfJ $GITHUB_WORKSPACE/cache/prebuilts_clang_host_linux-x86.tar.zst -C $GITHUB_WORKSPACE/aosp/prebuilts/clang/host/linux-x86/ .
 fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_gcc_linux-x86_aarch64_aarch64-linux-android-4.9.tar.zst" ]; then
   echo "Compressing prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9 -> prebuilts_gcc_linux-x86_aarch64_aarch64-linux-android-4.9.tar.zst"

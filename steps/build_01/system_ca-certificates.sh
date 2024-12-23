@@ -8,6 +8,7 @@ mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/
 
 clone_depth_platform system/ca-certificates
 
+
 echo "building target-cacert-01419da9.0^android_x86_64"
 ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja target-cacert-01419da9.0,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/ca-certificates/target-cacert-01419da9.0^android_x86_64
@@ -967,6 +968,7 @@ rm -rf out
 
 cd $GITHUB_WORKSPACE/
 tar cfJ system_ca-certificates.tar.zst -C $GITHUB_WORKSPACE/artifacts/system/ca-certificates/ .
+gh release --repo cibuilde/aosp-buildbot upload android12-gsi_01 system_ca-certificates.tar.zst --clobber
 
 du -ah -d1| sort -h
 

@@ -7,41 +7,6 @@ clone_sparse prebuilts/clang/host/linux-x86 clang-r416183b1 clang-r416183b soong
 
 mkdir -p $GITHUB_WORKSPACE/cache
 
-time source steps/build_01/singletons.sh
-time source steps/build_01/system_apex.sh
-time source steps/build_01/system_bpf.sh
-time source steps/build_01/system_bpfprogs.sh
-time source steps/build_01/system_bt.sh
-time source steps/build_01/system_ca-certificates.sh
-time source steps/build_01/system_connectivity_wificond.sh
-time source steps/build_01/system_core.sh
-time source steps/build_01/system_extras.sh
-time source steps/build_01/system_gsid.sh
-time source steps/build_01/system_incremental_delivery.sh
-time source steps/build_01/system_keymaster.sh
-time source steps/build_01/system_libfmq.sh
-time source steps/build_01/system_libhwbinder.sh
-time source steps/build_01/system_libprocinfo.sh
-time source steps/build_01/system_libvintf.sh
-time source steps/build_01/system_libziparchive.sh
-time source steps/build_01/system_logging.sh
-time source steps/build_01/system_media.sh
-time source steps/build_01/system_memory_libdmabufheap.sh
-time source steps/build_01/system_memory_libion.sh
-time source steps/build_01/system_memory_libmeminfo.sh
-time source steps/build_01/system_memory_libmemunreachable.sh
-time source steps/build_01/system_memory_lmkd.sh
-time source steps/build_01/system_netd.sh
-time source steps/build_01/system_nfc.sh
-time source steps/build_01/system_security.sh
-time source steps/build_01/system_sepolicy.sh
-time source steps/build_01/system_server_configurable_flags.sh
-time source steps/build_01/system_timezone.sh
-time source steps/build_01/system_tools_hidl.sh
-time source steps/build_01/system_unwinding.sh
-time source steps/build_01/test_vts-testcase_hal.sh
-time source steps/build_01/tools_dexter.sh
-
 time source steps/build_01/art.sh
 time source steps/build_01/bionic.sh
 time source steps/build_01/bootable_recovery.sh
@@ -216,6 +181,42 @@ time source steps/build_01/prebuilts_rust.sh
 time source steps/build_01/prebuilts_vndk_v28.sh
 time source steps/build_01/prebuilts_vndk_v29.sh
 time source steps/build_01/prebuilts_vndk_v30.sh
+time source steps/build_01/singletons.sh
+time source steps/build_01/system_apex.sh
+time source steps/build_01/system_bpf.sh
+time source steps/build_01/system_bpfprogs.sh
+time source steps/build_01/system_bt.sh
+time source steps/build_01/system_ca-certificates.sh
+time source steps/build_01/system_connectivity_wificond.sh
+time source steps/build_01/system_core.sh
+time source steps/build_01/system_extras.sh
+time source steps/build_01/system_gsid.sh
+time source steps/build_01/system_incremental_delivery.sh
+time source steps/build_01/system_keymaster.sh
+time source steps/build_01/system_libfmq.sh
+time source steps/build_01/system_libhwbinder.sh
+time source steps/build_01/system_libprocinfo.sh
+time source steps/build_01/system_libvintf.sh
+time source steps/build_01/system_libziparchive.sh
+time source steps/build_01/system_logging.sh
+time source steps/build_01/system_media.sh
+time source steps/build_01/system_memory_libdmabufheap.sh
+time source steps/build_01/system_memory_libion.sh
+time source steps/build_01/system_memory_libmeminfo.sh
+time source steps/build_01/system_memory_libmemunreachable.sh
+time source steps/build_01/system_memory_lmkd.sh
+time source steps/build_01/system_netd.sh
+time source steps/build_01/system_nfc.sh
+time source steps/build_01/system_security.sh
+time source steps/build_01/system_sepolicy.sh
+time source steps/build_01/system_server_configurable_flags.sh
+time source steps/build_01/system_timezone.sh
+time source steps/build_01/system_tools_hidl.sh
+time source steps/build_01/system_unwinding.sh
+time source steps/build_01/test_vts-testcase_hal.sh
+time source steps/build_01/tools_dexter.sh
 
-echo "Compressing prebuilts/clang/host/linux-x86 -> prebuilts_clang_host_linux-x86.tar.zst"
-tar cfJ $GITHUB_WORKSPACE/cache/prebuilts_clang_host_linux-x86.tar.zst -C $GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86/ .
+if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_clang_host_linux-x86.tar.zst" ]; then
+  echo "Compressing prebuilts/clang/host/linux-x86 -> prebuilts_clang_host_linux-x86.tar.zst"
+  tar cfJ $GITHUB_WORKSPACE/cache/prebuilts_clang_host_linux-x86.tar.zst -C $GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86/ .
+fi

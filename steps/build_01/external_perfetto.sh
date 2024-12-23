@@ -8,6 +8,7 @@ mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/
 
 clone_depth_platform external/perfetto
 
+
 echo "building mm_events^android_x86_64"
 ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja mm_events,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/perfetto/mm_events^android_x86_64
@@ -17,6 +18,7 @@ rm -rf out
 
 cd $GITHUB_WORKSPACE/
 tar cfJ external_perfetto.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/perfetto/ .
+gh release --repo cibuilde/aosp-buildbot upload android12-gsi_01 external_perfetto.tar.zst --clobber
 
 du -ah -d1| sort -h
 

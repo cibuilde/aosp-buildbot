@@ -11,6 +11,7 @@ clone_depth device/google/cuttlefish
 clone_sparse prebuilts/build-tools linux-x86/bin linux-x86/lib64 path common
 clone_depth_platform system/sepolicy
 
+
 echo "building 26.0.compat.cil^android_common"
 ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja 26.0.compat.cil,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/sepolicy/26.0.compat.cil^android_common
@@ -190,6 +191,7 @@ rm -rf out
 
 cd $GITHUB_WORKSPACE/
 tar cfJ system_sepolicy.tar.zst -C $GITHUB_WORKSPACE/artifacts/system/sepolicy/ .
+gh release --repo cibuilde/aosp-buildbot upload android12-gsi_01 system_sepolicy.tar.zst --clobber
 
 du -ah -d1| sort -h
 

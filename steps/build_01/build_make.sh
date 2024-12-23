@@ -8,6 +8,7 @@ mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/
 
 clone_depth build/make platform/build
 
+
 echo "building fsverity-release-cert-der^android_x86_64"
 ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja fsverity-release-cert-der,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/build/make/target/product/security/fsverity-release-cert-der^android_x86_64
@@ -32,6 +33,7 @@ rm -rf out
 
 cd $GITHUB_WORKSPACE/
 tar cfJ build_make.tar.zst -C $GITHUB_WORKSPACE/artifacts/build/make/ .
+gh release --repo cibuilde/aosp-buildbot upload android12-gsi_01 build_make.tar.zst --clobber
 
 du -ah -d1| sort -h
 

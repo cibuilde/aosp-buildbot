@@ -20,6 +20,7 @@ clone_depth_platform system/core
 clone_depth_platform system/logging
 clone_depth_platform system/media
 
+
 echo "building com.android.os.statsd.init.rc^android_x86_64"
 ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja com.android.os.statsd.init.rc,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/StatsD/apex/com.android.os.statsd.init.rc^android_x86_64
@@ -39,6 +40,7 @@ rm -rf out
 
 cd $GITHUB_WORKSPACE/
 tar cfJ packages_modules_StatsD.tar.zst -C $GITHUB_WORKSPACE/artifacts/packages/modules/StatsD/ .
+gh release --repo cibuilde/aosp-buildbot upload android12-gsi_01 packages_modules_StatsD.tar.zst --clobber
 
 du -ah -d1| sort -h
 
@@ -77,10 +79,6 @@ fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/packages_modules_StatsD.tar.zst" ]; then
   echo "Compressing packages/modules/StatsD -> packages_modules_StatsD.tar.zst"
   tar cfJ $GITHUB_WORKSPACE/cache/packages_modules_StatsD.tar.zst -C $GITHUB_WORKSPACE/aosp/packages/modules/StatsD/ .
-fi
-if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_clang_host_linux-x86.tar.zst" ]; then
-  echo "Compressing prebuilts/clang/host/linux-x86 -> prebuilts_clang_host_linux-x86.tar.zst"
-  tar cfJ $GITHUB_WORKSPACE/cache/prebuilts_clang_host_linux-x86.tar.zst -C $GITHUB_WORKSPACE/aosp/prebuilts/clang/host/linux-x86/ .
 fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_gcc_linux-x86_x86_x86_64-linux-android-4.9.tar.zst" ]; then
   echo "Compressing prebuilts/gcc/linux-x86/x86/x86_64-linux-android-4.9 -> prebuilts_gcc_linux-x86_x86_x86_64-linux-android-4.9.tar.zst"

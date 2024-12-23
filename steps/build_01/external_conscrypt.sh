@@ -8,6 +8,7 @@ mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/
 
 clone_depth_platform external/conscrypt
 
+
 echo "building com.android.conscrypt.ld.config.txt^android_x86_64"
 ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja com.android.conscrypt.ld.config.txt,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/conscrypt/apex/com.android.conscrypt.ld.config.txt^android_x86_64
@@ -17,6 +18,7 @@ rm -rf out
 
 cd $GITHUB_WORKSPACE/
 tar cfJ external_conscrypt.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/conscrypt/ .
+gh release --repo cibuilde/aosp-buildbot upload android12-gsi_01 external_conscrypt.tar.zst --clobber
 
 du -ah -d1| sort -h
 

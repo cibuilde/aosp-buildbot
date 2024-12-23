@@ -8,6 +8,7 @@ mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/
 
 clone_depth_platform system/bt
 
+
 echo "building bt_did.conf^android_x86_64"
 ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja bt_did.conf,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/bt/conf/bt_did.conf^android_x86_64
@@ -22,6 +23,7 @@ rm -rf out
 
 cd $GITHUB_WORKSPACE/
 tar cfJ system_bt.tar.zst -C $GITHUB_WORKSPACE/artifacts/system/bt/ .
+gh release --repo cibuilde/aosp-buildbot upload android12-gsi_01 system_bt.tar.zst --clobber
 
 du -ah -d1| sort -h
 

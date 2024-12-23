@@ -8,6 +8,7 @@ mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/
 
 clone_depth_platform system/timezone
 
+
 echo "building apex_icu_tzdata.dat^android_x86_64"
 ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja apex_icu_tzdata.dat,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/timezone/output_data/apex_icu_tzdata.dat^android_x86_64
@@ -47,6 +48,7 @@ rm -rf out
 
 cd $GITHUB_WORKSPACE/
 tar cfJ system_timezone.tar.zst -C $GITHUB_WORKSPACE/artifacts/system/timezone/ .
+gh release --repo cibuilde/aosp-buildbot upload android12-gsi_01 system_timezone.tar.zst --clobber
 
 du -ah -d1| sort -h
 

@@ -8,6 +8,7 @@ mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/
 
 clone_depth_platform packages/wallpapers/LivePicker
 
+
 echo "building android.software.live_wallpaper.xml^android_x86_64"
 ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja android.software.live_wallpaper.xml,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/wallpapers/LivePicker/android.software.live_wallpaper.xml^android_x86_64
@@ -17,6 +18,7 @@ rm -rf out
 
 cd $GITHUB_WORKSPACE/
 tar cfJ packages_wallpapers_LivePicker.tar.zst -C $GITHUB_WORKSPACE/artifacts/packages/wallpapers/LivePicker/ .
+gh release --repo cibuilde/aosp-buildbot upload android12-gsi_01 packages_wallpapers_LivePicker.tar.zst --clobber
 
 du -ah -d1| sort -h
 

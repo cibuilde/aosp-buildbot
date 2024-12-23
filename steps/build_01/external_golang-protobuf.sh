@@ -9,6 +9,7 @@ mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/
 clone_depth_platform external/golang-protobuf
 clone_depth_platform prebuilts/go/linux-x86
 
+
 echo "building golang-protobuf-proto^linux_glibc_x86_64"
 ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja golang-protobuf-proto,linux_glibc_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/golang-protobuf/golang-protobuf-proto^linux_glibc_x86_64
@@ -18,6 +19,7 @@ rm -rf out
 
 cd $GITHUB_WORKSPACE/
 tar cfJ external_golang-protobuf.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/golang-protobuf/ .
+gh release --repo cibuilde/aosp-buildbot upload android12-gsi_01 external_golang-protobuf.tar.zst --clobber
 
 du -ah -d1| sort -h
 

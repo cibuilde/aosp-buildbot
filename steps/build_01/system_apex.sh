@@ -9,6 +9,7 @@ mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/
 clone_sparse cts libs/json
 clone_depth_platform system/apex
 
+
 echo "building com.android.apex.cts.shim.v1_prebuilt^android_common_com.android.apex.cts.shim.v1_prebuilt"
 ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja com.android.apex.cts.shim.v1_prebuilt,android_common_com.android.apex.cts.shim.v1_prebuilt
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/apex/shim/com.android.apex.cts.shim.v1_prebuilt^android_common_com.android.apex.cts.shim.v1_prebuilt
@@ -18,6 +19,7 @@ rm -rf out
 
 cd $GITHUB_WORKSPACE/
 tar cfJ system_apex.tar.zst -C $GITHUB_WORKSPACE/artifacts/system/apex/ .
+gh release --repo cibuilde/aosp-buildbot upload android12-gsi_01 system_apex.tar.zst --clobber
 
 du -ah -d1| sort -h
 
