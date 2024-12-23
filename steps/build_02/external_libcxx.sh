@@ -2,79 +2,32 @@ set -e
 
 df -h
 
-cd $GITHUB_WORKSPACE/
-gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_libcxx.tar.zst
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/libcxx
-tar xf $GITHUB_WORKSPACE/external_libcxx.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/libcxx/
-
-gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_libcxxabi.tar.zst --skip-existing
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/libcxxabi
-tar xf $GITHUB_WORKSPACE/external_libcxxabi.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/libcxxabi/
 rsync -a -r $GITHUB_WORKSPACE/artifacts/external/libcxxabi/libc++abi^android_recovery_x86_64_static/ .
 
-gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_libcxxabi.tar.zst --skip-existing
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/libcxxabi
-tar xf $GITHUB_WORKSPACE/external_libcxxabi.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/libcxxabi/
 rsync -a -r $GITHUB_WORKSPACE/artifacts/external/libcxxabi/libc++abi^android_vendor_ramdisk_x86_64_static/ .
 
-gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_libcxxabi.tar.zst --skip-existing
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/libcxxabi
-tar xf $GITHUB_WORKSPACE/external_libcxxabi.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/libcxxabi/
 rsync -a -r $GITHUB_WORKSPACE/artifacts/external/libcxxabi/libc++abi^android_x86_64_static/ .
 
-gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_libcxxabi.tar.zst --skip-existing
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/libcxxabi
-tar xf $GITHUB_WORKSPACE/external_libcxxabi.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/libcxxabi/
 rsync -a -r $GITHUB_WORKSPACE/artifacts/external/libcxxabi/libc++abi^android_x86_64_static_apex10000/ .
 
-gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_libcxxabi.tar.zst --skip-existing
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/libcxxabi
-tar xf $GITHUB_WORKSPACE/external_libcxxabi.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/libcxxabi/
 rsync -a -r $GITHUB_WORKSPACE/artifacts/external/libcxxabi/libc++abi^android_x86_64_static_apex29/ .
 
-gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_libcxxabi.tar.zst --skip-existing
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/libcxxabi
-tar xf $GITHUB_WORKSPACE/external_libcxxabi.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/libcxxabi/
 rsync -a -r $GITHUB_WORKSPACE/artifacts/external/libcxxabi/libc++abi^android_x86_64_static_apex30/ .
 
-gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_libcxxabi.tar.zst --skip-existing
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/libcxxabi
-tar xf $GITHUB_WORKSPACE/external_libcxxabi.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/libcxxabi/
 rsync -a -r $GITHUB_WORKSPACE/artifacts/external/libcxxabi/libc++abi^android_x86_64_static_apex31/ .
 
-gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_libcxxabi.tar.zst --skip-existing
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/libcxxabi
-tar xf $GITHUB_WORKSPACE/external_libcxxabi.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/libcxxabi/
 rsync -a -r $GITHUB_WORKSPACE/artifacts/external/libcxxabi/libc++abi^android_x86_x86_64_static/ .
 
-gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_libcxxabi.tar.zst --skip-existing
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/libcxxabi
-tar xf $GITHUB_WORKSPACE/external_libcxxabi.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/libcxxabi/
 rsync -a -r $GITHUB_WORKSPACE/artifacts/external/libcxxabi/libc++abi^android_x86_x86_64_static_apex10000/ .
 
-gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_libcxxabi.tar.zst --skip-existing
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/libcxxabi
-tar xf $GITHUB_WORKSPACE/external_libcxxabi.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/libcxxabi/
 rsync -a -r $GITHUB_WORKSPACE/artifacts/external/libcxxabi/libc++abi^android_x86_x86_64_static_apex29/ .
 
-gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_libcxxabi.tar.zst --skip-existing
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/libcxxabi
-tar xf $GITHUB_WORKSPACE/external_libcxxabi.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/libcxxabi/
 rsync -a -r $GITHUB_WORKSPACE/artifacts/external/libcxxabi/libc++abi^android_x86_x86_64_static_apex30/ .
 
-gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_libcxxabi.tar.zst --skip-existing
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/libcxxabi
-tar xf $GITHUB_WORKSPACE/external_libcxxabi.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/libcxxabi/
 rsync -a -r $GITHUB_WORKSPACE/artifacts/external/libcxxabi/libc++abi^android_x86_x86_64_static_apex31/ .
 
-gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_libcxxabi.tar.zst --skip-existing
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/libcxxabi
-tar xf $GITHUB_WORKSPACE/external_libcxxabi.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/libcxxabi/
 rsync -a -r $GITHUB_WORKSPACE/artifacts/external/libcxxabi/libc++abi^linux_glibc_x86_64_static/ .
 
-gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_libcxxabi.tar.zst --skip-existing
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/libcxxabi
-tar xf $GITHUB_WORKSPACE/external_libcxxabi.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/libcxxabi/
 rsync -a -r $GITHUB_WORKSPACE/artifacts/external/libcxxabi/libc++abi^linux_glibc_x86_static/ .
 
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp

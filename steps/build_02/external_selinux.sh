@@ -2,29 +2,12 @@ set -e
 
 df -h
 
-cd $GITHUB_WORKSPACE/
-gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_selinux.tar.zst
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/selinux
-tar xf $GITHUB_WORKSPACE/external_selinux.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/selinux/
-
-gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern system_core.tar.zst --skip-existing
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/core
-tar xf $GITHUB_WORKSPACE/system_core.tar.zst -C $GITHUB_WORKSPACE/artifacts/system/core/
 rsync -a -r $GITHUB_WORKSPACE/artifacts/system/core/libpackagelistparser/libpackagelistparser^android_x86_64_static/ .
 
-gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_pcre.tar.zst --skip-existing
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/pcre
-tar xf $GITHUB_WORKSPACE/external_pcre.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/pcre/
 rsync -a -r $GITHUB_WORKSPACE/artifacts/external/pcre/libpcre2^android_x86_64_static/ .
 
-gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_pcre.tar.zst --skip-existing
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/pcre
-tar xf $GITHUB_WORKSPACE/external_pcre.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/pcre/
 rsync -a -r $GITHUB_WORKSPACE/artifacts/external/pcre/libpcre2^linux_glibc_x86_64_static/ .
 
-gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_selinux.tar.zst --skip-existing
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/selinux
-tar xf $GITHUB_WORKSPACE/external_selinux.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/selinux/
 rsync -a -r $GITHUB_WORKSPACE/artifacts/external/selinux/libsepol/libsepol^linux_glibc_x86_64_static/ .
 
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp

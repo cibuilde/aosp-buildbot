@@ -2,14 +2,6 @@ set -e
 
 df -h
 
-cd $GITHUB_WORKSPACE/
-gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_icu.tar.zst
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/icu
-tar xf $GITHUB_WORKSPACE/external_icu.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/icu/
-
-gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_icu.tar.zst --skip-existing
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/icu
-tar xf $GITHUB_WORKSPACE/external_icu.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/icu/
 rsync -a -r $GITHUB_WORKSPACE/artifacts/external/icu/libandroidicuinit/libandroidicuinit^linux_glibc_x86_64_static/ .
 
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp

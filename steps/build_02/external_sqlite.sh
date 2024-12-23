@@ -2,24 +2,10 @@ set -e
 
 df -h
 
-cd $GITHUB_WORKSPACE/
-gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_sqlite.tar.zst
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/sqlite
-tar xf $GITHUB_WORKSPACE/external_sqlite.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/sqlite/
-
-gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_sqlite.tar.zst --skip-existing
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/sqlite
-tar xf $GITHUB_WORKSPACE/external_sqlite.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/sqlite/
 rsync -a -r $GITHUB_WORKSPACE/artifacts/external/sqlite/android/libsqlite3_android^android_x86_64_static/ .
 
-gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_sqlite.tar.zst --skip-existing
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/sqlite
-tar xf $GITHUB_WORKSPACE/external_sqlite.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/sqlite/
 rsync -a -r $GITHUB_WORKSPACE/artifacts/external/sqlite/android/libsqlite3_android^android_x86_x86_64_static/ .
 
-gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_sqlite.tar.zst --skip-existing
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/sqlite
-tar xf $GITHUB_WORKSPACE/external_sqlite.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/sqlite/
 rsync -a -r $GITHUB_WORKSPACE/artifacts/external/sqlite/android/libsqlite3_android^linux_glibc_x86_64_static/ .
 
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp

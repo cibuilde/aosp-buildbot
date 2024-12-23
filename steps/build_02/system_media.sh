@@ -2,24 +2,10 @@ set -e
 
 df -h
 
-cd $GITHUB_WORKSPACE/
-gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern system_media.tar.zst
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/media
-tar xf $GITHUB_WORKSPACE/system_media.tar.zst -C $GITHUB_WORKSPACE/artifacts/system/media/
-
-gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern system_media.tar.zst --skip-existing
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/media
-tar xf $GITHUB_WORKSPACE/system_media.tar.zst -C $GITHUB_WORKSPACE/artifacts/system/media/
 rsync -a -r $GITHUB_WORKSPACE/artifacts/system/media/audio_utils/libaudioutils_fixedfft^android_x86_64_static/ .
 
-gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern system_media.tar.zst --skip-existing
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/media
-tar xf $GITHUB_WORKSPACE/system_media.tar.zst -C $GITHUB_WORKSPACE/artifacts/system/media/
 rsync -a -r $GITHUB_WORKSPACE/artifacts/system/media/audio_utils/libaudioutils_fixedfft^android_x86_64_static_cfi_apex29/ .
 
-gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern system_media.tar.zst --skip-existing
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/media
-tar xf $GITHUB_WORKSPACE/system_media.tar.zst -C $GITHUB_WORKSPACE/artifacts/system/media/
 rsync -a -r $GITHUB_WORKSPACE/artifacts/system/media/audio_utils/libaudioutils_fixedfft^android_x86_x86_64_static/ .
 
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp

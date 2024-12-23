@@ -11,6 +11,10 @@ gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern bio
 mkdir -p $GITHUB_WORKSPACE/artifacts/bionic
 tar xf $GITHUB_WORKSPACE/bionic.tar.zst -C $GITHUB_WORKSPACE/artifacts/bionic/
 
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern bootable_recovery.tar.zst
+mkdir -p $GITHUB_WORKSPACE/artifacts/bootable/recovery
+tar xf $GITHUB_WORKSPACE/bootable_recovery.tar.zst -C $GITHUB_WORKSPACE/artifacts/bootable/recovery/
+
 gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern build_blueprint.tar.zst
 mkdir -p $GITHUB_WORKSPACE/artifacts/build/blueprint
 tar xf $GITHUB_WORKSPACE/build_blueprint.tar.zst -C $GITHUB_WORKSPACE/artifacts/build/blueprint/
@@ -58,6 +62,10 @@ tar xf $GITHUB_WORKSPACE/external_grpc-grpc.tar.zst -C $GITHUB_WORKSPACE/artifac
 gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_icu.tar.zst
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/icu
 tar xf $GITHUB_WORKSPACE/external_icu.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/icu/
+
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_libcxx.tar.zst
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/libcxx
+tar xf $GITHUB_WORKSPACE/external_libcxx.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/libcxx/
 
 gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_libcxxabi.tar.zst
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/libcxxabi
@@ -131,9 +139,17 @@ gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern ext
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/zlib
 tar xf $GITHUB_WORKSPACE/external_zlib.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/zlib/
 
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern frameworks_base.tar.zst
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base
+tar xf $GITHUB_WORKSPACE/frameworks_base.tar.zst -C $GITHUB_WORKSPACE/artifacts/frameworks/base/
+
 gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern packages_modules_Gki.tar.zst
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/Gki
 tar xf $GITHUB_WORKSPACE/packages_modules_Gki.tar.zst -C $GITHUB_WORKSPACE/artifacts/packages/modules/Gki/
+
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern packages_modules_Virtualization.tar.zst
+mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/Virtualization
+tar xf $GITHUB_WORKSPACE/packages_modules_Virtualization.tar.zst -C $GITHUB_WORKSPACE/artifacts/packages/modules/Virtualization/
 
 gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern prebuilts_rust.tar.zst
 mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/rust
@@ -151,6 +167,10 @@ gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern sys
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/incremental_delivery
 tar xf $GITHUB_WORKSPACE/system_incremental_delivery.tar.zst -C $GITHUB_WORKSPACE/artifacts/system/incremental_delivery/
 
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern system_libvintf.tar.zst
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/libvintf
+tar xf $GITHUB_WORKSPACE/system_libvintf.tar.zst -C $GITHUB_WORKSPACE/artifacts/system/libvintf/
+
 gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern system_logging.tar.zst
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/logging
 tar xf $GITHUB_WORKSPACE/system_logging.tar.zst -C $GITHUB_WORKSPACE/artifacts/system/logging/
@@ -158,6 +178,14 @@ tar xf $GITHUB_WORKSPACE/system_logging.tar.zst -C $GITHUB_WORKSPACE/artifacts/s
 gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern system_media.tar.zst
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/media
 tar xf $GITHUB_WORKSPACE/system_media.tar.zst -C $GITHUB_WORKSPACE/artifacts/system/media/
+
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern system_sepolicy.tar.zst
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/sepolicy
+tar xf $GITHUB_WORKSPACE/system_sepolicy.tar.zst -C $GITHUB_WORKSPACE/artifacts/system/sepolicy/
+
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern system_unwinding.tar.zst
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/unwinding
+tar xf $GITHUB_WORKSPACE/system_unwinding.tar.zst -C $GITHUB_WORKSPACE/artifacts/system/unwinding/
 
 time source steps/build_02/bionic.sh
 time source steps/build_02/bootable_recovery.sh

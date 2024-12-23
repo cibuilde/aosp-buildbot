@@ -2,14 +2,6 @@ set -e
 
 df -h
 
-cd $GITHUB_WORKSPACE/
-gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern packages_modules_Virtualization.tar.zst
-mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/Virtualization
-tar xf $GITHUB_WORKSPACE/packages_modules_Virtualization.tar.zst -C $GITHUB_WORKSPACE/artifacts/packages/modules/Virtualization/
-
-gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern device_google_cuttlefish_prebuilts.tar.zst --skip-existing
-mkdir -p $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish_prebuilts
-tar xf $GITHUB_WORKSPACE/device_google_cuttlefish_prebuilts.tar.zst -C $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish_prebuilts/
 rsync -a -r $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish_prebuilts/bootloader/cuttlefish_crosvm_bootloader^android_x86_64/ .
 
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp

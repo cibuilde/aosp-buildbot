@@ -2,59 +2,24 @@ set -e
 
 df -h
 
-cd $GITHUB_WORKSPACE/
-gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_grpc-grpc.tar.zst
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/grpc-grpc
-tar xf $GITHUB_WORKSPACE/external_grpc-grpc.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/
-
-gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_grpc-grpc.tar.zst --skip-existing
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/grpc-grpc
-tar xf $GITHUB_WORKSPACE/external_grpc-grpc.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/
 rsync -a -r $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/gpr_base^android_x86_64_static/ .
 
-gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_grpc-grpc.tar.zst --skip-existing
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/grpc-grpc
-tar xf $GITHUB_WORKSPACE/external_grpc-grpc.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/
 rsync -a -r $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/gpr_base^android_x86_x86_64_static/ .
 
-gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_grpc-grpc.tar.zst --skip-existing
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/grpc-grpc
-tar xf $GITHUB_WORKSPACE/external_grpc-grpc.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/
 rsync -a -r $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libalts_util^android_x86_64_static/ .
 
-gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_grpc-grpc.tar.zst --skip-existing
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/grpc-grpc
-tar xf $GITHUB_WORKSPACE/external_grpc-grpc.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/
 rsync -a -r $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libalts_util^android_x86_x86_64_static/ .
 
-gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_grpc-grpc.tar.zst --skip-existing
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/grpc-grpc
-tar xf $GITHUB_WORKSPACE/external_grpc-grpc.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/
 rsync -a -r $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc++_codegen_base_src^android_x86_64_static/ .
 
-gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_grpc-grpc.tar.zst --skip-existing
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/grpc-grpc
-tar xf $GITHUB_WORKSPACE/external_grpc-grpc.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/
 rsync -a -r $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc++_codegen_base_src^android_x86_x86_64_static/ .
 
-gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_grpc-grpc.tar.zst --skip-existing
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/grpc-grpc
-tar xf $GITHUB_WORKSPACE/external_grpc-grpc.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/
 rsync -a -r $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_transport_chttp2_alpn^android_x86_64_static/ .
 
-gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_grpc-grpc.tar.zst --skip-existing
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/grpc-grpc
-tar xf $GITHUB_WORKSPACE/external_grpc-grpc.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/
 rsync -a -r $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_transport_chttp2_alpn^android_x86_x86_64_static/ .
 
-gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_grpc-grpc.tar.zst --skip-existing
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/grpc-grpc
-tar xf $GITHUB_WORKSPACE/external_grpc-grpc.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/
 rsync -a -r $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libtsi_interface^android_x86_64_static/ .
 
-gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_grpc-grpc.tar.zst --skip-existing
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/grpc-grpc
-tar xf $GITHUB_WORKSPACE/external_grpc-grpc.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/
 rsync -a -r $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libtsi_interface^android_x86_x86_64_static/ .
 
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp

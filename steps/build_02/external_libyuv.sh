@@ -2,24 +2,10 @@ set -e
 
 df -h
 
-cd $GITHUB_WORKSPACE/
-gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_libyuv.tar.zst
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/libyuv
-tar xf $GITHUB_WORKSPACE/external_libyuv.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/libyuv/
-
-gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_libyuv.tar.zst --skip-existing
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/libyuv
-tar xf $GITHUB_WORKSPACE/external_libyuv.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/libyuv/
 rsync -a -r $GITHUB_WORKSPACE/artifacts/external/libyuv/files/libyuv^android_x86_64_static_cfi/ .
 
-gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_libyuv.tar.zst --skip-existing
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/libyuv
-tar xf $GITHUB_WORKSPACE/external_libyuv.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/libyuv/
 rsync -a -r $GITHUB_WORKSPACE/artifacts/external/libyuv/files/libyuv^android_x86_64_static_cfi_apex29/ .
 
-gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_libyuv.tar.zst --skip-existing
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/libyuv
-tar xf $GITHUB_WORKSPACE/external_libyuv.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/libyuv/
 rsync -a -r $GITHUB_WORKSPACE/artifacts/external/libyuv/files/libyuv^android_x86_x86_64_static_cfi/ .
 
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp

@@ -2,29 +2,12 @@ set -e
 
 df -h
 
-cd $GITHUB_WORKSPACE/
-gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern system_libvintf.tar.zst
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/libvintf
-tar xf $GITHUB_WORKSPACE/system_libvintf.tar.zst -C $GITHUB_WORKSPACE/artifacts/system/libvintf/
-
-gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern packages_modules_Gki.tar.zst --skip-existing
-mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/Gki
-tar xf $GITHUB_WORKSPACE/packages_modules_Gki.tar.zst -C $GITHUB_WORKSPACE/artifacts/packages/modules/Gki/
 rsync -a -r $GITHUB_WORKSPACE/artifacts/packages/modules/Gki/libkver/libkver^android_recovery_x86_64_static/ .
 
-gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern packages_modules_Gki.tar.zst --skip-existing
-mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/Gki
-tar xf $GITHUB_WORKSPACE/packages_modules_Gki.tar.zst -C $GITHUB_WORKSPACE/artifacts/packages/modules/Gki/
 rsync -a -r $GITHUB_WORKSPACE/artifacts/packages/modules/Gki/libkver/libkver^android_x86_64_static/ .
 
-gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern packages_modules_Gki.tar.zst --skip-existing
-mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/Gki
-tar xf $GITHUB_WORKSPACE/packages_modules_Gki.tar.zst -C $GITHUB_WORKSPACE/artifacts/packages/modules/Gki/
 rsync -a -r $GITHUB_WORKSPACE/artifacts/packages/modules/Gki/libkver/libkver^android_x86_x86_64_static/ .
 
-gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern packages_modules_Gki.tar.zst --skip-existing
-mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/Gki
-tar xf $GITHUB_WORKSPACE/packages_modules_Gki.tar.zst -C $GITHUB_WORKSPACE/artifacts/packages/modules/Gki/
 rsync -a -r $GITHUB_WORKSPACE/artifacts/packages/modules/Gki/libkver/libkver^linux_glibc_x86_64_static/ .
 
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp

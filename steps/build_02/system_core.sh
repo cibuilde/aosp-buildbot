@@ -2,119 +2,48 @@ set -e
 
 df -h
 
-cd $GITHUB_WORKSPACE/
-gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern system_core.tar.zst
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/core
-tar xf $GITHUB_WORKSPACE/system_core.tar.zst -C $GITHUB_WORKSPACE/artifacts/system/core/
-
-gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern system_core.tar.zst --skip-existing
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/core
-tar xf $GITHUB_WORKSPACE/system_core.tar.zst -C $GITHUB_WORKSPACE/artifacts/system/core/
 rsync -a -r $GITHUB_WORKSPACE/artifacts/system/core/libcutils/libcutils_sockets^android_recovery_x86_64_static/ .
 
-gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern system_core.tar.zst --skip-existing
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/core
-tar xf $GITHUB_WORKSPACE/system_core.tar.zst -C $GITHUB_WORKSPACE/artifacts/system/core/
 rsync -a -r $GITHUB_WORKSPACE/artifacts/system/core/libcutils/libcutils_sockets^android_vendor_ramdisk_x86_64_static/ .
 
-gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern system_core.tar.zst --skip-existing
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/core
-tar xf $GITHUB_WORKSPACE/system_core.tar.zst -C $GITHUB_WORKSPACE/artifacts/system/core/
 rsync -a -r $GITHUB_WORKSPACE/artifacts/system/core/libcutils/libcutils_sockets^android_x86_64_static/ .
 
-gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern system_core.tar.zst --skip-existing
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/core
-tar xf $GITHUB_WORKSPACE/system_core.tar.zst -C $GITHUB_WORKSPACE/artifacts/system/core/
 rsync -a -r $GITHUB_WORKSPACE/artifacts/system/core/libcutils/libcutils_sockets^android_x86_64_static_apex10000/ .
 
-gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern system_core.tar.zst --skip-existing
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/core
-tar xf $GITHUB_WORKSPACE/system_core.tar.zst -C $GITHUB_WORKSPACE/artifacts/system/core/
 rsync -a -r $GITHUB_WORKSPACE/artifacts/system/core/libcutils/libcutils_sockets^android_x86_64_static_apex29/ .
 
-gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern system_core.tar.zst --skip-existing
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/core
-tar xf $GITHUB_WORKSPACE/system_core.tar.zst -C $GITHUB_WORKSPACE/artifacts/system/core/
 rsync -a -r $GITHUB_WORKSPACE/artifacts/system/core/libcutils/libcutils_sockets^android_x86_64_static_apex30/ .
 
-gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern system_core.tar.zst --skip-existing
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/core
-tar xf $GITHUB_WORKSPACE/system_core.tar.zst -C $GITHUB_WORKSPACE/artifacts/system/core/
 rsync -a -r $GITHUB_WORKSPACE/artifacts/system/core/libcutils/libcutils_sockets^android_x86_64_static_cfi_apex29/ .
 
-gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern system_core.tar.zst --skip-existing
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/core
-tar xf $GITHUB_WORKSPACE/system_core.tar.zst -C $GITHUB_WORKSPACE/artifacts/system/core/
 rsync -a -r $GITHUB_WORKSPACE/artifacts/system/core/libcutils/libcutils_sockets^android_x86_x86_64_static/ .
 
-gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern system_core.tar.zst --skip-existing
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/core
-tar xf $GITHUB_WORKSPACE/system_core.tar.zst -C $GITHUB_WORKSPACE/artifacts/system/core/
 rsync -a -r $GITHUB_WORKSPACE/artifacts/system/core/libcutils/libcutils_sockets^android_x86_x86_64_static_apex10000/ .
 
-gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern system_core.tar.zst --skip-existing
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/core
-tar xf $GITHUB_WORKSPACE/system_core.tar.zst -C $GITHUB_WORKSPACE/artifacts/system/core/
 rsync -a -r $GITHUB_WORKSPACE/artifacts/system/core/libcutils/libcutils_sockets^android_x86_x86_64_static_apex29/ .
 
-gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern system_core.tar.zst --skip-existing
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/core
-tar xf $GITHUB_WORKSPACE/system_core.tar.zst -C $GITHUB_WORKSPACE/artifacts/system/core/
 rsync -a -r $GITHUB_WORKSPACE/artifacts/system/core/libcutils/libcutils_sockets^android_x86_x86_64_static_apex30/ .
 
-gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern system_core.tar.zst --skip-existing
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/core
-tar xf $GITHUB_WORKSPACE/system_core.tar.zst -C $GITHUB_WORKSPACE/artifacts/system/core/
 rsync -a -r $GITHUB_WORKSPACE/artifacts/system/core/libcutils/libcutils_sockets^linux_glibc_x86_64_static/ .
 
-gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern system_core.tar.zst --skip-existing
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/core
-tar xf $GITHUB_WORKSPACE/system_core.tar.zst -C $GITHUB_WORKSPACE/artifacts/system/core/
 rsync -a -r $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/libdm/libdm^android_recovery_x86_64_static/ .
 
-gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern system_core.tar.zst --skip-existing
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/core
-tar xf $GITHUB_WORKSPACE/system_core.tar.zst -C $GITHUB_WORKSPACE/artifacts/system/core/
 rsync -a -r $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/libdm/libdm^android_x86_64_static/ .
 
-gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_e2fsprogs.tar.zst --skip-existing
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/e2fsprogs
-tar xf $GITHUB_WORKSPACE/external_e2fsprogs.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/
 rsync -a -r $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/lib/uuid/libext2_uuid^android_recovery_x86_64_static/ .
 
-gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_e2fsprogs.tar.zst --skip-existing
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/e2fsprogs
-tar xf $GITHUB_WORKSPACE/external_e2fsprogs.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/
 rsync -a -r $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/lib/uuid/libext2_uuid^android_x86_64_static/ .
 
-gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern system_extras.tar.zst --skip-existing
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/extras
-tar xf $GITHUB_WORKSPACE/system_extras.tar.zst -C $GITHUB_WORKSPACE/artifacts/system/extras/
 rsync -a -r $GITHUB_WORKSPACE/artifacts/system/extras/libfscrypt/libfscrypt^android_recovery_x86_64_static/ .
 
-gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern system_extras.tar.zst --skip-existing
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/extras
-tar xf $GITHUB_WORKSPACE/system_extras.tar.zst -C $GITHUB_WORKSPACE/artifacts/system/extras/
 rsync -a -r $GITHUB_WORKSPACE/artifacts/system/extras/libfscrypt/libfscrypt^android_x86_64_static/ .
 
-gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern system_core.tar.zst --skip-existing
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/core
-tar xf $GITHUB_WORKSPACE/system_core.tar.zst -C $GITHUB_WORKSPACE/artifacts/system/core/
 rsync -a -r $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/libfstab^android_recovery_x86_64_static/ .
 
-gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern system_core.tar.zst --skip-existing
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/core
-tar xf $GITHUB_WORKSPACE/system_core.tar.zst -C $GITHUB_WORKSPACE/artifacts/system/core/
 rsync -a -r $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/libfstab^android_x86_64_static/ .
 
-gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern system_logging.tar.zst --skip-existing
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/logging
-tar xf $GITHUB_WORKSPACE/system_logging.tar.zst -C $GITHUB_WORKSPACE/artifacts/system/logging/
 rsync -a -r $GITHUB_WORKSPACE/artifacts/system/logging/logwrapper/liblogwrap^android_recovery_x86_64_static/ .
 
-gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern system_logging.tar.zst --skip-existing
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/logging
-tar xf $GITHUB_WORKSPACE/system_logging.tar.zst -C $GITHUB_WORKSPACE/artifacts/system/logging/
 rsync -a -r $GITHUB_WORKSPACE/artifacts/system/logging/logwrapper/liblogwrap^android_x86_64_static/ .
 
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp

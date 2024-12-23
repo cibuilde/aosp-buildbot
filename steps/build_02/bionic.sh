@@ -2,194 +2,78 @@ set -e
 
 df -h
 
-cd $GITHUB_WORKSPACE/
-gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern bionic.tar.zst
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic
-tar xf $GITHUB_WORKSPACE/bionic.tar.zst -C $GITHUB_WORKSPACE/artifacts/bionic/
-
-gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern bionic.tar.zst --skip-existing
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic
-tar xf $GITHUB_WORKSPACE/bionic.tar.zst -C $GITHUB_WORKSPACE/artifacts/bionic/
 rsync -a -r $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbrand^android_product.31_x86_64/ .
 
-gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern bionic.tar.zst --skip-existing
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic
-tar xf $GITHUB_WORKSPACE/bionic.tar.zst -C $GITHUB_WORKSPACE/artifacts/bionic/
 rsync -a -r $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbrand^android_recovery_x86_64/ .
 
-gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern bionic.tar.zst --skip-existing
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic
-tar xf $GITHUB_WORKSPACE/bionic.tar.zst -C $GITHUB_WORKSPACE/artifacts/bionic/
 rsync -a -r $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbrand^android_vendor.31_x86_64/ .
 
-gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern bionic.tar.zst --skip-existing
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic
-tar xf $GITHUB_WORKSPACE/bionic.tar.zst -C $GITHUB_WORKSPACE/artifacts/bionic/
 rsync -a -r $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbrand^android_vendor.31_x86_x86_64/ .
 
-gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern bionic.tar.zst --skip-existing
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic
-tar xf $GITHUB_WORKSPACE/bionic.tar.zst -C $GITHUB_WORKSPACE/artifacts/bionic/
 rsync -a -r $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbrand^android_vendor_ramdisk_x86_64/ .
 
-gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern bionic.tar.zst --skip-existing
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic
-tar xf $GITHUB_WORKSPACE/bionic.tar.zst -C $GITHUB_WORKSPACE/artifacts/bionic/
 rsync -a -r $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbrand^android_x86_64/ .
 
-gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern bionic.tar.zst --skip-existing
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic
-tar xf $GITHUB_WORKSPACE/bionic.tar.zst -C $GITHUB_WORKSPACE/artifacts/bionic/
 rsync -a -r $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbrand^android_x86_64_apex10000/ .
 
-gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern bionic.tar.zst --skip-existing
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic
-tar xf $GITHUB_WORKSPACE/bionic.tar.zst -C $GITHUB_WORKSPACE/artifacts/bionic/
 rsync -a -r $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbrand^android_x86_64_apex29/ .
 
-gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern bionic.tar.zst --skip-existing
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic
-tar xf $GITHUB_WORKSPACE/bionic.tar.zst -C $GITHUB_WORKSPACE/artifacts/bionic/
 rsync -a -r $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbrand^android_x86_64_apex30/ .
 
-gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern bionic.tar.zst --skip-existing
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic
-tar xf $GITHUB_WORKSPACE/bionic.tar.zst -C $GITHUB_WORKSPACE/artifacts/bionic/
 rsync -a -r $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbrand^android_x86_64_apex31/ .
 
-gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern bionic.tar.zst --skip-existing
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic
-tar xf $GITHUB_WORKSPACE/bionic.tar.zst -C $GITHUB_WORKSPACE/artifacts/bionic/
 rsync -a -r $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbrand^android_x86_x86_64/ .
 
-gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern bionic.tar.zst --skip-existing
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic
-tar xf $GITHUB_WORKSPACE/bionic.tar.zst -C $GITHUB_WORKSPACE/artifacts/bionic/
 rsync -a -r $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbrand^android_x86_x86_64_apex10000/ .
 
-gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern bionic.tar.zst --skip-existing
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic
-tar xf $GITHUB_WORKSPACE/bionic.tar.zst -C $GITHUB_WORKSPACE/artifacts/bionic/
 rsync -a -r $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbrand^android_x86_x86_64_apex29/ .
 
-gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern bionic.tar.zst --skip-existing
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic
-tar xf $GITHUB_WORKSPACE/bionic.tar.zst -C $GITHUB_WORKSPACE/artifacts/bionic/
 rsync -a -r $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbrand^android_x86_x86_64_apex30/ .
 
-gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern bionic.tar.zst --skip-existing
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic
-tar xf $GITHUB_WORKSPACE/bionic.tar.zst -C $GITHUB_WORKSPACE/artifacts/bionic/
 rsync -a -r $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbrand^android_x86_x86_64_apex31/ .
 
-gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern bionic.tar.zst --skip-existing
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic
-tar xf $GITHUB_WORKSPACE/bionic.tar.zst -C $GITHUB_WORKSPACE/artifacts/bionic/
 rsync -a -r $GITHUB_WORKSPACE/artifacts/bionic/linker/ld-android^android_recovery_x86_64_static/ .
 
-gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern bionic.tar.zst --skip-existing
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic
-tar xf $GITHUB_WORKSPACE/bionic.tar.zst -C $GITHUB_WORKSPACE/artifacts/bionic/
 rsync -a -r $GITHUB_WORKSPACE/artifacts/bionic/linker/ld-android^android_vendor_ramdisk_x86_64_static/ .
 
-gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern bionic.tar.zst --skip-existing
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic
-tar xf $GITHUB_WORKSPACE/bionic.tar.zst -C $GITHUB_WORKSPACE/artifacts/bionic/
 rsync -a -r $GITHUB_WORKSPACE/artifacts/bionic/linker/ld-android^android_x86_64_static/ .
 
-gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern bionic.tar.zst --skip-existing
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic
-tar xf $GITHUB_WORKSPACE/bionic.tar.zst -C $GITHUB_WORKSPACE/artifacts/bionic/
 rsync -a -r $GITHUB_WORKSPACE/artifacts/bionic/linker/ld-android^android_x86_64_static_apex10000/ .
 
-gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern bionic.tar.zst --skip-existing
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic
-tar xf $GITHUB_WORKSPACE/bionic.tar.zst -C $GITHUB_WORKSPACE/artifacts/bionic/
 rsync -a -r $GITHUB_WORKSPACE/artifacts/bionic/linker/ld-android^android_x86_x86_64_static/ .
 
-gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern bionic.tar.zst --skip-existing
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic
-tar xf $GITHUB_WORKSPACE/bionic.tar.zst -C $GITHUB_WORKSPACE/artifacts/bionic/
 rsync -a -r $GITHUB_WORKSPACE/artifacts/bionic/linker/ld-android^android_x86_x86_64_static_apex10000/ .
 
-gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_arm-optimized-routines.tar.zst --skip-existing
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/arm-optimized-routines
-tar xf $GITHUB_WORKSPACE/external_arm-optimized-routines.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/arm-optimized-routines/
 rsync -a -r $GITHUB_WORKSPACE/artifacts/external/arm-optimized-routines/libarm-optimized-routines-math^android_native_bridge_arm64_armv8-a_static/ .
 
-gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_arm-optimized-routines.tar.zst --skip-existing
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/arm-optimized-routines
-tar xf $GITHUB_WORKSPACE/external_arm-optimized-routines.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/arm-optimized-routines/
 rsync -a -r $GITHUB_WORKSPACE/artifacts/external/arm-optimized-routines/libarm-optimized-routines-math^android_native_bridge_arm_armv7-a-neon_static/ .
 
-gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_arm-optimized-routines.tar.zst --skip-existing
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/arm-optimized-routines
-tar xf $GITHUB_WORKSPACE/external_arm-optimized-routines.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/arm-optimized-routines/
 rsync -a -r $GITHUB_WORKSPACE/artifacts/external/arm-optimized-routines/libarm-optimized-routines-math^android_recovery_x86_64_static/ .
 
-gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_arm-optimized-routines.tar.zst --skip-existing
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/arm-optimized-routines
-tar xf $GITHUB_WORKSPACE/external_arm-optimized-routines.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/arm-optimized-routines/
 rsync -a -r $GITHUB_WORKSPACE/artifacts/external/arm-optimized-routines/libarm-optimized-routines-math^android_vendor_ramdisk_x86_64_static/ .
 
-gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_arm-optimized-routines.tar.zst --skip-existing
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/arm-optimized-routines
-tar xf $GITHUB_WORKSPACE/external_arm-optimized-routines.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/arm-optimized-routines/
 rsync -a -r $GITHUB_WORKSPACE/artifacts/external/arm-optimized-routines/libarm-optimized-routines-math^android_x86_64_static/ .
 
-gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_arm-optimized-routines.tar.zst --skip-existing
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/arm-optimized-routines
-tar xf $GITHUB_WORKSPACE/external_arm-optimized-routines.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/arm-optimized-routines/
 rsync -a -r $GITHUB_WORKSPACE/artifacts/external/arm-optimized-routines/libarm-optimized-routines-math^android_x86_64_static_apex10000/ .
 
-gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_arm-optimized-routines.tar.zst --skip-existing
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/arm-optimized-routines
-tar xf $GITHUB_WORKSPACE/external_arm-optimized-routines.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/arm-optimized-routines/
 rsync -a -r $GITHUB_WORKSPACE/artifacts/external/arm-optimized-routines/libarm-optimized-routines-math^android_x86_x86_64_static/ .
 
-gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_arm-optimized-routines.tar.zst --skip-existing
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/arm-optimized-routines
-tar xf $GITHUB_WORKSPACE/external_arm-optimized-routines.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/arm-optimized-routines/
 rsync -a -r $GITHUB_WORKSPACE/artifacts/external/arm-optimized-routines/libarm-optimized-routines-math^android_x86_x86_64_static_apex10000/ .
 
-gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern system_core.tar.zst --skip-existing
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/core
-tar xf $GITHUB_WORKSPACE/system_core.tar.zst -C $GITHUB_WORKSPACE/artifacts/system/core/
 rsync -a -r $GITHUB_WORKSPACE/artifacts/system/core/property_service/libpropertyinfoparser/libpropertyinfoparser^android_native_bridge_arm64_armv8-a_static/ .
 
-gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern system_core.tar.zst --skip-existing
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/core
-tar xf $GITHUB_WORKSPACE/system_core.tar.zst -C $GITHUB_WORKSPACE/artifacts/system/core/
 rsync -a -r $GITHUB_WORKSPACE/artifacts/system/core/property_service/libpropertyinfoparser/libpropertyinfoparser^android_native_bridge_arm_armv7-a-neon_static/ .
 
-gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern system_core.tar.zst --skip-existing
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/core
-tar xf $GITHUB_WORKSPACE/system_core.tar.zst -C $GITHUB_WORKSPACE/artifacts/system/core/
 rsync -a -r $GITHUB_WORKSPACE/artifacts/system/core/property_service/libpropertyinfoparser/libpropertyinfoparser^android_recovery_x86_64_static/ .
 
-gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern system_core.tar.zst --skip-existing
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/core
-tar xf $GITHUB_WORKSPACE/system_core.tar.zst -C $GITHUB_WORKSPACE/artifacts/system/core/
 rsync -a -r $GITHUB_WORKSPACE/artifacts/system/core/property_service/libpropertyinfoparser/libpropertyinfoparser^android_vendor_ramdisk_x86_64_static/ .
 
-gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern system_core.tar.zst --skip-existing
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/core
-tar xf $GITHUB_WORKSPACE/system_core.tar.zst -C $GITHUB_WORKSPACE/artifacts/system/core/
 rsync -a -r $GITHUB_WORKSPACE/artifacts/system/core/property_service/libpropertyinfoparser/libpropertyinfoparser^android_x86_64_static/ .
 
-gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern system_core.tar.zst --skip-existing
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/core
-tar xf $GITHUB_WORKSPACE/system_core.tar.zst -C $GITHUB_WORKSPACE/artifacts/system/core/
 rsync -a -r $GITHUB_WORKSPACE/artifacts/system/core/property_service/libpropertyinfoparser/libpropertyinfoparser^android_x86_64_static_apex10000/ .
 
-gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern system_core.tar.zst --skip-existing
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/core
-tar xf $GITHUB_WORKSPACE/system_core.tar.zst -C $GITHUB_WORKSPACE/artifacts/system/core/
 rsync -a -r $GITHUB_WORKSPACE/artifacts/system/core/property_service/libpropertyinfoparser/libpropertyinfoparser^android_x86_x86_64_static/ .
 
-gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern system_core.tar.zst --skip-existing
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/core
-tar xf $GITHUB_WORKSPACE/system_core.tar.zst -C $GITHUB_WORKSPACE/artifacts/system/core/
 rsync -a -r $GITHUB_WORKSPACE/artifacts/system/core/property_service/libpropertyinfoparser/libpropertyinfoparser^android_x86_x86_64_static_apex10000/ .
 
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
