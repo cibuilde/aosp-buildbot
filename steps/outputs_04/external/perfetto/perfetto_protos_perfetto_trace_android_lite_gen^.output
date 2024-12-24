@@ -1,0 +1,6 @@
+out/soong/.intermediates/external/perfetto/perfetto_protos_perfetto_trace_android_lite_gen/gen/external/perfetto/protos/perfetto/trace/android/android_log.pb.cc
+out/soong/.intermediates/external/perfetto/perfetto_protos_perfetto_trace_android_lite_gen/gen/external/perfetto/protos/perfetto/trace/android/frame_timeline_event.pb.cc
+out/soong/.intermediates/external/perfetto/perfetto_protos_perfetto_trace_android_lite_gen/gen/external/perfetto/protos/perfetto/trace/android/gpu_mem_event.pb.cc
+out/soong/.intermediates/external/perfetto/perfetto_protos_perfetto_trace_android_lite_gen/gen/external/perfetto/protos/perfetto/trace/android/graphics_frame_event.pb.cc
+out/soong/.intermediates/external/perfetto/perfetto_protos_perfetto_trace_android_lite_gen/gen/external/perfetto/protos/perfetto/trace/android/initial_display_state.pb.cc
+out/soong/.intermediates/external/perfetto/perfetto_protos_perfetto_trace_android_lite_gen/gen/external/perfetto/protos/perfetto/trace/android/packages_list.pb.cc

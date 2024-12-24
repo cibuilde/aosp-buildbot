@@ -1,0 +1,2 @@
+out/soong/.intermediates/external/wayland/wayland_scanner/linux_glibc_x86_64/wayland_scanner
+out/soong/host/linux-x86/bin/wayland_scanner

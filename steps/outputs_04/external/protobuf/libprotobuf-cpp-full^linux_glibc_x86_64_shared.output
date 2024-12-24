@@ -1,0 +1,3 @@
+out/soong/.intermediates/external/protobuf/libprotobuf-cpp-full/linux_glibc_x86_64_shared/libprotobuf-cpp-full.so
+out/soong/.intermediates/external/protobuf/libprotobuf-cpp-full/linux_glibc_x86_64_shared/libprotobuf-cpp-full.so.toc
+out/soong/host/linux-x86/lib64/libprotobuf-cpp-full.so

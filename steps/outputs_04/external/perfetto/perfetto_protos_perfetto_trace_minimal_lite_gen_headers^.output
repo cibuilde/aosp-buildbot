@@ -1,0 +1,3 @@
+out/soong/.intermediates/external/perfetto/perfetto_protos_perfetto_trace_minimal_lite_gen_headers/gen/external/perfetto/protos/perfetto/trace/clock_snapshot.pb.h
+out/soong/.intermediates/external/perfetto/perfetto_protos_perfetto_trace_minimal_lite_gen_headers/gen/external/perfetto/protos/perfetto/trace/system_info.pb.h
+out/soong/.intermediates/external/perfetto/perfetto_protos_perfetto_trace_minimal_lite_gen_headers/gen/external/perfetto/protos/perfetto/trace/trigger.pb.h

@@ -1,0 +1,6 @@
+out/soong/.intermediates/external/perfetto/perfetto_protos_perfetto_config_lite_gen_headers/gen/external/perfetto/protos/perfetto/config/chrome/chrome_config.pb.h
+out/soong/.intermediates/external/perfetto/perfetto_protos_perfetto_config_lite_gen_headers/gen/external/perfetto/protos/perfetto/config/data_source_config.pb.h
+out/soong/.intermediates/external/perfetto/perfetto_protos_perfetto_config_lite_gen_headers/gen/external/perfetto/protos/perfetto/config/interceptor_config.pb.h
+out/soong/.intermediates/external/perfetto/perfetto_protos_perfetto_config_lite_gen_headers/gen/external/perfetto/protos/perfetto/config/stress_test_config.pb.h
+out/soong/.intermediates/external/perfetto/perfetto_protos_perfetto_config_lite_gen_headers/gen/external/perfetto/protos/perfetto/config/test_config.pb.h
+out/soong/.intermediates/external/perfetto/perfetto_protos_perfetto_config_lite_gen_headers/gen/external/perfetto/protos/perfetto/config/trace_config.pb.h

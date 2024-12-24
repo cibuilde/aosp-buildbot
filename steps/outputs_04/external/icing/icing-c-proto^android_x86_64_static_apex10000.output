@@ -1,0 +1,17 @@
+out/soong/.intermediates/external/icing/proto/icing-c-proto/android_x86_64_static_apex10000/gen/proto/icing/legacy/index/proto/icing-dynamic-trie-header.pb.h
+out/soong/.intermediates/external/icing/proto/icing-c-proto/android_x86_64_static_apex10000/gen/proto/icing/proto/document.pb.h
+out/soong/.intermediates/external/icing/proto/icing-c-proto/android_x86_64_static_apex10000/gen/proto/icing/proto/document_wrapper.pb.h
+out/soong/.intermediates/external/icing/proto/icing-c-proto/android_x86_64_static_apex10000/gen/proto/icing/proto/initialize.pb.h
+out/soong/.intermediates/external/icing/proto/icing-c-proto/android_x86_64_static_apex10000/gen/proto/icing/proto/internal/optimize.pb.h
+out/soong/.intermediates/external/icing/proto/icing-c-proto/android_x86_64_static_apex10000/gen/proto/icing/proto/logging.pb.h
+out/soong/.intermediates/external/icing/proto/icing-c-proto/android_x86_64_static_apex10000/gen/proto/icing/proto/optimize.pb.h
+out/soong/.intermediates/external/icing/proto/icing-c-proto/android_x86_64_static_apex10000/gen/proto/icing/proto/persist.pb.h
+out/soong/.intermediates/external/icing/proto/icing-c-proto/android_x86_64_static_apex10000/gen/proto/icing/proto/reset.pb.h
+out/soong/.intermediates/external/icing/proto/icing-c-proto/android_x86_64_static_apex10000/gen/proto/icing/proto/schema.pb.h
+out/soong/.intermediates/external/icing/proto/icing-c-proto/android_x86_64_static_apex10000/gen/proto/icing/proto/scoring.pb.h
+out/soong/.intermediates/external/icing/proto/icing-c-proto/android_x86_64_static_apex10000/gen/proto/icing/proto/search.pb.h
+out/soong/.intermediates/external/icing/proto/icing-c-proto/android_x86_64_static_apex10000/gen/proto/icing/proto/status.pb.h
+out/soong/.intermediates/external/icing/proto/icing-c-proto/android_x86_64_static_apex10000/gen/proto/icing/proto/storage.pb.h
+out/soong/.intermediates/external/icing/proto/icing-c-proto/android_x86_64_static_apex10000/gen/proto/icing/proto/term.pb.h
+out/soong/.intermediates/external/icing/proto/icing-c-proto/android_x86_64_static_apex10000/gen/proto/icing/proto/usage.pb.h
+out/soong/.intermediates/external/icing/proto/icing-c-proto/android_x86_64_static_apex10000/icing-c-proto.a

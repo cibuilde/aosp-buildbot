@@ -1,0 +1,3 @@
+out/soong/.intermediates/packages/modules/adb/proto/libadb_protos/android_x86_64_static/gen/proto/packages/modules/adb/proto/adb_known_hosts.pb.h
+out/soong/.intermediates/packages/modules/adb/proto/libadb_protos/android_x86_64_static/gen/proto/packages/modules/adb/proto/key_type.pb.h
+out/soong/.intermediates/packages/modules/adb/proto/libadb_protos/android_x86_64_static/gen/proto/packages/modules/adb/proto/pairing.pb.h
