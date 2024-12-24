@@ -213,20 +213,6 @@ tar xf $GITHUB_WORKSPACE/system_tools_hidl.tar.zst -C $GITHUB_WORKSPACE/artifact
 
 export PATH=$PATH:$GITHUB_WORKSPACE/aosp/prebuilts/python/linux-x86/2.7.5/bin
 
-time source steps/build_04/external_perfetto.sh
-time source steps/build_04/external_protobuf.sh
-time source steps/build_04/external_python_cpython2.sh
-time source steps/build_04/external_rust_crates_bindgen.sh
-time source steps/build_04/external_rust_crates_clang-sys.sh
-time source steps/build_04/external_rust_crates_proc-macro-error-attr.sh
-time source steps/build_04/external_rust_crates_proc-macro-nested.sh
-time source steps/build_04/external_rust_crates_protobuf.sh
-time source steps/build_04/external_rust_crates_syn.sh
-time source steps/build_04/external_selinux.sh
-time source steps/build_04/external_swiftshader.sh
-time source steps/build_04/external_testng.sh
-time source steps/build_04/external_wayland.sh
-time source steps/build_04/external_zxing.sh
 time source steps/build_04/frameworks_base.sh
 time source steps/build_04/frameworks_native.sh
 time source steps/build_04/frameworks_proto_logging.sh
@@ -289,6 +275,20 @@ time source steps/build_04/external_libffi.sh
 time source steps/build_04/external_llvm.sh
 time source steps/build_04/external_minijail.sh
 time source steps/build_04/external_one-true-awk.sh
+time source steps/build_04/external_perfetto.sh
+time source steps/build_04/external_protobuf.sh
+time source steps/build_04/external_python_cpython2.sh
+time source steps/build_04/external_rust_crates_bindgen.sh
+time source steps/build_04/external_rust_crates_clang-sys.sh
+time source steps/build_04/external_rust_crates_proc-macro-error-attr.sh
+time source steps/build_04/external_rust_crates_proc-macro-nested.sh
+time source steps/build_04/external_rust_crates_protobuf.sh
+time source steps/build_04/external_rust_crates_syn.sh
+time source steps/build_04/external_selinux.sh
+time source steps/build_04/external_swiftshader.sh
+time source steps/build_04/external_testng.sh
+time source steps/build_04/external_wayland.sh
+time source steps/build_04/external_zxing.sh
 
 if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_clang_host_linux-x86.tar.zst" ]; then
   echo "Compressing prebuilts/clang/host/linux-x86 -> prebuilts_clang_host_linux-x86.tar.zst"
