@@ -658,6 +658,13 @@ jobs:
         path: cache/prebuilts_misc.tar.zst
         key: prebuilts_misc@${{ env.branch }}
         restore-keys: prebuilts_misc@${{ env.branch }}
+    - name: Restore Cache prebuilts_python_linux-x86_2.7.5.tar.zst
+      id: prebuilts_python_linux-x86_2-7-5
+      uses: actions/cache@v4
+      with:
+        path: cache/prebuilts_python_linux-x86_2.7.5.tar.zst
+        key: prebuilts_python_linux-x86_2.7.5@${{ env.branch }}
+        restore-keys: prebuilts_python_linux-x86_2.7.5@${{ env.branch }}
     - name: Restore Cache prebuilts_r8.tar.zst
       id: prebuilts_r8
       uses: actions/cache@v4
