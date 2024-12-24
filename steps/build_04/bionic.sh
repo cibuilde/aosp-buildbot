@@ -12,6 +12,7 @@ clone_depth build/make platform/build
 ln -s make/core build/
 ln -s make/target build/
 ln -s make/tools build/
+clone_depth_platform prebuilts/python/linux-x86/2.7.5
 clone_depth_platform system/core
 
 rsync -a -r $GITHUB_WORKSPACE/artifacts/build/soong/cmd/sbox/sbox^linux_glibc_x86_64/ .
@@ -101,6 +102,10 @@ fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/build_make.tar.zst" ]; then
   echo "Compressing build/make -> build_make.tar.zst"
   tar cfJ $GITHUB_WORKSPACE/cache/build_make.tar.zst -C $GITHUB_WORKSPACE/aosp/build/make/ .
+fi
+if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_python_linux-x86_2.7.5.tar.zst" ]; then
+  echo "Compressing prebuilts/python/linux-x86/2.7.5 -> prebuilts_python_linux-x86_2.7.5.tar.zst"
+  tar cfJ $GITHUB_WORKSPACE/cache/prebuilts_python_linux-x86_2.7.5.tar.zst -C $GITHUB_WORKSPACE/aosp/prebuilts/python/linux-x86/2.7.5/ .
 fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/system_core.tar.zst" ]; then
   echo "Compressing system/core -> system_core.tar.zst"
