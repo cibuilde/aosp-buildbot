@@ -10,15 +10,15 @@ mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/
 clone_depth_platform build/soong
 clone_depth_platform prebuilts/go/linux-x86
 
-rsync -a -r $GITHUB_WORKSPACE/artifacts/build/soong/third_party/zip/android-archive-zip^linux_glibc_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/build/soong/androidmk/androidmk-parser^linux_glibc_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/artifacts/build/blueprint/blueprint-deptools^linux_glibc_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/artifacts/build/blueprint/blueprint-pathtools^linux_glibc_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/golang-protobuf/golang-protobuf-proto^linux_glibc_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/artifacts/build/soong/third_party/zip/android-archive-zip^linux_glibc_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/artifacts/build/soong/androidmk/androidmk-parser^linux_glibc_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/artifacts/build/soong/cmd/sbox/sbox_proto^linux_glibc_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/artifacts/build/soong/jar/soong-jar^linux_glibc_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/artifacts/build/soong/makedeps/soong-makedeps^linux_glibc_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/artifacts/build/soong/response/soong-response^linux_glibc_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/artifacts/external/golang-protobuf/golang-protobuf-proto^linux_glibc_x86_64/ .
 
 echo "building dep_fixer^linux_glibc_x86_64"
 ninja -f $GITHUB_WORKSPACE/steps/build_03.ninja dep_fixer,linux_glibc_x86_64

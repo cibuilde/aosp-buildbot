@@ -24,10 +24,6 @@ clone_depth_platform system/libbase
 clone_depth_platform system/logging
 clone_depth_platform system/media
 
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/fmtlib/fmtlib^android_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/fmtlib/fmtlib^android_x86_64_static_apex10000/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/fmtlib/fmtlib^android_x86_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/fmtlib/fmtlib^android_x86_x86_64_static_apex10000/ .
 rsync -a -r $GITHUB_WORKSPACE/artifacts/bionic/linker/ld-android^android_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/artifacts/bionic/linker/ld-android^android_x86_64_shared_apex10000/ .
 rsync -a -r $GITHUB_WORKSPACE/artifacts/bionic/linker/ld-android^android_x86_x86_64_shared/ .
@@ -36,14 +32,18 @@ rsync -a -r $GITHUB_WORKSPACE/artifacts/bionic/libc/async_safe/libasync_safe^and
 rsync -a -r $GITHUB_WORKSPACE/artifacts/bionic/libc/async_safe/libasync_safe^android_x86_64_static_apex10000/ .
 rsync -a -r $GITHUB_WORKSPACE/artifacts/bionic/libc/async_safe/libasync_safe^android_x86_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/artifacts/bionic/libc/async_safe/libasync_safe^android_x86_x86_64_static_apex10000/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/system/libbase/libbase^android_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/system/libbase/libbase^android_x86_64_static_apex10000/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/system/libbase/libbase^android_x86_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/system/libbase/libbase^android_x86_x86_64_static_apex10000/ .
 rsync -a -r $GITHUB_WORKSPACE/artifacts/bionic/libdl/libdl_android^android_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/artifacts/bionic/libdl/libdl_android^android_x86_64_static_apex10000/ .
 rsync -a -r $GITHUB_WORKSPACE/artifacts/bionic/libdl/libdl_android^android_x86_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/artifacts/bionic/libdl/libdl_android^android_x86_x86_64_static_apex10000/ .
+rsync -a -r $GITHUB_WORKSPACE/artifacts/external/fmtlib/fmtlib^android_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/artifacts/external/fmtlib/fmtlib^android_x86_64_static_apex10000/ .
+rsync -a -r $GITHUB_WORKSPACE/artifacts/external/fmtlib/fmtlib^android_x86_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/artifacts/external/fmtlib/fmtlib^android_x86_x86_64_static_apex10000/ .
+rsync -a -r $GITHUB_WORKSPACE/artifacts/system/libbase/libbase^android_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/artifacts/system/libbase/libbase^android_x86_64_static_apex10000/ .
+rsync -a -r $GITHUB_WORKSPACE/artifacts/system/libbase/libbase^android_x86_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/artifacts/system/libbase/libbase^android_x86_x86_64_static_apex10000/ .
 
 echo "building libc_malloc_debug_backtrace^android_x86_64_static"
 ninja -f $GITHUB_WORKSPACE/steps/build_03.ninja libc_malloc_debug_backtrace,android_x86_64_static

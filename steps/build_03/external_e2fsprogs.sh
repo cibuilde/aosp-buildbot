@@ -26,10 +26,7 @@ clone_depth_platform system/libbase
 clone_depth_platform system/logging
 clone_depth_platform system/media
 
-rsync -a -r $GITHUB_WORKSPACE/artifacts/system/libbase/libbase^linux_glibc_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/libcxx/libc++_static^linux_glibc_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/artifacts/external/boringssl/libcrypto^linux_glibc_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/system/core/libcutils/libcutils^linux_glibc_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/lib/blkid/libext2_blkid^linux_glibc_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/lib/et/libext2_com_err^linux_glibc_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/lib/e2p/libext2_e2p^linux_glibc_x86_64_static/ .
@@ -37,10 +34,13 @@ rsync -a -r $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/misc/libext2_misc^lin
 rsync -a -r $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/lib/support/libext2_quota^linux_glibc_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/lib/uuid/libext2_uuid^linux_glibc_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/lib/ext2fs/libext2fs^linux_glibc_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/system/logging/liblog/liblog^linux_glibc_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/artifacts/external/libcxx/libc++_static^linux_glibc_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/artifacts/external/selinux/libselinux/libselinux^linux_glibc_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/system/core/libsparse/libsparse^linux_glibc_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/artifacts/external/zlib/libz^linux_glibc_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/artifacts/system/core/libcutils/libcutils^linux_glibc_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/artifacts/system/core/libsparse/libsparse^linux_glibc_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/artifacts/system/libbase/libbase^linux_glibc_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/artifacts/system/logging/liblog/liblog^linux_glibc_x86_64_static/ .
 
 echo "building e2fsdroid^linux_glibc_x86_64"
 ninja -f $GITHUB_WORKSPACE/steps/build_03.ninja e2fsdroid,linux_glibc_x86_64

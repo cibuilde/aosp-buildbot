@@ -25,9 +25,9 @@ clone_depth_platform system/media
 clone_depth_platform system/unwinding
 
 rsync -a -r $GITHUB_WORKSPACE/artifacts/external/fmtlib/fmtlib^android_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/artifacts/system/core/libutils/libutils^android_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/artifacts/system/libbase/libbase^android_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/artifacts/system/logging/liblog/liblog^android_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/system/core/libutils/libutils^android_x86_64_static/ .
 
 echo "building libwificond_event_loop^android_x86_64_static"
 ninja -f $GITHUB_WORKSPACE/steps/build_03.ninja libwificond_event_loop,android_x86_64_static

@@ -23,9 +23,9 @@ clone_depth_platform system/core
 clone_depth_platform system/logging
 clone_depth_platform system/media
 
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/libcxx/libc++_static^linux_glibc_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/artifacts/external/boringssl/libcrypto_static^linux_glibc_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/artifacts/external/boringssl/libssl^linux_glibc_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/artifacts/external/libcxx/libc++_static^linux_glibc_x86_64_static/ .
 
 echo "building libconscrypt_openjdk_jni^linux_glibc_x86_64_shared"
 ninja -f $GITHUB_WORKSPACE/steps/build_03.ninja libconscrypt_openjdk_jni,linux_glibc_x86_64_shared

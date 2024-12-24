@@ -22,24 +22,18 @@ clone_depth_platform system/libbase
 clone_depth_platform system/logging
 clone_depth_platform system/media
 
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/fmtlib/fmtlib^android_recovery_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/fmtlib/fmtlib^android_vendor_ramdisk_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/fmtlib/fmtlib^android_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/fmtlib/fmtlib^android_x86_64_static_apex10000/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/fmtlib/fmtlib^android_x86_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/fmtlib/fmtlib^android_x86_x86_64_static_apex10000/ .
 rsync -a -r $GITHUB_WORKSPACE/artifacts/bionic/libc/async_safe/libasync_safe^android_recovery_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/artifacts/bionic/libc/async_safe/libasync_safe^android_vendor_ramdisk_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/artifacts/bionic/libc/async_safe/libasync_safe^android_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/artifacts/bionic/libc/async_safe/libasync_safe^android_x86_64_static_apex10000/ .
 rsync -a -r $GITHUB_WORKSPACE/artifacts/bionic/libc/async_safe/libasync_safe^android_x86_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/artifacts/bionic/libc/async_safe/libasync_safe^android_x86_x86_64_static_apex10000/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/system/libbase/libbase^android_recovery_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/system/libbase/libbase^android_vendor_ramdisk_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/system/libbase/libbase^android_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/system/libbase/libbase^android_x86_64_static_apex10000/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/system/libbase/libbase^android_x86_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/system/libbase/libbase^android_x86_x86_64_static_apex10000/ .
+rsync -a -r $GITHUB_WORKSPACE/artifacts/external/fmtlib/fmtlib^android_recovery_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/artifacts/external/fmtlib/fmtlib^android_vendor_ramdisk_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/artifacts/external/fmtlib/fmtlib^android_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/artifacts/external/fmtlib/fmtlib^android_x86_64_static_apex10000/ .
+rsync -a -r $GITHUB_WORKSPACE/artifacts/external/fmtlib/fmtlib^android_x86_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/artifacts/external/fmtlib/fmtlib^android_x86_x86_64_static_apex10000/ .
 rsync -a -r $GITHUB_WORKSPACE/artifacts/system/core/libcutils/libcutils^android_recovery_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/artifacts/system/core/libcutils/libcutils^android_vendor_ramdisk_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/artifacts/system/core/libcutils/libcutils^android_x86_64_static/ .
@@ -52,6 +46,12 @@ rsync -a -r $GITHUB_WORKSPACE/artifacts/system/core/libcutils/libcutils_sockets^
 rsync -a -r $GITHUB_WORKSPACE/artifacts/system/core/libcutils/libcutils_sockets^android_x86_64_static_apex10000/ .
 rsync -a -r $GITHUB_WORKSPACE/artifacts/system/core/libcutils/libcutils_sockets^android_x86_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/artifacts/system/core/libcutils/libcutils_sockets^android_x86_x86_64_static_apex10000/ .
+rsync -a -r $GITHUB_WORKSPACE/artifacts/system/libbase/libbase^android_recovery_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/artifacts/system/libbase/libbase^android_vendor_ramdisk_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/artifacts/system/libbase/libbase^android_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/artifacts/system/libbase/libbase^android_x86_64_static_apex10000/ .
+rsync -a -r $GITHUB_WORKSPACE/artifacts/system/libbase/libbase^android_x86_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/artifacts/system/libbase/libbase^android_x86_x86_64_static_apex10000/ .
 
 echo "building libtombstoned_client_static^android_recovery_x86_64_static"
 ninja -f $GITHUB_WORKSPACE/steps/build_03.ninja libtombstoned_client_static,android_recovery_x86_64_static

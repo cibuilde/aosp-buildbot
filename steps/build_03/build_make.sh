@@ -28,14 +28,14 @@ clone_depth_platform system/media
 clone_depth_platform system/unwinding
 
 rsync -a -r $GITHUB_WORKSPACE/artifacts/external/fmtlib/fmtlib^linux_glibc_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/system/libbase/libbase^linux_glibc_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/artifacts/external/zlib/libz^linux_glibc_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/artifacts/external/zopfli/libzopfli^linux_glibc_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/artifacts/system/core/libcutils/libcutils^linux_glibc_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/artifacts/system/core/libcutils/libcutils_sockets^linux_glibc_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/system/logging/liblog/liblog^linux_glibc_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/artifacts/system/core/libutils/libutils^linux_glibc_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/zlib/libz^linux_glibc_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/artifacts/system/libbase/libbase^linux_glibc_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/artifacts/system/libziparchive/libziparchive^linux_glibc_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/zopfli/libzopfli^linux_glibc_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/artifacts/system/logging/liblog/liblog^linux_glibc_x86_64_static/ .
 
 echo "building libzipalign^linux_glibc_x86_64_static"
 ninja -f $GITHUB_WORKSPACE/steps/build_03.ninja libzipalign,linux_glibc_x86_64_static
