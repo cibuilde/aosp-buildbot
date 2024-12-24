@@ -1,0 +1,3 @@
+out/soong/.intermediates/system/core/debuggerd/libtombstoned_client_static/android_x86_64_static_apex10000/libtombstoned_client_static.a
+out/soong/.intermediates/system/core/debuggerd/libtombstoned_client_static/android_x86_64_static_apex10000/obj/system/core/debuggerd/tombstoned/tombstoned_client.o
+out/soong/.intermediates/system/core/debuggerd/libtombstoned_client_static/android_x86_64_static_apex10000/obj/system/core/debuggerd/util.o
