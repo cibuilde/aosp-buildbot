@@ -211,6 +211,7 @@ gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern sys
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/tools/hidl
 tar xf $GITHUB_WORKSPACE/system_tools_hidl.tar.zst -C $GITHUB_WORKSPACE/artifacts/system/tools/hidl/
 
+export OUT_DIR=out
 export PATH=$PATH:$GITHUB_WORKSPACE/aosp/prebuilts/python/linux-x86/2.7.5/bin
 
 time source steps/build_04/frameworks_base.sh
