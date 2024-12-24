@@ -75,6 +75,10 @@ gh release --repo cibuilde/aosp-buildbot download android12-gsi_02 --pattern ext
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/rust/crates/aho-corasick
 tar xf $GITHUB_WORKSPACE/external_rust_crates_aho-corasick.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/rust/crates/aho-corasick/
 
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_rust_crates_cfg-if.tar.zst
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/rust/crates/cfg-if
+tar xf $GITHUB_WORKSPACE/external_rust_crates_cfg-if.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/rust/crates/cfg-if/
+
 gh release --repo cibuilde/aosp-buildbot download android12-gsi_02 --pattern external_rust_crates_log.tar.zst
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/rust/crates/log
 tar xf $GITHUB_WORKSPACE/external_rust_crates_log.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/rust/crates/log/
