@@ -99,6 +99,10 @@ gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern ext
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/rust/crates/regex-syntax
 tar xf $GITHUB_WORKSPACE/external_rust_crates_regex-syntax.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/rust/crates/regex-syntax/
 
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_rust_crates_unicode-xid.tar.zst
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/rust/crates/unicode-xid
+tar xf $GITHUB_WORKSPACE/external_rust_crates_unicode-xid.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/rust/crates/unicode-xid/
+
 gh release --repo cibuilde/aosp-buildbot download android12-gsi_02 --pattern external_selinux.tar.zst
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/selinux
 tar xf $GITHUB_WORKSPACE/external_selinux.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/selinux/
@@ -143,6 +147,16 @@ gh release --repo cibuilde/aosp-buildbot download android12-gsi_02 --pattern sys
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/sepolicy
 tar xf $GITHUB_WORKSPACE/system_sepolicy.tar.zst -C $GITHUB_WORKSPACE/artifacts/system/sepolicy/
 
+time source steps/build_03/external_rust_crates_cexpr.sh
+time source steps/build_03/external_rust_crates_env_logger.sh
+time source steps/build_03/external_rust_crates_quote.sh
+time source steps/build_03/external_rust_crates_regex.sh
+time source steps/build_03/external_selinux.sh
+time source steps/build_03/packages_modules_adb.sh
+time source steps/build_03/prebuilts_rust.sh
+time source steps/build_03/system_connectivity_wificond.sh
+time source steps/build_03/system_core.sh
+time source steps/build_03/system_sepolicy.sh
 time source steps/build_03/bionic.sh
 time source steps/build_03/build_blueprint.sh
 time source steps/build_03/build_make.sh
@@ -155,16 +169,6 @@ time source steps/build_03/external_grpc-grpc.sh
 time source steps/build_03/external_libcxx.sh
 time source steps/build_03/external_lz4.sh
 time source steps/build_03/external_protobuf.sh
-time source steps/build_03/external_rust_crates_cexpr.sh
-time source steps/build_03/external_rust_crates_env_logger.sh
-time source steps/build_03/external_rust_crates_quote.sh
-time source steps/build_03/external_rust_crates_regex.sh
-time source steps/build_03/external_selinux.sh
-time source steps/build_03/packages_modules_adb.sh
-time source steps/build_03/prebuilts_rust.sh
-time source steps/build_03/system_connectivity_wificond.sh
-time source steps/build_03/system_core.sh
-time source steps/build_03/system_sepolicy.sh
 
 if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_clang_host_linux-x86.tar.zst" ]; then
   echo "Compressing prebuilts/clang/host/linux-x86 -> prebuilts_clang_host_linux-x86.tar.zst"
