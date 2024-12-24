@@ -10,6 +10,9 @@ mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/
 clone_depth_platform art
 clone_depth_platform bionic
 clone_depth build/make platform/build
+ln -s make/core build/
+ln -s make/target build/
+ln -s make/tools build/
 clone_depth_platform external/fmtlib
 clone_depth_platform external/googletest
 clone_depth_platform external/libcxx
