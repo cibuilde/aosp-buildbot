@@ -213,41 +213,6 @@ tar xf $GITHUB_WORKSPACE/system_tools_hidl.tar.zst -C $GITHUB_WORKSPACE/artifact
 
 export PATH=$PATH:$GITHUB_WORKSPACE/aosp/prebuilts/python/linux-x86/2.7.5/bin
 
-time source steps/build_04/art.sh
-time source steps/build_04/bionic.sh
-time source steps/build_04/build_blueprint.sh
-time source steps/build_04/build_make.sh
-time source steps/build_04/build_soong.sh
-time source steps/build_04/development.sh
-time source steps/build_04/device_generic_vulkan-cereal.sh
-time source steps/build_04/device_google_cuttlefish.sh
-time source steps/build_04/external_angle.sh
-time source steps/build_04/external_bc.sh
-time source steps/build_04/external_boringssl.sh
-time source steps/build_04/external_clang.sh
-time source steps/build_04/external_crosvm.sh
-time source steps/build_04/external_dagger2.sh
-time source steps/build_04/external_e2fsprogs.sh
-time source steps/build_04/external_error_prone.sh
-time source steps/build_04/external_f2fs-tools.sh
-time source steps/build_04/external_firebase-messaging.sh
-time source steps/build_04/external_flatbuffers.sh
-time source steps/build_04/external_grpc-grpc.sh
-time source steps/build_04/external_guice.sh
-time source steps/build_04/external_icing.sh
-time source steps/build_04/external_icu.sh
-time source steps/build_04/external_iptables.sh
-time source steps/build_04/external_iw.sh
-time source steps/build_04/external_jarjar.sh
-time source steps/build_04/external_jsoncpp.sh
-time source steps/build_04/external_kmod.sh
-time source steps/build_04/external_kotlinc.sh
-time source steps/build_04/external_kotlinx.metadata.sh
-time source steps/build_04/external_libcap.sh
-time source steps/build_04/external_libffi.sh
-time source steps/build_04/external_llvm.sh
-time source steps/build_04/external_minijail.sh
-time source steps/build_04/external_one-true-awk.sh
 time source steps/build_04/external_perfetto.sh
 time source steps/build_04/external_protobuf.sh
 time source steps/build_04/external_python_cpython2.sh
@@ -289,6 +254,41 @@ time source steps/build_04/system_sepolicy.sh
 time source steps/build_04/system_tools_aidl.sh
 time source steps/build_04/system_tools_hidl.sh
 time source steps/build_04/system_update_engine.sh
+time source steps/build_04/art.sh
+time source steps/build_04/bionic.sh
+time source steps/build_04/build_blueprint.sh
+time source steps/build_04/build_make.sh
+time source steps/build_04/build_soong.sh
+time source steps/build_04/development.sh
+time source steps/build_04/device_generic_vulkan-cereal.sh
+time source steps/build_04/device_google_cuttlefish.sh
+time source steps/build_04/external_angle.sh
+time source steps/build_04/external_bc.sh
+time source steps/build_04/external_boringssl.sh
+time source steps/build_04/external_clang.sh
+time source steps/build_04/external_crosvm.sh
+time source steps/build_04/external_dagger2.sh
+time source steps/build_04/external_e2fsprogs.sh
+time source steps/build_04/external_error_prone.sh
+time source steps/build_04/external_f2fs-tools.sh
+time source steps/build_04/external_firebase-messaging.sh
+time source steps/build_04/external_flatbuffers.sh
+time source steps/build_04/external_grpc-grpc.sh
+time source steps/build_04/external_guice.sh
+time source steps/build_04/external_icing.sh
+time source steps/build_04/external_icu.sh
+time source steps/build_04/external_iptables.sh
+time source steps/build_04/external_iw.sh
+time source steps/build_04/external_jarjar.sh
+time source steps/build_04/external_jsoncpp.sh
+time source steps/build_04/external_kmod.sh
+time source steps/build_04/external_kotlinc.sh
+time source steps/build_04/external_kotlinx.metadata.sh
+time source steps/build_04/external_libcap.sh
+time source steps/build_04/external_libffi.sh
+time source steps/build_04/external_llvm.sh
+time source steps/build_04/external_minijail.sh
+time source steps/build_04/external_one-true-awk.sh
 
 if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_clang_host_linux-x86.tar.zst" ]; then
   echo "Compressing prebuilts/clang/host/linux-x86 -> prebuilts_clang_host_linux-x86.tar.zst"
