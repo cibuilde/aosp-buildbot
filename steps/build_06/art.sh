@@ -9,7 +9,7 @@ ln -sf $GITHUB_WORKSPACE/ninja .
 mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86 prebuilts/clang/host/linux-x86
 
 clone_depth_platform art
-clone_depth_platform prebuilts/python/linux-x86/2.7.5
+#clone_depth_platform prebuilts/python/linux-x86/2.7.5
 
 rsync -a -r $GITHUB_WORKSPACE/artifacts/art/tools/generate_operator_out^linux_glibc_x86_64_PY2/ .
 rsync -a -r $GITHUB_WORKSPACE/artifacts/build/soong/cmd/sbox/sbox^linux_glibc_x86_64/ .
