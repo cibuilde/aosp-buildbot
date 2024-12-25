@@ -39,6 +39,7 @@ rsync -a -r $GITHUB_WORKSPACE/artifacts/external/crosvm/seccomp/video_device.pol
 rsync -a -r $GITHUB_WORKSPACE/artifacts/external/crosvm/seccomp/vios_audio_device.policy_inline_x86_64^/ .
 rsync -a -r $GITHUB_WORKSPACE/artifacts/external/crosvm/seccomp/wl_device.policy_inline_x86_64^/ .
 rsync -a -r $GITHUB_WORKSPACE/artifacts/external/crosvm/seccomp/xhci.policy_inline_x86_64^/ .
+rsync -a -r $GITHUB_WORKSPACE/artifacts/external/libcxx/libc++^linux_glibc_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/artifacts/external/rust/crates/proc-macro2/libproc_macro2^linux_glibc_x86_64_rlib_rlib-std/ .
 rsync -a -r $GITHUB_WORKSPACE/artifacts/external/rust/crates/quote/libquote^linux_glibc_x86_64_rlib_rlib-std/ .
 rsync -a -r $GITHUB_WORKSPACE/artifacts/external/rust/crates/syn/libsyn^linux_glibc_x86_64_rlib_rlib-std/ .

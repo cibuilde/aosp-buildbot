@@ -12,7 +12,9 @@ clone_depth_platform build/soong
 clone_depth_platform system/sepolicy
 
 rsync -a -r $GITHUB_WORKSPACE/artifacts/build/soong/cmd/merge_zips/merge_zips^linux_glibc_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/artifacts/build/soong/cmd/sbox/sbox^linux_glibc_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/artifacts/build/soong/zip/cmd/soong_zip^linux_glibc_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/artifacts/external/libcxx/libc++^linux_glibc_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/artifacts/external/selinux/checkpolicy/checkpolicy^linux_glibc_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/artifacts/external/selinux/secilc/secilc^linux_glibc_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/artifacts/system/sepolicy/plat_sepolicy.conf^android_common/ .

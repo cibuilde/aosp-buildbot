@@ -11,6 +11,7 @@ mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/
 clone_depth kernel/prebuilts/common-modules/virtual-device/5.10/x86-64
 
 rsync -a -r $GITHUB_WORKSPACE/artifacts/external/kmod/depmod^linux_glibc_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/artifacts/external/libcxx/libc++^linux_glibc_x86_64_shared/ .
 
 echo "building virt_device_prebuilts_kernel_modules-5.10-x86_64^android_x86_64"
 ninja -f $GITHUB_WORKSPACE/steps/build_05.ninja virt_device_prebuilts_kernel_modules-5.10-x86_64,android_x86_64
