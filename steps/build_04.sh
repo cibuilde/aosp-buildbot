@@ -212,27 +212,8 @@ mkdir -p $GITHUB_WORKSPACE/artifacts/system/tools/hidl
 tar xf $GITHUB_WORKSPACE/system_tools_hidl.tar.zst -C $GITHUB_WORKSPACE/artifacts/system/tools/hidl/
 
 export OUT_DIR=out
-export PATH=$PATH:$GITHUB_WORKSPACE/aosp/prebuilts/python/linux-x86/2.7.5/bin
+export PATH=$GITHUB_WORKSPACE/aosp/prebuilts/python/linux-x86/2.7.5/bin:$PATH
 
-time source steps/build_04/frameworks_base.sh
-time source steps/build_04/frameworks_native.sh
-time source steps/build_04/frameworks_proto_logging.sh
-time source steps/build_04/frameworks_rs.sh
-time source steps/build_04/hardware_google_camera.sh
-time source steps/build_04/packages_modules_DnsResolver.sh
-time source steps/build_04/packages_modules_StatsD.sh
-time source steps/build_04/packages_modules_Virtualization.sh
-time source steps/build_04/packages_modules_adb.sh
-time source steps/build_04/packages_modules_common.sh
-time source steps/build_04/prebuilts_gradle-plugin.sh
-time source steps/build_04/prebuilts_manifest-merger.sh
-time source steps/build_04/prebuilts_misc.sh
-time source steps/build_04/prebuilts_r8.sh
-time source steps/build_04/prebuilts_rust.sh
-time source steps/build_04/prebuilts_sdk.sh
-time source steps/build_04/prebuilts_tools.sh
-time source steps/build_04/system_apex.sh
-time source steps/build_04/system_bt.sh
 time source steps/build_04/system_core.sh
 time source steps/build_04/system_extras.sh
 time source steps/build_04/system_logging.sh
@@ -290,6 +271,25 @@ time source steps/build_04/external_swiftshader.sh
 time source steps/build_04/external_testng.sh
 time source steps/build_04/external_wayland.sh
 time source steps/build_04/external_zxing.sh
+time source steps/build_04/frameworks_base.sh
+time source steps/build_04/frameworks_native.sh
+time source steps/build_04/frameworks_proto_logging.sh
+time source steps/build_04/frameworks_rs.sh
+time source steps/build_04/hardware_google_camera.sh
+time source steps/build_04/packages_modules_DnsResolver.sh
+time source steps/build_04/packages_modules_StatsD.sh
+time source steps/build_04/packages_modules_Virtualization.sh
+time source steps/build_04/packages_modules_adb.sh
+time source steps/build_04/packages_modules_common.sh
+time source steps/build_04/prebuilts_gradle-plugin.sh
+time source steps/build_04/prebuilts_manifest-merger.sh
+time source steps/build_04/prebuilts_misc.sh
+time source steps/build_04/prebuilts_r8.sh
+time source steps/build_04/prebuilts_rust.sh
+time source steps/build_04/prebuilts_sdk.sh
+time source steps/build_04/prebuilts_tools.sh
+time source steps/build_04/system_apex.sh
+time source steps/build_04/system_bt.sh
 
 if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_clang_host_linux-x86.tar.zst" ]; then
   echo "Compressing prebuilts/clang/host/linux-x86 -> prebuilts_clang_host_linux-x86.tar.zst"
