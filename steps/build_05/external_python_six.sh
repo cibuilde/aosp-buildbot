@@ -25,14 +25,14 @@ rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/external/python/six/
 rm -rf out
 
 cd $GITHUB_WORKSPACE/
-tar cfJ external_python_six.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/python/six/ .
+tar -cf external_python_six.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/artifacts/external/python/six/ .
 gh release --repo cibuilde/aosp-buildbot upload android12-gsi_05 external_python_six.tar.zst --clobber
 
 du -ah -d1| sort -h
 
 if [ ! -f "$GITHUB_WORKSPACE/cache/external_python_six.tar.zst" ]; then
   echo "Compressing external/python/six -> external_python_six.tar.zst"
-  tar cfJ $GITHUB_WORKSPACE/cache/external_python_six.tar.zst -C $GITHUB_WORKSPACE/aosp/external/python/six/ .
+  tar -cf $GITHUB_WORKSPACE/cache/external_python_six.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/python/six/ .
 fi
 du -ah -d1 $GITHUB_WORKSPACE/cache| sort -h
 

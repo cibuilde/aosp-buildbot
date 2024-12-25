@@ -23,18 +23,18 @@ rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/external/dagger2/dag
 rm -rf out
 
 cd $GITHUB_WORKSPACE/
-tar cfJ external_dagger2.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/dagger2/ .
+tar -cf external_dagger2.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/artifacts/external/dagger2/ .
 gh release --repo cibuilde/aosp-buildbot upload android12-gsi_05 external_dagger2.tar.zst --clobber
 
 du -ah -d1| sort -h
 
 if [ ! -f "$GITHUB_WORKSPACE/cache/external_dagger2.tar.zst" ]; then
   echo "Compressing external/dagger2 -> external_dagger2.tar.zst"
-  tar cfJ $GITHUB_WORKSPACE/cache/external_dagger2.tar.zst -C $GITHUB_WORKSPACE/aosp/external/dagger2/ .
+  tar -cf $GITHUB_WORKSPACE/cache/external_dagger2.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/dagger2/ .
 fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_jdk_jdk11.tar.zst" ]; then
   echo "Compressing prebuilts/jdk/jdk11 -> prebuilts_jdk_jdk11.tar.zst"
-  tar cfJ $GITHUB_WORKSPACE/cache/prebuilts_jdk_jdk11.tar.zst -C $GITHUB_WORKSPACE/aosp/prebuilts/jdk/jdk11/ .
+  tar -cf $GITHUB_WORKSPACE/cache/prebuilts_jdk_jdk11.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/prebuilts/jdk/jdk11/ .
 fi
 du -ah -d1 $GITHUB_WORKSPACE/cache| sort -h
 

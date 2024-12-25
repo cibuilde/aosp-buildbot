@@ -21,14 +21,14 @@ rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/libcore/notices-for-
 rm -rf out
 
 cd $GITHUB_WORKSPACE/
-tar cfJ libcore.tar.zst -C $GITHUB_WORKSPACE/artifacts/libcore/ .
+tar -cf libcore.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/artifacts/libcore/ .
 gh release --repo cibuilde/aosp-buildbot upload android12-gsi_05 libcore.tar.zst --clobber
 
 du -ah -d1| sort -h
 
 if [ ! -f "$GITHUB_WORKSPACE/cache/libcore.tar.zst" ]; then
   echo "Compressing libcore -> libcore.tar.zst"
-  tar cfJ $GITHUB_WORKSPACE/cache/libcore.tar.zst -C $GITHUB_WORKSPACE/aosp/libcore/ .
+  tar -cf $GITHUB_WORKSPACE/cache/libcore.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/libcore/ .
 fi
 du -ah -d1 $GITHUB_WORKSPACE/cache| sort -h
 

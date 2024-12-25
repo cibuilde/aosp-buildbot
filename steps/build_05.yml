@@ -154,6 +154,13 @@ jobs:
         path: cache/external_dagger2.tar.zst
         key: external_dagger2@${{ env.branch }}
         restore-keys: external_dagger2@${{ env.branch }}
+    - name: Restore Cache external_dlmalloc.tar.zst
+      id: external_dlmalloc
+      uses: actions/cache@v4
+      with:
+        path: cache/external_dlmalloc.tar.zst
+        key: external_dlmalloc@${{ env.branch }}
+        restore-keys: external_dlmalloc@${{ env.branch }}
     - name: Restore Cache external_e2fsprogs.tar.zst
       id: external_e2fsprogs
       uses: actions/cache@v4

@@ -22,22 +22,22 @@ rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/external/python/cpyt
 rm -rf out
 
 cd $GITHUB_WORKSPACE/
-tar cfJ external_python_cpython2.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/python/cpython2/ .
+tar -cf external_python_cpython2.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/artifacts/external/python/cpython2/ .
 gh release --repo cibuilde/aosp-buildbot upload android12-gsi_05 external_python_cpython2.tar.zst --clobber
 
 du -ah -d1| sort -h
 
 if [ ! -f "$GITHUB_WORKSPACE/cache/art.tar.zst" ]; then
   echo "Compressing art -> art.tar.zst"
-  tar cfJ $GITHUB_WORKSPACE/cache/art.tar.zst -C $GITHUB_WORKSPACE/aosp/art/ .
+  tar -cf $GITHUB_WORKSPACE/cache/art.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/art/ .
 fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/cts.tar.zst" ]; then
   echo "Compressing cts -> cts.tar.zst"
-  tar cfJ $GITHUB_WORKSPACE/cache/cts.tar.zst -C $GITHUB_WORKSPACE/aosp/cts/ .
+  tar -cf $GITHUB_WORKSPACE/cache/cts.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/cts/ .
 fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/external_python_cpython2.tar.zst" ]; then
   echo "Compressing external/python/cpython2 -> external_python_cpython2.tar.zst"
-  tar cfJ $GITHUB_WORKSPACE/cache/external_python_cpython2.tar.zst -C $GITHUB_WORKSPACE/aosp/external/python/cpython2/ .
+  tar -cf $GITHUB_WORKSPACE/cache/external_python_cpython2.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/python/cpython2/ .
 fi
 du -ah -d1 $GITHUB_WORKSPACE/cache| sort -h
 

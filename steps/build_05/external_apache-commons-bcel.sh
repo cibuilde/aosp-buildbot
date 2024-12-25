@@ -23,18 +23,18 @@ rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/external/apache-comm
 rm -rf out
 
 cd $GITHUB_WORKSPACE/
-tar cfJ external_apache-commons-bcel.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/apache-commons-bcel/ .
+tar -cf external_apache-commons-bcel.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/artifacts/external/apache-commons-bcel/ .
 gh release --repo cibuilde/aosp-buildbot upload android12-gsi_05 external_apache-commons-bcel.tar.zst --clobber
 
 du -ah -d1| sort -h
 
 if [ ! -f "$GITHUB_WORKSPACE/cache/external_apache-commons-bcel.tar.zst" ]; then
   echo "Compressing external/apache-commons-bcel -> external_apache-commons-bcel.tar.zst"
-  tar cfJ $GITHUB_WORKSPACE/cache/external_apache-commons-bcel.tar.zst -C $GITHUB_WORKSPACE/aosp/external/apache-commons-bcel/ .
+  tar -cf $GITHUB_WORKSPACE/cache/external_apache-commons-bcel.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/apache-commons-bcel/ .
 fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_jdk_jdk11.tar.zst" ]; then
   echo "Compressing prebuilts/jdk/jdk11 -> prebuilts_jdk_jdk11.tar.zst"
-  tar cfJ $GITHUB_WORKSPACE/cache/prebuilts_jdk_jdk11.tar.zst -C $GITHUB_WORKSPACE/aosp/prebuilts/jdk/jdk11/ .
+  tar -cf $GITHUB_WORKSPACE/cache/prebuilts_jdk_jdk11.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/prebuilts/jdk/jdk11/ .
 fi
 du -ah -d1 $GITHUB_WORKSPACE/cache| sort -h
 

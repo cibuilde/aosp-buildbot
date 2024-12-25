@@ -25,14 +25,14 @@ rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/prebuilts/r8/r8-comp
 rm -rf out
 
 cd $GITHUB_WORKSPACE/
-tar cfJ prebuilts_r8.tar.zst -C $GITHUB_WORKSPACE/artifacts/prebuilts/r8/ .
+tar -cf prebuilts_r8.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/artifacts/prebuilts/r8/ .
 gh release --repo cibuilde/aosp-buildbot upload android12-gsi_05 prebuilts_r8.tar.zst --clobber
 
 du -ah -d1| sort -h
 
 if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_r8.tar.zst" ]; then
   echo "Compressing prebuilts/r8 -> prebuilts_r8.tar.zst"
-  tar cfJ $GITHUB_WORKSPACE/cache/prebuilts_r8.tar.zst -C $GITHUB_WORKSPACE/aosp/prebuilts/r8/ .
+  tar -cf $GITHUB_WORKSPACE/cache/prebuilts_r8.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/prebuilts/r8/ .
 fi
 du -ah -d1 $GITHUB_WORKSPACE/cache| sort -h
 

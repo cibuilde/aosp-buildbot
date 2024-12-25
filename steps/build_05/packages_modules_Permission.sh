@@ -29,30 +29,30 @@ rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/packages/modules/Per
 rm -rf out
 
 cd $GITHUB_WORKSPACE/
-tar cfJ packages_modules_Permission.tar.zst -C $GITHUB_WORKSPACE/artifacts/packages/modules/Permission/ .
+tar -cf packages_modules_Permission.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/artifacts/packages/modules/Permission/ .
 gh release --repo cibuilde/aosp-buildbot upload android12-gsi_05 packages_modules_Permission.tar.zst --clobber
 
 du -ah -d1| sort -h
 
 if [ ! -f "$GITHUB_WORKSPACE/cache/external_libcxx.tar.zst" ]; then
   echo "Compressing external/libcxx -> external_libcxx.tar.zst"
-  tar cfJ $GITHUB_WORKSPACE/cache/external_libcxx.tar.zst -C $GITHUB_WORKSPACE/aosp/external/libcxx/ .
+  tar -cf $GITHUB_WORKSPACE/cache/external_libcxx.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/libcxx/ .
 fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/external_libcxxabi.tar.zst" ]; then
   echo "Compressing external/libcxxabi -> external_libcxxabi.tar.zst"
-  tar cfJ $GITHUB_WORKSPACE/cache/external_libcxxabi.tar.zst -C $GITHUB_WORKSPACE/aosp/external/libcxxabi/ .
+  tar -cf $GITHUB_WORKSPACE/cache/external_libcxxabi.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/libcxxabi/ .
 fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/external_protobuf.tar.zst" ]; then
   echo "Compressing external/protobuf -> external_protobuf.tar.zst"
-  tar cfJ $GITHUB_WORKSPACE/cache/external_protobuf.tar.zst -C $GITHUB_WORKSPACE/aosp/external/protobuf/ .
+  tar -cf $GITHUB_WORKSPACE/cache/external_protobuf.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/protobuf/ .
 fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/frameworks_base.tar.zst" ]; then
   echo "Compressing frameworks/base -> frameworks_base.tar.zst"
-  tar cfJ $GITHUB_WORKSPACE/cache/frameworks_base.tar.zst -C $GITHUB_WORKSPACE/aosp/frameworks/base/ .
+  tar -cf $GITHUB_WORKSPACE/cache/frameworks_base.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/frameworks/base/ .
 fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/packages_modules_Permission.tar.zst" ]; then
   echo "Compressing packages/modules/Permission -> packages_modules_Permission.tar.zst"
-  tar cfJ $GITHUB_WORKSPACE/cache/packages_modules_Permission.tar.zst -C $GITHUB_WORKSPACE/aosp/packages/modules/Permission/ .
+  tar -cf $GITHUB_WORKSPACE/cache/packages_modules_Permission.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/packages/modules/Permission/ .
 fi
 du -ah -d1 $GITHUB_WORKSPACE/cache| sort -h
 

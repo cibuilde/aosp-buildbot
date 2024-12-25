@@ -24,22 +24,22 @@ rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/external/bouncycastl
 rm -rf out
 
 cd $GITHUB_WORKSPACE/
-tar cfJ external_bouncycastle.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/bouncycastle/ .
+tar -cf external_bouncycastle.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/artifacts/external/bouncycastle/ .
 gh release --repo cibuilde/aosp-buildbot upload android12-gsi_05 external_bouncycastle.tar.zst --clobber
 
 du -ah -d1| sort -h
 
 if [ ! -f "$GITHUB_WORKSPACE/cache/external_bouncycastle.tar.zst" ]; then
   echo "Compressing external/bouncycastle -> external_bouncycastle.tar.zst"
-  tar cfJ $GITHUB_WORKSPACE/cache/external_bouncycastle.tar.zst -C $GITHUB_WORKSPACE/aosp/external/bouncycastle/ .
+  tar -cf $GITHUB_WORKSPACE/cache/external_bouncycastle.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/bouncycastle/ .
 fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_jdk_jdk11.tar.zst" ]; then
   echo "Compressing prebuilts/jdk/jdk11 -> prebuilts_jdk_jdk11.tar.zst"
-  tar cfJ $GITHUB_WORKSPACE/cache/prebuilts_jdk_jdk11.tar.zst -C $GITHUB_WORKSPACE/aosp/prebuilts/jdk/jdk11/ .
+  tar -cf $GITHUB_WORKSPACE/cache/prebuilts_jdk_jdk11.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/prebuilts/jdk/jdk11/ .
 fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_jdk_jdk8.tar.zst" ]; then
   echo "Compressing prebuilts/jdk/jdk8 -> prebuilts_jdk_jdk8.tar.zst"
-  tar cfJ $GITHUB_WORKSPACE/cache/prebuilts_jdk_jdk8.tar.zst -C $GITHUB_WORKSPACE/aosp/prebuilts/jdk/jdk8/ .
+  tar -cf $GITHUB_WORKSPACE/cache/prebuilts_jdk_jdk8.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/prebuilts/jdk/jdk8/ .
 fi
 du -ah -d1 $GITHUB_WORKSPACE/cache| sort -h
 

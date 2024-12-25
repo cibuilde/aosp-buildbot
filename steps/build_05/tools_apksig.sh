@@ -24,22 +24,22 @@ rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/tools/apksig/apksig^
 rm -rf out
 
 cd $GITHUB_WORKSPACE/
-tar cfJ tools_apksig.tar.zst -C $GITHUB_WORKSPACE/artifacts/tools/apksig/ .
+tar -cf tools_apksig.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/artifacts/tools/apksig/ .
 gh release --repo cibuilde/aosp-buildbot upload android12-gsi_05 tools_apksig.tar.zst --clobber
 
 du -ah -d1| sort -h
 
 if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_jdk_jdk11.tar.zst" ]; then
   echo "Compressing prebuilts/jdk/jdk11 -> prebuilts_jdk_jdk11.tar.zst"
-  tar cfJ $GITHUB_WORKSPACE/cache/prebuilts_jdk_jdk11.tar.zst -C $GITHUB_WORKSPACE/aosp/prebuilts/jdk/jdk11/ .
+  tar -cf $GITHUB_WORKSPACE/cache/prebuilts_jdk_jdk11.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/prebuilts/jdk/jdk11/ .
 fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_jdk_jdk8.tar.zst" ]; then
   echo "Compressing prebuilts/jdk/jdk8 -> prebuilts_jdk_jdk8.tar.zst"
-  tar cfJ $GITHUB_WORKSPACE/cache/prebuilts_jdk_jdk8.tar.zst -C $GITHUB_WORKSPACE/aosp/prebuilts/jdk/jdk8/ .
+  tar -cf $GITHUB_WORKSPACE/cache/prebuilts_jdk_jdk8.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/prebuilts/jdk/jdk8/ .
 fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/tools_apksig.tar.zst" ]; then
   echo "Compressing tools/apksig -> tools_apksig.tar.zst"
-  tar cfJ $GITHUB_WORKSPACE/cache/tools_apksig.tar.zst -C $GITHUB_WORKSPACE/aosp/tools/apksig/ .
+  tar -cf $GITHUB_WORKSPACE/cache/tools_apksig.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/tools/apksig/ .
 fi
 du -ah -d1 $GITHUB_WORKSPACE/cache| sort -h
 

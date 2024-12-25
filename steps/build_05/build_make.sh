@@ -95,18 +95,18 @@ rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/build/make/releaseto
 rm -rf out
 
 cd $GITHUB_WORKSPACE/
-tar cfJ build_make.tar.zst -C $GITHUB_WORKSPACE/artifacts/build/make/ .
+tar -cf build_make.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/artifacts/build/make/ .
 gh release --repo cibuilde/aosp-buildbot upload android12-gsi_05 build_make.tar.zst --clobber
 
 du -ah -d1| sort -h
 
 if [ ! -f "$GITHUB_WORKSPACE/cache/build_make.tar.zst" ]; then
   echo "Compressing build/make -> build_make.tar.zst"
-  tar cfJ $GITHUB_WORKSPACE/cache/build_make.tar.zst -C $GITHUB_WORKSPACE/aosp/build/make/ .
+  tar -cf $GITHUB_WORKSPACE/cache/build_make.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/build/make/ .
 fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/build_soong.tar.zst" ]; then
   echo "Compressing build/soong -> build_soong.tar.zst"
-  tar cfJ $GITHUB_WORKSPACE/cache/build_soong.tar.zst -C $GITHUB_WORKSPACE/aosp/build/soong/ .
+  tar -cf $GITHUB_WORKSPACE/cache/build_soong.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/build/soong/ .
 fi
 du -ah -d1 $GITHUB_WORKSPACE/cache| sort -h
 

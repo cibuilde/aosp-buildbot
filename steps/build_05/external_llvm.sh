@@ -50,14 +50,14 @@ rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/external/llvm/llvm-g
 rm -rf out
 
 cd $GITHUB_WORKSPACE/
-tar cfJ external_llvm.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/llvm/ .
+tar -cf external_llvm.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/artifacts/external/llvm/ .
 gh release --repo cibuilde/aosp-buildbot upload android12-gsi_05 external_llvm.tar.zst --clobber
 
 du -ah -d1| sort -h
 
 if [ ! -f "$GITHUB_WORKSPACE/cache/external_llvm.tar.zst" ]; then
   echo "Compressing external/llvm -> external_llvm.tar.zst"
-  tar cfJ $GITHUB_WORKSPACE/cache/external_llvm.tar.zst -C $GITHUB_WORKSPACE/aosp/external/llvm/ .
+  tar -cf $GITHUB_WORKSPACE/cache/external_llvm.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/llvm/ .
 fi
 du -ah -d1 $GITHUB_WORKSPACE/cache| sort -h
 

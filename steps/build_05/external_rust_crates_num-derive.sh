@@ -29,38 +29,38 @@ rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/external/rust/crates
 rm -rf out
 
 cd $GITHUB_WORKSPACE/
-tar cfJ external_rust_crates_num-derive.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/rust/crates/num-derive/ .
+tar -cf external_rust_crates_num-derive.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/artifacts/external/rust/crates/num-derive/ .
 gh release --repo cibuilde/aosp-buildbot upload android12-gsi_05 external_rust_crates_num-derive.tar.zst --clobber
 
 du -ah -d1| sort -h
 
 if [ ! -f "$GITHUB_WORKSPACE/cache/external_rust_crates_num-derive.tar.zst" ]; then
   echo "Compressing external/rust/crates/num-derive -> external_rust_crates_num-derive.tar.zst"
-  tar cfJ $GITHUB_WORKSPACE/cache/external_rust_crates_num-derive.tar.zst -C $GITHUB_WORKSPACE/aosp/external/rust/crates/num-derive/ .
+  tar -cf $GITHUB_WORKSPACE/cache/external_rust_crates_num-derive.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/rust/crates/num-derive/ .
 fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/external_rust_crates_proc-macro2.tar.zst" ]; then
   echo "Compressing external/rust/crates/proc-macro2 -> external_rust_crates_proc-macro2.tar.zst"
-  tar cfJ $GITHUB_WORKSPACE/cache/external_rust_crates_proc-macro2.tar.zst -C $GITHUB_WORKSPACE/aosp/external/rust/crates/proc-macro2/ .
+  tar -cf $GITHUB_WORKSPACE/cache/external_rust_crates_proc-macro2.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/rust/crates/proc-macro2/ .
 fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/external_rust_crates_quote.tar.zst" ]; then
   echo "Compressing external/rust/crates/quote -> external_rust_crates_quote.tar.zst"
-  tar cfJ $GITHUB_WORKSPACE/cache/external_rust_crates_quote.tar.zst -C $GITHUB_WORKSPACE/aosp/external/rust/crates/quote/ .
+  tar -cf $GITHUB_WORKSPACE/cache/external_rust_crates_quote.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/rust/crates/quote/ .
 fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/external_rust_crates_syn.tar.zst" ]; then
   echo "Compressing external/rust/crates/syn -> external_rust_crates_syn.tar.zst"
-  tar cfJ $GITHUB_WORKSPACE/cache/external_rust_crates_syn.tar.zst -C $GITHUB_WORKSPACE/aosp/external/rust/crates/syn/ .
+  tar -cf $GITHUB_WORKSPACE/cache/external_rust_crates_syn.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/rust/crates/syn/ .
 fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/external_rust_crates_unicode-xid.tar.zst" ]; then
   echo "Compressing external/rust/crates/unicode-xid -> external_rust_crates_unicode-xid.tar.zst"
-  tar cfJ $GITHUB_WORKSPACE/cache/external_rust_crates_unicode-xid.tar.zst -C $GITHUB_WORKSPACE/aosp/external/rust/crates/unicode-xid/ .
+  tar -cf $GITHUB_WORKSPACE/cache/external_rust_crates_unicode-xid.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/rust/crates/unicode-xid/ .
 fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_gcc_linux-x86_host_x86_64-linux-glibc2.17-4.8.tar.zst" ]; then
   echo "Compressing prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8 -> prebuilts_gcc_linux-x86_host_x86_64-linux-glibc2.17-4.8.tar.zst"
-  tar cfJ $GITHUB_WORKSPACE/cache/prebuilts_gcc_linux-x86_host_x86_64-linux-glibc2.17-4.8.tar.zst -C $GITHUB_WORKSPACE/aosp/prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8/ .
+  tar -cf $GITHUB_WORKSPACE/cache/prebuilts_gcc_linux-x86_host_x86_64-linux-glibc2.17-4.8.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8/ .
 fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_rust.tar.zst" ]; then
   echo "Compressing prebuilts/rust -> prebuilts_rust.tar.zst"
-  tar cfJ $GITHUB_WORKSPACE/cache/prebuilts_rust.tar.zst -C $GITHUB_WORKSPACE/aosp/prebuilts/rust/ .
+  tar -cf $GITHUB_WORKSPACE/cache/prebuilts_rust.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/prebuilts/rust/ .
 fi
 du -ah -d1 $GITHUB_WORKSPACE/cache| sort -h
 

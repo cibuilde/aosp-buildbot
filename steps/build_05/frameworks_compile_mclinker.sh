@@ -21,18 +21,18 @@ rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/frameworks/compile/m
 rm -rf out
 
 cd $GITHUB_WORKSPACE/
-tar cfJ frameworks_compile_mclinker.tar.zst -C $GITHUB_WORKSPACE/artifacts/frameworks/compile/mclinker/ .
+tar -cf frameworks_compile_mclinker.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/artifacts/frameworks/compile/mclinker/ .
 gh release --repo cibuilde/aosp-buildbot upload android12-gsi_05 frameworks_compile_mclinker.tar.zst --clobber
 
 du -ah -d1| sort -h
 
 if [ ! -f "$GITHUB_WORKSPACE/cache/external_llvm.tar.zst" ]; then
   echo "Compressing external/llvm -> external_llvm.tar.zst"
-  tar cfJ $GITHUB_WORKSPACE/cache/external_llvm.tar.zst -C $GITHUB_WORKSPACE/aosp/external/llvm/ .
+  tar -cf $GITHUB_WORKSPACE/cache/external_llvm.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/llvm/ .
 fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/frameworks_compile_mclinker.tar.zst" ]; then
   echo "Compressing frameworks/compile/mclinker -> frameworks_compile_mclinker.tar.zst"
-  tar cfJ $GITHUB_WORKSPACE/cache/frameworks_compile_mclinker.tar.zst -C $GITHUB_WORKSPACE/aosp/frameworks/compile/mclinker/ .
+  tar -cf $GITHUB_WORKSPACE/cache/frameworks_compile_mclinker.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/frameworks/compile/mclinker/ .
 fi
 du -ah -d1 $GITHUB_WORKSPACE/cache| sort -h
 

@@ -20,14 +20,14 @@ rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/packages/modules/Vir
 rm -rf out
 
 cd $GITHUB_WORKSPACE/
-tar cfJ packages_modules_Virtualization.tar.zst -C $GITHUB_WORKSPACE/artifacts/packages/modules/Virtualization/ .
+tar -cf packages_modules_Virtualization.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/artifacts/packages/modules/Virtualization/ .
 gh release --repo cibuilde/aosp-buildbot upload android12-gsi_05 packages_modules_Virtualization.tar.zst --clobber
 
 du -ah -d1| sort -h
 
 if [ ! -f "$GITHUB_WORKSPACE/cache/packages_modules_Virtualization.tar.zst" ]; then
   echo "Compressing packages/modules/Virtualization -> packages_modules_Virtualization.tar.zst"
-  tar cfJ $GITHUB_WORKSPACE/cache/packages_modules_Virtualization.tar.zst -C $GITHUB_WORKSPACE/aosp/packages/modules/Virtualization/ .
+  tar -cf $GITHUB_WORKSPACE/cache/packages_modules_Virtualization.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/packages/modules/Virtualization/ .
 fi
 du -ah -d1 $GITHUB_WORKSPACE/cache| sort -h
 

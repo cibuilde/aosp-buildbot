@@ -22,18 +22,18 @@ rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/tools/platform-compa
 rm -rf out
 
 cd $GITHUB_WORKSPACE/
-tar cfJ tools_platform-compat.tar.zst -C $GITHUB_WORKSPACE/artifacts/tools/platform-compat/ .
+tar -cf tools_platform-compat.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/artifacts/tools/platform-compat/ .
 gh release --repo cibuilde/aosp-buildbot upload android12-gsi_05 tools_platform-compat.tar.zst --clobber
 
 du -ah -d1| sort -h
 
 if [ ! -f "$GITHUB_WORKSPACE/cache/build_soong.tar.zst" ]; then
   echo "Compressing build/soong -> build_soong.tar.zst"
-  tar cfJ $GITHUB_WORKSPACE/cache/build_soong.tar.zst -C $GITHUB_WORKSPACE/aosp/build/soong/ .
+  tar -cf $GITHUB_WORKSPACE/cache/build_soong.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/build/soong/ .
 fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/tools_platform-compat.tar.zst" ]; then
   echo "Compressing tools/platform-compat -> tools_platform-compat.tar.zst"
-  tar cfJ $GITHUB_WORKSPACE/cache/tools_platform-compat.tar.zst -C $GITHUB_WORKSPACE/aosp/tools/platform-compat/ .
+  tar -cf $GITHUB_WORKSPACE/cache/tools_platform-compat.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/tools/platform-compat/ .
 fi
 du -ah -d1 $GITHUB_WORKSPACE/cache| sort -h
 

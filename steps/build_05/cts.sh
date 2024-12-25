@@ -23,18 +23,18 @@ rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/cts/json^linux_glibc
 rm -rf out
 
 cd $GITHUB_WORKSPACE/
-tar cfJ cts.tar.zst -C $GITHUB_WORKSPACE/artifacts/cts/ .
+tar -cf cts.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/artifacts/cts/ .
 gh release --repo cibuilde/aosp-buildbot upload android12-gsi_05 cts.tar.zst --clobber
 
 du -ah -d1| sort -h
 
 if [ ! -f "$GITHUB_WORKSPACE/cache/cts.tar.zst" ]; then
   echo "Compressing cts -> cts.tar.zst"
-  tar cfJ $GITHUB_WORKSPACE/cache/cts.tar.zst -C $GITHUB_WORKSPACE/aosp/cts/ .
+  tar -cf $GITHUB_WORKSPACE/cache/cts.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/cts/ .
 fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_jdk_jdk11.tar.zst" ]; then
   echo "Compressing prebuilts/jdk/jdk11 -> prebuilts_jdk_jdk11.tar.zst"
-  tar cfJ $GITHUB_WORKSPACE/cache/prebuilts_jdk_jdk11.tar.zst -C $GITHUB_WORKSPACE/aosp/prebuilts/jdk/jdk11/ .
+  tar -cf $GITHUB_WORKSPACE/cache/prebuilts_jdk_jdk11.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/prebuilts/jdk/jdk11/ .
 fi
 du -ah -d1 $GITHUB_WORKSPACE/cache| sort -h
 

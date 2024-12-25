@@ -52,14 +52,14 @@ rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/prebuilts/sdk/androi
 rm -rf out
 
 cd $GITHUB_WORKSPACE/
-tar cfJ prebuilts_sdk.tar.zst -C $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/ .
+tar -cf prebuilts_sdk.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/ .
 gh release --repo cibuilde/aosp-buildbot upload android12-gsi_05 prebuilts_sdk.tar.zst --clobber
 
 du -ah -d1| sort -h
 
 if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_sdk.tar.zst" ]; then
   echo "Compressing prebuilts/sdk -> prebuilts_sdk.tar.zst"
-  tar cfJ $GITHUB_WORKSPACE/cache/prebuilts_sdk.tar.zst -C $GITHUB_WORKSPACE/aosp/prebuilts/sdk/ .
+  tar -cf $GITHUB_WORKSPACE/cache/prebuilts_sdk.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/prebuilts/sdk/ .
 fi
 du -ah -d1 $GITHUB_WORKSPACE/cache| sort -h
 

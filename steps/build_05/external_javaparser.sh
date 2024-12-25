@@ -23,18 +23,18 @@ rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/external/javaparser/
 rm -rf out
 
 cd $GITHUB_WORKSPACE/
-tar cfJ external_javaparser.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/javaparser/ .
+tar -cf external_javaparser.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/artifacts/external/javaparser/ .
 gh release --repo cibuilde/aosp-buildbot upload android12-gsi_05 external_javaparser.tar.zst --clobber
 
 du -ah -d1| sort -h
 
 if [ ! -f "$GITHUB_WORKSPACE/cache/external_javaparser.tar.zst" ]; then
   echo "Compressing external/javaparser -> external_javaparser.tar.zst"
-  tar cfJ $GITHUB_WORKSPACE/cache/external_javaparser.tar.zst -C $GITHUB_WORKSPACE/aosp/external/javaparser/ .
+  tar -cf $GITHUB_WORKSPACE/cache/external_javaparser.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/javaparser/ .
 fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_jdk_jdk11.tar.zst" ]; then
   echo "Compressing prebuilts/jdk/jdk11 -> prebuilts_jdk_jdk11.tar.zst"
-  tar cfJ $GITHUB_WORKSPACE/cache/prebuilts_jdk_jdk11.tar.zst -C $GITHUB_WORKSPACE/aosp/prebuilts/jdk/jdk11/ .
+  tar -cf $GITHUB_WORKSPACE/cache/prebuilts_jdk_jdk11.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/prebuilts/jdk/jdk11/ .
 fi
 du -ah -d1 $GITHUB_WORKSPACE/cache| sort -h
 

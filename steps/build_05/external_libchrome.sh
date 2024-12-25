@@ -35,22 +35,22 @@ rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/external/libchrome/l
 rm -rf out
 
 cd $GITHUB_WORKSPACE/
-tar cfJ external_libchrome.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/libchrome/ .
+tar -cf external_libchrome.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/artifacts/external/libchrome/ .
 gh release --repo cibuilde/aosp-buildbot upload android12-gsi_05 external_libchrome.tar.zst --clobber
 
 du -ah -d1| sort -h
 
 if [ ! -f "$GITHUB_WORKSPACE/cache/art.tar.zst" ]; then
   echo "Compressing art -> art.tar.zst"
-  tar cfJ $GITHUB_WORKSPACE/cache/art.tar.zst -C $GITHUB_WORKSPACE/aosp/art/ .
+  tar -cf $GITHUB_WORKSPACE/cache/art.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/art/ .
 fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/build_soong.tar.zst" ]; then
   echo "Compressing build/soong -> build_soong.tar.zst"
-  tar cfJ $GITHUB_WORKSPACE/cache/build_soong.tar.zst -C $GITHUB_WORKSPACE/aosp/build/soong/ .
+  tar -cf $GITHUB_WORKSPACE/cache/build_soong.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/build/soong/ .
 fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/external_libchrome.tar.zst" ]; then
   echo "Compressing external/libchrome -> external_libchrome.tar.zst"
-  tar cfJ $GITHUB_WORKSPACE/cache/external_libchrome.tar.zst -C $GITHUB_WORKSPACE/aosp/external/libchrome/ .
+  tar -cf $GITHUB_WORKSPACE/cache/external_libchrome.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/libchrome/ .
 fi
 du -ah -d1 $GITHUB_WORKSPACE/cache| sort -h
 

@@ -25,22 +25,22 @@ rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/external/oj-libjdwp/
 rm -rf out
 
 cd $GITHUB_WORKSPACE/
-tar cfJ external_oj-libjdwp.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/oj-libjdwp/ .
+tar -cf external_oj-libjdwp.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/artifacts/external/oj-libjdwp/ .
 gh release --repo cibuilde/aosp-buildbot upload android12-gsi_05 external_oj-libjdwp.tar.zst --clobber
 
 du -ah -d1| sort -h
 
 if [ ! -f "$GITHUB_WORKSPACE/cache/external_oj-libjdwp.tar.zst" ]; then
   echo "Compressing external/oj-libjdwp -> external_oj-libjdwp.tar.zst"
-  tar cfJ $GITHUB_WORKSPACE/cache/external_oj-libjdwp.tar.zst -C $GITHUB_WORKSPACE/aosp/external/oj-libjdwp/ .
+  tar -cf $GITHUB_WORKSPACE/cache/external_oj-libjdwp.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/oj-libjdwp/ .
 fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_jdk_jdk11.tar.zst" ]; then
   echo "Compressing prebuilts/jdk/jdk11 -> prebuilts_jdk_jdk11.tar.zst"
-  tar cfJ $GITHUB_WORKSPACE/cache/prebuilts_jdk_jdk11.tar.zst -C $GITHUB_WORKSPACE/aosp/prebuilts/jdk/jdk11/ .
+  tar -cf $GITHUB_WORKSPACE/cache/prebuilts_jdk_jdk11.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/prebuilts/jdk/jdk11/ .
 fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_jdk_jdk8.tar.zst" ]; then
   echo "Compressing prebuilts/jdk/jdk8 -> prebuilts_jdk_jdk8.tar.zst"
-  tar cfJ $GITHUB_WORKSPACE/cache/prebuilts_jdk_jdk8.tar.zst -C $GITHUB_WORKSPACE/aosp/prebuilts/jdk/jdk8/ .
+  tar -cf $GITHUB_WORKSPACE/cache/prebuilts_jdk_jdk8.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/prebuilts/jdk/jdk8/ .
 fi
 du -ah -d1 $GITHUB_WORKSPACE/cache| sort -h
 
