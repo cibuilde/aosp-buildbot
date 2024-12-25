@@ -358,42 +358,6 @@ tar xf $GITHUB_WORKSPACE/system_tools_hidl.tar.zst -C $GITHUB_WORKSPACE/artifact
 export OUT_DIR=out
 export PATH=$GITHUB_WORKSPACE/aosp/prebuilts/python/linux-x86/2.7.5/bin:$PATH
 
-time source steps/build_05/art.sh
-time source steps/build_05/bionic.sh
-time source steps/build_05/build_blueprint.sh
-time source steps/build_05/build_make.sh
-time source steps/build_05/build_soong.sh
-time source steps/build_05/cts.sh
-time source steps/build_05/device_google_cuttlefish.sh
-time source steps/build_05/external_angle.sh
-time source steps/build_05/external_apache-commons-bcel.sh
-time source steps/build_05/external_auto.sh
-time source steps/build_05/external_boringssl.sh
-time source steps/build_05/external_bouncycastle.sh
-time source steps/build_05/external_clang.sh
-time source steps/build_05/external_crosvm.sh
-time source steps/build_05/external_dagger2.sh
-time source steps/build_05/external_e2fsprogs.sh
-time source steps/build_05/external_google-java-format.sh
-time source steps/build_05/external_grpc-grpc.sh
-time source steps/build_05/external_guava.sh
-time source steps/build_05/external_hamcrest.sh
-time source steps/build_05/external_icu.sh
-time source steps/build_05/external_iptables.sh
-time source steps/build_05/external_jarjar.sh
-time source steps/build_05/external_javaparser.sh
-time source steps/build_05/external_javapoet.sh
-time source steps/build_05/external_jcommander.sh
-time source steps/build_05/external_jsr305.sh
-time source steps/build_05/external_jsr330.sh
-time source steps/build_05/external_libcap.sh
-time source steps/build_05/external_libchrome.sh
-time source steps/build_05/external_libffi.sh
-time source steps/build_05/external_libtextclassifier.sh
-time source steps/build_05/external_llvm.sh
-time source steps/build_05/external_minijail.sh
-time source steps/build_05/external_oj-libjdwp.sh
-time source steps/build_05/external_one-true-awk.sh
 time source steps/build_05/external_perfetto.sh
 time source steps/build_05/external_protobuf.sh
 time source steps/build_05/external_python_cpython2.sh
@@ -445,6 +409,42 @@ time source steps/build_05/system_tools_hidl.sh
 time source steps/build_05/system_tools_xsdc.sh
 time source steps/build_05/tools_apksig.sh
 time source steps/build_05/tools_platform-compat.sh
+time source steps/build_05/art.sh
+time source steps/build_05/bionic.sh
+time source steps/build_05/build_blueprint.sh
+time source steps/build_05/build_make.sh
+time source steps/build_05/build_soong.sh
+time source steps/build_05/cts.sh
+time source steps/build_05/device_google_cuttlefish.sh
+time source steps/build_05/external_angle.sh
+time source steps/build_05/external_apache-commons-bcel.sh
+time source steps/build_05/external_auto.sh
+time source steps/build_05/external_boringssl.sh
+time source steps/build_05/external_bouncycastle.sh
+time source steps/build_05/external_clang.sh
+time source steps/build_05/external_crosvm.sh
+time source steps/build_05/external_dagger2.sh
+time source steps/build_05/external_e2fsprogs.sh
+time source steps/build_05/external_google-java-format.sh
+time source steps/build_05/external_grpc-grpc.sh
+time source steps/build_05/external_guava.sh
+time source steps/build_05/external_hamcrest.sh
+time source steps/build_05/external_icu.sh
+time source steps/build_05/external_iptables.sh
+time source steps/build_05/external_jarjar.sh
+time source steps/build_05/external_javaparser.sh
+time source steps/build_05/external_javapoet.sh
+time source steps/build_05/external_jcommander.sh
+time source steps/build_05/external_jsr305.sh
+time source steps/build_05/external_jsr330.sh
+time source steps/build_05/external_libcap.sh
+time source steps/build_05/external_libchrome.sh
+time source steps/build_05/external_libffi.sh
+time source steps/build_05/external_libtextclassifier.sh
+time source steps/build_05/external_llvm.sh
+time source steps/build_05/external_minijail.sh
+time source steps/build_05/external_oj-libjdwp.sh
+time source steps/build_05/external_one-true-awk.sh
 
 if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_clang_host_linux-x86.tar.zst" ]; then
   echo "Compressing prebuilts/clang/host/linux-x86 -> prebuilts_clang_host_linux-x86.tar.zst"

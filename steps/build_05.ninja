@@ -1001,3 +1001,8 @@ build process-compat-config,linux_glibc_x86_64_PY2: phony out/soong/host/linux-x
 
 build tools_platform-compat-targets: phony process-compat-config,linux_glibc_x86_64_PY2
 
+build out/soong/.intermediates/external/perfetto/perfetto_protos_perfetto_common_lite_gen_headers/gen/genrule-phony: phony
+build out/soong/.intermediates/external/perfetto/perfetto_protos_perfetto_trace_ftrace_lite_gen_headers/gen/genrule-phony: phony
+build out/soong/.intermediates/external/perfetto/perfetto_protos_perfetto_trace_non_minimal_lite_gen_headers/gen/genrule-phony: phony
+build out/soong/.intermediates/external/perfetto/perfetto_protos_perfetto_trace_track_event_lite_gen_headers/gen/genrule-phony: phony
+
