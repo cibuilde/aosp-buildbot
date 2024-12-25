@@ -1,0 +1,4 @@
+out/soong/.intermediates/hardware/interfaces/camera/device/3.6/android.hardware.camera.device@3.6_genc++/gen/android/hardware/camera/device/3.6/CameraDeviceAll.cpp
+out/soong/.intermediates/hardware/interfaces/camera/device/3.6/android.hardware.camera.device@3.6_genc++/gen/android/hardware/camera/device/3.6/CameraDeviceSessionAll.cpp
+out/soong/.intermediates/hardware/interfaces/camera/device/3.6/android.hardware.camera.device@3.6_genc++/gen/android/hardware/camera/device/3.6/CameraOfflineSessionAll.cpp
+out/soong/.intermediates/hardware/interfaces/camera/device/3.6/android.hardware.camera.device@3.6_genc++/gen/android/hardware/camera/device/3.6/types.cpp

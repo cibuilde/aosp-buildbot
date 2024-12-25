@@ -1,0 +1,7 @@
+out/soong/.intermediates/hardware/interfaces/media/omx/1.0/android.hardware.media.omx@1.0_genc++/gen/android/hardware/media/omx/1.0/GraphicBufferSourceAll.cpp
+out/soong/.intermediates/hardware/interfaces/media/omx/1.0/android.hardware.media.omx@1.0_genc++/gen/android/hardware/media/omx/1.0/OmxAll.cpp
+out/soong/.intermediates/hardware/interfaces/media/omx/1.0/android.hardware.media.omx@1.0_genc++/gen/android/hardware/media/omx/1.0/OmxBufferSourceAll.cpp
+out/soong/.intermediates/hardware/interfaces/media/omx/1.0/android.hardware.media.omx@1.0_genc++/gen/android/hardware/media/omx/1.0/OmxNodeAll.cpp
+out/soong/.intermediates/hardware/interfaces/media/omx/1.0/android.hardware.media.omx@1.0_genc++/gen/android/hardware/media/omx/1.0/OmxObserverAll.cpp
+out/soong/.intermediates/hardware/interfaces/media/omx/1.0/android.hardware.media.omx@1.0_genc++/gen/android/hardware/media/omx/1.0/OmxStoreAll.cpp
+out/soong/.intermediates/hardware/interfaces/media/omx/1.0/android.hardware.media.omx@1.0_genc++/gen/android/hardware/media/omx/1.0/types.cpp

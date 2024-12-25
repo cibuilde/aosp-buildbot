@@ -1,0 +1,12 @@
+out/soong/.intermediates/hardware/interfaces/health/2.1/android.hardware.health@2.1_genc++_headers/gen/android/hardware/health/2.1/BnHwHealth.h
+out/soong/.intermediates/hardware/interfaces/health/2.1/android.hardware.health@2.1_genc++_headers/gen/android/hardware/health/2.1/BnHwHealthInfoCallback.h
+out/soong/.intermediates/hardware/interfaces/health/2.1/android.hardware.health@2.1_genc++_headers/gen/android/hardware/health/2.1/BpHwHealth.h
+out/soong/.intermediates/hardware/interfaces/health/2.1/android.hardware.health@2.1_genc++_headers/gen/android/hardware/health/2.1/BpHwHealthInfoCallback.h
+out/soong/.intermediates/hardware/interfaces/health/2.1/android.hardware.health@2.1_genc++_headers/gen/android/hardware/health/2.1/BsHealth.h
+out/soong/.intermediates/hardware/interfaces/health/2.1/android.hardware.health@2.1_genc++_headers/gen/android/hardware/health/2.1/BsHealthInfoCallback.h
+out/soong/.intermediates/hardware/interfaces/health/2.1/android.hardware.health@2.1_genc++_headers/gen/android/hardware/health/2.1/IHealth.h
+out/soong/.intermediates/hardware/interfaces/health/2.1/android.hardware.health@2.1_genc++_headers/gen/android/hardware/health/2.1/IHealthInfoCallback.h
+out/soong/.intermediates/hardware/interfaces/health/2.1/android.hardware.health@2.1_genc++_headers/gen/android/hardware/health/2.1/IHwHealth.h
+out/soong/.intermediates/hardware/interfaces/health/2.1/android.hardware.health@2.1_genc++_headers/gen/android/hardware/health/2.1/IHwHealthInfoCallback.h
+out/soong/.intermediates/hardware/interfaces/health/2.1/android.hardware.health@2.1_genc++_headers/gen/android/hardware/health/2.1/hwtypes.h
+out/soong/.intermediates/hardware/interfaces/health/2.1/android.hardware.health@2.1_genc++_headers/gen/android/hardware/health/2.1/types.h

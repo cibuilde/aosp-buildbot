@@ -1,0 +1,5 @@
+out/soong/.intermediates/system/libhidl/transport/memory/token/1.0/android.hidl.memory.token@1.0_genc++_headers/gen/android/hidl/memory/token/1.0/BnHwMemoryToken.h
+out/soong/.intermediates/system/libhidl/transport/memory/token/1.0/android.hidl.memory.token@1.0_genc++_headers/gen/android/hidl/memory/token/1.0/BpHwMemoryToken.h
+out/soong/.intermediates/system/libhidl/transport/memory/token/1.0/android.hidl.memory.token@1.0_genc++_headers/gen/android/hidl/memory/token/1.0/BsMemoryToken.h
+out/soong/.intermediates/system/libhidl/transport/memory/token/1.0/android.hidl.memory.token@1.0_genc++_headers/gen/android/hidl/memory/token/1.0/IHwMemoryToken.h
+out/soong/.intermediates/system/libhidl/transport/memory/token/1.0/android.hidl.memory.token@1.0_genc++_headers/gen/android/hidl/memory/token/1.0/IMemoryToken.h

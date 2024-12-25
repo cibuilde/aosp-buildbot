@@ -1,0 +1,12 @@
+out/soong/.intermediates/system/security/keystore2/aidl/android.security.apc-ndk_platform-source/gen/android/security/apc/IConfirmationCallback.cpp
+out/soong/.intermediates/system/security/keystore2/aidl/android.security.apc-ndk_platform-source/gen/android/security/apc/IProtectedConfirmation.cpp
+out/soong/.intermediates/system/security/keystore2/aidl/android.security.apc-ndk_platform-source/gen/android/security/apc/ResponseCode.cpp
+out/soong/.intermediates/system/security/keystore2/aidl/android.security.apc-ndk_platform-source/gen/include/aidl/android/security/apc/BnConfirmationCallback.h
+out/soong/.intermediates/system/security/keystore2/aidl/android.security.apc-ndk_platform-source/gen/include/aidl/android/security/apc/BnProtectedConfirmation.h
+out/soong/.intermediates/system/security/keystore2/aidl/android.security.apc-ndk_platform-source/gen/include/aidl/android/security/apc/BnResponseCode.h
+out/soong/.intermediates/system/security/keystore2/aidl/android.security.apc-ndk_platform-source/gen/include/aidl/android/security/apc/BpConfirmationCallback.h
+out/soong/.intermediates/system/security/keystore2/aidl/android.security.apc-ndk_platform-source/gen/include/aidl/android/security/apc/BpProtectedConfirmation.h
+out/soong/.intermediates/system/security/keystore2/aidl/android.security.apc-ndk_platform-source/gen/include/aidl/android/security/apc/BpResponseCode.h
+out/soong/.intermediates/system/security/keystore2/aidl/android.security.apc-ndk_platform-source/gen/include/aidl/android/security/apc/IConfirmationCallback.h
+out/soong/.intermediates/system/security/keystore2/aidl/android.security.apc-ndk_platform-source/gen/include/aidl/android/security/apc/IProtectedConfirmation.h
+out/soong/.intermediates/system/security/keystore2/aidl/android.security.apc-ndk_platform-source/gen/include/aidl/android/security/apc/ResponseCode.h

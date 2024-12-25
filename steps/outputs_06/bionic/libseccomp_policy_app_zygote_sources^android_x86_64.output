@@ -1,0 +1,4 @@
+out/soong/.intermediates/bionic/libc/libseccomp_policy_app_zygote_sources/android_x86_64/gen/arm64_app_zygote_policy.cpp
+out/soong/.intermediates/bionic/libc/libseccomp_policy_app_zygote_sources/android_x86_64/gen/arm_app_zygote_policy.cpp
+out/soong/.intermediates/bionic/libc/libseccomp_policy_app_zygote_sources/android_x86_64/gen/x86_64_app_zygote_policy.cpp
+out/soong/.intermediates/bionic/libc/libseccomp_policy_app_zygote_sources/android_x86_64/gen/x86_app_zygote_policy.cpp

@@ -1,0 +1,12 @@
+out/soong/.intermediates/hardware/interfaces/usb/gadget/1.0/android.hardware.usb.gadget@1.0_genc++_headers/gen/android/hardware/usb/gadget/1.0/BnHwUsbGadget.h
+out/soong/.intermediates/hardware/interfaces/usb/gadget/1.0/android.hardware.usb.gadget@1.0_genc++_headers/gen/android/hardware/usb/gadget/1.0/BnHwUsbGadgetCallback.h
+out/soong/.intermediates/hardware/interfaces/usb/gadget/1.0/android.hardware.usb.gadget@1.0_genc++_headers/gen/android/hardware/usb/gadget/1.0/BpHwUsbGadget.h
+out/soong/.intermediates/hardware/interfaces/usb/gadget/1.0/android.hardware.usb.gadget@1.0_genc++_headers/gen/android/hardware/usb/gadget/1.0/BpHwUsbGadgetCallback.h
+out/soong/.intermediates/hardware/interfaces/usb/gadget/1.0/android.hardware.usb.gadget@1.0_genc++_headers/gen/android/hardware/usb/gadget/1.0/BsUsbGadget.h
+out/soong/.intermediates/hardware/interfaces/usb/gadget/1.0/android.hardware.usb.gadget@1.0_genc++_headers/gen/android/hardware/usb/gadget/1.0/BsUsbGadgetCallback.h
+out/soong/.intermediates/hardware/interfaces/usb/gadget/1.0/android.hardware.usb.gadget@1.0_genc++_headers/gen/android/hardware/usb/gadget/1.0/IHwUsbGadget.h
+out/soong/.intermediates/hardware/interfaces/usb/gadget/1.0/android.hardware.usb.gadget@1.0_genc++_headers/gen/android/hardware/usb/gadget/1.0/IHwUsbGadgetCallback.h
+out/soong/.intermediates/hardware/interfaces/usb/gadget/1.0/android.hardware.usb.gadget@1.0_genc++_headers/gen/android/hardware/usb/gadget/1.0/IUsbGadget.h
+out/soong/.intermediates/hardware/interfaces/usb/gadget/1.0/android.hardware.usb.gadget@1.0_genc++_headers/gen/android/hardware/usb/gadget/1.0/IUsbGadgetCallback.h
+out/soong/.intermediates/hardware/interfaces/usb/gadget/1.0/android.hardware.usb.gadget@1.0_genc++_headers/gen/android/hardware/usb/gadget/1.0/hwtypes.h
+out/soong/.intermediates/hardware/interfaces/usb/gadget/1.0/android.hardware.usb.gadget@1.0_genc++_headers/gen/android/hardware/usb/gadget/1.0/types.h

@@ -1,0 +1,10 @@
+out/soong/.intermediates/system/libhidl/transport/manager/1.2/android.hidl.manager@1.2_genc++_headers/gen/android/hidl/manager/1.2/BnHwClientCallback.h
+out/soong/.intermediates/system/libhidl/transport/manager/1.2/android.hidl.manager@1.2_genc++_headers/gen/android/hidl/manager/1.2/BnHwServiceManager.h
+out/soong/.intermediates/system/libhidl/transport/manager/1.2/android.hidl.manager@1.2_genc++_headers/gen/android/hidl/manager/1.2/BpHwClientCallback.h
+out/soong/.intermediates/system/libhidl/transport/manager/1.2/android.hidl.manager@1.2_genc++_headers/gen/android/hidl/manager/1.2/BpHwServiceManager.h
+out/soong/.intermediates/system/libhidl/transport/manager/1.2/android.hidl.manager@1.2_genc++_headers/gen/android/hidl/manager/1.2/BsClientCallback.h
+out/soong/.intermediates/system/libhidl/transport/manager/1.2/android.hidl.manager@1.2_genc++_headers/gen/android/hidl/manager/1.2/BsServiceManager.h
+out/soong/.intermediates/system/libhidl/transport/manager/1.2/android.hidl.manager@1.2_genc++_headers/gen/android/hidl/manager/1.2/IClientCallback.h
+out/soong/.intermediates/system/libhidl/transport/manager/1.2/android.hidl.manager@1.2_genc++_headers/gen/android/hidl/manager/1.2/IHwClientCallback.h
+out/soong/.intermediates/system/libhidl/transport/manager/1.2/android.hidl.manager@1.2_genc++_headers/gen/android/hidl/manager/1.2/IHwServiceManager.h
+out/soong/.intermediates/system/libhidl/transport/manager/1.2/android.hidl.manager@1.2_genc++_headers/gen/android/hidl/manager/1.2/IServiceManager.h

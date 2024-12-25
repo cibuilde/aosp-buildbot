@@ -1,0 +1,96 @@
+set -e
+
+df -h
+
+mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
+mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
+ln -sf $GITHUB_WORKSPACE/ninja .
+
+mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86 prebuilts/clang/host/linux-x86
+
+clone_depth_platform external/rust/crates/heck
+clone_depth_platform external/rust/crates/proc-macro-error
+clone_depth_platform external/rust/crates/proc-macro-error-attr
+clone_depth_platform external/rust/crates/proc-macro2
+clone_depth_platform external/rust/crates/quote
+clone_depth_platform external/rust/crates/structopt
+clone_depth_platform external/rust/crates/structopt-derive
+clone_depth_platform external/rust/crates/syn
+clone_depth_platform external/rust/crates/unicode-segmentation
+clone_depth_platform external/rust/crates/unicode-xid
+clone_sparse prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8 sysroot lib/gcc/x86_64-linux/4.8.3 x86_64-linux/lib64 x86_64-linux/lib32
+clone_sparse prebuilts/rust bootstrap linux-x86/1.51.0
+
+rsync -a -r $GITHUB_WORKSPACE/artifacts/external/rust/crates/heck/libheck^linux_glibc_x86_64_rlib_rlib-std/ .
+rsync -a -r $GITHUB_WORKSPACE/artifacts/external/rust/crates/proc-macro-error/libproc_macro_error^linux_glibc_x86_64_rlib_rlib-std/ .
+rsync -a -r $GITHUB_WORKSPACE/artifacts/external/rust/crates/proc-macro-error-attr/libproc_macro_error_attr^linux_glibc_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/artifacts/external/rust/crates/proc-macro2/libproc_macro2^linux_glibc_x86_64_rlib_rlib-std/ .
+rsync -a -r $GITHUB_WORKSPACE/artifacts/external/rust/crates/quote/libquote^linux_glibc_x86_64_rlib_rlib-std/ .
+rsync -a -r $GITHUB_WORKSPACE/artifacts/external/rust/crates/syn/libsyn^linux_glibc_x86_64_rlib_rlib-std/ .
+rsync -a -r $GITHUB_WORKSPACE/artifacts/external/rust/crates/unicode-segmentation/libunicode_segmentation^linux_glibc_x86_64_rlib_rlib-std/ .
+rsync -a -r $GITHUB_WORKSPACE/artifacts/external/rust/crates/unicode-xid/libunicode_xid^linux_glibc_x86_64_rlib_rlib-std/ .
+
+echo "building libstructopt_derive^linux_glibc_x86_64"
+ninja -f $GITHUB_WORKSPACE/steps/build_06.ninja libstructopt_derive,linux_glibc_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/rust/crates/structopt-derive/libstructopt_derive^linux_glibc_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/external/rust/crates/structopt-derive/libstructopt_derive^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/rust/crates/structopt-derive/libstructopt_derive^linux_glibc_x86_64
+
+rm -rf out
+
+cd $GITHUB_WORKSPACE/
+tar -cf external_rust_crates_structopt-derive.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/artifacts/external/rust/crates/structopt-derive/ .
+gh release --repo cibuilde/aosp-buildbot upload android12-gsi_06 external_rust_crates_structopt-derive.tar.zst --clobber
+
+du -ah -d1| sort -h
+
+if [ ! -f "$GITHUB_WORKSPACE/cache/external_rust_crates_heck.tar.zst" ]; then
+  echo "Compressing external/rust/crates/heck -> external_rust_crates_heck.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/external_rust_crates_heck.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/rust/crates/heck/ .
+fi
+if [ ! -f "$GITHUB_WORKSPACE/cache/external_rust_crates_proc-macro-error.tar.zst" ]; then
+  echo "Compressing external/rust/crates/proc-macro-error -> external_rust_crates_proc-macro-error.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/external_rust_crates_proc-macro-error.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/rust/crates/proc-macro-error/ .
+fi
+if [ ! -f "$GITHUB_WORKSPACE/cache/external_rust_crates_proc-macro-error-attr.tar.zst" ]; then
+  echo "Compressing external/rust/crates/proc-macro-error-attr -> external_rust_crates_proc-macro-error-attr.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/external_rust_crates_proc-macro-error-attr.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/rust/crates/proc-macro-error-attr/ .
+fi
+if [ ! -f "$GITHUB_WORKSPACE/cache/external_rust_crates_proc-macro2.tar.zst" ]; then
+  echo "Compressing external/rust/crates/proc-macro2 -> external_rust_crates_proc-macro2.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/external_rust_crates_proc-macro2.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/rust/crates/proc-macro2/ .
+fi
+if [ ! -f "$GITHUB_WORKSPACE/cache/external_rust_crates_quote.tar.zst" ]; then
+  echo "Compressing external/rust/crates/quote -> external_rust_crates_quote.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/external_rust_crates_quote.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/rust/crates/quote/ .
+fi
+if [ ! -f "$GITHUB_WORKSPACE/cache/external_rust_crates_structopt.tar.zst" ]; then
+  echo "Compressing external/rust/crates/structopt -> external_rust_crates_structopt.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/external_rust_crates_structopt.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/rust/crates/structopt/ .
+fi
+if [ ! -f "$GITHUB_WORKSPACE/cache/external_rust_crates_structopt-derive.tar.zst" ]; then
+  echo "Compressing external/rust/crates/structopt-derive -> external_rust_crates_structopt-derive.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/external_rust_crates_structopt-derive.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/rust/crates/structopt-derive/ .
+fi
+if [ ! -f "$GITHUB_WORKSPACE/cache/external_rust_crates_syn.tar.zst" ]; then
+  echo "Compressing external/rust/crates/syn -> external_rust_crates_syn.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/external_rust_crates_syn.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/rust/crates/syn/ .
+fi
+if [ ! -f "$GITHUB_WORKSPACE/cache/external_rust_crates_unicode-segmentation.tar.zst" ]; then
+  echo "Compressing external/rust/crates/unicode-segmentation -> external_rust_crates_unicode-segmentation.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/external_rust_crates_unicode-segmentation.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/rust/crates/unicode-segmentation/ .
+fi
+if [ ! -f "$GITHUB_WORKSPACE/cache/external_rust_crates_unicode-xid.tar.zst" ]; then
+  echo "Compressing external/rust/crates/unicode-xid -> external_rust_crates_unicode-xid.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/external_rust_crates_unicode-xid.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/rust/crates/unicode-xid/ .
+fi
+if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_gcc_linux-x86_host_x86_64-linux-glibc2.17-4.8.tar.zst" ]; then
+  echo "Compressing prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8 -> prebuilts_gcc_linux-x86_host_x86_64-linux-glibc2.17-4.8.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/prebuilts_gcc_linux-x86_host_x86_64-linux-glibc2.17-4.8.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8/ .
+fi
+if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_rust.tar.zst" ]; then
+  echo "Compressing prebuilts/rust -> prebuilts_rust.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/prebuilts_rust.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/prebuilts/rust/ .
+fi
+du -ah -d1 $GITHUB_WORKSPACE/cache| sort -h
+
+rm -rf aosp

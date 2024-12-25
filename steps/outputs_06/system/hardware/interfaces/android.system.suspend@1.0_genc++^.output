@@ -1,0 +1,3 @@
+out/soong/.intermediates/system/hardware/interfaces/suspend/1.0/android.system.suspend@1.0_genc++/gen/android/system/suspend/1.0/SystemSuspendAll.cpp
+out/soong/.intermediates/system/hardware/interfaces/suspend/1.0/android.system.suspend@1.0_genc++/gen/android/system/suspend/1.0/WakeLockAll.cpp
+out/soong/.intermediates/system/hardware/interfaces/suspend/1.0/android.system.suspend@1.0_genc++/gen/android/system/suspend/1.0/types.cpp

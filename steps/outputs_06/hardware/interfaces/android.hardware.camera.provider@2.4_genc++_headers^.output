@@ -1,0 +1,10 @@
+out/soong/.intermediates/hardware/interfaces/camera/provider/2.4/android.hardware.camera.provider@2.4_genc++_headers/gen/android/hardware/camera/provider/2.4/BnHwCameraProvider.h
+out/soong/.intermediates/hardware/interfaces/camera/provider/2.4/android.hardware.camera.provider@2.4_genc++_headers/gen/android/hardware/camera/provider/2.4/BnHwCameraProviderCallback.h
+out/soong/.intermediates/hardware/interfaces/camera/provider/2.4/android.hardware.camera.provider@2.4_genc++_headers/gen/android/hardware/camera/provider/2.4/BpHwCameraProvider.h
+out/soong/.intermediates/hardware/interfaces/camera/provider/2.4/android.hardware.camera.provider@2.4_genc++_headers/gen/android/hardware/camera/provider/2.4/BpHwCameraProviderCallback.h
+out/soong/.intermediates/hardware/interfaces/camera/provider/2.4/android.hardware.camera.provider@2.4_genc++_headers/gen/android/hardware/camera/provider/2.4/BsCameraProvider.h
+out/soong/.intermediates/hardware/interfaces/camera/provider/2.4/android.hardware.camera.provider@2.4_genc++_headers/gen/android/hardware/camera/provider/2.4/BsCameraProviderCallback.h
+out/soong/.intermediates/hardware/interfaces/camera/provider/2.4/android.hardware.camera.provider@2.4_genc++_headers/gen/android/hardware/camera/provider/2.4/ICameraProvider.h
+out/soong/.intermediates/hardware/interfaces/camera/provider/2.4/android.hardware.camera.provider@2.4_genc++_headers/gen/android/hardware/camera/provider/2.4/ICameraProviderCallback.h
+out/soong/.intermediates/hardware/interfaces/camera/provider/2.4/android.hardware.camera.provider@2.4_genc++_headers/gen/android/hardware/camera/provider/2.4/IHwCameraProvider.h
+out/soong/.intermediates/hardware/interfaces/camera/provider/2.4/android.hardware.camera.provider@2.4_genc++_headers/gen/android/hardware/camera/provider/2.4/IHwCameraProviderCallback.h

@@ -1,0 +1,5 @@
+out/soong/.intermediates/frameworks/hardware/interfaces/cameraservice/device/2.1/android.frameworks.cameraservice.device@2.1_genc++_headers/gen/android/frameworks/cameraservice/device/2.1/BnHwCameraDeviceUser.h
+out/soong/.intermediates/frameworks/hardware/interfaces/cameraservice/device/2.1/android.frameworks.cameraservice.device@2.1_genc++_headers/gen/android/frameworks/cameraservice/device/2.1/BpHwCameraDeviceUser.h
+out/soong/.intermediates/frameworks/hardware/interfaces/cameraservice/device/2.1/android.frameworks.cameraservice.device@2.1_genc++_headers/gen/android/frameworks/cameraservice/device/2.1/BsCameraDeviceUser.h
+out/soong/.intermediates/frameworks/hardware/interfaces/cameraservice/device/2.1/android.frameworks.cameraservice.device@2.1_genc++_headers/gen/android/frameworks/cameraservice/device/2.1/ICameraDeviceUser.h
+out/soong/.intermediates/frameworks/hardware/interfaces/cameraservice/device/2.1/android.frameworks.cameraservice.device@2.1_genc++_headers/gen/android/frameworks/cameraservice/device/2.1/IHwCameraDeviceUser.h

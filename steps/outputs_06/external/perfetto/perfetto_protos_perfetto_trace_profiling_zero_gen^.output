@@ -1,0 +1,5 @@
+out/soong/.intermediates/external/perfetto/perfetto_protos_perfetto_trace_profiling_zero_gen/gen/external/perfetto/protos/perfetto/trace/profiling/deobfuscation.pbzero.cc
+out/soong/.intermediates/external/perfetto/perfetto_protos_perfetto_trace_profiling_zero_gen/gen/external/perfetto/protos/perfetto/trace/profiling/heap_graph.pbzero.cc
+out/soong/.intermediates/external/perfetto/perfetto_protos_perfetto_trace_profiling_zero_gen/gen/external/perfetto/protos/perfetto/trace/profiling/profile_common.pbzero.cc
+out/soong/.intermediates/external/perfetto/perfetto_protos_perfetto_trace_profiling_zero_gen/gen/external/perfetto/protos/perfetto/trace/profiling/profile_packet.pbzero.cc
+out/soong/.intermediates/external/perfetto/perfetto_protos_perfetto_trace_profiling_zero_gen/gen/external/perfetto/protos/perfetto/trace/profiling/smaps.pbzero.cc

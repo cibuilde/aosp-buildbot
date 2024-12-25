@@ -1,0 +1,7 @@
+out/soong/.intermediates/hardware/interfaces/camera/provider/2.5/android.hardware.camera.provider@2.5_genc++_headers/gen/android/hardware/camera/provider/2.5/BnHwCameraProvider.h
+out/soong/.intermediates/hardware/interfaces/camera/provider/2.5/android.hardware.camera.provider@2.5_genc++_headers/gen/android/hardware/camera/provider/2.5/BpHwCameraProvider.h
+out/soong/.intermediates/hardware/interfaces/camera/provider/2.5/android.hardware.camera.provider@2.5_genc++_headers/gen/android/hardware/camera/provider/2.5/BsCameraProvider.h
+out/soong/.intermediates/hardware/interfaces/camera/provider/2.5/android.hardware.camera.provider@2.5_genc++_headers/gen/android/hardware/camera/provider/2.5/ICameraProvider.h
+out/soong/.intermediates/hardware/interfaces/camera/provider/2.5/android.hardware.camera.provider@2.5_genc++_headers/gen/android/hardware/camera/provider/2.5/IHwCameraProvider.h
+out/soong/.intermediates/hardware/interfaces/camera/provider/2.5/android.hardware.camera.provider@2.5_genc++_headers/gen/android/hardware/camera/provider/2.5/hwtypes.h
+out/soong/.intermediates/hardware/interfaces/camera/provider/2.5/android.hardware.camera.provider@2.5_genc++_headers/gen/android/hardware/camera/provider/2.5/types.h

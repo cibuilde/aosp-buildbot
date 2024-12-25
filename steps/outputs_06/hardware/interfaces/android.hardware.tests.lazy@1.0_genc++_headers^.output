@@ -1,0 +1,5 @@
+out/soong/.intermediates/hardware/interfaces/tests/lazy/1.0/android.hardware.tests.lazy@1.0_genc++_headers/gen/android/hardware/tests/lazy/1.0/BnHwLazy.h
+out/soong/.intermediates/hardware/interfaces/tests/lazy/1.0/android.hardware.tests.lazy@1.0_genc++_headers/gen/android/hardware/tests/lazy/1.0/BpHwLazy.h
+out/soong/.intermediates/hardware/interfaces/tests/lazy/1.0/android.hardware.tests.lazy@1.0_genc++_headers/gen/android/hardware/tests/lazy/1.0/BsLazy.h
+out/soong/.intermediates/hardware/interfaces/tests/lazy/1.0/android.hardware.tests.lazy@1.0_genc++_headers/gen/android/hardware/tests/lazy/1.0/IHwLazy.h
+out/soong/.intermediates/hardware/interfaces/tests/lazy/1.0/android.hardware.tests.lazy@1.0_genc++_headers/gen/android/hardware/tests/lazy/1.0/ILazy.h

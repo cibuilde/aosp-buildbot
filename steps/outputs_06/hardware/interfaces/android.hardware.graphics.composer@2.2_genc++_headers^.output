@@ -1,0 +1,10 @@
+out/soong/.intermediates/hardware/interfaces/graphics/composer/2.2/android.hardware.graphics.composer@2.2_genc++_headers/gen/android/hardware/graphics/composer/2.2/BnHwComposer.h
+out/soong/.intermediates/hardware/interfaces/graphics/composer/2.2/android.hardware.graphics.composer@2.2_genc++_headers/gen/android/hardware/graphics/composer/2.2/BnHwComposerClient.h
+out/soong/.intermediates/hardware/interfaces/graphics/composer/2.2/android.hardware.graphics.composer@2.2_genc++_headers/gen/android/hardware/graphics/composer/2.2/BpHwComposer.h
+out/soong/.intermediates/hardware/interfaces/graphics/composer/2.2/android.hardware.graphics.composer@2.2_genc++_headers/gen/android/hardware/graphics/composer/2.2/BpHwComposerClient.h
+out/soong/.intermediates/hardware/interfaces/graphics/composer/2.2/android.hardware.graphics.composer@2.2_genc++_headers/gen/android/hardware/graphics/composer/2.2/BsComposer.h
+out/soong/.intermediates/hardware/interfaces/graphics/composer/2.2/android.hardware.graphics.composer@2.2_genc++_headers/gen/android/hardware/graphics/composer/2.2/BsComposerClient.h
+out/soong/.intermediates/hardware/interfaces/graphics/composer/2.2/android.hardware.graphics.composer@2.2_genc++_headers/gen/android/hardware/graphics/composer/2.2/IComposer.h
+out/soong/.intermediates/hardware/interfaces/graphics/composer/2.2/android.hardware.graphics.composer@2.2_genc++_headers/gen/android/hardware/graphics/composer/2.2/IComposerClient.h
+out/soong/.intermediates/hardware/interfaces/graphics/composer/2.2/android.hardware.graphics.composer@2.2_genc++_headers/gen/android/hardware/graphics/composer/2.2/IHwComposer.h
+out/soong/.intermediates/hardware/interfaces/graphics/composer/2.2/android.hardware.graphics.composer@2.2_genc++_headers/gen/android/hardware/graphics/composer/2.2/IHwComposerClient.h

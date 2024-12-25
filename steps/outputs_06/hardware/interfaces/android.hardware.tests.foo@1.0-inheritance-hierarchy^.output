@@ -1,0 +1,5 @@
+out/soong/.intermediates/hardware/interfaces/tests/foo/1.0/android.hardware.tests.foo@1.0-inheritance-hierarchy/gen/IFooCallback_inheritance_hierarchy.json
+out/soong/.intermediates/hardware/interfaces/tests/foo/1.0/android.hardware.tests.foo@1.0-inheritance-hierarchy/gen/IFoo_inheritance_hierarchy.json
+out/soong/.intermediates/hardware/interfaces/tests/foo/1.0/android.hardware.tests.foo@1.0-inheritance-hierarchy/gen/IMyTypes_inheritance_hierarchy.json
+out/soong/.intermediates/hardware/interfaces/tests/foo/1.0/android.hardware.tests.foo@1.0-inheritance-hierarchy/gen/ISimple_inheritance_hierarchy.json
+out/soong/.intermediates/hardware/interfaces/tests/foo/1.0/android.hardware.tests.foo@1.0-inheritance-hierarchy/gen/ITheirTypes_inheritance_hierarchy.json

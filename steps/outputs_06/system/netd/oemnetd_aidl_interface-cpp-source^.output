@@ -1,0 +1,8 @@
+out/soong/.intermediates/system/netd/server/oemnetd_aidl_interface-cpp-source/gen/com/android/internal/net/IOemNetd.cpp
+out/soong/.intermediates/system/netd/server/oemnetd_aidl_interface-cpp-source/gen/com/android/internal/net/IOemNetdUnsolicitedEventListener.cpp
+out/soong/.intermediates/system/netd/server/oemnetd_aidl_interface-cpp-source/gen/include/com/android/internal/net/BnOemNetd.h
+out/soong/.intermediates/system/netd/server/oemnetd_aidl_interface-cpp-source/gen/include/com/android/internal/net/BnOemNetdUnsolicitedEventListener.h
+out/soong/.intermediates/system/netd/server/oemnetd_aidl_interface-cpp-source/gen/include/com/android/internal/net/BpOemNetd.h
+out/soong/.intermediates/system/netd/server/oemnetd_aidl_interface-cpp-source/gen/include/com/android/internal/net/BpOemNetdUnsolicitedEventListener.h
+out/soong/.intermediates/system/netd/server/oemnetd_aidl_interface-cpp-source/gen/include/com/android/internal/net/IOemNetd.h
+out/soong/.intermediates/system/netd/server/oemnetd_aidl_interface-cpp-source/gen/include/com/android/internal/net/IOemNetdUnsolicitedEventListener.h

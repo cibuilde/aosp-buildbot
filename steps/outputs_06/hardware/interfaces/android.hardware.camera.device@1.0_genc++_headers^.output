@@ -1,0 +1,17 @@
+out/soong/.intermediates/hardware/interfaces/camera/device/1.0/android.hardware.camera.device@1.0_genc++_headers/gen/android/hardware/camera/device/1.0/BnHwCameraDevice.h
+out/soong/.intermediates/hardware/interfaces/camera/device/1.0/android.hardware.camera.device@1.0_genc++_headers/gen/android/hardware/camera/device/1.0/BnHwCameraDeviceCallback.h
+out/soong/.intermediates/hardware/interfaces/camera/device/1.0/android.hardware.camera.device@1.0_genc++_headers/gen/android/hardware/camera/device/1.0/BnHwCameraDevicePreviewCallback.h
+out/soong/.intermediates/hardware/interfaces/camera/device/1.0/android.hardware.camera.device@1.0_genc++_headers/gen/android/hardware/camera/device/1.0/BpHwCameraDevice.h
+out/soong/.intermediates/hardware/interfaces/camera/device/1.0/android.hardware.camera.device@1.0_genc++_headers/gen/android/hardware/camera/device/1.0/BpHwCameraDeviceCallback.h
+out/soong/.intermediates/hardware/interfaces/camera/device/1.0/android.hardware.camera.device@1.0_genc++_headers/gen/android/hardware/camera/device/1.0/BpHwCameraDevicePreviewCallback.h
+out/soong/.intermediates/hardware/interfaces/camera/device/1.0/android.hardware.camera.device@1.0_genc++_headers/gen/android/hardware/camera/device/1.0/BsCameraDevice.h
+out/soong/.intermediates/hardware/interfaces/camera/device/1.0/android.hardware.camera.device@1.0_genc++_headers/gen/android/hardware/camera/device/1.0/BsCameraDeviceCallback.h
+out/soong/.intermediates/hardware/interfaces/camera/device/1.0/android.hardware.camera.device@1.0_genc++_headers/gen/android/hardware/camera/device/1.0/BsCameraDevicePreviewCallback.h
+out/soong/.intermediates/hardware/interfaces/camera/device/1.0/android.hardware.camera.device@1.0_genc++_headers/gen/android/hardware/camera/device/1.0/ICameraDevice.h
+out/soong/.intermediates/hardware/interfaces/camera/device/1.0/android.hardware.camera.device@1.0_genc++_headers/gen/android/hardware/camera/device/1.0/ICameraDeviceCallback.h
+out/soong/.intermediates/hardware/interfaces/camera/device/1.0/android.hardware.camera.device@1.0_genc++_headers/gen/android/hardware/camera/device/1.0/ICameraDevicePreviewCallback.h
+out/soong/.intermediates/hardware/interfaces/camera/device/1.0/android.hardware.camera.device@1.0_genc++_headers/gen/android/hardware/camera/device/1.0/IHwCameraDevice.h
+out/soong/.intermediates/hardware/interfaces/camera/device/1.0/android.hardware.camera.device@1.0_genc++_headers/gen/android/hardware/camera/device/1.0/IHwCameraDeviceCallback.h
+out/soong/.intermediates/hardware/interfaces/camera/device/1.0/android.hardware.camera.device@1.0_genc++_headers/gen/android/hardware/camera/device/1.0/IHwCameraDevicePreviewCallback.h
+out/soong/.intermediates/hardware/interfaces/camera/device/1.0/android.hardware.camera.device@1.0_genc++_headers/gen/android/hardware/camera/device/1.0/hwtypes.h
+out/soong/.intermediates/hardware/interfaces/camera/device/1.0/android.hardware.camera.device@1.0_genc++_headers/gen/android/hardware/camera/device/1.0/types.h

@@ -1,0 +1,5 @@
+out/soong/.intermediates/hardware/interfaces/graphics/mapper/2.1/android.hardware.graphics.mapper@2.1_genc++_headers/gen/android/hardware/graphics/mapper/2.1/BnHwMapper.h
+out/soong/.intermediates/hardware/interfaces/graphics/mapper/2.1/android.hardware.graphics.mapper@2.1_genc++_headers/gen/android/hardware/graphics/mapper/2.1/BpHwMapper.h
+out/soong/.intermediates/hardware/interfaces/graphics/mapper/2.1/android.hardware.graphics.mapper@2.1_genc++_headers/gen/android/hardware/graphics/mapper/2.1/BsMapper.h
+out/soong/.intermediates/hardware/interfaces/graphics/mapper/2.1/android.hardware.graphics.mapper@2.1_genc++_headers/gen/android/hardware/graphics/mapper/2.1/IHwMapper.h
+out/soong/.intermediates/hardware/interfaces/graphics/mapper/2.1/android.hardware.graphics.mapper@2.1_genc++_headers/gen/android/hardware/graphics/mapper/2.1/IMapper.h

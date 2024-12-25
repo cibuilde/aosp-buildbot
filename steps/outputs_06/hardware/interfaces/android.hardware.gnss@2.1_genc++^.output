@@ -1,0 +1,8 @@
+out/soong/.intermediates/hardware/interfaces/gnss/2.1/android.hardware.gnss@2.1_genc++/gen/android/hardware/gnss/2.1/GnssAll.cpp
+out/soong/.intermediates/hardware/interfaces/gnss/2.1/android.hardware.gnss@2.1_genc++/gen/android/hardware/gnss/2.1/GnssAntennaInfoAll.cpp
+out/soong/.intermediates/hardware/interfaces/gnss/2.1/android.hardware.gnss@2.1_genc++/gen/android/hardware/gnss/2.1/GnssAntennaInfoCallbackAll.cpp
+out/soong/.intermediates/hardware/interfaces/gnss/2.1/android.hardware.gnss@2.1_genc++/gen/android/hardware/gnss/2.1/GnssCallbackAll.cpp
+out/soong/.intermediates/hardware/interfaces/gnss/2.1/android.hardware.gnss@2.1_genc++/gen/android/hardware/gnss/2.1/GnssConfigurationAll.cpp
+out/soong/.intermediates/hardware/interfaces/gnss/2.1/android.hardware.gnss@2.1_genc++/gen/android/hardware/gnss/2.1/GnssMeasurementAll.cpp
+out/soong/.intermediates/hardware/interfaces/gnss/2.1/android.hardware.gnss@2.1_genc++/gen/android/hardware/gnss/2.1/GnssMeasurementCallbackAll.cpp
+out/soong/.intermediates/hardware/interfaces/gnss/2.1/android.hardware.gnss@2.1_genc++/gen/android/hardware/gnss/2.1/types.cpp

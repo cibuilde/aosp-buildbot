@@ -1,0 +1,17 @@
+out/soong/.intermediates/hardware/interfaces/radio/1.6/android.hardware.radio@1.6_genc++_headers/gen/android/hardware/radio/1.6/BnHwRadio.h
+out/soong/.intermediates/hardware/interfaces/radio/1.6/android.hardware.radio@1.6_genc++_headers/gen/android/hardware/radio/1.6/BnHwRadioIndication.h
+out/soong/.intermediates/hardware/interfaces/radio/1.6/android.hardware.radio@1.6_genc++_headers/gen/android/hardware/radio/1.6/BnHwRadioResponse.h
+out/soong/.intermediates/hardware/interfaces/radio/1.6/android.hardware.radio@1.6_genc++_headers/gen/android/hardware/radio/1.6/BpHwRadio.h
+out/soong/.intermediates/hardware/interfaces/radio/1.6/android.hardware.radio@1.6_genc++_headers/gen/android/hardware/radio/1.6/BpHwRadioIndication.h
+out/soong/.intermediates/hardware/interfaces/radio/1.6/android.hardware.radio@1.6_genc++_headers/gen/android/hardware/radio/1.6/BpHwRadioResponse.h
+out/soong/.intermediates/hardware/interfaces/radio/1.6/android.hardware.radio@1.6_genc++_headers/gen/android/hardware/radio/1.6/BsRadio.h
+out/soong/.intermediates/hardware/interfaces/radio/1.6/android.hardware.radio@1.6_genc++_headers/gen/android/hardware/radio/1.6/BsRadioIndication.h
+out/soong/.intermediates/hardware/interfaces/radio/1.6/android.hardware.radio@1.6_genc++_headers/gen/android/hardware/radio/1.6/BsRadioResponse.h
+out/soong/.intermediates/hardware/interfaces/radio/1.6/android.hardware.radio@1.6_genc++_headers/gen/android/hardware/radio/1.6/IHwRadio.h
+out/soong/.intermediates/hardware/interfaces/radio/1.6/android.hardware.radio@1.6_genc++_headers/gen/android/hardware/radio/1.6/IHwRadioIndication.h
+out/soong/.intermediates/hardware/interfaces/radio/1.6/android.hardware.radio@1.6_genc++_headers/gen/android/hardware/radio/1.6/IHwRadioResponse.h
+out/soong/.intermediates/hardware/interfaces/radio/1.6/android.hardware.radio@1.6_genc++_headers/gen/android/hardware/radio/1.6/IRadio.h
+out/soong/.intermediates/hardware/interfaces/radio/1.6/android.hardware.radio@1.6_genc++_headers/gen/android/hardware/radio/1.6/IRadioIndication.h
+out/soong/.intermediates/hardware/interfaces/radio/1.6/android.hardware.radio@1.6_genc++_headers/gen/android/hardware/radio/1.6/IRadioResponse.h
+out/soong/.intermediates/hardware/interfaces/radio/1.6/android.hardware.radio@1.6_genc++_headers/gen/android/hardware/radio/1.6/hwtypes.h
+out/soong/.intermediates/hardware/interfaces/radio/1.6/android.hardware.radio@1.6_genc++_headers/gen/android/hardware/radio/1.6/types.h

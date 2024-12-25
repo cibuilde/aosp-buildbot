@@ -1,0 +1,4 @@
+out/soong/.intermediates/system/security/keystore2/aidl/android.security.authorization-rust-source/gen/android/security/authorization/AuthorizationTokens.rs
+out/soong/.intermediates/system/security/keystore2/aidl/android.security.authorization-rust-source/gen/android/security/authorization/IKeystoreAuthorization.rs
+out/soong/.intermediates/system/security/keystore2/aidl/android.security.authorization-rust-source/gen/android/security/authorization/LockScreenEvent.rs
+out/soong/.intermediates/system/security/keystore2/aidl/android.security.authorization-rust-source/gen/android/security/authorization/ResponseCode.rs

@@ -1,0 +1,4 @@
+out/soong/.intermediates/system/security/keystore2/aidl/android.security.compat-ndk_platform-source/gen/android/security/compat/IKeystoreCompatService.cpp
+out/soong/.intermediates/system/security/keystore2/aidl/android.security.compat-ndk_platform-source/gen/include/aidl/android/security/compat/BnKeystoreCompatService.h
+out/soong/.intermediates/system/security/keystore2/aidl/android.security.compat-ndk_platform-source/gen/include/aidl/android/security/compat/BpKeystoreCompatService.h
+out/soong/.intermediates/system/security/keystore2/aidl/android.security.compat-ndk_platform-source/gen/include/aidl/android/security/compat/IKeystoreCompatService.h

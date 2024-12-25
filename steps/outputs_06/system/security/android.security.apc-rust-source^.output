@@ -1,0 +1,3 @@
+out/soong/.intermediates/system/security/keystore2/aidl/android.security.apc-rust-source/gen/android/security/apc/IConfirmationCallback.rs
+out/soong/.intermediates/system/security/keystore2/aidl/android.security.apc-rust-source/gen/android/security/apc/IProtectedConfirmation.rs
+out/soong/.intermediates/system/security/keystore2/aidl/android.security.apc-rust-source/gen/android/security/apc/ResponseCode.rs

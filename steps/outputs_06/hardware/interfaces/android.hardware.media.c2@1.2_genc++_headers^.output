@@ -1,0 +1,12 @@
+out/soong/.intermediates/hardware/interfaces/media/c2/1.2/android.hardware.media.c2@1.2_genc++_headers/gen/android/hardware/media/c2/1.2/BnHwComponent.h
+out/soong/.intermediates/hardware/interfaces/media/c2/1.2/android.hardware.media.c2@1.2_genc++_headers/gen/android/hardware/media/c2/1.2/BnHwComponentStore.h
+out/soong/.intermediates/hardware/interfaces/media/c2/1.2/android.hardware.media.c2@1.2_genc++_headers/gen/android/hardware/media/c2/1.2/BpHwComponent.h
+out/soong/.intermediates/hardware/interfaces/media/c2/1.2/android.hardware.media.c2@1.2_genc++_headers/gen/android/hardware/media/c2/1.2/BpHwComponentStore.h
+out/soong/.intermediates/hardware/interfaces/media/c2/1.2/android.hardware.media.c2@1.2_genc++_headers/gen/android/hardware/media/c2/1.2/BsComponent.h
+out/soong/.intermediates/hardware/interfaces/media/c2/1.2/android.hardware.media.c2@1.2_genc++_headers/gen/android/hardware/media/c2/1.2/BsComponentStore.h
+out/soong/.intermediates/hardware/interfaces/media/c2/1.2/android.hardware.media.c2@1.2_genc++_headers/gen/android/hardware/media/c2/1.2/IComponent.h
+out/soong/.intermediates/hardware/interfaces/media/c2/1.2/android.hardware.media.c2@1.2_genc++_headers/gen/android/hardware/media/c2/1.2/IComponentStore.h
+out/soong/.intermediates/hardware/interfaces/media/c2/1.2/android.hardware.media.c2@1.2_genc++_headers/gen/android/hardware/media/c2/1.2/IHwComponent.h
+out/soong/.intermediates/hardware/interfaces/media/c2/1.2/android.hardware.media.c2@1.2_genc++_headers/gen/android/hardware/media/c2/1.2/IHwComponentStore.h
+out/soong/.intermediates/hardware/interfaces/media/c2/1.2/android.hardware.media.c2@1.2_genc++_headers/gen/android/hardware/media/c2/1.2/hwtypes.h
+out/soong/.intermediates/hardware/interfaces/media/c2/1.2/android.hardware.media.c2@1.2_genc++_headers/gen/android/hardware/media/c2/1.2/types.h

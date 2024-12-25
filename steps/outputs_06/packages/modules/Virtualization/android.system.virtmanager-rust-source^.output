@@ -1,0 +1,4 @@
+out/soong/.intermediates/packages/modules/Virtualization/virtmanager/aidl/android.system.virtmanager-rust-source/gen/android/system/virtmanager/IVirtManager.rs
+out/soong/.intermediates/packages/modules/Virtualization/virtmanager/aidl/android.system.virtmanager-rust-source/gen/android/system/virtmanager/IVirtualMachine.rs
+out/soong/.intermediates/packages/modules/Virtualization/virtmanager/aidl/android.system.virtmanager-rust-source/gen/android/system/virtmanager/IVirtualMachineCallback.rs
+out/soong/.intermediates/packages/modules/Virtualization/virtmanager/aidl/android.system.virtmanager-rust-source/gen/android/system/virtmanager/VirtualMachineDebugInfo.rs

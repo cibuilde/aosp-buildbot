@@ -1,0 +1,5 @@
+out/soong/.intermediates/hardware/interfaces/input/classifier/1.0/android.hardware.input.classifier@1.0_genc++_headers/gen/android/hardware/input/classifier/1.0/BnHwInputClassifier.h
+out/soong/.intermediates/hardware/interfaces/input/classifier/1.0/android.hardware.input.classifier@1.0_genc++_headers/gen/android/hardware/input/classifier/1.0/BpHwInputClassifier.h
+out/soong/.intermediates/hardware/interfaces/input/classifier/1.0/android.hardware.input.classifier@1.0_genc++_headers/gen/android/hardware/input/classifier/1.0/BsInputClassifier.h
+out/soong/.intermediates/hardware/interfaces/input/classifier/1.0/android.hardware.input.classifier@1.0_genc++_headers/gen/android/hardware/input/classifier/1.0/IHwInputClassifier.h
+out/soong/.intermediates/hardware/interfaces/input/classifier/1.0/android.hardware.input.classifier@1.0_genc++_headers/gen/android/hardware/input/classifier/1.0/IInputClassifier.h

@@ -1,0 +1,4 @@
+out/soong/.intermediates/frameworks/av/media/libshmem/shared-file-region-aidl-cpp-source/gen/android/media/SharedFileRegion.cpp
+out/soong/.intermediates/frameworks/av/media/libshmem/shared-file-region-aidl-cpp-source/gen/include/android/media/BnSharedFileRegion.h
+out/soong/.intermediates/frameworks/av/media/libshmem/shared-file-region-aidl-cpp-source/gen/include/android/media/BpSharedFileRegion.h
+out/soong/.intermediates/frameworks/av/media/libshmem/shared-file-region-aidl-cpp-source/gen/include/android/media/SharedFileRegion.h

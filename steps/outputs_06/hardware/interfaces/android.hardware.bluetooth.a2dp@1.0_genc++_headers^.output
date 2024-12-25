@@ -1,0 +1,12 @@
+out/soong/.intermediates/hardware/interfaces/bluetooth/a2dp/1.0/android.hardware.bluetooth.a2dp@1.0_genc++_headers/gen/android/hardware/bluetooth/a2dp/1.0/BnHwBluetoothAudioHost.h
+out/soong/.intermediates/hardware/interfaces/bluetooth/a2dp/1.0/android.hardware.bluetooth.a2dp@1.0_genc++_headers/gen/android/hardware/bluetooth/a2dp/1.0/BnHwBluetoothAudioOffload.h
+out/soong/.intermediates/hardware/interfaces/bluetooth/a2dp/1.0/android.hardware.bluetooth.a2dp@1.0_genc++_headers/gen/android/hardware/bluetooth/a2dp/1.0/BpHwBluetoothAudioHost.h
+out/soong/.intermediates/hardware/interfaces/bluetooth/a2dp/1.0/android.hardware.bluetooth.a2dp@1.0_genc++_headers/gen/android/hardware/bluetooth/a2dp/1.0/BpHwBluetoothAudioOffload.h
+out/soong/.intermediates/hardware/interfaces/bluetooth/a2dp/1.0/android.hardware.bluetooth.a2dp@1.0_genc++_headers/gen/android/hardware/bluetooth/a2dp/1.0/BsBluetoothAudioHost.h
+out/soong/.intermediates/hardware/interfaces/bluetooth/a2dp/1.0/android.hardware.bluetooth.a2dp@1.0_genc++_headers/gen/android/hardware/bluetooth/a2dp/1.0/BsBluetoothAudioOffload.h
+out/soong/.intermediates/hardware/interfaces/bluetooth/a2dp/1.0/android.hardware.bluetooth.a2dp@1.0_genc++_headers/gen/android/hardware/bluetooth/a2dp/1.0/IBluetoothAudioHost.h
+out/soong/.intermediates/hardware/interfaces/bluetooth/a2dp/1.0/android.hardware.bluetooth.a2dp@1.0_genc++_headers/gen/android/hardware/bluetooth/a2dp/1.0/IBluetoothAudioOffload.h
+out/soong/.intermediates/hardware/interfaces/bluetooth/a2dp/1.0/android.hardware.bluetooth.a2dp@1.0_genc++_headers/gen/android/hardware/bluetooth/a2dp/1.0/IHwBluetoothAudioHost.h
+out/soong/.intermediates/hardware/interfaces/bluetooth/a2dp/1.0/android.hardware.bluetooth.a2dp@1.0_genc++_headers/gen/android/hardware/bluetooth/a2dp/1.0/IHwBluetoothAudioOffload.h
+out/soong/.intermediates/hardware/interfaces/bluetooth/a2dp/1.0/android.hardware.bluetooth.a2dp@1.0_genc++_headers/gen/android/hardware/bluetooth/a2dp/1.0/hwtypes.h
+out/soong/.intermediates/hardware/interfaces/bluetooth/a2dp/1.0/android.hardware.bluetooth.a2dp@1.0_genc++_headers/gen/android/hardware/bluetooth/a2dp/1.0/types.h

@@ -1,0 +1,12 @@
+out/soong/.intermediates/hardware/interfaces/sensors/2.1/android.hardware.sensors@2.1_genc++_headers/gen/android/hardware/sensors/2.1/BnHwSensors.h
+out/soong/.intermediates/hardware/interfaces/sensors/2.1/android.hardware.sensors@2.1_genc++_headers/gen/android/hardware/sensors/2.1/BnHwSensorsCallback.h
+out/soong/.intermediates/hardware/interfaces/sensors/2.1/android.hardware.sensors@2.1_genc++_headers/gen/android/hardware/sensors/2.1/BpHwSensors.h
+out/soong/.intermediates/hardware/interfaces/sensors/2.1/android.hardware.sensors@2.1_genc++_headers/gen/android/hardware/sensors/2.1/BpHwSensorsCallback.h
+out/soong/.intermediates/hardware/interfaces/sensors/2.1/android.hardware.sensors@2.1_genc++_headers/gen/android/hardware/sensors/2.1/BsSensors.h
+out/soong/.intermediates/hardware/interfaces/sensors/2.1/android.hardware.sensors@2.1_genc++_headers/gen/android/hardware/sensors/2.1/BsSensorsCallback.h
+out/soong/.intermediates/hardware/interfaces/sensors/2.1/android.hardware.sensors@2.1_genc++_headers/gen/android/hardware/sensors/2.1/IHwSensors.h
+out/soong/.intermediates/hardware/interfaces/sensors/2.1/android.hardware.sensors@2.1_genc++_headers/gen/android/hardware/sensors/2.1/IHwSensorsCallback.h
+out/soong/.intermediates/hardware/interfaces/sensors/2.1/android.hardware.sensors@2.1_genc++_headers/gen/android/hardware/sensors/2.1/ISensors.h
+out/soong/.intermediates/hardware/interfaces/sensors/2.1/android.hardware.sensors@2.1_genc++_headers/gen/android/hardware/sensors/2.1/ISensorsCallback.h
+out/soong/.intermediates/hardware/interfaces/sensors/2.1/android.hardware.sensors@2.1_genc++_headers/gen/android/hardware/sensors/2.1/hwtypes.h
+out/soong/.intermediates/hardware/interfaces/sensors/2.1/android.hardware.sensors@2.1_genc++_headers/gen/android/hardware/sensors/2.1/types.h

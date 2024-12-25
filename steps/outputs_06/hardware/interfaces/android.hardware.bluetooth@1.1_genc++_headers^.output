@@ -1,0 +1,10 @@
+out/soong/.intermediates/hardware/interfaces/bluetooth/1.1/android.hardware.bluetooth@1.1_genc++_headers/gen/android/hardware/bluetooth/1.1/BnHwBluetoothHci.h
+out/soong/.intermediates/hardware/interfaces/bluetooth/1.1/android.hardware.bluetooth@1.1_genc++_headers/gen/android/hardware/bluetooth/1.1/BnHwBluetoothHciCallbacks.h
+out/soong/.intermediates/hardware/interfaces/bluetooth/1.1/android.hardware.bluetooth@1.1_genc++_headers/gen/android/hardware/bluetooth/1.1/BpHwBluetoothHci.h
+out/soong/.intermediates/hardware/interfaces/bluetooth/1.1/android.hardware.bluetooth@1.1_genc++_headers/gen/android/hardware/bluetooth/1.1/BpHwBluetoothHciCallbacks.h
+out/soong/.intermediates/hardware/interfaces/bluetooth/1.1/android.hardware.bluetooth@1.1_genc++_headers/gen/android/hardware/bluetooth/1.1/BsBluetoothHci.h
+out/soong/.intermediates/hardware/interfaces/bluetooth/1.1/android.hardware.bluetooth@1.1_genc++_headers/gen/android/hardware/bluetooth/1.1/BsBluetoothHciCallbacks.h
+out/soong/.intermediates/hardware/interfaces/bluetooth/1.1/android.hardware.bluetooth@1.1_genc++_headers/gen/android/hardware/bluetooth/1.1/IBluetoothHci.h
+out/soong/.intermediates/hardware/interfaces/bluetooth/1.1/android.hardware.bluetooth@1.1_genc++_headers/gen/android/hardware/bluetooth/1.1/IBluetoothHciCallbacks.h
+out/soong/.intermediates/hardware/interfaces/bluetooth/1.1/android.hardware.bluetooth@1.1_genc++_headers/gen/android/hardware/bluetooth/1.1/IHwBluetoothHci.h
+out/soong/.intermediates/hardware/interfaces/bluetooth/1.1/android.hardware.bluetooth@1.1_genc++_headers/gen/android/hardware/bluetooth/1.1/IHwBluetoothHciCallbacks.h
