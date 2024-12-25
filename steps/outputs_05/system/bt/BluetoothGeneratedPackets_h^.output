@@ -1,0 +1,3 @@
+out/soong/.intermediates/system/bt/gd/BluetoothGeneratedPackets_h/gen/hci/hci_packets.h
+out/soong/.intermediates/system/bt/gd/BluetoothGeneratedPackets_h/gen/l2cap/l2cap_packets.h
+out/soong/.intermediates/system/bt/gd/BluetoothGeneratedPackets_h/gen/security/smp_packets.h

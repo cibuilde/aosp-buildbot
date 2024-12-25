@@ -1,0 +1,2 @@
+out/soong/.intermediates/bionic/libc/libc_syscalls/android_x86_x86_64_static/obj/.intermediates/bionic/libc/syscalls-x86.S/gen/syscalls-x86.o
+out/soong/.intermediates/bionic/libc/libc_syscalls/android_x86_x86_64_static/obj/bionic/libc/bionic/__set_errno.o

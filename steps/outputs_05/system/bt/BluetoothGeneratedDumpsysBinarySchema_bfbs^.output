@@ -1,0 +1,7 @@
+out/soong/.intermediates/system/bt/gd/BluetoothGeneratedDumpsysBinarySchema_bfbs/gen/activity_attribution.bfbs
+out/soong/.intermediates/system/bt/gd/BluetoothGeneratedDumpsysBinarySchema_bfbs/gen/dumpsys.bfbs
+out/soong/.intermediates/system/bt/gd/BluetoothGeneratedDumpsysBinarySchema_bfbs/gen/dumpsys_data.bfbs
+out/soong/.intermediates/system/bt/gd/BluetoothGeneratedDumpsysBinarySchema_bfbs/gen/hci_acl_manager.bfbs
+out/soong/.intermediates/system/bt/gd/BluetoothGeneratedDumpsysBinarySchema_bfbs/gen/init_flags.bfbs
+out/soong/.intermediates/system/bt/gd/BluetoothGeneratedDumpsysBinarySchema_bfbs/gen/l2cap_classic_module.bfbs
+out/soong/.intermediates/system/bt/gd/BluetoothGeneratedDumpsysBinarySchema_bfbs/gen/wakelock_manager.bfbs
