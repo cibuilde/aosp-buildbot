@@ -15,6 +15,7 @@ jobs:
     - uses: LizardByte/setup-python-action@master
       with:
         python-version: '2.7'
+    - run: pip install codecs
     - name: Install ninja
       run: sudo apt update && sudo apt install -y ninja-build
     - name: Restore Cache art.tar.zst
