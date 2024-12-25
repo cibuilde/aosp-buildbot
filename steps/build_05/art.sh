@@ -20,6 +20,7 @@ clone_depth_platform frameworks/native
 clone_depth_platform hardware/libhardware
 clone_depth_platform hardware/libhardware_legacy
 clone_depth_platform hardware/ril
+clone_depth_platform libcore
 clone_depth_platform libnativehelper
 clone_depth_platform packages/modules/adb
 clone_depth_platform prebuilts/gcc/linux-x86/x86/x86_64-linux-android-4.9
@@ -123,6 +124,10 @@ fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/hardware_ril.tar.zst" ]; then
   echo "Compressing hardware/ril -> hardware_ril.tar.zst"
   tar cfJ $GITHUB_WORKSPACE/cache/hardware_ril.tar.zst -C $GITHUB_WORKSPACE/aosp/hardware/ril/ .
+fi
+if [ ! -f "$GITHUB_WORKSPACE/cache/libcore.tar.zst" ]; then
+  echo "Compressing libcore -> libcore.tar.zst"
+  tar cfJ $GITHUB_WORKSPACE/cache/libcore.tar.zst -C $GITHUB_WORKSPACE/aosp/libcore/ .
 fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/libnativehelper.tar.zst" ]; then
   echo "Compressing libnativehelper -> libnativehelper.tar.zst"
