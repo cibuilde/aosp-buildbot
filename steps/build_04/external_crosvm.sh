@@ -121,18 +121,18 @@ rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/crosvm/xhci
 rm -rf out
 
 cd $GITHUB_WORKSPACE/
-tar cfJ external_crosvm.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/crosvm/ .
+tar -cf external_crosvm.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/artifacts/external/crosvm/ .
 gh release --repo cibuilde/aosp-buildbot upload android12-gsi_04 external_crosvm.tar.zst --clobber
 
 du -ah -d1| sort -h
 
 if [ ! -f "$GITHUB_WORKSPACE/cache/external_crosvm.tar.zst" ]; then
   echo "Compressing external/crosvm -> external_crosvm.tar.zst"
-  tar cfJ $GITHUB_WORKSPACE/cache/external_crosvm.tar.zst -C $GITHUB_WORKSPACE/aosp/external/crosvm/ .
+  tar -cf $GITHUB_WORKSPACE/cache/external_crosvm.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/crosvm/ .
 fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_python_linux-x86_2.7.5.tar.zst" ]; then
   echo "Compressing prebuilts/python/linux-x86/2.7.5 -> prebuilts_python_linux-x86_2.7.5.tar.zst"
-  tar cfJ $GITHUB_WORKSPACE/cache/prebuilts_python_linux-x86_2.7.5.tar.zst -C $GITHUB_WORKSPACE/aosp/prebuilts/python/linux-x86/2.7.5/ .
+  tar -cf $GITHUB_WORKSPACE/cache/prebuilts_python_linux-x86_2.7.5.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/prebuilts/python/linux-x86/2.7.5/ .
 fi
 du -ah -d1 $GITHUB_WORKSPACE/cache| sort -h
 

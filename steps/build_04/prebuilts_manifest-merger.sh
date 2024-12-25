@@ -21,18 +21,18 @@ rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/prebuilts/manifest-m
 rm -rf out
 
 cd $GITHUB_WORKSPACE/
-tar cfJ prebuilts_manifest-merger.tar.zst -C $GITHUB_WORKSPACE/artifacts/prebuilts/manifest-merger/ .
+tar -cf prebuilts_manifest-merger.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/artifacts/prebuilts/manifest-merger/ .
 gh release --repo cibuilde/aosp-buildbot upload android12-gsi_04 prebuilts_manifest-merger.tar.zst --clobber
 
 du -ah -d1| sort -h
 
 if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_manifest-merger.tar.zst" ]; then
   echo "Compressing prebuilts/manifest-merger -> prebuilts_manifest-merger.tar.zst"
-  tar cfJ $GITHUB_WORKSPACE/cache/prebuilts_manifest-merger.tar.zst -C $GITHUB_WORKSPACE/aosp/prebuilts/manifest-merger/ .
+  tar -cf $GITHUB_WORKSPACE/cache/prebuilts_manifest-merger.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/prebuilts/manifest-merger/ .
 fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/tools_build.tar.zst" ]; then
   echo "Compressing tools/build -> tools_build.tar.zst"
-  tar cfJ $GITHUB_WORKSPACE/cache/tools_build.tar.zst -C $GITHUB_WORKSPACE/aosp/tools/build/ .
+  tar -cf $GITHUB_WORKSPACE/cache/tools_build.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/tools/build/ .
 fi
 du -ah -d1 $GITHUB_WORKSPACE/cache| sort -h
 

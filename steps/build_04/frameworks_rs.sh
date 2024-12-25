@@ -27,18 +27,18 @@ rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/rs/rs_gen
 rm -rf out
 
 cd $GITHUB_WORKSPACE/
-tar cfJ frameworks_rs.tar.zst -C $GITHUB_WORKSPACE/artifacts/frameworks/rs/ .
+tar -cf frameworks_rs.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/artifacts/frameworks/rs/ .
 gh release --repo cibuilde/aosp-buildbot upload android12-gsi_04 frameworks_rs.tar.zst --clobber
 
 du -ah -d1| sort -h
 
 if [ ! -f "$GITHUB_WORKSPACE/cache/cts.tar.zst" ]; then
   echo "Compressing cts -> cts.tar.zst"
-  tar cfJ $GITHUB_WORKSPACE/cache/cts.tar.zst -C $GITHUB_WORKSPACE/aosp/cts/ .
+  tar -cf $GITHUB_WORKSPACE/cache/cts.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/cts/ .
 fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/frameworks_rs.tar.zst" ]; then
   echo "Compressing frameworks/rs -> frameworks_rs.tar.zst"
-  tar cfJ $GITHUB_WORKSPACE/cache/frameworks_rs.tar.zst -C $GITHUB_WORKSPACE/aosp/frameworks/rs/ .
+  tar -cf $GITHUB_WORKSPACE/cache/frameworks_rs.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/frameworks/rs/ .
 fi
 du -ah -d1 $GITHUB_WORKSPACE/cache| sort -h
 

@@ -21,18 +21,18 @@ rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/testng/test
 rm -rf out
 
 cd $GITHUB_WORKSPACE/
-tar cfJ external_testng.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/testng/ .
+tar -cf external_testng.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/artifacts/external/testng/ .
 gh release --repo cibuilde/aosp-buildbot upload android12-gsi_04 external_testng.tar.zst --clobber
 
 du -ah -d1| sort -h
 
 if [ ! -f "$GITHUB_WORKSPACE/cache/external_testng.tar.zst" ]; then
   echo "Compressing external/testng -> external_testng.tar.zst"
-  tar cfJ $GITHUB_WORKSPACE/cache/external_testng.tar.zst -C $GITHUB_WORKSPACE/aosp/external/testng/ .
+  tar -cf $GITHUB_WORKSPACE/cache/external_testng.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/testng/ .
 fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_python_linux-x86_2.7.5.tar.zst" ]; then
   echo "Compressing prebuilts/python/linux-x86/2.7.5 -> prebuilts_python_linux-x86_2.7.5.tar.zst"
-  tar cfJ $GITHUB_WORKSPACE/cache/prebuilts_python_linux-x86_2.7.5.tar.zst -C $GITHUB_WORKSPACE/aosp/prebuilts/python/linux-x86/2.7.5/ .
+  tar -cf $GITHUB_WORKSPACE/cache/prebuilts_python_linux-x86_2.7.5.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/prebuilts/python/linux-x86/2.7.5/ .
 fi
 du -ah -d1 $GITHUB_WORKSPACE/cache| sort -h
 

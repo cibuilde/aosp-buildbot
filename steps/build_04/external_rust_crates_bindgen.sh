@@ -21,18 +21,18 @@ rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/rust/crates
 rm -rf out
 
 cd $GITHUB_WORKSPACE/
-tar cfJ external_rust_crates_bindgen.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/rust/crates/bindgen/ .
+tar -cf external_rust_crates_bindgen.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/artifacts/external/rust/crates/bindgen/ .
 gh release --repo cibuilde/aosp-buildbot upload android12-gsi_04 external_rust_crates_bindgen.tar.zst --clobber
 
 du -ah -d1| sort -h
 
 if [ ! -f "$GITHUB_WORKSPACE/cache/external_rust_crates_bindgen.tar.zst" ]; then
   echo "Compressing external/rust/crates/bindgen -> external_rust_crates_bindgen.tar.zst"
-  tar cfJ $GITHUB_WORKSPACE/cache/external_rust_crates_bindgen.tar.zst -C $GITHUB_WORKSPACE/aosp/external/rust/crates/bindgen/ .
+  tar -cf $GITHUB_WORKSPACE/cache/external_rust_crates_bindgen.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/rust/crates/bindgen/ .
 fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_python_linux-x86_2.7.5.tar.zst" ]; then
   echo "Compressing prebuilts/python/linux-x86/2.7.5 -> prebuilts_python_linux-x86_2.7.5.tar.zst"
-  tar cfJ $GITHUB_WORKSPACE/cache/prebuilts_python_linux-x86_2.7.5.tar.zst -C $GITHUB_WORKSPACE/aosp/prebuilts/python/linux-x86/2.7.5/ .
+  tar -cf $GITHUB_WORKSPACE/cache/prebuilts_python_linux-x86_2.7.5.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/prebuilts/python/linux-x86/2.7.5/ .
 fi
 du -ah -d1 $GITHUB_WORKSPACE/cache| sort -h
 

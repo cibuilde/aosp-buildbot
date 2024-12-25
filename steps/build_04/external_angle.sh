@@ -186,18 +186,18 @@ rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/angle/third
 rm -rf out
 
 cd $GITHUB_WORKSPACE/
-tar cfJ external_angle.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/angle/ .
+tar -cf external_angle.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/artifacts/external/angle/ .
 gh release --repo cibuilde/aosp-buildbot upload android12-gsi_04 external_angle.tar.zst --clobber
 
 du -ah -d1| sort -h
 
 if [ ! -f "$GITHUB_WORKSPACE/cache/art.tar.zst" ]; then
   echo "Compressing art -> art.tar.zst"
-  tar cfJ $GITHUB_WORKSPACE/cache/art.tar.zst -C $GITHUB_WORKSPACE/aosp/art/ .
+  tar -cf $GITHUB_WORKSPACE/cache/art.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/art/ .
 fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/external_angle.tar.zst" ]; then
   echo "Compressing external/angle -> external_angle.tar.zst"
-  tar cfJ $GITHUB_WORKSPACE/cache/external_angle.tar.zst -C $GITHUB_WORKSPACE/aosp/external/angle/ .
+  tar -cf $GITHUB_WORKSPACE/cache/external_angle.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/angle/ .
 fi
 du -ah -d1 $GITHUB_WORKSPACE/cache| sort -h
 

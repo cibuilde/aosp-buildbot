@@ -27,22 +27,22 @@ rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/one-true-aw
 rm -rf out
 
 cd $GITHUB_WORKSPACE/
-tar cfJ external_one-true-awk.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/one-true-awk/ .
+tar -cf external_one-true-awk.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/artifacts/external/one-true-awk/ .
 gh release --repo cibuilde/aosp-buildbot upload android12-gsi_04 external_one-true-awk.tar.zst --clobber
 
 du -ah -d1| sort -h
 
 if [ ! -f "$GITHUB_WORKSPACE/cache/external_one-true-awk.tar.zst" ]; then
   echo "Compressing external/one-true-awk -> external_one-true-awk.tar.zst"
-  tar cfJ $GITHUB_WORKSPACE/cache/external_one-true-awk.tar.zst -C $GITHUB_WORKSPACE/aosp/external/one-true-awk/ .
+  tar -cf $GITHUB_WORKSPACE/cache/external_one-true-awk.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/one-true-awk/ .
 fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_build-tools.tar.zst" ]; then
   echo "Compressing prebuilts/build-tools -> prebuilts_build-tools.tar.zst"
-  tar cfJ $GITHUB_WORKSPACE/cache/prebuilts_build-tools.tar.zst -C $GITHUB_WORKSPACE/aosp/prebuilts/build-tools/ .
+  tar -cf $GITHUB_WORKSPACE/cache/prebuilts_build-tools.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/prebuilts/build-tools/ .
 fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_python_linux-x86_2.7.5.tar.zst" ]; then
   echo "Compressing prebuilts/python/linux-x86/2.7.5 -> prebuilts_python_linux-x86_2.7.5.tar.zst"
-  tar cfJ $GITHUB_WORKSPACE/cache/prebuilts_python_linux-x86_2.7.5.tar.zst -C $GITHUB_WORKSPACE/aosp/prebuilts/python/linux-x86/2.7.5/ .
+  tar -cf $GITHUB_WORKSPACE/cache/prebuilts_python_linux-x86_2.7.5.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/prebuilts/python/linux-x86/2.7.5/ .
 fi
 du -ah -d1 $GITHUB_WORKSPACE/cache| sort -h
 

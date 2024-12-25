@@ -869,22 +869,22 @@ rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/prebuilts/sdk/servic
 rm -rf out
 
 cd $GITHUB_WORKSPACE/
-tar cfJ prebuilts_sdk.tar.zst -C $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/ .
+tar -cf prebuilts_sdk.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/ .
 gh release --repo cibuilde/aosp-buildbot upload android12-gsi_04 prebuilts_sdk.tar.zst --clobber
 
 du -ah -d1| sort -h
 
 if [ ! -f "$GITHUB_WORKSPACE/cache/art.tar.zst" ]; then
   echo "Compressing art -> art.tar.zst"
-  tar cfJ $GITHUB_WORKSPACE/cache/art.tar.zst -C $GITHUB_WORKSPACE/aosp/art/ .
+  tar -cf $GITHUB_WORKSPACE/cache/art.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/art/ .
 fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/build_soong.tar.zst" ]; then
   echo "Compressing build/soong -> build_soong.tar.zst"
-  tar cfJ $GITHUB_WORKSPACE/cache/build_soong.tar.zst -C $GITHUB_WORKSPACE/aosp/build/soong/ .
+  tar -cf $GITHUB_WORKSPACE/cache/build_soong.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/build/soong/ .
 fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_sdk.tar.zst" ]; then
   echo "Compressing prebuilts/sdk -> prebuilts_sdk.tar.zst"
-  tar cfJ $GITHUB_WORKSPACE/cache/prebuilts_sdk.tar.zst -C $GITHUB_WORKSPACE/aosp/prebuilts/sdk/ .
+  tar -cf $GITHUB_WORKSPACE/cache/prebuilts_sdk.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/prebuilts/sdk/ .
 fi
 du -ah -d1 $GITHUB_WORKSPACE/cache| sort -h
 

@@ -20,14 +20,14 @@ rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/google/came
 rm -rf out
 
 cd $GITHUB_WORKSPACE/
-tar cfJ hardware_google_camera.tar.zst -C $GITHUB_WORKSPACE/artifacts/hardware/google/camera/ .
+tar -cf hardware_google_camera.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/artifacts/hardware/google/camera/ .
 gh release --repo cibuilde/aosp-buildbot upload android12-gsi_04 hardware_google_camera.tar.zst --clobber
 
 du -ah -d1| sort -h
 
 if [ ! -f "$GITHUB_WORKSPACE/cache/hardware_google_camera.tar.zst" ]; then
   echo "Compressing hardware/google/camera -> hardware_google_camera.tar.zst"
-  tar cfJ $GITHUB_WORKSPACE/cache/hardware_google_camera.tar.zst -C $GITHUB_WORKSPACE/aosp/hardware/google/camera/ .
+  tar -cf $GITHUB_WORKSPACE/cache/hardware_google_camera.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/hardware/google/camera/ .
 fi
 du -ah -d1 $GITHUB_WORKSPACE/cache| sort -h
 

@@ -20,14 +20,14 @@ rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/sepolicy/inse
 rm -rf out
 
 cd $GITHUB_WORKSPACE/
-tar cfJ system_sepolicy.tar.zst -C $GITHUB_WORKSPACE/artifacts/system/sepolicy/ .
+tar -cf system_sepolicy.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/artifacts/system/sepolicy/ .
 gh release --repo cibuilde/aosp-buildbot upload android12-gsi_04 system_sepolicy.tar.zst --clobber
 
 du -ah -d1| sort -h
 
 if [ ! -f "$GITHUB_WORKSPACE/cache/system_sepolicy.tar.zst" ]; then
   echo "Compressing system/sepolicy -> system_sepolicy.tar.zst"
-  tar cfJ $GITHUB_WORKSPACE/cache/system_sepolicy.tar.zst -C $GITHUB_WORKSPACE/aosp/system/sepolicy/ .
+  tar -cf $GITHUB_WORKSPACE/cache/system_sepolicy.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/system/sepolicy/ .
 fi
 du -ah -d1 $GITHUB_WORKSPACE/cache| sort -h
 

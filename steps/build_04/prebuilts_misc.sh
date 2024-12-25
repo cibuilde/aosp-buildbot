@@ -60,14 +60,14 @@ rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/prebuilts/misc/guava
 rm -rf out
 
 cd $GITHUB_WORKSPACE/
-tar cfJ prebuilts_misc.tar.zst -C $GITHUB_WORKSPACE/artifacts/prebuilts/misc/ .
+tar -cf prebuilts_misc.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/artifacts/prebuilts/misc/ .
 gh release --repo cibuilde/aosp-buildbot upload android12-gsi_04 prebuilts_misc.tar.zst --clobber
 
 du -ah -d1| sort -h
 
 if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_misc.tar.zst" ]; then
   echo "Compressing prebuilts/misc -> prebuilts_misc.tar.zst"
-  tar cfJ $GITHUB_WORKSPACE/cache/prebuilts_misc.tar.zst -C $GITHUB_WORKSPACE/aosp/prebuilts/misc/ .
+  tar -cf $GITHUB_WORKSPACE/cache/prebuilts_misc.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/prebuilts/misc/ .
 fi
 du -ah -d1 $GITHUB_WORKSPACE/cache| sort -h
 

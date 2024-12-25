@@ -87,14 +87,14 @@ rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/minijail/li
 rm -rf out
 
 cd $GITHUB_WORKSPACE/
-tar cfJ external_minijail.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/minijail/ .
+tar -cf external_minijail.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/artifacts/external/minijail/ .
 gh release --repo cibuilde/aosp-buildbot upload android12-gsi_04 external_minijail.tar.zst --clobber
 
 du -ah -d1| sort -h
 
 if [ ! -f "$GITHUB_WORKSPACE/cache/external_minijail.tar.zst" ]; then
   echo "Compressing external/minijail -> external_minijail.tar.zst"
-  tar cfJ $GITHUB_WORKSPACE/cache/external_minijail.tar.zst -C $GITHUB_WORKSPACE/aosp/external/minijail/ .
+  tar -cf $GITHUB_WORKSPACE/cache/external_minijail.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/minijail/ .
 fi
 du -ah -d1 $GITHUB_WORKSPACE/cache| sort -h
 

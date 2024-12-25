@@ -25,18 +25,18 @@ rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/build/blueprint/blue
 rm -rf out
 
 cd $GITHUB_WORKSPACE/
-tar cfJ build_blueprint.tar.zst -C $GITHUB_WORKSPACE/artifacts/build/blueprint/ .
+tar -cf build_blueprint.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/artifacts/build/blueprint/ .
 gh release --repo cibuilde/aosp-buildbot upload android12-gsi_04 build_blueprint.tar.zst --clobber
 
 du -ah -d1| sort -h
 
 if [ ! -f "$GITHUB_WORKSPACE/cache/build_blueprint.tar.zst" ]; then
   echo "Compressing build/blueprint -> build_blueprint.tar.zst"
-  tar cfJ $GITHUB_WORKSPACE/cache/build_blueprint.tar.zst -C $GITHUB_WORKSPACE/aosp/build/blueprint/ .
+  tar -cf $GITHUB_WORKSPACE/cache/build_blueprint.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/build/blueprint/ .
 fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_go_linux-x86.tar.zst" ]; then
   echo "Compressing prebuilts/go/linux-x86 -> prebuilts_go_linux-x86.tar.zst"
-  tar cfJ $GITHUB_WORKSPACE/cache/prebuilts_go_linux-x86.tar.zst -C $GITHUB_WORKSPACE/aosp/prebuilts/go/linux-x86/ .
+  tar -cf $GITHUB_WORKSPACE/cache/prebuilts_go_linux-x86.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/prebuilts/go/linux-x86/ .
 fi
 du -ah -d1 $GITHUB_WORKSPACE/cache| sort -h
 

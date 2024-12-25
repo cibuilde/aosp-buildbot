@@ -60,14 +60,14 @@ rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/kotlinc/kot
 rm -rf out
 
 cd $GITHUB_WORKSPACE/
-tar cfJ external_kotlinc.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/kotlinc/ .
+tar -cf external_kotlinc.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/artifacts/external/kotlinc/ .
 gh release --repo cibuilde/aosp-buildbot upload android12-gsi_04 external_kotlinc.tar.zst --clobber
 
 du -ah -d1| sort -h
 
 if [ ! -f "$GITHUB_WORKSPACE/cache/external_kotlinc.tar.zst" ]; then
   echo "Compressing external/kotlinc -> external_kotlinc.tar.zst"
-  tar cfJ $GITHUB_WORKSPACE/cache/external_kotlinc.tar.zst -C $GITHUB_WORKSPACE/aosp/external/kotlinc/ .
+  tar -cf $GITHUB_WORKSPACE/cache/external_kotlinc.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/kotlinc/ .
 fi
 du -ah -d1 $GITHUB_WORKSPACE/cache| sort -h
 

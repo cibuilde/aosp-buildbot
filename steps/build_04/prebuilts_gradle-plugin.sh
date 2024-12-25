@@ -8,7 +8,7 @@ ln -sf $GITHUB_WORKSPACE/ninja .
 
 mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86 prebuilts/clang/host/linux-x86
 
-clone_sparse_exclude prebuilts/gradle-plugin "/com/android/tools/build/manifest-merger/30.0.0-alpha14/manifest-merger-30.0.0-alpha14.jar" "/com/android/tools/common/30.0.0-alpha14/common-30.0.0-alpha14.jar" "/com/android/tools/external/com-intellij/intellij-core/30.0.0-alpha14/intellij-core-30.0.0-alpha14.jar" "/com/android/tools/external/com-intellij/kotlin-compiler/30.0.0-alpha14/kotlin-compiler-30.0.0-alpha14.jar" "/com/android/tools/external/org-jetbrains/uast/30.0.0-alpha14/uast-30.0.0-alpha14.jar" "/com/android/tools/lint/lint-api/30.0.0-alpha14/lint-api-30.0.0-alpha14.jar" "/com/android/tools/lint/lint-checks/30.0.0-alpha14/lint-checks-30.0.0-alpha14.jar" "/com/android/tools/lint/lint-gradle/30.0.0-alpha14/lint-gradle-30.0.0-alpha14.jar" "/com/android/tools/lint/lint-model/30.0.0-alpha14/lint-model-30.0.0-alpha14.jar" "/com/android/tools/lint/lint/30.0.0-alpha14/lint-30.0.0-alpha14.jar" "/com/android/tools/repository/30.0.0-alpha14/repository-30.0.0-alpha14.jar" "/com/android/tools/sdk-common/30.0.0-alpha14/sdk-common-30.0.0-alpha14.jar" "/com/android/tools/sdklib/30.0.0-alpha14/sdklib-30.0.0-alpha14.jar"
+clone_sparse prebuilts/gradle-plugin com/android/tools/build/manifest-merger/30.0.0-alpha14 com/android/tools/common/30.0.0-alpha14 com/android/tools/external/com-intellij/intellij-core/30.0.0-alpha14 com/android/tools/external/com-intellij/kotlin-compiler/30.0.0-alpha14 com/android/tools/external/org-jetbrains/uast/30.0.0-alpha14 com/android/tools/lint/lint/30.0.0-alpha14 com/android/tools/lint/lint-api/30.0.0-alpha14 com/android/tools/lint/lint-checks/30.0.0-alpha14 com/android/tools/lint/lint-gradle/30.0.0-alpha14 com/android/tools/lint/lint-model/30.0.0-alpha14 com/android/tools/repository/30.0.0-alpha14 com/android/tools/sdk-common/30.0.0-alpha14 com/android/tools/sdklib/30.0.0-alpha14
 clone_depth_platform tools/build
 
 rsync -a -r $GITHUB_WORKSPACE/artifacts/build/soong/cmd/merge_zips/merge_zips^linux_glibc_x86_64/ .
@@ -21,18 +21,18 @@ rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/prebuilts/gradle-plu
 rm -rf out
 
 cd $GITHUB_WORKSPACE/
-tar cfJ prebuilts_gradle-plugin.tar.zst -C $GITHUB_WORKSPACE/artifacts/prebuilts/gradle-plugin/ .
+tar -cf prebuilts_gradle-plugin.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/artifacts/prebuilts/gradle-plugin/ .
 gh release --repo cibuilde/aosp-buildbot upload android12-gsi_04 prebuilts_gradle-plugin.tar.zst --clobber
 
 du -ah -d1| sort -h
 
 if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_gradle-plugin.tar.zst" ]; then
   echo "Compressing prebuilts/gradle-plugin -> prebuilts_gradle-plugin.tar.zst"
-  tar cfJ $GITHUB_WORKSPACE/cache/prebuilts_gradle-plugin.tar.zst -C $GITHUB_WORKSPACE/aosp/prebuilts/gradle-plugin/ .
+  tar -cf $GITHUB_WORKSPACE/cache/prebuilts_gradle-plugin.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/prebuilts/gradle-plugin/ .
 fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/tools_build.tar.zst" ]; then
   echo "Compressing tools/build -> tools_build.tar.zst"
-  tar cfJ $GITHUB_WORKSPACE/cache/tools_build.tar.zst -C $GITHUB_WORKSPACE/aosp/tools/build/ .
+  tar -cf $GITHUB_WORKSPACE/cache/tools_build.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/tools/build/ .
 fi
 du -ah -d1 $GITHUB_WORKSPACE/cache| sort -h
 

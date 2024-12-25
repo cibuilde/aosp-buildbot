@@ -37,22 +37,22 @@ rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/swiftshader
 rm -rf out
 
 cd $GITHUB_WORKSPACE/
-tar cfJ external_swiftshader.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/swiftshader/ .
+tar -cf external_swiftshader.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/artifacts/external/swiftshader/ .
 gh release --repo cibuilde/aosp-buildbot upload android12-gsi_04 external_swiftshader.tar.zst --clobber
 
 du -ah -d1| sort -h
 
 if [ ! -f "$GITHUB_WORKSPACE/cache/art.tar.zst" ]; then
   echo "Compressing art -> art.tar.zst"
-  tar cfJ $GITHUB_WORKSPACE/cache/art.tar.zst -C $GITHUB_WORKSPACE/aosp/art/ .
+  tar -cf $GITHUB_WORKSPACE/cache/art.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/art/ .
 fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/external_swiftshader.tar.zst" ]; then
   echo "Compressing external/swiftshader -> external_swiftshader.tar.zst"
-  tar cfJ $GITHUB_WORKSPACE/cache/external_swiftshader.tar.zst -C $GITHUB_WORKSPACE/aosp/external/swiftshader/ .
+  tar -cf $GITHUB_WORKSPACE/cache/external_swiftshader.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/swiftshader/ .
 fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_python_linux-x86_2.7.5.tar.zst" ]; then
   echo "Compressing prebuilts/python/linux-x86/2.7.5 -> prebuilts_python_linux-x86_2.7.5.tar.zst"
-  tar cfJ $GITHUB_WORKSPACE/cache/prebuilts_python_linux-x86_2.7.5.tar.zst -C $GITHUB_WORKSPACE/aosp/prebuilts/python/linux-x86/2.7.5/ .
+  tar -cf $GITHUB_WORKSPACE/cache/prebuilts_python_linux-x86_2.7.5.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/prebuilts/python/linux-x86/2.7.5/ .
 fi
 du -ah -d1 $GITHUB_WORKSPACE/cache| sort -h
 

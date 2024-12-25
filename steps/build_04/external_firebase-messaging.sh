@@ -20,14 +20,14 @@ rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/firebase-me
 rm -rf out
 
 cd $GITHUB_WORKSPACE/
-tar cfJ external_firebase-messaging.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/firebase-messaging/ .
+tar -cf external_firebase-messaging.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/artifacts/external/firebase-messaging/ .
 gh release --repo cibuilde/aosp-buildbot upload android12-gsi_04 external_firebase-messaging.tar.zst --clobber
 
 du -ah -d1| sort -h
 
 if [ ! -f "$GITHUB_WORKSPACE/cache/external_firebase-messaging.tar.zst" ]; then
   echo "Compressing external/firebase-messaging -> external_firebase-messaging.tar.zst"
-  tar cfJ $GITHUB_WORKSPACE/cache/external_firebase-messaging.tar.zst -C $GITHUB_WORKSPACE/aosp/external/firebase-messaging/ .
+  tar -cf $GITHUB_WORKSPACE/cache/external_firebase-messaging.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/firebase-messaging/ .
 fi
 du -ah -d1 $GITHUB_WORKSPACE/cache| sort -h
 

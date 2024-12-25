@@ -25,14 +25,14 @@ rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/jarjar/jarj
 rm -rf out
 
 cd $GITHUB_WORKSPACE/
-tar cfJ external_jarjar.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/jarjar/ .
+tar -cf external_jarjar.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/artifacts/external/jarjar/ .
 gh release --repo cibuilde/aosp-buildbot upload android12-gsi_04 external_jarjar.tar.zst --clobber
 
 du -ah -d1| sort -h
 
 if [ ! -f "$GITHUB_WORKSPACE/cache/external_jarjar.tar.zst" ]; then
   echo "Compressing external/jarjar -> external_jarjar.tar.zst"
-  tar cfJ $GITHUB_WORKSPACE/cache/external_jarjar.tar.zst -C $GITHUB_WORKSPACE/aosp/external/jarjar/ .
+  tar -cf $GITHUB_WORKSPACE/cache/external_jarjar.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/jarjar/ .
 fi
 du -ah -d1 $GITHUB_WORKSPACE/cache| sort -h
 

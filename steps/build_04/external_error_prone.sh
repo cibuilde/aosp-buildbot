@@ -30,14 +30,14 @@ rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/error_prone
 rm -rf out
 
 cd $GITHUB_WORKSPACE/
-tar cfJ external_error_prone.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/error_prone/ .
+tar -cf external_error_prone.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/artifacts/external/error_prone/ .
 gh release --repo cibuilde/aosp-buildbot upload android12-gsi_04 external_error_prone.tar.zst --clobber
 
 du -ah -d1| sort -h
 
 if [ ! -f "$GITHUB_WORKSPACE/cache/external_error_prone.tar.zst" ]; then
   echo "Compressing external/error_prone -> external_error_prone.tar.zst"
-  tar cfJ $GITHUB_WORKSPACE/cache/external_error_prone.tar.zst -C $GITHUB_WORKSPACE/aosp/external/error_prone/ .
+  tar -cf $GITHUB_WORKSPACE/cache/external_error_prone.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/error_prone/ .
 fi
 du -ah -d1 $GITHUB_WORKSPACE/cache| sort -h
 

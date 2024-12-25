@@ -20,14 +20,14 @@ rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/kotlinx.met
 rm -rf out
 
 cd $GITHUB_WORKSPACE/
-tar cfJ external_kotlinx.metadata.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/kotlinx.metadata/ .
+tar -cf external_kotlinx.metadata.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/artifacts/external/kotlinx.metadata/ .
 gh release --repo cibuilde/aosp-buildbot upload android12-gsi_04 external_kotlinx.metadata.tar.zst --clobber
 
 du -ah -d1| sort -h
 
 if [ ! -f "$GITHUB_WORKSPACE/cache/external_kotlinx.metadata.tar.zst" ]; then
   echo "Compressing external/kotlinx.metadata -> external_kotlinx.metadata.tar.zst"
-  tar cfJ $GITHUB_WORKSPACE/cache/external_kotlinx.metadata.tar.zst -C $GITHUB_WORKSPACE/aosp/external/kotlinx.metadata/ .
+  tar -cf $GITHUB_WORKSPACE/cache/external_kotlinx.metadata.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/kotlinx.metadata/ .
 fi
 du -ah -d1 $GITHUB_WORKSPACE/cache| sort -h
 

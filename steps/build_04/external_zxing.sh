@@ -20,14 +20,14 @@ rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/zxing/zxing
 rm -rf out
 
 cd $GITHUB_WORKSPACE/
-tar cfJ external_zxing.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/zxing/ .
+tar -cf external_zxing.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/artifacts/external/zxing/ .
 gh release --repo cibuilde/aosp-buildbot upload android12-gsi_04 external_zxing.tar.zst --clobber
 
 du -ah -d1| sort -h
 
 if [ ! -f "$GITHUB_WORKSPACE/cache/external_zxing.tar.zst" ]; then
   echo "Compressing external/zxing -> external_zxing.tar.zst"
-  tar cfJ $GITHUB_WORKSPACE/cache/external_zxing.tar.zst -C $GITHUB_WORKSPACE/aosp/external/zxing/ .
+  tar -cf $GITHUB_WORKSPACE/cache/external_zxing.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/zxing/ .
 fi
 du -ah -d1 $GITHUB_WORKSPACE/cache| sort -h
 
