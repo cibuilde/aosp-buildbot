@@ -8,7 +8,7 @@ ln -sf $GITHUB_WORKSPACE/ninja .
 
 mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86 prebuilts/clang/host/linux-x86
 
-clone_depth_platform prebuilts/gradle-plugin
+clone_sparse prebuilts/gradle-plugin com/android/tools/build/manifest-merger/30.0.0-alpha14/manifest-merger-30.0.0-alpha14.jar com/android/tools/common/30.0.0-alpha14/common-30.0.0-alpha14.jar com/android/tools/external/com-intellij/intellij-core/30.0.0-alpha14/intellij-core-30.0.0-alpha14.jar com/android/tools/external/com-intellij/kotlin-compiler/30.0.0-alpha14/kotlin-compiler-30.0.0-alpha14.jar com/android/tools/external/org-jetbrains/uast/30.0.0-alpha14/uast-30.0.0-alpha14.jar com/android/tools/lint/lint-api/30.0.0-alpha14/lint-api-30.0.0-alpha14.jar com/android/tools/lint/lint-checks/30.0.0-alpha14/lint-checks-30.0.0-alpha14.jar com/android/tools/lint/lint-gradle/30.0.0-alpha14/lint-gradle-30.0.0-alpha14.jar com/android/tools/lint/lint-model/30.0.0-alpha14/lint-model-30.0.0-alpha14.jar com/android/tools/lint/lint/30.0.0-alpha14/lint-30.0.0-alpha14.jar com/android/tools/repository/30.0.0-alpha14/repository-30.0.0-alpha14.jar com/android/tools/sdk-common/30.0.0-alpha14/sdk-common-30.0.0-alpha14.jar com/android/tools/sdklib/30.0.0-alpha14/sdklib-30.0.0-alpha14.jar
 clone_depth_platform tools/build
 
 rsync -a -r $GITHUB_WORKSPACE/artifacts/build/soong/cmd/merge_zips/merge_zips^linux_glibc_x86_64/ .
