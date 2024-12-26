@@ -1,7 +1,9 @@
 set -e
 
 df -h
+
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
+mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
 ln -sf $GITHUB_WORKSPACE/ninja .
 
 mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86 prebuilts/clang/host/linux-x86
@@ -47,14 +49,14 @@ rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/timezone/tzda
 rm -rf out
 
 cd $GITHUB_WORKSPACE/
-tar cfJ system_timezone.tar.zst -C $GITHUB_WORKSPACE/artifacts/system/timezone/ .
+tar -cf system_timezone.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/artifacts/system/timezone/ .
 gh release --repo cibuilde/aosp-buildbot upload android12-gsi_01 system_timezone.tar.zst --clobber
 
 du -ah -d1| sort -h
 
 if [ ! -f "$GITHUB_WORKSPACE/cache/system_timezone.tar.zst" ]; then
   echo "Compressing system/timezone -> system_timezone.tar.zst"
-  tar cfJ $GITHUB_WORKSPACE/cache/system_timezone.tar.zst -C $GITHUB_WORKSPACE/aosp/system/timezone/ .
+  tar -cf $GITHUB_WORKSPACE/cache/system_timezone.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/system/timezone/ .
 fi
 du -ah -d1 $GITHUB_WORKSPACE/cache| sort -h
 

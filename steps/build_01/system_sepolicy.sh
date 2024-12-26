@@ -1,13 +1,17 @@
 set -e
 
 df -h
+
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
+mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
 ln -sf $GITHUB_WORKSPACE/ninja .
 
 mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86 prebuilts/clang/host/linux-x86
 
 clone_depth_platform art
 clone_depth device/google/cuttlefish
+clone_depth_platform hardware/google/pixel
+clone_depth_platform hardware/google/pixel-sepolicy
 clone_sparse prebuilts/build-tools linux-x86/bin linux-x86/lib64 path common
 clone_depth_platform system/sepolicy
 
@@ -190,26 +194,34 @@ rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/sepolicy/vend
 rm -rf out
 
 cd $GITHUB_WORKSPACE/
-tar cfJ system_sepolicy.tar.zst -C $GITHUB_WORKSPACE/artifacts/system/sepolicy/ .
+tar -cf system_sepolicy.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/artifacts/system/sepolicy/ .
 gh release --repo cibuilde/aosp-buildbot upload android12-gsi_01 system_sepolicy.tar.zst --clobber
 
 du -ah -d1| sort -h
 
 if [ ! -f "$GITHUB_WORKSPACE/cache/art.tar.zst" ]; then
   echo "Compressing art -> art.tar.zst"
-  tar cfJ $GITHUB_WORKSPACE/cache/art.tar.zst -C $GITHUB_WORKSPACE/aosp/art/ .
+  tar -cf $GITHUB_WORKSPACE/cache/art.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/art/ .
 fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/device_google_cuttlefish.tar.zst" ]; then
   echo "Compressing device/google/cuttlefish -> device_google_cuttlefish.tar.zst"
-  tar cfJ $GITHUB_WORKSPACE/cache/device_google_cuttlefish.tar.zst -C $GITHUB_WORKSPACE/aosp/device/google/cuttlefish/ .
+  tar -cf $GITHUB_WORKSPACE/cache/device_google_cuttlefish.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/device/google/cuttlefish/ .
+fi
+if [ ! -f "$GITHUB_WORKSPACE/cache/hardware_google_pixel.tar.zst" ]; then
+  echo "Compressing hardware/google/pixel -> hardware_google_pixel.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/hardware_google_pixel.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/hardware/google/pixel/ .
+fi
+if [ ! -f "$GITHUB_WORKSPACE/cache/hardware_google_pixel-sepolicy.tar.zst" ]; then
+  echo "Compressing hardware/google/pixel-sepolicy -> hardware_google_pixel-sepolicy.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/hardware_google_pixel-sepolicy.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/hardware/google/pixel-sepolicy/ .
 fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_build-tools.tar.zst" ]; then
   echo "Compressing prebuilts/build-tools -> prebuilts_build-tools.tar.zst"
-  tar cfJ $GITHUB_WORKSPACE/cache/prebuilts_build-tools.tar.zst -C $GITHUB_WORKSPACE/aosp/prebuilts/build-tools/ .
+  tar -cf $GITHUB_WORKSPACE/cache/prebuilts_build-tools.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/prebuilts/build-tools/ .
 fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/system_sepolicy.tar.zst" ]; then
   echo "Compressing system/sepolicy -> system_sepolicy.tar.zst"
-  tar cfJ $GITHUB_WORKSPACE/cache/system_sepolicy.tar.zst -C $GITHUB_WORKSPACE/aosp/system/sepolicy/ .
+  tar -cf $GITHUB_WORKSPACE/cache/system_sepolicy.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/system/sepolicy/ .
 fi
 du -ah -d1 $GITHUB_WORKSPACE/cache| sort -h
 

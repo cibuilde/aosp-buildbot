@@ -8,12 +8,12 @@ env:
   GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 jobs:
   build_01:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     steps:
     - name: Checkout
       uses: actions/checkout@main
     - name: Install ninja
-      run: sudo apt update && sudo apt install -y ninja-build
+      run: sudo apt update && sudo apt install -y ninja-build python2.7
     - name: Restore Cache art.tar.zst
       id: art
       uses: actions/cache@v4
@@ -1127,6 +1127,20 @@ jobs:
         path: cache/frameworks_wilhelm.tar.zst
         key: frameworks_wilhelm@${{ env.branch }}
         restore-keys: frameworks_wilhelm@${{ env.branch }}
+    - name: Restore Cache hardware_google_pixel.tar.zst
+      id: hardware_google_pixel
+      uses: actions/cache@v4
+      with:
+        path: cache/hardware_google_pixel.tar.zst
+        key: hardware_google_pixel@${{ env.branch }}
+        restore-keys: hardware_google_pixel@${{ env.branch }}
+    - name: Restore Cache hardware_google_pixel-sepolicy.tar.zst
+      id: hardware_google_pixel-sepolicy
+      uses: actions/cache@v4
+      with:
+        path: cache/hardware_google_pixel-sepolicy.tar.zst
+        key: hardware_google_pixel-sepolicy@${{ env.branch }}
+        restore-keys: hardware_google_pixel-sepolicy@${{ env.branch }}
     - name: Restore Cache hardware_interfaces.tar.zst
       id: hardware_interfaces
       uses: actions/cache@v4

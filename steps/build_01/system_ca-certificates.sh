@@ -1,7 +1,9 @@
 set -e
 
 df -h
+
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
+mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
 ln -sf $GITHUB_WORKSPACE/ninja .
 
 mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86 prebuilts/clang/host/linux-x86
@@ -967,14 +969,14 @@ rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/ca-certificat
 rm -rf out
 
 cd $GITHUB_WORKSPACE/
-tar cfJ system_ca-certificates.tar.zst -C $GITHUB_WORKSPACE/artifacts/system/ca-certificates/ .
+tar -cf system_ca-certificates.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/artifacts/system/ca-certificates/ .
 gh release --repo cibuilde/aosp-buildbot upload android12-gsi_01 system_ca-certificates.tar.zst --clobber
 
 du -ah -d1| sort -h
 
 if [ ! -f "$GITHUB_WORKSPACE/cache/system_ca-certificates.tar.zst" ]; then
   echo "Compressing system/ca-certificates -> system_ca-certificates.tar.zst"
-  tar cfJ $GITHUB_WORKSPACE/cache/system_ca-certificates.tar.zst -C $GITHUB_WORKSPACE/aosp/system/ca-certificates/ .
+  tar -cf $GITHUB_WORKSPACE/cache/system_ca-certificates.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/system/ca-certificates/ .
 fi
 du -ah -d1 $GITHUB_WORKSPACE/cache| sort -h
 

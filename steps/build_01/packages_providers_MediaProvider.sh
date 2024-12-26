@@ -1,7 +1,9 @@
 set -e
 
 df -h
+
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
+mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
 ln -sf $GITHUB_WORKSPACE/ninja .
 
 mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86 prebuilts/clang/host/linux-x86
@@ -17,14 +19,14 @@ rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/packages/providers/M
 rm -rf out
 
 cd $GITHUB_WORKSPACE/
-tar cfJ packages_providers_MediaProvider.tar.zst -C $GITHUB_WORKSPACE/artifacts/packages/providers/MediaProvider/ .
+tar -cf packages_providers_MediaProvider.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/artifacts/packages/providers/MediaProvider/ .
 gh release --repo cibuilde/aosp-buildbot upload android12-gsi_01 packages_providers_MediaProvider.tar.zst --clobber
 
 du -ah -d1| sort -h
 
 if [ ! -f "$GITHUB_WORKSPACE/cache/packages_providers_MediaProvider.tar.zst" ]; then
   echo "Compressing packages/providers/MediaProvider -> packages_providers_MediaProvider.tar.zst"
-  tar cfJ $GITHUB_WORKSPACE/cache/packages_providers_MediaProvider.tar.zst -C $GITHUB_WORKSPACE/aosp/packages/providers/MediaProvider/ .
+  tar -cf $GITHUB_WORKSPACE/cache/packages_providers_MediaProvider.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/packages/providers/MediaProvider/ .
 fi
 du -ah -d1 $GITHUB_WORKSPACE/cache| sort -h
 

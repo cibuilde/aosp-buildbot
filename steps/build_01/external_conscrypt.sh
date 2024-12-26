@@ -1,7 +1,9 @@
 set -e
 
 df -h
+
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
+mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
 ln -sf $GITHUB_WORKSPACE/ninja .
 
 mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86 prebuilts/clang/host/linux-x86
@@ -17,14 +19,14 @@ rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/conscrypt/c
 rm -rf out
 
 cd $GITHUB_WORKSPACE/
-tar cfJ external_conscrypt.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/conscrypt/ .
+tar -cf external_conscrypt.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/artifacts/external/conscrypt/ .
 gh release --repo cibuilde/aosp-buildbot upload android12-gsi_01 external_conscrypt.tar.zst --clobber
 
 du -ah -d1| sort -h
 
 if [ ! -f "$GITHUB_WORKSPACE/cache/external_conscrypt.tar.zst" ]; then
   echo "Compressing external/conscrypt -> external_conscrypt.tar.zst"
-  tar cfJ $GITHUB_WORKSPACE/cache/external_conscrypt.tar.zst -C $GITHUB_WORKSPACE/aosp/external/conscrypt/ .
+  tar -cf $GITHUB_WORKSPACE/cache/external_conscrypt.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/conscrypt/ .
 fi
 du -ah -d1 $GITHUB_WORKSPACE/cache| sort -h
 

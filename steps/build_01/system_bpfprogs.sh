@@ -1,7 +1,9 @@
 set -e
 
 df -h
+
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
+mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
 ln -sf $GITHUB_WORKSPACE/ninja .
 
 mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86 prebuilts/clang/host/linux-x86
@@ -20,26 +22,26 @@ rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/bpfprogs/time
 rm -rf out
 
 cd $GITHUB_WORKSPACE/
-tar cfJ system_bpfprogs.tar.zst -C $GITHUB_WORKSPACE/artifacts/system/bpfprogs/ .
+tar -cf system_bpfprogs.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/artifacts/system/bpfprogs/ .
 gh release --repo cibuilde/aosp-buildbot upload android12-gsi_01 system_bpfprogs.tar.zst --clobber
 
 du -ah -d1| sort -h
 
 if [ ! -f "$GITHUB_WORKSPACE/cache/bionic.tar.zst" ]; then
   echo "Compressing bionic -> bionic.tar.zst"
-  tar cfJ $GITHUB_WORKSPACE/cache/bionic.tar.zst -C $GITHUB_WORKSPACE/aosp/bionic/ .
+  tar -cf $GITHUB_WORKSPACE/cache/bionic.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/bionic/ .
 fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/system_bpf.tar.zst" ]; then
   echo "Compressing system/bpf -> system_bpf.tar.zst"
-  tar cfJ $GITHUB_WORKSPACE/cache/system_bpf.tar.zst -C $GITHUB_WORKSPACE/aosp/system/bpf/ .
+  tar -cf $GITHUB_WORKSPACE/cache/system_bpf.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/system/bpf/ .
 fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/system_bpfprogs.tar.zst" ]; then
   echo "Compressing system/bpfprogs -> system_bpfprogs.tar.zst"
-  tar cfJ $GITHUB_WORKSPACE/cache/system_bpfprogs.tar.zst -C $GITHUB_WORKSPACE/aosp/system/bpfprogs/ .
+  tar -cf $GITHUB_WORKSPACE/cache/system_bpfprogs.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/system/bpfprogs/ .
 fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/system_core.tar.zst" ]; then
   echo "Compressing system/core -> system_core.tar.zst"
-  tar cfJ $GITHUB_WORKSPACE/cache/system_core.tar.zst -C $GITHUB_WORKSPACE/aosp/system/core/ .
+  tar -cf $GITHUB_WORKSPACE/cache/system_core.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/system/core/ .
 fi
 du -ah -d1 $GITHUB_WORKSPACE/cache| sort -h
 

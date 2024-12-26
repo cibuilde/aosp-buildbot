@@ -1,7 +1,9 @@
 set -e
 
 df -h
+
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
+mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
 ln -sf $GITHUB_WORKSPACE/ninja .
 
 mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86 prebuilts/clang/host/linux-x86
@@ -22,14 +24,14 @@ rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/google-font
 rm -rf out
 
 cd $GITHUB_WORKSPACE/
-tar cfJ external_google-fonts_dancing-script.tar.zst -C $GITHUB_WORKSPACE/artifacts/external/google-fonts/dancing-script/ .
+tar -cf external_google-fonts_dancing-script.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/artifacts/external/google-fonts/dancing-script/ .
 gh release --repo cibuilde/aosp-buildbot upload android12-gsi_01 external_google-fonts_dancing-script.tar.zst --clobber
 
 du -ah -d1| sort -h
 
 if [ ! -f "$GITHUB_WORKSPACE/cache/external_google-fonts_dancing-script.tar.zst" ]; then
   echo "Compressing external/google-fonts/dancing-script -> external_google-fonts_dancing-script.tar.zst"
-  tar cfJ $GITHUB_WORKSPACE/cache/external_google-fonts_dancing-script.tar.zst -C $GITHUB_WORKSPACE/aosp/external/google-fonts/dancing-script/ .
+  tar -cf $GITHUB_WORKSPACE/cache/external_google-fonts_dancing-script.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/google-fonts/dancing-script/ .
 fi
 du -ah -d1 $GITHUB_WORKSPACE/cache| sort -h
 
