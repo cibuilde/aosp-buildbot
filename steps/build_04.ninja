@@ -1654,3 +1654,4 @@ build update_metadata-protos,android_x86_64_static: phony out/soong/.intermediat
 
 build system_update_engine-targets: phony update_metadata-protos,android_recovery_x86_64_static update_metadata-protos,android_x86_64_static
 
+

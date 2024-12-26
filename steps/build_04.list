@@ -1,4 +1,4 @@
-build step 04 targets: 500
+build step 04: projects: 76 targets: 500
 
 art: cpp-define-generator-asm-support^android_x86_64_apex31 cpp-define-generator-asm-support^android_x86_x86_64_apex31 cpp-define-generator-asm-support^linux_glibc_x86_64 libart_mterp.x86^ libart_mterp.x86_64^ libart_mterp.x86_64ng^
 bionic: generate_app_zygote_blocklist^ generated_android_ids^ libc.x86.map^ libc.x86_64.map^ libdl.x86.map^ libdl.x86_64.map^ libm.x86.map^ libm.x86_64.map^ libstdc++.x86.map^ libstdc++.x86_64.map^ syscalls-arm.S^ syscalls-arm64.S^ syscalls-x86.S^ syscalls-x86_64.S^

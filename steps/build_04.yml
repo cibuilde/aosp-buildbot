@@ -8,12 +8,12 @@ env:
   GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 jobs:
   build_04:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     steps:
     - name: Checkout
       uses: actions/checkout@main
     - name: Install ninja
-      run: sudo apt update && sudo apt install -y ninja-build
+      run: sudo apt update && sudo apt install -y ninja-build python2.7
     - name: Restore Cache art.tar.zst
       id: art
       uses: actions/cache@v4
@@ -658,13 +658,6 @@ jobs:
         path: cache/prebuilts_misc.tar.zst
         key: prebuilts_misc@${{ env.branch }}
         restore-keys: prebuilts_misc@${{ env.branch }}
-    - name: Restore Cache prebuilts_python_linux-x86_2.7.5.tar.zst
-      id: prebuilts_python_linux-x86_2-7-5
-      uses: actions/cache@v4
-      with:
-        path: cache/prebuilts_python_linux-x86_2.7.5.tar.zst
-        key: prebuilts_python_linux-x86_2.7.5@${{ env.branch }}
-        restore-keys: prebuilts_python_linux-x86_2.7.5@${{ env.branch }}
     - name: Restore Cache prebuilts_r8.tar.zst
       id: prebuilts_r8
       uses: actions/cache@v4
