@@ -15,6 +15,7 @@ clone_sparse cts libs/json
 clone_depth_platform dalvik
 clone_depth_platform external/boringssl
 clone_depth_platform external/cpu_features
+clone_depth_platform external/dlmalloc
 clone_depth_platform external/fmtlib
 clone_depth_platform external/googletest
 clone_depth_platform external/icu
@@ -301,6 +302,10 @@ fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/external_cpu_features.tar.zst" ]; then
   echo "Compressing external/cpu_features -> external_cpu_features.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/external_cpu_features.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/cpu_features/ .
+fi
+if [ ! -f "$GITHUB_WORKSPACE/cache/external_dlmalloc.tar.zst" ]; then
+  echo "Compressing external/dlmalloc -> external_dlmalloc.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/external_dlmalloc.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/dlmalloc/ .
 fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/external_fmtlib.tar.zst" ]; then
   echo "Compressing external/fmtlib -> external_fmtlib.tar.zst"
