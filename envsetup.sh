@@ -92,17 +92,19 @@ function clone_project() {
   branch=$BRANCH
   project_name=$1
   project_path=$2
+  remote_name=origin
   shift 2
   mkdir -p ${project_path} && cd ${project_path}
   git init
   git config --unset-all core.bare
-  git config remote.origin.url "https://android.googlesource.com/${project_name}"
-  git config remote.origin.fetch "+refs/heads/${branch}:refs/remotes/origin/${branch}"
-  git config extensions.partialclone origin
-  git sparse-checkout set --no-cone "$@"
-  git fetch origin --filter=tree:0 --depth=1 --no-tags --progress "+refs/heads/${branch}:refs/remotes/origin/${branch}"
-  echo $(git rev-parse --verify "refs/remotes/origin/${branch}^0") > .git/HEAD
+  git config remote.${remote_name}.url "https://android.googlesource.com/${project_name}"
+  git config remote.${remote_name}.fetch "+refs/heads/${branch}:refs/remotes/${remote_name}/${branch}"
+  git config extensions.partialclone ${remote_name}
+  git sparse-checkout set --no-cone '!/*' "$@"
+  git fetch ${remote_name} --filter=tree:0 --depth=1 --no-tags --progress "+refs/heads/${branch}:refs/remotes/${remote_name}/${branch}"
+  echo $(git rev-parse --verify "refs/remotes/${remote_name}/${branch}^0") > .git/HEAD
   git read-tree --reset -u -v HEAD
+  #git sparse-checkout reapply
   #cd -
 }
 
