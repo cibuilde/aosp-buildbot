@@ -147,30 +147,11 @@ gh release --repo cibuilde/aosp-buildbot download android12-gsi_02 --pattern sys
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/sepolicy
 tar xf $GITHUB_WORKSPACE/system_sepolicy.tar.zst -C $GITHUB_WORKSPACE/artifacts/system/sepolicy/
 
-time source steps/build_03/external_rust_crates_cexpr.sh
-time source steps/build_03/external_rust_crates_env_logger.sh
-time source steps/build_03/external_rust_crates_quote.sh
-time source steps/build_03/external_rust_crates_regex.sh
-time source steps/build_03/external_selinux.sh
-time source steps/build_03/packages_modules_adb.sh
-time source steps/build_03/prebuilts_rust.sh
-time source steps/build_03/system_connectivity_wificond.sh
-time source steps/build_03/system_core.sh
+export OUT_DIR=out
+
 time source steps/build_03/system_sepolicy.sh
-time source steps/build_03/bionic.sh
-time source steps/build_03/build_blueprint.sh
-time source steps/build_03/build_make.sh
-time source steps/build_03/build_soong.sh
-time source steps/build_03/device_generic_vulkan-cereal.sh
-time source steps/build_03/external_conscrypt.sh
-time source steps/build_03/external_e2fsprogs.sh
-time source steps/build_03/external_f2fs-tools.sh
-time source steps/build_03/external_grpc-grpc.sh
-time source steps/build_03/external_libcxx.sh
-time source steps/build_03/external_lz4.sh
-time source steps/build_03/external_protobuf.sh
 
 if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_clang_host_linux-x86.tar.zst" ]; then
   echo "Compressing prebuilts/clang/host/linux-x86 -> prebuilts_clang_host_linux-x86.tar.zst"
-  tar cfJ $GITHUB_WORKSPACE/cache/prebuilts_clang_host_linux-x86.tar.zst -C $GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86/ .
+  tar -cf $GITHUB_WORKSPACE/cache/prebuilts_clang_host_linux-x86.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86/ .
 fi

@@ -1,4 +1,4 @@
-build step 03 targets: 65
+build step 03: projects: 22 targets: 65
 
 bionic: libc_malloc_debug_backtrace^android_x86_64_static libc_malloc_debug_backtrace^android_x86_64_static_apex10000 libc_malloc_debug_backtrace^android_x86_x86_64_static libc_malloc_debug_backtrace^android_x86_x86_64_static_apex10000 libdl_android^android_x86_64_shared libdl_android^android_x86_64_shared_apex10000 libdl_android^android_x86_x86_64_shared libdl_android^android_x86_x86_64_shared_apex10000
 build/blueprint: blueprint^linux_glibc_x86_64
