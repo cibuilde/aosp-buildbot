@@ -1301,7 +1301,7 @@ jobs:
       with:
         name: github_actions
         overwrite: true
-        path: github_actions.zst
+        path: aosp/github_actions.zst
     - uses: actions/upload-artifact@v4
       with:
         name: art
