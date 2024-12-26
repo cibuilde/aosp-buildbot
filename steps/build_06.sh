@@ -428,8 +428,13 @@ mkdir -p $GITHUB_WORKSPACE/artifacts/system/update_engine
 tar xf $GITHUB_WORKSPACE/system_update_engine.tar.zst -C $GITHUB_WORKSPACE/artifacts/system/update_engine/
 
 export OUT_DIR=out
-#export PATH=$GITHUB_WORKSPACE/aosp/prebuilts/python/linux-x86/2.7.5/bin:$PATH
 
+time source steps/build_06/system_sepolicy.sh
+time source steps/build_06/system_tools_aidl.sh
+time source steps/build_06/system_tools_hidl.sh
+time source steps/build_06/system_tools_sysprop.sh
+time source steps/build_06/system_tools_xsdc.sh
+time source steps/build_06/system_update_engine.sh
 time source steps/build_06/art.sh
 time source steps/build_06/bionic.sh
 time source steps/build_06/build_soong.sh
@@ -484,12 +489,6 @@ time source steps/build_06/system_hardware_interfaces.sh
 time source steps/build_06/system_libhidl.sh
 time source steps/build_06/system_netd.sh
 time source steps/build_06/system_security.sh
-time source steps/build_06/system_sepolicy.sh
-time source steps/build_06/system_tools_aidl.sh
-time source steps/build_06/system_tools_hidl.sh
-time source steps/build_06/system_tools_sysprop.sh
-time source steps/build_06/system_tools_xsdc.sh
-time source steps/build_06/system_update_engine.sh
 
 if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_clang_host_linux-x86.tar.zst" ]; then
   echo "Compressing prebuilts/clang/host/linux-x86 -> prebuilts_clang_host_linux-x86.tar.zst"

@@ -25,7 +25,6 @@ clone_depth_platform packages/modules/StatsD
 clone_sparse prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8 sysroot lib/gcc/x86_64-linux/4.8.3 x86_64-linux/lib64 x86_64-linux/lib32
 clone_depth_platform prebuilts/gcc/linux-x86/x86/x86_64-linux-android-4.9
 clone_sparse prebuilts/jdk/jdk11 linux-x86
-clone_depth_platform prebuilts/python/linux-x86/2.7.5
 clone_depth_platform system/core
 clone_depth_platform system/libbase
 clone_depth_platform system/logging
@@ -170,10 +169,6 @@ fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_jdk_jdk11.tar.zst" ]; then
   echo "Compressing prebuilts/jdk/jdk11 -> prebuilts_jdk_jdk11.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/prebuilts_jdk_jdk11.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/prebuilts/jdk/jdk11/ .
-fi
-if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_python_linux-x86_2.7.5.tar.zst" ]; then
-  echo "Compressing prebuilts/python/linux-x86/2.7.5 -> prebuilts_python_linux-x86_2.7.5.tar.zst"
-  tar -cf $GITHUB_WORKSPACE/cache/prebuilts_python_linux-x86_2.7.5.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/prebuilts/python/linux-x86/2.7.5/ .
 fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/system_core.tar.zst" ]; then
   echo "Compressing system/core -> system_core.tar.zst"

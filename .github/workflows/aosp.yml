@@ -7,7 +7,7 @@ env:
   branch: 'android12-gsi'
   GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 jobs:
-  build_05:
+  build_06:
     runs-on: ubuntu-22.04
     steps:
     - name: Checkout
@@ -28,20 +28,6 @@ jobs:
         path: cache/bionic.tar.zst
         key: bionic@${{ env.branch }}
         restore-keys: bionic@${{ env.branch }}
-    - name: Restore Cache build_blueprint.tar.zst
-      id: build_blueprint
-      uses: actions/cache@v4
-      with:
-        path: cache/build_blueprint.tar.zst
-        key: build_blueprint@${{ env.branch }}
-        restore-keys: build_blueprint@${{ env.branch }}
-    - name: Restore Cache build_make.tar.zst
-      id: build_make
-      uses: actions/cache@v4
-      with:
-        path: cache/build_make.tar.zst
-        key: build_make@${{ env.branch }}
-        restore-keys: build_make@${{ env.branch }}
     - name: Restore Cache build_soong.tar.zst
       id: build_soong
       uses: actions/cache@v4
@@ -56,13 +42,6 @@ jobs:
         path: cache/cts.tar.zst
         key: cts@${{ env.branch }}
         restore-keys: cts@${{ env.branch }}
-    - name: Restore Cache development.tar.zst
-      id: development
-      uses: actions/cache@v4
-      with:
-        path: cache/development.tar.zst
-        key: development@${{ env.branch }}
-        restore-keys: development@${{ env.branch }}
     - name: Restore Cache device_google_cuttlefish.tar.zst
       id: device_google_cuttlefish
       uses: actions/cache@v4
@@ -70,41 +49,13 @@ jobs:
         path: cache/device_google_cuttlefish.tar.zst
         key: device_google_cuttlefish@${{ env.branch }}
         restore-keys: device_google_cuttlefish@${{ env.branch }}
-    - name: Restore Cache device_google_cuttlefish_vmm.tar.zst
-      id: device_google_cuttlefish_vmm
+    - name: Restore Cache external_OpenCSD.tar.zst
+      id: external_OpenCSD
       uses: actions/cache@v4
       with:
-        path: cache/device_google_cuttlefish_vmm.tar.zst
-        key: device_google_cuttlefish_vmm@${{ env.branch }}
-        restore-keys: device_google_cuttlefish_vmm@${{ env.branch }}
-    - name: Restore Cache external_angle.tar.zst
-      id: external_angle
-      uses: actions/cache@v4
-      with:
-        path: cache/external_angle.tar.zst
-        key: external_angle@${{ env.branch }}
-        restore-keys: external_angle@${{ env.branch }}
-    - name: Restore Cache external_apache-commons-bcel.tar.zst
-      id: external_apache-commons-bcel
-      uses: actions/cache@v4
-      with:
-        path: cache/external_apache-commons-bcel.tar.zst
-        key: external_apache-commons-bcel@${{ env.branch }}
-        restore-keys: external_apache-commons-bcel@${{ env.branch }}
-    - name: Restore Cache external_auto.tar.zst
-      id: external_auto
-      uses: actions/cache@v4
-      with:
-        path: cache/external_auto.tar.zst
-        key: external_auto@${{ env.branch }}
-        restore-keys: external_auto@${{ env.branch }}
-    - name: Restore Cache external_avb.tar.zst
-      id: external_avb
-      uses: actions/cache@v4
-      with:
-        path: cache/external_avb.tar.zst
-        key: external_avb@${{ env.branch }}
-        restore-keys: external_avb@${{ env.branch }}
+        path: cache/external_OpenCSD.tar.zst
+        key: external_OpenCSD@${{ env.branch }}
+        restore-keys: external_OpenCSD@${{ env.branch }}
     - name: Restore Cache external_boringssl.tar.zst
       id: external_boringssl
       uses: actions/cache@v4
@@ -119,13 +70,6 @@ jobs:
         path: cache/external_bouncycastle.tar.zst
         key: external_bouncycastle@${{ env.branch }}
         restore-keys: external_bouncycastle@${{ env.branch }}
-    - name: Restore Cache external_brotli.tar.zst
-      id: external_brotli
-      uses: actions/cache@v4
-      with:
-        path: cache/external_brotli.tar.zst
-        key: external_brotli@${{ env.branch }}
-        restore-keys: external_brotli@${{ env.branch }}
     - name: Restore Cache external_clang.tar.zst
       id: external_clang
       uses: actions/cache@v4
@@ -133,13 +77,13 @@ jobs:
         path: cache/external_clang.tar.zst
         key: external_clang@${{ env.branch }}
         restore-keys: external_clang@${{ env.branch }}
-    - name: Restore Cache external_cpu_features.tar.zst
-      id: external_cpu_features
+    - name: Restore Cache external_conscrypt.tar.zst
+      id: external_conscrypt
       uses: actions/cache@v4
       with:
-        path: cache/external_cpu_features.tar.zst
-        key: external_cpu_features@${{ env.branch }}
-        restore-keys: external_cpu_features@${{ env.branch }}
+        path: cache/external_conscrypt.tar.zst
+        key: external_conscrypt@${{ env.branch }}
+        restore-keys: external_conscrypt@${{ env.branch }}
     - name: Restore Cache external_crosvm.tar.zst
       id: external_crosvm
       uses: actions/cache@v4
@@ -154,27 +98,13 @@ jobs:
         path: cache/external_dagger2.tar.zst
         key: external_dagger2@${{ env.branch }}
         restore-keys: external_dagger2@${{ env.branch }}
-    - name: Restore Cache external_dlmalloc.tar.zst
-      id: external_dlmalloc
+    - name: Restore Cache external_error_prone.tar.zst
+      id: external_error_prone
       uses: actions/cache@v4
       with:
-        path: cache/external_dlmalloc.tar.zst
-        key: external_dlmalloc@${{ env.branch }}
-        restore-keys: external_dlmalloc@${{ env.branch }}
-    - name: Restore Cache external_e2fsprogs.tar.zst
-      id: external_e2fsprogs
-      uses: actions/cache@v4
-      with:
-        path: cache/external_e2fsprogs.tar.zst
-        key: external_e2fsprogs@${{ env.branch }}
-        restore-keys: external_e2fsprogs@${{ env.branch }}
-    - name: Restore Cache external_expat.tar.zst
-      id: external_expat
-      uses: actions/cache@v4
-      with:
-        path: cache/external_expat.tar.zst
-        key: external_expat@${{ env.branch }}
-        restore-keys: external_expat@${{ env.branch }}
+        path: cache/external_error_prone.tar.zst
+        key: external_error_prone@${{ env.branch }}
+        restore-keys: external_error_prone@${{ env.branch }}
     - name: Restore Cache external_flatbuffers.tar.zst
       id: external_flatbuffers
       uses: actions/cache@v4
@@ -189,13 +119,6 @@ jobs:
         path: cache/external_fmtlib.tar.zst
         key: external_fmtlib@${{ env.branch }}
         restore-keys: external_fmtlib@${{ env.branch }}
-    - name: Restore Cache external_google-java-format.tar.zst
-      id: external_google-java-format
-      uses: actions/cache@v4
-      with:
-        path: cache/external_google-java-format.tar.zst
-        key: external_google-java-format@${{ env.branch }}
-        restore-keys: external_google-java-format@${{ env.branch }}
     - name: Restore Cache external_googletest.tar.zst
       id: external_googletest
       uses: actions/cache@v4
@@ -203,13 +126,6 @@ jobs:
         path: cache/external_googletest.tar.zst
         key: external_googletest@${{ env.branch }}
         restore-keys: external_googletest@${{ env.branch }}
-    - name: Restore Cache external_grpc-grpc.tar.zst
-      id: external_grpc-grpc
-      uses: actions/cache@v4
-      with:
-        path: cache/external_grpc-grpc.tar.zst
-        key: external_grpc-grpc@${{ env.branch }}
-        restore-keys: external_grpc-grpc@${{ env.branch }}
     - name: Restore Cache external_guava.tar.zst
       id: external_guava
       uses: actions/cache@v4
@@ -245,41 +161,6 @@ jobs:
         path: cache/external_iptables.tar.zst
         key: external_iptables@${{ env.branch }}
         restore-keys: external_iptables@${{ env.branch }}
-    - name: Restore Cache external_jarjar.tar.zst
-      id: external_jarjar
-      uses: actions/cache@v4
-      with:
-        path: cache/external_jarjar.tar.zst
-        key: external_jarjar@${{ env.branch }}
-        restore-keys: external_jarjar@${{ env.branch }}
-    - name: Restore Cache external_javaparser.tar.zst
-      id: external_javaparser
-      uses: actions/cache@v4
-      with:
-        path: cache/external_javaparser.tar.zst
-        key: external_javaparser@${{ env.branch }}
-        restore-keys: external_javaparser@${{ env.branch }}
-    - name: Restore Cache external_javapoet.tar.zst
-      id: external_javapoet
-      uses: actions/cache@v4
-      with:
-        path: cache/external_javapoet.tar.zst
-        key: external_javapoet@${{ env.branch }}
-        restore-keys: external_javapoet@${{ env.branch }}
-    - name: Restore Cache external_jcommander.tar.zst
-      id: external_jcommander
-      uses: actions/cache@v4
-      with:
-        path: cache/external_jcommander.tar.zst
-        key: external_jcommander@${{ env.branch }}
-        restore-keys: external_jcommander@${{ env.branch }}
-    - name: Restore Cache external_jsoncpp.tar.zst
-      id: external_jsoncpp
-      uses: actions/cache@v4
-      with:
-        path: cache/external_jsoncpp.tar.zst
-        key: external_jsoncpp@${{ env.branch }}
-        restore-keys: external_jsoncpp@${{ env.branch }}
     - name: Restore Cache external_jsr305.tar.zst
       id: external_jsr305
       uses: actions/cache@v4
@@ -287,13 +168,13 @@ jobs:
         path: cache/external_jsr305.tar.zst
         key: external_jsr305@${{ env.branch }}
         restore-keys: external_jsr305@${{ env.branch }}
-    - name: Restore Cache external_jsr330.tar.zst
-      id: external_jsr330
+    - name: Restore Cache external_junit.tar.zst
+      id: external_junit
       uses: actions/cache@v4
       with:
-        path: cache/external_jsr330.tar.zst
-        key: external_jsr330@${{ env.branch }}
-        restore-keys: external_jsr330@${{ env.branch }}
+        path: cache/external_junit.tar.zst
+        key: external_junit@${{ env.branch }}
+        restore-keys: external_junit@${{ env.branch }}
     - name: Restore Cache external_kotlinc.tar.zst
       id: external_kotlinc
       uses: actions/cache@v4
@@ -329,6 +210,13 @@ jobs:
         path: cache/external_libcxxabi.tar.zst
         key: external_libcxxabi@${{ env.branch }}
         restore-keys: external_libcxxabi@${{ env.branch }}
+    - name: Restore Cache external_libevent.tar.zst
+      id: external_libevent
+      uses: actions/cache@v4
+      with:
+        path: cache/external_libevent.tar.zst
+        key: external_libevent@${{ env.branch }}
+        restore-keys: external_libevent@${{ env.branch }}
     - name: Restore Cache external_libffi.tar.zst
       id: external_libffi
       uses: actions/cache@v4
@@ -336,20 +224,6 @@ jobs:
         path: cache/external_libffi.tar.zst
         key: external_libffi@${{ env.branch }}
         restore-keys: external_libffi@${{ env.branch }}
-    - name: Restore Cache external_libpng.tar.zst
-      id: external_libpng
-      uses: actions/cache@v4
-      with:
-        path: cache/external_libpng.tar.zst
-        key: external_libpng@${{ env.branch }}
-        restore-keys: external_libpng@${{ env.branch }}
-    - name: Restore Cache external_libtextclassifier.tar.zst
-      id: external_libtextclassifier
-      uses: actions/cache@v4
-      with:
-        path: cache/external_libtextclassifier.tar.zst
-        key: external_libtextclassifier@${{ env.branch }}
-        restore-keys: external_libtextclassifier@${{ env.branch }}
     - name: Restore Cache external_libxml2.tar.zst
       id: external_libxml2
       uses: actions/cache@v4
@@ -364,13 +238,6 @@ jobs:
         path: cache/external_llvm.tar.zst
         key: external_llvm@${{ env.branch }}
         restore-keys: external_llvm@${{ env.branch }}
-    - name: Restore Cache external_lz4.tar.zst
-      id: external_lz4
-      uses: actions/cache@v4
-      with:
-        path: cache/external_lz4.tar.zst
-        key: external_lz4@${{ env.branch }}
-        restore-keys: external_lz4@${{ env.branch }}
     - name: Restore Cache external_lzma.tar.zst
       id: external_lzma
       uses: actions/cache@v4
@@ -378,27 +245,6 @@ jobs:
         path: cache/external_lzma.tar.zst
         key: external_lzma@${{ env.branch }}
         restore-keys: external_lzma@${{ env.branch }}
-    - name: Restore Cache external_mdnsresponder.tar.zst
-      id: external_mdnsresponder
-      uses: actions/cache@v4
-      with:
-        path: cache/external_mdnsresponder.tar.zst
-        key: external_mdnsresponder@${{ env.branch }}
-        restore-keys: external_mdnsresponder@${{ env.branch }}
-    - name: Restore Cache external_minijail.tar.zst
-      id: external_minijail
-      uses: actions/cache@v4
-      with:
-        path: cache/external_minijail.tar.zst
-        key: external_minijail@${{ env.branch }}
-        restore-keys: external_minijail@${{ env.branch }}
-    - name: Restore Cache external_nanopb-c.tar.zst
-      id: external_nanopb-c
-      uses: actions/cache@v4
-      with:
-        path: cache/external_nanopb-c.tar.zst
-        key: external_nanopb-c@${{ env.branch }}
-        restore-keys: external_nanopb-c@${{ env.branch }}
     - name: Restore Cache external_oj-libjdwp.tar.zst
       id: external_oj-libjdwp
       uses: actions/cache@v4
@@ -427,34 +273,20 @@ jobs:
         path: cache/external_protobuf.tar.zst
         key: external_protobuf@${{ env.branch }}
         restore-keys: external_protobuf@${{ env.branch }}
-    - name: Restore Cache external_python_cpython2.tar.zst
-      id: external_python_cpython2
+    - name: Restore Cache external_rust_crates_aho-corasick.tar.zst
+      id: external_rust_crates_aho-corasick
       uses: actions/cache@v4
       with:
-        path: cache/external_python_cpython2.tar.zst
-        key: external_python_cpython2@${{ env.branch }}
-        restore-keys: external_python_cpython2@${{ env.branch }}
-    - name: Restore Cache external_python_cpython3.tar.zst
-      id: external_python_cpython3
+        path: cache/external_rust_crates_aho-corasick.tar.zst
+        key: external_rust_crates_aho-corasick@${{ env.branch }}
+        restore-keys: external_rust_crates_aho-corasick@${{ env.branch }}
+    - name: Restore Cache external_rust_crates_bindgen.tar.zst
+      id: external_rust_crates_bindgen
       uses: actions/cache@v4
       with:
-        path: cache/external_python_cpython3.tar.zst
-        key: external_python_cpython3@${{ env.branch }}
-        restore-keys: external_python_cpython3@${{ env.branch }}
-    - name: Restore Cache external_python_six.tar.zst
-      id: external_python_six
-      uses: actions/cache@v4
-      with:
-        path: cache/external_python_six.tar.zst
-        key: external_python_six@${{ env.branch }}
-        restore-keys: external_python_six@${{ env.branch }}
-    - name: Restore Cache external_rust_crates_async-trait.tar.zst
-      id: external_rust_crates_async-trait
-      uses: actions/cache@v4
-      with:
-        path: cache/external_rust_crates_async-trait.tar.zst
-        key: external_rust_crates_async-trait@${{ env.branch }}
-        restore-keys: external_rust_crates_async-trait@${{ env.branch }}
+        path: cache/external_rust_crates_bindgen.tar.zst
+        key: external_rust_crates_bindgen@${{ env.branch }}
+        restore-keys: external_rust_crates_bindgen@${{ env.branch }}
     - name: Restore Cache external_rust_crates_bitflags.tar.zst
       id: external_rust_crates_bitflags
       uses: actions/cache@v4
@@ -469,6 +301,13 @@ jobs:
         path: cache/external_rust_crates_bytes.tar.zst
         key: external_rust_crates_bytes@${{ env.branch }}
         restore-keys: external_rust_crates_bytes@${{ env.branch }}
+    - name: Restore Cache external_rust_crates_cexpr.tar.zst
+      id: external_rust_crates_cexpr
+      uses: actions/cache@v4
+      with:
+        path: cache/external_rust_crates_cexpr.tar.zst
+        key: external_rust_crates_cexpr@${{ env.branch }}
+        restore-keys: external_rust_crates_cexpr@${{ env.branch }}
     - name: Restore Cache external_rust_crates_cfg-if.tar.zst
       id: external_rust_crates_cfg-if
       uses: actions/cache@v4
@@ -497,20 +336,13 @@ jobs:
         path: cache/external_rust_crates_codespan-reporting.tar.zst
         key: external_rust_crates_codespan-reporting@${{ env.branch }}
         restore-keys: external_rust_crates_codespan-reporting@${{ env.branch }}
-    - name: Restore Cache external_rust_crates_futures.tar.zst
-      id: external_rust_crates_futures
+    - name: Restore Cache external_rust_crates_either.tar.zst
+      id: external_rust_crates_either
       uses: actions/cache@v4
       with:
-        path: cache/external_rust_crates_futures.tar.zst
-        key: external_rust_crates_futures@${{ env.branch }}
-        restore-keys: external_rust_crates_futures@${{ env.branch }}
-    - name: Restore Cache external_rust_crates_futures-macro.tar.zst
-      id: external_rust_crates_futures-macro
-      uses: actions/cache@v4
-      with:
-        path: cache/external_rust_crates_futures-macro.tar.zst
-        key: external_rust_crates_futures-macro@${{ env.branch }}
-        restore-keys: external_rust_crates_futures-macro@${{ env.branch }}
+        path: cache/external_rust_crates_either.tar.zst
+        key: external_rust_crates_either@${{ env.branch }}
+        restore-keys: external_rust_crates_either@${{ env.branch }}
     - name: Restore Cache external_rust_crates_glob.tar.zst
       id: external_rust_crates_glob
       uses: actions/cache@v4
@@ -518,6 +350,41 @@ jobs:
         path: cache/external_rust_crates_glob.tar.zst
         key: external_rust_crates_glob@${{ env.branch }}
         restore-keys: external_rust_crates_glob@${{ env.branch }}
+    - name: Restore Cache external_rust_crates_grpcio.tar.zst
+      id: external_rust_crates_grpcio
+      uses: actions/cache@v4
+      with:
+        path: cache/external_rust_crates_grpcio.tar.zst
+        key: external_rust_crates_grpcio@${{ env.branch }}
+        restore-keys: external_rust_crates_grpcio@${{ env.branch }}
+    - name: Restore Cache external_rust_crates_grpcio-compiler.tar.zst
+      id: external_rust_crates_grpcio-compiler
+      uses: actions/cache@v4
+      with:
+        path: cache/external_rust_crates_grpcio-compiler.tar.zst
+        key: external_rust_crates_grpcio-compiler@${{ env.branch }}
+        restore-keys: external_rust_crates_grpcio-compiler@${{ env.branch }}
+    - name: Restore Cache external_rust_crates_heck.tar.zst
+      id: external_rust_crates_heck
+      uses: actions/cache@v4
+      with:
+        path: cache/external_rust_crates_heck.tar.zst
+        key: external_rust_crates_heck@${{ env.branch }}
+        restore-keys: external_rust_crates_heck@${{ env.branch }}
+    - name: Restore Cache external_rust_crates_lazy_static.tar.zst
+      id: external_rust_crates_lazy_static
+      uses: actions/cache@v4
+      with:
+        path: cache/external_rust_crates_lazy_static.tar.zst
+        key: external_rust_crates_lazy_static@${{ env.branch }}
+        restore-keys: external_rust_crates_lazy_static@${{ env.branch }}
+    - name: Restore Cache external_rust_crates_lazycell.tar.zst
+      id: external_rust_crates_lazycell
+      uses: actions/cache@v4
+      with:
+        path: cache/external_rust_crates_lazycell.tar.zst
+        key: external_rust_crates_lazycell@${{ env.branch }}
+        restore-keys: external_rust_crates_lazycell@${{ env.branch }}
     - name: Restore Cache external_rust_crates_libc.tar.zst
       id: external_rust_crates_libc
       uses: actions/cache@v4
@@ -532,13 +399,27 @@ jobs:
         path: cache/external_rust_crates_libloading.tar.zst
         key: external_rust_crates_libloading@${{ env.branch }}
         restore-keys: external_rust_crates_libloading@${{ env.branch }}
-    - name: Restore Cache external_rust_crates_num-derive.tar.zst
-      id: external_rust_crates_num-derive
+    - name: Restore Cache external_rust_crates_memchr.tar.zst
+      id: external_rust_crates_memchr
       uses: actions/cache@v4
       with:
-        path: cache/external_rust_crates_num-derive.tar.zst
-        key: external_rust_crates_num-derive@${{ env.branch }}
-        restore-keys: external_rust_crates_num-derive@${{ env.branch }}
+        path: cache/external_rust_crates_memchr.tar.zst
+        key: external_rust_crates_memchr@${{ env.branch }}
+        restore-keys: external_rust_crates_memchr@${{ env.branch }}
+    - name: Restore Cache external_rust_crates_nom.tar.zst
+      id: external_rust_crates_nom
+      uses: actions/cache@v4
+      with:
+        path: cache/external_rust_crates_nom.tar.zst
+        key: external_rust_crates_nom@${{ env.branch }}
+        restore-keys: external_rust_crates_nom@${{ env.branch }}
+    - name: Restore Cache external_rust_crates_peeking_take_while.tar.zst
+      id: external_rust_crates_peeking_take_while
+      uses: actions/cache@v4
+      with:
+        path: cache/external_rust_crates_peeking_take_while.tar.zst
+        key: external_rust_crates_peeking_take_while@${{ env.branch }}
+        restore-keys: external_rust_crates_peeking_take_while@${{ env.branch }}
     - name: Restore Cache external_rust_crates_proc-macro-error.tar.zst
       id: external_rust_crates_proc-macro-error
       uses: actions/cache@v4
@@ -553,13 +434,6 @@ jobs:
         path: cache/external_rust_crates_proc-macro-error-attr.tar.zst
         key: external_rust_crates_proc-macro-error-attr@${{ env.branch }}
         restore-keys: external_rust_crates_proc-macro-error-attr@${{ env.branch }}
-    - name: Restore Cache external_rust_crates_proc-macro-hack.tar.zst
-      id: external_rust_crates_proc-macro-hack
-      uses: actions/cache@v4
-      with:
-        path: cache/external_rust_crates_proc-macro-hack.tar.zst
-        key: external_rust_crates_proc-macro-hack@${{ env.branch }}
-        restore-keys: external_rust_crates_proc-macro-hack@${{ env.branch }}
     - name: Restore Cache external_rust_crates_proc-macro2.tar.zst
       id: external_rust_crates_proc-macro2
       uses: actions/cache@v4
@@ -574,6 +448,13 @@ jobs:
         path: cache/external_rust_crates_protobuf.tar.zst
         key: external_rust_crates_protobuf@${{ env.branch }}
         restore-keys: external_rust_crates_protobuf@${{ env.branch }}
+    - name: Restore Cache external_rust_crates_protobuf-codegen.tar.zst
+      id: external_rust_crates_protobuf-codegen
+      uses: actions/cache@v4
+      with:
+        path: cache/external_rust_crates_protobuf-codegen.tar.zst
+        key: external_rust_crates_protobuf-codegen@${{ env.branch }}
+        restore-keys: external_rust_crates_protobuf-codegen@${{ env.branch }}
     - name: Restore Cache external_rust_crates_quote.tar.zst
       id: external_rust_crates_quote
       uses: actions/cache@v4
@@ -581,27 +462,48 @@ jobs:
         path: cache/external_rust_crates_quote.tar.zst
         key: external_rust_crates_quote@${{ env.branch }}
         restore-keys: external_rust_crates_quote@${{ env.branch }}
-    - name: Restore Cache external_rust_crates_remain.tar.zst
-      id: external_rust_crates_remain
+    - name: Restore Cache external_rust_crates_regex.tar.zst
+      id: external_rust_crates_regex
       uses: actions/cache@v4
       with:
-        path: cache/external_rust_crates_remain.tar.zst
-        key: external_rust_crates_remain@${{ env.branch }}
-        restore-keys: external_rust_crates_remain@${{ env.branch }}
-    - name: Restore Cache external_rust_crates_serde.tar.zst
-      id: external_rust_crates_serde
+        path: cache/external_rust_crates_regex.tar.zst
+        key: external_rust_crates_regex@${{ env.branch }}
+        restore-keys: external_rust_crates_regex@${{ env.branch }}
+    - name: Restore Cache external_rust_crates_regex-syntax.tar.zst
+      id: external_rust_crates_regex-syntax
       uses: actions/cache@v4
       with:
-        path: cache/external_rust_crates_serde.tar.zst
-        key: external_rust_crates_serde@${{ env.branch }}
-        restore-keys: external_rust_crates_serde@${{ env.branch }}
-    - name: Restore Cache external_rust_crates_serde_derive.tar.zst
-      id: external_rust_crates_serde_derive
+        path: cache/external_rust_crates_regex-syntax.tar.zst
+        key: external_rust_crates_regex-syntax@${{ env.branch }}
+        restore-keys: external_rust_crates_regex-syntax@${{ env.branch }}
+    - name: Restore Cache external_rust_crates_rustc-hash.tar.zst
+      id: external_rust_crates_rustc-hash
       uses: actions/cache@v4
       with:
-        path: cache/external_rust_crates_serde_derive.tar.zst
-        key: external_rust_crates_serde_derive@${{ env.branch }}
-        restore-keys: external_rust_crates_serde_derive@${{ env.branch }}
+        path: cache/external_rust_crates_rustc-hash.tar.zst
+        key: external_rust_crates_rustc-hash@${{ env.branch }}
+        restore-keys: external_rust_crates_rustc-hash@${{ env.branch }}
+    - name: Restore Cache external_rust_crates_shlex.tar.zst
+      id: external_rust_crates_shlex
+      uses: actions/cache@v4
+      with:
+        path: cache/external_rust_crates_shlex.tar.zst
+        key: external_rust_crates_shlex@${{ env.branch }}
+        restore-keys: external_rust_crates_shlex@${{ env.branch }}
+    - name: Restore Cache external_rust_crates_structopt.tar.zst
+      id: external_rust_crates_structopt
+      uses: actions/cache@v4
+      with:
+        path: cache/external_rust_crates_structopt.tar.zst
+        key: external_rust_crates_structopt@${{ env.branch }}
+        restore-keys: external_rust_crates_structopt@${{ env.branch }}
+    - name: Restore Cache external_rust_crates_structopt-derive.tar.zst
+      id: external_rust_crates_structopt-derive
+      uses: actions/cache@v4
+      with:
+        path: cache/external_rust_crates_structopt-derive.tar.zst
+        key: external_rust_crates_structopt-derive@${{ env.branch }}
+        restore-keys: external_rust_crates_structopt-derive@${{ env.branch }}
     - name: Restore Cache external_rust_crates_syn.tar.zst
       id: external_rust_crates_syn
       uses: actions/cache@v4
@@ -623,34 +525,13 @@ jobs:
         path: cache/external_rust_crates_textwrap.tar.zst
         key: external_rust_crates_textwrap@${{ env.branch }}
         restore-keys: external_rust_crates_textwrap@${{ env.branch }}
-    - name: Restore Cache external_rust_crates_thiserror.tar.zst
-      id: external_rust_crates_thiserror
+    - name: Restore Cache external_rust_crates_unicode-segmentation.tar.zst
+      id: external_rust_crates_unicode-segmentation
       uses: actions/cache@v4
       with:
-        path: cache/external_rust_crates_thiserror.tar.zst
-        key: external_rust_crates_thiserror@${{ env.branch }}
-        restore-keys: external_rust_crates_thiserror@${{ env.branch }}
-    - name: Restore Cache external_rust_crates_thiserror-impl.tar.zst
-      id: external_rust_crates_thiserror-impl
-      uses: actions/cache@v4
-      with:
-        path: cache/external_rust_crates_thiserror-impl.tar.zst
-        key: external_rust_crates_thiserror-impl@${{ env.branch }}
-        restore-keys: external_rust_crates_thiserror-impl@${{ env.branch }}
-    - name: Restore Cache external_rust_crates_tokio.tar.zst
-      id: external_rust_crates_tokio
-      uses: actions/cache@v4
-      with:
-        path: cache/external_rust_crates_tokio.tar.zst
-        key: external_rust_crates_tokio@${{ env.branch }}
-        restore-keys: external_rust_crates_tokio@${{ env.branch }}
-    - name: Restore Cache external_rust_crates_tokio-macros.tar.zst
-      id: external_rust_crates_tokio-macros
-      uses: actions/cache@v4
-      with:
-        path: cache/external_rust_crates_tokio-macros.tar.zst
-        key: external_rust_crates_tokio-macros@${{ env.branch }}
-        restore-keys: external_rust_crates_tokio-macros@${{ env.branch }}
+        path: cache/external_rust_crates_unicode-segmentation.tar.zst
+        key: external_rust_crates_unicode-segmentation@${{ env.branch }}
+        restore-keys: external_rust_crates_unicode-segmentation@${{ env.branch }}
     - name: Restore Cache external_rust_crates_unicode-width.tar.zst
       id: external_rust_crates_unicode-width
       uses: actions/cache@v4
@@ -665,6 +546,13 @@ jobs:
         path: cache/external_rust_crates_unicode-xid.tar.zst
         key: external_rust_crates_unicode-xid@${{ env.branch }}
         restore-keys: external_rust_crates_unicode-xid@${{ env.branch }}
+    - name: Restore Cache external_rust_crates_which.tar.zst
+      id: external_rust_crates_which
+      uses: actions/cache@v4
+      with:
+        path: cache/external_rust_crates_which.tar.zst
+        key: external_rust_crates_which@${{ env.branch }}
+        restore-keys: external_rust_crates_which@${{ env.branch }}
     - name: Restore Cache external_rust_cxx.tar.zst
       id: external_rust_cxx
       uses: actions/cache@v4
@@ -672,55 +560,13 @@ jobs:
         path: cache/external_rust_cxx.tar.zst
         key: external_rust_cxx@${{ env.branch }}
         restore-keys: external_rust_cxx@${{ env.branch }}
-    - name: Restore Cache external_scudo.tar.zst
-      id: external_scudo
+    - name: Restore Cache external_sqlite.tar.zst
+      id: external_sqlite
       uses: actions/cache@v4
       with:
-        path: cache/external_scudo.tar.zst
-        key: external_scudo@${{ env.branch }}
-        restore-keys: external_scudo@${{ env.branch }}
-    - name: Restore Cache external_selinux.tar.zst
-      id: external_selinux
-      uses: actions/cache@v4
-      with:
-        path: cache/external_selinux.tar.zst
-        key: external_selinux@${{ env.branch }}
-        restore-keys: external_selinux@${{ env.branch }}
-    - name: Restore Cache external_snakeyaml.tar.zst
-      id: external_snakeyaml
-      uses: actions/cache@v4
-      with:
-        path: cache/external_snakeyaml.tar.zst
-        key: external_snakeyaml@${{ env.branch }}
-        restore-keys: external_snakeyaml@${{ env.branch }}
-    - name: Restore Cache external_tensorflow.tar.zst
-      id: external_tensorflow
-      uses: actions/cache@v4
-      with:
-        path: cache/external_tensorflow.tar.zst
-        key: external_tensorflow@${{ env.branch }}
-        restore-keys: external_tensorflow@${{ env.branch }}
-    - name: Restore Cache external_tflite-support.tar.zst
-      id: external_tflite-support
-      uses: actions/cache@v4
-      with:
-        path: cache/external_tflite-support.tar.zst
-        key: external_tflite-support@${{ env.branch }}
-        restore-keys: external_tflite-support@${{ env.branch }}
-    - name: Restore Cache external_tinyxml2.tar.zst
-      id: external_tinyxml2
-      uses: actions/cache@v4
-      with:
-        path: cache/external_tinyxml2.tar.zst
-        key: external_tinyxml2@${{ env.branch }}
-        restore-keys: external_tinyxml2@${{ env.branch }}
-    - name: Restore Cache external_vm_tools_p9.tar.zst
-      id: external_vm_tools_p9
-      uses: actions/cache@v4
-      with:
-        path: cache/external_vm_tools_p9.tar.zst
-        key: external_vm_tools_p9@${{ env.branch }}
-        restore-keys: external_vm_tools_p9@${{ env.branch }}
+        path: cache/external_sqlite.tar.zst
+        key: external_sqlite@${{ env.branch }}
+        restore-keys: external_sqlite@${{ env.branch }}
     - name: Restore Cache external_wayland.tar.zst
       id: external_wayland
       uses: actions/cache@v4
@@ -735,13 +581,6 @@ jobs:
         path: cache/external_zlib.tar.zst
         key: external_zlib@${{ env.branch }}
         restore-keys: external_zlib@${{ env.branch }}
-    - name: Restore Cache external_zstd.tar.zst
-      id: external_zstd
-      uses: actions/cache@v4
-      with:
-        path: cache/external_zstd.tar.zst
-        key: external_zstd@${{ env.branch }}
-        restore-keys: external_zstd@${{ env.branch }}
     - name: Restore Cache frameworks_av.tar.zst
       id: frameworks_av
       uses: actions/cache@v4
@@ -756,6 +595,13 @@ jobs:
         path: cache/frameworks_base.tar.zst
         key: frameworks_base@${{ env.branch }}
         restore-keys: frameworks_base@${{ env.branch }}
+    - name: Restore Cache frameworks_compile_libbcc.tar.zst
+      id: frameworks_compile_libbcc
+      uses: actions/cache@v4
+      with:
+        path: cache/frameworks_compile_libbcc.tar.zst
+        key: frameworks_compile_libbcc@${{ env.branch }}
+        restore-keys: frameworks_compile_libbcc@${{ env.branch }}
     - name: Restore Cache frameworks_compile_mclinker.tar.zst
       id: frameworks_compile_mclinker
       uses: actions/cache@v4
@@ -770,13 +616,13 @@ jobs:
         path: cache/frameworks_compile_slang.tar.zst
         key: frameworks_compile_slang@${{ env.branch }}
         restore-keys: frameworks_compile_slang@${{ env.branch }}
-    - name: Restore Cache frameworks_libs_modules-utils.tar.zst
-      id: frameworks_libs_modules-utils
+    - name: Restore Cache frameworks_hardware_interfaces.tar.zst
+      id: frameworks_hardware_interfaces
       uses: actions/cache@v4
       with:
-        path: cache/frameworks_libs_modules-utils.tar.zst
-        key: frameworks_libs_modules-utils@${{ env.branch }}
-        restore-keys: frameworks_libs_modules-utils@${{ env.branch }}
+        path: cache/frameworks_hardware_interfaces.tar.zst
+        key: frameworks_hardware_interfaces@${{ env.branch }}
+        restore-keys: frameworks_hardware_interfaces@${{ env.branch }}
     - name: Restore Cache frameworks_native.tar.zst
       id: frameworks_native
       uses: actions/cache@v4
@@ -791,6 +637,20 @@ jobs:
         path: cache/frameworks_proto_logging.tar.zst
         key: frameworks_proto_logging@${{ env.branch }}
         restore-keys: frameworks_proto_logging@${{ env.branch }}
+    - name: Restore Cache frameworks_rs.tar.zst
+      id: frameworks_rs
+      uses: actions/cache@v4
+      with:
+        path: cache/frameworks_rs.tar.zst
+        key: frameworks_rs@${{ env.branch }}
+        restore-keys: frameworks_rs@${{ env.branch }}
+    - name: Restore Cache hardware_interfaces.tar.zst
+      id: hardware_interfaces
+      uses: actions/cache@v4
+      with:
+        path: cache/hardware_interfaces.tar.zst
+        key: hardware_interfaces@${{ env.branch }}
+        restore-keys: hardware_interfaces@${{ env.branch }}
     - name: Restore Cache hardware_libhardware.tar.zst
       id: hardware_libhardware
       uses: actions/cache@v4
@@ -805,6 +665,20 @@ jobs:
         path: cache/hardware_libhardware_legacy.tar.zst
         key: hardware_libhardware_legacy@${{ env.branch }}
         restore-keys: hardware_libhardware_legacy@${{ env.branch }}
+    - name: Restore Cache hardware_nxp_nfc.tar.zst
+      id: hardware_nxp_nfc
+      uses: actions/cache@v4
+      with:
+        path: cache/hardware_nxp_nfc.tar.zst
+        key: hardware_nxp_nfc@${{ env.branch }}
+        restore-keys: hardware_nxp_nfc@${{ env.branch }}
+    - name: Restore Cache hardware_nxp_secure_element.tar.zst
+      id: hardware_nxp_secure_element
+      uses: actions/cache@v4
+      with:
+        path: cache/hardware_nxp_secure_element.tar.zst
+        key: hardware_nxp_secure_element@${{ env.branch }}
+        restore-keys: hardware_nxp_secure_element@${{ env.branch }}
     - name: Restore Cache hardware_ril.tar.zst
       id: hardware_ril
       uses: actions/cache@v4
@@ -812,13 +686,6 @@ jobs:
         path: cache/hardware_ril.tar.zst
         key: hardware_ril@${{ env.branch }}
         restore-keys: hardware_ril@${{ env.branch }}
-    - name: Restore Cache kernel_configs.tar.zst
-      id: kernel_configs
-      uses: actions/cache@v4
-      with:
-        path: cache/kernel_configs.tar.zst
-        key: kernel_configs@${{ env.branch }}
-        restore-keys: kernel_configs@${{ env.branch }}
     - name: Restore Cache kernel_prebuilts_common-modules_virtual-device_5.10_x86-64.tar.zst
       id: kernel_prebuilts_common-modules_virtual-device_5-10_x86-64
       uses: actions/cache@v4
@@ -833,13 +700,27 @@ jobs:
         path: cache/libcore.tar.zst
         key: libcore@${{ env.branch }}
         restore-keys: libcore@${{ env.branch }}
-    - name: Restore Cache libnativehelper.tar.zst
-      id: libnativehelper
+    - name: Restore Cache packages_modules_Connectivity.tar.zst
+      id: packages_modules_Connectivity
       uses: actions/cache@v4
       with:
-        path: cache/libnativehelper.tar.zst
-        key: libnativehelper@${{ env.branch }}
-        restore-keys: libnativehelper@${{ env.branch }}
+        path: cache/packages_modules_Connectivity.tar.zst
+        key: packages_modules_Connectivity@${{ env.branch }}
+        restore-keys: packages_modules_Connectivity@${{ env.branch }}
+    - name: Restore Cache packages_modules_DnsResolver.tar.zst
+      id: packages_modules_DnsResolver
+      uses: actions/cache@v4
+      with:
+        path: cache/packages_modules_DnsResolver.tar.zst
+        key: packages_modules_DnsResolver@${{ env.branch }}
+        restore-keys: packages_modules_DnsResolver@${{ env.branch }}
+    - name: Restore Cache packages_modules_NetworkStack.tar.zst
+      id: packages_modules_NetworkStack
+      uses: actions/cache@v4
+      with:
+        path: cache/packages_modules_NetworkStack.tar.zst
+        key: packages_modules_NetworkStack@${{ env.branch }}
+        restore-keys: packages_modules_NetworkStack@${{ env.branch }}
     - name: Restore Cache packages_modules_Permission.tar.zst
       id: packages_modules_Permission
       uses: actions/cache@v4
@@ -847,13 +728,6 @@ jobs:
         path: cache/packages_modules_Permission.tar.zst
         key: packages_modules_Permission@${{ env.branch }}
         restore-keys: packages_modules_Permission@${{ env.branch }}
-    - name: Restore Cache packages_modules_SdkExtensions.tar.zst
-      id: packages_modules_SdkExtensions
-      uses: actions/cache@v4
-      with:
-        path: cache/packages_modules_SdkExtensions.tar.zst
-        key: packages_modules_SdkExtensions@${{ env.branch }}
-        restore-keys: packages_modules_SdkExtensions@${{ env.branch }}
     - name: Restore Cache packages_modules_StatsD.tar.zst
       id: packages_modules_StatsD
       uses: actions/cache@v4
@@ -868,20 +742,6 @@ jobs:
         path: cache/packages_modules_Virtualization.tar.zst
         key: packages_modules_Virtualization@${{ env.branch }}
         restore-keys: packages_modules_Virtualization@${{ env.branch }}
-    - name: Restore Cache packages_modules_adb.tar.zst
-      id: packages_modules_adb
-      uses: actions/cache@v4
-      with:
-        path: cache/packages_modules_adb.tar.zst
-        key: packages_modules_adb@${{ env.branch }}
-        restore-keys: packages_modules_adb@${{ env.branch }}
-    - name: Restore Cache packages_modules_common.tar.zst
-      id: packages_modules_common
-      uses: actions/cache@v4
-      with:
-        path: cache/packages_modules_common.tar.zst
-        key: packages_modules_common@${{ env.branch }}
-        restore-keys: packages_modules_common@${{ env.branch }}
     - name: Restore Cache prebuilts_build-tools.tar.zst
       id: prebuilts_build-tools
       uses: actions/cache@v4
@@ -952,13 +812,6 @@ jobs:
         path: cache/prebuilts_manifest-merger.tar.zst
         key: prebuilts_manifest-merger@${{ env.branch }}
         restore-keys: prebuilts_manifest-merger@${{ env.branch }}
-    - name: Restore Cache prebuilts_misc.tar.zst
-      id: prebuilts_misc
-      uses: actions/cache@v4
-      with:
-        path: cache/prebuilts_misc.tar.zst
-        key: prebuilts_misc@${{ env.branch }}
-        restore-keys: prebuilts_misc@${{ env.branch }}
     - name: Restore Cache prebuilts_r8.tar.zst
       id: prebuilts_r8
       uses: actions/cache@v4
@@ -1008,13 +861,27 @@ jobs:
         path: cache/system_core.tar.zst
         key: system_core@${{ env.branch }}
         restore-keys: system_core@${{ env.branch }}
-    - name: Restore Cache system_incremental_delivery.tar.zst
-      id: system_incremental_delivery
+    - name: Restore Cache system_extras.tar.zst
+      id: system_extras
       uses: actions/cache@v4
       with:
-        path: cache/system_incremental_delivery.tar.zst
-        key: system_incremental_delivery@${{ env.branch }}
-        restore-keys: system_incremental_delivery@${{ env.branch }}
+        path: cache/system_extras.tar.zst
+        key: system_extras@${{ env.branch }}
+        restore-keys: system_extras@${{ env.branch }}
+    - name: Restore Cache system_gsid.tar.zst
+      id: system_gsid
+      uses: actions/cache@v4
+      with:
+        path: cache/system_gsid.tar.zst
+        key: system_gsid@${{ env.branch }}
+        restore-keys: system_gsid@${{ env.branch }}
+    - name: Restore Cache system_hardware_interfaces.tar.zst
+      id: system_hardware_interfaces
+      uses: actions/cache@v4
+      with:
+        path: cache/system_hardware_interfaces.tar.zst
+        key: system_hardware_interfaces@${{ env.branch }}
+        restore-keys: system_hardware_interfaces@${{ env.branch }}
     - name: Restore Cache system_libbase.tar.zst
       id: system_libbase
       uses: actions/cache@v4
@@ -1022,6 +889,13 @@ jobs:
         path: cache/system_libbase.tar.zst
         key: system_libbase@${{ env.branch }}
         restore-keys: system_libbase@${{ env.branch }}
+    - name: Restore Cache system_libhidl.tar.zst
+      id: system_libhidl
+      uses: actions/cache@v4
+      with:
+        path: cache/system_libhidl.tar.zst
+        key: system_libhidl@${{ env.branch }}
+        restore-keys: system_libhidl@${{ env.branch }}
     - name: Restore Cache system_libprocinfo.tar.zst
       id: system_libprocinfo
       uses: actions/cache@v4
@@ -1036,13 +910,6 @@ jobs:
         path: cache/system_libziparchive.tar.zst
         key: system_libziparchive@${{ env.branch }}
         restore-keys: system_libziparchive@${{ env.branch }}
-    - name: Restore Cache system_linkerconfig.tar.zst
-      id: system_linkerconfig
-      uses: actions/cache@v4
-      with:
-        path: cache/system_linkerconfig.tar.zst
-        key: system_linkerconfig@${{ env.branch }}
-        restore-keys: system_linkerconfig@${{ env.branch }}
     - name: Restore Cache system_logging.tar.zst
       id: system_logging
       uses: actions/cache@v4
@@ -1057,6 +924,13 @@ jobs:
         path: cache/system_media.tar.zst
         key: system_media@${{ env.branch }}
         restore-keys: system_media@${{ env.branch }}
+    - name: Restore Cache system_netd.tar.zst
+      id: system_netd
+      uses: actions/cache@v4
+      with:
+        path: cache/system_netd.tar.zst
+        key: system_netd@${{ env.branch }}
+        restore-keys: system_netd@${{ env.branch }}
     - name: Restore Cache system_security.tar.zst
       id: system_security
       uses: actions/cache@v4
@@ -1085,6 +959,13 @@ jobs:
         path: cache/system_tools_hidl.tar.zst
         key: system_tools_hidl@${{ env.branch }}
         restore-keys: system_tools_hidl@${{ env.branch }}
+    - name: Restore Cache system_tools_sysprop.tar.zst
+      id: system_tools_sysprop
+      uses: actions/cache@v4
+      with:
+        path: cache/system_tools_sysprop.tar.zst
+        key: system_tools_sysprop@${{ env.branch }}
+        restore-keys: system_tools_sysprop@${{ env.branch }}
     - name: Restore Cache system_tools_xsdc.tar.zst
       id: system_tools_xsdc
       uses: actions/cache@v4
@@ -1099,22 +980,15 @@ jobs:
         path: cache/system_unwinding.tar.zst
         key: system_unwinding@${{ env.branch }}
         restore-keys: system_unwinding@${{ env.branch }}
-    - name: Restore Cache tools_apksig.tar.zst
-      id: tools_apksig
+    - name: Restore Cache system_update_engine.tar.zst
+      id: system_update_engine
       uses: actions/cache@v4
       with:
-        path: cache/tools_apksig.tar.zst
-        key: tools_apksig@${{ env.branch }}
-        restore-keys: tools_apksig@${{ env.branch }}
-    - name: Restore Cache tools_platform-compat.tar.zst
-      id: tools_platform-compat
-      uses: actions/cache@v4
-      with:
-        path: cache/tools_platform-compat.tar.zst
-        key: tools_platform-compat@${{ env.branch }}
-        restore-keys: tools_platform-compat@${{ env.branch }}
+        path: cache/system_update_engine.tar.zst
+        key: system_update_engine@${{ env.branch }}
+        restore-keys: system_update_engine@${{ env.branch }}
     - name: Start Soong
-      run: bash steps/build_05.sh
+      run: bash steps/build_06.sh
     - uses: actions/upload-artifact@v4
       with:
         name: art
@@ -1127,49 +1001,9 @@ jobs:
         path: bionic.tar.zst
     - uses: actions/upload-artifact@v4
       with:
-        name: build_blueprint
-        overwrite: true
-        path: build_blueprint.tar.zst
-    - uses: actions/upload-artifact@v4
-      with:
-        name: build_make
-        overwrite: true
-        path: build_make.tar.zst
-    - uses: actions/upload-artifact@v4
-      with:
         name: build_soong
         overwrite: true
         path: build_soong.tar.zst
-    - uses: actions/upload-artifact@v4
-      with:
-        name: cts
-        overwrite: true
-        path: cts.tar.zst
-    - uses: actions/upload-artifact@v4
-      with:
-        name: device_google_cuttlefish
-        overwrite: true
-        path: device_google_cuttlefish.tar.zst
-    - uses: actions/upload-artifact@v4
-      with:
-        name: external_angle
-        overwrite: true
-        path: external_angle.tar.zst
-    - uses: actions/upload-artifact@v4
-      with:
-        name: external_apache-commons-bcel
-        overwrite: true
-        path: external_apache-commons-bcel.tar.zst
-    - uses: actions/upload-artifact@v4
-      with:
-        name: external_auto
-        overwrite: true
-        path: external_auto.tar.zst
-    - uses: actions/upload-artifact@v4
-      with:
-        name: external_boringssl
-        overwrite: true
-        path: external_boringssl.tar.zst
     - uses: actions/upload-artifact@v4
       with:
         name: external_bouncycastle
@@ -1182,6 +1016,11 @@ jobs:
         path: external_clang.tar.zst
     - uses: actions/upload-artifact@v4
       with:
+        name: external_conscrypt
+        overwrite: true
+        path: external_conscrypt.tar.zst
+    - uses: actions/upload-artifact@v4
+      with:
         name: external_crosvm
         overwrite: true
         path: external_crosvm.tar.zst
@@ -1190,21 +1029,6 @@ jobs:
         name: external_dagger2
         overwrite: true
         path: external_dagger2.tar.zst
-    - uses: actions/upload-artifact@v4
-      with:
-        name: external_e2fsprogs
-        overwrite: true
-        path: external_e2fsprogs.tar.zst
-    - uses: actions/upload-artifact@v4
-      with:
-        name: external_google-java-format
-        overwrite: true
-        path: external_google-java-format.tar.zst
-    - uses: actions/upload-artifact@v4
-      with:
-        name: external_grpc-grpc
-        overwrite: true
-        path: external_grpc-grpc.tar.zst
     - uses: actions/upload-artifact@v4
       with:
         name: external_guava
@@ -1217,44 +1041,14 @@ jobs:
         path: external_hamcrest.tar.zst
     - uses: actions/upload-artifact@v4
       with:
-        name: external_icu
-        overwrite: true
-        path: external_icu.tar.zst
-    - uses: actions/upload-artifact@v4
-      with:
         name: external_iptables
         overwrite: true
         path: external_iptables.tar.zst
     - uses: actions/upload-artifact@v4
       with:
-        name: external_jarjar
+        name: external_junit
         overwrite: true
-        path: external_jarjar.tar.zst
-    - uses: actions/upload-artifact@v4
-      with:
-        name: external_javaparser
-        overwrite: true
-        path: external_javaparser.tar.zst
-    - uses: actions/upload-artifact@v4
-      with:
-        name: external_javapoet
-        overwrite: true
-        path: external_javapoet.tar.zst
-    - uses: actions/upload-artifact@v4
-      with:
-        name: external_jcommander
-        overwrite: true
-        path: external_jcommander.tar.zst
-    - uses: actions/upload-artifact@v4
-      with:
-        name: external_jsr305
-        overwrite: true
-        path: external_jsr305.tar.zst
-    - uses: actions/upload-artifact@v4
-      with:
-        name: external_jsr330
-        overwrite: true
-        path: external_jsr330.tar.zst
+        path: external_junit.tar.zst
     - uses: actions/upload-artifact@v4
       with:
         name: external_libcap
@@ -1267,24 +1061,14 @@ jobs:
         path: external_libchrome.tar.zst
     - uses: actions/upload-artifact@v4
       with:
-        name: external_libffi
+        name: external_libxml2
         overwrite: true
-        path: external_libffi.tar.zst
-    - uses: actions/upload-artifact@v4
-      with:
-        name: external_libtextclassifier
-        overwrite: true
-        path: external_libtextclassifier.tar.zst
+        path: external_libxml2.tar.zst
     - uses: actions/upload-artifact@v4
       with:
         name: external_llvm
         overwrite: true
         path: external_llvm.tar.zst
-    - uses: actions/upload-artifact@v4
-      with:
-        name: external_minijail
-        overwrite: true
-        path: external_minijail.tar.zst
     - uses: actions/upload-artifact@v4
       with:
         name: external_oj-libjdwp
@@ -1302,74 +1086,24 @@ jobs:
         path: external_perfetto.tar.zst
     - uses: actions/upload-artifact@v4
       with:
-        name: external_protobuf
+        name: external_rust_crates_bindgen
         overwrite: true
-        path: external_protobuf.tar.zst
+        path: external_rust_crates_bindgen.tar.zst
     - uses: actions/upload-artifact@v4
       with:
-        name: external_python_cpython2
+        name: external_rust_crates_grpcio-compiler
         overwrite: true
-        path: external_python_cpython2.tar.zst
+        path: external_rust_crates_grpcio-compiler.tar.zst
     - uses: actions/upload-artifact@v4
       with:
-        name: external_python_cpython3
+        name: external_rust_crates_protobuf-codegen
         overwrite: true
-        path: external_python_cpython3.tar.zst
+        path: external_rust_crates_protobuf-codegen.tar.zst
     - uses: actions/upload-artifact@v4
       with:
-        name: external_python_six
+        name: external_rust_crates_structopt-derive
         overwrite: true
-        path: external_python_six.tar.zst
-    - uses: actions/upload-artifact@v4
-      with:
-        name: external_rust_crates_async-trait
-        overwrite: true
-        path: external_rust_crates_async-trait.tar.zst
-    - uses: actions/upload-artifact@v4
-      with:
-        name: external_rust_crates_clang-sys
-        overwrite: true
-        path: external_rust_crates_clang-sys.tar.zst
-    - uses: actions/upload-artifact@v4
-      with:
-        name: external_rust_crates_futures-macro
-        overwrite: true
-        path: external_rust_crates_futures-macro.tar.zst
-    - uses: actions/upload-artifact@v4
-      with:
-        name: external_rust_crates_num-derive
-        overwrite: true
-        path: external_rust_crates_num-derive.tar.zst
-    - uses: actions/upload-artifact@v4
-      with:
-        name: external_rust_crates_proc-macro-error
-        overwrite: true
-        path: external_rust_crates_proc-macro-error.tar.zst
-    - uses: actions/upload-artifact@v4
-      with:
-        name: external_rust_crates_protobuf
-        overwrite: true
-        path: external_rust_crates_protobuf.tar.zst
-    - uses: actions/upload-artifact@v4
-      with:
-        name: external_rust_crates_remain
-        overwrite: true
-        path: external_rust_crates_remain.tar.zst
-    - uses: actions/upload-artifact@v4
-      with:
-        name: external_rust_crates_serde_derive
-        overwrite: true
-        path: external_rust_crates_serde_derive.tar.zst
-    - uses: actions/upload-artifact@v4
-      with:
-        name: external_rust_crates_thiserror-impl
-        overwrite: true
-        path: external_rust_crates_thiserror-impl.tar.zst
-    - uses: actions/upload-artifact@v4
-      with:
-        name: external_rust_crates_tokio-macros
-        overwrite: true
-        path: external_rust_crates_tokio-macros.tar.zst
+        path: external_rust_crates_structopt-derive.tar.zst
     - uses: actions/upload-artifact@v4
       with:
         name: external_rust_cxx
@@ -1377,29 +1111,9 @@ jobs:
         path: external_rust_cxx.tar.zst
     - uses: actions/upload-artifact@v4
       with:
-        name: external_snakeyaml
+        name: external_sqlite
         overwrite: true
-        path: external_snakeyaml.tar.zst
-    - uses: actions/upload-artifact@v4
-      with:
-        name: external_tensorflow
-        overwrite: true
-        path: external_tensorflow.tar.zst
-    - uses: actions/upload-artifact@v4
-      with:
-        name: external_tflite-support
-        overwrite: true
-        path: external_tflite-support.tar.zst
-    - uses: actions/upload-artifact@v4
-      with:
-        name: external_tinyxml2
-        overwrite: true
-        path: external_tinyxml2.tar.zst
-    - uses: actions/upload-artifact@v4
-      with:
-        name: external_vm_tools_p9
-        overwrite: true
-        path: external_vm_tools_p9.tar.zst
+        path: external_sqlite.tar.zst
     - uses: actions/upload-artifact@v4
       with:
         name: external_wayland
@@ -1407,9 +1121,19 @@ jobs:
         path: external_wayland.tar.zst
     - uses: actions/upload-artifact@v4
       with:
+        name: frameworks_av
+        overwrite: true
+        path: frameworks_av.tar.zst
+    - uses: actions/upload-artifact@v4
+      with:
         name: frameworks_base
         overwrite: true
         path: frameworks_base.tar.zst
+    - uses: actions/upload-artifact@v4
+      with:
+        name: frameworks_compile_libbcc
+        overwrite: true
+        path: frameworks_compile_libbcc.tar.zst
     - uses: actions/upload-artifact@v4
       with:
         name: frameworks_compile_mclinker
@@ -1417,9 +1141,14 @@ jobs:
         path: frameworks_compile_mclinker.tar.zst
     - uses: actions/upload-artifact@v4
       with:
-        name: frameworks_compile_slang
+        name: frameworks_hardware_interfaces
         overwrite: true
-        path: frameworks_compile_slang.tar.zst
+        path: frameworks_hardware_interfaces.tar.zst
+    - uses: actions/upload-artifact@v4
+      with:
+        name: frameworks_native
+        overwrite: true
+        path: frameworks_native.tar.zst
     - uses: actions/upload-artifact@v4
       with:
         name: frameworks_proto_logging
@@ -1427,29 +1156,29 @@ jobs:
         path: frameworks_proto_logging.tar.zst
     - uses: actions/upload-artifact@v4
       with:
-        name: kernel_configs
+        name: hardware_interfaces
         overwrite: true
-        path: kernel_configs.tar.zst
+        path: hardware_interfaces.tar.zst
     - uses: actions/upload-artifact@v4
       with:
-        name: kernel_prebuilts_common-modules_virtual-device_5.10_x86-64
+        name: hardware_nxp_nfc
         overwrite: true
-        path: kernel_prebuilts_common-modules_virtual-device_5.10_x86-64.tar.zst
+        path: hardware_nxp_nfc.tar.zst
     - uses: actions/upload-artifact@v4
       with:
-        name: libcore
+        name: hardware_nxp_secure_element
         overwrite: true
-        path: libcore.tar.zst
+        path: hardware_nxp_secure_element.tar.zst
     - uses: actions/upload-artifact@v4
       with:
-        name: packages_modules_Permission
+        name: packages_modules_DnsResolver
         overwrite: true
-        path: packages_modules_Permission.tar.zst
+        path: packages_modules_DnsResolver.tar.zst
     - uses: actions/upload-artifact@v4
       with:
-        name: packages_modules_SdkExtensions
+        name: packages_modules_NetworkStack
         overwrite: true
-        path: packages_modules_SdkExtensions.tar.zst
+        path: packages_modules_NetworkStack.tar.zst
     - uses: actions/upload-artifact@v4
       with:
         name: packages_modules_StatsD
@@ -1460,16 +1189,6 @@ jobs:
         name: packages_modules_Virtualization
         overwrite: true
         path: packages_modules_Virtualization.tar.zst
-    - uses: actions/upload-artifact@v4
-      with:
-        name: packages_modules_adb
-        overwrite: true
-        path: packages_modules_adb.tar.zst
-    - uses: actions/upload-artifact@v4
-      with:
-        name: packages_modules_common
-        overwrite: true
-        path: packages_modules_common.tar.zst
     - uses: actions/upload-artifact@v4
       with:
         name: prebuilts_manifest-merger
@@ -1512,14 +1231,34 @@ jobs:
         path: system_core.tar.zst
     - uses: actions/upload-artifact@v4
       with:
-        name: system_libbase
+        name: system_extras
         overwrite: true
-        path: system_libbase.tar.zst
+        path: system_extras.tar.zst
     - uses: actions/upload-artifact@v4
       with:
-        name: system_linkerconfig
+        name: system_gsid
         overwrite: true
-        path: system_linkerconfig.tar.zst
+        path: system_gsid.tar.zst
+    - uses: actions/upload-artifact@v4
+      with:
+        name: system_hardware_interfaces
+        overwrite: true
+        path: system_hardware_interfaces.tar.zst
+    - uses: actions/upload-artifact@v4
+      with:
+        name: system_libhidl
+        overwrite: true
+        path: system_libhidl.tar.zst
+    - uses: actions/upload-artifact@v4
+      with:
+        name: system_netd
+        overwrite: true
+        path: system_netd.tar.zst
+    - uses: actions/upload-artifact@v4
+      with:
+        name: system_security
+        overwrite: true
+        path: system_security.tar.zst
     - uses: actions/upload-artifact@v4
       with:
         name: system_sepolicy
@@ -1537,16 +1276,16 @@ jobs:
         path: system_tools_hidl.tar.zst
     - uses: actions/upload-artifact@v4
       with:
+        name: system_tools_sysprop
+        overwrite: true
+        path: system_tools_sysprop.tar.zst
+    - uses: actions/upload-artifact@v4
+      with:
         name: system_tools_xsdc
         overwrite: true
         path: system_tools_xsdc.tar.zst
     - uses: actions/upload-artifact@v4
       with:
-        name: tools_apksig
+        name: system_update_engine
         overwrite: true
-        path: tools_apksig.tar.zst
-    - uses: actions/upload-artifact@v4
-      with:
-        name: tools_platform-compat
-        overwrite: true
-        path: tools_platform-compat.tar.zst
+        path: system_update_engine.tar.zst
