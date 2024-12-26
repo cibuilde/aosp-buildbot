@@ -19,7 +19,7 @@ rsync -a -r $GITHUB_WORKSPACE/artifacts/external/rust/crates/protobuf-codegen/li
 rsync -a -r $GITHUB_WORKSPACE/artifacts/external/rust/crates/protobuf-codegen/protoc-gen-rust^linux_glibc_x86_64/ .
 
 echo "building libcdisk_spec_proto^android_x86_64_source_apex10000"
-ninja -f $GITHUB_WORKSPACE/steps/build_08.ninja libcdisk_spec_proto,android_x86_64_source_apex10000
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libcdisk_spec_proto,android_x86_64_source_apex10000
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/crosvm/protos/libcdisk_spec_proto^android_x86_64_source_apex10000
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/external/crosvm/libcdisk_spec_proto^android_x86_64_source_apex10000.output . $GITHUB_WORKSPACE/artifacts/external/crosvm/protos/libcdisk_spec_proto^android_x86_64_source_apex10000
 
