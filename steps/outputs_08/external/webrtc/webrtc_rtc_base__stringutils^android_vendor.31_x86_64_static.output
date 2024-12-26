@@ -1,0 +1,5 @@
+out/soong/.intermediates/external/webrtc/webrtc_rtc_base__stringutils/android_vendor.31_x86_64_static/obj/external/webrtc/rtc_base/string_encode.o
+out/soong/.intermediates/external/webrtc/webrtc_rtc_base__stringutils/android_vendor.31_x86_64_static/obj/external/webrtc/rtc_base/string_to_number.o
+out/soong/.intermediates/external/webrtc/webrtc_rtc_base__stringutils/android_vendor.31_x86_64_static/obj/external/webrtc/rtc_base/string_utils.o
+out/soong/.intermediates/external/webrtc/webrtc_rtc_base__stringutils/android_vendor.31_x86_64_static/obj/external/webrtc/rtc_base/strings/string_builder.o
+out/soong/.intermediates/external/webrtc/webrtc_rtc_base__stringutils/android_vendor.31_x86_64_static/obj/external/webrtc/rtc_base/strings/string_format.o

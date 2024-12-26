@@ -1,0 +1,6 @@
+out/soong/.intermediates/external/webrtc/webrtc_rtc_base__rtc_numerics/android_vendor.31_x86_x86_64_static/obj/external/webrtc/rtc_base/numerics/event_based_exponential_moving_average.o
+out/soong/.intermediates/external/webrtc/webrtc_rtc_base__rtc_numerics/android_vendor.31_x86_x86_64_static/obj/external/webrtc/rtc_base/numerics/event_rate_counter.o
+out/soong/.intermediates/external/webrtc/webrtc_rtc_base__rtc_numerics/android_vendor.31_x86_x86_64_static/obj/external/webrtc/rtc_base/numerics/exp_filter.o
+out/soong/.intermediates/external/webrtc/webrtc_rtc_base__rtc_numerics/android_vendor.31_x86_x86_64_static/obj/external/webrtc/rtc_base/numerics/moving_average.o
+out/soong/.intermediates/external/webrtc/webrtc_rtc_base__rtc_numerics/android_vendor.31_x86_x86_64_static/obj/external/webrtc/rtc_base/numerics/sample_stats.o
+out/soong/.intermediates/external/webrtc/webrtc_rtc_base__rtc_numerics/android_vendor.31_x86_x86_64_static/obj/external/webrtc/rtc_base/numerics/samples_stats_counter.o

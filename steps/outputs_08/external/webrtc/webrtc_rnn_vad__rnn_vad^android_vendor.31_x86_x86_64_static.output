@@ -1,0 +1,9 @@
+out/soong/.intermediates/external/webrtc/webrtc_rnn_vad__rnn_vad/android_vendor.31_x86_x86_64_static/obj/external/webrtc/modules/audio_processing/agc2/rnn_vad/auto_correlation.o
+out/soong/.intermediates/external/webrtc/webrtc_rnn_vad__rnn_vad/android_vendor.31_x86_x86_64_static/obj/external/webrtc/modules/audio_processing/agc2/rnn_vad/common.o
+out/soong/.intermediates/external/webrtc/webrtc_rnn_vad__rnn_vad/android_vendor.31_x86_x86_64_static/obj/external/webrtc/modules/audio_processing/agc2/rnn_vad/features_extraction.o
+out/soong/.intermediates/external/webrtc/webrtc_rnn_vad__rnn_vad/android_vendor.31_x86_x86_64_static/obj/external/webrtc/modules/audio_processing/agc2/rnn_vad/lp_residual.o
+out/soong/.intermediates/external/webrtc/webrtc_rnn_vad__rnn_vad/android_vendor.31_x86_x86_64_static/obj/external/webrtc/modules/audio_processing/agc2/rnn_vad/pitch_search.o
+out/soong/.intermediates/external/webrtc/webrtc_rnn_vad__rnn_vad/android_vendor.31_x86_x86_64_static/obj/external/webrtc/modules/audio_processing/agc2/rnn_vad/pitch_search_internal.o
+out/soong/.intermediates/external/webrtc/webrtc_rnn_vad__rnn_vad/android_vendor.31_x86_x86_64_static/obj/external/webrtc/modules/audio_processing/agc2/rnn_vad/rnn.o
+out/soong/.intermediates/external/webrtc/webrtc_rnn_vad__rnn_vad/android_vendor.31_x86_x86_64_static/obj/external/webrtc/modules/audio_processing/agc2/rnn_vad/spectral_features.o
+out/soong/.intermediates/external/webrtc/webrtc_rnn_vad__rnn_vad/android_vendor.31_x86_x86_64_static/obj/external/webrtc/modules/audio_processing/agc2/rnn_vad/spectral_features_internal.o
