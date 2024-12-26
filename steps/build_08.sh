@@ -8,6 +8,8 @@ sudo rm -rf /usr/local/lib/android/sdk
 sudo rm -rf /usr/local/lib/node_modules
 sudo rm -rf /usr/local/share/powershell
 sudo rm -rf /usr/local/share/chromium
+sudo rm -rf /usr/local/share/swift
+sudo rm -rf /opt/hostedtoolcache
 sudo dpkg-query -W -f='${Installed-Size;8}  ${Package}\n' | sort -n
 df -h
 
@@ -728,60 +730,6 @@ tar xf $GITHUB_WORKSPACE/tools_platform-compat.tar.zst -C $GITHUB_WORKSPACE/arti
 
 export OUT_DIR=out
 
-time source steps/build_08/external_crosvm.sh
-time source steps/build_08/external_curl.sh
-time source steps/build_08/external_dagger2.sh
-time source steps/build_08/external_drm_hwcomposer.sh
-time source steps/build_08/external_e2fsprogs.sh
-time source steps/build_08/external_eigen.sh
-time source steps/build_08/external_escapevelocity.sh
-time source steps/build_08/external_expat.sh
-time source steps/build_08/external_flac.sh
-time source steps/build_08/external_fmtlib.sh
-time source steps/build_08/external_gemmlowp.sh
-time source steps/build_08/external_gflags.sh
-time source steps/build_08/external_google-java-format.sh
-time source steps/build_08/external_guava.sh
-time source steps/build_08/external_guice.sh
-time source steps/build_08/external_jsmn.sh
-time source steps/build_08/external_jsoncpp.sh
-time source steps/build_08/external_libavc.sh
-time source steps/build_08/external_libcap.sh
-time source steps/build_08/external_libcppbor.sh
-time source steps/build_08/external_libcxx.sh
-time source steps/build_08/external_libcxxabi.sh
-time source steps/build_08/external_libdrm.sh
-time source steps/build_08/external_libevent.sh
-time source steps/build_08/external_libgsm.sh
-time source steps/build_08/external_libhevc.sh
-time source steps/build_08/external_libjpeg-turbo.sh
-time source steps/build_08/external_libmpeg2.sh
-time source steps/build_08/external_libnl.sh
-time source steps/build_08/external_libopus.sh
-time source steps/build_08/external_libpng.sh
-time source steps/build_08/external_libvpx.sh
-time source steps/build_08/external_libxml2.sh
-time source steps/build_08/external_libyuv.sh
-time source steps/build_08/external_llvm.sh
-time source steps/build_08/external_lz4.sh
-time source steps/build_08/external_lzma.sh
-time source steps/build_08/external_mdnsresponder.sh
-time source steps/build_08/external_mesa3d.sh
-time source steps/build_08/external_minijail.sh
-time source steps/build_08/external_mksh.sh
-time source steps/build_08/external_nanopb-c.sh
-time source steps/build_08/external_one-true-awk.sh
-time source steps/build_08/external_pcre.sh
-time source steps/build_08/external_perfetto.sh
-time source steps/build_08/external_pffft.sh
-time source steps/build_08/external_piex.sh
-time source steps/build_08/external_protobuf.sh
-time source steps/build_08/external_rnnoise.sh
-time source steps/build_08/external_rust_crates_grpcio-sys.sh
-time source steps/build_08/external_rust_crates_libsqlite3-sys.sh
-time source steps/build_08/external_scrypt.sh
-time source steps/build_08/external_selinux.sh
-time source steps/build_08/external_sqlite.sh
 time source steps/build_08/external_swiftshader.sh
 time source steps/build_08/external_tensorflow.sh
 time source steps/build_08/external_tinyalsa.sh
@@ -859,6 +807,60 @@ time source steps/build_08/external_bzip2.sh
 time source steps/build_08/external_cn-cbor.sh
 time source steps/build_08/external_compiler-rt.sh
 time source steps/build_08/external_conscrypt.sh
+time source steps/build_08/external_crosvm.sh
+time source steps/build_08/external_curl.sh
+time source steps/build_08/external_dagger2.sh
+time source steps/build_08/external_drm_hwcomposer.sh
+time source steps/build_08/external_e2fsprogs.sh
+time source steps/build_08/external_eigen.sh
+time source steps/build_08/external_escapevelocity.sh
+time source steps/build_08/external_expat.sh
+time source steps/build_08/external_flac.sh
+time source steps/build_08/external_fmtlib.sh
+time source steps/build_08/external_gemmlowp.sh
+time source steps/build_08/external_gflags.sh
+time source steps/build_08/external_google-java-format.sh
+time source steps/build_08/external_guava.sh
+time source steps/build_08/external_guice.sh
+time source steps/build_08/external_jsmn.sh
+time source steps/build_08/external_jsoncpp.sh
+time source steps/build_08/external_libavc.sh
+time source steps/build_08/external_libcap.sh
+time source steps/build_08/external_libcppbor.sh
+time source steps/build_08/external_libcxx.sh
+time source steps/build_08/external_libcxxabi.sh
+time source steps/build_08/external_libdrm.sh
+time source steps/build_08/external_libevent.sh
+time source steps/build_08/external_libgsm.sh
+time source steps/build_08/external_libhevc.sh
+time source steps/build_08/external_libjpeg-turbo.sh
+time source steps/build_08/external_libmpeg2.sh
+time source steps/build_08/external_libnl.sh
+time source steps/build_08/external_libopus.sh
+time source steps/build_08/external_libpng.sh
+time source steps/build_08/external_libvpx.sh
+time source steps/build_08/external_libxml2.sh
+time source steps/build_08/external_libyuv.sh
+time source steps/build_08/external_llvm.sh
+time source steps/build_08/external_lz4.sh
+time source steps/build_08/external_lzma.sh
+time source steps/build_08/external_mdnsresponder.sh
+time source steps/build_08/external_mesa3d.sh
+time source steps/build_08/external_minijail.sh
+time source steps/build_08/external_mksh.sh
+time source steps/build_08/external_nanopb-c.sh
+time source steps/build_08/external_one-true-awk.sh
+time source steps/build_08/external_pcre.sh
+time source steps/build_08/external_perfetto.sh
+time source steps/build_08/external_pffft.sh
+time source steps/build_08/external_piex.sh
+time source steps/build_08/external_protobuf.sh
+time source steps/build_08/external_rnnoise.sh
+time source steps/build_08/external_rust_crates_grpcio-sys.sh
+time source steps/build_08/external_rust_crates_libsqlite3-sys.sh
+time source steps/build_08/external_scrypt.sh
+time source steps/build_08/external_selinux.sh
+time source steps/build_08/external_sqlite.sh
 
 if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_clang_host_linux-x86.tar.zst" ]; then
   echo "Compressing prebuilts/clang/host/linux-x86 -> prebuilts_clang_host_linux-x86.tar.zst"
