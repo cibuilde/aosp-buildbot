@@ -728,8 +728,6 @@ tar xf $GITHUB_WORKSPACE/tools_platform-compat.tar.zst -C $GITHUB_WORKSPACE/arti
 
 export OUT_DIR=out
 
-time source steps/build_08/art.sh
-time source steps/build_08/bionic.sh
 time source steps/build_08/bootable_recovery.sh
 time source steps/build_08/build_soong.sh
 time source steps/build_08/device_generic_goldfish-opengl.sh
@@ -859,6 +857,8 @@ time source steps/build_08/system_unwinding.sh
 time source steps/build_08/system_update_engine.sh
 time source steps/build_08/tools_metalava.sh
 time source steps/build_08/tools_platform-compat.sh
+time source steps/build_08/art.sh
+time source steps/build_08/bionic.sh
 
 if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_clang_host_linux-x86.tar.zst" ]; then
   echo "Compressing prebuilts/clang/host/linux-x86 -> prebuilts_clang_host_linux-x86.tar.zst"
