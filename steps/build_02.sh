@@ -187,42 +187,11 @@ gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern sys
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/unwinding
 tar xf $GITHUB_WORKSPACE/system_unwinding.tar.zst -C $GITHUB_WORKSPACE/artifacts/system/unwinding/
 
-time source steps/build_02/bionic.sh
-time source steps/build_02/bootable_recovery.sh
-time source steps/build_02/build_blueprint.sh
-time source steps/build_02/build_soong.sh
-time source steps/build_02/device_generic_vulkan-cereal.sh
-time source steps/build_02/external_boringssl.sh
-time source steps/build_02/external_cpu_features.sh
-time source steps/build_02/external_grpc-grpc.sh
-time source steps/build_02/external_icu.sh
-time source steps/build_02/external_libcxx.sh
-time source steps/build_02/external_libyuv.sh
-time source steps/build_02/external_pcre.sh
-time source steps/build_02/external_python_cpython2.sh
-time source steps/build_02/external_rust_crates_aho-corasick.sh
-time source steps/build_02/external_rust_crates_clap.sh
-time source steps/build_02/external_rust_crates_codespan-reporting.sh
-time source steps/build_02/external_rust_crates_heck.sh
-time source steps/build_02/external_rust_crates_libloading.sh
-time source steps/build_02/external_rust_crates_log.sh
-time source steps/build_02/external_rust_crates_nom.sh
-time source steps/build_02/external_rust_crates_proc-macro2.sh
-time source steps/build_02/external_rust_crates_which.sh
-time source steps/build_02/external_selinux.sh
-time source steps/build_02/external_sqlite.sh
-time source steps/build_02/external_zlib.sh
-time source steps/build_02/frameworks_base.sh
-time source steps/build_02/packages_modules_Virtualization.sh
-time source steps/build_02/prebuilts_rust.sh
-time source steps/build_02/system_core.sh
-time source steps/build_02/system_libbase.sh
-time source steps/build_02/system_libvintf.sh
-time source steps/build_02/system_media.sh
+export OUT_DIR=out
+
 time source steps/build_02/system_sepolicy.sh
-time source steps/build_02/system_unwinding.sh
 
 if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_clang_host_linux-x86.tar.zst" ]; then
   echo "Compressing prebuilts/clang/host/linux-x86 -> prebuilts_clang_host_linux-x86.tar.zst"
-  tar cfJ $GITHUB_WORKSPACE/cache/prebuilts_clang_host_linux-x86.tar.zst -C $GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86/ .
+  tar -cf $GITHUB_WORKSPACE/cache/prebuilts_clang_host_linux-x86.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86/ .
 fi

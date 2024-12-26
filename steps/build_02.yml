@@ -8,12 +8,12 @@ env:
   GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 jobs:
   build_02:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     steps:
     - name: Checkout
       uses: actions/checkout@main
     - name: Install ninja
-      run: sudo apt update && sudo apt install -y ninja-build
+      run: sudo apt update && sudo apt install -y ninja-build python2.7
     - name: Restore Cache art.tar.zst
       id: art
       uses: actions/cache@v4
