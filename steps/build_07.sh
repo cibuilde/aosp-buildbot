@@ -1,5 +1,16 @@
 set -e
 
+
+sudo apt purge -y azure-cli microsoft-edge-stable google-cloud-cli dotnet-sdk-7.0 dotnet-sdk-8.0 google-chrome-stable dotnet-sdk-6.0 firefox
+sudo apt autoremove -y
+sudo rm -rf /usr/local/.ghcup
+sudo rm -rf /usr/local/lib/android/sdk
+sudo rm -rf /usr/local/lib/node_modules
+sudo rm -rf /usr/local/share/powershell
+sudo rm -rf /usr/local/share/chromium
+sudo dpkg-query -W -f='${Installed-Size;8}  ${Package}\n' | sort -n
+df -h
+
 source $GITHUB_WORKSPACE/envsetup.sh
 tar xf $GITHUB_WORKSPACE/ninja.tar.zst
 
@@ -524,87 +535,8 @@ mkdir -p $GITHUB_WORKSPACE/artifacts/system/update_engine
 tar xf $GITHUB_WORKSPACE/system_update_engine.tar.zst -C $GITHUB_WORKSPACE/artifacts/system/update_engine/
 
 export OUT_DIR=out
-sudo rm -rf /usr/local/.ghcup
-sudo rm -rf /usr/local/lib/android/sdk
-sudo rm -rf /usr/local/lib/node_modules
 
-time source steps/build_07/art.sh
 time source steps/build_07/bionic.sh
-time source steps/build_07/bootable_recovery.sh
-time source steps/build_07/build_make.sh
-time source steps/build_07/build_soong.sh
-time source steps/build_07/external_avb.sh
-time source steps/build_07/external_clang.sh
-time source steps/build_07/external_conscrypt.sh
-time source steps/build_07/external_e2fsprogs.sh
-time source steps/build_07/external_freetype.sh
-time source steps/build_07/external_guava.sh
-time source steps/build_07/external_guice.sh
-time source steps/build_07/external_icu.sh
-time source steps/build_07/external_libbrillo.sh
-time source steps/build_07/external_libcap.sh
-time source steps/build_07/external_libchrome.sh
-time source steps/build_07/external_libtextclassifier.sh
-time source steps/build_07/external_libxml2.sh
-time source steps/build_07/external_nanopb-c.sh
-time source steps/build_07/external_oj-libjdwp.sh
-time source steps/build_07/external_perfetto.sh
-time source steps/build_07/external_puffin.sh
-time source steps/build_07/external_rust_crates_bindgen.sh
-time source steps/build_07/external_rust_crates_grpcio-compiler.sh
-time source steps/build_07/external_rust_crates_protobuf-codegen.sh
-time source steps/build_07/external_rust_cxx.sh
-time source steps/build_07/external_selinux.sh
-time source steps/build_07/external_zlib.sh
-time source steps/build_07/frameworks_av.sh
-time source steps/build_07/frameworks_base.sh
-time source steps/build_07/frameworks_hardware_interfaces.sh
-time source steps/build_07/frameworks_native.sh
-time source steps/build_07/frameworks_proto_logging.sh
-time source steps/build_07/frameworks_wilhelm.sh
-time source steps/build_07/hardware_interfaces.sh
-time source steps/build_07/libnativehelper.sh
-time source steps/build_07/packages_apps_Bluetooth.sh
-time source steps/build_07/packages_apps_DocumentsUI.sh
-time source steps/build_07/packages_apps_ImsServiceEntitlement.sh
-time source steps/build_07/packages_apps_Nfc.sh
-time source steps/build_07/packages_apps_SecureElement.sh
-time source steps/build_07/packages_apps_Settings.sh
-time source steps/build_07/packages_modules_CellBroadcastService.sh
-time source steps/build_07/packages_modules_DnsResolver.sh
-time source steps/build_07/packages_modules_Gki.sh
-time source steps/build_07/packages_modules_NetworkStack.sh
-time source steps/build_07/packages_modules_NeuralNetworks.sh
-time source steps/build_07/packages_modules_Permission.sh
-time source steps/build_07/packages_modules_Scheduling.sh
-time source steps/build_07/packages_modules_SdkExtensions.sh
-time source steps/build_07/packages_modules_StatsD.sh
-time source steps/build_07/packages_modules_Virtualization.sh
-time source steps/build_07/packages_modules_Wifi.sh
-time source steps/build_07/packages_modules_adb.sh
-time source steps/build_07/packages_modules_common.sh
-time source steps/build_07/packages_providers_MediaProvider.sh
-time source steps/build_07/packages_services_Telecomm.sh
-time source steps/build_07/prebuilts_rust.sh
-time source steps/build_07/prebuilts_sdk.sh
-time source steps/build_07/system_apex.sh
-time source steps/build_07/system_bt.sh
-time source steps/build_07/system_core.sh
-time source steps/build_07/system_extras.sh
-time source steps/build_07/system_hardware_interfaces.sh
-time source steps/build_07/system_hwservicemanager.sh
-time source steps/build_07/system_incremental_delivery.sh
-time source steps/build_07/system_libhidl.sh
-time source steps/build_07/system_libsysprop.sh
-time source steps/build_07/system_libvintf.sh
-time source steps/build_07/system_logging.sh
-time source steps/build_07/system_netd.sh
-time source steps/build_07/system_security.sh
-time source steps/build_07/system_sepolicy.sh
-time source steps/build_07/system_tools_hidl.sh
-time source steps/build_07/system_tools_mkbootimg.sh
-time source steps/build_07/system_update_engine.sh
-time source steps/build_07/tools_metalava.sh
 
 if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_clang_host_linux-x86.tar.zst" ]; then
   echo "Compressing prebuilts/clang/host/linux-x86 -> prebuilts_clang_host_linux-x86.tar.zst"
