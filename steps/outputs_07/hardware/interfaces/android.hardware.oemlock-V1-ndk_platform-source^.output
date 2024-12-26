@@ -1,0 +1,8 @@
+out/soong/.intermediates/hardware/interfaces/oemlock/aidl/android.hardware.oemlock-V1-ndk_platform-source/gen/android/hardware/oemlock/IOemLock.cpp
+out/soong/.intermediates/hardware/interfaces/oemlock/aidl/android.hardware.oemlock-V1-ndk_platform-source/gen/android/hardware/oemlock/OemLockSecureStatus.cpp
+out/soong/.intermediates/hardware/interfaces/oemlock/aidl/android.hardware.oemlock-V1-ndk_platform-source/gen/include/aidl/android/hardware/oemlock/BnOemLock.h
+out/soong/.intermediates/hardware/interfaces/oemlock/aidl/android.hardware.oemlock-V1-ndk_platform-source/gen/include/aidl/android/hardware/oemlock/BnOemLockSecureStatus.h
+out/soong/.intermediates/hardware/interfaces/oemlock/aidl/android.hardware.oemlock-V1-ndk_platform-source/gen/include/aidl/android/hardware/oemlock/BpOemLock.h
+out/soong/.intermediates/hardware/interfaces/oemlock/aidl/android.hardware.oemlock-V1-ndk_platform-source/gen/include/aidl/android/hardware/oemlock/BpOemLockSecureStatus.h
+out/soong/.intermediates/hardware/interfaces/oemlock/aidl/android.hardware.oemlock-V1-ndk_platform-source/gen/include/aidl/android/hardware/oemlock/IOemLock.h
+out/soong/.intermediates/hardware/interfaces/oemlock/aidl/android.hardware.oemlock-V1-ndk_platform-source/gen/include/aidl/android/hardware/oemlock/OemLockSecureStatus.h

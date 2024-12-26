@@ -1,0 +1,12 @@
+out/soong/.intermediates/hardware/interfaces/security/secureclock/aidl/android.hardware.security.secureclock-V1-ndk_platform-source/gen/android/hardware/security/secureclock/ISecureClock.cpp
+out/soong/.intermediates/hardware/interfaces/security/secureclock/aidl/android.hardware.security.secureclock-V1-ndk_platform-source/gen/android/hardware/security/secureclock/TimeStampToken.cpp
+out/soong/.intermediates/hardware/interfaces/security/secureclock/aidl/android.hardware.security.secureclock-V1-ndk_platform-source/gen/android/hardware/security/secureclock/Timestamp.cpp
+out/soong/.intermediates/hardware/interfaces/security/secureclock/aidl/android.hardware.security.secureclock-V1-ndk_platform-source/gen/include/aidl/android/hardware/security/secureclock/BnSecureClock.h
+out/soong/.intermediates/hardware/interfaces/security/secureclock/aidl/android.hardware.security.secureclock-V1-ndk_platform-source/gen/include/aidl/android/hardware/security/secureclock/BnTimeStampToken.h
+out/soong/.intermediates/hardware/interfaces/security/secureclock/aidl/android.hardware.security.secureclock-V1-ndk_platform-source/gen/include/aidl/android/hardware/security/secureclock/BnTimestamp.h
+out/soong/.intermediates/hardware/interfaces/security/secureclock/aidl/android.hardware.security.secureclock-V1-ndk_platform-source/gen/include/aidl/android/hardware/security/secureclock/BpSecureClock.h
+out/soong/.intermediates/hardware/interfaces/security/secureclock/aidl/android.hardware.security.secureclock-V1-ndk_platform-source/gen/include/aidl/android/hardware/security/secureclock/BpTimeStampToken.h
+out/soong/.intermediates/hardware/interfaces/security/secureclock/aidl/android.hardware.security.secureclock-V1-ndk_platform-source/gen/include/aidl/android/hardware/security/secureclock/BpTimestamp.h
+out/soong/.intermediates/hardware/interfaces/security/secureclock/aidl/android.hardware.security.secureclock-V1-ndk_platform-source/gen/include/aidl/android/hardware/security/secureclock/ISecureClock.h
+out/soong/.intermediates/hardware/interfaces/security/secureclock/aidl/android.hardware.security.secureclock-V1-ndk_platform-source/gen/include/aidl/android/hardware/security/secureclock/TimeStampToken.h
+out/soong/.intermediates/hardware/interfaces/security/secureclock/aidl/android.hardware.security.secureclock-V1-ndk_platform-source/gen/include/aidl/android/hardware/security/secureclock/Timestamp.h

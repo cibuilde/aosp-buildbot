@@ -1,0 +1,4 @@
+out/soong/.intermediates/hardware/interfaces/rebootescrow/aidl/android.hardware.rebootescrow-V1-ndk_platform-source/gen/android/hardware/rebootescrow/IRebootEscrow.cpp
+out/soong/.intermediates/hardware/interfaces/rebootescrow/aidl/android.hardware.rebootescrow-V1-ndk_platform-source/gen/include/aidl/android/hardware/rebootescrow/BnRebootEscrow.h
+out/soong/.intermediates/hardware/interfaces/rebootescrow/aidl/android.hardware.rebootescrow-V1-ndk_platform-source/gen/include/aidl/android/hardware/rebootescrow/BpRebootEscrow.h
+out/soong/.intermediates/hardware/interfaces/rebootescrow/aidl/android.hardware.rebootescrow-V1-ndk_platform-source/gen/include/aidl/android/hardware/rebootescrow/IRebootEscrow.h

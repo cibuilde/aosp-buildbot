@@ -1,0 +1,16 @@
+out/soong/.intermediates/hardware/interfaces/biometrics/common/aidl/android.hardware.biometrics.common-V1-ndk_platform-source/gen/android/hardware/biometrics/common/CommonProps.cpp
+out/soong/.intermediates/hardware/interfaces/biometrics/common/aidl/android.hardware.biometrics.common-V1-ndk_platform-source/gen/android/hardware/biometrics/common/ComponentInfo.cpp
+out/soong/.intermediates/hardware/interfaces/biometrics/common/aidl/android.hardware.biometrics.common-V1-ndk_platform-source/gen/android/hardware/biometrics/common/ICancellationSignal.cpp
+out/soong/.intermediates/hardware/interfaces/biometrics/common/aidl/android.hardware.biometrics.common-V1-ndk_platform-source/gen/android/hardware/biometrics/common/SensorStrength.cpp
+out/soong/.intermediates/hardware/interfaces/biometrics/common/aidl/android.hardware.biometrics.common-V1-ndk_platform-source/gen/include/aidl/android/hardware/biometrics/common/BnCancellationSignal.h
+out/soong/.intermediates/hardware/interfaces/biometrics/common/aidl/android.hardware.biometrics.common-V1-ndk_platform-source/gen/include/aidl/android/hardware/biometrics/common/BnCommonProps.h
+out/soong/.intermediates/hardware/interfaces/biometrics/common/aidl/android.hardware.biometrics.common-V1-ndk_platform-source/gen/include/aidl/android/hardware/biometrics/common/BnComponentInfo.h
+out/soong/.intermediates/hardware/interfaces/biometrics/common/aidl/android.hardware.biometrics.common-V1-ndk_platform-source/gen/include/aidl/android/hardware/biometrics/common/BnSensorStrength.h
+out/soong/.intermediates/hardware/interfaces/biometrics/common/aidl/android.hardware.biometrics.common-V1-ndk_platform-source/gen/include/aidl/android/hardware/biometrics/common/BpCancellationSignal.h
+out/soong/.intermediates/hardware/interfaces/biometrics/common/aidl/android.hardware.biometrics.common-V1-ndk_platform-source/gen/include/aidl/android/hardware/biometrics/common/BpCommonProps.h
+out/soong/.intermediates/hardware/interfaces/biometrics/common/aidl/android.hardware.biometrics.common-V1-ndk_platform-source/gen/include/aidl/android/hardware/biometrics/common/BpComponentInfo.h
+out/soong/.intermediates/hardware/interfaces/biometrics/common/aidl/android.hardware.biometrics.common-V1-ndk_platform-source/gen/include/aidl/android/hardware/biometrics/common/BpSensorStrength.h
+out/soong/.intermediates/hardware/interfaces/biometrics/common/aidl/android.hardware.biometrics.common-V1-ndk_platform-source/gen/include/aidl/android/hardware/biometrics/common/CommonProps.h
+out/soong/.intermediates/hardware/interfaces/biometrics/common/aidl/android.hardware.biometrics.common-V1-ndk_platform-source/gen/include/aidl/android/hardware/biometrics/common/ComponentInfo.h
+out/soong/.intermediates/hardware/interfaces/biometrics/common/aidl/android.hardware.biometrics.common-V1-ndk_platform-source/gen/include/aidl/android/hardware/biometrics/common/ICancellationSignal.h
+out/soong/.intermediates/hardware/interfaces/biometrics/common/aidl/android.hardware.biometrics.common-V1-ndk_platform-source/gen/include/aidl/android/hardware/biometrics/common/SensorStrength.h

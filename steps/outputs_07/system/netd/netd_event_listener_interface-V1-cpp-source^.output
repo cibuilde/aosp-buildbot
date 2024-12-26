@@ -1,0 +1,4 @@
+out/soong/.intermediates/system/netd/server/netd_event_listener_interface-V1-cpp-source/gen/android/net/metrics/INetdEventListener.cpp
+out/soong/.intermediates/system/netd/server/netd_event_listener_interface-V1-cpp-source/gen/include/android/net/metrics/BnNetdEventListener.h
+out/soong/.intermediates/system/netd/server/netd_event_listener_interface-V1-cpp-source/gen/include/android/net/metrics/BpNetdEventListener.h
+out/soong/.intermediates/system/netd/server/netd_event_listener_interface-V1-cpp-source/gen/include/android/net/metrics/INetdEventListener.h

@@ -1,0 +1,6 @@
+out/soong/.intermediates/packages/modules/NeuralNetworks/common/neuralnetworks_types/android_x86_64_static_apex30/neuralnetworks_types.a
+out/soong/.intermediates/packages/modules/NeuralNetworks/common/neuralnetworks_types/android_x86_64_static_apex30/obj/packages/modules/NeuralNetworks/common/SharedMemory.o
+out/soong/.intermediates/packages/modules/NeuralNetworks/common/neuralnetworks_types/android_x86_64_static_apex30/obj/packages/modules/NeuralNetworks/common/SharedMemoryAndroid.o
+out/soong/.intermediates/packages/modules/NeuralNetworks/common/neuralnetworks_types/android_x86_64_static_apex30/obj/packages/modules/NeuralNetworks/common/TypeUtils.o
+out/soong/.intermediates/packages/modules/NeuralNetworks/common/neuralnetworks_types/android_x86_64_static_apex30/obj/packages/modules/NeuralNetworks/common/Types.o
+out/soong/.intermediates/packages/modules/NeuralNetworks/common/neuralnetworks_types/android_x86_64_static_apex30/obj/packages/modules/NeuralNetworks/common/Validation.o
