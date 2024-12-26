@@ -1,5 +1,12 @@
 set -e
 
+sudo rm -rf /usr/local/.ghcup
+sudo rm -rf /usr/local/lib/android/sdk
+sudo rm -rf /usr/local/lib/node_modules
+sudo rm -rf /usr/local/share/powershell
+sudo rm -rf /usr/local/share/chromium
+sudo dpkg-query -W -f='${Installed-Size;8}  ${Package}\n' | sort -n
+
 source $GITHUB_WORKSPACE/envsetup.sh
 tar xf $GITHUB_WORKSPACE/ninja.tar.zst
 
@@ -716,9 +723,6 @@ mkdir -p $GITHUB_WORKSPACE/artifacts/tools/platform-compat
 tar xf $GITHUB_WORKSPACE/tools_platform-compat.tar.zst -C $GITHUB_WORKSPACE/artifacts/tools/platform-compat/
 
 export OUT_DIR=out
-sudo rm -rf /usr/local/.ghcup
-sudo rm -rf /usr/local/lib/android/sdk
-sudo rm -rf /usr/local/lib/node_modules
 
 time source steps/build_08/art.sh
 time source steps/build_08/bionic.sh
