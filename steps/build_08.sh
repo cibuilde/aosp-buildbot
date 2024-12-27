@@ -593,6 +593,10 @@ gh release --repo cibuilde/aosp-buildbot download android12-gsi_07 --pattern pre
 mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk
 tar xf $GITHUB_WORKSPACE/prebuilts_sdk.tar.zst -C $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/
 
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern singletons.tar.zst
+mkdir -p $GITHUB_WORKSPACE/artifacts/singletons
+tar xf $GITHUB_WORKSPACE/singletons.tar.zst -C $GITHUB_WORKSPACE/artifacts/singletons/
+
 gh release --repo cibuilde/aosp-buildbot download android12-gsi_07 --pattern system_apex.tar.zst
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/apex
 tar xf $GITHUB_WORKSPACE/system_apex.tar.zst -C $GITHUB_WORKSPACE/artifacts/system/apex/
@@ -731,137 +735,7 @@ tar xf $GITHUB_WORKSPACE/tools_platform-compat.tar.zst -C $GITHUB_WORKSPACE/arti
 
 export OUT_DIR=out
 
-time source steps/build_08/system_extras.sh
-time source steps/build_08/system_hardware_interfaces.sh
-time source steps/build_08/system_incremental_delivery.sh
-time source steps/build_08/system_keymaster.sh
-time source steps/build_08/system_libfmq.sh
-time source steps/build_08/system_libhidl.sh
-time source steps/build_08/system_libhwbinder.sh
-time source steps/build_08/system_libprocinfo.sh
-time source steps/build_08/system_libsysprop.sh
-time source steps/build_08/system_libvintf.sh
-time source steps/build_08/system_libziparchive.sh
-time source steps/build_08/system_linkerconfig.sh
-time source steps/build_08/system_logging.sh
-time source steps/build_08/system_media.sh
-time source steps/build_08/system_memory_libdmabufheap.sh
-time source steps/build_08/system_memory_libion.sh
-time source steps/build_08/system_memory_libmeminfo.sh
-time source steps/build_08/system_netd.sh
-time source steps/build_08/system_security.sh
-time source steps/build_08/system_sepolicy.sh
-time source steps/build_08/system_tools_hidl.sh
-time source steps/build_08/system_tools_mkbootimg.sh
-time source steps/build_08/system_unwinding.sh
-time source steps/build_08/system_update_engine.sh
-time source steps/build_08/tools_metalava.sh
-time source steps/build_08/tools_platform-compat.sh
-time source steps/build_08/art.sh
-time source steps/build_08/bionic.sh
-time source steps/build_08/bootable_recovery.sh
-time source steps/build_08/build_soong.sh
-time source steps/build_08/device_generic_goldfish-opengl.sh
-time source steps/build_08/device_google_cuttlefish.sh
-time source steps/build_08/external_aac.sh
-time source steps/build_08/external_auto.sh
-time source steps/build_08/external_bc.sh
-time source steps/build_08/external_boringssl.sh
-time source steps/build_08/external_brotli.sh
-time source steps/build_08/external_bsdiff.sh
-time source steps/build_08/external_bzip2.sh
-time source steps/build_08/external_cn-cbor.sh
-time source steps/build_08/external_compiler-rt.sh
-time source steps/build_08/external_conscrypt.sh
-time source steps/build_08/external_crosvm.sh
-time source steps/build_08/external_curl.sh
-time source steps/build_08/external_dagger2.sh
-time source steps/build_08/external_drm_hwcomposer.sh
-time source steps/build_08/external_e2fsprogs.sh
-time source steps/build_08/external_eigen.sh
-time source steps/build_08/external_escapevelocity.sh
-time source steps/build_08/external_expat.sh
-time source steps/build_08/external_flac.sh
-time source steps/build_08/external_fmtlib.sh
-time source steps/build_08/external_gemmlowp.sh
-time source steps/build_08/external_gflags.sh
-time source steps/build_08/external_google-java-format.sh
-time source steps/build_08/external_guava.sh
-time source steps/build_08/external_guice.sh
-time source steps/build_08/external_jsmn.sh
-time source steps/build_08/external_jsoncpp.sh
-time source steps/build_08/external_libavc.sh
-time source steps/build_08/external_libcap.sh
-time source steps/build_08/external_libcppbor.sh
-time source steps/build_08/external_libcxx.sh
-time source steps/build_08/external_libcxxabi.sh
-time source steps/build_08/external_libdrm.sh
-time source steps/build_08/external_libevent.sh
-time source steps/build_08/external_libgsm.sh
-time source steps/build_08/external_libhevc.sh
-time source steps/build_08/external_libjpeg-turbo.sh
-time source steps/build_08/external_libmpeg2.sh
-time source steps/build_08/external_libnl.sh
-time source steps/build_08/external_libopus.sh
-time source steps/build_08/external_libpng.sh
-time source steps/build_08/external_libvpx.sh
-time source steps/build_08/external_libxml2.sh
-time source steps/build_08/external_libyuv.sh
-time source steps/build_08/external_llvm.sh
-time source steps/build_08/external_lz4.sh
-time source steps/build_08/external_lzma.sh
-time source steps/build_08/external_mdnsresponder.sh
-time source steps/build_08/external_mesa3d.sh
-time source steps/build_08/external_minijail.sh
-time source steps/build_08/external_mksh.sh
-time source steps/build_08/external_nanopb-c.sh
-time source steps/build_08/external_one-true-awk.sh
-time source steps/build_08/external_pcre.sh
-time source steps/build_08/external_perfetto.sh
-time source steps/build_08/external_pffft.sh
-time source steps/build_08/external_piex.sh
-time source steps/build_08/external_protobuf.sh
-time source steps/build_08/external_rnnoise.sh
-time source steps/build_08/external_rust_crates_grpcio-sys.sh
-time source steps/build_08/external_rust_crates_libsqlite3-sys.sh
-time source steps/build_08/external_scrypt.sh
-time source steps/build_08/external_selinux.sh
-time source steps/build_08/external_sqlite.sh
-time source steps/build_08/external_swiftshader.sh
-time source steps/build_08/external_tensorflow.sh
-time source steps/build_08/external_tinyalsa.sh
-time source steps/build_08/external_tinyxml2.sh
-time source steps/build_08/external_tremolo.sh
-time source steps/build_08/external_webrtc.sh
-time source steps/build_08/external_zlib.sh
-time source steps/build_08/frameworks_av.sh
-time source steps/build_08/frameworks_base.sh
-time source steps/build_08/frameworks_compile_libbcc.sh
-time source steps/build_08/frameworks_compile_slang.sh
-time source steps/build_08/frameworks_hardware_interfaces.sh
-time source steps/build_08/frameworks_native.sh
-time source steps/build_08/frameworks_opt_net_wifi.sh
-time source steps/build_08/frameworks_proto_logging.sh
-time source steps/build_08/hardware_google_camera.sh
-time source steps/build_08/hardware_interfaces.sh
-time source steps/build_08/hardware_ril.sh
-time source steps/build_08/libnativehelper.sh
-time source steps/build_08/packages_inputmethods_LatinIME.sh
-time source steps/build_08/packages_modules_Connectivity.sh
-time source steps/build_08/packages_modules_DnsResolver.sh
-time source steps/build_08/packages_modules_NeuralNetworks.sh
-time source steps/build_08/packages_modules_Permission.sh
-time source steps/build_08/packages_modules_SdkExtensions.sh
-time source steps/build_08/packages_modules_StatsD.sh
-time source steps/build_08/packages_modules_Virtualization.sh
-time source steps/build_08/packages_modules_adb.sh
-time source steps/build_08/packages_modules_common.sh
-time source steps/build_08/prebuilts_ndk.sh
-time source steps/build_08/prebuilts_rust.sh
-time source steps/build_08/prebuilts_sdk.sh
 time source steps/build_08/singletons.sh
-time source steps/build_08/system_bt.sh
-time source steps/build_08/system_core.sh
 
 if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_clang_host_linux-x86.tar.zst" ]; then
   echo "Compressing prebuilts/clang/host/linux-x86 -> prebuilts_clang_host_linux-x86.tar.zst"
