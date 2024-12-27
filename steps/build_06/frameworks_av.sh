@@ -4,6 +4,9 @@ df -h
 
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
+mkdir -p out/soong/.minibootstrap && ln -sf $GITHUB_WORKSPACE/bpglob out/soong/.minibootstrap/bpglob
+ln -sf $GITHUB_WORKSPACE/ndk.ninja .
+ln -sf $GITHUB_WORKSPACE/ninja-ndk .
 ln -sf $GITHUB_WORKSPACE/ninja .
 
 mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86 prebuilts/clang/host/linux-x86
@@ -13,79 +16,94 @@ clone_sparse_exclude frameworks/base "!/data/videos" "!/media/tests/contents" "!
 clone_depth_platform frameworks/native
 clone_depth_platform system/tools/aidl
 
-rsync -a -r $GITHUB_WORKSPACE/artifacts/build/blueprint/bpmodify^linux_glibc_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/libcxx/libc++^linux_glibc_x86_64_shared/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/system/tools/aidl/aidl^linux_glibc_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/build/blueprint/bpmodify^linux_glibc_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcxx/libc++^linux_glibc_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/tools/aidl/aidl^linux_glibc_x86_64/ .
 
 echo "building aaudio-aidl-cpp-source^"
-ninja -f $GITHUB_WORKSPACE/steps/build_06.ninja aaudio-aidl-cpp-source,
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja aaudio-aidl-cpp-source,
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libaaudio/src/aaudio-aidl-cpp-source^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/frameworks/av/aaudio-aidl-cpp-source^.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libaaudio/src/aaudio-aidl-cpp-source^
 
 echo "building audioclient-types-aidl-cpp-source^"
-ninja -f $GITHUB_WORKSPACE/steps/build_06.ninja audioclient-types-aidl-cpp-source,
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja audioclient-types-aidl-cpp-source,
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libaudioclient/audioclient-types-aidl-cpp-source^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/frameworks/av/audioclient-types-aidl-cpp-source^.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libaudioclient/audioclient-types-aidl-cpp-source^
 
 echo "building audioflinger-aidl-cpp-source^"
-ninja -f $GITHUB_WORKSPACE/steps/build_06.ninja audioflinger-aidl-cpp-source,
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja audioflinger-aidl-cpp-source,
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libaudioclient/audioflinger-aidl-cpp-source^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/frameworks/av/audioflinger-aidl-cpp-source^.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libaudioclient/audioflinger-aidl-cpp-source^
 
 echo "building audiopolicy-aidl-cpp-source^"
-ninja -f $GITHUB_WORKSPACE/steps/build_06.ninja audiopolicy-aidl-cpp-source,
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja audiopolicy-aidl-cpp-source,
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libaudioclient/audiopolicy-aidl-cpp-source^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/frameworks/av/audiopolicy-aidl-cpp-source^.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libaudioclient/audiopolicy-aidl-cpp-source^
 
 echo "building audiopolicy-types-aidl-cpp-source^"
-ninja -f $GITHUB_WORKSPACE/steps/build_06.ninja audiopolicy-types-aidl-cpp-source,
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja audiopolicy-types-aidl-cpp-source,
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libaudioclient/audiopolicy-types-aidl-cpp-source^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/frameworks/av/audiopolicy-types-aidl-cpp-source^.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libaudioclient/audiopolicy-types-aidl-cpp-source^
 
 echo "building av-types-aidl-cpp-source^"
-ninja -f $GITHUB_WORKSPACE/steps/build_06.ninja av-types-aidl-cpp-source,
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja av-types-aidl-cpp-source,
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/av-types-aidl-cpp-source^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/frameworks/av/av-types-aidl-cpp-source^.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/av-types-aidl-cpp-source^
 
+echo "building av-types-aidl-java-source^"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja av-types-aidl-java-source,
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/av-types-aidl-java-source^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/frameworks/av/av-types-aidl-java-source^.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/av-types-aidl-java-source^
+
 echo "building capture_state_listener-aidl-cpp-source^"
-ninja -f $GITHUB_WORKSPACE/steps/build_06.ninja capture_state_listener-aidl-cpp-source,
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja capture_state_listener-aidl-cpp-source,
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libaudioclient/capture_state_listener-aidl-cpp-source^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/frameworks/av/capture_state_listener-aidl-cpp-source^.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libaudioclient/capture_state_listener-aidl-cpp-source^
 
 echo "building capture_state_listener-aidl-java-source^"
-ninja -f $GITHUB_WORKSPACE/steps/build_06.ninja capture_state_listener-aidl-java-source,
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja capture_state_listener-aidl-java-source,
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libaudioclient/capture_state_listener-aidl-java-source^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/frameworks/av/capture_state_listener-aidl-java-source^.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libaudioclient/capture_state_listener-aidl-java-source^
 
 echo "building effect-aidl-cpp-source^"
-ninja -f $GITHUB_WORKSPACE/steps/build_06.ninja effect-aidl-cpp-source,
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja effect-aidl-cpp-source,
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libaudioclient/effect-aidl-cpp-source^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/frameworks/av/effect-aidl-cpp-source^.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libaudioclient/effect-aidl-cpp-source^
 
 echo "building mediametricsservice-aidl-cpp-source^"
-ninja -f $GITHUB_WORKSPACE/steps/build_06.ninja mediametricsservice-aidl-cpp-source,
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja mediametricsservice-aidl-cpp-source,
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libmediametrics/mediametricsservice-aidl-cpp-source^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/frameworks/av/mediametricsservice-aidl-cpp-source^.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libmediametrics/mediametricsservice-aidl-cpp-source^
 
+echo "building mediatranscoding_aidl_interface-java-source^"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja mediatranscoding_aidl_interface-java-source,
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libmediatranscoding/mediatranscoding_aidl_interface-java-source^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/frameworks/av/mediatranscoding_aidl_interface-java-source^.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libmediatranscoding/mediatranscoding_aidl_interface-java-source^
+
 echo "building mediatranscoding_aidl_interface-ndk_platform-source^"
-ninja -f $GITHUB_WORKSPACE/steps/build_06.ninja mediatranscoding_aidl_interface-ndk_platform-source,
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja mediatranscoding_aidl_interface-ndk_platform-source,
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libmediatranscoding/mediatranscoding_aidl_interface-ndk_platform-source^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/frameworks/av/mediatranscoding_aidl_interface-ndk_platform-source^.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libmediatranscoding/mediatranscoding_aidl_interface-ndk_platform-source^
 
 echo "building resourcemanager_aidl_interface-ndk_platform-source^"
-ninja -f $GITHUB_WORKSPACE/steps/build_06.ninja resourcemanager_aidl_interface-ndk_platform-source,
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja resourcemanager_aidl_interface-ndk_platform-source,
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/services/mediaresourcemanager/resourcemanager_aidl_interface-ndk_platform-source^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/frameworks/av/resourcemanager_aidl_interface-ndk_platform-source^.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/services/mediaresourcemanager/resourcemanager_aidl_interface-ndk_platform-source^
 
 echo "building resourceobserver_aidl_interface-api^"
-ninja -f $GITHUB_WORKSPACE/steps/build_06.ninja resourceobserver_aidl_interface-api,
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja resourceobserver_aidl_interface-api,
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/services/mediaresourcemanager/resourceobserver_aidl_interface-api^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/frameworks/av/resourceobserver_aidl_interface-api^.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/services/mediaresourcemanager/resourceobserver_aidl_interface-api^
 
 echo "building shared-file-region-aidl-cpp-source^"
-ninja -f $GITHUB_WORKSPACE/steps/build_06.ninja shared-file-region-aidl-cpp-source,
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja shared-file-region-aidl-cpp-source,
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libshmem/shared-file-region-aidl-cpp-source^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/frameworks/av/shared-file-region-aidl-cpp-source^.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libshmem/shared-file-region-aidl-cpp-source^
+
+echo "building tv_tuner_frontend_info_aidl_interface-java-source^"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja tv_tuner_frontend_info_aidl_interface-java-source,
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/services/tuner/tv_tuner_frontend_info_aidl_interface-java-source^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/frameworks/av/tv_tuner_frontend_info_aidl_interface-java-source^.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/services/tuner/tv_tuner_frontend_info_aidl_interface-java-source^
 
 rm -rf out
 

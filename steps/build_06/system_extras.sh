@@ -4,6 +4,9 @@ df -h
 
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
+mkdir -p out/soong/.minibootstrap && ln -sf $GITHUB_WORKSPACE/bpglob out/soong/.minibootstrap/bpglob
+ln -sf $GITHUB_WORKSPACE/ndk.ninja .
+ln -sf $GITHUB_WORKSPACE/ninja-ndk .
 ln -sf $GITHUB_WORKSPACE/ninja .
 
 mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86 prebuilts/clang/host/linux-x86
@@ -37,46 +40,46 @@ clone_depth_platform system/logging
 clone_depth_platform system/media
 clone_depth_platform system/unwinding
 
-rsync -a -r $GITHUB_WORKSPACE/artifacts/build/soong/cmd/dep_fixer/dep_fixer^linux_glibc_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/build/soong/cc/libbuildversion/libbuildversion^android_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/build/soong/symbol_inject/cmd/symbol_inject^linux_glibc_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/libcxx/libc++^linux_glibc_x86_64_shared/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/llvm/llvm-gen-attributes^/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/llvm/llvm-gen-intrinsics^/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/protobuf/aprotoc^linux_glibc_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/zlib/libz^linux_glibc_x86_64_shared/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/system/extras/ext4_utils/libext4_utils^linux_glibc_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/system/libbase/libbase^linux_glibc_x86_64_shared/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/system/logging/liblog/liblog^linux_glibc_x86_64_shared/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/system/tools/aidl/aidl^linux_glibc_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/cmd/dep_fixer/dep_fixer^linux_glibc_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/cc/libbuildversion/libbuildversion^android_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/symbol_inject/cmd/symbol_inject^linux_glibc_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcxx/libc++^linux_glibc_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/llvm/llvm-gen-attributes^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/llvm/llvm-gen-intrinsics^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/protobuf/aprotoc^linux_glibc_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/zlib/libz^linux_glibc_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/extras/ext4_utils/libext4_utils^linux_glibc_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/libbase/libbase^linux_glibc_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^linux_glibc_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/tools/aidl/aidl^linux_glibc_x86_64/ .
 
 echo "building libext4_utils^linux_glibc_x86_64_shared"
-ninja -f $GITHUB_WORKSPACE/steps/build_06.ninja libext4_utils,linux_glibc_x86_64_shared
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libext4_utils,linux_glibc_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/extras/ext4_utils/libext4_utils^linux_glibc_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/system/extras/libext4_utils^linux_glibc_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/extras/ext4_utils/libext4_utils^linux_glibc_x86_64_shared
 
 echo "building liblpdump_interface-cpp-source^"
-ninja -f $GITHUB_WORKSPACE/steps/build_06.ninja liblpdump_interface-cpp-source,
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja liblpdump_interface-cpp-source,
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/extras/partition_tools/aidl/liblpdump_interface-cpp-source^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/system/extras/liblpdump_interface-cpp-source^.output . $GITHUB_WORKSPACE/artifacts/system/extras/partition_tools/aidl/liblpdump_interface-cpp-source^
 
 echo "building libsimpleperf^android_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_06.ninja libsimpleperf,android_x86_64_static
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libsimpleperf,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/extras/simpleperf/libsimpleperf^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/system/extras/libsimpleperf^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/extras/simpleperf/libsimpleperf^android_x86_64_static
 
 echo "building libsimpleperf_etm_decoder^android_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_06.ninja libsimpleperf_etm_decoder,android_x86_64_static
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libsimpleperf_etm_decoder,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/extras/simpleperf/libsimpleperf_etm_decoder^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/system/extras/libsimpleperf_etm_decoder^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/extras/simpleperf/libsimpleperf_etm_decoder^android_x86_64_static
 
 echo "building libsimpleperf_profcollect^android_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_06.ninja libsimpleperf_profcollect,android_x86_64_static
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libsimpleperf_profcollect,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/extras/simpleperf/libsimpleperf_profcollect^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/system/extras/libsimpleperf_profcollect^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/extras/simpleperf/libsimpleperf_profcollect^android_x86_64_static
 
 echo "building profcollectd_aidl_interface-rust-source^"
-ninja -f $GITHUB_WORKSPACE/steps/build_06.ninja profcollectd_aidl_interface-rust-source,
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja profcollectd_aidl_interface-rust-source,
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/extras/profcollectd/libprofcollectd/profcollectd_aidl_interface-rust-source^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/system/extras/profcollectd_aidl_interface-rust-source^.output . $GITHUB_WORKSPACE/artifacts/system/extras/profcollectd/libprofcollectd/profcollectd_aidl_interface-rust-source^
 
