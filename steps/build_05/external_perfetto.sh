@@ -4,6 +4,9 @@ df -h
 
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
+mkdir -p out/soong/.minibootstrap && ln -sf $GITHUB_WORKSPACE/bpglob out/soong/.minibootstrap/bpglob
+ln -sf $GITHUB_WORKSPACE/ndk.ninja .
+ln -sf $GITHUB_WORKSPACE/ninja-ndk .
 ln -sf $GITHUB_WORKSPACE/ninja .
 
 mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86 prebuilts/clang/host/linux-x86
@@ -24,98 +27,98 @@ clone_depth_platform system/core
 clone_depth_platform system/logging
 clone_depth_platform system/media
 
-rsync -a -r $GITHUB_WORKSPACE/artifacts/build/soong/cmd/sbox/sbox^linux_glibc_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/libcxx/libc++^linux_glibc_x86_64_shared/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/perfetto/perfetto_protos_perfetto_common_lite_gen^/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/perfetto/perfetto_protos_perfetto_common_lite_gen_headers^/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/perfetto/perfetto_protos_perfetto_config_android_lite_gen^/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/perfetto/perfetto_protos_perfetto_config_android_lite_gen_headers^/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/perfetto/perfetto_protos_perfetto_config_ftrace_lite_gen^/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/perfetto/perfetto_protos_perfetto_config_ftrace_lite_gen_headers^/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/perfetto/perfetto_protos_perfetto_config_gpu_lite_gen^/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/perfetto/perfetto_protos_perfetto_config_gpu_lite_gen_headers^/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/perfetto/perfetto_protos_perfetto_config_inode_file_lite_gen^/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/perfetto/perfetto_protos_perfetto_config_inode_file_lite_gen_headers^/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/perfetto/perfetto_protos_perfetto_config_interceptors_lite_gen^/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/perfetto/perfetto_protos_perfetto_config_interceptors_lite_gen_headers^/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/perfetto/perfetto_protos_perfetto_config_lite_gen^/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/perfetto/perfetto_protos_perfetto_config_lite_gen_headers^/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/perfetto/perfetto_protos_perfetto_config_perfetto_config_descriptor^/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/perfetto/perfetto_protos_perfetto_config_power_lite_gen^/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/perfetto/perfetto_protos_perfetto_config_power_lite_gen_headers^/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/perfetto/perfetto_protos_perfetto_config_process_stats_lite_gen^/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/perfetto/perfetto_protos_perfetto_config_process_stats_lite_gen_headers^/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/perfetto/perfetto_protos_perfetto_config_profiling_lite_gen^/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/perfetto/perfetto_protos_perfetto_config_profiling_lite_gen_headers^/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/perfetto/perfetto_protos_perfetto_config_sys_stats_lite_gen^/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/perfetto/perfetto_protos_perfetto_config_sys_stats_lite_gen_headers^/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/perfetto/perfetto_protos_perfetto_config_track_event_lite_gen^/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/perfetto/perfetto_protos_perfetto_config_track_event_lite_gen_headers^/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/perfetto/perfetto_protos_perfetto_trace_android_lite_gen^/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/perfetto/perfetto_protos_perfetto_trace_android_lite_gen_headers^/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/perfetto/perfetto_protos_perfetto_trace_chrome_lite_gen^/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/perfetto/perfetto_protos_perfetto_trace_chrome_lite_gen_headers^/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/perfetto/perfetto_protos_perfetto_trace_filesystem_lite_gen^/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/perfetto/perfetto_protos_perfetto_trace_filesystem_lite_gen_headers^/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/perfetto/perfetto_protos_perfetto_trace_ftrace_lite_gen^/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/perfetto/perfetto_protos_perfetto_trace_ftrace_lite_gen_headers^/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/perfetto/perfetto_protos_perfetto_trace_gpu_lite_gen^/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/perfetto/perfetto_protos_perfetto_trace_gpu_lite_gen_headers^/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/perfetto/perfetto_protos_perfetto_trace_interned_data_lite_gen^/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/perfetto/perfetto_protos_perfetto_trace_interned_data_lite_gen_headers^/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/perfetto/perfetto_protos_perfetto_trace_minimal_lite_gen^/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/perfetto/perfetto_protos_perfetto_trace_minimal_lite_gen_headers^/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/perfetto/perfetto_protos_perfetto_trace_non_minimal_lite_gen^/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/perfetto/perfetto_protos_perfetto_trace_non_minimal_lite_gen_headers^/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/perfetto/perfetto_protos_perfetto_trace_perfetto_lite_gen^/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/perfetto/perfetto_protos_perfetto_trace_perfetto_lite_gen_headers^/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/perfetto/perfetto_protos_perfetto_trace_power_lite_gen^/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/perfetto/perfetto_protos_perfetto_trace_power_lite_gen_headers^/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/perfetto/perfetto_protos_perfetto_trace_profiling_lite_gen^/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/perfetto/perfetto_protos_perfetto_trace_profiling_lite_gen_headers^/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/perfetto/perfetto_protos_perfetto_trace_ps_lite_gen^/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/perfetto/perfetto_protos_perfetto_trace_ps_lite_gen_headers^/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/perfetto/perfetto_protos_perfetto_trace_sys_stats_lite_gen^/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/perfetto/perfetto_protos_perfetto_trace_sys_stats_lite_gen_headers^/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/perfetto/perfetto_protos_perfetto_trace_system_info_lite_gen^/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/perfetto/perfetto_protos_perfetto_trace_system_info_lite_gen_headers^/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/perfetto/perfetto_protos_perfetto_trace_track_event_lite_gen^/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/perfetto/perfetto_protos_perfetto_trace_track_event_lite_gen_headers^/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/perfetto/perfetto_src_base_version_gen_h^/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/protobuf/libprotoc^linux_glibc_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/cmd/sbox/sbox^linux_glibc_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcxx/libc++^linux_glibc_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/perfetto/perfetto_protos_perfetto_common_lite_gen^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/perfetto/perfetto_protos_perfetto_common_lite_gen_headers^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/perfetto/perfetto_protos_perfetto_config_android_lite_gen^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/perfetto/perfetto_protos_perfetto_config_android_lite_gen_headers^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/perfetto/perfetto_protos_perfetto_config_ftrace_lite_gen^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/perfetto/perfetto_protos_perfetto_config_ftrace_lite_gen_headers^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/perfetto/perfetto_protos_perfetto_config_gpu_lite_gen^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/perfetto/perfetto_protos_perfetto_config_gpu_lite_gen_headers^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/perfetto/perfetto_protos_perfetto_config_inode_file_lite_gen^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/perfetto/perfetto_protos_perfetto_config_inode_file_lite_gen_headers^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/perfetto/perfetto_protos_perfetto_config_interceptors_lite_gen^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/perfetto/perfetto_protos_perfetto_config_interceptors_lite_gen_headers^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/perfetto/perfetto_protos_perfetto_config_lite_gen^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/perfetto/perfetto_protos_perfetto_config_lite_gen_headers^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/perfetto/perfetto_protos_perfetto_config_perfetto_config_descriptor^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/perfetto/perfetto_protos_perfetto_config_power_lite_gen^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/perfetto/perfetto_protos_perfetto_config_power_lite_gen_headers^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/perfetto/perfetto_protos_perfetto_config_process_stats_lite_gen^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/perfetto/perfetto_protos_perfetto_config_process_stats_lite_gen_headers^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/perfetto/perfetto_protos_perfetto_config_profiling_lite_gen^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/perfetto/perfetto_protos_perfetto_config_profiling_lite_gen_headers^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/perfetto/perfetto_protos_perfetto_config_sys_stats_lite_gen^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/perfetto/perfetto_protos_perfetto_config_sys_stats_lite_gen_headers^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/perfetto/perfetto_protos_perfetto_config_track_event_lite_gen^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/perfetto/perfetto_protos_perfetto_config_track_event_lite_gen_headers^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/perfetto/perfetto_protos_perfetto_trace_android_lite_gen^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/perfetto/perfetto_protos_perfetto_trace_android_lite_gen_headers^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/perfetto/perfetto_protos_perfetto_trace_chrome_lite_gen^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/perfetto/perfetto_protos_perfetto_trace_chrome_lite_gen_headers^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/perfetto/perfetto_protos_perfetto_trace_filesystem_lite_gen^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/perfetto/perfetto_protos_perfetto_trace_filesystem_lite_gen_headers^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/perfetto/perfetto_protos_perfetto_trace_ftrace_lite_gen^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/perfetto/perfetto_protos_perfetto_trace_ftrace_lite_gen_headers^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/perfetto/perfetto_protos_perfetto_trace_gpu_lite_gen^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/perfetto/perfetto_protos_perfetto_trace_gpu_lite_gen_headers^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/perfetto/perfetto_protos_perfetto_trace_interned_data_lite_gen^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/perfetto/perfetto_protos_perfetto_trace_interned_data_lite_gen_headers^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/perfetto/perfetto_protos_perfetto_trace_minimal_lite_gen^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/perfetto/perfetto_protos_perfetto_trace_minimal_lite_gen_headers^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/perfetto/perfetto_protos_perfetto_trace_non_minimal_lite_gen^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/perfetto/perfetto_protos_perfetto_trace_non_minimal_lite_gen_headers^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/perfetto/perfetto_protos_perfetto_trace_perfetto_lite_gen^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/perfetto/perfetto_protos_perfetto_trace_perfetto_lite_gen_headers^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/perfetto/perfetto_protos_perfetto_trace_power_lite_gen^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/perfetto/perfetto_protos_perfetto_trace_power_lite_gen_headers^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/perfetto/perfetto_protos_perfetto_trace_profiling_lite_gen^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/perfetto/perfetto_protos_perfetto_trace_profiling_lite_gen_headers^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/perfetto/perfetto_protos_perfetto_trace_ps_lite_gen^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/perfetto/perfetto_protos_perfetto_trace_ps_lite_gen_headers^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/perfetto/perfetto_protos_perfetto_trace_sys_stats_lite_gen^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/perfetto/perfetto_protos_perfetto_trace_sys_stats_lite_gen_headers^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/perfetto/perfetto_protos_perfetto_trace_system_info_lite_gen^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/perfetto/perfetto_protos_perfetto_trace_system_info_lite_gen_headers^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/perfetto/perfetto_protos_perfetto_trace_track_event_lite_gen^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/perfetto/perfetto_protos_perfetto_trace_track_event_lite_gen_headers^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/perfetto/perfetto_src_base_version_gen_h^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/protobuf/libprotoc^linux_glibc_x86_64_static/ .
 
 echo "building ipc_plugin^linux_glibc_x86_64"
-ninja -f $GITHUB_WORKSPACE/steps/build_05.ninja ipc_plugin,linux_glibc_x86_64
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja ipc_plugin,linux_glibc_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/perfetto/ipc_plugin^linux_glibc_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/external/perfetto/ipc_plugin^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/perfetto/ipc_plugin^linux_glibc_x86_64
 
 echo "building perfetto_src_perfetto_cmd_gen_cc_config_descriptor^"
-ninja -f $GITHUB_WORKSPACE/steps/build_05.ninja perfetto_src_perfetto_cmd_gen_cc_config_descriptor,
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja perfetto_src_perfetto_cmd_gen_cc_config_descriptor,
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/perfetto/perfetto_src_perfetto_cmd_gen_cc_config_descriptor^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/external/perfetto/perfetto_src_perfetto_cmd_gen_cc_config_descriptor^.output . $GITHUB_WORKSPACE/artifacts/external/perfetto/perfetto_src_perfetto_cmd_gen_cc_config_descriptor^
 
 echo "building perfetto_src_protozero_protoc_plugin_cppgen_plugin^linux_glibc_x86_64"
-ninja -f $GITHUB_WORKSPACE/steps/build_05.ninja perfetto_src_protozero_protoc_plugin_cppgen_plugin,linux_glibc_x86_64
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja perfetto_src_protozero_protoc_plugin_cppgen_plugin,linux_glibc_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/perfetto/perfetto_src_protozero_protoc_plugin_cppgen_plugin^linux_glibc_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/external/perfetto/perfetto_src_protozero_protoc_plugin_cppgen_plugin^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/perfetto/perfetto_src_protozero_protoc_plugin_cppgen_plugin^linux_glibc_x86_64
 
 echo "building perfetto_trace_protos^android_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_05.ninja perfetto_trace_protos,android_x86_64_static
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja perfetto_trace_protos,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/perfetto/perfetto_trace_protos^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/external/perfetto/perfetto_trace_protos^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/perfetto/perfetto_trace_protos^android_x86_64_static
 
 echo "building perfetto_trace_protos^android_x86_64_static_apex31"
-ninja -f $GITHUB_WORKSPACE/steps/build_05.ninja perfetto_trace_protos,android_x86_64_static_apex31
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja perfetto_trace_protos,android_x86_64_static_apex31
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/perfetto/perfetto_trace_protos^android_x86_64_static_apex31
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/external/perfetto/perfetto_trace_protos^android_x86_64_static_apex31.output . $GITHUB_WORKSPACE/artifacts/external/perfetto/perfetto_trace_protos^android_x86_64_static_apex31
 
 echo "building perfetto_trace_protos^android_x86_x86_64_static_apex31"
-ninja -f $GITHUB_WORKSPACE/steps/build_05.ninja perfetto_trace_protos,android_x86_x86_64_static_apex31
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja perfetto_trace_protos,android_x86_x86_64_static_apex31
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/perfetto/perfetto_trace_protos^android_x86_x86_64_static_apex31
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/external/perfetto/perfetto_trace_protos^android_x86_x86_64_static_apex31.output . $GITHUB_WORKSPACE/artifacts/external/perfetto/perfetto_trace_protos^android_x86_x86_64_static_apex31
 
 echo "building protozero_plugin^linux_glibc_x86_64"
-ninja -f $GITHUB_WORKSPACE/steps/build_05.ninja protozero_plugin,linux_glibc_x86_64
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja protozero_plugin,linux_glibc_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/perfetto/protozero_plugin^linux_glibc_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/external/perfetto/protozero_plugin^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/perfetto/protozero_plugin^linux_glibc_x86_64
 

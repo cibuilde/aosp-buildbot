@@ -4,6 +4,9 @@ df -h
 
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
+mkdir -p out/soong/.minibootstrap && ln -sf $GITHUB_WORKSPACE/bpglob out/soong/.minibootstrap/bpglob
+ln -sf $GITHUB_WORKSPACE/ndk.ninja .
+ln -sf $GITHUB_WORKSPACE/ninja-ndk .
 ln -sf $GITHUB_WORKSPACE/ninja .
 
 mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86 prebuilts/clang/host/linux-x86
@@ -13,17 +16,17 @@ clone_depth_platform external/libcxx
 clone_depth_platform external/libcxxabi
 clone_depth_platform external/tflite-support
 
-rsync -a -r $GITHUB_WORKSPACE/artifacts/build/soong/cmd/sbox/sbox^linux_glibc_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/flatbuffers/flatc^linux_glibc_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/libcxx/libc++^linux_glibc_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/cmd/sbox/sbox^linux_glibc_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/flatbuffers/flatc^linux_glibc_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcxx/libc++^linux_glibc_x86_64_shared/ .
 
 echo "building tflite_support_spm_config^"
-ninja -f $GITHUB_WORKSPACE/steps/build_05.ninja tflite_support_spm_config,
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja tflite_support_spm_config,
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/tflite-support/tflite_support_spm_config^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/external/tflite-support/tflite_support_spm_config^.output . $GITHUB_WORKSPACE/artifacts/external/tflite-support/tflite_support_spm_config^
 
 echo "building tflite_support_spm_encoder_config^"
-ninja -f $GITHUB_WORKSPACE/steps/build_05.ninja tflite_support_spm_encoder_config,
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja tflite_support_spm_encoder_config,
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/tflite-support/tflite_support_spm_encoder_config^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/external/tflite-support/tflite_support_spm_encoder_config^.output . $GITHUB_WORKSPACE/artifacts/external/tflite-support/tflite_support_spm_encoder_config^
 

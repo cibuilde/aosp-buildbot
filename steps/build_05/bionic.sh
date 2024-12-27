@@ -4,6 +4,9 @@ df -h
 
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
+mkdir -p out/soong/.minibootstrap && ln -sf $GITHUB_WORKSPACE/bpglob out/soong/.minibootstrap/bpglob
+ln -sf $GITHUB_WORKSPACE/ndk.ninja .
+ln -sf $GITHUB_WORKSPACE/ninja-ndk .
 ln -sf $GITHUB_WORKSPACE/ninja .
 
 mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86 prebuilts/clang/host/linux-x86
@@ -25,169 +28,169 @@ clone_depth_platform system/core
 clone_depth_platform system/logging
 clone_depth_platform system/media
 
-rsync -a -r $GITHUB_WORKSPACE/artifacts/bionic/libc/generated_android_ids^/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/bionic/linker/ld-android^android_recovery_x86_64_shared/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/bionic/linker/ld-android^android_vendor_ramdisk_x86_64_shared/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/bionic/linker/ld-android^android_x86_64_shared/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/bionic/linker/ld-android^android_x86_64_shared_apex10000/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/bionic/linker/ld-android^android_x86_x86_64_shared/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/bionic/linker/ld-android^android_x86_x86_64_shared_apex10000/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bionic_systrace^android_native_bridge_arm64_armv8-a_static/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bionic_systrace^android_native_bridge_arm_armv7-a-neon_static/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bionic_systrace^android_recovery_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bionic_systrace^android_vendor_ramdisk_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bionic_systrace^android_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bionic_systrace^android_x86_64_static_apex10000/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bionic_systrace^android_x86_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bionic_systrace^android_x86_x86_64_static_apex10000/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/bionic/libdl/libdl.x86.map^/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/bionic/libdl/libdl.x86_64.map^/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/bionic/libdl/libdl_static^android_recovery_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/bionic/libdl/libdl_static^android_vendor_ramdisk_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/bionic/libdl/libdl_static^android_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/bionic/libdl/libdl_static^android_x86_64_static_apex10000/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/bionic/libdl/libdl_static^android_x86_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/bionic/libdl/libdl_static^android_x86_x86_64_static_apex10000/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/bionic/libc/system_properties/libsystemproperties^android_native_bridge_arm64_armv8-a_static/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/bionic/libc/system_properties/libsystemproperties^android_native_bridge_arm_armv7-a-neon_static/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/bionic/libc/system_properties/libsystemproperties^android_recovery_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/bionic/libc/system_properties/libsystemproperties^android_vendor_ramdisk_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/bionic/libc/system_properties/libsystemproperties^android_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/bionic/libc/system_properties/libsystemproperties^android_x86_64_static_apex10000/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/bionic/libc/system_properties/libsystemproperties^android_x86_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/bionic/libc/system_properties/libsystemproperties^android_x86_x86_64_static_apex10000/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/bionic/libc/syscalls-arm.S^/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/bionic/libc/syscalls-arm64.S^/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/bionic/libc/syscalls-x86.S^/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/bionic/libc/syscalls-x86_64.S^/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/build/soong/cmd/merge_zips/merge_zips^linux_glibc_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/build/soong/zip/cmd/soong_zip^linux_glibc_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/system/core/property_service/libpropertyinfoparser/libpropertyinfoparser^android_native_bridge_arm64_armv8-a_static/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/system/core/property_service/libpropertyinfoparser/libpropertyinfoparser^android_native_bridge_arm_armv7-a-neon_static/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/system/core/property_service/libpropertyinfoparser/libpropertyinfoparser^android_recovery_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/system/core/property_service/libpropertyinfoparser/libpropertyinfoparser^android_vendor_ramdisk_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/system/core/property_service/libpropertyinfoparser/libpropertyinfoparser^android_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/system/core/property_service/libpropertyinfoparser/libpropertyinfoparser^android_x86_64_static_apex10000/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/system/core/property_service/libpropertyinfoparser/libpropertyinfoparser^android_x86_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/system/core/property_service/libpropertyinfoparser/libpropertyinfoparser^android_x86_x86_64_static_apex10000/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/generated_android_ids^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/linker/ld-android^android_recovery_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/linker/ld-android^android_vendor_ramdisk_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/linker/ld-android^android_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/linker/ld-android^android_x86_64_shared_apex10000/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/linker/ld-android^android_x86_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/linker/ld-android^android_x86_x86_64_shared_apex10000/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/libc_bionic_systrace^android_native_bridge_arm64_armv8-a_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/libc_bionic_systrace^android_native_bridge_arm_armv7-a-neon_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/libc_bionic_systrace^android_recovery_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/libc_bionic_systrace^android_vendor_ramdisk_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/libc_bionic_systrace^android_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/libc_bionic_systrace^android_x86_64_static_apex10000/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/libc_bionic_systrace^android_x86_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/libc_bionic_systrace^android_x86_x86_64_static_apex10000/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libdl/libdl.x86.map^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libdl/libdl.x86_64.map^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libdl/libdl_static^android_recovery_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libdl/libdl_static^android_vendor_ramdisk_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libdl/libdl_static^android_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libdl/libdl_static^android_x86_64_static_apex10000/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libdl/libdl_static^android_x86_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libdl/libdl_static^android_x86_x86_64_static_apex10000/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/system_properties/libsystemproperties^android_native_bridge_arm64_armv8-a_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/system_properties/libsystemproperties^android_native_bridge_arm_armv7-a-neon_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/system_properties/libsystemproperties^android_recovery_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/system_properties/libsystemproperties^android_vendor_ramdisk_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/system_properties/libsystemproperties^android_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/system_properties/libsystemproperties^android_x86_64_static_apex10000/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/system_properties/libsystemproperties^android_x86_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/system_properties/libsystemproperties^android_x86_x86_64_static_apex10000/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/syscalls-arm.S^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/syscalls-arm64.S^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/syscalls-x86.S^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/syscalls-x86_64.S^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/cmd/merge_zips/merge_zips^linux_glibc_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/zip/cmd/soong_zip^linux_glibc_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/core/property_service/libpropertyinfoparser/libpropertyinfoparser^android_native_bridge_arm64_armv8-a_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/core/property_service/libpropertyinfoparser/libpropertyinfoparser^android_native_bridge_arm_armv7-a-neon_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/core/property_service/libpropertyinfoparser/libpropertyinfoparser^android_recovery_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/core/property_service/libpropertyinfoparser/libpropertyinfoparser^android_vendor_ramdisk_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/core/property_service/libpropertyinfoparser/libpropertyinfoparser^android_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/core/property_service/libpropertyinfoparser/libpropertyinfoparser^android_x86_64_static_apex10000/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/core/property_service/libpropertyinfoparser/libpropertyinfoparser^android_x86_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/core/property_service/libpropertyinfoparser/libpropertyinfoparser^android_x86_x86_64_static_apex10000/ .
 
 echo "building genfunctosyscallnrs^linux_glibc_x86_64_PY3"
-ninja -f $GITHUB_WORKSPACE/steps/build_05.ninja genfunctosyscallnrs,linux_glibc_x86_64_PY3
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja genfunctosyscallnrs,linux_glibc_x86_64_PY3
 mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/tools/genfunctosyscallnrs^linux_glibc_x86_64_PY3
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/bionic/genfunctosyscallnrs^linux_glibc_x86_64_PY3.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/tools/genfunctosyscallnrs^linux_glibc_x86_64_PY3
 
 echo "building genseccomp^linux_glibc_x86_64_PY3"
-ninja -f $GITHUB_WORKSPACE/steps/build_05.ninja genseccomp,linux_glibc_x86_64_PY3
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja genseccomp,linux_glibc_x86_64_PY3
 mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/tools/genseccomp^linux_glibc_x86_64_PY3
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/bionic/genseccomp^linux_glibc_x86_64_PY3.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/tools/genseccomp^linux_glibc_x86_64_PY3
 
 echo "building libc_bionic_ndk^android_native_bridge_arm64_armv8-a_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_05.ninja libc_bionic_ndk,android_native_bridge_arm64_armv8-a_static
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libc_bionic_ndk,android_native_bridge_arm64_armv8-a_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bionic_ndk^android_native_bridge_arm64_armv8-a_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/bionic/libc_bionic_ndk^android_native_bridge_arm64_armv8-a_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bionic_ndk^android_native_bridge_arm64_armv8-a_static
 
 echo "building libc_bionic_ndk^android_native_bridge_arm_armv7-a-neon_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_05.ninja libc_bionic_ndk,android_native_bridge_arm_armv7-a-neon_static
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libc_bionic_ndk,android_native_bridge_arm_armv7-a-neon_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bionic_ndk^android_native_bridge_arm_armv7-a-neon_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/bionic/libc_bionic_ndk^android_native_bridge_arm_armv7-a-neon_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bionic_ndk^android_native_bridge_arm_armv7-a-neon_static
 
 echo "building libc_bionic_ndk^android_recovery_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_05.ninja libc_bionic_ndk,android_recovery_x86_64_static
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libc_bionic_ndk,android_recovery_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bionic_ndk^android_recovery_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/bionic/libc_bionic_ndk^android_recovery_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bionic_ndk^android_recovery_x86_64_static
 
 echo "building libc_bionic_ndk^android_vendor_ramdisk_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_05.ninja libc_bionic_ndk,android_vendor_ramdisk_x86_64_static
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libc_bionic_ndk,android_vendor_ramdisk_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bionic_ndk^android_vendor_ramdisk_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/bionic/libc_bionic_ndk^android_vendor_ramdisk_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bionic_ndk^android_vendor_ramdisk_x86_64_static
 
 echo "building libc_bionic_ndk^android_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_05.ninja libc_bionic_ndk,android_x86_64_static
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libc_bionic_ndk,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bionic_ndk^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/bionic/libc_bionic_ndk^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bionic_ndk^android_x86_64_static
 
 echo "building libc_bionic_ndk^android_x86_64_static_apex10000"
-ninja -f $GITHUB_WORKSPACE/steps/build_05.ninja libc_bionic_ndk,android_x86_64_static_apex10000
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libc_bionic_ndk,android_x86_64_static_apex10000
 mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bionic_ndk^android_x86_64_static_apex10000
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/bionic/libc_bionic_ndk^android_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bionic_ndk^android_x86_64_static_apex10000
 
 echo "building libc_bionic_ndk^android_x86_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_05.ninja libc_bionic_ndk,android_x86_x86_64_static
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libc_bionic_ndk,android_x86_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bionic_ndk^android_x86_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/bionic/libc_bionic_ndk^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bionic_ndk^android_x86_x86_64_static
 
 echo "building libc_bionic_ndk^android_x86_x86_64_static_apex10000"
-ninja -f $GITHUB_WORKSPACE/steps/build_05.ninja libc_bionic_ndk,android_x86_x86_64_static_apex10000
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libc_bionic_ndk,android_x86_x86_64_static_apex10000
 mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bionic_ndk^android_x86_x86_64_static_apex10000
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/bionic/libc_bionic_ndk^android_x86_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bionic_ndk^android_x86_x86_64_static_apex10000
 
 echo "building libc_syscalls^android_native_bridge_arm64_armv8-a_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_05.ninja libc_syscalls,android_native_bridge_arm64_armv8-a_static
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libc_syscalls,android_native_bridge_arm64_armv8-a_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_syscalls^android_native_bridge_arm64_armv8-a_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/bionic/libc_syscalls^android_native_bridge_arm64_armv8-a_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_syscalls^android_native_bridge_arm64_armv8-a_static
 
 echo "building libc_syscalls^android_native_bridge_arm_armv7-a-neon_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_05.ninja libc_syscalls,android_native_bridge_arm_armv7-a-neon_static
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libc_syscalls,android_native_bridge_arm_armv7-a-neon_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_syscalls^android_native_bridge_arm_armv7-a-neon_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/bionic/libc_syscalls^android_native_bridge_arm_armv7-a-neon_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_syscalls^android_native_bridge_arm_armv7-a-neon_static
 
 echo "building libc_syscalls^android_recovery_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_05.ninja libc_syscalls,android_recovery_x86_64_static
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libc_syscalls,android_recovery_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_syscalls^android_recovery_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/bionic/libc_syscalls^android_recovery_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_syscalls^android_recovery_x86_64_static
 
 echo "building libc_syscalls^android_vendor_ramdisk_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_05.ninja libc_syscalls,android_vendor_ramdisk_x86_64_static
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libc_syscalls,android_vendor_ramdisk_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_syscalls^android_vendor_ramdisk_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/bionic/libc_syscalls^android_vendor_ramdisk_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_syscalls^android_vendor_ramdisk_x86_64_static
 
 echo "building libc_syscalls^android_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_05.ninja libc_syscalls,android_x86_64_static
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libc_syscalls,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_syscalls^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/bionic/libc_syscalls^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_syscalls^android_x86_64_static
 
 echo "building libc_syscalls^android_x86_64_static_apex10000"
-ninja -f $GITHUB_WORKSPACE/steps/build_05.ninja libc_syscalls,android_x86_64_static_apex10000
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libc_syscalls,android_x86_64_static_apex10000
 mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_syscalls^android_x86_64_static_apex10000
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/bionic/libc_syscalls^android_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_syscalls^android_x86_64_static_apex10000
 
 echo "building libc_syscalls^android_x86_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_05.ninja libc_syscalls,android_x86_x86_64_static
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libc_syscalls,android_x86_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_syscalls^android_x86_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/bionic/libc_syscalls^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_syscalls^android_x86_x86_64_static
 
 echo "building libc_syscalls^android_x86_x86_64_static_apex10000"
-ninja -f $GITHUB_WORKSPACE/steps/build_05.ninja libc_syscalls,android_x86_x86_64_static_apex10000
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libc_syscalls,android_x86_x86_64_static_apex10000
 mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_syscalls^android_x86_x86_64_static_apex10000
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/bionic/libc_syscalls^android_x86_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_syscalls^android_x86_x86_64_static_apex10000
 
 echo "building libdl^android_recovery_x86_64_shared"
-ninja -f $GITHUB_WORKSPACE/steps/build_05.ninja libdl,android_recovery_x86_64_shared
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libdl,android_recovery_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libdl/libdl^android_recovery_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/bionic/libdl^android_recovery_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/bionic/libdl/libdl^android_recovery_x86_64_shared
 
 echo "building libdl^android_vendor_ramdisk_x86_64_shared"
-ninja -f $GITHUB_WORKSPACE/steps/build_05.ninja libdl,android_vendor_ramdisk_x86_64_shared
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libdl,android_vendor_ramdisk_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libdl/libdl^android_vendor_ramdisk_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/bionic/libdl^android_vendor_ramdisk_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/bionic/libdl/libdl^android_vendor_ramdisk_x86_64_shared
 
 echo "building libdl^android_x86_64_shared"
-ninja -f $GITHUB_WORKSPACE/steps/build_05.ninja libdl,android_x86_64_shared
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libdl,android_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libdl/libdl^android_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/bionic/libdl^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/bionic/libdl/libdl^android_x86_64_shared
 
 echo "building libdl^android_x86_64_shared_apex10000"
-ninja -f $GITHUB_WORKSPACE/steps/build_05.ninja libdl,android_x86_64_shared_apex10000
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libdl,android_x86_64_shared_apex10000
 mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libdl/libdl^android_x86_64_shared_apex10000
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/bionic/libdl^android_x86_64_shared_apex10000.output . $GITHUB_WORKSPACE/artifacts/bionic/libdl/libdl^android_x86_64_shared_apex10000
 
 echo "building libdl^android_x86_x86_64_shared"
-ninja -f $GITHUB_WORKSPACE/steps/build_05.ninja libdl,android_x86_x86_64_shared
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libdl,android_x86_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libdl/libdl^android_x86_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/bionic/libdl^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/bionic/libdl/libdl^android_x86_x86_64_shared
 
 echo "building libdl^android_x86_x86_64_shared_apex10000"
-ninja -f $GITHUB_WORKSPACE/steps/build_05.ninja libdl,android_x86_x86_64_shared_apex10000
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libdl,android_x86_x86_64_shared_apex10000
 mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libdl/libdl^android_x86_x86_64_shared_apex10000
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/bionic/libdl^android_x86_x86_64_shared_apex10000.output . $GITHUB_WORKSPACE/artifacts/bionic/libdl/libdl^android_x86_x86_64_shared_apex10000
 

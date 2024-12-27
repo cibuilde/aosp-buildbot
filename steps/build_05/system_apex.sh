@@ -4,6 +4,9 @@ df -h
 
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
+mkdir -p out/soong/.minibootstrap && ln -sf $GITHUB_WORKSPACE/bpglob out/soong/.minibootstrap/bpglob
+ln -sf $GITHUB_WORKSPACE/ndk.ninja .
+ln -sf $GITHUB_WORKSPACE/ninja-ndk .
 ln -sf $GITHUB_WORKSPACE/ninja .
 
 mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86 prebuilts/clang/host/linux-x86
@@ -32,53 +35,53 @@ clone_depth_platform system/logging
 clone_depth_platform system/media
 clone_depth_platform system/unwinding
 
-rsync -a -r $GITHUB_WORKSPACE/artifacts/build/soong/cmd/dep_fixer/dep_fixer^linux_glibc_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/build/soong/zip/cmd/soong_zip^linux_glibc_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/libcxx/libc++fs^android_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/protobuf/aprotoc^linux_glibc_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/system/apex/proto/lib_apex_manifest_proto^android_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/system/apex/proto/lib_apex_manifest_proto_lite^android_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/system/apex/proto/lib_apex_manifest_proto_lite^android_x86_64_static_apex10000/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/system/apex/proto/lib_apex_manifest_proto_lite^linux_glibc_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/system/apex/proto/lib_apex_session_state_proto^android_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/cmd/dep_fixer/dep_fixer^linux_glibc_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/zip/cmd/soong_zip^linux_glibc_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcxx/libc++fs^android_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/protobuf/aprotoc^linux_glibc_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/apex/proto/lib_apex_manifest_proto^android_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/apex/proto/lib_apex_manifest_proto_lite^android_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/apex/proto/lib_apex_manifest_proto_lite^android_x86_64_static_apex10000/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/apex/proto/lib_apex_manifest_proto_lite^linux_glibc_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/apex/proto/lib_apex_session_state_proto^android_x86_64_static/ .
 
 echo "building apex_build_info_proto^linux_glibc_x86_64_PY2"
-ninja -f $GITHUB_WORKSPACE/steps/build_05.ninja apex_build_info_proto,linux_glibc_x86_64_PY2
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja apex_build_info_proto,linux_glibc_x86_64_PY2
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/apex/proto/apex_build_info_proto^linux_glibc_x86_64_PY2
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/system/apex/apex_build_info_proto^linux_glibc_x86_64_PY2.output . $GITHUB_WORKSPACE/artifacts/system/apex/proto/apex_build_info_proto^linux_glibc_x86_64_PY2
 
 echo "building apex_manifest^linux_glibc_x86_64_PY2"
-ninja -f $GITHUB_WORKSPACE/steps/build_05.ninja apex_manifest,linux_glibc_x86_64_PY2
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja apex_manifest,linux_glibc_x86_64_PY2
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/apex/apexer/apex_manifest^linux_glibc_x86_64_PY2
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/system/apex/apex_manifest^linux_glibc_x86_64_PY2.output . $GITHUB_WORKSPACE/artifacts/system/apex/apexer/apex_manifest^linux_glibc_x86_64_PY2
 
 echo "building apex_manifest_proto^linux_glibc_x86_64_PY2"
-ninja -f $GITHUB_WORKSPACE/steps/build_05.ninja apex_manifest_proto,linux_glibc_x86_64_PY2
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja apex_manifest_proto,linux_glibc_x86_64_PY2
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/apex/proto/apex_manifest_proto^linux_glibc_x86_64_PY2
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/system/apex/apex_manifest_proto^linux_glibc_x86_64_PY2.output . $GITHUB_WORKSPACE/artifacts/system/apex/proto/apex_manifest_proto^linux_glibc_x86_64_PY2
 
 echo "building apex_manifest_proto^linux_glibc_x86_64_PY3"
-ninja -f $GITHUB_WORKSPACE/steps/build_05.ninja apex_manifest_proto,linux_glibc_x86_64_PY3
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja apex_manifest_proto,linux_glibc_x86_64_PY3
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/apex/proto/apex_manifest_proto^linux_glibc_x86_64_PY3
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/system/apex/apex_manifest_proto^linux_glibc_x86_64_PY3.output . $GITHUB_WORKSPACE/artifacts/system/apex/proto/apex_manifest_proto^linux_glibc_x86_64_PY3
 
 echo "building libapex^android_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_05.ninja libapex,android_x86_64_static
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libapex,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/apex/apexd/libapex^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/system/apex/libapex^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/apex/apexd/libapex^android_x86_64_static
 
 echo "building libapexutil^android_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_05.ninja libapexutil,android_x86_64_static
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libapexutil,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/apex/libs/libapexutil/libapexutil^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/system/apex/libapexutil^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/apex/libs/libapexutil/libapexutil^android_x86_64_static
 
 echo "building libapexutil^android_x86_64_static_apex10000"
-ninja -f $GITHUB_WORKSPACE/steps/build_05.ninja libapexutil,android_x86_64_static_apex10000
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libapexutil,android_x86_64_static_apex10000
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/apex/libs/libapexutil/libapexutil^android_x86_64_static_apex10000
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/system/apex/libapexutil^android_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/system/apex/libs/libapexutil/libapexutil^android_x86_64_static_apex10000
 
 echo "building libapexutil^linux_glibc_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_05.ninja libapexutil,linux_glibc_x86_64_static
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libapexutil,linux_glibc_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/apex/libs/libapexutil/libapexutil^linux_glibc_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/system/apex/libapexutil^linux_glibc_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/apex/libs/libapexutil/libapexutil^linux_glibc_x86_64_static
 

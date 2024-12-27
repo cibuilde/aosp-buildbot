@@ -188,6 +188,7 @@ include ninja/external/wayland/wayland_core_protocol_sources_static^.ninja
 include ninja/frameworks/base/framework-cppstream-protos^.ninja
 include ninja/frameworks/base/framework-javastream-protos^.ninja
 include ninja/frameworks/base/libplatformprotos^linux_glibc_x86_64_shared.ninja
+include ninja/frameworks/base/mime/mimemap-res.jar^android_common.ninja
 include ninja/frameworks/base/packages/SettingsLib/search/SettingsLib-annotation-processor^linux_glibc_common.ninja
 include ninja/frameworks/base/tools/aapt2/aapt2^linux_glibc_x86_64.ninja
 include ninja/frameworks/base/tools/locked_region_code_injection/lockedregioncodeinjection^linux_glibc_common.ninja
@@ -228,6 +229,7 @@ include ninja/prebuilts/rust/libhashbrown.rust_sysroot^android_x86_64_rlib.ninja
 include ninja/prebuilts/rust/libhashbrown.rust_sysroot^android_x86_64_rlib_apex10000.ninja
 include ninja/prebuilts/rust/libhashbrown.rust_sysroot^android_x86_x86_64_rlib.ninja
 include ninja/prebuilts/sdk/current/androidx/androidx.annotation_annotation^android_common.ninja
+include ninja/prebuilts/sdk/current/androidx/androidx.annotation_annotation^android_common_apex29.ninja
 include ninja/prebuilts/sdk/current/androidx/androidx.annotation_annotation^android_common_apex30.ninja
 include ninja/prebuilts/sdk/current/androidx/androidx.room_room-common^linux_glibc_common.ninja
 include ninja/prebuilts/sdk/current/extras/constraint-layout-x/androidx-constraintlayout_constraintlayout-solver^android_common.ninja
@@ -275,6 +277,7 @@ include ninja/system/tools/hidl/hidl-gen^linux_glibc_x86_64.ninja
 include ninja/system/tools/hidl/metadata/hidl_metadata_parser^linux_glibc_x86_64.ninja
 include ninja/system/tools/xsdc/xsdc^linux_glibc_common.ninja
 include ninja/tools/apksig/apksig^linux_glibc_common.ninja
+include ninja/tools/metalava/stub-annotations^linux_glibc_common.ninja
 include ninja/tools/platform-compat/build/process-compat-config^linux_glibc_x86_64_PY2.ninja
 
 build generate_operator_out,linux_glibc_x86_64_PY2: phony out/soong/.intermediates/art/tools/generate_operator_out/linux_glibc_x86_64_PY2/generate_operator_out
@@ -773,7 +776,9 @@ build libplatformprotos,linux_glibc_x86_64_shared: phony out/soong/.intermediate
 
 build lockedregioncodeinjection,linux_glibc_common: phony out/soong/.intermediates/frameworks/base/tools/locked_region_code_injection/lockedregioncodeinjection/linux_glibc_common/combined/lockedregioncodeinjection.jar
 
-build frameworks_base-targets: phony SettingsLib-annotation-processor,linux_glibc_common aapt2,linux_glibc_x86_64 framework-cppstream-protos, framework-javastream-protos, libplatformprotos,linux_glibc_x86_64_shared lockedregioncodeinjection,linux_glibc_common
+build mimemap-res.jar,android_common: phony out/soong/.intermediates/frameworks/base/mime/mimemap-res.jar/android_common/gen/mimemap-res.jar
+
+build frameworks_base-targets: phony SettingsLib-annotation-processor,linux_glibc_common aapt2,linux_glibc_x86_64 framework-cppstream-protos, framework-javastream-protos, libplatformprotos,linux_glibc_x86_64_shared lockedregioncodeinjection,linux_glibc_common mimemap-res.jar,android_common
 
 build mcld-gen-options,: phony out/soong/.intermediates/frameworks/compile/mclinker/tools/mcld/mcld-gen-options/gen/Options.inc
 
@@ -885,11 +890,13 @@ build androidx-constraintlayout_constraintlayout-solver,android_common_apex30: p
 
 build androidx.annotation_annotation,android_common: phony out/soong/.intermediates/prebuilts/sdk/current/androidx/androidx.annotation_annotation/android_common/turbine-combined/androidx.annotation_annotation.jar
 
+build androidx.annotation_annotation,android_common_apex29: phony out/soong/.intermediates/prebuilts/sdk/current/androidx/androidx.annotation_annotation/android_common_apex29/turbine-combined/androidx.annotation_annotation.jar
+
 build androidx.annotation_annotation,android_common_apex30: phony out/soong/.intermediates/prebuilts/sdk/current/androidx/androidx.annotation_annotation/android_common_apex30/turbine-combined/androidx.annotation_annotation.jar
 
 build androidx.room_room-common,linux_glibc_common: phony out/soong/.intermediates/prebuilts/sdk/current/androidx/androidx.room_room-common/linux_glibc_common/combined/androidx.room_room-common.jar
 
-build prebuilts_sdk-targets: phony android-support-annotations,android_common androidx-constraintlayout_constraintlayout-solver,android_common androidx-constraintlayout_constraintlayout-solver,android_common_apex30 androidx.annotation_annotation,android_common androidx.annotation_annotation,android_common_apex30 androidx.room_room-common,linux_glibc_common
+build prebuilts_sdk-targets: phony android-support-annotations,android_common androidx-constraintlayout_constraintlayout-solver,android_common androidx-constraintlayout_constraintlayout-solver,android_common_apex30 androidx.annotation_annotation,android_common androidx.annotation_annotation,android_common_apex29 androidx.annotation_annotation,android_common_apex30 androidx.room_room-common,linux_glibc_common
 
 build kotlinx-coroutines-core,android_common: phony out/soong/.intermediates/prebuilts/tools/common/m2/kotlinx-coroutines-core/android_common/combined/kotlinx-coroutines-core.jar out/soong/.intermediates/prebuilts/tools/common/m2/kotlinx-coroutines-core/android_common/turbine-combined/kotlinx-coroutines-core.jar
 
@@ -996,6 +1003,10 @@ build system_tools_xsdc-targets: phony xsdc,linux_glibc_common
 build apksig,linux_glibc_common: phony out/soong/.intermediates/tools/apksig/apksig/linux_glibc_common/javac/apksig.jar
 
 build tools_apksig-targets: phony apksig,linux_glibc_common
+
+build stub-annotations,linux_glibc_common: phony out/soong/.intermediates/tools/metalava/stub-annotations/linux_glibc_common/javac/stub-annotations.jar
+
+build tools_metalava-targets: phony stub-annotations,linux_glibc_common
 
 build process-compat-config,linux_glibc_x86_64_PY2: phony out/soong/host/linux-x86/bin/process-compat-config
 

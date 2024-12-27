@@ -4,6 +4,9 @@ df -h
 
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
+mkdir -p out/soong/.minibootstrap && ln -sf $GITHUB_WORKSPACE/bpglob out/soong/.minibootstrap/bpglob
+ln -sf $GITHUB_WORKSPACE/ndk.ninja .
+ln -sf $GITHUB_WORKSPACE/ninja-ndk .
 ln -sf $GITHUB_WORKSPACE/ninja .
 
 mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86 prebuilts/clang/host/linux-x86
@@ -11,11 +14,11 @@ mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/
 clone_depth_platform external/llvm
 clone_depth_platform frameworks/compile/mclinker
 
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/libcxx/libc++^linux_glibc_x86_64_shared/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/llvm/utils/TableGen/llvm-tblgen^linux_glibc_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcxx/libc++^linux_glibc_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/llvm/utils/TableGen/llvm-tblgen^linux_glibc_x86_64/ .
 
 echo "building mcld-gen-options^"
-ninja -f $GITHUB_WORKSPACE/steps/build_05.ninja mcld-gen-options,
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja mcld-gen-options,
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/compile/mclinker/tools/mcld/mcld-gen-options^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/frameworks/compile/mclinker/mcld-gen-options^.output . $GITHUB_WORKSPACE/artifacts/frameworks/compile/mclinker/tools/mcld/mcld-gen-options^
 

@@ -4,6 +4,9 @@ df -h
 
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
+mkdir -p out/soong/.minibootstrap && ln -sf $GITHUB_WORKSPACE/bpglob out/soong/.minibootstrap/bpglob
+ln -sf $GITHUB_WORKSPACE/ndk.ninja .
+ln -sf $GITHUB_WORKSPACE/ninja-ndk .
 ln -sf $GITHUB_WORKSPACE/ninja .
 
 mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86 prebuilts/clang/host/linux-x86
@@ -30,43 +33,43 @@ clone_depth_platform system/libbase
 clone_depth_platform system/logging
 clone_depth_platform system/media
 
-rsync -a -r $GITHUB_WORKSPACE/artifacts/art/tools/cpp-define-generator/cpp-define-generator-asm-support^android_x86_64_apex31/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/art/tools/cpp-define-generator/cpp-define-generator-asm-support^android_x86_x86_64_apex31/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/build/soong/cmd/merge_zips/merge_zips^linux_glibc_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/build/soong/zip/cmd/soong_zip^linux_glibc_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/art/tools/cpp-define-generator/cpp-define-generator-asm-support^android_x86_64_apex31/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/art/tools/cpp-define-generator/cpp-define-generator-asm-support^android_x86_x86_64_apex31/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/cmd/merge_zips/merge_zips^linux_glibc_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/zip/cmd/soong_zip^linux_glibc_x86_64/ .
 
 echo "building generate_operator_out^linux_glibc_x86_64_PY2"
-ninja -f $GITHUB_WORKSPACE/steps/build_05.ninja generate_operator_out,linux_glibc_x86_64_PY2
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja generate_operator_out,linux_glibc_x86_64_PY2
 mkdir -p $GITHUB_WORKSPACE/artifacts/art/tools/generate_operator_out^linux_glibc_x86_64_PY2
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/art/generate_operator_out^linux_glibc_x86_64_PY2.output . $GITHUB_WORKSPACE/artifacts/art/tools/generate_operator_out^linux_glibc_x86_64_PY2
 
 echo "building libadbconnection^android_x86_64_static_apex31"
-ninja -f $GITHUB_WORKSPACE/steps/build_05.ninja libadbconnection,android_x86_64_static_apex31
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libadbconnection,android_x86_64_static_apex31
 mkdir -p $GITHUB_WORKSPACE/artifacts/art/adbconnection/libadbconnection^android_x86_64_static_apex31
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/art/libadbconnection^android_x86_64_static_apex31.output . $GITHUB_WORKSPACE/artifacts/art/adbconnection/libadbconnection^android_x86_64_static_apex31
 
 echo "building libadbconnection^android_x86_x86_64_static_apex31"
-ninja -f $GITHUB_WORKSPACE/steps/build_05.ninja libadbconnection,android_x86_x86_64_static_apex31
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libadbconnection,android_x86_x86_64_static_apex31
 mkdir -p $GITHUB_WORKSPACE/artifacts/art/adbconnection/libadbconnection^android_x86_x86_64_static_apex31
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/art/libadbconnection^android_x86_x86_64_static_apex31.output . $GITHUB_WORKSPACE/artifacts/art/adbconnection/libadbconnection^android_x86_x86_64_static_apex31
 
 echo "building libopenjdkjvm^android_x86_64_static_apex31"
-ninja -f $GITHUB_WORKSPACE/steps/build_05.ninja libopenjdkjvm,android_x86_64_static_apex31
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libopenjdkjvm,android_x86_64_static_apex31
 mkdir -p $GITHUB_WORKSPACE/artifacts/art/openjdkjvm/libopenjdkjvm^android_x86_64_static_apex31
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/art/libopenjdkjvm^android_x86_64_static_apex31.output . $GITHUB_WORKSPACE/artifacts/art/openjdkjvm/libopenjdkjvm^android_x86_64_static_apex31
 
 echo "building libopenjdkjvm^android_x86_x86_64_static_apex31"
-ninja -f $GITHUB_WORKSPACE/steps/build_05.ninja libopenjdkjvm,android_x86_x86_64_static_apex31
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libopenjdkjvm,android_x86_x86_64_static_apex31
 mkdir -p $GITHUB_WORKSPACE/artifacts/art/openjdkjvm/libopenjdkjvm^android_x86_x86_64_static_apex31
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/art/libopenjdkjvm^android_x86_x86_64_static_apex31.output . $GITHUB_WORKSPACE/artifacts/art/openjdkjvm/libopenjdkjvm^android_x86_x86_64_static_apex31
 
 echo "building libopenjdkjvmti^android_x86_64_static_apex31"
-ninja -f $GITHUB_WORKSPACE/steps/build_05.ninja libopenjdkjvmti,android_x86_64_static_apex31
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libopenjdkjvmti,android_x86_64_static_apex31
 mkdir -p $GITHUB_WORKSPACE/artifacts/art/openjdkjvmti/libopenjdkjvmti^android_x86_64_static_apex31
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/art/libopenjdkjvmti^android_x86_64_static_apex31.output . $GITHUB_WORKSPACE/artifacts/art/openjdkjvmti/libopenjdkjvmti^android_x86_64_static_apex31
 
 echo "building libopenjdkjvmti^android_x86_x86_64_static_apex31"
-ninja -f $GITHUB_WORKSPACE/steps/build_05.ninja libopenjdkjvmti,android_x86_x86_64_static_apex31
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libopenjdkjvmti,android_x86_x86_64_static_apex31
 mkdir -p $GITHUB_WORKSPACE/artifacts/art/openjdkjvmti/libopenjdkjvmti^android_x86_x86_64_static_apex31
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/art/libopenjdkjvmti^android_x86_x86_64_static_apex31.output . $GITHUB_WORKSPACE/artifacts/art/openjdkjvmti/libopenjdkjvmti^android_x86_x86_64_static_apex31
 

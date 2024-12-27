@@ -4,6 +4,9 @@ df -h
 
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
+mkdir -p out/soong/.minibootstrap && ln -sf $GITHUB_WORKSPACE/bpglob out/soong/.minibootstrap/bpglob
+ln -sf $GITHUB_WORKSPACE/ndk.ninja .
+ln -sf $GITHUB_WORKSPACE/ninja-ndk .
 ln -sf $GITHUB_WORKSPACE/ninja .
 
 mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86 prebuilts/clang/host/linux-x86
@@ -19,47 +22,47 @@ clone_sparse prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8 sysroot lib
 clone_sparse prebuilts/rust bootstrap linux-x86/1.51.0
 clone_depth_platform system/bt
 
-rsync -a -r $GITHUB_WORKSPACE/artifacts/build/soong/cmd/sbox/sbox^linux_glibc_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/flatbuffers/flatc^linux_glibc_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/libcxx/libc++^linux_glibc_x86_64_shared/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/rust/crates/proc-macro2/libproc_macro2^linux_glibc_x86_64_rlib_rlib-std/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/rust/crates/quote/libquote^linux_glibc_x86_64_rlib_rlib-std/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/rust/crates/syn/libsyn^linux_glibc_x86_64_rlib_rlib-std/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/rust/crates/unicode-xid/libunicode_xid^linux_glibc_x86_64_rlib_rlib-std/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/system/bt/gd/packet/parser/bluetooth_packetgen^linux_glibc_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/cmd/sbox/sbox^linux_glibc_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/flatbuffers/flatc^linux_glibc_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcxx/libc++^linux_glibc_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/rust/crates/proc-macro2/libproc_macro2^linux_glibc_x86_64_rlib_rlib-std/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/rust/crates/quote/libquote^linux_glibc_x86_64_rlib_rlib-std/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/rust/crates/syn/libsyn^linux_glibc_x86_64_rlib_rlib-std/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/rust/crates/unicode-xid/libunicode_xid^linux_glibc_x86_64_rlib_rlib-std/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/bt/gd/packet/parser/bluetooth_packetgen^linux_glibc_x86_64/ .
 
 echo "building BluetoothGeneratedBundlerSchema_h_bfbs^"
-ninja -f $GITHUB_WORKSPACE/steps/build_05.ninja BluetoothGeneratedBundlerSchema_h_bfbs,
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja BluetoothGeneratedBundlerSchema_h_bfbs,
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/bt/gd/dumpsys/bundler/BluetoothGeneratedBundlerSchema_h_bfbs^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/system/bt/BluetoothGeneratedBundlerSchema_h_bfbs^.output . $GITHUB_WORKSPACE/artifacts/system/bt/gd/dumpsys/bundler/BluetoothGeneratedBundlerSchema_h_bfbs^
 
 echo "building BluetoothGeneratedDumpsysBinarySchema_bfbs^"
-ninja -f $GITHUB_WORKSPACE/steps/build_05.ninja BluetoothGeneratedDumpsysBinarySchema_bfbs,
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja BluetoothGeneratedDumpsysBinarySchema_bfbs,
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/bt/gd/BluetoothGeneratedDumpsysBinarySchema_bfbs^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/system/bt/BluetoothGeneratedDumpsysBinarySchema_bfbs^.output . $GITHUB_WORKSPACE/artifacts/system/bt/gd/BluetoothGeneratedDumpsysBinarySchema_bfbs^
 
 echo "building BluetoothGeneratedDumpsysDataSchema_h^"
-ninja -f $GITHUB_WORKSPACE/steps/build_05.ninja BluetoothGeneratedDumpsysDataSchema_h,
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja BluetoothGeneratedDumpsysDataSchema_h,
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/bt/gd/BluetoothGeneratedDumpsysDataSchema_h^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/system/bt/BluetoothGeneratedDumpsysDataSchema_h^.output . $GITHUB_WORKSPACE/artifacts/system/bt/gd/BluetoothGeneratedDumpsysDataSchema_h^
 
 echo "building BluetoothGeneratedPackets_h^"
-ninja -f $GITHUB_WORKSPACE/steps/build_05.ninja BluetoothGeneratedPackets_h,
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja BluetoothGeneratedPackets_h,
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/bt/gd/BluetoothGeneratedPackets_h^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/system/bt/BluetoothGeneratedPackets_h^.output . $GITHUB_WORKSPACE/artifacts/system/bt/gd/BluetoothGeneratedPackets_h^
 
 echo "building BluetoothGeneratedPackets_rust^"
-ninja -f $GITHUB_WORKSPACE/steps/build_05.ninja BluetoothGeneratedPackets_rust,
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja BluetoothGeneratedPackets_rust,
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/bt/gd/BluetoothGeneratedPackets_rust^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/system/bt/BluetoothGeneratedPackets_rust^.output . $GITHUB_WORKSPACE/artifacts/system/bt/gd/BluetoothGeneratedPackets_rust^
 
 echo "building RootCanalGeneratedPackets_h^"
-ninja -f $GITHUB_WORKSPACE/steps/build_05.ninja RootCanalGeneratedPackets_h,
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja RootCanalGeneratedPackets_h,
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/bt/vendor_libs/test_vendor_lib/RootCanalGeneratedPackets_h^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/system/bt/RootCanalGeneratedPackets_h^.output . $GITHUB_WORKSPACE/artifacts/system/bt/vendor_libs/test_vendor_lib/RootCanalGeneratedPackets_h^
 
 echo "building libgddi_macros^linux_glibc_x86_64"
-ninja -f $GITHUB_WORKSPACE/steps/build_05.ninja libgddi_macros,linux_glibc_x86_64
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libgddi_macros,linux_glibc_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/bt/gd/rust/gddi/libgddi_macros^linux_glibc_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/system/bt/libgddi_macros^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/bt/gd/rust/gddi/libgddi_macros^linux_glibc_x86_64
 
