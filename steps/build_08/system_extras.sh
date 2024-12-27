@@ -29,6 +29,7 @@ clone_sparse_exclude system/extras "!/simpleperf/scripts" "!/simpleperf/testdata
 clone_depth_platform system/libbase
 clone_depth_platform system/logging
 clone_depth_platform system/media
+clone_depth_platform system/server_configurable_flags
 
 rsync -a -r $GITHUB_WORKSPACE/artifacts/external/boringssl/libcrypto^linux_glibc_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/artifacts/external/libcxx/libc++^linux_glibc_x86_64_shared/ .
@@ -174,6 +175,10 @@ fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/system_media.tar.zst" ]; then
   echo "Compressing system/media -> system_media.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/system_media.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/system/media/ .
+fi
+if [ ! -f "$GITHUB_WORKSPACE/cache/system_server_configurable_flags.tar.zst" ]; then
+  echo "Compressing system/server_configurable_flags -> system_server_configurable_flags.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/system_server_configurable_flags.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/system/server_configurable_flags/ .
 fi
 du -ah -d1 $GITHUB_WORKSPACE/cache| sort -h
 

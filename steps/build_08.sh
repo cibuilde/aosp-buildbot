@@ -731,9 +731,6 @@ tar xf $GITHUB_WORKSPACE/tools_platform-compat.tar.zst -C $GITHUB_WORKSPACE/arti
 
 export OUT_DIR=out
 
-time source steps/build_08/singletons.sh
-time source steps/build_08/system_bt.sh
-time source steps/build_08/system_core.sh
 time source steps/build_08/system_extras.sh
 time source steps/build_08/system_hardware_interfaces.sh
 time source steps/build_08/system_incremental_delivery.sh
@@ -862,6 +859,9 @@ time source steps/build_08/packages_modules_common.sh
 time source steps/build_08/prebuilts_ndk.sh
 time source steps/build_08/prebuilts_rust.sh
 time source steps/build_08/prebuilts_sdk.sh
+time source steps/build_08/singletons.sh
+time source steps/build_08/system_bt.sh
+time source steps/build_08/system_core.sh
 
 if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_clang_host_linux-x86.tar.zst" ]; then
   echo "Compressing prebuilts/clang/host/linux-x86 -> prebuilts_clang_host_linux-x86.tar.zst"
