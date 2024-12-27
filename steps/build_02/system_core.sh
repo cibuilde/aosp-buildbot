@@ -4,6 +4,9 @@ df -h
 
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
+mkdir -p out/soong/.minibootstrap && ln -sf $GITHUB_WORKSPACE/bpglob out/soong/.minibootstrap/bpglob
+ln -sf $GITHUB_WORKSPACE/ndk.ninja .
+ln -sf $GITHUB_WORKSPACE/ninja-ndk .
 ln -sf $GITHUB_WORKSPACE/ninja .
 
 mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86 prebuilts/clang/host/linux-x86
@@ -33,96 +36,96 @@ clone_depth_platform system/logging
 clone_depth_platform system/media
 clone_depth_platform system/vold
 
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/lib/uuid/libext2_uuid^android_recovery_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/lib/uuid/libext2_uuid^android_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/system/core/libcutils/libcutils_sockets^android_recovery_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/system/core/libcutils/libcutils_sockets^android_vendor_ramdisk_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/system/core/libcutils/libcutils_sockets^android_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/system/core/libcutils/libcutils_sockets^android_x86_64_static_apex10000/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/system/core/libcutils/libcutils_sockets^android_x86_64_static_apex29/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/system/core/libcutils/libcutils_sockets^android_x86_64_static_apex30/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/system/core/libcutils/libcutils_sockets^android_x86_64_static_cfi_apex29/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/system/core/libcutils/libcutils_sockets^android_x86_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/system/core/libcutils/libcutils_sockets^android_x86_x86_64_static_apex10000/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/system/core/libcutils/libcutils_sockets^android_x86_x86_64_static_apex29/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/system/core/libcutils/libcutils_sockets^android_x86_x86_64_static_apex30/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/system/core/libcutils/libcutils_sockets^linux_glibc_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/libdm/libdm^android_recovery_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/libdm/libdm^android_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/libfstab^android_recovery_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/libfstab^android_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/system/extras/libfscrypt/libfscrypt^android_recovery_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/system/extras/libfscrypt/libfscrypt^android_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/system/logging/logwrapper/liblogwrap^android_recovery_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/system/logging/logwrapper/liblogwrap^android_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/e2fsprogs/lib/uuid/libext2_uuid^android_recovery_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/e2fsprogs/lib/uuid/libext2_uuid^android_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/core/libcutils/libcutils_sockets^android_recovery_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/core/libcutils/libcutils_sockets^android_vendor_ramdisk_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/core/libcutils/libcutils_sockets^android_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/core/libcutils/libcutils_sockets^android_x86_64_static_apex10000/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/core/libcutils/libcutils_sockets^android_x86_64_static_apex29/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/core/libcutils/libcutils_sockets^android_x86_64_static_apex30/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/core/libcutils/libcutils_sockets^android_x86_64_static_cfi_apex29/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/core/libcutils/libcutils_sockets^android_x86_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/core/libcutils/libcutils_sockets^android_x86_x86_64_static_apex10000/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/core/libcutils/libcutils_sockets^android_x86_x86_64_static_apex29/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/core/libcutils/libcutils_sockets^android_x86_x86_64_static_apex30/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/core/libcutils/libcutils_sockets^linux_glibc_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/core/fs_mgr/libdm/libdm^android_recovery_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/core/fs_mgr/libdm/libdm^android_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/core/fs_mgr/libfstab^android_recovery_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/core/fs_mgr/libfstab^android_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/extras/libfscrypt/libfscrypt^android_recovery_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/extras/libfscrypt/libfscrypt^android_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/logwrapper/liblogwrap^android_recovery_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/logwrapper/liblogwrap^android_x86_64_static/ .
 
 echo "building libcutils^android_recovery_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_02.ninja libcutils,android_recovery_x86_64_static
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_02.ninja libcutils,android_recovery_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/libcutils/libcutils^android_recovery_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_02/system/core/libcutils^android_recovery_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/core/libcutils/libcutils^android_recovery_x86_64_static
 
 echo "building libcutils^android_vendor_ramdisk_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_02.ninja libcutils,android_vendor_ramdisk_x86_64_static
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_02.ninja libcutils,android_vendor_ramdisk_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/libcutils/libcutils^android_vendor_ramdisk_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_02/system/core/libcutils^android_vendor_ramdisk_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/core/libcutils/libcutils^android_vendor_ramdisk_x86_64_static
 
 echo "building libcutils^android_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_02.ninja libcutils,android_x86_64_static
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_02.ninja libcutils,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/libcutils/libcutils^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_02/system/core/libcutils^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/core/libcutils/libcutils^android_x86_64_static
 
 echo "building libcutils^android_x86_64_static_apex10000"
-ninja -f $GITHUB_WORKSPACE/steps/build_02.ninja libcutils,android_x86_64_static_apex10000
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_02.ninja libcutils,android_x86_64_static_apex10000
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/libcutils/libcutils^android_x86_64_static_apex10000
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_02/system/core/libcutils^android_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/system/core/libcutils/libcutils^android_x86_64_static_apex10000
 
 echo "building libcutils^android_x86_64_static_apex29"
-ninja -f $GITHUB_WORKSPACE/steps/build_02.ninja libcutils,android_x86_64_static_apex29
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_02.ninja libcutils,android_x86_64_static_apex29
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/libcutils/libcutils^android_x86_64_static_apex29
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_02/system/core/libcutils^android_x86_64_static_apex29.output . $GITHUB_WORKSPACE/artifacts/system/core/libcutils/libcutils^android_x86_64_static_apex29
 
 echo "building libcutils^android_x86_64_static_apex30"
-ninja -f $GITHUB_WORKSPACE/steps/build_02.ninja libcutils,android_x86_64_static_apex30
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_02.ninja libcutils,android_x86_64_static_apex30
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/libcutils/libcutils^android_x86_64_static_apex30
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_02/system/core/libcutils^android_x86_64_static_apex30.output . $GITHUB_WORKSPACE/artifacts/system/core/libcutils/libcutils^android_x86_64_static_apex30
 
 echo "building libcutils^android_x86_64_static_cfi_apex29"
-ninja -f $GITHUB_WORKSPACE/steps/build_02.ninja libcutils,android_x86_64_static_cfi_apex29
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_02.ninja libcutils,android_x86_64_static_cfi_apex29
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/libcutils/libcutils^android_x86_64_static_cfi_apex29
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_02/system/core/libcutils^android_x86_64_static_cfi_apex29.output . $GITHUB_WORKSPACE/artifacts/system/core/libcutils/libcutils^android_x86_64_static_cfi_apex29
 
 echo "building libcutils^android_x86_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_02.ninja libcutils,android_x86_x86_64_static
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_02.ninja libcutils,android_x86_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/libcutils/libcutils^android_x86_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_02/system/core/libcutils^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/core/libcutils/libcutils^android_x86_x86_64_static
 
 echo "building libcutils^android_x86_x86_64_static_apex10000"
-ninja -f $GITHUB_WORKSPACE/steps/build_02.ninja libcutils,android_x86_x86_64_static_apex10000
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_02.ninja libcutils,android_x86_x86_64_static_apex10000
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/libcutils/libcutils^android_x86_x86_64_static_apex10000
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_02/system/core/libcutils^android_x86_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/system/core/libcutils/libcutils^android_x86_x86_64_static_apex10000
 
 echo "building libcutils^android_x86_x86_64_static_apex29"
-ninja -f $GITHUB_WORKSPACE/steps/build_02.ninja libcutils,android_x86_x86_64_static_apex29
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_02.ninja libcutils,android_x86_x86_64_static_apex29
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/libcutils/libcutils^android_x86_x86_64_static_apex29
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_02/system/core/libcutils^android_x86_x86_64_static_apex29.output . $GITHUB_WORKSPACE/artifacts/system/core/libcutils/libcutils^android_x86_x86_64_static_apex29
 
 echo "building libcutils^android_x86_x86_64_static_apex30"
-ninja -f $GITHUB_WORKSPACE/steps/build_02.ninja libcutils,android_x86_x86_64_static_apex30
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_02.ninja libcutils,android_x86_x86_64_static_apex30
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/libcutils/libcutils^android_x86_x86_64_static_apex30
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_02/system/core/libcutils^android_x86_x86_64_static_apex30.output . $GITHUB_WORKSPACE/artifacts/system/core/libcutils/libcutils^android_x86_x86_64_static_apex30
 
 echo "building libcutils^linux_glibc_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_02.ninja libcutils,linux_glibc_x86_64_static
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_02.ninja libcutils,linux_glibc_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/libcutils/libcutils^linux_glibc_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_02/system/core/libcutils^linux_glibc_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/core/libcutils/libcutils^linux_glibc_x86_64_static
 
 echo "building libfs_mgr^android_recovery_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_02.ninja libfs_mgr,android_recovery_x86_64_static
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_02.ninja libfs_mgr,android_recovery_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/libfs_mgr^android_recovery_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_02/system/core/libfs_mgr^android_recovery_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/libfs_mgr^android_recovery_x86_64_static
 
 echo "building libfs_mgr^android_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_02.ninja libfs_mgr,android_x86_64_static
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_02.ninja libfs_mgr,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/libfs_mgr^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_02/system/core/libfs_mgr^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/libfs_mgr^android_x86_64_static
 

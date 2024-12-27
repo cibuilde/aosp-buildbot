@@ -4,6 +4,9 @@ df -h
 
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
+mkdir -p out/soong/.minibootstrap && ln -sf $GITHUB_WORKSPACE/bpglob out/soong/.minibootstrap/bpglob
+ln -sf $GITHUB_WORKSPACE/ndk.ninja .
+ln -sf $GITHUB_WORKSPACE/ninja-ndk .
 ln -sf $GITHUB_WORKSPACE/ninja .
 
 mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86 prebuilts/clang/host/linux-x86
@@ -11,21 +14,21 @@ mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/
 clone_depth_platform build/blueprint
 clone_depth_platform prebuilts/go/linux-x86
 
-rsync -a -r $GITHUB_WORKSPACE/artifacts/build/blueprint/blueprint-deptools^linux_glibc_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/build/blueprint/blueprint-parser^linux_glibc_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/build/blueprint/blueprint-deptools^linux_glibc_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/build/blueprint/blueprint-parser^linux_glibc_x86_64/ .
 
 echo "building blueprint-pathtools^linux_glibc_x86_64"
-ninja -f $GITHUB_WORKSPACE/steps/build_02.ninja blueprint-pathtools,linux_glibc_x86_64
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_02.ninja blueprint-pathtools,linux_glibc_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/build/blueprint/blueprint-pathtools^linux_glibc_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_02/build/blueprint/blueprint-pathtools^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/build/blueprint/blueprint-pathtools^linux_glibc_x86_64
 
 echo "building blueprint-proptools^linux_glibc_x86_64"
-ninja -f $GITHUB_WORKSPACE/steps/build_02.ninja blueprint-proptools,linux_glibc_x86_64
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_02.ninja blueprint-proptools,linux_glibc_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/build/blueprint/blueprint-proptools^linux_glibc_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_02/build/blueprint/blueprint-proptools^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/build/blueprint/blueprint-proptools^linux_glibc_x86_64
 
 echo "building bpmodify^linux_glibc_x86_64"
-ninja -f $GITHUB_WORKSPACE/steps/build_02.ninja bpmodify,linux_glibc_x86_64
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_02.ninja bpmodify,linux_glibc_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/build/blueprint/bpmodify^linux_glibc_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_02/build/blueprint/bpmodify^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/build/blueprint/bpmodify^linux_glibc_x86_64
 

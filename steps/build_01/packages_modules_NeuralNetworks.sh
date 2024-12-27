@@ -4,6 +4,9 @@ df -h
 
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
+mkdir -p out/soong/.minibootstrap && ln -sf $GITHUB_WORKSPACE/bpglob out/soong/.minibootstrap/bpglob
+ln -sf $GITHUB_WORKSPACE/ndk.ninja .
+ln -sf $GITHUB_WORKSPACE/ninja-ndk .
 ln -sf $GITHUB_WORKSPACE/ninja .
 
 mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86 prebuilts/clang/host/linux-x86
@@ -31,22 +34,22 @@ clone_depth_platform system/media
 
 
 echo "building libneuralnetworks_ndk_headers^"
-ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja libneuralnetworks_ndk_headers,
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libneuralnetworks_ndk_headers,
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/NeuralNetworks/runtime/libneuralnetworks_ndk_headers^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/packages/modules/NeuralNetworks/libneuralnetworks_ndk_headers^.output . $GITHUB_WORKSPACE/artifacts/packages/modules/NeuralNetworks/runtime/libneuralnetworks_ndk_headers^
 
 echo "building neuralnetworks_sample_sl_driver_prebuilt^android_vendor.31_x86_64_shared"
-ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja neuralnetworks_sample_sl_driver_prebuilt,android_vendor.31_x86_64_shared
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja neuralnetworks_sample_sl_driver_prebuilt,android_vendor.31_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/NeuralNetworks/driver/sample_shim/neuralnetworks_sample_sl_driver_prebuilt^android_vendor.31_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/packages/modules/NeuralNetworks/neuralnetworks_sample_sl_driver_prebuilt^android_vendor.31_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/packages/modules/NeuralNetworks/driver/sample_shim/neuralnetworks_sample_sl_driver_prebuilt^android_vendor.31_x86_64_shared
 
 echo "building philox_random^android_x86_64_static_apex30"
-ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja philox_random,android_x86_64_static_apex30
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja philox_random,android_x86_64_static_apex30
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/NeuralNetworks/common/random/philox_random^android_x86_64_static_apex30
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/packages/modules/NeuralNetworks/philox_random^android_x86_64_static_apex30.output . $GITHUB_WORKSPACE/artifacts/packages/modules/NeuralNetworks/common/random/philox_random^android_x86_64_static_apex30
 
 echo "building philox_random^android_x86_x86_64_static_apex30"
-ninja -f $GITHUB_WORKSPACE/steps/build_01.ninja philox_random,android_x86_x86_64_static_apex30
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja philox_random,android_x86_x86_64_static_apex30
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/NeuralNetworks/common/random/philox_random^android_x86_x86_64_static_apex30
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/packages/modules/NeuralNetworks/philox_random^android_x86_x86_64_static_apex30.output . $GITHUB_WORKSPACE/artifacts/packages/modules/NeuralNetworks/common/random/philox_random^android_x86_x86_64_static_apex30
 

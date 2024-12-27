@@ -4,6 +4,9 @@ df -h
 
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
+mkdir -p out/soong/.minibootstrap && ln -sf $GITHUB_WORKSPACE/bpglob out/soong/.minibootstrap/bpglob
+ln -sf $GITHUB_WORKSPACE/ndk.ninja .
+ln -sf $GITHUB_WORKSPACE/ninja-ndk .
 ln -sf $GITHUB_WORKSPACE/ninja .
 
 mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86 prebuilts/clang/host/linux-x86
@@ -20,15 +23,15 @@ clone_depth_platform system/core
 clone_depth_platform system/logging
 clone_depth_platform system/media
 
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/zlib/libz^linux_glibc_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/zlib/libz^linux_glibc_x86_64_static/ .
 
 echo "building libz^linux_glibc_x86_64_shared"
-ninja -f $GITHUB_WORKSPACE/steps/build_02.ninja libz,linux_glibc_x86_64_shared
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_02.ninja libz,linux_glibc_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/zlib/libz^linux_glibc_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_02/external/zlib/libz^linux_glibc_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/external/zlib/libz^linux_glibc_x86_64_shared
 
 echo "building minigzip^linux_glibc_x86_64"
-ninja -f $GITHUB_WORKSPACE/steps/build_02.ninja minigzip,linux_glibc_x86_64
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_02.ninja minigzip,linux_glibc_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/zlib/minigzip^linux_glibc_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_02/external/zlib/minigzip^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/zlib/minigzip^linux_glibc_x86_64
 
