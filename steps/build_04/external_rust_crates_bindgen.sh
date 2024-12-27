@@ -13,7 +13,7 @@ mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/
 
 clone_depth_platform external/rust/crates/bindgen
 
-rsync -a -r $GITHUB_WORKSPACE/artifacts/build/soong/cmd/sbox/sbox^linux_glibc_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/cmd/sbox/sbox^linux_glibc_x86_64/ .
 
 echo "building copy_bindgen_build_out^"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja copy_bindgen_build_out,

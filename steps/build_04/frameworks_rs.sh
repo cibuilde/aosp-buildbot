@@ -14,8 +14,8 @@ mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/
 clone_sparse cts libs/json
 clone_depth_platform frameworks/rs
 
-rsync -a -r $GITHUB_WORKSPACE/artifacts/build/soong/cmd/sbox/sbox^linux_glibc_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/frameworks/rs/rsg-generator^linux_glibc_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/cmd/sbox/sbox^linux_glibc_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/rs/rsg-generator^linux_glibc_x86_64/ .
 
 echo "building rs_generated_headers^"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja rs_generated_headers,

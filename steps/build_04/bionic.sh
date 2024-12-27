@@ -18,7 +18,7 @@ ln -s make/target build/
 ln -s make/tools build/
 clone_depth_platform system/core
 
-rsync -a -r $GITHUB_WORKSPACE/artifacts/build/soong/cmd/sbox/sbox^linux_glibc_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/cmd/sbox/sbox^linux_glibc_x86_64/ .
 
 echo "building generate_app_zygote_blocklist^"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja generate_app_zygote_blocklist,

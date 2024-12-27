@@ -13,10 +13,10 @@ mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/
 
 clone_depth_platform art
 
-rsync -a -r $GITHUB_WORKSPACE/artifacts/art/tools/cpp-define-generator/asm_defines.s^android_x86_64_apex31/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/art/tools/cpp-define-generator/asm_defines.s^android_x86_x86_64_apex31/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/art/tools/cpp-define-generator/asm_defines.s^linux_glibc_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/build/soong/cmd/sbox/sbox^linux_glibc_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/art/tools/cpp-define-generator/asm_defines.s^android_x86_64_apex31/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/art/tools/cpp-define-generator/asm_defines.s^android_x86_x86_64_apex31/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/art/tools/cpp-define-generator/asm_defines.s^linux_glibc_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/cmd/sbox/sbox^linux_glibc_x86_64/ .
 
 echo "building cpp-define-generator-asm-support^android_x86_64_apex31"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja cpp-define-generator-asm-support,android_x86_64_apex31

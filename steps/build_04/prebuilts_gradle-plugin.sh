@@ -14,7 +14,7 @@ mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/
 clone_sparse prebuilts/gradle-plugin com/android/tools/build/manifest-merger/30.0.0-alpha14 com/android/tools/common/30.0.0-alpha14 com/android/tools/external/com-intellij/intellij-core/30.0.0-alpha14 com/android/tools/external/com-intellij/kotlin-compiler/30.0.0-alpha14 com/android/tools/external/org-jetbrains/uast/30.0.0-alpha14 com/android/tools/lint/lint/30.0.0-alpha14 com/android/tools/lint/lint-api/30.0.0-alpha14 com/android/tools/lint/lint-checks/30.0.0-alpha14 com/android/tools/lint/lint-gradle/30.0.0-alpha14 com/android/tools/lint/lint-model/30.0.0-alpha14 com/android/tools/repository/30.0.0-alpha14 com/android/tools/sdk-common/30.0.0-alpha14 com/android/tools/sdklib/30.0.0-alpha14
 clone_depth_platform tools/build
 
-rsync -a -r $GITHUB_WORKSPACE/artifacts/build/soong/cmd/merge_zips/merge_zips^linux_glibc_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/cmd/merge_zips/merge_zips^linux_glibc_x86_64/ .
 
 echo "building metalava-gradle-plugin-deps^linux_glibc_common"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja metalava-gradle-plugin-deps,linux_glibc_common

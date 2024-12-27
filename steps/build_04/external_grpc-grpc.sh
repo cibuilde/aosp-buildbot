@@ -26,14 +26,14 @@ clone_depth_platform system/core
 clone_depth_platform system/logging
 clone_depth_platform system/media
 
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/gpr_base^android_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/gpr_base^android_x86_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_base_c^android_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_base_c^android_x86_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_trace^android_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_trace^android_x86_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/zlib/libz^android_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/zlib/libz^android_x86_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/grpc-grpc/gpr_base^android_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/grpc-grpc/gpr_base^android_x86_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/grpc-grpc/libgrpc_base_c^android_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/grpc-grpc/libgrpc_base_c^android_x86_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/grpc-grpc/libgrpc_trace^android_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/grpc-grpc/libgrpc_trace^android_x86_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/zlib/libz^android_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/zlib/libz^android_x86_x86_64_static/ .
 
 echo "building libgrpc_base^android_x86_64_static"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libgrpc_base,android_x86_64_static

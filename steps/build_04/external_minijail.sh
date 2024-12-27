@@ -13,19 +13,19 @@ mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/
 
 clone_depth_platform external/minijail
 
-rsync -a -r $GITHUB_WORKSPACE/artifacts/build/soong/cmd/sbox/sbox^linux_glibc_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/minijail/libminijail_gen_constants_obj^android_recovery_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/minijail/libminijail_gen_constants_obj^android_vendor.31_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/minijail/libminijail_gen_constants_obj^android_vendor.31_x86_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/minijail/libminijail_gen_constants_obj^android_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/minijail/libminijail_gen_constants_obj^android_x86_64_apex10000/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/minijail/libminijail_gen_constants_obj^android_x86_64_apex29/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/minijail/libminijail_gen_syscall_obj^android_recovery_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/minijail/libminijail_gen_syscall_obj^android_vendor.31_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/minijail/libminijail_gen_syscall_obj^android_vendor.31_x86_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/minijail/libminijail_gen_syscall_obj^android_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/minijail/libminijail_gen_syscall_obj^android_x86_64_apex10000/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/minijail/libminijail_gen_syscall_obj^android_x86_64_apex29/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/cmd/sbox/sbox^linux_glibc_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/minijail/libminijail_gen_constants_obj^android_recovery_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/minijail/libminijail_gen_constants_obj^android_vendor.31_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/minijail/libminijail_gen_constants_obj^android_vendor.31_x86_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/minijail/libminijail_gen_constants_obj^android_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/minijail/libminijail_gen_constants_obj^android_x86_64_apex10000/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/minijail/libminijail_gen_constants_obj^android_x86_64_apex29/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/minijail/libminijail_gen_syscall_obj^android_recovery_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/minijail/libminijail_gen_syscall_obj^android_vendor.31_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/minijail/libminijail_gen_syscall_obj^android_vendor.31_x86_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/minijail/libminijail_gen_syscall_obj^android_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/minijail/libminijail_gen_syscall_obj^android_x86_64_apex10000/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/minijail/libminijail_gen_syscall_obj^android_x86_64_apex29/ .
 
 echo "building libminijail_gen_constants^android_recovery_x86_64"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libminijail_gen_constants,android_recovery_x86_64

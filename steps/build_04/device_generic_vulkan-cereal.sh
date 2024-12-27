@@ -26,12 +26,12 @@ clone_depth_platform system/core
 clone_depth_platform system/logging
 clone_depth_platform system/media
 
-rsync -a -r $GITHUB_WORKSPACE/artifacts/device/generic/vulkan-cereal/third-party/perfetto/perfetto-libperfettobase^android_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/device/generic/vulkan-cereal/third-party/perfetto/perfetto-libperfettobase^android_x86_64_static_apex10000/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/device/generic/vulkan-cereal/third-party/perfetto/perfetto-libprotozero^android_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/device/generic/vulkan-cereal/third-party/perfetto/perfetto-libprotozero^android_x86_64_static_apex10000/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/device/generic/vulkan-cereal/third-party/perfetto-tracing-only/perfetto-tracing-only^android_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/device/generic/vulkan-cereal/third-party/perfetto-tracing-only/perfetto-tracing-only^android_x86_64_static_apex10000/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/device/generic/vulkan-cereal/third-party/perfetto/perfetto-libperfettobase^android_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/device/generic/vulkan-cereal/third-party/perfetto/perfetto-libperfettobase^android_x86_64_static_apex10000/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/device/generic/vulkan-cereal/third-party/perfetto/perfetto-libprotozero^android_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/device/generic/vulkan-cereal/third-party/perfetto/perfetto-libprotozero^android_x86_64_static_apex10000/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/device/generic/vulkan-cereal/third-party/perfetto-tracing-only/perfetto-tracing-only^android_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/device/generic/vulkan-cereal/third-party/perfetto-tracing-only/perfetto-tracing-only^android_x86_64_static_apex10000/ .
 
 echo "building gfxstream_base^android_x86_64_static"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja gfxstream_base,android_x86_64_static

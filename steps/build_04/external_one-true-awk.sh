@@ -14,7 +14,7 @@ mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/
 clone_depth_platform external/one-true-awk
 clone_sparse prebuilts/build-tools linux-x86/bin linux-x86/lib64 path common
 
-rsync -a -r $GITHUB_WORKSPACE/artifacts/build/soong/cmd/sbox/sbox^linux_glibc_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/cmd/sbox/sbox^linux_glibc_x86_64/ .
 
 echo "building awkgram.tab.c^"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja awkgram.tab.c,
