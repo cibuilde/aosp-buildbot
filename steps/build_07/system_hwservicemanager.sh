@@ -4,6 +4,9 @@ df -h
 
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
+mkdir -p out/soong/.minibootstrap && ln -sf $GITHUB_WORKSPACE/bpglob out/soong/.minibootstrap/bpglob
+ln -sf $GITHUB_WORKSPACE/ndk.ninja .
+ln -sf $GITHUB_WORKSPACE/ninja-ndk .
 ln -sf $GITHUB_WORKSPACE/ninja .
 
 mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86 prebuilts/clang/host/linux-x86
@@ -34,19 +37,19 @@ clone_depth_platform system/tools/aidl
 clone_depth_platform system/tools/hidl
 clone_depth_platform system/unwinding
 
-rsync -a -r $GITHUB_WORKSPACE/artifacts/system/libhidl/transport/base/1.0/android.hidl.base@1.0_genc++_headers^/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/system/libhidl/transport/manager/1.0/android.hidl.manager@1.0_genc++_headers^/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/system/libhidl/transport/manager/1.1/android.hidl.manager@1.1_genc++_headers^/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/system/libhidl/transport/manager/1.2/android.hidl.manager@1.2_genc++_headers^/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/system/libhidl/transport/token/1.0/android.hidl.token@1.0_genc++_headers^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/libhidl/transport/base/1.0/android.hidl.base@1.0_genc++_headers^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/libhidl/transport/manager/1.0/android.hidl.manager@1.0_genc++_headers^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/libhidl/transport/manager/1.1/android.hidl.manager@1.1_genc++_headers^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/libhidl/transport/manager/1.2/android.hidl.manager@1.2_genc++_headers^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/libhidl/transport/token/1.0/android.hidl.token@1.0_genc++_headers^/ .
 
 echo "building libhwservicemanager^android_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_07.ninja libhwservicemanager,android_x86_64_static
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libhwservicemanager,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/hwservicemanager/libhwservicemanager^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/hwservicemanager/libhwservicemanager^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/hwservicemanager/libhwservicemanager^android_x86_64_static
 
 echo "building libtokenmanager^android_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_07.ninja libtokenmanager,android_x86_64_static
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libtokenmanager,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/hwservicemanager/libtokenmanager^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/hwservicemanager/libtokenmanager^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/hwservicemanager/libtokenmanager^android_x86_64_static
 

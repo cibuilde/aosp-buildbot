@@ -4,6 +4,9 @@ df -h
 
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
+mkdir -p out/soong/.minibootstrap && ln -sf $GITHUB_WORKSPACE/bpglob out/soong/.minibootstrap/bpglob
+ln -sf $GITHUB_WORKSPACE/ndk.ninja .
+ln -sf $GITHUB_WORKSPACE/ninja-ndk .
 ln -sf $GITHUB_WORKSPACE/ninja .
 
 mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86 prebuilts/clang/host/linux-x86
@@ -29,26 +32,26 @@ clone_depth_platform system/libbase
 clone_depth_platform system/logging
 clone_depth_platform system/media
 
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/libchrome/libchrome-include^/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/libchrome/libmojo_jni_registration_headers^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/libchrome/libchrome-include^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/libchrome/libmojo_jni_registration_headers^/ .
 
 echo "building libbrillo-stream^android_recovery_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_07.ninja libbrillo-stream,android_recovery_x86_64_static
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libbrillo-stream,android_recovery_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/libbrillo/libbrillo-stream^android_recovery_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/external/libbrillo/libbrillo-stream^android_recovery_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/libbrillo/libbrillo-stream^android_recovery_x86_64_static
 
 echo "building libbrillo-stream^android_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_07.ninja libbrillo-stream,android_x86_64_static
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libbrillo-stream,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/libbrillo/libbrillo-stream^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/external/libbrillo/libbrillo-stream^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/libbrillo/libbrillo-stream^android_x86_64_static
 
 echo "building libbrillo^android_recovery_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_07.ninja libbrillo,android_recovery_x86_64_static
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libbrillo,android_recovery_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/libbrillo/libbrillo^android_recovery_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/external/libbrillo/libbrillo^android_recovery_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/libbrillo/libbrillo^android_recovery_x86_64_static
 
 echo "building libbrillo^android_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_07.ninja libbrillo,android_x86_64_static
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libbrillo,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/libbrillo/libbrillo^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/external/libbrillo/libbrillo^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/libbrillo/libbrillo^android_x86_64_static
 

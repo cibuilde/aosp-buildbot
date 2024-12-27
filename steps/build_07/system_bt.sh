@@ -4,6 +4,9 @@ df -h
 
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
+mkdir -p out/soong/.minibootstrap && ln -sf $GITHUB_WORKSPACE/bpglob out/soong/.minibootstrap/bpglob
+ln -sf $GITHUB_WORKSPACE/ndk.ninja .
+ln -sf $GITHUB_WORKSPACE/ninja-ndk .
 ln -sf $GITHUB_WORKSPACE/ninja .
 
 mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86 prebuilts/clang/host/linux-x86
@@ -32,91 +35,91 @@ clone_depth_platform system/libbase
 clone_depth_platform system/logging
 clone_depth_platform system/media
 
-rsync -a -r $GITHUB_WORKSPACE/artifacts/build/soong/cmd/sbox/sbox^linux_glibc_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/libchrome/libchrome-include^/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/libchrome/libmojo_jni_registration_headers^/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/libcxx/libc++^linux_glibc_x86_64_shared/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/rust/cxx/gen/cmd/cxxbridge^linux_glibc_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/system/bt/gd/BluetoothGeneratedDumpsysBinarySchema_bfbs^/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/system/bt/gd/dumpsys/bundler/bluetooth_flatbuffer_bundler^linux_glibc_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/cmd/sbox/sbox^linux_glibc_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/libchrome/libchrome-include^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/libchrome/libmojo_jni_registration_headers^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcxx/libc++^linux_glibc_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/rust/cxx/gen/cmd/cxxbridge^linux_glibc_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/bt/gd/BluetoothGeneratedDumpsysBinarySchema_bfbs^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/bt/gd/dumpsys/bundler/bluetooth_flatbuffer_bundler^linux_glibc_x86_64/ .
 
 echo "building BluetoothGeneratedDumpsysBundledSchema_h^"
-ninja -f $GITHUB_WORKSPACE/steps/build_07.ninja BluetoothGeneratedDumpsysBundledSchema_h,
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja BluetoothGeneratedDumpsysBundledSchema_h,
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/bt/gd/dumpsys/BluetoothGeneratedDumpsysBundledSchema_h^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/bt/BluetoothGeneratedDumpsysBundledSchema_h^.output . $GITHUB_WORKSPACE/artifacts/system/bt/gd/dumpsys/BluetoothGeneratedDumpsysBundledSchema_h^
 
 echo "building lib-bt-packets-avrcp^android_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_07.ninja lib-bt-packets-avrcp,android_x86_64_static
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja lib-bt-packets-avrcp,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/bt/packet/avrcp/lib-bt-packets-avrcp^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/bt/lib-bt-packets-avrcp^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/bt/packet/avrcp/lib-bt-packets-avrcp^android_x86_64_static
 
 echo "building lib-bt-packets-avrcp^android_x86_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_07.ninja lib-bt-packets-avrcp,android_x86_x86_64_static
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja lib-bt-packets-avrcp,android_x86_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/bt/packet/avrcp/lib-bt-packets-avrcp^android_x86_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/bt/lib-bt-packets-avrcp^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/bt/packet/avrcp/lib-bt-packets-avrcp^android_x86_x86_64_static
 
 echo "building lib-bt-packets-base^android_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_07.ninja lib-bt-packets-base,android_x86_64_static
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja lib-bt-packets-base,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/bt/packet/base/lib-bt-packets-base^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/bt/lib-bt-packets-base^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/bt/packet/base/lib-bt-packets-base^android_x86_64_static
 
 echo "building lib-bt-packets-base^android_x86_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_07.ninja lib-bt-packets-base,android_x86_x86_64_static
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja lib-bt-packets-base,android_x86_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/bt/packet/base/lib-bt-packets-base^android_x86_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/bt/lib-bt-packets-base^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/bt/packet/base/lib-bt-packets-base^android_x86_x86_64_static
 
 echo "building libbluetooth-types^android_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_07.ninja libbluetooth-types,android_x86_64_static
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libbluetooth-types,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/bt/types/libbluetooth-types^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/bt/libbluetooth-types^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/bt/types/libbluetooth-types^android_x86_64_static
 
 echo "building libbluetooth-types^android_x86_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_07.ninja libbluetooth-types,android_x86_x86_64_static
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libbluetooth-types,android_x86_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/bt/types/libbluetooth-types^android_x86_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/bt/libbluetooth-types^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/bt/types/libbluetooth-types^android_x86_x86_64_static
 
 echo "building libbt_common_sys_prop_bridge_code^"
-ninja -f $GITHUB_WORKSPACE/steps/build_07.ninja libbt_common_sys_prop_bridge_code,
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libbt_common_sys_prop_bridge_code,
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/bt/gd/rust/common/libbt_common_sys_prop_bridge_code^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/bt/libbt_common_sys_prop_bridge_code^.output . $GITHUB_WORKSPACE/artifacts/system/bt/gd/rust/common/libbt_common_sys_prop_bridge_code^
 
 echo "building libbt_hidl_hal_bridge_code^"
-ninja -f $GITHUB_WORKSPACE/steps/build_07.ninja libbt_hidl_hal_bridge_code,
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libbt_hidl_hal_bridge_code,
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/bt/gd/rust/hal/libbt_hidl_hal_bridge_code^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/bt/libbt_hidl_hal_bridge_code^.output . $GITHUB_WORKSPACE/artifacts/system/bt/gd/rust/hal/libbt_hidl_hal_bridge_code^
 
 echo "building libbt_hidl_hal_bridge_header^"
-ninja -f $GITHUB_WORKSPACE/steps/build_07.ninja libbt_hidl_hal_bridge_header,
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libbt_hidl_hal_bridge_header,
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/bt/gd/rust/hal/libbt_hidl_hal_bridge_header^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/bt/libbt_hidl_hal_bridge_header^.output . $GITHUB_WORKSPACE/artifacts/system/bt/gd/rust/hal/libbt_hidl_hal_bridge_header^
 
 echo "building libbt_init_flags_bridge_code^"
-ninja -f $GITHUB_WORKSPACE/steps/build_07.ninja libbt_init_flags_bridge_code,
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libbt_init_flags_bridge_code,
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/bt/gd/rust/shim/libbt_init_flags_bridge_code^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/bt/libbt_init_flags_bridge_code^.output . $GITHUB_WORKSPACE/artifacts/system/bt/gd/rust/shim/libbt_init_flags_bridge_code^
 
 echo "building libbt_init_flags_bridge_header^"
-ninja -f $GITHUB_WORKSPACE/steps/build_07.ninja libbt_init_flags_bridge_header,
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libbt_init_flags_bridge_header,
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/bt/gd/rust/shim/libbt_init_flags_bridge_header^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/bt/libbt_init_flags_bridge_header^.output . $GITHUB_WORKSPACE/artifacts/system/bt/gd/rust/shim/libbt_init_flags_bridge_header^
 
 echo "building libbt_message_loop_thread_bridge_code^"
-ninja -f $GITHUB_WORKSPACE/steps/build_07.ninja libbt_message_loop_thread_bridge_code,
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libbt_message_loop_thread_bridge_code,
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/bt/gd/rust/shim/libbt_message_loop_thread_bridge_code^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/bt/libbt_message_loop_thread_bridge_code^.output . $GITHUB_WORKSPACE/artifacts/system/bt/gd/rust/shim/libbt_message_loop_thread_bridge_code^
 
 echo "building libbt_message_loop_thread_bridge_header^"
-ninja -f $GITHUB_WORKSPACE/steps/build_07.ninja libbt_message_loop_thread_bridge_header,
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libbt_message_loop_thread_bridge_header,
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/bt/gd/rust/shim/libbt_message_loop_thread_bridge_header^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/bt/libbt_message_loop_thread_bridge_header^.output . $GITHUB_WORKSPACE/artifacts/system/bt/gd/rust/shim/libbt_message_loop_thread_bridge_header^
 
 echo "building libbt_shim_bridge_code^"
-ninja -f $GITHUB_WORKSPACE/steps/build_07.ninja libbt_shim_bridge_code,
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libbt_shim_bridge_code,
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/bt/gd/rust/shim/libbt_shim_bridge_code^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/bt/libbt_shim_bridge_code^.output . $GITHUB_WORKSPACE/artifacts/system/bt/gd/rust/shim/libbt_shim_bridge_code^
 
 echo "building libbt_shim_bridge_header^"
-ninja -f $GITHUB_WORKSPACE/steps/build_07.ninja libbt_shim_bridge_header,
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libbt_shim_bridge_header,
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/bt/gd/rust/shim/libbt_shim_bridge_header^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/bt/libbt_shim_bridge_header^.output . $GITHUB_WORKSPACE/artifacts/system/bt/gd/rust/shim/libbt_shim_bridge_header^
 

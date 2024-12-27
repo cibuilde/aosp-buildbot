@@ -4,6 +4,9 @@ df -h
 
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
+mkdir -p out/soong/.minibootstrap && ln -sf $GITHUB_WORKSPACE/bpglob out/soong/.minibootstrap/bpglob
+ln -sf $GITHUB_WORKSPACE/ndk.ninja .
+ln -sf $GITHUB_WORKSPACE/ninja-ndk .
 ln -sf $GITHUB_WORKSPACE/ninja .
 
 mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86 prebuilts/clang/host/linux-x86
@@ -29,87 +32,87 @@ clone_depth_platform system/logging
 clone_depth_platform system/media
 clone_depth_platform system/unwinding
 
-rsync -a -r $GITHUB_WORKSPACE/artifacts/build/soong/cmd/dep_fixer/dep_fixer^linux_glibc_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/libcxx/libc++^linux_glibc_x86_64_shared/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/protobuf/aprotoc^linux_glibc_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/protobuf/libprotobuf-cpp-full^linux_glibc_x86_64_shared/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/zlib/libz^linux_glibc_x86_64_shared/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/system/hardware/interfaces/keystore2/aidl/android.system.keystore2-api^/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/system/hardware/interfaces/net/netd/1.0/android.system.net.netd@1.0_genc++^/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/system/hardware/interfaces/net/netd/1.0/android.system.net.netd@1.0_genc++_headers^/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/system/hardware/interfaces/net/netd/1.1/android.system.net.netd@1.1_genc++^/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/system/hardware/interfaces/net/netd/1.1/android.system.net.netd@1.1_genc++_headers^/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/system/hardware/interfaces/suspend/aidl/android.system.suspend.control-api^/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/system/hardware/interfaces/suspend/1.0/android.system.suspend@1.0_genc++^/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/system/hardware/interfaces/suspend/1.0/android.system.suspend@1.0_genc++_headers^/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/system/hardware/interfaces/wifi/keystore/1.0/android.system.wifi.keystore@1.0_genc++^/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/system/hardware/interfaces/wifi/keystore/1.0/android.system.wifi.keystore@1.0_genc++_headers^/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/system/libbase/libbase^linux_glibc_x86_64_shared/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/system/libhidl/transport/base/1.0/android.hidl.base@1.0_genc++_headers^/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/system/libhidl/transport/manager/1.0/android.hidl.manager@1.0_genc++_headers^/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/system/libhidl/transport/manager/1.1/android.hidl.manager@1.1_genc++_headers^/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/system/libhidl/transport/manager/1.2/android.hidl.manager@1.2_genc++_headers^/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/system/logging/liblog/liblog^linux_glibc_x86_64_shared/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/system/tools/aidl/aidl^linux_glibc_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/system/tools/sysprop/sysprop_cpp^linux_glibc_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/cmd/dep_fixer/dep_fixer^linux_glibc_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcxx/libc++^linux_glibc_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/protobuf/aprotoc^linux_glibc_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/protobuf/libprotobuf-cpp-full^linux_glibc_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/zlib/libz^linux_glibc_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/hardware/interfaces/keystore2/aidl/android.system.keystore2-api^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/hardware/interfaces/net/netd/1.0/android.system.net.netd@1.0_genc++^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/hardware/interfaces/net/netd/1.0/android.system.net.netd@1.0_genc++_headers^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/hardware/interfaces/net/netd/1.1/android.system.net.netd@1.1_genc++^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/hardware/interfaces/net/netd/1.1/android.system.net.netd@1.1_genc++_headers^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/hardware/interfaces/suspend/aidl/android.system.suspend.control-api^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/hardware/interfaces/suspend/1.0/android.system.suspend@1.0_genc++^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/hardware/interfaces/suspend/1.0/android.system.suspend@1.0_genc++_headers^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/hardware/interfaces/wifi/keystore/1.0/android.system.wifi.keystore@1.0_genc++^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/hardware/interfaces/wifi/keystore/1.0/android.system.wifi.keystore@1.0_genc++_headers^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/libbase/libbase^linux_glibc_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/libhidl/transport/base/1.0/android.hidl.base@1.0_genc++_headers^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/libhidl/transport/manager/1.0/android.hidl.manager@1.0_genc++_headers^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/libhidl/transport/manager/1.1/android.hidl.manager@1.1_genc++_headers^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/libhidl/transport/manager/1.2/android.hidl.manager@1.2_genc++_headers^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^linux_glibc_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/tools/aidl/aidl^linux_glibc_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/tools/sysprop/sysprop_cpp^linux_glibc_x86_64/ .
 
 echo "building android.system.keystore2-V1-cpp-source^"
-ninja -f $GITHUB_WORKSPACE/steps/build_07.ninja android.system.keystore2-V1-cpp-source,
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja android.system.keystore2-V1-cpp-source,
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/hardware/interfaces/keystore2/aidl/android.system.keystore2-V1-cpp-source^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/hardware/interfaces/android.system.keystore2-V1-cpp-source^.output . $GITHUB_WORKSPACE/artifacts/system/hardware/interfaces/keystore2/aidl/android.system.keystore2-V1-cpp-source^
 
 echo "building android.system.keystore2-V1-java-source^"
-ninja -f $GITHUB_WORKSPACE/steps/build_07.ninja android.system.keystore2-V1-java-source,
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja android.system.keystore2-V1-java-source,
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/hardware/interfaces/keystore2/aidl/android.system.keystore2-V1-java-source^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/hardware/interfaces/android.system.keystore2-V1-java-source^.output . $GITHUB_WORKSPACE/artifacts/system/hardware/interfaces/keystore2/aidl/android.system.keystore2-V1-java-source^
 
 echo "building android.system.keystore2-V1-ndk_platform-source^"
-ninja -f $GITHUB_WORKSPACE/steps/build_07.ninja android.system.keystore2-V1-ndk_platform-source,
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja android.system.keystore2-V1-ndk_platform-source,
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/hardware/interfaces/keystore2/aidl/android.system.keystore2-V1-ndk_platform-source^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/hardware/interfaces/android.system.keystore2-V1-ndk_platform-source^.output . $GITHUB_WORKSPACE/artifacts/system/hardware/interfaces/keystore2/aidl/android.system.keystore2-V1-ndk_platform-source^
 
 echo "building android.system.keystore2-V1-rust-source^"
-ninja -f $GITHUB_WORKSPACE/steps/build_07.ninja android.system.keystore2-V1-rust-source,
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja android.system.keystore2-V1-rust-source,
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/hardware/interfaces/keystore2/aidl/android.system.keystore2-V1-rust-source^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/hardware/interfaces/android.system.keystore2-V1-rust-source^.output . $GITHUB_WORKSPACE/artifacts/system/hardware/interfaces/keystore2/aidl/android.system.keystore2-V1-rust-source^
 
 echo "building android.system.net.netd@1.0^android_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_07.ninja android.system.net.netd@1.0,android_x86_64_static
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja android.system.net.netd@1.0,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/hardware/interfaces/net/netd/1.0/android.system.net.netd@1.0^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/hardware/interfaces/android.system.net.netd@1.0^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/hardware/interfaces/net/netd/1.0/android.system.net.netd@1.0^android_x86_64_static
 
 echo "building android.system.net.netd@1.1^android_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_07.ninja android.system.net.netd@1.1,android_x86_64_static
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja android.system.net.netd@1.1,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/hardware/interfaces/net/netd/1.1/android.system.net.netd@1.1^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/hardware/interfaces/android.system.net.netd@1.1^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/hardware/interfaces/net/netd/1.1/android.system.net.netd@1.1^android_x86_64_static
 
 echo "building android.system.suspend.control-V1-cpp-source^"
-ninja -f $GITHUB_WORKSPACE/steps/build_07.ninja android.system.suspend.control-V1-cpp-source,
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja android.system.suspend.control-V1-cpp-source,
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/hardware/interfaces/suspend/aidl/android.system.suspend.control-V1-cpp-source^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/hardware/interfaces/android.system.suspend.control-V1-cpp-source^.output . $GITHUB_WORKSPACE/artifacts/system/hardware/interfaces/suspend/aidl/android.system.suspend.control-V1-cpp-source^
 
 echo "building android.system.suspend.control-V1-ndk-source^"
-ninja -f $GITHUB_WORKSPACE/steps/build_07.ninja android.system.suspend.control-V1-ndk-source,
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja android.system.suspend.control-V1-ndk-source,
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/hardware/interfaces/suspend/aidl/android.system.suspend.control-V1-ndk-source^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/hardware/interfaces/android.system.suspend.control-V1-ndk-source^.output . $GITHUB_WORKSPACE/artifacts/system/hardware/interfaces/suspend/aidl/android.system.suspend.control-V1-ndk-source^
 
 echo "building android.system.suspend@1.0^android_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_07.ninja android.system.suspend@1.0,android_x86_64_static
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja android.system.suspend@1.0,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/hardware/interfaces/suspend/1.0/android.system.suspend@1.0^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/hardware/interfaces/android.system.suspend@1.0^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/hardware/interfaces/suspend/1.0/android.system.suspend@1.0^android_x86_64_static
 
 echo "building android.system.suspend@1.0^android_x86_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_07.ninja android.system.suspend@1.0,android_x86_x86_64_static
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja android.system.suspend@1.0,android_x86_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/hardware/interfaces/suspend/1.0/android.system.suspend@1.0^android_x86_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/hardware/interfaces/android.system.suspend@1.0^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/hardware/interfaces/suspend/1.0/android.system.suspend@1.0^android_x86_x86_64_static
 
 echo "building android.system.wifi.keystore@1.0^android_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_07.ninja android.system.wifi.keystore@1.0,android_x86_64_static
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja android.system.wifi.keystore@1.0,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/hardware/interfaces/wifi/keystore/1.0/android.system.wifi.keystore@1.0^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/hardware/interfaces/android.system.wifi.keystore@1.0^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/hardware/interfaces/wifi/keystore/1.0/android.system.wifi.keystore@1.0^android_x86_64_static
 
 echo "building libSuspendProperties^android_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_07.ninja libSuspendProperties,android_x86_64_static
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libSuspendProperties,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/hardware/interfaces/suspend/1.0/default/libSuspendProperties^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/hardware/interfaces/libSuspendProperties^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/hardware/interfaces/suspend/1.0/default/libSuspendProperties^android_x86_64_static
 

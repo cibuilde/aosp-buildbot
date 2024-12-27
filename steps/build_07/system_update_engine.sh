@@ -4,6 +4,9 @@ df -h
 
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
+mkdir -p out/soong/.minibootstrap && ln -sf $GITHUB_WORKSPACE/bpglob out/soong/.minibootstrap/bpglob
+ln -sf $GITHUB_WORKSPACE/ndk.ninja .
+ln -sf $GITHUB_WORKSPACE/ninja-ndk .
 ln -sf $GITHUB_WORKSPACE/ninja .
 
 mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86 prebuilts/clang/host/linux-x86
@@ -31,46 +34,46 @@ clone_depth_platform system/logging
 clone_depth_platform system/media
 clone_depth_platform system/update_engine
 
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/libchrome/libchrome-include^/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/libchrome/libmojo_jni_registration_headers^/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/libcxx/libc++^linux_glibc_x86_64_shared/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/system/tools/aidl/aidl^linux_glibc_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/system/update_engine/stable/libupdate_engine_stable-api^/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/system/update_engine/update_metadata-protos^android_recovery_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/system/update_engine/update_metadata-protos^android_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/libchrome/libchrome-include^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/libchrome/libmojo_jni_registration_headers^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcxx/libc++^linux_glibc_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/tools/aidl/aidl^linux_glibc_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/update_engine/stable/libupdate_engine_stable-api^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/update_engine/update_metadata-protos^android_recovery_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/update_engine/update_metadata-protos^android_x86_64_static/ .
 
 echo "building libcow_operation_convert^android_recovery_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_07.ninja libcow_operation_convert,android_recovery_x86_64_static
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libcow_operation_convert,android_recovery_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/update_engine/libcow_operation_convert^android_recovery_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/update_engine/libcow_operation_convert^android_recovery_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/update_engine/libcow_operation_convert^android_recovery_x86_64_static
 
 echo "building libcow_operation_convert^android_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_07.ninja libcow_operation_convert,android_x86_64_static
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libcow_operation_convert,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/update_engine/libcow_operation_convert^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/update_engine/libcow_operation_convert^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/update_engine/libcow_operation_convert^android_x86_64_static
 
 echo "building libpayload_extent_ranges^android_recovery_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_07.ninja libpayload_extent_ranges,android_recovery_x86_64_static
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libpayload_extent_ranges,android_recovery_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/update_engine/libpayload_extent_ranges^android_recovery_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/update_engine/libpayload_extent_ranges^android_recovery_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/update_engine/libpayload_extent_ranges^android_recovery_x86_64_static
 
 echo "building libpayload_extent_ranges^android_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_07.ninja libpayload_extent_ranges,android_x86_64_static
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libpayload_extent_ranges,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/update_engine/libpayload_extent_ranges^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/update_engine/libpayload_extent_ranges^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/update_engine/libpayload_extent_ranges^android_x86_64_static
 
 echo "building libpayload_extent_utils^android_recovery_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_07.ninja libpayload_extent_utils,android_recovery_x86_64_static
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libpayload_extent_utils,android_recovery_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/update_engine/libpayload_extent_utils^android_recovery_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/update_engine/libpayload_extent_utils^android_recovery_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/update_engine/libpayload_extent_utils^android_recovery_x86_64_static
 
 echo "building libpayload_extent_utils^android_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_07.ninja libpayload_extent_utils,android_x86_64_static
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libpayload_extent_utils,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/update_engine/libpayload_extent_utils^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/update_engine/libpayload_extent_utils^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/update_engine/libpayload_extent_utils^android_x86_64_static
 
 echo "building libupdate_engine_stable-V1-cpp-source^"
-ninja -f $GITHUB_WORKSPACE/steps/build_07.ninja libupdate_engine_stable-V1-cpp-source,
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libupdate_engine_stable-V1-cpp-source,
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/update_engine/stable/libupdate_engine_stable-V1-cpp-source^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/update_engine/libupdate_engine_stable-V1-cpp-source^.output . $GITHUB_WORKSPACE/artifacts/system/update_engine/stable/libupdate_engine_stable-V1-cpp-source^
 

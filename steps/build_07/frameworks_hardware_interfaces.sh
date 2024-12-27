@@ -4,6 +4,9 @@ df -h
 
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
+mkdir -p out/soong/.minibootstrap && ln -sf $GITHUB_WORKSPACE/bpglob out/soong/.minibootstrap/bpglob
+ln -sf $GITHUB_WORKSPACE/ndk.ninja .
+ln -sf $GITHUB_WORKSPACE/ninja-ndk .
 ln -sf $GITHUB_WORKSPACE/ninja .
 
 mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86 prebuilts/clang/host/linux-x86
@@ -29,117 +32,117 @@ clone_depth_platform system/logging
 clone_depth_platform system/media
 clone_depth_platform system/unwinding
 
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/libcxx/libc++^linux_glibc_x86_64_shared/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/bufferhub/1.0/android.frameworks.bufferhub@1.0_genc++^/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/bufferhub/1.0/android.frameworks.bufferhub@1.0_genc++_headers^/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/cameraservice/common/2.0/android.frameworks.cameraservice.common@2.0_genc++^/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/cameraservice/common/2.0/android.frameworks.cameraservice.common@2.0_genc++_headers^/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/cameraservice/device/2.0/android.frameworks.cameraservice.device@2.0_genc++^/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/cameraservice/device/2.0/android.frameworks.cameraservice.device@2.0_genc++_headers^/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/cameraservice/device/2.1/android.frameworks.cameraservice.device@2.1_genc++^/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/cameraservice/device/2.1/android.frameworks.cameraservice.device@2.1_genc++_headers^/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/cameraservice/service/2.0/android.frameworks.cameraservice.service@2.0_genc++^/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/cameraservice/service/2.0/android.frameworks.cameraservice.service@2.0_genc++_headers^/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/cameraservice/service/2.1/android.frameworks.cameraservice.service@2.1_genc++^/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/cameraservice/service/2.1/android.frameworks.cameraservice.service@2.1_genc++_headers^/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/cameraservice/service/2.2/android.frameworks.cameraservice.service@2.2_genc++^/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/cameraservice/service/2.2/android.frameworks.cameraservice.service@2.2_genc++_headers^/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/displayservice/1.0/android.frameworks.displayservice@1.0_genc++^/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/displayservice/1.0/android.frameworks.displayservice@1.0_genc++_headers^/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/schedulerservice/1.0/android.frameworks.schedulerservice@1.0_genc++^/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/schedulerservice/1.0/android.frameworks.schedulerservice@1.0_genc++_headers^/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/sensorservice/1.0/android.frameworks.sensorservice@1.0_genc++^/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/sensorservice/1.0/android.frameworks.sensorservice@1.0_genc++_headers^/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/stats/aidl/android.frameworks.stats-api^/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/stats/1.0/android.frameworks.stats@1.0_genc++^/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/stats/1.0/android.frameworks.stats@1.0_genc++_headers^/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/hardware/interfaces/graphics/common/1.0/android.hardware.graphics.common@1.0_genc++_headers^/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/hardware/interfaces/graphics/common/1.1/android.hardware.graphics.common@1.1_genc++_headers^/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/hardware/interfaces/graphics/common/1.2/android.hardware.graphics.common@1.2_genc++_headers^/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/hardware/interfaces/sensors/1.0/android.hardware.sensors@1.0_genc++_headers^/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/system/libhidl/transport/base/1.0/android.hidl.base@1.0_genc++_headers^/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/system/libhidl/transport/manager/1.0/android.hidl.manager@1.0_genc++_headers^/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/system/libhidl/transport/manager/1.1/android.hidl.manager@1.1_genc++_headers^/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/system/libhidl/transport/manager/1.2/android.hidl.manager@1.2_genc++_headers^/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/system/tools/aidl/aidl^linux_glibc_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcxx/libc++^linux_glibc_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/hardware/interfaces/bufferhub/1.0/android.frameworks.bufferhub@1.0_genc++^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/hardware/interfaces/bufferhub/1.0/android.frameworks.bufferhub@1.0_genc++_headers^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/hardware/interfaces/cameraservice/common/2.0/android.frameworks.cameraservice.common@2.0_genc++^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/hardware/interfaces/cameraservice/common/2.0/android.frameworks.cameraservice.common@2.0_genc++_headers^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/hardware/interfaces/cameraservice/device/2.0/android.frameworks.cameraservice.device@2.0_genc++^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/hardware/interfaces/cameraservice/device/2.0/android.frameworks.cameraservice.device@2.0_genc++_headers^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/hardware/interfaces/cameraservice/device/2.1/android.frameworks.cameraservice.device@2.1_genc++^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/hardware/interfaces/cameraservice/device/2.1/android.frameworks.cameraservice.device@2.1_genc++_headers^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/hardware/interfaces/cameraservice/service/2.0/android.frameworks.cameraservice.service@2.0_genc++^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/hardware/interfaces/cameraservice/service/2.0/android.frameworks.cameraservice.service@2.0_genc++_headers^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/hardware/interfaces/cameraservice/service/2.1/android.frameworks.cameraservice.service@2.1_genc++^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/hardware/interfaces/cameraservice/service/2.1/android.frameworks.cameraservice.service@2.1_genc++_headers^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/hardware/interfaces/cameraservice/service/2.2/android.frameworks.cameraservice.service@2.2_genc++^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/hardware/interfaces/cameraservice/service/2.2/android.frameworks.cameraservice.service@2.2_genc++_headers^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/hardware/interfaces/displayservice/1.0/android.frameworks.displayservice@1.0_genc++^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/hardware/interfaces/displayservice/1.0/android.frameworks.displayservice@1.0_genc++_headers^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/hardware/interfaces/schedulerservice/1.0/android.frameworks.schedulerservice@1.0_genc++^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/hardware/interfaces/schedulerservice/1.0/android.frameworks.schedulerservice@1.0_genc++_headers^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/hardware/interfaces/sensorservice/1.0/android.frameworks.sensorservice@1.0_genc++^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/hardware/interfaces/sensorservice/1.0/android.frameworks.sensorservice@1.0_genc++_headers^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/hardware/interfaces/stats/aidl/android.frameworks.stats-api^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/hardware/interfaces/stats/1.0/android.frameworks.stats@1.0_genc++^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/hardware/interfaces/stats/1.0/android.frameworks.stats@1.0_genc++_headers^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/graphics/common/1.0/android.hardware.graphics.common@1.0_genc++_headers^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/graphics/common/1.1/android.hardware.graphics.common@1.1_genc++_headers^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/graphics/common/1.2/android.hardware.graphics.common@1.2_genc++_headers^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/sensors/1.0/android.hardware.sensors@1.0_genc++_headers^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/libhidl/transport/base/1.0/android.hidl.base@1.0_genc++_headers^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/libhidl/transport/manager/1.0/android.hidl.manager@1.0_genc++_headers^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/libhidl/transport/manager/1.1/android.hidl.manager@1.1_genc++_headers^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/libhidl/transport/manager/1.2/android.hidl.manager@1.2_genc++_headers^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/tools/aidl/aidl^linux_glibc_x86_64/ .
 
 echo "building android.frameworks.bufferhub@1.0^android_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_07.ninja android.frameworks.bufferhub@1.0,android_x86_64_static
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja android.frameworks.bufferhub@1.0,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/bufferhub/1.0/android.frameworks.bufferhub@1.0^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/frameworks/hardware/interfaces/android.frameworks.bufferhub@1.0^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/bufferhub/1.0/android.frameworks.bufferhub@1.0^android_x86_64_static
 
 echo "building android.frameworks.bufferhub@1.0^android_x86_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_07.ninja android.frameworks.bufferhub@1.0,android_x86_x86_64_static
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja android.frameworks.bufferhub@1.0,android_x86_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/bufferhub/1.0/android.frameworks.bufferhub@1.0^android_x86_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/frameworks/hardware/interfaces/android.frameworks.bufferhub@1.0^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/bufferhub/1.0/android.frameworks.bufferhub@1.0^android_x86_x86_64_static
 
 echo "building android.frameworks.cameraservice.common@2.0^android_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_07.ninja android.frameworks.cameraservice.common@2.0,android_x86_64_static
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja android.frameworks.cameraservice.common@2.0,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/cameraservice/common/2.0/android.frameworks.cameraservice.common@2.0^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/frameworks/hardware/interfaces/android.frameworks.cameraservice.common@2.0^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/cameraservice/common/2.0/android.frameworks.cameraservice.common@2.0^android_x86_64_static
 
 echo "building android.frameworks.cameraservice.device@2.0^android_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_07.ninja android.frameworks.cameraservice.device@2.0,android_x86_64_static
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja android.frameworks.cameraservice.device@2.0,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/cameraservice/device/2.0/android.frameworks.cameraservice.device@2.0^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/frameworks/hardware/interfaces/android.frameworks.cameraservice.device@2.0^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/cameraservice/device/2.0/android.frameworks.cameraservice.device@2.0^android_x86_64_static
 
 echo "building android.frameworks.cameraservice.device@2.1^android_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_07.ninja android.frameworks.cameraservice.device@2.1,android_x86_64_static
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja android.frameworks.cameraservice.device@2.1,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/cameraservice/device/2.1/android.frameworks.cameraservice.device@2.1^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/frameworks/hardware/interfaces/android.frameworks.cameraservice.device@2.1^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/cameraservice/device/2.1/android.frameworks.cameraservice.device@2.1^android_x86_64_static
 
 echo "building android.frameworks.cameraservice.service@2.0^android_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_07.ninja android.frameworks.cameraservice.service@2.0,android_x86_64_static
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja android.frameworks.cameraservice.service@2.0,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/cameraservice/service/2.0/android.frameworks.cameraservice.service@2.0^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/frameworks/hardware/interfaces/android.frameworks.cameraservice.service@2.0^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/cameraservice/service/2.0/android.frameworks.cameraservice.service@2.0^android_x86_64_static
 
 echo "building android.frameworks.cameraservice.service@2.1^android_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_07.ninja android.frameworks.cameraservice.service@2.1,android_x86_64_static
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja android.frameworks.cameraservice.service@2.1,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/cameraservice/service/2.1/android.frameworks.cameraservice.service@2.1^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/frameworks/hardware/interfaces/android.frameworks.cameraservice.service@2.1^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/cameraservice/service/2.1/android.frameworks.cameraservice.service@2.1^android_x86_64_static
 
 echo "building android.frameworks.cameraservice.service@2.2^android_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_07.ninja android.frameworks.cameraservice.service@2.2,android_x86_64_static
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja android.frameworks.cameraservice.service@2.2,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/cameraservice/service/2.2/android.frameworks.cameraservice.service@2.2^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/frameworks/hardware/interfaces/android.frameworks.cameraservice.service@2.2^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/cameraservice/service/2.2/android.frameworks.cameraservice.service@2.2^android_x86_64_static
 
 echo "building android.frameworks.displayservice@1.0^android_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_07.ninja android.frameworks.displayservice@1.0,android_x86_64_static
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja android.frameworks.displayservice@1.0,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/displayservice/1.0/android.frameworks.displayservice@1.0^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/frameworks/hardware/interfaces/android.frameworks.displayservice@1.0^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/displayservice/1.0/android.frameworks.displayservice@1.0^android_x86_64_static
 
 echo "building android.frameworks.schedulerservice@1.0^android_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_07.ninja android.frameworks.schedulerservice@1.0,android_x86_64_static
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja android.frameworks.schedulerservice@1.0,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/schedulerservice/1.0/android.frameworks.schedulerservice@1.0^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/frameworks/hardware/interfaces/android.frameworks.schedulerservice@1.0^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/schedulerservice/1.0/android.frameworks.schedulerservice@1.0^android_x86_64_static
 
 echo "building android.frameworks.schedulerservice@1.0^android_x86_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_07.ninja android.frameworks.schedulerservice@1.0,android_x86_x86_64_static
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja android.frameworks.schedulerservice@1.0,android_x86_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/schedulerservice/1.0/android.frameworks.schedulerservice@1.0^android_x86_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/frameworks/hardware/interfaces/android.frameworks.schedulerservice@1.0^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/schedulerservice/1.0/android.frameworks.schedulerservice@1.0^android_x86_x86_64_static
 
 echo "building android.frameworks.sensorservice@1.0^android_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_07.ninja android.frameworks.sensorservice@1.0,android_x86_64_static
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja android.frameworks.sensorservice@1.0,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/sensorservice/1.0/android.frameworks.sensorservice@1.0^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/frameworks/hardware/interfaces/android.frameworks.sensorservice@1.0^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/sensorservice/1.0/android.frameworks.sensorservice@1.0^android_x86_64_static
 
 echo "building android.frameworks.sensorservice@1.0^android_x86_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_07.ninja android.frameworks.sensorservice@1.0,android_x86_x86_64_static
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja android.frameworks.sensorservice@1.0,android_x86_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/sensorservice/1.0/android.frameworks.sensorservice@1.0^android_x86_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/frameworks/hardware/interfaces/android.frameworks.sensorservice@1.0^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/sensorservice/1.0/android.frameworks.sensorservice@1.0^android_x86_x86_64_static
 
 echo "building android.frameworks.stats-V1-ndk_platform-source^"
-ninja -f $GITHUB_WORKSPACE/steps/build_07.ninja android.frameworks.stats-V1-ndk_platform-source,
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja android.frameworks.stats-V1-ndk_platform-source,
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/stats/aidl/android.frameworks.stats-V1-ndk_platform-source^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/frameworks/hardware/interfaces/android.frameworks.stats-V1-ndk_platform-source^.output . $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/stats/aidl/android.frameworks.stats-V1-ndk_platform-source^
 
 echo "building android.frameworks.stats@1.0^android_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_07.ninja android.frameworks.stats@1.0,android_x86_64_static
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja android.frameworks.stats@1.0,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/stats/1.0/android.frameworks.stats@1.0^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/frameworks/hardware/interfaces/android.frameworks.stats@1.0^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/stats/1.0/android.frameworks.stats@1.0^android_x86_64_static
 
 echo "building android.frameworks.stats@1.0^android_x86_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_07.ninja android.frameworks.stats@1.0,android_x86_x86_64_static
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja android.frameworks.stats@1.0,android_x86_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/stats/1.0/android.frameworks.stats@1.0^android_x86_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/frameworks/hardware/interfaces/android.frameworks.stats@1.0^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/stats/1.0/android.frameworks.stats@1.0^android_x86_x86_64_static
 

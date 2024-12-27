@@ -4,6 +4,9 @@ df -h
 
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
+mkdir -p out/soong/.minibootstrap && ln -sf $GITHUB_WORKSPACE/bpglob out/soong/.minibootstrap/bpglob
+ln -sf $GITHUB_WORKSPACE/ndk.ninja .
+ln -sf $GITHUB_WORKSPACE/ninja-ndk .
 ln -sf $GITHUB_WORKSPACE/ninja .
 
 mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86 prebuilts/clang/host/linux-x86
@@ -20,30 +23,30 @@ clone_depth_platform packages/modules/NetworkStack
 clone_depth_platform system/libbase
 clone_depth_platform system/logging
 
-rsync -a -r $GITHUB_WORKSPACE/artifacts/build/soong/cmd/sbox/sbox^linux_glibc_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/libcxx/libc++^linux_glibc_x86_64_shared/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/protobuf/libprotobuf-cpp-full^linux_glibc_x86_64_shared/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/zlib/libz^linux_glibc_x86_64_shared/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/frameworks/proto_logging/stats/libstats_proto_host^linux_glibc_x86_64_shared/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/frameworks/proto_logging/stats/stats_log_api_gen/stats-log-api-gen^linux_glibc_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/packages/modules/NetworkStack/common/networkstackclient/ipmemorystore-aidl-interfaces-api^/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/packages/modules/NetworkStack/common/networkstackclient/networkstack-aidl-interfaces-api^/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/system/libbase/libbase^linux_glibc_x86_64_shared/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/system/logging/liblog/liblog^linux_glibc_x86_64_shared/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/system/tools/aidl/aidl^linux_glibc_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/cmd/sbox/sbox^linux_glibc_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcxx/libc++^linux_glibc_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/protobuf/libprotobuf-cpp-full^linux_glibc_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/zlib/libz^linux_glibc_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/proto_logging/stats/libstats_proto_host^linux_glibc_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/proto_logging/stats/stats_log_api_gen/stats-log-api-gen^linux_glibc_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/NetworkStack/common/networkstackclient/ipmemorystore-aidl-interfaces-api^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/NetworkStack/common/networkstackclient/networkstack-aidl-interfaces-api^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/libbase/libbase^linux_glibc_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^linux_glibc_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/tools/aidl/aidl^linux_glibc_x86_64/ .
 
 echo "building ipmemorystore-aidl-interfaces-V10-java-source^"
-ninja -f $GITHUB_WORKSPACE/steps/build_07.ninja ipmemorystore-aidl-interfaces-V10-java-source,
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja ipmemorystore-aidl-interfaces-V10-java-source,
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/NetworkStack/common/networkstackclient/ipmemorystore-aidl-interfaces-V10-java-source^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/packages/modules/NetworkStack/ipmemorystore-aidl-interfaces-V10-java-source^.output . $GITHUB_WORKSPACE/artifacts/packages/modules/NetworkStack/common/networkstackclient/ipmemorystore-aidl-interfaces-V10-java-source^
 
 echo "building networkstack-aidl-interfaces-V10-java-source^"
-ninja -f $GITHUB_WORKSPACE/steps/build_07.ninja networkstack-aidl-interfaces-V10-java-source,
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja networkstack-aidl-interfaces-V10-java-source,
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/NetworkStack/common/networkstackclient/networkstack-aidl-interfaces-V10-java-source^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/packages/modules/NetworkStack/networkstack-aidl-interfaces-V10-java-source^.output . $GITHUB_WORKSPACE/artifacts/packages/modules/NetworkStack/common/networkstackclient/networkstack-aidl-interfaces-V10-java-source^
 
 echo "building statslog-networkstack-java-gen-stable^"
-ninja -f $GITHUB_WORKSPACE/steps/build_07.ninja statslog-networkstack-java-gen-stable,
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja statslog-networkstack-java-gen-stable,
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/NetworkStack/statslog-networkstack-java-gen-stable^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/packages/modules/NetworkStack/statslog-networkstack-java-gen-stable^.output . $GITHUB_WORKSPACE/artifacts/packages/modules/NetworkStack/statslog-networkstack-java-gen-stable^
 

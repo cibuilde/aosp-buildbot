@@ -4,6 +4,9 @@ df -h
 
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
+mkdir -p out/soong/.minibootstrap && ln -sf $GITHUB_WORKSPACE/bpglob out/soong/.minibootstrap/bpglob
+ln -sf $GITHUB_WORKSPACE/ndk.ninja .
+ln -sf $GITHUB_WORKSPACE/ninja-ndk .
 ln -sf $GITHUB_WORKSPACE/ninja .
 
 mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86 prebuilts/clang/host/linux-x86
@@ -30,64 +33,71 @@ clone_depth_platform system/libbase
 clone_depth_platform system/logging
 clone_depth_platform system/media
 
-rsync -a -r $GITHUB_WORKSPACE/artifacts/build/soong/cmd/dep_fixer/dep_fixer^linux_glibc_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/build/soong/scripts/manifest_utils^linux_glibc_x86_64_PY2/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/build/soong/cmd/merge_zips/merge_zips^linux_glibc_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/build/soong/cmd/javac_wrapper/soong_javac_wrapper^linux_glibc_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/build/soong/zip/cmd/soong_zip^linux_glibc_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/build/soong/cmd/zipsync/zipsync^linux_glibc_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/icu/icu4c/source/i18n/libicui18n^linux_glibc_x86_64_shared/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/icu/icu4c/source/common/libicuuc^linux_glibc_x86_64_shared/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/libcxx/libc++^linux_glibc_x86_64_shared/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/protobuf/aprotoc^linux_glibc_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/protobuf/libprotobuf-cpp-full^linux_glibc_x86_64_shared/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/protobuf/libprotobuf-python^linux_glibc_x86_64_PY2/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/protobuf/libprotobuf-python^linux_glibc_x86_64_PY3/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/python/cpython2/py2-launcher-autorun^linux_glibc_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/python/cpython2/Lib/py2-stdlib^linux_glibc_x86_64_PY2/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/python/cpython3/Lib/py3-stdlib^linux_glibc_x86_64_PY3/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/python/six/py-six^linux_glibc_x86_64_PY2/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/python/six/py-six^linux_glibc_x86_64_PY3/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/sqlite/dist/libsqlite^linux_glibc_x86_64_shared/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/zlib/libz^linux_glibc_x86_64_shared/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/prebuilts/build-tools/prebuilt_py3-launcher-autorun^linux_glibc_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/system/apex/proto/apex_build_info_proto^linux_glibc_x86_64_PY2/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/system/apex/apexer/apex_manifest^linux_glibc_x86_64_PY2/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/system/apex/proto/apex_manifest_proto^linux_glibc_x86_64_PY2/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/system/apex/proto/apex_manifest_proto^linux_glibc_x86_64_PY3/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/system/libbase/libbase^linux_glibc_x86_64_shared/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/system/logging/liblog/liblog^linux_glibc_x86_64_shared/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/system/tools/sysprop/sysprop_cpp^linux_glibc_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/system/tools/xsdc/xsdc^linux_glibc_common/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/system/tools/xsdc/xsdc^linux_glibc_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/cmd/dep_fixer/dep_fixer^linux_glibc_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/scripts/manifest_utils^linux_glibc_x86_64_PY2/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/cmd/merge_zips/merge_zips^linux_glibc_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/cmd/javac_wrapper/soong_javac_wrapper^linux_glibc_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/zip/cmd/soong_zip^linux_glibc_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/cmd/zipsync/zipsync^linux_glibc_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/icu/icu4c/source/i18n/libicui18n^linux_glibc_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/icu/icu4c/source/common/libicuuc^linux_glibc_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcxx/libc++^linux_glibc_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/protobuf/aprotoc^linux_glibc_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/protobuf/libprotobuf-cpp-full^linux_glibc_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/protobuf/libprotobuf-python^linux_glibc_x86_64_PY2/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/protobuf/libprotobuf-python^linux_glibc_x86_64_PY3/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/python/cpython2/py2-launcher-autorun^linux_glibc_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/python/cpython2/Lib/py2-stdlib^linux_glibc_x86_64_PY2/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/python/cpython3/Lib/py3-stdlib^linux_glibc_x86_64_PY3/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/python/six/py-six^linux_glibc_x86_64_PY2/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/python/six/py-six^linux_glibc_x86_64_PY3/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/sqlite/dist/libsqlite^linux_glibc_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/zlib/libz^linux_glibc_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/build-tools/prebuilt_py3-launcher-autorun^linux_glibc_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/apex/proto/apex_build_info_proto^linux_glibc_x86_64_PY2/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/apex/apexer/apex_manifest^linux_glibc_x86_64_PY2/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/apex/proto/apex_manifest_proto^linux_glibc_x86_64_PY2/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/apex/proto/apex_manifest_proto^linux_glibc_x86_64_PY3/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/libbase/libbase^linux_glibc_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^linux_glibc_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/tools/sysprop/sysprop_api_checker^linux_glibc_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/tools/sysprop/sysprop_api_dump^linux_glibc_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/tools/sysprop/sysprop_cpp^linux_glibc_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/tools/xsdc/xsdc^linux_glibc_common/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/tools/xsdc/xsdc^linux_glibc_x86_64/ .
 
 echo "building apex-info-list^"
-ninja -f $GITHUB_WORKSPACE/steps/build_07.ninja apex-info-list,
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja apex-info-list,
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/apex/apexd/apex-info-list^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/apex/apex-info-list^.output . $GITHUB_WORKSPACE/artifacts/system/apex/apexd/apex-info-list^
 
 echo "building apex_compression_tool^linux_glibc_x86_64_PY3"
-ninja -f $GITHUB_WORKSPACE/steps/build_07.ninja apex_compression_tool,linux_glibc_x86_64_PY3
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja apex_compression_tool,linux_glibc_x86_64_PY3
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/apex/tools/apex_compression_tool^linux_glibc_x86_64_PY3
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/apex/apex_compression_tool^linux_glibc_x86_64_PY3.output . $GITHUB_WORKSPACE/artifacts/system/apex/tools/apex_compression_tool^linux_glibc_x86_64_PY3
 
 echo "building apexer^linux_glibc_x86_64_PY2"
-ninja -f $GITHUB_WORKSPACE/steps/build_07.ninja apexer,linux_glibc_x86_64_PY2
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja apexer,linux_glibc_x86_64_PY2
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/apex/apexer/apexer^linux_glibc_x86_64_PY2
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/apex/apexer^linux_glibc_x86_64_PY2.output . $GITHUB_WORKSPACE/artifacts/system/apex/apexer/apexer^linux_glibc_x86_64_PY2
 
+echo "building com.android.sysprop.apex_sysprop_library^"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja com.android.sysprop.apex_sysprop_library,
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/apex/apexd/sysprop/com.android.sysprop.apex_sysprop_library^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/apex/com.android.sysprop.apex_sysprop_library^.output . $GITHUB_WORKSPACE/artifacts/system/apex/apexd/sysprop/com.android.sysprop.apex_sysprop_library^
+
 echo "building conv_apex_manifest^linux_glibc_x86_64_PY2"
-ninja -f $GITHUB_WORKSPACE/steps/build_07.ninja conv_apex_manifest,linux_glibc_x86_64_PY2
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja conv_apex_manifest,linux_glibc_x86_64_PY2
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/apex/apexer/conv_apex_manifest^linux_glibc_x86_64_PY2
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/apex/conv_apex_manifest^linux_glibc_x86_64_PY2.output . $GITHUB_WORKSPACE/artifacts/system/apex/apexer/conv_apex_manifest^linux_glibc_x86_64_PY2
 
 echo "building libcom.android.sysprop.apex^android_recovery_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_07.ninja libcom.android.sysprop.apex,android_recovery_x86_64_static
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libcom.android.sysprop.apex,android_recovery_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/apex/apexd/sysprop/libcom.android.sysprop.apex^android_recovery_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/apex/libcom.android.sysprop.apex^android_recovery_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/apex/apexd/sysprop/libcom.android.sysprop.apex^android_recovery_x86_64_static
 
 echo "building libcom.android.sysprop.apex^android_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_07.ninja libcom.android.sysprop.apex,android_x86_64_static
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libcom.android.sysprop.apex,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/apex/apexd/sysprop/libcom.android.sysprop.apex^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/apex/libcom.android.sysprop.apex^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/apex/apexd/sysprop/libcom.android.sysprop.apex^android_x86_64_static
 

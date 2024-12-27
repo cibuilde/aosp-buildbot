@@ -4,6 +4,9 @@ df -h
 
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
+mkdir -p out/soong/.minibootstrap && ln -sf $GITHUB_WORKSPACE/bpglob out/soong/.minibootstrap/bpglob
+ln -sf $GITHUB_WORKSPACE/ndk.ninja .
+ln -sf $GITHUB_WORKSPACE/ninja-ndk .
 ln -sf $GITHUB_WORKSPACE/ninja .
 
 mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86 prebuilts/clang/host/linux-x86
@@ -23,59 +26,59 @@ clone_depth_platform system/libbase
 clone_depth_platform system/logging
 clone_depth_platform system/media
 
-rsync -a -r $GITHUB_WORKSPACE/artifacts/singletons/api_levels^/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/build/soong/cmd/merge_zips/merge_zips^linux_glibc_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/build/soong/cc/ndk_api_coverage_parser/ndk_api_coverage_parser^linux_glibc_x86_64_PY3/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/build/soong/cc/ndkstubgen/ndkstubgen^linux_glibc_x86_64_PY3/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/build/soong/zip/cmd/soong_zip^linux_glibc_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/singletons/api_levels^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/cmd/merge_zips/merge_zips^linux_glibc_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/cc/ndk_api_coverage_parser/ndk_api_coverage_parser^linux_glibc_x86_64_PY3/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/cc/ndkstubgen/ndkstubgen^linux_glibc_x86_64_PY3/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/zip/cmd/soong_zip^linux_glibc_x86_64/ .
 
 echo "building libandroidicu^android_x86_64_shared_current"
-ninja -f $GITHUB_WORKSPACE/steps/build_07.ninja libandroidicu,android_x86_64_shared_current
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libandroidicu,android_x86_64_shared_current
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/icu/libandroidicu/libandroidicu^android_x86_64_shared_current
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/external/icu/libandroidicu^android_x86_64_shared_current.output . $GITHUB_WORKSPACE/artifacts/external/icu/libandroidicu/libandroidicu^android_x86_64_shared_current
 
 echo "building libandroidicu^android_x86_x86_64_shared_current"
-ninja -f $GITHUB_WORKSPACE/steps/build_07.ninja libandroidicu,android_x86_x86_64_shared_current
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libandroidicu,android_x86_x86_64_shared_current
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/icu/libandroidicu/libandroidicu^android_x86_x86_64_shared_current
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/external/icu/libandroidicu^android_x86_x86_64_shared_current.output . $GITHUB_WORKSPACE/artifacts/external/icu/libandroidicu/libandroidicu^android_x86_x86_64_shared_current
 
 echo "building libicu.ndk^android_x86_64_sdk_shared_31"
-ninja -f $GITHUB_WORKSPACE/steps/build_07.ninja libicu.ndk,android_x86_64_sdk_shared_31
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libicu.ndk,android_x86_64_sdk_shared_31
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/icu/libicu/libicu.ndk^android_x86_64_sdk_shared_31
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/external/icu/libicu.ndk^android_x86_64_sdk_shared_31.output . $GITHUB_WORKSPACE/artifacts/external/icu/libicu/libicu.ndk^android_x86_64_sdk_shared_31
 
 echo "building libicu.ndk^android_x86_64_sdk_shared_REL"
-ninja -f $GITHUB_WORKSPACE/steps/build_07.ninja libicu.ndk,android_x86_64_sdk_shared_REL
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libicu.ndk,android_x86_64_sdk_shared_REL
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/icu/libicu/libicu.ndk^android_x86_64_sdk_shared_REL
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/external/icu/libicu.ndk^android_x86_64_sdk_shared_REL.output . $GITHUB_WORKSPACE/artifacts/external/icu/libicu/libicu.ndk^android_x86_64_sdk_shared_REL
 
 echo "building libicu.ndk^android_x86_64_sdk_shared_current"
-ninja -f $GITHUB_WORKSPACE/steps/build_07.ninja libicu.ndk,android_x86_64_sdk_shared_current
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libicu.ndk,android_x86_64_sdk_shared_current
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/icu/libicu/libicu.ndk^android_x86_64_sdk_shared_current
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/external/icu/libicu.ndk^android_x86_64_sdk_shared_current.output . $GITHUB_WORKSPACE/artifacts/external/icu/libicu/libicu.ndk^android_x86_64_sdk_shared_current
 
 echo "building libicu.ndk^android_x86_x86_64_sdk_shared_31"
-ninja -f $GITHUB_WORKSPACE/steps/build_07.ninja libicu.ndk,android_x86_x86_64_sdk_shared_31
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libicu.ndk,android_x86_x86_64_sdk_shared_31
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/icu/libicu/libicu.ndk^android_x86_x86_64_sdk_shared_31
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/external/icu/libicu.ndk^android_x86_x86_64_sdk_shared_31.output . $GITHUB_WORKSPACE/artifacts/external/icu/libicu/libicu.ndk^android_x86_x86_64_sdk_shared_31
 
 echo "building libicu.ndk^android_x86_x86_64_sdk_shared_REL"
-ninja -f $GITHUB_WORKSPACE/steps/build_07.ninja libicu.ndk,android_x86_x86_64_sdk_shared_REL
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libicu.ndk,android_x86_x86_64_sdk_shared_REL
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/icu/libicu/libicu.ndk^android_x86_x86_64_sdk_shared_REL
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/external/icu/libicu.ndk^android_x86_x86_64_sdk_shared_REL.output . $GITHUB_WORKSPACE/artifacts/external/icu/libicu/libicu.ndk^android_x86_x86_64_sdk_shared_REL
 
 echo "building libicu.ndk^android_x86_x86_64_sdk_shared_current"
-ninja -f $GITHUB_WORKSPACE/steps/build_07.ninja libicu.ndk,android_x86_x86_64_sdk_shared_current
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libicu.ndk,android_x86_x86_64_sdk_shared_current
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/icu/libicu/libicu.ndk^android_x86_x86_64_sdk_shared_current
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/external/icu/libicu.ndk^android_x86_x86_64_sdk_shared_current.output . $GITHUB_WORKSPACE/artifacts/external/icu/libicu/libicu.ndk^android_x86_x86_64_sdk_shared_current
 
 echo "building libicu^android_x86_64_shared_current"
-ninja -f $GITHUB_WORKSPACE/steps/build_07.ninja libicu,android_x86_64_shared_current
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libicu,android_x86_64_shared_current
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/icu/libicu/libicu^android_x86_64_shared_current
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/external/icu/libicu^android_x86_64_shared_current.output . $GITHUB_WORKSPACE/artifacts/external/icu/libicu/libicu^android_x86_64_shared_current
 
 echo "building libicu^android_x86_x86_64_shared_current"
-ninja -f $GITHUB_WORKSPACE/steps/build_07.ninja libicu,android_x86_x86_64_shared_current
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libicu,android_x86_x86_64_shared_current
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/icu/libicu/libicu^android_x86_x86_64_shared_current
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/external/icu/libicu^android_x86_x86_64_shared_current.output . $GITHUB_WORKSPACE/artifacts/external/icu/libicu/libicu^android_x86_x86_64_shared_current
 
