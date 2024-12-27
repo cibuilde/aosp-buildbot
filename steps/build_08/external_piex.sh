@@ -4,6 +4,8 @@ df -h
 
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
+ln -sf $GITHUB_WORKSPACE/ndk.ninja .
+ln -sf $GITHUB_WORKSPACE/ninja-ndk .
 ln -sf $GITHUB_WORKSPACE/ninja .
 
 mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86 prebuilts/clang/host/linux-x86
@@ -18,42 +20,42 @@ rsync -a -r $GITHUB_WORKSPACE/artifacts/bionic/libc/libc^android_vendor.31_x86_6
 rsync -a -r $GITHUB_WORKSPACE/artifacts/bionic/libc/libc^android_vendor.31_x86_x86_64_shared/ .
 
 echo "building libbinary_parse^android_vendor.31_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_08.ninja libbinary_parse,android_vendor.31_x86_64_static
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libbinary_parse,android_vendor.31_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/piex/libbinary_parse^android_vendor.31_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/external/piex/libbinary_parse^android_vendor.31_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/piex/libbinary_parse^android_vendor.31_x86_64_static
 
 echo "building libbinary_parse^android_vendor.31_x86_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_08.ninja libbinary_parse,android_vendor.31_x86_x86_64_static
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libbinary_parse,android_vendor.31_x86_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/piex/libbinary_parse^android_vendor.31_x86_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/external/piex/libbinary_parse^android_vendor.31_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/piex/libbinary_parse^android_vendor.31_x86_x86_64_static
 
 echo "building libimage_type_recognition^android_vendor.31_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_08.ninja libimage_type_recognition,android_vendor.31_x86_64_static
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libimage_type_recognition,android_vendor.31_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/piex/libimage_type_recognition^android_vendor.31_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/external/piex/libimage_type_recognition^android_vendor.31_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/piex/libimage_type_recognition^android_vendor.31_x86_64_static
 
 echo "building libimage_type_recognition^android_vendor.31_x86_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_08.ninja libimage_type_recognition,android_vendor.31_x86_x86_64_static
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libimage_type_recognition,android_vendor.31_x86_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/piex/libimage_type_recognition^android_vendor.31_x86_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/external/piex/libimage_type_recognition^android_vendor.31_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/piex/libimage_type_recognition^android_vendor.31_x86_x86_64_static
 
 echo "building libpiex^android_vendor.31_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_08.ninja libpiex,android_vendor.31_x86_64_static
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libpiex,android_vendor.31_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/piex/libpiex^android_vendor.31_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/external/piex/libpiex^android_vendor.31_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/piex/libpiex^android_vendor.31_x86_64_static
 
 echo "building libpiex^android_vendor.31_x86_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_08.ninja libpiex,android_vendor.31_x86_x86_64_static
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libpiex,android_vendor.31_x86_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/piex/libpiex^android_vendor.31_x86_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/external/piex/libpiex^android_vendor.31_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/piex/libpiex^android_vendor.31_x86_x86_64_static
 
 echo "building libtiff_directory^android_vendor.31_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_08.ninja libtiff_directory,android_vendor.31_x86_64_static
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libtiff_directory,android_vendor.31_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/piex/libtiff_directory^android_vendor.31_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/external/piex/libtiff_directory^android_vendor.31_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/piex/libtiff_directory^android_vendor.31_x86_64_static
 
 echo "building libtiff_directory^android_vendor.31_x86_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_08.ninja libtiff_directory,android_vendor.31_x86_x86_64_static
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libtiff_directory,android_vendor.31_x86_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/piex/libtiff_directory^android_vendor.31_x86_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/external/piex/libtiff_directory^android_vendor.31_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/piex/libtiff_directory^android_vendor.31_x86_x86_64_static
 

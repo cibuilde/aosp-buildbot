@@ -4,6 +4,8 @@ df -h
 
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
+ln -sf $GITHUB_WORKSPACE/ndk.ninja .
+ln -sf $GITHUB_WORKSPACE/ninja-ndk .
 ln -sf $GITHUB_WORKSPACE/ninja .
 
 mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86 prebuilts/clang/host/linux-x86
@@ -18,12 +20,12 @@ rsync -a -r $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/sdk_public_30_core-for-sys
 rsync -a -r $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/sdk_public_31_core-for-system-modules^android_common/ .
 
 echo "building sdk_public_30_system_modules^android_common"
-ninja -f $GITHUB_WORKSPACE/steps/build_08.ninja sdk_public_30_system_modules,android_common
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja sdk_public_30_system_modules,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/sdk_public_30_system_modules^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/sdk_public_30_system_modules^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/sdk_public_30_system_modules^android_common
 
 echo "building sdk_public_31_system_modules^android_common"
-ninja -f $GITHUB_WORKSPACE/steps/build_08.ninja sdk_public_31_system_modules,android_common
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja sdk_public_31_system_modules,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/sdk_public_31_system_modules^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/sdk_public_31_system_modules^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/sdk_public_31_system_modules^android_common
 

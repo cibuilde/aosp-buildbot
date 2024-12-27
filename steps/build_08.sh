@@ -14,6 +14,7 @@ sudo dpkg-query -W -f='${Installed-Size;8}  ${Package}\n' | sort -n
 df -h
 
 source $GITHUB_WORKSPACE/envsetup.sh
+tar xf $GITHUB_WORKSPACE/ninja-ndk.tar.zst
 tar xf $GITHUB_WORKSPACE/ninja.tar.zst
 
 clone_sparse prebuilts/clang/host/linux-x86 clang-r416183b1 clang-r416183b soong
@@ -730,38 +731,6 @@ tar xf $GITHUB_WORKSPACE/tools_platform-compat.tar.zst -C $GITHUB_WORKSPACE/arti
 
 export OUT_DIR=out
 
-time source steps/build_08/external_swiftshader.sh
-time source steps/build_08/external_tensorflow.sh
-time source steps/build_08/external_tinyalsa.sh
-time source steps/build_08/external_tinyxml2.sh
-time source steps/build_08/external_tremolo.sh
-time source steps/build_08/external_webrtc.sh
-time source steps/build_08/external_zlib.sh
-time source steps/build_08/frameworks_av.sh
-time source steps/build_08/frameworks_base.sh
-time source steps/build_08/frameworks_compile_libbcc.sh
-time source steps/build_08/frameworks_compile_slang.sh
-time source steps/build_08/frameworks_hardware_interfaces.sh
-time source steps/build_08/frameworks_native.sh
-time source steps/build_08/frameworks_opt_net_wifi.sh
-time source steps/build_08/frameworks_proto_logging.sh
-time source steps/build_08/hardware_google_camera.sh
-time source steps/build_08/hardware_interfaces.sh
-time source steps/build_08/hardware_ril.sh
-time source steps/build_08/libnativehelper.sh
-time source steps/build_08/packages_inputmethods_LatinIME.sh
-time source steps/build_08/packages_modules_Connectivity.sh
-time source steps/build_08/packages_modules_DnsResolver.sh
-time source steps/build_08/packages_modules_NeuralNetworks.sh
-time source steps/build_08/packages_modules_Permission.sh
-time source steps/build_08/packages_modules_SdkExtensions.sh
-time source steps/build_08/packages_modules_StatsD.sh
-time source steps/build_08/packages_modules_Virtualization.sh
-time source steps/build_08/packages_modules_adb.sh
-time source steps/build_08/packages_modules_common.sh
-time source steps/build_08/prebuilts_ndk.sh
-time source steps/build_08/prebuilts_rust.sh
-time source steps/build_08/prebuilts_sdk.sh
 time source steps/build_08/singletons.sh
 time source steps/build_08/system_bt.sh
 time source steps/build_08/system_core.sh
@@ -861,6 +830,38 @@ time source steps/build_08/external_rust_crates_libsqlite3-sys.sh
 time source steps/build_08/external_scrypt.sh
 time source steps/build_08/external_selinux.sh
 time source steps/build_08/external_sqlite.sh
+time source steps/build_08/external_swiftshader.sh
+time source steps/build_08/external_tensorflow.sh
+time source steps/build_08/external_tinyalsa.sh
+time source steps/build_08/external_tinyxml2.sh
+time source steps/build_08/external_tremolo.sh
+time source steps/build_08/external_webrtc.sh
+time source steps/build_08/external_zlib.sh
+time source steps/build_08/frameworks_av.sh
+time source steps/build_08/frameworks_base.sh
+time source steps/build_08/frameworks_compile_libbcc.sh
+time source steps/build_08/frameworks_compile_slang.sh
+time source steps/build_08/frameworks_hardware_interfaces.sh
+time source steps/build_08/frameworks_native.sh
+time source steps/build_08/frameworks_opt_net_wifi.sh
+time source steps/build_08/frameworks_proto_logging.sh
+time source steps/build_08/hardware_google_camera.sh
+time source steps/build_08/hardware_interfaces.sh
+time source steps/build_08/hardware_ril.sh
+time source steps/build_08/libnativehelper.sh
+time source steps/build_08/packages_inputmethods_LatinIME.sh
+time source steps/build_08/packages_modules_Connectivity.sh
+time source steps/build_08/packages_modules_DnsResolver.sh
+time source steps/build_08/packages_modules_NeuralNetworks.sh
+time source steps/build_08/packages_modules_Permission.sh
+time source steps/build_08/packages_modules_SdkExtensions.sh
+time source steps/build_08/packages_modules_StatsD.sh
+time source steps/build_08/packages_modules_Virtualization.sh
+time source steps/build_08/packages_modules_adb.sh
+time source steps/build_08/packages_modules_common.sh
+time source steps/build_08/prebuilts_ndk.sh
+time source steps/build_08/prebuilts_rust.sh
+time source steps/build_08/prebuilts_sdk.sh
 
 if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_clang_host_linux-x86.tar.zst" ]; then
   echo "Compressing prebuilts/clang/host/linux-x86 -> prebuilts_clang_host_linux-x86.tar.zst"

@@ -4,6 +4,8 @@ df -h
 
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
+ln -sf $GITHUB_WORKSPACE/ndk.ninja .
+ln -sf $GITHUB_WORKSPACE/ninja-ndk .
 ln -sf $GITHUB_WORKSPACE/ninja .
 
 mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86 prebuilts/clang/host/linux-x86
@@ -28,7 +30,7 @@ rsync -a -r $GITHUB_WORKSPACE/artifacts/external/perfetto/statslog_perfetto.cpp^
 rsync -a -r $GITHUB_WORKSPACE/artifacts/external/perfetto/statslog_perfetto.h^/ .
 
 echo "building libstatslog_perfetto^android_x86_64_static_lto-thin"
-ninja -f $GITHUB_WORKSPACE/steps/build_08.ninja libstatslog_perfetto,android_x86_64_static_lto-thin
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libstatslog_perfetto,android_x86_64_static_lto-thin
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/perfetto/libstatslog_perfetto^android_x86_64_static_lto-thin
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/external/perfetto/libstatslog_perfetto^android_x86_64_static_lto-thin.output . $GITHUB_WORKSPACE/artifacts/external/perfetto/libstatslog_perfetto^android_x86_64_static_lto-thin
 

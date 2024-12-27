@@ -4,6 +4,8 @@ df -h
 
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
+ln -sf $GITHUB_WORKSPACE/ndk.ninja .
+ln -sf $GITHUB_WORKSPACE/ninja-ndk .
 ln -sf $GITHUB_WORKSPACE/ninja .
 
 mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86 prebuilts/clang/host/linux-x86
@@ -19,7 +21,7 @@ clone_depth_platform prebuilts/gcc/linux-x86/x86/x86_64-linux-android-4.9
 rsync -a -r $GITHUB_WORKSPACE/artifacts/bionic/libc/libc^android_vendor.31_x86_x86_64_shared/ .
 
 echo "building libFLAC^android_vendor.31_x86_x86_64_static_cfi"
-ninja -f $GITHUB_WORKSPACE/steps/build_08.ninja libFLAC,android_vendor.31_x86_x86_64_static_cfi
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libFLAC,android_vendor.31_x86_x86_64_static_cfi
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/flac/src/libFLAC/libFLAC^android_vendor.31_x86_x86_64_static_cfi
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/external/flac/libFLAC^android_vendor.31_x86_x86_64_static_cfi.output . $GITHUB_WORKSPACE/artifacts/external/flac/src/libFLAC/libFLAC^android_vendor.31_x86_x86_64_static_cfi
 

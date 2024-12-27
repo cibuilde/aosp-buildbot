@@ -4,6 +4,8 @@ df -h
 
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
+ln -sf $GITHUB_WORKSPACE/ndk.ninja .
+ln -sf $GITHUB_WORKSPACE/ninja-ndk .
 ln -sf $GITHUB_WORKSPACE/ninja .
 
 mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86 prebuilts/clang/host/linux-x86
@@ -21,12 +23,12 @@ rsync -a -r $GITHUB_WORKSPACE/artifacts/external/apache-commons-bcel/apache-bcel
 rsync -a -r $GITHUB_WORKSPACE/artifacts/external/guava/guava-jre^linux_glibc_common/ .
 
 echo "building annotationvisitor^linux_glibc_common"
-ninja -f $GITHUB_WORKSPACE/steps/build_08.ninja annotationvisitor,linux_glibc_common
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja annotationvisitor,linux_glibc_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/tools/platform-compat/java/com/android/annotationvisitor/annotationvisitor^linux_glibc_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/tools/platform-compat/annotationvisitor^linux_glibc_common.output . $GITHUB_WORKSPACE/artifacts/tools/platform-compat/java/com/android/annotationvisitor/annotationvisitor^linux_glibc_common
 
 echo "building compat-processor^linux_glibc_common"
-ninja -f $GITHUB_WORKSPACE/steps/build_08.ninja compat-processor,linux_glibc_common
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja compat-processor,linux_glibc_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/tools/platform-compat/java/android/processor/compat/compat-processor^linux_glibc_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/tools/platform-compat/compat-processor^linux_glibc_common.output . $GITHUB_WORKSPACE/artifacts/tools/platform-compat/java/android/processor/compat/compat-processor^linux_glibc_common
 

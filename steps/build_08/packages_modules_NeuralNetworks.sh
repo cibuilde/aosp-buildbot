@@ -4,6 +4,8 @@ df -h
 
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
+ln -sf $GITHUB_WORKSPACE/ndk.ninja .
+ln -sf $GITHUB_WORKSPACE/ninja-ndk .
 ln -sf $GITHUB_WORKSPACE/ninja .
 
 mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86 prebuilts/clang/host/linux-x86
@@ -40,22 +42,22 @@ rsync -a -r $GITHUB_WORKSPACE/artifacts/system/libhidl/transport/memory/token/1.
 rsync -a -r $GITHUB_WORKSPACE/artifacts/system/libhidl/transport/memory/1.0/android.hidl.memory@1.0_genc++_headers^/ .
 
 echo "building libneuralnetworks_shim_static^android_vendor.31_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_08.ninja libneuralnetworks_shim_static,android_vendor.31_x86_64_static
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libneuralnetworks_shim_static,android_vendor.31_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/NeuralNetworks/shim_and_sl/libneuralnetworks_shim_static^android_vendor.31_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/packages/modules/NeuralNetworks/libneuralnetworks_shim_static^android_vendor.31_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/packages/modules/NeuralNetworks/shim_and_sl/libneuralnetworks_shim_static^android_vendor.31_x86_64_static
 
 echo "building neuralnetworks_supportlibrary_loader^android_vendor.31_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_08.ninja neuralnetworks_supportlibrary_loader,android_vendor.31_x86_64_static
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja neuralnetworks_supportlibrary_loader,android_vendor.31_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/NeuralNetworks/shim_and_sl/neuralnetworks_supportlibrary_loader^android_vendor.31_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/packages/modules/NeuralNetworks/neuralnetworks_supportlibrary_loader^android_vendor.31_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/packages/modules/NeuralNetworks/shim_and_sl/neuralnetworks_supportlibrary_loader^android_vendor.31_x86_64_static
 
 echo "building neuralnetworks_types^android_vendor.31_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_08.ninja neuralnetworks_types,android_vendor.31_x86_64_static
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja neuralnetworks_types,android_vendor.31_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/NeuralNetworks/common/neuralnetworks_types^android_vendor.31_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/packages/modules/NeuralNetworks/neuralnetworks_types^android_vendor.31_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/packages/modules/NeuralNetworks/common/neuralnetworks_types^android_vendor.31_x86_64_static
 
 echo "building philox_random^android_vendor.31_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_08.ninja philox_random,android_vendor.31_x86_64_static
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja philox_random,android_vendor.31_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/NeuralNetworks/common/random/philox_random^android_vendor.31_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/packages/modules/NeuralNetworks/philox_random^android_vendor.31_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/packages/modules/NeuralNetworks/common/random/philox_random^android_vendor.31_x86_64_static
 

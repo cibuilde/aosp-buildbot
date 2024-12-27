@@ -1,0 +1,26 @@
+include ninja-ndk/out/soong/androidmk/bionic/libc/libc.ndk.ninja
+include ninja-ndk/out/soong/androidmk/bionic/libc/libstdc++.ndk.ninja
+include ninja-ndk/out/soong/androidmk/bionic/libdl/libdl.ndk.ninja
+include ninja-ndk/out/soong/androidmk/bionic/libm/libm.ndk.ninja
+include ninja-ndk/out/soong/androidmk/external/icu/libicu/libicu.ndk.ninja
+include ninja-ndk/out/soong/androidmk/external/zlib/libz.ndk.ninja
+include ninja-ndk/out/soong/androidmk/frameworks/av/camera/ndk/libcamera2ndk.ndk.ninja
+include ninja-ndk/out/soong/androidmk/frameworks/av/media/libaaudio/libaaudio.ndk.ninja
+include ninja-ndk/out/soong/androidmk/frameworks/av/media/ndk/libmediandk.ndk.ninja
+include ninja-ndk/out/soong/androidmk/frameworks/base/media/native/midi/libamidi.ndk.ninja
+include ninja-ndk/out/soong/androidmk/frameworks/base/native/android/libandroid.ndk.ninja
+include ninja-ndk/out/soong/androidmk/frameworks/base/native/graphics/jni/libjnigraphics.ndk.ninja
+include ninja-ndk/out/soong/androidmk/frameworks/native/libs/binder/ndk/libbinder_ndk.ndk.ninja
+include ninja-ndk/out/soong/androidmk/frameworks/native/libs/nativewindow/libnativewindow.ndk.ninja
+include ninja-ndk/out/soong/androidmk/frameworks/native/opengl/libs/libEGL.ndk.ninja
+include ninja-ndk/out/soong/androidmk/frameworks/native/opengl/libs/libGLESv1_CM.ndk.ninja
+include ninja-ndk/out/soong/androidmk/frameworks/native/opengl/libs/libGLESv2.ndk.ninja
+include ninja-ndk/out/soong/androidmk/frameworks/native/opengl/libs/libGLESv3.ndk.ninja
+include ninja-ndk/out/soong/androidmk/frameworks/native/vulkan/libvulkan/libvulkan.ndk.ninja
+include ninja-ndk/out/soong/androidmk/frameworks/wilhelm/libOpenMAXAL.ndk.ninja
+include ninja-ndk/out/soong/androidmk/frameworks/wilhelm/libOpenSLES.ndk.ninja
+include ninja-ndk/out/soong/androidmk/packages/modules/NeuralNetworks/runtime/libneuralnetworks.ndk.ninja
+include ninja-ndk/out/soong/androidmk/system/core/libsync/libsync.ndk.ninja
+include ninja-ndk/out/soong/androidmk/system/extras/module_ndk_libs/libnativehelper/libnativehelper.ndk.ninja
+include ninja-ndk/out/soong/androidmk/system/logging/liblog/liblog.ndk.ninja
+

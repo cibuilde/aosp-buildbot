@@ -4,6 +4,8 @@ df -h
 
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
+ln -sf $GITHUB_WORKSPACE/ndk.ninja .
+ln -sf $GITHUB_WORKSPACE/ninja-ndk .
 ln -sf $GITHUB_WORKSPACE/ninja .
 
 mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86 prebuilts/clang/host/linux-x86
@@ -16,7 +18,7 @@ rsync -a -r $GITHUB_WORKSPACE/artifacts/build/soong/zip/cmd/soong_zip^linux_glib
 rsync -a -r $GITHUB_WORKSPACE/artifacts/external/guice/guice_munge^linux_glibc_common/ .
 
 echo "building guice_munged_srcs^"
-ninja -f $GITHUB_WORKSPACE/steps/build_08.ninja guice_munged_srcs,
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja guice_munged_srcs,
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/guice/guice_munged_srcs^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/external/guice/guice_munged_srcs^.output . $GITHUB_WORKSPACE/artifacts/external/guice/guice_munged_srcs^
 

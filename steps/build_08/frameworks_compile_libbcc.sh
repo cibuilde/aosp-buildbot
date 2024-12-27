@@ -4,6 +4,8 @@ df -h
 
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
+ln -sf $GITHUB_WORKSPACE/ndk.ninja .
+ln -sf $GITHUB_WORKSPACE/ninja-ndk .
 ln -sf $GITHUB_WORKSPACE/ninja .
 
 mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86 prebuilts/clang/host/linux-x86
@@ -22,32 +24,32 @@ rsync -a -r $GITHUB_WORKSPACE/artifacts/external/llvm/llvm-gen-attributes^/ .
 rsync -a -r $GITHUB_WORKSPACE/artifacts/external/llvm/llvm-gen-intrinsics^/ .
 
 echo "building libLLVMBitReader_2_7^android_vendor.31_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_08.ninja libLLVMBitReader_2_7,android_vendor.31_x86_64_static
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libLLVMBitReader_2_7,android_vendor.31_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/compile/libbcc/bcinfo/BitReader_2_7/libLLVMBitReader_2_7^android_vendor.31_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/frameworks/compile/libbcc/libLLVMBitReader_2_7^android_vendor.31_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/compile/libbcc/bcinfo/BitReader_2_7/libLLVMBitReader_2_7^android_vendor.31_x86_64_static
 
 echo "building libLLVMBitReader_2_7^android_vendor.31_x86_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_08.ninja libLLVMBitReader_2_7,android_vendor.31_x86_x86_64_static
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libLLVMBitReader_2_7,android_vendor.31_x86_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/compile/libbcc/bcinfo/BitReader_2_7/libLLVMBitReader_2_7^android_vendor.31_x86_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/frameworks/compile/libbcc/libLLVMBitReader_2_7^android_vendor.31_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/compile/libbcc/bcinfo/BitReader_2_7/libLLVMBitReader_2_7^android_vendor.31_x86_x86_64_static
 
 echo "building libLLVMBitReader_3_0^android_vendor.31_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_08.ninja libLLVMBitReader_3_0,android_vendor.31_x86_64_static
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libLLVMBitReader_3_0,android_vendor.31_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/compile/libbcc/bcinfo/BitReader_3_0/libLLVMBitReader_3_0^android_vendor.31_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/frameworks/compile/libbcc/libLLVMBitReader_3_0^android_vendor.31_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/compile/libbcc/bcinfo/BitReader_3_0/libLLVMBitReader_3_0^android_vendor.31_x86_64_static
 
 echo "building libLLVMBitReader_3_0^android_vendor.31_x86_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_08.ninja libLLVMBitReader_3_0,android_vendor.31_x86_x86_64_static
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libLLVMBitReader_3_0,android_vendor.31_x86_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/compile/libbcc/bcinfo/BitReader_3_0/libLLVMBitReader_3_0^android_vendor.31_x86_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/frameworks/compile/libbcc/libLLVMBitReader_3_0^android_vendor.31_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/compile/libbcc/bcinfo/BitReader_3_0/libLLVMBitReader_3_0^android_vendor.31_x86_x86_64_static
 
 echo "building libLLVMWrap^android_vendor.31_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_08.ninja libLLVMWrap,android_vendor.31_x86_64_static
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libLLVMWrap,android_vendor.31_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/compile/libbcc/bcinfo/Wrap/libLLVMWrap^android_vendor.31_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/frameworks/compile/libbcc/libLLVMWrap^android_vendor.31_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/compile/libbcc/bcinfo/Wrap/libLLVMWrap^android_vendor.31_x86_64_static
 
 echo "building libLLVMWrap^android_vendor.31_x86_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_08.ninja libLLVMWrap,android_vendor.31_x86_x86_64_static
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libLLVMWrap,android_vendor.31_x86_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/compile/libbcc/bcinfo/Wrap/libLLVMWrap^android_vendor.31_x86_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/frameworks/compile/libbcc/libLLVMWrap^android_vendor.31_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/compile/libbcc/bcinfo/Wrap/libLLVMWrap^android_vendor.31_x86_x86_64_static
 

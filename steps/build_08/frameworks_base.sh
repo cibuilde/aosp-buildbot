@@ -4,6 +4,8 @@ df -h
 
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
+ln -sf $GITHUB_WORKSPACE/ndk.ninja .
+ln -sf $GITHUB_WORKSPACE/ninja-ndk .
 ln -sf $GITHUB_WORKSPACE/ninja .
 
 mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86 prebuilts/clang/host/linux-x86
@@ -61,47 +63,47 @@ rsync -a -r $GITHUB_WORKSPACE/artifacts/system/logging/liblog/liblog^linux_glibc
 rsync -a -r $GITHUB_WORKSPACE/artifacts/system/tools/sysprop/sysprop_java^linux_glibc_x86_64/ .
 
 echo "building com.android.appsearch-systemserverclasspath-fragment^android_common_apex10000"
-ninja -f $GITHUB_WORKSPACE/steps/build_08.ninja com.android.appsearch-systemserverclasspath-fragment,android_common_apex10000
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja com.android.appsearch-systemserverclasspath-fragment,android_common_apex10000
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/apex/appsearch/com.android.appsearch-systemserverclasspath-fragment^android_common_apex10000
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/frameworks/base/com.android.appsearch-systemserverclasspath-fragment^android_common_apex10000.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/apex/appsearch/com.android.appsearch-systemserverclasspath-fragment^android_common_apex10000
 
 echo "building com.android.sysprop.watchdog_java_gen^"
-ninja -f $GITHUB_WORKSPACE/steps/build_08.ninja com.android.sysprop.watchdog_java_gen,
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja com.android.sysprop.watchdog_java_gen,
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/core/sysprop/com.android.sysprop.watchdog_java_gen^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/frameworks/base/com.android.sysprop.watchdog_java_gen^.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/core/sysprop/com.android.sysprop.watchdog_java_gen^
 
 echo "building libstatslog_hwui^android_x86_64_static_lto-thin"
-ninja -f $GITHUB_WORKSPACE/steps/build_08.ninja libstatslog_hwui,android_x86_64_static_lto-thin
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libstatslog_hwui,android_x86_64_static_lto-thin
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/libs/hwui/libstatslog_hwui^android_x86_64_static_lto-thin
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/frameworks/base/libstatslog_hwui^android_x86_64_static_lto-thin.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/libs/hwui/libstatslog_hwui^android_x86_64_static_lto-thin
 
 echo "building libstatslog_hwui^android_x86_x86_64_static_lto-thin"
-ninja -f $GITHUB_WORKSPACE/steps/build_08.ninja libstatslog_hwui,android_x86_x86_64_static_lto-thin
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libstatslog_hwui,android_x86_x86_64_static_lto-thin
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/libs/hwui/libstatslog_hwui^android_x86_x86_64_static_lto-thin
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/frameworks/base/libstatslog_hwui^android_x86_x86_64_static_lto-thin.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/libs/hwui/libstatslog_hwui^android_x86_x86_64_static_lto-thin
 
 echo "building platform-systemserverclasspath^android_common"
-ninja -f $GITHUB_WORKSPACE/steps/build_08.ninja platform-systemserverclasspath,android_common
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja platform-systemserverclasspath,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/boot/platform-systemserverclasspath^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/frameworks/base/platform-systemserverclasspath^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/boot/platform-systemserverclasspath^android_common
 
 echo "building protologtool^linux_glibc_common"
-ninja -f $GITHUB_WORKSPACE/steps/build_08.ninja protologtool,linux_glibc_common
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja protologtool,linux_glibc_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/tools/protologtool/protologtool^linux_glibc_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/frameworks/base/protologtool^linux_glibc_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/tools/protologtool/protologtool^linux_glibc_common
 
 echo "building remote-color-resources-arsc^"
-ninja -f $GITHUB_WORKSPACE/steps/build_08.ninja remote-color-resources-arsc,
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja remote-color-resources-arsc,
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/core/res/remote-color-resources-arsc^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/frameworks/base/remote-color-resources-arsc^.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/core/res/remote-color-resources-arsc^
 
 echo "building sdkparcelables^linux_glibc_x86_64"
-ninja -f $GITHUB_WORKSPACE/steps/build_08.ninja sdkparcelables,linux_glibc_x86_64
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja sdkparcelables,linux_glibc_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/tools/sdkparcelables/sdkparcelables^linux_glibc_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/frameworks/base/sdkparcelables^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/tools/sdkparcelables/sdkparcelables^linux_glibc_x86_64
 
 echo "building validatekeymaps^linux_glibc_x86_64"
-ninja -f $GITHUB_WORKSPACE/steps/build_08.ninja validatekeymaps,linux_glibc_x86_64
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja validatekeymaps,linux_glibc_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/tools/validatekeymaps/validatekeymaps^linux_glibc_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/frameworks/base/validatekeymaps^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/tools/validatekeymaps/validatekeymaps^linux_glibc_x86_64
 

@@ -4,6 +4,8 @@ df -h
 
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
+ln -sf $GITHUB_WORKSPACE/ndk.ninja .
+ln -sf $GITHUB_WORKSPACE/ninja-ndk .
 ln -sf $GITHUB_WORKSPACE/ninja .
 
 mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86 prebuilts/clang/host/linux-x86
@@ -66,42 +68,42 @@ rsync -a -r $GITHUB_WORKSPACE/artifacts/system/libhidl/transport/manager/1.2/and
 rsync -a -r $GITHUB_WORKSPACE/artifacts/system/update_engine/update_metadata-protos^android_recovery_x86_64_static/ .
 
 echo "building libapplypatch^android_vendor.31_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_08.ninja libapplypatch,android_vendor.31_x86_64_static
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libapplypatch,android_vendor.31_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/bootable/recovery/applypatch/libapplypatch^android_vendor.31_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/bootable/recovery/libapplypatch^android_vendor.31_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bootable/recovery/applypatch/libapplypatch^android_vendor.31_x86_64_static
 
 echo "building libapplypatch_modes^android_vendor.31_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_08.ninja libapplypatch_modes,android_vendor.31_x86_64_static
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libapplypatch_modes,android_vendor.31_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/bootable/recovery/applypatch/libapplypatch_modes^android_vendor.31_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/bootable/recovery/libapplypatch_modes^android_vendor.31_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bootable/recovery/applypatch/libapplypatch_modes^android_vendor.31_x86_64_static
 
 echo "building libbootloader_message_vendor^android_vendor.31_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_08.ninja libbootloader_message_vendor,android_vendor.31_x86_64_static
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libbootloader_message_vendor,android_vendor.31_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/bootable/recovery/bootloader_message/libbootloader_message_vendor^android_vendor.31_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/bootable/recovery/libbootloader_message_vendor^android_vendor.31_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bootable/recovery/bootloader_message/libbootloader_message_vendor^android_vendor.31_x86_64_static
 
 echo "building libbootloader_message_vendor^android_vendor.31_x86_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_08.ninja libbootloader_message_vendor,android_vendor.31_x86_x86_64_static
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libbootloader_message_vendor,android_vendor.31_x86_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/bootable/recovery/bootloader_message/libbootloader_message_vendor^android_vendor.31_x86_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/bootable/recovery/libbootloader_message_vendor^android_vendor.31_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bootable/recovery/bootloader_message/libbootloader_message_vendor^android_vendor.31_x86_x86_64_static
 
 echo "building libedify^android_vendor.31_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_08.ninja libedify,android_vendor.31_x86_64_static
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libedify,android_vendor.31_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/bootable/recovery/edify/libedify^android_vendor.31_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/bootable/recovery/libedify^android_vendor.31_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bootable/recovery/edify/libedify^android_vendor.31_x86_64_static
 
 echo "building libinstall^android_recovery_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_08.ninja libinstall,android_recovery_x86_64_static
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libinstall,android_recovery_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/bootable/recovery/install/libinstall^android_recovery_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/bootable/recovery/libinstall^android_recovery_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bootable/recovery/install/libinstall^android_recovery_x86_64_static
 
 echo "building libotautil^android_vendor.31_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_08.ninja libotautil,android_vendor.31_x86_64_static
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libotautil,android_vendor.31_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/bootable/recovery/otautil/libotautil^android_vendor.31_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/bootable/recovery/libotautil^android_vendor.31_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bootable/recovery/otautil/libotautil^android_vendor.31_x86_64_static
 
 echo "building librecovery^android_recovery_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_08.ninja librecovery,android_recovery_x86_64_static
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja librecovery,android_recovery_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/bootable/recovery/librecovery^android_recovery_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/bootable/recovery/librecovery^android_recovery_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bootable/recovery/librecovery^android_recovery_x86_64_static
 

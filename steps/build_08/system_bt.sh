@@ -4,6 +4,8 @@ df -h
 
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
+ln -sf $GITHUB_WORKSPACE/ndk.ninja .
+ln -sf $GITHUB_WORKSPACE/ninja-ndk .
 ln -sf $GITHUB_WORKSPACE/ninja .
 
 mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86 prebuilts/clang/host/linux-x86
@@ -91,242 +93,242 @@ rsync -a -r $GITHUB_WORKSPACE/artifacts/system/libhidl/transport/manager/1.2/and
 rsync -a -r $GITHUB_WORKSPACE/artifacts/system/libhidl/transport/safe_union/1.0/android.hidl.safe_union@1.0_genc++_headers^/ .
 
 echo "building async_fd_watcher^android_vendor.31_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_08.ninja async_fd_watcher,android_vendor.31_x86_64_static
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja async_fd_watcher,android_vendor.31_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/bt/vendor_libs/linux/interface/async_fd_watcher^android_vendor.31_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/system/bt/async_fd_watcher^android_vendor.31_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/bt/vendor_libs/linux/interface/async_fd_watcher^android_vendor.31_x86_64_static
 
 echo "building audio.a2dp.default^android_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_08.ninja audio.a2dp.default,android_x86_64_static
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja audio.a2dp.default,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/bt/audio_a2dp_hw/audio.a2dp.default^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/system/bt/audio.a2dp.default^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/bt/audio_a2dp_hw/audio.a2dp.default^android_x86_64_static
 
 echo "building audio.a2dp.default^android_x86_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_08.ninja audio.a2dp.default,android_x86_x86_64_static
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja audio.a2dp.default,android_x86_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/bt/audio_a2dp_hw/audio.a2dp.default^android_x86_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/system/bt/audio.a2dp.default^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/bt/audio_a2dp_hw/audio.a2dp.default^android_x86_x86_64_static
 
 echo "building audio.hearing_aid.default^android_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_08.ninja audio.hearing_aid.default,android_x86_64_static
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja audio.hearing_aid.default,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/bt/audio_hearing_aid_hw/audio.hearing_aid.default^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/system/bt/audio.hearing_aid.default^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/bt/audio_hearing_aid_hw/audio.hearing_aid.default^android_x86_64_static
 
 echo "building audio.hearing_aid.default^android_x86_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_08.ninja audio.hearing_aid.default,android_x86_x86_64_static
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja audio.hearing_aid.default,android_x86_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/bt/audio_hearing_aid_hw/audio.hearing_aid.default^android_x86_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/system/bt/audio.hearing_aid.default^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/bt/audio_hearing_aid_hw/audio.hearing_aid.default^android_x86_x86_64_static
 
 echo "building avrcp-target-service^android_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_08.ninja avrcp-target-service,android_x86_64_static
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja avrcp-target-service,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/bt/profile/avrcp/avrcp-target-service^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/system/bt/avrcp-target-service^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/bt/profile/avrcp/avrcp-target-service^android_x86_64_static
 
 echo "building avrcp-target-service^android_x86_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_08.ninja avrcp-target-service,android_x86_x86_64_static
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja avrcp-target-service,android_x86_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/bt/profile/avrcp/avrcp-target-service^android_x86_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/system/bt/avrcp-target-service^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/bt/profile/avrcp/avrcp-target-service^android_x86_x86_64_static
 
 echo "building libaudio-a2dp-hw-utils^android_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_08.ninja libaudio-a2dp-hw-utils,android_x86_64_static
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libaudio-a2dp-hw-utils,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/bt/audio_a2dp_hw/libaudio-a2dp-hw-utils^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/system/bt/libaudio-a2dp-hw-utils^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/bt/audio_a2dp_hw/libaudio-a2dp-hw-utils^android_x86_64_static
 
 echo "building libaudio-a2dp-hw-utils^android_x86_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_08.ninja libaudio-a2dp-hw-utils,android_x86_x86_64_static
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libaudio-a2dp-hw-utils,android_x86_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/bt/audio_a2dp_hw/libaudio-a2dp-hw-utils^android_x86_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/system/bt/libaudio-a2dp-hw-utils^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/bt/audio_a2dp_hw/libaudio-a2dp-hw-utils^android_x86_x86_64_static
 
 echo "building libbluetooth_gd^android_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_08.ninja libbluetooth_gd,android_x86_64_static
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libbluetooth_gd,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/bt/gd/libbluetooth_gd^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/system/bt/libbluetooth_gd^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/bt/gd/libbluetooth_gd^android_x86_64_static
 
 echo "building libbluetooth_gd^android_x86_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_08.ninja libbluetooth_gd,android_x86_x86_64_static
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libbluetooth_gd,android_x86_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/bt/gd/libbluetooth_gd^android_x86_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/system/bt/libbluetooth_gd^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/bt/gd/libbluetooth_gd^android_x86_x86_64_static
 
 echo "building libbt-audio-hal-interface^android_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_08.ninja libbt-audio-hal-interface,android_x86_64_static
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libbt-audio-hal-interface,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/bt/audio_hal_interface/libbt-audio-hal-interface^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/system/bt/libbt-audio-hal-interface^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/bt/audio_hal_interface/libbt-audio-hal-interface^android_x86_64_static
 
 echo "building libbt-audio-hal-interface^android_x86_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_08.ninja libbt-audio-hal-interface,android_x86_x86_64_static
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libbt-audio-hal-interface,android_x86_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/bt/audio_hal_interface/libbt-audio-hal-interface^android_x86_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/system/bt/libbt-audio-hal-interface^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/bt/audio_hal_interface/libbt-audio-hal-interface^android_x86_x86_64_static
 
 echo "building libbt-bta^android_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_08.ninja libbt-bta,android_x86_64_static
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libbt-bta,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/bt/bta/libbt-bta^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/system/bt/libbt-bta^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/bt/bta/libbt-bta^android_x86_64_static
 
 echo "building libbt-bta^android_x86_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_08.ninja libbt-bta,android_x86_x86_64_static
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libbt-bta,android_x86_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/bt/bta/libbt-bta^android_x86_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/system/bt/libbt-bta^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/bt/bta/libbt-bta^android_x86_x86_64_static
 
 echo "building libbt-common^android_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_08.ninja libbt-common,android_x86_64_static
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libbt-common,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/bt/common/libbt-common^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/system/bt/libbt-common^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/bt/common/libbt-common^android_x86_64_static
 
 echo "building libbt-common^android_x86_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_08.ninja libbt-common,android_x86_x86_64_static
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libbt-common,android_x86_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/bt/common/libbt-common^android_x86_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/system/bt/libbt-common^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/bt/common/libbt-common^android_x86_x86_64_static
 
 echo "building libbt-hci^android_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_08.ninja libbt-hci,android_x86_64_static
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libbt-hci,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/bt/hci/libbt-hci^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/system/bt/libbt-hci^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/bt/hci/libbt-hci^android_x86_64_static
 
 echo "building libbt-hci^android_x86_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_08.ninja libbt-hci,android_x86_x86_64_static
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libbt-hci,android_x86_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/bt/hci/libbt-hci^android_x86_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/system/bt/libbt-hci^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/bt/hci/libbt-hci^android_x86_x86_64_static
 
 echo "building libbt-sbc-decoder^android_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_08.ninja libbt-sbc-decoder,android_x86_64_static
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libbt-sbc-decoder,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/bt/embdrv/sbc/decoder/libbt-sbc-decoder^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/system/bt/libbt-sbc-decoder^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/bt/embdrv/sbc/decoder/libbt-sbc-decoder^android_x86_64_static
 
 echo "building libbt-sbc-decoder^android_x86_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_08.ninja libbt-sbc-decoder,android_x86_x86_64_static
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libbt-sbc-decoder,android_x86_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/bt/embdrv/sbc/decoder/libbt-sbc-decoder^android_x86_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/system/bt/libbt-sbc-decoder^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/bt/embdrv/sbc/decoder/libbt-sbc-decoder^android_x86_x86_64_static
 
 echo "building libbt-sbc-encoder^android_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_08.ninja libbt-sbc-encoder,android_x86_64_static
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libbt-sbc-encoder,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/bt/embdrv/sbc/encoder/libbt-sbc-encoder^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/system/bt/libbt-sbc-encoder^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/bt/embdrv/sbc/encoder/libbt-sbc-encoder^android_x86_64_static
 
 echo "building libbt-sbc-encoder^android_x86_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_08.ninja libbt-sbc-encoder,android_x86_x86_64_static
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libbt-sbc-encoder,android_x86_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/bt/embdrv/sbc/encoder/libbt-sbc-encoder^android_x86_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/system/bt/libbt-sbc-encoder^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/bt/embdrv/sbc/encoder/libbt-sbc-encoder^android_x86_x86_64_static
 
 echo "building libbt-stack^android_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_08.ninja libbt-stack,android_x86_64_static
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libbt-stack,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/bt/stack/libbt-stack^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/system/bt/libbt-stack^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/bt/stack/libbt-stack^android_x86_64_static
 
 echo "building libbt-stack^android_x86_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_08.ninja libbt-stack,android_x86_x86_64_static
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libbt-stack,android_x86_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/bt/stack/libbt-stack^android_x86_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/system/bt/libbt-stack^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/bt/stack/libbt-stack^android_x86_x86_64_static
 
 echo "building libbt-utils^android_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_08.ninja libbt-utils,android_x86_64_static
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libbt-utils,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/bt/utils/libbt-utils^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/system/bt/libbt-utils^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/bt/utils/libbt-utils^android_x86_64_static
 
 echo "building libbt-utils^android_x86_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_08.ninja libbt-utils,android_x86_x86_64_static
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libbt-utils,android_x86_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/bt/utils/libbt-utils^android_x86_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/system/bt/libbt-utils^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/bt/utils/libbt-utils^android_x86_x86_64_static
 
 echo "building libbt_callbacks_cxx^android_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_08.ninja libbt_callbacks_cxx,android_x86_64_static
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libbt_callbacks_cxx,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/bt/gd/rust/shim/libbt_callbacks_cxx^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/system/bt/libbt_callbacks_cxx^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/bt/gd/rust/shim/libbt_callbacks_cxx^android_x86_64_static
 
 echo "building libbt_callbacks_cxx^android_x86_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_08.ninja libbt_callbacks_cxx,android_x86_x86_64_static
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libbt_callbacks_cxx,android_x86_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/bt/gd/rust/shim/libbt_callbacks_cxx^android_x86_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/system/bt/libbt_callbacks_cxx^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/bt/gd/rust/shim/libbt_callbacks_cxx^android_x86_x86_64_static
 
 echo "building libbt_common_sys_prop_cxx^android_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_08.ninja libbt_common_sys_prop_cxx,android_x86_64_static
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libbt_common_sys_prop_cxx,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/bt/gd/rust/common/libbt_common_sys_prop_cxx^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/system/bt/libbt_common_sys_prop_cxx^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/bt/gd/rust/common/libbt_common_sys_prop_cxx^android_x86_64_static
 
 echo "building libbt_common_sys_prop_cxx^android_x86_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_08.ninja libbt_common_sys_prop_cxx,android_x86_x86_64_static
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libbt_common_sys_prop_cxx,android_x86_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/bt/gd/rust/common/libbt_common_sys_prop_cxx^android_x86_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/system/bt/libbt_common_sys_prop_cxx^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/bt/gd/rust/common/libbt_common_sys_prop_cxx^android_x86_x86_64_static
 
 echo "building libbt_facade_proto^android_x86_64_source"
-ninja -f $GITHUB_WORKSPACE/steps/build_08.ninja libbt_facade_proto,android_x86_64_source
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libbt_facade_proto,android_x86_64_source
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/bt/gd/libbt_facade_proto^android_x86_64_source
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/system/bt/libbt_facade_proto^android_x86_64_source.output . $GITHUB_WORKSPACE/artifacts/system/bt/gd/libbt_facade_proto^android_x86_64_source
 
 echo "building libbt_facade_proto^android_x86_x86_64_source"
-ninja -f $GITHUB_WORKSPACE/steps/build_08.ninja libbt_facade_proto,android_x86_x86_64_source
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libbt_facade_proto,android_x86_x86_64_source
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/bt/gd/libbt_facade_proto^android_x86_x86_64_source
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/system/bt/libbt_facade_proto^android_x86_x86_64_source.output . $GITHUB_WORKSPACE/artifacts/system/bt/gd/libbt_facade_proto^android_x86_x86_64_source
 
 echo "building libbt_hidl_hal_cxx^android_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_08.ninja libbt_hidl_hal_cxx,android_x86_64_static
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libbt_hidl_hal_cxx,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/bt/gd/rust/hal/libbt_hidl_hal_cxx^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/system/bt/libbt_hidl_hal_cxx^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/bt/gd/rust/hal/libbt_hidl_hal_cxx^android_x86_64_static
 
 echo "building libbt_hidl_hal_cxx^android_x86_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_08.ninja libbt_hidl_hal_cxx,android_x86_x86_64_static
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libbt_hidl_hal_cxx,android_x86_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/bt/gd/rust/hal/libbt_hidl_hal_cxx^android_x86_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/system/bt/libbt_hidl_hal_cxx^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/bt/gd/rust/hal/libbt_hidl_hal_cxx^android_x86_x86_64_static
 
 echo "building libbtcore^android_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_08.ninja libbtcore,android_x86_64_static
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libbtcore,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/bt/btcore/libbtcore^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/system/bt/libbtcore^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/bt/btcore/libbtcore^android_x86_64_static
 
 echo "building libbtcore^android_x86_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_08.ninja libbtcore,android_x86_x86_64_static
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libbtcore,android_x86_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/bt/btcore/libbtcore^android_x86_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/system/bt/libbtcore^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/bt/btcore/libbtcore^android_x86_x86_64_static
 
 echo "building libbtdevice^android_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_08.ninja libbtdevice,android_x86_64_static
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libbtdevice,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/bt/device/libbtdevice^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/system/bt/libbtdevice^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/bt/device/libbtdevice^android_x86_64_static
 
 echo "building libbtdevice^android_x86_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_08.ninja libbtdevice,android_x86_x86_64_static
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libbtdevice,android_x86_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/bt/device/libbtdevice^android_x86_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/system/bt/libbtdevice^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/bt/device/libbtdevice^android_x86_x86_64_static
 
 echo "building libbte^android_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_08.ninja libbte,android_x86_64_static
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libbte,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/bt/main/libbte^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/system/bt/libbte^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/bt/main/libbte^android_x86_64_static
 
 echo "building libbte^android_x86_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_08.ninja libbte,android_x86_x86_64_static
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libbte,android_x86_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/bt/main/libbte^android_x86_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/system/bt/libbte^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/bt/main/libbte^android_x86_x86_64_static
 
 echo "building libg722codec^android_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_08.ninja libg722codec,android_x86_64_static
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libg722codec,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/bt/embdrv/g722/libg722codec^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/system/bt/libg722codec^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/bt/embdrv/g722/libg722codec^android_x86_64_static
 
 echo "building libg722codec^android_x86_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_08.ninja libg722codec,android_x86_x86_64_static
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libg722codec,android_x86_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/bt/embdrv/g722/libg722codec^android_x86_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/system/bt/libg722codec^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/bt/embdrv/g722/libg722codec^android_x86_x86_64_static
 
 echo "building libosi^android_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_08.ninja libosi,android_x86_64_static
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libosi,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/bt/osi/libosi^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/system/bt/libosi^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/bt/osi/libosi^android_x86_64_static
 
 echo "building libosi^android_x86_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_08.ninja libosi,android_x86_x86_64_static
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libosi,android_x86_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/bt/osi/libosi^android_x86_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/system/bt/libosi^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/bt/osi/libosi^android_x86_x86_64_static
 
 echo "building libscriptedbeaconpayload-protos-lite^android_vendor.31_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_08.ninja libscriptedbeaconpayload-protos-lite,android_vendor.31_x86_64_static
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libscriptedbeaconpayload-protos-lite,android_vendor.31_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/bt/vendor_libs/test_vendor_lib/libscriptedbeaconpayload-protos-lite^android_vendor.31_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/system/bt/libscriptedbeaconpayload-protos-lite^android_vendor.31_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/bt/vendor_libs/test_vendor_lib/libscriptedbeaconpayload-protos-lite^android_vendor.31_x86_64_static
 
 echo "building libudrv-uipc^android_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_08.ninja libudrv-uipc,android_x86_64_static
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libudrv-uipc,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/bt/udrv/libudrv-uipc^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/system/bt/libudrv-uipc^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/bt/udrv/libudrv-uipc^android_x86_64_static
 
 echo "building libudrv-uipc^android_x86_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_08.ninja libudrv-uipc,android_x86_x86_64_static
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libudrv-uipc,android_x86_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/bt/udrv/libudrv-uipc^android_x86_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/system/bt/libudrv-uipc^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/bt/udrv/libudrv-uipc^android_x86_x86_64_static
 

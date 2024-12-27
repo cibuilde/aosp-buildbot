@@ -4,6 +4,8 @@ df -h
 
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
+ln -sf $GITHUB_WORKSPACE/ndk.ninja .
+ln -sf $GITHUB_WORKSPACE/ninja-ndk .
 ln -sf $GITHUB_WORKSPACE/ninja .
 
 mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86 prebuilts/clang/host/linux-x86
@@ -27,7 +29,7 @@ clone_depth_platform system/netd
 rsync -a -r $GITHUB_WORKSPACE/artifacts/system/netd/server/netd_event_listener_interface-V1-ndk_platform-source^/ .
 
 echo "building netd_event_listener_interface-V1-ndk_platform^android_x86_64_static_cfi_com.android.resolv"
-ninja -f $GITHUB_WORKSPACE/steps/build_08.ninja netd_event_listener_interface-V1-ndk_platform,android_x86_64_static_cfi_com.android.resolv
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja netd_event_listener_interface-V1-ndk_platform,android_x86_64_static_cfi_com.android.resolv
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/netd/server/netd_event_listener_interface-V1-ndk_platform^android_x86_64_static_cfi_com.android.resolv
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/system/netd/netd_event_listener_interface-V1-ndk_platform^android_x86_64_static_cfi_com.android.resolv.output . $GITHUB_WORKSPACE/artifacts/system/netd/server/netd_event_listener_interface-V1-ndk_platform^android_x86_64_static_cfi_com.android.resolv
 

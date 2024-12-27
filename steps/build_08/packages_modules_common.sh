@@ -4,6 +4,8 @@ df -h
 
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
+ln -sf $GITHUB_WORKSPACE/ndk.ninja .
+ln -sf $GITHUB_WORKSPACE/ninja-ndk .
 ln -sf $GITHUB_WORKSPACE/ninja .
 
 mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86 prebuilts/clang/host/linux-x86
@@ -22,7 +24,7 @@ rsync -a -r $GITHUB_WORKSPACE/artifacts/external/sqlite/dist/libsqlite^linux_gli
 rsync -a -r $GITHUB_WORKSPACE/artifacts/packages/modules/common/tools/gen_sdkinfo^linux_glibc_x86_64_PY3/ .
 
 echo "building cur_sdkinfo_src^"
-ninja -f $GITHUB_WORKSPACE/steps/build_08.ninja cur_sdkinfo_src,
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja cur_sdkinfo_src,
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/common/tools/cur_sdkinfo_src^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/packages/modules/common/cur_sdkinfo_src^.output . $GITHUB_WORKSPACE/artifacts/packages/modules/common/tools/cur_sdkinfo_src^
 

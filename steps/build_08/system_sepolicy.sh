@@ -4,6 +4,8 @@ df -h
 
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
+ln -sf $GITHUB_WORKSPACE/ndk.ninja .
+ln -sf $GITHUB_WORKSPACE/ninja-ndk .
 ln -sf $GITHUB_WORKSPACE/ninja .
 
 mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86 prebuilts/clang/host/linux-x86
@@ -31,42 +33,42 @@ rsync -a -r $GITHUB_WORKSPACE/artifacts/system/sepolicy/system_ext_pub_policy.ci
 rsync -a -r $GITHUB_WORKSPACE/artifacts/system/sepolicy/tools/version_policy^linux_glibc_x86_64/ .
 
 echo "building microdroid_plat_pub_versioned.cil^android_common"
-ninja -f $GITHUB_WORKSPACE/steps/build_08.ninja microdroid_plat_pub_versioned.cil,android_common
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja microdroid_plat_pub_versioned.cil,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/sepolicy/microdroid_plat_pub_versioned.cil^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/system/sepolicy/microdroid_plat_pub_versioned.cil^android_common.output . $GITHUB_WORKSPACE/artifacts/system/sepolicy/microdroid_plat_pub_versioned.cil^android_common
 
 echo "building plat_29.0.cil^android_common"
-ninja -f $GITHUB_WORKSPACE/steps/build_08.ninja plat_29.0.cil,android_common
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja plat_29.0.cil,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/sepolicy/plat_29.0.cil^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/system/sepolicy/plat_29.0.cil^android_common.output . $GITHUB_WORKSPACE/artifacts/system/sepolicy/plat_29.0.cil^android_common
 
 echo "building plat_file_contexts^android_common"
-ninja -f $GITHUB_WORKSPACE/steps/build_08.ninja plat_file_contexts,android_common
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja plat_file_contexts,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/sepolicy/plat_file_contexts^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/system/sepolicy/plat_file_contexts^android_common.output . $GITHUB_WORKSPACE/artifacts/system/sepolicy/plat_file_contexts^android_common
 
 echo "building plat_sepolicy_and_mapping.sha256_gen^"
-ninja -f $GITHUB_WORKSPACE/steps/build_08.ninja plat_sepolicy_and_mapping.sha256_gen,
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja plat_sepolicy_and_mapping.sha256_gen,
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/sepolicy/plat_sepolicy_and_mapping.sha256_gen^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/system/sepolicy/plat_sepolicy_and_mapping.sha256_gen^.output . $GITHUB_WORKSPACE/artifacts/system/sepolicy/plat_sepolicy_and_mapping.sha256_gen^
 
 echo "building product_file_contexts^android_common"
-ninja -f $GITHUB_WORKSPACE/steps/build_08.ninja product_file_contexts,android_common
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja product_file_contexts,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/sepolicy/product_file_contexts^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/system/sepolicy/product_file_contexts^android_common.output . $GITHUB_WORKSPACE/artifacts/system/sepolicy/product_file_contexts^android_common
 
 echo "building system_ext_file_contexts^android_common"
-ninja -f $GITHUB_WORKSPACE/steps/build_08.ninja system_ext_file_contexts,android_common
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja system_ext_file_contexts,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/sepolicy/system_ext_file_contexts^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/system/sepolicy/system_ext_file_contexts^android_common.output . $GITHUB_WORKSPACE/artifacts/system/sepolicy/system_ext_file_contexts^android_common
 
 echo "building system_ext_mapping_file^android_common"
-ninja -f $GITHUB_WORKSPACE/steps/build_08.ninja system_ext_mapping_file,android_common
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja system_ext_mapping_file,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/sepolicy/system_ext_mapping_file^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/system/sepolicy/system_ext_mapping_file^android_common.output . $GITHUB_WORKSPACE/artifacts/system/sepolicy/system_ext_mapping_file^android_common
 
 echo "building vendor_file_contexts^android_common"
-ninja -f $GITHUB_WORKSPACE/steps/build_08.ninja vendor_file_contexts,android_common
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja vendor_file_contexts,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/sepolicy/vendor_file_contexts^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/system/sepolicy/vendor_file_contexts^android_common.output . $GITHUB_WORKSPACE/artifacts/system/sepolicy/vendor_file_contexts^android_common
 

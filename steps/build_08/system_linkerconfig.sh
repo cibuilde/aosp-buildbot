@@ -4,6 +4,8 @@ df -h
 
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
+ln -sf $GITHUB_WORKSPACE/ndk.ninja .
+ln -sf $GITHUB_WORKSPACE/ninja-ndk .
 ln -sf $GITHUB_WORKSPACE/ninja .
 
 mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86 prebuilts/clang/host/linux-x86
@@ -39,17 +41,17 @@ rsync -a -r $GITHUB_WORKSPACE/artifacts/system/apex/proto/lib_apex_manifest_prot
 rsync -a -r $GITHUB_WORKSPACE/artifacts/system/apex/proto/lib_apex_manifest_proto_lite^linux_glibc_x86_64_static/ .
 
 echo "building linkerconfig_modules^android_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_08.ninja linkerconfig_modules,android_x86_64_static
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja linkerconfig_modules,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/linkerconfig/linkerconfig_modules^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/system/linkerconfig/linkerconfig_modules^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/linkerconfig/linkerconfig_modules^android_x86_64_static
 
 echo "building linkerconfig_modules^android_x86_64_static_apex10000"
-ninja -f $GITHUB_WORKSPACE/steps/build_08.ninja linkerconfig_modules,android_x86_64_static_apex10000
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja linkerconfig_modules,android_x86_64_static_apex10000
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/linkerconfig/linkerconfig_modules^android_x86_64_static_apex10000
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/system/linkerconfig/linkerconfig_modules^android_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/system/linkerconfig/linkerconfig_modules^android_x86_64_static_apex10000
 
 echo "building linkerconfig_modules^linux_glibc_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_08.ninja linkerconfig_modules,linux_glibc_x86_64_static
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja linkerconfig_modules,linux_glibc_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/linkerconfig/linkerconfig_modules^linux_glibc_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/system/linkerconfig/linkerconfig_modules^linux_glibc_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/linkerconfig/linkerconfig_modules^linux_glibc_x86_64_static
 

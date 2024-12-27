@@ -4,6 +4,8 @@ df -h
 
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
+ln -sf $GITHUB_WORKSPACE/ndk.ninja .
+ln -sf $GITHUB_WORKSPACE/ninja-ndk .
 ln -sf $GITHUB_WORKSPACE/ninja .
 
 mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86 prebuilts/clang/host/linux-x86
@@ -102,67 +104,67 @@ rsync -a -r $GITHUB_WORKSPACE/artifacts/system/unwinding/libbacktrace/libbacktra
 rsync -a -r $GITHUB_WORKSPACE/artifacts/system/unwinding/libunwindstack/libunwindstack^linux_glibc_x86_64_static/ .
 
 echo "building art-linker-config^android_x86_64"
-ninja -f $GITHUB_WORKSPACE/steps/build_08.ninja art-linker-config,android_x86_64
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja art-linker-config,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/art/build/apex/art-linker-config^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/art/art-linker-config^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/art/build/apex/art-linker-config^android_x86_64
 
 echo "building hiddenapi^linux_glibc_x86_64"
-ninja -f $GITHUB_WORKSPACE/steps/build_08.ninja hiddenapi,linux_glibc_x86_64
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja hiddenapi,linux_glibc_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/art/tools/hiddenapi/hiddenapi^linux_glibc_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/art/hiddenapi^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/art/tools/hiddenapi/hiddenapi^linux_glibc_x86_64
 
 echo "building libart^android_x86_64_static_apex31"
-ninja -f $GITHUB_WORKSPACE/steps/build_08.ninja libart,android_x86_64_static_apex31
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libart,android_x86_64_static_apex31
 mkdir -p $GITHUB_WORKSPACE/artifacts/art/runtime/libart^android_x86_64_static_apex31
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/art/libart^android_x86_64_static_apex31.output . $GITHUB_WORKSPACE/artifacts/art/runtime/libart^android_x86_64_static_apex31
 
 echo "building libart^android_x86_x86_64_static_apex31"
-ninja -f $GITHUB_WORKSPACE/steps/build_08.ninja libart,android_x86_x86_64_static_apex31
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libart,android_x86_x86_64_static_apex31
 mkdir -p $GITHUB_WORKSPACE/artifacts/art/runtime/libart^android_x86_x86_64_static_apex31
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/art/libart^android_x86_x86_64_static_apex31.output . $GITHUB_WORKSPACE/artifacts/art/runtime/libart^android_x86_x86_64_static_apex31
 
 echo "building libdex2oatd_static^linux_glibc_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_08.ninja libdex2oatd_static,linux_glibc_x86_64_static
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libdex2oatd_static,linux_glibc_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/art/dex2oat/libdex2oatd_static^linux_glibc_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/art/libdex2oatd_static^linux_glibc_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/art/dex2oat/libdex2oatd_static^linux_glibc_x86_64_static
 
 echo "building libnativeloader^android_x86_64_static_apex31"
-ninja -f $GITHUB_WORKSPACE/steps/build_08.ninja libnativeloader,android_x86_64_static_apex31
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libnativeloader,android_x86_64_static_apex31
 mkdir -p $GITHUB_WORKSPACE/artifacts/art/libnativeloader/libnativeloader^android_x86_64_static_apex31
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/art/libnativeloader^android_x86_64_static_apex31.output . $GITHUB_WORKSPACE/artifacts/art/libnativeloader/libnativeloader^android_x86_64_static_apex31
 
 echo "building libnativeloader^android_x86_x86_64_static_apex31"
-ninja -f $GITHUB_WORKSPACE/steps/build_08.ninja libnativeloader,android_x86_x86_64_static_apex31
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libnativeloader,android_x86_x86_64_static_apex31
 mkdir -p $GITHUB_WORKSPACE/artifacts/art/libnativeloader/libnativeloader^android_x86_x86_64_static_apex31
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/art/libnativeloader^android_x86_x86_64_static_apex31.output . $GITHUB_WORKSPACE/artifacts/art/libnativeloader/libnativeloader^android_x86_x86_64_static_apex31
 
 echo "building libodrstatslog^android_x86_64_static_lto-thin_apex31"
-ninja -f $GITHUB_WORKSPACE/steps/build_08.ninja libodrstatslog,android_x86_64_static_lto-thin_apex31
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libodrstatslog,android_x86_64_static_lto-thin_apex31
 mkdir -p $GITHUB_WORKSPACE/artifacts/art/odrefresh/libodrstatslog^android_x86_64_static_lto-thin_apex31
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/art/libodrstatslog^android_x86_64_static_lto-thin_apex31.output . $GITHUB_WORKSPACE/artifacts/art/odrefresh/libodrstatslog^android_x86_64_static_lto-thin_apex31
 
 echo "building libodrstatslog^android_x86_x86_64_static_lto-thin_apex31"
-ninja -f $GITHUB_WORKSPACE/steps/build_08.ninja libodrstatslog,android_x86_x86_64_static_lto-thin_apex31
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libodrstatslog,android_x86_x86_64_static_lto-thin_apex31
 mkdir -p $GITHUB_WORKSPACE/artifacts/art/odrefresh/libodrstatslog^android_x86_x86_64_static_lto-thin_apex31
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/art/libodrstatslog^android_x86_x86_64_static_lto-thin_apex31.output . $GITHUB_WORKSPACE/artifacts/art/odrefresh/libodrstatslog^android_x86_x86_64_static_lto-thin_apex31
 
 echo "building libprofman_static^linux_glibc_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_08.ninja libprofman_static,linux_glibc_x86_64_static
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libprofman_static,linux_glibc_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/art/profman/libprofman_static^linux_glibc_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/art/libprofman_static^linux_glibc_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/art/profman/libprofman_static^linux_glibc_x86_64_static
 
 echo "building libstatslog_art^android_x86_64_static_lto-thin_apex31"
-ninja -f $GITHUB_WORKSPACE/steps/build_08.ninja libstatslog_art,android_x86_64_static_lto-thin_apex31
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libstatslog_art,android_x86_64_static_lto-thin_apex31
 mkdir -p $GITHUB_WORKSPACE/artifacts/art/runtime/libstatslog_art^android_x86_64_static_lto-thin_apex31
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/art/libstatslog_art^android_x86_64_static_lto-thin_apex31.output . $GITHUB_WORKSPACE/artifacts/art/runtime/libstatslog_art^android_x86_64_static_lto-thin_apex31
 
 echo "building libstatslog_art^android_x86_x86_64_static_lto-thin_apex31"
-ninja -f $GITHUB_WORKSPACE/steps/build_08.ninja libstatslog_art,android_x86_x86_64_static_lto-thin_apex31
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libstatslog_art,android_x86_x86_64_static_lto-thin_apex31
 mkdir -p $GITHUB_WORKSPACE/artifacts/art/runtime/libstatslog_art^android_x86_x86_64_static_lto-thin_apex31
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/art/libstatslog_art^android_x86_x86_64_static_lto-thin_apex31.output . $GITHUB_WORKSPACE/artifacts/art/runtime/libstatslog_art^android_x86_x86_64_static_lto-thin_apex31
 
 echo "building veridex^linux_glibc_x86_64"
-ninja -f $GITHUB_WORKSPACE/steps/build_08.ninja veridex,linux_glibc_x86_64
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja veridex,linux_glibc_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/art/tools/veridex/veridex^linux_glibc_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/art/veridex^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/art/tools/veridex/veridex^linux_glibc_x86_64
 

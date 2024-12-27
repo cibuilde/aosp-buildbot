@@ -4,6 +4,8 @@ df -h
 
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
+ln -sf $GITHUB_WORKSPACE/ndk.ninja .
+ln -sf $GITHUB_WORKSPACE/ninja-ndk .
 ln -sf $GITHUB_WORKSPACE/ninja .
 
 mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86 prebuilts/clang/host/linux-x86
@@ -25,17 +27,17 @@ rsync -a -r $GITHUB_WORKSPACE/artifacts/build/soong/cmd/dep_fixer/dep_fixer^linu
 rsync -a -r $GITHUB_WORKSPACE/artifacts/external/protobuf/aprotoc^linux_glibc_x86_64/ .
 
 echo "building lib_profiler_proto^android_vendor.31_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_08.ninja lib_profiler_proto,android_vendor.31_x86_64_static
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja lib_profiler_proto,android_vendor.31_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/google/camera/common/profiler/lib_profiler_proto^android_vendor.31_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/hardware/google/camera/lib_profiler_proto^android_vendor.31_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/hardware/google/camera/common/profiler/lib_profiler_proto^android_vendor.31_x86_64_static
 
 echo "building lib_profiler_proto^android_vendor.31_x86_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_08.ninja lib_profiler_proto,android_vendor.31_x86_x86_64_static
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja lib_profiler_proto,android_vendor.31_x86_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/google/camera/common/profiler/lib_profiler_proto^android_vendor.31_x86_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/hardware/google/camera/lib_profiler_proto^android_vendor.31_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/hardware/google/camera/common/profiler/lib_profiler_proto^android_vendor.31_x86_x86_64_static
 
 echo "building libapex_update_listener^android_vendor.31_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_08.ninja libapex_update_listener,android_vendor.31_x86_64_static
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libapex_update_listener,android_vendor.31_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/google/camera/common/apex_update_listener/libapex_update_listener^android_vendor.31_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/hardware/google/camera/libapex_update_listener^android_vendor.31_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/hardware/google/camera/common/apex_update_listener/libapex_update_listener^android_vendor.31_x86_64_static
 

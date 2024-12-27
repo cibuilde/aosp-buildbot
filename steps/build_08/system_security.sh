@@ -4,6 +4,8 @@ df -h
 
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
+ln -sf $GITHUB_WORKSPACE/ndk.ninja .
+ln -sf $GITHUB_WORKSPACE/ninja-ndk .
 ln -sf $GITHUB_WORKSPACE/ninja .
 
 mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86 prebuilts/clang/host/linux-x86
@@ -82,52 +84,52 @@ rsync -a -r $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.s
 rsync -a -r $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.maintenance-ndk_platform-source^/ .
 
 echo "building android.security.authorization-ndk_platform^android_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_08.ninja android.security.authorization-ndk_platform,android_x86_64_static
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja android.security.authorization-ndk_platform,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.authorization-ndk_platform^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/system/security/android.security.authorization-ndk_platform^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.authorization-ndk_platform^android_x86_64_static
 
 echo "building android.security.compat-ndk_platform^android_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_08.ninja android.security.compat-ndk_platform,android_x86_64_static
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja android.security.compat-ndk_platform,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.compat-ndk_platform^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/system/security/android.security.compat-ndk_platform^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.compat-ndk_platform^android_x86_64_static
 
 echo "building android.security.maintenance-ndk_platform^android_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_08.ninja android.security.maintenance-ndk_platform,android_x86_64_static
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja android.security.maintenance-ndk_platform,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.maintenance-ndk_platform^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/system/security/android.security.maintenance-ndk_platform^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.maintenance-ndk_platform^android_x86_64_static
 
 echo "building libkeystore2_aaid_bindgen^android_x86_64_source"
-ninja -f $GITHUB_WORKSPACE/steps/build_08.ninja libkeystore2_aaid_bindgen,android_x86_64_source
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libkeystore2_aaid_bindgen,android_x86_64_source
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aaid/libkeystore2_aaid_bindgen^android_x86_64_source
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/system/security/libkeystore2_aaid_bindgen^android_x86_64_source.output . $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aaid/libkeystore2_aaid_bindgen^android_x86_64_source
 
 echo "building libkeystore2_apc_compat_bindgen^android_x86_64_source"
-ninja -f $GITHUB_WORKSPACE/steps/build_08.ninja libkeystore2_apc_compat_bindgen,android_x86_64_source
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libkeystore2_apc_compat_bindgen,android_x86_64_source
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/security/keystore2/apc_compat/libkeystore2_apc_compat_bindgen^android_x86_64_source
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/system/security/libkeystore2_apc_compat_bindgen^android_x86_64_source.output . $GITHUB_WORKSPACE/artifacts/system/security/keystore2/apc_compat/libkeystore2_apc_compat_bindgen^android_x86_64_source
 
 echo "building libkeystore2_crypto_bindgen^android_x86_64_source"
-ninja -f $GITHUB_WORKSPACE/steps/build_08.ninja libkeystore2_crypto_bindgen,android_x86_64_source
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libkeystore2_crypto_bindgen,android_x86_64_source
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/security/keystore2/src/crypto/libkeystore2_crypto_bindgen^android_x86_64_source
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/system/security/libkeystore2_crypto_bindgen^android_x86_64_source.output . $GITHUB_WORKSPACE/artifacts/system/security/keystore2/src/crypto/libkeystore2_crypto_bindgen^android_x86_64_source
 
 echo "building libkeystore2_system_property_bindgen^android_x86_64_source"
-ninja -f $GITHUB_WORKSPACE/steps/build_08.ninja libkeystore2_system_property_bindgen,android_x86_64_source
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libkeystore2_system_property_bindgen,android_x86_64_source
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/security/keystore2/system_property/libkeystore2_system_property_bindgen^android_x86_64_source
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/system/security/libkeystore2_system_property_bindgen^android_x86_64_source.output . $GITHUB_WORKSPACE/artifacts/system/security/keystore2/system_property/libkeystore2_system_property_bindgen^android_x86_64_source
 
 echo "building libkeystore2_vintf_bindgen^android_x86_64_source"
-ninja -f $GITHUB_WORKSPACE/steps/build_08.ninja libkeystore2_vintf_bindgen,android_x86_64_source
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libkeystore2_vintf_bindgen,android_x86_64_source
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/security/keystore2/src/vintf/libkeystore2_vintf_bindgen^android_x86_64_source
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/system/security/libkeystore2_vintf_bindgen^android_x86_64_source.output . $GITHUB_WORKSPACE/artifacts/system/security/keystore2/src/vintf/libkeystore2_vintf_bindgen^android_x86_64_source
 
 echo "building libkm_compat^android_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_08.ninja libkm_compat,android_x86_64_static
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libkm_compat,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/security/keystore2/src/km_compat/libkm_compat^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/system/security/libkm_compat^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/security/keystore2/src/km_compat/libkm_compat^android_x86_64_static
 
 echo "building libkm_compat_service^android_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_08.ninja libkm_compat_service,android_x86_64_static
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libkm_compat_service,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/security/keystore2/src/km_compat/libkm_compat_service^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/system/security/libkm_compat_service^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/security/keystore2/src/km_compat/libkm_compat_service^android_x86_64_static
 

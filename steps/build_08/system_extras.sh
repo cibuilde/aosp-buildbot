@@ -4,6 +4,8 @@ df -h
 
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
+ln -sf $GITHUB_WORKSPACE/ndk.ninja .
+ln -sf $GITHUB_WORKSPACE/ninja-ndk .
 ln -sf $GITHUB_WORKSPACE/ninja .
 
 mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86 prebuilts/clang/host/linux-x86
@@ -70,22 +72,22 @@ rsync -a -r $GITHUB_WORKSPACE/artifacts/system/libbase/libbase^linux_glibc_x86_6
 rsync -a -r $GITHUB_WORKSPACE/artifacts/system/logging/liblog/liblog^linux_glibc_x86_64_shared/ .
 
 echo "building libprofcollect_libbase^android_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_08.ninja libprofcollect_libbase,android_x86_64_static
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libprofcollect_libbase,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/extras/profcollectd/libprofcollectd/bindings/libbase/libprofcollect_libbase^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/system/extras/libprofcollect_libbase^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/extras/profcollectd/libprofcollectd/bindings/libbase/libprofcollect_libbase^android_x86_64_static
 
 echo "building libprofcollect_libflags^android_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_08.ninja libprofcollect_libflags,android_x86_64_static
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libprofcollect_libflags,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/extras/profcollectd/libprofcollectd/bindings/libflags/libprofcollect_libflags^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/system/extras/libprofcollect_libflags^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/extras/profcollectd/libprofcollectd/bindings/libflags/libprofcollect_libflags^android_x86_64_static
 
 echo "building libsimpleperf_profcollect_bindgen^android_x86_64_source"
-ninja -f $GITHUB_WORKSPACE/steps/build_08.ninja libsimpleperf_profcollect_bindgen,android_x86_64_source
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libsimpleperf_profcollect_bindgen,android_x86_64_source
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/extras/simpleperf/libsimpleperf_profcollect_bindgen^android_x86_64_source
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/system/extras/libsimpleperf_profcollect_bindgen^android_x86_64_source.output . $GITHUB_WORKSPACE/artifacts/system/extras/simpleperf/libsimpleperf_profcollect_bindgen^android_x86_64_source
 
 echo "building lpmake^linux_glibc_x86_64"
-ninja -f $GITHUB_WORKSPACE/steps/build_08.ninja lpmake,linux_glibc_x86_64
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja lpmake,linux_glibc_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/extras/partition_tools/lpmake^linux_glibc_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/system/extras/lpmake^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/extras/partition_tools/lpmake^linux_glibc_x86_64
 

@@ -4,6 +4,8 @@ df -h
 
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
+ln -sf $GITHUB_WORKSPACE/ndk.ninja .
+ln -sf $GITHUB_WORKSPACE/ninja-ndk .
 ln -sf $GITHUB_WORKSPACE/ninja .
 
 mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86 prebuilts/clang/host/linux-x86
@@ -23,12 +25,12 @@ rsync -a -r $GITHUB_WORKSPACE/artifacts/system/logging/liblog/liblog^linux_glibc
 rsync -a -r $GITHUB_WORKSPACE/artifacts/system/tools/sysprop/sysprop_java^linux_glibc_x86_64/ .
 
 echo "building PlatformProperties_java_gen^"
-ninja -f $GITHUB_WORKSPACE/steps/build_08.ninja PlatformProperties_java_gen,
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja PlatformProperties_java_gen,
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/libsysprop/srcs/PlatformProperties_java_gen^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/system/libsysprop/PlatformProperties_java_gen^.output . $GITHUB_WORKSPACE/artifacts/system/libsysprop/srcs/PlatformProperties_java_gen^
 
 echo "building PlatformProperties_java_gen_public^"
-ninja -f $GITHUB_WORKSPACE/steps/build_08.ninja PlatformProperties_java_gen_public,
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja PlatformProperties_java_gen_public,
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/libsysprop/srcs/PlatformProperties_java_gen_public^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/system/libsysprop/PlatformProperties_java_gen_public^.output . $GITHUB_WORKSPACE/artifacts/system/libsysprop/srcs/PlatformProperties_java_gen_public^
 

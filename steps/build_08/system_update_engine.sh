@@ -4,6 +4,8 @@ df -h
 
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
+ln -sf $GITHUB_WORKSPACE/ndk.ninja .
+ln -sf $GITHUB_WORKSPACE/ninja-ndk .
 ln -sf $GITHUB_WORKSPACE/ninja .
 
 mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86 prebuilts/clang/host/linux-x86
@@ -64,17 +66,17 @@ rsync -a -r $GITHUB_WORKSPACE/artifacts/system/update_engine/update_metadata-pro
 rsync -a -r $GITHUB_WORKSPACE/artifacts/system/update_engine/update_metadata-protos^android_x86_64_static/ .
 
 echo "building libpayload_consumer^android_recovery_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_08.ninja libpayload_consumer,android_recovery_x86_64_static
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libpayload_consumer,android_recovery_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/update_engine/libpayload_consumer^android_recovery_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/system/update_engine/libpayload_consumer^android_recovery_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/update_engine/libpayload_consumer^android_recovery_x86_64_static
 
 echo "building libpayload_consumer^android_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_08.ninja libpayload_consumer,android_x86_64_static
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libpayload_consumer,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/update_engine/libpayload_consumer^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/system/update_engine/libpayload_consumer^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/update_engine/libpayload_consumer^android_x86_64_static
 
 echo "building libupdate_engine_boot_control^android_recovery_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_08.ninja libupdate_engine_boot_control,android_recovery_x86_64_static
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libupdate_engine_boot_control,android_recovery_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/update_engine/libupdate_engine_boot_control^android_recovery_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/system/update_engine/libupdate_engine_boot_control^android_recovery_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/update_engine/libupdate_engine_boot_control^android_recovery_x86_64_static
 

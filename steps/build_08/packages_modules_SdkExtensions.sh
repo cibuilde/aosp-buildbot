@@ -4,6 +4,8 @@ df -h
 
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
+ln -sf $GITHUB_WORKSPACE/ndk.ninja .
+ln -sf $GITHUB_WORKSPACE/ninja-ndk .
 ln -sf $GITHUB_WORKSPACE/ninja .
 
 mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86 prebuilts/clang/host/linux-x86
@@ -55,17 +57,17 @@ rsync -a -r $GITHUB_WORKSPACE/artifacts/system/libbase/libbase^android_x86_64_st
 rsync -a -r $GITHUB_WORKSPACE/artifacts/system/logging/liblog/liblog^android_x86_64_shared_current/ .
 
 echo "building derive_classpath^android_x86_64_apex30"
-ninja -f $GITHUB_WORKSPACE/steps/build_08.ninja derive_classpath,android_x86_64_apex30
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja derive_classpath,android_x86_64_apex30
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/SdkExtensions/derive_classpath/derive_classpath^android_x86_64_apex30
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/packages/modules/SdkExtensions/derive_classpath^android_x86_64_apex30.output . $GITHUB_WORKSPACE/artifacts/packages/modules/SdkExtensions/derive_classpath/derive_classpath^android_x86_64_apex30
 
 echo "building derive_sdk^android_x86_64_apex30"
-ninja -f $GITHUB_WORKSPACE/steps/build_08.ninja derive_sdk,android_x86_64_apex30
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja derive_sdk,android_x86_64_apex30
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/SdkExtensions/derive_sdk/derive_sdk^android_x86_64_apex30
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/packages/modules/SdkExtensions/derive_sdk^android_x86_64_apex30.output . $GITHUB_WORKSPACE/artifacts/packages/modules/SdkExtensions/derive_sdk/derive_sdk^android_x86_64_apex30
 
 echo "building extensions_db.pb^"
-ninja -f $GITHUB_WORKSPACE/steps/build_08.ninja extensions_db.pb,
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja extensions_db.pb,
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/SdkExtensions/gen_sdk/extensions_db.pb^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/packages/modules/SdkExtensions/extensions_db.pb^.output . $GITHUB_WORKSPACE/artifacts/packages/modules/SdkExtensions/gen_sdk/extensions_db.pb^
 

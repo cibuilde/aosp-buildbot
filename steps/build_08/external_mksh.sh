@@ -4,6 +4,8 @@ df -h
 
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
+ln -sf $GITHUB_WORKSPACE/ndk.ninja .
+ln -sf $GITHUB_WORKSPACE/ninja-ndk .
 ln -sf $GITHUB_WORKSPACE/ninja .
 
 mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86 prebuilts/clang/host/linux-x86
@@ -34,17 +36,17 @@ rsync -a -r $GITHUB_WORKSPACE/artifacts/bionic/libc/libc^android_vendor.31_x86_6
 rsync -a -r $GITHUB_WORKSPACE/artifacts/bionic/libc/libc^android_x86_64_shared_current/ .
 
 echo "building sh^android_recovery_x86_64"
-ninja -f $GITHUB_WORKSPACE/steps/build_08.ninja sh,android_recovery_x86_64
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja sh,android_recovery_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/mksh/sh^android_recovery_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/external/mksh/sh^android_recovery_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/mksh/sh^android_recovery_x86_64
 
 echo "building sh^android_x86_64"
-ninja -f $GITHUB_WORKSPACE/steps/build_08.ninja sh,android_x86_64
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja sh,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/mksh/sh^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/external/mksh/sh^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/mksh/sh^android_x86_64
 
 echo "building sh_vendor^android_vendor.31_x86_64"
-ninja -f $GITHUB_WORKSPACE/steps/build_08.ninja sh_vendor,android_vendor.31_x86_64
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja sh_vendor,android_vendor.31_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/mksh/sh_vendor^android_vendor.31_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/external/mksh/sh_vendor^android_vendor.31_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/mksh/sh_vendor^android_vendor.31_x86_64
 

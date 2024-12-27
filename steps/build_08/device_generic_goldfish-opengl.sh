@@ -4,6 +4,8 @@ df -h
 
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
+ln -sf $GITHUB_WORKSPACE/ndk.ninja .
+ln -sf $GITHUB_WORKSPACE/ninja-ndk .
 ln -sf $GITHUB_WORKSPACE/ninja .
 
 mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86 prebuilts/clang/host/linux-x86
@@ -23,42 +25,42 @@ rsync -a -r $GITHUB_WORKSPACE/artifacts/bionic/libc/libc^android_vendor.31_x86_6
 rsync -a -r $GITHUB_WORKSPACE/artifacts/bionic/libc/libc^android_vendor.31_x86_x86_64_shared/ .
 
 echo "building libGoldfishAddressSpace^android_vendor.31_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_08.ninja libGoldfishAddressSpace,android_vendor.31_x86_64_static
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libGoldfishAddressSpace,android_vendor.31_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/device/generic/goldfish-opengl/shared/GoldfishAddressSpace/libGoldfishAddressSpace^android_vendor.31_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/device/generic/goldfish-opengl/libGoldfishAddressSpace^android_vendor.31_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/device/generic/goldfish-opengl/shared/GoldfishAddressSpace/libGoldfishAddressSpace^android_vendor.31_x86_64_static
 
 echo "building libGoldfishAddressSpace^android_vendor.31_x86_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_08.ninja libGoldfishAddressSpace,android_vendor.31_x86_x86_64_static
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libGoldfishAddressSpace,android_vendor.31_x86_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/device/generic/goldfish-opengl/shared/GoldfishAddressSpace/libGoldfishAddressSpace^android_vendor.31_x86_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/device/generic/goldfish-opengl/libGoldfishAddressSpace^android_vendor.31_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/device/generic/goldfish-opengl/shared/GoldfishAddressSpace/libGoldfishAddressSpace^android_vendor.31_x86_x86_64_static
 
 echo "building libplatform^android_vendor.31_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_08.ninja libplatform,android_vendor.31_x86_64_static
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libplatform,android_vendor.31_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/device/generic/goldfish-opengl/platform/libplatform^android_vendor.31_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/device/generic/goldfish-opengl/libplatform^android_vendor.31_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/device/generic/goldfish-opengl/platform/libplatform^android_vendor.31_x86_64_static
 
 echo "building libplatform^android_vendor.31_x86_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_08.ninja libplatform,android_vendor.31_x86_x86_64_static
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libplatform,android_vendor.31_x86_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/device/generic/goldfish-opengl/platform/libplatform^android_vendor.31_x86_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/device/generic/goldfish-opengl/libplatform^android_vendor.31_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/device/generic/goldfish-opengl/platform/libplatform^android_vendor.31_x86_x86_64_static
 
 echo "building libqemupipe.ranchu^android_vendor.31_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_08.ninja libqemupipe.ranchu,android_vendor.31_x86_64_static
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libqemupipe.ranchu,android_vendor.31_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/device/generic/goldfish-opengl/shared/qemupipe/libqemupipe.ranchu^android_vendor.31_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/device/generic/goldfish-opengl/libqemupipe.ranchu^android_vendor.31_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/device/generic/goldfish-opengl/shared/qemupipe/libqemupipe.ranchu^android_vendor.31_x86_64_static
 
 echo "building libqemupipe.ranchu^android_vendor.31_x86_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_08.ninja libqemupipe.ranchu,android_vendor.31_x86_x86_64_static
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libqemupipe.ranchu,android_vendor.31_x86_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/device/generic/goldfish-opengl/shared/qemupipe/libqemupipe.ranchu^android_vendor.31_x86_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/device/generic/goldfish-opengl/libqemupipe.ranchu^android_vendor.31_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/device/generic/goldfish-opengl/shared/qemupipe/libqemupipe.ranchu^android_vendor.31_x86_x86_64_static
 
 echo "building libringbuffer^android_vendor.31_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_08.ninja libringbuffer,android_vendor.31_x86_64_static
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libringbuffer,android_vendor.31_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/device/generic/goldfish-opengl/android-emu/libringbuffer^android_vendor.31_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/device/generic/goldfish-opengl/libringbuffer^android_vendor.31_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/device/generic/goldfish-opengl/android-emu/libringbuffer^android_vendor.31_x86_64_static
 
 echo "building libringbuffer^android_vendor.31_x86_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_08.ninja libringbuffer,android_vendor.31_x86_x86_64_static
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libringbuffer,android_vendor.31_x86_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/device/generic/goldfish-opengl/android-emu/libringbuffer^android_vendor.31_x86_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/device/generic/goldfish-opengl/libringbuffer^android_vendor.31_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/device/generic/goldfish-opengl/android-emu/libringbuffer^android_vendor.31_x86_x86_64_static
 

@@ -1,4 +1,5 @@
 include ninja/global.ninja
+include ndk.ninja
 include ninja/singleton.ninja
 
 include ninja/art/build/apex/art-linker-config^android_x86_64.ninja
