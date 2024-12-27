@@ -4,6 +4,9 @@ df -h
 
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
+mkdir -p out/soong/.minibootstrap && ln -sf $GITHUB_WORKSPACE/bpglob out/soong/.minibootstrap/bpglob
+ln -sf $GITHUB_WORKSPACE/ndk.ninja .
+ln -sf $GITHUB_WORKSPACE/ninja-ndk .
 ln -sf $GITHUB_WORKSPACE/ninja .
 
 mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86 prebuilts/clang/host/linux-x86
@@ -30,22 +33,22 @@ rsync -a -r $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/lib/ext2fs/libext2fs^
 rsync -a -r $GITHUB_WORKSPACE/artifacts/external/libcxx/libc++^linux_glibc_x86_64_shared/ .
 
 echo "building libext2_com_err^linux_glibc_x86_64_shared"
-ninja -f $GITHUB_WORKSPACE/steps/build_04.ninja libext2_com_err,linux_glibc_x86_64_shared
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libext2_com_err,linux_glibc_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/lib/et/libext2_com_err^linux_glibc_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/e2fsprogs/libext2_com_err^linux_glibc_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/lib/et/libext2_com_err^linux_glibc_x86_64_shared
 
 echo "building libext2_e2p^linux_glibc_x86_64_shared"
-ninja -f $GITHUB_WORKSPACE/steps/build_04.ninja libext2_e2p,linux_glibc_x86_64_shared
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libext2_e2p,linux_glibc_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/lib/e2p/libext2_e2p^linux_glibc_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/e2fsprogs/libext2_e2p^linux_glibc_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/lib/e2p/libext2_e2p^linux_glibc_x86_64_shared
 
 echo "building libext2_uuid^linux_glibc_x86_64_shared"
-ninja -f $GITHUB_WORKSPACE/steps/build_04.ninja libext2_uuid,linux_glibc_x86_64_shared
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libext2_uuid,linux_glibc_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/lib/uuid/libext2_uuid^linux_glibc_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/e2fsprogs/libext2_uuid^linux_glibc_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/lib/uuid/libext2_uuid^linux_glibc_x86_64_shared
 
 echo "building resize2fs^linux_glibc_x86_64"
-ninja -f $GITHUB_WORKSPACE/steps/build_04.ninja resize2fs,linux_glibc_x86_64
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja resize2fs,linux_glibc_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/resize/resize2fs^linux_glibc_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/e2fsprogs/resize2fs^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/resize/resize2fs^linux_glibc_x86_64
 

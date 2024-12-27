@@ -4,6 +4,9 @@ df -h
 
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
+mkdir -p out/soong/.minibootstrap && ln -sf $GITHUB_WORKSPACE/bpglob out/soong/.minibootstrap/bpglob
+ln -sf $GITHUB_WORKSPACE/ndk.ninja .
+ln -sf $GITHUB_WORKSPACE/ninja-ndk .
 ln -sf $GITHUB_WORKSPACE/ninja .
 
 mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86 prebuilts/clang/host/linux-x86
@@ -42,6 +45,7 @@ clone_depth_platform system/unwinding
 rsync -a -r $GITHUB_WORKSPACE/artifacts/build/soong/cmd/dep_fixer/dep_fixer^linux_glibc_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/artifacts/build/soong/cc/libbuildversion/libbuildversion^linux_glibc_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/artifacts/build/soong/cmd/merge_zips/merge_zips^linux_glibc_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/artifacts/build/soong/cmd/sbox/sbox^linux_glibc_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/artifacts/build/soong/symbol_inject/cmd/symbol_inject^linux_glibc_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/artifacts/external/expat/libexpat^linux_glibc_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/artifacts/external/libcxx/libc++^linux_glibc_x86_64_shared/ .
@@ -58,59 +62,69 @@ rsync -a -r $GITHUB_WORKSPACE/artifacts/system/libziparchive/libziparchive^linux
 rsync -a -r $GITHUB_WORKSPACE/artifacts/system/logging/liblog/liblog^linux_glibc_x86_64_static/ .
 
 echo "building aapt^linux_glibc_x86_64"
-ninja -f $GITHUB_WORKSPACE/steps/build_04.ninja aapt,linux_glibc_x86_64
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja aapt,linux_glibc_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/tools/aapt/aapt^linux_glibc_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/base/aapt^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/tools/aapt/aapt^linux_glibc_x86_64
 
+echo "building android.mime.types.minimized^android_common"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.mime.types.minimized,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/mime/android.mime.types.minimized^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/base/android.mime.types.minimized^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/mime/android.mime.types.minimized^android_common
+
 echo "building libaapt2^linux_glibc_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_04.ninja libaapt2,linux_glibc_x86_64_static
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libaapt2,linux_glibc_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/tools/aapt2/libaapt2^linux_glibc_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/base/libaapt2^linux_glibc_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/tools/aapt2/libaapt2^linux_glibc_x86_64_static
 
 echo "building libidmap2_protos^android_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_04.ninja libidmap2_protos,android_x86_64_static
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libidmap2_protos,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/cmds/idmap2/libidmap2_protos^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/base/libidmap2_protos^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/cmds/idmap2/libidmap2_protos^android_x86_64_static
 
 echo "building libplatformprotos^android_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_04.ninja libplatformprotos,android_x86_64_static
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libplatformprotos,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/libplatformprotos^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/base/libplatformprotos^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/libplatformprotos^android_x86_64_static
 
 echo "building libplatformprotos^android_x86_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_04.ninja libplatformprotos,android_x86_x86_64_static
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libplatformprotos,android_x86_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/libplatformprotos^android_x86_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/base/libplatformprotos^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/libplatformprotos^android_x86_x86_64_static
 
 echo "building libplatformprotos^linux_glibc_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_04.ninja libplatformprotos,linux_glibc_x86_64_static
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libplatformprotos,linux_glibc_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/libplatformprotos^linux_glibc_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/base/libplatformprotos^linux_glibc_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/libplatformprotos^linux_glibc_x86_64_static
 
 echo "building protoc-gen-cppstream^linux_glibc_x86_64"
-ninja -f $GITHUB_WORKSPACE/steps/build_04.ninja protoc-gen-cppstream,linux_glibc_x86_64
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja protoc-gen-cppstream,linux_glibc_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/tools/streaming_proto/protoc-gen-cppstream^linux_glibc_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/base/protoc-gen-cppstream^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/tools/streaming_proto/protoc-gen-cppstream^linux_glibc_x86_64
 
 echo "building protoc-gen-javastream^linux_glibc_x86_64"
-ninja -f $GITHUB_WORKSPACE/steps/build_04.ninja protoc-gen-javastream,linux_glibc_x86_64
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja protoc-gen-javastream,linux_glibc_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/tools/streaming_proto/protoc-gen-javastream^linux_glibc_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/base/protoc-gen-javastream^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/tools/streaming_proto/protoc-gen-javastream^linux_glibc_x86_64
 
 echo "building service.incremental.proto^android_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_04.ninja service.incremental.proto,android_x86_64_static
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja service.incremental.proto,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/services/incremental/service.incremental.proto^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/base/service.incremental.proto^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/services/incremental/service.incremental.proto^android_x86_64_static
 
 echo "building service.incremental.proto^android_x86_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_04.ninja service.incremental.proto,android_x86_x86_64_static
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja service.incremental.proto,android_x86_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/services/incremental/service.incremental.proto^android_x86_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/base/service.incremental.proto^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/services/incremental/service.incremental.proto^android_x86_x86_64_static
 
 echo "building services.speech^android_common"
-ninja -f $GITHUB_WORKSPACE/steps/build_04.ninja services.speech,android_common
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja services.speech,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/services/core/java/com/android/server/speech/services.speech^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/base/services.speech^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/services/core/java/com/android/server/speech/services.speech^android_common
+
+echo "building vendor.mime.types.minimized^android_common"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja vendor.mime.types.minimized,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/mime/vendor.mime.types.minimized^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/base/vendor.mime.types.minimized^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/mime/vendor.mime.types.minimized^android_common
 
 rm -rf out
 

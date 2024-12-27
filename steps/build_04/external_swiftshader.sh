@@ -4,6 +4,9 @@ df -h
 
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
+mkdir -p out/soong/.minibootstrap && ln -sf $GITHUB_WORKSPACE/bpglob out/soong/.minibootstrap/bpglob
+ln -sf $GITHUB_WORKSPACE/ndk.ninja .
+ln -sf $GITHUB_WORKSPACE/ninja-ndk .
 ln -sf $GITHUB_WORKSPACE/ninja .
 
 mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86 prebuilts/clang/host/linux-x86
@@ -14,22 +17,22 @@ clone_depth_platform external/swiftshader
 rsync -a -r $GITHUB_WORKSPACE/artifacts/build/soong/cmd/sbox/sbox^linux_glibc_x86_64/ .
 
 echo "building commit_header^"
-ninja -f $GITHUB_WORKSPACE/steps/build_04.ninja commit_header,
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja commit_header,
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/swiftshader/src/commit_header^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/swiftshader/commit_header^.output . $GITHUB_WORKSPACE/artifacts/external/swiftshader/src/commit_header^
 
 echo "building swiftshader_spvtools_generate_grammar_tables^"
-ninja -f $GITHUB_WORKSPACE/steps/build_04.ninja swiftshader_spvtools_generate_grammar_tables,
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja swiftshader_spvtools_generate_grammar_tables,
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/swiftshader/third_party/SPIRV-Tools/swiftshader_spvtools_generate_grammar_tables^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/swiftshader/swiftshader_spvtools_generate_grammar_tables^.output . $GITHUB_WORKSPACE/artifacts/external/swiftshader/third_party/SPIRV-Tools/swiftshader_spvtools_generate_grammar_tables^
 
 echo "building swiftshader_spvtools_generate_registry_tables^"
-ninja -f $GITHUB_WORKSPACE/steps/build_04.ninja swiftshader_spvtools_generate_registry_tables,
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja swiftshader_spvtools_generate_registry_tables,
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/swiftshader/third_party/SPIRV-Tools/swiftshader_spvtools_generate_registry_tables^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/swiftshader/swiftshader_spvtools_generate_registry_tables^.output . $GITHUB_WORKSPACE/artifacts/external/swiftshader/third_party/SPIRV-Tools/swiftshader_spvtools_generate_registry_tables^
 
 echo "building swiftshader_spvtools_update_build_version^"
-ninja -f $GITHUB_WORKSPACE/steps/build_04.ninja swiftshader_spvtools_update_build_version,
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja swiftshader_spvtools_update_build_version,
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/swiftshader/third_party/SPIRV-Tools/swiftshader_spvtools_update_build_version^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/swiftshader/swiftshader_spvtools_update_build_version^.output . $GITHUB_WORKSPACE/artifacts/external/swiftshader/third_party/SPIRV-Tools/swiftshader_spvtools_update_build_version^
 

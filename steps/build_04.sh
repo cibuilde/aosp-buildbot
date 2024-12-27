@@ -1,6 +1,20 @@
 set -e
 
+
+#sudo apt purge -y azure-cli microsoft-edge-stable google-cloud-cli dotnet-sdk-7.0 dotnet-sdk-8.0 google-chrome-stable dotnet-sdk-6.0 firefox
+#sudo apt autoremove -y
+sudo rm -rf /usr/local/.ghcup
+sudo rm -rf /usr/local/lib/android/sdk
+sudo rm -rf /usr/local/lib/node_modules
+sudo rm -rf /usr/local/share/powershell
+sudo rm -rf /usr/local/share/chromium
+sudo rm -rf /usr/local/share/swift
+sudo rm -rf /opt/hostedtoolcache
+#sudo dpkg-query -W -f='${Installed-Size;8}  ${Package}\n' | sort -n
+df -h
+
 source $GITHUB_WORKSPACE/envsetup.sh
+tar xf $GITHUB_WORKSPACE/ninja-ndk.tar.zst
 tar xf $GITHUB_WORKSPACE/ninja.tar.zst
 
 clone_sparse prebuilts/clang/host/linux-x86 clang-r416183b1 clang-r416183b soong
@@ -213,7 +227,84 @@ tar xf $GITHUB_WORKSPACE/system_tools_hidl.tar.zst -C $GITHUB_WORKSPACE/artifact
 
 export OUT_DIR=out
 
+time source steps/build_04/art.sh
+time source steps/build_04/bionic.sh
+time source steps/build_04/build_blueprint.sh
+time source steps/build_04/build_make.sh
+time source steps/build_04/build_soong.sh
+time source steps/build_04/development.sh
+time source steps/build_04/device_generic_vulkan-cereal.sh
+time source steps/build_04/device_google_cuttlefish.sh
+time source steps/build_04/external_angle.sh
+time source steps/build_04/external_bc.sh
+time source steps/build_04/external_boringssl.sh
+time source steps/build_04/external_clang.sh
+time source steps/build_04/external_crosvm.sh
+time source steps/build_04/external_dagger2.sh
+time source steps/build_04/external_e2fsprogs.sh
+time source steps/build_04/external_error_prone.sh
+time source steps/build_04/external_f2fs-tools.sh
+time source steps/build_04/external_firebase-messaging.sh
+time source steps/build_04/external_flatbuffers.sh
+time source steps/build_04/external_grpc-grpc.sh
+time source steps/build_04/external_guice.sh
+time source steps/build_04/external_icing.sh
+time source steps/build_04/external_icu.sh
+time source steps/build_04/external_iptables.sh
+time source steps/build_04/external_iw.sh
+time source steps/build_04/external_jarjar.sh
+time source steps/build_04/external_jsoncpp.sh
+time source steps/build_04/external_kmod.sh
+time source steps/build_04/external_kotlinc.sh
+time source steps/build_04/external_kotlinx.metadata.sh
+time source steps/build_04/external_libcap.sh
+time source steps/build_04/external_libffi.sh
+time source steps/build_04/external_llvm.sh
+time source steps/build_04/external_mime-support.sh
+time source steps/build_04/external_minijail.sh
+time source steps/build_04/external_one-true-awk.sh
+time source steps/build_04/external_perfetto.sh
+time source steps/build_04/external_protobuf.sh
+time source steps/build_04/external_python_cpython2.sh
+time source steps/build_04/external_rust_crates_bindgen.sh
+time source steps/build_04/external_rust_crates_clang-sys.sh
+time source steps/build_04/external_rust_crates_proc-macro-error-attr.sh
+time source steps/build_04/external_rust_crates_proc-macro-nested.sh
+time source steps/build_04/external_rust_crates_protobuf.sh
+time source steps/build_04/external_rust_crates_syn.sh
+time source steps/build_04/external_selinux.sh
+time source steps/build_04/external_swiftshader.sh
+time source steps/build_04/external_testng.sh
+time source steps/build_04/external_wayland.sh
+time source steps/build_04/external_zxing.sh
+time source steps/build_04/frameworks_base.sh
+time source steps/build_04/frameworks_native.sh
+time source steps/build_04/frameworks_proto_logging.sh
+time source steps/build_04/frameworks_rs.sh
+time source steps/build_04/hardware_google_camera.sh
+time source steps/build_04/packages_modules_DnsResolver.sh
+time source steps/build_04/packages_modules_StatsD.sh
+time source steps/build_04/packages_modules_Virtualization.sh
+time source steps/build_04/packages_modules_adb.sh
+time source steps/build_04/packages_modules_common.sh
+time source steps/build_04/packages_services_Car.sh
+time source steps/build_04/prebuilts_gradle-plugin.sh
+time source steps/build_04/prebuilts_manifest-merger.sh
+time source steps/build_04/prebuilts_misc.sh
+time source steps/build_04/prebuilts_r8.sh
+time source steps/build_04/prebuilts_rust.sh
+time source steps/build_04/prebuilts_sdk.sh
+time source steps/build_04/prebuilts_tools.sh
+time source steps/build_04/system_apex.sh
+time source steps/build_04/system_bt.sh
+time source steps/build_04/system_core.sh
+time source steps/build_04/system_extras.sh
+time source steps/build_04/system_logging.sh
+time source steps/build_04/system_security.sh
 time source steps/build_04/system_sepolicy.sh
+time source steps/build_04/system_tools_aidl.sh
+time source steps/build_04/system_tools_hidl.sh
+time source steps/build_04/system_update_engine.sh
 
 if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_clang_host_linux-x86.tar.zst" ]; then
   echo "Compressing prebuilts/clang/host/linux-x86 -> prebuilts_clang_host_linux-x86.tar.zst"

@@ -4,6 +4,9 @@ df -h
 
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
+mkdir -p out/soong/.minibootstrap && ln -sf $GITHUB_WORKSPACE/bpglob out/soong/.minibootstrap/bpglob
+ln -sf $GITHUB_WORKSPACE/ndk.ninja .
+ln -sf $GITHUB_WORKSPACE/ninja-ndk .
 ln -sf $GITHUB_WORKSPACE/ninja .
 
 mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86 prebuilts/clang/host/linux-x86
@@ -53,12 +56,12 @@ rsync -a -r $GITHUB_WORKSPACE/artifacts/system/logging/liblog/liblog^linux_glibc
 rsync -a -r $GITHUB_WORKSPACE/artifacts/system/logging/liblog/liblog^linux_glibc_x86_static/ .
 
 echo "building fec^linux_glibc_x86"
-ninja -f $GITHUB_WORKSPACE/steps/build_04.ninja fec,linux_glibc_x86
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja fec,linux_glibc_x86
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/extras/verity/fec/fec^linux_glibc_x86
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/extras/fec^linux_glibc_x86.output . $GITHUB_WORKSPACE/artifacts/system/extras/verity/fec/fec^linux_glibc_x86
 
 echo "building fec^linux_glibc_x86_64"
-ninja -f $GITHUB_WORKSPACE/steps/build_04.ninja fec,linux_glibc_x86_64
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja fec,linux_glibc_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/extras/verity/fec/fec^linux_glibc_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/extras/fec^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/extras/verity/fec/fec^linux_glibc_x86_64
 

@@ -4,6 +4,9 @@ df -h
 
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
+mkdir -p out/soong/.minibootstrap && ln -sf $GITHUB_WORKSPACE/bpglob out/soong/.minibootstrap/bpglob
+ln -sf $GITHUB_WORKSPACE/ndk.ninja .
+ln -sf $GITHUB_WORKSPACE/ninja-ndk .
 ln -sf $GITHUB_WORKSPACE/ninja .
 
 mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86 prebuilts/clang/host/linux-x86
@@ -21,7 +24,7 @@ rsync -a -r $GITHUB_WORKSPACE/artifacts/external/rust/crates/quote/libquote^linu
 rsync -a -r $GITHUB_WORKSPACE/artifacts/external/rust/crates/unicode-xid/libunicode_xid^linux_glibc_x86_64_rlib_rlib-std/ .
 
 echo "building libproc_macro_error_attr^linux_glibc_x86_64"
-ninja -f $GITHUB_WORKSPACE/steps/build_04.ninja libproc_macro_error_attr,linux_glibc_x86_64
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libproc_macro_error_attr,linux_glibc_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/rust/crates/proc-macro-error-attr/libproc_macro_error_attr^linux_glibc_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/rust/crates/proc-macro-error-attr/libproc_macro_error_attr^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/rust/crates/proc-macro-error-attr/libproc_macro_error_attr^linux_glibc_x86_64
 

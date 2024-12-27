@@ -4,6 +4,9 @@ df -h
 
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
+mkdir -p out/soong/.minibootstrap && ln -sf $GITHUB_WORKSPACE/bpglob out/soong/.minibootstrap/bpglob
+ln -sf $GITHUB_WORKSPACE/ndk.ninja .
+ln -sf $GITHUB_WORKSPACE/ninja-ndk .
 ln -sf $GITHUB_WORKSPACE/ninja .
 
 mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86 prebuilts/clang/host/linux-x86
@@ -38,37 +41,37 @@ rsync -a -r $GITHUB_WORKSPACE/artifacts/build/soong/zip/soong-zip^linux_glibc_x8
 rsync -a -r $GITHUB_WORKSPACE/artifacts/external/protobuf/aprotoc^linux_glibc_x86_64/ .
 
 echo "building lib_linker_config_proto_lite^android_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_04.ninja lib_linker_config_proto_lite,android_x86_64_static
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja lib_linker_config_proto_lite,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/build/soong/linkerconfig/proto/lib_linker_config_proto_lite^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/build/soong/lib_linker_config_proto_lite^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/build/soong/linkerconfig/proto/lib_linker_config_proto_lite^android_x86_64_static
 
 echo "building lib_linker_config_proto_lite^android_x86_64_static_apex10000"
-ninja -f $GITHUB_WORKSPACE/steps/build_04.ninja lib_linker_config_proto_lite,android_x86_64_static_apex10000
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja lib_linker_config_proto_lite,android_x86_64_static_apex10000
 mkdir -p $GITHUB_WORKSPACE/artifacts/build/soong/linkerconfig/proto/lib_linker_config_proto_lite^android_x86_64_static_apex10000
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/build/soong/lib_linker_config_proto_lite^android_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/build/soong/linkerconfig/proto/lib_linker_config_proto_lite^android_x86_64_static_apex10000
 
 echo "building lib_linker_config_proto_lite^linux_glibc_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_04.ninja lib_linker_config_proto_lite,linux_glibc_x86_64_static
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja lib_linker_config_proto_lite,linux_glibc_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/build/soong/linkerconfig/proto/lib_linker_config_proto_lite^linux_glibc_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/build/soong/lib_linker_config_proto_lite^linux_glibc_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/build/soong/linkerconfig/proto/lib_linker_config_proto_lite^linux_glibc_x86_64_static
 
 echo "building soong-android-soongconfig^linux_glibc_x86_64"
-ninja -f $GITHUB_WORKSPACE/steps/build_04.ninja soong-android-soongconfig,linux_glibc_x86_64
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja soong-android-soongconfig,linux_glibc_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/build/soong/android/soongconfig/soong-android-soongconfig^linux_glibc_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/build/soong/soong-android-soongconfig^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/build/soong/android/soongconfig/soong-android-soongconfig^linux_glibc_x86_64
 
 echo "building soong-bazel^linux_glibc_x86_64"
-ninja -f $GITHUB_WORKSPACE/steps/build_04.ninja soong-bazel,linux_glibc_x86_64
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja soong-bazel,linux_glibc_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/build/soong/bazel/soong-bazel^linux_glibc_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/build/soong/soong-bazel^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/build/soong/bazel/soong-bazel^linux_glibc_x86_64
 
 echo "building soong^linux_glibc_x86_64"
-ninja -f $GITHUB_WORKSPACE/steps/build_04.ninja soong,linux_glibc_x86_64
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja soong,linux_glibc_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/build/soong/soong^linux_glibc_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/build/soong/soong^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/build/soong/soong^linux_glibc_x86_64
 
 echo "building soong_zip^linux_glibc_x86_64"
-ninja -f $GITHUB_WORKSPACE/steps/build_04.ninja soong_zip,linux_glibc_x86_64
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja soong_zip,linux_glibc_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/build/soong/zip/cmd/soong_zip^linux_glibc_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/build/soong/soong_zip^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/build/soong/zip/cmd/soong_zip^linux_glibc_x86_64
 

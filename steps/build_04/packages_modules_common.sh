@@ -4,6 +4,9 @@ df -h
 
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
+mkdir -p out/soong/.minibootstrap && ln -sf $GITHUB_WORKSPACE/bpglob out/soong/.minibootstrap/bpglob
+ln -sf $GITHUB_WORKSPACE/ndk.ninja .
+ln -sf $GITHUB_WORKSPACE/ninja-ndk .
 ln -sf $GITHUB_WORKSPACE/ninja .
 
 mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86 prebuilts/clang/host/linux-x86
@@ -27,12 +30,12 @@ rsync -a -r $GITHUB_WORKSPACE/artifacts/build/soong/cmd/dep_fixer/dep_fixer^linu
 rsync -a -r $GITHUB_WORKSPACE/artifacts/external/protobuf/aprotoc^linux_glibc_x86_64/ .
 
 echo "building libclasspaths_proto^android_x86_64_static_apex30"
-ninja -f $GITHUB_WORKSPACE/steps/build_04.ninja libclasspaths_proto,android_x86_64_static_apex30
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libclasspaths_proto,android_x86_64_static_apex30
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/common/proto/libclasspaths_proto^android_x86_64_static_apex30
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/packages/modules/common/libclasspaths_proto^android_x86_64_static_apex30.output . $GITHUB_WORKSPACE/artifacts/packages/modules/common/proto/libclasspaths_proto^android_x86_64_static_apex30
 
 echo "building libsdk_proto^android_x86_64_static_apex30"
-ninja -f $GITHUB_WORKSPACE/steps/build_04.ninja libsdk_proto,android_x86_64_static_apex30
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libsdk_proto,android_x86_64_static_apex30
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/common/proto/libsdk_proto^android_x86_64_static_apex30
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/packages/modules/common/libsdk_proto^android_x86_64_static_apex30.output . $GITHUB_WORKSPACE/artifacts/packages/modules/common/proto/libsdk_proto^android_x86_64_static_apex30
 

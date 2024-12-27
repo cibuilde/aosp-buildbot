@@ -4,6 +4,9 @@ df -h
 
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
+mkdir -p out/soong/.minibootstrap && ln -sf $GITHUB_WORKSPACE/bpglob out/soong/.minibootstrap/bpglob
+ln -sf $GITHUB_WORKSPACE/ndk.ninja .
+ln -sf $GITHUB_WORKSPACE/ninja-ndk .
 ln -sf $GITHUB_WORKSPACE/ninja .
 
 mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86 prebuilts/clang/host/linux-x86
@@ -37,52 +40,52 @@ rsync -a -r $GITHUB_WORKSPACE/artifacts/system/libbase/libbase^linux_glibc_x86_6
 rsync -a -r $GITHUB_WORKSPACE/artifacts/system/logging/liblog/liblog^linux_glibc_x86_64_static/ .
 
 echo "building generated_stub_builtin_function_map^"
-ninja -f $GITHUB_WORKSPACE/steps/build_04.ninja generated_stub_builtin_function_map,
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja generated_stub_builtin_function_map,
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/init/generated_stub_builtin_function_map^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/core/generated_stub_builtin_function_map^.output . $GITHUB_WORKSPACE/artifacts/system/core/init/generated_stub_builtin_function_map^
 
 echo "building img2simg^linux_glibc_x86_64"
-ninja -f $GITHUB_WORKSPACE/steps/build_04.ninja img2simg,linux_glibc_x86_64
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja img2simg,linux_glibc_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/libsparse/img2simg^linux_glibc_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/core/img2simg^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/core/libsparse/img2simg^linux_glibc_x86_64
 
 echo "building libtombstone_proto^android_recovery_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_04.ninja libtombstone_proto,android_recovery_x86_64_static
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libtombstone_proto,android_recovery_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/debuggerd/proto/libtombstone_proto^android_recovery_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/core/libtombstone_proto^android_recovery_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/core/debuggerd/proto/libtombstone_proto^android_recovery_x86_64_static
 
 echo "building libtombstone_proto^android_vendor_ramdisk_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_04.ninja libtombstone_proto,android_vendor_ramdisk_x86_64_static
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libtombstone_proto,android_vendor_ramdisk_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/debuggerd/proto/libtombstone_proto^android_vendor_ramdisk_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/core/libtombstone_proto^android_vendor_ramdisk_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/core/debuggerd/proto/libtombstone_proto^android_vendor_ramdisk_x86_64_static
 
 echo "building libtombstone_proto^android_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_04.ninja libtombstone_proto,android_x86_64_static
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libtombstone_proto,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/debuggerd/proto/libtombstone_proto^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/core/libtombstone_proto^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/core/debuggerd/proto/libtombstone_proto^android_x86_64_static
 
 echo "building libtombstone_proto^android_x86_64_static_apex10000"
-ninja -f $GITHUB_WORKSPACE/steps/build_04.ninja libtombstone_proto,android_x86_64_static_apex10000
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libtombstone_proto,android_x86_64_static_apex10000
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/debuggerd/proto/libtombstone_proto^android_x86_64_static_apex10000
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/core/libtombstone_proto^android_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/system/core/debuggerd/proto/libtombstone_proto^android_x86_64_static_apex10000
 
 echo "building libtombstone_proto^android_x86_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_04.ninja libtombstone_proto,android_x86_x86_64_static
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libtombstone_proto,android_x86_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/debuggerd/proto/libtombstone_proto^android_x86_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/core/libtombstone_proto^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/core/debuggerd/proto/libtombstone_proto^android_x86_x86_64_static
 
 echo "building libtombstone_proto^android_x86_x86_64_static_apex10000"
-ninja -f $GITHUB_WORKSPACE/steps/build_04.ninja libtombstone_proto,android_x86_x86_64_static_apex10000
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libtombstone_proto,android_x86_x86_64_static_apex10000
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/debuggerd/proto/libtombstone_proto^android_x86_x86_64_static_apex10000
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/core/libtombstone_proto^android_x86_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/system/core/debuggerd/proto/libtombstone_proto^android_x86_x86_64_static_apex10000
 
 echo "building mkbootfs^linux_glibc_x86_64"
-ninja -f $GITHUB_WORKSPACE/steps/build_04.ninja mkbootfs,linux_glibc_x86_64
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja mkbootfs,linux_glibc_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/mkbootfs/mkbootfs^linux_glibc_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/core/mkbootfs^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/core/mkbootfs/mkbootfs^linux_glibc_x86_64
 
 echo "building toolbox_input_labels^"
-ninja -f $GITHUB_WORKSPACE/steps/build_04.ninja toolbox_input_labels,
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja toolbox_input_labels,
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/toolbox/toolbox_input_labels^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/core/toolbox_input_labels^.output . $GITHUB_WORKSPACE/artifacts/system/core/toolbox/toolbox_input_labels^
 

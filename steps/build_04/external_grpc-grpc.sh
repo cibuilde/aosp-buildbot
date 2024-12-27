@@ -4,6 +4,9 @@ df -h
 
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
+mkdir -p out/soong/.minibootstrap && ln -sf $GITHUB_WORKSPACE/bpglob out/soong/.minibootstrap/bpglob
+ln -sf $GITHUB_WORKSPACE/ndk.ninja .
+ln -sf $GITHUB_WORKSPACE/ninja-ndk .
 ln -sf $GITHUB_WORKSPACE/ninja .
 
 mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86 prebuilts/clang/host/linux-x86
@@ -33,12 +36,12 @@ rsync -a -r $GITHUB_WORKSPACE/artifacts/external/zlib/libz^android_x86_64_static
 rsync -a -r $GITHUB_WORKSPACE/artifacts/external/zlib/libz^android_x86_x86_64_static/ .
 
 echo "building libgrpc_base^android_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_04.ninja libgrpc_base,android_x86_64_static
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libgrpc_base,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_base^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/grpc-grpc/libgrpc_base^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_base^android_x86_64_static
 
 echo "building libgrpc_base^android_x86_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_04.ninja libgrpc_base,android_x86_x86_64_static
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libgrpc_base,android_x86_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_base^android_x86_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/grpc-grpc/libgrpc_base^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_base^android_x86_x86_64_static
 

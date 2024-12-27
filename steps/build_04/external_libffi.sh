@@ -4,6 +4,9 @@ df -h
 
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
+mkdir -p out/soong/.minibootstrap && ln -sf $GITHUB_WORKSPACE/bpglob out/soong/.minibootstrap/bpglob
+ln -sf $GITHUB_WORKSPACE/ndk.ninja .
+ln -sf $GITHUB_WORKSPACE/ninja-ndk .
 ln -sf $GITHUB_WORKSPACE/ninja .
 
 mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86 prebuilts/clang/host/linux-x86
@@ -13,7 +16,7 @@ clone_depth_platform external/libffi
 rsync -a -r $GITHUB_WORKSPACE/artifacts/build/soong/cmd/sbox/sbox^linux_glibc_x86_64/ .
 
 echo "building ffi_header^"
-ninja -f $GITHUB_WORKSPACE/steps/build_04.ninja ffi_header,
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja ffi_header,
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/libffi/ffi_header^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/libffi/ffi_header^.output . $GITHUB_WORKSPACE/artifacts/external/libffi/ffi_header^
 
