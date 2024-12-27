@@ -1,0 +1,5 @@
+out/soong/.intermediates/device/google/cuttlefish/guest/hals/ril/reference-ril/libcuttlefish-ril-2/android_vendor.31_x86_x86_64_static/obj/device/google/cuttlefish/guest/hals/ril/reference-ril/at_tok.o
+out/soong/.intermediates/device/google/cuttlefish/guest/hals/ril/reference-ril/libcuttlefish-ril-2/android_vendor.31_x86_x86_64_static/obj/device/google/cuttlefish/guest/hals/ril/reference-ril/atchannel.o
+out/soong/.intermediates/device/google/cuttlefish/guest/hals/ril/reference-ril/libcuttlefish-ril-2/android_vendor.31_x86_x86_64_static/obj/device/google/cuttlefish/guest/hals/ril/reference-ril/base64util.o
+out/soong/.intermediates/device/google/cuttlefish/guest/hals/ril/reference-ril/libcuttlefish-ril-2/android_vendor.31_x86_x86_64_static/obj/device/google/cuttlefish/guest/hals/ril/reference-ril/misc.o
+out/soong/.intermediates/device/google/cuttlefish/guest/hals/ril/reference-ril/libcuttlefish-ril-2/android_vendor.31_x86_x86_64_static/obj/device/google/cuttlefish/guest/hals/ril/reference-ril/reference-ril.o
