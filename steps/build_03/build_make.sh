@@ -4,6 +4,9 @@ df -h
 
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
+mkdir -p out/soong/.minibootstrap && ln -sf $GITHUB_WORKSPACE/bpglob out/soong/.minibootstrap/bpglob
+ln -sf $GITHUB_WORKSPACE/ndk.ninja .
+ln -sf $GITHUB_WORKSPACE/ninja-ndk .
 ln -sf $GITHUB_WORKSPACE/ninja .
 
 mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86 prebuilts/clang/host/linux-x86
@@ -31,18 +34,18 @@ clone_depth_platform system/logging
 clone_depth_platform system/media
 clone_depth_platform system/unwinding
 
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/fmtlib/fmtlib^linux_glibc_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/zlib/libz^linux_glibc_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/zopfli/libzopfli^linux_glibc_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/system/core/libcutils/libcutils^linux_glibc_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/system/core/libcutils/libcutils_sockets^linux_glibc_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/system/core/libutils/libutils^linux_glibc_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/system/libbase/libbase^linux_glibc_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/system/libziparchive/libziparchive^linux_glibc_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/system/logging/liblog/liblog^linux_glibc_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/fmtlib/fmtlib^linux_glibc_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/zlib/libz^linux_glibc_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/zopfli/libzopfli^linux_glibc_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/core/libcutils/libcutils^linux_glibc_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/core/libcutils/libcutils_sockets^linux_glibc_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/core/libutils/libutils^linux_glibc_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/libbase/libbase^linux_glibc_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/libziparchive/libziparchive^linux_glibc_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^linux_glibc_x86_64_static/ .
 
 echo "building libzipalign^linux_glibc_x86_64_static"
-ninja -f $GITHUB_WORKSPACE/steps/build_03.ninja libzipalign,linux_glibc_x86_64_static
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libzipalign,linux_glibc_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/build/make/tools/zipalign/libzipalign^linux_glibc_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/build/make/libzipalign^linux_glibc_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/build/make/tools/zipalign/libzipalign^linux_glibc_x86_64_static
 
