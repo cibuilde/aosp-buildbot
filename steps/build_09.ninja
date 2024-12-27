@@ -1,5 +1,4 @@
 include ninja/global.ninja
-include ndk.ninja
 include ninja/singleton.ninja
 
 include ninja/art/dex2oat/dex2oatd^linux_glibc_x86_64.ninja
