@@ -234,6 +234,9 @@ mkdir -p $GITHUB_WORKSPACE/downloads/system/logging
 tar xf $GITHUB_WORKSPACE/system_logging-01.tar.zst -C $GITHUB_WORKSPACE/downloads/system/logging/
 
 export OUT_DIR=out
+mkdir -p $GITHUB_WORKSPACE/.bin
+ln -sf /usr/bin/python2 $GITHUB_WORKSPACE/.bin/python
+export PATH=$GITHUB_WORKSPACE/.bin:$PATH
 
 time source steps/build_04/art.sh
 time source steps/build_04/bionic.sh
