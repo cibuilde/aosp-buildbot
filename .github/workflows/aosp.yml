@@ -13,7 +13,7 @@ jobs:
     - name: Checkout
       uses: actions/checkout@main
     - name: Install ninja
-      run: sudo apt update && sudo apt install -y ninja-build python2.7
+      run: sudo apt update && sudo apt install -y ninja-build python2.7 python2
     - name: Restore Cache art.tar.zst
       id: art
       uses: actions/cache@v4
