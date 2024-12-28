@@ -13,7 +13,7 @@ mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/
 
 clone_depth_platform art
 clone_depth_platform external/avb
-clone_depth kernel/prebuilts/5.10/x86_64
+clone_depth kernel/prebuilts/5.10/x86-64
 clone_depth_platform packages/modules/Virtualization
 
 rsync -a -r $GITHUB_WORKSPACE/downloads/build/make/tools/releasetools/verity_utils^linux_glibc_x86_64_PY2/ .
