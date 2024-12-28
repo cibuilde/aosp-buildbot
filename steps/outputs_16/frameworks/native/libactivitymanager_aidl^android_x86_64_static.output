@@ -1,0 +1,7 @@
+out/soong/.intermediates/frameworks/native/libs/binder/libactivitymanager_aidl/android_x86_64_static/gen/aidl/android/app/BnProcessStateEnum.h
+out/soong/.intermediates/frameworks/native/libs/binder/libactivitymanager_aidl/android_x86_64_static/gen/aidl/android/app/BpProcessStateEnum.h
+out/soong/.intermediates/frameworks/native/libs/binder/libactivitymanager_aidl/android_x86_64_static/gen/aidl/android/app/ProcessStateEnum.h
+out/soong/.intermediates/frameworks/native/libs/binder/libactivitymanager_aidl/android_x86_64_static/obj/.intermediates/frameworks/native/libs/binder/libactivitymanager_aidl/android_x86_64_static/gen/aidl/android/app/ProcessStateEnum.o
+out/soong/.intermediates/frameworks/native/libs/binder/libactivitymanager_aidl/android_x86_64_static/obj/frameworks/native/libs/binder/ActivityManager.o
+out/soong/.intermediates/frameworks/native/libs/binder/libactivitymanager_aidl/android_x86_64_static/obj/frameworks/native/libs/binder/IActivityManager.o
+out/soong/.intermediates/frameworks/native/libs/binder/libactivitymanager_aidl/android_x86_64_static/obj/frameworks/native/libs/binder/IUidObserver.o

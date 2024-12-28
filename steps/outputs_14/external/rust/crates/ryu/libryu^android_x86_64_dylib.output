@@ -1,0 +1,2 @@
+out/soong/.intermediates/external/rust/crates/ryu/libryu/android_x86_64_dylib/libryu.dylib.so
+out/soong/.intermediates/external/rust/crates/ryu/libryu/android_x86_64_dylib/stripped/libryu.dylib.so
