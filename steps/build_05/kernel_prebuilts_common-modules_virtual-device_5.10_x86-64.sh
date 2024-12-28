@@ -1,7 +1,5 @@
 set -e
 
-df -h
-
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
 mkdir -p out/soong/.minibootstrap && ln -sf $GITHUB_WORKSPACE/bpglob out/soong/.minibootstrap/bpglob
@@ -27,12 +25,11 @@ cd $GITHUB_WORKSPACE/
 tar -cf kernel_prebuilts_common-modules_virtual-device_5.10_x86-64.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/artifacts/kernel/prebuilts/common-modules/virtual-device/5.10/x86-64/ .
 gh release --repo cibuilde/aosp-buildbot upload android12-gsi_05 kernel_prebuilts_common-modules_virtual-device_5.10_x86-64.tar.zst --clobber
 
-du -ah -d1| sort -h
+du -ah -d1 kernel_prebuilts_common-modules_virtual-device_5.10_x86-64*.tar.zst | sort -h
 
 if [ ! -f "$GITHUB_WORKSPACE/cache/kernel_prebuilts_common-modules_virtual-device_5.10_x86-64.tar.zst" ]; then
   echo "Compressing kernel/prebuilts/common-modules/virtual-device/5.10/x86-64 -> kernel_prebuilts_common-modules_virtual-device_5.10_x86-64.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/kernel_prebuilts_common-modules_virtual-device_5.10_x86-64.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/kernel/prebuilts/common-modules/virtual-device/5.10/x86-64/ .
 fi
-du -ah -d1 $GITHUB_WORKSPACE/cache| sort -h
 
 rm -rf aosp

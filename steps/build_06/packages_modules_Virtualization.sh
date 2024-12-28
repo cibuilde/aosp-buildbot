@@ -1,7 +1,5 @@
 set -e
 
-df -h
-
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
 mkdir -p out/soong/.minibootstrap && ln -sf $GITHUB_WORKSPACE/bpglob out/soong/.minibootstrap/bpglob
@@ -45,7 +43,7 @@ cd $GITHUB_WORKSPACE/
 tar -cf packages_modules_Virtualization.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/artifacts/packages/modules/Virtualization/ .
 gh release --repo cibuilde/aosp-buildbot upload android12-gsi_06 packages_modules_Virtualization.tar.zst --clobber
 
-du -ah -d1| sort -h
+du -ah -d1 packages_modules_Virtualization*.tar.zst | sort -h
 
 if [ ! -f "$GITHUB_WORKSPACE/cache/kernel_prebuilts_common-modules_virtual-device_5.10_x86-64.tar.zst" ]; then
   echo "Compressing kernel/prebuilts/common-modules/virtual-device/5.10/x86-64 -> kernel_prebuilts_common-modules_virtual-device_5.10_x86-64.tar.zst"
@@ -55,6 +53,5 @@ if [ ! -f "$GITHUB_WORKSPACE/cache/packages_modules_Virtualization.tar.zst" ]; t
   echo "Compressing packages/modules/Virtualization -> packages_modules_Virtualization.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/packages_modules_Virtualization.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/packages/modules/Virtualization/ .
 fi
-du -ah -d1 $GITHUB_WORKSPACE/cache| sort -h
 
 rm -rf aosp

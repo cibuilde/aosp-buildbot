@@ -1,7 +1,5 @@
 set -e
 
-df -h
-
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
 mkdir -p out/soong/.minibootstrap && ln -sf $GITHUB_WORKSPACE/bpglob out/soong/.minibootstrap/bpglob
@@ -38,7 +36,7 @@ clone_depth_platform hardware/libhardware
 clone_depth_platform hardware/libhardware_legacy
 clone_depth_platform hardware/ril
 clone_depth_platform packages/modules/Gki
-clone_sparse prebuilts/build-tools linux-x86/bin linux-x86/lib64 path common
+clone_project platform/prebuilts/build-tools prebuilts/build-tools android12-gsi "/linux-x86/bin" "/linux-x86/lib64" "/path" "/common"
 clone_depth_platform prebuilts/gcc/linux-x86/x86/x86_64-linux-android-4.9
 clone_depth_platform system/core
 clone_sparse_exclude system/extras "!/simpleperf/scripts" "!/simpleperf/testdata" "!/simpleperf/demo" "!/simpleperf/doc" "!/memory_replay/traces" "!/ioshark/*.tgz" "!/ioshark/*.tar.gz"
@@ -114,7 +112,7 @@ cd $GITHUB_WORKSPACE/
 tar -cf bootable_recovery.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/artifacts/bootable/recovery/ .
 gh release --repo cibuilde/aosp-buildbot upload android12-gsi_08 bootable_recovery.tar.zst --clobber
 
-du -ah -d1| sort -h
+du -ah -d1 bootable_recovery*.tar.zst | sort -h
 
 if [ ! -f "$GITHUB_WORKSPACE/cache/bionic.tar.zst" ]; then
   echo "Compressing bionic -> bionic.tar.zst"
@@ -276,6 +274,5 @@ if [ ! -f "$GITHUB_WORKSPACE/cache/system_update_engine.tar.zst" ]; then
   echo "Compressing system/update_engine -> system_update_engine.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/system_update_engine.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/system/update_engine/ .
 fi
-du -ah -d1 $GITHUB_WORKSPACE/cache| sort -h
 
 rm -rf aosp

@@ -17,7 +17,7 @@ source $GITHUB_WORKSPACE/envsetup.sh
 tar xf $GITHUB_WORKSPACE/ninja-ndk.tar.zst
 tar xf $GITHUB_WORKSPACE/ninja.tar.zst
 
-clone_sparse prebuilts/clang/host/linux-x86 clang-r416183b1 clang-r416183b soong
+clone_project platform/prebuilts/clang/host/linux-x86 prebuilts/clang/host/linux-x86 "/clang-r416183b1" "/clang-r416183b" "/soong"
 
 mkdir -p $GITHUB_WORKSPACE/cache
 
@@ -1035,3 +1035,8 @@ if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_clang_host_linux-x86.tar.zst" ]; th
   echo "Compressing prebuilts/clang/host/linux-x86 -> prebuilts_clang_host_linux-x86.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/prebuilts_clang_host_linux-x86.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86/ .
 fi
+
+
+du -ah -d1 $GITHUB_WORKSPACE/cache| sort -h
+df -h
+

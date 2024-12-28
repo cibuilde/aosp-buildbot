@@ -1,7 +1,5 @@
 set -e
 
-df -h
-
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
 mkdir -p out/soong/.minibootstrap && ln -sf $GITHUB_WORKSPACE/bpglob out/soong/.minibootstrap/bpglob
@@ -14,7 +12,7 @@ mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/
 clone_depth_platform build/soong
 clone_depth_platform external/libcxx
 clone_depth_platform external/libcxxabi
-clone_sparse prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8 sysroot lib/gcc/x86_64-linux/4.8.3 x86_64-linux/lib64 x86_64-linux/lib32
+clone_project platform/prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8 prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8 android12-gsi "/sysroot" "/lib/gcc/x86_64-linux/4.8.3" "/x86_64-linux/lib64" "/x86_64-linux/lib32"
 
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcxx/libc++_static^linux_glibc_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcxx/libc++_static^linux_glibc_x86_static/ .
@@ -35,7 +33,7 @@ cd $GITHUB_WORKSPACE/
 tar -cf external_libcxx.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/artifacts/external/libcxx/ .
 gh release --repo cibuilde/aosp-buildbot upload android12-gsi_03 external_libcxx.tar.zst --clobber
 
-du -ah -d1| sort -h
+du -ah -d1 external_libcxx*.tar.zst | sort -h
 
 if [ ! -f "$GITHUB_WORKSPACE/cache/build_soong.tar.zst" ]; then
   echo "Compressing build/soong -> build_soong.tar.zst"
@@ -53,6 +51,5 @@ if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_gcc_linux-x86_host_x86_64-linux-gli
   echo "Compressing prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8 -> prebuilts_gcc_linux-x86_host_x86_64-linux-glibc2.17-4.8.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/prebuilts_gcc_linux-x86_host_x86_64-linux-glibc2.17-4.8.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8/ .
 fi
-du -ah -d1 $GITHUB_WORKSPACE/cache| sort -h
 
 rm -rf aosp

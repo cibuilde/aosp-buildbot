@@ -1,7 +1,5 @@
 set -e
 
-df -h
-
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
 mkdir -p out/soong/.minibootstrap && ln -sf $GITHUB_WORKSPACE/bpglob out/soong/.minibootstrap/bpglob
@@ -25,7 +23,7 @@ clone_depth_platform hardware/libhardware
 clone_depth_platform hardware/libhardware_legacy
 clone_depth_platform hardware/ril
 clone_depth_platform packages/modules/NeuralNetworks
-clone_sparse prebuilts/build-tools linux-x86/bin linux-x86/lib64 path common
+clone_project platform/prebuilts/build-tools prebuilts/build-tools android12-gsi "/linux-x86/bin" "/linux-x86/lib64" "/path" "/common"
 clone_depth_platform prebuilts/gcc/linux-x86/x86/x86_64-linux-android-4.9
 clone_depth_platform system/core
 clone_depth_platform system/libbase
@@ -59,7 +57,7 @@ cd $GITHUB_WORKSPACE/
 tar -cf packages_modules_NeuralNetworks.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/artifacts/packages/modules/NeuralNetworks/ .
 gh release --repo cibuilde/aosp-buildbot upload android12-gsi_01 packages_modules_NeuralNetworks.tar.zst --clobber
 
-du -ah -d1| sort -h
+du -ah -d1 packages_modules_NeuralNetworks*.tar.zst | sort -h
 
 if [ ! -f "$GITHUB_WORKSPACE/cache/art.tar.zst" ]; then
   echo "Compressing art -> art.tar.zst"
@@ -141,6 +139,5 @@ if [ ! -f "$GITHUB_WORKSPACE/cache/system_media.tar.zst" ]; then
   echo "Compressing system/media -> system_media.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/system_media.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/system/media/ .
 fi
-du -ah -d1 $GITHUB_WORKSPACE/cache| sort -h
 
 rm -rf aosp

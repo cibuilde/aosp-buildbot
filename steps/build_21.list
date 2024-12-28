@@ -1,0 +1,17 @@
+build step 21: projects: 15 targets: 55
+
+external/crosvm: libdevices^android_x86_64_rlib_rlib-std_apex10000 libfuse_rust^android_x86_64_dylib libfuse_rust^android_x86_64_dylib_apex10000
+external/drm_hwcomposer: hwcomposer.drm^android_vendor.31_x86_64_shared hwcomposer.drm^android_vendor.31_x86_x86_64_shared
+external/ipsec-tools: racoon^android_x86_64
+frameworks/av: libaudiofoundation^android_x86_64_shared libaudiofoundation^android_x86_x86_64_shared libcodec2_hidl@1.1^android_x86_64_shared_com.android.media.swcodec libcodec2_soft_common^android_x86_64_shared_cfi_com.android.media.swcodec libmedia_omx^android_vendor.31_x86_64_shared libmedia_omx^android_vendor.31_x86_x86_64_shared libmediautils^android_x86_64_shared libmediautils^android_x86_x86_64_shared libstagefright_bufferqueue_helper^android_vendor.31_x86_64_shared libstagefright_bufferqueue_helper^android_vendor.31_x86_x86_64_shared libstagefright_softomx^android_vendor.31_x86_x86_64_shared_cfi
+frameworks/native: libgui^android_vendor.31_x86_64_shared libgui^android_vendor.31_x86_x86_64_shared libui^android_x86_64_shared libui^android_x86_x86_64_shared
+hardware/google/camera: libgooglecamerahalutils^android_vendor.31_x86_64_shared libgooglecamerahalutils^android_vendor.31_x86_x86_64_shared
+hardware/interfaces: android.hardware.camera.device@3.6^android_x86_64_shared android.hardware.camera.device@3.7^android_vendor.31_x86_64_shared android.hardware.camera.device@3.7^android_vendor.31_x86_x86_64_shared android.hardware.graphics.composer@2.4-service^android_vendor.31_x86_64 android.hardware.media.c2@1.1^android_x86_64_shared android.hardware.media.c2@1.1^android_x86_x86_64_shared android.hardware.radio@1.6^android_vendor.31_x86_64_shared android.hardware.radio@1.6^android_vendor.31_x86_x86_64_shared
+libcore: art.module.public.api.stubs.module_lib^android_common art.module.public.api.stubs.system^android_common art.module.public.api.stubs^android_common
+packages/modules/Virtualization: microdroid_super^android_x86_64 microdroid_vbmeta_system^android_x86_64
+prebuilts/sdk: androidx.appcompat_appcompat-resources-nodeps^android_common androidx.appcompat_appcompat-resources-nodeps^android_common_apex30 androidx.fragment_fragment-nodeps^android_common androidx.fragment_fragment-nodeps^android_common_apex30 androidx.legacy_legacy-support-core-ui-nodeps^android_common androidx.legacy_legacy-support-core-ui-nodeps^android_common_apex30 androidx.navigation_navigation-common-ktx-nodeps^android_common_apex30 androidx.recyclerview_recyclerview-selection-nodeps^android_common
+system/bt: libbt_shim_ffi^android_x86_64_static libbt_shim_ffi^android_x86_x86_64_static
+system/extras: profcollectctl^android_x86_64 profcollectd^android_x86_64
+system/hardware/interfaces: android.system.keystore2-V1-rust^android_x86_64_rlib_rlib-std
+system/security: android.security.authorization-rust^android_x86_64_rlib_rlib-std android.security.compat-rust^android_x86_64_rlib_rlib-std android.security.remoteprovisioning-rust^android_x86_64_rlib_rlib-std libkm_compat^android_x86_64_shared
+system/vold: vold^android_x86_64 wait_for_keymaster^android_x86_64

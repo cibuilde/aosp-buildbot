@@ -1,7 +1,5 @@
 set -e
 
-df -h
-
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
 mkdir -p out/soong/.minibootstrap && ln -sf $GITHUB_WORKSPACE/bpglob out/soong/.minibootstrap/bpglob
@@ -41,7 +39,7 @@ cd $GITHUB_WORKSPACE/
 tar -cf external_nanopb-c.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/artifacts/external/nanopb-c/ .
 gh release --repo cibuilde/aosp-buildbot upload android12-gsi_07 external_nanopb-c.tar.zst --clobber
 
-du -ah -d1| sort -h
+du -ah -d1 external_nanopb-c*.tar.zst | sort -h
 
 if [ ! -f "$GITHUB_WORKSPACE/cache/build_soong.tar.zst" ]; then
   echo "Compressing build/soong -> build_soong.tar.zst"
@@ -63,6 +61,5 @@ if [ ! -f "$GITHUB_WORKSPACE/cache/external_python_six.tar.zst" ]; then
   echo "Compressing external/python/six -> external_python_six.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/external_python_six.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/python/six/ .
 fi
-du -ah -d1 $GITHUB_WORKSPACE/cache| sort -h
 
 rm -rf aosp

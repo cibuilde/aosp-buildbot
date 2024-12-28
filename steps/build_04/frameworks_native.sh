@@ -1,7 +1,5 @@
 set -e
 
-df -h
-
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
 mkdir -p out/soong/.minibootstrap && ln -sf $GITHUB_WORKSPACE/bpglob out/soong/.minibootstrap/bpglob
@@ -56,7 +54,7 @@ cd $GITHUB_WORKSPACE/
 tar -cf frameworks_native.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/artifacts/frameworks/native/ .
 gh release --repo cibuilde/aosp-buildbot upload android12-gsi_04 frameworks_native.tar.zst --clobber
 
-du -ah -d1| sort -h
+du -ah -d1 frameworks_native*.tar.zst | sort -h
 
 if [ ! -f "$GITHUB_WORKSPACE/cache/bionic.tar.zst" ]; then
   echo "Compressing bionic -> bionic.tar.zst"
@@ -118,6 +116,5 @@ if [ ! -f "$GITHUB_WORKSPACE/cache/system_media.tar.zst" ]; then
   echo "Compressing system/media -> system_media.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/system_media.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/system/media/ .
 fi
-du -ah -d1 $GITHUB_WORKSPACE/cache| sort -h
 
 rm -rf aosp

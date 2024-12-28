@@ -1,0 +1,2 @@
+out/soong/.intermediates/external/rust/crates/rand_chacha/librand_chacha/android_x86_64_dylib/librand_chacha.dylib.so
+out/soong/.intermediates/external/rust/crates/rand_chacha/librand_chacha/android_x86_64_dylib/stripped/librand_chacha.dylib.so

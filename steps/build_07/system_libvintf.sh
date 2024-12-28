@@ -1,7 +1,5 @@
 set -e
 
-df -h
-
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
 mkdir -p out/soong/.minibootstrap && ln -sf $GITHUB_WORKSPACE/bpglob out/soong/.minibootstrap/bpglob
@@ -18,7 +16,7 @@ clone_depth_platform external/selinux
 clone_depth_platform external/tinyxml2
 clone_depth_platform external/zlib
 clone_depth_platform packages/modules/Gki
-clone_sparse prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8 sysroot lib/gcc/x86_64-linux/4.8.3 x86_64-linux/lib64 x86_64-linux/lib32
+clone_project platform/prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8 prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8 android12-gsi "/sysroot" "/lib/gcc/x86_64-linux/4.8.3" "/x86_64-linux/lib64" "/x86_64-linux/lib32"
 clone_depth_platform system/libbase
 clone_depth_platform system/libvintf
 clone_depth_platform system/logging
@@ -46,7 +44,7 @@ cd $GITHUB_WORKSPACE/
 tar -cf system_libvintf.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/artifacts/system/libvintf/ .
 gh release --repo cibuilde/aosp-buildbot upload android12-gsi_07 system_libvintf.tar.zst --clobber
 
-du -ah -d1| sort -h
+du -ah -d1 system_libvintf*.tar.zst | sort -h
 
 if [ ! -f "$GITHUB_WORKSPACE/cache/build_soong.tar.zst" ]; then
   echo "Compressing build/soong -> build_soong.tar.zst"
@@ -96,6 +94,5 @@ if [ ! -f "$GITHUB_WORKSPACE/cache/system_tools_hidl.tar.zst" ]; then
   echo "Compressing system/tools/hidl -> system_tools_hidl.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/system_tools_hidl.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/system/tools/hidl/ .
 fi
-du -ah -d1 $GITHUB_WORKSPACE/cache| sort -h
 
 rm -rf aosp

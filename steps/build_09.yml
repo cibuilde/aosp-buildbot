@@ -7,7 +7,8 @@ env:
   branch: 'android12-gsi'
   GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 jobs:
-  build_09:
+
+  build_9:
     runs-on: ubuntu-22.04
     steps:
     - name: Checkout
@@ -1092,5 +1093,5 @@ jobs:
         path: cache/tools_security.tar.zst
         key: tools_security@${{ env.branch }}
         restore-keys: tools_security@${{ env.branch }}
-    - name: Start Soong
+    - name: Start Ninja Build
       run: bash steps/build_09.sh

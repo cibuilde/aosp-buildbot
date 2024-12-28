@@ -1,7 +1,5 @@
 set -e
 
-df -h
-
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
 mkdir -p out/soong/.minibootstrap && ln -sf $GITHUB_WORKSPACE/bpglob out/soong/.minibootstrap/bpglob
@@ -12,7 +10,7 @@ ln -sf $GITHUB_WORKSPACE/ninja .
 mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86 prebuilts/clang/host/linux-x86
 
 clone_depth_platform external/one-true-awk
-clone_sparse prebuilts/build-tools linux-x86/bin linux-x86/lib64 path common
+clone_project platform/prebuilts/build-tools prebuilts/build-tools android12-gsi "/linux-x86/bin" "/linux-x86/lib64" "/path" "/common"
 
 rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/cmd/sbox/sbox^linux_glibc_x86_64/ .
 
@@ -32,7 +30,7 @@ cd $GITHUB_WORKSPACE/
 tar -cf external_one-true-awk.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/artifacts/external/one-true-awk/ .
 gh release --repo cibuilde/aosp-buildbot upload android12-gsi_04 external_one-true-awk.tar.zst --clobber
 
-du -ah -d1| sort -h
+du -ah -d1 external_one-true-awk*.tar.zst | sort -h
 
 if [ ! -f "$GITHUB_WORKSPACE/cache/external_one-true-awk.tar.zst" ]; then
   echo "Compressing external/one-true-awk -> external_one-true-awk.tar.zst"
@@ -42,6 +40,5 @@ if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_build-tools.tar.zst" ]; then
   echo "Compressing prebuilts/build-tools -> prebuilts_build-tools.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/prebuilts_build-tools.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/prebuilts/build-tools/ .
 fi
-du -ah -d1 $GITHUB_WORKSPACE/cache| sort -h
 
 rm -rf aosp

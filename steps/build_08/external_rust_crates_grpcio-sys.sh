@@ -1,7 +1,5 @@
 set -e
 
-df -h
-
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
 mkdir -p out/soong/.minibootstrap && ln -sf $GITHUB_WORKSPACE/bpglob out/soong/.minibootstrap/bpglob
@@ -15,7 +13,7 @@ clone_depth_platform bionic
 clone_depth_platform external/grpc-grpc
 clone_depth_platform external/rust/crates/grpcio
 clone_depth_platform external/rust/crates/grpcio-sys
-clone_sparse prebuilts/rust bootstrap linux-x86/1.51.0
+clone_project platform/prebuilts/rust prebuilts/rust android12-gsi "/bootstrap" "/linux-x86/1.51.0"
 clone_depth_platform system/core
 clone_depth_platform system/logging
 
@@ -64,7 +62,7 @@ cd $GITHUB_WORKSPACE/
 tar -cf external_rust_crates_grpcio-sys.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/artifacts/external/rust/crates/grpcio-sys/ .
 gh release --repo cibuilde/aosp-buildbot upload android12-gsi_08 external_rust_crates_grpcio-sys.tar.zst --clobber
 
-du -ah -d1| sort -h
+du -ah -d1 external_rust_crates_grpcio-sys*.tar.zst | sort -h
 
 if [ ! -f "$GITHUB_WORKSPACE/cache/bionic.tar.zst" ]; then
   echo "Compressing bionic -> bionic.tar.zst"
@@ -94,6 +92,5 @@ if [ ! -f "$GITHUB_WORKSPACE/cache/system_logging.tar.zst" ]; then
   echo "Compressing system/logging -> system_logging.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/system_logging.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/system/logging/ .
 fi
-du -ah -d1 $GITHUB_WORKSPACE/cache| sort -h
 
 rm -rf aosp

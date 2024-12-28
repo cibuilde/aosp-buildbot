@@ -1,7 +1,5 @@
 set -e
 
-df -h
-
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
 mkdir -p out/soong/.minibootstrap && ln -sf $GITHUB_WORKSPACE/bpglob out/soong/.minibootstrap/bpglob
@@ -13,7 +11,7 @@ mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/
 
 clone_depth_platform bionic
 clone_depth device/google/cuttlefish
-clone_depth device/google/cuttlefish_prebuilts
+clone_project device/google/cuttlefish_prebuilts device/google/cuttlefish_prebuilts android12-gsi "/bootloader/crosvm_x86_64/u-boot.rom" "/uboot_tools/mkenvimage"
 clone_depth_platform external/fmtlib
 clone_depth_platform external/libcxx
 clone_depth_platform external/libcxxabi
@@ -50,7 +48,7 @@ cd $GITHUB_WORKSPACE/
 tar -cf packages_modules_Virtualization.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/artifacts/packages/modules/Virtualization/ .
 gh release --repo cibuilde/aosp-buildbot upload android12-gsi_04 packages_modules_Virtualization.tar.zst --clobber
 
-du -ah -d1| sort -h
+du -ah -d1 packages_modules_Virtualization*.tar.zst | sort -h
 
 if [ ! -f "$GITHUB_WORKSPACE/cache/bionic.tar.zst" ]; then
   echo "Compressing bionic -> bionic.tar.zst"
@@ -124,6 +122,5 @@ if [ ! -f "$GITHUB_WORKSPACE/cache/system_media.tar.zst" ]; then
   echo "Compressing system/media -> system_media.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/system_media.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/system/media/ .
 fi
-du -ah -d1 $GITHUB_WORKSPACE/cache| sort -h
 
 rm -rf aosp

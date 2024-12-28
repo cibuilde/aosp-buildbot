@@ -1,7 +1,5 @@
 set -e
 
-df -h
-
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
 mkdir -p out/soong/.minibootstrap && ln -sf $GITHUB_WORKSPACE/bpglob out/soong/.minibootstrap/bpglob
@@ -25,7 +23,7 @@ clone_depth_platform hardware/ril
 clone_depth_platform libnativehelper
 clone_depth_platform packages/modules/Gki
 clone_depth_platform prebuilts/gcc/linux-x86/x86/x86_64-linux-android-4.9
-clone_sparse prebuilts/rust bootstrap linux-x86/1.51.0
+clone_project platform/prebuilts/rust prebuilts/rust android12-gsi "/bootstrap" "/linux-x86/1.51.0"
 clone_depth_platform system/core
 clone_depth_platform system/hardware/interfaces
 clone_depth_platform system/keymaster
@@ -140,7 +138,7 @@ cd $GITHUB_WORKSPACE/
 tar -cf system_security.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/artifacts/system/security/ .
 gh release --repo cibuilde/aosp-buildbot upload android12-gsi_08 system_security.tar.zst --clobber
 
-du -ah -d1| sort -h
+du -ah -d1 system_security*.tar.zst | sort -h
 
 if [ ! -f "$GITHUB_WORKSPACE/cache/bionic.tar.zst" ]; then
   echo "Compressing bionic -> bionic.tar.zst"
@@ -258,6 +256,5 @@ if [ ! -f "$GITHUB_WORKSPACE/cache/system_unwinding.tar.zst" ]; then
   echo "Compressing system/unwinding -> system_unwinding.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/system_unwinding.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/system/unwinding/ .
 fi
-du -ah -d1 $GITHUB_WORKSPACE/cache| sort -h
 
 rm -rf aosp

@@ -7,6 +7,7 @@ env:
   branch: 'android12-gsi'
   GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 jobs:
+
   build_16:
     runs-on: ubuntu-22.04
     steps:
@@ -1169,5 +1170,5 @@ jobs:
         path: cache/system_update_engine.tar.zst
         key: system_update_engine@${{ env.branch }}
         restore-keys: system_update_engine@${{ env.branch }}
-    - name: Start Soong
+    - name: Start Ninja Build
       run: bash steps/build_16.sh

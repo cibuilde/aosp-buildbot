@@ -7,13 +7,14 @@ env:
   branch: 'android12-gsi'
   GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 jobs:
-  build_03:
+
+  build_3:
     runs-on: ubuntu-22.04
     steps:
     - name: Checkout
       uses: actions/checkout@main
     - name: Install ninja
-      run: sudo apt update && sudo apt install -y ninja-build python2.7
+      run: sudo apt update && sudo apt install -y ninja-build python2
     - name: Restore Cache art.tar.zst
       id: art
       uses: actions/cache@v4
@@ -399,5 +400,5 @@ jobs:
         path: cache/system_unwinding.tar.zst
         key: system_unwinding@${{ env.branch }}
         restore-keys: system_unwinding@${{ env.branch }}
-    - name: Start Soong
+    - name: Start Ninja Build
       run: bash steps/build_03.sh

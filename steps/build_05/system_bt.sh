@@ -1,7 +1,5 @@
 set -e
 
-df -h
-
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
 mkdir -p out/soong/.minibootstrap && ln -sf $GITHUB_WORKSPACE/bpglob out/soong/.minibootstrap/bpglob
@@ -18,8 +16,8 @@ clone_depth_platform external/rust/crates/proc-macro2
 clone_depth_platform external/rust/crates/quote
 clone_depth_platform external/rust/crates/syn
 clone_depth_platform external/rust/crates/unicode-xid
-clone_sparse prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8 sysroot lib/gcc/x86_64-linux/4.8.3 x86_64-linux/lib64 x86_64-linux/lib32
-clone_sparse prebuilts/rust bootstrap linux-x86/1.51.0
+clone_project platform/prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8 prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8 android12-gsi "/sysroot" "/lib/gcc/x86_64-linux/4.8.3" "/x86_64-linux/lib64" "/x86_64-linux/lib32"
+clone_project platform/prebuilts/rust prebuilts/rust android12-gsi "/bootstrap" "/linux-x86/1.51.0"
 clone_depth_platform system/bt
 
 rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/cmd/sbox/sbox^linux_glibc_x86_64/ .
@@ -72,7 +70,7 @@ cd $GITHUB_WORKSPACE/
 tar -cf system_bt.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/artifacts/system/bt/ .
 gh release --repo cibuilde/aosp-buildbot upload android12-gsi_05 system_bt.tar.zst --clobber
 
-du -ah -d1| sort -h
+du -ah -d1 system_bt*.tar.zst | sort -h
 
 if [ ! -f "$GITHUB_WORKSPACE/cache/external_flatbuffers.tar.zst" ]; then
   echo "Compressing external/flatbuffers -> external_flatbuffers.tar.zst"
@@ -114,6 +112,5 @@ if [ ! -f "$GITHUB_WORKSPACE/cache/system_bt.tar.zst" ]; then
   echo "Compressing system/bt -> system_bt.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/system_bt.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/system/bt/ .
 fi
-du -ah -d1 $GITHUB_WORKSPACE/cache| sort -h
 
 rm -rf aosp

@@ -8,7 +8,8 @@ function clone_depth() {
   local path_key=${project_path//\//_}
   local cache_file="$GITHUB_WORKSPACE/cache/${path_key}.tar.zst"
   local project_name=$project_path
-    # Add check for additional arguments
+
+  # Add check for additional arguments
   if [ $# -gt 1 ]; then
     local project_name=$2
   fi

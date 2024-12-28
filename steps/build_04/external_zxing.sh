@@ -1,7 +1,5 @@
 set -e
 
-df -h
-
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
 mkdir -p out/soong/.minibootstrap && ln -sf $GITHUB_WORKSPACE/bpglob out/soong/.minibootstrap/bpglob
@@ -26,12 +24,11 @@ cd $GITHUB_WORKSPACE/
 tar -cf external_zxing.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/artifacts/external/zxing/ .
 gh release --repo cibuilde/aosp-buildbot upload android12-gsi_04 external_zxing.tar.zst --clobber
 
-du -ah -d1| sort -h
+du -ah -d1 external_zxing*.tar.zst | sort -h
 
 if [ ! -f "$GITHUB_WORKSPACE/cache/external_zxing.tar.zst" ]; then
   echo "Compressing external/zxing -> external_zxing.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/external_zxing.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/zxing/ .
 fi
-du -ah -d1 $GITHUB_WORKSPACE/cache| sort -h
 
 rm -rf aosp

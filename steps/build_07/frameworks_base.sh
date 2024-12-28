@@ -1,7 +1,5 @@
 set -e
 
-df -h
-
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
 mkdir -p out/soong/.minibootstrap && ln -sf $GITHUB_WORKSPACE/bpglob out/soong/.minibootstrap/bpglob
@@ -14,7 +12,7 @@ mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/
 clone_depth_platform art
 clone_depth_platform bionic
 clone_depth_platform build/soong
-clone_sparse cts libs/json
+clone_project platform/cts cts android12-gsi "/libs/json"
 clone_depth_platform external/fmtlib
 clone_depth_platform external/googletest
 clone_depth_platform external/harfbuzz_ng
@@ -39,8 +37,8 @@ clone_depth_platform hardware/libhardware_legacy
 clone_depth_platform hardware/ril
 clone_depth_platform libnativehelper
 clone_depth_platform prebuilts/gcc/linux-x86/x86/x86_64-linux-android-4.9
-clone_sparse prebuilts/jdk/jdk11 linux-x86
-clone_sparse_exclude prebuilts/misc "!/common/robolectric" "!/darwin-x86" "!/darwin-x86_64"
+clone_project platform/prebuilts/jdk/jdk11 prebuilts/jdk/jdk11 android12-gsi "/linux-x86"
+clone_project platform/prebuilts/misc prebuilts/misc android12-gsi "/common/asm/asm-6.0.jar" "/common/asm/asm-7.0.jar" "/common/asm/asm-analysis-6.0.jar" "/common/asm/asm-commons-6.0.jar" "/common/asm/asm-commons-7.0.jar" "/common/asm/asm-tree-6.0.jar" "/common/asm/asm-tree-7.0.jar" "/common/commons-cli/commons-cli-1.2.jar" "/common/guava/guava-21.0.jar" "/gdbserver/android-x86_64/gdbserver64" "/gdbserver/android-x86/gdbserver" "/linux-x86/yasm/yasm"
 clone_depth_platform system/bt
 clone_depth_platform system/core
 clone_depth_platform system/incremental_delivery
@@ -581,7 +579,7 @@ cd $GITHUB_WORKSPACE/
 tar -cf frameworks_base.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/artifacts/frameworks/base/ .
 gh release --repo cibuilde/aosp-buildbot upload android12-gsi_07 frameworks_base.tar.zst --clobber
 
-du -ah -d1| sort -h
+du -ah -d1 frameworks_base*.tar.zst | sort -h
 
 if [ ! -f "$GITHUB_WORKSPACE/cache/art.tar.zst" ]; then
   echo "Compressing art -> art.tar.zst"
@@ -751,6 +749,5 @@ if [ ! -f "$GITHUB_WORKSPACE/cache/system_unwinding.tar.zst" ]; then
   echo "Compressing system/unwinding -> system_unwinding.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/system_unwinding.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/system/unwinding/ .
 fi
-du -ah -d1 $GITHUB_WORKSPACE/cache| sort -h
 
 rm -rf aosp

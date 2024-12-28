@@ -1,7 +1,5 @@
 set -e
 
-df -h
-
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
 mkdir -p out/soong/.minibootstrap && ln -sf $GITHUB_WORKSPACE/bpglob out/soong/.minibootstrap/bpglob
@@ -13,7 +11,7 @@ mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/
 
 clone_depth_platform bionic
 clone_depth_platform build/soong
-clone_sparse cts libs/json
+clone_project platform/cts cts android12-gsi "/libs/json"
 clone_depth_platform external/compiler-rt
 clone_depth_platform external/fmtlib
 clone_depth_platform external/libcxx
@@ -26,9 +24,9 @@ clone_depth_platform hardware/libhardware
 clone_depth_platform hardware/libhardware_legacy
 clone_depth_platform hardware/ril
 clone_depth_platform libnativehelper
-clone_sparse prebuilts/build-tools linux-x86/bin linux-x86/lib64 path common
+clone_project platform/prebuilts/build-tools prebuilts/build-tools android12-gsi "/linux-x86/bin" "/linux-x86/lib64" "/path" "/common"
 clone_depth_platform prebuilts/gcc/linux-x86/x86/x86_64-linux-android-4.9
-clone_sparse prebuilts/rust bootstrap linux-x86/1.51.0
+clone_project platform/prebuilts/rust prebuilts/rust android12-gsi "/bootstrap" "/linux-x86/1.51.0"
 clone_depth_platform system/bt
 clone_depth_platform system/core
 clone_depth_platform system/libbase
@@ -272,7 +270,7 @@ cd $GITHUB_WORKSPACE/
 tar -cf frameworks_native.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/artifacts/frameworks/native/ .
 gh release --repo cibuilde/aosp-buildbot upload android12-gsi_08 frameworks_native.tar.zst --clobber
 
-du -ah -d1| sort -h
+du -ah -d1 frameworks_native*.tar.zst | sort -h
 
 if [ ! -f "$GITHUB_WORKSPACE/cache/bionic.tar.zst" ]; then
   echo "Compressing bionic -> bionic.tar.zst"
@@ -382,6 +380,5 @@ if [ ! -f "$GITHUB_WORKSPACE/cache/system_unwinding.tar.zst" ]; then
   echo "Compressing system/unwinding -> system_unwinding.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/system_unwinding.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/system/unwinding/ .
 fi
-du -ah -d1 $GITHUB_WORKSPACE/cache| sort -h
 
 rm -rf aosp

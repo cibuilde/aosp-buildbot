@@ -1,7 +1,5 @@
 set -e
 
-df -h
-
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
 mkdir -p out/soong/.minibootstrap && ln -sf $GITHUB_WORKSPACE/bpglob out/soong/.minibootstrap/bpglob
@@ -26,7 +24,7 @@ clone_depth_platform frameworks/native
 clone_depth_platform hardware/libhardware
 clone_depth_platform hardware/libhardware_legacy
 clone_depth_platform hardware/ril
-clone_sparse prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8 sysroot lib/gcc/x86_64-linux/4.8.3 x86_64-linux/lib64 x86_64-linux/lib32
+clone_project platform/prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8 prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8 android12-gsi "/sysroot" "/lib/gcc/x86_64-linux/4.8.3" "/x86_64-linux/lib64" "/x86_64-linux/lib32"
 clone_depth_platform system/core
 clone_depth_platform system/libbase
 clone_depth_platform system/libziparchive
@@ -55,7 +53,7 @@ cd $GITHUB_WORKSPACE/
 tar -cf build_make.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/artifacts/build/make/ .
 gh release --repo cibuilde/aosp-buildbot upload android12-gsi_03 build_make.tar.zst --clobber
 
-du -ah -d1| sort -h
+du -ah -d1 build_make*.tar.zst | sort -h
 
 if [ ! -f "$GITHUB_WORKSPACE/cache/build_make.tar.zst" ]; then
   echo "Compressing build/make -> build_make.tar.zst"
@@ -133,6 +131,5 @@ if [ ! -f "$GITHUB_WORKSPACE/cache/system_unwinding.tar.zst" ]; then
   echo "Compressing system/unwinding -> system_unwinding.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/system_unwinding.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/system/unwinding/ .
 fi
-du -ah -d1 $GITHUB_WORKSPACE/cache| sort -h
 
 rm -rf aosp

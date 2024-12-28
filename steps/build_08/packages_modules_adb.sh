@@ -1,7 +1,5 @@
 set -e
 
-df -h
-
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
 mkdir -p out/soong/.minibootstrap && ln -sf $GITHUB_WORKSPACE/bpglob out/soong/.minibootstrap/bpglob
@@ -16,7 +14,7 @@ clone_depth_platform build/soong
 clone_depth_platform external/libcxx
 clone_depth_platform external/libcxxabi
 clone_depth_platform packages/modules/adb
-clone_sparse prebuilts/build-tools linux-x86/bin linux-x86/lib64 path common
+clone_project platform/prebuilts/build-tools prebuilts/build-tools android12-gsi "/linux-x86/bin" "/linux-x86/lib64" "/path" "/common"
 clone_depth_platform prebuilts/gcc/linux-x86/x86/x86_64-linux-android-4.9
 clone_depth_platform system/libbase
 clone_depth_platform system/logging
@@ -58,7 +56,7 @@ cd $GITHUB_WORKSPACE/
 tar -cf packages_modules_adb.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/artifacts/packages/modules/adb/ .
 gh release --repo cibuilde/aosp-buildbot upload android12-gsi_08 packages_modules_adb.tar.zst --clobber
 
-du -ah -d1| sort -h
+du -ah -d1 packages_modules_adb*.tar.zst | sort -h
 
 if [ ! -f "$GITHUB_WORKSPACE/cache/bionic.tar.zst" ]; then
   echo "Compressing bionic -> bionic.tar.zst"
@@ -96,6 +94,5 @@ if [ ! -f "$GITHUB_WORKSPACE/cache/system_logging.tar.zst" ]; then
   echo "Compressing system/logging -> system_logging.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/system_logging.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/system/logging/ .
 fi
-du -ah -d1 $GITHUB_WORKSPACE/cache| sort -h
 
 rm -rf aosp
