@@ -4,6 +4,7 @@ df -h
 
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
+mkdir -p out/soong/.minibootstrap && ln -sf $GITHUB_WORKSPACE/bpglob out/soong/.minibootstrap/bpglob
 ln -sf $GITHUB_WORKSPACE/ndk.ninja .
 ln -sf $GITHUB_WORKSPACE/ninja-ndk .
 ln -sf $GITHUB_WORKSPACE/ninja .
@@ -26,29 +27,29 @@ clone_depth_platform system/logging
 clone_depth_platform system/netd
 clone_depth_platform system/server_configurable_flags
 
-rsync -a -r $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_so^android_x86_64_apex29/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/bionic/libc/crtend_so^android_x86_64_apex29/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/bionic/libc/libc^android_x86_64_shared_current/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/bionic/libdl/libdl^android_x86_64_shared_current/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/bionic/libm/libm^android_x86_64_shared_current/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/boringssl/libcrypto^android_x86_64_shared_apex29/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/boringssl/libssl^android_x86_64_shared_apex29/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/libcxx/libc++_static^android_x86_64_static_cfi_apex29/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/libcxxabi/libc++demangle^android_x86_64_static_apex29/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/protobuf/libprotobuf-cpp-lite^android_x86_64_static_cfi_apex29/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/binder/ndk/libbinder_ndk^android_x86_64_shared_current/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/packages/modules/DnsResolver/dnsresolver_aidl_interface-lateststable-ndk_platform^android_x86_64_static_cfi_com.android.resolv/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/packages/modules/DnsResolver/libnetd_resolv^android_x86_64_static_cfi_com.android.resolv/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/packages/modules/DnsResolver/libstatslog_resolv^android_x86_64_static_cfi_apex29/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/packages/modules/DnsResolver/stats_proto^android_x86_64_static_cfi_apex29/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/system/core/libcutils/libcutils^android_x86_64_static_cfi_apex29/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/system/core/libstats/push_compat/libstatspush_compat^android_x86_64_static_cfi_apex29/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/system/core/libsysutils/libsysutils^android_x86_64_static_cfi_apex29/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/system/libbase/libbase^android_x86_64_static_cfi_apex29/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/system/logging/liblog/liblog^android_x86_64_shared_current/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/system/netd/libnetdutils/libnetdutils^android_x86_64_static_cfi_apex29/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/system/netd/server/netd_event_listener_interface-lateststable-ndk_platform^android_x86_64_static_cfi_com.android.resolv/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/system/server_configurable_flags/libflags/server_configurable_flags^android_x86_64_static_cfi_apex29/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/crtbegin_so^android_x86_64_apex29/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/crtend_so^android_x86_64_apex29/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/libc^android_x86_64_shared_current/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libdl/libdl^android_x86_64_shared_current/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libm/libm^android_x86_64_shared_current/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/boringssl/libcrypto^android_x86_64_shared_apex29/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/boringssl/libssl^android_x86_64_shared_apex29/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcxx/libc++_static^android_x86_64_static_cfi_apex29/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcxxabi/libc++demangle^android_x86_64_static_apex29/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/protobuf/libprotobuf-cpp-lite^android_x86_64_static_cfi_apex29/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/native/libs/binder/ndk/libbinder_ndk^android_x86_64_shared_current/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/DnsResolver/dnsresolver_aidl_interface-lateststable-ndk_platform^android_x86_64_static_cfi_com.android.resolv/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/DnsResolver/libnetd_resolv^android_x86_64_static_cfi_com.android.resolv/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/DnsResolver/libstatslog_resolv^android_x86_64_static_cfi_apex29/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/DnsResolver/stats_proto^android_x86_64_static_cfi_apex29/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/core/libcutils/libcutils^android_x86_64_static_cfi_apex29/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/core/libstats/push_compat/libstatspush_compat^android_x86_64_static_cfi_apex29/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/core/libsysutils/libsysutils^android_x86_64_static_cfi_apex29/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/libbase/libbase^android_x86_64_static_cfi_apex29/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^android_x86_64_shared_current/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/netd/libnetdutils/libnetdutils^android_x86_64_static_cfi_apex29/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/netd/server/netd_event_listener_interface-lateststable-ndk_platform^android_x86_64_static_cfi_com.android.resolv/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/server_configurable_flags/libflags/server_configurable_flags^android_x86_64_static_cfi_apex29/ .
 
 echo "building libnetd_resolv^android_x86_64_shared_cfi_com.android.resolv"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja libnetd_resolv,android_x86_64_shared_cfi_com.android.resolv
@@ -61,7 +62,7 @@ cd $GITHUB_WORKSPACE/
 tar -cf packages_modules_DnsResolver.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/artifacts/packages/modules/DnsResolver/ .
 gh release --repo cibuilde/aosp-buildbot upload android12-gsi_10 packages_modules_DnsResolver.tar.zst --clobber
 
-du -ah -d1| sort -h
+du -ah -d1 packages_modules_DnsResolver*.tar.zst | sort -h
 
 if [ ! -f "$GITHUB_WORKSPACE/cache/bionic.tar.zst" ]; then
   echo "Compressing bionic -> bionic.tar.zst"
@@ -123,6 +124,5 @@ if [ ! -f "$GITHUB_WORKSPACE/cache/system_server_configurable_flags.tar.zst" ]; 
   echo "Compressing system/server_configurable_flags -> system_server_configurable_flags.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/system_server_configurable_flags.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/system/server_configurable_flags/ .
 fi
-du -ah -d1 $GITHUB_WORKSPACE/cache| sort -h
 
 rm -rf aosp

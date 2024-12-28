@@ -4,6 +4,7 @@ df -h
 
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
+mkdir -p out/soong/.minibootstrap && ln -sf $GITHUB_WORKSPACE/bpglob out/soong/.minibootstrap/bpglob
 ln -sf $GITHUB_WORKSPACE/ndk.ninja .
 ln -sf $GITHUB_WORKSPACE/ninja-ndk .
 ln -sf $GITHUB_WORKSPACE/ninja .
@@ -28,8 +29,8 @@ clone_sparse_exclude system/extras "!/simpleperf/scripts" "!/simpleperf/testdata
 clone_depth_platform system/libbase
 clone_depth_platform system/logging
 
-rsync -a -r $GITHUB_WORKSPACE/artifacts/singletons/ndk^/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/fmtlib/fmtlib_ndk^android_x86_64_sdk_static_apex30/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/singletons/ndk^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/fmtlib/fmtlib_ndk^android_x86_64_sdk_static_apex30/ .
 
 echo "building libbase_ndk^android_x86_64_sdk_static_apex30"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja libbase_ndk,android_x86_64_sdk_static_apex30
@@ -42,7 +43,7 @@ cd $GITHUB_WORKSPACE/
 tar -cf system_libbase.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/artifacts/system/libbase/ .
 gh release --repo cibuilde/aosp-buildbot upload android12-gsi_10 system_libbase.tar.zst --clobber
 
-du -ah -d1| sort -h
+du -ah -d1 system_libbase*.tar.zst | sort -h
 
 if [ ! -f "$GITHUB_WORKSPACE/cache/bionic.tar.zst" ]; then
   echo "Compressing bionic -> bionic.tar.zst"
@@ -112,6 +113,5 @@ if [ ! -f "$GITHUB_WORKSPACE/cache/system_logging.tar.zst" ]; then
   echo "Compressing system/logging -> system_logging.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/system_logging.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/system/logging/ .
 fi
-du -ah -d1 $GITHUB_WORKSPACE/cache| sort -h
 
 rm -rf aosp
