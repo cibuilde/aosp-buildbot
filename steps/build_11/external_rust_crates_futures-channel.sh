@@ -15,7 +15,7 @@ clone_depth_platform external/rust/crates/futures
 clone_depth_platform external/rust/crates/futures-channel
 clone_depth_platform external/rust/crates/futures-core
 clone_depth_platform libcore
-clone_sparse prebuilts/rust bootstrap linux-x86/1.51.0
+clone_project platform/prebuilts/rust prebuilts/rust android12-gsi "/bootstrap" "/linux-x86/1.51.0"
 
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/rust/crates/futures-core/libfutures_core^android_x86_64_rlib_rlib-std/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/rust/crates/futures-core/libfutures_core^android_x86_64_rlib_rlib-std_apex10000/ .

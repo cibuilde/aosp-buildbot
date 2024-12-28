@@ -15,7 +15,7 @@ clone_depth_platform external/libcap
 clone_depth_platform external/minijail
 clone_depth_platform external/rust/crates/libc
 clone_depth_platform libcore
-clone_sparse prebuilts/rust bootstrap linux-x86/1.51.0
+clone_project platform/prebuilts/rust prebuilts/rust android12-gsi "/bootstrap" "/linux-x86/1.51.0"
 
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcap/libcap^android_x86_64_shared_apex10000/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/minijail/libminijail^android_x86_64_shared_apex10000/ .

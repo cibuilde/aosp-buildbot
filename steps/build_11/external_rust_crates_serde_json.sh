@@ -17,7 +17,7 @@ clone_depth_platform external/rust/crates/serde
 clone_depth_platform external/rust/crates/serde_derive
 clone_depth_platform external/rust/crates/serde_json
 clone_depth_platform libcore
-clone_sparse prebuilts/rust bootstrap linux-x86/1.51.0
+clone_project platform/prebuilts/rust prebuilts/rust android12-gsi "/bootstrap" "/linux-x86/1.51.0"
 
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/rust/crates/itoa/libitoa^android_x86_64_rlib_rlib-std_apex10000/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/rust/crates/proc-macro2/libproc_macro2^linux_glibc_x86_64_rlib_rlib-std/ .

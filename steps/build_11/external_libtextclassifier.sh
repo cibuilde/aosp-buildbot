@@ -22,7 +22,7 @@ clone_depth_platform external/marisa-trie
 clone_depth_platform external/tensorflow
 clone_depth_platform external/tflite-support
 clone_depth_platform external/zlib
-clone_sparse prebuilts/build-tools linux-x86/bin linux-x86/lib64 path common
+clone_project platform/prebuilts/build-tools prebuilts/build-tools android12-gsi "/linux-x86/bin" "/linux-x86/lib64" "/path" "/common"
 clone_depth_platform prebuilts/gcc/linux-x86/x86/x86_64-linux-android-4.9
 clone_depth_platform prebuilts/ndk
 clone_depth_platform system/logging

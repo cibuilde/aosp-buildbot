@@ -16,7 +16,7 @@ clone_depth_platform external/error_prone
 clone_depth_platform external/guava
 clone_depth_platform external/protobuf
 clone_depth_platform external/turbine
-clone_sparse prebuilts/jdk/jdk11 linux-x86
+clone_project platform/prebuilts/jdk/jdk11 prebuilts/jdk/jdk11 android12-gsi "/linux-x86"
 
 rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/cmd/dep_fixer/dep_fixer^linux_glibc_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/cmd/merge_zips/merge_zips^linux_glibc_x86_64/ .

@@ -18,7 +18,7 @@ clone_depth_platform external/libcxxabi
 clone_depth_platform frameworks/native
 clone_depth_platform hardware/interfaces
 clone_depth_platform hardware/libhardware
-clone_sparse prebuilts/build-tools linux-x86/bin linux-x86/lib64 path common
+clone_project platform/prebuilts/build-tools prebuilts/build-tools android12-gsi "/linux-x86/bin" "/linux-x86/lib64" "/path" "/common"
 clone_depth_platform prebuilts/gcc/linux-x86/x86/x86_64-linux-android-4.9
 clone_depth_platform system/bt
 clone_depth_platform system/core

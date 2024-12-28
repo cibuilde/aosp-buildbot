@@ -16,7 +16,7 @@ clone_depth_platform external/google-java-format
 clone_depth_platform external/guava
 clone_depth_platform external/javapoet
 clone_depth_platform external/jsr330
-clone_sparse prebuilts/jdk/jdk11 linux-x86
+clone_project platform/prebuilts/jdk/jdk11 prebuilts/jdk/jdk11 android12-gsi "/linux-x86"
 
 rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/cmd/merge_zips/merge_zips^linux_glibc_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/cmd/javac_wrapper/soong_javac_wrapper^linux_glibc_x86_64/ .
