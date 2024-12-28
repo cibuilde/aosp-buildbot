@@ -4,6 +4,7 @@ df -h
 
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
+mkdir -p out/soong/.minibootstrap && ln -sf $GITHUB_WORKSPACE/bpglob out/soong/.minibootstrap/bpglob
 ln -sf $GITHUB_WORKSPACE/ndk.ninja .
 ln -sf $GITHUB_WORKSPACE/ninja-ndk .
 ln -sf $GITHUB_WORKSPACE/ninja .
@@ -34,11 +35,11 @@ clone_depth_platform system/media
 clone_depth_platform system/netd
 clone_depth_platform system/server_configurable_flags
 
-rsync -a -r $GITHUB_WORKSPACE/artifacts/packages/modules/DnsResolver/dnsresolver_aidl_interface-V9-ndk_platform-source^/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/packages/modules/DnsResolver/stats_proto^android_x86_64_static_cfi_apex29/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/packages/modules/DnsResolver/statslog_resolv.cpp^/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/packages/modules/DnsResolver/statslog_resolv.h^/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/system/netd/server/netd_event_listener_interface-V1-ndk_platform-source^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/DnsResolver/dnsresolver_aidl_interface-V9-ndk_platform-source^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/DnsResolver/stats_proto^android_x86_64_static_cfi_apex29/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/DnsResolver/statslog_resolv.cpp^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/DnsResolver/statslog_resolv.h^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/netd/server/netd_event_listener_interface-V1-ndk_platform-source^/ .
 
 echo "building dnsresolver_aidl_interface-V9-ndk_platform^android_x86_64_static_cfi_com.android.resolv"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja dnsresolver_aidl_interface-V9-ndk_platform,android_x86_64_static_cfi_com.android.resolv

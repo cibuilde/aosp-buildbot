@@ -4,6 +4,7 @@ df -h
 
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
+mkdir -p out/soong/.minibootstrap && ln -sf $GITHUB_WORKSPACE/bpglob out/soong/.minibootstrap/bpglob
 ln -sf $GITHUB_WORKSPACE/ndk.ninja .
 ln -sf $GITHUB_WORKSPACE/ninja-ndk .
 ln -sf $GITHUB_WORKSPACE/ninja .
@@ -26,8 +27,8 @@ clone_depth_platform system/logging
 clone_depth_platform system/media
 clone_depth_platform system/unwinding
 
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/perfetto/statslog_perfetto.cpp^/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/perfetto/statslog_perfetto.h^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/perfetto/statslog_perfetto.cpp^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/perfetto/statslog_perfetto.h^/ .
 
 echo "building libstatslog_perfetto^android_x86_64_static_lto-thin"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libstatslog_perfetto,android_x86_64_static_lto-thin

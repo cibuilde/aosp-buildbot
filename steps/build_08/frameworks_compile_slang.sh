@@ -4,6 +4,7 @@ df -h
 
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
+mkdir -p out/soong/.minibootstrap && ln -sf $GITHUB_WORKSPACE/bpglob out/soong/.minibootstrap/bpglob
 ln -sf $GITHUB_WORKSPACE/ndk.ninja .
 ln -sf $GITHUB_WORKSPACE/ninja-ndk .
 ln -sf $GITHUB_WORKSPACE/ninja .
@@ -28,22 +29,22 @@ clone_depth_platform system/core
 clone_depth_platform system/logging
 clone_depth_platform system/media
 
-rsync -a -r $GITHUB_WORKSPACE/artifacts/bionic/libc/libc^android_vendor.31_x86_64_shared/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/bionic/libc/libc^android_vendor.31_x86_x86_64_shared/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/clang/clang-gen-arm-neon^/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/clang/clang-gen-attributes^/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/clang/clang-gen-checkers^/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/clang/clang-gen-comment-commands^/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/clang/clang-gen-comment-html-named-character-references^/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/clang/clang-gen-comment-nodes^/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/clang/clang-gen-declnodes^/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/clang/clang-gen-diagnostics^/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/clang/clang-gen-html-tags^/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/clang/clang-gen-options^/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/clang/clang-gen-statnodes^/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/clang/clang-version^/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/llvm/llvm-gen-attributes^/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/llvm/llvm-gen-intrinsics^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/libc^android_vendor.31_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/libc^android_vendor.31_x86_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/clang/clang-gen-arm-neon^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/clang/clang-gen-attributes^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/clang/clang-gen-checkers^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/clang/clang-gen-comment-commands^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/clang/clang-gen-comment-html-named-character-references^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/clang/clang-gen-comment-nodes^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/clang/clang-gen-declnodes^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/clang/clang-gen-diagnostics^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/clang/clang-gen-html-tags^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/clang/clang-gen-options^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/clang/clang-gen-statnodes^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/clang/clang-version^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/llvm/llvm-gen-attributes^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/llvm/llvm-gen-intrinsics^/ .
 
 echo "building libLLVMBitWriter_2_9^linux_glibc_x86_64_static"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libLLVMBitWriter_2_9,linux_glibc_x86_64_static

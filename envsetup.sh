@@ -89,23 +89,33 @@ function clone_sparse_exclude() {
 
 function clone_project() {
   #set -x
-  branch=$BRANCH
-  project_name=$1
-  project_path=$2
-  remote_name=origin
-  shift 2
-  mkdir -p ${project_path} && cd ${project_path}
-  git init
-  git config --unset-all core.bare
-  git config remote.${remote_name}.url "https://android.googlesource.com/${project_name}"
-  git config remote.${remote_name}.fetch "+refs/heads/${branch}:refs/remotes/${remote_name}/${branch}"
-  git config extensions.partialclone ${remote_name}
-  git sparse-checkout set --no-cone '!/*' "$@"
-  git fetch ${remote_name} --filter=tree:0 --depth=1 --no-tags --progress "+refs/heads/${branch}:refs/remotes/${remote_name}/${branch}"
-  echo $(git rev-parse --verify "refs/remotes/${remote_name}/${branch}^0") > .git/HEAD
-  git read-tree --reset -u -v HEAD
-  #git sparse-checkout reapply
-  #cd -
+  local project_name=$1
+  local project_path=$2
+  local branch=$3
+  local remote_name=origin
+
+  local path_key=${project_path//\//_}
+  local cache_file="$GITHUB_WORKSPACE/cache/${path_key}.tar.zst"
+
+  if [ -f "$cache_file" ]; then
+    echo "Cache hit: Extracting $cache_file to $project_path"
+    mkdir -p "$project_path"
+    tar xf "$cache_file" -C "$project_path"
+  else
+    echo "Cache miss: Cloning $project_path"
+    shift 2
+    mkdir -p ${project_path}
+    git -C ${project_path} init
+    git -C ${project_path} config --unset-all core.bare
+    git -C ${project_path} config remote.${remote_name}.url "https://android.googlesource.com/${project_name}"
+    git -C ${project_path} config remote.${remote_name}.fetch "+refs/heads/${branch}:refs/remotes/${remote_name}/${branch}"
+    git -C ${project_path} config extensions.partialclone ${remote_name}
+    git -C ${project_path} sparse-checkout set --no-cone '!/*' "$@"
+    git -C ${project_path} fetch ${remote_name} --filter=tree:0 --depth=1 --no-tags --progress "+refs/heads/${branch}:refs/remotes/${remote_name}/${branch}"
+    echo $(git -C ${project_path} rev-parse --verify "refs/remotes/${remote_name}/${branch}^0") > ${project_path}/.git/HEAD
+    git -C ${project_path} read-tree --reset -u -v HEAD
+    #git sparse-checkout reapply
+  fi
 }
 
 function download_release() {

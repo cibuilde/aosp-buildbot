@@ -4,6 +4,7 @@ df -h
 
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
+mkdir -p out/soong/.minibootstrap && ln -sf $GITHUB_WORKSPACE/bpglob out/soong/.minibootstrap/bpglob
 ln -sf $GITHUB_WORKSPACE/ndk.ninja .
 ln -sf $GITHUB_WORKSPACE/ninja-ndk .
 ln -sf $GITHUB_WORKSPACE/ninja .
@@ -28,8 +29,8 @@ clone_depth_platform system/libbase
 clone_depth_platform system/logging
 clone_depth_platform system/media
 
-rsync -a -r $GITHUB_WORKSPACE/artifacts/system/incremental_delivery/sysprop/libcom.android.sysprop.incremental^android_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/system/incremental_delivery/sysprop/libcom.android.sysprop.incremental^android_x86_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/incremental_delivery/sysprop/libcom.android.sysprop.incremental^android_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/incremental_delivery/sysprop/libcom.android.sysprop.incremental^android_x86_x86_64_static/ .
 
 echo "building libincfs^android_x86_64_static"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libincfs,android_x86_64_static
