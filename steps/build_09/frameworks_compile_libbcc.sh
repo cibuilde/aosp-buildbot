@@ -4,6 +4,7 @@ df -h
 
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
+mkdir -p out/soong/.minibootstrap && ln -sf $GITHUB_WORKSPACE/bpglob out/soong/.minibootstrap/bpglob
 ln -sf $GITHUB_WORKSPACE/ndk.ninja .
 ln -sf $GITHUB_WORKSPACE/ninja-ndk .
 ln -sf $GITHUB_WORKSPACE/ninja .
@@ -27,16 +28,16 @@ clone_depth_platform system/core
 clone_depth_platform system/logging
 clone_depth_platform system/media
 
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/libcxx/libc++^linux_glibc_x86_64_shared/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/llvm/llvm-gen-attributes^/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/llvm/llvm-gen-intrinsics^/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/frameworks/compile/libbcc/bcinfo/BitReader_2_7/libLLVMBitReader_2_7^linux_glibc_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/frameworks/compile/libbcc/bcinfo/BitReader_3_0/libLLVMBitReader_3_0^linux_glibc_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/frameworks/compile/libbcc/bcinfo/Wrap/libLLVMWrap^linux_glibc_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/frameworks/compile/slang/BitWriter_3_2/libLLVMBitWriter_3_2^linux_glibc_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/frameworks/compile/slang/StripUnkAttr/libStripUnkAttr^linux_glibc_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/system/core/libcutils/libcutils^linux_glibc_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/system/logging/liblog/liblog^linux_glibc_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcxx/libc++^linux_glibc_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/llvm/llvm-gen-attributes^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/llvm/llvm-gen-intrinsics^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/compile/libbcc/bcinfo/BitReader_2_7/libLLVMBitReader_2_7^linux_glibc_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/compile/libbcc/bcinfo/BitReader_3_0/libLLVMBitReader_3_0^linux_glibc_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/compile/libbcc/bcinfo/Wrap/libLLVMWrap^linux_glibc_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/compile/slang/BitWriter_3_2/libLLVMBitWriter_3_2^linux_glibc_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/compile/slang/StripUnkAttr/libStripUnkAttr^linux_glibc_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/core/libcutils/libcutils^linux_glibc_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^linux_glibc_x86_64_static/ .
 
 echo "building libbcinfo^linux_glibc_x86_64_shared"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja libbcinfo,linux_glibc_x86_64_shared

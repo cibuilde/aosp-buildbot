@@ -4,6 +4,7 @@ df -h
 
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
+mkdir -p out/soong/.minibootstrap && ln -sf $GITHUB_WORKSPACE/bpglob out/soong/.minibootstrap/bpglob
 ln -sf $GITHUB_WORKSPACE/ndk.ninja .
 ln -sf $GITHUB_WORKSPACE/ninja-ndk .
 ln -sf $GITHUB_WORKSPACE/ninja .
@@ -27,33 +28,33 @@ clone_depth_platform system/core
 clone_depth_platform system/logging
 clone_depth_platform system/media
 
-rsync -a -r $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_so^android_x86_64_apex10000/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/bionic/libc/crtend_so^android_x86_64_apex10000/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/bionic/libc/libc^android_x86_64_shared_current/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/bionic/libdl/libdl^android_x86_64_shared_current/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/bionic/libm/libm^android_x86_64_shared_current/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/device/generic/vulkan-cereal/third-party/angle/gfxstream_angle_stub^android_x86_64_static_apex10000/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/device/generic/vulkan-cereal/stream-servers/apigen-codec-common/gfxstream_apigen_codec_common^android_x86_64_static_apex10000/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/device/generic/vulkan-cereal/third-party/astc-codec/src/decoder/gfxstream_astc_codec^android_x86_64_static_apex10000/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/device/generic/vulkan-cereal/base/gfxstream_base^android_x86_64_static_apex10000/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/device/generic/vulkan-cereal/stream-servers/compressedTextureFormats/gfxstream_compressedTextures^android_x86_64_static_apex10000/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/device/generic/vulkan-cereal/stream-servers/OpenGLESDispatch/gfxstream_dispatch^android_x86_64_static_apex10000/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/device/generic/vulkan-cereal/stream-servers/gles1_dec/gfxstream_gles1_dec^android_x86_64_static_apex10000/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/device/generic/vulkan-cereal/stream-servers/gles2_dec/gfxstream_gles2_dec^android_x86_64_static_apex10000/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/device/generic/vulkan-cereal/stream-servers/libGLSnapshot/gfxstream_glsnapshot^android_x86_64_static_apex10000/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/device/generic/vulkan-cereal/host-common/gfxstream_host_common^android_x86_64_static_apex10000/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/device/generic/vulkan-cereal/third-party/lz4/gfxstream_lz4^android_x86_64_static_apex10000/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/device/generic/vulkan-cereal/stream-servers/renderControl_dec/gfxstream_renderControl_dec^android_x86_64_static_apex10000/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/device/generic/vulkan-cereal/stream-servers/glestranslator/EGL/gfxstream_translator_egl^android_x86_64_static_apex10000/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/device/generic/vulkan-cereal/stream-servers/glestranslator/GLcommon/gfxstream_translator_glcommon^android_x86_64_static_apex10000/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/device/generic/vulkan-cereal/stream-servers/glestranslator/GLES_CM/gfxstream_translator_glescm^android_x86_64_static_apex10000/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/device/generic/vulkan-cereal/stream-servers/glestranslator/GLES_V2/gfxstream_translator_glesv2^android_x86_64_static_apex10000/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/device/generic/vulkan-cereal/stream-servers/vulkan/cereal/gfxstream_vulkan_cereal_host^android_x86_64_static_apex10000/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/device/generic/vulkan-cereal/stream-servers/vulkan/gfxstream_vulkan_server^android_x86_64_static_apex10000/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/libcxx/libc++^android_x86_64_shared_apex10000/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/libcxxabi/libc++demangle^android_x86_64_static_apex10000/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/nativewindow/libnativewindow^android_x86_64_shared_current/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/system/logging/liblog/liblog^android_x86_64_shared_current/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/crtbegin_so^android_x86_64_apex10000/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/crtend_so^android_x86_64_apex10000/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/libc^android_x86_64_shared_current/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libdl/libdl^android_x86_64_shared_current/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libm/libm^android_x86_64_shared_current/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/device/generic/vulkan-cereal/third-party/angle/gfxstream_angle_stub^android_x86_64_static_apex10000/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/device/generic/vulkan-cereal/stream-servers/apigen-codec-common/gfxstream_apigen_codec_common^android_x86_64_static_apex10000/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/device/generic/vulkan-cereal/third-party/astc-codec/src/decoder/gfxstream_astc_codec^android_x86_64_static_apex10000/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/device/generic/vulkan-cereal/base/gfxstream_base^android_x86_64_static_apex10000/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/device/generic/vulkan-cereal/stream-servers/compressedTextureFormats/gfxstream_compressedTextures^android_x86_64_static_apex10000/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/device/generic/vulkan-cereal/stream-servers/OpenGLESDispatch/gfxstream_dispatch^android_x86_64_static_apex10000/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/device/generic/vulkan-cereal/stream-servers/gles1_dec/gfxstream_gles1_dec^android_x86_64_static_apex10000/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/device/generic/vulkan-cereal/stream-servers/gles2_dec/gfxstream_gles2_dec^android_x86_64_static_apex10000/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/device/generic/vulkan-cereal/stream-servers/libGLSnapshot/gfxstream_glsnapshot^android_x86_64_static_apex10000/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/device/generic/vulkan-cereal/host-common/gfxstream_host_common^android_x86_64_static_apex10000/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/device/generic/vulkan-cereal/third-party/lz4/gfxstream_lz4^android_x86_64_static_apex10000/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/device/generic/vulkan-cereal/stream-servers/renderControl_dec/gfxstream_renderControl_dec^android_x86_64_static_apex10000/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/device/generic/vulkan-cereal/stream-servers/glestranslator/EGL/gfxstream_translator_egl^android_x86_64_static_apex10000/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/device/generic/vulkan-cereal/stream-servers/glestranslator/GLcommon/gfxstream_translator_glcommon^android_x86_64_static_apex10000/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/device/generic/vulkan-cereal/stream-servers/glestranslator/GLES_CM/gfxstream_translator_glescm^android_x86_64_static_apex10000/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/device/generic/vulkan-cereal/stream-servers/glestranslator/GLES_V2/gfxstream_translator_glesv2^android_x86_64_static_apex10000/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/device/generic/vulkan-cereal/stream-servers/vulkan/cereal/gfxstream_vulkan_cereal_host^android_x86_64_static_apex10000/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/device/generic/vulkan-cereal/stream-servers/vulkan/gfxstream_vulkan_server^android_x86_64_static_apex10000/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcxx/libc++^android_x86_64_shared_apex10000/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcxxabi/libc++demangle^android_x86_64_static_apex10000/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/native/libs/nativewindow/libnativewindow^android_x86_64_shared_current/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^android_x86_64_shared_current/ .
 
 echo "building libgfxstream_backend^android_x86_64_shared_apex10000"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja libgfxstream_backend,android_x86_64_shared_apex10000

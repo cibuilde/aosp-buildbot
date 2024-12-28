@@ -4,6 +4,7 @@ df -h
 
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
+mkdir -p out/soong/.minibootstrap && ln -sf $GITHUB_WORKSPACE/bpglob out/soong/.minibootstrap/bpglob
 ln -sf $GITHUB_WORKSPACE/ndk.ninja .
 ln -sf $GITHUB_WORKSPACE/ninja-ndk .
 ln -sf $GITHUB_WORKSPACE/ninja .
@@ -28,39 +29,39 @@ clone_depth_platform system/core
 clone_sparse_exclude system/extras "!/simpleperf/scripts" "!/simpleperf/testdata" "!/simpleperf/demo" "!/simpleperf/doc" "!/memory_replay/traces" "!/ioshark/*.tgz" "!/ioshark/*.tar.gz"
 clone_depth_platform system/logging
 
-rsync -a -r $GITHUB_WORKSPACE/artifacts/singletons/ndk^/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_so^android_recovery_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_so^android_vendor_ramdisk_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_so^android_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_so^android_x86_64_apex10000/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_so^android_x86_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_so^android_x86_x86_64_apex10000/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/bionic/libc/crtend_so^android_recovery_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/bionic/libc/crtend_so^android_vendor_ramdisk_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/bionic/libc/crtend_so^android_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/bionic/libc/crtend_so^android_x86_64_apex10000/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/bionic/libc/crtend_so^android_x86_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/bionic/libc/crtend_so^android_x86_x86_64_apex10000/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/bionic/libc/libc^android_recovery_x86_64_shared/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/bionic/libc/libc^android_vendor_ramdisk_x86_64_shared/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/bionic/libc/libc^android_x86_64_shared/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/bionic/libc/libc^android_x86_64_shared_apex10000/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/bionic/libc/libc^android_x86_x86_64_shared/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/bionic/libc/libc^android_x86_x86_64_shared_apex10000/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/bionic/libm/libm.x86.map^/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/bionic/libm/libm.x86_64.map^/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/bionic/libm/libm^android_recovery_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/bionic/libm/libm^android_vendor_ramdisk_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/bionic/libm/libm^android_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/bionic/libm/libm^android_x86_64_static_apex10000/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/bionic/libm/libm^android_x86_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/bionic/libm/libm^android_x86_x86_64_static_apex10000/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/arm-optimized-routines/libarm-optimized-routines-math^android_recovery_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/arm-optimized-routines/libarm-optimized-routines-math^android_vendor_ramdisk_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/arm-optimized-routines/libarm-optimized-routines-math^android_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/arm-optimized-routines/libarm-optimized-routines-math^android_x86_64_static_apex10000/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/arm-optimized-routines/libarm-optimized-routines-math^android_x86_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/arm-optimized-routines/libarm-optimized-routines-math^android_x86_x86_64_static_apex10000/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/singletons/ndk^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/crtbegin_so^android_recovery_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/crtbegin_so^android_vendor_ramdisk_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/crtbegin_so^android_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/crtbegin_so^android_x86_64_apex10000/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/crtbegin_so^android_x86_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/crtbegin_so^android_x86_x86_64_apex10000/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/crtend_so^android_recovery_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/crtend_so^android_vendor_ramdisk_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/crtend_so^android_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/crtend_so^android_x86_64_apex10000/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/crtend_so^android_x86_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/crtend_so^android_x86_x86_64_apex10000/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/libc^android_recovery_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/libc^android_vendor_ramdisk_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/libc^android_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/libc^android_x86_64_shared_apex10000/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/libc^android_x86_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/libc^android_x86_x86_64_shared_apex10000/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libm/libm.x86.map^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libm/libm.x86_64.map^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libm/libm^android_recovery_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libm/libm^android_vendor_ramdisk_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libm/libm^android_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libm/libm^android_x86_64_static_apex10000/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libm/libm^android_x86_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libm/libm^android_x86_x86_64_static_apex10000/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/arm-optimized-routines/libarm-optimized-routines-math^android_recovery_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/arm-optimized-routines/libarm-optimized-routines-math^android_vendor_ramdisk_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/arm-optimized-routines/libarm-optimized-routines-math^android_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/arm-optimized-routines/libarm-optimized-routines-math^android_x86_64_static_apex10000/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/arm-optimized-routines/libarm-optimized-routines-math^android_x86_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/arm-optimized-routines/libarm-optimized-routines-math^android_x86_x86_64_static_apex10000/ .
 
 echo "building crtbrand^android_x86_64_sdk_21"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja crtbrand,android_x86_64_sdk_21

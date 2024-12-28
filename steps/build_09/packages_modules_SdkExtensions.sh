@@ -4,6 +4,7 @@ df -h
 
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
+mkdir -p out/soong/.minibootstrap && ln -sf $GITHUB_WORKSPACE/bpglob out/soong/.minibootstrap/bpglob
 ln -sf $GITHUB_WORKSPACE/ndk.ninja .
 ln -sf $GITHUB_WORKSPACE/ninja-ndk .
 ln -sf $GITHUB_WORKSPACE/ninja .
@@ -12,7 +13,7 @@ mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/
 
 clone_depth_platform packages/modules/SdkExtensions
 
-rsync -a -r $GITHUB_WORKSPACE/artifacts/packages/modules/SdkExtensions/gen_sdk/extensions_db.pb^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/SdkExtensions/gen_sdk/extensions_db.pb^/ .
 
 echo "building extensions_db^android_x86_64"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja extensions_db,android_x86_64

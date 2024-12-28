@@ -4,6 +4,7 @@ df -h
 
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
+mkdir -p out/soong/.minibootstrap && ln -sf $GITHUB_WORKSPACE/bpglob out/soong/.minibootstrap/bpglob
 ln -sf $GITHUB_WORKSPACE/ndk.ninja .
 ln -sf $GITHUB_WORKSPACE/ninja-ndk .
 ln -sf $GITHUB_WORKSPACE/ninja .
@@ -23,13 +24,13 @@ clone_depth_platform system/bt
 clone_depth_platform system/libbase
 clone_depth_platform system/logging
 
-rsync -a -r $GITHUB_WORKSPACE/artifacts/bionic/libc/libc^android_vendor.31_x86_64_shared/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/libchrome/libchrome-include^/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/libchrome/libmojo_jni_registration_headers^/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/system/bt/gd/BluetoothGeneratedPackets_h^/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/system/bt/vendor_libs/test_vendor_lib/RootCanalGeneratedPackets_h^/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/system/bt/gd/rust/shim/libbt_init_flags_bridge_header^/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/system/bt/vendor_libs/test_vendor_lib/libscriptedbeaconpayload-protos-lite^android_vendor.31_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/libc^android_vendor.31_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/libchrome/libchrome-include^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/libchrome/libmojo_jni_registration_headers^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/bt/gd/BluetoothGeneratedPackets_h^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/bt/vendor_libs/test_vendor_lib/RootCanalGeneratedPackets_h^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/bt/gd/rust/shim/libbt_init_flags_bridge_header^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/bt/vendor_libs/test_vendor_lib/libscriptedbeaconpayload-protos-lite^android_vendor.31_x86_64_static/ .
 
 echo "building libbt-rootcanal^android_vendor.31_x86_64_static"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja libbt-rootcanal,android_vendor.31_x86_64_static

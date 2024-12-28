@@ -4,6 +4,7 @@ df -h
 
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
+mkdir -p out/soong/.minibootstrap && ln -sf $GITHUB_WORKSPACE/bpglob out/soong/.minibootstrap/bpglob
 ln -sf $GITHUB_WORKSPACE/ndk.ninja .
 ln -sf $GITHUB_WORKSPACE/ninja-ndk .
 ln -sf $GITHUB_WORKSPACE/ninja .
@@ -27,7 +28,7 @@ clone_depth_platform system/core
 clone_sparse_exclude system/extras "!/simpleperf/scripts" "!/simpleperf/testdata" "!/simpleperf/demo" "!/simpleperf/doc" "!/memory_replay/traces" "!/ioshark/*.tgz" "!/ioshark/*.tar.gz"
 clone_depth_platform system/logging
 
-rsync -a -r $GITHUB_WORKSPACE/artifacts/singletons/ndk^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/singletons/ndk^/ .
 
 echo "building liblua^android_x86_64_sdk_static_apex30"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja liblua,android_x86_64_sdk_static_apex30

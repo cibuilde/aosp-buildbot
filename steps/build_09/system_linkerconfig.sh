@@ -4,6 +4,7 @@ df -h
 
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
+mkdir -p out/soong/.minibootstrap && ln -sf $GITHUB_WORKSPACE/bpglob out/soong/.minibootstrap/bpglob
 ln -sf $GITHUB_WORKSPACE/ndk.ninja .
 ln -sf $GITHUB_WORKSPACE/ninja-ndk .
 ln -sf $GITHUB_WORKSPACE/ninja .
@@ -34,52 +35,52 @@ clone_depth_platform system/linkerconfig
 clone_depth_platform system/logging
 clone_depth_platform system/media
 
-rsync -a -r $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_static^android_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_static^android_x86_64_apex10000/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/bionic/libc/crtend_android^android_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/bionic/libc/crtend_android^android_x86_64_apex10000/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/bionic/libc/libc^android_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/bionic/libc/libc^android_x86_64_static_apex10000/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/bionic/libm/libm^android_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/bionic/libm/libm^android_x86_64_static_apex10000/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/build/soong/linkerconfig/proto/lib_linker_config_proto_lite^android_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/build/soong/linkerconfig/proto/lib_linker_config_proto_lite^android_x86_64_static_apex10000/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/build/soong/linkerconfig/proto/lib_linker_config_proto_lite^linux_glibc_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/icu/icu4c/source/i18n/libicui18n^linux_glibc_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/icu/icu4c/source/common/libicuuc^linux_glibc_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/icu/icu4c/source/libicuuc_stubdata^linux_glibc_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/libcxx/libc++_static^android_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/libcxx/libc++_static^android_x86_64_static_apex10000/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/libcxx/libc++_static^linux_glibc_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/libcxxabi/libc++demangle^android_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/libcxxabi/libc++demangle^android_x86_64_static_apex10000/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/libxml2/libxml2^android_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/libxml2/libxml2^android_x86_64_static_apex10000/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/libxml2/libxml2^linux_glibc_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/protobuf/libprotobuf-cpp-lite^android_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/protobuf/libprotobuf-cpp-lite^android_x86_64_static_apex10000/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/external/protobuf/libprotobuf-cpp-lite^linux_glibc_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/system/apex/proto/lib_apex_manifest_proto_lite^android_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/system/apex/proto/lib_apex_manifest_proto_lite^android_x86_64_static_apex10000/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/system/apex/proto/lib_apex_manifest_proto_lite^linux_glibc_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/system/apex/libs/libapexutil/libapexutil^android_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/system/apex/libs/libapexutil/libapexutil^android_x86_64_static_apex10000/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/system/apex/libs/libapexutil/libapexutil^linux_glibc_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/system/libbase/libbase^android_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/system/libbase/libbase^android_x86_64_static_apex10000/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/system/libbase/libbase^linux_glibc_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/system/linkerconfig/linkerconfig_contents^android_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/system/linkerconfig/linkerconfig_contents^android_x86_64_static_apex10000/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/system/linkerconfig/linkerconfig_contents^linux_glibc_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/system/linkerconfig/linkerconfig_generator^android_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/system/linkerconfig/linkerconfig_generator^android_x86_64_static_apex10000/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/system/linkerconfig/linkerconfig_generator^linux_glibc_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/system/linkerconfig/linkerconfig_modules^android_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/system/linkerconfig/linkerconfig_modules^android_x86_64_static_apex10000/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/system/linkerconfig/linkerconfig_modules^linux_glibc_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/system/logging/liblog/liblog^android_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/system/logging/liblog/liblog^android_x86_64_static_apex10000/ .
-rsync -a -r $GITHUB_WORKSPACE/artifacts/system/logging/liblog/liblog^linux_glibc_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/crtbegin_static^android_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/crtbegin_static^android_x86_64_apex10000/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/crtend_android^android_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/crtend_android^android_x86_64_apex10000/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/libc^android_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/libc^android_x86_64_static_apex10000/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libm/libm^android_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libm/libm^android_x86_64_static_apex10000/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/linkerconfig/proto/lib_linker_config_proto_lite^android_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/linkerconfig/proto/lib_linker_config_proto_lite^android_x86_64_static_apex10000/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/linkerconfig/proto/lib_linker_config_proto_lite^linux_glibc_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/icu/icu4c/source/i18n/libicui18n^linux_glibc_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/icu/icu4c/source/common/libicuuc^linux_glibc_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/icu/icu4c/source/libicuuc_stubdata^linux_glibc_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcxx/libc++_static^android_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcxx/libc++_static^android_x86_64_static_apex10000/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcxx/libc++_static^linux_glibc_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcxxabi/libc++demangle^android_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcxxabi/libc++demangle^android_x86_64_static_apex10000/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/libxml2/libxml2^android_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/libxml2/libxml2^android_x86_64_static_apex10000/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/libxml2/libxml2^linux_glibc_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/protobuf/libprotobuf-cpp-lite^android_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/protobuf/libprotobuf-cpp-lite^android_x86_64_static_apex10000/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/protobuf/libprotobuf-cpp-lite^linux_glibc_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/apex/proto/lib_apex_manifest_proto_lite^android_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/apex/proto/lib_apex_manifest_proto_lite^android_x86_64_static_apex10000/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/apex/proto/lib_apex_manifest_proto_lite^linux_glibc_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/apex/libs/libapexutil/libapexutil^android_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/apex/libs/libapexutil/libapexutil^android_x86_64_static_apex10000/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/apex/libs/libapexutil/libapexutil^linux_glibc_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/libbase/libbase^android_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/libbase/libbase^android_x86_64_static_apex10000/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/libbase/libbase^linux_glibc_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/linkerconfig/linkerconfig_contents^android_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/linkerconfig/linkerconfig_contents^android_x86_64_static_apex10000/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/linkerconfig/linkerconfig_contents^linux_glibc_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/linkerconfig/linkerconfig_generator^android_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/linkerconfig/linkerconfig_generator^android_x86_64_static_apex10000/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/linkerconfig/linkerconfig_generator^linux_glibc_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/linkerconfig/linkerconfig_modules^android_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/linkerconfig/linkerconfig_modules^android_x86_64_static_apex10000/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/linkerconfig/linkerconfig_modules^linux_glibc_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^android_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^android_x86_64_static_apex10000/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^linux_glibc_x86_64_static/ .
 
 echo "building linkerconfig^android_x86_64"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja linkerconfig,android_x86_64
