@@ -1002,6 +1002,26 @@ mkdir -p $GITHUB_WORKSPACE/.bin
 ln -sf /usr/bin/python2 $GITHUB_WORKSPACE/.bin/python
 export PATH=$GITHUB_WORKSPACE/.bin:$PATH
 
+time source steps/build_11/packages_modules_Virtualization.sh
+time source steps/build_11/packages_modules_adb.sh
+time source steps/build_11/prebuilts_rust.sh
+time source steps/build_11/prebuilts_sdk.sh
+time source steps/build_11/system_core.sh
+time source steps/build_11/system_gatekeeper.sh
+time source steps/build_11/system_hardware_interfaces.sh
+time source steps/build_11/system_keymaster.sh
+time source steps/build_11/system_libbase.sh
+time source steps/build_11/system_linkerconfig.sh
+time source steps/build_11/system_logging.sh
+time source steps/build_11/system_media.sh
+time source steps/build_11/system_memory_libdmabufheap.sh
+time source steps/build_11/system_memory_libion.sh
+time source steps/build_11/system_memory_lmkd.sh
+time source steps/build_11/system_security.sh
+time source steps/build_11/system_sepolicy.sh
+time source steps/build_11/system_tools_mkbootimg.sh
+time source steps/build_11/system_unwinding.sh
+time source steps/build_11/tools_platform-compat.sh
 time source steps/build_11/art.sh
 time source steps/build_11/device_google_cuttlefish.sh
 time source steps/build_11/external_auto.sh
@@ -1068,26 +1088,6 @@ time source steps/build_11/packages_apps_Messaging.sh
 time source steps/build_11/packages_apps_Settings.sh
 time source steps/build_11/packages_modules_DnsResolver.sh
 time source steps/build_11/packages_modules_NeuralNetworks.sh
-time source steps/build_11/packages_modules_Virtualization.sh
-time source steps/build_11/packages_modules_adb.sh
-time source steps/build_11/prebuilts_rust.sh
-time source steps/build_11/prebuilts_sdk.sh
-time source steps/build_11/system_core.sh
-time source steps/build_11/system_gatekeeper.sh
-time source steps/build_11/system_hardware_interfaces.sh
-time source steps/build_11/system_keymaster.sh
-time source steps/build_11/system_libbase.sh
-time source steps/build_11/system_linkerconfig.sh
-time source steps/build_11/system_logging.sh
-time source steps/build_11/system_media.sh
-time source steps/build_11/system_memory_libdmabufheap.sh
-time source steps/build_11/system_memory_libion.sh
-time source steps/build_11/system_memory_lmkd.sh
-time source steps/build_11/system_security.sh
-time source steps/build_11/system_sepolicy.sh
-time source steps/build_11/system_tools_mkbootimg.sh
-time source steps/build_11/system_unwinding.sh
-time source steps/build_11/tools_platform-compat.sh
 
 if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_clang_host_linux-x86.tar.zst" ]; then
   echo "Compressing prebuilts/clang/host/linux-x86 -> prebuilts_clang_host_linux-x86.tar.zst"
