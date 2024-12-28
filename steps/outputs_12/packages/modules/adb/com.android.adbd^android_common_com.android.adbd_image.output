@@ -1,0 +1,3 @@
+out/soong/.intermediates/packages/modules/adb/apex/com.android.adbd/android_common_com.android.adbd_image/apex_manifest.pb
+out/soong/.intermediates/packages/modules/adb/apex/com.android.adbd/android_common_com.android.adbd_image/apex_pubkey
+out/soong/.intermediates/packages/modules/adb/apex/com.android.adbd/android_common_com.android.adbd_image/com.android.adbd.capex
