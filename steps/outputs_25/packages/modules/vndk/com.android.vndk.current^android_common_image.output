@@ -1,0 +1,3 @@
+out/soong/.intermediates/packages/modules/vndk/apex/com.android.vndk.current/android_common_image/apex_manifest.pb
+out/soong/.intermediates/packages/modules/vndk/apex/com.android.vndk.current/android_common_image/apex_pubkey
+out/soong/.intermediates/packages/modules/vndk/apex/com.android.vndk.current/android_common_image/com.android.vndk.current.apex

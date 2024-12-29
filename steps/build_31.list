@@ -1,0 +1,10 @@
+build step 31: projects: 8 targets: 11
+
+art: art-bootclasspath-fragment^android_common_apex31
+external/conscrypt: com.android.conscrypt-bootclasspath-fragment^android_common_apex29
+external/exoplayer: exoplayer2-extractor^android_common_apex29
+external/icing: icing-java-proto-lite^android_common_apex10000
+external/icu: core-icu4j^android_common
+frameworks/av: libaudiopolicyservice^android_x86_64_shared libsfplugin_ccodec^android_x86_64_shared_cfi libsfplugin_ccodec^android_x86_x86_64_shared_cfi
+frameworks/base: hwbinder.stubs^android_common updatable-driver-protos^android_common
+frameworks/proto_logging: networkstackprotos^android_common

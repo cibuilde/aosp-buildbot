@@ -1,0 +1,131 @@
+include ninja/global.ninja
+include ninja/singleton.ninja
+
+include ninja/external/bouncycastle/bouncycastle-unbundled^android_common.ninja
+include ninja/external/bouncycastle/bouncycastle-unbundled^android_common_apex30.ninja
+include ninja/external/kotlinx.atomicfu/kotlinx_atomicfu^android_common.ninja
+include ninja/frameworks/av/media/codec2/hidl/1.0/utils/libcodec2_hidl_client@1.0^android_x86_64_shared.ninja
+include ninja/frameworks/av/media/codec2/hidl/1.0/utils/libcodec2_hidl_client@1.0^android_x86_x86_64_shared.ninja
+include ninja/frameworks/av/media/extractors/aac/libaacextractor^android_x86_64_shared_cfi_com.android.media.ninja
+include ninja/frameworks/av/media/extractors/amr/libamrextractor^android_x86_64_shared_cfi_apex29.ninja
+include ninja/frameworks/av/media/extractors/flac/libflacextractor^android_x86_64_shared_cfi_com.android.media.ninja
+include ninja/frameworks/av/media/extractors/midi/libmidiextractor^android_x86_64_shared_cfi_apex29.ninja
+include ninja/frameworks/av/media/extractors/mkv/libmkvextractor^android_x86_64_shared_cfi_com.android.media.ninja
+include ninja/frameworks/av/media/extractors/mp3/libmp3extractor^android_x86_64_shared_cfi_apex29.ninja
+include ninja/frameworks/av/media/extractors/mp4/libmp4extractor^android_x86_64_shared_cfi_apex29.ninja
+include ninja/frameworks/av/media/extractors/mpeg2/libmpeg2extractor^android_x86_64_shared_cfi_com.android.media.ninja
+include ninja/frameworks/av/media/extractors/ogg/liboggextractor^android_x86_64_shared_cfi_com.android.media.ninja
+include ninja/frameworks/av/media/extractors/wav/libwavextractor^android_x86_64_shared_cfi_apex29.ninja
+include ninja/frameworks/av/media/libmedia/libmedia^android_x86_64_static_cfi.ninja
+include ninja/frameworks/av/media/libmedia/libmedia^android_x86_x86_64_static_cfi.ninja
+include ninja/frameworks/av/media/libmediaformatshaper/libmediaformatshaper^android_x86_64_shared_cfi_apex29.ninja
+include ninja/frameworks/av/media/libmediaformatshaper/libmediaformatshaper^android_x86_x86_64_shared_cfi_apex29.ninja
+include ninja/frameworks/av/media/libmediatranscoding/transcoder/libmediatranscoder^android_x86_64_shared_cfi_apex29.ninja
+include ninja/frameworks/av/media/libstagefright/omx/libstagefright_omx^android_x86_64_shared_cfi.ninja
+include ninja/frameworks/av/media/libstagefright/omx/libstagefright_omx^android_x86_x86_64_shared_cfi.ninja
+include ninja/frameworks/base/services/core/jni/libservices.core^android_x86_64_static.ninja
+include ninja/frameworks/base/services/core/jni/libservices.core^android_x86_x86_64_static.ninja
+include ninja/frameworks/native/services/surfaceflinger/CompositionEngine/libcompositionengine^android_x86_64_static_lto-thin.ninja
+include ninja/frameworks/native/services/surfaceflinger/layerproto/liblayers_proto^android_x86_64_shared.ninja
+include ninja/frameworks/rs/cpp/libRScpp^android_x86_64_shared.ninja
+include ninja/frameworks/rs/cpp/libRScpp^android_x86_x86_64_shared.ninja
+include ninja/libcore/core-current-stubs-for-system-modules^android_common.ninja
+include ninja/libcore/core-module-lib-stubs-system-modules^android_common.ninja
+include ninja/prebuilts/sdk/current/androidx/androidx.leanback_leanback-preference-nodeps^android_common.ninja
+include ninja/prebuilts/sdk/current/androidx/androidx.leanback_leanback-preference-nodeps^android_common_apex30.ninja
+include ninja/prebuilts/sdk/current/androidx/androidx.navigation_navigation-fragment-nodeps^android_common_apex30.ninja
+include ninja/prebuilts/sdk/current/androidx/androidx.slice_slice-builders-nodeps^android_common.ninja
+include ninja/prebuilts/sdk/current/androidx/androidx.slice_slice-view-nodeps^android_common.ninja
+include ninja/tools/metalava/private-stub-annotations-jar^android_common.ninja
+
+build bouncycastle-unbundled,android_common: phony out/soong/.intermediates/external/bouncycastle/bouncycastle-unbundled/android_common/javac/bouncycastle-unbundled.jar out/soong/.intermediates/external/bouncycastle/bouncycastle-unbundled/android_common/turbine-combined/bouncycastle-unbundled.jar
+
+build bouncycastle-unbundled,android_common_apex30: phony out/soong/.intermediates/external/bouncycastle/bouncycastle-unbundled/android_common_apex30/javac/bouncycastle-unbundled.jar out/soong/.intermediates/external/bouncycastle/bouncycastle-unbundled/android_common_apex30/turbine-combined/bouncycastle-unbundled.jar
+
+build external_bouncycastle-targets: phony bouncycastle-unbundled,android_common bouncycastle-unbundled,android_common_apex30
+
+build kotlinx_atomicfu,android_common: phony out/soong/.intermediates/external/kotlinx.atomicfu/kotlinx_atomicfu/android_common/combined/kotlinx_atomicfu.jar out/soong/.intermediates/external/kotlinx.atomicfu/kotlinx_atomicfu/android_common/turbine-combined/kotlinx_atomicfu.jar
+
+build external_kotlinx.atomicfu-targets: phony kotlinx_atomicfu,android_common
+
+build libaacextractor,android_x86_64_shared_cfi_com.android.media: phony out/soong/.intermediates/frameworks/av/media/extractors/aac/libaacextractor/android_x86_64_shared_cfi_com.android.media/libaacextractor.so
+
+build libamrextractor,android_x86_64_shared_cfi_apex29: phony out/soong/.intermediates/frameworks/av/media/extractors/amr/libamrextractor/android_x86_64_shared_cfi_apex29/libamrextractor.so
+
+build libcodec2_hidl_client@1.0,android_x86_64_shared: phony out/soong/.intermediates/frameworks/av/media/codec2/hidl/1.0/utils/libcodec2_hidl_client@1.0/android_x86_64_shared/libcodec2_hidl_client@1.0.so out/soong/.intermediates/frameworks/av/media/codec2/hidl/1.0/utils/libcodec2_hidl_client@1.0/android_x86_64_shared/libcodec2_hidl_client@1.0.so.toc
+
+build libcodec2_hidl_client@1.0,android_x86_x86_64_shared: phony out/soong/.intermediates/frameworks/av/media/codec2/hidl/1.0/utils/libcodec2_hidl_client@1.0/android_x86_x86_64_shared/libcodec2_hidl_client@1.0.so out/soong/.intermediates/frameworks/av/media/codec2/hidl/1.0/utils/libcodec2_hidl_client@1.0/android_x86_x86_64_shared/libcodec2_hidl_client@1.0.so.toc
+
+build libflacextractor,android_x86_64_shared_cfi_com.android.media: phony out/soong/.intermediates/frameworks/av/media/extractors/flac/libflacextractor/android_x86_64_shared_cfi_com.android.media/libflacextractor.so
+
+build libmedia,android_x86_64_static_cfi: phony out/soong/.intermediates/frameworks/av/media/libmedia/libmedia/android_x86_64_static_cfi/gen/aidl/android/BnMediaExtractorService.h out/soong/.intermediates/frameworks/av/media/libmedia/libmedia/android_x86_64_static_cfi/gen/aidl/android/BpMediaExtractorService.h out/soong/.intermediates/frameworks/av/media/libmedia/libmedia/android_x86_64_static_cfi/gen/aidl/android/IMediaExtractorService.h out/soong/.intermediates/frameworks/av/media/libmedia/libmedia/android_x86_64_static_cfi/obj/.intermediates/frameworks/av/media/libmedia/libmedia/android_x86_64_static_cfi/gen/aidl/android/IMediaExtractorService.o out/soong/.intermediates/frameworks/av/media/libmedia/libmedia/android_x86_64_static_cfi/obj/frameworks/av/media/libmedia/BufferingSettings.o out/soong/.intermediates/frameworks/av/media/libmedia/libmedia/android_x86_64_static_cfi/obj/frameworks/av/media/libmedia/CharacterEncodingDetector.o out/soong/.intermediates/frameworks/av/media/libmedia/libmedia/android_x86_64_static_cfi/obj/frameworks/av/media/libmedia/IDataSource.o out/soong/.intermediates/frameworks/av/media/libmedia/libmedia/android_x86_64_static_cfi/obj/frameworks/av/media/libmedia/IMediaDeathNotifier.o out/soong/.intermediates/frameworks/av/media/libmedia/libmedia/android_x86_64_static_cfi/obj/frameworks/av/media/libmedia/IMediaExtractor.o out/soong/.intermediates/frameworks/av/media/libmedia/libmedia/android_x86_64_static_cfi/obj/frameworks/av/media/libmedia/IMediaHTTPConnection.o out/soong/.intermediates/frameworks/av/media/libmedia/libmedia/android_x86_64_static_cfi/obj/frameworks/av/media/libmedia/IMediaHTTPService.o out/soong/.intermediates/frameworks/av/media/libmedia/libmedia/android_x86_64_static_cfi/obj/frameworks/av/media/libmedia/IMediaMetadataRetriever.o out/soong/.intermediates/frameworks/av/media/libmedia/libmedia/android_x86_64_static_cfi/obj/frameworks/av/media/libmedia/IMediaPlayer.o out/soong/.intermediates/frameworks/av/media/libmedia/libmedia/android_x86_64_static_cfi/obj/frameworks/av/media/libmedia/IMediaPlayerClient.o out/soong/.intermediates/frameworks/av/media/libmedia/libmedia/android_x86_64_static_cfi/obj/frameworks/av/media/libmedia/IMediaPlayerService.o out/soong/.intermediates/frameworks/av/media/libmedia/libmedia/android_x86_64_static_cfi/obj/frameworks/av/media/libmedia/IMediaRecorder.o out/soong/.intermediates/frameworks/av/media/libmedia/libmedia/android_x86_64_static_cfi/obj/frameworks/av/media/libmedia/IMediaRecorderClient.o out/soong/.intermediates/frameworks/av/media/libmedia/libmedia/android_x86_64_static_cfi/obj/frameworks/av/media/libmedia/IMediaSource.o out/soong/.intermediates/frameworks/av/media/libmedia/libmedia/android_x86_64_static_cfi/obj/frameworks/av/media/libmedia/IRemoteDisplay.o out/soong/.intermediates/frameworks/av/media/libmedia/libmedia/android_x86_64_static_cfi/obj/frameworks/av/media/libmedia/IRemoteDisplayClient.o out/soong/.intermediates/frameworks/av/media/libmedia/libmedia/android_x86_64_static_cfi/obj/frameworks/av/media/libmedia/IStreamSource.o out/soong/.intermediates/frameworks/av/media/libmedia/libmedia/android_x86_64_static_cfi/obj/frameworks/av/media/libmedia/MediaProfiles.o out/soong/.intermediates/frameworks/av/media/libmedia/libmedia/android_x86_64_static_cfi/obj/frameworks/av/media/libmedia/MediaResource.o out/soong/.intermediates/frameworks/av/media/libmedia/libmedia/android_x86_64_static_cfi/obj/frameworks/av/media/libmedia/MediaResourcePolicy.o out/soong/.intermediates/frameworks/av/media/libmedia/libmedia/android_x86_64_static_cfi/obj/frameworks/av/media/libmedia/MediaScanner.o out/soong/.intermediates/frameworks/av/media/libmedia/libmedia/android_x86_64_static_cfi/obj/frameworks/av/media/libmedia/MediaScannerClient.o out/soong/.intermediates/frameworks/av/media/libmedia/libmedia/android_x86_64_static_cfi/obj/frameworks/av/media/libmedia/Metadata.o out/soong/.intermediates/frameworks/av/media/libmedia/libmedia/android_x86_64_static_cfi/obj/frameworks/av/media/libmedia/NdkMediaErrorPriv.o out/soong/.intermediates/frameworks/av/media/libmedia/libmedia/android_x86_64_static_cfi/obj/frameworks/av/media/libmedia/NdkMediaFormatPriv.o out/soong/.intermediates/frameworks/av/media/libmedia/libmedia/android_x86_64_static_cfi/obj/frameworks/av/media/libmedia/StringArray.o out/soong/.intermediates/frameworks/av/media/libmedia/libmedia/android_x86_64_static_cfi/obj/frameworks/av/media/libmedia/mediametadataretriever.o out/soong/.intermediates/frameworks/av/media/libmedia/libmedia/android_x86_64_static_cfi/obj/frameworks/av/media/libmedia/mediaplayer.o out/soong/.intermediates/frameworks/av/media/libmedia/libmedia/android_x86_64_static_cfi/obj/frameworks/av/media/libmedia/mediarecorder.o
+
+build libmedia,android_x86_x86_64_static_cfi: phony out/soong/.intermediates/frameworks/av/media/libmedia/libmedia/android_x86_x86_64_static_cfi/gen/aidl/android/BnMediaExtractorService.h out/soong/.intermediates/frameworks/av/media/libmedia/libmedia/android_x86_x86_64_static_cfi/gen/aidl/android/BpMediaExtractorService.h out/soong/.intermediates/frameworks/av/media/libmedia/libmedia/android_x86_x86_64_static_cfi/gen/aidl/android/IMediaExtractorService.h out/soong/.intermediates/frameworks/av/media/libmedia/libmedia/android_x86_x86_64_static_cfi/obj/.intermediates/frameworks/av/media/libmedia/libmedia/android_x86_x86_64_static_cfi/gen/aidl/android/IMediaExtractorService.o out/soong/.intermediates/frameworks/av/media/libmedia/libmedia/android_x86_x86_64_static_cfi/obj/frameworks/av/media/libmedia/BufferingSettings.o out/soong/.intermediates/frameworks/av/media/libmedia/libmedia/android_x86_x86_64_static_cfi/obj/frameworks/av/media/libmedia/CharacterEncodingDetector.o out/soong/.intermediates/frameworks/av/media/libmedia/libmedia/android_x86_x86_64_static_cfi/obj/frameworks/av/media/libmedia/IDataSource.o out/soong/.intermediates/frameworks/av/media/libmedia/libmedia/android_x86_x86_64_static_cfi/obj/frameworks/av/media/libmedia/IMediaDeathNotifier.o out/soong/.intermediates/frameworks/av/media/libmedia/libmedia/android_x86_x86_64_static_cfi/obj/frameworks/av/media/libmedia/IMediaExtractor.o out/soong/.intermediates/frameworks/av/media/libmedia/libmedia/android_x86_x86_64_static_cfi/obj/frameworks/av/media/libmedia/IMediaHTTPConnection.o out/soong/.intermediates/frameworks/av/media/libmedia/libmedia/android_x86_x86_64_static_cfi/obj/frameworks/av/media/libmedia/IMediaHTTPService.o out/soong/.intermediates/frameworks/av/media/libmedia/libmedia/android_x86_x86_64_static_cfi/obj/frameworks/av/media/libmedia/IMediaMetadataRetriever.o out/soong/.intermediates/frameworks/av/media/libmedia/libmedia/android_x86_x86_64_static_cfi/obj/frameworks/av/media/libmedia/IMediaPlayer.o out/soong/.intermediates/frameworks/av/media/libmedia/libmedia/android_x86_x86_64_static_cfi/obj/frameworks/av/media/libmedia/IMediaPlayerClient.o out/soong/.intermediates/frameworks/av/media/libmedia/libmedia/android_x86_x86_64_static_cfi/obj/frameworks/av/media/libmedia/IMediaPlayerService.o out/soong/.intermediates/frameworks/av/media/libmedia/libmedia/android_x86_x86_64_static_cfi/obj/frameworks/av/media/libmedia/IMediaRecorder.o out/soong/.intermediates/frameworks/av/media/libmedia/libmedia/android_x86_x86_64_static_cfi/obj/frameworks/av/media/libmedia/IMediaRecorderClient.o out/soong/.intermediates/frameworks/av/media/libmedia/libmedia/android_x86_x86_64_static_cfi/obj/frameworks/av/media/libmedia/IMediaSource.o out/soong/.intermediates/frameworks/av/media/libmedia/libmedia/android_x86_x86_64_static_cfi/obj/frameworks/av/media/libmedia/IRemoteDisplay.o out/soong/.intermediates/frameworks/av/media/libmedia/libmedia/android_x86_x86_64_static_cfi/obj/frameworks/av/media/libmedia/IRemoteDisplayClient.o out/soong/.intermediates/frameworks/av/media/libmedia/libmedia/android_x86_x86_64_static_cfi/obj/frameworks/av/media/libmedia/IStreamSource.o out/soong/.intermediates/frameworks/av/media/libmedia/libmedia/android_x86_x86_64_static_cfi/obj/frameworks/av/media/libmedia/MediaProfiles.o out/soong/.intermediates/frameworks/av/media/libmedia/libmedia/android_x86_x86_64_static_cfi/obj/frameworks/av/media/libmedia/MediaResource.o out/soong/.intermediates/frameworks/av/media/libmedia/libmedia/android_x86_x86_64_static_cfi/obj/frameworks/av/media/libmedia/MediaResourcePolicy.o out/soong/.intermediates/frameworks/av/media/libmedia/libmedia/android_x86_x86_64_static_cfi/obj/frameworks/av/media/libmedia/MediaScanner.o out/soong/.intermediates/frameworks/av/media/libmedia/libmedia/android_x86_x86_64_static_cfi/obj/frameworks/av/media/libmedia/MediaScannerClient.o out/soong/.intermediates/frameworks/av/media/libmedia/libmedia/android_x86_x86_64_static_cfi/obj/frameworks/av/media/libmedia/Metadata.o out/soong/.intermediates/frameworks/av/media/libmedia/libmedia/android_x86_x86_64_static_cfi/obj/frameworks/av/media/libmedia/NdkMediaErrorPriv.o out/soong/.intermediates/frameworks/av/media/libmedia/libmedia/android_x86_x86_64_static_cfi/obj/frameworks/av/media/libmedia/NdkMediaFormatPriv.o out/soong/.intermediates/frameworks/av/media/libmedia/libmedia/android_x86_x86_64_static_cfi/obj/frameworks/av/media/libmedia/StringArray.o out/soong/.intermediates/frameworks/av/media/libmedia/libmedia/android_x86_x86_64_static_cfi/obj/frameworks/av/media/libmedia/mediametadataretriever.o out/soong/.intermediates/frameworks/av/media/libmedia/libmedia/android_x86_x86_64_static_cfi/obj/frameworks/av/media/libmedia/mediaplayer.o out/soong/.intermediates/frameworks/av/media/libmedia/libmedia/android_x86_x86_64_static_cfi/obj/frameworks/av/media/libmedia/mediarecorder.o
+
+build libmediaformatshaper,android_x86_64_shared_cfi_apex29: phony out/soong/.intermediates/frameworks/av/media/libmediaformatshaper/libmediaformatshaper/android_x86_64_shared_cfi_apex29/libmediaformatshaper.so
+
+build libmediaformatshaper,android_x86_x86_64_shared_cfi_apex29: phony out/soong/.intermediates/frameworks/av/media/libmediaformatshaper/libmediaformatshaper/android_x86_x86_64_shared_cfi_apex29/libmediaformatshaper.so
+
+build libmediatranscoder,android_x86_64_shared_cfi_apex29: phony out/soong/.intermediates/frameworks/av/media/libmediatranscoding/transcoder/libmediatranscoder/android_x86_64_shared_cfi_apex29/libmediatranscoder.so out/soong/.intermediates/frameworks/av/media/libmediatranscoding/transcoder/libmediatranscoder/android_x86_64_shared_cfi_apex29/libmediatranscoder.so.toc
+
+build libmidiextractor,android_x86_64_shared_cfi_apex29: phony out/soong/.intermediates/frameworks/av/media/extractors/midi/libmidiextractor/android_x86_64_shared_cfi_apex29/libmidiextractor.so
+
+build libmkvextractor,android_x86_64_shared_cfi_com.android.media: phony out/soong/.intermediates/frameworks/av/media/extractors/mkv/libmkvextractor/android_x86_64_shared_cfi_com.android.media/libmkvextractor.so
+
+build libmp3extractor,android_x86_64_shared_cfi_apex29: phony out/soong/.intermediates/frameworks/av/media/extractors/mp3/libmp3extractor/android_x86_64_shared_cfi_apex29/libmp3extractor.so
+
+build libmp4extractor,android_x86_64_shared_cfi_apex29: phony out/soong/.intermediates/frameworks/av/media/extractors/mp4/libmp4extractor/android_x86_64_shared_cfi_apex29/libmp4extractor.so
+
+build libmpeg2extractor,android_x86_64_shared_cfi_com.android.media: phony out/soong/.intermediates/frameworks/av/media/extractors/mpeg2/libmpeg2extractor/android_x86_64_shared_cfi_com.android.media/libmpeg2extractor.so
+
+build liboggextractor,android_x86_64_shared_cfi_com.android.media: phony out/soong/.intermediates/frameworks/av/media/extractors/ogg/liboggextractor/android_x86_64_shared_cfi_com.android.media/liboggextractor.so
+
+build libstagefright_omx,android_x86_64_shared_cfi: phony out/soong/.intermediates/frameworks/av/media/libstagefright/omx/libstagefright_omx/android_x86_64_shared_cfi/libstagefright_omx.so out/soong/.intermediates/frameworks/av/media/libstagefright/omx/libstagefright_omx/android_x86_64_shared_cfi/libstagefright_omx.so.toc
+
+build libstagefright_omx,android_x86_x86_64_shared_cfi: phony out/soong/.intermediates/frameworks/av/media/libstagefright/omx/libstagefright_omx/android_x86_x86_64_shared_cfi/libstagefright_omx.so out/soong/.intermediates/frameworks/av/media/libstagefright/omx/libstagefright_omx/android_x86_x86_64_shared_cfi/libstagefright_omx.so.toc
+
+build libwavextractor,android_x86_64_shared_cfi_apex29: phony out/soong/.intermediates/frameworks/av/media/extractors/wav/libwavextractor/android_x86_64_shared_cfi_apex29/libwavextractor.so
+
+build frameworks_av-targets: phony libaacextractor,android_x86_64_shared_cfi_com.android.media libamrextractor,android_x86_64_shared_cfi_apex29 libcodec2_hidl_client@1.0,android_x86_64_shared libcodec2_hidl_client@1.0,android_x86_x86_64_shared libflacextractor,android_x86_64_shared_cfi_com.android.media libmedia,android_x86_64_static_cfi libmedia,android_x86_x86_64_static_cfi libmediaformatshaper,android_x86_64_shared_cfi_apex29 libmediaformatshaper,android_x86_x86_64_shared_cfi_apex29 libmediatranscoder,android_x86_64_shared_cfi_apex29 libmidiextractor,android_x86_64_shared_cfi_apex29 libmkvextractor,android_x86_64_shared_cfi_com.android.media libmp3extractor,android_x86_64_shared_cfi_apex29 libmp4extractor,android_x86_64_shared_cfi_apex29 libmpeg2extractor,android_x86_64_shared_cfi_com.android.media liboggextractor,android_x86_64_shared_cfi_com.android.media libstagefright_omx,android_x86_64_shared_cfi libstagefright_omx,android_x86_x86_64_shared_cfi libwavextractor,android_x86_64_shared_cfi_apex29
+
+build libservices.core,android_x86_64_static: phony out/soong/.intermediates/frameworks/base/services/core/jni/libservices.core/android_x86_64_static/libservices.core.a
+
+build libservices.core,android_x86_x86_64_static: phony out/soong/.intermediates/frameworks/base/services/core/jni/libservices.core/android_x86_x86_64_static/libservices.core.a
+
+build frameworks_base-targets: phony libservices.core,android_x86_64_static libservices.core,android_x86_x86_64_static
+
+build libcompositionengine,android_x86_64_static_lto-thin: phony out/soong/.intermediates/frameworks/native/services/surfaceflinger/CompositionEngine/libcompositionengine/android_x86_64_static_lto-thin/libcompositionengine.a
+
+build liblayers_proto,android_x86_64_shared: phony out/soong/.intermediates/frameworks/native/services/surfaceflinger/layerproto/liblayers_proto/android_x86_64_shared/liblayers_proto.so out/soong/.intermediates/frameworks/native/services/surfaceflinger/layerproto/liblayers_proto/android_x86_64_shared/liblayers_proto.so.toc
+
+build frameworks_native-targets: phony libcompositionengine,android_x86_64_static_lto-thin liblayers_proto,android_x86_64_shared
+
+build libRScpp,android_x86_64_shared: phony out/soong/.intermediates/frameworks/rs/cpp/libRScpp/android_x86_64_shared/libRScpp.so out/soong/.intermediates/frameworks/rs/cpp/libRScpp/android_x86_64_shared/libRScpp.so.toc
+
+build libRScpp,android_x86_x86_64_shared: phony out/soong/.intermediates/frameworks/rs/cpp/libRScpp/android_x86_x86_64_shared/libRScpp.so out/soong/.intermediates/frameworks/rs/cpp/libRScpp/android_x86_x86_64_shared/libRScpp.so.toc
+
+build frameworks_rs-targets: phony libRScpp,android_x86_64_shared libRScpp,android_x86_x86_64_shared
+
+build core-current-stubs-for-system-modules,android_common: phony out/soong/.intermediates/libcore/core-current-stubs-for-system-modules/android_common/turbine-combined/core-current-stubs-for-system-modules.jar
+
+build core-module-lib-stubs-system-modules,android_common: phony out/soong/.intermediates/libcore/core-module-lib-stubs-system-modules/android_common/system/lib/jrt-fs.jar out/soong/.intermediates/libcore/core-module-lib-stubs-system-modules/android_common/system/lib/modules out/soong/.intermediates/libcore/core-module-lib-stubs-system-modules/android_common/system/release
+
+build libcore-targets: phony core-current-stubs-for-system-modules,android_common core-module-lib-stubs-system-modules,android_common
+
+build androidx.leanback_leanback-preference-nodeps,android_common: phony out/soong/.intermediates/prebuilts/sdk/current/androidx/androidx.leanback_leanback-preference-nodeps/android_common/aar/AndroidManifest.xml out/soong/.intermediates/prebuilts/sdk/current/androidx/androidx.leanback_leanback-preference-nodeps/android_common/aar/classes-combined.jar out/soong/.intermediates/prebuilts/sdk/current/androidx/androidx.leanback_leanback-preference-nodeps/android_common/aar/proguard.txt out/soong/.intermediates/prebuilts/sdk/current/androidx/androidx.leanback_leanback-preference-nodeps/android_common/package-res.apk
+
+build androidx.leanback_leanback-preference-nodeps,android_common_apex30: phony out/soong/.intermediates/prebuilts/sdk/current/androidx/androidx.leanback_leanback-preference-nodeps/android_common_apex30/aar/AndroidManifest.xml out/soong/.intermediates/prebuilts/sdk/current/androidx/androidx.leanback_leanback-preference-nodeps/android_common_apex30/aar/classes-combined.jar out/soong/.intermediates/prebuilts/sdk/current/androidx/androidx.leanback_leanback-preference-nodeps/android_common_apex30/aar/proguard.txt out/soong/.intermediates/prebuilts/sdk/current/androidx/androidx.leanback_leanback-preference-nodeps/android_common_apex30/package-res.apk
+
+build androidx.navigation_navigation-fragment-nodeps,android_common_apex30: phony out/soong/.intermediates/prebuilts/sdk/current/androidx/androidx.navigation_navigation-fragment-nodeps/android_common_apex30/aar/AndroidManifest.xml out/soong/.intermediates/prebuilts/sdk/current/androidx/androidx.navigation_navigation-fragment-nodeps/android_common_apex30/aar/classes-combined.jar out/soong/.intermediates/prebuilts/sdk/current/androidx/androidx.navigation_navigation-fragment-nodeps/android_common_apex30/aar/proguard.txt out/soong/.intermediates/prebuilts/sdk/current/androidx/androidx.navigation_navigation-fragment-nodeps/android_common_apex30/package-res.apk
+
+build androidx.slice_slice-builders-nodeps,android_common: phony out/soong/.intermediates/prebuilts/sdk/current/androidx/androidx.slice_slice-builders-nodeps/android_common/aar/AndroidManifest.xml out/soong/.intermediates/prebuilts/sdk/current/androidx/androidx.slice_slice-builders-nodeps/android_common/aar/classes-combined.jar out/soong/.intermediates/prebuilts/sdk/current/androidx/androidx.slice_slice-builders-nodeps/android_common/aar/proguard.txt out/soong/.intermediates/prebuilts/sdk/current/androidx/androidx.slice_slice-builders-nodeps/android_common/package-res.apk
+
+build androidx.slice_slice-view-nodeps,android_common: phony out/soong/.intermediates/prebuilts/sdk/current/androidx/androidx.slice_slice-view-nodeps/android_common/aar/AndroidManifest.xml out/soong/.intermediates/prebuilts/sdk/current/androidx/androidx.slice_slice-view-nodeps/android_common/aar/classes-combined.jar out/soong/.intermediates/prebuilts/sdk/current/androidx/androidx.slice_slice-view-nodeps/android_common/aar/proguard.txt out/soong/.intermediates/prebuilts/sdk/current/androidx/androidx.slice_slice-view-nodeps/android_common/package-res.apk
+
+build prebuilts_sdk-targets: phony androidx.leanback_leanback-preference-nodeps,android_common androidx.leanback_leanback-preference-nodeps,android_common_apex30 androidx.navigation_navigation-fragment-nodeps,android_common_apex30 androidx.slice_slice-builders-nodeps,android_common androidx.slice_slice-view-nodeps,android_common
+
+build private-stub-annotations-jar,android_common: phony out/soong/.intermediates/tools/metalava/private-stub-annotations-jar/android_common/javac/private-stub-annotations-jar.jar out/soong/.intermediates/tools/metalava/private-stub-annotations-jar/android_common/turbine-combined/private-stub-annotations-jar.jar
+
+build tools_metalava-targets: phony private-stub-annotations-jar,android_common
+
+

@@ -1,0 +1,5 @@
+out/soong/.intermediates/frameworks/av/media/libmedia/libmedia_omx/android_x86_x86_64_shared_cfi/gen/aidl/android/BnOMXBufferSource.h
+out/soong/.intermediates/frameworks/av/media/libmedia/libmedia_omx/android_x86_x86_64_shared_cfi/gen/aidl/android/BpOMXBufferSource.h
+out/soong/.intermediates/frameworks/av/media/libmedia/libmedia_omx/android_x86_x86_64_shared_cfi/gen/aidl/android/IOMXBufferSource.h
+out/soong/.intermediates/frameworks/av/media/libmedia/libmedia_omx/android_x86_x86_64_shared_cfi/libmedia_omx.so
+out/soong/.intermediates/frameworks/av/media/libmedia/libmedia_omx/android_x86_x86_64_shared_cfi/libmedia_omx.so.toc

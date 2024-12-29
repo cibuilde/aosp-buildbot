@@ -1,0 +1,147 @@
+include ninja/global.ninja
+include ninja/singleton.ninja
+
+include ninja/device/google/cuttlefish/guest/hals/ril/reference-ril/libcuttlefish-ril-2^android_vendor.31_x86_64_shared.ninja
+include ninja/device/google/cuttlefish/guest/hals/ril/reference-ril/libcuttlefish-ril-2^android_vendor.31_x86_x86_64_shared.ninja
+include ninja/device/google/cuttlefish/guest/hals/rild/libcuttlefish-rild^android_vendor.31_x86_64.ninja
+include ninja/external/angle/libEGL_angle^android_x86_64_shared.ninja
+include ninja/external/angle/libEGL_angle^android_x86_x86_64_shared.ninja
+include ninja/external/angle/libGLESv1_CM_angle^android_x86_64_shared.ninja
+include ninja/external/angle/libGLESv1_CM_angle^android_x86_x86_64_shared.ninja
+include ninja/external/conscrypt/conscrypt.module.public.api.stubs.source^android_common.ninja
+include ninja/external/crosvm/libcrosvm^android_x86_64_rlib_rlib-std_apex10000.ninja
+include ninja/external/icu/android_icu4j/i18n.module.public.api.stubs.source^android_common.ninja
+include ninja/frameworks/av/media/codec2/sfplugin/utils/libsfplugin_ccodec_utils^android_x86_64_shared_cfi.ninja
+include ninja/frameworks/av/media/codec2/sfplugin/utils/libsfplugin_ccodec_utils^android_x86_x86_64_shared_cfi.ninja
+include ninja/frameworks/av/media/libaaudio/src/libaaudio_internal^android_x86_64_shared.ninja
+include ninja/frameworks/av/media/libaaudio/src/libaaudio_internal^android_x86_x86_64_shared.ninja
+include ninja/frameworks/av/media/libstagefright/omx/libstagefright_omx^android_vendor.31_x86_64_shared.ninja
+include ninja/frameworks/av/media/libstagefright/omx/libstagefright_omx^android_vendor.31_x86_x86_64_shared.ninja
+include ninja/frameworks/av/media/libstagefright/xmlparser/libstagefright_xmlparser^android_x86_64_shared_cfi.ninja
+include ninja/frameworks/av/media/libstagefright/xmlparser/libstagefright_xmlparser^android_x86_x86_64_shared_cfi.ninja
+include ninja/frameworks/av/services/audioflinger/libaudioflinger^android_x86_64_shared.ninja
+include ninja/frameworks/av/services/mediacodec/mediaswcodec^android_x86_64_com.android.media.swcodec.ninja
+include ninja/frameworks/native/opengl/libs/libGLESv1_CM^android_x86_64_shared.ninja
+include ninja/frameworks/native/opengl/libs/libGLESv1_CM^android_x86_x86_64_shared.ninja
+include ninja/frameworks/native/opengl/libs/libGLESv2^android_x86_64_shared.ninja
+include ninja/frameworks/native/opengl/libs/libGLESv2^android_x86_x86_64_shared.ninja
+include ninja/frameworks/native/opengl/libs/libGLESv3^android_x86_64_shared.ninja
+include ninja/frameworks/native/opengl/libs/libGLESv3^android_x86_x86_64_shared.ninja
+include ninja/frameworks/native/services/inputflinger/reader/libinputreader^android_x86_64_shared.ninja
+include ninja/frameworks/native/services/inputflinger/reader/libinputreader^android_x86_x86_64_shared.ninja
+include ninja/frameworks/native/vulkan/vkjson/libvkjson^android_x86_64_shared.ninja
+include ninja/libcore/art-module-public-api-stubs-system-modules^android_common.ninja
+include ninja/libcore/mmodules/core_platform_api/legacy.core.platform.api.stubs^android_common.ninja
+include ninja/libcore/mmodules/core_platform_api/stable.core.platform.api.stubs^android_common.ninja
+include ninja/packages/apps/Gallery2/jni/libjni_eglfence^android_x86_64_shared.ninja
+include ninja/prebuilts/sdk/current/androidx/androidx.appcompat_appcompat^android_common.ninja
+include ninja/prebuilts/sdk/current/androidx/androidx.appcompat_appcompat^android_common_apex30.ninja
+include ninja/prebuilts/sdk/current/androidx/androidx.fragment_fragment-ktx^android_common_apex30.ninja
+include ninja/prebuilts/sdk/current/androidx/androidx.navigation_navigation-runtime^android_common_apex30.ninja
+include ninja/prebuilts/sdk/current/androidx/androidx.viewpager2_viewpager2^android_common.ninja
+include ninja/prebuilts/sdk/current/androidx/androidx.viewpager2_viewpager2^android_common_apex30.ninja
+include ninja/system/security/keystore2/libkeystore2^android_x86_64_rlib_rlib-std.ninja
+
+build libcuttlefish-ril-2,android_vendor.31_x86_64_shared: phony out/soong/.intermediates/device/google/cuttlefish/guest/hals/ril/reference-ril/libcuttlefish-ril-2/android_vendor.31_x86_64_shared/libcuttlefish-ril-2.so
+
+build libcuttlefish-ril-2,android_vendor.31_x86_x86_64_shared: phony out/soong/.intermediates/device/google/cuttlefish/guest/hals/ril/reference-ril/libcuttlefish-ril-2/android_vendor.31_x86_x86_64_shared/libcuttlefish-ril-2.so
+
+build libcuttlefish-rild,android_vendor.31_x86_64: phony out/soong/.intermediates/device/google/cuttlefish/guest/hals/rild/libcuttlefish-rild/android_vendor.31_x86_64/libcuttlefish-rild
+
+build device_google_cuttlefish-targets: phony libcuttlefish-ril-2,android_vendor.31_x86_64_shared libcuttlefish-ril-2,android_vendor.31_x86_x86_64_shared libcuttlefish-rild,android_vendor.31_x86_64
+
+build libEGL_angle,android_x86_64_shared: phony out/soong/.intermediates/external/angle/libEGL_angle/android_x86_64_shared/libEGL_angle.so
+
+build libEGL_angle,android_x86_x86_64_shared: phony out/soong/.intermediates/external/angle/libEGL_angle/android_x86_x86_64_shared/libEGL_angle.so
+
+build libGLESv1_CM_angle,android_x86_64_shared: phony out/soong/.intermediates/external/angle/libGLESv1_CM_angle/android_x86_64_shared/libGLESv1_CM_angle.so
+
+build libGLESv1_CM_angle,android_x86_x86_64_shared: phony out/soong/.intermediates/external/angle/libGLESv1_CM_angle/android_x86_x86_64_shared/libGLESv1_CM_angle.so
+
+build external_angle-targets: phony libEGL_angle,android_x86_64_shared libEGL_angle,android_x86_x86_64_shared libGLESv1_CM_angle,android_x86_64_shared libGLESv1_CM_angle,android_x86_x86_64_shared
+
+build conscrypt.module.public.api.stubs.source,android_common: phony out/soong/.intermediates/external/conscrypt/conscrypt.module.public.api.stubs.source/android_common/metalava/conscrypt.module.public.api.stubs.source-stubs.srcjar out/soong/.intermediates/external/conscrypt/conscrypt.module.public.api.stubs.source/android_common/metalava/conscrypt.module.public.api.stubs.source_api.txt out/soong/.intermediates/external/conscrypt/conscrypt.module.public.api.stubs.source/android_common/metalava/conscrypt.module.public.api.stubs.source_removed.txt
+
+build external_conscrypt-targets: phony conscrypt.module.public.api.stubs.source,android_common
+
+build libcrosvm,android_x86_64_rlib_rlib-std_apex10000: phony out/soong/.intermediates/external/crosvm/libcrosvm/android_x86_64_rlib_rlib-std_apex10000/libcrosvm.rlib
+
+build external_crosvm-targets: phony libcrosvm,android_x86_64_rlib_rlib-std_apex10000
+
+build i18n.module.public.api.stubs.source,android_common: phony out/soong/.intermediates/external/icu/android_icu4j/i18n.module.public.api.stubs.source/android_common/metalava/i18n.module.public.api.stubs.source-stubs.srcjar out/soong/.intermediates/external/icu/android_icu4j/i18n.module.public.api.stubs.source/android_common/metalava/i18n.module.public.api.stubs.source_api.txt out/soong/.intermediates/external/icu/android_icu4j/i18n.module.public.api.stubs.source/android_common/metalava/i18n.module.public.api.stubs.source_removed.txt
+
+build external_icu-targets: phony i18n.module.public.api.stubs.source,android_common
+
+build libaaudio_internal,android_x86_64_shared: phony out/soong/.intermediates/frameworks/av/media/libaaudio/src/libaaudio_internal/android_x86_64_shared/libaaudio_internal.so out/soong/.intermediates/frameworks/av/media/libaaudio/src/libaaudio_internal/android_x86_64_shared/libaaudio_internal.so.toc
+
+build libaaudio_internal,android_x86_x86_64_shared: phony out/soong/.intermediates/frameworks/av/media/libaaudio/src/libaaudio_internal/android_x86_x86_64_shared/libaaudio_internal.so out/soong/.intermediates/frameworks/av/media/libaaudio/src/libaaudio_internal/android_x86_x86_64_shared/libaaudio_internal.so.toc
+
+build libaudioflinger,android_x86_64_shared: phony out/soong/.intermediates/frameworks/av/services/audioflinger/libaudioflinger/android_x86_64_shared/libaudioflinger.so out/soong/.intermediates/frameworks/av/services/audioflinger/libaudioflinger/android_x86_64_shared/libaudioflinger.so.toc
+
+build libsfplugin_ccodec_utils,android_x86_64_shared_cfi: phony out/soong/.intermediates/frameworks/av/media/codec2/sfplugin/utils/libsfplugin_ccodec_utils/android_x86_64_shared_cfi/libsfplugin_ccodec_utils.so out/soong/.intermediates/frameworks/av/media/codec2/sfplugin/utils/libsfplugin_ccodec_utils/android_x86_64_shared_cfi/libsfplugin_ccodec_utils.so.toc
+
+build libsfplugin_ccodec_utils,android_x86_x86_64_shared_cfi: phony out/soong/.intermediates/frameworks/av/media/codec2/sfplugin/utils/libsfplugin_ccodec_utils/android_x86_x86_64_shared_cfi/libsfplugin_ccodec_utils.so out/soong/.intermediates/frameworks/av/media/codec2/sfplugin/utils/libsfplugin_ccodec_utils/android_x86_x86_64_shared_cfi/libsfplugin_ccodec_utils.so.toc
+
+build libstagefright_omx,android_vendor.31_x86_64_shared: phony out/soong/.intermediates/frameworks/av/media/libstagefright/omx/libstagefright_omx/android_vendor.31_x86_64_shared/libstagefright_omx.so
+
+build libstagefright_omx,android_vendor.31_x86_x86_64_shared: phony out/soong/.intermediates/frameworks/av/media/libstagefright/omx/libstagefright_omx/android_vendor.31_x86_x86_64_shared/libstagefright_omx.so out/soong/.intermediates/frameworks/av/media/libstagefright/omx/libstagefright_omx/android_vendor.31_x86_x86_64_shared/libstagefright_omx.so.toc
+
+build libstagefright_xmlparser,android_x86_64_shared_cfi: phony out/soong/.intermediates/frameworks/av/media/libstagefright/xmlparser/libstagefright_xmlparser/android_x86_64_shared_cfi/libstagefright_xmlparser.so out/soong/.intermediates/frameworks/av/media/libstagefright/xmlparser/libstagefright_xmlparser/android_x86_64_shared_cfi/libstagefright_xmlparser.so.toc
+
+build libstagefright_xmlparser,android_x86_x86_64_shared_cfi: phony out/soong/.intermediates/frameworks/av/media/libstagefright/xmlparser/libstagefright_xmlparser/android_x86_x86_64_shared_cfi/libstagefright_xmlparser.so out/soong/.intermediates/frameworks/av/media/libstagefright/xmlparser/libstagefright_xmlparser/android_x86_x86_64_shared_cfi/libstagefright_xmlparser.so.toc
+
+build mediaswcodec,android_x86_64_com.android.media.swcodec: phony out/soong/.intermediates/frameworks/av/services/mediacodec/mediaswcodec/android_x86_64_com.android.media.swcodec/mediaswcodec
+
+build frameworks_av-targets: phony libaaudio_internal,android_x86_64_shared libaaudio_internal,android_x86_x86_64_shared libaudioflinger,android_x86_64_shared libsfplugin_ccodec_utils,android_x86_64_shared_cfi libsfplugin_ccodec_utils,android_x86_x86_64_shared_cfi libstagefright_omx,android_vendor.31_x86_64_shared libstagefright_omx,android_vendor.31_x86_x86_64_shared libstagefright_xmlparser,android_x86_64_shared_cfi libstagefright_xmlparser,android_x86_x86_64_shared_cfi mediaswcodec,android_x86_64_com.android.media.swcodec
+
+build libGLESv1_CM,android_x86_64_shared: phony out/soong/.intermediates/frameworks/native/opengl/libs/libGLESv1_CM/android_x86_64_shared/libGLESv1_CM.so out/soong/.intermediates/frameworks/native/opengl/libs/libGLESv1_CM/android_x86_64_shared/libGLESv1_CM.so.toc
+
+build libGLESv1_CM,android_x86_x86_64_shared: phony out/soong/.intermediates/frameworks/native/opengl/libs/libGLESv1_CM/android_x86_x86_64_shared/libGLESv1_CM.so out/soong/.intermediates/frameworks/native/opengl/libs/libGLESv1_CM/android_x86_x86_64_shared/libGLESv1_CM.so.toc
+
+build libGLESv2,android_x86_64_shared: phony out/soong/.intermediates/frameworks/native/opengl/libs/libGLESv2/android_x86_64_shared/libGLESv2.so out/soong/.intermediates/frameworks/native/opengl/libs/libGLESv2/android_x86_64_shared/libGLESv2.so.toc
+
+build libGLESv2,android_x86_x86_64_shared: phony out/soong/.intermediates/frameworks/native/opengl/libs/libGLESv2/android_x86_x86_64_shared/libGLESv2.so out/soong/.intermediates/frameworks/native/opengl/libs/libGLESv2/android_x86_x86_64_shared/libGLESv2.so.toc
+
+build libGLESv3,android_x86_64_shared: phony out/soong/.intermediates/frameworks/native/opengl/libs/libGLESv3/android_x86_64_shared/libGLESv3.so out/soong/.intermediates/frameworks/native/opengl/libs/libGLESv3/android_x86_64_shared/libGLESv3.so.toc
+
+build libGLESv3,android_x86_x86_64_shared: phony out/soong/.intermediates/frameworks/native/opengl/libs/libGLESv3/android_x86_x86_64_shared/libGLESv3.so out/soong/.intermediates/frameworks/native/opengl/libs/libGLESv3/android_x86_x86_64_shared/libGLESv3.so.toc
+
+build libinputreader,android_x86_64_shared: phony out/soong/.intermediates/frameworks/native/services/inputflinger/reader/libinputreader/android_x86_64_shared/libinputreader.so out/soong/.intermediates/frameworks/native/services/inputflinger/reader/libinputreader/android_x86_64_shared/libinputreader.so.toc
+
+build libinputreader,android_x86_x86_64_shared: phony out/soong/.intermediates/frameworks/native/services/inputflinger/reader/libinputreader/android_x86_x86_64_shared/libinputreader.so out/soong/.intermediates/frameworks/native/services/inputflinger/reader/libinputreader/android_x86_x86_64_shared/libinputreader.so.toc
+
+build libvkjson,android_x86_64_shared: phony out/soong/.intermediates/frameworks/native/vulkan/vkjson/libvkjson/android_x86_64_shared/libvkjson.so out/soong/.intermediates/frameworks/native/vulkan/vkjson/libvkjson/android_x86_64_shared/libvkjson.so.toc
+
+build frameworks_native-targets: phony libGLESv1_CM,android_x86_64_shared libGLESv1_CM,android_x86_x86_64_shared libGLESv2,android_x86_64_shared libGLESv2,android_x86_x86_64_shared libGLESv3,android_x86_64_shared libGLESv3,android_x86_x86_64_shared libinputreader,android_x86_64_shared libinputreader,android_x86_x86_64_shared libvkjson,android_x86_64_shared
+
+build art-module-public-api-stubs-system-modules,android_common: phony out/soong/.intermediates/libcore/art-module-public-api-stubs-system-modules/android_common/system/lib/jrt-fs.jar out/soong/.intermediates/libcore/art-module-public-api-stubs-system-modules/android_common/system/lib/modules out/soong/.intermediates/libcore/art-module-public-api-stubs-system-modules/android_common/system/release
+
+build legacy.core.platform.api.stubs,android_common: phony out/soong/.intermediates/libcore/mmodules/core_platform_api/legacy.core.platform.api.stubs/android_common/dex/legacy.core.platform.api.stubs.jar out/soong/.intermediates/libcore/mmodules/core_platform_api/legacy.core.platform.api.stubs/android_common/turbine-combined/legacy.core.platform.api.stubs.jar
+
+build stable.core.platform.api.stubs,android_common: phony out/soong/.intermediates/libcore/mmodules/core_platform_api/stable.core.platform.api.stubs/android_common/combined/stable.core.platform.api.stubs.jar out/soong/.intermediates/libcore/mmodules/core_platform_api/stable.core.platform.api.stubs/android_common/turbine-combined/stable.core.platform.api.stubs.jar
+
+build libcore-targets: phony art-module-public-api-stubs-system-modules,android_common legacy.core.platform.api.stubs,android_common stable.core.platform.api.stubs,android_common
+
+build libjni_eglfence,android_x86_64_shared: phony out/soong/.intermediates/packages/apps/Gallery2/jni/libjni_eglfence/android_x86_64_shared/libjni_eglfence.so
+
+build packages_apps_Gallery2-targets: phony libjni_eglfence,android_x86_64_shared
+
+build androidx.appcompat_appcompat,android_common: phony out/soong/.intermediates/prebuilts/sdk/current/androidx/androidx.appcompat_appcompat/android_common/combined/androidx.appcompat_appcompat.jar out/soong/.intermediates/prebuilts/sdk/current/androidx/androidx.appcompat_appcompat/android_common/extra_packages out/soong/.intermediates/prebuilts/sdk/current/androidx/androidx.appcompat_appcompat/android_common/manifest_fixer/AndroidManifest.xml out/soong/.intermediates/prebuilts/sdk/current/androidx/androidx.appcompat_appcompat/android_common/manifest_merger/AndroidManifest.xml out/soong/.intermediates/prebuilts/sdk/current/androidx/androidx.appcompat_appcompat/android_common/package-res.apk out/soong/.intermediates/prebuilts/sdk/current/androidx/androidx.appcompat_appcompat/android_common/turbine-combined/androidx.appcompat_appcompat.jar
+
+build androidx.appcompat_appcompat,android_common_apex30: phony out/soong/.intermediates/prebuilts/sdk/current/androidx/androidx.appcompat_appcompat/android_common_apex30/combined/androidx.appcompat_appcompat.jar out/soong/.intermediates/prebuilts/sdk/current/androidx/androidx.appcompat_appcompat/android_common_apex30/manifest_fixer/AndroidManifest.xml out/soong/.intermediates/prebuilts/sdk/current/androidx/androidx.appcompat_appcompat/android_common_apex30/package-res.apk out/soong/.intermediates/prebuilts/sdk/current/androidx/androidx.appcompat_appcompat/android_common_apex30/turbine-combined/androidx.appcompat_appcompat.jar
+
+build androidx.fragment_fragment-ktx,android_common_apex30: phony out/soong/.intermediates/prebuilts/sdk/current/androidx/androidx.fragment_fragment-ktx/android_common_apex30/combined/androidx.fragment_fragment-ktx.jar out/soong/.intermediates/prebuilts/sdk/current/androidx/androidx.fragment_fragment-ktx/android_common_apex30/manifest_fixer/AndroidManifest.xml out/soong/.intermediates/prebuilts/sdk/current/androidx/androidx.fragment_fragment-ktx/android_common_apex30/package-res.apk out/soong/.intermediates/prebuilts/sdk/current/androidx/androidx.fragment_fragment-ktx/android_common_apex30/turbine-combined/androidx.fragment_fragment-ktx.jar
+
+build androidx.navigation_navigation-runtime,android_common_apex30: phony out/soong/.intermediates/prebuilts/sdk/current/androidx/androidx.navigation_navigation-runtime/android_common_apex30/combined/androidx.navigation_navigation-runtime.jar out/soong/.intermediates/prebuilts/sdk/current/androidx/androidx.navigation_navigation-runtime/android_common_apex30/manifest_fixer/AndroidManifest.xml out/soong/.intermediates/prebuilts/sdk/current/androidx/androidx.navigation_navigation-runtime/android_common_apex30/package-res.apk out/soong/.intermediates/prebuilts/sdk/current/androidx/androidx.navigation_navigation-runtime/android_common_apex30/turbine-combined/androidx.navigation_navigation-runtime.jar
+
+build androidx.viewpager2_viewpager2,android_common: phony out/soong/.intermediates/prebuilts/sdk/current/androidx/androidx.viewpager2_viewpager2/android_common/combined/androidx.viewpager2_viewpager2.jar out/soong/.intermediates/prebuilts/sdk/current/androidx/androidx.viewpager2_viewpager2/android_common/manifest_fixer/AndroidManifest.xml out/soong/.intermediates/prebuilts/sdk/current/androidx/androidx.viewpager2_viewpager2/android_common/package-res.apk out/soong/.intermediates/prebuilts/sdk/current/androidx/androidx.viewpager2_viewpager2/android_common/turbine-combined/androidx.viewpager2_viewpager2.jar
+
+build androidx.viewpager2_viewpager2,android_common_apex30: phony out/soong/.intermediates/prebuilts/sdk/current/androidx/androidx.viewpager2_viewpager2/android_common_apex30/combined/androidx.viewpager2_viewpager2.jar out/soong/.intermediates/prebuilts/sdk/current/androidx/androidx.viewpager2_viewpager2/android_common_apex30/manifest_fixer/AndroidManifest.xml out/soong/.intermediates/prebuilts/sdk/current/androidx/androidx.viewpager2_viewpager2/android_common_apex30/package-res.apk out/soong/.intermediates/prebuilts/sdk/current/androidx/androidx.viewpager2_viewpager2/android_common_apex30/turbine-combined/androidx.viewpager2_viewpager2.jar
+
+build prebuilts_sdk-targets: phony androidx.appcompat_appcompat,android_common androidx.appcompat_appcompat,android_common_apex30 androidx.fragment_fragment-ktx,android_common_apex30 androidx.navigation_navigation-runtime,android_common_apex30 androidx.viewpager2_viewpager2,android_common androidx.viewpager2_viewpager2,android_common_apex30
+
+build libkeystore2,android_x86_64_rlib_rlib-std: phony out/soong/.intermediates/system/security/keystore2/libkeystore2/android_x86_64_rlib_rlib-std/libkeystore2.rlib
+
+build system_security-targets: phony libkeystore2,android_x86_64_rlib_rlib-std
+
+

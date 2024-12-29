@@ -1,0 +1,13 @@
+build step 25: projects: 11 targets: 28
+
+external/conscrypt: conscrypt.module.public.api.stubs^android_common
+external/crosvm: crosvm^android_x86_64_apex10000
+external/icu: i18n.module.public.api.stubs^android_common
+frameworks/av: android.hardware.media.omx@1.0-service^android_vendor.31_x86_x86_64 com.android.media.swcodec^android_common_cfi_com.android.media.swcodec_image libaaudio^android_x86_64_shared libaaudio^android_x86_x86_64_shared libaaudioservice^android_x86_64_shared
+frameworks/native: libgpuservice^android_x86_64_shared libgui^android_x86_64_shared libgui^android_x86_x86_64_shared libinputflinger^android_x86_64_shared libinputflinger^android_x86_x86_64_shared
+frameworks/proto_logging: devicepolicyprotosnano^android_common
+libcore: legacy-core-platform-api-stubs-system-modules^android_common stable-core-platform-api-stubs-system-modules^android_common
+packages/modules/vndk: com.android.vndk.current^android_common_image
+packages/providers/TelephonyProvider: telephonyprovider-protos^android_common
+prebuilts/sdk: androidx-constraintlayout_constraintlayout-nodeps^android_common androidx-constraintlayout_constraintlayout-nodeps^android_common_apex30 androidx.leanback_leanback-nodeps^android_common androidx.leanback_leanback-nodeps^android_common_apex30 androidx.mediarouter_mediarouter-nodeps^android_common androidx.navigation_navigation-runtime-ktx-nodeps^android_common_apex30 androidx.preference_preference-nodeps^android_common androidx.preference_preference-nodeps^android_common_apex30 androidx.slice_slice-core-nodeps^android_common
+system/security: liblegacykeystore-rust^android_x86_64_rlib_rlib-std
