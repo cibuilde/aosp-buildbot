@@ -1,0 +1,6 @@
+out/soong/.intermediates/system/incremental_delivery/libdataloader/libdataloader/android_x86_64_static/obj/system/incremental_delivery/libdataloader/DataLoaderConnector.o
+out/soong/.intermediates/system/incremental_delivery/libdataloader/libdataloader/android_x86_64_static/obj/system/incremental_delivery/libdataloader/DataLoaderConnector.tidy
+out/soong/.intermediates/system/incremental_delivery/libdataloader/libdataloader/android_x86_64_static/obj/system/incremental_delivery/libdataloader/ManagedDataLoader.o
+out/soong/.intermediates/system/incremental_delivery/libdataloader/libdataloader/android_x86_64_static/obj/system/incremental_delivery/libdataloader/ManagedDataLoader.tidy
+out/soong/.intermediates/system/incremental_delivery/libdataloader/libdataloader/android_x86_64_static/obj/system/incremental_delivery/libdataloader/dataloader_ndk.o
+out/soong/.intermediates/system/incremental_delivery/libdataloader/libdataloader/android_x86_64_static/obj/system/incremental_delivery/libdataloader/dataloader_ndk.tidy

@@ -1,0 +1,9 @@
+out/soong/.intermediates/hardware/interfaces/media/c2/1.0/android.hardware.media.c2@1.0_genc++/gen/android/hardware/media/c2/1.0/ComponentAll.cpp
+out/soong/.intermediates/hardware/interfaces/media/c2/1.0/android.hardware.media.c2@1.0_genc++/gen/android/hardware/media/c2/1.0/ComponentInterfaceAll.cpp
+out/soong/.intermediates/hardware/interfaces/media/c2/1.0/android.hardware.media.c2@1.0_genc++/gen/android/hardware/media/c2/1.0/ComponentListenerAll.cpp
+out/soong/.intermediates/hardware/interfaces/media/c2/1.0/android.hardware.media.c2@1.0_genc++/gen/android/hardware/media/c2/1.0/ComponentStoreAll.cpp
+out/soong/.intermediates/hardware/interfaces/media/c2/1.0/android.hardware.media.c2@1.0_genc++/gen/android/hardware/media/c2/1.0/ConfigurableAll.cpp
+out/soong/.intermediates/hardware/interfaces/media/c2/1.0/android.hardware.media.c2@1.0_genc++/gen/android/hardware/media/c2/1.0/InputSinkAll.cpp
+out/soong/.intermediates/hardware/interfaces/media/c2/1.0/android.hardware.media.c2@1.0_genc++/gen/android/hardware/media/c2/1.0/InputSurfaceAll.cpp
+out/soong/.intermediates/hardware/interfaces/media/c2/1.0/android.hardware.media.c2@1.0_genc++/gen/android/hardware/media/c2/1.0/InputSurfaceConnectionAll.cpp
+out/soong/.intermediates/hardware/interfaces/media/c2/1.0/android.hardware.media.c2@1.0_genc++/gen/android/hardware/media/c2/1.0/types.cpp

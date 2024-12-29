@@ -9,44 +9,40 @@ ln -sf $GITHUB_WORKSPACE/ninja .
 
 mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86 prebuilts/clang/host/linux-x86
 
-clone_depth_platform external/libcxx
-clone_depth_platform external/libcxxabi
-clone_depth_platform external/protobuf
+clone_depth_platform bionic
+clone_depth_platform build/soong
+clone_depth_platform external/icu
+clone_depth_platform external/vulkan-headers
 clone_depth_platform external/zlib
+clone_depth_platform frameworks/av
 clone_sparse_exclude frameworks/base "!/data/videos" "!/media/tests/contents" "!/docs" "!/native/graphics/jni/fuzz" "!/cmd/incidentd/testdata"
+clone_depth_platform frameworks/libs/net
 clone_depth_platform frameworks/native
-clone_depth_platform frameworks/proto_logging
-clone_depth_platform packages/modules/Connectivity
+clone_depth_platform frameworks/wilhelm
+clone_depth_platform libnativehelper
 clone_depth_platform packages/modules/NetworkStack
-clone_depth_platform system/libbase
+clone_depth_platform packages/modules/NeuralNetworks
+clone_project platform/prebuilts/build-tools prebuilts/build-tools android12-gsi "/linux-x86/bin" "/linux-x86/lib64" "/path" "/common"
+clone_depth_platform prebuilts/gcc/linux-x86/x86/x86_64-linux-android-4.9
+clone_depth_platform prebuilts/ndk
+clone_depth_platform system/core
+clone_sparse_exclude system/extras "!/simpleperf/scripts" "!/simpleperf/testdata" "!/simpleperf/demo" "!/simpleperf/doc" "!/memory_replay/traces" "!/ioshark/*.tgz" "!/ioshark/*.tar.gz"
 clone_depth_platform system/logging
 
-rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/cmd/sbox/sbox^linux_glibc_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcxx/libc++^linux_glibc_x86_64_shared/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/protobuf/libprotobuf-cpp-full^linux_glibc_x86_64_shared/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/zlib/libz^linux_glibc_x86_64_shared/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/proto_logging/stats/libstats_proto_host^linux_glibc_x86_64_shared/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/proto_logging/stats/stats_log_api_gen/stats-log-api-gen^linux_glibc_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/NetworkStack/common/networkstackclient/ipmemorystore-aidl-interfaces-api^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/NetworkStack/common/networkstackclient/networkstack-aidl-interfaces-api^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/system/libbase/libbase^linux_glibc_x86_64_shared/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^linux_glibc_x86_64_shared/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/system/tools/aidl/aidl^linux_glibc_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/crtbegin_so^android_x86_64_sdk_29/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/crtend_so^android_x86_64_sdk_29/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/libc.ndk^android_x86_64_sdk_shared_29/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libdl/libdl.ndk^android_x86_64_sdk_shared_29/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libm/libm.ndk^android_x86_64_sdk_shared_29/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/libs/net/common/native/netjniutils/libnetjniutils^android_x86_64_sdk_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/libnativehelper/libnativehelper_compat_libc++^android_x86_64_sdk_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/singletons/ndk^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog.ndk^android_x86_64_sdk_shared_29/ .
 
-echo "building ipmemorystore-aidl-interfaces-V10-java-source^"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja ipmemorystore-aidl-interfaces-V10-java-source,
-mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/NetworkStack/common/networkstackclient/ipmemorystore-aidl-interfaces-V10-java-source^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/packages/modules/NetworkStack/ipmemorystore-aidl-interfaces-V10-java-source^.output . $GITHUB_WORKSPACE/artifacts/packages/modules/NetworkStack/common/networkstackclient/ipmemorystore-aidl-interfaces-V10-java-source^
-
-echo "building networkstack-aidl-interfaces-V10-java-source^"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja networkstack-aidl-interfaces-V10-java-source,
-mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/NetworkStack/common/networkstackclient/networkstack-aidl-interfaces-V10-java-source^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/packages/modules/NetworkStack/networkstack-aidl-interfaces-V10-java-source^.output . $GITHUB_WORKSPACE/artifacts/packages/modules/NetworkStack/common/networkstackclient/networkstack-aidl-interfaces-V10-java-source^
-
-echo "building statslog-networkstack-java-gen-stable^"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja statslog-networkstack-java-gen-stable,
-mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/NetworkStack/statslog-networkstack-java-gen-stable^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/packages/modules/NetworkStack/statslog-networkstack-java-gen-stable^.output . $GITHUB_WORKSPACE/artifacts/packages/modules/NetworkStack/statslog-networkstack-java-gen-stable^
+echo "building libnetworkstackutilsjni^android_x86_64_sdk_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libnetworkstackutilsjni,android_x86_64_sdk_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/NetworkStack/libnetworkstackutilsjni^android_x86_64_sdk_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/packages/modules/NetworkStack/libnetworkstackutilsjni^android_x86_64_sdk_shared.output . $GITHUB_WORKSPACE/artifacts/packages/modules/NetworkStack/libnetworkstackutilsjni^android_x86_64_sdk_shared
 
 rm -rf out
 
@@ -56,45 +52,77 @@ gh release --repo cibuilde/aosp-buildbot upload android12-gsi_07 packages_module
 
 du -ah -d1 packages_modules_NetworkStack*.tar.zst | sort -h
 
-if [ ! -f "$GITHUB_WORKSPACE/cache/external_libcxx.tar.zst" ]; then
-  echo "Compressing external/libcxx -> external_libcxx.tar.zst"
-  tar -cf $GITHUB_WORKSPACE/cache/external_libcxx.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/libcxx/ .
+if [ ! -f "$GITHUB_WORKSPACE/cache/bionic.tar.zst" ]; then
+  echo "Compressing bionic -> bionic.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/bionic.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/bionic/ .
 fi
-if [ ! -f "$GITHUB_WORKSPACE/cache/external_libcxxabi.tar.zst" ]; then
-  echo "Compressing external/libcxxabi -> external_libcxxabi.tar.zst"
-  tar -cf $GITHUB_WORKSPACE/cache/external_libcxxabi.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/libcxxabi/ .
+if [ ! -f "$GITHUB_WORKSPACE/cache/build_soong.tar.zst" ]; then
+  echo "Compressing build/soong -> build_soong.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/build_soong.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/build/soong/ .
 fi
-if [ ! -f "$GITHUB_WORKSPACE/cache/external_protobuf.tar.zst" ]; then
-  echo "Compressing external/protobuf -> external_protobuf.tar.zst"
-  tar -cf $GITHUB_WORKSPACE/cache/external_protobuf.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/protobuf/ .
+if [ ! -f "$GITHUB_WORKSPACE/cache/external_icu.tar.zst" ]; then
+  echo "Compressing external/icu -> external_icu.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/external_icu.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/icu/ .
+fi
+if [ ! -f "$GITHUB_WORKSPACE/cache/external_vulkan-headers.tar.zst" ]; then
+  echo "Compressing external/vulkan-headers -> external_vulkan-headers.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/external_vulkan-headers.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/vulkan-headers/ .
 fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/external_zlib.tar.zst" ]; then
   echo "Compressing external/zlib -> external_zlib.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/external_zlib.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/zlib/ .
 fi
+if [ ! -f "$GITHUB_WORKSPACE/cache/frameworks_av.tar.zst" ]; then
+  echo "Compressing frameworks/av -> frameworks_av.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/frameworks_av.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/frameworks/av/ .
+fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/frameworks_base.tar.zst" ]; then
   echo "Compressing frameworks/base -> frameworks_base.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/frameworks_base.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/frameworks/base/ .
+fi
+if [ ! -f "$GITHUB_WORKSPACE/cache/frameworks_libs_net.tar.zst" ]; then
+  echo "Compressing frameworks/libs/net -> frameworks_libs_net.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/frameworks_libs_net.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/frameworks/libs/net/ .
 fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/frameworks_native.tar.zst" ]; then
   echo "Compressing frameworks/native -> frameworks_native.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/frameworks_native.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/frameworks/native/ .
 fi
-if [ ! -f "$GITHUB_WORKSPACE/cache/frameworks_proto_logging.tar.zst" ]; then
-  echo "Compressing frameworks/proto_logging -> frameworks_proto_logging.tar.zst"
-  tar -cf $GITHUB_WORKSPACE/cache/frameworks_proto_logging.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/frameworks/proto_logging/ .
+if [ ! -f "$GITHUB_WORKSPACE/cache/frameworks_wilhelm.tar.zst" ]; then
+  echo "Compressing frameworks/wilhelm -> frameworks_wilhelm.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/frameworks_wilhelm.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/frameworks/wilhelm/ .
 fi
-if [ ! -f "$GITHUB_WORKSPACE/cache/packages_modules_Connectivity.tar.zst" ]; then
-  echo "Compressing packages/modules/Connectivity -> packages_modules_Connectivity.tar.zst"
-  tar -cf $GITHUB_WORKSPACE/cache/packages_modules_Connectivity.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/packages/modules/Connectivity/ .
+if [ ! -f "$GITHUB_WORKSPACE/cache/libnativehelper.tar.zst" ]; then
+  echo "Compressing libnativehelper -> libnativehelper.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/libnativehelper.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/libnativehelper/ .
 fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/packages_modules_NetworkStack.tar.zst" ]; then
   echo "Compressing packages/modules/NetworkStack -> packages_modules_NetworkStack.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/packages_modules_NetworkStack.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/packages/modules/NetworkStack/ .
 fi
-if [ ! -f "$GITHUB_WORKSPACE/cache/system_libbase.tar.zst" ]; then
-  echo "Compressing system/libbase -> system_libbase.tar.zst"
-  tar -cf $GITHUB_WORKSPACE/cache/system_libbase.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/system/libbase/ .
+if [ ! -f "$GITHUB_WORKSPACE/cache/packages_modules_NeuralNetworks.tar.zst" ]; then
+  echo "Compressing packages/modules/NeuralNetworks -> packages_modules_NeuralNetworks.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/packages_modules_NeuralNetworks.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/packages/modules/NeuralNetworks/ .
+fi
+if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_build-tools.tar.zst" ]; then
+  echo "Compressing prebuilts/build-tools -> prebuilts_build-tools.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/prebuilts_build-tools.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/prebuilts/build-tools/ .
+fi
+if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_gcc_linux-x86_x86_x86_64-linux-android-4.9.tar.zst" ]; then
+  echo "Compressing prebuilts/gcc/linux-x86/x86/x86_64-linux-android-4.9 -> prebuilts_gcc_linux-x86_x86_x86_64-linux-android-4.9.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/prebuilts_gcc_linux-x86_x86_x86_64-linux-android-4.9.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/prebuilts/gcc/linux-x86/x86/x86_64-linux-android-4.9/ .
+fi
+if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_ndk.tar.zst" ]; then
+  echo "Compressing prebuilts/ndk -> prebuilts_ndk.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/prebuilts_ndk.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/prebuilts/ndk/ .
+fi
+if [ ! -f "$GITHUB_WORKSPACE/cache/system_core.tar.zst" ]; then
+  echo "Compressing system/core -> system_core.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/system_core.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/system/core/ .
+fi
+if [ ! -f "$GITHUB_WORKSPACE/cache/system_extras.tar.zst" ]; then
+  echo "Compressing system/extras -> system_extras.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/system_extras.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/system/extras/ .
 fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/system_logging.tar.zst" ]; then
   echo "Compressing system/logging -> system_logging.tar.zst"

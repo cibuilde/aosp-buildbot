@@ -1,0 +1,10 @@
+out/soong/.intermediates/frameworks/native/libs/vibrator/libvibrator/android_vendor.31_x86_64_static/gen/aidl/android/os/BnExternalVibrationController.h
+out/soong/.intermediates/frameworks/native/libs/vibrator/libvibrator/android_vendor.31_x86_64_static/gen/aidl/android/os/BnExternalVibratorService.h
+out/soong/.intermediates/frameworks/native/libs/vibrator/libvibrator/android_vendor.31_x86_64_static/gen/aidl/android/os/BpExternalVibrationController.h
+out/soong/.intermediates/frameworks/native/libs/vibrator/libvibrator/android_vendor.31_x86_64_static/gen/aidl/android/os/BpExternalVibratorService.h
+out/soong/.intermediates/frameworks/native/libs/vibrator/libvibrator/android_vendor.31_x86_64_static/gen/aidl/android/os/IExternalVibrationController.h
+out/soong/.intermediates/frameworks/native/libs/vibrator/libvibrator/android_vendor.31_x86_64_static/gen/aidl/android/os/IExternalVibratorService.h
+out/soong/.intermediates/frameworks/native/libs/vibrator/libvibrator/android_vendor.31_x86_64_static/obj/.intermediates/frameworks/native/libs/vibrator/libvibrator/android_vendor.31_x86_64_static/gen/aidl/android/os/IExternalVibrationController.o
+out/soong/.intermediates/frameworks/native/libs/vibrator/libvibrator/android_vendor.31_x86_64_static/obj/.intermediates/frameworks/native/libs/vibrator/libvibrator/android_vendor.31_x86_64_static/gen/aidl/android/os/IExternalVibratorService.o
+out/soong/.intermediates/frameworks/native/libs/vibrator/libvibrator/android_vendor.31_x86_64_static/obj/frameworks/native/libs/vibrator/ExternalVibration.o
+out/soong/.intermediates/frameworks/native/libs/vibrator/libvibrator/android_vendor.31_x86_64_static/obj/frameworks/native/libs/vibrator/ExternalVibrationUtils.o

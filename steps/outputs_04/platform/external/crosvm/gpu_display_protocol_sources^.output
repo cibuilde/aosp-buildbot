@@ -1,0 +1,5 @@
+out/soong/.intermediates/external/crosvm/gpu_display/gpu_display_protocol_sources/gen/aura-shell.c
+out/soong/.intermediates/external/crosvm/gpu_display/gpu_display_protocol_sources/gen/linux-dmabuf-unstable-v1.c
+out/soong/.intermediates/external/crosvm/gpu_display/gpu_display_protocol_sources/gen/viewporter.c
+out/soong/.intermediates/external/crosvm/gpu_display/gpu_display_protocol_sources/gen/virtio-gpu-metadata-v1.c
+out/soong/.intermediates/external/crosvm/gpu_display/gpu_display_protocol_sources/gen/xdg-shell-unstable-v6.c

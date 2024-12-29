@@ -25,35 +25,35 @@ clone_depth_platform system/logging
 clone_depth_platform system/media
 
 
-echo "building libOpenMAXAL_headers^"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libOpenMAXAL_headers,
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/wilhelm/libOpenMAXAL_headers^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/frameworks/wilhelm/libOpenMAXAL_headers^.output . $GITHUB_WORKSPACE/artifacts/frameworks/wilhelm/libOpenMAXAL_headers^
-
-echo "building libOpenSLESUT^android_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libOpenSLESUT,android_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/wilhelm/src/libOpenSLESUT^android_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/frameworks/wilhelm/libOpenSLESUT^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/wilhelm/src/libOpenSLESUT^android_x86_64_static
-
-echo "building libOpenSLESUT^android_x86_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libOpenSLESUT,android_x86_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/wilhelm/src/libOpenSLESUT^android_x86_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/frameworks/wilhelm/libOpenSLESUT^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/wilhelm/src/libOpenSLESUT^android_x86_x86_64_static
-
-echo "building libOpenSLES_ndk_headers^"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libOpenSLES_ndk_headers,
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/wilhelm/libOpenSLES_ndk_headers^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/frameworks/wilhelm/libOpenSLES_ndk_headers^.output . $GITHUB_WORKSPACE/artifacts/frameworks/wilhelm/libOpenSLES_ndk_headers^
+echo "building libopensles_helper^android_x86_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libopensles_helper,android_x86_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/wilhelm/src/libopensles_helper^android_x86_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/frameworks/wilhelm/libopensles_helper^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/wilhelm/src/libopensles_helper^android_x86_x86_64_static
 
 echo "building libopensles_helper^android_x86_64_static"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libopensles_helper,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/wilhelm/src/libopensles_helper^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/frameworks/wilhelm/libopensles_helper^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/wilhelm/src/libopensles_helper^android_x86_64_static
 
-echo "building libopensles_helper^android_x86_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libopensles_helper,android_x86_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/wilhelm/src/libopensles_helper^android_x86_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/frameworks/wilhelm/libopensles_helper^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/wilhelm/src/libopensles_helper^android_x86_x86_64_static
+echo "building libOpenSLES_ndk_headers^"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libOpenSLES_ndk_headers,
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/wilhelm/libOpenSLES_ndk_headers^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/frameworks/wilhelm/libOpenSLES_ndk_headers^.output . $GITHUB_WORKSPACE/artifacts/frameworks/wilhelm/libOpenSLES_ndk_headers^
+
+echo "building libOpenSLESUT^android_x86_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libOpenSLESUT,android_x86_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/wilhelm/src/libOpenSLESUT^android_x86_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/frameworks/wilhelm/libOpenSLESUT^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/wilhelm/src/libOpenSLESUT^android_x86_x86_64_static
+
+echo "building libOpenSLESUT^android_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libOpenSLESUT,android_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/wilhelm/src/libOpenSLESUT^android_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/frameworks/wilhelm/libOpenSLESUT^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/wilhelm/src/libOpenSLESUT^android_x86_64_static
+
+echo "building libOpenMAXAL_headers^"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libOpenMAXAL_headers,
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/wilhelm/libOpenMAXAL_headers^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/frameworks/wilhelm/libOpenMAXAL_headers^.output . $GITHUB_WORKSPACE/artifacts/frameworks/wilhelm/libOpenMAXAL_headers^
 
 rm -rf out
 

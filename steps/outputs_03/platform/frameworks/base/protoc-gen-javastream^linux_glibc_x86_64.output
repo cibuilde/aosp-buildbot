@@ -1,0 +1,2 @@
+out/soong/.intermediates/frameworks/base/tools/streaming_proto/protoc-gen-javastream/linux_glibc_x86_64/protoc-gen-javastream
+out/soong/host/linux-x86/bin/protoc-gen-javastream

@@ -1,0 +1,14 @@
+out/soong/.intermediates/external/webrtc/webrtc_common_audio__common_audio/android_vendor.31_x86_x86_64_static/obj/external/webrtc/common_audio/audio_converter.o
+out/soong/.intermediates/external/webrtc/webrtc_common_audio__common_audio/android_vendor.31_x86_x86_64_static/obj/external/webrtc/common_audio/audio_util.o
+out/soong/.intermediates/external/webrtc/webrtc_common_audio__common_audio/android_vendor.31_x86_x86_64_static/obj/external/webrtc/common_audio/channel_buffer.o
+out/soong/.intermediates/external/webrtc/webrtc_common_audio__common_audio/android_vendor.31_x86_x86_64_static/obj/external/webrtc/common_audio/real_fourier.o
+out/soong/.intermediates/external/webrtc/webrtc_common_audio__common_audio/android_vendor.31_x86_x86_64_static/obj/external/webrtc/common_audio/real_fourier_ooura.o
+out/soong/.intermediates/external/webrtc/webrtc_common_audio__common_audio/android_vendor.31_x86_x86_64_static/obj/external/webrtc/common_audio/resampler/push_resampler.o
+out/soong/.intermediates/external/webrtc/webrtc_common_audio__common_audio/android_vendor.31_x86_x86_64_static/obj/external/webrtc/common_audio/resampler/push_sinc_resampler.o
+out/soong/.intermediates/external/webrtc/webrtc_common_audio__common_audio/android_vendor.31_x86_x86_64_static/obj/external/webrtc/common_audio/resampler/resampler.o
+out/soong/.intermediates/external/webrtc/webrtc_common_audio__common_audio/android_vendor.31_x86_x86_64_static/obj/external/webrtc/common_audio/resampler/sinc_resampler.o
+out/soong/.intermediates/external/webrtc/webrtc_common_audio__common_audio/android_vendor.31_x86_x86_64_static/obj/external/webrtc/common_audio/smoothing_filter.o
+out/soong/.intermediates/external/webrtc/webrtc_common_audio__common_audio/android_vendor.31_x86_x86_64_static/obj/external/webrtc/common_audio/vad/vad.o
+out/soong/.intermediates/external/webrtc/webrtc_common_audio__common_audio/android_vendor.31_x86_x86_64_static/obj/external/webrtc/common_audio/wav_file.o
+out/soong/.intermediates/external/webrtc/webrtc_common_audio__common_audio/android_vendor.31_x86_x86_64_static/obj/external/webrtc/common_audio/wav_header.o
+out/soong/.intermediates/external/webrtc/webrtc_common_audio__common_audio/android_vendor.31_x86_x86_64_static/obj/external/webrtc/common_audio/window_generator.o

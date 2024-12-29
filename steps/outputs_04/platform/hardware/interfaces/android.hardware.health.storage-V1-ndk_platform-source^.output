@@ -1,0 +1,12 @@
+out/soong/.intermediates/hardware/interfaces/health/storage/aidl/android.hardware.health.storage-V1-ndk_platform-source/gen/android/hardware/health/storage/IGarbageCollectCallback.cpp
+out/soong/.intermediates/hardware/interfaces/health/storage/aidl/android.hardware.health.storage-V1-ndk_platform-source/gen/android/hardware/health/storage/IStorage.cpp
+out/soong/.intermediates/hardware/interfaces/health/storage/aidl/android.hardware.health.storage-V1-ndk_platform-source/gen/android/hardware/health/storage/Result.cpp
+out/soong/.intermediates/hardware/interfaces/health/storage/aidl/android.hardware.health.storage-V1-ndk_platform-source/gen/include/aidl/android/hardware/health/storage/BnGarbageCollectCallback.h
+out/soong/.intermediates/hardware/interfaces/health/storage/aidl/android.hardware.health.storage-V1-ndk_platform-source/gen/include/aidl/android/hardware/health/storage/BnResult.h
+out/soong/.intermediates/hardware/interfaces/health/storage/aidl/android.hardware.health.storage-V1-ndk_platform-source/gen/include/aidl/android/hardware/health/storage/BnStorage.h
+out/soong/.intermediates/hardware/interfaces/health/storage/aidl/android.hardware.health.storage-V1-ndk_platform-source/gen/include/aidl/android/hardware/health/storage/BpGarbageCollectCallback.h
+out/soong/.intermediates/hardware/interfaces/health/storage/aidl/android.hardware.health.storage-V1-ndk_platform-source/gen/include/aidl/android/hardware/health/storage/BpResult.h
+out/soong/.intermediates/hardware/interfaces/health/storage/aidl/android.hardware.health.storage-V1-ndk_platform-source/gen/include/aidl/android/hardware/health/storage/BpStorage.h
+out/soong/.intermediates/hardware/interfaces/health/storage/aidl/android.hardware.health.storage-V1-ndk_platform-source/gen/include/aidl/android/hardware/health/storage/IGarbageCollectCallback.h
+out/soong/.intermediates/hardware/interfaces/health/storage/aidl/android.hardware.health.storage-V1-ndk_platform-source/gen/include/aidl/android/hardware/health/storage/IStorage.h
+out/soong/.intermediates/hardware/interfaces/health/storage/aidl/android.hardware.health.storage-V1-ndk_platform-source/gen/include/aidl/android/hardware/health/storage/Result.h

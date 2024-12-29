@@ -1,0 +1,12 @@
+out/soong/.intermediates/hardware/interfaces/renderscript/1.0/android.hardware.renderscript@1.0_genc++_headers/gen/android/hardware/renderscript/1.0/BnHwContext.h
+out/soong/.intermediates/hardware/interfaces/renderscript/1.0/android.hardware.renderscript@1.0_genc++_headers/gen/android/hardware/renderscript/1.0/BnHwDevice.h
+out/soong/.intermediates/hardware/interfaces/renderscript/1.0/android.hardware.renderscript@1.0_genc++_headers/gen/android/hardware/renderscript/1.0/BpHwContext.h
+out/soong/.intermediates/hardware/interfaces/renderscript/1.0/android.hardware.renderscript@1.0_genc++_headers/gen/android/hardware/renderscript/1.0/BpHwDevice.h
+out/soong/.intermediates/hardware/interfaces/renderscript/1.0/android.hardware.renderscript@1.0_genc++_headers/gen/android/hardware/renderscript/1.0/BsContext.h
+out/soong/.intermediates/hardware/interfaces/renderscript/1.0/android.hardware.renderscript@1.0_genc++_headers/gen/android/hardware/renderscript/1.0/BsDevice.h
+out/soong/.intermediates/hardware/interfaces/renderscript/1.0/android.hardware.renderscript@1.0_genc++_headers/gen/android/hardware/renderscript/1.0/IContext.h
+out/soong/.intermediates/hardware/interfaces/renderscript/1.0/android.hardware.renderscript@1.0_genc++_headers/gen/android/hardware/renderscript/1.0/IDevice.h
+out/soong/.intermediates/hardware/interfaces/renderscript/1.0/android.hardware.renderscript@1.0_genc++_headers/gen/android/hardware/renderscript/1.0/IHwContext.h
+out/soong/.intermediates/hardware/interfaces/renderscript/1.0/android.hardware.renderscript@1.0_genc++_headers/gen/android/hardware/renderscript/1.0/IHwDevice.h
+out/soong/.intermediates/hardware/interfaces/renderscript/1.0/android.hardware.renderscript@1.0_genc++_headers/gen/android/hardware/renderscript/1.0/hwtypes.h
+out/soong/.intermediates/hardware/interfaces/renderscript/1.0/android.hardware.renderscript@1.0_genc++_headers/gen/android/hardware/renderscript/1.0/types.h

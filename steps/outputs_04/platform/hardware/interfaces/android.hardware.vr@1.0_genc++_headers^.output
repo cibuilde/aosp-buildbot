@@ -1,0 +1,5 @@
+out/soong/.intermediates/hardware/interfaces/vr/1.0/android.hardware.vr@1.0_genc++_headers/gen/android/hardware/vr/1.0/BnHwVr.h
+out/soong/.intermediates/hardware/interfaces/vr/1.0/android.hardware.vr@1.0_genc++_headers/gen/android/hardware/vr/1.0/BpHwVr.h
+out/soong/.intermediates/hardware/interfaces/vr/1.0/android.hardware.vr@1.0_genc++_headers/gen/android/hardware/vr/1.0/BsVr.h
+out/soong/.intermediates/hardware/interfaces/vr/1.0/android.hardware.vr@1.0_genc++_headers/gen/android/hardware/vr/1.0/IHwVr.h
+out/soong/.intermediates/hardware/interfaces/vr/1.0/android.hardware.vr@1.0_genc++_headers/gen/android/hardware/vr/1.0/IVr.h

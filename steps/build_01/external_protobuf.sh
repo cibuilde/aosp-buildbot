@@ -28,60 +28,60 @@ clone_depth_platform system/logging
 clone_depth_platform system/media
 
 
-echo "building libprotobuf-cpp-full^linux_glibc_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libprotobuf-cpp-full,linux_glibc_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/protobuf/libprotobuf-cpp-full^linux_glibc_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/protobuf/libprotobuf-cpp-full^linux_glibc_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/protobuf/libprotobuf-cpp-full^linux_glibc_x86_64_static
-
-echo "building libprotobuf-cpp-lite^android_recovery_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libprotobuf-cpp-lite,android_recovery_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/protobuf/libprotobuf-cpp-lite^android_recovery_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/protobuf/libprotobuf-cpp-lite^android_recovery_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/protobuf/libprotobuf-cpp-lite^android_recovery_x86_64_static
-
-echo "building libprotobuf-cpp-lite^android_vendor_ramdisk_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libprotobuf-cpp-lite,android_vendor_ramdisk_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/protobuf/libprotobuf-cpp-lite^android_vendor_ramdisk_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/protobuf/libprotobuf-cpp-lite^android_vendor_ramdisk_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/protobuf/libprotobuf-cpp-lite^android_vendor_ramdisk_x86_64_static
-
-echo "building libprotobuf-cpp-lite^android_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libprotobuf-cpp-lite,android_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/protobuf/libprotobuf-cpp-lite^android_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/protobuf/libprotobuf-cpp-lite^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/protobuf/libprotobuf-cpp-lite^android_x86_64_static
-
-echo "building libprotobuf-cpp-lite^android_x86_64_static_apex10000"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libprotobuf-cpp-lite,android_x86_64_static_apex10000
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/protobuf/libprotobuf-cpp-lite^android_x86_64_static_apex10000
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/protobuf/libprotobuf-cpp-lite^android_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/external/protobuf/libprotobuf-cpp-lite^android_x86_64_static_apex10000
-
-echo "building libprotobuf-cpp-lite^android_x86_64_static_apex30"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libprotobuf-cpp-lite,android_x86_64_static_apex30
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/protobuf/libprotobuf-cpp-lite^android_x86_64_static_apex30
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/protobuf/libprotobuf-cpp-lite^android_x86_64_static_apex30.output . $GITHUB_WORKSPACE/artifacts/external/protobuf/libprotobuf-cpp-lite^android_x86_64_static_apex30
-
-echo "building libprotobuf-cpp-lite^android_x86_64_static_cfi_apex29"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libprotobuf-cpp-lite,android_x86_64_static_cfi_apex29
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/protobuf/libprotobuf-cpp-lite^android_x86_64_static_cfi_apex29
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/protobuf/libprotobuf-cpp-lite^android_x86_64_static_cfi_apex29.output . $GITHUB_WORKSPACE/artifacts/external/protobuf/libprotobuf-cpp-lite^android_x86_64_static_cfi_apex29
-
-echo "building libprotobuf-cpp-lite^android_x86_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libprotobuf-cpp-lite,android_x86_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/protobuf/libprotobuf-cpp-lite^android_x86_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/protobuf/libprotobuf-cpp-lite^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/protobuf/libprotobuf-cpp-lite^android_x86_x86_64_static
-
-echo "building libprotobuf-cpp-lite^android_x86_x86_64_static_apex10000"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libprotobuf-cpp-lite,android_x86_x86_64_static_apex10000
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/protobuf/libprotobuf-cpp-lite^android_x86_x86_64_static_apex10000
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/protobuf/libprotobuf-cpp-lite^android_x86_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/external/protobuf/libprotobuf-cpp-lite^android_x86_x86_64_static_apex10000
+echo "building libprotoc^linux_glibc_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libprotoc,linux_glibc_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/protobuf/libprotoc^linux_glibc_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/protobuf/libprotoc^linux_glibc_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/protobuf/libprotoc^linux_glibc_x86_64_static
 
 echo "building libprotobuf-cpp-lite^linux_glibc_x86_64_static"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libprotobuf-cpp-lite,linux_glibc_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/protobuf/libprotobuf-cpp-lite^linux_glibc_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/protobuf/libprotobuf-cpp-lite^linux_glibc_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/protobuf/libprotobuf-cpp-lite^linux_glibc_x86_64_static
 
-echo "building libprotoc^linux_glibc_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libprotoc,linux_glibc_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/protobuf/libprotoc^linux_glibc_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/protobuf/libprotoc^linux_glibc_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/protobuf/libprotoc^linux_glibc_x86_64_static
+echo "building libprotobuf-cpp-lite^android_x86_x86_64_static_apex10000"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libprotobuf-cpp-lite,android_x86_x86_64_static_apex10000
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/protobuf/libprotobuf-cpp-lite^android_x86_x86_64_static_apex10000
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/protobuf/libprotobuf-cpp-lite^android_x86_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/external/protobuf/libprotobuf-cpp-lite^android_x86_x86_64_static_apex10000
+
+echo "building libprotobuf-cpp-lite^android_x86_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libprotobuf-cpp-lite,android_x86_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/protobuf/libprotobuf-cpp-lite^android_x86_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/protobuf/libprotobuf-cpp-lite^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/protobuf/libprotobuf-cpp-lite^android_x86_x86_64_static
+
+echo "building libprotobuf-cpp-lite^android_x86_64_static_cfi_apex29"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libprotobuf-cpp-lite,android_x86_64_static_cfi_apex29
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/protobuf/libprotobuf-cpp-lite^android_x86_64_static_cfi_apex29
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/protobuf/libprotobuf-cpp-lite^android_x86_64_static_cfi_apex29.output . $GITHUB_WORKSPACE/artifacts/external/protobuf/libprotobuf-cpp-lite^android_x86_64_static_cfi_apex29
+
+echo "building libprotobuf-cpp-lite^android_x86_64_static_apex30"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libprotobuf-cpp-lite,android_x86_64_static_apex30
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/protobuf/libprotobuf-cpp-lite^android_x86_64_static_apex30
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/protobuf/libprotobuf-cpp-lite^android_x86_64_static_apex30.output . $GITHUB_WORKSPACE/artifacts/external/protobuf/libprotobuf-cpp-lite^android_x86_64_static_apex30
+
+echo "building libprotobuf-cpp-lite^android_x86_64_static_apex10000"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libprotobuf-cpp-lite,android_x86_64_static_apex10000
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/protobuf/libprotobuf-cpp-lite^android_x86_64_static_apex10000
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/protobuf/libprotobuf-cpp-lite^android_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/external/protobuf/libprotobuf-cpp-lite^android_x86_64_static_apex10000
+
+echo "building libprotobuf-cpp-lite^android_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libprotobuf-cpp-lite,android_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/protobuf/libprotobuf-cpp-lite^android_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/protobuf/libprotobuf-cpp-lite^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/protobuf/libprotobuf-cpp-lite^android_x86_64_static
+
+echo "building libprotobuf-cpp-lite^android_vendor_ramdisk_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libprotobuf-cpp-lite,android_vendor_ramdisk_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/protobuf/libprotobuf-cpp-lite^android_vendor_ramdisk_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/protobuf/libprotobuf-cpp-lite^android_vendor_ramdisk_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/protobuf/libprotobuf-cpp-lite^android_vendor_ramdisk_x86_64_static
+
+echo "building libprotobuf-cpp-lite^android_recovery_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libprotobuf-cpp-lite,android_recovery_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/protobuf/libprotobuf-cpp-lite^android_recovery_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/protobuf/libprotobuf-cpp-lite^android_recovery_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/protobuf/libprotobuf-cpp-lite^android_recovery_x86_64_static
+
+echo "building libprotobuf-cpp-full^linux_glibc_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libprotobuf-cpp-full,linux_glibc_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/protobuf/libprotobuf-cpp-full^linux_glibc_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/protobuf/libprotobuf-cpp-full^linux_glibc_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/protobuf/libprotobuf-cpp-full^linux_glibc_x86_64_static
 
 rm -rf out
 

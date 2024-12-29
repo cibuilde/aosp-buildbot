@@ -10,109 +10,45 @@ ln -sf $GITHUB_WORKSPACE/ninja .
 mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86 prebuilts/clang/host/linux-x86
 
 clone_depth_platform bionic
-clone_depth_platform external/fmtlib
+clone_depth_platform build/soong
 clone_depth_platform external/libcxx
 clone_depth_platform external/libcxxabi
-clone_depth_platform frameworks/av
 clone_depth_platform frameworks/native
 clone_depth_platform hardware/interfaces
-clone_depth_platform hardware/libhardware
-clone_depth_platform hardware/libhardware_legacy
-clone_depth_platform hardware/ril
+clone_project platform/prebuilts/build-tools prebuilts/build-tools android12-gsi "/linux-x86/bin" "/linux-x86/lib64" "/path" "/common"
 clone_depth_platform prebuilts/gcc/linux-x86/x86/x86_64-linux-android-4.9
-clone_depth_platform system/core
 clone_depth_platform system/hardware/interfaces
-clone_depth_platform system/libbase
-clone_depth_platform system/libfmq
-clone_depth_platform system/libhidl
-clone_depth_platform system/libhwbinder
-clone_depth_platform system/logging
-clone_depth_platform system/media
-clone_depth_platform system/unwinding
 
-rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/cmd/dep_fixer/dep_fixer^linux_glibc_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcxx/libc++^linux_glibc_x86_64_shared/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/protobuf/aprotoc^linux_glibc_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/protobuf/libprotobuf-cpp-full^linux_glibc_x86_64_shared/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/zlib/libz^linux_glibc_x86_64_shared/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/system/hardware/interfaces/keystore2/aidl/android.system.keystore2-api^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/system/hardware/interfaces/net/netd/1.0/android.system.net.netd@1.0_genc++^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/system/hardware/interfaces/net/netd/1.0/android.system.net.netd@1.0_genc++_headers^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/system/hardware/interfaces/net/netd/1.1/android.system.net.netd@1.1_genc++^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/system/hardware/interfaces/net/netd/1.1/android.system.net.netd@1.1_genc++_headers^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/system/hardware/interfaces/suspend/aidl/android.system.suspend.control-api^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/system/hardware/interfaces/suspend/1.0/android.system.suspend@1.0_genc++^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/system/hardware/interfaces/suspend/1.0/android.system.suspend@1.0_genc++_headers^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/system/hardware/interfaces/wifi/keystore/1.0/android.system.wifi.keystore@1.0_genc++^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/system/hardware/interfaces/wifi/keystore/1.0/android.system.wifi.keystore@1.0_genc++_headers^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/system/libbase/libbase^linux_glibc_x86_64_shared/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/system/libhidl/transport/base/1.0/android.hidl.base@1.0_genc++_headers^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/system/libhidl/transport/manager/1.0/android.hidl.manager@1.0_genc++_headers^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/system/libhidl/transport/manager/1.1/android.hidl.manager@1.1_genc++_headers^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/system/libhidl/transport/manager/1.2/android.hidl.manager@1.2_genc++_headers^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^linux_glibc_x86_64_shared/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/system/tools/aidl/aidl^linux_glibc_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/system/tools/sysprop/sysprop_cpp^linux_glibc_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/crtbegin_so^android_vendor.31_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/crtbegin_so^android_vendor.31_x86_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/crtend_so^android_vendor.31_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/crtend_so^android_vendor.31_x86_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/libc^android_vendor.31_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/libc^android_vendor.31_x86_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libdl/libdl^android_vendor.31_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libdl/libdl^android_vendor.31_x86_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libm/libm^android_vendor.31_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libm/libm^android_vendor.31_x86_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcxx/libc++^android_vendor.31_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcxx/libc++^android_vendor.31_x86_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcxxabi/libc++demangle^android_vendor.31_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcxxabi/libc++demangle^android_vendor.31_x86_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/native/libs/binder/ndk/libbinder_ndk^android_vendor.31_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/native/libs/binder/ndk/libbinder_ndk^android_vendor.31_x86_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/security/keymint/aidl/android.hardware.security.keymint-V1-ndk_platform^android_vendor.31_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/security/keymint/aidl/android.hardware.security.keymint-V1-ndk_platform^android_vendor.31_x86_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/hardware/interfaces/keystore2/aidl/android.system.keystore2-V1-ndk_platform^android_vendor.31_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/hardware/interfaces/keystore2/aidl/android.system.keystore2-V1-ndk_platform^android_vendor.31_x86_x86_64_static/ .
 
-echo "building android.system.keystore2-V1-cpp-source^"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja android.system.keystore2-V1-cpp-source,
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/hardware/interfaces/keystore2/aidl/android.system.keystore2-V1-cpp-source^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/hardware/interfaces/android.system.keystore2-V1-cpp-source^.output . $GITHUB_WORKSPACE/artifacts/system/hardware/interfaces/keystore2/aidl/android.system.keystore2-V1-cpp-source^
+echo "building android.system.keystore2-V1-ndk_platform^android_vendor.31_x86_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja android.system.keystore2-V1-ndk_platform,android_vendor.31_x86_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/hardware/interfaces/keystore2/aidl/android.system.keystore2-V1-ndk_platform^android_vendor.31_x86_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/hardware/interfaces/android.system.keystore2-V1-ndk_platform^android_vendor.31_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/hardware/interfaces/keystore2/aidl/android.system.keystore2-V1-ndk_platform^android_vendor.31_x86_x86_64_shared
 
-echo "building android.system.keystore2-V1-java-source^"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja android.system.keystore2-V1-java-source,
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/hardware/interfaces/keystore2/aidl/android.system.keystore2-V1-java-source^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/hardware/interfaces/android.system.keystore2-V1-java-source^.output . $GITHUB_WORKSPACE/artifacts/system/hardware/interfaces/keystore2/aidl/android.system.keystore2-V1-java-source^
-
-echo "building android.system.keystore2-V1-ndk_platform-source^"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja android.system.keystore2-V1-ndk_platform-source,
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/hardware/interfaces/keystore2/aidl/android.system.keystore2-V1-ndk_platform-source^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/hardware/interfaces/android.system.keystore2-V1-ndk_platform-source^.output . $GITHUB_WORKSPACE/artifacts/system/hardware/interfaces/keystore2/aidl/android.system.keystore2-V1-ndk_platform-source^
-
-echo "building android.system.keystore2-V1-rust-source^"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja android.system.keystore2-V1-rust-source,
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/hardware/interfaces/keystore2/aidl/android.system.keystore2-V1-rust-source^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/hardware/interfaces/android.system.keystore2-V1-rust-source^.output . $GITHUB_WORKSPACE/artifacts/system/hardware/interfaces/keystore2/aidl/android.system.keystore2-V1-rust-source^
-
-echo "building android.system.net.netd@1.0^android_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja android.system.net.netd@1.0,android_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/hardware/interfaces/net/netd/1.0/android.system.net.netd@1.0^android_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/hardware/interfaces/android.system.net.netd@1.0^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/hardware/interfaces/net/netd/1.0/android.system.net.netd@1.0^android_x86_64_static
-
-echo "building android.system.net.netd@1.1^android_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja android.system.net.netd@1.1,android_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/hardware/interfaces/net/netd/1.1/android.system.net.netd@1.1^android_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/hardware/interfaces/android.system.net.netd@1.1^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/hardware/interfaces/net/netd/1.1/android.system.net.netd@1.1^android_x86_64_static
-
-echo "building android.system.suspend.control-V1-cpp-source^"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja android.system.suspend.control-V1-cpp-source,
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/hardware/interfaces/suspend/aidl/android.system.suspend.control-V1-cpp-source^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/hardware/interfaces/android.system.suspend.control-V1-cpp-source^.output . $GITHUB_WORKSPACE/artifacts/system/hardware/interfaces/suspend/aidl/android.system.suspend.control-V1-cpp-source^
-
-echo "building android.system.suspend.control-V1-ndk-source^"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja android.system.suspend.control-V1-ndk-source,
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/hardware/interfaces/suspend/aidl/android.system.suspend.control-V1-ndk-source^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/hardware/interfaces/android.system.suspend.control-V1-ndk-source^.output . $GITHUB_WORKSPACE/artifacts/system/hardware/interfaces/suspend/aidl/android.system.suspend.control-V1-ndk-source^
-
-echo "building android.system.suspend@1.0^android_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja android.system.suspend@1.0,android_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/hardware/interfaces/suspend/1.0/android.system.suspend@1.0^android_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/hardware/interfaces/android.system.suspend@1.0^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/hardware/interfaces/suspend/1.0/android.system.suspend@1.0^android_x86_64_static
-
-echo "building android.system.suspend@1.0^android_x86_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja android.system.suspend@1.0,android_x86_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/hardware/interfaces/suspend/1.0/android.system.suspend@1.0^android_x86_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/hardware/interfaces/android.system.suspend@1.0^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/hardware/interfaces/suspend/1.0/android.system.suspend@1.0^android_x86_x86_64_static
-
-echo "building android.system.wifi.keystore@1.0^android_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja android.system.wifi.keystore@1.0,android_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/hardware/interfaces/wifi/keystore/1.0/android.system.wifi.keystore@1.0^android_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/hardware/interfaces/android.system.wifi.keystore@1.0^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/hardware/interfaces/wifi/keystore/1.0/android.system.wifi.keystore@1.0^android_x86_64_static
-
-echo "building libSuspendProperties^android_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libSuspendProperties,android_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/hardware/interfaces/suspend/1.0/default/libSuspendProperties^android_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/hardware/interfaces/libSuspendProperties^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/hardware/interfaces/suspend/1.0/default/libSuspendProperties^android_x86_64_static
+echo "building android.system.keystore2-V1-ndk_platform^android_vendor.31_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja android.system.keystore2-V1-ndk_platform,android_vendor.31_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/hardware/interfaces/keystore2/aidl/android.system.keystore2-V1-ndk_platform^android_vendor.31_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/hardware/interfaces/android.system.keystore2-V1-ndk_platform^android_vendor.31_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/hardware/interfaces/keystore2/aidl/android.system.keystore2-V1-ndk_platform^android_vendor.31_x86_64_shared
 
 rm -rf out
 
@@ -126,9 +62,9 @@ if [ ! -f "$GITHUB_WORKSPACE/cache/bionic.tar.zst" ]; then
   echo "Compressing bionic -> bionic.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/bionic.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/bionic/ .
 fi
-if [ ! -f "$GITHUB_WORKSPACE/cache/external_fmtlib.tar.zst" ]; then
-  echo "Compressing external/fmtlib -> external_fmtlib.tar.zst"
-  tar -cf $GITHUB_WORKSPACE/cache/external_fmtlib.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/fmtlib/ .
+if [ ! -f "$GITHUB_WORKSPACE/cache/build_soong.tar.zst" ]; then
+  echo "Compressing build/soong -> build_soong.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/build_soong.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/build/soong/ .
 fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/external_libcxx.tar.zst" ]; then
   echo "Compressing external/libcxx -> external_libcxx.tar.zst"
@@ -138,10 +74,6 @@ if [ ! -f "$GITHUB_WORKSPACE/cache/external_libcxxabi.tar.zst" ]; then
   echo "Compressing external/libcxxabi -> external_libcxxabi.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/external_libcxxabi.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/libcxxabi/ .
 fi
-if [ ! -f "$GITHUB_WORKSPACE/cache/frameworks_av.tar.zst" ]; then
-  echo "Compressing frameworks/av -> frameworks_av.tar.zst"
-  tar -cf $GITHUB_WORKSPACE/cache/frameworks_av.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/frameworks/av/ .
-fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/frameworks_native.tar.zst" ]; then
   echo "Compressing frameworks/native -> frameworks_native.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/frameworks_native.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/frameworks/native/ .
@@ -150,57 +82,17 @@ if [ ! -f "$GITHUB_WORKSPACE/cache/hardware_interfaces.tar.zst" ]; then
   echo "Compressing hardware/interfaces -> hardware_interfaces.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/hardware_interfaces.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/hardware/interfaces/ .
 fi
-if [ ! -f "$GITHUB_WORKSPACE/cache/hardware_libhardware.tar.zst" ]; then
-  echo "Compressing hardware/libhardware -> hardware_libhardware.tar.zst"
-  tar -cf $GITHUB_WORKSPACE/cache/hardware_libhardware.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/hardware/libhardware/ .
-fi
-if [ ! -f "$GITHUB_WORKSPACE/cache/hardware_libhardware_legacy.tar.zst" ]; then
-  echo "Compressing hardware/libhardware_legacy -> hardware_libhardware_legacy.tar.zst"
-  tar -cf $GITHUB_WORKSPACE/cache/hardware_libhardware_legacy.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/hardware/libhardware_legacy/ .
-fi
-if [ ! -f "$GITHUB_WORKSPACE/cache/hardware_ril.tar.zst" ]; then
-  echo "Compressing hardware/ril -> hardware_ril.tar.zst"
-  tar -cf $GITHUB_WORKSPACE/cache/hardware_ril.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/hardware/ril/ .
+if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_build-tools.tar.zst" ]; then
+  echo "Compressing prebuilts/build-tools -> prebuilts_build-tools.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/prebuilts_build-tools.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/prebuilts/build-tools/ .
 fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_gcc_linux-x86_x86_x86_64-linux-android-4.9.tar.zst" ]; then
   echo "Compressing prebuilts/gcc/linux-x86/x86/x86_64-linux-android-4.9 -> prebuilts_gcc_linux-x86_x86_x86_64-linux-android-4.9.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/prebuilts_gcc_linux-x86_x86_x86_64-linux-android-4.9.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/prebuilts/gcc/linux-x86/x86/x86_64-linux-android-4.9/ .
 fi
-if [ ! -f "$GITHUB_WORKSPACE/cache/system_core.tar.zst" ]; then
-  echo "Compressing system/core -> system_core.tar.zst"
-  tar -cf $GITHUB_WORKSPACE/cache/system_core.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/system/core/ .
-fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/system_hardware_interfaces.tar.zst" ]; then
   echo "Compressing system/hardware/interfaces -> system_hardware_interfaces.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/system_hardware_interfaces.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/system/hardware/interfaces/ .
-fi
-if [ ! -f "$GITHUB_WORKSPACE/cache/system_libbase.tar.zst" ]; then
-  echo "Compressing system/libbase -> system_libbase.tar.zst"
-  tar -cf $GITHUB_WORKSPACE/cache/system_libbase.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/system/libbase/ .
-fi
-if [ ! -f "$GITHUB_WORKSPACE/cache/system_libfmq.tar.zst" ]; then
-  echo "Compressing system/libfmq -> system_libfmq.tar.zst"
-  tar -cf $GITHUB_WORKSPACE/cache/system_libfmq.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/system/libfmq/ .
-fi
-if [ ! -f "$GITHUB_WORKSPACE/cache/system_libhidl.tar.zst" ]; then
-  echo "Compressing system/libhidl -> system_libhidl.tar.zst"
-  tar -cf $GITHUB_WORKSPACE/cache/system_libhidl.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/system/libhidl/ .
-fi
-if [ ! -f "$GITHUB_WORKSPACE/cache/system_libhwbinder.tar.zst" ]; then
-  echo "Compressing system/libhwbinder -> system_libhwbinder.tar.zst"
-  tar -cf $GITHUB_WORKSPACE/cache/system_libhwbinder.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/system/libhwbinder/ .
-fi
-if [ ! -f "$GITHUB_WORKSPACE/cache/system_logging.tar.zst" ]; then
-  echo "Compressing system/logging -> system_logging.tar.zst"
-  tar -cf $GITHUB_WORKSPACE/cache/system_logging.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/system/logging/ .
-fi
-if [ ! -f "$GITHUB_WORKSPACE/cache/system_media.tar.zst" ]; then
-  echo "Compressing system/media -> system_media.tar.zst"
-  tar -cf $GITHUB_WORKSPACE/cache/system_media.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/system/media/ .
-fi
-if [ ! -f "$GITHUB_WORKSPACE/cache/system_unwinding.tar.zst" ]; then
-  echo "Compressing system/unwinding -> system_unwinding.tar.zst"
-  tar -cf $GITHUB_WORKSPACE/cache/system_unwinding.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/system/unwinding/ .
 fi
 
 rm -rf aosp

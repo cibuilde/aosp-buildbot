@@ -1,0 +1,14 @@
+out/soong/.intermediates/system/apex/apexd/apex_aidl_interface-cpp/android_x86_64_static/obj/.intermediates/system/apex/apexd/apex_aidl_interface-cpp-source/gen/android/apex/ApexInfo.o
+out/soong/.intermediates/system/apex/apexd/apex_aidl_interface-cpp/android_x86_64_static/obj/.intermediates/system/apex/apexd/apex_aidl_interface-cpp-source/gen/android/apex/ApexInfo.tidy
+out/soong/.intermediates/system/apex/apexd/apex_aidl_interface-cpp/android_x86_64_static/obj/.intermediates/system/apex/apexd/apex_aidl_interface-cpp-source/gen/android/apex/ApexInfoList.o
+out/soong/.intermediates/system/apex/apexd/apex_aidl_interface-cpp/android_x86_64_static/obj/.intermediates/system/apex/apexd/apex_aidl_interface-cpp-source/gen/android/apex/ApexInfoList.tidy
+out/soong/.intermediates/system/apex/apexd/apex_aidl_interface-cpp/android_x86_64_static/obj/.intermediates/system/apex/apexd/apex_aidl_interface-cpp-source/gen/android/apex/ApexSessionInfo.o
+out/soong/.intermediates/system/apex/apexd/apex_aidl_interface-cpp/android_x86_64_static/obj/.intermediates/system/apex/apexd/apex_aidl_interface-cpp-source/gen/android/apex/ApexSessionInfo.tidy
+out/soong/.intermediates/system/apex/apexd/apex_aidl_interface-cpp/android_x86_64_static/obj/.intermediates/system/apex/apexd/apex_aidl_interface-cpp-source/gen/android/apex/ApexSessionParams.o
+out/soong/.intermediates/system/apex/apexd/apex_aidl_interface-cpp/android_x86_64_static/obj/.intermediates/system/apex/apexd/apex_aidl_interface-cpp-source/gen/android/apex/ApexSessionParams.tidy
+out/soong/.intermediates/system/apex/apexd/apex_aidl_interface-cpp/android_x86_64_static/obj/.intermediates/system/apex/apexd/apex_aidl_interface-cpp-source/gen/android/apex/CompressedApexInfo.o
+out/soong/.intermediates/system/apex/apexd/apex_aidl_interface-cpp/android_x86_64_static/obj/.intermediates/system/apex/apexd/apex_aidl_interface-cpp-source/gen/android/apex/CompressedApexInfo.tidy
+out/soong/.intermediates/system/apex/apexd/apex_aidl_interface-cpp/android_x86_64_static/obj/.intermediates/system/apex/apexd/apex_aidl_interface-cpp-source/gen/android/apex/CompressedApexInfoList.o
+out/soong/.intermediates/system/apex/apexd/apex_aidl_interface-cpp/android_x86_64_static/obj/.intermediates/system/apex/apexd/apex_aidl_interface-cpp-source/gen/android/apex/CompressedApexInfoList.tidy
+out/soong/.intermediates/system/apex/apexd/apex_aidl_interface-cpp/android_x86_64_static/obj/.intermediates/system/apex/apexd/apex_aidl_interface-cpp-source/gen/android/apex/IApexService.o
+out/soong/.intermediates/system/apex/apexd/apex_aidl_interface-cpp/android_x86_64_static/obj/.intermediates/system/apex/apexd/apex_aidl_interface-cpp-source/gen/android/apex/IApexService.tidy

@@ -1,0 +1,6 @@
+out/soong/.intermediates/bootable/recovery/minui/libminui/android_x86_64_static/libminui.a
+out/soong/.intermediates/bootable/recovery/minui/libminui/android_x86_64_static/obj/bootable/recovery/minui/events.o
+out/soong/.intermediates/bootable/recovery/minui/libminui/android_x86_64_static/obj/bootable/recovery/minui/graphics.o
+out/soong/.intermediates/bootable/recovery/minui/libminui/android_x86_64_static/obj/bootable/recovery/minui/graphics_drm.o
+out/soong/.intermediates/bootable/recovery/minui/libminui/android_x86_64_static/obj/bootable/recovery/minui/graphics_fbdev.o
+out/soong/.intermediates/bootable/recovery/minui/libminui/android_x86_64_static/obj/bootable/recovery/minui/resources.o

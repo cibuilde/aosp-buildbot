@@ -1,0 +1,13 @@
+out/soong/.intermediates/system/vold/libvold_binder/android_x86_x86_64_static/gen/aidl/android/os/BnVold.h
+out/soong/.intermediates/system/vold/libvold_binder/android_x86_x86_64_static/gen/aidl/android/os/BnVoldListener.h
+out/soong/.intermediates/system/vold/libvold_binder/android_x86_x86_64_static/gen/aidl/android/os/BnVoldMountCallback.h
+out/soong/.intermediates/system/vold/libvold_binder/android_x86_x86_64_static/gen/aidl/android/os/BnVoldTaskListener.h
+out/soong/.intermediates/system/vold/libvold_binder/android_x86_x86_64_static/gen/aidl/android/os/BpVold.h
+out/soong/.intermediates/system/vold/libvold_binder/android_x86_x86_64_static/gen/aidl/android/os/BpVoldListener.h
+out/soong/.intermediates/system/vold/libvold_binder/android_x86_x86_64_static/gen/aidl/android/os/BpVoldMountCallback.h
+out/soong/.intermediates/system/vold/libvold_binder/android_x86_x86_64_static/gen/aidl/android/os/BpVoldTaskListener.h
+out/soong/.intermediates/system/vold/libvold_binder/android_x86_x86_64_static/gen/aidl/android/os/IVold.h
+out/soong/.intermediates/system/vold/libvold_binder/android_x86_x86_64_static/gen/aidl/android/os/IVoldListener.h
+out/soong/.intermediates/system/vold/libvold_binder/android_x86_x86_64_static/gen/aidl/android/os/IVoldMountCallback.h
+out/soong/.intermediates/system/vold/libvold_binder/android_x86_x86_64_static/gen/aidl/android/os/IVoldTaskListener.h
+out/soong/.intermediates/system/vold/libvold_binder/android_x86_x86_64_static/libvold_binder.a

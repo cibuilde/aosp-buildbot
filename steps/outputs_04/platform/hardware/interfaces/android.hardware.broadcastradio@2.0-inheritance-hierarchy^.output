@@ -1,0 +1,5 @@
+out/soong/.intermediates/hardware/interfaces/broadcastradio/2.0/android.hardware.broadcastradio@2.0-inheritance-hierarchy/gen/IAnnouncementListener_inheritance_hierarchy.json
+out/soong/.intermediates/hardware/interfaces/broadcastradio/2.0/android.hardware.broadcastradio@2.0-inheritance-hierarchy/gen/IBroadcastRadio_inheritance_hierarchy.json
+out/soong/.intermediates/hardware/interfaces/broadcastradio/2.0/android.hardware.broadcastradio@2.0-inheritance-hierarchy/gen/ICloseHandle_inheritance_hierarchy.json
+out/soong/.intermediates/hardware/interfaces/broadcastradio/2.0/android.hardware.broadcastradio@2.0-inheritance-hierarchy/gen/ITunerCallback_inheritance_hierarchy.json
+out/soong/.intermediates/hardware/interfaces/broadcastradio/2.0/android.hardware.broadcastradio@2.0-inheritance-hierarchy/gen/ITunerSession_inheritance_hierarchy.json

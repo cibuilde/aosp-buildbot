@@ -1,0 +1,5 @@
+out/soong/.intermediates/frameworks/hardware/interfaces/sensorservice/1.0/android.frameworks.sensorservice@1.0_genc++/gen/android/frameworks/sensorservice/1.0/DirectReportChannelAll.cpp
+out/soong/.intermediates/frameworks/hardware/interfaces/sensorservice/1.0/android.frameworks.sensorservice@1.0_genc++/gen/android/frameworks/sensorservice/1.0/EventQueueAll.cpp
+out/soong/.intermediates/frameworks/hardware/interfaces/sensorservice/1.0/android.frameworks.sensorservice@1.0_genc++/gen/android/frameworks/sensorservice/1.0/EventQueueCallbackAll.cpp
+out/soong/.intermediates/frameworks/hardware/interfaces/sensorservice/1.0/android.frameworks.sensorservice@1.0_genc++/gen/android/frameworks/sensorservice/1.0/SensorManagerAll.cpp
+out/soong/.intermediates/frameworks/hardware/interfaces/sensorservice/1.0/android.frameworks.sensorservice@1.0_genc++/gen/android/frameworks/sensorservice/1.0/types.cpp

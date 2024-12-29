@@ -18,25 +18,45 @@ clone_depth_platform frameworks/native
 clone_depth_platform hardware/libhardware
 clone_depth_platform hardware/libhardware_legacy
 clone_depth_platform hardware/ril
+clone_project platform/prebuilts/build-tools prebuilts/build-tools android12-gsi "/linux-x86/bin" "/linux-x86/lib64" "/path" "/common"
 clone_depth_platform prebuilts/gcc/linux-x86/x86/x86_64-linux-android-4.9
 clone_depth_platform system/core
 clone_depth_platform system/logging
 clone_depth_platform system/media
 
-rsync -a -r $GITHUB_WORKSPACE/downloads/singletons/api_levels^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/cmd/merge_zips/merge_zips^linux_glibc_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/cc/ndkstubgen/ndkstubgen^linux_glibc_x86_64_PY3/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/zip/cmd/soong_zip^linux_glibc_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/crtbegin_so^android_recovery_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/crtbegin_so^android_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/crtbegin_so^android_x86_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/crtend_so^android_recovery_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/crtend_so^android_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/crtend_so^android_x86_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/libc^android_recovery_x86_64_shared_current/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/libc^android_x86_64_shared_current/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/libc^android_x86_x86_64_shared_current/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/pcre/libpcre2^android_recovery_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/pcre/libpcre2^android_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/pcre/libpcre2^android_x86_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/core/libpackagelistparser/libpackagelistparser^android_recovery_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/core/libpackagelistparser/libpackagelistparser^android_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/core/libpackagelistparser/libpackagelistparser^android_x86_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^android_recovery_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^android_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^android_x86_x86_64_shared/ .
 
-echo "building libselinux^android_vendor.31_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libselinux,android_vendor.31_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/selinux/libselinux/libselinux^android_vendor.31_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/external/selinux/libselinux^android_vendor.31_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/external/selinux/libselinux/libselinux^android_vendor.31_x86_64_shared
+echo "building libselinux^android_x86_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libselinux,android_x86_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/selinux/libselinux/libselinux^android_x86_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/external/selinux/libselinux^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/external/selinux/libselinux/libselinux^android_x86_x86_64_shared
 
-echo "building libselinux^android_x86_64_shared_current"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libselinux,android_x86_64_shared_current
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/selinux/libselinux/libselinux^android_x86_64_shared_current
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/external/selinux/libselinux^android_x86_64_shared_current.output . $GITHUB_WORKSPACE/artifacts/external/selinux/libselinux/libselinux^android_x86_64_shared_current
+echo "building libselinux^android_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libselinux,android_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/selinux/libselinux/libselinux^android_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/external/selinux/libselinux^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/external/selinux/libselinux/libselinux^android_x86_64_shared
+
+echo "building libselinux^android_recovery_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libselinux,android_recovery_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/selinux/libselinux/libselinux^android_recovery_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/external/selinux/libselinux^android_recovery_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/external/selinux/libselinux/libselinux^android_recovery_x86_64_shared
 
 rm -rf out
 
@@ -81,6 +101,10 @@ fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/hardware_ril.tar.zst" ]; then
   echo "Compressing hardware/ril -> hardware_ril.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/hardware_ril.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/hardware/ril/ .
+fi
+if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_build-tools.tar.zst" ]; then
+  echo "Compressing prebuilts/build-tools -> prebuilts_build-tools.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/prebuilts_build-tools.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/prebuilts/build-tools/ .
 fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_gcc_linux-x86_x86_x86_64-linux-android-4.9.tar.zst" ]; then
   echo "Compressing prebuilts/gcc/linux-x86/x86/x86_64-linux-android-4.9 -> prebuilts_gcc_linux-x86_x86_x86_64-linux-android-4.9.tar.zst"

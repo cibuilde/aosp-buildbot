@@ -1,0 +1,5 @@
+out/soong/.intermediates/packages/modules/Connectivity/Tethering/libtetherutilsjni/android_x86_64_sdk_static_apex30/obj/packages/modules/Connectivity/Tethering/jni/android_net_util_TetheringUtils.o
+out/soong/.intermediates/packages/modules/Connectivity/Tethering/libtetherutilsjni/android_x86_64_sdk_static_apex30/obj/packages/modules/Connectivity/Tethering/jni/com_android_networkstack_tethering_BpfCoordinator.o
+out/soong/.intermediates/packages/modules/Connectivity/Tethering/libtetherutilsjni/android_x86_64_sdk_static_apex30/obj/packages/modules/Connectivity/Tethering/jni/com_android_networkstack_tethering_BpfMap.o
+out/soong/.intermediates/packages/modules/Connectivity/Tethering/libtetherutilsjni/android_x86_64_sdk_static_apex30/obj/packages/modules/Connectivity/Tethering/jni/com_android_networkstack_tethering_BpfUtils.o
+out/soong/.intermediates/packages/modules/Connectivity/Tethering/libtetherutilsjni/android_x86_64_sdk_static_apex30/obj/packages/modules/Connectivity/Tethering/jni/onload.o

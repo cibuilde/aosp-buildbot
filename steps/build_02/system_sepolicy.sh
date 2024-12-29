@@ -25,20 +25,20 @@ clone_depth_platform system/sepolicy
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/pcre/libpcre2^linux_glibc_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/selinux/libsepol/libsepol^linux_glibc_x86_64_static/ .
 
-echo "building checkseapp^linux_glibc_x86_64"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_02.ninja checkseapp,linux_glibc_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/sepolicy/tools/checkseapp^linux_glibc_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_02/system/sepolicy/checkseapp^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/sepolicy/tools/checkseapp^linux_glibc_x86_64
+echo "building version_policy^linux_glibc_x86_64"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_02.ninja version_policy,linux_glibc_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/sepolicy/tools/version_policy^linux_glibc_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_02/system/sepolicy/version_policy^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/sepolicy/tools/version_policy^linux_glibc_x86_64
 
 echo "building sepolicy-analyze^linux_glibc_x86_64"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_02.ninja sepolicy-analyze,linux_glibc_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/sepolicy/tools/sepolicy-analyze/sepolicy-analyze^linux_glibc_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_02/system/sepolicy/sepolicy-analyze^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/sepolicy/tools/sepolicy-analyze/sepolicy-analyze^linux_glibc_x86_64
 
-echo "building version_policy^linux_glibc_x86_64"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_02.ninja version_policy,linux_glibc_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/sepolicy/tools/version_policy^linux_glibc_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_02/system/sepolicy/version_policy^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/sepolicy/tools/version_policy^linux_glibc_x86_64
+echo "building checkseapp^linux_glibc_x86_64"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_02.ninja checkseapp,linux_glibc_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/sepolicy/tools/checkseapp^linux_glibc_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_02/system/sepolicy/checkseapp^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/sepolicy/tools/checkseapp^linux_glibc_x86_64
 
 rm -rf out
 

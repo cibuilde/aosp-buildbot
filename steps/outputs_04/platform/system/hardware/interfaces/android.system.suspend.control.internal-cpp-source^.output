@@ -1,0 +1,16 @@
+out/soong/.intermediates/system/hardware/interfaces/suspend/aidl/android.system.suspend.control.internal-cpp-source/gen/android/system/suspend/internal/ISuspendControlServiceInternal.cpp
+out/soong/.intermediates/system/hardware/interfaces/suspend/aidl/android.system.suspend.control.internal-cpp-source/gen/android/system/suspend/internal/SuspendInfo.cpp
+out/soong/.intermediates/system/hardware/interfaces/suspend/aidl/android.system.suspend.control.internal-cpp-source/gen/android/system/suspend/internal/WakeLockInfo.cpp
+out/soong/.intermediates/system/hardware/interfaces/suspend/aidl/android.system.suspend.control.internal-cpp-source/gen/android/system/suspend/internal/WakeupInfo.cpp
+out/soong/.intermediates/system/hardware/interfaces/suspend/aidl/android.system.suspend.control.internal-cpp-source/gen/include/android/system/suspend/internal/BnSuspendControlServiceInternal.h
+out/soong/.intermediates/system/hardware/interfaces/suspend/aidl/android.system.suspend.control.internal-cpp-source/gen/include/android/system/suspend/internal/BnSuspendInfo.h
+out/soong/.intermediates/system/hardware/interfaces/suspend/aidl/android.system.suspend.control.internal-cpp-source/gen/include/android/system/suspend/internal/BnWakeLockInfo.h
+out/soong/.intermediates/system/hardware/interfaces/suspend/aidl/android.system.suspend.control.internal-cpp-source/gen/include/android/system/suspend/internal/BnWakeupInfo.h
+out/soong/.intermediates/system/hardware/interfaces/suspend/aidl/android.system.suspend.control.internal-cpp-source/gen/include/android/system/suspend/internal/BpSuspendControlServiceInternal.h
+out/soong/.intermediates/system/hardware/interfaces/suspend/aidl/android.system.suspend.control.internal-cpp-source/gen/include/android/system/suspend/internal/BpSuspendInfo.h
+out/soong/.intermediates/system/hardware/interfaces/suspend/aidl/android.system.suspend.control.internal-cpp-source/gen/include/android/system/suspend/internal/BpWakeLockInfo.h
+out/soong/.intermediates/system/hardware/interfaces/suspend/aidl/android.system.suspend.control.internal-cpp-source/gen/include/android/system/suspend/internal/BpWakeupInfo.h
+out/soong/.intermediates/system/hardware/interfaces/suspend/aidl/android.system.suspend.control.internal-cpp-source/gen/include/android/system/suspend/internal/ISuspendControlServiceInternal.h
+out/soong/.intermediates/system/hardware/interfaces/suspend/aidl/android.system.suspend.control.internal-cpp-source/gen/include/android/system/suspend/internal/SuspendInfo.h
+out/soong/.intermediates/system/hardware/interfaces/suspend/aidl/android.system.suspend.control.internal-cpp-source/gen/include/android/system/suspend/internal/WakeLockInfo.h
+out/soong/.intermediates/system/hardware/interfaces/suspend/aidl/android.system.suspend.control.internal-cpp-source/gen/include/android/system/suspend/internal/WakeupInfo.h

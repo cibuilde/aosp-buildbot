@@ -1,0 +1,17 @@
+out/soong/.intermediates/hardware/interfaces/radio/config/1.1/android.hardware.radio.config@1.1_genc++_headers/gen/android/hardware/radio/config/1.1/BnHwRadioConfig.h
+out/soong/.intermediates/hardware/interfaces/radio/config/1.1/android.hardware.radio.config@1.1_genc++_headers/gen/android/hardware/radio/config/1.1/BnHwRadioConfigIndication.h
+out/soong/.intermediates/hardware/interfaces/radio/config/1.1/android.hardware.radio.config@1.1_genc++_headers/gen/android/hardware/radio/config/1.1/BnHwRadioConfigResponse.h
+out/soong/.intermediates/hardware/interfaces/radio/config/1.1/android.hardware.radio.config@1.1_genc++_headers/gen/android/hardware/radio/config/1.1/BpHwRadioConfig.h
+out/soong/.intermediates/hardware/interfaces/radio/config/1.1/android.hardware.radio.config@1.1_genc++_headers/gen/android/hardware/radio/config/1.1/BpHwRadioConfigIndication.h
+out/soong/.intermediates/hardware/interfaces/radio/config/1.1/android.hardware.radio.config@1.1_genc++_headers/gen/android/hardware/radio/config/1.1/BpHwRadioConfigResponse.h
+out/soong/.intermediates/hardware/interfaces/radio/config/1.1/android.hardware.radio.config@1.1_genc++_headers/gen/android/hardware/radio/config/1.1/BsRadioConfig.h
+out/soong/.intermediates/hardware/interfaces/radio/config/1.1/android.hardware.radio.config@1.1_genc++_headers/gen/android/hardware/radio/config/1.1/BsRadioConfigIndication.h
+out/soong/.intermediates/hardware/interfaces/radio/config/1.1/android.hardware.radio.config@1.1_genc++_headers/gen/android/hardware/radio/config/1.1/BsRadioConfigResponse.h
+out/soong/.intermediates/hardware/interfaces/radio/config/1.1/android.hardware.radio.config@1.1_genc++_headers/gen/android/hardware/radio/config/1.1/IHwRadioConfig.h
+out/soong/.intermediates/hardware/interfaces/radio/config/1.1/android.hardware.radio.config@1.1_genc++_headers/gen/android/hardware/radio/config/1.1/IHwRadioConfigIndication.h
+out/soong/.intermediates/hardware/interfaces/radio/config/1.1/android.hardware.radio.config@1.1_genc++_headers/gen/android/hardware/radio/config/1.1/IHwRadioConfigResponse.h
+out/soong/.intermediates/hardware/interfaces/radio/config/1.1/android.hardware.radio.config@1.1_genc++_headers/gen/android/hardware/radio/config/1.1/IRadioConfig.h
+out/soong/.intermediates/hardware/interfaces/radio/config/1.1/android.hardware.radio.config@1.1_genc++_headers/gen/android/hardware/radio/config/1.1/IRadioConfigIndication.h
+out/soong/.intermediates/hardware/interfaces/radio/config/1.1/android.hardware.radio.config@1.1_genc++_headers/gen/android/hardware/radio/config/1.1/IRadioConfigResponse.h
+out/soong/.intermediates/hardware/interfaces/radio/config/1.1/android.hardware.radio.config@1.1_genc++_headers/gen/android/hardware/radio/config/1.1/hwtypes.h
+out/soong/.intermediates/hardware/interfaces/radio/config/1.1/android.hardware.radio.config@1.1_genc++_headers/gen/android/hardware/radio/config/1.1/types.h

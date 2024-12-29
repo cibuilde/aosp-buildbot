@@ -9,59 +9,73 @@ ln -sf $GITHUB_WORKSPACE/ninja .
 
 mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86 prebuilts/clang/host/linux-x86
 
-clone_depth_platform external/avb
-clone_depth_platform external/boringssl
-clone_depth_platform external/fec
+clone_depth_platform art
+clone_depth_platform bionic
+clone_depth_platform build/soong
+clone_depth_platform external/OpenCSD
 clone_depth_platform external/fmtlib
+clone_depth_platform external/googletest
 clone_depth_platform external/libcxx
 clone_depth_platform external/libcxxabi
+clone_depth_platform external/libevent
+clone_depth_platform external/llvm
+clone_depth_platform external/lzma
+clone_depth_platform external/protobuf
 clone_depth_platform external/zlib
 clone_depth_platform frameworks/av
 clone_depth_platform frameworks/native
 clone_depth_platform hardware/libhardware
 clone_depth_platform hardware/libhardware_legacy
 clone_depth_platform hardware/ril
-clone_project platform/prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8 prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8 android12-gsi "/sysroot" "/lib/gcc/x86_64-linux/4.8.3" "/x86_64-linux/lib64" "/x86_64-linux/lib32"
+clone_depth_platform prebuilts/gcc/linux-x86/x86/x86_64-linux-android-4.9
 clone_depth_platform system/core
 clone_sparse_exclude system/extras "!/simpleperf/scripts" "!/simpleperf/testdata" "!/simpleperf/demo" "!/simpleperf/doc" "!/memory_replay/traces" "!/ioshark/*.tgz" "!/ioshark/*.tar.gz"
 clone_depth_platform system/libbase
+clone_depth_platform system/libprocinfo
+clone_depth_platform system/libziparchive
 clone_depth_platform system/logging
 clone_depth_platform system/media
+clone_depth_platform system/tools/aidl
+clone_depth_platform system/unwinding
 
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/avb/libavb^linux_glibc_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/avb/libavb^linux_glibc_x86_static/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/boringssl/libcrypto^linux_glibc_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/boringssl/libcrypto^linux_glibc_x86_static/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/fec/libfec_rs^linux_glibc_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/fec/libfec_rs^linux_glibc_x86_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/cmd/dep_fixer/dep_fixer^linux_glibc_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/cc/libbuildversion/libbuildversion^android_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/symbol_inject/cmd/symbol_inject^linux_glibc_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcxx/libc++^linux_glibc_x86_64_shared/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcxx/libc++^linux_glibc_x86_shared/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/zlib/libz^linux_glibc_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/zlib/libz^linux_glibc_x86_static/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/system/core/libcrypto_utils/libcrypto_utils^linux_glibc_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/system/core/libcrypto_utils/libcrypto_utils^linux_glibc_x86_static/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/system/core/libsparse/libsparse^linux_glibc_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/system/core/libsparse/libsparse^linux_glibc_x86_static/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/system/extras/ext4_utils/libext4_utils^linux_glibc_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/system/extras/ext4_utils/libext4_utils^linux_glibc_x86_static/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/system/extras/libfec/libfec^linux_glibc_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/system/extras/libfec/libfec^linux_glibc_x86_static/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/system/extras/squashfs_utils/libsquashfs_utils^linux_glibc_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/system/extras/squashfs_utils/libsquashfs_utils^linux_glibc_x86_static/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/system/libbase/libbase^linux_glibc_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/system/libbase/libbase^linux_glibc_x86_static/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^linux_glibc_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^linux_glibc_x86_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/llvm/llvm-gen-attributes^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/llvm/llvm-gen-intrinsics^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/protobuf/aprotoc^linux_glibc_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/tools/aidl/aidl^linux_glibc_x86_64/ .
 
-echo "building fec^linux_glibc_x86"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja fec,linux_glibc_x86
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/extras/verity/fec/fec^linux_glibc_x86
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/extras/fec^linux_glibc_x86.output . $GITHUB_WORKSPACE/artifacts/system/extras/verity/fec/fec^linux_glibc_x86
+echo "building profcollectd_aidl_interface-rust-source^"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja profcollectd_aidl_interface-rust-source,
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/extras/profcollectd/libprofcollectd/profcollectd_aidl_interface-rust-source^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/extras/profcollectd_aidl_interface-rust-source^.output . $GITHUB_WORKSPACE/artifacts/system/extras/profcollectd/libprofcollectd/profcollectd_aidl_interface-rust-source^
 
-echo "building fec^linux_glibc_x86_64"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja fec,linux_glibc_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/extras/verity/fec/fec^linux_glibc_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/extras/fec^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/extras/verity/fec/fec^linux_glibc_x86_64
+echo "building profcollectd_aidl_interface-rust^android_x86_64_source"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja profcollectd_aidl_interface-rust,android_x86_64_source
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/extras/profcollectd/libprofcollectd/profcollectd_aidl_interface-rust^android_x86_64_source
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/extras/profcollectd_aidl_interface-rust^android_x86_64_source.output . $GITHUB_WORKSPACE/artifacts/system/extras/profcollectd/libprofcollectd/profcollectd_aidl_interface-rust^android_x86_64_source
+
+echo "building libsimpleperf_profcollect^android_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libsimpleperf_profcollect,android_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/extras/simpleperf/libsimpleperf_profcollect^android_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/extras/libsimpleperf_profcollect^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/extras/simpleperf/libsimpleperf_profcollect^android_x86_64_static
+
+echo "building libsimpleperf_etm_decoder^android_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libsimpleperf_etm_decoder,android_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/extras/simpleperf/libsimpleperf_etm_decoder^android_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/extras/libsimpleperf_etm_decoder^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/extras/simpleperf/libsimpleperf_etm_decoder^android_x86_64_static
+
+echo "building libsimpleperf^android_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libsimpleperf,android_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/extras/simpleperf/libsimpleperf^android_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/extras/libsimpleperf^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/extras/simpleperf/libsimpleperf^android_x86_64_static
+
+echo "building liblpdump_interface-cpp-source^"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja liblpdump_interface-cpp-source,
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/extras/partition_tools/aidl/liblpdump_interface-cpp-source^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/extras/liblpdump_interface-cpp-source^.output . $GITHUB_WORKSPACE/artifacts/system/extras/partition_tools/aidl/liblpdump_interface-cpp-source^
 
 rm -rf out
 
@@ -71,21 +85,29 @@ gh release --repo cibuilde/aosp-buildbot upload android12-gsi_04 system_extras.t
 
 du -ah -d1 system_extras*.tar.zst | sort -h
 
-if [ ! -f "$GITHUB_WORKSPACE/cache/external_avb.tar.zst" ]; then
-  echo "Compressing external/avb -> external_avb.tar.zst"
-  tar -cf $GITHUB_WORKSPACE/cache/external_avb.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/avb/ .
+if [ ! -f "$GITHUB_WORKSPACE/cache/art.tar.zst" ]; then
+  echo "Compressing art -> art.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/art.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/art/ .
 fi
-if [ ! -f "$GITHUB_WORKSPACE/cache/external_boringssl.tar.zst" ]; then
-  echo "Compressing external/boringssl -> external_boringssl.tar.zst"
-  tar -cf $GITHUB_WORKSPACE/cache/external_boringssl.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/boringssl/ .
+if [ ! -f "$GITHUB_WORKSPACE/cache/bionic.tar.zst" ]; then
+  echo "Compressing bionic -> bionic.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/bionic.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/bionic/ .
 fi
-if [ ! -f "$GITHUB_WORKSPACE/cache/external_fec.tar.zst" ]; then
-  echo "Compressing external/fec -> external_fec.tar.zst"
-  tar -cf $GITHUB_WORKSPACE/cache/external_fec.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/fec/ .
+if [ ! -f "$GITHUB_WORKSPACE/cache/build_soong.tar.zst" ]; then
+  echo "Compressing build/soong -> build_soong.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/build_soong.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/build/soong/ .
+fi
+if [ ! -f "$GITHUB_WORKSPACE/cache/external_OpenCSD.tar.zst" ]; then
+  echo "Compressing external/OpenCSD -> external_OpenCSD.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/external_OpenCSD.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/OpenCSD/ .
 fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/external_fmtlib.tar.zst" ]; then
   echo "Compressing external/fmtlib -> external_fmtlib.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/external_fmtlib.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/fmtlib/ .
+fi
+if [ ! -f "$GITHUB_WORKSPACE/cache/external_googletest.tar.zst" ]; then
+  echo "Compressing external/googletest -> external_googletest.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/external_googletest.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/googletest/ .
 fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/external_libcxx.tar.zst" ]; then
   echo "Compressing external/libcxx -> external_libcxx.tar.zst"
@@ -94,6 +116,22 @@ fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/external_libcxxabi.tar.zst" ]; then
   echo "Compressing external/libcxxabi -> external_libcxxabi.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/external_libcxxabi.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/libcxxabi/ .
+fi
+if [ ! -f "$GITHUB_WORKSPACE/cache/external_libevent.tar.zst" ]; then
+  echo "Compressing external/libevent -> external_libevent.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/external_libevent.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/libevent/ .
+fi
+if [ ! -f "$GITHUB_WORKSPACE/cache/external_llvm.tar.zst" ]; then
+  echo "Compressing external/llvm -> external_llvm.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/external_llvm.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/llvm/ .
+fi
+if [ ! -f "$GITHUB_WORKSPACE/cache/external_lzma.tar.zst" ]; then
+  echo "Compressing external/lzma -> external_lzma.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/external_lzma.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/lzma/ .
+fi
+if [ ! -f "$GITHUB_WORKSPACE/cache/external_protobuf.tar.zst" ]; then
+  echo "Compressing external/protobuf -> external_protobuf.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/external_protobuf.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/protobuf/ .
 fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/external_zlib.tar.zst" ]; then
   echo "Compressing external/zlib -> external_zlib.tar.zst"
@@ -119,9 +157,9 @@ if [ ! -f "$GITHUB_WORKSPACE/cache/hardware_ril.tar.zst" ]; then
   echo "Compressing hardware/ril -> hardware_ril.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/hardware_ril.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/hardware/ril/ .
 fi
-if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_gcc_linux-x86_host_x86_64-linux-glibc2.17-4.8.tar.zst" ]; then
-  echo "Compressing prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8 -> prebuilts_gcc_linux-x86_host_x86_64-linux-glibc2.17-4.8.tar.zst"
-  tar -cf $GITHUB_WORKSPACE/cache/prebuilts_gcc_linux-x86_host_x86_64-linux-glibc2.17-4.8.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8/ .
+if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_gcc_linux-x86_x86_x86_64-linux-android-4.9.tar.zst" ]; then
+  echo "Compressing prebuilts/gcc/linux-x86/x86/x86_64-linux-android-4.9 -> prebuilts_gcc_linux-x86_x86_x86_64-linux-android-4.9.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/prebuilts_gcc_linux-x86_x86_x86_64-linux-android-4.9.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/prebuilts/gcc/linux-x86/x86/x86_64-linux-android-4.9/ .
 fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/system_core.tar.zst" ]; then
   echo "Compressing system/core -> system_core.tar.zst"
@@ -135,6 +173,14 @@ if [ ! -f "$GITHUB_WORKSPACE/cache/system_libbase.tar.zst" ]; then
   echo "Compressing system/libbase -> system_libbase.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/system_libbase.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/system/libbase/ .
 fi
+if [ ! -f "$GITHUB_WORKSPACE/cache/system_libprocinfo.tar.zst" ]; then
+  echo "Compressing system/libprocinfo -> system_libprocinfo.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/system_libprocinfo.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/system/libprocinfo/ .
+fi
+if [ ! -f "$GITHUB_WORKSPACE/cache/system_libziparchive.tar.zst" ]; then
+  echo "Compressing system/libziparchive -> system_libziparchive.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/system_libziparchive.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/system/libziparchive/ .
+fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/system_logging.tar.zst" ]; then
   echo "Compressing system/logging -> system_logging.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/system_logging.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/system/logging/ .
@@ -142,6 +188,14 @@ fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/system_media.tar.zst" ]; then
   echo "Compressing system/media -> system_media.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/system_media.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/system/media/ .
+fi
+if [ ! -f "$GITHUB_WORKSPACE/cache/system_tools_aidl.tar.zst" ]; then
+  echo "Compressing system/tools/aidl -> system_tools_aidl.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/system_tools_aidl.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/system/tools/aidl/ .
+fi
+if [ ! -f "$GITHUB_WORKSPACE/cache/system_unwinding.tar.zst" ]; then
+  echo "Compressing system/unwinding -> system_unwinding.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/system_unwinding.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/system/unwinding/ .
 fi
 
 rm -rf aosp

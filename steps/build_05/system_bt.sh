@@ -9,9 +9,7 @@ ln -sf $GITHUB_WORKSPACE/ninja .
 
 mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86 prebuilts/clang/host/linux-x86
 
-clone_depth_platform external/flatbuffers
-clone_depth_platform external/libcxx
-clone_depth_platform external/libcxxabi
+clone_depth_platform external/protobuf
 clone_depth_platform external/rust/crates/proc-macro2
 clone_depth_platform external/rust/crates/quote
 clone_depth_platform external/rust/crates/syn
@@ -20,49 +18,34 @@ clone_project platform/prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8 p
 clone_project platform/prebuilts/rust prebuilts/rust android12-gsi "/bootstrap" "/linux-x86/1.51.0"
 clone_depth_platform system/bt
 
-rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/cmd/sbox/sbox^linux_glibc_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/flatbuffers/flatc^linux_glibc_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcxx/libc++^linux_glibc_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/cmd/dep_fixer/dep_fixer^linux_glibc_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/protobuf/aprotoc^linux_glibc_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/rust/crates/bytes/libbytes^linux_glibc_x86_64_rlib_rlib-std/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/rust/crates/grpcio-compiler/grpc_rust_plugin^linux_glibc_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/rust/crates/grpcio-compiler/libgrpcio_compiler^linux_glibc_x86_64_rlib_rlib-std/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/rust/crates/proc-macro2/libproc_macro2^linux_glibc_x86_64_rlib_rlib-std/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/rust/crates/protobuf/copy_protobuf_build_out^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/rust/crates/protobuf/libprotobuf^linux_glibc_x86_64_rlib_rlib-std/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/rust/crates/protobuf-codegen/libprotobuf_codegen^linux_glibc_x86_64_rlib_rlib-std/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/rust/crates/protobuf-codegen/protoc-gen-rust^linux_glibc_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/rust/crates/quote/libquote^linux_glibc_x86_64_rlib_rlib-std/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/rust/crates/syn/libsyn^linux_glibc_x86_64_rlib_rlib-std/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/rust/crates/unicode-xid/libunicode_xid^linux_glibc_x86_64_rlib_rlib-std/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/system/bt/gd/packet/parser/bluetooth_packetgen^linux_glibc_x86_64/ .
-
-echo "building BluetoothGeneratedBundlerSchema_h_bfbs^"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja BluetoothGeneratedBundlerSchema_h_bfbs,
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/bt/gd/dumpsys/bundler/BluetoothGeneratedBundlerSchema_h_bfbs^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/system/bt/BluetoothGeneratedBundlerSchema_h_bfbs^.output . $GITHUB_WORKSPACE/artifacts/system/bt/gd/dumpsys/bundler/BluetoothGeneratedBundlerSchema_h_bfbs^
-
-echo "building BluetoothGeneratedDumpsysBinarySchema_bfbs^"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja BluetoothGeneratedDumpsysBinarySchema_bfbs,
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/bt/gd/BluetoothGeneratedDumpsysBinarySchema_bfbs^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/system/bt/BluetoothGeneratedDumpsysBinarySchema_bfbs^.output . $GITHUB_WORKSPACE/artifacts/system/bt/gd/BluetoothGeneratedDumpsysBinarySchema_bfbs^
-
-echo "building BluetoothGeneratedDumpsysDataSchema_h^"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja BluetoothGeneratedDumpsysDataSchema_h,
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/bt/gd/BluetoothGeneratedDumpsysDataSchema_h^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/system/bt/BluetoothGeneratedDumpsysDataSchema_h^.output . $GITHUB_WORKSPACE/artifacts/system/bt/gd/BluetoothGeneratedDumpsysDataSchema_h^
-
-echo "building BluetoothGeneratedPackets_h^"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja BluetoothGeneratedPackets_h,
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/bt/gd/BluetoothGeneratedPackets_h^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/system/bt/BluetoothGeneratedPackets_h^.output . $GITHUB_WORKSPACE/artifacts/system/bt/gd/BluetoothGeneratedPackets_h^
-
-echo "building BluetoothGeneratedPackets_rust^"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja BluetoothGeneratedPackets_rust,
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/bt/gd/BluetoothGeneratedPackets_rust^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/system/bt/BluetoothGeneratedPackets_rust^.output . $GITHUB_WORKSPACE/artifacts/system/bt/gd/BluetoothGeneratedPackets_rust^
-
-echo "building RootCanalGeneratedPackets_h^"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja RootCanalGeneratedPackets_h,
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/bt/vendor_libs/test_vendor_lib/RootCanalGeneratedPackets_h^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/system/bt/RootCanalGeneratedPackets_h^.output . $GITHUB_WORKSPACE/artifacts/system/bt/vendor_libs/test_vendor_lib/RootCanalGeneratedPackets_h^
 
 echo "building libgddi_macros^linux_glibc_x86_64"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libgddi_macros,linux_glibc_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/bt/gd/rust/gddi/libgddi_macros^linux_glibc_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/system/bt/libgddi_macros^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/bt/gd/rust/gddi/libgddi_macros^linux_glibc_x86_64
+
+echo "building libbt_facade_proto^android_x86_x86_64_source"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libbt_facade_proto,android_x86_x86_64_source
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/bt/gd/libbt_facade_proto^android_x86_x86_64_source
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/system/bt/libbt_facade_proto^android_x86_x86_64_source.output . $GITHUB_WORKSPACE/artifacts/system/bt/gd/libbt_facade_proto^android_x86_x86_64_source
+
+echo "building libbt_facade_proto^android_x86_64_source"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libbt_facade_proto,android_x86_64_source
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/bt/gd/libbt_facade_proto^android_x86_64_source
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/system/bt/libbt_facade_proto^android_x86_64_source.output . $GITHUB_WORKSPACE/artifacts/system/bt/gd/libbt_facade_proto^android_x86_64_source
 
 rm -rf out
 
@@ -72,17 +55,9 @@ gh release --repo cibuilde/aosp-buildbot upload android12-gsi_05 system_bt.tar.z
 
 du -ah -d1 system_bt*.tar.zst | sort -h
 
-if [ ! -f "$GITHUB_WORKSPACE/cache/external_flatbuffers.tar.zst" ]; then
-  echo "Compressing external/flatbuffers -> external_flatbuffers.tar.zst"
-  tar -cf $GITHUB_WORKSPACE/cache/external_flatbuffers.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/flatbuffers/ .
-fi
-if [ ! -f "$GITHUB_WORKSPACE/cache/external_libcxx.tar.zst" ]; then
-  echo "Compressing external/libcxx -> external_libcxx.tar.zst"
-  tar -cf $GITHUB_WORKSPACE/cache/external_libcxx.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/libcxx/ .
-fi
-if [ ! -f "$GITHUB_WORKSPACE/cache/external_libcxxabi.tar.zst" ]; then
-  echo "Compressing external/libcxxabi -> external_libcxxabi.tar.zst"
-  tar -cf $GITHUB_WORKSPACE/cache/external_libcxxabi.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/libcxxabi/ .
+if [ ! -f "$GITHUB_WORKSPACE/cache/external_protobuf.tar.zst" ]; then
+  echo "Compressing external/protobuf -> external_protobuf.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/external_protobuf.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/protobuf/ .
 fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/external_rust_crates_proc-macro2.tar.zst" ]; then
   echo "Compressing external/rust/crates/proc-macro2 -> external_rust_crates_proc-macro2.tar.zst"

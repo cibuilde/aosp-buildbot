@@ -1,0 +1,12 @@
+out/soong/.intermediates/hardware/interfaces/radio/config/1.2/android.hardware.radio.config@1.2_genc++_headers/gen/android/hardware/radio/config/1.2/BnHwRadioConfigIndication.h
+out/soong/.intermediates/hardware/interfaces/radio/config/1.2/android.hardware.radio.config@1.2_genc++_headers/gen/android/hardware/radio/config/1.2/BnHwRadioConfigResponse.h
+out/soong/.intermediates/hardware/interfaces/radio/config/1.2/android.hardware.radio.config@1.2_genc++_headers/gen/android/hardware/radio/config/1.2/BpHwRadioConfigIndication.h
+out/soong/.intermediates/hardware/interfaces/radio/config/1.2/android.hardware.radio.config@1.2_genc++_headers/gen/android/hardware/radio/config/1.2/BpHwRadioConfigResponse.h
+out/soong/.intermediates/hardware/interfaces/radio/config/1.2/android.hardware.radio.config@1.2_genc++_headers/gen/android/hardware/radio/config/1.2/BsRadioConfigIndication.h
+out/soong/.intermediates/hardware/interfaces/radio/config/1.2/android.hardware.radio.config@1.2_genc++_headers/gen/android/hardware/radio/config/1.2/BsRadioConfigResponse.h
+out/soong/.intermediates/hardware/interfaces/radio/config/1.2/android.hardware.radio.config@1.2_genc++_headers/gen/android/hardware/radio/config/1.2/IHwRadioConfigIndication.h
+out/soong/.intermediates/hardware/interfaces/radio/config/1.2/android.hardware.radio.config@1.2_genc++_headers/gen/android/hardware/radio/config/1.2/IHwRadioConfigResponse.h
+out/soong/.intermediates/hardware/interfaces/radio/config/1.2/android.hardware.radio.config@1.2_genc++_headers/gen/android/hardware/radio/config/1.2/IRadioConfigIndication.h
+out/soong/.intermediates/hardware/interfaces/radio/config/1.2/android.hardware.radio.config@1.2_genc++_headers/gen/android/hardware/radio/config/1.2/IRadioConfigResponse.h
+out/soong/.intermediates/hardware/interfaces/radio/config/1.2/android.hardware.radio.config@1.2_genc++_headers/gen/android/hardware/radio/config/1.2/hwtypes.h
+out/soong/.intermediates/hardware/interfaces/radio/config/1.2/android.hardware.radio.config@1.2_genc++_headers/gen/android/hardware/radio/config/1.2/types.h

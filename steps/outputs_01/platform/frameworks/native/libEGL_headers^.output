@@ -1,0 +1,5 @@
+out/soong/ndk/sysroot/usr/include/EGL/Platform.h
+out/soong/ndk/sysroot/usr/include/EGL/egl.h
+out/soong/ndk/sysroot/usr/include/EGL/eglext.h
+out/soong/ndk/sysroot/usr/include/EGL/eglext_angle.h
+out/soong/ndk/sysroot/usr/include/EGL/eglplatform.h

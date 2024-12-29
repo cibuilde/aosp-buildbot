@@ -10,31 +10,70 @@ ln -sf $GITHUB_WORKSPACE/ninja .
 mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86 prebuilts/clang/host/linux-x86
 
 clone_depth_platform art
+clone_depth_platform build/soong
+clone_depth_platform external/conscrypt
+clone_depth_platform external/icu
 clone_depth_platform libcore
-clone_project platform/prebuilts/build-tools prebuilts/build-tools android12-gsi "/linux-x86/bin" "/linux-x86/lib64" "/path" "/common"
 clone_project platform/prebuilts/jdk/jdk11 prebuilts/jdk/jdk11 android12-gsi "/linux-x86"
 
-rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/cmd/dep_fixer/dep_fixer^linux_glibc_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/cmd/merge_zips/merge_zips^linux_glibc_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/cmd/javac_wrapper/soong_javac_wrapper^linux_glibc_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/zip/cmd/soong_zip^linux_glibc_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/cmd/zipsync/zipsync^linux_glibc_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/protobuf/aprotoc^linux_glibc_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/turbine/turbine^linux_glibc_common/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/libcore/mmodules/intracoreapi/art.module.intra.core.api.stubs.source^android_common/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/libcore/java-current-stubs-source^android_common/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/conscrypt/conscrypt.module.platform.api.stubs^android_common/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/conscrypt/conscrypt.module.public.api.stubs^android_common/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/icu/android_icu4j/i18n.module.public.api.stubs^android_common/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/icu/android_icu4j/legacy.i18n.module.platform.api.stubs^android_common/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/icu/android_icu4j/stable.i18n.module.platform.api.stubs^android_common/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/libcore/art.module.public.api.stubs.module_lib^android_common/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/libcore/art.module.public.api.stubs^android_common/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/libcore/core-generated-annotation-stubs^android_common/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/libcore/core-lambda-stubs-for-system-modules^android_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/r8/d8^linux_glibc_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/r8/d8^linux_glibc_x86_64/ .
 
-echo "building art.module.intra.core.api.stubs^android_common"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_12.ninja art.module.intra.core.api.stubs,android_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/libcore/mmodules/intracoreapi/art.module.intra.core.api.stubs^android_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_12/libcore/art.module.intra.core.api.stubs^android_common.output . $GITHUB_WORKSPACE/artifacts/libcore/mmodules/intracoreapi/art.module.intra.core.api.stubs^android_common
+echo "building stable.core.platform.api.stubs^android_common"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_12.ninja stable.core.platform.api.stubs,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/libcore/mmodules/core_platform_api/stable.core.platform.api.stubs^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_12/libcore/stable.core.platform.api.stubs^android_common.output . $GITHUB_WORKSPACE/artifacts/libcore/mmodules/core_platform_api/stable.core.platform.api.stubs^android_common
 
-echo "building java.current.stubs^android_common"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_12.ninja java.current.stubs,android_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/libcore/java.current.stubs^android_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_12/libcore/java.current.stubs^android_common.output . $GITHUB_WORKSPACE/artifacts/libcore/java.current.stubs^android_common
+echo "building stable-core-platform-api-stubs-system-modules^android_common"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_12.ninja stable-core-platform-api-stubs-system-modules,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/libcore/mmodules/core_platform_api/stable-core-platform-api-stubs-system-modules^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_12/libcore/stable-core-platform-api-stubs-system-modules^android_common.output . $GITHUB_WORKSPACE/artifacts/libcore/mmodules/core_platform_api/stable-core-platform-api-stubs-system-modules^android_common
+
+echo "building legacy.core.platform.api.stubs^android_common"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_12.ninja legacy.core.platform.api.stubs,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/libcore/mmodules/core_platform_api/legacy.core.platform.api.stubs^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_12/libcore/legacy.core.platform.api.stubs^android_common.output . $GITHUB_WORKSPACE/artifacts/libcore/mmodules/core_platform_api/legacy.core.platform.api.stubs^android_common
+
+echo "building legacy-core-platform-api-stubs-system-modules^android_common"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_12.ninja legacy-core-platform-api-stubs-system-modules,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/libcore/mmodules/core_platform_api/legacy-core-platform-api-stubs-system-modules^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_12/libcore/legacy-core-platform-api-stubs-system-modules^android_common.output . $GITHUB_WORKSPACE/artifacts/libcore/mmodules/core_platform_api/legacy-core-platform-api-stubs-system-modules^android_common
+
+echo "building core.module_lib.stubs^android_common"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_12.ninja core.module_lib.stubs,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/libcore/core.module_lib.stubs^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_12/libcore/core.module_lib.stubs^android_common.output . $GITHUB_WORKSPACE/artifacts/libcore/core.module_lib.stubs^android_common
+
+echo "building core.current.stubs^android_common"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_12.ninja core.current.stubs,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/libcore/core.current.stubs^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_12/libcore/core.current.stubs^android_common.output . $GITHUB_WORKSPACE/artifacts/libcore/core.current.stubs^android_common
+
+echo "building core-module-lib-stubs-system-modules^android_common"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_12.ninja core-module-lib-stubs-system-modules,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/libcore/core-module-lib-stubs-system-modules^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_12/libcore/core-module-lib-stubs-system-modules^android_common.output . $GITHUB_WORKSPACE/artifacts/libcore/core-module-lib-stubs-system-modules^android_common
+
+echo "building core-current-stubs-for-system-modules^android_common"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_12.ninja core-current-stubs-for-system-modules,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/libcore/core-current-stubs-for-system-modules^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_12/libcore/core-current-stubs-for-system-modules^android_common.output . $GITHUB_WORKSPACE/artifacts/libcore/core-current-stubs-for-system-modules^android_common
+
+echo "building core-current-stubs-system-modules^android_common"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_12.ninja core-current-stubs-system-modules,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/libcore/core-current-stubs-system-modules^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_12/libcore/core-current-stubs-system-modules^android_common.output . $GITHUB_WORKSPACE/artifacts/libcore/core-current-stubs-system-modules^android_common
 
 rm -rf out
 
@@ -48,13 +87,21 @@ if [ ! -f "$GITHUB_WORKSPACE/cache/art.tar.zst" ]; then
   echo "Compressing art -> art.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/art.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/art/ .
 fi
+if [ ! -f "$GITHUB_WORKSPACE/cache/build_soong.tar.zst" ]; then
+  echo "Compressing build/soong -> build_soong.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/build_soong.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/build/soong/ .
+fi
+if [ ! -f "$GITHUB_WORKSPACE/cache/external_conscrypt.tar.zst" ]; then
+  echo "Compressing external/conscrypt -> external_conscrypt.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/external_conscrypt.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/conscrypt/ .
+fi
+if [ ! -f "$GITHUB_WORKSPACE/cache/external_icu.tar.zst" ]; then
+  echo "Compressing external/icu -> external_icu.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/external_icu.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/icu/ .
+fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/libcore.tar.zst" ]; then
   echo "Compressing libcore -> libcore.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/libcore.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/libcore/ .
-fi
-if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_build-tools.tar.zst" ]; then
-  echo "Compressing prebuilts/build-tools -> prebuilts_build-tools.tar.zst"
-  tar -cf $GITHUB_WORKSPACE/cache/prebuilts_build-tools.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/prebuilts/build-tools/ .
 fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_jdk_jdk11.tar.zst" ]; then
   echo "Compressing prebuilts/jdk/jdk11 -> prebuilts_jdk_jdk11.tar.zst"

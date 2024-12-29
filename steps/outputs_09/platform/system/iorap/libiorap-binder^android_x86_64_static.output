@@ -1,0 +1,7 @@
+out/soong/.intermediates/system/iorap/libiorap-binder/android_x86_64_static/gen/aidl/com/google/android/startop/iorap/BnIorap.h
+out/soong/.intermediates/system/iorap/libiorap-binder/android_x86_64_static/gen/aidl/com/google/android/startop/iorap/BnTaskListener.h
+out/soong/.intermediates/system/iorap/libiorap-binder/android_x86_64_static/gen/aidl/com/google/android/startop/iorap/BpIorap.h
+out/soong/.intermediates/system/iorap/libiorap-binder/android_x86_64_static/gen/aidl/com/google/android/startop/iorap/BpTaskListener.h
+out/soong/.intermediates/system/iorap/libiorap-binder/android_x86_64_static/gen/aidl/com/google/android/startop/iorap/IIorap.h
+out/soong/.intermediates/system/iorap/libiorap-binder/android_x86_64_static/gen/aidl/com/google/android/startop/iorap/ITaskListener.h
+out/soong/.intermediates/system/iorap/libiorap-binder/android_x86_64_static/libiorap-binder.a

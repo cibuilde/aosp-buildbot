@@ -38,35 +38,35 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/system/apex/proto/lib_apex_manifest_prot
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/apex/proto/lib_apex_manifest_proto_lite^android_x86_64_static_apex10000/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/apex/proto/lib_apex_manifest_proto_lite^linux_glibc_x86_64_static/ .
 
-echo "building linkerconfig_contents^android_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja linkerconfig_contents,android_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/linkerconfig/linkerconfig_contents^android_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/system/linkerconfig/linkerconfig_contents^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/linkerconfig/linkerconfig_contents^android_x86_64_static
-
-echo "building linkerconfig_contents^android_x86_64_static_apex10000"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja linkerconfig_contents,android_x86_64_static_apex10000
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/linkerconfig/linkerconfig_contents^android_x86_64_static_apex10000
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/system/linkerconfig/linkerconfig_contents^android_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/system/linkerconfig/linkerconfig_contents^android_x86_64_static_apex10000
-
-echo "building linkerconfig_contents^linux_glibc_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja linkerconfig_contents,linux_glibc_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/linkerconfig/linkerconfig_contents^linux_glibc_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/system/linkerconfig/linkerconfig_contents^linux_glibc_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/linkerconfig/linkerconfig_contents^linux_glibc_x86_64_static
-
-echo "building linkerconfig_generator^android_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja linkerconfig_generator,android_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/linkerconfig/linkerconfig_generator^android_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/system/linkerconfig/linkerconfig_generator^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/linkerconfig/linkerconfig_generator^android_x86_64_static
+echo "building linkerconfig_generator^linux_glibc_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja linkerconfig_generator,linux_glibc_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/linkerconfig/linkerconfig_generator^linux_glibc_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/system/linkerconfig/linkerconfig_generator^linux_glibc_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/linkerconfig/linkerconfig_generator^linux_glibc_x86_64_static
 
 echo "building linkerconfig_generator^android_x86_64_static_apex10000"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja linkerconfig_generator,android_x86_64_static_apex10000
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/linkerconfig/linkerconfig_generator^android_x86_64_static_apex10000
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/system/linkerconfig/linkerconfig_generator^android_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/system/linkerconfig/linkerconfig_generator^android_x86_64_static_apex10000
 
-echo "building linkerconfig_generator^linux_glibc_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja linkerconfig_generator,linux_glibc_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/linkerconfig/linkerconfig_generator^linux_glibc_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/system/linkerconfig/linkerconfig_generator^linux_glibc_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/linkerconfig/linkerconfig_generator^linux_glibc_x86_64_static
+echo "building linkerconfig_generator^android_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja linkerconfig_generator,android_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/linkerconfig/linkerconfig_generator^android_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/system/linkerconfig/linkerconfig_generator^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/linkerconfig/linkerconfig_generator^android_x86_64_static
+
+echo "building linkerconfig_contents^linux_glibc_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja linkerconfig_contents,linux_glibc_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/linkerconfig/linkerconfig_contents^linux_glibc_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/system/linkerconfig/linkerconfig_contents^linux_glibc_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/linkerconfig/linkerconfig_contents^linux_glibc_x86_64_static
+
+echo "building linkerconfig_contents^android_x86_64_static_apex10000"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja linkerconfig_contents,android_x86_64_static_apex10000
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/linkerconfig/linkerconfig_contents^android_x86_64_static_apex10000
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/system/linkerconfig/linkerconfig_contents^android_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/system/linkerconfig/linkerconfig_contents^android_x86_64_static_apex10000
+
+echo "building linkerconfig_contents^android_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja linkerconfig_contents,android_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/linkerconfig/linkerconfig_contents^android_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/system/linkerconfig/linkerconfig_contents^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/linkerconfig/linkerconfig_contents^android_x86_64_static
 
 rm -rf out
 

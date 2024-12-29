@@ -26,65 +26,65 @@ clone_depth_platform system/logging
 clone_depth_platform system/media
 
 
-echo "building angle_common^android_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja angle_common,android_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/angle/angle_common^android_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/angle/angle_common^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/angle/angle_common^android_x86_64_static
-
-echo "building angle_common^android_x86_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja angle_common,android_x86_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/angle/angle_common^android_x86_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/angle/angle_common^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/angle/angle_common^android_x86_x86_64_static
-
-echo "building angle_gpu_info_util^android_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja angle_gpu_info_util,android_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/angle/angle_gpu_info_util^android_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/angle/angle_gpu_info_util^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/angle/angle_gpu_info_util^android_x86_64_static
-
-echo "building angle_gpu_info_util^android_x86_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja angle_gpu_info_util,android_x86_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/angle/angle_gpu_info_util^android_x86_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/angle/angle_gpu_info_util^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/angle/angle_gpu_info_util^android_x86_x86_64_static
-
-echo "building angle_image_util^android_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja angle_image_util,android_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/angle/angle_image_util^android_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/angle/angle_image_util^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/angle/angle_image_util^android_x86_64_static
-
-echo "building angle_image_util^android_x86_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja angle_image_util,android_x86_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/angle/angle_image_util^android_x86_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/angle/angle_image_util^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/angle/angle_image_util^android_x86_x86_64_static
-
-echo "building angle_preprocessor^android_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja angle_preprocessor,android_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/angle/angle_preprocessor^android_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/angle/angle_preprocessor^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/angle/angle_preprocessor^android_x86_64_static
-
-echo "building angle_preprocessor^android_x86_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja angle_preprocessor,android_x86_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/angle/angle_preprocessor^android_x86_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/angle/angle_preprocessor^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/angle/angle_preprocessor^android_x86_x86_64_static
-
-echo "building chrome_zlib^android_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja chrome_zlib,android_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/angle/chrome_zlib^android_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/angle/chrome_zlib^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/angle/chrome_zlib^android_x86_64_static
-
-echo "building chrome_zlib^android_x86_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja chrome_zlib,android_x86_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/angle/chrome_zlib^android_x86_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/angle/chrome_zlib^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/angle/chrome_zlib^android_x86_x86_64_static
+echo "building third_party_zlib_google_compression_utils_portable^android_x86_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja third_party_zlib_google_compression_utils_portable,android_x86_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/angle/third_party_zlib_google_compression_utils_portable^android_x86_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/angle/third_party_zlib_google_compression_utils_portable^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/angle/third_party_zlib_google_compression_utils_portable^android_x86_x86_64_static
 
 echo "building third_party_zlib_google_compression_utils_portable^android_x86_64_static"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja third_party_zlib_google_compression_utils_portable,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/angle/third_party_zlib_google_compression_utils_portable^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/angle/third_party_zlib_google_compression_utils_portable^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/angle/third_party_zlib_google_compression_utils_portable^android_x86_64_static
 
-echo "building third_party_zlib_google_compression_utils_portable^android_x86_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja third_party_zlib_google_compression_utils_portable,android_x86_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/angle/third_party_zlib_google_compression_utils_portable^android_x86_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/angle/third_party_zlib_google_compression_utils_portable^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/angle/third_party_zlib_google_compression_utils_portable^android_x86_x86_64_static
+echo "building chrome_zlib^android_x86_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja chrome_zlib,android_x86_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/angle/chrome_zlib^android_x86_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/angle/chrome_zlib^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/angle/chrome_zlib^android_x86_x86_64_static
+
+echo "building chrome_zlib^android_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja chrome_zlib,android_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/angle/chrome_zlib^android_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/angle/chrome_zlib^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/angle/chrome_zlib^android_x86_64_static
+
+echo "building angle_preprocessor^android_x86_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja angle_preprocessor,android_x86_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/angle/angle_preprocessor^android_x86_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/angle/angle_preprocessor^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/angle/angle_preprocessor^android_x86_x86_64_static
+
+echo "building angle_preprocessor^android_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja angle_preprocessor,android_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/angle/angle_preprocessor^android_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/angle/angle_preprocessor^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/angle/angle_preprocessor^android_x86_64_static
+
+echo "building angle_image_util^android_x86_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja angle_image_util,android_x86_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/angle/angle_image_util^android_x86_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/angle/angle_image_util^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/angle/angle_image_util^android_x86_x86_64_static
+
+echo "building angle_image_util^android_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja angle_image_util,android_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/angle/angle_image_util^android_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/angle/angle_image_util^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/angle/angle_image_util^android_x86_64_static
+
+echo "building angle_gpu_info_util^android_x86_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja angle_gpu_info_util,android_x86_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/angle/angle_gpu_info_util^android_x86_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/angle/angle_gpu_info_util^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/angle/angle_gpu_info_util^android_x86_x86_64_static
+
+echo "building angle_gpu_info_util^android_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja angle_gpu_info_util,android_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/angle/angle_gpu_info_util^android_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/angle/angle_gpu_info_util^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/angle/angle_gpu_info_util^android_x86_64_static
+
+echo "building angle_common^android_x86_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja angle_common,android_x86_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/angle/angle_common^android_x86_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/angle/angle_common^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/angle/angle_common^android_x86_x86_64_static
+
+echo "building angle_common^android_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja angle_common,android_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/angle/angle_common^android_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/angle/angle_common^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/angle/angle_common^android_x86_64_static
 
 rm -rf out
 

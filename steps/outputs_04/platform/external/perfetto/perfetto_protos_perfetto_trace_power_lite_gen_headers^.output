@@ -1,0 +1,3 @@
+out/soong/.intermediates/external/perfetto/perfetto_protos_perfetto_trace_power_lite_gen_headers/gen/external/perfetto/protos/perfetto/trace/power/android_energy_estimation_breakdown.pb.h
+out/soong/.intermediates/external/perfetto/perfetto_protos_perfetto_trace_power_lite_gen_headers/gen/external/perfetto/protos/perfetto/trace/power/battery_counters.pb.h
+out/soong/.intermediates/external/perfetto/perfetto_protos_perfetto_trace_power_lite_gen_headers/gen/external/perfetto/protos/perfetto/trace/power/power_rails.pb.h

@@ -1,0 +1,3 @@
+out/soong/.intermediates/packages/modules/RuntimeI18n/apex/i18n-bootclasspath-fragment/android_common_apex10000/bootclasspath.pb
+out/soong/.intermediates/packages/modules/RuntimeI18n/apex/i18n-bootclasspath-fragment/android_common_apex10000/hiddenapi-modular/encoded/core-icu4j.jar
+out/soong/.intermediates/packages/modules/RuntimeI18n/apex/i18n-bootclasspath-fragment/android_common_apex10000/modular-hiddenapi/annotation-flags.csv

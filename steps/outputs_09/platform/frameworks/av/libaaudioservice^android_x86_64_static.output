@@ -1,0 +1,17 @@
+out/soong/.intermediates/frameworks/av/services/oboeservice/libaaudioservice/android_x86_64_static/obj/frameworks/av/services/oboeservice/AAudioClientTracker.o
+out/soong/.intermediates/frameworks/av/services/oboeservice/libaaudioservice/android_x86_64_static/obj/frameworks/av/services/oboeservice/AAudioEndpointManager.o
+out/soong/.intermediates/frameworks/av/services/oboeservice/libaaudioservice/android_x86_64_static/obj/frameworks/av/services/oboeservice/AAudioMixer.o
+out/soong/.intermediates/frameworks/av/services/oboeservice/libaaudioservice/android_x86_64_static/obj/frameworks/av/services/oboeservice/AAudioService.o
+out/soong/.intermediates/frameworks/av/services/oboeservice/libaaudioservice/android_x86_64_static/obj/frameworks/av/services/oboeservice/AAudioServiceEndpoint.o
+out/soong/.intermediates/frameworks/av/services/oboeservice/libaaudioservice/android_x86_64_static/obj/frameworks/av/services/oboeservice/AAudioServiceEndpointCapture.o
+out/soong/.intermediates/frameworks/av/services/oboeservice/libaaudioservice/android_x86_64_static/obj/frameworks/av/services/oboeservice/AAudioServiceEndpointMMAP.o
+out/soong/.intermediates/frameworks/av/services/oboeservice/libaaudioservice/android_x86_64_static/obj/frameworks/av/services/oboeservice/AAudioServiceEndpointPlay.o
+out/soong/.intermediates/frameworks/av/services/oboeservice/libaaudioservice/android_x86_64_static/obj/frameworks/av/services/oboeservice/AAudioServiceEndpointShared.o
+out/soong/.intermediates/frameworks/av/services/oboeservice/libaaudioservice/android_x86_64_static/obj/frameworks/av/services/oboeservice/AAudioServiceStreamBase.o
+out/soong/.intermediates/frameworks/av/services/oboeservice/libaaudioservice/android_x86_64_static/obj/frameworks/av/services/oboeservice/AAudioServiceStreamMMAP.o
+out/soong/.intermediates/frameworks/av/services/oboeservice/libaaudioservice/android_x86_64_static/obj/frameworks/av/services/oboeservice/AAudioServiceStreamShared.o
+out/soong/.intermediates/frameworks/av/services/oboeservice/libaaudioservice/android_x86_64_static/obj/frameworks/av/services/oboeservice/AAudioStreamTracker.o
+out/soong/.intermediates/frameworks/av/services/oboeservice/libaaudioservice/android_x86_64_static/obj/frameworks/av/services/oboeservice/AAudioThread.o
+out/soong/.intermediates/frameworks/av/services/oboeservice/libaaudioservice/android_x86_64_static/obj/frameworks/av/services/oboeservice/SharedMemoryProxy.o
+out/soong/.intermediates/frameworks/av/services/oboeservice/libaaudioservice/android_x86_64_static/obj/frameworks/av/services/oboeservice/SharedRingBuffer.o
+out/soong/.intermediates/frameworks/av/services/oboeservice/libaaudioservice/android_x86_64_static/obj/frameworks/av/services/oboeservice/TimestampScheduler.o

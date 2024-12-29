@@ -1,0 +1,17 @@
+out/soong/.intermediates/hardware/interfaces/bluetooth/audio/2.0/android.hardware.bluetooth.audio@2.0_genc++_headers/gen/android/hardware/bluetooth/audio/2.0/BnHwBluetoothAudioPort.h
+out/soong/.intermediates/hardware/interfaces/bluetooth/audio/2.0/android.hardware.bluetooth.audio@2.0_genc++_headers/gen/android/hardware/bluetooth/audio/2.0/BnHwBluetoothAudioProvider.h
+out/soong/.intermediates/hardware/interfaces/bluetooth/audio/2.0/android.hardware.bluetooth.audio@2.0_genc++_headers/gen/android/hardware/bluetooth/audio/2.0/BnHwBluetoothAudioProvidersFactory.h
+out/soong/.intermediates/hardware/interfaces/bluetooth/audio/2.0/android.hardware.bluetooth.audio@2.0_genc++_headers/gen/android/hardware/bluetooth/audio/2.0/BpHwBluetoothAudioPort.h
+out/soong/.intermediates/hardware/interfaces/bluetooth/audio/2.0/android.hardware.bluetooth.audio@2.0_genc++_headers/gen/android/hardware/bluetooth/audio/2.0/BpHwBluetoothAudioProvider.h
+out/soong/.intermediates/hardware/interfaces/bluetooth/audio/2.0/android.hardware.bluetooth.audio@2.0_genc++_headers/gen/android/hardware/bluetooth/audio/2.0/BpHwBluetoothAudioProvidersFactory.h
+out/soong/.intermediates/hardware/interfaces/bluetooth/audio/2.0/android.hardware.bluetooth.audio@2.0_genc++_headers/gen/android/hardware/bluetooth/audio/2.0/BsBluetoothAudioPort.h
+out/soong/.intermediates/hardware/interfaces/bluetooth/audio/2.0/android.hardware.bluetooth.audio@2.0_genc++_headers/gen/android/hardware/bluetooth/audio/2.0/BsBluetoothAudioProvider.h
+out/soong/.intermediates/hardware/interfaces/bluetooth/audio/2.0/android.hardware.bluetooth.audio@2.0_genc++_headers/gen/android/hardware/bluetooth/audio/2.0/BsBluetoothAudioProvidersFactory.h
+out/soong/.intermediates/hardware/interfaces/bluetooth/audio/2.0/android.hardware.bluetooth.audio@2.0_genc++_headers/gen/android/hardware/bluetooth/audio/2.0/IBluetoothAudioPort.h
+out/soong/.intermediates/hardware/interfaces/bluetooth/audio/2.0/android.hardware.bluetooth.audio@2.0_genc++_headers/gen/android/hardware/bluetooth/audio/2.0/IBluetoothAudioProvider.h
+out/soong/.intermediates/hardware/interfaces/bluetooth/audio/2.0/android.hardware.bluetooth.audio@2.0_genc++_headers/gen/android/hardware/bluetooth/audio/2.0/IBluetoothAudioProvidersFactory.h
+out/soong/.intermediates/hardware/interfaces/bluetooth/audio/2.0/android.hardware.bluetooth.audio@2.0_genc++_headers/gen/android/hardware/bluetooth/audio/2.0/IHwBluetoothAudioPort.h
+out/soong/.intermediates/hardware/interfaces/bluetooth/audio/2.0/android.hardware.bluetooth.audio@2.0_genc++_headers/gen/android/hardware/bluetooth/audio/2.0/IHwBluetoothAudioProvider.h
+out/soong/.intermediates/hardware/interfaces/bluetooth/audio/2.0/android.hardware.bluetooth.audio@2.0_genc++_headers/gen/android/hardware/bluetooth/audio/2.0/IHwBluetoothAudioProvidersFactory.h
+out/soong/.intermediates/hardware/interfaces/bluetooth/audio/2.0/android.hardware.bluetooth.audio@2.0_genc++_headers/gen/android/hardware/bluetooth/audio/2.0/hwtypes.h
+out/soong/.intermediates/hardware/interfaces/bluetooth/audio/2.0/android.hardware.bluetooth.audio@2.0_genc++_headers/gen/android/hardware/bluetooth/audio/2.0/types.h

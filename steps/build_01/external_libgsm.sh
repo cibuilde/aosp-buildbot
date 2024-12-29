@@ -25,20 +25,20 @@ clone_depth_platform system/logging
 clone_depth_platform system/media
 
 
-echo "building libgsm^android_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libgsm,android_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/libgsm/libgsm^android_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/libgsm/libgsm^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/libgsm/libgsm^android_x86_64_static
+echo "building libgsm^android_x86_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libgsm,android_x86_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/libgsm/libgsm^android_x86_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/libgsm/libgsm^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/libgsm/libgsm^android_x86_x86_64_static
 
 echo "building libgsm^android_x86_64_static_cfi_apex29"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libgsm,android_x86_64_static_cfi_apex29
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/libgsm/libgsm^android_x86_64_static_cfi_apex29
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/libgsm/libgsm^android_x86_64_static_cfi_apex29.output . $GITHUB_WORKSPACE/artifacts/external/libgsm/libgsm^android_x86_64_static_cfi_apex29
 
-echo "building libgsm^android_x86_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libgsm,android_x86_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/libgsm/libgsm^android_x86_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/libgsm/libgsm^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/libgsm/libgsm^android_x86_x86_64_static
+echo "building libgsm^android_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libgsm,android_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/libgsm/libgsm^android_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/libgsm/libgsm^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/libgsm/libgsm^android_x86_64_static
 
 rm -rf out
 

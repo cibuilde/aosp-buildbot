@@ -10,6 +10,7 @@ ln -sf $GITHUB_WORKSPACE/ninja .
 mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86 prebuilts/clang/host/linux-x86
 
 clone_depth_platform bionic
+clone_depth_platform build/soong
 clone_depth_platform external/compiler-rt
 clone_depth_platform external/libcxx
 clone_depth_platform external/libcxxabi
@@ -39,80 +40,90 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcxxabi/libc++abi^android_x86
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcxxabi/libc++abi^linux_glibc_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcxxabi/libc++abi^linux_glibc_x86_static/ .
 
-echo "building libc++_static^android_recovery_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_02.ninja libc++_static,android_recovery_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/libcxx/libc++_static^android_recovery_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_02/external/libcxx/libc++_static^android_recovery_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/libcxx/libc++_static^android_recovery_x86_64_static
-
-echo "building libc++_static^android_vendor_ramdisk_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_02.ninja libc++_static,android_vendor_ramdisk_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/libcxx/libc++_static^android_vendor_ramdisk_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_02/external/libcxx/libc++_static^android_vendor_ramdisk_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/libcxx/libc++_static^android_vendor_ramdisk_x86_64_static
-
-echo "building libc++_static^android_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_02.ninja libc++_static,android_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/libcxx/libc++_static^android_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_02/external/libcxx/libc++_static^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/libcxx/libc++_static^android_x86_64_static
-
-echo "building libc++_static^android_x86_64_static_apex10000"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_02.ninja libc++_static,android_x86_64_static_apex10000
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/libcxx/libc++_static^android_x86_64_static_apex10000
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_02/external/libcxx/libc++_static^android_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/external/libcxx/libc++_static^android_x86_64_static_apex10000
-
-echo "building libc++_static^android_x86_64_static_apex29"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_02.ninja libc++_static,android_x86_64_static_apex29
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/libcxx/libc++_static^android_x86_64_static_apex29
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_02/external/libcxx/libc++_static^android_x86_64_static_apex29.output . $GITHUB_WORKSPACE/artifacts/external/libcxx/libc++_static^android_x86_64_static_apex29
-
-echo "building libc++_static^android_x86_64_static_apex30"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_02.ninja libc++_static,android_x86_64_static_apex30
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/libcxx/libc++_static^android_x86_64_static_apex30
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_02/external/libcxx/libc++_static^android_x86_64_static_apex30.output . $GITHUB_WORKSPACE/artifacts/external/libcxx/libc++_static^android_x86_64_static_apex30
-
-echo "building libc++_static^android_x86_64_static_apex31"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_02.ninja libc++_static,android_x86_64_static_apex31
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/libcxx/libc++_static^android_x86_64_static_apex31
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_02/external/libcxx/libc++_static^android_x86_64_static_apex31.output . $GITHUB_WORKSPACE/artifacts/external/libcxx/libc++_static^android_x86_64_static_apex31
-
-echo "building libc++_static^android_x86_64_static_cfi_apex29"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_02.ninja libc++_static,android_x86_64_static_cfi_apex29
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/libcxx/libc++_static^android_x86_64_static_cfi_apex29
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_02/external/libcxx/libc++_static^android_x86_64_static_cfi_apex29.output . $GITHUB_WORKSPACE/artifacts/external/libcxx/libc++_static^android_x86_64_static_cfi_apex29
-
-echo "building libc++_static^android_x86_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_02.ninja libc++_static,android_x86_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/libcxx/libc++_static^android_x86_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_02/external/libcxx/libc++_static^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/libcxx/libc++_static^android_x86_x86_64_static
-
-echo "building libc++_static^android_x86_x86_64_static_apex10000"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_02.ninja libc++_static,android_x86_x86_64_static_apex10000
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/libcxx/libc++_static^android_x86_x86_64_static_apex10000
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_02/external/libcxx/libc++_static^android_x86_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/external/libcxx/libc++_static^android_x86_x86_64_static_apex10000
-
-echo "building libc++_static^android_x86_x86_64_static_apex29"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_02.ninja libc++_static,android_x86_x86_64_static_apex29
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/libcxx/libc++_static^android_x86_x86_64_static_apex29
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_02/external/libcxx/libc++_static^android_x86_x86_64_static_apex29.output . $GITHUB_WORKSPACE/artifacts/external/libcxx/libc++_static^android_x86_x86_64_static_apex29
-
-echo "building libc++_static^android_x86_x86_64_static_apex30"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_02.ninja libc++_static,android_x86_x86_64_static_apex30
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/libcxx/libc++_static^android_x86_x86_64_static_apex30
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_02/external/libcxx/libc++_static^android_x86_x86_64_static_apex30.output . $GITHUB_WORKSPACE/artifacts/external/libcxx/libc++_static^android_x86_x86_64_static_apex30
-
-echo "building libc++_static^android_x86_x86_64_static_apex31"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_02.ninja libc++_static,android_x86_x86_64_static_apex31
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/libcxx/libc++_static^android_x86_x86_64_static_apex31
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_02/external/libcxx/libc++_static^android_x86_x86_64_static_apex31.output . $GITHUB_WORKSPACE/artifacts/external/libcxx/libc++_static^android_x86_x86_64_static_apex31
+echo "building libc++_static^linux_glibc_x86_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_02.ninja libc++_static,linux_glibc_x86_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/libcxx/libc++_static^linux_glibc_x86_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_02/external/libcxx/libc++_static^linux_glibc_x86_static.output . $GITHUB_WORKSPACE/artifacts/external/libcxx/libc++_static^linux_glibc_x86_static
 
 echo "building libc++_static^linux_glibc_x86_64_static"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_02.ninja libc++_static,linux_glibc_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/libcxx/libc++_static^linux_glibc_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_02/external/libcxx/libc++_static^linux_glibc_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/libcxx/libc++_static^linux_glibc_x86_64_static
 
-echo "building libc++_static^linux_glibc_x86_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_02.ninja libc++_static,linux_glibc_x86_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/libcxx/libc++_static^linux_glibc_x86_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_02/external/libcxx/libc++_static^linux_glibc_x86_static.output . $GITHUB_WORKSPACE/artifacts/external/libcxx/libc++_static^linux_glibc_x86_static
+echo "building libc++_static^android_x86_x86_64_static_apex31"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_02.ninja libc++_static,android_x86_x86_64_static_apex31
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/libcxx/libc++_static^android_x86_x86_64_static_apex31
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_02/external/libcxx/libc++_static^android_x86_x86_64_static_apex31.output . $GITHUB_WORKSPACE/artifacts/external/libcxx/libc++_static^android_x86_x86_64_static_apex31
+
+echo "building libc++_static^android_x86_x86_64_static_apex30"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_02.ninja libc++_static,android_x86_x86_64_static_apex30
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/libcxx/libc++_static^android_x86_x86_64_static_apex30
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_02/external/libcxx/libc++_static^android_x86_x86_64_static_apex30.output . $GITHUB_WORKSPACE/artifacts/external/libcxx/libc++_static^android_x86_x86_64_static_apex30
+
+echo "building libc++_static^android_x86_x86_64_static_apex29"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_02.ninja libc++_static,android_x86_x86_64_static_apex29
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/libcxx/libc++_static^android_x86_x86_64_static_apex29
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_02/external/libcxx/libc++_static^android_x86_x86_64_static_apex29.output . $GITHUB_WORKSPACE/artifacts/external/libcxx/libc++_static^android_x86_x86_64_static_apex29
+
+echo "building libc++_static^android_x86_x86_64_static_apex10000"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_02.ninja libc++_static,android_x86_x86_64_static_apex10000
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/libcxx/libc++_static^android_x86_x86_64_static_apex10000
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_02/external/libcxx/libc++_static^android_x86_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/external/libcxx/libc++_static^android_x86_x86_64_static_apex10000
+
+echo "building libc++_static^android_x86_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_02.ninja libc++_static,android_x86_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/libcxx/libc++_static^android_x86_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_02/external/libcxx/libc++_static^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/libcxx/libc++_static^android_x86_x86_64_static
+
+echo "building libc++_static^android_x86_64_static_cfi_apex29"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_02.ninja libc++_static,android_x86_64_static_cfi_apex29
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/libcxx/libc++_static^android_x86_64_static_cfi_apex29
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_02/external/libcxx/libc++_static^android_x86_64_static_cfi_apex29.output . $GITHUB_WORKSPACE/artifacts/external/libcxx/libc++_static^android_x86_64_static_cfi_apex29
+
+echo "building libc++_static^android_x86_64_static_apex31"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_02.ninja libc++_static,android_x86_64_static_apex31
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/libcxx/libc++_static^android_x86_64_static_apex31
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_02/external/libcxx/libc++_static^android_x86_64_static_apex31.output . $GITHUB_WORKSPACE/artifacts/external/libcxx/libc++_static^android_x86_64_static_apex31
+
+echo "building libc++_static^android_x86_64_static_apex30"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_02.ninja libc++_static,android_x86_64_static_apex30
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/libcxx/libc++_static^android_x86_64_static_apex30
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_02/external/libcxx/libc++_static^android_x86_64_static_apex30.output . $GITHUB_WORKSPACE/artifacts/external/libcxx/libc++_static^android_x86_64_static_apex30
+
+echo "building libc++_static^android_x86_64_static_apex29"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_02.ninja libc++_static,android_x86_64_static_apex29
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/libcxx/libc++_static^android_x86_64_static_apex29
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_02/external/libcxx/libc++_static^android_x86_64_static_apex29.output . $GITHUB_WORKSPACE/artifacts/external/libcxx/libc++_static^android_x86_64_static_apex29
+
+echo "building libc++_static^android_x86_64_static_apex10000"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_02.ninja libc++_static,android_x86_64_static_apex10000
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/libcxx/libc++_static^android_x86_64_static_apex10000
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_02/external/libcxx/libc++_static^android_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/external/libcxx/libc++_static^android_x86_64_static_apex10000
+
+echo "building libc++_static^android_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_02.ninja libc++_static,android_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/libcxx/libc++_static^android_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_02/external/libcxx/libc++_static^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/libcxx/libc++_static^android_x86_64_static
+
+echo "building libc++_static^android_vendor_ramdisk_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_02.ninja libc++_static,android_vendor_ramdisk_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/libcxx/libc++_static^android_vendor_ramdisk_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_02/external/libcxx/libc++_static^android_vendor_ramdisk_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/libcxx/libc++_static^android_vendor_ramdisk_x86_64_static
+
+echo "building libc++_static^android_recovery_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_02.ninja libc++_static,android_recovery_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/libcxx/libc++_static^android_recovery_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_02/external/libcxx/libc++_static^android_recovery_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/libcxx/libc++_static^android_recovery_x86_64_static
+
+echo "building libc++^linux_glibc_x86_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_02.ninja libc++,linux_glibc_x86_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/libcxx/libc++^linux_glibc_x86_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_02/external/libcxx/libc++^linux_glibc_x86_shared.output . $GITHUB_WORKSPACE/artifacts/external/libcxx/libc++^linux_glibc_x86_shared
+
+echo "building libc++^linux_glibc_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_02.ninja libc++,linux_glibc_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/libcxx/libc++^linux_glibc_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_02/external/libcxx/libc++^linux_glibc_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/external/libcxx/libc++^linux_glibc_x86_64_shared
 
 rm -rf out
 
@@ -125,6 +136,10 @@ du -ah -d1 external_libcxx*.tar.zst | sort -h
 if [ ! -f "$GITHUB_WORKSPACE/cache/bionic.tar.zst" ]; then
   echo "Compressing bionic -> bionic.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/bionic.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/bionic/ .
+fi
+if [ ! -f "$GITHUB_WORKSPACE/cache/build_soong.tar.zst" ]; then
+  echo "Compressing build/soong -> build_soong.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/build_soong.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/build/soong/ .
 fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/external_compiler-rt.tar.zst" ]; then
   echo "Compressing external/compiler-rt -> external_compiler-rt.tar.zst"

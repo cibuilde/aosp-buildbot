@@ -1,0 +1,15 @@
+out/soong/.intermediates/hardware/interfaces/audio/effect/5.0/android.hardware.audio.effect@5.0_genc++/gen/android/hardware/audio/effect/5.0/AcousticEchoCancelerEffectAll.cpp
+out/soong/.intermediates/hardware/interfaces/audio/effect/5.0/android.hardware.audio.effect@5.0_genc++/gen/android/hardware/audio/effect/5.0/AutomaticGainControlEffectAll.cpp
+out/soong/.intermediates/hardware/interfaces/audio/effect/5.0/android.hardware.audio.effect@5.0_genc++/gen/android/hardware/audio/effect/5.0/BassBoostEffectAll.cpp
+out/soong/.intermediates/hardware/interfaces/audio/effect/5.0/android.hardware.audio.effect@5.0_genc++/gen/android/hardware/audio/effect/5.0/DownmixEffectAll.cpp
+out/soong/.intermediates/hardware/interfaces/audio/effect/5.0/android.hardware.audio.effect@5.0_genc++/gen/android/hardware/audio/effect/5.0/EffectAll.cpp
+out/soong/.intermediates/hardware/interfaces/audio/effect/5.0/android.hardware.audio.effect@5.0_genc++/gen/android/hardware/audio/effect/5.0/EffectBufferProviderCallbackAll.cpp
+out/soong/.intermediates/hardware/interfaces/audio/effect/5.0/android.hardware.audio.effect@5.0_genc++/gen/android/hardware/audio/effect/5.0/EffectsFactoryAll.cpp
+out/soong/.intermediates/hardware/interfaces/audio/effect/5.0/android.hardware.audio.effect@5.0_genc++/gen/android/hardware/audio/effect/5.0/EnvironmentalReverbEffectAll.cpp
+out/soong/.intermediates/hardware/interfaces/audio/effect/5.0/android.hardware.audio.effect@5.0_genc++/gen/android/hardware/audio/effect/5.0/EqualizerEffectAll.cpp
+out/soong/.intermediates/hardware/interfaces/audio/effect/5.0/android.hardware.audio.effect@5.0_genc++/gen/android/hardware/audio/effect/5.0/LoudnessEnhancerEffectAll.cpp
+out/soong/.intermediates/hardware/interfaces/audio/effect/5.0/android.hardware.audio.effect@5.0_genc++/gen/android/hardware/audio/effect/5.0/NoiseSuppressionEffectAll.cpp
+out/soong/.intermediates/hardware/interfaces/audio/effect/5.0/android.hardware.audio.effect@5.0_genc++/gen/android/hardware/audio/effect/5.0/PresetReverbEffectAll.cpp
+out/soong/.intermediates/hardware/interfaces/audio/effect/5.0/android.hardware.audio.effect@5.0_genc++/gen/android/hardware/audio/effect/5.0/VirtualizerEffectAll.cpp
+out/soong/.intermediates/hardware/interfaces/audio/effect/5.0/android.hardware.audio.effect@5.0_genc++/gen/android/hardware/audio/effect/5.0/VisualizerEffectAll.cpp
+out/soong/.intermediates/hardware/interfaces/audio/effect/5.0/android.hardware.audio.effect@5.0_genc++/gen/android/hardware/audio/effect/5.0/types.cpp

@@ -10,48 +10,37 @@ ln -sf $GITHUB_WORKSPACE/ninja .
 mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86 prebuilts/clang/host/linux-x86
 
 clone_depth_platform build/soong
-clone_depth_platform prebuilts/go/linux-x86
+clone_depth_platform external/protobuf
+clone_depth_platform external/python/cpython3
+clone_depth_platform external/python/six
+clone_project platform/prebuilts/build-tools prebuilts/build-tools android12-gsi "/linux-x86/bin" "/linux-x86/lib64" "/path" "/common"
 
-rsync -a -r $GITHUB_WORKSPACE/downloads/build/blueprint/blueprint-deptools^linux_glibc_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/build/blueprint/blueprint-parser^linux_glibc_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/build/blueprint/blueprint-pathtools^linux_glibc_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/build/blueprint/blueprint-proptools^linux_glibc_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/build/blueprint/blueprint^linux_glibc_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/cmd/dep_fixer/dep_fixer^linux_glibc_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/linkerconfig/proto/linker_config_proto^linux_glibc_x86_64_PY3/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/cmd/merge_zips/merge_zips^linux_glibc_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/bazel/soong-bazel^linux_glibc_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/zip/cmd/soong_zip^linux_glibc_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/protobuf/aprotoc^linux_glibc_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/icu/icu4c/source/i18n/libicui18n^linux_glibc_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/icu/icu4c/source/common/libicuuc^linux_glibc_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcxx/libc++^linux_glibc_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/protobuf/libprotobuf-python^linux_glibc_x86_64_PY3/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/python/cpython3/Lib/py3-stdlib^linux_glibc_x86_64_PY3/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/python/six/py-six^linux_glibc_x86_64_PY3/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/sqlite/dist/libsqlite^linux_glibc_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/build-tools/prebuilt_py3-launcher-autorun^linux_glibc_x86_64/ .
 
-echo "building jsonmodify^linux_glibc_x86_64_PY2"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja jsonmodify,linux_glibc_x86_64_PY2
-mkdir -p $GITHUB_WORKSPACE/artifacts/build/soong/scripts/jsonmodify^linux_glibc_x86_64_PY2
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/build/soong/jsonmodify^linux_glibc_x86_64_PY2.output . $GITHUB_WORKSPACE/artifacts/build/soong/scripts/jsonmodify^linux_glibc_x86_64_PY2
+echo "building merge_csv^linux_glibc_x86_64_PY3"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja merge_csv,linux_glibc_x86_64_PY3
+mkdir -p $GITHUB_WORKSPACE/artifacts/build/soong/scripts/hiddenapi/merge_csv^linux_glibc_x86_64_PY3
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/build/soong/merge_csv^linux_glibc_x86_64_PY3.output . $GITHUB_WORKSPACE/artifacts/build/soong/scripts/hiddenapi/merge_csv^linux_glibc_x86_64_PY3
 
-echo "building linker_config_proto^linux_glibc_x86_64_PY3"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja linker_config_proto,linux_glibc_x86_64_PY3
-mkdir -p $GITHUB_WORKSPACE/artifacts/build/soong/linkerconfig/proto/linker_config_proto^linux_glibc_x86_64_PY3
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/build/soong/linker_config_proto^linux_glibc_x86_64_PY3.output . $GITHUB_WORKSPACE/artifacts/build/soong/linkerconfig/proto/linker_config_proto^linux_glibc_x86_64_PY3
+echo "building generate_hiddenapi_lists^linux_glibc_x86_64_PY3"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja generate_hiddenapi_lists,linux_glibc_x86_64_PY3
+mkdir -p $GITHUB_WORKSPACE/artifacts/build/soong/scripts/hiddenapi/generate_hiddenapi_lists^linux_glibc_x86_64_PY3
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/build/soong/generate_hiddenapi_lists^linux_glibc_x86_64_PY3.output . $GITHUB_WORKSPACE/artifacts/build/soong/scripts/hiddenapi/generate_hiddenapi_lists^linux_glibc_x86_64_PY3
 
-echo "building manifest_utils^linux_glibc_x86_64_PY2"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja manifest_utils,linux_glibc_x86_64_PY2
-mkdir -p $GITHUB_WORKSPACE/artifacts/build/soong/scripts/manifest_utils^linux_glibc_x86_64_PY2
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/build/soong/manifest_utils^linux_glibc_x86_64_PY2.output . $GITHUB_WORKSPACE/artifacts/build/soong/scripts/manifest_utils^linux_glibc_x86_64_PY2
-
-echo "building ninja_rsp^linux_glibc_x86_64_PY3"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja ninja_rsp,linux_glibc_x86_64_PY3
-mkdir -p $GITHUB_WORKSPACE/artifacts/build/soong/scripts/ninja_rsp^linux_glibc_x86_64_PY3
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/build/soong/ninja_rsp^linux_glibc_x86_64_PY3.output . $GITHUB_WORKSPACE/artifacts/build/soong/scripts/ninja_rsp^linux_glibc_x86_64_PY3
-
-echo "building soong-shared^linux_glibc_x86_64"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja soong-shared,linux_glibc_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/build/soong/shared/soong-shared^linux_glibc_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/build/soong/soong-shared^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/build/soong/shared/soong-shared^linux_glibc_x86_64
-
-echo "building symbolfile^linux_glibc_x86_64_PY3"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja symbolfile,linux_glibc_x86_64_PY3
-mkdir -p $GITHUB_WORKSPACE/artifacts/build/soong/cc/symbolfile/symbolfile^linux_glibc_x86_64_PY3
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/build/soong/symbolfile^linux_glibc_x86_64_PY3.output . $GITHUB_WORKSPACE/artifacts/build/soong/cc/symbolfile/symbolfile^linux_glibc_x86_64_PY3
+echo "building conv_linker_config^linux_glibc_x86_64_PY3"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja conv_linker_config,linux_glibc_x86_64_PY3
+mkdir -p $GITHUB_WORKSPACE/artifacts/build/soong/scripts/conv_linker_config^linux_glibc_x86_64_PY3
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/build/soong/conv_linker_config^linux_glibc_x86_64_PY3.output . $GITHUB_WORKSPACE/artifacts/build/soong/scripts/conv_linker_config^linux_glibc_x86_64_PY3
 
 rm -rf out
 
@@ -65,9 +54,21 @@ if [ ! -f "$GITHUB_WORKSPACE/cache/build_soong.tar.zst" ]; then
   echo "Compressing build/soong -> build_soong.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/build_soong.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/build/soong/ .
 fi
-if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_go_linux-x86.tar.zst" ]; then
-  echo "Compressing prebuilts/go/linux-x86 -> prebuilts_go_linux-x86.tar.zst"
-  tar -cf $GITHUB_WORKSPACE/cache/prebuilts_go_linux-x86.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/prebuilts/go/linux-x86/ .
+if [ ! -f "$GITHUB_WORKSPACE/cache/external_protobuf.tar.zst" ]; then
+  echo "Compressing external/protobuf -> external_protobuf.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/external_protobuf.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/protobuf/ .
+fi
+if [ ! -f "$GITHUB_WORKSPACE/cache/external_python_cpython3.tar.zst" ]; then
+  echo "Compressing external/python/cpython3 -> external_python_cpython3.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/external_python_cpython3.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/python/cpython3/ .
+fi
+if [ ! -f "$GITHUB_WORKSPACE/cache/external_python_six.tar.zst" ]; then
+  echo "Compressing external/python/six -> external_python_six.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/external_python_six.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/python/six/ .
+fi
+if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_build-tools.tar.zst" ]; then
+  echo "Compressing prebuilts/build-tools -> prebuilts_build-tools.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/prebuilts_build-tools.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/prebuilts/build-tools/ .
 fi
 
 rm -rf aosp

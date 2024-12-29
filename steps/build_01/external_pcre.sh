@@ -11,6 +11,7 @@ mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/
 
 clone_depth_platform art
 clone_depth_platform bionic
+clone_depth_platform build/soong
 clone_depth_platform external/pcre
 clone_depth_platform frameworks/av
 clone_depth_platform frameworks/native
@@ -24,25 +25,30 @@ clone_depth_platform system/logging
 clone_depth_platform system/media
 
 
-echo "building libpcre2^android_recovery_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libpcre2,android_recovery_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/pcre/libpcre2^android_recovery_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/pcre/libpcre2^android_recovery_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/pcre/libpcre2^android_recovery_x86_64_static
+echo "building libpcre2^linux_glibc_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libpcre2,linux_glibc_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/pcre/libpcre2^linux_glibc_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/pcre/libpcre2^linux_glibc_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/pcre/libpcre2^linux_glibc_x86_64_static
 
-echo "building libpcre2^android_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libpcre2,android_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/pcre/libpcre2^android_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/pcre/libpcre2^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/pcre/libpcre2^android_x86_64_static
+echo "building libpcre2^linux_glibc_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libpcre2,linux_glibc_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/pcre/libpcre2^linux_glibc_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/pcre/libpcre2^linux_glibc_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/external/pcre/libpcre2^linux_glibc_x86_64_shared
 
 echo "building libpcre2^android_x86_x86_64_static"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libpcre2,android_x86_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/pcre/libpcre2^android_x86_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/pcre/libpcre2^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/pcre/libpcre2^android_x86_x86_64_static
 
-echo "building libpcre2^linux_glibc_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libpcre2,linux_glibc_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/pcre/libpcre2^linux_glibc_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/pcre/libpcre2^linux_glibc_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/pcre/libpcre2^linux_glibc_x86_64_static
+echo "building libpcre2^android_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libpcre2,android_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/pcre/libpcre2^android_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/pcre/libpcre2^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/pcre/libpcre2^android_x86_64_static
+
+echo "building libpcre2^android_recovery_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libpcre2,android_recovery_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/pcre/libpcre2^android_recovery_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/pcre/libpcre2^android_recovery_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/pcre/libpcre2^android_recovery_x86_64_static
 
 rm -rf out
 
@@ -59,6 +65,10 @@ fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/bionic.tar.zst" ]; then
   echo "Compressing bionic -> bionic.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/bionic.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/bionic/ .
+fi
+if [ ! -f "$GITHUB_WORKSPACE/cache/build_soong.tar.zst" ]; then
+  echo "Compressing build/soong -> build_soong.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/build_soong.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/build/soong/ .
 fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/external_pcre.tar.zst" ]; then
   echo "Compressing external/pcre -> external_pcre.tar.zst"

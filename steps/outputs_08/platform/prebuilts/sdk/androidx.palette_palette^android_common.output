@@ -1,0 +1,6 @@
+out/soong/.intermediates/prebuilts/sdk/current/androidx/androidx.palette_palette/android_common/combined/androidx.palette_palette.jar
+out/soong/.intermediates/prebuilts/sdk/current/androidx/androidx.palette_palette/android_common/extra_packages
+out/soong/.intermediates/prebuilts/sdk/current/androidx/androidx.palette_palette/android_common/manifest_fixer/AndroidManifest.xml
+out/soong/.intermediates/prebuilts/sdk/current/androidx/androidx.palette_palette/android_common/manifest_merger/AndroidManifest.xml
+out/soong/.intermediates/prebuilts/sdk/current/androidx/androidx.palette_palette/android_common/package-res.apk
+out/soong/.intermediates/prebuilts/sdk/current/androidx/androidx.palette_palette/android_common/turbine-combined/androidx.palette_palette.jar

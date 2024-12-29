@@ -12,30 +12,30 @@ mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/
 clone_project platform/prebuilts/vndk/v28 prebuilts/vndk/v28 android12-gsi "/x86_64"
 
 
-echo "building llndk.libraries.28.txt^android_x86_64"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja llndk.libraries.28.txt,android_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/vndk/v28/llndk.libraries.28.txt^android_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/prebuilts/vndk/v28/llndk.libraries.28.txt^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/prebuilts/vndk/v28/llndk.libraries.28.txt^android_x86_64
-
-echo "building vndkcore.libraries.28.txt^android_x86_64"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja vndkcore.libraries.28.txt,android_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/vndk/v28/vndkcore.libraries.28.txt^android_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/prebuilts/vndk/v28/vndkcore.libraries.28.txt^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/prebuilts/vndk/v28/vndkcore.libraries.28.txt^android_x86_64
-
-echo "building vndkprivate.libraries.28.txt^android_x86_64"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja vndkprivate.libraries.28.txt,android_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/vndk/v28/vndkprivate.libraries.28.txt^android_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/prebuilts/vndk/v28/vndkprivate.libraries.28.txt^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/prebuilts/vndk/v28/vndkprivate.libraries.28.txt^android_x86_64
+echo "building vndksp.libraries.28.txt^android_x86_64"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja vndksp.libraries.28.txt,android_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/vndk/v28/vndksp.libraries.28.txt^android_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/prebuilts/vndk/v28/vndksp.libraries.28.txt^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/prebuilts/vndk/v28/vndksp.libraries.28.txt^android_x86_64
 
 echo "building vndkproduct.libraries.28.txt^android_x86_64"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja vndkproduct.libraries.28.txt,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/vndk/v28/vndkproduct.libraries.28.txt^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/prebuilts/vndk/v28/vndkproduct.libraries.28.txt^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/prebuilts/vndk/v28/vndkproduct.libraries.28.txt^android_x86_64
 
-echo "building vndksp.libraries.28.txt^android_x86_64"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja vndksp.libraries.28.txt,android_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/vndk/v28/vndksp.libraries.28.txt^android_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/prebuilts/vndk/v28/vndksp.libraries.28.txt^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/prebuilts/vndk/v28/vndksp.libraries.28.txt^android_x86_64
+echo "building vndkprivate.libraries.28.txt^android_x86_64"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja vndkprivate.libraries.28.txt,android_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/vndk/v28/vndkprivate.libraries.28.txt^android_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/prebuilts/vndk/v28/vndkprivate.libraries.28.txt^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/prebuilts/vndk/v28/vndkprivate.libraries.28.txt^android_x86_64
+
+echo "building vndkcore.libraries.28.txt^android_x86_64"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja vndkcore.libraries.28.txt,android_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/vndk/v28/vndkcore.libraries.28.txt^android_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/prebuilts/vndk/v28/vndkcore.libraries.28.txt^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/prebuilts/vndk/v28/vndkcore.libraries.28.txt^android_x86_64
+
+echo "building llndk.libraries.28.txt^android_x86_64"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja llndk.libraries.28.txt,android_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/vndk/v28/llndk.libraries.28.txt^android_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/prebuilts/vndk/v28/llndk.libraries.28.txt^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/prebuilts/vndk/v28/llndk.libraries.28.txt^android_x86_64
 
 rm -rf out
 

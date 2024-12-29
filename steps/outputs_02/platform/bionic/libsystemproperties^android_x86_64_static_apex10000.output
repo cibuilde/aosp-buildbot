@@ -1,0 +1,6 @@
+out/soong/.intermediates/bionic/libc/system_properties/libsystemproperties/android_x86_64_static_apex10000/obj/bionic/libc/system_properties/context_node.o
+out/soong/.intermediates/bionic/libc/system_properties/libsystemproperties/android_x86_64_static_apex10000/obj/bionic/libc/system_properties/contexts_serialized.o
+out/soong/.intermediates/bionic/libc/system_properties/libsystemproperties/android_x86_64_static_apex10000/obj/bionic/libc/system_properties/contexts_split.o
+out/soong/.intermediates/bionic/libc/system_properties/libsystemproperties/android_x86_64_static_apex10000/obj/bionic/libc/system_properties/prop_area.o
+out/soong/.intermediates/bionic/libc/system_properties/libsystemproperties/android_x86_64_static_apex10000/obj/bionic/libc/system_properties/prop_info.o
+out/soong/.intermediates/bionic/libc/system_properties/libsystemproperties/android_x86_64_static_apex10000/obj/bionic/libc/system_properties/system_properties.o

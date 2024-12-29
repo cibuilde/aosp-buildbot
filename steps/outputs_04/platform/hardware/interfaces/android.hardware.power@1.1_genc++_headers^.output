@@ -1,0 +1,7 @@
+out/soong/.intermediates/hardware/interfaces/power/1.1/android.hardware.power@1.1_genc++_headers/gen/android/hardware/power/1.1/BnHwPower.h
+out/soong/.intermediates/hardware/interfaces/power/1.1/android.hardware.power@1.1_genc++_headers/gen/android/hardware/power/1.1/BpHwPower.h
+out/soong/.intermediates/hardware/interfaces/power/1.1/android.hardware.power@1.1_genc++_headers/gen/android/hardware/power/1.1/BsPower.h
+out/soong/.intermediates/hardware/interfaces/power/1.1/android.hardware.power@1.1_genc++_headers/gen/android/hardware/power/1.1/IHwPower.h
+out/soong/.intermediates/hardware/interfaces/power/1.1/android.hardware.power@1.1_genc++_headers/gen/android/hardware/power/1.1/IPower.h
+out/soong/.intermediates/hardware/interfaces/power/1.1/android.hardware.power@1.1_genc++_headers/gen/android/hardware/power/1.1/hwtypes.h
+out/soong/.intermediates/hardware/interfaces/power/1.1/android.hardware.power@1.1_genc++_headers/gen/android/hardware/power/1.1/types.h

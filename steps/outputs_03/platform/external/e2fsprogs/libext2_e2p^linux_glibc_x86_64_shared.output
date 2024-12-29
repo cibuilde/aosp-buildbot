@@ -1,0 +1,3 @@
+out/soong/.intermediates/external/e2fsprogs/lib/e2p/libext2_e2p/linux_glibc_x86_64_shared/libext2_e2p-host.so
+out/soong/.intermediates/external/e2fsprogs/lib/e2p/libext2_e2p/linux_glibc_x86_64_shared/libext2_e2p-host.so.toc
+out/soong/host/linux-x86/lib64/libext2_e2p-host.so

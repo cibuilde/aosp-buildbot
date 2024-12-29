@@ -27,15 +27,15 @@ clone_depth_platform system/media
 clone_depth_platform system/nfc
 
 
-echo "building libnfc-nci.conf-default^android_x86_64"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libnfc-nci.conf-default,android_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/nfc/conf/libnfc-nci.conf-default^android_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/nfc/libnfc-nci.conf-default^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/nfc/conf/libnfc-nci.conf-default^android_x86_64
-
 echo "building libnfcutils^android_x86_64_static"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libnfcutils,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/nfc/utils/libnfcutils^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/nfc/libnfcutils^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/nfc/utils/libnfcutils^android_x86_64_static
+
+echo "building libnfc-nci.conf-default^android_x86_64"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libnfc-nci.conf-default,android_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/nfc/conf/libnfc-nci.conf-default^android_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/nfc/libnfc-nci.conf-default^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/nfc/conf/libnfc-nci.conf-default^android_x86_64
 
 rm -rf out
 

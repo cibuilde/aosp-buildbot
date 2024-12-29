@@ -1,0 +1,3 @@
+out/soong/.intermediates/external/perfetto/perfetto_protos_perfetto_config_profiling_lite_gen/gen/external/perfetto/protos/perfetto/config/profiling/heapprofd_config.pb.cc
+out/soong/.intermediates/external/perfetto/perfetto_protos_perfetto_config_profiling_lite_gen/gen/external/perfetto/protos/perfetto/config/profiling/java_hprof_config.pb.cc
+out/soong/.intermediates/external/perfetto/perfetto_protos_perfetto_config_profiling_lite_gen/gen/external/perfetto/protos/perfetto/config/profiling/perf_event_config.pb.cc

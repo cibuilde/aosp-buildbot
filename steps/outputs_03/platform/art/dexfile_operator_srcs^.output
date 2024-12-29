@@ -1,0 +1,5 @@
+out/soong/.intermediates/art/libdexfile/dexfile_operator_srcs/gen/gensrcs/art/libdexfile/dex/dex_file.operator_out.cc
+out/soong/.intermediates/art/libdexfile/dexfile_operator_srcs/gen/gensrcs/art/libdexfile/dex/dex_file_layout.operator_out.cc
+out/soong/.intermediates/art/libdexfile/dexfile_operator_srcs/gen/gensrcs/art/libdexfile/dex/dex_instruction.operator_out.cc
+out/soong/.intermediates/art/libdexfile/dexfile_operator_srcs/gen/gensrcs/art/libdexfile/dex/dex_instruction_utils.operator_out.cc
+out/soong/.intermediates/art/libdexfile/dexfile_operator_srcs/gen/gensrcs/art/libdexfile/dex/invoke_type.operator_out.cc

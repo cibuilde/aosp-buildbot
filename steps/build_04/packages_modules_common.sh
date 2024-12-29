@@ -25,17 +25,28 @@ clone_depth_platform system/logging
 clone_depth_platform system/media
 
 rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/cmd/dep_fixer/dep_fixer^linux_glibc_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/zip/cmd/soong_zip^linux_glibc_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/protobuf/aprotoc^linux_glibc_x86_64/ .
+
+echo "building sdk_proto_python^linux_glibc_x86_64_PY3"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja sdk_proto_python,linux_glibc_x86_64_PY3
+mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/common/proto/sdk_proto_python^linux_glibc_x86_64_PY3
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/packages/modules/common/sdk_proto_python^linux_glibc_x86_64_PY3.output . $GITHUB_WORKSPACE/artifacts/packages/modules/common/proto/sdk_proto_python^linux_glibc_x86_64_PY3
+
+echo "building libsdk_proto^android_x86_64_static_apex30"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libsdk_proto,android_x86_64_static_apex30
+mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/common/proto/libsdk_proto^android_x86_64_static_apex30
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/packages/modules/common/libsdk_proto^android_x86_64_static_apex30.output . $GITHUB_WORKSPACE/artifacts/packages/modules/common/proto/libsdk_proto^android_x86_64_static_apex30
 
 echo "building libclasspaths_proto^android_x86_64_static_apex30"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libclasspaths_proto,android_x86_64_static_apex30
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/common/proto/libclasspaths_proto^android_x86_64_static_apex30
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/packages/modules/common/libclasspaths_proto^android_x86_64_static_apex30.output . $GITHUB_WORKSPACE/artifacts/packages/modules/common/proto/libclasspaths_proto^android_x86_64_static_apex30
 
-echo "building libsdk_proto^android_x86_64_static_apex30"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libsdk_proto,android_x86_64_static_apex30
-mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/common/proto/libsdk_proto^android_x86_64_static_apex30
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/packages/modules/common/libsdk_proto^android_x86_64_static_apex30.output . $GITHUB_WORKSPACE/artifacts/packages/modules/common/proto/libsdk_proto^android_x86_64_static_apex30
+echo "building classpaths_proto_python^linux_glibc_x86_64_PY3"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja classpaths_proto_python,linux_glibc_x86_64_PY3
+mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/common/proto/classpaths_proto_python^linux_glibc_x86_64_PY3
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/packages/modules/common/classpaths_proto_python^linux_glibc_x86_64_PY3.output . $GITHUB_WORKSPACE/artifacts/packages/modules/common/proto/classpaths_proto_python^linux_glibc_x86_64_PY3
 
 rm -rf out
 

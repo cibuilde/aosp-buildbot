@@ -1,0 +1,7 @@
+out/soong/.intermediates/hardware/interfaces/thermal/1.0/android.hardware.thermal@1.0_genc++_headers/gen/android/hardware/thermal/1.0/BnHwThermal.h
+out/soong/.intermediates/hardware/interfaces/thermal/1.0/android.hardware.thermal@1.0_genc++_headers/gen/android/hardware/thermal/1.0/BpHwThermal.h
+out/soong/.intermediates/hardware/interfaces/thermal/1.0/android.hardware.thermal@1.0_genc++_headers/gen/android/hardware/thermal/1.0/BsThermal.h
+out/soong/.intermediates/hardware/interfaces/thermal/1.0/android.hardware.thermal@1.0_genc++_headers/gen/android/hardware/thermal/1.0/IHwThermal.h
+out/soong/.intermediates/hardware/interfaces/thermal/1.0/android.hardware.thermal@1.0_genc++_headers/gen/android/hardware/thermal/1.0/IThermal.h
+out/soong/.intermediates/hardware/interfaces/thermal/1.0/android.hardware.thermal@1.0_genc++_headers/gen/android/hardware/thermal/1.0/hwtypes.h
+out/soong/.intermediates/hardware/interfaces/thermal/1.0/android.hardware.thermal@1.0_genc++_headers/gen/android/hardware/thermal/1.0/types.h

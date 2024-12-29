@@ -11,67 +11,50 @@ mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/
 
 clone_depth_platform bionic
 clone_depth_platform build/soong
-clone_depth_platform external/freetype
 clone_depth_platform external/libcxx
 clone_depth_platform external/libcxxabi
 clone_depth_platform frameworks/av
-clone_depth_platform frameworks/compile/libbcc
+clone_sparse_exclude frameworks/base "!/data/videos" "!/media/tests/contents" "!/docs" "!/native/graphics/jni/fuzz" "!/cmd/incidentd/testdata"
 clone_depth_platform frameworks/native
 clone_depth_platform frameworks/rs
+clone_depth_platform hardware/libhardware
+clone_depth_platform hardware/libhardware_legacy
+clone_depth_platform hardware/ril
+clone_depth_platform libnativehelper
 clone_project platform/prebuilts/build-tools prebuilts/build-tools android12-gsi "/linux-x86/bin" "/linux-x86/lib64" "/path" "/common"
 clone_depth_platform prebuilts/gcc/linux-x86/x86/x86_64-linux-android-4.9
 clone_depth_platform system/core
 clone_depth_platform system/logging
-clone_depth_platform system/unwinding
+clone_depth_platform system/media
 
-rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/crtbegin_so^android_vendor.31_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/crtbegin_so^android_vendor.31_x86_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/crtend_so^android_vendor.31_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/crtend_so^android_vendor.31_x86_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/libc^android_vendor.31_x86_64_shared/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/libc^android_vendor.31_x86_x86_64_shared/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libdl/libdl^android_vendor.31_x86_64_shared/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libdl/libdl^android_vendor.31_x86_x86_64_shared/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libm/libm^android_vendor.31_x86_64_shared/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libm/libm^android_vendor.31_x86_x86_64_shared/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/freetype/libft2^android_vendor.31_x86_64_shared/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/freetype/libft2^android_vendor.31_x86_x86_64_shared/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcxx/libc++^android_vendor.31_x86_64_shared/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcxx/libc++^android_vendor.31_x86_x86_64_shared/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcxxabi/libc++demangle^android_vendor.31_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcxxabi/libc++demangle^android_vendor.31_x86_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/av/media/ndk/libmediandk^android_vendor.31_x86_64_shared/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/av/media/ndk/libmediandk^android_vendor.31_x86_x86_64_shared/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/compile/libbcc/bcinfo/libbcinfo^android_vendor.31_x86_64_shared/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/compile/libbcc/bcinfo/libbcinfo^android_vendor.31_x86_x86_64_shared/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/native/opengl/libs/libEGL^android_vendor.31_x86_64_shared/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/native/opengl/libs/libEGL^android_vendor.31_x86_x86_64_shared/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/native/opengl/libs/libGLESv1_CM^android_vendor.31_x86_64_shared/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/native/opengl/libs/libGLESv1_CM^android_vendor.31_x86_x86_64_shared/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/native/opengl/libs/libGLESv2^android_vendor.31_x86_64_shared/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/native/opengl/libs/libGLESv2^android_vendor.31_x86_x86_64_shared/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/native/libs/arect/libarect^android_vendor.31_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/native/libs/arect/libarect^android_vendor.31_x86_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/native/libs/nativewindow/libnativewindow^android_vendor.31_x86_64_shared/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/native/libs/nativewindow/libnativewindow^android_vendor.31_x86_x86_64_shared/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/rs/rs_generated_headers^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/rs/rs_generated_sources^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/system/core/libutils/libutils^android_vendor.31_x86_64_shared/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/system/core/libutils/libutils^android_vendor.31_x86_x86_64_shared/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/system/core/libutils/libutilscallstack^android_vendor.31_x86_64_shared/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/system/core/libutils/libutilscallstack^android_vendor.31_x86_x86_64_shared/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^android_vendor.31_x86_64_shared/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^android_vendor.31_x86_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/crtbegin_so^android_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/crtbegin_so^android_x86_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/crtend_so^android_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/crtend_so^android_x86_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/libc^android_x86_64_shared_current/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/libc^android_x86_x86_64_shared_current/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libdl/libdl^android_x86_64_shared_current/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libdl/libdl^android_x86_x86_64_shared_current/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libm/libm^android_x86_64_shared_current/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libm/libm^android_x86_x86_64_shared_current/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcxx/libc++^android_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcxx/libc++^android_x86_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcxxabi/libc++demangle^android_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcxxabi/libc++demangle^android_x86_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/core/jni/libandroid_runtime^android_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/core/jni/libandroid_runtime^android_x86_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^android_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^android_x86_x86_64_shared/ .
 
-echo "building libRS_internal^android_vendor.31_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_15.ninja libRS_internal,android_vendor.31_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/rs/libRS_internal^android_vendor.31_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_15/frameworks/rs/libRS_internal^android_vendor.31_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/rs/libRS_internal^android_vendor.31_x86_64_shared
+echo "building libRSCacheDir^android_x86_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_15.ninja libRSCacheDir,android_x86_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/rs/libRSCacheDir^android_x86_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_15/frameworks/rs/libRSCacheDir^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/rs/libRSCacheDir^android_x86_x86_64_shared
 
-echo "building libRS_internal^android_vendor.31_x86_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_15.ninja libRS_internal,android_vendor.31_x86_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/rs/libRS_internal^android_vendor.31_x86_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_15/frameworks/rs/libRS_internal^android_vendor.31_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/rs/libRS_internal^android_vendor.31_x86_x86_64_shared
+echo "building libRSCacheDir^android_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_15.ninja libRSCacheDir,android_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/rs/libRSCacheDir^android_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_15/frameworks/rs/libRSCacheDir^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/rs/libRSCacheDir^android_x86_64_shared
 
 rm -rf out
 
@@ -89,10 +72,6 @@ if [ ! -f "$GITHUB_WORKSPACE/cache/build_soong.tar.zst" ]; then
   echo "Compressing build/soong -> build_soong.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/build_soong.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/build/soong/ .
 fi
-if [ ! -f "$GITHUB_WORKSPACE/cache/external_freetype.tar.zst" ]; then
-  echo "Compressing external/freetype -> external_freetype.tar.zst"
-  tar -cf $GITHUB_WORKSPACE/cache/external_freetype.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/freetype/ .
-fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/external_libcxx.tar.zst" ]; then
   echo "Compressing external/libcxx -> external_libcxx.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/external_libcxx.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/libcxx/ .
@@ -105,9 +84,9 @@ if [ ! -f "$GITHUB_WORKSPACE/cache/frameworks_av.tar.zst" ]; then
   echo "Compressing frameworks/av -> frameworks_av.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/frameworks_av.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/frameworks/av/ .
 fi
-if [ ! -f "$GITHUB_WORKSPACE/cache/frameworks_compile_libbcc.tar.zst" ]; then
-  echo "Compressing frameworks/compile/libbcc -> frameworks_compile_libbcc.tar.zst"
-  tar -cf $GITHUB_WORKSPACE/cache/frameworks_compile_libbcc.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/frameworks/compile/libbcc/ .
+if [ ! -f "$GITHUB_WORKSPACE/cache/frameworks_base.tar.zst" ]; then
+  echo "Compressing frameworks/base -> frameworks_base.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/frameworks_base.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/frameworks/base/ .
 fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/frameworks_native.tar.zst" ]; then
   echo "Compressing frameworks/native -> frameworks_native.tar.zst"
@@ -116,6 +95,22 @@ fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/frameworks_rs.tar.zst" ]; then
   echo "Compressing frameworks/rs -> frameworks_rs.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/frameworks_rs.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/frameworks/rs/ .
+fi
+if [ ! -f "$GITHUB_WORKSPACE/cache/hardware_libhardware.tar.zst" ]; then
+  echo "Compressing hardware/libhardware -> hardware_libhardware.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/hardware_libhardware.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/hardware/libhardware/ .
+fi
+if [ ! -f "$GITHUB_WORKSPACE/cache/hardware_libhardware_legacy.tar.zst" ]; then
+  echo "Compressing hardware/libhardware_legacy -> hardware_libhardware_legacy.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/hardware_libhardware_legacy.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/hardware/libhardware_legacy/ .
+fi
+if [ ! -f "$GITHUB_WORKSPACE/cache/hardware_ril.tar.zst" ]; then
+  echo "Compressing hardware/ril -> hardware_ril.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/hardware_ril.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/hardware/ril/ .
+fi
+if [ ! -f "$GITHUB_WORKSPACE/cache/libnativehelper.tar.zst" ]; then
+  echo "Compressing libnativehelper -> libnativehelper.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/libnativehelper.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/libnativehelper/ .
 fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_build-tools.tar.zst" ]; then
   echo "Compressing prebuilts/build-tools -> prebuilts_build-tools.tar.zst"
@@ -133,9 +128,9 @@ if [ ! -f "$GITHUB_WORKSPACE/cache/system_logging.tar.zst" ]; then
   echo "Compressing system/logging -> system_logging.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/system_logging.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/system/logging/ .
 fi
-if [ ! -f "$GITHUB_WORKSPACE/cache/system_unwinding.tar.zst" ]; then
-  echo "Compressing system/unwinding -> system_unwinding.tar.zst"
-  tar -cf $GITHUB_WORKSPACE/cache/system_unwinding.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/system/unwinding/ .
+if [ ! -f "$GITHUB_WORKSPACE/cache/system_media.tar.zst" ]; then
+  echo "Compressing system/media -> system_media.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/system_media.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/system/media/ .
 fi
 
 rm -rf aosp

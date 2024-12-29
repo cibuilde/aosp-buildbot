@@ -1,0 +1,12 @@
+out/soong/.intermediates/hardware/interfaces/nfc/1.1/android.hardware.nfc@1.1_genc++_headers/gen/android/hardware/nfc/1.1/BnHwNfc.h
+out/soong/.intermediates/hardware/interfaces/nfc/1.1/android.hardware.nfc@1.1_genc++_headers/gen/android/hardware/nfc/1.1/BnHwNfcClientCallback.h
+out/soong/.intermediates/hardware/interfaces/nfc/1.1/android.hardware.nfc@1.1_genc++_headers/gen/android/hardware/nfc/1.1/BpHwNfc.h
+out/soong/.intermediates/hardware/interfaces/nfc/1.1/android.hardware.nfc@1.1_genc++_headers/gen/android/hardware/nfc/1.1/BpHwNfcClientCallback.h
+out/soong/.intermediates/hardware/interfaces/nfc/1.1/android.hardware.nfc@1.1_genc++_headers/gen/android/hardware/nfc/1.1/BsNfc.h
+out/soong/.intermediates/hardware/interfaces/nfc/1.1/android.hardware.nfc@1.1_genc++_headers/gen/android/hardware/nfc/1.1/BsNfcClientCallback.h
+out/soong/.intermediates/hardware/interfaces/nfc/1.1/android.hardware.nfc@1.1_genc++_headers/gen/android/hardware/nfc/1.1/IHwNfc.h
+out/soong/.intermediates/hardware/interfaces/nfc/1.1/android.hardware.nfc@1.1_genc++_headers/gen/android/hardware/nfc/1.1/IHwNfcClientCallback.h
+out/soong/.intermediates/hardware/interfaces/nfc/1.1/android.hardware.nfc@1.1_genc++_headers/gen/android/hardware/nfc/1.1/INfc.h
+out/soong/.intermediates/hardware/interfaces/nfc/1.1/android.hardware.nfc@1.1_genc++_headers/gen/android/hardware/nfc/1.1/INfcClientCallback.h
+out/soong/.intermediates/hardware/interfaces/nfc/1.1/android.hardware.nfc@1.1_genc++_headers/gen/android/hardware/nfc/1.1/hwtypes.h
+out/soong/.intermediates/hardware/interfaces/nfc/1.1/android.hardware.nfc@1.1_genc++_headers/gen/android/hardware/nfc/1.1/types.h

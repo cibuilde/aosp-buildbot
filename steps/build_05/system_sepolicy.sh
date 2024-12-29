@@ -10,42 +10,70 @@ ln -sf $GITHUB_WORKSPACE/ninja .
 mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86 prebuilts/clang/host/linux-x86
 
 clone_depth_platform build/soong
+clone_depth device/google/cuttlefish
+clone_depth_platform external/python/cpython2
+clone_project platform/prebuilts/build-tools prebuilts/build-tools android12-gsi "/linux-x86/bin" "/linux-x86/lib64" "/path" "/common"
 clone_depth_platform system/sepolicy
 
 rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/cmd/merge_zips/merge_zips^linux_glibc_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/cmd/sbox/sbox^linux_glibc_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/zip/cmd/soong_zip^linux_glibc_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/icu/icu4c/source/i18n/libicui18n^linux_glibc_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/icu/icu4c/source/common/libicuuc^linux_glibc_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcxx/libc++^linux_glibc_x86_64_shared/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/selinux/checkpolicy/checkpolicy^linux_glibc_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/selinux/secilc/secilc^linux_glibc_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/system/sepolicy/plat_sepolicy.conf^android_common/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/system/sepolicy/reqd_policy_mask.conf^android_common/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/system/sepolicy/userdebug_plat_sepolicy.conf^android_common/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/python/cpython2/py2-launcher-autorun^linux_glibc_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/python/cpython2/Lib/py2-stdlib^linux_glibc_x86_64_PY2/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/sqlite/dist/libsqlite^linux_glibc_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/sepolicy/plat_30.0.cil^android_common/ .
 
-echo "building build_sepolicy^linux_glibc_x86_64_PY2"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja build_sepolicy,linux_glibc_x86_64_PY2
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/sepolicy/build/build_sepolicy^linux_glibc_x86_64_PY2
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/system/sepolicy/build_sepolicy^linux_glibc_x86_64_PY2.output . $GITHUB_WORKSPACE/artifacts/system/sepolicy/build/build_sepolicy^linux_glibc_x86_64_PY2
+echo "building vendor_file_contexts^android_common"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja vendor_file_contexts,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/sepolicy/vendor_file_contexts^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/system/sepolicy/vendor_file_contexts^android_common.output . $GITHUB_WORKSPACE/artifacts/system/sepolicy/vendor_file_contexts^android_common
 
-echo "building check_prop_prefix^linux_glibc_x86_64_PY3"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja check_prop_prefix,linux_glibc_x86_64_PY3
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/sepolicy/tests/check_prop_prefix^linux_glibc_x86_64_PY3
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/system/sepolicy/check_prop_prefix^linux_glibc_x86_64_PY3.output . $GITHUB_WORKSPACE/artifacts/system/sepolicy/tests/check_prop_prefix^linux_glibc_x86_64_PY3
+echo "building system_ext_file_contexts^android_common"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja system_ext_file_contexts,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/sepolicy/system_ext_file_contexts^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/system/sepolicy/system_ext_file_contexts^android_common.output . $GITHUB_WORKSPACE/artifacts/system/sepolicy/system_ext_file_contexts^android_common
 
-echo "building plat_sepolicy.cil^android_common"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja plat_sepolicy.cil,android_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/sepolicy/plat_sepolicy.cil^android_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/system/sepolicy/plat_sepolicy.cil^android_common.output . $GITHUB_WORKSPACE/artifacts/system/sepolicy/plat_sepolicy.cil^android_common
+echo "building product_file_contexts^android_common"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja product_file_contexts,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/sepolicy/product_file_contexts^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/system/sepolicy/product_file_contexts^android_common.output . $GITHUB_WORKSPACE/artifacts/system/sepolicy/product_file_contexts^android_common
 
-echo "building reqd_policy_mask.cil^android_common"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja reqd_policy_mask.cil,android_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/sepolicy/reqd_policy_mask.cil^android_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/system/sepolicy/reqd_policy_mask.cil^android_common.output . $GITHUB_WORKSPACE/artifacts/system/sepolicy/reqd_policy_mask.cil^android_common
+echo "building plat_file_contexts^android_common"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja plat_file_contexts,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/sepolicy/plat_file_contexts^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/system/sepolicy/plat_file_contexts^android_common.output . $GITHUB_WORKSPACE/artifacts/system/sepolicy/plat_file_contexts^android_common
 
-echo "building userdebug_plat_sepolicy.cil^android_common"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja userdebug_plat_sepolicy.cil,android_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/sepolicy/userdebug_plat_sepolicy.cil^android_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/system/sepolicy/userdebug_plat_sepolicy.cil^android_common.output . $GITHUB_WORKSPACE/artifacts/system/sepolicy/userdebug_plat_sepolicy.cil^android_common
+echo "building combine_maps^linux_glibc_x86_64_PY2"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja combine_maps,linux_glibc_x86_64_PY2
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/sepolicy/tests/combine_maps^linux_glibc_x86_64_PY2
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/system/sepolicy/combine_maps^linux_glibc_x86_64_PY2.output . $GITHUB_WORKSPACE/artifacts/system/sepolicy/tests/combine_maps^linux_glibc_x86_64_PY2
+
+echo "building plat_29.0.cil^android_common"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja plat_29.0.cil,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/sepolicy/plat_29.0.cil^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/system/sepolicy/plat_29.0.cil^android_common.output . $GITHUB_WORKSPACE/artifacts/system/sepolicy/plat_29.0.cil^android_common
+
+echo "building plat_28.0.cil^android_common"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja plat_28.0.cil,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/sepolicy/plat_28.0.cil^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/system/sepolicy/plat_28.0.cil^android_common.output . $GITHUB_WORKSPACE/artifacts/system/sepolicy/plat_28.0.cil^android_common
+
+echo "building plat_27.0.cil^android_common"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja plat_27.0.cil,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/sepolicy/plat_27.0.cil^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/system/sepolicy/plat_27.0.cil^android_common.output . $GITHUB_WORKSPACE/artifacts/system/sepolicy/plat_27.0.cil^android_common
+
+echo "building plat_26.0.cil^android_common"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja plat_26.0.cil,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/sepolicy/plat_26.0.cil^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/system/sepolicy/plat_26.0.cil^android_common.output . $GITHUB_WORKSPACE/artifacts/system/sepolicy/plat_26.0.cil^android_common
+
+echo "building fc_sort^linux_glibc_x86_64_PY2"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja fc_sort,linux_glibc_x86_64_PY2
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/sepolicy/tests/fc_sort^linux_glibc_x86_64_PY2
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/system/sepolicy/fc_sort^linux_glibc_x86_64_PY2.output . $GITHUB_WORKSPACE/artifacts/system/sepolicy/tests/fc_sort^linux_glibc_x86_64_PY2
 
 rm -rf out
 
@@ -58,6 +86,18 @@ du -ah -d1 system_sepolicy*.tar.zst | sort -h
 if [ ! -f "$GITHUB_WORKSPACE/cache/build_soong.tar.zst" ]; then
   echo "Compressing build/soong -> build_soong.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/build_soong.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/build/soong/ .
+fi
+if [ ! -f "$GITHUB_WORKSPACE/cache/device_google_cuttlefish.tar.zst" ]; then
+  echo "Compressing device/google/cuttlefish -> device_google_cuttlefish.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/device_google_cuttlefish.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/device/google/cuttlefish/ .
+fi
+if [ ! -f "$GITHUB_WORKSPACE/cache/external_python_cpython2.tar.zst" ]; then
+  echo "Compressing external/python/cpython2 -> external_python_cpython2.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/external_python_cpython2.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/python/cpython2/ .
+fi
+if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_build-tools.tar.zst" ]; then
+  echo "Compressing prebuilts/build-tools -> prebuilts_build-tools.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/prebuilts_build-tools.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/prebuilts/build-tools/ .
 fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/system_sepolicy.tar.zst" ]; then
   echo "Compressing system/sepolicy -> system_sepolicy.tar.zst"

@@ -1,0 +1,4 @@
+out/soong/.intermediates/system/security/keystore2/aidl/android.security.authorization-java-source/gen/android/security/authorization/AuthorizationTokens.java
+out/soong/.intermediates/system/security/keystore2/aidl/android.security.authorization-java-source/gen/android/security/authorization/IKeystoreAuthorization.java
+out/soong/.intermediates/system/security/keystore2/aidl/android.security.authorization-java-source/gen/android/security/authorization/LockScreenEvent.java
+out/soong/.intermediates/system/security/keystore2/aidl/android.security.authorization-java-source/gen/android/security/authorization/ResponseCode.java

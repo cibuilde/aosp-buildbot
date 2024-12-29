@@ -9,18 +9,40 @@ ln -sf $GITHUB_WORKSPACE/ninja .
 
 mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86 prebuilts/clang/host/linux-x86
 
+clone_depth_platform bionic
+clone_depth_platform build/soong
 clone_depth_platform external/libcap
 clone_depth_platform external/libcxx
 clone_depth_platform external/libcxxabi
+clone_project platform/prebuilts/build-tools prebuilts/build-tools android12-gsi "/linux-x86/bin" "/linux-x86/lib64" "/path" "/common"
+clone_depth_platform prebuilts/gcc/linux-x86/x86/x86_64-linux-android-4.9
 
-rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/cmd/sbox/sbox^linux_glibc_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcap/_makenames^linux_glibc_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcxx/libc++^linux_glibc_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/crtbegin_so^android_vendor.31_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/crtbegin_so^android_vendor.31_x86_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/crtend_so^android_vendor.31_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/crtend_so^android_vendor.31_x86_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/libc^android_vendor.31_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/libc^android_vendor.31_x86_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libdl/libdl^android_vendor.31_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libdl/libdl^android_vendor.31_x86_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libm/libm^android_vendor.31_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libm/libm^android_vendor.31_x86_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcap/libcap^android_vendor.31_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcap/libcap^android_vendor.31_x86_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcxx/libc++^android_vendor.31_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcxx/libc++^android_vendor.31_x86_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcxxabi/libc++demangle^android_vendor.31_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcxxabi/libc++demangle^android_vendor.31_x86_x86_64_static/ .
 
-echo "building cap_names.h^"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja cap_names.h,
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/libcap/cap_names.h^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/external/libcap/cap_names.h^.output . $GITHUB_WORKSPACE/artifacts/external/libcap/cap_names.h^
+echo "building libcap^android_vendor.31_x86_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libcap,android_vendor.31_x86_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/libcap/libcap^android_vendor.31_x86_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/external/libcap/libcap^android_vendor.31_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/external/libcap/libcap^android_vendor.31_x86_x86_64_shared
+
+echo "building libcap^android_vendor.31_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libcap,android_vendor.31_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/libcap/libcap^android_vendor.31_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/external/libcap/libcap^android_vendor.31_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/external/libcap/libcap^android_vendor.31_x86_64_shared
 
 rm -rf out
 
@@ -30,6 +52,14 @@ gh release --repo cibuilde/aosp-buildbot upload android12-gsi_06 external_libcap
 
 du -ah -d1 external_libcap*.tar.zst | sort -h
 
+if [ ! -f "$GITHUB_WORKSPACE/cache/bionic.tar.zst" ]; then
+  echo "Compressing bionic -> bionic.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/bionic.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/bionic/ .
+fi
+if [ ! -f "$GITHUB_WORKSPACE/cache/build_soong.tar.zst" ]; then
+  echo "Compressing build/soong -> build_soong.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/build_soong.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/build/soong/ .
+fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/external_libcap.tar.zst" ]; then
   echo "Compressing external/libcap -> external_libcap.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/external_libcap.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/libcap/ .
@@ -41,6 +71,14 @@ fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/external_libcxxabi.tar.zst" ]; then
   echo "Compressing external/libcxxabi -> external_libcxxabi.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/external_libcxxabi.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/libcxxabi/ .
+fi
+if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_build-tools.tar.zst" ]; then
+  echo "Compressing prebuilts/build-tools -> prebuilts_build-tools.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/prebuilts_build-tools.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/prebuilts/build-tools/ .
+fi
+if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_gcc_linux-x86_x86_x86_64-linux-android-4.9.tar.zst" ]; then
+  echo "Compressing prebuilts/gcc/linux-x86/x86/x86_64-linux-android-4.9 -> prebuilts_gcc_linux-x86_x86_x86_64-linux-android-4.9.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/prebuilts_gcc_linux-x86_x86_x86_64-linux-android-4.9.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/prebuilts/gcc/linux-x86/x86/x86_64-linux-android-4.9/ .
 fi
 
 rm -rf aosp

@@ -1,0 +1,15 @@
+out/soong/.intermediates/external/perfetto/perfetto_protos_perfetto_common_lite_gen/gen/external/perfetto/protos/perfetto/common/android_energy_consumer_descriptor.pb.cc
+out/soong/.intermediates/external/perfetto/perfetto_protos_perfetto_common_lite_gen/gen/external/perfetto/protos/perfetto/common/android_log_constants.pb.cc
+out/soong/.intermediates/external/perfetto/perfetto_protos_perfetto_common_lite_gen/gen/external/perfetto/protos/perfetto/common/builtin_clock.pb.cc
+out/soong/.intermediates/external/perfetto/perfetto_protos_perfetto_common_lite_gen/gen/external/perfetto/protos/perfetto/common/commit_data_request.pb.cc
+out/soong/.intermediates/external/perfetto/perfetto_protos_perfetto_common_lite_gen/gen/external/perfetto/protos/perfetto/common/data_source_descriptor.pb.cc
+out/soong/.intermediates/external/perfetto/perfetto_protos_perfetto_common_lite_gen/gen/external/perfetto/protos/perfetto/common/descriptor.pb.cc
+out/soong/.intermediates/external/perfetto/perfetto_protos_perfetto_common_lite_gen/gen/external/perfetto/protos/perfetto/common/gpu_counter_descriptor.pb.cc
+out/soong/.intermediates/external/perfetto/perfetto_protos_perfetto_common_lite_gen/gen/external/perfetto/protos/perfetto/common/interceptor_descriptor.pb.cc
+out/soong/.intermediates/external/perfetto/perfetto_protos_perfetto_common_lite_gen/gen/external/perfetto/protos/perfetto/common/observable_events.pb.cc
+out/soong/.intermediates/external/perfetto/perfetto_protos_perfetto_common_lite_gen/gen/external/perfetto/protos/perfetto/common/perf_events.pb.cc
+out/soong/.intermediates/external/perfetto/perfetto_protos_perfetto_common_lite_gen/gen/external/perfetto/protos/perfetto/common/sys_stats_counters.pb.cc
+out/soong/.intermediates/external/perfetto/perfetto_protos_perfetto_common_lite_gen/gen/external/perfetto/protos/perfetto/common/trace_stats.pb.cc
+out/soong/.intermediates/external/perfetto/perfetto_protos_perfetto_common_lite_gen/gen/external/perfetto/protos/perfetto/common/tracing_service_capabilities.pb.cc
+out/soong/.intermediates/external/perfetto/perfetto_protos_perfetto_common_lite_gen/gen/external/perfetto/protos/perfetto/common/tracing_service_state.pb.cc
+out/soong/.intermediates/external/perfetto/perfetto_protos_perfetto_common_lite_gen/gen/external/perfetto/protos/perfetto/common/track_event_descriptor.pb.cc

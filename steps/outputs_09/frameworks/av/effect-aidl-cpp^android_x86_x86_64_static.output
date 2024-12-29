@@ -1,0 +1,5 @@
+out/soong/.intermediates/frameworks/av/media/libaudioclient/effect-aidl-cpp/android_x86_x86_64_static/effect-aidl-cpp.a
+out/soong/.intermediates/frameworks/av/media/libaudioclient/effect-aidl-cpp/android_x86_x86_64_static/obj/.intermediates/frameworks/av/media/libaudioclient/effect-aidl-cpp-source/gen/android/media/IEffect.o
+out/soong/.intermediates/frameworks/av/media/libaudioclient/effect-aidl-cpp/android_x86_x86_64_static/obj/.intermediates/frameworks/av/media/libaudioclient/effect-aidl-cpp-source/gen/android/media/IEffect.tidy
+out/soong/.intermediates/frameworks/av/media/libaudioclient/effect-aidl-cpp/android_x86_x86_64_static/obj/.intermediates/frameworks/av/media/libaudioclient/effect-aidl-cpp-source/gen/android/media/IEffectClient.o
+out/soong/.intermediates/frameworks/av/media/libaudioclient/effect-aidl-cpp/android_x86_x86_64_static/obj/.intermediates/frameworks/av/media/libaudioclient/effect-aidl-cpp-source/gen/android/media/IEffectClient.tidy

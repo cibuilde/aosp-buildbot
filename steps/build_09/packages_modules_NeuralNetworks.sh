@@ -11,23 +11,18 @@ mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/
 
 clone_depth_platform art
 clone_depth_platform bionic
-clone_depth_platform external/boringssl
-clone_depth_platform external/eigen
+clone_depth_platform build/soong
 clone_depth_platform external/fmtlib
-clone_depth_platform external/gemmlowp
 clone_depth_platform external/libcxx
 clone_depth_platform external/libcxxabi
-clone_depth_platform external/libtextclassifier
-clone_depth_platform external/ruy
-clone_depth_platform external/tensorflow
 clone_depth_platform frameworks/av
 clone_depth_platform frameworks/native
 clone_depth_platform hardware/interfaces
 clone_depth_platform hardware/libhardware
 clone_depth_platform hardware/libhardware_legacy
 clone_depth_platform hardware/ril
-clone_depth_platform libnativehelper
 clone_depth_platform packages/modules/NeuralNetworks
+clone_project platform/prebuilts/build-tools prebuilts/build-tools android12-gsi "/linux-x86/bin" "/linux-x86/lib64" "/path" "/common"
 clone_depth_platform prebuilts/gcc/linux-x86/x86/x86_64-linux-android-4.9
 clone_depth_platform system/core
 clone_depth_platform system/libbase
@@ -38,70 +33,79 @@ clone_depth_platform system/logging
 clone_depth_platform system/media
 clone_depth_platform system/unwinding
 
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/crtbegin_dynamic^android_vendor.31_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/crtbegin_so^android_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/crtbegin_so^android_x86_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/crtend_android^android_vendor.31_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/crtend_so^android_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/crtend_so^android_x86_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/libc^android_vendor.31_x86_64_shared/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/tensorflow/tensorflow/lite/kernels/libtflite_kernel_utils^android_vendor.31_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/tensorflow/tensorflow/lite/kernels/libtflite_kernel_utils^android_x86_64_static_apex30/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/tensorflow/tensorflow/lite/kernels/libtflite_kernel_utils^android_x86_x86_64_static_apex30/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/libc^android_x86_64_shared_current/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/libc^android_x86_x86_64_shared_current/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libdl/libdl^android_vendor.31_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libdl/libdl^android_x86_64_shared_current/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libdl/libdl^android_x86_x86_64_shared_current/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libm/libm^android_vendor.31_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libm/libm^android_x86_64_shared_current/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libm/libm^android_x86_x86_64_shared_current/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcxx/libc++^android_vendor.31_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcxx/libc++^android_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcxx/libc++^android_x86_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcxxabi/libc++demangle^android_vendor.31_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcxxabi/libc++demangle^android_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcxxabi/libc++demangle^android_x86_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/native/libs/arect/libarect^android_vendor.31_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/native/libs/arect/libarect^android_x86_64_static_apex30/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/native/libs/arect/libarect^android_x86_x86_64_static_apex30/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/native/libs/binder/libbinder^android_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/native/libs/binder/libbinder^android_x86_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/native/libs/binder/ndk/libbinder_ndk^android_vendor.31_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/native/libs/nativewindow/libnativewindow^android_vendor.31_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/common/aidl/android.hardware.common-V2-ndk_platform-source^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/common/aidl/android.hardware.common-V2-ndk_platform^android_vendor.31_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/graphics/common/aidl/android.hardware.graphics.common-V2-ndk_platform-source^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/graphics/common/aidl/android.hardware.graphics.common-V2-ndk_platform^android_vendor.31_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/neuralnetworks/aidl/android.hardware.neuralnetworks-V1-ndk_platform-source^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/neuralnetworks/1.0/android.hardware.neuralnetworks@1.0_genc++_headers^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/neuralnetworks/1.1/android.hardware.neuralnetworks@1.1_genc++_headers^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/neuralnetworks/1.2/android.hardware.neuralnetworks@1.2_genc++_headers^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/neuralnetworks/1.3/android.hardware.neuralnetworks@1.3_genc++_headers^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/neuralnetworks/1.0/utils/neuralnetworks_utils_hal_1_0^android_vendor.31_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/neuralnetworks/1.0/utils/neuralnetworks_utils_hal_1_0^android_x86_64_static_apex30/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/neuralnetworks/1.0/utils/neuralnetworks_utils_hal_1_0^android_x86_x86_64_static_apex30/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/neuralnetworks/1.1/utils/neuralnetworks_utils_hal_1_1^android_vendor.31_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/neuralnetworks/1.1/utils/neuralnetworks_utils_hal_1_1^android_x86_64_static_apex30/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/neuralnetworks/1.1/utils/neuralnetworks_utils_hal_1_1^android_x86_x86_64_static_apex30/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/neuralnetworks/1.2/utils/neuralnetworks_utils_hal_1_2^android_vendor.31_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/neuralnetworks/1.2/utils/neuralnetworks_utils_hal_1_2^android_x86_64_static_apex30/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/neuralnetworks/1.2/utils/neuralnetworks_utils_hal_1_2^android_x86_x86_64_static_apex30/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/neuralnetworks/1.3/utils/neuralnetworks_utils_hal_1_3^android_vendor.31_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/neuralnetworks/1.3/utils/neuralnetworks_utils_hal_1_3^android_x86_64_static_apex30/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/neuralnetworks/1.3/utils/neuralnetworks_utils_hal_1_3^android_x86_x86_64_static_apex30/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/neuralnetworks/aidl/android.hardware.neuralnetworks-V1-ndk_platform^android_vendor.31_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/common/support/libaidlcommonsupport^android_vendor.31_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/neuralnetworks/aidl/utils/neuralnetworks_utils_hal_aidl^android_vendor.31_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/neuralnetworks/aidl/utils/neuralnetworks_utils_hal_aidl^android_x86_64_static_com.android.neuralnetworks/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/neuralnetworks/aidl/utils/neuralnetworks_utils_hal_aidl^android_x86_x86_64_static_com.android.neuralnetworks/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/neuralnetworks/utils/common/neuralnetworks_utils_hal_common^android_vendor.31_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/neuralnetworks/utils/common/neuralnetworks_utils_hal_common^android_x86_64_static_apex30/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/neuralnetworks/utils/common/neuralnetworks_utils_hal_common^android_x86_x86_64_static_apex30/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/neuralnetworks/utils/service/neuralnetworks_utils_hal_service^android_vendor.31_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/neuralnetworks/utils/service/neuralnetworks_utils_hal_service^android_x86_64_static_com.android.neuralnetworks/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/neuralnetworks/utils/service/neuralnetworks_utils_hal_service^android_x86_x86_64_static_com.android.neuralnetworks/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/NeuralNetworks/common/neuralnetworks_types^android_vendor.31_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/NeuralNetworks/common/neuralnetworks_types^android_x86_64_static_apex30/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/NeuralNetworks/common/neuralnetworks_types^android_x86_x86_64_static_apex30/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/NeuralNetworks/common/random/philox_random^android_vendor.31_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/NeuralNetworks/common/random/philox_random^android_x86_64_static_apex30/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/NeuralNetworks/common/random/philox_random^android_x86_x86_64_static_apex30/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/system/libhidl/transport/allocator/1.0/android.hidl.allocator@1.0_genc++_headers^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/NeuralNetworks/shim_and_sl/libneuralnetworks_shim_static^android_vendor.31_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/NeuralNetworks/driver/sample_shim/neuralnetworks_sample_sl_driver_prebuilt^android_vendor.31_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/NeuralNetworks/shim_and_sl/neuralnetworks_supportlibrary_loader^android_vendor.31_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/core/libcutils/libcutils^android_vendor.31_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/core/libcutils/libcutils^android_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/core/libcutils/libcutils^android_x86_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/core/libutils/libutils^android_vendor.31_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/core/libutils/libutils^android_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/core/libutils/libutils^android_x86_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/libbase/libbase^android_vendor.31_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/libbase/libbase^android_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/libbase/libbase^android_x86_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/libhidl/transport/base/1.0/android.hidl.base@1.0_genc++_headers^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/libhidl/transport/manager/1.0/android.hidl.manager@1.0_genc++_headers^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/libhidl/transport/manager/1.1/android.hidl.manager@1.1_genc++_headers^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/libhidl/transport/manager/1.2/android.hidl.manager@1.2_genc++_headers^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/libhidl/transport/memory/token/1.0/android.hidl.memory.token@1.0_genc++_headers^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/libhidl/transport/memory/1.0/android.hidl.memory@1.0_genc++_headers^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/system/libhidl/transport/safe_union/1.0/android.hidl.safe_union@1.0_genc++_headers^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/libhidl/libhidlbase^android_vendor.31_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/libhidl/libhidlmemory/libhidlmemory^android_vendor.31_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^android_vendor.31_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^android_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^android_x86_x86_64_shared/ .
 
-echo "building libneuralnetworks_common^android_vendor.31_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja libneuralnetworks_common,android_vendor.31_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/NeuralNetworks/common/libneuralnetworks_common^android_vendor.31_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_09/packages/modules/NeuralNetworks/libneuralnetworks_common^android_vendor.31_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/packages/modules/NeuralNetworks/common/libneuralnetworks_common^android_vendor.31_x86_64_static
+echo "building libneuralnetworks_packageinfo^android_x86_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja libneuralnetworks_packageinfo,android_x86_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/NeuralNetworks/runtime/packageinfo/libneuralnetworks_packageinfo^android_x86_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_09/packages/modules/NeuralNetworks/libneuralnetworks_packageinfo^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/packages/modules/NeuralNetworks/runtime/packageinfo/libneuralnetworks_packageinfo^android_x86_x86_64_shared
 
-echo "building libneuralnetworks_common^android_x86_64_static_com.android.neuralnetworks"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja libneuralnetworks_common,android_x86_64_static_com.android.neuralnetworks
-mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/NeuralNetworks/common/libneuralnetworks_common^android_x86_64_static_com.android.neuralnetworks
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_09/packages/modules/NeuralNetworks/libneuralnetworks_common^android_x86_64_static_com.android.neuralnetworks.output . $GITHUB_WORKSPACE/artifacts/packages/modules/NeuralNetworks/common/libneuralnetworks_common^android_x86_64_static_com.android.neuralnetworks
+echo "building libneuralnetworks_packageinfo^android_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja libneuralnetworks_packageinfo,android_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/NeuralNetworks/runtime/packageinfo/libneuralnetworks_packageinfo^android_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_09/packages/modules/NeuralNetworks/libneuralnetworks_packageinfo^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/packages/modules/NeuralNetworks/runtime/packageinfo/libneuralnetworks_packageinfo^android_x86_64_shared
 
-echo "building libneuralnetworks_common^android_x86_x86_64_static_com.android.neuralnetworks"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja libneuralnetworks_common,android_x86_x86_64_static_com.android.neuralnetworks
-mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/NeuralNetworks/common/libneuralnetworks_common^android_x86_x86_64_static_com.android.neuralnetworks
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_09/packages/modules/NeuralNetworks/libneuralnetworks_common^android_x86_x86_64_static_com.android.neuralnetworks.output . $GITHUB_WORKSPACE/artifacts/packages/modules/NeuralNetworks/common/libneuralnetworks_common^android_x86_x86_64_static_com.android.neuralnetworks
+echo "building android.hardware.neuralnetworks-shim-service-sample^android_vendor.31_x86_64"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja android.hardware.neuralnetworks-shim-service-sample,android_vendor.31_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/NeuralNetworks/driver/sample_shim/android.hardware.neuralnetworks-shim-service-sample^android_vendor.31_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_09/packages/modules/NeuralNetworks/android.hardware.neuralnetworks-shim-service-sample^android_vendor.31_x86_64.output . $GITHUB_WORKSPACE/artifacts/packages/modules/NeuralNetworks/driver/sample_shim/android.hardware.neuralnetworks-shim-service-sample^android_vendor.31_x86_64
 
 rm -rf out
 
@@ -119,21 +123,13 @@ if [ ! -f "$GITHUB_WORKSPACE/cache/bionic.tar.zst" ]; then
   echo "Compressing bionic -> bionic.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/bionic.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/bionic/ .
 fi
-if [ ! -f "$GITHUB_WORKSPACE/cache/external_boringssl.tar.zst" ]; then
-  echo "Compressing external/boringssl -> external_boringssl.tar.zst"
-  tar -cf $GITHUB_WORKSPACE/cache/external_boringssl.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/boringssl/ .
-fi
-if [ ! -f "$GITHUB_WORKSPACE/cache/external_eigen.tar.zst" ]; then
-  echo "Compressing external/eigen -> external_eigen.tar.zst"
-  tar -cf $GITHUB_WORKSPACE/cache/external_eigen.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/eigen/ .
+if [ ! -f "$GITHUB_WORKSPACE/cache/build_soong.tar.zst" ]; then
+  echo "Compressing build/soong -> build_soong.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/build_soong.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/build/soong/ .
 fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/external_fmtlib.tar.zst" ]; then
   echo "Compressing external/fmtlib -> external_fmtlib.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/external_fmtlib.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/fmtlib/ .
-fi
-if [ ! -f "$GITHUB_WORKSPACE/cache/external_gemmlowp.tar.zst" ]; then
-  echo "Compressing external/gemmlowp -> external_gemmlowp.tar.zst"
-  tar -cf $GITHUB_WORKSPACE/cache/external_gemmlowp.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/gemmlowp/ .
 fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/external_libcxx.tar.zst" ]; then
   echo "Compressing external/libcxx -> external_libcxx.tar.zst"
@@ -142,18 +138,6 @@ fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/external_libcxxabi.tar.zst" ]; then
   echo "Compressing external/libcxxabi -> external_libcxxabi.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/external_libcxxabi.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/libcxxabi/ .
-fi
-if [ ! -f "$GITHUB_WORKSPACE/cache/external_libtextclassifier.tar.zst" ]; then
-  echo "Compressing external/libtextclassifier -> external_libtextclassifier.tar.zst"
-  tar -cf $GITHUB_WORKSPACE/cache/external_libtextclassifier.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/libtextclassifier/ .
-fi
-if [ ! -f "$GITHUB_WORKSPACE/cache/external_ruy.tar.zst" ]; then
-  echo "Compressing external/ruy -> external_ruy.tar.zst"
-  tar -cf $GITHUB_WORKSPACE/cache/external_ruy.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/ruy/ .
-fi
-if [ ! -f "$GITHUB_WORKSPACE/cache/external_tensorflow.tar.zst" ]; then
-  echo "Compressing external/tensorflow -> external_tensorflow.tar.zst"
-  tar -cf $GITHUB_WORKSPACE/cache/external_tensorflow.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/tensorflow/ .
 fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/frameworks_av.tar.zst" ]; then
   echo "Compressing frameworks/av -> frameworks_av.tar.zst"
@@ -179,13 +163,13 @@ if [ ! -f "$GITHUB_WORKSPACE/cache/hardware_ril.tar.zst" ]; then
   echo "Compressing hardware/ril -> hardware_ril.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/hardware_ril.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/hardware/ril/ .
 fi
-if [ ! -f "$GITHUB_WORKSPACE/cache/libnativehelper.tar.zst" ]; then
-  echo "Compressing libnativehelper -> libnativehelper.tar.zst"
-  tar -cf $GITHUB_WORKSPACE/cache/libnativehelper.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/libnativehelper/ .
-fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/packages_modules_NeuralNetworks.tar.zst" ]; then
   echo "Compressing packages/modules/NeuralNetworks -> packages_modules_NeuralNetworks.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/packages_modules_NeuralNetworks.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/packages/modules/NeuralNetworks/ .
+fi
+if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_build-tools.tar.zst" ]; then
+  echo "Compressing prebuilts/build-tools -> prebuilts_build-tools.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/prebuilts_build-tools.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/prebuilts/build-tools/ .
 fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_gcc_linux-x86_x86_x86_64-linux-android-4.9.tar.zst" ]; then
   echo "Compressing prebuilts/gcc/linux-x86/x86/x86_64-linux-android-4.9 -> prebuilts_gcc_linux-x86_x86_x86_64-linux-android-4.9.tar.zst"

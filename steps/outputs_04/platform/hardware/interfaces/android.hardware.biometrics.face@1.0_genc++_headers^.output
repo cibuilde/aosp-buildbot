@@ -1,0 +1,12 @@
+out/soong/.intermediates/hardware/interfaces/biometrics/face/1.0/android.hardware.biometrics.face@1.0_genc++_headers/gen/android/hardware/biometrics/face/1.0/BnHwBiometricsFace.h
+out/soong/.intermediates/hardware/interfaces/biometrics/face/1.0/android.hardware.biometrics.face@1.0_genc++_headers/gen/android/hardware/biometrics/face/1.0/BnHwBiometricsFaceClientCallback.h
+out/soong/.intermediates/hardware/interfaces/biometrics/face/1.0/android.hardware.biometrics.face@1.0_genc++_headers/gen/android/hardware/biometrics/face/1.0/BpHwBiometricsFace.h
+out/soong/.intermediates/hardware/interfaces/biometrics/face/1.0/android.hardware.biometrics.face@1.0_genc++_headers/gen/android/hardware/biometrics/face/1.0/BpHwBiometricsFaceClientCallback.h
+out/soong/.intermediates/hardware/interfaces/biometrics/face/1.0/android.hardware.biometrics.face@1.0_genc++_headers/gen/android/hardware/biometrics/face/1.0/BsBiometricsFace.h
+out/soong/.intermediates/hardware/interfaces/biometrics/face/1.0/android.hardware.biometrics.face@1.0_genc++_headers/gen/android/hardware/biometrics/face/1.0/BsBiometricsFaceClientCallback.h
+out/soong/.intermediates/hardware/interfaces/biometrics/face/1.0/android.hardware.biometrics.face@1.0_genc++_headers/gen/android/hardware/biometrics/face/1.0/IBiometricsFace.h
+out/soong/.intermediates/hardware/interfaces/biometrics/face/1.0/android.hardware.biometrics.face@1.0_genc++_headers/gen/android/hardware/biometrics/face/1.0/IBiometricsFaceClientCallback.h
+out/soong/.intermediates/hardware/interfaces/biometrics/face/1.0/android.hardware.biometrics.face@1.0_genc++_headers/gen/android/hardware/biometrics/face/1.0/IHwBiometricsFace.h
+out/soong/.intermediates/hardware/interfaces/biometrics/face/1.0/android.hardware.biometrics.face@1.0_genc++_headers/gen/android/hardware/biometrics/face/1.0/IHwBiometricsFaceClientCallback.h
+out/soong/.intermediates/hardware/interfaces/biometrics/face/1.0/android.hardware.biometrics.face@1.0_genc++_headers/gen/android/hardware/biometrics/face/1.0/hwtypes.h
+out/soong/.intermediates/hardware/interfaces/biometrics/face/1.0/android.hardware.biometrics.face@1.0_genc++_headers/gen/android/hardware/biometrics/face/1.0/types.h

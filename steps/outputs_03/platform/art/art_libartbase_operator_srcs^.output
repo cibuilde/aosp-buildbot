@@ -1,0 +1,3 @@
+out/soong/.intermediates/art/libartbase/art_libartbase_operator_srcs/gen/gensrcs/art/libartbase/arch/instruction_set.operator_out.cc
+out/soong/.intermediates/art/libartbase/art_libartbase_operator_srcs/gen/gensrcs/art/libartbase/base/allocator.operator_out.cc
+out/soong/.intermediates/art/libartbase/art_libartbase_operator_srcs/gen/gensrcs/art/libartbase/base/unix_file/fd_file.operator_out.cc

@@ -1,0 +1,17 @@
+out/soong/.intermediates/hardware/interfaces/drm/1.1/android.hardware.drm@1.1_genc++_headers/gen/android/hardware/drm/1.1/BnHwCryptoFactory.h
+out/soong/.intermediates/hardware/interfaces/drm/1.1/android.hardware.drm@1.1_genc++_headers/gen/android/hardware/drm/1.1/BnHwDrmFactory.h
+out/soong/.intermediates/hardware/interfaces/drm/1.1/android.hardware.drm@1.1_genc++_headers/gen/android/hardware/drm/1.1/BnHwDrmPlugin.h
+out/soong/.intermediates/hardware/interfaces/drm/1.1/android.hardware.drm@1.1_genc++_headers/gen/android/hardware/drm/1.1/BpHwCryptoFactory.h
+out/soong/.intermediates/hardware/interfaces/drm/1.1/android.hardware.drm@1.1_genc++_headers/gen/android/hardware/drm/1.1/BpHwDrmFactory.h
+out/soong/.intermediates/hardware/interfaces/drm/1.1/android.hardware.drm@1.1_genc++_headers/gen/android/hardware/drm/1.1/BpHwDrmPlugin.h
+out/soong/.intermediates/hardware/interfaces/drm/1.1/android.hardware.drm@1.1_genc++_headers/gen/android/hardware/drm/1.1/BsCryptoFactory.h
+out/soong/.intermediates/hardware/interfaces/drm/1.1/android.hardware.drm@1.1_genc++_headers/gen/android/hardware/drm/1.1/BsDrmFactory.h
+out/soong/.intermediates/hardware/interfaces/drm/1.1/android.hardware.drm@1.1_genc++_headers/gen/android/hardware/drm/1.1/BsDrmPlugin.h
+out/soong/.intermediates/hardware/interfaces/drm/1.1/android.hardware.drm@1.1_genc++_headers/gen/android/hardware/drm/1.1/ICryptoFactory.h
+out/soong/.intermediates/hardware/interfaces/drm/1.1/android.hardware.drm@1.1_genc++_headers/gen/android/hardware/drm/1.1/IDrmFactory.h
+out/soong/.intermediates/hardware/interfaces/drm/1.1/android.hardware.drm@1.1_genc++_headers/gen/android/hardware/drm/1.1/IDrmPlugin.h
+out/soong/.intermediates/hardware/interfaces/drm/1.1/android.hardware.drm@1.1_genc++_headers/gen/android/hardware/drm/1.1/IHwCryptoFactory.h
+out/soong/.intermediates/hardware/interfaces/drm/1.1/android.hardware.drm@1.1_genc++_headers/gen/android/hardware/drm/1.1/IHwDrmFactory.h
+out/soong/.intermediates/hardware/interfaces/drm/1.1/android.hardware.drm@1.1_genc++_headers/gen/android/hardware/drm/1.1/IHwDrmPlugin.h
+out/soong/.intermediates/hardware/interfaces/drm/1.1/android.hardware.drm@1.1_genc++_headers/gen/android/hardware/drm/1.1/hwtypes.h
+out/soong/.intermediates/hardware/interfaces/drm/1.1/android.hardware.drm@1.1_genc++_headers/gen/android/hardware/drm/1.1/types.h

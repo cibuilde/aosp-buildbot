@@ -1,0 +1,3 @@
+out/soong/.intermediates/external/cpu_features/libcpu_features-utils/android_x86_x86_64_static_lto-thin_apex31/obj/external/cpu_features/src/filesystem.o
+out/soong/.intermediates/external/cpu_features/libcpu_features-utils/android_x86_x86_64_static_lto-thin_apex31/obj/external/cpu_features/src/stack_line_reader.o
+out/soong/.intermediates/external/cpu_features/libcpu_features-utils/android_x86_x86_64_static_lto-thin_apex31/obj/external/cpu_features/src/string_view.o

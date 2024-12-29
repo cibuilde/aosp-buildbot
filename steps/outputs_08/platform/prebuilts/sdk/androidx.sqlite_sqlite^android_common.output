@@ -1,0 +1,4 @@
+out/soong/.intermediates/prebuilts/sdk/current/androidx/androidx.sqlite_sqlite/android_common/combined/androidx.sqlite_sqlite.jar
+out/soong/.intermediates/prebuilts/sdk/current/androidx/androidx.sqlite_sqlite/android_common/manifest_fixer/AndroidManifest.xml
+out/soong/.intermediates/prebuilts/sdk/current/androidx/androidx.sqlite_sqlite/android_common/package-res.apk
+out/soong/.intermediates/prebuilts/sdk/current/androidx/androidx.sqlite_sqlite/android_common/turbine-combined/androidx.sqlite_sqlite.jar

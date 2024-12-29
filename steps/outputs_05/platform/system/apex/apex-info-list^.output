@@ -1,0 +1,4 @@
+out/soong/.intermediates/system/apex/apexd/apex-info-list/gen/cpp/com_android_apex.cpp
+out/soong/.intermediates/system/apex/apexd/apex-info-list/gen/cpp/com_android_apex_enums.cpp
+out/soong/.intermediates/system/apex/apexd/apex-info-list/gen/cpp/include/com_android_apex.h
+out/soong/.intermediates/system/apex/apexd/apex-info-list/gen/cpp/include/com_android_apex_enums.h

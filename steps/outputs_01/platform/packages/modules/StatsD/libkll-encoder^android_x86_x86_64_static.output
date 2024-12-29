@@ -1,0 +1,3 @@
+out/soong/.intermediates/packages/modules/StatsD/lib/libkll/encoding/libkll-encoder/android_x86_x86_64_static/libkll-encoder.a
+out/soong/.intermediates/packages/modules/StatsD/lib/libkll/encoding/libkll-encoder/android_x86_x86_64_static/obj/packages/modules/StatsD/lib/libkll/encoding/encoder.o
+out/soong/.intermediates/packages/modules/StatsD/lib/libkll/encoding/libkll-encoder/android_x86_x86_64_static/obj/packages/modules/StatsD/lib/libkll/encoding/varint.o

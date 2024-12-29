@@ -14,84 +14,49 @@ ln -s make/core build/
 ln -s make/target build/
 ln -s make/tools build/
 clone_depth_platform build/soong
+clone_depth_platform external/bouncycastle
+clone_depth_platform external/conscrypt
+clone_depth_platform external/python/cpython2
+clone_project platform/prebuilts/jdk/jdk11 prebuilts/jdk/jdk11 android12-gsi "/linux-x86"
+clone_depth_platform tools/apksig
+clone_depth_platform tools/build
 
-rsync -a -r $GITHUB_WORKSPACE/downloads/build/make/tools/fs_config/group_gen_odm^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/build/make/tools/fs_config/group_gen_product^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/build/make/tools/fs_config/group_gen_system^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/build/make/tools/fs_config/group_gen_system_ext^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/build/make/tools/fs_config/group_gen_vendor^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/build/make/tools/fs_config/passwd_gen_odm^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/build/make/tools/fs_config/passwd_gen_product^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/build/make/tools/fs_config/passwd_gen_system^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/build/make/tools/fs_config/passwd_gen_system_ext^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/build/make/tools/fs_config/passwd_gen_vendor^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/build/make/tools/releasetools/releasetools_common^linux_glibc_x86_64_PY2/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/build/make/tools/releasetools/releasetools_verity_utils^linux_glibc_x86_64_PY2/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/cmd/merge_zips/merge_zips^linux_glibc_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/cmd/javac_wrapper/soong_javac_wrapper^linux_glibc_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/zip/cmd/soong_zip^linux_glibc_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/cmd/zipsync/zipsync^linux_glibc_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/bouncycastle/bouncycastle-bcpkix-unbundled^linux_glibc_common/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/bouncycastle/bouncycastle-unbundled^linux_glibc_common/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/conscrypt/conscrypt-unbundled^linux_glibc_common/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/icu/icu4c/source/i18n/libicui18n^linux_glibc_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/icu/icu4c/source/common/libicuuc^linux_glibc_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcxx/libc++^linux_glibc_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/python/cpython2/py2-launcher-autorun^linux_glibc_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/python/cpython2/Lib/py2-stdlib^linux_glibc_x86_64_PY2/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/sqlite/dist/libsqlite^linux_glibc_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/tools/apksig/apksig^linux_glibc_common/ .
 
-echo "building group_odm^android_x86_64"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja group_odm,android_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/build/make/tools/fs_config/group_odm^android_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/build/make/group_odm^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/build/make/tools/fs_config/group_odm^android_x86_64
+echo "building verity_utils^linux_glibc_x86_64_PY2"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja verity_utils,linux_glibc_x86_64_PY2
+mkdir -p $GITHUB_WORKSPACE/artifacts/build/make/tools/releasetools/verity_utils^linux_glibc_x86_64_PY2
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/build/make/verity_utils^linux_glibc_x86_64_PY2.output . $GITHUB_WORKSPACE/artifacts/build/make/tools/releasetools/verity_utils^linux_glibc_x86_64_PY2
 
-echo "building group_product^android_x86_64"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja group_product,android_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/build/make/tools/fs_config/group_product^android_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/build/make/group_product^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/build/make/tools/fs_config/group_product^android_x86_64
+echo "building sparse_img^linux_glibc_x86_64_PY2"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja sparse_img,linux_glibc_x86_64_PY2
+mkdir -p $GITHUB_WORKSPACE/artifacts/build/make/tools/releasetools/sparse_img^linux_glibc_x86_64_PY2
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/build/make/sparse_img^linux_glibc_x86_64_PY2.output . $GITHUB_WORKSPACE/artifacts/build/make/tools/releasetools/sparse_img^linux_glibc_x86_64_PY2
 
-echo "building group_system^android_x86_64"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja group_system,android_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/build/make/tools/fs_config/group_system^android_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/build/make/group_system^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/build/make/tools/fs_config/group_system^android_x86_64
+echo "building signapk^linux_glibc_common"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja signapk,linux_glibc_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/build/make/tools/signapk/signapk^linux_glibc_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/build/make/signapk^linux_glibc_common.output . $GITHUB_WORKSPACE/artifacts/build/make/tools/signapk/signapk^linux_glibc_common
 
-echo "building group_system_ext^android_x86_64"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja group_system_ext,android_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/build/make/tools/fs_config/group_system_ext^android_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/build/make/group_system_ext^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/build/make/tools/fs_config/group_system_ext^android_x86_64
-
-echo "building group_vendor^android_x86_64"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja group_vendor,android_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/build/make/tools/fs_config/group_vendor^android_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/build/make/group_vendor^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/build/make/tools/fs_config/group_vendor^android_x86_64
-
-echo "building passwd_odm^android_x86_64"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja passwd_odm,android_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/build/make/tools/fs_config/passwd_odm^android_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/build/make/passwd_odm^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/build/make/tools/fs_config/passwd_odm^android_x86_64
-
-echo "building passwd_product^android_x86_64"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja passwd_product,android_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/build/make/tools/fs_config/passwd_product^android_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/build/make/passwd_product^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/build/make/tools/fs_config/passwd_product^android_x86_64
-
-echo "building passwd_system^android_x86_64"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja passwd_system,android_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/build/make/tools/fs_config/passwd_system^android_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/build/make/passwd_system^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/build/make/tools/fs_config/passwd_system^android_x86_64
-
-echo "building passwd_system_ext^android_x86_64"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja passwd_system_ext,android_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/build/make/tools/fs_config/passwd_system_ext^android_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/build/make/passwd_system_ext^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/build/make/tools/fs_config/passwd_system_ext^android_x86_64
-
-echo "building passwd_vendor^android_x86_64"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja passwd_vendor,android_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/build/make/tools/fs_config/passwd_vendor^android_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/build/make/passwd_vendor^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/build/make/tools/fs_config/passwd_vendor^android_x86_64
-
-echo "building post_process_props^linux_glibc_x86_64_PY3"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja post_process_props,linux_glibc_x86_64_PY3
-mkdir -p $GITHUB_WORKSPACE/artifacts/build/make/tools/post_process_props^linux_glibc_x86_64_PY3
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/build/make/post_process_props^linux_glibc_x86_64_PY3.output . $GITHUB_WORKSPACE/artifacts/build/make/tools/post_process_props^linux_glibc_x86_64_PY3
-
-echo "building releasetools_common^linux_glibc_x86_64_PY2"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja releasetools_common,linux_glibc_x86_64_PY2
-mkdir -p $GITHUB_WORKSPACE/artifacts/build/make/tools/releasetools/releasetools_common^linux_glibc_x86_64_PY2
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/build/make/releasetools_common^linux_glibc_x86_64_PY2.output . $GITHUB_WORKSPACE/artifacts/build/make/tools/releasetools/releasetools_common^linux_glibc_x86_64_PY2
-
-echo "building releasetools_verity_utils^linux_glibc_x86_64_PY2"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja releasetools_verity_utils,linux_glibc_x86_64_PY2
-mkdir -p $GITHUB_WORKSPACE/artifacts/build/make/tools/releasetools/releasetools_verity_utils^linux_glibc_x86_64_PY2
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/build/make/releasetools_verity_utils^linux_glibc_x86_64_PY2.output . $GITHUB_WORKSPACE/artifacts/build/make/tools/releasetools/releasetools_verity_utils^linux_glibc_x86_64_PY2
+echo "building build_image^linux_glibc_x86_64_PY2"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja build_image,linux_glibc_x86_64_PY2
+mkdir -p $GITHUB_WORKSPACE/artifacts/build/make/tools/releasetools/build_image^linux_glibc_x86_64_PY2
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/build/make/build_image^linux_glibc_x86_64_PY2.output . $GITHUB_WORKSPACE/artifacts/build/make/tools/releasetools/build_image^linux_glibc_x86_64_PY2
 
 rm -rf out
 
@@ -108,6 +73,30 @@ fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/build_soong.tar.zst" ]; then
   echo "Compressing build/soong -> build_soong.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/build_soong.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/build/soong/ .
+fi
+if [ ! -f "$GITHUB_WORKSPACE/cache/external_bouncycastle.tar.zst" ]; then
+  echo "Compressing external/bouncycastle -> external_bouncycastle.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/external_bouncycastle.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/bouncycastle/ .
+fi
+if [ ! -f "$GITHUB_WORKSPACE/cache/external_conscrypt.tar.zst" ]; then
+  echo "Compressing external/conscrypt -> external_conscrypt.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/external_conscrypt.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/conscrypt/ .
+fi
+if [ ! -f "$GITHUB_WORKSPACE/cache/external_python_cpython2.tar.zst" ]; then
+  echo "Compressing external/python/cpython2 -> external_python_cpython2.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/external_python_cpython2.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/python/cpython2/ .
+fi
+if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_jdk_jdk11.tar.zst" ]; then
+  echo "Compressing prebuilts/jdk/jdk11 -> prebuilts_jdk_jdk11.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/prebuilts_jdk_jdk11.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/prebuilts/jdk/jdk11/ .
+fi
+if [ ! -f "$GITHUB_WORKSPACE/cache/tools_apksig.tar.zst" ]; then
+  echo "Compressing tools/apksig -> tools_apksig.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/tools_apksig.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/tools/apksig/ .
+fi
+if [ ! -f "$GITHUB_WORKSPACE/cache/tools_build.tar.zst" ]; then
+  echo "Compressing tools/build -> tools_build.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/tools_build.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/tools/build/ .
 fi
 
 rm -rf aosp

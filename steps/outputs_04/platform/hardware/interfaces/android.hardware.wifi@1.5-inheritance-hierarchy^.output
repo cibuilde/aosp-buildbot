@@ -1,0 +1,7 @@
+out/soong/.intermediates/hardware/interfaces/wifi/1.5/android.hardware.wifi@1.5-inheritance-hierarchy/gen/IWifiApIface_inheritance_hierarchy.json
+out/soong/.intermediates/hardware/interfaces/wifi/1.5/android.hardware.wifi@1.5-inheritance-hierarchy/gen/IWifiChip_inheritance_hierarchy.json
+out/soong/.intermediates/hardware/interfaces/wifi/1.5/android.hardware.wifi@1.5-inheritance-hierarchy/gen/IWifiEventCallback_inheritance_hierarchy.json
+out/soong/.intermediates/hardware/interfaces/wifi/1.5/android.hardware.wifi@1.5-inheritance-hierarchy/gen/IWifiNanIfaceEventCallback_inheritance_hierarchy.json
+out/soong/.intermediates/hardware/interfaces/wifi/1.5/android.hardware.wifi@1.5-inheritance-hierarchy/gen/IWifiNanIface_inheritance_hierarchy.json
+out/soong/.intermediates/hardware/interfaces/wifi/1.5/android.hardware.wifi@1.5-inheritance-hierarchy/gen/IWifiStaIface_inheritance_hierarchy.json
+out/soong/.intermediates/hardware/interfaces/wifi/1.5/android.hardware.wifi@1.5-inheritance-hierarchy/gen/IWifi_inheritance_hierarchy.json

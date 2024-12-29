@@ -1,0 +1,5 @@
+out/soong/.intermediates/system/bt/audio_hal_interface/libbt-audio-hal-interface/android_x86_64_static/obj/system/bt/audio_hal_interface/a2dp_encoding.o
+out/soong/.intermediates/system/bt/audio_hal_interface/libbt-audio-hal-interface/android_x86_64_static/obj/system/bt/audio_hal_interface/client_interface.o
+out/soong/.intermediates/system/bt/audio_hal_interface/libbt-audio-hal-interface/android_x86_64_static/obj/system/bt/audio_hal_interface/codec_status.o
+out/soong/.intermediates/system/bt/audio_hal_interface/libbt-audio-hal-interface/android_x86_64_static/obj/system/bt/audio_hal_interface/hearing_aid_software_encoding.o
+out/soong/.intermediates/system/bt/audio_hal_interface/libbt-audio-hal-interface/android_x86_64_static/obj/system/bt/audio_hal_interface/le_audio_software.o

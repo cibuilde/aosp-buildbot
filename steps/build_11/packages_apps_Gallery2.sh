@@ -13,7 +13,6 @@ clone_depth_platform bionic
 clone_depth_platform build/soong
 clone_depth_platform external/libcxx
 clone_depth_platform external/libcxxabi
-clone_depth_platform external/libjpeg-turbo
 clone_depth_platform frameworks/av
 clone_depth_platform frameworks/native
 clone_depth_platform hardware/libhardware
@@ -33,15 +32,15 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/crtend_so^android_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/libc^android_x86_64_shared_current/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libdl/libdl^android_x86_64_shared_current/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libm/libm^android_x86_64_shared_current/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcxx/libc++_static^android_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcxx/libc++^android_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcxxabi/libc++demangle^android_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/libjpeg-turbo/libjpeg_static_ndk^android_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/native/opengl/libs/libEGL^android_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^android_x86_64_shared/ .
 
-echo "building libjni_jpegstream^android_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_11.ninja libjni_jpegstream,android_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/packages/apps/Gallery2/jni_jpegstream/libjni_jpegstream^android_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_11/packages/apps/Gallery2/libjni_jpegstream^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/packages/apps/Gallery2/jni_jpegstream/libjni_jpegstream^android_x86_64_shared
+echo "building libjni_eglfence^android_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_11.ninja libjni_eglfence,android_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/packages/apps/Gallery2/jni/libjni_eglfence^android_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_11/packages/apps/Gallery2/libjni_eglfence^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/packages/apps/Gallery2/jni/libjni_eglfence^android_x86_64_shared
 
 rm -rf out
 
@@ -66,10 +65,6 @@ fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/external_libcxxabi.tar.zst" ]; then
   echo "Compressing external/libcxxabi -> external_libcxxabi.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/external_libcxxabi.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/libcxxabi/ .
-fi
-if [ ! -f "$GITHUB_WORKSPACE/cache/external_libjpeg-turbo.tar.zst" ]; then
-  echo "Compressing external/libjpeg-turbo -> external_libjpeg-turbo.tar.zst"
-  tar -cf $GITHUB_WORKSPACE/cache/external_libjpeg-turbo.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/libjpeg-turbo/ .
 fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/frameworks_av.tar.zst" ]; then
   echo "Compressing frameworks/av -> frameworks_av.tar.zst"

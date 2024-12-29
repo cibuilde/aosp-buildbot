@@ -37,25 +37,25 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/Gki/libkver/libkver^and
 rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/Gki/libkver/libkver^android_x86_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/Gki/libkver/libkver^linux_glibc_x86_64_static/ .
 
-echo "building libvintf^android_recovery_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_02.ninja libvintf,android_recovery_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/libvintf/libvintf^android_recovery_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_02/system/libvintf/libvintf^android_recovery_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/libvintf/libvintf^android_recovery_x86_64_static
-
-echo "building libvintf^android_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_02.ninja libvintf,android_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/libvintf/libvintf^android_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_02/system/libvintf/libvintf^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/libvintf/libvintf^android_x86_64_static
+echo "building libvintf^linux_glibc_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_02.ninja libvintf,linux_glibc_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/libvintf/libvintf^linux_glibc_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_02/system/libvintf/libvintf^linux_glibc_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/libvintf/libvintf^linux_glibc_x86_64_static
 
 echo "building libvintf^android_x86_x86_64_static"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_02.ninja libvintf,android_x86_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/libvintf/libvintf^android_x86_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_02/system/libvintf/libvintf^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/libvintf/libvintf^android_x86_x86_64_static
 
-echo "building libvintf^linux_glibc_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_02.ninja libvintf,linux_glibc_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/libvintf/libvintf^linux_glibc_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_02/system/libvintf/libvintf^linux_glibc_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/libvintf/libvintf^linux_glibc_x86_64_static
+echo "building libvintf^android_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_02.ninja libvintf,android_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/libvintf/libvintf^android_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_02/system/libvintf/libvintf^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/libvintf/libvintf^android_x86_64_static
+
+echo "building libvintf^android_recovery_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_02.ninja libvintf,android_recovery_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/libvintf/libvintf^android_recovery_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_02/system/libvintf/libvintf^android_recovery_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/libvintf/libvintf^android_recovery_x86_64_static
 
 rm -rf out
 

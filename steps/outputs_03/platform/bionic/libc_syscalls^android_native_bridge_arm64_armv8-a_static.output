@@ -1,0 +1,2 @@
+out/soong/.intermediates/bionic/libc/libc_syscalls/android_native_bridge_arm64_armv8-a_static/obj/.intermediates/bionic/libc/syscalls-arm64.S/gen/syscalls-arm64.o
+out/soong/.intermediates/bionic/libc/libc_syscalls/android_native_bridge_arm64_armv8-a_static/obj/bionic/libc/bionic/__set_errno.o

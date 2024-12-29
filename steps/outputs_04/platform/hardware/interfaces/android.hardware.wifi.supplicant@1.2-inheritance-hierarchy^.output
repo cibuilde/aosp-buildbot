@@ -1,0 +1,5 @@
+out/soong/.intermediates/hardware/interfaces/wifi/supplicant/1.2/android.hardware.wifi.supplicant@1.2-inheritance-hierarchy/gen/ISupplicantP2pIface_inheritance_hierarchy.json
+out/soong/.intermediates/hardware/interfaces/wifi/supplicant/1.2/android.hardware.wifi.supplicant@1.2-inheritance-hierarchy/gen/ISupplicantStaIfaceCallback_inheritance_hierarchy.json
+out/soong/.intermediates/hardware/interfaces/wifi/supplicant/1.2/android.hardware.wifi.supplicant@1.2-inheritance-hierarchy/gen/ISupplicantStaIface_inheritance_hierarchy.json
+out/soong/.intermediates/hardware/interfaces/wifi/supplicant/1.2/android.hardware.wifi.supplicant@1.2-inheritance-hierarchy/gen/ISupplicantStaNetwork_inheritance_hierarchy.json
+out/soong/.intermediates/hardware/interfaces/wifi/supplicant/1.2/android.hardware.wifi.supplicant@1.2-inheritance-hierarchy/gen/ISupplicant_inheritance_hierarchy.json

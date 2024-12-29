@@ -1,0 +1,8 @@
+out/soong/.intermediates/frameworks/native/cmds/dumpstate/libdumpstateaidl/android_x86_64_shared/gen/aidl/android/os/BnDumpstate.h
+out/soong/.intermediates/frameworks/native/cmds/dumpstate/libdumpstateaidl/android_x86_64_shared/gen/aidl/android/os/BnDumpstateListener.h
+out/soong/.intermediates/frameworks/native/cmds/dumpstate/libdumpstateaidl/android_x86_64_shared/gen/aidl/android/os/BpDumpstate.h
+out/soong/.intermediates/frameworks/native/cmds/dumpstate/libdumpstateaidl/android_x86_64_shared/gen/aidl/android/os/BpDumpstateListener.h
+out/soong/.intermediates/frameworks/native/cmds/dumpstate/libdumpstateaidl/android_x86_64_shared/gen/aidl/android/os/IDumpstate.h
+out/soong/.intermediates/frameworks/native/cmds/dumpstate/libdumpstateaidl/android_x86_64_shared/gen/aidl/android/os/IDumpstateListener.h
+out/soong/.intermediates/frameworks/native/cmds/dumpstate/libdumpstateaidl/android_x86_64_shared/libdumpstateaidl.so
+out/soong/.intermediates/frameworks/native/cmds/dumpstate/libdumpstateaidl/android_x86_64_shared/libdumpstateaidl.so.toc

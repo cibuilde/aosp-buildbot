@@ -1,0 +1,8 @@
+out/soong/.intermediates/system/core/debuggerd/libdebuggerd/android_x86_64_static/obj/system/core/debuggerd/libdebuggerd/backtrace.o
+out/soong/.intermediates/system/core/debuggerd/libdebuggerd/android_x86_64_static/obj/system/core/debuggerd/libdebuggerd/gwp_asan.o
+out/soong/.intermediates/system/core/debuggerd/libdebuggerd/android_x86_64_static/obj/system/core/debuggerd/libdebuggerd/open_files_list.o
+out/soong/.intermediates/system/core/debuggerd/libdebuggerd/android_x86_64_static/obj/system/core/debuggerd/libdebuggerd/scudo.o
+out/soong/.intermediates/system/core/debuggerd/libdebuggerd/android_x86_64_static/obj/system/core/debuggerd/libdebuggerd/tombstone.o
+out/soong/.intermediates/system/core/debuggerd/libdebuggerd/android_x86_64_static/obj/system/core/debuggerd/libdebuggerd/tombstone_proto.o
+out/soong/.intermediates/system/core/debuggerd/libdebuggerd/android_x86_64_static/obj/system/core/debuggerd/libdebuggerd/tombstone_proto_to_text.o
+out/soong/.intermediates/system/core/debuggerd/libdebuggerd/android_x86_64_static/obj/system/core/debuggerd/libdebuggerd/utility.o

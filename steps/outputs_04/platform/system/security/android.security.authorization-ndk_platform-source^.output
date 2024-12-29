@@ -1,0 +1,16 @@
+out/soong/.intermediates/system/security/keystore2/aidl/android.security.authorization-ndk_platform-source/gen/android/security/authorization/AuthorizationTokens.cpp
+out/soong/.intermediates/system/security/keystore2/aidl/android.security.authorization-ndk_platform-source/gen/android/security/authorization/IKeystoreAuthorization.cpp
+out/soong/.intermediates/system/security/keystore2/aidl/android.security.authorization-ndk_platform-source/gen/android/security/authorization/LockScreenEvent.cpp
+out/soong/.intermediates/system/security/keystore2/aidl/android.security.authorization-ndk_platform-source/gen/android/security/authorization/ResponseCode.cpp
+out/soong/.intermediates/system/security/keystore2/aidl/android.security.authorization-ndk_platform-source/gen/include/aidl/android/security/authorization/AuthorizationTokens.h
+out/soong/.intermediates/system/security/keystore2/aidl/android.security.authorization-ndk_platform-source/gen/include/aidl/android/security/authorization/BnAuthorizationTokens.h
+out/soong/.intermediates/system/security/keystore2/aidl/android.security.authorization-ndk_platform-source/gen/include/aidl/android/security/authorization/BnKeystoreAuthorization.h
+out/soong/.intermediates/system/security/keystore2/aidl/android.security.authorization-ndk_platform-source/gen/include/aidl/android/security/authorization/BnLockScreenEvent.h
+out/soong/.intermediates/system/security/keystore2/aidl/android.security.authorization-ndk_platform-source/gen/include/aidl/android/security/authorization/BnResponseCode.h
+out/soong/.intermediates/system/security/keystore2/aidl/android.security.authorization-ndk_platform-source/gen/include/aidl/android/security/authorization/BpAuthorizationTokens.h
+out/soong/.intermediates/system/security/keystore2/aidl/android.security.authorization-ndk_platform-source/gen/include/aidl/android/security/authorization/BpKeystoreAuthorization.h
+out/soong/.intermediates/system/security/keystore2/aidl/android.security.authorization-ndk_platform-source/gen/include/aidl/android/security/authorization/BpLockScreenEvent.h
+out/soong/.intermediates/system/security/keystore2/aidl/android.security.authorization-ndk_platform-source/gen/include/aidl/android/security/authorization/BpResponseCode.h
+out/soong/.intermediates/system/security/keystore2/aidl/android.security.authorization-ndk_platform-source/gen/include/aidl/android/security/authorization/IKeystoreAuthorization.h
+out/soong/.intermediates/system/security/keystore2/aidl/android.security.authorization-ndk_platform-source/gen/include/aidl/android/security/authorization/LockScreenEvent.h
+out/soong/.intermediates/system/security/keystore2/aidl/android.security.authorization-ndk_platform-source/gen/include/aidl/android/security/authorization/ResponseCode.h

@@ -1,642 +1,97 @@
+builddir = out
+pool local_pool
+ depth = 66
+pool highmem_pool
+ depth = 5
+
 include ninja/global.ninja
 include ninja/singleton.ninja
 
-include ninja/art/adbconnection/libadbconnection^android_x86_64_shared_apex31.ninja
-include ninja/art/adbconnection/libadbconnection^android_x86_x86_64_shared_apex31.ninja
-include ninja/art/compiler/libart-compiler^android_x86_64_shared_apex31.ninja
-include ninja/art/compiler/libart-compiler^android_x86_x86_64_shared_apex31.ninja
-include ninja/art/dexoptanalyzer/dexoptanalyzer^android_x86_64_apex31.ninja
-include ninja/art/odrefresh/odrefresh^android_x86_64_apex31.ninja
-include ninja/art/openjdkjvm/libopenjdkjvm^android_x86_64_shared_apex31.ninja
-include ninja/art/openjdkjvm/libopenjdkjvm^android_x86_x86_64_shared_apex31.ninja
-include ninja/art/perfetto_hprof/libperfetto_hprof^android_x86_64_shared_apex31.ninja
-include ninja/art/perfetto_hprof/libperfetto_hprof^android_x86_x86_64_shared_apex31.ninja
-include ninja/device/google/cuttlefish/common/frontend/socket_vsock_proxy/socket_vsock_proxy^android_vendor.31_x86_64.ninja
-include ninja/device/google/cuttlefish/guest/commands/vsoc_input_service/vsoc_input_service^android_vendor.31_x86_64.ninja
-include ninja/external/adhd/cras/client/libcras/liblibcras^android_x86_64_rlib_rlib-std_apex10000.ninja
-include ninja/external/conscrypt/conscrypt.module.intra.core.api.stubs.source^android_common.ninja
-include ninja/external/crosvm/cros_async/libcros_async^android_x86_64_rlib_rlib-std_apex10000.ninja
-include ninja/external/crosvm/data_model/libdata_model^android_x86_64_dylib.ninja
-include ninja/external/crosvm/data_model/libdata_model^android_x86_64_dylib_apex10000.ninja
-include ninja/external/crosvm/tempfile/libtempfile^android_x86_64_dylib.ninja
-include ninja/external/crosvm/tempfile/libtempfile^android_x86_64_dylib_apex10000.ninja
-include ninja/external/e2fsprogs/e2fsck/e2fsck^android_x86_64.ninja
-include ninja/external/e2fsprogs/lib/support/libext2_quota^android_vendor_ramdisk_x86_64_shared.ninja
-include ninja/external/e2fsprogs/misc/libext2_misc^android_recovery_x86_64_shared.ninja
-include ninja/external/e2fsprogs/misc/libext2_misc^android_x86_64_shared.ninja
-include ninja/external/e2fsprogs/misc/tune2fs^android_x86_64.ninja
-include ninja/external/harfbuzz_ng/libharfbuzz_ng^android_x86_64_shared.ninja
-include ninja/external/harfbuzz_ng/libharfbuzz_ng^android_x86_x86_64_shared.ninja
-include ninja/external/icu/android_icu4j/i18n.module.intra.core.api.stubs.source^android_common.ninja
-include ninja/external/libbrillo/libbrillo-stream^android_x86_64_shared.ninja
-include ninja/external/libchromeos-rs/liblibchromeos^android_x86_64_rlib_rlib-std_apex10000.ninja
-include ninja/external/rust/crates/clap/libclap^android_x86_64_dylib.ninja
-include ninja/external/rust/crates/clap/libclap^android_x86_64_dylib_apex10000.ninja
-include ninja/external/rust/crates/crc32fast/libcrc32fast^android_x86_64_dylib.ninja
-include ninja/external/rust/crates/futures-channel/libfutures_channel^android_x86_64_dylib.ninja
-include ninja/external/rust/crates/futures-channel/libfutures_channel^android_x86_64_dylib_apex10000.ninja
-include ninja/external/rust/crates/getrandom/libgetrandom^android_x86_64_dylib.ninja
-include ninja/external/rust/crates/grpcio/libgrpcio^android_x86_64_rlib_rlib-std.ninja
-include ninja/external/rust/crates/grpcio/libgrpcio^android_x86_x86_64_rlib_rlib-std.ninja
-include ninja/external/rust/crates/intrusive-collections/libintrusive_collections^android_x86_64_dylib.ninja
-include ninja/external/rust/crates/intrusive-collections/libintrusive_collections^android_x86_64_dylib_apex10000.ninja
-include ninja/external/rust/crates/libz-sys/liblibz_sys^android_x86_64_dylib.ninja
-include ninja/external/rust/crates/log/liblog_rust^android_x86_64_dylib.ninja
-include ninja/external/rust/crates/log/liblog_rust^android_x86_64_dylib_apex10000.ninja
-include ninja/external/rust/crates/macaddr/libmacaddr^android_x86_64_dylib.ninja
-include ninja/external/rust/crates/nix/libnix^android_x86_64_dylib.ninja
-include ninja/external/rust/crates/nix/libnix^android_x86_64_dylib_apex10000.ninja
-include ninja/external/rust/crates/num-integer/libnum_integer^android_x86_64_dylib.ninja
-include ninja/external/rust/crates/num_cpus/libnum_cpus^android_x86_64_dylib.ninja
-include ninja/external/rust/crates/num_cpus/libnum_cpus^android_x86_64_dylib_apex10000.ninja
-include ninja/external/rust/crates/rusqlite/librusqlite^android_x86_64_rlib_rlib-std.ninja
-include ninja/external/rust/crates/serde_json/libserde_json^android_x86_64_dylib.ninja
-include ninja/external/rust/crates/serde_json/libserde_json^android_x86_64_dylib_apex10000.ninja
-include ninja/external/rust/crates/uuid/libuuid^android_x86_64_dylib.ninja
-include ninja/external/rust/cxx/libcxx^android_x86_64_rlib_dylib-std.ninja
-include ninja/external/sqlite/dist/sqlite3^android_x86_64.ninja
-include ninja/frameworks/av/drm/mediacas/plugins/clearkey/libclearkeycasplugin^android_vendor.31_x86_64_shared.ninja
-include ninja/frameworks/av/drm/mediacas/plugins/clearkey/libclearkeycasplugin^android_vendor.31_x86_x86_64_shared.ninja
-include ninja/frameworks/av/drm/mediadrm/plugins/clearkey/default/libdrmclearkeyplugin^android_vendor.31_x86_64_shared.ninja
-include ninja/frameworks/av/drm/mediadrm/plugins/clearkey/default/libdrmclearkeyplugin^android_vendor.31_x86_x86_64_shared.ninja
-include ninja/frameworks/av/media/img_utils/libimg_utils^android_x86_64_shared.ninja
-include ninja/frameworks/av/media/img_utils/libimg_utils^android_x86_x86_64_shared.ninja
-include ninja/frameworks/av/media/libaudiofoundation/libaudiofoundation^android_vendor.31_x86_64_static.ninja
-include ninja/frameworks/av/media/libaudiofoundation/libaudiofoundation^android_vendor.31_x86_x86_64_static.ninja
-include ninja/frameworks/av/media/libaudioprocessing/audio-resampler/libaudio-resampler^android_x86_64_shared.ninja
-include ninja/frameworks/av/media/libaudioprocessing/audio-resampler/libaudio-resampler^android_x86_x86_64_shared.ninja
-include ninja/frameworks/av/media/libeffects/config/libeffectsconfig^android_vendor.31_x86_64_shared.ninja
-include ninja/frameworks/av/media/libeffects/config/libeffectsconfig^android_vendor.31_x86_x86_64_shared.ninja
-include ninja/frameworks/av/media/libmediahelper/libmedia_helper^android_x86_64_shared.ninja
-include ninja/frameworks/av/media/libmediahelper/libmedia_helper^android_x86_x86_64_shared.ninja
-include ninja/frameworks/av/media/libnbaio/libnbaio_mono^android_vendor.31_x86_64_shared.ninja
-include ninja/frameworks/av/media/libnbaio/libnbaio_mono^android_vendor.31_x86_x86_64_shared.ninja
-include ninja/frameworks/base/libs/protoutil/libprotoutil^android_x86_64_shared.ninja
-include ninja/frameworks/base/libs/protoutil/libprotoutil^android_x86_x86_64_shared.ninja
-include ninja/frameworks/native/cmds/installd/otapreopt^android_x86_64.ninja
-include ninja/frameworks/native/libs/android_runtime_lazy/libandroid_runtime_lazy^android_x86_64_shared.ninja
-include ninja/frameworks/native/libs/android_runtime_lazy/libandroid_runtime_lazy^android_x86_x86_64_shared.ninja
-include ninja/frameworks/native/libs/binder/libbinder^android_x86_64_shared.ninja
-include ninja/frameworks/native/libs/binder/libbinder^android_x86_x86_64_shared.ninja
-include ninja/frameworks/native/libs/binderdebug/libbinderdebug^android_vendor.31_x86_64_static.ninja
-include ninja/frameworks/native/libs/gui/libgui_aidl_static^android_vendor.31_x86_64_static.ninja
-include ninja/frameworks/native/libs/gui/libgui_aidl_static^android_vendor.31_x86_64_static_lto-thin.ninja
-include ninja/frameworks/native/libs/gui/libgui_aidl_static^android_vendor.31_x86_x86_64_static.ninja
-include ninja/frameworks/native/libs/gui/libgui_aidl_static^android_vendor.31_x86_x86_64_static_lto-thin.ninja
-include ninja/frameworks/native/libs/vibrator/libvibrator^android_vendor.31_x86_64_static.ninja
-include ninja/frameworks/native/libs/vibrator/libvibrator^android_vendor.31_x86_x86_64_static.ninja
-include ninja/frameworks/native/services/inputflinger/reporter/libinputreporter^android_x86_64_shared.ninja
-include ninja/frameworks/native/services/inputflinger/reporter/libinputreporter^android_x86_x86_64_shared.ninja
-include ninja/frameworks/rs/libRS_internal^android_vendor.31_x86_64_shared.ninja
-include ninja/frameworks/rs/libRS_internal^android_vendor.31_x86_x86_64_shared.ninja
-include ninja/hardware/interfaces/atrace/1.0/android.hardware.atrace@1.0^android_vendor.31_x86_64_shared.ninja
-include ninja/hardware/interfaces/audio/common/2.0/android.hardware.audio.common@2.0^android_vendor.31_x86_64_shared.ninja
-include ninja/hardware/interfaces/audio/common/2.0/android.hardware.audio.common@2.0^android_vendor.31_x86_x86_64_shared.ninja
-include ninja/hardware/interfaces/audio/common/all-versions/default/android.hardware.audio.common-util^android_vendor.31_x86_64_shared.ninja
-include ninja/hardware/interfaces/audio/common/all-versions/default/android.hardware.audio.common-util^android_vendor.31_x86_x86_64_shared.ninja
-include ninja/hardware/interfaces/audio/common/all-versions/default/service/android.hardware.audio.service^android_vendor.31_x86_x86_64.ninja
-include ninja/hardware/interfaces/authsecret/1.0/android.hardware.authsecret@1.0^android_vendor.31_x86_64_shared.ninja
-include ninja/hardware/interfaces/biometrics/face/1.0/android.hardware.biometrics.face@1.0^android_vendor.31_x86_64_shared.ninja
-include ninja/hardware/interfaces/biometrics/fingerprint/2.1/android.hardware.biometrics.fingerprint@2.1^android_vendor.31_x86_64_shared.ninja
-include ninja/hardware/interfaces/bluetooth/1.0/android.hardware.bluetooth@1.0^android_vendor.31_x86_64_shared.ninja
-include ninja/hardware/interfaces/boot/1.0/android.hardware.boot@1.0^android_vendor.31_x86_64_shared.ninja
-include ninja/hardware/interfaces/boot/1.0/android.hardware.boot@1.0^android_vendor.31_x86_x86_64_shared.ninja
-include ninja/hardware/interfaces/camera/common/1.0/android.hardware.camera.common@1.0^android_vendor.31_x86_64_shared.ninja
-include ninja/hardware/interfaces/camera/common/1.0/android.hardware.camera.common@1.0^android_vendor.31_x86_x86_64_shared.ninja
-include ninja/hardware/interfaces/camera/metadata/3.2/android.hardware.camera.metadata@3.2^android_vendor.31_x86_64_shared.ninja
-include ninja/hardware/interfaces/camera/metadata/3.2/android.hardware.camera.metadata@3.2^android_vendor.31_x86_x86_64_shared.ninja
-include ninja/hardware/interfaces/cas/1.0/android.hardware.cas@1.0^android_vendor.31_x86_x86_64_shared.ninja
-include ninja/hardware/interfaces/configstore/1.0/android.hardware.configstore@1.0^android_vendor.31_x86_64_shared.ninja
-include ninja/hardware/interfaces/configstore/1.0/android.hardware.configstore@1.0^android_vendor.31_x86_x86_64_shared.ninja
-include ninja/hardware/interfaces/contexthub/1.0/android.hardware.contexthub@1.0^android_vendor.31_x86_64_shared.ninja
-include ninja/hardware/interfaces/drm/1.0/android.hardware.drm@1.0^android_vendor.31_x86_64_shared.ninja
-include ninja/hardware/interfaces/dumpstate/1.0/android.hardware.dumpstate@1.0^android_vendor.31_x86_64_shared.ninja
-include ninja/hardware/interfaces/gatekeeper/1.0/android.hardware.gatekeeper@1.0^android_vendor.31_x86_64_shared.ninja
-include ninja/hardware/interfaces/gnss/1.0/android.hardware.gnss@1.0^android_vendor.31_x86_64_shared.ninja
-include ninja/hardware/interfaces/gnss/visibility_control/1.0/android.hardware.gnss.visibility_control@1.0^android_vendor.31_x86_64_shared.ninja
-include ninja/hardware/interfaces/graphics/allocator/2.0/android.hardware.graphics.allocator@2.0^android_x86_64_shared_apex29.ninja
-include ninja/hardware/interfaces/graphics/bufferqueue/1.0/android.hardware.graphics.bufferqueue@1.0^android_x86_64_shared_apex29.ninja
-include ninja/hardware/interfaces/graphics/common/1.0/android.hardware.graphics.common@1.0^android_vendor.31_x86_64_shared.ninja
-include ninja/hardware/interfaces/graphics/common/1.0/android.hardware.graphics.common@1.0^android_vendor.31_x86_x86_64_shared.ninja
-include ninja/hardware/interfaces/graphics/common/1.2/android.hardware.graphics.common@1.2^android_x86_64_shared_apex29.ninja
-include ninja/hardware/interfaces/graphics/mapper/2.1/android.hardware.graphics.mapper@2.1^android_x86_64_shared_apex29.ninja
-include ninja/hardware/interfaces/health/1.0/android.hardware.health@1.0^android_vendor.31_x86_64_shared.ninja
-include ninja/hardware/interfaces/health/1.0/android.hardware.health@1.0^android_vendor.31_x86_x86_64_shared.ninja
-include ninja/hardware/interfaces/input/common/1.0/android.hardware.input.common@1.0^android_vendor.31_x86_64_shared.ninja
-include ninja/hardware/interfaces/media/bufferpool/2.0/android.hardware.media.bufferpool@2.0^android_vendor.31_x86_64_shared.ninja
-include ninja/hardware/interfaces/media/bufferpool/2.0/android.hardware.media.bufferpool@2.0^android_vendor.31_x86_x86_64_shared.ninja
-include ninja/hardware/interfaces/memtrack/1.0/android.hardware.memtrack@1.0^android_vendor.31_x86_64_shared.ninja
-include ninja/hardware/interfaces/memtrack/1.0/android.hardware.memtrack@1.0^android_vendor.31_x86_x86_64_shared.ninja
-include ninja/hardware/interfaces/neuralnetworks/1.0/android.hardware.neuralnetworks@1.0^android_vendor.31_x86_64_shared.ninja
-include ninja/hardware/interfaces/radio/1.0/android.hardware.radio@1.0^android_vendor.31_x86_64_shared.ninja
-include ninja/hardware/interfaces/radio/1.0/android.hardware.radio@1.0^android_vendor.31_x86_x86_64_shared.ninja
-include ninja/hardware/interfaces/renderscript/1.0/android.hardware.renderscript@1.0^android_vendor.31_x86_64_shared.ninja
-include ninja/hardware/interfaces/renderscript/1.0/android.hardware.renderscript@1.0^android_vendor.31_x86_x86_64_shared.ninja
-include ninja/hardware/interfaces/sensors/1.0/android.hardware.sensors@1.0^android_vendor.31_x86_64_shared.ninja
-include ninja/hardware/interfaces/sensors/1.0/android.hardware.sensors@1.0^android_vendor.31_x86_x86_64_shared.ninja
-include ninja/hardware/interfaces/thermal/1.0/android.hardware.thermal@1.0^android_vendor.31_x86_64_shared.ninja
-include ninja/hardware/interfaces/usb/1.0/android.hardware.usb@1.0^android_vendor.31_x86_64_shared.ninja
-include ninja/hardware/libhardware_legacy/libpower^android_vendor.31_x86_64_static.ninja
-include ninja/hardware/libhardware_legacy/libpower^android_vendor.31_x86_x86_64_static.ninja
-include ninja/libcore/mmodules/intracoreapi/art-module-intra-core-api-stubs-system-modules^android_common.ninja
-include ninja/prebuilts/sdk/current/androidx/androidx.core_core-nodeps^android_common.ninja
-include ninja/prebuilts/sdk/current/androidx/androidx.core_core-nodeps^android_common_apex30.ninja
-include ninja/prebuilts/sdk/current/androidx/androidx.lifecycle_lifecycle-livedata-core-ktx-nodeps^android_common_apex30.ninja
-include ninja/prebuilts/sdk/current/androidx/androidx.lifecycle_lifecycle-livedata-nodeps^android_common.ninja
-include ninja/prebuilts/sdk/current/androidx/androidx.lifecycle_lifecycle-livedata-nodeps^android_common_apex30.ninja
-include ninja/prebuilts/sdk/current/androidx/androidx.lifecycle_lifecycle-process-nodeps^android_common.ninja
-include ninja/prebuilts/sdk/current/androidx/androidx.lifecycle_lifecycle-process-nodeps^android_common_apex30.ninja
-include ninja/prebuilts/sdk/current/androidx/androidx.lifecycle_lifecycle-runtime-ktx-nodeps^android_common_apex30.ninja
-include ninja/prebuilts/sdk/current/androidx/androidx.lifecycle_lifecycle-service-nodeps^android_common.ninja
-include ninja/prebuilts/sdk/current/androidx/androidx.lifecycle_lifecycle-service-nodeps^android_common_apex30.ninja
-include ninja/prebuilts/sdk/current/androidx/androidx.lifecycle_lifecycle-viewmodel-savedstate-nodeps^android_common.ninja
-include ninja/prebuilts/sdk/current/androidx/androidx.lifecycle_lifecycle-viewmodel-savedstate-nodeps^android_common_apex30.ninja
-include ninja/prebuilts/sdk/current/androidx/androidx.room_room-runtime-nodeps^android_common.ninja
-include ninja/system/bpf/libbpf_android/libbpf_android^android_x86_64_shared.ninja
-include ninja/system/bpf/libbpf_android/libbpf_android^android_x86_x86_64_shared.ninja
-include ninja/system/core/fs_mgr/libfs_mgr^android_recovery_x86_64_shared.ninja
-include ninja/system/core/fs_mgr/libfs_mgr^android_x86_64_shared.ninja
-include ninja/system/core/libutils/libutilscallstack^android_x86_64_shared.ninja
-include ninja/system/core/libutils/libutilscallstack^android_x86_x86_64_shared.ninja
-include ninja/system/extras/simpleperf/libsimpleperf_profcollect_rust^android_x86_64_rlib_dylib-std.ninja
-include ninja/system/hardware/interfaces/suspend/1.0/android.system.suspend@1.0^android_vendor.31_x86_64_shared.ninja
-include ninja/system/hardware/interfaces/suspend/1.0/android.system.suspend@1.0^android_vendor.31_x86_x86_64_shared.ninja
-include ninja/system/hardware/interfaces/wifi/keystore/1.0/android.system.wifi.keystore@1.0^android_vendor.31_x86_64_shared.ninja
-include ninja/system/incremental_delivery/libdataloader/libdataloader^android_x86_64_shared.ninja
-include ninja/system/incremental_delivery/libdataloader/libdataloader^android_x86_x86_64_shared.ninja
-include ninja/system/keymaster/libsoft_attestation_cert^android_vendor.31_x86_64_shared.ninja
-include ninja/system/keymaster/libsoft_attestation_cert^android_x86_64_shared.ninja
-include ninja/system/libfmq/libfmq^android_x86_64_shared.ninja
-include ninja/system/libfmq/libfmq^android_x86_x86_64_shared.ninja
-include ninja/system/libhidl/libhidlbase^android_recovery_x86_64_shared.ninja
-include ninja/system/libhidl/libhidlbase^android_x86_64_shared.ninja
-include ninja/system/libhidl/libhidlbase^android_x86_x86_64_shared.ninja
-include ninja/system/libhidl/transport/allocator/1.0/android.hidl.allocator@1.0^android_vendor.31_x86_64_shared.ninja
-include ninja/system/libhidl/transport/allocator/1.0/android.hidl.allocator@1.0^android_vendor.31_x86_x86_64_shared.ninja
-include ninja/system/libhidl/transport/allocator/1.0/utils/libhidlallocatorutils^android_vendor.31_x86_64_static.ninja
-include ninja/system/libhidl/transport/allocator/1.0/utils/libhidlallocatorutils^android_vendor.31_x86_x86_64_static.ninja
-include ninja/system/libhidl/transport/memory/1.0/android.hidl.memory@1.0^android_vendor.31_x86_64_shared.ninja
-include ninja/system/libhidl/transport/memory/1.0/android.hidl.memory@1.0^android_vendor.31_x86_x86_64_shared.ninja
-include ninja/system/libhidl/transport/memory/token/1.0/android.hidl.memory.token@1.0^android_vendor.31_x86_64_shared.ninja
-include ninja/system/libhidl/transport/memory/token/1.0/android.hidl.memory.token@1.0^android_vendor.31_x86_x86_64_shared.ninja
-include ninja/system/libhidl/transport/safe_union/1.0/android.hidl.safe_union@1.0^android_vendor.31_x86_64_shared.ninja
-include ninja/system/libhidl/transport/safe_union/1.0/android.hidl.safe_union@1.0^android_vendor.31_x86_x86_64_shared.ninja
-include ninja/system/libhidl/transport/token/1.0/android.hidl.token@1.0^android_vendor.31_x86_64_shared.ninja
-include ninja/system/libhidl/transport/token/1.0/android.hidl.token@1.0^android_vendor.31_x86_x86_64_shared.ninja
-include ninja/system/security/keystore2/src/vintf/libkeystore2_vintf_rust^android_x86_64_rlib_rlib-std.ninja
+include ninja/art/build/apex/com.android.art^android_common_com.android.art_image.ninja
+include ninja/art/build/boot/art-bootclasspath-fragment^android_common_apex31.ninja
+include ninja/external/neven/libFFTEm^android_x86_64_shared.ninja
+include ninja/external/neven/libFFTEm^android_x86_x86_64_shared.ninja
+include ninja/frameworks/av/camera/ndk/libcamera2ndk^android_x86_64_shared.ninja
+include ninja/frameworks/av/camera/ndk/libcamera2ndk^android_x86_x86_64_shared.ninja
+include ninja/frameworks/av/media/libstagefright/http/libstagefright_http_support^android_x86_64_shared_cfi.ninja
+include ninja/frameworks/av/media/libstagefright/http/libstagefright_http_support^android_x86_x86_64_shared_cfi.ninja
+include ninja/frameworks/ex/framesequence/jni/libframesequence^android_x86_64_shared.ninja
+include ninja/frameworks/ex/framesequence/jni/libframesequence^android_x86_x86_64_shared.ninja
+include ninja/frameworks/opt/net/voip/src/jni/rtp/librtp_jni^android_x86_64_shared.ninja
+include ninja/frameworks/opt/net/voip/src/jni/rtp/librtp_jni^android_x86_x86_64_shared.ninja
+include ninja/frameworks/rs/libRSCacheDir^android_x86_64_shared.ninja
+include ninja/frameworks/rs/libRSCacheDir^android_x86_x86_64_shared.ninja
+include ninja/packages/apps/Gallery2/jni/libjni_filtershow_filters^android_x86_64_shared.ninja
+include ninja/packages/modules/NetworkStack/statsprotos^android_common.ninja
+include ninja/packages/modules/RuntimeI18n/apex/com.android.i18n^android_common_com.android.i18n_image.ninja
+include ninja/packages/modules/RuntimeI18n/apex/i18n-bootclasspath-fragment^android_common_apex10000.ninja
+include ninja/system/libhidl/transport/base/1.0/android.hidl.base-V1.0-java^android_common_apex30.ninja
+include ninja/system/libhidl/transport/manager/1.0/android.hidl.manager-V1.0-java^android_common_apex30.ninja
+include ninja/system/libhidl/transport/manager/1.1/android.hidl.manager-V1.1-java^android_common_apex30.ninja
+include ninja/system/libhidl/transport/manager/1.2/android.hidl.manager-V1.2-java^android_common_apex30.ninja
 
-build dexoptanalyzer,android_x86_64_apex31: phony out/soong/.intermediates/art/dexoptanalyzer/dexoptanalyzer/android_x86_64_apex31/dexoptanalyzer
+build art-bootclasspath-fragment,android_common_apex31: phony out/soong/.intermediates/art/build/boot/art-bootclasspath-fragment/android_common_apex31/bootclasspath.pb out/soong/.intermediates/art/build/boot/art-bootclasspath-fragment/android_common_apex31/hiddenapi-modular/encoded/apache-xml.jar out/soong/.intermediates/art/build/boot/art-bootclasspath-fragment/android_common_apex31/hiddenapi-modular/encoded/bouncycastle.jar out/soong/.intermediates/art/build/boot/art-bootclasspath-fragment/android_common_apex31/hiddenapi-modular/encoded/core-libart.jar out/soong/.intermediates/art/build/boot/art-bootclasspath-fragment/android_common_apex31/hiddenapi-modular/encoded/core-oj.jar out/soong/.intermediates/art/build/boot/art-bootclasspath-fragment/android_common_apex31/hiddenapi-modular/encoded/okhttp.jar out/soong/.intermediates/art/build/boot/art-bootclasspath-fragment/android_common_apex31/modular-hiddenapi/annotation-flags.csv out/soong/vsoc_x86_64/dex_artjars/android/apex/art_boot_images/javalib/x86/boot-apache-xml.art out/soong/vsoc_x86_64/dex_artjars/android/apex/art_boot_images/javalib/x86/boot-apache-xml.oat out/soong/vsoc_x86_64/dex_artjars/android/apex/art_boot_images/javalib/x86/boot-apache-xml.vdex out/soong/vsoc_x86_64/dex_artjars/android/apex/art_boot_images/javalib/x86/boot-bouncycastle.art out/soong/vsoc_x86_64/dex_artjars/android/apex/art_boot_images/javalib/x86/boot-bouncycastle.oat out/soong/vsoc_x86_64/dex_artjars/android/apex/art_boot_images/javalib/x86/boot-bouncycastle.vdex out/soong/vsoc_x86_64/dex_artjars/android/apex/art_boot_images/javalib/x86/boot-core-libart.art out/soong/vsoc_x86_64/dex_artjars/android/apex/art_boot_images/javalib/x86/boot-core-libart.oat out/soong/vsoc_x86_64/dex_artjars/android/apex/art_boot_images/javalib/x86/boot-core-libart.vdex out/soong/vsoc_x86_64/dex_artjars/android/apex/art_boot_images/javalib/x86/boot-okhttp.art out/soong/vsoc_x86_64/dex_artjars/android/apex/art_boot_images/javalib/x86/boot-okhttp.oat out/soong/vsoc_x86_64/dex_artjars/android/apex/art_boot_images/javalib/x86/boot-okhttp.vdex out/soong/vsoc_x86_64/dex_artjars/android/apex/art_boot_images/javalib/x86/boot.art out/soong/vsoc_x86_64/dex_artjars/android/apex/art_boot_images/javalib/x86/boot.oat out/soong/vsoc_x86_64/dex_artjars/android/apex/art_boot_images/javalib/x86/boot.vdex out/soong/vsoc_x86_64/dex_artjars/android/apex/art_boot_images/javalib/x86_64/boot-apache-xml.art out/soong/vsoc_x86_64/dex_artjars/android/apex/art_boot_images/javalib/x86_64/boot-apache-xml.oat out/soong/vsoc_x86_64/dex_artjars/android/apex/art_boot_images/javalib/x86_64/boot-apache-xml.vdex out/soong/vsoc_x86_64/dex_artjars/android/apex/art_boot_images/javalib/x86_64/boot-bouncycastle.art out/soong/vsoc_x86_64/dex_artjars/android/apex/art_boot_images/javalib/x86_64/boot-bouncycastle.oat out/soong/vsoc_x86_64/dex_artjars/android/apex/art_boot_images/javalib/x86_64/boot-bouncycastle.vdex out/soong/vsoc_x86_64/dex_artjars/android/apex/art_boot_images/javalib/x86_64/boot-core-libart.art out/soong/vsoc_x86_64/dex_artjars/android/apex/art_boot_images/javalib/x86_64/boot-core-libart.oat out/soong/vsoc_x86_64/dex_artjars/android/apex/art_boot_images/javalib/x86_64/boot-core-libart.vdex out/soong/vsoc_x86_64/dex_artjars/android/apex/art_boot_images/javalib/x86_64/boot-okhttp.art out/soong/vsoc_x86_64/dex_artjars/android/apex/art_boot_images/javalib/x86_64/boot-okhttp.oat out/soong/vsoc_x86_64/dex_artjars/android/apex/art_boot_images/javalib/x86_64/boot-okhttp.vdex out/soong/vsoc_x86_64/dex_artjars/android/apex/art_boot_images/javalib/x86_64/boot.art out/soong/vsoc_x86_64/dex_artjars/android/apex/art_boot_images/javalib/x86_64/boot.oat out/soong/vsoc_x86_64/dex_artjars/android/apex/art_boot_images/javalib/x86_64/boot.vdex out/soong/vsoc_x86_64/dex_artjars_input/apache-xml.jar out/soong/vsoc_x86_64/dex_artjars_input/bouncycastle.jar out/soong/vsoc_x86_64/dex_artjars_input/core-libart.jar out/soong/vsoc_x86_64/dex_artjars_input/core-oj.jar out/soong/vsoc_x86_64/dex_artjars_input/okhttp.jar out/soong/vsoc_x86_64/dex_artjars_unstripped/android/apex/art_boot_images/javalib/x86/boot-apache-xml.oat out/soong/vsoc_x86_64/dex_artjars_unstripped/android/apex/art_boot_images/javalib/x86/boot-bouncycastle.oat out/soong/vsoc_x86_64/dex_artjars_unstripped/android/apex/art_boot_images/javalib/x86/boot-core-libart.oat out/soong/vsoc_x86_64/dex_artjars_unstripped/android/apex/art_boot_images/javalib/x86/boot-okhttp.oat out/soong/vsoc_x86_64/dex_artjars_unstripped/android/apex/art_boot_images/javalib/x86/boot.oat out/soong/vsoc_x86_64/dex_artjars_unstripped/android/apex/art_boot_images/javalib/x86_64/boot-apache-xml.oat out/soong/vsoc_x86_64/dex_artjars_unstripped/android/apex/art_boot_images/javalib/x86_64/boot-bouncycastle.oat out/soong/vsoc_x86_64/dex_artjars_unstripped/android/apex/art_boot_images/javalib/x86_64/boot-core-libart.oat out/soong/vsoc_x86_64/dex_artjars_unstripped/android/apex/art_boot_images/javalib/x86_64/boot-okhttp.oat out/soong/vsoc_x86_64/dex_artjars_unstripped/android/apex/art_boot_images/javalib/x86_64/boot.oat
 
-build libadbconnection,android_x86_64_shared_apex31: phony out/soong/.intermediates/art/adbconnection/libadbconnection/android_x86_64_shared_apex31/libadbconnection.so
+build com.android.art,android_common_com.android.art_image: phony out/soong/.intermediates/art/build/apex/com.android.art/android_common_com.android.art_image/apex_manifest.pb out/soong/.intermediates/art/build/apex/com.android.art/android_common_com.android.art_image/apex_pubkey out/soong/.intermediates/art/build/apex/com.android.art/android_common_com.android.art_image/com.android.art.capex
 
-build libadbconnection,android_x86_x86_64_shared_apex31: phony out/soong/.intermediates/art/adbconnection/libadbconnection/android_x86_x86_64_shared_apex31/libadbconnection.so
+build art-targets: phony art-bootclasspath-fragment,android_common_apex31 com.android.art,android_common_com.android.art_image
 
-build libart-compiler,android_x86_64_shared_apex31: phony out/soong/.intermediates/art/compiler/libart-compiler/android_x86_64_shared_apex31/libart-compiler.so out/soong/.intermediates/art/compiler/libart-compiler/android_x86_64_shared_apex31/libart-compiler.so.toc
+build libFFTEm,android_x86_64_shared: phony out/soong/.intermediates/external/neven/libFFTEm/android_x86_64_shared/libFFTEm.so
 
-build libart-compiler,android_x86_x86_64_shared_apex31: phony out/soong/.intermediates/art/compiler/libart-compiler/android_x86_x86_64_shared_apex31/libart-compiler.so out/soong/.intermediates/art/compiler/libart-compiler/android_x86_x86_64_shared_apex31/libart-compiler.so.toc
+build libFFTEm,android_x86_x86_64_shared: phony out/soong/.intermediates/external/neven/libFFTEm/android_x86_x86_64_shared/libFFTEm.so
 
-build libopenjdkjvm,android_x86_64_shared_apex31: phony out/soong/.intermediates/art/openjdkjvm/libopenjdkjvm/android_x86_64_shared_apex31/libopenjdkjvm.so out/soong/.intermediates/art/openjdkjvm/libopenjdkjvm/android_x86_64_shared_apex31/libopenjdkjvm.so.toc
+build external_neven-targets: phony libFFTEm,android_x86_64_shared libFFTEm,android_x86_x86_64_shared
 
-build libopenjdkjvm,android_x86_x86_64_shared_apex31: phony out/soong/.intermediates/art/openjdkjvm/libopenjdkjvm/android_x86_x86_64_shared_apex31/libopenjdkjvm.so out/soong/.intermediates/art/openjdkjvm/libopenjdkjvm/android_x86_x86_64_shared_apex31/libopenjdkjvm.so.toc
+build libcamera2ndk,android_x86_64_shared: phony out/soong/.intermediates/frameworks/av/camera/ndk/libcamera2ndk/android_x86_64_shared/libcamera2ndk.so
 
-build libperfetto_hprof,android_x86_64_shared_apex31: phony out/soong/.intermediates/art/perfetto_hprof/libperfetto_hprof/android_x86_64_shared_apex31/libperfetto_hprof.so
+build libcamera2ndk,android_x86_x86_64_shared: phony out/soong/.intermediates/frameworks/av/camera/ndk/libcamera2ndk/android_x86_x86_64_shared/libcamera2ndk.so
 
-build libperfetto_hprof,android_x86_x86_64_shared_apex31: phony out/soong/.intermediates/art/perfetto_hprof/libperfetto_hprof/android_x86_x86_64_shared_apex31/libperfetto_hprof.so
+build libstagefright_http_support,android_x86_64_shared_cfi: phony out/soong/.intermediates/frameworks/av/media/libstagefright/http/libstagefright_http_support/android_x86_64_shared_cfi/libstagefright_http_support.so out/soong/.intermediates/frameworks/av/media/libstagefright/http/libstagefright_http_support/android_x86_64_shared_cfi/libstagefright_http_support.so.toc
 
-build odrefresh,android_x86_64_apex31: phony out/soong/.intermediates/art/odrefresh/odrefresh/android_x86_64_apex31/odrefresh
+build libstagefright_http_support,android_x86_x86_64_shared_cfi: phony out/soong/.intermediates/frameworks/av/media/libstagefright/http/libstagefright_http_support/android_x86_x86_64_shared_cfi/libstagefright_http_support.so out/soong/.intermediates/frameworks/av/media/libstagefright/http/libstagefright_http_support/android_x86_x86_64_shared_cfi/libstagefright_http_support.so.toc
 
-build art-targets: phony dexoptanalyzer,android_x86_64_apex31 libadbconnection,android_x86_64_shared_apex31 libadbconnection,android_x86_x86_64_shared_apex31 libart-compiler,android_x86_64_shared_apex31 libart-compiler,android_x86_x86_64_shared_apex31 libopenjdkjvm,android_x86_64_shared_apex31 libopenjdkjvm,android_x86_x86_64_shared_apex31 libperfetto_hprof,android_x86_64_shared_apex31 libperfetto_hprof,android_x86_x86_64_shared_apex31 odrefresh,android_x86_64_apex31
+build frameworks_av-targets: phony libcamera2ndk,android_x86_64_shared libcamera2ndk,android_x86_x86_64_shared libstagefright_http_support,android_x86_64_shared_cfi libstagefright_http_support,android_x86_x86_64_shared_cfi
 
-build socket_vsock_proxy,android_vendor.31_x86_64: phony out/soong/.intermediates/device/google/cuttlefish/common/frontend/socket_vsock_proxy/socket_vsock_proxy/android_vendor.31_x86_64/socket_vsock_proxy
+build libframesequence,android_x86_64_shared: phony out/soong/.intermediates/frameworks/ex/framesequence/jni/libframesequence/android_x86_64_shared/libframesequence.so
 
-build vsoc_input_service,android_vendor.31_x86_64: phony out/soong/.intermediates/device/google/cuttlefish/guest/commands/vsoc_input_service/vsoc_input_service/android_vendor.31_x86_64/vsoc_input_service
+build libframesequence,android_x86_x86_64_shared: phony out/soong/.intermediates/frameworks/ex/framesequence/jni/libframesequence/android_x86_x86_64_shared/libframesequence.so
 
-build device_google_cuttlefish-targets: phony socket_vsock_proxy,android_vendor.31_x86_64 vsoc_input_service,android_vendor.31_x86_64
+build frameworks_ex-targets: phony libframesequence,android_x86_64_shared libframesequence,android_x86_x86_64_shared
 
-build liblibcras,android_x86_64_rlib_rlib-std_apex10000: phony out/soong/.intermediates/external/adhd/cras/client/libcras/liblibcras/android_x86_64_rlib_rlib-std_apex10000/liblibcras.rlib
+build librtp_jni,android_x86_64_shared: phony out/soong/.intermediates/frameworks/opt/net/voip/src/jni/rtp/librtp_jni/android_x86_64_shared/librtp_jni.so
 
-build external_adhd-targets: phony liblibcras,android_x86_64_rlib_rlib-std_apex10000
+build librtp_jni,android_x86_x86_64_shared: phony out/soong/.intermediates/frameworks/opt/net/voip/src/jni/rtp/librtp_jni/android_x86_x86_64_shared/librtp_jni.so
 
-build conscrypt.module.intra.core.api.stubs.source,android_common: phony out/soong/.intermediates/external/conscrypt/conscrypt.module.intra.core.api.stubs.source/android_common/metalava/conscrypt.module.intra.core.api.stubs.source-stubs.srcjar
+build frameworks_opt_net_voip-targets: phony librtp_jni,android_x86_64_shared librtp_jni,android_x86_x86_64_shared
 
-build external_conscrypt-targets: phony conscrypt.module.intra.core.api.stubs.source,android_common
+build libRSCacheDir,android_x86_64_shared: phony out/soong/.intermediates/frameworks/rs/libRSCacheDir/android_x86_64_shared/libRSCacheDir.so
 
-build libcros_async,android_x86_64_rlib_rlib-std_apex10000: phony out/soong/.intermediates/external/crosvm/cros_async/libcros_async/android_x86_64_rlib_rlib-std_apex10000/libcros_async.rlib
+build libRSCacheDir,android_x86_x86_64_shared: phony out/soong/.intermediates/frameworks/rs/libRSCacheDir/android_x86_x86_64_shared/libRSCacheDir.so
 
-build libdata_model,android_x86_64_dylib: phony out/soong/.intermediates/external/crosvm/data_model/libdata_model/android_x86_64_dylib/libdata_model.dylib.so out/soong/.intermediates/external/crosvm/data_model/libdata_model/android_x86_64_dylib/stripped/libdata_model.dylib.so
+build frameworks_rs-targets: phony libRSCacheDir,android_x86_64_shared libRSCacheDir,android_x86_x86_64_shared
 
-build libdata_model,android_x86_64_dylib_apex10000: phony out/soong/.intermediates/external/crosvm/data_model/libdata_model/android_x86_64_dylib_apex10000/libdata_model.dylib.so
+build libjni_filtershow_filters,android_x86_64_shared: phony out/soong/.intermediates/packages/apps/Gallery2/jni/libjni_filtershow_filters/android_x86_64_shared/libjni_filtershow_filters.so
 
-build libtempfile,android_x86_64_dylib: phony out/soong/.intermediates/external/crosvm/tempfile/libtempfile/android_x86_64_dylib/libtempfile.dylib.so out/soong/.intermediates/external/crosvm/tempfile/libtempfile/android_x86_64_dylib/stripped/libtempfile.dylib.so
+build packages_apps_Gallery2-targets: phony libjni_filtershow_filters,android_x86_64_shared
 
-build libtempfile,android_x86_64_dylib_apex10000: phony out/soong/.intermediates/external/crosvm/tempfile/libtempfile/android_x86_64_dylib_apex10000/libtempfile.dylib.so
+build statsprotos,android_common: phony out/soong/.intermediates/packages/modules/NetworkStack/statsprotos/android_common/combined/statsprotos.jar out/soong/.intermediates/packages/modules/NetworkStack/statsprotos/android_common/turbine-combined/statsprotos.jar
 
-build external_crosvm-targets: phony libcros_async,android_x86_64_rlib_rlib-std_apex10000 libdata_model,android_x86_64_dylib libdata_model,android_x86_64_dylib_apex10000 libtempfile,android_x86_64_dylib libtempfile,android_x86_64_dylib_apex10000
+build packages_modules_NetworkStack-targets: phony statsprotos,android_common
 
-build e2fsck,android_x86_64: phony out/soong/.intermediates/external/e2fsprogs/e2fsck/e2fsck/android_x86_64/e2fsck
+build com.android.i18n,android_common_com.android.i18n_image: phony out/soong/.intermediates/packages/modules/RuntimeI18n/apex/com.android.i18n/android_common_com.android.i18n_image/apex_manifest.pb out/soong/.intermediates/packages/modules/RuntimeI18n/apex/com.android.i18n/android_common_com.android.i18n_image/apex_pubkey out/soong/.intermediates/packages/modules/RuntimeI18n/apex/com.android.i18n/android_common_com.android.i18n_image/com.android.i18n.apex
 
-build libext2_misc,android_recovery_x86_64_shared: phony out/soong/.intermediates/external/e2fsprogs/misc/libext2_misc/android_recovery_x86_64_shared/libext2_misc.so out/soong/.intermediates/external/e2fsprogs/misc/libext2_misc/android_recovery_x86_64_shared/libext2_misc.so.toc
+build i18n-bootclasspath-fragment,android_common_apex10000: phony out/soong/.intermediates/packages/modules/RuntimeI18n/apex/i18n-bootclasspath-fragment/android_common_apex10000/bootclasspath.pb out/soong/.intermediates/packages/modules/RuntimeI18n/apex/i18n-bootclasspath-fragment/android_common_apex10000/hiddenapi-modular/encoded/core-icu4j.jar out/soong/.intermediates/packages/modules/RuntimeI18n/apex/i18n-bootclasspath-fragment/android_common_apex10000/modular-hiddenapi/annotation-flags.csv
 
-build libext2_misc,android_x86_64_shared: phony out/soong/.intermediates/external/e2fsprogs/misc/libext2_misc/android_x86_64_shared/libext2_misc.so out/soong/.intermediates/external/e2fsprogs/misc/libext2_misc/android_x86_64_shared/libext2_misc.so.toc
+build packages_modules_RuntimeI18n-targets: phony com.android.i18n,android_common_com.android.i18n_image i18n-bootclasspath-fragment,android_common_apex10000
 
-build libext2_quota,android_vendor_ramdisk_x86_64_shared: phony out/soong/.intermediates/external/e2fsprogs/lib/support/libext2_quota/android_vendor_ramdisk_x86_64_shared/libext2_quota.so out/soong/.intermediates/external/e2fsprogs/lib/support/libext2_quota/android_vendor_ramdisk_x86_64_shared/libext2_quota.so.toc
+build android.hidl.base-V1.0-java,android_common_apex30: phony out/soong/.intermediates/system/libhidl/transport/base/1.0/android.hidl.base-V1.0-java/android_common_apex30/javac/android.hidl.base-V1.0-java.jar out/soong/.intermediates/system/libhidl/transport/base/1.0/android.hidl.base-V1.0-java/android_common_apex30/turbine-combined/android.hidl.base-V1.0-java.jar
 
-build tune2fs,android_x86_64: phony out/soong/.intermediates/external/e2fsprogs/misc/tune2fs/android_x86_64/tune2fs
+build android.hidl.manager-V1.0-java,android_common_apex30: phony out/soong/.intermediates/system/libhidl/transport/manager/1.0/android.hidl.manager-V1.0-java/android_common_apex30/combined/android.hidl.manager-V1.0-java.jar out/soong/.intermediates/system/libhidl/transport/manager/1.0/android.hidl.manager-V1.0-java/android_common_apex30/turbine-combined/android.hidl.manager-V1.0-java.jar
 
-build external_e2fsprogs-targets: phony e2fsck,android_x86_64 libext2_misc,android_recovery_x86_64_shared libext2_misc,android_x86_64_shared libext2_quota,android_vendor_ramdisk_x86_64_shared tune2fs,android_x86_64
+build android.hidl.manager-V1.1-java,android_common_apex30: phony out/soong/.intermediates/system/libhidl/transport/manager/1.1/android.hidl.manager-V1.1-java/android_common_apex30/combined/android.hidl.manager-V1.1-java.jar out/soong/.intermediates/system/libhidl/transport/manager/1.1/android.hidl.manager-V1.1-java/android_common_apex30/turbine-combined/android.hidl.manager-V1.1-java.jar
 
-build libharfbuzz_ng,android_x86_64_shared: phony out/soong/.intermediates/external/harfbuzz_ng/libharfbuzz_ng/android_x86_64_shared/libharfbuzz_ng.so out/soong/.intermediates/external/harfbuzz_ng/libharfbuzz_ng/android_x86_64_shared/libharfbuzz_ng.so.toc
+build android.hidl.manager-V1.2-java,android_common_apex30: phony out/soong/.intermediates/system/libhidl/transport/manager/1.2/android.hidl.manager-V1.2-java/android_common_apex30/combined/android.hidl.manager-V1.2-java.jar out/soong/.intermediates/system/libhidl/transport/manager/1.2/android.hidl.manager-V1.2-java/android_common_apex30/turbine-combined/android.hidl.manager-V1.2-java.jar
 
-build libharfbuzz_ng,android_x86_x86_64_shared: phony out/soong/.intermediates/external/harfbuzz_ng/libharfbuzz_ng/android_x86_x86_64_shared/libharfbuzz_ng.so out/soong/.intermediates/external/harfbuzz_ng/libharfbuzz_ng/android_x86_x86_64_shared/libharfbuzz_ng.so.toc
-
-build external_harfbuzz_ng-targets: phony libharfbuzz_ng,android_x86_64_shared libharfbuzz_ng,android_x86_x86_64_shared
-
-build i18n.module.intra.core.api.stubs.source,android_common: phony out/soong/.intermediates/external/icu/android_icu4j/i18n.module.intra.core.api.stubs.source/android_common/metalava/i18n.module.intra.core.api.stubs.source-stubs.srcjar
-
-build external_icu-targets: phony i18n.module.intra.core.api.stubs.source,android_common
-
-build libbrillo-stream,android_x86_64_shared: phony out/soong/.intermediates/external/libbrillo/libbrillo-stream/android_x86_64_shared/libbrillo-stream.so out/soong/.intermediates/external/libbrillo/libbrillo-stream/android_x86_64_shared/libbrillo-stream.so.toc
-
-build external_libbrillo-targets: phony libbrillo-stream,android_x86_64_shared
-
-build liblibchromeos,android_x86_64_rlib_rlib-std_apex10000: phony out/soong/.intermediates/external/libchromeos-rs/liblibchromeos/android_x86_64_rlib_rlib-std_apex10000/liblibchromeos.rlib
-
-build external_libchromeos-rs-targets: phony liblibchromeos,android_x86_64_rlib_rlib-std_apex10000
-
-build libclap,android_x86_64_dylib: phony out/soong/.intermediates/external/rust/crates/clap/libclap/android_x86_64_dylib/libclap.dylib.so out/soong/.intermediates/external/rust/crates/clap/libclap/android_x86_64_dylib/stripped/libclap.dylib.so
-
-build libclap,android_x86_64_dylib_apex10000: phony out/soong/.intermediates/external/rust/crates/clap/libclap/android_x86_64_dylib_apex10000/libclap.dylib.so
-
-build external_rust_crates_clap-targets: phony libclap,android_x86_64_dylib libclap,android_x86_64_dylib_apex10000
-
-build libcrc32fast,android_x86_64_dylib: phony out/soong/.intermediates/external/rust/crates/crc32fast/libcrc32fast/android_x86_64_dylib/libcrc32fast.dylib.so out/soong/.intermediates/external/rust/crates/crc32fast/libcrc32fast/android_x86_64_dylib/stripped/libcrc32fast.dylib.so
-
-build external_rust_crates_crc32fast-targets: phony libcrc32fast,android_x86_64_dylib
-
-build libfutures_channel,android_x86_64_dylib: phony out/soong/.intermediates/external/rust/crates/futures-channel/libfutures_channel/android_x86_64_dylib/libfutures_channel.dylib.so out/soong/.intermediates/external/rust/crates/futures-channel/libfutures_channel/android_x86_64_dylib/stripped/libfutures_channel.dylib.so
-
-build libfutures_channel,android_x86_64_dylib_apex10000: phony out/soong/.intermediates/external/rust/crates/futures-channel/libfutures_channel/android_x86_64_dylib_apex10000/libfutures_channel.dylib.so
-
-build external_rust_crates_futures-channel-targets: phony libfutures_channel,android_x86_64_dylib libfutures_channel,android_x86_64_dylib_apex10000
-
-build libgetrandom,android_x86_64_dylib: phony out/soong/.intermediates/external/rust/crates/getrandom/libgetrandom/android_x86_64_dylib/libgetrandom.dylib.so out/soong/.intermediates/external/rust/crates/getrandom/libgetrandom/android_x86_64_dylib/stripped/libgetrandom.dylib.so
-
-build external_rust_crates_getrandom-targets: phony libgetrandom,android_x86_64_dylib
-
-build libgrpcio,android_x86_64_rlib_rlib-std: phony out/soong/.intermediates/external/rust/crates/grpcio/libgrpcio/android_x86_64_rlib_rlib-std/libgrpcio.rlib
-
-build libgrpcio,android_x86_x86_64_rlib_rlib-std: phony out/soong/.intermediates/external/rust/crates/grpcio/libgrpcio/android_x86_x86_64_rlib_rlib-std/libgrpcio.rlib
-
-build external_rust_crates_grpcio-targets: phony libgrpcio,android_x86_64_rlib_rlib-std libgrpcio,android_x86_x86_64_rlib_rlib-std
-
-build libintrusive_collections,android_x86_64_dylib: phony out/soong/.intermediates/external/rust/crates/intrusive-collections/libintrusive_collections/android_x86_64_dylib/libintrusive_collections.dylib.so out/soong/.intermediates/external/rust/crates/intrusive-collections/libintrusive_collections/android_x86_64_dylib/stripped/libintrusive_collections.dylib.so
-
-build libintrusive_collections,android_x86_64_dylib_apex10000: phony out/soong/.intermediates/external/rust/crates/intrusive-collections/libintrusive_collections/android_x86_64_dylib_apex10000/libintrusive_collections.dylib.so
-
-build external_rust_crates_intrusive-collections-targets: phony libintrusive_collections,android_x86_64_dylib libintrusive_collections,android_x86_64_dylib_apex10000
-
-build liblibz_sys,android_x86_64_dylib: phony out/soong/.intermediates/external/rust/crates/libz-sys/liblibz_sys/android_x86_64_dylib/liblibz_sys.dylib.so out/soong/.intermediates/external/rust/crates/libz-sys/liblibz_sys/android_x86_64_dylib/stripped/liblibz_sys.dylib.so
-
-build external_rust_crates_libz-sys-targets: phony liblibz_sys,android_x86_64_dylib
-
-build liblog_rust,android_x86_64_dylib: phony out/soong/.intermediates/external/rust/crates/log/liblog_rust/android_x86_64_dylib/liblog.dylib.so out/soong/.intermediates/external/rust/crates/log/liblog_rust/android_x86_64_dylib/stripped/liblog.dylib.so
-
-build liblog_rust,android_x86_64_dylib_apex10000: phony out/soong/.intermediates/external/rust/crates/log/liblog_rust/android_x86_64_dylib_apex10000/liblog.dylib.so
-
-build external_rust_crates_log-targets: phony liblog_rust,android_x86_64_dylib liblog_rust,android_x86_64_dylib_apex10000
-
-build libmacaddr,android_x86_64_dylib: phony out/soong/.intermediates/external/rust/crates/macaddr/libmacaddr/android_x86_64_dylib/libmacaddr.dylib.so out/soong/.intermediates/external/rust/crates/macaddr/libmacaddr/android_x86_64_dylib/stripped/libmacaddr.dylib.so
-
-build external_rust_crates_macaddr-targets: phony libmacaddr,android_x86_64_dylib
-
-build libnix,android_x86_64_dylib: phony out/soong/.intermediates/external/rust/crates/nix/libnix/android_x86_64_dylib/libnix.dylib.so out/soong/.intermediates/external/rust/crates/nix/libnix/android_x86_64_dylib/stripped/libnix.dylib.so
-
-build libnix,android_x86_64_dylib_apex10000: phony out/soong/.intermediates/external/rust/crates/nix/libnix/android_x86_64_dylib_apex10000/libnix.dylib.so
-
-build external_rust_crates_nix-targets: phony libnix,android_x86_64_dylib libnix,android_x86_64_dylib_apex10000
-
-build libnum_integer,android_x86_64_dylib: phony out/soong/.intermediates/external/rust/crates/num-integer/libnum_integer/android_x86_64_dylib/libnum_integer.dylib.so out/soong/.intermediates/external/rust/crates/num-integer/libnum_integer/android_x86_64_dylib/stripped/libnum_integer.dylib.so
-
-build external_rust_crates_num-integer-targets: phony libnum_integer,android_x86_64_dylib
-
-build libnum_cpus,android_x86_64_dylib: phony out/soong/.intermediates/external/rust/crates/num_cpus/libnum_cpus/android_x86_64_dylib/libnum_cpus.dylib.so out/soong/.intermediates/external/rust/crates/num_cpus/libnum_cpus/android_x86_64_dylib/stripped/libnum_cpus.dylib.so
-
-build libnum_cpus,android_x86_64_dylib_apex10000: phony out/soong/.intermediates/external/rust/crates/num_cpus/libnum_cpus/android_x86_64_dylib_apex10000/libnum_cpus.dylib.so
-
-build external_rust_crates_num_cpus-targets: phony libnum_cpus,android_x86_64_dylib libnum_cpus,android_x86_64_dylib_apex10000
-
-build librusqlite,android_x86_64_rlib_rlib-std: phony out/soong/.intermediates/external/rust/crates/rusqlite/librusqlite/android_x86_64_rlib_rlib-std/librusqlite.rlib
-
-build external_rust_crates_rusqlite-targets: phony librusqlite,android_x86_64_rlib_rlib-std
-
-build libserde_json,android_x86_64_dylib: phony out/soong/.intermediates/external/rust/crates/serde_json/libserde_json/android_x86_64_dylib/libserde_json.dylib.so out/soong/.intermediates/external/rust/crates/serde_json/libserde_json/android_x86_64_dylib/stripped/libserde_json.dylib.so
-
-build libserde_json,android_x86_64_dylib_apex10000: phony out/soong/.intermediates/external/rust/crates/serde_json/libserde_json/android_x86_64_dylib_apex10000/libserde_json.dylib.so
-
-build external_rust_crates_serde_json-targets: phony libserde_json,android_x86_64_dylib libserde_json,android_x86_64_dylib_apex10000
-
-build libuuid,android_x86_64_dylib: phony out/soong/.intermediates/external/rust/crates/uuid/libuuid/android_x86_64_dylib/libuuid.dylib.so out/soong/.intermediates/external/rust/crates/uuid/libuuid/android_x86_64_dylib/stripped/libuuid.dylib.so
-
-build external_rust_crates_uuid-targets: phony libuuid,android_x86_64_dylib
-
-build libcxx,android_x86_64_rlib_dylib-std: phony out/soong/.intermediates/external/rust/cxx/libcxx/android_x86_64_rlib_dylib-std/libcxx.rlib
-
-build external_rust_cxx-targets: phony libcxx,android_x86_64_rlib_dylib-std
-
-build sqlite3,android_x86_64: phony out/soong/.intermediates/external/sqlite/dist/sqlite3/android_x86_64/sqlite3
-
-build external_sqlite-targets: phony sqlite3,android_x86_64
-
-build libaudio-resampler,android_x86_64_shared: phony out/soong/.intermediates/frameworks/av/media/libaudioprocessing/audio-resampler/libaudio-resampler/android_x86_64_shared/libaudio-resampler.so
-
-build libaudio-resampler,android_x86_x86_64_shared: phony out/soong/.intermediates/frameworks/av/media/libaudioprocessing/audio-resampler/libaudio-resampler/android_x86_x86_64_shared/libaudio-resampler.so
-
-build libaudiofoundation,android_vendor.31_x86_64_static: phony out/soong/.intermediates/frameworks/av/media/libaudiofoundation/libaudiofoundation/android_vendor.31_x86_64_static/libaudiofoundation.a
-
-build libaudiofoundation,android_vendor.31_x86_x86_64_static: phony out/soong/.intermediates/frameworks/av/media/libaudiofoundation/libaudiofoundation/android_vendor.31_x86_x86_64_static/libaudiofoundation.a
-
-build libclearkeycasplugin,android_vendor.31_x86_64_shared: phony out/soong/.intermediates/frameworks/av/drm/mediacas/plugins/clearkey/libclearkeycasplugin/android_vendor.31_x86_64_shared/libclearkeycasplugin.so
-
-build libclearkeycasplugin,android_vendor.31_x86_x86_64_shared: phony out/soong/.intermediates/frameworks/av/drm/mediacas/plugins/clearkey/libclearkeycasplugin/android_vendor.31_x86_x86_64_shared/libclearkeycasplugin.so
-
-build libdrmclearkeyplugin,android_vendor.31_x86_64_shared: phony out/soong/.intermediates/frameworks/av/drm/mediadrm/plugins/clearkey/default/libdrmclearkeyplugin/android_vendor.31_x86_64_shared/libdrmclearkeyplugin.so
-
-build libdrmclearkeyplugin,android_vendor.31_x86_x86_64_shared: phony out/soong/.intermediates/frameworks/av/drm/mediadrm/plugins/clearkey/default/libdrmclearkeyplugin/android_vendor.31_x86_x86_64_shared/libdrmclearkeyplugin.so
-
-build libeffectsconfig,android_vendor.31_x86_64_shared: phony out/soong/.intermediates/frameworks/av/media/libeffects/config/libeffectsconfig/android_vendor.31_x86_64_shared/libeffectsconfig.so out/soong/.intermediates/frameworks/av/media/libeffects/config/libeffectsconfig/android_vendor.31_x86_64_shared/libeffectsconfig.so.toc
-
-build libeffectsconfig,android_vendor.31_x86_x86_64_shared: phony out/soong/.intermediates/frameworks/av/media/libeffects/config/libeffectsconfig/android_vendor.31_x86_x86_64_shared/libeffectsconfig.so out/soong/.intermediates/frameworks/av/media/libeffects/config/libeffectsconfig/android_vendor.31_x86_x86_64_shared/libeffectsconfig.so.toc
-
-build libimg_utils,android_x86_64_shared: phony out/soong/.intermediates/frameworks/av/media/img_utils/libimg_utils/android_x86_64_shared/libimg_utils.so out/soong/.intermediates/frameworks/av/media/img_utils/libimg_utils/android_x86_64_shared/libimg_utils.so.toc
-
-build libimg_utils,android_x86_x86_64_shared: phony out/soong/.intermediates/frameworks/av/media/img_utils/libimg_utils/android_x86_x86_64_shared/libimg_utils.so out/soong/.intermediates/frameworks/av/media/img_utils/libimg_utils/android_x86_x86_64_shared/libimg_utils.so.toc
-
-build libmedia_helper,android_x86_64_shared: phony out/soong/.intermediates/frameworks/av/media/libmediahelper/libmedia_helper/android_x86_64_shared/libmedia_helper.so out/soong/.intermediates/frameworks/av/media/libmediahelper/libmedia_helper/android_x86_64_shared/libmedia_helper.so.toc
-
-build libmedia_helper,android_x86_x86_64_shared: phony out/soong/.intermediates/frameworks/av/media/libmediahelper/libmedia_helper/android_x86_x86_64_shared/libmedia_helper.so out/soong/.intermediates/frameworks/av/media/libmediahelper/libmedia_helper/android_x86_x86_64_shared/libmedia_helper.so.toc
-
-build libnbaio_mono,android_vendor.31_x86_64_shared: phony out/soong/.intermediates/frameworks/av/media/libnbaio/libnbaio_mono/android_vendor.31_x86_64_shared/libnbaio_mono.so out/soong/.intermediates/frameworks/av/media/libnbaio/libnbaio_mono/android_vendor.31_x86_64_shared/libnbaio_mono.so.toc
-
-build libnbaio_mono,android_vendor.31_x86_x86_64_shared: phony out/soong/.intermediates/frameworks/av/media/libnbaio/libnbaio_mono/android_vendor.31_x86_x86_64_shared/libnbaio_mono.so out/soong/.intermediates/frameworks/av/media/libnbaio/libnbaio_mono/android_vendor.31_x86_x86_64_shared/libnbaio_mono.so.toc
-
-build frameworks_av-targets: phony libaudio-resampler,android_x86_64_shared libaudio-resampler,android_x86_x86_64_shared libaudiofoundation,android_vendor.31_x86_64_static libaudiofoundation,android_vendor.31_x86_x86_64_static libclearkeycasplugin,android_vendor.31_x86_64_shared libclearkeycasplugin,android_vendor.31_x86_x86_64_shared libdrmclearkeyplugin,android_vendor.31_x86_64_shared libdrmclearkeyplugin,android_vendor.31_x86_x86_64_shared libeffectsconfig,android_vendor.31_x86_64_shared libeffectsconfig,android_vendor.31_x86_x86_64_shared libimg_utils,android_x86_64_shared libimg_utils,android_x86_x86_64_shared libmedia_helper,android_x86_64_shared libmedia_helper,android_x86_x86_64_shared libnbaio_mono,android_vendor.31_x86_64_shared libnbaio_mono,android_vendor.31_x86_x86_64_shared
-
-build libprotoutil,android_x86_64_shared: phony out/soong/.intermediates/frameworks/base/libs/protoutil/libprotoutil/android_x86_64_shared/libprotoutil.so out/soong/.intermediates/frameworks/base/libs/protoutil/libprotoutil/android_x86_64_shared/libprotoutil.so.toc
-
-build libprotoutil,android_x86_x86_64_shared: phony out/soong/.intermediates/frameworks/base/libs/protoutil/libprotoutil/android_x86_x86_64_shared/libprotoutil.so out/soong/.intermediates/frameworks/base/libs/protoutil/libprotoutil/android_x86_x86_64_shared/libprotoutil.so.toc
-
-build frameworks_base-targets: phony libprotoutil,android_x86_64_shared libprotoutil,android_x86_x86_64_shared
-
-build libandroid_runtime_lazy,android_x86_64_shared: phony out/soong/.intermediates/frameworks/native/libs/android_runtime_lazy/libandroid_runtime_lazy/android_x86_64_shared/libandroid_runtime_lazy.so out/soong/.intermediates/frameworks/native/libs/android_runtime_lazy/libandroid_runtime_lazy/android_x86_64_shared/libandroid_runtime_lazy.so.toc
-
-build libandroid_runtime_lazy,android_x86_x86_64_shared: phony out/soong/.intermediates/frameworks/native/libs/android_runtime_lazy/libandroid_runtime_lazy/android_x86_x86_64_shared/libandroid_runtime_lazy.so out/soong/.intermediates/frameworks/native/libs/android_runtime_lazy/libandroid_runtime_lazy/android_x86_x86_64_shared/libandroid_runtime_lazy.so.toc
-
-build libbinder,android_x86_64_shared: phony out/soong/.intermediates/frameworks/native/libs/binder/libbinder/android_x86_64_shared/gen/aidl/android/content/pm/BnPackageChangeEvent.h out/soong/.intermediates/frameworks/native/libs/binder/libbinder/android_x86_64_shared/gen/aidl/android/content/pm/BnPackageChangeObserver.h out/soong/.intermediates/frameworks/native/libs/binder/libbinder/android_x86_64_shared/gen/aidl/android/content/pm/BnPackageManagerNative.h out/soong/.intermediates/frameworks/native/libs/binder/libbinder/android_x86_64_shared/gen/aidl/android/content/pm/BpPackageChangeEvent.h out/soong/.intermediates/frameworks/native/libs/binder/libbinder/android_x86_64_shared/gen/aidl/android/content/pm/BpPackageChangeObserver.h out/soong/.intermediates/frameworks/native/libs/binder/libbinder/android_x86_64_shared/gen/aidl/android/content/pm/BpPackageManagerNative.h out/soong/.intermediates/frameworks/native/libs/binder/libbinder/android_x86_64_shared/gen/aidl/android/content/pm/IPackageChangeObserver.h out/soong/.intermediates/frameworks/native/libs/binder/libbinder/android_x86_64_shared/gen/aidl/android/content/pm/IPackageManagerNative.h out/soong/.intermediates/frameworks/native/libs/binder/libbinder/android_x86_64_shared/gen/aidl/android/content/pm/PackageChangeEvent.h out/soong/.intermediates/frameworks/native/libs/binder/libbinder/android_x86_64_shared/gen/aidl/android/os/BnClientCallback.h out/soong/.intermediates/frameworks/native/libs/binder/libbinder/android_x86_64_shared/gen/aidl/android/os/BnServiceCallback.h out/soong/.intermediates/frameworks/native/libs/binder/libbinder/android_x86_64_shared/gen/aidl/android/os/BnServiceDebugInfo.h out/soong/.intermediates/frameworks/native/libs/binder/libbinder/android_x86_64_shared/gen/aidl/android/os/BnServiceManager.h out/soong/.intermediates/frameworks/native/libs/binder/libbinder/android_x86_64_shared/gen/aidl/android/os/BpClientCallback.h out/soong/.intermediates/frameworks/native/libs/binder/libbinder/android_x86_64_shared/gen/aidl/android/os/BpServiceCallback.h out/soong/.intermediates/frameworks/native/libs/binder/libbinder/android_x86_64_shared/gen/aidl/android/os/BpServiceDebugInfo.h out/soong/.intermediates/frameworks/native/libs/binder/libbinder/android_x86_64_shared/gen/aidl/android/os/BpServiceManager.h out/soong/.intermediates/frameworks/native/libs/binder/libbinder/android_x86_64_shared/gen/aidl/android/os/IClientCallback.h out/soong/.intermediates/frameworks/native/libs/binder/libbinder/android_x86_64_shared/gen/aidl/android/os/IServiceCallback.h out/soong/.intermediates/frameworks/native/libs/binder/libbinder/android_x86_64_shared/gen/aidl/android/os/IServiceManager.h out/soong/.intermediates/frameworks/native/libs/binder/libbinder/android_x86_64_shared/gen/aidl/android/os/ServiceDebugInfo.h out/soong/.intermediates/frameworks/native/libs/binder/libbinder/android_x86_64_shared/libbinder.so out/soong/.intermediates/frameworks/native/libs/binder/libbinder/android_x86_64_shared/libbinder.so.toc
-
-build libbinder,android_x86_x86_64_shared: phony out/soong/.intermediates/frameworks/native/libs/binder/libbinder/android_x86_x86_64_shared/gen/aidl/android/content/pm/BnPackageChangeEvent.h out/soong/.intermediates/frameworks/native/libs/binder/libbinder/android_x86_x86_64_shared/gen/aidl/android/content/pm/BnPackageChangeObserver.h out/soong/.intermediates/frameworks/native/libs/binder/libbinder/android_x86_x86_64_shared/gen/aidl/android/content/pm/BnPackageManagerNative.h out/soong/.intermediates/frameworks/native/libs/binder/libbinder/android_x86_x86_64_shared/gen/aidl/android/content/pm/BpPackageChangeEvent.h out/soong/.intermediates/frameworks/native/libs/binder/libbinder/android_x86_x86_64_shared/gen/aidl/android/content/pm/BpPackageChangeObserver.h out/soong/.intermediates/frameworks/native/libs/binder/libbinder/android_x86_x86_64_shared/gen/aidl/android/content/pm/BpPackageManagerNative.h out/soong/.intermediates/frameworks/native/libs/binder/libbinder/android_x86_x86_64_shared/gen/aidl/android/content/pm/IPackageChangeObserver.h out/soong/.intermediates/frameworks/native/libs/binder/libbinder/android_x86_x86_64_shared/gen/aidl/android/content/pm/IPackageManagerNative.h out/soong/.intermediates/frameworks/native/libs/binder/libbinder/android_x86_x86_64_shared/gen/aidl/android/content/pm/PackageChangeEvent.h out/soong/.intermediates/frameworks/native/libs/binder/libbinder/android_x86_x86_64_shared/gen/aidl/android/os/BnClientCallback.h out/soong/.intermediates/frameworks/native/libs/binder/libbinder/android_x86_x86_64_shared/gen/aidl/android/os/BnServiceCallback.h out/soong/.intermediates/frameworks/native/libs/binder/libbinder/android_x86_x86_64_shared/gen/aidl/android/os/BnServiceDebugInfo.h out/soong/.intermediates/frameworks/native/libs/binder/libbinder/android_x86_x86_64_shared/gen/aidl/android/os/BnServiceManager.h out/soong/.intermediates/frameworks/native/libs/binder/libbinder/android_x86_x86_64_shared/gen/aidl/android/os/BpClientCallback.h out/soong/.intermediates/frameworks/native/libs/binder/libbinder/android_x86_x86_64_shared/gen/aidl/android/os/BpServiceCallback.h out/soong/.intermediates/frameworks/native/libs/binder/libbinder/android_x86_x86_64_shared/gen/aidl/android/os/BpServiceDebugInfo.h out/soong/.intermediates/frameworks/native/libs/binder/libbinder/android_x86_x86_64_shared/gen/aidl/android/os/BpServiceManager.h out/soong/.intermediates/frameworks/native/libs/binder/libbinder/android_x86_x86_64_shared/gen/aidl/android/os/IClientCallback.h out/soong/.intermediates/frameworks/native/libs/binder/libbinder/android_x86_x86_64_shared/gen/aidl/android/os/IServiceCallback.h out/soong/.intermediates/frameworks/native/libs/binder/libbinder/android_x86_x86_64_shared/gen/aidl/android/os/IServiceManager.h out/soong/.intermediates/frameworks/native/libs/binder/libbinder/android_x86_x86_64_shared/gen/aidl/android/os/ServiceDebugInfo.h out/soong/.intermediates/frameworks/native/libs/binder/libbinder/android_x86_x86_64_shared/libbinder.so out/soong/.intermediates/frameworks/native/libs/binder/libbinder/android_x86_x86_64_shared/libbinder.so.toc
-
-build libbinderdebug,android_vendor.31_x86_64_static: phony out/soong/.intermediates/frameworks/native/libs/binderdebug/libbinderdebug/android_vendor.31_x86_64_static/obj/frameworks/native/libs/binderdebug/BinderDebug.o
-
-build libgui_aidl_static,android_vendor.31_x86_64_static: phony out/soong/.intermediates/frameworks/native/libs/gui/libgui_aidl_static/android_vendor.31_x86_64_static/gen/aidl/android/gui/BnDisplayBrightness.h out/soong/.intermediates/frameworks/native/libs/gui/libgui_aidl_static/android_vendor.31_x86_64_static/gen/aidl/android/gui/BnFpsListener.h out/soong/.intermediates/frameworks/native/libs/gui/libgui_aidl_static/android_vendor.31_x86_64_static/gen/aidl/android/gui/BnHdrLayerInfoListener.h out/soong/.intermediates/frameworks/native/libs/gui/libgui_aidl_static/android_vendor.31_x86_64_static/gen/aidl/android/gui/BnScreenCaptureListener.h out/soong/.intermediates/frameworks/native/libs/gui/libgui_aidl_static/android_vendor.31_x86_64_static/gen/aidl/android/gui/BnScreenCaptureResults.h out/soong/.intermediates/frameworks/native/libs/gui/libgui_aidl_static/android_vendor.31_x86_64_static/gen/aidl/android/gui/BnTransactionTraceListener.h out/soong/.intermediates/frameworks/native/libs/gui/libgui_aidl_static/android_vendor.31_x86_64_static/gen/aidl/android/gui/BnTunnelModeEnabledListener.h out/soong/.intermediates/frameworks/native/libs/gui/libgui_aidl_static/android_vendor.31_x86_64_static/gen/aidl/android/gui/BpDisplayBrightness.h out/soong/.intermediates/frameworks/native/libs/gui/libgui_aidl_static/android_vendor.31_x86_64_static/gen/aidl/android/gui/BpFpsListener.h out/soong/.intermediates/frameworks/native/libs/gui/libgui_aidl_static/android_vendor.31_x86_64_static/gen/aidl/android/gui/BpHdrLayerInfoListener.h out/soong/.intermediates/frameworks/native/libs/gui/libgui_aidl_static/android_vendor.31_x86_64_static/gen/aidl/android/gui/BpScreenCaptureListener.h out/soong/.intermediates/frameworks/native/libs/gui/libgui_aidl_static/android_vendor.31_x86_64_static/gen/aidl/android/gui/BpScreenCaptureResults.h out/soong/.intermediates/frameworks/native/libs/gui/libgui_aidl_static/android_vendor.31_x86_64_static/gen/aidl/android/gui/BpTransactionTraceListener.h out/soong/.intermediates/frameworks/native/libs/gui/libgui_aidl_static/android_vendor.31_x86_64_static/gen/aidl/android/gui/BpTunnelModeEnabledListener.h out/soong/.intermediates/frameworks/native/libs/gui/libgui_aidl_static/android_vendor.31_x86_64_static/gen/aidl/android/gui/DisplayBrightness.h out/soong/.intermediates/frameworks/native/libs/gui/libgui_aidl_static/android_vendor.31_x86_64_static/gen/aidl/android/gui/IFpsListener.h out/soong/.intermediates/frameworks/native/libs/gui/libgui_aidl_static/android_vendor.31_x86_64_static/gen/aidl/android/gui/IHdrLayerInfoListener.h out/soong/.intermediates/frameworks/native/libs/gui/libgui_aidl_static/android_vendor.31_x86_64_static/gen/aidl/android/gui/IScreenCaptureListener.h out/soong/.intermediates/frameworks/native/libs/gui/libgui_aidl_static/android_vendor.31_x86_64_static/gen/aidl/android/gui/ITransactionTraceListener.h out/soong/.intermediates/frameworks/native/libs/gui/libgui_aidl_static/android_vendor.31_x86_64_static/gen/aidl/android/gui/ITunnelModeEnabledListener.h out/soong/.intermediates/frameworks/native/libs/gui/libgui_aidl_static/android_vendor.31_x86_64_static/gen/aidl/android/gui/ScreenCaptureResults.h
-
-build libgui_aidl_static,android_vendor.31_x86_64_static_lto-thin: phony out/soong/.intermediates/frameworks/native/libs/gui/libgui_aidl_static/android_vendor.31_x86_64_static_lto-thin/gen/aidl/android/gui/BnDisplayBrightness.h out/soong/.intermediates/frameworks/native/libs/gui/libgui_aidl_static/android_vendor.31_x86_64_static_lto-thin/gen/aidl/android/gui/BnFpsListener.h out/soong/.intermediates/frameworks/native/libs/gui/libgui_aidl_static/android_vendor.31_x86_64_static_lto-thin/gen/aidl/android/gui/BnHdrLayerInfoListener.h out/soong/.intermediates/frameworks/native/libs/gui/libgui_aidl_static/android_vendor.31_x86_64_static_lto-thin/gen/aidl/android/gui/BnScreenCaptureListener.h out/soong/.intermediates/frameworks/native/libs/gui/libgui_aidl_static/android_vendor.31_x86_64_static_lto-thin/gen/aidl/android/gui/BnScreenCaptureResults.h out/soong/.intermediates/frameworks/native/libs/gui/libgui_aidl_static/android_vendor.31_x86_64_static_lto-thin/gen/aidl/android/gui/BnTransactionTraceListener.h out/soong/.intermediates/frameworks/native/libs/gui/libgui_aidl_static/android_vendor.31_x86_64_static_lto-thin/gen/aidl/android/gui/BnTunnelModeEnabledListener.h out/soong/.intermediates/frameworks/native/libs/gui/libgui_aidl_static/android_vendor.31_x86_64_static_lto-thin/gen/aidl/android/gui/BpDisplayBrightness.h out/soong/.intermediates/frameworks/native/libs/gui/libgui_aidl_static/android_vendor.31_x86_64_static_lto-thin/gen/aidl/android/gui/BpFpsListener.h out/soong/.intermediates/frameworks/native/libs/gui/libgui_aidl_static/android_vendor.31_x86_64_static_lto-thin/gen/aidl/android/gui/BpHdrLayerInfoListener.h out/soong/.intermediates/frameworks/native/libs/gui/libgui_aidl_static/android_vendor.31_x86_64_static_lto-thin/gen/aidl/android/gui/BpScreenCaptureListener.h out/soong/.intermediates/frameworks/native/libs/gui/libgui_aidl_static/android_vendor.31_x86_64_static_lto-thin/gen/aidl/android/gui/BpScreenCaptureResults.h out/soong/.intermediates/frameworks/native/libs/gui/libgui_aidl_static/android_vendor.31_x86_64_static_lto-thin/gen/aidl/android/gui/BpTransactionTraceListener.h out/soong/.intermediates/frameworks/native/libs/gui/libgui_aidl_static/android_vendor.31_x86_64_static_lto-thin/gen/aidl/android/gui/BpTunnelModeEnabledListener.h out/soong/.intermediates/frameworks/native/libs/gui/libgui_aidl_static/android_vendor.31_x86_64_static_lto-thin/gen/aidl/android/gui/DisplayBrightness.h out/soong/.intermediates/frameworks/native/libs/gui/libgui_aidl_static/android_vendor.31_x86_64_static_lto-thin/gen/aidl/android/gui/IFpsListener.h out/soong/.intermediates/frameworks/native/libs/gui/libgui_aidl_static/android_vendor.31_x86_64_static_lto-thin/gen/aidl/android/gui/IHdrLayerInfoListener.h out/soong/.intermediates/frameworks/native/libs/gui/libgui_aidl_static/android_vendor.31_x86_64_static_lto-thin/gen/aidl/android/gui/IScreenCaptureListener.h out/soong/.intermediates/frameworks/native/libs/gui/libgui_aidl_static/android_vendor.31_x86_64_static_lto-thin/gen/aidl/android/gui/ITransactionTraceListener.h out/soong/.intermediates/frameworks/native/libs/gui/libgui_aidl_static/android_vendor.31_x86_64_static_lto-thin/gen/aidl/android/gui/ITunnelModeEnabledListener.h out/soong/.intermediates/frameworks/native/libs/gui/libgui_aidl_static/android_vendor.31_x86_64_static_lto-thin/gen/aidl/android/gui/ScreenCaptureResults.h out/soong/.intermediates/frameworks/native/libs/gui/libgui_aidl_static/android_vendor.31_x86_64_static_lto-thin/libgui_aidl_static.a
-
-build libgui_aidl_static,android_vendor.31_x86_x86_64_static: phony out/soong/.intermediates/frameworks/native/libs/gui/libgui_aidl_static/android_vendor.31_x86_x86_64_static/gen/aidl/android/gui/BnDisplayBrightness.h out/soong/.intermediates/frameworks/native/libs/gui/libgui_aidl_static/android_vendor.31_x86_x86_64_static/gen/aidl/android/gui/BnFpsListener.h out/soong/.intermediates/frameworks/native/libs/gui/libgui_aidl_static/android_vendor.31_x86_x86_64_static/gen/aidl/android/gui/BnHdrLayerInfoListener.h out/soong/.intermediates/frameworks/native/libs/gui/libgui_aidl_static/android_vendor.31_x86_x86_64_static/gen/aidl/android/gui/BnScreenCaptureListener.h out/soong/.intermediates/frameworks/native/libs/gui/libgui_aidl_static/android_vendor.31_x86_x86_64_static/gen/aidl/android/gui/BnScreenCaptureResults.h out/soong/.intermediates/frameworks/native/libs/gui/libgui_aidl_static/android_vendor.31_x86_x86_64_static/gen/aidl/android/gui/BnTransactionTraceListener.h out/soong/.intermediates/frameworks/native/libs/gui/libgui_aidl_static/android_vendor.31_x86_x86_64_static/gen/aidl/android/gui/BnTunnelModeEnabledListener.h out/soong/.intermediates/frameworks/native/libs/gui/libgui_aidl_static/android_vendor.31_x86_x86_64_static/gen/aidl/android/gui/BpDisplayBrightness.h out/soong/.intermediates/frameworks/native/libs/gui/libgui_aidl_static/android_vendor.31_x86_x86_64_static/gen/aidl/android/gui/BpFpsListener.h out/soong/.intermediates/frameworks/native/libs/gui/libgui_aidl_static/android_vendor.31_x86_x86_64_static/gen/aidl/android/gui/BpHdrLayerInfoListener.h out/soong/.intermediates/frameworks/native/libs/gui/libgui_aidl_static/android_vendor.31_x86_x86_64_static/gen/aidl/android/gui/BpScreenCaptureListener.h out/soong/.intermediates/frameworks/native/libs/gui/libgui_aidl_static/android_vendor.31_x86_x86_64_static/gen/aidl/android/gui/BpScreenCaptureResults.h out/soong/.intermediates/frameworks/native/libs/gui/libgui_aidl_static/android_vendor.31_x86_x86_64_static/gen/aidl/android/gui/BpTransactionTraceListener.h out/soong/.intermediates/frameworks/native/libs/gui/libgui_aidl_static/android_vendor.31_x86_x86_64_static/gen/aidl/android/gui/BpTunnelModeEnabledListener.h out/soong/.intermediates/frameworks/native/libs/gui/libgui_aidl_static/android_vendor.31_x86_x86_64_static/gen/aidl/android/gui/DisplayBrightness.h out/soong/.intermediates/frameworks/native/libs/gui/libgui_aidl_static/android_vendor.31_x86_x86_64_static/gen/aidl/android/gui/IFpsListener.h out/soong/.intermediates/frameworks/native/libs/gui/libgui_aidl_static/android_vendor.31_x86_x86_64_static/gen/aidl/android/gui/IHdrLayerInfoListener.h out/soong/.intermediates/frameworks/native/libs/gui/libgui_aidl_static/android_vendor.31_x86_x86_64_static/gen/aidl/android/gui/IScreenCaptureListener.h out/soong/.intermediates/frameworks/native/libs/gui/libgui_aidl_static/android_vendor.31_x86_x86_64_static/gen/aidl/android/gui/ITransactionTraceListener.h out/soong/.intermediates/frameworks/native/libs/gui/libgui_aidl_static/android_vendor.31_x86_x86_64_static/gen/aidl/android/gui/ITunnelModeEnabledListener.h out/soong/.intermediates/frameworks/native/libs/gui/libgui_aidl_static/android_vendor.31_x86_x86_64_static/gen/aidl/android/gui/ScreenCaptureResults.h
-
-build libgui_aidl_static,android_vendor.31_x86_x86_64_static_lto-thin: phony out/soong/.intermediates/frameworks/native/libs/gui/libgui_aidl_static/android_vendor.31_x86_x86_64_static_lto-thin/gen/aidl/android/gui/BnDisplayBrightness.h out/soong/.intermediates/frameworks/native/libs/gui/libgui_aidl_static/android_vendor.31_x86_x86_64_static_lto-thin/gen/aidl/android/gui/BnFpsListener.h out/soong/.intermediates/frameworks/native/libs/gui/libgui_aidl_static/android_vendor.31_x86_x86_64_static_lto-thin/gen/aidl/android/gui/BnHdrLayerInfoListener.h out/soong/.intermediates/frameworks/native/libs/gui/libgui_aidl_static/android_vendor.31_x86_x86_64_static_lto-thin/gen/aidl/android/gui/BnScreenCaptureListener.h out/soong/.intermediates/frameworks/native/libs/gui/libgui_aidl_static/android_vendor.31_x86_x86_64_static_lto-thin/gen/aidl/android/gui/BnScreenCaptureResults.h out/soong/.intermediates/frameworks/native/libs/gui/libgui_aidl_static/android_vendor.31_x86_x86_64_static_lto-thin/gen/aidl/android/gui/BnTransactionTraceListener.h out/soong/.intermediates/frameworks/native/libs/gui/libgui_aidl_static/android_vendor.31_x86_x86_64_static_lto-thin/gen/aidl/android/gui/BnTunnelModeEnabledListener.h out/soong/.intermediates/frameworks/native/libs/gui/libgui_aidl_static/android_vendor.31_x86_x86_64_static_lto-thin/gen/aidl/android/gui/BpDisplayBrightness.h out/soong/.intermediates/frameworks/native/libs/gui/libgui_aidl_static/android_vendor.31_x86_x86_64_static_lto-thin/gen/aidl/android/gui/BpFpsListener.h out/soong/.intermediates/frameworks/native/libs/gui/libgui_aidl_static/android_vendor.31_x86_x86_64_static_lto-thin/gen/aidl/android/gui/BpHdrLayerInfoListener.h out/soong/.intermediates/frameworks/native/libs/gui/libgui_aidl_static/android_vendor.31_x86_x86_64_static_lto-thin/gen/aidl/android/gui/BpScreenCaptureListener.h out/soong/.intermediates/frameworks/native/libs/gui/libgui_aidl_static/android_vendor.31_x86_x86_64_static_lto-thin/gen/aidl/android/gui/BpScreenCaptureResults.h out/soong/.intermediates/frameworks/native/libs/gui/libgui_aidl_static/android_vendor.31_x86_x86_64_static_lto-thin/gen/aidl/android/gui/BpTransactionTraceListener.h out/soong/.intermediates/frameworks/native/libs/gui/libgui_aidl_static/android_vendor.31_x86_x86_64_static_lto-thin/gen/aidl/android/gui/BpTunnelModeEnabledListener.h out/soong/.intermediates/frameworks/native/libs/gui/libgui_aidl_static/android_vendor.31_x86_x86_64_static_lto-thin/gen/aidl/android/gui/DisplayBrightness.h out/soong/.intermediates/frameworks/native/libs/gui/libgui_aidl_static/android_vendor.31_x86_x86_64_static_lto-thin/gen/aidl/android/gui/IFpsListener.h out/soong/.intermediates/frameworks/native/libs/gui/libgui_aidl_static/android_vendor.31_x86_x86_64_static_lto-thin/gen/aidl/android/gui/IHdrLayerInfoListener.h out/soong/.intermediates/frameworks/native/libs/gui/libgui_aidl_static/android_vendor.31_x86_x86_64_static_lto-thin/gen/aidl/android/gui/IScreenCaptureListener.h out/soong/.intermediates/frameworks/native/libs/gui/libgui_aidl_static/android_vendor.31_x86_x86_64_static_lto-thin/gen/aidl/android/gui/ITransactionTraceListener.h out/soong/.intermediates/frameworks/native/libs/gui/libgui_aidl_static/android_vendor.31_x86_x86_64_static_lto-thin/gen/aidl/android/gui/ITunnelModeEnabledListener.h out/soong/.intermediates/frameworks/native/libs/gui/libgui_aidl_static/android_vendor.31_x86_x86_64_static_lto-thin/gen/aidl/android/gui/ScreenCaptureResults.h out/soong/.intermediates/frameworks/native/libs/gui/libgui_aidl_static/android_vendor.31_x86_x86_64_static_lto-thin/libgui_aidl_static.a
-
-build libinputreporter,android_x86_64_shared: phony out/soong/.intermediates/frameworks/native/services/inputflinger/reporter/libinputreporter/android_x86_64_shared/libinputreporter.so out/soong/.intermediates/frameworks/native/services/inputflinger/reporter/libinputreporter/android_x86_64_shared/libinputreporter.so.toc
-
-build libinputreporter,android_x86_x86_64_shared: phony out/soong/.intermediates/frameworks/native/services/inputflinger/reporter/libinputreporter/android_x86_x86_64_shared/libinputreporter.so out/soong/.intermediates/frameworks/native/services/inputflinger/reporter/libinputreporter/android_x86_x86_64_shared/libinputreporter.so.toc
-
-build libvibrator,android_vendor.31_x86_64_static: phony out/soong/.intermediates/frameworks/native/libs/vibrator/libvibrator/android_vendor.31_x86_64_static/gen/aidl/android/os/BnExternalVibrationController.h out/soong/.intermediates/frameworks/native/libs/vibrator/libvibrator/android_vendor.31_x86_64_static/gen/aidl/android/os/BnExternalVibratorService.h out/soong/.intermediates/frameworks/native/libs/vibrator/libvibrator/android_vendor.31_x86_64_static/gen/aidl/android/os/BpExternalVibrationController.h out/soong/.intermediates/frameworks/native/libs/vibrator/libvibrator/android_vendor.31_x86_64_static/gen/aidl/android/os/BpExternalVibratorService.h out/soong/.intermediates/frameworks/native/libs/vibrator/libvibrator/android_vendor.31_x86_64_static/gen/aidl/android/os/IExternalVibrationController.h out/soong/.intermediates/frameworks/native/libs/vibrator/libvibrator/android_vendor.31_x86_64_static/gen/aidl/android/os/IExternalVibratorService.h out/soong/.intermediates/frameworks/native/libs/vibrator/libvibrator/android_vendor.31_x86_64_static/obj/.intermediates/frameworks/native/libs/vibrator/libvibrator/android_vendor.31_x86_64_static/gen/aidl/android/os/IExternalVibrationController.o out/soong/.intermediates/frameworks/native/libs/vibrator/libvibrator/android_vendor.31_x86_64_static/obj/.intermediates/frameworks/native/libs/vibrator/libvibrator/android_vendor.31_x86_64_static/gen/aidl/android/os/IExternalVibratorService.o out/soong/.intermediates/frameworks/native/libs/vibrator/libvibrator/android_vendor.31_x86_64_static/obj/frameworks/native/libs/vibrator/ExternalVibration.o out/soong/.intermediates/frameworks/native/libs/vibrator/libvibrator/android_vendor.31_x86_64_static/obj/frameworks/native/libs/vibrator/ExternalVibrationUtils.o
-
-build libvibrator,android_vendor.31_x86_x86_64_static: phony out/soong/.intermediates/frameworks/native/libs/vibrator/libvibrator/android_vendor.31_x86_x86_64_static/gen/aidl/android/os/BnExternalVibrationController.h out/soong/.intermediates/frameworks/native/libs/vibrator/libvibrator/android_vendor.31_x86_x86_64_static/gen/aidl/android/os/BnExternalVibratorService.h out/soong/.intermediates/frameworks/native/libs/vibrator/libvibrator/android_vendor.31_x86_x86_64_static/gen/aidl/android/os/BpExternalVibrationController.h out/soong/.intermediates/frameworks/native/libs/vibrator/libvibrator/android_vendor.31_x86_x86_64_static/gen/aidl/android/os/BpExternalVibratorService.h out/soong/.intermediates/frameworks/native/libs/vibrator/libvibrator/android_vendor.31_x86_x86_64_static/gen/aidl/android/os/IExternalVibrationController.h out/soong/.intermediates/frameworks/native/libs/vibrator/libvibrator/android_vendor.31_x86_x86_64_static/gen/aidl/android/os/IExternalVibratorService.h out/soong/.intermediates/frameworks/native/libs/vibrator/libvibrator/android_vendor.31_x86_x86_64_static/obj/.intermediates/frameworks/native/libs/vibrator/libvibrator/android_vendor.31_x86_x86_64_static/gen/aidl/android/os/IExternalVibrationController.o out/soong/.intermediates/frameworks/native/libs/vibrator/libvibrator/android_vendor.31_x86_x86_64_static/obj/.intermediates/frameworks/native/libs/vibrator/libvibrator/android_vendor.31_x86_x86_64_static/gen/aidl/android/os/IExternalVibratorService.o out/soong/.intermediates/frameworks/native/libs/vibrator/libvibrator/android_vendor.31_x86_x86_64_static/obj/frameworks/native/libs/vibrator/ExternalVibration.o out/soong/.intermediates/frameworks/native/libs/vibrator/libvibrator/android_vendor.31_x86_x86_64_static/obj/frameworks/native/libs/vibrator/ExternalVibrationUtils.o
-
-build otapreopt,android_x86_64: phony out/soong/.intermediates/frameworks/native/cmds/installd/otapreopt/android_x86_64/otapreopt
-
-build frameworks_native-targets: phony libandroid_runtime_lazy,android_x86_64_shared libandroid_runtime_lazy,android_x86_x86_64_shared libbinder,android_x86_64_shared libbinder,android_x86_x86_64_shared libbinderdebug,android_vendor.31_x86_64_static libgui_aidl_static,android_vendor.31_x86_64_static libgui_aidl_static,android_vendor.31_x86_64_static_lto-thin libgui_aidl_static,android_vendor.31_x86_x86_64_static libgui_aidl_static,android_vendor.31_x86_x86_64_static_lto-thin libinputreporter,android_x86_64_shared libinputreporter,android_x86_x86_64_shared libvibrator,android_vendor.31_x86_64_static libvibrator,android_vendor.31_x86_x86_64_static otapreopt,android_x86_64
-
-build libRS_internal,android_vendor.31_x86_64_shared: phony out/soong/.intermediates/frameworks/rs/libRS_internal/android_vendor.31_x86_64_shared/libRS_internal.so out/soong/.intermediates/frameworks/rs/libRS_internal/android_vendor.31_x86_64_shared/libRS_internal.so.toc
-
-build libRS_internal,android_vendor.31_x86_x86_64_shared: phony out/soong/.intermediates/frameworks/rs/libRS_internal/android_vendor.31_x86_x86_64_shared/libRS_internal.so out/soong/.intermediates/frameworks/rs/libRS_internal/android_vendor.31_x86_x86_64_shared/libRS_internal.so.toc
-
-build frameworks_rs-targets: phony libRS_internal,android_vendor.31_x86_64_shared libRS_internal,android_vendor.31_x86_x86_64_shared
-
-build android.hardware.atrace@1.0,android_vendor.31_x86_64_shared: phony out/soong/.intermediates/hardware/interfaces/atrace/1.0/android.hardware.atrace@1.0/android_vendor.31_x86_64_shared/android.hardware.atrace@1.0.so out/soong/.intermediates/hardware/interfaces/atrace/1.0/android.hardware.atrace@1.0/android_vendor.31_x86_64_shared/android.hardware.atrace@1.0.so.toc
-
-build android.hardware.audio.common-util,android_vendor.31_x86_64_shared: phony out/soong/.intermediates/hardware/interfaces/audio/common/all-versions/default/android.hardware.audio.common-util/android_vendor.31_x86_64_shared/android.hardware.audio.common-util.so out/soong/.intermediates/hardware/interfaces/audio/common/all-versions/default/android.hardware.audio.common-util/android_vendor.31_x86_64_shared/android.hardware.audio.common-util.so.toc
-
-build android.hardware.audio.common-util,android_vendor.31_x86_x86_64_shared: phony out/soong/.intermediates/hardware/interfaces/audio/common/all-versions/default/android.hardware.audio.common-util/android_vendor.31_x86_x86_64_shared/android.hardware.audio.common-util.so out/soong/.intermediates/hardware/interfaces/audio/common/all-versions/default/android.hardware.audio.common-util/android_vendor.31_x86_x86_64_shared/android.hardware.audio.common-util.so.toc
-
-build android.hardware.audio.common@2.0,android_vendor.31_x86_64_shared: phony out/soong/.intermediates/hardware/interfaces/audio/common/2.0/android.hardware.audio.common@2.0/android_vendor.31_x86_64_shared/android.hardware.audio.common@2.0.so out/soong/.intermediates/hardware/interfaces/audio/common/2.0/android.hardware.audio.common@2.0/android_vendor.31_x86_64_shared/android.hardware.audio.common@2.0.so.toc
-
-build android.hardware.audio.common@2.0,android_vendor.31_x86_x86_64_shared: phony out/soong/.intermediates/hardware/interfaces/audio/common/2.0/android.hardware.audio.common@2.0/android_vendor.31_x86_x86_64_shared/android.hardware.audio.common@2.0.so out/soong/.intermediates/hardware/interfaces/audio/common/2.0/android.hardware.audio.common@2.0/android_vendor.31_x86_x86_64_shared/android.hardware.audio.common@2.0.so.toc
-
-build android.hardware.audio.service,android_vendor.31_x86_x86_64: phony out/soong/.intermediates/hardware/interfaces/audio/common/all-versions/default/service/android.hardware.audio.service/android_vendor.31_x86_x86_64/android.hardware.audio.service
-
-build android.hardware.authsecret@1.0,android_vendor.31_x86_64_shared: phony out/soong/.intermediates/hardware/interfaces/authsecret/1.0/android.hardware.authsecret@1.0/android_vendor.31_x86_64_shared/android.hardware.authsecret@1.0.so out/soong/.intermediates/hardware/interfaces/authsecret/1.0/android.hardware.authsecret@1.0/android_vendor.31_x86_64_shared/android.hardware.authsecret@1.0.so.toc
-
-build android.hardware.biometrics.face@1.0,android_vendor.31_x86_64_shared: phony out/soong/.intermediates/hardware/interfaces/biometrics/face/1.0/android.hardware.biometrics.face@1.0/android_vendor.31_x86_64_shared/android.hardware.biometrics.face@1.0.so out/soong/.intermediates/hardware/interfaces/biometrics/face/1.0/android.hardware.biometrics.face@1.0/android_vendor.31_x86_64_shared/android.hardware.biometrics.face@1.0.so.toc
-
-build android.hardware.biometrics.fingerprint@2.1,android_vendor.31_x86_64_shared: phony out/soong/.intermediates/hardware/interfaces/biometrics/fingerprint/2.1/android.hardware.biometrics.fingerprint@2.1/android_vendor.31_x86_64_shared/android.hardware.biometrics.fingerprint@2.1.so out/soong/.intermediates/hardware/interfaces/biometrics/fingerprint/2.1/android.hardware.biometrics.fingerprint@2.1/android_vendor.31_x86_64_shared/android.hardware.biometrics.fingerprint@2.1.so.toc
-
-build android.hardware.bluetooth@1.0,android_vendor.31_x86_64_shared: phony out/soong/.intermediates/hardware/interfaces/bluetooth/1.0/android.hardware.bluetooth@1.0/android_vendor.31_x86_64_shared/android.hardware.bluetooth@1.0.so out/soong/.intermediates/hardware/interfaces/bluetooth/1.0/android.hardware.bluetooth@1.0/android_vendor.31_x86_64_shared/android.hardware.bluetooth@1.0.so.toc
-
-build android.hardware.boot@1.0,android_vendor.31_x86_64_shared: phony out/soong/.intermediates/hardware/interfaces/boot/1.0/android.hardware.boot@1.0/android_vendor.31_x86_64_shared/android.hardware.boot@1.0.so out/soong/.intermediates/hardware/interfaces/boot/1.0/android.hardware.boot@1.0/android_vendor.31_x86_64_shared/android.hardware.boot@1.0.so.toc
-
-build android.hardware.boot@1.0,android_vendor.31_x86_x86_64_shared: phony out/soong/.intermediates/hardware/interfaces/boot/1.0/android.hardware.boot@1.0/android_vendor.31_x86_x86_64_shared/android.hardware.boot@1.0.so out/soong/.intermediates/hardware/interfaces/boot/1.0/android.hardware.boot@1.0/android_vendor.31_x86_x86_64_shared/android.hardware.boot@1.0.so.toc
-
-build android.hardware.camera.common@1.0,android_vendor.31_x86_64_shared: phony out/soong/.intermediates/hardware/interfaces/camera/common/1.0/android.hardware.camera.common@1.0/android_vendor.31_x86_64_shared/android.hardware.camera.common@1.0.so out/soong/.intermediates/hardware/interfaces/camera/common/1.0/android.hardware.camera.common@1.0/android_vendor.31_x86_64_shared/android.hardware.camera.common@1.0.so.toc
-
-build android.hardware.camera.common@1.0,android_vendor.31_x86_x86_64_shared: phony out/soong/.intermediates/hardware/interfaces/camera/common/1.0/android.hardware.camera.common@1.0/android_vendor.31_x86_x86_64_shared/android.hardware.camera.common@1.0.so out/soong/.intermediates/hardware/interfaces/camera/common/1.0/android.hardware.camera.common@1.0/android_vendor.31_x86_x86_64_shared/android.hardware.camera.common@1.0.so.toc
-
-build android.hardware.camera.metadata@3.2,android_vendor.31_x86_64_shared: phony out/soong/.intermediates/hardware/interfaces/camera/metadata/3.2/android.hardware.camera.metadata@3.2/android_vendor.31_x86_64_shared/android.hardware.camera.metadata@3.2.so out/soong/.intermediates/hardware/interfaces/camera/metadata/3.2/android.hardware.camera.metadata@3.2/android_vendor.31_x86_64_shared/android.hardware.camera.metadata@3.2.so.toc
-
-build android.hardware.camera.metadata@3.2,android_vendor.31_x86_x86_64_shared: phony out/soong/.intermediates/hardware/interfaces/camera/metadata/3.2/android.hardware.camera.metadata@3.2/android_vendor.31_x86_x86_64_shared/android.hardware.camera.metadata@3.2.so out/soong/.intermediates/hardware/interfaces/camera/metadata/3.2/android.hardware.camera.metadata@3.2/android_vendor.31_x86_x86_64_shared/android.hardware.camera.metadata@3.2.so.toc
-
-build android.hardware.cas@1.0,android_vendor.31_x86_x86_64_shared: phony out/soong/.intermediates/hardware/interfaces/cas/1.0/android.hardware.cas@1.0/android_vendor.31_x86_x86_64_shared/android.hardware.cas@1.0.so out/soong/.intermediates/hardware/interfaces/cas/1.0/android.hardware.cas@1.0/android_vendor.31_x86_x86_64_shared/android.hardware.cas@1.0.so.toc
-
-build android.hardware.configstore@1.0,android_vendor.31_x86_64_shared: phony out/soong/.intermediates/hardware/interfaces/configstore/1.0/android.hardware.configstore@1.0/android_vendor.31_x86_64_shared/android.hardware.configstore@1.0.so out/soong/.intermediates/hardware/interfaces/configstore/1.0/android.hardware.configstore@1.0/android_vendor.31_x86_64_shared/android.hardware.configstore@1.0.so.toc
-
-build android.hardware.configstore@1.0,android_vendor.31_x86_x86_64_shared: phony out/soong/.intermediates/hardware/interfaces/configstore/1.0/android.hardware.configstore@1.0/android_vendor.31_x86_x86_64_shared/android.hardware.configstore@1.0.so out/soong/.intermediates/hardware/interfaces/configstore/1.0/android.hardware.configstore@1.0/android_vendor.31_x86_x86_64_shared/android.hardware.configstore@1.0.so.toc
-
-build android.hardware.contexthub@1.0,android_vendor.31_x86_64_shared: phony out/soong/.intermediates/hardware/interfaces/contexthub/1.0/android.hardware.contexthub@1.0/android_vendor.31_x86_64_shared/android.hardware.contexthub@1.0.so out/soong/.intermediates/hardware/interfaces/contexthub/1.0/android.hardware.contexthub@1.0/android_vendor.31_x86_64_shared/android.hardware.contexthub@1.0.so.toc
-
-build android.hardware.drm@1.0,android_vendor.31_x86_64_shared: phony out/soong/.intermediates/hardware/interfaces/drm/1.0/android.hardware.drm@1.0/android_vendor.31_x86_64_shared/android.hardware.drm@1.0.so out/soong/.intermediates/hardware/interfaces/drm/1.0/android.hardware.drm@1.0/android_vendor.31_x86_64_shared/android.hardware.drm@1.0.so.toc
-
-build android.hardware.dumpstate@1.0,android_vendor.31_x86_64_shared: phony out/soong/.intermediates/hardware/interfaces/dumpstate/1.0/android.hardware.dumpstate@1.0/android_vendor.31_x86_64_shared/android.hardware.dumpstate@1.0.so out/soong/.intermediates/hardware/interfaces/dumpstate/1.0/android.hardware.dumpstate@1.0/android_vendor.31_x86_64_shared/android.hardware.dumpstate@1.0.so.toc
-
-build android.hardware.gatekeeper@1.0,android_vendor.31_x86_64_shared: phony out/soong/.intermediates/hardware/interfaces/gatekeeper/1.0/android.hardware.gatekeeper@1.0/android_vendor.31_x86_64_shared/android.hardware.gatekeeper@1.0.so out/soong/.intermediates/hardware/interfaces/gatekeeper/1.0/android.hardware.gatekeeper@1.0/android_vendor.31_x86_64_shared/android.hardware.gatekeeper@1.0.so.toc
-
-build android.hardware.gnss.visibility_control@1.0,android_vendor.31_x86_64_shared: phony out/soong/.intermediates/hardware/interfaces/gnss/visibility_control/1.0/android.hardware.gnss.visibility_control@1.0/android_vendor.31_x86_64_shared/android.hardware.gnss.visibility_control@1.0.so out/soong/.intermediates/hardware/interfaces/gnss/visibility_control/1.0/android.hardware.gnss.visibility_control@1.0/android_vendor.31_x86_64_shared/android.hardware.gnss.visibility_control@1.0.so.toc
-
-build android.hardware.gnss@1.0,android_vendor.31_x86_64_shared: phony out/soong/.intermediates/hardware/interfaces/gnss/1.0/android.hardware.gnss@1.0/android_vendor.31_x86_64_shared/android.hardware.gnss@1.0.so out/soong/.intermediates/hardware/interfaces/gnss/1.0/android.hardware.gnss@1.0/android_vendor.31_x86_64_shared/android.hardware.gnss@1.0.so.toc
-
-build android.hardware.graphics.allocator@2.0,android_x86_64_shared_apex29: phony out/soong/.intermediates/hardware/interfaces/graphics/allocator/2.0/android.hardware.graphics.allocator@2.0/android_x86_64_shared_apex29/android.hardware.graphics.allocator@2.0.so out/soong/.intermediates/hardware/interfaces/graphics/allocator/2.0/android.hardware.graphics.allocator@2.0/android_x86_64_shared_apex29/android.hardware.graphics.allocator@2.0.so.toc
-
-build android.hardware.graphics.bufferqueue@1.0,android_x86_64_shared_apex29: phony out/soong/.intermediates/hardware/interfaces/graphics/bufferqueue/1.0/android.hardware.graphics.bufferqueue@1.0/android_x86_64_shared_apex29/android.hardware.graphics.bufferqueue@1.0.so out/soong/.intermediates/hardware/interfaces/graphics/bufferqueue/1.0/android.hardware.graphics.bufferqueue@1.0/android_x86_64_shared_apex29/android.hardware.graphics.bufferqueue@1.0.so.toc
-
-build android.hardware.graphics.common@1.0,android_vendor.31_x86_64_shared: phony out/soong/.intermediates/hardware/interfaces/graphics/common/1.0/android.hardware.graphics.common@1.0/android_vendor.31_x86_64_shared/android.hardware.graphics.common@1.0.so out/soong/.intermediates/hardware/interfaces/graphics/common/1.0/android.hardware.graphics.common@1.0/android_vendor.31_x86_64_shared/android.hardware.graphics.common@1.0.so.toc
-
-build android.hardware.graphics.common@1.0,android_vendor.31_x86_x86_64_shared: phony out/soong/.intermediates/hardware/interfaces/graphics/common/1.0/android.hardware.graphics.common@1.0/android_vendor.31_x86_x86_64_shared/android.hardware.graphics.common@1.0.so out/soong/.intermediates/hardware/interfaces/graphics/common/1.0/android.hardware.graphics.common@1.0/android_vendor.31_x86_x86_64_shared/android.hardware.graphics.common@1.0.so.toc
-
-build android.hardware.graphics.common@1.2,android_x86_64_shared_apex29: phony out/soong/.intermediates/hardware/interfaces/graphics/common/1.2/android.hardware.graphics.common@1.2/android_x86_64_shared_apex29/android.hardware.graphics.common@1.2.so out/soong/.intermediates/hardware/interfaces/graphics/common/1.2/android.hardware.graphics.common@1.2/android_x86_64_shared_apex29/android.hardware.graphics.common@1.2.so.toc
-
-build android.hardware.graphics.mapper@2.1,android_x86_64_shared_apex29: phony out/soong/.intermediates/hardware/interfaces/graphics/mapper/2.1/android.hardware.graphics.mapper@2.1/android_x86_64_shared_apex29/android.hardware.graphics.mapper@2.1.so out/soong/.intermediates/hardware/interfaces/graphics/mapper/2.1/android.hardware.graphics.mapper@2.1/android_x86_64_shared_apex29/android.hardware.graphics.mapper@2.1.so.toc
-
-build android.hardware.health@1.0,android_vendor.31_x86_64_shared: phony out/soong/.intermediates/hardware/interfaces/health/1.0/android.hardware.health@1.0/android_vendor.31_x86_64_shared/android.hardware.health@1.0.so out/soong/.intermediates/hardware/interfaces/health/1.0/android.hardware.health@1.0/android_vendor.31_x86_64_shared/android.hardware.health@1.0.so.toc
-
-build android.hardware.health@1.0,android_vendor.31_x86_x86_64_shared: phony out/soong/.intermediates/hardware/interfaces/health/1.0/android.hardware.health@1.0/android_vendor.31_x86_x86_64_shared/android.hardware.health@1.0.so out/soong/.intermediates/hardware/interfaces/health/1.0/android.hardware.health@1.0/android_vendor.31_x86_x86_64_shared/android.hardware.health@1.0.so.toc
-
-build android.hardware.input.common@1.0,android_vendor.31_x86_64_shared: phony out/soong/.intermediates/hardware/interfaces/input/common/1.0/android.hardware.input.common@1.0/android_vendor.31_x86_64_shared/android.hardware.input.common@1.0.so out/soong/.intermediates/hardware/interfaces/input/common/1.0/android.hardware.input.common@1.0/android_vendor.31_x86_64_shared/android.hardware.input.common@1.0.so.toc
-
-build android.hardware.media.bufferpool@2.0,android_vendor.31_x86_64_shared: phony out/soong/.intermediates/hardware/interfaces/media/bufferpool/2.0/android.hardware.media.bufferpool@2.0/android_vendor.31_x86_64_shared/android.hardware.media.bufferpool@2.0.so out/soong/.intermediates/hardware/interfaces/media/bufferpool/2.0/android.hardware.media.bufferpool@2.0/android_vendor.31_x86_64_shared/android.hardware.media.bufferpool@2.0.so.toc
-
-build android.hardware.media.bufferpool@2.0,android_vendor.31_x86_x86_64_shared: phony out/soong/.intermediates/hardware/interfaces/media/bufferpool/2.0/android.hardware.media.bufferpool@2.0/android_vendor.31_x86_x86_64_shared/android.hardware.media.bufferpool@2.0.so out/soong/.intermediates/hardware/interfaces/media/bufferpool/2.0/android.hardware.media.bufferpool@2.0/android_vendor.31_x86_x86_64_shared/android.hardware.media.bufferpool@2.0.so.toc
-
-build android.hardware.memtrack@1.0,android_vendor.31_x86_64_shared: phony out/soong/.intermediates/hardware/interfaces/memtrack/1.0/android.hardware.memtrack@1.0/android_vendor.31_x86_64_shared/android.hardware.memtrack@1.0.so out/soong/.intermediates/hardware/interfaces/memtrack/1.0/android.hardware.memtrack@1.0/android_vendor.31_x86_64_shared/android.hardware.memtrack@1.0.so.toc
-
-build android.hardware.memtrack@1.0,android_vendor.31_x86_x86_64_shared: phony out/soong/.intermediates/hardware/interfaces/memtrack/1.0/android.hardware.memtrack@1.0/android_vendor.31_x86_x86_64_shared/android.hardware.memtrack@1.0.so out/soong/.intermediates/hardware/interfaces/memtrack/1.0/android.hardware.memtrack@1.0/android_vendor.31_x86_x86_64_shared/android.hardware.memtrack@1.0.so.toc
-
-build android.hardware.neuralnetworks@1.0,android_vendor.31_x86_64_shared: phony out/soong/.intermediates/hardware/interfaces/neuralnetworks/1.0/android.hardware.neuralnetworks@1.0/android_vendor.31_x86_64_shared/android.hardware.neuralnetworks@1.0.so out/soong/.intermediates/hardware/interfaces/neuralnetworks/1.0/android.hardware.neuralnetworks@1.0/android_vendor.31_x86_64_shared/android.hardware.neuralnetworks@1.0.so.toc
-
-build android.hardware.radio@1.0,android_vendor.31_x86_64_shared: phony out/soong/.intermediates/hardware/interfaces/radio/1.0/android.hardware.radio@1.0/android_vendor.31_x86_64_shared/android.hardware.radio@1.0.so out/soong/.intermediates/hardware/interfaces/radio/1.0/android.hardware.radio@1.0/android_vendor.31_x86_64_shared/android.hardware.radio@1.0.so.toc
-
-build android.hardware.radio@1.0,android_vendor.31_x86_x86_64_shared: phony out/soong/.intermediates/hardware/interfaces/radio/1.0/android.hardware.radio@1.0/android_vendor.31_x86_x86_64_shared/android.hardware.radio@1.0.so out/soong/.intermediates/hardware/interfaces/radio/1.0/android.hardware.radio@1.0/android_vendor.31_x86_x86_64_shared/android.hardware.radio@1.0.so.toc
-
-build android.hardware.renderscript@1.0,android_vendor.31_x86_64_shared: phony out/soong/.intermediates/hardware/interfaces/renderscript/1.0/android.hardware.renderscript@1.0/android_vendor.31_x86_64_shared/android.hardware.renderscript@1.0.so
-
-build android.hardware.renderscript@1.0,android_vendor.31_x86_x86_64_shared: phony out/soong/.intermediates/hardware/interfaces/renderscript/1.0/android.hardware.renderscript@1.0/android_vendor.31_x86_x86_64_shared/android.hardware.renderscript@1.0.so
-
-build android.hardware.sensors@1.0,android_vendor.31_x86_64_shared: phony out/soong/.intermediates/hardware/interfaces/sensors/1.0/android.hardware.sensors@1.0/android_vendor.31_x86_64_shared/android.hardware.sensors@1.0.so out/soong/.intermediates/hardware/interfaces/sensors/1.0/android.hardware.sensors@1.0/android_vendor.31_x86_64_shared/android.hardware.sensors@1.0.so.toc
-
-build android.hardware.sensors@1.0,android_vendor.31_x86_x86_64_shared: phony out/soong/.intermediates/hardware/interfaces/sensors/1.0/android.hardware.sensors@1.0/android_vendor.31_x86_x86_64_shared/android.hardware.sensors@1.0.so out/soong/.intermediates/hardware/interfaces/sensors/1.0/android.hardware.sensors@1.0/android_vendor.31_x86_x86_64_shared/android.hardware.sensors@1.0.so.toc
-
-build android.hardware.thermal@1.0,android_vendor.31_x86_64_shared: phony out/soong/.intermediates/hardware/interfaces/thermal/1.0/android.hardware.thermal@1.0/android_vendor.31_x86_64_shared/android.hardware.thermal@1.0.so out/soong/.intermediates/hardware/interfaces/thermal/1.0/android.hardware.thermal@1.0/android_vendor.31_x86_64_shared/android.hardware.thermal@1.0.so.toc
-
-build android.hardware.usb@1.0,android_vendor.31_x86_64_shared: phony out/soong/.intermediates/hardware/interfaces/usb/1.0/android.hardware.usb@1.0/android_vendor.31_x86_64_shared/android.hardware.usb@1.0.so out/soong/.intermediates/hardware/interfaces/usb/1.0/android.hardware.usb@1.0/android_vendor.31_x86_64_shared/android.hardware.usb@1.0.so.toc
-
-build hardware_interfaces-targets: phony android.hardware.atrace@1.0,android_vendor.31_x86_64_shared android.hardware.audio.common-util,android_vendor.31_x86_64_shared android.hardware.audio.common-util,android_vendor.31_x86_x86_64_shared android.hardware.audio.common@2.0,android_vendor.31_x86_64_shared android.hardware.audio.common@2.0,android_vendor.31_x86_x86_64_shared android.hardware.audio.service,android_vendor.31_x86_x86_64 android.hardware.authsecret@1.0,android_vendor.31_x86_64_shared android.hardware.biometrics.face@1.0,android_vendor.31_x86_64_shared android.hardware.biometrics.fingerprint@2.1,android_vendor.31_x86_64_shared android.hardware.bluetooth@1.0,android_vendor.31_x86_64_shared android.hardware.boot@1.0,android_vendor.31_x86_64_shared android.hardware.boot@1.0,android_vendor.31_x86_x86_64_shared android.hardware.camera.common@1.0,android_vendor.31_x86_64_shared android.hardware.camera.common@1.0,android_vendor.31_x86_x86_64_shared android.hardware.camera.metadata@3.2,android_vendor.31_x86_64_shared android.hardware.camera.metadata@3.2,android_vendor.31_x86_x86_64_shared android.hardware.cas@1.0,android_vendor.31_x86_x86_64_shared android.hardware.configstore@1.0,android_vendor.31_x86_64_shared android.hardware.configstore@1.0,android_vendor.31_x86_x86_64_shared android.hardware.contexthub@1.0,android_vendor.31_x86_64_shared android.hardware.drm@1.0,android_vendor.31_x86_64_shared android.hardware.dumpstate@1.0,android_vendor.31_x86_64_shared android.hardware.gatekeeper@1.0,android_vendor.31_x86_64_shared android.hardware.gnss.visibility_control@1.0,android_vendor.31_x86_64_shared android.hardware.gnss@1.0,android_vendor.31_x86_64_shared android.hardware.graphics.allocator@2.0,android_x86_64_shared_apex29 android.hardware.graphics.bufferqueue@1.0,android_x86_64_shared_apex29 android.hardware.graphics.common@1.0,android_vendor.31_x86_64_shared android.hardware.graphics.common@1.0,android_vendor.31_x86_x86_64_shared android.hardware.graphics.common@1.2,android_x86_64_shared_apex29 android.hardware.graphics.mapper@2.1,android_x86_64_shared_apex29 android.hardware.health@1.0,android_vendor.31_x86_64_shared android.hardware.health@1.0,android_vendor.31_x86_x86_64_shared android.hardware.input.common@1.0,android_vendor.31_x86_64_shared android.hardware.media.bufferpool@2.0,android_vendor.31_x86_64_shared android.hardware.media.bufferpool@2.0,android_vendor.31_x86_x86_64_shared android.hardware.memtrack@1.0,android_vendor.31_x86_64_shared android.hardware.memtrack@1.0,android_vendor.31_x86_x86_64_shared android.hardware.neuralnetworks@1.0,android_vendor.31_x86_64_shared android.hardware.radio@1.0,android_vendor.31_x86_64_shared android.hardware.radio@1.0,android_vendor.31_x86_x86_64_shared android.hardware.renderscript@1.0,android_vendor.31_x86_64_shared android.hardware.renderscript@1.0,android_vendor.31_x86_x86_64_shared android.hardware.sensors@1.0,android_vendor.31_x86_64_shared android.hardware.sensors@1.0,android_vendor.31_x86_x86_64_shared android.hardware.thermal@1.0,android_vendor.31_x86_64_shared android.hardware.usb@1.0,android_vendor.31_x86_64_shared
-
-build libpower,android_vendor.31_x86_64_static: phony out/soong/.intermediates/hardware/libhardware_legacy/libpower/android_vendor.31_x86_64_static/obj/hardware/libhardware_legacy/power.o
-
-build libpower,android_vendor.31_x86_x86_64_static: phony out/soong/.intermediates/hardware/libhardware_legacy/libpower/android_vendor.31_x86_x86_64_static/obj/hardware/libhardware_legacy/power.o
-
-build hardware_libhardware_legacy-targets: phony libpower,android_vendor.31_x86_64_static libpower,android_vendor.31_x86_x86_64_static
-
-build art-module-intra-core-api-stubs-system-modules,android_common: phony out/soong/.intermediates/libcore/mmodules/intracoreapi/art-module-intra-core-api-stubs-system-modules/android_common/system/lib/jrt-fs.jar out/soong/.intermediates/libcore/mmodules/intracoreapi/art-module-intra-core-api-stubs-system-modules/android_common/system/lib/modules out/soong/.intermediates/libcore/mmodules/intracoreapi/art-module-intra-core-api-stubs-system-modules/android_common/system/release
-
-build libcore-targets: phony art-module-intra-core-api-stubs-system-modules,android_common
-
-build androidx.core_core-nodeps,android_common: phony out/soong/.intermediates/prebuilts/sdk/current/androidx/androidx.core_core-nodeps/android_common/aar/AndroidManifest.xml out/soong/.intermediates/prebuilts/sdk/current/androidx/androidx.core_core-nodeps/android_common/aar/classes-combined.jar out/soong/.intermediates/prebuilts/sdk/current/androidx/androidx.core_core-nodeps/android_common/aar/proguard.txt out/soong/.intermediates/prebuilts/sdk/current/androidx/androidx.core_core-nodeps/android_common/package-res.apk
-
-build androidx.core_core-nodeps,android_common_apex30: phony out/soong/.intermediates/prebuilts/sdk/current/androidx/androidx.core_core-nodeps/android_common_apex30/aar/AndroidManifest.xml out/soong/.intermediates/prebuilts/sdk/current/androidx/androidx.core_core-nodeps/android_common_apex30/aar/classes-combined.jar out/soong/.intermediates/prebuilts/sdk/current/androidx/androidx.core_core-nodeps/android_common_apex30/aar/proguard.txt out/soong/.intermediates/prebuilts/sdk/current/androidx/androidx.core_core-nodeps/android_common_apex30/package-res.apk
-
-build androidx.lifecycle_lifecycle-livedata-core-ktx-nodeps,android_common_apex30: phony out/soong/.intermediates/prebuilts/sdk/current/androidx/androidx.lifecycle_lifecycle-livedata-core-ktx-nodeps/android_common_apex30/aar/AndroidManifest.xml out/soong/.intermediates/prebuilts/sdk/current/androidx/androidx.lifecycle_lifecycle-livedata-core-ktx-nodeps/android_common_apex30/aar/classes-combined.jar out/soong/.intermediates/prebuilts/sdk/current/androidx/androidx.lifecycle_lifecycle-livedata-core-ktx-nodeps/android_common_apex30/aar/proguard.txt out/soong/.intermediates/prebuilts/sdk/current/androidx/androidx.lifecycle_lifecycle-livedata-core-ktx-nodeps/android_common_apex30/package-res.apk
-
-build androidx.lifecycle_lifecycle-livedata-nodeps,android_common: phony out/soong/.intermediates/prebuilts/sdk/current/androidx/androidx.lifecycle_lifecycle-livedata-nodeps/android_common/aar/AndroidManifest.xml out/soong/.intermediates/prebuilts/sdk/current/androidx/androidx.lifecycle_lifecycle-livedata-nodeps/android_common/aar/classes-combined.jar out/soong/.intermediates/prebuilts/sdk/current/androidx/androidx.lifecycle_lifecycle-livedata-nodeps/android_common/aar/proguard.txt out/soong/.intermediates/prebuilts/sdk/current/androidx/androidx.lifecycle_lifecycle-livedata-nodeps/android_common/package-res.apk
-
-build androidx.lifecycle_lifecycle-livedata-nodeps,android_common_apex30: phony out/soong/.intermediates/prebuilts/sdk/current/androidx/androidx.lifecycle_lifecycle-livedata-nodeps/android_common_apex30/aar/AndroidManifest.xml out/soong/.intermediates/prebuilts/sdk/current/androidx/androidx.lifecycle_lifecycle-livedata-nodeps/android_common_apex30/aar/classes-combined.jar out/soong/.intermediates/prebuilts/sdk/current/androidx/androidx.lifecycle_lifecycle-livedata-nodeps/android_common_apex30/aar/proguard.txt out/soong/.intermediates/prebuilts/sdk/current/androidx/androidx.lifecycle_lifecycle-livedata-nodeps/android_common_apex30/package-res.apk
-
-build androidx.lifecycle_lifecycle-process-nodeps,android_common: phony out/soong/.intermediates/prebuilts/sdk/current/androidx/androidx.lifecycle_lifecycle-process-nodeps/android_common/aar/AndroidManifest.xml out/soong/.intermediates/prebuilts/sdk/current/androidx/androidx.lifecycle_lifecycle-process-nodeps/android_common/aar/classes-combined.jar out/soong/.intermediates/prebuilts/sdk/current/androidx/androidx.lifecycle_lifecycle-process-nodeps/android_common/aar/proguard.txt out/soong/.intermediates/prebuilts/sdk/current/androidx/androidx.lifecycle_lifecycle-process-nodeps/android_common/package-res.apk
-
-build androidx.lifecycle_lifecycle-process-nodeps,android_common_apex30: phony out/soong/.intermediates/prebuilts/sdk/current/androidx/androidx.lifecycle_lifecycle-process-nodeps/android_common_apex30/aar/AndroidManifest.xml out/soong/.intermediates/prebuilts/sdk/current/androidx/androidx.lifecycle_lifecycle-process-nodeps/android_common_apex30/aar/classes-combined.jar out/soong/.intermediates/prebuilts/sdk/current/androidx/androidx.lifecycle_lifecycle-process-nodeps/android_common_apex30/aar/proguard.txt out/soong/.intermediates/prebuilts/sdk/current/androidx/androidx.lifecycle_lifecycle-process-nodeps/android_common_apex30/package-res.apk
-
-build androidx.lifecycle_lifecycle-runtime-ktx-nodeps,android_common_apex30: phony out/soong/.intermediates/prebuilts/sdk/current/androidx/androidx.lifecycle_lifecycle-runtime-ktx-nodeps/android_common_apex30/aar/AndroidManifest.xml out/soong/.intermediates/prebuilts/sdk/current/androidx/androidx.lifecycle_lifecycle-runtime-ktx-nodeps/android_common_apex30/aar/classes-combined.jar out/soong/.intermediates/prebuilts/sdk/current/androidx/androidx.lifecycle_lifecycle-runtime-ktx-nodeps/android_common_apex30/aar/proguard.txt out/soong/.intermediates/prebuilts/sdk/current/androidx/androidx.lifecycle_lifecycle-runtime-ktx-nodeps/android_common_apex30/package-res.apk
-
-build androidx.lifecycle_lifecycle-service-nodeps,android_common: phony out/soong/.intermediates/prebuilts/sdk/current/androidx/androidx.lifecycle_lifecycle-service-nodeps/android_common/aar/AndroidManifest.xml out/soong/.intermediates/prebuilts/sdk/current/androidx/androidx.lifecycle_lifecycle-service-nodeps/android_common/aar/classes-combined.jar out/soong/.intermediates/prebuilts/sdk/current/androidx/androidx.lifecycle_lifecycle-service-nodeps/android_common/aar/proguard.txt out/soong/.intermediates/prebuilts/sdk/current/androidx/androidx.lifecycle_lifecycle-service-nodeps/android_common/package-res.apk
-
-build androidx.lifecycle_lifecycle-service-nodeps,android_common_apex30: phony out/soong/.intermediates/prebuilts/sdk/current/androidx/androidx.lifecycle_lifecycle-service-nodeps/android_common_apex30/aar/AndroidManifest.xml out/soong/.intermediates/prebuilts/sdk/current/androidx/androidx.lifecycle_lifecycle-service-nodeps/android_common_apex30/aar/classes-combined.jar out/soong/.intermediates/prebuilts/sdk/current/androidx/androidx.lifecycle_lifecycle-service-nodeps/android_common_apex30/aar/proguard.txt out/soong/.intermediates/prebuilts/sdk/current/androidx/androidx.lifecycle_lifecycle-service-nodeps/android_common_apex30/package-res.apk
-
-build androidx.lifecycle_lifecycle-viewmodel-savedstate-nodeps,android_common: phony out/soong/.intermediates/prebuilts/sdk/current/androidx/androidx.lifecycle_lifecycle-viewmodel-savedstate-nodeps/android_common/aar/AndroidManifest.xml out/soong/.intermediates/prebuilts/sdk/current/androidx/androidx.lifecycle_lifecycle-viewmodel-savedstate-nodeps/android_common/aar/classes-combined.jar out/soong/.intermediates/prebuilts/sdk/current/androidx/androidx.lifecycle_lifecycle-viewmodel-savedstate-nodeps/android_common/aar/proguard.txt out/soong/.intermediates/prebuilts/sdk/current/androidx/androidx.lifecycle_lifecycle-viewmodel-savedstate-nodeps/android_common/package-res.apk
-
-build androidx.lifecycle_lifecycle-viewmodel-savedstate-nodeps,android_common_apex30: phony out/soong/.intermediates/prebuilts/sdk/current/androidx/androidx.lifecycle_lifecycle-viewmodel-savedstate-nodeps/android_common_apex30/aar/AndroidManifest.xml out/soong/.intermediates/prebuilts/sdk/current/androidx/androidx.lifecycle_lifecycle-viewmodel-savedstate-nodeps/android_common_apex30/aar/classes-combined.jar out/soong/.intermediates/prebuilts/sdk/current/androidx/androidx.lifecycle_lifecycle-viewmodel-savedstate-nodeps/android_common_apex30/aar/proguard.txt out/soong/.intermediates/prebuilts/sdk/current/androidx/androidx.lifecycle_lifecycle-viewmodel-savedstate-nodeps/android_common_apex30/package-res.apk
-
-build androidx.room_room-runtime-nodeps,android_common: phony out/soong/.intermediates/prebuilts/sdk/current/androidx/androidx.room_room-runtime-nodeps/android_common/aar/AndroidManifest.xml out/soong/.intermediates/prebuilts/sdk/current/androidx/androidx.room_room-runtime-nodeps/android_common/aar/classes-combined.jar out/soong/.intermediates/prebuilts/sdk/current/androidx/androidx.room_room-runtime-nodeps/android_common/aar/proguard.txt out/soong/.intermediates/prebuilts/sdk/current/androidx/androidx.room_room-runtime-nodeps/android_common/package-res.apk
-
-build prebuilts_sdk-targets: phony androidx.core_core-nodeps,android_common androidx.core_core-nodeps,android_common_apex30 androidx.lifecycle_lifecycle-livedata-core-ktx-nodeps,android_common_apex30 androidx.lifecycle_lifecycle-livedata-nodeps,android_common androidx.lifecycle_lifecycle-livedata-nodeps,android_common_apex30 androidx.lifecycle_lifecycle-process-nodeps,android_common androidx.lifecycle_lifecycle-process-nodeps,android_common_apex30 androidx.lifecycle_lifecycle-runtime-ktx-nodeps,android_common_apex30 androidx.lifecycle_lifecycle-service-nodeps,android_common androidx.lifecycle_lifecycle-service-nodeps,android_common_apex30 androidx.lifecycle_lifecycle-viewmodel-savedstate-nodeps,android_common androidx.lifecycle_lifecycle-viewmodel-savedstate-nodeps,android_common_apex30 androidx.room_room-runtime-nodeps,android_common
-
-build libbpf_android,android_x86_64_shared: phony out/soong/.intermediates/system/bpf/libbpf_android/libbpf_android/android_x86_64_shared/libbpf_android.so out/soong/.intermediates/system/bpf/libbpf_android/libbpf_android/android_x86_64_shared/libbpf_android.so.toc
-
-build libbpf_android,android_x86_x86_64_shared: phony out/soong/.intermediates/system/bpf/libbpf_android/libbpf_android/android_x86_x86_64_shared/libbpf_android.so out/soong/.intermediates/system/bpf/libbpf_android/libbpf_android/android_x86_x86_64_shared/libbpf_android.so.toc
-
-build system_bpf-targets: phony libbpf_android,android_x86_64_shared libbpf_android,android_x86_x86_64_shared
-
-build libfs_mgr,android_recovery_x86_64_shared: phony out/soong/.intermediates/system/core/fs_mgr/libfs_mgr/android_recovery_x86_64_shared/libfs_mgr.so out/soong/.intermediates/system/core/fs_mgr/libfs_mgr/android_recovery_x86_64_shared/libfs_mgr.so.toc
-
-build libfs_mgr,android_x86_64_shared: phony out/soong/.intermediates/system/core/fs_mgr/libfs_mgr/android_x86_64_shared/libfs_mgr.so out/soong/.intermediates/system/core/fs_mgr/libfs_mgr/android_x86_64_shared/libfs_mgr.so.toc
-
-build libutilscallstack,android_x86_64_shared: phony out/soong/.intermediates/system/core/libutils/libutilscallstack/android_x86_64_shared/libutilscallstack.so out/soong/.intermediates/system/core/libutils/libutilscallstack/android_x86_64_shared/libutilscallstack.so.toc
-
-build libutilscallstack,android_x86_x86_64_shared: phony out/soong/.intermediates/system/core/libutils/libutilscallstack/android_x86_x86_64_shared/libutilscallstack.so out/soong/.intermediates/system/core/libutils/libutilscallstack/android_x86_x86_64_shared/libutilscallstack.so.toc
-
-build system_core-targets: phony libfs_mgr,android_recovery_x86_64_shared libfs_mgr,android_x86_64_shared libutilscallstack,android_x86_64_shared libutilscallstack,android_x86_x86_64_shared
-
-build libsimpleperf_profcollect_rust,android_x86_64_rlib_dylib-std: phony out/soong/.intermediates/system/extras/simpleperf/libsimpleperf_profcollect_rust/android_x86_64_rlib_dylib-std/libsimpleperf_profcollect_rust.rlib
-
-build system_extras-targets: phony libsimpleperf_profcollect_rust,android_x86_64_rlib_dylib-std
-
-build android.system.suspend@1.0,android_vendor.31_x86_64_shared: phony out/soong/.intermediates/system/hardware/interfaces/suspend/1.0/android.system.suspend@1.0/android_vendor.31_x86_64_shared/android.system.suspend@1.0.so out/soong/.intermediates/system/hardware/interfaces/suspend/1.0/android.system.suspend@1.0/android_vendor.31_x86_64_shared/android.system.suspend@1.0.so.toc
-
-build android.system.suspend@1.0,android_vendor.31_x86_x86_64_shared: phony out/soong/.intermediates/system/hardware/interfaces/suspend/1.0/android.system.suspend@1.0/android_vendor.31_x86_x86_64_shared/android.system.suspend@1.0.so out/soong/.intermediates/system/hardware/interfaces/suspend/1.0/android.system.suspend@1.0/android_vendor.31_x86_x86_64_shared/android.system.suspend@1.0.so.toc
-
-build android.system.wifi.keystore@1.0,android_vendor.31_x86_64_shared: phony out/soong/.intermediates/system/hardware/interfaces/wifi/keystore/1.0/android.system.wifi.keystore@1.0/android_vendor.31_x86_64_shared/android.system.wifi.keystore@1.0.so out/soong/.intermediates/system/hardware/interfaces/wifi/keystore/1.0/android.system.wifi.keystore@1.0/android_vendor.31_x86_64_shared/android.system.wifi.keystore@1.0.so.toc
-
-build system_hardware_interfaces-targets: phony android.system.suspend@1.0,android_vendor.31_x86_64_shared android.system.suspend@1.0,android_vendor.31_x86_x86_64_shared android.system.wifi.keystore@1.0,android_vendor.31_x86_64_shared
-
-build libdataloader,android_x86_64_shared: phony out/soong/.intermediates/system/incremental_delivery/libdataloader/libdataloader/android_x86_64_shared/libdataloader.so out/soong/.intermediates/system/incremental_delivery/libdataloader/libdataloader/android_x86_64_shared/libdataloader.so.toc
-
-build libdataloader,android_x86_x86_64_shared: phony out/soong/.intermediates/system/incremental_delivery/libdataloader/libdataloader/android_x86_x86_64_shared/libdataloader.so out/soong/.intermediates/system/incremental_delivery/libdataloader/libdataloader/android_x86_x86_64_shared/libdataloader.so.toc
-
-build system_incremental_delivery-targets: phony libdataloader,android_x86_64_shared libdataloader,android_x86_x86_64_shared
-
-build libsoft_attestation_cert,android_vendor.31_x86_64_shared: phony out/soong/.intermediates/system/keymaster/libsoft_attestation_cert/android_vendor.31_x86_64_shared/libsoft_attestation_cert.so out/soong/.intermediates/system/keymaster/libsoft_attestation_cert/android_vendor.31_x86_64_shared/libsoft_attestation_cert.so.toc
-
-build libsoft_attestation_cert,android_x86_64_shared: phony out/soong/.intermediates/system/keymaster/libsoft_attestation_cert/android_x86_64_shared/libsoft_attestation_cert.so out/soong/.intermediates/system/keymaster/libsoft_attestation_cert/android_x86_64_shared/libsoft_attestation_cert.so.toc
-
-build system_keymaster-targets: phony libsoft_attestation_cert,android_vendor.31_x86_64_shared libsoft_attestation_cert,android_x86_64_shared
-
-build libfmq,android_x86_64_shared: phony out/soong/.intermediates/system/libfmq/libfmq/android_x86_64_shared/libfmq.so out/soong/.intermediates/system/libfmq/libfmq/android_x86_64_shared/libfmq.so.toc
-
-build libfmq,android_x86_x86_64_shared: phony out/soong/.intermediates/system/libfmq/libfmq/android_x86_x86_64_shared/libfmq.so out/soong/.intermediates/system/libfmq/libfmq/android_x86_x86_64_shared/libfmq.so.toc
-
-build system_libfmq-targets: phony libfmq,android_x86_64_shared libfmq,android_x86_x86_64_shared
-
-build android.hidl.allocator@1.0,android_vendor.31_x86_64_shared: phony out/soong/.intermediates/system/libhidl/transport/allocator/1.0/android.hidl.allocator@1.0/android_vendor.31_x86_64_shared/android.hidl.allocator@1.0.so out/soong/.intermediates/system/libhidl/transport/allocator/1.0/android.hidl.allocator@1.0/android_vendor.31_x86_64_shared/android.hidl.allocator@1.0.so.toc
-
-build android.hidl.allocator@1.0,android_vendor.31_x86_x86_64_shared: phony out/soong/.intermediates/system/libhidl/transport/allocator/1.0/android.hidl.allocator@1.0/android_vendor.31_x86_x86_64_shared/android.hidl.allocator@1.0.so out/soong/.intermediates/system/libhidl/transport/allocator/1.0/android.hidl.allocator@1.0/android_vendor.31_x86_x86_64_shared/android.hidl.allocator@1.0.so.toc
-
-build android.hidl.memory.token@1.0,android_vendor.31_x86_64_shared: phony out/soong/.intermediates/system/libhidl/transport/memory/token/1.0/android.hidl.memory.token@1.0/android_vendor.31_x86_64_shared/android.hidl.memory.token@1.0.so out/soong/.intermediates/system/libhidl/transport/memory/token/1.0/android.hidl.memory.token@1.0/android_vendor.31_x86_64_shared/android.hidl.memory.token@1.0.so.toc
-
-build android.hidl.memory.token@1.0,android_vendor.31_x86_x86_64_shared: phony out/soong/.intermediates/system/libhidl/transport/memory/token/1.0/android.hidl.memory.token@1.0/android_vendor.31_x86_x86_64_shared/android.hidl.memory.token@1.0.so out/soong/.intermediates/system/libhidl/transport/memory/token/1.0/android.hidl.memory.token@1.0/android_vendor.31_x86_x86_64_shared/android.hidl.memory.token@1.0.so.toc
-
-build android.hidl.memory@1.0,android_vendor.31_x86_64_shared: phony out/soong/.intermediates/system/libhidl/transport/memory/1.0/android.hidl.memory@1.0/android_vendor.31_x86_64_shared/android.hidl.memory@1.0.so out/soong/.intermediates/system/libhidl/transport/memory/1.0/android.hidl.memory@1.0/android_vendor.31_x86_64_shared/android.hidl.memory@1.0.so.toc
-
-build android.hidl.memory@1.0,android_vendor.31_x86_x86_64_shared: phony out/soong/.intermediates/system/libhidl/transport/memory/1.0/android.hidl.memory@1.0/android_vendor.31_x86_x86_64_shared/android.hidl.memory@1.0.so out/soong/.intermediates/system/libhidl/transport/memory/1.0/android.hidl.memory@1.0/android_vendor.31_x86_x86_64_shared/android.hidl.memory@1.0.so.toc
-
-build android.hidl.safe_union@1.0,android_vendor.31_x86_64_shared: phony out/soong/.intermediates/system/libhidl/transport/safe_union/1.0/android.hidl.safe_union@1.0/android_vendor.31_x86_64_shared/android.hidl.safe_union@1.0.so out/soong/.intermediates/system/libhidl/transport/safe_union/1.0/android.hidl.safe_union@1.0/android_vendor.31_x86_64_shared/android.hidl.safe_union@1.0.so.toc
-
-build android.hidl.safe_union@1.0,android_vendor.31_x86_x86_64_shared: phony out/soong/.intermediates/system/libhidl/transport/safe_union/1.0/android.hidl.safe_union@1.0/android_vendor.31_x86_x86_64_shared/android.hidl.safe_union@1.0.so out/soong/.intermediates/system/libhidl/transport/safe_union/1.0/android.hidl.safe_union@1.0/android_vendor.31_x86_x86_64_shared/android.hidl.safe_union@1.0.so.toc
-
-build android.hidl.token@1.0,android_vendor.31_x86_64_shared: phony out/soong/.intermediates/system/libhidl/transport/token/1.0/android.hidl.token@1.0/android_vendor.31_x86_64_shared/android.hidl.token@1.0.so out/soong/.intermediates/system/libhidl/transport/token/1.0/android.hidl.token@1.0/android_vendor.31_x86_64_shared/android.hidl.token@1.0.so.toc
-
-build android.hidl.token@1.0,android_vendor.31_x86_x86_64_shared: phony out/soong/.intermediates/system/libhidl/transport/token/1.0/android.hidl.token@1.0/android_vendor.31_x86_x86_64_shared/android.hidl.token@1.0.so out/soong/.intermediates/system/libhidl/transport/token/1.0/android.hidl.token@1.0/android_vendor.31_x86_x86_64_shared/android.hidl.token@1.0.so.toc
-
-build libhidlallocatorutils,android_vendor.31_x86_64_static: phony out/soong/.intermediates/system/libhidl/transport/allocator/1.0/utils/libhidlallocatorutils/android_vendor.31_x86_64_static/obj/system/libhidl/transport/allocator/1.0/utils/FrameworkUtils.o
-
-build libhidlallocatorutils,android_vendor.31_x86_x86_64_static: phony out/soong/.intermediates/system/libhidl/transport/allocator/1.0/utils/libhidlallocatorutils/android_vendor.31_x86_x86_64_static/obj/system/libhidl/transport/allocator/1.0/utils/FrameworkUtils.o
-
-build libhidlbase,android_recovery_x86_64_shared: phony out/soong/.intermediates/system/libhidl/libhidlbase/android_recovery_x86_64_shared/libhidlbase.so out/soong/.intermediates/system/libhidl/libhidlbase/android_recovery_x86_64_shared/libhidlbase.so.toc
-
-build libhidlbase,android_x86_64_shared: phony out/soong/.intermediates/system/libhidl/libhidlbase/android_x86_64_shared/libhidlbase.so out/soong/.intermediates/system/libhidl/libhidlbase/android_x86_64_shared/libhidlbase.so.toc
-
-build libhidlbase,android_x86_x86_64_shared: phony out/soong/.intermediates/system/libhidl/libhidlbase/android_x86_x86_64_shared/libhidlbase.so out/soong/.intermediates/system/libhidl/libhidlbase/android_x86_x86_64_shared/libhidlbase.so.toc
-
-build system_libhidl-targets: phony android.hidl.allocator@1.0,android_vendor.31_x86_64_shared android.hidl.allocator@1.0,android_vendor.31_x86_x86_64_shared android.hidl.memory.token@1.0,android_vendor.31_x86_64_shared android.hidl.memory.token@1.0,android_vendor.31_x86_x86_64_shared android.hidl.memory@1.0,android_vendor.31_x86_64_shared android.hidl.memory@1.0,android_vendor.31_x86_x86_64_shared android.hidl.safe_union@1.0,android_vendor.31_x86_64_shared android.hidl.safe_union@1.0,android_vendor.31_x86_x86_64_shared android.hidl.token@1.0,android_vendor.31_x86_64_shared android.hidl.token@1.0,android_vendor.31_x86_x86_64_shared libhidlallocatorutils,android_vendor.31_x86_64_static libhidlallocatorutils,android_vendor.31_x86_x86_64_static libhidlbase,android_recovery_x86_64_shared libhidlbase,android_x86_64_shared libhidlbase,android_x86_x86_64_shared
-
-build libkeystore2_vintf_rust,android_x86_64_rlib_rlib-std: phony out/soong/.intermediates/system/security/keystore2/src/vintf/libkeystore2_vintf_rust/android_x86_64_rlib_rlib-std/libkeystore2_vintf_rust.rlib
-
-build system_security-targets: phony libkeystore2_vintf_rust,android_x86_64_rlib_rlib-std
+build system_libhidl-targets: phony android.hidl.base-V1.0-java,android_common_apex30 android.hidl.manager-V1.0-java,android_common_apex30 android.hidl.manager-V1.1-java,android_common_apex30 android.hidl.manager-V1.2-java,android_common_apex30
 
 

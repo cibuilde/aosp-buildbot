@@ -1,0 +1,7 @@
+out/soong/.intermediates/hardware/interfaces/memtrack/1.0/android.hardware.memtrack@1.0_genc++_headers/gen/android/hardware/memtrack/1.0/BnHwMemtrack.h
+out/soong/.intermediates/hardware/interfaces/memtrack/1.0/android.hardware.memtrack@1.0_genc++_headers/gen/android/hardware/memtrack/1.0/BpHwMemtrack.h
+out/soong/.intermediates/hardware/interfaces/memtrack/1.0/android.hardware.memtrack@1.0_genc++_headers/gen/android/hardware/memtrack/1.0/BsMemtrack.h
+out/soong/.intermediates/hardware/interfaces/memtrack/1.0/android.hardware.memtrack@1.0_genc++_headers/gen/android/hardware/memtrack/1.0/IHwMemtrack.h
+out/soong/.intermediates/hardware/interfaces/memtrack/1.0/android.hardware.memtrack@1.0_genc++_headers/gen/android/hardware/memtrack/1.0/IMemtrack.h
+out/soong/.intermediates/hardware/interfaces/memtrack/1.0/android.hardware.memtrack@1.0_genc++_headers/gen/android/hardware/memtrack/1.0/hwtypes.h
+out/soong/.intermediates/hardware/interfaces/memtrack/1.0/android.hardware.memtrack@1.0_genc++_headers/gen/android/hardware/memtrack/1.0/types.h

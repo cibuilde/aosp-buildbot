@@ -1,0 +1,3 @@
+out/soong/.intermediates/hardware/interfaces/audio/common/all-versions/default/android.hardware.audio.common@6.0-util/android_x86_64_static/obj/hardware/interfaces/audio/common/all-versions/default/HidlUtils.o
+out/soong/.intermediates/hardware/interfaces/audio/common/all-versions/default/android.hardware.audio.common@6.0-util/android_x86_64_static/obj/hardware/interfaces/audio/common/all-versions/default/HidlUtilsCommon.o
+out/soong/.intermediates/hardware/interfaces/audio/common/all-versions/default/android.hardware.audio.common@6.0-util/android_x86_64_static/obj/hardware/interfaces/audio/common/all-versions/default/UuidUtils.o

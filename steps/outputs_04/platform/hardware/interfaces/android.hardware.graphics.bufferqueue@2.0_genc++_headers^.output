@@ -1,0 +1,12 @@
+out/soong/.intermediates/hardware/interfaces/graphics/bufferqueue/2.0/android.hardware.graphics.bufferqueue@2.0_genc++_headers/gen/android/hardware/graphics/bufferqueue/2.0/BnHwGraphicBufferProducer.h
+out/soong/.intermediates/hardware/interfaces/graphics/bufferqueue/2.0/android.hardware.graphics.bufferqueue@2.0_genc++_headers/gen/android/hardware/graphics/bufferqueue/2.0/BnHwProducerListener.h
+out/soong/.intermediates/hardware/interfaces/graphics/bufferqueue/2.0/android.hardware.graphics.bufferqueue@2.0_genc++_headers/gen/android/hardware/graphics/bufferqueue/2.0/BpHwGraphicBufferProducer.h
+out/soong/.intermediates/hardware/interfaces/graphics/bufferqueue/2.0/android.hardware.graphics.bufferqueue@2.0_genc++_headers/gen/android/hardware/graphics/bufferqueue/2.0/BpHwProducerListener.h
+out/soong/.intermediates/hardware/interfaces/graphics/bufferqueue/2.0/android.hardware.graphics.bufferqueue@2.0_genc++_headers/gen/android/hardware/graphics/bufferqueue/2.0/BsGraphicBufferProducer.h
+out/soong/.intermediates/hardware/interfaces/graphics/bufferqueue/2.0/android.hardware.graphics.bufferqueue@2.0_genc++_headers/gen/android/hardware/graphics/bufferqueue/2.0/BsProducerListener.h
+out/soong/.intermediates/hardware/interfaces/graphics/bufferqueue/2.0/android.hardware.graphics.bufferqueue@2.0_genc++_headers/gen/android/hardware/graphics/bufferqueue/2.0/IGraphicBufferProducer.h
+out/soong/.intermediates/hardware/interfaces/graphics/bufferqueue/2.0/android.hardware.graphics.bufferqueue@2.0_genc++_headers/gen/android/hardware/graphics/bufferqueue/2.0/IHwGraphicBufferProducer.h
+out/soong/.intermediates/hardware/interfaces/graphics/bufferqueue/2.0/android.hardware.graphics.bufferqueue@2.0_genc++_headers/gen/android/hardware/graphics/bufferqueue/2.0/IHwProducerListener.h
+out/soong/.intermediates/hardware/interfaces/graphics/bufferqueue/2.0/android.hardware.graphics.bufferqueue@2.0_genc++_headers/gen/android/hardware/graphics/bufferqueue/2.0/IProducerListener.h
+out/soong/.intermediates/hardware/interfaces/graphics/bufferqueue/2.0/android.hardware.graphics.bufferqueue@2.0_genc++_headers/gen/android/hardware/graphics/bufferqueue/2.0/hwtypes.h
+out/soong/.intermediates/hardware/interfaces/graphics/bufferqueue/2.0/android.hardware.graphics.bufferqueue@2.0_genc++_headers/gen/android/hardware/graphics/bufferqueue/2.0/types.h

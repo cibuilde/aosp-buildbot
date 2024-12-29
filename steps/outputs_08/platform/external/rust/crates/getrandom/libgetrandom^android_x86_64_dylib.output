@@ -1,0 +1,2 @@
+out/soong/.intermediates/external/rust/crates/getrandom/libgetrandom/android_x86_64_dylib/libgetrandom.dylib.so
+out/soong/.intermediates/external/rust/crates/getrandom/libgetrandom/android_x86_64_dylib/stripped/libgetrandom.dylib.so

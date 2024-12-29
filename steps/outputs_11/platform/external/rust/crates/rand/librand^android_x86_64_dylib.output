@@ -1,0 +1,2 @@
+out/soong/.intermediates/external/rust/crates/rand/librand/android_x86_64_dylib/librand.dylib.so
+out/soong/.intermediates/external/rust/crates/rand/librand/android_x86_64_dylib/stripped/librand.dylib.so

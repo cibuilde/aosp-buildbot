@@ -1,0 +1,4 @@
+out/soong/.intermediates/external/webrtc/webrtc_agc2__noise_level_estimator/android_vendor.31_x86_64_static/obj/external/webrtc/modules/audio_processing/agc2/down_sampler.o
+out/soong/.intermediates/external/webrtc/webrtc_agc2__noise_level_estimator/android_vendor.31_x86_64_static/obj/external/webrtc/modules/audio_processing/agc2/noise_level_estimator.o
+out/soong/.intermediates/external/webrtc/webrtc_agc2__noise_level_estimator/android_vendor.31_x86_64_static/obj/external/webrtc/modules/audio_processing/agc2/noise_spectrum_estimator.o
+out/soong/.intermediates/external/webrtc/webrtc_agc2__noise_level_estimator/android_vendor.31_x86_64_static/obj/external/webrtc/modules/audio_processing/agc2/signal_classifier.o

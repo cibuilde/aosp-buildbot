@@ -1,0 +1,5 @@
+out/soong/.intermediates/external/webrtc/webrtc_system_wrappers__system_wrappers/android_vendor.31_x86_64_static/obj/external/webrtc/system_wrappers/source/clock.o
+out/soong/.intermediates/external/webrtc/webrtc_system_wrappers__system_wrappers/android_vendor.31_x86_64_static/obj/external/webrtc/system_wrappers/source/cpu_features.o
+out/soong/.intermediates/external/webrtc/webrtc_system_wrappers__system_wrappers/android_vendor.31_x86_64_static/obj/external/webrtc/system_wrappers/source/cpu_info.o
+out/soong/.intermediates/external/webrtc/webrtc_system_wrappers__system_wrappers/android_vendor.31_x86_64_static/obj/external/webrtc/system_wrappers/source/rtp_to_ntp_estimator.o
+out/soong/.intermediates/external/webrtc/webrtc_system_wrappers__system_wrappers/android_vendor.31_x86_64_static/obj/external/webrtc/system_wrappers/source/sleep.o

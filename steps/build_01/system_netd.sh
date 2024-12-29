@@ -32,50 +32,50 @@ clone_depth_platform system/media
 clone_depth_platform system/netd
 
 
-echo "building clatd.o^android_common"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja clatd.o,android_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/netd/bpf_progs/clatd.o^android_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/netd/clatd.o^android_common.output . $GITHUB_WORKSPACE/artifacts/system/netd/bpf_progs/clatd.o^android_common
-
-echo "building libnetd_client^android_x86_64_static_cfi"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libnetd_client,android_x86_64_static_cfi
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/netd/client/libnetd_client^android_x86_64_static_cfi
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/netd/libnetd_client^android_x86_64_static_cfi.output . $GITHUB_WORKSPACE/artifacts/system/netd/client/libnetd_client^android_x86_64_static_cfi
-
-echo "building libnetd_client^android_x86_x86_64_static_cfi"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libnetd_client,android_x86_x86_64_static_cfi
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/netd/client/libnetd_client^android_x86_x86_64_static_cfi
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/netd/libnetd_client^android_x86_x86_64_static_cfi.output . $GITHUB_WORKSPACE/artifacts/system/netd/client/libnetd_client^android_x86_x86_64_static_cfi
-
-echo "building libnetdbpf^android_x86_64_static_cfi"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libnetdbpf,android_x86_64_static_cfi
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/netd/libnetdbpf/libnetdbpf^android_x86_64_static_cfi
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/netd/libnetdbpf^android_x86_64_static_cfi.output . $GITHUB_WORKSPACE/artifacts/system/netd/libnetdbpf/libnetdbpf^android_x86_64_static_cfi
-
-echo "building libnetdbpf^android_x86_x86_64_static_cfi"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libnetdbpf,android_x86_x86_64_static_cfi
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/netd/libnetdbpf/libnetdbpf^android_x86_x86_64_static_cfi
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/netd/libnetdbpf^android_x86_x86_64_static_cfi.output . $GITHUB_WORKSPACE/artifacts/system/netd/libnetdbpf/libnetdbpf^android_x86_x86_64_static_cfi
-
-echo "building libnetdutils^android_x86_64_static_cfi"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libnetdutils,android_x86_64_static_cfi
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/netd/libnetdutils/libnetdutils^android_x86_64_static_cfi
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/netd/libnetdutils^android_x86_64_static_cfi.output . $GITHUB_WORKSPACE/artifacts/system/netd/libnetdutils/libnetdutils^android_x86_64_static_cfi
-
-echo "building libnetdutils^android_x86_64_static_cfi_apex29"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libnetdutils,android_x86_64_static_cfi_apex29
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/netd/libnetdutils/libnetdutils^android_x86_64_static_cfi_apex29
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/netd/libnetdutils^android_x86_64_static_cfi_apex29.output . $GITHUB_WORKSPACE/artifacts/system/netd/libnetdutils/libnetdutils^android_x86_64_static_cfi_apex29
+echo "building netd.o^android_common"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja netd.o,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/netd/bpf_progs/netd.o^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/netd/netd.o^android_common.output . $GITHUB_WORKSPACE/artifacts/system/netd/bpf_progs/netd.o^android_common
 
 echo "building libnetdutils^android_x86_x86_64_static_cfi"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libnetdutils,android_x86_x86_64_static_cfi
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/netd/libnetdutils/libnetdutils^android_x86_x86_64_static_cfi
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/netd/libnetdutils^android_x86_x86_64_static_cfi.output . $GITHUB_WORKSPACE/artifacts/system/netd/libnetdutils/libnetdutils^android_x86_x86_64_static_cfi
 
-echo "building netd.o^android_common"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja netd.o,android_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/netd/bpf_progs/netd.o^android_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/netd/netd.o^android_common.output . $GITHUB_WORKSPACE/artifacts/system/netd/bpf_progs/netd.o^android_common
+echo "building libnetdutils^android_x86_64_static_cfi_apex29"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libnetdutils,android_x86_64_static_cfi_apex29
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/netd/libnetdutils/libnetdutils^android_x86_64_static_cfi_apex29
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/netd/libnetdutils^android_x86_64_static_cfi_apex29.output . $GITHUB_WORKSPACE/artifacts/system/netd/libnetdutils/libnetdutils^android_x86_64_static_cfi_apex29
+
+echo "building libnetdutils^android_x86_64_static_cfi"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libnetdutils,android_x86_64_static_cfi
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/netd/libnetdutils/libnetdutils^android_x86_64_static_cfi
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/netd/libnetdutils^android_x86_64_static_cfi.output . $GITHUB_WORKSPACE/artifacts/system/netd/libnetdutils/libnetdutils^android_x86_64_static_cfi
+
+echo "building libnetdbpf^android_x86_x86_64_static_cfi"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libnetdbpf,android_x86_x86_64_static_cfi
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/netd/libnetdbpf/libnetdbpf^android_x86_x86_64_static_cfi
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/netd/libnetdbpf^android_x86_x86_64_static_cfi.output . $GITHUB_WORKSPACE/artifacts/system/netd/libnetdbpf/libnetdbpf^android_x86_x86_64_static_cfi
+
+echo "building libnetdbpf^android_x86_64_static_cfi"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libnetdbpf,android_x86_64_static_cfi
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/netd/libnetdbpf/libnetdbpf^android_x86_64_static_cfi
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/netd/libnetdbpf^android_x86_64_static_cfi.output . $GITHUB_WORKSPACE/artifacts/system/netd/libnetdbpf/libnetdbpf^android_x86_64_static_cfi
+
+echo "building libnetd_client^android_x86_x86_64_static_cfi"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libnetd_client,android_x86_x86_64_static_cfi
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/netd/client/libnetd_client^android_x86_x86_64_static_cfi
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/netd/libnetd_client^android_x86_x86_64_static_cfi.output . $GITHUB_WORKSPACE/artifacts/system/netd/client/libnetd_client^android_x86_x86_64_static_cfi
+
+echo "building libnetd_client^android_x86_64_static_cfi"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libnetd_client,android_x86_64_static_cfi
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/netd/client/libnetd_client^android_x86_64_static_cfi
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/netd/libnetd_client^android_x86_64_static_cfi.output . $GITHUB_WORKSPACE/artifacts/system/netd/client/libnetd_client^android_x86_64_static_cfi
+
+echo "building clatd.o^android_common"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja clatd.o,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/netd/bpf_progs/clatd.o^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/netd/clatd.o^android_common.output . $GITHUB_WORKSPACE/artifacts/system/netd/bpf_progs/clatd.o^android_common
 
 rm -rf out
 

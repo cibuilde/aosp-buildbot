@@ -9,16 +9,29 @@ ln -sf $GITHUB_WORKSPACE/ninja .
 
 mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86 prebuilts/clang/host/linux-x86
 
-clone_depth_platform build/soong
+clone_depth_platform libcore
+clone_project platform/prebuilts/build-tools prebuilts/build-tools android12-gsi "/linux-x86/bin" "/linux-x86/lib64" "/path" "/common"
+clone_project platform/prebuilts/jdk/jdk11 prebuilts/jdk/jdk11 android12-gsi "/linux-x86"
 clone_depth tools/platform-compat
 
+rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/cmd/dep_fixer/dep_fixer^linux_glibc_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/cmd/merge_zips/merge_zips^linux_glibc_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/tools/platform-compat/java/com/android/class2nonsdklist/class2nonsdklist^linux_glibc_common/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/cmd/javac_wrapper/soong_javac_wrapper^linux_glibc_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/zip/cmd/soong_zip^linux_glibc_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/cmd/zipsync/zipsync^linux_glibc_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/protobuf/aprotoc^linux_glibc_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/turbine/turbine^linux_glibc_common/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/libcore/core-current-stubs-system-modules^android_common/ .
 
-echo "building class2nonsdklist^linux_glibc_x86_64"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_13.ninja class2nonsdklist,linux_glibc_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/tools/platform-compat/java/com/android/class2nonsdklist/class2nonsdklist^linux_glibc_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_13/tools/platform-compat/class2nonsdklist^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/tools/platform-compat/java/com/android/class2nonsdklist/class2nonsdklist^linux_glibc_x86_64
+echo "building unsupportedappusage^android_common"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_13.ninja unsupportedappusage,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/tools/platform-compat/java/android/compat/annotation/unsupportedappusage^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_13/tools/platform-compat/unsupportedappusage^android_common.output . $GITHUB_WORKSPACE/artifacts/tools/platform-compat/java/android/compat/annotation/unsupportedappusage^android_common
+
+echo "building app-compat-annotations^android_common"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_13.ninja app-compat-annotations,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/tools/platform-compat/java/android/compat/annotation/app-compat-annotations^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_13/tools/platform-compat/app-compat-annotations^android_common.output . $GITHUB_WORKSPACE/artifacts/tools/platform-compat/java/android/compat/annotation/app-compat-annotations^android_common
 
 rm -rf out
 
@@ -28,9 +41,17 @@ gh release --repo cibuilde/aosp-buildbot upload android12-gsi_13 tools_platform-
 
 du -ah -d1 tools_platform-compat*.tar.zst | sort -h
 
-if [ ! -f "$GITHUB_WORKSPACE/cache/build_soong.tar.zst" ]; then
-  echo "Compressing build/soong -> build_soong.tar.zst"
-  tar -cf $GITHUB_WORKSPACE/cache/build_soong.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/build/soong/ .
+if [ ! -f "$GITHUB_WORKSPACE/cache/libcore.tar.zst" ]; then
+  echo "Compressing libcore -> libcore.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/libcore.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/libcore/ .
+fi
+if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_build-tools.tar.zst" ]; then
+  echo "Compressing prebuilts/build-tools -> prebuilts_build-tools.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/prebuilts_build-tools.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/prebuilts/build-tools/ .
+fi
+if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_jdk_jdk11.tar.zst" ]; then
+  echo "Compressing prebuilts/jdk/jdk11 -> prebuilts_jdk_jdk11.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/prebuilts_jdk_jdk11.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/prebuilts/jdk/jdk11/ .
 fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/tools_platform-compat.tar.zst" ]; then
   echo "Compressing tools/platform-compat -> tools_platform-compat.tar.zst"

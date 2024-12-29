@@ -1,0 +1,5 @@
+out/soong/.intermediates/system/hardware/interfaces/net/netd/1.1/android.system.net.netd@1.1_genc++_headers/gen/android/system/net/netd/1.1/BnHwNetd.h
+out/soong/.intermediates/system/hardware/interfaces/net/netd/1.1/android.system.net.netd@1.1_genc++_headers/gen/android/system/net/netd/1.1/BpHwNetd.h
+out/soong/.intermediates/system/hardware/interfaces/net/netd/1.1/android.system.net.netd@1.1_genc++_headers/gen/android/system/net/netd/1.1/BsNetd.h
+out/soong/.intermediates/system/hardware/interfaces/net/netd/1.1/android.system.net.netd@1.1_genc++_headers/gen/android/system/net/netd/1.1/IHwNetd.h
+out/soong/.intermediates/system/hardware/interfaces/net/netd/1.1/android.system.net.netd@1.1_genc++_headers/gen/android/system/net/netd/1.1/INetd.h

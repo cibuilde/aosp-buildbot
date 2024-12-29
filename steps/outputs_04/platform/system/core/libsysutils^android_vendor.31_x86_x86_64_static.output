@@ -1,0 +1,14 @@
+out/soong/.intermediates/system/core/libsysutils/libsysutils/android_vendor.31_x86_x86_64_static/obj/system/core/libsysutils/src/FrameworkCommand.o
+out/soong/.intermediates/system/core/libsysutils/libsysutils/android_vendor.31_x86_x86_64_static/obj/system/core/libsysutils/src/FrameworkCommand.tidy
+out/soong/.intermediates/system/core/libsysutils/libsysutils/android_vendor.31_x86_x86_64_static/obj/system/core/libsysutils/src/FrameworkListener.o
+out/soong/.intermediates/system/core/libsysutils/libsysutils/android_vendor.31_x86_x86_64_static/obj/system/core/libsysutils/src/FrameworkListener.tidy
+out/soong/.intermediates/system/core/libsysutils/libsysutils/android_vendor.31_x86_x86_64_static/obj/system/core/libsysutils/src/NetlinkEvent.o
+out/soong/.intermediates/system/core/libsysutils/libsysutils/android_vendor.31_x86_x86_64_static/obj/system/core/libsysutils/src/NetlinkEvent.tidy
+out/soong/.intermediates/system/core/libsysutils/libsysutils/android_vendor.31_x86_x86_64_static/obj/system/core/libsysutils/src/NetlinkListener.o
+out/soong/.intermediates/system/core/libsysutils/libsysutils/android_vendor.31_x86_x86_64_static/obj/system/core/libsysutils/src/NetlinkListener.tidy
+out/soong/.intermediates/system/core/libsysutils/libsysutils/android_vendor.31_x86_x86_64_static/obj/system/core/libsysutils/src/ServiceManager.o
+out/soong/.intermediates/system/core/libsysutils/libsysutils/android_vendor.31_x86_x86_64_static/obj/system/core/libsysutils/src/ServiceManager.tidy
+out/soong/.intermediates/system/core/libsysutils/libsysutils/android_vendor.31_x86_x86_64_static/obj/system/core/libsysutils/src/SocketClient.o
+out/soong/.intermediates/system/core/libsysutils/libsysutils/android_vendor.31_x86_x86_64_static/obj/system/core/libsysutils/src/SocketClient.tidy
+out/soong/.intermediates/system/core/libsysutils/libsysutils/android_vendor.31_x86_x86_64_static/obj/system/core/libsysutils/src/SocketListener.o
+out/soong/.intermediates/system/core/libsysutils/libsysutils/android_vendor.31_x86_x86_64_static/obj/system/core/libsysutils/src/SocketListener.tidy

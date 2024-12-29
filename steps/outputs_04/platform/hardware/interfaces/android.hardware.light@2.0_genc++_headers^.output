@@ -1,0 +1,7 @@
+out/soong/.intermediates/hardware/interfaces/light/2.0/android.hardware.light@2.0_genc++_headers/gen/android/hardware/light/2.0/BnHwLight.h
+out/soong/.intermediates/hardware/interfaces/light/2.0/android.hardware.light@2.0_genc++_headers/gen/android/hardware/light/2.0/BpHwLight.h
+out/soong/.intermediates/hardware/interfaces/light/2.0/android.hardware.light@2.0_genc++_headers/gen/android/hardware/light/2.0/BsLight.h
+out/soong/.intermediates/hardware/interfaces/light/2.0/android.hardware.light@2.0_genc++_headers/gen/android/hardware/light/2.0/IHwLight.h
+out/soong/.intermediates/hardware/interfaces/light/2.0/android.hardware.light@2.0_genc++_headers/gen/android/hardware/light/2.0/ILight.h
+out/soong/.intermediates/hardware/interfaces/light/2.0/android.hardware.light@2.0_genc++_headers/gen/android/hardware/light/2.0/hwtypes.h
+out/soong/.intermediates/hardware/interfaces/light/2.0/android.hardware.light@2.0_genc++_headers/gen/android/hardware/light/2.0/types.h

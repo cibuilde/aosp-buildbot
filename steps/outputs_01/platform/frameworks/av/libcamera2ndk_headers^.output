@@ -1,0 +1,8 @@
+out/soong/ndk/sysroot/usr/include/camera/NdkCameraCaptureSession.h
+out/soong/ndk/sysroot/usr/include/camera/NdkCameraDevice.h
+out/soong/ndk/sysroot/usr/include/camera/NdkCameraError.h
+out/soong/ndk/sysroot/usr/include/camera/NdkCameraManager.h
+out/soong/ndk/sysroot/usr/include/camera/NdkCameraMetadata.h
+out/soong/ndk/sysroot/usr/include/camera/NdkCameraMetadataTags.h
+out/soong/ndk/sysroot/usr/include/camera/NdkCameraWindowType.h
+out/soong/ndk/sysroot/usr/include/camera/NdkCaptureRequest.h

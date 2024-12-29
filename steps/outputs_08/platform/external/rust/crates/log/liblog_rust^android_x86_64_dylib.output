@@ -1,0 +1,2 @@
+out/soong/.intermediates/external/rust/crates/log/liblog_rust/android_x86_64_dylib/liblog.dylib.so
+out/soong/.intermediates/external/rust/crates/log/liblog_rust/android_x86_64_dylib/stripped/liblog.dylib.so

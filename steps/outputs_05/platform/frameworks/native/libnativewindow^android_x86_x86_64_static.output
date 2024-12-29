@@ -1,0 +1,3 @@
+out/soong/.intermediates/frameworks/native/libs/nativewindow/libnativewindow/android_x86_x86_64_static/libnativewindow.a
+out/soong/.intermediates/frameworks/native/libs/nativewindow/libnativewindow/android_x86_x86_64_static/obj/frameworks/native/libs/nativewindow/AHardwareBuffer.o
+out/soong/.intermediates/frameworks/native/libs/nativewindow/libnativewindow/android_x86_x86_64_static/obj/frameworks/native/libs/nativewindow/ANativeWindow.o

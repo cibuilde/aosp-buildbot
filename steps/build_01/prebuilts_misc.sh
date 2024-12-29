@@ -12,15 +12,15 @@ mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/
 clone_project platform/prebuilts/misc prebuilts/misc android12-gsi "/common/asm/asm-6.0.jar" "/common/asm/asm-7.0.jar" "/common/asm/asm-analysis-6.0.jar" "/common/asm/asm-commons-6.0.jar" "/common/asm/asm-commons-7.0.jar" "/common/asm/asm-tree-6.0.jar" "/common/asm/asm-tree-7.0.jar" "/common/commons-cli/commons-cli-1.2.jar" "/common/guava/guava-21.0.jar" "/gdbserver/android-x86_64/gdbserver64" "/gdbserver/android-x86/gdbserver" "/linux-x86/yasm/yasm"
 
 
-echo "building gdbserver^android_x86_64"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja gdbserver,android_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/misc/gdbserver/gdbserver^android_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/prebuilts/misc/gdbserver^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/prebuilts/misc/gdbserver/gdbserver^android_x86_64
-
 echo "building gdbserver^android_x86_x86_64"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja gdbserver,android_x86_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/misc/gdbserver/gdbserver^android_x86_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/prebuilts/misc/gdbserver^android_x86_x86_64.output . $GITHUB_WORKSPACE/artifacts/prebuilts/misc/gdbserver/gdbserver^android_x86_x86_64
+
+echo "building gdbserver^android_x86_64"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja gdbserver,android_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/misc/gdbserver/gdbserver^android_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/prebuilts/misc/gdbserver^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/prebuilts/misc/gdbserver/gdbserver^android_x86_64
 
 rm -rf out
 

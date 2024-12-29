@@ -33,10 +33,6 @@ gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern bui
 mkdir -p $GITHUB_WORKSPACE/downloads/build/soong
 tar xf $GITHUB_WORKSPACE/build_soong-01.tar.zst -C $GITHUB_WORKSPACE/downloads/build/soong/
 
-gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern device_generic_vulkan-cereal.tar.zst --output device_generic_vulkan-cereal-01.tar.zst
-mkdir -p $GITHUB_WORKSPACE/downloads/device/generic/vulkan-cereal
-tar xf $GITHUB_WORKSPACE/device_generic_vulkan-cereal-01.tar.zst -C $GITHUB_WORKSPACE/downloads/device/generic/vulkan-cereal/
-
 gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern device_google_cuttlefish_prebuilts.tar.zst --output device_google_cuttlefish_prebuilts-01.tar.zst
 mkdir -p $GITHUB_WORKSPACE/downloads/device/google/cuttlefish_prebuilts
 tar xf $GITHUB_WORKSPACE/device_google_cuttlefish_prebuilts-01.tar.zst -C $GITHUB_WORKSPACE/downloads/device/google/cuttlefish_prebuilts/
@@ -44,14 +40,6 @@ tar xf $GITHUB_WORKSPACE/device_google_cuttlefish_prebuilts-01.tar.zst -C $GITHU
 gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_arm-optimized-routines.tar.zst --output external_arm-optimized-routines-01.tar.zst
 mkdir -p $GITHUB_WORKSPACE/downloads/external/arm-optimized-routines
 tar xf $GITHUB_WORKSPACE/external_arm-optimized-routines-01.tar.zst -C $GITHUB_WORKSPACE/downloads/external/arm-optimized-routines/
-
-gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_boringssl.tar.zst --output external_boringssl-01.tar.zst
-mkdir -p $GITHUB_WORKSPACE/downloads/external/boringssl
-tar xf $GITHUB_WORKSPACE/external_boringssl-01.tar.zst -C $GITHUB_WORKSPACE/downloads/external/boringssl/
-
-gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_cpu_features.tar.zst --output external_cpu_features-01.tar.zst
-mkdir -p $GITHUB_WORKSPACE/downloads/external/cpu_features
-tar xf $GITHUB_WORKSPACE/external_cpu_features-01.tar.zst -C $GITHUB_WORKSPACE/downloads/external/cpu_features/
 
 gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_e2fsprogs.tar.zst --output external_e2fsprogs-01.tar.zst
 mkdir -p $GITHUB_WORKSPACE/downloads/external/e2fsprogs
@@ -69,10 +57,6 @@ gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern ext
 mkdir -p $GITHUB_WORKSPACE/downloads/external/grpc-grpc
 tar xf $GITHUB_WORKSPACE/external_grpc-grpc-01.tar.zst -C $GITHUB_WORKSPACE/downloads/external/grpc-grpc/
 
-gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_icu.tar.zst --output external_icu-01.tar.zst
-mkdir -p $GITHUB_WORKSPACE/downloads/external/icu
-tar xf $GITHUB_WORKSPACE/external_icu-01.tar.zst -C $GITHUB_WORKSPACE/downloads/external/icu/
-
 gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_libcxxabi.tar.zst --output external_libcxxabi-01.tar.zst
 mkdir -p $GITHUB_WORKSPACE/downloads/external/libcxxabi
 tar xf $GITHUB_WORKSPACE/external_libcxxabi-01.tar.zst -C $GITHUB_WORKSPACE/downloads/external/libcxxabi/
@@ -81,17 +65,13 @@ gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern ext
 mkdir -p $GITHUB_WORKSPACE/downloads/external/libdrm
 tar xf $GITHUB_WORKSPACE/external_libdrm-01.tar.zst -C $GITHUB_WORKSPACE/downloads/external/libdrm/
 
-gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_libyuv.tar.zst --output external_libyuv-01.tar.zst
-mkdir -p $GITHUB_WORKSPACE/downloads/external/libyuv
-tar xf $GITHUB_WORKSPACE/external_libyuv-01.tar.zst -C $GITHUB_WORKSPACE/downloads/external/libyuv/
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_nanopb-c.tar.zst --output external_nanopb-c-01.tar.zst
+mkdir -p $GITHUB_WORKSPACE/downloads/external/nanopb-c
+tar xf $GITHUB_WORKSPACE/external_nanopb-c-01.tar.zst -C $GITHUB_WORKSPACE/downloads/external/nanopb-c/
 
 gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_pcre.tar.zst --output external_pcre-01.tar.zst
 mkdir -p $GITHUB_WORKSPACE/downloads/external/pcre
 tar xf $GITHUB_WORKSPACE/external_pcre-01.tar.zst -C $GITHUB_WORKSPACE/downloads/external/pcre/
-
-gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_python_cpython2.tar.zst --output external_python_cpython2-01.tar.zst
-mkdir -p $GITHUB_WORKSPACE/downloads/external/python/cpython2
-tar xf $GITHUB_WORKSPACE/external_python_cpython2-01.tar.zst -C $GITHUB_WORKSPACE/downloads/external/python/cpython2/
 
 gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_rust_crates_bitflags.tar.zst --output external_rust_crates_bitflags-01.tar.zst
 mkdir -p $GITHUB_WORKSPACE/downloads/external/rust/crates/bitflags
@@ -137,10 +117,6 @@ gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern ext
 mkdir -p $GITHUB_WORKSPACE/downloads/external/selinux
 tar xf $GITHUB_WORKSPACE/external_selinux-01.tar.zst -C $GITHUB_WORKSPACE/downloads/external/selinux/
 
-gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_sqlite.tar.zst --output external_sqlite-01.tar.zst
-mkdir -p $GITHUB_WORKSPACE/downloads/external/sqlite
-tar xf $GITHUB_WORKSPACE/external_sqlite-01.tar.zst -C $GITHUB_WORKSPACE/downloads/external/sqlite/
-
 gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_zlib.tar.zst --output external_zlib-01.tar.zst
 mkdir -p $GITHUB_WORKSPACE/downloads/external/zlib
 tar xf $GITHUB_WORKSPACE/external_zlib-01.tar.zst -C $GITHUB_WORKSPACE/downloads/external/zlib/
@@ -169,10 +145,6 @@ gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern sys
 mkdir -p $GITHUB_WORKSPACE/downloads/system/logging
 tar xf $GITHUB_WORKSPACE/system_logging-01.tar.zst -C $GITHUB_WORKSPACE/downloads/system/logging/
 
-gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern system_media.tar.zst --output system_media-01.tar.zst
-mkdir -p $GITHUB_WORKSPACE/downloads/system/media
-tar xf $GITHUB_WORKSPACE/system_media-01.tar.zst -C $GITHUB_WORKSPACE/downloads/system/media/
-
 export OUT_DIR=out
 mkdir -p $GITHUB_WORKSPACE/.bin
 ln -sf /usr/bin/python2 $GITHUB_WORKSPACE/.bin/python
@@ -180,36 +152,53 @@ export PATH=$GITHUB_WORKSPACE/.bin:$PATH
 
 time source steps/build_02/bionic.sh
 time source steps/build_02/bootable_recovery.sh
-time source steps/build_02/build_blueprint.sh
 time source steps/build_02/build_soong.sh
-time source steps/build_02/device_generic_vulkan-cereal.sh
-time source steps/build_02/external_boringssl.sh
-time source steps/build_02/external_cpu_features.sh
+time source steps/build_02/external_crosvm.sh
 time source steps/build_02/external_grpc-grpc.sh
-time source steps/build_02/external_icu.sh
 time source steps/build_02/external_libcxx.sh
-time source steps/build_02/external_libyuv.sh
-time source steps/build_02/external_pcre.sh
-time source steps/build_02/external_python_cpython2.sh
 time source steps/build_02/external_rust_crates_aho-corasick.sh
+time source steps/build_02/external_rust_crates_android_log-sys.sh
+time source steps/build_02/external_rust_crates_anyhow.sh
+time source steps/build_02/external_rust_crates_async-task.sh
+time source steps/build_02/external_rust_crates_bitflags.sh
+time source steps/build_02/external_rust_crates_bytes.sh
+time source steps/build_02/external_rust_crates_cfg-if.sh
 time source steps/build_02/external_rust_crates_clap.sh
 time source steps/build_02/external_rust_crates_codespan-reporting.sh
+time source steps/build_02/external_rust_crates_downcast-rs.sh
+time source steps/build_02/external_rust_crates_fallible-iterator.sh
+time source steps/build_02/external_rust_crates_fallible-streaming-iterator.sh
+time source steps/build_02/external_rust_crates_futures-core.sh
+time source steps/build_02/external_rust_crates_futures-io.sh
+time source steps/build_02/external_rust_crates_futures-sink.sh
+time source steps/build_02/external_rust_crates_futures-task.sh
 time source steps/build_02/external_rust_crates_heck.sh
+time source steps/build_02/external_rust_crates_itoa.sh
+time source steps/build_02/external_rust_crates_lazy_static.sh
+time source steps/build_02/external_rust_crates_libc.sh
 time source steps/build_02/external_rust_crates_libloading.sh
 time source steps/build_02/external_rust_crates_log.sh
+time source steps/build_02/external_rust_crates_memchr.sh
+time source steps/build_02/external_rust_crates_memoffset.sh
 time source steps/build_02/external_rust_crates_nom.sh
+time source steps/build_02/external_rust_crates_num-traits.sh
+time source steps/build_02/external_rust_crates_pin-project-lite.sh
+time source steps/build_02/external_rust_crates_pin-utils.sh
+time source steps/build_02/external_rust_crates_ppv-lite86.sh
 time source steps/build_02/external_rust_crates_proc-macro2.sh
+time source steps/build_02/external_rust_crates_ryu.sh
+time source steps/build_02/external_rust_crates_scopeguard.sh
+time source steps/build_02/external_rust_crates_slab.sh
+time source steps/build_02/external_rust_crates_smallvec.sh
 time source steps/build_02/external_rust_crates_which.sh
 time source steps/build_02/external_selinux.sh
-time source steps/build_02/external_sqlite.sh
-time source steps/build_02/external_zlib.sh
 time source steps/build_02/frameworks_base.sh
 time source steps/build_02/packages_modules_Virtualization.sh
-time source steps/build_02/prebuilts_rust.sh
+time source steps/build_02/packages_modules_adb.sh
+time source steps/build_02/system_bt.sh
 time source steps/build_02/system_core.sh
 time source steps/build_02/system_libbase.sh
 time source steps/build_02/system_libvintf.sh
-time source steps/build_02/system_media.sh
 time source steps/build_02/system_sepolicy.sh
 time source steps/build_02/system_unwinding.sh
 

@@ -1,0 +1,17 @@
+out/soong/.intermediates/bionic/libc/libc_nopthread/android_x86_x86_64_static/obj/bionic/libc/bionic/ether_aton.o
+out/soong/.intermediates/bionic/libc/libc_nopthread/android_x86_x86_64_static/obj/bionic/libc/bionic/ether_ntoa.o
+out/soong/.intermediates/bionic/libc/libc_nopthread/android_x86_x86_64_static/obj/bionic/libc/bionic/exit.o
+out/soong/.intermediates/bionic/libc/libc_nopthread/android_x86_x86_64_static/obj/bionic/libc/bionic/fts.o
+out/soong/.intermediates/bionic/libc/libc_nopthread/android_x86_x86_64_static/obj/bionic/libc/bionic/initgroups.o
+out/soong/.intermediates/bionic/libc/libc_nopthread/android_x86_x86_64_static/obj/bionic/libc/bionic/isatty.o
+out/soong/.intermediates/bionic/libc/libc_nopthread/android_x86_x86_64_static/obj/bionic/libc/bionic/legacy_32_bit_support.o
+out/soong/.intermediates/bionic/libc/libc_nopthread/android_x86_x86_64_static/obj/bionic/libc/bionic/sched_cpualloc.o
+out/soong/.intermediates/bionic/libc/libc_nopthread/android_x86_x86_64_static/obj/bionic/libc/bionic/sched_cpucount.o
+out/soong/.intermediates/bionic/libc/libc_nopthread/android_x86_x86_64_static/obj/bionic/libc/bionic/time64.o
+out/soong/.intermediates/bionic/libc/libc_nopthread/android_x86_x86_64_static/obj/bionic/libc/stdio/fmemopen.o
+out/soong/.intermediates/bionic/libc/libc_nopthread/android_x86_x86_64_static/obj/bionic/libc/stdio/parsefloat.o
+out/soong/.intermediates/bionic/libc/libc_nopthread/android_x86_x86_64_static/obj/bionic/libc/stdio/refill.o
+out/soong/.intermediates/bionic/libc/libc_nopthread/android_x86_x86_64_static/obj/bionic/libc/stdio/stdio.o
+out/soong/.intermediates/bionic/libc/libc_nopthread/android_x86_x86_64_static/obj/bionic/libc/stdio/stdio_ext.o
+out/soong/.intermediates/bionic/libc/libc_nopthread/android_x86_x86_64_static/obj/bionic/libc/stdio/vfscanf.o
+out/soong/.intermediates/bionic/libc/libc_nopthread/android_x86_x86_64_static/obj/bionic/libc/stdio/vfwscanf.o

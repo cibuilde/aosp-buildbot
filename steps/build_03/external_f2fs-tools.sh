@@ -32,6 +32,8 @@ clone_depth_platform system/media
 
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/boringssl/libcrypto^linux_glibc_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/e2fsprogs/lib/uuid/libext2_uuid^linux_glibc_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/f2fs-tools/libf2fs_fmt_host^linux_glibc_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcxx/libc++^linux_glibc_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcxx/libc++_static^linux_glibc_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/lz4/lib/liblz4^linux_glibc_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/selinux/libselinux/libselinux^linux_glibc_x86_64_static/ .
@@ -45,6 +47,11 @@ echo "building sload_f2fs^linux_glibc_x86_64"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja sload_f2fs,linux_glibc_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/f2fs-tools/sload_f2fs^linux_glibc_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/external/f2fs-tools/sload_f2fs^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/f2fs-tools/sload_f2fs^linux_glibc_x86_64
+
+echo "building make_f2fs^linux_glibc_x86_64"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja make_f2fs,linux_glibc_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/f2fs-tools/make_f2fs^linux_glibc_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/external/f2fs-tools/make_f2fs^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/f2fs-tools/make_f2fs^linux_glibc_x86_64
 
 rm -rf out
 

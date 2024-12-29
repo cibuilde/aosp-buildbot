@@ -1,0 +1,3 @@
+out/soong/.intermediates/external/minijail/libminijail_generated/android_x86_64_static_apex10000/libminijail_generated.a
+out/soong/.intermediates/external/minijail/libminijail_generated/android_x86_64_static_apex10000/obj/.intermediates/external/minijail/libminijail_gen_constants/android_x86_64_apex10000/gen/libconstants.o
+out/soong/.intermediates/external/minijail/libminijail_generated/android_x86_64_static_apex10000/obj/.intermediates/external/minijail/libminijail_gen_syscall/android_x86_64_apex10000/gen/libsyscalls.o

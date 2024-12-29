@@ -13,6 +13,7 @@ clone_depth_platform bionic
 clone_depth_platform external/compiler-rt
 clone_depth_platform external/libcxx
 clone_depth_platform external/libcxxabi
+clone_depth_platform external/speex
 clone_depth_platform frameworks/av
 clone_depth_platform frameworks/native
 clone_depth_platform hardware/libhardware
@@ -22,32 +23,48 @@ clone_depth_platform prebuilts/gcc/linux-x86/x86/x86_64-linux-android-4.9
 clone_depth_platform system/core
 clone_depth_platform system/logging
 clone_depth_platform system/media
+clone_depth_platform system/unwinding
 
 
-echo "building libaudioutils_fixedfft^android_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libaudioutils_fixedfft,android_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/media/audio_utils/libaudioutils_fixedfft^android_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/media/libaudioutils_fixedfft^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/media/audio_utils/libaudioutils_fixedfft^android_x86_64_static
-
-echo "building libaudioutils_fixedfft^android_x86_64_static_cfi_apex29"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libaudioutils_fixedfft,android_x86_64_static_cfi_apex29
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/media/audio_utils/libaudioutils_fixedfft^android_x86_64_static_cfi_apex29
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/media/libaudioutils_fixedfft^android_x86_64_static_cfi_apex29.output . $GITHUB_WORKSPACE/artifacts/system/media/audio_utils/libaudioutils_fixedfft^android_x86_64_static_cfi_apex29
-
-echo "building libaudioutils_fixedfft^android_x86_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libaudioutils_fixedfft,android_x86_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/media/audio_utils/libaudioutils_fixedfft^android_x86_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/media/libaudioutils_fixedfft^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/media/audio_utils/libaudioutils_fixedfft^android_x86_x86_64_static
+echo "building libsndfile^android_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libsndfile,android_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/media/audio_utils/libsndfile^android_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/media/libsndfile^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/media/audio_utils/libsndfile^android_x86_64_static
 
 echo "building libfifo^android_x86_64_static_cfi_apex29"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libfifo,android_x86_64_static_cfi_apex29
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/media/audio_utils/libfifo^android_x86_64_static_cfi_apex29
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/media/libfifo^android_x86_64_static_cfi_apex29.output . $GITHUB_WORKSPACE/artifacts/system/media/audio_utils/libfifo^android_x86_64_static_cfi_apex29
 
-echo "building libsndfile^android_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libsndfile,android_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/media/audio_utils/libsndfile^android_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/media/libsndfile^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/media/audio_utils/libsndfile^android_x86_64_static
+echo "building libaudioutils_fixedfft^android_x86_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libaudioutils_fixedfft,android_x86_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/media/audio_utils/libaudioutils_fixedfft^android_x86_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/media/libaudioutils_fixedfft^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/media/audio_utils/libaudioutils_fixedfft^android_x86_x86_64_static
+
+echo "building libaudioutils_fixedfft^android_x86_64_static_cfi_apex29"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libaudioutils_fixedfft,android_x86_64_static_cfi_apex29
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/media/audio_utils/libaudioutils_fixedfft^android_x86_64_static_cfi_apex29
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/media/libaudioutils_fixedfft^android_x86_64_static_cfi_apex29.output . $GITHUB_WORKSPACE/artifacts/system/media/audio_utils/libaudioutils_fixedfft^android_x86_64_static_cfi_apex29
+
+echo "building libaudioutils_fixedfft^android_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libaudioutils_fixedfft,android_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/media/audio_utils/libaudioutils_fixedfft^android_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/media/libaudioutils_fixedfft^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/media/audio_utils/libaudioutils_fixedfft^android_x86_64_static
+
+echo "building libaudioutils^android_x86_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libaudioutils,android_x86_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/media/audio_utils/libaudioutils^android_x86_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/media/libaudioutils^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/media/audio_utils/libaudioutils^android_x86_x86_64_static
+
+echo "building libaudioutils^android_x86_64_static_cfi_apex29"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libaudioutils,android_x86_64_static_cfi_apex29
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/media/audio_utils/libaudioutils^android_x86_64_static_cfi_apex29
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/media/libaudioutils^android_x86_64_static_cfi_apex29.output . $GITHUB_WORKSPACE/artifacts/system/media/audio_utils/libaudioutils^android_x86_64_static_cfi_apex29
+
+echo "building libaudioutils^android_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libaudioutils,android_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/media/audio_utils/libaudioutils^android_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/media/libaudioutils^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/media/audio_utils/libaudioutils^android_x86_64_static
 
 rm -rf out
 
@@ -72,6 +89,10 @@ fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/external_libcxxabi.tar.zst" ]; then
   echo "Compressing external/libcxxabi -> external_libcxxabi.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/external_libcxxabi.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/libcxxabi/ .
+fi
+if [ ! -f "$GITHUB_WORKSPACE/cache/external_speex.tar.zst" ]; then
+  echo "Compressing external/speex -> external_speex.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/external_speex.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/speex/ .
 fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/frameworks_av.tar.zst" ]; then
   echo "Compressing frameworks/av -> frameworks_av.tar.zst"
@@ -108,6 +129,10 @@ fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/system_media.tar.zst" ]; then
   echo "Compressing system/media -> system_media.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/system_media.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/system/media/ .
+fi
+if [ ! -f "$GITHUB_WORKSPACE/cache/system_unwinding.tar.zst" ]; then
+  echo "Compressing system/unwinding -> system_unwinding.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/system_unwinding.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/system/unwinding/ .
 fi
 
 rm -rf aosp

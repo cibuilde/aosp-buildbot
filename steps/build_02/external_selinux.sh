@@ -10,6 +10,7 @@ ln -sf $GITHUB_WORKSPACE/ninja .
 mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86 prebuilts/clang/host/linux-x86
 
 clone_depth_platform bionic
+clone_depth_platform build/soong
 clone_depth_platform external/pcre
 clone_depth_platform external/selinux
 clone_depth_platform frameworks/av
@@ -24,24 +25,30 @@ clone_depth_platform system/logging
 clone_depth_platform system/media
 
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/pcre/libpcre2^android_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/pcre/libpcre2^linux_glibc_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/pcre/libpcre2^linux_glibc_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/selinux/libsepol/libsepol^linux_glibc_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/core/libpackagelistparser/libpackagelistparser^android_x86_64_static/ .
-
-echo "building libselinux^android_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_02.ninja libselinux,android_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/selinux/libselinux/libselinux^android_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_02/external/selinux/libselinux^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/selinux/libselinux/libselinux^android_x86_64_static
 
 echo "building libselinux^linux_glibc_x86_64_static"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_02.ninja libselinux,linux_glibc_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/selinux/libselinux/libselinux^linux_glibc_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_02/external/selinux/libselinux^linux_glibc_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/selinux/libselinux/libselinux^linux_glibc_x86_64_static
 
-echo "building secilc^linux_glibc_x86_64"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_02.ninja secilc,linux_glibc_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/selinux/secilc/secilc^linux_glibc_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_02/external/selinux/secilc^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/selinux/secilc/secilc^linux_glibc_x86_64
+echo "building sefcontext_compile^linux_glibc_x86_64"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_02.ninja sefcontext_compile,linux_glibc_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/selinux/libselinux/sefcontext_compile^linux_glibc_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_02/external/selinux/sefcontext_compile^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/selinux/libselinux/sefcontext_compile^linux_glibc_x86_64
+
+echo "building libselinux^linux_glibc_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_02.ninja libselinux,linux_glibc_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/selinux/libselinux/libselinux^linux_glibc_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_02/external/selinux/libselinux^linux_glibc_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/external/selinux/libselinux/libselinux^linux_glibc_x86_64_shared
+
+echo "building libselinux^android_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_02.ninja libselinux,android_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/selinux/libselinux/libselinux^android_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_02/external/selinux/libselinux^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/selinux/libselinux/libselinux^android_x86_64_static
 
 rm -rf out
 
@@ -54,6 +61,10 @@ du -ah -d1 external_selinux*.tar.zst | sort -h
 if [ ! -f "$GITHUB_WORKSPACE/cache/bionic.tar.zst" ]; then
   echo "Compressing bionic -> bionic.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/bionic.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/bionic/ .
+fi
+if [ ! -f "$GITHUB_WORKSPACE/cache/build_soong.tar.zst" ]; then
+  echo "Compressing build/soong -> build_soong.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/build_soong.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/build/soong/ .
 fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/external_pcre.tar.zst" ]; then
   echo "Compressing external/pcre -> external_pcre.tar.zst"

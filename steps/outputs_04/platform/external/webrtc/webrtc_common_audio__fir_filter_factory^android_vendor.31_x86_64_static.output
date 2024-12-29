@@ -1,0 +1,4 @@
+out/soong/.intermediates/external/webrtc/webrtc_common_audio__fir_filter_factory/android_vendor.31_x86_64_static/obj/external/webrtc/common_audio/fir_filter_c.o
+out/soong/.intermediates/external/webrtc/webrtc_common_audio__fir_filter_factory/android_vendor.31_x86_64_static/obj/external/webrtc/common_audio/fir_filter_factory.o
+out/soong/.intermediates/external/webrtc/webrtc_common_audio__fir_filter_factory/android_vendor.31_x86_64_static/obj/external/webrtc/common_audio/fir_filter_sse.o
+out/soong/.intermediates/external/webrtc/webrtc_common_audio__fir_filter_factory/android_vendor.31_x86_64_static/obj/external/webrtc/common_audio/resampler/sinc_resampler_sse.o

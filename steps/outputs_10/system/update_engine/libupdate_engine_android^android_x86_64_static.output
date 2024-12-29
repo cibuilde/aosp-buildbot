@@ -1,0 +1,7 @@
+out/soong/.intermediates/system/update_engine/libupdate_engine_android/android_x86_64_static/gen/aidl/android/os/BnUpdateEngine.h
+out/soong/.intermediates/system/update_engine/libupdate_engine_android/android_x86_64_static/gen/aidl/android/os/BnUpdateEngineCallback.h
+out/soong/.intermediates/system/update_engine/libupdate_engine_android/android_x86_64_static/gen/aidl/android/os/BpUpdateEngine.h
+out/soong/.intermediates/system/update_engine/libupdate_engine_android/android_x86_64_static/gen/aidl/android/os/BpUpdateEngineCallback.h
+out/soong/.intermediates/system/update_engine/libupdate_engine_android/android_x86_64_static/gen/aidl/android/os/IUpdateEngine.h
+out/soong/.intermediates/system/update_engine/libupdate_engine_android/android_x86_64_static/gen/aidl/android/os/IUpdateEngineCallback.h
+out/soong/.intermediates/system/update_engine/libupdate_engine_android/android_x86_64_static/libupdate_engine_android.a

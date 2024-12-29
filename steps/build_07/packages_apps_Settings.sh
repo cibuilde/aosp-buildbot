@@ -9,28 +9,21 @@ ln -sf $GITHUB_WORKSPACE/ninja .
 
 mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86 prebuilts/clang/host/linux-x86
 
-clone_depth_platform external/libcxx
-clone_depth_platform external/libcxxabi
-clone_depth_platform external/protobuf
-clone_depth_platform external/zlib
-clone_depth_platform frameworks/proto_logging
+clone_sparse_exclude frameworks/base "!/data/videos" "!/media/tests/contents" "!/docs" "!/native/graphics/jni/fuzz" "!/cmd/incidentd/testdata"
 clone_depth_platform packages/apps/Settings
-clone_depth_platform system/libbase
-clone_depth_platform system/logging
 
-rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/cmd/sbox/sbox^linux_glibc_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcxx/libc++^linux_glibc_x86_64_shared/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/protobuf/libprotobuf-cpp-full^linux_glibc_x86_64_shared/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/zlib/libz^linux_glibc_x86_64_shared/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/proto_logging/stats/libstats_proto_host^linux_glibc_x86_64_shared/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/proto_logging/stats/stats_log_api_gen/stats-log-api-gen^linux_glibc_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/system/libbase/libbase^linux_glibc_x86_64_shared/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^linux_glibc_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/cmd/extract_jar_packages/extract_jar_packages^linux_glibc_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/cmd/merge_zips/merge_zips^linux_glibc_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/zip/cmd/soong_zip^linux_glibc_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/symbol_inject/cmd/symbol_inject^linux_glibc_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/cmd/zipsync/zipsync^linux_glibc_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/tools/aapt2/aapt2^linux_glibc_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/core/res/framework-res^android_common/ .
 
-echo "building statslog-settings-java-gen^"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja statslog-settings-java-gen,
-mkdir -p $GITHUB_WORKSPACE/artifacts/packages/apps/Settings/statslog-settings-java-gen^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/packages/apps/Settings/statslog-settings-java-gen^.output . $GITHUB_WORKSPACE/artifacts/packages/apps/Settings/statslog-settings-java-gen^
+echo "building contextualcards^android_common"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja contextualcards,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/packages/apps/Settings/contextualcards^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/packages/apps/Settings/contextualcards^android_common.output . $GITHUB_WORKSPACE/artifacts/packages/apps/Settings/contextualcards^android_common
 
 rm -rf out
 
@@ -40,37 +33,13 @@ gh release --repo cibuilde/aosp-buildbot upload android12-gsi_07 packages_apps_S
 
 du -ah -d1 packages_apps_Settings*.tar.zst | sort -h
 
-if [ ! -f "$GITHUB_WORKSPACE/cache/external_libcxx.tar.zst" ]; then
-  echo "Compressing external/libcxx -> external_libcxx.tar.zst"
-  tar -cf $GITHUB_WORKSPACE/cache/external_libcxx.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/libcxx/ .
-fi
-if [ ! -f "$GITHUB_WORKSPACE/cache/external_libcxxabi.tar.zst" ]; then
-  echo "Compressing external/libcxxabi -> external_libcxxabi.tar.zst"
-  tar -cf $GITHUB_WORKSPACE/cache/external_libcxxabi.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/libcxxabi/ .
-fi
-if [ ! -f "$GITHUB_WORKSPACE/cache/external_protobuf.tar.zst" ]; then
-  echo "Compressing external/protobuf -> external_protobuf.tar.zst"
-  tar -cf $GITHUB_WORKSPACE/cache/external_protobuf.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/protobuf/ .
-fi
-if [ ! -f "$GITHUB_WORKSPACE/cache/external_zlib.tar.zst" ]; then
-  echo "Compressing external/zlib -> external_zlib.tar.zst"
-  tar -cf $GITHUB_WORKSPACE/cache/external_zlib.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/zlib/ .
-fi
-if [ ! -f "$GITHUB_WORKSPACE/cache/frameworks_proto_logging.tar.zst" ]; then
-  echo "Compressing frameworks/proto_logging -> frameworks_proto_logging.tar.zst"
-  tar -cf $GITHUB_WORKSPACE/cache/frameworks_proto_logging.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/frameworks/proto_logging/ .
+if [ ! -f "$GITHUB_WORKSPACE/cache/frameworks_base.tar.zst" ]; then
+  echo "Compressing frameworks/base -> frameworks_base.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/frameworks_base.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/frameworks/base/ .
 fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/packages_apps_Settings.tar.zst" ]; then
   echo "Compressing packages/apps/Settings -> packages_apps_Settings.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/packages_apps_Settings.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/packages/apps/Settings/ .
-fi
-if [ ! -f "$GITHUB_WORKSPACE/cache/system_libbase.tar.zst" ]; then
-  echo "Compressing system/libbase -> system_libbase.tar.zst"
-  tar -cf $GITHUB_WORKSPACE/cache/system_libbase.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/system/libbase/ .
-fi
-if [ ! -f "$GITHUB_WORKSPACE/cache/system_logging.tar.zst" ]; then
-  echo "Compressing system/logging -> system_logging.tar.zst"
-  tar -cf $GITHUB_WORKSPACE/cache/system_logging.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/system/logging/ .
 fi
 
 rm -rf aosp

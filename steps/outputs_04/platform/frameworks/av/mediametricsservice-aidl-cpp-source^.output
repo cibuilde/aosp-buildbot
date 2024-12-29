@@ -1,0 +1,4 @@
+out/soong/.intermediates/frameworks/av/media/libmediametrics/mediametricsservice-aidl-cpp-source/gen/android/media/IMediaMetricsService.cpp
+out/soong/.intermediates/frameworks/av/media/libmediametrics/mediametricsservice-aidl-cpp-source/gen/include/android/media/BnMediaMetricsService.h
+out/soong/.intermediates/frameworks/av/media/libmediametrics/mediametricsservice-aidl-cpp-source/gen/include/android/media/BpMediaMetricsService.h
+out/soong/.intermediates/frameworks/av/media/libmediametrics/mediametricsservice-aidl-cpp-source/gen/include/android/media/IMediaMetricsService.h
