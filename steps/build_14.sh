@@ -910,67 +910,7 @@ mkdir -p $GITHUB_WORKSPACE/.bin
 ln -sf /usr/bin/python2 $GITHUB_WORKSPACE/.bin/python
 export PATH=$GITHUB_WORKSPACE/.bin:$PATH
 
-time source steps/build_14/art.sh
-time source steps/build_14/device_generic_goldfish-opengl.sh
-time source steps/build_14/device_google_cuttlefish.sh
-time source steps/build_14/external_adhd.sh
-time source steps/build_14/external_android-clat.sh
-time source steps/build_14/external_crosvm.sh
-time source steps/build_14/external_e2fsprogs.sh
 time source steps/build_14/external_icu.sh
-time source steps/build_14/external_libbrillo.sh
-time source steps/build_14/external_perfetto.sh
-time source steps/build_14/external_rust_crates_android_log-sys.sh
-time source steps/build_14/external_rust_crates_anyhow.sh
-time source steps/build_14/external_rust_crates_async-task.sh
-time source steps/build_14/external_rust_crates_bitflags.sh
-time source steps/build_14/external_rust_crates_byteorder.sh
-time source steps/build_14/external_rust_crates_cfg-if.sh
-time source steps/build_14/external_rust_crates_futures.sh
-time source steps/build_14/external_rust_crates_futures-core.sh
-time source steps/build_14/external_rust_crates_futures-io.sh
-time source steps/build_14/external_rust_crates_futures-sink.sh
-time source steps/build_14/external_rust_crates_futures-task.sh
-time source steps/build_14/external_rust_crates_hashlink.sh
-time source steps/build_14/external_rust_crates_itoa.sh
-time source steps/build_14/external_rust_crates_lazy_static.sh
-time source steps/build_14/external_rust_crates_libc.sh
-time source steps/build_14/external_rust_crates_memchr.sh
-time source steps/build_14/external_rust_crates_memoffset.sh
-time source steps/build_14/external_rust_crates_num-traits.sh
-time source steps/build_14/external_rust_crates_pin-project-lite.sh
-time source steps/build_14/external_rust_crates_pin-utils.sh
-time source steps/build_14/external_rust_crates_ppv-lite86.sh
-time source steps/build_14/external_rust_crates_proc-macro-nested.sh
-time source steps/build_14/external_rust_crates_rand.sh
-time source steps/build_14/external_rust_crates_ryu.sh
-time source steps/build_14/external_rust_crates_serde.sh
-time source steps/build_14/external_rust_crates_slab.sh
-time source steps/build_14/external_rust_crates_smallvec.sh
-time source steps/build_14/external_rust_crates_textwrap.sh
-time source steps/build_14/external_rust_crates_thiserror.sh
-time source steps/build_14/external_toybox.sh
-time source steps/build_14/frameworks_av.sh
-time source steps/build_14/frameworks_native.sh
-time source steps/build_14/hardware_google_camera.sh
-time source steps/build_14/hardware_interfaces.sh
-time source steps/build_14/libcore.sh
-time source steps/build_14/packages_apps_Bluetooth.sh
-time source steps/build_14/packages_modules_Virtualization.sh
-time source steps/build_14/prebuilts_sdk.sh
-time source steps/build_14/system_bt.sh
-time source steps/build_14/system_core.sh
-time source steps/build_14/system_extras.sh
-time source steps/build_14/system_keymaster.sh
-time source steps/build_14/system_libartpalette.sh
-time source steps/build_14/system_libfmq.sh
-time source steps/build_14/system_libhidl.sh
-time source steps/build_14/system_logging.sh
-time source steps/build_14/system_media.sh
-time source steps/build_14/system_memory_libmeminfo.sh
-time source steps/build_14/system_memory_lmkd.sh
-time source steps/build_14/system_security.sh
-time source steps/build_14/system_server_configurable_flags.sh
 
 if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_clang_host_linux-x86.tar.zst" ]; then
   echo "Compressing prebuilts/clang/host/linux-x86 -> prebuilts_clang_host_linux-x86.tar.zst"
