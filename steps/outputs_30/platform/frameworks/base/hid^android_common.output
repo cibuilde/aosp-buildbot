@@ -1,7 +1,0 @@
-out/soong/.intermediates/frameworks/base/cmds/hid/hid/android_common/aligned/hid.jar
-out/soong/.intermediates/frameworks/base/cmds/hid/hid/android_common/dexpreopt/oat/x86/javalib.odex
-out/soong/.intermediates/frameworks/base/cmds/hid/hid/android_common/dexpreopt/oat/x86/javalib.vdex
-out/soong/.intermediates/frameworks/base/cmds/hid/hid/android_common/dexpreopt/oat/x86_64/javalib.odex
-out/soong/.intermediates/frameworks/base/cmds/hid/hid/android_common/dexpreopt/oat/x86_64/javalib.vdex
-out/soong/.intermediates/frameworks/base/cmds/hid/hid/android_common/javac/hid.jar
-out/soong/.intermediates/frameworks/base/cmds/hid/hid/android_common/turbine-combined/hid.jar

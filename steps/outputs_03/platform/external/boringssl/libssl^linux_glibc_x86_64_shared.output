@@ -1,3 +1,0 @@
-out/soong/.intermediates/external/boringssl/libssl/linux_glibc_x86_64_shared/libssl-host.so
-out/soong/.intermediates/external/boringssl/libssl/linux_glibc_x86_64_shared/libssl-host.so.toc
-out/soong/host/linux-x86/lib64/libssl-host.so

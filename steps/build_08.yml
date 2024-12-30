@@ -630,6 +630,10 @@ jobs:
         key: prebuilts_tools@${{ env.branch }}
     - uses: actions/cache@v4
       with:
+        path: cache/system_apex.tar.zst
+        key: system_apex@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
         path: cache/system_bpf.tar.zst
         key: system_bpf@${{ env.branch }}
     - uses: actions/cache@v4

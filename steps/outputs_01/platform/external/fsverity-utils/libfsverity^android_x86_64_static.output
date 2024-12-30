@@ -1,5 +1,0 @@
-out/soong/.intermediates/external/fsverity-utils/libfsverity/android_x86_64_static/obj/external/fsverity-utils/lib/compute_digest.o
-out/soong/.intermediates/external/fsverity-utils/libfsverity/android_x86_64_static/obj/external/fsverity-utils/lib/enable.o
-out/soong/.intermediates/external/fsverity-utils/libfsverity/android_x86_64_static/obj/external/fsverity-utils/lib/hash_algs.o
-out/soong/.intermediates/external/fsverity-utils/libfsverity/android_x86_64_static/obj/external/fsverity-utils/lib/sign_digest.o
-out/soong/.intermediates/external/fsverity-utils/libfsverity/android_x86_64_static/obj/external/fsverity-utils/lib/utils.o

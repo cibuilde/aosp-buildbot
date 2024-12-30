@@ -1,7 +1,0 @@
-out/soong/.intermediates/hardware/interfaces/boot/1.0/android.hardware.boot@1.0_genc++_headers/gen/android/hardware/boot/1.0/BnHwBootControl.h
-out/soong/.intermediates/hardware/interfaces/boot/1.0/android.hardware.boot@1.0_genc++_headers/gen/android/hardware/boot/1.0/BpHwBootControl.h
-out/soong/.intermediates/hardware/interfaces/boot/1.0/android.hardware.boot@1.0_genc++_headers/gen/android/hardware/boot/1.0/BsBootControl.h
-out/soong/.intermediates/hardware/interfaces/boot/1.0/android.hardware.boot@1.0_genc++_headers/gen/android/hardware/boot/1.0/IBootControl.h
-out/soong/.intermediates/hardware/interfaces/boot/1.0/android.hardware.boot@1.0_genc++_headers/gen/android/hardware/boot/1.0/IHwBootControl.h
-out/soong/.intermediates/hardware/interfaces/boot/1.0/android.hardware.boot@1.0_genc++_headers/gen/android/hardware/boot/1.0/hwtypes.h
-out/soong/.intermediates/hardware/interfaces/boot/1.0/android.hardware.boot@1.0_genc++_headers/gen/android/hardware/boot/1.0/types.h

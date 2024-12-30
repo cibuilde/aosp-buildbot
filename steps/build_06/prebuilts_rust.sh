@@ -56,16 +56,6 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/rust/libunwind.rust_sysroot^an
 rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/rust/libunwind.rust_sysroot^android_x86_64_rlib_apex10000/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^android_x86_64_shared/ .
 
-echo "building libgetopts^android_x86_64_dylib"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libgetopts,android_x86_64_dylib
-mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/rust/libgetopts^android_x86_64_dylib
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/prebuilts/rust/libgetopts^android_x86_64_dylib.output . $GITHUB_WORKSPACE/artifacts/prebuilts/rust/libgetopts^android_x86_64_dylib
-
-echo "building libstd^android_x86_64_dylib_apex10000"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libstd,android_x86_64_dylib_apex10000
-mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/rust/libstd^android_x86_64_dylib_apex10000
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/prebuilts/rust/libstd^android_x86_64_dylib_apex10000.output . $GITHUB_WORKSPACE/artifacts/prebuilts/rust/libstd^android_x86_64_dylib_apex10000
-
 echo "building libgetopts^android_x86_64_dylib_apex10000"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libgetopts,android_x86_64_dylib_apex10000
 mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/rust/libgetopts^android_x86_64_dylib_apex10000
@@ -75,6 +65,16 @@ echo "building libstd^android_x86_64_dylib"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libstd,android_x86_64_dylib
 mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/rust/libstd^android_x86_64_dylib
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/prebuilts/rust/libstd^android_x86_64_dylib.output . $GITHUB_WORKSPACE/artifacts/prebuilts/rust/libstd^android_x86_64_dylib
+
+echo "building libgetopts^android_x86_64_dylib"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libgetopts,android_x86_64_dylib
+mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/rust/libgetopts^android_x86_64_dylib
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/prebuilts/rust/libgetopts^android_x86_64_dylib.output . $GITHUB_WORKSPACE/artifacts/prebuilts/rust/libgetopts^android_x86_64_dylib
+
+echo "building libstd^android_x86_64_dylib_apex10000"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libstd,android_x86_64_dylib_apex10000
+mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/rust/libstd^android_x86_64_dylib_apex10000
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/prebuilts/rust/libstd^android_x86_64_dylib_apex10000.output . $GITHUB_WORKSPACE/artifacts/prebuilts/rust/libstd^android_x86_64_dylib_apex10000
 
 echo "building libterm^android_x86_64_dylib"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libterm,android_x86_64_dylib

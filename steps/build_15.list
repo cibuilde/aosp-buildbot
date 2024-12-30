@@ -1,12 +1,13 @@
-Tag: buid_15 Projects: 10 Targets: 22
+Tag: buid_15 Projects: 11 Targets: 25
 
-art/: art-bootclasspath-fragment^android_common_apex31 com.android.art^android_common_com.android.art_image
-external/neven/: libFFTEm^android_x86_64_shared libFFTEm^android_x86_x86_64_shared
-frameworks/av/: libcamera2ndk^android_x86_64_shared libcamera2ndk^android_x86_x86_64_shared libstagefright_http_support^android_x86_64_shared_cfi libstagefright_http_support^android_x86_x86_64_shared_cfi
-frameworks/ex/: libframesequence^android_x86_64_shared libframesequence^android_x86_x86_64_shared
-frameworks/opt/net/voip/: librtp_jni^android_x86_64_shared librtp_jni^android_x86_x86_64_shared
-frameworks/rs/: libRSCacheDir^android_x86_64_shared libRSCacheDir^android_x86_x86_64_shared
-packages/apps/Gallery2/: libjni_filtershow_filters^android_x86_64_shared
-packages/modules/NetworkStack/: statsprotos^android_common
-packages/modules/RuntimeI18n/: com.android.i18n^android_common_com.android.i18n_image i18n-bootclasspath-fragment^android_common_apex10000
-system/libhidl/: android.hidl.base-V1.0-java^android_common_apex30 android.hidl.manager-V1.0-java^android_common_apex30 android.hidl.manager-V1.1-java^android_common_apex30 android.hidl.manager-V1.2-java^android_common_apex30
+art: art-bootclasspath-fragment^android_common_apex31 com.android.art^android_common_com.android.art_image
+external/neven: libFFTEm^android_x86_64_shared libFFTEm^android_x86_x86_64_shared
+frameworks/av: libcamera2ndk^android_x86_64_shared libcamera2ndk^android_x86_x86_64_shared libstagefright_http_support^android_x86_64_shared_cfi libstagefright_http_support^android_x86_x86_64_shared_cfi
+frameworks/base: ext^android_common
+frameworks/ex: libframesequence^android_x86_64_shared libframesequence^android_x86_x86_64_shared
+frameworks/opt/net/voip: librtp_jni^android_x86_64_shared librtp_jni^android_x86_x86_64_shared
+frameworks/rs: libRSCacheDir^android_x86_64_shared libRSCacheDir^android_x86_x86_64_shared
+packages/apps/Gallery2: libjni_filtershow_filters^android_x86_64_shared
+packages/modules/NetworkStack: statsprotos^android_common
+packages/modules/RuntimeI18n: com.android.i18n^android_common_com.android.i18n_image i18n-bootclasspath-fragment^android_common_apex10000
+system/libhidl: android.hidl.base-V1.0-java^android_common android.hidl.base-V1.0-java^android_common_apex30 android.hidl.manager-V1.0-java^android_common_apex30 android.hidl.manager-V1.1-java^android_common_apex30 android.hidl.manager-V1.2-java^android_common_apex30 android.hidl.safe_union-V1.0-java^android_common

@@ -1,5 +1,0 @@
-out/soong/.intermediates/hardware/interfaces/media/bufferpool/2.0/android.hardware.media.bufferpool@2.0_genc++/gen/android/hardware/media/bufferpool/2.0/AccessorAll.cpp
-out/soong/.intermediates/hardware/interfaces/media/bufferpool/2.0/android.hardware.media.bufferpool@2.0_genc++/gen/android/hardware/media/bufferpool/2.0/ClientManagerAll.cpp
-out/soong/.intermediates/hardware/interfaces/media/bufferpool/2.0/android.hardware.media.bufferpool@2.0_genc++/gen/android/hardware/media/bufferpool/2.0/ConnectionAll.cpp
-out/soong/.intermediates/hardware/interfaces/media/bufferpool/2.0/android.hardware.media.bufferpool@2.0_genc++/gen/android/hardware/media/bufferpool/2.0/ObserverAll.cpp
-out/soong/.intermediates/hardware/interfaces/media/bufferpool/2.0/android.hardware.media.bufferpool@2.0_genc++/gen/android/hardware/media/bufferpool/2.0/types.cpp

@@ -51,11 +51,6 @@ ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja e2fsdroid,linux_g
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/contrib/android/e2fsdroid^linux_glibc_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/external/e2fsprogs/e2fsdroid^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/contrib/android/e2fsdroid^linux_glibc_x86_64
 
-echo "building libext2_com_err^linux_glibc_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libext2_com_err,linux_glibc_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/lib/et/libext2_com_err^linux_glibc_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/external/e2fsprogs/libext2_com_err^linux_glibc_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/lib/et/libext2_com_err^linux_glibc_x86_64_shared
-
 echo "building libext2_uuid^linux_glibc_x86_64_shared"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libext2_uuid,linux_glibc_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/lib/uuid/libext2_uuid^linux_glibc_x86_64_shared
@@ -65,6 +60,11 @@ echo "building libext2_blkid^linux_glibc_x86_64_shared"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libext2_blkid,linux_glibc_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/lib/blkid/libext2_blkid^linux_glibc_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/external/e2fsprogs/libext2_blkid^linux_glibc_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/lib/blkid/libext2_blkid^linux_glibc_x86_64_shared
+
+echo "building libext2_com_err^linux_glibc_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libext2_com_err,linux_glibc_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/lib/et/libext2_com_err^linux_glibc_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/external/e2fsprogs/libext2_com_err^linux_glibc_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/lib/et/libext2_com_err^linux_glibc_x86_64_shared
 
 echo "building libext2_e2p^linux_glibc_x86_64_shared"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libext2_e2p,linux_glibc_x86_64_shared

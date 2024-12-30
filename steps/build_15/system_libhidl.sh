@@ -34,6 +34,12 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/system/libhidl/transport/base/1.0/androi
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/libhidl/transport/manager/1.0/android.hidl.manager-V1.0-java_gen_java^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/libhidl/transport/manager/1.1/android.hidl.manager-V1.1-java_gen_java^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/libhidl/transport/manager/1.2/android.hidl.manager-V1.2-java_gen_java^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/libhidl/transport/safe_union/1.0/android.hidl.safe_union-V1.0-java_gen_java^/ .
+
+echo "building android.hidl.base-V1.0-java^android_common"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_15.ninja android.hidl.base-V1.0-java,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/libhidl/transport/base/1.0/android.hidl.base-V1.0-java^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_15/system/libhidl/android.hidl.base-V1.0-java^android_common.output . $GITHUB_WORKSPACE/artifacts/system/libhidl/transport/base/1.0/android.hidl.base-V1.0-java^android_common
 
 echo "building android.hidl.base-V1.0-java^android_common_apex30"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_15.ninja android.hidl.base-V1.0-java,android_common_apex30
@@ -54,6 +60,11 @@ echo "building android.hidl.manager-V1.2-java^android_common_apex30"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_15.ninja android.hidl.manager-V1.2-java,android_common_apex30
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/libhidl/transport/manager/1.2/android.hidl.manager-V1.2-java^android_common_apex30
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_15/system/libhidl/android.hidl.manager-V1.2-java^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/system/libhidl/transport/manager/1.2/android.hidl.manager-V1.2-java^android_common_apex30
+
+echo "building android.hidl.safe_union-V1.0-java^android_common"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_15.ninja android.hidl.safe_union-V1.0-java,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/libhidl/transport/safe_union/1.0/android.hidl.safe_union-V1.0-java^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_15/system/libhidl/android.hidl.safe_union-V1.0-java^android_common.output . $GITHUB_WORKSPACE/artifacts/system/libhidl/transport/safe_union/1.0/android.hidl.safe_union-V1.0-java^android_common
 
 rm -rf out
 

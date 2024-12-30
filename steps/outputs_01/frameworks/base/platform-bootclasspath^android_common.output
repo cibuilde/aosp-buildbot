@@ -1,0 +1,2 @@
+out/soong/.intermediates/frameworks/base/boot/platform-bootclasspath/android_common/bootclasspath.pb.json
+out/soong/vsoc_x86_64/dex_bootjars/updatable-bcp-packages.txt

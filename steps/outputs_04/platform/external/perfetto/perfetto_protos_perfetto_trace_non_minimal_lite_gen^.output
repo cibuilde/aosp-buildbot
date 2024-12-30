@@ -1,8 +1,0 @@
-out/soong/.intermediates/external/perfetto/perfetto_protos_perfetto_trace_non_minimal_lite_gen/gen/external/perfetto/protos/perfetto/trace/extension_descriptor.pb.cc
-out/soong/.intermediates/external/perfetto/perfetto_protos_perfetto_trace_non_minimal_lite_gen/gen/external/perfetto/protos/perfetto/trace/memory_graph.pb.cc
-out/soong/.intermediates/external/perfetto/perfetto_protos_perfetto_trace_non_minimal_lite_gen/gen/external/perfetto/protos/perfetto/trace/test_event.pb.cc
-out/soong/.intermediates/external/perfetto/perfetto_protos_perfetto_trace_non_minimal_lite_gen/gen/external/perfetto/protos/perfetto/trace/test_extensions.pb.cc
-out/soong/.intermediates/external/perfetto/perfetto_protos_perfetto_trace_non_minimal_lite_gen/gen/external/perfetto/protos/perfetto/trace/trace.pb.cc
-out/soong/.intermediates/external/perfetto/perfetto_protos_perfetto_trace_non_minimal_lite_gen/gen/external/perfetto/protos/perfetto/trace/trace_packet.pb.cc
-out/soong/.intermediates/external/perfetto/perfetto_protos_perfetto_trace_non_minimal_lite_gen/gen/external/perfetto/protos/perfetto/trace/trace_packet_defaults.pb.cc
-out/soong/.intermediates/external/perfetto/perfetto_protos_perfetto_trace_non_minimal_lite_gen/gen/external/perfetto/protos/perfetto/trace/ui_state.pb.cc

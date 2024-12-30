@@ -294,9 +294,19 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/external/vm_tools/p9/libp9^android_x86_6
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/vm_tools/p9/wire_format_derive/libwire_format_derive^linux_glibc_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/wayland/libwayland_client_static^android_x86_64_static_apex10000/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/tools/aapt2/aapt2^linux_glibc_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/native/libs/binder/ndk/libbinder_ndk^android_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/native/libs/binder/rust/libbinder_ndk_bindgen^android_x86_64_source_apex10000/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/native/libs/binder/rust/libbinder_ndk_sys^android_x86_64_dylib_apex10000/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/native/libs/binder/rust/libbinder_ndk_sys^android_x86_64_rlib_rlib-std_apex10000/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/native/libs/binder/rust/libbinder_rs^android_x86_64_dylib_apex10000/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/native/libs/binder/rust/libbinder_rs^android_x86_64_rlib_rlib-std_apex10000/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/Virtualization/virtmanager/aidl/android.system.virtmanager-rust-source^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/Virtualization/virtmanager/aidl/android.system.virtmanager-rust^android_x86_64_dylib_apex10000/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/Virtualization/virtmanager/aidl/android.system.virtmanager-rust^android_x86_64_rlib_rlib-std_apex10000/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/Virtualization/virtmanager/aidl/android.system.virtmanager-rust^android_x86_64_source_apex10000/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/Virtualization/authfs/aidl/authfs_aidl_interface-rust-source^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/Virtualization/authfs/aidl/authfs_aidl_interface-rust^android_x86_64_dylib_apex10000/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/Virtualization/authfs/aidl/authfs_aidl_interface-rust^android_x86_64_source_apex10000/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/Virtualization/apex/com.android.virt.init.rc^android_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/Virtualization/authfs/fd_server/fd_server^android_x86_64_apex10000/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/Virtualization/authfs/libauthfs_crypto_bindgen^android_x86_64_dylib_apex10000/ .
@@ -338,6 +348,7 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/rust/libunicode_width.rust_sys
 rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/rust/libunwind.rust_sysroot^android_x86_64_rlib_apex10000/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/apex/apexer/apexer^linux_glibc_x86_64_PY2/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/apex/apexer/conv_apex_manifest^linux_glibc_x86_64_PY2/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/core/libutils/libutils^android_x86_64_shared_apex10000/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^android_x86_64_shared/ .
 
 echo "building authfs^android_x86_64_apex10000"

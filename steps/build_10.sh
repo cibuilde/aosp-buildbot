@@ -1013,6 +1013,10 @@ gh release --repo cibuilde/aosp-buildbot download android12-gsi_07 --pattern pac
 mkdir -p $GITHUB_WORKSPACE/downloads/packages/modules/StatsD
 tar xf $GITHUB_WORKSPACE/packages_modules_StatsD-07.tar.zst -C $GITHUB_WORKSPACE/downloads/packages/modules/StatsD/
 
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_04 --pattern packages_modules_Virtualization.tar.zst --output packages_modules_Virtualization-04.tar.zst
+mkdir -p $GITHUB_WORKSPACE/downloads/packages/modules/Virtualization
+tar xf $GITHUB_WORKSPACE/packages_modules_Virtualization-04.tar.zst -C $GITHUB_WORKSPACE/downloads/packages/modules/Virtualization/
+
 gh release --repo cibuilde/aosp-buildbot download android12-gsi_09 --pattern packages_modules_Virtualization.tar.zst --output packages_modules_Virtualization-09.tar.zst
 mkdir -p $GITHUB_WORKSPACE/downloads/packages/modules/Virtualization
 tar xf $GITHUB_WORKSPACE/packages_modules_Virtualization-09.tar.zst -C $GITHUB_WORKSPACE/downloads/packages/modules/Virtualization/

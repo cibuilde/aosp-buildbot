@@ -1,6 +1,0 @@
-out/soong/.intermediates/system/extras/libfec/libfec/android_x86_64_static/libfec.a
-out/soong/.intermediates/system/extras/libfec/libfec/android_x86_64_static/obj/system/extras/libfec/avb_utils.o
-out/soong/.intermediates/system/extras/libfec/libfec/android_x86_64_static/obj/system/extras/libfec/fec_open.o
-out/soong/.intermediates/system/extras/libfec/libfec/android_x86_64_static/obj/system/extras/libfec/fec_process.o
-out/soong/.intermediates/system/extras/libfec/libfec/android_x86_64_static/obj/system/extras/libfec/fec_read.o
-out/soong/.intermediates/system/extras/libfec/libfec/android_x86_64_static/obj/system/extras/libfec/fec_verity.o

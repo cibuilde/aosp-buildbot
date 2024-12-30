@@ -853,6 +853,10 @@ gh release --repo cibuilde/aosp-buildbot download android12-gsi_04 --pattern pre
 mkdir -p $GITHUB_WORKSPACE/downloads/prebuilts/tools
 tar xf $GITHUB_WORKSPACE/prebuilts_tools-04.tar.zst -C $GITHUB_WORKSPACE/downloads/prebuilts/tools/
 
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_04 --pattern system_apex.tar.zst --output system_apex-04.tar.zst
+mkdir -p $GITHUB_WORKSPACE/downloads/system/apex
+tar xf $GITHUB_WORKSPACE/system_apex-04.tar.zst -C $GITHUB_WORKSPACE/downloads/system/apex/
+
 gh release --repo cibuilde/aosp-buildbot download android12-gsi_05 --pattern system_apex.tar.zst --output system_apex-05.tar.zst
 mkdir -p $GITHUB_WORKSPACE/downloads/system/apex
 tar xf $GITHUB_WORKSPACE/system_apex-05.tar.zst -C $GITHUB_WORKSPACE/downloads/system/apex/
@@ -1137,9 +1141,11 @@ time source steps/build_08/packages_modules_Virtualization.sh
 time source steps/build_08/packages_modules_adb.sh
 time source steps/build_08/packages_modules_common.sh
 time source steps/build_08/prebuilts_sdk.sh
+time source steps/build_08/system_apex.sh
 time source steps/build_08/system_bpf.sh
 time source steps/build_08/system_core.sh
 time source steps/build_08/system_extras.sh
+time source steps/build_08/system_hardware_interfaces.sh
 time source steps/build_08/system_incremental_delivery.sh
 time source steps/build_08/system_keymaster.sh
 time source steps/build_08/system_libartpalette.sh

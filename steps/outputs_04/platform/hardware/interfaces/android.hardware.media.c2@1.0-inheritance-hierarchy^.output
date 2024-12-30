@@ -1,8 +1,0 @@
-out/soong/.intermediates/hardware/interfaces/media/c2/1.0/android.hardware.media.c2@1.0-inheritance-hierarchy/gen/IComponentInterface_inheritance_hierarchy.json
-out/soong/.intermediates/hardware/interfaces/media/c2/1.0/android.hardware.media.c2@1.0-inheritance-hierarchy/gen/IComponentListener_inheritance_hierarchy.json
-out/soong/.intermediates/hardware/interfaces/media/c2/1.0/android.hardware.media.c2@1.0-inheritance-hierarchy/gen/IComponentStore_inheritance_hierarchy.json
-out/soong/.intermediates/hardware/interfaces/media/c2/1.0/android.hardware.media.c2@1.0-inheritance-hierarchy/gen/IComponent_inheritance_hierarchy.json
-out/soong/.intermediates/hardware/interfaces/media/c2/1.0/android.hardware.media.c2@1.0-inheritance-hierarchy/gen/IConfigurable_inheritance_hierarchy.json
-out/soong/.intermediates/hardware/interfaces/media/c2/1.0/android.hardware.media.c2@1.0-inheritance-hierarchy/gen/IInputSink_inheritance_hierarchy.json
-out/soong/.intermediates/hardware/interfaces/media/c2/1.0/android.hardware.media.c2@1.0-inheritance-hierarchy/gen/IInputSurfaceConnection_inheritance_hierarchy.json
-out/soong/.intermediates/hardware/interfaces/media/c2/1.0/android.hardware.media.c2@1.0-inheritance-hierarchy/gen/IInputSurface_inheritance_hierarchy.json

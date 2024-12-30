@@ -1,7 +1,0 @@
-out/soong/.intermediates/hardware/interfaces/keymaster/3.0/android.hardware.keymaster@3.0_genc++_headers/gen/android/hardware/keymaster/3.0/BnHwKeymasterDevice.h
-out/soong/.intermediates/hardware/interfaces/keymaster/3.0/android.hardware.keymaster@3.0_genc++_headers/gen/android/hardware/keymaster/3.0/BpHwKeymasterDevice.h
-out/soong/.intermediates/hardware/interfaces/keymaster/3.0/android.hardware.keymaster@3.0_genc++_headers/gen/android/hardware/keymaster/3.0/BsKeymasterDevice.h
-out/soong/.intermediates/hardware/interfaces/keymaster/3.0/android.hardware.keymaster@3.0_genc++_headers/gen/android/hardware/keymaster/3.0/IHwKeymasterDevice.h
-out/soong/.intermediates/hardware/interfaces/keymaster/3.0/android.hardware.keymaster@3.0_genc++_headers/gen/android/hardware/keymaster/3.0/IKeymasterDevice.h
-out/soong/.intermediates/hardware/interfaces/keymaster/3.0/android.hardware.keymaster@3.0_genc++_headers/gen/android/hardware/keymaster/3.0/hwtypes.h
-out/soong/.intermediates/hardware/interfaces/keymaster/3.0/android.hardware.keymaster@3.0_genc++_headers/gen/android/hardware/keymaster/3.0/types.h

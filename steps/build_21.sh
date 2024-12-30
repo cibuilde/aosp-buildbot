@@ -21,6 +21,10 @@ clone_project platform/prebuilts/clang/host/linux-x86 prebuilts/clang/host/linux
 
 mkdir -p $GITHUB_WORKSPACE/cache
 
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_03 --pattern build_make.tar.zst --output build_make-03.tar.zst
+mkdir -p $GITHUB_WORKSPACE/downloads/build/make
+tar xf $GITHUB_WORKSPACE/build_make-03.tar.zst -C $GITHUB_WORKSPACE/downloads/build/make/
+
 gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern build_soong.tar.zst --output build_soong-01.tar.zst
 mkdir -p $GITHUB_WORKSPACE/downloads/build/soong
 tar xf $GITHUB_WORKSPACE/build_soong-01.tar.zst -C $GITHUB_WORKSPACE/downloads/build/soong/
@@ -28,6 +32,10 @@ tar xf $GITHUB_WORKSPACE/build_soong-01.tar.zst -C $GITHUB_WORKSPACE/downloads/b
 gh release --repo cibuilde/aosp-buildbot download android12-gsi_02 --pattern build_soong.tar.zst --output build_soong-02.tar.zst
 mkdir -p $GITHUB_WORKSPACE/downloads/build/soong
 tar xf $GITHUB_WORKSPACE/build_soong-02.tar.zst -C $GITHUB_WORKSPACE/downloads/build/soong/
+
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_04 --pattern external_jarjar.tar.zst --output external_jarjar-04.tar.zst
+mkdir -p $GITHUB_WORKSPACE/downloads/external/jarjar
+tar xf $GITHUB_WORKSPACE/external_jarjar-04.tar.zst -C $GITHUB_WORKSPACE/downloads/external/jarjar/
 
 gh release --repo cibuilde/aosp-buildbot download android12-gsi_02 --pattern external_libcxx.tar.zst --output external_libcxx-02.tar.zst
 mkdir -p $GITHUB_WORKSPACE/downloads/external/libcxx
@@ -77,6 +85,10 @@ gh release --repo cibuilde/aosp-buildbot download android12-gsi_19 --pattern pac
 mkdir -p $GITHUB_WORKSPACE/downloads/packages/modules/Connectivity
 tar xf $GITHUB_WORKSPACE/packages_modules_Connectivity-19.tar.zst -C $GITHUB_WORKSPACE/downloads/packages/modules/Connectivity/
 
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_19 --pattern packages_modules_Wifi.tar.zst --output packages_modules_Wifi-19.tar.zst
+mkdir -p $GITHUB_WORKSPACE/downloads/packages/modules/Wifi
+tar xf $GITHUB_WORKSPACE/packages_modules_Wifi-19.tar.zst -C $GITHUB_WORKSPACE/downloads/packages/modules/Wifi/
+
 gh release --repo cibuilde/aosp-buildbot download android12-gsi_03 --pattern prebuilts_r8.tar.zst --output prebuilts_r8-03.tar.zst
 mkdir -p $GITHUB_WORKSPACE/downloads/prebuilts/r8
 tar xf $GITHUB_WORKSPACE/prebuilts_r8-03.tar.zst -C $GITHUB_WORKSPACE/downloads/prebuilts/r8/
@@ -85,9 +97,9 @@ gh release --repo cibuilde/aosp-buildbot download android12-gsi_03 --pattern pre
 mkdir -p $GITHUB_WORKSPACE/downloads/prebuilts/sdk
 tar xf $GITHUB_WORKSPACE/prebuilts_sdk-03.tar.zst -C $GITHUB_WORKSPACE/downloads/prebuilts/sdk/
 
-gh release --repo cibuilde/aosp-buildbot download android12-gsi_00 --pattern singletons.tar.zst --output singletons-00.tar.zst
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_18 --pattern singletons.tar.zst --output singletons-18.tar.zst
 mkdir -p $GITHUB_WORKSPACE/downloads/singletons
-tar xf $GITHUB_WORKSPACE/singletons-00.tar.zst -C $GITHUB_WORKSPACE/downloads/singletons/
+tar xf $GITHUB_WORKSPACE/singletons-18.tar.zst -C $GITHUB_WORKSPACE/downloads/singletons/
 
 gh release --repo cibuilde/aosp-buildbot download android12-gsi_03 --pattern system_tools_aidl.tar.zst --output system_tools_aidl-03.tar.zst
 mkdir -p $GITHUB_WORKSPACE/downloads/system/tools/aidl

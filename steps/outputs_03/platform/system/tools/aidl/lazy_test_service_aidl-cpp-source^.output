@@ -1,4 +1,0 @@
-out/soong/.intermediates/system/tools/aidl/tests/lazy_test/lazy_test_service_aidl-cpp-source/gen/ILazyTestService.cpp
-out/soong/.intermediates/system/tools/aidl/tests/lazy_test/lazy_test_service_aidl-cpp-source/gen/include/BnLazyTestService.h
-out/soong/.intermediates/system/tools/aidl/tests/lazy_test/lazy_test_service_aidl-cpp-source/gen/include/BpLazyTestService.h
-out/soong/.intermediates/system/tools/aidl/tests/lazy_test/lazy_test_service_aidl-cpp-source/gen/include/ILazyTestService.h

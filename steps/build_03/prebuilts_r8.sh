@@ -18,6 +18,11 @@ ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja d8,linux_glibc_x8
 mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/r8/d8^linux_glibc_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/prebuilts/r8/d8^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/prebuilts/r8/d8^linux_glibc_x86_64
 
+echo "building r8-compat-proguard^linux_glibc_x86_64"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja r8-compat-proguard,linux_glibc_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/r8/r8-compat-proguard^linux_glibc_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/prebuilts/r8/r8-compat-proguard^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/prebuilts/r8/r8-compat-proguard^linux_glibc_x86_64
+
 echo "building r8^linux_glibc_common"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja r8,linux_glibc_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/r8/r8^linux_glibc_common
@@ -32,11 +37,6 @@ echo "building r8-compat-proguard^linux_glibc_common"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja r8-compat-proguard,linux_glibc_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/r8/r8-compat-proguard^linux_glibc_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/prebuilts/r8/r8-compat-proguard^linux_glibc_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/r8/r8-compat-proguard^linux_glibc_common
-
-echo "building r8-compat-proguard^linux_glibc_x86_64"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja r8-compat-proguard,linux_glibc_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/r8/r8-compat-proguard^linux_glibc_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/prebuilts/r8/r8-compat-proguard^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/prebuilts/r8/r8-compat-proguard^linux_glibc_x86_64
 
 rm -rf out
 

@@ -14,6 +14,11 @@ clone_depth_platform libcore
 rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/cmd/sbox/sbox^linux_glibc_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/zip/cmd/soong_zip^linux_glibc_x86_64/ .
 
+echo "building core-oj^android_common_apex31"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja core-oj,android_common_apex31
+mkdir -p $GITHUB_WORKSPACE/artifacts/libcore/core-oj^android_common_apex31
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/libcore/core-oj^android_common_apex31.output . $GITHUB_WORKSPACE/artifacts/libcore/core-oj^android_common_apex31
+
 echo "building notices-for-stubs-jar^android_common"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja notices-for-stubs-jar,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/libcore/notices-for-stubs-jar^android_common

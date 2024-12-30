@@ -10,6 +10,7 @@ include ninja/singleton.ninja
 include ninja/frameworks/base/api/combined-removed-dex^.ninja
 include ninja/frameworks/base/packages/SettingsLib/SettingsLib^android_common.ninja
 include ninja/frameworks/base/packages/SystemUI/SystemUI-core^android_common.ninja
+include ninja/frameworks/opt/net/ims/ims-common^android_common.ninja
 include ninja/packages/apps/Car/libs/car-ui-lib/car-ui-lib^android_common.ninja
 include ninja/packages/apps/Car/libs/car-ui-lib/car-ui-lib^android_common_apex30.ninja
 include ninja/packages/apps/CellBroadcastReceiver/apex/com.android.cellbroadcast^android_common_com.android.cellbroadcast_image.ninja
@@ -23,6 +24,10 @@ build SystemUI-core,android_common: phony out/soong/.intermediates/frameworks/ba
 build combined-removed-dex,: phony out/soong/.intermediates/frameworks/base/api/combined-removed-dex/gen/combined-removed-dex.txt
 
 build frameworks_base-targets: phony SettingsLib,android_common SystemUI-core,android_common combined-removed-dex,
+
+build ims-common,android_common: phony out/soong/.intermediates/frameworks/opt/net/ims/ims-common/android_common/aligned/ims-common.jar out/soong/.intermediates/frameworks/opt/net/ims/ims-common/android_common/combined/ims-common.jar out/soong/.intermediates/frameworks/opt/net/ims/ims-common/android_common/dex/ims-common.jar out/soong/.intermediates/frameworks/opt/net/ims/ims-common/android_common/jarjar/ims-common.jar out/soong/.intermediates/frameworks/opt/net/ims/ims-common/android_common/javac/ims-common.jar out/soong/.intermediates/frameworks/opt/net/ims/ims-common/android_common/turbine-combined/ims-common.jar out/soong/.intermediates/frameworks/opt/net/ims/ims-common/android_common/turbine-jarjar/ims-common.jar out/soong/.intermediates/frameworks/opt/net/ims/ims-common/android_common/turbine/ims-common.jar
+
+build frameworks_opt_net_ims-targets: phony ims-common,android_common
 
 build car-ui-lib,android_common: phony out/soong/.intermediates/packages/apps/Car/libs/car-ui-lib/car-ui-lib/android_common/combined/car-ui-lib.jar out/soong/.intermediates/packages/apps/Car/libs/car-ui-lib/car-ui-lib/android_common/manifest_fixer/AndroidManifest.xml out/soong/.intermediates/packages/apps/Car/libs/car-ui-lib/car-ui-lib/android_common/package-res.apk out/soong/.intermediates/packages/apps/Car/libs/car-ui-lib/car-ui-lib/android_common/turbine-combined/car-ui-lib.jar
 

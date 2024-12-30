@@ -152,25 +152,15 @@ ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja crtbegin_so,andro
 mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_so^android_x86_64_sdk_21
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/bionic/crtbegin_so^android_x86_64_sdk_21.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_so^android_x86_64_sdk_21
 
-echo "building crtbegin_so^android_x86_64_sdk_29"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja crtbegin_so,android_x86_64_sdk_29
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_so^android_x86_64_sdk_29
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/bionic/crtbegin_so^android_x86_64_sdk_29.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_so^android_x86_64_sdk_29
-
-echo "building crtbegin_so^android_x86_64_sdk_30_apex30"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja crtbegin_so,android_x86_64_sdk_30_apex30
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_so^android_x86_64_sdk_30_apex30
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/bionic/crtbegin_so^android_x86_64_sdk_30_apex30.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_so^android_x86_64_sdk_30_apex30
-
-echo "building crtbrand^android_x86_64_sdk_21"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja crtbrand,android_x86_64_sdk_21
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbrand^android_x86_64_sdk_21
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/bionic/crtbrand^android_x86_64_sdk_21.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbrand^android_x86_64_sdk_21
-
 echo "building crtbrand^android_x86_64_sdk_29"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja crtbrand,android_x86_64_sdk_29
 mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbrand^android_x86_64_sdk_29
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/bionic/crtbrand^android_x86_64_sdk_29.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbrand^android_x86_64_sdk_29
+
+echo "building crtbegin_so^android_x86_64_sdk_29"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja crtbegin_so,android_x86_64_sdk_29
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_so^android_x86_64_sdk_29
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/bionic/crtbegin_so^android_x86_64_sdk_29.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_so^android_x86_64_sdk_29
 
 echo "building crtbrand^android_x86_64_sdk_29_apex30"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja crtbrand,android_x86_64_sdk_29_apex30
@@ -186,6 +176,16 @@ echo "building crtbrand^android_x86_64_sdk_30_apex30"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja crtbrand,android_x86_64_sdk_30_apex30
 mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbrand^android_x86_64_sdk_30_apex30
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/bionic/crtbrand^android_x86_64_sdk_30_apex30.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbrand^android_x86_64_sdk_30_apex30
+
+echo "building crtbegin_so^android_x86_64_sdk_30_apex30"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja crtbegin_so,android_x86_64_sdk_30_apex30
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_so^android_x86_64_sdk_30_apex30
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/bionic/crtbegin_so^android_x86_64_sdk_30_apex30.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_so^android_x86_64_sdk_30_apex30
+
+echo "building crtbrand^android_x86_64_sdk_21"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja crtbrand,android_x86_64_sdk_21
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbrand^android_x86_64_sdk_21
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/bionic/crtbrand^android_x86_64_sdk_21.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbrand^android_x86_64_sdk_21
 
 echo "building crtend_so^android_x86_64_sdk_21"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja crtend_so,android_x86_64_sdk_21

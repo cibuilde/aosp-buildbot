@@ -765,6 +765,10 @@ gh release --repo cibuilde/aosp-buildbot download android12-gsi_04 --pattern fra
 mkdir -p $GITHUB_WORKSPACE/downloads/frameworks/native
 tar xf $GITHUB_WORKSPACE/frameworks_native-04.tar.zst -C $GITHUB_WORKSPACE/downloads/frameworks/native/
 
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_05 --pattern frameworks_native.tar.zst --output frameworks_native-05.tar.zst
+mkdir -p $GITHUB_WORKSPACE/downloads/frameworks/native
+tar xf $GITHUB_WORKSPACE/frameworks_native-05.tar.zst -C $GITHUB_WORKSPACE/downloads/frameworks/native/
+
 gh release --repo cibuilde/aosp-buildbot download android12-gsi_06 --pattern frameworks_native.tar.zst --output frameworks_native-06.tar.zst
 mkdir -p $GITHUB_WORKSPACE/downloads/frameworks/native
 tar xf $GITHUB_WORKSPACE/frameworks_native-06.tar.zst -C $GITHUB_WORKSPACE/downloads/frameworks/native/
@@ -825,6 +829,10 @@ gh release --repo cibuilde/aosp-buildbot download android12-gsi_03 --pattern pac
 mkdir -p $GITHUB_WORKSPACE/downloads/packages/modules/Virtualization
 tar xf $GITHUB_WORKSPACE/packages_modules_Virtualization-03.tar.zst -C $GITHUB_WORKSPACE/downloads/packages/modules/Virtualization/
 
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_04 --pattern packages_modules_Virtualization.tar.zst --output packages_modules_Virtualization-04.tar.zst
+mkdir -p $GITHUB_WORKSPACE/downloads/packages/modules/Virtualization
+tar xf $GITHUB_WORKSPACE/packages_modules_Virtualization-04.tar.zst -C $GITHUB_WORKSPACE/downloads/packages/modules/Virtualization/
+
 gh release --repo cibuilde/aosp-buildbot download android12-gsi_05 --pattern packages_modules_Virtualization.tar.zst --output packages_modules_Virtualization-05.tar.zst
 mkdir -p $GITHUB_WORKSPACE/downloads/packages/modules/Virtualization
 tar xf $GITHUB_WORKSPACE/packages_modules_Virtualization-05.tar.zst -C $GITHUB_WORKSPACE/downloads/packages/modules/Virtualization/
@@ -872,6 +880,10 @@ tar xf $GITHUB_WORKSPACE/system_apex-05.tar.zst -C $GITHUB_WORKSPACE/downloads/s
 gh release --repo cibuilde/aosp-buildbot download android12-gsi_05 --pattern system_core.tar.zst --output system_core-05.tar.zst
 mkdir -p $GITHUB_WORKSPACE/downloads/system/core
 tar xf $GITHUB_WORKSPACE/system_core-05.tar.zst -C $GITHUB_WORKSPACE/downloads/system/core/
+
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_06 --pattern system_core.tar.zst --output system_core-06.tar.zst
+mkdir -p $GITHUB_WORKSPACE/downloads/system/core
+tar xf $GITHUB_WORKSPACE/system_core-06.tar.zst -C $GITHUB_WORKSPACE/downloads/system/core/
 
 gh release --repo cibuilde/aosp-buildbot download android12-gsi_07 --pattern system_core.tar.zst --output system_core-07.tar.zst
 mkdir -p $GITHUB_WORKSPACE/downloads/system/core

@@ -1,6 +1,0 @@
-out/soong/.intermediates/prebuilts/sdk/current/support/android-support-transition/android_common/combined/android-support-transition.jar
-out/soong/.intermediates/prebuilts/sdk/current/support/android-support-transition/android_common/extra_packages
-out/soong/.intermediates/prebuilts/sdk/current/support/android-support-transition/android_common/manifest_fixer/AndroidManifest.xml
-out/soong/.intermediates/prebuilts/sdk/current/support/android-support-transition/android_common/manifest_merger/AndroidManifest.xml
-out/soong/.intermediates/prebuilts/sdk/current/support/android-support-transition/android_common/package-res.apk
-out/soong/.intermediates/prebuilts/sdk/current/support/android-support-transition/android_common/turbine-combined/android-support-transition.jar

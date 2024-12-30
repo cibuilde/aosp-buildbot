@@ -1,8 +1,0 @@
-out/soong/.intermediates/frameworks/base/libs/usb/com.android.future.usb.accessory/android_common/aligned/com.android.future.usb.accessory.jar
-out/soong/.intermediates/frameworks/base/libs/usb/com.android.future.usb.accessory/android_common/dexpreopt/dexpreopt.config
-out/soong/.intermediates/frameworks/base/libs/usb/com.android.future.usb.accessory/android_common/dexpreopt/oat/x86/javalib.odex
-out/soong/.intermediates/frameworks/base/libs/usb/com.android.future.usb.accessory/android_common/dexpreopt/oat/x86/javalib.vdex
-out/soong/.intermediates/frameworks/base/libs/usb/com.android.future.usb.accessory/android_common/dexpreopt/oat/x86_64/javalib.odex
-out/soong/.intermediates/frameworks/base/libs/usb/com.android.future.usb.accessory/android_common/dexpreopt/oat/x86_64/javalib.vdex
-out/soong/.intermediates/frameworks/base/libs/usb/com.android.future.usb.accessory/android_common/javac/com.android.future.usb.accessory.jar
-out/soong/.intermediates/frameworks/base/libs/usb/com.android.future.usb.accessory/android_common/turbine-combined/com.android.future.usb.accessory.jar

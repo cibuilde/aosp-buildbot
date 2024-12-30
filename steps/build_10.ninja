@@ -202,7 +202,9 @@ include ninja/libcore/core-all^android_common.ninja
 include ninja/libcore/core-generated-annotation-stubs^android_common.ninja
 include ninja/libcore/core-lambda-stubs-for-system-modules^android_common.ninja
 include ninja/libcore/core-lambda-stubs^android_common.ninja
+include ninja/libcore/core-libart^android_common_apex31.ninja
 include ninja/libcore/core-oj-hiddenapi-annotations^android_common.ninja
+include ninja/libcore/core-oj^android_common_apex31.ninja
 include ninja/libcore/framework-api-annotations-lib^android_common.ninja
 include ninja/libcore/libcore-platform-compat-config^android_common.ninja
 include ninja/packages/modules/DnsResolver/dnsresolver_aidl_interface-V7-cpp^android_x86_64_shared.ninja
@@ -712,13 +714,17 @@ build core-lambda-stubs-for-system-modules,android_common: phony out/soong/.inte
 
 build core-lambda-stubs,android_common: phony out/soong/.intermediates/libcore/core-lambda-stubs/android_common/javac/core-lambda-stubs.jar out/soong/.intermediates/libcore/core-lambda-stubs/android_common/turbine-combined/core-lambda-stubs.jar
 
+build core-libart,android_common_apex31: phony out/soong/.intermediates/libcore/core-libart/android_common_apex31/aligned/core-libart.jar out/soong/.intermediates/libcore/core-libart/android_common_apex31/dex/core-libart.jar out/soong/.intermediates/libcore/core-libart/android_common_apex31/javac/core-libart.jar out/soong/.intermediates/libcore/core-libart/android_common_apex31/turbine-combined/core-libart.jar out/soong/.intermediates/libcore/core-libart/android_common_apex31/turbine/core-libart.jar
+
 build core-oj-hiddenapi-annotations,android_common: phony out/soong/.intermediates/libcore/core-oj-hiddenapi-annotations/android_common/javac/core-oj-hiddenapi-annotations.jar
+
+build core-oj,android_common_apex31: phony out/soong/.intermediates/libcore/core-oj/android_common_apex31/aligned/core-oj.jar out/soong/.intermediates/libcore/core-oj/android_common_apex31/dex-withres-aligned/core-oj.jar out/soong/.intermediates/libcore/core-oj/android_common_apex31/dex-withres/core-oj.jar out/soong/.intermediates/libcore/core-oj/android_common_apex31/dex/core-oj.jar out/soong/.intermediates/libcore/core-oj/android_common_apex31/javac/core-oj.jar out/soong/.intermediates/libcore/core-oj/android_common_apex31/turbine-combined/core-oj.jar out/soong/.intermediates/libcore/core-oj/android_common_apex31/turbine/core-oj.jar out/soong/.intermediates/libcore/core-oj/android_common_apex31/withres/core-oj.jar
 
 build framework-api-annotations-lib,android_common: phony out/soong/.intermediates/libcore/framework-api-annotations-lib/android_common/turbine-combined/framework-api-annotations-lib.jar
 
 build libcore-platform-compat-config,android_common: phony out/soong/.intermediates/libcore/libcore-platform-compat-config/android_common/libcore-platform-compat-config.xml
 
-build libcore-targets: phony api-annotations-system-modules,android_common art-module-public-api-stubs-system-modules,android_common art.module.api.annotations.for.system.modules,android_common art.module.public.api.stubs.module_lib,android_common art.module.public.api.stubs.source.module_lib,android_common art.module.public.api.stubs.source.system,android_common art.module.public.api.stubs.source,android_common art.module.public.api.stubs.system,android_common art.module.public.api.stubs,android_common core-all-system-modules,android_common core-all,android_common core-generated-annotation-stubs,android_common core-lambda-stubs-for-system-modules,android_common core-lambda-stubs,android_common core-oj-hiddenapi-annotations,android_common framework-api-annotations-lib,android_common libcore-platform-compat-config,android_common
+build libcore-targets: phony api-annotations-system-modules,android_common art-module-public-api-stubs-system-modules,android_common art.module.api.annotations.for.system.modules,android_common art.module.public.api.stubs.module_lib,android_common art.module.public.api.stubs.source.module_lib,android_common art.module.public.api.stubs.source.system,android_common art.module.public.api.stubs.source,android_common art.module.public.api.stubs.system,android_common art.module.public.api.stubs,android_common core-all-system-modules,android_common core-all,android_common core-generated-annotation-stubs,android_common core-lambda-stubs-for-system-modules,android_common core-lambda-stubs,android_common core-libart,android_common_apex31 core-oj-hiddenapi-annotations,android_common core-oj,android_common_apex31 framework-api-annotations-lib,android_common libcore-platform-compat-config,android_common
 
 build dnsresolver_aidl_interface-V7-cpp,android_x86_64_shared: phony out/soong/.intermediates/packages/modules/DnsResolver/dnsresolver_aidl_interface-V7-cpp/android_x86_64_shared/dnsresolver_aidl_interface-V7-cpp.so out/soong/.intermediates/packages/modules/DnsResolver/dnsresolver_aidl_interface-V7-cpp/android_x86_64_shared/dnsresolver_aidl_interface-V7-cpp.so.toc
 

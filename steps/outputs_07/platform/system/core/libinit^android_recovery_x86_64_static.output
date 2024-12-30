@@ -1,4 +1,0 @@
-out/soong/.intermediates/system/core/init/libinit/android_recovery_x86_64_static/gen/proto/system/core/init/persistent_properties.pb.h
-out/soong/.intermediates/system/core/init/libinit/android_recovery_x86_64_static/gen/proto/system/core/init/property_service.pb.h
-out/soong/.intermediates/system/core/init/libinit/android_recovery_x86_64_static/gen/proto/system/core/init/subcontext.pb.h
-out/soong/.intermediates/system/core/init/libinit/android_recovery_x86_64_static/libinit.a

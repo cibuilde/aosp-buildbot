@@ -37,6 +37,10 @@ gh release --repo cibuilde/aosp-buildbot download android12-gsi_07 --pattern boo
 mkdir -p $GITHUB_WORKSPACE/downloads/bootable/recovery
 tar xf $GITHUB_WORKSPACE/bootable_recovery-07.tar.zst -C $GITHUB_WORKSPACE/downloads/bootable/recovery/
 
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_03 --pattern build_make.tar.zst --output build_make-03.tar.zst
+mkdir -p $GITHUB_WORKSPACE/downloads/build/make
+tar xf $GITHUB_WORKSPACE/build_make-03.tar.zst -C $GITHUB_WORKSPACE/downloads/build/make/
+
 gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern build_soong.tar.zst --output build_soong-01.tar.zst
 mkdir -p $GITHUB_WORKSPACE/downloads/build/soong
 tar xf $GITHUB_WORKSPACE/build_soong-01.tar.zst -C $GITHUB_WORKSPACE/downloads/build/soong/
@@ -77,6 +81,10 @@ gh release --repo cibuilde/aosp-buildbot download android12-gsi_03 --pattern ext
 mkdir -p $GITHUB_WORKSPACE/downloads/external/angle
 tar xf $GITHUB_WORKSPACE/external_angle-03.tar.zst -C $GITHUB_WORKSPACE/downloads/external/angle/
 
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_03 --pattern external_apache-xml.tar.zst --output external_apache-xml-03.tar.zst
+mkdir -p $GITHUB_WORKSPACE/downloads/external/apache-xml
+tar xf $GITHUB_WORKSPACE/external_apache-xml-03.tar.zst -C $GITHUB_WORKSPACE/downloads/external/apache-xml/
+
 gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_avb.tar.zst --output external_avb-01.tar.zst
 mkdir -p $GITHUB_WORKSPACE/downloads/external/avb
 tar xf $GITHUB_WORKSPACE/external_avb-01.tar.zst -C $GITHUB_WORKSPACE/downloads/external/avb/
@@ -100,6 +108,10 @@ tar xf $GITHUB_WORKSPACE/external_bzip2-01.tar.zst -C $GITHUB_WORKSPACE/download
 gh release --repo cibuilde/aosp-buildbot download android12-gsi_04 --pattern external_conscrypt.tar.zst --output external_conscrypt-04.tar.zst
 mkdir -p $GITHUB_WORKSPACE/downloads/external/conscrypt
 tar xf $GITHUB_WORKSPACE/external_conscrypt-04.tar.zst -C $GITHUB_WORKSPACE/downloads/external/conscrypt/
+
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_09 --pattern external_conscrypt.tar.zst --output external_conscrypt-09.tar.zst
+mkdir -p $GITHUB_WORKSPACE/downloads/external/conscrypt
+tar xf $GITHUB_WORKSPACE/external_conscrypt-09.tar.zst -C $GITHUB_WORKSPACE/downloads/external/conscrypt/
 
 gh release --repo cibuilde/aosp-buildbot download android12-gsi_02 --pattern external_crosvm.tar.zst --output external_crosvm-02.tar.zst
 mkdir -p $GITHUB_WORKSPACE/downloads/external/crosvm
@@ -1113,6 +1125,10 @@ gh release --repo cibuilde/aosp-buildbot download android12-gsi_09 --pattern pac
 mkdir -p $GITHUB_WORKSPACE/downloads/packages/modules/StatsD
 tar xf $GITHUB_WORKSPACE/packages_modules_StatsD-09.tar.zst -C $GITHUB_WORKSPACE/downloads/packages/modules/StatsD/
 
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_04 --pattern packages_modules_Virtualization.tar.zst --output packages_modules_Virtualization-04.tar.zst
+mkdir -p $GITHUB_WORKSPACE/downloads/packages/modules/Virtualization
+tar xf $GITHUB_WORKSPACE/packages_modules_Virtualization-04.tar.zst -C $GITHUB_WORKSPACE/downloads/packages/modules/Virtualization/
+
 gh release --repo cibuilde/aosp-buildbot download android12-gsi_09 --pattern packages_modules_Virtualization.tar.zst --output packages_modules_Virtualization-09.tar.zst
 mkdir -p $GITHUB_WORKSPACE/downloads/packages/modules/Virtualization
 tar xf $GITHUB_WORKSPACE/packages_modules_Virtualization-09.tar.zst -C $GITHUB_WORKSPACE/downloads/packages/modules/Virtualization/
@@ -1438,11 +1454,13 @@ time source steps/build_11/bootable_recovery.sh
 time source steps/build_11/device_generic_vulkan-cereal.sh
 time source steps/build_11/device_google_cuttlefish.sh
 time source steps/build_11/external_angle.sh
+time source steps/build_11/external_apache-xml.sh
 time source steps/build_11/external_conscrypt.sh
 time source steps/build_11/external_crosvm.sh
 time source steps/build_11/external_drm_hwcomposer.sh
 time source steps/build_11/external_icu.sh
 time source steps/build_11/external_minigbm.sh
+time source steps/build_11/external_okhttp.sh
 time source steps/build_11/external_rust_crates_futures.sh
 time source steps/build_11/external_rust_crates_rand.sh
 time source steps/build_11/frameworks_av.sh

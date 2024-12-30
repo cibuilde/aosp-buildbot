@@ -347,20 +347,10 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/system/media/camera/libcamera_metadata^a
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/media/audio_utils/libfifo^android_x86_64_static_cfi_apex29/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/tools/aidl/aidl-cpp^linux_glibc_x86_64/ .
 
-echo "building audioserver^android_x86_64"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_12.ninja audioserver,android_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/audioserver/audioserver^android_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_12/frameworks/av/audioserver^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/audioserver/audioserver^android_x86_64
-
 echo "building libaacextractor^android_x86_64_static_cfi_com.android.media"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_12.ninja libaacextractor,android_x86_64_static_cfi_com.android.media
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/extractors/aac/libaacextractor^android_x86_64_static_cfi_com.android.media
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_12/frameworks/av/libaacextractor^android_x86_64_static_cfi_com.android.media.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/extractors/aac/libaacextractor^android_x86_64_static_cfi_com.android.media
-
-echo "building libaacextractor^android_x86_64_shared_cfi_com.android.media"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_12.ninja libaacextractor,android_x86_64_shared_cfi_com.android.media
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/extractors/aac/libaacextractor^android_x86_64_shared_cfi_com.android.media
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_12/frameworks/av/libaacextractor^android_x86_64_shared_cfi_com.android.media.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/extractors/aac/libaacextractor^android_x86_64_shared_cfi_com.android.media
 
 echo "building libamrextractor^android_x86_64_static_cfi_apex29"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_12.ninja libamrextractor,android_x86_64_static_cfi_apex29
@@ -371,6 +361,61 @@ echo "building libamrextractor^android_x86_64_shared_cfi_apex29"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_12.ninja libamrextractor,android_x86_64_shared_cfi_apex29
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/extractors/amr/libamrextractor^android_x86_64_shared_cfi_apex29
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_12/frameworks/av/libamrextractor^android_x86_64_shared_cfi_apex29.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/extractors/amr/libamrextractor^android_x86_64_shared_cfi_apex29
+
+echo "building libaudiopolicyservice^android_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_12.ninja libaudiopolicyservice,android_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/services/audiopolicy/service/libaudiopolicyservice^android_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_12/frameworks/av/libaudiopolicyservice^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/services/audiopolicy/service/libaudiopolicyservice^android_x86_64_shared
+
+echo "building libcodec2_hidl_client@1.0^android_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_12.ninja libcodec2_hidl_client@1.0,android_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/hidl/1.0/utils/libcodec2_hidl_client@1.0^android_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_12/frameworks/av/libcodec2_hidl_client@1.0^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/hidl/1.0/utils/libcodec2_hidl_client@1.0^android_x86_64_shared
+
+echo "building libcodec2_hidl_client@1.0^android_x86_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_12.ninja libcodec2_hidl_client@1.0,android_x86_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/hidl/1.0/utils/libcodec2_hidl_client@1.0^android_x86_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_12/frameworks/av/libcodec2_hidl_client@1.0^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/hidl/1.0/utils/libcodec2_hidl_client@1.0^android_x86_x86_64_shared
+
+echo "building libcodec2_hidl_client@1.1^android_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_12.ninja libcodec2_hidl_client@1.1,android_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/hidl/1.1/utils/libcodec2_hidl_client@1.1^android_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_12/frameworks/av/libcodec2_hidl_client@1.1^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/hidl/1.1/utils/libcodec2_hidl_client@1.1^android_x86_64_shared
+
+echo "building libcodec2_hidl_client@1.1^android_x86_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_12.ninja libcodec2_hidl_client@1.1,android_x86_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/hidl/1.1/utils/libcodec2_hidl_client@1.1^android_x86_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_12/frameworks/av/libcodec2_hidl_client@1.1^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/hidl/1.1/utils/libcodec2_hidl_client@1.1^android_x86_x86_64_static
+
+echo "building libcodec2_hidl_client@1.1^android_x86_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_12.ninja libcodec2_hidl_client@1.1,android_x86_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/hidl/1.1/utils/libcodec2_hidl_client@1.1^android_x86_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_12/frameworks/av/libcodec2_hidl_client@1.1^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/hidl/1.1/utils/libcodec2_hidl_client@1.1^android_x86_x86_64_shared
+
+echo "building libcodec2_hidl_client@1.2^android_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_12.ninja libcodec2_hidl_client@1.2,android_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/hidl/1.2/utils/libcodec2_hidl_client@1.2^android_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_12/frameworks/av/libcodec2_hidl_client@1.2^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/hidl/1.2/utils/libcodec2_hidl_client@1.2^android_x86_64_shared
+
+echo "building libcodec2_hidl_client@1.2^android_x86_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_12.ninja libcodec2_hidl_client@1.2,android_x86_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/hidl/1.2/utils/libcodec2_hidl_client@1.2^android_x86_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_12/frameworks/av/libcodec2_hidl_client@1.2^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/hidl/1.2/utils/libcodec2_hidl_client@1.2^android_x86_x86_64_shared
+
+echo "building libmedia^android_x86_64_static_cfi"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_12.ninja libmedia,android_x86_64_static_cfi
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libmedia/libmedia^android_x86_64_static_cfi
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_12/frameworks/av/libmedia^android_x86_64_static_cfi.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libmedia/libmedia^android_x86_64_static_cfi
+
+echo "building audioserver^android_x86_64"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_12.ninja audioserver,android_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/audioserver/audioserver^android_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_12/frameworks/av/audioserver^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/audioserver/audioserver^android_x86_64
+
+echo "building libaacextractor^android_x86_64_shared_cfi_com.android.media"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_12.ninja libaacextractor,android_x86_64_shared_cfi_com.android.media
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/extractors/aac/libaacextractor^android_x86_64_shared_cfi_com.android.media
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_12/frameworks/av/libaacextractor^android_x86_64_shared_cfi_com.android.media.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/extractors/aac/libaacextractor^android_x86_64_shared_cfi_com.android.media
 
 echo "building libaudiopolicycomponents^android_x86_64_static"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_12.ninja libaudiopolicycomponents,android_x86_64_static
@@ -412,11 +457,6 @@ ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_12.ninja libaudiopolicyman
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/services/audiopolicy/managerdefault/libaudiopolicymanagerdefault^android_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_12/frameworks/av/libaudiopolicymanagerdefault^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/services/audiopolicy/managerdefault/libaudiopolicymanagerdefault^android_x86_64_shared
 
-echo "building libaudiopolicyservice^android_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_12.ninja libaudiopolicyservice,android_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/services/audiopolicy/service/libaudiopolicyservice^android_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_12/frameworks/av/libaudiopolicyservice^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/services/audiopolicy/service/libaudiopolicyservice^android_x86_64_shared
-
 echo "building libcamera_client^android_x86_64_shared"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_12.ninja libcamera_client,android_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/camera/libcamera_client^android_x86_64_shared
@@ -452,60 +492,25 @@ ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_12.ninja libcodec2_hidl_cl
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/hidl/1.0/utils/libcodec2_hidl_client@1.0^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_12/frameworks/av/libcodec2_hidl_client@1.0^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/hidl/1.0/utils/libcodec2_hidl_client@1.0^android_x86_64_static
 
-echo "building libcodec2_hidl_client@1.0^android_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_12.ninja libcodec2_hidl_client@1.0,android_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/hidl/1.0/utils/libcodec2_hidl_client@1.0^android_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_12/frameworks/av/libcodec2_hidl_client@1.0^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/hidl/1.0/utils/libcodec2_hidl_client@1.0^android_x86_64_shared
-
 echo "building libcodec2_hidl_client@1.0^android_x86_x86_64_static"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_12.ninja libcodec2_hidl_client@1.0,android_x86_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/hidl/1.0/utils/libcodec2_hidl_client@1.0^android_x86_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_12/frameworks/av/libcodec2_hidl_client@1.0^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/hidl/1.0/utils/libcodec2_hidl_client@1.0^android_x86_x86_64_static
-
-echo "building libcodec2_hidl_client@1.0^android_x86_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_12.ninja libcodec2_hidl_client@1.0,android_x86_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/hidl/1.0/utils/libcodec2_hidl_client@1.0^android_x86_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_12/frameworks/av/libcodec2_hidl_client@1.0^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/hidl/1.0/utils/libcodec2_hidl_client@1.0^android_x86_x86_64_shared
 
 echo "building libcodec2_hidl_client@1.1^android_x86_64_static"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_12.ninja libcodec2_hidl_client@1.1,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/hidl/1.1/utils/libcodec2_hidl_client@1.1^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_12/frameworks/av/libcodec2_hidl_client@1.1^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/hidl/1.1/utils/libcodec2_hidl_client@1.1^android_x86_64_static
 
-echo "building libcodec2_hidl_client@1.1^android_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_12.ninja libcodec2_hidl_client@1.1,android_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/hidl/1.1/utils/libcodec2_hidl_client@1.1^android_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_12/frameworks/av/libcodec2_hidl_client@1.1^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/hidl/1.1/utils/libcodec2_hidl_client@1.1^android_x86_64_shared
-
-echo "building libcodec2_hidl_client@1.1^android_x86_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_12.ninja libcodec2_hidl_client@1.1,android_x86_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/hidl/1.1/utils/libcodec2_hidl_client@1.1^android_x86_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_12/frameworks/av/libcodec2_hidl_client@1.1^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/hidl/1.1/utils/libcodec2_hidl_client@1.1^android_x86_x86_64_static
-
-echo "building libcodec2_hidl_client@1.1^android_x86_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_12.ninja libcodec2_hidl_client@1.1,android_x86_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/hidl/1.1/utils/libcodec2_hidl_client@1.1^android_x86_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_12/frameworks/av/libcodec2_hidl_client@1.1^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/hidl/1.1/utils/libcodec2_hidl_client@1.1^android_x86_x86_64_shared
-
 echo "building libcodec2_hidl_client@1.2^android_x86_64_static"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_12.ninja libcodec2_hidl_client@1.2,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/hidl/1.2/utils/libcodec2_hidl_client@1.2^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_12/frameworks/av/libcodec2_hidl_client@1.2^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/hidl/1.2/utils/libcodec2_hidl_client@1.2^android_x86_64_static
 
-echo "building libcodec2_hidl_client@1.2^android_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_12.ninja libcodec2_hidl_client@1.2,android_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/hidl/1.2/utils/libcodec2_hidl_client@1.2^android_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_12/frameworks/av/libcodec2_hidl_client@1.2^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/hidl/1.2/utils/libcodec2_hidl_client@1.2^android_x86_64_shared
-
 echo "building libcodec2_hidl_client@1.2^android_x86_x86_64_static"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_12.ninja libcodec2_hidl_client@1.2,android_x86_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/hidl/1.2/utils/libcodec2_hidl_client@1.2^android_x86_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_12/frameworks/av/libcodec2_hidl_client@1.2^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/hidl/1.2/utils/libcodec2_hidl_client@1.2^android_x86_x86_64_static
-
-echo "building libcodec2_hidl_client@1.2^android_x86_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_12.ninja libcodec2_hidl_client@1.2,android_x86_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/hidl/1.2/utils/libcodec2_hidl_client@1.2^android_x86_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_12/frameworks/av/libcodec2_hidl_client@1.2^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/hidl/1.2/utils/libcodec2_hidl_client@1.2^android_x86_x86_64_shared
 
 echo "building libflacextractor^android_x86_64_static_cfi_com.android.media"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_12.ninja libflacextractor,android_x86_64_static_cfi_com.android.media
@@ -516,11 +521,6 @@ echo "building libflacextractor^android_x86_64_shared_cfi_com.android.media"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_12.ninja libflacextractor,android_x86_64_shared_cfi_com.android.media
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/extractors/flac/libflacextractor^android_x86_64_shared_cfi_com.android.media
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_12/frameworks/av/libflacextractor^android_x86_64_shared_cfi_com.android.media.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/extractors/flac/libflacextractor^android_x86_64_shared_cfi_com.android.media
-
-echo "building libmedia^android_x86_64_static_cfi"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_12.ninja libmedia,android_x86_64_static_cfi
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libmedia/libmedia^android_x86_64_static_cfi
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_12/frameworks/av/libmedia^android_x86_64_static_cfi.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libmedia/libmedia^android_x86_64_static_cfi
 
 echo "building libmedia^android_x86_64_shared_cfi"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_12.ninja libmedia,android_x86_64_shared_cfi
@@ -742,21 +742,6 @@ ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_12.ninja libstagefright_co
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libstagefright/libstagefright_codecbase^android_x86_64_shared_cfi
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_12/frameworks/av/libstagefright_codecbase^android_x86_64_shared_cfi.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libstagefright/libstagefright_codecbase^android_x86_64_shared_cfi
 
-echo "building libstagefright_httplive^android_x86_x86_64_static_cfi"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_12.ninja libstagefright_httplive,android_x86_x86_64_static_cfi
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libstagefright/httplive/libstagefright_httplive^android_x86_x86_64_static_cfi
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_12/frameworks/av/libstagefright_httplive^android_x86_x86_64_static_cfi.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libstagefright/httplive/libstagefright_httplive^android_x86_x86_64_static_cfi
-
-echo "building libstagefright_mediafilter^android_x86_64_static_cfi"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_12.ninja libstagefright_mediafilter,android_x86_64_static_cfi
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libstagefright/filters/libstagefright_mediafilter^android_x86_64_static_cfi
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_12/frameworks/av/libstagefright_mediafilter^android_x86_64_static_cfi.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libstagefright/filters/libstagefright_mediafilter^android_x86_64_static_cfi
-
-echo "building libstagefright_nuplayer^android_x86_x86_64_static_cfi"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_12.ninja libstagefright_nuplayer,android_x86_x86_64_static_cfi
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libmediaplayerservice/nuplayer/libstagefright_nuplayer^android_x86_x86_64_static_cfi
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_12/frameworks/av/libstagefright_nuplayer^android_x86_x86_64_static_cfi.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libmediaplayerservice/nuplayer/libstagefright_nuplayer^android_x86_x86_64_static_cfi
-
 echo "building libstagefright_omx^android_x86_64_shared_cfi"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_12.ninja libstagefright_omx,android_x86_64_shared_cfi
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libstagefright/omx/libstagefright_omx^android_x86_64_shared_cfi
@@ -792,10 +777,25 @@ ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_12.ninja libstagefright_fr
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libstagefright/libstagefright_framecapture_utils^android_x86_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_12/frameworks/av/libstagefright_framecapture_utils^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libstagefright/libstagefright_framecapture_utils^android_x86_x86_64_shared
 
+echo "building libstagefright_httplive^android_x86_x86_64_static_cfi"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_12.ninja libstagefright_httplive,android_x86_x86_64_static_cfi
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libstagefright/httplive/libstagefright_httplive^android_x86_x86_64_static_cfi
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_12/frameworks/av/libstagefright_httplive^android_x86_x86_64_static_cfi.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libstagefright/httplive/libstagefright_httplive^android_x86_x86_64_static_cfi
+
+echo "building libstagefright_mediafilter^android_x86_64_static_cfi"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_12.ninja libstagefright_mediafilter,android_x86_64_static_cfi
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libstagefright/filters/libstagefright_mediafilter^android_x86_64_static_cfi
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_12/frameworks/av/libstagefright_mediafilter^android_x86_64_static_cfi.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libstagefright/filters/libstagefright_mediafilter^android_x86_64_static_cfi
+
 echo "building libstagefright_mediafilter^android_x86_x86_64_static_cfi"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_12.ninja libstagefright_mediafilter,android_x86_x86_64_static_cfi
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libstagefright/filters/libstagefright_mediafilter^android_x86_x86_64_static_cfi
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_12/frameworks/av/libstagefright_mediafilter^android_x86_x86_64_static_cfi.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libstagefright/filters/libstagefright_mediafilter^android_x86_x86_64_static_cfi
+
+echo "building libstagefright_nuplayer^android_x86_x86_64_static_cfi"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_12.ninja libstagefright_nuplayer,android_x86_x86_64_static_cfi
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libmediaplayerservice/nuplayer/libstagefright_nuplayer^android_x86_x86_64_static_cfi
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_12/frameworks/av/libstagefright_nuplayer^android_x86_x86_64_static_cfi.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libmediaplayerservice/nuplayer/libstagefright_nuplayer^android_x86_x86_64_static_cfi
 
 echo "building libstagefright_omx^android_x86_x86_64_shared_cfi"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_12.ninja libstagefright_omx,android_x86_x86_64_shared_cfi

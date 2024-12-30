@@ -159,7 +159,9 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/system/extras/simpleperf/libsimpleperf_p
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/extras/simpleperf/libsimpleperf_profcollect_bindgen^android_x86_64_rlib_dylib-std/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/extras/simpleperf/libsimpleperf_profcollect_bindgen^android_x86_64_source/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/extras/simpleperf/libsimpleperf_profcollect_rust^android_x86_64_rlib_dylib-std/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/extras/profcollectd/libprofcollectd/profcollectd_aidl_interface-rust-source^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/extras/profcollectd/libprofcollectd/profcollectd_aidl_interface-rust^android_x86_64_dylib/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/extras/profcollectd/libprofcollectd/profcollectd_aidl_interface-rust^android_x86_64_source/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/libbase/libbase^android_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^android_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/server_configurable_flags/libflags/server_configurable_flags^android_x86_64_shared/ .

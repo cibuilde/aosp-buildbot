@@ -87,7 +87,6 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/libcore/mmodules/core_platform_api/stabl
 rsync -a -r $GITHUB_WORKSPACE/downloads/libcore/mmodules/core_platform_api/stable.core.platform.api.stubs^android_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/r8/d8^linux_glibc_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/r8/d8^linux_glibc_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/system/libhidl/transport/base/1.0/android.hidl.base-V1.0-java^android_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/libhidl/transport/safe_union/1.0/android.hidl.safe_union-V1.0-java^android_common/ .
 
 echo "building android.hardware.audio.common-V2.0-java^android_common"
@@ -110,35 +109,25 @@ ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_31.ninja android.hardware.
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/biometrics/face/1.0/android.hardware.biometrics.face-V1.0-java^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_31/hardware/interfaces/android.hardware.biometrics.face-V1.0-java^android_common.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/biometrics/face/1.0/android.hardware.biometrics.face-V1.0-java^android_common
 
-echo "building android.hardware.biometrics.fingerprint-V1-java^android_common"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_31.ninja android.hardware.biometrics.fingerprint-V1-java,android_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/biometrics/fingerprint/aidl/android.hardware.biometrics.fingerprint-V1-java^android_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_31/hardware/interfaces/android.hardware.biometrics.fingerprint-V1-java^android_common.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/biometrics/fingerprint/aidl/android.hardware.biometrics.fingerprint-V1-java^android_common
-
-echo "building android.hardware.biometrics.fingerprint-V2.1-java^android_common"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_31.ninja android.hardware.biometrics.fingerprint-V2.1-java,android_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/biometrics/fingerprint/2.1/android.hardware.biometrics.fingerprint-V2.1-java^android_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_31/hardware/interfaces/android.hardware.biometrics.fingerprint-V2.1-java^android_common.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/biometrics/fingerprint/2.1/android.hardware.biometrics.fingerprint-V2.1-java^android_common
-
-echo "building android.hardware.biometrics.fingerprint-V2.2-java^android_common"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_31.ninja android.hardware.biometrics.fingerprint-V2.2-java,android_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/biometrics/fingerprint/2.2/android.hardware.biometrics.fingerprint-V2.2-java^android_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_31/hardware/interfaces/android.hardware.biometrics.fingerprint-V2.2-java^android_common.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/biometrics/fingerprint/2.2/android.hardware.biometrics.fingerprint-V2.2-java^android_common
-
 echo "building android.hardware.biometrics.fingerprint-V2.3-java^android_common"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_31.ninja android.hardware.biometrics.fingerprint-V2.3-java,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/biometrics/fingerprint/2.3/android.hardware.biometrics.fingerprint-V2.3-java^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_31/hardware/interfaces/android.hardware.biometrics.fingerprint-V2.3-java^android_common.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/biometrics/fingerprint/2.3/android.hardware.biometrics.fingerprint-V2.3-java^android_common
 
-echo "building android.hardware.boot-V1.1-java^android_common"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_31.ninja android.hardware.boot-V1.1-java,android_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/boot/1.1/android.hardware.boot-V1.1-java^android_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_31/hardware/interfaces/android.hardware.boot-V1.1-java^android_common.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/boot/1.1/android.hardware.boot-V1.1-java^android_common
+echo "building android.hardware.boot-V1.0-java^android_common"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_31.ninja android.hardware.boot-V1.0-java,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/boot/1.0/android.hardware.boot-V1.0-java^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_31/hardware/interfaces/android.hardware.boot-V1.0-java^android_common.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/boot/1.0/android.hardware.boot-V1.0-java^android_common
 
 echo "building android.hardware.boot-V1.2-java^android_common"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_31.ninja android.hardware.boot-V1.2-java,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/boot/1.2/android.hardware.boot-V1.2-java^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_31/hardware/interfaces/android.hardware.boot-V1.2-java^android_common.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/boot/1.2/android.hardware.boot-V1.2-java^android_common
+
+echo "building android.hardware.broadcastradio-V2.0-java^android_common"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_31.ninja android.hardware.broadcastradio-V2.0-java,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/broadcastradio/2.0/android.hardware.broadcastradio-V2.0-java^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_31/hardware/interfaces/android.hardware.broadcastradio-V2.0-java^android_common.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/broadcastradio/2.0/android.hardware.broadcastradio-V2.0-java^android_common
 
 echo "building android.hardware.common-V2-java^android_common"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_31.ninja android.hardware.common-V2-java,android_common
@@ -150,15 +139,20 @@ ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_31.ninja android.hardware.
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/biometrics/face/aidl/android.hardware.biometrics.face-V1-java^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_31/hardware/interfaces/android.hardware.biometrics.face-V1-java^android_common.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/biometrics/face/aidl/android.hardware.biometrics.face-V1-java^android_common
 
-echo "building android.hardware.boot-V1.0-java^android_common"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_31.ninja android.hardware.boot-V1.0-java,android_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/boot/1.0/android.hardware.boot-V1.0-java^android_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_31/hardware/interfaces/android.hardware.boot-V1.0-java^android_common.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/boot/1.0/android.hardware.boot-V1.0-java^android_common
+echo "building android.hardware.biometrics.fingerprint-V2.1-java^android_common"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_31.ninja android.hardware.biometrics.fingerprint-V2.1-java,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/biometrics/fingerprint/2.1/android.hardware.biometrics.fingerprint-V2.1-java^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_31/hardware/interfaces/android.hardware.biometrics.fingerprint-V2.1-java^android_common.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/biometrics/fingerprint/2.1/android.hardware.biometrics.fingerprint-V2.1-java^android_common
 
-echo "building android.hardware.broadcastradio-V2.0-java^android_common"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_31.ninja android.hardware.broadcastradio-V2.0-java,android_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/broadcastradio/2.0/android.hardware.broadcastradio-V2.0-java^android_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_31/hardware/interfaces/android.hardware.broadcastradio-V2.0-java^android_common.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/broadcastradio/2.0/android.hardware.broadcastradio-V2.0-java^android_common
+echo "building android.hardware.biometrics.fingerprint-V2.2-java^android_common"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_31.ninja android.hardware.biometrics.fingerprint-V2.2-java,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/biometrics/fingerprint/2.2/android.hardware.biometrics.fingerprint-V2.2-java^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_31/hardware/interfaces/android.hardware.biometrics.fingerprint-V2.2-java^android_common.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/biometrics/fingerprint/2.2/android.hardware.biometrics.fingerprint-V2.2-java^android_common
+
+echo "building android.hardware.boot-V1.1-java^android_common"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_31.ninja android.hardware.boot-V1.1-java,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/boot/1.1/android.hardware.boot-V1.1-java^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_31/hardware/interfaces/android.hardware.boot-V1.1-java^android_common.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/boot/1.1/android.hardware.boot-V1.1-java^android_common
 
 echo "building android.hardware.configstore-V1.0-java^android_common"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_31.ninja android.hardware.configstore-V1.0-java,android_common
@@ -190,6 +184,16 @@ ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_31.ninja android.hardware.
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/health/1.0/android.hardware.health-V1.0-java^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_31/hardware/interfaces/android.hardware.health-V1.0-java^android_common.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/health/1.0/android.hardware.health-V1.0-java^android_common
 
+echo "building android.hardware.keymaster-V3-java^android_common"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_31.ninja android.hardware.keymaster-V3-java,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/keymaster/aidl/android.hardware.keymaster-V3-java^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_31/hardware/interfaces/android.hardware.keymaster-V3-java^android_common.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/keymaster/aidl/android.hardware.keymaster-V3-java^android_common
+
+echo "building android.hardware.biometrics.fingerprint-V1-java^android_common"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_31.ninja android.hardware.biometrics.fingerprint-V1-java,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/biometrics/fingerprint/aidl/android.hardware.biometrics.fingerprint-V1-java^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_31/hardware/interfaces/android.hardware.biometrics.fingerprint-V1-java^android_common.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/biometrics/fingerprint/aidl/android.hardware.biometrics.fingerprint-V1-java^android_common
+
 echo "building android.hardware.health-V2.0-java^android_common"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_31.ninja android.hardware.health-V2.0-java,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/health/2.0/android.hardware.health-V2.0-java^android_common
@@ -199,11 +203,6 @@ echo "building android.hardware.health-V2.1-java^android_common"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_31.ninja android.hardware.health-V2.1-java,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/health/2.1/android.hardware.health-V2.1-java^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_31/hardware/interfaces/android.hardware.health-V2.1-java^android_common.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/health/2.1/android.hardware.health-V2.1-java^android_common
-
-echo "building android.hardware.keymaster-V3-java^android_common"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_31.ninja android.hardware.keymaster-V3-java,android_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/keymaster/aidl/android.hardware.keymaster-V3-java^android_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_31/hardware/interfaces/android.hardware.keymaster-V3-java^android_common.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/keymaster/aidl/android.hardware.keymaster-V3-java^android_common
 
 echo "building android.hardware.light-V1-java^android_common"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_31.ninja android.hardware.light-V1-java,android_common

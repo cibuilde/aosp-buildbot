@@ -1,4 +1,0 @@
-out/soong/.intermediates/system/extras/ext4_utils/libext4_utils/android_x86_64_static/libext4_utils.a
-out/soong/.intermediates/system/extras/ext4_utils/libext4_utils/android_x86_64_static/obj/system/extras/ext4_utils/ext4_sb.o
-out/soong/.intermediates/system/extras/ext4_utils/libext4_utils/android_x86_64_static/obj/system/extras/ext4_utils/ext4_utils.o
-out/soong/.intermediates/system/extras/ext4_utils/libext4_utils/android_x86_64_static/obj/system/extras/ext4_utils/wipe.o

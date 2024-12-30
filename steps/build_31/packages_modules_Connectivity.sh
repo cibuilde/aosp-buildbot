@@ -128,6 +128,16 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/tools/apifinder/java_api_used_by_mainlin
 rsync -a -r $GITHUB_WORKSPACE/downloads/tools/platform-compat/java/android/processor/compat/unsupportedappusage/unsupportedappusage-annotation-processor^linux_glibc_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/tools/platform-compat/java/android/compat/annotation/unsupportedappusage^android_common/ .
 
+echo "building Tethering^android_common_apex30"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_31.ninja Tethering,android_common_apex30
+mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/Connectivity/Tethering/Tethering^android_common_apex30
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_31/packages/modules/Connectivity/Tethering^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/packages/modules/Connectivity/Tethering/Tethering^android_common_apex30
+
+echo "building com.android.tethering^android_common_com.android.tethering_image"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_31.ninja com.android.tethering,android_common_com.android.tethering_image
+mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/Connectivity/Tethering/apex/com.android.tethering^android_common_com.android.tethering_image
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_31/packages/modules/Connectivity/com.android.tethering^android_common_com.android.tethering_image.output . $GITHUB_WORKSPACE/artifacts/packages/modules/Connectivity/Tethering/apex/com.android.tethering^android_common_com.android.tethering_image
+
 echo "building framework-tethering.impl^android_common"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_31.ninja framework-tethering.impl,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/Connectivity/Tethering/common/TetheringLib/framework-tethering.impl^android_common
@@ -137,11 +147,6 @@ echo "building TetheringApiCurrentLib^android_common_apex30"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_31.ninja TetheringApiCurrentLib,android_common_apex30
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/Connectivity/Tethering/TetheringApiCurrentLib^android_common_apex30
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_31/packages/modules/Connectivity/TetheringApiCurrentLib^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/packages/modules/Connectivity/Tethering/TetheringApiCurrentLib^android_common_apex30
-
-echo "building Tethering^android_common_apex30"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_31.ninja Tethering,android_common_apex30
-mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/Connectivity/Tethering/Tethering^android_common_apex30
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_31/packages/modules/Connectivity/Tethering^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/packages/modules/Connectivity/Tethering/Tethering^android_common_apex30
 
 echo "building framework-connectivity.impl^android_common"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_31.ninja framework-connectivity.impl,android_common
@@ -157,11 +162,6 @@ echo "building service-connectivity^android_common_apex30"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_31.ninja service-connectivity,android_common_apex30
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/Connectivity/service/service-connectivity^android_common_apex30
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_31/packages/modules/Connectivity/service-connectivity^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/packages/modules/Connectivity/service/service-connectivity^android_common_apex30
-
-echo "building com.android.tethering^android_common_com.android.tethering_image"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_31.ninja com.android.tethering,android_common_com.android.tethering_image
-mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/Connectivity/Tethering/apex/com.android.tethering^android_common_com.android.tethering_image
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_31/packages/modules/Connectivity/com.android.tethering^android_common_com.android.tethering_image.output . $GITHUB_WORKSPACE/artifacts/packages/modules/Connectivity/Tethering/apex/com.android.tethering^android_common_com.android.tethering_image
 
 rm -rf out
 

@@ -1,8 +1,0 @@
-out/soong/.intermediates/external/grpc-grpc/libgrpc_lb_policy_grpclb_secure/android_x86_64_static/obj/external/grpc-grpc/src/core/ext/filters/client_channel/lb_policy/grpclb/client_load_reporting_filter.o
-out/soong/.intermediates/external/grpc-grpc/libgrpc_lb_policy_grpclb_secure/android_x86_64_static/obj/external/grpc-grpc/src/core/ext/filters/client_channel/lb_policy/grpclb/grpclb.o
-out/soong/.intermediates/external/grpc-grpc/libgrpc_lb_policy_grpclb_secure/android_x86_64_static/obj/external/grpc-grpc/src/core/ext/filters/client_channel/lb_policy/grpclb/grpclb_channel_secure.o
-out/soong/.intermediates/external/grpc-grpc/libgrpc_lb_policy_grpclb_secure/android_x86_64_static/obj/external/grpc-grpc/src/core/ext/filters/client_channel/lb_policy/grpclb/grpclb_client_stats.o
-out/soong/.intermediates/external/grpc-grpc/libgrpc_lb_policy_grpclb_secure/android_x86_64_static/obj/external/grpc-grpc/src/core/ext/filters/client_channel/lb_policy/grpclb/load_balancer_api.o
-out/soong/.intermediates/external/grpc-grpc/libgrpc_lb_policy_grpclb_secure/android_x86_64_static/obj/external/grpc-grpc/src/core/ext/filters/client_channel/lb_policy/grpclb/proto/grpc/lb/v1/google/protobuf/duration.pb.o
-out/soong/.intermediates/external/grpc-grpc/libgrpc_lb_policy_grpclb_secure/android_x86_64_static/obj/external/grpc-grpc/src/core/ext/filters/client_channel/lb_policy/grpclb/proto/grpc/lb/v1/google/protobuf/timestamp.pb.o
-out/soong/.intermediates/external/grpc-grpc/libgrpc_lb_policy_grpclb_secure/android_x86_64_static/obj/external/grpc-grpc/src/core/ext/filters/client_channel/lb_policy/grpclb/proto/grpc/lb/v1/load_balancer.pb.o

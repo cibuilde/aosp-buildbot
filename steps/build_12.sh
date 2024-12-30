@@ -929,6 +929,10 @@ gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern sys
 mkdir -p $GITHUB_WORKSPACE/downloads/system/extras
 tar xf $GITHUB_WORKSPACE/system_extras-01.tar.zst -C $GITHUB_WORKSPACE/downloads/system/extras/
 
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_04 --pattern system_extras.tar.zst --output system_extras-04.tar.zst
+mkdir -p $GITHUB_WORKSPACE/downloads/system/extras
+tar xf $GITHUB_WORKSPACE/system_extras-04.tar.zst -C $GITHUB_WORKSPACE/downloads/system/extras/
+
 gh release --repo cibuilde/aosp-buildbot download android12-gsi_05 --pattern system_extras.tar.zst --output system_extras-05.tar.zst
 mkdir -p $GITHUB_WORKSPACE/downloads/system/extras
 tar xf $GITHUB_WORKSPACE/system_extras-05.tar.zst -C $GITHUB_WORKSPACE/downloads/system/extras/

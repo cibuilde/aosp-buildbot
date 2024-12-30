@@ -1,5 +1,0 @@
-out/soong/.intermediates/art/compiler/art_compiler_operator_srcs/gen/gensrcs/art/compiler/linker/linker_patch.operator_out.cc
-out/soong/.intermediates/art/compiler/art_compiler_operator_srcs/gen/gensrcs/art/compiler/optimizing/locations.operator_out.cc
-out/soong/.intermediates/art/compiler/art_compiler_operator_srcs/gen/gensrcs/art/compiler/optimizing/nodes.operator_out.cc
-out/soong/.intermediates/art/compiler/art_compiler_operator_srcs/gen/gensrcs/art/compiler/optimizing/optimizing_compiler_stats.operator_out.cc
-out/soong/.intermediates/art/compiler/art_compiler_operator_srcs/gen/gensrcs/art/compiler/utils/arm/constants_arm.operator_out.cc

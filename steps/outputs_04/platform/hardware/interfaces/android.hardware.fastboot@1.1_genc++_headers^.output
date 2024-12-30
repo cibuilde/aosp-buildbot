@@ -1,5 +1,0 @@
-out/soong/.intermediates/hardware/interfaces/fastboot/1.1/android.hardware.fastboot@1.1_genc++_headers/gen/android/hardware/fastboot/1.1/BnHwFastboot.h
-out/soong/.intermediates/hardware/interfaces/fastboot/1.1/android.hardware.fastboot@1.1_genc++_headers/gen/android/hardware/fastboot/1.1/BpHwFastboot.h
-out/soong/.intermediates/hardware/interfaces/fastboot/1.1/android.hardware.fastboot@1.1_genc++_headers/gen/android/hardware/fastboot/1.1/BsFastboot.h
-out/soong/.intermediates/hardware/interfaces/fastboot/1.1/android.hardware.fastboot@1.1_genc++_headers/gen/android/hardware/fastboot/1.1/IFastboot.h
-out/soong/.intermediates/hardware/interfaces/fastboot/1.1/android.hardware.fastboot@1.1_genc++_headers/gen/android/hardware/fastboot/1.1/IHwFastboot.h

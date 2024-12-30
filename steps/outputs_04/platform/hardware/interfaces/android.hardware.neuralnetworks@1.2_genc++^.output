@@ -1,7 +1,0 @@
-out/soong/.intermediates/hardware/interfaces/neuralnetworks/1.2/android.hardware.neuralnetworks@1.2_genc++/gen/android/hardware/neuralnetworks/1.2/BurstCallbackAll.cpp
-out/soong/.intermediates/hardware/interfaces/neuralnetworks/1.2/android.hardware.neuralnetworks@1.2_genc++/gen/android/hardware/neuralnetworks/1.2/BurstContextAll.cpp
-out/soong/.intermediates/hardware/interfaces/neuralnetworks/1.2/android.hardware.neuralnetworks@1.2_genc++/gen/android/hardware/neuralnetworks/1.2/DeviceAll.cpp
-out/soong/.intermediates/hardware/interfaces/neuralnetworks/1.2/android.hardware.neuralnetworks@1.2_genc++/gen/android/hardware/neuralnetworks/1.2/ExecutionCallbackAll.cpp
-out/soong/.intermediates/hardware/interfaces/neuralnetworks/1.2/android.hardware.neuralnetworks@1.2_genc++/gen/android/hardware/neuralnetworks/1.2/PreparedModelAll.cpp
-out/soong/.intermediates/hardware/interfaces/neuralnetworks/1.2/android.hardware.neuralnetworks@1.2_genc++/gen/android/hardware/neuralnetworks/1.2/PreparedModelCallbackAll.cpp
-out/soong/.intermediates/hardware/interfaces/neuralnetworks/1.2/android.hardware.neuralnetworks@1.2_genc++/gen/android/hardware/neuralnetworks/1.2/types.cpp

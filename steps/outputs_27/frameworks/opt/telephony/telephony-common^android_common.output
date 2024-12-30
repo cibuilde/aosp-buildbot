@@ -1,0 +1,11 @@
+out/soong/.intermediates/frameworks/opt/telephony/telephony-common/android_common/turbine/telephony-common.jar
+out/soong/.intermediates/frameworks/opt/telephony/telephony-common/android_common/turbine-combined/telephony-common.jar
+out/soong/.intermediates/frameworks/opt/telephony/telephony-common/android_common/turbine-jarjar/telephony-common.jar
+out/soong/.intermediates/frameworks/opt/telephony/telephony-common/android_common/javac/telephony-common.jar
+out/soong/.intermediates/frameworks/opt/telephony/telephony-common/android_common/combined/telephony-common.jar
+out/soong/.intermediates/frameworks/opt/telephony/telephony-common/android_common/jarjar/telephony-common.jar
+out/soong/.intermediates/frameworks/opt/telephony/telephony-common/android_common/withres/telephony-common.jar
+out/soong/.intermediates/frameworks/opt/telephony/telephony-common/android_common/dex/telephony-common.jar
+out/soong/.intermediates/frameworks/opt/telephony/telephony-common/android_common/aligned/telephony-common.jar
+out/soong/.intermediates/frameworks/opt/telephony/telephony-common/android_common/dex-withres/telephony-common.jar
+out/soong/.intermediates/frameworks/opt/telephony/telephony-common/android_common/dex-withres-aligned/telephony-common.jar

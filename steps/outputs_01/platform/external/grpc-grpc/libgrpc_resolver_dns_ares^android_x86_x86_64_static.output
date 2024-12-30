@@ -1,8 +1,0 @@
-out/soong/.intermediates/external/grpc-grpc/libgrpc_resolver_dns_ares/android_x86_x86_64_static/obj/external/grpc-grpc/src/core/ext/filters/client_channel/resolver/dns/c_ares/dns_resolver_ares.o
-out/soong/.intermediates/external/grpc-grpc/libgrpc_resolver_dns_ares/android_x86_x86_64_static/obj/external/grpc-grpc/src/core/ext/filters/client_channel/resolver/dns/c_ares/grpc_ares_ev_driver.o
-out/soong/.intermediates/external/grpc-grpc/libgrpc_resolver_dns_ares/android_x86_x86_64_static/obj/external/grpc-grpc/src/core/ext/filters/client_channel/resolver/dns/c_ares/grpc_ares_ev_driver_posix.o
-out/soong/.intermediates/external/grpc-grpc/libgrpc_resolver_dns_ares/android_x86_x86_64_static/obj/external/grpc-grpc/src/core/ext/filters/client_channel/resolver/dns/c_ares/grpc_ares_ev_driver_windows.o
-out/soong/.intermediates/external/grpc-grpc/libgrpc_resolver_dns_ares/android_x86_x86_64_static/obj/external/grpc-grpc/src/core/ext/filters/client_channel/resolver/dns/c_ares/grpc_ares_wrapper.o
-out/soong/.intermediates/external/grpc-grpc/libgrpc_resolver_dns_ares/android_x86_x86_64_static/obj/external/grpc-grpc/src/core/ext/filters/client_channel/resolver/dns/c_ares/grpc_ares_wrapper_fallback.o
-out/soong/.intermediates/external/grpc-grpc/libgrpc_resolver_dns_ares/android_x86_x86_64_static/obj/external/grpc-grpc/src/core/ext/filters/client_channel/resolver/dns/c_ares/grpc_ares_wrapper_posix.o
-out/soong/.intermediates/external/grpc-grpc/libgrpc_resolver_dns_ares/android_x86_x86_64_static/obj/external/grpc-grpc/src/core/ext/filters/client_channel/resolver/dns/c_ares/grpc_ares_wrapper_windows.o

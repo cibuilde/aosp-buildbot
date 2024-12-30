@@ -30,25 +30,25 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/libcore/core-current-stubs-system-module
 rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/sdk/current/androidx/androidx.annotation_annotation^android_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/sdk/current/androidx/androidx.annotation_annotation^android_common_apex30/ .
 
-echo "building net-utils-device-common^android_common"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_23.ninja net-utils-device-common,android_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/libs/net/common/net-utils-device-common^android_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_23/frameworks/libs/net/net-utils-device-common^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/libs/net/common/net-utils-device-common^android_common
-
-echo "building net-utils-device-common^android_common_apex30"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_23.ninja net-utils-device-common,android_common_apex30
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/libs/net/common/net-utils-device-common^android_common_apex30
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_23/frameworks/libs/net/net-utils-device-common^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/frameworks/libs/net/common/net-utils-device-common^android_common_apex30
-
 echo "building net-utils-framework-common^android_common"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_23.ninja net-utils-framework-common,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/libs/net/common/net-utils-framework-common^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_23/frameworks/libs/net/net-utils-framework-common^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/libs/net/common/net-utils-framework-common^android_common
 
+echo "building net-utils-device-common^android_common"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_23.ninja net-utils-device-common,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/libs/net/common/net-utils-device-common^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_23/frameworks/libs/net/net-utils-device-common^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/libs/net/common/net-utils-device-common^android_common
+
 echo "building net-utils-framework-common^android_common_apex30"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_23.ninja net-utils-framework-common,android_common_apex30
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/libs/net/common/net-utils-framework-common^android_common_apex30
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_23/frameworks/libs/net/net-utils-framework-common^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/frameworks/libs/net/common/net-utils-framework-common^android_common_apex30
+
+echo "building net-utils-device-common^android_common_apex30"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_23.ninja net-utils-device-common,android_common_apex30
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/libs/net/common/net-utils-device-common^android_common_apex30
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_23/frameworks/libs/net/net-utils-device-common^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/frameworks/libs/net/common/net-utils-device-common^android_common_apex30
 
 rm -rf out
 

@@ -1,8 +1,0 @@
-out/soong/.intermediates/external/webrtc/webrtc_vad__vad/android_vendor.31_x86_x86_64_static/obj/external/webrtc/modules/audio_processing/vad/gmm.o
-out/soong/.intermediates/external/webrtc/webrtc_vad__vad/android_vendor.31_x86_x86_64_static/obj/external/webrtc/modules/audio_processing/vad/pitch_based_vad.o
-out/soong/.intermediates/external/webrtc/webrtc_vad__vad/android_vendor.31_x86_x86_64_static/obj/external/webrtc/modules/audio_processing/vad/pitch_internal.o
-out/soong/.intermediates/external/webrtc/webrtc_vad__vad/android_vendor.31_x86_x86_64_static/obj/external/webrtc/modules/audio_processing/vad/pole_zero_filter.o
-out/soong/.intermediates/external/webrtc/webrtc_vad__vad/android_vendor.31_x86_x86_64_static/obj/external/webrtc/modules/audio_processing/vad/standalone_vad.o
-out/soong/.intermediates/external/webrtc/webrtc_vad__vad/android_vendor.31_x86_x86_64_static/obj/external/webrtc/modules/audio_processing/vad/vad_audio_proc.o
-out/soong/.intermediates/external/webrtc/webrtc_vad__vad/android_vendor.31_x86_x86_64_static/obj/external/webrtc/modules/audio_processing/vad/vad_circular_buffer.o
-out/soong/.intermediates/external/webrtc/webrtc_vad__vad/android_vendor.31_x86_x86_64_static/obj/external/webrtc/modules/audio_processing/vad/voice_activity_detector.o

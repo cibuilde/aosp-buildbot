@@ -22,6 +22,10 @@ jobs:
         key: frameworks_libs_modules-utils@${{ env.branch }}
     - uses: actions/cache@v4
       with:
+        path: cache/hardware_interfaces.tar.zst
+        key: hardware_interfaces@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
         path: cache/libcore.tar.zst
         key: libcore@${{ env.branch }}
     - uses: actions/cache@v4
@@ -40,6 +44,10 @@ jobs:
       with:
         path: cache/prebuilts_sdk.tar.zst
         key: prebuilts_sdk@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/tools_apifinder.tar.zst
+        key: tools_apifinder@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/tools_metalava.tar.zst

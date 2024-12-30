@@ -73,10 +73,6 @@ gh release --repo cibuilde/aosp-buildbot download android12-gsi_07 --pattern ext
 mkdir -p $GITHUB_WORKSPACE/downloads/external/turbine
 tar xf $GITHUB_WORKSPACE/external_turbine-07.tar.zst -C $GITHUB_WORKSPACE/downloads/external/turbine/
 
-gh release --repo cibuilde/aosp-buildbot download android12-gsi_00 --pattern frameworks_base.tar.zst --output frameworks_base-00.tar.zst
-mkdir -p $GITHUB_WORKSPACE/downloads/frameworks/base
-tar xf $GITHUB_WORKSPACE/frameworks_base-00.tar.zst -C $GITHUB_WORKSPACE/downloads/frameworks/base/
-
 gh release --repo cibuilde/aosp-buildbot download android12-gsi_03 --pattern frameworks_base.tar.zst --output frameworks_base-03.tar.zst
 mkdir -p $GITHUB_WORKSPACE/downloads/frameworks/base
 tar xf $GITHUB_WORKSPACE/frameworks_base-03.tar.zst -C $GITHUB_WORKSPACE/downloads/frameworks/base/
@@ -92,6 +88,10 @@ tar xf $GITHUB_WORKSPACE/frameworks_base-06.tar.zst -C $GITHUB_WORKSPACE/downloa
 gh release --repo cibuilde/aosp-buildbot download android12-gsi_24 --pattern frameworks_base.tar.zst --output frameworks_base-24.tar.zst
 mkdir -p $GITHUB_WORKSPACE/downloads/frameworks/base
 tar xf $GITHUB_WORKSPACE/frameworks_base-24.tar.zst -C $GITHUB_WORKSPACE/downloads/frameworks/base/
+
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_28 --pattern frameworks_base.tar.zst --output frameworks_base-28.tar.zst
+mkdir -p $GITHUB_WORKSPACE/downloads/frameworks/base
+tar xf $GITHUB_WORKSPACE/frameworks_base-28.tar.zst -C $GITHUB_WORKSPACE/downloads/frameworks/base/
 
 gh release --repo cibuilde/aosp-buildbot download android12-gsi_30 --pattern frameworks_base.tar.zst --output frameworks_base-30.tar.zst
 mkdir -p $GITHUB_WORKSPACE/downloads/frameworks/base
@@ -152,10 +152,6 @@ tar xf $GITHUB_WORKSPACE/prebuilts_sdk-23.tar.zst -C $GITHUB_WORKSPACE/downloads
 gh release --repo cibuilde/aosp-buildbot download android12-gsi_25 --pattern system_bt.tar.zst --output system_bt-25.tar.zst
 mkdir -p $GITHUB_WORKSPACE/downloads/system/bt
 tar xf $GITHUB_WORKSPACE/system_bt-25.tar.zst -C $GITHUB_WORKSPACE/downloads/system/bt/
-
-gh release --repo cibuilde/aosp-buildbot download android12-gsi_00 --pattern system_libhidl.tar.zst --output system_libhidl-00.tar.zst
-mkdir -p $GITHUB_WORKSPACE/downloads/system/libhidl
-tar xf $GITHUB_WORKSPACE/system_libhidl-00.tar.zst -C $GITHUB_WORKSPACE/downloads/system/libhidl/
 
 gh release --repo cibuilde/aosp-buildbot download android12-gsi_31 --pattern system_libhidl.tar.zst --output system_libhidl-31.tar.zst
 mkdir -p $GITHUB_WORKSPACE/downloads/system/libhidl

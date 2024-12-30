@@ -1,0 +1,15 @@
+Tag: buid_29 Projects: 13 Targets: 15
+
+external/conscrypt: conscrypt^android_common_apex29
+external/icu: core-icu4j^android_common_apex10000
+frameworks/opt/net/ims: ims-common^android_common
+frameworks/opt/net/voip: voip-common^android_common
+frameworks/opt/telephony: telephony-common^android_common
+packages/modules/Connectivity: framework-connectivity^android_common_apex30 framework-tethering^android_common_apex30
+packages/modules/IPsec: android.net.ipsec.ike^android_common_com.android.ipsec
+packages/modules/Permission: framework-permission-s^android_common_apex30 framework-permission^android_common_apex30
+packages/modules/Scheduling: framework-scheduling^android_common_apex10000
+packages/modules/SdkExtensions: framework-sdkextensions^android_common_apex30
+packages/modules/StatsD: framework-statsd^android_common_apex30
+packages/modules/Wifi: framework-wifi^android_common_apex30
+packages/providers/MediaProvider: framework-mediaprovider^android_common_apex30

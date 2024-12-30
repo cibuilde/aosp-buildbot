@@ -41,6 +41,14 @@ gh release --repo cibuilde/aosp-buildbot download android12-gsi_02 --pattern bui
 mkdir -p $GITHUB_WORKSPACE/downloads/build/soong
 tar xf $GITHUB_WORKSPACE/build_soong-02.tar.zst -C $GITHUB_WORKSPACE/downloads/build/soong/
 
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_29 --pattern external_conscrypt.tar.zst --output external_conscrypt-29.tar.zst
+mkdir -p $GITHUB_WORKSPACE/downloads/external/conscrypt
+tar xf $GITHUB_WORKSPACE/external_conscrypt-29.tar.zst -C $GITHUB_WORKSPACE/downloads/external/conscrypt/
+
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_29 --pattern external_icu.tar.zst --output external_icu-29.tar.zst
+mkdir -p $GITHUB_WORKSPACE/downloads/external/icu
+tar xf $GITHUB_WORKSPACE/external_icu-29.tar.zst -C $GITHUB_WORKSPACE/downloads/external/icu/
+
 gh release --repo cibuilde/aosp-buildbot download android12-gsi_02 --pattern external_libcxx.tar.zst --output external_libcxx-02.tar.zst
 mkdir -p $GITHUB_WORKSPACE/downloads/external/libcxx
 tar xf $GITHUB_WORKSPACE/external_libcxx-02.tar.zst -C $GITHUB_WORKSPACE/downloads/external/libcxx/
@@ -56,10 +64,6 @@ tar xf $GITHUB_WORKSPACE/external_protobuf-13.tar.zst -C $GITHUB_WORKSPACE/downl
 gh release --repo cibuilde/aosp-buildbot download android12-gsi_07 --pattern external_turbine.tar.zst --output external_turbine-07.tar.zst
 mkdir -p $GITHUB_WORKSPACE/downloads/external/turbine
 tar xf $GITHUB_WORKSPACE/external_turbine-07.tar.zst -C $GITHUB_WORKSPACE/downloads/external/turbine/
-
-gh release --repo cibuilde/aosp-buildbot download android12-gsi_00 --pattern frameworks_base.tar.zst --output frameworks_base-00.tar.zst
-mkdir -p $GITHUB_WORKSPACE/downloads/frameworks/base
-tar xf $GITHUB_WORKSPACE/frameworks_base-00.tar.zst -C $GITHUB_WORKSPACE/downloads/frameworks/base/
 
 gh release --repo cibuilde/aosp-buildbot download android12-gsi_03 --pattern frameworks_base.tar.zst --output frameworks_base-03.tar.zst
 mkdir -p $GITHUB_WORKSPACE/downloads/frameworks/base
@@ -77,9 +81,25 @@ gh release --repo cibuilde/aosp-buildbot download android12-gsi_24 --pattern fra
 mkdir -p $GITHUB_WORKSPACE/downloads/frameworks/base
 tar xf $GITHUB_WORKSPACE/frameworks_base-24.tar.zst -C $GITHUB_WORKSPACE/downloads/frameworks/base/
 
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_28 --pattern frameworks_base.tar.zst --output frameworks_base-28.tar.zst
+mkdir -p $GITHUB_WORKSPACE/downloads/frameworks/base
+tar xf $GITHUB_WORKSPACE/frameworks_base-28.tar.zst -C $GITHUB_WORKSPACE/downloads/frameworks/base/
+
 gh release --repo cibuilde/aosp-buildbot download android12-gsi_13 --pattern frameworks_libs_modules-utils.tar.zst --output frameworks_libs_modules-utils-13.tar.zst
 mkdir -p $GITHUB_WORKSPACE/downloads/frameworks/libs/modules-utils
 tar xf $GITHUB_WORKSPACE/frameworks_libs_modules-utils-13.tar.zst -C $GITHUB_WORKSPACE/downloads/frameworks/libs/modules-utils/
+
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_29 --pattern frameworks_opt_net_ims.tar.zst --output frameworks_opt_net_ims-29.tar.zst
+mkdir -p $GITHUB_WORKSPACE/downloads/frameworks/opt/net/ims
+tar xf $GITHUB_WORKSPACE/frameworks_opt_net_ims-29.tar.zst -C $GITHUB_WORKSPACE/downloads/frameworks/opt/net/ims/
+
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_29 --pattern frameworks_opt_net_voip.tar.zst --output frameworks_opt_net_voip-29.tar.zst
+mkdir -p $GITHUB_WORKSPACE/downloads/frameworks/opt/net/voip
+tar xf $GITHUB_WORKSPACE/frameworks_opt_net_voip-29.tar.zst -C $GITHUB_WORKSPACE/downloads/frameworks/opt/net/voip/
+
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_29 --pattern frameworks_opt_telephony.tar.zst --output frameworks_opt_telephony-29.tar.zst
+mkdir -p $GITHUB_WORKSPACE/downloads/frameworks/opt/telephony
+tar xf $GITHUB_WORKSPACE/frameworks_opt_telephony-29.tar.zst -C $GITHUB_WORKSPACE/downloads/frameworks/opt/telephony/
 
 gh release --repo cibuilde/aosp-buildbot download android12-gsi_10 --pattern libcore.tar.zst --output libcore-10.tar.zst
 mkdir -p $GITHUB_WORKSPACE/downloads/libcore
@@ -88,6 +108,38 @@ tar xf $GITHUB_WORKSPACE/libcore-10.tar.zst -C $GITHUB_WORKSPACE/downloads/libco
 gh release --repo cibuilde/aosp-buildbot download android12-gsi_12 --pattern libcore.tar.zst --output libcore-12.tar.zst
 mkdir -p $GITHUB_WORKSPACE/downloads/libcore
 tar xf $GITHUB_WORKSPACE/libcore-12.tar.zst -C $GITHUB_WORKSPACE/downloads/libcore/
+
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_29 --pattern packages_modules_Connectivity.tar.zst --output packages_modules_Connectivity-29.tar.zst
+mkdir -p $GITHUB_WORKSPACE/downloads/packages/modules/Connectivity
+tar xf $GITHUB_WORKSPACE/packages_modules_Connectivity-29.tar.zst -C $GITHUB_WORKSPACE/downloads/packages/modules/Connectivity/
+
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_29 --pattern packages_modules_IPsec.tar.zst --output packages_modules_IPsec-29.tar.zst
+mkdir -p $GITHUB_WORKSPACE/downloads/packages/modules/IPsec
+tar xf $GITHUB_WORKSPACE/packages_modules_IPsec-29.tar.zst -C $GITHUB_WORKSPACE/downloads/packages/modules/IPsec/
+
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_29 --pattern packages_modules_Permission.tar.zst --output packages_modules_Permission-29.tar.zst
+mkdir -p $GITHUB_WORKSPACE/downloads/packages/modules/Permission
+tar xf $GITHUB_WORKSPACE/packages_modules_Permission-29.tar.zst -C $GITHUB_WORKSPACE/downloads/packages/modules/Permission/
+
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_29 --pattern packages_modules_Scheduling.tar.zst --output packages_modules_Scheduling-29.tar.zst
+mkdir -p $GITHUB_WORKSPACE/downloads/packages/modules/Scheduling
+tar xf $GITHUB_WORKSPACE/packages_modules_Scheduling-29.tar.zst -C $GITHUB_WORKSPACE/downloads/packages/modules/Scheduling/
+
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_29 --pattern packages_modules_SdkExtensions.tar.zst --output packages_modules_SdkExtensions-29.tar.zst
+mkdir -p $GITHUB_WORKSPACE/downloads/packages/modules/SdkExtensions
+tar xf $GITHUB_WORKSPACE/packages_modules_SdkExtensions-29.tar.zst -C $GITHUB_WORKSPACE/downloads/packages/modules/SdkExtensions/
+
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_29 --pattern packages_modules_StatsD.tar.zst --output packages_modules_StatsD-29.tar.zst
+mkdir -p $GITHUB_WORKSPACE/downloads/packages/modules/StatsD
+tar xf $GITHUB_WORKSPACE/packages_modules_StatsD-29.tar.zst -C $GITHUB_WORKSPACE/downloads/packages/modules/StatsD/
+
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_29 --pattern packages_modules_Wifi.tar.zst --output packages_modules_Wifi-29.tar.zst
+mkdir -p $GITHUB_WORKSPACE/downloads/packages/modules/Wifi
+tar xf $GITHUB_WORKSPACE/packages_modules_Wifi-29.tar.zst -C $GITHUB_WORKSPACE/downloads/packages/modules/Wifi/
+
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_29 --pattern packages_providers_MediaProvider.tar.zst --output packages_providers_MediaProvider-29.tar.zst
+mkdir -p $GITHUB_WORKSPACE/downloads/packages/providers/MediaProvider
+tar xf $GITHUB_WORKSPACE/packages_providers_MediaProvider-29.tar.zst -C $GITHUB_WORKSPACE/downloads/packages/providers/MediaProvider/
 
 gh release --repo cibuilde/aosp-buildbot download android12-gsi_03 --pattern prebuilts_r8.tar.zst --output prebuilts_r8-03.tar.zst
 mkdir -p $GITHUB_WORKSPACE/downloads/prebuilts/r8

@@ -1,0 +1,8 @@
+out/soong/.intermediates/packages/modules/Wifi/framework/framework-wifi/android_common_apex30/turbine/framework-wifi.jar
+out/soong/.intermediates/packages/modules/Wifi/framework/framework-wifi/android_common_apex30/turbine-combined/framework-wifi.jar
+out/soong/.intermediates/packages/modules/Wifi/framework/framework-wifi/android_common_apex30/turbine-jarjar/framework-wifi.jar
+out/soong/.intermediates/packages/modules/Wifi/framework/framework-wifi/android_common_apex30/javac/framework-wifi.jar
+out/soong/.intermediates/packages/modules/Wifi/framework/framework-wifi/android_common_apex30/combined/framework-wifi.jar
+out/soong/.intermediates/packages/modules/Wifi/framework/framework-wifi/android_common_apex30/jarjar/framework-wifi.jar
+out/soong/.intermediates/packages/modules/Wifi/framework/framework-wifi/android_common_apex30/dex/framework-wifi.jar
+out/soong/.intermediates/packages/modules/Wifi/framework/framework-wifi/android_common_apex30/aligned/framework-wifi.jar

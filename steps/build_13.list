@@ -1,23 +1,23 @@
-Tag: buid_13 Projects: 21 Targets: 52
+Tag: buid_13 Projects: 21 Targets: 53
 
-external/auto/: auto_value_annotations^android_common
-external/bouncycastle/: bouncycastle-unbundled^android_common bouncycastle-unbundled^android_common_apex30 bouncycastle_ike_digests^android_common bouncycastle_ike_digests^android_common_apex30
-external/cbor-java/: cbor-java^android_common
-external/guava/: guava-android-annotation-stubs^android_common
-external/hamcrest/: hamcrest^android_common
-external/jsr305/: jsr305^android_common jsr305^android_common_apex29
-external/jsr330/: jsr330^android_common
-external/kotlinx.atomicfu/: kotlinx_atomicfu^android_common
-external/nist-sip/: nist-sip^android_common
-external/protobuf/: libcore_private.stubs^android_common libprotobuf-java-lite^android_common libprotobuf-java-lite^android_common_apex10000 libprotobuf-java-lite^android_common_apex30
-external/tagsoup/: tagsoup^android_common
-frameworks/av/: cameraserver^android_x86_64 libcameraservice^android_x86_64_shared libmediaextractorservice^android_x86_64_shared libmediandk^android_x86_64_shared libmediandk^android_x86_x86_64_shared libmediaplayerservice^android_x86_x86_64_shared_cfi libstagefright^android_x86_64_shared_cfi libstagefright^android_x86_x86_64_shared_cfi libstagefright_httplive^android_x86_x86_64_shared_cfi mediaextractor^android_x86_64 mediaserver^android_x86_x86_64 screenrecord^android_x86_64
-frameworks/base/: libfilterfw_jni^android_x86_64_static libfilterfw_jni^android_x86_x86_64_static mimemap^android_common
-frameworks/libs/modules-utils/: framework-annotations-lib^android_common
-frameworks/proto_logging/: devicepolicyprotosnano^android_common
-hardware/interfaces/: android.hardware.health-V1.0-java-constants^android_common android.hardware.thermal-V1.0-java-constants^android_common android.hardware.tv.input-V1.0-java-constants^android_common android.hardware.tv.tuner-V1.0-java-constants^android_common android.hardware.tv.tuner-V1.1-java-constants^android_common android.hardware.usb-V1.0-java-constants^android_common android.hardware.usb-V1.1-java-constants^android_common android.hardware.usb-V1.2-java-constants^android_common android.hardware.wifi-V1.0-java-constants^android_common android.hardware.wifi-V1.0-java-constants^android_common_apex30
-packages/modules/Virtualization/: authfs^android_x86_64_apex10000 com.android.virt^android_common_com.android.virt_image
-packages/providers/TelephonyProvider/: telephonyprovider-protos^android_common
-system/tools/sysprop/: sysprop-library-stub-platform^android_common
-tools/metalava/: private-stub-annotations-jar^android_common
-tools/platform-compat/: app-compat-annotations^android_common unsupportedappusage^android_common
+external/auto: auto_value_annotations^android_common
+external/bouncycastle: bouncycastle-repackaged-unbundled^android_common bouncycastle-unbundled^android_common bouncycastle-unbundled^android_common_apex30 bouncycastle_ike_digests^android_common bouncycastle_ike_digests^android_common_apex30
+external/cbor-java: cbor-java^android_common
+external/guava: guava-android-annotation-stubs^android_common
+external/hamcrest: hamcrest^android_common
+external/jsr305: jsr305^android_common jsr305^android_common_apex29
+external/jsr330: jsr330^android_common
+external/kotlinx.atomicfu: kotlinx_atomicfu^android_common
+external/nist-sip: nist-sip^android_common
+external/protobuf: libcore_private.stubs^android_common libprotobuf-java-lite^android_common libprotobuf-java-lite^android_common_apex10000 libprotobuf-java-lite^android_common_apex30
+external/tagsoup: tagsoup^android_common
+frameworks/av: cameraserver^android_x86_64 libcameraservice^android_x86_64_shared libmediaextractorservice^android_x86_64_shared libmediandk^android_x86_64_shared libmediandk^android_x86_x86_64_shared libmediaplayerservice^android_x86_x86_64_shared_cfi libstagefright^android_x86_64_shared_cfi libstagefright^android_x86_x86_64_shared_cfi libstagefright_httplive^android_x86_x86_64_shared_cfi mediaextractor^android_x86_64 mediaserver^android_x86_x86_64 screenrecord^android_x86_64
+frameworks/base: libfilterfw_jni^android_x86_64_static libfilterfw_jni^android_x86_x86_64_static mimemap^android_common
+frameworks/libs/modules-utils: framework-annotations-lib^android_common
+frameworks/proto_logging: devicepolicyprotosnano^android_common
+hardware/interfaces: android.hardware.health-V1.0-java-constants^android_common android.hardware.thermal-V1.0-java-constants^android_common android.hardware.tv.input-V1.0-java-constants^android_common android.hardware.tv.tuner-V1.0-java-constants^android_common android.hardware.tv.tuner-V1.1-java-constants^android_common android.hardware.usb-V1.0-java-constants^android_common android.hardware.usb-V1.1-java-constants^android_common android.hardware.usb-V1.2-java-constants^android_common android.hardware.wifi-V1.0-java-constants^android_common android.hardware.wifi-V1.0-java-constants^android_common_apex30
+packages/modules/Virtualization: authfs^android_x86_64_apex10000 com.android.virt^android_common_com.android.virt_image
+packages/providers/TelephonyProvider: telephonyprovider-protos^android_common
+system/tools/sysprop: sysprop-library-stub-platform^android_common
+tools/metalava: private-stub-annotations-jar^android_common
+tools/platform-compat: app-compat-annotations^android_common unsupportedappusage^android_common

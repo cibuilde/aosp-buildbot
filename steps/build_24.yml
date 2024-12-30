@@ -34,8 +34,16 @@ jobs:
         key: external_apache-commons-compress@${{ env.branch }}
     - uses: actions/cache@v4
       with:
+        path: cache/external_bouncycastle.tar.zst
+        key: external_bouncycastle@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
         path: cache/external_brotli.tar.zst
         key: external_brotli@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_exoplayer.tar.zst
+        key: external_exoplayer@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/external_glide.tar.zst
@@ -94,6 +102,10 @@ jobs:
         key: external_zlib@${{ env.branch }}
     - uses: actions/cache@v4
       with:
+        path: cache/frameworks_av.tar.zst
+        key: frameworks_av@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
         path: cache/frameworks_base.tar.zst
         key: frameworks_base@${{ env.branch }}
     - uses: actions/cache@v4
@@ -116,6 +128,14 @@ jobs:
       with:
         path: cache/frameworks_opt_photoviewer.tar.zst
         key: frameworks_opt_photoviewer@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/frameworks_proto_logging.tar.zst
+        key: frameworks_proto_logging@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/hardware_interfaces.tar.zst
+        key: hardware_interfaces@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/libcore.tar.zst
@@ -150,8 +170,20 @@ jobs:
         key: packages_modules_NetworkStack@${{ env.branch }}
     - uses: actions/cache@v4
       with:
+        path: cache/packages_modules_Permission.tar.zst
+        key: packages_modules_Permission@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
         path: cache/packages_modules_StatsD.tar.zst
         key: packages_modules_StatsD@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/packages_modules_Wifi.tar.zst
+        key: packages_modules_Wifi@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/packages_modules_common.tar.zst
+        key: packages_modules_common@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/prebuilts_build-tools.tar.zst
@@ -170,12 +202,24 @@ jobs:
         key: prebuilts_tools@${{ env.branch }}
     - uses: actions/cache@v4
       with:
+        path: cache/system_bt.tar.zst
+        key: system_bt@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/system_connectivity_wificond.tar.zst
+        key: system_connectivity_wificond@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
         path: cache/system_core.tar.zst
         key: system_core@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/system_extras.tar.zst
         key: system_extras@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/system_gsid.tar.zst
+        key: system_gsid@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/system_iorap.tar.zst
@@ -186,8 +230,20 @@ jobs:
         key: system_netd@${{ env.branch }}
     - uses: actions/cache@v4
       with:
+        path: cache/system_security.tar.zst
+        key: system_security@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
         path: cache/system_sepolicy.tar.zst
         key: system_sepolicy@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/system_update_engine.tar.zst
+        key: system_update_engine@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/system_vold.tar.zst
+        key: system_vold@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/tools_apifinder.tar.zst

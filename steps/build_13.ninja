@@ -8,6 +8,7 @@ include ninja/global.ninja
 include ninja/singleton.ninja
 
 include ninja/external/auto/value/auto_value_annotations^android_common.ninja
+include ninja/external/bouncycastle/bouncycastle-repackaged-unbundled^android_common.ninja
 include ninja/external/bouncycastle/bouncycastle-unbundled^android_common.ninja
 include ninja/external/bouncycastle/bouncycastle-unbundled^android_common_apex30.ninja
 include ninja/external/bouncycastle/bouncycastle_ike_digests^android_common.ninja
@@ -64,6 +65,8 @@ build auto_value_annotations,android_common: phony out/soong/.intermediates/exte
 
 build external_auto-targets: phony auto_value_annotations,android_common
 
+build bouncycastle-repackaged-unbundled,android_common: phony out/soong/.intermediates/external/bouncycastle/bouncycastle-repackaged-unbundled/android_common/javac/bouncycastle-repackaged-unbundled.jar out/soong/.intermediates/external/bouncycastle/bouncycastle-repackaged-unbundled/android_common/turbine-combined/bouncycastle-repackaged-unbundled.jar out/soong/.intermediates/external/bouncycastle/bouncycastle-repackaged-unbundled/android_common/turbine/bouncycastle-repackaged-unbundled.jar
+
 build bouncycastle-unbundled,android_common: phony out/soong/.intermediates/external/bouncycastle/bouncycastle-unbundled/android_common/javac/bouncycastle-unbundled.jar out/soong/.intermediates/external/bouncycastle/bouncycastle-unbundled/android_common/turbine-combined/bouncycastle-unbundled.jar
 
 build bouncycastle-unbundled,android_common_apex30: phony out/soong/.intermediates/external/bouncycastle/bouncycastle-unbundled/android_common_apex30/javac/bouncycastle-unbundled.jar out/soong/.intermediates/external/bouncycastle/bouncycastle-unbundled/android_common_apex30/turbine-combined/bouncycastle-unbundled.jar
@@ -72,7 +75,7 @@ build bouncycastle_ike_digests,android_common: phony out/soong/.intermediates/ex
 
 build bouncycastle_ike_digests,android_common_apex30: phony out/soong/.intermediates/external/bouncycastle/bouncycastle_ike_digests/android_common_apex30/javac/bouncycastle_ike_digests.jar out/soong/.intermediates/external/bouncycastle/bouncycastle_ike_digests/android_common_apex30/turbine-combined/bouncycastle_ike_digests.jar
 
-build external_bouncycastle-targets: phony bouncycastle-unbundled,android_common bouncycastle-unbundled,android_common_apex30 bouncycastle_ike_digests,android_common bouncycastle_ike_digests,android_common_apex30
+build external_bouncycastle-targets: phony bouncycastle-repackaged-unbundled,android_common bouncycastle-unbundled,android_common bouncycastle-unbundled,android_common_apex30 bouncycastle_ike_digests,android_common bouncycastle_ike_digests,android_common_apex30
 
 build cbor-java,android_common: phony out/soong/.intermediates/external/cbor-java/cbor-java/android_common/javac/cbor-java.jar out/soong/.intermediates/external/cbor-java/cbor-java/android_common/turbine-combined/cbor-java.jar
 

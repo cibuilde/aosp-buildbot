@@ -7,13 +7,16 @@ pool highmem_pool
 include ninja/global.ninja
 include ninja/singleton.ninja
 
+include ninja/external/bouncycastle/bouncycastle^android_common_apex31.ninja
 include ninja/external/conscrypt/apex/com.android.conscrypt-bootclasspath-fragment^android_common_apex29.ninja
 include ninja/external/conscrypt/apex/com.android.conscrypt^android_common_com.android.conscrypt_image.ninja
+include ninja/external/conscrypt/conscrypt^android_common_apex29.ninja
 include ninja/external/dagger2/dagger2^android_common.ninja
 include ninja/external/exoplayer/exoplayer2-extractor-annotation-stubs^android_common_apex29.ninja
 include ninja/external/exoplayer/exoplayer2-extractor^android_common_apex29.ninja
 include ninja/external/icing/proto/icing-java-proto-lite^android_common_apex10000.ninja
 include ninja/external/icu/android_icu4j/core-icu4j^android_common.ninja
+include ninja/external/icu/android_icu4j/core-icu4j^android_common_apex10000.ninja
 include ninja/external/icu/android_icu4j/core-repackaged-icu4j^android_common.ninja
 include ninja/external/icu/android_icu4j/core-repackaged-icu4j^android_common_apex10000.ninja
 include ninja/external/icu/android_icu4j/icu4j-platform-compat-config^android_common.ninja
@@ -74,11 +77,17 @@ include ninja/system/core/init/sysprop/com.android.sysprop.init^android_common.n
 include ninja/system/libsysprop/srcs/PlatformProperties^android_common.ninja
 include ninja/system/libsysprop/srcs/PlatformProperties_public^android_common.ninja
 
+build bouncycastle,android_common_apex31: phony out/soong/.intermediates/external/bouncycastle/bouncycastle/android_common_apex31/aligned/bouncycastle.jar out/soong/.intermediates/external/bouncycastle/bouncycastle/android_common_apex31/dex/bouncycastle.jar out/soong/.intermediates/external/bouncycastle/bouncycastle/android_common_apex31/javac/bouncycastle.jar out/soong/.intermediates/external/bouncycastle/bouncycastle/android_common_apex31/turbine-combined/bouncycastle.jar out/soong/.intermediates/external/bouncycastle/bouncycastle/android_common_apex31/turbine/bouncycastle.jar
+
+build external_bouncycastle-targets: phony bouncycastle,android_common_apex31
+
 build com.android.conscrypt-bootclasspath-fragment,android_common_apex29: phony out/soong/.intermediates/external/conscrypt/apex/com.android.conscrypt-bootclasspath-fragment/android_common_apex29/bootclasspath.pb out/soong/.intermediates/external/conscrypt/apex/com.android.conscrypt-bootclasspath-fragment/android_common_apex29/hiddenapi-modular/encoded/conscrypt.jar out/soong/.intermediates/external/conscrypt/apex/com.android.conscrypt-bootclasspath-fragment/android_common_apex29/modular-hiddenapi/annotation-flags.csv
 
 build com.android.conscrypt,android_common_com.android.conscrypt_image: phony out/soong/.intermediates/external/conscrypt/apex/com.android.conscrypt/android_common_com.android.conscrypt_image/apex_manifest.pb out/soong/.intermediates/external/conscrypt/apex/com.android.conscrypt/android_common_com.android.conscrypt_image/apex_pubkey out/soong/.intermediates/external/conscrypt/apex/com.android.conscrypt/android_common_com.android.conscrypt_image/com.android.conscrypt.apex
 
-build external_conscrypt-targets: phony com.android.conscrypt-bootclasspath-fragment,android_common_apex29 com.android.conscrypt,android_common_com.android.conscrypt_image
+build conscrypt,android_common_apex29: phony out/soong/.intermediates/external/conscrypt/conscrypt/android_common_apex29/aligned/conscrypt.jar out/soong/.intermediates/external/conscrypt/conscrypt/android_common_apex29/dex/conscrypt.jar out/soong/.intermediates/external/conscrypt/conscrypt/android_common_apex29/javac/conscrypt.jar out/soong/.intermediates/external/conscrypt/conscrypt/android_common_apex29/turbine-combined/conscrypt.jar out/soong/.intermediates/external/conscrypt/conscrypt/android_common_apex29/turbine/conscrypt.jar
+
+build external_conscrypt-targets: phony com.android.conscrypt-bootclasspath-fragment,android_common_apex29 com.android.conscrypt,android_common_com.android.conscrypt_image conscrypt,android_common_apex29
 
 build dagger2,android_common: phony out/soong/.intermediates/external/dagger2/dagger2/android_common/javac/dagger2.jar out/soong/.intermediates/external/dagger2/dagger2/android_common/turbine-combined/dagger2.jar
 
@@ -96,13 +105,15 @@ build external_icing-targets: phony icing-java-proto-lite,android_common_apex100
 
 build core-icu4j,android_common: phony out/soong/.intermediates/external/icu/android_icu4j/core-icu4j/android_common/dex-withres-aligned/core-icu4j.jar
 
+build core-icu4j,android_common_apex10000: phony out/soong/.intermediates/external/icu/android_icu4j/core-icu4j/android_common_apex10000/aligned/core-icu4j.jar out/soong/.intermediates/external/icu/android_icu4j/core-icu4j/android_common_apex10000/combined/core-icu4j.jar out/soong/.intermediates/external/icu/android_icu4j/core-icu4j/android_common_apex10000/dex-withres-aligned/core-icu4j.jar out/soong/.intermediates/external/icu/android_icu4j/core-icu4j/android_common_apex10000/dex-withres/core-icu4j.jar out/soong/.intermediates/external/icu/android_icu4j/core-icu4j/android_common_apex10000/dex/core-icu4j.jar out/soong/.intermediates/external/icu/android_icu4j/core-icu4j/android_common_apex10000/jarjar/core-icu4j.jar out/soong/.intermediates/external/icu/android_icu4j/core-icu4j/android_common_apex10000/javac/core-icu4j.jar out/soong/.intermediates/external/icu/android_icu4j/core-icu4j/android_common_apex10000/res-jarjar/core-icu4j.jar out/soong/.intermediates/external/icu/android_icu4j/core-icu4j/android_common_apex10000/turbine-combined/core-icu4j.jar out/soong/.intermediates/external/icu/android_icu4j/core-icu4j/android_common_apex10000/turbine-jarjar/core-icu4j.jar out/soong/.intermediates/external/icu/android_icu4j/core-icu4j/android_common_apex10000/turbine/core-icu4j.jar out/soong/.intermediates/external/icu/android_icu4j/core-icu4j/android_common_apex10000/withres/core-icu4j.jar
+
 build core-repackaged-icu4j,android_common: phony out/soong/.intermediates/external/icu/android_icu4j/core-repackaged-icu4j/android_common/javac/core-repackaged-icu4j.jar out/soong/.intermediates/external/icu/android_icu4j/core-repackaged-icu4j/android_common/res/core-repackaged-icu4j.jar out/soong/.intermediates/external/icu/android_icu4j/core-repackaged-icu4j/android_common/turbine-combined/core-repackaged-icu4j.jar
 
 build core-repackaged-icu4j,android_common_apex10000: phony out/soong/.intermediates/external/icu/android_icu4j/core-repackaged-icu4j/android_common_apex10000/javac/core-repackaged-icu4j.jar out/soong/.intermediates/external/icu/android_icu4j/core-repackaged-icu4j/android_common_apex10000/res/core-repackaged-icu4j.jar out/soong/.intermediates/external/icu/android_icu4j/core-repackaged-icu4j/android_common_apex10000/turbine-combined/core-repackaged-icu4j.jar
 
 build icu4j-platform-compat-config,android_common: phony out/soong/.intermediates/external/icu/android_icu4j/icu4j-platform-compat-config/android_common/icu4j-platform-compat-config.xml
 
-build external_icu-targets: phony core-icu4j,android_common core-repackaged-icu4j,android_common core-repackaged-icu4j,android_common_apex10000 icu4j-platform-compat-config,android_common
+build external_icu-targets: phony core-icu4j,android_common core-icu4j,android_common_apex10000 core-repackaged-icu4j,android_common core-repackaged-icu4j,android_common_apex10000 icu4j-platform-compat-config,android_common
 
 build junit,android_common: phony out/soong/.intermediates/external/junit/junit/android_common/combined/junit.jar out/soong/.intermediates/external/junit/junit/android_common/turbine-combined/junit.jar
 

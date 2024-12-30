@@ -1,7 +1,0 @@
-out/soong/.intermediates/system/libhidl/transport/base/1.0/android.hidl.base@1.0_genc++_headers/gen/android/hidl/base/1.0/BnHwBase.h
-out/soong/.intermediates/system/libhidl/transport/base/1.0/android.hidl.base@1.0_genc++_headers/gen/android/hidl/base/1.0/BpHwBase.h
-out/soong/.intermediates/system/libhidl/transport/base/1.0/android.hidl.base@1.0_genc++_headers/gen/android/hidl/base/1.0/BsBase.h
-out/soong/.intermediates/system/libhidl/transport/base/1.0/android.hidl.base@1.0_genc++_headers/gen/android/hidl/base/1.0/IBase.h
-out/soong/.intermediates/system/libhidl/transport/base/1.0/android.hidl.base@1.0_genc++_headers/gen/android/hidl/base/1.0/IHwBase.h
-out/soong/.intermediates/system/libhidl/transport/base/1.0/android.hidl.base@1.0_genc++_headers/gen/android/hidl/base/1.0/hwtypes.h
-out/soong/.intermediates/system/libhidl/transport/base/1.0/android.hidl.base@1.0_genc++_headers/gen/android/hidl/base/1.0/types.h

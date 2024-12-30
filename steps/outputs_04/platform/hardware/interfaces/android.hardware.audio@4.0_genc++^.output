@@ -1,8 +1,0 @@
-out/soong/.intermediates/hardware/interfaces/audio/4.0/android.hardware.audio@4.0_genc++/gen/android/hardware/audio/4.0/DeviceAll.cpp
-out/soong/.intermediates/hardware/interfaces/audio/4.0/android.hardware.audio@4.0_genc++/gen/android/hardware/audio/4.0/DevicesFactoryAll.cpp
-out/soong/.intermediates/hardware/interfaces/audio/4.0/android.hardware.audio@4.0_genc++/gen/android/hardware/audio/4.0/PrimaryDeviceAll.cpp
-out/soong/.intermediates/hardware/interfaces/audio/4.0/android.hardware.audio@4.0_genc++/gen/android/hardware/audio/4.0/StreamAll.cpp
-out/soong/.intermediates/hardware/interfaces/audio/4.0/android.hardware.audio@4.0_genc++/gen/android/hardware/audio/4.0/StreamInAll.cpp
-out/soong/.intermediates/hardware/interfaces/audio/4.0/android.hardware.audio@4.0_genc++/gen/android/hardware/audio/4.0/StreamOutAll.cpp
-out/soong/.intermediates/hardware/interfaces/audio/4.0/android.hardware.audio@4.0_genc++/gen/android/hardware/audio/4.0/StreamOutCallbackAll.cpp
-out/soong/.intermediates/hardware/interfaces/audio/4.0/android.hardware.audio@4.0_genc++/gen/android/hardware/audio/4.0/types.cpp

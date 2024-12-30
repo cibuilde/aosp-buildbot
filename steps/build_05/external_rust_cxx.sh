@@ -35,6 +35,11 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/external/rust/crates/textwrap/libtextwra
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/rust/crates/unicode-width/libunicode_width^linux_glibc_x86_64_rlib_rlib-std/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/rust/crates/unicode-xid/libunicode_xid^linux_glibc_x86_64_rlib_rlib-std/ .
 
+echo "building cxx-bridge-header^"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja cxx-bridge-header,
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/rust/cxx/cxx-bridge-header^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/external/rust/cxx/cxx-bridge-header^.output . $GITHUB_WORKSPACE/artifacts/external/rust/cxx/cxx-bridge-header^
+
 echo "building libcxxbridge_cmd^linux_glibc_x86_64_rlib_rlib-std"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libcxxbridge_cmd,linux_glibc_x86_64_rlib_rlib-std
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/rust/cxx/gen/cmd/libcxxbridge_cmd^linux_glibc_x86_64_rlib_rlib-std
@@ -44,11 +49,6 @@ echo "building cxxbridge^linux_glibc_x86_64"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja cxxbridge,linux_glibc_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/rust/cxx/gen/cmd/cxxbridge^linux_glibc_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/external/rust/cxx/cxxbridge^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/rust/cxx/gen/cmd/cxxbridge^linux_glibc_x86_64
-
-echo "building cxx-bridge-header^"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja cxx-bridge-header,
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/rust/cxx/cxx-bridge-header^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/external/rust/cxx/cxx-bridge-header^.output . $GITHUB_WORKSPACE/artifacts/external/rust/cxx/cxx-bridge-header^
 
 echo "building libcxxbridge_macro^linux_glibc_x86_64"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libcxxbridge_macro,linux_glibc_x86_64

@@ -1,5 +1,0 @@
-out/soong/.intermediates/system/libhidl/transport/token/1.0/android.hidl.token@1.0_genc++_headers/gen/android/hidl/token/1.0/BnHwTokenManager.h
-out/soong/.intermediates/system/libhidl/transport/token/1.0/android.hidl.token@1.0_genc++_headers/gen/android/hidl/token/1.0/BpHwTokenManager.h
-out/soong/.intermediates/system/libhidl/transport/token/1.0/android.hidl.token@1.0_genc++_headers/gen/android/hidl/token/1.0/BsTokenManager.h
-out/soong/.intermediates/system/libhidl/transport/token/1.0/android.hidl.token@1.0_genc++_headers/gen/android/hidl/token/1.0/IHwTokenManager.h
-out/soong/.intermediates/system/libhidl/transport/token/1.0/android.hidl.token@1.0_genc++_headers/gen/android/hidl/token/1.0/ITokenManager.h

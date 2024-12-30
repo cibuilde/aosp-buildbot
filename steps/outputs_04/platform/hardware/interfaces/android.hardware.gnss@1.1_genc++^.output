@@ -1,5 +1,0 @@
-out/soong/.intermediates/hardware/interfaces/gnss/1.1/android.hardware.gnss@1.1_genc++/gen/android/hardware/gnss/1.1/GnssAll.cpp
-out/soong/.intermediates/hardware/interfaces/gnss/1.1/android.hardware.gnss@1.1_genc++/gen/android/hardware/gnss/1.1/GnssCallbackAll.cpp
-out/soong/.intermediates/hardware/interfaces/gnss/1.1/android.hardware.gnss@1.1_genc++/gen/android/hardware/gnss/1.1/GnssConfigurationAll.cpp
-out/soong/.intermediates/hardware/interfaces/gnss/1.1/android.hardware.gnss@1.1_genc++/gen/android/hardware/gnss/1.1/GnssMeasurementAll.cpp
-out/soong/.intermediates/hardware/interfaces/gnss/1.1/android.hardware.gnss@1.1_genc++/gen/android/hardware/gnss/1.1/GnssMeasurementCallbackAll.cpp

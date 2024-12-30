@@ -1,7 +1,0 @@
-out/soong/.intermediates/hardware/interfaces/gatekeeper/1.0/android.hardware.gatekeeper@1.0_genc++_headers/gen/android/hardware/gatekeeper/1.0/BnHwGatekeeper.h
-out/soong/.intermediates/hardware/interfaces/gatekeeper/1.0/android.hardware.gatekeeper@1.0_genc++_headers/gen/android/hardware/gatekeeper/1.0/BpHwGatekeeper.h
-out/soong/.intermediates/hardware/interfaces/gatekeeper/1.0/android.hardware.gatekeeper@1.0_genc++_headers/gen/android/hardware/gatekeeper/1.0/BsGatekeeper.h
-out/soong/.intermediates/hardware/interfaces/gatekeeper/1.0/android.hardware.gatekeeper@1.0_genc++_headers/gen/android/hardware/gatekeeper/1.0/IGatekeeper.h
-out/soong/.intermediates/hardware/interfaces/gatekeeper/1.0/android.hardware.gatekeeper@1.0_genc++_headers/gen/android/hardware/gatekeeper/1.0/IHwGatekeeper.h
-out/soong/.intermediates/hardware/interfaces/gatekeeper/1.0/android.hardware.gatekeeper@1.0_genc++_headers/gen/android/hardware/gatekeeper/1.0/hwtypes.h
-out/soong/.intermediates/hardware/interfaces/gatekeeper/1.0/android.hardware.gatekeeper@1.0_genc++_headers/gen/android/hardware/gatekeeper/1.0/types.h

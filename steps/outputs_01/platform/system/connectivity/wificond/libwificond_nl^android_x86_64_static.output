@@ -1,5 +1,0 @@
-out/soong/.intermediates/system/connectivity/wificond/libwificond_nl/android_x86_64_static/obj/system/connectivity/wificond/net/mlme_event.o
-out/soong/.intermediates/system/connectivity/wificond/libwificond_nl/android_x86_64_static/obj/system/connectivity/wificond/net/netlink_manager.o
-out/soong/.intermediates/system/connectivity/wificond/libwificond_nl/android_x86_64_static/obj/system/connectivity/wificond/net/netlink_utils.o
-out/soong/.intermediates/system/connectivity/wificond/libwificond_nl/android_x86_64_static/obj/system/connectivity/wificond/net/nl80211_attribute.o
-out/soong/.intermediates/system/connectivity/wificond/libwificond_nl/android_x86_64_static/obj/system/connectivity/wificond/net/nl80211_packet.o

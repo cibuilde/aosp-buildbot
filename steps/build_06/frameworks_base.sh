@@ -218,6 +218,11 @@ ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja liblockagent,andr
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/tools/lock_agent/liblockagent^android_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/frameworks/base/liblockagent^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/tools/lock_agent/liblockagent^android_x86_64_shared
 
+echo "building libstatslog_hwui^android_x86_64_static_lto-thin"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libstatslog_hwui,android_x86_64_static_lto-thin
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/libs/hwui/libstatslog_hwui^android_x86_64_static_lto-thin
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/frameworks/base/libstatslog_hwui^android_x86_64_static_lto-thin.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/libs/hwui/libstatslog_hwui^android_x86_64_static_lto-thin
+
 echo "building libstatslog_hwui^android_x86_x86_64_static_lto-thin"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libstatslog_hwui,android_x86_x86_64_static_lto-thin
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/libs/hwui/libstatslog_hwui^android_x86_x86_64_static_lto-thin
@@ -237,6 +242,11 @@ echo "building lockagent_crasher^android_x86_64"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja lockagent_crasher,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/tools/lock_agent/lockagent_crasher^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/frameworks/base/lockagent_crasher^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/tools/lock_agent/lockagent_crasher^android_x86_64
+
+echo "building platform-bootclasspath^android_common"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja platform-bootclasspath,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/boot/platform-bootclasspath^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/frameworks/base/platform-bootclasspath^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/boot/platform-bootclasspath^android_common
 
 echo "building platform-systemserverclasspath^android_common"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja platform-systemserverclasspath,android_common
@@ -277,11 +287,6 @@ echo "building statslog_hwui.h^"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja statslog_hwui.h,
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/libs/hwui/statslog_hwui.h^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/frameworks/base/statslog_hwui.h^.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/libs/hwui/statslog_hwui.h^
-
-echo "building libstatslog_hwui^android_x86_64_static_lto-thin"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libstatslog_hwui,android_x86_64_static_lto-thin
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/libs/hwui/libstatslog_hwui^android_x86_64_static_lto-thin
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/frameworks/base/libstatslog_hwui^android_x86_64_static_lto-thin.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/libs/hwui/libstatslog_hwui^android_x86_64_static_lto-thin
 
 rm -rf out
 

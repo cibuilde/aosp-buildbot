@@ -1,6 +1,0 @@
-out/soong/.intermediates/hardware/interfaces/drm/1.2/android.hardware.drm@1.2_genc++/gen/android/hardware/drm/1.2/CryptoFactoryAll.cpp
-out/soong/.intermediates/hardware/interfaces/drm/1.2/android.hardware.drm@1.2_genc++/gen/android/hardware/drm/1.2/CryptoPluginAll.cpp
-out/soong/.intermediates/hardware/interfaces/drm/1.2/android.hardware.drm@1.2_genc++/gen/android/hardware/drm/1.2/DrmFactoryAll.cpp
-out/soong/.intermediates/hardware/interfaces/drm/1.2/android.hardware.drm@1.2_genc++/gen/android/hardware/drm/1.2/DrmPluginAll.cpp
-out/soong/.intermediates/hardware/interfaces/drm/1.2/android.hardware.drm@1.2_genc++/gen/android/hardware/drm/1.2/DrmPluginListenerAll.cpp
-out/soong/.intermediates/hardware/interfaces/drm/1.2/android.hardware.drm@1.2_genc++/gen/android/hardware/drm/1.2/types.cpp

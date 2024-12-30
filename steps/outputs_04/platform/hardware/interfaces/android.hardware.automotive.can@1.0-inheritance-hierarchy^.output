@@ -1,5 +1,0 @@
-out/soong/.intermediates/hardware/interfaces/automotive/can/1.0/android.hardware.automotive.can@1.0-inheritance-hierarchy/gen/ICanBus_inheritance_hierarchy.json
-out/soong/.intermediates/hardware/interfaces/automotive/can/1.0/android.hardware.automotive.can@1.0-inheritance-hierarchy/gen/ICanController_inheritance_hierarchy.json
-out/soong/.intermediates/hardware/interfaces/automotive/can/1.0/android.hardware.automotive.can@1.0-inheritance-hierarchy/gen/ICanErrorListener_inheritance_hierarchy.json
-out/soong/.intermediates/hardware/interfaces/automotive/can/1.0/android.hardware.automotive.can@1.0-inheritance-hierarchy/gen/ICanMessageListener_inheritance_hierarchy.json
-out/soong/.intermediates/hardware/interfaces/automotive/can/1.0/android.hardware.automotive.can@1.0-inheritance-hierarchy/gen/ICloseHandle_inheritance_hierarchy.json

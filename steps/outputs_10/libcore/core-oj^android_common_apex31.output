@@ -1,0 +1,8 @@
+out/soong/.intermediates/libcore/core-oj/android_common_apex31/turbine/core-oj.jar
+out/soong/.intermediates/libcore/core-oj/android_common_apex31/turbine-combined/core-oj.jar
+out/soong/.intermediates/libcore/core-oj/android_common_apex31/javac/core-oj.jar
+out/soong/.intermediates/libcore/core-oj/android_common_apex31/withres/core-oj.jar
+out/soong/.intermediates/libcore/core-oj/android_common_apex31/dex/core-oj.jar
+out/soong/.intermediates/libcore/core-oj/android_common_apex31/aligned/core-oj.jar
+out/soong/.intermediates/libcore/core-oj/android_common_apex31/dex-withres/core-oj.jar
+out/soong/.intermediates/libcore/core-oj/android_common_apex31/dex-withres-aligned/core-oj.jar

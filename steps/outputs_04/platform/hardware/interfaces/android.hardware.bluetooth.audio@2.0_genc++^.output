@@ -1,4 +1,0 @@
-out/soong/.intermediates/hardware/interfaces/bluetooth/audio/2.0/android.hardware.bluetooth.audio@2.0_genc++/gen/android/hardware/bluetooth/audio/2.0/BluetoothAudioPortAll.cpp
-out/soong/.intermediates/hardware/interfaces/bluetooth/audio/2.0/android.hardware.bluetooth.audio@2.0_genc++/gen/android/hardware/bluetooth/audio/2.0/BluetoothAudioProviderAll.cpp
-out/soong/.intermediates/hardware/interfaces/bluetooth/audio/2.0/android.hardware.bluetooth.audio@2.0_genc++/gen/android/hardware/bluetooth/audio/2.0/BluetoothAudioProvidersFactoryAll.cpp
-out/soong/.intermediates/hardware/interfaces/bluetooth/audio/2.0/android.hardware.bluetooth.audio@2.0_genc++/gen/android/hardware/bluetooth/audio/2.0/types.cpp

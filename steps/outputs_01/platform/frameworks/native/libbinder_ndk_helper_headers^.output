@@ -1,7 +1,0 @@
-out/soong/ndk/sysroot/usr/include/android/binder_auto_utils.h
-out/soong/ndk/sysroot/usr/include/android/binder_enums.h
-out/soong/ndk/sysroot/usr/include/android/binder_interface_utils.h
-out/soong/ndk/sysroot/usr/include/android/binder_internal_logging.h
-out/soong/ndk/sysroot/usr/include/android/binder_parcel_utils.h
-out/soong/ndk/sysroot/usr/include/android/binder_parcelable_utils.h
-out/soong/ndk/sysroot/usr/include/android/binder_to_string.h

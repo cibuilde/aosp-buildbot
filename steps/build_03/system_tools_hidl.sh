@@ -41,15 +41,25 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/system/tools/hidl/host_utils/libhidl-gen
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/tools/hidl/utils/libhidl-gen-utils^linux_glibc_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/tools/hidl/libhidl-gen^linux_glibc_x86_64_static/ .
 
-echo "building hidl-gen^linux_glibc_x86_64"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja hidl-gen,linux_glibc_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/tools/hidl/hidl-gen^linux_glibc_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/system/tools/hidl/hidl-gen^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/tools/hidl/hidl-gen^linux_glibc_x86_64
-
 echo "building hidl.tests.vendor.android@1.0-inheritance-hierarchy^"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja hidl.tests.vendor.android@1.0-inheritance-hierarchy,
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/tools/hidl/test/vendor/android/1.0/hidl.tests.vendor.android@1.0-inheritance-hierarchy^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/system/tools/hidl/hidl.tests.vendor.android@1.0-inheritance-hierarchy^.output . $GITHUB_WORKSPACE/artifacts/system/tools/hidl/test/vendor/android/1.0/hidl.tests.vendor.android@1.0-inheritance-hierarchy^
+
+echo "building hidl2aidl.test@1.1-inheritance-hierarchy^"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja hidl2aidl.test@1.1-inheritance-hierarchy,
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/tools/hidl/hidl2aidl/test/1.1/hidl2aidl.test@1.1-inheritance-hierarchy^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/system/tools/hidl/hidl2aidl.test@1.1-inheritance-hierarchy^.output . $GITHUB_WORKSPACE/artifacts/system/tools/hidl/hidl2aidl/test/1.1/hidl2aidl.test@1.1-inheritance-hierarchy^
+
+echo "building libhidl-gen-ast^linux_glibc_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libhidl-gen-ast,linux_glibc_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/tools/hidl/libhidl-gen-ast^linux_glibc_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/system/tools/hidl/libhidl-gen-ast^linux_glibc_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/tools/hidl/libhidl-gen-ast^linux_glibc_x86_64_static
+
+echo "building hidl-gen^linux_glibc_x86_64"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja hidl-gen,linux_glibc_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/tools/hidl/hidl-gen^linux_glibc_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/system/tools/hidl/hidl-gen^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/tools/hidl/hidl-gen^linux_glibc_x86_64
 
 echo "building hidl.tests.vendor@1.0-inheritance-hierarchy^"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja hidl.tests.vendor@1.0-inheritance-hierarchy,
@@ -70,11 +80,6 @@ echo "building hidl2aidl.test@1.0-inheritance-hierarchy^"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja hidl2aidl.test@1.0-inheritance-hierarchy,
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/tools/hidl/hidl2aidl/test/1.0/hidl2aidl.test@1.0-inheritance-hierarchy^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/system/tools/hidl/hidl2aidl.test@1.0-inheritance-hierarchy^.output . $GITHUB_WORKSPACE/artifacts/system/tools/hidl/hidl2aidl/test/1.0/hidl2aidl.test@1.0-inheritance-hierarchy^
-
-echo "building hidl2aidl.test@1.1-inheritance-hierarchy^"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja hidl2aidl.test@1.1-inheritance-hierarchy,
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/tools/hidl/hidl2aidl/test/1.1/hidl2aidl.test@1.1-inheritance-hierarchy^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/system/tools/hidl/hidl2aidl.test@1.1-inheritance-hierarchy^.output . $GITHUB_WORKSPACE/artifacts/system/tools/hidl/hidl2aidl/test/1.1/hidl2aidl.test@1.1-inheritance-hierarchy^
 
 echo "building hidl2aidl.test@1.2-inheritance-hierarchy^"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja hidl2aidl.test@1.2-inheritance-hierarchy,
@@ -100,11 +105,6 @@ echo "building hidl_test_system_ext@1.0-inheritance-hierarchy^"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja hidl_test_system_ext@1.0-inheritance-hierarchy,
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/tools/hidl/test/build_variants/1.0/hidl_test_system_ext@1.0-inheritance-hierarchy^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/system/tools/hidl/hidl_test_system_ext@1.0-inheritance-hierarchy^.output . $GITHUB_WORKSPACE/artifacts/system/tools/hidl/test/build_variants/1.0/hidl_test_system_ext@1.0-inheritance-hierarchy^
-
-echo "building libhidl-gen-ast^linux_glibc_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libhidl-gen-ast,linux_glibc_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/tools/hidl/libhidl-gen-ast^linux_glibc_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/system/tools/hidl/libhidl-gen-ast^linux_glibc_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/tools/hidl/libhidl-gen-ast^linux_glibc_x86_64_static
 
 rm -rf out
 

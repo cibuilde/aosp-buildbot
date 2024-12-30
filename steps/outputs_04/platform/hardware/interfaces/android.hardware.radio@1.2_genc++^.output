@@ -1,5 +1,0 @@
-out/soong/.intermediates/hardware/interfaces/radio/1.2/android.hardware.radio@1.2_genc++/gen/android/hardware/radio/1.2/RadioAll.cpp
-out/soong/.intermediates/hardware/interfaces/radio/1.2/android.hardware.radio@1.2_genc++/gen/android/hardware/radio/1.2/RadioIndicationAll.cpp
-out/soong/.intermediates/hardware/interfaces/radio/1.2/android.hardware.radio@1.2_genc++/gen/android/hardware/radio/1.2/RadioResponseAll.cpp
-out/soong/.intermediates/hardware/interfaces/radio/1.2/android.hardware.radio@1.2_genc++/gen/android/hardware/radio/1.2/SapAll.cpp
-out/soong/.intermediates/hardware/interfaces/radio/1.2/android.hardware.radio@1.2_genc++/gen/android/hardware/radio/1.2/types.cpp

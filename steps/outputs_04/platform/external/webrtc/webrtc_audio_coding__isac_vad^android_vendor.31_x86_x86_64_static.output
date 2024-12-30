@@ -1,4 +1,0 @@
-out/soong/.intermediates/external/webrtc/webrtc_audio_coding__isac_vad/android_vendor.31_x86_x86_64_static/obj/external/webrtc/modules/audio_coding/codecs/isac/main/source/filter_functions.o
-out/soong/.intermediates/external/webrtc/webrtc_audio_coding__isac_vad/android_vendor.31_x86_x86_64_static/obj/external/webrtc/modules/audio_coding/codecs/isac/main/source/isac_vad.o
-out/soong/.intermediates/external/webrtc/webrtc_audio_coding__isac_vad/android_vendor.31_x86_x86_64_static/obj/external/webrtc/modules/audio_coding/codecs/isac/main/source/pitch_estimator.o
-out/soong/.intermediates/external/webrtc/webrtc_audio_coding__isac_vad/android_vendor.31_x86_x86_64_static/obj/external/webrtc/modules/audio_coding/codecs/isac/main/source/pitch_filter.o

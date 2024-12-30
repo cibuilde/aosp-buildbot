@@ -1,4 +1,0 @@
-out/soong/.intermediates/bionic/libc/libc_openbsd_large_stack/android_native_bridge_arm64_armv8-a_static/obj/bionic/libc/stdio/vfprintf.o
-out/soong/.intermediates/bionic/libc/libc_openbsd_large_stack/android_native_bridge_arm64_armv8-a_static/obj/bionic/libc/stdio/vfwprintf.o
-out/soong/.intermediates/bionic/libc/libc_openbsd_large_stack/android_native_bridge_arm64_armv8-a_static/obj/bionic/libc/upstream-openbsd/lib/libc/string/memmem.o
-out/soong/.intermediates/bionic/libc/libc_openbsd_large_stack/android_native_bridge_arm64_armv8-a_static/obj/bionic/libc/upstream-openbsd/lib/libc/string/strstr.o

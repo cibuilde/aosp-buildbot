@@ -1,9 +1,0 @@
-out/soong/.intermediates/external/python/cpython2/py2-c-module-_sqlite3/linux_glibc_x86_64_static/obj/external/python/cpython2/Modules/_sqlite/cache.o
-out/soong/.intermediates/external/python/cpython2/py2-c-module-_sqlite3/linux_glibc_x86_64_static/obj/external/python/cpython2/Modules/_sqlite/connection.o
-out/soong/.intermediates/external/python/cpython2/py2-c-module-_sqlite3/linux_glibc_x86_64_static/obj/external/python/cpython2/Modules/_sqlite/cursor.o
-out/soong/.intermediates/external/python/cpython2/py2-c-module-_sqlite3/linux_glibc_x86_64_static/obj/external/python/cpython2/Modules/_sqlite/microprotocols.o
-out/soong/.intermediates/external/python/cpython2/py2-c-module-_sqlite3/linux_glibc_x86_64_static/obj/external/python/cpython2/Modules/_sqlite/module.o
-out/soong/.intermediates/external/python/cpython2/py2-c-module-_sqlite3/linux_glibc_x86_64_static/obj/external/python/cpython2/Modules/_sqlite/prepare_protocol.o
-out/soong/.intermediates/external/python/cpython2/py2-c-module-_sqlite3/linux_glibc_x86_64_static/obj/external/python/cpython2/Modules/_sqlite/row.o
-out/soong/.intermediates/external/python/cpython2/py2-c-module-_sqlite3/linux_glibc_x86_64_static/obj/external/python/cpython2/Modules/_sqlite/statement.o
-out/soong/.intermediates/external/python/cpython2/py2-c-module-_sqlite3/linux_glibc_x86_64_static/obj/external/python/cpython2/Modules/_sqlite/util.o

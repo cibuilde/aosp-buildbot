@@ -79,6 +79,11 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^android_x86
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^android_x86_64_static_apex10000/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^linux_glibc_x86_64_static/ .
 
+echo "building generate_recovery_linker_config^"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja generate_recovery_linker_config,
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/linkerconfig/generate_recovery_linker_config^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/system/linkerconfig/generate_recovery_linker_config^.output . $GITHUB_WORKSPACE/artifacts/system/linkerconfig/generate_recovery_linker_config^
+
 echo "building ld.config.recovery.txt^android_recovery_x86_64"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja ld.config.recovery.txt,android_recovery_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/linkerconfig/ld.config.recovery.txt^android_recovery_x86_64
@@ -94,6 +99,11 @@ ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja linkerconfig,andr
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/linkerconfig/linkerconfig^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/system/linkerconfig/linkerconfig^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/linkerconfig/linkerconfig^android_x86_64
 
+echo "building linkerconfig_modules^android_x86_64_static_apex10000"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja linkerconfig_modules,android_x86_64_static_apex10000
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/linkerconfig/linkerconfig_modules^android_x86_64_static_apex10000
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/system/linkerconfig/linkerconfig_modules^android_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/system/linkerconfig/linkerconfig_modules^android_x86_64_static_apex10000
+
 echo "building linkerconfig^android_x86_64_apex10000"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja linkerconfig,android_x86_64_apex10000
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/linkerconfig/linkerconfig^android_x86_64_apex10000
@@ -108,16 +118,6 @@ echo "building linkerconfig^linux_glibc_x86_64"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja linkerconfig,linux_glibc_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/linkerconfig/linkerconfig^linux_glibc_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/system/linkerconfig/linkerconfig^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/linkerconfig/linkerconfig^linux_glibc_x86_64
-
-echo "building generate_recovery_linker_config^"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja generate_recovery_linker_config,
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/linkerconfig/generate_recovery_linker_config^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/system/linkerconfig/generate_recovery_linker_config^.output . $GITHUB_WORKSPACE/artifacts/system/linkerconfig/generate_recovery_linker_config^
-
-echo "building linkerconfig_modules^android_x86_64_static_apex10000"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja linkerconfig_modules,android_x86_64_static_apex10000
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/linkerconfig/linkerconfig_modules^android_x86_64_static_apex10000
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/system/linkerconfig/linkerconfig_modules^android_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/system/linkerconfig/linkerconfig_modules^android_x86_64_static_apex10000
 
 rm -rf out
 

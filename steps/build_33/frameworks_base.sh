@@ -131,16 +131,6 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/tools/platform-compat/build/process-comp
 rsync -a -r $GITHUB_WORKSPACE/downloads/tools/platform-compat/java/android/processor/compat/unsupportedappusage/unsupportedappusage-annotation-processor^linux_glibc_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/tools/platform-compat/java/android/compat/annotation/unsupportedappusage^android_common/ .
 
-echo "building services.core^android_common"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_33.ninja services.core,android_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/services/core/services.core^android_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_33/frameworks/base/services.core^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/services/core/services.core^android_common
-
-echo "building backuplib^android_common"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_33.ninja backuplib,android_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/services/backup/backuplib/backuplib^android_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_33/frameworks/base/backuplib^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/services/backup/backuplib/backuplib^android_common
-
 echo "building service-blobstore^android_common"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_33.ninja service-blobstore,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/apex/blobstore/service/service-blobstore^android_common
@@ -155,6 +145,16 @@ echo "building services-platform-compat-config^android_common"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_33.ninja services-platform-compat-config,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/services/services-platform-compat-config^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_33/frameworks/base/services-platform-compat-config^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/services/services-platform-compat-config^android_common
+
+echo "building services.core^android_common"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_33.ninja services.core,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/services/core/services.core^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_33/frameworks/base/services.core^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/services/core/services.core^android_common
+
+echo "building backuplib^android_common"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_33.ninja backuplib,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/services/backup/backuplib/backuplib^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_33/frameworks/base/backuplib^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/services/backup/backuplib/backuplib^android_common
 
 echo "building services.accessibility^android_common"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_33.ninja services.accessibility,android_common

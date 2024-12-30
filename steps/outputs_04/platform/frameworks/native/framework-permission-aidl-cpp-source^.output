@@ -1,8 +1,0 @@
-out/soong/.intermediates/frameworks/native/libs/permission/framework-permission-aidl-cpp-source/gen/android/content/AttributionSourceState.cpp
-out/soong/.intermediates/frameworks/native/libs/permission/framework-permission-aidl-cpp-source/gen/android/permission/IPermissionChecker.cpp
-out/soong/.intermediates/frameworks/native/libs/permission/framework-permission-aidl-cpp-source/gen/include/android/content/AttributionSourceState.h
-out/soong/.intermediates/frameworks/native/libs/permission/framework-permission-aidl-cpp-source/gen/include/android/content/BnAttributionSourceState.h
-out/soong/.intermediates/frameworks/native/libs/permission/framework-permission-aidl-cpp-source/gen/include/android/content/BpAttributionSourceState.h
-out/soong/.intermediates/frameworks/native/libs/permission/framework-permission-aidl-cpp-source/gen/include/android/permission/BnPermissionChecker.h
-out/soong/.intermediates/frameworks/native/libs/permission/framework-permission-aidl-cpp-source/gen/include/android/permission/BpPermissionChecker.h
-out/soong/.intermediates/frameworks/native/libs/permission/framework-permission-aidl-cpp-source/gen/include/android/permission/IPermissionChecker.h

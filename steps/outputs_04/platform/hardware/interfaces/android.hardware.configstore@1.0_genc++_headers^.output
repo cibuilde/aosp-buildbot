@@ -1,7 +1,0 @@
-out/soong/.intermediates/hardware/interfaces/configstore/1.0/android.hardware.configstore@1.0_genc++_headers/gen/android/hardware/configstore/1.0/BnHwSurfaceFlingerConfigs.h
-out/soong/.intermediates/hardware/interfaces/configstore/1.0/android.hardware.configstore@1.0_genc++_headers/gen/android/hardware/configstore/1.0/BpHwSurfaceFlingerConfigs.h
-out/soong/.intermediates/hardware/interfaces/configstore/1.0/android.hardware.configstore@1.0_genc++_headers/gen/android/hardware/configstore/1.0/BsSurfaceFlingerConfigs.h
-out/soong/.intermediates/hardware/interfaces/configstore/1.0/android.hardware.configstore@1.0_genc++_headers/gen/android/hardware/configstore/1.0/IHwSurfaceFlingerConfigs.h
-out/soong/.intermediates/hardware/interfaces/configstore/1.0/android.hardware.configstore@1.0_genc++_headers/gen/android/hardware/configstore/1.0/ISurfaceFlingerConfigs.h
-out/soong/.intermediates/hardware/interfaces/configstore/1.0/android.hardware.configstore@1.0_genc++_headers/gen/android/hardware/configstore/1.0/hwtypes.h
-out/soong/.intermediates/hardware/interfaces/configstore/1.0/android.hardware.configstore@1.0_genc++_headers/gen/android/hardware/configstore/1.0/types.h

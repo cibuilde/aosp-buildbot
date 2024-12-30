@@ -1,8 +1,0 @@
-out/soong/.intermediates/frameworks/ex/camera2/extensions/sample/androidx.camera.extensions.impl/android_common/aligned/androidx.camera.extensions.impl.jar
-out/soong/.intermediates/frameworks/ex/camera2/extensions/sample/androidx.camera.extensions.impl/android_common/dexpreopt/dexpreopt.config
-out/soong/.intermediates/frameworks/ex/camera2/extensions/sample/androidx.camera.extensions.impl/android_common/dexpreopt/oat/x86/javalib.odex
-out/soong/.intermediates/frameworks/ex/camera2/extensions/sample/androidx.camera.extensions.impl/android_common/dexpreopt/oat/x86/javalib.vdex
-out/soong/.intermediates/frameworks/ex/camera2/extensions/sample/androidx.camera.extensions.impl/android_common/dexpreopt/oat/x86_64/javalib.odex
-out/soong/.intermediates/frameworks/ex/camera2/extensions/sample/androidx.camera.extensions.impl/android_common/dexpreopt/oat/x86_64/javalib.vdex
-out/soong/.intermediates/frameworks/ex/camera2/extensions/sample/androidx.camera.extensions.impl/android_common/javac/androidx.camera.extensions.impl.jar
-out/soong/.intermediates/frameworks/ex/camera2/extensions/sample/androidx.camera.extensions.impl/android_common/turbine-combined/androidx.camera.extensions.impl.jar

@@ -26,9 +26,44 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcxx/libc++^linux_glibc_x86_6
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/protobuf/aprotoc^linux_glibc_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/turbine/turbine^linux_glibc_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/hwbinder.stubs^android_common/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/cas/1.0/android.hardware.cas-V1.0-java_gen_java^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/cas/1.1/android.hardware.cas-V1.1-java_gen_java^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/cas/1.2/android.hardware.cas-V1.2-java_gen_java^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/contexthub/1.0/android.hardware.contexthub-V1.0-java_gen_java^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/contexthub/1.1/android.hardware.contexthub-V1.1-java_gen_java^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/contexthub/1.2/android.hardware.contexthub-V1.2-java_gen_java^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/gnss/1.0/android.hardware.gnss-V1.0-java_gen_java^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/gnss/1.1/android.hardware.gnss-V1.1-java_gen_java^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/gnss/2.0/android.hardware.gnss-V2.0-java_gen_java^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/gnss/2.1/android.hardware.gnss-V2.1-java_gen_java^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/gnss/measurement_corrections/1.0/android.hardware.gnss.measurement_corrections-V1.0-java_gen_java^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/gnss/measurement_corrections/1.1/android.hardware.gnss.measurement_corrections-V1.1-java_gen_java^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/gnss/visibility_control/1.0/android.hardware.gnss.visibility_control-V1.0-java_gen_java^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/radio/1.0/android.hardware.radio-V1.0-java_gen_java^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/radio/1.1/android.hardware.radio-V1.1-java_gen_java^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/radio/1.2/android.hardware.radio-V1.2-java_gen_java^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/radio/1.3/android.hardware.radio-V1.3-java_gen_java^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/radio/1.4/android.hardware.radio-V1.4-java_gen_java^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/radio/1.5/android.hardware.radio-V1.5-java_gen_java^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/radio/1.6/android.hardware.radio-V1.6-java_gen_java^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/radio/config/1.0/android.hardware.radio.config-V1.0-java_gen_java^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/radio/config/1.1/android.hardware.radio.config-V1.1-java_gen_java^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/radio/config/1.2/android.hardware.radio.config-V1.2-java_gen_java^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/radio/config/1.3/android.hardware.radio.config-V1.3-java_gen_java^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/radio/deprecated/1.0/android.hardware.radio.deprecated-V1.0-java_gen_java^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/tetheroffload/config/1.0/android.hardware.tetheroffload.config-V1.0-java_gen_java^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/tetheroffload/control/1.0/android.hardware.tetheroffload.control-V1.0-java_gen_java^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/tetheroffload/control/1.1/android.hardware.tetheroffload.control-V1.1-java_gen_java^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/thermal/1.0/android.hardware.thermal-V1.0-java_gen_java^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/thermal/1.1/android.hardware.thermal-V1.1-java_gen_java^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/thermal/2.0/android.hardware.thermal-V2.0-java_gen_java^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/usb/gadget/1.0/android.hardware.usb.gadget-V1.0-java_gen_java^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/usb/gadget/1.1/android.hardware.usb.gadget-V1.1-java_gen_java^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/usb/gadget/1.2/android.hardware.usb.gadget-V1.2-java_gen_java^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/vibrator/1.0/android.hardware.vibrator-V1.0-java_gen_java^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/vibrator/1.1/android.hardware.vibrator-V1.1-java_gen_java^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/vibrator/1.2/android.hardware.vibrator-V1.2-java_gen_java^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/vibrator/1.3/android.hardware.vibrator-V1.3-java_gen_java^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/wifi/1.0/android.hardware.wifi-V1.0-java_gen_java^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/wifi/1.1/android.hardware.wifi-V1.1-java_gen_java^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/wifi/1.2/android.hardware.wifi-V1.2-java_gen_java^/ .
@@ -49,7 +84,149 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/libcore/core-lambda-stubs^android_common
 rsync -a -r $GITHUB_WORKSPACE/downloads/libcore/core.current.stubs^android_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/r8/d8^linux_glibc_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/r8/d8^linux_glibc_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/libhidl/transport/base/1.0/android.hidl.base-V1.0-java^android_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/libhidl/transport/base/1.0/android.hidl.base-V1.0-java^android_common_apex30/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/libhidl/transport/safe_union/1.0/android.hidl.safe_union-V1.0-java^android_common/ .
+
+echo "building android.hardware.cas-V1.0-java^android_common"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_16.ninja android.hardware.cas-V1.0-java,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/cas/1.0/android.hardware.cas-V1.0-java^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_16/hardware/interfaces/android.hardware.cas-V1.0-java^android_common.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/cas/1.0/android.hardware.cas-V1.0-java^android_common
+
+echo "building android.hardware.cas-V1.1-java^android_common"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_16.ninja android.hardware.cas-V1.1-java,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/cas/1.1/android.hardware.cas-V1.1-java^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_16/hardware/interfaces/android.hardware.cas-V1.1-java^android_common.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/cas/1.1/android.hardware.cas-V1.1-java^android_common
+
+echo "building android.hardware.cas-V1.2-java^android_common"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_16.ninja android.hardware.cas-V1.2-java,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/cas/1.2/android.hardware.cas-V1.2-java^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_16/hardware/interfaces/android.hardware.cas-V1.2-java^android_common.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/cas/1.2/android.hardware.cas-V1.2-java^android_common
+
+echo "building android.hardware.contexthub-V1.0-java^android_common"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_16.ninja android.hardware.contexthub-V1.0-java,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/contexthub/1.0/android.hardware.contexthub-V1.0-java^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_16/hardware/interfaces/android.hardware.contexthub-V1.0-java^android_common.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/contexthub/1.0/android.hardware.contexthub-V1.0-java^android_common
+
+echo "building android.hardware.contexthub-V1.1-java^android_common"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_16.ninja android.hardware.contexthub-V1.1-java,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/contexthub/1.1/android.hardware.contexthub-V1.1-java^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_16/hardware/interfaces/android.hardware.contexthub-V1.1-java^android_common.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/contexthub/1.1/android.hardware.contexthub-V1.1-java^android_common
+
+echo "building android.hardware.contexthub-V1.2-java^android_common"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_16.ninja android.hardware.contexthub-V1.2-java,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/contexthub/1.2/android.hardware.contexthub-V1.2-java^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_16/hardware/interfaces/android.hardware.contexthub-V1.2-java^android_common.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/contexthub/1.2/android.hardware.contexthub-V1.2-java^android_common
+
+echo "building android.hardware.gnss-V1.0-java^android_common"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_16.ninja android.hardware.gnss-V1.0-java,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/gnss/1.0/android.hardware.gnss-V1.0-java^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_16/hardware/interfaces/android.hardware.gnss-V1.0-java^android_common.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/gnss/1.0/android.hardware.gnss-V1.0-java^android_common
+
+echo "building android.hardware.gnss-V1.1-java^android_common"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_16.ninja android.hardware.gnss-V1.1-java,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/gnss/1.1/android.hardware.gnss-V1.1-java^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_16/hardware/interfaces/android.hardware.gnss-V1.1-java^android_common.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/gnss/1.1/android.hardware.gnss-V1.1-java^android_common
+
+echo "building android.hardware.gnss-V2.0-java^android_common"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_16.ninja android.hardware.gnss-V2.0-java,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/gnss/2.0/android.hardware.gnss-V2.0-java^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_16/hardware/interfaces/android.hardware.gnss-V2.0-java^android_common.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/gnss/2.0/android.hardware.gnss-V2.0-java^android_common
+
+echo "building android.hardware.gnss-V2.1-java^android_common"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_16.ninja android.hardware.gnss-V2.1-java,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/gnss/2.1/android.hardware.gnss-V2.1-java^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_16/hardware/interfaces/android.hardware.gnss-V2.1-java^android_common.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/gnss/2.1/android.hardware.gnss-V2.1-java^android_common
+
+echo "building android.hardware.gnss.measurement_corrections-V1.0-java^android_common"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_16.ninja android.hardware.gnss.measurement_corrections-V1.0-java,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/gnss/measurement_corrections/1.0/android.hardware.gnss.measurement_corrections-V1.0-java^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_16/hardware/interfaces/android.hardware.gnss.measurement_corrections-V1.0-java^android_common.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/gnss/measurement_corrections/1.0/android.hardware.gnss.measurement_corrections-V1.0-java^android_common
+
+echo "building android.hardware.gnss.measurement_corrections-V1.1-java^android_common"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_16.ninja android.hardware.gnss.measurement_corrections-V1.1-java,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/gnss/measurement_corrections/1.1/android.hardware.gnss.measurement_corrections-V1.1-java^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_16/hardware/interfaces/android.hardware.gnss.measurement_corrections-V1.1-java^android_common.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/gnss/measurement_corrections/1.1/android.hardware.gnss.measurement_corrections-V1.1-java^android_common
+
+echo "building android.hardware.gnss.visibility_control-V1.0-java^android_common"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_16.ninja android.hardware.gnss.visibility_control-V1.0-java,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/gnss/visibility_control/1.0/android.hardware.gnss.visibility_control-V1.0-java^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_16/hardware/interfaces/android.hardware.gnss.visibility_control-V1.0-java^android_common.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/gnss/visibility_control/1.0/android.hardware.gnss.visibility_control-V1.0-java^android_common
+
+echo "building android.hardware.radio-V1.0-java^android_common"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_16.ninja android.hardware.radio-V1.0-java,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.0/android.hardware.radio-V1.0-java^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_16/hardware/interfaces/android.hardware.radio-V1.0-java^android_common.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.0/android.hardware.radio-V1.0-java^android_common
+
+echo "building android.hardware.radio-V1.1-java^android_common"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_16.ninja android.hardware.radio-V1.1-java,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.1/android.hardware.radio-V1.1-java^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_16/hardware/interfaces/android.hardware.radio-V1.1-java^android_common.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.1/android.hardware.radio-V1.1-java^android_common
+
+echo "building android.hardware.radio-V1.2-java^android_common"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_16.ninja android.hardware.radio-V1.2-java,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.2/android.hardware.radio-V1.2-java^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_16/hardware/interfaces/android.hardware.radio-V1.2-java^android_common.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.2/android.hardware.radio-V1.2-java^android_common
+
+echo "building android.hardware.radio-V1.3-java^android_common"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_16.ninja android.hardware.radio-V1.3-java,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.3/android.hardware.radio-V1.3-java^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_16/hardware/interfaces/android.hardware.radio-V1.3-java^android_common.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.3/android.hardware.radio-V1.3-java^android_common
+
+echo "building android.hardware.radio-V1.4-java^android_common"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_16.ninja android.hardware.radio-V1.4-java,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.4/android.hardware.radio-V1.4-java^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_16/hardware/interfaces/android.hardware.radio-V1.4-java^android_common.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.4/android.hardware.radio-V1.4-java^android_common
+
+echo "building android.hardware.radio-V1.5-java^android_common"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_16.ninja android.hardware.radio-V1.5-java,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.5/android.hardware.radio-V1.5-java^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_16/hardware/interfaces/android.hardware.radio-V1.5-java^android_common.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.5/android.hardware.radio-V1.5-java^android_common
+
+echo "building android.hardware.radio-V1.6-java^android_common"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_16.ninja android.hardware.radio-V1.6-java,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.6/android.hardware.radio-V1.6-java^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_16/hardware/interfaces/android.hardware.radio-V1.6-java^android_common.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.6/android.hardware.radio-V1.6-java^android_common
+
+echo "building android.hardware.radio.config-V1.0-java-shallow^android_common"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_16.ninja android.hardware.radio.config-V1.0-java-shallow,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/config/1.0/android.hardware.radio.config-V1.0-java-shallow^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_16/hardware/interfaces/android.hardware.radio.config-V1.0-java-shallow^android_common.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/config/1.0/android.hardware.radio.config-V1.0-java-shallow^android_common
+
+echo "building android.hardware.radio.config-V1.0-java^android_common"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_16.ninja android.hardware.radio.config-V1.0-java,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/config/1.0/android.hardware.radio.config-V1.0-java^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_16/hardware/interfaces/android.hardware.radio.config-V1.0-java^android_common.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/config/1.0/android.hardware.radio.config-V1.0-java^android_common
+
+echo "building android.hardware.radio.config-V1.1-java-shallow^android_common"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_16.ninja android.hardware.radio.config-V1.1-java-shallow,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/config/1.1/android.hardware.radio.config-V1.1-java-shallow^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_16/hardware/interfaces/android.hardware.radio.config-V1.1-java-shallow^android_common.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/config/1.1/android.hardware.radio.config-V1.1-java-shallow^android_common
+
+echo "building android.hardware.radio.config-V1.1-java^android_common"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_16.ninja android.hardware.radio.config-V1.1-java,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/config/1.1/android.hardware.radio.config-V1.1-java^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_16/hardware/interfaces/android.hardware.radio.config-V1.1-java^android_common.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/config/1.1/android.hardware.radio.config-V1.1-java^android_common
+
+echo "building android.hardware.radio.config-V1.2-java-shallow^android_common"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_16.ninja android.hardware.radio.config-V1.2-java-shallow,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/config/1.2/android.hardware.radio.config-V1.2-java-shallow^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_16/hardware/interfaces/android.hardware.radio.config-V1.2-java-shallow^android_common.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/config/1.2/android.hardware.radio.config-V1.2-java-shallow^android_common
+
+echo "building android.hardware.radio.config-V1.2-java^android_common"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_16.ninja android.hardware.radio.config-V1.2-java,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/config/1.2/android.hardware.radio.config-V1.2-java^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_16/hardware/interfaces/android.hardware.radio.config-V1.2-java^android_common.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/config/1.2/android.hardware.radio.config-V1.2-java^android_common
+
+echo "building android.hardware.radio.config-V1.3-java-shallow^android_common"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_16.ninja android.hardware.radio.config-V1.3-java-shallow,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/config/1.3/android.hardware.radio.config-V1.3-java-shallow^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_16/hardware/interfaces/android.hardware.radio.config-V1.3-java-shallow^android_common.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/config/1.3/android.hardware.radio.config-V1.3-java-shallow^android_common
+
+echo "building android.hardware.radio.deprecated-V1.0-java-shallow^android_common"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_16.ninja android.hardware.radio.deprecated-V1.0-java-shallow,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/deprecated/1.0/android.hardware.radio.deprecated-V1.0-java-shallow^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_16/hardware/interfaces/android.hardware.radio.deprecated-V1.0-java-shallow^android_common.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/deprecated/1.0/android.hardware.radio.deprecated-V1.0-java-shallow^android_common
 
 echo "building android.hardware.tetheroffload.config-V1.0-java^android_common_apex30"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_16.ninja android.hardware.tetheroffload.config-V1.0-java,android_common_apex30
@@ -65,6 +242,56 @@ echo "building android.hardware.tetheroffload.control-V1.1-java^android_common_a
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_16.ninja android.hardware.tetheroffload.control-V1.1-java,android_common_apex30
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/tetheroffload/control/1.1/android.hardware.tetheroffload.control-V1.1-java^android_common_apex30
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_16/hardware/interfaces/android.hardware.tetheroffload.control-V1.1-java^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/tetheroffload/control/1.1/android.hardware.tetheroffload.control-V1.1-java^android_common_apex30
+
+echo "building android.hardware.thermal-V1.0-java^android_common"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_16.ninja android.hardware.thermal-V1.0-java,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/thermal/1.0/android.hardware.thermal-V1.0-java^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_16/hardware/interfaces/android.hardware.thermal-V1.0-java^android_common.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/thermal/1.0/android.hardware.thermal-V1.0-java^android_common
+
+echo "building android.hardware.thermal-V1.1-java^android_common"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_16.ninja android.hardware.thermal-V1.1-java,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/thermal/1.1/android.hardware.thermal-V1.1-java^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_16/hardware/interfaces/android.hardware.thermal-V1.1-java^android_common.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/thermal/1.1/android.hardware.thermal-V1.1-java^android_common
+
+echo "building android.hardware.thermal-V2.0-java^android_common"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_16.ninja android.hardware.thermal-V2.0-java,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/thermal/2.0/android.hardware.thermal-V2.0-java^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_16/hardware/interfaces/android.hardware.thermal-V2.0-java^android_common.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/thermal/2.0/android.hardware.thermal-V2.0-java^android_common
+
+echo "building android.hardware.usb.gadget-V1.0-java^android_common"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_16.ninja android.hardware.usb.gadget-V1.0-java,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/usb/gadget/1.0/android.hardware.usb.gadget-V1.0-java^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_16/hardware/interfaces/android.hardware.usb.gadget-V1.0-java^android_common.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/usb/gadget/1.0/android.hardware.usb.gadget-V1.0-java^android_common
+
+echo "building android.hardware.usb.gadget-V1.1-java^android_common"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_16.ninja android.hardware.usb.gadget-V1.1-java,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/usb/gadget/1.1/android.hardware.usb.gadget-V1.1-java^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_16/hardware/interfaces/android.hardware.usb.gadget-V1.1-java^android_common.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/usb/gadget/1.1/android.hardware.usb.gadget-V1.1-java^android_common
+
+echo "building android.hardware.usb.gadget-V1.2-java^android_common"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_16.ninja android.hardware.usb.gadget-V1.2-java,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/usb/gadget/1.2/android.hardware.usb.gadget-V1.2-java^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_16/hardware/interfaces/android.hardware.usb.gadget-V1.2-java^android_common.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/usb/gadget/1.2/android.hardware.usb.gadget-V1.2-java^android_common
+
+echo "building android.hardware.vibrator-V1.0-java^android_common"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_16.ninja android.hardware.vibrator-V1.0-java,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/vibrator/1.0/android.hardware.vibrator-V1.0-java^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_16/hardware/interfaces/android.hardware.vibrator-V1.0-java^android_common.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/vibrator/1.0/android.hardware.vibrator-V1.0-java^android_common
+
+echo "building android.hardware.vibrator-V1.1-java^android_common"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_16.ninja android.hardware.vibrator-V1.1-java,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/vibrator/1.1/android.hardware.vibrator-V1.1-java^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_16/hardware/interfaces/android.hardware.vibrator-V1.1-java^android_common.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/vibrator/1.1/android.hardware.vibrator-V1.1-java^android_common
+
+echo "building android.hardware.vibrator-V1.2-java^android_common"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_16.ninja android.hardware.vibrator-V1.2-java,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/vibrator/1.2/android.hardware.vibrator-V1.2-java^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_16/hardware/interfaces/android.hardware.vibrator-V1.2-java^android_common.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/vibrator/1.2/android.hardware.vibrator-V1.2-java^android_common
+
+echo "building android.hardware.vibrator-V1.3-java^android_common"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_16.ninja android.hardware.vibrator-V1.3-java,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/vibrator/1.3/android.hardware.vibrator-V1.3-java^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_16/hardware/interfaces/android.hardware.vibrator-V1.3-java^android_common.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/vibrator/1.3/android.hardware.vibrator-V1.3-java^android_common
 
 echo "building android.hardware.wifi-V1.0-java^android_common_apex30"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_16.ninja android.hardware.wifi-V1.0-java,android_common_apex30

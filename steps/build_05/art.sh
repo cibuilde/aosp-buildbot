@@ -150,11 +150,6 @@ ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja art-apex-cache-in
 mkdir -p $GITHUB_WORKSPACE/artifacts/art/odrefresh/art-apex-cache-info^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/art/art-apex-cache-info^.output . $GITHUB_WORKSPACE/artifacts/art/odrefresh/art-apex-cache-info^
 
-echo "building libsigchain^android_x86_64_shared_apex31"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libsigchain,android_x86_64_shared_apex31
-mkdir -p $GITHUB_WORKSPACE/artifacts/art/sigchainlib/libsigchain^android_x86_64_shared_apex31
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/art/libsigchain^android_x86_64_shared_apex31.output . $GITHUB_WORKSPACE/artifacts/art/sigchainlib/libsigchain^android_x86_64_shared_apex31
-
 echo "building dalvikvm^android_x86_64_apex31"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja dalvikvm,android_x86_64_apex31
 mkdir -p $GITHUB_WORKSPACE/artifacts/art/dalvikvm/dalvikvm^android_x86_64_apex31
@@ -194,6 +189,11 @@ echo "building libperfetto_hprof^android_x86_x86_64_static_apex31"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libperfetto_hprof,android_x86_x86_64_static_apex31
 mkdir -p $GITHUB_WORKSPACE/artifacts/art/perfetto_hprof/libperfetto_hprof^android_x86_x86_64_static_apex31
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/art/libperfetto_hprof^android_x86_x86_64_static_apex31.output . $GITHUB_WORKSPACE/artifacts/art/perfetto_hprof/libperfetto_hprof^android_x86_x86_64_static_apex31
+
+echo "building libsigchain^android_x86_64_shared_apex31"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libsigchain,android_x86_64_shared_apex31
+mkdir -p $GITHUB_WORKSPACE/artifacts/art/sigchainlib/libsigchain^android_x86_64_shared_apex31
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/art/libsigchain^android_x86_64_shared_apex31.output . $GITHUB_WORKSPACE/artifacts/art/sigchainlib/libsigchain^android_x86_64_shared_apex31
 
 echo "building libsigchain^android_x86_x86_64_shared_apex31"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libsigchain,android_x86_x86_64_shared_apex31

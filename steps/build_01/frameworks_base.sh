@@ -11,6 +11,10 @@ mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/
 
 clone_depth_platform art
 clone_depth_platform bionic
+clone_depth build/make platform/build
+ln -s make/core build/
+ln -s make/target build/
+ln -s make/tools build/
 clone_project platform/cts cts android12-gsi "/libs/json"
 clone_depth_platform external/expat
 clone_depth_platform external/fmtlib
@@ -114,10 +118,25 @@ ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja dpm,android_x86_6
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/cmds/dpm/dpm^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/frameworks/base/dpm^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/cmds/dpm/dpm^android_x86_64
 
+echo "building ext^android_common"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja ext,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/ext^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/frameworks/base/ext^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/ext^android_common
+
 echo "building fonts.xml^android_x86_64"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja fonts.xml,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/data/fonts/fonts.xml^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/frameworks/base/fonts.xml^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/data/fonts/fonts.xml^android_x86_64
+
+echo "building framework-graphics^android_common"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja framework-graphics,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/libs/hwui/framework-graphics^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/frameworks/base/framework-graphics^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/libs/hwui/framework-graphics^android_common
+
+echo "building framework-minus-apex^android_common"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja framework-minus-apex,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/framework-minus-apex^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/frameworks/base/framework-minus-apex^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/framework-minus-apex^android_common
 
 echo "building framework-sysconfig.xml^android_x86_64"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja framework-sysconfig.xml,android_x86_64
@@ -193,6 +212,11 @@ echo "building libviewcompiler^android_x86_64_static"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libviewcompiler,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/startop/view_compiler/libviewcompiler^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/frameworks/base/libviewcompiler^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/startop/view_compiler/libviewcompiler^android_x86_64_static
+
+echo "building platform-bootclasspath^android_common"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja platform-bootclasspath,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/boot/platform-bootclasspath^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/frameworks/base/platform-bootclasspath^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/boot/platform-bootclasspath^android_common
 
 echo "building platform.xml^android_x86_64"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja platform.xml,android_x86_64
@@ -324,6 +348,10 @@ fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/bionic.tar.zst" ]; then
   echo "Compressing bionic -> bionic.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/bionic.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/bionic/ .
+fi
+if [ ! -f "$GITHUB_WORKSPACE/cache/build_make.tar.zst" ]; then
+  echo "Compressing build/make -> build_make.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/build_make.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/build/make/ .
 fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/cts.tar.zst" ]; then
   echo "Compressing cts -> cts.tar.zst"

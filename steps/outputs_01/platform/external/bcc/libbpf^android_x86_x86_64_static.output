@@ -1,4 +1,0 @@
-out/soong/.intermediates/external/bcc/libbpf/android_x86_x86_64_static/obj/external/bcc/src/cc/libbpf.o
-out/soong/.intermediates/external/bcc/libbpf/android_x86_x86_64_static/obj/external/bcc/src/cc/libbpf.tidy
-out/soong/.intermediates/external/bcc/libbpf/android_x86_x86_64_static/obj/external/bcc/src/cc/perf_reader.o
-out/soong/.intermediates/external/bcc/libbpf/android_x86_x86_64_static/obj/external/bcc/src/cc/perf_reader.tidy

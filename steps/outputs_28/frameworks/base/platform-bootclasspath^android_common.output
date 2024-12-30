@@ -1,0 +1,8 @@
+out/soong/hiddenapi/hiddenapi-stub-flags.txt
+out/soong/.intermediates/frameworks/base/boot/platform-bootclasspath/android_common/hiddenapi-monolithic/annotation-flags-from-classes.csv
+out/soong/hiddenapi/hiddenapi-flags.csv
+out/soong/vsoc_x86_64/dex_bootjars_input/ext.jar
+out/soong/vsoc_x86_64/dex_bootjars_input/framework-graphics.jar
+out/soong/vsoc_x86_64/dex_bootjars_input/framework.jar
+out/soong/vsoc_x86_64/updatable_bootjars/framework-appsearch.jar
+out/soong/vsoc_x86_64/updatable_bootjars/updatable-media.jar

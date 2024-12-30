@@ -58,6 +58,10 @@ jobs:
         key: external_apache-commons-bcel@${{ env.branch }}
     - uses: actions/cache@v4
       with:
+        path: cache/external_apache-xml.tar.zst
+        key: external_apache-xml@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
         path: cache/external_arm-optimized-routines.tar.zst
         key: external_arm-optimized-routines@${{ env.branch }}
     - uses: actions/cache@v4

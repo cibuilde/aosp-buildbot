@@ -209,6 +209,10 @@ gh release --repo cibuilde/aosp-buildbot download android12-gsi_03 --pattern ext
 mkdir -p $GITHUB_WORKSPACE/downloads/external/libffi
 tar xf $GITHUB_WORKSPACE/external_libffi-03.tar.zst -C $GITHUB_WORKSPACE/downloads/external/libffi/
 
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_08 --pattern external_libphonenumber.tar.zst --output external_libphonenumber-08.tar.zst
+mkdir -p $GITHUB_WORKSPACE/downloads/external/libphonenumber
+tar xf $GITHUB_WORKSPACE/external_libphonenumber-08.tar.zst -C $GITHUB_WORKSPACE/downloads/external/libphonenumber/
+
 gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_libxml2.tar.zst --output external_libxml2-01.tar.zst
 mkdir -p $GITHUB_WORKSPACE/downloads/external/libxml2
 tar xf $GITHUB_WORKSPACE/external_libxml2-01.tar.zst -C $GITHUB_WORKSPACE/downloads/external/libxml2/
@@ -833,6 +837,10 @@ gh release --repo cibuilde/aosp-buildbot download android12-gsi_08 --pattern fra
 mkdir -p $GITHUB_WORKSPACE/downloads/frameworks/native
 tar xf $GITHUB_WORKSPACE/frameworks_native-08.tar.zst -C $GITHUB_WORKSPACE/downloads/frameworks/native/
 
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_04 --pattern frameworks_opt_telephony.tar.zst --output frameworks_opt_telephony-04.tar.zst
+mkdir -p $GITHUB_WORKSPACE/downloads/frameworks/opt/telephony
+tar xf $GITHUB_WORKSPACE/frameworks_opt_telephony-04.tar.zst -C $GITHUB_WORKSPACE/downloads/frameworks/opt/telephony/
+
 gh release --repo cibuilde/aosp-buildbot download android12-gsi_04 --pattern frameworks_proto_logging.tar.zst --output frameworks_proto_logging-04.tar.zst
 mkdir -p $GITHUB_WORKSPACE/downloads/frameworks/proto_logging
 tar xf $GITHUB_WORKSPACE/frameworks_proto_logging-04.tar.zst -C $GITHUB_WORKSPACE/downloads/frameworks/proto_logging/
@@ -1210,6 +1218,7 @@ time source steps/build_09/frameworks_base.sh
 time source steps/build_09/frameworks_hardware_interfaces.sh
 time source steps/build_09/frameworks_minikin.sh
 time source steps/build_09/frameworks_native.sh
+time source steps/build_09/frameworks_opt_telephony.sh
 time source steps/build_09/frameworks_rs.sh
 time source steps/build_09/hardware_interfaces.sh
 time source steps/build_09/hardware_libhardware_legacy.sh

@@ -44,16 +44,6 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcxx/libc++_static^android_ve
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcxxabi/libc++demangle^android_vendor.31_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcxxabi/libc++demangle^android_vendor.31_x86_x86_64_static/ .
 
-echo "building libcrypto^android_vendor.31_x86_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libcrypto,android_vendor.31_x86_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/boringssl/libcrypto^android_vendor.31_x86_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/external/boringssl/libcrypto^android_vendor.31_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/external/boringssl/libcrypto^android_vendor.31_x86_x86_64_shared
-
-echo "building boringssl_self_test_vendor^android_vendor.31_x86_x86_64"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja boringssl_self_test_vendor,android_vendor.31_x86_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/boringssl/selftest/boringssl_self_test_vendor^android_vendor.31_x86_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/external/boringssl/boringssl_self_test_vendor^android_vendor.31_x86_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/boringssl/selftest/boringssl_self_test_vendor^android_vendor.31_x86_x86_64
-
 echo "building libcrypto^android_vendor.31_x86_64_shared"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libcrypto,android_vendor.31_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/boringssl/libcrypto^android_vendor.31_x86_64_shared
@@ -63,6 +53,16 @@ echo "building boringssl_self_test_vendor^android_vendor.31_x86_64"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja boringssl_self_test_vendor,android_vendor.31_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/boringssl/selftest/boringssl_self_test_vendor^android_vendor.31_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/external/boringssl/boringssl_self_test_vendor^android_vendor.31_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/boringssl/selftest/boringssl_self_test_vendor^android_vendor.31_x86_64
+
+echo "building libcrypto^android_vendor.31_x86_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libcrypto,android_vendor.31_x86_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/boringssl/libcrypto^android_vendor.31_x86_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/external/boringssl/libcrypto^android_vendor.31_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/external/boringssl/libcrypto^android_vendor.31_x86_x86_64_shared
+
+echo "building boringssl_self_test_vendor^android_vendor.31_x86_x86_64"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja boringssl_self_test_vendor,android_vendor.31_x86_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/boringssl/selftest/boringssl_self_test_vendor^android_vendor.31_x86_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/external/boringssl/boringssl_self_test_vendor^android_vendor.31_x86_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/boringssl/selftest/boringssl_self_test_vendor^android_vendor.31_x86_x86_64
 
 echo "building libssl^android_vendor.31_x86_64_shared"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libssl,android_vendor.31_x86_64_shared

@@ -153,6 +153,10 @@ gh release --repo cibuilde/aosp-buildbot download android12-gsi_22 --pattern fra
 mkdir -p $GITHUB_WORKSPACE/downloads/frameworks/base
 tar xf $GITHUB_WORKSPACE/frameworks_base-22.tar.zst -C $GITHUB_WORKSPACE/downloads/frameworks/base/
 
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_04 --pattern frameworks_native.tar.zst --output frameworks_native-04.tar.zst
+mkdir -p $GITHUB_WORKSPACE/downloads/frameworks/native
+tar xf $GITHUB_WORKSPACE/frameworks_native-04.tar.zst -C $GITHUB_WORKSPACE/downloads/frameworks/native/
+
 gh release --repo cibuilde/aosp-buildbot download android12-gsi_10 --pattern libcore.tar.zst --output libcore-10.tar.zst
 mkdir -p $GITHUB_WORKSPACE/downloads/libcore
 tar xf $GITHUB_WORKSPACE/libcore-10.tar.zst -C $GITHUB_WORKSPACE/downloads/libcore/
@@ -164,10 +168,6 @@ tar xf $GITHUB_WORKSPACE/libcore-12.tar.zst -C $GITHUB_WORKSPACE/downloads/libco
 gh release --repo cibuilde/aosp-buildbot download android12-gsi_19 --pattern packages_modules_Connectivity.tar.zst --output packages_modules_Connectivity-19.tar.zst
 mkdir -p $GITHUB_WORKSPACE/downloads/packages/modules/Connectivity
 tar xf $GITHUB_WORKSPACE/packages_modules_Connectivity-19.tar.zst -C $GITHUB_WORKSPACE/downloads/packages/modules/Connectivity/
-
-gh release --repo cibuilde/aosp-buildbot download android12-gsi_00 --pattern packages_modules_IPsec.tar.zst --output packages_modules_IPsec-00.tar.zst
-mkdir -p $GITHUB_WORKSPACE/downloads/packages/modules/IPsec
-tar xf $GITHUB_WORKSPACE/packages_modules_IPsec-00.tar.zst -C $GITHUB_WORKSPACE/downloads/packages/modules/IPsec/
 
 gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern packages_modules_IPsec.tar.zst --output packages_modules_IPsec-01.tar.zst
 mkdir -p $GITHUB_WORKSPACE/downloads/packages/modules/IPsec
@@ -181,10 +181,6 @@ gh release --repo cibuilde/aosp-buildbot download android12-gsi_04 --pattern pac
 mkdir -p $GITHUB_WORKSPACE/downloads/packages/modules/NetworkStack
 tar xf $GITHUB_WORKSPACE/packages_modules_NetworkStack-04.tar.zst -C $GITHUB_WORKSPACE/downloads/packages/modules/NetworkStack/
 
-gh release --repo cibuilde/aosp-buildbot download android12-gsi_00 --pattern packages_modules_Permission.tar.zst --output packages_modules_Permission-00.tar.zst
-mkdir -p $GITHUB_WORKSPACE/downloads/packages/modules/Permission
-tar xf $GITHUB_WORKSPACE/packages_modules_Permission-00.tar.zst -C $GITHUB_WORKSPACE/downloads/packages/modules/Permission/
-
 gh release --repo cibuilde/aosp-buildbot download android12-gsi_06 --pattern packages_modules_Permission.tar.zst --output packages_modules_Permission-06.tar.zst
 mkdir -p $GITHUB_WORKSPACE/downloads/packages/modules/Permission
 tar xf $GITHUB_WORKSPACE/packages_modules_Permission-06.tar.zst -C $GITHUB_WORKSPACE/downloads/packages/modules/Permission/
@@ -197,10 +193,6 @@ gh release --repo cibuilde/aosp-buildbot download android12-gsi_19 --pattern pac
 mkdir -p $GITHUB_WORKSPACE/downloads/packages/modules/Permission
 tar xf $GITHUB_WORKSPACE/packages_modules_Permission-19.tar.zst -C $GITHUB_WORKSPACE/downloads/packages/modules/Permission/
 
-gh release --repo cibuilde/aosp-buildbot download android12-gsi_00 --pattern packages_modules_Scheduling.tar.zst --output packages_modules_Scheduling-00.tar.zst
-mkdir -p $GITHUB_WORKSPACE/downloads/packages/modules/Scheduling
-tar xf $GITHUB_WORKSPACE/packages_modules_Scheduling-00.tar.zst -C $GITHUB_WORKSPACE/downloads/packages/modules/Scheduling/
-
 gh release --repo cibuilde/aosp-buildbot download android12-gsi_06 --pattern packages_modules_Scheduling.tar.zst --output packages_modules_Scheduling-06.tar.zst
 mkdir -p $GITHUB_WORKSPACE/downloads/packages/modules/Scheduling
 tar xf $GITHUB_WORKSPACE/packages_modules_Scheduling-06.tar.zst -C $GITHUB_WORKSPACE/downloads/packages/modules/Scheduling/
@@ -209,17 +201,9 @@ gh release --repo cibuilde/aosp-buildbot download android12-gsi_19 --pattern pac
 mkdir -p $GITHUB_WORKSPACE/downloads/packages/modules/Scheduling
 tar xf $GITHUB_WORKSPACE/packages_modules_Scheduling-19.tar.zst -C $GITHUB_WORKSPACE/downloads/packages/modules/Scheduling/
 
-gh release --repo cibuilde/aosp-buildbot download android12-gsi_00 --pattern packages_modules_StatsD.tar.zst --output packages_modules_StatsD-00.tar.zst
-mkdir -p $GITHUB_WORKSPACE/downloads/packages/modules/StatsD
-tar xf $GITHUB_WORKSPACE/packages_modules_StatsD-00.tar.zst -C $GITHUB_WORKSPACE/downloads/packages/modules/StatsD/
-
 gh release --repo cibuilde/aosp-buildbot download android12-gsi_19 --pattern packages_modules_StatsD.tar.zst --output packages_modules_StatsD-19.tar.zst
 mkdir -p $GITHUB_WORKSPACE/downloads/packages/modules/StatsD
 tar xf $GITHUB_WORKSPACE/packages_modules_StatsD-19.tar.zst -C $GITHUB_WORKSPACE/downloads/packages/modules/StatsD/
-
-gh release --repo cibuilde/aosp-buildbot download android12-gsi_00 --pattern packages_modules_Wifi.tar.zst --output packages_modules_Wifi-00.tar.zst
-mkdir -p $GITHUB_WORKSPACE/downloads/packages/modules/Wifi
-tar xf $GITHUB_WORKSPACE/packages_modules_Wifi-00.tar.zst -C $GITHUB_WORKSPACE/downloads/packages/modules/Wifi/
 
 gh release --repo cibuilde/aosp-buildbot download android12-gsi_21 --pattern packages_modules_Wifi.tar.zst --output packages_modules_Wifi-21.tar.zst
 mkdir -p $GITHUB_WORKSPACE/downloads/packages/modules/Wifi
@@ -252,6 +236,10 @@ tar xf $GITHUB_WORKSPACE/prebuilts_sdk-07.tar.zst -C $GITHUB_WORKSPACE/downloads
 gh release --repo cibuilde/aosp-buildbot download android12-gsi_08 --pattern prebuilts_sdk.tar.zst --output prebuilts_sdk-08.tar.zst
 mkdir -p $GITHUB_WORKSPACE/downloads/prebuilts/sdk
 tar xf $GITHUB_WORKSPACE/prebuilts_sdk-08.tar.zst -C $GITHUB_WORKSPACE/downloads/prebuilts/sdk/
+
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_18 --pattern singletons.tar.zst --output singletons-18.tar.zst
+mkdir -p $GITHUB_WORKSPACE/downloads/singletons
+tar xf $GITHUB_WORKSPACE/singletons-18.tar.zst -C $GITHUB_WORKSPACE/downloads/singletons/
 
 gh release --repo cibuilde/aosp-buildbot download android12-gsi_05 --pattern system_apex.tar.zst --output system_apex-05.tar.zst
 mkdir -p $GITHUB_WORKSPACE/downloads/system/apex
@@ -288,6 +276,7 @@ time source steps/build_23/frameworks_libs_modules-utils.sh
 time source steps/build_23/frameworks_libs_net.sh
 time source steps/build_23/frameworks_libs_service_entitlement.sh
 time source steps/build_23/frameworks_libs_systemui.sh
+time source steps/build_23/frameworks_native.sh
 time source steps/build_23/frameworks_opt_chips.sh
 time source steps/build_23/frameworks_opt_setupwizard.sh
 time source steps/build_23/frameworks_opt_telephony.sh
@@ -304,6 +293,7 @@ time source steps/build_23/packages_modules_StatsD.sh
 time source steps/build_23/packages_modules_Wifi.sh
 time source steps/build_23/packages_services_Telephony.sh
 time source steps/build_23/prebuilts_sdk.sh
+time source steps/build_23/singletons.sh
 time source steps/build_23/system_netd.sh
 
 if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_clang_host_linux-x86.tar.zst" ]; then

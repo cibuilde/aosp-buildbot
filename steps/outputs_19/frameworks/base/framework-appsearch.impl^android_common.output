@@ -1,0 +1,7 @@
+out/soong/.intermediates/frameworks/base/apex/appsearch/framework/framework-appsearch.impl/android_common/gen/aidl/aidl0.srcjar
+out/soong/.intermediates/frameworks/base/apex/appsearch/framework/framework-appsearch.impl/android_common/turbine/framework-appsearch.impl.jar
+out/soong/.intermediates/frameworks/base/apex/appsearch/framework/framework-appsearch.impl/android_common/turbine-combined/framework-appsearch.impl.jar
+out/soong/.intermediates/frameworks/base/apex/appsearch/framework/framework-appsearch.impl/android_common/turbine-jarjar/framework-appsearch.impl.jar
+out/soong/.intermediates/frameworks/base/apex/appsearch/framework/framework-appsearch.impl/android_common/javac/framework-appsearch.impl.jar
+out/soong/.intermediates/frameworks/base/apex/appsearch/framework/framework-appsearch.impl/android_common/combined/framework-appsearch.impl.jar
+out/soong/.intermediates/frameworks/base/apex/appsearch/framework/framework-appsearch.impl/android_common/jarjar/framework-appsearch.impl.jar

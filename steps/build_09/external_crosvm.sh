@@ -225,6 +225,26 @@ ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja libfuse_rust,andr
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/crosvm/fuse/libfuse_rust^android_x86_64_rlib_rlib-std_apex10000
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_09/external/crosvm/libfuse_rust^android_x86_64_rlib_rlib-std_apex10000.output . $GITHUB_WORKSPACE/artifacts/external/crosvm/fuse/libfuse_rust^android_x86_64_rlib_rlib-std_apex10000
 
+echo "building libhypervisor^android_x86_64_rlib_rlib-std_apex10000"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja libhypervisor,android_x86_64_rlib_rlib-std_apex10000
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/crosvm/hypervisor/libhypervisor^android_x86_64_rlib_rlib-std_apex10000
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_09/external/crosvm/libhypervisor^android_x86_64_rlib_rlib-std_apex10000.output . $GITHUB_WORKSPACE/artifacts/external/crosvm/hypervisor/libhypervisor^android_x86_64_rlib_rlib-std_apex10000
+
+echo "building libio_uring^android_x86_64_dylib_apex10000"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja libio_uring,android_x86_64_dylib_apex10000
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/crosvm/io_uring/libio_uring^android_x86_64_dylib_apex10000
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_09/external/crosvm/libio_uring^android_x86_64_dylib_apex10000.output . $GITHUB_WORKSPACE/artifacts/external/crosvm/io_uring/libio_uring^android_x86_64_dylib_apex10000
+
+echo "building libkernel_loader^android_x86_64_rlib_rlib-std_apex10000"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja libkernel_loader,android_x86_64_rlib_rlib-std_apex10000
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/crosvm/kernel_loader/libkernel_loader^android_x86_64_rlib_rlib-std_apex10000
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_09/external/crosvm/libkernel_loader^android_x86_64_rlib_rlib-std_apex10000.output . $GITHUB_WORKSPACE/artifacts/external/crosvm/kernel_loader/libkernel_loader^android_x86_64_rlib_rlib-std_apex10000
+
+echo "building liblinux_input_sys^android_x86_64_rlib_rlib-std_apex10000"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja liblinux_input_sys,android_x86_64_rlib_rlib-std_apex10000
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/crosvm/linux_input_sys/liblinux_input_sys^android_x86_64_rlib_rlib-std_apex10000
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_09/external/crosvm/liblinux_input_sys^android_x86_64_rlib_rlib-std_apex10000.output . $GITHUB_WORKSPACE/artifacts/external/crosvm/linux_input_sys/liblinux_input_sys^android_x86_64_rlib_rlib-std_apex10000
+
 echo "building libgpu_display^android_x86_64_rlib_rlib-std_apex10000"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja libgpu_display,android_x86_64_rlib_rlib-std_apex10000
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/crosvm/gpu_display/libgpu_display^android_x86_64_rlib_rlib-std_apex10000
@@ -235,35 +255,15 @@ ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja libio_uring,andro
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/crosvm/io_uring/libio_uring^android_x86_64_dylib
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_09/external/crosvm/libio_uring^android_x86_64_dylib.output . $GITHUB_WORKSPACE/artifacts/external/crosvm/io_uring/libio_uring^android_x86_64_dylib
 
-echo "building libio_uring^android_x86_64_dylib_apex10000"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja libio_uring,android_x86_64_dylib_apex10000
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/crosvm/io_uring/libio_uring^android_x86_64_dylib_apex10000
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_09/external/crosvm/libio_uring^android_x86_64_dylib_apex10000.output . $GITHUB_WORKSPACE/artifacts/external/crosvm/io_uring/libio_uring^android_x86_64_dylib_apex10000
-
 echo "building libkvm_sys^android_x86_64_rlib_rlib-std_apex10000"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja libkvm_sys,android_x86_64_rlib_rlib-std_apex10000
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/crosvm/kvm_sys/libkvm_sys^android_x86_64_rlib_rlib-std_apex10000
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_09/external/crosvm/libkvm_sys^android_x86_64_rlib_rlib-std_apex10000.output . $GITHUB_WORKSPACE/artifacts/external/crosvm/kvm_sys/libkvm_sys^android_x86_64_rlib_rlib-std_apex10000
 
-echo "building libhypervisor^android_x86_64_rlib_rlib-std_apex10000"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja libhypervisor,android_x86_64_rlib_rlib-std_apex10000
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/crosvm/hypervisor/libhypervisor^android_x86_64_rlib_rlib-std_apex10000
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_09/external/crosvm/libhypervisor^android_x86_64_rlib_rlib-std_apex10000.output . $GITHUB_WORKSPACE/artifacts/external/crosvm/hypervisor/libhypervisor^android_x86_64_rlib_rlib-std_apex10000
-
-echo "building libkernel_loader^android_x86_64_rlib_rlib-std_apex10000"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja libkernel_loader,android_x86_64_rlib_rlib-std_apex10000
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/crosvm/kernel_loader/libkernel_loader^android_x86_64_rlib_rlib-std_apex10000
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_09/external/crosvm/libkernel_loader^android_x86_64_rlib_rlib-std_apex10000.output . $GITHUB_WORKSPACE/artifacts/external/crosvm/kernel_loader/libkernel_loader^android_x86_64_rlib_rlib-std_apex10000
-
 echo "building libkvm^android_x86_64_rlib_rlib-std_apex10000"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja libkvm,android_x86_64_rlib_rlib-std_apex10000
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/crosvm/kvm/libkvm^android_x86_64_rlib_rlib-std_apex10000
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_09/external/crosvm/libkvm^android_x86_64_rlib_rlib-std_apex10000.output . $GITHUB_WORKSPACE/artifacts/external/crosvm/kvm/libkvm^android_x86_64_rlib_rlib-std_apex10000
-
-echo "building liblinux_input_sys^android_x86_64_rlib_rlib-std_apex10000"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja liblinux_input_sys,android_x86_64_rlib_rlib-std_apex10000
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/crosvm/linux_input_sys/liblinux_input_sys^android_x86_64_rlib_rlib-std_apex10000
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_09/external/crosvm/liblinux_input_sys^android_x86_64_rlib_rlib-std_apex10000.output . $GITHUB_WORKSPACE/artifacts/external/crosvm/linux_input_sys/liblinux_input_sys^android_x86_64_rlib_rlib-std_apex10000
 
 echo "building libnet_sys^android_x86_64_rlib_rlib-std_apex10000"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja libnet_sys,android_x86_64_rlib_rlib-std_apex10000

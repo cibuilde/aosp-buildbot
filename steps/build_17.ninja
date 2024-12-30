@@ -19,6 +19,7 @@ include ninja/frameworks/base/libs/hwui/framework-graphics.stubs.source.system^a
 include ninja/frameworks/base/libs/hwui/framework-graphics.stubs.source^android_common.ninja
 include ninja/frameworks/base/libs/hwui/framework-graphics.stubs.system^android_common.ninja
 include ninja/frameworks/base/libs/hwui/framework-graphics.stubs^android_common.ninja
+include ninja/frameworks/base/libs/hwui/framework-graphics^android_common.ninja
 include ninja/frameworks/base/module-lib-api-stubs-docs-non-updatable^android_common.ninja
 include ninja/frameworks/base/system-api-stubs-docs-non-updatable^android_common.ninja
 include ninja/frameworks/base/test-api-stubs-docs-non-updatable^android_common.ninja
@@ -47,12 +48,14 @@ build framework-graphics.stubs.system,android_common: phony out/soong/.intermedi
 
 build framework-graphics.stubs,android_common: phony out/soong/.intermediates/frameworks/base/libs/hwui/framework-graphics.stubs/android_common/javac/framework-graphics.stubs.jar out/soong/.intermediates/frameworks/base/libs/hwui/framework-graphics.stubs/android_common/turbine-combined/framework-graphics.stubs.jar
 
+build framework-graphics,android_common: phony out/soong/.intermediates/frameworks/base/libs/hwui/framework-graphics/android_common/aligned/framework-graphics.jar out/soong/.intermediates/frameworks/base/libs/hwui/framework-graphics/android_common/dex/framework-graphics.jar out/soong/.intermediates/frameworks/base/libs/hwui/framework-graphics/android_common/javac/framework-graphics.jar out/soong/.intermediates/frameworks/base/libs/hwui/framework-graphics/android_common/turbine-combined/framework-graphics.jar out/soong/.intermediates/frameworks/base/libs/hwui/framework-graphics/android_common/turbine/framework-graphics.jar
+
 build module-lib-api-stubs-docs-non-updatable,android_common: phony out/soong/.intermediates/frameworks/base/module-lib-api-stubs-docs-non-updatable/android_common/metalava/module-lib-api-stubs-docs-non-updatable-stubs.srcjar
 
 build system-api-stubs-docs-non-updatable,android_common: phony out/soong/.intermediates/frameworks/base/system-api-stubs-docs-non-updatable/android_common/metalava/system-api-stubs-docs-non-updatable-stubs.srcjar
 
 build test-api-stubs-docs-non-updatable,android_common: phony out/soong/.intermediates/frameworks/base/test-api-stubs-docs-non-updatable/android_common/metalava/test-api-stubs-docs-non-updatable-stubs.srcjar
 
-build frameworks_base-targets: phony android-non-updatable.stubs.module_lib,android_common android_module_lib_stubs_current,android_common api-stubs-docs-non-updatable,android_common app_process,android_x86_64 app_process,android_x86_x86_64 bootanimation,android_x86_64 framework-graphics.stubs.module_lib,android_common framework-graphics.stubs.source.module_lib,android_common framework-graphics.stubs.source.system,android_common framework-graphics.stubs.source,android_common framework-graphics.stubs.system,android_common framework-graphics.stubs,android_common module-lib-api-stubs-docs-non-updatable,android_common system-api-stubs-docs-non-updatable,android_common test-api-stubs-docs-non-updatable,android_common
+build frameworks_base-targets: phony android-non-updatable.stubs.module_lib,android_common android_module_lib_stubs_current,android_common api-stubs-docs-non-updatable,android_common app_process,android_x86_64 app_process,android_x86_x86_64 bootanimation,android_x86_64 framework-graphics.stubs.module_lib,android_common framework-graphics.stubs.source.module_lib,android_common framework-graphics.stubs.source.system,android_common framework-graphics.stubs.source,android_common framework-graphics.stubs.system,android_common framework-graphics.stubs,android_common framework-graphics,android_common module-lib-api-stubs-docs-non-updatable,android_common system-api-stubs-docs-non-updatable,android_common test-api-stubs-docs-non-updatable,android_common
 
 

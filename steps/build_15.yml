@@ -70,6 +70,10 @@ jobs:
         key: external_libgsm@${{ env.branch }}
     - uses: actions/cache@v4
       with:
+        path: cache/external_libphonenumber.tar.zst
+        key: external_libphonenumber@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
         path: cache/external_neven.tar.zst
         key: external_neven@${{ env.branch }}
     - uses: actions/cache@v4
@@ -80,6 +84,14 @@ jobs:
       with:
         path: cache/external_protobuf.tar.zst
         key: external_protobuf@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_rappor.tar.zst
+        key: external_rappor@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_tagsoup.tar.zst
+        key: external_tagsoup@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/frameworks_av.tar.zst

@@ -19,6 +19,7 @@ include ninja/frameworks/av/apex/com.android.media-bootclasspath-fragment^androi
 include ninja/frameworks/av/apex/com.android.media^android_common_cfi_com.android.media_image.ninja
 include ninja/frameworks/base/packages/SettingsLib/IllustrationPreference/SettingsLibIllustrationPreference^android_common.ninja
 include ninja/frameworks/base/services/net/services.net-module-wifi^android_common_apex30.ninja
+include ninja/frameworks/opt/net/voip/voip-common^android_common.ninja
 include ninja/frameworks/opt/net/wifi/libs/WifiTrackerLib/WifiTrackerLib^android_common.ninja
 include ninja/hardware/ril/librilutils/sap-api-java-static^android_common.ninja
 include ninja/packages/apps/Bluetooth/bluetooth.mapsapi^android_common.ninja
@@ -46,6 +47,7 @@ include ninja/packages/services/Car/car-lib/android.car-stub-docs^android_common
 include ninja/packages/services/Car/car-lib/android.car-stubs-docs^android_common.ninja
 include ninja/packages/services/Car/car-lib/android.car-stubs^android_common.ninja
 include ninja/packages/services/Car/car-lib/android.car-system-stubs-docs^android_common.ninja
+include ninja/packages/services/Car/car-lib/android.car^android_common.ninja
 include ninja/system/bt/gd/proto/bluetooth-protos-lite^android_common.ninja
 include ninja/system/timezone/distro/core/time_zone_distro^android_common.ninja
 include ninja/system/timezone/distro/installer/time_zone_distro_installer^android_common.ninja
@@ -85,6 +87,10 @@ build SettingsLibIllustrationPreference,android_common: phony out/soong/.interme
 build services.net-module-wifi,android_common_apex30: phony out/soong/.intermediates/frameworks/base/services/net/services.net-module-wifi/android_common_apex30/combined/services.net-module-wifi.jar out/soong/.intermediates/frameworks/base/services/net/services.net-module-wifi/android_common_apex30/turbine-combined/services.net-module-wifi.jar
 
 build frameworks_base-targets: phony SettingsLibIllustrationPreference,android_common services.net-module-wifi,android_common_apex30
+
+build voip-common,android_common: phony out/soong/.intermediates/frameworks/opt/net/voip/voip-common/android_common/aligned/voip-common.jar out/soong/.intermediates/frameworks/opt/net/voip/voip-common/android_common/combined/voip-common.jar out/soong/.intermediates/frameworks/opt/net/voip/voip-common/android_common/dex/voip-common.jar out/soong/.intermediates/frameworks/opt/net/voip/voip-common/android_common/javac/voip-common.jar out/soong/.intermediates/frameworks/opt/net/voip/voip-common/android_common/turbine-combined/voip-common.jar out/soong/.intermediates/frameworks/opt/net/voip/voip-common/android_common/turbine/voip-common.jar
+
+build frameworks_opt_net_voip-targets: phony voip-common,android_common
 
 build WifiTrackerLib,android_common: phony out/soong/.intermediates/frameworks/opt/net/wifi/libs/WifiTrackerLib/WifiTrackerLib/android_common/combined/WifiTrackerLib.jar out/soong/.intermediates/frameworks/opt/net/wifi/libs/WifiTrackerLib/WifiTrackerLib/android_common/manifest_fixer/AndroidManifest.xml out/soong/.intermediates/frameworks/opt/net/wifi/libs/WifiTrackerLib/WifiTrackerLib/android_common/package-res.apk out/soong/.intermediates/frameworks/opt/net/wifi/libs/WifiTrackerLib/WifiTrackerLib/android_common/turbine-combined/WifiTrackerLib.jar
 
@@ -166,7 +172,9 @@ build android.car-stubs,android_common: phony out/soong/.intermediates/packages/
 
 build android.car-system-stubs-docs,android_common: phony out/soong/.intermediates/packages/services/Car/car-lib/android.car-system-stubs-docs/android_common/metalava/android.car-system-stubs-docs_removed.txt
 
-build packages_services_Car-targets: phony android.car-stub-docs,android_common android.car-stubs-docs,android_common android.car-stubs,android_common android.car-system-stubs-docs,android_common
+build android.car,android_common: phony out/soong/.intermediates/packages/services/Car/car-lib/android.car/android_common/turbine-combined/android.car.jar out/soong/.intermediates/packages/services/Car/car-lib/android.car/android_common/turbine/android.car.jar
+
+build packages_services_Car-targets: phony android.car-stub-docs,android_common android.car-stubs-docs,android_common android.car-stubs,android_common android.car-system-stubs-docs,android_common android.car,android_common
 
 build bluetooth-protos-lite,android_common: phony out/soong/.intermediates/system/bt/gd/proto/bluetooth-protos-lite/android_common/combined/bluetooth-protos-lite.jar out/soong/.intermediates/system/bt/gd/proto/bluetooth-protos-lite/android_common/turbine-combined/bluetooth-protos-lite.jar
 

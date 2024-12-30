@@ -1,7 +1,0 @@
-out/soong/.intermediates/hardware/interfaces/vibrator/1.0/android.hardware.vibrator@1.0_genc++_headers/gen/android/hardware/vibrator/1.0/BnHwVibrator.h
-out/soong/.intermediates/hardware/interfaces/vibrator/1.0/android.hardware.vibrator@1.0_genc++_headers/gen/android/hardware/vibrator/1.0/BpHwVibrator.h
-out/soong/.intermediates/hardware/interfaces/vibrator/1.0/android.hardware.vibrator@1.0_genc++_headers/gen/android/hardware/vibrator/1.0/BsVibrator.h
-out/soong/.intermediates/hardware/interfaces/vibrator/1.0/android.hardware.vibrator@1.0_genc++_headers/gen/android/hardware/vibrator/1.0/IHwVibrator.h
-out/soong/.intermediates/hardware/interfaces/vibrator/1.0/android.hardware.vibrator@1.0_genc++_headers/gen/android/hardware/vibrator/1.0/IVibrator.h
-out/soong/.intermediates/hardware/interfaces/vibrator/1.0/android.hardware.vibrator@1.0_genc++_headers/gen/android/hardware/vibrator/1.0/hwtypes.h
-out/soong/.intermediates/hardware/interfaces/vibrator/1.0/android.hardware.vibrator@1.0_genc++_headers/gen/android/hardware/vibrator/1.0/types.h

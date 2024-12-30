@@ -1,2 +1,0 @@
-out/soong/.intermediates/bionic/libc/libc_unwind_static/android_x86_64_static/libc_unwind_static.a
-out/soong/.intermediates/bionic/libc/libc_unwind_static/android_x86_64_static/obj/bionic/libc/bionic/dl_iterate_phdr_static.o

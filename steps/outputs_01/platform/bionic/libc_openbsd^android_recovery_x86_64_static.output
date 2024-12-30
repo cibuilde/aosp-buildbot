@@ -1,6 +1,0 @@
-out/soong/.intermediates/bionic/libc/libc_openbsd/android_recovery_x86_64_static/obj/bionic/libc/upstream-openbsd/lib/libc/crypt/arc4random.o
-out/soong/.intermediates/bionic/libc/libc_openbsd/android_recovery_x86_64_static/obj/bionic/libc/upstream-openbsd/lib/libc/crypt/arc4random_uniform.o
-out/soong/.intermediates/bionic/libc/libc_openbsd/android_recovery_x86_64_static/obj/bionic/libc/upstream-openbsd/lib/libc/string/memchr.o
-out/soong/.intermediates/bionic/libc/libc_openbsd/android_recovery_x86_64_static/obj/bionic/libc/upstream-openbsd/lib/libc/string/memrchr.o
-out/soong/.intermediates/bionic/libc/libc_openbsd/android_recovery_x86_64_static/obj/bionic/libc/upstream-openbsd/lib/libc/string/strlcat.o
-out/soong/.intermediates/bionic/libc/libc_openbsd/android_recovery_x86_64_static/obj/bionic/libc/upstream-openbsd/lib/libc/string/strlcpy.o

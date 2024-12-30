@@ -1,7 +1,0 @@
-out/soong/.intermediates/hardware/interfaces/camera/device/3.3/android.hardware.camera.device@3.3_genc++_headers/gen/android/hardware/camera/device/3.3/BnHwCameraDeviceSession.h
-out/soong/.intermediates/hardware/interfaces/camera/device/3.3/android.hardware.camera.device@3.3_genc++_headers/gen/android/hardware/camera/device/3.3/BpHwCameraDeviceSession.h
-out/soong/.intermediates/hardware/interfaces/camera/device/3.3/android.hardware.camera.device@3.3_genc++_headers/gen/android/hardware/camera/device/3.3/BsCameraDeviceSession.h
-out/soong/.intermediates/hardware/interfaces/camera/device/3.3/android.hardware.camera.device@3.3_genc++_headers/gen/android/hardware/camera/device/3.3/ICameraDeviceSession.h
-out/soong/.intermediates/hardware/interfaces/camera/device/3.3/android.hardware.camera.device@3.3_genc++_headers/gen/android/hardware/camera/device/3.3/IHwCameraDeviceSession.h
-out/soong/.intermediates/hardware/interfaces/camera/device/3.3/android.hardware.camera.device@3.3_genc++_headers/gen/android/hardware/camera/device/3.3/hwtypes.h
-out/soong/.intermediates/hardware/interfaces/camera/device/3.3/android.hardware.camera.device@3.3_genc++_headers/gen/android/hardware/camera/device/3.3/types.h

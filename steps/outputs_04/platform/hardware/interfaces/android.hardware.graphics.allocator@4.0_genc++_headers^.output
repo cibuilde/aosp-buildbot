@@ -1,5 +1,0 @@
-out/soong/.intermediates/hardware/interfaces/graphics/allocator/4.0/android.hardware.graphics.allocator@4.0_genc++_headers/gen/android/hardware/graphics/allocator/4.0/BnHwAllocator.h
-out/soong/.intermediates/hardware/interfaces/graphics/allocator/4.0/android.hardware.graphics.allocator@4.0_genc++_headers/gen/android/hardware/graphics/allocator/4.0/BpHwAllocator.h
-out/soong/.intermediates/hardware/interfaces/graphics/allocator/4.0/android.hardware.graphics.allocator@4.0_genc++_headers/gen/android/hardware/graphics/allocator/4.0/BsAllocator.h
-out/soong/.intermediates/hardware/interfaces/graphics/allocator/4.0/android.hardware.graphics.allocator@4.0_genc++_headers/gen/android/hardware/graphics/allocator/4.0/IAllocator.h
-out/soong/.intermediates/hardware/interfaces/graphics/allocator/4.0/android.hardware.graphics.allocator@4.0_genc++_headers/gen/android/hardware/graphics/allocator/4.0/IHwAllocator.h

@@ -1,4 +1,0 @@
-out/soong/.intermediates/hardware/interfaces/keymaster/4.0/support/libkeymaster4support/android_x86_64_static/obj/hardware/interfaces/keymaster/4.0/support/attestation_record.o
-out/soong/.intermediates/hardware/interfaces/keymaster/4.0/support/libkeymaster4support/android_x86_64_static/obj/hardware/interfaces/keymaster/4.0/support/authorization_set.o
-out/soong/.intermediates/hardware/interfaces/keymaster/4.0/support/libkeymaster4support/android_x86_64_static/obj/hardware/interfaces/keymaster/4.0/support/key_param_output.o
-out/soong/.intermediates/hardware/interfaces/keymaster/4.0/support/libkeymaster4support/android_x86_64_static/obj/hardware/interfaces/keymaster/4.0/support/keymaster_utils.o

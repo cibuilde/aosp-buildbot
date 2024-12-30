@@ -1,7 +1,0 @@
-out/soong/.intermediates/hardware/interfaces/audio/2.0/android.hardware.audio@2.0-inheritance-hierarchy/gen/IDevice_inheritance_hierarchy.json
-out/soong/.intermediates/hardware/interfaces/audio/2.0/android.hardware.audio@2.0-inheritance-hierarchy/gen/IDevicesFactory_inheritance_hierarchy.json
-out/soong/.intermediates/hardware/interfaces/audio/2.0/android.hardware.audio@2.0-inheritance-hierarchy/gen/IPrimaryDevice_inheritance_hierarchy.json
-out/soong/.intermediates/hardware/interfaces/audio/2.0/android.hardware.audio@2.0-inheritance-hierarchy/gen/IStreamIn_inheritance_hierarchy.json
-out/soong/.intermediates/hardware/interfaces/audio/2.0/android.hardware.audio@2.0-inheritance-hierarchy/gen/IStreamOutCallback_inheritance_hierarchy.json
-out/soong/.intermediates/hardware/interfaces/audio/2.0/android.hardware.audio@2.0-inheritance-hierarchy/gen/IStreamOut_inheritance_hierarchy.json
-out/soong/.intermediates/hardware/interfaces/audio/2.0/android.hardware.audio@2.0-inheritance-hierarchy/gen/IStream_inheritance_hierarchy.json

@@ -33,6 +33,11 @@ ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja llndk_libraries_t
 mkdir -p $GITHUB_WORKSPACE/artifacts/singletons/llndk_libraries_txt^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/singletons/llndk_libraries_txt^.output . $GITHUB_WORKSPACE/artifacts/singletons/llndk_libraries_txt^
 
+echo "building sdk^"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja sdk,
+mkdir -p $GITHUB_WORKSPACE/artifacts/singletons/sdk^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/singletons/sdk^.output . $GITHUB_WORKSPACE/artifacts/singletons/sdk^
+
 echo "building vndkcore_libraries_txt^"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja vndkcore_libraries_txt,
 mkdir -p $GITHUB_WORKSPACE/artifacts/singletons/vndkcore_libraries_txt^

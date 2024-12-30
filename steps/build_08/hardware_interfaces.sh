@@ -89,6 +89,11 @@ ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja android.hardware.
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/graphics/allocator/2.0/android.hardware.graphics.allocator@2.0^android_x86_64_shared_apex29
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/hardware/interfaces/android.hardware.graphics.allocator@2.0^android_x86_64_shared_apex29.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/graphics/allocator/2.0/android.hardware.graphics.allocator@2.0^android_x86_64_shared_apex29
 
+echo "building android.hardware.graphics.bufferqueue@1.0^android_x86_64_shared_apex29"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja android.hardware.graphics.bufferqueue@1.0,android_x86_64_shared_apex29
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/graphics/bufferqueue/1.0/android.hardware.graphics.bufferqueue@1.0^android_x86_64_shared_apex29
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/hardware/interfaces/android.hardware.graphics.bufferqueue@1.0^android_x86_64_shared_apex29.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/graphics/bufferqueue/1.0/android.hardware.graphics.bufferqueue@1.0^android_x86_64_shared_apex29
+
 echo "building android.hardware.graphics.common@1.1^android_x86_64_shared_apex29"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja android.hardware.graphics.common@1.1,android_x86_64_shared_apex29
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/graphics/common/1.1/android.hardware.graphics.common@1.1^android_x86_64_shared_apex29
@@ -108,11 +113,6 @@ echo "building android.hardware.graphics.allocator@4.0^android_x86_64_shared_ape
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja android.hardware.graphics.allocator@4.0,android_x86_64_shared_apex29
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/graphics/allocator/4.0/android.hardware.graphics.allocator@4.0^android_x86_64_shared_apex29
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/hardware/interfaces/android.hardware.graphics.allocator@4.0^android_x86_64_shared_apex29.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/graphics/allocator/4.0/android.hardware.graphics.allocator@4.0^android_x86_64_shared_apex29
-
-echo "building android.hardware.graphics.bufferqueue@1.0^android_x86_64_shared_apex29"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja android.hardware.graphics.bufferqueue@1.0,android_x86_64_shared_apex29
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/graphics/bufferqueue/1.0/android.hardware.graphics.bufferqueue@1.0^android_x86_64_shared_apex29
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/hardware/interfaces/android.hardware.graphics.bufferqueue@1.0^android_x86_64_shared_apex29.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/graphics/bufferqueue/1.0/android.hardware.graphics.bufferqueue@1.0^android_x86_64_shared_apex29
 
 echo "building android.hardware.graphics.bufferqueue@2.0^android_x86_64_shared_apex29"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja android.hardware.graphics.bufferqueue@2.0,android_x86_64_shared_apex29

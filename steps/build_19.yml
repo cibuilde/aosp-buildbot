@@ -86,6 +86,10 @@ jobs:
         key: packages_modules_StatsD@${{ env.branch }}
     - uses: actions/cache@v4
       with:
+        path: cache/packages_modules_Wifi.tar.zst
+        key: packages_modules_Wifi@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
         path: cache/packages_modules_common.tar.zst
         key: packages_modules_common@${{ env.branch }}
     - uses: actions/cache@v4
@@ -124,6 +128,10 @@ jobs:
       with:
         path: cache/system_sepolicy.tar.zst
         key: system_sepolicy@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/tools_apifinder.tar.zst
+        key: tools_apifinder@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/tools_metalava.tar.zst

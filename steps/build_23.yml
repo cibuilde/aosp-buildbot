@@ -106,6 +106,10 @@ jobs:
         key: frameworks_libs_systemui@${{ env.branch }}
     - uses: actions/cache@v4
       with:
+        path: cache/frameworks_native.tar.zst
+        key: frameworks_native@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
         path: cache/frameworks_opt_chips.tar.zst
         key: frameworks_opt_chips@${{ env.branch }}
     - uses: actions/cache@v4

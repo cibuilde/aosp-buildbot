@@ -1,8 +1,0 @@
-out/soong/.intermediates/packages/services/Mms/MmsService/android_common/MmsService.apk
-out/soong/.intermediates/packages/services/Mms/MmsService/android_common/dexpreopt/dexpreopt.config
-out/soong/.intermediates/packages/services/Mms/MmsService/android_common/dexpreopt/oat/x86_64/package.odex
-out/soong/.intermediates/packages/services/Mms/MmsService/android_common/dexpreopt/oat/x86_64/package.vdex
-out/soong/.intermediates/packages/services/Mms/MmsService/android_common/javac/MmsService.jar
-out/soong/.intermediates/packages/services/Mms/MmsService/android_common/package-res.apk
-out/soong/.intermediates/packages/services/Mms/MmsService/android_common/proguard_dictionary
-out/soong/.intermediates/packages/services/Mms/MmsService/android_common/proguard_usage.zip

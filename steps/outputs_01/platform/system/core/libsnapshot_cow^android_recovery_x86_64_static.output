@@ -1,5 +1,0 @@
-out/soong/.intermediates/system/core/fs_mgr/libsnapshot/libsnapshot_cow/android_recovery_x86_64_static/libsnapshot_cow.a
-out/soong/.intermediates/system/core/fs_mgr/libsnapshot/libsnapshot_cow/android_recovery_x86_64_static/obj/system/core/fs_mgr/libsnapshot/cow_decompress.o
-out/soong/.intermediates/system/core/fs_mgr/libsnapshot/libsnapshot_cow/android_recovery_x86_64_static/obj/system/core/fs_mgr/libsnapshot/cow_format.o
-out/soong/.intermediates/system/core/fs_mgr/libsnapshot/libsnapshot_cow/android_recovery_x86_64_static/obj/system/core/fs_mgr/libsnapshot/cow_reader.o
-out/soong/.intermediates/system/core/fs_mgr/libsnapshot/libsnapshot_cow/android_recovery_x86_64_static/obj/system/core/fs_mgr/libsnapshot/cow_writer.o

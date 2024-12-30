@@ -1,7 +1,0 @@
-out/soong/.intermediates/hardware/interfaces/nfc/1.2/android.hardware.nfc@1.2_genc++_headers/gen/android/hardware/nfc/1.2/BnHwNfc.h
-out/soong/.intermediates/hardware/interfaces/nfc/1.2/android.hardware.nfc@1.2_genc++_headers/gen/android/hardware/nfc/1.2/BpHwNfc.h
-out/soong/.intermediates/hardware/interfaces/nfc/1.2/android.hardware.nfc@1.2_genc++_headers/gen/android/hardware/nfc/1.2/BsNfc.h
-out/soong/.intermediates/hardware/interfaces/nfc/1.2/android.hardware.nfc@1.2_genc++_headers/gen/android/hardware/nfc/1.2/IHwNfc.h
-out/soong/.intermediates/hardware/interfaces/nfc/1.2/android.hardware.nfc@1.2_genc++_headers/gen/android/hardware/nfc/1.2/INfc.h
-out/soong/.intermediates/hardware/interfaces/nfc/1.2/android.hardware.nfc@1.2_genc++_headers/gen/android/hardware/nfc/1.2/hwtypes.h
-out/soong/.intermediates/hardware/interfaces/nfc/1.2/android.hardware.nfc@1.2_genc++_headers/gen/android/hardware/nfc/1.2/types.h

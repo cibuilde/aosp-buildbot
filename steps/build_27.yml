@@ -34,6 +34,10 @@ jobs:
         key: external_kotlinc@${{ env.branch }}
     - uses: actions/cache@v4
       with:
+        path: cache/external_libphonenumber.tar.zst
+        key: external_libphonenumber@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
         path: cache/external_protobuf.tar.zst
         key: external_protobuf@${{ env.branch }}
     - uses: actions/cache@v4
@@ -46,8 +50,28 @@ jobs:
         key: frameworks_libs_modules-utils@${{ env.branch }}
     - uses: actions/cache@v4
       with:
+        path: cache/frameworks_libs_net.tar.zst
+        key: frameworks_libs_net@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
         path: cache/frameworks_libs_systemui.tar.zst
         key: frameworks_libs_systemui@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/frameworks_opt_net_ims.tar.zst
+        key: frameworks_opt_net_ims@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/frameworks_opt_net_voip.tar.zst
+        key: frameworks_opt_net_voip@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/frameworks_opt_telephony.tar.zst
+        key: frameworks_opt_telephony@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/hardware_interfaces.tar.zst
+        key: hardware_interfaces@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/libcore.tar.zst
@@ -70,6 +94,10 @@ jobs:
         key: packages_services_Car@${{ env.branch }}
     - uses: actions/cache@v4
       with:
+        path: cache/packages_services_Telephony.tar.zst
+        key: packages_services_Telephony@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
         path: cache/prebuilts_build-tools.tar.zst
         key: prebuilts_build-tools@${{ env.branch }}
     - uses: actions/cache@v4
@@ -86,6 +114,14 @@ jobs:
         key: prebuilts_tools@${{ env.branch }}
     - uses: actions/cache@v4
       with:
+        path: cache/system_libsysprop.tar.zst
+        key: system_libsysprop@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
         path: cache/tools_apifinder.tar.zst
         key: tools_apifinder@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/tools_platform-compat.tar.zst
+        key: tools_platform-compat@${{ env.branch }}
     - run: bash steps/build_27.sh

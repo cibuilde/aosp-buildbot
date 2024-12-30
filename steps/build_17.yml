@@ -214,6 +214,10 @@ jobs:
         key: system_vold@${{ env.branch }}
     - uses: actions/cache@v4
       with:
+        path: cache/tools_apifinder.tar.zst
+        key: tools_apifinder@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
         path: cache/tools_metalava.tar.zst
         key: tools_metalava@${{ env.branch }}
     - run: bash steps/build_17.sh

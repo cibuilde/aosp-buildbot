@@ -1,4 +1,0 @@
-out/soong/.intermediates/frameworks/av/media/libaudioclient/capture_state_listener-aidl-cpp-source/gen/android/media/ICaptureStateListener.cpp
-out/soong/.intermediates/frameworks/av/media/libaudioclient/capture_state_listener-aidl-cpp-source/gen/include/android/media/BnCaptureStateListener.h
-out/soong/.intermediates/frameworks/av/media/libaudioclient/capture_state_listener-aidl-cpp-source/gen/include/android/media/BpCaptureStateListener.h
-out/soong/.intermediates/frameworks/av/media/libaudioclient/capture_state_listener-aidl-cpp-source/gen/include/android/media/ICaptureStateListener.h

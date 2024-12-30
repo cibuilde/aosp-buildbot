@@ -1,5 +1,0 @@
-out/soong/ndk/sysroot/usr/include/android/binder_ibinder.h
-out/soong/ndk/sysroot/usr/include/android/binder_ibinder_jni.h
-out/soong/ndk/sysroot/usr/include/android/binder_parcel.h
-out/soong/ndk/sysroot/usr/include/android/binder_parcel_jni.h
-out/soong/ndk/sysroot/usr/include/android/binder_status.h

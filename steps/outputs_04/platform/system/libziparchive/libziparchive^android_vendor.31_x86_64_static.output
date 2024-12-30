@@ -1,5 +1,0 @@
-out/soong/.intermediates/system/libziparchive/libziparchive/android_vendor.31_x86_64_static/obj/system/libziparchive/zip_archive.o
-out/soong/.intermediates/system/libziparchive/libziparchive/android_vendor.31_x86_64_static/obj/system/libziparchive/zip_archive_stream_entry.o
-out/soong/.intermediates/system/libziparchive/libziparchive/android_vendor.31_x86_64_static/obj/system/libziparchive/zip_cd_entry_map.o
-out/soong/.intermediates/system/libziparchive/libziparchive/android_vendor.31_x86_64_static/obj/system/libziparchive/zip_error.o
-out/soong/.intermediates/system/libziparchive/libziparchive/android_vendor.31_x86_64_static/obj/system/libziparchive/zip_writer.o

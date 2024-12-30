@@ -73,10 +73,6 @@ gh release --repo cibuilde/aosp-buildbot download android12-gsi_05 --pattern ext
 mkdir -p $GITHUB_WORKSPACE/downloads/external/cblas
 tar xf $GITHUB_WORKSPACE/external_cblas-05.tar.zst -C $GITHUB_WORKSPACE/downloads/external/cblas/
 
-gh release --repo cibuilde/aosp-buildbot download android12-gsi_00 --pattern external_conscrypt.tar.zst --output external_conscrypt-00.tar.zst
-mkdir -p $GITHUB_WORKSPACE/downloads/external/conscrypt
-tar xf $GITHUB_WORKSPACE/external_conscrypt-00.tar.zst -C $GITHUB_WORKSPACE/downloads/external/conscrypt/
-
 gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_conscrypt.tar.zst --output external_conscrypt-01.tar.zst
 mkdir -p $GITHUB_WORKSPACE/downloads/external/conscrypt
 tar xf $GITHUB_WORKSPACE/external_conscrypt-01.tar.zst -C $GITHUB_WORKSPACE/downloads/external/conscrypt/
@@ -84,6 +80,10 @@ tar xf $GITHUB_WORKSPACE/external_conscrypt-01.tar.zst -C $GITHUB_WORKSPACE/down
 gh release --repo cibuilde/aosp-buildbot download android12-gsi_03 --pattern external_conscrypt.tar.zst --output external_conscrypt-03.tar.zst
 mkdir -p $GITHUB_WORKSPACE/downloads/external/conscrypt
 tar xf $GITHUB_WORKSPACE/external_conscrypt-03.tar.zst -C $GITHUB_WORKSPACE/downloads/external/conscrypt/
+
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_04 --pattern external_conscrypt.tar.zst --output external_conscrypt-04.tar.zst
+mkdir -p $GITHUB_WORKSPACE/downloads/external/conscrypt
+tar xf $GITHUB_WORKSPACE/external_conscrypt-04.tar.zst -C $GITHUB_WORKSPACE/downloads/external/conscrypt/
 
 gh release --repo cibuilde/aosp-buildbot download android12-gsi_05 --pattern external_conscrypt.tar.zst --output external_conscrypt-05.tar.zst
 mkdir -p $GITHUB_WORKSPACE/downloads/external/conscrypt
@@ -569,6 +569,10 @@ gh release --repo cibuilde/aosp-buildbot download android12-gsi_13 --pattern sys
 mkdir -p $GITHUB_WORKSPACE/downloads/system/tools/sysprop
 tar xf $GITHUB_WORKSPACE/system_tools_sysprop-13.tar.zst -C $GITHUB_WORKSPACE/downloads/system/tools/sysprop/
 
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_06 --pattern tools_apifinder.tar.zst --output tools_apifinder-06.tar.zst
+mkdir -p $GITHUB_WORKSPACE/downloads/tools/apifinder
+tar xf $GITHUB_WORKSPACE/tools_apifinder-06.tar.zst -C $GITHUB_WORKSPACE/downloads/tools/apifinder/
+
 gh release --repo cibuilde/aosp-buildbot download android12-gsi_04 --pattern tools_metalava.tar.zst --output tools_metalava-04.tar.zst
 mkdir -p $GITHUB_WORKSPACE/downloads/tools/metalava
 tar xf $GITHUB_WORKSPACE/tools_metalava-04.tar.zst -C $GITHUB_WORKSPACE/downloads/tools/metalava/
@@ -594,6 +598,7 @@ mkdir -p $GITHUB_WORKSPACE/.bin
 ln -sf /usr/bin/python2 $GITHUB_WORKSPACE/.bin/python
 export PATH=$GITHUB_WORKSPACE/.bin:$PATH
 
+time source steps/build_14/external_bouncycastle.sh
 time source steps/build_14/external_conscrypt.sh
 time source steps/build_14/external_dagger2.sh
 time source steps/build_14/external_exoplayer.sh

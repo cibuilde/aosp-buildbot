@@ -1,8 +1,0 @@
-out/soong/.intermediates/hardware/interfaces/neuralnetworks/1.3/utils/neuralnetworks_utils_hal_1_3/android_x86_x86_64_static_apex30/obj/hardware/interfaces/neuralnetworks/1.3/utils/src/Assertions.o
-out/soong/.intermediates/hardware/interfaces/neuralnetworks/1.3/utils/neuralnetworks_utils_hal_1_3/android_x86_x86_64_static_apex30/obj/hardware/interfaces/neuralnetworks/1.3/utils/src/Buffer.o
-out/soong/.intermediates/hardware/interfaces/neuralnetworks/1.3/utils/neuralnetworks_utils_hal_1_3/android_x86_x86_64_static_apex30/obj/hardware/interfaces/neuralnetworks/1.3/utils/src/Callbacks.o
-out/soong/.intermediates/hardware/interfaces/neuralnetworks/1.3/utils/neuralnetworks_utils_hal_1_3/android_x86_x86_64_static_apex30/obj/hardware/interfaces/neuralnetworks/1.3/utils/src/Conversions.o
-out/soong/.intermediates/hardware/interfaces/neuralnetworks/1.3/utils/neuralnetworks_utils_hal_1_3/android_x86_x86_64_static_apex30/obj/hardware/interfaces/neuralnetworks/1.3/utils/src/Device.o
-out/soong/.intermediates/hardware/interfaces/neuralnetworks/1.3/utils/neuralnetworks_utils_hal_1_3/android_x86_x86_64_static_apex30/obj/hardware/interfaces/neuralnetworks/1.3/utils/src/Execution.o
-out/soong/.intermediates/hardware/interfaces/neuralnetworks/1.3/utils/neuralnetworks_utils_hal_1_3/android_x86_x86_64_static_apex30/obj/hardware/interfaces/neuralnetworks/1.3/utils/src/PreparedModel.o
-out/soong/.intermediates/hardware/interfaces/neuralnetworks/1.3/utils/neuralnetworks_utils_hal_1_3/android_x86_x86_64_static_apex30/obj/hardware/interfaces/neuralnetworks/1.3/utils/src/Service.o

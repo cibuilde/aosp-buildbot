@@ -7,10 +7,28 @@ pool highmem_pool
 include ninja/global.ninja
 include ninja/singleton.ninja
 
+include ninja/frameworks/base/apex/appsearch/framework/framework-appsearch^android_common_apex10000.ninja
+include ninja/frameworks/base/apex/media/framework/updatable-media^android_common_apex29.ninja
+include ninja/frameworks/base/boot/platform-bootclasspath^android_common.ninja
+include ninja/frameworks/base/ext^android_common.ninja
+include ninja/frameworks/base/framework-minus-apex^android_common.ninja
 include ninja/frameworks/base/framework-platform-compat-config^android_common.ninja
+include ninja/frameworks/base/libs/hwui/framework-graphics^android_common.ninja
+
+build ext,android_common: phony out/soong/.intermediates/frameworks/base/ext/android_common/hiddenapi/ext.jar out/soong/.intermediates/frameworks/base/ext/android_common/hiddenapi/unaligned/ext.jar
+
+build framework-appsearch,android_common_apex10000: phony out/soong/.intermediates/frameworks/base/apex/appsearch/framework/framework-appsearch/android_common_apex10000/hiddenapi/framework-appsearch.jar out/soong/.intermediates/frameworks/base/apex/appsearch/framework/framework-appsearch/android_common_apex10000/hiddenapi/unaligned/framework-appsearch.jar
+
+build framework-graphics,android_common: phony out/soong/.intermediates/frameworks/base/libs/hwui/framework-graphics/android_common/hiddenapi/framework-graphics.jar out/soong/.intermediates/frameworks/base/libs/hwui/framework-graphics/android_common/hiddenapi/unaligned/framework-graphics.jar
+
+build framework-minus-apex,android_common: phony out/soong/.intermediates/frameworks/base/framework-minus-apex/android_common/hiddenapi/framework-minus-apex.jar out/soong/.intermediates/frameworks/base/framework-minus-apex/android_common/hiddenapi/unaligned/framework-minus-apex.jar
 
 build framework-platform-compat-config,android_common: phony out/soong/.intermediates/frameworks/base/framework-platform-compat-config/android_common/framework-platform-compat-config.xml
 
-build frameworks_base-targets: phony framework-platform-compat-config,android_common
+build platform-bootclasspath,android_common: phony out/soong/.intermediates/frameworks/base/boot/platform-bootclasspath/android_common/hiddenapi-monolithic/annotation-flags-from-classes.csv out/soong/hiddenapi/hiddenapi-flags.csv out/soong/hiddenapi/hiddenapi-stub-flags.txt out/soong/vsoc_x86_64/dex_bootjars_input/ext.jar out/soong/vsoc_x86_64/dex_bootjars_input/framework-graphics.jar out/soong/vsoc_x86_64/dex_bootjars_input/framework.jar out/soong/vsoc_x86_64/updatable_bootjars/framework-appsearch.jar out/soong/vsoc_x86_64/updatable_bootjars/updatable-media.jar
+
+build updatable-media,android_common_apex29: phony out/soong/.intermediates/frameworks/base/apex/media/framework/updatable-media/android_common_apex29/hiddenapi/unaligned/updatable-media.jar out/soong/.intermediates/frameworks/base/apex/media/framework/updatable-media/android_common_apex29/hiddenapi/updatable-media.jar
+
+build frameworks_base-targets: phony ext,android_common framework-appsearch,android_common_apex10000 framework-graphics,android_common framework-minus-apex,android_common framework-platform-compat-config,android_common platform-bootclasspath,android_common updatable-media,android_common_apex29
 
 

@@ -58,30 +58,20 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/system/libbase/libbase^android_x86_x86_6
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^android_x86_64_shared_current/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^android_x86_x86_64_shared_current/ .
 
-echo "building libicui18n^android_x86_64_shared_apex10000"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libicui18n,android_x86_64_shared_apex10000
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/icu/icu4c/source/i18n/libicui18n^android_x86_64_shared_apex10000
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/external/icu/libicui18n^android_x86_64_shared_apex10000.output . $GITHUB_WORKSPACE/artifacts/external/icu/icu4c/source/i18n/libicui18n^android_x86_64_shared_apex10000
-
 echo "building libandroidicu^android_x86_64_shared_apex10000"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libandroidicu,android_x86_64_shared_apex10000
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/icu/libandroidicu/libandroidicu^android_x86_64_shared_apex10000
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/external/icu/libandroidicu^android_x86_64_shared_apex10000.output . $GITHUB_WORKSPACE/artifacts/external/icu/libandroidicu/libandroidicu^android_x86_64_shared_apex10000
 
-echo "building libicuuc^android_x86_x86_64_shared_apex10000"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libicuuc,android_x86_x86_64_shared_apex10000
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/icu/icu4c/source/common/libicuuc^android_x86_x86_64_shared_apex10000
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/external/icu/libicuuc^android_x86_x86_64_shared_apex10000.output . $GITHUB_WORKSPACE/artifacts/external/icu/icu4c/source/common/libicuuc^android_x86_x86_64_shared_apex10000
-
-echo "building libicui18n^android_x86_x86_64_shared_apex10000"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libicui18n,android_x86_x86_64_shared_apex10000
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/icu/icu4c/source/i18n/libicui18n^android_x86_x86_64_shared_apex10000
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/external/icu/libicui18n^android_x86_x86_64_shared_apex10000.output . $GITHUB_WORKSPACE/artifacts/external/icu/icu4c/source/i18n/libicui18n^android_x86_x86_64_shared_apex10000
-
 echo "building libandroidicu^android_x86_x86_64_shared_apex10000"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libandroidicu,android_x86_x86_64_shared_apex10000
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/icu/libandroidicu/libandroidicu^android_x86_x86_64_shared_apex10000
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/external/icu/libandroidicu^android_x86_x86_64_shared_apex10000.output . $GITHUB_WORKSPACE/artifacts/external/icu/libandroidicu/libandroidicu^android_x86_x86_64_shared_apex10000
+
+echo "building libicuuc^android_x86_64_shared_apex10000"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libicuuc,android_x86_64_shared_apex10000
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/icu/icu4c/source/common/libicuuc^android_x86_64_shared_apex10000
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/external/icu/libicuuc^android_x86_64_shared_apex10000.output . $GITHUB_WORKSPACE/artifacts/external/icu/icu4c/source/common/libicuuc^android_x86_64_shared_apex10000
 
 echo "building libicu^android_x86_64_shared_apex10000"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libicu,android_x86_64_shared_apex10000
@@ -93,20 +83,30 @@ ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libicu,android_x8
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/icu/libicu/libicu^android_x86_x86_64_shared_apex10000
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/external/icu/libicu^android_x86_x86_64_shared_apex10000.output . $GITHUB_WORKSPACE/artifacts/external/icu/libicu/libicu^android_x86_x86_64_shared_apex10000
 
+echo "building libicui18n^android_x86_64_shared_apex10000"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libicui18n,android_x86_64_shared_apex10000
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/icu/icu4c/source/i18n/libicui18n^android_x86_64_shared_apex10000
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/external/icu/libicui18n^android_x86_64_shared_apex10000.output . $GITHUB_WORKSPACE/artifacts/external/icu/icu4c/source/i18n/libicui18n^android_x86_64_shared_apex10000
+
 echo "building libicu_jni^android_x86_64_shared_apex10000"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libicu_jni,android_x86_64_shared_apex10000
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/icu/android_icu4j/libcore_bridge/src/native/libicu_jni^android_x86_64_shared_apex10000
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/external/icu/libicu_jni^android_x86_64_shared_apex10000.output . $GITHUB_WORKSPACE/artifacts/external/icu/android_icu4j/libcore_bridge/src/native/libicu_jni^android_x86_64_shared_apex10000
 
+echo "building libicuuc^android_x86_x86_64_shared_apex10000"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libicuuc,android_x86_x86_64_shared_apex10000
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/icu/icu4c/source/common/libicuuc^android_x86_x86_64_shared_apex10000
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/external/icu/libicuuc^android_x86_x86_64_shared_apex10000.output . $GITHUB_WORKSPACE/artifacts/external/icu/icu4c/source/common/libicuuc^android_x86_x86_64_shared_apex10000
+
+echo "building libicui18n^android_x86_x86_64_shared_apex10000"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libicui18n,android_x86_x86_64_shared_apex10000
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/icu/icu4c/source/i18n/libicui18n^android_x86_x86_64_shared_apex10000
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/external/icu/libicui18n^android_x86_x86_64_shared_apex10000.output . $GITHUB_WORKSPACE/artifacts/external/icu/icu4c/source/i18n/libicui18n^android_x86_x86_64_shared_apex10000
+
 echo "building libicu_jni^android_x86_x86_64_shared_apex10000"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libicu_jni,android_x86_x86_64_shared_apex10000
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/icu/android_icu4j/libcore_bridge/src/native/libicu_jni^android_x86_x86_64_shared_apex10000
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/external/icu/libicu_jni^android_x86_x86_64_shared_apex10000.output . $GITHUB_WORKSPACE/artifacts/external/icu/android_icu4j/libcore_bridge/src/native/libicu_jni^android_x86_x86_64_shared_apex10000
-
-echo "building libicuuc^android_x86_64_shared_apex10000"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libicuuc,android_x86_64_shared_apex10000
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/icu/icu4c/source/common/libicuuc^android_x86_64_shared_apex10000
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/external/icu/libicuuc^android_x86_64_shared_apex10000.output . $GITHUB_WORKSPACE/artifacts/external/icu/icu4c/source/common/libicuuc^android_x86_64_shared_apex10000
 
 rm -rf out
 

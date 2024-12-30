@@ -1,4 +1,4 @@
-build step 31: projects: 13 targets: 86
+Tag: buid_31 Projects: 13 Targets: 87
 
 external/apache-http: org.apache.http.legacy^android_common
 external/jacoco: jacocoagent^android_common
@@ -11,5 +11,5 @@ packages/modules/Permission: com.android.permission^android_common_com.android.p
 packages/modules/Scheduling: com.android.scheduling^android_common_com.android.scheduling_image framework-scheduling.impl^android_common service-scheduling^android_common_apex10000
 packages/modules/Wifi: com.android.wifi^android_common_com.android.wifi_image framework-wifi.impl^android_common service-wifi^android_common_apex30
 packages/providers/MediaProvider: MediaProvider^android_common_apex30 framework-mediaprovider.impl^android_common
-system/libhidl: android.hidl.manager-V1.0-java^android_common android.hidl.manager-V1.1-java^android_common android.hidl.manager-V1.2-java^android_common
+system/libhidl: android.hidl.base-V1.0-java^android_common android.hidl.manager-V1.0-java^android_common android.hidl.manager-V1.1-java^android_common android.hidl.manager-V1.2-java^android_common
 system/netd: netd_aidl_interface-V7-java^android_common netd_aidl_interface-lateststable-java^android_common netd_event_listener_interface-V1-java^android_common netd_event_listener_interface-lateststable-java^android_common

@@ -1,4 +1,4 @@
-build step 32: projects: 56 targets: 92
+Tag: buid_32 Projects: 56 Targets: 92
 
 device/google/cuttlefish: CuttlefishService^android_common
 external/chromium-webview: webview^android_common

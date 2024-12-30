@@ -1,0 +1,8 @@
+out/soong/.intermediates/packages/modules/SdkExtensions/framework/framework-sdkextensions/android_common_apex30/turbine/framework-sdkextensions.jar
+out/soong/.intermediates/packages/modules/SdkExtensions/framework/framework-sdkextensions/android_common_apex30/turbine-combined/framework-sdkextensions.jar
+out/soong/.intermediates/packages/modules/SdkExtensions/framework/framework-sdkextensions/android_common_apex30/turbine-jarjar/framework-sdkextensions.jar
+out/soong/.intermediates/packages/modules/SdkExtensions/framework/framework-sdkextensions/android_common_apex30/javac/framework-sdkextensions.jar
+out/soong/.intermediates/packages/modules/SdkExtensions/framework/framework-sdkextensions/android_common_apex30/combined/framework-sdkextensions.jar
+out/soong/.intermediates/packages/modules/SdkExtensions/framework/framework-sdkextensions/android_common_apex30/jarjar/framework-sdkextensions.jar
+out/soong/.intermediates/packages/modules/SdkExtensions/framework/framework-sdkextensions/android_common_apex30/dex/framework-sdkextensions.jar
+out/soong/.intermediates/packages/modules/SdkExtensions/framework/framework-sdkextensions/android_common_apex30/aligned/framework-sdkextensions.jar

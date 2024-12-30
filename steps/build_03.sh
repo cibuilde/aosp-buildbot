@@ -305,6 +305,7 @@ time source steps/build_03/cts.sh
 time source steps/build_03/development.sh
 time source steps/build_03/external_angle.sh
 time source steps/build_03/external_apache-commons-bcel.sh
+time source steps/build_03/external_apache-xml.sh
 time source steps/build_03/external_auto.sh
 time source steps/build_03/external_bc.sh
 time source steps/build_03/external_boringssl.sh

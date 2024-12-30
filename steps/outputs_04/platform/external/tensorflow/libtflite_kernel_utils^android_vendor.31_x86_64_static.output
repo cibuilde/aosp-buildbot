@@ -1,7 +1,0 @@
-out/soong/.intermediates/external/tensorflow/tensorflow/lite/kernels/libtflite_kernel_utils/android_vendor.31_x86_64_static/obj/external/tensorflow/tensorflow/lite/kernels/internal/optimized/neon_tensor_utils.o
-out/soong/.intermediates/external/tensorflow/tensorflow/lite/kernels/libtflite_kernel_utils/android_vendor.31_x86_64_static/obj/external/tensorflow/tensorflow/lite/kernels/internal/optimized/sse_tensor_utils.o
-out/soong/.intermediates/external/tensorflow/tensorflow/lite/kernels/libtflite_kernel_utils/android_vendor.31_x86_64_static/obj/external/tensorflow/tensorflow/lite/kernels/internal/quantization_util.o
-out/soong/.intermediates/external/tensorflow/tensorflow/lite/kernels/libtflite_kernel_utils/android_vendor.31_x86_64_static/obj/external/tensorflow/tensorflow/lite/kernels/internal/reference/portable_tensor_utils.o
-out/soong/.intermediates/external/tensorflow/tensorflow/lite/kernels/libtflite_kernel_utils/android_vendor.31_x86_64_static/obj/external/tensorflow/tensorflow/lite/kernels/internal/tensor_utils.o
-out/soong/.intermediates/external/tensorflow/tensorflow/lite/kernels/libtflite_kernel_utils/android_vendor.31_x86_64_static/obj/external/tensorflow/tensorflow/lite/kernels/internal/transpose_utils.o
-out/soong/.intermediates/external/tensorflow/tensorflow/lite/kernels/libtflite_kernel_utils/android_vendor.31_x86_64_static/obj/external/tensorflow/tensorflow/lite/kernels/kernel_util.o

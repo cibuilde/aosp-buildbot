@@ -175,7 +175,10 @@ time source steps/build_01/frameworks_ex.sh
 time source steps/build_01/frameworks_libs_modules-utils.sh
 time source steps/build_01/frameworks_minikin.sh
 time source steps/build_01/frameworks_native.sh
+time source steps/build_01/frameworks_opt_net_ims.sh
+time source steps/build_01/frameworks_opt_net_voip.sh
 time source steps/build_01/frameworks_opt_net_wifi.sh
+time source steps/build_01/frameworks_opt_telephony.sh
 time source steps/build_01/frameworks_rs.sh
 time source steps/build_01/frameworks_wilhelm.sh
 time source steps/build_01/hardware_interfaces.sh
@@ -191,6 +194,7 @@ time source steps/build_01/packages_modules_Virtualization.sh
 time source steps/build_01/packages_modules_Wifi.sh
 time source steps/build_01/packages_modules_adb.sh
 time source steps/build_01/packages_providers_MediaProvider.sh
+time source steps/build_01/packages_services_Car.sh
 time source steps/build_01/packages_wallpapers_LivePicker.sh
 time source steps/build_01/prebuilts_build-tools.sh
 time source steps/build_01/prebuilts_clang_host_linux-x86.sh
@@ -213,6 +217,7 @@ time source steps/build_01/system_gsid.sh
 time source steps/build_01/system_incremental_delivery.sh
 time source steps/build_01/system_keymaster.sh
 time source steps/build_01/system_libfmq.sh
+time source steps/build_01/system_libhidl.sh
 time source steps/build_01/system_libhwbinder.sh
 time source steps/build_01/system_libprocinfo.sh
 time source steps/build_01/system_libvintf.sh

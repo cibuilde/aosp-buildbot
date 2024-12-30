@@ -231,6 +231,7 @@ include ninja/frameworks/native/libs/ui/libui^android_x86_64_shared_com.android.
 include ninja/frameworks/native/services/gpuservice/gpumem/libgpumem^android_x86_64_shared.ninja
 include ninja/frameworks/native/services/gpuservice/gpustats/libgfxstats^android_x86_64_shared.ninja
 include ninja/frameworks/native/services/gpuservice/tracing/libgpumemtracer^android_x86_64_shared.ninja
+include ninja/frameworks/opt/telephony/telephony-common^android_common.ninja
 include ninja/frameworks/rs/cpu_ref/libRSCpuRef^android_vendor.31_x86_64_shared.ninja
 include ninja/frameworks/rs/cpu_ref/libRSCpuRef^android_vendor.31_x86_x86_64_shared.ninja
 include ninja/frameworks/rs/libRSDriver^android_vendor.31_x86_64_shared.ninja
@@ -1344,6 +1345,10 @@ build otapreopt,android_x86_64: phony out/soong/.intermediates/frameworks/native
 build servicemanager,android_x86_64: phony out/soong/.intermediates/frameworks/native/cmds/servicemanager/servicemanager/android_x86_64/servicemanager
 
 build frameworks_native-targets: phony installd,android_x86_64 libdumputils,android_x86_64_shared libgfxstats,android_x86_64_shared libgpumem,android_x86_64_shared libgpumemtracer,android_x86_64_shared libgralloctypes,android_x86_64_shared_com.android.media.swcodec libsensor,android_x86_64_shared libsensor,android_x86_x86_64_shared libsensorprivacy,android_x86_64_shared libsensorprivacy,android_x86_x86_64_shared libtimeinstate,android_x86_64_shared libtimeinstate,android_x86_x86_64_shared libui,android_x86_64_shared_com.android.media.swcodec lshal,android_x86_64 otapreopt,android_x86_64 servicemanager,android_x86_64
+
+build telephony-common,android_common: phony out/soong/.intermediates/frameworks/opt/telephony/telephony-common/android_common/res-jarjar/telephony-common.jar
+
+build frameworks_opt_telephony-targets: phony telephony-common,android_common
 
 build libRSCpuRef,android_vendor.31_x86_64_shared: phony out/soong/.intermediates/frameworks/rs/cpu_ref/libRSCpuRef/android_vendor.31_x86_64_shared/libRSCpuRef.so out/soong/.intermediates/frameworks/rs/cpu_ref/libRSCpuRef/android_vendor.31_x86_64_shared/libRSCpuRef.so.toc
 

@@ -61,6 +61,7 @@ clone_depth_platform system/security
 clone_depth_platform system/unwinding
 clone_depth_platform system/update_engine
 clone_depth_platform system/vold
+clone_depth_platform tools/apifinder
 clone_depth_platform tools/metalava
 
 rsync -a -r $GITHUB_WORKSPACE/downloads/art/libnativeloader/libnativeloader^android_x86_64_shared_current/ .
@@ -77,6 +78,7 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libdl/libdl^android_x86_64_shared
 rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libdl/libdl^android_x86_x86_64_shared_current/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libm/libm^android_x86_64_shared_current/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libm/libm^android_x86_x86_64_shared_current/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/build/make/tools/zipalign/zipalign^linux_glibc_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/cmd/dep_fixer/dep_fixer^linux_glibc_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/scripts/gen-kotlin-build-file.py^linux_glibc_x86_64_PY3/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/cmd/merge_zips/merge_zips^linux_glibc_x86_64/ .
@@ -163,6 +165,7 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/audio/7.0/config/aud
 rsync -a -r $GITHUB_WORKSPACE/downloads/libcore/art.module.public.api.stubs.module_lib^android_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/libcore/art.module.public.api.stubs^android_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/libcore/core-lambda-stubs^android_common/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/libcore/core-module-lib-stubs-system-modules^android_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/r8/d8^linux_glibc_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/r8/d8^linux_glibc_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/sdk/android-non-updatable-incompatibilities.api.public.latest^/ .
@@ -201,6 +204,7 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/system/security/keystore2/aidl/android.s
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/security/keystore2/aidl/android.security.maintenance-java-source^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/security/keystore2/aidl/android.security.metrics-java-source^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/tools/aidl/aidl^linux_glibc_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/tools/apifinder/java_api_used_by_mainline_module^linux_glibc_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/tools/metalava/metalava^linux_glibc_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/tools/metalava/metalava^linux_glibc_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/tools/metalava/stub-annotations^android_common/ .
@@ -264,6 +268,11 @@ echo "building framework-graphics.stubs^android_common"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_17.ninja framework-graphics.stubs,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/libs/hwui/framework-graphics.stubs^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_17/frameworks/base/framework-graphics.stubs^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/libs/hwui/framework-graphics.stubs^android_common
+
+echo "building framework-graphics^android_common"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_17.ninja framework-graphics,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/libs/hwui/framework-graphics^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_17/frameworks/base/framework-graphics^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/libs/hwui/framework-graphics^android_common
 
 echo "building module-lib-api-stubs-docs-non-updatable^android_common"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_17.ninja module-lib-api-stubs-docs-non-updatable,android_common
@@ -483,6 +492,10 @@ fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/system_vold.tar.zst" ]; then
   echo "Compressing system/vold -> system_vold.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/system_vold.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/system/vold/ .
+fi
+if [ ! -f "$GITHUB_WORKSPACE/cache/tools_apifinder.tar.zst" ]; then
+  echo "Compressing tools/apifinder -> tools_apifinder.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/tools_apifinder.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/tools/apifinder/ .
 fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/tools_metalava.tar.zst" ]; then
   echo "Compressing tools/metalava -> tools_metalava.tar.zst"

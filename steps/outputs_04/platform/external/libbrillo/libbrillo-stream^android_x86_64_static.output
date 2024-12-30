@@ -1,9 +1,0 @@
-out/soong/.intermediates/external/libbrillo/libbrillo-stream/android_x86_64_static/obj/external/libbrillo/brillo/streams/file_stream.o
-out/soong/.intermediates/external/libbrillo/libbrillo-stream/android_x86_64_static/obj/external/libbrillo/brillo/streams/input_stream_set.o
-out/soong/.intermediates/external/libbrillo/libbrillo-stream/android_x86_64_static/obj/external/libbrillo/brillo/streams/memory_containers.o
-out/soong/.intermediates/external/libbrillo/libbrillo-stream/android_x86_64_static/obj/external/libbrillo/brillo/streams/memory_stream.o
-out/soong/.intermediates/external/libbrillo/libbrillo-stream/android_x86_64_static/obj/external/libbrillo/brillo/streams/openssl_stream_bio.o
-out/soong/.intermediates/external/libbrillo/libbrillo-stream/android_x86_64_static/obj/external/libbrillo/brillo/streams/stream.o
-out/soong/.intermediates/external/libbrillo/libbrillo-stream/android_x86_64_static/obj/external/libbrillo/brillo/streams/stream_errors.o
-out/soong/.intermediates/external/libbrillo/libbrillo-stream/android_x86_64_static/obj/external/libbrillo/brillo/streams/stream_utils.o
-out/soong/.intermediates/external/libbrillo/libbrillo-stream/android_x86_64_static/obj/external/libbrillo/brillo/streams/tls_stream.o

@@ -26,9 +26,11 @@ clone_depth_platform system/core
 clone_depth_platform system/hardware/interfaces
 clone_depth_platform system/libhidl
 clone_depth_platform system/libsysprop
+clone_depth_platform tools/apifinder
 clone_depth_platform tools/metalava
 
 rsync -a -r $GITHUB_WORKSPACE/downloads/build/make/tools/releasetools/ota_metadata_proto_java^android_common/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/build/make/tools/zipalign/zipalign^linux_glibc_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/cmd/dep_fixer/dep_fixer^linux_glibc_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/scripts/gen-kotlin-build-file.py^linux_glibc_x86_64_PY3/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/cmd/merge_zips/merge_zips^linux_glibc_x86_64/ .
@@ -36,6 +38,7 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/cmd/sbox/sbox^linux_glibc_x8
 rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/cmd/javac_wrapper/soong_javac_wrapper^linux_glibc_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/zip/cmd/soong_zip^linux_glibc_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/cmd/zipsync/zipsync^linux_glibc_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/jarjar/jarjar^linux_glibc_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcxx/libc++^linux_glibc_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/protobuf/aprotoc^linux_glibc_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/turbine/turbine^linux_glibc_common/ .
@@ -45,6 +48,7 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/proto/framework-protos^a
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/graphics/proto/updatable-driver-protos^android_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/libs/modules-utils/java/framework-annotations-lib^android_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/libs/modules-utils/java/com/android/internal/util/modules-utils-preconditions^android_common/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/libs/modules-utils/java/com/android/internal/util/modules-utils-preconditions^android_common_apex10000/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/proto_logging/stats/enums/stats/devicepolicy/devicepolicyprotosnano^android_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/cas/1.0/android.hardware.cas-V1.0-java^android_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/cas/1.1/android.hardware.cas-V1.1-java^android_common/ .
@@ -81,6 +85,7 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/vibrator/1.2/android
 rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/vibrator/1.3/android.hardware.vibrator-V1.3-java^android_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/vibrator/aidl/android.hardware.vibrator-V2-java^android_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/libcore/core-lambda-stubs^android_common/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/libcore/core-module-lib-stubs-system-modules^android_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/r8/d8^linux_glibc_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/r8/d8^linux_glibc_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/sdk/framework-media-incompatibilities.api.module-lib.latest^/ .
@@ -100,9 +105,15 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/system/hardware/interfaces/suspend/aidl/
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/libhidl/transport/base/1.0/android.hidl.base-V1.0-java^android_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/libsysprop/srcs/PlatformProperties^android_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/tools/aidl/aidl^linux_glibc_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/tools/apifinder/java_api_used_by_mainline_module^linux_glibc_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/tools/metalava/metalava^linux_glibc_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/tools/metalava/metalava^linux_glibc_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/tools/metalava/stub-annotations^android_common/ .
+
+echo "building framework-appsearch.impl^android_common"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_19.ninja framework-appsearch.impl,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/apex/appsearch/framework/framework-appsearch.impl^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_19/frameworks/base/framework-appsearch.impl^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/apex/appsearch/framework/framework-appsearch.impl^android_common
 
 echo "building framework-appsearch.stubs.source.module_lib^android_common"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_19.ninja framework-appsearch.stubs.source.module_lib,android_common
@@ -133,6 +144,11 @@ echo "building framework-appsearch.stubs^android_common"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_19.ninja framework-appsearch.stubs,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/apex/appsearch/framework/framework-appsearch.stubs^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_19/frameworks/base/framework-appsearch.stubs^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/apex/appsearch/framework/framework-appsearch.stubs^android_common
+
+echo "building framework-appsearch^android_common_apex10000"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_19.ninja framework-appsearch,android_common_apex10000
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/apex/appsearch/framework/framework-appsearch^android_common_apex10000
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_19/frameworks/base/framework-appsearch^android_common_apex10000.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/apex/appsearch/framework/framework-appsearch^android_common_apex10000
 
 echo "building framework-internal-utils^android_common"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_19.ninja framework-internal-utils,android_common
@@ -168,6 +184,11 @@ echo "building framework-media.stubs^android_common"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_19.ninja framework-media.stubs,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/apex/media/framework/framework-media.stubs^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_19/frameworks/base/framework-media.stubs^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/apex/media/framework/framework-media.stubs^android_common
+
+echo "building updatable-media^android_common_apex29"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_19.ninja updatable-media,android_common_apex29
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/apex/media/framework/updatable-media^android_common_apex29
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_19/frameworks/base/updatable-media^android_common_apex29.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/apex/media/framework/updatable-media^android_common_apex29
 
 rm -rf out
 
@@ -232,6 +253,10 @@ fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/system_libsysprop.tar.zst" ]; then
   echo "Compressing system/libsysprop -> system_libsysprop.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/system_libsysprop.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/system/libsysprop/ .
+fi
+if [ ! -f "$GITHUB_WORKSPACE/cache/tools_apifinder.tar.zst" ]; then
+  echo "Compressing tools/apifinder -> tools_apifinder.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/tools_apifinder.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/tools/apifinder/ .
 fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/tools_metalava.tar.zst" ]; then
   echo "Compressing tools/metalava -> tools_metalava.tar.zst"

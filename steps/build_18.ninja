@@ -12,12 +12,14 @@ include ninja/frameworks/libs/modules-utils/java/com/android/internal/util/modul
 include ninja/frameworks/libs/modules-utils/java/com/android/modules/utils/build/modules-utils-build^android_common.ninja
 include ninja/frameworks/libs/modules-utils/java/com/android/modules/utils/build/modules-utils-build^android_common_apex29.ninja
 include ninja/frameworks/libs/modules-utils/java/com/android/modules/utils/build/modules-utils-build^android_common_apex30.ninja
+include ninja/hardware/interfaces/vibrator/aidl/android.hardware.vibrator-V2-java^android_common.ninja
 include ninja/packages/modules/Permission/framework/framework-permission.stubs.module_lib^android_common.ninja
 include ninja/packages/modules/Permission/framework/framework-permission.stubs.source.module_lib^android_common.ninja
 include ninja/packages/modules/Permission/framework/framework-permission.stubs.source.system^android_common.ninja
 include ninja/packages/modules/Permission/framework/framework-permission.stubs.source^android_common.ninja
 include ninja/packages/modules/Permission/framework/framework-permission.stubs.system^android_common.ninja
 include ninja/packages/modules/Permission/framework/framework-permission.stubs^android_common.ninja
+include ninja/packages/modules/Permission/framework/framework-permission^android_common_apex30.ninja
 
 build modules-utils-build,android_common: phony out/soong/.intermediates/frameworks/libs/modules-utils/java/com/android/modules/utils/build/modules-utils-build/android_common/javac/modules-utils-build.jar out/soong/.intermediates/frameworks/libs/modules-utils/java/com/android/modules/utils/build/modules-utils-build/android_common/turbine-combined/modules-utils-build.jar
 
@@ -31,6 +33,10 @@ build modules-utils-preconditions,android_common_apex10000: phony out/soong/.int
 
 build frameworks_libs_modules-utils-targets: phony modules-utils-build,android_common modules-utils-build,android_common_apex29 modules-utils-build,android_common_apex30 modules-utils-preconditions,android_common modules-utils-preconditions,android_common_apex10000
 
+build android.hardware.vibrator-V2-java,android_common: phony out/soong/.intermediates/hardware/interfaces/vibrator/aidl/android.hardware.vibrator-V2-java/android_common/javac/android.hardware.vibrator-V2-java.jar out/soong/.intermediates/hardware/interfaces/vibrator/aidl/android.hardware.vibrator-V2-java/android_common/turbine-combined/android.hardware.vibrator-V2-java.jar out/soong/.intermediates/hardware/interfaces/vibrator/aidl/android.hardware.vibrator-V2-java/android_common/turbine/android.hardware.vibrator-V2-java.jar
+
+build hardware_interfaces-targets: phony android.hardware.vibrator-V2-java,android_common
+
 build framework-permission.stubs.module_lib,android_common: phony out/soong/.intermediates/packages/modules/Permission/framework/framework-permission.stubs.module_lib/android_common/javac/framework-permission.stubs.module_lib.jar out/soong/.intermediates/packages/modules/Permission/framework/framework-permission.stubs.module_lib/android_common/turbine-combined/framework-permission.stubs.module_lib.jar
 
 build framework-permission.stubs.source.module_lib,android_common: phony out/soong/.intermediates/packages/modules/Permission/framework/framework-permission.stubs.source.module_lib/android_common/metalava/framework-permission.stubs.source.module_lib-stubs.srcjar out/soong/.intermediates/packages/modules/Permission/framework/framework-permission.stubs.source.module_lib/android_common/metalava/framework-permission.stubs.source.module_lib_removed.txt
@@ -43,6 +49,12 @@ build framework-permission.stubs.system,android_common: phony out/soong/.interme
 
 build framework-permission.stubs,android_common: phony out/soong/.intermediates/packages/modules/Permission/framework/framework-permission.stubs/android_common/dex/framework-permission.stubs.jar out/soong/.intermediates/packages/modules/Permission/framework/framework-permission.stubs/android_common/javac/framework-permission.stubs.jar out/soong/.intermediates/packages/modules/Permission/framework/framework-permission.stubs/android_common/turbine-combined/framework-permission.stubs.jar
 
-build packages_modules_Permission-targets: phony framework-permission.stubs.module_lib,android_common framework-permission.stubs.source.module_lib,android_common framework-permission.stubs.source.system,android_common framework-permission.stubs.source,android_common framework-permission.stubs.system,android_common framework-permission.stubs,android_common
+build framework-permission,android_common_apex30: phony out/soong/.intermediates/packages/modules/Permission/framework/framework-permission/android_common_apex30/aligned/framework-permission.jar out/soong/.intermediates/packages/modules/Permission/framework/framework-permission/android_common_apex30/dex/framework-permission.jar out/soong/.intermediates/packages/modules/Permission/framework/framework-permission/android_common_apex30/javac/framework-permission.jar out/soong/.intermediates/packages/modules/Permission/framework/framework-permission/android_common_apex30/turbine-combined/framework-permission.jar out/soong/.intermediates/packages/modules/Permission/framework/framework-permission/android_common_apex30/turbine/framework-permission.jar
+
+build packages_modules_Permission-targets: phony framework-permission.stubs.module_lib,android_common framework-permission.stubs.source.module_lib,android_common framework-permission.stubs.source.system,android_common framework-permission.stubs.source,android_common framework-permission.stubs.system,android_common framework-permission.stubs,android_common framework-permission,android_common_apex30
+
+build sdk,: phony out/soong/framework_non_updatable.aidl
+
+build singletons-targets: phony sdk,
 
 

@@ -646,8 +646,20 @@ jobs:
         key: frameworks_native@${{ env.branch }}
     - uses: actions/cache@v4
       with:
+        path: cache/frameworks_opt_net_ims.tar.zst
+        key: frameworks_opt_net_ims@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/frameworks_opt_net_voip.tar.zst
+        key: frameworks_opt_net_voip@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
         path: cache/frameworks_opt_net_wifi.tar.zst
         key: frameworks_opt_net_wifi@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/frameworks_opt_telephony.tar.zst
+        key: frameworks_opt_telephony@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/frameworks_rs.tar.zst
@@ -740,6 +752,10 @@ jobs:
       with:
         path: cache/packages_providers_MediaProvider.tar.zst
         key: packages_providers_MediaProvider@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/packages_services_Car.tar.zst
+        key: packages_services_Car@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/packages_wallpapers_LivePicker.tar.zst
@@ -852,6 +868,10 @@ jobs:
       with:
         path: cache/system_libfmq.tar.zst
         key: system_libfmq@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/system_libhidl.tar.zst
+        key: system_libhidl@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/system_libhwbinder.tar.zst

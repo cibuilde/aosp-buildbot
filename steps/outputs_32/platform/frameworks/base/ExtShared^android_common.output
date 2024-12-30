@@ -1,8 +1,0 @@
-out/soong/.intermediates/frameworks/base/packages/ExtShared/ExtShared/android_common/ExtShared.apk
-out/soong/.intermediates/frameworks/base/packages/ExtShared/ExtShared/android_common/dexpreopt/dexpreopt.config
-out/soong/.intermediates/frameworks/base/packages/ExtShared/ExtShared/android_common/dexpreopt/oat/x86_64/package.odex
-out/soong/.intermediates/frameworks/base/packages/ExtShared/ExtShared/android_common/dexpreopt/oat/x86_64/package.vdex
-out/soong/.intermediates/frameworks/base/packages/ExtShared/ExtShared/android_common/javac/ExtShared.jar
-out/soong/.intermediates/frameworks/base/packages/ExtShared/ExtShared/android_common/package-res.apk
-out/soong/.intermediates/frameworks/base/packages/ExtShared/ExtShared/android_common/proguard_dictionary
-out/soong/.intermediates/frameworks/base/packages/ExtShared/ExtShared/android_common/proguard_usage.zip

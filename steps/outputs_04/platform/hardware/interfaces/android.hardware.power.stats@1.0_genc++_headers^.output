@@ -1,7 +1,0 @@
-out/soong/.intermediates/hardware/interfaces/power/stats/1.0/android.hardware.power.stats@1.0_genc++_headers/gen/android/hardware/power/stats/1.0/BnHwPowerStats.h
-out/soong/.intermediates/hardware/interfaces/power/stats/1.0/android.hardware.power.stats@1.0_genc++_headers/gen/android/hardware/power/stats/1.0/BpHwPowerStats.h
-out/soong/.intermediates/hardware/interfaces/power/stats/1.0/android.hardware.power.stats@1.0_genc++_headers/gen/android/hardware/power/stats/1.0/BsPowerStats.h
-out/soong/.intermediates/hardware/interfaces/power/stats/1.0/android.hardware.power.stats@1.0_genc++_headers/gen/android/hardware/power/stats/1.0/IHwPowerStats.h
-out/soong/.intermediates/hardware/interfaces/power/stats/1.0/android.hardware.power.stats@1.0_genc++_headers/gen/android/hardware/power/stats/1.0/IPowerStats.h
-out/soong/.intermediates/hardware/interfaces/power/stats/1.0/android.hardware.power.stats@1.0_genc++_headers/gen/android/hardware/power/stats/1.0/hwtypes.h
-out/soong/.intermediates/hardware/interfaces/power/stats/1.0/android.hardware.power.stats@1.0_genc++_headers/gen/android/hardware/power/stats/1.0/types.h

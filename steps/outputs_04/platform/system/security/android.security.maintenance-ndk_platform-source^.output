@@ -1,8 +1,0 @@
-out/soong/.intermediates/system/security/keystore2/aidl/android.security.maintenance-ndk_platform-source/gen/android/security/maintenance/IKeystoreMaintenance.cpp
-out/soong/.intermediates/system/security/keystore2/aidl/android.security.maintenance-ndk_platform-source/gen/android/security/maintenance/UserState.cpp
-out/soong/.intermediates/system/security/keystore2/aidl/android.security.maintenance-ndk_platform-source/gen/include/aidl/android/security/maintenance/BnKeystoreMaintenance.h
-out/soong/.intermediates/system/security/keystore2/aidl/android.security.maintenance-ndk_platform-source/gen/include/aidl/android/security/maintenance/BnUserState.h
-out/soong/.intermediates/system/security/keystore2/aidl/android.security.maintenance-ndk_platform-source/gen/include/aidl/android/security/maintenance/BpKeystoreMaintenance.h
-out/soong/.intermediates/system/security/keystore2/aidl/android.security.maintenance-ndk_platform-source/gen/include/aidl/android/security/maintenance/BpUserState.h
-out/soong/.intermediates/system/security/keystore2/aidl/android.security.maintenance-ndk_platform-source/gen/include/aidl/android/security/maintenance/IKeystoreMaintenance.h
-out/soong/.intermediates/system/security/keystore2/aidl/android.security.maintenance-ndk_platform-source/gen/include/aidl/android/security/maintenance/UserState.h

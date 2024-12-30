@@ -33,10 +33,20 @@ ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_02.ninja construct_context
 mkdir -p $GITHUB_WORKSPACE/artifacts/build/soong/scripts/construct_context^linux_glibc_x86_64_PY2
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_02/build/soong/construct_context^linux_glibc_x86_64_PY2.output . $GITHUB_WORKSPACE/artifacts/build/soong/scripts/construct_context^linux_glibc_x86_64_PY2
 
+echo "building dexpreopt_gen^linux_glibc_x86_64"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_02.ninja dexpreopt_gen,linux_glibc_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/build/soong/dexpreopt/dexpreopt_gen/dexpreopt_gen^linux_glibc_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_02/build/soong/dexpreopt_gen^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/build/soong/dexpreopt/dexpreopt_gen/dexpreopt_gen^linux_glibc_x86_64
+
 echo "building extract_jar_packages^linux_glibc_x86_64"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_02.ninja extract_jar_packages,linux_glibc_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/build/soong/cmd/extract_jar_packages/extract_jar_packages^linux_glibc_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_02/build/soong/extract_jar_packages^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/build/soong/cmd/extract_jar_packages/extract_jar_packages^linux_glibc_x86_64
+
+echo "building manifest_utils^linux_glibc_x86_64_PY2"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_02.ninja manifest_utils,linux_glibc_x86_64_PY2
+mkdir -p $GITHUB_WORKSPACE/artifacts/build/soong/scripts/manifest_utils^linux_glibc_x86_64_PY2
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_02/build/soong/manifest_utils^linux_glibc_x86_64_PY2.output . $GITHUB_WORKSPACE/artifacts/build/soong/scripts/manifest_utils^linux_glibc_x86_64_PY2
 
 echo "building merge_zips^linux_glibc_x86_64"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_02.ninja merge_zips,linux_glibc_x86_64
@@ -52,11 +62,6 @@ echo "building jsonmodify^linux_glibc_x86_64_PY2"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_02.ninja jsonmodify,linux_glibc_x86_64_PY2
 mkdir -p $GITHUB_WORKSPACE/artifacts/build/soong/scripts/jsonmodify^linux_glibc_x86_64_PY2
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_02/build/soong/jsonmodify^linux_glibc_x86_64_PY2.output . $GITHUB_WORKSPACE/artifacts/build/soong/scripts/jsonmodify^linux_glibc_x86_64_PY2
-
-echo "building manifest_utils^linux_glibc_x86_64_PY2"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_02.ninja manifest_utils,linux_glibc_x86_64_PY2
-mkdir -p $GITHUB_WORKSPACE/artifacts/build/soong/scripts/manifest_utils^linux_glibc_x86_64_PY2
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_02/build/soong/manifest_utils^linux_glibc_x86_64_PY2.output . $GITHUB_WORKSPACE/artifacts/build/soong/scripts/manifest_utils^linux_glibc_x86_64_PY2
 
 echo "building manifest_check^linux_glibc_x86_64_PY2"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_02.ninja manifest_check,linux_glibc_x86_64_PY2
@@ -127,11 +132,6 @@ echo "building soong-dexpreopt^linux_glibc_x86_64"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_02.ninja soong-dexpreopt,linux_glibc_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/build/soong/dexpreopt/soong-dexpreopt^linux_glibc_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_02/build/soong/soong-dexpreopt^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/build/soong/dexpreopt/soong-dexpreopt^linux_glibc_x86_64
-
-echo "building dexpreopt_gen^linux_glibc_x86_64"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_02.ninja dexpreopt_gen,linux_glibc_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/build/soong/dexpreopt/dexpreopt_gen/dexpreopt_gen^linux_glibc_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_02/build/soong/dexpreopt_gen^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/build/soong/dexpreopt/dexpreopt_gen/dexpreopt_gen^linux_glibc_x86_64
 
 echo "building soong-zip^linux_glibc_x86_64"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_02.ninja soong-zip,linux_glibc_x86_64

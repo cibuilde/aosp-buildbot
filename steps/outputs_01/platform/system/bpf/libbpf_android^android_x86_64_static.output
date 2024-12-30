@@ -1,5 +1,0 @@
-out/soong/.intermediates/system/bpf/libbpf_android/libbpf_android/android_x86_64_static/libbpf_android.a
-out/soong/.intermediates/system/bpf/libbpf_android/libbpf_android/android_x86_64_static/obj/system/bpf/libbpf_android/BpfUtils.o
-out/soong/.intermediates/system/bpf/libbpf_android/libbpf_android/android_x86_64_static/obj/system/bpf/libbpf_android/BpfUtils.tidy
-out/soong/.intermediates/system/bpf/libbpf_android/libbpf_android/android_x86_64_static/obj/system/bpf/libbpf_android/Loader.o
-out/soong/.intermediates/system/bpf/libbpf_android/libbpf_android/android_x86_64_static/obj/system/bpf/libbpf_android/Loader.tidy

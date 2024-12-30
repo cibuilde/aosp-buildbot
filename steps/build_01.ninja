@@ -1352,6 +1352,7 @@ include ninja/frameworks/av/services/audiopolicy/engineconfigurable/wrapper/liba
 include ninja/frameworks/av/services/mediacodec/mediacodec.policy^android_x86_64.ninja
 include ninja/frameworks/av/services/mediacodec/mediaswcodec.policy^android_x86_64.ninja
 include ninja/frameworks/av/services/mediaextractor/mediaextractor.policy^android_x86_64.ninja
+include ninja/frameworks/base/boot/platform-bootclasspath^android_common.ninja
 include ninja/frameworks/base/cmds/abx/abx2xml^android_x86_64.ninja
 include ninja/frameworks/base/cmds/abx/xml2abx^android_x86_64.ninja
 include ninja/frameworks/base/cmds/appops/appops^android_x86_64.ninja
@@ -1386,6 +1387,9 @@ include ninja/frameworks/base/data/etc/privapp_whitelist_com.android.systemui^an
 include ninja/frameworks/base/data/fonts/AndroidClock.ttf^android_x86_64.ninja
 include ninja/frameworks/base/data/fonts/DroidSansMono.ttf^android_x86_64.ninja
 include ninja/frameworks/base/data/fonts/fonts.xml^android_x86_64.ninja
+include ninja/frameworks/base/ext^android_common.ninja
+include ninja/frameworks/base/framework-minus-apex^android_common.ninja
+include ninja/frameworks/base/libs/hwui/framework-graphics^android_common.ninja
 include ninja/frameworks/base/libs/protoutil/libprotoutil^android_x86_64_static.ninja
 include ninja/frameworks/base/libs/protoutil/libprotoutil^android_x86_64_static_apex30.ninja
 include ninja/frameworks/base/libs/protoutil/libprotoutil^android_x86_64_static_lto-thin.ninja
@@ -1480,7 +1484,10 @@ include ninja/frameworks/native/opengl/libs/libEGL_getProcAddress^android_x86_x8
 include ninja/frameworks/native/services/gpuservice/bpfprogs/gpu_mem.o^android_common.ninja
 include ninja/frameworks/native/services/utils/libserviceutils^android_x86_64_static.ninja
 include ninja/frameworks/native/services/utils/libserviceutils^android_x86_64_static_lto-thin.ninja
+include ninja/frameworks/opt/net/ims/ims-common^android_common.ninja
+include ninja/frameworks/opt/net/voip/voip-common^android_common.ninja
 include ninja/frameworks/opt/net/wifi/libwifi_system_iface/libwifi-system-iface^android_x86_64_static.ninja
+include ninja/frameworks/opt/telephony/telephony-common^android_common.ninja
 include ninja/frameworks/rs/cpp/libRSDispatch^android_x86_64_static.ninja
 include ninja/frameworks/rs/cpp/libRSDispatch^android_x86_x86_64_static.ninja
 include ninja/frameworks/rs/rsg-generator^linux_glibc_x86_64.ninja
@@ -1541,6 +1548,7 @@ include ninja/packages/modules/adb/tls/libadb_tls_connection^android_recovery_x8
 include ninja/packages/modules/adb/tls/libadb_tls_connection^android_x86_64_static_apex10000.ninja
 include ninja/packages/modules/adb/tls/libadb_tls_connection^android_x86_x86_64_static_apex10000.ninja
 include ninja/packages/providers/MediaProvider/preinstalled-packages-com.android.providers.media.module.xml^android_x86_64.ninja
+include ninja/packages/services/Car/car-lib/android.car^android_common.ninja
 include ninja/packages/wallpapers/LivePicker/android.software.live_wallpaper.xml^android_x86_64.ninja
 include ninja/prebuilts/build-tools/bison^linux_glibc_x86_64.ninja
 include ninja/prebuilts/build-tools/flex^linux_glibc_x86_64.ninja
@@ -2017,6 +2025,7 @@ include ninja/system/libfmq/libfmq^android_x86_64_static_apex29.ninja
 include ninja/system/libfmq/libfmq^android_x86_64_static_apex30.ninja
 include ninja/system/libfmq/libfmq^android_x86_x86_64_static.ninja
 include ninja/system/libfmq/libfmq^android_x86_x86_64_static_apex30.ninja
+include ninja/system/libhidl/transport/base/1.0/android.hidl.base-V1.0-java^android_common.ninja
 include ninja/system/libhwbinder/libhwbinder-impl-internal^android_recovery_x86_64_static.ninja
 include ninja/system/libhwbinder/libhwbinder-impl-internal^android_x86_64_static.ninja
 include ninja/system/libhwbinder/libhwbinder-impl-internal^android_x86_64_static_apex29.ninja
@@ -5181,7 +5190,13 @@ build device_config,android_x86_64: phony out/soong/.intermediates/frameworks/ba
 
 build dpm,android_x86_64: phony out/soong/.intermediates/frameworks/base/cmds/dpm/dpm/android_x86_64/dpm
 
+build ext,android_common: phony out/soong/.intermediates/frameworks/base/ext/android_common/dexpreopt/dexpreopt.config
+
 build fonts.xml,android_x86_64: phony out/soong/.intermediates/frameworks/base/data/fonts/fonts.xml/android_x86_64/fonts.xml
+
+build framework-graphics,android_common: phony out/soong/.intermediates/frameworks/base/libs/hwui/framework-graphics/android_common/dexpreopt/dexpreopt.config
+
+build framework-minus-apex,android_common: phony out/soong/.intermediates/frameworks/base/framework-minus-apex/android_common/dexpreopt/dexpreopt.config out/soong/.intermediates/frameworks/base/framework-minus-apex/android_common/gen/logtags/frameworks/base/core/java/android/app/EventLogTags.java out/soong/.intermediates/frameworks/base/framework-minus-apex/android_common/gen/logtags/frameworks/base/core/java/android/app/admin/SecurityLogTags.java out/soong/.intermediates/frameworks/base/framework-minus-apex/android_common/gen/logtags/frameworks/base/core/java/android/content/EventLogTags.java out/soong/.intermediates/frameworks/base/framework-minus-apex/android_common/gen/logtags/frameworks/base/core/java/android/net/EventLogTags.java out/soong/.intermediates/frameworks/base/framework-minus-apex/android_common/gen/logtags/frameworks/base/core/java/android/os/EventLogTags.java out/soong/.intermediates/frameworks/base/framework-minus-apex/android_common/gen/logtags/frameworks/base/core/java/android/speech/tts/EventLogTags.java out/soong/.intermediates/frameworks/base/framework-minus-apex/android_common/gen/logtags/frameworks/base/core/java/android/view/EventLogTags.java out/soong/.intermediates/frameworks/base/framework-minus-apex/android_common/gen/logtags/frameworks/base/core/java/android/webkit/EventLogTags.java out/soong/.intermediates/frameworks/base/framework-minus-apex/android_common/gen/logtags/frameworks/base/core/java/com/android/internal/app/EventLogTags.java out/soong/.intermediates/frameworks/base/framework-minus-apex/android_common/gen/logtags/frameworks/base/core/java/com/android/internal/logging/EventLogTags.java out/soong/.intermediates/frameworks/base/framework-minus-apex/android_common/gen/logtags/frameworks/base/core/java/com/android/server/DropboxLogTags.java out/soong/.intermediates/frameworks/base/framework-minus-apex/android_common/gen/logtags/frameworks/base/core/java/org/chromium/arc/EventLogTags.java
 
 build framework-sysconfig.xml,android_x86_64: phony out/soong/.intermediates/frameworks/base/data/etc/framework-sysconfig.xml/android_x86_64/framework-sysconfig.xml
 
@@ -5212,6 +5227,8 @@ build libprotoutil,android_x86_x86_64_static: phony out/soong/.intermediates/fra
 build libprotoutil,android_x86_x86_64_static_lto-thin: phony out/soong/.intermediates/frameworks/base/libs/protoutil/libprotoutil/android_x86_x86_64_static_lto-thin/libprotoutil.a
 
 build libviewcompiler,android_x86_64_static: phony out/soong/.intermediates/frameworks/base/startop/view_compiler/libviewcompiler/android_x86_64_static/libviewcompiler.a
+
+build platform-bootclasspath,android_common: phony out/soong/.intermediates/frameworks/base/boot/platform-bootclasspath/android_common/bootclasspath.pb.json out/soong/vsoc_x86_64/dex_bootjars/updatable-bcp-packages.txt
 
 build platform.xml,android_x86_64: phony out/soong/.intermediates/frameworks/base/data/etc/platform.xml/android_x86_64/platform.xml
 
@@ -5259,7 +5276,7 @@ build wm,android_x86_64: phony out/soong/.intermediates/frameworks/base/cmds/wm/
 
 build xml2abx,android_x86_64: phony out/soong/.intermediates/frameworks/base/cmds/abx/xml2abx/android_x86_64/xml2abx
 
-build frameworks_base-targets: phony AndroidClock.ttf,android_x86_64 DroidSansMono.ttf,android_x86_64 abx2xml,android_x86_64 amidi, android.test.base.xml,android_common android.test.mock.xml,android_common android.test.runner.xml,android_common appops,android_x86_64 com.android.future.usb.accessory.xml,android_common com.android.location.provider.xml,android_common com.android.media.remotedisplay.xml,android_common com.android.mediadrm.signer.xml,android_common com.android.nfc_extras.xml,android_common device_config,android_x86_64 dpm,android_x86_64 fonts.xml,android_x86_64 framework-sysconfig.xml,android_x86_64 gps_debug.conf,android_x86_64 hiddenapi-package-whitelist.xml,android_x86_64 ime,android_x86_64 input,android_x86_64 javax.obex.xml,android_common libaapt,linux_glibc_x86_64_static libidmap2_policies,linux_glibc_x86_64_static liblockagent,android_x86_64_static libprotoutil,android_x86_64_static libprotoutil,android_x86_64_static_apex30 libprotoutil,android_x86_64_static_lto-thin libprotoutil,android_x86_x86_64_static libprotoutil,android_x86_x86_64_static_lto-thin libviewcompiler,android_x86_64_static platform.xml,android_x86_64 pm,android_x86_64 preinstalled-packages-platform-overlays.xml,android_x86_64 preinstalled-packages-platform.xml,android_x86_64 privapp-permissions-platform.xml,android_x86_64 privapp_whitelist_com.android.carrierconfig,android_x86_64 privapp_whitelist_com.android.contacts,android_x86_64 privapp_whitelist_com.android.dialer,android_x86_64 privapp_whitelist_com.android.documentsui,android_x86_64 privapp_whitelist_com.android.emergency,android_x86_64 privapp_whitelist_com.android.imsserviceentitlement,android_x86_64 privapp_whitelist_com.android.launcher3,android_x86_64 privapp_whitelist_com.android.networkstack.tethering,android_x86_64 privapp_whitelist_com.android.networkstack,android_x86_64 privapp_whitelist_com.android.provision,android_x86_64 privapp_whitelist_com.android.settings.intelligence,android_x86_64 privapp_whitelist_com.android.settings,android_x86_64 privapp_whitelist_com.android.storagemanager,android_x86_64 privapp_whitelist_com.android.systemui,android_x86_64 settings,android_x86_64 start_with_lockagent,android_x86_64 wm,android_x86_64 xml2abx,android_x86_64
+build frameworks_base-targets: phony AndroidClock.ttf,android_x86_64 DroidSansMono.ttf,android_x86_64 abx2xml,android_x86_64 amidi, android.test.base.xml,android_common android.test.mock.xml,android_common android.test.runner.xml,android_common appops,android_x86_64 com.android.future.usb.accessory.xml,android_common com.android.location.provider.xml,android_common com.android.media.remotedisplay.xml,android_common com.android.mediadrm.signer.xml,android_common com.android.nfc_extras.xml,android_common device_config,android_x86_64 dpm,android_x86_64 ext,android_common fonts.xml,android_x86_64 framework-graphics,android_common framework-minus-apex,android_common framework-sysconfig.xml,android_x86_64 gps_debug.conf,android_x86_64 hiddenapi-package-whitelist.xml,android_x86_64 ime,android_x86_64 input,android_x86_64 javax.obex.xml,android_common libaapt,linux_glibc_x86_64_static libidmap2_policies,linux_glibc_x86_64_static liblockagent,android_x86_64_static libprotoutil,android_x86_64_static libprotoutil,android_x86_64_static_apex30 libprotoutil,android_x86_64_static_lto-thin libprotoutil,android_x86_x86_64_static libprotoutil,android_x86_x86_64_static_lto-thin libviewcompiler,android_x86_64_static platform-bootclasspath,android_common platform.xml,android_x86_64 pm,android_x86_64 preinstalled-packages-platform-overlays.xml,android_x86_64 preinstalled-packages-platform.xml,android_x86_64 privapp-permissions-platform.xml,android_x86_64 privapp_whitelist_com.android.carrierconfig,android_x86_64 privapp_whitelist_com.android.contacts,android_x86_64 privapp_whitelist_com.android.dialer,android_x86_64 privapp_whitelist_com.android.documentsui,android_x86_64 privapp_whitelist_com.android.emergency,android_x86_64 privapp_whitelist_com.android.imsserviceentitlement,android_x86_64 privapp_whitelist_com.android.launcher3,android_x86_64 privapp_whitelist_com.android.networkstack.tethering,android_x86_64 privapp_whitelist_com.android.networkstack,android_x86_64 privapp_whitelist_com.android.provision,android_x86_64 privapp_whitelist_com.android.settings.intelligence,android_x86_64 privapp_whitelist_com.android.settings,android_x86_64 privapp_whitelist_com.android.storagemanager,android_x86_64 privapp_whitelist_com.android.systemui,android_x86_64 settings,android_x86_64 start_with_lockagent,android_x86_64 wm,android_x86_64 xml2abx,android_x86_64
 
 build libLLVMWrap,android_x86_64_static: phony out/soong/.intermediates/frameworks/compile/libbcc/bcinfo/Wrap/libLLVMWrap/android_x86_64_static/libLLVMWrap.a
 
@@ -5419,9 +5436,21 @@ build otapreopt_slot,android_x86_64: phony out/soong/.intermediates/frameworks/n
 
 build frameworks_native-targets: phony gpu_mem.o,android_common khr_headers, libEGL_blobCache,android_x86_64_static libEGL_blobCache,android_x86_64_static_lto-thin libEGL_blobCache,android_x86_x86_64_static libEGL_blobCache,android_x86_x86_64_static_lto-thin libEGL_getProcAddress,android_x86_64_static libEGL_getProcAddress,android_x86_x86_64_static libEGL_headers, libGLESv1_CM_headers, libGLESv2_headers, libGLESv3_headers, libadbd_auth,android_recovery_x86_64_static libadbd_auth,android_x86_64_static libadbd_auth,android_x86_x86_64_static libandroid_headers, libandroid_runtime_lazy,android_x86_64_static libandroid_runtime_lazy,android_x86_x86_64_static libarect,android_vendor.31_x86_64_static libarect,android_vendor.31_x86_x86_64_static libarect,android_x86_64_static libarect,android_x86_64_static_apex29 libarect,android_x86_64_static_apex30 libarect,android_x86_64_static_cfi libarect,android_x86_64_static_cfi_apex29 libarect,android_x86_64_static_lto-thin libarect,android_x86_x86_64_static libarect,android_x86_x86_64_static_apex30 libarect,android_x86_x86_64_static_cfi libarect,android_x86_x86_64_static_lto-thin libarect_headers_for_ndk, libattestation,android_x86_64_static libattestation,android_x86_x86_64_static libbinder_ndk_headers, libbinder_ndk_helper_headers, libbinderthreadstateutils,android_vendor.31_x86_64_static_lto-thin libbinderthreadstateutils,android_vendor.31_x86_x86_64_static_lto-thin libbinderthreadstateutils,android_x86_64_static libbinderthreadstateutils,android_x86_64_static_lto-thin libbinderthreadstateutils,android_x86_x86_64_static libbinderthreadstateutils,android_x86_x86_64_static_lto-thin libdiskusage,android_x86_64_static libmath,android_vendor.31_x86_64_static libmath,android_vendor.31_x86_x86_64_static libmath,android_x86_64_static libmath,android_x86_64_static_apex29 libmath,android_x86_64_static_apex30 libmath,android_x86_x86_64_static libmath,android_x86_x86_64_static_apex30 libnativewindow_ndk_headers, libotapreoptparameters,android_x86_64_static libprocpartition,android_x86_64_static libprocpartition,android_x86_64_static_apex30 libprocpartition,android_x86_x86_64_static_apex30 libserviceutils,android_x86_64_static libserviceutils,android_x86_64_static_lto-thin libtimeinstate,android_x86_64_static libtimeinstate,android_x86_x86_64_static libui-types,android_x86_64_static libui-types,android_x86_64_static_apex29 libui-types,android_x86_64_static_lto-thin libui-types,android_x86_x86_64_static libui-types,android_x86_x86_64_static_lto-thin libui-types,linux_glibc_x86_64_static migrate_legacy_obb_data.sh,android_x86_64 otapreopt_script,android_x86_64 otapreopt_slot,android_x86_64
 
+build ims-common,android_common: phony out/soong/.intermediates/frameworks/opt/net/ims/ims-common/android_common/dexpreopt/dexpreopt.config
+
+build frameworks_opt_net_ims-targets: phony ims-common,android_common
+
+build voip-common,android_common: phony out/soong/.intermediates/frameworks/opt/net/voip/voip-common/android_common/dexpreopt/dexpreopt.config
+
+build frameworks_opt_net_voip-targets: phony voip-common,android_common
+
 build libwifi-system-iface,android_x86_64_static: phony out/soong/.intermediates/frameworks/opt/net/wifi/libwifi_system_iface/libwifi-system-iface/android_x86_64_static/obj/frameworks/opt/net/wifi/libwifi_system_iface/interface_tool.o
 
 build frameworks_opt_net_wifi-targets: phony libwifi-system-iface,android_x86_64_static
+
+build telephony-common,android_common: phony out/soong/.intermediates/frameworks/opt/telephony/telephony-common/android_common/dexpreopt/dexpreopt.config out/soong/.intermediates/frameworks/opt/telephony/telephony-common/android_common/gen/logtags/frameworks/opt/telephony/src/java/com/android/internal/telephony/EventLogTags.java
+
+build frameworks_opt_telephony-targets: phony telephony-common,android_common
 
 build libRSDispatch,android_x86_64_static: phony out/soong/.intermediates/frameworks/rs/cpp/libRSDispatch/android_x86_64_static/libRSDispatch.a
 
@@ -5572,6 +5601,10 @@ build packages_modules_adb-targets: phony com.android.adbd.init.rc,android_x86_6
 build preinstalled-packages-com.android.providers.media.module.xml,android_x86_64: phony out/soong/.intermediates/packages/providers/MediaProvider/preinstalled-packages-com.android.providers.media.module.xml/android_x86_64/preinstalled-packages-com.android.providers.media.module.xml
 
 build packages_providers_MediaProvider-targets: phony preinstalled-packages-com.android.providers.media.module.xml,android_x86_64
+
+build android.car,android_common: phony out/soong/.intermediates/packages/services/Car/car-lib/android.car/android_common/gen/logtags/packages/services/Car/car-lib/src/com/android/car/internal/common/EventLogTags.java
+
+build packages_services_Car-targets: phony android.car,android_common
 
 build android.software.live_wallpaper.xml,android_x86_64: phony out/soong/.intermediates/packages/wallpapers/LivePicker/android.software.live_wallpaper.xml/android_x86_64/android.software.live_wallpaper.xml
 
@@ -5767,6 +5800,8 @@ build dexpreopt-soong-config,: phony out/soong/dexpreopt_soong.config
 
 build llndk_libraries_txt,: phony out/soong/.intermediates/packages/modules/vndk/llndk.libraries.txt/llndk.libraries.31.txt
 
+build sdk,: phony out/soong/api_fingerprint.txt
+
 build vndkcore_libraries_txt,: phony out/soong/.intermediates/packages/modules/vndk/vndkcore.libraries.txt/vndkcore.libraries.31.txt
 
 build vndkcorevariant_libraries_txt,: phony out/soong/.intermediates/packages/modules/vndk/vndkcorevariant.libraries.txt/vndkcorevariant.libraries.txt
@@ -5777,7 +5812,7 @@ build vndkproduct_libraries_txt,: phony out/soong/.intermediates/packages/module
 
 build vndksp_libraries_txt,: phony out/soong/.intermediates/packages/modules/vndk/vndksp.libraries.txt/vndksp.libraries.31.txt
 
-build singletons-targets: phony api_levels, dex_bootjars, dexpreopt-soong-config, llndk_libraries_txt, vndkcore_libraries_txt, vndkcorevariant_libraries_txt, vndkprivate_libraries_txt, vndkproduct_libraries_txt, vndksp_libraries_txt,
+build singletons-targets: phony api_levels, dex_bootjars, dexpreopt-soong-config, llndk_libraries_txt, sdk, vndkcore_libraries_txt, vndkcorevariant_libraries_txt, vndkprivate_libraries_txt, vndkproduct_libraries_txt, vndksp_libraries_txt,
 
 build com.android.apex.cts.shim.v1_prebuilt,android_common_com.android.apex.cts.shim.v1_prebuilt: phony out/soong/.intermediates/system/apex/shim/com.android.apex.cts.shim.v1_prebuilt/android_common_com.android.apex.cts.shim.v1_prebuilt/com.android.apex.cts.shim.apex
 
@@ -6586,6 +6621,10 @@ build libfmq,android_x86_x86_64_static: phony out/soong/.intermediates/system/li
 build libfmq,android_x86_x86_64_static_apex30: phony out/soong/.intermediates/system/libfmq/libfmq/android_x86_x86_64_static_apex30/libfmq.a
 
 build system_libfmq-targets: phony libfmq,android_x86_64_static libfmq,android_x86_64_static_apex29 libfmq,android_x86_64_static_apex30 libfmq,android_x86_x86_64_static libfmq,android_x86_x86_64_static_apex30
+
+build android.hidl.base-V1.0-java,android_common: phony out/soong/.intermediates/system/libhidl/transport/base/1.0/android.hidl.base-V1.0-java/android_common/dexpreopt/dexpreopt.config
+
+build system_libhidl-targets: phony android.hidl.base-V1.0-java,android_common
 
 build libhwbinder-impl-internal,android_recovery_x86_64_static: phony out/soong/.intermediates/system/libhwbinder/libhwbinder-impl-internal/android_recovery_x86_64_static/libhwbinder-impl-internal.a out/soong/.intermediates/system/libhwbinder/libhwbinder-impl-internal/android_recovery_x86_64_static/obj/system/libhwbinder/Binder.o out/soong/.intermediates/system/libhwbinder/libhwbinder-impl-internal/android_recovery_x86_64_static/obj/system/libhwbinder/BpHwBinder.o out/soong/.intermediates/system/libhwbinder/libhwbinder-impl-internal/android_recovery_x86_64_static/obj/system/libhwbinder/BufferedTextOutput.o out/soong/.intermediates/system/libhwbinder/libhwbinder-impl-internal/android_recovery_x86_64_static/obj/system/libhwbinder/Debug.o out/soong/.intermediates/system/libhwbinder/libhwbinder-impl-internal/android_recovery_x86_64_static/obj/system/libhwbinder/IInterface.o out/soong/.intermediates/system/libhwbinder/libhwbinder-impl-internal/android_recovery_x86_64_static/obj/system/libhwbinder/IPCThreadState.o out/soong/.intermediates/system/libhwbinder/libhwbinder-impl-internal/android_recovery_x86_64_static/obj/system/libhwbinder/Parcel.o out/soong/.intermediates/system/libhwbinder/libhwbinder-impl-internal/android_recovery_x86_64_static/obj/system/libhwbinder/ProcessState.o out/soong/.intermediates/system/libhwbinder/libhwbinder-impl-internal/android_recovery_x86_64_static/obj/system/libhwbinder/Static.o out/soong/.intermediates/system/libhwbinder/libhwbinder-impl-internal/android_recovery_x86_64_static/obj/system/libhwbinder/TextOutput.o out/soong/.intermediates/system/libhwbinder/libhwbinder-impl-internal/android_recovery_x86_64_static/obj/system/libhwbinder/Utils.o
 

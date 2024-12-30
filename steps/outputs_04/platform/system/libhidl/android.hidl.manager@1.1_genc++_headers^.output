@@ -1,5 +1,0 @@
-out/soong/.intermediates/system/libhidl/transport/manager/1.1/android.hidl.manager@1.1_genc++_headers/gen/android/hidl/manager/1.1/BnHwServiceManager.h
-out/soong/.intermediates/system/libhidl/transport/manager/1.1/android.hidl.manager@1.1_genc++_headers/gen/android/hidl/manager/1.1/BpHwServiceManager.h
-out/soong/.intermediates/system/libhidl/transport/manager/1.1/android.hidl.manager@1.1_genc++_headers/gen/android/hidl/manager/1.1/BsServiceManager.h
-out/soong/.intermediates/system/libhidl/transport/manager/1.1/android.hidl.manager@1.1_genc++_headers/gen/android/hidl/manager/1.1/IHwServiceManager.h
-out/soong/.intermediates/system/libhidl/transport/manager/1.1/android.hidl.manager@1.1_genc++_headers/gen/android/hidl/manager/1.1/IServiceManager.h

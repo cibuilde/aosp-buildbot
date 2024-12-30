@@ -1,4 +1,0 @@
-out/soong/.intermediates/packages/modules/adb/proto/libadb_protos/android_x86_x86_64_static_apex10000/gen/proto/packages/modules/adb/proto/adb_known_hosts.pb.h
-out/soong/.intermediates/packages/modules/adb/proto/libadb_protos/android_x86_x86_64_static_apex10000/gen/proto/packages/modules/adb/proto/key_type.pb.h
-out/soong/.intermediates/packages/modules/adb/proto/libadb_protos/android_x86_x86_64_static_apex10000/gen/proto/packages/modules/adb/proto/pairing.pb.h
-out/soong/.intermediates/packages/modules/adb/proto/libadb_protos/android_x86_x86_64_static_apex10000/libadb_protos.a

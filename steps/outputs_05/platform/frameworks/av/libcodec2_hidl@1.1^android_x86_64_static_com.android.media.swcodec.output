@@ -1,8 +1,0 @@
-out/soong/.intermediates/frameworks/av/media/codec2/hidl/1.1/utils/libcodec2_hidl@1.1/android_x86_64_static_com.android.media.swcodec/obj/frameworks/av/media/codec2/hidl/1.1/utils/Component.o
-out/soong/.intermediates/frameworks/av/media/codec2/hidl/1.1/utils/libcodec2_hidl@1.1/android_x86_64_static_com.android.media.swcodec/obj/frameworks/av/media/codec2/hidl/1.1/utils/ComponentInterface.o
-out/soong/.intermediates/frameworks/av/media/codec2/hidl/1.1/utils/libcodec2_hidl@1.1/android_x86_64_static_com.android.media.swcodec/obj/frameworks/av/media/codec2/hidl/1.1/utils/ComponentStore.o
-out/soong/.intermediates/frameworks/av/media/codec2/hidl/1.1/utils/libcodec2_hidl@1.1/android_x86_64_static_com.android.media.swcodec/obj/frameworks/av/media/codec2/hidl/1.1/utils/Configurable.o
-out/soong/.intermediates/frameworks/av/media/codec2/hidl/1.1/utils/libcodec2_hidl@1.1/android_x86_64_static_com.android.media.swcodec/obj/frameworks/av/media/codec2/hidl/1.1/utils/InputBufferManager.o
-out/soong/.intermediates/frameworks/av/media/codec2/hidl/1.1/utils/libcodec2_hidl@1.1/android_x86_64_static_com.android.media.swcodec/obj/frameworks/av/media/codec2/hidl/1.1/utils/InputSurface.o
-out/soong/.intermediates/frameworks/av/media/codec2/hidl/1.1/utils/libcodec2_hidl@1.1/android_x86_64_static_com.android.media.swcodec/obj/frameworks/av/media/codec2/hidl/1.1/utils/InputSurfaceConnection.o
-out/soong/.intermediates/frameworks/av/media/codec2/hidl/1.1/utils/libcodec2_hidl@1.1/android_x86_64_static_com.android.media.swcodec/obj/frameworks/av/media/codec2/hidl/1.1/utils/types.o

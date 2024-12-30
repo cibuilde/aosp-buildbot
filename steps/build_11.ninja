@@ -22,6 +22,7 @@ include ninja/external/angle/libGLESv1_CM_angle^android_x86_64_shared.ninja
 include ninja/external/angle/libGLESv1_CM_angle^android_x86_x86_64_shared.ninja
 include ninja/external/angle/libGLESv2_angle^android_x86_64_shared.ninja
 include ninja/external/angle/libGLESv2_angle^android_x86_x86_64_shared.ninja
+include ninja/external/apache-xml/apache-xml^android_common_apex31.ninja
 include ninja/external/conscrypt/conscrypt.module.platform.api.stubs.source^android_common.ninja
 include ninja/external/conscrypt/conscrypt.module.platform.api.stubs^android_common.ninja
 include ninja/external/conscrypt/conscrypt.module.public.api.stubs.source^android_common.ninja
@@ -42,6 +43,7 @@ include ninja/external/icu/android_icu4j/stable.i18n.module.platform.api.stubs^a
 include ninja/external/minigbm/cros_gralloc/gralloc4/android.hardware.graphics.allocator@4.0-service.minigbm^android_vendor.31_x86_64.ninja
 include ninja/external/minigbm/cros_gralloc/gralloc4/android.hardware.graphics.mapper@4.0-impl.minigbm^android_vendor.31_x86_64_shared.ninja
 include ninja/external/minigbm/cros_gralloc/gralloc4/android.hardware.graphics.mapper@4.0-impl.minigbm^android_vendor.31_x86_x86_64_shared.ninja
+include ninja/external/okhttp/okhttp^android_common_apex31.ninja
 include ninja/external/rust/crates/futures/libfutures^android_x86_64_dylib.ninja
 include ninja/external/rust/crates/futures/libfutures^android_x86_64_dylib_apex10000.ninja
 include ninja/external/rust/crates/rand/librand^android_x86_64_dylib.ninja
@@ -190,6 +192,10 @@ build libGLESv2_angle,android_x86_x86_64_shared: phony out/soong/.intermediates/
 
 build external_angle-targets: phony libEGL_angle,android_x86_64_shared libEGL_angle,android_x86_x86_64_shared libGLESv1_CM_angle,android_x86_64_shared libGLESv1_CM_angle,android_x86_x86_64_shared libGLESv2_angle,android_x86_64_shared libGLESv2_angle,android_x86_x86_64_shared
 
+build apache-xml,android_common_apex31: phony out/soong/.intermediates/external/apache-xml/apache-xml/android_common_apex31/aligned/apache-xml.jar out/soong/.intermediates/external/apache-xml/apache-xml/android_common_apex31/dex-withres-aligned/apache-xml.jar out/soong/.intermediates/external/apache-xml/apache-xml/android_common_apex31/dex-withres/apache-xml.jar out/soong/.intermediates/external/apache-xml/apache-xml/android_common_apex31/dex/apache-xml.jar out/soong/.intermediates/external/apache-xml/apache-xml/android_common_apex31/javac/apache-xml.jar out/soong/.intermediates/external/apache-xml/apache-xml/android_common_apex31/turbine-combined/apache-xml.jar out/soong/.intermediates/external/apache-xml/apache-xml/android_common_apex31/turbine/apache-xml.jar out/soong/.intermediates/external/apache-xml/apache-xml/android_common_apex31/withres/apache-xml.jar
+
+build external_apache-xml-targets: phony apache-xml,android_common_apex31
+
 build conscrypt.module.platform.api.stubs.source,android_common: phony out/soong/.intermediates/external/conscrypt/conscrypt.module.platform.api.stubs.source/android_common/metalava/conscrypt.module.platform.api.stubs.source-stubs.srcjar out/soong/.intermediates/external/conscrypt/conscrypt.module.platform.api.stubs.source/android_common/metalava/conscrypt.module.platform.api.stubs.source_removed.txt
 
 build conscrypt.module.platform.api.stubs,android_common: phony out/soong/.intermediates/external/conscrypt/conscrypt.module.platform.api.stubs/android_common/dex/conscrypt.module.platform.api.stubs.jar out/soong/.intermediates/external/conscrypt/conscrypt.module.platform.api.stubs/android_common/javac/conscrypt.module.platform.api.stubs.jar out/soong/.intermediates/external/conscrypt/conscrypt.module.platform.api.stubs/android_common/turbine-combined/conscrypt.module.platform.api.stubs.jar
@@ -239,6 +245,10 @@ build android.hardware.graphics.mapper@4.0-impl.minigbm,android_vendor.31_x86_64
 build android.hardware.graphics.mapper@4.0-impl.minigbm,android_vendor.31_x86_x86_64_shared: phony out/soong/.intermediates/external/minigbm/cros_gralloc/gralloc4/android.hardware.graphics.mapper@4.0-impl.minigbm/android_vendor.31_x86_x86_64_shared/android.hardware.graphics.mapper@4.0-impl.minigbm.so
 
 build external_minigbm-targets: phony android.hardware.graphics.allocator@4.0-service.minigbm,android_vendor.31_x86_64 android.hardware.graphics.mapper@4.0-impl.minigbm,android_vendor.31_x86_64_shared android.hardware.graphics.mapper@4.0-impl.minigbm,android_vendor.31_x86_x86_64_shared
+
+build okhttp,android_common_apex31: phony out/soong/.intermediates/external/okhttp/okhttp/android_common_apex31/aligned/okhttp.jar out/soong/.intermediates/external/okhttp/okhttp/android_common_apex31/dex/okhttp.jar out/soong/.intermediates/external/okhttp/okhttp/android_common_apex31/javac/okhttp.jar out/soong/.intermediates/external/okhttp/okhttp/android_common_apex31/turbine-combined/okhttp.jar out/soong/.intermediates/external/okhttp/okhttp/android_common_apex31/turbine/okhttp.jar
+
+build external_okhttp-targets: phony okhttp,android_common_apex31
 
 build libfutures,android_x86_64_dylib: phony out/soong/.intermediates/external/rust/crates/futures/libfutures/android_x86_64_dylib/libfutures.dylib.so out/soong/.intermediates/external/rust/crates/futures/libfutures/android_x86_64_dylib/stripped/libfutures.dylib.so
 

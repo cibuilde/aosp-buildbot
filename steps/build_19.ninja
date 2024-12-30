@@ -7,18 +7,21 @@ pool highmem_pool
 include ninja/global.ninja
 include ninja/singleton.ninja
 
+include ninja/frameworks/base/apex/appsearch/framework/framework-appsearch.impl^android_common.ninja
 include ninja/frameworks/base/apex/appsearch/framework/framework-appsearch.stubs.module_lib^android_common.ninja
 include ninja/frameworks/base/apex/appsearch/framework/framework-appsearch.stubs.source.module_lib^android_common.ninja
 include ninja/frameworks/base/apex/appsearch/framework/framework-appsearch.stubs.source.system^android_common.ninja
 include ninja/frameworks/base/apex/appsearch/framework/framework-appsearch.stubs.source^android_common.ninja
 include ninja/frameworks/base/apex/appsearch/framework/framework-appsearch.stubs.system^android_common.ninja
 include ninja/frameworks/base/apex/appsearch/framework/framework-appsearch.stubs^android_common.ninja
+include ninja/frameworks/base/apex/appsearch/framework/framework-appsearch^android_common_apex10000.ninja
 include ninja/frameworks/base/apex/media/framework/framework-media.stubs.module_lib^android_common.ninja
 include ninja/frameworks/base/apex/media/framework/framework-media.stubs.source.module_lib^android_common.ninja
 include ninja/frameworks/base/apex/media/framework/framework-media.stubs.source.system^android_common.ninja
 include ninja/frameworks/base/apex/media/framework/framework-media.stubs.source^android_common.ninja
 include ninja/frameworks/base/apex/media/framework/framework-media.stubs.system^android_common.ninja
 include ninja/frameworks/base/apex/media/framework/framework-media.stubs^android_common.ninja
+include ninja/frameworks/base/apex/media/framework/updatable-media^android_common_apex29.ninja
 include ninja/frameworks/base/framework-internal-utils^android_common.ninja
 include ninja/frameworks/libs/modules-utils/java/com/android/modules/utils/modules-utils-os^android_common.ninja
 include ninja/frameworks/libs/modules-utils/java/com/android/modules/utils/modules-utils-os^android_common_apex10000.ninja
@@ -29,12 +32,14 @@ include ninja/packages/modules/Connectivity/Tethering/common/TetheringLib/framew
 include ninja/packages/modules/Connectivity/Tethering/common/TetheringLib/framework-tethering.stubs.source^android_common.ninja
 include ninja/packages/modules/Connectivity/Tethering/common/TetheringLib/framework-tethering.stubs.system^android_common.ninja
 include ninja/packages/modules/Connectivity/Tethering/common/TetheringLib/framework-tethering.stubs^android_common.ninja
+include ninja/packages/modules/Connectivity/Tethering/common/TetheringLib/framework-tethering^android_common_apex30.ninja
 include ninja/packages/modules/Connectivity/framework/framework-connectivity.stubs.module_lib^android_common.ninja
 include ninja/packages/modules/Connectivity/framework/framework-connectivity.stubs.source.module_lib^android_common.ninja
 include ninja/packages/modules/Connectivity/framework/framework-connectivity.stubs.source.system^android_common.ninja
 include ninja/packages/modules/Connectivity/framework/framework-connectivity.stubs.source^android_common.ninja
 include ninja/packages/modules/Connectivity/framework/framework-connectivity.stubs.system^android_common.ninja
 include ninja/packages/modules/Connectivity/framework/framework-connectivity.stubs^android_common.ninja
+include ninja/packages/modules/Connectivity/framework/framework-connectivity^android_common_apex30.ninja
 include ninja/packages/modules/IPsec/ike-internals^android_common.ninja
 include ninja/packages/modules/IPsec/ike-internals^android_common_apex30.ninja
 include ninja/packages/modules/Permission/framework-s/framework-permission-s-shared^android_common.ninja
@@ -45,12 +50,14 @@ include ninja/packages/modules/Permission/framework-s/framework-permission-s.stu
 include ninja/packages/modules/Permission/framework-s/framework-permission-s.stubs.source^android_common.ninja
 include ninja/packages/modules/Permission/framework-s/framework-permission-s.stubs.system^android_common.ninja
 include ninja/packages/modules/Permission/framework-s/framework-permission-s.stubs^android_common.ninja
+include ninja/packages/modules/Permission/framework-s/framework-permission-s^android_common_apex30.ninja
 include ninja/packages/modules/Scheduling/framework/framework-scheduling.stubs.module_lib^android_common.ninja
 include ninja/packages/modules/Scheduling/framework/framework-scheduling.stubs.source.module_lib^android_common.ninja
 include ninja/packages/modules/Scheduling/framework/framework-scheduling.stubs.source.system^android_common.ninja
 include ninja/packages/modules/Scheduling/framework/framework-scheduling.stubs.source^android_common.ninja
 include ninja/packages/modules/Scheduling/framework/framework-scheduling.stubs.system^android_common.ninja
 include ninja/packages/modules/Scheduling/framework/framework-scheduling.stubs^android_common.ninja
+include ninja/packages/modules/Scheduling/framework/framework-scheduling^android_common_apex10000.ninja
 include ninja/packages/modules/SdkExtensions/com.android.sdkext-bootclasspath-fragment^android_common_apex30.ninja
 include ninja/packages/modules/SdkExtensions/com.android.sdkext^android_common_com.android.sdkext_image.ninja
 include ninja/packages/modules/SdkExtensions/framework/framework-sdkextensions.stubs.module_lib^android_common.ninja
@@ -59,6 +66,7 @@ include ninja/packages/modules/SdkExtensions/framework/framework-sdkextensions.s
 include ninja/packages/modules/SdkExtensions/framework/framework-sdkextensions.stubs.source^android_common.ninja
 include ninja/packages/modules/SdkExtensions/framework/framework-sdkextensions.stubs.system^android_common.ninja
 include ninja/packages/modules/SdkExtensions/framework/framework-sdkextensions.stubs^android_common.ninja
+include ninja/packages/modules/SdkExtensions/framework/framework-sdkextensions^android_common_apex30.ninja
 include ninja/packages/modules/StatsD/framework/framework-statsd-internal^android_common.ninja
 include ninja/packages/modules/StatsD/framework/framework-statsd.stubs.module_lib^android_common.ninja
 include ninja/packages/modules/StatsD/framework/framework-statsd.stubs.source.module_lib^android_common.ninja
@@ -66,6 +74,10 @@ include ninja/packages/modules/StatsD/framework/framework-statsd.stubs.source.sy
 include ninja/packages/modules/StatsD/framework/framework-statsd.stubs.source^android_common.ninja
 include ninja/packages/modules/StatsD/framework/framework-statsd.stubs.system^android_common.ninja
 include ninja/packages/modules/StatsD/framework/framework-statsd.stubs^android_common.ninja
+include ninja/packages/modules/StatsD/framework/framework-statsd^android_common_apex30.ninja
+include ninja/packages/modules/Wifi/framework/framework-wifi^android_common_apex30.ninja
+
+build framework-appsearch.impl,android_common: phony out/soong/.intermediates/frameworks/base/apex/appsearch/framework/framework-appsearch.impl/android_common/combined/framework-appsearch.impl.jar out/soong/.intermediates/frameworks/base/apex/appsearch/framework/framework-appsearch.impl/android_common/gen/aidl/aidl0.srcjar out/soong/.intermediates/frameworks/base/apex/appsearch/framework/framework-appsearch.impl/android_common/jarjar/framework-appsearch.impl.jar out/soong/.intermediates/frameworks/base/apex/appsearch/framework/framework-appsearch.impl/android_common/javac/framework-appsearch.impl.jar out/soong/.intermediates/frameworks/base/apex/appsearch/framework/framework-appsearch.impl/android_common/turbine-combined/framework-appsearch.impl.jar out/soong/.intermediates/frameworks/base/apex/appsearch/framework/framework-appsearch.impl/android_common/turbine-jarjar/framework-appsearch.impl.jar out/soong/.intermediates/frameworks/base/apex/appsearch/framework/framework-appsearch.impl/android_common/turbine/framework-appsearch.impl.jar
 
 build framework-appsearch.stubs.module_lib,android_common: phony out/soong/.intermediates/frameworks/base/apex/appsearch/framework/framework-appsearch.stubs.module_lib/android_common/javac/framework-appsearch.stubs.module_lib.jar out/soong/.intermediates/frameworks/base/apex/appsearch/framework/framework-appsearch.stubs.module_lib/android_common/turbine-combined/framework-appsearch.stubs.module_lib.jar
 
@@ -78,6 +90,8 @@ build framework-appsearch.stubs.source,android_common: phony out/soong/.intermed
 build framework-appsearch.stubs.system,android_common: phony out/soong/.intermediates/frameworks/base/apex/appsearch/framework/framework-appsearch.stubs.system/android_common/dex/framework-appsearch.stubs.system.jar out/soong/.intermediates/frameworks/base/apex/appsearch/framework/framework-appsearch.stubs.system/android_common/javac/framework-appsearch.stubs.system.jar out/soong/.intermediates/frameworks/base/apex/appsearch/framework/framework-appsearch.stubs.system/android_common/turbine-combined/framework-appsearch.stubs.system.jar
 
 build framework-appsearch.stubs,android_common: phony out/soong/.intermediates/frameworks/base/apex/appsearch/framework/framework-appsearch.stubs/android_common/dex/framework-appsearch.stubs.jar out/soong/.intermediates/frameworks/base/apex/appsearch/framework/framework-appsearch.stubs/android_common/javac/framework-appsearch.stubs.jar out/soong/.intermediates/frameworks/base/apex/appsearch/framework/framework-appsearch.stubs/android_common/turbine-combined/framework-appsearch.stubs.jar
+
+build framework-appsearch,android_common_apex10000: phony out/soong/.intermediates/frameworks/base/apex/appsearch/framework/framework-appsearch/android_common_apex10000/aligned/framework-appsearch.jar out/soong/.intermediates/frameworks/base/apex/appsearch/framework/framework-appsearch/android_common_apex10000/combined/framework-appsearch.jar out/soong/.intermediates/frameworks/base/apex/appsearch/framework/framework-appsearch/android_common_apex10000/dex/framework-appsearch.jar out/soong/.intermediates/frameworks/base/apex/appsearch/framework/framework-appsearch/android_common_apex10000/gen/aidl/aidl0.srcjar out/soong/.intermediates/frameworks/base/apex/appsearch/framework/framework-appsearch/android_common_apex10000/jarjar/framework-appsearch.jar out/soong/.intermediates/frameworks/base/apex/appsearch/framework/framework-appsearch/android_common_apex10000/javac/framework-appsearch.jar out/soong/.intermediates/frameworks/base/apex/appsearch/framework/framework-appsearch/android_common_apex10000/turbine-combined/framework-appsearch.jar out/soong/.intermediates/frameworks/base/apex/appsearch/framework/framework-appsearch/android_common_apex10000/turbine-jarjar/framework-appsearch.jar out/soong/.intermediates/frameworks/base/apex/appsearch/framework/framework-appsearch/android_common_apex10000/turbine/framework-appsearch.jar
 
 build framework-internal-utils,android_common: phony out/soong/.intermediates/frameworks/base/framework-internal-utils/android_common/combined/framework-internal-utils.jar out/soong/.intermediates/frameworks/base/framework-internal-utils/android_common/turbine-combined/framework-internal-utils.jar
 
@@ -93,7 +107,9 @@ build framework-media.stubs.system,android_common: phony out/soong/.intermediate
 
 build framework-media.stubs,android_common: phony out/soong/.intermediates/frameworks/base/apex/media/framework/framework-media.stubs/android_common/dex/framework-media.stubs.jar out/soong/.intermediates/frameworks/base/apex/media/framework/framework-media.stubs/android_common/javac/framework-media.stubs.jar out/soong/.intermediates/frameworks/base/apex/media/framework/framework-media.stubs/android_common/turbine-combined/framework-media.stubs.jar
 
-build frameworks_base-targets: phony framework-appsearch.stubs.module_lib,android_common framework-appsearch.stubs.source.module_lib,android_common framework-appsearch.stubs.source.system,android_common framework-appsearch.stubs.source,android_common framework-appsearch.stubs.system,android_common framework-appsearch.stubs,android_common framework-internal-utils,android_common framework-media.stubs.module_lib,android_common framework-media.stubs.source.module_lib,android_common framework-media.stubs.source.system,android_common framework-media.stubs.source,android_common framework-media.stubs.system,android_common framework-media.stubs,android_common
+build updatable-media,android_common_apex29: phony out/soong/.intermediates/frameworks/base/apex/media/framework/updatable-media/android_common_apex29/gen/aidl/aidl0.srcjar
+
+build frameworks_base-targets: phony framework-appsearch.impl,android_common framework-appsearch.stubs.module_lib,android_common framework-appsearch.stubs.source.module_lib,android_common framework-appsearch.stubs.source.system,android_common framework-appsearch.stubs.source,android_common framework-appsearch.stubs.system,android_common framework-appsearch.stubs,android_common framework-appsearch,android_common_apex10000 framework-internal-utils,android_common framework-media.stubs.module_lib,android_common framework-media.stubs.source.module_lib,android_common framework-media.stubs.source.system,android_common framework-media.stubs.source,android_common framework-media.stubs.system,android_common framework-media.stubs,android_common updatable-media,android_common_apex29
 
 build modules-utils-os,android_common: phony out/soong/.intermediates/frameworks/libs/modules-utils/java/com/android/modules/utils/modules-utils-os/android_common/javac/modules-utils-os.jar out/soong/.intermediates/frameworks/libs/modules-utils/java/com/android/modules/utils/modules-utils-os/android_common/turbine-combined/modules-utils-os.jar
 
@@ -115,6 +131,8 @@ build framework-connectivity.stubs.system,android_common: phony out/soong/.inter
 
 build framework-connectivity.stubs,android_common: phony out/soong/.intermediates/packages/modules/Connectivity/framework/framework-connectivity.stubs/android_common/dex/framework-connectivity.stubs.jar out/soong/.intermediates/packages/modules/Connectivity/framework/framework-connectivity.stubs/android_common/javac/framework-connectivity.stubs.jar out/soong/.intermediates/packages/modules/Connectivity/framework/framework-connectivity.stubs/android_common/turbine-combined/framework-connectivity.stubs.jar
 
+build framework-connectivity,android_common_apex30: phony out/soong/.intermediates/packages/modules/Connectivity/framework/framework-connectivity/android_common_apex30/gen/aidl/aidl0.srcjar
+
 build framework-tethering.stubs.module_lib,android_common: phony out/soong/.intermediates/packages/modules/Connectivity/Tethering/common/TetheringLib/framework-tethering.stubs.module_lib/android_common/dex/framework-tethering.stubs.module_lib.jar out/soong/.intermediates/packages/modules/Connectivity/Tethering/common/TetheringLib/framework-tethering.stubs.module_lib/android_common/javac/framework-tethering.stubs.module_lib.jar out/soong/.intermediates/packages/modules/Connectivity/Tethering/common/TetheringLib/framework-tethering.stubs.module_lib/android_common/turbine-combined/framework-tethering.stubs.module_lib.jar
 
 build framework-tethering.stubs.source.module_lib,android_common: phony out/soong/.intermediates/packages/modules/Connectivity/Tethering/common/TetheringLib/framework-tethering.stubs.source.module_lib/android_common/metalava/framework-tethering.stubs.source.module_lib-stubs.srcjar out/soong/.intermediates/packages/modules/Connectivity/Tethering/common/TetheringLib/framework-tethering.stubs.source.module_lib/android_common/metalava/framework-tethering.stubs.source.module_lib_removed.txt
@@ -127,7 +145,9 @@ build framework-tethering.stubs.system,android_common: phony out/soong/.intermed
 
 build framework-tethering.stubs,android_common: phony out/soong/.intermediates/packages/modules/Connectivity/Tethering/common/TetheringLib/framework-tethering.stubs/android_common/dex/framework-tethering.stubs.jar out/soong/.intermediates/packages/modules/Connectivity/Tethering/common/TetheringLib/framework-tethering.stubs/android_common/javac/framework-tethering.stubs.jar out/soong/.intermediates/packages/modules/Connectivity/Tethering/common/TetheringLib/framework-tethering.stubs/android_common/turbine-combined/framework-tethering.stubs.jar
 
-build packages_modules_Connectivity-targets: phony framework-connectivity.stubs.module_lib,android_common framework-connectivity.stubs.source.module_lib,android_common framework-connectivity.stubs.source.system,android_common framework-connectivity.stubs.source,android_common framework-connectivity.stubs.system,android_common framework-connectivity.stubs,android_common framework-tethering.stubs.module_lib,android_common framework-tethering.stubs.source.module_lib,android_common framework-tethering.stubs.source.system,android_common framework-tethering.stubs.source,android_common framework-tethering.stubs.system,android_common framework-tethering.stubs,android_common
+build framework-tethering,android_common_apex30: phony out/soong/.intermediates/packages/modules/Connectivity/Tethering/common/TetheringLib/framework-tethering/android_common_apex30/aligned/framework-tethering.jar out/soong/.intermediates/packages/modules/Connectivity/Tethering/common/TetheringLib/framework-tethering/android_common_apex30/dex/framework-tethering.jar out/soong/.intermediates/packages/modules/Connectivity/Tethering/common/TetheringLib/framework-tethering/android_common_apex30/gen/aidl/aidl0.srcjar out/soong/.intermediates/packages/modules/Connectivity/Tethering/common/TetheringLib/framework-tethering/android_common_apex30/jarjar/framework-tethering.jar out/soong/.intermediates/packages/modules/Connectivity/Tethering/common/TetheringLib/framework-tethering/android_common_apex30/javac/framework-tethering.jar out/soong/.intermediates/packages/modules/Connectivity/Tethering/common/TetheringLib/framework-tethering/android_common_apex30/turbine-combined/framework-tethering.jar out/soong/.intermediates/packages/modules/Connectivity/Tethering/common/TetheringLib/framework-tethering/android_common_apex30/turbine-jarjar/framework-tethering.jar out/soong/.intermediates/packages/modules/Connectivity/Tethering/common/TetheringLib/framework-tethering/android_common_apex30/turbine/framework-tethering.jar
+
+build packages_modules_Connectivity-targets: phony framework-connectivity.stubs.module_lib,android_common framework-connectivity.stubs.source.module_lib,android_common framework-connectivity.stubs.source.system,android_common framework-connectivity.stubs.source,android_common framework-connectivity.stubs.system,android_common framework-connectivity.stubs,android_common framework-connectivity,android_common_apex30 framework-tethering.stubs.module_lib,android_common framework-tethering.stubs.source.module_lib,android_common framework-tethering.stubs.source.system,android_common framework-tethering.stubs.source,android_common framework-tethering.stubs.system,android_common framework-tethering.stubs,android_common framework-tethering,android_common_apex30
 
 build ike-internals,android_common: phony out/soong/.intermediates/packages/modules/IPsec/ike-internals/android_common/turbine-combined/ike-internals.jar
 
@@ -151,7 +171,9 @@ build framework-permission-s.stubs.system,android_common: phony out/soong/.inter
 
 build framework-permission-s.stubs,android_common: phony out/soong/.intermediates/packages/modules/Permission/framework-s/framework-permission-s.stubs/android_common/dex/framework-permission-s.stubs.jar out/soong/.intermediates/packages/modules/Permission/framework-s/framework-permission-s.stubs/android_common/javac/framework-permission-s.stubs.jar out/soong/.intermediates/packages/modules/Permission/framework-s/framework-permission-s.stubs/android_common/turbine-combined/framework-permission-s.stubs.jar
 
-build packages_modules_Permission-targets: phony framework-permission-s-shared,android_common framework-permission-s-shared,android_common_apex30 framework-permission-s.stubs.module_lib,android_common framework-permission-s.stubs.source.module_lib,android_common framework-permission-s.stubs.source.system,android_common framework-permission-s.stubs.source,android_common framework-permission-s.stubs.system,android_common framework-permission-s.stubs,android_common
+build framework-permission-s,android_common_apex30: phony out/soong/.intermediates/packages/modules/Permission/framework-s/framework-permission-s/android_common_apex30/aligned/framework-permission-s.jar out/soong/.intermediates/packages/modules/Permission/framework-s/framework-permission-s/android_common_apex30/combined/framework-permission-s.jar out/soong/.intermediates/packages/modules/Permission/framework-s/framework-permission-s/android_common_apex30/dex/framework-permission-s.jar out/soong/.intermediates/packages/modules/Permission/framework-s/framework-permission-s/android_common_apex30/gen/aidl/aidl0.srcjar out/soong/.intermediates/packages/modules/Permission/framework-s/framework-permission-s/android_common_apex30/jarjar/framework-permission-s.jar out/soong/.intermediates/packages/modules/Permission/framework-s/framework-permission-s/android_common_apex30/javac/framework-permission-s.jar out/soong/.intermediates/packages/modules/Permission/framework-s/framework-permission-s/android_common_apex30/turbine-combined/framework-permission-s.jar out/soong/.intermediates/packages/modules/Permission/framework-s/framework-permission-s/android_common_apex30/turbine-jarjar/framework-permission-s.jar out/soong/.intermediates/packages/modules/Permission/framework-s/framework-permission-s/android_common_apex30/turbine/framework-permission-s.jar
+
+build packages_modules_Permission-targets: phony framework-permission-s-shared,android_common framework-permission-s-shared,android_common_apex30 framework-permission-s.stubs.module_lib,android_common framework-permission-s.stubs.source.module_lib,android_common framework-permission-s.stubs.source.system,android_common framework-permission-s.stubs.source,android_common framework-permission-s.stubs.system,android_common framework-permission-s.stubs,android_common framework-permission-s,android_common_apex30
 
 build framework-scheduling.stubs.module_lib,android_common: phony out/soong/.intermediates/packages/modules/Scheduling/framework/framework-scheduling.stubs.module_lib/android_common/javac/framework-scheduling.stubs.module_lib.jar out/soong/.intermediates/packages/modules/Scheduling/framework/framework-scheduling.stubs.module_lib/android_common/turbine-combined/framework-scheduling.stubs.module_lib.jar
 
@@ -165,7 +187,9 @@ build framework-scheduling.stubs.system,android_common: phony out/soong/.interme
 
 build framework-scheduling.stubs,android_common: phony out/soong/.intermediates/packages/modules/Scheduling/framework/framework-scheduling.stubs/android_common/dex/framework-scheduling.stubs.jar out/soong/.intermediates/packages/modules/Scheduling/framework/framework-scheduling.stubs/android_common/javac/framework-scheduling.stubs.jar out/soong/.intermediates/packages/modules/Scheduling/framework/framework-scheduling.stubs/android_common/turbine-combined/framework-scheduling.stubs.jar
 
-build packages_modules_Scheduling-targets: phony framework-scheduling.stubs.module_lib,android_common framework-scheduling.stubs.source.module_lib,android_common framework-scheduling.stubs.source.system,android_common framework-scheduling.stubs.source,android_common framework-scheduling.stubs.system,android_common framework-scheduling.stubs,android_common
+build framework-scheduling,android_common_apex10000: phony out/soong/.intermediates/packages/modules/Scheduling/framework/framework-scheduling/android_common_apex10000/aligned/framework-scheduling.jar out/soong/.intermediates/packages/modules/Scheduling/framework/framework-scheduling/android_common_apex10000/dex/framework-scheduling.jar out/soong/.intermediates/packages/modules/Scheduling/framework/framework-scheduling/android_common_apex10000/gen/aidl/aidl0.srcjar out/soong/.intermediates/packages/modules/Scheduling/framework/framework-scheduling/android_common_apex10000/javac/framework-scheduling.jar out/soong/.intermediates/packages/modules/Scheduling/framework/framework-scheduling/android_common_apex10000/turbine-combined/framework-scheduling.jar out/soong/.intermediates/packages/modules/Scheduling/framework/framework-scheduling/android_common_apex10000/turbine/framework-scheduling.jar
+
+build packages_modules_Scheduling-targets: phony framework-scheduling.stubs.module_lib,android_common framework-scheduling.stubs.source.module_lib,android_common framework-scheduling.stubs.source.system,android_common framework-scheduling.stubs.source,android_common framework-scheduling.stubs.system,android_common framework-scheduling.stubs,android_common framework-scheduling,android_common_apex10000
 
 build com.android.sdkext-bootclasspath-fragment,android_common_apex30: phony out/soong/.intermediates/packages/modules/SdkExtensions/com.android.sdkext-bootclasspath-fragment/android_common_apex30/bootclasspath.pb out/soong/.intermediates/packages/modules/SdkExtensions/com.android.sdkext-bootclasspath-fragment/android_common_apex30/hiddenapi-modular/encoded/framework-sdkextensions.jar out/soong/.intermediates/packages/modules/SdkExtensions/com.android.sdkext-bootclasspath-fragment/android_common_apex30/modular-hiddenapi/annotation-flags.csv
 
@@ -183,7 +207,9 @@ build framework-sdkextensions.stubs.system,android_common: phony out/soong/.inte
 
 build framework-sdkextensions.stubs,android_common: phony out/soong/.intermediates/packages/modules/SdkExtensions/framework/framework-sdkextensions.stubs/android_common/dex/framework-sdkextensions.stubs.jar out/soong/.intermediates/packages/modules/SdkExtensions/framework/framework-sdkextensions.stubs/android_common/javac/framework-sdkextensions.stubs.jar out/soong/.intermediates/packages/modules/SdkExtensions/framework/framework-sdkextensions.stubs/android_common/turbine-combined/framework-sdkextensions.stubs.jar
 
-build packages_modules_SdkExtensions-targets: phony com.android.sdkext-bootclasspath-fragment,android_common_apex30 com.android.sdkext,android_common_com.android.sdkext_image framework-sdkextensions.stubs.module_lib,android_common framework-sdkextensions.stubs.source.module_lib,android_common framework-sdkextensions.stubs.source.system,android_common framework-sdkextensions.stubs.source,android_common framework-sdkextensions.stubs.system,android_common framework-sdkextensions.stubs,android_common
+build framework-sdkextensions,android_common_apex30: phony out/soong/.intermediates/packages/modules/SdkExtensions/framework/framework-sdkextensions/android_common_apex30/aligned/framework-sdkextensions.jar out/soong/.intermediates/packages/modules/SdkExtensions/framework/framework-sdkextensions/android_common_apex30/combined/framework-sdkextensions.jar out/soong/.intermediates/packages/modules/SdkExtensions/framework/framework-sdkextensions/android_common_apex30/dex/framework-sdkextensions.jar out/soong/.intermediates/packages/modules/SdkExtensions/framework/framework-sdkextensions/android_common_apex30/jarjar/framework-sdkextensions.jar out/soong/.intermediates/packages/modules/SdkExtensions/framework/framework-sdkextensions/android_common_apex30/javac/framework-sdkextensions.jar out/soong/.intermediates/packages/modules/SdkExtensions/framework/framework-sdkextensions/android_common_apex30/turbine-combined/framework-sdkextensions.jar out/soong/.intermediates/packages/modules/SdkExtensions/framework/framework-sdkextensions/android_common_apex30/turbine-jarjar/framework-sdkextensions.jar out/soong/.intermediates/packages/modules/SdkExtensions/framework/framework-sdkextensions/android_common_apex30/turbine/framework-sdkextensions.jar
+
+build packages_modules_SdkExtensions-targets: phony com.android.sdkext-bootclasspath-fragment,android_common_apex30 com.android.sdkext,android_common_com.android.sdkext_image framework-sdkextensions.stubs.module_lib,android_common framework-sdkextensions.stubs.source.module_lib,android_common framework-sdkextensions.stubs.source.system,android_common framework-sdkextensions.stubs.source,android_common framework-sdkextensions.stubs.system,android_common framework-sdkextensions.stubs,android_common framework-sdkextensions,android_common_apex30
 
 build framework-statsd-internal,android_common: phony out/soong/.intermediates/packages/modules/StatsD/framework/framework-statsd-internal/android_common/turbine-combined/framework-statsd-internal.jar
 
@@ -199,6 +225,12 @@ build framework-statsd.stubs.system,android_common: phony out/soong/.intermediat
 
 build framework-statsd.stubs,android_common: phony out/soong/.intermediates/packages/modules/StatsD/framework/framework-statsd.stubs/android_common/dex/framework-statsd.stubs.jar out/soong/.intermediates/packages/modules/StatsD/framework/framework-statsd.stubs/android_common/javac/framework-statsd.stubs.jar out/soong/.intermediates/packages/modules/StatsD/framework/framework-statsd.stubs/android_common/turbine-combined/framework-statsd.stubs.jar
 
-build packages_modules_StatsD-targets: phony framework-statsd-internal,android_common framework-statsd.stubs.module_lib,android_common framework-statsd.stubs.source.module_lib,android_common framework-statsd.stubs.source.system,android_common framework-statsd.stubs.source,android_common framework-statsd.stubs.system,android_common framework-statsd.stubs,android_common
+build framework-statsd,android_common_apex30: phony out/soong/.intermediates/packages/modules/StatsD/framework/framework-statsd/android_common_apex30/aligned/framework-statsd.jar out/soong/.intermediates/packages/modules/StatsD/framework/framework-statsd/android_common_apex30/dex/framework-statsd.jar out/soong/.intermediates/packages/modules/StatsD/framework/framework-statsd/android_common_apex30/gen/aidl/aidl0.srcjar out/soong/.intermediates/packages/modules/StatsD/framework/framework-statsd/android_common_apex30/javac/framework-statsd.jar out/soong/.intermediates/packages/modules/StatsD/framework/framework-statsd/android_common_apex30/turbine-combined/framework-statsd.jar out/soong/.intermediates/packages/modules/StatsD/framework/framework-statsd/android_common_apex30/turbine/framework-statsd.jar
+
+build packages_modules_StatsD-targets: phony framework-statsd-internal,android_common framework-statsd.stubs.module_lib,android_common framework-statsd.stubs.source.module_lib,android_common framework-statsd.stubs.source.system,android_common framework-statsd.stubs.source,android_common framework-statsd.stubs.system,android_common framework-statsd.stubs,android_common framework-statsd,android_common_apex30
+
+build framework-wifi,android_common_apex30: phony out/soong/.intermediates/packages/modules/Wifi/framework/framework-wifi/android_common_apex30/gen/aidl/aidl0.srcjar out/soong/.intermediates/packages/modules/Wifi/framework/framework-wifi/android_common_apex30/gen/aidl/aidl1.srcjar
+
+build packages_modules_Wifi-targets: phony framework-wifi,android_common_apex30
 
 

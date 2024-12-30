@@ -162,11 +162,6 @@ ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libnativeloader_l
 mkdir -p $GITHUB_WORKSPACE/artifacts/art/libnativeloader/libnativeloader_lazy^android_x86_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/art/libnativeloader_lazy^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/art/libnativeloader/libnativeloader_lazy^android_x86_x86_64_shared
 
-echo "building statslog_art.cpp^"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja statslog_art.cpp,
-mkdir -p $GITHUB_WORKSPACE/artifacts/art/runtime/statslog_art.cpp^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/art/statslog_art.cpp^.output . $GITHUB_WORKSPACE/artifacts/art/runtime/statslog_art.cpp^
-
 echo "building statslog_odrefresh.cpp^"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja statslog_odrefresh.cpp,
 mkdir -p $GITHUB_WORKSPACE/artifacts/art/odrefresh/statslog_odrefresh.cpp^
@@ -186,6 +181,11 @@ echo "building libodrstatslog^android_x86_x86_64_static_lto-thin_apex31"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libodrstatslog,android_x86_x86_64_static_lto-thin_apex31
 mkdir -p $GITHUB_WORKSPACE/artifacts/art/odrefresh/libodrstatslog^android_x86_x86_64_static_lto-thin_apex31
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/art/libodrstatslog^android_x86_x86_64_static_lto-thin_apex31.output . $GITHUB_WORKSPACE/artifacts/art/odrefresh/libodrstatslog^android_x86_x86_64_static_lto-thin_apex31
+
+echo "building statslog_art.cpp^"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja statslog_art.cpp,
+mkdir -p $GITHUB_WORKSPACE/artifacts/art/runtime/statslog_art.cpp^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/art/statslog_art.cpp^.output . $GITHUB_WORKSPACE/artifacts/art/runtime/statslog_art.cpp^
 
 echo "building statslog_art.h^"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja statslog_art.h,

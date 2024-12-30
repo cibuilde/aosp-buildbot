@@ -1,8 +1,0 @@
-out/soong/.intermediates/packages/apps/Provision/Provision/android_common/Provision.apk
-out/soong/.intermediates/packages/apps/Provision/Provision/android_common/dexpreopt/dexpreopt.config
-out/soong/.intermediates/packages/apps/Provision/Provision/android_common/dexpreopt/oat/x86_64/package.odex
-out/soong/.intermediates/packages/apps/Provision/Provision/android_common/dexpreopt/oat/x86_64/package.vdex
-out/soong/.intermediates/packages/apps/Provision/Provision/android_common/javac/Provision.jar
-out/soong/.intermediates/packages/apps/Provision/Provision/android_common/package-res.apk
-out/soong/.intermediates/packages/apps/Provision/Provision/android_common/proguard_dictionary
-out/soong/.intermediates/packages/apps/Provision/Provision/android_common/proguard_usage.zip

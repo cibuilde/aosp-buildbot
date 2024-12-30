@@ -1,4 +1,0 @@
-out/soong/.intermediates/bionic/libc/libstdc++/android_x86_x86_64_static/obj/bionic/libc/bionic/__cxa_guard.o
-out/soong/.intermediates/bionic/libc/libstdc++/android_x86_x86_64_static/obj/bionic/libc/bionic/__cxa_pure_virtual.o
-out/soong/.intermediates/bionic/libc/libstdc++/android_x86_x86_64_static/obj/bionic/libc/bionic/new.o
-out/soong/ndk/sysroot/usr/lib/i686-linux-android/libstdc++.a

@@ -1,8 +1,0 @@
-out/soong/.intermediates/packages/apps/Music/Music/android_common/Music.apk
-out/soong/.intermediates/packages/apps/Music/Music/android_common/dexpreopt/dexpreopt.config
-out/soong/.intermediates/packages/apps/Music/Music/android_common/dexpreopt/oat/x86_64/package.odex
-out/soong/.intermediates/packages/apps/Music/Music/android_common/dexpreopt/oat/x86_64/package.vdex
-out/soong/.intermediates/packages/apps/Music/Music/android_common/javac/Music.jar
-out/soong/.intermediates/packages/apps/Music/Music/android_common/package-res.apk
-out/soong/.intermediates/packages/apps/Music/Music/android_common/proguard_dictionary
-out/soong/.intermediates/packages/apps/Music/Music/android_common/proguard_usage.zip

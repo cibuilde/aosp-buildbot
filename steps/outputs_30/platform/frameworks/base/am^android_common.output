@@ -1,7 +1,0 @@
-out/soong/.intermediates/frameworks/base/cmds/am/am/android_common/aligned/am.jar
-out/soong/.intermediates/frameworks/base/cmds/am/am/android_common/combined/am.jar
-out/soong/.intermediates/frameworks/base/cmds/am/am/android_common/dexpreopt/oat/x86/javalib.odex
-out/soong/.intermediates/frameworks/base/cmds/am/am/android_common/dexpreopt/oat/x86/javalib.vdex
-out/soong/.intermediates/frameworks/base/cmds/am/am/android_common/dexpreopt/oat/x86_64/javalib.odex
-out/soong/.intermediates/frameworks/base/cmds/am/am/android_common/dexpreopt/oat/x86_64/javalib.vdex
-out/soong/.intermediates/frameworks/base/cmds/am/am/android_common/turbine-combined/am.jar

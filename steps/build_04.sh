@@ -429,6 +429,14 @@ gh release --repo cibuilde/aosp-buildbot download android12-gsi_03 --pattern fra
 mkdir -p $GITHUB_WORKSPACE/downloads/frameworks/native
 tar xf $GITHUB_WORKSPACE/frameworks_native-03.tar.zst -C $GITHUB_WORKSPACE/downloads/frameworks/native/
 
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern frameworks_opt_net_voip.tar.zst --output frameworks_opt_net_voip-01.tar.zst
+mkdir -p $GITHUB_WORKSPACE/downloads/frameworks/opt/net/voip
+tar xf $GITHUB_WORKSPACE/frameworks_opt_net_voip-01.tar.zst -C $GITHUB_WORKSPACE/downloads/frameworks/opt/net/voip/
+
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern frameworks_opt_telephony.tar.zst --output frameworks_opt_telephony-01.tar.zst
+mkdir -p $GITHUB_WORKSPACE/downloads/frameworks/opt/telephony
+tar xf $GITHUB_WORKSPACE/frameworks_opt_telephony-01.tar.zst -C $GITHUB_WORKSPACE/downloads/frameworks/opt/telephony/
+
 gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern frameworks_wilhelm.tar.zst --output frameworks_wilhelm-01.tar.zst
 mkdir -p $GITHUB_WORKSPACE/downloads/frameworks/wilhelm
 tar xf $GITHUB_WORKSPACE/frameworks_wilhelm-01.tar.zst -C $GITHUB_WORKSPACE/downloads/frameworks/wilhelm/
@@ -460,6 +468,10 @@ tar xf $GITHUB_WORKSPACE/packages_modules_StatsD-01.tar.zst -C $GITHUB_WORKSPACE
 gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern packages_modules_adb.tar.zst --output packages_modules_adb-01.tar.zst
 mkdir -p $GITHUB_WORKSPACE/downloads/packages/modules/adb
 tar xf $GITHUB_WORKSPACE/packages_modules_adb-01.tar.zst -C $GITHUB_WORKSPACE/downloads/packages/modules/adb/
+
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern packages_services_Car.tar.zst --output packages_services_Car-01.tar.zst
+mkdir -p $GITHUB_WORKSPACE/downloads/packages/services/Car
+tar xf $GITHUB_WORKSPACE/packages_services_Car-01.tar.zst -C $GITHUB_WORKSPACE/downloads/packages/services/Car/
 
 gh release --repo cibuilde/aosp-buildbot download android12-gsi_03 --pattern prebuilts_gradle-plugin.tar.zst --output prebuilts_gradle-plugin-03.tar.zst
 mkdir -p $GITHUB_WORKSPACE/downloads/prebuilts/gradle-plugin
@@ -656,7 +668,9 @@ time source steps/build_04/frameworks_compile_mclinker.sh
 time source steps/build_04/frameworks_compile_slang.sh
 time source steps/build_04/frameworks_hardware_interfaces.sh
 time source steps/build_04/frameworks_native.sh
+time source steps/build_04/frameworks_opt_net_voip.sh
 time source steps/build_04/frameworks_opt_net_wifi.sh
+time source steps/build_04/frameworks_opt_telephony.sh
 time source steps/build_04/frameworks_proto_logging.sh
 time source steps/build_04/hardware_google_camera.sh
 time source steps/build_04/hardware_interfaces.sh
@@ -674,6 +688,7 @@ time source steps/build_04/packages_modules_StatsD.sh
 time source steps/build_04/packages_modules_Virtualization.sh
 time source steps/build_04/packages_modules_adb.sh
 time source steps/build_04/packages_modules_common.sh
+time source steps/build_04/packages_services_Car.sh
 time source steps/build_04/prebuilts_manifest-merger.sh
 time source steps/build_04/prebuilts_ndk.sh
 time source steps/build_04/prebuilts_sdk.sh

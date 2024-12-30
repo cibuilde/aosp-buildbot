@@ -646,8 +646,16 @@ jobs:
         key: frameworks_native@${{ env.branch }}
     - uses: actions/cache@v4
       with:
+        path: cache/frameworks_opt_net_voip.tar.zst
+        key: frameworks_opt_net_voip@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
         path: cache/frameworks_opt_net_wifi.tar.zst
         key: frameworks_opt_net_wifi@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/frameworks_opt_telephony.tar.zst
+        key: frameworks_opt_telephony@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/frameworks_proto_logging.tar.zst
@@ -742,6 +750,10 @@ jobs:
         key: packages_modules_common@${{ env.branch }}
     - uses: actions/cache@v4
       with:
+        path: cache/packages_services_Car.tar.zst
+        key: packages_services_Car@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
         path: cache/prebuilts_build-tools.tar.zst
         key: prebuilts_build-tools@${{ env.branch }}
     - uses: actions/cache@v4
@@ -800,6 +812,10 @@ jobs:
       with:
         path: cache/system_bt.tar.zst
         key: system_bt@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/system_connectivity_wificond.tar.zst
+        key: system_connectivity_wificond@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/system_core.tar.zst
@@ -904,6 +920,10 @@ jobs:
       with:
         path: cache/system_update_engine.tar.zst
         key: system_update_engine@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/system_vold.tar.zst
+        key: system_vold@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/tools_metalava.tar.zst

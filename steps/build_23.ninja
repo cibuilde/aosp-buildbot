@@ -18,7 +18,9 @@ include ninja/external/nanohttpd/libnanohttpd^android_common_apex30.ninja
 include ninja/external/okio/okio-lib^android_common.ninja
 include ninja/external/setupdesign/setupdesign-strings^android_common.ninja
 include ninja/external/xz-java/xz-java^android_common.ninja
+include ninja/frameworks/av/av-types-aidl-java^android_common.ninja
 include ninja/frameworks/av/media/libmediatranscoding/mediatranscoding_aidl_interface-java^android_common_apex29.ninja
+include ninja/frameworks/av/services/tuner/tv_tuner_frontend_info_aidl_interface-java^android_common.ninja
 include ninja/frameworks/ex/camera2/portability/android-ex-camera2-portability^android_common.ninja
 include ninja/frameworks/ex/camera2/utils/android-ex-camera2-utils^android_common.ninja
 include ninja/frameworks/libs/modules-utils/java/com/android/modules/utils/build/modules-utils-build_system^android_common.ninja
@@ -34,6 +36,7 @@ include ninja/frameworks/libs/service_entitlement/service-entitlement^android_co
 include ninja/frameworks/libs/systemui/iconloaderlib/iconloader^android_common.ninja
 include ninja/frameworks/libs/systemui/iconloaderlib/iconloader^android_common_apex30.ninja
 include ninja/frameworks/libs/systemui/iconloaderlib/iconloader_base^android_common.ninja
+include ninja/frameworks/native/libs/permission/framework-permission-aidl-java^android_common.ninja
 include ninja/frameworks/opt/chips/libchips^android_common.ninja
 include ninja/frameworks/opt/setupwizard/library/setup-wizard-lib^android_common.ninja
 include ninja/frameworks/opt/telephony/proto/telephony-protos^android_common.ninja
@@ -183,9 +186,13 @@ build xz-java,android_common: phony out/soong/.intermediates/external/xz-java/xz
 
 build external_xz-java-targets: phony xz-java,android_common
 
+build av-types-aidl-java,android_common: phony out/soong/.intermediates/frameworks/av/av-types-aidl-java/android_common/javac/av-types-aidl-java.jar out/soong/.intermediates/frameworks/av/av-types-aidl-java/android_common/turbine-combined/av-types-aidl-java.jar out/soong/.intermediates/frameworks/av/av-types-aidl-java/android_common/turbine/av-types-aidl-java.jar
+
 build mediatranscoding_aidl_interface-java,android_common_apex29: phony out/soong/.intermediates/frameworks/av/media/libmediatranscoding/mediatranscoding_aidl_interface-java/android_common_apex29/javac/mediatranscoding_aidl_interface-java.jar out/soong/.intermediates/frameworks/av/media/libmediatranscoding/mediatranscoding_aidl_interface-java/android_common_apex29/turbine-combined/mediatranscoding_aidl_interface-java.jar
 
-build frameworks_av-targets: phony mediatranscoding_aidl_interface-java,android_common_apex29
+build tv_tuner_frontend_info_aidl_interface-java,android_common: phony out/soong/.intermediates/frameworks/av/services/tuner/tv_tuner_frontend_info_aidl_interface-java/android_common/javac/tv_tuner_frontend_info_aidl_interface-java.jar out/soong/.intermediates/frameworks/av/services/tuner/tv_tuner_frontend_info_aidl_interface-java/android_common/turbine-combined/tv_tuner_frontend_info_aidl_interface-java.jar out/soong/.intermediates/frameworks/av/services/tuner/tv_tuner_frontend_info_aidl_interface-java/android_common/turbine/tv_tuner_frontend_info_aidl_interface-java.jar
+
+build frameworks_av-targets: phony av-types-aidl-java,android_common mediatranscoding_aidl_interface-java,android_common_apex29 tv_tuner_frontend_info_aidl_interface-java,android_common
 
 build android-ex-camera2-portability,android_common: phony out/soong/.intermediates/frameworks/ex/camera2/portability/android-ex-camera2-portability/android_common/combined/android-ex-camera2-portability.jar out/soong/.intermediates/frameworks/ex/camera2/portability/android-ex-camera2-portability/android_common/turbine-combined/android-ex-camera2-portability.jar
 
@@ -226,6 +233,10 @@ build iconloader,android_common_apex30: phony out/soong/.intermediates/framework
 build iconloader_base,android_common: phony out/soong/.intermediates/frameworks/libs/systemui/iconloaderlib/iconloader_base/android_common/combined/iconloader_base.jar out/soong/.intermediates/frameworks/libs/systemui/iconloaderlib/iconloader_base/android_common/manifest_fixer/AndroidManifest.xml out/soong/.intermediates/frameworks/libs/systemui/iconloaderlib/iconloader_base/android_common/package-res.apk out/soong/.intermediates/frameworks/libs/systemui/iconloaderlib/iconloader_base/android_common/turbine-combined/iconloader_base.jar
 
 build frameworks_libs_systemui-targets: phony iconloader,android_common iconloader,android_common_apex30 iconloader_base,android_common
+
+build framework-permission-aidl-java,android_common: phony out/soong/.intermediates/frameworks/native/libs/permission/framework-permission-aidl-java/android_common/javac/framework-permission-aidl-java.jar out/soong/.intermediates/frameworks/native/libs/permission/framework-permission-aidl-java/android_common/turbine-combined/framework-permission-aidl-java.jar out/soong/.intermediates/frameworks/native/libs/permission/framework-permission-aidl-java/android_common/turbine/framework-permission-aidl-java.jar
+
+build frameworks_native-targets: phony framework-permission-aidl-java,android_common
 
 build libchips,android_common: phony out/soong/.intermediates/frameworks/opt/chips/libchips/android_common/combined/libchips.jar out/soong/.intermediates/frameworks/opt/chips/libchips/android_common/extra_packages out/soong/.intermediates/frameworks/opt/chips/libchips/android_common/manifest_merger/AndroidManifest.xml out/soong/.intermediates/frameworks/opt/chips/libchips/android_common/package-res.apk out/soong/.intermediates/frameworks/opt/chips/libchips/android_common/turbine-combined/libchips.jar
 
@@ -468,6 +479,10 @@ build com.google.android.material_material,android_common: phony out/soong/.inte
 build com.google.android.material_material,android_common_apex30: phony out/soong/.intermediates/prebuilts/sdk/current/extras/material-design-x/com.google.android.material_material/android_common_apex30/combined/com.google.android.material_material.jar out/soong/.intermediates/prebuilts/sdk/current/extras/material-design-x/com.google.android.material_material/android_common_apex30/manifest_fixer/AndroidManifest.xml out/soong/.intermediates/prebuilts/sdk/current/extras/material-design-x/com.google.android.material_material/android_common_apex30/package-res.apk out/soong/.intermediates/prebuilts/sdk/current/extras/material-design-x/com.google.android.material_material/android_common_apex30/turbine-combined/com.google.android.material_material.jar
 
 build prebuilts_sdk-targets: phony android-arch-core-runtime,android_common android-arch-lifecycle-livedata-core-nodeps,android_common android-arch-lifecycle-livedata-core,android_common android-arch-lifecycle-runtime,android_common android-arch-lifecycle-viewmodel,android_common android-support-animatedvectordrawable-nodeps,android_common android-support-animatedvectordrawable,android_common android-support-asynclayoutinflater-nodeps,android_common android-support-asynclayoutinflater,android_common android-support-compat-nodeps,android_common android-support-compat,android_common android-support-coordinatorlayout-nodeps,android_common android-support-coordinatorlayout,android_common android-support-core-ui-nodeps,android_common android-support-core-ui,android_common android-support-core-utils-nodeps,android_common android-support-core-utils,android_common android-support-cursoradapter,android_common android-support-customview-nodeps,android_common android-support-customview,android_common android-support-design-nodeps,android_common android-support-design,android_common android-support-documentfile,android_common android-support-drawerlayout-nodeps,android_common android-support-drawerlayout,android_common android-support-dynamic-animation-nodeps,android_common android-support-dynamic-animation,android_common android-support-fragment-nodeps,android_common android-support-fragment,android_common android-support-interpolator,android_common android-support-loader-nodeps,android_common android-support-loader,android_common android-support-localbroadcastmanager,android_common android-support-media-compat-nodeps,android_common android-support-media-compat,android_common android-support-print,android_common android-support-slidingpanelayout-nodeps,android_common android-support-slidingpanelayout,android_common android-support-swiperefreshlayout-nodeps,android_common android-support-swiperefreshlayout,android_common android-support-transition-nodeps,android_common android-support-transition,android_common android-support-v13-nodeps,android_common android-support-v13,android_common android-support-v4-nodeps,android_common android-support-v4,android_common android-support-v7-appcompat-nodeps,android_common android-support-v7-appcompat,android_common android-support-v7-cardview,android_common android-support-v7-recyclerview-nodeps,android_common android-support-v7-recyclerview,android_common android-support-vectordrawable-nodeps,android_common android-support-vectordrawable,android_common android-support-viewpager-nodeps,android_common android-support-viewpager,android_common android-versionedparcelable,android_common androidx-constraintlayout_constraintlayout,android_common androidx-constraintlayout_constraintlayout,android_common_apex30 androidx.legacy_legacy-preference-v14,android_common androidx.legacy_legacy-preference-v14,android_common_apex30 androidx.legacy_legacy-support-core-ui,android_common androidx.legacy_legacy-support-core-ui,android_common_apex30 androidx.legacy_legacy-support-v13,android_common androidx.legacy_legacy-support-v13,android_common_apex30 androidx.legacy_legacy-support-v4,android_common androidx.legacy_legacy-support-v4,android_common_apex30 androidx.lifecycle_lifecycle-extensions,android_common androidx.lifecycle_lifecycle-extensions,android_common_apex30 androidx.navigation_navigation-ui-ktx-nodeps,android_common_apex30 androidx.navigation_navigation-ui-ktx,android_common_apex30 androidx.navigation_navigation-ui-nodeps,android_common_apex30 androidx.navigation_navigation-ui,android_common_apex30 com.google.android.material_material-nodeps,android_common com.google.android.material_material-nodeps,android_common_apex30 com.google.android.material_material,android_common com.google.android.material_material,android_common_apex30
+
+build sdk,: phony out/soong/framework.aidl
+
+build singletons-targets: phony sdk,
 
 build netd_aidl_interface-V3-java,android_common_apex30: phony out/soong/.intermediates/system/netd/server/netd_aidl_interface-V3-java/android_common_apex30/javac/netd_aidl_interface-V3-java.jar out/soong/.intermediates/system/netd/server/netd_aidl_interface-V3-java/android_common_apex30/turbine-combined/netd_aidl_interface-V3-java.jar
 

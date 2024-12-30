@@ -1,5 +1,0 @@
-out/soong/.intermediates/external/perfetto/perfetto_protos_perfetto_trace_gpu_zero_gen_headers/gen/external/perfetto/protos/perfetto/trace/gpu/gpu_counter_event.pbzero.h
-out/soong/.intermediates/external/perfetto/perfetto_protos_perfetto_trace_gpu_zero_gen_headers/gen/external/perfetto/protos/perfetto/trace/gpu/gpu_log.pbzero.h
-out/soong/.intermediates/external/perfetto/perfetto_protos_perfetto_trace_gpu_zero_gen_headers/gen/external/perfetto/protos/perfetto/trace/gpu/gpu_render_stage_event.pbzero.h
-out/soong/.intermediates/external/perfetto/perfetto_protos_perfetto_trace_gpu_zero_gen_headers/gen/external/perfetto/protos/perfetto/trace/gpu/vulkan_api_event.pbzero.h
-out/soong/.intermediates/external/perfetto/perfetto_protos_perfetto_trace_gpu_zero_gen_headers/gen/external/perfetto/protos/perfetto/trace/gpu/vulkan_memory_event.pbzero.h

@@ -1,8 +1,0 @@
-out/soong/.intermediates/frameworks/base/packages/InputDevices/InputDevices/android_common/InputDevices.apk
-out/soong/.intermediates/frameworks/base/packages/InputDevices/InputDevices/android_common/dexpreopt/dexpreopt.config
-out/soong/.intermediates/frameworks/base/packages/InputDevices/InputDevices/android_common/dexpreopt/oat/x86_64/package.odex
-out/soong/.intermediates/frameworks/base/packages/InputDevices/InputDevices/android_common/dexpreopt/oat/x86_64/package.vdex
-out/soong/.intermediates/frameworks/base/packages/InputDevices/InputDevices/android_common/javac/InputDevices.jar
-out/soong/.intermediates/frameworks/base/packages/InputDevices/InputDevices/android_common/package-res.apk
-out/soong/.intermediates/frameworks/base/packages/InputDevices/InputDevices/android_common/proguard_dictionary
-out/soong/.intermediates/frameworks/base/packages/InputDevices/InputDevices/android_common/proguard_usage.zip

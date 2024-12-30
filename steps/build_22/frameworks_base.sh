@@ -59,6 +59,7 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/external/turbine/turbine^linux_glibc_com
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/tools/aapt2/aapt2^linux_glibc_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/android-non-updatable.stubs.module_lib^android_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/api-stubs-docs-non-updatable^android_common/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/media/audio_common-aidl-java-source^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/apex/appsearch/framework/framework-appsearch.stubs.module_lib^android_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/apex/appsearch/framework/framework-appsearch.stubs.source.module_lib^android_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/apex/appsearch/framework/framework-appsearch.stubs.source.system^android_common/ .
@@ -78,6 +79,8 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/apex/media/framework/fra
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/apex/media/framework/framework-media.stubs^android_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/core/res/framework-res-package-jar^android_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/core/res/framework-res^android_common/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/media/media_permission-aidl-java-source^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/media/soundtrigger_middleware-aidl-java-source^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/system-api-stubs-docs-non-updatable^android_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/test-api-stubs-docs-non-updatable^android_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/libcore/art.module.public.api.stubs.module_lib^android_common/ .
@@ -459,6 +462,11 @@ ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_22.ninja android_test_stub
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/android_test_stubs_current^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_22/frameworks/base/android_test_stubs_current^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/android_test_stubs_current^android_common
 
+echo "building audio_common-aidl-java^android_common"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_22.ninja audio_common-aidl-java,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/media/audio_common-aidl-java^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_22/frameworks/base/audio_common-aidl-java^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/media/audio_common-aidl-java^android_common
+
 echo "building com.android.appsearch-bootclasspath-fragment^android_common_apex10000"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_22.ninja com.android.appsearch-bootclasspath-fragment,android_common_apex10000
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/apex/appsearch/com.android.appsearch-bootclasspath-fragment^android_common_apex10000
@@ -484,10 +492,20 @@ ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_22.ninja frameworks-base-a
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/api/frameworks-base-api-system-removed.txt^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_22/frameworks/base/frameworks-base-api-system-removed.txt^.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/api/frameworks-base-api-system-removed.txt^
 
+echo "building media_permission-aidl-java^android_common"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_22.ninja media_permission-aidl-java,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/media/media_permission-aidl-java^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_22/frameworks/base/media_permission-aidl-java^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/media/media_permission-aidl-java^android_common
+
 echo "building metrics-constants-protos^android_common"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_22.ninja metrics-constants-protos,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/proto/metrics-constants-protos^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_22/frameworks/base/metrics-constants-protos^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/proto/metrics-constants-protos^android_common
+
+echo "building soundtrigger_middleware-aidl-java^android_common"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_22.ninja soundtrigger_middleware-aidl-java,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/media/soundtrigger_middleware-aidl-java^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_22/frameworks/base/soundtrigger_middleware-aidl-java^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/media/soundtrigger_middleware-aidl-java^android_common
 
 rm -rf out
 

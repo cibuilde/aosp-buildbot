@@ -33,11 +33,6 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/system/core/libcutils/libcutils^linux_gl
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/libbase/libbase^linux_glibc_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^linux_glibc_x86_64_static/ .
 
-echo "building libaidl-common^linux_glibc_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libaidl-common,linux_glibc_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/tools/aidl/libaidl-common^linux_glibc_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/system/tools/aidl/libaidl-common^linux_glibc_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/tools/aidl/libaidl-common^linux_glibc_x86_64_static
-
 echo "building aidl-cpp^linux_glibc_x86_64"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja aidl-cpp,linux_glibc_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/tools/aidl/aidl-cpp^linux_glibc_x86_64
@@ -52,6 +47,11 @@ echo "building lazy_test_service_aidl-cpp-source^"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja lazy_test_service_aidl-cpp-source,
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/tools/aidl/tests/lazy_test/lazy_test_service_aidl-cpp-source^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/system/tools/aidl/lazy_test_service_aidl-cpp-source^.output . $GITHUB_WORKSPACE/artifacts/system/tools/aidl/tests/lazy_test/lazy_test_service_aidl-cpp-source^
+
+echo "building libaidl-common^linux_glibc_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libaidl-common,linux_glibc_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/tools/aidl/libaidl-common^linux_glibc_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/system/tools/aidl/libaidl-common^linux_glibc_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/tools/aidl/libaidl-common^linux_glibc_x86_64_static
 
 rm -rf out
 

@@ -39,6 +39,11 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/proto_logging/stats/libstats_
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/libbase/libbase^linux_glibc_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^linux_glibc_x86_64_shared/ .
 
+echo "building stats-log-api-gen^linux_glibc_x86_64"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja stats-log-api-gen,linux_glibc_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/proto_logging/stats/stats_log_api_gen/stats-log-api-gen^linux_glibc_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/frameworks/proto_logging/stats-log-api-gen^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/frameworks/proto_logging/stats/stats_log_api_gen/stats-log-api-gen^linux_glibc_x86_64
+
 echo "building statslog.cpp^"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja statslog.cpp,
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/proto_logging/stats/stats_log_api_gen/statslog.cpp^
@@ -58,11 +63,6 @@ echo "building libstatslog^android_x86_x86_64_static"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libstatslog,android_x86_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/proto_logging/stats/stats_log_api_gen/libstatslog^android_x86_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/frameworks/proto_logging/libstatslog^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/proto_logging/stats/stats_log_api_gen/libstatslog^android_x86_x86_64_static
-
-echo "building stats-log-api-gen^linux_glibc_x86_64"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja stats-log-api-gen,linux_glibc_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/proto_logging/stats/stats_log_api_gen/stats-log-api-gen^linux_glibc_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/frameworks/proto_logging/stats-log-api-gen^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/frameworks/proto_logging/stats/stats_log_api_gen/stats-log-api-gen^linux_glibc_x86_64
 
 rm -rf out
 

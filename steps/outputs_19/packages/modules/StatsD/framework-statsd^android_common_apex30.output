@@ -1,0 +1,6 @@
+out/soong/.intermediates/packages/modules/StatsD/framework/framework-statsd/android_common_apex30/gen/aidl/aidl0.srcjar
+out/soong/.intermediates/packages/modules/StatsD/framework/framework-statsd/android_common_apex30/turbine/framework-statsd.jar
+out/soong/.intermediates/packages/modules/StatsD/framework/framework-statsd/android_common_apex30/turbine-combined/framework-statsd.jar
+out/soong/.intermediates/packages/modules/StatsD/framework/framework-statsd/android_common_apex30/javac/framework-statsd.jar
+out/soong/.intermediates/packages/modules/StatsD/framework/framework-statsd/android_common_apex30/dex/framework-statsd.jar
+out/soong/.intermediates/packages/modules/StatsD/framework/framework-statsd/android_common_apex30/aligned/framework-statsd.jar

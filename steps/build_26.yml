@@ -46,6 +46,10 @@ jobs:
         key: external_guava@${{ env.branch }}
     - uses: actions/cache@v4
       with:
+        path: cache/external_ims.tar.zst
+        key: external_ims@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
         path: cache/external_jsr305.tar.zst
         key: external_jsr305@${{ env.branch }}
     - uses: actions/cache@v4
@@ -100,6 +104,10 @@ jobs:
       with:
         path: cache/frameworks_libs_systemui.tar.zst
         key: frameworks_libs_systemui@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/frameworks_opt_net_ims.tar.zst
+        key: frameworks_opt_net_ims@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/frameworks_opt_net_wifi.tar.zst

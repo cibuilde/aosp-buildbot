@@ -58,6 +58,10 @@ jobs:
         key: external_angle@${{ env.branch }}
     - uses: actions/cache@v4
       with:
+        path: cache/external_apache-xml.tar.zst
+        key: external_apache-xml@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
         path: cache/external_avb.tar.zst
         key: external_avb@${{ env.branch }}
     - uses: actions/cache@v4
@@ -236,6 +240,10 @@ jobs:
       with:
         path: cache/external_nanopb-c.tar.zst
         key: external_nanopb-c@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_okhttp.tar.zst
+        key: external_okhttp@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/external_pcre.tar.zst

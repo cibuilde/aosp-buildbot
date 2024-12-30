@@ -1,7 +1,0 @@
-out/soong/.intermediates/hardware/interfaces/ir/1.0/android.hardware.ir@1.0_genc++_headers/gen/android/hardware/ir/1.0/BnHwConsumerIr.h
-out/soong/.intermediates/hardware/interfaces/ir/1.0/android.hardware.ir@1.0_genc++_headers/gen/android/hardware/ir/1.0/BpHwConsumerIr.h
-out/soong/.intermediates/hardware/interfaces/ir/1.0/android.hardware.ir@1.0_genc++_headers/gen/android/hardware/ir/1.0/BsConsumerIr.h
-out/soong/.intermediates/hardware/interfaces/ir/1.0/android.hardware.ir@1.0_genc++_headers/gen/android/hardware/ir/1.0/IConsumerIr.h
-out/soong/.intermediates/hardware/interfaces/ir/1.0/android.hardware.ir@1.0_genc++_headers/gen/android/hardware/ir/1.0/IHwConsumerIr.h
-out/soong/.intermediates/hardware/interfaces/ir/1.0/android.hardware.ir@1.0_genc++_headers/gen/android/hardware/ir/1.0/hwtypes.h
-out/soong/.intermediates/hardware/interfaces/ir/1.0/android.hardware.ir@1.0_genc++_headers/gen/android/hardware/ir/1.0/types.h

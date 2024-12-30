@@ -54,6 +54,10 @@ jobs:
         key: external_lottie@${{ env.branch }}
     - uses: actions/cache@v4
       with:
+        path: cache/external_nist-sip.tar.zst
+        key: external_nist-sip@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
         path: cache/external_protobuf.tar.zst
         key: external_protobuf@${{ env.branch }}
     - uses: actions/cache@v4
@@ -80,6 +84,10 @@ jobs:
       with:
         path: cache/frameworks_libs_net.tar.zst
         key: frameworks_libs_net@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/frameworks_opt_net_voip.tar.zst
+        key: frameworks_opt_net_voip@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/frameworks_opt_net_wifi.tar.zst

@@ -1,8 +1,0 @@
-out/soong/.intermediates/packages/providers/PartnerBookmarksProvider/PartnerBookmarksProvider/android_common/PartnerBookmarksProvider.apk
-out/soong/.intermediates/packages/providers/PartnerBookmarksProvider/PartnerBookmarksProvider/android_common/combined/PartnerBookmarksProvider.jar
-out/soong/.intermediates/packages/providers/PartnerBookmarksProvider/PartnerBookmarksProvider/android_common/dexpreopt/dexpreopt.config
-out/soong/.intermediates/packages/providers/PartnerBookmarksProvider/PartnerBookmarksProvider/android_common/dexpreopt/oat/x86_64/package.odex
-out/soong/.intermediates/packages/providers/PartnerBookmarksProvider/PartnerBookmarksProvider/android_common/dexpreopt/oat/x86_64/package.vdex
-out/soong/.intermediates/packages/providers/PartnerBookmarksProvider/PartnerBookmarksProvider/android_common/package-res.apk
-out/soong/.intermediates/packages/providers/PartnerBookmarksProvider/PartnerBookmarksProvider/android_common/proguard_dictionary
-out/soong/.intermediates/packages/providers/PartnerBookmarksProvider/PartnerBookmarksProvider/android_common/proguard_usage.zip

@@ -86,6 +86,7 @@ include ninja/packages/modules/Wifi/framework/framework-wifi.impl^android_common
 include ninja/packages/modules/Wifi/service/service-wifi^android_common_apex30.ninja
 include ninja/packages/providers/MediaProvider/MediaProvider^android_common_apex30.ninja
 include ninja/packages/providers/MediaProvider/apex/framework/framework-mediaprovider.impl^android_common.ninja
+include ninja/system/libhidl/transport/base/1.0/android.hidl.base-V1.0-java^android_common.ninja
 include ninja/system/libhidl/transport/manager/1.0/android.hidl.manager-V1.0-java^android_common.ninja
 include ninja/system/libhidl/transport/manager/1.1/android.hidl.manager-V1.1-java^android_common.ninja
 include ninja/system/libhidl/transport/manager/1.2/android.hidl.manager-V1.2-java^android_common.ninja
@@ -274,13 +275,15 @@ build framework-mediaprovider.impl,android_common: phony out/soong/.intermediate
 
 build packages_providers_MediaProvider-targets: phony MediaProvider,android_common_apex30 framework-mediaprovider.impl,android_common
 
+build android.hidl.base-V1.0-java,android_common: phony out/soong/.intermediates/system/libhidl/transport/base/1.0/android.hidl.base-V1.0-java/android_common/dexpreopt/oat/x86/javalib.odex out/soong/.intermediates/system/libhidl/transport/base/1.0/android.hidl.base-V1.0-java/android_common/dexpreopt/oat/x86/javalib.vdex out/soong/.intermediates/system/libhidl/transport/base/1.0/android.hidl.base-V1.0-java/android_common/dexpreopt/oat/x86_64/javalib.odex out/soong/.intermediates/system/libhidl/transport/base/1.0/android.hidl.base-V1.0-java/android_common/dexpreopt/oat/x86_64/javalib.vdex
+
 build android.hidl.manager-V1.0-java,android_common: phony out/soong/.intermediates/system/libhidl/transport/manager/1.0/android.hidl.manager-V1.0-java/android_common/aligned/android.hidl.manager-V1.0-java.jar out/soong/.intermediates/system/libhidl/transport/manager/1.0/android.hidl.manager-V1.0-java/android_common/combined/android.hidl.manager-V1.0-java.jar out/soong/.intermediates/system/libhidl/transport/manager/1.0/android.hidl.manager-V1.0-java/android_common/dexpreopt/dexpreopt.config out/soong/.intermediates/system/libhidl/transport/manager/1.0/android.hidl.manager-V1.0-java/android_common/dexpreopt/oat/x86/javalib.odex out/soong/.intermediates/system/libhidl/transport/manager/1.0/android.hidl.manager-V1.0-java/android_common/dexpreopt/oat/x86/javalib.vdex out/soong/.intermediates/system/libhidl/transport/manager/1.0/android.hidl.manager-V1.0-java/android_common/dexpreopt/oat/x86_64/javalib.odex out/soong/.intermediates/system/libhidl/transport/manager/1.0/android.hidl.manager-V1.0-java/android_common/dexpreopt/oat/x86_64/javalib.vdex out/soong/.intermediates/system/libhidl/transport/manager/1.0/android.hidl.manager-V1.0-java/android_common/turbine-combined/android.hidl.manager-V1.0-java.jar
 
 build android.hidl.manager-V1.1-java,android_common: phony out/soong/.intermediates/system/libhidl/transport/manager/1.1/android.hidl.manager-V1.1-java/android_common/combined/android.hidl.manager-V1.1-java.jar out/soong/.intermediates/system/libhidl/transport/manager/1.1/android.hidl.manager-V1.1-java/android_common/turbine-combined/android.hidl.manager-V1.1-java.jar
 
 build android.hidl.manager-V1.2-java,android_common: phony out/soong/.intermediates/system/libhidl/transport/manager/1.2/android.hidl.manager-V1.2-java/android_common/combined/android.hidl.manager-V1.2-java.jar out/soong/.intermediates/system/libhidl/transport/manager/1.2/android.hidl.manager-V1.2-java/android_common/turbine-combined/android.hidl.manager-V1.2-java.jar
 
-build system_libhidl-targets: phony android.hidl.manager-V1.0-java,android_common android.hidl.manager-V1.1-java,android_common android.hidl.manager-V1.2-java,android_common
+build system_libhidl-targets: phony android.hidl.base-V1.0-java,android_common android.hidl.manager-V1.0-java,android_common android.hidl.manager-V1.1-java,android_common android.hidl.manager-V1.2-java,android_common
 
 build netd_aidl_interface-V7-java,android_common: phony out/soong/.intermediates/system/netd/server/netd_aidl_interface-V7-java/android_common/javac/netd_aidl_interface-V7-java.jar out/soong/.intermediates/system/netd/server/netd_aidl_interface-V7-java/android_common/turbine-combined/netd_aidl_interface-V7-java.jar
 
