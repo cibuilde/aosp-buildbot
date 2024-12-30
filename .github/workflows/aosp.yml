@@ -8,7 +8,6 @@ env:
   GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 jobs:
   build_6:
-    needs: build_5
     runs-on: ubuntu-22.04
     steps:
     - uses: actions/checkout@main
