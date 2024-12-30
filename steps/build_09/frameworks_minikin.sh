@@ -43,15 +43,15 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/minikin/libs/minikin/libminik
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^android_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^android_x86_x86_64_shared/ .
 
-echo "building libminikin^android_x86_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja libminikin,android_x86_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/minikin/libs/minikin/libminikin^android_x86_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_09/frameworks/minikin/libminikin^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/minikin/libs/minikin/libminikin^android_x86_x86_64_shared
-
 echo "building libminikin^android_x86_64_shared"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja libminikin,android_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/minikin/libs/minikin/libminikin^android_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_09/frameworks/minikin/libminikin^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/minikin/libs/minikin/libminikin^android_x86_64_shared
+
+echo "building libminikin^android_x86_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja libminikin,android_x86_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/minikin/libs/minikin/libminikin^android_x86_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_09/frameworks/minikin/libminikin^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/minikin/libs/minikin/libminikin^android_x86_x86_64_shared
 
 rm -rf out
 

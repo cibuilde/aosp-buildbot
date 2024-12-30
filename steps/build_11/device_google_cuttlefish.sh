@@ -93,15 +93,20 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/system/libhidl/libhidlbase^android_vendo
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^android_vendor.31_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^android_vendor.31_x86_x86_64_shared/ .
 
-echo "building suspend_blocker^android_vendor.31_x86_64"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_11.ninja suspend_blocker,android_vendor.31_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/guest/services/suspend_blocker/suspend_blocker^android_vendor.31_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_11/device/google/cuttlefish/suspend_blocker^android_vendor.31_x86_64.output . $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/guest/services/suspend_blocker/suspend_blocker^android_vendor.31_x86_64
+echo "building libcuttlefish-ril-2^android_vendor.31_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_11.ninja libcuttlefish-ril-2,android_vendor.31_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/guest/hals/ril/reference-ril/libcuttlefish-ril-2^android_vendor.31_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_11/device/google/cuttlefish/libcuttlefish-ril-2^android_vendor.31_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/guest/hals/ril/reference-ril/libcuttlefish-ril-2^android_vendor.31_x86_64_shared
 
 echo "building libril-modem-lib^android_vendor.31_x86_x86_64_shared"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_11.ninja libril-modem-lib,android_vendor.31_x86_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/guest/hals/ril/reference-libril/libril-modem-lib^android_vendor.31_x86_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_11/device/google/cuttlefish/libril-modem-lib^android_vendor.31_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/guest/hals/ril/reference-libril/libril-modem-lib^android_vendor.31_x86_x86_64_shared
+
+echo "building libcuttlefish-ril-2^android_vendor.31_x86_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_11.ninja libcuttlefish-ril-2,android_vendor.31_x86_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/guest/hals/ril/reference-ril/libcuttlefish-ril-2^android_vendor.31_x86_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_11/device/google/cuttlefish/libcuttlefish-ril-2^android_vendor.31_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/guest/hals/ril/reference-ril/libcuttlefish-ril-2^android_vendor.31_x86_x86_64_shared
 
 echo "building libril-modem-lib^android_vendor.31_x86_64_shared"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_11.ninja libril-modem-lib,android_vendor.31_x86_64_shared
@@ -113,15 +118,10 @@ ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_11.ninja libcuttlefish-ril
 mkdir -p $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/guest/hals/rild/libcuttlefish-rild^android_vendor.31_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_11/device/google/cuttlefish/libcuttlefish-rild^android_vendor.31_x86_64.output . $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/guest/hals/rild/libcuttlefish-rild^android_vendor.31_x86_64
 
-echo "building libcuttlefish-ril-2^android_vendor.31_x86_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_11.ninja libcuttlefish-ril-2,android_vendor.31_x86_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/guest/hals/ril/reference-ril/libcuttlefish-ril-2^android_vendor.31_x86_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_11/device/google/cuttlefish/libcuttlefish-ril-2^android_vendor.31_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/guest/hals/ril/reference-ril/libcuttlefish-ril-2^android_vendor.31_x86_x86_64_shared
-
-echo "building libcuttlefish-ril-2^android_vendor.31_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_11.ninja libcuttlefish-ril-2,android_vendor.31_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/guest/hals/ril/reference-ril/libcuttlefish-ril-2^android_vendor.31_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_11/device/google/cuttlefish/libcuttlefish-ril-2^android_vendor.31_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/guest/hals/ril/reference-ril/libcuttlefish-ril-2^android_vendor.31_x86_64_shared
+echo "building suspend_blocker^android_vendor.31_x86_64"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_11.ninja suspend_blocker,android_vendor.31_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/guest/services/suspend_blocker/suspend_blocker^android_vendor.31_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_11/device/google/cuttlefish/suspend_blocker^android_vendor.31_x86_64.output . $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/guest/services/suspend_blocker/suspend_blocker^android_vendor.31_x86_64
 
 rm -rf out
 

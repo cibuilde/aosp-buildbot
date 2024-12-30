@@ -34,20 +34,20 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/libc^android_recovery_x86_64
 rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/libc^android_vendor.31_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/libc^android_x86_64_shared_current/ .
 
-echo "building sh_vendor^android_vendor.31_x86_64"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja sh_vendor,android_vendor.31_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/mksh/sh_vendor^android_vendor.31_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/mksh/sh_vendor^android_vendor.31_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/mksh/sh_vendor^android_vendor.31_x86_64
+echo "building sh^android_recovery_x86_64"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja sh,android_recovery_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/mksh/sh^android_recovery_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/mksh/sh^android_recovery_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/mksh/sh^android_recovery_x86_64
 
 echo "building sh^android_x86_64"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja sh,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/mksh/sh^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/mksh/sh^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/mksh/sh^android_x86_64
 
-echo "building sh^android_recovery_x86_64"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja sh,android_recovery_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/mksh/sh^android_recovery_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/mksh/sh^android_recovery_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/mksh/sh^android_recovery_x86_64
+echo "building sh_vendor^android_vendor.31_x86_64"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja sh_vendor,android_vendor.31_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/mksh/sh_vendor^android_vendor.31_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/mksh/sh_vendor^android_vendor.31_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/mksh/sh_vendor^android_vendor.31_x86_64
 
 rm -rf out
 

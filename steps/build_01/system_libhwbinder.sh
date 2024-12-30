@@ -28,40 +28,40 @@ clone_depth_platform system/media
 clone_depth_platform system/unwinding
 
 
-echo "building libhwbinder-impl-internal^android_x86_x86_64_static_apex30"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libhwbinder-impl-internal,android_x86_x86_64_static_apex30
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/libhwbinder/libhwbinder-impl-internal^android_x86_x86_64_static_apex30
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/libhwbinder/libhwbinder-impl-internal^android_x86_x86_64_static_apex30.output . $GITHUB_WORKSPACE/artifacts/system/libhwbinder/libhwbinder-impl-internal^android_x86_x86_64_static_apex30
-
-echo "building libhwbinder-impl-internal^android_x86_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libhwbinder-impl-internal,android_x86_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/libhwbinder/libhwbinder-impl-internal^android_x86_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/libhwbinder/libhwbinder-impl-internal^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/libhwbinder/libhwbinder-impl-internal^android_x86_x86_64_static
-
-echo "building libhwbinder-impl-internal^android_x86_64_static_cfi_apex29"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libhwbinder-impl-internal,android_x86_64_static_cfi_apex29
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/libhwbinder/libhwbinder-impl-internal^android_x86_64_static_cfi_apex29
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/libhwbinder/libhwbinder-impl-internal^android_x86_64_static_cfi_apex29.output . $GITHUB_WORKSPACE/artifacts/system/libhwbinder/libhwbinder-impl-internal^android_x86_64_static_cfi_apex29
-
-echo "building libhwbinder-impl-internal^android_x86_64_static_apex30"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libhwbinder-impl-internal,android_x86_64_static_apex30
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/libhwbinder/libhwbinder-impl-internal^android_x86_64_static_apex30
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/libhwbinder/libhwbinder-impl-internal^android_x86_64_static_apex30.output . $GITHUB_WORKSPACE/artifacts/system/libhwbinder/libhwbinder-impl-internal^android_x86_64_static_apex30
-
-echo "building libhwbinder-impl-internal^android_x86_64_static_apex29"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libhwbinder-impl-internal,android_x86_64_static_apex29
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/libhwbinder/libhwbinder-impl-internal^android_x86_64_static_apex29
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/libhwbinder/libhwbinder-impl-internal^android_x86_64_static_apex29.output . $GITHUB_WORKSPACE/artifacts/system/libhwbinder/libhwbinder-impl-internal^android_x86_64_static_apex29
+echo "building libhwbinder-impl-internal^android_recovery_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libhwbinder-impl-internal,android_recovery_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/libhwbinder/libhwbinder-impl-internal^android_recovery_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/libhwbinder/libhwbinder-impl-internal^android_recovery_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/libhwbinder/libhwbinder-impl-internal^android_recovery_x86_64_static
 
 echo "building libhwbinder-impl-internal^android_x86_64_static"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libhwbinder-impl-internal,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/libhwbinder/libhwbinder-impl-internal^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/libhwbinder/libhwbinder-impl-internal^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/libhwbinder/libhwbinder-impl-internal^android_x86_64_static
 
-echo "building libhwbinder-impl-internal^android_recovery_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libhwbinder-impl-internal,android_recovery_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/libhwbinder/libhwbinder-impl-internal^android_recovery_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/libhwbinder/libhwbinder-impl-internal^android_recovery_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/libhwbinder/libhwbinder-impl-internal^android_recovery_x86_64_static
+echo "building libhwbinder-impl-internal^android_x86_64_static_apex29"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libhwbinder-impl-internal,android_x86_64_static_apex29
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/libhwbinder/libhwbinder-impl-internal^android_x86_64_static_apex29
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/libhwbinder/libhwbinder-impl-internal^android_x86_64_static_apex29.output . $GITHUB_WORKSPACE/artifacts/system/libhwbinder/libhwbinder-impl-internal^android_x86_64_static_apex29
+
+echo "building libhwbinder-impl-internal^android_x86_64_static_apex30"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libhwbinder-impl-internal,android_x86_64_static_apex30
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/libhwbinder/libhwbinder-impl-internal^android_x86_64_static_apex30
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/libhwbinder/libhwbinder-impl-internal^android_x86_64_static_apex30.output . $GITHUB_WORKSPACE/artifacts/system/libhwbinder/libhwbinder-impl-internal^android_x86_64_static_apex30
+
+echo "building libhwbinder-impl-internal^android_x86_64_static_cfi_apex29"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libhwbinder-impl-internal,android_x86_64_static_cfi_apex29
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/libhwbinder/libhwbinder-impl-internal^android_x86_64_static_cfi_apex29
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/libhwbinder/libhwbinder-impl-internal^android_x86_64_static_cfi_apex29.output . $GITHUB_WORKSPACE/artifacts/system/libhwbinder/libhwbinder-impl-internal^android_x86_64_static_cfi_apex29
+
+echo "building libhwbinder-impl-internal^android_x86_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libhwbinder-impl-internal,android_x86_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/libhwbinder/libhwbinder-impl-internal^android_x86_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/libhwbinder/libhwbinder-impl-internal^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/libhwbinder/libhwbinder-impl-internal^android_x86_x86_64_static
+
+echo "building libhwbinder-impl-internal^android_x86_x86_64_static_apex30"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libhwbinder-impl-internal,android_x86_x86_64_static_apex30
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/libhwbinder/libhwbinder-impl-internal^android_x86_x86_64_static_apex30
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/libhwbinder/libhwbinder-impl-internal^android_x86_x86_64_static_apex30.output . $GITHUB_WORKSPACE/artifacts/system/libhwbinder/libhwbinder-impl-internal^android_x86_x86_64_static_apex30
 
 rm -rf out
 

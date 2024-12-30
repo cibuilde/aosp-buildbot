@@ -38,360 +38,360 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/cc/ndkstubgen/ndkstubgen^lin
 rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/zip/cmd/soong_zip^linux_glibc_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/singletons/api_levels^/ .
 
-echo "building libmediandk^android_x86_x86_64_shared_29"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libmediandk,android_x86_x86_64_shared_29
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/ndk/libmediandk^android_x86_x86_64_shared_29
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/av/libmediandk^android_x86_x86_64_shared_29.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/ndk/libmediandk^android_x86_x86_64_shared_29
-
-echo "building libmediandk^android_x86_64_shared_current"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libmediandk,android_x86_64_shared_current
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/ndk/libmediandk^android_x86_64_shared_current
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/av/libmediandk^android_x86_64_shared_current.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/ndk/libmediandk^android_x86_64_shared_current
-
-echo "building libmediandk^android_x86_64_shared_29"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libmediandk,android_x86_64_shared_29
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/ndk/libmediandk^android_x86_64_shared_29
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/av/libmediandk^android_x86_64_shared_29.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/ndk/libmediandk^android_x86_64_shared_29
-
-echo "building libmediandk^android_vendor.31_x86_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libmediandk,android_vendor.31_x86_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/ndk/libmediandk^android_vendor.31_x86_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/av/libmediandk^android_vendor.31_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/ndk/libmediandk^android_vendor.31_x86_x86_64_shared
-
-echo "building libmediandk^android_vendor.31_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libmediandk,android_vendor.31_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/ndk/libmediandk^android_vendor.31_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/av/libmediandk^android_vendor.31_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/ndk/libmediandk^android_vendor.31_x86_64_shared
-
-echo "building libmediandk.ndk^android_x86_x86_64_sdk_shared_current"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libmediandk.ndk,android_x86_x86_64_sdk_shared_current
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/ndk/libmediandk.ndk^android_x86_x86_64_sdk_shared_current
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/av/libmediandk.ndk^android_x86_x86_64_sdk_shared_current.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/ndk/libmediandk.ndk^android_x86_x86_64_sdk_shared_current
-
-echo "building libmediandk.ndk^android_x86_x86_64_sdk_shared_REL"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libmediandk.ndk,android_x86_x86_64_sdk_shared_REL
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/ndk/libmediandk.ndk^android_x86_x86_64_sdk_shared_REL
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/av/libmediandk.ndk^android_x86_x86_64_sdk_shared_REL.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/ndk/libmediandk.ndk^android_x86_x86_64_sdk_shared_REL
-
-echo "building libmediandk.ndk^android_x86_x86_64_sdk_shared_31"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libmediandk.ndk,android_x86_x86_64_sdk_shared_31
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/ndk/libmediandk.ndk^android_x86_x86_64_sdk_shared_31
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/av/libmediandk.ndk^android_x86_x86_64_sdk_shared_31.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/ndk/libmediandk.ndk^android_x86_x86_64_sdk_shared_31
-
-echo "building libmediandk.ndk^android_x86_x86_64_sdk_shared_30"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libmediandk.ndk,android_x86_x86_64_sdk_shared_30
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/ndk/libmediandk.ndk^android_x86_x86_64_sdk_shared_30
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/av/libmediandk.ndk^android_x86_x86_64_sdk_shared_30.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/ndk/libmediandk.ndk^android_x86_x86_64_sdk_shared_30
-
-echo "building libmediandk.ndk^android_x86_x86_64_sdk_shared_29"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libmediandk.ndk,android_x86_x86_64_sdk_shared_29
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/ndk/libmediandk.ndk^android_x86_x86_64_sdk_shared_29
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/av/libmediandk.ndk^android_x86_x86_64_sdk_shared_29.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/ndk/libmediandk.ndk^android_x86_x86_64_sdk_shared_29
-
-echo "building libmediandk.ndk^android_x86_x86_64_sdk_shared_28"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libmediandk.ndk,android_x86_x86_64_sdk_shared_28
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/ndk/libmediandk.ndk^android_x86_x86_64_sdk_shared_28
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/av/libmediandk.ndk^android_x86_x86_64_sdk_shared_28.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/ndk/libmediandk.ndk^android_x86_x86_64_sdk_shared_28
-
-echo "building libmediandk.ndk^android_x86_x86_64_sdk_shared_27"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libmediandk.ndk,android_x86_x86_64_sdk_shared_27
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/ndk/libmediandk.ndk^android_x86_x86_64_sdk_shared_27
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/av/libmediandk.ndk^android_x86_x86_64_sdk_shared_27.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/ndk/libmediandk.ndk^android_x86_x86_64_sdk_shared_27
-
-echo "building libmediandk.ndk^android_x86_x86_64_sdk_shared_26"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libmediandk.ndk,android_x86_x86_64_sdk_shared_26
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/ndk/libmediandk.ndk^android_x86_x86_64_sdk_shared_26
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/av/libmediandk.ndk^android_x86_x86_64_sdk_shared_26.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/ndk/libmediandk.ndk^android_x86_x86_64_sdk_shared_26
-
-echo "building libmediandk.ndk^android_x86_x86_64_sdk_shared_25"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libmediandk.ndk,android_x86_x86_64_sdk_shared_25
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/ndk/libmediandk.ndk^android_x86_x86_64_sdk_shared_25
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/av/libmediandk.ndk^android_x86_x86_64_sdk_shared_25.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/ndk/libmediandk.ndk^android_x86_x86_64_sdk_shared_25
-
-echo "building libmediandk.ndk^android_x86_x86_64_sdk_shared_24"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libmediandk.ndk,android_x86_x86_64_sdk_shared_24
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/ndk/libmediandk.ndk^android_x86_x86_64_sdk_shared_24
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/av/libmediandk.ndk^android_x86_x86_64_sdk_shared_24.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/ndk/libmediandk.ndk^android_x86_x86_64_sdk_shared_24
-
-echo "building libmediandk.ndk^android_x86_x86_64_sdk_shared_23"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libmediandk.ndk,android_x86_x86_64_sdk_shared_23
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/ndk/libmediandk.ndk^android_x86_x86_64_sdk_shared_23
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/av/libmediandk.ndk^android_x86_x86_64_sdk_shared_23.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/ndk/libmediandk.ndk^android_x86_x86_64_sdk_shared_23
-
-echo "building libmediandk.ndk^android_x86_x86_64_sdk_shared_22"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libmediandk.ndk,android_x86_x86_64_sdk_shared_22
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/ndk/libmediandk.ndk^android_x86_x86_64_sdk_shared_22
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/av/libmediandk.ndk^android_x86_x86_64_sdk_shared_22.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/ndk/libmediandk.ndk^android_x86_x86_64_sdk_shared_22
-
-echo "building libmediandk.ndk^android_x86_x86_64_sdk_shared_21"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libmediandk.ndk,android_x86_x86_64_sdk_shared_21
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/ndk/libmediandk.ndk^android_x86_x86_64_sdk_shared_21
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/av/libmediandk.ndk^android_x86_x86_64_sdk_shared_21.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/ndk/libmediandk.ndk^android_x86_x86_64_sdk_shared_21
-
-echo "building libmediandk.ndk^android_x86_64_sdk_shared_current"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libmediandk.ndk,android_x86_64_sdk_shared_current
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/ndk/libmediandk.ndk^android_x86_64_sdk_shared_current
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/av/libmediandk.ndk^android_x86_64_sdk_shared_current.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/ndk/libmediandk.ndk^android_x86_64_sdk_shared_current
-
-echo "building libmediandk.ndk^android_x86_64_sdk_shared_REL"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libmediandk.ndk,android_x86_64_sdk_shared_REL
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/ndk/libmediandk.ndk^android_x86_64_sdk_shared_REL
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/av/libmediandk.ndk^android_x86_64_sdk_shared_REL.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/ndk/libmediandk.ndk^android_x86_64_sdk_shared_REL
-
-echo "building libmediandk.ndk^android_x86_64_sdk_shared_31"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libmediandk.ndk,android_x86_64_sdk_shared_31
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/ndk/libmediandk.ndk^android_x86_64_sdk_shared_31
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/av/libmediandk.ndk^android_x86_64_sdk_shared_31.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/ndk/libmediandk.ndk^android_x86_64_sdk_shared_31
-
-echo "building libmediandk.ndk^android_x86_64_sdk_shared_30"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libmediandk.ndk,android_x86_64_sdk_shared_30
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/ndk/libmediandk.ndk^android_x86_64_sdk_shared_30
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/av/libmediandk.ndk^android_x86_64_sdk_shared_30.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/ndk/libmediandk.ndk^android_x86_64_sdk_shared_30
-
-echo "building libmediandk.ndk^android_x86_64_sdk_shared_29"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libmediandk.ndk,android_x86_64_sdk_shared_29
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/ndk/libmediandk.ndk^android_x86_64_sdk_shared_29
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/av/libmediandk.ndk^android_x86_64_sdk_shared_29.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/ndk/libmediandk.ndk^android_x86_64_sdk_shared_29
-
-echo "building libmediandk.ndk^android_x86_64_sdk_shared_28"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libmediandk.ndk,android_x86_64_sdk_shared_28
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/ndk/libmediandk.ndk^android_x86_64_sdk_shared_28
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/av/libmediandk.ndk^android_x86_64_sdk_shared_28.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/ndk/libmediandk.ndk^android_x86_64_sdk_shared_28
-
-echo "building libmediandk.ndk^android_x86_64_sdk_shared_27"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libmediandk.ndk,android_x86_64_sdk_shared_27
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/ndk/libmediandk.ndk^android_x86_64_sdk_shared_27
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/av/libmediandk.ndk^android_x86_64_sdk_shared_27.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/ndk/libmediandk.ndk^android_x86_64_sdk_shared_27
-
-echo "building libmediandk.ndk^android_x86_64_sdk_shared_26"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libmediandk.ndk,android_x86_64_sdk_shared_26
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/ndk/libmediandk.ndk^android_x86_64_sdk_shared_26
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/av/libmediandk.ndk^android_x86_64_sdk_shared_26.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/ndk/libmediandk.ndk^android_x86_64_sdk_shared_26
-
-echo "building libmediandk.ndk^android_x86_64_sdk_shared_25"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libmediandk.ndk,android_x86_64_sdk_shared_25
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/ndk/libmediandk.ndk^android_x86_64_sdk_shared_25
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/av/libmediandk.ndk^android_x86_64_sdk_shared_25.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/ndk/libmediandk.ndk^android_x86_64_sdk_shared_25
-
-echo "building libmediandk.ndk^android_x86_64_sdk_shared_24"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libmediandk.ndk,android_x86_64_sdk_shared_24
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/ndk/libmediandk.ndk^android_x86_64_sdk_shared_24
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/av/libmediandk.ndk^android_x86_64_sdk_shared_24.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/ndk/libmediandk.ndk^android_x86_64_sdk_shared_24
-
-echo "building libmediandk.ndk^android_x86_64_sdk_shared_23"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libmediandk.ndk,android_x86_64_sdk_shared_23
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/ndk/libmediandk.ndk^android_x86_64_sdk_shared_23
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/av/libmediandk.ndk^android_x86_64_sdk_shared_23.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/ndk/libmediandk.ndk^android_x86_64_sdk_shared_23
-
-echo "building libmediandk.ndk^android_x86_64_sdk_shared_22"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libmediandk.ndk,android_x86_64_sdk_shared_22
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/ndk/libmediandk.ndk^android_x86_64_sdk_shared_22
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/av/libmediandk.ndk^android_x86_64_sdk_shared_22.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/ndk/libmediandk.ndk^android_x86_64_sdk_shared_22
-
-echo "building libmediandk.ndk^android_x86_64_sdk_shared_21"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libmediandk.ndk,android_x86_64_sdk_shared_21
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/ndk/libmediandk.ndk^android_x86_64_sdk_shared_21
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/av/libmediandk.ndk^android_x86_64_sdk_shared_21.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/ndk/libmediandk.ndk^android_x86_64_sdk_shared_21
-
-echo "building libmediametrics^android_x86_x86_64_shared_current"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libmediametrics,android_x86_x86_64_shared_current
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libmediametrics/libmediametrics^android_x86_x86_64_shared_current
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/av/libmediametrics^android_x86_x86_64_shared_current.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libmediametrics/libmediametrics^android_x86_x86_64_shared_current
-
-echo "building libmediametrics^android_x86_x86_64_shared_1"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libmediametrics,android_x86_x86_64_shared_1
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libmediametrics/libmediametrics^android_x86_x86_64_shared_1
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/av/libmediametrics^android_x86_x86_64_shared_1.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libmediametrics/libmediametrics^android_x86_x86_64_shared_1
-
-echo "building libmediametrics^android_x86_64_shared_current"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libmediametrics,android_x86_64_shared_current
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libmediametrics/libmediametrics^android_x86_64_shared_current
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/av/libmediametrics^android_x86_64_shared_current.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libmediametrics/libmediametrics^android_x86_64_shared_current
-
-echo "building libmediametrics^android_x86_64_shared_1"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libmediametrics,android_x86_64_shared_1
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libmediametrics/libmediametrics^android_x86_64_shared_1
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/av/libmediametrics^android_x86_64_shared_1.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libmediametrics/libmediametrics^android_x86_64_shared_1
-
-echo "building libcamera2ndk.ndk^android_x86_x86_64_sdk_shared_current"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libcamera2ndk.ndk,android_x86_x86_64_sdk_shared_current
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/camera/ndk/libcamera2ndk.ndk^android_x86_x86_64_sdk_shared_current
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/av/libcamera2ndk.ndk^android_x86_x86_64_sdk_shared_current.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/camera/ndk/libcamera2ndk.ndk^android_x86_x86_64_sdk_shared_current
-
-echo "building libcamera2ndk.ndk^android_x86_x86_64_sdk_shared_REL"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libcamera2ndk.ndk,android_x86_x86_64_sdk_shared_REL
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/camera/ndk/libcamera2ndk.ndk^android_x86_x86_64_sdk_shared_REL
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/av/libcamera2ndk.ndk^android_x86_x86_64_sdk_shared_REL.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/camera/ndk/libcamera2ndk.ndk^android_x86_x86_64_sdk_shared_REL
-
-echo "building libcamera2ndk.ndk^android_x86_x86_64_sdk_shared_31"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libcamera2ndk.ndk,android_x86_x86_64_sdk_shared_31
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/camera/ndk/libcamera2ndk.ndk^android_x86_x86_64_sdk_shared_31
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/av/libcamera2ndk.ndk^android_x86_x86_64_sdk_shared_31.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/camera/ndk/libcamera2ndk.ndk^android_x86_x86_64_sdk_shared_31
-
-echo "building libcamera2ndk.ndk^android_x86_x86_64_sdk_shared_30"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libcamera2ndk.ndk,android_x86_x86_64_sdk_shared_30
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/camera/ndk/libcamera2ndk.ndk^android_x86_x86_64_sdk_shared_30
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/av/libcamera2ndk.ndk^android_x86_x86_64_sdk_shared_30.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/camera/ndk/libcamera2ndk.ndk^android_x86_x86_64_sdk_shared_30
-
-echo "building libcamera2ndk.ndk^android_x86_x86_64_sdk_shared_29"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libcamera2ndk.ndk,android_x86_x86_64_sdk_shared_29
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/camera/ndk/libcamera2ndk.ndk^android_x86_x86_64_sdk_shared_29
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/av/libcamera2ndk.ndk^android_x86_x86_64_sdk_shared_29.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/camera/ndk/libcamera2ndk.ndk^android_x86_x86_64_sdk_shared_29
-
-echo "building libcamera2ndk.ndk^android_x86_x86_64_sdk_shared_28"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libcamera2ndk.ndk,android_x86_x86_64_sdk_shared_28
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/camera/ndk/libcamera2ndk.ndk^android_x86_x86_64_sdk_shared_28
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/av/libcamera2ndk.ndk^android_x86_x86_64_sdk_shared_28.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/camera/ndk/libcamera2ndk.ndk^android_x86_x86_64_sdk_shared_28
-
-echo "building libcamera2ndk.ndk^android_x86_x86_64_sdk_shared_27"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libcamera2ndk.ndk,android_x86_x86_64_sdk_shared_27
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/camera/ndk/libcamera2ndk.ndk^android_x86_x86_64_sdk_shared_27
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/av/libcamera2ndk.ndk^android_x86_x86_64_sdk_shared_27.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/camera/ndk/libcamera2ndk.ndk^android_x86_x86_64_sdk_shared_27
-
-echo "building libcamera2ndk.ndk^android_x86_x86_64_sdk_shared_26"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libcamera2ndk.ndk,android_x86_x86_64_sdk_shared_26
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/camera/ndk/libcamera2ndk.ndk^android_x86_x86_64_sdk_shared_26
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/av/libcamera2ndk.ndk^android_x86_x86_64_sdk_shared_26.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/camera/ndk/libcamera2ndk.ndk^android_x86_x86_64_sdk_shared_26
-
-echo "building libcamera2ndk.ndk^android_x86_x86_64_sdk_shared_25"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libcamera2ndk.ndk,android_x86_x86_64_sdk_shared_25
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/camera/ndk/libcamera2ndk.ndk^android_x86_x86_64_sdk_shared_25
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/av/libcamera2ndk.ndk^android_x86_x86_64_sdk_shared_25.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/camera/ndk/libcamera2ndk.ndk^android_x86_x86_64_sdk_shared_25
-
-echo "building libcamera2ndk.ndk^android_x86_x86_64_sdk_shared_24"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libcamera2ndk.ndk,android_x86_x86_64_sdk_shared_24
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/camera/ndk/libcamera2ndk.ndk^android_x86_x86_64_sdk_shared_24
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/av/libcamera2ndk.ndk^android_x86_x86_64_sdk_shared_24.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/camera/ndk/libcamera2ndk.ndk^android_x86_x86_64_sdk_shared_24
-
-echo "building libcamera2ndk.ndk^android_x86_64_sdk_shared_current"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libcamera2ndk.ndk,android_x86_64_sdk_shared_current
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/camera/ndk/libcamera2ndk.ndk^android_x86_64_sdk_shared_current
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/av/libcamera2ndk.ndk^android_x86_64_sdk_shared_current.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/camera/ndk/libcamera2ndk.ndk^android_x86_64_sdk_shared_current
-
-echo "building libcamera2ndk.ndk^android_x86_64_sdk_shared_REL"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libcamera2ndk.ndk,android_x86_64_sdk_shared_REL
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/camera/ndk/libcamera2ndk.ndk^android_x86_64_sdk_shared_REL
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/av/libcamera2ndk.ndk^android_x86_64_sdk_shared_REL.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/camera/ndk/libcamera2ndk.ndk^android_x86_64_sdk_shared_REL
-
-echo "building libcamera2ndk.ndk^android_x86_64_sdk_shared_31"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libcamera2ndk.ndk,android_x86_64_sdk_shared_31
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/camera/ndk/libcamera2ndk.ndk^android_x86_64_sdk_shared_31
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/av/libcamera2ndk.ndk^android_x86_64_sdk_shared_31.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/camera/ndk/libcamera2ndk.ndk^android_x86_64_sdk_shared_31
-
-echo "building libcamera2ndk.ndk^android_x86_64_sdk_shared_30"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libcamera2ndk.ndk,android_x86_64_sdk_shared_30
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/camera/ndk/libcamera2ndk.ndk^android_x86_64_sdk_shared_30
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/av/libcamera2ndk.ndk^android_x86_64_sdk_shared_30.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/camera/ndk/libcamera2ndk.ndk^android_x86_64_sdk_shared_30
-
-echo "building libcamera2ndk.ndk^android_x86_64_sdk_shared_29"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libcamera2ndk.ndk,android_x86_64_sdk_shared_29
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/camera/ndk/libcamera2ndk.ndk^android_x86_64_sdk_shared_29
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/av/libcamera2ndk.ndk^android_x86_64_sdk_shared_29.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/camera/ndk/libcamera2ndk.ndk^android_x86_64_sdk_shared_29
-
-echo "building libcamera2ndk.ndk^android_x86_64_sdk_shared_28"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libcamera2ndk.ndk,android_x86_64_sdk_shared_28
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/camera/ndk/libcamera2ndk.ndk^android_x86_64_sdk_shared_28
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/av/libcamera2ndk.ndk^android_x86_64_sdk_shared_28.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/camera/ndk/libcamera2ndk.ndk^android_x86_64_sdk_shared_28
-
-echo "building libcamera2ndk.ndk^android_x86_64_sdk_shared_27"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libcamera2ndk.ndk,android_x86_64_sdk_shared_27
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/camera/ndk/libcamera2ndk.ndk^android_x86_64_sdk_shared_27
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/av/libcamera2ndk.ndk^android_x86_64_sdk_shared_27.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/camera/ndk/libcamera2ndk.ndk^android_x86_64_sdk_shared_27
-
-echo "building libcamera2ndk.ndk^android_x86_64_sdk_shared_26"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libcamera2ndk.ndk,android_x86_64_sdk_shared_26
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/camera/ndk/libcamera2ndk.ndk^android_x86_64_sdk_shared_26
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/av/libcamera2ndk.ndk^android_x86_64_sdk_shared_26.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/camera/ndk/libcamera2ndk.ndk^android_x86_64_sdk_shared_26
-
-echo "building libcamera2ndk.ndk^android_x86_64_sdk_shared_25"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libcamera2ndk.ndk,android_x86_64_sdk_shared_25
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/camera/ndk/libcamera2ndk.ndk^android_x86_64_sdk_shared_25
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/av/libcamera2ndk.ndk^android_x86_64_sdk_shared_25.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/camera/ndk/libcamera2ndk.ndk^android_x86_64_sdk_shared_25
-
-echo "building libcamera2ndk.ndk^android_x86_64_sdk_shared_24"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libcamera2ndk.ndk,android_x86_64_sdk_shared_24
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/camera/ndk/libcamera2ndk.ndk^android_x86_64_sdk_shared_24
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/av/libcamera2ndk.ndk^android_x86_64_sdk_shared_24.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/camera/ndk/libcamera2ndk.ndk^android_x86_64_sdk_shared_24
-
-echo "building libaaudio.ndk^android_x86_x86_64_sdk_shared_current"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libaaudio.ndk,android_x86_x86_64_sdk_shared_current
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libaaudio/libaaudio.ndk^android_x86_x86_64_sdk_shared_current
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/av/libaaudio.ndk^android_x86_x86_64_sdk_shared_current.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libaaudio/libaaudio.ndk^android_x86_x86_64_sdk_shared_current
-
-echo "building libaaudio.ndk^android_x86_x86_64_sdk_shared_REL"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libaaudio.ndk,android_x86_x86_64_sdk_shared_REL
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libaaudio/libaaudio.ndk^android_x86_x86_64_sdk_shared_REL
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/av/libaaudio.ndk^android_x86_x86_64_sdk_shared_REL.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libaaudio/libaaudio.ndk^android_x86_x86_64_sdk_shared_REL
-
-echo "building libaaudio.ndk^android_x86_x86_64_sdk_shared_31"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libaaudio.ndk,android_x86_x86_64_sdk_shared_31
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libaaudio/libaaudio.ndk^android_x86_x86_64_sdk_shared_31
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/av/libaaudio.ndk^android_x86_x86_64_sdk_shared_31.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libaaudio/libaaudio.ndk^android_x86_x86_64_sdk_shared_31
-
-echo "building libaaudio.ndk^android_x86_x86_64_sdk_shared_30"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libaaudio.ndk,android_x86_x86_64_sdk_shared_30
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libaaudio/libaaudio.ndk^android_x86_x86_64_sdk_shared_30
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/av/libaaudio.ndk^android_x86_x86_64_sdk_shared_30.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libaaudio/libaaudio.ndk^android_x86_x86_64_sdk_shared_30
-
-echo "building libaaudio.ndk^android_x86_x86_64_sdk_shared_29"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libaaudio.ndk,android_x86_x86_64_sdk_shared_29
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libaaudio/libaaudio.ndk^android_x86_x86_64_sdk_shared_29
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/av/libaaudio.ndk^android_x86_x86_64_sdk_shared_29.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libaaudio/libaaudio.ndk^android_x86_x86_64_sdk_shared_29
-
-echo "building libaaudio.ndk^android_x86_x86_64_sdk_shared_28"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libaaudio.ndk,android_x86_x86_64_sdk_shared_28
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libaaudio/libaaudio.ndk^android_x86_x86_64_sdk_shared_28
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/av/libaaudio.ndk^android_x86_x86_64_sdk_shared_28.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libaaudio/libaaudio.ndk^android_x86_x86_64_sdk_shared_28
-
-echo "building libaaudio.ndk^android_x86_x86_64_sdk_shared_27"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libaaudio.ndk,android_x86_x86_64_sdk_shared_27
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libaaudio/libaaudio.ndk^android_x86_x86_64_sdk_shared_27
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/av/libaaudio.ndk^android_x86_x86_64_sdk_shared_27.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libaaudio/libaaudio.ndk^android_x86_x86_64_sdk_shared_27
-
-echo "building libaaudio.ndk^android_x86_x86_64_sdk_shared_26"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libaaudio.ndk,android_x86_x86_64_sdk_shared_26
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libaaudio/libaaudio.ndk^android_x86_x86_64_sdk_shared_26
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/av/libaaudio.ndk^android_x86_x86_64_sdk_shared_26.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libaaudio/libaaudio.ndk^android_x86_x86_64_sdk_shared_26
-
-echo "building libaaudio.ndk^android_x86_64_sdk_shared_current"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libaaudio.ndk,android_x86_64_sdk_shared_current
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libaaudio/libaaudio.ndk^android_x86_64_sdk_shared_current
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/av/libaaudio.ndk^android_x86_64_sdk_shared_current.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libaaudio/libaaudio.ndk^android_x86_64_sdk_shared_current
-
-echo "building libaaudio.ndk^android_x86_64_sdk_shared_REL"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libaaudio.ndk,android_x86_64_sdk_shared_REL
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libaaudio/libaaudio.ndk^android_x86_64_sdk_shared_REL
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/av/libaaudio.ndk^android_x86_64_sdk_shared_REL.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libaaudio/libaaudio.ndk^android_x86_64_sdk_shared_REL
-
-echo "building libaaudio.ndk^android_x86_64_sdk_shared_31"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libaaudio.ndk,android_x86_64_sdk_shared_31
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libaaudio/libaaudio.ndk^android_x86_64_sdk_shared_31
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/av/libaaudio.ndk^android_x86_64_sdk_shared_31.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libaaudio/libaaudio.ndk^android_x86_64_sdk_shared_31
-
-echo "building libaaudio.ndk^android_x86_64_sdk_shared_30"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libaaudio.ndk,android_x86_64_sdk_shared_30
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libaaudio/libaaudio.ndk^android_x86_64_sdk_shared_30
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/av/libaaudio.ndk^android_x86_64_sdk_shared_30.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libaaudio/libaaudio.ndk^android_x86_64_sdk_shared_30
-
-echo "building libaaudio.ndk^android_x86_64_sdk_shared_29"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libaaudio.ndk,android_x86_64_sdk_shared_29
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libaaudio/libaaudio.ndk^android_x86_64_sdk_shared_29
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/av/libaaudio.ndk^android_x86_64_sdk_shared_29.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libaaudio/libaaudio.ndk^android_x86_64_sdk_shared_29
-
-echo "building libaaudio.ndk^android_x86_64_sdk_shared_28"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libaaudio.ndk,android_x86_64_sdk_shared_28
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libaaudio/libaaudio.ndk^android_x86_64_sdk_shared_28
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/av/libaaudio.ndk^android_x86_64_sdk_shared_28.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libaaudio/libaaudio.ndk^android_x86_64_sdk_shared_28
+echo "building libaaudio.ndk^android_x86_64_sdk_shared_26"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libaaudio.ndk,android_x86_64_sdk_shared_26
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libaaudio/libaaudio.ndk^android_x86_64_sdk_shared_26
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/av/libaaudio.ndk^android_x86_64_sdk_shared_26.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libaaudio/libaaudio.ndk^android_x86_64_sdk_shared_26
 
 echo "building libaaudio.ndk^android_x86_64_sdk_shared_27"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libaaudio.ndk,android_x86_64_sdk_shared_27
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libaaudio/libaaudio.ndk^android_x86_64_sdk_shared_27
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/av/libaaudio.ndk^android_x86_64_sdk_shared_27.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libaaudio/libaaudio.ndk^android_x86_64_sdk_shared_27
 
-echo "building libaaudio.ndk^android_x86_64_sdk_shared_26"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libaaudio.ndk,android_x86_64_sdk_shared_26
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libaaudio/libaaudio.ndk^android_x86_64_sdk_shared_26
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/av/libaaudio.ndk^android_x86_64_sdk_shared_26.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libaaudio/libaaudio.ndk^android_x86_64_sdk_shared_26
+echo "building libaaudio.ndk^android_x86_64_sdk_shared_28"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libaaudio.ndk,android_x86_64_sdk_shared_28
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libaaudio/libaaudio.ndk^android_x86_64_sdk_shared_28
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/av/libaaudio.ndk^android_x86_64_sdk_shared_28.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libaaudio/libaaudio.ndk^android_x86_64_sdk_shared_28
+
+echo "building libaaudio.ndk^android_x86_64_sdk_shared_29"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libaaudio.ndk,android_x86_64_sdk_shared_29
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libaaudio/libaaudio.ndk^android_x86_64_sdk_shared_29
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/av/libaaudio.ndk^android_x86_64_sdk_shared_29.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libaaudio/libaaudio.ndk^android_x86_64_sdk_shared_29
+
+echo "building libaaudio.ndk^android_x86_64_sdk_shared_30"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libaaudio.ndk,android_x86_64_sdk_shared_30
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libaaudio/libaaudio.ndk^android_x86_64_sdk_shared_30
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/av/libaaudio.ndk^android_x86_64_sdk_shared_30.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libaaudio/libaaudio.ndk^android_x86_64_sdk_shared_30
+
+echo "building libaaudio.ndk^android_x86_64_sdk_shared_31"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libaaudio.ndk,android_x86_64_sdk_shared_31
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libaaudio/libaaudio.ndk^android_x86_64_sdk_shared_31
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/av/libaaudio.ndk^android_x86_64_sdk_shared_31.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libaaudio/libaaudio.ndk^android_x86_64_sdk_shared_31
+
+echo "building libaaudio.ndk^android_x86_64_sdk_shared_REL"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libaaudio.ndk,android_x86_64_sdk_shared_REL
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libaaudio/libaaudio.ndk^android_x86_64_sdk_shared_REL
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/av/libaaudio.ndk^android_x86_64_sdk_shared_REL.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libaaudio/libaaudio.ndk^android_x86_64_sdk_shared_REL
+
+echo "building libaaudio.ndk^android_x86_64_sdk_shared_current"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libaaudio.ndk,android_x86_64_sdk_shared_current
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libaaudio/libaaudio.ndk^android_x86_64_sdk_shared_current
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/av/libaaudio.ndk^android_x86_64_sdk_shared_current.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libaaudio/libaaudio.ndk^android_x86_64_sdk_shared_current
+
+echo "building libaaudio.ndk^android_x86_x86_64_sdk_shared_26"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libaaudio.ndk,android_x86_x86_64_sdk_shared_26
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libaaudio/libaaudio.ndk^android_x86_x86_64_sdk_shared_26
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/av/libaaudio.ndk^android_x86_x86_64_sdk_shared_26.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libaaudio/libaaudio.ndk^android_x86_x86_64_sdk_shared_26
+
+echo "building libaaudio.ndk^android_x86_x86_64_sdk_shared_27"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libaaudio.ndk,android_x86_x86_64_sdk_shared_27
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libaaudio/libaaudio.ndk^android_x86_x86_64_sdk_shared_27
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/av/libaaudio.ndk^android_x86_x86_64_sdk_shared_27.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libaaudio/libaaudio.ndk^android_x86_x86_64_sdk_shared_27
+
+echo "building libaaudio.ndk^android_x86_x86_64_sdk_shared_28"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libaaudio.ndk,android_x86_x86_64_sdk_shared_28
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libaaudio/libaaudio.ndk^android_x86_x86_64_sdk_shared_28
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/av/libaaudio.ndk^android_x86_x86_64_sdk_shared_28.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libaaudio/libaaudio.ndk^android_x86_x86_64_sdk_shared_28
+
+echo "building libaaudio.ndk^android_x86_x86_64_sdk_shared_29"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libaaudio.ndk,android_x86_x86_64_sdk_shared_29
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libaaudio/libaaudio.ndk^android_x86_x86_64_sdk_shared_29
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/av/libaaudio.ndk^android_x86_x86_64_sdk_shared_29.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libaaudio/libaaudio.ndk^android_x86_x86_64_sdk_shared_29
+
+echo "building libaaudio.ndk^android_x86_x86_64_sdk_shared_30"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libaaudio.ndk,android_x86_x86_64_sdk_shared_30
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libaaudio/libaaudio.ndk^android_x86_x86_64_sdk_shared_30
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/av/libaaudio.ndk^android_x86_x86_64_sdk_shared_30.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libaaudio/libaaudio.ndk^android_x86_x86_64_sdk_shared_30
+
+echo "building libaaudio.ndk^android_x86_x86_64_sdk_shared_31"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libaaudio.ndk,android_x86_x86_64_sdk_shared_31
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libaaudio/libaaudio.ndk^android_x86_x86_64_sdk_shared_31
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/av/libaaudio.ndk^android_x86_x86_64_sdk_shared_31.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libaaudio/libaaudio.ndk^android_x86_x86_64_sdk_shared_31
+
+echo "building libaaudio.ndk^android_x86_x86_64_sdk_shared_REL"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libaaudio.ndk,android_x86_x86_64_sdk_shared_REL
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libaaudio/libaaudio.ndk^android_x86_x86_64_sdk_shared_REL
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/av/libaaudio.ndk^android_x86_x86_64_sdk_shared_REL.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libaaudio/libaaudio.ndk^android_x86_x86_64_sdk_shared_REL
+
+echo "building libaaudio.ndk^android_x86_x86_64_sdk_shared_current"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libaaudio.ndk,android_x86_x86_64_sdk_shared_current
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libaaudio/libaaudio.ndk^android_x86_x86_64_sdk_shared_current
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/av/libaaudio.ndk^android_x86_x86_64_sdk_shared_current.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libaaudio/libaaudio.ndk^android_x86_x86_64_sdk_shared_current
+
+echo "building libcamera2ndk.ndk^android_x86_64_sdk_shared_24"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libcamera2ndk.ndk,android_x86_64_sdk_shared_24
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/camera/ndk/libcamera2ndk.ndk^android_x86_64_sdk_shared_24
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/av/libcamera2ndk.ndk^android_x86_64_sdk_shared_24.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/camera/ndk/libcamera2ndk.ndk^android_x86_64_sdk_shared_24
+
+echo "building libcamera2ndk.ndk^android_x86_64_sdk_shared_25"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libcamera2ndk.ndk,android_x86_64_sdk_shared_25
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/camera/ndk/libcamera2ndk.ndk^android_x86_64_sdk_shared_25
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/av/libcamera2ndk.ndk^android_x86_64_sdk_shared_25.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/camera/ndk/libcamera2ndk.ndk^android_x86_64_sdk_shared_25
+
+echo "building libcamera2ndk.ndk^android_x86_64_sdk_shared_26"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libcamera2ndk.ndk,android_x86_64_sdk_shared_26
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/camera/ndk/libcamera2ndk.ndk^android_x86_64_sdk_shared_26
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/av/libcamera2ndk.ndk^android_x86_64_sdk_shared_26.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/camera/ndk/libcamera2ndk.ndk^android_x86_64_sdk_shared_26
+
+echo "building libcamera2ndk.ndk^android_x86_64_sdk_shared_27"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libcamera2ndk.ndk,android_x86_64_sdk_shared_27
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/camera/ndk/libcamera2ndk.ndk^android_x86_64_sdk_shared_27
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/av/libcamera2ndk.ndk^android_x86_64_sdk_shared_27.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/camera/ndk/libcamera2ndk.ndk^android_x86_64_sdk_shared_27
+
+echo "building libcamera2ndk.ndk^android_x86_64_sdk_shared_28"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libcamera2ndk.ndk,android_x86_64_sdk_shared_28
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/camera/ndk/libcamera2ndk.ndk^android_x86_64_sdk_shared_28
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/av/libcamera2ndk.ndk^android_x86_64_sdk_shared_28.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/camera/ndk/libcamera2ndk.ndk^android_x86_64_sdk_shared_28
+
+echo "building libcamera2ndk.ndk^android_x86_64_sdk_shared_29"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libcamera2ndk.ndk,android_x86_64_sdk_shared_29
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/camera/ndk/libcamera2ndk.ndk^android_x86_64_sdk_shared_29
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/av/libcamera2ndk.ndk^android_x86_64_sdk_shared_29.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/camera/ndk/libcamera2ndk.ndk^android_x86_64_sdk_shared_29
+
+echo "building libcamera2ndk.ndk^android_x86_64_sdk_shared_30"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libcamera2ndk.ndk,android_x86_64_sdk_shared_30
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/camera/ndk/libcamera2ndk.ndk^android_x86_64_sdk_shared_30
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/av/libcamera2ndk.ndk^android_x86_64_sdk_shared_30.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/camera/ndk/libcamera2ndk.ndk^android_x86_64_sdk_shared_30
+
+echo "building libcamera2ndk.ndk^android_x86_64_sdk_shared_31"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libcamera2ndk.ndk,android_x86_64_sdk_shared_31
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/camera/ndk/libcamera2ndk.ndk^android_x86_64_sdk_shared_31
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/av/libcamera2ndk.ndk^android_x86_64_sdk_shared_31.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/camera/ndk/libcamera2ndk.ndk^android_x86_64_sdk_shared_31
+
+echo "building libcamera2ndk.ndk^android_x86_64_sdk_shared_REL"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libcamera2ndk.ndk,android_x86_64_sdk_shared_REL
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/camera/ndk/libcamera2ndk.ndk^android_x86_64_sdk_shared_REL
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/av/libcamera2ndk.ndk^android_x86_64_sdk_shared_REL.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/camera/ndk/libcamera2ndk.ndk^android_x86_64_sdk_shared_REL
+
+echo "building libcamera2ndk.ndk^android_x86_64_sdk_shared_current"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libcamera2ndk.ndk,android_x86_64_sdk_shared_current
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/camera/ndk/libcamera2ndk.ndk^android_x86_64_sdk_shared_current
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/av/libcamera2ndk.ndk^android_x86_64_sdk_shared_current.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/camera/ndk/libcamera2ndk.ndk^android_x86_64_sdk_shared_current
+
+echo "building libcamera2ndk.ndk^android_x86_x86_64_sdk_shared_24"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libcamera2ndk.ndk,android_x86_x86_64_sdk_shared_24
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/camera/ndk/libcamera2ndk.ndk^android_x86_x86_64_sdk_shared_24
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/av/libcamera2ndk.ndk^android_x86_x86_64_sdk_shared_24.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/camera/ndk/libcamera2ndk.ndk^android_x86_x86_64_sdk_shared_24
+
+echo "building libcamera2ndk.ndk^android_x86_x86_64_sdk_shared_25"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libcamera2ndk.ndk,android_x86_x86_64_sdk_shared_25
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/camera/ndk/libcamera2ndk.ndk^android_x86_x86_64_sdk_shared_25
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/av/libcamera2ndk.ndk^android_x86_x86_64_sdk_shared_25.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/camera/ndk/libcamera2ndk.ndk^android_x86_x86_64_sdk_shared_25
+
+echo "building libcamera2ndk.ndk^android_x86_x86_64_sdk_shared_26"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libcamera2ndk.ndk,android_x86_x86_64_sdk_shared_26
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/camera/ndk/libcamera2ndk.ndk^android_x86_x86_64_sdk_shared_26
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/av/libcamera2ndk.ndk^android_x86_x86_64_sdk_shared_26.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/camera/ndk/libcamera2ndk.ndk^android_x86_x86_64_sdk_shared_26
+
+echo "building libcamera2ndk.ndk^android_x86_x86_64_sdk_shared_27"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libcamera2ndk.ndk,android_x86_x86_64_sdk_shared_27
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/camera/ndk/libcamera2ndk.ndk^android_x86_x86_64_sdk_shared_27
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/av/libcamera2ndk.ndk^android_x86_x86_64_sdk_shared_27.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/camera/ndk/libcamera2ndk.ndk^android_x86_x86_64_sdk_shared_27
+
+echo "building libcamera2ndk.ndk^android_x86_x86_64_sdk_shared_28"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libcamera2ndk.ndk,android_x86_x86_64_sdk_shared_28
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/camera/ndk/libcamera2ndk.ndk^android_x86_x86_64_sdk_shared_28
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/av/libcamera2ndk.ndk^android_x86_x86_64_sdk_shared_28.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/camera/ndk/libcamera2ndk.ndk^android_x86_x86_64_sdk_shared_28
+
+echo "building libcamera2ndk.ndk^android_x86_x86_64_sdk_shared_29"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libcamera2ndk.ndk,android_x86_x86_64_sdk_shared_29
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/camera/ndk/libcamera2ndk.ndk^android_x86_x86_64_sdk_shared_29
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/av/libcamera2ndk.ndk^android_x86_x86_64_sdk_shared_29.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/camera/ndk/libcamera2ndk.ndk^android_x86_x86_64_sdk_shared_29
+
+echo "building libcamera2ndk.ndk^android_x86_x86_64_sdk_shared_30"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libcamera2ndk.ndk,android_x86_x86_64_sdk_shared_30
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/camera/ndk/libcamera2ndk.ndk^android_x86_x86_64_sdk_shared_30
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/av/libcamera2ndk.ndk^android_x86_x86_64_sdk_shared_30.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/camera/ndk/libcamera2ndk.ndk^android_x86_x86_64_sdk_shared_30
+
+echo "building libcamera2ndk.ndk^android_x86_x86_64_sdk_shared_31"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libcamera2ndk.ndk,android_x86_x86_64_sdk_shared_31
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/camera/ndk/libcamera2ndk.ndk^android_x86_x86_64_sdk_shared_31
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/av/libcamera2ndk.ndk^android_x86_x86_64_sdk_shared_31.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/camera/ndk/libcamera2ndk.ndk^android_x86_x86_64_sdk_shared_31
+
+echo "building libcamera2ndk.ndk^android_x86_x86_64_sdk_shared_REL"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libcamera2ndk.ndk,android_x86_x86_64_sdk_shared_REL
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/camera/ndk/libcamera2ndk.ndk^android_x86_x86_64_sdk_shared_REL
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/av/libcamera2ndk.ndk^android_x86_x86_64_sdk_shared_REL.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/camera/ndk/libcamera2ndk.ndk^android_x86_x86_64_sdk_shared_REL
+
+echo "building libcamera2ndk.ndk^android_x86_x86_64_sdk_shared_current"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libcamera2ndk.ndk,android_x86_x86_64_sdk_shared_current
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/camera/ndk/libcamera2ndk.ndk^android_x86_x86_64_sdk_shared_current
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/av/libcamera2ndk.ndk^android_x86_x86_64_sdk_shared_current.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/camera/ndk/libcamera2ndk.ndk^android_x86_x86_64_sdk_shared_current
+
+echo "building libmediametrics^android_x86_64_shared_1"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libmediametrics,android_x86_64_shared_1
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libmediametrics/libmediametrics^android_x86_64_shared_1
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/av/libmediametrics^android_x86_64_shared_1.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libmediametrics/libmediametrics^android_x86_64_shared_1
+
+echo "building libmediametrics^android_x86_64_shared_current"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libmediametrics,android_x86_64_shared_current
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libmediametrics/libmediametrics^android_x86_64_shared_current
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/av/libmediametrics^android_x86_64_shared_current.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libmediametrics/libmediametrics^android_x86_64_shared_current
+
+echo "building libmediametrics^android_x86_x86_64_shared_1"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libmediametrics,android_x86_x86_64_shared_1
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libmediametrics/libmediametrics^android_x86_x86_64_shared_1
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/av/libmediametrics^android_x86_x86_64_shared_1.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libmediametrics/libmediametrics^android_x86_x86_64_shared_1
+
+echo "building libmediametrics^android_x86_x86_64_shared_current"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libmediametrics,android_x86_x86_64_shared_current
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libmediametrics/libmediametrics^android_x86_x86_64_shared_current
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/av/libmediametrics^android_x86_x86_64_shared_current.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libmediametrics/libmediametrics^android_x86_x86_64_shared_current
+
+echo "building libmediandk.ndk^android_x86_64_sdk_shared_21"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libmediandk.ndk,android_x86_64_sdk_shared_21
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/ndk/libmediandk.ndk^android_x86_64_sdk_shared_21
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/av/libmediandk.ndk^android_x86_64_sdk_shared_21.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/ndk/libmediandk.ndk^android_x86_64_sdk_shared_21
+
+echo "building libmediandk.ndk^android_x86_64_sdk_shared_22"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libmediandk.ndk,android_x86_64_sdk_shared_22
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/ndk/libmediandk.ndk^android_x86_64_sdk_shared_22
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/av/libmediandk.ndk^android_x86_64_sdk_shared_22.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/ndk/libmediandk.ndk^android_x86_64_sdk_shared_22
+
+echo "building libmediandk.ndk^android_x86_64_sdk_shared_23"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libmediandk.ndk,android_x86_64_sdk_shared_23
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/ndk/libmediandk.ndk^android_x86_64_sdk_shared_23
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/av/libmediandk.ndk^android_x86_64_sdk_shared_23.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/ndk/libmediandk.ndk^android_x86_64_sdk_shared_23
+
+echo "building libmediandk.ndk^android_x86_64_sdk_shared_24"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libmediandk.ndk,android_x86_64_sdk_shared_24
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/ndk/libmediandk.ndk^android_x86_64_sdk_shared_24
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/av/libmediandk.ndk^android_x86_64_sdk_shared_24.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/ndk/libmediandk.ndk^android_x86_64_sdk_shared_24
+
+echo "building libmediandk.ndk^android_x86_64_sdk_shared_25"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libmediandk.ndk,android_x86_64_sdk_shared_25
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/ndk/libmediandk.ndk^android_x86_64_sdk_shared_25
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/av/libmediandk.ndk^android_x86_64_sdk_shared_25.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/ndk/libmediandk.ndk^android_x86_64_sdk_shared_25
+
+echo "building libmediandk.ndk^android_x86_64_sdk_shared_26"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libmediandk.ndk,android_x86_64_sdk_shared_26
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/ndk/libmediandk.ndk^android_x86_64_sdk_shared_26
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/av/libmediandk.ndk^android_x86_64_sdk_shared_26.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/ndk/libmediandk.ndk^android_x86_64_sdk_shared_26
+
+echo "building libmediandk.ndk^android_x86_64_sdk_shared_27"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libmediandk.ndk,android_x86_64_sdk_shared_27
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/ndk/libmediandk.ndk^android_x86_64_sdk_shared_27
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/av/libmediandk.ndk^android_x86_64_sdk_shared_27.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/ndk/libmediandk.ndk^android_x86_64_sdk_shared_27
+
+echo "building libmediandk.ndk^android_x86_64_sdk_shared_28"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libmediandk.ndk,android_x86_64_sdk_shared_28
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/ndk/libmediandk.ndk^android_x86_64_sdk_shared_28
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/av/libmediandk.ndk^android_x86_64_sdk_shared_28.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/ndk/libmediandk.ndk^android_x86_64_sdk_shared_28
+
+echo "building libmediandk.ndk^android_x86_64_sdk_shared_29"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libmediandk.ndk,android_x86_64_sdk_shared_29
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/ndk/libmediandk.ndk^android_x86_64_sdk_shared_29
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/av/libmediandk.ndk^android_x86_64_sdk_shared_29.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/ndk/libmediandk.ndk^android_x86_64_sdk_shared_29
+
+echo "building libmediandk.ndk^android_x86_64_sdk_shared_30"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libmediandk.ndk,android_x86_64_sdk_shared_30
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/ndk/libmediandk.ndk^android_x86_64_sdk_shared_30
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/av/libmediandk.ndk^android_x86_64_sdk_shared_30.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/ndk/libmediandk.ndk^android_x86_64_sdk_shared_30
+
+echo "building libmediandk.ndk^android_x86_64_sdk_shared_31"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libmediandk.ndk,android_x86_64_sdk_shared_31
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/ndk/libmediandk.ndk^android_x86_64_sdk_shared_31
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/av/libmediandk.ndk^android_x86_64_sdk_shared_31.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/ndk/libmediandk.ndk^android_x86_64_sdk_shared_31
+
+echo "building libmediandk.ndk^android_x86_64_sdk_shared_REL"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libmediandk.ndk,android_x86_64_sdk_shared_REL
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/ndk/libmediandk.ndk^android_x86_64_sdk_shared_REL
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/av/libmediandk.ndk^android_x86_64_sdk_shared_REL.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/ndk/libmediandk.ndk^android_x86_64_sdk_shared_REL
+
+echo "building libmediandk.ndk^android_x86_64_sdk_shared_current"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libmediandk.ndk,android_x86_64_sdk_shared_current
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/ndk/libmediandk.ndk^android_x86_64_sdk_shared_current
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/av/libmediandk.ndk^android_x86_64_sdk_shared_current.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/ndk/libmediandk.ndk^android_x86_64_sdk_shared_current
+
+echo "building libmediandk.ndk^android_x86_x86_64_sdk_shared_21"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libmediandk.ndk,android_x86_x86_64_sdk_shared_21
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/ndk/libmediandk.ndk^android_x86_x86_64_sdk_shared_21
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/av/libmediandk.ndk^android_x86_x86_64_sdk_shared_21.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/ndk/libmediandk.ndk^android_x86_x86_64_sdk_shared_21
+
+echo "building libmediandk.ndk^android_x86_x86_64_sdk_shared_22"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libmediandk.ndk,android_x86_x86_64_sdk_shared_22
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/ndk/libmediandk.ndk^android_x86_x86_64_sdk_shared_22
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/av/libmediandk.ndk^android_x86_x86_64_sdk_shared_22.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/ndk/libmediandk.ndk^android_x86_x86_64_sdk_shared_22
+
+echo "building libmediandk.ndk^android_x86_x86_64_sdk_shared_23"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libmediandk.ndk,android_x86_x86_64_sdk_shared_23
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/ndk/libmediandk.ndk^android_x86_x86_64_sdk_shared_23
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/av/libmediandk.ndk^android_x86_x86_64_sdk_shared_23.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/ndk/libmediandk.ndk^android_x86_x86_64_sdk_shared_23
+
+echo "building libmediandk.ndk^android_x86_x86_64_sdk_shared_24"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libmediandk.ndk,android_x86_x86_64_sdk_shared_24
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/ndk/libmediandk.ndk^android_x86_x86_64_sdk_shared_24
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/av/libmediandk.ndk^android_x86_x86_64_sdk_shared_24.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/ndk/libmediandk.ndk^android_x86_x86_64_sdk_shared_24
+
+echo "building libmediandk.ndk^android_x86_x86_64_sdk_shared_25"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libmediandk.ndk,android_x86_x86_64_sdk_shared_25
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/ndk/libmediandk.ndk^android_x86_x86_64_sdk_shared_25
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/av/libmediandk.ndk^android_x86_x86_64_sdk_shared_25.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/ndk/libmediandk.ndk^android_x86_x86_64_sdk_shared_25
+
+echo "building libmediandk.ndk^android_x86_x86_64_sdk_shared_26"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libmediandk.ndk,android_x86_x86_64_sdk_shared_26
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/ndk/libmediandk.ndk^android_x86_x86_64_sdk_shared_26
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/av/libmediandk.ndk^android_x86_x86_64_sdk_shared_26.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/ndk/libmediandk.ndk^android_x86_x86_64_sdk_shared_26
+
+echo "building libmediandk.ndk^android_x86_x86_64_sdk_shared_27"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libmediandk.ndk,android_x86_x86_64_sdk_shared_27
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/ndk/libmediandk.ndk^android_x86_x86_64_sdk_shared_27
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/av/libmediandk.ndk^android_x86_x86_64_sdk_shared_27.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/ndk/libmediandk.ndk^android_x86_x86_64_sdk_shared_27
+
+echo "building libmediandk.ndk^android_x86_x86_64_sdk_shared_28"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libmediandk.ndk,android_x86_x86_64_sdk_shared_28
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/ndk/libmediandk.ndk^android_x86_x86_64_sdk_shared_28
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/av/libmediandk.ndk^android_x86_x86_64_sdk_shared_28.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/ndk/libmediandk.ndk^android_x86_x86_64_sdk_shared_28
+
+echo "building libmediandk.ndk^android_x86_x86_64_sdk_shared_29"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libmediandk.ndk,android_x86_x86_64_sdk_shared_29
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/ndk/libmediandk.ndk^android_x86_x86_64_sdk_shared_29
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/av/libmediandk.ndk^android_x86_x86_64_sdk_shared_29.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/ndk/libmediandk.ndk^android_x86_x86_64_sdk_shared_29
+
+echo "building libmediandk.ndk^android_x86_x86_64_sdk_shared_30"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libmediandk.ndk,android_x86_x86_64_sdk_shared_30
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/ndk/libmediandk.ndk^android_x86_x86_64_sdk_shared_30
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/av/libmediandk.ndk^android_x86_x86_64_sdk_shared_30.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/ndk/libmediandk.ndk^android_x86_x86_64_sdk_shared_30
+
+echo "building libmediandk.ndk^android_x86_x86_64_sdk_shared_31"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libmediandk.ndk,android_x86_x86_64_sdk_shared_31
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/ndk/libmediandk.ndk^android_x86_x86_64_sdk_shared_31
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/av/libmediandk.ndk^android_x86_x86_64_sdk_shared_31.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/ndk/libmediandk.ndk^android_x86_x86_64_sdk_shared_31
+
+echo "building libmediandk.ndk^android_x86_x86_64_sdk_shared_REL"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libmediandk.ndk,android_x86_x86_64_sdk_shared_REL
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/ndk/libmediandk.ndk^android_x86_x86_64_sdk_shared_REL
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/av/libmediandk.ndk^android_x86_x86_64_sdk_shared_REL.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/ndk/libmediandk.ndk^android_x86_x86_64_sdk_shared_REL
+
+echo "building libmediandk.ndk^android_x86_x86_64_sdk_shared_current"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libmediandk.ndk,android_x86_x86_64_sdk_shared_current
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/ndk/libmediandk.ndk^android_x86_x86_64_sdk_shared_current
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/av/libmediandk.ndk^android_x86_x86_64_sdk_shared_current.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/ndk/libmediandk.ndk^android_x86_x86_64_sdk_shared_current
+
+echo "building libmediandk^android_vendor.31_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libmediandk,android_vendor.31_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/ndk/libmediandk^android_vendor.31_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/av/libmediandk^android_vendor.31_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/ndk/libmediandk^android_vendor.31_x86_64_shared
+
+echo "building libmediandk^android_vendor.31_x86_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libmediandk,android_vendor.31_x86_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/ndk/libmediandk^android_vendor.31_x86_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/av/libmediandk^android_vendor.31_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/ndk/libmediandk^android_vendor.31_x86_x86_64_shared
+
+echo "building libmediandk^android_x86_64_shared_29"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libmediandk,android_x86_64_shared_29
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/ndk/libmediandk^android_x86_64_shared_29
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/av/libmediandk^android_x86_64_shared_29.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/ndk/libmediandk^android_x86_64_shared_29
+
+echo "building libmediandk^android_x86_64_shared_current"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libmediandk,android_x86_64_shared_current
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/ndk/libmediandk^android_x86_64_shared_current
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/av/libmediandk^android_x86_64_shared_current.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/ndk/libmediandk^android_x86_64_shared_current
+
+echo "building libmediandk^android_x86_x86_64_shared_29"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libmediandk,android_x86_x86_64_shared_29
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/ndk/libmediandk^android_x86_x86_64_shared_29
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/av/libmediandk^android_x86_x86_64_shared_29.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/ndk/libmediandk^android_x86_x86_64_shared_29
 
 rm -rf out
 

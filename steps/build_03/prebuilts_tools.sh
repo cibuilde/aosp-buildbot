@@ -13,70 +13,70 @@ clone_project platform/prebuilts/tools prebuilts/tools android12-gsi "/common/m2
 
 rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/cmd/merge_zips/merge_zips^linux_glibc_x86_64/ .
 
-echo "building xerial-sqlite-jdbc^linux_glibc_common"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja xerial-sqlite-jdbc,linux_glibc_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/tools/common/m2/xerial-sqlite-jdbc^linux_glibc_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/prebuilts/tools/xerial-sqlite-jdbc^linux_glibc_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/tools/common/m2/xerial-sqlite-jdbc^linux_glibc_common
-
-echo "building symbol-processing-api^linux_glibc_common"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja symbol-processing-api,linux_glibc_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/tools/common/m2/symbol-processing-api^linux_glibc_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/prebuilts/tools/symbol-processing-api^linux_glibc_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/tools/common/m2/symbol-processing-api^linux_glibc_common
-
-echo "building metalava-tools-common-m2-deps^linux_glibc_common"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja metalava-tools-common-m2-deps,linux_glibc_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/tools/common/m2/metalava-tools-common-m2-deps^linux_glibc_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/prebuilts/tools/metalava-tools-common-m2-deps^linux_glibc_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/tools/common/m2/metalava-tools-common-m2-deps^linux_glibc_common
-
-echo "building kotlinx-metadata-jvm^linux_glibc_common"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja kotlinx-metadata-jvm,linux_glibc_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/tools/common/m2/kotlinx-metadata-jvm^linux_glibc_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/prebuilts/tools/kotlinx-metadata-jvm^linux_glibc_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/tools/common/m2/kotlinx-metadata-jvm^linux_glibc_common
-
-echo "building kotlinx-coroutines-core-nodeps^android_common_apex30"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja kotlinx-coroutines-core-nodeps,android_common_apex30
-mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/tools/common/m2/kotlinx-coroutines-core-nodeps^android_common_apex30
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/prebuilts/tools/kotlinx-coroutines-core-nodeps^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/prebuilts/tools/common/m2/kotlinx-coroutines-core-nodeps^android_common_apex30
-
-echo "building kotlinx-coroutines-core-nodeps^android_common"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja kotlinx-coroutines-core-nodeps,android_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/tools/common/m2/kotlinx-coroutines-core-nodeps^android_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/prebuilts/tools/kotlinx-coroutines-core-nodeps^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/tools/common/m2/kotlinx-coroutines-core-nodeps^android_common
-
-echo "building kotlinx-coroutines-android-nodeps^android_common_apex30"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja kotlinx-coroutines-android-nodeps,android_common_apex30
-mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/tools/common/m2/kotlinx-coroutines-android-nodeps^android_common_apex30
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/prebuilts/tools/kotlinx-coroutines-android-nodeps^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/prebuilts/tools/common/m2/kotlinx-coroutines-android-nodeps^android_common_apex30
-
-echo "building kotlinx-coroutines-android-nodeps^android_common"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja kotlinx-coroutines-android-nodeps,android_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/tools/common/m2/kotlinx-coroutines-android-nodeps^android_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/prebuilts/tools/kotlinx-coroutines-android-nodeps^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/tools/common/m2/kotlinx-coroutines-android-nodeps^android_common
-
-echo "building jetbrains-annotations^linux_glibc_common"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja jetbrains-annotations,linux_glibc_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/tools/common/m2/jetbrains-annotations^linux_glibc_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/prebuilts/tools/jetbrains-annotations^linux_glibc_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/tools/common/m2/jetbrains-annotations^linux_glibc_common
-
-echo "building javapoet-prebuilt-jar^linux_glibc_common"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja javapoet-prebuilt-jar,linux_glibc_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/tools/common/m2/javapoet-prebuilt-jar^linux_glibc_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/prebuilts/tools/javapoet-prebuilt-jar^linux_glibc_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/tools/common/m2/javapoet-prebuilt-jar^linux_glibc_common
-
-echo "building guava-listenablefuture-prebuilt-jar^android_common"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja guava-listenablefuture-prebuilt-jar,android_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/tools/common/m2/guava-listenablefuture-prebuilt-jar^android_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/prebuilts/tools/guava-listenablefuture-prebuilt-jar^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/tools/common/m2/guava-listenablefuture-prebuilt-jar^android_common
+echo "building commons-codec^linux_glibc_common"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja commons-codec,linux_glibc_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/tools/common/m2/commons-codec^linux_glibc_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/prebuilts/tools/commons-codec^linux_glibc_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/tools/common/m2/commons-codec^linux_glibc_common
 
 echo "building gson-prebuilt-jar^linux_glibc_common"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja gson-prebuilt-jar,linux_glibc_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/tools/common/m2/gson-prebuilt-jar^linux_glibc_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/prebuilts/tools/gson-prebuilt-jar^linux_glibc_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/tools/common/m2/gson-prebuilt-jar^linux_glibc_common
 
-echo "building commons-codec^linux_glibc_common"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja commons-codec,linux_glibc_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/tools/common/m2/commons-codec^linux_glibc_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/prebuilts/tools/commons-codec^linux_glibc_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/tools/common/m2/commons-codec^linux_glibc_common
+echo "building guava-listenablefuture-prebuilt-jar^android_common"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja guava-listenablefuture-prebuilt-jar,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/tools/common/m2/guava-listenablefuture-prebuilt-jar^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/prebuilts/tools/guava-listenablefuture-prebuilt-jar^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/tools/common/m2/guava-listenablefuture-prebuilt-jar^android_common
+
+echo "building javapoet-prebuilt-jar^linux_glibc_common"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja javapoet-prebuilt-jar,linux_glibc_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/tools/common/m2/javapoet-prebuilt-jar^linux_glibc_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/prebuilts/tools/javapoet-prebuilt-jar^linux_glibc_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/tools/common/m2/javapoet-prebuilt-jar^linux_glibc_common
+
+echo "building jetbrains-annotations^linux_glibc_common"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja jetbrains-annotations,linux_glibc_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/tools/common/m2/jetbrains-annotations^linux_glibc_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/prebuilts/tools/jetbrains-annotations^linux_glibc_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/tools/common/m2/jetbrains-annotations^linux_glibc_common
+
+echo "building kotlinx-coroutines-android-nodeps^android_common"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja kotlinx-coroutines-android-nodeps,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/tools/common/m2/kotlinx-coroutines-android-nodeps^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/prebuilts/tools/kotlinx-coroutines-android-nodeps^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/tools/common/m2/kotlinx-coroutines-android-nodeps^android_common
+
+echo "building kotlinx-coroutines-android-nodeps^android_common_apex30"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja kotlinx-coroutines-android-nodeps,android_common_apex30
+mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/tools/common/m2/kotlinx-coroutines-android-nodeps^android_common_apex30
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/prebuilts/tools/kotlinx-coroutines-android-nodeps^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/prebuilts/tools/common/m2/kotlinx-coroutines-android-nodeps^android_common_apex30
+
+echo "building kotlinx-coroutines-core-nodeps^android_common"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja kotlinx-coroutines-core-nodeps,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/tools/common/m2/kotlinx-coroutines-core-nodeps^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/prebuilts/tools/kotlinx-coroutines-core-nodeps^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/tools/common/m2/kotlinx-coroutines-core-nodeps^android_common
+
+echo "building kotlinx-coroutines-core-nodeps^android_common_apex30"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja kotlinx-coroutines-core-nodeps,android_common_apex30
+mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/tools/common/m2/kotlinx-coroutines-core-nodeps^android_common_apex30
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/prebuilts/tools/kotlinx-coroutines-core-nodeps^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/prebuilts/tools/common/m2/kotlinx-coroutines-core-nodeps^android_common_apex30
+
+echo "building kotlinx-metadata-jvm^linux_glibc_common"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja kotlinx-metadata-jvm,linux_glibc_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/tools/common/m2/kotlinx-metadata-jvm^linux_glibc_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/prebuilts/tools/kotlinx-metadata-jvm^linux_glibc_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/tools/common/m2/kotlinx-metadata-jvm^linux_glibc_common
+
+echo "building metalava-tools-common-m2-deps^linux_glibc_common"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja metalava-tools-common-m2-deps,linux_glibc_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/tools/common/m2/metalava-tools-common-m2-deps^linux_glibc_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/prebuilts/tools/metalava-tools-common-m2-deps^linux_glibc_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/tools/common/m2/metalava-tools-common-m2-deps^linux_glibc_common
+
+echo "building symbol-processing-api^linux_glibc_common"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja symbol-processing-api,linux_glibc_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/tools/common/m2/symbol-processing-api^linux_glibc_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/prebuilts/tools/symbol-processing-api^linux_glibc_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/tools/common/m2/symbol-processing-api^linux_glibc_common
+
+echo "building xerial-sqlite-jdbc^linux_glibc_common"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja xerial-sqlite-jdbc,linux_glibc_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/tools/common/m2/xerial-sqlite-jdbc^linux_glibc_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/prebuilts/tools/xerial-sqlite-jdbc^linux_glibc_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/tools/common/m2/xerial-sqlite-jdbc^linux_glibc_common
 
 rm -rf out
 

@@ -89,20 +89,20 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/system/libhidl/transport/manager/1.0/and
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/libhidl/transport/manager/1.1/android.hidl.manager@1.1_genc++_headers^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/libhidl/transport/manager/1.2/android.hidl.manager@1.2_genc++_headers^/ .
 
-echo "building mimemap^android_common"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_13.ninja mimemap,android_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/mime/mimemap^android_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_13/frameworks/base/mimemap^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/mime/mimemap^android_common
+echo "building libfilterfw_jni^android_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_13.ninja libfilterfw_jni,android_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/media/mca/filterfw/libfilterfw_jni^android_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_13/frameworks/base/libfilterfw_jni^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/media/mca/filterfw/libfilterfw_jni^android_x86_64_static
 
 echo "building libfilterfw_jni^android_x86_x86_64_static"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_13.ninja libfilterfw_jni,android_x86_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/media/mca/filterfw/libfilterfw_jni^android_x86_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_13/frameworks/base/libfilterfw_jni^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/media/mca/filterfw/libfilterfw_jni^android_x86_x86_64_static
 
-echo "building libfilterfw_jni^android_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_13.ninja libfilterfw_jni,android_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/media/mca/filterfw/libfilterfw_jni^android_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_13/frameworks/base/libfilterfw_jni^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/media/mca/filterfw/libfilterfw_jni^android_x86_64_static
+echo "building mimemap^android_common"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_13.ninja mimemap,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/mime/mimemap^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_13/frameworks/base/mimemap^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/mime/mimemap^android_common
 
 rm -rf out
 

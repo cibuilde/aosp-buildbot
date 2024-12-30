@@ -143,20 +143,20 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^android_rec
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/tools/hidl/utils/libhidl-gen-utils^android_recovery_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/update_engine/update_metadata-protos^android_recovery_x86_64_static/ .
 
-echo "building uncrypt^android_x86_64"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja uncrypt,android_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/bootable/recovery/uncrypt/uncrypt^android_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/bootable/recovery/uncrypt^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/bootable/recovery/uncrypt/uncrypt^android_x86_64
+echo "building minadbd^android_recovery_x86_64"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja minadbd,android_recovery_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/bootable/recovery/minadbd/minadbd^android_recovery_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/bootable/recovery/minadbd^android_recovery_x86_64.output . $GITHUB_WORKSPACE/artifacts/bootable/recovery/minadbd/minadbd^android_recovery_x86_64
 
 echo "building recovery^android_recovery_x86_64"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja recovery,android_recovery_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/bootable/recovery/recovery^android_recovery_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/bootable/recovery/recovery^android_recovery_x86_64.output . $GITHUB_WORKSPACE/artifacts/bootable/recovery/recovery^android_recovery_x86_64
 
-echo "building minadbd^android_recovery_x86_64"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja minadbd,android_recovery_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/bootable/recovery/minadbd/minadbd^android_recovery_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/bootable/recovery/minadbd^android_recovery_x86_64.output . $GITHUB_WORKSPACE/artifacts/bootable/recovery/minadbd/minadbd^android_recovery_x86_64
+echo "building uncrypt^android_x86_64"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja uncrypt,android_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/bootable/recovery/uncrypt/uncrypt^android_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/bootable/recovery/uncrypt^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/bootable/recovery/uncrypt/uncrypt^android_x86_64
 
 rm -rf out
 

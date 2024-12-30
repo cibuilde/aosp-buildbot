@@ -66,35 +66,20 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/system/netd/server/netd_aidl_interface-V
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/netd/server/netd_event_listener_interface-V1-cpp-source^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/netd/server/oemnetd_aidl_interface-cpp-source^/ .
 
-echo "building oemnetd_aidl_interface-cpp^android_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja oemnetd_aidl_interface-cpp,android_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/netd/server/oemnetd_aidl_interface-cpp^android_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_09/system/netd/oemnetd_aidl_interface-cpp^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/netd/server/oemnetd_aidl_interface-cpp^android_x86_64_static
+echo "building libnetd_server^android_x86_64_static_cfi"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja libnetd_server,android_x86_64_static_cfi
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/netd/server/libnetd_server^android_x86_64_static_cfi
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_09/system/netd/libnetd_server^android_x86_64_static_cfi.output . $GITHUB_WORKSPACE/artifacts/system/netd/server/libnetd_server^android_x86_64_static_cfi
 
-echo "building oemnetd_aidl_interface-cpp^android_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja oemnetd_aidl_interface-cpp,android_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/netd/server/oemnetd_aidl_interface-cpp^android_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_09/system/netd/oemnetd_aidl_interface-cpp^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/netd/server/oemnetd_aidl_interface-cpp^android_x86_64_shared
+echo "building libnetdbpf^android_x86_64_shared_cfi"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja libnetdbpf,android_x86_64_shared_cfi
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/netd/libnetdbpf/libnetdbpf^android_x86_64_shared_cfi
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_09/system/netd/libnetdbpf^android_x86_64_shared_cfi.output . $GITHUB_WORKSPACE/artifacts/system/netd/libnetdbpf/libnetdbpf^android_x86_64_shared_cfi
 
-echo "building netd_event_listener_interface-V1-cpp^android_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja netd_event_listener_interface-V1-cpp,android_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/netd/server/netd_event_listener_interface-V1-cpp^android_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_09/system/netd/netd_event_listener_interface-V1-cpp^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/netd/server/netd_event_listener_interface-V1-cpp^android_x86_64_static
-
-echo "building netd_event_listener_interface-V1-cpp^android_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja netd_event_listener_interface-V1-cpp,android_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/netd/server/netd_event_listener_interface-V1-cpp^android_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_09/system/netd/netd_event_listener_interface-V1-cpp^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/netd/server/netd_event_listener_interface-V1-cpp^android_x86_64_shared
-
-echo "building netd_aidl_interface-V7-cpp^android_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja netd_aidl_interface-V7-cpp,android_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/netd/server/netd_aidl_interface-V7-cpp^android_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_09/system/netd/netd_aidl_interface-V7-cpp^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/netd/server/netd_aidl_interface-V7-cpp^android_x86_64_static
-
-echo "building netd_aidl_interface-V7-cpp^android_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja netd_aidl_interface-V7-cpp,android_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/netd/server/netd_aidl_interface-V7-cpp^android_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_09/system/netd/netd_aidl_interface-V7-cpp^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/netd/server/netd_aidl_interface-V7-cpp^android_x86_64_shared
+echo "building libnetdbpf^android_x86_x86_64_shared_cfi"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja libnetdbpf,android_x86_x86_64_shared_cfi
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/netd/libnetdbpf/libnetdbpf^android_x86_x86_64_shared_cfi
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_09/system/netd/libnetdbpf^android_x86_x86_64_shared_cfi.output . $GITHUB_WORKSPACE/artifacts/system/netd/libnetdbpf/libnetdbpf^android_x86_x86_64_shared_cfi
 
 echo "building netd_aidl_interface-V6-cpp^android_x86_64_static"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja netd_aidl_interface-V6-cpp,android_x86_64_static
@@ -106,20 +91,35 @@ ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja netd_aidl_interfa
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/netd/server/netd_aidl_interface-V6-cpp^android_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_09/system/netd/netd_aidl_interface-V6-cpp^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/netd/server/netd_aidl_interface-V6-cpp^android_x86_64_shared
 
-echo "building libnetdbpf^android_x86_x86_64_shared_cfi"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja libnetdbpf,android_x86_x86_64_shared_cfi
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/netd/libnetdbpf/libnetdbpf^android_x86_x86_64_shared_cfi
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_09/system/netd/libnetdbpf^android_x86_x86_64_shared_cfi.output . $GITHUB_WORKSPACE/artifacts/system/netd/libnetdbpf/libnetdbpf^android_x86_x86_64_shared_cfi
+echo "building netd_aidl_interface-V7-cpp^android_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja netd_aidl_interface-V7-cpp,android_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/netd/server/netd_aidl_interface-V7-cpp^android_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_09/system/netd/netd_aidl_interface-V7-cpp^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/netd/server/netd_aidl_interface-V7-cpp^android_x86_64_static
 
-echo "building libnetdbpf^android_x86_64_shared_cfi"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja libnetdbpf,android_x86_64_shared_cfi
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/netd/libnetdbpf/libnetdbpf^android_x86_64_shared_cfi
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_09/system/netd/libnetdbpf^android_x86_64_shared_cfi.output . $GITHUB_WORKSPACE/artifacts/system/netd/libnetdbpf/libnetdbpf^android_x86_64_shared_cfi
+echo "building netd_aidl_interface-V7-cpp^android_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja netd_aidl_interface-V7-cpp,android_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/netd/server/netd_aidl_interface-V7-cpp^android_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_09/system/netd/netd_aidl_interface-V7-cpp^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/netd/server/netd_aidl_interface-V7-cpp^android_x86_64_shared
 
-echo "building libnetd_server^android_x86_64_static_cfi"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja libnetd_server,android_x86_64_static_cfi
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/netd/server/libnetd_server^android_x86_64_static_cfi
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_09/system/netd/libnetd_server^android_x86_64_static_cfi.output . $GITHUB_WORKSPACE/artifacts/system/netd/server/libnetd_server^android_x86_64_static_cfi
+echo "building netd_event_listener_interface-V1-cpp^android_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja netd_event_listener_interface-V1-cpp,android_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/netd/server/netd_event_listener_interface-V1-cpp^android_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_09/system/netd/netd_event_listener_interface-V1-cpp^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/netd/server/netd_event_listener_interface-V1-cpp^android_x86_64_static
+
+echo "building netd_event_listener_interface-V1-cpp^android_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja netd_event_listener_interface-V1-cpp,android_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/netd/server/netd_event_listener_interface-V1-cpp^android_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_09/system/netd/netd_event_listener_interface-V1-cpp^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/netd/server/netd_event_listener_interface-V1-cpp^android_x86_64_shared
+
+echo "building oemnetd_aidl_interface-cpp^android_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja oemnetd_aidl_interface-cpp,android_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/netd/server/oemnetd_aidl_interface-cpp^android_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_09/system/netd/oemnetd_aidl_interface-cpp^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/netd/server/oemnetd_aidl_interface-cpp^android_x86_64_static
+
+echo "building oemnetd_aidl_interface-cpp^android_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja oemnetd_aidl_interface-cpp,android_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/netd/server/oemnetd_aidl_interface-cpp^android_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_09/system/netd/oemnetd_aidl_interface-cpp^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/netd/server/oemnetd_aidl_interface-cpp^android_x86_64_shared
 
 rm -rf out
 

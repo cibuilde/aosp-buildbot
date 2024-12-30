@@ -154,15 +154,15 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/external/webrtc/webrtc_utility__pffft_wr
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/webrtc/webrtc_vad__vad^android_vendor.31_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/webrtc/webrtc_vad__vad^android_vendor.31_x86_x86_64_static/ .
 
-echo "building webrtc_audio_processing^android_vendor.31_x86_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja webrtc_audio_processing,android_vendor.31_x86_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/webrtc/webrtc_audio_processing^android_vendor.31_x86_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/external/webrtc/webrtc_audio_processing^android_vendor.31_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/webrtc/webrtc_audio_processing^android_vendor.31_x86_x86_64_static
-
 echo "building webrtc_audio_processing^android_vendor.31_x86_64_static"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja webrtc_audio_processing,android_vendor.31_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/webrtc/webrtc_audio_processing^android_vendor.31_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/external/webrtc/webrtc_audio_processing^android_vendor.31_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/webrtc/webrtc_audio_processing^android_vendor.31_x86_64_static
+
+echo "building webrtc_audio_processing^android_vendor.31_x86_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja webrtc_audio_processing,android_vendor.31_x86_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/webrtc/webrtc_audio_processing^android_vendor.31_x86_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/external/webrtc/webrtc_audio_processing^android_vendor.31_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/webrtc/webrtc_audio_processing^android_vendor.31_x86_x86_64_static
 
 rm -rf out
 

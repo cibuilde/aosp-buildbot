@@ -37,15 +37,15 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/external/libchrome/libchrome-include^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/libchrome/libmojo_jni_registration_headers^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/protobuf/aprotoc^linux_glibc_x86_64/ .
 
-echo "building libpuffpatch^android_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libpuffpatch,android_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/puffin/libpuffpatch^android_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/puffin/libpuffpatch^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/puffin/libpuffpatch^android_x86_64_static
-
 echo "building libpuffpatch^android_recovery_x86_64_static"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libpuffpatch,android_recovery_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/puffin/libpuffpatch^android_recovery_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/puffin/libpuffpatch^android_recovery_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/puffin/libpuffpatch^android_recovery_x86_64_static
+
+echo "building libpuffpatch^android_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libpuffpatch,android_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/puffin/libpuffpatch^android_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/puffin/libpuffpatch^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/puffin/libpuffpatch^android_x86_64_static
 
 rm -rf out
 

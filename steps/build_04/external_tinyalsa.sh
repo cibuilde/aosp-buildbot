@@ -18,15 +18,15 @@ clone_depth_platform prebuilts/gcc/linux-x86/x86/x86_64-linux-android-4.9
 rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/libc^android_vendor.31_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/libc^android_vendor.31_x86_x86_64_shared/ .
 
-echo "building libtinyalsa^android_vendor.31_x86_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libtinyalsa,android_vendor.31_x86_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/tinyalsa/libtinyalsa^android_vendor.31_x86_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/tinyalsa/libtinyalsa^android_vendor.31_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/tinyalsa/libtinyalsa^android_vendor.31_x86_x86_64_static
-
 echo "building libtinyalsa^android_vendor.31_x86_64_static"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libtinyalsa,android_vendor.31_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/tinyalsa/libtinyalsa^android_vendor.31_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/tinyalsa/libtinyalsa^android_vendor.31_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/tinyalsa/libtinyalsa^android_vendor.31_x86_64_static
+
+echo "building libtinyalsa^android_vendor.31_x86_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libtinyalsa,android_vendor.31_x86_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/tinyalsa/libtinyalsa^android_vendor.31_x86_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/tinyalsa/libtinyalsa^android_vendor.31_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/tinyalsa/libtinyalsa^android_vendor.31_x86_x86_64_static
 
 rm -rf out
 

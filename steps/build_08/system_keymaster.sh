@@ -57,45 +57,45 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/system/libbase/libbase^android_x86_64_sh
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^android_vendor.31_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^android_x86_64_shared/ .
 
-echo "building libkeymaster_portable^android_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libkeymaster_portable,android_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/keymaster/libkeymaster_portable^android_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/system/keymaster/libkeymaster_portable^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/keymaster/libkeymaster_portable^android_x86_64_shared
-
-echo "building libsoft_attestation_cert^android_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libsoft_attestation_cert,android_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/keymaster/libsoft_attestation_cert^android_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/system/keymaster/libsoft_attestation_cert^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/keymaster/libsoft_attestation_cert^android_x86_64_shared
-
-echo "building libsoft_attestation_cert^android_vendor.31_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libsoft_attestation_cert,android_vendor.31_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/keymaster/libsoft_attestation_cert^android_vendor.31_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/system/keymaster/libsoft_attestation_cert^android_vendor.31_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/keymaster/libsoft_attestation_cert^android_vendor.31_x86_64_shared
+echo "building libcppcose_rkp^android_vendor.31_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libcppcose_rkp,android_vendor.31_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/keymaster/libcppcose_rkp^android_vendor.31_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/system/keymaster/libcppcose_rkp^android_vendor.31_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/keymaster/libcppcose_rkp^android_vendor.31_x86_64_shared
 
 echo "building libcppcose_rkp^android_x86_64_shared"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libcppcose_rkp,android_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/keymaster/libcppcose_rkp^android_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/system/keymaster/libcppcose_rkp^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/keymaster/libcppcose_rkp^android_x86_64_shared
 
-echo "building libpuresoftkeymasterdevice^android_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libpuresoftkeymasterdevice,android_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/keymaster/libpuresoftkeymasterdevice^android_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/system/keymaster/libpuresoftkeymasterdevice^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/keymaster/libpuresoftkeymasterdevice^android_x86_64_shared
-
-echo "building libcppcose_rkp^android_vendor.31_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libcppcose_rkp,android_vendor.31_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/keymaster/libcppcose_rkp^android_vendor.31_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/system/keymaster/libcppcose_rkp^android_vendor.31_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/keymaster/libcppcose_rkp^android_vendor.31_x86_64_shared
-
 echo "building libkeymaster_portable^android_vendor.31_x86_64_shared"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libkeymaster_portable,android_vendor.31_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/keymaster/libkeymaster_portable^android_vendor.31_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/system/keymaster/libkeymaster_portable^android_vendor.31_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/keymaster/libkeymaster_portable^android_vendor.31_x86_64_shared
 
+echo "building libkeymaster_portable^android_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libkeymaster_portable,android_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/keymaster/libkeymaster_portable^android_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/system/keymaster/libkeymaster_portable^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/keymaster/libkeymaster_portable^android_x86_64_shared
+
+echo "building libsoft_attestation_cert^android_vendor.31_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libsoft_attestation_cert,android_vendor.31_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/keymaster/libsoft_attestation_cert^android_vendor.31_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/system/keymaster/libsoft_attestation_cert^android_vendor.31_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/keymaster/libsoft_attestation_cert^android_vendor.31_x86_64_shared
+
 echo "building libpuresoftkeymasterdevice^android_vendor.31_x86_64_shared"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libpuresoftkeymasterdevice,android_vendor.31_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/keymaster/libpuresoftkeymasterdevice^android_vendor.31_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/system/keymaster/libpuresoftkeymasterdevice^android_vendor.31_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/keymaster/libpuresoftkeymasterdevice^android_vendor.31_x86_64_shared
+
+echo "building libsoft_attestation_cert^android_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libsoft_attestation_cert,android_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/keymaster/libsoft_attestation_cert^android_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/system/keymaster/libsoft_attestation_cert^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/keymaster/libsoft_attestation_cert^android_x86_64_shared
+
+echo "building libpuresoftkeymasterdevice^android_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libpuresoftkeymasterdevice,android_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/keymaster/libpuresoftkeymasterdevice^android_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/system/keymaster/libpuresoftkeymasterdevice^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/keymaster/libpuresoftkeymasterdevice^android_x86_64_shared
 
 rm -rf out
 

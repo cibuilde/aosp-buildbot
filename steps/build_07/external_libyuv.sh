@@ -37,15 +37,15 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/external/libjpeg-turbo/libjpeg^android_v
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/libyuv/files/libyuv^android_vendor.31_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/libyuv/files/libyuv^android_vendor.31_x86_x86_64_static/ .
 
-echo "building libyuv^android_vendor.31_x86_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libyuv,android_vendor.31_x86_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/libyuv/files/libyuv^android_vendor.31_x86_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/external/libyuv/libyuv^android_vendor.31_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/external/libyuv/files/libyuv^android_vendor.31_x86_x86_64_shared
-
 echo "building libyuv^android_vendor.31_x86_64_shared"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libyuv,android_vendor.31_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/libyuv/files/libyuv^android_vendor.31_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/external/libyuv/libyuv^android_vendor.31_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/external/libyuv/files/libyuv^android_vendor.31_x86_64_shared
+
+echo "building libyuv^android_vendor.31_x86_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libyuv,android_vendor.31_x86_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/libyuv/files/libyuv^android_vendor.31_x86_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/external/libyuv/libyuv^android_vendor.31_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/external/libyuv/files/libyuv^android_vendor.31_x86_x86_64_shared
 
 rm -rf out
 

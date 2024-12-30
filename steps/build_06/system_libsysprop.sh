@@ -38,35 +38,35 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/system/tools/sysprop/sysprop_api_dump^li
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/tools/sysprop/sysprop_cpp^linux_glibc_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/tools/sysprop/sysprop_java^linux_glibc_x86_64/ .
 
-echo "building libPlatformProperties^android_x86_x86_64_static_apex31"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libPlatformProperties,android_x86_x86_64_static_apex31
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/libsysprop/srcs/libPlatformProperties^android_x86_x86_64_static_apex31
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/system/libsysprop/libPlatformProperties^android_x86_x86_64_static_apex31.output . $GITHUB_WORKSPACE/artifacts/system/libsysprop/srcs/libPlatformProperties^android_x86_x86_64_static_apex31
-
-echo "building libPlatformProperties^android_x86_64_static_apex31"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libPlatformProperties,android_x86_64_static_apex31
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/libsysprop/srcs/libPlatformProperties^android_x86_64_static_apex31
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/system/libsysprop/libPlatformProperties^android_x86_64_static_apex31.output . $GITHUB_WORKSPACE/artifacts/system/libsysprop/srcs/libPlatformProperties^android_x86_64_static_apex31
-
-echo "building libPlatformProperties^android_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libPlatformProperties,android_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/libsysprop/srcs/libPlatformProperties^android_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/system/libsysprop/libPlatformProperties^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/libsysprop/srcs/libPlatformProperties^android_x86_64_static
-
 echo "building PlatformProperties_sysprop_library^"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja PlatformProperties_sysprop_library,
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/libsysprop/srcs/PlatformProperties_sysprop_library^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/system/libsysprop/PlatformProperties_sysprop_library^.output . $GITHUB_WORKSPACE/artifacts/system/libsysprop/srcs/PlatformProperties_sysprop_library^
+
+echo "building PlatformProperties_java_gen^"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja PlatformProperties_java_gen,
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/libsysprop/srcs/PlatformProperties_java_gen^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/system/libsysprop/PlatformProperties_java_gen^.output . $GITHUB_WORKSPACE/artifacts/system/libsysprop/srcs/PlatformProperties_java_gen^
 
 echo "building PlatformProperties_java_gen_public^"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja PlatformProperties_java_gen_public,
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/libsysprop/srcs/PlatformProperties_java_gen_public^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/system/libsysprop/PlatformProperties_java_gen_public^.output . $GITHUB_WORKSPACE/artifacts/system/libsysprop/srcs/PlatformProperties_java_gen_public^
 
-echo "building PlatformProperties_java_gen^"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja PlatformProperties_java_gen,
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/libsysprop/srcs/PlatformProperties_java_gen^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/system/libsysprop/PlatformProperties_java_gen^.output . $GITHUB_WORKSPACE/artifacts/system/libsysprop/srcs/PlatformProperties_java_gen^
+echo "building libPlatformProperties^android_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libPlatformProperties,android_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/libsysprop/srcs/libPlatformProperties^android_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/system/libsysprop/libPlatformProperties^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/libsysprop/srcs/libPlatformProperties^android_x86_64_static
+
+echo "building libPlatformProperties^android_x86_64_static_apex31"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libPlatformProperties,android_x86_64_static_apex31
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/libsysprop/srcs/libPlatformProperties^android_x86_64_static_apex31
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/system/libsysprop/libPlatformProperties^android_x86_64_static_apex31.output . $GITHUB_WORKSPACE/artifacts/system/libsysprop/srcs/libPlatformProperties^android_x86_64_static_apex31
+
+echo "building libPlatformProperties^android_x86_x86_64_static_apex31"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libPlatformProperties,android_x86_x86_64_static_apex31
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/libsysprop/srcs/libPlatformProperties^android_x86_x86_64_static_apex31
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/system/libsysprop/libPlatformProperties^android_x86_x86_64_static_apex31.output . $GITHUB_WORKSPACE/artifacts/system/libsysprop/srcs/libPlatformProperties^android_x86_x86_64_static_apex31
 
 rm -rf out
 

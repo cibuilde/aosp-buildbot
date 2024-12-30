@@ -1,0 +1,8 @@
+out/soong/.intermediates/system/libhidl/transport/manager/1.0/android.hidl.manager-V1.0-java/android_common/aligned/android.hidl.manager-V1.0-java.jar
+out/soong/.intermediates/system/libhidl/transport/manager/1.0/android.hidl.manager-V1.0-java/android_common/combined/android.hidl.manager-V1.0-java.jar
+out/soong/.intermediates/system/libhidl/transport/manager/1.0/android.hidl.manager-V1.0-java/android_common/dexpreopt/dexpreopt.config
+out/soong/.intermediates/system/libhidl/transport/manager/1.0/android.hidl.manager-V1.0-java/android_common/dexpreopt/oat/x86/javalib.odex
+out/soong/.intermediates/system/libhidl/transport/manager/1.0/android.hidl.manager-V1.0-java/android_common/dexpreopt/oat/x86/javalib.vdex
+out/soong/.intermediates/system/libhidl/transport/manager/1.0/android.hidl.manager-V1.0-java/android_common/dexpreopt/oat/x86_64/javalib.odex
+out/soong/.intermediates/system/libhidl/transport/manager/1.0/android.hidl.manager-V1.0-java/android_common/dexpreopt/oat/x86_64/javalib.vdex
+out/soong/.intermediates/system/libhidl/transport/manager/1.0/android.hidl.manager-V1.0-java/android_common/turbine-combined/android.hidl.manager-V1.0-java.jar

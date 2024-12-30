@@ -1,0 +1,9 @@
+out/soong/.intermediates/external/apache-http/org.apache.http.legacy/android_common/aligned/org.apache.http.legacy.jar
+out/soong/.intermediates/external/apache-http/org.apache.http.legacy/android_common/dexpreopt/dexpreopt.config
+out/soong/.intermediates/external/apache-http/org.apache.http.legacy/android_common/dexpreopt/oat/x86/javalib.odex
+out/soong/.intermediates/external/apache-http/org.apache.http.legacy/android_common/dexpreopt/oat/x86/javalib.vdex
+out/soong/.intermediates/external/apache-http/org.apache.http.legacy/android_common/dexpreopt/oat/x86_64/javalib.odex
+out/soong/.intermediates/external/apache-http/org.apache.http.legacy/android_common/dexpreopt/oat/x86_64/javalib.vdex
+out/soong/.intermediates/external/apache-http/org.apache.http.legacy/android_common/dexpreopt/profile.prof
+out/soong/.intermediates/external/apache-http/org.apache.http.legacy/android_common/javac/org.apache.http.legacy.jar
+out/soong/.intermediates/external/apache-http/org.apache.http.legacy/android_common/turbine-combined/org.apache.http.legacy.jar

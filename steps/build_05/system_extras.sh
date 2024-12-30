@@ -79,25 +79,25 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/system/extras/ext4_utils/libext4_utils^l
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/libbase/libbase^linux_glibc_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^linux_glibc_x86_64_shared/ .
 
-echo "building schedtest^android_x86_64"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja schedtest,android_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/extras/tests/schedtest/schedtest^android_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/system/extras/schedtest^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/extras/tests/schedtest/schedtest^android_x86_64
-
-echo "building mkuserimg_mke2fs^linux_glibc_x86_64_PY2"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja mkuserimg_mke2fs,linux_glibc_x86_64_PY2
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/extras/ext4_utils/mkuserimg_mke2fs^linux_glibc_x86_64_PY2
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/system/extras/mkuserimg_mke2fs^linux_glibc_x86_64_PY2.output . $GITHUB_WORKSPACE/artifacts/system/extras/ext4_utils/mkuserimg_mke2fs^linux_glibc_x86_64_PY2
+echo "building libext4_utils^linux_glibc_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libext4_utils,linux_glibc_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/extras/ext4_utils/libext4_utils^linux_glibc_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/system/extras/libext4_utils^linux_glibc_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/extras/ext4_utils/libext4_utils^linux_glibc_x86_64_shared
 
 echo "building libsimpleperf_profcollect_bindgen^android_x86_64_source"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libsimpleperf_profcollect_bindgen,android_x86_64_source
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/extras/simpleperf/libsimpleperf_profcollect_bindgen^android_x86_64_source
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/system/extras/libsimpleperf_profcollect_bindgen^android_x86_64_source.output . $GITHUB_WORKSPACE/artifacts/system/extras/simpleperf/libsimpleperf_profcollect_bindgen^android_x86_64_source
 
-echo "building libext4_utils^linux_glibc_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libext4_utils,linux_glibc_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/extras/ext4_utils/libext4_utils^linux_glibc_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/system/extras/libext4_utils^linux_glibc_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/extras/ext4_utils/libext4_utils^linux_glibc_x86_64_shared
+echo "building mkuserimg_mke2fs^linux_glibc_x86_64_PY2"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja mkuserimg_mke2fs,linux_glibc_x86_64_PY2
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/extras/ext4_utils/mkuserimg_mke2fs^linux_glibc_x86_64_PY2
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/system/extras/mkuserimg_mke2fs^linux_glibc_x86_64_PY2.output . $GITHUB_WORKSPACE/artifacts/system/extras/ext4_utils/mkuserimg_mke2fs^linux_glibc_x86_64_PY2
+
+echo "building schedtest^android_x86_64"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja schedtest,android_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/extras/tests/schedtest/schedtest^android_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/system/extras/schedtest^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/extras/tests/schedtest/schedtest^android_x86_64
 
 rm -rf out
 

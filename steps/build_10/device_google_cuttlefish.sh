@@ -79,20 +79,20 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/system/libhidl/libhidlbase^android_vendo
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/libhidl/libhidlbase^android_vendor.31_x86_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^android_vendor.31_x86_64_shared/ .
 
-echo "building cuttlefish_sensor_injection^android_vendor.31_x86_64"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja cuttlefish_sensor_injection,android_vendor.31_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/guest/commands/sensor_injection/cuttlefish_sensor_injection^android_vendor.31_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/device/google/cuttlefish/cuttlefish_sensor_injection^android_vendor.31_x86_64.output . $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/guest/commands/sensor_injection/cuttlefish_sensor_injection^android_vendor.31_x86_64
+echo "building android.hardware.health@2.1-impl-cuttlefish^android_vendor.31_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja android.hardware.health@2.1-impl-cuttlefish,android_vendor.31_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/guest/hals/health/android.hardware.health@2.1-impl-cuttlefish^android_vendor.31_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/device/google/cuttlefish/android.hardware.health@2.1-impl-cuttlefish^android_vendor.31_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/guest/hals/health/android.hardware.health@2.1-impl-cuttlefish^android_vendor.31_x86_64_shared
 
 echo "building android.hardware.health@2.1-impl-cuttlefish^android_vendor.31_x86_x86_64_shared"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja android.hardware.health@2.1-impl-cuttlefish,android_vendor.31_x86_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/guest/hals/health/android.hardware.health@2.1-impl-cuttlefish^android_vendor.31_x86_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/device/google/cuttlefish/android.hardware.health@2.1-impl-cuttlefish^android_vendor.31_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/guest/hals/health/android.hardware.health@2.1-impl-cuttlefish^android_vendor.31_x86_x86_64_shared
 
-echo "building android.hardware.health@2.1-impl-cuttlefish^android_vendor.31_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja android.hardware.health@2.1-impl-cuttlefish,android_vendor.31_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/guest/hals/health/android.hardware.health@2.1-impl-cuttlefish^android_vendor.31_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/device/google/cuttlefish/android.hardware.health@2.1-impl-cuttlefish^android_vendor.31_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/guest/hals/health/android.hardware.health@2.1-impl-cuttlefish^android_vendor.31_x86_64_shared
+echo "building cuttlefish_sensor_injection^android_vendor.31_x86_64"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja cuttlefish_sensor_injection,android_vendor.31_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/guest/commands/sensor_injection/cuttlefish_sensor_injection^android_vendor.31_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/device/google/cuttlefish/cuttlefish_sensor_injection^android_vendor.31_x86_64.output . $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/guest/commands/sensor_injection/cuttlefish_sensor_injection^android_vendor.31_x86_64
 
 rm -rf out
 

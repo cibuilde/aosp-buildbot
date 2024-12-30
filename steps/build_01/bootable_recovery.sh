@@ -31,55 +31,55 @@ clone_depth_platform system/logging
 clone_depth_platform system/media
 
 
-echo "building librecovery_ui_default^android_recovery_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja librecovery_ui_default,android_recovery_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/bootable/recovery/recovery_ui/librecovery_ui_default^android_recovery_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bootable/recovery/librecovery_ui_default^android_recovery_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bootable/recovery/recovery_ui/librecovery_ui_default^android_recovery_x86_64_static
-
-echo "building librecovery_ui^android_recovery_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja librecovery_ui,android_recovery_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/bootable/recovery/recovery_ui/librecovery_ui^android_recovery_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bootable/recovery/librecovery_ui^android_recovery_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bootable/recovery/recovery_ui/librecovery_ui^android_recovery_x86_64_static
-
-echo "building librecovery_fastboot^android_recovery_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja librecovery_fastboot,android_recovery_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/bootable/recovery/librecovery_fastboot^android_recovery_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bootable/recovery/librecovery_fastboot^android_recovery_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bootable/recovery/librecovery_fastboot^android_recovery_x86_64_static
-
-echo "building libotautil^android_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libotautil,android_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/bootable/recovery/otautil/libotautil^android_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bootable/recovery/libotautil^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bootable/recovery/otautil/libotautil^android_x86_64_static
-
-echo "building libotautil^android_recovery_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libotautil,android_recovery_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/bootable/recovery/otautil/libotautil^android_recovery_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bootable/recovery/libotautil^android_recovery_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bootable/recovery/otautil/libotautil^android_recovery_x86_64_static
-
-echo "building libfusesideload^android_recovery_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libfusesideload,android_recovery_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/bootable/recovery/fuse_sideload/libfusesideload^android_recovery_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bootable/recovery/libfusesideload^android_recovery_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bootable/recovery/fuse_sideload/libfusesideload^android_recovery_x86_64_static
-
-echo "building libbootloader_message_vendor^android_recovery_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libbootloader_message_vendor,android_recovery_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/bootable/recovery/bootloader_message/libbootloader_message_vendor^android_recovery_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bootable/recovery/libbootloader_message_vendor^android_recovery_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bootable/recovery/bootloader_message/libbootloader_message_vendor^android_recovery_x86_64_static
-
-echo "building libbootloader_message^android_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libbootloader_message,android_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/bootable/recovery/bootloader_message/libbootloader_message^android_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bootable/recovery/libbootloader_message^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bootable/recovery/bootloader_message/libbootloader_message^android_x86_64_static
+echo "building init_recovery.rc^android_recovery_x86_64"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja init_recovery.rc,android_recovery_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/bootable/recovery/init_recovery.rc^android_recovery_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bootable/recovery/init_recovery.rc^android_recovery_x86_64.output . $GITHUB_WORKSPACE/artifacts/bootable/recovery/init_recovery.rc^android_recovery_x86_64
 
 echo "building libbootloader_message^android_recovery_x86_64_static"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libbootloader_message,android_recovery_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/bootable/recovery/bootloader_message/libbootloader_message^android_recovery_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bootable/recovery/libbootloader_message^android_recovery_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bootable/recovery/bootloader_message/libbootloader_message^android_recovery_x86_64_static
 
-echo "building init_recovery.rc^android_recovery_x86_64"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja init_recovery.rc,android_recovery_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/bootable/recovery/init_recovery.rc^android_recovery_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bootable/recovery/init_recovery.rc^android_recovery_x86_64.output . $GITHUB_WORKSPACE/artifacts/bootable/recovery/init_recovery.rc^android_recovery_x86_64
+echo "building libbootloader_message^android_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libbootloader_message,android_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/bootable/recovery/bootloader_message/libbootloader_message^android_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bootable/recovery/libbootloader_message^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bootable/recovery/bootloader_message/libbootloader_message^android_x86_64_static
+
+echo "building libbootloader_message_vendor^android_recovery_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libbootloader_message_vendor,android_recovery_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/bootable/recovery/bootloader_message/libbootloader_message_vendor^android_recovery_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bootable/recovery/libbootloader_message_vendor^android_recovery_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bootable/recovery/bootloader_message/libbootloader_message_vendor^android_recovery_x86_64_static
+
+echo "building libfusesideload^android_recovery_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libfusesideload,android_recovery_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/bootable/recovery/fuse_sideload/libfusesideload^android_recovery_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bootable/recovery/libfusesideload^android_recovery_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bootable/recovery/fuse_sideload/libfusesideload^android_recovery_x86_64_static
+
+echo "building libotautil^android_recovery_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libotautil,android_recovery_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/bootable/recovery/otautil/libotautil^android_recovery_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bootable/recovery/libotautil^android_recovery_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bootable/recovery/otautil/libotautil^android_recovery_x86_64_static
+
+echo "building libotautil^android_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libotautil,android_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/bootable/recovery/otautil/libotautil^android_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bootable/recovery/libotautil^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bootable/recovery/otautil/libotautil^android_x86_64_static
+
+echo "building librecovery_fastboot^android_recovery_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja librecovery_fastboot,android_recovery_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/bootable/recovery/librecovery_fastboot^android_recovery_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bootable/recovery/librecovery_fastboot^android_recovery_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bootable/recovery/librecovery_fastboot^android_recovery_x86_64_static
+
+echo "building librecovery_ui^android_recovery_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja librecovery_ui,android_recovery_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/bootable/recovery/recovery_ui/librecovery_ui^android_recovery_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bootable/recovery/librecovery_ui^android_recovery_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bootable/recovery/recovery_ui/librecovery_ui^android_recovery_x86_64_static
+
+echo "building librecovery_ui_default^android_recovery_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja librecovery_ui_default,android_recovery_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/bootable/recovery/recovery_ui/librecovery_ui_default^android_recovery_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bootable/recovery/librecovery_ui_default^android_recovery_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bootable/recovery/recovery_ui/librecovery_ui_default^android_recovery_x86_64_static
 
 rm -rf out
 

@@ -22,15 +22,15 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/cmd/zipsync/zipsync^linux_gl
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/protobuf/aprotoc^linux_glibc_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/turbine/turbine^linux_glibc_common/ .
 
-echo "building libphonenumber^android_common"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libphonenumber,android_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/libphonenumber/libphonenumber^android_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/external/libphonenumber/libphonenumber^android_common.output . $GITHUB_WORKSPACE/artifacts/external/libphonenumber/libphonenumber^android_common
-
 echo "building libphonenumber-nogeocoder^android_common"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libphonenumber-nogeocoder,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/libphonenumber/libphonenumber-nogeocoder^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/external/libphonenumber/libphonenumber-nogeocoder^android_common.output . $GITHUB_WORKSPACE/artifacts/external/libphonenumber/libphonenumber-nogeocoder^android_common
+
+echo "building libphonenumber^android_common"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libphonenumber,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/libphonenumber/libphonenumber^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/external/libphonenumber/libphonenumber^android_common.output . $GITHUB_WORKSPACE/artifacts/external/libphonenumber/libphonenumber^android_common
 
 rm -rf out
 

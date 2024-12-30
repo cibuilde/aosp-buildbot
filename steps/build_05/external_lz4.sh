@@ -52,30 +52,30 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/external/lz4/lib/liblz4^android_x86_64_s
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/lz4/lib/liblz4^android_x86_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/lz4/lib/liblz4^android_x86_x86_64_static_apex31/ .
 
-echo "building liblz4^android_x86_x86_64_shared_apex31"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja liblz4,android_x86_x86_64_shared_apex31
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/lz4/lib/liblz4^android_x86_x86_64_shared_apex31
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/external/lz4/liblz4^android_x86_x86_64_shared_apex31.output . $GITHUB_WORKSPACE/artifacts/external/lz4/lib/liblz4^android_x86_x86_64_shared_apex31
-
-echo "building liblz4^android_x86_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja liblz4,android_x86_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/lz4/lib/liblz4^android_x86_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/external/lz4/liblz4^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/external/lz4/lib/liblz4^android_x86_x86_64_shared
-
-echo "building liblz4^android_x86_64_shared_apex31"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja liblz4,android_x86_64_shared_apex31
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/lz4/lib/liblz4^android_x86_64_shared_apex31
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/external/lz4/liblz4^android_x86_64_shared_apex31.output . $GITHUB_WORKSPACE/artifacts/external/lz4/lib/liblz4^android_x86_64_shared_apex31
+echo "building liblz4^android_recovery_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja liblz4,android_recovery_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/lz4/lib/liblz4^android_recovery_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/external/lz4/liblz4^android_recovery_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/external/lz4/lib/liblz4^android_recovery_x86_64_shared
 
 echo "building liblz4^android_x86_64_shared"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja liblz4,android_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/lz4/lib/liblz4^android_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/external/lz4/liblz4^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/external/lz4/lib/liblz4^android_x86_64_shared
 
-echo "building liblz4^android_recovery_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja liblz4,android_recovery_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/lz4/lib/liblz4^android_recovery_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/external/lz4/liblz4^android_recovery_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/external/lz4/lib/liblz4^android_recovery_x86_64_shared
+echo "building liblz4^android_x86_64_shared_apex31"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja liblz4,android_x86_64_shared_apex31
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/lz4/lib/liblz4^android_x86_64_shared_apex31
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/external/lz4/liblz4^android_x86_64_shared_apex31.output . $GITHUB_WORKSPACE/artifacts/external/lz4/lib/liblz4^android_x86_64_shared_apex31
+
+echo "building liblz4^android_x86_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja liblz4,android_x86_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/lz4/lib/liblz4^android_x86_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/external/lz4/liblz4^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/external/lz4/lib/liblz4^android_x86_x86_64_shared
+
+echo "building liblz4^android_x86_x86_64_shared_apex31"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja liblz4,android_x86_x86_64_shared_apex31
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/lz4/lib/liblz4^android_x86_x86_64_shared_apex31
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/external/lz4/liblz4^android_x86_x86_64_shared_apex31.output . $GITHUB_WORKSPACE/artifacts/external/lz4/lib/liblz4^android_x86_x86_64_shared_apex31
 
 rm -rf out
 

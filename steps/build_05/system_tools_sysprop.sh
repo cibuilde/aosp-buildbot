@@ -35,25 +35,25 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/system/core/property_service/libproperty
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/libbase/libbase^linux_glibc_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^linux_glibc_x86_64_shared/ .
 
-echo "building sysprop_java^linux_glibc_x86_64"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja sysprop_java,linux_glibc_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/tools/sysprop/sysprop_java^linux_glibc_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/system/tools/sysprop/sysprop_java^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/tools/sysprop/sysprop_java^linux_glibc_x86_64
-
-echo "building sysprop_cpp^linux_glibc_x86_64"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja sysprop_cpp,linux_glibc_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/tools/sysprop/sysprop_cpp^linux_glibc_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/system/tools/sysprop/sysprop_cpp^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/tools/sysprop/sysprop_cpp^linux_glibc_x86_64
+echo "building sysprop_api_checker^linux_glibc_x86_64"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja sysprop_api_checker,linux_glibc_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/tools/sysprop/sysprop_api_checker^linux_glibc_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/system/tools/sysprop/sysprop_api_checker^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/tools/sysprop/sysprop_api_checker^linux_glibc_x86_64
 
 echo "building sysprop_api_dump^linux_glibc_x86_64"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja sysprop_api_dump,linux_glibc_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/tools/sysprop/sysprop_api_dump^linux_glibc_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/system/tools/sysprop/sysprop_api_dump^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/tools/sysprop/sysprop_api_dump^linux_glibc_x86_64
 
-echo "building sysprop_api_checker^linux_glibc_x86_64"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja sysprop_api_checker,linux_glibc_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/tools/sysprop/sysprop_api_checker^linux_glibc_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/system/tools/sysprop/sysprop_api_checker^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/tools/sysprop/sysprop_api_checker^linux_glibc_x86_64
+echo "building sysprop_cpp^linux_glibc_x86_64"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja sysprop_cpp,linux_glibc_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/tools/sysprop/sysprop_cpp^linux_glibc_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/system/tools/sysprop/sysprop_cpp^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/tools/sysprop/sysprop_cpp^linux_glibc_x86_64
+
+echo "building sysprop_java^linux_glibc_x86_64"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja sysprop_java,linux_glibc_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/tools/sysprop/sysprop_java^linux_glibc_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/system/tools/sysprop/sysprop_java^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/tools/sysprop/sysprop_java^linux_glibc_x86_64
 
 rm -rf out
 

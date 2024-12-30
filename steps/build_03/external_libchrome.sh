@@ -36,45 +36,45 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/cmd/sbox/sbox^linux_glibc_x8
 rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/zip/cmd/soong_zip^linux_glibc_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/cmd/zipsync/zipsync^linux_glibc_x86_64/ .
 
+echo "building jni_generator^linux_glibc_x86_64_PY2"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja jni_generator,linux_glibc_x86_64_PY2
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/libchrome/jni_generator^linux_glibc_x86_64_PY2
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/external/libchrome/jni_generator^linux_glibc_x86_64_PY2.output . $GITHUB_WORKSPACE/artifacts/external/libchrome/jni_generator^linux_glibc_x86_64_PY2
+
 echo "building jni_registration_generator^linux_glibc_x86_64_PY2"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja jni_registration_generator,linux_glibc_x86_64_PY2
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/libchrome/jni_registration_generator^linux_glibc_x86_64_PY2
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/external/libchrome/jni_registration_generator^linux_glibc_x86_64_PY2.output . $GITHUB_WORKSPACE/artifacts/external/libchrome/jni_registration_generator^linux_glibc_x86_64_PY2
-
-echo "building libmojo_jni_registration_headers^"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libmojo_jni_registration_headers,
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/libchrome/libmojo_jni_registration_headers^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/external/libchrome/libmojo_jni_registration_headers^.output . $GITHUB_WORKSPACE/artifacts/external/libchrome/libmojo_jni_registration_headers^
 
 echo "building libchrome-include^"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libchrome-include,
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/libchrome/libchrome-include^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/external/libchrome/libchrome-include^.output . $GITHUB_WORKSPACE/artifacts/external/libchrome/libchrome-include^
 
-echo "building libchrome^android_x86_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libchrome,android_x86_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/libchrome/libchrome^android_x86_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/external/libchrome/libchrome^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/libchrome/libchrome^android_x86_x86_64_static
+echo "building libmojo_jni_headers^"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libmojo_jni_headers,
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/libchrome/libmojo_jni_headers^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/external/libchrome/libmojo_jni_headers^.output . $GITHUB_WORKSPACE/artifacts/external/libchrome/libmojo_jni_headers^
 
-echo "building libchrome^android_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libchrome,android_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/libchrome/libchrome^android_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/external/libchrome/libchrome^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/libchrome/libchrome^android_x86_64_static
+echo "building libmojo_jni_registration_headers^"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libmojo_jni_registration_headers,
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/libchrome/libmojo_jni_registration_headers^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/external/libchrome/libmojo_jni_registration_headers^.output . $GITHUB_WORKSPACE/artifacts/external/libchrome/libmojo_jni_registration_headers^
 
 echo "building libchrome^android_recovery_x86_64_static"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libchrome,android_recovery_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/libchrome/libchrome^android_recovery_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/external/libchrome/libchrome^android_recovery_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/libchrome/libchrome^android_recovery_x86_64_static
 
-echo "building jni_generator^linux_glibc_x86_64_PY2"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja jni_generator,linux_glibc_x86_64_PY2
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/libchrome/jni_generator^linux_glibc_x86_64_PY2
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/external/libchrome/jni_generator^linux_glibc_x86_64_PY2.output . $GITHUB_WORKSPACE/artifacts/external/libchrome/jni_generator^linux_glibc_x86_64_PY2
+echo "building libchrome^android_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libchrome,android_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/libchrome/libchrome^android_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/external/libchrome/libchrome^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/libchrome/libchrome^android_x86_64_static
 
-echo "building libmojo_jni_headers^"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libmojo_jni_headers,
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/libchrome/libmojo_jni_headers^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/external/libchrome/libmojo_jni_headers^.output . $GITHUB_WORKSPACE/artifacts/external/libchrome/libmojo_jni_headers^
+echo "building libchrome^android_x86_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libchrome,android_x86_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/libchrome/libchrome^android_x86_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/external/libchrome/libchrome^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/libchrome/libchrome^android_x86_x86_64_static
 
 rm -rf out
 

@@ -31,25 +31,25 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/rust/libtest^android_x86_64_rl
 rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/rust/libunicode_width.rust_sysroot^android_x86_64_rlib_apex10000/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/rust/libunwind.rust_sysroot^android_x86_64_rlib_apex10000/ .
 
-echo "building libsyscall_defines^android_x86_64_rlib_rlib-std_apex10000"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_02.ninja libsyscall_defines,android_x86_64_rlib_rlib-std_apex10000
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/crosvm/syscall_defines/libsyscall_defines^android_x86_64_rlib_rlib-std_apex10000
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_02/external/crosvm/libsyscall_defines^android_x86_64_rlib_rlib-std_apex10000.output . $GITHUB_WORKSPACE/artifacts/external/crosvm/syscall_defines/libsyscall_defines^android_x86_64_rlib_rlib-std_apex10000
-
-echo "building libsync_rust^android_x86_64_rlib_rlib-std_apex10000"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_02.ninja libsync_rust,android_x86_64_rlib_rlib-std_apex10000
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/crosvm/sync/libsync_rust^android_x86_64_rlib_rlib-std_apex10000
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_02/external/crosvm/libsync_rust^android_x86_64_rlib_rlib-std_apex10000.output . $GITHUB_WORKSPACE/artifacts/external/crosvm/sync/libsync_rust^android_x86_64_rlib_rlib-std_apex10000
+echo "building libassertions^android_x86_64_rlib_rlib-std_apex10000"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_02.ninja libassertions,android_x86_64_rlib_rlib-std_apex10000
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/crosvm/assertions/libassertions^android_x86_64_rlib_rlib-std_apex10000
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_02/external/crosvm/libassertions^android_x86_64_rlib_rlib-std_apex10000.output . $GITHUB_WORKSPACE/artifacts/external/crosvm/assertions/libassertions^android_x86_64_rlib_rlib-std_apex10000
 
 echo "building librand_ish^android_x86_64_rlib_rlib-std_apex10000"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_02.ninja librand_ish,android_x86_64_rlib_rlib-std_apex10000
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/crosvm/rand_ish/librand_ish^android_x86_64_rlib_rlib-std_apex10000
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_02/external/crosvm/librand_ish^android_x86_64_rlib_rlib-std_apex10000.output . $GITHUB_WORKSPACE/artifacts/external/crosvm/rand_ish/librand_ish^android_x86_64_rlib_rlib-std_apex10000
 
-echo "building libassertions^android_x86_64_rlib_rlib-std_apex10000"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_02.ninja libassertions,android_x86_64_rlib_rlib-std_apex10000
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/crosvm/assertions/libassertions^android_x86_64_rlib_rlib-std_apex10000
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_02/external/crosvm/libassertions^android_x86_64_rlib_rlib-std_apex10000.output . $GITHUB_WORKSPACE/artifacts/external/crosvm/assertions/libassertions^android_x86_64_rlib_rlib-std_apex10000
+echo "building libsync_rust^android_x86_64_rlib_rlib-std_apex10000"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_02.ninja libsync_rust,android_x86_64_rlib_rlib-std_apex10000
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/crosvm/sync/libsync_rust^android_x86_64_rlib_rlib-std_apex10000
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_02/external/crosvm/libsync_rust^android_x86_64_rlib_rlib-std_apex10000.output . $GITHUB_WORKSPACE/artifacts/external/crosvm/sync/libsync_rust^android_x86_64_rlib_rlib-std_apex10000
+
+echo "building libsyscall_defines^android_x86_64_rlib_rlib-std_apex10000"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_02.ninja libsyscall_defines,android_x86_64_rlib_rlib-std_apex10000
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/crosvm/syscall_defines/libsyscall_defines^android_x86_64_rlib_rlib-std_apex10000
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_02/external/crosvm/libsyscall_defines^android_x86_64_rlib_rlib-std_apex10000.output . $GITHUB_WORKSPACE/artifacts/external/crosvm/syscall_defines/libsyscall_defines^android_x86_64_rlib_rlib-std_apex10000
 
 rm -rf out
 

@@ -142,45 +142,45 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/system/libbase/libbase^linux_glibc_x86_6
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^android_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^linux_glibc_x86_64_shared/ .
 
-echo "building trigger_perfetto^android_x86_64"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja trigger_perfetto,android_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/perfetto/trigger_perfetto^android_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/external/perfetto/trigger_perfetto^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/perfetto/trigger_perfetto^android_x86_64
-
-echo "building traced_probes^android_x86_64"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja traced_probes,android_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/perfetto/traced_probes^android_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/external/perfetto/traced_probes^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/perfetto/traced_probes^android_x86_64
-
-echo "building traced^android_x86_64"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja traced,android_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/perfetto/traced^android_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/external/perfetto/traced^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/perfetto/traced^android_x86_64
+echo "building libperfetto^android_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libperfetto,android_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/perfetto/libperfetto^android_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/external/perfetto/libperfetto^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/external/perfetto/libperfetto^android_x86_64_shared
 
 echo "building statslog_perfetto.h^"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja statslog_perfetto.h,
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/perfetto/statslog_perfetto.h^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/external/perfetto/statslog_perfetto.h^.output . $GITHUB_WORKSPACE/artifacts/external/perfetto/statslog_perfetto.h^
 
-echo "building statslog_perfetto.cpp^"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja statslog_perfetto.cpp,
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/perfetto/statslog_perfetto.cpp^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/external/perfetto/statslog_perfetto.cpp^.output . $GITHUB_WORKSPACE/artifacts/external/perfetto/statslog_perfetto.cpp^
+echo "building libstatslog_perfetto^android_x86_64_static_lto-thin"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libstatslog_perfetto,android_x86_64_static_lto-thin
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/perfetto/libstatslog_perfetto^android_x86_64_static_lto-thin
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/external/perfetto/libstatslog_perfetto^android_x86_64_static_lto-thin.output . $GITHUB_WORKSPACE/artifacts/external/perfetto/libstatslog_perfetto^android_x86_64_static_lto-thin
 
 echo "building perfetto^android_x86_64"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja perfetto,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/perfetto/perfetto^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/external/perfetto/perfetto^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/perfetto/perfetto^android_x86_64
 
-echo "building libstatslog_perfetto^android_x86_64_static_lto-thin"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libstatslog_perfetto,android_x86_64_static_lto-thin
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/perfetto/libstatslog_perfetto^android_x86_64_static_lto-thin
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/external/perfetto/libstatslog_perfetto^android_x86_64_static_lto-thin.output . $GITHUB_WORKSPACE/artifacts/external/perfetto/libstatslog_perfetto^android_x86_64_static_lto-thin
+echo "building statslog_perfetto.cpp^"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja statslog_perfetto.cpp,
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/perfetto/statslog_perfetto.cpp^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/external/perfetto/statslog_perfetto.cpp^.output . $GITHUB_WORKSPACE/artifacts/external/perfetto/statslog_perfetto.cpp^
 
-echo "building libperfetto^android_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libperfetto,android_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/perfetto/libperfetto^android_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/external/perfetto/libperfetto^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/external/perfetto/libperfetto^android_x86_64_shared
+echo "building traced^android_x86_64"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja traced,android_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/perfetto/traced^android_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/external/perfetto/traced^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/perfetto/traced^android_x86_64
+
+echo "building traced_probes^android_x86_64"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja traced_probes,android_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/perfetto/traced_probes^android_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/external/perfetto/traced_probes^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/perfetto/traced_probes^android_x86_64
+
+echo "building trigger_perfetto^android_x86_64"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja trigger_perfetto,android_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/perfetto/trigger_perfetto^android_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/external/perfetto/trigger_perfetto^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/perfetto/trigger_perfetto^android_x86_64
 
 rm -rf out
 

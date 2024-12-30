@@ -51,25 +51,25 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/system/libhidl/transport/manager/1.2/and
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/libhwbinder/libhwbinder-impl-internal^android_vendor.31_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/libhwbinder/libhwbinder-impl-internal^android_vendor.31_x86_x86_64_static/ .
 
-echo "building libhidltransport^android_x86_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libhidltransport,android_x86_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/libhidl/libhidltransport^android_x86_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/system/libhidl/libhidltransport^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/libhidl/libhidltransport^android_x86_x86_64_shared
-
-echo "building libhidltransport^android_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libhidltransport,android_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/libhidl/libhidltransport^android_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/system/libhidl/libhidltransport^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/libhidl/libhidltransport^android_x86_64_shared
+echo "building libhidlbase^android_vendor.31_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libhidlbase,android_vendor.31_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/libhidl/libhidlbase^android_vendor.31_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/system/libhidl/libhidlbase^android_vendor.31_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/libhidl/libhidlbase^android_vendor.31_x86_64_static
 
 echo "building libhidlbase^android_vendor.31_x86_x86_64_static"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libhidlbase,android_vendor.31_x86_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/libhidl/libhidlbase^android_vendor.31_x86_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/system/libhidl/libhidlbase^android_vendor.31_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/libhidl/libhidlbase^android_vendor.31_x86_x86_64_static
 
-echo "building libhidlbase^android_vendor.31_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libhidlbase,android_vendor.31_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/libhidl/libhidlbase^android_vendor.31_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/system/libhidl/libhidlbase^android_vendor.31_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/libhidl/libhidlbase^android_vendor.31_x86_64_static
+echo "building libhidltransport^android_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libhidltransport,android_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/libhidl/libhidltransport^android_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/system/libhidl/libhidltransport^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/libhidl/libhidltransport^android_x86_64_shared
+
+echo "building libhidltransport^android_x86_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libhidltransport,android_x86_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/libhidl/libhidltransport^android_x86_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/system/libhidl/libhidltransport^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/libhidl/libhidltransport^android_x86_x86_64_shared
 
 rm -rf out
 

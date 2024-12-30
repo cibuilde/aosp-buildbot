@@ -1,0 +1,8 @@
+out/soong/.intermediates/packages/apps/Gallery2/Gallery2/android_common/Gallery2.apk
+out/soong/.intermediates/packages/apps/Gallery2/Gallery2/android_common/dexpreopt/dexpreopt.config
+out/soong/.intermediates/packages/apps/Gallery2/Gallery2/android_common/dexpreopt/oat/x86_64/package.odex
+out/soong/.intermediates/packages/apps/Gallery2/Gallery2/android_common/dexpreopt/oat/x86_64/package.vdex
+out/soong/.intermediates/packages/apps/Gallery2/Gallery2/android_common/package-res.apk
+out/soong/.intermediates/packages/apps/Gallery2/Gallery2/android_common/proguard_dictionary
+out/soong/.intermediates/packages/apps/Gallery2/Gallery2/android_common/proguard_usage.zip
+out/soong/.intermediates/packages/apps/Gallery2/Gallery2/android_common/withres/Gallery2.jar

@@ -1,0 +1,21 @@
+builddir = out
+pool local_pool
+ depth = 66
+pool highmem_pool
+ depth = 5
+
+include ninja/global.ninja
+include ninja/singleton.ninja
+
+include ninja/frameworks/opt/net/ethernet/ethernet-service^android_common.ninja
+include ninja/packages/apps/Bluetooth/Bluetooth^android_common.ninja
+
+build ethernet-service,android_common: phony out/soong/.intermediates/frameworks/opt/net/ethernet/ethernet-service/android_common/aligned/ethernet-service.jar out/soong/.intermediates/frameworks/opt/net/ethernet/ethernet-service/android_common/dexpreopt/dexpreopt.config out/soong/.intermediates/frameworks/opt/net/ethernet/ethernet-service/android_common/dexpreopt/oat/x86_64/javalib.odex out/soong/.intermediates/frameworks/opt/net/ethernet/ethernet-service/android_common/dexpreopt/oat/x86_64/javalib.vdex out/soong/.intermediates/frameworks/opt/net/ethernet/ethernet-service/android_common/javac/ethernet-service.jar out/soong/.intermediates/frameworks/opt/net/ethernet/ethernet-service/android_common/turbine-combined/ethernet-service.jar
+
+build frameworks_opt_net_ethernet-targets: phony ethernet-service,android_common
+
+build Bluetooth,android_common: phony out/soong/.intermediates/packages/apps/Bluetooth/Bluetooth/android_common/Bluetooth.apk out/soong/.intermediates/packages/apps/Bluetooth/Bluetooth/android_common/combined/Bluetooth.jar out/soong/.intermediates/packages/apps/Bluetooth/Bluetooth/android_common/dexpreopt/dexpreopt.config out/soong/.intermediates/packages/apps/Bluetooth/Bluetooth/android_common/dexpreopt/oat/x86_64/package.odex out/soong/.intermediates/packages/apps/Bluetooth/Bluetooth/android_common/dexpreopt/oat/x86_64/package.vdex out/soong/.intermediates/packages/apps/Bluetooth/Bluetooth/android_common/package-res.apk
+
+build packages_apps_Bluetooth-targets: phony Bluetooth,android_common
+
+

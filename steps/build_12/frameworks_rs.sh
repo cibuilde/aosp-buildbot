@@ -80,16 +80,6 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/system/libhidl/transport/manager/1.2/and
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^android_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^android_x86_x86_64_shared/ .
 
-echo "building libRScpp^android_x86_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_12.ninja libRScpp,android_x86_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/rs/cpp/libRScpp^android_x86_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_12/frameworks/rs/libRScpp^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/rs/cpp/libRScpp^android_x86_x86_64_static
-
-echo "building libRScpp^android_x86_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_12.ninja libRScpp,android_x86_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/rs/cpp/libRScpp^android_x86_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_12/frameworks/rs/libRScpp^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/rs/cpp/libRScpp^android_x86_x86_64_shared
-
 echo "building libRScpp^android_x86_64_static"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_12.ninja libRScpp,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/rs/cpp/libRScpp^android_x86_64_static
@@ -99,6 +89,16 @@ echo "building libRScpp^android_x86_64_shared"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_12.ninja libRScpp,android_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/rs/cpp/libRScpp^android_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_12/frameworks/rs/libRScpp^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/rs/cpp/libRScpp^android_x86_64_shared
+
+echo "building libRScpp^android_x86_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_12.ninja libRScpp,android_x86_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/rs/cpp/libRScpp^android_x86_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_12/frameworks/rs/libRScpp^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/rs/cpp/libRScpp^android_x86_x86_64_static
+
+echo "building libRScpp^android_x86_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_12.ninja libRScpp,android_x86_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/rs/cpp/libRScpp^android_x86_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_12/frameworks/rs/libRScpp^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/rs/cpp/libRScpp^android_x86_x86_64_shared
 
 rm -rf out
 

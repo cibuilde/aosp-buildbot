@@ -1,4 +1,0 @@
-out/soong/.intermediates/frameworks/native/libs/permission/libpermission/android_x86_x86_64_static/obj/frameworks/native/libs/permission/AppOpsManager.o
-out/soong/.intermediates/frameworks/native/libs/permission/libpermission/android_x86_x86_64_static/obj/frameworks/native/libs/permission/IAppOpsCallback.o
-out/soong/.intermediates/frameworks/native/libs/permission/libpermission/android_x86_x86_64_static/obj/frameworks/native/libs/permission/IAppOpsService.o
-out/soong/.intermediates/frameworks/native/libs/permission/libpermission/android_x86_x86_64_static/obj/frameworks/native/libs/permission/android/permission/PermissionChecker.o

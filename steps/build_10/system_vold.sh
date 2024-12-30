@@ -83,30 +83,30 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/logwrapper/liblogwrap^and
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/security/keystore2/aidl/android.security.maintenance-ndk_platform-source^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/tools/aidl/aidl-cpp^linux_glibc_x86_64/ .
 
-echo "building libvold_binder^android_x86_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja libvold_binder,android_x86_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/vold/libvold_binder^android_x86_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/system/vold/libvold_binder^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/vold/libvold_binder^android_x86_x86_64_static
-
 echo "building libvold_binder^android_x86_64_static"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja libvold_binder,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/vold/libvold_binder^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/system/vold/libvold_binder^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/vold/libvold_binder^android_x86_64_static
 
-echo "building vold_prepare_subdirs^android_x86_64"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja vold_prepare_subdirs,android_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/vold/vold_prepare_subdirs^android_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/system/vold/vold_prepare_subdirs^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/vold/vold_prepare_subdirs^android_x86_64
+echo "building libvold^android_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja libvold,android_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/vold/libvold^android_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/system/vold/libvold^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/vold/libvold^android_x86_64_static
+
+echo "building libvold_binder^android_x86_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja libvold_binder,android_x86_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/vold/libvold_binder^android_x86_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/system/vold/libvold_binder^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/vold/libvold_binder^android_x86_x86_64_static
 
 echo "building vdc^android_x86_64"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja vdc,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/vold/vdc^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/system/vold/vdc^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/vold/vdc^android_x86_64
 
-echo "building libvold^android_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja libvold,android_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/vold/libvold^android_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/system/vold/libvold^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/vold/libvold^android_x86_64_static
+echo "building vold_prepare_subdirs^android_x86_64"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja vold_prepare_subdirs,android_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/vold/vold_prepare_subdirs^android_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/system/vold/vold_prepare_subdirs^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/vold/vold_prepare_subdirs^android_x86_64
 
 rm -rf out
 

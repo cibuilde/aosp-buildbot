@@ -52,20 +52,20 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^android_x86
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/netd/libnetdutils/libnetdutils^android_x86_64_static_cfi/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/netd/libnetdutils/libnetdutils^android_x86_x86_64_static_cfi/ .
 
-echo "building netutils-wrapper-1.0^android_x86_64_cfi"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja netutils-wrapper-1.0,android_x86_64_cfi
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/netd/netutils_wrappers/netutils-wrapper-1.0^android_x86_64_cfi
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/netd/netutils-wrapper-1.0^android_x86_64_cfi.output . $GITHUB_WORKSPACE/artifacts/system/netd/netutils_wrappers/netutils-wrapper-1.0^android_x86_64_cfi
+echo "building libnetdutils^android_x86_64_shared_cfi"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libnetdutils,android_x86_64_shared_cfi
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/netd/libnetdutils/libnetdutils^android_x86_64_shared_cfi
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/netd/libnetdutils^android_x86_64_shared_cfi.output . $GITHUB_WORKSPACE/artifacts/system/netd/libnetdutils/libnetdutils^android_x86_64_shared_cfi
 
 echo "building libnetdutils^android_x86_x86_64_shared_cfi"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libnetdutils,android_x86_x86_64_shared_cfi
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/netd/libnetdutils/libnetdutils^android_x86_x86_64_shared_cfi
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/netd/libnetdutils^android_x86_x86_64_shared_cfi.output . $GITHUB_WORKSPACE/artifacts/system/netd/libnetdutils/libnetdutils^android_x86_x86_64_shared_cfi
 
-echo "building libnetdutils^android_x86_64_shared_cfi"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libnetdutils,android_x86_64_shared_cfi
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/netd/libnetdutils/libnetdutils^android_x86_64_shared_cfi
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/netd/libnetdutils^android_x86_64_shared_cfi.output . $GITHUB_WORKSPACE/artifacts/system/netd/libnetdutils/libnetdutils^android_x86_64_shared_cfi
+echo "building netutils-wrapper-1.0^android_x86_64_cfi"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja netutils-wrapper-1.0,android_x86_64_cfi
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/netd/netutils_wrappers/netutils-wrapper-1.0^android_x86_64_cfi
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/netd/netutils-wrapper-1.0^android_x86_64_cfi.output . $GITHUB_WORKSPACE/artifacts/system/netd/netutils_wrappers/netutils-wrapper-1.0^android_x86_64_cfi
 
 rm -rf out
 

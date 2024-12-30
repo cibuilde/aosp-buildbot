@@ -1,0 +1,5 @@
+out/soong/.intermediates/frameworks/base/libs/WindowManager/Shell/WindowManager-Shell/android_common/combined/WindowManager-Shell.jar
+out/soong/.intermediates/frameworks/base/libs/WindowManager/Shell/WindowManager-Shell/android_common/manifest_fixer/AndroidManifest.xml
+out/soong/.intermediates/frameworks/base/libs/WindowManager/Shell/WindowManager-Shell/android_common/package-res.apk
+out/soong/.intermediates/frameworks/base/libs/WindowManager/Shell/WindowManager-Shell/android_common/res/WindowManager-Shell.jar
+out/soong/.intermediates/frameworks/base/libs/WindowManager/Shell/WindowManager-Shell/android_common/turbine-combined/WindowManager-Shell.jar

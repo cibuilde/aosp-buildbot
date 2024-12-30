@@ -69,15 +69,15 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/system/libziparchive/libziparchive^andro
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^android_x86_64_shared_current/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^android_x86_x86_64_shared_current/ .
 
-echo "building libjavacore^android_x86_x86_64_shared_apex31"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libjavacore,android_x86_x86_64_shared_apex31
-mkdir -p $GITHUB_WORKSPACE/artifacts/libcore/libjavacore^android_x86_x86_64_shared_apex31
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/libcore/libjavacore^android_x86_x86_64_shared_apex31.output . $GITHUB_WORKSPACE/artifacts/libcore/libjavacore^android_x86_x86_64_shared_apex31
-
 echo "building libjavacore^android_x86_64_shared_apex31"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libjavacore,android_x86_64_shared_apex31
 mkdir -p $GITHUB_WORKSPACE/artifacts/libcore/libjavacore^android_x86_64_shared_apex31
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/libcore/libjavacore^android_x86_64_shared_apex31.output . $GITHUB_WORKSPACE/artifacts/libcore/libjavacore^android_x86_64_shared_apex31
+
+echo "building libjavacore^android_x86_x86_64_shared_apex31"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libjavacore,android_x86_x86_64_shared_apex31
+mkdir -p $GITHUB_WORKSPACE/artifacts/libcore/libjavacore^android_x86_x86_64_shared_apex31
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/libcore/libjavacore^android_x86_x86_64_shared_apex31.output . $GITHUB_WORKSPACE/artifacts/libcore/libjavacore^android_x86_x86_64_shared_apex31
 
 rm -rf out
 

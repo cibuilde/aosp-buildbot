@@ -1,54 +1,295 @@
+builddir = out
+pool local_pool
+ depth = 66
+pool highmem_pool
+ depth = 5
+
 include ninja/global.ninja
 include ninja/singleton.ninja
 
-include ninja/art/build/boot/art-bootclasspath-fragment^android_common_apex31.ninja
-include ninja/external/conscrypt/apex/com.android.conscrypt-bootclasspath-fragment^android_common_apex29.ninja
-include ninja/external/exoplayer/exoplayer2-extractor^android_common_apex29.ninja
-include ninja/external/icing/proto/icing-java-proto-lite^android_common_apex10000.ninja
-include ninja/external/icu/android_icu4j/core-icu4j^android_common.ninja
-include ninja/frameworks/av/media/codec2/sfplugin/libsfplugin_ccodec^android_x86_64_shared_cfi.ninja
-include ninja/frameworks/av/media/codec2/sfplugin/libsfplugin_ccodec^android_x86_x86_64_shared_cfi.ninja
-include ninja/frameworks/av/services/audiopolicy/service/libaudiopolicyservice^android_x86_64_shared.ninja
-include ninja/frameworks/base/graphics/proto/updatable-driver-protos^android_common.ninja
-include ninja/frameworks/base/hwbinder.stubs^android_common.ninja
-include ninja/frameworks/proto_logging/stats/enums/stats/connectivity/networkstackprotos^android_common.ninja
+include ninja/external/apache-http/org.apache.http.legacy^android_common.ninja
+include ninja/external/jacoco/jacocoagent^android_common.ninja
+include ninja/frameworks/av/media/libaudioclient/capture_state_listener-aidl-java^android_common.ninja
+include ninja/frameworks/ex/camera2/extensions/sample/androidx.camera.extensions.impl^android_common.ninja
+include ninja/frameworks/ex/camera2/extensions/stub/androidx.camera.extensions.stub^android_common.ninja
+include ninja/hardware/interfaces/audio/common/2.0/android.hardware.audio.common-V2.0-java^android_common.ninja
+include ninja/hardware/interfaces/authsecret/1.0/android.hardware.authsecret-V1.0-java^android_common.ninja
+include ninja/hardware/interfaces/biometrics/common/aidl/android.hardware.biometrics.common-V1-java^android_common.ninja
+include ninja/hardware/interfaces/biometrics/face/1.0/android.hardware.biometrics.face-V1.0-java^android_common.ninja
+include ninja/hardware/interfaces/biometrics/face/aidl/android.hardware.biometrics.face-V1-java^android_common.ninja
+include ninja/hardware/interfaces/biometrics/fingerprint/2.1/android.hardware.biometrics.fingerprint-V2.1-java^android_common.ninja
+include ninja/hardware/interfaces/biometrics/fingerprint/2.2/android.hardware.biometrics.fingerprint-V2.2-java^android_common.ninja
+include ninja/hardware/interfaces/biometrics/fingerprint/2.3/android.hardware.biometrics.fingerprint-V2.3-java^android_common.ninja
+include ninja/hardware/interfaces/biometrics/fingerprint/aidl/android.hardware.biometrics.fingerprint-V1-java^android_common.ninja
+include ninja/hardware/interfaces/boot/1.0/android.hardware.boot-V1.0-java^android_common.ninja
+include ninja/hardware/interfaces/boot/1.1/android.hardware.boot-V1.1-java^android_common.ninja
+include ninja/hardware/interfaces/boot/1.2/android.hardware.boot-V1.2-java^android_common.ninja
+include ninja/hardware/interfaces/broadcastradio/2.0/android.hardware.broadcastradio-V2.0-java^android_common.ninja
+include ninja/hardware/interfaces/common/aidl/android.hardware.common-V2-java^android_common.ninja
+include ninja/hardware/interfaces/configstore/1.0/android.hardware.configstore-V1.0-java^android_common.ninja
+include ninja/hardware/interfaces/configstore/1.1/android.hardware.configstore-V1.1-java^android_common.ninja
+include ninja/hardware/interfaces/dumpstate/1.0/android.hardware.dumpstate-V1.0-java^android_common.ninja
+include ninja/hardware/interfaces/dumpstate/1.1/android.hardware.dumpstate-V1.1-java^android_common.ninja
+include ninja/hardware/interfaces/gnss/aidl/android.hardware.gnss-V1-java^android_common.ninja
+include ninja/hardware/interfaces/health/1.0/android.hardware.health-V1.0-java^android_common.ninja
+include ninja/hardware/interfaces/health/2.0/android.hardware.health-V2.0-java^android_common.ninja
+include ninja/hardware/interfaces/health/2.1/android.hardware.health-V2.1-java^android_common.ninja
+include ninja/hardware/interfaces/keymaster/aidl/android.hardware.keymaster-V3-java^android_common.ninja
+include ninja/hardware/interfaces/light/2.0/android.hardware.light-V2.0-java^android_common.ninja
+include ninja/hardware/interfaces/light/aidl/android.hardware.light-V1-java^android_common.ninja
+include ninja/hardware/interfaces/oemlock/1.0/android.hardware.oemlock-V1.0-java^android_common.ninja
+include ninja/hardware/interfaces/power/1.0/android.hardware.power-V1.0-java^android_common.ninja
+include ninja/hardware/interfaces/power/aidl/android.hardware.power-V1-java^android_common.ninja
+include ninja/hardware/interfaces/power/stats/aidl/android.hardware.power.stats-V1-java^android_common.ninja
+include ninja/hardware/interfaces/rebootescrow/aidl/android.hardware.rebootescrow-V1-java^android_common.ninja
+include ninja/hardware/interfaces/secure_element/1.0/android.hardware.secure_element-V1.0-java^android_common.ninja
+include ninja/hardware/interfaces/secure_element/1.1/android.hardware.secure_element-V1.1-java^android_common.ninja
+include ninja/hardware/interfaces/secure_element/1.2/android.hardware.secure_element-V1.2-java^android_common.ninja
+include ninja/hardware/interfaces/security/keymint/aidl/android.hardware.security.keymint-V1-java^android_common.ninja
+include ninja/hardware/interfaces/security/secureclock/aidl/android.hardware.security.secureclock-V1-java^android_common.ninja
+include ninja/hardware/interfaces/soundtrigger/2.0/android.hardware.soundtrigger-V2.0-java^android_common.ninja
+include ninja/hardware/interfaces/soundtrigger/2.1/android.hardware.soundtrigger-V2.1-java^android_common.ninja
+include ninja/hardware/interfaces/soundtrigger/2.2/android.hardware.soundtrigger-V2.2-java^android_common.ninja
+include ninja/hardware/interfaces/soundtrigger/2.3/android.hardware.soundtrigger-V2.3-java^android_common.ninja
+include ninja/hardware/interfaces/tv/cec/1.0/android.hardware.tv.cec-V1.0-java^android_common.ninja
+include ninja/hardware/interfaces/tv/cec/1.1/android.hardware.tv.cec-V1.1-java^android_common.ninja
+include ninja/hardware/interfaces/usb/1.0/android.hardware.usb-V1.0-java^android_common.ninja
+include ninja/hardware/interfaces/usb/1.1/android.hardware.usb-V1.1-java^android_common.ninja
+include ninja/hardware/interfaces/usb/1.2/android.hardware.usb-V1.2-java^android_common.ninja
+include ninja/hardware/interfaces/usb/1.3/android.hardware.usb-V1.3-java^android_common.ninja
+include ninja/hardware/interfaces/weaver/1.0/android.hardware.weaver-V1.0-java^android_common.ninja
+include ninja/packages/modules/Connectivity/Tethering/TetheringApiCurrentLib^android_common_apex30.ninja
+include ninja/packages/modules/Connectivity/Tethering/Tethering^android_common_apex30.ninja
+include ninja/packages/modules/Connectivity/Tethering/apex/com.android.tethering^android_common_com.android.tethering_image.ninja
+include ninja/packages/modules/Connectivity/Tethering/common/TetheringLib/framework-tethering.impl^android_common.ninja
+include ninja/packages/modules/Connectivity/framework/framework-connectivity.impl^android_common.ninja
+include ninja/packages/modules/Connectivity/service/service-connectivity-pre-jarjar^android_common_apex30.ninja
+include ninja/packages/modules/Connectivity/service/service-connectivity^android_common_apex30.ninja
+include ninja/packages/modules/NetworkStack/NetworkStackApi29Shims^android_common.ninja
+include ninja/packages/modules/NetworkStack/NetworkStackApi30Shims^android_common.ninja
+include ninja/packages/modules/NetworkStack/NetworkStackApi31Shims^android_common.ninja
+include ninja/packages/modules/NetworkStack/NetworkStackApiStableShims^android_common.ninja
+include ninja/packages/modules/NetworkStack/NetworkStackShimsCommon^android_common.ninja
+include ninja/packages/modules/NetworkStack/common/networkstackclient/ipmemorystore-aidl-interfaces-V10-java^android_common.ninja
+include ninja/packages/modules/NetworkStack/common/networkstackclient/networkstack-aidl-interfaces-V10-java^android_common.ninja
+include ninja/packages/modules/NetworkStack/common/networkstackclient/networkstack-client^android_common.ninja
+include ninja/packages/modules/Permission/com.android.permission^android_common_com.android.permission_image.ninja
+include ninja/packages/modules/Permission/framework-s/framework-permission-s.impl^android_common.ninja
+include ninja/packages/modules/Permission/service/service-permission.stubs.source.system_server^android_common.ninja
+include ninja/packages/modules/Permission/service/service-permission.stubs.system_server^android_common.ninja
+include ninja/packages/modules/Permission/service/service-permission^android_common_apex30.ninja
+include ninja/packages/modules/Scheduling/apex/com.android.scheduling^android_common_com.android.scheduling_image.ninja
+include ninja/packages/modules/Scheduling/framework/framework-scheduling.impl^android_common.ninja
+include ninja/packages/modules/Scheduling/service/service-scheduling^android_common_apex10000.ninja
+include ninja/packages/modules/Wifi/apex/com.android.wifi^android_common_com.android.wifi_image.ninja
+include ninja/packages/modules/Wifi/framework/framework-wifi.impl^android_common.ninja
+include ninja/packages/modules/Wifi/service/service-wifi^android_common_apex30.ninja
+include ninja/packages/providers/MediaProvider/MediaProvider^android_common_apex30.ninja
+include ninja/packages/providers/MediaProvider/apex/framework/framework-mediaprovider.impl^android_common.ninja
+include ninja/system/libhidl/transport/manager/1.0/android.hidl.manager-V1.0-java^android_common.ninja
+include ninja/system/libhidl/transport/manager/1.1/android.hidl.manager-V1.1-java^android_common.ninja
+include ninja/system/libhidl/transport/manager/1.2/android.hidl.manager-V1.2-java^android_common.ninja
+include ninja/system/netd/server/netd_aidl_interface-V7-java^android_common.ninja
+include ninja/system/netd/server/netd_aidl_interface-lateststable-java^android_common.ninja
+include ninja/system/netd/server/netd_event_listener_interface-V1-java^android_common.ninja
+include ninja/system/netd/server/netd_event_listener_interface-lateststable-java^android_common.ninja
 
-build art-bootclasspath-fragment,android_common_apex31: phony out/soong/.intermediates/art/build/boot/art-bootclasspath-fragment/android_common_apex31/bootclasspath.pb out/soong/.intermediates/art/build/boot/art-bootclasspath-fragment/android_common_apex31/hiddenapi-modular/encoded/apache-xml.jar out/soong/.intermediates/art/build/boot/art-bootclasspath-fragment/android_common_apex31/hiddenapi-modular/encoded/bouncycastle.jar out/soong/.intermediates/art/build/boot/art-bootclasspath-fragment/android_common_apex31/hiddenapi-modular/encoded/core-libart.jar out/soong/.intermediates/art/build/boot/art-bootclasspath-fragment/android_common_apex31/hiddenapi-modular/encoded/core-oj.jar out/soong/.intermediates/art/build/boot/art-bootclasspath-fragment/android_common_apex31/hiddenapi-modular/encoded/okhttp.jar out/soong/.intermediates/art/build/boot/art-bootclasspath-fragment/android_common_apex31/modular-hiddenapi/annotation-flags.csv out/soong/vsoc_x86_64/dex_artjars/android/apex/art_boot_images/javalib/x86/boot-apache-xml.art out/soong/vsoc_x86_64/dex_artjars/android/apex/art_boot_images/javalib/x86/boot-apache-xml.oat out/soong/vsoc_x86_64/dex_artjars/android/apex/art_boot_images/javalib/x86/boot-apache-xml.vdex out/soong/vsoc_x86_64/dex_artjars/android/apex/art_boot_images/javalib/x86/boot-bouncycastle.art out/soong/vsoc_x86_64/dex_artjars/android/apex/art_boot_images/javalib/x86/boot-bouncycastle.oat out/soong/vsoc_x86_64/dex_artjars/android/apex/art_boot_images/javalib/x86/boot-bouncycastle.vdex out/soong/vsoc_x86_64/dex_artjars/android/apex/art_boot_images/javalib/x86/boot-core-libart.art out/soong/vsoc_x86_64/dex_artjars/android/apex/art_boot_images/javalib/x86/boot-core-libart.oat out/soong/vsoc_x86_64/dex_artjars/android/apex/art_boot_images/javalib/x86/boot-core-libart.vdex out/soong/vsoc_x86_64/dex_artjars/android/apex/art_boot_images/javalib/x86/boot-okhttp.art out/soong/vsoc_x86_64/dex_artjars/android/apex/art_boot_images/javalib/x86/boot-okhttp.oat out/soong/vsoc_x86_64/dex_artjars/android/apex/art_boot_images/javalib/x86/boot-okhttp.vdex out/soong/vsoc_x86_64/dex_artjars/android/apex/art_boot_images/javalib/x86/boot.art out/soong/vsoc_x86_64/dex_artjars/android/apex/art_boot_images/javalib/x86/boot.oat out/soong/vsoc_x86_64/dex_artjars/android/apex/art_boot_images/javalib/x86/boot.vdex out/soong/vsoc_x86_64/dex_artjars/android/apex/art_boot_images/javalib/x86_64/boot-apache-xml.art out/soong/vsoc_x86_64/dex_artjars/android/apex/art_boot_images/javalib/x86_64/boot-apache-xml.oat out/soong/vsoc_x86_64/dex_artjars/android/apex/art_boot_images/javalib/x86_64/boot-apache-xml.vdex out/soong/vsoc_x86_64/dex_artjars/android/apex/art_boot_images/javalib/x86_64/boot-bouncycastle.art out/soong/vsoc_x86_64/dex_artjars/android/apex/art_boot_images/javalib/x86_64/boot-bouncycastle.oat out/soong/vsoc_x86_64/dex_artjars/android/apex/art_boot_images/javalib/x86_64/boot-bouncycastle.vdex out/soong/vsoc_x86_64/dex_artjars/android/apex/art_boot_images/javalib/x86_64/boot-core-libart.art out/soong/vsoc_x86_64/dex_artjars/android/apex/art_boot_images/javalib/x86_64/boot-core-libart.oat out/soong/vsoc_x86_64/dex_artjars/android/apex/art_boot_images/javalib/x86_64/boot-core-libart.vdex out/soong/vsoc_x86_64/dex_artjars/android/apex/art_boot_images/javalib/x86_64/boot-okhttp.art out/soong/vsoc_x86_64/dex_artjars/android/apex/art_boot_images/javalib/x86_64/boot-okhttp.oat out/soong/vsoc_x86_64/dex_artjars/android/apex/art_boot_images/javalib/x86_64/boot-okhttp.vdex out/soong/vsoc_x86_64/dex_artjars/android/apex/art_boot_images/javalib/x86_64/boot.art out/soong/vsoc_x86_64/dex_artjars/android/apex/art_boot_images/javalib/x86_64/boot.oat out/soong/vsoc_x86_64/dex_artjars/android/apex/art_boot_images/javalib/x86_64/boot.vdex out/soong/vsoc_x86_64/dex_artjars_input/apache-xml.jar out/soong/vsoc_x86_64/dex_artjars_input/bouncycastle.jar out/soong/vsoc_x86_64/dex_artjars_input/core-libart.jar out/soong/vsoc_x86_64/dex_artjars_input/core-oj.jar out/soong/vsoc_x86_64/dex_artjars_input/okhttp.jar out/soong/vsoc_x86_64/dex_artjars_unstripped/android/apex/art_boot_images/javalib/x86/boot-apache-xml.oat out/soong/vsoc_x86_64/dex_artjars_unstripped/android/apex/art_boot_images/javalib/x86/boot-bouncycastle.oat out/soong/vsoc_x86_64/dex_artjars_unstripped/android/apex/art_boot_images/javalib/x86/boot-core-libart.oat out/soong/vsoc_x86_64/dex_artjars_unstripped/android/apex/art_boot_images/javalib/x86/boot-okhttp.oat out/soong/vsoc_x86_64/dex_artjars_unstripped/android/apex/art_boot_images/javalib/x86/boot.oat out/soong/vsoc_x86_64/dex_artjars_unstripped/android/apex/art_boot_images/javalib/x86_64/boot-apache-xml.oat out/soong/vsoc_x86_64/dex_artjars_unstripped/android/apex/art_boot_images/javalib/x86_64/boot-bouncycastle.oat out/soong/vsoc_x86_64/dex_artjars_unstripped/android/apex/art_boot_images/javalib/x86_64/boot-core-libart.oat out/soong/vsoc_x86_64/dex_artjars_unstripped/android/apex/art_boot_images/javalib/x86_64/boot-okhttp.oat out/soong/vsoc_x86_64/dex_artjars_unstripped/android/apex/art_boot_images/javalib/x86_64/boot.oat
+build org.apache.http.legacy,android_common: phony out/soong/.intermediates/external/apache-http/org.apache.http.legacy/android_common/aligned/org.apache.http.legacy.jar out/soong/.intermediates/external/apache-http/org.apache.http.legacy/android_common/dexpreopt/dexpreopt.config out/soong/.intermediates/external/apache-http/org.apache.http.legacy/android_common/dexpreopt/oat/x86/javalib.odex out/soong/.intermediates/external/apache-http/org.apache.http.legacy/android_common/dexpreopt/oat/x86/javalib.vdex out/soong/.intermediates/external/apache-http/org.apache.http.legacy/android_common/dexpreopt/oat/x86_64/javalib.odex out/soong/.intermediates/external/apache-http/org.apache.http.legacy/android_common/dexpreopt/oat/x86_64/javalib.vdex out/soong/.intermediates/external/apache-http/org.apache.http.legacy/android_common/dexpreopt/profile.prof out/soong/.intermediates/external/apache-http/org.apache.http.legacy/android_common/javac/org.apache.http.legacy.jar out/soong/.intermediates/external/apache-http/org.apache.http.legacy/android_common/turbine-combined/org.apache.http.legacy.jar
 
-build art-targets: phony art-bootclasspath-fragment,android_common_apex31
+build external_apache-http-targets: phony org.apache.http.legacy,android_common
 
-build com.android.conscrypt-bootclasspath-fragment,android_common_apex29: phony out/soong/.intermediates/external/conscrypt/apex/com.android.conscrypt-bootclasspath-fragment/android_common_apex29/bootclasspath.pb out/soong/.intermediates/external/conscrypt/apex/com.android.conscrypt-bootclasspath-fragment/android_common_apex29/hiddenapi-modular/encoded/conscrypt.jar out/soong/.intermediates/external/conscrypt/apex/com.android.conscrypt-bootclasspath-fragment/android_common_apex29/modular-hiddenapi/annotation-flags.csv
+build jacocoagent,android_common: phony out/soong/.intermediates/external/jacoco/jacocoagent/android_common/turbine-combined/jacocoagent.jar
 
-build external_conscrypt-targets: phony com.android.conscrypt-bootclasspath-fragment,android_common_apex29
+build external_jacoco-targets: phony jacocoagent,android_common
 
-build exoplayer2-extractor,android_common_apex29: phony out/soong/.intermediates/external/exoplayer/exoplayer2-extractor/android_common_apex29/jarjar/exoplayer2-extractor.jar out/soong/.intermediates/external/exoplayer/exoplayer2-extractor/android_common_apex29/turbine-jarjar/exoplayer2-extractor.jar
+build capture_state_listener-aidl-java,android_common: phony out/soong/.intermediates/frameworks/av/media/libaudioclient/capture_state_listener-aidl-java/android_common/javac/capture_state_listener-aidl-java.jar out/soong/.intermediates/frameworks/av/media/libaudioclient/capture_state_listener-aidl-java/android_common/turbine-combined/capture_state_listener-aidl-java.jar
 
-build external_exoplayer-targets: phony exoplayer2-extractor,android_common_apex29
+build frameworks_av-targets: phony capture_state_listener-aidl-java,android_common
 
-build icing-java-proto-lite,android_common_apex10000: phony out/soong/.intermediates/external/icing/proto/icing-java-proto-lite/android_common_apex10000/combined/icing-java-proto-lite.jar out/soong/.intermediates/external/icing/proto/icing-java-proto-lite/android_common_apex10000/turbine-combined/icing-java-proto-lite.jar
+build androidx.camera.extensions.impl,android_common: phony out/soong/.intermediates/frameworks/ex/camera2/extensions/sample/androidx.camera.extensions.impl/android_common/aligned/androidx.camera.extensions.impl.jar out/soong/.intermediates/frameworks/ex/camera2/extensions/sample/androidx.camera.extensions.impl/android_common/dexpreopt/dexpreopt.config out/soong/.intermediates/frameworks/ex/camera2/extensions/sample/androidx.camera.extensions.impl/android_common/dexpreopt/oat/x86/javalib.odex out/soong/.intermediates/frameworks/ex/camera2/extensions/sample/androidx.camera.extensions.impl/android_common/dexpreopt/oat/x86/javalib.vdex out/soong/.intermediates/frameworks/ex/camera2/extensions/sample/androidx.camera.extensions.impl/android_common/dexpreopt/oat/x86_64/javalib.odex out/soong/.intermediates/frameworks/ex/camera2/extensions/sample/androidx.camera.extensions.impl/android_common/dexpreopt/oat/x86_64/javalib.vdex out/soong/.intermediates/frameworks/ex/camera2/extensions/sample/androidx.camera.extensions.impl/android_common/javac/androidx.camera.extensions.impl.jar out/soong/.intermediates/frameworks/ex/camera2/extensions/sample/androidx.camera.extensions.impl/android_common/turbine-combined/androidx.camera.extensions.impl.jar
 
-build external_icing-targets: phony icing-java-proto-lite,android_common_apex10000
+build androidx.camera.extensions.stub,android_common: phony out/soong/.intermediates/frameworks/ex/camera2/extensions/stub/androidx.camera.extensions.stub/android_common/turbine-combined/androidx.camera.extensions.stub.jar
 
-build core-icu4j,android_common: phony out/soong/.intermediates/external/icu/android_icu4j/core-icu4j/android_common/dex-withres-aligned/core-icu4j.jar
+build frameworks_ex-targets: phony androidx.camera.extensions.impl,android_common androidx.camera.extensions.stub,android_common
 
-build external_icu-targets: phony core-icu4j,android_common
+build android.hardware.audio.common-V2.0-java,android_common: phony out/soong/.intermediates/hardware/interfaces/audio/common/2.0/android.hardware.audio.common-V2.0-java/android_common/javac/android.hardware.audio.common-V2.0-java.jar out/soong/.intermediates/hardware/interfaces/audio/common/2.0/android.hardware.audio.common-V2.0-java/android_common/turbine-combined/android.hardware.audio.common-V2.0-java.jar
 
-build libaudiopolicyservice,android_x86_64_shared: phony out/soong/.intermediates/frameworks/av/services/audiopolicy/service/libaudiopolicyservice/android_x86_64_shared/libaudiopolicyservice.so out/soong/.intermediates/frameworks/av/services/audiopolicy/service/libaudiopolicyservice/android_x86_64_shared/libaudiopolicyservice.so.toc
+build android.hardware.authsecret-V1.0-java,android_common: phony out/soong/.intermediates/hardware/interfaces/authsecret/1.0/android.hardware.authsecret-V1.0-java/android_common/combined/android.hardware.authsecret-V1.0-java.jar out/soong/.intermediates/hardware/interfaces/authsecret/1.0/android.hardware.authsecret-V1.0-java/android_common/turbine-combined/android.hardware.authsecret-V1.0-java.jar
 
-build libsfplugin_ccodec,android_x86_64_shared_cfi: phony out/soong/.intermediates/frameworks/av/media/codec2/sfplugin/libsfplugin_ccodec/android_x86_64_shared_cfi/libsfplugin_ccodec.so out/soong/.intermediates/frameworks/av/media/codec2/sfplugin/libsfplugin_ccodec/android_x86_64_shared_cfi/libsfplugin_ccodec.so.toc
+build android.hardware.biometrics.common-V1-java,android_common: phony out/soong/.intermediates/hardware/interfaces/biometrics/common/aidl/android.hardware.biometrics.common-V1-java/android_common/javac/android.hardware.biometrics.common-V1-java.jar out/soong/.intermediates/hardware/interfaces/biometrics/common/aidl/android.hardware.biometrics.common-V1-java/android_common/turbine-combined/android.hardware.biometrics.common-V1-java.jar
 
-build libsfplugin_ccodec,android_x86_x86_64_shared_cfi: phony out/soong/.intermediates/frameworks/av/media/codec2/sfplugin/libsfplugin_ccodec/android_x86_x86_64_shared_cfi/libsfplugin_ccodec.so out/soong/.intermediates/frameworks/av/media/codec2/sfplugin/libsfplugin_ccodec/android_x86_x86_64_shared_cfi/libsfplugin_ccodec.so.toc
+build android.hardware.biometrics.face-V1-java,android_common: phony out/soong/.intermediates/hardware/interfaces/biometrics/face/aidl/android.hardware.biometrics.face-V1-java/android_common/combined/android.hardware.biometrics.face-V1-java.jar out/soong/.intermediates/hardware/interfaces/biometrics/face/aidl/android.hardware.biometrics.face-V1-java/android_common/turbine-combined/android.hardware.biometrics.face-V1-java.jar
 
-build frameworks_av-targets: phony libaudiopolicyservice,android_x86_64_shared libsfplugin_ccodec,android_x86_64_shared_cfi libsfplugin_ccodec,android_x86_x86_64_shared_cfi
+build android.hardware.biometrics.face-V1.0-java,android_common: phony out/soong/.intermediates/hardware/interfaces/biometrics/face/1.0/android.hardware.biometrics.face-V1.0-java/android_common/combined/android.hardware.biometrics.face-V1.0-java.jar out/soong/.intermediates/hardware/interfaces/biometrics/face/1.0/android.hardware.biometrics.face-V1.0-java/android_common/turbine-combined/android.hardware.biometrics.face-V1.0-java.jar
 
-build hwbinder.stubs,android_common: phony out/soong/.intermediates/frameworks/base/hwbinder.stubs/android_common/turbine-combined/hwbinder.stubs.jar
+build android.hardware.biometrics.fingerprint-V1-java,android_common: phony out/soong/.intermediates/hardware/interfaces/biometrics/fingerprint/aidl/android.hardware.biometrics.fingerprint-V1-java/android_common/combined/android.hardware.biometrics.fingerprint-V1-java.jar out/soong/.intermediates/hardware/interfaces/biometrics/fingerprint/aidl/android.hardware.biometrics.fingerprint-V1-java/android_common/turbine-combined/android.hardware.biometrics.fingerprint-V1-java.jar
 
-build updatable-driver-protos,android_common: phony out/soong/.intermediates/frameworks/base/graphics/proto/updatable-driver-protos/android_common/jarjar/updatable-driver-protos.jar out/soong/.intermediates/frameworks/base/graphics/proto/updatable-driver-protos/android_common/turbine-jarjar/updatable-driver-protos.jar
+build android.hardware.biometrics.fingerprint-V2.1-java,android_common: phony out/soong/.intermediates/hardware/interfaces/biometrics/fingerprint/2.1/android.hardware.biometrics.fingerprint-V2.1-java/android_common/combined/android.hardware.biometrics.fingerprint-V2.1-java.jar out/soong/.intermediates/hardware/interfaces/biometrics/fingerprint/2.1/android.hardware.biometrics.fingerprint-V2.1-java/android_common/turbine-combined/android.hardware.biometrics.fingerprint-V2.1-java.jar
 
-build frameworks_base-targets: phony hwbinder.stubs,android_common updatable-driver-protos,android_common
+build android.hardware.biometrics.fingerprint-V2.2-java,android_common: phony out/soong/.intermediates/hardware/interfaces/biometrics/fingerprint/2.2/android.hardware.biometrics.fingerprint-V2.2-java/android_common/combined/android.hardware.biometrics.fingerprint-V2.2-java.jar out/soong/.intermediates/hardware/interfaces/biometrics/fingerprint/2.2/android.hardware.biometrics.fingerprint-V2.2-java/android_common/turbine-combined/android.hardware.biometrics.fingerprint-V2.2-java.jar
 
-build networkstackprotos,android_common: phony out/soong/.intermediates/frameworks/proto_logging/stats/enums/stats/connectivity/networkstackprotos/android_common/combined/networkstackprotos.jar out/soong/.intermediates/frameworks/proto_logging/stats/enums/stats/connectivity/networkstackprotos/android_common/turbine-combined/networkstackprotos.jar
+build android.hardware.biometrics.fingerprint-V2.3-java,android_common: phony out/soong/.intermediates/hardware/interfaces/biometrics/fingerprint/2.3/android.hardware.biometrics.fingerprint-V2.3-java/android_common/combined/android.hardware.biometrics.fingerprint-V2.3-java.jar out/soong/.intermediates/hardware/interfaces/biometrics/fingerprint/2.3/android.hardware.biometrics.fingerprint-V2.3-java/android_common/turbine-combined/android.hardware.biometrics.fingerprint-V2.3-java.jar
 
-build frameworks_proto_logging-targets: phony networkstackprotos,android_common
+build android.hardware.boot-V1.0-java,android_common: phony out/soong/.intermediates/hardware/interfaces/boot/1.0/android.hardware.boot-V1.0-java/android_common/combined/android.hardware.boot-V1.0-java.jar out/soong/.intermediates/hardware/interfaces/boot/1.0/android.hardware.boot-V1.0-java/android_common/turbine-combined/android.hardware.boot-V1.0-java.jar
+
+build android.hardware.boot-V1.1-java,android_common: phony out/soong/.intermediates/hardware/interfaces/boot/1.1/android.hardware.boot-V1.1-java/android_common/combined/android.hardware.boot-V1.1-java.jar out/soong/.intermediates/hardware/interfaces/boot/1.1/android.hardware.boot-V1.1-java/android_common/turbine-combined/android.hardware.boot-V1.1-java.jar
+
+build android.hardware.boot-V1.2-java,android_common: phony out/soong/.intermediates/hardware/interfaces/boot/1.2/android.hardware.boot-V1.2-java/android_common/combined/android.hardware.boot-V1.2-java.jar out/soong/.intermediates/hardware/interfaces/boot/1.2/android.hardware.boot-V1.2-java/android_common/turbine-combined/android.hardware.boot-V1.2-java.jar
+
+build android.hardware.broadcastradio-V2.0-java,android_common: phony out/soong/.intermediates/hardware/interfaces/broadcastradio/2.0/android.hardware.broadcastradio-V2.0-java/android_common/combined/android.hardware.broadcastradio-V2.0-java.jar out/soong/.intermediates/hardware/interfaces/broadcastradio/2.0/android.hardware.broadcastradio-V2.0-java/android_common/turbine-combined/android.hardware.broadcastradio-V2.0-java.jar
+
+build android.hardware.common-V2-java,android_common: phony out/soong/.intermediates/hardware/interfaces/common/aidl/android.hardware.common-V2-java/android_common/javac/android.hardware.common-V2-java.jar out/soong/.intermediates/hardware/interfaces/common/aidl/android.hardware.common-V2-java/android_common/turbine-combined/android.hardware.common-V2-java.jar
+
+build android.hardware.configstore-V1.0-java,android_common: phony out/soong/.intermediates/hardware/interfaces/configstore/1.0/android.hardware.configstore-V1.0-java/android_common/combined/android.hardware.configstore-V1.0-java.jar out/soong/.intermediates/hardware/interfaces/configstore/1.0/android.hardware.configstore-V1.0-java/android_common/turbine-combined/android.hardware.configstore-V1.0-java.jar
+
+build android.hardware.configstore-V1.1-java,android_common: phony out/soong/.intermediates/hardware/interfaces/configstore/1.1/android.hardware.configstore-V1.1-java/android_common/combined/android.hardware.configstore-V1.1-java.jar out/soong/.intermediates/hardware/interfaces/configstore/1.1/android.hardware.configstore-V1.1-java/android_common/turbine-combined/android.hardware.configstore-V1.1-java.jar
+
+build android.hardware.dumpstate-V1.0-java,android_common: phony out/soong/.intermediates/hardware/interfaces/dumpstate/1.0/android.hardware.dumpstate-V1.0-java/android_common/combined/android.hardware.dumpstate-V1.0-java.jar out/soong/.intermediates/hardware/interfaces/dumpstate/1.0/android.hardware.dumpstate-V1.0-java/android_common/turbine-combined/android.hardware.dumpstate-V1.0-java.jar
+
+build android.hardware.dumpstate-V1.1-java,android_common: phony out/soong/.intermediates/hardware/interfaces/dumpstate/1.1/android.hardware.dumpstate-V1.1-java/android_common/combined/android.hardware.dumpstate-V1.1-java.jar out/soong/.intermediates/hardware/interfaces/dumpstate/1.1/android.hardware.dumpstate-V1.1-java/android_common/turbine-combined/android.hardware.dumpstate-V1.1-java.jar
+
+build android.hardware.gnss-V1-java,android_common: phony out/soong/.intermediates/hardware/interfaces/gnss/aidl/android.hardware.gnss-V1-java/android_common/turbine-combined/android.hardware.gnss-V1-java.jar
+
+build android.hardware.health-V1.0-java,android_common: phony out/soong/.intermediates/hardware/interfaces/health/1.0/android.hardware.health-V1.0-java/android_common/combined/android.hardware.health-V1.0-java.jar out/soong/.intermediates/hardware/interfaces/health/1.0/android.hardware.health-V1.0-java/android_common/turbine-combined/android.hardware.health-V1.0-java.jar
+
+build android.hardware.health-V2.0-java,android_common: phony out/soong/.intermediates/hardware/interfaces/health/2.0/android.hardware.health-V2.0-java/android_common/combined/android.hardware.health-V2.0-java.jar out/soong/.intermediates/hardware/interfaces/health/2.0/android.hardware.health-V2.0-java/android_common/turbine-combined/android.hardware.health-V2.0-java.jar
+
+build android.hardware.health-V2.1-java,android_common: phony out/soong/.intermediates/hardware/interfaces/health/2.1/android.hardware.health-V2.1-java/android_common/combined/android.hardware.health-V2.1-java.jar out/soong/.intermediates/hardware/interfaces/health/2.1/android.hardware.health-V2.1-java/android_common/turbine-combined/android.hardware.health-V2.1-java.jar
+
+build android.hardware.keymaster-V3-java,android_common: phony out/soong/.intermediates/hardware/interfaces/keymaster/aidl/android.hardware.keymaster-V3-java/android_common/javac/android.hardware.keymaster-V3-java.jar out/soong/.intermediates/hardware/interfaces/keymaster/aidl/android.hardware.keymaster-V3-java/android_common/turbine-combined/android.hardware.keymaster-V3-java.jar
+
+build android.hardware.light-V1-java,android_common: phony out/soong/.intermediates/hardware/interfaces/light/aidl/android.hardware.light-V1-java/android_common/javac/android.hardware.light-V1-java.jar out/soong/.intermediates/hardware/interfaces/light/aidl/android.hardware.light-V1-java/android_common/turbine-combined/android.hardware.light-V1-java.jar
+
+build android.hardware.light-V2.0-java,android_common: phony out/soong/.intermediates/hardware/interfaces/light/2.0/android.hardware.light-V2.0-java/android_common/turbine-combined/android.hardware.light-V2.0-java.jar
+
+build android.hardware.oemlock-V1.0-java,android_common: phony out/soong/.intermediates/hardware/interfaces/oemlock/1.0/android.hardware.oemlock-V1.0-java/android_common/combined/android.hardware.oemlock-V1.0-java.jar out/soong/.intermediates/hardware/interfaces/oemlock/1.0/android.hardware.oemlock-V1.0-java/android_common/turbine-combined/android.hardware.oemlock-V1.0-java.jar
+
+build android.hardware.power-V1-java,android_common: phony out/soong/.intermediates/hardware/interfaces/power/aidl/android.hardware.power-V1-java/android_common/turbine-combined/android.hardware.power-V1-java.jar
+
+build android.hardware.power-V1.0-java,android_common: phony out/soong/.intermediates/hardware/interfaces/power/1.0/android.hardware.power-V1.0-java/android_common/turbine-combined/android.hardware.power-V1.0-java.jar
+
+build android.hardware.power.stats-V1-java,android_common: phony out/soong/.intermediates/hardware/interfaces/power/stats/aidl/android.hardware.power.stats-V1-java/android_common/javac/android.hardware.power.stats-V1-java.jar out/soong/.intermediates/hardware/interfaces/power/stats/aidl/android.hardware.power.stats-V1-java/android_common/turbine-combined/android.hardware.power.stats-V1-java.jar
+
+build android.hardware.rebootescrow-V1-java,android_common: phony out/soong/.intermediates/hardware/interfaces/rebootescrow/aidl/android.hardware.rebootescrow-V1-java/android_common/javac/android.hardware.rebootescrow-V1-java.jar out/soong/.intermediates/hardware/interfaces/rebootescrow/aidl/android.hardware.rebootescrow-V1-java/android_common/turbine-combined/android.hardware.rebootescrow-V1-java.jar
+
+build android.hardware.secure_element-V1.0-java,android_common: phony out/soong/.intermediates/hardware/interfaces/secure_element/1.0/android.hardware.secure_element-V1.0-java/android_common/combined/android.hardware.secure_element-V1.0-java.jar out/soong/.intermediates/hardware/interfaces/secure_element/1.0/android.hardware.secure_element-V1.0-java/android_common/turbine-combined/android.hardware.secure_element-V1.0-java.jar
+
+build android.hardware.secure_element-V1.1-java,android_common: phony out/soong/.intermediates/hardware/interfaces/secure_element/1.1/android.hardware.secure_element-V1.1-java/android_common/combined/android.hardware.secure_element-V1.1-java.jar out/soong/.intermediates/hardware/interfaces/secure_element/1.1/android.hardware.secure_element-V1.1-java/android_common/turbine-combined/android.hardware.secure_element-V1.1-java.jar
+
+build android.hardware.secure_element-V1.2-java,android_common: phony out/soong/.intermediates/hardware/interfaces/secure_element/1.2/android.hardware.secure_element-V1.2-java/android_common/combined/android.hardware.secure_element-V1.2-java.jar out/soong/.intermediates/hardware/interfaces/secure_element/1.2/android.hardware.secure_element-V1.2-java/android_common/turbine-combined/android.hardware.secure_element-V1.2-java.jar
+
+build android.hardware.security.keymint-V1-java,android_common: phony out/soong/.intermediates/hardware/interfaces/security/keymint/aidl/android.hardware.security.keymint-V1-java/android_common/combined/android.hardware.security.keymint-V1-java.jar out/soong/.intermediates/hardware/interfaces/security/keymint/aidl/android.hardware.security.keymint-V1-java/android_common/turbine-combined/android.hardware.security.keymint-V1-java.jar
+
+build android.hardware.security.secureclock-V1-java,android_common: phony out/soong/.intermediates/hardware/interfaces/security/secureclock/aidl/android.hardware.security.secureclock-V1-java/android_common/javac/android.hardware.security.secureclock-V1-java.jar out/soong/.intermediates/hardware/interfaces/security/secureclock/aidl/android.hardware.security.secureclock-V1-java/android_common/turbine-combined/android.hardware.security.secureclock-V1-java.jar
+
+build android.hardware.soundtrigger-V2.0-java,android_common: phony out/soong/.intermediates/hardware/interfaces/soundtrigger/2.0/android.hardware.soundtrigger-V2.0-java/android_common/combined/android.hardware.soundtrigger-V2.0-java.jar out/soong/.intermediates/hardware/interfaces/soundtrigger/2.0/android.hardware.soundtrigger-V2.0-java/android_common/turbine-combined/android.hardware.soundtrigger-V2.0-java.jar
+
+build android.hardware.soundtrigger-V2.1-java,android_common: phony out/soong/.intermediates/hardware/interfaces/soundtrigger/2.1/android.hardware.soundtrigger-V2.1-java/android_common/combined/android.hardware.soundtrigger-V2.1-java.jar out/soong/.intermediates/hardware/interfaces/soundtrigger/2.1/android.hardware.soundtrigger-V2.1-java/android_common/turbine-combined/android.hardware.soundtrigger-V2.1-java.jar
+
+build android.hardware.soundtrigger-V2.2-java,android_common: phony out/soong/.intermediates/hardware/interfaces/soundtrigger/2.2/android.hardware.soundtrigger-V2.2-java/android_common/combined/android.hardware.soundtrigger-V2.2-java.jar out/soong/.intermediates/hardware/interfaces/soundtrigger/2.2/android.hardware.soundtrigger-V2.2-java/android_common/turbine-combined/android.hardware.soundtrigger-V2.2-java.jar
+
+build android.hardware.soundtrigger-V2.3-java,android_common: phony out/soong/.intermediates/hardware/interfaces/soundtrigger/2.3/android.hardware.soundtrigger-V2.3-java/android_common/combined/android.hardware.soundtrigger-V2.3-java.jar out/soong/.intermediates/hardware/interfaces/soundtrigger/2.3/android.hardware.soundtrigger-V2.3-java/android_common/turbine-combined/android.hardware.soundtrigger-V2.3-java.jar
+
+build android.hardware.tv.cec-V1.0-java,android_common: phony out/soong/.intermediates/hardware/interfaces/tv/cec/1.0/android.hardware.tv.cec-V1.0-java/android_common/combined/android.hardware.tv.cec-V1.0-java.jar out/soong/.intermediates/hardware/interfaces/tv/cec/1.0/android.hardware.tv.cec-V1.0-java/android_common/turbine-combined/android.hardware.tv.cec-V1.0-java.jar
+
+build android.hardware.tv.cec-V1.1-java,android_common: phony out/soong/.intermediates/hardware/interfaces/tv/cec/1.1/android.hardware.tv.cec-V1.1-java/android_common/combined/android.hardware.tv.cec-V1.1-java.jar out/soong/.intermediates/hardware/interfaces/tv/cec/1.1/android.hardware.tv.cec-V1.1-java/android_common/turbine-combined/android.hardware.tv.cec-V1.1-java.jar
+
+build android.hardware.usb-V1.0-java,android_common: phony out/soong/.intermediates/hardware/interfaces/usb/1.0/android.hardware.usb-V1.0-java/android_common/combined/android.hardware.usb-V1.0-java.jar out/soong/.intermediates/hardware/interfaces/usb/1.0/android.hardware.usb-V1.0-java/android_common/turbine-combined/android.hardware.usb-V1.0-java.jar
+
+build android.hardware.usb-V1.1-java,android_common: phony out/soong/.intermediates/hardware/interfaces/usb/1.1/android.hardware.usb-V1.1-java/android_common/combined/android.hardware.usb-V1.1-java.jar out/soong/.intermediates/hardware/interfaces/usb/1.1/android.hardware.usb-V1.1-java/android_common/turbine-combined/android.hardware.usb-V1.1-java.jar
+
+build android.hardware.usb-V1.2-java,android_common: phony out/soong/.intermediates/hardware/interfaces/usb/1.2/android.hardware.usb-V1.2-java/android_common/combined/android.hardware.usb-V1.2-java.jar out/soong/.intermediates/hardware/interfaces/usb/1.2/android.hardware.usb-V1.2-java/android_common/turbine-combined/android.hardware.usb-V1.2-java.jar
+
+build android.hardware.usb-V1.3-java,android_common: phony out/soong/.intermediates/hardware/interfaces/usb/1.3/android.hardware.usb-V1.3-java/android_common/combined/android.hardware.usb-V1.3-java.jar out/soong/.intermediates/hardware/interfaces/usb/1.3/android.hardware.usb-V1.3-java/android_common/turbine-combined/android.hardware.usb-V1.3-java.jar
+
+build android.hardware.weaver-V1.0-java,android_common: phony out/soong/.intermediates/hardware/interfaces/weaver/1.0/android.hardware.weaver-V1.0-java/android_common/combined/android.hardware.weaver-V1.0-java.jar out/soong/.intermediates/hardware/interfaces/weaver/1.0/android.hardware.weaver-V1.0-java/android_common/turbine-combined/android.hardware.weaver-V1.0-java.jar
+
+build hardware_interfaces-targets: phony android.hardware.audio.common-V2.0-java,android_common android.hardware.authsecret-V1.0-java,android_common android.hardware.biometrics.common-V1-java,android_common android.hardware.biometrics.face-V1-java,android_common android.hardware.biometrics.face-V1.0-java,android_common android.hardware.biometrics.fingerprint-V1-java,android_common android.hardware.biometrics.fingerprint-V2.1-java,android_common android.hardware.biometrics.fingerprint-V2.2-java,android_common android.hardware.biometrics.fingerprint-V2.3-java,android_common android.hardware.boot-V1.0-java,android_common android.hardware.boot-V1.1-java,android_common android.hardware.boot-V1.2-java,android_common android.hardware.broadcastradio-V2.0-java,android_common android.hardware.common-V2-java,android_common android.hardware.configstore-V1.0-java,android_common android.hardware.configstore-V1.1-java,android_common android.hardware.dumpstate-V1.0-java,android_common android.hardware.dumpstate-V1.1-java,android_common android.hardware.gnss-V1-java,android_common android.hardware.health-V1.0-java,android_common android.hardware.health-V2.0-java,android_common android.hardware.health-V2.1-java,android_common android.hardware.keymaster-V3-java,android_common android.hardware.light-V1-java,android_common android.hardware.light-V2.0-java,android_common android.hardware.oemlock-V1.0-java,android_common android.hardware.power-V1-java,android_common android.hardware.power-V1.0-java,android_common android.hardware.power.stats-V1-java,android_common android.hardware.rebootescrow-V1-java,android_common android.hardware.secure_element-V1.0-java,android_common android.hardware.secure_element-V1.1-java,android_common android.hardware.secure_element-V1.2-java,android_common android.hardware.security.keymint-V1-java,android_common android.hardware.security.secureclock-V1-java,android_common android.hardware.soundtrigger-V2.0-java,android_common android.hardware.soundtrigger-V2.1-java,android_common android.hardware.soundtrigger-V2.2-java,android_common android.hardware.soundtrigger-V2.3-java,android_common android.hardware.tv.cec-V1.0-java,android_common android.hardware.tv.cec-V1.1-java,android_common android.hardware.usb-V1.0-java,android_common android.hardware.usb-V1.1-java,android_common android.hardware.usb-V1.2-java,android_common android.hardware.usb-V1.3-java,android_common android.hardware.weaver-V1.0-java,android_common
+
+build TetheringApiCurrentLib,android_common_apex30: phony out/soong/.intermediates/packages/modules/Connectivity/Tethering/TetheringApiCurrentLib/android_common_apex30/combined/TetheringApiCurrentLib.jar out/soong/.intermediates/packages/modules/Connectivity/Tethering/TetheringApiCurrentLib/android_common_apex30/manifest_fixer/AndroidManifest.xml out/soong/.intermediates/packages/modules/Connectivity/Tethering/TetheringApiCurrentLib/android_common_apex30/package-res.apk out/soong/.intermediates/packages/modules/Connectivity/Tethering/TetheringApiCurrentLib/android_common_apex30/turbine-combined/TetheringApiCurrentLib.jar
+
+build Tethering,android_common_apex30: phony out/soong/.intermediates/packages/modules/Connectivity/Tethering/Tethering/android_common_apex30/Tethering.apk
+
+build com.android.tethering,android_common_com.android.tethering_image: phony out/soong/.intermediates/packages/modules/Connectivity/Tethering/apex/com.android.tethering/android_common_com.android.tethering_image/apex_manifest.pb out/soong/.intermediates/packages/modules/Connectivity/Tethering/apex/com.android.tethering/android_common_com.android.tethering_image/apex_pubkey out/soong/.intermediates/packages/modules/Connectivity/Tethering/apex/com.android.tethering/android_common_com.android.tethering_image/com.android.tethering.capex
+
+build framework-connectivity.impl,android_common: phony out/soong/.intermediates/packages/modules/Connectivity/framework/framework-connectivity.impl/android_common/turbine-jarjar/framework-connectivity.impl.jar
+
+build framework-tethering.impl,android_common: phony out/soong/.intermediates/packages/modules/Connectivity/Tethering/common/TetheringLib/framework-tethering.impl/android_common/turbine-jarjar/framework-tethering.impl.jar
+
+build service-connectivity-pre-jarjar,android_common_apex30: phony out/soong/.intermediates/packages/modules/Connectivity/service/service-connectivity-pre-jarjar/android_common_apex30/combined/service-connectivity-pre-jarjar.jar out/soong/.intermediates/packages/modules/Connectivity/service/service-connectivity-pre-jarjar/android_common_apex30/turbine-combined/service-connectivity-pre-jarjar.jar
+
+build service-connectivity,android_common_apex30: phony out/soong/.intermediates/packages/modules/Connectivity/service/service-connectivity/android_common_apex30/aligned/service-connectivity.jar out/soong/.intermediates/packages/modules/Connectivity/service/service-connectivity/android_common_apex30/jarjar/service-connectivity.jar out/soong/.intermediates/packages/modules/Connectivity/service/service-connectivity/android_common_apex30/turbine-jarjar/service-connectivity.jar
+
+build packages_modules_Connectivity-targets: phony TetheringApiCurrentLib,android_common_apex30 Tethering,android_common_apex30 com.android.tethering,android_common_com.android.tethering_image framework-connectivity.impl,android_common framework-tethering.impl,android_common service-connectivity-pre-jarjar,android_common_apex30 service-connectivity,android_common_apex30
+
+build NetworkStackApi29Shims,android_common: phony out/soong/.intermediates/packages/modules/NetworkStack/NetworkStackApi29Shims/android_common/combined/NetworkStackApi29Shims.jar out/soong/.intermediates/packages/modules/NetworkStack/NetworkStackApi29Shims/android_common/turbine-combined/NetworkStackApi29Shims.jar
+
+build NetworkStackApi30Shims,android_common: phony out/soong/.intermediates/packages/modules/NetworkStack/NetworkStackApi30Shims/android_common/combined/NetworkStackApi30Shims.jar out/soong/.intermediates/packages/modules/NetworkStack/NetworkStackApi30Shims/android_common/turbine-combined/NetworkStackApi30Shims.jar
+
+build NetworkStackApi31Shims,android_common: phony out/soong/.intermediates/packages/modules/NetworkStack/NetworkStackApi31Shims/android_common/combined/NetworkStackApi31Shims.jar out/soong/.intermediates/packages/modules/NetworkStack/NetworkStackApi31Shims/android_common/turbine-combined/NetworkStackApi31Shims.jar
+
+build NetworkStackApiStableShims,android_common: phony out/soong/.intermediates/packages/modules/NetworkStack/NetworkStackApiStableShims/android_common/jarjar/NetworkStackApiStableShims.jar out/soong/.intermediates/packages/modules/NetworkStack/NetworkStackApiStableShims/android_common/turbine-jarjar/NetworkStackApiStableShims.jar
+
+build NetworkStackShimsCommon,android_common: phony out/soong/.intermediates/packages/modules/NetworkStack/NetworkStackShimsCommon/android_common/combined/NetworkStackShimsCommon.jar out/soong/.intermediates/packages/modules/NetworkStack/NetworkStackShimsCommon/android_common/turbine-combined/NetworkStackShimsCommon.jar
+
+build ipmemorystore-aidl-interfaces-V10-java,android_common: phony out/soong/.intermediates/packages/modules/NetworkStack/common/networkstackclient/ipmemorystore-aidl-interfaces-V10-java/android_common/javac/ipmemorystore-aidl-interfaces-V10-java.jar out/soong/.intermediates/packages/modules/NetworkStack/common/networkstackclient/ipmemorystore-aidl-interfaces-V10-java/android_common/turbine-combined/ipmemorystore-aidl-interfaces-V10-java.jar
+
+build networkstack-aidl-interfaces-V10-java,android_common: phony out/soong/.intermediates/packages/modules/NetworkStack/common/networkstackclient/networkstack-aidl-interfaces-V10-java/android_common/combined/networkstack-aidl-interfaces-V10-java.jar out/soong/.intermediates/packages/modules/NetworkStack/common/networkstackclient/networkstack-aidl-interfaces-V10-java/android_common/turbine-combined/networkstack-aidl-interfaces-V10-java.jar
+
+build networkstack-client,android_common: phony out/soong/.intermediates/packages/modules/NetworkStack/common/networkstackclient/networkstack-client/android_common/combined/networkstack-client.jar out/soong/.intermediates/packages/modules/NetworkStack/common/networkstackclient/networkstack-client/android_common/turbine-combined/networkstack-client.jar
+
+build packages_modules_NetworkStack-targets: phony NetworkStackApi29Shims,android_common NetworkStackApi30Shims,android_common NetworkStackApi31Shims,android_common NetworkStackApiStableShims,android_common NetworkStackShimsCommon,android_common ipmemorystore-aidl-interfaces-V10-java,android_common networkstack-aidl-interfaces-V10-java,android_common networkstack-client,android_common
+
+build com.android.permission,android_common_com.android.permission_image: phony out/soong/.intermediates/packages/modules/Permission/com.android.permission/android_common_com.android.permission_image/apex_manifest.pb out/soong/.intermediates/packages/modules/Permission/com.android.permission/android_common_com.android.permission_image/apex_pubkey out/soong/.intermediates/packages/modules/Permission/com.android.permission/android_common_com.android.permission_image/com.android.permission.capex
+
+build framework-permission-s.impl,android_common: phony out/soong/.intermediates/packages/modules/Permission/framework-s/framework-permission-s.impl/android_common/turbine-jarjar/framework-permission-s.impl.jar
+
+build service-permission.stubs.source.system_server,android_common: phony out/soong/.intermediates/packages/modules/Permission/service/service-permission.stubs.source.system_server/android_common/metalava/service-permission.stubs.source.system_server-stubs.srcjar
+
+build service-permission.stubs.system_server,android_common: phony out/soong/.intermediates/packages/modules/Permission/service/service-permission.stubs.system_server/android_common/turbine-combined/service-permission.stubs.system_server.jar
+
+build service-permission,android_common_apex30: phony out/soong/.intermediates/packages/modules/Permission/service/service-permission/android_common_apex30/aligned/service-permission.jar out/soong/.intermediates/packages/modules/Permission/service/service-permission/android_common_apex30/jarjar/service-permission.jar out/soong/.intermediates/packages/modules/Permission/service/service-permission/android_common_apex30/turbine-jarjar/service-permission.jar
+
+build packages_modules_Permission-targets: phony com.android.permission,android_common_com.android.permission_image framework-permission-s.impl,android_common service-permission.stubs.source.system_server,android_common service-permission.stubs.system_server,android_common service-permission,android_common_apex30
+
+build com.android.scheduling,android_common_com.android.scheduling_image: phony out/soong/.intermediates/packages/modules/Scheduling/apex/com.android.scheduling/android_common_com.android.scheduling_image/apex_manifest.pb out/soong/.intermediates/packages/modules/Scheduling/apex/com.android.scheduling/android_common_com.android.scheduling_image/apex_pubkey out/soong/.intermediates/packages/modules/Scheduling/apex/com.android.scheduling/android_common_com.android.scheduling_image/com.android.scheduling.apex
+
+build framework-scheduling.impl,android_common: phony out/soong/.intermediates/packages/modules/Scheduling/framework/framework-scheduling.impl/android_common/turbine-combined/framework-scheduling.impl.jar
+
+build service-scheduling,android_common_apex10000: phony out/soong/.intermediates/packages/modules/Scheduling/service/service-scheduling/android_common_apex10000/aligned/service-scheduling.jar out/soong/.intermediates/packages/modules/Scheduling/service/service-scheduling/android_common_apex10000/jarjar/service-scheduling.jar out/soong/.intermediates/packages/modules/Scheduling/service/service-scheduling/android_common_apex10000/turbine-jarjar/service-scheduling.jar
+
+build packages_modules_Scheduling-targets: phony com.android.scheduling,android_common_com.android.scheduling_image framework-scheduling.impl,android_common service-scheduling,android_common_apex10000
+
+build com.android.wifi,android_common_com.android.wifi_image: phony out/soong/.intermediates/packages/modules/Wifi/apex/com.android.wifi/android_common_com.android.wifi_image/apex_manifest.pb out/soong/.intermediates/packages/modules/Wifi/apex/com.android.wifi/android_common_com.android.wifi_image/apex_pubkey out/soong/.intermediates/packages/modules/Wifi/apex/com.android.wifi/android_common_com.android.wifi_image/com.android.wifi.capex
+
+build framework-wifi.impl,android_common: phony out/soong/.intermediates/packages/modules/Wifi/framework/framework-wifi.impl/android_common/turbine-jarjar/framework-wifi.impl.jar
+
+build service-wifi,android_common_apex30: phony out/soong/.intermediates/packages/modules/Wifi/service/service-wifi/android_common_apex30/aligned/service-wifi.jar out/soong/.intermediates/packages/modules/Wifi/service/service-wifi/android_common_apex30/jarjar/service-wifi.jar out/soong/.intermediates/packages/modules/Wifi/service/service-wifi/android_common_apex30/turbine-jarjar/service-wifi.jar
+
+build packages_modules_Wifi-targets: phony com.android.wifi,android_common_com.android.wifi_image framework-wifi.impl,android_common service-wifi,android_common_apex30
+
+build MediaProvider,android_common_apex30: phony out/soong/.intermediates/packages/providers/MediaProvider/MediaProvider/android_common_apex30/MediaProvider.apk
+
+build framework-mediaprovider.impl,android_common: phony out/soong/.intermediates/packages/providers/MediaProvider/apex/framework/framework-mediaprovider.impl/android_common/turbine-combined/framework-mediaprovider.impl.jar
+
+build packages_providers_MediaProvider-targets: phony MediaProvider,android_common_apex30 framework-mediaprovider.impl,android_common
+
+build android.hidl.manager-V1.0-java,android_common: phony out/soong/.intermediates/system/libhidl/transport/manager/1.0/android.hidl.manager-V1.0-java/android_common/aligned/android.hidl.manager-V1.0-java.jar out/soong/.intermediates/system/libhidl/transport/manager/1.0/android.hidl.manager-V1.0-java/android_common/combined/android.hidl.manager-V1.0-java.jar out/soong/.intermediates/system/libhidl/transport/manager/1.0/android.hidl.manager-V1.0-java/android_common/dexpreopt/dexpreopt.config out/soong/.intermediates/system/libhidl/transport/manager/1.0/android.hidl.manager-V1.0-java/android_common/dexpreopt/oat/x86/javalib.odex out/soong/.intermediates/system/libhidl/transport/manager/1.0/android.hidl.manager-V1.0-java/android_common/dexpreopt/oat/x86/javalib.vdex out/soong/.intermediates/system/libhidl/transport/manager/1.0/android.hidl.manager-V1.0-java/android_common/dexpreopt/oat/x86_64/javalib.odex out/soong/.intermediates/system/libhidl/transport/manager/1.0/android.hidl.manager-V1.0-java/android_common/dexpreopt/oat/x86_64/javalib.vdex out/soong/.intermediates/system/libhidl/transport/manager/1.0/android.hidl.manager-V1.0-java/android_common/turbine-combined/android.hidl.manager-V1.0-java.jar
+
+build android.hidl.manager-V1.1-java,android_common: phony out/soong/.intermediates/system/libhidl/transport/manager/1.1/android.hidl.manager-V1.1-java/android_common/combined/android.hidl.manager-V1.1-java.jar out/soong/.intermediates/system/libhidl/transport/manager/1.1/android.hidl.manager-V1.1-java/android_common/turbine-combined/android.hidl.manager-V1.1-java.jar
+
+build android.hidl.manager-V1.2-java,android_common: phony out/soong/.intermediates/system/libhidl/transport/manager/1.2/android.hidl.manager-V1.2-java/android_common/combined/android.hidl.manager-V1.2-java.jar out/soong/.intermediates/system/libhidl/transport/manager/1.2/android.hidl.manager-V1.2-java/android_common/turbine-combined/android.hidl.manager-V1.2-java.jar
+
+build system_libhidl-targets: phony android.hidl.manager-V1.0-java,android_common android.hidl.manager-V1.1-java,android_common android.hidl.manager-V1.2-java,android_common
+
+build netd_aidl_interface-V7-java,android_common: phony out/soong/.intermediates/system/netd/server/netd_aidl_interface-V7-java/android_common/javac/netd_aidl_interface-V7-java.jar out/soong/.intermediates/system/netd/server/netd_aidl_interface-V7-java/android_common/turbine-combined/netd_aidl_interface-V7-java.jar
+
+build netd_aidl_interface-lateststable-java,android_common: phony out/soong/.intermediates/system/netd/server/netd_aidl_interface-lateststable-java/android_common/turbine-combined/netd_aidl_interface-lateststable-java.jar
+
+build netd_event_listener_interface-V1-java,android_common: phony out/soong/.intermediates/system/netd/server/netd_event_listener_interface-V1-java/android_common/javac/netd_event_listener_interface-V1-java.jar out/soong/.intermediates/system/netd/server/netd_event_listener_interface-V1-java/android_common/turbine-combined/netd_event_listener_interface-V1-java.jar
+
+build netd_event_listener_interface-lateststable-java,android_common: phony out/soong/.intermediates/system/netd/server/netd_event_listener_interface-lateststable-java/android_common/turbine-combined/netd_event_listener_interface-lateststable-java.jar
+
+build system_netd-targets: phony netd_aidl_interface-V7-java,android_common netd_aidl_interface-lateststable-java,android_common netd_event_listener_interface-V1-java,android_common netd_event_listener_interface-lateststable-java,android_common
 
 

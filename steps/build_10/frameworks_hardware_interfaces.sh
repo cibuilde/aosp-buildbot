@@ -82,35 +82,35 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^android_ven
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^android_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^android_x86_x86_64_shared/ .
 
-echo "building android.frameworks.sensorservice@1.0^android_x86_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja android.frameworks.sensorservice@1.0,android_x86_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/sensorservice/1.0/android.frameworks.sensorservice@1.0^android_x86_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/frameworks/hardware/interfaces/android.frameworks.sensorservice@1.0^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/sensorservice/1.0/android.frameworks.sensorservice@1.0^android_x86_x86_64_shared
-
-echo "building android.frameworks.sensorservice@1.0^android_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja android.frameworks.sensorservice@1.0,android_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/sensorservice/1.0/android.frameworks.sensorservice@1.0^android_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/frameworks/hardware/interfaces/android.frameworks.sensorservice@1.0^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/sensorservice/1.0/android.frameworks.sensorservice@1.0^android_x86_64_shared
-
-echo "building android.frameworks.sensorservice@1.0^android_vendor.31_x86_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja android.frameworks.sensorservice@1.0,android_vendor.31_x86_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/sensorservice/1.0/android.frameworks.sensorservice@1.0^android_vendor.31_x86_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/frameworks/hardware/interfaces/android.frameworks.sensorservice@1.0^android_vendor.31_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/sensorservice/1.0/android.frameworks.sensorservice@1.0^android_vendor.31_x86_x86_64_shared
-
-echo "building android.frameworks.sensorservice@1.0^android_vendor.31_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja android.frameworks.sensorservice@1.0,android_vendor.31_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/sensorservice/1.0/android.frameworks.sensorservice@1.0^android_vendor.31_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/frameworks/hardware/interfaces/android.frameworks.sensorservice@1.0^android_vendor.31_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/sensorservice/1.0/android.frameworks.sensorservice@1.0^android_vendor.31_x86_64_shared
+echo "building android.frameworks.bufferhub@1.0^android_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja android.frameworks.bufferhub@1.0,android_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/bufferhub/1.0/android.frameworks.bufferhub@1.0^android_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/frameworks/hardware/interfaces/android.frameworks.bufferhub@1.0^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/bufferhub/1.0/android.frameworks.bufferhub@1.0^android_x86_64_shared
 
 echo "building android.frameworks.bufferhub@1.0^android_x86_x86_64_shared"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja android.frameworks.bufferhub@1.0,android_x86_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/bufferhub/1.0/android.frameworks.bufferhub@1.0^android_x86_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/frameworks/hardware/interfaces/android.frameworks.bufferhub@1.0^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/bufferhub/1.0/android.frameworks.bufferhub@1.0^android_x86_x86_64_shared
 
-echo "building android.frameworks.bufferhub@1.0^android_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja android.frameworks.bufferhub@1.0,android_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/bufferhub/1.0/android.frameworks.bufferhub@1.0^android_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/frameworks/hardware/interfaces/android.frameworks.bufferhub@1.0^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/bufferhub/1.0/android.frameworks.bufferhub@1.0^android_x86_64_shared
+echo "building android.frameworks.sensorservice@1.0^android_vendor.31_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja android.frameworks.sensorservice@1.0,android_vendor.31_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/sensorservice/1.0/android.frameworks.sensorservice@1.0^android_vendor.31_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/frameworks/hardware/interfaces/android.frameworks.sensorservice@1.0^android_vendor.31_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/sensorservice/1.0/android.frameworks.sensorservice@1.0^android_vendor.31_x86_64_shared
+
+echo "building android.frameworks.sensorservice@1.0^android_vendor.31_x86_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja android.frameworks.sensorservice@1.0,android_vendor.31_x86_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/sensorservice/1.0/android.frameworks.sensorservice@1.0^android_vendor.31_x86_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/frameworks/hardware/interfaces/android.frameworks.sensorservice@1.0^android_vendor.31_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/sensorservice/1.0/android.frameworks.sensorservice@1.0^android_vendor.31_x86_x86_64_shared
+
+echo "building android.frameworks.sensorservice@1.0^android_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja android.frameworks.sensorservice@1.0,android_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/sensorservice/1.0/android.frameworks.sensorservice@1.0^android_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/frameworks/hardware/interfaces/android.frameworks.sensorservice@1.0^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/sensorservice/1.0/android.frameworks.sensorservice@1.0^android_x86_64_shared
+
+echo "building android.frameworks.sensorservice@1.0^android_x86_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja android.frameworks.sensorservice@1.0,android_x86_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/sensorservice/1.0/android.frameworks.sensorservice@1.0^android_x86_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/frameworks/hardware/interfaces/android.frameworks.sensorservice@1.0^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/sensorservice/1.0/android.frameworks.sensorservice@1.0^android_x86_x86_64_shared
 
 rm -rf out
 

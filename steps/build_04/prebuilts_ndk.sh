@@ -18,15 +18,15 @@ clone_depth_platform prebuilts/ndk
 rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/libc^android_vendor.31_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/libc^android_vendor.31_x86_x86_64_shared/ .
 
-echo "building cpufeatures^android_vendor.31_x86_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja cpufeatures,android_vendor.31_x86_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/ndk/cpufeatures^android_vendor.31_x86_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/prebuilts/ndk/cpufeatures^android_vendor.31_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/prebuilts/ndk/cpufeatures^android_vendor.31_x86_x86_64_static
-
 echo "building cpufeatures^android_vendor.31_x86_64_static"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja cpufeatures,android_vendor.31_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/ndk/cpufeatures^android_vendor.31_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/prebuilts/ndk/cpufeatures^android_vendor.31_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/prebuilts/ndk/cpufeatures^android_vendor.31_x86_64_static
+
+echo "building cpufeatures^android_vendor.31_x86_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja cpufeatures,android_vendor.31_x86_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/ndk/cpufeatures^android_vendor.31_x86_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/prebuilts/ndk/cpufeatures^android_vendor.31_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/prebuilts/ndk/cpufeatures^android_vendor.31_x86_x86_64_static
 
 rm -rf out
 

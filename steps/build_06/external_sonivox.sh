@@ -37,15 +37,15 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/external/sonivox/arm-wt-22k/libsonivox^a
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^android_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^android_x86_x86_64_shared/ .
 
-echo "building libsonivox^android_x86_x86_64_shared_cfi"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libsonivox,android_x86_x86_64_shared_cfi
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/sonivox/arm-wt-22k/libsonivox^android_x86_x86_64_shared_cfi
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/external/sonivox/libsonivox^android_x86_x86_64_shared_cfi.output . $GITHUB_WORKSPACE/artifacts/external/sonivox/arm-wt-22k/libsonivox^android_x86_x86_64_shared_cfi
-
 echo "building libsonivox^android_x86_64_shared_cfi"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libsonivox,android_x86_64_shared_cfi
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/sonivox/arm-wt-22k/libsonivox^android_x86_64_shared_cfi
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/external/sonivox/libsonivox^android_x86_64_shared_cfi.output . $GITHUB_WORKSPACE/artifacts/external/sonivox/arm-wt-22k/libsonivox^android_x86_64_shared_cfi
+
+echo "building libsonivox^android_x86_x86_64_shared_cfi"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libsonivox,android_x86_x86_64_shared_cfi
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/sonivox/arm-wt-22k/libsonivox^android_x86_x86_64_shared_cfi
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/external/sonivox/libsonivox^android_x86_x86_64_shared_cfi.output . $GITHUB_WORKSPACE/artifacts/external/sonivox/arm-wt-22k/libsonivox^android_x86_x86_64_shared_cfi
 
 rm -rf out
 

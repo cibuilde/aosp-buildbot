@@ -30,6 +30,16 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/external/pcre/libpcre2^linux_glibc_x86_6
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/selinux/libsepol/libsepol^linux_glibc_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/core/libpackagelistparser/libpackagelistparser^android_x86_64_static/ .
 
+echo "building libselinux^android_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_02.ninja libselinux,android_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/selinux/libselinux/libselinux^android_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_02/external/selinux/libselinux^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/selinux/libselinux/libselinux^android_x86_64_static
+
+echo "building libselinux^linux_glibc_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_02.ninja libselinux,linux_glibc_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/selinux/libselinux/libselinux^linux_glibc_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_02/external/selinux/libselinux^linux_glibc_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/external/selinux/libselinux/libselinux^linux_glibc_x86_64_shared
+
 echo "building libselinux^linux_glibc_x86_64_static"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_02.ninja libselinux,linux_glibc_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/selinux/libselinux/libselinux^linux_glibc_x86_64_static
@@ -39,16 +49,6 @@ echo "building sefcontext_compile^linux_glibc_x86_64"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_02.ninja sefcontext_compile,linux_glibc_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/selinux/libselinux/sefcontext_compile^linux_glibc_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_02/external/selinux/sefcontext_compile^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/selinux/libselinux/sefcontext_compile^linux_glibc_x86_64
-
-echo "building libselinux^linux_glibc_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_02.ninja libselinux,linux_glibc_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/selinux/libselinux/libselinux^linux_glibc_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_02/external/selinux/libselinux^linux_glibc_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/external/selinux/libselinux/libselinux^linux_glibc_x86_64_shared
-
-echo "building libselinux^android_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_02.ninja libselinux,android_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/selinux/libselinux/libselinux^android_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_02/external/selinux/libselinux^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/selinux/libselinux/libselinux^android_x86_64_static
 
 rm -rf out
 

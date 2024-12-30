@@ -1,0 +1,8 @@
+out/soong/.intermediates/packages/services/Mtp/MtpService/android_common/MtpService.apk
+out/soong/.intermediates/packages/services/Mtp/MtpService/android_common/combined/MtpService.jar
+out/soong/.intermediates/packages/services/Mtp/MtpService/android_common/dexpreopt/dexpreopt.config
+out/soong/.intermediates/packages/services/Mtp/MtpService/android_common/dexpreopt/oat/x86_64/package.odex
+out/soong/.intermediates/packages/services/Mtp/MtpService/android_common/dexpreopt/oat/x86_64/package.vdex
+out/soong/.intermediates/packages/services/Mtp/MtpService/android_common/package-res.apk
+out/soong/.intermediates/packages/services/Mtp/MtpService/android_common/proguard_dictionary
+out/soong/.intermediates/packages/services/Mtp/MtpService/android_common/proguard_usage.zip

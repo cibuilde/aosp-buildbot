@@ -46,15 +46,15 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/system/core/libutils/libutils^android_ve
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^android_vendor.31_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^android_vendor.31_x86_x86_64_shared/ .
 
-echo "building lib_profiler^android_vendor.31_x86_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja lib_profiler,android_vendor.31_x86_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/google/camera/common/profiler/lib_profiler^android_vendor.31_x86_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/hardware/google/camera/lib_profiler^android_vendor.31_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/hardware/google/camera/common/profiler/lib_profiler^android_vendor.31_x86_x86_64_shared
-
 echo "building lib_profiler^android_vendor.31_x86_64_shared"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja lib_profiler,android_vendor.31_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/google/camera/common/profiler/lib_profiler^android_vendor.31_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/hardware/google/camera/lib_profiler^android_vendor.31_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/hardware/google/camera/common/profiler/lib_profiler^android_vendor.31_x86_64_shared
+
+echo "building lib_profiler^android_vendor.31_x86_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja lib_profiler,android_vendor.31_x86_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/google/camera/common/profiler/lib_profiler^android_vendor.31_x86_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/hardware/google/camera/lib_profiler^android_vendor.31_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/hardware/google/camera/common/profiler/lib_profiler^android_vendor.31_x86_x86_64_shared
 
 rm -rf out
 

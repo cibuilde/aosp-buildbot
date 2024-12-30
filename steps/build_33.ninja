@@ -1,0 +1,123 @@
+builddir = out
+pool local_pool
+ depth = 66
+pool highmem_pool
+ depth = 5
+
+include ninja/global.ninja
+include ninja/singleton.ninja
+
+include ninja/frameworks/base/apex/blobstore/service/service-blobstore^android_common.ninja
+include ninja/frameworks/base/apex/jobscheduler/service/service-jobscheduler^android_common.ninja
+include ninja/frameworks/base/services/accessibility/services.accessibility^android_common.ninja
+include ninja/frameworks/base/services/appprediction/services.appprediction^android_common.ninja
+include ninja/frameworks/base/services/appwidget/services.appwidget^android_common.ninja
+include ninja/frameworks/base/services/autofill/services.autofill^android_common.ninja
+include ninja/frameworks/base/services/backup/backuplib/backuplib^android_common.ninja
+include ninja/frameworks/base/services/backup/services.backup^android_common.ninja
+include ninja/frameworks/base/services/companion/services.companion^android_common.ninja
+include ninja/frameworks/base/services/contentcapture/services.contentcapture^android_common.ninja
+include ninja/frameworks/base/services/contentsuggestions/services.contentsuggestions^android_common.ninja
+include ninja/frameworks/base/services/core/services.core.priorityboosted^android_common.ninja
+include ninja/frameworks/base/services/core/services.core.unboosted^android_common.ninja
+include ninja/frameworks/base/services/core/services.core^android_common.ninja
+include ninja/frameworks/base/services/devicepolicy/services.devicepolicy^android_common.ninja
+include ninja/frameworks/base/services/midi/services.midi^android_common.ninja
+include ninja/frameworks/base/services/musicrecognition/services.musicsearch^android_common.ninja
+include ninja/frameworks/base/services/net/services.net^android_common.ninja
+include ninja/frameworks/base/services/people/services.people^android_common.ninja
+include ninja/frameworks/base/services/print/services.print^android_common.ninja
+include ninja/frameworks/base/services/profcollect/services.profcollect^android_common.ninja
+include ninja/frameworks/base/services/restrictions/services.restrictions^android_common.ninja
+include ninja/frameworks/base/services/searchui/services.searchui^android_common.ninja
+include ninja/frameworks/base/services/services-platform-compat-config^android_common.ninja
+include ninja/frameworks/base/services/services^android_common.ninja
+include ninja/frameworks/base/services/smartspace/services.smartspace^android_common.ninja
+include ninja/frameworks/base/services/startop/services.startop^android_common.ninja
+include ninja/frameworks/base/services/systemcaptions/services.systemcaptions^android_common.ninja
+include ninja/frameworks/base/services/texttospeech/services.texttospeech^android_common.ninja
+include ninja/frameworks/base/services/translation/services.translation^android_common.ninja
+include ninja/frameworks/base/services/usage/services.usage^android_common.ninja
+include ninja/frameworks/base/services/usb/services.usb^android_common.ninja
+include ninja/frameworks/base/services/uwb/services.uwb^android_common.ninja
+include ninja/frameworks/base/services/voiceinteraction/services.voiceinteraction^android_common.ninja
+include ninja/frameworks/base/startop/iorap/services.startop.iorap^android_common.ninja
+include ninja/packages/apps/RemoteProvisioner/RemoteProvisioner^android_common.ninja
+
+build backuplib,android_common: phony out/soong/.intermediates/frameworks/base/services/backup/backuplib/backuplib/android_common/javac/backuplib.jar out/soong/.intermediates/frameworks/base/services/backup/backuplib/backuplib/android_common/turbine-combined/backuplib.jar
+
+build service-blobstore,android_common: phony out/soong/.intermediates/frameworks/base/apex/blobstore/service/service-blobstore/android_common/javac/service-blobstore.jar out/soong/.intermediates/frameworks/base/apex/blobstore/service/service-blobstore/android_common/turbine-combined/service-blobstore.jar
+
+build service-jobscheduler,android_common: phony out/soong/.intermediates/frameworks/base/apex/jobscheduler/service/service-jobscheduler/android_common/jarjar/service-jobscheduler.jar out/soong/.intermediates/frameworks/base/apex/jobscheduler/service/service-jobscheduler/android_common/turbine-jarjar/service-jobscheduler.jar
+
+build services-platform-compat-config,android_common: phony out/soong/.intermediates/frameworks/base/services/services-platform-compat-config/android_common/services-platform-compat-config.xml
+
+build services.accessibility,android_common: phony out/soong/.intermediates/frameworks/base/services/accessibility/services.accessibility/android_common/javac/services.accessibility.jar out/soong/.intermediates/frameworks/base/services/accessibility/services.accessibility/android_common/turbine-combined/services.accessibility.jar
+
+build services.appprediction,android_common: phony out/soong/.intermediates/frameworks/base/services/appprediction/services.appprediction/android_common/javac/services.appprediction.jar out/soong/.intermediates/frameworks/base/services/appprediction/services.appprediction/android_common/turbine-combined/services.appprediction.jar
+
+build services.appwidget,android_common: phony out/soong/.intermediates/frameworks/base/services/appwidget/services.appwidget/android_common/javac/services.appwidget.jar out/soong/.intermediates/frameworks/base/services/appwidget/services.appwidget/android_common/turbine-combined/services.appwidget.jar
+
+build services.autofill,android_common: phony out/soong/.intermediates/frameworks/base/services/autofill/services.autofill/android_common/javac/services.autofill.jar out/soong/.intermediates/frameworks/base/services/autofill/services.autofill/android_common/turbine-combined/services.autofill.jar
+
+build services.backup,android_common: phony out/soong/.intermediates/frameworks/base/services/backup/services.backup/android_common/combined/services.backup.jar out/soong/.intermediates/frameworks/base/services/backup/services.backup/android_common/turbine-combined/services.backup.jar
+
+build services.companion,android_common: phony out/soong/.intermediates/frameworks/base/services/companion/services.companion/android_common/javac/services.companion.jar out/soong/.intermediates/frameworks/base/services/companion/services.companion/android_common/turbine-combined/services.companion.jar
+
+build services.contentcapture,android_common: phony out/soong/.intermediates/frameworks/base/services/contentcapture/services.contentcapture/android_common/javac/services.contentcapture.jar out/soong/.intermediates/frameworks/base/services/contentcapture/services.contentcapture/android_common/turbine-combined/services.contentcapture.jar
+
+build services.contentsuggestions,android_common: phony out/soong/.intermediates/frameworks/base/services/contentsuggestions/services.contentsuggestions/android_common/javac/services.contentsuggestions.jar out/soong/.intermediates/frameworks/base/services/contentsuggestions/services.contentsuggestions/android_common/turbine-combined/services.contentsuggestions.jar
+
+build services.core.priorityboosted,android_common: phony out/soong/.intermediates/frameworks/base/services/core/services.core.priorityboosted/android_common/gen/services.core.priorityboosted.jar
+
+build services.core.unboosted,android_common: phony out/soong/.intermediates/frameworks/base/services/core/services.core.unboosted/android_common/combined/services.core.unboosted.jar
+
+build services.core,android_common: phony out/soong/.intermediates/frameworks/base/services/core/services.core/android_common/combined/services.core.jar out/soong/.intermediates/frameworks/base/services/core/services.core/android_common/turbine-combined/services.core.jar
+
+build services.devicepolicy,android_common: phony out/soong/.intermediates/frameworks/base/services/devicepolicy/services.devicepolicy/android_common/javac/services.devicepolicy.jar out/soong/.intermediates/frameworks/base/services/devicepolicy/services.devicepolicy/android_common/turbine-combined/services.devicepolicy.jar
+
+build services.midi,android_common: phony out/soong/.intermediates/frameworks/base/services/midi/services.midi/android_common/javac/services.midi.jar out/soong/.intermediates/frameworks/base/services/midi/services.midi/android_common/turbine-combined/services.midi.jar
+
+build services.musicsearch,android_common: phony out/soong/.intermediates/frameworks/base/services/musicrecognition/services.musicsearch/android_common/javac/services.musicsearch.jar out/soong/.intermediates/frameworks/base/services/musicrecognition/services.musicsearch/android_common/turbine-combined/services.musicsearch.jar
+
+build services.net,android_common: phony out/soong/.intermediates/frameworks/base/services/net/services.net/android_common/combined/services.net.jar out/soong/.intermediates/frameworks/base/services/net/services.net/android_common/turbine-combined/services.net.jar
+
+build services.people,android_common: phony out/soong/.intermediates/frameworks/base/services/people/services.people/android_common/javac/services.people.jar out/soong/.intermediates/frameworks/base/services/people/services.people/android_common/turbine-combined/services.people.jar
+
+build services.print,android_common: phony out/soong/.intermediates/frameworks/base/services/print/services.print/android_common/javac/services.print.jar out/soong/.intermediates/frameworks/base/services/print/services.print/android_common/turbine-combined/services.print.jar
+
+build services.profcollect,android_common: phony out/soong/.intermediates/frameworks/base/services/profcollect/services.profcollect/android_common/javac/services.profcollect.jar out/soong/.intermediates/frameworks/base/services/profcollect/services.profcollect/android_common/turbine-combined/services.profcollect.jar
+
+build services.restrictions,android_common: phony out/soong/.intermediates/frameworks/base/services/restrictions/services.restrictions/android_common/javac/services.restrictions.jar out/soong/.intermediates/frameworks/base/services/restrictions/services.restrictions/android_common/turbine-combined/services.restrictions.jar
+
+build services.searchui,android_common: phony out/soong/.intermediates/frameworks/base/services/searchui/services.searchui/android_common/javac/services.searchui.jar out/soong/.intermediates/frameworks/base/services/searchui/services.searchui/android_common/turbine-combined/services.searchui.jar
+
+build services.smartspace,android_common: phony out/soong/.intermediates/frameworks/base/services/smartspace/services.smartspace/android_common/javac/services.smartspace.jar out/soong/.intermediates/frameworks/base/services/smartspace/services.smartspace/android_common/turbine-combined/services.smartspace.jar
+
+build services.startop.iorap,android_common: phony out/soong/.intermediates/frameworks/base/startop/iorap/services.startop.iorap/android_common/javac/services.startop.iorap.jar out/soong/.intermediates/frameworks/base/startop/iorap/services.startop.iorap/android_common/turbine-combined/services.startop.iorap.jar
+
+build services.startop,android_common: phony out/soong/.intermediates/frameworks/base/services/startop/services.startop/android_common/turbine-combined/services.startop.jar
+
+build services.systemcaptions,android_common: phony out/soong/.intermediates/frameworks/base/services/systemcaptions/services.systemcaptions/android_common/javac/services.systemcaptions.jar out/soong/.intermediates/frameworks/base/services/systemcaptions/services.systemcaptions/android_common/turbine-combined/services.systemcaptions.jar
+
+build services.texttospeech,android_common: phony out/soong/.intermediates/frameworks/base/services/texttospeech/services.texttospeech/android_common/javac/services.texttospeech.jar out/soong/.intermediates/frameworks/base/services/texttospeech/services.texttospeech/android_common/turbine-combined/services.texttospeech.jar
+
+build services.translation,android_common: phony out/soong/.intermediates/frameworks/base/services/translation/services.translation/android_common/javac/services.translation.jar out/soong/.intermediates/frameworks/base/services/translation/services.translation/android_common/turbine-combined/services.translation.jar
+
+build services.usage,android_common: phony out/soong/.intermediates/frameworks/base/services/usage/services.usage/android_common/javac/services.usage.jar out/soong/.intermediates/frameworks/base/services/usage/services.usage/android_common/turbine-combined/services.usage.jar
+
+build services.usb,android_common: phony out/soong/.intermediates/frameworks/base/services/usb/services.usb/android_common/combined/services.usb.jar out/soong/.intermediates/frameworks/base/services/usb/services.usb/android_common/turbine-combined/services.usb.jar
+
+build services.uwb,android_common: phony out/soong/.intermediates/frameworks/base/services/uwb/services.uwb/android_common/javac/services.uwb.jar out/soong/.intermediates/frameworks/base/services/uwb/services.uwb/android_common/turbine-combined/services.uwb.jar
+
+build services.voiceinteraction,android_common: phony out/soong/.intermediates/frameworks/base/services/voiceinteraction/services.voiceinteraction/android_common/javac/services.voiceinteraction.jar out/soong/.intermediates/frameworks/base/services/voiceinteraction/services.voiceinteraction/android_common/turbine-combined/services.voiceinteraction.jar
+
+build services,android_common: phony out/soong/.intermediates/frameworks/base/services/services/android_common/aligned/services.jar out/soong/.intermediates/frameworks/base/services/services/android_common/combined/services.jar out/soong/.intermediates/frameworks/base/services/services/android_common/dexpreopt/dexpreopt.config out/soong/.intermediates/frameworks/base/services/services/android_common/dexpreopt/oat/x86_64/javalib.art out/soong/.intermediates/frameworks/base/services/services/android_common/dexpreopt/oat/x86_64/javalib.odex out/soong/.intermediates/frameworks/base/services/services/android_common/dexpreopt/oat/x86_64/javalib.vdex out/soong/.intermediates/frameworks/base/services/services/android_common/dexpreopt/profile.bprof out/soong/.intermediates/frameworks/base/services/services/android_common/dexpreopt/profile.prof out/soong/.intermediates/frameworks/base/services/services/android_common/turbine-combined/services.jar out/soong/system_server_dexjars/services.jar
+
+build frameworks_base-targets: phony backuplib,android_common service-blobstore,android_common service-jobscheduler,android_common services-platform-compat-config,android_common services.accessibility,android_common services.appprediction,android_common services.appwidget,android_common services.autofill,android_common services.backup,android_common services.companion,android_common services.contentcapture,android_common services.contentsuggestions,android_common services.core.priorityboosted,android_common services.core.unboosted,android_common services.core,android_common services.devicepolicy,android_common services.midi,android_common services.musicsearch,android_common services.net,android_common services.people,android_common services.print,android_common services.profcollect,android_common services.restrictions,android_common services.searchui,android_common services.smartspace,android_common services.startop.iorap,android_common services.startop,android_common services.systemcaptions,android_common services.texttospeech,android_common services.translation,android_common services.usage,android_common services.usb,android_common services.uwb,android_common services.voiceinteraction,android_common services,android_common
+
+build RemoteProvisioner,android_common: phony out/soong/.intermediates/packages/apps/RemoteProvisioner/RemoteProvisioner/android_common/RemoteProvisioner.apk out/soong/.intermediates/packages/apps/RemoteProvisioner/RemoteProvisioner/android_common/combined/RemoteProvisioner.jar out/soong/.intermediates/packages/apps/RemoteProvisioner/RemoteProvisioner/android_common/dexpreopt/dexpreopt.config out/soong/.intermediates/packages/apps/RemoteProvisioner/RemoteProvisioner/android_common/dexpreopt/oat/x86_64/package.odex out/soong/.intermediates/packages/apps/RemoteProvisioner/RemoteProvisioner/android_common/dexpreopt/oat/x86_64/package.vdex out/soong/.intermediates/packages/apps/RemoteProvisioner/RemoteProvisioner/android_common/package-res.apk out/soong/.intermediates/packages/apps/RemoteProvisioner/RemoteProvisioner/android_common/proguard_dictionary out/soong/.intermediates/packages/apps/RemoteProvisioner/RemoteProvisioner/android_common/proguard_usage.zip
+
+build packages_apps_RemoteProvisioner-targets: phony RemoteProvisioner,android_common
+
+

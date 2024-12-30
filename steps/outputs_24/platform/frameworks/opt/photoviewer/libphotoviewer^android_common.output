@@ -1,0 +1,5 @@
+out/soong/.intermediates/frameworks/opt/photoviewer/libphotoviewer/android_common/combined/libphotoviewer.jar
+out/soong/.intermediates/frameworks/opt/photoviewer/libphotoviewer/android_common/extra_packages
+out/soong/.intermediates/frameworks/opt/photoviewer/libphotoviewer/android_common/manifest_merger/AndroidManifest.xml
+out/soong/.intermediates/frameworks/opt/photoviewer/libphotoviewer/android_common/package-res.apk
+out/soong/.intermediates/frameworks/opt/photoviewer/libphotoviewer/android_common/turbine-combined/libphotoviewer.jar

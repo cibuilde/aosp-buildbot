@@ -27,25 +27,25 @@ clone_depth_platform system/logging
 clone_depth_platform system/media
 
 
-echo "building libwebm^android_x86_x86_64_static_cfi"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libwebm,android_x86_x86_64_static_cfi
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/libvpx/libwebm/libwebm^android_x86_x86_64_static_cfi
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/libvpx/libwebm^android_x86_x86_64_static_cfi.output . $GITHUB_WORKSPACE/artifacts/external/libvpx/libwebm/libwebm^android_x86_x86_64_static_cfi
-
-echo "building libwebm^android_x86_64_static_cfi_apex29"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libwebm,android_x86_64_static_cfi_apex29
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/libvpx/libwebm/libwebm^android_x86_64_static_cfi_apex29
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/libvpx/libwebm^android_x86_64_static_cfi_apex29.output . $GITHUB_WORKSPACE/artifacts/external/libvpx/libwebm/libwebm^android_x86_64_static_cfi_apex29
+echo "building libvpx^android_x86_64_static_cfi_apex29"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libvpx,android_x86_64_static_cfi_apex29
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/libvpx/libvpx^android_x86_64_static_cfi_apex29
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/libvpx/libvpx^android_x86_64_static_cfi_apex29.output . $GITHUB_WORKSPACE/artifacts/external/libvpx/libvpx^android_x86_64_static_cfi_apex29
 
 echo "building libwebm^android_x86_64_static_cfi"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libwebm,android_x86_64_static_cfi
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/libvpx/libwebm/libwebm^android_x86_64_static_cfi
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/libvpx/libwebm^android_x86_64_static_cfi.output . $GITHUB_WORKSPACE/artifacts/external/libvpx/libwebm/libwebm^android_x86_64_static_cfi
 
-echo "building libvpx^android_x86_64_static_cfi_apex29"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libvpx,android_x86_64_static_cfi_apex29
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/libvpx/libvpx^android_x86_64_static_cfi_apex29
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/libvpx/libvpx^android_x86_64_static_cfi_apex29.output . $GITHUB_WORKSPACE/artifacts/external/libvpx/libvpx^android_x86_64_static_cfi_apex29
+echo "building libwebm^android_x86_64_static_cfi_apex29"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libwebm,android_x86_64_static_cfi_apex29
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/libvpx/libwebm/libwebm^android_x86_64_static_cfi_apex29
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/libvpx/libwebm^android_x86_64_static_cfi_apex29.output . $GITHUB_WORKSPACE/artifacts/external/libvpx/libwebm/libwebm^android_x86_64_static_cfi_apex29
+
+echo "building libwebm^android_x86_x86_64_static_cfi"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libwebm,android_x86_x86_64_static_cfi
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/libvpx/libwebm/libwebm^android_x86_x86_64_static_cfi
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/libvpx/libwebm^android_x86_x86_64_static_cfi.output . $GITHUB_WORKSPACE/artifacts/external/libvpx/libwebm/libwebm^android_x86_x86_64_static_cfi
 
 rm -rf out
 

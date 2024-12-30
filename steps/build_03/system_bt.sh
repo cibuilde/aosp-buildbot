@@ -33,20 +33,20 @@ ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja bluetooth_packetg
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/bt/gd/packet/parser/bluetooth_packetgen^linux_glibc_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/system/bt/bluetooth_packetgen^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/bt/gd/packet/parser/bluetooth_packetgen^linux_glibc_x86_64
 
-echo "building RootCanalGeneratedPackets_h^"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja RootCanalGeneratedPackets_h,
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/bt/vendor_libs/test_vendor_lib/RootCanalGeneratedPackets_h^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/system/bt/RootCanalGeneratedPackets_h^.output . $GITHUB_WORKSPACE/artifacts/system/bt/vendor_libs/test_vendor_lib/RootCanalGeneratedPackets_h^
+echo "building BluetoothGeneratedPackets_h^"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja BluetoothGeneratedPackets_h,
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/bt/gd/BluetoothGeneratedPackets_h^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/system/bt/BluetoothGeneratedPackets_h^.output . $GITHUB_WORKSPACE/artifacts/system/bt/gd/BluetoothGeneratedPackets_h^
 
 echo "building BluetoothGeneratedPackets_rust^"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja BluetoothGeneratedPackets_rust,
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/bt/gd/BluetoothGeneratedPackets_rust^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/system/bt/BluetoothGeneratedPackets_rust^.output . $GITHUB_WORKSPACE/artifacts/system/bt/gd/BluetoothGeneratedPackets_rust^
 
-echo "building BluetoothGeneratedPackets_h^"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja BluetoothGeneratedPackets_h,
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/bt/gd/BluetoothGeneratedPackets_h^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/system/bt/BluetoothGeneratedPackets_h^.output . $GITHUB_WORKSPACE/artifacts/system/bt/gd/BluetoothGeneratedPackets_h^
+echo "building RootCanalGeneratedPackets_h^"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja RootCanalGeneratedPackets_h,
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/bt/vendor_libs/test_vendor_lib/RootCanalGeneratedPackets_h^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/system/bt/RootCanalGeneratedPackets_h^.output . $GITHUB_WORKSPACE/artifacts/system/bt/vendor_libs/test_vendor_lib/RootCanalGeneratedPackets_h^
 
 rm -rf out
 

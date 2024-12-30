@@ -17,15 +17,15 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/cmd/javac_wrapper/soong_java
 rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/zip/cmd/soong_zip^linux_glibc_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/cmd/zipsync/zipsync^linux_glibc_x86_64/ .
 
-echo "building dagger2-bootstrap-compiler-jar^linux_glibc_common"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja dagger2-bootstrap-compiler-jar,linux_glibc_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/dagger2/dagger2-bootstrap-compiler-jar^linux_glibc_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/external/dagger2/dagger2-bootstrap-compiler-jar^linux_glibc_common.output . $GITHUB_WORKSPACE/artifacts/external/dagger2/dagger2-bootstrap-compiler-jar^linux_glibc_common
-
 echo "building dagger2-android-annotation-stubs^linux_glibc_common"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja dagger2-android-annotation-stubs,linux_glibc_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/dagger2/dagger2-android-annotation-stubs^linux_glibc_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/external/dagger2/dagger2-android-annotation-stubs^linux_glibc_common.output . $GITHUB_WORKSPACE/artifacts/external/dagger2/dagger2-android-annotation-stubs^linux_glibc_common
+
+echo "building dagger2-bootstrap-compiler-jar^linux_glibc_common"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja dagger2-bootstrap-compiler-jar,linux_glibc_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/dagger2/dagger2-bootstrap-compiler-jar^linux_glibc_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/external/dagger2/dagger2-bootstrap-compiler-jar^linux_glibc_common.output . $GITHUB_WORKSPACE/artifacts/external/dagger2/dagger2-bootstrap-compiler-jar^linux_glibc_common
 
 rm -rf out
 

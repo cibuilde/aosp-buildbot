@@ -24,65 +24,65 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/external/swiftshader/third_party/SPIRV-T
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/swiftshader/third_party/SPIRV-Tools/swiftshader_spvtools_generate_registry_tables^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/swiftshader/third_party/SPIRV-Tools/swiftshader_spvtools_update_build_version^/ .
 
-echo "building swiftshader_spirv-tools^android_vendor.31_x86_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja swiftshader_spirv-tools,android_vendor.31_x86_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/swiftshader/third_party/SPIRV-Tools/swiftshader_spirv-tools^android_vendor.31_x86_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/swiftshader/swiftshader_spirv-tools^android_vendor.31_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/swiftshader/third_party/SPIRV-Tools/swiftshader_spirv-tools^android_vendor.31_x86_x86_64_static
-
-echo "building swiftshader_spirv-tools^android_vendor.31_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja swiftshader_spirv-tools,android_vendor.31_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/swiftshader/third_party/SPIRV-Tools/swiftshader_spirv-tools^android_vendor.31_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/swiftshader/swiftshader_spirv-tools^android_vendor.31_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/swiftshader/third_party/SPIRV-Tools/swiftshader_spirv-tools^android_vendor.31_x86_64_static
-
-echo "building swiftshader_marl^android_vendor.31_x86_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja swiftshader_marl,android_vendor.31_x86_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/swiftshader/third_party/marl/swiftshader_marl^android_vendor.31_x86_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/swiftshader/swiftshader_marl^android_vendor.31_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/swiftshader/third_party/marl/swiftshader_marl^android_vendor.31_x86_x86_64_static
-
-echo "building swiftshader_marl^android_vendor.31_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja swiftshader_marl,android_vendor.31_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/swiftshader/third_party/marl/swiftshader_marl^android_vendor.31_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/swiftshader/swiftshader_marl^android_vendor.31_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/swiftshader/third_party/marl/swiftshader_marl^android_vendor.31_x86_64_static
-
-echo "building swiftshader_debug^android_vendor.31_x86_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja swiftshader_debug,android_vendor.31_x86_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/swiftshader/src/swiftshader_debug^android_vendor.31_x86_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/swiftshader/swiftshader_debug^android_vendor.31_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/swiftshader/src/swiftshader_debug^android_vendor.31_x86_x86_64_static
-
-echo "building swiftshader_debug^android_vendor.31_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja swiftshader_debug,android_vendor.31_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/swiftshader/src/swiftshader_debug^android_vendor.31_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/swiftshader/swiftshader_debug^android_vendor.31_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/swiftshader/src/swiftshader_debug^android_vendor.31_x86_64_static
-
-echo "building swiftshader_astc^android_vendor.31_x86_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja swiftshader_astc,android_vendor.31_x86_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/swiftshader/third_party/astc-encoder/swiftshader_astc^android_vendor.31_x86_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/swiftshader/swiftshader_astc^android_vendor.31_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/swiftshader/third_party/astc-encoder/swiftshader_astc^android_vendor.31_x86_x86_64_static
-
-echo "building swiftshader_astc^android_vendor.31_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja swiftshader_astc,android_vendor.31_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/swiftshader/third_party/astc-encoder/swiftshader_astc^android_vendor.31_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/swiftshader/swiftshader_astc^android_vendor.31_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/swiftshader/third_party/astc-encoder/swiftshader_astc^android_vendor.31_x86_64_static
-
-echo "building libswiftshadervk_llvm_debug^android_vendor.31_x86_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libswiftshadervk_llvm_debug,android_vendor.31_x86_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/swiftshader/src/libswiftshadervk_llvm_debug^android_vendor.31_x86_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/swiftshader/libswiftshadervk_llvm_debug^android_vendor.31_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/swiftshader/src/libswiftshadervk_llvm_debug^android_vendor.31_x86_x86_64_static
-
-echo "building libswiftshadervk_llvm_debug^android_vendor.31_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libswiftshadervk_llvm_debug,android_vendor.31_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/swiftshader/src/libswiftshadervk_llvm_debug^android_vendor.31_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/swiftshader/libswiftshadervk_llvm_debug^android_vendor.31_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/swiftshader/src/libswiftshadervk_llvm_debug^android_vendor.31_x86_64_static
+echo "building libLLVM10_swiftshader^android_vendor.31_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libLLVM10_swiftshader,android_vendor.31_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/swiftshader/third_party/llvm-10.0/libLLVM10_swiftshader^android_vendor.31_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/swiftshader/libLLVM10_swiftshader^android_vendor.31_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/swiftshader/third_party/llvm-10.0/libLLVM10_swiftshader^android_vendor.31_x86_64_static
 
 echo "building libLLVM10_swiftshader^android_vendor.31_x86_x86_64_static"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libLLVM10_swiftshader,android_vendor.31_x86_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/swiftshader/third_party/llvm-10.0/libLLVM10_swiftshader^android_vendor.31_x86_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/swiftshader/libLLVM10_swiftshader^android_vendor.31_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/swiftshader/third_party/llvm-10.0/libLLVM10_swiftshader^android_vendor.31_x86_x86_64_static
 
-echo "building libLLVM10_swiftshader^android_vendor.31_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libLLVM10_swiftshader,android_vendor.31_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/swiftshader/third_party/llvm-10.0/libLLVM10_swiftshader^android_vendor.31_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/swiftshader/libLLVM10_swiftshader^android_vendor.31_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/swiftshader/third_party/llvm-10.0/libLLVM10_swiftshader^android_vendor.31_x86_64_static
+echo "building libswiftshadervk_llvm_debug^android_vendor.31_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libswiftshadervk_llvm_debug,android_vendor.31_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/swiftshader/src/libswiftshadervk_llvm_debug^android_vendor.31_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/swiftshader/libswiftshadervk_llvm_debug^android_vendor.31_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/swiftshader/src/libswiftshadervk_llvm_debug^android_vendor.31_x86_64_static
+
+echo "building libswiftshadervk_llvm_debug^android_vendor.31_x86_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libswiftshadervk_llvm_debug,android_vendor.31_x86_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/swiftshader/src/libswiftshadervk_llvm_debug^android_vendor.31_x86_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/swiftshader/libswiftshadervk_llvm_debug^android_vendor.31_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/swiftshader/src/libswiftshadervk_llvm_debug^android_vendor.31_x86_x86_64_static
+
+echo "building swiftshader_astc^android_vendor.31_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja swiftshader_astc,android_vendor.31_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/swiftshader/third_party/astc-encoder/swiftshader_astc^android_vendor.31_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/swiftshader/swiftshader_astc^android_vendor.31_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/swiftshader/third_party/astc-encoder/swiftshader_astc^android_vendor.31_x86_64_static
+
+echo "building swiftshader_astc^android_vendor.31_x86_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja swiftshader_astc,android_vendor.31_x86_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/swiftshader/third_party/astc-encoder/swiftshader_astc^android_vendor.31_x86_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/swiftshader/swiftshader_astc^android_vendor.31_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/swiftshader/third_party/astc-encoder/swiftshader_astc^android_vendor.31_x86_x86_64_static
+
+echo "building swiftshader_debug^android_vendor.31_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja swiftshader_debug,android_vendor.31_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/swiftshader/src/swiftshader_debug^android_vendor.31_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/swiftshader/swiftshader_debug^android_vendor.31_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/swiftshader/src/swiftshader_debug^android_vendor.31_x86_64_static
+
+echo "building swiftshader_debug^android_vendor.31_x86_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja swiftshader_debug,android_vendor.31_x86_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/swiftshader/src/swiftshader_debug^android_vendor.31_x86_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/swiftshader/swiftshader_debug^android_vendor.31_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/swiftshader/src/swiftshader_debug^android_vendor.31_x86_x86_64_static
+
+echo "building swiftshader_marl^android_vendor.31_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja swiftshader_marl,android_vendor.31_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/swiftshader/third_party/marl/swiftshader_marl^android_vendor.31_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/swiftshader/swiftshader_marl^android_vendor.31_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/swiftshader/third_party/marl/swiftshader_marl^android_vendor.31_x86_64_static
+
+echo "building swiftshader_marl^android_vendor.31_x86_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja swiftshader_marl,android_vendor.31_x86_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/swiftshader/third_party/marl/swiftshader_marl^android_vendor.31_x86_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/swiftshader/swiftshader_marl^android_vendor.31_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/swiftshader/third_party/marl/swiftshader_marl^android_vendor.31_x86_x86_64_static
+
+echo "building swiftshader_spirv-tools^android_vendor.31_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja swiftshader_spirv-tools,android_vendor.31_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/swiftshader/third_party/SPIRV-Tools/swiftshader_spirv-tools^android_vendor.31_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/swiftshader/swiftshader_spirv-tools^android_vendor.31_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/swiftshader/third_party/SPIRV-Tools/swiftshader_spirv-tools^android_vendor.31_x86_64_static
+
+echo "building swiftshader_spirv-tools^android_vendor.31_x86_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja swiftshader_spirv-tools,android_vendor.31_x86_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/swiftshader/third_party/SPIRV-Tools/swiftshader_spirv-tools^android_vendor.31_x86_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/swiftshader/swiftshader_spirv-tools^android_vendor.31_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/swiftshader/third_party/SPIRV-Tools/swiftshader_spirv-tools^android_vendor.31_x86_x86_64_static
 
 rm -rf out
 

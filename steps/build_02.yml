@@ -512,5 +512,4 @@ jobs:
         path: cache/system_vold.tar.zst
         key: system_vold@${{ env.branch }}
         restore-keys: system_vold@${{ env.branch }}
-    - name: Start Ninja Build
-      run: bash steps/build_02.sh
+    - run: bash steps/build_02.sh

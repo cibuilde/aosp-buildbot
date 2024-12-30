@@ -23,15 +23,15 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/external/protobuf/aprotoc^linux_glibc_x8
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/turbine/turbine^linux_glibc_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/libcore/core-current-stubs-system-modules^android_common/ .
 
-echo "building unsupportedappusage^android_common"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_13.ninja unsupportedappusage,android_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/tools/platform-compat/java/android/compat/annotation/unsupportedappusage^android_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_13/tools/platform-compat/unsupportedappusage^android_common.output . $GITHUB_WORKSPACE/artifacts/tools/platform-compat/java/android/compat/annotation/unsupportedappusage^android_common
-
 echo "building app-compat-annotations^android_common"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_13.ninja app-compat-annotations,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/tools/platform-compat/java/android/compat/annotation/app-compat-annotations^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_13/tools/platform-compat/app-compat-annotations^android_common.output . $GITHUB_WORKSPACE/artifacts/tools/platform-compat/java/android/compat/annotation/app-compat-annotations^android_common
+
+echo "building unsupportedappusage^android_common"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_13.ninja unsupportedappusage,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/tools/platform-compat/java/android/compat/annotation/unsupportedappusage^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_13/tools/platform-compat/unsupportedappusage^android_common.output . $GITHUB_WORKSPACE/artifacts/tools/platform-compat/java/android/compat/annotation/unsupportedappusage^android_common
 
 rm -rf out
 

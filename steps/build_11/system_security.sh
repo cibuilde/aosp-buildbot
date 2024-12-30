@@ -257,15 +257,40 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/system/security/keystore2/src/vintf/libk
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/security/keystore2/src/km_compat/libkm_compat^android_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/security/keystore2/src/km_compat/libkm_compat_service^android_x86_64_static/ .
 
-echo "building odsign^android_x86_64"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_11.ninja odsign,android_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/security/ondevice-signing/odsign^android_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_11/system/security/odsign^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/security/ondevice-signing/odsign^android_x86_64
+echo "building android.security.maintenance-ndk_platform^android_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_11.ninja android.security.maintenance-ndk_platform,android_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.maintenance-ndk_platform^android_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_11/system/security/android.security.maintenance-ndk_platform^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.maintenance-ndk_platform^android_x86_64_shared
 
-echo "building liblegacykeystore-rust^android_x86_64_rlib_rlib-std"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_11.ninja liblegacykeystore-rust,android_x86_64_rlib_rlib-std
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/security/keystore2/legacykeystore/liblegacykeystore-rust^android_x86_64_rlib_rlib-std
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_11/system/security/liblegacykeystore-rust^android_x86_64_rlib_rlib-std.output . $GITHUB_WORKSPACE/artifacts/system/security/keystore2/legacykeystore/liblegacykeystore-rust^android_x86_64_rlib_rlib-std
+echo "building android.security.maintenance-rust^android_x86_64_rlib_rlib-std"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_11.ninja android.security.maintenance-rust,android_x86_64_rlib_rlib-std
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.maintenance-rust^android_x86_64_rlib_rlib-std
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_11/system/security/android.security.maintenance-rust^android_x86_64_rlib_rlib-std.output . $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.maintenance-rust^android_x86_64_rlib_rlib-std
+
+echo "building android.security.metrics-rust^android_x86_64_rlib_rlib-std"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_11.ninja android.security.metrics-rust,android_x86_64_rlib_rlib-std
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.metrics-rust^android_x86_64_rlib_rlib-std
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_11/system/security/android.security.metrics-rust^android_x86_64_rlib_rlib-std.output . $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.metrics-rust^android_x86_64_rlib_rlib-std
+
+echo "building keystore_cli_v2^android_x86_64"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_11.ninja keystore_cli_v2,android_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/security/keystore/keystore_cli_v2^android_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_11/system/security/keystore_cli_v2^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/security/keystore/keystore_cli_v2^android_x86_64
+
+echo "building libkeystore-engine^android_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_11.ninja libkeystore-engine,android_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/security/keystore-engine/libkeystore-engine^android_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_11/system/security/libkeystore-engine^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/security/keystore-engine/libkeystore-engine^android_x86_64_shared
+
+echo "building libkeystore2_km_compat^android_x86_64_rlib_rlib-std"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_11.ninja libkeystore2_km_compat,android_x86_64_rlib_rlib-std
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/security/keystore2/src/km_compat/libkeystore2_km_compat^android_x86_64_rlib_rlib-std
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_11/system/security/libkeystore2_km_compat^android_x86_64_rlib_rlib-std.output . $GITHUB_WORKSPACE/artifacts/system/security/keystore2/src/km_compat/libkeystore2_km_compat^android_x86_64_rlib_rlib-std
+
+echo "building libkeystore2^android_x86_64_rlib_rlib-std"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_11.ninja libkeystore2,android_x86_64_rlib_rlib-std
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/security/keystore2/libkeystore2^android_x86_64_rlib_rlib-std
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_11/system/security/libkeystore2^android_x86_64_rlib_rlib-std.output . $GITHUB_WORKSPACE/artifacts/system/security/keystore2/libkeystore2^android_x86_64_rlib_rlib-std
 
 echo "building libkm_compat^android_x86_64_shared"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_11.ninja libkm_compat,android_x86_64_shared
@@ -277,45 +302,20 @@ ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_11.ninja libkm_compat_serv
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/security/keystore2/src/km_compat/libkm_compat_service^android_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_11/system/security/libkm_compat_service^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/security/keystore2/src/km_compat/libkm_compat_service^android_x86_64_shared
 
-echo "building libkeystore2_km_compat^android_x86_64_rlib_rlib-std"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_11.ninja libkeystore2_km_compat,android_x86_64_rlib_rlib-std
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/security/keystore2/src/km_compat/libkeystore2_km_compat^android_x86_64_rlib_rlib-std
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_11/system/security/libkeystore2_km_compat^android_x86_64_rlib_rlib-std.output . $GITHUB_WORKSPACE/artifacts/system/security/keystore2/src/km_compat/libkeystore2_km_compat^android_x86_64_rlib_rlib-std
-
-echo "building android.security.maintenance-rust^android_x86_64_rlib_rlib-std"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_11.ninja android.security.maintenance-rust,android_x86_64_rlib_rlib-std
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.maintenance-rust^android_x86_64_rlib_rlib-std
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_11/system/security/android.security.maintenance-rust^android_x86_64_rlib_rlib-std.output . $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.maintenance-rust^android_x86_64_rlib_rlib-std
-
-echo "building libkeystore2^android_x86_64_rlib_rlib-std"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_11.ninja libkeystore2,android_x86_64_rlib_rlib-std
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/security/keystore2/libkeystore2^android_x86_64_rlib_rlib-std
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_11/system/security/libkeystore2^android_x86_64_rlib_rlib-std.output . $GITHUB_WORKSPACE/artifacts/system/security/keystore2/libkeystore2^android_x86_64_rlib_rlib-std
-
-echo "building libkeystore-engine^android_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_11.ninja libkeystore-engine,android_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/security/keystore-engine/libkeystore-engine^android_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_11/system/security/libkeystore-engine^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/security/keystore-engine/libkeystore-engine^android_x86_64_shared
-
-echo "building keystore_cli_v2^android_x86_64"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_11.ninja keystore_cli_v2,android_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/security/keystore/keystore_cli_v2^android_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_11/system/security/keystore_cli_v2^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/security/keystore/keystore_cli_v2^android_x86_64
+echo "building liblegacykeystore-rust^android_x86_64_rlib_rlib-std"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_11.ninja liblegacykeystore-rust,android_x86_64_rlib_rlib-std
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/security/keystore2/legacykeystore/liblegacykeystore-rust^android_x86_64_rlib_rlib-std
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_11/system/security/liblegacykeystore-rust^android_x86_64_rlib_rlib-std.output . $GITHUB_WORKSPACE/artifacts/system/security/keystore2/legacykeystore/liblegacykeystore-rust^android_x86_64_rlib_rlib-std
 
 echo "building keystore2^android_x86_64"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_11.ninja keystore2,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/security/keystore2/keystore2^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_11/system/security/keystore2^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/security/keystore2/keystore2^android_x86_64
 
-echo "building android.security.metrics-rust^android_x86_64_rlib_rlib-std"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_11.ninja android.security.metrics-rust,android_x86_64_rlib_rlib-std
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.metrics-rust^android_x86_64_rlib_rlib-std
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_11/system/security/android.security.metrics-rust^android_x86_64_rlib_rlib-std.output . $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.metrics-rust^android_x86_64_rlib_rlib-std
-
-echo "building android.security.maintenance-ndk_platform^android_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_11.ninja android.security.maintenance-ndk_platform,android_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.maintenance-ndk_platform^android_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_11/system/security/android.security.maintenance-ndk_platform^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.maintenance-ndk_platform^android_x86_64_shared
+echo "building odsign^android_x86_64"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_11.ninja odsign,android_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/security/ondevice-signing/odsign^android_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_11/system/security/odsign^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/security/ondevice-signing/odsign^android_x86_64
 
 rm -rf out
 

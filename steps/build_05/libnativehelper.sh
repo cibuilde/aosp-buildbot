@@ -26,15 +26,15 @@ clone_depth_platform system/logging
 
 rsync -a -r $GITHUB_WORKSPACE/downloads/singletons/ndk^/ .
 
-echo "building libnativehelper_compat_libc++^android_x86_64_sdk_static_apex30"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libnativehelper_compat_libc++,android_x86_64_sdk_static_apex30
-mkdir -p $GITHUB_WORKSPACE/artifacts/libnativehelper/libnativehelper_compat_libc++^android_x86_64_sdk_static_apex30
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/libnativehelper/libnativehelper_compat_libc++^android_x86_64_sdk_static_apex30.output . $GITHUB_WORKSPACE/artifacts/libnativehelper/libnativehelper_compat_libc++^android_x86_64_sdk_static_apex30
-
 echo "building libnativehelper_compat_libc++^android_x86_64_sdk_static"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libnativehelper_compat_libc++,android_x86_64_sdk_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/libnativehelper/libnativehelper_compat_libc++^android_x86_64_sdk_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/libnativehelper/libnativehelper_compat_libc++^android_x86_64_sdk_static.output . $GITHUB_WORKSPACE/artifacts/libnativehelper/libnativehelper_compat_libc++^android_x86_64_sdk_static
+
+echo "building libnativehelper_compat_libc++^android_x86_64_sdk_static_apex30"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libnativehelper_compat_libc++,android_x86_64_sdk_static_apex30
+mkdir -p $GITHUB_WORKSPACE/artifacts/libnativehelper/libnativehelper_compat_libc++^android_x86_64_sdk_static_apex30
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/libnativehelper/libnativehelper_compat_libc++^android_x86_64_sdk_static_apex30.output . $GITHUB_WORKSPACE/artifacts/libnativehelper/libnativehelper_compat_libc++^android_x86_64_sdk_static_apex30
 
 rm -rf out
 

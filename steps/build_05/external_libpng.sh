@@ -46,20 +46,20 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/external/zlib/libz^android_recovery_x86_
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/zlib/libz^android_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/zlib/libz^android_x86_x86_64_shared/ .
 
-echo "building libpng^android_x86_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libpng,android_x86_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/libpng/libpng^android_x86_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/external/libpng/libpng^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/external/libpng/libpng^android_x86_x86_64_shared
+echo "building libpng^android_recovery_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libpng,android_recovery_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/libpng/libpng^android_recovery_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/external/libpng/libpng^android_recovery_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/external/libpng/libpng^android_recovery_x86_64_shared
 
 echo "building libpng^android_x86_64_shared"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libpng,android_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/libpng/libpng^android_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/external/libpng/libpng^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/external/libpng/libpng^android_x86_64_shared
 
-echo "building libpng^android_recovery_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libpng,android_recovery_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/libpng/libpng^android_recovery_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/external/libpng/libpng^android_recovery_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/external/libpng/libpng^android_recovery_x86_64_shared
+echo "building libpng^android_x86_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libpng,android_x86_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/libpng/libpng^android_x86_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/external/libpng/libpng^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/external/libpng/libpng^android_x86_x86_64_shared
 
 rm -rf out
 

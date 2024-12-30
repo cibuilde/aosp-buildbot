@@ -33,15 +33,15 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/common/tools/conv_class
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/libbase/libbase^linux_glibc_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^linux_glibc_x86_64_shared/ .
 
-echo "building statslog-permissioncontroller-java-gen^"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja statslog-permissioncontroller-java-gen,
-mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/Permission/PermissionController/statslog-permissioncontroller-java-gen^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/packages/modules/Permission/statslog-permissioncontroller-java-gen^.output . $GITHUB_WORKSPACE/artifacts/packages/modules/Permission/PermissionController/statslog-permissioncontroller-java-gen^
-
 echo "building com.android.permission-systemserverclasspath-fragment^android_common_apex30"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja com.android.permission-systemserverclasspath-fragment,android_common_apex30
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/Permission/com.android.permission-systemserverclasspath-fragment^android_common_apex30
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/packages/modules/Permission/com.android.permission-systemserverclasspath-fragment^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/packages/modules/Permission/com.android.permission-systemserverclasspath-fragment^android_common_apex30
+
+echo "building statslog-permissioncontroller-java-gen^"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja statslog-permissioncontroller-java-gen,
+mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/Permission/PermissionController/statslog-permissioncontroller-java-gen^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/packages/modules/Permission/statslog-permissioncontroller-java-gen^.output . $GITHUB_WORKSPACE/artifacts/packages/modules/Permission/PermissionController/statslog-permissioncontroller-java-gen^
 
 rm -rf out
 

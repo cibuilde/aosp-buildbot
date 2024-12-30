@@ -18,15 +18,15 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/cc/ndkstubgen/ndkstubgen^lin
 rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/zip/cmd/soong_zip^linux_glibc_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/singletons/api_levels^/ .
 
-echo "building libft2^android_vendor.31_x86_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libft2,android_vendor.31_x86_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/freetype/libft2^android_vendor.31_x86_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/external/freetype/libft2^android_vendor.31_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/external/freetype/libft2^android_vendor.31_x86_x86_64_shared
-
 echo "building libft2^android_vendor.31_x86_64_shared"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libft2,android_vendor.31_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/freetype/libft2^android_vendor.31_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/external/freetype/libft2^android_vendor.31_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/external/freetype/libft2^android_vendor.31_x86_64_shared
+
+echo "building libft2^android_vendor.31_x86_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libft2,android_vendor.31_x86_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/freetype/libft2^android_vendor.31_x86_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/external/freetype/libft2^android_vendor.31_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/external/freetype/libft2^android_vendor.31_x86_x86_64_shared
 
 rm -rf out
 

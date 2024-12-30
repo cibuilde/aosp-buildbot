@@ -33,25 +33,25 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/external/boringssl/libcrypto^linux_glibc
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/boringssl/libssl^linux_glibc_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcxx/libc++^linux_glibc_x86_64_shared/ .
 
+echo "building conscrypt-unbundled^linux_glibc_common"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja conscrypt-unbundled,linux_glibc_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/conscrypt/conscrypt-unbundled^linux_glibc_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/conscrypt/conscrypt-unbundled^linux_glibc_common.output . $GITHUB_WORKSPACE/artifacts/external/conscrypt/conscrypt-unbundled^linux_glibc_common
+
 echo "building conscrypt_generate_constants^linux_glibc_x86_64"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja conscrypt_generate_constants,linux_glibc_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/conscrypt/conscrypt_generate_constants^linux_glibc_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/conscrypt/conscrypt_generate_constants^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/conscrypt/conscrypt_generate_constants^linux_glibc_x86_64
-
-echo "building conscrypt_generated_constants^"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja conscrypt_generated_constants,
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/conscrypt/conscrypt_generated_constants^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/conscrypt/conscrypt_generated_constants^.output . $GITHUB_WORKSPACE/artifacts/external/conscrypt/conscrypt_generated_constants^
 
 echo "building conscrypt-unbundled_generated_constants^"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja conscrypt-unbundled_generated_constants,
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/conscrypt/conscrypt-unbundled_generated_constants^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/conscrypt/conscrypt-unbundled_generated_constants^.output . $GITHUB_WORKSPACE/artifacts/external/conscrypt/conscrypt-unbundled_generated_constants^
 
-echo "building conscrypt-unbundled^linux_glibc_common"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja conscrypt-unbundled,linux_glibc_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/conscrypt/conscrypt-unbundled^linux_glibc_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/conscrypt/conscrypt-unbundled^linux_glibc_common.output . $GITHUB_WORKSPACE/artifacts/external/conscrypt/conscrypt-unbundled^linux_glibc_common
+echo "building conscrypt_generated_constants^"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja conscrypt_generated_constants,
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/conscrypt/conscrypt_generated_constants^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/conscrypt/conscrypt_generated_constants^.output . $GITHUB_WORKSPACE/artifacts/external/conscrypt/conscrypt_generated_constants^
 
 rm -rf out
 

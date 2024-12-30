@@ -19,20 +19,20 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/libc^android_product.31_x86_
 rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/libc^android_vendor.31_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/libc^android_vendor.31_x86_x86_64_shared/ .
 
-echo "building fmtlib^android_vendor.31_x86_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja fmtlib,android_vendor.31_x86_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/fmtlib/fmtlib^android_vendor.31_x86_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/fmtlib/fmtlib^android_vendor.31_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/fmtlib/fmtlib^android_vendor.31_x86_x86_64_static
+echo "building fmtlib^android_product.31_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja fmtlib,android_product.31_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/fmtlib/fmtlib^android_product.31_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/fmtlib/fmtlib^android_product.31_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/fmtlib/fmtlib^android_product.31_x86_64_static
 
 echo "building fmtlib^android_vendor.31_x86_64_static"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja fmtlib,android_vendor.31_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/fmtlib/fmtlib^android_vendor.31_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/fmtlib/fmtlib^android_vendor.31_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/fmtlib/fmtlib^android_vendor.31_x86_64_static
 
-echo "building fmtlib^android_product.31_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja fmtlib,android_product.31_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/fmtlib/fmtlib^android_product.31_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/fmtlib/fmtlib^android_product.31_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/fmtlib/fmtlib^android_product.31_x86_64_static
+echo "building fmtlib^android_vendor.31_x86_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja fmtlib,android_vendor.31_x86_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/fmtlib/fmtlib^android_vendor.31_x86_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/fmtlib/fmtlib^android_vendor.31_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/fmtlib/fmtlib^android_vendor.31_x86_x86_64_static
 
 rm -rf out
 

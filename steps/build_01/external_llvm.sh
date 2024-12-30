@@ -25,25 +25,25 @@ clone_depth_platform system/logging
 clone_depth_platform system/media
 
 
-echo "building libLLVMTableGen^linux_glibc_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libLLVMTableGen,linux_glibc_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/llvm/lib/TableGen/libLLVMTableGen^linux_glibc_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/llvm/libLLVMTableGen^linux_glibc_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/llvm/lib/TableGen/libLLVMTableGen^linux_glibc_x86_64_static
-
-echo "building libLLVMSupport^linux_glibc_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libLLVMSupport,linux_glibc_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/llvm/lib/Support/libLLVMSupport^linux_glibc_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/llvm/libLLVMSupport^linux_glibc_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/llvm/lib/Support/libLLVMSupport^linux_glibc_x86_64_static
+echo "building libLLVMSupport^android_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libLLVMSupport,android_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/llvm/lib/Support/libLLVMSupport^android_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/llvm/libLLVMSupport^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/llvm/lib/Support/libLLVMSupport^android_x86_64_static
 
 echo "building libLLVMSupport^android_x86_x86_64_static"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libLLVMSupport,android_x86_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/llvm/lib/Support/libLLVMSupport^android_x86_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/llvm/libLLVMSupport^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/llvm/lib/Support/libLLVMSupport^android_x86_x86_64_static
 
-echo "building libLLVMSupport^android_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libLLVMSupport,android_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/llvm/lib/Support/libLLVMSupport^android_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/llvm/libLLVMSupport^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/llvm/lib/Support/libLLVMSupport^android_x86_64_static
+echo "building libLLVMSupport^linux_glibc_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libLLVMSupport,linux_glibc_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/llvm/lib/Support/libLLVMSupport^linux_glibc_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/llvm/libLLVMSupport^linux_glibc_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/llvm/lib/Support/libLLVMSupport^linux_glibc_x86_64_static
+
+echo "building libLLVMTableGen^linux_glibc_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libLLVMTableGen,linux_glibc_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/llvm/lib/TableGen/libLLVMTableGen^linux_glibc_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/llvm/libLLVMTableGen^linux_glibc_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/llvm/lib/TableGen/libLLVMTableGen^linux_glibc_x86_64_static
 
 rm -rf out
 

@@ -84,40 +84,40 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/logwrapper/liblogwrap^and
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/logwrapper/liblogwrap^android_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/logwrapper/liblogwrap^android_x86_x86_64_static/ .
 
-echo "building logwrapper_vendor^android_vendor.31_x86_64"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja logwrapper_vendor,android_vendor.31_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/logging/logwrapper/logwrapper_vendor^android_vendor.31_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/system/logging/logwrapper_vendor^android_vendor.31_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/logging/logwrapper/logwrapper_vendor^android_vendor.31_x86_64
-
-echo "building logwrapper^android_x86_64"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja logwrapper,android_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/logging/logwrapper/logwrapper^android_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/system/logging/logwrapper^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/logging/logwrapper/logwrapper^android_x86_64
-
-echo "building logd^android_x86_64_cfi"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja logd,android_x86_64_cfi
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/logging/logd/logd^android_x86_64_cfi
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/system/logging/logd^android_x86_64_cfi.output . $GITHUB_WORKSPACE/artifacts/system/logging/logd/logd^android_x86_64_cfi
-
-echo "building logcat^android_x86_64"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja logcat,android_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/logging/logcat/logcat^android_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/system/logging/logcat^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/logging/logcat/logcat^android_x86_64
-
-echo "building liblogwrap^android_x86_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja liblogwrap,android_x86_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/logging/logwrapper/liblogwrap^android_x86_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/system/logging/liblogwrap^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/logging/logwrapper/liblogwrap^android_x86_x86_64_shared
+echo "building liblogwrap^android_recovery_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja liblogwrap,android_recovery_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/logging/logwrapper/liblogwrap^android_recovery_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/system/logging/liblogwrap^android_recovery_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/logging/logwrapper/liblogwrap^android_recovery_x86_64_shared
 
 echo "building liblogwrap^android_x86_64_shared"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja liblogwrap,android_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/logging/logwrapper/liblogwrap^android_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/system/logging/liblogwrap^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/logging/logwrapper/liblogwrap^android_x86_64_shared
 
-echo "building liblogwrap^android_recovery_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja liblogwrap,android_recovery_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/logging/logwrapper/liblogwrap^android_recovery_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/system/logging/liblogwrap^android_recovery_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/logging/logwrapper/liblogwrap^android_recovery_x86_64_shared
+echo "building liblogwrap^android_x86_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja liblogwrap,android_x86_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/logging/logwrapper/liblogwrap^android_x86_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/system/logging/liblogwrap^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/logging/logwrapper/liblogwrap^android_x86_x86_64_shared
+
+echo "building logcat^android_x86_64"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja logcat,android_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/logging/logcat/logcat^android_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/system/logging/logcat^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/logging/logcat/logcat^android_x86_64
+
+echo "building logd^android_x86_64_cfi"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja logd,android_x86_64_cfi
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/logging/logd/logd^android_x86_64_cfi
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/system/logging/logd^android_x86_64_cfi.output . $GITHUB_WORKSPACE/artifacts/system/logging/logd/logd^android_x86_64_cfi
+
+echo "building logwrapper^android_x86_64"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja logwrapper,android_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/logging/logwrapper/logwrapper^android_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/system/logging/logwrapper^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/logging/logwrapper/logwrapper^android_x86_64
+
+echo "building logwrapper_vendor^android_vendor.31_x86_64"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja logwrapper_vendor,android_vendor.31_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/logging/logwrapper/logwrapper_vendor^android_vendor.31_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/system/logging/logwrapper_vendor^android_vendor.31_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/logging/logwrapper/logwrapper_vendor^android_vendor.31_x86_64
 
 rm -rf out
 

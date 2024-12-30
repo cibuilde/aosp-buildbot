@@ -35,15 +35,15 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcxx/libc++^android_vendor.31
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcxxabi/libc++demangle^android_vendor.31_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcxxabi/libc++demangle^android_vendor.31_x86_x86_64_static/ .
 
-echo "building libblas^android_vendor.31_x86_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libblas,android_vendor.31_x86_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/cblas/libblas^android_vendor.31_x86_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/external/cblas/libblas^android_vendor.31_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/external/cblas/libblas^android_vendor.31_x86_x86_64_shared
-
 echo "building libblas^android_vendor.31_x86_64_shared"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libblas,android_vendor.31_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/cblas/libblas^android_vendor.31_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/external/cblas/libblas^android_vendor.31_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/external/cblas/libblas^android_vendor.31_x86_64_shared
+
+echo "building libblas^android_vendor.31_x86_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libblas,android_vendor.31_x86_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/cblas/libblas^android_vendor.31_x86_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/external/cblas/libblas^android_vendor.31_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/external/cblas/libblas^android_vendor.31_x86_x86_64_shared
 
 rm -rf out
 

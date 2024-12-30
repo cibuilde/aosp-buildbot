@@ -70,25 +70,25 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/system/memory/libion/libion^android_vend
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/memory/libion/libion^android_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/memory/libion/libion^android_x86_x86_64_static/ .
 
-echo "building libdmabufheap^android_x86_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libdmabufheap,android_x86_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/memory/libdmabufheap/libdmabufheap^android_x86_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/system/memory/libdmabufheap/libdmabufheap^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/memory/libdmabufheap/libdmabufheap^android_x86_x86_64_shared
-
-echo "building libdmabufheap^android_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libdmabufheap,android_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/memory/libdmabufheap/libdmabufheap^android_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/system/memory/libdmabufheap/libdmabufheap^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/memory/libdmabufheap/libdmabufheap^android_x86_64_shared
+echo "building libdmabufheap^android_vendor.31_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libdmabufheap,android_vendor.31_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/memory/libdmabufheap/libdmabufheap^android_vendor.31_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/system/memory/libdmabufheap/libdmabufheap^android_vendor.31_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/memory/libdmabufheap/libdmabufheap^android_vendor.31_x86_64_shared
 
 echo "building libdmabufheap^android_vendor.31_x86_x86_64_shared"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libdmabufheap,android_vendor.31_x86_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/memory/libdmabufheap/libdmabufheap^android_vendor.31_x86_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/system/memory/libdmabufheap/libdmabufheap^android_vendor.31_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/memory/libdmabufheap/libdmabufheap^android_vendor.31_x86_x86_64_shared
 
-echo "building libdmabufheap^android_vendor.31_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libdmabufheap,android_vendor.31_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/memory/libdmabufheap/libdmabufheap^android_vendor.31_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/system/memory/libdmabufheap/libdmabufheap^android_vendor.31_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/memory/libdmabufheap/libdmabufheap^android_vendor.31_x86_64_shared
+echo "building libdmabufheap^android_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libdmabufheap,android_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/memory/libdmabufheap/libdmabufheap^android_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/system/memory/libdmabufheap/libdmabufheap^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/memory/libdmabufheap/libdmabufheap^android_x86_64_shared
+
+echo "building libdmabufheap^android_x86_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libdmabufheap,android_x86_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/memory/libdmabufheap/libdmabufheap^android_x86_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/system/memory/libdmabufheap/libdmabufheap^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/memory/libdmabufheap/libdmabufheap^android_x86_x86_64_shared
 
 rm -rf out
 

@@ -258,290 +258,290 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/system/unwinding/libunwindstack/libunwin
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/update_engine/update_metadata-protos^android_recovery_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/update_engine/update_metadata-protos^android_x86_64_static/ .
 
-echo "building watchdogd^android_x86_64"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja watchdogd,android_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/watchdogd/watchdogd^android_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/core/watchdogd^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/core/watchdogd/watchdogd^android_x86_64
-
-echo "building watchdogd^android_recovery_x86_64"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja watchdogd,android_recovery_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/watchdogd/watchdogd^android_recovery_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/core/watchdogd^android_recovery_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/core/watchdogd/watchdogd^android_recovery_x86_64
-
-echo "building toolbox_vendor^android_vendor.31_x86_64"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja toolbox_vendor,android_vendor.31_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/toolbox/toolbox_vendor^android_vendor.31_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/core/toolbox_vendor^android_vendor.31_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/core/toolbox/toolbox_vendor^android_vendor.31_x86_64
-
-echo "building toolbox^android_x86_64"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja toolbox,android_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/toolbox/toolbox^android_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/core/toolbox^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/core/toolbox/toolbox^android_x86_64
-
-echo "building toolbox^android_recovery_x86_64"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja toolbox,android_recovery_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/toolbox/toolbox^android_recovery_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/core/toolbox^android_recovery_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/core/toolbox/toolbox^android_recovery_x86_64
-
-echo "building sdcard^android_x86_64"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja sdcard,android_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/sdcard/sdcard^android_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/core/sdcard^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/core/sdcard/sdcard^android_x86_64
-
-echo "building reboot^android_x86_64"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja reboot,android_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/reboot/reboot^android_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/core/reboot^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/core/reboot/reboot^android_x86_64
-
-echo "building mini-keyctl^android_x86_64"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja mini-keyctl,android_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/mini_keyctl/mini-keyctl^android_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/core/mini-keyctl^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/core/mini_keyctl/mini-keyctl^android_x86_64
-
-echo "building llkd^android_x86_64"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja llkd,android_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/llkd/llkd^android_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/core/llkd^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/core/llkd/llkd^android_x86_64
-
-echo "building libutils^android_x86_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libutils,android_x86_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/libutils/libutils^android_x86_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/core/libutils^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/core/libutils/libutils^android_x86_x86_64_shared
-
-echo "building libutils^android_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libutils,android_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/libutils/libutils^android_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/core/libutils^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/core/libutils/libutils^android_x86_64_shared
-
-echo "building libutils^android_vendor.31_x86_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libutils,android_vendor.31_x86_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/libutils/libutils^android_vendor.31_x86_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/core/libutils^android_vendor.31_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/core/libutils/libutils^android_vendor.31_x86_x86_64_shared
-
-echo "building libutils^android_vendor.31_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libutils,android_vendor.31_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/libutils/libutils^android_vendor.31_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/core/libutils^android_vendor.31_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/core/libutils/libutils^android_vendor.31_x86_64_shared
-
-echo "building libutils^android_recovery_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libutils,android_recovery_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/libutils/libutils^android_recovery_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/core/libutils^android_recovery_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/core/libutils/libutils^android_recovery_x86_64_shared
-
-echo "building libtombstoned_client^android_x86_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libtombstoned_client,android_x86_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/debuggerd/libtombstoned_client^android_x86_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/core/libtombstoned_client^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/core/debuggerd/libtombstoned_client^android_x86_x86_64_shared
-
-echo "building libtombstoned_client^android_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libtombstoned_client,android_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/debuggerd/libtombstoned_client^android_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/core/libtombstoned_client^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/core/debuggerd/libtombstoned_client^android_x86_64_shared
-
-echo "building libsysutils^android_x86_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libsysutils,android_x86_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/libsysutils/libsysutils^android_x86_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/core/libsysutils^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/core/libsysutils/libsysutils^android_x86_x86_64_shared
-
-echo "building libsysutils^android_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libsysutils,android_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/libsysutils/libsysutils^android_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/core/libsysutils^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/core/libsysutils/libsysutils^android_x86_64_shared
-
-echo "building libsysutils^android_vendor.31_x86_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libsysutils,android_vendor.31_x86_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/libsysutils/libsysutils^android_vendor.31_x86_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/core/libsysutils^android_vendor.31_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/core/libsysutils/libsysutils^android_vendor.31_x86_x86_64_shared
-
-echo "building libsysutils^android_vendor.31_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libsysutils,android_vendor.31_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/libsysutils/libsysutils^android_vendor.31_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/core/libsysutils^android_vendor.31_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/core/libsysutils/libsysutils^android_vendor.31_x86_64_shared
-
-echo "building libsparse^android_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libsparse,android_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/libsparse/libsparse^android_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/core/libsparse^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/core/libsparse/libsparse^android_x86_64_shared
-
-echo "building libsparse^android_vendor_ramdisk_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libsparse,android_vendor_ramdisk_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/libsparse/libsparse^android_vendor_ramdisk_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/core/libsparse^android_vendor_ramdisk_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/core/libsparse/libsparse^android_vendor_ramdisk_x86_64_shared
-
-echo "building libsparse^android_recovery_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libsparse,android_recovery_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/libsparse/libsparse^android_recovery_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/core/libsparse^android_recovery_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/core/libsparse/libsparse^android_recovery_x86_64_shared
-
-echo "building libprocessgroup_setup^android_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libprocessgroup_setup,android_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/setup/libprocessgroup_setup^android_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/core/libprocessgroup_setup^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/setup/libprocessgroup_setup^android_x86_64_shared
-
-echo "building libprocessgroup_setup^android_recovery_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libprocessgroup_setup,android_recovery_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/setup/libprocessgroup_setup^android_recovery_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/core/libprocessgroup_setup^android_recovery_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/setup/libprocessgroup_setup^android_recovery_x86_64_shared
-
-echo "building libprocessgroup^android_x86_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libprocessgroup,android_x86_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/libprocessgroup^android_x86_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/core/libprocessgroup^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/libprocessgroup^android_x86_x86_64_shared
-
-echo "building libprocessgroup^android_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libprocessgroup,android_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/libprocessgroup^android_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/core/libprocessgroup^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/libprocessgroup^android_x86_64_shared
-
-echo "building libprocessgroup^android_vendor.31_x86_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libprocessgroup,android_vendor.31_x86_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/libprocessgroup^android_vendor.31_x86_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/core/libprocessgroup^android_vendor.31_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/libprocessgroup^android_vendor.31_x86_x86_64_shared
-
-echo "building libprocessgroup^android_vendor.31_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libprocessgroup,android_vendor.31_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/libprocessgroup^android_vendor.31_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/core/libprocessgroup^android_vendor.31_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/libprocessgroup^android_vendor.31_x86_64_shared
-
-echo "building libprocessgroup^android_recovery_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libprocessgroup,android_recovery_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/libprocessgroup^android_recovery_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/core/libprocessgroup^android_recovery_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/libprocessgroup^android_recovery_x86_64_shared
-
-echo "building libnetutils^android_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libnetutils,android_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/libnetutils/libnetutils^android_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/core/libnetutils^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/core/libnetutils/libnetutils^android_x86_64_shared
-
-echo "building libnetutils^android_vendor.31_x86_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libnetutils,android_vendor.31_x86_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/libnetutils/libnetutils^android_vendor.31_x86_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/core/libnetutils^android_vendor.31_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/core/libnetutils/libnetutils^android_vendor.31_x86_x86_64_shared
-
-echo "building libdiskconfig^android_vendor.31_x86_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libdiskconfig,android_vendor.31_x86_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/libdiskconfig/libdiskconfig^android_vendor.31_x86_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/core/libdiskconfig^android_vendor.31_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/core/libdiskconfig/libdiskconfig^android_vendor.31_x86_x86_64_shared
-
-echo "building libcutils^android_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libcutils,android_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/libcutils/libcutils^android_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/core/libcutils^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/core/libcutils/libcutils^android_x86_64_shared
-
-echo "building libcutils^android_vendor.31_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libcutils,android_vendor.31_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/libcutils/libcutils^android_vendor.31_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/core/libcutils^android_vendor.31_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/core/libcutils/libcutils^android_vendor.31_x86_64_shared
-
-echo "building libnetutils^android_vendor.31_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libnetutils,android_vendor.31_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/libnetutils/libnetutils^android_vendor.31_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/core/libnetutils^android_vendor.31_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/core/libnetutils/libnetutils^android_vendor.31_x86_64_shared
-
-echo "building libinit^android_recovery_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libinit,android_recovery_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/init/libinit^android_recovery_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/core/libinit^android_recovery_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/core/init/libinit^android_recovery_x86_64_static
-
-echo "building libdiskconfig^android_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libdiskconfig,android_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/libdiskconfig/libdiskconfig^android_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/core/libdiskconfig^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/core/libdiskconfig/libdiskconfig^android_x86_64_shared
-
-echo "building libdiskconfig^android_vendor.31_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libdiskconfig,android_vendor.31_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/libdiskconfig/libdiskconfig^android_vendor.31_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/core/libdiskconfig^android_vendor.31_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/core/libdiskconfig/libdiskconfig^android_vendor.31_x86_64_shared
-
-echo "building libcutils^android_x86_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libcutils,android_x86_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/libcutils/libcutils^android_x86_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/core/libcutils^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/core/libcutils/libcutils^android_x86_x86_64_shared
-
-echo "building libcutils^android_vendor.31_x86_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libcutils,android_vendor.31_x86_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/libcutils/libcutils^android_vendor.31_x86_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/core/libcutils^android_vendor.31_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/core/libcutils/libcutils^android_vendor.31_x86_x86_64_shared
-
-echo "building libcutils^android_recovery_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libcutils,android_recovery_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/libcutils/libcutils^android_recovery_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/core/libcutils^android_recovery_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/core/libcutils/libcutils^android_recovery_x86_64_shared
-
-echo "building reboot^android_recovery_x86_64"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja reboot,android_recovery_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/reboot/reboot^android_recovery_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/core/reboot^android_recovery_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/core/reboot/reboot^android_recovery_x86_64
-
-echo "building libnetutils^android_x86_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libnetutils,android_x86_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/libnetutils/libnetutils^android_x86_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/core/libnetutils^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/core/libnetutils/libnetutils^android_x86_x86_64_shared
-
-echo "building libinit^android_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libinit,android_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/init/libinit^android_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/core/libinit^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/core/init/libinit^android_x86_64_static
-
-echo "building libcrypto_utils^android_vendor.31_x86_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libcrypto_utils,android_vendor.31_x86_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/libcrypto_utils/libcrypto_utils^android_vendor.31_x86_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/core/libcrypto_utils^android_vendor.31_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/core/libcrypto_utils/libcrypto_utils^android_vendor.31_x86_x86_64_shared
-
-echo "building libcrypto_utils^android_vendor.31_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libcrypto_utils,android_vendor.31_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/libcrypto_utils/libcrypto_utils^android_vendor.31_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/core/libcrypto_utils^android_vendor.31_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/core/libcrypto_utils/libcrypto_utils^android_vendor.31_x86_64_shared
-
-echo "building libcgrouprc^android_x86_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libcgrouprc,android_x86_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/cgrouprc/libcgrouprc^android_x86_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/core/libcgrouprc^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/cgrouprc/libcgrouprc^android_x86_x86_64_shared
-
-echo "building libcgrouprc^android_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libcgrouprc,android_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/cgrouprc/libcgrouprc^android_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/core/libcgrouprc^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/cgrouprc/libcgrouprc^android_x86_64_shared
-
-echo "building libcgrouprc^android_recovery_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libcgrouprc,android_recovery_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/cgrouprc/libcgrouprc^android_recovery_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/core/libcgrouprc^android_recovery_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/cgrouprc/libcgrouprc^android_recovery_x86_64_shared
-
-echo "building libappfuse^android_x86_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libappfuse,android_x86_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/libappfuse/libappfuse^android_x86_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/core/libappfuse^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/core/libappfuse/libappfuse^android_x86_x86_64_shared
-
-echo "building libappfuse^android_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libappfuse,android_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/libappfuse/libappfuse^android_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/core/libappfuse^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/core/libappfuse/libappfuse^android_x86_64_shared
-
-echo "building init_first_stage_soong^android_x86_64"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja init_first_stage_soong,android_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/init/init_first_stage_soong^android_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/core/init_first_stage_soong^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/core/init/init_first_stage_soong^android_x86_64
-
-echo "building dmuserd^android_x86_64"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja dmuserd,android_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/tools/dmuserd^android_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/core/dmuserd^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/tools/dmuserd^android_x86_64
-
-echo "building dmctl^android_x86_64"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja dmctl,android_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/tools/dmctl^android_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/core/dmctl^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/tools/dmctl^android_x86_64
+echo "building crash_dump^android_x86_64_apex10000"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja crash_dump,android_x86_64_apex10000
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/debuggerd/crash_dump^android_x86_64_apex10000
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/core/crash_dump^android_x86_64_apex10000.output . $GITHUB_WORKSPACE/artifacts/system/core/debuggerd/crash_dump^android_x86_64_apex10000
 
 echo "building crash_dump^android_x86_x86_64_apex10000"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja crash_dump,android_x86_x86_64_apex10000
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/debuggerd/crash_dump^android_x86_x86_64_apex10000
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/core/crash_dump^android_x86_x86_64_apex10000.output . $GITHUB_WORKSPACE/artifacts/system/core/debuggerd/crash_dump^android_x86_x86_64_apex10000
 
-echo "building crash_dump^android_x86_64_apex10000"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja crash_dump,android_x86_64_apex10000
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/debuggerd/crash_dump^android_x86_64_apex10000
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/core/crash_dump^android_x86_64_apex10000.output . $GITHUB_WORKSPACE/artifacts/system/core/debuggerd/crash_dump^android_x86_64_apex10000
+echo "building dmctl^android_x86_64"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja dmctl,android_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/tools/dmctl^android_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/core/dmctl^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/tools/dmctl^android_x86_64
+
+echo "building dmuserd^android_x86_64"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja dmuserd,android_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/tools/dmuserd^android_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/core/dmuserd^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/tools/dmuserd^android_x86_64
+
+echo "building init_first_stage_soong^android_x86_64"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja init_first_stage_soong,android_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/init/init_first_stage_soong^android_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/core/init_first_stage_soong^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/core/init/init_first_stage_soong^android_x86_64
+
+echo "building libappfuse^android_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libappfuse,android_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/libappfuse/libappfuse^android_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/core/libappfuse^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/core/libappfuse/libappfuse^android_x86_64_shared
+
+echo "building libappfuse^android_x86_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libappfuse,android_x86_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/libappfuse/libappfuse^android_x86_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/core/libappfuse^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/core/libappfuse/libappfuse^android_x86_x86_64_shared
+
+echo "building libcgrouprc^android_recovery_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libcgrouprc,android_recovery_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/cgrouprc/libcgrouprc^android_recovery_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/core/libcgrouprc^android_recovery_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/cgrouprc/libcgrouprc^android_recovery_x86_64_shared
+
+echo "building libcgrouprc^android_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libcgrouprc,android_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/cgrouprc/libcgrouprc^android_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/core/libcgrouprc^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/cgrouprc/libcgrouprc^android_x86_64_shared
+
+echo "building libcgrouprc^android_x86_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libcgrouprc,android_x86_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/cgrouprc/libcgrouprc^android_x86_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/core/libcgrouprc^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/cgrouprc/libcgrouprc^android_x86_x86_64_shared
+
+echo "building libcrypto_utils^android_vendor.31_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libcrypto_utils,android_vendor.31_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/libcrypto_utils/libcrypto_utils^android_vendor.31_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/core/libcrypto_utils^android_vendor.31_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/core/libcrypto_utils/libcrypto_utils^android_vendor.31_x86_64_shared
+
+echo "building libcrypto_utils^android_vendor.31_x86_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libcrypto_utils,android_vendor.31_x86_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/libcrypto_utils/libcrypto_utils^android_vendor.31_x86_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/core/libcrypto_utils^android_vendor.31_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/core/libcrypto_utils/libcrypto_utils^android_vendor.31_x86_x86_64_shared
+
+echo "building libcutils^android_recovery_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libcutils,android_recovery_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/libcutils/libcutils^android_recovery_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/core/libcutils^android_recovery_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/core/libcutils/libcutils^android_recovery_x86_64_shared
+
+echo "building libcutils^android_vendor.31_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libcutils,android_vendor.31_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/libcutils/libcutils^android_vendor.31_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/core/libcutils^android_vendor.31_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/core/libcutils/libcutils^android_vendor.31_x86_64_shared
+
+echo "building libcutils^android_vendor.31_x86_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libcutils,android_vendor.31_x86_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/libcutils/libcutils^android_vendor.31_x86_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/core/libcutils^android_vendor.31_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/core/libcutils/libcutils^android_vendor.31_x86_x86_64_shared
+
+echo "building libcutils^android_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libcutils,android_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/libcutils/libcutils^android_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/core/libcutils^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/core/libcutils/libcutils^android_x86_64_shared
+
+echo "building libcutils^android_x86_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libcutils,android_x86_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/libcutils/libcutils^android_x86_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/core/libcutils^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/core/libcutils/libcutils^android_x86_x86_64_shared
+
+echo "building libdiskconfig^android_vendor.31_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libdiskconfig,android_vendor.31_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/libdiskconfig/libdiskconfig^android_vendor.31_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/core/libdiskconfig^android_vendor.31_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/core/libdiskconfig/libdiskconfig^android_vendor.31_x86_64_shared
+
+echo "building libdiskconfig^android_vendor.31_x86_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libdiskconfig,android_vendor.31_x86_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/libdiskconfig/libdiskconfig^android_vendor.31_x86_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/core/libdiskconfig^android_vendor.31_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/core/libdiskconfig/libdiskconfig^android_vendor.31_x86_x86_64_shared
+
+echo "building libdiskconfig^android_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libdiskconfig,android_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/libdiskconfig/libdiskconfig^android_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/core/libdiskconfig^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/core/libdiskconfig/libdiskconfig^android_x86_64_shared
+
+echo "building libinit^android_recovery_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libinit,android_recovery_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/init/libinit^android_recovery_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/core/libinit^android_recovery_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/core/init/libinit^android_recovery_x86_64_static
+
+echo "building libinit^android_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libinit,android_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/init/libinit^android_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/core/libinit^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/core/init/libinit^android_x86_64_static
+
+echo "building libnetutils^android_vendor.31_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libnetutils,android_vendor.31_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/libnetutils/libnetutils^android_vendor.31_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/core/libnetutils^android_vendor.31_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/core/libnetutils/libnetutils^android_vendor.31_x86_64_shared
+
+echo "building libnetutils^android_vendor.31_x86_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libnetutils,android_vendor.31_x86_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/libnetutils/libnetutils^android_vendor.31_x86_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/core/libnetutils^android_vendor.31_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/core/libnetutils/libnetutils^android_vendor.31_x86_x86_64_shared
+
+echo "building libnetutils^android_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libnetutils,android_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/libnetutils/libnetutils^android_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/core/libnetutils^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/core/libnetutils/libnetutils^android_x86_64_shared
+
+echo "building libnetutils^android_x86_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libnetutils,android_x86_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/libnetutils/libnetutils^android_x86_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/core/libnetutils^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/core/libnetutils/libnetutils^android_x86_x86_64_shared
+
+echo "building libprocessgroup^android_recovery_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libprocessgroup,android_recovery_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/libprocessgroup^android_recovery_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/core/libprocessgroup^android_recovery_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/libprocessgroup^android_recovery_x86_64_shared
+
+echo "building libprocessgroup^android_vendor.31_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libprocessgroup,android_vendor.31_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/libprocessgroup^android_vendor.31_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/core/libprocessgroup^android_vendor.31_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/libprocessgroup^android_vendor.31_x86_64_shared
+
+echo "building libprocessgroup^android_vendor.31_x86_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libprocessgroup,android_vendor.31_x86_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/libprocessgroup^android_vendor.31_x86_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/core/libprocessgroup^android_vendor.31_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/libprocessgroup^android_vendor.31_x86_x86_64_shared
+
+echo "building libprocessgroup^android_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libprocessgroup,android_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/libprocessgroup^android_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/core/libprocessgroup^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/libprocessgroup^android_x86_64_shared
+
+echo "building libprocessgroup^android_x86_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libprocessgroup,android_x86_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/libprocessgroup^android_x86_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/core/libprocessgroup^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/libprocessgroup^android_x86_x86_64_shared
+
+echo "building libprocessgroup_setup^android_recovery_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libprocessgroup_setup,android_recovery_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/setup/libprocessgroup_setup^android_recovery_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/core/libprocessgroup_setup^android_recovery_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/setup/libprocessgroup_setup^android_recovery_x86_64_shared
+
+echo "building libprocessgroup_setup^android_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libprocessgroup_setup,android_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/setup/libprocessgroup_setup^android_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/core/libprocessgroup_setup^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/setup/libprocessgroup_setup^android_x86_64_shared
+
+echo "building libsparse^android_recovery_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libsparse,android_recovery_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/libsparse/libsparse^android_recovery_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/core/libsparse^android_recovery_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/core/libsparse/libsparse^android_recovery_x86_64_shared
+
+echo "building libsparse^android_vendor_ramdisk_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libsparse,android_vendor_ramdisk_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/libsparse/libsparse^android_vendor_ramdisk_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/core/libsparse^android_vendor_ramdisk_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/core/libsparse/libsparse^android_vendor_ramdisk_x86_64_shared
+
+echo "building libsparse^android_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libsparse,android_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/libsparse/libsparse^android_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/core/libsparse^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/core/libsparse/libsparse^android_x86_64_shared
+
+echo "building libsysutils^android_vendor.31_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libsysutils,android_vendor.31_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/libsysutils/libsysutils^android_vendor.31_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/core/libsysutils^android_vendor.31_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/core/libsysutils/libsysutils^android_vendor.31_x86_64_shared
+
+echo "building libsysutils^android_vendor.31_x86_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libsysutils,android_vendor.31_x86_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/libsysutils/libsysutils^android_vendor.31_x86_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/core/libsysutils^android_vendor.31_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/core/libsysutils/libsysutils^android_vendor.31_x86_x86_64_shared
+
+echo "building libsysutils^android_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libsysutils,android_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/libsysutils/libsysutils^android_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/core/libsysutils^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/core/libsysutils/libsysutils^android_x86_64_shared
+
+echo "building libsysutils^android_x86_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libsysutils,android_x86_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/libsysutils/libsysutils^android_x86_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/core/libsysutils^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/core/libsysutils/libsysutils^android_x86_x86_64_shared
+
+echo "building libtombstoned_client^android_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libtombstoned_client,android_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/debuggerd/libtombstoned_client^android_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/core/libtombstoned_client^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/core/debuggerd/libtombstoned_client^android_x86_64_shared
+
+echo "building libtombstoned_client^android_x86_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libtombstoned_client,android_x86_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/debuggerd/libtombstoned_client^android_x86_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/core/libtombstoned_client^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/core/debuggerd/libtombstoned_client^android_x86_x86_64_shared
+
+echo "building libutils^android_recovery_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libutils,android_recovery_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/libutils/libutils^android_recovery_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/core/libutils^android_recovery_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/core/libutils/libutils^android_recovery_x86_64_shared
+
+echo "building libutils^android_vendor.31_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libutils,android_vendor.31_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/libutils/libutils^android_vendor.31_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/core/libutils^android_vendor.31_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/core/libutils/libutils^android_vendor.31_x86_64_shared
+
+echo "building libutils^android_vendor.31_x86_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libutils,android_vendor.31_x86_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/libutils/libutils^android_vendor.31_x86_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/core/libutils^android_vendor.31_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/core/libutils/libutils^android_vendor.31_x86_x86_64_shared
+
+echo "building libutils^android_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libutils,android_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/libutils/libutils^android_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/core/libutils^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/core/libutils/libutils^android_x86_64_shared
+
+echo "building libutils^android_x86_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libutils,android_x86_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/libutils/libutils^android_x86_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/core/libutils^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/core/libutils/libutils^android_x86_x86_64_shared
+
+echo "building llkd^android_x86_64"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja llkd,android_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/llkd/llkd^android_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/core/llkd^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/core/llkd/llkd^android_x86_64
+
+echo "building mini-keyctl^android_x86_64"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja mini-keyctl,android_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/mini_keyctl/mini-keyctl^android_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/core/mini-keyctl^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/core/mini_keyctl/mini-keyctl^android_x86_64
+
+echo "building reboot^android_recovery_x86_64"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja reboot,android_recovery_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/reboot/reboot^android_recovery_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/core/reboot^android_recovery_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/core/reboot/reboot^android_recovery_x86_64
+
+echo "building reboot^android_x86_64"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja reboot,android_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/reboot/reboot^android_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/core/reboot^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/core/reboot/reboot^android_x86_64
+
+echo "building sdcard^android_x86_64"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja sdcard,android_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/sdcard/sdcard^android_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/core/sdcard^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/core/sdcard/sdcard^android_x86_64
+
+echo "building toolbox^android_recovery_x86_64"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja toolbox,android_recovery_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/toolbox/toolbox^android_recovery_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/core/toolbox^android_recovery_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/core/toolbox/toolbox^android_recovery_x86_64
+
+echo "building toolbox^android_x86_64"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja toolbox,android_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/toolbox/toolbox^android_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/core/toolbox^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/core/toolbox/toolbox^android_x86_64
+
+echo "building toolbox_vendor^android_vendor.31_x86_64"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja toolbox_vendor,android_vendor.31_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/toolbox/toolbox_vendor^android_vendor.31_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/core/toolbox_vendor^android_vendor.31_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/core/toolbox/toolbox_vendor^android_vendor.31_x86_64
+
+echo "building watchdogd^android_recovery_x86_64"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja watchdogd,android_recovery_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/watchdogd/watchdogd^android_recovery_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/core/watchdogd^android_recovery_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/core/watchdogd/watchdogd^android_recovery_x86_64
+
+echo "building watchdogd^android_x86_64"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja watchdogd,android_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/watchdogd/watchdogd^android_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/core/watchdogd^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/core/watchdogd/watchdogd^android_x86_64
 
 rm -rf out
 

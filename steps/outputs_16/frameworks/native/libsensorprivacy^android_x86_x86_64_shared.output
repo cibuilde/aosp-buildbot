@@ -1,8 +1,0 @@
-out/soong/.intermediates/frameworks/native/libs/sensorprivacy/libsensorprivacy/android_x86_x86_64_shared/gen/aidl/android/hardware/BnSensorPrivacyListener.h
-out/soong/.intermediates/frameworks/native/libs/sensorprivacy/libsensorprivacy/android_x86_x86_64_shared/gen/aidl/android/hardware/BnSensorPrivacyManager.h
-out/soong/.intermediates/frameworks/native/libs/sensorprivacy/libsensorprivacy/android_x86_x86_64_shared/gen/aidl/android/hardware/BpSensorPrivacyListener.h
-out/soong/.intermediates/frameworks/native/libs/sensorprivacy/libsensorprivacy/android_x86_x86_64_shared/gen/aidl/android/hardware/BpSensorPrivacyManager.h
-out/soong/.intermediates/frameworks/native/libs/sensorprivacy/libsensorprivacy/android_x86_x86_64_shared/gen/aidl/android/hardware/ISensorPrivacyListener.h
-out/soong/.intermediates/frameworks/native/libs/sensorprivacy/libsensorprivacy/android_x86_x86_64_shared/gen/aidl/android/hardware/ISensorPrivacyManager.h
-out/soong/.intermediates/frameworks/native/libs/sensorprivacy/libsensorprivacy/android_x86_x86_64_shared/libsensorprivacy.so
-out/soong/.intermediates/frameworks/native/libs/sensorprivacy/libsensorprivacy/android_x86_x86_64_shared/libsensorprivacy.so.toc

@@ -84,30 +84,30 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/system/security/keystore2/src/crypto/lib
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/security/keystore2/src/crypto/libkeystore2_crypto_bindgen^android_x86_64_source/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/security/keystore2/system_property/libkeystore2_system_property_bindgen^android_x86_64_source/ .
 
-echo "building libkeystore2_system_property_bindgen^android_x86_64_rlib_rlib-std"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libkeystore2_system_property_bindgen,android_x86_64_rlib_rlib-std
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/security/keystore2/system_property/libkeystore2_system_property_bindgen^android_x86_64_rlib_rlib-std
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/system/security/libkeystore2_system_property_bindgen^android_x86_64_rlib_rlib-std.output . $GITHUB_WORKSPACE/artifacts/system/security/keystore2/system_property/libkeystore2_system_property_bindgen^android_x86_64_rlib_rlib-std
-
-echo "building libkeystore2_crypto_bindgen^android_x86_64_rlib_rlib-std"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libkeystore2_crypto_bindgen,android_x86_64_rlib_rlib-std
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/security/keystore2/src/crypto/libkeystore2_crypto_bindgen^android_x86_64_rlib_rlib-std
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/system/security/libkeystore2_crypto_bindgen^android_x86_64_rlib_rlib-std.output . $GITHUB_WORKSPACE/artifacts/system/security/keystore2/src/crypto/libkeystore2_crypto_bindgen^android_x86_64_rlib_rlib-std
-
-echo "building libkeystore2_crypto^android_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libkeystore2_crypto,android_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/security/keystore2/src/crypto/libkeystore2_crypto^android_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/system/security/libkeystore2_crypto^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/security/keystore2/src/crypto/libkeystore2_crypto^android_x86_64_shared
+echo "building libkeystore2_aaid_bindgen^android_x86_64_rlib_rlib-std"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libkeystore2_aaid_bindgen,android_x86_64_rlib_rlib-std
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aaid/libkeystore2_aaid_bindgen^android_x86_64_rlib_rlib-std
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/system/security/libkeystore2_aaid_bindgen^android_x86_64_rlib_rlib-std.output . $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aaid/libkeystore2_aaid_bindgen^android_x86_64_rlib_rlib-std
 
 echo "building libkeystore2_apc_compat_bindgen^android_x86_64_rlib_rlib-std"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libkeystore2_apc_compat_bindgen,android_x86_64_rlib_rlib-std
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/security/keystore2/apc_compat/libkeystore2_apc_compat_bindgen^android_x86_64_rlib_rlib-std
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/system/security/libkeystore2_apc_compat_bindgen^android_x86_64_rlib_rlib-std.output . $GITHUB_WORKSPACE/artifacts/system/security/keystore2/apc_compat/libkeystore2_apc_compat_bindgen^android_x86_64_rlib_rlib-std
 
-echo "building libkeystore2_aaid_bindgen^android_x86_64_rlib_rlib-std"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libkeystore2_aaid_bindgen,android_x86_64_rlib_rlib-std
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aaid/libkeystore2_aaid_bindgen^android_x86_64_rlib_rlib-std
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/system/security/libkeystore2_aaid_bindgen^android_x86_64_rlib_rlib-std.output . $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aaid/libkeystore2_aaid_bindgen^android_x86_64_rlib_rlib-std
+echo "building libkeystore2_crypto^android_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libkeystore2_crypto,android_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/security/keystore2/src/crypto/libkeystore2_crypto^android_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/system/security/libkeystore2_crypto^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/security/keystore2/src/crypto/libkeystore2_crypto^android_x86_64_shared
+
+echo "building libkeystore2_crypto_bindgen^android_x86_64_rlib_rlib-std"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libkeystore2_crypto_bindgen,android_x86_64_rlib_rlib-std
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/security/keystore2/src/crypto/libkeystore2_crypto_bindgen^android_x86_64_rlib_rlib-std
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/system/security/libkeystore2_crypto_bindgen^android_x86_64_rlib_rlib-std.output . $GITHUB_WORKSPACE/artifacts/system/security/keystore2/src/crypto/libkeystore2_crypto_bindgen^android_x86_64_rlib_rlib-std
+
+echo "building libkeystore2_system_property_bindgen^android_x86_64_rlib_rlib-std"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libkeystore2_system_property_bindgen,android_x86_64_rlib_rlib-std
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/security/keystore2/system_property/libkeystore2_system_property_bindgen^android_x86_64_rlib_rlib-std
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/system/security/libkeystore2_system_property_bindgen^android_x86_64_rlib_rlib-std.output . $GITHUB_WORKSPACE/artifacts/system/security/keystore2/system_property/libkeystore2_system_property_bindgen^android_x86_64_rlib_rlib-std
 
 rm -rf out
 

@@ -1,5 +1,0 @@
-out/soong/.intermediates/frameworks/base/libs/tracingproxy/libtracingproxy/android_x86_64_shared/gen/aidl/android/tracing/BnTracingServiceProxy.h
-out/soong/.intermediates/frameworks/base/libs/tracingproxy/libtracingproxy/android_x86_64_shared/gen/aidl/android/tracing/BpTracingServiceProxy.h
-out/soong/.intermediates/frameworks/base/libs/tracingproxy/libtracingproxy/android_x86_64_shared/gen/aidl/android/tracing/ITracingServiceProxy.h
-out/soong/.intermediates/frameworks/base/libs/tracingproxy/libtracingproxy/android_x86_64_shared/libtracingproxy.so
-out/soong/.intermediates/frameworks/base/libs/tracingproxy/libtracingproxy/android_x86_64_shared/libtracingproxy.so.toc

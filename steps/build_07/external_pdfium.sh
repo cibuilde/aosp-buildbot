@@ -87,15 +87,15 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/external/pdfium/third_party/libpdfium-th
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/zlib/libz^android_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/zlib/libz^android_x86_x86_64_shared/ .
 
-echo "building libpdfium^android_x86_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libpdfium,android_x86_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/pdfium/libpdfium^android_x86_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/external/pdfium/libpdfium^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/external/pdfium/libpdfium^android_x86_x86_64_shared
-
 echo "building libpdfium^android_x86_64_shared"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libpdfium,android_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/pdfium/libpdfium^android_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/external/pdfium/libpdfium^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/external/pdfium/libpdfium^android_x86_64_shared
+
+echo "building libpdfium^android_x86_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libpdfium,android_x86_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/pdfium/libpdfium^android_x86_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/external/pdfium/libpdfium^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/external/pdfium/libpdfium^android_x86_x86_64_shared
 
 rm -rf out
 

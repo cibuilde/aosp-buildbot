@@ -94,40 +94,40 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^android_ven
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^android_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^android_x86_x86_64_shared/ .
 
-echo "building libbase_ndk^android_x86_64_sdk_static_apex30"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libbase_ndk,android_x86_64_sdk_static_apex30
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/libbase/libbase_ndk^android_x86_64_sdk_static_apex30
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/system/libbase/libbase_ndk^android_x86_64_sdk_static_apex30.output . $GITHUB_WORKSPACE/artifacts/system/libbase/libbase_ndk^android_x86_64_sdk_static_apex30
-
-echo "building libbase^android_x86_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libbase,android_x86_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/libbase/libbase^android_x86_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/system/libbase/libbase^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/libbase/libbase^android_x86_x86_64_shared
-
-echo "building libbase^android_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libbase,android_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/libbase/libbase^android_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/system/libbase/libbase^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/libbase/libbase^android_x86_64_shared
-
-echo "building libbase^android_vendor_ramdisk_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libbase,android_vendor_ramdisk_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/libbase/libbase^android_vendor_ramdisk_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/system/libbase/libbase^android_vendor_ramdisk_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/libbase/libbase^android_vendor_ramdisk_x86_64_shared
-
-echo "building libbase^android_vendor.31_x86_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libbase,android_vendor.31_x86_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/libbase/libbase^android_vendor.31_x86_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/system/libbase/libbase^android_vendor.31_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/libbase/libbase^android_vendor.31_x86_x86_64_shared
+echo "building libbase^android_recovery_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libbase,android_recovery_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/libbase/libbase^android_recovery_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/system/libbase/libbase^android_recovery_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/libbase/libbase^android_recovery_x86_64_shared
 
 echo "building libbase^android_vendor.31_x86_64_shared"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libbase,android_vendor.31_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/libbase/libbase^android_vendor.31_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/system/libbase/libbase^android_vendor.31_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/libbase/libbase^android_vendor.31_x86_64_shared
 
-echo "building libbase^android_recovery_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libbase,android_recovery_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/libbase/libbase^android_recovery_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/system/libbase/libbase^android_recovery_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/libbase/libbase^android_recovery_x86_64_shared
+echo "building libbase^android_vendor.31_x86_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libbase,android_vendor.31_x86_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/libbase/libbase^android_vendor.31_x86_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/system/libbase/libbase^android_vendor.31_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/libbase/libbase^android_vendor.31_x86_x86_64_shared
+
+echo "building libbase^android_vendor_ramdisk_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libbase,android_vendor_ramdisk_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/libbase/libbase^android_vendor_ramdisk_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/system/libbase/libbase^android_vendor_ramdisk_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/libbase/libbase^android_vendor_ramdisk_x86_64_shared
+
+echo "building libbase^android_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libbase,android_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/libbase/libbase^android_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/system/libbase/libbase^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/libbase/libbase^android_x86_64_shared
+
+echo "building libbase^android_x86_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libbase,android_x86_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/libbase/libbase^android_x86_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/system/libbase/libbase^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/libbase/libbase^android_x86_x86_64_shared
+
+echo "building libbase_ndk^android_x86_64_sdk_static_apex30"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libbase_ndk,android_x86_64_sdk_static_apex30
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/libbase/libbase_ndk^android_x86_64_sdk_static_apex30
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/system/libbase/libbase_ndk^android_x86_64_sdk_static_apex30.output . $GITHUB_WORKSPACE/artifacts/system/libbase/libbase_ndk^android_x86_64_sdk_static_apex30
 
 rm -rf out
 

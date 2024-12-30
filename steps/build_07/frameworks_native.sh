@@ -70,40 +70,40 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^android_ven
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^android_vendor.31_x86_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^android_x86_64_shared/ .
 
-echo "building rss_hwm_reset^android_x86_64"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja rss_hwm_reset,android_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/native/cmds/rss_hwm_reset/rss_hwm_reset^android_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/frameworks/native/rss_hwm_reset^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/frameworks/native/cmds/rss_hwm_reset/rss_hwm_reset^android_x86_64
-
-echo "building libtimestats_proto^android_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libtimestats_proto,android_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/native/services/surfaceflinger/TimeStats/timestatsproto/libtimestats_proto^android_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/frameworks/native/libtimestats_proto^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/native/services/surfaceflinger/TimeStats/timestatsproto/libtimestats_proto^android_x86_64_shared
-
-echo "building libtimestats_atoms_proto^android_x86_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libtimestats_atoms_proto,android_x86_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/native/services/surfaceflinger/TimeStats/timestatsatomsproto/libtimestats_atoms_proto^android_x86_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/frameworks/native/libtimestats_atoms_proto^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/native/services/surfaceflinger/TimeStats/timestatsatomsproto/libtimestats_atoms_proto^android_x86_x86_64_shared
-
-echo "building libtimestats_atoms_proto^android_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libtimestats_atoms_proto,android_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/native/services/surfaceflinger/TimeStats/timestatsatomsproto/libtimestats_atoms_proto^android_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/frameworks/native/libtimestats_atoms_proto^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/native/services/surfaceflinger/TimeStats/timestatsatomsproto/libtimestats_atoms_proto^android_x86_64_shared
-
-echo "building libdumpstateutil^android_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libdumpstateutil,android_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/native/cmds/dumpstate/libdumpstateutil^android_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/frameworks/native/libdumpstateutil^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/native/cmds/dumpstate/libdumpstateutil^android_x86_64_shared
+echo "building libdumpstateutil^android_vendor.31_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libdumpstateutil,android_vendor.31_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/native/cmds/dumpstate/libdumpstateutil^android_vendor.31_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/frameworks/native/libdumpstateutil^android_vendor.31_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/native/cmds/dumpstate/libdumpstateutil^android_vendor.31_x86_64_shared
 
 echo "building libdumpstateutil^android_vendor.31_x86_x86_64_shared"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libdumpstateutil,android_vendor.31_x86_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/native/cmds/dumpstate/libdumpstateutil^android_vendor.31_x86_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/frameworks/native/libdumpstateutil^android_vendor.31_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/native/cmds/dumpstate/libdumpstateutil^android_vendor.31_x86_x86_64_shared
 
-echo "building libdumpstateutil^android_vendor.31_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libdumpstateutil,android_vendor.31_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/native/cmds/dumpstate/libdumpstateutil^android_vendor.31_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/frameworks/native/libdumpstateutil^android_vendor.31_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/native/cmds/dumpstate/libdumpstateutil^android_vendor.31_x86_64_shared
+echo "building libdumpstateutil^android_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libdumpstateutil,android_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/native/cmds/dumpstate/libdumpstateutil^android_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/frameworks/native/libdumpstateutil^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/native/cmds/dumpstate/libdumpstateutil^android_x86_64_shared
+
+echo "building libtimestats_atoms_proto^android_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libtimestats_atoms_proto,android_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/native/services/surfaceflinger/TimeStats/timestatsatomsproto/libtimestats_atoms_proto^android_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/frameworks/native/libtimestats_atoms_proto^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/native/services/surfaceflinger/TimeStats/timestatsatomsproto/libtimestats_atoms_proto^android_x86_64_shared
+
+echo "building libtimestats_atoms_proto^android_x86_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libtimestats_atoms_proto,android_x86_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/native/services/surfaceflinger/TimeStats/timestatsatomsproto/libtimestats_atoms_proto^android_x86_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/frameworks/native/libtimestats_atoms_proto^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/native/services/surfaceflinger/TimeStats/timestatsatomsproto/libtimestats_atoms_proto^android_x86_x86_64_shared
+
+echo "building libtimestats_proto^android_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libtimestats_proto,android_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/native/services/surfaceflinger/TimeStats/timestatsproto/libtimestats_proto^android_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/frameworks/native/libtimestats_proto^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/native/services/surfaceflinger/TimeStats/timestatsproto/libtimestats_proto^android_x86_64_shared
+
+echo "building rss_hwm_reset^android_x86_64"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja rss_hwm_reset,android_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/native/cmds/rss_hwm_reset/rss_hwm_reset^android_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/frameworks/native/rss_hwm_reset^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/frameworks/native/cmds/rss_hwm_reset/rss_hwm_reset^android_x86_64
 
 rm -rf out
 

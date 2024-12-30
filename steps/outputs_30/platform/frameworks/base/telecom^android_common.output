@@ -1,0 +1,7 @@
+out/soong/.intermediates/frameworks/base/cmds/telecom/telecom/android_common/aligned/telecom.jar
+out/soong/.intermediates/frameworks/base/cmds/telecom/telecom/android_common/dexpreopt/oat/x86/javalib.odex
+out/soong/.intermediates/frameworks/base/cmds/telecom/telecom/android_common/dexpreopt/oat/x86/javalib.vdex
+out/soong/.intermediates/frameworks/base/cmds/telecom/telecom/android_common/dexpreopt/oat/x86_64/javalib.odex
+out/soong/.intermediates/frameworks/base/cmds/telecom/telecom/android_common/dexpreopt/oat/x86_64/javalib.vdex
+out/soong/.intermediates/frameworks/base/cmds/telecom/telecom/android_common/javac/telecom.jar
+out/soong/.intermediates/frameworks/base/cmds/telecom/telecom/android_common/turbine-combined/telecom.jar

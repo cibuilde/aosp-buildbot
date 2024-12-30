@@ -22,20 +22,20 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/cmd/zipsync/zipsync^linux_gl
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/protobuf/aprotoc^linux_glibc_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/turbine/turbine^linux_glibc_common/ .
 
-echo "building libprotobuf-java-nano^android_common_apex30"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libprotobuf-java-nano,android_common_apex30
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/protobuf/libprotobuf-java-nano^android_common_apex30
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/external/protobuf/libprotobuf-java-nano^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/external/protobuf/libprotobuf-java-nano^android_common_apex30
+echo "building libprotobuf-java-micro^android_common"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libprotobuf-java-micro,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/protobuf/libprotobuf-java-micro^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/external/protobuf/libprotobuf-java-micro^android_common.output . $GITHUB_WORKSPACE/artifacts/external/protobuf/libprotobuf-java-micro^android_common
 
 echo "building libprotobuf-java-nano^android_common"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libprotobuf-java-nano,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/protobuf/libprotobuf-java-nano^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/external/protobuf/libprotobuf-java-nano^android_common.output . $GITHUB_WORKSPACE/artifacts/external/protobuf/libprotobuf-java-nano^android_common
 
-echo "building libprotobuf-java-micro^android_common"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libprotobuf-java-micro,android_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/protobuf/libprotobuf-java-micro^android_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/external/protobuf/libprotobuf-java-micro^android_common.output . $GITHUB_WORKSPACE/artifacts/external/protobuf/libprotobuf-java-micro^android_common
+echo "building libprotobuf-java-nano^android_common_apex30"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libprotobuf-java-nano,android_common_apex30
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/protobuf/libprotobuf-java-nano^android_common_apex30
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/external/protobuf/libprotobuf-java-nano^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/external/protobuf/libprotobuf-java-nano^android_common_apex30
 
 rm -rf out
 

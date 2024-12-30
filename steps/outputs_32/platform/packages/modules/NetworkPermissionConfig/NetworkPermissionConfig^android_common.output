@@ -1,0 +1,8 @@
+out/soong/.intermediates/packages/modules/NetworkPermissionConfig/NetworkPermissionConfig/android_common/NetworkPermissionConfig.apk
+out/soong/.intermediates/packages/modules/NetworkPermissionConfig/NetworkPermissionConfig/android_common/dexpreopt/dexpreopt.config
+out/soong/.intermediates/packages/modules/NetworkPermissionConfig/NetworkPermissionConfig/android_common/dexpreopt/oat/x86_64/package.odex
+out/soong/.intermediates/packages/modules/NetworkPermissionConfig/NetworkPermissionConfig/android_common/dexpreopt/oat/x86_64/package.vdex
+out/soong/.intermediates/packages/modules/NetworkPermissionConfig/NetworkPermissionConfig/android_common/javac/NetworkPermissionConfig.jar
+out/soong/.intermediates/packages/modules/NetworkPermissionConfig/NetworkPermissionConfig/android_common/package-res.apk
+out/soong/.intermediates/packages/modules/NetworkPermissionConfig/NetworkPermissionConfig/android_common/proguard_dictionary
+out/soong/.intermediates/packages/modules/NetworkPermissionConfig/NetworkPermissionConfig/android_common/proguard_usage.zip

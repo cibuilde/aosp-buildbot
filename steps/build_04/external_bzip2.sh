@@ -32,15 +32,15 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libdl/libdl^android_x86_64_shared
 rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libm/libm^android_x86_64_shared_current/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/bzip2/libbz^android_x86_64_static/ .
 
-echo "building libbz^android_vendor.31_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libbz,android_vendor.31_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/bzip2/libbz^android_vendor.31_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/bzip2/libbz^android_vendor.31_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/bzip2/libbz^android_vendor.31_x86_64_static
-
 echo "building bzip2^android_x86_64"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja bzip2,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/bzip2/bzip2^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/bzip2/bzip2^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/bzip2/bzip2^android_x86_64
+
+echo "building libbz^android_vendor.31_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libbz,android_vendor.31_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/bzip2/libbz^android_vendor.31_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/bzip2/libbz^android_vendor.31_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/bzip2/libbz^android_vendor.31_x86_64_static
 
 rm -rf out
 

@@ -31,25 +31,25 @@ clone_depth_platform system/logging
 clone_depth_platform system/media
 
 
-echo "building philox_random^android_x86_x86_64_static_apex30"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja philox_random,android_x86_x86_64_static_apex30
-mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/NeuralNetworks/common/random/philox_random^android_x86_x86_64_static_apex30
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/packages/modules/NeuralNetworks/philox_random^android_x86_x86_64_static_apex30.output . $GITHUB_WORKSPACE/artifacts/packages/modules/NeuralNetworks/common/random/philox_random^android_x86_x86_64_static_apex30
-
-echo "building philox_random^android_x86_64_static_apex30"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja philox_random,android_x86_64_static_apex30
-mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/NeuralNetworks/common/random/philox_random^android_x86_64_static_apex30
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/packages/modules/NeuralNetworks/philox_random^android_x86_64_static_apex30.output . $GITHUB_WORKSPACE/artifacts/packages/modules/NeuralNetworks/common/random/philox_random^android_x86_64_static_apex30
+echo "building libneuralnetworks_ndk_headers^"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libneuralnetworks_ndk_headers,
+mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/NeuralNetworks/runtime/libneuralnetworks_ndk_headers^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/packages/modules/NeuralNetworks/libneuralnetworks_ndk_headers^.output . $GITHUB_WORKSPACE/artifacts/packages/modules/NeuralNetworks/runtime/libneuralnetworks_ndk_headers^
 
 echo "building neuralnetworks_sample_sl_driver_prebuilt^android_vendor.31_x86_64_shared"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja neuralnetworks_sample_sl_driver_prebuilt,android_vendor.31_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/NeuralNetworks/driver/sample_shim/neuralnetworks_sample_sl_driver_prebuilt^android_vendor.31_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/packages/modules/NeuralNetworks/neuralnetworks_sample_sl_driver_prebuilt^android_vendor.31_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/packages/modules/NeuralNetworks/driver/sample_shim/neuralnetworks_sample_sl_driver_prebuilt^android_vendor.31_x86_64_shared
 
-echo "building libneuralnetworks_ndk_headers^"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libneuralnetworks_ndk_headers,
-mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/NeuralNetworks/runtime/libneuralnetworks_ndk_headers^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/packages/modules/NeuralNetworks/libneuralnetworks_ndk_headers^.output . $GITHUB_WORKSPACE/artifacts/packages/modules/NeuralNetworks/runtime/libneuralnetworks_ndk_headers^
+echo "building philox_random^android_x86_64_static_apex30"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja philox_random,android_x86_64_static_apex30
+mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/NeuralNetworks/common/random/philox_random^android_x86_64_static_apex30
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/packages/modules/NeuralNetworks/philox_random^android_x86_64_static_apex30.output . $GITHUB_WORKSPACE/artifacts/packages/modules/NeuralNetworks/common/random/philox_random^android_x86_64_static_apex30
+
+echo "building philox_random^android_x86_x86_64_static_apex30"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja philox_random,android_x86_x86_64_static_apex30
+mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/NeuralNetworks/common/random/philox_random^android_x86_x86_64_static_apex30
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/packages/modules/NeuralNetworks/philox_random^android_x86_x86_64_static_apex30.output . $GITHUB_WORKSPACE/artifacts/packages/modules/NeuralNetworks/common/random/philox_random^android_x86_x86_64_static_apex30
 
 rm -rf out
 

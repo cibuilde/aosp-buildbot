@@ -40,15 +40,15 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/external/piex/libpiex^android_x86_x86_64
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/piex/libtiff_directory^android_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/piex/libtiff_directory^android_x86_x86_64_static/ .
 
-echo "building libpiex^android_x86_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libpiex,android_x86_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/piex/libpiex^android_x86_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/external/piex/libpiex^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/external/piex/libpiex^android_x86_x86_64_shared
-
 echo "building libpiex^android_x86_64_shared"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libpiex,android_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/piex/libpiex^android_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/external/piex/libpiex^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/external/piex/libpiex^android_x86_64_shared
+
+echo "building libpiex^android_x86_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libpiex,android_x86_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/piex/libpiex^android_x86_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/external/piex/libpiex^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/external/piex/libpiex^android_x86_x86_64_shared
 
 rm -rf out
 

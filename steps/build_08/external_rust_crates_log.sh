@@ -68,15 +68,15 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/rust/libunwind.rust_sysroot^an
 rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/rust/libunwind.rust_sysroot^android_x86_64_rlib_apex10000/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^android_x86_64_shared/ .
 
-echo "building liblog_rust^android_x86_64_dylib_apex10000"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja liblog_rust,android_x86_64_dylib_apex10000
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/rust/crates/log/liblog_rust^android_x86_64_dylib_apex10000
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/external/rust/crates/log/liblog_rust^android_x86_64_dylib_apex10000.output . $GITHUB_WORKSPACE/artifacts/external/rust/crates/log/liblog_rust^android_x86_64_dylib_apex10000
-
 echo "building liblog_rust^android_x86_64_dylib"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja liblog_rust,android_x86_64_dylib
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/rust/crates/log/liblog_rust^android_x86_64_dylib
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/external/rust/crates/log/liblog_rust^android_x86_64_dylib.output . $GITHUB_WORKSPACE/artifacts/external/rust/crates/log/liblog_rust^android_x86_64_dylib
+
+echo "building liblog_rust^android_x86_64_dylib_apex10000"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja liblog_rust,android_x86_64_dylib_apex10000
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/rust/crates/log/liblog_rust^android_x86_64_dylib_apex10000
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/external/rust/crates/log/liblog_rust^android_x86_64_dylib_apex10000.output . $GITHUB_WORKSPACE/artifacts/external/rust/crates/log/liblog_rust^android_x86_64_dylib_apex10000
 
 rm -rf out
 

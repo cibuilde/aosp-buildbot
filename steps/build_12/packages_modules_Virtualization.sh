@@ -166,15 +166,15 @@ ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_12.ninja microdroid,androi
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/Virtualization/microdroid/microdroid^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_12/packages/modules/Virtualization/microdroid^android_common.output . $GITHUB_WORKSPACE/artifacts/packages/modules/Virtualization/microdroid/microdroid^android_common
 
-echo "building microdroid_vbmeta_system^android_x86_64"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_12.ninja microdroid_vbmeta_system,android_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/Virtualization/microdroid/microdroid_vbmeta_system^android_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_12/packages/modules/Virtualization/microdroid_vbmeta_system^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/packages/modules/Virtualization/microdroid/microdroid_vbmeta_system^android_x86_64
-
 echo "building microdroid_super^android_x86_64"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_12.ninja microdroid_super,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/Virtualization/microdroid/microdroid_super^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_12/packages/modules/Virtualization/microdroid_super^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/packages/modules/Virtualization/microdroid/microdroid_super^android_x86_64
+
+echo "building microdroid_vbmeta_system^android_x86_64"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_12.ninja microdroid_vbmeta_system,android_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/Virtualization/microdroid/microdroid_vbmeta_system^android_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_12/packages/modules/Virtualization/microdroid_vbmeta_system^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/packages/modules/Virtualization/microdroid/microdroid_vbmeta_system^android_x86_64
 
 rm -rf out
 

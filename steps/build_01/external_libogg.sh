@@ -25,15 +25,15 @@ clone_depth_platform system/logging
 clone_depth_platform system/media
 
 
-echo "building libogg^android_x86_x86_64_static_cfi"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libogg,android_x86_x86_64_static_cfi
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/libogg/libogg^android_x86_x86_64_static_cfi
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/libogg/libogg^android_x86_x86_64_static_cfi.output . $GITHUB_WORKSPACE/artifacts/external/libogg/libogg^android_x86_x86_64_static_cfi
-
 echo "building libogg^android_x86_64_static_cfi"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libogg,android_x86_64_static_cfi
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/libogg/libogg^android_x86_64_static_cfi
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/libogg/libogg^android_x86_64_static_cfi.output . $GITHUB_WORKSPACE/artifacts/external/libogg/libogg^android_x86_64_static_cfi
+
+echo "building libogg^android_x86_x86_64_static_cfi"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libogg,android_x86_x86_64_static_cfi
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/libogg/libogg^android_x86_x86_64_static_cfi
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/libogg/libogg^android_x86_x86_64_static_cfi.output . $GITHUB_WORKSPACE/artifacts/external/libogg/libogg^android_x86_x86_64_static_cfi
 
 rm -rf out
 

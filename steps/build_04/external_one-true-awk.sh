@@ -38,15 +38,15 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/external/one-true-awk/awkgram.tab.c^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/one-true-awk/awkgram.tab.h^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/one-true-awk/proctab.c^/ .
 
-echo "building awk_vendor^android_vendor.31_x86_64"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja awk_vendor,android_vendor.31_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/one-true-awk/awk_vendor^android_vendor.31_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/one-true-awk/awk_vendor^android_vendor.31_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/one-true-awk/awk_vendor^android_vendor.31_x86_64
-
 echo "building awk^android_x86_64"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja awk,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/one-true-awk/awk^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/one-true-awk/awk^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/one-true-awk/awk^android_x86_64
+
+echo "building awk_vendor^android_vendor.31_x86_64"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja awk_vendor,android_vendor.31_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/one-true-awk/awk_vendor^android_vendor.31_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/one-true-awk/awk_vendor^android_vendor.31_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/one-true-awk/awk_vendor^android_vendor.31_x86_64
 
 rm -rf out
 

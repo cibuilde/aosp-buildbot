@@ -13,15 +13,15 @@ clone_depth_platform external/jarjar
 
 rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/cmd/merge_zips/merge_zips^linux_glibc_x86_64/ .
 
-echo "building jarjar-maven-plugin-api^linux_glibc_common"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja jarjar-maven-plugin-api,linux_glibc_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/jarjar/jarjar-maven-plugin-api^linux_glibc_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/external/jarjar/jarjar-maven-plugin-api^linux_glibc_common.output . $GITHUB_WORKSPACE/artifacts/external/jarjar/jarjar-maven-plugin-api^linux_glibc_common
-
 echo "building jarjar-apache-ant^linux_glibc_common"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja jarjar-apache-ant,linux_glibc_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/jarjar/jarjar-apache-ant^linux_glibc_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/external/jarjar/jarjar-apache-ant^linux_glibc_common.output . $GITHUB_WORKSPACE/artifacts/external/jarjar/jarjar-apache-ant^linux_glibc_common
+
+echo "building jarjar-maven-plugin-api^linux_glibc_common"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja jarjar-maven-plugin-api,linux_glibc_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/jarjar/jarjar-maven-plugin-api^linux_glibc_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/external/jarjar/jarjar-maven-plugin-api^linux_glibc_common.output . $GITHUB_WORKSPACE/artifacts/external/jarjar/jarjar-maven-plugin-api^linux_glibc_common
 
 rm -rf out
 

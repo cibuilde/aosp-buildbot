@@ -1,0 +1,4 @@
+out/soong/.intermediates/packages/apps/PhoneCommon/com.android.phone.common-lib/android_common/javac/com.android.phone.common-lib.jar
+out/soong/.intermediates/packages/apps/PhoneCommon/com.android.phone.common-lib/android_common/manifest_fixer/AndroidManifest.xml
+out/soong/.intermediates/packages/apps/PhoneCommon/com.android.phone.common-lib/android_common/package-res.apk
+out/soong/.intermediates/packages/apps/PhoneCommon/com.android.phone.common-lib/android_common/turbine-combined/com.android.phone.common-lib.jar

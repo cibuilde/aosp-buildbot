@@ -1,0 +1,3 @@
+out/soong/.intermediates/frameworks/base/apex/appsearch/com.android.appsearch-bootclasspath-fragment/android_common_apex10000/bootclasspath.pb
+out/soong/.intermediates/frameworks/base/apex/appsearch/com.android.appsearch-bootclasspath-fragment/android_common_apex10000/hiddenapi-modular/encoded/framework-appsearch.jar
+out/soong/.intermediates/frameworks/base/apex/appsearch/com.android.appsearch-bootclasspath-fragment/android_common_apex10000/modular-hiddenapi/annotation-flags.csv

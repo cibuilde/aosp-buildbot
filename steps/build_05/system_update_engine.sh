@@ -48,15 +48,15 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/external/puffin/libpuffpatch^android_x86
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/update_engine/update_metadata-protos^android_recovery_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/update_engine/update_metadata-protos^android_x86_64_static/ .
 
-echo "building libpayload_consumer^android_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libpayload_consumer,android_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/update_engine/libpayload_consumer^android_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/system/update_engine/libpayload_consumer^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/update_engine/libpayload_consumer^android_x86_64_static
-
 echo "building libpayload_consumer^android_recovery_x86_64_static"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libpayload_consumer,android_recovery_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/update_engine/libpayload_consumer^android_recovery_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/system/update_engine/libpayload_consumer^android_recovery_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/update_engine/libpayload_consumer^android_recovery_x86_64_static
+
+echo "building libpayload_consumer^android_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libpayload_consumer,android_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/update_engine/libpayload_consumer^android_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/system/update_engine/libpayload_consumer^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/update_engine/libpayload_consumer^android_x86_64_static
 
 rm -rf out
 

@@ -53,25 +53,25 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcxxabi/libc++demangle^androi
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcxxabi/libc++demangle^android_x86_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcxxabi/libc++demangle^android_x86_x86_64_static_apex29/ .
 
-echo "building boringssl_self_test^android_x86_x86_64_apex29"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja boringssl_self_test,android_x86_x86_64_apex29
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/boringssl/selftest/boringssl_self_test^android_x86_x86_64_apex29
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/external/boringssl/boringssl_self_test^android_x86_x86_64_apex29.output . $GITHUB_WORKSPACE/artifacts/external/boringssl/selftest/boringssl_self_test^android_x86_x86_64_apex29
-
-echo "building boringssl_self_test^android_x86_x86_64"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja boringssl_self_test,android_x86_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/boringssl/selftest/boringssl_self_test^android_x86_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/external/boringssl/boringssl_self_test^android_x86_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/boringssl/selftest/boringssl_self_test^android_x86_x86_64
+echo "building boringssl_self_test^android_x86_64"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja boringssl_self_test,android_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/boringssl/selftest/boringssl_self_test^android_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/external/boringssl/boringssl_self_test^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/boringssl/selftest/boringssl_self_test^android_x86_64
 
 echo "building boringssl_self_test^android_x86_64_apex29"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja boringssl_self_test,android_x86_64_apex29
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/boringssl/selftest/boringssl_self_test^android_x86_64_apex29
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/external/boringssl/boringssl_self_test^android_x86_64_apex29.output . $GITHUB_WORKSPACE/artifacts/external/boringssl/selftest/boringssl_self_test^android_x86_64_apex29
 
-echo "building boringssl_self_test^android_x86_64"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja boringssl_self_test,android_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/boringssl/selftest/boringssl_self_test^android_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/external/boringssl/boringssl_self_test^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/boringssl/selftest/boringssl_self_test^android_x86_64
+echo "building boringssl_self_test^android_x86_x86_64"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja boringssl_self_test,android_x86_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/boringssl/selftest/boringssl_self_test^android_x86_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/external/boringssl/boringssl_self_test^android_x86_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/boringssl/selftest/boringssl_self_test^android_x86_x86_64
+
+echo "building boringssl_self_test^android_x86_x86_64_apex29"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja boringssl_self_test,android_x86_x86_64_apex29
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/boringssl/selftest/boringssl_self_test^android_x86_x86_64_apex29
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/external/boringssl/boringssl_self_test^android_x86_x86_64_apex29.output . $GITHUB_WORKSPACE/artifacts/external/boringssl/selftest/boringssl_self_test^android_x86_x86_64_apex29
 
 rm -rf out
 

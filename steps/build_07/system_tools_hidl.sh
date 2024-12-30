@@ -50,25 +50,25 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/system/tools/hidl/utils/libhidl-gen-util
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/tools/hidl/utils/libhidl-gen-utils^android_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/tools/hidl/utils/libhidl-gen-utils^android_x86_x86_64_static/ .
 
-echo "building libhidl-gen-utils^android_x86_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libhidl-gen-utils,android_x86_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/tools/hidl/utils/libhidl-gen-utils^android_x86_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/tools/hidl/libhidl-gen-utils^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/tools/hidl/utils/libhidl-gen-utils^android_x86_x86_64_shared
-
-echo "building libhidl-gen-utils^android_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libhidl-gen-utils,android_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/tools/hidl/utils/libhidl-gen-utils^android_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/tools/hidl/libhidl-gen-utils^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/tools/hidl/utils/libhidl-gen-utils^android_x86_64_shared
+echo "building libhidl-gen-hash^android_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libhidl-gen-hash,android_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/tools/hidl/hashing/libhidl-gen-hash^android_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/tools/hidl/libhidl-gen-hash^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/tools/hidl/hashing/libhidl-gen-hash^android_x86_64_shared
 
 echo "building libhidl-gen-utils^android_recovery_x86_64_shared"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libhidl-gen-utils,android_recovery_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/tools/hidl/utils/libhidl-gen-utils^android_recovery_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/tools/hidl/libhidl-gen-utils^android_recovery_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/tools/hidl/utils/libhidl-gen-utils^android_recovery_x86_64_shared
 
-echo "building libhidl-gen-hash^android_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libhidl-gen-hash,android_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/tools/hidl/hashing/libhidl-gen-hash^android_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/tools/hidl/libhidl-gen-hash^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/tools/hidl/hashing/libhidl-gen-hash^android_x86_64_shared
+echo "building libhidl-gen-utils^android_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libhidl-gen-utils,android_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/tools/hidl/utils/libhidl-gen-utils^android_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/tools/hidl/libhidl-gen-utils^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/tools/hidl/utils/libhidl-gen-utils^android_x86_64_shared
+
+echo "building libhidl-gen-utils^android_x86_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libhidl-gen-utils,android_x86_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/tools/hidl/utils/libhidl-gen-utils^android_x86_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/tools/hidl/libhidl-gen-utils^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/tools/hidl/utils/libhidl-gen-utils^android_x86_x86_64_shared
 
 rm -rf out
 

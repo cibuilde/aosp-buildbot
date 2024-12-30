@@ -32,15 +32,15 @@ ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja wayland_scanner,l
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/wayland/wayland_scanner^linux_glibc_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/external/wayland/wayland_scanner^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/wayland/wayland_scanner^linux_glibc_x86_64
 
-echo "building wayland_core_protocol_sources_static^"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja wayland_core_protocol_sources_static,
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/wayland/wayland_core_protocol_sources_static^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/external/wayland/wayland_core_protocol_sources_static^.output . $GITHUB_WORKSPACE/artifacts/external/wayland/wayland_core_protocol_sources_static^
-
 echo "building wayland_core_client_protocol_headers^"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja wayland_core_client_protocol_headers,
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/wayland/wayland_core_client_protocol_headers^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/external/wayland/wayland_core_client_protocol_headers^.output . $GITHUB_WORKSPACE/artifacts/external/wayland/wayland_core_client_protocol_headers^
+
+echo "building wayland_core_protocol_sources_static^"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja wayland_core_protocol_sources_static,
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/wayland/wayland_core_protocol_sources_static^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/external/wayland/wayland_core_protocol_sources_static^.output . $GITHUB_WORKSPACE/artifacts/external/wayland/wayland_core_protocol_sources_static^
 
 rm -rf out
 

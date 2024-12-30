@@ -1,0 +1,3 @@
+out/soong/.intermediates/frameworks/av/apex/com.android.media-bootclasspath-fragment/android_common_apex29/bootclasspath.pb
+out/soong/.intermediates/frameworks/av/apex/com.android.media-bootclasspath-fragment/android_common_apex29/hiddenapi-modular/encoded/updatable-media.jar
+out/soong/.intermediates/frameworks/av/apex/com.android.media-bootclasspath-fragment/android_common_apex29/modular-hiddenapi/annotation-flags.csv

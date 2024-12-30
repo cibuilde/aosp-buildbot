@@ -24,20 +24,20 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcxx/libc++^linux_glibc_x86_6
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/tinyxml2/libtinyxml2^linux_glibc_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^linux_glibc_x86_64_shared/ .
 
-echo "building libtinyxml2^linux_glibc_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libtinyxml2,linux_glibc_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/tinyxml2/libtinyxml2^linux_glibc_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/tinyxml2/libtinyxml2^linux_glibc_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/external/tinyxml2/libtinyxml2^linux_glibc_x86_64_shared
+echo "building libtinyxml2^android_vendor.31_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libtinyxml2,android_vendor.31_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/tinyxml2/libtinyxml2^android_vendor.31_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/tinyxml2/libtinyxml2^android_vendor.31_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/tinyxml2/libtinyxml2^android_vendor.31_x86_64_static
 
 echo "building libtinyxml2^android_vendor.31_x86_x86_64_static"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libtinyxml2,android_vendor.31_x86_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/tinyxml2/libtinyxml2^android_vendor.31_x86_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/tinyxml2/libtinyxml2^android_vendor.31_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/tinyxml2/libtinyxml2^android_vendor.31_x86_x86_64_static
 
-echo "building libtinyxml2^android_vendor.31_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libtinyxml2,android_vendor.31_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/tinyxml2/libtinyxml2^android_vendor.31_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/tinyxml2/libtinyxml2^android_vendor.31_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/tinyxml2/libtinyxml2^android_vendor.31_x86_64_static
+echo "building libtinyxml2^linux_glibc_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libtinyxml2,linux_glibc_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/tinyxml2/libtinyxml2^linux_glibc_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/tinyxml2/libtinyxml2^linux_glibc_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/external/tinyxml2/libtinyxml2^linux_glibc_x86_64_shared
 
 rm -rf out
 

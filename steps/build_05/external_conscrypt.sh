@@ -48,15 +48,15 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcxxabi/libc++demangle^androi
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^android_x86_64_shared_current/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^android_x86_x86_64_shared_current/ .
 
-echo "building libjavacrypto^android_x86_x86_64_shared_apex29"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libjavacrypto,android_x86_x86_64_shared_apex29
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/conscrypt/libjavacrypto^android_x86_x86_64_shared_apex29
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/external/conscrypt/libjavacrypto^android_x86_x86_64_shared_apex29.output . $GITHUB_WORKSPACE/artifacts/external/conscrypt/libjavacrypto^android_x86_x86_64_shared_apex29
-
 echo "building libjavacrypto^android_x86_64_shared_apex29"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libjavacrypto,android_x86_64_shared_apex29
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/conscrypt/libjavacrypto^android_x86_64_shared_apex29
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/external/conscrypt/libjavacrypto^android_x86_64_shared_apex29.output . $GITHUB_WORKSPACE/artifacts/external/conscrypt/libjavacrypto^android_x86_64_shared_apex29
+
+echo "building libjavacrypto^android_x86_x86_64_shared_apex29"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libjavacrypto,android_x86_x86_64_shared_apex29
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/conscrypt/libjavacrypto^android_x86_x86_64_shared_apex29
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/external/conscrypt/libjavacrypto^android_x86_x86_64_shared_apex29.output . $GITHUB_WORKSPACE/artifacts/external/conscrypt/libjavacrypto^android_x86_x86_64_shared_apex29
 
 rm -rf out
 

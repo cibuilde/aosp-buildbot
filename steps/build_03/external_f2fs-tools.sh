@@ -43,15 +43,15 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/system/core/libsparse/libsparse^linux_gl
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/libbase/libbase^linux_glibc_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^linux_glibc_x86_64_static/ .
 
-echo "building sload_f2fs^linux_glibc_x86_64"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja sload_f2fs,linux_glibc_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/f2fs-tools/sload_f2fs^linux_glibc_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/external/f2fs-tools/sload_f2fs^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/f2fs-tools/sload_f2fs^linux_glibc_x86_64
-
 echo "building make_f2fs^linux_glibc_x86_64"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja make_f2fs,linux_glibc_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/f2fs-tools/make_f2fs^linux_glibc_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/external/f2fs-tools/make_f2fs^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/f2fs-tools/make_f2fs^linux_glibc_x86_64
+
+echo "building sload_f2fs^linux_glibc_x86_64"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja sload_f2fs,linux_glibc_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/f2fs-tools/sload_f2fs^linux_glibc_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/external/f2fs-tools/sload_f2fs^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/f2fs-tools/sload_f2fs^linux_glibc_x86_64
 
 rm -rf out
 

@@ -36,25 +36,25 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/system/libbase/libbase^linux_glibc_x86_6
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^linux_glibc_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/tools/sysprop/sysprop_cpp^linux_glibc_x86_64/ .
 
-echo "building libincfs^android_x86_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libincfs,android_x86_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/incremental_delivery/incfs/libincfs^android_x86_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/system/incremental_delivery/libincfs^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/incremental_delivery/incfs/libincfs^android_x86_x86_64_static
-
-echo "building libincfs^android_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libincfs,android_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/incremental_delivery/incfs/libincfs^android_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/system/incremental_delivery/libincfs^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/incremental_delivery/incfs/libincfs^android_x86_64_static
+echo "building libcom.android.sysprop.incremental^android_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libcom.android.sysprop.incremental,android_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/incremental_delivery/sysprop/libcom.android.sysprop.incremental^android_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/system/incremental_delivery/libcom.android.sysprop.incremental^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/incremental_delivery/sysprop/libcom.android.sysprop.incremental^android_x86_64_static
 
 echo "building libcom.android.sysprop.incremental^android_x86_x86_64_static"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libcom.android.sysprop.incremental,android_x86_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/incremental_delivery/sysprop/libcom.android.sysprop.incremental^android_x86_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/system/incremental_delivery/libcom.android.sysprop.incremental^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/incremental_delivery/sysprop/libcom.android.sysprop.incremental^android_x86_x86_64_static
 
-echo "building libcom.android.sysprop.incremental^android_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libcom.android.sysprop.incremental,android_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/incremental_delivery/sysprop/libcom.android.sysprop.incremental^android_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/system/incremental_delivery/libcom.android.sysprop.incremental^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/incremental_delivery/sysprop/libcom.android.sysprop.incremental^android_x86_64_static
+echo "building libincfs^android_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libincfs,android_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/incremental_delivery/incfs/libincfs^android_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/system/incremental_delivery/libincfs^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/incremental_delivery/incfs/libincfs^android_x86_64_static
+
+echo "building libincfs^android_x86_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libincfs,android_x86_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/incremental_delivery/incfs/libincfs^android_x86_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/system/incremental_delivery/libincfs^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/incremental_delivery/incfs/libincfs^android_x86_x86_64_static
 
 rm -rf out
 

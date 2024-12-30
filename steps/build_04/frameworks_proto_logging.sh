@@ -33,20 +33,20 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/external/protobuf/aprotoc^linux_glibc_x8
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/protobuf/libprotobuf-cpp-full^linux_glibc_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/zlib/libz^linux_glibc_x86_64_shared/ .
 
-echo "building libstats_proto_host^linux_glibc_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libstats_proto_host,linux_glibc_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/proto_logging/stats/libstats_proto_host^linux_glibc_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/proto_logging/libstats_proto_host^linux_glibc_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/proto_logging/stats/libstats_proto_host^linux_glibc_x86_64_shared
+echo "building libbt-platform-protos-lite^android_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libbt-platform-protos-lite,android_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/proto_logging/stats/enums/bluetooth/libbt-platform-protos-lite^android_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/proto_logging/libbt-platform-protos-lite^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/proto_logging/stats/enums/bluetooth/libbt-platform-protos-lite^android_x86_64_static
 
 echo "building libbt-platform-protos-lite^android_x86_x86_64_static"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libbt-platform-protos-lite,android_x86_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/proto_logging/stats/enums/bluetooth/libbt-platform-protos-lite^android_x86_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/proto_logging/libbt-platform-protos-lite^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/proto_logging/stats/enums/bluetooth/libbt-platform-protos-lite^android_x86_x86_64_static
 
-echo "building libbt-platform-protos-lite^android_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libbt-platform-protos-lite,android_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/proto_logging/stats/enums/bluetooth/libbt-platform-protos-lite^android_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/proto_logging/libbt-platform-protos-lite^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/proto_logging/stats/enums/bluetooth/libbt-platform-protos-lite^android_x86_64_static
+echo "building libstats_proto_host^linux_glibc_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libstats_proto_host,linux_glibc_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/proto_logging/stats/libstats_proto_host^linux_glibc_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/proto_logging/libstats_proto_host^linux_glibc_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/proto_logging/stats/libstats_proto_host^linux_glibc_x86_64_shared
 
 rm -rf out
 

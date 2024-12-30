@@ -27,25 +27,25 @@ clone_depth_platform system/logging
 clone_depth_platform system/media
 
 
-echo "building libkver^linux_glibc_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libkver,linux_glibc_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/Gki/libkver/libkver^linux_glibc_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/packages/modules/Gki/libkver^linux_glibc_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/packages/modules/Gki/libkver/libkver^linux_glibc_x86_64_static
-
-echo "building libkver^android_x86_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libkver,android_x86_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/Gki/libkver/libkver^android_x86_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/packages/modules/Gki/libkver^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/packages/modules/Gki/libkver/libkver^android_x86_x86_64_static
+echo "building libkver^android_recovery_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libkver,android_recovery_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/Gki/libkver/libkver^android_recovery_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/packages/modules/Gki/libkver^android_recovery_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/packages/modules/Gki/libkver/libkver^android_recovery_x86_64_static
 
 echo "building libkver^android_x86_64_static"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libkver,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/Gki/libkver/libkver^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/packages/modules/Gki/libkver^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/packages/modules/Gki/libkver/libkver^android_x86_64_static
 
-echo "building libkver^android_recovery_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libkver,android_recovery_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/Gki/libkver/libkver^android_recovery_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/packages/modules/Gki/libkver^android_recovery_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/packages/modules/Gki/libkver/libkver^android_recovery_x86_64_static
+echo "building libkver^android_x86_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libkver,android_x86_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/Gki/libkver/libkver^android_x86_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/packages/modules/Gki/libkver^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/packages/modules/Gki/libkver/libkver^android_x86_x86_64_static
+
+echo "building libkver^linux_glibc_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libkver,linux_glibc_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/Gki/libkver/libkver^linux_glibc_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/packages/modules/Gki/libkver^linux_glibc_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/packages/modules/Gki/libkver/libkver^linux_glibc_x86_64_static
 
 rm -rf out
 

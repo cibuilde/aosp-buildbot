@@ -1,9 +1,0 @@
-out/soong/.intermediates/frameworks/av/media/libmediaplayerservice/libmediaplayerservice/android_x86_x86_64_static_cfi/obj/frameworks/av/media/libmediaplayerservice/ActivityManager.o
-out/soong/.intermediates/frameworks/av/media/libmediaplayerservice/libmediaplayerservice/android_x86_x86_64_static_cfi/obj/frameworks/av/media/libmediaplayerservice/DeathNotifier.o
-out/soong/.intermediates/frameworks/av/media/libmediaplayerservice/libmediaplayerservice/android_x86_x86_64_static_cfi/obj/frameworks/av/media/libmediaplayerservice/MediaPlayerFactory.o
-out/soong/.intermediates/frameworks/av/media/libmediaplayerservice/libmediaplayerservice/android_x86_x86_64_static_cfi/obj/frameworks/av/media/libmediaplayerservice/MediaPlayerService.o
-out/soong/.intermediates/frameworks/av/media/libmediaplayerservice/libmediaplayerservice/android_x86_x86_64_static_cfi/obj/frameworks/av/media/libmediaplayerservice/MediaRecorderClient.o
-out/soong/.intermediates/frameworks/av/media/libmediaplayerservice/libmediaplayerservice/android_x86_x86_64_static_cfi/obj/frameworks/av/media/libmediaplayerservice/MetadataRetrieverClient.o
-out/soong/.intermediates/frameworks/av/media/libmediaplayerservice/libmediaplayerservice/android_x86_x86_64_static_cfi/obj/frameworks/av/media/libmediaplayerservice/StagefrightMetadataRetriever.o
-out/soong/.intermediates/frameworks/av/media/libmediaplayerservice/libmediaplayerservice/android_x86_x86_64_static_cfi/obj/frameworks/av/media/libmediaplayerservice/StagefrightRecorder.o
-out/soong/.intermediates/frameworks/av/media/libmediaplayerservice/libmediaplayerservice/android_x86_x86_64_static_cfi/obj/frameworks/av/media/libmediaplayerservice/TestPlayerStub.o

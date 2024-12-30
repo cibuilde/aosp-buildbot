@@ -26,155 +26,155 @@ clone_depth_platform system/logging
 clone_depth_platform system/media
 
 
-echo "building libssl^linux_glibc_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libssl,linux_glibc_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/boringssl/libssl^linux_glibc_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/boringssl/libssl^linux_glibc_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/boringssl/libssl^linux_glibc_x86_64_static
-
-echo "building libssl^android_x86_x86_64_static_apex29"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libssl,android_x86_x86_64_static_apex29
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/boringssl/libssl^android_x86_x86_64_static_apex29
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/boringssl/libssl^android_x86_x86_64_static_apex29.output . $GITHUB_WORKSPACE/artifacts/external/boringssl/libssl^android_x86_x86_64_static_apex29
-
-echo "building libssl^android_x86_x86_64_static_apex10000"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libssl,android_x86_x86_64_static_apex10000
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/boringssl/libssl^android_x86_x86_64_static_apex10000
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/boringssl/libssl^android_x86_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/external/boringssl/libssl^android_x86_x86_64_static_apex10000
-
-echo "building libssl^android_x86_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libssl,android_x86_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/boringssl/libssl^android_x86_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/boringssl/libssl^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/boringssl/libssl^android_x86_x86_64_static
-
-echo "building libssl^android_x86_64_static_apex29"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libssl,android_x86_64_static_apex29
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/boringssl/libssl^android_x86_64_static_apex29
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/boringssl/libssl^android_x86_64_static_apex29.output . $GITHUB_WORKSPACE/artifacts/external/boringssl/libssl^android_x86_64_static_apex29
-
-echo "building libssl^android_x86_64_static_apex10000"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libssl,android_x86_64_static_apex10000
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/boringssl/libssl^android_x86_64_static_apex10000
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/boringssl/libssl^android_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/external/boringssl/libssl^android_x86_64_static_apex10000
-
-echo "building libssl^android_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libssl,android_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/boringssl/libssl^android_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/boringssl/libssl^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/boringssl/libssl^android_x86_64_static
-
-echo "building libssl^android_recovery_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libssl,android_recovery_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/boringssl/libssl^android_recovery_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/boringssl/libssl^android_recovery_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/boringssl/libssl^android_recovery_x86_64_static
-
-echo "building libcrypto_static^linux_glibc_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libcrypto_static,linux_glibc_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/boringssl/libcrypto_static^linux_glibc_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/boringssl/libcrypto_static^linux_glibc_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/boringssl/libcrypto_static^linux_glibc_x86_64_static
-
-echo "building libcrypto_static^android_x86_x86_64_static_apex30"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libcrypto_static,android_x86_x86_64_static_apex30
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/boringssl/libcrypto_static^android_x86_x86_64_static_apex30
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/boringssl/libcrypto_static^android_x86_x86_64_static_apex30.output . $GITHUB_WORKSPACE/artifacts/external/boringssl/libcrypto_static^android_x86_x86_64_static_apex30
-
-echo "building libcrypto_static^android_x86_64_static_apex30"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libcrypto_static,android_x86_64_static_apex30
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/boringssl/libcrypto_static^android_x86_64_static_apex30
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/boringssl/libcrypto_static^android_x86_64_static_apex30.output . $GITHUB_WORKSPACE/artifacts/external/boringssl/libcrypto_static^android_x86_64_static_apex30
-
-echo "building libcrypto_static^android_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libcrypto_static,android_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/boringssl/libcrypto_static^android_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/boringssl/libcrypto_static^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/boringssl/libcrypto_static^android_x86_64_static
-
-echo "building libcrypto^linux_glibc_x86_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libcrypto,linux_glibc_x86_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/boringssl/libcrypto^linux_glibc_x86_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/boringssl/libcrypto^linux_glibc_x86_static.output . $GITHUB_WORKSPACE/artifacts/external/boringssl/libcrypto^linux_glibc_x86_static
-
-echo "building bcm_object^linux_glibc_x86_64"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja bcm_object,linux_glibc_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/boringssl/bcm_object^linux_glibc_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/boringssl/bcm_object^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/boringssl/bcm_object^linux_glibc_x86_64
-
-echo "building libcrypto^linux_glibc_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libcrypto,linux_glibc_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/boringssl/libcrypto^linux_glibc_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/boringssl/libcrypto^linux_glibc_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/boringssl/libcrypto^linux_glibc_x86_64_static
-
-echo "building bssl_fipscommon^linux_glibc_x86_64"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja bssl_fipscommon,linux_glibc_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/boringssl/bssl_fipscommon^linux_glibc_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/boringssl/bssl_fipscommon^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/boringssl/bssl_fipscommon^linux_glibc_x86_64
-
-echo "building bssl_ar^linux_glibc_x86_64"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja bssl_ar,linux_glibc_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/boringssl/bssl_ar^linux_glibc_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/boringssl/bssl_ar^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/boringssl/bssl_ar^linux_glibc_x86_64
-
-echo "building bssl_inject_hash^linux_glibc_x86_64"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja bssl_inject_hash,linux_glibc_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/boringssl/bssl_inject_hash^linux_glibc_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/boringssl/bssl_inject_hash^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/boringssl/bssl_inject_hash^linux_glibc_x86_64
-
-echo "building bcm_object^linux_glibc_x86"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja bcm_object,linux_glibc_x86
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/boringssl/bcm_object^linux_glibc_x86
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/boringssl/bcm_object^linux_glibc_x86.output . $GITHUB_WORKSPACE/artifacts/external/boringssl/bcm_object^linux_glibc_x86
-
-echo "building bcm_object^android_x86_x86_64_apex31"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja bcm_object,android_x86_x86_64_apex31
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/boringssl/bcm_object^android_x86_x86_64_apex31
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/boringssl/bcm_object^android_x86_x86_64_apex31.output . $GITHUB_WORKSPACE/artifacts/external/boringssl/bcm_object^android_x86_x86_64_apex31
-
-echo "building bcm_object^android_x86_x86_64_apex29"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja bcm_object,android_x86_x86_64_apex29
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/boringssl/bcm_object^android_x86_x86_64_apex29
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/boringssl/bcm_object^android_x86_x86_64_apex29.output . $GITHUB_WORKSPACE/artifacts/external/boringssl/bcm_object^android_x86_x86_64_apex29
-
-echo "building bcm_object^android_x86_x86_64_apex10000"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja bcm_object,android_x86_x86_64_apex10000
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/boringssl/bcm_object^android_x86_x86_64_apex10000
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/boringssl/bcm_object^android_x86_x86_64_apex10000.output . $GITHUB_WORKSPACE/artifacts/external/boringssl/bcm_object^android_x86_x86_64_apex10000
-
-echo "building bcm_object^android_x86_x86_64"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja bcm_object,android_x86_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/boringssl/bcm_object^android_x86_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/boringssl/bcm_object^android_x86_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/boringssl/bcm_object^android_x86_x86_64
-
-echo "building bcm_object^android_x86_64_apex31"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja bcm_object,android_x86_64_apex31
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/boringssl/bcm_object^android_x86_64_apex31
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/boringssl/bcm_object^android_x86_64_apex31.output . $GITHUB_WORKSPACE/artifacts/external/boringssl/bcm_object^android_x86_64_apex31
-
-echo "building bcm_object^android_x86_64_apex29"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja bcm_object,android_x86_64_apex29
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/boringssl/bcm_object^android_x86_64_apex29
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/boringssl/bcm_object^android_x86_64_apex29.output . $GITHUB_WORKSPACE/artifacts/external/boringssl/bcm_object^android_x86_64_apex29
-
-echo "building bcm_object^android_x86_64_apex10000"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja bcm_object,android_x86_64_apex10000
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/boringssl/bcm_object^android_x86_64_apex10000
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/boringssl/bcm_object^android_x86_64_apex10000.output . $GITHUB_WORKSPACE/artifacts/external/boringssl/bcm_object^android_x86_64_apex10000
-
-echo "building bcm_object^android_x86_64"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja bcm_object,android_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/boringssl/bcm_object^android_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/boringssl/bcm_object^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/boringssl/bcm_object^android_x86_64
-
-echo "building bcm_object^android_vendor.31_x86_x86_64"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja bcm_object,android_vendor.31_x86_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/boringssl/bcm_object^android_vendor.31_x86_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/boringssl/bcm_object^android_vendor.31_x86_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/boringssl/bcm_object^android_vendor.31_x86_x86_64
+echo "building bcm_object^android_recovery_x86_64"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja bcm_object,android_recovery_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/boringssl/bcm_object^android_recovery_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/boringssl/bcm_object^android_recovery_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/boringssl/bcm_object^android_recovery_x86_64
 
 echo "building bcm_object^android_vendor.31_x86_64"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja bcm_object,android_vendor.31_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/boringssl/bcm_object^android_vendor.31_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/boringssl/bcm_object^android_vendor.31_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/boringssl/bcm_object^android_vendor.31_x86_64
 
-echo "building bcm_object^android_recovery_x86_64"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja bcm_object,android_recovery_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/boringssl/bcm_object^android_recovery_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/boringssl/bcm_object^android_recovery_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/boringssl/bcm_object^android_recovery_x86_64
+echo "building bcm_object^android_vendor.31_x86_x86_64"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja bcm_object,android_vendor.31_x86_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/boringssl/bcm_object^android_vendor.31_x86_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/boringssl/bcm_object^android_vendor.31_x86_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/boringssl/bcm_object^android_vendor.31_x86_x86_64
+
+echo "building bcm_object^android_x86_64"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja bcm_object,android_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/boringssl/bcm_object^android_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/boringssl/bcm_object^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/boringssl/bcm_object^android_x86_64
+
+echo "building bcm_object^android_x86_64_apex10000"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja bcm_object,android_x86_64_apex10000
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/boringssl/bcm_object^android_x86_64_apex10000
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/boringssl/bcm_object^android_x86_64_apex10000.output . $GITHUB_WORKSPACE/artifacts/external/boringssl/bcm_object^android_x86_64_apex10000
+
+echo "building bcm_object^android_x86_64_apex29"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja bcm_object,android_x86_64_apex29
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/boringssl/bcm_object^android_x86_64_apex29
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/boringssl/bcm_object^android_x86_64_apex29.output . $GITHUB_WORKSPACE/artifacts/external/boringssl/bcm_object^android_x86_64_apex29
+
+echo "building bcm_object^android_x86_64_apex31"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja bcm_object,android_x86_64_apex31
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/boringssl/bcm_object^android_x86_64_apex31
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/boringssl/bcm_object^android_x86_64_apex31.output . $GITHUB_WORKSPACE/artifacts/external/boringssl/bcm_object^android_x86_64_apex31
+
+echo "building bcm_object^android_x86_x86_64"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja bcm_object,android_x86_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/boringssl/bcm_object^android_x86_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/boringssl/bcm_object^android_x86_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/boringssl/bcm_object^android_x86_x86_64
+
+echo "building bcm_object^android_x86_x86_64_apex10000"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja bcm_object,android_x86_x86_64_apex10000
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/boringssl/bcm_object^android_x86_x86_64_apex10000
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/boringssl/bcm_object^android_x86_x86_64_apex10000.output . $GITHUB_WORKSPACE/artifacts/external/boringssl/bcm_object^android_x86_x86_64_apex10000
+
+echo "building bcm_object^android_x86_x86_64_apex29"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja bcm_object,android_x86_x86_64_apex29
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/boringssl/bcm_object^android_x86_x86_64_apex29
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/boringssl/bcm_object^android_x86_x86_64_apex29.output . $GITHUB_WORKSPACE/artifacts/external/boringssl/bcm_object^android_x86_x86_64_apex29
+
+echo "building bcm_object^android_x86_x86_64_apex31"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja bcm_object,android_x86_x86_64_apex31
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/boringssl/bcm_object^android_x86_x86_64_apex31
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/boringssl/bcm_object^android_x86_x86_64_apex31.output . $GITHUB_WORKSPACE/artifacts/external/boringssl/bcm_object^android_x86_x86_64_apex31
+
+echo "building bcm_object^linux_glibc_x86"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja bcm_object,linux_glibc_x86
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/boringssl/bcm_object^linux_glibc_x86
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/boringssl/bcm_object^linux_glibc_x86.output . $GITHUB_WORKSPACE/artifacts/external/boringssl/bcm_object^linux_glibc_x86
+
+echo "building bcm_object^linux_glibc_x86_64"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja bcm_object,linux_glibc_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/boringssl/bcm_object^linux_glibc_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/boringssl/bcm_object^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/boringssl/bcm_object^linux_glibc_x86_64
+
+echo "building bssl_ar^linux_glibc_x86_64"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja bssl_ar,linux_glibc_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/boringssl/bssl_ar^linux_glibc_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/boringssl/bssl_ar^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/boringssl/bssl_ar^linux_glibc_x86_64
+
+echo "building bssl_fipscommon^linux_glibc_x86_64"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja bssl_fipscommon,linux_glibc_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/boringssl/bssl_fipscommon^linux_glibc_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/boringssl/bssl_fipscommon^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/boringssl/bssl_fipscommon^linux_glibc_x86_64
+
+echo "building bssl_inject_hash^linux_glibc_x86_64"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja bssl_inject_hash,linux_glibc_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/boringssl/bssl_inject_hash^linux_glibc_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/boringssl/bssl_inject_hash^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/boringssl/bssl_inject_hash^linux_glibc_x86_64
+
+echo "building libcrypto^linux_glibc_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libcrypto,linux_glibc_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/boringssl/libcrypto^linux_glibc_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/boringssl/libcrypto^linux_glibc_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/boringssl/libcrypto^linux_glibc_x86_64_static
+
+echo "building libcrypto^linux_glibc_x86_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libcrypto,linux_glibc_x86_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/boringssl/libcrypto^linux_glibc_x86_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/boringssl/libcrypto^linux_glibc_x86_static.output . $GITHUB_WORKSPACE/artifacts/external/boringssl/libcrypto^linux_glibc_x86_static
+
+echo "building libcrypto_static^android_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libcrypto_static,android_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/boringssl/libcrypto_static^android_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/boringssl/libcrypto_static^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/boringssl/libcrypto_static^android_x86_64_static
+
+echo "building libcrypto_static^android_x86_64_static_apex30"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libcrypto_static,android_x86_64_static_apex30
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/boringssl/libcrypto_static^android_x86_64_static_apex30
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/boringssl/libcrypto_static^android_x86_64_static_apex30.output . $GITHUB_WORKSPACE/artifacts/external/boringssl/libcrypto_static^android_x86_64_static_apex30
+
+echo "building libcrypto_static^android_x86_x86_64_static_apex30"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libcrypto_static,android_x86_x86_64_static_apex30
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/boringssl/libcrypto_static^android_x86_x86_64_static_apex30
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/boringssl/libcrypto_static^android_x86_x86_64_static_apex30.output . $GITHUB_WORKSPACE/artifacts/external/boringssl/libcrypto_static^android_x86_x86_64_static_apex30
+
+echo "building libcrypto_static^linux_glibc_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libcrypto_static,linux_glibc_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/boringssl/libcrypto_static^linux_glibc_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/boringssl/libcrypto_static^linux_glibc_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/boringssl/libcrypto_static^linux_glibc_x86_64_static
+
+echo "building libssl^android_recovery_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libssl,android_recovery_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/boringssl/libssl^android_recovery_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/boringssl/libssl^android_recovery_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/boringssl/libssl^android_recovery_x86_64_static
+
+echo "building libssl^android_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libssl,android_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/boringssl/libssl^android_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/boringssl/libssl^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/boringssl/libssl^android_x86_64_static
+
+echo "building libssl^android_x86_64_static_apex10000"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libssl,android_x86_64_static_apex10000
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/boringssl/libssl^android_x86_64_static_apex10000
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/boringssl/libssl^android_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/external/boringssl/libssl^android_x86_64_static_apex10000
+
+echo "building libssl^android_x86_64_static_apex29"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libssl,android_x86_64_static_apex29
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/boringssl/libssl^android_x86_64_static_apex29
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/boringssl/libssl^android_x86_64_static_apex29.output . $GITHUB_WORKSPACE/artifacts/external/boringssl/libssl^android_x86_64_static_apex29
+
+echo "building libssl^android_x86_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libssl,android_x86_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/boringssl/libssl^android_x86_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/boringssl/libssl^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/boringssl/libssl^android_x86_x86_64_static
+
+echo "building libssl^android_x86_x86_64_static_apex10000"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libssl,android_x86_x86_64_static_apex10000
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/boringssl/libssl^android_x86_x86_64_static_apex10000
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/boringssl/libssl^android_x86_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/external/boringssl/libssl^android_x86_x86_64_static_apex10000
+
+echo "building libssl^android_x86_x86_64_static_apex29"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libssl,android_x86_x86_64_static_apex29
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/boringssl/libssl^android_x86_x86_64_static_apex29
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/boringssl/libssl^android_x86_x86_64_static_apex29.output . $GITHUB_WORKSPACE/artifacts/external/boringssl/libssl^android_x86_x86_64_static_apex29
+
+echo "building libssl^linux_glibc_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libssl,linux_glibc_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/boringssl/libssl^linux_glibc_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/boringssl/libssl^linux_glibc_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/boringssl/libssl^linux_glibc_x86_64_static
 
 rm -rf out
 

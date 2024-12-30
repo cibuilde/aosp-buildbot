@@ -49,20 +49,20 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/external/libjpeg-turbo/libjpeg^android_x
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/libjpeg-turbo/libjpeg^android_x86_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/singletons/ndk^/ .
 
-echo "building libjpeg_static_ndk^android_x86_64_sdk_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libjpeg_static_ndk,android_x86_64_sdk_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/libjpeg-turbo/libjpeg_static_ndk^android_x86_64_sdk_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/external/libjpeg-turbo/libjpeg_static_ndk^android_x86_64_sdk_static.output . $GITHUB_WORKSPACE/artifacts/external/libjpeg-turbo/libjpeg_static_ndk^android_x86_64_sdk_static
+echo "building libjpeg^android_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libjpeg,android_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/libjpeg-turbo/libjpeg^android_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/external/libjpeg-turbo/libjpeg^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/external/libjpeg-turbo/libjpeg^android_x86_64_shared
 
 echo "building libjpeg^android_x86_x86_64_shared"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libjpeg,android_x86_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/libjpeg-turbo/libjpeg^android_x86_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/external/libjpeg-turbo/libjpeg^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/external/libjpeg-turbo/libjpeg^android_x86_x86_64_shared
 
-echo "building libjpeg^android_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libjpeg,android_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/libjpeg-turbo/libjpeg^android_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/external/libjpeg-turbo/libjpeg^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/external/libjpeg-turbo/libjpeg^android_x86_64_shared
+echo "building libjpeg_static_ndk^android_x86_64_sdk_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libjpeg_static_ndk,android_x86_64_sdk_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/libjpeg-turbo/libjpeg_static_ndk^android_x86_64_sdk_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/external/libjpeg-turbo/libjpeg_static_ndk^android_x86_64_sdk_static.output . $GITHUB_WORKSPACE/artifacts/external/libjpeg-turbo/libjpeg_static_ndk^android_x86_64_sdk_static
 
 rm -rf out
 

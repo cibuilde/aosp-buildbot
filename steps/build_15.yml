@@ -257,5 +257,4 @@ jobs:
         path: cache/system_unwinding.tar.zst
         key: system_unwinding@${{ env.branch }}
         restore-keys: system_unwinding@${{ env.branch }}
-    - name: Start Ninja Build
-      run: bash steps/build_15.sh
+    - run: bash steps/build_15.sh

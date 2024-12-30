@@ -99,15 +99,15 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/rust/libunwind.rust_sysroot^an
 rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/rust/libunwind.rust_sysroot^android_x86_64_rlib_apex10000/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^android_x86_64_shared/ .
 
-echo "building libtempfile^android_x86_64_dylib_apex10000"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libtempfile,android_x86_64_dylib_apex10000
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/crosvm/tempfile/libtempfile^android_x86_64_dylib_apex10000
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/external/crosvm/libtempfile^android_x86_64_dylib_apex10000.output . $GITHUB_WORKSPACE/artifacts/external/crosvm/tempfile/libtempfile^android_x86_64_dylib_apex10000
+echo "building libdata_model^android_x86_64_dylib"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libdata_model,android_x86_64_dylib
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/crosvm/data_model/libdata_model^android_x86_64_dylib
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/external/crosvm/libdata_model^android_x86_64_dylib.output . $GITHUB_WORKSPACE/artifacts/external/crosvm/data_model/libdata_model^android_x86_64_dylib
 
-echo "building libtempfile^android_x86_64_dylib"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libtempfile,android_x86_64_dylib
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/crosvm/tempfile/libtempfile^android_x86_64_dylib
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/external/crosvm/libtempfile^android_x86_64_dylib.output . $GITHUB_WORKSPACE/artifacts/external/crosvm/tempfile/libtempfile^android_x86_64_dylib
+echo "building libdata_model^android_x86_64_dylib_apex10000"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libdata_model,android_x86_64_dylib_apex10000
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/crosvm/data_model/libdata_model^android_x86_64_dylib_apex10000
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/external/crosvm/libdata_model^android_x86_64_dylib_apex10000.output . $GITHUB_WORKSPACE/artifacts/external/crosvm/data_model/libdata_model^android_x86_64_dylib_apex10000
 
 echo "building libsys_util^android_x86_64_rlib_rlib-std_apex10000"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libsys_util,android_x86_64_rlib_rlib-std_apex10000
@@ -119,15 +119,15 @@ ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libio_uring,andro
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/crosvm/io_uring/libio_uring^android_x86_64_rlib_rlib-std_apex10000
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/external/crosvm/libio_uring^android_x86_64_rlib_rlib-std_apex10000.output . $GITHUB_WORKSPACE/artifacts/external/crosvm/io_uring/libio_uring^android_x86_64_rlib_rlib-std_apex10000
 
-echo "building libdata_model^android_x86_64_dylib_apex10000"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libdata_model,android_x86_64_dylib_apex10000
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/crosvm/data_model/libdata_model^android_x86_64_dylib_apex10000
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/external/crosvm/libdata_model^android_x86_64_dylib_apex10000.output . $GITHUB_WORKSPACE/artifacts/external/crosvm/data_model/libdata_model^android_x86_64_dylib_apex10000
+echo "building libtempfile^android_x86_64_dylib"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libtempfile,android_x86_64_dylib
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/crosvm/tempfile/libtempfile^android_x86_64_dylib
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/external/crosvm/libtempfile^android_x86_64_dylib.output . $GITHUB_WORKSPACE/artifacts/external/crosvm/tempfile/libtempfile^android_x86_64_dylib
 
-echo "building libdata_model^android_x86_64_dylib"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libdata_model,android_x86_64_dylib
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/crosvm/data_model/libdata_model^android_x86_64_dylib
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/external/crosvm/libdata_model^android_x86_64_dylib.output . $GITHUB_WORKSPACE/artifacts/external/crosvm/data_model/libdata_model^android_x86_64_dylib
+echo "building libtempfile^android_x86_64_dylib_apex10000"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libtempfile,android_x86_64_dylib_apex10000
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/crosvm/tempfile/libtempfile^android_x86_64_dylib_apex10000
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/external/crosvm/libtempfile^android_x86_64_dylib_apex10000.output . $GITHUB_WORKSPACE/artifacts/external/crosvm/tempfile/libtempfile^android_x86_64_dylib_apex10000
 
 rm -rf out
 

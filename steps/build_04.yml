@@ -1132,5 +1132,4 @@ jobs:
         path: cache/tools_metalava.tar.zst
         key: tools_metalava@${{ env.branch }}
         restore-keys: tools_metalava@${{ env.branch }}
-    - name: Start Ninja Build
-      run: bash steps/build_04.sh
+    - run: bash steps/build_04.sh

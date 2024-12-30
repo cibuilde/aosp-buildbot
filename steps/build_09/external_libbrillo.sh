@@ -56,15 +56,15 @@ ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja libbrillo,android
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/libbrillo/libbrillo^android_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_09/external/libbrillo/libbrillo^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/external/libbrillo/libbrillo^android_x86_64_shared
 
-echo "building libbrillo-stream^android_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja libbrillo-stream,android_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/libbrillo/libbrillo-stream^android_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_09/external/libbrillo/libbrillo-stream^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/external/libbrillo/libbrillo-stream^android_x86_64_shared
-
 echo "building libbrillo-binder^android_x86_64_shared"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja libbrillo-binder,android_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/libbrillo/libbrillo-binder^android_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_09/external/libbrillo/libbrillo-binder^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/external/libbrillo/libbrillo-binder^android_x86_64_shared
+
+echo "building libbrillo-stream^android_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja libbrillo-stream,android_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/libbrillo/libbrillo-stream^android_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_09/external/libbrillo/libbrillo-stream^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/external/libbrillo/libbrillo-stream^android_x86_64_shared
 
 rm -rf out
 

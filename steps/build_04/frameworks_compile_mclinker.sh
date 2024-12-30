@@ -32,90 +32,90 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/external/llvm/llvm-gen-attributes^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/llvm/llvm-gen-intrinsics^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/llvm/utils/TableGen/llvm-tblgen^linux_glibc_x86_64/ .
 
-echo "building mcld-gen-options^"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja mcld-gen-options,
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/compile/mclinker/tools/mcld/mcld-gen-options^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/compile/mclinker/mcld-gen-options^.output . $GITHUB_WORKSPACE/artifacts/frameworks/compile/mclinker/tools/mcld/mcld-gen-options^
-
-echo "building libmcldX86Target^android_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libmcldX86Target,android_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/compile/mclinker/lib/Target/X86/libmcldX86Target^android_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/compile/mclinker/libmcldX86Target^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/compile/mclinker/lib/Target/X86/libmcldX86Target^android_x86_64_static
-
-echo "building libmcldX86Info^android_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libmcldX86Info,android_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/compile/mclinker/lib/Target/X86/TargetInfo/libmcldX86Info^android_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/compile/mclinker/libmcldX86Info^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/compile/mclinker/lib/Target/X86/TargetInfo/libmcldX86Info^android_x86_64_static
-
-echo "building libmcldTarget^android_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libmcldTarget,android_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/compile/mclinker/lib/Target/libmcldTarget^android_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/compile/mclinker/libmcldTarget^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/compile/mclinker/lib/Target/libmcldTarget^android_x86_64_static
-
-echo "building libmcldSupport^android_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libmcldSupport,android_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/compile/mclinker/lib/Support/libmcldSupport^android_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/compile/mclinker/libmcldSupport^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/compile/mclinker/lib/Support/libmcldSupport^android_x86_64_static
-
-echo "building libmcldScript^android_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libmcldScript,android_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/compile/mclinker/lib/Script/libmcldScript^android_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/compile/mclinker/libmcldScript^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/compile/mclinker/lib/Script/libmcldScript^android_x86_64_static
-
-echo "building libmcldObject^android_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libmcldObject,android_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/compile/mclinker/lib/Object/libmcldObject^android_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/compile/mclinker/libmcldObject^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/compile/mclinker/lib/Object/libmcldObject^android_x86_64_static
-
-echo "building libmcldMC^android_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libmcldMC,android_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/compile/mclinker/lib/MC/libmcldMC^android_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/compile/mclinker/libmcldMC^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/compile/mclinker/lib/MC/libmcldMC^android_x86_64_static
-
-echo "building libmcldLD^android_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libmcldLD,android_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/compile/mclinker/lib/LD/libmcldLD^android_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/compile/mclinker/libmcldLD^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/compile/mclinker/lib/LD/libmcldLD^android_x86_64_static
-
-echo "building libmcldLDVariant^android_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libmcldLDVariant,android_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/compile/mclinker/lib/LD/libmcldLDVariant^android_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/compile/mclinker/libmcldLDVariant^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/compile/mclinker/lib/LD/libmcldLDVariant^android_x86_64_static
-
-echo "building libmcldFragment^android_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libmcldFragment,android_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/compile/mclinker/lib/Fragment/libmcldFragment^android_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/compile/mclinker/libmcldFragment^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/compile/mclinker/lib/Fragment/libmcldFragment^android_x86_64_static
-
-echo "building libmcldCore^android_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libmcldCore,android_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/compile/mclinker/lib/Core/libmcldCore^android_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/compile/mclinker/libmcldCore^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/compile/mclinker/lib/Core/libmcldCore^android_x86_64_static
-
-echo "building libmcldARMTarget^android_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libmcldARMTarget,android_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/compile/mclinker/lib/Target/ARM/libmcldARMTarget^android_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/compile/mclinker/libmcldARMTarget^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/compile/mclinker/lib/Target/ARM/libmcldARMTarget^android_x86_64_static
-
-echo "building libmcldARMInfo^android_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libmcldARMInfo,android_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/compile/mclinker/lib/Target/ARM/TargetInfo/libmcldARMInfo^android_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/compile/mclinker/libmcldARMInfo^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/compile/mclinker/lib/Target/ARM/TargetInfo/libmcldARMInfo^android_x86_64_static
-
-echo "building libmcldADT^android_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libmcldADT,android_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/compile/mclinker/lib/ADT/libmcldADT^android_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/compile/mclinker/libmcldADT^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/compile/mclinker/lib/ADT/libmcldADT^android_x86_64_static
+echo "building libmcldAArch64Info^android_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libmcldAArch64Info,android_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/compile/mclinker/lib/Target/AArch64/TargetInfo/libmcldAArch64Info^android_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/compile/mclinker/libmcldAArch64Info^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/compile/mclinker/lib/Target/AArch64/TargetInfo/libmcldAArch64Info^android_x86_64_static
 
 echo "building libmcldAArch64Target^android_x86_64_static"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libmcldAArch64Target,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/compile/mclinker/lib/Target/AArch64/libmcldAArch64Target^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/compile/mclinker/libmcldAArch64Target^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/compile/mclinker/lib/Target/AArch64/libmcldAArch64Target^android_x86_64_static
 
-echo "building libmcldAArch64Info^android_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libmcldAArch64Info,android_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/compile/mclinker/lib/Target/AArch64/TargetInfo/libmcldAArch64Info^android_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/compile/mclinker/libmcldAArch64Info^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/compile/mclinker/lib/Target/AArch64/TargetInfo/libmcldAArch64Info^android_x86_64_static
+echo "building libmcldADT^android_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libmcldADT,android_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/compile/mclinker/lib/ADT/libmcldADT^android_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/compile/mclinker/libmcldADT^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/compile/mclinker/lib/ADT/libmcldADT^android_x86_64_static
+
+echo "building libmcldARMInfo^android_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libmcldARMInfo,android_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/compile/mclinker/lib/Target/ARM/TargetInfo/libmcldARMInfo^android_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/compile/mclinker/libmcldARMInfo^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/compile/mclinker/lib/Target/ARM/TargetInfo/libmcldARMInfo^android_x86_64_static
+
+echo "building libmcldARMTarget^android_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libmcldARMTarget,android_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/compile/mclinker/lib/Target/ARM/libmcldARMTarget^android_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/compile/mclinker/libmcldARMTarget^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/compile/mclinker/lib/Target/ARM/libmcldARMTarget^android_x86_64_static
+
+echo "building libmcldCore^android_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libmcldCore,android_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/compile/mclinker/lib/Core/libmcldCore^android_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/compile/mclinker/libmcldCore^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/compile/mclinker/lib/Core/libmcldCore^android_x86_64_static
+
+echo "building libmcldFragment^android_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libmcldFragment,android_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/compile/mclinker/lib/Fragment/libmcldFragment^android_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/compile/mclinker/libmcldFragment^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/compile/mclinker/lib/Fragment/libmcldFragment^android_x86_64_static
+
+echo "building libmcldLDVariant^android_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libmcldLDVariant,android_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/compile/mclinker/lib/LD/libmcldLDVariant^android_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/compile/mclinker/libmcldLDVariant^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/compile/mclinker/lib/LD/libmcldLDVariant^android_x86_64_static
+
+echo "building libmcldLD^android_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libmcldLD,android_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/compile/mclinker/lib/LD/libmcldLD^android_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/compile/mclinker/libmcldLD^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/compile/mclinker/lib/LD/libmcldLD^android_x86_64_static
+
+echo "building libmcldMC^android_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libmcldMC,android_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/compile/mclinker/lib/MC/libmcldMC^android_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/compile/mclinker/libmcldMC^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/compile/mclinker/lib/MC/libmcldMC^android_x86_64_static
+
+echo "building libmcldObject^android_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libmcldObject,android_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/compile/mclinker/lib/Object/libmcldObject^android_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/compile/mclinker/libmcldObject^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/compile/mclinker/lib/Object/libmcldObject^android_x86_64_static
+
+echo "building libmcldScript^android_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libmcldScript,android_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/compile/mclinker/lib/Script/libmcldScript^android_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/compile/mclinker/libmcldScript^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/compile/mclinker/lib/Script/libmcldScript^android_x86_64_static
+
+echo "building libmcldSupport^android_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libmcldSupport,android_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/compile/mclinker/lib/Support/libmcldSupport^android_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/compile/mclinker/libmcldSupport^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/compile/mclinker/lib/Support/libmcldSupport^android_x86_64_static
+
+echo "building libmcldTarget^android_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libmcldTarget,android_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/compile/mclinker/lib/Target/libmcldTarget^android_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/compile/mclinker/libmcldTarget^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/compile/mclinker/lib/Target/libmcldTarget^android_x86_64_static
+
+echo "building libmcldX86Info^android_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libmcldX86Info,android_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/compile/mclinker/lib/Target/X86/TargetInfo/libmcldX86Info^android_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/compile/mclinker/libmcldX86Info^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/compile/mclinker/lib/Target/X86/TargetInfo/libmcldX86Info^android_x86_64_static
+
+echo "building libmcldX86Target^android_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libmcldX86Target,android_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/compile/mclinker/lib/Target/X86/libmcldX86Target^android_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/compile/mclinker/libmcldX86Target^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/compile/mclinker/lib/Target/X86/libmcldX86Target^android_x86_64_static
+
+echo "building mcld-gen-options^"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja mcld-gen-options,
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/compile/mclinker/tools/mcld/mcld-gen-options^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/compile/mclinker/mcld-gen-options^.output . $GITHUB_WORKSPACE/artifacts/frameworks/compile/mclinker/tools/mcld/mcld-gen-options^
 
 rm -rf out
 

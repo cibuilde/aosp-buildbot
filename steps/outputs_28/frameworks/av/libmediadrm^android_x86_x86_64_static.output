@@ -1,6 +1,0 @@
-out/soong/.intermediates/frameworks/av/drm/libmediadrm/libmediadrm/android_x86_x86_64_static/obj/frameworks/av/drm/libmediadrm/CryptoHal.o
-out/soong/.intermediates/frameworks/av/drm/libmediadrm/libmediadrm/android_x86_x86_64_static/obj/frameworks/av/drm/libmediadrm/DrmHal.o
-out/soong/.intermediates/frameworks/av/drm/libmediadrm/libmediadrm/android_x86_x86_64_static/obj/frameworks/av/drm/libmediadrm/DrmPluginPath.o
-out/soong/.intermediates/frameworks/av/drm/libmediadrm/libmediadrm/android_x86_x86_64_static/obj/frameworks/av/drm/libmediadrm/DrmSessionManager.o
-out/soong/.intermediates/frameworks/av/drm/libmediadrm/libmediadrm/android_x86_x86_64_static/obj/frameworks/av/drm/libmediadrm/DrmUtils.o
-out/soong/.intermediates/frameworks/av/drm/libmediadrm/libmediadrm/android_x86_x86_64_static/obj/frameworks/av/drm/libmediadrm/SharedLibrary.o

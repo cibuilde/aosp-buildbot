@@ -44,15 +44,15 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/system/libprocinfo/libprocinfo^android_x
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/memory/libmemunreachable/libmemunreachable^android_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/memory/libmemunreachable/libmemunreachable^android_x86_x86_64_static/ .
 
-echo "building libmemunreachable^android_x86_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libmemunreachable,android_x86_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/memory/libmemunreachable/libmemunreachable^android_x86_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/memory/libmemunreachable/libmemunreachable^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/memory/libmemunreachable/libmemunreachable^android_x86_x86_64_shared
-
 echo "building libmemunreachable^android_x86_64_shared"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libmemunreachable,android_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/memory/libmemunreachable/libmemunreachable^android_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/memory/libmemunreachable/libmemunreachable^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/memory/libmemunreachable/libmemunreachable^android_x86_64_shared
+
+echo "building libmemunreachable^android_x86_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libmemunreachable,android_x86_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/memory/libmemunreachable/libmemunreachable^android_x86_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/memory/libmemunreachable/libmemunreachable^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/memory/libmemunreachable/libmemunreachable^android_x86_x86_64_shared
 
 rm -rf out
 

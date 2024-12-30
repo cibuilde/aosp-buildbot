@@ -30,15 +30,15 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/external/libffi/ffi_header^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/wayland/wayland_core_client_protocol_headers^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/wayland/wayland_scanner^linux_glibc_x86_64/ .
 
-echo "building gpu_display_protocol_sources^"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja gpu_display_protocol_sources,
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/crosvm/gpu_display/gpu_display_protocol_sources^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/crosvm/gpu_display_protocol_sources^.output . $GITHUB_WORKSPACE/artifacts/external/crosvm/gpu_display/gpu_display_protocol_sources^
-
 echo "building gpu_display_client_protocol_headers^"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja gpu_display_client_protocol_headers,
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/crosvm/gpu_display/gpu_display_client_protocol_headers^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/crosvm/gpu_display_client_protocol_headers^.output . $GITHUB_WORKSPACE/artifacts/external/crosvm/gpu_display/gpu_display_client_protocol_headers^
+
+echo "building gpu_display_protocol_sources^"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja gpu_display_protocol_sources,
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/crosvm/gpu_display/gpu_display_protocol_sources^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/crosvm/gpu_display_protocol_sources^.output . $GITHUB_WORKSPACE/artifacts/external/crosvm/gpu_display/gpu_display_protocol_sources^
 
 echo "building libdisplay_wl^android_x86_64_static_apex10000"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libdisplay_wl,android_x86_64_static_apex10000

@@ -40,15 +40,15 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/external/libjpeg-turbo/libjpeg^android_x
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/zlib/libz^android_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/zlib/libz^android_x86_x86_64_shared/ .
 
-echo "building libdng_sdk^android_x86_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libdng_sdk,android_x86_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/dng_sdk/libdng_sdk^android_x86_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/external/dng_sdk/libdng_sdk^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/external/dng_sdk/libdng_sdk^android_x86_x86_64_shared
-
 echo "building libdng_sdk^android_x86_64_shared"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libdng_sdk,android_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/dng_sdk/libdng_sdk^android_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/external/dng_sdk/libdng_sdk^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/external/dng_sdk/libdng_sdk^android_x86_64_shared
+
+echo "building libdng_sdk^android_x86_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libdng_sdk,android_x86_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/dng_sdk/libdng_sdk^android_x86_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/external/dng_sdk/libdng_sdk^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/external/dng_sdk/libdng_sdk^android_x86_x86_64_shared
 
 rm -rf out
 

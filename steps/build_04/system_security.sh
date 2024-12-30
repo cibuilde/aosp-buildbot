@@ -33,130 +33,10 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcxx/libc++^linux_glibc_x86_6
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/protobuf/aprotoc^linux_glibc_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/tools/aidl/aidl^linux_glibc_x86_64/ .
 
-echo "building lib_odsign_proto^android_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja lib_odsign_proto,android_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/security/ondevice-signing/proto/lib_odsign_proto^android_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/security/lib_odsign_proto^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/security/ondevice-signing/proto/lib_odsign_proto^android_x86_64_static
-
-echo "building android.security.remoteprovisioning-rust-source^"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.security.remoteprovisioning-rust-source,
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.remoteprovisioning-rust-source^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/security/android.security.remoteprovisioning-rust-source^.output . $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.remoteprovisioning-rust-source^
-
-echo "building android.security.remoteprovisioning-rust^android_x86_64_source"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.security.remoteprovisioning-rust,android_x86_64_source
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.remoteprovisioning-rust^android_x86_64_source
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/security/android.security.remoteprovisioning-rust^android_x86_64_source.output . $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.remoteprovisioning-rust^android_x86_64_source
-
-echo "building android.security.remoteprovisioning-java-source^"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.security.remoteprovisioning-java-source,
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.remoteprovisioning-java-source^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/security/android.security.remoteprovisioning-java-source^.output . $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.remoteprovisioning-java-source^
-
-echo "building android.security.metrics-rust-source^"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.security.metrics-rust-source,
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.metrics-rust-source^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/security/android.security.metrics-rust-source^.output . $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.metrics-rust-source^
-
-echo "building android.security.metrics-rust^android_x86_64_source"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.security.metrics-rust,android_x86_64_source
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.metrics-rust^android_x86_64_source
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/security/android.security.metrics-rust^android_x86_64_source.output . $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.metrics-rust^android_x86_64_source
-
-echo "building android.security.metrics-java-source^"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.security.metrics-java-source,
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.metrics-java-source^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/security/android.security.metrics-java-source^.output . $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.metrics-java-source^
-
-echo "building android.security.maintenance-rust-source^"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.security.maintenance-rust-source,
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.maintenance-rust-source^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/security/android.security.maintenance-rust-source^.output . $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.maintenance-rust-source^
-
-echo "building android.security.maintenance-rust^android_x86_64_source"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.security.maintenance-rust,android_x86_64_source
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.maintenance-rust^android_x86_64_source
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/security/android.security.maintenance-rust^android_x86_64_source.output . $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.maintenance-rust^android_x86_64_source
-
-echo "building android.security.maintenance-ndk_platform-source^"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.security.maintenance-ndk_platform-source,
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.maintenance-ndk_platform-source^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/security/android.security.maintenance-ndk_platform-source^.output . $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.maintenance-ndk_platform-source^
-
-echo "building android.security.maintenance-java-source^"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.security.maintenance-java-source,
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.maintenance-java-source^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/security/android.security.maintenance-java-source^.output . $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.maintenance-java-source^
-
-echo "building android.security.legacykeystore-rust-source^"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.security.legacykeystore-rust-source,
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.legacykeystore-rust-source^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/security/android.security.legacykeystore-rust-source^.output . $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.legacykeystore-rust-source^
-
-echo "building android.security.legacykeystore-rust^android_x86_64_source"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.security.legacykeystore-rust,android_x86_64_source
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.legacykeystore-rust^android_x86_64_source
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/security/android.security.legacykeystore-rust^android_x86_64_source.output . $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.legacykeystore-rust^android_x86_64_source
-
-echo "building android.security.legacykeystore-ndk_platform-source^"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.security.legacykeystore-ndk_platform-source,
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.legacykeystore-ndk_platform-source^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/security/android.security.legacykeystore-ndk_platform-source^.output . $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.legacykeystore-ndk_platform-source^
-
-echo "building android.security.legacykeystore-ndk_platform^android_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.security.legacykeystore-ndk_platform,android_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.legacykeystore-ndk_platform^android_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/security/android.security.legacykeystore-ndk_platform^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.legacykeystore-ndk_platform^android_x86_64_static
-
-echo "building android.security.legacykeystore-java-source^"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.security.legacykeystore-java-source,
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.legacykeystore-java-source^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/security/android.security.legacykeystore-java-source^.output . $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.legacykeystore-java-source^
-
-echo "building android.security.compat-rust-source^"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.security.compat-rust-source,
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.compat-rust-source^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/security/android.security.compat-rust-source^.output . $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.compat-rust-source^
-
-echo "building android.security.compat-rust^android_x86_64_source"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.security.compat-rust,android_x86_64_source
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.compat-rust^android_x86_64_source
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/security/android.security.compat-rust^android_x86_64_source.output . $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.compat-rust^android_x86_64_source
-
-echo "building android.security.compat-ndk_platform-source^"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.security.compat-ndk_platform-source,
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.compat-ndk_platform-source^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/security/android.security.compat-ndk_platform-source^.output . $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.compat-ndk_platform-source^
-
-echo "building android.security.authorization-rust-source^"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.security.authorization-rust-source,
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.authorization-rust-source^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/security/android.security.authorization-rust-source^.output . $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.authorization-rust-source^
-
-echo "building android.security.authorization-rust^android_x86_64_source"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.security.authorization-rust,android_x86_64_source
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.authorization-rust^android_x86_64_source
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/security/android.security.authorization-rust^android_x86_64_source.output . $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.authorization-rust^android_x86_64_source
-
-echo "building android.security.authorization-ndk_platform-source^"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.security.authorization-ndk_platform-source,
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.authorization-ndk_platform-source^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/security/android.security.authorization-ndk_platform-source^.output . $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.authorization-ndk_platform-source^
-
-echo "building android.security.authorization-java-source^"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.security.authorization-java-source,
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.authorization-java-source^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/security/android.security.authorization-java-source^.output . $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.authorization-java-source^
-
-echo "building android.security.apc-rust-source^"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.security.apc-rust-source,
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.apc-rust-source^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/security/android.security.apc-rust-source^.output . $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.apc-rust-source^
-
-echo "building android.security.apc-rust^android_x86_64_source"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.security.apc-rust,android_x86_64_source
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.apc-rust^android_x86_64_source
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/security/android.security.apc-rust^android_x86_64_source.output . $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.apc-rust^android_x86_64_source
+echo "building android.security.apc-java-source^"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.security.apc-java-source,
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.apc-java-source^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/security/android.security.apc-java-source^.output . $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.apc-java-source^
 
 echo "building android.security.apc-ndk_platform-source^"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.security.apc-ndk_platform-source,
@@ -168,10 +48,130 @@ ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.security.
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.apc-ndk_platform^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/security/android.security.apc-ndk_platform^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.apc-ndk_platform^android_x86_64_static
 
-echo "building android.security.apc-java-source^"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.security.apc-java-source,
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.apc-java-source^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/security/android.security.apc-java-source^.output . $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.apc-java-source^
+echo "building android.security.apc-rust-source^"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.security.apc-rust-source,
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.apc-rust-source^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/security/android.security.apc-rust-source^.output . $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.apc-rust-source^
+
+echo "building android.security.apc-rust^android_x86_64_source"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.security.apc-rust,android_x86_64_source
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.apc-rust^android_x86_64_source
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/security/android.security.apc-rust^android_x86_64_source.output . $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.apc-rust^android_x86_64_source
+
+echo "building android.security.authorization-java-source^"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.security.authorization-java-source,
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.authorization-java-source^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/security/android.security.authorization-java-source^.output . $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.authorization-java-source^
+
+echo "building android.security.authorization-ndk_platform-source^"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.security.authorization-ndk_platform-source,
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.authorization-ndk_platform-source^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/security/android.security.authorization-ndk_platform-source^.output . $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.authorization-ndk_platform-source^
+
+echo "building android.security.authorization-rust-source^"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.security.authorization-rust-source,
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.authorization-rust-source^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/security/android.security.authorization-rust-source^.output . $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.authorization-rust-source^
+
+echo "building android.security.authorization-rust^android_x86_64_source"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.security.authorization-rust,android_x86_64_source
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.authorization-rust^android_x86_64_source
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/security/android.security.authorization-rust^android_x86_64_source.output . $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.authorization-rust^android_x86_64_source
+
+echo "building android.security.compat-ndk_platform-source^"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.security.compat-ndk_platform-source,
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.compat-ndk_platform-source^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/security/android.security.compat-ndk_platform-source^.output . $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.compat-ndk_platform-source^
+
+echo "building android.security.compat-rust-source^"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.security.compat-rust-source,
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.compat-rust-source^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/security/android.security.compat-rust-source^.output . $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.compat-rust-source^
+
+echo "building android.security.compat-rust^android_x86_64_source"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.security.compat-rust,android_x86_64_source
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.compat-rust^android_x86_64_source
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/security/android.security.compat-rust^android_x86_64_source.output . $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.compat-rust^android_x86_64_source
+
+echo "building android.security.legacykeystore-java-source^"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.security.legacykeystore-java-source,
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.legacykeystore-java-source^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/security/android.security.legacykeystore-java-source^.output . $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.legacykeystore-java-source^
+
+echo "building android.security.legacykeystore-ndk_platform-source^"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.security.legacykeystore-ndk_platform-source,
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.legacykeystore-ndk_platform-source^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/security/android.security.legacykeystore-ndk_platform-source^.output . $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.legacykeystore-ndk_platform-source^
+
+echo "building android.security.legacykeystore-ndk_platform^android_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.security.legacykeystore-ndk_platform,android_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.legacykeystore-ndk_platform^android_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/security/android.security.legacykeystore-ndk_platform^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.legacykeystore-ndk_platform^android_x86_64_static
+
+echo "building android.security.legacykeystore-rust-source^"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.security.legacykeystore-rust-source,
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.legacykeystore-rust-source^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/security/android.security.legacykeystore-rust-source^.output . $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.legacykeystore-rust-source^
+
+echo "building android.security.legacykeystore-rust^android_x86_64_source"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.security.legacykeystore-rust,android_x86_64_source
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.legacykeystore-rust^android_x86_64_source
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/security/android.security.legacykeystore-rust^android_x86_64_source.output . $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.legacykeystore-rust^android_x86_64_source
+
+echo "building android.security.maintenance-java-source^"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.security.maintenance-java-source,
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.maintenance-java-source^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/security/android.security.maintenance-java-source^.output . $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.maintenance-java-source^
+
+echo "building android.security.maintenance-ndk_platform-source^"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.security.maintenance-ndk_platform-source,
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.maintenance-ndk_platform-source^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/security/android.security.maintenance-ndk_platform-source^.output . $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.maintenance-ndk_platform-source^
+
+echo "building android.security.maintenance-rust-source^"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.security.maintenance-rust-source,
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.maintenance-rust-source^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/security/android.security.maintenance-rust-source^.output . $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.maintenance-rust-source^
+
+echo "building android.security.maintenance-rust^android_x86_64_source"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.security.maintenance-rust,android_x86_64_source
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.maintenance-rust^android_x86_64_source
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/security/android.security.maintenance-rust^android_x86_64_source.output . $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.maintenance-rust^android_x86_64_source
+
+echo "building android.security.metrics-java-source^"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.security.metrics-java-source,
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.metrics-java-source^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/security/android.security.metrics-java-source^.output . $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.metrics-java-source^
+
+echo "building android.security.metrics-rust-source^"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.security.metrics-rust-source,
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.metrics-rust-source^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/security/android.security.metrics-rust-source^.output . $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.metrics-rust-source^
+
+echo "building android.security.metrics-rust^android_x86_64_source"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.security.metrics-rust,android_x86_64_source
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.metrics-rust^android_x86_64_source
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/security/android.security.metrics-rust^android_x86_64_source.output . $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.metrics-rust^android_x86_64_source
+
+echo "building android.security.remoteprovisioning-java-source^"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.security.remoteprovisioning-java-source,
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.remoteprovisioning-java-source^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/security/android.security.remoteprovisioning-java-source^.output . $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.remoteprovisioning-java-source^
+
+echo "building android.security.remoteprovisioning-rust-source^"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.security.remoteprovisioning-rust-source,
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.remoteprovisioning-rust-source^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/security/android.security.remoteprovisioning-rust-source^.output . $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.remoteprovisioning-rust-source^
+
+echo "building android.security.remoteprovisioning-rust^android_x86_64_source"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.security.remoteprovisioning-rust,android_x86_64_source
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.remoteprovisioning-rust^android_x86_64_source
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/security/android.security.remoteprovisioning-rust^android_x86_64_source.output . $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.remoteprovisioning-rust^android_x86_64_source
+
+echo "building lib_odsign_proto^android_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja lib_odsign_proto,android_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/security/ondevice-signing/proto/lib_odsign_proto^android_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/security/lib_odsign_proto^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/security/ondevice-signing/proto/lib_odsign_proto^android_x86_64_static
 
 rm -rf out
 

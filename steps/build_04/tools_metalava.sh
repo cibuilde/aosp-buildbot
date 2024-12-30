@@ -34,15 +34,15 @@ ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja metalava,linux_gl
 mkdir -p $GITHUB_WORKSPACE/artifacts/tools/metalava/metalava^linux_glibc_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/tools/metalava/metalava^linux_glibc_common.output . $GITHUB_WORKSPACE/artifacts/tools/metalava/metalava^linux_glibc_common
 
-echo "building private-stub-annotations^"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja private-stub-annotations,
-mkdir -p $GITHUB_WORKSPACE/artifacts/tools/metalava/private-stub-annotations^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/tools/metalava/private-stub-annotations^.output . $GITHUB_WORKSPACE/artifacts/tools/metalava/private-stub-annotations^
-
 echo "building metalava^linux_glibc_x86_64"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja metalava,linux_glibc_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/tools/metalava/metalava^linux_glibc_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/tools/metalava/metalava^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/tools/metalava/metalava^linux_glibc_x86_64
+
+echo "building private-stub-annotations^"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja private-stub-annotations,
+mkdir -p $GITHUB_WORKSPACE/artifacts/tools/metalava/private-stub-annotations^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/tools/metalava/private-stub-annotations^.output . $GITHUB_WORKSPACE/artifacts/tools/metalava/private-stub-annotations^
 
 rm -rf out
 

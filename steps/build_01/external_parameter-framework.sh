@@ -26,35 +26,35 @@ clone_depth_platform system/logging
 clone_depth_platform system/media
 
 
-echo "building libremote-processor^android_x86_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libremote-processor,android_x86_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/parameter-framework/libremote-processor^android_x86_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/parameter-framework/libremote-processor^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/parameter-framework/libremote-processor^android_x86_x86_64_static
-
-echo "building libremote-processor^android_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libremote-processor,android_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/parameter-framework/libremote-processor^android_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/parameter-framework/libremote-processor^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/parameter-framework/libremote-processor^android_x86_64_static
-
-echo "building libpfw_utility^android_x86_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libpfw_utility,android_x86_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/parameter-framework/libpfw_utility^android_x86_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/parameter-framework/libpfw_utility^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/parameter-framework/libpfw_utility^android_x86_x86_64_static
-
-echo "building libpfw_utility^android_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libpfw_utility,android_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/parameter-framework/libpfw_utility^android_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/parameter-framework/libpfw_utility^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/parameter-framework/libpfw_utility^android_x86_64_static
+echo "building libparameter^android_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libparameter,android_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/parameter-framework/libparameter^android_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/parameter-framework/libparameter^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/parameter-framework/libparameter^android_x86_64_static
 
 echo "building libparameter^android_x86_x86_64_static"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libparameter,android_x86_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/parameter-framework/libparameter^android_x86_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/parameter-framework/libparameter^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/parameter-framework/libparameter^android_x86_x86_64_static
 
-echo "building libparameter^android_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libparameter,android_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/parameter-framework/libparameter^android_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/parameter-framework/libparameter^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/parameter-framework/libparameter^android_x86_64_static
+echo "building libpfw_utility^android_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libpfw_utility,android_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/parameter-framework/libpfw_utility^android_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/parameter-framework/libpfw_utility^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/parameter-framework/libpfw_utility^android_x86_64_static
+
+echo "building libpfw_utility^android_x86_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libpfw_utility,android_x86_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/parameter-framework/libpfw_utility^android_x86_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/parameter-framework/libpfw_utility^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/parameter-framework/libpfw_utility^android_x86_x86_64_static
+
+echo "building libremote-processor^android_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libremote-processor,android_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/parameter-framework/libremote-processor^android_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/parameter-framework/libremote-processor^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/parameter-framework/libremote-processor^android_x86_64_static
+
+echo "building libremote-processor^android_x86_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libremote-processor,android_x86_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/parameter-framework/libremote-processor^android_x86_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/parameter-framework/libremote-processor^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/parameter-framework/libremote-processor^android_x86_x86_64_static
 
 rm -rf out
 

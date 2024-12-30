@@ -22,25 +22,25 @@ clone_depth_platform system/logging
 clone_depth_platform system/media
 
 
-echo "building libbrotli^android_x86_64_static_apex10000"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libbrotli,android_x86_64_static_apex10000
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/brotli/libbrotli^android_x86_64_static_apex10000
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/brotli/libbrotli^android_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/external/brotli/libbrotli^android_x86_64_static_apex10000
-
-echo "building libbrotli^android_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libbrotli,android_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/brotli/libbrotli^android_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/brotli/libbrotli^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/brotli/libbrotli^android_x86_64_static
+echo "building libbrotli^android_recovery_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libbrotli,android_recovery_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/brotli/libbrotli^android_recovery_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/brotli/libbrotli^android_recovery_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/brotli/libbrotli^android_recovery_x86_64_static
 
 echo "building libbrotli^android_vendor_ramdisk_x86_64_static"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libbrotli,android_vendor_ramdisk_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/brotli/libbrotli^android_vendor_ramdisk_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/brotli/libbrotli^android_vendor_ramdisk_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/brotli/libbrotli^android_vendor_ramdisk_x86_64_static
 
-echo "building libbrotli^android_recovery_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libbrotli,android_recovery_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/brotli/libbrotli^android_recovery_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/brotli/libbrotli^android_recovery_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/brotli/libbrotli^android_recovery_x86_64_static
+echo "building libbrotli^android_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libbrotli,android_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/brotli/libbrotli^android_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/brotli/libbrotli^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/brotli/libbrotli^android_x86_64_static
+
+echo "building libbrotli^android_x86_64_static_apex10000"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libbrotli,android_x86_64_static_apex10000
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/brotli/libbrotli^android_x86_64_static_apex10000
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/brotli/libbrotli^android_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/external/brotli/libbrotli^android_x86_64_static_apex10000
 
 rm -rf out
 

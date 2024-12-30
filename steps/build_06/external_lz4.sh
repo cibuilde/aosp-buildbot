@@ -34,15 +34,15 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcxxabi/libc++demangle^androi
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/lz4/lib/liblz4^android_vendor.31_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/lz4/lib/liblz4^android_vendor.31_x86_x86_64_static/ .
 
-echo "building liblz4^android_vendor.31_x86_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja liblz4,android_vendor.31_x86_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/lz4/lib/liblz4^android_vendor.31_x86_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/external/lz4/liblz4^android_vendor.31_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/external/lz4/lib/liblz4^android_vendor.31_x86_x86_64_shared
-
 echo "building liblz4^android_vendor.31_x86_64_shared"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja liblz4,android_vendor.31_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/lz4/lib/liblz4^android_vendor.31_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/external/lz4/liblz4^android_vendor.31_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/external/lz4/lib/liblz4^android_vendor.31_x86_64_shared
+
+echo "building liblz4^android_vendor.31_x86_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja liblz4,android_vendor.31_x86_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/lz4/lib/liblz4^android_vendor.31_x86_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/external/lz4/liblz4^android_vendor.31_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/external/lz4/lib/liblz4^android_vendor.31_x86_x86_64_shared
 
 rm -rf out
 

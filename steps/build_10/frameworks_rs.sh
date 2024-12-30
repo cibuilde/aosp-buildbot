@@ -66,15 +66,15 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/system/libhidl/libhidlbase^android_x86_x
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^android_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^android_x86_x86_64_shared/ .
 
-echo "building libRS^android_x86_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja libRS,android_x86_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/rs/libRS^android_x86_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/frameworks/rs/libRS^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/rs/libRS^android_x86_x86_64_shared
-
 echo "building libRS^android_x86_64_shared"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja libRS,android_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/rs/libRS^android_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/frameworks/rs/libRS^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/rs/libRS^android_x86_64_shared
+
+echo "building libRS^android_x86_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja libRS,android_x86_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/rs/libRS^android_x86_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/frameworks/rs/libRS^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/rs/libRS^android_x86_x86_64_shared
 
 rm -rf out
 

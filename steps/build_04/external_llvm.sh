@@ -21,35 +21,35 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/external/llvm/llvm-gen-attributes^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/llvm/lib/IR/llvm-gen-core^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/llvm/llvm-gen-intrinsics^/ .
 
-echo "building libLLVMSupport^android_vendor.31_x86_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libLLVMSupport,android_vendor.31_x86_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/llvm/lib/Support/libLLVMSupport^android_vendor.31_x86_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/llvm/libLLVMSupport^android_vendor.31_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/llvm/lib/Support/libLLVMSupport^android_vendor.31_x86_x86_64_static
-
-echo "building libLLVMSupport^android_vendor.31_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libLLVMSupport,android_vendor.31_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/llvm/lib/Support/libLLVMSupport^android_vendor.31_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/llvm/libLLVMSupport^android_vendor.31_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/llvm/lib/Support/libLLVMSupport^android_vendor.31_x86_64_static
-
-echo "building libLLVMCore^android_vendor.31_x86_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libLLVMCore,android_vendor.31_x86_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/llvm/lib/IR/libLLVMCore^android_vendor.31_x86_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/llvm/libLLVMCore^android_vendor.31_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/llvm/lib/IR/libLLVMCore^android_vendor.31_x86_x86_64_static
-
-echo "building libLLVMCore^android_vendor.31_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libLLVMCore,android_vendor.31_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/llvm/lib/IR/libLLVMCore^android_vendor.31_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/llvm/libLLVMCore^android_vendor.31_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/llvm/lib/IR/libLLVMCore^android_vendor.31_x86_64_static
+echo "building libLLVMBitReader^android_vendor.31_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libLLVMBitReader,android_vendor.31_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/llvm/lib/Bitcode/Reader/libLLVMBitReader^android_vendor.31_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/llvm/libLLVMBitReader^android_vendor.31_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/llvm/lib/Bitcode/Reader/libLLVMBitReader^android_vendor.31_x86_64_static
 
 echo "building libLLVMBitReader^android_vendor.31_x86_x86_64_static"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libLLVMBitReader,android_vendor.31_x86_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/llvm/lib/Bitcode/Reader/libLLVMBitReader^android_vendor.31_x86_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/llvm/libLLVMBitReader^android_vendor.31_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/llvm/lib/Bitcode/Reader/libLLVMBitReader^android_vendor.31_x86_x86_64_static
 
-echo "building libLLVMBitReader^android_vendor.31_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libLLVMBitReader,android_vendor.31_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/llvm/lib/Bitcode/Reader/libLLVMBitReader^android_vendor.31_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/llvm/libLLVMBitReader^android_vendor.31_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/llvm/lib/Bitcode/Reader/libLLVMBitReader^android_vendor.31_x86_64_static
+echo "building libLLVMCore^android_vendor.31_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libLLVMCore,android_vendor.31_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/llvm/lib/IR/libLLVMCore^android_vendor.31_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/llvm/libLLVMCore^android_vendor.31_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/llvm/lib/IR/libLLVMCore^android_vendor.31_x86_64_static
+
+echo "building libLLVMCore^android_vendor.31_x86_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libLLVMCore,android_vendor.31_x86_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/llvm/lib/IR/libLLVMCore^android_vendor.31_x86_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/llvm/libLLVMCore^android_vendor.31_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/llvm/lib/IR/libLLVMCore^android_vendor.31_x86_x86_64_static
+
+echo "building libLLVMSupport^android_vendor.31_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libLLVMSupport,android_vendor.31_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/llvm/lib/Support/libLLVMSupport^android_vendor.31_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/llvm/libLLVMSupport^android_vendor.31_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/llvm/lib/Support/libLLVMSupport^android_vendor.31_x86_64_static
+
+echo "building libLLVMSupport^android_vendor.31_x86_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libLLVMSupport,android_vendor.31_x86_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/llvm/lib/Support/libLLVMSupport^android_vendor.31_x86_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/llvm/libLLVMSupport^android_vendor.31_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/llvm/lib/Support/libLLVMSupport^android_vendor.31_x86_x86_64_static
 
 rm -rf out
 

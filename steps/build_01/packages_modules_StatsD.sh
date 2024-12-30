@@ -24,20 +24,20 @@ clone_depth_platform system/logging
 clone_depth_platform system/media
 
 
-echo "building libkll-encoder^android_x86_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libkll-encoder,android_x86_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/StatsD/lib/libkll/encoding/libkll-encoder^android_x86_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/packages/modules/StatsD/libkll-encoder^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/packages/modules/StatsD/lib/libkll/encoding/libkll-encoder^android_x86_x86_64_static
+echo "building com.android.os.statsd.init.rc^android_x86_64"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja com.android.os.statsd.init.rc,android_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/StatsD/apex/com.android.os.statsd.init.rc^android_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/packages/modules/StatsD/com.android.os.statsd.init.rc^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/packages/modules/StatsD/apex/com.android.os.statsd.init.rc^android_x86_64
 
 echo "building libkll-encoder^android_x86_64_static"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libkll-encoder,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/StatsD/lib/libkll/encoding/libkll-encoder^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/packages/modules/StatsD/libkll-encoder^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/packages/modules/StatsD/lib/libkll/encoding/libkll-encoder^android_x86_64_static
 
-echo "building com.android.os.statsd.init.rc^android_x86_64"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja com.android.os.statsd.init.rc,android_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/StatsD/apex/com.android.os.statsd.init.rc^android_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/packages/modules/StatsD/com.android.os.statsd.init.rc^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/packages/modules/StatsD/apex/com.android.os.statsd.init.rc^android_x86_64
+echo "building libkll-encoder^android_x86_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libkll-encoder,android_x86_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/StatsD/lib/libkll/encoding/libkll-encoder^android_x86_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/packages/modules/StatsD/libkll-encoder^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/packages/modules/StatsD/lib/libkll/encoding/libkll-encoder^android_x86_x86_64_static
 
 rm -rf out
 

@@ -90,15 +90,15 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/system/security/keystore2/aidl/android.s
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/security/keystore2/aidl/android.security.authorization-ndk_platform^android_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/vold/libvold_binder^android_x86_64_static/ .
 
-echo "building remount^android_x86_64"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_11.ninja remount,android_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/remount^android_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_11/system/core/remount^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/remount^android_x86_64
-
 echo "building gatekeeperd^android_x86_64"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_11.ninja gatekeeperd,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/gatekeeperd/gatekeeperd^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_11/system/core/gatekeeperd^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/core/gatekeeperd/gatekeeperd^android_x86_64
+
+echo "building remount^android_x86_64"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_11.ninja remount,android_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/remount^android_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_11/system/core/remount^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/remount^android_x86_64
 
 rm -rf out
 

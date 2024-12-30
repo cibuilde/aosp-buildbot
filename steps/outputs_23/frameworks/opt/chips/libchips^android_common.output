@@ -1,0 +1,5 @@
+out/soong/.intermediates/frameworks/opt/chips/libchips/android_common/combined/libchips.jar
+out/soong/.intermediates/frameworks/opt/chips/libchips/android_common/extra_packages
+out/soong/.intermediates/frameworks/opt/chips/libchips/android_common/manifest_merger/AndroidManifest.xml
+out/soong/.intermediates/frameworks/opt/chips/libchips/android_common/package-res.apk
+out/soong/.intermediates/frameworks/opt/chips/libchips/android_common/turbine-combined/libchips.jar

@@ -19,16 +19,6 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/build/blueprint/bpmodify^linux_glibc_x86
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcxx/libc++^linux_glibc_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/tools/aidl/aidl^linux_glibc_x86_64/ .
 
-echo "building networkstack-aidl-interfaces-api^"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja networkstack-aidl-interfaces-api,
-mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/NetworkStack/common/networkstackclient/networkstack-aidl-interfaces-api^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/packages/modules/NetworkStack/networkstack-aidl-interfaces-api^.output . $GITHUB_WORKSPACE/artifacts/packages/modules/NetworkStack/common/networkstackclient/networkstack-aidl-interfaces-api^
-
-echo "building networkstack-aidl-interfaces-V10-java-source^"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja networkstack-aidl-interfaces-V10-java-source,
-mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/NetworkStack/common/networkstackclient/networkstack-aidl-interfaces-V10-java-source^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/packages/modules/NetworkStack/networkstack-aidl-interfaces-V10-java-source^.output . $GITHUB_WORKSPACE/artifacts/packages/modules/NetworkStack/common/networkstackclient/networkstack-aidl-interfaces-V10-java-source^
-
 echo "building ipmemorystore-aidl-interfaces-api^"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja ipmemorystore-aidl-interfaces-api,
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/NetworkStack/common/networkstackclient/ipmemorystore-aidl-interfaces-api^
@@ -38,6 +28,16 @@ echo "building ipmemorystore-aidl-interfaces-V10-java-source^"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja ipmemorystore-aidl-interfaces-V10-java-source,
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/NetworkStack/common/networkstackclient/ipmemorystore-aidl-interfaces-V10-java-source^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/packages/modules/NetworkStack/ipmemorystore-aidl-interfaces-V10-java-source^.output . $GITHUB_WORKSPACE/artifacts/packages/modules/NetworkStack/common/networkstackclient/ipmemorystore-aidl-interfaces-V10-java-source^
+
+echo "building networkstack-aidl-interfaces-api^"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja networkstack-aidl-interfaces-api,
+mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/NetworkStack/common/networkstackclient/networkstack-aidl-interfaces-api^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/packages/modules/NetworkStack/networkstack-aidl-interfaces-api^.output . $GITHUB_WORKSPACE/artifacts/packages/modules/NetworkStack/common/networkstackclient/networkstack-aidl-interfaces-api^
+
+echo "building networkstack-aidl-interfaces-V10-java-source^"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja networkstack-aidl-interfaces-V10-java-source,
+mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/NetworkStack/common/networkstackclient/networkstack-aidl-interfaces-V10-java-source^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/packages/modules/NetworkStack/networkstack-aidl-interfaces-V10-java-source^.output . $GITHUB_WORKSPACE/artifacts/packages/modules/NetworkStack/common/networkstackclient/networkstack-aidl-interfaces-V10-java-source^
 
 rm -rf out
 

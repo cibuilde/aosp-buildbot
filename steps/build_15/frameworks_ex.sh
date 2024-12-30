@@ -49,15 +49,15 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/native/graphics/jni/libj
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^android_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^android_x86_x86_64_shared/ .
 
-echo "building libframesequence^android_x86_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_15.ninja libframesequence,android_x86_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/ex/framesequence/jni/libframesequence^android_x86_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_15/frameworks/ex/libframesequence^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/ex/framesequence/jni/libframesequence^android_x86_x86_64_shared
-
 echo "building libframesequence^android_x86_64_shared"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_15.ninja libframesequence,android_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/ex/framesequence/jni/libframesequence^android_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_15/frameworks/ex/libframesequence^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/ex/framesequence/jni/libframesequence^android_x86_64_shared
+
+echo "building libframesequence^android_x86_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_15.ninja libframesequence,android_x86_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/ex/framesequence/jni/libframesequence^android_x86_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_15/frameworks/ex/libframesequence^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/ex/framesequence/jni/libframesequence^android_x86_x86_64_shared
 
 rm -rf out
 

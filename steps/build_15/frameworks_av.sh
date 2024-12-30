@@ -114,25 +114,25 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^android_x86
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/media/camera/libcamera_metadata^android_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/media/camera/libcamera_metadata^android_x86_x86_64_shared/ .
 
-echo "building libstagefright_http_support^android_x86_x86_64_shared_cfi"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_15.ninja libstagefright_http_support,android_x86_x86_64_shared_cfi
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libstagefright/http/libstagefright_http_support^android_x86_x86_64_shared_cfi
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_15/frameworks/av/libstagefright_http_support^android_x86_x86_64_shared_cfi.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libstagefright/http/libstagefright_http_support^android_x86_x86_64_shared_cfi
-
-echo "building libstagefright_http_support^android_x86_64_shared_cfi"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_15.ninja libstagefright_http_support,android_x86_64_shared_cfi
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libstagefright/http/libstagefright_http_support^android_x86_64_shared_cfi
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_15/frameworks/av/libstagefright_http_support^android_x86_64_shared_cfi.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libstagefright/http/libstagefright_http_support^android_x86_64_shared_cfi
+echo "building libcamera2ndk^android_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_15.ninja libcamera2ndk,android_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/camera/ndk/libcamera2ndk^android_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_15/frameworks/av/libcamera2ndk^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/camera/ndk/libcamera2ndk^android_x86_64_shared
 
 echo "building libcamera2ndk^android_x86_x86_64_shared"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_15.ninja libcamera2ndk,android_x86_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/camera/ndk/libcamera2ndk^android_x86_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_15/frameworks/av/libcamera2ndk^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/camera/ndk/libcamera2ndk^android_x86_x86_64_shared
 
-echo "building libcamera2ndk^android_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_15.ninja libcamera2ndk,android_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/camera/ndk/libcamera2ndk^android_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_15/frameworks/av/libcamera2ndk^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/camera/ndk/libcamera2ndk^android_x86_64_shared
+echo "building libstagefright_http_support^android_x86_64_shared_cfi"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_15.ninja libstagefright_http_support,android_x86_64_shared_cfi
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libstagefright/http/libstagefright_http_support^android_x86_64_shared_cfi
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_15/frameworks/av/libstagefright_http_support^android_x86_64_shared_cfi.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libstagefright/http/libstagefright_http_support^android_x86_64_shared_cfi
+
+echo "building libstagefright_http_support^android_x86_x86_64_shared_cfi"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_15.ninja libstagefright_http_support,android_x86_x86_64_shared_cfi
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libstagefright/http/libstagefright_http_support^android_x86_x86_64_shared_cfi
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_15/frameworks/av/libstagefright_http_support^android_x86_x86_64_shared_cfi.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libstagefright/http/libstagefright_http_support^android_x86_x86_64_shared_cfi
 
 rm -rf out
 

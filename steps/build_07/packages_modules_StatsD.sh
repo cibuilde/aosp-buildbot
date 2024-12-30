@@ -41,15 +41,15 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/StatsD/lib/libkll/proto
 rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/StatsD/lib/libkll/libkll^android_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/StatsD/lib/libkll/libkll^android_x86_x86_64_static/ .
 
-echo "building libkll^android_x86_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libkll,android_x86_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/StatsD/lib/libkll/libkll^android_x86_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/packages/modules/StatsD/libkll^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/packages/modules/StatsD/lib/libkll/libkll^android_x86_x86_64_shared
-
 echo "building libkll^android_x86_64_shared"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libkll,android_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/StatsD/lib/libkll/libkll^android_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/packages/modules/StatsD/libkll^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/packages/modules/StatsD/lib/libkll/libkll^android_x86_64_shared
+
+echo "building libkll^android_x86_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libkll,android_x86_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/StatsD/lib/libkll/libkll^android_x86_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/packages/modules/StatsD/libkll^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/packages/modules/StatsD/lib/libkll/libkll^android_x86_x86_64_shared
 
 rm -rf out
 

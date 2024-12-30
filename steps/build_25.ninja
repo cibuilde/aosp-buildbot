@@ -1,117 +1,181 @@
+builddir = out
+pool local_pool
+ depth = 66
+pool highmem_pool
+ depth = 5
+
 include ninja/global.ninja
 include ninja/singleton.ninja
 
-include ninja/external/conscrypt/conscrypt.module.public.api.stubs^android_common.ninja
-include ninja/external/crosvm/crosvm^android_x86_64_apex10000.ninja
-include ninja/external/icu/android_icu4j/i18n.module.public.api.stubs^android_common.ninja
-include ninja/frameworks/av/apex/com.android.media.swcodec^android_common_cfi_com.android.media.swcodec_image.ninja
-include ninja/frameworks/av/media/libaaudio/src/libaaudio^android_x86_64_shared.ninja
-include ninja/frameworks/av/media/libaaudio/src/libaaudio^android_x86_x86_64_shared.ninja
-include ninja/frameworks/av/services/mediacodec/android.hardware.media.omx@1.0-service^android_vendor.31_x86_x86_64.ninja
-include ninja/frameworks/av/services/oboeservice/libaaudioservice^android_x86_64_shared.ninja
-include ninja/frameworks/native/libs/gui/libgui^android_x86_64_shared.ninja
-include ninja/frameworks/native/libs/gui/libgui^android_x86_x86_64_shared.ninja
-include ninja/frameworks/native/services/gpuservice/libgpuservice^android_x86_64_shared.ninja
-include ninja/frameworks/native/services/inputflinger/libinputflinger^android_x86_64_shared.ninja
-include ninja/frameworks/native/services/inputflinger/libinputflinger^android_x86_x86_64_shared.ninja
-include ninja/frameworks/proto_logging/stats/enums/stats/devicepolicy/devicepolicyprotosnano^android_common.ninja
-include ninja/libcore/mmodules/core_platform_api/legacy-core-platform-api-stubs-system-modules^android_common.ninja
-include ninja/libcore/mmodules/core_platform_api/stable-core-platform-api-stubs-system-modules^android_common.ninja
-include ninja/packages/modules/vndk/apex/com.android.vndk.current^android_common_image.ninja
-include ninja/packages/providers/TelephonyProvider/proto/telephonyprovider-protos^android_common.ninja
-include ninja/prebuilts/sdk/current/androidx/androidx.leanback_leanback-nodeps^android_common.ninja
-include ninja/prebuilts/sdk/current/androidx/androidx.leanback_leanback-nodeps^android_common_apex30.ninja
-include ninja/prebuilts/sdk/current/androidx/androidx.mediarouter_mediarouter-nodeps^android_common.ninja
-include ninja/prebuilts/sdk/current/androidx/androidx.navigation_navigation-runtime-ktx-nodeps^android_common_apex30.ninja
-include ninja/prebuilts/sdk/current/androidx/androidx.preference_preference-nodeps^android_common.ninja
-include ninja/prebuilts/sdk/current/androidx/androidx.preference_preference-nodeps^android_common_apex30.ninja
-include ninja/prebuilts/sdk/current/androidx/androidx.slice_slice-core-nodeps^android_common.ninja
-include ninja/prebuilts/sdk/current/extras/constraint-layout-x/androidx-constraintlayout_constraintlayout-nodeps^android_common.ninja
-include ninja/prebuilts/sdk/current/extras/constraint-layout-x/androidx-constraintlayout_constraintlayout-nodeps^android_common_apex30.ninja
-include ninja/system/security/keystore2/legacykeystore/liblegacykeystore-rust^android_x86_64_rlib_rlib-std.ninja
+include ninja/external/apache-http/org.apache.http.legacy.stubs.source.system^android_common.ninja
+include ninja/external/apache-http/org.apache.http.legacy.stubs.source^android_common.ninja
+include ninja/external/apache-http/org.apache.http.legacy.stubs.system^android_common.ninja
+include ninja/external/apache-http/org.apache.http.legacy.stubs^android_common.ninja
+include ninja/external/icu/icu4j/icu4j_calendar_astronomer^android_common.ninja
+include ninja/external/ims/rcs/rcsservice/ucepresencelib^android_common.ninja
+include ninja/external/setupdesign/lottie_loading_layout/setupdesign-lottie-loading-layout^android_common.ninja
+include ninja/external/setupdesign/setupdesign^android_common.ninja
+include ninja/frameworks/av/apex/com.android.media-bootclasspath-fragment^android_common_apex29.ninja
+include ninja/frameworks/av/apex/com.android.media^android_common_cfi_com.android.media_image.ninja
+include ninja/frameworks/base/packages/SettingsLib/IllustrationPreference/SettingsLibIllustrationPreference^android_common.ninja
+include ninja/frameworks/base/services/net/services.net-module-wifi^android_common_apex30.ninja
+include ninja/frameworks/opt/net/wifi/libs/WifiTrackerLib/WifiTrackerLib^android_common.ninja
+include ninja/hardware/ril/librilutils/sap-api-java-static^android_common.ninja
+include ninja/packages/apps/Bluetooth/bluetooth.mapsapi^android_common.ninja
+include ninja/packages/apps/CellBroadcastReceiver/CellBroadcastApp^android_common_apex30.ninja
+include ninja/packages/apps/EmergencyInfo/EmergencyGestureAction/EmergencyGestureAction^android_common.ninja
+include ninja/packages/apps/EmergencyInfo/EmergencyGestureContentProvider/EmergencyGestureContentProvider^android_common.ninja
+include ninja/packages/apps/ManagedProvisioning/managedprovisioning_protoslite^android_common.ninja
+include ninja/packages/apps/Settings/protos/settings-contextual-card-protos-lite^android_common.ninja
+include ninja/packages/apps/Settings/protos/settings-log-bridge-protos-lite^android_common.ninja
+include ninja/packages/apps/Settings/settings-logtags^android_common.ninja
+include ninja/packages/apps/Settings/statslog-settings^android_common.ninja
+include ninja/packages/modules/CellBroadcastService/CellBroadcastServiceModule^android_common_apex30.ninja
+include ninja/packages/modules/ExtServices/ExtServices^android_common_apex30.ninja
+include ninja/packages/modules/ExtServices/apex/com.android.extservices^android_common_com.android.extservices_image.ninja
+include ninja/packages/modules/NetworkStack/NetworkStackApi31Shims^android_common_apex30.ninja
+include ninja/packages/modules/NetworkStack/NetworkStackApi32Shims^android_common_apex30.ninja
+include ninja/packages/modules/NetworkStack/NetworkStackApiCurrentShims^android_common_apex30.ninja
+include ninja/packages/modules/NetworkStack/NetworkStackApiStableShims^android_common_apex30.ninja
+include ninja/packages/modules/Permission/service/service-permission-shared^android_common.ninja
+include ninja/packages/modules/Permission/service/service-permission-shared^android_common_apex30.ninja
+include ninja/packages/modules/StatsD/apex/com.android.os.statsd^android_common_com.android.os.statsd_image.ninja
+include ninja/packages/modules/StatsD/service/service-statsd^android_common_apex30.ninja
+include ninja/packages/modules/Wifi/OsuLogin/OsuLogin^android_common_apex30.ninja
+include ninja/packages/services/Car/car-lib/android.car-stub-docs^android_common.ninja
+include ninja/packages/services/Car/car-lib/android.car-stubs-docs^android_common.ninja
+include ninja/packages/services/Car/car-lib/android.car-stubs^android_common.ninja
+include ninja/packages/services/Car/car-lib/android.car-system-stubs-docs^android_common.ninja
+include ninja/system/bt/gd/proto/bluetooth-protos-lite^android_common.ninja
+include ninja/system/timezone/distro/core/time_zone_distro^android_common.ninja
+include ninja/system/timezone/distro/installer/time_zone_distro_installer^android_common.ninja
 
-build conscrypt.module.public.api.stubs,android_common: phony out/soong/.intermediates/external/conscrypt/conscrypt.module.public.api.stubs/android_common/dex/conscrypt.module.public.api.stubs.jar out/soong/.intermediates/external/conscrypt/conscrypt.module.public.api.stubs/android_common/javac/conscrypt.module.public.api.stubs.jar out/soong/.intermediates/external/conscrypt/conscrypt.module.public.api.stubs/android_common/turbine-combined/conscrypt.module.public.api.stubs.jar
+build org.apache.http.legacy.stubs.source.system,android_common: phony out/soong/.intermediates/external/apache-http/org.apache.http.legacy.stubs.source.system/android_common/metalava/org.apache.http.legacy.stubs.source.system-stubs.srcjar
 
-build external_conscrypt-targets: phony conscrypt.module.public.api.stubs,android_common
+build org.apache.http.legacy.stubs.source,android_common: phony out/soong/.intermediates/external/apache-http/org.apache.http.legacy.stubs.source/android_common/metalava/org.apache.http.legacy.stubs.source-stubs.srcjar
 
-build crosvm,android_x86_64_apex10000: phony out/soong/.intermediates/external/crosvm/crosvm/android_x86_64_apex10000/stripped/crosvm
+build org.apache.http.legacy.stubs.system,android_common: phony out/soong/.intermediates/external/apache-http/org.apache.http.legacy.stubs.system/android_common/turbine-combined/org.apache.http.legacy.stubs.system.jar
 
-build external_crosvm-targets: phony crosvm,android_x86_64_apex10000
+build org.apache.http.legacy.stubs,android_common: phony out/soong/.intermediates/external/apache-http/org.apache.http.legacy.stubs/android_common/turbine-combined/org.apache.http.legacy.stubs.jar
 
-build i18n.module.public.api.stubs,android_common: phony out/soong/.intermediates/external/icu/android_icu4j/i18n.module.public.api.stubs/android_common/dex/i18n.module.public.api.stubs.jar out/soong/.intermediates/external/icu/android_icu4j/i18n.module.public.api.stubs/android_common/javac/i18n.module.public.api.stubs.jar out/soong/.intermediates/external/icu/android_icu4j/i18n.module.public.api.stubs/android_common/turbine-combined/i18n.module.public.api.stubs.jar
+build external_apache-http-targets: phony org.apache.http.legacy.stubs.source.system,android_common org.apache.http.legacy.stubs.source,android_common org.apache.http.legacy.stubs.system,android_common org.apache.http.legacy.stubs,android_common
 
-build external_icu-targets: phony i18n.module.public.api.stubs,android_common
+build icu4j_calendar_astronomer,android_common: phony out/soong/.intermediates/external/icu/icu4j/icu4j_calendar_astronomer/android_common/javac/icu4j_calendar_astronomer.jar out/soong/.intermediates/external/icu/icu4j/icu4j_calendar_astronomer/android_common/turbine-combined/icu4j_calendar_astronomer.jar
 
-build android.hardware.media.omx@1.0-service,android_vendor.31_x86_x86_64: phony out/soong/.intermediates/frameworks/av/services/mediacodec/android.hardware.media.omx@1.0-service/android_vendor.31_x86_x86_64/android.hardware.media.omx@1.0-service
+build external_icu-targets: phony icu4j_calendar_astronomer,android_common
 
-build com.android.media.swcodec,android_common_cfi_com.android.media.swcodec_image: phony out/soong/.intermediates/frameworks/av/apex/com.android.media.swcodec/android_common_cfi_com.android.media.swcodec_image/apex_manifest.pb out/soong/.intermediates/frameworks/av/apex/com.android.media.swcodec/android_common_cfi_com.android.media.swcodec_image/apex_pubkey out/soong/.intermediates/frameworks/av/apex/com.android.media.swcodec/android_common_cfi_com.android.media.swcodec_image/com.android.media.swcodec.capex
+build ucepresencelib,android_common: phony out/soong/.intermediates/external/ims/rcs/rcsservice/ucepresencelib/android_common/javac/ucepresencelib.jar out/soong/.intermediates/external/ims/rcs/rcsservice/ucepresencelib/android_common/turbine-combined/ucepresencelib.jar
 
-build libaaudio,android_x86_64_shared: phony out/soong/.intermediates/frameworks/av/media/libaaudio/src/libaaudio/android_x86_64_shared/libaaudio.so out/soong/.intermediates/frameworks/av/media/libaaudio/src/libaaudio/android_x86_64_shared/libaaudio.so.toc
+build external_ims-targets: phony ucepresencelib,android_common
 
-build libaaudio,android_x86_x86_64_shared: phony out/soong/.intermediates/frameworks/av/media/libaaudio/src/libaaudio/android_x86_x86_64_shared/libaaudio.so out/soong/.intermediates/frameworks/av/media/libaaudio/src/libaaudio/android_x86_x86_64_shared/libaaudio.so.toc
+build setupdesign-lottie-loading-layout,android_common: phony out/soong/.intermediates/external/setupdesign/lottie_loading_layout/setupdesign-lottie-loading-layout/android_common/combined/setupdesign-lottie-loading-layout.jar out/soong/.intermediates/external/setupdesign/lottie_loading_layout/setupdesign-lottie-loading-layout/android_common/manifest_fixer/AndroidManifest.xml out/soong/.intermediates/external/setupdesign/lottie_loading_layout/setupdesign-lottie-loading-layout/android_common/package-res.apk out/soong/.intermediates/external/setupdesign/lottie_loading_layout/setupdesign-lottie-loading-layout/android_common/turbine-combined/setupdesign-lottie-loading-layout.jar
 
-build libaaudioservice,android_x86_64_shared: phony out/soong/.intermediates/frameworks/av/services/oboeservice/libaaudioservice/android_x86_64_shared/libaaudioservice.so out/soong/.intermediates/frameworks/av/services/oboeservice/libaaudioservice/android_x86_64_shared/libaaudioservice.so.toc
+build setupdesign,android_common: phony out/soong/.intermediates/external/setupdesign/setupdesign/android_common/combined/setupdesign.jar out/soong/.intermediates/external/setupdesign/setupdesign/android_common/manifest_fixer/AndroidManifest.xml out/soong/.intermediates/external/setupdesign/setupdesign/android_common/package-res.apk out/soong/.intermediates/external/setupdesign/setupdesign/android_common/turbine-combined/setupdesign.jar
 
-build frameworks_av-targets: phony android.hardware.media.omx@1.0-service,android_vendor.31_x86_x86_64 com.android.media.swcodec,android_common_cfi_com.android.media.swcodec_image libaaudio,android_x86_64_shared libaaudio,android_x86_x86_64_shared libaaudioservice,android_x86_64_shared
+build external_setupdesign-targets: phony setupdesign-lottie-loading-layout,android_common setupdesign,android_common
 
-build libgpuservice,android_x86_64_shared: phony out/soong/.intermediates/frameworks/native/services/gpuservice/libgpuservice/android_x86_64_shared/libgpuservice.so out/soong/.intermediates/frameworks/native/services/gpuservice/libgpuservice/android_x86_64_shared/libgpuservice.so.toc
+build com.android.media-bootclasspath-fragment,android_common_apex29: phony out/soong/.intermediates/frameworks/av/apex/com.android.media-bootclasspath-fragment/android_common_apex29/bootclasspath.pb out/soong/.intermediates/frameworks/av/apex/com.android.media-bootclasspath-fragment/android_common_apex29/hiddenapi-modular/encoded/updatable-media.jar out/soong/.intermediates/frameworks/av/apex/com.android.media-bootclasspath-fragment/android_common_apex29/modular-hiddenapi/annotation-flags.csv
 
-build libgui,android_x86_64_shared: phony out/soong/.intermediates/frameworks/native/libs/gui/libgui/android_x86_64_shared/gen/aidl/android/gui/BnDropInputMode.h out/soong/.intermediates/frameworks/native/libs/gui/libgui/android_x86_64_shared/gen/aidl/android/gui/BpDropInputMode.h out/soong/.intermediates/frameworks/native/libs/gui/libgui/android_x86_64_shared/gen/aidl/android/gui/DropInputMode.h out/soong/.intermediates/frameworks/native/libs/gui/libgui/android_x86_64_shared/gen/aidl/android/os/BlockUntrustedTouchesMode.h out/soong/.intermediates/frameworks/native/libs/gui/libgui/android_x86_64_shared/gen/aidl/android/os/BnBlockUntrustedTouchesMode.h out/soong/.intermediates/frameworks/native/libs/gui/libgui/android_x86_64_shared/gen/aidl/android/os/BnInputConstants.h out/soong/.intermediates/frameworks/native/libs/gui/libgui/android_x86_64_shared/gen/aidl/android/os/BnInputEventInjectionResult.h out/soong/.intermediates/frameworks/native/libs/gui/libgui/android_x86_64_shared/gen/aidl/android/os/BnInputEventInjectionSync.h out/soong/.intermediates/frameworks/native/libs/gui/libgui/android_x86_64_shared/gen/aidl/android/os/BnPersistableBundle.h out/soong/.intermediates/frameworks/native/libs/gui/libgui/android_x86_64_shared/gen/aidl/android/os/BnTouchOcclusionMode.h out/soong/.intermediates/frameworks/native/libs/gui/libgui/android_x86_64_shared/gen/aidl/android/os/BpBlockUntrustedTouchesMode.h out/soong/.intermediates/frameworks/native/libs/gui/libgui/android_x86_64_shared/gen/aidl/android/os/BpInputConstants.h out/soong/.intermediates/frameworks/native/libs/gui/libgui/android_x86_64_shared/gen/aidl/android/os/BpInputEventInjectionResult.h out/soong/.intermediates/frameworks/native/libs/gui/libgui/android_x86_64_shared/gen/aidl/android/os/BpInputEventInjectionSync.h out/soong/.intermediates/frameworks/native/libs/gui/libgui/android_x86_64_shared/gen/aidl/android/os/BpPersistableBundle.h out/soong/.intermediates/frameworks/native/libs/gui/libgui/android_x86_64_shared/gen/aidl/android/os/BpTouchOcclusionMode.h out/soong/.intermediates/frameworks/native/libs/gui/libgui/android_x86_64_shared/gen/aidl/android/os/IInputConstants.h out/soong/.intermediates/frameworks/native/libs/gui/libgui/android_x86_64_shared/gen/aidl/android/os/InputEventInjectionResult.h out/soong/.intermediates/frameworks/native/libs/gui/libgui/android_x86_64_shared/gen/aidl/android/os/InputEventInjectionSync.h out/soong/.intermediates/frameworks/native/libs/gui/libgui/android_x86_64_shared/gen/aidl/android/os/PersistableBundle.h out/soong/.intermediates/frameworks/native/libs/gui/libgui/android_x86_64_shared/gen/aidl/android/os/TouchOcclusionMode.h out/soong/.intermediates/frameworks/native/libs/gui/libgui/android_x86_64_shared/gen/aidl/android/view/BnLayerMetadataKey.h out/soong/.intermediates/frameworks/native/libs/gui/libgui/android_x86_64_shared/gen/aidl/android/view/BnSurface.h out/soong/.intermediates/frameworks/native/libs/gui/libgui/android_x86_64_shared/gen/aidl/android/view/BpLayerMetadataKey.h out/soong/.intermediates/frameworks/native/libs/gui/libgui/android_x86_64_shared/gen/aidl/android/view/BpSurface.h out/soong/.intermediates/frameworks/native/libs/gui/libgui/android_x86_64_shared/gen/aidl/android/view/LayerMetadataKey.h out/soong/.intermediates/frameworks/native/libs/gui/libgui/android_x86_64_shared/gen/aidl/android/view/Surface.h out/soong/.intermediates/frameworks/native/libs/gui/libgui/android_x86_64_shared/libgui.so out/soong/.intermediates/frameworks/native/libs/gui/libgui/android_x86_64_shared/libgui.so.toc
+build com.android.media,android_common_cfi_com.android.media_image: phony out/soong/.intermediates/frameworks/av/apex/com.android.media/android_common_cfi_com.android.media_image/apex_manifest.pb out/soong/.intermediates/frameworks/av/apex/com.android.media/android_common_cfi_com.android.media_image/apex_pubkey out/soong/.intermediates/frameworks/av/apex/com.android.media/android_common_cfi_com.android.media_image/com.android.media.capex
 
-build libgui,android_x86_x86_64_shared: phony out/soong/.intermediates/frameworks/native/libs/gui/libgui/android_x86_x86_64_shared/gen/aidl/android/gui/BnDropInputMode.h out/soong/.intermediates/frameworks/native/libs/gui/libgui/android_x86_x86_64_shared/gen/aidl/android/gui/BpDropInputMode.h out/soong/.intermediates/frameworks/native/libs/gui/libgui/android_x86_x86_64_shared/gen/aidl/android/gui/DropInputMode.h out/soong/.intermediates/frameworks/native/libs/gui/libgui/android_x86_x86_64_shared/gen/aidl/android/os/BlockUntrustedTouchesMode.h out/soong/.intermediates/frameworks/native/libs/gui/libgui/android_x86_x86_64_shared/gen/aidl/android/os/BnBlockUntrustedTouchesMode.h out/soong/.intermediates/frameworks/native/libs/gui/libgui/android_x86_x86_64_shared/gen/aidl/android/os/BnInputConstants.h out/soong/.intermediates/frameworks/native/libs/gui/libgui/android_x86_x86_64_shared/gen/aidl/android/os/BnInputEventInjectionResult.h out/soong/.intermediates/frameworks/native/libs/gui/libgui/android_x86_x86_64_shared/gen/aidl/android/os/BnInputEventInjectionSync.h out/soong/.intermediates/frameworks/native/libs/gui/libgui/android_x86_x86_64_shared/gen/aidl/android/os/BnPersistableBundle.h out/soong/.intermediates/frameworks/native/libs/gui/libgui/android_x86_x86_64_shared/gen/aidl/android/os/BnTouchOcclusionMode.h out/soong/.intermediates/frameworks/native/libs/gui/libgui/android_x86_x86_64_shared/gen/aidl/android/os/BpBlockUntrustedTouchesMode.h out/soong/.intermediates/frameworks/native/libs/gui/libgui/android_x86_x86_64_shared/gen/aidl/android/os/BpInputConstants.h out/soong/.intermediates/frameworks/native/libs/gui/libgui/android_x86_x86_64_shared/gen/aidl/android/os/BpInputEventInjectionResult.h out/soong/.intermediates/frameworks/native/libs/gui/libgui/android_x86_x86_64_shared/gen/aidl/android/os/BpInputEventInjectionSync.h out/soong/.intermediates/frameworks/native/libs/gui/libgui/android_x86_x86_64_shared/gen/aidl/android/os/BpPersistableBundle.h out/soong/.intermediates/frameworks/native/libs/gui/libgui/android_x86_x86_64_shared/gen/aidl/android/os/BpTouchOcclusionMode.h out/soong/.intermediates/frameworks/native/libs/gui/libgui/android_x86_x86_64_shared/gen/aidl/android/os/IInputConstants.h out/soong/.intermediates/frameworks/native/libs/gui/libgui/android_x86_x86_64_shared/gen/aidl/android/os/InputEventInjectionResult.h out/soong/.intermediates/frameworks/native/libs/gui/libgui/android_x86_x86_64_shared/gen/aidl/android/os/InputEventInjectionSync.h out/soong/.intermediates/frameworks/native/libs/gui/libgui/android_x86_x86_64_shared/gen/aidl/android/os/PersistableBundle.h out/soong/.intermediates/frameworks/native/libs/gui/libgui/android_x86_x86_64_shared/gen/aidl/android/os/TouchOcclusionMode.h out/soong/.intermediates/frameworks/native/libs/gui/libgui/android_x86_x86_64_shared/gen/aidl/android/view/BnLayerMetadataKey.h out/soong/.intermediates/frameworks/native/libs/gui/libgui/android_x86_x86_64_shared/gen/aidl/android/view/BnSurface.h out/soong/.intermediates/frameworks/native/libs/gui/libgui/android_x86_x86_64_shared/gen/aidl/android/view/BpLayerMetadataKey.h out/soong/.intermediates/frameworks/native/libs/gui/libgui/android_x86_x86_64_shared/gen/aidl/android/view/BpSurface.h out/soong/.intermediates/frameworks/native/libs/gui/libgui/android_x86_x86_64_shared/gen/aidl/android/view/LayerMetadataKey.h out/soong/.intermediates/frameworks/native/libs/gui/libgui/android_x86_x86_64_shared/gen/aidl/android/view/Surface.h out/soong/.intermediates/frameworks/native/libs/gui/libgui/android_x86_x86_64_shared/libgui.so out/soong/.intermediates/frameworks/native/libs/gui/libgui/android_x86_x86_64_shared/libgui.so.toc
+build frameworks_av-targets: phony com.android.media-bootclasspath-fragment,android_common_apex29 com.android.media,android_common_cfi_com.android.media_image
 
-build libinputflinger,android_x86_64_shared: phony out/soong/.intermediates/frameworks/native/services/inputflinger/libinputflinger/android_x86_64_shared/libinputflinger.so out/soong/.intermediates/frameworks/native/services/inputflinger/libinputflinger/android_x86_64_shared/libinputflinger.so.toc
+build SettingsLibIllustrationPreference,android_common: phony out/soong/.intermediates/frameworks/base/packages/SettingsLib/IllustrationPreference/SettingsLibIllustrationPreference/android_common/combined/SettingsLibIllustrationPreference.jar out/soong/.intermediates/frameworks/base/packages/SettingsLib/IllustrationPreference/SettingsLibIllustrationPreference/android_common/manifest_fixer/AndroidManifest.xml out/soong/.intermediates/frameworks/base/packages/SettingsLib/IllustrationPreference/SettingsLibIllustrationPreference/android_common/package-res.apk out/soong/.intermediates/frameworks/base/packages/SettingsLib/IllustrationPreference/SettingsLibIllustrationPreference/android_common/turbine-combined/SettingsLibIllustrationPreference.jar
 
-build libinputflinger,android_x86_x86_64_shared: phony out/soong/.intermediates/frameworks/native/services/inputflinger/libinputflinger/android_x86_x86_64_shared/libinputflinger.so out/soong/.intermediates/frameworks/native/services/inputflinger/libinputflinger/android_x86_x86_64_shared/libinputflinger.so.toc
+build services.net-module-wifi,android_common_apex30: phony out/soong/.intermediates/frameworks/base/services/net/services.net-module-wifi/android_common_apex30/combined/services.net-module-wifi.jar out/soong/.intermediates/frameworks/base/services/net/services.net-module-wifi/android_common_apex30/turbine-combined/services.net-module-wifi.jar
 
-build frameworks_native-targets: phony libgpuservice,android_x86_64_shared libgui,android_x86_64_shared libgui,android_x86_x86_64_shared libinputflinger,android_x86_64_shared libinputflinger,android_x86_x86_64_shared
+build frameworks_base-targets: phony SettingsLibIllustrationPreference,android_common services.net-module-wifi,android_common_apex30
 
-build devicepolicyprotosnano,android_common: phony out/soong/.intermediates/frameworks/proto_logging/stats/enums/stats/devicepolicy/devicepolicyprotosnano/android_common/jarjar/devicepolicyprotosnano.jar out/soong/.intermediates/frameworks/proto_logging/stats/enums/stats/devicepolicy/devicepolicyprotosnano/android_common/turbine-jarjar/devicepolicyprotosnano.jar
+build WifiTrackerLib,android_common: phony out/soong/.intermediates/frameworks/opt/net/wifi/libs/WifiTrackerLib/WifiTrackerLib/android_common/combined/WifiTrackerLib.jar out/soong/.intermediates/frameworks/opt/net/wifi/libs/WifiTrackerLib/WifiTrackerLib/android_common/manifest_fixer/AndroidManifest.xml out/soong/.intermediates/frameworks/opt/net/wifi/libs/WifiTrackerLib/WifiTrackerLib/android_common/package-res.apk out/soong/.intermediates/frameworks/opt/net/wifi/libs/WifiTrackerLib/WifiTrackerLib/android_common/turbine-combined/WifiTrackerLib.jar
 
-build frameworks_proto_logging-targets: phony devicepolicyprotosnano,android_common
+build frameworks_opt_net_wifi-targets: phony WifiTrackerLib,android_common
 
-build legacy-core-platform-api-stubs-system-modules,android_common: phony out/soong/.intermediates/libcore/mmodules/core_platform_api/legacy-core-platform-api-stubs-system-modules/android_common/system/lib/jrt-fs.jar out/soong/.intermediates/libcore/mmodules/core_platform_api/legacy-core-platform-api-stubs-system-modules/android_common/system/lib/modules out/soong/.intermediates/libcore/mmodules/core_platform_api/legacy-core-platform-api-stubs-system-modules/android_common/system/release
+build sap-api-java-static,android_common: phony out/soong/.intermediates/hardware/ril/librilutils/sap-api-java-static/android_common/combined/sap-api-java-static.jar out/soong/.intermediates/hardware/ril/librilutils/sap-api-java-static/android_common/turbine-combined/sap-api-java-static.jar
 
-build stable-core-platform-api-stubs-system-modules,android_common: phony out/soong/.intermediates/libcore/mmodules/core_platform_api/stable-core-platform-api-stubs-system-modules/android_common/system/lib/jrt-fs.jar out/soong/.intermediates/libcore/mmodules/core_platform_api/stable-core-platform-api-stubs-system-modules/android_common/system/lib/modules out/soong/.intermediates/libcore/mmodules/core_platform_api/stable-core-platform-api-stubs-system-modules/android_common/system/release
+build hardware_ril-targets: phony sap-api-java-static,android_common
 
-build libcore-targets: phony legacy-core-platform-api-stubs-system-modules,android_common stable-core-platform-api-stubs-system-modules,android_common
+build bluetooth.mapsapi,android_common: phony out/soong/.intermediates/packages/apps/Bluetooth/bluetooth.mapsapi/android_common/javac/bluetooth.mapsapi.jar out/soong/.intermediates/packages/apps/Bluetooth/bluetooth.mapsapi/android_common/turbine-combined/bluetooth.mapsapi.jar
 
-build com.android.vndk.current,android_common_image: phony out/soong/.intermediates/packages/modules/vndk/apex/com.android.vndk.current/android_common_image/apex_manifest.pb out/soong/.intermediates/packages/modules/vndk/apex/com.android.vndk.current/android_common_image/apex_pubkey out/soong/.intermediates/packages/modules/vndk/apex/com.android.vndk.current/android_common_image/com.android.vndk.current.apex
+build packages_apps_Bluetooth-targets: phony bluetooth.mapsapi,android_common
 
-build packages_modules_vndk-targets: phony com.android.vndk.current,android_common_image
+build CellBroadcastApp,android_common_apex30: phony out/soong/.intermediates/packages/apps/CellBroadcastReceiver/CellBroadcastApp/android_common_apex30/CellBroadcastApp.apk
 
-build telephonyprovider-protos,android_common: phony out/soong/.intermediates/packages/providers/TelephonyProvider/proto/telephonyprovider-protos/android_common/jarjar/telephonyprovider-protos.jar out/soong/.intermediates/packages/providers/TelephonyProvider/proto/telephonyprovider-protos/android_common/turbine-jarjar/telephonyprovider-protos.jar
+build packages_apps_CellBroadcastReceiver-targets: phony CellBroadcastApp,android_common_apex30
 
-build packages_providers_TelephonyProvider-targets: phony telephonyprovider-protos,android_common
+build EmergencyGestureAction,android_common: phony out/soong/.intermediates/packages/apps/EmergencyInfo/EmergencyGestureAction/EmergencyGestureAction/android_common/combined/EmergencyGestureAction.jar out/soong/.intermediates/packages/apps/EmergencyInfo/EmergencyGestureAction/EmergencyGestureAction/android_common/manifest_fixer/AndroidManifest.xml out/soong/.intermediates/packages/apps/EmergencyInfo/EmergencyGestureAction/EmergencyGestureAction/android_common/package-res.apk out/soong/.intermediates/packages/apps/EmergencyInfo/EmergencyGestureAction/EmergencyGestureAction/android_common/turbine-combined/EmergencyGestureAction.jar
 
-build androidx-constraintlayout_constraintlayout-nodeps,android_common: phony out/soong/.intermediates/prebuilts/sdk/current/extras/constraint-layout-x/androidx-constraintlayout_constraintlayout-nodeps/android_common/aar/AndroidManifest.xml out/soong/.intermediates/prebuilts/sdk/current/extras/constraint-layout-x/androidx-constraintlayout_constraintlayout-nodeps/android_common/aar/classes-combined.jar out/soong/.intermediates/prebuilts/sdk/current/extras/constraint-layout-x/androidx-constraintlayout_constraintlayout-nodeps/android_common/aar/proguard.txt out/soong/.intermediates/prebuilts/sdk/current/extras/constraint-layout-x/androidx-constraintlayout_constraintlayout-nodeps/android_common/package-res.apk
+build EmergencyGestureContentProvider,android_common: phony out/soong/.intermediates/packages/apps/EmergencyInfo/EmergencyGestureContentProvider/EmergencyGestureContentProvider/android_common/combined/EmergencyGestureContentProvider.jar out/soong/.intermediates/packages/apps/EmergencyInfo/EmergencyGestureContentProvider/EmergencyGestureContentProvider/android_common/manifest_fixer/AndroidManifest.xml out/soong/.intermediates/packages/apps/EmergencyInfo/EmergencyGestureContentProvider/EmergencyGestureContentProvider/android_common/package-res.apk out/soong/.intermediates/packages/apps/EmergencyInfo/EmergencyGestureContentProvider/EmergencyGestureContentProvider/android_common/turbine-combined/EmergencyGestureContentProvider.jar
 
-build androidx-constraintlayout_constraintlayout-nodeps,android_common_apex30: phony out/soong/.intermediates/prebuilts/sdk/current/extras/constraint-layout-x/androidx-constraintlayout_constraintlayout-nodeps/android_common_apex30/aar/AndroidManifest.xml out/soong/.intermediates/prebuilts/sdk/current/extras/constraint-layout-x/androidx-constraintlayout_constraintlayout-nodeps/android_common_apex30/aar/classes-combined.jar out/soong/.intermediates/prebuilts/sdk/current/extras/constraint-layout-x/androidx-constraintlayout_constraintlayout-nodeps/android_common_apex30/aar/proguard.txt out/soong/.intermediates/prebuilts/sdk/current/extras/constraint-layout-x/androidx-constraintlayout_constraintlayout-nodeps/android_common_apex30/package-res.apk
+build packages_apps_EmergencyInfo-targets: phony EmergencyGestureAction,android_common EmergencyGestureContentProvider,android_common
 
-build androidx.leanback_leanback-nodeps,android_common: phony out/soong/.intermediates/prebuilts/sdk/current/androidx/androidx.leanback_leanback-nodeps/android_common/aar/AndroidManifest.xml out/soong/.intermediates/prebuilts/sdk/current/androidx/androidx.leanback_leanback-nodeps/android_common/aar/classes-combined.jar out/soong/.intermediates/prebuilts/sdk/current/androidx/androidx.leanback_leanback-nodeps/android_common/aar/proguard.txt out/soong/.intermediates/prebuilts/sdk/current/androidx/androidx.leanback_leanback-nodeps/android_common/package-res.apk
+build managedprovisioning_protoslite,android_common: phony out/soong/.intermediates/packages/apps/ManagedProvisioning/managedprovisioning_protoslite/android_common/combined/managedprovisioning_protoslite.jar out/soong/.intermediates/packages/apps/ManagedProvisioning/managedprovisioning_protoslite/android_common/turbine-combined/managedprovisioning_protoslite.jar
 
-build androidx.leanback_leanback-nodeps,android_common_apex30: phony out/soong/.intermediates/prebuilts/sdk/current/androidx/androidx.leanback_leanback-nodeps/android_common_apex30/aar/AndroidManifest.xml out/soong/.intermediates/prebuilts/sdk/current/androidx/androidx.leanback_leanback-nodeps/android_common_apex30/aar/classes-combined.jar out/soong/.intermediates/prebuilts/sdk/current/androidx/androidx.leanback_leanback-nodeps/android_common_apex30/aar/proguard.txt out/soong/.intermediates/prebuilts/sdk/current/androidx/androidx.leanback_leanback-nodeps/android_common_apex30/package-res.apk
+build packages_apps_ManagedProvisioning-targets: phony managedprovisioning_protoslite,android_common
 
-build androidx.mediarouter_mediarouter-nodeps,android_common: phony out/soong/.intermediates/prebuilts/sdk/current/androidx/androidx.mediarouter_mediarouter-nodeps/android_common/aar/AndroidManifest.xml out/soong/.intermediates/prebuilts/sdk/current/androidx/androidx.mediarouter_mediarouter-nodeps/android_common/aar/classes-combined.jar out/soong/.intermediates/prebuilts/sdk/current/androidx/androidx.mediarouter_mediarouter-nodeps/android_common/aar/proguard.txt out/soong/.intermediates/prebuilts/sdk/current/androidx/androidx.mediarouter_mediarouter-nodeps/android_common/package-res.apk
+build settings-contextual-card-protos-lite,android_common: phony out/soong/.intermediates/packages/apps/Settings/protos/settings-contextual-card-protos-lite/android_common/combined/settings-contextual-card-protos-lite.jar out/soong/.intermediates/packages/apps/Settings/protos/settings-contextual-card-protos-lite/android_common/turbine-combined/settings-contextual-card-protos-lite.jar
 
-build androidx.navigation_navigation-runtime-ktx-nodeps,android_common_apex30: phony out/soong/.intermediates/prebuilts/sdk/current/androidx/androidx.navigation_navigation-runtime-ktx-nodeps/android_common_apex30/aar/AndroidManifest.xml out/soong/.intermediates/prebuilts/sdk/current/androidx/androidx.navigation_navigation-runtime-ktx-nodeps/android_common_apex30/aar/classes-combined.jar out/soong/.intermediates/prebuilts/sdk/current/androidx/androidx.navigation_navigation-runtime-ktx-nodeps/android_common_apex30/aar/proguard.txt out/soong/.intermediates/prebuilts/sdk/current/androidx/androidx.navigation_navigation-runtime-ktx-nodeps/android_common_apex30/package-res.apk
+build settings-log-bridge-protos-lite,android_common: phony out/soong/.intermediates/packages/apps/Settings/protos/settings-log-bridge-protos-lite/android_common/combined/settings-log-bridge-protos-lite.jar out/soong/.intermediates/packages/apps/Settings/protos/settings-log-bridge-protos-lite/android_common/turbine-combined/settings-log-bridge-protos-lite.jar
 
-build androidx.preference_preference-nodeps,android_common: phony out/soong/.intermediates/prebuilts/sdk/current/androidx/androidx.preference_preference-nodeps/android_common/aar/AndroidManifest.xml out/soong/.intermediates/prebuilts/sdk/current/androidx/androidx.preference_preference-nodeps/android_common/aar/classes-combined.jar out/soong/.intermediates/prebuilts/sdk/current/androidx/androidx.preference_preference-nodeps/android_common/aar/proguard.txt out/soong/.intermediates/prebuilts/sdk/current/androidx/androidx.preference_preference-nodeps/android_common/package-res.apk
+build settings-logtags,android_common: phony out/soong/.intermediates/packages/apps/Settings/settings-logtags/android_common/javac/settings-logtags.jar out/soong/.intermediates/packages/apps/Settings/settings-logtags/android_common/turbine-combined/settings-logtags.jar
 
-build androidx.preference_preference-nodeps,android_common_apex30: phony out/soong/.intermediates/prebuilts/sdk/current/androidx/androidx.preference_preference-nodeps/android_common_apex30/aar/AndroidManifest.xml out/soong/.intermediates/prebuilts/sdk/current/androidx/androidx.preference_preference-nodeps/android_common_apex30/aar/classes-combined.jar out/soong/.intermediates/prebuilts/sdk/current/androidx/androidx.preference_preference-nodeps/android_common_apex30/aar/proguard.txt out/soong/.intermediates/prebuilts/sdk/current/androidx/androidx.preference_preference-nodeps/android_common_apex30/package-res.apk
+build statslog-settings,android_common: phony out/soong/.intermediates/packages/apps/Settings/statslog-settings/android_common/javac/statslog-settings.jar out/soong/.intermediates/packages/apps/Settings/statslog-settings/android_common/turbine-combined/statslog-settings.jar
 
-build androidx.slice_slice-core-nodeps,android_common: phony out/soong/.intermediates/prebuilts/sdk/current/androidx/androidx.slice_slice-core-nodeps/android_common/aar/AndroidManifest.xml out/soong/.intermediates/prebuilts/sdk/current/androidx/androidx.slice_slice-core-nodeps/android_common/aar/classes-combined.jar out/soong/.intermediates/prebuilts/sdk/current/androidx/androidx.slice_slice-core-nodeps/android_common/aar/proguard.txt out/soong/.intermediates/prebuilts/sdk/current/androidx/androidx.slice_slice-core-nodeps/android_common/package-res.apk
+build packages_apps_Settings-targets: phony settings-contextual-card-protos-lite,android_common settings-log-bridge-protos-lite,android_common settings-logtags,android_common statslog-settings,android_common
 
-build prebuilts_sdk-targets: phony androidx-constraintlayout_constraintlayout-nodeps,android_common androidx-constraintlayout_constraintlayout-nodeps,android_common_apex30 androidx.leanback_leanback-nodeps,android_common androidx.leanback_leanback-nodeps,android_common_apex30 androidx.mediarouter_mediarouter-nodeps,android_common androidx.navigation_navigation-runtime-ktx-nodeps,android_common_apex30 androidx.preference_preference-nodeps,android_common androidx.preference_preference-nodeps,android_common_apex30 androidx.slice_slice-core-nodeps,android_common
+build CellBroadcastServiceModule,android_common_apex30: phony out/soong/.intermediates/packages/modules/CellBroadcastService/CellBroadcastServiceModule/android_common_apex30/CellBroadcastServiceModule.apk
 
-build liblegacykeystore-rust,android_x86_64_rlib_rlib-std: phony out/soong/.intermediates/system/security/keystore2/legacykeystore/liblegacykeystore-rust/android_x86_64_rlib_rlib-std/liblegacykeystore-rust.rlib
+build packages_modules_CellBroadcastService-targets: phony CellBroadcastServiceModule,android_common_apex30
 
-build system_security-targets: phony liblegacykeystore-rust,android_x86_64_rlib_rlib-std
+build ExtServices,android_common_apex30: phony out/soong/.intermediates/packages/modules/ExtServices/ExtServices/android_common_apex30/ExtServices.apk
 
-build out/soong/.intermediates/external/perfetto/perfetto_protos_perfetto_common_cpp_gen_headers/gen/genrule-phony: phony
-build out/soong/.intermediates/external/perfetto/perfetto_protos_perfetto_common_zero_gen_headers/gen/genrule-phony: phony
-build out/soong/.intermediates/external/perfetto/perfetto_protos_perfetto_trace_ftrace_zero_gen_headers/gen/genrule-phony: phony
-build out/soong/.intermediates/external/perfetto/perfetto_protos_perfetto_trace_non_minimal_zero_gen_headers/gen/genrule-phony: phony
-build out/soong/.intermediates/external/perfetto/perfetto_protos_perfetto_trace_track_event_cpp_gen_headers/gen/genrule-phony: phony
-build out/soong/.intermediates/external/perfetto/perfetto_protos_perfetto_trace_track_event_zero_gen_headers/gen/genrule-phony: phony
+build com.android.extservices,android_common_com.android.extservices_image: phony out/soong/.intermediates/packages/modules/ExtServices/apex/com.android.extservices/android_common_com.android.extservices_image/apex_manifest.pb out/soong/.intermediates/packages/modules/ExtServices/apex/com.android.extservices/android_common_com.android.extservices_image/apex_pubkey out/soong/.intermediates/packages/modules/ExtServices/apex/com.android.extservices/android_common_com.android.extservices_image/com.android.extservices.capex
+
+build packages_modules_ExtServices-targets: phony ExtServices,android_common_apex30 com.android.extservices,android_common_com.android.extservices_image
+
+build NetworkStackApi31Shims,android_common_apex30: phony out/soong/.intermediates/packages/modules/NetworkStack/NetworkStackApi31Shims/android_common_apex30/combined/NetworkStackApi31Shims.jar out/soong/.intermediates/packages/modules/NetworkStack/NetworkStackApi31Shims/android_common_apex30/turbine-combined/NetworkStackApi31Shims.jar
+
+build NetworkStackApi32Shims,android_common_apex30: phony out/soong/.intermediates/packages/modules/NetworkStack/NetworkStackApi32Shims/android_common_apex30/combined/NetworkStackApi32Shims.jar out/soong/.intermediates/packages/modules/NetworkStack/NetworkStackApi32Shims/android_common_apex30/turbine-combined/NetworkStackApi32Shims.jar
+
+build NetworkStackApiCurrentShims,android_common_apex30: phony out/soong/.intermediates/packages/modules/NetworkStack/NetworkStackApiCurrentShims/android_common_apex30/combined/NetworkStackApiCurrentShims.jar out/soong/.intermediates/packages/modules/NetworkStack/NetworkStackApiCurrentShims/android_common_apex30/turbine-combined/NetworkStackApiCurrentShims.jar
+
+build NetworkStackApiStableShims,android_common_apex30: phony out/soong/.intermediates/packages/modules/NetworkStack/NetworkStackApiStableShims/android_common_apex30/jarjar/NetworkStackApiStableShims.jar out/soong/.intermediates/packages/modules/NetworkStack/NetworkStackApiStableShims/android_common_apex30/turbine-jarjar/NetworkStackApiStableShims.jar
+
+build packages_modules_NetworkStack-targets: phony NetworkStackApi31Shims,android_common_apex30 NetworkStackApi32Shims,android_common_apex30 NetworkStackApiCurrentShims,android_common_apex30 NetworkStackApiStableShims,android_common_apex30
+
+build service-permission-shared,android_common: phony out/soong/.intermediates/packages/modules/Permission/service/service-permission-shared/android_common/turbine-combined/service-permission-shared.jar
+
+build service-permission-shared,android_common_apex30: phony out/soong/.intermediates/packages/modules/Permission/service/service-permission-shared/android_common_apex30/javac/service-permission-shared.jar out/soong/.intermediates/packages/modules/Permission/service/service-permission-shared/android_common_apex30/turbine-combined/service-permission-shared.jar
+
+build packages_modules_Permission-targets: phony service-permission-shared,android_common service-permission-shared,android_common_apex30
+
+build com.android.os.statsd,android_common_com.android.os.statsd_image: phony out/soong/.intermediates/packages/modules/StatsD/apex/com.android.os.statsd/android_common_com.android.os.statsd_image/apex_manifest.pb out/soong/.intermediates/packages/modules/StatsD/apex/com.android.os.statsd/android_common_com.android.os.statsd_image/apex_pubkey out/soong/.intermediates/packages/modules/StatsD/apex/com.android.os.statsd/android_common_com.android.os.statsd_image/com.android.os.statsd.apex
+
+build service-statsd,android_common_apex30: phony out/soong/.intermediates/packages/modules/StatsD/service/service-statsd/android_common_apex30/aligned/service-statsd.jar out/soong/.intermediates/packages/modules/StatsD/service/service-statsd/android_common_apex30/combined/service-statsd.jar out/soong/.intermediates/packages/modules/StatsD/service/service-statsd/android_common_apex30/turbine-combined/service-statsd.jar
+
+build packages_modules_StatsD-targets: phony com.android.os.statsd,android_common_com.android.os.statsd_image service-statsd,android_common_apex30
+
+build OsuLogin,android_common_apex30: phony out/soong/.intermediates/packages/modules/Wifi/OsuLogin/OsuLogin/android_common_apex30/OsuLogin.apk
+
+build packages_modules_Wifi-targets: phony OsuLogin,android_common_apex30
+
+build android.car-stub-docs,android_common: phony out/soong/.intermediates/packages/services/Car/car-lib/android.car-stub-docs/android_common/metalava/android.car-stub-docs-stubs.srcjar
+
+build android.car-stubs-docs,android_common: phony out/soong/.intermediates/packages/services/Car/car-lib/android.car-stubs-docs/android_common/metalava/android.car-stubs-docs_removed.txt
+
+build android.car-stubs,android_common: phony out/soong/.intermediates/packages/services/Car/car-lib/android.car-stubs/android_common/turbine-combined/android.car-stubs.jar
+
+build android.car-system-stubs-docs,android_common: phony out/soong/.intermediates/packages/services/Car/car-lib/android.car-system-stubs-docs/android_common/metalava/android.car-system-stubs-docs_removed.txt
+
+build packages_services_Car-targets: phony android.car-stub-docs,android_common android.car-stubs-docs,android_common android.car-stubs,android_common android.car-system-stubs-docs,android_common
+
+build bluetooth-protos-lite,android_common: phony out/soong/.intermediates/system/bt/gd/proto/bluetooth-protos-lite/android_common/combined/bluetooth-protos-lite.jar out/soong/.intermediates/system/bt/gd/proto/bluetooth-protos-lite/android_common/turbine-combined/bluetooth-protos-lite.jar
+
+build system_bt-targets: phony bluetooth-protos-lite,android_common
+
+build time_zone_distro,android_common: phony out/soong/.intermediates/system/timezone/distro/core/time_zone_distro/android_common/javac/time_zone_distro.jar out/soong/.intermediates/system/timezone/distro/core/time_zone_distro/android_common/turbine-combined/time_zone_distro.jar
+
+build time_zone_distro_installer,android_common: phony out/soong/.intermediates/system/timezone/distro/installer/time_zone_distro_installer/android_common/javac/time_zone_distro_installer.jar out/soong/.intermediates/system/timezone/distro/installer/time_zone_distro_installer/android_common/turbine-combined/time_zone_distro_installer.jar
+
+build system_timezone-targets: phony time_zone_distro,android_common time_zone_distro_installer,android_common
+
 

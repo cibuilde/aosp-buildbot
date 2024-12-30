@@ -40,15 +40,15 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcxxabi/libc++demangle^androi
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/libbase/libbase^android_vendor.31_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/libbase/libbase^android_x86_64_shared/ .
 
-echo "building libcppbor_external^android_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libcppbor_external,android_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/libcppbor/libcppbor_external^android_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/external/libcppbor/libcppbor_external^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/external/libcppbor/libcppbor_external^android_x86_64_shared
-
 echo "building libcppbor_external^android_vendor.31_x86_64_shared"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libcppbor_external,android_vendor.31_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/libcppbor/libcppbor_external^android_vendor.31_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/external/libcppbor/libcppbor_external^android_vendor.31_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/external/libcppbor/libcppbor_external^android_vendor.31_x86_64_shared
+
+echo "building libcppbor_external^android_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libcppbor_external,android_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/libcppbor/libcppbor_external^android_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/external/libcppbor/libcppbor_external^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/external/libcppbor/libcppbor_external^android_x86_64_shared
 
 rm -rf out
 

@@ -68,35 +68,35 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/system/libbase/libbase^android_vendor.31
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^android_vendor.31_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^android_vendor.31_x86_x86_64_shared/ .
 
-echo "building setup_wifi^android_vendor.31_x86_64"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja setup_wifi,android_vendor.31_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/guest/commands/setup_wifi/setup_wifi^android_vendor.31_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/device/google/cuttlefish/setup_wifi^android_vendor.31_x86_64.output . $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/guest/commands/setup_wifi/setup_wifi^android_vendor.31_x86_64
-
-echo "building libcuttlefish_device_config^android_vendor.31_x86_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libcuttlefish_device_config,android_vendor.31_x86_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/common/libs/device_config/libcuttlefish_device_config^android_vendor.31_x86_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/device/google/cuttlefish/libcuttlefish_device_config^android_vendor.31_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/common/libs/device_config/libcuttlefish_device_config^android_vendor.31_x86_x86_64_shared
-
-echo "building libcuttlefish_device_config^android_vendor.31_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libcuttlefish_device_config,android_vendor.31_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/common/libs/device_config/libcuttlefish_device_config^android_vendor.31_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/device/google/cuttlefish/libcuttlefish_device_config^android_vendor.31_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/common/libs/device_config/libcuttlefish_device_config^android_vendor.31_x86_64_shared
-
-echo "building vsoc_input_service^android_vendor.31_x86_64"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja vsoc_input_service,android_vendor.31_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/guest/commands/vsoc_input_service/vsoc_input_service^android_vendor.31_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/device/google/cuttlefish/vsoc_input_service^android_vendor.31_x86_64.output . $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/guest/commands/vsoc_input_service/vsoc_input_service^android_vendor.31_x86_64
+echo "building android.hardware.health.storage-service.cuttlefish^android_vendor.31_x86_64"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja android.hardware.health.storage-service.cuttlefish,android_vendor.31_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/guest/hals/health/storage/android.hardware.health.storage-service.cuttlefish^android_vendor.31_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/device/google/cuttlefish/android.hardware.health.storage-service.cuttlefish^android_vendor.31_x86_64.output . $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/guest/hals/health/storage/android.hardware.health.storage-service.cuttlefish^android_vendor.31_x86_64
 
 echo "building bt_vhci_forwarder^android_vendor.31_x86_64"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja bt_vhci_forwarder,android_vendor.31_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/guest/commands/bt_vhci_forwarder/bt_vhci_forwarder^android_vendor.31_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/device/google/cuttlefish/bt_vhci_forwarder^android_vendor.31_x86_64.output . $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/guest/commands/bt_vhci_forwarder/bt_vhci_forwarder^android_vendor.31_x86_64
 
-echo "building android.hardware.health.storage-service.cuttlefish^android_vendor.31_x86_64"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja android.hardware.health.storage-service.cuttlefish,android_vendor.31_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/guest/hals/health/storage/android.hardware.health.storage-service.cuttlefish^android_vendor.31_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/device/google/cuttlefish/android.hardware.health.storage-service.cuttlefish^android_vendor.31_x86_64.output . $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/guest/hals/health/storage/android.hardware.health.storage-service.cuttlefish^android_vendor.31_x86_64
+echo "building libcuttlefish_device_config^android_vendor.31_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libcuttlefish_device_config,android_vendor.31_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/common/libs/device_config/libcuttlefish_device_config^android_vendor.31_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/device/google/cuttlefish/libcuttlefish_device_config^android_vendor.31_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/common/libs/device_config/libcuttlefish_device_config^android_vendor.31_x86_64_shared
+
+echo "building libcuttlefish_device_config^android_vendor.31_x86_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libcuttlefish_device_config,android_vendor.31_x86_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/common/libs/device_config/libcuttlefish_device_config^android_vendor.31_x86_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/device/google/cuttlefish/libcuttlefish_device_config^android_vendor.31_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/common/libs/device_config/libcuttlefish_device_config^android_vendor.31_x86_x86_64_shared
+
+echo "building setup_wifi^android_vendor.31_x86_64"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja setup_wifi,android_vendor.31_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/guest/commands/setup_wifi/setup_wifi^android_vendor.31_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/device/google/cuttlefish/setup_wifi^android_vendor.31_x86_64.output . $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/guest/commands/setup_wifi/setup_wifi^android_vendor.31_x86_64
+
+echo "building vsoc_input_service^android_vendor.31_x86_64"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja vsoc_input_service,android_vendor.31_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/guest/commands/vsoc_input_service/vsoc_input_service^android_vendor.31_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/device/google/cuttlefish/vsoc_input_service^android_vendor.31_x86_64.output . $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/guest/commands/vsoc_input_service/vsoc_input_service^android_vendor.31_x86_64
 
 rm -rf out
 

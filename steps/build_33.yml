@@ -1,0 +1,160 @@
+
+name: AOSP Build
+on:
+  push:
+    branches: main
+env:
+  branch: 'android12-gsi'
+  GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+jobs:
+  build_33:
+    runs-on: ubuntu-22.04
+    steps:
+    - uses: actions/checkout@main
+    - run: sudo apt update && sudo apt install -y ninja-build python2
+    - uses: actions/cache@v4
+      with:
+        path: cache/art.tar.zst
+        key: art@${{ env.branch }}
+        restore-keys: art@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/build_make.tar.zst
+        key: build_make@${{ env.branch }}
+        restore-keys: build_make@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/build_soong.tar.zst
+        key: build_soong@${{ env.branch }}
+        restore-keys: build_soong@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_apache-http.tar.zst
+        key: external_apache-http@${{ env.branch }}
+        restore-keys: external_apache-http@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_cbor-java.tar.zst
+        key: external_cbor-java@${{ env.branch }}
+        restore-keys: external_cbor-java@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_icu.tar.zst
+        key: external_icu@${{ env.branch }}
+        restore-keys: external_icu@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/frameworks_av.tar.zst
+        key: frameworks_av@${{ env.branch }}
+        restore-keys: frameworks_av@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/frameworks_base.tar.zst
+        key: frameworks_base@${{ env.branch }}
+        restore-keys: frameworks_base@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/frameworks_libs_modules-utils.tar.zst
+        key: frameworks_libs_modules-utils@${{ env.branch }}
+        restore-keys: frameworks_libs_modules-utils@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/frameworks_libs_net.tar.zst
+        key: frameworks_libs_net@${{ env.branch }}
+        restore-keys: frameworks_libs_net@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/frameworks_native.tar.zst
+        key: frameworks_native@${{ env.branch }}
+        restore-keys: frameworks_native@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/hardware_interfaces.tar.zst
+        key: hardware_interfaces@${{ env.branch }}
+        restore-keys: hardware_interfaces@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/libcore.tar.zst
+        key: libcore@${{ env.branch }}
+        restore-keys: libcore@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/packages_apps_RemoteProvisioner.tar.zst
+        key: packages_apps_RemoteProvisioner@${{ env.branch }}
+        restore-keys: packages_apps_RemoteProvisioner@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/packages_modules_Connectivity.tar.zst
+        key: packages_modules_Connectivity@${{ env.branch }}
+        restore-keys: packages_modules_Connectivity@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/packages_modules_NetworkStack.tar.zst
+        key: packages_modules_NetworkStack@${{ env.branch }}
+        restore-keys: packages_modules_NetworkStack@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/packages_modules_Permission.tar.zst
+        key: packages_modules_Permission@${{ env.branch }}
+        restore-keys: packages_modules_Permission@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/prebuilts_build-tools.tar.zst
+        key: prebuilts_build-tools@${{ env.branch }}
+        restore-keys: prebuilts_build-tools@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/prebuilts_jdk_jdk11.tar.zst
+        key: prebuilts_jdk_jdk11@${{ env.branch }}
+        restore-keys: prebuilts_jdk_jdk11@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/system_core.tar.zst
+        key: system_core@${{ env.branch }}
+        restore-keys: system_core@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/system_extras.tar.zst
+        key: system_extras@${{ env.branch }}
+        restore-keys: system_extras@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/system_gsid.tar.zst
+        key: system_gsid@${{ env.branch }}
+        restore-keys: system_gsid@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/system_hardware_interfaces.tar.zst
+        key: system_hardware_interfaces@${{ env.branch }}
+        restore-keys: system_hardware_interfaces@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/system_iorap.tar.zst
+        key: system_iorap@${{ env.branch }}
+        restore-keys: system_iorap@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/system_libhidl.tar.zst
+        key: system_libhidl@${{ env.branch }}
+        restore-keys: system_libhidl@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/system_security.tar.zst
+        key: system_security@${{ env.branch }}
+        restore-keys: system_security@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/system_timezone.tar.zst
+        key: system_timezone@${{ env.branch }}
+        restore-keys: system_timezone@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/system_vold.tar.zst
+        key: system_vold@${{ env.branch }}
+        restore-keys: system_vold@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/tools_platform-compat.tar.zst
+        key: tools_platform-compat@${{ env.branch }}
+        restore-keys: tools_platform-compat@${{ env.branch }}
+    - run: bash steps/build_33.sh

@@ -25,35 +25,35 @@ clone_depth_platform system/logging
 clone_depth_platform system/media
 
 
-echo "building libcpu_features-utils^linux_glibc_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libcpu_features-utils,linux_glibc_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/cpu_features/libcpu_features-utils^linux_glibc_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/cpu_features/libcpu_features-utils^linux_glibc_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/cpu_features/libcpu_features-utils^linux_glibc_x86_64_static
-
-echo "building libcpu_features^linux_glibc_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libcpu_features,linux_glibc_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/cpu_features/libcpu_features^linux_glibc_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/cpu_features/libcpu_features^linux_glibc_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/cpu_features/libcpu_features^linux_glibc_x86_64_static
-
-echo "building libcpu_features^android_x86_64_static_lto-thin_apex31"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libcpu_features,android_x86_64_static_lto-thin_apex31
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/cpu_features/libcpu_features^android_x86_64_static_lto-thin_apex31
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/cpu_features/libcpu_features^android_x86_64_static_lto-thin_apex31.output . $GITHUB_WORKSPACE/artifacts/external/cpu_features/libcpu_features^android_x86_64_static_lto-thin_apex31
+echo "building libcpu_features-utils^android_x86_64_static_lto-thin_apex31"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libcpu_features-utils,android_x86_64_static_lto-thin_apex31
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/cpu_features/libcpu_features-utils^android_x86_64_static_lto-thin_apex31
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/cpu_features/libcpu_features-utils^android_x86_64_static_lto-thin_apex31.output . $GITHUB_WORKSPACE/artifacts/external/cpu_features/libcpu_features-utils^android_x86_64_static_lto-thin_apex31
 
 echo "building libcpu_features-utils^android_x86_x86_64_static_lto-thin_apex31"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libcpu_features-utils,android_x86_x86_64_static_lto-thin_apex31
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/cpu_features/libcpu_features-utils^android_x86_x86_64_static_lto-thin_apex31
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/cpu_features/libcpu_features-utils^android_x86_x86_64_static_lto-thin_apex31.output . $GITHUB_WORKSPACE/artifacts/external/cpu_features/libcpu_features-utils^android_x86_x86_64_static_lto-thin_apex31
 
+echo "building libcpu_features-utils^linux_glibc_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libcpu_features-utils,linux_glibc_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/cpu_features/libcpu_features-utils^linux_glibc_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/cpu_features/libcpu_features-utils^linux_glibc_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/cpu_features/libcpu_features-utils^linux_glibc_x86_64_static
+
+echo "building libcpu_features^android_x86_64_static_lto-thin_apex31"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libcpu_features,android_x86_64_static_lto-thin_apex31
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/cpu_features/libcpu_features^android_x86_64_static_lto-thin_apex31
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/cpu_features/libcpu_features^android_x86_64_static_lto-thin_apex31.output . $GITHUB_WORKSPACE/artifacts/external/cpu_features/libcpu_features^android_x86_64_static_lto-thin_apex31
+
 echo "building libcpu_features^android_x86_x86_64_static_lto-thin_apex31"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libcpu_features,android_x86_x86_64_static_lto-thin_apex31
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/cpu_features/libcpu_features^android_x86_x86_64_static_lto-thin_apex31
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/cpu_features/libcpu_features^android_x86_x86_64_static_lto-thin_apex31.output . $GITHUB_WORKSPACE/artifacts/external/cpu_features/libcpu_features^android_x86_x86_64_static_lto-thin_apex31
 
-echo "building libcpu_features-utils^android_x86_64_static_lto-thin_apex31"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libcpu_features-utils,android_x86_64_static_lto-thin_apex31
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/cpu_features/libcpu_features-utils^android_x86_64_static_lto-thin_apex31
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/cpu_features/libcpu_features-utils^android_x86_64_static_lto-thin_apex31.output . $GITHUB_WORKSPACE/artifacts/external/cpu_features/libcpu_features-utils^android_x86_64_static_lto-thin_apex31
+echo "building libcpu_features^linux_glibc_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libcpu_features,linux_glibc_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/cpu_features/libcpu_features^linux_glibc_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/cpu_features/libcpu_features^linux_glibc_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/cpu_features/libcpu_features^linux_glibc_x86_64_static
 
 rm -rf out
 

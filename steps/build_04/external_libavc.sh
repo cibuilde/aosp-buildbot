@@ -21,15 +21,15 @@ clone_depth_platform system/logging
 
 rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/libc^android_vendor.31_x86_x86_64_shared/ .
 
-echo "building libavcenc^android_vendor.31_x86_x86_64_static_cfi"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libavcenc,android_vendor.31_x86_x86_64_static_cfi
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/libavc/libavcenc^android_vendor.31_x86_x86_64_static_cfi
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/libavc/libavcenc^android_vendor.31_x86_x86_64_static_cfi.output . $GITHUB_WORKSPACE/artifacts/external/libavc/libavcenc^android_vendor.31_x86_x86_64_static_cfi
-
 echo "building libavcdec^android_vendor.31_x86_x86_64_static_cfi"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libavcdec,android_vendor.31_x86_x86_64_static_cfi
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/libavc/libavcdec^android_vendor.31_x86_x86_64_static_cfi
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/libavc/libavcdec^android_vendor.31_x86_x86_64_static_cfi.output . $GITHUB_WORKSPACE/artifacts/external/libavc/libavcdec^android_vendor.31_x86_x86_64_static_cfi
+
+echo "building libavcenc^android_vendor.31_x86_x86_64_static_cfi"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libavcenc,android_vendor.31_x86_x86_64_static_cfi
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/libavc/libavcenc^android_vendor.31_x86_x86_64_static_cfi
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/libavc/libavcenc^android_vendor.31_x86_x86_64_static_cfi.output . $GITHUB_WORKSPACE/artifacts/external/libavc/libavcenc^android_vendor.31_x86_x86_64_static_cfi
 
 rm -rf out
 

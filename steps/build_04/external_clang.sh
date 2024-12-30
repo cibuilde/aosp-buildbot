@@ -35,60 +35,60 @@ ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja clang-tblgen,linu
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/clang/utils/TableGen/clang-tblgen^linux_glibc_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/clang/clang-tblgen^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/clang/utils/TableGen/clang-tblgen^linux_glibc_x86_64
 
-echo "building clang-gen-statnodes^"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja clang-gen-statnodes,
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/clang/clang-gen-statnodes^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/clang/clang-gen-statnodes^.output . $GITHUB_WORKSPACE/artifacts/external/clang/clang-gen-statnodes^
-
-echo "building clang-gen-options^"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja clang-gen-options,
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/clang/clang-gen-options^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/clang/clang-gen-options^.output . $GITHUB_WORKSPACE/artifacts/external/clang/clang-gen-options^
-
-echo "building clang-gen-html-tags^"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja clang-gen-html-tags,
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/clang/clang-gen-html-tags^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/clang/clang-gen-html-tags^.output . $GITHUB_WORKSPACE/artifacts/external/clang/clang-gen-html-tags^
-
-echo "building clang-gen-diagnostics^"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja clang-gen-diagnostics,
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/clang/clang-gen-diagnostics^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/clang/clang-gen-diagnostics^.output . $GITHUB_WORKSPACE/artifacts/external/clang/clang-gen-diagnostics^
-
-echo "building clang-gen-declnodes^"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja clang-gen-declnodes,
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/clang/clang-gen-declnodes^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/clang/clang-gen-declnodes^.output . $GITHUB_WORKSPACE/artifacts/external/clang/clang-gen-declnodes^
-
-echo "building clang-gen-comment-nodes^"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja clang-gen-comment-nodes,
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/clang/clang-gen-comment-nodes^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/clang/clang-gen-comment-nodes^.output . $GITHUB_WORKSPACE/artifacts/external/clang/clang-gen-comment-nodes^
-
-echo "building clang-gen-comment-html-named-character-references^"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja clang-gen-comment-html-named-character-references,
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/clang/clang-gen-comment-html-named-character-references^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/clang/clang-gen-comment-html-named-character-references^.output . $GITHUB_WORKSPACE/artifacts/external/clang/clang-gen-comment-html-named-character-references^
-
-echo "building clang-gen-comment-commands^"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja clang-gen-comment-commands,
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/clang/clang-gen-comment-commands^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/clang/clang-gen-comment-commands^.output . $GITHUB_WORKSPACE/artifacts/external/clang/clang-gen-comment-commands^
-
-echo "building clang-gen-checkers^"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja clang-gen-checkers,
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/clang/clang-gen-checkers^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/clang/clang-gen-checkers^.output . $GITHUB_WORKSPACE/artifacts/external/clang/clang-gen-checkers^
+echo "building clang-gen-arm-neon^"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja clang-gen-arm-neon,
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/clang/clang-gen-arm-neon^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/clang/clang-gen-arm-neon^.output . $GITHUB_WORKSPACE/artifacts/external/clang/clang-gen-arm-neon^
 
 echo "building clang-gen-attributes^"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja clang-gen-attributes,
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/clang/clang-gen-attributes^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/clang/clang-gen-attributes^.output . $GITHUB_WORKSPACE/artifacts/external/clang/clang-gen-attributes^
 
-echo "building clang-gen-arm-neon^"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja clang-gen-arm-neon,
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/clang/clang-gen-arm-neon^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/clang/clang-gen-arm-neon^.output . $GITHUB_WORKSPACE/artifacts/external/clang/clang-gen-arm-neon^
+echo "building clang-gen-checkers^"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja clang-gen-checkers,
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/clang/clang-gen-checkers^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/clang/clang-gen-checkers^.output . $GITHUB_WORKSPACE/artifacts/external/clang/clang-gen-checkers^
+
+echo "building clang-gen-comment-commands^"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja clang-gen-comment-commands,
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/clang/clang-gen-comment-commands^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/clang/clang-gen-comment-commands^.output . $GITHUB_WORKSPACE/artifacts/external/clang/clang-gen-comment-commands^
+
+echo "building clang-gen-comment-html-named-character-references^"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja clang-gen-comment-html-named-character-references,
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/clang/clang-gen-comment-html-named-character-references^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/clang/clang-gen-comment-html-named-character-references^.output . $GITHUB_WORKSPACE/artifacts/external/clang/clang-gen-comment-html-named-character-references^
+
+echo "building clang-gen-comment-nodes^"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja clang-gen-comment-nodes,
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/clang/clang-gen-comment-nodes^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/clang/clang-gen-comment-nodes^.output . $GITHUB_WORKSPACE/artifacts/external/clang/clang-gen-comment-nodes^
+
+echo "building clang-gen-declnodes^"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja clang-gen-declnodes,
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/clang/clang-gen-declnodes^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/clang/clang-gen-declnodes^.output . $GITHUB_WORKSPACE/artifacts/external/clang/clang-gen-declnodes^
+
+echo "building clang-gen-diagnostics^"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja clang-gen-diagnostics,
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/clang/clang-gen-diagnostics^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/clang/clang-gen-diagnostics^.output . $GITHUB_WORKSPACE/artifacts/external/clang/clang-gen-diagnostics^
+
+echo "building clang-gen-html-tags^"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja clang-gen-html-tags,
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/clang/clang-gen-html-tags^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/clang/clang-gen-html-tags^.output . $GITHUB_WORKSPACE/artifacts/external/clang/clang-gen-html-tags^
+
+echo "building clang-gen-options^"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja clang-gen-options,
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/clang/clang-gen-options^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/clang/clang-gen-options^.output . $GITHUB_WORKSPACE/artifacts/external/clang/clang-gen-options^
+
+echo "building clang-gen-statnodes^"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja clang-gen-statnodes,
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/clang/clang-gen-statnodes^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/clang/clang-gen-statnodes^.output . $GITHUB_WORKSPACE/artifacts/external/clang/clang-gen-statnodes^
 
 rm -rf out
 

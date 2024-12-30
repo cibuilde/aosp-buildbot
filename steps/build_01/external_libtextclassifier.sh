@@ -24,15 +24,15 @@ clone_depth_platform system/logging
 clone_depth_platform system/media
 
 
-echo "building libtextclassifier_hash_static^android_x86_x86_64_static_apex30"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libtextclassifier_hash_static,android_x86_x86_64_static_apex30
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/libtextclassifier/native/libtextclassifier_hash_static^android_x86_x86_64_static_apex30
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/libtextclassifier/libtextclassifier_hash_static^android_x86_x86_64_static_apex30.output . $GITHUB_WORKSPACE/artifacts/external/libtextclassifier/native/libtextclassifier_hash_static^android_x86_x86_64_static_apex30
-
 echo "building libtextclassifier_hash_static^android_x86_64_static_apex30"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libtextclassifier_hash_static,android_x86_64_static_apex30
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/libtextclassifier/native/libtextclassifier_hash_static^android_x86_64_static_apex30
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/libtextclassifier/libtextclassifier_hash_static^android_x86_64_static_apex30.output . $GITHUB_WORKSPACE/artifacts/external/libtextclassifier/native/libtextclassifier_hash_static^android_x86_64_static_apex30
+
+echo "building libtextclassifier_hash_static^android_x86_x86_64_static_apex30"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libtextclassifier_hash_static,android_x86_x86_64_static_apex30
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/libtextclassifier/native/libtextclassifier_hash_static^android_x86_x86_64_static_apex30
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/libtextclassifier/libtextclassifier_hash_static^android_x86_x86_64_static_apex30.output . $GITHUB_WORKSPACE/artifacts/external/libtextclassifier/native/libtextclassifier_hash_static^android_x86_x86_64_static_apex30
 
 rm -rf out
 

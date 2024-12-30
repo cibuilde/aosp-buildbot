@@ -1,0 +1,7 @@
+out/soong/.intermediates/frameworks/base/cmds/abx/abx/android_common/aligned/abx.jar
+out/soong/.intermediates/frameworks/base/cmds/abx/abx/android_common/dexpreopt/oat/x86/javalib.odex
+out/soong/.intermediates/frameworks/base/cmds/abx/abx/android_common/dexpreopt/oat/x86/javalib.vdex
+out/soong/.intermediates/frameworks/base/cmds/abx/abx/android_common/dexpreopt/oat/x86_64/javalib.odex
+out/soong/.intermediates/frameworks/base/cmds/abx/abx/android_common/dexpreopt/oat/x86_64/javalib.vdex
+out/soong/.intermediates/frameworks/base/cmds/abx/abx/android_common/javac/abx.jar
+out/soong/.intermediates/frameworks/base/cmds/abx/abx/android_common/turbine-combined/abx.jar

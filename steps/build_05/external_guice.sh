@@ -27,11 +27,6 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/external/guice/guice_munge_srcjar^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/jsr330/jsr330^linux_glibc_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/junit/junit^linux_glibc_common/ .
 
-echo "building guice_munge^linux_glibc_common"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja guice_munge,linux_glibc_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/guice/guice_munge^linux_glibc_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/external/guice/guice_munge^linux_glibc_common.output . $GITHUB_WORKSPACE/artifacts/external/guice/guice_munge^linux_glibc_common
-
 echo "building guice_munged_srcs^"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja guice_munged_srcs,
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/guice/guice_munged_srcs^
@@ -41,6 +36,11 @@ echo "building guice^linux_glibc_common"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja guice,linux_glibc_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/guice/guice^linux_glibc_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/external/guice/guice^linux_glibc_common.output . $GITHUB_WORKSPACE/artifacts/external/guice/guice^linux_glibc_common
+
+echo "building guice_munge^linux_glibc_common"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja guice_munge,linux_glibc_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/guice/guice_munge^linux_glibc_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/external/guice/guice_munge^linux_glibc_common.output . $GITHUB_WORKSPACE/artifacts/external/guice/guice_munge^linux_glibc_common
 
 rm -rf out
 

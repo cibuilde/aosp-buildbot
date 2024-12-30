@@ -67,30 +67,30 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/system/libbase/libbase^android_x86_64_sh
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^android_recovery_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^android_x86_64_shared/ .
 
-echo "building sload_f2fs^android_x86_64"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja sload_f2fs,android_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/f2fs-tools/sload_f2fs^android_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/external/f2fs-tools/sload_f2fs^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/f2fs-tools/sload_f2fs^android_x86_64
-
-echo "building sload_f2fs^android_recovery_x86_64"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja sload_f2fs,android_recovery_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/f2fs-tools/sload_f2fs^android_recovery_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/external/f2fs-tools/sload_f2fs^android_recovery_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/f2fs-tools/sload_f2fs^android_recovery_x86_64
-
-echo "building make_f2fs^android_x86_64"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja make_f2fs,android_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/f2fs-tools/make_f2fs^android_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/external/f2fs-tools/make_f2fs^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/f2fs-tools/make_f2fs^android_x86_64
+echo "building fsck.f2fs^android_x86_64"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja fsck.f2fs,android_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/f2fs-tools/fsck.f2fs^android_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/external/f2fs-tools/fsck.f2fs^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/f2fs-tools/fsck.f2fs^android_x86_64
 
 echo "building make_f2fs^android_recovery_x86_64"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja make_f2fs,android_recovery_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/f2fs-tools/make_f2fs^android_recovery_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/external/f2fs-tools/make_f2fs^android_recovery_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/f2fs-tools/make_f2fs^android_recovery_x86_64
 
-echo "building fsck.f2fs^android_x86_64"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja fsck.f2fs,android_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/f2fs-tools/fsck.f2fs^android_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/external/f2fs-tools/fsck.f2fs^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/f2fs-tools/fsck.f2fs^android_x86_64
+echo "building make_f2fs^android_x86_64"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja make_f2fs,android_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/f2fs-tools/make_f2fs^android_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/external/f2fs-tools/make_f2fs^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/f2fs-tools/make_f2fs^android_x86_64
+
+echo "building sload_f2fs^android_recovery_x86_64"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja sload_f2fs,android_recovery_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/f2fs-tools/sload_f2fs^android_recovery_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/external/f2fs-tools/sload_f2fs^android_recovery_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/f2fs-tools/sload_f2fs^android_recovery_x86_64
+
+echo "building sload_f2fs^android_x86_64"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja sload_f2fs,android_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/f2fs-tools/sload_f2fs^android_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/external/f2fs-tools/sload_f2fs^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/f2fs-tools/sload_f2fs^android_x86_64
 
 rm -rf out
 

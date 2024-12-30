@@ -27,20 +27,20 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/external/python/six/py-six^linux_glibc_x
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/sqlite/dist/libsqlite^linux_glibc_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/build-tools/prebuilt_py3-launcher-autorun^linux_glibc_x86_64/ .
 
-echo "building merge_csv^linux_glibc_x86_64_PY3"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja merge_csv,linux_glibc_x86_64_PY3
-mkdir -p $GITHUB_WORKSPACE/artifacts/build/soong/scripts/hiddenapi/merge_csv^linux_glibc_x86_64_PY3
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/build/soong/merge_csv^linux_glibc_x86_64_PY3.output . $GITHUB_WORKSPACE/artifacts/build/soong/scripts/hiddenapi/merge_csv^linux_glibc_x86_64_PY3
+echo "building conv_linker_config^linux_glibc_x86_64_PY3"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja conv_linker_config,linux_glibc_x86_64_PY3
+mkdir -p $GITHUB_WORKSPACE/artifacts/build/soong/scripts/conv_linker_config^linux_glibc_x86_64_PY3
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/build/soong/conv_linker_config^linux_glibc_x86_64_PY3.output . $GITHUB_WORKSPACE/artifacts/build/soong/scripts/conv_linker_config^linux_glibc_x86_64_PY3
 
 echo "building generate_hiddenapi_lists^linux_glibc_x86_64_PY3"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja generate_hiddenapi_lists,linux_glibc_x86_64_PY3
 mkdir -p $GITHUB_WORKSPACE/artifacts/build/soong/scripts/hiddenapi/generate_hiddenapi_lists^linux_glibc_x86_64_PY3
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/build/soong/generate_hiddenapi_lists^linux_glibc_x86_64_PY3.output . $GITHUB_WORKSPACE/artifacts/build/soong/scripts/hiddenapi/generate_hiddenapi_lists^linux_glibc_x86_64_PY3
 
-echo "building conv_linker_config^linux_glibc_x86_64_PY3"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja conv_linker_config,linux_glibc_x86_64_PY3
-mkdir -p $GITHUB_WORKSPACE/artifacts/build/soong/scripts/conv_linker_config^linux_glibc_x86_64_PY3
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/build/soong/conv_linker_config^linux_glibc_x86_64_PY3.output . $GITHUB_WORKSPACE/artifacts/build/soong/scripts/conv_linker_config^linux_glibc_x86_64_PY3
+echo "building merge_csv^linux_glibc_x86_64_PY3"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja merge_csv,linux_glibc_x86_64_PY3
+mkdir -p $GITHUB_WORKSPACE/artifacts/build/soong/scripts/hiddenapi/merge_csv^linux_glibc_x86_64_PY3
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/build/soong/merge_csv^linux_glibc_x86_64_PY3.output . $GITHUB_WORKSPACE/artifacts/build/soong/scripts/hiddenapi/merge_csv^linux_glibc_x86_64_PY3
 
 rm -rf out
 

@@ -30,15 +30,40 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/build/blueprint/bpmodify^linux_glibc_x86
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcxx/libc++^linux_glibc_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/tools/aidl/aidl^linux_glibc_x86_64/ .
 
-echo "building oemnetd_aidl_interface-cpp-source^"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja oemnetd_aidl_interface-cpp-source,
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/netd/server/oemnetd_aidl_interface-cpp-source^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/netd/oemnetd_aidl_interface-cpp-source^.output . $GITHUB_WORKSPACE/artifacts/system/netd/server/oemnetd_aidl_interface-cpp-source^
+echo "building netd_aidl_interface-api^"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja netd_aidl_interface-api,
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/netd/server/netd_aidl_interface-api^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/netd/netd_aidl_interface-api^.output . $GITHUB_WORKSPACE/artifacts/system/netd/server/netd_aidl_interface-api^
 
-echo "building netd_event_listener_interface-api^"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja netd_event_listener_interface-api,
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/netd/server/netd_event_listener_interface-api^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/netd/netd_event_listener_interface-api^.output . $GITHUB_WORKSPACE/artifacts/system/netd/server/netd_event_listener_interface-api^
+echo "building netd_aidl_interface-V3-java-source^"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja netd_aidl_interface-V3-java-source,
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/netd/server/netd_aidl_interface-V3-java-source^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/netd/netd_aidl_interface-V3-java-source^.output . $GITHUB_WORKSPACE/artifacts/system/netd/server/netd_aidl_interface-V3-java-source^
+
+echo "building netd_aidl_interface-V6-cpp-source^"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja netd_aidl_interface-V6-cpp-source,
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/netd/server/netd_aidl_interface-V6-cpp-source^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/netd/netd_aidl_interface-V6-cpp-source^.output . $GITHUB_WORKSPACE/artifacts/system/netd/server/netd_aidl_interface-V6-cpp-source^
+
+echo "building netd_aidl_interface-V7-cpp-source^"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja netd_aidl_interface-V7-cpp-source,
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/netd/server/netd_aidl_interface-V7-cpp-source^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/netd/netd_aidl_interface-V7-cpp-source^.output . $GITHUB_WORKSPACE/artifacts/system/netd/server/netd_aidl_interface-V7-cpp-source^
+
+echo "building netd_aidl_interface-V7-java-source^"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja netd_aidl_interface-V7-java-source,
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/netd/server/netd_aidl_interface-V7-java-source^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/netd/netd_aidl_interface-V7-java-source^.output . $GITHUB_WORKSPACE/artifacts/system/netd/server/netd_aidl_interface-V7-java-source^
+
+echo "building netd_event_listener_interface-V1-cpp-source^"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja netd_event_listener_interface-V1-cpp-source,
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/netd/server/netd_event_listener_interface-V1-cpp-source^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/netd/netd_event_listener_interface-V1-cpp-source^.output . $GITHUB_WORKSPACE/artifacts/system/netd/server/netd_event_listener_interface-V1-cpp-source^
+
+echo "building netd_event_listener_interface-V1-java-source^"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja netd_event_listener_interface-V1-java-source,
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/netd/server/netd_event_listener_interface-V1-java-source^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/netd/netd_event_listener_interface-V1-java-source^.output . $GITHUB_WORKSPACE/artifacts/system/netd/server/netd_event_listener_interface-V1-java-source^
 
 echo "building netd_event_listener_interface-V1-ndk_platform-source^"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja netd_event_listener_interface-V1-ndk_platform-source,
@@ -50,45 +75,20 @@ ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja netd_event_listen
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/netd/server/netd_event_listener_interface-V1-ndk_platform^android_x86_64_static_cfi_com.android.resolv
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/netd/netd_event_listener_interface-V1-ndk_platform^android_x86_64_static_cfi_com.android.resolv.output . $GITHUB_WORKSPACE/artifacts/system/netd/server/netd_event_listener_interface-V1-ndk_platform^android_x86_64_static_cfi_com.android.resolv
 
+echo "building netd_event_listener_interface-api^"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja netd_event_listener_interface-api,
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/netd/server/netd_event_listener_interface-api^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/netd/netd_event_listener_interface-api^.output . $GITHUB_WORKSPACE/artifacts/system/netd/server/netd_event_listener_interface-api^
+
 echo "building netd_event_listener_interface-lateststable-ndk_platform^android_x86_64_static_cfi_com.android.resolv"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja netd_event_listener_interface-lateststable-ndk_platform,android_x86_64_static_cfi_com.android.resolv
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/netd/server/netd_event_listener_interface-lateststable-ndk_platform^android_x86_64_static_cfi_com.android.resolv
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/netd/netd_event_listener_interface-lateststable-ndk_platform^android_x86_64_static_cfi_com.android.resolv.output . $GITHUB_WORKSPACE/artifacts/system/netd/server/netd_event_listener_interface-lateststable-ndk_platform^android_x86_64_static_cfi_com.android.resolv
 
-echo "building netd_event_listener_interface-V1-java-source^"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja netd_event_listener_interface-V1-java-source,
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/netd/server/netd_event_listener_interface-V1-java-source^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/netd/netd_event_listener_interface-V1-java-source^.output . $GITHUB_WORKSPACE/artifacts/system/netd/server/netd_event_listener_interface-V1-java-source^
-
-echo "building netd_event_listener_interface-V1-cpp-source^"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja netd_event_listener_interface-V1-cpp-source,
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/netd/server/netd_event_listener_interface-V1-cpp-source^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/netd/netd_event_listener_interface-V1-cpp-source^.output . $GITHUB_WORKSPACE/artifacts/system/netd/server/netd_event_listener_interface-V1-cpp-source^
-
-echo "building netd_aidl_interface-api^"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja netd_aidl_interface-api,
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/netd/server/netd_aidl_interface-api^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/netd/netd_aidl_interface-api^.output . $GITHUB_WORKSPACE/artifacts/system/netd/server/netd_aidl_interface-api^
-
-echo "building netd_aidl_interface-V7-java-source^"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja netd_aidl_interface-V7-java-source,
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/netd/server/netd_aidl_interface-V7-java-source^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/netd/netd_aidl_interface-V7-java-source^.output . $GITHUB_WORKSPACE/artifacts/system/netd/server/netd_aidl_interface-V7-java-source^
-
-echo "building netd_aidl_interface-V7-cpp-source^"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja netd_aidl_interface-V7-cpp-source,
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/netd/server/netd_aidl_interface-V7-cpp-source^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/netd/netd_aidl_interface-V7-cpp-source^.output . $GITHUB_WORKSPACE/artifacts/system/netd/server/netd_aidl_interface-V7-cpp-source^
-
-echo "building netd_aidl_interface-V6-cpp-source^"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja netd_aidl_interface-V6-cpp-source,
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/netd/server/netd_aidl_interface-V6-cpp-source^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/netd/netd_aidl_interface-V6-cpp-source^.output . $GITHUB_WORKSPACE/artifacts/system/netd/server/netd_aidl_interface-V6-cpp-source^
-
-echo "building netd_aidl_interface-V3-java-source^"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja netd_aidl_interface-V3-java-source,
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/netd/server/netd_aidl_interface-V3-java-source^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/netd/netd_aidl_interface-V3-java-source^.output . $GITHUB_WORKSPACE/artifacts/system/netd/server/netd_aidl_interface-V3-java-source^
+echo "building oemnetd_aidl_interface-cpp-source^"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja oemnetd_aidl_interface-cpp-source,
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/netd/server/oemnetd_aidl_interface-cpp-source^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/netd/oemnetd_aidl_interface-cpp-source^.output . $GITHUB_WORKSPACE/artifacts/system/netd/server/oemnetd_aidl_interface-cpp-source^
 
 rm -rf out
 

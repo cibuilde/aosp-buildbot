@@ -1,0 +1,4 @@
+out/soong/.intermediates/prebuilts/sdk/current/androidx-legacy/androidx.lifecycle_lifecycle-extensions/android_common/combined/androidx.lifecycle_lifecycle-extensions.jar
+out/soong/.intermediates/prebuilts/sdk/current/androidx-legacy/androidx.lifecycle_lifecycle-extensions/android_common/manifest_fixer/AndroidManifest.xml
+out/soong/.intermediates/prebuilts/sdk/current/androidx-legacy/androidx.lifecycle_lifecycle-extensions/android_common/package-res.apk
+out/soong/.intermediates/prebuilts/sdk/current/androidx-legacy/androidx.lifecycle_lifecycle-extensions/android_common/turbine-combined/androidx.lifecycle_lifecycle-extensions.jar

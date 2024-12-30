@@ -166,35 +166,35 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/system/libhidl/transport/manager/1.2/and
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^linux_glibc_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/tools/sysprop/sysprop_cpp^linux_glibc_x86_64/ .
 
-echo "building libhwui^android_x86_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_12.ninja libhwui,android_x86_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/libs/hwui/libhwui^android_x86_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_12/frameworks/base/libhwui^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/libs/hwui/libhwui^android_x86_x86_64_static
-
-echo "building libservices.core^android_x86_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_12.ninja libservices.core,android_x86_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/services/core/jni/libservices.core^android_x86_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_12/frameworks/base/libservices.core^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/services/core/jni/libservices.core^android_x86_x86_64_static
-
-echo "building libhwui^android_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_12.ninja libhwui,android_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/libs/hwui/libhwui^android_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_12/frameworks/base/libhwui^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/libs/hwui/libhwui^android_x86_64_static
-
-echo "building libservices.core^android_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_12.ninja libservices.core,android_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/services/core/jni/libservices.core^android_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_12/frameworks/base/libservices.core^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/services/core/jni/libservices.core^android_x86_64_static
+echo "building libfilterfw_native^android_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_12.ninja libfilterfw_native,android_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/media/mca/filterfw/native/libfilterfw_native^android_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_12/frameworks/base/libfilterfw_native^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/media/mca/filterfw/native/libfilterfw_native^android_x86_64_static
 
 echo "building libfilterfw_native^android_x86_x86_64_static"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_12.ninja libfilterfw_native,android_x86_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/media/mca/filterfw/native/libfilterfw_native^android_x86_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_12/frameworks/base/libfilterfw_native^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/media/mca/filterfw/native/libfilterfw_native^android_x86_x86_64_static
 
-echo "building libfilterfw_native^android_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_12.ninja libfilterfw_native,android_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/media/mca/filterfw/native/libfilterfw_native^android_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_12/frameworks/base/libfilterfw_native^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/media/mca/filterfw/native/libfilterfw_native^android_x86_64_static
+echo "building libhwui^android_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_12.ninja libhwui,android_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/libs/hwui/libhwui^android_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_12/frameworks/base/libhwui^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/libs/hwui/libhwui^android_x86_64_static
+
+echo "building libhwui^android_x86_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_12.ninja libhwui,android_x86_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/libs/hwui/libhwui^android_x86_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_12/frameworks/base/libhwui^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/libs/hwui/libhwui^android_x86_x86_64_static
+
+echo "building libservices.core^android_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_12.ninja libservices.core,android_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/services/core/jni/libservices.core^android_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_12/frameworks/base/libservices.core^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/services/core/jni/libservices.core^android_x86_64_static
+
+echo "building libservices.core^android_x86_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_12.ninja libservices.core,android_x86_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/services/core/jni/libservices.core^android_x86_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_12/frameworks/base/libservices.core^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/services/core/jni/libservices.core^android_x86_x86_64_static
 
 rm -rf out
 

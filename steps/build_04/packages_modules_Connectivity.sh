@@ -48,20 +48,20 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/libnativehelper/libnativehelper^android_
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^android_x86_64_shared_current/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^android_x86_x86_64_shared_current/ .
 
-echo "building libservice-connectivity^android_x86_64_shared_apex30"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libservice-connectivity,android_x86_64_shared_apex30
-mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/Connectivity/service/libservice-connectivity^android_x86_64_shared_apex30
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/packages/modules/Connectivity/libservice-connectivity^android_x86_64_shared_apex30.output . $GITHUB_WORKSPACE/artifacts/packages/modules/Connectivity/service/libservice-connectivity^android_x86_64_shared_apex30
+echo "building libframework-connectivity-jni^android_x86_64_shared_apex30"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libframework-connectivity-jni,android_x86_64_shared_apex30
+mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/Connectivity/framework/libframework-connectivity-jni^android_x86_64_shared_apex30
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/packages/modules/Connectivity/libframework-connectivity-jni^android_x86_64_shared_apex30.output . $GITHUB_WORKSPACE/artifacts/packages/modules/Connectivity/framework/libframework-connectivity-jni^android_x86_64_shared_apex30
 
 echo "building libframework-connectivity-jni^android_x86_x86_64_shared_apex30"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libframework-connectivity-jni,android_x86_x86_64_shared_apex30
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/Connectivity/framework/libframework-connectivity-jni^android_x86_x86_64_shared_apex30
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/packages/modules/Connectivity/libframework-connectivity-jni^android_x86_x86_64_shared_apex30.output . $GITHUB_WORKSPACE/artifacts/packages/modules/Connectivity/framework/libframework-connectivity-jni^android_x86_x86_64_shared_apex30
 
-echo "building libframework-connectivity-jni^android_x86_64_shared_apex30"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libframework-connectivity-jni,android_x86_64_shared_apex30
-mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/Connectivity/framework/libframework-connectivity-jni^android_x86_64_shared_apex30
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/packages/modules/Connectivity/libframework-connectivity-jni^android_x86_64_shared_apex30.output . $GITHUB_WORKSPACE/artifacts/packages/modules/Connectivity/framework/libframework-connectivity-jni^android_x86_64_shared_apex30
+echo "building libservice-connectivity^android_x86_64_shared_apex30"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libservice-connectivity,android_x86_64_shared_apex30
+mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/Connectivity/service/libservice-connectivity^android_x86_64_shared_apex30
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/packages/modules/Connectivity/libservice-connectivity^android_x86_64_shared_apex30.output . $GITHUB_WORKSPACE/artifacts/packages/modules/Connectivity/service/libservice-connectivity^android_x86_64_shared_apex30
 
 rm -rf out
 

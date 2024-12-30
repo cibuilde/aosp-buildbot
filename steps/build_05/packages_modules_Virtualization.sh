@@ -63,10 +63,15 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/system/sepolicy/plat_mapping_file^androi
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/sepolicy/plat_sepolicy.cil^android_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/sepolicy/plat_sepolicy_and_mapping.sha256_gen^/ .
 
-echo "building microdroid_vendor_ramdisk-5.10^android_common"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja microdroid_vendor_ramdisk-5.10,android_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/Virtualization/microdroid/microdroid_vendor_ramdisk-5.10^android_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/packages/modules/Virtualization/microdroid_vendor_ramdisk-5.10^android_common.output . $GITHUB_WORKSPACE/artifacts/packages/modules/Virtualization/microdroid/microdroid_vendor_ramdisk-5.10^android_common
+echo "building libauthfs_crypto_bindgen^android_x86_64_source_apex10000"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libauthfs_crypto_bindgen,android_x86_64_source_apex10000
+mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/Virtualization/authfs/libauthfs_crypto_bindgen^android_x86_64_source_apex10000
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/packages/modules/Virtualization/libauthfs_crypto_bindgen^android_x86_64_source_apex10000.output . $GITHUB_WORKSPACE/artifacts/packages/modules/Virtualization/authfs/libauthfs_crypto_bindgen^android_x86_64_source_apex10000
+
+echo "building microdroid_precompiled_sepolicy.plat_sepolicy_and_mapping.sha256^android_x86_64"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja microdroid_precompiled_sepolicy.plat_sepolicy_and_mapping.sha256,android_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/Virtualization/microdroid/microdroid_precompiled_sepolicy.plat_sepolicy_and_mapping.sha256^android_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/packages/modules/Virtualization/microdroid_precompiled_sepolicy.plat_sepolicy_and_mapping.sha256^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/packages/modules/Virtualization/microdroid/microdroid_precompiled_sepolicy.plat_sepolicy_and_mapping.sha256^android_x86_64
 
 echo "building microdroid_precompiled_sepolicy_gen^"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja microdroid_precompiled_sepolicy_gen,
@@ -78,15 +83,10 @@ ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja microdroid_precom
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/Virtualization/microdroid/microdroid_precompiled_sepolicy^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/packages/modules/Virtualization/microdroid_precompiled_sepolicy^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/packages/modules/Virtualization/microdroid/microdroid_precompiled_sepolicy^android_x86_64
 
-echo "building microdroid_precompiled_sepolicy.plat_sepolicy_and_mapping.sha256^android_x86_64"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja microdroid_precompiled_sepolicy.plat_sepolicy_and_mapping.sha256,android_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/Virtualization/microdroid/microdroid_precompiled_sepolicy.plat_sepolicy_and_mapping.sha256^android_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/packages/modules/Virtualization/microdroid_precompiled_sepolicy.plat_sepolicy_and_mapping.sha256^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/packages/modules/Virtualization/microdroid/microdroid_precompiled_sepolicy.plat_sepolicy_and_mapping.sha256^android_x86_64
-
-echo "building libauthfs_crypto_bindgen^android_x86_64_source_apex10000"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libauthfs_crypto_bindgen,android_x86_64_source_apex10000
-mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/Virtualization/authfs/libauthfs_crypto_bindgen^android_x86_64_source_apex10000
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/packages/modules/Virtualization/libauthfs_crypto_bindgen^android_x86_64_source_apex10000.output . $GITHUB_WORKSPACE/artifacts/packages/modules/Virtualization/authfs/libauthfs_crypto_bindgen^android_x86_64_source_apex10000
+echo "building microdroid_vendor_ramdisk-5.10^android_common"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja microdroid_vendor_ramdisk-5.10,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/Virtualization/microdroid/microdroid_vendor_ramdisk-5.10^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/packages/modules/Virtualization/microdroid_vendor_ramdisk-5.10^android_common.output . $GITHUB_WORKSPACE/artifacts/packages/modules/Virtualization/microdroid/microdroid_vendor_ramdisk-5.10^android_common
 
 rm -rf out
 

@@ -21,6 +21,7 @@ clone_depth_platform hardware/ril
 clone_depth_platform prebuilts/gcc/linux-x86/x86/x86_64-linux-android-4.9
 clone_depth_platform system/core
 clone_sparse_exclude system/extras "!/simpleperf/scripts" "!/simpleperf/testdata" "!/simpleperf/demo" "!/simpleperf/doc" "!/memory_replay/traces" "!/ioshark/*.tgz" "!/ioshark/*.tar.gz"
+clone_depth_platform system/libbase
 clone_depth_platform system/logging
 clone_depth_platform system/media
 clone_depth_platform system/server_configurable_flags
@@ -40,16 +41,6 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/external/rust/cxx/cxx-bridge-header^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/rust/cxx/gen/cmd/cxxbridge^linux_glibc_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/rust/cxx/gen/cmd/libcxxbridge_cmd^linux_glibc_x86_64_rlib_rlib-std/ .
 
-echo "building libprofcollect_libflags_bridge_code^"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libprofcollect_libflags_bridge_code,
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/extras/profcollectd/libprofcollectd/bindings/libflags/libprofcollect_libflags_bridge_code^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/system/extras/libprofcollect_libflags_bridge_code^.output . $GITHUB_WORKSPACE/artifacts/system/extras/profcollectd/libprofcollectd/bindings/libflags/libprofcollect_libflags_bridge_code^
-
-echo "building libprofcollect_libflags^android_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libprofcollect_libflags,android_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/extras/profcollectd/libprofcollectd/bindings/libflags/libprofcollect_libflags^android_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/system/extras/libprofcollect_libflags^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/extras/profcollectd/libprofcollectd/bindings/libflags/libprofcollect_libflags^android_x86_64_static
-
 echo "building libprofcollect_libbase_bridge_code^"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libprofcollect_libbase_bridge_code,
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/extras/profcollectd/libprofcollectd/bindings/libbase/libprofcollect_libbase_bridge_code^
@@ -59,6 +50,16 @@ echo "building libprofcollect_libbase^android_x86_64_static"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libprofcollect_libbase,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/extras/profcollectd/libprofcollectd/bindings/libbase/libprofcollect_libbase^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/system/extras/libprofcollect_libbase^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/extras/profcollectd/libprofcollectd/bindings/libbase/libprofcollect_libbase^android_x86_64_static
+
+echo "building libprofcollect_libflags_bridge_code^"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libprofcollect_libflags_bridge_code,
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/extras/profcollectd/libprofcollectd/bindings/libflags/libprofcollect_libflags_bridge_code^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/system/extras/libprofcollect_libflags_bridge_code^.output . $GITHUB_WORKSPACE/artifacts/system/extras/profcollectd/libprofcollectd/bindings/libflags/libprofcollect_libflags_bridge_code^
+
+echo "building libprofcollect_libflags^android_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libprofcollect_libflags,android_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/extras/profcollectd/libprofcollectd/bindings/libflags/libprofcollect_libflags^android_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/system/extras/libprofcollect_libflags^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/extras/profcollectd/libprofcollectd/bindings/libflags/libprofcollect_libflags^android_x86_64_static
 
 rm -rf out
 
@@ -115,6 +116,10 @@ fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/system_extras.tar.zst" ]; then
   echo "Compressing system/extras -> system_extras.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/system_extras.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/system/extras/ .
+fi
+if [ ! -f "$GITHUB_WORKSPACE/cache/system_libbase.tar.zst" ]; then
+  echo "Compressing system/libbase -> system_libbase.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/system_libbase.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/system/libbase/ .
 fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/system_logging.tar.zst" ]; then
   echo "Compressing system/logging -> system_logging.tar.zst"

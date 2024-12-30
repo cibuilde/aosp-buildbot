@@ -24,85 +24,85 @@ clone_depth_platform system/logging
 clone_depth_platform system/media
 
 
-echo "building libarm-optimized-routines-string^android_x86_x86_64_static_apex10000"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libarm-optimized-routines-string,android_x86_x86_64_static_apex10000
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/arm-optimized-routines/libarm-optimized-routines-string^android_x86_x86_64_static_apex10000
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/arm-optimized-routines/libarm-optimized-routines-string^android_x86_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/external/arm-optimized-routines/libarm-optimized-routines-string^android_x86_x86_64_static_apex10000
-
-echo "building libarm-optimized-routines-string^android_x86_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libarm-optimized-routines-string,android_x86_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/arm-optimized-routines/libarm-optimized-routines-string^android_x86_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/arm-optimized-routines/libarm-optimized-routines-string^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/arm-optimized-routines/libarm-optimized-routines-string^android_x86_x86_64_static
-
-echo "building libarm-optimized-routines-string^android_x86_64_static_apex10000"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libarm-optimized-routines-string,android_x86_64_static_apex10000
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/arm-optimized-routines/libarm-optimized-routines-string^android_x86_64_static_apex10000
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/arm-optimized-routines/libarm-optimized-routines-string^android_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/external/arm-optimized-routines/libarm-optimized-routines-string^android_x86_64_static_apex10000
-
-echo "building libarm-optimized-routines-string^android_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libarm-optimized-routines-string,android_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/arm-optimized-routines/libarm-optimized-routines-string^android_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/arm-optimized-routines/libarm-optimized-routines-string^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/arm-optimized-routines/libarm-optimized-routines-string^android_x86_64_static
-
-echo "building libarm-optimized-routines-string^android_vendor_ramdisk_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libarm-optimized-routines-string,android_vendor_ramdisk_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/arm-optimized-routines/libarm-optimized-routines-string^android_vendor_ramdisk_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/arm-optimized-routines/libarm-optimized-routines-string^android_vendor_ramdisk_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/arm-optimized-routines/libarm-optimized-routines-string^android_vendor_ramdisk_x86_64_static
-
-echo "building libarm-optimized-routines-string^android_recovery_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libarm-optimized-routines-string,android_recovery_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/arm-optimized-routines/libarm-optimized-routines-string^android_recovery_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/arm-optimized-routines/libarm-optimized-routines-string^android_recovery_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/arm-optimized-routines/libarm-optimized-routines-string^android_recovery_x86_64_static
-
-echo "building libarm-optimized-routines-string^android_native_bridge_arm_armv7-a-neon_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libarm-optimized-routines-string,android_native_bridge_arm_armv7-a-neon_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/arm-optimized-routines/libarm-optimized-routines-string^android_native_bridge_arm_armv7-a-neon_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/arm-optimized-routines/libarm-optimized-routines-string^android_native_bridge_arm_armv7-a-neon_static.output . $GITHUB_WORKSPACE/artifacts/external/arm-optimized-routines/libarm-optimized-routines-string^android_native_bridge_arm_armv7-a-neon_static
-
-echo "building libarm-optimized-routines-string^android_native_bridge_arm64_armv8-a_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libarm-optimized-routines-string,android_native_bridge_arm64_armv8-a_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/arm-optimized-routines/libarm-optimized-routines-string^android_native_bridge_arm64_armv8-a_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/arm-optimized-routines/libarm-optimized-routines-string^android_native_bridge_arm64_armv8-a_static.output . $GITHUB_WORKSPACE/artifacts/external/arm-optimized-routines/libarm-optimized-routines-string^android_native_bridge_arm64_armv8-a_static
-
-echo "building libarm-optimized-routines-math^android_x86_x86_64_static_apex10000"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libarm-optimized-routines-math,android_x86_x86_64_static_apex10000
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/arm-optimized-routines/libarm-optimized-routines-math^android_x86_x86_64_static_apex10000
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/arm-optimized-routines/libarm-optimized-routines-math^android_x86_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/external/arm-optimized-routines/libarm-optimized-routines-math^android_x86_x86_64_static_apex10000
-
-echo "building libarm-optimized-routines-math^android_x86_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libarm-optimized-routines-math,android_x86_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/arm-optimized-routines/libarm-optimized-routines-math^android_x86_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/arm-optimized-routines/libarm-optimized-routines-math^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/arm-optimized-routines/libarm-optimized-routines-math^android_x86_x86_64_static
-
-echo "building libarm-optimized-routines-math^android_x86_64_static_apex10000"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libarm-optimized-routines-math,android_x86_64_static_apex10000
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/arm-optimized-routines/libarm-optimized-routines-math^android_x86_64_static_apex10000
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/arm-optimized-routines/libarm-optimized-routines-math^android_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/external/arm-optimized-routines/libarm-optimized-routines-math^android_x86_64_static_apex10000
-
-echo "building libarm-optimized-routines-math^android_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libarm-optimized-routines-math,android_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/arm-optimized-routines/libarm-optimized-routines-math^android_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/arm-optimized-routines/libarm-optimized-routines-math^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/arm-optimized-routines/libarm-optimized-routines-math^android_x86_64_static
-
-echo "building libarm-optimized-routines-math^android_vendor_ramdisk_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libarm-optimized-routines-math,android_vendor_ramdisk_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/arm-optimized-routines/libarm-optimized-routines-math^android_vendor_ramdisk_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/arm-optimized-routines/libarm-optimized-routines-math^android_vendor_ramdisk_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/arm-optimized-routines/libarm-optimized-routines-math^android_vendor_ramdisk_x86_64_static
-
-echo "building libarm-optimized-routines-math^android_recovery_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libarm-optimized-routines-math,android_recovery_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/arm-optimized-routines/libarm-optimized-routines-math^android_recovery_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/arm-optimized-routines/libarm-optimized-routines-math^android_recovery_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/arm-optimized-routines/libarm-optimized-routines-math^android_recovery_x86_64_static
+echo "building libarm-optimized-routines-math^android_native_bridge_arm64_armv8-a_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libarm-optimized-routines-math,android_native_bridge_arm64_armv8-a_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/arm-optimized-routines/libarm-optimized-routines-math^android_native_bridge_arm64_armv8-a_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/arm-optimized-routines/libarm-optimized-routines-math^android_native_bridge_arm64_armv8-a_static.output . $GITHUB_WORKSPACE/artifacts/external/arm-optimized-routines/libarm-optimized-routines-math^android_native_bridge_arm64_armv8-a_static
 
 echo "building libarm-optimized-routines-math^android_native_bridge_arm_armv7-a-neon_static"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libarm-optimized-routines-math,android_native_bridge_arm_armv7-a-neon_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/arm-optimized-routines/libarm-optimized-routines-math^android_native_bridge_arm_armv7-a-neon_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/arm-optimized-routines/libarm-optimized-routines-math^android_native_bridge_arm_armv7-a-neon_static.output . $GITHUB_WORKSPACE/artifacts/external/arm-optimized-routines/libarm-optimized-routines-math^android_native_bridge_arm_armv7-a-neon_static
 
-echo "building libarm-optimized-routines-math^android_native_bridge_arm64_armv8-a_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libarm-optimized-routines-math,android_native_bridge_arm64_armv8-a_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/arm-optimized-routines/libarm-optimized-routines-math^android_native_bridge_arm64_armv8-a_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/arm-optimized-routines/libarm-optimized-routines-math^android_native_bridge_arm64_armv8-a_static.output . $GITHUB_WORKSPACE/artifacts/external/arm-optimized-routines/libarm-optimized-routines-math^android_native_bridge_arm64_armv8-a_static
+echo "building libarm-optimized-routines-math^android_recovery_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libarm-optimized-routines-math,android_recovery_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/arm-optimized-routines/libarm-optimized-routines-math^android_recovery_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/arm-optimized-routines/libarm-optimized-routines-math^android_recovery_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/arm-optimized-routines/libarm-optimized-routines-math^android_recovery_x86_64_static
+
+echo "building libarm-optimized-routines-math^android_vendor_ramdisk_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libarm-optimized-routines-math,android_vendor_ramdisk_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/arm-optimized-routines/libarm-optimized-routines-math^android_vendor_ramdisk_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/arm-optimized-routines/libarm-optimized-routines-math^android_vendor_ramdisk_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/arm-optimized-routines/libarm-optimized-routines-math^android_vendor_ramdisk_x86_64_static
+
+echo "building libarm-optimized-routines-math^android_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libarm-optimized-routines-math,android_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/arm-optimized-routines/libarm-optimized-routines-math^android_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/arm-optimized-routines/libarm-optimized-routines-math^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/arm-optimized-routines/libarm-optimized-routines-math^android_x86_64_static
+
+echo "building libarm-optimized-routines-math^android_x86_64_static_apex10000"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libarm-optimized-routines-math,android_x86_64_static_apex10000
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/arm-optimized-routines/libarm-optimized-routines-math^android_x86_64_static_apex10000
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/arm-optimized-routines/libarm-optimized-routines-math^android_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/external/arm-optimized-routines/libarm-optimized-routines-math^android_x86_64_static_apex10000
+
+echo "building libarm-optimized-routines-math^android_x86_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libarm-optimized-routines-math,android_x86_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/arm-optimized-routines/libarm-optimized-routines-math^android_x86_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/arm-optimized-routines/libarm-optimized-routines-math^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/arm-optimized-routines/libarm-optimized-routines-math^android_x86_x86_64_static
+
+echo "building libarm-optimized-routines-math^android_x86_x86_64_static_apex10000"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libarm-optimized-routines-math,android_x86_x86_64_static_apex10000
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/arm-optimized-routines/libarm-optimized-routines-math^android_x86_x86_64_static_apex10000
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/arm-optimized-routines/libarm-optimized-routines-math^android_x86_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/external/arm-optimized-routines/libarm-optimized-routines-math^android_x86_x86_64_static_apex10000
+
+echo "building libarm-optimized-routines-string^android_native_bridge_arm64_armv8-a_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libarm-optimized-routines-string,android_native_bridge_arm64_armv8-a_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/arm-optimized-routines/libarm-optimized-routines-string^android_native_bridge_arm64_armv8-a_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/arm-optimized-routines/libarm-optimized-routines-string^android_native_bridge_arm64_armv8-a_static.output . $GITHUB_WORKSPACE/artifacts/external/arm-optimized-routines/libarm-optimized-routines-string^android_native_bridge_arm64_armv8-a_static
+
+echo "building libarm-optimized-routines-string^android_native_bridge_arm_armv7-a-neon_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libarm-optimized-routines-string,android_native_bridge_arm_armv7-a-neon_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/arm-optimized-routines/libarm-optimized-routines-string^android_native_bridge_arm_armv7-a-neon_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/arm-optimized-routines/libarm-optimized-routines-string^android_native_bridge_arm_armv7-a-neon_static.output . $GITHUB_WORKSPACE/artifacts/external/arm-optimized-routines/libarm-optimized-routines-string^android_native_bridge_arm_armv7-a-neon_static
+
+echo "building libarm-optimized-routines-string^android_recovery_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libarm-optimized-routines-string,android_recovery_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/arm-optimized-routines/libarm-optimized-routines-string^android_recovery_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/arm-optimized-routines/libarm-optimized-routines-string^android_recovery_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/arm-optimized-routines/libarm-optimized-routines-string^android_recovery_x86_64_static
+
+echo "building libarm-optimized-routines-string^android_vendor_ramdisk_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libarm-optimized-routines-string,android_vendor_ramdisk_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/arm-optimized-routines/libarm-optimized-routines-string^android_vendor_ramdisk_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/arm-optimized-routines/libarm-optimized-routines-string^android_vendor_ramdisk_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/arm-optimized-routines/libarm-optimized-routines-string^android_vendor_ramdisk_x86_64_static
+
+echo "building libarm-optimized-routines-string^android_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libarm-optimized-routines-string,android_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/arm-optimized-routines/libarm-optimized-routines-string^android_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/arm-optimized-routines/libarm-optimized-routines-string^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/arm-optimized-routines/libarm-optimized-routines-string^android_x86_64_static
+
+echo "building libarm-optimized-routines-string^android_x86_64_static_apex10000"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libarm-optimized-routines-string,android_x86_64_static_apex10000
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/arm-optimized-routines/libarm-optimized-routines-string^android_x86_64_static_apex10000
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/arm-optimized-routines/libarm-optimized-routines-string^android_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/external/arm-optimized-routines/libarm-optimized-routines-string^android_x86_64_static_apex10000
+
+echo "building libarm-optimized-routines-string^android_x86_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libarm-optimized-routines-string,android_x86_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/arm-optimized-routines/libarm-optimized-routines-string^android_x86_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/arm-optimized-routines/libarm-optimized-routines-string^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/arm-optimized-routines/libarm-optimized-routines-string^android_x86_x86_64_static
+
+echo "building libarm-optimized-routines-string^android_x86_x86_64_static_apex10000"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libarm-optimized-routines-string,android_x86_x86_64_static_apex10000
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/arm-optimized-routines/libarm-optimized-routines-string^android_x86_x86_64_static_apex10000
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/arm-optimized-routines/libarm-optimized-routines-string^android_x86_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/external/arm-optimized-routines/libarm-optimized-routines-string^android_x86_x86_64_static_apex10000
 
 rm -rf out
 

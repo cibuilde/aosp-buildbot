@@ -77,55 +77,55 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/system/libhidl/libhidlbase^android_vendo
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/libhidl/libhidlmemory/libhidlmemory^android_vendor.31_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^android_vendor.31_x86_64_shared/ .
 
-echo "building android.hardware.neuralnetworks@1.3-service-sample-quant^android_vendor.31_x86_64"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja android.hardware.neuralnetworks@1.3-service-sample-quant,android_vendor.31_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/NeuralNetworks/driver/sample/android.hardware.neuralnetworks@1.3-service-sample-quant^android_vendor.31_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/packages/modules/NeuralNetworks/android.hardware.neuralnetworks@1.3-service-sample-quant^android_vendor.31_x86_64.output . $GITHUB_WORKSPACE/artifacts/packages/modules/NeuralNetworks/driver/sample/android.hardware.neuralnetworks@1.3-service-sample-quant^android_vendor.31_x86_64
-
-echo "building android.hardware.neuralnetworks@1.3-service-sample-minimal^android_vendor.31_x86_64"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja android.hardware.neuralnetworks@1.3-service-sample-minimal,android_vendor.31_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/NeuralNetworks/driver/sample/android.hardware.neuralnetworks@1.3-service-sample-minimal^android_vendor.31_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/packages/modules/NeuralNetworks/android.hardware.neuralnetworks@1.3-service-sample-minimal^android_vendor.31_x86_64.output . $GITHUB_WORKSPACE/artifacts/packages/modules/NeuralNetworks/driver/sample/android.hardware.neuralnetworks@1.3-service-sample-minimal^android_vendor.31_x86_64
-
-echo "building android.hardware.neuralnetworks@1.3-service-sample-float-slow^android_vendor.31_x86_64"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja android.hardware.neuralnetworks@1.3-service-sample-float-slow,android_vendor.31_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/NeuralNetworks/driver/sample/android.hardware.neuralnetworks@1.3-service-sample-float-slow^android_vendor.31_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/packages/modules/NeuralNetworks/android.hardware.neuralnetworks@1.3-service-sample-float-slow^android_vendor.31_x86_64.output . $GITHUB_WORKSPACE/artifacts/packages/modules/NeuralNetworks/driver/sample/android.hardware.neuralnetworks@1.3-service-sample-float-slow^android_vendor.31_x86_64
-
-echo "building android.hardware.neuralnetworks@1.3-service-sample-float-fast^android_vendor.31_x86_64"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja android.hardware.neuralnetworks@1.3-service-sample-float-fast,android_vendor.31_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/NeuralNetworks/driver/sample/android.hardware.neuralnetworks@1.3-service-sample-float-fast^android_vendor.31_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/packages/modules/NeuralNetworks/android.hardware.neuralnetworks@1.3-service-sample-float-fast^android_vendor.31_x86_64.output . $GITHUB_WORKSPACE/artifacts/packages/modules/NeuralNetworks/driver/sample/android.hardware.neuralnetworks@1.3-service-sample-float-fast^android_vendor.31_x86_64
-
-echo "building android.hardware.neuralnetworks@1.3-service-sample-all^android_vendor.31_x86_64"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja android.hardware.neuralnetworks@1.3-service-sample-all,android_vendor.31_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/NeuralNetworks/driver/sample/android.hardware.neuralnetworks@1.3-service-sample-all^android_vendor.31_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/packages/modules/NeuralNetworks/android.hardware.neuralnetworks@1.3-service-sample-all^android_vendor.31_x86_64.output . $GITHUB_WORKSPACE/artifacts/packages/modules/NeuralNetworks/driver/sample/android.hardware.neuralnetworks@1.3-service-sample-all^android_vendor.31_x86_64
-
-echo "building android.hardware.neuralnetworks-service-sample-quant^android_vendor.31_x86_64"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja android.hardware.neuralnetworks-service-sample-quant,android_vendor.31_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/NeuralNetworks/driver/sample_aidl/android.hardware.neuralnetworks-service-sample-quant^android_vendor.31_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/packages/modules/NeuralNetworks/android.hardware.neuralnetworks-service-sample-quant^android_vendor.31_x86_64.output . $GITHUB_WORKSPACE/artifacts/packages/modules/NeuralNetworks/driver/sample_aidl/android.hardware.neuralnetworks-service-sample-quant^android_vendor.31_x86_64
-
-echo "building android.hardware.neuralnetworks-service-sample-minimal^android_vendor.31_x86_64"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja android.hardware.neuralnetworks-service-sample-minimal,android_vendor.31_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/NeuralNetworks/driver/sample_aidl/android.hardware.neuralnetworks-service-sample-minimal^android_vendor.31_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/packages/modules/NeuralNetworks/android.hardware.neuralnetworks-service-sample-minimal^android_vendor.31_x86_64.output . $GITHUB_WORKSPACE/artifacts/packages/modules/NeuralNetworks/driver/sample_aidl/android.hardware.neuralnetworks-service-sample-minimal^android_vendor.31_x86_64
-
-echo "building android.hardware.neuralnetworks-service-sample-float-slow^android_vendor.31_x86_64"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja android.hardware.neuralnetworks-service-sample-float-slow,android_vendor.31_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/NeuralNetworks/driver/sample_aidl/android.hardware.neuralnetworks-service-sample-float-slow^android_vendor.31_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/packages/modules/NeuralNetworks/android.hardware.neuralnetworks-service-sample-float-slow^android_vendor.31_x86_64.output . $GITHUB_WORKSPACE/artifacts/packages/modules/NeuralNetworks/driver/sample_aidl/android.hardware.neuralnetworks-service-sample-float-slow^android_vendor.31_x86_64
+echo "building android.hardware.neuralnetworks-service-sample-all^android_vendor.31_x86_64"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja android.hardware.neuralnetworks-service-sample-all,android_vendor.31_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/NeuralNetworks/driver/sample_aidl/android.hardware.neuralnetworks-service-sample-all^android_vendor.31_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/packages/modules/NeuralNetworks/android.hardware.neuralnetworks-service-sample-all^android_vendor.31_x86_64.output . $GITHUB_WORKSPACE/artifacts/packages/modules/NeuralNetworks/driver/sample_aidl/android.hardware.neuralnetworks-service-sample-all^android_vendor.31_x86_64
 
 echo "building android.hardware.neuralnetworks-service-sample-float-fast^android_vendor.31_x86_64"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja android.hardware.neuralnetworks-service-sample-float-fast,android_vendor.31_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/NeuralNetworks/driver/sample_aidl/android.hardware.neuralnetworks-service-sample-float-fast^android_vendor.31_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/packages/modules/NeuralNetworks/android.hardware.neuralnetworks-service-sample-float-fast^android_vendor.31_x86_64.output . $GITHUB_WORKSPACE/artifacts/packages/modules/NeuralNetworks/driver/sample_aidl/android.hardware.neuralnetworks-service-sample-float-fast^android_vendor.31_x86_64
 
-echo "building android.hardware.neuralnetworks-service-sample-all^android_vendor.31_x86_64"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja android.hardware.neuralnetworks-service-sample-all,android_vendor.31_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/NeuralNetworks/driver/sample_aidl/android.hardware.neuralnetworks-service-sample-all^android_vendor.31_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/packages/modules/NeuralNetworks/android.hardware.neuralnetworks-service-sample-all^android_vendor.31_x86_64.output . $GITHUB_WORKSPACE/artifacts/packages/modules/NeuralNetworks/driver/sample_aidl/android.hardware.neuralnetworks-service-sample-all^android_vendor.31_x86_64
+echo "building android.hardware.neuralnetworks-service-sample-float-slow^android_vendor.31_x86_64"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja android.hardware.neuralnetworks-service-sample-float-slow,android_vendor.31_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/NeuralNetworks/driver/sample_aidl/android.hardware.neuralnetworks-service-sample-float-slow^android_vendor.31_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/packages/modules/NeuralNetworks/android.hardware.neuralnetworks-service-sample-float-slow^android_vendor.31_x86_64.output . $GITHUB_WORKSPACE/artifacts/packages/modules/NeuralNetworks/driver/sample_aidl/android.hardware.neuralnetworks-service-sample-float-slow^android_vendor.31_x86_64
+
+echo "building android.hardware.neuralnetworks-service-sample-minimal^android_vendor.31_x86_64"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja android.hardware.neuralnetworks-service-sample-minimal,android_vendor.31_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/NeuralNetworks/driver/sample_aidl/android.hardware.neuralnetworks-service-sample-minimal^android_vendor.31_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/packages/modules/NeuralNetworks/android.hardware.neuralnetworks-service-sample-minimal^android_vendor.31_x86_64.output . $GITHUB_WORKSPACE/artifacts/packages/modules/NeuralNetworks/driver/sample_aidl/android.hardware.neuralnetworks-service-sample-minimal^android_vendor.31_x86_64
+
+echo "building android.hardware.neuralnetworks-service-sample-quant^android_vendor.31_x86_64"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja android.hardware.neuralnetworks-service-sample-quant,android_vendor.31_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/NeuralNetworks/driver/sample_aidl/android.hardware.neuralnetworks-service-sample-quant^android_vendor.31_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/packages/modules/NeuralNetworks/android.hardware.neuralnetworks-service-sample-quant^android_vendor.31_x86_64.output . $GITHUB_WORKSPACE/artifacts/packages/modules/NeuralNetworks/driver/sample_aidl/android.hardware.neuralnetworks-service-sample-quant^android_vendor.31_x86_64
+
+echo "building android.hardware.neuralnetworks@1.3-service-sample-all^android_vendor.31_x86_64"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja android.hardware.neuralnetworks@1.3-service-sample-all,android_vendor.31_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/NeuralNetworks/driver/sample/android.hardware.neuralnetworks@1.3-service-sample-all^android_vendor.31_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/packages/modules/NeuralNetworks/android.hardware.neuralnetworks@1.3-service-sample-all^android_vendor.31_x86_64.output . $GITHUB_WORKSPACE/artifacts/packages/modules/NeuralNetworks/driver/sample/android.hardware.neuralnetworks@1.3-service-sample-all^android_vendor.31_x86_64
+
+echo "building android.hardware.neuralnetworks@1.3-service-sample-float-fast^android_vendor.31_x86_64"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja android.hardware.neuralnetworks@1.3-service-sample-float-fast,android_vendor.31_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/NeuralNetworks/driver/sample/android.hardware.neuralnetworks@1.3-service-sample-float-fast^android_vendor.31_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/packages/modules/NeuralNetworks/android.hardware.neuralnetworks@1.3-service-sample-float-fast^android_vendor.31_x86_64.output . $GITHUB_WORKSPACE/artifacts/packages/modules/NeuralNetworks/driver/sample/android.hardware.neuralnetworks@1.3-service-sample-float-fast^android_vendor.31_x86_64
+
+echo "building android.hardware.neuralnetworks@1.3-service-sample-float-slow^android_vendor.31_x86_64"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja android.hardware.neuralnetworks@1.3-service-sample-float-slow,android_vendor.31_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/NeuralNetworks/driver/sample/android.hardware.neuralnetworks@1.3-service-sample-float-slow^android_vendor.31_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/packages/modules/NeuralNetworks/android.hardware.neuralnetworks@1.3-service-sample-float-slow^android_vendor.31_x86_64.output . $GITHUB_WORKSPACE/artifacts/packages/modules/NeuralNetworks/driver/sample/android.hardware.neuralnetworks@1.3-service-sample-float-slow^android_vendor.31_x86_64
+
+echo "building android.hardware.neuralnetworks@1.3-service-sample-minimal^android_vendor.31_x86_64"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja android.hardware.neuralnetworks@1.3-service-sample-minimal,android_vendor.31_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/NeuralNetworks/driver/sample/android.hardware.neuralnetworks@1.3-service-sample-minimal^android_vendor.31_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/packages/modules/NeuralNetworks/android.hardware.neuralnetworks@1.3-service-sample-minimal^android_vendor.31_x86_64.output . $GITHUB_WORKSPACE/artifacts/packages/modules/NeuralNetworks/driver/sample/android.hardware.neuralnetworks@1.3-service-sample-minimal^android_vendor.31_x86_64
+
+echo "building android.hardware.neuralnetworks@1.3-service-sample-quant^android_vendor.31_x86_64"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja android.hardware.neuralnetworks@1.3-service-sample-quant,android_vendor.31_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/NeuralNetworks/driver/sample/android.hardware.neuralnetworks@1.3-service-sample-quant^android_vendor.31_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/packages/modules/NeuralNetworks/android.hardware.neuralnetworks@1.3-service-sample-quant^android_vendor.31_x86_64.output . $GITHUB_WORKSPACE/artifacts/packages/modules/NeuralNetworks/driver/sample/android.hardware.neuralnetworks@1.3-service-sample-quant^android_vendor.31_x86_64
 
 rm -rf out
 

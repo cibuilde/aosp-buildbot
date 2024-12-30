@@ -36,35 +36,35 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/external/boringssl/libcrypto^android_x86
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcxx/libc++^android_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcxxabi/libc++demangle^android_x86_64_static/ .
 
-echo "building traceroute6^android_x86_64"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja traceroute6,android_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/iputils/traceroute6^android_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/external/iputils/traceroute6^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/iputils/traceroute6^android_x86_64
-
-echo "building tracepath^android_x86_64"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja tracepath,android_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/iputils/tracepath^android_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/external/iputils/tracepath^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/iputils/tracepath^android_x86_64
-
-echo "building tracepath6^android_x86_64"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja tracepath6,android_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/iputils/tracepath6^android_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/external/iputils/tracepath6^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/iputils/tracepath6^android_x86_64
-
-echo "building ping^android_x86_64"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja ping,android_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/iputils/ping^android_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/external/iputils/ping^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/iputils/ping^android_x86_64
+echo "building arping^android_x86_64"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja arping,android_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/iputils/arping^android_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/external/iputils/arping^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/iputils/arping^android_x86_64
 
 echo "building ping6^android_x86_64"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja ping6,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/iputils/ping6^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/external/iputils/ping6^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/iputils/ping6^android_x86_64
 
-echo "building arping^android_x86_64"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja arping,android_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/iputils/arping^android_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/external/iputils/arping^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/iputils/arping^android_x86_64
+echo "building ping^android_x86_64"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja ping,android_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/iputils/ping^android_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/external/iputils/ping^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/iputils/ping^android_x86_64
+
+echo "building tracepath6^android_x86_64"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja tracepath6,android_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/iputils/tracepath6^android_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/external/iputils/tracepath6^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/iputils/tracepath6^android_x86_64
+
+echo "building tracepath^android_x86_64"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja tracepath,android_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/iputils/tracepath^android_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/external/iputils/tracepath^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/iputils/tracepath^android_x86_64
+
+echo "building traceroute6^android_x86_64"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja traceroute6,android_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/iputils/traceroute6^android_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/external/iputils/traceroute6^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/iputils/traceroute6^android_x86_64
 
 rm -rf out
 

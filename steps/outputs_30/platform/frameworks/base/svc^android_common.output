@@ -1,0 +1,7 @@
+out/soong/.intermediates/frameworks/base/cmds/svc/svc/android_common/aligned/svc.jar
+out/soong/.intermediates/frameworks/base/cmds/svc/svc/android_common/dexpreopt/oat/x86/javalib.odex
+out/soong/.intermediates/frameworks/base/cmds/svc/svc/android_common/dexpreopt/oat/x86/javalib.vdex
+out/soong/.intermediates/frameworks/base/cmds/svc/svc/android_common/dexpreopt/oat/x86_64/javalib.odex
+out/soong/.intermediates/frameworks/base/cmds/svc/svc/android_common/dexpreopt/oat/x86_64/javalib.vdex
+out/soong/.intermediates/frameworks/base/cmds/svc/svc/android_common/javac/svc.jar
+out/soong/.intermediates/frameworks/base/cmds/svc/svc/android_common/turbine-combined/svc.jar

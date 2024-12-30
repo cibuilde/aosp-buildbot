@@ -41,16 +41,6 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/tools/metalava/metalava^linux_glibc_comm
 rsync -a -r $GITHUB_WORKSPACE/downloads/tools/metalava/metalava^linux_glibc_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/tools/metalava/stub-annotations^android_common/ .
 
-echo "building conscrypt.module.public.api.stubs.source^android_common"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_11.ninja conscrypt.module.public.api.stubs.source,android_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/conscrypt/conscrypt.module.public.api.stubs.source^android_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_11/external/conscrypt/conscrypt.module.public.api.stubs.source^android_common.output . $GITHUB_WORKSPACE/artifacts/external/conscrypt/conscrypt.module.public.api.stubs.source^android_common
-
-echo "building conscrypt.module.public.api.stubs^android_common"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_11.ninja conscrypt.module.public.api.stubs,android_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/conscrypt/conscrypt.module.public.api.stubs^android_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_11/external/conscrypt/conscrypt.module.public.api.stubs^android_common.output . $GITHUB_WORKSPACE/artifacts/external/conscrypt/conscrypt.module.public.api.stubs^android_common
-
 echo "building conscrypt.module.platform.api.stubs.source^android_common"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_11.ninja conscrypt.module.platform.api.stubs.source,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/conscrypt/conscrypt.module.platform.api.stubs.source^android_common
@@ -60,6 +50,16 @@ echo "building conscrypt.module.platform.api.stubs^android_common"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_11.ninja conscrypt.module.platform.api.stubs,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/conscrypt/conscrypt.module.platform.api.stubs^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_11/external/conscrypt/conscrypt.module.platform.api.stubs^android_common.output . $GITHUB_WORKSPACE/artifacts/external/conscrypt/conscrypt.module.platform.api.stubs^android_common
+
+echo "building conscrypt.module.public.api.stubs.source^android_common"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_11.ninja conscrypt.module.public.api.stubs.source,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/conscrypt/conscrypt.module.public.api.stubs.source^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_11/external/conscrypt/conscrypt.module.public.api.stubs.source^android_common.output . $GITHUB_WORKSPACE/artifacts/external/conscrypt/conscrypt.module.public.api.stubs.source^android_common
+
+echo "building conscrypt.module.public.api.stubs^android_common"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_11.ninja conscrypt.module.public.api.stubs,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/conscrypt/conscrypt.module.public.api.stubs^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_11/external/conscrypt/conscrypt.module.public.api.stubs^android_common.output . $GITHUB_WORKSPACE/artifacts/external/conscrypt/conscrypt.module.public.api.stubs^android_common
 
 rm -rf out
 

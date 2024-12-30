@@ -1,0 +1,3 @@
+out/soong/.intermediates/packages/modules/Wifi/service/service-wifi/android_common_apex30/aligned/service-wifi.jar
+out/soong/.intermediates/packages/modules/Wifi/service/service-wifi/android_common_apex30/jarjar/service-wifi.jar
+out/soong/.intermediates/packages/modules/Wifi/service/service-wifi/android_common_apex30/turbine-jarjar/service-wifi.jar

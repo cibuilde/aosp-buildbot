@@ -1,0 +1,6 @@
+out/soong/.intermediates/frameworks/opt/net/ethernet/ethernet-service/android_common/aligned/ethernet-service.jar
+out/soong/.intermediates/frameworks/opt/net/ethernet/ethernet-service/android_common/dexpreopt/dexpreopt.config
+out/soong/.intermediates/frameworks/opt/net/ethernet/ethernet-service/android_common/dexpreopt/oat/x86_64/javalib.odex
+out/soong/.intermediates/frameworks/opt/net/ethernet/ethernet-service/android_common/dexpreopt/oat/x86_64/javalib.vdex
+out/soong/.intermediates/frameworks/opt/net/ethernet/ethernet-service/android_common/javac/ethernet-service.jar
+out/soong/.intermediates/frameworks/opt/net/ethernet/ethernet-service/android_common/turbine-combined/ethernet-service.jar

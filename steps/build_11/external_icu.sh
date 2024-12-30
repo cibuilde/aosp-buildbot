@@ -42,15 +42,15 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/tools/metalava/metalava^linux_glibc_comm
 rsync -a -r $GITHUB_WORKSPACE/downloads/tools/metalava/metalava^linux_glibc_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/tools/metalava/stub-annotations^android_common/ .
 
-echo "building stable.i18n.module.platform.api.stubs.source^android_common"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_11.ninja stable.i18n.module.platform.api.stubs.source,android_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/icu/android_icu4j/stable.i18n.module.platform.api.stubs.source^android_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_11/external/icu/stable.i18n.module.platform.api.stubs.source^android_common.output . $GITHUB_WORKSPACE/artifacts/external/icu/android_icu4j/stable.i18n.module.platform.api.stubs.source^android_common
+echo "building i18n.module.public.api.stubs.source^android_common"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_11.ninja i18n.module.public.api.stubs.source,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/icu/android_icu4j/i18n.module.public.api.stubs.source^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_11/external/icu/i18n.module.public.api.stubs.source^android_common.output . $GITHUB_WORKSPACE/artifacts/external/icu/android_icu4j/i18n.module.public.api.stubs.source^android_common
 
-echo "building stable.i18n.module.platform.api.stubs^android_common"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_11.ninja stable.i18n.module.platform.api.stubs,android_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/icu/android_icu4j/stable.i18n.module.platform.api.stubs^android_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_11/external/icu/stable.i18n.module.platform.api.stubs^android_common.output . $GITHUB_WORKSPACE/artifacts/external/icu/android_icu4j/stable.i18n.module.platform.api.stubs^android_common
+echo "building i18n.module.public.api.stubs^android_common"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_11.ninja i18n.module.public.api.stubs,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/icu/android_icu4j/i18n.module.public.api.stubs^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_11/external/icu/i18n.module.public.api.stubs^android_common.output . $GITHUB_WORKSPACE/artifacts/external/icu/android_icu4j/i18n.module.public.api.stubs^android_common
 
 echo "building legacy.i18n.module.platform.api.stubs.source^android_common"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_11.ninja legacy.i18n.module.platform.api.stubs.source,android_common
@@ -62,15 +62,15 @@ ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_11.ninja legacy.i18n.modul
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/icu/android_icu4j/legacy.i18n.module.platform.api.stubs^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_11/external/icu/legacy.i18n.module.platform.api.stubs^android_common.output . $GITHUB_WORKSPACE/artifacts/external/icu/android_icu4j/legacy.i18n.module.platform.api.stubs^android_common
 
-echo "building i18n.module.public.api.stubs.source^android_common"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_11.ninja i18n.module.public.api.stubs.source,android_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/icu/android_icu4j/i18n.module.public.api.stubs.source^android_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_11/external/icu/i18n.module.public.api.stubs.source^android_common.output . $GITHUB_WORKSPACE/artifacts/external/icu/android_icu4j/i18n.module.public.api.stubs.source^android_common
+echo "building stable.i18n.module.platform.api.stubs.source^android_common"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_11.ninja stable.i18n.module.platform.api.stubs.source,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/icu/android_icu4j/stable.i18n.module.platform.api.stubs.source^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_11/external/icu/stable.i18n.module.platform.api.stubs.source^android_common.output . $GITHUB_WORKSPACE/artifacts/external/icu/android_icu4j/stable.i18n.module.platform.api.stubs.source^android_common
 
-echo "building i18n.module.public.api.stubs^android_common"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_11.ninja i18n.module.public.api.stubs,android_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/icu/android_icu4j/i18n.module.public.api.stubs^android_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_11/external/icu/i18n.module.public.api.stubs^android_common.output . $GITHUB_WORKSPACE/artifacts/external/icu/android_icu4j/i18n.module.public.api.stubs^android_common
+echo "building stable.i18n.module.platform.api.stubs^android_common"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_11.ninja stable.i18n.module.platform.api.stubs,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/icu/android_icu4j/stable.i18n.module.platform.api.stubs^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_11/external/icu/stable.i18n.module.platform.api.stubs^android_common.output . $GITHUB_WORKSPACE/artifacts/external/icu/android_icu4j/stable.i18n.module.platform.api.stubs^android_common
 
 rm -rf out
 

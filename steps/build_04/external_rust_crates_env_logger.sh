@@ -73,20 +73,20 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/rust/libunwind.rust_sysroot^an
 rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/rust/libunwind.rust_sysroot^android_x86_64_rlib_apex10000/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/rust/libunwind.rust_sysroot^android_x86_x86_64_rlib/ .
 
-echo "building libenv_logger^android_x86_x86_64_rlib_rlib-std"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libenv_logger,android_x86_x86_64_rlib_rlib-std
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/rust/crates/env_logger/libenv_logger^android_x86_x86_64_rlib_rlib-std
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/rust/crates/env_logger/libenv_logger^android_x86_x86_64_rlib_rlib-std.output . $GITHUB_WORKSPACE/artifacts/external/rust/crates/env_logger/libenv_logger^android_x86_x86_64_rlib_rlib-std
+echo "building libenv_logger^android_x86_64_rlib_rlib-std"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libenv_logger,android_x86_64_rlib_rlib-std
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/rust/crates/env_logger/libenv_logger^android_x86_64_rlib_rlib-std
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/rust/crates/env_logger/libenv_logger^android_x86_64_rlib_rlib-std.output . $GITHUB_WORKSPACE/artifacts/external/rust/crates/env_logger/libenv_logger^android_x86_64_rlib_rlib-std
 
 echo "building libenv_logger^android_x86_64_rlib_rlib-std_apex10000"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libenv_logger,android_x86_64_rlib_rlib-std_apex10000
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/rust/crates/env_logger/libenv_logger^android_x86_64_rlib_rlib-std_apex10000
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/rust/crates/env_logger/libenv_logger^android_x86_64_rlib_rlib-std_apex10000.output . $GITHUB_WORKSPACE/artifacts/external/rust/crates/env_logger/libenv_logger^android_x86_64_rlib_rlib-std_apex10000
 
-echo "building libenv_logger^android_x86_64_rlib_rlib-std"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libenv_logger,android_x86_64_rlib_rlib-std
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/rust/crates/env_logger/libenv_logger^android_x86_64_rlib_rlib-std
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/rust/crates/env_logger/libenv_logger^android_x86_64_rlib_rlib-std.output . $GITHUB_WORKSPACE/artifacts/external/rust/crates/env_logger/libenv_logger^android_x86_64_rlib_rlib-std
+echo "building libenv_logger^android_x86_x86_64_rlib_rlib-std"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libenv_logger,android_x86_x86_64_rlib_rlib-std
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/rust/crates/env_logger/libenv_logger^android_x86_x86_64_rlib_rlib-std
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/rust/crates/env_logger/libenv_logger^android_x86_x86_64_rlib_rlib-std.output . $GITHUB_WORKSPACE/artifacts/external/rust/crates/env_logger/libenv_logger^android_x86_x86_64_rlib_rlib-std
 
 rm -rf out
 

@@ -41,25 +41,25 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/external/parameter-framework/libpfw_util
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/parameter-framework/libremote-processor^android_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/parameter-framework/libremote-processor^android_x86_x86_64_static/ .
 
-echo "building libremote-processor^android_x86_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libremote-processor,android_x86_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/parameter-framework/libremote-processor^android_x86_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/external/parameter-framework/libremote-processor^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/external/parameter-framework/libremote-processor^android_x86_x86_64_shared
-
 echo "building libremote-processor^android_x86_64_shared"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libremote-processor,android_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/parameter-framework/libremote-processor^android_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/external/parameter-framework/libremote-processor^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/external/parameter-framework/libremote-processor^android_x86_64_shared
 
-echo "building libparameter^android_x86_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libparameter,android_x86_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/parameter-framework/libparameter^android_x86_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/external/parameter-framework/libparameter^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/external/parameter-framework/libparameter^android_x86_x86_64_shared
-
 echo "building libparameter^android_x86_64_shared"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libparameter,android_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/parameter-framework/libparameter^android_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/external/parameter-framework/libparameter^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/external/parameter-framework/libparameter^android_x86_64_shared
+
+echo "building libremote-processor^android_x86_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libremote-processor,android_x86_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/parameter-framework/libremote-processor^android_x86_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/external/parameter-framework/libremote-processor^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/external/parameter-framework/libremote-processor^android_x86_x86_64_shared
+
+echo "building libparameter^android_x86_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libparameter,android_x86_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/parameter-framework/libparameter^android_x86_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/external/parameter-framework/libparameter^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/external/parameter-framework/libparameter^android_x86_x86_64_shared
 
 rm -rf out
 

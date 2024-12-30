@@ -62,66 +62,6 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/system/tools/sysprop/sysprop_api_dump^li
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/tools/sysprop/sysprop_cpp^linux_glibc_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/tools/sysprop/sysprop_java^linux_glibc_x86_64/ .
 
-echo "building libgui_bufferqueue_static^android_x86_64_static_cfi_com.android.media.swcodec"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libgui_bufferqueue_static,android_x86_64_static_cfi_com.android.media.swcodec
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/gui/libgui_bufferqueue_static^android_x86_64_static_cfi_com.android.media.swcodec
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/frameworks/native/libgui_bufferqueue_static^android_x86_64_static_cfi_com.android.media.swcodec.output . $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/gui/libgui_bufferqueue_static^android_x86_64_static_cfi_com.android.media.swcodec
-
-echo "building libgui_bufferqueue_static^android_vendor.31_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libgui_bufferqueue_static,android_vendor.31_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/gui/libgui_bufferqueue_static^android_vendor.31_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/frameworks/native/libgui_bufferqueue_static^android_vendor.31_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/gui/libgui_bufferqueue_static^android_vendor.31_x86_64_static
-
-echo "building libSurfaceFlingerProperties^android_x86_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libSurfaceFlingerProperties,android_x86_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/native/services/surfaceflinger/sysprop/libSurfaceFlingerProperties^android_x86_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/frameworks/native/libSurfaceFlingerProperties^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/native/services/surfaceflinger/sysprop/libSurfaceFlingerProperties^android_x86_x86_64_static
-
-echo "building libSurfaceFlingerProperties^android_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libSurfaceFlingerProperties,android_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/native/services/surfaceflinger/sysprop/libSurfaceFlingerProperties^android_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/frameworks/native/libSurfaceFlingerProperties^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/native/services/surfaceflinger/sysprop/libSurfaceFlingerProperties^android_x86_64_static
-
-echo "building libLibGuiProperties^android_x86_x86_64_static_lto-thin"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libLibGuiProperties,android_x86_x86_64_static_lto-thin
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/gui/sysprop/libLibGuiProperties^android_x86_x86_64_static_lto-thin
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/frameworks/native/libLibGuiProperties^android_x86_x86_64_static_lto-thin.output . $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/gui/sysprop/libLibGuiProperties^android_x86_x86_64_static_lto-thin
-
-echo "building libLibGuiProperties^android_x86_64_static_lto-thin"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libLibGuiProperties,android_x86_64_static_lto-thin
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/gui/sysprop/libLibGuiProperties^android_x86_64_static_lto-thin
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/frameworks/native/libLibGuiProperties^android_x86_64_static_lto-thin.output . $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/gui/sysprop/libLibGuiProperties^android_x86_64_static_lto-thin
-
-echo "building libLibGuiProperties^android_x86_64_static_cfi_apex29"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libLibGuiProperties,android_x86_64_static_cfi_apex29
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/gui/sysprop/libLibGuiProperties^android_x86_64_static_cfi_apex29
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/frameworks/native/libLibGuiProperties^android_x86_64_static_cfi_apex29.output . $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/gui/sysprop/libLibGuiProperties^android_x86_64_static_cfi_apex29
-
-echo "building libLibGuiProperties^android_vendor.31_x86_x86_64_static_lto-thin"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libLibGuiProperties,android_vendor.31_x86_x86_64_static_lto-thin
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/gui/sysprop/libLibGuiProperties^android_vendor.31_x86_x86_64_static_lto-thin
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/frameworks/native/libLibGuiProperties^android_vendor.31_x86_x86_64_static_lto-thin.output . $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/gui/sysprop/libLibGuiProperties^android_vendor.31_x86_x86_64_static_lto-thin
-
-echo "building libLibGuiProperties^android_vendor.31_x86_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libLibGuiProperties,android_vendor.31_x86_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/gui/sysprop/libLibGuiProperties^android_vendor.31_x86_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/frameworks/native/libLibGuiProperties^android_vendor.31_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/gui/sysprop/libLibGuiProperties^android_vendor.31_x86_x86_64_static
-
-echo "building libgui_bufferqueue_static^android_vendor.31_x86_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libgui_bufferqueue_static,android_vendor.31_x86_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/gui/libgui_bufferqueue_static^android_vendor.31_x86_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/frameworks/native/libgui_bufferqueue_static^android_vendor.31_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/gui/libgui_bufferqueue_static^android_vendor.31_x86_x86_64_static
-
-echo "building libLibGuiProperties^android_vendor.31_x86_64_static_lto-thin"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libLibGuiProperties,android_vendor.31_x86_64_static_lto-thin
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/gui/sysprop/libLibGuiProperties^android_vendor.31_x86_64_static_lto-thin
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/frameworks/native/libLibGuiProperties^android_vendor.31_x86_64_static_lto-thin.output . $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/gui/sysprop/libLibGuiProperties^android_vendor.31_x86_64_static_lto-thin
-
-echo "building libLibGuiProperties^android_vendor.31_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libLibGuiProperties,android_vendor.31_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/gui/sysprop/libLibGuiProperties^android_vendor.31_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/frameworks/native/libLibGuiProperties^android_vendor.31_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/gui/sysprop/libLibGuiProperties^android_vendor.31_x86_64_static
-
 echo "building SurfaceFlingerProperties_sysprop_library^"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja SurfaceFlingerProperties_sysprop_library,
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/native/services/surfaceflinger/sysprop/SurfaceFlingerProperties_sysprop_library^
@@ -131,6 +71,66 @@ echo "building SurfaceFlingerProperties_java_gen^"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja SurfaceFlingerProperties_java_gen,
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/native/services/surfaceflinger/sysprop/SurfaceFlingerProperties_java_gen^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/frameworks/native/SurfaceFlingerProperties_java_gen^.output . $GITHUB_WORKSPACE/artifacts/frameworks/native/services/surfaceflinger/sysprop/SurfaceFlingerProperties_java_gen^
+
+echo "building libLibGuiProperties^android_vendor.31_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libLibGuiProperties,android_vendor.31_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/gui/sysprop/libLibGuiProperties^android_vendor.31_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/frameworks/native/libLibGuiProperties^android_vendor.31_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/gui/sysprop/libLibGuiProperties^android_vendor.31_x86_64_static
+
+echo "building libLibGuiProperties^android_vendor.31_x86_64_static_lto-thin"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libLibGuiProperties,android_vendor.31_x86_64_static_lto-thin
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/gui/sysprop/libLibGuiProperties^android_vendor.31_x86_64_static_lto-thin
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/frameworks/native/libLibGuiProperties^android_vendor.31_x86_64_static_lto-thin.output . $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/gui/sysprop/libLibGuiProperties^android_vendor.31_x86_64_static_lto-thin
+
+echo "building libLibGuiProperties^android_vendor.31_x86_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libLibGuiProperties,android_vendor.31_x86_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/gui/sysprop/libLibGuiProperties^android_vendor.31_x86_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/frameworks/native/libLibGuiProperties^android_vendor.31_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/gui/sysprop/libLibGuiProperties^android_vendor.31_x86_x86_64_static
+
+echo "building libLibGuiProperties^android_vendor.31_x86_x86_64_static_lto-thin"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libLibGuiProperties,android_vendor.31_x86_x86_64_static_lto-thin
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/gui/sysprop/libLibGuiProperties^android_vendor.31_x86_x86_64_static_lto-thin
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/frameworks/native/libLibGuiProperties^android_vendor.31_x86_x86_64_static_lto-thin.output . $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/gui/sysprop/libLibGuiProperties^android_vendor.31_x86_x86_64_static_lto-thin
+
+echo "building libLibGuiProperties^android_x86_64_static_cfi_apex29"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libLibGuiProperties,android_x86_64_static_cfi_apex29
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/gui/sysprop/libLibGuiProperties^android_x86_64_static_cfi_apex29
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/frameworks/native/libLibGuiProperties^android_x86_64_static_cfi_apex29.output . $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/gui/sysprop/libLibGuiProperties^android_x86_64_static_cfi_apex29
+
+echo "building libLibGuiProperties^android_x86_64_static_lto-thin"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libLibGuiProperties,android_x86_64_static_lto-thin
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/gui/sysprop/libLibGuiProperties^android_x86_64_static_lto-thin
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/frameworks/native/libLibGuiProperties^android_x86_64_static_lto-thin.output . $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/gui/sysprop/libLibGuiProperties^android_x86_64_static_lto-thin
+
+echo "building libLibGuiProperties^android_x86_x86_64_static_lto-thin"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libLibGuiProperties,android_x86_x86_64_static_lto-thin
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/gui/sysprop/libLibGuiProperties^android_x86_x86_64_static_lto-thin
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/frameworks/native/libLibGuiProperties^android_x86_x86_64_static_lto-thin.output . $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/gui/sysprop/libLibGuiProperties^android_x86_x86_64_static_lto-thin
+
+echo "building libSurfaceFlingerProperties^android_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libSurfaceFlingerProperties,android_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/native/services/surfaceflinger/sysprop/libSurfaceFlingerProperties^android_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/frameworks/native/libSurfaceFlingerProperties^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/native/services/surfaceflinger/sysprop/libSurfaceFlingerProperties^android_x86_64_static
+
+echo "building libSurfaceFlingerProperties^android_x86_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libSurfaceFlingerProperties,android_x86_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/native/services/surfaceflinger/sysprop/libSurfaceFlingerProperties^android_x86_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/frameworks/native/libSurfaceFlingerProperties^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/native/services/surfaceflinger/sysprop/libSurfaceFlingerProperties^android_x86_x86_64_static
+
+echo "building libgui_bufferqueue_static^android_vendor.31_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libgui_bufferqueue_static,android_vendor.31_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/gui/libgui_bufferqueue_static^android_vendor.31_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/frameworks/native/libgui_bufferqueue_static^android_vendor.31_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/gui/libgui_bufferqueue_static^android_vendor.31_x86_64_static
+
+echo "building libgui_bufferqueue_static^android_vendor.31_x86_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libgui_bufferqueue_static,android_vendor.31_x86_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/gui/libgui_bufferqueue_static^android_vendor.31_x86_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/frameworks/native/libgui_bufferqueue_static^android_vendor.31_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/gui/libgui_bufferqueue_static^android_vendor.31_x86_x86_64_static
+
+echo "building libgui_bufferqueue_static^android_x86_64_static_cfi_com.android.media.swcodec"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libgui_bufferqueue_static,android_x86_64_static_cfi_com.android.media.swcodec
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/gui/libgui_bufferqueue_static^android_x86_64_static_cfi_com.android.media.swcodec
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/frameworks/native/libgui_bufferqueue_static^android_x86_64_static_cfi_com.android.media.swcodec.output . $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/gui/libgui_bufferqueue_static^android_x86_64_static_cfi_com.android.media.swcodec
 
 rm -rf out
 

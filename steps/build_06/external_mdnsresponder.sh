@@ -40,15 +40,15 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/system/core/libcutils/libcutils^android_
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^android_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^android_x86_x86_64_shared/ .
 
-echo "building libmdnssd^android_x86_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libmdnssd,android_x86_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/mdnsresponder/libmdnssd^android_x86_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/external/mdnsresponder/libmdnssd^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/external/mdnsresponder/libmdnssd^android_x86_x86_64_shared
-
 echo "building libmdnssd^android_x86_64_shared"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libmdnssd,android_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/mdnsresponder/libmdnssd^android_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/external/mdnsresponder/libmdnssd^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/external/mdnsresponder/libmdnssd^android_x86_64_shared
+
+echo "building libmdnssd^android_x86_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libmdnssd,android_x86_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/mdnsresponder/libmdnssd^android_x86_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/external/mdnsresponder/libmdnssd^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/external/mdnsresponder/libmdnssd^android_x86_x86_64_shared
 
 rm -rf out
 

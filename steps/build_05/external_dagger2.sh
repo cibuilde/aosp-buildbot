@@ -27,6 +27,11 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/external/guava/guava-jre^linux_glibc_com
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/jarjar/jarjar^linux_glibc_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/jsr330/jsr330^linux_glibc_common/ .
 
+echo "building dagger2-bootstrap-compiler^linux_glibc_common"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja dagger2-bootstrap-compiler,linux_glibc_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/dagger2/dagger2-bootstrap-compiler^linux_glibc_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/external/dagger2/dagger2-bootstrap-compiler^linux_glibc_common.output . $GITHUB_WORKSPACE/artifacts/external/dagger2/dagger2-bootstrap-compiler^linux_glibc_common
+
 echo "building dagger2^linux_glibc_common"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja dagger2,linux_glibc_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/dagger2/dagger2^linux_glibc_common
@@ -36,11 +41,6 @@ echo "building dagger2-producers^linux_glibc_common"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja dagger2-producers,linux_glibc_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/dagger2/dagger2-producers^linux_glibc_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/external/dagger2/dagger2-producers^linux_glibc_common.output . $GITHUB_WORKSPACE/artifacts/external/dagger2/dagger2-producers^linux_glibc_common
-
-echo "building dagger2-bootstrap-compiler^linux_glibc_common"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja dagger2-bootstrap-compiler,linux_glibc_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/dagger2/dagger2-bootstrap-compiler^linux_glibc_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/external/dagger2/dagger2-bootstrap-compiler^linux_glibc_common.output . $GITHUB_WORKSPACE/artifacts/external/dagger2/dagger2-bootstrap-compiler^linux_glibc_common
 
 rm -rf out
 

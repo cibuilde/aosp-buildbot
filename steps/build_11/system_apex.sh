@@ -74,20 +74,20 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^android_x86
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/logwrapper/liblogwrap^android_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/vold/libvold_binder^android_x86_64_static/ .
 
-echo "building libapexservice^android_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_11.ninja libapexservice,android_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/apex/apexd/libapexservice^android_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_11/system/apex/libapexservice^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/apex/apexd/libapexservice^android_x86_64_static
+echo "building libapexd^android_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_11.ninja libapexd,android_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/apex/apexd/libapexd^android_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_11/system/apex/libapexd^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/apex/apexd/libapexd^android_x86_64_static
 
 echo "building libapexd_checkpoint_vold^android_x86_64_static"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_11.ninja libapexd_checkpoint_vold,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/apex/apexd/libapexd_checkpoint_vold^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_11/system/apex/libapexd_checkpoint_vold^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/apex/apexd/libapexd_checkpoint_vold^android_x86_64_static
 
-echo "building libapexd^android_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_11.ninja libapexd,android_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/apex/apexd/libapexd^android_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_11/system/apex/libapexd^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/apex/apexd/libapexd^android_x86_64_static
+echo "building libapexservice^android_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_11.ninja libapexservice,android_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/apex/apexd/libapexservice^android_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_11/system/apex/libapexservice^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/apex/apexd/libapexservice^android_x86_64_static
 
 echo "building apexd^android_x86_64"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_11.ninja apexd,android_x86_64

@@ -12,15 +12,15 @@ mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/
 clone_depth_platform packages/modules/SdkExtensions
 
 
-echo "building derive_sdk.rc^android_x86_64"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja derive_sdk.rc,android_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/SdkExtensions/derive_sdk/derive_sdk.rc^android_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/packages/modules/SdkExtensions/derive_sdk.rc^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/packages/modules/SdkExtensions/derive_sdk/derive_sdk.rc^android_x86_64
-
 echo "building derive_classpath.rc^android_x86_64"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja derive_classpath.rc,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/SdkExtensions/derive_classpath/derive_classpath.rc^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/packages/modules/SdkExtensions/derive_classpath.rc^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/packages/modules/SdkExtensions/derive_classpath/derive_classpath.rc^android_x86_64
+
+echo "building derive_sdk.rc^android_x86_64"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja derive_sdk.rc,android_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/SdkExtensions/derive_sdk/derive_sdk.rc^android_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/packages/modules/SdkExtensions/derive_sdk.rc^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/packages/modules/SdkExtensions/derive_sdk/derive_sdk.rc^android_x86_64
 
 rm -rf out
 

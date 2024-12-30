@@ -38,15 +38,15 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/external/protobuf/libprotobuf-cpp-lite^a
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/zlib/libz^android_x86_64_shared_current/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^android_x86_64_shared_current/ .
 
-echo "building libprotobuf-cpp-lite^android_x86_64_shared_apex10000"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libprotobuf-cpp-lite,android_x86_64_shared_apex10000
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/protobuf/libprotobuf-cpp-lite^android_x86_64_shared_apex10000
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/external/protobuf/libprotobuf-cpp-lite^android_x86_64_shared_apex10000.output . $GITHUB_WORKSPACE/artifacts/external/protobuf/libprotobuf-cpp-lite^android_x86_64_shared_apex10000
-
 echo "building libprotobuf-cpp-full^android_x86_64_shared_apex10000"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libprotobuf-cpp-full,android_x86_64_shared_apex10000
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/protobuf/libprotobuf-cpp-full^android_x86_64_shared_apex10000
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/external/protobuf/libprotobuf-cpp-full^android_x86_64_shared_apex10000.output . $GITHUB_WORKSPACE/artifacts/external/protobuf/libprotobuf-cpp-full^android_x86_64_shared_apex10000
+
+echo "building libprotobuf-cpp-lite^android_x86_64_shared_apex10000"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libprotobuf-cpp-lite,android_x86_64_shared_apex10000
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/protobuf/libprotobuf-cpp-lite^android_x86_64_shared_apex10000
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/external/protobuf/libprotobuf-cpp-lite^android_x86_64_shared_apex10000.output . $GITHUB_WORKSPACE/artifacts/external/protobuf/libprotobuf-cpp-lite^android_x86_64_shared_apex10000
 
 rm -rf out
 

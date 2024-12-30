@@ -34,15 +34,15 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcxxabi/libc++demangle^androi
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/netd/client/libnetd_client^android_x86_64_static_cfi/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/netd/client/libnetd_client^android_x86_x86_64_static_cfi/ .
 
-echo "building libnetd_client^android_x86_x86_64_shared_cfi"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libnetd_client,android_x86_x86_64_shared_cfi
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/netd/client/libnetd_client^android_x86_x86_64_shared_cfi
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/system/netd/libnetd_client^android_x86_x86_64_shared_cfi.output . $GITHUB_WORKSPACE/artifacts/system/netd/client/libnetd_client^android_x86_x86_64_shared_cfi
-
 echo "building libnetd_client^android_x86_64_shared_cfi"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libnetd_client,android_x86_64_shared_cfi
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/netd/client/libnetd_client^android_x86_64_shared_cfi
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/system/netd/libnetd_client^android_x86_64_shared_cfi.output . $GITHUB_WORKSPACE/artifacts/system/netd/client/libnetd_client^android_x86_64_shared_cfi
+
+echo "building libnetd_client^android_x86_x86_64_shared_cfi"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libnetd_client,android_x86_x86_64_shared_cfi
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/netd/client/libnetd_client^android_x86_x86_64_shared_cfi
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/system/netd/libnetd_client^android_x86_x86_64_shared_cfi.output . $GITHUB_WORKSPACE/artifacts/system/netd/client/libnetd_client^android_x86_x86_64_shared_cfi
 
 rm -rf out
 

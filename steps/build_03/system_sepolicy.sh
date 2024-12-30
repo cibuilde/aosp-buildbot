@@ -32,30 +32,30 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcxx/libc++^linux_glibc_x86_6
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/selinux/libselinux/libselinux^linux_glibc_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/selinux/libsepol/libsepol^linux_glibc_x86_64_static/ .
 
-echo "building insertkeys.py^linux_glibc_x86_64"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja insertkeys.py,linux_glibc_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/sepolicy/tools/insertkeys.py^linux_glibc_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/system/sepolicy/insertkeys.py^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/sepolicy/tools/insertkeys.py^linux_glibc_x86_64
-
-echo "building checkfc^linux_glibc_x86_64"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja checkfc,linux_glibc_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/sepolicy/tools/checkfc^linux_glibc_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/system/sepolicy/checkfc^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/sepolicy/tools/checkfc^linux_glibc_x86_64
+echo "building build_sepolicy^linux_glibc_x86_64_PY2"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja build_sepolicy,linux_glibc_x86_64_PY2
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/sepolicy/build/build_sepolicy^linux_glibc_x86_64_PY2
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/system/sepolicy/build_sepolicy^linux_glibc_x86_64_PY2.output . $GITHUB_WORKSPACE/artifacts/system/sepolicy/build/build_sepolicy^linux_glibc_x86_64_PY2
 
 echo "building check_prop_prefix^linux_glibc_x86_64_PY3"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja check_prop_prefix,linux_glibc_x86_64_PY3
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/sepolicy/tests/check_prop_prefix^linux_glibc_x86_64_PY3
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/system/sepolicy/check_prop_prefix^linux_glibc_x86_64_PY3.output . $GITHUB_WORKSPACE/artifacts/system/sepolicy/tests/check_prop_prefix^linux_glibc_x86_64_PY3
 
+echo "building checkfc^linux_glibc_x86_64"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja checkfc,linux_glibc_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/sepolicy/tools/checkfc^linux_glibc_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/system/sepolicy/checkfc^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/sepolicy/tools/checkfc^linux_glibc_x86_64
+
+echo "building insertkeys.py^linux_glibc_x86_64"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja insertkeys.py,linux_glibc_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/sepolicy/tools/insertkeys.py^linux_glibc_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/system/sepolicy/insertkeys.py^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/sepolicy/tools/insertkeys.py^linux_glibc_x86_64
+
 echo "building vendor_property_contexts^android_common"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja vendor_property_contexts,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/sepolicy/vendor_property_contexts^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/system/sepolicy/vendor_property_contexts^android_common.output . $GITHUB_WORKSPACE/artifacts/system/sepolicy/vendor_property_contexts^android_common
-
-echo "building build_sepolicy^linux_glibc_x86_64_PY2"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja build_sepolicy,linux_glibc_x86_64_PY2
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/sepolicy/build/build_sepolicy^linux_glibc_x86_64_PY2
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/system/sepolicy/build_sepolicy^linux_glibc_x86_64_PY2.output . $GITHUB_WORKSPACE/artifacts/system/sepolicy/build/build_sepolicy^linux_glibc_x86_64_PY2
 
 rm -rf out
 

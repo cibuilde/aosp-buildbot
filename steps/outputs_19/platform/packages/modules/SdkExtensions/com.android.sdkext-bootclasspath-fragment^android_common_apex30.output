@@ -1,0 +1,3 @@
+out/soong/.intermediates/packages/modules/SdkExtensions/com.android.sdkext-bootclasspath-fragment/android_common_apex30/bootclasspath.pb
+out/soong/.intermediates/packages/modules/SdkExtensions/com.android.sdkext-bootclasspath-fragment/android_common_apex30/hiddenapi-modular/encoded/framework-sdkextensions.jar
+out/soong/.intermediates/packages/modules/SdkExtensions/com.android.sdkext-bootclasspath-fragment/android_common_apex30/modular-hiddenapi/annotation-flags.csv

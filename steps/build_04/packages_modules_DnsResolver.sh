@@ -33,30 +33,30 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcxx/libc++^linux_glibc_x86_6
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/protobuf/aprotoc^linux_glibc_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/tools/aidl/aidl^linux_glibc_x86_64/ .
 
-echo "building stats_proto^android_x86_64_static_cfi_apex29"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja stats_proto,android_x86_64_static_cfi_apex29
-mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/DnsResolver/stats_proto^android_x86_64_static_cfi_apex29
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/packages/modules/DnsResolver/stats_proto^android_x86_64_static_cfi_apex29.output . $GITHUB_WORKSPACE/artifacts/packages/modules/DnsResolver/stats_proto^android_x86_64_static_cfi_apex29
-
 echo "building dnsresolver_aidl_interface-api^"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja dnsresolver_aidl_interface-api,
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/DnsResolver/dnsresolver_aidl_interface-api^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/packages/modules/DnsResolver/dnsresolver_aidl_interface-api^.output . $GITHUB_WORKSPACE/artifacts/packages/modules/DnsResolver/dnsresolver_aidl_interface-api^
 
-echo "building dnsresolver_aidl_interface-V9-ndk_platform-source^"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja dnsresolver_aidl_interface-V9-ndk_platform-source,
-mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/DnsResolver/dnsresolver_aidl_interface-V9-ndk_platform-source^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/packages/modules/DnsResolver/dnsresolver_aidl_interface-V9-ndk_platform-source^.output . $GITHUB_WORKSPACE/artifacts/packages/modules/DnsResolver/dnsresolver_aidl_interface-V9-ndk_platform-source^
+echo "building dnsresolver_aidl_interface-V7-cpp-source^"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja dnsresolver_aidl_interface-V7-cpp-source,
+mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/DnsResolver/dnsresolver_aidl_interface-V7-cpp-source^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/packages/modules/DnsResolver/dnsresolver_aidl_interface-V7-cpp-source^.output . $GITHUB_WORKSPACE/artifacts/packages/modules/DnsResolver/dnsresolver_aidl_interface-V7-cpp-source^
 
 echo "building dnsresolver_aidl_interface-V9-java-source^"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja dnsresolver_aidl_interface-V9-java-source,
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/DnsResolver/dnsresolver_aidl_interface-V9-java-source^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/packages/modules/DnsResolver/dnsresolver_aidl_interface-V9-java-source^.output . $GITHUB_WORKSPACE/artifacts/packages/modules/DnsResolver/dnsresolver_aidl_interface-V9-java-source^
 
-echo "building dnsresolver_aidl_interface-V7-cpp-source^"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja dnsresolver_aidl_interface-V7-cpp-source,
-mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/DnsResolver/dnsresolver_aidl_interface-V7-cpp-source^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/packages/modules/DnsResolver/dnsresolver_aidl_interface-V7-cpp-source^.output . $GITHUB_WORKSPACE/artifacts/packages/modules/DnsResolver/dnsresolver_aidl_interface-V7-cpp-source^
+echo "building dnsresolver_aidl_interface-V9-ndk_platform-source^"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja dnsresolver_aidl_interface-V9-ndk_platform-source,
+mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/DnsResolver/dnsresolver_aidl_interface-V9-ndk_platform-source^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/packages/modules/DnsResolver/dnsresolver_aidl_interface-V9-ndk_platform-source^.output . $GITHUB_WORKSPACE/artifacts/packages/modules/DnsResolver/dnsresolver_aidl_interface-V9-ndk_platform-source^
+
+echo "building stats_proto^android_x86_64_static_cfi_apex29"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja stats_proto,android_x86_64_static_cfi_apex29
+mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/DnsResolver/stats_proto^android_x86_64_static_cfi_apex29
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/packages/modules/DnsResolver/stats_proto^android_x86_64_static_cfi_apex29.output . $GITHUB_WORKSPACE/artifacts/packages/modules/DnsResolver/stats_proto^android_x86_64_static_cfi_apex29
 
 rm -rf out
 

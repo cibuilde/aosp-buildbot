@@ -80,25 +80,15 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/system/libhidl/libhidlbase^android_vendo
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/libhidl/libhidlbase^android_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/libhidl/libhidlbase^android_x86_x86_64_shared/ .
 
-echo "building libhidlallocatorutils^android_x86_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja libhidlallocatorutils,android_x86_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/libhidl/transport/allocator/1.0/utils/libhidlallocatorutils^android_x86_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_09/system/libhidl/libhidlallocatorutils^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/libhidl/transport/allocator/1.0/utils/libhidlallocatorutils^android_x86_x86_64_static
+echo "building libhidlallocatorutils^android_vendor.31_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja libhidlallocatorutils,android_vendor.31_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/libhidl/transport/allocator/1.0/utils/libhidlallocatorutils^android_vendor.31_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_09/system/libhidl/libhidlallocatorutils^android_vendor.31_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/libhidl/transport/allocator/1.0/utils/libhidlallocatorutils^android_vendor.31_x86_64_static
 
-echo "building libhidlallocatorutils^android_x86_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja libhidlallocatorutils,android_x86_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/libhidl/transport/allocator/1.0/utils/libhidlallocatorutils^android_x86_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_09/system/libhidl/libhidlallocatorutils^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/libhidl/transport/allocator/1.0/utils/libhidlallocatorutils^android_x86_x86_64_shared
-
-echo "building libhidlallocatorutils^android_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja libhidlallocatorutils,android_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/libhidl/transport/allocator/1.0/utils/libhidlallocatorutils^android_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_09/system/libhidl/libhidlallocatorutils^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/libhidl/transport/allocator/1.0/utils/libhidlallocatorutils^android_x86_64_static
-
-echo "building libhidlallocatorutils^android_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja libhidlallocatorutils,android_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/libhidl/transport/allocator/1.0/utils/libhidlallocatorutils^android_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_09/system/libhidl/libhidlallocatorutils^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/libhidl/transport/allocator/1.0/utils/libhidlallocatorutils^android_x86_64_shared
+echo "building libhidlallocatorutils^android_vendor.31_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja libhidlallocatorutils,android_vendor.31_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/libhidl/transport/allocator/1.0/utils/libhidlallocatorutils^android_vendor.31_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_09/system/libhidl/libhidlallocatorutils^android_vendor.31_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/libhidl/transport/allocator/1.0/utils/libhidlallocatorutils^android_vendor.31_x86_64_shared
 
 echo "building libhidlallocatorutils^android_vendor.31_x86_x86_64_static"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja libhidlallocatorutils,android_vendor.31_x86_x86_64_static
@@ -110,15 +100,25 @@ ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja libhidlallocatoru
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/libhidl/transport/allocator/1.0/utils/libhidlallocatorutils^android_vendor.31_x86_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_09/system/libhidl/libhidlallocatorutils^android_vendor.31_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/libhidl/transport/allocator/1.0/utils/libhidlallocatorutils^android_vendor.31_x86_x86_64_shared
 
-echo "building libhidlallocatorutils^android_vendor.31_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja libhidlallocatorutils,android_vendor.31_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/libhidl/transport/allocator/1.0/utils/libhidlallocatorutils^android_vendor.31_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_09/system/libhidl/libhidlallocatorutils^android_vendor.31_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/libhidl/transport/allocator/1.0/utils/libhidlallocatorutils^android_vendor.31_x86_64_static
+echo "building libhidlallocatorutils^android_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja libhidlallocatorutils,android_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/libhidl/transport/allocator/1.0/utils/libhidlallocatorutils^android_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_09/system/libhidl/libhidlallocatorutils^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/libhidl/transport/allocator/1.0/utils/libhidlallocatorutils^android_x86_64_static
 
-echo "building libhidlallocatorutils^android_vendor.31_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja libhidlallocatorutils,android_vendor.31_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/libhidl/transport/allocator/1.0/utils/libhidlallocatorutils^android_vendor.31_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_09/system/libhidl/libhidlallocatorutils^android_vendor.31_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/libhidl/transport/allocator/1.0/utils/libhidlallocatorutils^android_vendor.31_x86_64_shared
+echo "building libhidlallocatorutils^android_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja libhidlallocatorutils,android_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/libhidl/transport/allocator/1.0/utils/libhidlallocatorutils^android_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_09/system/libhidl/libhidlallocatorutils^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/libhidl/transport/allocator/1.0/utils/libhidlallocatorutils^android_x86_64_shared
+
+echo "building libhidlallocatorutils^android_x86_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja libhidlallocatorutils,android_x86_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/libhidl/transport/allocator/1.0/utils/libhidlallocatorutils^android_x86_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_09/system/libhidl/libhidlallocatorutils^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/libhidl/transport/allocator/1.0/utils/libhidlallocatorutils^android_x86_x86_64_static
+
+echo "building libhidlallocatorutils^android_x86_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja libhidlallocatorutils,android_x86_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/libhidl/transport/allocator/1.0/utils/libhidlallocatorutils^android_x86_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_09/system/libhidl/libhidlallocatorutils^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/libhidl/transport/allocator/1.0/utils/libhidlallocatorutils^android_x86_x86_64_shared
 
 rm -rf out
 

@@ -1312,5 +1312,4 @@ jobs:
         path: cache/tools_security.tar.zst
         key: tools_security@${{ env.branch }}
         restore-keys: tools_security@${{ env.branch }}
-    - name: Start Ninja Build
-      run: bash steps/build_05.sh
+    - run: bash steps/build_05.sh

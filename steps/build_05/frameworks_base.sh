@@ -66,6 +66,41 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^linux_glibc
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/tools/xsdc/xsdc^linux_glibc_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/tools/xsdc/xsdc^linux_glibc_x86_64/ .
 
+echo "building device-state-config^"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja device-state-config,
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/services/core/xsd/device-state-config^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/frameworks/base/device-state-config^.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/services/core/xsd/device-state-config^
+
+echo "building display-device-config^"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja display-device-config,
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/services/core/xsd/display-device-config^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/frameworks/base/display-device-config^.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/services/core/xsd/display-device-config^
+
+echo "building display-layout-config^"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja display-layout-config,
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/services/core/xsd/display-layout-config^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/frameworks/base/display-layout-config^.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/services/core/xsd/display-layout-config^
+
+echo "building libmediaparser-jni^android_x86_64_shared_apex29"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libmediaparser-jni,android_x86_64_shared_apex29
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/apex/media/framework/libmediaparser-jni^android_x86_64_shared_apex29
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/frameworks/base/libmediaparser-jni^android_x86_64_shared_apex29.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/apex/media/framework/libmediaparser-jni^android_x86_64_shared_apex29
+
+echo "building libmediaparser-jni^android_x86_x86_64_shared_apex29"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libmediaparser-jni,android_x86_x86_64_shared_apex29
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/apex/media/framework/libmediaparser-jni^android_x86_x86_64_shared_apex29
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/frameworks/base/libmediaparser-jni^android_x86_x86_64_shared_apex29.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/apex/media/framework/libmediaparser-jni^android_x86_x86_64_shared_apex29
+
+echo "building platform-compat-config^"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja platform-compat-config,
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/services/core/xsd/platform-compat-config^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/frameworks/base/platform-compat-config^.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/services/core/xsd/platform-compat-config^
+
+echo "building platform-compat-overrides^"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja platform-compat-overrides,
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/services/core/xsd/platform-compat-overrides^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/frameworks/base/platform-compat-overrides^.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/services/core/xsd/platform-compat-overrides^
+
 echo "building validatekeymaps^linux_glibc_x86_64"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja validatekeymaps,linux_glibc_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/tools/validatekeymaps/validatekeymaps^linux_glibc_x86_64
@@ -75,41 +110,6 @@ echo "building validate_input_devices_keymaps^"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja validate_input_devices_keymaps,
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/InputDevices/validate_input_devices_keymaps^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/frameworks/base/validate_input_devices_keymaps^.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/InputDevices/validate_input_devices_keymaps^
-
-echo "building platform-compat-overrides^"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja platform-compat-overrides,
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/services/core/xsd/platform-compat-overrides^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/frameworks/base/platform-compat-overrides^.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/services/core/xsd/platform-compat-overrides^
-
-echo "building platform-compat-config^"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja platform-compat-config,
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/services/core/xsd/platform-compat-config^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/frameworks/base/platform-compat-config^.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/services/core/xsd/platform-compat-config^
-
-echo "building libmediaparser-jni^android_x86_x86_64_shared_apex29"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libmediaparser-jni,android_x86_x86_64_shared_apex29
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/apex/media/framework/libmediaparser-jni^android_x86_x86_64_shared_apex29
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/frameworks/base/libmediaparser-jni^android_x86_x86_64_shared_apex29.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/apex/media/framework/libmediaparser-jni^android_x86_x86_64_shared_apex29
-
-echo "building libmediaparser-jni^android_x86_64_shared_apex29"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libmediaparser-jni,android_x86_64_shared_apex29
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/apex/media/framework/libmediaparser-jni^android_x86_64_shared_apex29
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/frameworks/base/libmediaparser-jni^android_x86_64_shared_apex29.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/apex/media/framework/libmediaparser-jni^android_x86_64_shared_apex29
-
-echo "building display-layout-config^"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja display-layout-config,
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/services/core/xsd/display-layout-config^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/frameworks/base/display-layout-config^.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/services/core/xsd/display-layout-config^
-
-echo "building display-device-config^"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja display-device-config,
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/services/core/xsd/display-device-config^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/frameworks/base/display-device-config^.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/services/core/xsd/display-device-config^
-
-echo "building device-state-config^"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja device-state-config,
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/services/core/xsd/device-state-config^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/frameworks/base/device-state-config^.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/services/core/xsd/device-state-config^
 
 rm -rf out
 

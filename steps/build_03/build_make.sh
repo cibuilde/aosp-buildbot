@@ -49,130 +49,130 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/system/libbase/libbase^linux_glibc_x86_6
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/libziparchive/libziparchive^linux_glibc_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^linux_glibc_x86_64_static/ .
 
-echo "building zipalign^linux_glibc_x86_64"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja zipalign,linux_glibc_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/build/make/tools/zipalign/zipalign^linux_glibc_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/build/make/zipalign^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/build/make/tools/zipalign/zipalign^linux_glibc_x86_64
-
-echo "building releasetools_verity_utils^linux_glibc_x86_64_PY2"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja releasetools_verity_utils,linux_glibc_x86_64_PY2
-mkdir -p $GITHUB_WORKSPACE/artifacts/build/make/tools/releasetools/releasetools_verity_utils^linux_glibc_x86_64_PY2
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/build/make/releasetools_verity_utils^linux_glibc_x86_64_PY2.output . $GITHUB_WORKSPACE/artifacts/build/make/tools/releasetools/releasetools_verity_utils^linux_glibc_x86_64_PY2
-
-echo "building releasetools_common^linux_glibc_x86_64_PY2"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja releasetools_common,linux_glibc_x86_64_PY2
-mkdir -p $GITHUB_WORKSPACE/artifacts/build/make/tools/releasetools/releasetools_common^linux_glibc_x86_64_PY2
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/build/make/releasetools_common^linux_glibc_x86_64_PY2.output . $GITHUB_WORKSPACE/artifacts/build/make/tools/releasetools/releasetools_common^linux_glibc_x86_64_PY2
-
-echo "building post_process_props^linux_glibc_x86_64_PY3"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja post_process_props,linux_glibc_x86_64_PY3
-mkdir -p $GITHUB_WORKSPACE/artifacts/build/make/tools/post_process_props^linux_glibc_x86_64_PY3
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/build/make/post_process_props^linux_glibc_x86_64_PY3.output . $GITHUB_WORKSPACE/artifacts/build/make/tools/post_process_props^linux_glibc_x86_64_PY3
-
-echo "building passwd_vendor^android_x86_64"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja passwd_vendor,android_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/build/make/tools/fs_config/passwd_vendor^android_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/build/make/passwd_vendor^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/build/make/tools/fs_config/passwd_vendor^android_x86_64
-
-echo "building passwd_system_ext^android_x86_64"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja passwd_system_ext,android_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/build/make/tools/fs_config/passwd_system_ext^android_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/build/make/passwd_system_ext^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/build/make/tools/fs_config/passwd_system_ext^android_x86_64
-
-echo "building passwd_system^android_x86_64"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja passwd_system,android_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/build/make/tools/fs_config/passwd_system^android_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/build/make/passwd_system^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/build/make/tools/fs_config/passwd_system^android_x86_64
-
-echo "building passwd_product^android_x86_64"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja passwd_product,android_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/build/make/tools/fs_config/passwd_product^android_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/build/make/passwd_product^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/build/make/tools/fs_config/passwd_product^android_x86_64
-
-echo "building passwd_odm^android_x86_64"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja passwd_odm,android_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/build/make/tools/fs_config/passwd_odm^android_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/build/make/passwd_odm^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/build/make/tools/fs_config/passwd_odm^android_x86_64
-
-echo "building passwd_gen_vendor^"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja passwd_gen_vendor,
-mkdir -p $GITHUB_WORKSPACE/artifacts/build/make/tools/fs_config/passwd_gen_vendor^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/build/make/passwd_gen_vendor^.output . $GITHUB_WORKSPACE/artifacts/build/make/tools/fs_config/passwd_gen_vendor^
-
-echo "building passwd_gen_system_ext^"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja passwd_gen_system_ext,
-mkdir -p $GITHUB_WORKSPACE/artifacts/build/make/tools/fs_config/passwd_gen_system_ext^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/build/make/passwd_gen_system_ext^.output . $GITHUB_WORKSPACE/artifacts/build/make/tools/fs_config/passwd_gen_system_ext^
-
-echo "building passwd_gen_system^"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja passwd_gen_system,
-mkdir -p $GITHUB_WORKSPACE/artifacts/build/make/tools/fs_config/passwd_gen_system^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/build/make/passwd_gen_system^.output . $GITHUB_WORKSPACE/artifacts/build/make/tools/fs_config/passwd_gen_system^
-
-echo "building passwd_gen_product^"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja passwd_gen_product,
-mkdir -p $GITHUB_WORKSPACE/artifacts/build/make/tools/fs_config/passwd_gen_product^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/build/make/passwd_gen_product^.output . $GITHUB_WORKSPACE/artifacts/build/make/tools/fs_config/passwd_gen_product^
-
-echo "building passwd_gen_odm^"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja passwd_gen_odm,
-mkdir -p $GITHUB_WORKSPACE/artifacts/build/make/tools/fs_config/passwd_gen_odm^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/build/make/passwd_gen_odm^.output . $GITHUB_WORKSPACE/artifacts/build/make/tools/fs_config/passwd_gen_odm^
-
-echo "building libzipalign^linux_glibc_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libzipalign,linux_glibc_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/build/make/tools/zipalign/libzipalign^linux_glibc_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/build/make/libzipalign^linux_glibc_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/build/make/tools/zipalign/libzipalign^linux_glibc_x86_64_static
-
-echo "building group_vendor^android_x86_64"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja group_vendor,android_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/build/make/tools/fs_config/group_vendor^android_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/build/make/group_vendor^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/build/make/tools/fs_config/group_vendor^android_x86_64
-
-echo "building group_system_ext^android_x86_64"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja group_system_ext,android_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/build/make/tools/fs_config/group_system_ext^android_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/build/make/group_system_ext^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/build/make/tools/fs_config/group_system_ext^android_x86_64
-
-echo "building group_system^android_x86_64"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja group_system,android_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/build/make/tools/fs_config/group_system^android_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/build/make/group_system^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/build/make/tools/fs_config/group_system^android_x86_64
-
-echo "building group_product^android_x86_64"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja group_product,android_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/build/make/tools/fs_config/group_product^android_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/build/make/group_product^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/build/make/tools/fs_config/group_product^android_x86_64
-
-echo "building group_odm^android_x86_64"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja group_odm,android_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/build/make/tools/fs_config/group_odm^android_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/build/make/group_odm^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/build/make/tools/fs_config/group_odm^android_x86_64
-
-echo "building group_gen_vendor^"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja group_gen_vendor,
-mkdir -p $GITHUB_WORKSPACE/artifacts/build/make/tools/fs_config/group_gen_vendor^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/build/make/group_gen_vendor^.output . $GITHUB_WORKSPACE/artifacts/build/make/tools/fs_config/group_gen_vendor^
-
-echo "building group_gen_system_ext^"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja group_gen_system_ext,
-mkdir -p $GITHUB_WORKSPACE/artifacts/build/make/tools/fs_config/group_gen_system_ext^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/build/make/group_gen_system_ext^.output . $GITHUB_WORKSPACE/artifacts/build/make/tools/fs_config/group_gen_system_ext^
-
-echo "building group_gen_system^"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja group_gen_system,
-mkdir -p $GITHUB_WORKSPACE/artifacts/build/make/tools/fs_config/group_gen_system^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/build/make/group_gen_system^.output . $GITHUB_WORKSPACE/artifacts/build/make/tools/fs_config/group_gen_system^
+echo "building group_gen_odm^"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja group_gen_odm,
+mkdir -p $GITHUB_WORKSPACE/artifacts/build/make/tools/fs_config/group_gen_odm^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/build/make/group_gen_odm^.output . $GITHUB_WORKSPACE/artifacts/build/make/tools/fs_config/group_gen_odm^
 
 echo "building group_gen_product^"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja group_gen_product,
 mkdir -p $GITHUB_WORKSPACE/artifacts/build/make/tools/fs_config/group_gen_product^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/build/make/group_gen_product^.output . $GITHUB_WORKSPACE/artifacts/build/make/tools/fs_config/group_gen_product^
 
-echo "building group_gen_odm^"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja group_gen_odm,
-mkdir -p $GITHUB_WORKSPACE/artifacts/build/make/tools/fs_config/group_gen_odm^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/build/make/group_gen_odm^.output . $GITHUB_WORKSPACE/artifacts/build/make/tools/fs_config/group_gen_odm^
+echo "building group_gen_system^"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja group_gen_system,
+mkdir -p $GITHUB_WORKSPACE/artifacts/build/make/tools/fs_config/group_gen_system^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/build/make/group_gen_system^.output . $GITHUB_WORKSPACE/artifacts/build/make/tools/fs_config/group_gen_system^
+
+echo "building group_gen_system_ext^"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja group_gen_system_ext,
+mkdir -p $GITHUB_WORKSPACE/artifacts/build/make/tools/fs_config/group_gen_system_ext^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/build/make/group_gen_system_ext^.output . $GITHUB_WORKSPACE/artifacts/build/make/tools/fs_config/group_gen_system_ext^
+
+echo "building group_gen_vendor^"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja group_gen_vendor,
+mkdir -p $GITHUB_WORKSPACE/artifacts/build/make/tools/fs_config/group_gen_vendor^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/build/make/group_gen_vendor^.output . $GITHUB_WORKSPACE/artifacts/build/make/tools/fs_config/group_gen_vendor^
+
+echo "building group_odm^android_x86_64"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja group_odm,android_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/build/make/tools/fs_config/group_odm^android_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/build/make/group_odm^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/build/make/tools/fs_config/group_odm^android_x86_64
+
+echo "building group_product^android_x86_64"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja group_product,android_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/build/make/tools/fs_config/group_product^android_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/build/make/group_product^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/build/make/tools/fs_config/group_product^android_x86_64
+
+echo "building group_system^android_x86_64"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja group_system,android_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/build/make/tools/fs_config/group_system^android_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/build/make/group_system^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/build/make/tools/fs_config/group_system^android_x86_64
+
+echo "building group_system_ext^android_x86_64"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja group_system_ext,android_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/build/make/tools/fs_config/group_system_ext^android_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/build/make/group_system_ext^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/build/make/tools/fs_config/group_system_ext^android_x86_64
+
+echo "building group_vendor^android_x86_64"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja group_vendor,android_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/build/make/tools/fs_config/group_vendor^android_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/build/make/group_vendor^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/build/make/tools/fs_config/group_vendor^android_x86_64
+
+echo "building libzipalign^linux_glibc_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libzipalign,linux_glibc_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/build/make/tools/zipalign/libzipalign^linux_glibc_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/build/make/libzipalign^linux_glibc_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/build/make/tools/zipalign/libzipalign^linux_glibc_x86_64_static
+
+echo "building passwd_gen_odm^"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja passwd_gen_odm,
+mkdir -p $GITHUB_WORKSPACE/artifacts/build/make/tools/fs_config/passwd_gen_odm^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/build/make/passwd_gen_odm^.output . $GITHUB_WORKSPACE/artifacts/build/make/tools/fs_config/passwd_gen_odm^
+
+echo "building passwd_gen_product^"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja passwd_gen_product,
+mkdir -p $GITHUB_WORKSPACE/artifacts/build/make/tools/fs_config/passwd_gen_product^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/build/make/passwd_gen_product^.output . $GITHUB_WORKSPACE/artifacts/build/make/tools/fs_config/passwd_gen_product^
+
+echo "building passwd_gen_system^"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja passwd_gen_system,
+mkdir -p $GITHUB_WORKSPACE/artifacts/build/make/tools/fs_config/passwd_gen_system^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/build/make/passwd_gen_system^.output . $GITHUB_WORKSPACE/artifacts/build/make/tools/fs_config/passwd_gen_system^
+
+echo "building passwd_gen_system_ext^"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja passwd_gen_system_ext,
+mkdir -p $GITHUB_WORKSPACE/artifacts/build/make/tools/fs_config/passwd_gen_system_ext^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/build/make/passwd_gen_system_ext^.output . $GITHUB_WORKSPACE/artifacts/build/make/tools/fs_config/passwd_gen_system_ext^
+
+echo "building passwd_gen_vendor^"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja passwd_gen_vendor,
+mkdir -p $GITHUB_WORKSPACE/artifacts/build/make/tools/fs_config/passwd_gen_vendor^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/build/make/passwd_gen_vendor^.output . $GITHUB_WORKSPACE/artifacts/build/make/tools/fs_config/passwd_gen_vendor^
+
+echo "building passwd_odm^android_x86_64"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja passwd_odm,android_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/build/make/tools/fs_config/passwd_odm^android_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/build/make/passwd_odm^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/build/make/tools/fs_config/passwd_odm^android_x86_64
+
+echo "building passwd_product^android_x86_64"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja passwd_product,android_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/build/make/tools/fs_config/passwd_product^android_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/build/make/passwd_product^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/build/make/tools/fs_config/passwd_product^android_x86_64
+
+echo "building passwd_system^android_x86_64"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja passwd_system,android_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/build/make/tools/fs_config/passwd_system^android_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/build/make/passwd_system^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/build/make/tools/fs_config/passwd_system^android_x86_64
+
+echo "building passwd_system_ext^android_x86_64"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja passwd_system_ext,android_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/build/make/tools/fs_config/passwd_system_ext^android_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/build/make/passwd_system_ext^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/build/make/tools/fs_config/passwd_system_ext^android_x86_64
+
+echo "building passwd_vendor^android_x86_64"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja passwd_vendor,android_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/build/make/tools/fs_config/passwd_vendor^android_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/build/make/passwd_vendor^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/build/make/tools/fs_config/passwd_vendor^android_x86_64
+
+echo "building post_process_props^linux_glibc_x86_64_PY3"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja post_process_props,linux_glibc_x86_64_PY3
+mkdir -p $GITHUB_WORKSPACE/artifacts/build/make/tools/post_process_props^linux_glibc_x86_64_PY3
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/build/make/post_process_props^linux_glibc_x86_64_PY3.output . $GITHUB_WORKSPACE/artifacts/build/make/tools/post_process_props^linux_glibc_x86_64_PY3
+
+echo "building releasetools_common^linux_glibc_x86_64_PY2"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja releasetools_common,linux_glibc_x86_64_PY2
+mkdir -p $GITHUB_WORKSPACE/artifacts/build/make/tools/releasetools/releasetools_common^linux_glibc_x86_64_PY2
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/build/make/releasetools_common^linux_glibc_x86_64_PY2.output . $GITHUB_WORKSPACE/artifacts/build/make/tools/releasetools/releasetools_common^linux_glibc_x86_64_PY2
+
+echo "building releasetools_verity_utils^linux_glibc_x86_64_PY2"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja releasetools_verity_utils,linux_glibc_x86_64_PY2
+mkdir -p $GITHUB_WORKSPACE/artifacts/build/make/tools/releasetools/releasetools_verity_utils^linux_glibc_x86_64_PY2
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/build/make/releasetools_verity_utils^linux_glibc_x86_64_PY2.output . $GITHUB_WORKSPACE/artifacts/build/make/tools/releasetools/releasetools_verity_utils^linux_glibc_x86_64_PY2
+
+echo "building zipalign^linux_glibc_x86_64"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja zipalign,linux_glibc_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/build/make/tools/zipalign/zipalign^linux_glibc_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/build/make/zipalign^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/build/make/tools/zipalign/zipalign^linux_glibc_x86_64
 
 rm -rf out
 

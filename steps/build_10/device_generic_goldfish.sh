@@ -108,25 +108,25 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^android_ven
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/media/audio_utils/libaudioutils^android_vendor.31_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/media/audio_utils/libaudioutils^android_vendor.31_x86_x86_64_shared/ .
 
-echo "building android.hardware.audio@6.0-impl.ranchu^android_vendor.31_x86_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja android.hardware.audio@6.0-impl.ranchu,android_vendor.31_x86_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/device/generic/goldfish/audio/android.hardware.audio@6.0-impl.ranchu^android_vendor.31_x86_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/device/generic/goldfish/android.hardware.audio@6.0-impl.ranchu^android_vendor.31_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/device/generic/goldfish/audio/android.hardware.audio@6.0-impl.ranchu^android_vendor.31_x86_x86_64_shared
-
-echo "building android.hardware.audio@6.0-impl.ranchu^android_vendor.31_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja android.hardware.audio@6.0-impl.ranchu,android_vendor.31_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/device/generic/goldfish/audio/android.hardware.audio@6.0-impl.ranchu^android_vendor.31_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/device/generic/goldfish/android.hardware.audio@6.0-impl.ranchu^android_vendor.31_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/device/generic/goldfish/audio/android.hardware.audio@6.0-impl.ranchu^android_vendor.31_x86_64_shared
+echo "building android.hardware.audio.legacy@6.0-impl.ranchu^android_vendor.31_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja android.hardware.audio.legacy@6.0-impl.ranchu,android_vendor.31_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/device/generic/goldfish/audio/android.hardware.audio.legacy@6.0-impl.ranchu^android_vendor.31_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/device/generic/goldfish/android.hardware.audio.legacy@6.0-impl.ranchu^android_vendor.31_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/device/generic/goldfish/audio/android.hardware.audio.legacy@6.0-impl.ranchu^android_vendor.31_x86_64_shared
 
 echo "building android.hardware.audio.legacy@6.0-impl.ranchu^android_vendor.31_x86_x86_64_shared"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja android.hardware.audio.legacy@6.0-impl.ranchu,android_vendor.31_x86_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/device/generic/goldfish/audio/android.hardware.audio.legacy@6.0-impl.ranchu^android_vendor.31_x86_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/device/generic/goldfish/android.hardware.audio.legacy@6.0-impl.ranchu^android_vendor.31_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/device/generic/goldfish/audio/android.hardware.audio.legacy@6.0-impl.ranchu^android_vendor.31_x86_x86_64_shared
 
-echo "building android.hardware.audio.legacy@6.0-impl.ranchu^android_vendor.31_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja android.hardware.audio.legacy@6.0-impl.ranchu,android_vendor.31_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/device/generic/goldfish/audio/android.hardware.audio.legacy@6.0-impl.ranchu^android_vendor.31_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/device/generic/goldfish/android.hardware.audio.legacy@6.0-impl.ranchu^android_vendor.31_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/device/generic/goldfish/audio/android.hardware.audio.legacy@6.0-impl.ranchu^android_vendor.31_x86_64_shared
+echo "building android.hardware.audio@6.0-impl.ranchu^android_vendor.31_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja android.hardware.audio@6.0-impl.ranchu,android_vendor.31_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/device/generic/goldfish/audio/android.hardware.audio@6.0-impl.ranchu^android_vendor.31_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/device/generic/goldfish/android.hardware.audio@6.0-impl.ranchu^android_vendor.31_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/device/generic/goldfish/audio/android.hardware.audio@6.0-impl.ranchu^android_vendor.31_x86_64_shared
+
+echo "building android.hardware.audio@6.0-impl.ranchu^android_vendor.31_x86_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja android.hardware.audio@6.0-impl.ranchu,android_vendor.31_x86_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/device/generic/goldfish/audio/android.hardware.audio@6.0-impl.ranchu^android_vendor.31_x86_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/device/generic/goldfish/android.hardware.audio@6.0-impl.ranchu^android_vendor.31_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/device/generic/goldfish/audio/android.hardware.audio@6.0-impl.ranchu^android_vendor.31_x86_x86_64_shared
 
 rm -rf out
 

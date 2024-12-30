@@ -23,25 +23,25 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/external/error_prone/error_prone_annotat
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/guava/guava-android-annotation-stubs^linux_glibc_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/jsr305/jsr305^linux_glibc_common/ .
 
-echo "building guava^android_common"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja guava,android_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/guava/guava^android_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/guava/guava^android_common.output . $GITHUB_WORKSPACE/artifacts/external/guava/guava^android_common
-
 echo "building guava-both^linux_glibc_common"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja guava-both,linux_glibc_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/guava/guava-both^linux_glibc_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/guava/guava-both^linux_glibc_common.output . $GITHUB_WORKSPACE/artifacts/external/guava/guava-both^linux_glibc_common
+
+echo "building guava-android-host^linux_glibc_common"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja guava-android-host,linux_glibc_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/guava/guava-android-host^linux_glibc_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/guava/guava-android-host^linux_glibc_common.output . $GITHUB_WORKSPACE/artifacts/external/guava/guava-android-host^linux_glibc_common
 
 echo "building guava-jre^linux_glibc_common"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja guava-jre,linux_glibc_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/guava/guava-jre^linux_glibc_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/guava/guava-jre^linux_glibc_common.output . $GITHUB_WORKSPACE/artifacts/external/guava/guava-jre^linux_glibc_common
 
-echo "building guava-android-host^linux_glibc_common"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja guava-android-host,linux_glibc_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/guava/guava-android-host^linux_glibc_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/guava/guava-android-host^linux_glibc_common.output . $GITHUB_WORKSPACE/artifacts/external/guava/guava-android-host^linux_glibc_common
+echo "building guava^android_common"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja guava,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/guava/guava^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/guava/guava^android_common.output . $GITHUB_WORKSPACE/artifacts/external/guava/guava^android_common
 
 echo "building guava^android_common_apex30"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja guava,android_common_apex30

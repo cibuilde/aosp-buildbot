@@ -99,36 +99,6 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/system/unwinding/libbacktrace/libbacktra
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/unwinding/libbacktrace/libbacktrace^android_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/unwinding/libbacktrace/libbacktrace^android_x86_x86_64_shared/ .
 
-echo "building run-as^android_x86_64"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja run-as,android_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/run-as/run-as^android_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/system/core/run-as^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/core/run-as/run-as^android_x86_64
-
-echo "building libutilscallstack^android_x86_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libutilscallstack,android_x86_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/libutils/libutilscallstack^android_x86_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/system/core/libutilscallstack^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/core/libutils/libutilscallstack^android_x86_x86_64_shared
-
-echo "building libutilscallstack^android_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libutilscallstack,android_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/libutils/libutilscallstack^android_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/system/core/libutilscallstack^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/core/libutils/libutilscallstack^android_x86_64_shared
-
-echo "building libutilscallstack^android_vendor.31_x86_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libutilscallstack,android_vendor.31_x86_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/libutils/libutilscallstack^android_vendor.31_x86_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/system/core/libutilscallstack^android_vendor.31_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/core/libutils/libutilscallstack^android_vendor.31_x86_x86_64_shared
-
-echo "building libutilscallstack^android_vendor.31_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libutilscallstack,android_vendor.31_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/libutils/libutilscallstack^android_vendor.31_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/system/core/libutilscallstack^android_vendor.31_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/core/libutils/libutilscallstack^android_vendor.31_x86_64_shared
-
-echo "building libdebuggerd_client^android_x86_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libdebuggerd_client,android_x86_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/debuggerd/libdebuggerd_client^android_x86_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/system/core/libdebuggerd_client^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/core/debuggerd/libdebuggerd_client^android_x86_x86_64_shared
-
 echo "building libdebuggerd_client^android_x86_64_shared"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libdebuggerd_client,android_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/debuggerd/libdebuggerd_client^android_x86_64_shared
@@ -138,6 +108,36 @@ echo "building debuggerd^android_x86_64"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja debuggerd,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/debuggerd/debuggerd^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/system/core/debuggerd^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/core/debuggerd/debuggerd^android_x86_64
+
+echo "building libdebuggerd_client^android_x86_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libdebuggerd_client,android_x86_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/debuggerd/libdebuggerd_client^android_x86_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/system/core/libdebuggerd_client^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/core/debuggerd/libdebuggerd_client^android_x86_x86_64_shared
+
+echo "building libutilscallstack^android_vendor.31_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libutilscallstack,android_vendor.31_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/libutils/libutilscallstack^android_vendor.31_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/system/core/libutilscallstack^android_vendor.31_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/core/libutils/libutilscallstack^android_vendor.31_x86_64_shared
+
+echo "building libutilscallstack^android_vendor.31_x86_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libutilscallstack,android_vendor.31_x86_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/libutils/libutilscallstack^android_vendor.31_x86_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/system/core/libutilscallstack^android_vendor.31_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/core/libutils/libutilscallstack^android_vendor.31_x86_x86_64_shared
+
+echo "building libutilscallstack^android_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libutilscallstack,android_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/libutils/libutilscallstack^android_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/system/core/libutilscallstack^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/core/libutils/libutilscallstack^android_x86_64_shared
+
+echo "building libutilscallstack^android_x86_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libutilscallstack,android_x86_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/libutils/libutilscallstack^android_x86_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/system/core/libutilscallstack^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/core/libutils/libutilscallstack^android_x86_x86_64_shared
+
+echo "building run-as^android_x86_64"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja run-as,android_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/run-as/run-as^android_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/system/core/run-as^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/core/run-as/run-as^android_x86_64
 
 rm -rf out
 

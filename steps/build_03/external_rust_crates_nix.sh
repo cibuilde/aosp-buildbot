@@ -57,15 +57,15 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/rust/libunicode_width.rust_sys
 rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/rust/libunwind.rust_sysroot^android_x86_64_rlib/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/rust/libunwind.rust_sysroot^android_x86_x86_64_rlib/ .
 
-echo "building libnix^android_x86_x86_64_rlib_rlib-std"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libnix,android_x86_x86_64_rlib_rlib-std
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/rust/crates/nix/libnix^android_x86_x86_64_rlib_rlib-std
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/external/rust/crates/nix/libnix^android_x86_x86_64_rlib_rlib-std.output . $GITHUB_WORKSPACE/artifacts/external/rust/crates/nix/libnix^android_x86_x86_64_rlib_rlib-std
-
 echo "building libnix^android_x86_64_rlib_rlib-std"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libnix,android_x86_64_rlib_rlib-std
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/rust/crates/nix/libnix^android_x86_64_rlib_rlib-std
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/external/rust/crates/nix/libnix^android_x86_64_rlib_rlib-std.output . $GITHUB_WORKSPACE/artifacts/external/rust/crates/nix/libnix^android_x86_64_rlib_rlib-std
+
+echo "building libnix^android_x86_x86_64_rlib_rlib-std"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libnix,android_x86_x86_64_rlib_rlib-std
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/rust/crates/nix/libnix^android_x86_x86_64_rlib_rlib-std
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/external/rust/crates/nix/libnix^android_x86_x86_64_rlib_rlib-std.output . $GITHUB_WORKSPACE/artifacts/external/rust/crates/nix/libnix^android_x86_x86_64_rlib_rlib-std
 
 rm -rf out
 

@@ -1,0 +1,7 @@
+out/soong/.intermediates/frameworks/base/cmds/requestsync/requestsync/android_common/aligned/requestsync.jar
+out/soong/.intermediates/frameworks/base/cmds/requestsync/requestsync/android_common/dexpreopt/oat/x86/javalib.odex
+out/soong/.intermediates/frameworks/base/cmds/requestsync/requestsync/android_common/dexpreopt/oat/x86/javalib.vdex
+out/soong/.intermediates/frameworks/base/cmds/requestsync/requestsync/android_common/dexpreopt/oat/x86_64/javalib.odex
+out/soong/.intermediates/frameworks/base/cmds/requestsync/requestsync/android_common/dexpreopt/oat/x86_64/javalib.vdex
+out/soong/.intermediates/frameworks/base/cmds/requestsync/requestsync/android_common/javac/requestsync.jar
+out/soong/.intermediates/frameworks/base/cmds/requestsync/requestsync/android_common/turbine-combined/requestsync.jar

@@ -922,5 +922,4 @@ jobs:
         path: cache/tools_platform-compat.tar.zst
         key: tools_platform-compat@${{ env.branch }}
         restore-keys: tools_platform-compat@${{ env.branch }}
-    - name: Start Ninja Build
-      run: bash steps/build_03.sh
+    - run: bash steps/build_03.sh

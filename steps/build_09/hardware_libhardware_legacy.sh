@@ -42,25 +42,25 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/system/libhidl/transport/manager/1.0/and
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/libhidl/transport/manager/1.1/android.hidl.manager@1.1_genc++_headers^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/libhidl/transport/manager/1.2/android.hidl.manager@1.2_genc++_headers^/ .
 
-echo "building libpower^android_x86_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja libpower,android_x86_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/libhardware_legacy/libpower^android_x86_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_09/hardware/libhardware_legacy/libpower^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/hardware/libhardware_legacy/libpower^android_x86_x86_64_static
-
-echo "building libpower^android_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja libpower,android_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/libhardware_legacy/libpower^android_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_09/hardware/libhardware_legacy/libpower^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/hardware/libhardware_legacy/libpower^android_x86_64_static
+echo "building libpower^android_vendor.31_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja libpower,android_vendor.31_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/libhardware_legacy/libpower^android_vendor.31_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_09/hardware/libhardware_legacy/libpower^android_vendor.31_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/hardware/libhardware_legacy/libpower^android_vendor.31_x86_64_static
 
 echo "building libpower^android_vendor.31_x86_x86_64_static"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja libpower,android_vendor.31_x86_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/libhardware_legacy/libpower^android_vendor.31_x86_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_09/hardware/libhardware_legacy/libpower^android_vendor.31_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/hardware/libhardware_legacy/libpower^android_vendor.31_x86_x86_64_static
 
-echo "building libpower^android_vendor.31_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja libpower,android_vendor.31_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/libhardware_legacy/libpower^android_vendor.31_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_09/hardware/libhardware_legacy/libpower^android_vendor.31_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/hardware/libhardware_legacy/libpower^android_vendor.31_x86_64_static
+echo "building libpower^android_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja libpower,android_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/libhardware_legacy/libpower^android_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_09/hardware/libhardware_legacy/libpower^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/hardware/libhardware_legacy/libpower^android_x86_64_static
+
+echo "building libpower^android_x86_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja libpower,android_x86_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/libhardware_legacy/libpower^android_x86_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_09/hardware/libhardware_legacy/libpower^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/hardware/libhardware_legacy/libpower^android_x86_x86_64_static
 
 rm -rf out
 

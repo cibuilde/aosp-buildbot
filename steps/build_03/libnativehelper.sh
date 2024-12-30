@@ -27,15 +27,15 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/cc/ndkstubgen/ndkstubgen^lin
 rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/zip/cmd/soong_zip^linux_glibc_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/singletons/api_levels^/ .
 
-echo "building libnativehelper^android_x86_x86_64_shared_current"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libnativehelper,android_x86_x86_64_shared_current
-mkdir -p $GITHUB_WORKSPACE/artifacts/libnativehelper/libnativehelper^android_x86_x86_64_shared_current
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/libnativehelper/libnativehelper^android_x86_x86_64_shared_current.output . $GITHUB_WORKSPACE/artifacts/libnativehelper/libnativehelper^android_x86_x86_64_shared_current
-
 echo "building libnativehelper^android_x86_64_shared_current"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libnativehelper,android_x86_64_shared_current
 mkdir -p $GITHUB_WORKSPACE/artifacts/libnativehelper/libnativehelper^android_x86_64_shared_current
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/libnativehelper/libnativehelper^android_x86_64_shared_current.output . $GITHUB_WORKSPACE/artifacts/libnativehelper/libnativehelper^android_x86_64_shared_current
+
+echo "building libnativehelper^android_x86_x86_64_shared_current"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libnativehelper,android_x86_x86_64_shared_current
+mkdir -p $GITHUB_WORKSPACE/artifacts/libnativehelper/libnativehelper^android_x86_x86_64_shared_current
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/libnativehelper/libnativehelper^android_x86_x86_64_shared_current.output . $GITHUB_WORKSPACE/artifacts/libnativehelper/libnativehelper^android_x86_x86_64_shared_current
 
 rm -rf out
 

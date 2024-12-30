@@ -32,10 +32,15 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcxx/libc++^linux_glibc_x86_6
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/protobuf/aprotoc^linux_glibc_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/tools/aidl/aidl^linux_glibc_x86_64/ .
 
-echo "building lib_microdroid_signature_proto_lite^android_x86_64_static_apex10000"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja lib_microdroid_signature_proto_lite,android_x86_64_static_apex10000
-mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/Virtualization/microdroid/signature/lib_microdroid_signature_proto_lite^android_x86_64_static_apex10000
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/packages/modules/Virtualization/lib_microdroid_signature_proto_lite^android_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/packages/modules/Virtualization/microdroid/signature/lib_microdroid_signature_proto_lite^android_x86_64_static_apex10000
+echo "building android.system.virtmanager-rust-source^"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.system.virtmanager-rust-source,
+mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/Virtualization/virtmanager/aidl/android.system.virtmanager-rust-source^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/packages/modules/Virtualization/android.system.virtmanager-rust-source^.output . $GITHUB_WORKSPACE/artifacts/packages/modules/Virtualization/virtmanager/aidl/android.system.virtmanager-rust-source^
+
+echo "building android.system.virtmanager-rust^android_x86_64_source_apex10000"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.system.virtmanager-rust,android_x86_64_source_apex10000
+mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/Virtualization/virtmanager/aidl/android.system.virtmanager-rust^android_x86_64_source_apex10000
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/packages/modules/Virtualization/android.system.virtmanager-rust^android_x86_64_source_apex10000.output . $GITHUB_WORKSPACE/artifacts/packages/modules/Virtualization/virtmanager/aidl/android.system.virtmanager-rust^android_x86_64_source_apex10000
 
 echo "building authfs_aidl_interface-rust-source^"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja authfs_aidl_interface-rust-source,
@@ -47,15 +52,10 @@ ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja authfs_aidl_inter
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/Virtualization/authfs/aidl/authfs_aidl_interface-rust^android_x86_64_source_apex10000
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/packages/modules/Virtualization/authfs_aidl_interface-rust^android_x86_64_source_apex10000.output . $GITHUB_WORKSPACE/artifacts/packages/modules/Virtualization/authfs/aidl/authfs_aidl_interface-rust^android_x86_64_source_apex10000
 
-echo "building android.system.virtmanager-rust-source^"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.system.virtmanager-rust-source,
-mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/Virtualization/virtmanager/aidl/android.system.virtmanager-rust-source^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/packages/modules/Virtualization/android.system.virtmanager-rust-source^.output . $GITHUB_WORKSPACE/artifacts/packages/modules/Virtualization/virtmanager/aidl/android.system.virtmanager-rust-source^
-
-echo "building android.system.virtmanager-rust^android_x86_64_source_apex10000"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.system.virtmanager-rust,android_x86_64_source_apex10000
-mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/Virtualization/virtmanager/aidl/android.system.virtmanager-rust^android_x86_64_source_apex10000
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/packages/modules/Virtualization/android.system.virtmanager-rust^android_x86_64_source_apex10000.output . $GITHUB_WORKSPACE/artifacts/packages/modules/Virtualization/virtmanager/aidl/android.system.virtmanager-rust^android_x86_64_source_apex10000
+echo "building lib_microdroid_signature_proto_lite^android_x86_64_static_apex10000"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja lib_microdroid_signature_proto_lite,android_x86_64_static_apex10000
+mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/Virtualization/microdroid/signature/lib_microdroid_signature_proto_lite^android_x86_64_static_apex10000
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/packages/modules/Virtualization/lib_microdroid_signature_proto_lite^android_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/packages/modules/Virtualization/microdroid/signature/lib_microdroid_signature_proto_lite^android_x86_64_static_apex10000
 
 rm -rf out
 

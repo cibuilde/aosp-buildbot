@@ -112,15 +112,15 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/system/libbase/libbase^android_vendor.31
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^android_vendor.31_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^android_x86_64_shared/ .
 
-echo "building libkeystore2_selinux^android_x86_64_rlib_rlib-std"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libkeystore2_selinux,android_x86_64_rlib_rlib-std
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/security/keystore2/selinux/libkeystore2_selinux^android_x86_64_rlib_rlib-std
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/system/security/libkeystore2_selinux^android_x86_64_rlib_rlib-std.output . $GITHUB_WORKSPACE/artifacts/system/security/keystore2/selinux/libkeystore2_selinux^android_x86_64_rlib_rlib-std
-
 echo "building libkeystore-engine-wifi-hidl^android_vendor.31_x86_64_shared"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libkeystore-engine-wifi-hidl,android_vendor.31_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/security/keystore-engine/libkeystore-engine-wifi-hidl^android_vendor.31_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/system/security/libkeystore-engine-wifi-hidl^android_vendor.31_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/security/keystore-engine/libkeystore-engine-wifi-hidl^android_vendor.31_x86_64_shared
+
+echo "building libkeystore2_selinux^android_x86_64_rlib_rlib-std"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libkeystore2_selinux,android_x86_64_rlib_rlib-std
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/security/keystore2/selinux/libkeystore2_selinux^android_x86_64_rlib_rlib-std
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/system/security/libkeystore2_selinux^android_x86_64_rlib_rlib-std.output . $GITHUB_WORKSPACE/artifacts/system/security/keystore2/selinux/libkeystore2_selinux^android_x86_64_rlib_rlib-std
 
 rm -rf out
 

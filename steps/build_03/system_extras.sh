@@ -61,45 +61,45 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/system/libbase/libbase^linux_glibc_x86_s
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^linux_glibc_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^linux_glibc_x86_static/ .
 
-echo "building libnativehelper.ndk^android_x86_x86_64_sdk_shared_current"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libnativehelper.ndk,android_x86_x86_64_sdk_shared_current
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/extras/module_ndk_libs/libnativehelper/libnativehelper.ndk^android_x86_x86_64_sdk_shared_current
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/system/extras/libnativehelper.ndk^android_x86_x86_64_sdk_shared_current.output . $GITHUB_WORKSPACE/artifacts/system/extras/module_ndk_libs/libnativehelper/libnativehelper.ndk^android_x86_x86_64_sdk_shared_current
-
-echo "building libnativehelper.ndk^android_x86_x86_64_sdk_shared_REL"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libnativehelper.ndk,android_x86_x86_64_sdk_shared_REL
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/extras/module_ndk_libs/libnativehelper/libnativehelper.ndk^android_x86_x86_64_sdk_shared_REL
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/system/extras/libnativehelper.ndk^android_x86_x86_64_sdk_shared_REL.output . $GITHUB_WORKSPACE/artifacts/system/extras/module_ndk_libs/libnativehelper/libnativehelper.ndk^android_x86_x86_64_sdk_shared_REL
-
-echo "building libnativehelper.ndk^android_x86_x86_64_sdk_shared_31"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libnativehelper.ndk,android_x86_x86_64_sdk_shared_31
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/extras/module_ndk_libs/libnativehelper/libnativehelper.ndk^android_x86_x86_64_sdk_shared_31
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/system/extras/libnativehelper.ndk^android_x86_x86_64_sdk_shared_31.output . $GITHUB_WORKSPACE/artifacts/system/extras/module_ndk_libs/libnativehelper/libnativehelper.ndk^android_x86_x86_64_sdk_shared_31
-
-echo "building libnativehelper.ndk^android_x86_64_sdk_shared_current"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libnativehelper.ndk,android_x86_64_sdk_shared_current
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/extras/module_ndk_libs/libnativehelper/libnativehelper.ndk^android_x86_64_sdk_shared_current
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/system/extras/libnativehelper.ndk^android_x86_64_sdk_shared_current.output . $GITHUB_WORKSPACE/artifacts/system/extras/module_ndk_libs/libnativehelper/libnativehelper.ndk^android_x86_64_sdk_shared_current
-
-echo "building libnativehelper.ndk^android_x86_64_sdk_shared_REL"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libnativehelper.ndk,android_x86_64_sdk_shared_REL
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/extras/module_ndk_libs/libnativehelper/libnativehelper.ndk^android_x86_64_sdk_shared_REL
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/system/extras/libnativehelper.ndk^android_x86_64_sdk_shared_REL.output . $GITHUB_WORKSPACE/artifacts/system/extras/module_ndk_libs/libnativehelper/libnativehelper.ndk^android_x86_64_sdk_shared_REL
-
-echo "building libnativehelper.ndk^android_x86_64_sdk_shared_31"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libnativehelper.ndk,android_x86_64_sdk_shared_31
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/extras/module_ndk_libs/libnativehelper/libnativehelper.ndk^android_x86_64_sdk_shared_31
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/system/extras/libnativehelper.ndk^android_x86_64_sdk_shared_31.output . $GITHUB_WORKSPACE/artifacts/system/extras/module_ndk_libs/libnativehelper/libnativehelper.ndk^android_x86_64_sdk_shared_31
+echo "building fec^linux_glibc_x86"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja fec,linux_glibc_x86
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/extras/verity/fec/fec^linux_glibc_x86
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/system/extras/fec^linux_glibc_x86.output . $GITHUB_WORKSPACE/artifacts/system/extras/verity/fec/fec^linux_glibc_x86
 
 echo "building fec^linux_glibc_x86_64"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja fec,linux_glibc_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/extras/verity/fec/fec^linux_glibc_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/system/extras/fec^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/extras/verity/fec/fec^linux_glibc_x86_64
 
-echo "building fec^linux_glibc_x86"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja fec,linux_glibc_x86
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/extras/verity/fec/fec^linux_glibc_x86
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/system/extras/fec^linux_glibc_x86.output . $GITHUB_WORKSPACE/artifacts/system/extras/verity/fec/fec^linux_glibc_x86
+echo "building libnativehelper.ndk^android_x86_64_sdk_shared_31"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libnativehelper.ndk,android_x86_64_sdk_shared_31
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/extras/module_ndk_libs/libnativehelper/libnativehelper.ndk^android_x86_64_sdk_shared_31
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/system/extras/libnativehelper.ndk^android_x86_64_sdk_shared_31.output . $GITHUB_WORKSPACE/artifacts/system/extras/module_ndk_libs/libnativehelper/libnativehelper.ndk^android_x86_64_sdk_shared_31
+
+echo "building libnativehelper.ndk^android_x86_64_sdk_shared_REL"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libnativehelper.ndk,android_x86_64_sdk_shared_REL
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/extras/module_ndk_libs/libnativehelper/libnativehelper.ndk^android_x86_64_sdk_shared_REL
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/system/extras/libnativehelper.ndk^android_x86_64_sdk_shared_REL.output . $GITHUB_WORKSPACE/artifacts/system/extras/module_ndk_libs/libnativehelper/libnativehelper.ndk^android_x86_64_sdk_shared_REL
+
+echo "building libnativehelper.ndk^android_x86_64_sdk_shared_current"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libnativehelper.ndk,android_x86_64_sdk_shared_current
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/extras/module_ndk_libs/libnativehelper/libnativehelper.ndk^android_x86_64_sdk_shared_current
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/system/extras/libnativehelper.ndk^android_x86_64_sdk_shared_current.output . $GITHUB_WORKSPACE/artifacts/system/extras/module_ndk_libs/libnativehelper/libnativehelper.ndk^android_x86_64_sdk_shared_current
+
+echo "building libnativehelper.ndk^android_x86_x86_64_sdk_shared_31"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libnativehelper.ndk,android_x86_x86_64_sdk_shared_31
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/extras/module_ndk_libs/libnativehelper/libnativehelper.ndk^android_x86_x86_64_sdk_shared_31
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/system/extras/libnativehelper.ndk^android_x86_x86_64_sdk_shared_31.output . $GITHUB_WORKSPACE/artifacts/system/extras/module_ndk_libs/libnativehelper/libnativehelper.ndk^android_x86_x86_64_sdk_shared_31
+
+echo "building libnativehelper.ndk^android_x86_x86_64_sdk_shared_REL"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libnativehelper.ndk,android_x86_x86_64_sdk_shared_REL
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/extras/module_ndk_libs/libnativehelper/libnativehelper.ndk^android_x86_x86_64_sdk_shared_REL
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/system/extras/libnativehelper.ndk^android_x86_x86_64_sdk_shared_REL.output . $GITHUB_WORKSPACE/artifacts/system/extras/module_ndk_libs/libnativehelper/libnativehelper.ndk^android_x86_x86_64_sdk_shared_REL
+
+echo "building libnativehelper.ndk^android_x86_x86_64_sdk_shared_current"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libnativehelper.ndk,android_x86_x86_64_sdk_shared_current
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/extras/module_ndk_libs/libnativehelper/libnativehelper.ndk^android_x86_x86_64_sdk_shared_current
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/system/extras/libnativehelper.ndk^android_x86_x86_64_sdk_shared_current.output . $GITHUB_WORKSPACE/artifacts/system/extras/module_ndk_libs/libnativehelper/libnativehelper.ndk^android_x86_x86_64_sdk_shared_current
 
 rm -rf out
 

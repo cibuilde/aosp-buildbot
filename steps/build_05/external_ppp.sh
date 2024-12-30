@@ -33,15 +33,15 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libm/libm^android_x86_64_shared_c
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcxx/libc++^android_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcxxabi/libc++demangle^android_x86_64_static/ .
 
-echo "building pppopptp-android^android_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja pppopptp-android,android_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/ppp/pppd/pppopptp-android^android_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/external/ppp/pppopptp-android^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/external/ppp/pppd/pppopptp-android^android_x86_64_shared
-
 echo "building pppol2tp-android^android_x86_64_shared"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja pppol2tp-android,android_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/ppp/pppd/pppol2tp-android^android_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/external/ppp/pppol2tp-android^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/external/ppp/pppd/pppol2tp-android^android_x86_64_shared
+
+echo "building pppopptp-android^android_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja pppopptp-android,android_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/ppp/pppd/pppopptp-android^android_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/external/ppp/pppopptp-android^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/external/ppp/pppd/pppopptp-android^android_x86_64_shared
 
 rm -rf out
 

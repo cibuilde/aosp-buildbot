@@ -1,0 +1,7 @@
+out/soong/.intermediates/frameworks/base/cmds/locksettings/locksettings/android_common/aligned/locksettings.jar
+out/soong/.intermediates/frameworks/base/cmds/locksettings/locksettings/android_common/dexpreopt/oat/x86/javalib.odex
+out/soong/.intermediates/frameworks/base/cmds/locksettings/locksettings/android_common/dexpreopt/oat/x86/javalib.vdex
+out/soong/.intermediates/frameworks/base/cmds/locksettings/locksettings/android_common/dexpreopt/oat/x86_64/javalib.odex
+out/soong/.intermediates/frameworks/base/cmds/locksettings/locksettings/android_common/dexpreopt/oat/x86_64/javalib.vdex
+out/soong/.intermediates/frameworks/base/cmds/locksettings/locksettings/android_common/javac/locksettings.jar
+out/soong/.intermediates/frameworks/base/cmds/locksettings/locksettings/android_common/turbine-combined/locksettings.jar

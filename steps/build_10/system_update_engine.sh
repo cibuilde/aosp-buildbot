@@ -143,25 +143,25 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/system/update_engine/stable/libupdate_en
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/update_engine/update_metadata-protos^android_recovery_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/update_engine/update_metadata-protos^android_x86_64_static/ .
 
-echo "building update_engine_sideload^android_recovery_x86_64"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja update_engine_sideload,android_recovery_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/update_engine/update_engine_sideload^android_recovery_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/system/update_engine/update_engine_sideload^android_recovery_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/update_engine/update_engine_sideload^android_recovery_x86_64
-
-echo "building update_engine_client^android_x86_64"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja update_engine_client,android_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/update_engine/update_engine_client^android_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/system/update_engine/update_engine_client^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/update_engine/update_engine_client^android_x86_64
+echo "building libupdate_engine_android^android_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja libupdate_engine_android,android_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/update_engine/libupdate_engine_android^android_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/system/update_engine/libupdate_engine_android^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/update_engine/libupdate_engine_android^android_x86_64_static
 
 echo "building libupdate_engine_boot_control^android_x86_64_static"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja libupdate_engine_boot_control,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/update_engine/libupdate_engine_boot_control^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/system/update_engine/libupdate_engine_boot_control^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/update_engine/libupdate_engine_boot_control^android_x86_64_static
 
-echo "building libupdate_engine_android^android_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja libupdate_engine_android,android_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/update_engine/libupdate_engine_android^android_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/system/update_engine/libupdate_engine_android^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/update_engine/libupdate_engine_android^android_x86_64_static
+echo "building update_engine_client^android_x86_64"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja update_engine_client,android_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/update_engine/update_engine_client^android_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/system/update_engine/update_engine_client^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/update_engine/update_engine_client^android_x86_64
+
+echo "building update_engine_sideload^android_recovery_x86_64"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja update_engine_sideload,android_recovery_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/update_engine/update_engine_sideload^android_recovery_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/system/update_engine/update_engine_sideload^android_recovery_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/update_engine/update_engine_sideload^android_recovery_x86_64
 
 rm -rf out
 

@@ -169,15 +169,15 @@ ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_12.ninja libprofcollectd,a
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/extras/profcollectd/libprofcollectd/libprofcollectd^android_x86_64_dylib
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_12/system/extras/libprofcollectd^android_x86_64_dylib.output . $GITHUB_WORKSPACE/artifacts/system/extras/profcollectd/libprofcollectd/libprofcollectd^android_x86_64_dylib
 
-echo "building profcollectd^android_x86_64"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_12.ninja profcollectd,android_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/extras/profcollectd/profcollectd^android_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_12/system/extras/profcollectd^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/extras/profcollectd/profcollectd^android_x86_64
-
 echo "building profcollectctl^android_x86_64"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_12.ninja profcollectctl,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/extras/profcollectd/profcollectctl^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_12/system/extras/profcollectctl^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/extras/profcollectd/profcollectctl^android_x86_64
+
+echo "building profcollectd^android_x86_64"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_12.ninja profcollectd,android_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/extras/profcollectd/profcollectd^android_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_12/system/extras/profcollectd^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/extras/profcollectd/profcollectd^android_x86_64
 
 rm -rf out
 

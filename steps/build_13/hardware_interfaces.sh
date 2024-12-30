@@ -32,55 +32,55 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/usb/1.2/android.hard
 rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/wifi/1.0/android.hardware.wifi-V1.0-java-constants_gen_java^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/libcore/core-current-stubs-system-modules^android_common/ .
 
-echo "building android.hardware.wifi-V1.0-java-constants^android_common_apex30"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_13.ninja android.hardware.wifi-V1.0-java-constants,android_common_apex30
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/1.0/android.hardware.wifi-V1.0-java-constants^android_common_apex30
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_13/hardware/interfaces/android.hardware.wifi-V1.0-java-constants^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/1.0/android.hardware.wifi-V1.0-java-constants^android_common_apex30
-
-echo "building android.hardware.wifi-V1.0-java-constants^android_common"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_13.ninja android.hardware.wifi-V1.0-java-constants,android_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/1.0/android.hardware.wifi-V1.0-java-constants^android_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_13/hardware/interfaces/android.hardware.wifi-V1.0-java-constants^android_common.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/1.0/android.hardware.wifi-V1.0-java-constants^android_common
-
-echo "building android.hardware.usb-V1.2-java-constants^android_common"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_13.ninja android.hardware.usb-V1.2-java-constants,android_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/usb/1.2/android.hardware.usb-V1.2-java-constants^android_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_13/hardware/interfaces/android.hardware.usb-V1.2-java-constants^android_common.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/usb/1.2/android.hardware.usb-V1.2-java-constants^android_common
-
-echo "building android.hardware.usb-V1.1-java-constants^android_common"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_13.ninja android.hardware.usb-V1.1-java-constants,android_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/usb/1.1/android.hardware.usb-V1.1-java-constants^android_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_13/hardware/interfaces/android.hardware.usb-V1.1-java-constants^android_common.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/usb/1.1/android.hardware.usb-V1.1-java-constants^android_common
-
-echo "building android.hardware.usb-V1.0-java-constants^android_common"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_13.ninja android.hardware.usb-V1.0-java-constants,android_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/usb/1.0/android.hardware.usb-V1.0-java-constants^android_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_13/hardware/interfaces/android.hardware.usb-V1.0-java-constants^android_common.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/usb/1.0/android.hardware.usb-V1.0-java-constants^android_common
-
-echo "building android.hardware.tv.tuner-V1.1-java-constants^android_common"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_13.ninja android.hardware.tv.tuner-V1.1-java-constants,android_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/tv/tuner/1.1/android.hardware.tv.tuner-V1.1-java-constants^android_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_13/hardware/interfaces/android.hardware.tv.tuner-V1.1-java-constants^android_common.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/tv/tuner/1.1/android.hardware.tv.tuner-V1.1-java-constants^android_common
-
-echo "building android.hardware.tv.tuner-V1.0-java-constants^android_common"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_13.ninja android.hardware.tv.tuner-V1.0-java-constants,android_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/tv/tuner/1.0/android.hardware.tv.tuner-V1.0-java-constants^android_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_13/hardware/interfaces/android.hardware.tv.tuner-V1.0-java-constants^android_common.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/tv/tuner/1.0/android.hardware.tv.tuner-V1.0-java-constants^android_common
-
-echo "building android.hardware.tv.input-V1.0-java-constants^android_common"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_13.ninja android.hardware.tv.input-V1.0-java-constants,android_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/tv/input/1.0/android.hardware.tv.input-V1.0-java-constants^android_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_13/hardware/interfaces/android.hardware.tv.input-V1.0-java-constants^android_common.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/tv/input/1.0/android.hardware.tv.input-V1.0-java-constants^android_common
+echo "building android.hardware.health-V1.0-java-constants^android_common"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_13.ninja android.hardware.health-V1.0-java-constants,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/health/1.0/android.hardware.health-V1.0-java-constants^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_13/hardware/interfaces/android.hardware.health-V1.0-java-constants^android_common.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/health/1.0/android.hardware.health-V1.0-java-constants^android_common
 
 echo "building android.hardware.thermal-V1.0-java-constants^android_common"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_13.ninja android.hardware.thermal-V1.0-java-constants,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/thermal/1.0/android.hardware.thermal-V1.0-java-constants^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_13/hardware/interfaces/android.hardware.thermal-V1.0-java-constants^android_common.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/thermal/1.0/android.hardware.thermal-V1.0-java-constants^android_common
 
-echo "building android.hardware.health-V1.0-java-constants^android_common"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_13.ninja android.hardware.health-V1.0-java-constants,android_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/health/1.0/android.hardware.health-V1.0-java-constants^android_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_13/hardware/interfaces/android.hardware.health-V1.0-java-constants^android_common.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/health/1.0/android.hardware.health-V1.0-java-constants^android_common
+echo "building android.hardware.tv.input-V1.0-java-constants^android_common"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_13.ninja android.hardware.tv.input-V1.0-java-constants,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/tv/input/1.0/android.hardware.tv.input-V1.0-java-constants^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_13/hardware/interfaces/android.hardware.tv.input-V1.0-java-constants^android_common.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/tv/input/1.0/android.hardware.tv.input-V1.0-java-constants^android_common
+
+echo "building android.hardware.tv.tuner-V1.0-java-constants^android_common"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_13.ninja android.hardware.tv.tuner-V1.0-java-constants,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/tv/tuner/1.0/android.hardware.tv.tuner-V1.0-java-constants^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_13/hardware/interfaces/android.hardware.tv.tuner-V1.0-java-constants^android_common.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/tv/tuner/1.0/android.hardware.tv.tuner-V1.0-java-constants^android_common
+
+echo "building android.hardware.tv.tuner-V1.1-java-constants^android_common"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_13.ninja android.hardware.tv.tuner-V1.1-java-constants,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/tv/tuner/1.1/android.hardware.tv.tuner-V1.1-java-constants^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_13/hardware/interfaces/android.hardware.tv.tuner-V1.1-java-constants^android_common.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/tv/tuner/1.1/android.hardware.tv.tuner-V1.1-java-constants^android_common
+
+echo "building android.hardware.usb-V1.0-java-constants^android_common"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_13.ninja android.hardware.usb-V1.0-java-constants,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/usb/1.0/android.hardware.usb-V1.0-java-constants^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_13/hardware/interfaces/android.hardware.usb-V1.0-java-constants^android_common.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/usb/1.0/android.hardware.usb-V1.0-java-constants^android_common
+
+echo "building android.hardware.usb-V1.1-java-constants^android_common"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_13.ninja android.hardware.usb-V1.1-java-constants,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/usb/1.1/android.hardware.usb-V1.1-java-constants^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_13/hardware/interfaces/android.hardware.usb-V1.1-java-constants^android_common.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/usb/1.1/android.hardware.usb-V1.1-java-constants^android_common
+
+echo "building android.hardware.usb-V1.2-java-constants^android_common"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_13.ninja android.hardware.usb-V1.2-java-constants,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/usb/1.2/android.hardware.usb-V1.2-java-constants^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_13/hardware/interfaces/android.hardware.usb-V1.2-java-constants^android_common.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/usb/1.2/android.hardware.usb-V1.2-java-constants^android_common
+
+echo "building android.hardware.wifi-V1.0-java-constants^android_common"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_13.ninja android.hardware.wifi-V1.0-java-constants,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/1.0/android.hardware.wifi-V1.0-java-constants^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_13/hardware/interfaces/android.hardware.wifi-V1.0-java-constants^android_common.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/1.0/android.hardware.wifi-V1.0-java-constants^android_common
+
+echo "building android.hardware.wifi-V1.0-java-constants^android_common_apex30"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_13.ninja android.hardware.wifi-V1.0-java-constants,android_common_apex30
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/1.0/android.hardware.wifi-V1.0-java-constants^android_common_apex30
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_13/hardware/interfaces/android.hardware.wifi-V1.0-java-constants^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/1.0/android.hardware.wifi-V1.0-java-constants^android_common_apex30
 
 rm -rf out
 

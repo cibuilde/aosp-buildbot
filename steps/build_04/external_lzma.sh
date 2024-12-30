@@ -62,45 +62,10 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/external/lzma/C/liblzma^android_x86_x86_
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/lzma/C/liblzma^android_x86_x86_64_static_apex10000/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/lzma/C/liblzma^android_x86_x86_64_static_apex31/ .
 
-echo "building liblzma^android_x86_x86_64_shared_apex31"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja liblzma,android_x86_x86_64_shared_apex31
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/lzma/C/liblzma^android_x86_x86_64_shared_apex31
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/lzma/liblzma^android_x86_x86_64_shared_apex31.output . $GITHUB_WORKSPACE/artifacts/external/lzma/C/liblzma^android_x86_x86_64_shared_apex31
-
-echo "building liblzma^android_x86_x86_64_shared_apex10000"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja liblzma,android_x86_x86_64_shared_apex10000
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/lzma/C/liblzma^android_x86_x86_64_shared_apex10000
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/lzma/liblzma^android_x86_x86_64_shared_apex10000.output . $GITHUB_WORKSPACE/artifacts/external/lzma/C/liblzma^android_x86_x86_64_shared_apex10000
-
-echo "building liblzma^android_x86_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja liblzma,android_x86_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/lzma/C/liblzma^android_x86_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/lzma/liblzma^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/external/lzma/C/liblzma^android_x86_x86_64_shared
-
-echo "building liblzma^android_x86_64_shared_apex31"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja liblzma,android_x86_64_shared_apex31
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/lzma/C/liblzma^android_x86_64_shared_apex31
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/lzma/liblzma^android_x86_64_shared_apex31.output . $GITHUB_WORKSPACE/artifacts/external/lzma/C/liblzma^android_x86_64_shared_apex31
-
-echo "building liblzma^android_x86_64_shared_apex10000"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja liblzma,android_x86_64_shared_apex10000
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/lzma/C/liblzma^android_x86_64_shared_apex10000
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/lzma/liblzma^android_x86_64_shared_apex10000.output . $GITHUB_WORKSPACE/artifacts/external/lzma/C/liblzma^android_x86_64_shared_apex10000
-
-echo "building liblzma^android_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja liblzma,android_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/lzma/C/liblzma^android_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/lzma/liblzma^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/external/lzma/C/liblzma^android_x86_64_shared
-
-echo "building liblzma^android_vendor.31_x86_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja liblzma,android_vendor.31_x86_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/lzma/C/liblzma^android_vendor.31_x86_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/lzma/liblzma^android_vendor.31_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/lzma/C/liblzma^android_vendor.31_x86_x86_64_static
-
-echo "building liblzma^android_vendor.31_x86_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja liblzma,android_vendor.31_x86_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/lzma/C/liblzma^android_vendor.31_x86_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/lzma/liblzma^android_vendor.31_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/external/lzma/C/liblzma^android_vendor.31_x86_x86_64_shared
+echo "building liblzma^android_recovery_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja liblzma,android_recovery_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/lzma/C/liblzma^android_recovery_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/lzma/liblzma^android_recovery_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/external/lzma/C/liblzma^android_recovery_x86_64_shared
 
 echo "building liblzma^android_vendor.31_x86_64_static"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja liblzma,android_vendor.31_x86_64_static
@@ -112,10 +77,45 @@ ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja liblzma,android_v
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/lzma/C/liblzma^android_vendor.31_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/lzma/liblzma^android_vendor.31_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/external/lzma/C/liblzma^android_vendor.31_x86_64_shared
 
-echo "building liblzma^android_recovery_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja liblzma,android_recovery_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/lzma/C/liblzma^android_recovery_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/lzma/liblzma^android_recovery_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/external/lzma/C/liblzma^android_recovery_x86_64_shared
+echo "building liblzma^android_vendor.31_x86_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja liblzma,android_vendor.31_x86_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/lzma/C/liblzma^android_vendor.31_x86_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/lzma/liblzma^android_vendor.31_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/lzma/C/liblzma^android_vendor.31_x86_x86_64_static
+
+echo "building liblzma^android_vendor.31_x86_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja liblzma,android_vendor.31_x86_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/lzma/C/liblzma^android_vendor.31_x86_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/lzma/liblzma^android_vendor.31_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/external/lzma/C/liblzma^android_vendor.31_x86_x86_64_shared
+
+echo "building liblzma^android_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja liblzma,android_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/lzma/C/liblzma^android_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/lzma/liblzma^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/external/lzma/C/liblzma^android_x86_64_shared
+
+echo "building liblzma^android_x86_64_shared_apex10000"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja liblzma,android_x86_64_shared_apex10000
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/lzma/C/liblzma^android_x86_64_shared_apex10000
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/lzma/liblzma^android_x86_64_shared_apex10000.output . $GITHUB_WORKSPACE/artifacts/external/lzma/C/liblzma^android_x86_64_shared_apex10000
+
+echo "building liblzma^android_x86_64_shared_apex31"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja liblzma,android_x86_64_shared_apex31
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/lzma/C/liblzma^android_x86_64_shared_apex31
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/lzma/liblzma^android_x86_64_shared_apex31.output . $GITHUB_WORKSPACE/artifacts/external/lzma/C/liblzma^android_x86_64_shared_apex31
+
+echo "building liblzma^android_x86_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja liblzma,android_x86_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/lzma/C/liblzma^android_x86_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/lzma/liblzma^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/external/lzma/C/liblzma^android_x86_x86_64_shared
+
+echo "building liblzma^android_x86_x86_64_shared_apex10000"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja liblzma,android_x86_x86_64_shared_apex10000
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/lzma/C/liblzma^android_x86_x86_64_shared_apex10000
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/lzma/liblzma^android_x86_x86_64_shared_apex10000.output . $GITHUB_WORKSPACE/artifacts/external/lzma/C/liblzma^android_x86_x86_64_shared_apex10000
+
+echo "building liblzma^android_x86_x86_64_shared_apex31"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja liblzma,android_x86_x86_64_shared_apex31
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/lzma/C/liblzma^android_x86_x86_64_shared_apex31
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/lzma/liblzma^android_x86_x86_64_shared_apex31.output . $GITHUB_WORKSPACE/artifacts/external/lzma/C/liblzma^android_x86_x86_64_shared_apex31
 
 rm -rf out
 

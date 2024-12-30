@@ -23,15 +23,15 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/external/protobuf/aprotoc^linux_glibc_x8
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/turbine/turbine^linux_glibc_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/libcore/core-current-stubs-system-modules^android_common/ .
 
-echo "building jsr305^android_common_apex29"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_13.ninja jsr305,android_common_apex29
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/jsr305/jsr305^android_common_apex29
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_13/external/jsr305/jsr305^android_common_apex29.output . $GITHUB_WORKSPACE/artifacts/external/jsr305/jsr305^android_common_apex29
-
 echo "building jsr305^android_common"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_13.ninja jsr305,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/jsr305/jsr305^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_13/external/jsr305/jsr305^android_common.output . $GITHUB_WORKSPACE/artifacts/external/jsr305/jsr305^android_common
+
+echo "building jsr305^android_common_apex29"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_13.ninja jsr305,android_common_apex29
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/jsr305/jsr305^android_common_apex29
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_13/external/jsr305/jsr305^android_common_apex29.output . $GITHUB_WORKSPACE/artifacts/external/jsr305/jsr305^android_common_apex29
 
 rm -rf out
 

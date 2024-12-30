@@ -42,25 +42,25 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/system/libhidl/transport/manager/1.2/and
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/libhidl/transport/memory/token/1.0/android.hidl.memory.token@1.0_genc++_headers^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/libhidl/transport/memory/1.0/android.hidl.memory@1.0_genc++_headers^/ .
 
-echo "building neuralnetworks_types^android_x86_x86_64_static_apex30"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja neuralnetworks_types,android_x86_x86_64_static_apex30
-mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/NeuralNetworks/common/neuralnetworks_types^android_x86_x86_64_static_apex30
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/packages/modules/NeuralNetworks/neuralnetworks_types^android_x86_x86_64_static_apex30.output . $GITHUB_WORKSPACE/artifacts/packages/modules/NeuralNetworks/common/neuralnetworks_types^android_x86_x86_64_static_apex30
-
-echo "building neuralnetworks_types^android_x86_64_static_apex30"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja neuralnetworks_types,android_x86_64_static_apex30
-mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/NeuralNetworks/common/neuralnetworks_types^android_x86_64_static_apex30
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/packages/modules/NeuralNetworks/neuralnetworks_types^android_x86_64_static_apex30.output . $GITHUB_WORKSPACE/artifacts/packages/modules/NeuralNetworks/common/neuralnetworks_types^android_x86_64_static_apex30
+echo "building libneuralnetworks_shim_static^android_vendor.31_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libneuralnetworks_shim_static,android_vendor.31_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/NeuralNetworks/shim_and_sl/libneuralnetworks_shim_static^android_vendor.31_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/packages/modules/NeuralNetworks/libneuralnetworks_shim_static^android_vendor.31_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/packages/modules/NeuralNetworks/shim_and_sl/libneuralnetworks_shim_static^android_vendor.31_x86_64_static
 
 echo "building neuralnetworks_types^android_vendor.31_x86_64_static"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja neuralnetworks_types,android_vendor.31_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/NeuralNetworks/common/neuralnetworks_types^android_vendor.31_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/packages/modules/NeuralNetworks/neuralnetworks_types^android_vendor.31_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/packages/modules/NeuralNetworks/common/neuralnetworks_types^android_vendor.31_x86_64_static
 
-echo "building libneuralnetworks_shim_static^android_vendor.31_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libneuralnetworks_shim_static,android_vendor.31_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/NeuralNetworks/shim_and_sl/libneuralnetworks_shim_static^android_vendor.31_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/packages/modules/NeuralNetworks/libneuralnetworks_shim_static^android_vendor.31_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/packages/modules/NeuralNetworks/shim_and_sl/libneuralnetworks_shim_static^android_vendor.31_x86_64_static
+echo "building neuralnetworks_types^android_x86_64_static_apex30"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja neuralnetworks_types,android_x86_64_static_apex30
+mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/NeuralNetworks/common/neuralnetworks_types^android_x86_64_static_apex30
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/packages/modules/NeuralNetworks/neuralnetworks_types^android_x86_64_static_apex30.output . $GITHUB_WORKSPACE/artifacts/packages/modules/NeuralNetworks/common/neuralnetworks_types^android_x86_64_static_apex30
+
+echo "building neuralnetworks_types^android_x86_x86_64_static_apex30"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja neuralnetworks_types,android_x86_x86_64_static_apex30
+mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/NeuralNetworks/common/neuralnetworks_types^android_x86_x86_64_static_apex30
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/packages/modules/NeuralNetworks/neuralnetworks_types^android_x86_x86_64_static_apex30.output . $GITHUB_WORKSPACE/artifacts/packages/modules/NeuralNetworks/common/neuralnetworks_types^android_x86_x86_64_static_apex30
 
 rm -rf out
 

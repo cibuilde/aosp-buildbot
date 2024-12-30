@@ -1192,5 +1192,4 @@ jobs:
         path: cache/tools_dexter.tar.zst
         key: tools_dexter@${{ env.branch }}
         restore-keys: tools_dexter@${{ env.branch }}
-    - name: Start Ninja Build
-      run: bash steps/build_06.sh
+    - run: bash steps/build_06.sh

@@ -1,0 +1,7 @@
+out/soong/.intermediates/frameworks/base/cmds/appwidget/appwidget/android_common/aligned/appwidget.jar
+out/soong/.intermediates/frameworks/base/cmds/appwidget/appwidget/android_common/dexpreopt/oat/x86/javalib.odex
+out/soong/.intermediates/frameworks/base/cmds/appwidget/appwidget/android_common/dexpreopt/oat/x86/javalib.vdex
+out/soong/.intermediates/frameworks/base/cmds/appwidget/appwidget/android_common/dexpreopt/oat/x86_64/javalib.odex
+out/soong/.intermediates/frameworks/base/cmds/appwidget/appwidget/android_common/dexpreopt/oat/x86_64/javalib.vdex
+out/soong/.intermediates/frameworks/base/cmds/appwidget/appwidget/android_common/javac/appwidget.jar
+out/soong/.intermediates/frameworks/base/cmds/appwidget/appwidget/android_common/turbine-combined/appwidget.jar

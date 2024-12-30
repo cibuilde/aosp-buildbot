@@ -46,15 +46,15 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/external/rust/crates/textwrap/libtextwra
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/rust/crates/unicode-xid/libunicode_xid^linux_glibc_x86_64_rlib_rlib-std/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/rust/crates/which/libwhich^linux_glibc_x86_64_rlib_rlib-std/ .
 
-echo "building libgrpc_bindgen^android_x86_x86_64_source"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libgrpc_bindgen,android_x86_x86_64_source
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/rust/crates/grpcio-sys/libgrpc_bindgen^android_x86_x86_64_source
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/external/rust/crates/grpcio-sys/libgrpc_bindgen^android_x86_x86_64_source.output . $GITHUB_WORKSPACE/artifacts/external/rust/crates/grpcio-sys/libgrpc_bindgen^android_x86_x86_64_source
-
 echo "building libgrpc_bindgen^android_x86_64_source"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libgrpc_bindgen,android_x86_64_source
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/rust/crates/grpcio-sys/libgrpc_bindgen^android_x86_64_source
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/external/rust/crates/grpcio-sys/libgrpc_bindgen^android_x86_64_source.output . $GITHUB_WORKSPACE/artifacts/external/rust/crates/grpcio-sys/libgrpc_bindgen^android_x86_64_source
+
+echo "building libgrpc_bindgen^android_x86_x86_64_source"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libgrpc_bindgen,android_x86_x86_64_source
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/rust/crates/grpcio-sys/libgrpc_bindgen^android_x86_x86_64_source
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/external/rust/crates/grpcio-sys/libgrpc_bindgen^android_x86_x86_64_source.output . $GITHUB_WORKSPACE/artifacts/external/rust/crates/grpcio-sys/libgrpc_bindgen^android_x86_x86_64_source
 
 rm -rf out
 

@@ -100,70 +100,70 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/system/unwinding/libunwindstack/libunwin
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/unwinding/libunwindstack/libunwindstack^android_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/unwinding/libunwindstack/libunwindstack^android_x86_x86_64_static/ .
 
-echo "building libunwindstack^android_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libunwindstack,android_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/unwinding/libunwindstack/libunwindstack^android_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/unwinding/libunwindstack^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/unwinding/libunwindstack/libunwindstack^android_x86_64_shared
-
-echo "building unwind_symbols^android_x86_64"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja unwind_symbols,android_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/unwinding/libunwindstack/unwind_symbols^android_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/unwinding/unwind_symbols^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/unwinding/libunwindstack/unwind_symbols^android_x86_64
-
-echo "building unwind_reg_info^android_x86_64"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja unwind_reg_info,android_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/unwinding/libunwindstack/unwind_reg_info^android_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/unwinding/unwind_reg_info^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/unwinding/libunwindstack/unwind_reg_info^android_x86_64
-
-echo "building unwind_info^android_x86_64"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja unwind_info,android_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/unwinding/libunwindstack/unwind_info^android_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/unwinding/unwind_info^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/unwinding/libunwindstack/unwind_info^android_x86_64
-
-echo "building libunwindstack^android_x86_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libunwindstack,android_x86_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/unwinding/libunwindstack/libunwindstack^android_x86_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/unwinding/libunwindstack^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/unwinding/libunwindstack/libunwindstack^android_x86_x86_64_shared
-
-echo "building libunwindstack^android_vendor.31_x86_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libunwindstack,android_vendor.31_x86_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/unwinding/libunwindstack/libunwindstack^android_vendor.31_x86_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/unwinding/libunwindstack^android_vendor.31_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/unwinding/libunwindstack/libunwindstack^android_vendor.31_x86_x86_64_shared
-
-echo "building libunwindstack^android_vendor.31_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libunwindstack,android_vendor.31_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/unwinding/libunwindstack/libunwindstack^android_vendor.31_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/unwinding/libunwindstack^android_vendor.31_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/unwinding/libunwindstack/libunwindstack^android_vendor.31_x86_64_shared
-
-echo "building libunwindstack^android_recovery_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libunwindstack,android_recovery_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/unwinding/libunwindstack/libunwindstack^android_recovery_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/unwinding/libunwindstack^android_recovery_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/unwinding/libunwindstack/libunwindstack^android_recovery_x86_64_shared
-
-echo "building libbacktrace^android_x86_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libbacktrace,android_x86_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/unwinding/libbacktrace/libbacktrace^android_x86_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/unwinding/libbacktrace^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/unwinding/libbacktrace/libbacktrace^android_x86_x86_64_shared
+echo "building libbacktrace^android_vendor.31_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libbacktrace,android_vendor.31_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/unwinding/libbacktrace/libbacktrace^android_vendor.31_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/unwinding/libbacktrace^android_vendor.31_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/unwinding/libbacktrace/libbacktrace^android_vendor.31_x86_64_shared
 
 echo "building libbacktrace^android_x86_64_shared"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libbacktrace,android_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/unwinding/libbacktrace/libbacktrace^android_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/unwinding/libbacktrace^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/unwinding/libbacktrace/libbacktrace^android_x86_64_shared
 
-echo "building libbacktrace^android_vendor.31_x86_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libbacktrace,android_vendor.31_x86_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/unwinding/libbacktrace/libbacktrace^android_vendor.31_x86_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/unwinding/libbacktrace^android_vendor.31_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/unwinding/libbacktrace/libbacktrace^android_vendor.31_x86_x86_64_shared
+echo "building libbacktrace^android_x86_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libbacktrace,android_x86_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/unwinding/libbacktrace/libbacktrace^android_x86_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/unwinding/libbacktrace^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/unwinding/libbacktrace/libbacktrace^android_x86_x86_64_shared
 
-echo "building libbacktrace^android_vendor.31_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libbacktrace,android_vendor.31_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/unwinding/libbacktrace/libbacktrace^android_vendor.31_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/unwinding/libbacktrace^android_vendor.31_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/unwinding/libbacktrace/libbacktrace^android_vendor.31_x86_64_shared
+echo "building libunwindstack^android_recovery_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libunwindstack,android_recovery_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/unwinding/libunwindstack/libunwindstack^android_recovery_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/unwinding/libunwindstack^android_recovery_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/unwinding/libunwindstack/libunwindstack^android_recovery_x86_64_shared
 
 echo "building libbacktrace^android_recovery_x86_64_shared"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libbacktrace,android_recovery_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/unwinding/libbacktrace/libbacktrace^android_recovery_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/unwinding/libbacktrace^android_recovery_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/unwinding/libbacktrace/libbacktrace^android_recovery_x86_64_shared
+
+echo "building libunwindstack^android_vendor.31_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libunwindstack,android_vendor.31_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/unwinding/libunwindstack/libunwindstack^android_vendor.31_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/unwinding/libunwindstack^android_vendor.31_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/unwinding/libunwindstack/libunwindstack^android_vendor.31_x86_64_shared
+
+echo "building libunwindstack^android_vendor.31_x86_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libunwindstack,android_vendor.31_x86_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/unwinding/libunwindstack/libunwindstack^android_vendor.31_x86_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/unwinding/libunwindstack^android_vendor.31_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/unwinding/libunwindstack/libunwindstack^android_vendor.31_x86_x86_64_shared
+
+echo "building libbacktrace^android_vendor.31_x86_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libbacktrace,android_vendor.31_x86_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/unwinding/libbacktrace/libbacktrace^android_vendor.31_x86_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/unwinding/libbacktrace^android_vendor.31_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/unwinding/libbacktrace/libbacktrace^android_vendor.31_x86_x86_64_shared
+
+echo "building libunwindstack^android_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libunwindstack,android_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/unwinding/libunwindstack/libunwindstack^android_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/unwinding/libunwindstack^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/unwinding/libunwindstack/libunwindstack^android_x86_64_shared
+
+echo "building libunwindstack^android_x86_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libunwindstack,android_x86_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/unwinding/libunwindstack/libunwindstack^android_x86_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/unwinding/libunwindstack^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/unwinding/libunwindstack/libunwindstack^android_x86_x86_64_shared
+
+echo "building unwind_info^android_x86_64"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja unwind_info,android_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/unwinding/libunwindstack/unwind_info^android_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/unwinding/unwind_info^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/unwinding/libunwindstack/unwind_info^android_x86_64
+
+echo "building unwind_reg_info^android_x86_64"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja unwind_reg_info,android_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/unwinding/libunwindstack/unwind_reg_info^android_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/unwinding/unwind_reg_info^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/unwinding/libunwindstack/unwind_reg_info^android_x86_64
+
+echo "building unwind_symbols^android_x86_64"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja unwind_symbols,android_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/unwinding/libunwindstack/unwind_symbols^android_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/unwinding/unwind_symbols^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/unwinding/libunwindstack/unwind_symbols^android_x86_64
 
 rm -rf out
 

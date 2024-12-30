@@ -1,0 +1,8 @@
+out/soong/.intermediates/frameworks/base/packages/SimAppDialog/SimAppDialog/android_common/SimAppDialog.apk
+out/soong/.intermediates/frameworks/base/packages/SimAppDialog/SimAppDialog/android_common/combined/SimAppDialog.jar
+out/soong/.intermediates/frameworks/base/packages/SimAppDialog/SimAppDialog/android_common/dexpreopt/dexpreopt.config
+out/soong/.intermediates/frameworks/base/packages/SimAppDialog/SimAppDialog/android_common/dexpreopt/oat/x86_64/package.odex
+out/soong/.intermediates/frameworks/base/packages/SimAppDialog/SimAppDialog/android_common/dexpreopt/oat/x86_64/package.vdex
+out/soong/.intermediates/frameworks/base/packages/SimAppDialog/SimAppDialog/android_common/package-res.apk
+out/soong/.intermediates/frameworks/base/packages/SimAppDialog/SimAppDialog/android_common/proguard_dictionary
+out/soong/.intermediates/frameworks/base/packages/SimAppDialog/SimAppDialog/android_common/proguard_usage.zip

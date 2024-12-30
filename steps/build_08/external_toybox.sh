@@ -58,20 +58,20 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^android_rec
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^android_vendor.31_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^android_x86_64_shared/ .
 
-echo "building toybox_vendor^android_vendor.31_x86_64"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja toybox_vendor,android_vendor.31_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/toybox/toybox_vendor^android_vendor.31_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/external/toybox/toybox_vendor^android_vendor.31_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/toybox/toybox_vendor^android_vendor.31_x86_64
+echo "building toybox^android_recovery_x86_64"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja toybox,android_recovery_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/toybox/toybox^android_recovery_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/external/toybox/toybox^android_recovery_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/toybox/toybox^android_recovery_x86_64
 
 echo "building toybox^android_x86_64"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja toybox,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/toybox/toybox^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/external/toybox/toybox^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/toybox/toybox^android_x86_64
 
-echo "building toybox^android_recovery_x86_64"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja toybox,android_recovery_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/toybox/toybox^android_recovery_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/external/toybox/toybox^android_recovery_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/toybox/toybox^android_recovery_x86_64
+echo "building toybox_vendor^android_vendor.31_x86_64"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja toybox_vendor,android_vendor.31_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/toybox/toybox_vendor^android_vendor.31_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/external/toybox/toybox_vendor^android_vendor.31_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/toybox/toybox_vendor^android_vendor.31_x86_64
 
 rm -rf out
 
