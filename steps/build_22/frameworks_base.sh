@@ -309,10 +309,20 @@ ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_22.ninja SettingsLibEmerge
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/EmergencyNumber/SettingsLibEmergencyNumber^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_22/frameworks/base/SettingsLibEmergencyNumber^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/EmergencyNumber/SettingsLibEmergencyNumber^android_common
 
+echo "building SettingsLibEntityHeaderWidgets^android_common"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_22.ninja SettingsLibEntityHeaderWidgets,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/EntityHeaderWidgets/SettingsLibEntityHeaderWidgets^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_22/frameworks/base/SettingsLibEntityHeaderWidgets^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/EntityHeaderWidgets/SettingsLibEntityHeaderWidgets^android_common
+
 echo "building SettingsLibFooterPreference^android_common"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_22.ninja SettingsLibFooterPreference,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/FooterPreference/SettingsLibFooterPreference^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_22/frameworks/base/SettingsLibFooterPreference^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/FooterPreference/SettingsLibFooterPreference^android_common
+
+echo "building SettingsLibFooterPreference^android_common_apex30"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_22.ninja SettingsLibFooterPreference,android_common_apex30
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/FooterPreference/SettingsLibFooterPreference^android_common_apex30
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_22/frameworks/base/SettingsLibFooterPreference^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/FooterPreference/SettingsLibFooterPreference^android_common_apex30
 
 echo "building SettingsLibHelpUtils^android_common"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_22.ninja SettingsLibHelpUtils,android_common
@@ -328,21 +338,6 @@ echo "building SettingsLibLayoutPreference^android_common"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_22.ninja SettingsLibLayoutPreference,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/LayoutPreference/SettingsLibLayoutPreference^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_22/frameworks/base/SettingsLibLayoutPreference^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/LayoutPreference/SettingsLibLayoutPreference^android_common
-
-echo "building SettingsLibSettingsTheme^android_common"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_22.ninja SettingsLibSettingsTheme,android_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/SettingsTheme/SettingsLibSettingsTheme^android_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_22/frameworks/base/SettingsLibSettingsTheme^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/SettingsTheme/SettingsLibSettingsTheme^android_common
-
-echo "building SettingsLibEntityHeaderWidgets^android_common"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_22.ninja SettingsLibEntityHeaderWidgets,android_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/EntityHeaderWidgets/SettingsLibEntityHeaderWidgets^android_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_22/frameworks/base/SettingsLibEntityHeaderWidgets^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/EntityHeaderWidgets/SettingsLibEntityHeaderWidgets^android_common
-
-echo "building SettingsLibFooterPreference^android_common_apex30"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_22.ninja SettingsLibFooterPreference,android_common_apex30
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/FooterPreference/SettingsLibFooterPreference^android_common_apex30
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_22/frameworks/base/SettingsLibFooterPreference^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/FooterPreference/SettingsLibFooterPreference^android_common_apex30
 
 echo "building SettingsLibLayoutPreference^android_common_apex30"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_22.ninja SettingsLibLayoutPreference,android_common_apex30
@@ -403,6 +398,11 @@ echo "building SettingsLibSettingsSpinner^android_common"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_22.ninja SettingsLibSettingsSpinner,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/SettingsSpinner/SettingsLibSettingsSpinner^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_22/frameworks/base/SettingsLibSettingsSpinner^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/SettingsSpinner/SettingsLibSettingsSpinner^android_common
+
+echo "building SettingsLibSettingsTheme^android_common"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_22.ninja SettingsLibSettingsTheme,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/SettingsTheme/SettingsLibSettingsTheme^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_22/frameworks/base/SettingsLibSettingsTheme^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/SettingsTheme/SettingsLibSettingsTheme^android_common
 
 echo "building SettingsLibSettingsTheme^android_common_apex30"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_22.ninja SettingsLibSettingsTheme,android_common_apex30

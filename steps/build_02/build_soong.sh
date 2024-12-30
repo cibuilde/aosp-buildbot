@@ -113,6 +113,11 @@ ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_02.ninja soong-ui-metrics_
 mkdir -p $GITHUB_WORKSPACE/artifacts/build/soong/ui/metrics/soong-ui-metrics_proto^linux_glibc_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_02/build/soong/soong-ui-metrics_proto^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/build/soong/ui/metrics/soong-ui-metrics_proto^linux_glibc_x86_64
 
+echo "building soong^linux_glibc_x86_64"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_02.ninja soong,linux_glibc_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/build/soong/soong^linux_glibc_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_02/build/soong/soong^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/build/soong/soong^linux_glibc_x86_64
+
 echo "building soong-android^linux_glibc_x86_64"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_02.ninja soong-android,linux_glibc_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/build/soong/android/soong-android^linux_glibc_x86_64
@@ -132,11 +137,6 @@ echo "building soong-zip^linux_glibc_x86_64"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_02.ninja soong-zip,linux_glibc_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/build/soong/zip/soong-zip^linux_glibc_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_02/build/soong/soong-zip^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/build/soong/zip/soong-zip^linux_glibc_x86_64
-
-echo "building soong^linux_glibc_x86_64"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_02.ninja soong,linux_glibc_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/build/soong/soong^linux_glibc_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_02/build/soong/soong^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/build/soong/soong^linux_glibc_x86_64
 
 echo "building soong_zip^linux_glibc_x86_64"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_02.ninja soong_zip,linux_glibc_x86_64

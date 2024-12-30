@@ -58,11 +58,6 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/system/libbase/libbase^android_x86_x86_6
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^android_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^android_x86_x86_64_shared/ .
 
-echo "building libdataloader^android_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libdataloader,android_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/incremental_delivery/libdataloader/libdataloader^android_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/system/incremental_delivery/libdataloader^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/incremental_delivery/libdataloader/libdataloader^android_x86_64_shared
-
 echo "building libdataloader^android_x86_x86_64_shared"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libdataloader,android_x86_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/incremental_delivery/libdataloader/libdataloader^android_x86_x86_64_shared
@@ -72,6 +67,11 @@ echo "building libincfs^android_x86_64_shared"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libincfs,android_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/incremental_delivery/incfs/libincfs^android_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/system/incremental_delivery/libincfs^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/incremental_delivery/incfs/libincfs^android_x86_64_shared
+
+echo "building libdataloader^android_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libdataloader,android_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/incremental_delivery/libdataloader/libdataloader^android_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/system/incremental_delivery/libdataloader^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/incremental_delivery/libdataloader/libdataloader^android_x86_64_shared
 
 echo "building libincfs^android_x86_x86_64_shared"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libincfs,android_x86_x86_64_shared

@@ -97,6 +97,11 @@ ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_19.ninja framework-sdkexte
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/SdkExtensions/framework/framework-sdkextensions.stubs.source.module_lib^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_19/packages/modules/SdkExtensions/framework-sdkextensions.stubs.source.module_lib^android_common.output . $GITHUB_WORKSPACE/artifacts/packages/modules/SdkExtensions/framework/framework-sdkextensions.stubs.source.module_lib^android_common
 
+echo "building framework-sdkextensions.stubs.module_lib^android_common"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_19.ninja framework-sdkextensions.stubs.module_lib,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/SdkExtensions/framework/framework-sdkextensions.stubs.module_lib^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_19/packages/modules/SdkExtensions/framework-sdkextensions.stubs.module_lib^android_common.output . $GITHUB_WORKSPACE/artifacts/packages/modules/SdkExtensions/framework/framework-sdkextensions.stubs.module_lib^android_common
+
 echo "building framework-sdkextensions.stubs.source.system^android_common"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_19.ninja framework-sdkextensions.stubs.source.system,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/SdkExtensions/framework/framework-sdkextensions.stubs.source.system^android_common
@@ -121,11 +126,6 @@ echo "building com.android.sdkext-bootclasspath-fragment^android_common_apex30"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_19.ninja com.android.sdkext-bootclasspath-fragment,android_common_apex30
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/SdkExtensions/com.android.sdkext-bootclasspath-fragment^android_common_apex30
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_19/packages/modules/SdkExtensions/com.android.sdkext-bootclasspath-fragment^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/packages/modules/SdkExtensions/com.android.sdkext-bootclasspath-fragment^android_common_apex30
-
-echo "building framework-sdkextensions.stubs.module_lib^android_common"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_19.ninja framework-sdkextensions.stubs.module_lib,android_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/SdkExtensions/framework/framework-sdkextensions.stubs.module_lib^android_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_19/packages/modules/SdkExtensions/framework-sdkextensions.stubs.module_lib^android_common.output . $GITHUB_WORKSPACE/artifacts/packages/modules/SdkExtensions/framework/framework-sdkextensions.stubs.module_lib^android_common
 
 rm -rf out
 

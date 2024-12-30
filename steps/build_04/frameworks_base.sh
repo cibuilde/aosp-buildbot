@@ -149,6 +149,11 @@ ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja incident_sections
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/cmds/incident/incident_sections^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/base/incident_sections^.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/cmds/incident/incident_sections^
 
+echo "building incidentd_section_list^"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja incidentd_section_list,
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/cmds/incidentd/incidentd_section_list^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/base/incidentd_section_list^.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/cmds/incidentd/incidentd_section_list^
+
 echo "building libaapt2^linux_glibc_x86_64_static"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libaapt2,linux_glibc_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/tools/aapt2/libaapt2^linux_glibc_x86_64_static
@@ -158,6 +163,16 @@ echo "building libidmap2_protos^android_x86_64_static"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libidmap2_protos,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/cmds/idmap2/libidmap2_protos^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/base/libidmap2_protos^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/cmds/idmap2/libidmap2_protos^android_x86_64_static
+
+echo "building libidmap2daidl^android_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libidmap2daidl,android_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/cmds/idmap2/libidmap2daidl^android_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/base/libidmap2daidl^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/cmds/idmap2/libidmap2daidl^android_x86_64_static
+
+echo "building libplatformprotos^linux_glibc_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libplatformprotos,linux_glibc_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/libplatformprotos^linux_glibc_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/base/libplatformprotos^linux_glibc_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/libplatformprotos^linux_glibc_x86_64_static
 
 echo "building libplatformprotos^linux_glibc_x86_64_shared"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libplatformprotos,linux_glibc_x86_64_shared
@@ -169,16 +184,6 @@ ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja incident-section-
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/tools/incident_section_gen/incident-section-gen^linux_glibc_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/base/incident-section-gen^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/tools/incident_section_gen/incident-section-gen^linux_glibc_x86_64
 
-echo "building incidentd_section_list^"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja incidentd_section_list,
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/cmds/incidentd/incidentd_section_list^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/base/incidentd_section_list^.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/cmds/incidentd/incidentd_section_list^
-
-echo "building libidmap2daidl^android_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libidmap2daidl,android_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/cmds/idmap2/libidmap2daidl^android_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/base/libidmap2daidl^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/cmds/idmap2/libidmap2daidl^android_x86_64_static
-
 echo "building libplatformprotos^android_x86_64_static"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libplatformprotos,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/libplatformprotos^android_x86_64_static
@@ -188,11 +193,6 @@ echo "building libplatformprotos^android_x86_x86_64_static"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libplatformprotos,android_x86_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/libplatformprotos^android_x86_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/base/libplatformprotos^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/libplatformprotos^android_x86_x86_64_static
-
-echo "building libplatformprotos^linux_glibc_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libplatformprotos,linux_glibc_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/libplatformprotos^linux_glibc_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/base/libplatformprotos^linux_glibc_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/libplatformprotos^linux_glibc_x86_64_static
 
 echo "building lockedregioncodeinjection^linux_glibc_common"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja lockedregioncodeinjection,linux_glibc_common

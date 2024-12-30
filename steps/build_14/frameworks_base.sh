@@ -610,11 +610,6 @@ ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_14.ninja libandroid,androi
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/native/android/libandroid^android_x86_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_14/frameworks/base/libandroid^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/native/android/libandroid^android_x86_x86_64_shared
 
-echo "building libandroid_runtime^android_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_14.ninja libandroid_runtime,android_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/core/jni/libandroid_runtime^android_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_14/frameworks/base/libandroid_runtime^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/core/jni/libandroid_runtime^android_x86_64_shared
-
 echo "building libandroid_servers^android_x86_64_shared"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_14.ninja libandroid_servers,android_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/services/libandroid_servers^android_x86_64_shared
@@ -679,6 +674,11 @@ echo "building libhwui^android_x86_64_shared"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_14.ninja libhwui,android_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/libs/hwui/libhwui^android_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_14/frameworks/base/libhwui^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/libs/hwui/libhwui^android_x86_64_shared
+
+echo "building libandroid_runtime^android_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_14.ninja libandroid_runtime,android_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/core/jni/libandroid_runtime^android_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_14/frameworks/base/libandroid_runtime^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/core/jni/libandroid_runtime^android_x86_64_shared
 
 echo "building libhwui^android_x86_x86_64_shared"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_14.ninja libhwui,android_x86_x86_64_shared

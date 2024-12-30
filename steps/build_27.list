@@ -1,4 +1,4 @@
-build step 27: projects: 2 targets: 2
+Tag: buid_27 Projects: 2 Targets: 2
 
-packages/apps/EmergencyInfo: EmergencyInfo-lib^android_common
-packages/modules/Permission: PermissionController^android_common_apex30
+packages/apps/EmergencyInfo/: EmergencyInfo-lib^android_common
+packages/modules/Permission/: PermissionController^android_common_apex30

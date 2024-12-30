@@ -172,35 +172,35 @@ ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libf2fs_sparseblo
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/extras/f2fs_utils/libf2fs_sparseblock^android_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/system/extras/libf2fs_sparseblock^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/extras/f2fs_utils/libf2fs_sparseblock^android_x86_64_shared
 
-echo "building libsquashfs_utils^android_recovery_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libsquashfs_utils,android_recovery_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/extras/squashfs_utils/libsquashfs_utils^android_recovery_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/system/extras/libsquashfs_utils^android_recovery_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/extras/squashfs_utils/libsquashfs_utils^android_recovery_x86_64_shared
-
 echo "building libfec^android_recovery_x86_64_shared"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libfec,android_recovery_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/extras/libfec/libfec^android_recovery_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/system/extras/libfec^android_recovery_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/extras/libfec/libfec^android_recovery_x86_64_shared
-
-echo "building libsimpleperf_profcollect^android_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libsimpleperf_profcollect,android_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/extras/simpleperf/libsimpleperf_profcollect^android_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/system/extras/libsimpleperf_profcollect^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/extras/simpleperf/libsimpleperf_profcollect^android_x86_64_shared
-
-echo "building libsquashfs_utils^android_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libsquashfs_utils,android_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/extras/squashfs_utils/libsquashfs_utils^android_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/system/extras/libsquashfs_utils^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/extras/squashfs_utils/libsquashfs_utils^android_x86_64_shared
 
 echo "building libfec^android_x86_64_shared"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libfec,android_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/extras/libfec/libfec^android_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/system/extras/libfec^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/extras/libfec/libfec^android_x86_64_shared
 
+echo "building libsimpleperf_profcollect^android_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libsimpleperf_profcollect,android_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/extras/simpleperf/libsimpleperf_profcollect^android_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/system/extras/libsimpleperf_profcollect^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/extras/simpleperf/libsimpleperf_profcollect^android_x86_64_shared
+
 echo "building libsimpleperf_profcollect_rust^android_x86_64_rlib_dylib-std"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libsimpleperf_profcollect_rust,android_x86_64_rlib_dylib-std
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/extras/simpleperf/libsimpleperf_profcollect_rust^android_x86_64_rlib_dylib-std
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/system/extras/libsimpleperf_profcollect_rust^android_x86_64_rlib_dylib-std.output . $GITHUB_WORKSPACE/artifacts/system/extras/simpleperf/libsimpleperf_profcollect_rust^android_x86_64_rlib_dylib-std
+
+echo "building libsquashfs_utils^android_recovery_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libsquashfs_utils,android_recovery_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/extras/squashfs_utils/libsquashfs_utils^android_recovery_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/system/extras/libsquashfs_utils^android_recovery_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/extras/squashfs_utils/libsquashfs_utils^android_recovery_x86_64_shared
+
+echo "building libsquashfs_utils^android_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libsquashfs_utils,android_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/extras/squashfs_utils/libsquashfs_utils^android_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/system/extras/libsquashfs_utils^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/extras/squashfs_utils/libsquashfs_utils^android_x86_64_shared
 
 echo "building preopt2cachename^android_x86_64"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja preopt2cachename,android_x86_64

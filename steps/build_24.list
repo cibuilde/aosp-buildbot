@@ -1,16 +1,16 @@
-build step 24: projects: 14 targets: 60
+Tag: buid_24 Projects: 14 Targets: 60
 
-external/apache-commons-compress: apache-commons-compress^android_common
-external/glide: glide^android_common
-external/libbackup: libbackup^android_common
-external/lottie: lottie^android_common
-external/setupcompat: setupcompat^android_common
-frameworks/base: SettingsLibAdaptiveIcon^android_common SettingsLibCollapsingToolbarBaseActivity^android_common SettingsLibCollapsingToolbarBaseActivity^android_common_apex30 SettingsLibDisplayDensityUtils^android_common SettingsLibSettingsTransition^android_common SettingsLibSettingsTransition^android_common_apex30 SettingsLibTile^android_common SettingsLibUsageProgressBarPreference^android_common SystemUI-proto^android_common SystemUI-statsd^android_common SystemUI-tags^android_common SystemUIAnimationLib^android_common SystemUIPluginLib^android_common SystemUISharedLib^android_common WindowManager-Shell-proto^android_common WindowManager-Shell^android_common android.test.base.stubs.source.system^android_common android.test.base.stubs.system^android_common android.test.mock.stubs.source.system^android_common android.test.mock.stubs.system^android_common android.test.runner.stubs.source.system^android_common android.test.runner.stubs.system^android_common android_system_server_stubs_current^android_common checked-protolog.json^ com.android.appsearch^android_common_com.android.appsearch_image framework^android_common generate-protolog.json^ generate-wm_shell_protolog.json^ lockagent^android_common protolog-groups^android_common protolog-lib^android_common protolog.conf.json.gz^android_x86_64 service-appsearch^android_common_apex10000 service-media-s^android_common_apex29 services-non-updatable-stubs^android_common services.core.json.gz^ services.core.protologsrc^ services.wifi^android_common statslog-appsearch-lib^android_common_apex10000 uiautomator.core^android_common wm_shell_protolog-groups^android_common wm_shell_protolog_src^
-frameworks/libs/net: net-utils-services-common^android_common netd-client^android_common_apex30
-frameworks/opt/photoviewer: libphotoviewer^android_common
-packages/apps/Launcher3: Launcher3CommonDepsLib^android_common Launcher3ResLib^android_common
-packages/apps/SettingsIntelligence: SettingsIntelligence-core^android_common
-packages/modules/Connectivity: com.android.tethering-bootclasspath-fragment^android_common_apex30
-packages/modules/DnsResolver: dnsresolver_aidl_interface-V9-java^android_common_apex30
-packages/modules/ExtServices: ExtServices-core^android_common_apex30
-packages/modules/NetworkStack: NetworkStackApi29Shims^android_common_apex30 NetworkStackApi30Shims^android_common_apex30 NetworkStackShimsCommon^android_common_apex30 networkstack-client^android_common_apex30
+external/apache-commons-compress/: apache-commons-compress^android_common
+external/glide/: glide^android_common
+external/libbackup/: libbackup^android_common
+external/lottie/: lottie^android_common
+external/setupcompat/: setupcompat^android_common
+frameworks/base/: SettingsLibAdaptiveIcon^android_common SettingsLibCollapsingToolbarBaseActivity^android_common SettingsLibCollapsingToolbarBaseActivity^android_common_apex30 SettingsLibDisplayDensityUtils^android_common SettingsLibSettingsTransition^android_common SettingsLibSettingsTransition^android_common_apex30 SettingsLibTile^android_common SettingsLibUsageProgressBarPreference^android_common SystemUI-proto^android_common SystemUI-statsd^android_common SystemUI-tags^android_common SystemUIAnimationLib^android_common SystemUIPluginLib^android_common SystemUISharedLib^android_common WindowManager-Shell-proto^android_common WindowManager-Shell^android_common android.test.base.stubs.source.system^android_common android.test.base.stubs.system^android_common android.test.mock.stubs.source.system^android_common android.test.mock.stubs.system^android_common android.test.runner.stubs.source.system^android_common android.test.runner.stubs.system^android_common android_system_server_stubs_current^android_common checked-protolog.json^ com.android.appsearch^android_common_com.android.appsearch_image framework^android_common generate-protolog.json^ generate-wm_shell_protolog.json^ lockagent^android_common protolog-groups^android_common protolog-lib^android_common protolog.conf.json.gz^android_x86_64 service-appsearch^android_common_apex10000 service-media-s^android_common_apex29 services-non-updatable-stubs^android_common services.core.json.gz^ services.core.protologsrc^ services.wifi^android_common statslog-appsearch-lib^android_common_apex10000 uiautomator.core^android_common wm_shell_protolog-groups^android_common wm_shell_protolog_src^
+frameworks/libs/net/: net-utils-services-common^android_common netd-client^android_common_apex30
+frameworks/opt/photoviewer/: libphotoviewer^android_common
+packages/apps/Launcher3/: Launcher3CommonDepsLib^android_common Launcher3ResLib^android_common
+packages/apps/SettingsIntelligence/: SettingsIntelligence-core^android_common
+packages/modules/Connectivity/: com.android.tethering-bootclasspath-fragment^android_common_apex30
+packages/modules/DnsResolver/: dnsresolver_aidl_interface-V9-java^android_common_apex30
+packages/modules/ExtServices/: ExtServices-core^android_common_apex30
+packages/modules/NetworkStack/: NetworkStackApi29Shims^android_common_apex30 NetworkStackApi30Shims^android_common_apex30 NetworkStackShimsCommon^android_common_apex30 networkstack-client^android_common_apex30

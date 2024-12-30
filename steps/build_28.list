@@ -1,3 +1,3 @@
-build step 28: projects: 1 targets: 1
+Tag: buid_28 Projects: 1 Targets: 1
 
-frameworks/base: framework-platform-compat-config^android_common
+frameworks/base/: framework-platform-compat-config^android_common

@@ -243,6 +243,11 @@ ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/audio/7.0/android.hardware.audio@7.0_genc++_headers^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.audio@7.0_genc++_headers^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/audio/7.0/android.hardware.audio@7.0_genc++_headers^
 
+echo "building android.hardware.authsecret-api^"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.authsecret-api,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/authsecret/aidl/android.hardware.authsecret-api^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.authsecret-api^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/authsecret/aidl/android.hardware.authsecret-api^
+
 echo "building android.hardware.authsecret-V1-ndk_platform-source^"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.authsecret-V1-ndk_platform-source,
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/authsecret/aidl/android.hardware.authsecret-V1-ndk_platform-source^
@@ -262,11 +267,6 @@ echo "building android.hardware.authsecret-V1.0-java_gen_java^"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.authsecret-V1.0-java_gen_java,
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/authsecret/1.0/android.hardware.authsecret-V1.0-java_gen_java^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.authsecret-V1.0-java_gen_java^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/authsecret/1.0/android.hardware.authsecret-V1.0-java_gen_java^
-
-echo "building android.hardware.authsecret-api^"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.authsecret-api,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/authsecret/aidl/android.hardware.authsecret-api^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.authsecret-api^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/authsecret/aidl/android.hardware.authsecret-api^
 
 echo "building android.hardware.authsecret@1.0-inheritance-hierarchy^"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.authsecret@1.0-inheritance-hierarchy,
@@ -313,11 +313,6 @@ ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/automotive/occupant_awareness/aidl/android.hardware.automotive.occupant_awareness-V1-ndk_platform^android_vendor.31_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.automotive.occupant_awareness-V1-ndk_platform^android_vendor.31_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/automotive/occupant_awareness/aidl/android.hardware.automotive.occupant_awareness-V1-ndk_platform^android_vendor.31_x86_64_static
 
-echo "building android.hardware.automotive.occupant_awareness-V1-ndk_platform^android_vendor.31_x86_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.automotive.occupant_awareness-V1-ndk_platform,android_vendor.31_x86_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/automotive/occupant_awareness/aidl/android.hardware.automotive.occupant_awareness-V1-ndk_platform^android_vendor.31_x86_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.automotive.occupant_awareness-V1-ndk_platform^android_vendor.31_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/automotive/occupant_awareness/aidl/android.hardware.automotive.occupant_awareness-V1-ndk_platform^android_vendor.31_x86_x86_64_static
-
 echo "building android.hardware.automotive.occupant_awareness-api^"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.automotive.occupant_awareness-api,
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/automotive/occupant_awareness/aidl/android.hardware.automotive.occupant_awareness-api^
@@ -327,6 +322,11 @@ echo "building android.hardware.automotive.occupant_awareness-V1-ndk_platform-so
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.automotive.occupant_awareness-V1-ndk_platform-source,
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/automotive/occupant_awareness/aidl/android.hardware.automotive.occupant_awareness-V1-ndk_platform-source^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.automotive.occupant_awareness-V1-ndk_platform-source^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/automotive/occupant_awareness/aidl/android.hardware.automotive.occupant_awareness-V1-ndk_platform-source^
+
+echo "building android.hardware.automotive.occupant_awareness-V1-ndk_platform^android_vendor.31_x86_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.automotive.occupant_awareness-V1-ndk_platform,android_vendor.31_x86_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/automotive/occupant_awareness/aidl/android.hardware.automotive.occupant_awareness-V1-ndk_platform^android_vendor.31_x86_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.automotive.occupant_awareness-V1-ndk_platform^android_vendor.31_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/automotive/occupant_awareness/aidl/android.hardware.automotive.occupant_awareness-V1-ndk_platform^android_vendor.31_x86_x86_64_static
 
 echo "building android.hardware.automotive.sv@1.0-inheritance-hierarchy^"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.automotive.sv@1.0-inheritance-hierarchy,
@@ -398,6 +398,11 @@ ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/biometrics/face/1.0/android.hardware.biometrics.face@1.0_genc++_headers^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.biometrics.face@1.0_genc++_headers^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/biometrics/face/1.0/android.hardware.biometrics.face@1.0_genc++_headers^
 
+echo "building android.hardware.biometrics.fingerprint-api^"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.biometrics.fingerprint-api,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/biometrics/fingerprint/aidl/android.hardware.biometrics.fingerprint-api^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.biometrics.fingerprint-api^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/biometrics/fingerprint/aidl/android.hardware.biometrics.fingerprint-api^
+
 echo "building android.hardware.biometrics.fingerprint-V1-java-source^"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.biometrics.fingerprint-V1-java-source,
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/biometrics/fingerprint/aidl/android.hardware.biometrics.fingerprint-V1-java-source^
@@ -427,11 +432,6 @@ echo "building android.hardware.biometrics.fingerprint-V2.3-java_gen_java^"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.biometrics.fingerprint-V2.3-java_gen_java,
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/biometrics/fingerprint/2.3/android.hardware.biometrics.fingerprint-V2.3-java_gen_java^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.biometrics.fingerprint-V2.3-java_gen_java^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/biometrics/fingerprint/2.3/android.hardware.biometrics.fingerprint-V2.3-java_gen_java^
-
-echo "building android.hardware.biometrics.fingerprint-api^"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.biometrics.fingerprint-api,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/biometrics/fingerprint/aidl/android.hardware.biometrics.fingerprint-api^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.biometrics.fingerprint-api^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/biometrics/fingerprint/aidl/android.hardware.biometrics.fingerprint-api^
 
 echo "building android.hardware.biometrics.fingerprint@2.1-inheritance-hierarchy^"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.biometrics.fingerprint@2.1-inheritance-hierarchy,
@@ -993,6 +993,11 @@ ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/common/aidl/android.hardware.common-api^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.common-api^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/common/aidl/android.hardware.common-api^
 
+echo "building android.hardware.common.fmq-V1-ndk_platform-source^"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.common.fmq-V1-ndk_platform-source,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/common/fmq/aidl/android.hardware.common.fmq-V1-ndk_platform-source^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.common.fmq-V1-ndk_platform-source^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/common/fmq/aidl/android.hardware.common.fmq-V1-ndk_platform-source^
+
 echo "building android.hardware.common.fmq-V1-ndk_platform^android_vendor.31_x86_64_static"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.common.fmq-V1-ndk_platform,android_vendor.31_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/common/fmq/aidl/android.hardware.common.fmq-V1-ndk_platform^android_vendor.31_x86_64_static
@@ -1007,11 +1012,6 @@ echo "building android.hardware.common.fmq-api^"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.common.fmq-api,
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/common/fmq/aidl/android.hardware.common.fmq-api^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.common.fmq-api^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/common/fmq/aidl/android.hardware.common.fmq-api^
-
-echo "building android.hardware.common.fmq-V1-ndk_platform-source^"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.common.fmq-V1-ndk_platform-source,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/common/fmq/aidl/android.hardware.common.fmq-V1-ndk_platform-source^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.common.fmq-V1-ndk_platform-source^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/common/fmq/aidl/android.hardware.common.fmq-V1-ndk_platform-source^
 
 echo "building android.hardware.configstore-V1.0-java_gen_java^"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.configstore-V1.0-java_gen_java,
@@ -1758,11 +1758,6 @@ ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/health/2.1/android.hardware.health-V2.1-java_gen_java^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.health-V2.1-java_gen_java^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/health/2.1/android.hardware.health-V2.1-java_gen_java^
 
-echo "building android.hardware.health.storage-api^"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.health.storage-api,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/health/storage/aidl/android.hardware.health.storage-api^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.health.storage-api^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/health/storage/aidl/android.hardware.health.storage-api^
-
 echo "building android.hardware.health.storage-V1-ndk_platform-source^"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.health.storage-V1-ndk_platform-source,
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/health/storage/aidl/android.hardware.health.storage-V1-ndk_platform-source^
@@ -1782,6 +1777,11 @@ echo "building android.hardware.health.storage-V1-ndk_platform^android_x86_64_st
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.health.storage-V1-ndk_platform,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/health/storage/aidl/android.hardware.health.storage-V1-ndk_platform^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.health.storage-V1-ndk_platform^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/health/storage/aidl/android.hardware.health.storage-V1-ndk_platform^android_x86_64_static
+
+echo "building android.hardware.health.storage-api^"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.health.storage-api,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/health/storage/aidl/android.hardware.health.storage-api^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.health.storage-api^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/health/storage/aidl/android.hardware.health.storage-api^
 
 echo "building android.hardware.health.storage@1.0-inheritance-hierarchy^"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.health.storage@1.0-inheritance-hierarchy,
@@ -1838,16 +1838,6 @@ ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/health/2.1/android.hardware.health@2.1_genc++_headers^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.health@2.1_genc++_headers^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/health/2.1/android.hardware.health@2.1_genc++_headers^
 
-echo "building android.hardware.identity-V3-ndk_platform^android_vendor.31_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.identity-V3-ndk_platform,android_vendor.31_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/identity/aidl/android.hardware.identity-V3-ndk_platform^android_vendor.31_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.identity-V3-ndk_platform^android_vendor.31_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/identity/aidl/android.hardware.identity-V3-ndk_platform^android_vendor.31_x86_64_static
-
-echo "building android.hardware.identity-V3-ndk_platform^android_vendor.31_x86_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.identity-V3-ndk_platform,android_vendor.31_x86_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/identity/aidl/android.hardware.identity-V3-ndk_platform^android_vendor.31_x86_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.identity-V3-ndk_platform^android_vendor.31_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/identity/aidl/android.hardware.identity-V3-ndk_platform^android_vendor.31_x86_x86_64_static
-
 echo "building android.hardware.identity-api^"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.identity-api,
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/identity/aidl/android.hardware.identity-api^
@@ -1862,6 +1852,21 @@ echo "building android.hardware.identity-V3-ndk_platform-source^"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.identity-V3-ndk_platform-source,
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/identity/aidl/android.hardware.identity-V3-ndk_platform-source^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.identity-V3-ndk_platform-source^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/identity/aidl/android.hardware.identity-V3-ndk_platform-source^
+
+echo "building android.hardware.keymaster-V3-ndk_platform-source^"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.keymaster-V3-ndk_platform-source,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/keymaster/aidl/android.hardware.keymaster-V3-ndk_platform-source^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.keymaster-V3-ndk_platform-source^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/keymaster/aidl/android.hardware.keymaster-V3-ndk_platform-source^
+
+echo "building android.hardware.identity-V3-ndk_platform^android_vendor.31_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.identity-V3-ndk_platform,android_vendor.31_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/identity/aidl/android.hardware.identity-V3-ndk_platform^android_vendor.31_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.identity-V3-ndk_platform^android_vendor.31_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/identity/aidl/android.hardware.identity-V3-ndk_platform^android_vendor.31_x86_64_static
+
+echo "building android.hardware.identity-V3-ndk_platform^android_vendor.31_x86_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.identity-V3-ndk_platform,android_vendor.31_x86_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/identity/aidl/android.hardware.identity-V3-ndk_platform^android_vendor.31_x86_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.identity-V3-ndk_platform^android_vendor.31_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/identity/aidl/android.hardware.identity-V3-ndk_platform^android_vendor.31_x86_x86_64_static
 
 echo "building android.hardware.identity-libeic-hal-common^android_vendor.31_x86_64_static"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.identity-libeic-hal-common,android_vendor.31_x86_64_static
@@ -1913,10 +1918,10 @@ ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/ir/1.0/android.hardware.ir@1.0_genc++_headers^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.ir@1.0_genc++_headers^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/ir/1.0/android.hardware.ir@1.0_genc++_headers^
 
-echo "building android.hardware.keymaster-V3-ndk_platform-source^"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.keymaster-V3-ndk_platform-source,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/keymaster/aidl/android.hardware.keymaster-V3-ndk_platform-source^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.keymaster-V3-ndk_platform-source^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/keymaster/aidl/android.hardware.keymaster-V3-ndk_platform-source^
+echo "building android.hardware.keymaster-V3-cpp-source^"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.keymaster-V3-cpp-source,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/keymaster/aidl/android.hardware.keymaster-V3-cpp-source^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.keymaster-V3-cpp-source^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/keymaster/aidl/android.hardware.keymaster-V3-cpp-source^
 
 echo "building android.hardware.keymaster-V3-ndk_platform^android_vendor.31_x86_64_static"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.keymaster-V3-ndk_platform,android_vendor.31_x86_64_static
@@ -1932,11 +1937,6 @@ echo "building android.hardware.keymaster-api^"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.keymaster-api,
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/keymaster/aidl/android.hardware.keymaster-api^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.keymaster-api^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/keymaster/aidl/android.hardware.keymaster-api^
-
-echo "building android.hardware.keymaster-V3-cpp-source^"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.keymaster-V3-cpp-source,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/keymaster/aidl/android.hardware.keymaster-V3-cpp-source^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.keymaster-V3-cpp-source^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/keymaster/aidl/android.hardware.keymaster-V3-cpp-source^
 
 echo "building android.hardware.keymaster-V3-java-source^"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.keymaster-V3-java-source,
@@ -1988,11 +1988,6 @@ ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/keymaster/4.1/android.hardware.keymaster@4.1_genc++_headers^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.keymaster@4.1_genc++_headers^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/keymaster/4.1/android.hardware.keymaster@4.1_genc++_headers^
 
-echo "building android.hardware.light-api^"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.light-api,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/light/aidl/android.hardware.light-api^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.light-api^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/light/aidl/android.hardware.light-api^
-
 echo "building android.hardware.light-V1-cpp-source^"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.light-V1-cpp-source,
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/light/aidl/android.hardware.light-V1-cpp-source^
@@ -2022,6 +2017,11 @@ echo "building android.hardware.light-V2.0-java_gen_java^"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.light-V2.0-java_gen_java,
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/light/2.0/android.hardware.light-V2.0-java_gen_java^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.light-V2.0-java_gen_java^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/light/2.0/android.hardware.light-V2.0-java_gen_java^
+
+echo "building android.hardware.light-api^"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.light-api,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/light/aidl/android.hardware.light-api^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.light-api^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/light/aidl/android.hardware.light-api^
 
 echo "building android.hardware.light@2.0-inheritance-hierarchy^"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.light@2.0-inheritance-hierarchy,
@@ -2128,11 +2128,6 @@ ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/media/1.0/android.hardware.media@1.0_genc++_headers^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.media@1.0_genc++_headers^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/media/1.0/android.hardware.media@1.0_genc++_headers^
 
-echo "building android.hardware.memtrack-V1-ndk_platform-source^"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.memtrack-V1-ndk_platform-source,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/memtrack/aidl/android.hardware.memtrack-V1-ndk_platform-source^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.memtrack-V1-ndk_platform-source^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/memtrack/aidl/android.hardware.memtrack-V1-ndk_platform-source^
-
 echo "building android.hardware.memtrack-V1-ndk_platform^android_vendor.31_x86_64_static"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.memtrack-V1-ndk_platform,android_vendor.31_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/memtrack/aidl/android.hardware.memtrack-V1-ndk_platform^android_vendor.31_x86_64_static
@@ -2143,11 +2138,6 @@ ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/memtrack/aidl/android.hardware.memtrack-V1-ndk_platform^android_vendor.31_x86_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.memtrack-V1-ndk_platform^android_vendor.31_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/memtrack/aidl/android.hardware.memtrack-V1-ndk_platform^android_vendor.31_x86_x86_64_static
 
-echo "building android.hardware.memtrack-V1-ndk_platform^android_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.memtrack-V1-ndk_platform,android_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/memtrack/aidl/android.hardware.memtrack-V1-ndk_platform^android_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.memtrack-V1-ndk_platform^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/memtrack/aidl/android.hardware.memtrack-V1-ndk_platform^android_x86_64_static
-
 echo "building android.hardware.memtrack-V1-ndk_platform^android_x86_x86_64_static"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.memtrack-V1-ndk_platform,android_x86_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/memtrack/aidl/android.hardware.memtrack-V1-ndk_platform^android_x86_x86_64_static
@@ -2157,6 +2147,16 @@ echo "building android.hardware.memtrack-api^"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.memtrack-api,
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/memtrack/aidl/android.hardware.memtrack-api^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.memtrack-api^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/memtrack/aidl/android.hardware.memtrack-api^
+
+echo "building android.hardware.memtrack-V1-ndk_platform-source^"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.memtrack-V1-ndk_platform-source,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/memtrack/aidl/android.hardware.memtrack-V1-ndk_platform-source^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.memtrack-V1-ndk_platform-source^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/memtrack/aidl/android.hardware.memtrack-V1-ndk_platform-source^
+
+echo "building android.hardware.memtrack-V1-ndk_platform^android_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.memtrack-V1-ndk_platform,android_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/memtrack/aidl/android.hardware.memtrack-V1-ndk_platform^android_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.memtrack-V1-ndk_platform^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/memtrack/aidl/android.hardware.memtrack-V1-ndk_platform^android_x86_64_static
 
 echo "building android.hardware.memtrack@1.0-inheritance-hierarchy^"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.memtrack@1.0-inheritance-hierarchy,
@@ -2303,16 +2303,6 @@ ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/nfc/1.2/android.hardware.nfc@1.2_genc++_headers^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.nfc@1.2_genc++_headers^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/nfc/1.2/android.hardware.nfc@1.2_genc++_headers^
 
-echo "building android.hardware.oemlock-V1-ndk_platform^android_vendor.31_x86_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.oemlock-V1-ndk_platform,android_vendor.31_x86_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/oemlock/aidl/android.hardware.oemlock-V1-ndk_platform^android_vendor.31_x86_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.oemlock-V1-ndk_platform^android_vendor.31_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/oemlock/aidl/android.hardware.oemlock-V1-ndk_platform^android_vendor.31_x86_x86_64_static
-
-echo "building android.hardware.oemlock-api^"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.oemlock-api,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/oemlock/aidl/android.hardware.oemlock-api^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.oemlock-api^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/oemlock/aidl/android.hardware.oemlock-api^
-
 echo "building android.hardware.oemlock-V1-ndk_platform-source^"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.oemlock-V1-ndk_platform-source,
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/oemlock/aidl/android.hardware.oemlock-V1-ndk_platform-source^
@@ -2323,15 +2313,30 @@ ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/oemlock/aidl/android.hardware.oemlock-V1-ndk_platform^android_vendor.31_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.oemlock-V1-ndk_platform^android_vendor.31_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/oemlock/aidl/android.hardware.oemlock-V1-ndk_platform^android_vendor.31_x86_64_static
 
+echo "building android.hardware.oemlock-V1-ndk_platform^android_vendor.31_x86_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.oemlock-V1-ndk_platform,android_vendor.31_x86_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/oemlock/aidl/android.hardware.oemlock-V1-ndk_platform^android_vendor.31_x86_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.oemlock-V1-ndk_platform^android_vendor.31_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/oemlock/aidl/android.hardware.oemlock-V1-ndk_platform^android_vendor.31_x86_x86_64_static
+
 echo "building android.hardware.oemlock-V1.0-java_gen_java^"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.oemlock-V1.0-java_gen_java,
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/oemlock/1.0/android.hardware.oemlock-V1.0-java_gen_java^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.oemlock-V1.0-java_gen_java^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/oemlock/1.0/android.hardware.oemlock-V1.0-java_gen_java^
 
+echo "building android.hardware.oemlock-api^"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.oemlock-api,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/oemlock/aidl/android.hardware.oemlock-api^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.oemlock-api^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/oemlock/aidl/android.hardware.oemlock-api^
+
 echo "building android.hardware.oemlock@1.0-inheritance-hierarchy^"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.oemlock@1.0-inheritance-hierarchy,
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/oemlock/1.0/android.hardware.oemlock@1.0-inheritance-hierarchy^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.oemlock@1.0-inheritance-hierarchy^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/oemlock/1.0/android.hardware.oemlock@1.0-inheritance-hierarchy^
+
+echo "building android.hardware.power-api^"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.power-api,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/power/aidl/android.hardware.power-api^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.power-api^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/power/aidl/android.hardware.power-api^
 
 echo "building android.hardware.power-V1-cpp-source^"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.power-V1-cpp-source,
@@ -2367,11 +2372,6 @@ echo "building android.hardware.power-V2-ndk_platform^android_vendor.31_x86_x86_
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.power-V2-ndk_platform,android_vendor.31_x86_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/power/aidl/android.hardware.power-V2-ndk_platform^android_vendor.31_x86_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.power-V2-ndk_platform^android_vendor.31_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/power/aidl/android.hardware.power-V2-ndk_platform^android_vendor.31_x86_x86_64_static
-
-echo "building android.hardware.power-api^"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.power-api,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/power/aidl/android.hardware.power-api^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.power-api^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/power/aidl/android.hardware.power-api^
 
 echo "building android.hardware.power.stats-V1-cpp-source^"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.power.stats-V1-cpp-source,
@@ -2728,16 +2728,6 @@ ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.6/android.hardware.radio@1.6_genc++_headers^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.radio@1.6_genc++_headers^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.6/android.hardware.radio@1.6_genc++_headers^
 
-echo "building android.hardware.rebootescrow-V1-ndk_platform^android_vendor.31_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.rebootescrow-V1-ndk_platform,android_vendor.31_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/rebootescrow/aidl/android.hardware.rebootescrow-V1-ndk_platform^android_vendor.31_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.rebootescrow-V1-ndk_platform^android_vendor.31_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/rebootescrow/aidl/android.hardware.rebootescrow-V1-ndk_platform^android_vendor.31_x86_64_static
-
-echo "building android.hardware.rebootescrow-V1-ndk_platform^android_vendor.31_x86_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.rebootescrow-V1-ndk_platform,android_vendor.31_x86_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/rebootescrow/aidl/android.hardware.rebootescrow-V1-ndk_platform^android_vendor.31_x86_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.rebootescrow-V1-ndk_platform^android_vendor.31_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/rebootescrow/aidl/android.hardware.rebootescrow-V1-ndk_platform^android_vendor.31_x86_x86_64_static
-
 echo "building android.hardware.rebootescrow-api^"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.rebootescrow-api,
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/rebootescrow/aidl/android.hardware.rebootescrow-api^
@@ -2752,6 +2742,16 @@ echo "building android.hardware.rebootescrow-V1-ndk_platform-source^"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.rebootescrow-V1-ndk_platform-source,
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/rebootescrow/aidl/android.hardware.rebootescrow-V1-ndk_platform-source^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.rebootescrow-V1-ndk_platform-source^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/rebootescrow/aidl/android.hardware.rebootescrow-V1-ndk_platform-source^
+
+echo "building android.hardware.rebootescrow-V1-ndk_platform^android_vendor.31_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.rebootescrow-V1-ndk_platform,android_vendor.31_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/rebootescrow/aidl/android.hardware.rebootescrow-V1-ndk_platform^android_vendor.31_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.rebootescrow-V1-ndk_platform^android_vendor.31_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/rebootescrow/aidl/android.hardware.rebootescrow-V1-ndk_platform^android_vendor.31_x86_64_static
+
+echo "building android.hardware.rebootescrow-V1-ndk_platform^android_vendor.31_x86_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.rebootescrow-V1-ndk_platform,android_vendor.31_x86_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/rebootescrow/aidl/android.hardware.rebootescrow-V1-ndk_platform^android_vendor.31_x86_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.rebootescrow-V1-ndk_platform^android_vendor.31_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/rebootescrow/aidl/android.hardware.rebootescrow-V1-ndk_platform^android_vendor.31_x86_x86_64_static
 
 echo "building android.hardware.renderscript@1.0-inheritance-hierarchy^"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.renderscript@1.0-inheritance-hierarchy,
@@ -2808,11 +2808,6 @@ ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/secure_element/1.2/android.hardware.secure_element@1.2-inheritance-hierarchy^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.secure_element@1.2-inheritance-hierarchy^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/secure_element/1.2/android.hardware.secure_element@1.2-inheritance-hierarchy^
 
-echo "building android.hardware.security.keymint-api^"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.security.keymint-api,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/security/keymint/aidl/android.hardware.security.keymint-api^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.security.keymint-api^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/security/keymint/aidl/android.hardware.security.keymint-api^
-
 echo "building android.hardware.security.keymint-V1-cpp-source^"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.security.keymint-V1-cpp-source,
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/security/keymint/aidl/android.hardware.security.keymint-V1-cpp-source^
@@ -2827,6 +2822,11 @@ echo "building android.hardware.security.keymint-V1-ndk_platform-source^"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.security.keymint-V1-ndk_platform-source,
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/security/keymint/aidl/android.hardware.security.keymint-V1-ndk_platform-source^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.security.keymint-V1-ndk_platform-source^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/security/keymint/aidl/android.hardware.security.keymint-V1-ndk_platform-source^
+
+echo "building android.hardware.security.secureclock-V1-ndk_platform-source^"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.security.secureclock-V1-ndk_platform-source,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/security/secureclock/aidl/android.hardware.security.secureclock-V1-ndk_platform-source^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.security.secureclock-V1-ndk_platform-source^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/security/secureclock/aidl/android.hardware.security.secureclock-V1-ndk_platform-source^
 
 echo "building android.hardware.security.keymint-V1-ndk_platform^android_vendor.31_x86_64_static"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.security.keymint-V1-ndk_platform,android_vendor.31_x86_64_static
@@ -2843,15 +2843,30 @@ ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/security/keymint/aidl/android.hardware.security.keymint-V1-ndk_platform^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.security.keymint-V1-ndk_platform^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/security/keymint/aidl/android.hardware.security.keymint-V1-ndk_platform^android_x86_64_static
 
+echo "building android.hardware.security.keymint-V1-rust^android_x86_64_source"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.security.keymint-V1-rust,android_x86_64_source
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/security/keymint/aidl/android.hardware.security.keymint-V1-rust^android_x86_64_source
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.security.keymint-V1-rust^android_x86_64_source.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/security/keymint/aidl/android.hardware.security.keymint-V1-rust^android_x86_64_source
+
+echo "building android.hardware.security.keymint-api^"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.security.keymint-api,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/security/keymint/aidl/android.hardware.security.keymint-api^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.security.keymint-api^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/security/keymint/aidl/android.hardware.security.keymint-api^
+
 echo "building android.hardware.security.keymint-V1-rust-source^"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.security.keymint-V1-rust-source,
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/security/keymint/aidl/android.hardware.security.keymint-V1-rust-source^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.security.keymint-V1-rust-source^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/security/keymint/aidl/android.hardware.security.keymint-V1-rust-source^
 
-echo "building android.hardware.security.keymint-V1-rust^android_x86_64_source"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.security.keymint-V1-rust,android_x86_64_source
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/security/keymint/aidl/android.hardware.security.keymint-V1-rust^android_x86_64_source
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.security.keymint-V1-rust^android_x86_64_source.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/security/keymint/aidl/android.hardware.security.keymint-V1-rust^android_x86_64_source
+echo "building android.hardware.security.secureclock-V1-ndk_platform^android_vendor.31_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.security.secureclock-V1-ndk_platform,android_vendor.31_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/security/secureclock/aidl/android.hardware.security.secureclock-V1-ndk_platform^android_vendor.31_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.security.secureclock-V1-ndk_platform^android_vendor.31_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/security/secureclock/aidl/android.hardware.security.secureclock-V1-ndk_platform^android_vendor.31_x86_64_static
+
+echo "building android.hardware.security.secureclock-api^"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.security.secureclock-api,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/security/secureclock/aidl/android.hardware.security.secureclock-api^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.security.secureclock-api^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/security/secureclock/aidl/android.hardware.security.secureclock-api^
 
 echo "building android.hardware.security.secureclock-V1-cpp-source^"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.security.secureclock-V1-cpp-source,
@@ -2863,16 +2878,6 @@ ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/security/secureclock/aidl/android.hardware.security.secureclock-V1-java-source^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.security.secureclock-V1-java-source^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/security/secureclock/aidl/android.hardware.security.secureclock-V1-java-source^
 
-echo "building android.hardware.security.secureclock-V1-ndk_platform-source^"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.security.secureclock-V1-ndk_platform-source,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/security/secureclock/aidl/android.hardware.security.secureclock-V1-ndk_platform-source^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.security.secureclock-V1-ndk_platform-source^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/security/secureclock/aidl/android.hardware.security.secureclock-V1-ndk_platform-source^
-
-echo "building android.hardware.security.secureclock-V1-ndk_platform^android_vendor.31_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.security.secureclock-V1-ndk_platform,android_vendor.31_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/security/secureclock/aidl/android.hardware.security.secureclock-V1-ndk_platform^android_vendor.31_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.security.secureclock-V1-ndk_platform^android_vendor.31_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/security/secureclock/aidl/android.hardware.security.secureclock-V1-ndk_platform^android_vendor.31_x86_64_static
-
 echo "building android.hardware.security.secureclock-V1-ndk_platform^android_vendor.31_x86_x86_64_static"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.security.secureclock-V1-ndk_platform,android_vendor.31_x86_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/security/secureclock/aidl/android.hardware.security.secureclock-V1-ndk_platform^android_vendor.31_x86_x86_64_static
@@ -2882,11 +2887,6 @@ echo "building android.hardware.security.secureclock-V1-ndk_platform^android_x86
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.security.secureclock-V1-ndk_platform,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/security/secureclock/aidl/android.hardware.security.secureclock-V1-ndk_platform^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.security.secureclock-V1-ndk_platform^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/security/secureclock/aidl/android.hardware.security.secureclock-V1-ndk_platform^android_x86_64_static
-
-echo "building android.hardware.security.secureclock-api^"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.security.secureclock-api,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/security/secureclock/aidl/android.hardware.security.secureclock-api^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.security.secureclock-api^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/security/secureclock/aidl/android.hardware.security.secureclock-api^
 
 echo "building android.hardware.security.secureclock-V1-rust-source^"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.security.secureclock-V1-rust-source,
@@ -3513,11 +3513,6 @@ ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/vr/1.0/android.hardware.vr@1.0_genc++_headers^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.vr@1.0_genc++_headers^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/vr/1.0/android.hardware.vr@1.0_genc++_headers^
 
-echo "building android.hardware.weaver-api^"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.weaver-api,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/weaver/aidl/android.hardware.weaver-api^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.weaver-api^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/weaver/aidl/android.hardware.weaver-api^
-
 echo "building android.hardware.weaver-V1-ndk_platform-source^"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.weaver-V1-ndk_platform-source,
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/weaver/aidl/android.hardware.weaver-V1-ndk_platform-source^
@@ -3537,6 +3532,11 @@ echo "building android.hardware.weaver-V1.0-java_gen_java^"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.weaver-V1.0-java_gen_java,
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/weaver/1.0/android.hardware.weaver-V1.0-java_gen_java^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.weaver-V1.0-java_gen_java^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/weaver/1.0/android.hardware.weaver-V1.0-java_gen_java^
+
+echo "building android.hardware.weaver-api^"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.weaver-api,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/weaver/aidl/android.hardware.weaver-api^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.weaver-api^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/weaver/aidl/android.hardware.weaver-api^
 
 echo "building android.hardware.weaver@1.0-inheritance-hierarchy^"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.weaver@1.0-inheritance-hierarchy,

@@ -193,6 +193,11 @@ ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja charger,android_x
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/healthd/charger^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/system/core/charger^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/core/healthd/charger^android_x86_64
 
+echo "building libfs_mgr_binder^android_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja libfs_mgr_binder,android_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/libfs_mgr_binder^android_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/system/core/libfs_mgr_binder^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/libfs_mgr_binder^android_x86_64_shared
+
 echo "building clean_scratch_files^android_x86_64"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja clean_scratch_files,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/clean_scratch_files^android_x86_64
@@ -207,11 +212,6 @@ echo "building libfs_mgr_binder^android_x86_64_static"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja libfs_mgr_binder,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/libfs_mgr_binder^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/system/core/libfs_mgr_binder^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/libfs_mgr_binder^android_x86_64_static
-
-echo "building libfs_mgr_binder^android_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja libfs_mgr_binder,android_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/libfs_mgr_binder^android_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/system/core/libfs_mgr_binder^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/libfs_mgr_binder^android_x86_64_shared
 
 echo "building libgrallocusage^android_vendor.31_x86_64_shared"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja libgrallocusage,android_vendor.31_x86_64_shared

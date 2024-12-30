@@ -16,245 +16,196 @@ jobs:
       with:
         path: cache/art.tar.zst
         key: art@${{ env.branch }}
-        restore-keys: art@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/bionic.tar.zst
         key: bionic@${{ env.branch }}
-        restore-keys: bionic@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/build_soong.tar.zst
         key: build_soong@${{ env.branch }}
-        restore-keys: build_soong@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/cts.tar.zst
         key: cts@${{ env.branch }}
-        restore-keys: cts@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/dalvik.tar.zst
         key: dalvik@${{ env.branch }}
-        restore-keys: dalvik@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/external_apache-xml.tar.zst
         key: external_apache-xml@${{ env.branch }}
-        restore-keys: external_apache-xml@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/external_bouncycastle.tar.zst
         key: external_bouncycastle@${{ env.branch }}
-        restore-keys: external_bouncycastle@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/external_compiler-rt.tar.zst
         key: external_compiler-rt@${{ env.branch }}
-        restore-keys: external_compiler-rt@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/external_fmtlib.tar.zst
         key: external_fmtlib@${{ env.branch }}
-        restore-keys: external_fmtlib@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/external_giflib.tar.zst
         key: external_giflib@${{ env.branch }}
-        restore-keys: external_giflib@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/external_icu.tar.zst
         key: external_icu@${{ env.branch }}
-        restore-keys: external_icu@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/external_libcxx.tar.zst
         key: external_libcxx@${{ env.branch }}
-        restore-keys: external_libcxx@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/external_libcxxabi.tar.zst
         key: external_libcxxabi@${{ env.branch }}
-        restore-keys: external_libcxxabi@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/external_libgsm.tar.zst
         key: external_libgsm@${{ env.branch }}
-        restore-keys: external_libgsm@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/external_neven.tar.zst
         key: external_neven@${{ env.branch }}
-        restore-keys: external_neven@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/external_okhttp.tar.zst
         key: external_okhttp@${{ env.branch }}
-        restore-keys: external_okhttp@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/external_protobuf.tar.zst
         key: external_protobuf@${{ env.branch }}
-        restore-keys: external_protobuf@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/frameworks_av.tar.zst
         key: frameworks_av@${{ env.branch }}
-        restore-keys: frameworks_av@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/frameworks_base.tar.zst
         key: frameworks_base@${{ env.branch }}
-        restore-keys: frameworks_base@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/frameworks_ex.tar.zst
         key: frameworks_ex@${{ env.branch }}
-        restore-keys: frameworks_ex@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/frameworks_native.tar.zst
         key: frameworks_native@${{ env.branch }}
-        restore-keys: frameworks_native@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/frameworks_opt_net_voip.tar.zst
         key: frameworks_opt_net_voip@${{ env.branch }}
-        restore-keys: frameworks_opt_net_voip@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/frameworks_proto_logging.tar.zst
         key: frameworks_proto_logging@${{ env.branch }}
-        restore-keys: frameworks_proto_logging@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/frameworks_rs.tar.zst
         key: frameworks_rs@${{ env.branch }}
-        restore-keys: frameworks_rs@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/hardware_interfaces.tar.zst
         key: hardware_interfaces@${{ env.branch }}
-        restore-keys: hardware_interfaces@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/hardware_libhardware.tar.zst
         key: hardware_libhardware@${{ env.branch }}
-        restore-keys: hardware_libhardware@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/hardware_libhardware_legacy.tar.zst
         key: hardware_libhardware_legacy@${{ env.branch }}
-        restore-keys: hardware_libhardware_legacy@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/hardware_ril.tar.zst
         key: hardware_ril@${{ env.branch }}
-        restore-keys: hardware_ril@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/libcore.tar.zst
         key: libcore@${{ env.branch }}
-        restore-keys: libcore@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/libnativehelper.tar.zst
         key: libnativehelper@${{ env.branch }}
-        restore-keys: libnativehelper@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/packages_apps_Gallery.tar.zst
         key: packages_apps_Gallery@${{ env.branch }}
-        restore-keys: packages_apps_Gallery@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/packages_apps_Gallery2.tar.zst
         key: packages_apps_Gallery2@${{ env.branch }}
-        restore-keys: packages_apps_Gallery2@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/packages_modules_NetworkStack.tar.zst
         key: packages_modules_NetworkStack@${{ env.branch }}
-        restore-keys: packages_modules_NetworkStack@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/packages_modules_RuntimeI18n.tar.zst
         key: packages_modules_RuntimeI18n@${{ env.branch }}
-        restore-keys: packages_modules_RuntimeI18n@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/prebuilts_build-tools.tar.zst
         key: prebuilts_build-tools@${{ env.branch }}
-        restore-keys: prebuilts_build-tools@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/prebuilts_clang_host_linux-x86.tar.zst
         key: prebuilts_clang_host_linux-x86@${{ env.branch }}
-        restore-keys: prebuilts_clang_host_linux-x86@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/prebuilts_gcc_linux-x86_x86_x86_64-linux-android-4.9.tar.zst
         key: prebuilts_gcc_linux-x86_x86_x86_64-linux-android-4.9@${{ env.branch }}
-        restore-keys: prebuilts_gcc_linux-x86_x86_x86_64-linux-android-4.9@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/prebuilts_jdk_jdk11.tar.zst
         key: prebuilts_jdk_jdk11@${{ env.branch }}
-        restore-keys: prebuilts_jdk_jdk11@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/prebuilts_sdk.tar.zst
         key: prebuilts_sdk@${{ env.branch }}
-        restore-keys: prebuilts_sdk@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/system_bt.tar.zst
         key: system_bt@${{ env.branch }}
-        restore-keys: system_bt@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/system_core.tar.zst
         key: system_core@${{ env.branch }}
-        restore-keys: system_core@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/system_libbase.tar.zst
         key: system_libbase@${{ env.branch }}
-        restore-keys: system_libbase@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/system_libfmq.tar.zst
         key: system_libfmq@${{ env.branch }}
-        restore-keys: system_libfmq@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/system_libhidl.tar.zst
         key: system_libhidl@${{ env.branch }}
-        restore-keys: system_libhidl@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/system_libhwbinder.tar.zst
         key: system_libhwbinder@${{ env.branch }}
-        restore-keys: system_libhwbinder@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/system_logging.tar.zst
         key: system_logging@${{ env.branch }}
-        restore-keys: system_logging@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/system_media.tar.zst
         key: system_media@${{ env.branch }}
-        restore-keys: system_media@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/system_sepolicy.tar.zst
         key: system_sepolicy@${{ env.branch }}
-        restore-keys: system_sepolicy@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/system_unwinding.tar.zst
         key: system_unwinding@${{ env.branch }}
-        restore-keys: system_unwinding@${{ env.branch }}
     - run: bash steps/build_15.sh

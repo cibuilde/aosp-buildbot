@@ -32,11 +32,6 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcxx/libc++^linux_glibc_x86_6
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/tools/aidl/aidl^linux_glibc_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/tools/hidl/hidl-gen^linux_glibc_x86_64/ .
 
-echo "building android.system.keystore2-V1-rust^android_x86_64_source"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.system.keystore2-V1-rust,android_x86_64_source
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/hardware/interfaces/keystore2/aidl/android.system.keystore2-V1-rust^android_x86_64_source
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/hardware/interfaces/android.system.keystore2-V1-rust^android_x86_64_source.output . $GITHUB_WORKSPACE/artifacts/system/hardware/interfaces/keystore2/aidl/android.system.keystore2-V1-rust^android_x86_64_source
-
 echo "building android.system.keystore2-api^"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.system.keystore2-api,
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/hardware/interfaces/keystore2/aidl/android.system.keystore2-api^
@@ -61,6 +56,11 @@ echo "building android.system.keystore2-V1-rust-source^"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.system.keystore2-V1-rust-source,
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/hardware/interfaces/keystore2/aidl/android.system.keystore2-V1-rust-source^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/hardware/interfaces/android.system.keystore2-V1-rust-source^.output . $GITHUB_WORKSPACE/artifacts/system/hardware/interfaces/keystore2/aidl/android.system.keystore2-V1-rust-source^
+
+echo "building android.system.keystore2-V1-rust^android_x86_64_source"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.system.keystore2-V1-rust,android_x86_64_source
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/hardware/interfaces/keystore2/aidl/android.system.keystore2-V1-rust^android_x86_64_source
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/hardware/interfaces/android.system.keystore2-V1-rust^android_x86_64_source.output . $GITHUB_WORKSPACE/artifacts/system/hardware/interfaces/keystore2/aidl/android.system.keystore2-V1-rust^android_x86_64_source
 
 echo "building android.system.net.netd@1.0-inheritance-hierarchy^"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.system.net.netd@1.0-inheritance-hierarchy,

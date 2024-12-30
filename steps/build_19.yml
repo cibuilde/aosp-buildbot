@@ -16,150 +16,120 @@ jobs:
       with:
         path: cache/art.tar.zst
         key: art@${{ env.branch }}
-        restore-keys: art@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/build_make.tar.zst
         key: build_make@${{ env.branch }}
-        restore-keys: build_make@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/build_soong.tar.zst
         key: build_soong@${{ env.branch }}
-        restore-keys: build_soong@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/cts.tar.zst
         key: cts@${{ env.branch }}
-        restore-keys: cts@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/external_bouncycastle.tar.zst
         key: external_bouncycastle@${{ env.branch }}
-        restore-keys: external_bouncycastle@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/frameworks_base.tar.zst
         key: frameworks_base@${{ env.branch }}
-        restore-keys: frameworks_base@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/frameworks_libs_modules-utils.tar.zst
         key: frameworks_libs_modules-utils@${{ env.branch }}
-        restore-keys: frameworks_libs_modules-utils@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/frameworks_libs_net.tar.zst
         key: frameworks_libs_net@${{ env.branch }}
-        restore-keys: frameworks_libs_net@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/frameworks_native.tar.zst
         key: frameworks_native@${{ env.branch }}
-        restore-keys: frameworks_native@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/frameworks_proto_logging.tar.zst
         key: frameworks_proto_logging@${{ env.branch }}
-        restore-keys: frameworks_proto_logging@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/hardware_interfaces.tar.zst
         key: hardware_interfaces@${{ env.branch }}
-        restore-keys: hardware_interfaces@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/libcore.tar.zst
         key: libcore@${{ env.branch }}
-        restore-keys: libcore@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/packages_modules_Connectivity.tar.zst
         key: packages_modules_Connectivity@${{ env.branch }}
-        restore-keys: packages_modules_Connectivity@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/packages_modules_IPsec.tar.zst
         key: packages_modules_IPsec@${{ env.branch }}
-        restore-keys: packages_modules_IPsec@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/packages_modules_Permission.tar.zst
         key: packages_modules_Permission@${{ env.branch }}
-        restore-keys: packages_modules_Permission@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/packages_modules_Scheduling.tar.zst
         key: packages_modules_Scheduling@${{ env.branch }}
-        restore-keys: packages_modules_Scheduling@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/packages_modules_SdkExtensions.tar.zst
         key: packages_modules_SdkExtensions@${{ env.branch }}
-        restore-keys: packages_modules_SdkExtensions@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/packages_modules_StatsD.tar.zst
         key: packages_modules_StatsD@${{ env.branch }}
-        restore-keys: packages_modules_StatsD@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/packages_modules_common.tar.zst
         key: packages_modules_common@${{ env.branch }}
-        restore-keys: packages_modules_common@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/prebuilts_build-tools.tar.zst
         key: prebuilts_build-tools@${{ env.branch }}
-        restore-keys: prebuilts_build-tools@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/prebuilts_jdk_jdk11.tar.zst
         key: prebuilts_jdk_jdk11@${{ env.branch }}
-        restore-keys: prebuilts_jdk_jdk11@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/prebuilts_sdk.tar.zst
         key: prebuilts_sdk@${{ env.branch }}
-        restore-keys: prebuilts_sdk@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/system_apex.tar.zst
         key: system_apex@${{ env.branch }}
-        restore-keys: system_apex@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/system_core.tar.zst
         key: system_core@${{ env.branch }}
-        restore-keys: system_core@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/system_hardware_interfaces.tar.zst
         key: system_hardware_interfaces@${{ env.branch }}
-        restore-keys: system_hardware_interfaces@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/system_libhidl.tar.zst
         key: system_libhidl@${{ env.branch }}
-        restore-keys: system_libhidl@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/system_libsysprop.tar.zst
         key: system_libsysprop@${{ env.branch }}
-        restore-keys: system_libsysprop@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/system_sepolicy.tar.zst
         key: system_sepolicy@${{ env.branch }}
-        restore-keys: system_sepolicy@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/tools_metalava.tar.zst
         key: tools_metalava@${{ env.branch }}
-        restore-keys: tools_metalava@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/tools_platform-compat.tar.zst
         key: tools_platform-compat@${{ env.branch }}
-        restore-keys: tools_platform-compat@${{ env.branch }}
     - run: bash steps/build_19.sh

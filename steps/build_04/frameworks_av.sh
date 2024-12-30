@@ -311,25 +311,25 @@ ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja resourcemanager_a
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/services/mediaresourcemanager/resourcemanager_aidl_interface-ndk_platform^android_x86_x86_64_static_cfi
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/av/resourcemanager_aidl_interface-ndk_platform^android_x86_x86_64_static_cfi.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/services/mediaresourcemanager/resourcemanager_aidl_interface-ndk_platform^android_x86_x86_64_static_cfi
 
-echo "building resourceobserver_aidl_interface-V1-ndk_platform^android_x86_64_static_cfi_com.android.media"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja resourceobserver_aidl_interface-V1-ndk_platform,android_x86_64_static_cfi_com.android.media
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/services/mediaresourcemanager/resourceobserver_aidl_interface-V1-ndk_platform^android_x86_64_static_cfi_com.android.media
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/av/resourceobserver_aidl_interface-V1-ndk_platform^android_x86_64_static_cfi_com.android.media.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/services/mediaresourcemanager/resourceobserver_aidl_interface-V1-ndk_platform^android_x86_64_static_cfi_com.android.media
-
-echo "building resourceobserver_aidl_interface-api^"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja resourceobserver_aidl_interface-api,
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/services/mediaresourcemanager/resourceobserver_aidl_interface-api^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/av/resourceobserver_aidl_interface-api^.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/services/mediaresourcemanager/resourceobserver_aidl_interface-api^
-
 echo "building resourceobserver_aidl_interface-V1-ndk_platform-source^"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja resourceobserver_aidl_interface-V1-ndk_platform-source,
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/services/mediaresourcemanager/resourceobserver_aidl_interface-V1-ndk_platform-source^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/av/resourceobserver_aidl_interface-V1-ndk_platform-source^.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/services/mediaresourcemanager/resourceobserver_aidl_interface-V1-ndk_platform-source^
 
+echo "building resourceobserver_aidl_interface-V1-ndk_platform^android_x86_64_static_cfi_com.android.media"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja resourceobserver_aidl_interface-V1-ndk_platform,android_x86_64_static_cfi_com.android.media
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/services/mediaresourcemanager/resourceobserver_aidl_interface-V1-ndk_platform^android_x86_64_static_cfi_com.android.media
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/av/resourceobserver_aidl_interface-V1-ndk_platform^android_x86_64_static_cfi_com.android.media.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/services/mediaresourcemanager/resourceobserver_aidl_interface-V1-ndk_platform^android_x86_64_static_cfi_com.android.media
+
 echo "building resourceobserver_aidl_interface-V1-ndk_platform^android_x86_x86_64_static"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja resourceobserver_aidl_interface-V1-ndk_platform,android_x86_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/services/mediaresourcemanager/resourceobserver_aidl_interface-V1-ndk_platform^android_x86_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/av/resourceobserver_aidl_interface-V1-ndk_platform^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/services/mediaresourcemanager/resourceobserver_aidl_interface-V1-ndk_platform^android_x86_x86_64_static
+
+echo "building resourceobserver_aidl_interface-api^"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja resourceobserver_aidl_interface-api,
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/services/mediaresourcemanager/resourceobserver_aidl_interface-api^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/av/resourceobserver_aidl_interface-api^.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/services/mediaresourcemanager/resourceobserver_aidl_interface-api^
 
 echo "building shared-file-region-aidl-cpp-source^"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja shared-file-region-aidl-cpp-source,

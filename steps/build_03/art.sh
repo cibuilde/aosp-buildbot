@@ -104,6 +104,11 @@ ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja art_operator_srcs
 mkdir -p $GITHUB_WORKSPACE/artifacts/art/runtime/art_operator_srcs^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/art/art_operator_srcs^.output . $GITHUB_WORKSPACE/artifacts/art/runtime/art_operator_srcs^
 
+echo "building art_perfetto_hprof_operator_srcs^"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja art_perfetto_hprof_operator_srcs,
+mkdir -p $GITHUB_WORKSPACE/artifacts/art/perfetto_hprof/art_perfetto_hprof_operator_srcs^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/art/art_perfetto_hprof_operator_srcs^.output . $GITHUB_WORKSPACE/artifacts/art/perfetto_hprof/art_perfetto_hprof_operator_srcs^
+
 echo "building cpp-define-generator-asm-support^android_x86_64_apex31"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja cpp-define-generator-asm-support,android_x86_64_apex31
 mkdir -p $GITHUB_WORKSPACE/artifacts/art/tools/cpp-define-generator/cpp-define-generator-asm-support^android_x86_64_apex31
@@ -129,20 +134,10 @@ ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja generate_operator
 mkdir -p $GITHUB_WORKSPACE/artifacts/art/tools/generate_operator_out^linux_glibc_x86_64_PY2
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/art/generate_operator_out^linux_glibc_x86_64_PY2.output . $GITHUB_WORKSPACE/artifacts/art/tools/generate_operator_out^linux_glibc_x86_64_PY2
 
-echo "building art_perfetto_hprof_operator_srcs^"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja art_perfetto_hprof_operator_srcs,
-mkdir -p $GITHUB_WORKSPACE/artifacts/art/perfetto_hprof/art_perfetto_hprof_operator_srcs^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/art/art_perfetto_hprof_operator_srcs^.output . $GITHUB_WORKSPACE/artifacts/art/perfetto_hprof/art_perfetto_hprof_operator_srcs^
-
 echo "building dexfile_operator_srcs^"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja dexfile_operator_srcs,
 mkdir -p $GITHUB_WORKSPACE/artifacts/art/libdexfile/dexfile_operator_srcs^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/art/dexfile_operator_srcs^.output . $GITHUB_WORKSPACE/artifacts/art/libdexfile/dexfile_operator_srcs^
-
-echo "building hiddenapi^linux_glibc_x86_64"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja hiddenapi,linux_glibc_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/art/tools/hiddenapi/hiddenapi^linux_glibc_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/art/hiddenapi^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/art/tools/hiddenapi/hiddenapi^linux_glibc_x86_64
 
 echo "building libadbconnection^android_x86_64_static_apex31"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libadbconnection,android_x86_64_static_apex31
@@ -193,6 +188,11 @@ echo "building libartbase^linux_glibc_x86_64_static"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libartbase,linux_glibc_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/art/libartbase/libartbase^linux_glibc_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/art/libartbase^linux_glibc_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/art/libartbase/libartbase^linux_glibc_x86_64_static
+
+echo "building hiddenapi^linux_glibc_x86_64"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja hiddenapi,linux_glibc_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/art/tools/hiddenapi/hiddenapi^linux_glibc_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/art/hiddenapi^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/art/tools/hiddenapi/hiddenapi^linux_glibc_x86_64
 
 echo "building libartbased^linux_glibc_x86_64_static"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libartbased,linux_glibc_x86_64_static

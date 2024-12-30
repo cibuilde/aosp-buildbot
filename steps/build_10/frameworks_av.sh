@@ -525,6 +525,11 @@ ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja audioflinger-aidl
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libaudioclient/audioflinger-aidl-cpp^android_x86_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/frameworks/av/audioflinger-aidl-cpp^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libaudioclient/audioflinger-aidl-cpp^android_x86_x86_64_shared
 
+echo "building audiopolicy-aidl-cpp^android_x86_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja audiopolicy-aidl-cpp,android_x86_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libaudioclient/audiopolicy-aidl-cpp^android_x86_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/frameworks/av/audiopolicy-aidl-cpp^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libaudioclient/audiopolicy-aidl-cpp^android_x86_x86_64_shared
+
 echo "building audiopolicy-types-aidl-cpp^android_x86_64_shared"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja audiopolicy-types-aidl-cpp,android_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libaudioclient/audiopolicy-types-aidl-cpp^android_x86_64_shared
@@ -540,80 +545,15 @@ ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja audiopolicy-types
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libaudioclient/audiopolicy-types-aidl-cpp^android_x86_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/frameworks/av/audiopolicy-types-aidl-cpp^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libaudioclient/audiopolicy-types-aidl-cpp^android_x86_x86_64_shared
 
-echo "building audiopolicy-aidl-cpp^android_x86_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja audiopolicy-aidl-cpp,android_x86_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libaudioclient/audiopolicy-aidl-cpp^android_x86_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/frameworks/av/audiopolicy-aidl-cpp^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libaudioclient/audiopolicy-aidl-cpp^android_x86_x86_64_shared
-
 echo "building drmserver^android_x86_x86_64"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja drmserver,android_x86_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/drm/drmserver/drmserver^android_x86_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/frameworks/av/drmserver^android_x86_x86_64.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/drm/drmserver/drmserver^android_x86_x86_64
 
-echo "building libaudioclient_aidl_conversion^android_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja libaudioclient_aidl_conversion,android_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libaudioclient/libaudioclient_aidl_conversion^android_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/frameworks/av/libaudioclient_aidl_conversion^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libaudioclient/libaudioclient_aidl_conversion^android_x86_64_shared
-
-echo "building libaudioclient^android_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja libaudioclient,android_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libaudioclient/libaudioclient^android_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/frameworks/av/libaudioclient^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libaudioclient/libaudioclient^android_x86_64_shared
-
-echo "building libaaudio_internal^android_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja libaaudio_internal,android_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libaaudio/src/libaaudio_internal^android_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/frameworks/av/libaaudio_internal^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libaaudio/src/libaaudio_internal^android_x86_64_shared
-
 echo "building libaaudio^android_x86_64_shared"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja libaaudio,android_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libaaudio/src/libaaudio^android_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/frameworks/av/libaaudio^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libaaudio/src/libaaudio^android_x86_64_shared
-
-echo "building libaaudio^android_x86_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja libaaudio,android_x86_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libaaudio/src/libaaudio^android_x86_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/frameworks/av/libaaudio^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libaaudio/src/libaaudio^android_x86_x86_64_shared
-
-echo "building libaudioclient_aidl_conversion^android_x86_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja libaudioclient_aidl_conversion,android_x86_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libaudioclient/libaudioclient_aidl_conversion^android_x86_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/frameworks/av/libaudioclient_aidl_conversion^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libaudioclient/libaudioclient_aidl_conversion^android_x86_x86_64_shared
-
-echo "building libaudiofoundation^android_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja libaudiofoundation,android_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libaudiofoundation/libaudiofoundation^android_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/frameworks/av/libaudiofoundation^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libaudiofoundation/libaudiofoundation^android_x86_64_shared
-
-echo "building libaudiofoundation^android_x86_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja libaudiofoundation,android_x86_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libaudiofoundation/libaudiofoundation^android_x86_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/frameworks/av/libaudiofoundation^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libaudiofoundation/libaudiofoundation^android_x86_x86_64_shared
-
-echo "building libaudiohal@4.0^android_x86_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja libaudiohal@4.0,android_x86_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libaudiohal/impl/libaudiohal@4.0^android_x86_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/frameworks/av/libaudiohal@4.0^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libaudiohal/impl/libaudiohal@4.0^android_x86_x86_64_shared
-
-echo "building libaudiohal@5.0^android_x86_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja libaudiohal@5.0,android_x86_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libaudiohal/impl/libaudiohal@5.0^android_x86_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/frameworks/av/libaudiohal@5.0^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libaudiohal/impl/libaudiohal@5.0^android_x86_x86_64_shared
-
-echo "building libaudiohal@6.0^android_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja libaudiohal@6.0,android_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libaudiohal/impl/libaudiohal@6.0^android_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/frameworks/av/libaudiohal@6.0^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libaudiohal/impl/libaudiohal@6.0^android_x86_64_shared
-
-echo "building libaudiopolicy^android_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja libaudiopolicy,android_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libaudioclient/libaudiopolicy^android_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/frameworks/av/libaudiopolicy^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libaudioclient/libaudiopolicy^android_x86_64_shared
-
-echo "building libaudiopolicy^android_x86_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja libaudiopolicy,android_x86_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libaudioclient/libaudiopolicy^android_x86_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/frameworks/av/libaudiopolicy^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libaudioclient/libaudiopolicy^android_x86_x86_64_shared
 
 echo "building libaudioclient^android_x86_x86_64_shared"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja libaudioclient,android_x86_x86_64_shared
@@ -625,15 +565,65 @@ ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja libaaudio_interna
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libaaudio/src/libaaudio_internal^android_x86_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/frameworks/av/libaaudio_internal^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libaaudio/src/libaaudio_internal^android_x86_x86_64_shared
 
+echo "building libaaudio^android_x86_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja libaaudio,android_x86_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libaaudio/src/libaaudio^android_x86_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/frameworks/av/libaaudio^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libaaudio/src/libaaudio^android_x86_x86_64_shared
+
+echo "building libaudioclient_aidl_conversion^android_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja libaudioclient_aidl_conversion,android_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libaudioclient/libaudioclient_aidl_conversion^android_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/frameworks/av/libaudioclient_aidl_conversion^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libaudioclient/libaudioclient_aidl_conversion^android_x86_64_shared
+
+echo "building libaudiofoundation^android_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja libaudiofoundation,android_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libaudiofoundation/libaudiofoundation^android_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/frameworks/av/libaudiofoundation^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libaudiofoundation/libaudiofoundation^android_x86_64_shared
+
+echo "building libaudioclient^android_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja libaudioclient,android_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libaudioclient/libaudioclient^android_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/frameworks/av/libaudioclient^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libaudioclient/libaudioclient^android_x86_64_shared
+
+echo "building libaaudio_internal^android_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja libaaudio_internal,android_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libaaudio/src/libaaudio_internal^android_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/frameworks/av/libaaudio_internal^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libaaudio/src/libaaudio_internal^android_x86_64_shared
+
+echo "building libaudioclient_aidl_conversion^android_x86_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja libaudioclient_aidl_conversion,android_x86_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libaudioclient/libaudioclient_aidl_conversion^android_x86_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/frameworks/av/libaudioclient_aidl_conversion^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libaudioclient/libaudioclient_aidl_conversion^android_x86_x86_64_shared
+
+echo "building libaudiofoundation^android_x86_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja libaudiofoundation,android_x86_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libaudiofoundation/libaudiofoundation^android_x86_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/frameworks/av/libaudiofoundation^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libaudiofoundation/libaudiofoundation^android_x86_x86_64_shared
+
 echo "building libaudiohal@4.0^android_x86_64_shared"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja libaudiohal@4.0,android_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libaudiohal/impl/libaudiohal@4.0^android_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/frameworks/av/libaudiohal@4.0^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libaudiohal/impl/libaudiohal@4.0^android_x86_64_shared
 
+echo "building libaudiohal@4.0^android_x86_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja libaudiohal@4.0,android_x86_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libaudiohal/impl/libaudiohal@4.0^android_x86_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/frameworks/av/libaudiohal@4.0^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libaudiohal/impl/libaudiohal@4.0^android_x86_x86_64_shared
+
 echo "building libaudiohal@5.0^android_x86_64_shared"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja libaudiohal@5.0,android_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libaudiohal/impl/libaudiohal@5.0^android_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/frameworks/av/libaudiohal@5.0^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libaudiohal/impl/libaudiohal@5.0^android_x86_64_shared
+
+echo "building libaudiohal@5.0^android_x86_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja libaudiohal@5.0,android_x86_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libaudiohal/impl/libaudiohal@5.0^android_x86_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/frameworks/av/libaudiohal@5.0^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libaudiohal/impl/libaudiohal@5.0^android_x86_x86_64_shared
+
+echo "building libaudiohal@6.0^android_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja libaudiohal@6.0,android_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libaudiohal/impl/libaudiohal@6.0^android_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/frameworks/av/libaudiohal@6.0^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libaudiohal/impl/libaudiohal@6.0^android_x86_64_shared
 
 echo "building libaudiohal@6.0^android_x86_x86_64_shared"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja libaudiohal@6.0,android_x86_x86_64_shared
@@ -649,6 +639,16 @@ echo "building libaudiohal@7.0^android_x86_x86_64_shared"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja libaudiohal@7.0,android_x86_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libaudiohal/impl/libaudiohal@7.0^android_x86_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/frameworks/av/libaudiohal@7.0^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libaudiohal/impl/libaudiohal@7.0^android_x86_x86_64_shared
+
+echo "building libaudiopolicy^android_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja libaudiopolicy,android_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libaudioclient/libaudiopolicy^android_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/frameworks/av/libaudiopolicy^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libaudioclient/libaudiopolicy^android_x86_64_shared
+
+echo "building libaudiopolicy^android_x86_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja libaudiopolicy,android_x86_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libaudioclient/libaudiopolicy^android_x86_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/frameworks/av/libaudiopolicy^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libaudioclient/libaudiopolicy^android_x86_x86_64_shared
 
 echo "building libcodec2_vndk^android_x86_64_shared_com.android.media.swcodec"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja libcodec2_vndk,android_x86_64_shared_com.android.media.swcodec
@@ -830,16 +830,6 @@ ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja libcodec2_soft_vp
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/components/vpx/libcodec2_soft_vp9enc^android_x86_64_shared_cfi_com.android.media.swcodec
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/frameworks/av/libcodec2_soft_vp9enc^android_x86_64_shared_cfi_com.android.media.swcodec.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/components/vpx/libcodec2_soft_vp9enc^android_x86_64_shared_cfi_com.android.media.swcodec
 
-echo "building libmedia_codecserviceregistrant^android_x86_64_shared_com.android.media.swcodec"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja libmedia_codecserviceregistrant,android_x86_64_shared_com.android.media.swcodec
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/services/mediacodec/registrant/libmedia_codecserviceregistrant^android_x86_64_shared_com.android.media.swcodec
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/frameworks/av/libmedia_codecserviceregistrant^android_x86_64_shared_com.android.media.swcodec.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/services/mediacodec/registrant/libmedia_codecserviceregistrant^android_x86_64_shared_com.android.media.swcodec
-
-echo "building com.android.media.swcodec^android_common_cfi_com.android.media.swcodec_image"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja com.android.media.swcodec,android_common_cfi_com.android.media.swcodec_image
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/apex/com.android.media.swcodec^android_common_cfi_com.android.media.swcodec_image
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/frameworks/av/com.android.media.swcodec^android_common_cfi_com.android.media.swcodec_image.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/apex/com.android.media.swcodec^android_common_cfi_com.android.media.swcodec_image
-
 echo "building libmedia_codeclist^android_x86_64_shared_cfi"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja libmedia_codeclist,android_x86_64_shared_cfi
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libmedia/libmedia_codeclist^android_x86_64_shared_cfi
@@ -849,6 +839,16 @@ echo "building libmedia_codeclist^android_x86_x86_64_shared_cfi"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja libmedia_codeclist,android_x86_x86_64_shared_cfi
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libmedia/libmedia_codeclist^android_x86_x86_64_shared_cfi
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/frameworks/av/libmedia_codeclist^android_x86_x86_64_shared_cfi.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libmedia/libmedia_codeclist^android_x86_x86_64_shared_cfi
+
+echo "building libmedia_codecserviceregistrant^android_x86_64_shared_com.android.media.swcodec"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja libmedia_codecserviceregistrant,android_x86_64_shared_com.android.media.swcodec
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/services/mediacodec/registrant/libmedia_codecserviceregistrant^android_x86_64_shared_com.android.media.swcodec
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/frameworks/av/libmedia_codecserviceregistrant^android_x86_64_shared_com.android.media.swcodec.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/services/mediacodec/registrant/libmedia_codecserviceregistrant^android_x86_64_shared_com.android.media.swcodec
+
+echo "building com.android.media.swcodec^android_common_cfi_com.android.media.swcodec_image"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja com.android.media.swcodec,android_common_cfi_com.android.media.swcodec_image
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/apex/com.android.media.swcodec^android_common_cfi_com.android.media.swcodec_image
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/frameworks/av/com.android.media.swcodec^android_common_cfi_com.android.media.swcodec_image.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/apex/com.android.media.swcodec^android_common_cfi_com.android.media.swcodec_image
 
 echo "building libmediadrmmetrics_full^android_x86_64_shared"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja libmediadrmmetrics_full,android_x86_64_shared

@@ -71,16 +71,6 @@ ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_20.ninja framework-mediapr
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/providers/MediaProvider/apex/framework/framework-mediaprovider.stubs.source.module_lib^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_20/packages/providers/MediaProvider/framework-mediaprovider.stubs.source.module_lib^android_common.output . $GITHUB_WORKSPACE/artifacts/packages/providers/MediaProvider/apex/framework/framework-mediaprovider.stubs.source.module_lib^android_common
 
-echo "building framework-mediaprovider.stubs.module_lib^android_common"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_20.ninja framework-mediaprovider.stubs.module_lib,android_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/packages/providers/MediaProvider/apex/framework/framework-mediaprovider.stubs.module_lib^android_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_20/packages/providers/MediaProvider/framework-mediaprovider.stubs.module_lib^android_common.output . $GITHUB_WORKSPACE/artifacts/packages/providers/MediaProvider/apex/framework/framework-mediaprovider.stubs.module_lib^android_common
-
-echo "building framework-mediaprovider.stubs.source.system^android_common"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_20.ninja framework-mediaprovider.stubs.source.system,android_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/packages/providers/MediaProvider/apex/framework/framework-mediaprovider.stubs.source.system^android_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_20/packages/providers/MediaProvider/framework-mediaprovider.stubs.source.system^android_common.output . $GITHUB_WORKSPACE/artifacts/packages/providers/MediaProvider/apex/framework/framework-mediaprovider.stubs.source.system^android_common
-
 echo "building framework-mediaprovider.stubs.source^android_common"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_20.ninja framework-mediaprovider.stubs.source,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/providers/MediaProvider/apex/framework/framework-mediaprovider.stubs.source^android_common
@@ -100,6 +90,16 @@ echo "building com.android.mediaprovider-bootclasspath-fragment^android_common_a
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_20.ninja com.android.mediaprovider-bootclasspath-fragment,android_common_apex30
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/providers/MediaProvider/apex/com.android.mediaprovider-bootclasspath-fragment^android_common_apex30
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_20/packages/providers/MediaProvider/com.android.mediaprovider-bootclasspath-fragment^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/packages/providers/MediaProvider/apex/com.android.mediaprovider-bootclasspath-fragment^android_common_apex30
+
+echo "building framework-mediaprovider.stubs.module_lib^android_common"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_20.ninja framework-mediaprovider.stubs.module_lib,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/packages/providers/MediaProvider/apex/framework/framework-mediaprovider.stubs.module_lib^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_20/packages/providers/MediaProvider/framework-mediaprovider.stubs.module_lib^android_common.output . $GITHUB_WORKSPACE/artifacts/packages/providers/MediaProvider/apex/framework/framework-mediaprovider.stubs.module_lib^android_common
+
+echo "building framework-mediaprovider.stubs.source.system^android_common"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_20.ninja framework-mediaprovider.stubs.source.system,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/packages/providers/MediaProvider/apex/framework/framework-mediaprovider.stubs.source.system^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_20/packages/providers/MediaProvider/framework-mediaprovider.stubs.source.system^android_common.output . $GITHUB_WORKSPACE/artifacts/packages/providers/MediaProvider/apex/framework/framework-mediaprovider.stubs.source.system^android_common
 
 rm -rf out
 

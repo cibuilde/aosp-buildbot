@@ -84,35 +84,40 @@ ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libstats_jni,andr
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/StatsD/framework/libstats_jni^android_x86_64_shared_apex30
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/packages/modules/StatsD/libstats_jni^android_x86_64_shared_apex30.output . $GITHUB_WORKSPACE/artifacts/packages/modules/StatsD/framework/libstats_jni^android_x86_64_shared_apex30
 
-echo "building libstatssocket^android_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libstatssocket,android_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/StatsD/lib/libstatssocket/libstatssocket^android_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/packages/modules/StatsD/libstatssocket^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/packages/modules/StatsD/lib/libstatssocket/libstatssocket^android_x86_64_shared
-
-echo "building libstatssocket^android_x86_x86_64_shared_apex30"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libstatssocket,android_x86_x86_64_shared_apex30
-mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/StatsD/lib/libstatssocket/libstatssocket^android_x86_x86_64_shared_apex30
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/packages/modules/StatsD/libstatssocket^android_x86_x86_64_shared_apex30.output . $GITHUB_WORKSPACE/artifacts/packages/modules/StatsD/lib/libstatssocket/libstatssocket^android_x86_x86_64_shared_apex30
-
 echo "building libstats_jni^android_x86_x86_64_shared_apex30"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libstats_jni,android_x86_x86_64_shared_apex30
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/StatsD/framework/libstats_jni^android_x86_x86_64_shared_apex30
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/packages/modules/StatsD/libstats_jni^android_x86_x86_64_shared_apex30.output . $GITHUB_WORKSPACE/artifacts/packages/modules/StatsD/framework/libstats_jni^android_x86_x86_64_shared_apex30
+
+echo "building libstatspull^android_x86_64_shared_com.android.os.statsd"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libstatspull,android_x86_64_shared_com.android.os.statsd
+mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/StatsD/lib/libstatspull/libstatspull^android_x86_64_shared_com.android.os.statsd
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/packages/modules/StatsD/libstatspull^android_x86_64_shared_com.android.os.statsd.output . $GITHUB_WORKSPACE/artifacts/packages/modules/StatsD/lib/libstatspull/libstatspull^android_x86_64_shared_com.android.os.statsd
+
+echo "building libstatspull^android_x86_x86_64_shared_com.android.os.statsd"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libstatspull,android_x86_x86_64_shared_com.android.os.statsd
+mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/StatsD/lib/libstatspull/libstatspull^android_x86_x86_64_shared_com.android.os.statsd
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/packages/modules/StatsD/libstatspull^android_x86_x86_64_shared_com.android.os.statsd.output . $GITHUB_WORKSPACE/artifacts/packages/modules/StatsD/lib/libstatspull/libstatspull^android_x86_x86_64_shared_com.android.os.statsd
+
+echo "building libstatssocket^android_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libstatssocket,android_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/StatsD/lib/libstatssocket/libstatssocket^android_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/packages/modules/StatsD/libstatssocket^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/packages/modules/StatsD/lib/libstatssocket/libstatssocket^android_x86_64_shared
 
 echo "building libstatssocket^android_x86_64_shared_apex30"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libstatssocket,android_x86_64_shared_apex30
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/StatsD/lib/libstatssocket/libstatssocket^android_x86_64_shared_apex30
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/packages/modules/StatsD/libstatssocket^android_x86_64_shared_apex30.output . $GITHUB_WORKSPACE/artifacts/packages/modules/StatsD/lib/libstatssocket/libstatssocket^android_x86_64_shared_apex30
 
+echo "building libstatssocket^android_x86_x86_64_shared_apex30"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libstatssocket,android_x86_x86_64_shared_apex30
+mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/StatsD/lib/libstatssocket/libstatssocket^android_x86_x86_64_shared_apex30
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/packages/modules/StatsD/libstatssocket^android_x86_x86_64_shared_apex30.output . $GITHUB_WORKSPACE/artifacts/packages/modules/StatsD/lib/libstatssocket/libstatssocket^android_x86_x86_64_shared_apex30
+
 echo "building statsd-aidl-ndk_platform-source^"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja statsd-aidl-ndk_platform-source,
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/StatsD/aidl/statsd-aidl-ndk_platform-source^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/packages/modules/StatsD/statsd-aidl-ndk_platform-source^.output . $GITHUB_WORKSPACE/artifacts/packages/modules/StatsD/aidl/statsd-aidl-ndk_platform-source^
-
-echo "building libstatspull^android_x86_x86_64_shared_com.android.os.statsd"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libstatspull,android_x86_x86_64_shared_com.android.os.statsd
-mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/StatsD/lib/libstatspull/libstatspull^android_x86_x86_64_shared_com.android.os.statsd
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/packages/modules/StatsD/libstatspull^android_x86_x86_64_shared_com.android.os.statsd.output . $GITHUB_WORKSPACE/artifacts/packages/modules/StatsD/lib/libstatspull/libstatspull^android_x86_x86_64_shared_com.android.os.statsd
 
 echo "building statsd-aidl-ndk_platform^android_x86_64_static"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja statsd-aidl-ndk_platform,android_x86_64_static
@@ -123,11 +128,6 @@ echo "building statsd-aidl-ndk_platform^android_x86_64_static_com.android.os.sta
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja statsd-aidl-ndk_platform,android_x86_64_static_com.android.os.statsd
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/StatsD/aidl/statsd-aidl-ndk_platform^android_x86_64_static_com.android.os.statsd
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/packages/modules/StatsD/statsd-aidl-ndk_platform^android_x86_64_static_com.android.os.statsd.output . $GITHUB_WORKSPACE/artifacts/packages/modules/StatsD/aidl/statsd-aidl-ndk_platform^android_x86_64_static_com.android.os.statsd
-
-echo "building libstatspull^android_x86_64_shared_com.android.os.statsd"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libstatspull,android_x86_64_shared_com.android.os.statsd
-mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/StatsD/lib/libstatspull/libstatspull^android_x86_64_shared_com.android.os.statsd
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/packages/modules/StatsD/libstatspull^android_x86_64_shared_com.android.os.statsd.output . $GITHUB_WORKSPACE/artifacts/packages/modules/StatsD/lib/libstatspull/libstatspull^android_x86_64_shared_com.android.os.statsd
 
 echo "building statsd-aidl-ndk_platform^android_x86_x86_64_static_com.android.os.statsd"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja statsd-aidl-ndk_platform,android_x86_x86_64_static_com.android.os.statsd

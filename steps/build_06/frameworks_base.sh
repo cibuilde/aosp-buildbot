@@ -218,16 +218,6 @@ ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja liblockagent,andr
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/tools/lock_agent/liblockagent^android_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/frameworks/base/liblockagent^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/tools/lock_agent/liblockagent^android_x86_64_shared
 
-echo "building statslog_hwui.h^"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja statslog_hwui.h,
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/libs/hwui/statslog_hwui.h^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/frameworks/base/statslog_hwui.h^.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/libs/hwui/statslog_hwui.h^
-
-echo "building libstatslog_hwui^android_x86_64_static_lto-thin"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libstatslog_hwui,android_x86_64_static_lto-thin
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/libs/hwui/libstatslog_hwui^android_x86_64_static_lto-thin
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/frameworks/base/libstatslog_hwui^android_x86_64_static_lto-thin.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/libs/hwui/libstatslog_hwui^android_x86_64_static_lto-thin
-
 echo "building libstatslog_hwui^android_x86_x86_64_static_lto-thin"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libstatslog_hwui,android_x86_x86_64_static_lto-thin
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/libs/hwui/libstatslog_hwui^android_x86_x86_64_static_lto-thin
@@ -282,6 +272,16 @@ echo "building statslog_hwui.cpp^"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja statslog_hwui.cpp,
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/libs/hwui/statslog_hwui.cpp^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/frameworks/base/statslog_hwui.cpp^.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/libs/hwui/statslog_hwui.cpp^
+
+echo "building statslog_hwui.h^"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja statslog_hwui.h,
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/libs/hwui/statslog_hwui.h^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/frameworks/base/statslog_hwui.h^.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/libs/hwui/statslog_hwui.h^
+
+echo "building libstatslog_hwui^android_x86_64_static_lto-thin"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libstatslog_hwui,android_x86_64_static_lto-thin
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/libs/hwui/libstatslog_hwui^android_x86_64_static_lto-thin
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/frameworks/base/libstatslog_hwui^android_x86_64_static_lto-thin.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/libs/hwui/libstatslog_hwui^android_x86_64_static_lto-thin
 
 rm -rf out
 

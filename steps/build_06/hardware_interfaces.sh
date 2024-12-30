@@ -268,6 +268,11 @@ ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja android.hardware.
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/rebootescrow/aidl/android.hardware.rebootescrow-V1-ndk_platform^android_vendor.31_x86_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/hardware/interfaces/android.hardware.rebootescrow-V1-ndk_platform^android_vendor.31_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/rebootescrow/aidl/android.hardware.rebootescrow-V1-ndk_platform^android_vendor.31_x86_x86_64_shared
 
+echo "building android.hardware.security.secureclock-V1-ndk_platform^android_vendor.31_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja android.hardware.security.secureclock-V1-ndk_platform,android_vendor.31_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/security/secureclock/aidl/android.hardware.security.secureclock-V1-ndk_platform^android_vendor.31_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/hardware/interfaces/android.hardware.security.secureclock-V1-ndk_platform^android_vendor.31_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/security/secureclock/aidl/android.hardware.security.secureclock-V1-ndk_platform^android_vendor.31_x86_64_shared
+
 echo "building android.hardware.security.keymint-V1-ndk_platform^android_vendor.31_x86_64_shared"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja android.hardware.security.keymint-V1-ndk_platform,android_vendor.31_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/security/keymint/aidl/android.hardware.security.keymint-V1-ndk_platform^android_vendor.31_x86_64_shared
@@ -282,11 +287,6 @@ echo "building android.hardware.security.keymint-V1-ndk_platform^android_vendor.
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja android.hardware.security.keymint-V1-ndk_platform,android_vendor.31_x86_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/security/keymint/aidl/android.hardware.security.keymint-V1-ndk_platform^android_vendor.31_x86_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/hardware/interfaces/android.hardware.security.keymint-V1-ndk_platform^android_vendor.31_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/security/keymint/aidl/android.hardware.security.keymint-V1-ndk_platform^android_vendor.31_x86_x86_64_shared
-
-echo "building android.hardware.security.secureclock-V1-ndk_platform^android_vendor.31_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja android.hardware.security.secureclock-V1-ndk_platform,android_vendor.31_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/security/secureclock/aidl/android.hardware.security.secureclock-V1-ndk_platform^android_vendor.31_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/hardware/interfaces/android.hardware.security.secureclock-V1-ndk_platform^android_vendor.31_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/security/secureclock/aidl/android.hardware.security.secureclock-V1-ndk_platform^android_vendor.31_x86_64_shared
 
 echo "building android.hardware.security.sharedsecret-V1-ndk_platform^android_vendor.31_x86_64_shared"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja android.hardware.security.sharedsecret-V1-ndk_platform,android_vendor.31_x86_64_shared

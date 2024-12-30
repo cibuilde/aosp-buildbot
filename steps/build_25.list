@@ -1,24 +1,24 @@
-build step 25: projects: 22 targets: 42
+Tag: buid_25 Projects: 22 Targets: 42
 
-external/apache-http: org.apache.http.legacy.stubs.source.system^android_common org.apache.http.legacy.stubs.source^android_common org.apache.http.legacy.stubs.system^android_common org.apache.http.legacy.stubs^android_common
-external/icu: icu4j_calendar_astronomer^android_common
-external/ims: ucepresencelib^android_common
-external/setupdesign: setupdesign-lottie-loading-layout^android_common setupdesign^android_common
-frameworks/av: com.android.media-bootclasspath-fragment^android_common_apex29 com.android.media^android_common_cfi_com.android.media_image
-frameworks/base: SettingsLibIllustrationPreference^android_common services.net-module-wifi^android_common_apex30
-frameworks/opt/net/wifi: WifiTrackerLib^android_common
-hardware/ril: sap-api-java-static^android_common
-packages/apps/Bluetooth: bluetooth.mapsapi^android_common
-packages/apps/CellBroadcastReceiver: CellBroadcastApp^android_common_apex30
-packages/apps/EmergencyInfo: EmergencyGestureAction^android_common EmergencyGestureContentProvider^android_common
-packages/apps/ManagedProvisioning: managedprovisioning_protoslite^android_common
-packages/apps/Settings: settings-contextual-card-protos-lite^android_common settings-log-bridge-protos-lite^android_common settings-logtags^android_common statslog-settings^android_common
-packages/modules/CellBroadcastService: CellBroadcastServiceModule^android_common_apex30
-packages/modules/ExtServices: ExtServices^android_common_apex30 com.android.extservices^android_common_com.android.extservices_image
-packages/modules/NetworkStack: NetworkStackApi31Shims^android_common_apex30 NetworkStackApi32Shims^android_common_apex30 NetworkStackApiCurrentShims^android_common_apex30 NetworkStackApiStableShims^android_common_apex30
-packages/modules/Permission: service-permission-shared^android_common service-permission-shared^android_common_apex30
-packages/modules/StatsD: com.android.os.statsd^android_common_com.android.os.statsd_image service-statsd^android_common_apex30
-packages/modules/Wifi: OsuLogin^android_common_apex30
-packages/services/Car: android.car-stub-docs^android_common android.car-stubs-docs^android_common android.car-stubs^android_common android.car-system-stubs-docs^android_common
-system/bt: bluetooth-protos-lite^android_common
-system/timezone: time_zone_distro^android_common time_zone_distro_installer^android_common
+external/apache-http/: org.apache.http.legacy.stubs.source.system^android_common org.apache.http.legacy.stubs.source^android_common org.apache.http.legacy.stubs.system^android_common org.apache.http.legacy.stubs^android_common
+external/icu/: icu4j_calendar_astronomer^android_common
+external/ims/: ucepresencelib^android_common
+external/setupdesign/: setupdesign-lottie-loading-layout^android_common setupdesign^android_common
+frameworks/av/: com.android.media-bootclasspath-fragment^android_common_apex29 com.android.media^android_common_cfi_com.android.media_image
+frameworks/base/: SettingsLibIllustrationPreference^android_common services.net-module-wifi^android_common_apex30
+frameworks/opt/net/wifi/: WifiTrackerLib^android_common
+hardware/ril/: sap-api-java-static^android_common
+packages/apps/Bluetooth/: bluetooth.mapsapi^android_common
+packages/apps/CellBroadcastReceiver/: CellBroadcastApp^android_common_apex30
+packages/apps/EmergencyInfo/: EmergencyGestureAction^android_common EmergencyGestureContentProvider^android_common
+packages/apps/ManagedProvisioning/: managedprovisioning_protoslite^android_common
+packages/apps/Settings/: settings-contextual-card-protos-lite^android_common settings-log-bridge-protos-lite^android_common settings-logtags^android_common statslog-settings^android_common
+packages/modules/CellBroadcastService/: CellBroadcastServiceModule^android_common_apex30
+packages/modules/ExtServices/: ExtServices^android_common_apex30 com.android.extservices^android_common_com.android.extservices_image
+packages/modules/NetworkStack/: NetworkStackApi31Shims^android_common_apex30 NetworkStackApi32Shims^android_common_apex30 NetworkStackApiCurrentShims^android_common_apex30 NetworkStackApiStableShims^android_common_apex30
+packages/modules/Permission/: service-permission-shared^android_common service-permission-shared^android_common_apex30
+packages/modules/StatsD/: com.android.os.statsd^android_common_com.android.os.statsd_image service-statsd^android_common_apex30
+packages/modules/Wifi/: OsuLogin^android_common_apex30
+packages/services/Car/: android.car-stub-docs^android_common android.car-stubs-docs^android_common android.car-stubs^android_common android.car-system-stubs-docs^android_common
+system/bt/: bluetooth-protos-lite^android_common
+system/timezone/: time_zone_distro^android_common time_zone_distro_installer^android_common

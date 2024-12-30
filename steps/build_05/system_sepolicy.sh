@@ -35,6 +35,11 @@ ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja fc_sort,linux_gli
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/sepolicy/tests/fc_sort^linux_glibc_x86_64_PY2
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/system/sepolicy/fc_sort^linux_glibc_x86_64_PY2.output . $GITHUB_WORKSPACE/artifacts/system/sepolicy/tests/fc_sort^linux_glibc_x86_64_PY2
 
+echo "building plat_27.0.cil^android_common"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja plat_27.0.cil,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/sepolicy/plat_27.0.cil^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/system/sepolicy/plat_27.0.cil^android_common.output . $GITHUB_WORKSPACE/artifacts/system/sepolicy/plat_27.0.cil^android_common
+
 echo "building plat_26.0.cil^android_common"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja plat_26.0.cil,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/sepolicy/plat_26.0.cil^android_common
@@ -49,11 +54,6 @@ echo "building plat_28.0.cil^android_common"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja plat_28.0.cil,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/sepolicy/plat_28.0.cil^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/system/sepolicy/plat_28.0.cil^android_common.output . $GITHUB_WORKSPACE/artifacts/system/sepolicy/plat_28.0.cil^android_common
-
-echo "building plat_27.0.cil^android_common"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja plat_27.0.cil,android_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/sepolicy/plat_27.0.cil^android_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/system/sepolicy/plat_27.0.cil^android_common.output . $GITHUB_WORKSPACE/artifacts/system/sepolicy/plat_27.0.cil^android_common
 
 echo "building plat_file_contexts^android_common"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja plat_file_contexts,android_common

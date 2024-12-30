@@ -196,15 +196,15 @@ ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja framework-protos,
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/proto/framework-protos^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_09/frameworks/base/framework-protos^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/proto/framework-protos^android_common
 
-echo "building idmap2^android_x86_64"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja idmap2,android_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/cmds/idmap2/idmap2^android_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_09/frameworks/base/idmap2^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/cmds/idmap2/idmap2^android_x86_64
-
 echo "building idmap2d^android_x86_64"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja idmap2d,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/cmds/idmap2/idmap2d^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_09/frameworks/base/idmap2d^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/cmds/idmap2/idmap2d^android_x86_64
+
+echo "building incident^android_x86_64"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja incident,android_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/cmds/incident/incident^android_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_09/frameworks/base/incident^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/cmds/incident/incident^android_x86_64
 
 echo "building lib-platform-compat-native-api^android_x86_64_shared"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja lib-platform-compat-native-api,android_x86_64_shared
@@ -246,10 +246,10 @@ ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja libidmap2,android
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/cmds/idmap2/libidmap2^android_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_09/frameworks/base/libidmap2^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/cmds/idmap2/libidmap2^android_x86_64_shared
 
-echo "building libincidentpriv^android_x86_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja libincidentpriv,android_x86_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/libs/incident/libincidentpriv^android_x86_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_09/frameworks/base/libincidentpriv^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/libs/incident/libincidentpriv^android_x86_x86_64_shared
+echo "building idmap2^android_x86_64"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja idmap2,android_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/cmds/idmap2/idmap2^android_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_09/frameworks/base/idmap2^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/cmds/idmap2/idmap2^android_x86_64
 
 echo "building libincident^android_x86_x86_64_shared"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja libincident,android_x86_x86_64_shared
@@ -261,15 +261,15 @@ ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja libincidentpriv,a
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/libs/incident/libincidentpriv^android_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_09/frameworks/base/libincidentpriv^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/libs/incident/libincidentpriv^android_x86_64_shared
 
-echo "building incident^android_x86_64"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja incident,android_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/cmds/incident/incident^android_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_09/frameworks/base/incident^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/cmds/incident/incident^android_x86_64
-
 echo "building libincident^android_x86_64_shared"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja libincident,android_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/libs/incident/libincident^android_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_09/frameworks/base/libincident^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/libs/incident/libincident^android_x86_64_shared
+
+echo "building libincidentpriv^android_x86_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja libincidentpriv,android_x86_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/libs/incident/libincidentpriv^android_x86_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_09/frameworks/base/libincidentpriv^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/libs/incident/libincidentpriv^android_x86_x86_64_shared
 
 echo "building libincremental_aidl-cpp^android_x86_64_static"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja libincremental_aidl-cpp,android_x86_64_static

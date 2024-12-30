@@ -37,6 +37,11 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/tools/common/m2/kotlinx-metada
 rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/tools/common/m2/symbol-processing-api^linux_glibc_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/tools/common/m2/xerial-sqlite-jdbc^linux_glibc_common/ .
 
+echo "building androidx.room_room-compiler-plugin^linux_glibc_common"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja androidx.room_room-compiler-plugin,linux_glibc_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.room_room-compiler-plugin^linux_glibc_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/prebuilts/sdk/androidx.room_room-compiler-plugin^linux_glibc_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.room_room-compiler-plugin^linux_glibc_common
+
 echo "building androidx.room_room-compiler-processing^linux_glibc_common"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja androidx.room_room-compiler-processing,linux_glibc_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.room_room-compiler-processing^linux_glibc_common
@@ -46,11 +51,6 @@ echo "building androidx.room_room-compiler^linux_glibc_common"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja androidx.room_room-compiler,linux_glibc_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.room_room-compiler^linux_glibc_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/prebuilts/sdk/androidx.room_room-compiler^linux_glibc_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.room_room-compiler^linux_glibc_common
-
-echo "building androidx.room_room-compiler-plugin^linux_glibc_common"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja androidx.room_room-compiler-plugin,linux_glibc_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.room_room-compiler-plugin^linux_glibc_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/prebuilts/sdk/androidx.room_room-compiler-plugin^linux_glibc_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.room_room-compiler-plugin^linux_glibc_common
 
 rm -rf out
 

@@ -182,11 +182,6 @@ ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.framework
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/sensorservice/1.0/android.frameworks.sensorservice@1.0_genc++_headers^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/hardware/interfaces/android.frameworks.sensorservice@1.0_genc++_headers^.output . $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/sensorservice/1.0/android.frameworks.sensorservice@1.0_genc++_headers^
 
-echo "building android.frameworks.stats-V1-ndk_platform-source^"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.frameworks.stats-V1-ndk_platform-source,
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/stats/aidl/android.frameworks.stats-V1-ndk_platform-source^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/hardware/interfaces/android.frameworks.stats-V1-ndk_platform-source^.output . $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/stats/aidl/android.frameworks.stats-V1-ndk_platform-source^
-
 echo "building android.frameworks.stats-V1-ndk_platform^android_x86_64_static"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.frameworks.stats-V1-ndk_platform,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/stats/aidl/android.frameworks.stats-V1-ndk_platform^android_x86_64_static
@@ -201,6 +196,11 @@ echo "building android.frameworks.stats-api^"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.frameworks.stats-api,
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/stats/aidl/android.frameworks.stats-api^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/hardware/interfaces/android.frameworks.stats-api^.output . $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/stats/aidl/android.frameworks.stats-api^
+
+echo "building android.frameworks.stats-V1-ndk_platform-source^"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.frameworks.stats-V1-ndk_platform-source,
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/stats/aidl/android.frameworks.stats-V1-ndk_platform-source^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/hardware/interfaces/android.frameworks.stats-V1-ndk_platform-source^.output . $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/stats/aidl/android.frameworks.stats-V1-ndk_platform-source^
 
 echo "building android.frameworks.stats@1.0-inheritance-hierarchy^"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.frameworks.stats@1.0-inheritance-hierarchy,

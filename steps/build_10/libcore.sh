@@ -66,6 +66,11 @@ ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja art.module.api.an
 mkdir -p $GITHUB_WORKSPACE/artifacts/libcore/art.module.api.annotations.for.system.modules^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/libcore/art.module.api.annotations.for.system.modules^android_common.output . $GITHUB_WORKSPACE/artifacts/libcore/art.module.api.annotations.for.system.modules^android_common
 
+echo "building art-module-public-api-stubs-system-modules^android_common"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja art-module-public-api-stubs-system-modules,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/libcore/art-module-public-api-stubs-system-modules^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/libcore/art-module-public-api-stubs-system-modules^android_common.output . $GITHUB_WORKSPACE/artifacts/libcore/art-module-public-api-stubs-system-modules^android_common
+
 echo "building art.module.public.api.stubs.source.module_lib^android_common"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja art.module.public.api.stubs.source.module_lib,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/libcore/art.module.public.api.stubs.source.module_lib^android_common
@@ -115,11 +120,6 @@ echo "building core-lambda-stubs-for-system-modules^android_common"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja core-lambda-stubs-for-system-modules,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/libcore/core-lambda-stubs-for-system-modules^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/libcore/core-lambda-stubs-for-system-modules^android_common.output . $GITHUB_WORKSPACE/artifacts/libcore/core-lambda-stubs-for-system-modules^android_common
-
-echo "building art-module-public-api-stubs-system-modules^android_common"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja art-module-public-api-stubs-system-modules,android_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/libcore/art-module-public-api-stubs-system-modules^android_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/libcore/art-module-public-api-stubs-system-modules^android_common.output . $GITHUB_WORKSPACE/artifacts/libcore/art-module-public-api-stubs-system-modules^android_common
 
 echo "building core-lambda-stubs^android_common"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja core-lambda-stubs,android_common

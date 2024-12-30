@@ -139,35 +139,15 @@ ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libLLVMCodeGen,an
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/llvm/lib/CodeGen/libLLVMCodeGen^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/external/llvm/libLLVMCodeGen^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/llvm/lib/CodeGen/libLLVMCodeGen^android_x86_64_static
 
-echo "building libLLVMCore^android_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libLLVMCore,android_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/llvm/lib/IR/libLLVMCore^android_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/external/llvm/libLLVMCore^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/llvm/lib/IR/libLLVMCore^android_x86_64_static
-
 echo "building libLLVMCore^android_x86_x86_64_static"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libLLVMCore,android_x86_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/llvm/lib/IR/libLLVMCore^android_x86_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/external/llvm/libLLVMCore^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/llvm/lib/IR/libLLVMCore^android_x86_x86_64_static
 
-echo "building libLLVMDebugInfoCodeView^android_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libLLVMDebugInfoCodeView,android_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/llvm/lib/DebugInfo/CodeView/libLLVMDebugInfoCodeView^android_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/external/llvm/libLLVMDebugInfoCodeView^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/llvm/lib/DebugInfo/CodeView/libLLVMDebugInfoCodeView^android_x86_64_static
-
-echo "building libLLVMDebugInfoDWARF^android_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libLLVMDebugInfoDWARF,android_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/llvm/lib/DebugInfo/DWARF/libLLVMDebugInfoDWARF^android_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/external/llvm/libLLVMDebugInfoDWARF^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/llvm/lib/DebugInfo/DWARF/libLLVMDebugInfoDWARF^android_x86_64_static
-
 echo "building libLLVMDebugInfoPDB^android_x86_64_static"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libLLVMDebugInfoPDB,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/llvm/lib/DebugInfo/PDB/libLLVMDebugInfoPDB^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/external/llvm/libLLVMDebugInfoPDB^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/llvm/lib/DebugInfo/PDB/libLLVMDebugInfoPDB^android_x86_64_static
-
-echo "building libLLVMExecutionEngine^android_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libLLVMExecutionEngine,android_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/llvm/lib/ExecutionEngine/libLLVMExecutionEngine^android_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/external/llvm/libLLVMExecutionEngine^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/llvm/lib/ExecutionEngine/libLLVMExecutionEngine^android_x86_64_static
 
 echo "building libLLVMGlobalISel^android_x86_64_static"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libLLVMGlobalISel,android_x86_64_static
@@ -179,6 +159,41 @@ ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libLLVMIRReader,a
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/llvm/lib/IRReader/libLLVMIRReader^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/external/llvm/libLLVMIRReader^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/llvm/lib/IRReader/libLLVMIRReader^android_x86_64_static
 
+echo "building libLLVMLTO^android_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libLLVMLTO,android_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/llvm/lib/LTO/libLLVMLTO^android_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/external/llvm/libLLVMLTO^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/llvm/lib/LTO/libLLVMLTO^android_x86_64_static
+
+echo "building libLLVMLinker^android_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libLLVMLinker,android_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/llvm/lib/Linker/libLLVMLinker^android_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/external/llvm/libLLVMLinker^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/llvm/lib/Linker/libLLVMLinker^android_x86_64_static
+
+echo "building llvm-gen-core^"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja llvm-gen-core,
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/llvm/lib/IR/llvm-gen-core^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/external/llvm/llvm-gen-core^.output . $GITHUB_WORKSPACE/artifacts/external/llvm/lib/IR/llvm-gen-core^
+
+echo "building libLLVMCore^android_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libLLVMCore,android_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/llvm/lib/IR/libLLVMCore^android_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/external/llvm/libLLVMCore^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/llvm/lib/IR/libLLVMCore^android_x86_64_static
+
+echo "building libLLVMDebugInfoCodeView^android_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libLLVMDebugInfoCodeView,android_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/llvm/lib/DebugInfo/CodeView/libLLVMDebugInfoCodeView^android_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/external/llvm/libLLVMDebugInfoCodeView^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/llvm/lib/DebugInfo/CodeView/libLLVMDebugInfoCodeView^android_x86_64_static
+
+echo "building libLLVMDebugInfoDWARF^android_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libLLVMDebugInfoDWARF,android_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/llvm/lib/DebugInfo/DWARF/libLLVMDebugInfoDWARF^android_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/external/llvm/libLLVMDebugInfoDWARF^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/llvm/lib/DebugInfo/DWARF/libLLVMDebugInfoDWARF^android_x86_64_static
+
+echo "building libLLVMExecutionEngine^android_x86_64_static"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libLLVMExecutionEngine,android_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/llvm/lib/ExecutionEngine/libLLVMExecutionEngine^android_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/external/llvm/libLLVMExecutionEngine^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/llvm/lib/ExecutionEngine/libLLVMExecutionEngine^android_x86_64_static
+
 echo "building libLLVMInstCombine^android_x86_64_static"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libLLVMInstCombine,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/llvm/lib/Transforms/InstCombine/libLLVMInstCombine^android_x86_64_static
@@ -189,20 +204,10 @@ ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libLLVMInstrument
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/llvm/lib/Transforms/Instrumentation/libLLVMInstrumentation^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/external/llvm/libLLVMInstrumentation^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/llvm/lib/Transforms/Instrumentation/libLLVMInstrumentation^android_x86_64_static
 
-echo "building libLLVMLTO^android_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libLLVMLTO,android_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/llvm/lib/LTO/libLLVMLTO^android_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/external/llvm/libLLVMLTO^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/llvm/lib/LTO/libLLVMLTO^android_x86_64_static
-
 echo "building libLLVMLibDriver^android_x86_64_static"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libLLVMLibDriver,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/llvm/lib/LibDriver/libLLVMLibDriver^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/external/llvm/libLLVMLibDriver^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/llvm/lib/LibDriver/libLLVMLibDriver^android_x86_64_static
-
-echo "building libLLVMLinker^android_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libLLVMLinker,android_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/llvm/lib/Linker/libLLVMLinker^android_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/external/llvm/libLLVMLinker^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/llvm/lib/Linker/libLLVMLinker^android_x86_64_static
 
 echo "building libLLVMMCDisassembler^android_x86_64_static"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libLLVMMCDisassembler,android_x86_64_static
@@ -289,6 +294,11 @@ ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libLLVMVectorize,
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/llvm/lib/Transforms/Vectorize/libLLVMVectorize^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/external/llvm/libLLVMVectorize^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/llvm/lib/Transforms/Vectorize/libLLVMVectorize^android_x86_64_static
 
+echo "building llvm-gen-aarch64^"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja llvm-gen-aarch64,
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/llvm/lib/Target/AArch64/llvm-gen-aarch64^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/external/llvm/llvm-gen-aarch64^.output . $GITHUB_WORKSPACE/artifacts/external/llvm/lib/Target/AArch64/llvm-gen-aarch64^
+
 echo "building llvm-gen-x86^"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja llvm-gen-x86,
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/llvm/lib/Target/X86/llvm-gen-x86^
@@ -339,20 +349,10 @@ ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja llvm-tblgen,linux
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/llvm/utils/TableGen/llvm-tblgen^linux_glibc_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/external/llvm/llvm-tblgen^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/llvm/utils/TableGen/llvm-tblgen^linux_glibc_x86_64
 
-echo "building llvm-gen-aarch64^"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja llvm-gen-aarch64,
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/llvm/lib/Target/AArch64/llvm-gen-aarch64^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/external/llvm/llvm-gen-aarch64^.output . $GITHUB_WORKSPACE/artifacts/external/llvm/lib/Target/AArch64/llvm-gen-aarch64^
-
 echo "building llvm-gen-arm^"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja llvm-gen-arm,
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/llvm/lib/Target/ARM/llvm-gen-arm^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/external/llvm/llvm-gen-arm^.output . $GITHUB_WORKSPACE/artifacts/external/llvm/lib/Target/ARM/llvm-gen-arm^
-
-echo "building llvm-gen-core^"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja llvm-gen-core,
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/llvm/lib/IR/llvm-gen-core^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/external/llvm/llvm-gen-core^.output . $GITHUB_WORKSPACE/artifacts/external/llvm/lib/IR/llvm-gen-core^
 
 echo "building llvm-gen-libdriver^"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja llvm-gen-libdriver,

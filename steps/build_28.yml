@@ -16,5 +16,4 @@ jobs:
       with:
         path: cache/frameworks_base.tar.zst
         key: frameworks_base@${{ env.branch }}
-        restore-keys: frameworks_base@${{ env.branch }}
     - run: bash steps/build_28.sh

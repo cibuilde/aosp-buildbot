@@ -30,10 +30,20 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/libcore/core-lambda-stubs-for-system-mod
 rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/r8/d8^linux_glibc_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/r8/d8^linux_glibc_x86_64/ .
 
+echo "building core-current-stubs-for-system-modules^android_common"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_12.ninja core-current-stubs-for-system-modules,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/libcore/core-current-stubs-for-system-modules^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_12/libcore/core-current-stubs-for-system-modules^android_common.output . $GITHUB_WORKSPACE/artifacts/libcore/core-current-stubs-for-system-modules^android_common
+
 echo "building core-current-stubs-system-modules^android_common"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_12.ninja core-current-stubs-system-modules,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/libcore/core-current-stubs-system-modules^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_12/libcore/core-current-stubs-system-modules^android_common.output . $GITHUB_WORKSPACE/artifacts/libcore/core-current-stubs-system-modules^android_common
+
+echo "building core.module_lib.stubs^android_common"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_12.ninja core.module_lib.stubs,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/libcore/core.module_lib.stubs^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_12/libcore/core.module_lib.stubs^android_common.output . $GITHUB_WORKSPACE/artifacts/libcore/core.module_lib.stubs^android_common
 
 echo "building core-module-lib-stubs-system-modules^android_common"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_12.ninja core-module-lib-stubs-system-modules,android_common
@@ -44,16 +54,6 @@ echo "building core.current.stubs^android_common"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_12.ninja core.current.stubs,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/libcore/core.current.stubs^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_12/libcore/core.current.stubs^android_common.output . $GITHUB_WORKSPACE/artifacts/libcore/core.current.stubs^android_common
-
-echo "building core-current-stubs-for-system-modules^android_common"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_12.ninja core-current-stubs-for-system-modules,android_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/libcore/core-current-stubs-for-system-modules^android_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_12/libcore/core-current-stubs-for-system-modules^android_common.output . $GITHUB_WORKSPACE/artifacts/libcore/core-current-stubs-for-system-modules^android_common
-
-echo "building core.module_lib.stubs^android_common"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_12.ninja core.module_lib.stubs,android_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/libcore/core.module_lib.stubs^android_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_12/libcore/core.module_lib.stubs^android_common.output . $GITHUB_WORKSPACE/artifacts/libcore/core.module_lib.stubs^android_common
 
 echo "building legacy.core.platform.api.stubs^android_common"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_12.ninja legacy.core.platform.api.stubs,android_common

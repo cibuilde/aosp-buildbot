@@ -32,6 +32,11 @@ ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja android-arch-life
 mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/extras/app-toolkit/android-arch-lifecycle-common-nodeps^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/prebuilts/sdk/android-arch-lifecycle-common-nodeps^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/extras/app-toolkit/android-arch-lifecycle-common-nodeps^android_common
 
+echo "building android-arch-lifecycle-common^android_common"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja android-arch-lifecycle-common,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/extras/app-toolkit/android-arch-lifecycle-common^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/prebuilts/sdk/android-arch-lifecycle-common^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/extras/app-toolkit/android-arch-lifecycle-common^android_common
+
 echo "building android-non-updatable-incompatibilities.api.public.latest^"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja android-non-updatable-incompatibilities.api.public.latest,
 mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/android-non-updatable-incompatibilities.api.public.latest^
@@ -41,21 +46,6 @@ echo "building android-non-updatable-incompatibilities.api.system.latest^"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja android-non-updatable-incompatibilities.api.system.latest,
 mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/android-non-updatable-incompatibilities.api.system.latest^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/prebuilts/sdk/android-non-updatable-incompatibilities.api.system.latest^.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/android-non-updatable-incompatibilities.api.system.latest^
-
-echo "building android-non-updatable.api.system-server.latest^"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja android-non-updatable.api.system-server.latest,
-mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/android-non-updatable.api.system-server.latest^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/prebuilts/sdk/android-non-updatable.api.system-server.latest^.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/android-non-updatable.api.system-server.latest^
-
-echo "building android-support-annotations-nodeps^android_common"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja android-support-annotations-nodeps,android_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/support/android-support-annotations-nodeps^android_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/prebuilts/sdk/android-support-annotations-nodeps^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/support/android-support-annotations-nodeps^android_common
-
-echo "building android-arch-lifecycle-common^android_common"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja android-arch-lifecycle-common,android_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/extras/app-toolkit/android-arch-lifecycle-common^android_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/prebuilts/sdk/android-arch-lifecycle-common^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/extras/app-toolkit/android-arch-lifecycle-common^android_common
 
 echo "building android-non-updatable-removed.api.module-lib.latest^"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja android-non-updatable-removed.api.module-lib.latest,
@@ -82,10 +72,20 @@ ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja android-non-updat
 mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/android-non-updatable.api.public.latest^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/prebuilts/sdk/android-non-updatable.api.public.latest^.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/android-non-updatable.api.public.latest^
 
+echo "building android-non-updatable.api.system-server.latest^"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja android-non-updatable.api.system-server.latest,
+mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/android-non-updatable.api.system-server.latest^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/prebuilts/sdk/android-non-updatable.api.system-server.latest^.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/android-non-updatable.api.system-server.latest^
+
 echo "building android-non-updatable.api.system.latest^"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja android-non-updatable.api.system.latest,
 mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/android-non-updatable.api.system.latest^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/prebuilts/sdk/android-non-updatable.api.system.latest^.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/android-non-updatable.api.system.latest^
+
+echo "building android-support-annotations-nodeps^android_common"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja android-support-annotations-nodeps,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/support/android-support-annotations-nodeps^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/prebuilts/sdk/android-support-annotations-nodeps^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/support/android-support-annotations-nodeps^android_common
 
 echo "building android-support-annotations^android_common"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja android-support-annotations,android_common

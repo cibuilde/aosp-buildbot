@@ -95,6 +95,11 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/system/core/libsparse/libsparse^android_
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/libbase/libbase^android_recovery_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/libbase/libbase^android_x86_64_shared/ .
 
+echo "building libext2fs^android_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libext2fs,android_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/lib/ext2fs/libext2fs^android_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/external/e2fsprogs/libext2fs^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/lib/ext2fs/libext2fs^android_x86_64_shared
+
 echo "building badblocks^android_x86_64"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja badblocks,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/misc/badblocks^android_x86_64
@@ -120,6 +125,16 @@ ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja e2fsck,android_x8
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/e2fsck/e2fsck^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/external/e2fsprogs/e2fsck^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/e2fsck/e2fsck^android_x86_64
 
+echo "building libext2_misc^android_recovery_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libext2_misc,android_recovery_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/misc/libext2_misc^android_recovery_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/external/e2fsprogs/libext2_misc^android_recovery_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/misc/libext2_misc^android_recovery_x86_64_shared
+
+echo "building e2fsdroid^android_recovery_x86_64"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja e2fsdroid,android_recovery_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/contrib/android/e2fsdroid^android_recovery_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/external/e2fsprogs/e2fsdroid^android_recovery_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/contrib/android/e2fsdroid^android_recovery_x86_64
+
 echo "building libext2_misc^android_x86_64_shared"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libext2_misc,android_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/misc/libext2_misc^android_x86_64_shared
@@ -130,45 +145,30 @@ ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja e2fsdroid,android
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/contrib/android/e2fsdroid^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/external/e2fsprogs/e2fsdroid^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/contrib/android/e2fsdroid^android_x86_64
 
-echo "building libext2fs^android_recovery_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libext2fs,android_recovery_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/lib/ext2fs/libext2fs^android_recovery_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/external/e2fsprogs/libext2fs^android_recovery_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/lib/ext2fs/libext2fs^android_recovery_x86_64_shared
-
-echo "building e2fsdroid^android_recovery_x86_64"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja e2fsdroid,android_recovery_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/contrib/android/e2fsdroid^android_recovery_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/external/e2fsprogs/e2fsdroid^android_recovery_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/contrib/android/e2fsdroid^android_recovery_x86_64
-
 echo "building libext2_quota^android_recovery_x86_64_shared"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libext2_quota,android_recovery_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/lib/support/libext2_quota^android_recovery_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/external/e2fsprogs/libext2_quota^android_recovery_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/lib/support/libext2_quota^android_recovery_x86_64_shared
-
-echo "building libext2_misc^android_recovery_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libext2_misc,android_recovery_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/misc/libext2_misc^android_recovery_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/external/e2fsprogs/libext2_misc^android_recovery_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/misc/libext2_misc^android_recovery_x86_64_shared
-
-echo "building libext2fs^android_vendor_ramdisk_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libext2fs,android_vendor_ramdisk_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/lib/ext2fs/libext2fs^android_vendor_ramdisk_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/external/e2fsprogs/libext2fs^android_vendor_ramdisk_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/lib/ext2fs/libext2fs^android_vendor_ramdisk_x86_64_shared
 
 echo "building libext2_quota^android_vendor_ramdisk_x86_64_shared"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libext2_quota,android_vendor_ramdisk_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/lib/support/libext2_quota^android_vendor_ramdisk_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/external/e2fsprogs/libext2_quota^android_vendor_ramdisk_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/lib/support/libext2_quota^android_vendor_ramdisk_x86_64_shared
 
-echo "building libext2fs^android_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libext2fs,android_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/lib/ext2fs/libext2fs^android_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/external/e2fsprogs/libext2fs^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/lib/ext2fs/libext2fs^android_x86_64_shared
-
 echo "building libext2_quota^android_x86_64_shared"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libext2_quota,android_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/lib/support/libext2_quota^android_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/external/e2fsprogs/libext2_quota^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/lib/support/libext2_quota^android_x86_64_shared
+
+echo "building libext2fs^android_recovery_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libext2fs,android_recovery_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/lib/ext2fs/libext2fs^android_recovery_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/external/e2fsprogs/libext2fs^android_recovery_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/lib/ext2fs/libext2fs^android_recovery_x86_64_shared
+
+echo "building libext2fs^android_vendor_ramdisk_x86_64_shared"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libext2fs,android_vendor_ramdisk_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/lib/ext2fs/libext2fs^android_vendor_ramdisk_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/external/e2fsprogs/libext2fs^android_vendor_ramdisk_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/lib/ext2fs/libext2fs^android_vendor_ramdisk_x86_64_shared
 
 echo "building mke2fs^android_recovery_x86_64"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja mke2fs,android_recovery_x86_64

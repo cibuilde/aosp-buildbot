@@ -1,7 +1,7 @@
-build step 26: projects: 5 targets: 8
+Tag: buid_26 Projects: 5 Targets: 8
 
-frameworks/base: SettingsLib^android_common SystemUI-core^android_common combined-removed-dex^
-packages/apps/Car/libs: car-ui-lib^android_common car-ui-lib^android_common_apex30
-packages/apps/CellBroadcastReceiver: com.android.cellbroadcast^android_common_com.android.cellbroadcast_image
-packages/apps/ImsServiceEntitlement: ImsServiceEntitlementLib^android_common
-packages/modules/Wifi: wifi-service-pre-jarjar^android_common_apex30
+frameworks/base/: SettingsLib^android_common SystemUI-core^android_common combined-removed-dex^
+packages/apps/Car/libs/: car-ui-lib^android_common car-ui-lib^android_common_apex30
+packages/apps/CellBroadcastReceiver/: com.android.cellbroadcast^android_common_com.android.cellbroadcast_image
+packages/apps/ImsServiceEntitlement/: ImsServiceEntitlementLib^android_common
+packages/modules/Wifi/: wifi-service-pre-jarjar^android_common_apex30

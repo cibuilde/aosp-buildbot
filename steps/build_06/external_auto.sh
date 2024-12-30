@@ -38,6 +38,11 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/external/javapoet/javapoet^linux_glibc_c
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/jsr305/jsr305^linux_glibc_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/jsr330/jsr330^linux_glibc_common/ .
 
+echo "building auto_annotation_plugin^linux_glibc_common"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja auto_annotation_plugin,linux_glibc_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/auto/value/auto_annotation_plugin^linux_glibc_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/external/auto/auto_annotation_plugin^linux_glibc_common.output . $GITHUB_WORKSPACE/artifacts/external/auto/value/auto_annotation_plugin^linux_glibc_common
+
 echo "building auto_factory_plugin^linux_glibc_common"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja auto_factory_plugin,linux_glibc_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/auto/factory/auto_factory_plugin^linux_glibc_common
@@ -52,11 +57,6 @@ echo "building libauto_value_plugin^linux_glibc_common"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libauto_value_plugin,linux_glibc_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/auto/value/libauto_value_plugin^linux_glibc_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/external/auto/libauto_value_plugin^linux_glibc_common.output . $GITHUB_WORKSPACE/artifacts/external/auto/value/libauto_value_plugin^linux_glibc_common
-
-echo "building auto_annotation_plugin^linux_glibc_common"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja auto_annotation_plugin,linux_glibc_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/auto/value/auto_annotation_plugin^linux_glibc_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/external/auto/auto_annotation_plugin^linux_glibc_common.output . $GITHUB_WORKSPACE/artifacts/external/auto/value/auto_annotation_plugin^linux_glibc_common
 
 echo "building auto_value_plugin^linux_glibc_common"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja auto_value_plugin,linux_glibc_common

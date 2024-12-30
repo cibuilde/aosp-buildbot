@@ -37,6 +37,11 @@ ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja androidmk-parser,
 mkdir -p $GITHUB_WORKSPACE/artifacts/build/soong/androidmk/androidmk-parser^linux_glibc_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/build/soong/androidmk-parser^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/build/soong/androidmk/androidmk-parser^linux_glibc_x86_64
 
+echo "building dep_fixer^linux_glibc_x86_64"
+ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja dep_fixer,linux_glibc_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/build/soong/cmd/dep_fixer/dep_fixer^linux_glibc_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/build/soong/dep_fixer^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/build/soong/cmd/dep_fixer/dep_fixer^linux_glibc_x86_64
+
 echo "building libbuildversion^android_recovery_x86_64_static"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libbuildversion,android_recovery_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/build/soong/cc/libbuildversion/libbuildversion^android_recovery_x86_64_static
@@ -91,11 +96,6 @@ echo "building soong-makedeps^linux_glibc_x86_64"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja soong-makedeps,linux_glibc_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/build/soong/makedeps/soong-makedeps^linux_glibc_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/build/soong/soong-makedeps^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/build/soong/makedeps/soong-makedeps^linux_glibc_x86_64
-
-echo "building dep_fixer^linux_glibc_x86_64"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja dep_fixer,linux_glibc_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/build/soong/cmd/dep_fixer/dep_fixer^linux_glibc_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/build/soong/dep_fixer^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/build/soong/cmd/dep_fixer/dep_fixer^linux_glibc_x86_64
 
 echo "building soong-remoteexec^linux_glibc_x86_64"
 ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja soong-remoteexec,linux_glibc_x86_64
