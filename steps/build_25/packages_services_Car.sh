@@ -1,5 +1,7 @@
 set -e
 
+echo "entering packages/services/Car"
+
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
 mkdir -p out/soong/.minibootstrap && ln -sf $GITHUB_WORKSPACE/bpglob out/soong/.minibootstrap/bpglob
@@ -42,28 +44,28 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/packages/services/Car/car-lib/android-ca
 rsync -a -r $GITHUB_WORKSPACE/downloads/tools/metalava/metalava^linux_glibc_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/tools/metalava/metalava^linux_glibc_x86_64/ .
 
-echo "building android.car^android_common"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_25.ninja android.car,android_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/packages/services/Car/car-lib/android.car^android_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_25/packages/services/Car/android.car^android_common.output . $GITHUB_WORKSPACE/artifacts/packages/services/Car/car-lib/android.car^android_common
-
 echo "building android.car-stub-docs^android_common"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_25.ninja android.car-stub-docs,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_25.ninja android.car-stub-docs,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/services/Car/car-lib/android.car-stub-docs^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_25/packages/services/Car/android.car-stub-docs^android_common.output . $GITHUB_WORKSPACE/artifacts/packages/services/Car/car-lib/android.car-stub-docs^android_common
 
 echo "building android.car-stubs-docs^android_common"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_25.ninja android.car-stubs-docs,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_25.ninja android.car-stubs-docs,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/services/Car/car-lib/android.car-stubs-docs^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_25/packages/services/Car/android.car-stubs-docs^android_common.output . $GITHUB_WORKSPACE/artifacts/packages/services/Car/car-lib/android.car-stubs-docs^android_common
 
 echo "building android.car-stubs^android_common"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_25.ninja android.car-stubs,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_25.ninja android.car-stubs,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/services/Car/car-lib/android.car-stubs^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_25/packages/services/Car/android.car-stubs^android_common.output . $GITHUB_WORKSPACE/artifacts/packages/services/Car/car-lib/android.car-stubs^android_common
 
+echo "building android.car^android_common"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_25.ninja android.car,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/packages/services/Car/car-lib/android.car^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_25/packages/services/Car/android.car^android_common.output . $GITHUB_WORKSPACE/artifacts/packages/services/Car/car-lib/android.car^android_common
+
 echo "building android.car-system-stubs-docs^android_common"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_25.ninja android.car-system-stubs-docs,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_25.ninja android.car-system-stubs-docs,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/services/Car/car-lib/android.car-system-stubs-docs^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_25/packages/services/Car/android.car-system-stubs-docs^android_common.output . $GITHUB_WORKSPACE/artifacts/packages/services/Car/car-lib/android.car-system-stubs-docs^android_common
 

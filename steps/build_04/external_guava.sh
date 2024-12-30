@@ -1,5 +1,7 @@
 set -e
 
+echo "entering external/guava"
+
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
 mkdir -p out/soong/.minibootstrap && ln -sf $GITHUB_WORKSPACE/bpglob out/soong/.minibootstrap/bpglob
@@ -12,6 +14,7 @@ mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/
 clone_depth_platform external/error_prone
 clone_depth_platform external/guava
 clone_depth_platform external/jsr305
+clone_project platform/prebuilts/build-tools prebuilts/build-tools android12-gsi "/linux-x86/bin" "/linux-x86/lib64" "/path" "/common"
 clone_project platform/prebuilts/jdk/jdk11 prebuilts/jdk/jdk11 android12-gsi "/linux-x86"
 clone_project platform/prebuilts/jdk/jdk8 prebuilts/jdk/jdk8 android12-gsi "/linux-x86"
 
@@ -24,27 +27,27 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/external/guava/guava-android-annotation-
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/jsr305/jsr305^linux_glibc_common/ .
 
 echo "building guava-both^linux_glibc_common"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja guava-both,linux_glibc_common
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja guava-both,linux_glibc_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/guava/guava-both^linux_glibc_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/guava/guava-both^linux_glibc_common.output . $GITHUB_WORKSPACE/artifacts/external/guava/guava-both^linux_glibc_common
 
 echo "building guava-android-host^linux_glibc_common"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja guava-android-host,linux_glibc_common
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja guava-android-host,linux_glibc_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/guava/guava-android-host^linux_glibc_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/guava/guava-android-host^linux_glibc_common.output . $GITHUB_WORKSPACE/artifacts/external/guava/guava-android-host^linux_glibc_common
 
 echo "building guava-jre^linux_glibc_common"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja guava-jre,linux_glibc_common
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja guava-jre,linux_glibc_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/guava/guava-jre^linux_glibc_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/guava/guava-jre^linux_glibc_common.output . $GITHUB_WORKSPACE/artifacts/external/guava/guava-jre^linux_glibc_common
 
 echo "building guava^android_common"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja guava,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja guava,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/guava/guava^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/guava/guava^android_common.output . $GITHUB_WORKSPACE/artifacts/external/guava/guava^android_common
 
 echo "building guava^android_common_apex30"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja guava,android_common_apex30
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja guava,android_common_apex30
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/guava/guava^android_common_apex30
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/guava/guava^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/external/guava/guava^android_common_apex30
 
@@ -67,6 +70,10 @@ fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/external_jsr305.tar.zst" ]; then
   echo "Compressing external/jsr305 -> external_jsr305.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/external_jsr305.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/jsr305/ .
+fi
+if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_build-tools.tar.zst" ]; then
+  echo "Compressing prebuilts/build-tools -> prebuilts_build-tools.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/prebuilts_build-tools.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/prebuilts/build-tools/ .
 fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_jdk_jdk11.tar.zst" ]; then
   echo "Compressing prebuilts/jdk/jdk11 -> prebuilts_jdk_jdk11.tar.zst"

@@ -1,5 +1,7 @@
 set -e
 
+echo "entering external/ipsec-tools"
+
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
 mkdir -p out/soong/.minibootstrap && ln -sf $GITHUB_WORKSPACE/bpglob out/soong/.minibootstrap/bpglob
@@ -44,7 +46,7 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/system/netd/client/libnetd_client^androi
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/security/keystore-engine/libkeystore-engine^android_x86_64_shared/ .
 
 echo "building racoon^android_x86_64"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_12.ninja racoon,android_x86_64
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_12.ninja racoon,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/ipsec-tools/racoon^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_12/external/ipsec-tools/racoon^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/ipsec-tools/racoon^android_x86_64
 

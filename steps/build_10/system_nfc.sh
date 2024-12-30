@@ -1,5 +1,7 @@
 set -e
 
+echo "entering system/nfc"
+
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
 mkdir -p out/soong/.minibootstrap && ln -sf $GITHUB_WORKSPACE/bpglob out/soong/.minibootstrap/bpglob
@@ -71,7 +73,7 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^android_x86
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/nfc/utils/libnfcutils^android_x86_64_static/ .
 
 echo "building libnfc-nci^android_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja libnfc-nci,android_x86_64_shared
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja libnfc-nci,android_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/nfc/src/libnfc-nci^android_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/system/nfc/libnfc-nci^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/nfc/src/libnfc-nci^android_x86_64_shared
 

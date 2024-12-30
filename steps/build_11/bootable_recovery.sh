@@ -1,5 +1,7 @@
 set -e
 
+echo "entering bootable/recovery"
+
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
 mkdir -p out/soong/.minibootstrap && ln -sf $GITHUB_WORKSPACE/bpglob out/soong/.minibootstrap/bpglob
@@ -65,12 +67,12 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^android_x86
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/vold/libvold_binder^android_x86_64_static/ .
 
 echo "building libupdate_verifier^android_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_11.ninja libupdate_verifier,android_x86_64_static
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_11.ninja libupdate_verifier,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/bootable/recovery/update_verifier/libupdate_verifier^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_11/bootable/recovery/libupdate_verifier^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bootable/recovery/update_verifier/libupdate_verifier^android_x86_64_static
 
 echo "building update_verifier^android_x86_64"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_11.ninja update_verifier,android_x86_64
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_11.ninja update_verifier,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/bootable/recovery/update_verifier/update_verifier^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_11/bootable/recovery/update_verifier^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/bootable/recovery/update_verifier/update_verifier^android_x86_64
 

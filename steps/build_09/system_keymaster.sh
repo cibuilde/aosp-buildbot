@@ -1,5 +1,7 @@
 set -e
 
+echo "entering system/keymaster"
+
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
 mkdir -p out/soong/.minibootstrap && ln -sf $GITHUB_WORKSPACE/bpglob out/soong/.minibootstrap/bpglob
@@ -52,12 +54,12 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/system/libhidl/libhidlbase^android_vendo
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^android_vendor.31_x86_64_shared/ .
 
 echo "building lib_android_keymaster_keymint_utils^android_vendor.31_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja lib_android_keymaster_keymint_utils,android_vendor.31_x86_64_shared
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja lib_android_keymaster_keymint_utils,android_vendor.31_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/keymaster/lib_android_keymaster_keymint_utils^android_vendor.31_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_09/system/keymaster/lib_android_keymaster_keymint_utils^android_vendor.31_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/keymaster/lib_android_keymaster_keymint_utils^android_vendor.31_x86_64_shared
 
 echo "building libkeymint^android_vendor.31_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja libkeymint,android_vendor.31_x86_64_shared
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja libkeymint,android_vendor.31_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/keymaster/libkeymint^android_vendor.31_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_09/system/keymaster/libkeymint^android_vendor.31_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/keymaster/libkeymint^android_vendor.31_x86_64_shared
 

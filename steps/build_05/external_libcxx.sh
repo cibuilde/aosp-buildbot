@@ -1,5 +1,7 @@
 set -e
 
+echo "entering external/libcxx"
+
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
 mkdir -p out/soong/.minibootstrap && ln -sf $GITHUB_WORKSPACE/bpglob out/soong/.minibootstrap/bpglob
@@ -36,34 +38,34 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcxxabi/libc++abi^android_ven
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcxxabi/libc++abi^android_vendor.31_x86_x86_64_static/ .
 
 echo "building libc++_static^android_product.31_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libc++_static,android_product.31_x86_64_static
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libc++_static,android_product.31_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/libcxx/libc++_static^android_product.31_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/external/libcxx/libc++_static^android_product.31_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/libcxx/libc++_static^android_product.31_x86_64_static
 
 echo "building libc++^android_product.31_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libc++,android_product.31_x86_64_shared
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libc++,android_product.31_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/libcxx/libc++^android_product.31_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/external/libcxx/libc++^android_product.31_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/external/libcxx/libc++^android_product.31_x86_64_shared
 
-echo "building libc++^android_vendor.31_x86_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libc++,android_vendor.31_x86_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/libcxx/libc++^android_vendor.31_x86_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/external/libcxx/libc++^android_vendor.31_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/external/libcxx/libc++^android_vendor.31_x86_x86_64_shared
-
-echo "building libc++_static^android_vendor.31_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libc++_static,android_vendor.31_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/libcxx/libc++_static^android_vendor.31_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/external/libcxx/libc++_static^android_vendor.31_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/libcxx/libc++_static^android_vendor.31_x86_64_static
-
 echo "building libc++^android_vendor.31_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libc++,android_vendor.31_x86_64_shared
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libc++,android_vendor.31_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/libcxx/libc++^android_vendor.31_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/external/libcxx/libc++^android_vendor.31_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/external/libcxx/libc++^android_vendor.31_x86_64_shared
 
 echo "building libc++_static^android_vendor.31_x86_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libc++_static,android_vendor.31_x86_x86_64_static
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libc++_static,android_vendor.31_x86_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/libcxx/libc++_static^android_vendor.31_x86_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/external/libcxx/libc++_static^android_vendor.31_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/libcxx/libc++_static^android_vendor.31_x86_x86_64_static
+
+echo "building libc++^android_vendor.31_x86_x86_64_shared"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libc++,android_vendor.31_x86_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/libcxx/libc++^android_vendor.31_x86_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/external/libcxx/libc++^android_vendor.31_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/external/libcxx/libc++^android_vendor.31_x86_x86_64_shared
+
+echo "building libc++_static^android_vendor.31_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libc++_static,android_vendor.31_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/libcxx/libc++_static^android_vendor.31_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/external/libcxx/libc++_static^android_vendor.31_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/libcxx/libc++_static^android_vendor.31_x86_64_static
 
 rm -rf out
 

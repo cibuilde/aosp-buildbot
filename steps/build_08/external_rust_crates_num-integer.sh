@@ -1,5 +1,7 @@
 set -e
 
+echo "entering external/rust/crates/num-integer"
+
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
 mkdir -p out/soong/.minibootstrap && ln -sf $GITHUB_WORKSPACE/bpglob out/soong/.minibootstrap/bpglob
@@ -45,7 +47,7 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/rust/libunwind.rust_sysroot^an
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^android_x86_64_shared/ .
 
 echo "building libnum_integer^android_x86_64_dylib"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libnum_integer,android_x86_64_dylib
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libnum_integer,android_x86_64_dylib
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/rust/crates/num-integer/libnum_integer^android_x86_64_dylib
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/external/rust/crates/num-integer/libnum_integer^android_x86_64_dylib.output . $GITHUB_WORKSPACE/artifacts/external/rust/crates/num-integer/libnum_integer^android_x86_64_dylib
 

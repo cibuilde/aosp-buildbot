@@ -322,6 +322,10 @@ jobs:
         key: packages_modules_adb@${{ env.branch }}
     - uses: actions/cache@v4
       with:
+        path: cache/prebuilts_build-tools.tar.zst
+        key: prebuilts_build-tools@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
         path: cache/prebuilts_clang_host_linux-x86.tar.zst
         key: prebuilts_clang_host_linux-x86@${{ env.branch }}
     - uses: actions/cache@v4

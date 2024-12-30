@@ -1,5 +1,7 @@
 set -e
 
+echo "entering packages/modules/common"
+
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
 mkdir -p out/soong/.minibootstrap && ln -sf $GITHUB_WORKSPACE/bpglob out/soong/.minibootstrap/bpglob
@@ -35,22 +37,22 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/common/proto/sdk_proto_
 rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/build-tools/prebuilt_py3-launcher-autorun^linux_glibc_x86_64/ .
 
 echo "building conv_classpaths_proto^linux_glibc_x86_64_PY3"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja conv_classpaths_proto,linux_glibc_x86_64_PY3
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja conv_classpaths_proto,linux_glibc_x86_64_PY3
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/common/tools/conv_classpaths_proto^linux_glibc_x86_64_PY3
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/packages/modules/common/conv_classpaths_proto^linux_glibc_x86_64_PY3.output . $GITHUB_WORKSPACE/artifacts/packages/modules/common/tools/conv_classpaths_proto^linux_glibc_x86_64_PY3
 
 echo "building gen_sdkinfo^linux_glibc_x86_64_PY3"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja gen_sdkinfo,linux_glibc_x86_64_PY3
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja gen_sdkinfo,linux_glibc_x86_64_PY3
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/common/tools/gen_sdkinfo^linux_glibc_x86_64_PY3
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/packages/modules/common/gen_sdkinfo^linux_glibc_x86_64_PY3.output . $GITHUB_WORKSPACE/artifacts/packages/modules/common/tools/gen_sdkinfo^linux_glibc_x86_64_PY3
 
 echo "building cur_sdkinfo_src^"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja cur_sdkinfo_src,
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja cur_sdkinfo_src,
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/common/tools/cur_sdkinfo_src^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/packages/modules/common/cur_sdkinfo_src^.output . $GITHUB_WORKSPACE/artifacts/packages/modules/common/tools/cur_sdkinfo_src^
 
 echo "building current_sdkinfo^android_x86_64"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja current_sdkinfo,android_x86_64
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja current_sdkinfo,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/common/tools/current_sdkinfo^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/packages/modules/common/current_sdkinfo^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/packages/modules/common/tools/current_sdkinfo^android_x86_64
 

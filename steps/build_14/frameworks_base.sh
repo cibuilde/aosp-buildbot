@@ -1,5 +1,7 @@
 set -e
 
+echo "entering frameworks/base"
+
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
 mkdir -p out/soong/.minibootstrap && ln -sf $GITHUB_WORKSPACE/bpglob out/soong/.minibootstrap/bpglob
@@ -566,192 +568,192 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/tools/metalava/metalava^linux_glibc_comm
 rsync -a -r $GITHUB_WORKSPACE/downloads/tools/metalava/metalava^linux_glibc_x86_64/ .
 
 echo "building com.android.sysprop.localization^android_common"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_14.ninja com.android.sysprop.localization,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_14.ninja com.android.sysprop.localization,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/core/sysprop/com.android.sysprop.localization^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_14/frameworks/base/com.android.sysprop.localization^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/core/sysprop/com.android.sysprop.localization^android_common
 
 echo "building com.android.sysprop.watchdog^android_common"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_14.ninja com.android.sysprop.watchdog,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_14.ninja com.android.sysprop.watchdog,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/core/sysprop/com.android.sysprop.watchdog^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_14/frameworks/base/com.android.sysprop.watchdog^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/core/sysprop/com.android.sysprop.watchdog^android_common
 
 echo "building hwbinder-stubs-docs^android_common"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_14.ninja hwbinder-stubs-docs,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_14.ninja hwbinder-stubs-docs,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/hwbinder-stubs-docs^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_14/frameworks/base/hwbinder-stubs-docs^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/hwbinder-stubs-docs^android_common
 
 echo "building hwbinder.stubs^android_common"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_14.ninja hwbinder.stubs,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_14.ninja hwbinder.stubs,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/hwbinder.stubs^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_14/frameworks/base/hwbinder.stubs^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/hwbinder.stubs^android_common
 
 echo "building libamidi^android_x86_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_14.ninja libamidi,android_x86_x86_64_shared
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_14.ninja libamidi,android_x86_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/media/native/midi/libamidi^android_x86_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_14/frameworks/base/libamidi^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/media/native/midi/libamidi^android_x86_x86_64_shared
 
+echo "building libandroid^android_x86_x86_64_shared"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_14.ninja libandroid,android_x86_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/native/android/libandroid^android_x86_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_14/frameworks/base/libandroid^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/native/android/libandroid^android_x86_x86_64_shared
+
 echo "building libandroid_runtime^android_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_14.ninja libandroid_runtime,android_x86_64_shared
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_14.ninja libandroid_runtime,android_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/core/jni/libandroid_runtime^android_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_14/frameworks/base/libandroid_runtime^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/core/jni/libandroid_runtime^android_x86_64_shared
 
 echo "building libamidi^android_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_14.ninja libamidi,android_x86_64_shared
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_14.ninja libamidi,android_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/media/native/midi/libamidi^android_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_14/frameworks/base/libamidi^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/media/native/midi/libamidi^android_x86_64_shared
 
-echo "building libandroid^android_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_14.ninja libandroid,android_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/native/android/libandroid^android_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_14/frameworks/base/libandroid^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/native/android/libandroid^android_x86_64_shared
-
 echo "building libandroid_runtime^android_x86_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_14.ninja libandroid_runtime,android_x86_x86_64_shared
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_14.ninja libandroid_runtime,android_x86_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/core/jni/libandroid_runtime^android_x86_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_14/frameworks/base/libandroid_runtime^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/core/jni/libandroid_runtime^android_x86_x86_64_shared
 
-echo "building libandroid^android_x86_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_14.ninja libandroid,android_x86_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/native/android/libandroid^android_x86_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_14/frameworks/base/libandroid^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/native/android/libandroid^android_x86_x86_64_shared
-
-echo "building libandroid_servers^android_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_14.ninja libandroid_servers,android_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/services/libandroid_servers^android_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_14/frameworks/base/libandroid_servers^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/services/libandroid_servers^android_x86_64_shared
-
 echo "building libandroid_servers^android_x86_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_14.ninja libandroid_servers,android_x86_x86_64_shared
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_14.ninja libandroid_servers,android_x86_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/services/libandroid_servers^android_x86_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_14/frameworks/base/libandroid_servers^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/services/libandroid_servers^android_x86_x86_64_shared
 
+echo "building libbootanimation^android_x86_64_shared"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_14.ninja libbootanimation,android_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/cmds/bootanimation/libbootanimation^android_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_14/frameworks/base/libbootanimation^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/cmds/bootanimation/libbootanimation^android_x86_64_shared
+
+echo "building libhwui^android_x86_64_shared"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_14.ninja libhwui,android_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/libs/hwui/libhwui^android_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_14/frameworks/base/libhwui^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/libs/hwui/libhwui^android_x86_64_shared
+
+echo "building libandroid^android_x86_64_shared"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_14.ninja libandroid,android_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/native/android/libandroid^android_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_14/frameworks/base/libandroid^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/native/android/libandroid^android_x86_64_shared
+
+echo "building libinputservice^android_x86_64_shared"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_14.ninja libinputservice,android_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/libs/input/libinputservice^android_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_14/frameworks/base/libinputservice^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/libs/input/libinputservice^android_x86_64_shared
+
+echo "building libandroid_servers^android_x86_64_shared"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_14.ninja libandroid_servers,android_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/services/libandroid_servers^android_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_14/frameworks/base/libandroid_servers^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/services/libandroid_servers^android_x86_64_shared
+
 echo "building libaudioeffect_jni^android_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_14.ninja libaudioeffect_jni,android_x86_64_shared
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_14.ninja libaudioeffect_jni,android_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/media/jni/audioeffect/libaudioeffect_jni^android_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_14/frameworks/base/libaudioeffect_jni^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/media/jni/audioeffect/libaudioeffect_jni^android_x86_64_shared
 
 echo "building libaudioeffect_jni^android_x86_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_14.ninja libaudioeffect_jni,android_x86_x86_64_shared
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_14.ninja libaudioeffect_jni,android_x86_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/media/jni/audioeffect/libaudioeffect_jni^android_x86_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_14/frameworks/base/libaudioeffect_jni^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/media/jni/audioeffect/libaudioeffect_jni^android_x86_x86_64_shared
 
-echo "building libbootanimation^android_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_14.ninja libbootanimation,android_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/cmds/bootanimation/libbootanimation^android_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_14/frameworks/base/libbootanimation^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/cmds/bootanimation/libbootanimation^android_x86_64_shared
-
 echo "building libdrmframework_jni^android_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_14.ninja libdrmframework_jni,android_x86_64_shared
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_14.ninja libdrmframework_jni,android_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/drm/jni/libdrmframework_jni^android_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_14/frameworks/base/libdrmframework_jni^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/drm/jni/libdrmframework_jni^android_x86_64_shared
 
 echo "building libdrmframework_jni^android_x86_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_14.ninja libdrmframework_jni,android_x86_x86_64_shared
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_14.ninja libdrmframework_jni,android_x86_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/drm/jni/libdrmframework_jni^android_x86_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_14/frameworks/base/libdrmframework_jni^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/drm/jni/libdrmframework_jni^android_x86_x86_64_shared
 
+echo "building libfilterfw^android_x86_64_shared"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_14.ninja libfilterfw,android_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/media/mca/filterfw/libfilterfw^android_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_14/frameworks/base/libfilterfw^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/media/mca/filterfw/libfilterfw^android_x86_64_shared
+
 echo "building libfilterfw^android_x86_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_14.ninja libfilterfw,android_x86_x86_64_shared
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_14.ninja libfilterfw,android_x86_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/media/mca/filterfw/libfilterfw^android_x86_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_14/frameworks/base/libfilterfw^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/media/mca/filterfw/libfilterfw^android_x86_x86_64_shared
 
 echo "building libfilterpack_imageproc^android_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_14.ninja libfilterpack_imageproc,android_x86_64_shared
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_14.ninja libfilterpack_imageproc,android_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/media/mca/filterpacks/libfilterpack_imageproc^android_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_14/frameworks/base/libfilterpack_imageproc^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/media/mca/filterpacks/libfilterpack_imageproc^android_x86_64_shared
 
+echo "building libfilterpack_imageproc^android_x86_x86_64_shared"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_14.ninja libfilterpack_imageproc,android_x86_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/media/mca/filterpacks/libfilterpack_imageproc^android_x86_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_14/frameworks/base/libfilterpack_imageproc^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/media/mca/filterpacks/libfilterpack_imageproc^android_x86_x86_64_shared
+
 echo "building libhidcommand_jni^android_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_14.ninja libhidcommand_jni,android_x86_64_shared
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_14.ninja libhidcommand_jni,android_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/cmds/hid/jni/libhidcommand_jni^android_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_14/frameworks/base/libhidcommand_jni^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/cmds/hid/jni/libhidcommand_jni^android_x86_64_shared
 
+echo "building libhwui^android_x86_x86_64_shared"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_14.ninja libhwui,android_x86_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/libs/hwui/libhwui^android_x86_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_14/frameworks/base/libhwui^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/libs/hwui/libhwui^android_x86_x86_64_shared
+
 echo "building libinputservice^android_x86_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_14.ninja libinputservice,android_x86_x86_64_shared
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_14.ninja libinputservice,android_x86_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/libs/input/libinputservice^android_x86_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_14/frameworks/base/libinputservice^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/libs/input/libinputservice^android_x86_x86_64_shared
 
 echo "building libjnigraphics^android_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_14.ninja libjnigraphics,android_x86_64_shared
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_14.ninja libjnigraphics,android_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/native/graphics/jni/libjnigraphics^android_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_14/frameworks/base/libjnigraphics^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/native/graphics/jni/libjnigraphics^android_x86_64_shared
 
-echo "building libfilterfw^android_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_14.ninja libfilterfw,android_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/media/mca/filterfw/libfilterfw^android_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_14/frameworks/base/libfilterfw^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/media/mca/filterfw/libfilterfw^android_x86_64_shared
-
-echo "building libfilterpack_imageproc^android_x86_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_14.ninja libfilterpack_imageproc,android_x86_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/media/mca/filterpacks/libfilterpack_imageproc^android_x86_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_14/frameworks/base/libfilterpack_imageproc^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/media/mca/filterpacks/libfilterpack_imageproc^android_x86_x86_64_shared
-
-echo "building libhwui^android_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_14.ninja libhwui,android_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/libs/hwui/libhwui^android_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_14/frameworks/base/libhwui^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/libs/hwui/libhwui^android_x86_64_shared
-
-echo "building libhwui^android_x86_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_14.ninja libhwui,android_x86_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/libs/hwui/libhwui^android_x86_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_14/frameworks/base/libhwui^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/libs/hwui/libhwui^android_x86_x86_64_shared
-
-echo "building libinputservice^android_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_14.ninja libinputservice,android_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/libs/input/libinputservice^android_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_14/frameworks/base/libinputservice^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/libs/input/libinputservice^android_x86_64_shared
-
 echo "building libjnigraphics^android_x86_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_14.ninja libjnigraphics,android_x86_x86_64_shared
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_14.ninja libjnigraphics,android_x86_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/native/graphics/jni/libjnigraphics^android_x86_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_14/frameworks/base/libjnigraphics^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/native/graphics/jni/libjnigraphics^android_x86_x86_64_shared
 
 echo "building libmedia_jni^android_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_14.ninja libmedia_jni,android_x86_64_shared
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_14.ninja libmedia_jni,android_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/media/jni/libmedia_jni^android_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_14/frameworks/base/libmedia_jni^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/media/jni/libmedia_jni^android_x86_64_shared
 
 echo "building libmedia_jni^android_x86_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_14.ninja libmedia_jni,android_x86_x86_64_shared
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_14.ninja libmedia_jni,android_x86_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/media/jni/libmedia_jni^android_x86_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_14/frameworks/base/libmedia_jni^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/media/jni/libmedia_jni^android_x86_x86_64_shared
 
 echo "building libprintspooler_jni^android_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_14.ninja libprintspooler_jni,android_x86_64_shared
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_14.ninja libprintspooler_jni,android_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/PrintSpooler/jni/libprintspooler_jni^android_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_14/frameworks/base/libprintspooler_jni^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/PrintSpooler/jni/libprintspooler_jni^android_x86_64_shared
 
 echo "building libsoundpool^android_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_14.ninja libsoundpool,android_x86_64_shared
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_14.ninja libsoundpool,android_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/media/jni/soundpool/libsoundpool^android_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_14/frameworks/base/libsoundpool^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/media/jni/soundpool/libsoundpool^android_x86_64_shared
 
 echo "building libsoundpool^android_x86_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_14.ninja libsoundpool,android_x86_x86_64_shared
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_14.ninja libsoundpool,android_x86_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/media/jni/soundpool/libsoundpool^android_x86_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_14/frameworks/base/libsoundpool^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/media/jni/soundpool/libsoundpool^android_x86_x86_64_shared
 
 echo "building libuinputcommand_jni^android_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_14.ninja libuinputcommand_jni,android_x86_64_shared
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_14.ninja libuinputcommand_jni,android_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/cmds/uinput/jni/libuinputcommand_jni^android_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_14/frameworks/base/libuinputcommand_jni^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/cmds/uinput/jni/libuinputcommand_jni^android_x86_64_shared
 
 echo "building libwebviewchromium_plat_support^android_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_14.ninja libwebviewchromium_plat_support,android_x86_64_shared
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_14.ninja libwebviewchromium_plat_support,android_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/native/webview/plat_support/libwebviewchromium_plat_support^android_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_14/frameworks/base/libwebviewchromium_plat_support^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/native/webview/plat_support/libwebviewchromium_plat_support^android_x86_64_shared
 
 echo "building libwebviewchromium_plat_support^android_x86_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_14.ninja libwebviewchromium_plat_support,android_x86_x86_64_shared
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_14.ninja libwebviewchromium_plat_support,android_x86_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/native/webview/plat_support/libwebviewchromium_plat_support^android_x86_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_14/frameworks/base/libwebviewchromium_plat_support^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/native/webview/plat_support/libwebviewchromium_plat_support^android_x86_x86_64_shared
 
 echo "building screencap^android_x86_64"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_14.ninja screencap,android_x86_64
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_14.ninja screencap,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/cmds/screencap/screencap^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_14/frameworks/base/screencap^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/cmds/screencap/screencap^android_x86_64
 
 echo "building updatable-driver-protos^android_common"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_14.ninja updatable-driver-protos,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_14.ninja updatable-driver-protos,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/graphics/proto/updatable-driver-protos^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_14/frameworks/base/updatable-driver-protos^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/graphics/proto/updatable-driver-protos^android_common
 

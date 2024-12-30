@@ -1,5 +1,7 @@
 set -e
 
+echo "entering external/bzip2"
+
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
 mkdir -p out/soong/.minibootstrap && ln -sf $GITHUB_WORKSPACE/bpglob out/soong/.minibootstrap/bpglob
@@ -33,12 +35,12 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libm/libm^android_x86_64_shared_c
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/bzip2/libbz^android_x86_64_static/ .
 
 echo "building bzip2^android_x86_64"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja bzip2,android_x86_64
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja bzip2,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/bzip2/bzip2^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/bzip2/bzip2^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/bzip2/bzip2^android_x86_64
 
 echo "building libbz^android_vendor.31_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libbz,android_vendor.31_x86_64_static
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libbz,android_vendor.31_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/bzip2/libbz^android_vendor.31_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/bzip2/libbz^android_vendor.31_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/bzip2/libbz^android_vendor.31_x86_64_static
 

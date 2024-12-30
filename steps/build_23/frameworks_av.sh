@@ -1,5 +1,7 @@
 set -e
 
+echo "entering frameworks/av"
+
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
 mkdir -p out/soong/.minibootstrap && ln -sf $GITHUB_WORKSPACE/bpglob out/soong/.minibootstrap/bpglob
@@ -34,17 +36,17 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/r8/d8^linux_glibc_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/r8/d8^linux_glibc_x86_64/ .
 
 echo "building av-types-aidl-java^android_common"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_23.ninja av-types-aidl-java,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_23.ninja av-types-aidl-java,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/av-types-aidl-java^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_23/frameworks/av/av-types-aidl-java^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/av-types-aidl-java^android_common
 
 echo "building mediatranscoding_aidl_interface-java^android_common_apex29"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_23.ninja mediatranscoding_aidl_interface-java,android_common_apex29
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_23.ninja mediatranscoding_aidl_interface-java,android_common_apex29
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libmediatranscoding/mediatranscoding_aidl_interface-java^android_common_apex29
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_23/frameworks/av/mediatranscoding_aidl_interface-java^android_common_apex29.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libmediatranscoding/mediatranscoding_aidl_interface-java^android_common_apex29
 
 echo "building tv_tuner_frontend_info_aidl_interface-java^android_common"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_23.ninja tv_tuner_frontend_info_aidl_interface-java,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_23.ninja tv_tuner_frontend_info_aidl_interface-java,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/services/tuner/tv_tuner_frontend_info_aidl_interface-java^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_23/frameworks/av/tv_tuner_frontend_info_aidl_interface-java^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/services/tuner/tv_tuner_frontend_info_aidl_interface-java^android_common
 

@@ -1,5 +1,7 @@
 set -e
 
+echo "entering frameworks/av"
+
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
 mkdir -p out/soong/.minibootstrap && ln -sf $GITHUB_WORKSPACE/bpglob out/soong/.minibootstrap/bpglob
@@ -74,62 +76,62 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^linux_glibc
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/media/audio_utils/libaudioutils^android_vendor.31_x86_x86_64_static_cfi/ .
 
 echo "building com.android.media-systemserverclasspath-fragment^android_common_apex29"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja com.android.media-systemserverclasspath-fragment,android_common_apex29
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja com.android.media-systemserverclasspath-fragment,android_common_apex29
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/apex/com.android.media-systemserverclasspath-fragment^android_common_apex29
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/frameworks/av/com.android.media-systemserverclasspath-fragment^android_common_apex29.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/apex/com.android.media-systemserverclasspath-fragment^android_common_apex29
 
 echo "building libcodec2^android_vendor.31_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libcodec2,android_vendor.31_x86_64_shared
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libcodec2,android_vendor.31_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/core/libcodec2^android_vendor.31_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/frameworks/av/libcodec2^android_vendor.31_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/core/libcodec2^android_vendor.31_x86_64_shared
 
 echo "building libcodec2^android_vendor.31_x86_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libcodec2,android_vendor.31_x86_x86_64_shared
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libcodec2,android_vendor.31_x86_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/core/libcodec2^android_vendor.31_x86_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/frameworks/av/libcodec2^android_vendor.31_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/core/libcodec2^android_vendor.31_x86_x86_64_shared
 
 echo "building libstagefright_amrnb_common^android_vendor.31_x86_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libstagefright_amrnb_common,android_vendor.31_x86_x86_64_shared
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libstagefright_amrnb_common,android_vendor.31_x86_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codecs/amrnb/common/libstagefright_amrnb_common^android_vendor.31_x86_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/frameworks/av/libstagefright_amrnb_common^android_vendor.31_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codecs/amrnb/common/libstagefright_amrnb_common^android_vendor.31_x86_x86_64_shared
 
 echo "building libstagefright_enc_common^android_vendor.31_x86_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libstagefright_enc_common,android_vendor.31_x86_x86_64_shared
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libstagefright_enc_common,android_vendor.31_x86_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libstagefright/codecs/common/libstagefright_enc_common^android_vendor.31_x86_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/frameworks/av/libstagefright_enc_common^android_vendor.31_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libstagefright/codecs/common/libstagefright_enc_common^android_vendor.31_x86_x86_64_shared
 
 echo "building libstagefright_flacdec^android_vendor.31_x86_x86_64_shared_cfi"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libstagefright_flacdec,android_vendor.31_x86_x86_64_shared_cfi
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libstagefright_flacdec,android_vendor.31_x86_x86_64_shared_cfi
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libstagefright/flac/dec/libstagefright_flacdec^android_vendor.31_x86_x86_64_shared_cfi
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/frameworks/av/libstagefright_flacdec^android_vendor.31_x86_x86_64_shared_cfi.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libstagefright/flac/dec/libstagefright_flacdec^android_vendor.31_x86_x86_64_shared_cfi
 
+echo "building libvisualizer^android_vendor.31_x86_x86_64_shared"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libvisualizer,android_vendor.31_x86_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libeffects/visualizer/libvisualizer^android_vendor.31_x86_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/frameworks/av/libvisualizer^android_vendor.31_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libeffects/visualizer/libvisualizer^android_vendor.31_x86_x86_64_shared
+
+echo "building statslog_media.cpp^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja statslog_media.cpp,
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libmediatranscoding/statslog_media.cpp^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/frameworks/av/statslog_media.cpp^.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libmediatranscoding/statslog_media.cpp^
+
 echo "building libstatslog_media^android_x86_64_static_cfi_apex29"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libstatslog_media,android_x86_64_static_cfi_apex29
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libstatslog_media,android_x86_64_static_cfi_apex29
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libmediatranscoding/libstatslog_media^android_x86_64_static_cfi_apex29
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/frameworks/av/libstatslog_media^android_x86_64_static_cfi_apex29.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libmediatranscoding/libstatslog_media^android_x86_64_static_cfi_apex29
 
 echo "building libvisualizer^android_vendor.31_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libvisualizer,android_vendor.31_x86_64_shared
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libvisualizer,android_vendor.31_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libeffects/visualizer/libvisualizer^android_vendor.31_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/frameworks/av/libvisualizer^android_vendor.31_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libeffects/visualizer/libvisualizer^android_vendor.31_x86_64_shared
 
-echo "building libvisualizer^android_vendor.31_x86_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libvisualizer,android_vendor.31_x86_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libeffects/visualizer/libvisualizer^android_vendor.31_x86_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/frameworks/av/libvisualizer^android_vendor.31_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libeffects/visualizer/libvisualizer^android_vendor.31_x86_x86_64_shared
-
 echo "building media-linker-config^android_x86_64"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja media-linker-config,android_x86_64
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja media-linker-config,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/apex/media-linker-config^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/frameworks/av/media-linker-config^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/apex/media-linker-config^android_x86_64
 
-echo "building statslog_media.cpp^"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja statslog_media.cpp,
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libmediatranscoding/statslog_media.cpp^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/frameworks/av/statslog_media.cpp^.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libmediatranscoding/statslog_media.cpp^
-
 echo "building statslog_media.h^"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja statslog_media.h,
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja statslog_media.h,
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libmediatranscoding/statslog_media.h^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/frameworks/av/statslog_media.h^.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libmediatranscoding/statslog_media.h^
 

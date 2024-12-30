@@ -1,5 +1,7 @@
 set -e
 
+echo "entering system/security"
+
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
 mkdir -p out/soong/.minibootstrap && ln -sf $GITHUB_WORKSPACE/bpglob out/soong/.minibootstrap/bpglob
@@ -20,6 +22,7 @@ clone_depth_platform external/rust/crates/nix
 clone_depth_platform external/rust/crates/thiserror
 clone_depth_platform external/rust/crates/thiserror-impl
 clone_depth_platform libcore
+clone_project platform/prebuilts/build-tools prebuilts/build-tools android12-gsi "/linux-x86/bin" "/linux-x86/lib64" "/path" "/common"
 clone_project platform/prebuilts/rust prebuilts/rust android12-gsi "/bootstrap" "/linux-x86/1.51.0"
 clone_depth_platform system/libbase
 clone_depth_platform system/logging
@@ -92,12 +95,12 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/system/security/keystore2/system_propert
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/security/keystore2/system_property/libkeystore2_system_property_bindgen^android_x86_64_source/ .
 
 echo "building libkeystore2_crypto_rust^android_x86_64_rlib_rlib-std"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libkeystore2_crypto_rust,android_x86_64_rlib_rlib-std
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libkeystore2_crypto_rust,android_x86_64_rlib_rlib-std
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/security/keystore2/src/crypto/libkeystore2_crypto_rust^android_x86_64_rlib_rlib-std
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/security/libkeystore2_crypto_rust^android_x86_64_rlib_rlib-std.output . $GITHUB_WORKSPACE/artifacts/system/security/keystore2/src/crypto/libkeystore2_crypto_rust^android_x86_64_rlib_rlib-std
 
 echo "building libkeystore2_system_property-rust^android_x86_64_rlib_rlib-std"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libkeystore2_system_property-rust,android_x86_64_rlib_rlib-std
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libkeystore2_system_property-rust,android_x86_64_rlib_rlib-std
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/security/keystore2/system_property/libkeystore2_system_property-rust^android_x86_64_rlib_rlib-std
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/security/libkeystore2_system_property-rust^android_x86_64_rlib_rlib-std.output . $GITHUB_WORKSPACE/artifacts/system/security/keystore2/system_property/libkeystore2_system_property-rust^android_x86_64_rlib_rlib-std
 
@@ -152,6 +155,10 @@ fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/libcore.tar.zst" ]; then
   echo "Compressing libcore -> libcore.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/libcore.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/libcore/ .
+fi
+if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_build-tools.tar.zst" ]; then
+  echo "Compressing prebuilts/build-tools -> prebuilts_build-tools.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/prebuilts_build-tools.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/prebuilts/build-tools/ .
 fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_rust.tar.zst" ]; then
   echo "Compressing prebuilts/rust -> prebuilts_rust.tar.zst"

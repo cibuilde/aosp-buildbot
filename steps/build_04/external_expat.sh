@@ -1,5 +1,7 @@
 set -e
 
+echo "entering external/expat"
+
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
 mkdir -p out/soong/.minibootstrap && ln -sf $GITHUB_WORKSPACE/bpglob out/soong/.minibootstrap/bpglob
@@ -45,42 +47,42 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/external/expat/libexpat^android_x86_x86_
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/expat/libexpat^android_x86_x86_64_static_apex31/ .
 
 echo "building libexpat^android_vendor.31_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libexpat,android_vendor.31_x86_64_static
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libexpat,android_vendor.31_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/expat/libexpat^android_vendor.31_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/expat/libexpat^android_vendor.31_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/expat/libexpat^android_vendor.31_x86_64_static
 
 echo "building libexpat^android_vendor.31_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libexpat,android_vendor.31_x86_64_shared
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libexpat,android_vendor.31_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/expat/libexpat^android_vendor.31_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/expat/libexpat^android_vendor.31_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/external/expat/libexpat^android_vendor.31_x86_64_shared
 
 echo "building libexpat^android_vendor.31_x86_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libexpat,android_vendor.31_x86_x86_64_static
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libexpat,android_vendor.31_x86_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/expat/libexpat^android_vendor.31_x86_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/expat/libexpat^android_vendor.31_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/expat/libexpat^android_vendor.31_x86_x86_64_static
 
 echo "building libexpat^android_vendor.31_x86_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libexpat,android_vendor.31_x86_x86_64_shared
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libexpat,android_vendor.31_x86_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/expat/libexpat^android_vendor.31_x86_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/expat/libexpat^android_vendor.31_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/external/expat/libexpat^android_vendor.31_x86_x86_64_shared
 
 echo "building libexpat^android_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libexpat,android_x86_64_shared
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libexpat,android_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/expat/libexpat^android_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/expat/libexpat^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/external/expat/libexpat^android_x86_64_shared
 
 echo "building libexpat^android_x86_64_shared_apex31"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libexpat,android_x86_64_shared_apex31
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libexpat,android_x86_64_shared_apex31
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/expat/libexpat^android_x86_64_shared_apex31
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/expat/libexpat^android_x86_64_shared_apex31.output . $GITHUB_WORKSPACE/artifacts/external/expat/libexpat^android_x86_64_shared_apex31
 
 echo "building libexpat^android_x86_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libexpat,android_x86_x86_64_shared
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libexpat,android_x86_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/expat/libexpat^android_x86_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/expat/libexpat^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/external/expat/libexpat^android_x86_x86_64_shared
 
 echo "building libexpat^android_x86_x86_64_shared_apex31"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libexpat,android_x86_x86_64_shared_apex31
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libexpat,android_x86_x86_64_shared_apex31
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/expat/libexpat^android_x86_x86_64_shared_apex31
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/expat/libexpat^android_x86_x86_64_shared_apex31.output . $GITHUB_WORKSPACE/artifacts/external/expat/libexpat^android_x86_x86_64_shared_apex31
 

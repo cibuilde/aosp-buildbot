@@ -1,5 +1,7 @@
 set -e
 
+echo "entering packages/modules/Scheduling"
+
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
 mkdir -p out/soong/.minibootstrap && ln -sf $GITHUB_WORKSPACE/bpglob out/soong/.minibootstrap/bpglob
@@ -78,20 +80,20 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/tools/apifinder/java_api_used_by_mainlin
 rsync -a -r $GITHUB_WORKSPACE/downloads/tools/platform-compat/java/android/processor/compat/unsupportedappusage/unsupportedappusage-annotation-processor^linux_glibc_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/tools/platform-compat/java/android/compat/annotation/unsupportedappusage^android_common/ .
 
-echo "building service-scheduling^android_common_apex10000"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_31.ninja service-scheduling,android_common_apex10000
-mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/Scheduling/service/service-scheduling^android_common_apex10000
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_31/packages/modules/Scheduling/service-scheduling^android_common_apex10000.output . $GITHUB_WORKSPACE/artifacts/packages/modules/Scheduling/service/service-scheduling^android_common_apex10000
-
 echo "building com.android.scheduling^android_common_com.android.scheduling_image"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_31.ninja com.android.scheduling,android_common_com.android.scheduling_image
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_31.ninja com.android.scheduling,android_common_com.android.scheduling_image
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/Scheduling/apex/com.android.scheduling^android_common_com.android.scheduling_image
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_31/packages/modules/Scheduling/com.android.scheduling^android_common_com.android.scheduling_image.output . $GITHUB_WORKSPACE/artifacts/packages/modules/Scheduling/apex/com.android.scheduling^android_common_com.android.scheduling_image
 
 echo "building framework-scheduling.impl^android_common"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_31.ninja framework-scheduling.impl,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_31.ninja framework-scheduling.impl,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/Scheduling/framework/framework-scheduling.impl^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_31/packages/modules/Scheduling/framework-scheduling.impl^android_common.output . $GITHUB_WORKSPACE/artifacts/packages/modules/Scheduling/framework/framework-scheduling.impl^android_common
+
+echo "building service-scheduling^android_common_apex10000"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_31.ninja service-scheduling,android_common_apex10000
+mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/Scheduling/service/service-scheduling^android_common_apex10000
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_31/packages/modules/Scheduling/service-scheduling^android_common_apex10000.output . $GITHUB_WORKSPACE/artifacts/packages/modules/Scheduling/service/service-scheduling^android_common_apex10000
 
 rm -rf out
 

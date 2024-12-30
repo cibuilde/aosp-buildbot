@@ -1,5 +1,7 @@
 set -e
 
+echo "entering frameworks/libs/modules-utils"
+
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
 mkdir -p out/soong/.minibootstrap && ln -sf $GITHUB_WORKSPACE/bpglob out/soong/.minibootstrap/bpglob
@@ -34,27 +36,27 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/tools/platform-compat/java/android/proce
 rsync -a -r $GITHUB_WORKSPACE/downloads/tools/platform-compat/java/android/compat/annotation/unsupportedappusage^android_common/ .
 
 echo "building modules-utils-build^android_common"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_18.ninja modules-utils-build,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_18.ninja modules-utils-build,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/libs/modules-utils/java/com/android/modules/utils/build/modules-utils-build^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_18/frameworks/libs/modules-utils/modules-utils-build^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/libs/modules-utils/java/com/android/modules/utils/build/modules-utils-build^android_common
 
 echo "building modules-utils-build^android_common_apex29"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_18.ninja modules-utils-build,android_common_apex29
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_18.ninja modules-utils-build,android_common_apex29
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/libs/modules-utils/java/com/android/modules/utils/build/modules-utils-build^android_common_apex29
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_18/frameworks/libs/modules-utils/modules-utils-build^android_common_apex29.output . $GITHUB_WORKSPACE/artifacts/frameworks/libs/modules-utils/java/com/android/modules/utils/build/modules-utils-build^android_common_apex29
 
 echo "building modules-utils-build^android_common_apex30"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_18.ninja modules-utils-build,android_common_apex30
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_18.ninja modules-utils-build,android_common_apex30
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/libs/modules-utils/java/com/android/modules/utils/build/modules-utils-build^android_common_apex30
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_18/frameworks/libs/modules-utils/modules-utils-build^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/frameworks/libs/modules-utils/java/com/android/modules/utils/build/modules-utils-build^android_common_apex30
 
 echo "building modules-utils-preconditions^android_common"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_18.ninja modules-utils-preconditions,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_18.ninja modules-utils-preconditions,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/libs/modules-utils/java/com/android/internal/util/modules-utils-preconditions^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_18/frameworks/libs/modules-utils/modules-utils-preconditions^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/libs/modules-utils/java/com/android/internal/util/modules-utils-preconditions^android_common
 
 echo "building modules-utils-preconditions^android_common_apex10000"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_18.ninja modules-utils-preconditions,android_common_apex10000
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_18.ninja modules-utils-preconditions,android_common_apex10000
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/libs/modules-utils/java/com/android/internal/util/modules-utils-preconditions^android_common_apex10000
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_18/frameworks/libs/modules-utils/modules-utils-preconditions^android_common_apex10000.output . $GITHUB_WORKSPACE/artifacts/frameworks/libs/modules-utils/java/com/android/internal/util/modules-utils-preconditions^android_common_apex10000
 

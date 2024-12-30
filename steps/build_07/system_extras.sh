@@ -1,5 +1,7 @@
 set -e
 
+echo "entering system/extras"
+
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
 mkdir -p out/soong/.minibootstrap && ln -sf $GITHUB_WORKSPACE/bpglob out/soong/.minibootstrap/bpglob
@@ -105,17 +107,17 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^android_x86
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^linux_glibc_x86_64_shared/ .
 
 echo "building iotop^android_x86_64"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja iotop,android_x86_64
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja iotop,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/extras/iotop/iotop^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/extras/iotop^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/extras/iotop/iotop^android_x86_64
 
 echo "building libsimpleperf_profcollect_bindgen^android_x86_64_rlib_dylib-std"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libsimpleperf_profcollect_bindgen,android_x86_64_rlib_dylib-std
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libsimpleperf_profcollect_bindgen,android_x86_64_rlib_dylib-std
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/extras/simpleperf/libsimpleperf_profcollect_bindgen^android_x86_64_rlib_dylib-std
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/extras/libsimpleperf_profcollect_bindgen^android_x86_64_rlib_dylib-std.output . $GITHUB_WORKSPACE/artifacts/system/extras/simpleperf/libsimpleperf_profcollect_bindgen^android_x86_64_rlib_dylib-std
 
 echo "building lpmake^linux_glibc_x86_64"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja lpmake,linux_glibc_x86_64
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja lpmake,linux_glibc_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/extras/partition_tools/lpmake^linux_glibc_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/extras/lpmake^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/extras/partition_tools/lpmake^linux_glibc_x86_64
 

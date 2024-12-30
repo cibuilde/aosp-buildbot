@@ -1,5 +1,7 @@
 set -e
 
+echo "entering system/media"
+
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
 mkdir -p out/soong/.minibootstrap && ln -sf $GITHUB_WORKSPACE/bpglob out/soong/.minibootstrap/bpglob
@@ -84,57 +86,57 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/system/media/audio_utils/libaudioutils_f
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/media/audio_utils/libaudioutils_fixedfft^android_x86_x86_64_static/ .
 
 echo "building libaudioroute^android_vendor.31_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libaudioroute,android_vendor.31_x86_64_shared
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libaudioroute,android_vendor.31_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/media/audio_route/libaudioroute^android_vendor.31_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/system/media/libaudioroute^android_vendor.31_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/media/audio_route/libaudioroute^android_vendor.31_x86_64_shared
 
 echo "building libaudioroute^android_vendor.31_x86_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libaudioroute,android_vendor.31_x86_x86_64_shared
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libaudioroute,android_vendor.31_x86_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/media/audio_route/libaudioroute^android_vendor.31_x86_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/system/media/libaudioroute^android_vendor.31_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/media/audio_route/libaudioroute^android_vendor.31_x86_x86_64_shared
 
 echo "building libaudiospdif^android_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libaudiospdif,android_x86_64_shared
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libaudiospdif,android_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/media/audio_utils/libaudiospdif^android_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/system/media/libaudiospdif^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/media/audio_utils/libaudiospdif^android_x86_64_shared
 
 echo "building libaudioutils^android_vendor.31_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libaudioutils,android_vendor.31_x86_64_shared
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libaudioutils,android_vendor.31_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/media/audio_utils/libaudioutils^android_vendor.31_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/system/media/libaudioutils^android_vendor.31_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/media/audio_utils/libaudioutils^android_vendor.31_x86_64_shared
 
 echo "building libaudioutils^android_vendor.31_x86_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libaudioutils,android_vendor.31_x86_x86_64_shared
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libaudioutils,android_vendor.31_x86_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/media/audio_utils/libaudioutils^android_vendor.31_x86_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/system/media/libaudioutils^android_vendor.31_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/media/audio_utils/libaudioutils^android_vendor.31_x86_x86_64_shared
 
 echo "building libaudioutils^android_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libaudioutils,android_x86_64_shared
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libaudioutils,android_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/media/audio_utils/libaudioutils^android_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/system/media/libaudioutils^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/media/audio_utils/libaudioutils^android_x86_64_shared
 
 echo "building libaudioutils^android_x86_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libaudioutils,android_x86_x86_64_shared
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libaudioutils,android_x86_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/media/audio_utils/libaudioutils^android_x86_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/system/media/libaudioutils^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/media/audio_utils/libaudioutils^android_x86_x86_64_shared
 
 echo "building libradio_metadata^android_vendor.31_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libradio_metadata,android_vendor.31_x86_64_shared
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libradio_metadata,android_vendor.31_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/media/radio/libradio_metadata^android_vendor.31_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/system/media/libradio_metadata^android_vendor.31_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/media/radio/libradio_metadata^android_vendor.31_x86_64_shared
 
 echo "building libradio_metadata^android_vendor.31_x86_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libradio_metadata,android_vendor.31_x86_x86_64_shared
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libradio_metadata,android_vendor.31_x86_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/media/radio/libradio_metadata^android_vendor.31_x86_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/system/media/libradio_metadata^android_vendor.31_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/media/radio/libradio_metadata^android_vendor.31_x86_x86_64_shared
 
 echo "building libradio_metadata^android_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libradio_metadata,android_x86_64_shared
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libradio_metadata,android_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/media/radio/libradio_metadata^android_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/system/media/libradio_metadata^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/media/radio/libradio_metadata^android_x86_64_shared
 
 echo "building libradio_metadata^android_x86_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libradio_metadata,android_x86_x86_64_shared
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libradio_metadata,android_x86_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/media/radio/libradio_metadata^android_x86_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/system/media/libradio_metadata^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/media/radio/libradio_metadata^android_x86_x86_64_shared
 

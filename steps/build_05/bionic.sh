@@ -1,5 +1,7 @@
 set -e
 
+echo "entering bionic"
+
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
 mkdir -p out/soong/.minibootstrap && ln -sf $GITHUB_WORKSPACE/bpglob out/soong/.minibootstrap/bpglob
@@ -148,102 +150,102 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^android_x86
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^android_x86_x86_64_static_apex10000/ .
 
 echo "building crtbegin_so^android_x86_64_sdk_21"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja crtbegin_so,android_x86_64_sdk_21
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja crtbegin_so,android_x86_64_sdk_21
 mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_so^android_x86_64_sdk_21
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/bionic/crtbegin_so^android_x86_64_sdk_21.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_so^android_x86_64_sdk_21
 
-echo "building crtbrand^android_x86_64_sdk_29"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja crtbrand,android_x86_64_sdk_29
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbrand^android_x86_64_sdk_29
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/bionic/crtbrand^android_x86_64_sdk_29.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbrand^android_x86_64_sdk_29
-
 echo "building crtbegin_so^android_x86_64_sdk_29"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja crtbegin_so,android_x86_64_sdk_29
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja crtbegin_so,android_x86_64_sdk_29
 mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_so^android_x86_64_sdk_29
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/bionic/crtbegin_so^android_x86_64_sdk_29.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_so^android_x86_64_sdk_29
 
-echo "building crtbrand^android_x86_64_sdk_29_apex30"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja crtbrand,android_x86_64_sdk_29_apex30
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbrand^android_x86_64_sdk_29_apex30
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/bionic/crtbrand^android_x86_64_sdk_29_apex30.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbrand^android_x86_64_sdk_29_apex30
-
 echo "building crtbegin_so^android_x86_64_sdk_29_apex30"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja crtbegin_so,android_x86_64_sdk_29_apex30
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja crtbegin_so,android_x86_64_sdk_29_apex30
 mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_so^android_x86_64_sdk_29_apex30
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/bionic/crtbegin_so^android_x86_64_sdk_29_apex30.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_so^android_x86_64_sdk_29_apex30
 
-echo "building crtbrand^android_x86_64_sdk_30_apex30"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja crtbrand,android_x86_64_sdk_30_apex30
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbrand^android_x86_64_sdk_30_apex30
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/bionic/crtbrand^android_x86_64_sdk_30_apex30.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbrand^android_x86_64_sdk_30_apex30
-
 echo "building crtbegin_so^android_x86_64_sdk_30_apex30"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja crtbegin_so,android_x86_64_sdk_30_apex30
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja crtbegin_so,android_x86_64_sdk_30_apex30
 mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_so^android_x86_64_sdk_30_apex30
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/bionic/crtbegin_so^android_x86_64_sdk_30_apex30.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_so^android_x86_64_sdk_30_apex30
 
 echo "building crtbrand^android_x86_64_sdk_21"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja crtbrand,android_x86_64_sdk_21
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja crtbrand,android_x86_64_sdk_21
 mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbrand^android_x86_64_sdk_21
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/bionic/crtbrand^android_x86_64_sdk_21.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbrand^android_x86_64_sdk_21
 
+echo "building crtbrand^android_x86_64_sdk_29"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja crtbrand,android_x86_64_sdk_29
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbrand^android_x86_64_sdk_29
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/bionic/crtbrand^android_x86_64_sdk_29.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbrand^android_x86_64_sdk_29
+
+echo "building crtbrand^android_x86_64_sdk_29_apex30"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja crtbrand,android_x86_64_sdk_29_apex30
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbrand^android_x86_64_sdk_29_apex30
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/bionic/crtbrand^android_x86_64_sdk_29_apex30.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbrand^android_x86_64_sdk_29_apex30
+
+echo "building crtbrand^android_x86_64_sdk_30_apex30"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja crtbrand,android_x86_64_sdk_30_apex30
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbrand^android_x86_64_sdk_30_apex30
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/bionic/crtbrand^android_x86_64_sdk_30_apex30.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbrand^android_x86_64_sdk_30_apex30
+
 echo "building crtend_so^android_x86_64_sdk_21"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja crtend_so,android_x86_64_sdk_21
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja crtend_so,android_x86_64_sdk_21
 mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/crtend_so^android_x86_64_sdk_21
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/bionic/crtend_so^android_x86_64_sdk_21.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/crtend_so^android_x86_64_sdk_21
 
 echo "building crtend_so^android_x86_64_sdk_29"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja crtend_so,android_x86_64_sdk_29
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja crtend_so,android_x86_64_sdk_29
 mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/crtend_so^android_x86_64_sdk_29
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/bionic/crtend_so^android_x86_64_sdk_29.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/crtend_so^android_x86_64_sdk_29
 
 echo "building crtend_so^android_x86_64_sdk_29_apex30"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja crtend_so,android_x86_64_sdk_29_apex30
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja crtend_so,android_x86_64_sdk_29_apex30
 mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/crtend_so^android_x86_64_sdk_29_apex30
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/bionic/crtend_so^android_x86_64_sdk_29_apex30.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/crtend_so^android_x86_64_sdk_29_apex30
 
 echo "building crtend_so^android_x86_64_sdk_30_apex30"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja crtend_so,android_x86_64_sdk_30_apex30
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja crtend_so,android_x86_64_sdk_30_apex30
 mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/crtend_so^android_x86_64_sdk_30_apex30
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/bionic/crtend_so^android_x86_64_sdk_30_apex30.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/crtend_so^android_x86_64_sdk_30_apex30
 
 echo "building libc_malloc_hooks^android_x86_64_shared_apex10000"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libc_malloc_hooks,android_x86_64_shared_apex10000
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libc_malloc_hooks,android_x86_64_shared_apex10000
 mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/malloc_hooks/libc_malloc_hooks^android_x86_64_shared_apex10000
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/bionic/libc_malloc_hooks^android_x86_64_shared_apex10000.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/malloc_hooks/libc_malloc_hooks^android_x86_64_shared_apex10000
 
 echo "building libc_malloc_hooks^android_x86_x86_64_shared_apex10000"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libc_malloc_hooks,android_x86_x86_64_shared_apex10000
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libc_malloc_hooks,android_x86_x86_64_shared_apex10000
 mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/malloc_hooks/libc_malloc_hooks^android_x86_x86_64_shared_apex10000
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/bionic/libc_malloc_hooks^android_x86_x86_64_shared_apex10000.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/malloc_hooks/libc_malloc_hooks^android_x86_x86_64_shared_apex10000
 
 echo "building linker^android_recovery_x86_64"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja linker,android_recovery_x86_64
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja linker,android_recovery_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/linker/linker^android_recovery_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/bionic/linker^android_recovery_x86_64.output . $GITHUB_WORKSPACE/artifacts/bionic/linker/linker^android_recovery_x86_64
 
 echo "building linker^android_vendor_ramdisk_x86_64"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja linker,android_vendor_ramdisk_x86_64
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja linker,android_vendor_ramdisk_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/linker/linker^android_vendor_ramdisk_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/bionic/linker^android_vendor_ramdisk_x86_64.output . $GITHUB_WORKSPACE/artifacts/bionic/linker/linker^android_vendor_ramdisk_x86_64
 
 echo "building linker^android_x86_64"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja linker,android_x86_64
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja linker,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/linker/linker^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/bionic/linker^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/bionic/linker/linker^android_x86_64
 
 echo "building linker^android_x86_64_apex10000"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja linker,android_x86_64_apex10000
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja linker,android_x86_64_apex10000
 mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/linker/linker^android_x86_64_apex10000
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/bionic/linker^android_x86_64_apex10000.output . $GITHUB_WORKSPACE/artifacts/bionic/linker/linker^android_x86_64_apex10000
 
 echo "building linker^android_x86_x86_64"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja linker,android_x86_x86_64
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja linker,android_x86_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/linker/linker^android_x86_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/bionic/linker^android_x86_x86_64.output . $GITHUB_WORKSPACE/artifacts/bionic/linker/linker^android_x86_x86_64
 
 echo "building linker^android_x86_x86_64_apex10000"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja linker,android_x86_x86_64_apex10000
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja linker,android_x86_x86_64_apex10000
 mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/linker/linker^android_x86_x86_64_apex10000
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/bionic/linker^android_x86_x86_64_apex10000.output . $GITHUB_WORKSPACE/artifacts/bionic/linker/linker^android_x86_x86_64_apex10000
 

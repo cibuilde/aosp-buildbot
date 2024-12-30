@@ -1,5 +1,7 @@
 set -e
 
+echo "entering external/webrtc"
+
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
 mkdir -p out/soong/.minibootstrap && ln -sf $GITHUB_WORKSPACE/bpglob out/soong/.minibootstrap/bpglob
@@ -10,6 +12,7 @@ ln -sf $GITHUB_WORKSPACE/ninja .
 mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86 prebuilts/clang/host/linux-x86
 
 clone_depth_platform external/webrtc
+clone_project platform/prebuilts/build-tools prebuilts/build-tools android12-gsi "/linux-x86/bin" "/linux-x86/lib64" "/path" "/common"
 
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/pffft/libpffft^android_vendor.31_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/pffft/libpffft^android_vendor.31_x86_x86_64_static/ .
@@ -155,12 +158,12 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/external/webrtc/webrtc_vad__vad^android_
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/webrtc/webrtc_vad__vad^android_vendor.31_x86_x86_64_static/ .
 
 echo "building webrtc_audio_processing^android_vendor.31_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja webrtc_audio_processing,android_vendor.31_x86_64_static
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja webrtc_audio_processing,android_vendor.31_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/webrtc/webrtc_audio_processing^android_vendor.31_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/external/webrtc/webrtc_audio_processing^android_vendor.31_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/webrtc/webrtc_audio_processing^android_vendor.31_x86_64_static
 
 echo "building webrtc_audio_processing^android_vendor.31_x86_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja webrtc_audio_processing,android_vendor.31_x86_x86_64_static
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja webrtc_audio_processing,android_vendor.31_x86_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/webrtc/webrtc_audio_processing^android_vendor.31_x86_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/external/webrtc/webrtc_audio_processing^android_vendor.31_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/webrtc/webrtc_audio_processing^android_vendor.31_x86_x86_64_static
 
@@ -175,6 +178,10 @@ du -ah -d1 external_webrtc*.tar.zst | sort -h
 if [ ! -f "$GITHUB_WORKSPACE/cache/external_webrtc.tar.zst" ]; then
   echo "Compressing external/webrtc -> external_webrtc.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/external_webrtc.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/webrtc/ .
+fi
+if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_build-tools.tar.zst" ]; then
+  echo "Compressing prebuilts/build-tools -> prebuilts_build-tools.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/prebuilts_build-tools.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/prebuilts/build-tools/ .
 fi
 
 rm -rf aosp

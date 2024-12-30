@@ -1,5 +1,7 @@
 set -e
 
+echo "entering packages/modules/common"
+
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
 mkdir -p out/soong/.minibootstrap && ln -sf $GITHUB_WORKSPACE/bpglob out/soong/.minibootstrap/bpglob
@@ -19,6 +21,7 @@ clone_depth_platform hardware/libhardware
 clone_depth_platform hardware/libhardware_legacy
 clone_depth_platform hardware/ril
 clone_depth_platform packages/modules/common
+clone_project platform/prebuilts/build-tools prebuilts/build-tools android12-gsi "/linux-x86/bin" "/linux-x86/lib64" "/path" "/common"
 clone_depth_platform prebuilts/gcc/linux-x86/x86/x86_64-linux-android-4.9
 clone_depth_platform system/core
 clone_depth_platform system/logging
@@ -29,22 +32,22 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/zip/cmd/soong_zip^linux_glib
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/protobuf/aprotoc^linux_glibc_x86_64/ .
 
 echo "building classpaths_proto_python^linux_glibc_x86_64_PY3"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja classpaths_proto_python,linux_glibc_x86_64_PY3
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja classpaths_proto_python,linux_glibc_x86_64_PY3
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/common/proto/classpaths_proto_python^linux_glibc_x86_64_PY3
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/packages/modules/common/classpaths_proto_python^linux_glibc_x86_64_PY3.output . $GITHUB_WORKSPACE/artifacts/packages/modules/common/proto/classpaths_proto_python^linux_glibc_x86_64_PY3
 
 echo "building libclasspaths_proto^android_x86_64_static_apex30"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libclasspaths_proto,android_x86_64_static_apex30
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libclasspaths_proto,android_x86_64_static_apex30
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/common/proto/libclasspaths_proto^android_x86_64_static_apex30
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/packages/modules/common/libclasspaths_proto^android_x86_64_static_apex30.output . $GITHUB_WORKSPACE/artifacts/packages/modules/common/proto/libclasspaths_proto^android_x86_64_static_apex30
 
 echo "building libsdk_proto^android_x86_64_static_apex30"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libsdk_proto,android_x86_64_static_apex30
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libsdk_proto,android_x86_64_static_apex30
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/common/proto/libsdk_proto^android_x86_64_static_apex30
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/packages/modules/common/libsdk_proto^android_x86_64_static_apex30.output . $GITHUB_WORKSPACE/artifacts/packages/modules/common/proto/libsdk_proto^android_x86_64_static_apex30
 
 echo "building sdk_proto_python^linux_glibc_x86_64_PY3"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja sdk_proto_python,linux_glibc_x86_64_PY3
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja sdk_proto_python,linux_glibc_x86_64_PY3
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/common/proto/sdk_proto_python^linux_glibc_x86_64_PY3
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/packages/modules/common/sdk_proto_python^linux_glibc_x86_64_PY3.output . $GITHUB_WORKSPACE/artifacts/packages/modules/common/proto/sdk_proto_python^linux_glibc_x86_64_PY3
 
@@ -95,6 +98,10 @@ fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/packages_modules_common.tar.zst" ]; then
   echo "Compressing packages/modules/common -> packages_modules_common.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/packages_modules_common.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/packages/modules/common/ .
+fi
+if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_build-tools.tar.zst" ]; then
+  echo "Compressing prebuilts/build-tools -> prebuilts_build-tools.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/prebuilts_build-tools.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/prebuilts/build-tools/ .
 fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_gcc_linux-x86_x86_x86_64-linux-android-4.9.tar.zst" ]; then
   echo "Compressing prebuilts/gcc/linux-x86/x86/x86_64-linux-android-4.9 -> prebuilts_gcc_linux-x86_x86_x86_64-linux-android-4.9.tar.zst"

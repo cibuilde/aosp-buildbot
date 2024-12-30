@@ -1,5 +1,7 @@
 set -e
 
+echo "entering packages/modules/NetworkStack"
+
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
 mkdir -p out/soong/.minibootstrap && ln -sf $GITHUB_WORKSPACE/bpglob out/soong/.minibootstrap/bpglob
@@ -35,22 +37,22 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/sdk/current/androidx/androidx.
 rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/sdk/sdk_public_30_system_modules^android_common/ .
 
 echo "building networkstack-client^android_common_apex30"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_24.ninja networkstack-client,android_common_apex30
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_24.ninja networkstack-client,android_common_apex30
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/NetworkStack/common/networkstackclient/networkstack-client^android_common_apex30
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_24/packages/modules/NetworkStack/networkstack-client^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/packages/modules/NetworkStack/common/networkstackclient/networkstack-client^android_common_apex30
 
 echo "building NetworkStackShimsCommon^android_common_apex30"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_24.ninja NetworkStackShimsCommon,android_common_apex30
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_24.ninja NetworkStackShimsCommon,android_common_apex30
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/NetworkStack/NetworkStackShimsCommon^android_common_apex30
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_24/packages/modules/NetworkStack/NetworkStackShimsCommon^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/packages/modules/NetworkStack/NetworkStackShimsCommon^android_common_apex30
 
 echo "building NetworkStackApi29Shims^android_common_apex30"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_24.ninja NetworkStackApi29Shims,android_common_apex30
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_24.ninja NetworkStackApi29Shims,android_common_apex30
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/NetworkStack/NetworkStackApi29Shims^android_common_apex30
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_24/packages/modules/NetworkStack/NetworkStackApi29Shims^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/packages/modules/NetworkStack/NetworkStackApi29Shims^android_common_apex30
 
 echo "building NetworkStackApi30Shims^android_common_apex30"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_24.ninja NetworkStackApi30Shims,android_common_apex30
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_24.ninja NetworkStackApi30Shims,android_common_apex30
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/NetworkStack/NetworkStackApi30Shims^android_common_apex30
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_24/packages/modules/NetworkStack/NetworkStackApi30Shims^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/packages/modules/NetworkStack/NetworkStackApi30Shims^android_common_apex30
 

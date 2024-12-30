@@ -1,5 +1,7 @@
 set -e
 
+echo "entering packages/modules/Virtualization"
+
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
 mkdir -p out/soong/.minibootstrap && ln -sf $GITHUB_WORKSPACE/bpglob out/soong/.minibootstrap/bpglob
@@ -352,12 +354,12 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/system/core/libutils/libutils^android_x8
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^android_x86_64_shared/ .
 
 echo "building authfs^android_x86_64_apex10000"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_13.ninja authfs,android_x86_64_apex10000
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_13.ninja authfs,android_x86_64_apex10000
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/Virtualization/authfs/authfs^android_x86_64_apex10000
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_13/packages/modules/Virtualization/authfs^android_x86_64_apex10000.output . $GITHUB_WORKSPACE/artifacts/packages/modules/Virtualization/authfs/authfs^android_x86_64_apex10000
 
 echo "building com.android.virt^android_common_com.android.virt_image"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_13.ninja com.android.virt,android_common_com.android.virt_image
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_13.ninja com.android.virt,android_common_com.android.virt_image
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/Virtualization/apex/com.android.virt^android_common_com.android.virt_image
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_13/packages/modules/Virtualization/com.android.virt^android_common_com.android.virt_image.output . $GITHUB_WORKSPACE/artifacts/packages/modules/Virtualization/apex/com.android.virt^android_common_com.android.virt_image
 

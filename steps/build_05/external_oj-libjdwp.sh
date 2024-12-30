@@ -1,5 +1,7 @@
 set -e
 
+echo "entering external/oj-libjdwp"
+
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
 mkdir -p out/soong/.minibootstrap && ln -sf $GITHUB_WORKSPACE/bpglob out/soong/.minibootstrap/bpglob
@@ -39,32 +41,32 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/external/oj-libjdwp/libnpt^android_x86_6
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/oj-libjdwp/libnpt^android_x86_x86_64_static_apex31/ .
 
 echo "building libdt_socket^android_x86_64_shared_apex31"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libdt_socket,android_x86_64_shared_apex31
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libdt_socket,android_x86_64_shared_apex31
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/oj-libjdwp/libdt_socket^android_x86_64_shared_apex31
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/external/oj-libjdwp/libdt_socket^android_x86_64_shared_apex31.output . $GITHUB_WORKSPACE/artifacts/external/oj-libjdwp/libdt_socket^android_x86_64_shared_apex31
 
 echo "building libdt_socket^android_x86_x86_64_shared_apex31"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libdt_socket,android_x86_x86_64_shared_apex31
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libdt_socket,android_x86_x86_64_shared_apex31
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/oj-libjdwp/libdt_socket^android_x86_x86_64_shared_apex31
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/external/oj-libjdwp/libdt_socket^android_x86_x86_64_shared_apex31.output . $GITHUB_WORKSPACE/artifacts/external/oj-libjdwp/libdt_socket^android_x86_x86_64_shared_apex31
 
 echo "building libjdwp^android_x86_64_shared_apex31"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libjdwp,android_x86_64_shared_apex31
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libjdwp,android_x86_64_shared_apex31
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/oj-libjdwp/libjdwp^android_x86_64_shared_apex31
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/external/oj-libjdwp/libjdwp^android_x86_64_shared_apex31.output . $GITHUB_WORKSPACE/artifacts/external/oj-libjdwp/libjdwp^android_x86_64_shared_apex31
 
 echo "building libjdwp^android_x86_x86_64_shared_apex31"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libjdwp,android_x86_x86_64_shared_apex31
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libjdwp,android_x86_x86_64_shared_apex31
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/oj-libjdwp/libjdwp^android_x86_x86_64_shared_apex31
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/external/oj-libjdwp/libjdwp^android_x86_x86_64_shared_apex31.output . $GITHUB_WORKSPACE/artifacts/external/oj-libjdwp/libjdwp^android_x86_x86_64_shared_apex31
 
 echo "building libnpt^android_x86_64_shared_apex31"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libnpt,android_x86_64_shared_apex31
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libnpt,android_x86_64_shared_apex31
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/oj-libjdwp/libnpt^android_x86_64_shared_apex31
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/external/oj-libjdwp/libnpt^android_x86_64_shared_apex31.output . $GITHUB_WORKSPACE/artifacts/external/oj-libjdwp/libnpt^android_x86_64_shared_apex31
 
 echo "building libnpt^android_x86_x86_64_shared_apex31"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libnpt,android_x86_x86_64_shared_apex31
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libnpt,android_x86_x86_64_shared_apex31
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/oj-libjdwp/libnpt^android_x86_x86_64_shared_apex31
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/external/oj-libjdwp/libnpt^android_x86_x86_64_shared_apex31.output . $GITHUB_WORKSPACE/artifacts/external/oj-libjdwp/libnpt^android_x86_x86_64_shared_apex31
 

@@ -1,5 +1,7 @@
 set -e
 
+echo "entering libnativehelper"
+
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
 mkdir -p out/soong/.minibootstrap && ln -sf $GITHUB_WORKSPACE/bpglob out/soong/.minibootstrap/bpglob
@@ -37,12 +39,12 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^android_x86
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^android_x86_x86_64_shared_current/ .
 
 echo "building libnativehelper^android_x86_64_shared_apex31"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libnativehelper,android_x86_64_shared_apex31
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libnativehelper,android_x86_64_shared_apex31
 mkdir -p $GITHUB_WORKSPACE/artifacts/libnativehelper/libnativehelper^android_x86_64_shared_apex31
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/libnativehelper/libnativehelper^android_x86_64_shared_apex31.output . $GITHUB_WORKSPACE/artifacts/libnativehelper/libnativehelper^android_x86_64_shared_apex31
 
 echo "building libnativehelper^android_x86_x86_64_shared_apex31"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libnativehelper,android_x86_x86_64_shared_apex31
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libnativehelper,android_x86_x86_64_shared_apex31
 mkdir -p $GITHUB_WORKSPACE/artifacts/libnativehelper/libnativehelper^android_x86_x86_64_shared_apex31
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/libnativehelper/libnativehelper^android_x86_x86_64_shared_apex31.output . $GITHUB_WORKSPACE/artifacts/libnativehelper/libnativehelper^android_x86_x86_64_shared_apex31
 

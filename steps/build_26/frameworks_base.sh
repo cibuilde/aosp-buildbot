@@ -1,5 +1,7 @@
 set -e
 
+echo "entering frameworks/base"
+
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
 mkdir -p out/soong/.minibootstrap && ln -sf $GITHUB_WORKSPACE/bpglob out/soong/.minibootstrap/bpglob
@@ -212,17 +214,17 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/system/tools/aidl/aidl^linux_glibc_x86_6
 rsync -a -r $GITHUB_WORKSPACE/downloads/tools/metalava/metalava^linux_glibc_common/ .
 
 echo "building SettingsLib^android_common"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_26.ninja SettingsLib,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_26.ninja SettingsLib,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/SettingsLib^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_26/frameworks/base/SettingsLib^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/SettingsLib^android_common
 
 echo "building SystemUI-core^android_common"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_26.ninja SystemUI-core,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_26.ninja SystemUI-core,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SystemUI/SystemUI-core^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_26/frameworks/base/SystemUI-core^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SystemUI/SystemUI-core^android_common
 
 echo "building combined-removed-dex^"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_26.ninja combined-removed-dex,
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_26.ninja combined-removed-dex,
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/api/combined-removed-dex^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_26/frameworks/base/combined-removed-dex^.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/api/combined-removed-dex^
 

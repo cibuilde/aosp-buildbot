@@ -1,5 +1,7 @@
 set -e
 
+echo "entering system/netd"
+
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
 mkdir -p out/soong/.minibootstrap && ln -sf $GITHUB_WORKSPACE/bpglob out/soong/.minibootstrap/bpglob
@@ -84,7 +86,7 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/system/netd/server/oemnetd_aidl_interfac
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/netd/server/oemnetd_aidl_interface-cpp^android_x86_64_shared/ .
 
 echo "building netd^android_x86_64_cfi"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja netd,android_x86_64_cfi
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja netd,android_x86_64_cfi
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/netd/server/netd^android_x86_64_cfi
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/system/netd/netd^android_x86_64_cfi.output . $GITHUB_WORKSPACE/artifacts/system/netd/server/netd^android_x86_64_cfi
 

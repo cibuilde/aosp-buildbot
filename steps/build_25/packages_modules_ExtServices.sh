@@ -1,5 +1,7 @@
 set -e
 
+echo "entering packages/modules/ExtServices"
+
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
 mkdir -p out/soong/.minibootstrap && ln -sf $GITHUB_WORKSPACE/bpglob out/soong/.minibootstrap/bpglob
@@ -87,12 +89,12 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/system/apex/apexer/apexer^linux_glibc_x8
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/apex/apexer/conv_apex_manifest^linux_glibc_x86_64_PY2/ .
 
 echo "building ExtServices^android_common_apex30"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_25.ninja ExtServices,android_common_apex30
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_25.ninja ExtServices,android_common_apex30
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/ExtServices/ExtServices^android_common_apex30
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_25/packages/modules/ExtServices/ExtServices^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/packages/modules/ExtServices/ExtServices^android_common_apex30
 
 echo "building com.android.extservices^android_common_com.android.extservices_image"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_25.ninja com.android.extservices,android_common_com.android.extservices_image
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_25.ninja com.android.extservices,android_common_com.android.extservices_image
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/ExtServices/apex/com.android.extservices^android_common_com.android.extservices_image
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_25/packages/modules/ExtServices/com.android.extservices^android_common_com.android.extservices_image.output . $GITHUB_WORKSPACE/artifacts/packages/modules/ExtServices/apex/com.android.extservices^android_common_com.android.extservices_image
 

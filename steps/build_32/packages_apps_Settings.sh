@@ -1,5 +1,7 @@
 set -e
 
+echo "entering packages/apps/Settings"
+
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
 mkdir -p out/soong/.minibootstrap && ln -sf $GITHUB_WORKSPACE/bpglob out/soong/.minibootstrap/bpglob
@@ -233,17 +235,17 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/tools/platform-compat/java/android/proce
 rsync -a -r $GITHUB_WORKSPACE/downloads/tools/platform-compat/build/process-compat-config^linux_glibc_x86_64_PY2/ .
 
 echo "building Settings-core^android_common"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_32.ninja Settings-core,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_32.ninja Settings-core,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/apps/Settings/Settings-core^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_32/packages/apps/Settings/Settings-core^android_common.output . $GITHUB_WORKSPACE/artifacts/packages/apps/Settings/Settings-core^android_common
 
 echo "building Settings^android_common"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_32.ninja Settings,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_32.ninja Settings,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/apps/Settings/Settings^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_32/packages/apps/Settings/Settings^android_common.output . $GITHUB_WORKSPACE/artifacts/packages/apps/Settings/Settings^android_common
 
 echo "building settings-platform-compat-config^android_common"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_32.ninja settings-platform-compat-config,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_32.ninja settings-platform-compat-config,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/apps/Settings/settings-platform-compat-config^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_32/packages/apps/Settings/settings-platform-compat-config^android_common.output . $GITHUB_WORKSPACE/artifacts/packages/apps/Settings/settings-platform-compat-config^android_common
 

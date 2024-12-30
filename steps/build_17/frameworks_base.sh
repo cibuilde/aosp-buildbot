@@ -1,5 +1,7 @@
 set -e
 
+echo "entering frameworks/base"
+
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
 mkdir -p out/soong/.minibootstrap && ln -sf $GITHUB_WORKSPACE/bpglob out/soong/.minibootstrap/bpglob
@@ -210,82 +212,82 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/tools/metalava/metalava^linux_glibc_x86_
 rsync -a -r $GITHUB_WORKSPACE/downloads/tools/metalava/stub-annotations^android_common/ .
 
 echo "building android-non-updatable.stubs.module_lib^android_common"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_17.ninja android-non-updatable.stubs.module_lib,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_17.ninja android-non-updatable.stubs.module_lib,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/android-non-updatable.stubs.module_lib^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_17/frameworks/base/android-non-updatable.stubs.module_lib^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/android-non-updatable.stubs.module_lib^android_common
 
 echo "building android_module_lib_stubs_current^android_common"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_17.ninja android_module_lib_stubs_current,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_17.ninja android_module_lib_stubs_current,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/android_module_lib_stubs_current^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_17/frameworks/base/android_module_lib_stubs_current^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/android_module_lib_stubs_current^android_common
 
 echo "building api-stubs-docs-non-updatable^android_common"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_17.ninja api-stubs-docs-non-updatable,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_17.ninja api-stubs-docs-non-updatable,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/api-stubs-docs-non-updatable^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_17/frameworks/base/api-stubs-docs-non-updatable^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/api-stubs-docs-non-updatable^android_common
 
 echo "building app_process^android_x86_64"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_17.ninja app_process,android_x86_64
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_17.ninja app_process,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/cmds/app_process/app_process^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_17/frameworks/base/app_process^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/cmds/app_process/app_process^android_x86_64
 
 echo "building app_process^android_x86_x86_64"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_17.ninja app_process,android_x86_x86_64
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_17.ninja app_process,android_x86_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/cmds/app_process/app_process^android_x86_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_17/frameworks/base/app_process^android_x86_x86_64.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/cmds/app_process/app_process^android_x86_x86_64
 
 echo "building bootanimation^android_x86_64"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_17.ninja bootanimation,android_x86_64
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_17.ninja bootanimation,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/cmds/bootanimation/bootanimation^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_17/frameworks/base/bootanimation^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/cmds/bootanimation/bootanimation^android_x86_64
 
 echo "building framework-graphics.stubs.source.module_lib^android_common"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_17.ninja framework-graphics.stubs.source.module_lib,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_17.ninja framework-graphics.stubs.source.module_lib,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/libs/hwui/framework-graphics.stubs.source.module_lib^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_17/frameworks/base/framework-graphics.stubs.source.module_lib^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/libs/hwui/framework-graphics.stubs.source.module_lib^android_common
 
 echo "building framework-graphics.stubs.module_lib^android_common"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_17.ninja framework-graphics.stubs.module_lib,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_17.ninja framework-graphics.stubs.module_lib,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/libs/hwui/framework-graphics.stubs.module_lib^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_17/frameworks/base/framework-graphics.stubs.module_lib^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/libs/hwui/framework-graphics.stubs.module_lib^android_common
 
 echo "building framework-graphics.stubs.source.system^android_common"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_17.ninja framework-graphics.stubs.source.system,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_17.ninja framework-graphics.stubs.source.system,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/libs/hwui/framework-graphics.stubs.source.system^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_17/frameworks/base/framework-graphics.stubs.source.system^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/libs/hwui/framework-graphics.stubs.source.system^android_common
 
 echo "building framework-graphics.stubs.source^android_common"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_17.ninja framework-graphics.stubs.source,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_17.ninja framework-graphics.stubs.source,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/libs/hwui/framework-graphics.stubs.source^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_17/frameworks/base/framework-graphics.stubs.source^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/libs/hwui/framework-graphics.stubs.source^android_common
 
 echo "building framework-graphics.stubs.system^android_common"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_17.ninja framework-graphics.stubs.system,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_17.ninja framework-graphics.stubs.system,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/libs/hwui/framework-graphics.stubs.system^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_17/frameworks/base/framework-graphics.stubs.system^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/libs/hwui/framework-graphics.stubs.system^android_common
 
 echo "building framework-graphics.stubs^android_common"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_17.ninja framework-graphics.stubs,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_17.ninja framework-graphics.stubs,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/libs/hwui/framework-graphics.stubs^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_17/frameworks/base/framework-graphics.stubs^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/libs/hwui/framework-graphics.stubs^android_common
 
 echo "building framework-graphics^android_common"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_17.ninja framework-graphics,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_17.ninja framework-graphics,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/libs/hwui/framework-graphics^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_17/frameworks/base/framework-graphics^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/libs/hwui/framework-graphics^android_common
 
 echo "building module-lib-api-stubs-docs-non-updatable^android_common"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_17.ninja module-lib-api-stubs-docs-non-updatable,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_17.ninja module-lib-api-stubs-docs-non-updatable,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/module-lib-api-stubs-docs-non-updatable^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_17/frameworks/base/module-lib-api-stubs-docs-non-updatable^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/module-lib-api-stubs-docs-non-updatable^android_common
 
 echo "building system-api-stubs-docs-non-updatable^android_common"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_17.ninja system-api-stubs-docs-non-updatable,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_17.ninja system-api-stubs-docs-non-updatable,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/system-api-stubs-docs-non-updatable^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_17/frameworks/base/system-api-stubs-docs-non-updatable^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/system-api-stubs-docs-non-updatable^android_common
 
 echo "building test-api-stubs-docs-non-updatable^android_common"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_17.ninja test-api-stubs-docs-non-updatable,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_17.ninja test-api-stubs-docs-non-updatable,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/test-api-stubs-docs-non-updatable^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_17/frameworks/base/test-api-stubs-docs-non-updatable^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/test-api-stubs-docs-non-updatable^android_common
 

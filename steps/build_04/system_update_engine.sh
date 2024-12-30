@@ -1,5 +1,7 @@
 set -e
 
+echo "entering system/update_engine"
+
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
 mkdir -p out/soong/.minibootstrap && ln -sf $GITHUB_WORKSPACE/bpglob out/soong/.minibootstrap/bpglob
@@ -25,6 +27,7 @@ clone_depth_platform hardware/libhardware
 clone_depth_platform hardware/libhardware_legacy
 clone_depth_platform hardware/ril
 clone_depth_platform libnativehelper
+clone_project platform/prebuilts/build-tools prebuilts/build-tools android12-gsi "/linux-x86/bin" "/linux-x86/lib64" "/path" "/common"
 clone_depth_platform prebuilts/gcc/linux-x86/x86/x86_64-linux-android-4.9
 clone_depth_platform system/core
 clone_depth_platform system/libbase
@@ -41,53 +44,53 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcxx/libc++^linux_glibc_x86_6
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/protobuf/aprotoc^linux_glibc_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/tools/aidl/aidl^linux_glibc_x86_64/ .
 
+echo "building libcow_operation_convert^android_recovery_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libcow_operation_convert,android_recovery_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/update_engine/libcow_operation_convert^android_recovery_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/update_engine/libcow_operation_convert^android_recovery_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/update_engine/libcow_operation_convert^android_recovery_x86_64_static
+
 echo "building libcow_operation_convert^android_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libcow_operation_convert,android_x86_64_static
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libcow_operation_convert,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/update_engine/libcow_operation_convert^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/update_engine/libcow_operation_convert^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/update_engine/libcow_operation_convert^android_x86_64_static
 
 echo "building libpayload_extent_ranges^android_recovery_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libpayload_extent_ranges,android_recovery_x86_64_static
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libpayload_extent_ranges,android_recovery_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/update_engine/libpayload_extent_ranges^android_recovery_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/update_engine/libpayload_extent_ranges^android_recovery_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/update_engine/libpayload_extent_ranges^android_recovery_x86_64_static
 
 echo "building libpayload_extent_ranges^android_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libpayload_extent_ranges,android_x86_64_static
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libpayload_extent_ranges,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/update_engine/libpayload_extent_ranges^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/update_engine/libpayload_extent_ranges^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/update_engine/libpayload_extent_ranges^android_x86_64_static
 
 echo "building libpayload_extent_utils^android_recovery_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libpayload_extent_utils,android_recovery_x86_64_static
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libpayload_extent_utils,android_recovery_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/update_engine/libpayload_extent_utils^android_recovery_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/update_engine/libpayload_extent_utils^android_recovery_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/update_engine/libpayload_extent_utils^android_recovery_x86_64_static
 
 echo "building libpayload_extent_utils^android_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libpayload_extent_utils,android_x86_64_static
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libpayload_extent_utils,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/update_engine/libpayload_extent_utils^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/update_engine/libpayload_extent_utils^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/update_engine/libpayload_extent_utils^android_x86_64_static
 
 echo "building libupdate_engine_stable-api^"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libupdate_engine_stable-api,
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libupdate_engine_stable-api,
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/update_engine/stable/libupdate_engine_stable-api^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/update_engine/libupdate_engine_stable-api^.output . $GITHUB_WORKSPACE/artifacts/system/update_engine/stable/libupdate_engine_stable-api^
 
-echo "building update_metadata-protos^android_recovery_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja update_metadata-protos,android_recovery_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/update_engine/update_metadata-protos^android_recovery_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/update_engine/update_metadata-protos^android_recovery_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/update_engine/update_metadata-protos^android_recovery_x86_64_static
-
-echo "building libcow_operation_convert^android_recovery_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libcow_operation_convert,android_recovery_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/update_engine/libcow_operation_convert^android_recovery_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/update_engine/libcow_operation_convert^android_recovery_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/update_engine/libcow_operation_convert^android_recovery_x86_64_static
-
 echo "building libupdate_engine_stable-V1-cpp-source^"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libupdate_engine_stable-V1-cpp-source,
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libupdate_engine_stable-V1-cpp-source,
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/update_engine/stable/libupdate_engine_stable-V1-cpp-source^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/update_engine/libupdate_engine_stable-V1-cpp-source^.output . $GITHUB_WORKSPACE/artifacts/system/update_engine/stable/libupdate_engine_stable-V1-cpp-source^
 
+echo "building update_metadata-protos^android_recovery_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja update_metadata-protos,android_recovery_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/update_engine/update_metadata-protos^android_recovery_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/update_engine/update_metadata-protos^android_recovery_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/update_engine/update_metadata-protos^android_recovery_x86_64_static
+
 echo "building update_metadata-protos^android_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja update_metadata-protos,android_x86_64_static
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja update_metadata-protos,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/update_engine/update_metadata-protos^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/update_engine/update_metadata-protos^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/update_engine/update_metadata-protos^android_x86_64_static
 
@@ -162,6 +165,10 @@ fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/libnativehelper.tar.zst" ]; then
   echo "Compressing libnativehelper -> libnativehelper.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/libnativehelper.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/libnativehelper/ .
+fi
+if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_build-tools.tar.zst" ]; then
+  echo "Compressing prebuilts/build-tools -> prebuilts_build-tools.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/prebuilts_build-tools.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/prebuilts/build-tools/ .
 fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_gcc_linux-x86_x86_x86_64-linux-android-4.9.tar.zst" ]; then
   echo "Compressing prebuilts/gcc/linux-x86/x86/x86_64-linux-android-4.9 -> prebuilts_gcc_linux-x86_x86_x86_64-linux-android-4.9.tar.zst"

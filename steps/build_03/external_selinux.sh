@@ -1,5 +1,7 @@
 set -e
 
+echo "entering external/selinux"
+
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
 mkdir -p out/soong/.minibootstrap && ln -sf $GITHUB_WORKSPACE/bpglob out/soong/.minibootstrap/bpglob
@@ -36,17 +38,17 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/external/selinux/libsepol/libsepol^linux
 rsync -a -r $GITHUB_WORKSPACE/downloads/singletons/api_levels^/ .
 
 echo "building checkpolicy^linux_glibc_x86_64"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja checkpolicy,linux_glibc_x86_64
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja checkpolicy,linux_glibc_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/selinux/checkpolicy/checkpolicy^linux_glibc_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/external/selinux/checkpolicy^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/selinux/checkpolicy/checkpolicy^linux_glibc_x86_64
 
 echo "building libselinux^android_vendor.31_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libselinux,android_vendor.31_x86_64_shared
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libselinux,android_vendor.31_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/selinux/libselinux/libselinux^android_vendor.31_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/external/selinux/libselinux^android_vendor.31_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/external/selinux/libselinux/libselinux^android_vendor.31_x86_64_shared
 
 echo "building libselinux^android_x86_64_shared_current"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libselinux,android_x86_64_shared_current
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libselinux,android_x86_64_shared_current
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/selinux/libselinux/libselinux^android_x86_64_shared_current
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/external/selinux/libselinux^android_x86_64_shared_current.output . $GITHUB_WORKSPACE/artifacts/external/selinux/libselinux/libselinux^android_x86_64_shared_current
 

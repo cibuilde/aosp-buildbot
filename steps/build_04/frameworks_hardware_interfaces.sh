@@ -1,5 +1,7 @@
 set -e
 
+echo "entering frameworks/hardware/interfaces"
+
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
 mkdir -p out/soong/.minibootstrap && ln -sf $GITHUB_WORKSPACE/bpglob out/soong/.minibootstrap/bpglob
@@ -20,6 +22,7 @@ clone_depth_platform hardware/libhardware
 clone_depth_platform hardware/libhardware_legacy
 clone_depth_platform hardware/ril
 clone_depth_platform libnativehelper
+clone_project platform/prebuilts/build-tools prebuilts/build-tools android12-gsi "/linux-x86/bin" "/linux-x86/lib64" "/path" "/common"
 clone_depth_platform prebuilts/gcc/linux-x86/x86/x86_64-linux-android-4.9
 clone_depth_platform system/core
 clone_depth_platform system/libhidl
@@ -33,197 +36,197 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/system/tools/aidl/aidl^linux_glibc_x86_6
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/tools/hidl/hidl-gen^linux_glibc_x86_64/ .
 
 echo "building android.frameworks.automotive.display@1.0-inheritance-hierarchy^"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.frameworks.automotive.display@1.0-inheritance-hierarchy,
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.frameworks.automotive.display@1.0-inheritance-hierarchy,
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/automotive/display/1.0/android.frameworks.automotive.display@1.0-inheritance-hierarchy^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/hardware/interfaces/android.frameworks.automotive.display@1.0-inheritance-hierarchy^.output . $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/automotive/display/1.0/android.frameworks.automotive.display@1.0-inheritance-hierarchy^
 
 echo "building android.frameworks.bufferhub@1.0-inheritance-hierarchy^"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.frameworks.bufferhub@1.0-inheritance-hierarchy,
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.frameworks.bufferhub@1.0-inheritance-hierarchy,
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/bufferhub/1.0/android.frameworks.bufferhub@1.0-inheritance-hierarchy^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/hardware/interfaces/android.frameworks.bufferhub@1.0-inheritance-hierarchy^.output . $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/bufferhub/1.0/android.frameworks.bufferhub@1.0-inheritance-hierarchy^
 
 echo "building android.frameworks.bufferhub@1.0_genc++^"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.frameworks.bufferhub@1.0_genc++,
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.frameworks.bufferhub@1.0_genc++,
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/bufferhub/1.0/android.frameworks.bufferhub@1.0_genc++^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/hardware/interfaces/android.frameworks.bufferhub@1.0_genc++^.output . $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/bufferhub/1.0/android.frameworks.bufferhub@1.0_genc++^
 
 echo "building android.frameworks.bufferhub@1.0_genc++_headers^"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.frameworks.bufferhub@1.0_genc++_headers,
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.frameworks.bufferhub@1.0_genc++_headers,
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/bufferhub/1.0/android.frameworks.bufferhub@1.0_genc++_headers^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/hardware/interfaces/android.frameworks.bufferhub@1.0_genc++_headers^.output . $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/bufferhub/1.0/android.frameworks.bufferhub@1.0_genc++_headers^
 
 echo "building android.frameworks.cameraservice.common@2.0_genc++^"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.frameworks.cameraservice.common@2.0_genc++,
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.frameworks.cameraservice.common@2.0_genc++,
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/cameraservice/common/2.0/android.frameworks.cameraservice.common@2.0_genc++^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/hardware/interfaces/android.frameworks.cameraservice.common@2.0_genc++^.output . $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/cameraservice/common/2.0/android.frameworks.cameraservice.common@2.0_genc++^
 
 echo "building android.frameworks.cameraservice.common@2.0_genc++_headers^"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.frameworks.cameraservice.common@2.0_genc++_headers,
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.frameworks.cameraservice.common@2.0_genc++_headers,
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/cameraservice/common/2.0/android.frameworks.cameraservice.common@2.0_genc++_headers^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/hardware/interfaces/android.frameworks.cameraservice.common@2.0_genc++_headers^.output . $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/cameraservice/common/2.0/android.frameworks.cameraservice.common@2.0_genc++_headers^
 
 echo "building android.frameworks.cameraservice.device@2.0-inheritance-hierarchy^"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.frameworks.cameraservice.device@2.0-inheritance-hierarchy,
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.frameworks.cameraservice.device@2.0-inheritance-hierarchy,
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/cameraservice/device/2.0/android.frameworks.cameraservice.device@2.0-inheritance-hierarchy^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/hardware/interfaces/android.frameworks.cameraservice.device@2.0-inheritance-hierarchy^.output . $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/cameraservice/device/2.0/android.frameworks.cameraservice.device@2.0-inheritance-hierarchy^
 
 echo "building android.frameworks.cameraservice.device@2.0_genc++^"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.frameworks.cameraservice.device@2.0_genc++,
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.frameworks.cameraservice.device@2.0_genc++,
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/cameraservice/device/2.0/android.frameworks.cameraservice.device@2.0_genc++^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/hardware/interfaces/android.frameworks.cameraservice.device@2.0_genc++^.output . $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/cameraservice/device/2.0/android.frameworks.cameraservice.device@2.0_genc++^
 
 echo "building android.frameworks.cameraservice.device@2.0_genc++_headers^"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.frameworks.cameraservice.device@2.0_genc++_headers,
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.frameworks.cameraservice.device@2.0_genc++_headers,
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/cameraservice/device/2.0/android.frameworks.cameraservice.device@2.0_genc++_headers^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/hardware/interfaces/android.frameworks.cameraservice.device@2.0_genc++_headers^.output . $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/cameraservice/device/2.0/android.frameworks.cameraservice.device@2.0_genc++_headers^
 
 echo "building android.frameworks.cameraservice.device@2.1-inheritance-hierarchy^"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.frameworks.cameraservice.device@2.1-inheritance-hierarchy,
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.frameworks.cameraservice.device@2.1-inheritance-hierarchy,
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/cameraservice/device/2.1/android.frameworks.cameraservice.device@2.1-inheritance-hierarchy^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/hardware/interfaces/android.frameworks.cameraservice.device@2.1-inheritance-hierarchy^.output . $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/cameraservice/device/2.1/android.frameworks.cameraservice.device@2.1-inheritance-hierarchy^
 
 echo "building android.frameworks.cameraservice.device@2.1_genc++^"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.frameworks.cameraservice.device@2.1_genc++,
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.frameworks.cameraservice.device@2.1_genc++,
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/cameraservice/device/2.1/android.frameworks.cameraservice.device@2.1_genc++^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/hardware/interfaces/android.frameworks.cameraservice.device@2.1_genc++^.output . $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/cameraservice/device/2.1/android.frameworks.cameraservice.device@2.1_genc++^
 
 echo "building android.frameworks.cameraservice.device@2.1_genc++_headers^"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.frameworks.cameraservice.device@2.1_genc++_headers,
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.frameworks.cameraservice.device@2.1_genc++_headers,
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/cameraservice/device/2.1/android.frameworks.cameraservice.device@2.1_genc++_headers^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/hardware/interfaces/android.frameworks.cameraservice.device@2.1_genc++_headers^.output . $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/cameraservice/device/2.1/android.frameworks.cameraservice.device@2.1_genc++_headers^
 
 echo "building android.frameworks.cameraservice.service@2.0-inheritance-hierarchy^"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.frameworks.cameraservice.service@2.0-inheritance-hierarchy,
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.frameworks.cameraservice.service@2.0-inheritance-hierarchy,
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/cameraservice/service/2.0/android.frameworks.cameraservice.service@2.0-inheritance-hierarchy^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/hardware/interfaces/android.frameworks.cameraservice.service@2.0-inheritance-hierarchy^.output . $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/cameraservice/service/2.0/android.frameworks.cameraservice.service@2.0-inheritance-hierarchy^
 
 echo "building android.frameworks.cameraservice.service@2.0_genc++^"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.frameworks.cameraservice.service@2.0_genc++,
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.frameworks.cameraservice.service@2.0_genc++,
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/cameraservice/service/2.0/android.frameworks.cameraservice.service@2.0_genc++^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/hardware/interfaces/android.frameworks.cameraservice.service@2.0_genc++^.output . $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/cameraservice/service/2.0/android.frameworks.cameraservice.service@2.0_genc++^
 
 echo "building android.frameworks.cameraservice.service@2.0_genc++_headers^"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.frameworks.cameraservice.service@2.0_genc++_headers,
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.frameworks.cameraservice.service@2.0_genc++_headers,
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/cameraservice/service/2.0/android.frameworks.cameraservice.service@2.0_genc++_headers^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/hardware/interfaces/android.frameworks.cameraservice.service@2.0_genc++_headers^.output . $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/cameraservice/service/2.0/android.frameworks.cameraservice.service@2.0_genc++_headers^
 
 echo "building android.frameworks.cameraservice.service@2.1-inheritance-hierarchy^"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.frameworks.cameraservice.service@2.1-inheritance-hierarchy,
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.frameworks.cameraservice.service@2.1-inheritance-hierarchy,
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/cameraservice/service/2.1/android.frameworks.cameraservice.service@2.1-inheritance-hierarchy^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/hardware/interfaces/android.frameworks.cameraservice.service@2.1-inheritance-hierarchy^.output . $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/cameraservice/service/2.1/android.frameworks.cameraservice.service@2.1-inheritance-hierarchy^
 
 echo "building android.frameworks.cameraservice.service@2.1_genc++^"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.frameworks.cameraservice.service@2.1_genc++,
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.frameworks.cameraservice.service@2.1_genc++,
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/cameraservice/service/2.1/android.frameworks.cameraservice.service@2.1_genc++^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/hardware/interfaces/android.frameworks.cameraservice.service@2.1_genc++^.output . $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/cameraservice/service/2.1/android.frameworks.cameraservice.service@2.1_genc++^
 
 echo "building android.frameworks.cameraservice.service@2.1_genc++_headers^"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.frameworks.cameraservice.service@2.1_genc++_headers,
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.frameworks.cameraservice.service@2.1_genc++_headers,
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/cameraservice/service/2.1/android.frameworks.cameraservice.service@2.1_genc++_headers^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/hardware/interfaces/android.frameworks.cameraservice.service@2.1_genc++_headers^.output . $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/cameraservice/service/2.1/android.frameworks.cameraservice.service@2.1_genc++_headers^
 
 echo "building android.frameworks.cameraservice.service@2.2-inheritance-hierarchy^"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.frameworks.cameraservice.service@2.2-inheritance-hierarchy,
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.frameworks.cameraservice.service@2.2-inheritance-hierarchy,
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/cameraservice/service/2.2/android.frameworks.cameraservice.service@2.2-inheritance-hierarchy^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/hardware/interfaces/android.frameworks.cameraservice.service@2.2-inheritance-hierarchy^.output . $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/cameraservice/service/2.2/android.frameworks.cameraservice.service@2.2-inheritance-hierarchy^
 
 echo "building android.frameworks.cameraservice.service@2.2_genc++^"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.frameworks.cameraservice.service@2.2_genc++,
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.frameworks.cameraservice.service@2.2_genc++,
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/cameraservice/service/2.2/android.frameworks.cameraservice.service@2.2_genc++^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/hardware/interfaces/android.frameworks.cameraservice.service@2.2_genc++^.output . $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/cameraservice/service/2.2/android.frameworks.cameraservice.service@2.2_genc++^
 
 echo "building android.frameworks.cameraservice.service@2.2_genc++_headers^"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.frameworks.cameraservice.service@2.2_genc++_headers,
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.frameworks.cameraservice.service@2.2_genc++_headers,
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/cameraservice/service/2.2/android.frameworks.cameraservice.service@2.2_genc++_headers^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/hardware/interfaces/android.frameworks.cameraservice.service@2.2_genc++_headers^.output . $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/cameraservice/service/2.2/android.frameworks.cameraservice.service@2.2_genc++_headers^
 
 echo "building android.frameworks.displayservice@1.0-inheritance-hierarchy^"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.frameworks.displayservice@1.0-inheritance-hierarchy,
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.frameworks.displayservice@1.0-inheritance-hierarchy,
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/displayservice/1.0/android.frameworks.displayservice@1.0-inheritance-hierarchy^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/hardware/interfaces/android.frameworks.displayservice@1.0-inheritance-hierarchy^.output . $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/displayservice/1.0/android.frameworks.displayservice@1.0-inheritance-hierarchy^
 
 echo "building android.frameworks.displayservice@1.0_genc++^"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.frameworks.displayservice@1.0_genc++,
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.frameworks.displayservice@1.0_genc++,
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/displayservice/1.0/android.frameworks.displayservice@1.0_genc++^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/hardware/interfaces/android.frameworks.displayservice@1.0_genc++^.output . $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/displayservice/1.0/android.frameworks.displayservice@1.0_genc++^
 
 echo "building android.frameworks.displayservice@1.0_genc++_headers^"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.frameworks.displayservice@1.0_genc++_headers,
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.frameworks.displayservice@1.0_genc++_headers,
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/displayservice/1.0/android.frameworks.displayservice@1.0_genc++_headers^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/hardware/interfaces/android.frameworks.displayservice@1.0_genc++_headers^.output . $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/displayservice/1.0/android.frameworks.displayservice@1.0_genc++_headers^
 
 echo "building android.frameworks.schedulerservice@1.0-inheritance-hierarchy^"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.frameworks.schedulerservice@1.0-inheritance-hierarchy,
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.frameworks.schedulerservice@1.0-inheritance-hierarchy,
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/schedulerservice/1.0/android.frameworks.schedulerservice@1.0-inheritance-hierarchy^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/hardware/interfaces/android.frameworks.schedulerservice@1.0-inheritance-hierarchy^.output . $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/schedulerservice/1.0/android.frameworks.schedulerservice@1.0-inheritance-hierarchy^
 
 echo "building android.frameworks.schedulerservice@1.0_genc++^"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.frameworks.schedulerservice@1.0_genc++,
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.frameworks.schedulerservice@1.0_genc++,
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/schedulerservice/1.0/android.frameworks.schedulerservice@1.0_genc++^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/hardware/interfaces/android.frameworks.schedulerservice@1.0_genc++^.output . $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/schedulerservice/1.0/android.frameworks.schedulerservice@1.0_genc++^
 
 echo "building android.frameworks.schedulerservice@1.0_genc++_headers^"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.frameworks.schedulerservice@1.0_genc++_headers,
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.frameworks.schedulerservice@1.0_genc++_headers,
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/schedulerservice/1.0/android.frameworks.schedulerservice@1.0_genc++_headers^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/hardware/interfaces/android.frameworks.schedulerservice@1.0_genc++_headers^.output . $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/schedulerservice/1.0/android.frameworks.schedulerservice@1.0_genc++_headers^
 
 echo "building android.frameworks.sensorservice@1.0-inheritance-hierarchy^"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.frameworks.sensorservice@1.0-inheritance-hierarchy,
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.frameworks.sensorservice@1.0-inheritance-hierarchy,
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/sensorservice/1.0/android.frameworks.sensorservice@1.0-inheritance-hierarchy^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/hardware/interfaces/android.frameworks.sensorservice@1.0-inheritance-hierarchy^.output . $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/sensorservice/1.0/android.frameworks.sensorservice@1.0-inheritance-hierarchy^
 
 echo "building android.frameworks.sensorservice@1.0_genc++^"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.frameworks.sensorservice@1.0_genc++,
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.frameworks.sensorservice@1.0_genc++,
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/sensorservice/1.0/android.frameworks.sensorservice@1.0_genc++^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/hardware/interfaces/android.frameworks.sensorservice@1.0_genc++^.output . $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/sensorservice/1.0/android.frameworks.sensorservice@1.0_genc++^
 
 echo "building android.frameworks.sensorservice@1.0_genc++_headers^"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.frameworks.sensorservice@1.0_genc++_headers,
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.frameworks.sensorservice@1.0_genc++_headers,
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/sensorservice/1.0/android.frameworks.sensorservice@1.0_genc++_headers^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/hardware/interfaces/android.frameworks.sensorservice@1.0_genc++_headers^.output . $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/sensorservice/1.0/android.frameworks.sensorservice@1.0_genc++_headers^
 
 echo "building android.frameworks.stats-V1-ndk_platform-source^"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.frameworks.stats-V1-ndk_platform-source,
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.frameworks.stats-V1-ndk_platform-source,
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/stats/aidl/android.frameworks.stats-V1-ndk_platform-source^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/hardware/interfaces/android.frameworks.stats-V1-ndk_platform-source^.output . $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/stats/aidl/android.frameworks.stats-V1-ndk_platform-source^
 
 echo "building android.frameworks.stats-V1-ndk_platform^android_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.frameworks.stats-V1-ndk_platform,android_x86_64_static
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.frameworks.stats-V1-ndk_platform,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/stats/aidl/android.frameworks.stats-V1-ndk_platform^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/hardware/interfaces/android.frameworks.stats-V1-ndk_platform^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/stats/aidl/android.frameworks.stats-V1-ndk_platform^android_x86_64_static
 
 echo "building android.frameworks.stats-V1-ndk_platform^android_x86_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.frameworks.stats-V1-ndk_platform,android_x86_x86_64_static
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.frameworks.stats-V1-ndk_platform,android_x86_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/stats/aidl/android.frameworks.stats-V1-ndk_platform^android_x86_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/hardware/interfaces/android.frameworks.stats-V1-ndk_platform^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/stats/aidl/android.frameworks.stats-V1-ndk_platform^android_x86_x86_64_static
 
 echo "building android.frameworks.stats-api^"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.frameworks.stats-api,
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.frameworks.stats-api,
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/stats/aidl/android.frameworks.stats-api^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/hardware/interfaces/android.frameworks.stats-api^.output . $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/stats/aidl/android.frameworks.stats-api^
 
 echo "building android.frameworks.stats@1.0-inheritance-hierarchy^"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.frameworks.stats@1.0-inheritance-hierarchy,
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.frameworks.stats@1.0-inheritance-hierarchy,
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/stats/1.0/android.frameworks.stats@1.0-inheritance-hierarchy^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/hardware/interfaces/android.frameworks.stats@1.0-inheritance-hierarchy^.output . $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/stats/1.0/android.frameworks.stats@1.0-inheritance-hierarchy^
 
 echo "building android.frameworks.stats@1.0_genc++^"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.frameworks.stats@1.0_genc++,
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.frameworks.stats@1.0_genc++,
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/stats/1.0/android.frameworks.stats@1.0_genc++^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/hardware/interfaces/android.frameworks.stats@1.0_genc++^.output . $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/stats/1.0/android.frameworks.stats@1.0_genc++^
 
 echo "building android.frameworks.stats@1.0_genc++_headers^"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.frameworks.stats@1.0_genc++_headers,
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.frameworks.stats@1.0_genc++_headers,
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/stats/1.0/android.frameworks.stats@1.0_genc++_headers^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/hardware/interfaces/android.frameworks.stats@1.0_genc++_headers^.output . $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/stats/1.0/android.frameworks.stats@1.0_genc++_headers^
 
 echo "building android.frameworks.vr.composer@1.0-inheritance-hierarchy^"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.frameworks.vr.composer@1.0-inheritance-hierarchy,
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.frameworks.vr.composer@1.0-inheritance-hierarchy,
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/vr/composer/1.0/android.frameworks.vr.composer@1.0-inheritance-hierarchy^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/hardware/interfaces/android.frameworks.vr.composer@1.0-inheritance-hierarchy^.output . $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/vr/composer/1.0/android.frameworks.vr.composer@1.0-inheritance-hierarchy^
 
 echo "building android.frameworks.vr.composer@2.0-inheritance-hierarchy^"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.frameworks.vr.composer@2.0-inheritance-hierarchy,
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.frameworks.vr.composer@2.0-inheritance-hierarchy,
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/vr/composer/2.0/android.frameworks.vr.composer@2.0-inheritance-hierarchy^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/hardware/interfaces/android.frameworks.vr.composer@2.0-inheritance-hierarchy^.output . $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/vr/composer/2.0/android.frameworks.vr.composer@2.0-inheritance-hierarchy^
 
@@ -278,6 +281,10 @@ fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/libnativehelper.tar.zst" ]; then
   echo "Compressing libnativehelper -> libnativehelper.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/libnativehelper.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/libnativehelper/ .
+fi
+if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_build-tools.tar.zst" ]; then
+  echo "Compressing prebuilts/build-tools -> prebuilts_build-tools.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/prebuilts_build-tools.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/prebuilts/build-tools/ .
 fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_gcc_linux-x86_x86_x86_64-linux-android-4.9.tar.zst" ]; then
   echo "Compressing prebuilts/gcc/linux-x86/x86/x86_64-linux-android-4.9 -> prebuilts_gcc_linux-x86_x86_x86_64-linux-android-4.9.tar.zst"

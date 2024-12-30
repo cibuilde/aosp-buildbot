@@ -1,5 +1,7 @@
 set -e
 
+echo "entering packages/providers/MediaProvider"
+
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
 mkdir -p out/soong/.minibootstrap && ln -sf $GITHUB_WORKSPACE/bpglob out/soong/.minibootstrap/bpglob
@@ -17,6 +19,7 @@ clone_depth_platform external/protobuf
 clone_depth_platform external/zlib
 clone_depth_platform frameworks/proto_logging
 clone_depth_platform packages/providers/MediaProvider
+clone_project platform/prebuilts/build-tools prebuilts/build-tools android12-gsi "/linux-x86/bin" "/linux-x86/lib64" "/path" "/common"
 clone_project platform/prebuilts/jdk/jdk11 prebuilts/jdk/jdk11 android12-gsi "/linux-x86"
 clone_depth_platform system/libbase
 clone_depth_platform system/logging
@@ -38,12 +41,12 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/system/libbase/libbase^linux_glibc_x86_6
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^linux_glibc_x86_64_shared/ .
 
 echo "building error_prone_mediaprovider_lib^linux_glibc_common"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja error_prone_mediaprovider_lib,linux_glibc_common
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja error_prone_mediaprovider_lib,linux_glibc_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/providers/MediaProvider/errorprone/error_prone_mediaprovider_lib^linux_glibc_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/packages/providers/MediaProvider/error_prone_mediaprovider_lib^linux_glibc_common.output . $GITHUB_WORKSPACE/artifacts/packages/providers/MediaProvider/errorprone/error_prone_mediaprovider_lib^linux_glibc_common
 
 echo "building statslog-mediaprovider-java-gen^"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja statslog-mediaprovider-java-gen,
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja statslog-mediaprovider-java-gen,
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/providers/MediaProvider/statslog-mediaprovider-java-gen^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/packages/providers/MediaProvider/statslog-mediaprovider-java-gen^.output . $GITHUB_WORKSPACE/artifacts/packages/providers/MediaProvider/statslog-mediaprovider-java-gen^
 
@@ -86,6 +89,10 @@ fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/packages_providers_MediaProvider.tar.zst" ]; then
   echo "Compressing packages/providers/MediaProvider -> packages_providers_MediaProvider.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/packages_providers_MediaProvider.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/packages/providers/MediaProvider/ .
+fi
+if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_build-tools.tar.zst" ]; then
+  echo "Compressing prebuilts/build-tools -> prebuilts_build-tools.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/prebuilts_build-tools.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/prebuilts/build-tools/ .
 fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_jdk_jdk11.tar.zst" ]; then
   echo "Compressing prebuilts/jdk/jdk11 -> prebuilts_jdk_jdk11.tar.zst"

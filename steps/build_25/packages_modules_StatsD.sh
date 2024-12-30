@@ -1,5 +1,7 @@
 set -e
 
+echo "entering packages/modules/StatsD"
+
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
 mkdir -p out/soong/.minibootstrap && ln -sf $GITHUB_WORKSPACE/bpglob out/soong/.minibootstrap/bpglob
@@ -69,12 +71,12 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/system/apex/apexer/conv_apex_manifest^li
 rsync -a -r $GITHUB_WORKSPACE/downloads/tools/apifinder/java_api_used_by_mainline_module^linux_glibc_common/ .
 
 echo "building service-statsd^android_common_apex30"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_25.ninja service-statsd,android_common_apex30
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_25.ninja service-statsd,android_common_apex30
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/StatsD/service/service-statsd^android_common_apex30
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_25/packages/modules/StatsD/service-statsd^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/packages/modules/StatsD/service/service-statsd^android_common_apex30
 
 echo "building com.android.os.statsd^android_common_com.android.os.statsd_image"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_25.ninja com.android.os.statsd,android_common_com.android.os.statsd_image
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_25.ninja com.android.os.statsd,android_common_com.android.os.statsd_image
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/StatsD/apex/com.android.os.statsd^android_common_com.android.os.statsd_image
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_25/packages/modules/StatsD/com.android.os.statsd^android_common_com.android.os.statsd_image.output . $GITHUB_WORKSPACE/artifacts/packages/modules/StatsD/apex/com.android.os.statsd^android_common_com.android.os.statsd_image
 

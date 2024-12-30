@@ -1,5 +1,7 @@
 set -e
 
+echo "entering external/one-true-awk"
+
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
 mkdir -p out/soong/.minibootstrap && ln -sf $GITHUB_WORKSPACE/bpglob out/soong/.minibootstrap/bpglob
@@ -24,22 +26,22 @@ clone_depth_platform system/media
 rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/cmd/sbox/sbox^linux_glibc_x86_64/ .
 
 echo "building awkgram.tab.h^"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja awkgram.tab.h,
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja awkgram.tab.h,
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/one-true-awk/awkgram.tab.h^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/external/one-true-awk/awkgram.tab.h^.output . $GITHUB_WORKSPACE/artifacts/external/one-true-awk/awkgram.tab.h^
 
 echo "building awk-maketab^linux_glibc_x86_64"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja awk-maketab,linux_glibc_x86_64
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja awk-maketab,linux_glibc_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/one-true-awk/awk-maketab^linux_glibc_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/external/one-true-awk/awk-maketab^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/one-true-awk/awk-maketab^linux_glibc_x86_64
 
 echo "building awkgram.tab.c^"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja awkgram.tab.c,
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja awkgram.tab.c,
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/one-true-awk/awkgram.tab.c^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/external/one-true-awk/awkgram.tab.c^.output . $GITHUB_WORKSPACE/artifacts/external/one-true-awk/awkgram.tab.c^
 
 echo "building proctab.c^"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja proctab.c,
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja proctab.c,
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/one-true-awk/proctab.c^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/external/one-true-awk/proctab.c^.output . $GITHUB_WORKSPACE/artifacts/external/one-true-awk/proctab.c^
 

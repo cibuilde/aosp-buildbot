@@ -1,5 +1,7 @@
 set -e
 
+echo "entering packages/modules/Wifi"
+
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
 mkdir -p out/soong/.minibootstrap && ln -sf $GITHUB_WORKSPACE/bpglob out/soong/.minibootstrap/bpglob
@@ -70,22 +72,22 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/tools/platform-compat/java/com/android/c
 rsync -a -r $GITHUB_WORKSPACE/downloads/tools/platform-compat/java/com/android/class2nonsdklist/class2nonsdklist^linux_glibc_x86_64/ .
 
 echo "building ServiceWifiResources^android_common_apex30"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_23.ninja ServiceWifiResources,android_common_apex30
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_23.ninja ServiceWifiResources,android_common_apex30
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/Wifi/service/ServiceWifiResources/ServiceWifiResources^android_common_apex30
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_23/packages/modules/Wifi/ServiceWifiResources^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/packages/modules/Wifi/service/ServiceWifiResources/ServiceWifiResources^android_common_apex30
 
 echo "building com.android.wifi-bootclasspath-fragment^android_common_apex30"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_23.ninja com.android.wifi-bootclasspath-fragment,android_common_apex30
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_23.ninja com.android.wifi-bootclasspath-fragment,android_common_apex30
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/Wifi/apex/com.android.wifi-bootclasspath-fragment^android_common_apex30
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_23/packages/modules/Wifi/com.android.wifi-bootclasspath-fragment^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/packages/modules/Wifi/apex/com.android.wifi-bootclasspath-fragment^android_common_apex30
 
 echo "building wifi-lite-protos^android_common_apex30"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_23.ninja wifi-lite-protos,android_common_apex30
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_23.ninja wifi-lite-protos,android_common_apex30
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/Wifi/service/proto/wifi-lite-protos^android_common_apex30
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_23/packages/modules/Wifi/wifi-lite-protos^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/packages/modules/Wifi/service/proto/wifi-lite-protos^android_common_apex30
 
 echo "building wifi-nano-protos^android_common_apex30"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_23.ninja wifi-nano-protos,android_common_apex30
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_23.ninja wifi-nano-protos,android_common_apex30
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/Wifi/service/proto/wifi-nano-protos^android_common_apex30
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_23/packages/modules/Wifi/wifi-nano-protos^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/packages/modules/Wifi/service/proto/wifi-nano-protos^android_common_apex30
 

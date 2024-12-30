@@ -1,5 +1,7 @@
 set -e
 
+echo "entering external/dagger2"
+
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
 mkdir -p out/soong/.minibootstrap && ln -sf $GITHUB_WORKSPACE/bpglob out/soong/.minibootstrap/bpglob
@@ -29,7 +31,7 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/libcore/core-lambda-stubs^android_common
 rsync -a -r $GITHUB_WORKSPACE/downloads/libcore/core.current.stubs^android_common/ .
 
 echo "building dagger2^android_common"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_14.ninja dagger2,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_14.ninja dagger2,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/dagger2/dagger2^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_14/external/dagger2/dagger2^android_common.output . $GITHUB_WORKSPACE/artifacts/external/dagger2/dagger2^android_common
 

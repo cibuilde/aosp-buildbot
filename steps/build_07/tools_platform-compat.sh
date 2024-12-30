@@ -1,5 +1,7 @@
 set -e
 
+echo "entering tools/platform-compat"
+
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
 mkdir -p out/soong/.minibootstrap && ln -sf $GITHUB_WORKSPACE/bpglob out/soong/.minibootstrap/bpglob
@@ -14,6 +16,7 @@ clone_depth_platform external/apache-commons-bcel
 clone_depth_platform external/guava
 clone_depth_platform external/hamcrest
 clone_depth_platform external/testng
+clone_project platform/prebuilts/build-tools prebuilts/build-tools android12-gsi "/linux-x86/bin" "/linux-x86/lib64" "/path" "/common"
 clone_project platform/prebuilts/jdk/jdk11 prebuilts/jdk/jdk11 android12-gsi "/linux-x86"
 clone_project platform/prebuilts/misc prebuilts/misc android12-gsi "/common/asm/asm-6.0.jar" "/common/asm/asm-7.0.jar" "/common/asm/asm-analysis-6.0.jar" "/common/asm/asm-commons-6.0.jar" "/common/asm/asm-commons-7.0.jar" "/common/asm/asm-tree-6.0.jar" "/common/asm/asm-tree-7.0.jar" "/common/commons-cli/commons-cli-1.2.jar" "/common/guava/guava-21.0.jar" "/gdbserver/android-x86_64/gdbserver64" "/gdbserver/android-x86/gdbserver" "/linux-x86/yasm/yasm"
 clone_depth tools/platform-compat
@@ -29,20 +32,20 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/external/testng/testng^linux_glibc_commo
 rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/misc/common/commons-cli/commons-cli-1.2^linux_glibc_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/tools/platform-compat/java/com/android/annotationvisitor/annotationvisitor^linux_glibc_common/ .
 
+echo "building class2nonsdklist^linux_glibc_x86_64"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja class2nonsdklist,linux_glibc_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/tools/platform-compat/java/com/android/class2nonsdklist/class2nonsdklist^linux_glibc_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/tools/platform-compat/class2nonsdklist^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/tools/platform-compat/java/com/android/class2nonsdklist/class2nonsdklist^linux_glibc_x86_64
+
 echo "building class2nonsdklistlib^linux_glibc_common"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja class2nonsdklistlib,linux_glibc_common
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja class2nonsdklistlib,linux_glibc_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/tools/platform-compat/java/com/android/class2nonsdklist/class2nonsdklistlib^linux_glibc_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/tools/platform-compat/class2nonsdklistlib^linux_glibc_common.output . $GITHUB_WORKSPACE/artifacts/tools/platform-compat/java/com/android/class2nonsdklist/class2nonsdklistlib^linux_glibc_common
 
 echo "building class2nonsdklist^linux_glibc_common"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja class2nonsdklist,linux_glibc_common
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja class2nonsdklist,linux_glibc_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/tools/platform-compat/java/com/android/class2nonsdklist/class2nonsdklist^linux_glibc_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/tools/platform-compat/class2nonsdklist^linux_glibc_common.output . $GITHUB_WORKSPACE/artifacts/tools/platform-compat/java/com/android/class2nonsdklist/class2nonsdklist^linux_glibc_common
-
-echo "building class2nonsdklist^linux_glibc_x86_64"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja class2nonsdklist,linux_glibc_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/tools/platform-compat/java/com/android/class2nonsdklist/class2nonsdklist^linux_glibc_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/tools/platform-compat/class2nonsdklist^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/tools/platform-compat/java/com/android/class2nonsdklist/class2nonsdklist^linux_glibc_x86_64
 
 rm -rf out
 
@@ -71,6 +74,10 @@ fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/external_testng.tar.zst" ]; then
   echo "Compressing external/testng -> external_testng.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/external_testng.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/testng/ .
+fi
+if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_build-tools.tar.zst" ]; then
+  echo "Compressing prebuilts/build-tools -> prebuilts_build-tools.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/prebuilts_build-tools.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/prebuilts/build-tools/ .
 fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_jdk_jdk11.tar.zst" ]; then
   echo "Compressing prebuilts/jdk/jdk11 -> prebuilts_jdk_jdk11.tar.zst"

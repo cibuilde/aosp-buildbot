@@ -1,5 +1,7 @@
 set -e
 
+echo "entering packages/modules/SdkExtensions"
+
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
 mkdir -p out/soong/.minibootstrap && ln -sf $GITHUB_WORKSPACE/bpglob out/soong/.minibootstrap/bpglob
@@ -62,37 +64,37 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/system/libbase/libbase^android_x86_64_st
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^android_x86_64_shared_current/ .
 
 echo "building derive_classpath^android_x86_64_apex30"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja derive_classpath,android_x86_64_apex30
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja derive_classpath,android_x86_64_apex30
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/SdkExtensions/derive_classpath/derive_classpath^android_x86_64_apex30
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/packages/modules/SdkExtensions/derive_classpath^android_x86_64_apex30.output . $GITHUB_WORKSPACE/artifacts/packages/modules/SdkExtensions/derive_classpath/derive_classpath^android_x86_64_apex30
 
 echo "building derive_sdk^android_x86_64_apex30"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja derive_sdk,android_x86_64_apex30
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja derive_sdk,android_x86_64_apex30
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/SdkExtensions/derive_sdk/derive_sdk^android_x86_64_apex30
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/packages/modules/SdkExtensions/derive_sdk^android_x86_64_apex30.output . $GITHUB_WORKSPACE/artifacts/packages/modules/SdkExtensions/derive_sdk/derive_sdk^android_x86_64_apex30
 
+echo "building gen_sdk^linux_glibc_x86_64_PY3"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja gen_sdk,linux_glibc_x86_64_PY3
+mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/SdkExtensions/gen_sdk/gen_sdk^linux_glibc_x86_64_PY3
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/packages/modules/SdkExtensions/gen_sdk^linux_glibc_x86_64_PY3.output . $GITHUB_WORKSPACE/artifacts/packages/modules/SdkExtensions/gen_sdk/gen_sdk^linux_glibc_x86_64_PY3
+
 echo "building extensions_db.pb^"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja extensions_db.pb,
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja extensions_db.pb,
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/SdkExtensions/gen_sdk/extensions_db.pb^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/packages/modules/SdkExtensions/extensions_db.pb^.output . $GITHUB_WORKSPACE/artifacts/packages/modules/SdkExtensions/gen_sdk/extensions_db.pb^
 
 echo "building extensions_db^android_x86_64"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja extensions_db,android_x86_64
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja extensions_db,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/SdkExtensions/gen_sdk/extensions_db^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/packages/modules/SdkExtensions/extensions_db^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/packages/modules/SdkExtensions/gen_sdk/extensions_db^android_x86_64
 
-echo "building gen_sdk^linux_glibc_x86_64_PY3"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja gen_sdk,linux_glibc_x86_64_PY3
-mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/SdkExtensions/gen_sdk/gen_sdk^linux_glibc_x86_64_PY3
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/packages/modules/SdkExtensions/gen_sdk^linux_glibc_x86_64_PY3.output . $GITHUB_WORKSPACE/artifacts/packages/modules/SdkExtensions/gen_sdk/gen_sdk^linux_glibc_x86_64_PY3
-
 echo "building libderive_classpath^android_x86_64_static_apex30"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libderive_classpath,android_x86_64_static_apex30
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libderive_classpath,android_x86_64_static_apex30
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/SdkExtensions/derive_classpath/libderive_classpath^android_x86_64_static_apex30
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/packages/modules/SdkExtensions/libderive_classpath^android_x86_64_static_apex30.output . $GITHUB_WORKSPACE/artifacts/packages/modules/SdkExtensions/derive_classpath/libderive_classpath^android_x86_64_static_apex30
 
 echo "building libderive_sdk^android_x86_64_static_apex30"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libderive_sdk,android_x86_64_static_apex30
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libderive_sdk,android_x86_64_static_apex30
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/SdkExtensions/derive_sdk/libderive_sdk^android_x86_64_static_apex30
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/packages/modules/SdkExtensions/libderive_sdk^android_x86_64_static_apex30.output . $GITHUB_WORKSPACE/artifacts/packages/modules/SdkExtensions/derive_sdk/libderive_sdk^android_x86_64_static_apex30
 

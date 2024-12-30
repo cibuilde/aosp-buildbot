@@ -1,5 +1,7 @@
 set -e
 
+echo "entering external/rust/crates/serde_json"
+
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
 mkdir -p out/soong/.minibootstrap && ln -sf $GITHUB_WORKSPACE/bpglob out/soong/.minibootstrap/bpglob
@@ -81,12 +83,12 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/rust/libunwind.rust_sysroot^an
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^android_x86_64_shared/ .
 
 echo "building libserde_json^android_x86_64_dylib"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libserde_json,android_x86_64_dylib
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libserde_json,android_x86_64_dylib
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/rust/crates/serde_json/libserde_json^android_x86_64_dylib
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/external/rust/crates/serde_json/libserde_json^android_x86_64_dylib.output . $GITHUB_WORKSPACE/artifacts/external/rust/crates/serde_json/libserde_json^android_x86_64_dylib
 
 echo "building libserde_json^android_x86_64_dylib_apex10000"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libserde_json,android_x86_64_dylib_apex10000
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libserde_json,android_x86_64_dylib_apex10000
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/rust/crates/serde_json/libserde_json^android_x86_64_dylib_apex10000
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/external/rust/crates/serde_json/libserde_json^android_x86_64_dylib_apex10000.output . $GITHUB_WORKSPACE/artifacts/external/rust/crates/serde_json/libserde_json^android_x86_64_dylib_apex10000
 

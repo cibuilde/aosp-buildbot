@@ -1,5 +1,7 @@
 set -e
 
+echo "entering system/hardware/interfaces"
+
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
 mkdir -p out/soong/.minibootstrap && ln -sf $GITHUB_WORKSPACE/bpglob out/soong/.minibootstrap/bpglob
@@ -40,7 +42,7 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/r8/d8^linux_glibc_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/hardware/interfaces/keystore2/aidl/android.system.keystore2-V1-java-source^/ .
 
 echo "building android.system.keystore2-V1-java^android_common"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_32.ninja android.system.keystore2-V1-java,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_32.ninja android.system.keystore2-V1-java,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/hardware/interfaces/keystore2/aidl/android.system.keystore2-V1-java^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_32/system/hardware/interfaces/android.system.keystore2-V1-java^android_common.output . $GITHUB_WORKSPACE/artifacts/system/hardware/interfaces/keystore2/aidl/android.system.keystore2-V1-java^android_common
 

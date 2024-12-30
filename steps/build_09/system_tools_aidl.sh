@@ -1,5 +1,7 @@
 set -e
 
+echo "entering system/tools/aidl"
+
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
 mkdir -p out/soong/.minibootstrap && ln -sf $GITHUB_WORKSPACE/bpglob out/soong/.minibootstrap/bpglob
@@ -41,12 +43,12 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^android_x86
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/tools/aidl/tests/lazy_test/lazy_test_service_aidl-cpp-source^/ .
 
 echo "building lazy_test_service_aidl-cpp^android_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja lazy_test_service_aidl-cpp,android_x86_64_static
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja lazy_test_service_aidl-cpp,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/tools/aidl/tests/lazy_test/lazy_test_service_aidl-cpp^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_09/system/tools/aidl/lazy_test_service_aidl-cpp^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/tools/aidl/tests/lazy_test/lazy_test_service_aidl-cpp^android_x86_64_static
 
 echo "building aidl_lazy_test_server^android_x86_64"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja aidl_lazy_test_server,android_x86_64
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja aidl_lazy_test_server,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/tools/aidl/tests/lazy_test/aidl_lazy_test_server^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_09/system/tools/aidl/aidl_lazy_test_server^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/tools/aidl/tests/lazy_test/aidl_lazy_test_server^android_x86_64
 

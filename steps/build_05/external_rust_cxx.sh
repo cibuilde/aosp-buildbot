@@ -1,5 +1,7 @@
 set -e
 
+echo "entering external/rust/cxx"
+
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
 mkdir -p out/soong/.minibootstrap && ln -sf $GITHUB_WORKSPACE/bpglob out/soong/.minibootstrap/bpglob
@@ -20,6 +22,7 @@ clone_depth_platform external/rust/crates/textwrap
 clone_depth_platform external/rust/crates/unicode-width
 clone_depth_platform external/rust/crates/unicode-xid
 clone_depth_platform external/rust/cxx
+clone_project platform/prebuilts/build-tools prebuilts/build-tools android12-gsi "/linux-x86/bin" "/linux-x86/lib64" "/path" "/common"
 clone_project platform/prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8 prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8 android12-gsi "/sysroot" "/lib/gcc/x86_64-linux/4.8.3" "/x86_64-linux/lib64" "/x86_64-linux/lib32"
 clone_project platform/prebuilts/rust prebuilts/rust android12-gsi "/bootstrap" "/linux-x86/1.51.0"
 
@@ -35,23 +38,23 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/external/rust/crates/textwrap/libtextwra
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/rust/crates/unicode-width/libunicode_width^linux_glibc_x86_64_rlib_rlib-std/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/rust/crates/unicode-xid/libunicode_xid^linux_glibc_x86_64_rlib_rlib-std/ .
 
-echo "building cxx-bridge-header^"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja cxx-bridge-header,
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/rust/cxx/cxx-bridge-header^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/external/rust/cxx/cxx-bridge-header^.output . $GITHUB_WORKSPACE/artifacts/external/rust/cxx/cxx-bridge-header^
-
 echo "building libcxxbridge_cmd^linux_glibc_x86_64_rlib_rlib-std"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libcxxbridge_cmd,linux_glibc_x86_64_rlib_rlib-std
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libcxxbridge_cmd,linux_glibc_x86_64_rlib_rlib-std
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/rust/cxx/gen/cmd/libcxxbridge_cmd^linux_glibc_x86_64_rlib_rlib-std
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/external/rust/cxx/libcxxbridge_cmd^linux_glibc_x86_64_rlib_rlib-std.output . $GITHUB_WORKSPACE/artifacts/external/rust/cxx/gen/cmd/libcxxbridge_cmd^linux_glibc_x86_64_rlib_rlib-std
 
 echo "building cxxbridge^linux_glibc_x86_64"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja cxxbridge,linux_glibc_x86_64
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja cxxbridge,linux_glibc_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/rust/cxx/gen/cmd/cxxbridge^linux_glibc_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/external/rust/cxx/cxxbridge^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/rust/cxx/gen/cmd/cxxbridge^linux_glibc_x86_64
 
+echo "building cxx-bridge-header^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja cxx-bridge-header,
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/rust/cxx/cxx-bridge-header^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/external/rust/cxx/cxx-bridge-header^.output . $GITHUB_WORKSPACE/artifacts/external/rust/cxx/cxx-bridge-header^
+
 echo "building libcxxbridge_macro^linux_glibc_x86_64"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libcxxbridge_macro,linux_glibc_x86_64
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libcxxbridge_macro,linux_glibc_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/rust/cxx/macro/libcxxbridge_macro^linux_glibc_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/external/rust/cxx/libcxxbridge_macro^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/rust/cxx/macro/libcxxbridge_macro^linux_glibc_x86_64
 
@@ -106,6 +109,10 @@ fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/external_rust_cxx.tar.zst" ]; then
   echo "Compressing external/rust/cxx -> external_rust_cxx.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/external_rust_cxx.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/rust/cxx/ .
+fi
+if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_build-tools.tar.zst" ]; then
+  echo "Compressing prebuilts/build-tools -> prebuilts_build-tools.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/prebuilts_build-tools.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/prebuilts/build-tools/ .
 fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_gcc_linux-x86_host_x86_64-linux-glibc2.17-4.8.tar.zst" ]; then
   echo "Compressing prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8 -> prebuilts_gcc_linux-x86_host_x86_64-linux-glibc2.17-4.8.tar.zst"

@@ -1,5 +1,7 @@
 set -e
 
+echo "entering external/cblas"
+
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
 mkdir -p out/soong/.minibootstrap && ln -sf $GITHUB_WORKSPACE/bpglob out/soong/.minibootstrap/bpglob
@@ -44,12 +46,12 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcxxabi/libc++demangle^androi
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcxxabi/libc++demangle^android_x86_x86_64_static/ .
 
 echo "building libblas^android_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libblas,android_x86_64_shared
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libblas,android_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/cblas/libblas^android_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/external/cblas/libblas^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/external/cblas/libblas^android_x86_64_shared
 
 echo "building libblas^android_x86_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libblas,android_x86_x86_64_shared
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libblas,android_x86_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/cblas/libblas^android_x86_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/external/cblas/libblas^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/external/cblas/libblas^android_x86_x86_64_shared
 

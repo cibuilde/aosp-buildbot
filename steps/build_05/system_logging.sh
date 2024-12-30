@@ -1,5 +1,7 @@
 set -e
 
+echo "entering system/logging"
+
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
 mkdir -p out/soong/.minibootstrap && ln -sf $GITHUB_WORKSPACE/bpglob out/soong/.minibootstrap/bpglob
@@ -99,37 +101,37 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^android_x86
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^android_x86_x86_64_static/ .
 
 echo "building liblog^android_recovery_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja liblog,android_recovery_x86_64_shared
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja liblog,android_recovery_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/logging/liblog/liblog^android_recovery_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/system/logging/liblog^android_recovery_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/logging/liblog/liblog^android_recovery_x86_64_shared
 
 echo "building liblog^android_vendor_ramdisk_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja liblog,android_vendor_ramdisk_x86_64_shared
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja liblog,android_vendor_ramdisk_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/logging/liblog/liblog^android_vendor_ramdisk_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/system/logging/liblog^android_vendor_ramdisk_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/logging/liblog/liblog^android_vendor_ramdisk_x86_64_shared
 
 echo "building liblog^android_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja liblog,android_x86_64_shared
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja liblog,android_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/logging/liblog/liblog^android_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/system/logging/liblog^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/logging/liblog/liblog^android_x86_64_shared
 
 echo "building liblog^android_x86_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja liblog,android_x86_x86_64_shared
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja liblog,android_x86_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/logging/liblog/liblog^android_x86_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/system/logging/liblog^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/logging/liblog/liblog^android_x86_x86_64_shared
 
 echo "building liblog_event_list_bindgen^android_x86_64_source"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja liblog_event_list_bindgen,android_x86_64_source
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja liblog_event_list_bindgen,android_x86_64_source
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/logging/liblog/liblog_event_list_bindgen^android_x86_64_source
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/system/logging/liblog_event_list_bindgen^android_x86_64_source.output . $GITHUB_WORKSPACE/artifacts/system/logging/liblog/liblog_event_list_bindgen^android_x86_64_source
 
 echo "building liblog_event_list_bindgen^android_x86_64_rlib_rlib-std"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja liblog_event_list_bindgen,android_x86_64_rlib_rlib-std
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja liblog_event_list_bindgen,android_x86_64_rlib_rlib-std
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/logging/liblog/liblog_event_list_bindgen^android_x86_64_rlib_rlib-std
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/system/logging/liblog_event_list_bindgen^android_x86_64_rlib_rlib-std.output . $GITHUB_WORKSPACE/artifacts/system/logging/liblog/liblog_event_list_bindgen^android_x86_64_rlib_rlib-std
 
 echo "building liblog_event_list^android_x86_64_rlib_rlib-std"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja liblog_event_list,android_x86_64_rlib_rlib-std
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja liblog_event_list,android_x86_64_rlib_rlib-std
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/logging/rust/liblog_event_list^android_x86_64_rlib_rlib-std
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/system/logging/liblog_event_list^android_x86_64_rlib_rlib-std.output . $GITHUB_WORKSPACE/artifacts/system/logging/rust/liblog_event_list^android_x86_64_rlib_rlib-std
 

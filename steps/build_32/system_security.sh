@@ -1,5 +1,7 @@
 set -e
 
+echo "entering system/security"
+
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
 mkdir -p out/soong/.minibootstrap && ln -sf $GITHUB_WORKSPACE/bpglob out/soong/.minibootstrap/bpglob
@@ -40,7 +42,7 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/r8/d8^linux_glibc_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/security/keystore2/aidl/android.security.remoteprovisioning-java-source^/ .
 
 echo "building android.security.remoteprovisioning-java^android_common"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_32.ninja android.security.remoteprovisioning-java,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_32.ninja android.security.remoteprovisioning-java,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.remoteprovisioning-java^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_32/system/security/android.security.remoteprovisioning-java^android_common.output . $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.remoteprovisioning-java^android_common
 

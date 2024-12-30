@@ -1,5 +1,7 @@
 set -e
 
+echo "entering frameworks/ex"
+
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
 mkdir -p out/soong/.minibootstrap && ln -sf $GITHUB_WORKSPACE/bpglob out/soong/.minibootstrap/bpglob
@@ -26,12 +28,12 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/android_stubs_current^an
 rsync -a -r $GITHUB_WORKSPACE/downloads/libcore/core-current-stubs-system-modules^android_common/ .
 
 echo "building android-ex-camera2-utils^android_common"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_23.ninja android-ex-camera2-utils,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_23.ninja android-ex-camera2-utils,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/ex/camera2/utils/android-ex-camera2-utils^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_23/frameworks/ex/android-ex-camera2-utils^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/ex/camera2/utils/android-ex-camera2-utils^android_common
 
 echo "building android-ex-camera2-portability^android_common"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_23.ninja android-ex-camera2-portability,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_23.ninja android-ex-camera2-portability,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/ex/camera2/portability/android-ex-camera2-portability^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_23/frameworks/ex/android-ex-camera2-portability^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/ex/camera2/portability/android-ex-camera2-portability^android_common
 

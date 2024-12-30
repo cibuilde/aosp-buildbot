@@ -1,5 +1,7 @@
 set -e
 
+echo "entering system/libhidl"
+
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
 mkdir -p out/soong/.minibootstrap && ln -sf $GITHUB_WORKSPACE/bpglob out/soong/.minibootstrap/bpglob
@@ -43,37 +45,37 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/system/libhwbinder/libhwbinder-impl-inte
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^android_x86_64_shared_current/ .
 
 echo "building libhidlbase^android_x86_64_shared_apex29"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libhidlbase,android_x86_64_shared_apex29
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libhidlbase,android_x86_64_shared_apex29
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/libhidl/libhidlbase^android_x86_64_shared_apex29
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/libhidl/libhidlbase^android_x86_64_shared_apex29.output . $GITHUB_WORKSPACE/artifacts/system/libhidl/libhidlbase^android_x86_64_shared_apex29
 
 echo "building android.hidl.memory.token@1.0^android_x86_64_shared_apex29"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja android.hidl.memory.token@1.0,android_x86_64_shared_apex29
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja android.hidl.memory.token@1.0,android_x86_64_shared_apex29
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/libhidl/transport/memory/token/1.0/android.hidl.memory.token@1.0^android_x86_64_shared_apex29
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/libhidl/android.hidl.memory.token@1.0^android_x86_64_shared_apex29.output . $GITHUB_WORKSPACE/artifacts/system/libhidl/transport/memory/token/1.0/android.hidl.memory.token@1.0^android_x86_64_shared_apex29
 
 echo "building android.hidl.memory@1.0^android_x86_64_shared_apex29"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja android.hidl.memory@1.0,android_x86_64_shared_apex29
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja android.hidl.memory@1.0,android_x86_64_shared_apex29
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/libhidl/transport/memory/1.0/android.hidl.memory@1.0^android_x86_64_shared_apex29
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/libhidl/android.hidl.memory@1.0^android_x86_64_shared_apex29.output . $GITHUB_WORKSPACE/artifacts/system/libhidl/transport/memory/1.0/android.hidl.memory@1.0^android_x86_64_shared_apex29
 
 echo "building android.hidl.safe_union@1.0^android_x86_64_shared_apex29"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja android.hidl.safe_union@1.0,android_x86_64_shared_apex29
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja android.hidl.safe_union@1.0,android_x86_64_shared_apex29
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/libhidl/transport/safe_union/1.0/android.hidl.safe_union@1.0^android_x86_64_shared_apex29
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/libhidl/android.hidl.safe_union@1.0^android_x86_64_shared_apex29.output . $GITHUB_WORKSPACE/artifacts/system/libhidl/transport/safe_union/1.0/android.hidl.safe_union@1.0^android_x86_64_shared_apex29
 
 echo "building android.hidl.token@1.0^android_x86_64_shared_apex29"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja android.hidl.token@1.0,android_x86_64_shared_apex29
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja android.hidl.token@1.0,android_x86_64_shared_apex29
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/libhidl/transport/token/1.0/android.hidl.token@1.0^android_x86_64_shared_apex29
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/libhidl/android.hidl.token@1.0^android_x86_64_shared_apex29.output . $GITHUB_WORKSPACE/artifacts/system/libhidl/transport/token/1.0/android.hidl.token@1.0^android_x86_64_shared_apex29
 
 echo "building android.hidl.token@1.0-utils^android_x86_64_shared_apex29"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja android.hidl.token@1.0-utils,android_x86_64_shared_apex29
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja android.hidl.token@1.0-utils,android_x86_64_shared_apex29
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/libhidl/transport/token/1.0/utils/android.hidl.token@1.0-utils^android_x86_64_shared_apex29
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/libhidl/android.hidl.token@1.0-utils^android_x86_64_shared_apex29.output . $GITHUB_WORKSPACE/artifacts/system/libhidl/transport/token/1.0/utils/android.hidl.token@1.0-utils^android_x86_64_shared_apex29
 
 echo "building libhidlmemory^android_x86_64_shared_apex29"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libhidlmemory,android_x86_64_shared_apex29
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libhidlmemory,android_x86_64_shared_apex29
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/libhidl/libhidlmemory/libhidlmemory^android_x86_64_shared_apex29
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/libhidl/libhidlmemory^android_x86_64_shared_apex29.output . $GITHUB_WORKSPACE/artifacts/system/libhidl/libhidlmemory/libhidlmemory^android_x86_64_shared_apex29
 

@@ -1,5 +1,7 @@
 set -e
 
+echo "entering libcore"
+
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
 mkdir -p out/soong/.minibootstrap && ln -sf $GITHUB_WORKSPACE/bpglob out/soong/.minibootstrap/bpglob
@@ -56,22 +58,22 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/tools/metalava/metalava^linux_glibc_comm
 rsync -a -r $GITHUB_WORKSPACE/downloads/tools/metalava/metalava^linux_glibc_x86_64/ .
 
 echo "building art.module.intra.core.api.stubs.source^android_common"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja art.module.intra.core.api.stubs.source,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja art.module.intra.core.api.stubs.source,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/libcore/mmodules/intracoreapi/art.module.intra.core.api.stubs.source^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/libcore/art.module.intra.core.api.stubs.source^android_common.output . $GITHUB_WORKSPACE/artifacts/libcore/mmodules/intracoreapi/art.module.intra.core.api.stubs.source^android_common
 
 echo "building java-current-stubs-source^android_common"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja java-current-stubs-source,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja java-current-stubs-source,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/libcore/java-current-stubs-source^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/libcore/java-current-stubs-source^android_common.output . $GITHUB_WORKSPACE/artifacts/libcore/java-current-stubs-source^android_common
 
 echo "building libandroidio^android_x86_64_shared_apex31"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libandroidio,android_x86_64_shared_apex31
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libandroidio,android_x86_64_shared_apex31
 mkdir -p $GITHUB_WORKSPACE/artifacts/libcore/libandroidio^android_x86_64_shared_apex31
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/libcore/libandroidio^android_x86_64_shared_apex31.output . $GITHUB_WORKSPACE/artifacts/libcore/libandroidio^android_x86_64_shared_apex31
 
 echo "building libandroidio^android_x86_x86_64_shared_apex31"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libandroidio,android_x86_x86_64_shared_apex31
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libandroidio,android_x86_x86_64_shared_apex31
 mkdir -p $GITHUB_WORKSPACE/artifacts/libcore/libandroidio^android_x86_x86_64_shared_apex31
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/libcore/libandroidio^android_x86_x86_64_shared_apex31.output . $GITHUB_WORKSPACE/artifacts/libcore/libandroidio^android_x86_x86_64_shared_apex31
 

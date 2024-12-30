@@ -1,5 +1,7 @@
 set -e
 
+echo "entering packages/apps/Settings"
+
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
 mkdir -p out/soong/.minibootstrap && ln -sf $GITHUB_WORKSPACE/bpglob out/soong/.minibootstrap/bpglob
@@ -34,22 +36,22 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/libcore/mmodules/core_platform_api/stabl
 rsync -a -r $GITHUB_WORKSPACE/downloads/packages/apps/Settings/statslog-settings-java-gen^/ .
 
 echo "building settings-contextual-card-protos-lite^android_common"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_25.ninja settings-contextual-card-protos-lite,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_25.ninja settings-contextual-card-protos-lite,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/apps/Settings/protos/settings-contextual-card-protos-lite^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_25/packages/apps/Settings/settings-contextual-card-protos-lite^android_common.output . $GITHUB_WORKSPACE/artifacts/packages/apps/Settings/protos/settings-contextual-card-protos-lite^android_common
 
 echo "building settings-log-bridge-protos-lite^android_common"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_25.ninja settings-log-bridge-protos-lite,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_25.ninja settings-log-bridge-protos-lite,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/apps/Settings/protos/settings-log-bridge-protos-lite^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_25/packages/apps/Settings/settings-log-bridge-protos-lite^android_common.output . $GITHUB_WORKSPACE/artifacts/packages/apps/Settings/protos/settings-log-bridge-protos-lite^android_common
 
 echo "building settings-logtags^android_common"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_25.ninja settings-logtags,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_25.ninja settings-logtags,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/apps/Settings/settings-logtags^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_25/packages/apps/Settings/settings-logtags^android_common.output . $GITHUB_WORKSPACE/artifacts/packages/apps/Settings/settings-logtags^android_common
 
 echo "building statslog-settings^android_common"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_25.ninja statslog-settings,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_25.ninja statslog-settings,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/apps/Settings/statslog-settings^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_25/packages/apps/Settings/statslog-settings^android_common.output . $GITHUB_WORKSPACE/artifacts/packages/apps/Settings/statslog-settings^android_common
 

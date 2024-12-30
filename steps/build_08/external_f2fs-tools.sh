@@ -1,5 +1,7 @@
 set -e
 
+echo "entering external/f2fs-tools"
+
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
 mkdir -p out/soong/.minibootstrap && ln -sf $GITHUB_WORKSPACE/bpglob out/soong/.minibootstrap/bpglob
@@ -68,27 +70,27 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^android_rec
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^android_x86_64_shared/ .
 
 echo "building fsck.f2fs^android_x86_64"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja fsck.f2fs,android_x86_64
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja fsck.f2fs,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/f2fs-tools/fsck.f2fs^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/external/f2fs-tools/fsck.f2fs^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/f2fs-tools/fsck.f2fs^android_x86_64
 
 echo "building make_f2fs^android_recovery_x86_64"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja make_f2fs,android_recovery_x86_64
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja make_f2fs,android_recovery_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/f2fs-tools/make_f2fs^android_recovery_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/external/f2fs-tools/make_f2fs^android_recovery_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/f2fs-tools/make_f2fs^android_recovery_x86_64
 
 echo "building make_f2fs^android_x86_64"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja make_f2fs,android_x86_64
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja make_f2fs,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/f2fs-tools/make_f2fs^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/external/f2fs-tools/make_f2fs^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/f2fs-tools/make_f2fs^android_x86_64
 
 echo "building sload_f2fs^android_recovery_x86_64"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja sload_f2fs,android_recovery_x86_64
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja sload_f2fs,android_recovery_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/f2fs-tools/sload_f2fs^android_recovery_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/external/f2fs-tools/sload_f2fs^android_recovery_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/f2fs-tools/sload_f2fs^android_recovery_x86_64
 
 echo "building sload_f2fs^android_x86_64"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja sload_f2fs,android_x86_64
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja sload_f2fs,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/f2fs-tools/sload_f2fs^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/external/f2fs-tools/sload_f2fs^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/f2fs-tools/sload_f2fs^android_x86_64
 

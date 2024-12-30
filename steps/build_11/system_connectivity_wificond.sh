@@ -1,5 +1,7 @@
 set -e
 
+echo "entering system/connectivity/wificond"
+
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
 mkdir -p out/soong/.minibootstrap && ln -sf $GITHUB_WORKSPACE/bpglob out/soong/.minibootstrap/bpglob
@@ -73,7 +75,7 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/system/security/keystore2/aidl/android.s
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/security/keystore2/aidl/android.security.legacykeystore-ndk_platform^android_x86_64_shared/ .
 
 echo "building wificond^android_x86_64"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_11.ninja wificond,android_x86_64
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_11.ninja wificond,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/connectivity/wificond/wificond^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_11/system/connectivity/wificond/wificond^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/connectivity/wificond/wificond^android_x86_64
 

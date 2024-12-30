@@ -1,5 +1,7 @@
 set -e
 
+echo "entering system/keymaster"
+
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
 mkdir -p out/soong/.minibootstrap && ln -sf $GITHUB_WORKSPACE/bpglob out/soong/.minibootstrap/bpglob
@@ -53,27 +55,27 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/system/libhidl/transport/manager/1.1/and
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/libhidl/transport/manager/1.2/android.hidl.manager@1.2_genc++_headers^/ .
 
 echo "building lib_android_keymaster_keymint_utils^android_vendor.31_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja lib_android_keymaster_keymint_utils,android_vendor.31_x86_64_static
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja lib_android_keymaster_keymint_utils,android_vendor.31_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/keymaster/lib_android_keymaster_keymint_utils^android_vendor.31_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/system/keymaster/lib_android_keymaster_keymint_utils^android_vendor.31_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/keymaster/lib_android_keymaster_keymint_utils^android_vendor.31_x86_64_static
 
 echo "building lib_android_keymaster_keymint_utils^android_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja lib_android_keymaster_keymint_utils,android_x86_64_static
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja lib_android_keymaster_keymint_utils,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/keymaster/lib_android_keymaster_keymint_utils^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/system/keymaster/lib_android_keymaster_keymint_utils^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/keymaster/lib_android_keymaster_keymint_utils^android_x86_64_static
 
 echo "building libkeymaster_messages^android_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libkeymaster_messages,android_x86_64_shared
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libkeymaster_messages,android_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/keymaster/libkeymaster_messages^android_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/system/keymaster/libkeymaster_messages^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/keymaster/libkeymaster_messages^android_x86_64_shared
 
 echo "building libkeymint^android_vendor.31_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libkeymint,android_vendor.31_x86_64_static
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libkeymint,android_vendor.31_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/keymaster/libkeymint^android_vendor.31_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/system/keymaster/libkeymint^android_vendor.31_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/keymaster/libkeymint^android_vendor.31_x86_64_static
 
 echo "building libkeymint^android_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libkeymint,android_x86_64_static
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libkeymint,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/keymaster/libkeymint^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/system/keymaster/libkeymint^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/keymaster/libkeymint^android_x86_64_static
 

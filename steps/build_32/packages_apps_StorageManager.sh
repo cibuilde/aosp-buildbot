@@ -1,5 +1,7 @@
 set -e
 
+echo "entering packages/apps/StorageManager"
+
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
 mkdir -p out/soong/.minibootstrap && ln -sf $GITHUB_WORKSPACE/bpglob out/soong/.minibootstrap/bpglob
@@ -182,7 +184,7 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/system/libhidl/transport/base/1.0/androi
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/libhidl/transport/manager/1.0/android.hidl.manager-V1.0-java^android_common/ .
 
 echo "building StorageManager^android_common"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_32.ninja StorageManager,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_32.ninja StorageManager,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/apps/StorageManager/StorageManager^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_32/packages/apps/StorageManager/StorageManager^android_common.output . $GITHUB_WORKSPACE/artifacts/packages/apps/StorageManager/StorageManager^android_common
 

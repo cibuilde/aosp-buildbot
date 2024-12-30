@@ -1,5 +1,7 @@
 set -e
 
+echo "entering packages/apps/Gallery2"
+
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
 mkdir -p out/soong/.minibootstrap && ln -sf $GITHUB_WORKSPACE/bpglob out/soong/.minibootstrap/bpglob
@@ -39,7 +41,7 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/native/graphics/jni/libj
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^android_x86_64_shared/ .
 
 echo "building libjni_filtershow_filters^android_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_15.ninja libjni_filtershow_filters,android_x86_64_shared
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_15.ninja libjni_filtershow_filters,android_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/apps/Gallery2/jni/libjni_filtershow_filters^android_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_15/packages/apps/Gallery2/libjni_filtershow_filters^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/packages/apps/Gallery2/jni/libjni_filtershow_filters^android_x86_64_shared
 

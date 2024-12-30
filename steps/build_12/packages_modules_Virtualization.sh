@@ -1,5 +1,7 @@
 set -e
 
+echo "entering packages/modules/Virtualization"
+
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
 mkdir -p out/soong/.minibootstrap && ln -sf $GITHUB_WORKSPACE/bpglob out/soong/.minibootstrap/bpglob
@@ -32,6 +34,7 @@ clone_depth_platform external/zlib
 clone_depth_platform frameworks/native
 clone_depth_platform packages/modules/Virtualization
 clone_depth_platform packages/modules/adb
+clone_project platform/prebuilts/build-tools prebuilts/build-tools android12-gsi "/linux-x86/bin" "/linux-x86/lib64" "/path" "/common"
 clone_depth_platform system/apex
 clone_depth_platform system/core
 clone_sparse_exclude system/extras "!/simpleperf/scripts" "!/simpleperf/testdata" "!/simpleperf/demo" "!/simpleperf/doc" "!/memory_replay/traces" "!/ioshark/*.tgz" "!/ioshark/*.tar.gz"
@@ -162,17 +165,17 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/system/unwinding/libbacktrace/libbacktra
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/unwinding/libunwindstack/libunwindstack^android_x86_64_shared/ .
 
 echo "building microdroid^android_common"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_12.ninja microdroid,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_12.ninja microdroid,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/Virtualization/microdroid/microdroid^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_12/packages/modules/Virtualization/microdroid^android_common.output . $GITHUB_WORKSPACE/artifacts/packages/modules/Virtualization/microdroid/microdroid^android_common
 
 echo "building microdroid_super^android_x86_64"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_12.ninja microdroid_super,android_x86_64
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_12.ninja microdroid_super,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/Virtualization/microdroid/microdroid_super^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_12/packages/modules/Virtualization/microdroid_super^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/packages/modules/Virtualization/microdroid/microdroid_super^android_x86_64
 
 echo "building microdroid_vbmeta_system^android_x86_64"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_12.ninja microdroid_vbmeta_system,android_x86_64
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_12.ninja microdroid_vbmeta_system,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/Virtualization/microdroid/microdroid_vbmeta_system^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_12/packages/modules/Virtualization/microdroid_vbmeta_system^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/packages/modules/Virtualization/microdroid/microdroid_vbmeta_system^android_x86_64
 
@@ -275,6 +278,10 @@ fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/packages_modules_adb.tar.zst" ]; then
   echo "Compressing packages/modules/adb -> packages_modules_adb.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/packages_modules_adb.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/packages/modules/adb/ .
+fi
+if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_build-tools.tar.zst" ]; then
+  echo "Compressing prebuilts/build-tools -> prebuilts_build-tools.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/prebuilts_build-tools.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/prebuilts/build-tools/ .
 fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/system_apex.tar.zst" ]; then
   echo "Compressing system/apex -> system_apex.tar.zst"

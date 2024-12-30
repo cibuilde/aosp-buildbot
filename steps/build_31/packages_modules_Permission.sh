@@ -1,5 +1,7 @@
 set -e
 
+echo "entering packages/modules/Permission"
+
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
 mkdir -p out/soong/.minibootstrap && ln -sf $GITHUB_WORKSPACE/bpglob out/soong/.minibootstrap/bpglob
@@ -89,30 +91,30 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/tools/metalava/metalava^linux_glibc_comm
 rsync -a -r $GITHUB_WORKSPACE/downloads/tools/metalava/metalava^linux_glibc_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/tools/metalava/stub-annotations^android_common/ .
 
+echo "building service-permission.stubs.source.system_server^android_common"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_31.ninja service-permission.stubs.source.system_server,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/Permission/service/service-permission.stubs.source.system_server^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_31/packages/modules/Permission/service-permission.stubs.source.system_server^android_common.output . $GITHUB_WORKSPACE/artifacts/packages/modules/Permission/service/service-permission.stubs.source.system_server^android_common
+
+echo "building service-permission^android_common_apex30"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_31.ninja service-permission,android_common_apex30
+mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/Permission/service/service-permission^android_common_apex30
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_31/packages/modules/Permission/service-permission^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/packages/modules/Permission/service/service-permission^android_common_apex30
+
 echo "building com.android.permission^android_common_com.android.permission_image"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_31.ninja com.android.permission,android_common_com.android.permission_image
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_31.ninja com.android.permission,android_common_com.android.permission_image
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/Permission/com.android.permission^android_common_com.android.permission_image
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_31/packages/modules/Permission/com.android.permission^android_common_com.android.permission_image.output . $GITHUB_WORKSPACE/artifacts/packages/modules/Permission/com.android.permission^android_common_com.android.permission_image
 
 echo "building framework-permission-s.impl^android_common"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_31.ninja framework-permission-s.impl,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_31.ninja framework-permission-s.impl,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/Permission/framework-s/framework-permission-s.impl^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_31/packages/modules/Permission/framework-permission-s.impl^android_common.output . $GITHUB_WORKSPACE/artifacts/packages/modules/Permission/framework-s/framework-permission-s.impl^android_common
 
-echo "building service-permission.stubs.source.system_server^android_common"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_31.ninja service-permission.stubs.source.system_server,android_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/Permission/service/service-permission.stubs.source.system_server^android_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_31/packages/modules/Permission/service-permission.stubs.source.system_server^android_common.output . $GITHUB_WORKSPACE/artifacts/packages/modules/Permission/service/service-permission.stubs.source.system_server^android_common
-
 echo "building service-permission.stubs.system_server^android_common"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_31.ninja service-permission.stubs.system_server,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_31.ninja service-permission.stubs.system_server,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/Permission/service/service-permission.stubs.system_server^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_31/packages/modules/Permission/service-permission.stubs.system_server^android_common.output . $GITHUB_WORKSPACE/artifacts/packages/modules/Permission/service/service-permission.stubs.system_server^android_common
-
-echo "building service-permission^android_common_apex30"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_31.ninja service-permission,android_common_apex30
-mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/Permission/service/service-permission^android_common_apex30
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_31/packages/modules/Permission/service-permission^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/packages/modules/Permission/service/service-permission^android_common_apex30
 
 rm -rf out
 

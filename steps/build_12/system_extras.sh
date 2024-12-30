@@ -1,5 +1,7 @@
 set -e
 
+echo "entering system/extras"
+
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
 mkdir -p out/soong/.minibootstrap && ln -sf $GITHUB_WORKSPACE/bpglob out/soong/.minibootstrap/bpglob
@@ -167,17 +169,17 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^android_x86
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/server_configurable_flags/libflags/server_configurable_flags^android_x86_64_shared/ .
 
 echo "building libprofcollectd^android_x86_64_dylib"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_12.ninja libprofcollectd,android_x86_64_dylib
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_12.ninja libprofcollectd,android_x86_64_dylib
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/extras/profcollectd/libprofcollectd/libprofcollectd^android_x86_64_dylib
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_12/system/extras/libprofcollectd^android_x86_64_dylib.output . $GITHUB_WORKSPACE/artifacts/system/extras/profcollectd/libprofcollectd/libprofcollectd^android_x86_64_dylib
 
 echo "building profcollectctl^android_x86_64"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_12.ninja profcollectctl,android_x86_64
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_12.ninja profcollectctl,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/extras/profcollectd/profcollectctl^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_12/system/extras/profcollectctl^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/extras/profcollectd/profcollectctl^android_x86_64
 
 echo "building profcollectd^android_x86_64"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_12.ninja profcollectd,android_x86_64
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_12.ninja profcollectd,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/extras/profcollectd/profcollectd^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_12/system/extras/profcollectd^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/extras/profcollectd/profcollectd^android_x86_64
 

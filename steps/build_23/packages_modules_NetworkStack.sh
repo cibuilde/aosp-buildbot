@@ -1,5 +1,7 @@
 set -e
 
+echo "entering packages/modules/NetworkStack"
+
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
 mkdir -p out/soong/.minibootstrap && ln -sf $GITHUB_WORKSPACE/bpglob out/soong/.minibootstrap/bpglob
@@ -37,27 +39,27 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/sdk/current/androidx/androidx.
 rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/sdk/current/androidx/androidx.annotation_annotation^android_common_apex30/ .
 
 echo "building captiveportal-lib^android_common"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_23.ninja captiveportal-lib,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_23.ninja captiveportal-lib,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/NetworkStack/common/captiveportal/captiveportal-lib^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_23/packages/modules/NetworkStack/captiveportal-lib^android_common.output . $GITHUB_WORKSPACE/artifacts/packages/modules/NetworkStack/common/captiveportal/captiveportal-lib^android_common
 
 echo "building ipmemorystore-aidl-interfaces-V10-java^android_common_apex30"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_23.ninja ipmemorystore-aidl-interfaces-V10-java,android_common_apex30
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_23.ninja ipmemorystore-aidl-interfaces-V10-java,android_common_apex30
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/NetworkStack/common/networkstackclient/ipmemorystore-aidl-interfaces-V10-java^android_common_apex30
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_23/packages/modules/NetworkStack/ipmemorystore-aidl-interfaces-V10-java^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/packages/modules/NetworkStack/common/networkstackclient/ipmemorystore-aidl-interfaces-V10-java^android_common_apex30
 
 echo "building netlink-client^android_common"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_23.ninja netlink-client,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_23.ninja netlink-client,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/NetworkStack/common/netlinkclient/netlink-client^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_23/packages/modules/NetworkStack/netlink-client^android_common.output . $GITHUB_WORKSPACE/artifacts/packages/modules/NetworkStack/common/netlinkclient/netlink-client^android_common
 
 echo "building netlink-client^android_common_apex30"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_23.ninja netlink-client,android_common_apex30
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_23.ninja netlink-client,android_common_apex30
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/NetworkStack/common/netlinkclient/netlink-client^android_common_apex30
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_23/packages/modules/NetworkStack/netlink-client^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/packages/modules/NetworkStack/common/netlinkclient/netlink-client^android_common_apex30
 
 echo "building networkstack-aidl-interfaces-V10-java^android_common_apex30"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_23.ninja networkstack-aidl-interfaces-V10-java,android_common_apex30
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_23.ninja networkstack-aidl-interfaces-V10-java,android_common_apex30
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/NetworkStack/common/networkstackclient/networkstack-aidl-interfaces-V10-java^android_common_apex30
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_23/packages/modules/NetworkStack/networkstack-aidl-interfaces-V10-java^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/packages/modules/NetworkStack/common/networkstackclient/networkstack-aidl-interfaces-V10-java^android_common_apex30
 

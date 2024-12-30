@@ -1,5 +1,7 @@
 set -e
 
+echo "entering frameworks/base"
+
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
 mkdir -p out/soong/.minibootstrap && ln -sf $GITHUB_WORKSPACE/bpglob out/soong/.minibootstrap/bpglob
@@ -306,142 +308,142 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/tools/platform-compat/java/android/proce
 rsync -a -r $GITHUB_WORKSPACE/downloads/tools/platform-compat/java/android/compat/annotation/unsupportedappusage^android_common/ .
 
 echo "building BackupRestoreConfirmation^android_common"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_32.ninja BackupRestoreConfirmation,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_32.ninja BackupRestoreConfirmation,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/BackupRestoreConfirmation/BackupRestoreConfirmation^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_32/frameworks/base/BackupRestoreConfirmation^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/BackupRestoreConfirmation/BackupRestoreConfirmation^android_common
 
 echo "building BluetoothMidiService^android_common"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_32.ninja BluetoothMidiService,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_32.ninja BluetoothMidiService,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/media/packages/BluetoothMidiService/BluetoothMidiService^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_32/frameworks/base/BluetoothMidiService^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/media/packages/BluetoothMidiService/BluetoothMidiService^android_common
 
 echo "building CameraExtensionsProxy^android_common"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_32.ninja CameraExtensionsProxy,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_32.ninja CameraExtensionsProxy,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/services/CameraExtensionsProxy/CameraExtensionsProxy^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_32/frameworks/base/CameraExtensionsProxy^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/services/CameraExtensionsProxy/CameraExtensionsProxy^android_common
 
 echo "building CarrierDefaultApp^android_common"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_32.ninja CarrierDefaultApp,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_32.ninja CarrierDefaultApp,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/CarrierDefaultApp/CarrierDefaultApp^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_32/frameworks/base/CarrierDefaultApp^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/CarrierDefaultApp/CarrierDefaultApp^android_common
 
 echo "building CompanionDeviceManager^android_common"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_32.ninja CompanionDeviceManager,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_32.ninja CompanionDeviceManager,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/CompanionDeviceManager/CompanionDeviceManager^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_32/frameworks/base/CompanionDeviceManager^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/CompanionDeviceManager/CompanionDeviceManager^android_common
 
 echo "building DynamicSystemInstallationService^android_common"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_32.ninja DynamicSystemInstallationService,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_32.ninja DynamicSystemInstallationService,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/DynamicSystemInstallationService/DynamicSystemInstallationService^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_32/frameworks/base/DynamicSystemInstallationService^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/DynamicSystemInstallationService/DynamicSystemInstallationService^android_common
 
 echo "building EasterEgg^android_common"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_32.ninja EasterEgg,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_32.ninja EasterEgg,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/EasterEgg/EasterEgg^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_32/frameworks/base/EasterEgg^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/EasterEgg/EasterEgg^android_common
 
 echo "building ExtShared^android_common"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_32.ninja ExtShared,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_32.ninja ExtShared,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/ExtShared/ExtShared^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_32/frameworks/base/ExtShared^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/ExtShared/ExtShared^android_common
 
 echo "building ExternalStorageProvider^android_common"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_32.ninja ExternalStorageProvider,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_32.ninja ExternalStorageProvider,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/ExternalStorageProvider/ExternalStorageProvider^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_32/frameworks/base/ExternalStorageProvider^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/ExternalStorageProvider/ExternalStorageProvider^android_common
 
 echo "building FusedLocation^android_common"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_32.ninja FusedLocation,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_32.ninja FusedLocation,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/FusedLocation/FusedLocation^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_32/frameworks/base/FusedLocation^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/FusedLocation/FusedLocation^android_common
 
 echo "building InputDevices^android_common"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_32.ninja InputDevices,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_32.ninja InputDevices,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/InputDevices/InputDevices^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_32/frameworks/base/InputDevices^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/InputDevices/InputDevices^android_common
 
 echo "building LocalTransport^android_common"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_32.ninja LocalTransport,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_32.ninja LocalTransport,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/LocalTransport/LocalTransport^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_32/frameworks/base/LocalTransport^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/LocalTransport/LocalTransport^android_common
 
 echo "building PacProcessor^android_common"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_32.ninja PacProcessor,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_32.ninja PacProcessor,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/services/PacProcessor/PacProcessor^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_32/frameworks/base/PacProcessor^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/services/PacProcessor/PacProcessor^android_common
 
 echo "building PackageInstaller^android_common"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_32.ninja PackageInstaller,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_32.ninja PackageInstaller,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/PackageInstaller/PackageInstaller^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_32/frameworks/base/PackageInstaller^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/PackageInstaller/PackageInstaller^android_common
 
 echo "building PrintRecommendationService^android_common"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_32.ninja PrintRecommendationService,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_32.ninja PrintRecommendationService,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/PrintRecommendationService/PrintRecommendationService^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_32/frameworks/base/PrintRecommendationService^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/PrintRecommendationService/PrintRecommendationService^android_common
 
 echo "building PrintSpooler^android_common"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_32.ninja PrintSpooler,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_32.ninja PrintSpooler,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/PrintSpooler/PrintSpooler^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_32/frameworks/base/PrintSpooler^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/PrintSpooler/PrintSpooler^android_common
 
 echo "building ProxyHandler^android_common"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_32.ninja ProxyHandler,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_32.ninja ProxyHandler,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/services/Proxy/ProxyHandler^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_32/frameworks/base/ProxyHandler^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/services/Proxy/ProxyHandler^android_common
 
 echo "building SettingsProvider^android_common"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_32.ninja SettingsProvider,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_32.ninja SettingsProvider,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsProvider/SettingsProvider^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_32/frameworks/base/SettingsProvider^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsProvider/SettingsProvider^android_common
 
 echo "building SharedStorageBackup^android_common"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_32.ninja SharedStorageBackup,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_32.ninja SharedStorageBackup,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SharedStorageBackup/SharedStorageBackup^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_32/frameworks/base/SharedStorageBackup^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SharedStorageBackup/SharedStorageBackup^android_common
 
 echo "building Shell^android_common"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_32.ninja Shell,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_32.ninja Shell,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/Shell/Shell^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_32/frameworks/base/Shell^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/Shell/Shell^android_common
 
 echo "building SimAppDialog^android_common"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_32.ninja SimAppDialog,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_32.ninja SimAppDialog,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SimAppDialog/SimAppDialog^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_32/frameworks/base/SimAppDialog^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SimAppDialog/SimAppDialog^android_common
 
 echo "building SoundPicker^android_common"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_32.ninja SoundPicker,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_32.ninja SoundPicker,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SoundPicker/SoundPicker^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_32/frameworks/base/SoundPicker^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SoundPicker/SoundPicker^android_common
 
 echo "building StatementService^android_common"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_32.ninja StatementService,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_32.ninja StatementService,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/StatementService/StatementService^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_32/frameworks/base/StatementService^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/StatementService/StatementService^android_common
 
 echo "building SystemUI^android_common"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_32.ninja SystemUI,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_32.ninja SystemUI,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SystemUI/SystemUI^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_32/frameworks/base/SystemUI^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SystemUI/SystemUI^android_common
 
 echo "building VpnDialogs^android_common"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_32.ninja VpnDialogs,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_32.ninja VpnDialogs,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/VpnDialogs/VpnDialogs^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_32/frameworks/base/VpnDialogs^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/VpnDialogs/VpnDialogs^android_common
 
 echo "building WallpaperBackup^android_common"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_32.ninja WallpaperBackup,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_32.ninja WallpaperBackup,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/WallpaperBackup/WallpaperBackup^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_32/frameworks/base/WallpaperBackup^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/WallpaperBackup/WallpaperBackup^android_common
 
 echo "building WallpaperCropper^android_common"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_32.ninja WallpaperCropper,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_32.ninja WallpaperCropper,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/WallpaperCropper/WallpaperCropper^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_32/frameworks/base/WallpaperCropper^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/WallpaperCropper/WallpaperCropper^android_common
 
 echo "building services.coverage^android_common"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_32.ninja services.coverage,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_32.ninja services.coverage,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/services/coverage/services.coverage^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_32/frameworks/base/services.coverage^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/services/coverage/services.coverage^android_common
 

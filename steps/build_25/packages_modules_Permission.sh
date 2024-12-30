@@ -1,5 +1,7 @@
 set -e
 
+echo "entering packages/modules/Permission"
+
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
 mkdir -p out/soong/.minibootstrap && ln -sf $GITHUB_WORKSPACE/bpglob out/soong/.minibootstrap/bpglob
@@ -30,12 +32,12 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/Permission/framework-s/
 rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/Permission/framework-s/framework-permission-s-shared^android_common_apex30/ .
 
 echo "building service-permission-shared^android_common"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_25.ninja service-permission-shared,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_25.ninja service-permission-shared,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/Permission/service/service-permission-shared^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_25/packages/modules/Permission/service-permission-shared^android_common.output . $GITHUB_WORKSPACE/artifacts/packages/modules/Permission/service/service-permission-shared^android_common
 
 echo "building service-permission-shared^android_common_apex30"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_25.ninja service-permission-shared,android_common_apex30
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_25.ninja service-permission-shared,android_common_apex30
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/Permission/service/service-permission-shared^android_common_apex30
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_25/packages/modules/Permission/service-permission-shared^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/packages/modules/Permission/service/service-permission-shared^android_common_apex30
 

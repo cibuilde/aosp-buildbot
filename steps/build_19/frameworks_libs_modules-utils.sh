@@ -1,5 +1,7 @@
 set -e
 
+echo "entering frameworks/libs/modules-utils"
+
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
 mkdir -p out/soong/.minibootstrap && ln -sf $GITHUB_WORKSPACE/bpglob out/soong/.minibootstrap/bpglob
@@ -29,17 +31,17 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/singletons/sdk^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/tools/aidl/aidl^linux_glibc_x86_64/ .
 
 echo "building modules-utils-os^android_common"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_19.ninja modules-utils-os,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_19.ninja modules-utils-os,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/libs/modules-utils/java/com/android/modules/utils/modules-utils-os^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_19/frameworks/libs/modules-utils/modules-utils-os^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/libs/modules-utils/java/com/android/modules/utils/modules-utils-os^android_common
 
 echo "building modules-utils-os^android_common_apex10000"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_19.ninja modules-utils-os,android_common_apex10000
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_19.ninja modules-utils-os,android_common_apex10000
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/libs/modules-utils/java/com/android/modules/utils/modules-utils-os^android_common_apex10000
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_19/frameworks/libs/modules-utils/modules-utils-os^android_common_apex10000.output . $GITHUB_WORKSPACE/artifacts/frameworks/libs/modules-utils/java/com/android/modules/utils/modules-utils-os^android_common_apex10000
 
 echo "building modules-utils-os^android_common_apex30"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_19.ninja modules-utils-os,android_common_apex30
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_19.ninja modules-utils-os,android_common_apex30
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/libs/modules-utils/java/com/android/modules/utils/modules-utils-os^android_common_apex30
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_19/frameworks/libs/modules-utils/modules-utils-os^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/frameworks/libs/modules-utils/java/com/android/modules/utils/modules-utils-os^android_common_apex30
 

@@ -1,5 +1,7 @@
 set -e
 
+echo "entering system/libziparchive"
+
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
 mkdir -p out/soong/.minibootstrap && ln -sf $GITHUB_WORKSPACE/bpglob out/soong/.minibootstrap/bpglob
@@ -91,37 +93,37 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^android_x86
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^android_x86_x86_64_shared/ .
 
 echo "building libziparchive^android_recovery_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libziparchive,android_recovery_x86_64_shared
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libziparchive,android_recovery_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/libziparchive/libziparchive^android_recovery_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/libziparchive/libziparchive^android_recovery_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/libziparchive/libziparchive^android_recovery_x86_64_shared
 
 echo "building libziparchive^android_vendor.31_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libziparchive,android_vendor.31_x86_64_shared
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libziparchive,android_vendor.31_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/libziparchive/libziparchive^android_vendor.31_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/libziparchive/libziparchive^android_vendor.31_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/libziparchive/libziparchive^android_vendor.31_x86_64_shared
 
 echo "building libziparchive^android_vendor.31_x86_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libziparchive,android_vendor.31_x86_x86_64_shared
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libziparchive,android_vendor.31_x86_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/libziparchive/libziparchive^android_vendor.31_x86_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/libziparchive/libziparchive^android_vendor.31_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/libziparchive/libziparchive^android_vendor.31_x86_x86_64_shared
 
 echo "building libziparchive^android_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libziparchive,android_x86_64_shared
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libziparchive,android_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/libziparchive/libziparchive^android_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/libziparchive/libziparchive^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/libziparchive/libziparchive^android_x86_64_shared
 
 echo "building libziparchive^android_x86_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libziparchive,android_x86_x86_64_shared
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libziparchive,android_x86_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/libziparchive/libziparchive^android_x86_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/libziparchive/libziparchive^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/libziparchive/libziparchive^android_x86_x86_64_shared
 
 echo "building ziptool^android_recovery_x86_64"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja ziptool,android_recovery_x86_64
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja ziptool,android_recovery_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/libziparchive/ziptool^android_recovery_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/libziparchive/ziptool^android_recovery_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/libziparchive/ziptool^android_recovery_x86_64
 
 echo "building ziptool^android_x86_64"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja ziptool,android_x86_64
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja ziptool,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/libziparchive/ziptool^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/libziparchive/ziptool^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/libziparchive/ziptool^android_x86_64
 

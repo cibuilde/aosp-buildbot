@@ -1,5 +1,7 @@
 set -e
 
+echo "entering external/sonivox"
+
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
 mkdir -p out/soong/.minibootstrap && ln -sf $GITHUB_WORKSPACE/bpglob out/soong/.minibootstrap/bpglob
@@ -38,12 +40,12 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^android_x86
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^android_x86_x86_64_shared/ .
 
 echo "building libsonivox^android_x86_64_shared_cfi"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libsonivox,android_x86_64_shared_cfi
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libsonivox,android_x86_64_shared_cfi
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/sonivox/arm-wt-22k/libsonivox^android_x86_64_shared_cfi
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/external/sonivox/libsonivox^android_x86_64_shared_cfi.output . $GITHUB_WORKSPACE/artifacts/external/sonivox/arm-wt-22k/libsonivox^android_x86_64_shared_cfi
 
 echo "building libsonivox^android_x86_x86_64_shared_cfi"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libsonivox,android_x86_x86_64_shared_cfi
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libsonivox,android_x86_x86_64_shared_cfi
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/sonivox/arm-wt-22k/libsonivox^android_x86_x86_64_shared_cfi
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/external/sonivox/libsonivox^android_x86_x86_64_shared_cfi.output . $GITHUB_WORKSPACE/artifacts/external/sonivox/arm-wt-22k/libsonivox^android_x86_x86_64_shared_cfi
 

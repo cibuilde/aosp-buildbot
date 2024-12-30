@@ -1,5 +1,7 @@
 set -e
 
+echo "entering packages/services/BuiltInPrintService"
+
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
 mkdir -p out/soong/.minibootstrap && ln -sf $GITHUB_WORKSPACE/bpglob out/soong/.minibootstrap/bpglob
@@ -42,7 +44,7 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/external/zlib/libz^android_x86_64_shared
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^android_x86_64_shared/ .
 
 echo "building libwfds^android_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libwfds,android_x86_64_shared
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libwfds,android_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/services/BuiltInPrintService/jni/libwfds^android_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/packages/services/BuiltInPrintService/libwfds^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/packages/services/BuiltInPrintService/jni/libwfds^android_x86_64_shared
 

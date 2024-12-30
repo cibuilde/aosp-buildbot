@@ -1,5 +1,7 @@
 set -e
 
+echo "entering frameworks/libs/net"
+
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
 mkdir -p out/soong/.minibootstrap && ln -sf $GITHUB_WORKSPACE/bpglob out/soong/.minibootstrap/bpglob
@@ -35,12 +37,12 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/system/netd/server/netd_event_listener_i
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/netd/server/netd_event_listener_interface-lateststable-java^android_common_apex30/ .
 
 echo "building net-utils-services-common^android_common"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_24.ninja net-utils-services-common,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_24.ninja net-utils-services-common,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/libs/net/common/net-utils-services-common^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_24/frameworks/libs/net/net-utils-services-common^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/libs/net/common/net-utils-services-common^android_common
 
 echo "building netd-client^android_common_apex30"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_24.ninja netd-client,android_common_apex30
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_24.ninja netd-client,android_common_apex30
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/libs/net/client-libs/netd-client^android_common_apex30
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_24/frameworks/libs/net/netd-client^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/frameworks/libs/net/client-libs/netd-client^android_common_apex30
 

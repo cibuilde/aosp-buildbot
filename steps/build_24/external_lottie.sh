@@ -1,5 +1,7 @@
 set -e
 
+echo "entering external/lottie"
+
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
 mkdir -p out/soong/.minibootstrap && ln -sf $GITHUB_WORKSPACE/bpglob out/soong/.minibootstrap/bpglob
@@ -75,7 +77,7 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/sdk/current/androidx/androidx.
 rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/sdk/current/androidx/androidx.viewpager_viewpager^android_common/ .
 
 echo "building lottie^android_common"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_24.ninja lottie,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_24.ninja lottie,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/lottie/lottie^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_24/external/lottie/lottie^android_common.output . $GITHUB_WORKSPACE/artifacts/external/lottie/lottie^android_common
 

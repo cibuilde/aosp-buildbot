@@ -1,5 +1,7 @@
 set -e
 
+echo "entering packages/modules/common"
+
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
 mkdir -p out/soong/.minibootstrap && ln -sf $GITHUB_WORKSPACE/bpglob out/soong/.minibootstrap/bpglob
@@ -23,12 +25,12 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/external/protobuf/aprotoc^linux_glibc_x8
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/turbine/turbine^linux_glibc_common/ .
 
 echo "building modules-annotation-minsdk^android_common"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja modules-annotation-minsdk,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja modules-annotation-minsdk,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/common/java/com/android/modules/annotation/modules-annotation-minsdk^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/packages/modules/common/modules-annotation-minsdk^android_common.output . $GITHUB_WORKSPACE/artifacts/packages/modules/common/java/com/android/modules/annotation/modules-annotation-minsdk^android_common
 
 echo "building modules-annotation-minsdk^android_common_apex29"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja modules-annotation-minsdk,android_common_apex29
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja modules-annotation-minsdk,android_common_apex29
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/common/java/com/android/modules/annotation/modules-annotation-minsdk^android_common_apex29
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/packages/modules/common/modules-annotation-minsdk^android_common_apex29.output . $GITHUB_WORKSPACE/artifacts/packages/modules/common/java/com/android/modules/annotation/modules-annotation-minsdk^android_common_apex29
 

@@ -1,5 +1,7 @@
 set -e
 
+echo "entering system/apex"
+
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
 mkdir -p out/soong/.minibootstrap && ln -sf $GITHUB_WORKSPACE/bpglob out/soong/.minibootstrap/bpglob
@@ -43,22 +45,22 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/system/tools/xsdc/xsdc^linux_glibc_commo
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/tools/xsdc/xsdc^linux_glibc_x86_64/ .
 
 echo "building apex-info-list^"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja apex-info-list,
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja apex-info-list,
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/apex/apexd/apex-info-list^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/system/apex/apex-info-list^.output . $GITHUB_WORKSPACE/artifacts/system/apex/apexd/apex-info-list^
 
 echo "building apex_compression_tool^linux_glibc_x86_64_PY3"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja apex_compression_tool,linux_glibc_x86_64_PY3
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja apex_compression_tool,linux_glibc_x86_64_PY3
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/apex/tools/apex_compression_tool^linux_glibc_x86_64_PY3
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/system/apex/apex_compression_tool^linux_glibc_x86_64_PY3.output . $GITHUB_WORKSPACE/artifacts/system/apex/tools/apex_compression_tool^linux_glibc_x86_64_PY3
 
 echo "building apexer^linux_glibc_x86_64_PY2"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja apexer,linux_glibc_x86_64_PY2
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja apexer,linux_glibc_x86_64_PY2
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/apex/apexer/apexer^linux_glibc_x86_64_PY2
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/system/apex/apexer^linux_glibc_x86_64_PY2.output . $GITHUB_WORKSPACE/artifacts/system/apex/apexer/apexer^linux_glibc_x86_64_PY2
 
 echo "building conv_apex_manifest^linux_glibc_x86_64_PY2"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja conv_apex_manifest,linux_glibc_x86_64_PY2
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja conv_apex_manifest,linux_glibc_x86_64_PY2
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/apex/apexer/conv_apex_manifest^linux_glibc_x86_64_PY2
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/system/apex/conv_apex_manifest^linux_glibc_x86_64_PY2.output . $GITHUB_WORKSPACE/artifacts/system/apex/apexer/conv_apex_manifest^linux_glibc_x86_64_PY2
 

@@ -1,5 +1,7 @@
 set -e
 
+echo "entering system/timezone"
+
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
 mkdir -p out/soong/.minibootstrap && ln -sf $GITHUB_WORKSPACE/bpglob out/soong/.minibootstrap/bpglob
@@ -28,12 +30,12 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/libcore/mmodules/core_platform_api/legac
 rsync -a -r $GITHUB_WORKSPACE/downloads/libcore/mmodules/core_platform_api/stable-core-platform-api-stubs-system-modules^android_common/ .
 
 echo "building time_zone_distro^android_common"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_25.ninja time_zone_distro,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_25.ninja time_zone_distro,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/timezone/distro/core/time_zone_distro^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_25/system/timezone/time_zone_distro^android_common.output . $GITHUB_WORKSPACE/artifacts/system/timezone/distro/core/time_zone_distro^android_common
 
 echo "building time_zone_distro_installer^android_common"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_25.ninja time_zone_distro_installer,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_25.ninja time_zone_distro_installer,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/timezone/distro/installer/time_zone_distro_installer^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_25/system/timezone/time_zone_distro_installer^android_common.output . $GITHUB_WORKSPACE/artifacts/system/timezone/distro/installer/time_zone_distro_installer^android_common
 

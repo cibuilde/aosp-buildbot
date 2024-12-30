@@ -1,5 +1,7 @@
 set -e
 
+echo "entering external/selinux"
+
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
 mkdir -p out/soong/.minibootstrap && ln -sf $GITHUB_WORKSPACE/bpglob out/soong/.minibootstrap/bpglob
@@ -25,17 +27,17 @@ clone_depth_platform system/media
 
 
 echo "building libsepol^android_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libsepol,android_x86_64_static
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libsepol,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/selinux/libsepol/libsepol^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/selinux/libsepol^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/selinux/libsepol/libsepol^android_x86_64_static
 
 echo "building libsepol^linux_glibc_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libsepol,linux_glibc_x86_64_static
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libsepol,linux_glibc_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/selinux/libsepol/libsepol^linux_glibc_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/selinux/libsepol^linux_glibc_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/selinux/libsepol/libsepol^linux_glibc_x86_64_static
 
 echo "building secilc^linux_glibc_x86_64"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja secilc,linux_glibc_x86_64
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja secilc,linux_glibc_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/selinux/secilc/secilc^linux_glibc_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/selinux/secilc^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/selinux/secilc/secilc^linux_glibc_x86_64
 

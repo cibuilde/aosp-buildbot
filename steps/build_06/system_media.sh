@@ -1,5 +1,7 @@
 set -e
 
+echo "entering system/media"
+
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
 mkdir -p out/soong/.minibootstrap && ln -sf $GITHUB_WORKSPACE/bpglob out/soong/.minibootstrap/bpglob
@@ -58,22 +60,22 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^android_x86
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^android_x86_x86_64_shared/ .
 
 echo "building libcamera_metadata^android_vendor.31_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libcamera_metadata,android_vendor.31_x86_64_shared
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libcamera_metadata,android_vendor.31_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/media/camera/libcamera_metadata^android_vendor.31_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/system/media/libcamera_metadata^android_vendor.31_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/media/camera/libcamera_metadata^android_vendor.31_x86_64_shared
 
 echo "building libcamera_metadata^android_vendor.31_x86_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libcamera_metadata,android_vendor.31_x86_x86_64_shared
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libcamera_metadata,android_vendor.31_x86_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/media/camera/libcamera_metadata^android_vendor.31_x86_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/system/media/libcamera_metadata^android_vendor.31_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/media/camera/libcamera_metadata^android_vendor.31_x86_x86_64_shared
 
 echo "building libcamera_metadata^android_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libcamera_metadata,android_x86_64_shared
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libcamera_metadata,android_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/media/camera/libcamera_metadata^android_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/system/media/libcamera_metadata^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/media/camera/libcamera_metadata^android_x86_64_shared
 
 echo "building libcamera_metadata^android_x86_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libcamera_metadata,android_x86_x86_64_shared
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libcamera_metadata,android_x86_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/media/camera/libcamera_metadata^android_x86_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/system/media/libcamera_metadata^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/media/camera/libcamera_metadata^android_x86_x86_64_shared
 

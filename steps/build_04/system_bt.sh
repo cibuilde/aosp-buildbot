@@ -1,5 +1,7 @@
 set -e
 
+echo "entering system/bt"
+
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
 mkdir -p out/soong/.minibootstrap && ln -sf $GITHUB_WORKSPACE/bpglob out/soong/.minibootstrap/bpglob
@@ -27,6 +29,7 @@ clone_depth_platform hardware/libhardware
 clone_depth_platform hardware/libhardware_legacy
 clone_depth_platform hardware/ril
 clone_depth_platform libnativehelper
+clone_project platform/prebuilts/build-tools prebuilts/build-tools android12-gsi "/linux-x86/bin" "/linux-x86/lib64" "/path" "/common"
 clone_project platform/prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8 prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8 android12-gsi "/sysroot" "/lib/gcc/x86_64-linux/4.8.3" "/x86_64-linux/lib64" "/x86_64-linux/lib32"
 clone_depth_platform prebuilts/gcc/linux-x86/x86/x86_64-linux-android-4.9
 clone_depth_platform system/bt
@@ -46,87 +49,87 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcxx/libc++^linux_glibc_x86_6
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/protobuf/aprotoc^linux_glibc_x86_64/ .
 
 echo "building BluetoothGeneratedBundlerSchema_h_bfbs^"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja BluetoothGeneratedBundlerSchema_h_bfbs,
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja BluetoothGeneratedBundlerSchema_h_bfbs,
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/bt/gd/dumpsys/bundler/BluetoothGeneratedBundlerSchema_h_bfbs^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/bt/BluetoothGeneratedBundlerSchema_h_bfbs^.output . $GITHUB_WORKSPACE/artifacts/system/bt/gd/dumpsys/bundler/BluetoothGeneratedBundlerSchema_h_bfbs^
 
 echo "building BluetoothGeneratedDumpsysBinarySchema_bfbs^"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja BluetoothGeneratedDumpsysBinarySchema_bfbs,
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja BluetoothGeneratedDumpsysBinarySchema_bfbs,
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/bt/gd/BluetoothGeneratedDumpsysBinarySchema_bfbs^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/bt/BluetoothGeneratedDumpsysBinarySchema_bfbs^.output . $GITHUB_WORKSPACE/artifacts/system/bt/gd/BluetoothGeneratedDumpsysBinarySchema_bfbs^
 
+echo "building bluetooth_flatbuffer_bundler^linux_glibc_x86_64"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja bluetooth_flatbuffer_bundler,linux_glibc_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/bt/gd/dumpsys/bundler/bluetooth_flatbuffer_bundler^linux_glibc_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/bt/bluetooth_flatbuffer_bundler^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/bt/gd/dumpsys/bundler/bluetooth_flatbuffer_bundler^linux_glibc_x86_64
+
 echo "building BluetoothGeneratedDumpsysBundledSchema_h^"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja BluetoothGeneratedDumpsysBundledSchema_h,
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja BluetoothGeneratedDumpsysBundledSchema_h,
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/bt/gd/dumpsys/BluetoothGeneratedDumpsysBundledSchema_h^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/bt/BluetoothGeneratedDumpsysBundledSchema_h^.output . $GITHUB_WORKSPACE/artifacts/system/bt/gd/dumpsys/BluetoothGeneratedDumpsysBundledSchema_h^
 
 echo "building BluetoothGeneratedDumpsysDataSchema_h^"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja BluetoothGeneratedDumpsysDataSchema_h,
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja BluetoothGeneratedDumpsysDataSchema_h,
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/bt/gd/BluetoothGeneratedDumpsysDataSchema_h^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/bt/BluetoothGeneratedDumpsysDataSchema_h^.output . $GITHUB_WORKSPACE/artifacts/system/bt/gd/BluetoothGeneratedDumpsysDataSchema_h^
 
 echo "building async_fd_watcher^android_vendor.31_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja async_fd_watcher,android_vendor.31_x86_64_static
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja async_fd_watcher,android_vendor.31_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/bt/vendor_libs/linux/interface/async_fd_watcher^android_vendor.31_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/bt/async_fd_watcher^android_vendor.31_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/bt/vendor_libs/linux/interface/async_fd_watcher^android_vendor.31_x86_64_static
 
-echo "building bluetooth_flatbuffer_bundler^linux_glibc_x86_64"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja bluetooth_flatbuffer_bundler,linux_glibc_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/bt/gd/dumpsys/bundler/bluetooth_flatbuffer_bundler^linux_glibc_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/bt/bluetooth_flatbuffer_bundler^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/bt/gd/dumpsys/bundler/bluetooth_flatbuffer_bundler^linux_glibc_x86_64
-
 echo "building lib-bt-packets-avrcp^android_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja lib-bt-packets-avrcp,android_x86_64_static
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja lib-bt-packets-avrcp,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/bt/packet/avrcp/lib-bt-packets-avrcp^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/bt/lib-bt-packets-avrcp^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/bt/packet/avrcp/lib-bt-packets-avrcp^android_x86_64_static
 
 echo "building lib-bt-packets-avrcp^android_x86_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja lib-bt-packets-avrcp,android_x86_x86_64_static
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja lib-bt-packets-avrcp,android_x86_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/bt/packet/avrcp/lib-bt-packets-avrcp^android_x86_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/bt/lib-bt-packets-avrcp^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/bt/packet/avrcp/lib-bt-packets-avrcp^android_x86_x86_64_static
 
 echo "building lib-bt-packets-base^android_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja lib-bt-packets-base,android_x86_64_static
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja lib-bt-packets-base,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/bt/packet/base/lib-bt-packets-base^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/bt/lib-bt-packets-base^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/bt/packet/base/lib-bt-packets-base^android_x86_64_static
 
 echo "building lib-bt-packets-base^android_x86_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja lib-bt-packets-base,android_x86_x86_64_static
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja lib-bt-packets-base,android_x86_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/bt/packet/base/lib-bt-packets-base^android_x86_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/bt/lib-bt-packets-base^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/bt/packet/base/lib-bt-packets-base^android_x86_x86_64_static
 
 echo "building libbluetooth-protos^android_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libbluetooth-protos,android_x86_64_static
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libbluetooth-protos,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/bt/gd/proto/libbluetooth-protos^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/bt/libbluetooth-protos^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/bt/gd/proto/libbluetooth-protos^android_x86_64_static
 
 echo "building libbluetooth-protos^android_x86_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libbluetooth-protos,android_x86_x86_64_static
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libbluetooth-protos,android_x86_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/bt/gd/proto/libbluetooth-protos^android_x86_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/bt/libbluetooth-protos^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/bt/gd/proto/libbluetooth-protos^android_x86_x86_64_static
 
 echo "building libbluetooth-types^android_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libbluetooth-types,android_x86_64_static
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libbluetooth-types,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/bt/types/libbluetooth-types^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/bt/libbluetooth-types^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/bt/types/libbluetooth-types^android_x86_64_static
 
 echo "building libbluetooth-types^android_x86_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libbluetooth-types,android_x86_x86_64_static
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libbluetooth-types,android_x86_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/bt/types/libbluetooth-types^android_x86_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/bt/libbluetooth-types^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/bt/types/libbluetooth-types^android_x86_x86_64_static
 
 echo "building libbt-protos-lite^android_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libbt-protos-lite,android_x86_64_static
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libbt-protos-lite,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/bt/gd/proto/libbt-protos-lite^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/bt/libbt-protos-lite^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/bt/gd/proto/libbt-protos-lite^android_x86_64_static
 
 echo "building libbt-protos-lite^android_x86_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libbt-protos-lite,android_x86_x86_64_static
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libbt-protos-lite,android_x86_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/bt/gd/proto/libbt-protos-lite^android_x86_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/bt/libbt-protos-lite^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/bt/gd/proto/libbt-protos-lite^android_x86_x86_64_static
 
 echo "building libscriptedbeaconpayload-protos-lite^android_vendor.31_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libscriptedbeaconpayload-protos-lite,android_vendor.31_x86_64_static
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libscriptedbeaconpayload-protos-lite,android_vendor.31_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/bt/vendor_libs/test_vendor_lib/libscriptedbeaconpayload-protos-lite^android_vendor.31_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/bt/libscriptedbeaconpayload-protos-lite^android_vendor.31_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/bt/vendor_libs/test_vendor_lib/libscriptedbeaconpayload-protos-lite^android_vendor.31_x86_64_static
 
@@ -197,6 +200,10 @@ fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/libnativehelper.tar.zst" ]; then
   echo "Compressing libnativehelper -> libnativehelper.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/libnativehelper.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/libnativehelper/ .
+fi
+if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_build-tools.tar.zst" ]; then
+  echo "Compressing prebuilts/build-tools -> prebuilts_build-tools.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/prebuilts_build-tools.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/prebuilts/build-tools/ .
 fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_gcc_linux-x86_host_x86_64-linux-glibc2.17-4.8.tar.zst" ]; then
   echo "Compressing prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8 -> prebuilts_gcc_linux-x86_host_x86_64-linux-glibc2.17-4.8.tar.zst"

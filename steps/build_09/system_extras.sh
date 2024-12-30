@@ -1,5 +1,7 @@
 set -e
 
+echo "entering system/extras"
+
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
 mkdir -p out/soong/.minibootstrap && ln -sf $GITHUB_WORKSPACE/bpglob out/soong/.minibootstrap/bpglob
@@ -118,27 +120,27 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^android_x86
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/server_configurable_flags/libflags/server_configurable_flags^android_x86_64_shared/ .
 
 echo "building liblpdump_interface-cpp^android_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja liblpdump_interface-cpp,android_x86_64_static
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja liblpdump_interface-cpp,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/extras/partition_tools/aidl/liblpdump_interface-cpp^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_09/system/extras/liblpdump_interface-cpp^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/extras/partition_tools/aidl/liblpdump_interface-cpp^android_x86_64_static
 
 echo "building liblpdump_interface-cpp^android_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja liblpdump_interface-cpp,android_x86_64_shared
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja liblpdump_interface-cpp,android_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/extras/partition_tools/aidl/liblpdump_interface-cpp^android_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_09/system/extras/liblpdump_interface-cpp^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/extras/partition_tools/aidl/liblpdump_interface-cpp^android_x86_64_shared
 
 echo "building libprofcollect_libbase_rust^android_x86_64_rlib_dylib-std"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja libprofcollect_libbase_rust,android_x86_64_rlib_dylib-std
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja libprofcollect_libbase_rust,android_x86_64_rlib_dylib-std
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/extras/profcollectd/libprofcollectd/bindings/libbase/libprofcollect_libbase_rust^android_x86_64_rlib_dylib-std
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_09/system/extras/libprofcollect_libbase_rust^android_x86_64_rlib_dylib-std.output . $GITHUB_WORKSPACE/artifacts/system/extras/profcollectd/libprofcollectd/bindings/libbase/libprofcollect_libbase_rust^android_x86_64_rlib_dylib-std
 
 echo "building libprofcollect_libflags_rust^android_x86_64_rlib_dylib-std"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja libprofcollect_libflags_rust,android_x86_64_rlib_dylib-std
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja libprofcollect_libflags_rust,android_x86_64_rlib_dylib-std
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/extras/profcollectd/libprofcollectd/bindings/libflags/libprofcollect_libflags_rust^android_x86_64_rlib_dylib-std
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_09/system/extras/libprofcollect_libflags_rust^android_x86_64_rlib_dylib-std.output . $GITHUB_WORKSPACE/artifacts/system/extras/profcollectd/libprofcollectd/bindings/libflags/libprofcollect_libflags_rust^android_x86_64_rlib_dylib-std
 
 echo "building profcollectd_aidl_interface-rust^android_x86_64_dylib"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja profcollectd_aidl_interface-rust,android_x86_64_dylib
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja profcollectd_aidl_interface-rust,android_x86_64_dylib
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/extras/profcollectd/libprofcollectd/profcollectd_aidl_interface-rust^android_x86_64_dylib
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_09/system/extras/profcollectd_aidl_interface-rust^android_x86_64_dylib.output . $GITHUB_WORKSPACE/artifacts/system/extras/profcollectd/libprofcollectd/profcollectd_aidl_interface-rust^android_x86_64_dylib
 

@@ -1,5 +1,7 @@
 set -e
 
+echo "entering packages/modules/adb"
+
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
 mkdir -p out/soong/.minibootstrap && ln -sf $GITHUB_WORKSPACE/bpglob out/soong/.minibootstrap/bpglob
@@ -65,117 +67,117 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^android_x86
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^android_x86_x86_64_shared_current/ .
 
 echo "building libadb_crypto^android_recovery_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libadb_crypto,android_recovery_x86_64_static
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libadb_crypto,android_recovery_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/adb/crypto/libadb_crypto^android_recovery_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/packages/modules/adb/libadb_crypto^android_recovery_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/packages/modules/adb/crypto/libadb_crypto^android_recovery_x86_64_static
 
-echo "building libadb_crypto^android_x86_64_static_apex10000"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libadb_crypto,android_x86_64_static_apex10000
-mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/adb/crypto/libadb_crypto^android_x86_64_static_apex10000
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/packages/modules/adb/libadb_crypto^android_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/packages/modules/adb/crypto/libadb_crypto^android_x86_64_static_apex10000
-
 echo "building libadb_crypto^android_x86_x86_64_static_apex10000"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libadb_crypto,android_x86_x86_64_static_apex10000
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libadb_crypto,android_x86_x86_64_static_apex10000
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/adb/crypto/libadb_crypto^android_x86_x86_64_static_apex10000
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/packages/modules/adb/libadb_crypto^android_x86_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/packages/modules/adb/crypto/libadb_crypto^android_x86_x86_64_static_apex10000
 
-echo "building libadb_pairing_connection^android_x86_64_static_apex10000"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libadb_pairing_connection,android_x86_64_static_apex10000
-mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/adb/pairing_connection/libadb_pairing_connection^android_x86_64_static_apex10000
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/packages/modules/adb/libadb_pairing_connection^android_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/packages/modules/adb/pairing_connection/libadb_pairing_connection^android_x86_64_static_apex10000
-
 echo "building libadb_pairing_connection^android_x86_x86_64_static_apex10000"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libadb_pairing_connection,android_x86_x86_64_static_apex10000
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libadb_pairing_connection,android_x86_x86_64_static_apex10000
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/adb/pairing_connection/libadb_pairing_connection^android_x86_x86_64_static_apex10000
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/packages/modules/adb/libadb_pairing_connection^android_x86_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/packages/modules/adb/pairing_connection/libadb_pairing_connection^android_x86_x86_64_static_apex10000
 
-echo "building libadb_protos^android_x86_64_static_apex10000"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libadb_protos,android_x86_64_static_apex10000
-mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/adb/proto/libadb_protos^android_x86_64_static_apex10000
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/packages/modules/adb/libadb_protos^android_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/packages/modules/adb/proto/libadb_protos^android_x86_64_static_apex10000
-
-echo "building libadb_pairing_server^android_x86_64_static_apex10000"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libadb_pairing_server,android_x86_64_static_apex10000
-mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/adb/pairing_connection/libadb_pairing_server^android_x86_64_static_apex10000
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/packages/modules/adb/libadb_pairing_server^android_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/packages/modules/adb/pairing_connection/libadb_pairing_server^android_x86_64_static_apex10000
-
 echo "building libadb_pairing_server^android_x86_x86_64_static_apex10000"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libadb_pairing_server,android_x86_x86_64_static_apex10000
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libadb_pairing_server,android_x86_x86_64_static_apex10000
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/adb/pairing_connection/libadb_pairing_server^android_x86_x86_64_static_apex10000
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/packages/modules/adb/libadb_pairing_server^android_x86_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/packages/modules/adb/pairing_connection/libadb_pairing_server^android_x86_x86_64_static_apex10000
 
 echo "building libadb_protos^android_recovery_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libadb_protos,android_recovery_x86_64_static
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libadb_protos,android_recovery_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/adb/proto/libadb_protos^android_recovery_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/packages/modules/adb/libadb_protos^android_recovery_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/packages/modules/adb/proto/libadb_protos^android_recovery_x86_64_static
 
+echo "building libadb_protos^android_x86_64_static_apex10000"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libadb_protos,android_x86_64_static_apex10000
+mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/adb/proto/libadb_protos^android_x86_64_static_apex10000
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/packages/modules/adb/libadb_protos^android_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/packages/modules/adb/proto/libadb_protos^android_x86_64_static_apex10000
+
+echo "building libadb_crypto^android_x86_64_static_apex10000"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libadb_crypto,android_x86_64_static_apex10000
+mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/adb/crypto/libadb_crypto^android_x86_64_static_apex10000
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/packages/modules/adb/libadb_crypto^android_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/packages/modules/adb/crypto/libadb_crypto^android_x86_64_static_apex10000
+
+echo "building libadb_pairing_connection^android_x86_64_static_apex10000"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libadb_pairing_connection,android_x86_64_static_apex10000
+mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/adb/pairing_connection/libadb_pairing_connection^android_x86_64_static_apex10000
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/packages/modules/adb/libadb_pairing_connection^android_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/packages/modules/adb/pairing_connection/libadb_pairing_connection^android_x86_64_static_apex10000
+
+echo "building libadb_pairing_server^android_x86_64_static_apex10000"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libadb_pairing_server,android_x86_64_static_apex10000
+mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/adb/pairing_connection/libadb_pairing_server^android_x86_64_static_apex10000
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/packages/modules/adb/libadb_pairing_server^android_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/packages/modules/adb/pairing_connection/libadb_pairing_server^android_x86_64_static_apex10000
+
 echo "building libadb_protos^android_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libadb_protos,android_x86_64_static
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libadb_protos,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/adb/proto/libadb_protos^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/packages/modules/adb/libadb_protos^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/packages/modules/adb/proto/libadb_protos^android_x86_64_static
 
 echo "building libadb_protos^android_x86_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libadb_protos,android_x86_x86_64_static
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libadb_protos,android_x86_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/adb/proto/libadb_protos^android_x86_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/packages/modules/adb/libadb_protos^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/packages/modules/adb/proto/libadb_protos^android_x86_x86_64_static
 
 echo "building libadb_protos^android_x86_x86_64_static_apex10000"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libadb_protos,android_x86_x86_64_static_apex10000
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libadb_protos,android_x86_x86_64_static_apex10000
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/adb/proto/libadb_protos^android_x86_x86_64_static_apex10000
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/packages/modules/adb/libadb_protos^android_x86_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/packages/modules/adb/proto/libadb_protos^android_x86_x86_64_static_apex10000
 
 echo "building libadbconnection_client^android_x86_64_shared_apex10000"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libadbconnection_client,android_x86_64_shared_apex10000
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libadbconnection_client,android_x86_64_shared_apex10000
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/adb/libs/adbconnection/libadbconnection_client^android_x86_64_shared_apex10000
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/packages/modules/adb/libadbconnection_client^android_x86_64_shared_apex10000.output . $GITHUB_WORKSPACE/artifacts/packages/modules/adb/libs/adbconnection/libadbconnection_client^android_x86_64_shared_apex10000
 
 echo "building libadbconnection_client^android_x86_x86_64_shared_apex10000"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libadbconnection_client,android_x86_x86_64_shared_apex10000
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libadbconnection_client,android_x86_x86_64_shared_apex10000
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/adb/libs/adbconnection/libadbconnection_client^android_x86_x86_64_shared_apex10000
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/packages/modules/adb/libadbconnection_client^android_x86_x86_64_shared_apex10000.output . $GITHUB_WORKSPACE/artifacts/packages/modules/adb/libs/adbconnection/libadbconnection_client^android_x86_x86_64_shared_apex10000
 
 echo "building libadbd_core^android_recovery_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libadbd_core,android_recovery_x86_64_static
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libadbd_core,android_recovery_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/adb/libadbd_core^android_recovery_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/packages/modules/adb/libadbd_core^android_recovery_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/packages/modules/adb/libadbd_core^android_recovery_x86_64_static
 
-echo "building libapp_processes_protos_lite^android_recovery_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libapp_processes_protos_lite,android_recovery_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/adb/proto/libapp_processes_protos_lite^android_recovery_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/packages/modules/adb/libapp_processes_protos_lite^android_recovery_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/packages/modules/adb/proto/libapp_processes_protos_lite^android_recovery_x86_64_static
-
-echo "building libadbd_services^android_recovery_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libadbd_services,android_recovery_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/adb/libadbd_services^android_recovery_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/packages/modules/adb/libadbd_services^android_recovery_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/packages/modules/adb/libadbd_services^android_recovery_x86_64_static
-
-echo "building libapp_processes_protos_lite^android_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libapp_processes_protos_lite,android_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/adb/proto/libapp_processes_protos_lite^android_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/packages/modules/adb/libapp_processes_protos_lite^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/packages/modules/adb/proto/libapp_processes_protos_lite^android_x86_64_static
-
 echo "building libadbd_core^android_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libadbd_core,android_x86_64_static
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libadbd_core,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/adb/libadbd_core^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/packages/modules/adb/libadbd_core^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/packages/modules/adb/libadbd_core^android_x86_64_static
 
 echo "building libadbd_core^android_x86_64_static_apex10000"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libadbd_core,android_x86_64_static_apex10000
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libadbd_core,android_x86_64_static_apex10000
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/adb/libadbd_core^android_x86_64_static_apex10000
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/packages/modules/adb/libadbd_core^android_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/packages/modules/adb/libadbd_core^android_x86_64_static_apex10000
 
 echo "building libadbd_services^android_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libadbd_services,android_x86_64_static
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libadbd_services,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/adb/libadbd_services^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/packages/modules/adb/libadbd_services^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/packages/modules/adb/libadbd_services^android_x86_64_static
 
 echo "building libadbd_services^android_x86_64_static_apex10000"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libadbd_services,android_x86_64_static_apex10000
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libadbd_services,android_x86_64_static_apex10000
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/adb/libadbd_services^android_x86_64_static_apex10000
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/packages/modules/adb/libadbd_services^android_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/packages/modules/adb/libadbd_services^android_x86_64_static_apex10000
 
+echo "building libapp_processes_protos_lite^android_recovery_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libapp_processes_protos_lite,android_recovery_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/adb/proto/libapp_processes_protos_lite^android_recovery_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/packages/modules/adb/libapp_processes_protos_lite^android_recovery_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/packages/modules/adb/proto/libapp_processes_protos_lite^android_recovery_x86_64_static
+
+echo "building libadbd_services^android_recovery_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libadbd_services,android_recovery_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/adb/libadbd_services^android_recovery_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/packages/modules/adb/libadbd_services^android_recovery_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/packages/modules/adb/libadbd_services^android_recovery_x86_64_static
+
+echo "building libapp_processes_protos_lite^android_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libapp_processes_protos_lite,android_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/adb/proto/libapp_processes_protos_lite^android_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/packages/modules/adb/libapp_processes_protos_lite^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/packages/modules/adb/proto/libapp_processes_protos_lite^android_x86_64_static
+
 echo "building libapp_processes_protos_lite^android_x86_64_static_apex10000"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libapp_processes_protos_lite,android_x86_64_static_apex10000
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libapp_processes_protos_lite,android_x86_64_static_apex10000
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/adb/proto/libapp_processes_protos_lite^android_x86_64_static_apex10000
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/packages/modules/adb/libapp_processes_protos_lite^android_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/packages/modules/adb/proto/libapp_processes_protos_lite^android_x86_64_static_apex10000
 

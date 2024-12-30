@@ -1,5 +1,7 @@
 set -e
 
+echo "entering system/server_configurable_flags"
+
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
 mkdir -p out/soong/.minibootstrap && ln -sf $GITHUB_WORKSPACE/bpglob out/soong/.minibootstrap/bpglob
@@ -19,6 +21,7 @@ clone_depth_platform frameworks/native
 clone_depth_platform hardware/libhardware
 clone_depth_platform hardware/libhardware_legacy
 clone_depth_platform hardware/ril
+clone_project platform/prebuilts/build-tools prebuilts/build-tools android12-gsi "/linux-x86/bin" "/linux-x86/lib64" "/path" "/common"
 clone_depth_platform prebuilts/gcc/linux-x86/x86/x86_64-linux-android-4.9
 clone_depth_platform system/core
 clone_depth_platform system/libbase
@@ -28,22 +31,22 @@ clone_depth_platform system/server_configurable_flags
 
 
 echo "building server_configurable_flags^android_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja server_configurable_flags,android_x86_64_static
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja server_configurable_flags,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/server_configurable_flags/libflags/server_configurable_flags^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/server_configurable_flags/server_configurable_flags^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/server_configurable_flags/libflags/server_configurable_flags^android_x86_64_static
 
 echo "building server_configurable_flags^android_x86_64_static_apex30"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja server_configurable_flags,android_x86_64_static_apex30
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja server_configurable_flags,android_x86_64_static_apex30
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/server_configurable_flags/libflags/server_configurable_flags^android_x86_64_static_apex30
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/server_configurable_flags/server_configurable_flags^android_x86_64_static_apex30.output . $GITHUB_WORKSPACE/artifacts/system/server_configurable_flags/libflags/server_configurable_flags^android_x86_64_static_apex30
 
 echo "building server_configurable_flags^android_x86_64_static_cfi_apex29"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja server_configurable_flags,android_x86_64_static_cfi_apex29
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja server_configurable_flags,android_x86_64_static_cfi_apex29
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/server_configurable_flags/libflags/server_configurable_flags^android_x86_64_static_cfi_apex29
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/server_configurable_flags/server_configurable_flags^android_x86_64_static_cfi_apex29.output . $GITHUB_WORKSPACE/artifacts/system/server_configurable_flags/libflags/server_configurable_flags^android_x86_64_static_cfi_apex29
 
 echo "building server_configurable_flags^android_x86_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja server_configurable_flags,android_x86_x86_64_static
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja server_configurable_flags,android_x86_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/server_configurable_flags/libflags/server_configurable_flags^android_x86_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/server_configurable_flags/server_configurable_flags^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/server_configurable_flags/libflags/server_configurable_flags^android_x86_x86_64_static
 
@@ -94,6 +97,10 @@ fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/hardware_ril.tar.zst" ]; then
   echo "Compressing hardware/ril -> hardware_ril.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/hardware_ril.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/hardware/ril/ .
+fi
+if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_build-tools.tar.zst" ]; then
+  echo "Compressing prebuilts/build-tools -> prebuilts_build-tools.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/prebuilts_build-tools.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/prebuilts/build-tools/ .
 fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_gcc_linux-x86_x86_x86_64-linux-android-4.9.tar.zst" ]; then
   echo "Compressing prebuilts/gcc/linux-x86/x86/x86_64-linux-android-4.9 -> prebuilts_gcc_linux-x86_x86_x86_64-linux-android-4.9.tar.zst"

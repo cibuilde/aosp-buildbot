@@ -1,5 +1,7 @@
 set -e
 
+echo "entering external/libopus"
+
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
 mkdir -p out/soong/.minibootstrap && ln -sf $GITHUB_WORKSPACE/bpglob out/soong/.minibootstrap/bpglob
@@ -27,7 +29,7 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcxxabi/libc++demangle^androi
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/libopus/libopus^android_x86_64_static_apex29/ .
 
 echo "building libopus^android_x86_64_shared_apex29"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libopus,android_x86_64_shared_apex29
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libopus,android_x86_64_shared_apex29
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/libopus/libopus^android_x86_64_shared_apex29
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/external/libopus/libopus^android_x86_64_shared_apex29.output . $GITHUB_WORKSPACE/artifacts/external/libopus/libopus^android_x86_64_shared_apex29
 

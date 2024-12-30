@@ -1,5 +1,7 @@
 set -e
 
+echo "entering system/memory/libmeminfo"
+
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
 mkdir -p out/soong/.minibootstrap && ln -sf $GITHUB_WORKSPACE/bpglob out/soong/.minibootstrap/bpglob
@@ -39,7 +41,7 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/system/libbase/libbase^android_x86_64_sh
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/memory/libmeminfo/libdmabufinfo/libdmabufinfo^android_x86_64_static/ .
 
 echo "building dmabuf_dump^android_x86_64"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja dmabuf_dump,android_x86_64
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja dmabuf_dump,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/memory/libmeminfo/libdmabufinfo/tools/dmabuf_dump^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/memory/libmeminfo/dmabuf_dump^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/memory/libmeminfo/libdmabufinfo/tools/dmabuf_dump^android_x86_64
 

@@ -1,5 +1,7 @@
 set -e
 
+echo "entering frameworks/opt/net/ethernet"
+
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
 mkdir -p out/soong/.minibootstrap && ln -sf $GITHUB_WORKSPACE/bpglob out/soong/.minibootstrap/bpglob
@@ -39,7 +41,7 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/r8/d8^linux_glibc_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/r8/d8^linux_glibc_x86_64/ .
 
 echo "building ethernet-service^android_common"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_34.ninja ethernet-service,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_34.ninja ethernet-service,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/opt/net/ethernet/ethernet-service^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_34/frameworks/opt/net/ethernet/ethernet-service^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/opt/net/ethernet/ethernet-service^android_common
 

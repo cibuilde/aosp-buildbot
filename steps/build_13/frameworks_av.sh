@@ -1,5 +1,7 @@
 set -e
 
+echo "entering frameworks/av"
+
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
 mkdir -p out/soong/.minibootstrap && ln -sf $GITHUB_WORKSPACE/bpglob out/soong/.minibootstrap/bpglob
@@ -319,63 +321,63 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/system/memory/libmemunreachable/libmemun
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/memory/libmemunreachable/libmemunreachable^android_x86_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/netd/client/libnetd_client^android_x86_x86_64_shared_cfi/ .
 
-echo "building libmediaplayerservice^android_x86_x86_64_shared_cfi"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_13.ninja libmediaplayerservice,android_x86_x86_64_shared_cfi
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libmediaplayerservice/libmediaplayerservice^android_x86_x86_64_shared_cfi
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_13/frameworks/av/libmediaplayerservice^android_x86_x86_64_shared_cfi.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libmediaplayerservice/libmediaplayerservice^android_x86_x86_64_shared_cfi
-
-echo "building libstagefright^android_x86_64_shared_cfi"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_13.ninja libstagefright,android_x86_64_shared_cfi
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libstagefright/libstagefright^android_x86_64_shared_cfi
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_13/frameworks/av/libstagefright^android_x86_64_shared_cfi.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libstagefright/libstagefright^android_x86_64_shared_cfi
-
 echo "building libcameraservice^android_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_13.ninja libcameraservice,android_x86_64_shared
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_13.ninja libcameraservice,android_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/services/camera/libcameraservice/libcameraservice^android_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_13/frameworks/av/libcameraservice^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/services/camera/libcameraservice/libcameraservice^android_x86_64_shared
 
 echo "building cameraserver^android_x86_64"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_13.ninja cameraserver,android_x86_64
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_13.ninja cameraserver,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/camera/cameraserver/cameraserver^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_13/frameworks/av/cameraserver^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/camera/cameraserver/cameraserver^android_x86_64
 
+echo "building libstagefright^android_x86_64_shared_cfi"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_13.ninja libstagefright,android_x86_64_shared_cfi
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libstagefright/libstagefright^android_x86_64_shared_cfi
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_13/frameworks/av/libstagefright^android_x86_64_shared_cfi.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libstagefright/libstagefright^android_x86_64_shared_cfi
+
 echo "building libmediaextractorservice^android_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_13.ninja libmediaextractorservice,android_x86_64_shared
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_13.ninja libmediaextractorservice,android_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/services/mediaextractor/libmediaextractorservice^android_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_13/frameworks/av/libmediaextractorservice^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/services/mediaextractor/libmediaextractorservice^android_x86_64_shared
 
 echo "building libmediandk^android_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_13.ninja libmediandk,android_x86_64_shared
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_13.ninja libmediandk,android_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/ndk/libmediandk^android_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_13/frameworks/av/libmediandk^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/ndk/libmediandk^android_x86_64_shared
 
 echo "building libstagefright^android_x86_x86_64_shared_cfi"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_13.ninja libstagefright,android_x86_x86_64_shared_cfi
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_13.ninja libstagefright,android_x86_x86_64_shared_cfi
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libstagefright/libstagefright^android_x86_x86_64_shared_cfi
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_13/frameworks/av/libstagefright^android_x86_x86_64_shared_cfi.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libstagefright/libstagefright^android_x86_x86_64_shared_cfi
 
 echo "building libmediandk^android_x86_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_13.ninja libmediandk,android_x86_x86_64_shared
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_13.ninja libmediandk,android_x86_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/ndk/libmediandk^android_x86_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_13/frameworks/av/libmediandk^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/ndk/libmediandk^android_x86_x86_64_shared
 
 echo "building libstagefright_httplive^android_x86_x86_64_shared_cfi"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_13.ninja libstagefright_httplive,android_x86_x86_64_shared_cfi
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_13.ninja libstagefright_httplive,android_x86_x86_64_shared_cfi
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libstagefright/httplive/libstagefright_httplive^android_x86_x86_64_shared_cfi
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_13/frameworks/av/libstagefright_httplive^android_x86_x86_64_shared_cfi.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libstagefright/httplive/libstagefright_httplive^android_x86_x86_64_shared_cfi
 
+echo "building libmediaplayerservice^android_x86_x86_64_shared_cfi"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_13.ninja libmediaplayerservice,android_x86_x86_64_shared_cfi
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libmediaplayerservice/libmediaplayerservice^android_x86_x86_64_shared_cfi
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_13/frameworks/av/libmediaplayerservice^android_x86_x86_64_shared_cfi.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libmediaplayerservice/libmediaplayerservice^android_x86_x86_64_shared_cfi
+
 echo "building mediaextractor^android_x86_64"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_13.ninja mediaextractor,android_x86_64
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_13.ninja mediaextractor,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/services/mediaextractor/mediaextractor^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_13/frameworks/av/mediaextractor^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/services/mediaextractor/mediaextractor^android_x86_64
 
 echo "building mediaserver^android_x86_x86_64"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_13.ninja mediaserver,android_x86_x86_64
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_13.ninja mediaserver,android_x86_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/mediaserver/mediaserver^android_x86_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_13/frameworks/av/mediaserver^android_x86_x86_64.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/mediaserver/mediaserver^android_x86_x86_64
 
 echo "building screenrecord^android_x86_64"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_13.ninja screenrecord,android_x86_64
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_13.ninja screenrecord,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/cmds/screenrecord/screenrecord^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_13/frameworks/av/screenrecord^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/cmds/screenrecord/screenrecord^android_x86_64
 

@@ -1,5 +1,7 @@
 set -e
 
+echo "entering tools/apifinder"
+
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
 mkdir -p out/soong/.minibootstrap && ln -sf $GITHUB_WORKSPACE/bpglob out/soong/.minibootstrap/bpglob
@@ -11,6 +13,7 @@ mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/
 
 clone_depth_platform external/auto
 clone_depth_platform external/error_prone
+clone_project platform/prebuilts/build-tools prebuilts/build-tools android12-gsi "/linux-x86/bin" "/linux-x86/lib64" "/path" "/common"
 clone_project platform/prebuilts/jdk/jdk11 prebuilts/jdk/jdk11 android12-gsi "/linux-x86"
 clone_depth_platform tools/apifinder
 
@@ -23,7 +26,7 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/external/auto/service/auto_service_plugi
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/error_prone/error_prone_core^linux_glibc_common/ .
 
 echo "building java_api_used_by_mainline_module^linux_glibc_common"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja java_api_used_by_mainline_module,linux_glibc_common
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja java_api_used_by_mainline_module,linux_glibc_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/tools/apifinder/java_api_used_by_mainline_module^linux_glibc_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/tools/apifinder/java_api_used_by_mainline_module^linux_glibc_common.output . $GITHUB_WORKSPACE/artifacts/tools/apifinder/java_api_used_by_mainline_module^linux_glibc_common
 
@@ -42,6 +45,10 @@ fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/external_error_prone.tar.zst" ]; then
   echo "Compressing external/error_prone -> external_error_prone.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/external_error_prone.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/error_prone/ .
+fi
+if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_build-tools.tar.zst" ]; then
+  echo "Compressing prebuilts/build-tools -> prebuilts_build-tools.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/prebuilts_build-tools.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/prebuilts/build-tools/ .
 fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_jdk_jdk11.tar.zst" ]; then
   echo "Compressing prebuilts/jdk/jdk11 -> prebuilts_jdk_jdk11.tar.zst"

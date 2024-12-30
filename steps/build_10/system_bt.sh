@@ -1,5 +1,7 @@
 set -e
 
+echo "entering system/bt"
+
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
 mkdir -p out/soong/.minibootstrap && ln -sf $GITHUB_WORKSPACE/bpglob out/soong/.minibootstrap/bpglob
@@ -352,107 +354,107 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^android_x86
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^android_x86_x86_64_static/ .
 
 echo "building android.hardware.bluetooth@1.1-service.btlinux^android_vendor.31_x86_64"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja android.hardware.bluetooth@1.1-service.btlinux,android_vendor.31_x86_64
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja android.hardware.bluetooth@1.1-service.btlinux,android_vendor.31_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/bt/vendor_libs/linux/interface/android.hardware.bluetooth@1.1-service.btlinux^android_vendor.31_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/system/bt/android.hardware.bluetooth@1.1-service.btlinux^android_vendor.31_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/bt/vendor_libs/linux/interface/android.hardware.bluetooth@1.1-service.btlinux^android_vendor.31_x86_64
 
-echo "building libbluetooth_rust_interop^android_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja libbluetooth_rust_interop,android_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/bt/gd/rust/shim/libbluetooth_rust_interop^android_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/system/bt/libbluetooth_rust_interop^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/bt/gd/rust/shim/libbluetooth_rust_interop^android_x86_64_static
-
 echo "building audio.a2dp.default^android_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja audio.a2dp.default,android_x86_64_shared
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja audio.a2dp.default,android_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/bt/audio_a2dp_hw/audio.a2dp.default^android_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/system/bt/audio.a2dp.default^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/bt/audio_a2dp_hw/audio.a2dp.default^android_x86_64_shared
 
+echo "building audio.a2dp.default^android_x86_x86_64_shared"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja audio.a2dp.default,android_x86_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/bt/audio_a2dp_hw/audio.a2dp.default^android_x86_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/system/bt/audio.a2dp.default^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/bt/audio_a2dp_hw/audio.a2dp.default^android_x86_x86_64_shared
+
 echo "building audio.hearing_aid.default^android_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja audio.hearing_aid.default,android_x86_64_shared
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja audio.hearing_aid.default,android_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/bt/audio_hearing_aid_hw/audio.hearing_aid.default^android_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/system/bt/audio.hearing_aid.default^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/bt/audio_hearing_aid_hw/audio.hearing_aid.default^android_x86_64_shared
 
 echo "building libbluetooth_rust_interop^android_x86_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja libbluetooth_rust_interop,android_x86_x86_64_static
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja libbluetooth_rust_interop,android_x86_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/bt/gd/rust/shim/libbluetooth_rust_interop^android_x86_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/system/bt/libbluetooth_rust_interop^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/bt/gd/rust/shim/libbluetooth_rust_interop^android_x86_x86_64_static
 
-echo "building audio.a2dp.default^android_x86_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja audio.a2dp.default,android_x86_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/bt/audio_a2dp_hw/audio.a2dp.default^android_x86_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/system/bt/audio.a2dp.default^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/bt/audio_a2dp_hw/audio.a2dp.default^android_x86_x86_64_shared
-
 echo "building audio.hearing_aid.default^android_x86_x86_64_shared"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja audio.hearing_aid.default,android_x86_x86_64_shared
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja audio.hearing_aid.default,android_x86_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/bt/audio_hearing_aid_hw/audio.hearing_aid.default^android_x86_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/system/bt/audio.hearing_aid.default^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/bt/audio_hearing_aid_hw/audio.hearing_aid.default^android_x86_x86_64_shared
 
+echo "building libbluetooth_rust_interop^android_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja libbluetooth_rust_interop,android_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/bt/gd/rust/shim/libbluetooth_rust_interop^android_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/system/bt/libbluetooth_rust_interop^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/bt/gd/rust/shim/libbluetooth_rust_interop^android_x86_64_static
+
 echo "building libbt_common^android_x86_64_rlib_rlib-std"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja libbt_common,android_x86_64_rlib_rlib-std
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja libbt_common,android_x86_64_rlib_rlib-std
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/bt/gd/rust/common/libbt_common^android_x86_64_rlib_rlib-std
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/system/bt/libbt_common^android_x86_64_rlib_rlib-std.output . $GITHUB_WORKSPACE/artifacts/system/bt/gd/rust/common/libbt_common^android_x86_64_rlib_rlib-std
 
 echo "building libbt_common^android_x86_x86_64_rlib_rlib-std"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja libbt_common,android_x86_x86_64_rlib_rlib-std
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja libbt_common,android_x86_x86_64_rlib_rlib-std
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/bt/gd/rust/common/libbt_common^android_x86_x86_64_rlib_rlib-std
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/system/bt/libbt_common^android_x86_x86_64_rlib_rlib-std.output . $GITHUB_WORKSPACE/artifacts/system/bt/gd/rust/common/libbt_common^android_x86_x86_64_rlib_rlib-std
 
+echo "building libbt_facade_proto^android_x86_64_rlib_rlib-std"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja libbt_facade_proto,android_x86_64_rlib_rlib-std
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/bt/gd/libbt_facade_proto^android_x86_64_rlib_rlib-std
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/system/bt/libbt_facade_proto^android_x86_64_rlib_rlib-std.output . $GITHUB_WORKSPACE/artifacts/system/bt/gd/libbt_facade_proto^android_x86_64_rlib_rlib-std
+
 echo "building libbt_facade_helpers^android_x86_64_rlib_rlib-std"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja libbt_facade_helpers,android_x86_64_rlib_rlib-std
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja libbt_facade_helpers,android_x86_64_rlib_rlib-std
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/bt/gd/rust/facade/libbt_facade_helpers^android_x86_64_rlib_rlib-std
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/system/bt/libbt_facade_helpers^android_x86_64_rlib_rlib-std.output . $GITHUB_WORKSPACE/artifacts/system/bt/gd/rust/facade/libbt_facade_helpers^android_x86_64_rlib_rlib-std
 
 echo "building libbt_facade_proto^android_x86_x86_64_rlib_rlib-std"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja libbt_facade_proto,android_x86_x86_64_rlib_rlib-std
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja libbt_facade_proto,android_x86_x86_64_rlib_rlib-std
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/bt/gd/libbt_facade_proto^android_x86_x86_64_rlib_rlib-std
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/system/bt/libbt_facade_proto^android_x86_x86_64_rlib_rlib-std.output . $GITHUB_WORKSPACE/artifacts/system/bt/gd/libbt_facade_proto^android_x86_x86_64_rlib_rlib-std
 
 echo "building libbt_facade_helpers^android_x86_x86_64_rlib_rlib-std"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja libbt_facade_helpers,android_x86_x86_64_rlib_rlib-std
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja libbt_facade_helpers,android_x86_x86_64_rlib_rlib-std
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/bt/gd/rust/facade/libbt_facade_helpers^android_x86_x86_64_rlib_rlib-std
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/system/bt/libbt_facade_helpers^android_x86_x86_64_rlib_rlib-std.output . $GITHUB_WORKSPACE/artifacts/system/bt/gd/rust/facade/libbt_facade_helpers^android_x86_x86_64_rlib_rlib-std
 
-echo "building libbt_facade_proto^android_x86_64_rlib_rlib-std"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja libbt_facade_proto,android_x86_64_rlib_rlib-std
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/bt/gd/libbt_facade_proto^android_x86_64_rlib_rlib-std
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/system/bt/libbt_facade_proto^android_x86_64_rlib_rlib-std.output . $GITHUB_WORKSPACE/artifacts/system/bt/gd/libbt_facade_proto^android_x86_64_rlib_rlib-std
-
 echo "building libbt_hal^android_x86_64_rlib_rlib-std"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja libbt_hal,android_x86_64_rlib_rlib-std
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja libbt_hal,android_x86_64_rlib_rlib-std
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/bt/gd/rust/hal/libbt_hal^android_x86_64_rlib_rlib-std
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/system/bt/libbt_hal^android_x86_64_rlib_rlib-std.output . $GITHUB_WORKSPACE/artifacts/system/bt/gd/rust/hal/libbt_hal^android_x86_64_rlib_rlib-std
 
 echo "building libbt_hal^android_x86_x86_64_rlib_rlib-std"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja libbt_hal,android_x86_x86_64_rlib_rlib-std
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja libbt_hal,android_x86_x86_64_rlib_rlib-std
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/bt/gd/rust/hal/libbt_hal^android_x86_x86_64_rlib_rlib-std
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/system/bt/libbt_hal^android_x86_x86_64_rlib_rlib-std.output . $GITHUB_WORKSPACE/artifacts/system/bt/gd/rust/hal/libbt_hal^android_x86_x86_64_rlib_rlib-std
 
 echo "building libbt_hci^android_x86_64_rlib_rlib-std"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja libbt_hci,android_x86_64_rlib_rlib-std
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja libbt_hci,android_x86_64_rlib_rlib-std
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/bt/gd/rust/hci/libbt_hci^android_x86_64_rlib_rlib-std
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/system/bt/libbt_hci^android_x86_64_rlib_rlib-std.output . $GITHUB_WORKSPACE/artifacts/system/bt/gd/rust/hci/libbt_hci^android_x86_64_rlib_rlib-std
 
 echo "building libbt_hci^android_x86_x86_64_rlib_rlib-std"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja libbt_hci,android_x86_x86_64_rlib_rlib-std
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja libbt_hci,android_x86_x86_64_rlib_rlib-std
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/bt/gd/rust/hci/libbt_hci^android_x86_x86_64_rlib_rlib-std
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/system/bt/libbt_hci^android_x86_x86_64_rlib_rlib-std.output . $GITHUB_WORKSPACE/artifacts/system/bt/gd/rust/hci/libbt_hci^android_x86_x86_64_rlib_rlib-std
 
 echo "building libbt_main^android_x86_64_rlib_rlib-std"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja libbt_main,android_x86_64_rlib_rlib-std
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja libbt_main,android_x86_64_rlib_rlib-std
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/bt/gd/rust/main/libbt_main^android_x86_64_rlib_rlib-std
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/system/bt/libbt_main^android_x86_64_rlib_rlib-std.output . $GITHUB_WORKSPACE/artifacts/system/bt/gd/rust/main/libbt_main^android_x86_64_rlib_rlib-std
 
 echo "building libbt_main^android_x86_x86_64_rlib_rlib-std"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja libbt_main,android_x86_x86_64_rlib_rlib-std
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja libbt_main,android_x86_x86_64_rlib_rlib-std
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/bt/gd/rust/main/libbt_main^android_x86_x86_64_rlib_rlib-std
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/system/bt/libbt_main^android_x86_x86_64_rlib_rlib-std.output . $GITHUB_WORKSPACE/artifacts/system/bt/gd/rust/main/libbt_main^android_x86_x86_64_rlib_rlib-std
 
 echo "building libbt_shim_ffi^android_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja libbt_shim_ffi,android_x86_64_static
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja libbt_shim_ffi,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/bt/gd/rust/shim/libbt_shim_ffi^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/system/bt/libbt_shim_ffi^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/bt/gd/rust/shim/libbt_shim_ffi^android_x86_64_static
 
 echo "building libbt_shim_ffi^android_x86_x86_64_static"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja libbt_shim_ffi,android_x86_x86_64_static
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja libbt_shim_ffi,android_x86_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/bt/gd/rust/shim/libbt_shim_ffi^android_x86_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/system/bt/libbt_shim_ffi^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/bt/gd/rust/shim/libbt_shim_ffi^android_x86_x86_64_static
 

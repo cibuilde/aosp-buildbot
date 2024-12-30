@@ -1,5 +1,7 @@
 set -e
 
+echo "entering system/apex"
+
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
 mkdir -p out/soong/.minibootstrap && ln -sf $GITHUB_WORKSPACE/bpglob out/soong/.minibootstrap/bpglob
@@ -19,7 +21,7 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/external/turbine/turbine^linux_glibc_com
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/apex/apexd/apex_aidl_interface-java-source^/ .
 
 echo "building apex_aidl_interface-java^android_common"
-ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja apex_aidl_interface-java,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja apex_aidl_interface-java,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/apex/apexd/apex_aidl_interface-java^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/system/apex/apex_aidl_interface-java^android_common.output . $GITHUB_WORKSPACE/artifacts/system/apex/apexd/apex_aidl_interface-java^android_common
 
