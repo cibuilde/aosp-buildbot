@@ -182,25 +182,25 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/rust/libunwind.rust_sysroot^an
 rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/rust/libunwind.rust_sysroot^android_x86_64_rlib_apex10000/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^android_x86_64_shared/ .
 
-echo "building libcros_async^android_x86_64_dylib"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_12.ninja libcros_async,android_x86_64_dylib
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/crosvm/cros_async/libcros_async^android_x86_64_dylib
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_12/external/crosvm/libcros_async^android_x86_64_dylib.output . $GITHUB_WORKSPACE/artifacts/external/crosvm/cros_async/libcros_async^android_x86_64_dylib
-
 echo "building libbase_rust^android_x86_64_dylib"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_12.ninja libbase_rust,android_x86_64_dylib
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/crosvm/base/libbase_rust^android_x86_64_dylib
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_12/external/crosvm/libbase_rust^android_x86_64_dylib.output . $GITHUB_WORKSPACE/artifacts/external/crosvm/base/libbase_rust^android_x86_64_dylib
 
-echo "building libcros_async^android_x86_64_dylib_apex10000"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_12.ninja libcros_async,android_x86_64_dylib_apex10000
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/crosvm/cros_async/libcros_async^android_x86_64_dylib_apex10000
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_12/external/crosvm/libcros_async^android_x86_64_dylib_apex10000.output . $GITHUB_WORKSPACE/artifacts/external/crosvm/cros_async/libcros_async^android_x86_64_dylib_apex10000
-
 echo "building libbase_rust^android_x86_64_dylib_apex10000"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_12.ninja libbase_rust,android_x86_64_dylib_apex10000
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/crosvm/base/libbase_rust^android_x86_64_dylib_apex10000
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_12/external/crosvm/libbase_rust^android_x86_64_dylib_apex10000.output . $GITHUB_WORKSPACE/artifacts/external/crosvm/base/libbase_rust^android_x86_64_dylib_apex10000
+
+echo "building libcros_async^android_x86_64_dylib"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_12.ninja libcros_async,android_x86_64_dylib
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/crosvm/cros_async/libcros_async^android_x86_64_dylib
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_12/external/crosvm/libcros_async^android_x86_64_dylib.output . $GITHUB_WORKSPACE/artifacts/external/crosvm/cros_async/libcros_async^android_x86_64_dylib
+
+echo "building libcros_async^android_x86_64_dylib_apex10000"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_12.ninja libcros_async,android_x86_64_dylib_apex10000
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/crosvm/cros_async/libcros_async^android_x86_64_dylib_apex10000
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_12/external/crosvm/libcros_async^android_x86_64_dylib_apex10000.output . $GITHUB_WORKSPACE/artifacts/external/crosvm/cros_async/libcros_async^android_x86_64_dylib_apex10000
 
 echo "building libfuse_rust^android_x86_64_dylib"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_12.ninja libfuse_rust,android_x86_64_dylib

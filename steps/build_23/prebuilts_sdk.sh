@@ -274,15 +274,15 @@ prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/st
 mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/extras/app-toolkit/android-arch-lifecycle-viewmodel^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_23/prebuilts/sdk/android-arch-lifecycle-viewmodel^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/extras/app-toolkit/android-arch-lifecycle-viewmodel^android_common
 
-echo "building android-support-compat-nodeps^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_23.ninja android-support-compat-nodeps,android_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/support/android-support-compat-nodeps^android_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_23/prebuilts/sdk/android-support-compat-nodeps^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/support/android-support-compat-nodeps^android_common
+echo "building android-support-animatedvectordrawable-nodeps^android_common"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_23.ninja android-support-animatedvectordrawable-nodeps,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/support/android-support-animatedvectordrawable-nodeps^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_23/prebuilts/sdk/android-support-animatedvectordrawable-nodeps^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/support/android-support-animatedvectordrawable-nodeps^android_common
 
-echo "building android-support-compat^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_23.ninja android-support-compat,android_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/support/android-support-compat^android_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_23/prebuilts/sdk/android-support-compat^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/support/android-support-compat^android_common
+echo "building android-support-animatedvectordrawable^android_common"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_23.ninja android-support-animatedvectordrawable,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/support/android-support-animatedvectordrawable^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_23/prebuilts/sdk/android-support-animatedvectordrawable^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/support/android-support-animatedvectordrawable^android_common
 
 echo "building android-support-asynclayoutinflater-nodeps^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_23.ninja android-support-asynclayoutinflater-nodeps,android_common
@@ -293,6 +293,46 @@ echo "building android-support-asynclayoutinflater^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_23.ninja android-support-asynclayoutinflater,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/support/android-support-asynclayoutinflater^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_23/prebuilts/sdk/android-support-asynclayoutinflater^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/support/android-support-asynclayoutinflater^android_common
+
+echo "building android-support-compat-nodeps^android_common"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_23.ninja android-support-compat-nodeps,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/support/android-support-compat-nodeps^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_23/prebuilts/sdk/android-support-compat-nodeps^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/support/android-support-compat-nodeps^android_common
+
+echo "building android-support-compat^android_common"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_23.ninja android-support-compat,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/support/android-support-compat^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_23/prebuilts/sdk/android-support-compat^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/support/android-support-compat^android_common
+
+echo "building android-support-coordinatorlayout-nodeps^android_common"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_23.ninja android-support-coordinatorlayout-nodeps,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/support/android-support-coordinatorlayout-nodeps^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_23/prebuilts/sdk/android-support-coordinatorlayout-nodeps^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/support/android-support-coordinatorlayout-nodeps^android_common
+
+echo "building android-support-coordinatorlayout^android_common"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_23.ninja android-support-coordinatorlayout,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/support/android-support-coordinatorlayout^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_23/prebuilts/sdk/android-support-coordinatorlayout^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/support/android-support-coordinatorlayout^android_common
+
+echo "building android-support-core-ui-nodeps^android_common"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_23.ninja android-support-core-ui-nodeps,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/support/android-support-core-ui-nodeps^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_23/prebuilts/sdk/android-support-core-ui-nodeps^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/support/android-support-core-ui-nodeps^android_common
+
+echo "building android-support-core-ui^android_common"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_23.ninja android-support-core-ui,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/support/android-support-core-ui^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_23/prebuilts/sdk/android-support-core-ui^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/support/android-support-core-ui^android_common
+
+echo "building android-support-core-utils-nodeps^android_common"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_23.ninja android-support-core-utils-nodeps,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/support/android-support-core-utils-nodeps^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_23/prebuilts/sdk/android-support-core-utils-nodeps^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/support/android-support-core-utils-nodeps^android_common
+
+echo "building android-support-core-utils^android_common"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_23.ninja android-support-core-utils,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/support/android-support-core-utils^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_23/prebuilts/sdk/android-support-core-utils^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/support/android-support-core-utils^android_common
 
 echo "building android-support-cursoradapter^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_23.ninja android-support-cursoradapter,android_common
@@ -309,25 +349,20 @@ prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/st
 mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/support/android-support-customview^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_23/prebuilts/sdk/android-support-customview^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/support/android-support-customview^android_common
 
-echo "building android-support-coordinatorlayout-nodeps^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_23.ninja android-support-coordinatorlayout-nodeps,android_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/support/android-support-coordinatorlayout-nodeps^android_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_23/prebuilts/sdk/android-support-coordinatorlayout-nodeps^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/support/android-support-coordinatorlayout-nodeps^android_common
+echo "building android-support-design-nodeps^android_common"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_23.ninja android-support-design-nodeps,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/extras/material-design/android-support-design-nodeps^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_23/prebuilts/sdk/android-support-design-nodeps^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/extras/material-design/android-support-design-nodeps^android_common
 
-echo "building android-support-coordinatorlayout^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_23.ninja android-support-coordinatorlayout,android_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/support/android-support-coordinatorlayout^android_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_23/prebuilts/sdk/android-support-coordinatorlayout^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/support/android-support-coordinatorlayout^android_common
+echo "building android-support-design^android_common"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_23.ninja android-support-design,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/extras/material-design/android-support-design^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_23/prebuilts/sdk/android-support-design^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/extras/material-design/android-support-design^android_common
 
 echo "building android-support-documentfile^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_23.ninja android-support-documentfile,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/support/android-support-documentfile^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_23/prebuilts/sdk/android-support-documentfile^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/support/android-support-documentfile^android_common
-
-echo "building android-versionedparcelable^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_23.ninja android-versionedparcelable,android_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/support/android-versionedparcelable^android_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_23/prebuilts/sdk/android-versionedparcelable^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/support/android-versionedparcelable^android_common
 
 echo "building android-support-drawerlayout-nodeps^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_23.ninja android-support-drawerlayout-nodeps,android_common
@@ -338,76 +373,6 @@ echo "building android-support-drawerlayout^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_23.ninja android-support-drawerlayout,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/support/android-support-drawerlayout^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_23/prebuilts/sdk/android-support-drawerlayout^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/support/android-support-drawerlayout^android_common
-
-echo "building android-support-interpolator^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_23.ninja android-support-interpolator,android_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/support/android-support-interpolator^android_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_23/prebuilts/sdk/android-support-interpolator^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/support/android-support-interpolator^android_common
-
-echo "building android-support-loader-nodeps^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_23.ninja android-support-loader-nodeps,android_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/support/android-support-loader-nodeps^android_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_23/prebuilts/sdk/android-support-loader-nodeps^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/support/android-support-loader-nodeps^android_common
-
-echo "building android-support-loader^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_23.ninja android-support-loader,android_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/support/android-support-loader^android_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_23/prebuilts/sdk/android-support-loader^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/support/android-support-loader^android_common
-
-echo "building android-support-localbroadcastmanager^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_23.ninja android-support-localbroadcastmanager,android_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/support/android-support-localbroadcastmanager^android_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_23/prebuilts/sdk/android-support-localbroadcastmanager^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/support/android-support-localbroadcastmanager^android_common
-
-echo "building android-support-print^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_23.ninja android-support-print,android_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/support/android-support-print^android_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_23/prebuilts/sdk/android-support-print^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/support/android-support-print^android_common
-
-echo "building android-support-core-utils-nodeps^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_23.ninja android-support-core-utils-nodeps,android_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/support/android-support-core-utils-nodeps^android_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_23/prebuilts/sdk/android-support-core-utils-nodeps^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/support/android-support-core-utils-nodeps^android_common
-
-echo "building android-support-core-utils^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_23.ninja android-support-core-utils,android_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/support/android-support-core-utils^android_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_23/prebuilts/sdk/android-support-core-utils^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/support/android-support-core-utils^android_common
-
-echo "building android-support-slidingpanelayout-nodeps^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_23.ninja android-support-slidingpanelayout-nodeps,android_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/support/android-support-slidingpanelayout-nodeps^android_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_23/prebuilts/sdk/android-support-slidingpanelayout-nodeps^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/support/android-support-slidingpanelayout-nodeps^android_common
-
-echo "building android-support-slidingpanelayout^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_23.ninja android-support-slidingpanelayout,android_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/support/android-support-slidingpanelayout^android_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_23/prebuilts/sdk/android-support-slidingpanelayout^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/support/android-support-slidingpanelayout^android_common
-
-echo "building android-support-swiperefreshlayout-nodeps^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_23.ninja android-support-swiperefreshlayout-nodeps,android_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/support/android-support-swiperefreshlayout-nodeps^android_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_23/prebuilts/sdk/android-support-swiperefreshlayout-nodeps^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/support/android-support-swiperefreshlayout-nodeps^android_common
-
-echo "building android-support-swiperefreshlayout^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_23.ninja android-support-swiperefreshlayout,android_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/support/android-support-swiperefreshlayout^android_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_23/prebuilts/sdk/android-support-swiperefreshlayout^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/support/android-support-swiperefreshlayout^android_common
-
-echo "building android-support-core-ui-nodeps^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_23.ninja android-support-core-ui-nodeps,android_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/support/android-support-core-ui-nodeps^android_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_23/prebuilts/sdk/android-support-core-ui-nodeps^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/support/android-support-core-ui-nodeps^android_common
-
-echo "building android-support-core-ui^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_23.ninja android-support-core-ui,android_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/support/android-support-core-ui^android_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_23/prebuilts/sdk/android-support-core-ui^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/support/android-support-core-ui^android_common
-
-echo "building android-support-animatedvectordrawable-nodeps^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_23.ninja android-support-animatedvectordrawable-nodeps,android_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/support/android-support-animatedvectordrawable-nodeps^android_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_23/prebuilts/sdk/android-support-animatedvectordrawable-nodeps^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/support/android-support-animatedvectordrawable-nodeps^android_common
 
 echo "building android-support-dynamic-animation-nodeps^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_23.ninja android-support-dynamic-animation-nodeps,android_common
@@ -429,6 +394,26 @@ prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/st
 mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/support/android-support-fragment^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_23/prebuilts/sdk/android-support-fragment^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/support/android-support-fragment^android_common
 
+echo "building android-support-interpolator^android_common"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_23.ninja android-support-interpolator,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/support/android-support-interpolator^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_23/prebuilts/sdk/android-support-interpolator^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/support/android-support-interpolator^android_common
+
+echo "building android-support-loader-nodeps^android_common"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_23.ninja android-support-loader-nodeps,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/support/android-support-loader-nodeps^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_23/prebuilts/sdk/android-support-loader-nodeps^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/support/android-support-loader-nodeps^android_common
+
+echo "building android-support-loader^android_common"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_23.ninja android-support-loader,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/support/android-support-loader^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_23/prebuilts/sdk/android-support-loader^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/support/android-support-loader^android_common
+
+echo "building android-support-localbroadcastmanager^android_common"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_23.ninja android-support-localbroadcastmanager,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/support/android-support-localbroadcastmanager^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_23/prebuilts/sdk/android-support-localbroadcastmanager^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/support/android-support-localbroadcastmanager^android_common
+
 echo "building android-support-media-compat-nodeps^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_23.ninja android-support-media-compat-nodeps,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/support/android-support-media-compat-nodeps^android_common
@@ -438,6 +423,31 @@ echo "building android-support-media-compat^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_23.ninja android-support-media-compat,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/support/android-support-media-compat^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_23/prebuilts/sdk/android-support-media-compat^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/support/android-support-media-compat^android_common
+
+echo "building android-support-print^android_common"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_23.ninja android-support-print,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/support/android-support-print^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_23/prebuilts/sdk/android-support-print^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/support/android-support-print^android_common
+
+echo "building android-support-slidingpanelayout-nodeps^android_common"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_23.ninja android-support-slidingpanelayout-nodeps,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/support/android-support-slidingpanelayout-nodeps^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_23/prebuilts/sdk/android-support-slidingpanelayout-nodeps^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/support/android-support-slidingpanelayout-nodeps^android_common
+
+echo "building android-support-slidingpanelayout^android_common"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_23.ninja android-support-slidingpanelayout,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/support/android-support-slidingpanelayout^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_23/prebuilts/sdk/android-support-slidingpanelayout^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/support/android-support-slidingpanelayout^android_common
+
+echo "building android-support-swiperefreshlayout-nodeps^android_common"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_23.ninja android-support-swiperefreshlayout-nodeps,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/support/android-support-swiperefreshlayout-nodeps^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_23/prebuilts/sdk/android-support-swiperefreshlayout-nodeps^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/support/android-support-swiperefreshlayout-nodeps^android_common
+
+echo "building android-support-swiperefreshlayout^android_common"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_23.ninja android-support-swiperefreshlayout,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/support/android-support-swiperefreshlayout^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_23/prebuilts/sdk/android-support-swiperefreshlayout^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/support/android-support-swiperefreshlayout^android_common
 
 echo "building android-support-transition-nodeps^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_23.ninja android-support-transition-nodeps,android_common
@@ -449,20 +459,15 @@ prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/st
 mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/support/android-support-transition^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_23/prebuilts/sdk/android-support-transition^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/support/android-support-transition^android_common
 
-echo "building android-support-viewpager-nodeps^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_23.ninja android-support-viewpager-nodeps,android_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/support/android-support-viewpager-nodeps^android_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_23/prebuilts/sdk/android-support-viewpager-nodeps^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/support/android-support-viewpager-nodeps^android_common
+echo "building android-support-v13-nodeps^android_common"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_23.ninja android-support-v13-nodeps,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/support/android-support-v13-nodeps^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_23/prebuilts/sdk/android-support-v13-nodeps^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/support/android-support-v13-nodeps^android_common
 
-echo "building android-support-viewpager^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_23.ninja android-support-viewpager,android_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/support/android-support-viewpager^android_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_23/prebuilts/sdk/android-support-viewpager^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/support/android-support-viewpager^android_common
-
-echo "building android-support-animatedvectordrawable^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_23.ninja android-support-animatedvectordrawable,android_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/support/android-support-animatedvectordrawable^android_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_23/prebuilts/sdk/android-support-animatedvectordrawable^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/support/android-support-animatedvectordrawable^android_common
+echo "building android-support-v13^android_common"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_23.ninja android-support-v13,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/support/android-support-v13^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_23/prebuilts/sdk/android-support-v13^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/support/android-support-v13^android_common
 
 echo "building android-support-v4-nodeps^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_23.ninja android-support-v4-nodeps,android_common
@@ -474,15 +479,15 @@ prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/st
 mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/support/android-support-v4^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_23/prebuilts/sdk/android-support-v4^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/support/android-support-v4^android_common
 
-echo "building android-support-v13-nodeps^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_23.ninja android-support-v13-nodeps,android_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/support/android-support-v13-nodeps^android_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_23/prebuilts/sdk/android-support-v13-nodeps^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/support/android-support-v13-nodeps^android_common
+echo "building android-support-v7-appcompat-nodeps^android_common"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_23.ninja android-support-v7-appcompat-nodeps,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/support/android-support-v7-appcompat-nodeps^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_23/prebuilts/sdk/android-support-v7-appcompat-nodeps^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/support/android-support-v7-appcompat-nodeps^android_common
 
-echo "building android-support-v13^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_23.ninja android-support-v13,android_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/support/android-support-v13^android_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_23/prebuilts/sdk/android-support-v13^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/support/android-support-v13^android_common
+echo "building android-support-v7-appcompat^android_common"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_23.ninja android-support-v7-appcompat,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/support/android-support-v7-appcompat^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_23/prebuilts/sdk/android-support-v7-appcompat^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/support/android-support-v7-appcompat^android_common
 
 echo "building android-support-v7-cardview^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_23.ninja android-support-v7-cardview,android_common
@@ -509,25 +514,20 @@ prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/st
 mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/support/android-support-vectordrawable^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_23/prebuilts/sdk/android-support-vectordrawable^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/support/android-support-vectordrawable^android_common
 
-echo "building android-support-v7-appcompat-nodeps^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_23.ninja android-support-v7-appcompat-nodeps,android_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/support/android-support-v7-appcompat-nodeps^android_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_23/prebuilts/sdk/android-support-v7-appcompat-nodeps^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/support/android-support-v7-appcompat-nodeps^android_common
+echo "building android-support-viewpager-nodeps^android_common"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_23.ninja android-support-viewpager-nodeps,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/support/android-support-viewpager-nodeps^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_23/prebuilts/sdk/android-support-viewpager-nodeps^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/support/android-support-viewpager-nodeps^android_common
 
-echo "building android-support-v7-appcompat^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_23.ninja android-support-v7-appcompat,android_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/support/android-support-v7-appcompat^android_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_23/prebuilts/sdk/android-support-v7-appcompat^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/support/android-support-v7-appcompat^android_common
+echo "building android-support-viewpager^android_common"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_23.ninja android-support-viewpager,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/support/android-support-viewpager^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_23/prebuilts/sdk/android-support-viewpager^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/support/android-support-viewpager^android_common
 
-echo "building android-support-design-nodeps^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_23.ninja android-support-design-nodeps,android_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/extras/material-design/android-support-design-nodeps^android_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_23/prebuilts/sdk/android-support-design-nodeps^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/extras/material-design/android-support-design-nodeps^android_common
-
-echo "building android-support-design^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_23.ninja android-support-design,android_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/extras/material-design/android-support-design^android_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_23/prebuilts/sdk/android-support-design^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/extras/material-design/android-support-design^android_common
+echo "building android-versionedparcelable^android_common"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_23.ninja android-versionedparcelable,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/support/android-versionedparcelable^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_23/prebuilts/sdk/android-versionedparcelable^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/support/android-versionedparcelable^android_common
 
 echo "building androidx-constraintlayout_constraintlayout^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_23.ninja androidx-constraintlayout_constraintlayout,android_common
@@ -589,16 +589,6 @@ prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/st
 mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx-legacy/androidx.lifecycle_lifecycle-extensions^android_common_apex30
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_23/prebuilts/sdk/androidx.lifecycle_lifecycle-extensions^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx-legacy/androidx.lifecycle_lifecycle-extensions^android_common_apex30
 
-echo "building com.google.android.material_material-nodeps^android_common_apex30"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_23.ninja com.google.android.material_material-nodeps,android_common_apex30
-mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/extras/material-design-x/com.google.android.material_material-nodeps^android_common_apex30
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_23/prebuilts/sdk/com.google.android.material_material-nodeps^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/extras/material-design-x/com.google.android.material_material-nodeps^android_common_apex30
-
-echo "building androidx.navigation_navigation-ui-nodeps^android_common_apex30"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_23.ninja androidx.navigation_navigation-ui-nodeps,android_common_apex30
-mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.navigation_navigation-ui-nodeps^android_common_apex30
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_23/prebuilts/sdk/androidx.navigation_navigation-ui-nodeps^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.navigation_navigation-ui-nodeps^android_common_apex30
-
 echo "building androidx.navigation_navigation-ui-ktx-nodeps^android_common_apex30"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_23.ninja androidx.navigation_navigation-ui-ktx-nodeps,android_common_apex30
 mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.navigation_navigation-ui-ktx-nodeps^android_common_apex30
@@ -609,10 +599,25 @@ prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/st
 mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.navigation_navigation-ui-ktx^android_common_apex30
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_23/prebuilts/sdk/androidx.navigation_navigation-ui-ktx^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.navigation_navigation-ui-ktx^android_common_apex30
 
+echo "building androidx.navigation_navigation-ui-nodeps^android_common_apex30"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_23.ninja androidx.navigation_navigation-ui-nodeps,android_common_apex30
+mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.navigation_navigation-ui-nodeps^android_common_apex30
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_23/prebuilts/sdk/androidx.navigation_navigation-ui-nodeps^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.navigation_navigation-ui-nodeps^android_common_apex30
+
+echo "building androidx.navigation_navigation-ui^android_common_apex30"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_23.ninja androidx.navigation_navigation-ui,android_common_apex30
+mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.navigation_navigation-ui^android_common_apex30
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_23/prebuilts/sdk/androidx.navigation_navigation-ui^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.navigation_navigation-ui^android_common_apex30
+
 echo "building com.google.android.material_material-nodeps^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_23.ninja com.google.android.material_material-nodeps,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/extras/material-design-x/com.google.android.material_material-nodeps^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_23/prebuilts/sdk/com.google.android.material_material-nodeps^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/extras/material-design-x/com.google.android.material_material-nodeps^android_common
+
+echo "building com.google.android.material_material-nodeps^android_common_apex30"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_23.ninja com.google.android.material_material-nodeps,android_common_apex30
+mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/extras/material-design-x/com.google.android.material_material-nodeps^android_common_apex30
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_23/prebuilts/sdk/com.google.android.material_material-nodeps^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/extras/material-design-x/com.google.android.material_material-nodeps^android_common_apex30
 
 echo "building com.google.android.material_material^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_23.ninja com.google.android.material_material,android_common
@@ -623,11 +628,6 @@ echo "building com.google.android.material_material^android_common_apex30"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_23.ninja com.google.android.material_material,android_common_apex30
 mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/extras/material-design-x/com.google.android.material_material^android_common_apex30
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_23/prebuilts/sdk/com.google.android.material_material^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/extras/material-design-x/com.google.android.material_material^android_common_apex30
-
-echo "building androidx.navigation_navigation-ui^android_common_apex30"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_23.ninja androidx.navigation_navigation-ui,android_common_apex30
-mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.navigation_navigation-ui^android_common_apex30
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_23/prebuilts/sdk/androidx.navigation_navigation-ui^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.navigation_navigation-ui^android_common_apex30
 
 rm -rf out
 

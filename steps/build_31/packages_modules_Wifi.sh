@@ -95,6 +95,11 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/tools/apifinder/java_api_used_by_mainlin
 rsync -a -r $GITHUB_WORKSPACE/downloads/tools/platform-compat/java/android/processor/compat/unsupportedappusage/unsupportedappusage-annotation-processor^linux_glibc_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/tools/platform-compat/java/android/compat/annotation/unsupportedappusage^android_common/ .
 
+echo "building com.android.wifi^android_common_com.android.wifi_image"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_31.ninja com.android.wifi,android_common_com.android.wifi_image
+mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/Wifi/apex/com.android.wifi^android_common_com.android.wifi_image
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_31/packages/modules/Wifi/com.android.wifi^android_common_com.android.wifi_image.output . $GITHUB_WORKSPACE/artifacts/packages/modules/Wifi/apex/com.android.wifi^android_common_com.android.wifi_image
+
 echo "building framework-wifi.impl^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_31.ninja framework-wifi.impl,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/Wifi/framework/framework-wifi.impl^android_common
@@ -104,11 +109,6 @@ echo "building service-wifi^android_common_apex30"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_31.ninja service-wifi,android_common_apex30
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/Wifi/service/service-wifi^android_common_apex30
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_31/packages/modules/Wifi/service-wifi^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/packages/modules/Wifi/service/service-wifi^android_common_apex30
-
-echo "building com.android.wifi^android_common_com.android.wifi_image"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_31.ninja com.android.wifi,android_common_com.android.wifi_image
-mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/Wifi/apex/com.android.wifi^android_common_com.android.wifi_image
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_31/packages/modules/Wifi/com.android.wifi^android_common_com.android.wifi_image.output . $GITHUB_WORKSPACE/artifacts/packages/modules/Wifi/apex/com.android.wifi^android_common_com.android.wifi_image
 
 rm -rf out
 

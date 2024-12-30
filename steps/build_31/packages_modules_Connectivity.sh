@@ -130,6 +130,11 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/tools/apifinder/java_api_used_by_mainlin
 rsync -a -r $GITHUB_WORKSPACE/downloads/tools/platform-compat/java/android/processor/compat/unsupportedappusage/unsupportedappusage-annotation-processor^linux_glibc_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/tools/platform-compat/java/android/compat/annotation/unsupportedappusage^android_common/ .
 
+echo "building TetheringApiCurrentLib^android_common_apex30"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_31.ninja TetheringApiCurrentLib,android_common_apex30
+mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/Connectivity/Tethering/TetheringApiCurrentLib^android_common_apex30
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_31/packages/modules/Connectivity/TetheringApiCurrentLib^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/packages/modules/Connectivity/Tethering/TetheringApiCurrentLib^android_common_apex30
+
 echo "building Tethering^android_common_apex30"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_31.ninja Tethering,android_common_apex30
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/Connectivity/Tethering/Tethering^android_common_apex30
@@ -149,11 +154,6 @@ echo "building framework-tethering.impl^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_31.ninja framework-tethering.impl,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/Connectivity/Tethering/common/TetheringLib/framework-tethering.impl^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_31/packages/modules/Connectivity/framework-tethering.impl^android_common.output . $GITHUB_WORKSPACE/artifacts/packages/modules/Connectivity/Tethering/common/TetheringLib/framework-tethering.impl^android_common
-
-echo "building TetheringApiCurrentLib^android_common_apex30"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_31.ninja TetheringApiCurrentLib,android_common_apex30
-mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/Connectivity/Tethering/TetheringApiCurrentLib^android_common_apex30
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_31/packages/modules/Connectivity/TetheringApiCurrentLib^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/packages/modules/Connectivity/Tethering/TetheringApiCurrentLib^android_common_apex30
 
 echo "building service-connectivity-pre-jarjar^android_common_apex30"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_31.ninja service-connectivity-pre-jarjar,android_common_apex30

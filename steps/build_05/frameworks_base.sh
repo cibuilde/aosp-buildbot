@@ -103,15 +103,15 @@ prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/st
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/services/core/xsd/platform-compat-overrides^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/frameworks/base/platform-compat-overrides^.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/services/core/xsd/platform-compat-overrides^
 
-echo "building validatekeymaps^linux_glibc_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja validatekeymaps,linux_glibc_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/tools/validatekeymaps/validatekeymaps^linux_glibc_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/frameworks/base/validatekeymaps^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/tools/validatekeymaps/validatekeymaps^linux_glibc_x86_64
-
 echo "building validate_input_devices_keymaps^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja validate_input_devices_keymaps,
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/InputDevices/validate_input_devices_keymaps^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/frameworks/base/validate_input_devices_keymaps^.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/InputDevices/validate_input_devices_keymaps^
+
+echo "building validatekeymaps^linux_glibc_x86_64"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja validatekeymaps,linux_glibc_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/tools/validatekeymaps/validatekeymaps^linux_glibc_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/frameworks/base/validatekeymaps^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/tools/validatekeymaps/validatekeymaps^linux_glibc_x86_64
 
 rm -rf out
 

@@ -139,6 +139,7 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/health/2.1/android.h
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/core/libasyncio/libasyncio^android_recovery_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/core/libasyncio/libasyncio^android_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/core/libasyncio/libasyncio^android_x86_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/core/libprocessgroup/cgrouprc/libcgrouprc^linux_glibc_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/core/libprocessgroup/cgrouprc/libcgrouprc^linux_glibc_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/core/libprocessgroup/cgrouprc_format/libcgrouprc_format^linux_glibc_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/core/libcrypto_utils/libcrypto_utils^android_recovery_x86_64_static/ .

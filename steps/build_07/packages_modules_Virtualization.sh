@@ -156,15 +156,15 @@ prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/st
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/Virtualization/authfs/libauthfs_crypto_bindgen^android_x86_64_dylib_apex10000
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/packages/modules/Virtualization/libauthfs_crypto_bindgen^android_x86_64_dylib_apex10000.output . $GITHUB_WORKSPACE/artifacts/packages/modules/Virtualization/authfs/libauthfs_crypto_bindgen^android_x86_64_dylib_apex10000
 
-echo "building microdroid_vendor^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja microdroid_vendor,android_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/Virtualization/microdroid/microdroid_vendor^android_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/packages/modules/Virtualization/microdroid_vendor^android_common.output . $GITHUB_WORKSPACE/artifacts/packages/modules/Virtualization/microdroid/microdroid_vendor^android_common
-
 echo "building microdroid_vbmeta^android_x86_64"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja microdroid_vbmeta,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/Virtualization/microdroid/microdroid_vbmeta^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/packages/modules/Virtualization/microdroid_vbmeta^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/packages/modules/Virtualization/microdroid/microdroid_vbmeta^android_x86_64
+
+echo "building microdroid_vendor^android_common"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja microdroid_vendor,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/Virtualization/microdroid/microdroid_vendor^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/packages/modules/Virtualization/microdroid_vendor^android_common.output . $GITHUB_WORKSPACE/artifacts/packages/modules/Virtualization/microdroid/microdroid_vendor^android_common
 
 echo "building mk_payload^android_x86_64_apex10000"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja mk_payload,android_x86_64_apex10000

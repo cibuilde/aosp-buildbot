@@ -29,6 +29,7 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/cmd/sbox/sbox^linux_glibc_x8
 rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/cmd/javac_wrapper/soong_javac_wrapper^linux_glibc_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/zip/cmd/soong_zip^linux_glibc_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/cmd/zipsync/zipsync^linux_glibc_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcxx/libc++^linux_glibc_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/protobuf/aprotoc^linux_glibc_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/turbine/turbine^linux_glibc_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/android_module_lib_stubs_current^android_common/ .
@@ -51,15 +52,15 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/tools/metalava/metalava^linux_glibc_comm
 rsync -a -r $GITHUB_WORKSPACE/downloads/tools/metalava/metalava^linux_glibc_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/tools/metalava/stub-annotations^android_common/ .
 
-echo "building framework-permission.stubs.source.module_lib^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_18.ninja framework-permission.stubs.source.module_lib,android_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/Permission/framework/framework-permission.stubs.source.module_lib^android_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_18/packages/modules/Permission/framework-permission.stubs.source.module_lib^android_common.output . $GITHUB_WORKSPACE/artifacts/packages/modules/Permission/framework/framework-permission.stubs.source.module_lib^android_common
-
 echo "building framework-permission.stubs.module_lib^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_18.ninja framework-permission.stubs.module_lib,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/Permission/framework/framework-permission.stubs.module_lib^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_18/packages/modules/Permission/framework-permission.stubs.module_lib^android_common.output . $GITHUB_WORKSPACE/artifacts/packages/modules/Permission/framework/framework-permission.stubs.module_lib^android_common
+
+echo "building framework-permission.stubs.source.module_lib^android_common"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_18.ninja framework-permission.stubs.source.module_lib,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/Permission/framework/framework-permission.stubs.source.module_lib^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_18/packages/modules/Permission/framework-permission.stubs.source.module_lib^android_common.output . $GITHUB_WORKSPACE/artifacts/packages/modules/Permission/framework/framework-permission.stubs.source.module_lib^android_common
 
 echo "building framework-permission.stubs.source.system^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_18.ninja framework-permission.stubs.source.system,android_common

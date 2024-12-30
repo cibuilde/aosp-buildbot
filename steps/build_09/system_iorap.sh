@@ -94,15 +94,15 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/system/libbase/libbase^android_x86_64_sh
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/server_configurable_flags/libflags/server_configurable_flags^android_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/tools/aidl/aidl-cpp^linux_glibc_x86_64/ .
 
-echo "building libiorap-binder^android_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja libiorap-binder,android_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/iorap/libiorap-binder^android_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_09/system/iorap/libiorap-binder^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/iorap/libiorap-binder^android_x86_64_static
-
 echo "building iorap.cmd.compiler^android_x86_64"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja iorap.cmd.compiler,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/iorap/iorap.cmd.compiler^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_09/system/iorap/iorap.cmd.compiler^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/iorap/iorap.cmd.compiler^android_x86_64
+
+echo "building iorap.cmd.maintenance^android_x86_64"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja iorap.cmd.maintenance,android_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/iorap/iorap.cmd.maintenance^android_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_09/system/iorap/iorap.cmd.maintenance^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/iorap/iorap.cmd.maintenance^android_x86_64
 
 echo "building iorap.inode2filename^android_x86_64"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja iorap.inode2filename,android_x86_64
@@ -119,6 +119,11 @@ prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/st
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/iorap/iorapd^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_09/system/iorap/iorapd^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/iorap/iorapd^android_x86_64
 
+echo "building libiorap-binder^android_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja libiorap-binder,android_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/iorap/libiorap-binder^android_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_09/system/iorap/libiorap-binder^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/iorap/libiorap-binder^android_x86_64_static
+
 echo "building libiorap-compiler^android_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja libiorap-compiler,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/iorap/libiorap-compiler^android_x86_64_static
@@ -133,11 +138,6 @@ echo "building libiorap-inode2filename^android_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja libiorap-inode2filename,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/iorap/libiorap-inode2filename^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_09/system/iorap/libiorap-inode2filename^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/iorap/libiorap-inode2filename^android_x86_64_static
-
-echo "building iorap.cmd.maintenance^android_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja iorap.cmd.maintenance,android_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/iorap/iorap.cmd.maintenance^android_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_09/system/iorap/iorap.cmd.maintenance^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/iorap/iorap.cmd.maintenance^android_x86_64
 
 echo "building libiorap-maintenance^android_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja libiorap-maintenance,android_x86_64_static

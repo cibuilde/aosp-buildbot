@@ -259,11 +259,6 @@ prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/st
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SystemUI/plugin_core/PluginCoreLib^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_22/frameworks/base/PluginCoreLib^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SystemUI/plugin_core/PluginCoreLib^android_common
 
-echo "building android_system_stubs_current^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_22.ninja android_system_stubs_current,android_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/android_system_stubs_current^android_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_22/frameworks/base/android_system_stubs_current^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/android_system_stubs_current^android_common
-
 echo "building SettingsLib-search^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_22.ninja SettingsLib-search,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/search/SettingsLib-search^android_common
@@ -458,6 +453,11 @@ echo "building android_stubs_current^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_22.ninja android_stubs_current,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/android_stubs_current^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_22/frameworks/base/android_stubs_current^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/android_stubs_current^android_common
+
+echo "building android_system_stubs_current^android_common"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_22.ninja android_system_stubs_current,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/android_system_stubs_current^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_22/frameworks/base/android_system_stubs_current^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/android_system_stubs_current^android_common
 
 echo "building android_test_stubs_current^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_22.ninja android_test_stubs_current,android_common

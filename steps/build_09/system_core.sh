@@ -218,30 +218,30 @@ prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/st
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/libbinderwrapper/libbinderwrapper^android_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_09/system/core/libbinderwrapper^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/core/libbinderwrapper/libbinderwrapper^android_x86_64_shared
 
-echo "building liblp^android_recovery_x86_64_shared"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja liblp,android_recovery_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/liblp/liblp^android_recovery_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_09/system/core/liblp^android_recovery_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/liblp/liblp^android_recovery_x86_64_shared
-
 echo "building libfs_mgr^android_recovery_x86_64_shared"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja libfs_mgr,android_recovery_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/libfs_mgr^android_recovery_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_09/system/core/libfs_mgr^android_recovery_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/libfs_mgr^android_recovery_x86_64_shared
+
+echo "building libfs_mgr^android_x86_64_shared"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja libfs_mgr,android_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/libfs_mgr^android_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_09/system/core/libfs_mgr^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/libfs_mgr^android_x86_64_shared
 
 echo "building libgatekeeper_aidl^android_x86_64_shared"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja libgatekeeper_aidl,android_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/gatekeeperd/libgatekeeper_aidl^android_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_09/system/core/libgatekeeper_aidl^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/core/gatekeeperd/libgatekeeper_aidl^android_x86_64_shared
 
+echo "building liblp^android_recovery_x86_64_shared"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja liblp,android_recovery_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/liblp/liblp^android_recovery_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_09/system/core/liblp^android_recovery_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/liblp/liblp^android_recovery_x86_64_shared
+
 echo "building liblp^android_x86_64_shared"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja liblp,android_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/liblp/liblp^android_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_09/system/core/liblp^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/liblp/liblp^android_x86_64_shared
-
-echo "building libfs_mgr^android_x86_64_shared"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja libfs_mgr,android_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/libfs_mgr^android_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_09/system/core/libfs_mgr^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/libfs_mgr^android_x86_64_shared
 
 echo "building libsnapshot^android_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja libsnapshot,android_x86_64_static

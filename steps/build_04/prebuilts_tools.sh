@@ -23,6 +23,11 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/tools/common/m2/kotlinx-corout
 rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/tools/common/m2/kotlinx-coroutines-core-nodeps^android_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/tools/common/m2/kotlinx-coroutines-core-nodeps^android_common_apex30/ .
 
+echo "building kotlinx-coroutines-android^android_common"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja kotlinx-coroutines-android,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/tools/common/m2/kotlinx-coroutines-android^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/prebuilts/tools/kotlinx-coroutines-android^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/tools/common/m2/kotlinx-coroutines-android^android_common
+
 echo "building kotlinx-coroutines-android^android_common_apex30"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja kotlinx-coroutines-android,android_common_apex30
 mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/tools/common/m2/kotlinx-coroutines-android^android_common_apex30
@@ -32,11 +37,6 @@ echo "building kotlinx-coroutines-core^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja kotlinx-coroutines-core,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/tools/common/m2/kotlinx-coroutines-core^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/prebuilts/tools/kotlinx-coroutines-core^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/tools/common/m2/kotlinx-coroutines-core^android_common
-
-echo "building kotlinx-coroutines-android^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja kotlinx-coroutines-android,android_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/tools/common/m2/kotlinx-coroutines-android^android_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/prebuilts/tools/kotlinx-coroutines-android^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/tools/common/m2/kotlinx-coroutines-android^android_common
 
 echo "building kotlinx-coroutines-core^android_common_apex30"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja kotlinx-coroutines-core,android_common_apex30

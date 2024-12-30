@@ -270,30 +270,30 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/system/tools/hidl/test/build_variants/2.
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/tools/hidl/test/build_variants/1.0/hidl_test_system_ext@1.0-inheritance-hierarchy^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/tools/hidl/utils/libhidl-gen-utils^linux_glibc_x86_64_static/ .
 
-echo "building hidl_metadata_json^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja hidl_metadata_json,
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/tools/hidl/build/hidl_metadata_json^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/system/tools/hidl/hidl_metadata_json^.output . $GITHUB_WORKSPACE/artifacts/system/tools/hidl/build/hidl_metadata_json^
-
 echo "building hidl_metadata_in_cpp^linux_glibc_x86_64"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja hidl_metadata_in_cpp,linux_glibc_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/tools/hidl/metadata/hidl_metadata_in_cpp^linux_glibc_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/system/tools/hidl/hidl_metadata_in_cpp^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/tools/hidl/metadata/hidl_metadata_in_cpp^linux_glibc_x86_64
+
+echo "building hidl_metadata_json^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja hidl_metadata_json,
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/tools/hidl/build/hidl_metadata_json^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/system/tools/hidl/hidl_metadata_json^.output . $GITHUB_WORKSPACE/artifacts/system/tools/hidl/build/hidl_metadata_json^
 
 echo "building libhidl-gen-utils^linux_glibc_x86_64_shared"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libhidl-gen-utils,linux_glibc_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/tools/hidl/utils/libhidl-gen-utils^linux_glibc_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/system/tools/hidl/libhidl-gen-utils^linux_glibc_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/tools/hidl/utils/libhidl-gen-utils^linux_glibc_x86_64_shared
 
-echo "building libhidlmetadata^linux_glibc_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libhidlmetadata,linux_glibc_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/tools/hidl/metadata/libhidlmetadata^linux_glibc_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/system/tools/hidl/libhidlmetadata^linux_glibc_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/tools/hidl/metadata/libhidlmetadata^linux_glibc_x86_64_static
-
 echo "building libhidlmetadata^linux_glibc_x86_64_shared"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libhidlmetadata,linux_glibc_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/tools/hidl/metadata/libhidlmetadata^linux_glibc_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/system/tools/hidl/libhidlmetadata^linux_glibc_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/tools/hidl/metadata/libhidlmetadata^linux_glibc_x86_64_shared
+
+echo "building libhidlmetadata^linux_glibc_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libhidlmetadata,linux_glibc_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/tools/hidl/metadata/libhidlmetadata^linux_glibc_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/system/tools/hidl/libhidlmetadata^linux_glibc_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/tools/hidl/metadata/libhidlmetadata^linux_glibc_x86_64_static
 
 rm -rf out
 

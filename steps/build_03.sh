@@ -53,6 +53,10 @@ gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern ext
 mkdir -p $GITHUB_WORKSPACE/downloads/external/avb
 tar xf $GITHUB_WORKSPACE/external_avb-01.tar.zst -C $GITHUB_WORKSPACE/downloads/external/avb/
 
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_00 --pattern external_boringssl.tar.zst --output external_boringssl-00.tar.zst
+mkdir -p $GITHUB_WORKSPACE/downloads/external/boringssl
+tar xf $GITHUB_WORKSPACE/external_boringssl-00.tar.zst -C $GITHUB_WORKSPACE/downloads/external/boringssl/
+
 gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_boringssl.tar.zst --output external_boringssl-01.tar.zst
 mkdir -p $GITHUB_WORKSPACE/downloads/external/boringssl
 tar xf $GITHUB_WORKSPACE/external_boringssl-01.tar.zst -C $GITHUB_WORKSPACE/downloads/external/boringssl/
@@ -60,6 +64,10 @@ tar xf $GITHUB_WORKSPACE/external_boringssl-01.tar.zst -C $GITHUB_WORKSPACE/down
 gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_cpu_features.tar.zst --output external_cpu_features-01.tar.zst
 mkdir -p $GITHUB_WORKSPACE/downloads/external/cpu_features
 tar xf $GITHUB_WORKSPACE/external_cpu_features-01.tar.zst -C $GITHUB_WORKSPACE/downloads/external/cpu_features/
+
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_00 --pattern external_e2fsprogs.tar.zst --output external_e2fsprogs-00.tar.zst
+mkdir -p $GITHUB_WORKSPACE/downloads/external/e2fsprogs
+tar xf $GITHUB_WORKSPACE/external_e2fsprogs-00.tar.zst -C $GITHUB_WORKSPACE/downloads/external/e2fsprogs/
 
 gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_e2fsprogs.tar.zst --output external_e2fsprogs-01.tar.zst
 mkdir -p $GITHUB_WORKSPACE/downloads/external/e2fsprogs
@@ -89,6 +97,10 @@ gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern ext
 mkdir -p $GITHUB_WORKSPACE/downloads/external/gwp_asan
 tar xf $GITHUB_WORKSPACE/external_gwp_asan-01.tar.zst -C $GITHUB_WORKSPACE/downloads/external/gwp_asan/
 
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_00 --pattern external_icu.tar.zst --output external_icu-00.tar.zst
+mkdir -p $GITHUB_WORKSPACE/downloads/external/icu
+tar xf $GITHUB_WORKSPACE/external_icu-00.tar.zst -C $GITHUB_WORKSPACE/downloads/external/icu/
+
 gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_icu.tar.zst --output external_icu-01.tar.zst
 mkdir -p $GITHUB_WORKSPACE/downloads/external/icu
 tar xf $GITHUB_WORKSPACE/external_icu-01.tar.zst -C $GITHUB_WORKSPACE/downloads/external/icu/
@@ -117,6 +129,10 @@ gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern ext
 mkdir -p $GITHUB_WORKSPACE/downloads/external/libpng
 tar xf $GITHUB_WORKSPACE/external_libpng-01.tar.zst -C $GITHUB_WORKSPACE/downloads/external/libpng/
 
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_00 --pattern external_llvm.tar.zst --output external_llvm-00.tar.zst
+mkdir -p $GITHUB_WORKSPACE/downloads/external/llvm
+tar xf $GITHUB_WORKSPACE/external_llvm-00.tar.zst -C $GITHUB_WORKSPACE/downloads/external/llvm/
+
 gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_llvm.tar.zst --output external_llvm-01.tar.zst
 mkdir -p $GITHUB_WORKSPACE/downloads/external/llvm
 tar xf $GITHUB_WORKSPACE/external_llvm-01.tar.zst -C $GITHUB_WORKSPACE/downloads/external/llvm/
@@ -132,6 +148,10 @@ tar xf $GITHUB_WORKSPACE/external_lzma-01.tar.zst -C $GITHUB_WORKSPACE/downloads
 gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_minijail.tar.zst --output external_minijail-01.tar.zst
 mkdir -p $GITHUB_WORKSPACE/downloads/external/minijail
 tar xf $GITHUB_WORKSPACE/external_minijail-01.tar.zst -C $GITHUB_WORKSPACE/downloads/external/minijail/
+
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_00 --pattern external_protobuf.tar.zst --output external_protobuf-00.tar.zst
+mkdir -p $GITHUB_WORKSPACE/downloads/external/protobuf
+tar xf $GITHUB_WORKSPACE/external_protobuf-00.tar.zst -C $GITHUB_WORKSPACE/downloads/external/protobuf/
 
 gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_protobuf.tar.zst --output external_protobuf-01.tar.zst
 mkdir -p $GITHUB_WORKSPACE/downloads/external/protobuf
@@ -257,6 +277,10 @@ gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern fra
 mkdir -p $GITHUB_WORKSPACE/downloads/frameworks/rs
 tar xf $GITHUB_WORKSPACE/frameworks_rs-01.tar.zst -C $GITHUB_WORKSPACE/downloads/frameworks/rs/
 
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_00 --pattern prebuilts_r8.tar.zst --output prebuilts_r8-00.tar.zst
+mkdir -p $GITHUB_WORKSPACE/downloads/prebuilts/r8
+tar xf $GITHUB_WORKSPACE/prebuilts_r8-00.tar.zst -C $GITHUB_WORKSPACE/downloads/prebuilts/r8/
+
 gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern prebuilts_rust.tar.zst --output prebuilts_rust-01.tar.zst
 mkdir -p $GITHUB_WORKSPACE/downloads/prebuilts/rust
 tar xf $GITHUB_WORKSPACE/prebuilts_rust-01.tar.zst -C $GITHUB_WORKSPACE/downloads/prebuilts/rust/
@@ -284,6 +308,18 @@ tar xf $GITHUB_WORKSPACE/system_libziparchive-01.tar.zst -C $GITHUB_WORKSPACE/do
 gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern system_logging.tar.zst --output system_logging-01.tar.zst
 mkdir -p $GITHUB_WORKSPACE/downloads/system/logging
 tar xf $GITHUB_WORKSPACE/system_logging-01.tar.zst -C $GITHUB_WORKSPACE/downloads/system/logging/
+
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_00 --pattern system_sepolicy.tar.zst --output system_sepolicy-00.tar.zst
+mkdir -p $GITHUB_WORKSPACE/downloads/system/sepolicy
+tar xf $GITHUB_WORKSPACE/system_sepolicy-00.tar.zst -C $GITHUB_WORKSPACE/downloads/system/sepolicy/
+
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_00 --pattern system_tools_aidl.tar.zst --output system_tools_aidl-00.tar.zst
+mkdir -p $GITHUB_WORKSPACE/downloads/system/tools/aidl
+tar xf $GITHUB_WORKSPACE/system_tools_aidl-00.tar.zst -C $GITHUB_WORKSPACE/downloads/system/tools/aidl/
+
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_00 --pattern system_tools_hidl.tar.zst --output system_tools_hidl-00.tar.zst
+mkdir -p $GITHUB_WORKSPACE/downloads/system/tools/hidl
+tar xf $GITHUB_WORKSPACE/system_tools_hidl-00.tar.zst -C $GITHUB_WORKSPACE/downloads/system/tools/hidl/
 
 gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern system_tools_hidl.tar.zst --output system_tools_hidl-01.tar.zst
 mkdir -p $GITHUB_WORKSPACE/downloads/system/tools/hidl

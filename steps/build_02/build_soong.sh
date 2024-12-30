@@ -24,32 +24,29 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/build/blueprint/blueprint-proptools^linu
 rsync -a -r $GITHUB_WORKSPACE/downloads/build/blueprint/blueprint^linux_glibc_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/third_party/zip/android-archive-zip^linux_glibc_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/androidmk/androidmk-parser^linux_glibc_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/cmd/merge_zips/merge_zips^linux_glibc_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/bazel/cquery/soong-cquery^linux_glibc_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/jar/soong-jar^linux_glibc_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/makedeps/soong-makedeps^linux_glibc_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/remoteexec/soong-remoteexec^linux_glibc_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/response/soong-response^linux_glibc_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/zip/cmd/soong_zip^linux_glibc_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/golang-protobuf/golang-protobuf-proto^linux_glibc_x86_64/ .
-
-echo "building extract_jar_packages^linux_glibc_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_02.ninja extract_jar_packages,linux_glibc_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/build/soong/cmd/extract_jar_packages/extract_jar_packages^linux_glibc_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_02/build/soong/extract_jar_packages^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/build/soong/cmd/extract_jar_packages/extract_jar_packages^linux_glibc_x86_64
-
-echo "building manifest_utils^linux_glibc_x86_64_PY2"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_02.ninja manifest_utils,linux_glibc_x86_64_PY2
-mkdir -p $GITHUB_WORKSPACE/artifacts/build/soong/scripts/manifest_utils^linux_glibc_x86_64_PY2
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_02/build/soong/manifest_utils^linux_glibc_x86_64_PY2.output . $GITHUB_WORKSPACE/artifacts/build/soong/scripts/manifest_utils^linux_glibc_x86_64_PY2
-
-echo "building merge_zips^linux_glibc_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_02.ninja merge_zips,linux_glibc_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/build/soong/cmd/merge_zips/merge_zips^linux_glibc_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_02/build/soong/merge_zips^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/build/soong/cmd/merge_zips/merge_zips^linux_glibc_x86_64
 
 echo "building construct_context^linux_glibc_x86_64_PY2"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_02.ninja construct_context,linux_glibc_x86_64_PY2
 mkdir -p $GITHUB_WORKSPACE/artifacts/build/soong/scripts/construct_context^linux_glibc_x86_64_PY2
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_02/build/soong/construct_context^linux_glibc_x86_64_PY2.output . $GITHUB_WORKSPACE/artifacts/build/soong/scripts/construct_context^linux_glibc_x86_64_PY2
+
+echo "building dexpreopt_gen^linux_glibc_x86_64"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_02.ninja dexpreopt_gen,linux_glibc_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/build/soong/dexpreopt/dexpreopt_gen/dexpreopt_gen^linux_glibc_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_02/build/soong/dexpreopt_gen^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/build/soong/dexpreopt/dexpreopt_gen/dexpreopt_gen^linux_glibc_x86_64
+
+echo "building extract_jar_packages^linux_glibc_x86_64"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_02.ninja extract_jar_packages,linux_glibc_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/build/soong/cmd/extract_jar_packages/extract_jar_packages^linux_glibc_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_02/build/soong/extract_jar_packages^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/build/soong/cmd/extract_jar_packages/extract_jar_packages^linux_glibc_x86_64
 
 echo "building gen-kotlin-build-file.py^linux_glibc_x86_64_PY3"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_02.ninja gen-kotlin-build-file.py,linux_glibc_x86_64_PY3
@@ -71,6 +68,16 @@ prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/st
 mkdir -p $GITHUB_WORKSPACE/artifacts/build/soong/scripts/manifest_fixer^linux_glibc_x86_64_PY2
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_02/build/soong/manifest_fixer^linux_glibc_x86_64_PY2.output . $GITHUB_WORKSPACE/artifacts/build/soong/scripts/manifest_fixer^linux_glibc_x86_64_PY2
 
+echo "building manifest_utils^linux_glibc_x86_64_PY2"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_02.ninja manifest_utils,linux_glibc_x86_64_PY2
+mkdir -p $GITHUB_WORKSPACE/artifacts/build/soong/scripts/manifest_utils^linux_glibc_x86_64_PY2
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_02/build/soong/manifest_utils^linux_glibc_x86_64_PY2.output . $GITHUB_WORKSPACE/artifacts/build/soong/scripts/manifest_utils^linux_glibc_x86_64_PY2
+
+echo "building merge_zips^linux_glibc_x86_64"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_02.ninja merge_zips,linux_glibc_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/build/soong/cmd/merge_zips/merge_zips^linux_glibc_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_02/build/soong/merge_zips^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/build/soong/cmd/merge_zips/merge_zips^linux_glibc_x86_64
+
 echo "building ndk_api_coverage_parser^linux_glibc_x86_64_PY3"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_02.ninja ndk_api_coverage_parser,linux_glibc_x86_64_PY3
 mkdir -p $GITHUB_WORKSPACE/artifacts/build/soong/cc/ndk_api_coverage_parser/ndk_api_coverage_parser^linux_glibc_x86_64_PY3
@@ -86,25 +93,35 @@ prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/st
 mkdir -p $GITHUB_WORKSPACE/artifacts/build/soong/scripts/ninja_rsp^linux_glibc_x86_64_PY3
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_02/build/soong/ninja_rsp^linux_glibc_x86_64_PY3.output . $GITHUB_WORKSPACE/artifacts/build/soong/scripts/ninja_rsp^linux_glibc_x86_64_PY3
 
-echo "building sbox_proto^linux_glibc_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_02.ninja sbox_proto,linux_glibc_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/build/soong/cmd/sbox/sbox_proto^linux_glibc_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_02/build/soong/sbox_proto^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/build/soong/cmd/sbox/sbox_proto^linux_glibc_x86_64
-
 echo "building sbox^linux_glibc_x86_64"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_02.ninja sbox,linux_glibc_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/build/soong/cmd/sbox/sbox^linux_glibc_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_02/build/soong/sbox^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/build/soong/cmd/sbox/sbox^linux_glibc_x86_64
+
+echo "building sbox_proto^linux_glibc_x86_64"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_02.ninja sbox_proto,linux_glibc_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/build/soong/cmd/sbox/sbox_proto^linux_glibc_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_02/build/soong/sbox_proto^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/build/soong/cmd/sbox/sbox_proto^linux_glibc_x86_64
 
 echo "building soong-android-soongconfig^linux_glibc_x86_64"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_02.ninja soong-android-soongconfig,linux_glibc_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/build/soong/android/soongconfig/soong-android-soongconfig^linux_glibc_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_02/build/soong/soong-android-soongconfig^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/build/soong/android/soongconfig/soong-android-soongconfig^linux_glibc_x86_64
 
+echo "building soong-android^linux_glibc_x86_64"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_02.ninja soong-android,linux_glibc_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/build/soong/android/soong-android^linux_glibc_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_02/build/soong/soong-android^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/build/soong/android/soong-android^linux_glibc_x86_64
+
 echo "building soong-bazel^linux_glibc_x86_64"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_02.ninja soong-bazel,linux_glibc_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/build/soong/bazel/soong-bazel^linux_glibc_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_02/build/soong/soong-bazel^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/build/soong/bazel/soong-bazel^linux_glibc_x86_64
+
+echo "building soong-dexpreopt^linux_glibc_x86_64"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_02.ninja soong-dexpreopt,linux_glibc_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/build/soong/dexpreopt/soong-dexpreopt^linux_glibc_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_02/build/soong/soong-dexpreopt^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/build/soong/dexpreopt/soong-dexpreopt^linux_glibc_x86_64
 
 echo "building soong-shared^linux_glibc_x86_64"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_02.ninja soong-shared,linux_glibc_x86_64
@@ -116,30 +133,15 @@ prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/st
 mkdir -p $GITHUB_WORKSPACE/artifacts/build/soong/ui/metrics/soong-ui-metrics_proto^linux_glibc_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_02/build/soong/soong-ui-metrics_proto^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/build/soong/ui/metrics/soong-ui-metrics_proto^linux_glibc_x86_64
 
-echo "building soong^linux_glibc_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_02.ninja soong,linux_glibc_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/build/soong/soong^linux_glibc_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_02/build/soong/soong^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/build/soong/soong^linux_glibc_x86_64
-
-echo "building soong-android^linux_glibc_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_02.ninja soong-android,linux_glibc_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/build/soong/android/soong-android^linux_glibc_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_02/build/soong/soong-android^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/build/soong/android/soong-android^linux_glibc_x86_64
-
-echo "building soong-dexpreopt^linux_glibc_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_02.ninja soong-dexpreopt,linux_glibc_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/build/soong/dexpreopt/soong-dexpreopt^linux_glibc_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_02/build/soong/soong-dexpreopt^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/build/soong/dexpreopt/soong-dexpreopt^linux_glibc_x86_64
-
-echo "building dexpreopt_gen^linux_glibc_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_02.ninja dexpreopt_gen,linux_glibc_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/build/soong/dexpreopt/dexpreopt_gen/dexpreopt_gen^linux_glibc_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_02/build/soong/dexpreopt_gen^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/build/soong/dexpreopt/dexpreopt_gen/dexpreopt_gen^linux_glibc_x86_64
-
 echo "building soong-zip^linux_glibc_x86_64"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_02.ninja soong-zip,linux_glibc_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/build/soong/zip/soong-zip^linux_glibc_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_02/build/soong/soong-zip^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/build/soong/zip/soong-zip^linux_glibc_x86_64
+
+echo "building soong^linux_glibc_x86_64"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_02.ninja soong,linux_glibc_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/build/soong/soong^linux_glibc_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_02/build/soong/soong^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/build/soong/soong^linux_glibc_x86_64
 
 echo "building soong_zip^linux_glibc_x86_64"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_02.ninja soong_zip,linux_glibc_x86_64

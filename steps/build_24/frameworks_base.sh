@@ -312,6 +312,11 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/tools/platform-compat/java/android/proce
 rsync -a -r $GITHUB_WORKSPACE/downloads/tools/platform-compat/java/android/processor/compat/unsupportedappusage/unsupportedappusage-annotation-processor^linux_glibc_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/tools/platform-compat/java/android/compat/annotation/unsupportedappusage^android_common/ .
 
+echo "building SettingsLibAdaptiveIcon^android_common"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_24.ninja SettingsLibAdaptiveIcon,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/AdaptiveIcon/SettingsLibAdaptiveIcon^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_24/frameworks/base/SettingsLibAdaptiveIcon^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/AdaptiveIcon/SettingsLibAdaptiveIcon^android_common
+
 echo "building SettingsLibCollapsingToolbarBaseActivity^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_24.ninja SettingsLibCollapsingToolbarBaseActivity,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/CollapsingToolbarBaseActivity/SettingsLibCollapsingToolbarBaseActivity^android_common
@@ -327,16 +332,6 @@ prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/st
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/DisplayDensityUtils/SettingsLibDisplayDensityUtils^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_24/frameworks/base/SettingsLibDisplayDensityUtils^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/DisplayDensityUtils/SettingsLibDisplayDensityUtils^android_common
 
-echo "building SettingsLibTile^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_24.ninja SettingsLibTile,android_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/Tile/SettingsLibTile^android_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_24/frameworks/base/SettingsLibTile^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/Tile/SettingsLibTile^android_common
-
-echo "building SettingsLibAdaptiveIcon^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_24.ninja SettingsLibAdaptiveIcon,android_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/AdaptiveIcon/SettingsLibAdaptiveIcon^android_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_24/frameworks/base/SettingsLibAdaptiveIcon^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/AdaptiveIcon/SettingsLibAdaptiveIcon^android_common
-
 echo "building SettingsLibSettingsTransition^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_24.ninja SettingsLibSettingsTransition,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/SettingsTransition/SettingsLibSettingsTransition^android_common
@@ -346,6 +341,11 @@ echo "building SettingsLibSettingsTransition^android_common_apex30"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_24.ninja SettingsLibSettingsTransition,android_common_apex30
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/SettingsTransition/SettingsLibSettingsTransition^android_common_apex30
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_24/frameworks/base/SettingsLibSettingsTransition^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/SettingsTransition/SettingsLibSettingsTransition^android_common_apex30
+
+echo "building SettingsLibTile^android_common"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_24.ninja SettingsLibTile,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/Tile/SettingsLibTile^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_24/frameworks/base/SettingsLibTile^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/Tile/SettingsLibTile^android_common
 
 echo "building SettingsLibUsageProgressBarPreference^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_24.ninja SettingsLibUsageProgressBarPreference,android_common
@@ -387,6 +387,11 @@ prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/st
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/libs/WindowManager/Shell/WindowManager-Shell-proto^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_24/frameworks/base/WindowManager-Shell-proto^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/libs/WindowManager/Shell/WindowManager-Shell-proto^android_common
 
+echo "building WindowManager-Shell^android_common"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_24.ninja WindowManager-Shell,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/libs/WindowManager/Shell/WindowManager-Shell^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_24/frameworks/base/WindowManager-Shell^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/libs/WindowManager/Shell/WindowManager-Shell^android_common
+
 echo "building android.test.base.stubs.source.system^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_24.ninja android.test.base.stubs.source.system,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/test-base/android.test.base.stubs.source.system^android_common
@@ -417,15 +422,15 @@ prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/st
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/test-runner/android.test.runner.stubs.system^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_24/frameworks/base/android.test.runner.stubs.system^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/test-runner/android.test.runner.stubs.system^android_common
 
-echo "building services-non-updatable-stubs^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_24.ninja services-non-updatable-stubs,android_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/services/services-non-updatable-stubs^android_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_24/frameworks/base/services-non-updatable-stubs^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/services/services-non-updatable-stubs^android_common
-
 echo "building android_system_server_stubs_current^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_24.ninja android_system_server_stubs_current,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/android_system_server_stubs_current^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_24/frameworks/base/android_system_server_stubs_current^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/android_system_server_stubs_current^android_common
+
+echo "building checked-protolog.json^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_24.ninja checked-protolog.json,
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/services/core/checked-protolog.json^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_24/frameworks/base/checked-protolog.json^.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/services/core/checked-protolog.json^
 
 echo "building com.android.appsearch^android_common_com.android.appsearch_image"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_24.ninja com.android.appsearch,android_common_com.android.appsearch_image
@@ -441,6 +446,11 @@ echo "building framework^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_24.ninja framework,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/framework^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_24/frameworks/base/framework^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/framework^android_common
+
+echo "building generate-protolog.json^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_24.ninja generate-protolog.json,
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/services/core/generate-protolog.json^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_24/frameworks/base/generate-protolog.json^.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/services/core/generate-protolog.json^
 
 echo "building generate-wm_shell_protolog.json^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_24.ninja generate-wm_shell_protolog.json,
@@ -462,30 +472,10 @@ prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/st
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/core/java/protolog-lib^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_24/frameworks/base/protolog-lib^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/core/java/protolog-lib^android_common
 
-echo "building WindowManager-Shell^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_24.ninja WindowManager-Shell,android_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/libs/WindowManager/Shell/WindowManager-Shell^android_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_24/frameworks/base/WindowManager-Shell^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/libs/WindowManager/Shell/WindowManager-Shell^android_common
-
-echo "building generate-protolog.json^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_24.ninja generate-protolog.json,
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/services/core/generate-protolog.json^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_24/frameworks/base/generate-protolog.json^.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/services/core/generate-protolog.json^
-
-echo "building checked-protolog.json^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_24.ninja checked-protolog.json,
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/services/core/checked-protolog.json^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_24/frameworks/base/checked-protolog.json^.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/services/core/checked-protolog.json^
-
 echo "building protolog.conf.json.gz^android_x86_64"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_24.ninja protolog.conf.json.gz,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/services/core/protolog.conf.json.gz^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_24/frameworks/base/protolog.conf.json.gz^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/services/core/protolog.conf.json.gz^android_x86_64
-
-echo "building statslog-appsearch-lib^android_common_apex10000"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_24.ninja statslog-appsearch-lib,android_common_apex10000
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/apex/appsearch/service/statslog-appsearch-lib^android_common_apex10000
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_24/frameworks/base/statslog-appsearch-lib^android_common_apex10000.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/apex/appsearch/service/statslog-appsearch-lib^android_common_apex10000
 
 echo "building service-appsearch^android_common_apex10000"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_24.ninja service-appsearch,android_common_apex10000
@@ -496,6 +486,11 @@ echo "building service-media-s^android_common_apex29"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_24.ninja service-media-s,android_common_apex29
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/apex/media/service/service-media-s^android_common_apex29
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_24/frameworks/base/service-media-s^android_common_apex29.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/apex/media/service/service-media-s^android_common_apex29
+
+echo "building services-non-updatable-stubs^android_common"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_24.ninja services-non-updatable-stubs,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/services/services-non-updatable-stubs^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_24/frameworks/base/services-non-updatable-stubs^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/services/services-non-updatable-stubs^android_common
 
 echo "building services.core.json.gz^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_24.ninja services.core.json.gz,
@@ -511,6 +506,11 @@ echo "building services.wifi^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_24.ninja services.wifi,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/services/wifi/services.wifi^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_24/frameworks/base/services.wifi^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/services/wifi/services.wifi^android_common
+
+echo "building statslog-appsearch-lib^android_common_apex10000"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_24.ninja statslog-appsearch-lib,android_common_apex10000
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/apex/appsearch/service/statslog-appsearch-lib^android_common_apex10000
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_24/frameworks/base/statslog-appsearch-lib^android_common_apex10000.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/apex/appsearch/service/statslog-appsearch-lib^android_common_apex10000
 
 echo "building tv_tuner_resource_manager_aidl_interface-java^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_24.ninja tv_tuner_resource_manager_aidl_interface-java,android_common

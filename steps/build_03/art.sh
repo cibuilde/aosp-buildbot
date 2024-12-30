@@ -132,15 +132,15 @@ prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/st
 mkdir -p $GITHUB_WORKSPACE/artifacts/art/dex2oat/dex2oatd^linux_glibc_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/art/dex2oatd^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/art/dex2oat/dex2oatd^linux_glibc_x86_64
 
-echo "building generate_operator_out^linux_glibc_x86_64_PY2"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja generate_operator_out,linux_glibc_x86_64_PY2
-mkdir -p $GITHUB_WORKSPACE/artifacts/art/tools/generate_operator_out^linux_glibc_x86_64_PY2
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/art/generate_operator_out^linux_glibc_x86_64_PY2.output . $GITHUB_WORKSPACE/artifacts/art/tools/generate_operator_out^linux_glibc_x86_64_PY2
-
 echo "building dexfile_operator_srcs^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja dexfile_operator_srcs,
 mkdir -p $GITHUB_WORKSPACE/artifacts/art/libdexfile/dexfile_operator_srcs^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/art/dexfile_operator_srcs^.output . $GITHUB_WORKSPACE/artifacts/art/libdexfile/dexfile_operator_srcs^
+
+echo "building generate_operator_out^linux_glibc_x86_64_PY2"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja generate_operator_out,linux_glibc_x86_64_PY2
+mkdir -p $GITHUB_WORKSPACE/artifacts/art/tools/generate_operator_out^linux_glibc_x86_64_PY2
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/art/generate_operator_out^linux_glibc_x86_64_PY2.output . $GITHUB_WORKSPACE/artifacts/art/tools/generate_operator_out^linux_glibc_x86_64_PY2
 
 echo "building hiddenapi^linux_glibc_x86_64"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja hiddenapi,linux_glibc_x86_64
@@ -217,6 +217,11 @@ prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/st
 mkdir -p $GITHUB_WORKSPACE/artifacts/art/runtime/libartd^linux_glibc_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/art/libartd^linux_glibc_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/art/runtime/libartd^linux_glibc_x86_64_static
 
+echo "building libdex2oatd_static^linux_glibc_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libdex2oatd_static,linux_glibc_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/art/dex2oat/libdex2oatd_static^linux_glibc_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/art/libdex2oatd_static^linux_glibc_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/art/dex2oat/libdex2oatd_static^linux_glibc_x86_64_static
+
 echo "building libdexfile^android_x86_64_static_apex31"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libdexfile,android_x86_64_static_apex31
 mkdir -p $GITHUB_WORKSPACE/artifacts/art/libdexfile/libdexfile^android_x86_64_static_apex31
@@ -227,20 +232,15 @@ prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/st
 mkdir -p $GITHUB_WORKSPACE/artifacts/art/libdexfile/libdexfile^android_x86_x86_64_static_apex31
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/art/libdexfile^android_x86_x86_64_static_apex31.output . $GITHUB_WORKSPACE/artifacts/art/libdexfile/libdexfile^android_x86_x86_64_static_apex31
 
-echo "building libdexfiled^linux_glibc_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libdexfiled,linux_glibc_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/art/libdexfile/libdexfiled^linux_glibc_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/art/libdexfiled^linux_glibc_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/art/libdexfile/libdexfiled^linux_glibc_x86_64_static
-
-echo "building libdex2oatd_static^linux_glibc_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libdex2oatd_static,linux_glibc_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/art/dex2oat/libdex2oatd_static^linux_glibc_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/art/libdex2oatd_static^linux_glibc_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/art/dex2oat/libdex2oatd_static^linux_glibc_x86_64_static
-
 echo "building libdexfile^linux_glibc_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libdexfile,linux_glibc_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/art/libdexfile/libdexfile^linux_glibc_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/art/libdexfile^linux_glibc_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/art/libdexfile/libdexfile^linux_glibc_x86_64_static
+
+echo "building libdexfiled^linux_glibc_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libdexfiled,linux_glibc_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/art/libdexfile/libdexfiled^linux_glibc_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/art/libdexfiled^linux_glibc_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/art/libdexfile/libdexfiled^linux_glibc_x86_64_static
 
 echo "building libnativeloader^android_x86_64_shared_current"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libnativeloader,android_x86_64_shared_current

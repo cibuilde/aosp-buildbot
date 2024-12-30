@@ -20,15 +20,15 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/cmd/javac_wrapper/soong_java
 rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/zip/cmd/soong_zip^linux_glibc_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/cmd/zipsync/zipsync^linux_glibc_x86_64/ .
 
-echo "building bouncycastle-unbundled^linux_glibc_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja bouncycastle-unbundled,linux_glibc_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/bouncycastle/bouncycastle-unbundled^linux_glibc_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/external/bouncycastle/bouncycastle-unbundled^linux_glibc_common.output . $GITHUB_WORKSPACE/artifacts/external/bouncycastle/bouncycastle-unbundled^linux_glibc_common
-
 echo "building bouncycastle-bcpkix-unbundled^linux_glibc_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja bouncycastle-bcpkix-unbundled,linux_glibc_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/bouncycastle/bouncycastle-bcpkix-unbundled^linux_glibc_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/external/bouncycastle/bouncycastle-bcpkix-unbundled^linux_glibc_common.output . $GITHUB_WORKSPACE/artifacts/external/bouncycastle/bouncycastle-bcpkix-unbundled^linux_glibc_common
+
+echo "building bouncycastle-unbundled^linux_glibc_common"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja bouncycastle-unbundled,linux_glibc_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/bouncycastle/bouncycastle-unbundled^linux_glibc_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/external/bouncycastle/bouncycastle-unbundled^linux_glibc_common.output . $GITHUB_WORKSPACE/artifacts/external/bouncycastle/bouncycastle-unbundled^linux_glibc_common
 
 rm -rf out
 

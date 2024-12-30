@@ -58,11 +58,6 @@ prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/st
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/bt/gd/BluetoothGeneratedDumpsysBinarySchema_bfbs^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/bt/BluetoothGeneratedDumpsysBinarySchema_bfbs^.output . $GITHUB_WORKSPACE/artifacts/system/bt/gd/BluetoothGeneratedDumpsysBinarySchema_bfbs^
 
-echo "building bluetooth_flatbuffer_bundler^linux_glibc_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja bluetooth_flatbuffer_bundler,linux_glibc_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/bt/gd/dumpsys/bundler/bluetooth_flatbuffer_bundler^linux_glibc_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/bt/bluetooth_flatbuffer_bundler^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/bt/gd/dumpsys/bundler/bluetooth_flatbuffer_bundler^linux_glibc_x86_64
-
 echo "building BluetoothGeneratedDumpsysBundledSchema_h^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja BluetoothGeneratedDumpsysBundledSchema_h,
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/bt/gd/dumpsys/BluetoothGeneratedDumpsysBundledSchema_h^
@@ -77,6 +72,11 @@ echo "building async_fd_watcher^android_vendor.31_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja async_fd_watcher,android_vendor.31_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/bt/vendor_libs/linux/interface/async_fd_watcher^android_vendor.31_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/bt/async_fd_watcher^android_vendor.31_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/bt/vendor_libs/linux/interface/async_fd_watcher^android_vendor.31_x86_64_static
+
+echo "building bluetooth_flatbuffer_bundler^linux_glibc_x86_64"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja bluetooth_flatbuffer_bundler,linux_glibc_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/bt/gd/dumpsys/bundler/bluetooth_flatbuffer_bundler^linux_glibc_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/bt/bluetooth_flatbuffer_bundler^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/bt/gd/dumpsys/bundler/bluetooth_flatbuffer_bundler^linux_glibc_x86_64
 
 echo "building lib-bt-packets-avrcp^android_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja lib-bt-packets-avrcp,android_x86_64_static

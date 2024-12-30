@@ -26,17 +26,13 @@ clone_depth_platform system/core
 clone_depth_platform system/logging
 clone_depth_platform system/media
 
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/clang/utils/TableGen/clang-tblgen^linux_glibc_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcxx/libc++^linux_glibc_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/llvm/lib/Support/libLLVMSupport^linux_glibc_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/llvm/lib/TableGen/libLLVMTableGen^linux_glibc_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/llvm/llvm-gen-attributes^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/llvm/llvm-gen-intrinsics^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/llvm/utils/TableGen/llvm-tblgen^linux_glibc_x86_64/ .
-
-echo "building clang-tblgen^linux_glibc_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja clang-tblgen,linux_glibc_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/clang/utils/TableGen/clang-tblgen^linux_glibc_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/clang/clang-tblgen^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/clang/utils/TableGen/clang-tblgen^linux_glibc_x86_64
 
 echo "building clang-gen-arm-neon^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja clang-gen-arm-neon,
@@ -92,6 +88,11 @@ echo "building clang-gen-statnodes^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja clang-gen-statnodes,
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/clang/clang-gen-statnodes^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/clang/clang-gen-statnodes^.output . $GITHUB_WORKSPACE/artifacts/external/clang/clang-gen-statnodes^
+
+echo "building clang-tblgen^linux_glibc_x86_64"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja clang-tblgen,linux_glibc_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/clang/utils/TableGen/clang-tblgen^linux_glibc_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/clang/clang-tblgen^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/clang/utils/TableGen/clang-tblgen^linux_glibc_x86_64
 
 rm -rf out
 

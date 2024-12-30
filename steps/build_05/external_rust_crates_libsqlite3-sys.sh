@@ -64,6 +64,7 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/external/rust/crates/lazy_static/liblazy
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/rust/crates/lazycell/liblazycell^linux_glibc_x86_64_rlib_rlib-std/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/rust/crates/libc/liblibc^linux_glibc_x86_64_rlib_rlib-std/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/rust/crates/libloading/liblibloading^linux_glibc_x86_64_rlib_rlib-std/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/rust/crates/libsqlite3-sys/android/sqlite3_bindgen_build^linux_glibc_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/rust/crates/log/liblog_rust^linux_glibc_x86_64_rlib_rlib-std/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/rust/crates/memchr/libmemchr^linux_glibc_x86_64_rlib_rlib-std/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/rust/crates/nom/libnom^linux_glibc_x86_64_rlib_rlib-std/ .
@@ -78,15 +79,15 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/external/rust/crates/textwrap/libtextwra
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/rust/crates/unicode-xid/libunicode_xid^linux_glibc_x86_64_rlib_rlib-std/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/rust/crates/which/libwhich^linux_glibc_x86_64_rlib_rlib-std/ .
 
-echo "building sqlite3_bindgen_build^linux_glibc_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja sqlite3_bindgen_build,linux_glibc_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/rust/crates/libsqlite3-sys/android/sqlite3_bindgen_build^linux_glibc_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/external/rust/crates/libsqlite3-sys/sqlite3_bindgen_build^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/rust/crates/libsqlite3-sys/android/sqlite3_bindgen_build^linux_glibc_x86_64
-
 echo "building libsqlite3_bindgen^android_x86_64_source"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libsqlite3_bindgen,android_x86_64_source
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/rust/crates/libsqlite3-sys/libsqlite3_bindgen^android_x86_64_source
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/external/rust/crates/libsqlite3-sys/libsqlite3_bindgen^android_x86_64_source.output . $GITHUB_WORKSPACE/artifacts/external/rust/crates/libsqlite3-sys/libsqlite3_bindgen^android_x86_64_source
+
+echo "building sqlite3_bindgen_build^linux_glibc_x86_64"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja sqlite3_bindgen_build,linux_glibc_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/rust/crates/libsqlite3-sys/android/sqlite3_bindgen_build^linux_glibc_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/external/rust/crates/libsqlite3-sys/sqlite3_bindgen_build^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/rust/crates/libsqlite3-sys/android/sqlite3_bindgen_build^linux_glibc_x86_64
 
 rm -rf out
 

@@ -159,15 +159,15 @@ prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/st
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/providers/MediaProvider/MediaProvider^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_32/packages/providers/MediaProvider/MediaProvider^android_common.output . $GITHUB_WORKSPACE/artifacts/packages/providers/MediaProvider/MediaProvider^android_common
 
-echo "building media-provider-platform-compat-config^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_32.ninja media-provider-platform-compat-config,android_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/packages/providers/MediaProvider/media-provider-platform-compat-config^android_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_32/packages/providers/MediaProvider/media-provider-platform-compat-config^android_common.output . $GITHUB_WORKSPACE/artifacts/packages/providers/MediaProvider/media-provider-platform-compat-config^android_common
-
 echo "building com.android.mediaprovider^android_common_com.android.mediaprovider_image"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_32.ninja com.android.mediaprovider,android_common_com.android.mediaprovider_image
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/providers/MediaProvider/apex/com.android.mediaprovider^android_common_com.android.mediaprovider_image
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_32/packages/providers/MediaProvider/com.android.mediaprovider^android_common_com.android.mediaprovider_image.output . $GITHUB_WORKSPACE/artifacts/packages/providers/MediaProvider/apex/com.android.mediaprovider^android_common_com.android.mediaprovider_image
+
+echo "building media-provider-platform-compat-config^android_common"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_32.ninja media-provider-platform-compat-config,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/packages/providers/MediaProvider/media-provider-platform-compat-config^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_32/packages/providers/MediaProvider/media-provider-platform-compat-config^android_common.output . $GITHUB_WORKSPACE/artifacts/packages/providers/MediaProvider/media-provider-platform-compat-config^android_common
 
 rm -rf out
 

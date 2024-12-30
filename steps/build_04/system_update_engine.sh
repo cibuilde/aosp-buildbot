@@ -74,15 +74,15 @@ prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/st
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/update_engine/libpayload_extent_utils^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/update_engine/libpayload_extent_utils^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/update_engine/libpayload_extent_utils^android_x86_64_static
 
-echo "building libupdate_engine_stable-api^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libupdate_engine_stable-api,
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/update_engine/stable/libupdate_engine_stable-api^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/update_engine/libupdate_engine_stable-api^.output . $GITHUB_WORKSPACE/artifacts/system/update_engine/stable/libupdate_engine_stable-api^
-
 echo "building libupdate_engine_stable-V1-cpp-source^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libupdate_engine_stable-V1-cpp-source,
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/update_engine/stable/libupdate_engine_stable-V1-cpp-source^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/update_engine/libupdate_engine_stable-V1-cpp-source^.output . $GITHUB_WORKSPACE/artifacts/system/update_engine/stable/libupdate_engine_stable-V1-cpp-source^
+
+echo "building libupdate_engine_stable-api^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libupdate_engine_stable-api,
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/update_engine/stable/libupdate_engine_stable-api^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/update_engine/libupdate_engine_stable-api^.output . $GITHUB_WORKSPACE/artifacts/system/update_engine/stable/libupdate_engine_stable-api^
 
 echo "building update_metadata-protos^android_recovery_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja update_metadata-protos,android_recovery_x86_64_static

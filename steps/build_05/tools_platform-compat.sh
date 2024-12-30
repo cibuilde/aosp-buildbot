@@ -29,6 +29,11 @@ prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/st
 mkdir -p $GITHUB_WORKSPACE/artifacts/tools/platform-compat/java/com/android/annotationvisitor/annotationvisitor^linux_glibc_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/tools/platform-compat/annotationvisitor^linux_glibc_common.output . $GITHUB_WORKSPACE/artifacts/tools/platform-compat/java/com/android/annotationvisitor/annotationvisitor^linux_glibc_common
 
+echo "building compat-changeid-annotation-processor-lib^linux_glibc_common"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja compat-changeid-annotation-processor-lib,linux_glibc_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/tools/platform-compat/java/android/processor/compat/changeid/compat-changeid-annotation-processor-lib^linux_glibc_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/tools/platform-compat/compat-changeid-annotation-processor-lib^linux_glibc_common.output . $GITHUB_WORKSPACE/artifacts/tools/platform-compat/java/android/processor/compat/changeid/compat-changeid-annotation-processor-lib^linux_glibc_common
+
 echo "building compat-changeid-annotation-processor^linux_glibc_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja compat-changeid-annotation-processor,linux_glibc_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/tools/platform-compat/java/android/processor/compat/changeid/compat-changeid-annotation-processor^linux_glibc_common
@@ -38,11 +43,6 @@ echo "building compat-processor^linux_glibc_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja compat-processor,linux_glibc_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/tools/platform-compat/java/android/processor/compat/compat-processor^linux_glibc_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/tools/platform-compat/compat-processor^linux_glibc_common.output . $GITHUB_WORKSPACE/artifacts/tools/platform-compat/java/android/processor/compat/compat-processor^linux_glibc_common
-
-echo "building compat-changeid-annotation-processor-lib^linux_glibc_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja compat-changeid-annotation-processor-lib,linux_glibc_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/tools/platform-compat/java/android/processor/compat/changeid/compat-changeid-annotation-processor-lib^linux_glibc_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/tools/platform-compat/compat-changeid-annotation-processor-lib^linux_glibc_common.output . $GITHUB_WORKSPACE/artifacts/tools/platform-compat/java/android/processor/compat/changeid/compat-changeid-annotation-processor-lib^linux_glibc_common
 
 echo "building unsupportedappusage-annotation-processor-lib^linux_glibc_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja unsupportedappusage-annotation-processor-lib,linux_glibc_common

@@ -1101,6 +1101,10 @@ gh release --repo cibuilde/aosp-buildbot download android12-gsi_04 --pattern sys
 mkdir -p $GITHUB_WORKSPACE/downloads/system/update_engine
 tar xf $GITHUB_WORKSPACE/system_update_engine-04.tar.zst -C $GITHUB_WORKSPACE/downloads/system/update_engine/
 
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_00 --pattern tools_platform-compat.tar.zst --output tools_platform-compat-00.tar.zst
+mkdir -p $GITHUB_WORKSPACE/downloads/tools/platform-compat
+tar xf $GITHUB_WORKSPACE/tools_platform-compat-00.tar.zst -C $GITHUB_WORKSPACE/downloads/tools/platform-compat/
+
 gh release --repo cibuilde/aosp-buildbot download android12-gsi_05 --pattern tools_platform-compat.tar.zst --output tools_platform-compat-05.tar.zst
 mkdir -p $GITHUB_WORKSPACE/downloads/tools/platform-compat
 tar xf $GITHUB_WORKSPACE/tools_platform-compat-05.tar.zst -C $GITHUB_WORKSPACE/downloads/tools/platform-compat/

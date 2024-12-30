@@ -50,31 +50,6 @@ prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/st
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/libhidl/transport/allocator/1.0/android.hidl.allocator@1.0-inheritance-hierarchy^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/libhidl/android.hidl.allocator@1.0-inheritance-hierarchy^.output . $GITHUB_WORKSPACE/artifacts/system/libhidl/transport/allocator/1.0/android.hidl.allocator@1.0-inheritance-hierarchy^
 
-echo "building android.hidl.allocator@1.0_genc++^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hidl.allocator@1.0_genc++,
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/libhidl/transport/allocator/1.0/android.hidl.allocator@1.0_genc++^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/libhidl/android.hidl.allocator@1.0_genc++^.output . $GITHUB_WORKSPACE/artifacts/system/libhidl/transport/allocator/1.0/android.hidl.allocator@1.0_genc++^
-
-echo "building android.hidl.allocator@1.0_genc++_headers^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hidl.allocator@1.0_genc++_headers,
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/libhidl/transport/allocator/1.0/android.hidl.allocator@1.0_genc++_headers^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/libhidl/android.hidl.allocator@1.0_genc++_headers^.output . $GITHUB_WORKSPACE/artifacts/system/libhidl/transport/allocator/1.0/android.hidl.allocator@1.0_genc++_headers^
-
-echo "building android.hidl.base@1.0-inheritance-hierarchy^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hidl.base@1.0-inheritance-hierarchy,
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/libhidl/transport/base/1.0/android.hidl.base@1.0-inheritance-hierarchy^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/libhidl/android.hidl.base@1.0-inheritance-hierarchy^.output . $GITHUB_WORKSPACE/artifacts/system/libhidl/transport/base/1.0/android.hidl.base@1.0-inheritance-hierarchy^
-
-echo "building android.hidl.base@1.0_genc++_headers^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hidl.base@1.0_genc++_headers,
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/libhidl/transport/base/1.0/android.hidl.base@1.0_genc++_headers^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/libhidl/android.hidl.base@1.0_genc++_headers^.output . $GITHUB_WORKSPACE/artifacts/system/libhidl/transport/base/1.0/android.hidl.base@1.0_genc++_headers^
-
-echo "building android.hidl.manager@1.1_genc++_headers^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hidl.manager@1.1_genc++_headers,
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/libhidl/transport/manager/1.1/android.hidl.manager@1.1_genc++_headers^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/libhidl/android.hidl.manager@1.1_genc++_headers^.output . $GITHUB_WORKSPACE/artifacts/system/libhidl/transport/manager/1.1/android.hidl.manager@1.1_genc++_headers^
-
 echo "building android.hidl.allocator@1.0^android_vendor.31_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hidl.allocator@1.0,android_vendor.31_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/libhidl/transport/allocator/1.0/android.hidl.allocator@1.0^android_vendor.31_x86_64_static
@@ -110,15 +85,35 @@ prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/st
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/libhidl/transport/allocator/1.0/android.hidl.allocator@1.0^android_x86_x86_64_static_apex30
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/libhidl/android.hidl.allocator@1.0^android_x86_x86_64_static_apex30.output . $GITHUB_WORKSPACE/artifacts/system/libhidl/transport/allocator/1.0/android.hidl.allocator@1.0^android_x86_x86_64_static_apex30
 
+echo "building android.hidl.allocator@1.0_genc++^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hidl.allocator@1.0_genc++,
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/libhidl/transport/allocator/1.0/android.hidl.allocator@1.0_genc++^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/libhidl/android.hidl.allocator@1.0_genc++^.output . $GITHUB_WORKSPACE/artifacts/system/libhidl/transport/allocator/1.0/android.hidl.allocator@1.0_genc++^
+
+echo "building android.hidl.allocator@1.0_genc++_headers^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hidl.allocator@1.0_genc++_headers,
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/libhidl/transport/allocator/1.0/android.hidl.allocator@1.0_genc++_headers^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/libhidl/android.hidl.allocator@1.0_genc++_headers^.output . $GITHUB_WORKSPACE/artifacts/system/libhidl/transport/allocator/1.0/android.hidl.allocator@1.0_genc++_headers^
+
 echo "building android.hidl.base-V1.0-java_gen_java^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hidl.base-V1.0-java_gen_java,
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/libhidl/transport/base/1.0/android.hidl.base-V1.0-java_gen_java^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/libhidl/android.hidl.base-V1.0-java_gen_java^.output . $GITHUB_WORKSPACE/artifacts/system/libhidl/transport/base/1.0/android.hidl.base-V1.0-java_gen_java^
 
+echo "building android.hidl.base@1.0-inheritance-hierarchy^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hidl.base@1.0-inheritance-hierarchy,
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/libhidl/transport/base/1.0/android.hidl.base@1.0-inheritance-hierarchy^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/libhidl/android.hidl.base@1.0-inheritance-hierarchy^.output . $GITHUB_WORKSPACE/artifacts/system/libhidl/transport/base/1.0/android.hidl.base@1.0-inheritance-hierarchy^
+
 echo "building android.hidl.base@1.0_genc++^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hidl.base@1.0_genc++,
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/libhidl/transport/base/1.0/android.hidl.base@1.0_genc++^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/libhidl/android.hidl.base@1.0_genc++^.output . $GITHUB_WORKSPACE/artifacts/system/libhidl/transport/base/1.0/android.hidl.base@1.0_genc++^
+
+echo "building android.hidl.base@1.0_genc++_headers^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hidl.base@1.0_genc++_headers,
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/libhidl/transport/base/1.0/android.hidl.base@1.0_genc++_headers^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/libhidl/android.hidl.base@1.0_genc++_headers^.output . $GITHUB_WORKSPACE/artifacts/system/libhidl/transport/base/1.0/android.hidl.base@1.0_genc++_headers^
 
 echo "building android.hidl.manager-V1.0-java_gen_java^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hidl.manager-V1.0-java_gen_java,
@@ -160,6 +155,11 @@ prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/st
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/libhidl/transport/manager/1.1/android.hidl.manager@1.1_genc++^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/libhidl/android.hidl.manager@1.1_genc++^.output . $GITHUB_WORKSPACE/artifacts/system/libhidl/transport/manager/1.1/android.hidl.manager@1.1_genc++^
 
+echo "building android.hidl.manager@1.1_genc++_headers^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hidl.manager@1.1_genc++_headers,
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/libhidl/transport/manager/1.1/android.hidl.manager@1.1_genc++_headers^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/libhidl/android.hidl.manager@1.1_genc++_headers^.output . $GITHUB_WORKSPACE/artifacts/system/libhidl/transport/manager/1.1/android.hidl.manager@1.1_genc++_headers^
+
 echo "building android.hidl.manager@1.2-inheritance-hierarchy^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hidl.manager@1.2-inheritance-hierarchy,
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/libhidl/transport/manager/1.2/android.hidl.manager@1.2-inheritance-hierarchy^
@@ -179,16 +179,6 @@ echo "building android.hidl.memory.token@1.0-inheritance-hierarchy^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hidl.memory.token@1.0-inheritance-hierarchy,
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/libhidl/transport/memory/token/1.0/android.hidl.memory.token@1.0-inheritance-hierarchy^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/libhidl/android.hidl.memory.token@1.0-inheritance-hierarchy^.output . $GITHUB_WORKSPACE/artifacts/system/libhidl/transport/memory/token/1.0/android.hidl.memory.token@1.0-inheritance-hierarchy^
-
-echo "building android.hidl.memory.token@1.0_genc++^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hidl.memory.token@1.0_genc++,
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/libhidl/transport/memory/token/1.0/android.hidl.memory.token@1.0_genc++^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/libhidl/android.hidl.memory.token@1.0_genc++^.output . $GITHUB_WORKSPACE/artifacts/system/libhidl/transport/memory/token/1.0/android.hidl.memory.token@1.0_genc++^
-
-echo "building android.hidl.memory.token@1.0_genc++_headers^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hidl.memory.token@1.0_genc++_headers,
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/libhidl/transport/memory/token/1.0/android.hidl.memory.token@1.0_genc++_headers^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/libhidl/android.hidl.memory.token@1.0_genc++_headers^.output . $GITHUB_WORKSPACE/artifacts/system/libhidl/transport/memory/token/1.0/android.hidl.memory.token@1.0_genc++_headers^
 
 echo "building android.hidl.memory.token@1.0^android_vendor.31_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hidl.memory.token@1.0,android_vendor.31_x86_64_static
@@ -215,20 +205,20 @@ prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/st
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/libhidl/transport/memory/token/1.0/android.hidl.memory.token@1.0^android_x86_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/libhidl/android.hidl.memory.token@1.0^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/libhidl/transport/memory/token/1.0/android.hidl.memory.token@1.0^android_x86_x86_64_static
 
+echo "building android.hidl.memory.token@1.0_genc++^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hidl.memory.token@1.0_genc++,
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/libhidl/transport/memory/token/1.0/android.hidl.memory.token@1.0_genc++^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/libhidl/android.hidl.memory.token@1.0_genc++^.output . $GITHUB_WORKSPACE/artifacts/system/libhidl/transport/memory/token/1.0/android.hidl.memory.token@1.0_genc++^
+
+echo "building android.hidl.memory.token@1.0_genc++_headers^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hidl.memory.token@1.0_genc++_headers,
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/libhidl/transport/memory/token/1.0/android.hidl.memory.token@1.0_genc++_headers^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/libhidl/android.hidl.memory.token@1.0_genc++_headers^.output . $GITHUB_WORKSPACE/artifacts/system/libhidl/transport/memory/token/1.0/android.hidl.memory.token@1.0_genc++_headers^
+
 echo "building android.hidl.memory@1.0-inheritance-hierarchy^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hidl.memory@1.0-inheritance-hierarchy,
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/libhidl/transport/memory/1.0/android.hidl.memory@1.0-inheritance-hierarchy^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/libhidl/android.hidl.memory@1.0-inheritance-hierarchy^.output . $GITHUB_WORKSPACE/artifacts/system/libhidl/transport/memory/1.0/android.hidl.memory@1.0-inheritance-hierarchy^
-
-echo "building android.hidl.memory@1.0_genc++^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hidl.memory@1.0_genc++,
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/libhidl/transport/memory/1.0/android.hidl.memory@1.0_genc++^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/libhidl/android.hidl.memory@1.0_genc++^.output . $GITHUB_WORKSPACE/artifacts/system/libhidl/transport/memory/1.0/android.hidl.memory@1.0_genc++^
-
-echo "building android.hidl.memory@1.0_genc++_headers^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hidl.memory@1.0_genc++_headers,
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/libhidl/transport/memory/1.0/android.hidl.memory@1.0_genc++_headers^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/libhidl/android.hidl.memory@1.0_genc++_headers^.output . $GITHUB_WORKSPACE/artifacts/system/libhidl/transport/memory/1.0/android.hidl.memory@1.0_genc++_headers^
 
 echo "building android.hidl.memory@1.0^android_vendor.31_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hidl.memory@1.0,android_vendor.31_x86_64_static
@@ -270,20 +260,20 @@ prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/st
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/libhidl/transport/memory/1.0/android.hidl.memory@1.0^android_x86_x86_64_static_apex30
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/libhidl/android.hidl.memory@1.0^android_x86_x86_64_static_apex30.output . $GITHUB_WORKSPACE/artifacts/system/libhidl/transport/memory/1.0/android.hidl.memory@1.0^android_x86_x86_64_static_apex30
 
+echo "building android.hidl.memory@1.0_genc++^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hidl.memory@1.0_genc++,
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/libhidl/transport/memory/1.0/android.hidl.memory@1.0_genc++^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/libhidl/android.hidl.memory@1.0_genc++^.output . $GITHUB_WORKSPACE/artifacts/system/libhidl/transport/memory/1.0/android.hidl.memory@1.0_genc++^
+
+echo "building android.hidl.memory@1.0_genc++_headers^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hidl.memory@1.0_genc++_headers,
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/libhidl/transport/memory/1.0/android.hidl.memory@1.0_genc++_headers^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/libhidl/android.hidl.memory@1.0_genc++_headers^.output . $GITHUB_WORKSPACE/artifacts/system/libhidl/transport/memory/1.0/android.hidl.memory@1.0_genc++_headers^
+
 echo "building android.hidl.safe_union-V1.0-java_gen_java^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hidl.safe_union-V1.0-java_gen_java,
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/libhidl/transport/safe_union/1.0/android.hidl.safe_union-V1.0-java_gen_java^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/libhidl/android.hidl.safe_union-V1.0-java_gen_java^.output . $GITHUB_WORKSPACE/artifacts/system/libhidl/transport/safe_union/1.0/android.hidl.safe_union-V1.0-java_gen_java^
-
-echo "building android.hidl.safe_union@1.0_genc++^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hidl.safe_union@1.0_genc++,
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/libhidl/transport/safe_union/1.0/android.hidl.safe_union@1.0_genc++^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/libhidl/android.hidl.safe_union@1.0_genc++^.output . $GITHUB_WORKSPACE/artifacts/system/libhidl/transport/safe_union/1.0/android.hidl.safe_union@1.0_genc++^
-
-echo "building android.hidl.safe_union@1.0_genc++_headers^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hidl.safe_union@1.0_genc++_headers,
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/libhidl/transport/safe_union/1.0/android.hidl.safe_union@1.0_genc++_headers^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/libhidl/android.hidl.safe_union@1.0_genc++_headers^.output . $GITHUB_WORKSPACE/artifacts/system/libhidl/transport/safe_union/1.0/android.hidl.safe_union@1.0_genc++_headers^
 
 echo "building android.hidl.safe_union@1.0^android_vendor.31_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hidl.safe_union@1.0,android_vendor.31_x86_64_static
@@ -310,30 +300,20 @@ prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/st
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/libhidl/transport/safe_union/1.0/android.hidl.safe_union@1.0^android_x86_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/libhidl/android.hidl.safe_union@1.0^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/libhidl/transport/safe_union/1.0/android.hidl.safe_union@1.0^android_x86_x86_64_static
 
+echo "building android.hidl.safe_union@1.0_genc++^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hidl.safe_union@1.0_genc++,
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/libhidl/transport/safe_union/1.0/android.hidl.safe_union@1.0_genc++^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/libhidl/android.hidl.safe_union@1.0_genc++^.output . $GITHUB_WORKSPACE/artifacts/system/libhidl/transport/safe_union/1.0/android.hidl.safe_union@1.0_genc++^
+
+echo "building android.hidl.safe_union@1.0_genc++_headers^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hidl.safe_union@1.0_genc++_headers,
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/libhidl/transport/safe_union/1.0/android.hidl.safe_union@1.0_genc++_headers^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/libhidl/android.hidl.safe_union@1.0_genc++_headers^.output . $GITHUB_WORKSPACE/artifacts/system/libhidl/transport/safe_union/1.0/android.hidl.safe_union@1.0_genc++_headers^
+
 echo "building android.hidl.token@1.0-inheritance-hierarchy^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hidl.token@1.0-inheritance-hierarchy,
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/libhidl/transport/token/1.0/android.hidl.token@1.0-inheritance-hierarchy^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/libhidl/android.hidl.token@1.0-inheritance-hierarchy^.output . $GITHUB_WORKSPACE/artifacts/system/libhidl/transport/token/1.0/android.hidl.token@1.0-inheritance-hierarchy^
-
-echo "building android.hidl.token@1.0-utils^android_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hidl.token@1.0-utils,android_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/libhidl/transport/token/1.0/utils/android.hidl.token@1.0-utils^android_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/libhidl/android.hidl.token@1.0-utils^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/libhidl/transport/token/1.0/utils/android.hidl.token@1.0-utils^android_x86_64_static
-
-echo "building android.hidl.token@1.0-utils^android_x86_64_static_cfi_apex29"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hidl.token@1.0-utils,android_x86_64_static_cfi_apex29
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/libhidl/transport/token/1.0/utils/android.hidl.token@1.0-utils^android_x86_64_static_cfi_apex29
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/libhidl/android.hidl.token@1.0-utils^android_x86_64_static_cfi_apex29.output . $GITHUB_WORKSPACE/artifacts/system/libhidl/transport/token/1.0/utils/android.hidl.token@1.0-utils^android_x86_64_static_cfi_apex29
-
-echo "building android.hidl.token@1.0_genc++^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hidl.token@1.0_genc++,
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/libhidl/transport/token/1.0/android.hidl.token@1.0_genc++^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/libhidl/android.hidl.token@1.0_genc++^.output . $GITHUB_WORKSPACE/artifacts/system/libhidl/transport/token/1.0/android.hidl.token@1.0_genc++^
-
-echo "building android.hidl.token@1.0_genc++_headers^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hidl.token@1.0_genc++_headers,
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/libhidl/transport/token/1.0/android.hidl.token@1.0_genc++_headers^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/libhidl/android.hidl.token@1.0_genc++_headers^.output . $GITHUB_WORKSPACE/artifacts/system/libhidl/transport/token/1.0/android.hidl.token@1.0_genc++_headers^
 
 echo "building android.hidl.token@1.0-utils^android_vendor.31_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hidl.token@1.0-utils,android_vendor.31_x86_64_static
@@ -345,10 +325,20 @@ prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/st
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/libhidl/transport/token/1.0/utils/android.hidl.token@1.0-utils^android_vendor.31_x86_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/libhidl/android.hidl.token@1.0-utils^android_vendor.31_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/libhidl/transport/token/1.0/utils/android.hidl.token@1.0-utils^android_vendor.31_x86_x86_64_static
 
+echo "building android.hidl.token@1.0-utils^android_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hidl.token@1.0-utils,android_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/libhidl/transport/token/1.0/utils/android.hidl.token@1.0-utils^android_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/libhidl/android.hidl.token@1.0-utils^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/libhidl/transport/token/1.0/utils/android.hidl.token@1.0-utils^android_x86_64_static
+
 echo "building android.hidl.token@1.0-utils^android_x86_64_static_apex29"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hidl.token@1.0-utils,android_x86_64_static_apex29
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/libhidl/transport/token/1.0/utils/android.hidl.token@1.0-utils^android_x86_64_static_apex29
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/libhidl/android.hidl.token@1.0-utils^android_x86_64_static_apex29.output . $GITHUB_WORKSPACE/artifacts/system/libhidl/transport/token/1.0/utils/android.hidl.token@1.0-utils^android_x86_64_static_apex29
+
+echo "building android.hidl.token@1.0-utils^android_x86_64_static_cfi_apex29"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hidl.token@1.0-utils,android_x86_64_static_cfi_apex29
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/libhidl/transport/token/1.0/utils/android.hidl.token@1.0-utils^android_x86_64_static_cfi_apex29
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/libhidl/android.hidl.token@1.0-utils^android_x86_64_static_cfi_apex29.output . $GITHUB_WORKSPACE/artifacts/system/libhidl/transport/token/1.0/utils/android.hidl.token@1.0-utils^android_x86_64_static_cfi_apex29
 
 echo "building android.hidl.token@1.0-utils^android_x86_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hidl.token@1.0-utils,android_x86_x86_64_static
@@ -384,6 +374,16 @@ echo "building android.hidl.token@1.0^android_x86_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hidl.token@1.0,android_x86_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/libhidl/transport/token/1.0/android.hidl.token@1.0^android_x86_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/libhidl/android.hidl.token@1.0^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/libhidl/transport/token/1.0/android.hidl.token@1.0^android_x86_x86_64_static
+
+echo "building android.hidl.token@1.0_genc++^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hidl.token@1.0_genc++,
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/libhidl/transport/token/1.0/android.hidl.token@1.0_genc++^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/libhidl/android.hidl.token@1.0_genc++^.output . $GITHUB_WORKSPACE/artifacts/system/libhidl/transport/token/1.0/android.hidl.token@1.0_genc++^
+
+echo "building android.hidl.token@1.0_genc++_headers^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hidl.token@1.0_genc++_headers,
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/libhidl/transport/token/1.0/android.hidl.token@1.0_genc++_headers^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/libhidl/android.hidl.token@1.0_genc++_headers^.output . $GITHUB_WORKSPACE/artifacts/system/libhidl/transport/token/1.0/android.hidl.token@1.0_genc++_headers^
 
 echo "building libhidlbase^android_recovery_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libhidlbase,android_recovery_x86_64_static

@@ -325,11 +325,6 @@ prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/st
 mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.lifecycle_lifecycle-common-java8-nodeps^android_common_apex30
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/prebuilts/sdk/androidx.lifecycle_lifecycle-common-java8-nodeps^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.lifecycle_lifecycle-common-java8-nodeps^android_common_apex30
 
-echo "building androidx.lifecycle_lifecycle-common^android_common_apex30"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja androidx.lifecycle_lifecycle-common,android_common_apex30
-mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.lifecycle_lifecycle-common^android_common_apex30
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/prebuilts/sdk/androidx.lifecycle_lifecycle-common^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.lifecycle_lifecycle-common^android_common_apex30
-
 echo "building androidx.lifecycle_lifecycle-common-java8^android_common_apex30"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja androidx.lifecycle_lifecycle-common-java8,android_common_apex30
 mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.lifecycle_lifecycle-common-java8^android_common_apex30
@@ -349,6 +344,11 @@ echo "building androidx.lifecycle_lifecycle-common^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja androidx.lifecycle_lifecycle-common,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.lifecycle_lifecycle-common^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/prebuilts/sdk/androidx.lifecycle_lifecycle-common^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.lifecycle_lifecycle-common^android_common
+
+echo "building androidx.lifecycle_lifecycle-common^android_common_apex30"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja androidx.lifecycle_lifecycle-common,android_common_apex30
+mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.lifecycle_lifecycle-common^android_common_apex30
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/prebuilts/sdk/androidx.lifecycle_lifecycle-common^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.lifecycle_lifecycle-common^android_common_apex30
 
 echo "building androidx.room_room-common-nodeps^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja androidx.room_room-common-nodeps,android_common

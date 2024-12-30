@@ -119,15 +119,15 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/sdk/current/androidx/androidx.
 rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/sdk/current/extras/material-design-x/com.google.android.material_material-nodeps^android_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/sdk/current/extras/material-design-x/com.google.android.material_material^android_common/ .
 
-echo "building setupdesign^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_25.ninja setupdesign,android_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/setupdesign/setupdesign^android_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_25/external/setupdesign/setupdesign^android_common.output . $GITHUB_WORKSPACE/artifacts/external/setupdesign/setupdesign^android_common
-
 echo "building setupdesign-lottie-loading-layout^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_25.ninja setupdesign-lottie-loading-layout,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/setupdesign/lottie_loading_layout/setupdesign-lottie-loading-layout^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_25/external/setupdesign/setupdesign-lottie-loading-layout^android_common.output . $GITHUB_WORKSPACE/artifacts/external/setupdesign/lottie_loading_layout/setupdesign-lottie-loading-layout^android_common
+
+echo "building setupdesign^android_common"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_25.ninja setupdesign,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/setupdesign/setupdesign^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_25/external/setupdesign/setupdesign^android_common.output . $GITHUB_WORKSPACE/artifacts/external/setupdesign/setupdesign^android_common
 
 rm -rf out
 

@@ -260,15 +260,15 @@ prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/st
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/services/mediacodec/android.hardware.media.omx@1.0-service^android_vendor.31_x86_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_11/frameworks/av/android.hardware.media.omx@1.0-service^android_vendor.31_x86_x86_64.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/services/mediacodec/android.hardware.media.omx@1.0-service^android_vendor.31_x86_x86_64
 
-echo "building libaudioflinger^android_x86_64_shared"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_11.ninja libaudioflinger,android_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/services/audioflinger/libaudioflinger^android_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_11/frameworks/av/libaudioflinger^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/services/audioflinger/libaudioflinger^android_x86_64_shared
-
 echo "building libaaudioservice^android_x86_64_shared"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_11.ninja libaaudioservice,android_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/services/oboeservice/libaaudioservice^android_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_11/frameworks/av/libaaudioservice^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/services/oboeservice/libaaudioservice^android_x86_64_shared
+
+echo "building libaudioflinger^android_x86_64_shared"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_11.ninja libaudioflinger,android_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/services/audioflinger/libaudioflinger^android_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_11/frameworks/av/libaudioflinger^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/services/audioflinger/libaudioflinger^android_x86_64_shared
 
 echo "building libcodec2_vndk^android_x86_64_shared"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_11.ninja libcodec2_vndk,android_x86_64_shared
@@ -349,11 +349,6 @@ echo "building libstagefright_omx_utils^android_x86_x86_64_shared_cfi"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_11.ninja libstagefright_omx_utils,android_x86_x86_64_shared_cfi
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libstagefright/omx/libstagefright_omx_utils^android_x86_x86_64_shared_cfi
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_11/frameworks/av/libstagefright_omx_utils^android_x86_x86_64_shared_cfi.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libstagefright/omx/libstagefright_omx_utils^android_x86_x86_64_shared_cfi
-
-echo "building libstagefright_softomx^android_vendor.31_x86_x86_64_shared_cfi"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_11.ninja libstagefright_softomx,android_vendor.31_x86_x86_64_shared_cfi
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libstagefright/omx/libstagefright_softomx^android_vendor.31_x86_x86_64_shared_cfi
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_11/frameworks/av/libstagefright_softomx^android_vendor.31_x86_x86_64_shared_cfi.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libstagefright/omx/libstagefright_softomx^android_vendor.31_x86_x86_64_shared_cfi
 
 echo "building libstagefright_soft_aacdec^android_vendor.31_x86_x86_64_shared_cfi"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_11.ninja libstagefright_soft_aacdec,android_vendor.31_x86_x86_64_shared_cfi
@@ -459,6 +454,11 @@ echo "building libstagefright_soft_vpxenc^android_vendor.31_x86_x86_64_shared_cf
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_11.ninja libstagefright_soft_vpxenc,android_vendor.31_x86_x86_64_shared_cfi
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libstagefright/codecs/on2/enc/libstagefright_soft_vpxenc^android_vendor.31_x86_x86_64_shared_cfi
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_11/frameworks/av/libstagefright_soft_vpxenc^android_vendor.31_x86_x86_64_shared_cfi.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libstagefright/codecs/on2/enc/libstagefright_soft_vpxenc^android_vendor.31_x86_x86_64_shared_cfi
+
+echo "building libstagefright_softomx^android_vendor.31_x86_x86_64_shared_cfi"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_11.ninja libstagefright_softomx,android_vendor.31_x86_x86_64_shared_cfi
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libstagefright/omx/libstagefright_softomx^android_vendor.31_x86_x86_64_shared_cfi
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_11/frameworks/av/libstagefright_softomx^android_vendor.31_x86_x86_64_shared_cfi.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libstagefright/omx/libstagefright_softomx^android_vendor.31_x86_x86_64_shared_cfi
 
 echo "building libstagefright_softomx_plugin^android_vendor.31_x86_x86_64_shared_cfi"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_11.ninja libstagefright_softomx_plugin,android_vendor.31_x86_x86_64_shared_cfi

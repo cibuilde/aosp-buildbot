@@ -54,15 +54,15 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/tools/metalava/metalava^linux_glibc_comm
 rsync -a -r $GITHUB_WORKSPACE/downloads/tools/metalava/metalava^linux_glibc_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/tools/metalava/stub-annotations^android_common/ .
 
-echo "building framework-scheduling.stubs.source.module_lib^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_19.ninja framework-scheduling.stubs.source.module_lib,android_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/Scheduling/framework/framework-scheduling.stubs.source.module_lib^android_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_19/packages/modules/Scheduling/framework-scheduling.stubs.source.module_lib^android_common.output . $GITHUB_WORKSPACE/artifacts/packages/modules/Scheduling/framework/framework-scheduling.stubs.source.module_lib^android_common
-
 echo "building framework-scheduling.stubs.module_lib^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_19.ninja framework-scheduling.stubs.module_lib,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/Scheduling/framework/framework-scheduling.stubs.module_lib^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_19/packages/modules/Scheduling/framework-scheduling.stubs.module_lib^android_common.output . $GITHUB_WORKSPACE/artifacts/packages/modules/Scheduling/framework/framework-scheduling.stubs.module_lib^android_common
+
+echo "building framework-scheduling.stubs.source.module_lib^android_common"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_19.ninja framework-scheduling.stubs.source.module_lib,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/Scheduling/framework/framework-scheduling.stubs.source.module_lib^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_19/packages/modules/Scheduling/framework-scheduling.stubs.source.module_lib^android_common.output . $GITHUB_WORKSPACE/artifacts/packages/modules/Scheduling/framework/framework-scheduling.stubs.source.module_lib^android_common
 
 echo "building framework-scheduling.stubs.source.system^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_19.ninja framework-scheduling.stubs.source.system,android_common

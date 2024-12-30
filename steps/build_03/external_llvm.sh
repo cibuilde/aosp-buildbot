@@ -31,16 +31,7 @@ clone_depth_platform system/media
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcxx/libc++^linux_glibc_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/llvm/lib/Support/libLLVMSupport^linux_glibc_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/llvm/lib/TableGen/libLLVMTableGen^linux_glibc_x86_64_static/ .
-
-echo "building llvm-gen-attributes^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja llvm-gen-attributes,
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/llvm/llvm-gen-attributes^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/external/llvm/llvm-gen-attributes^.output . $GITHUB_WORKSPACE/artifacts/external/llvm/llvm-gen-attributes^
-
-echo "building llvm-gen-intrinsics^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja llvm-gen-intrinsics,
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/llvm/llvm-gen-intrinsics^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/external/llvm/llvm-gen-intrinsics^.output . $GITHUB_WORKSPACE/artifacts/external/llvm/llvm-gen-intrinsics^
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/llvm/utils/TableGen/llvm-tblgen^linux_glibc_x86_64/ .
 
 echo "building libLLVMAArch64AsmParser^android_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libLLVMAArch64AsmParser,android_x86_64_static
@@ -292,11 +283,6 @@ prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/st
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/llvm/lib/Transforms/Vectorize/libLLVMVectorize^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/external/llvm/libLLVMVectorize^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/llvm/lib/Transforms/Vectorize/libLLVMVectorize^android_x86_64_static
 
-echo "building llvm-gen-x86^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja llvm-gen-x86,
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/llvm/lib/Target/X86/llvm-gen-x86^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/external/llvm/llvm-gen-x86^.output . $GITHUB_WORKSPACE/artifacts/external/llvm/lib/Target/X86/llvm-gen-x86^
-
 echo "building libLLVMX86AsmParser^android_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libLLVMX86AsmParser,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/llvm/lib/Target/X86/AsmParser/libLLVMX86AsmParser^android_x86_64_static
@@ -337,11 +323,6 @@ prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/st
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/llvm/lib/Transforms/IPO/libLLVMipo^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/external/llvm/libLLVMipo^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/llvm/lib/Transforms/IPO/libLLVMipo^android_x86_64_static
 
-echo "building llvm-tblgen^linux_glibc_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja llvm-tblgen,linux_glibc_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/llvm/utils/TableGen/llvm-tblgen^linux_glibc_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/external/llvm/llvm-tblgen^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/llvm/utils/TableGen/llvm-tblgen^linux_glibc_x86_64
-
 echo "building llvm-gen-aarch64^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja llvm-gen-aarch64,
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/llvm/lib/Target/AArch64/llvm-gen-aarch64^
@@ -352,15 +333,35 @@ prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/st
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/llvm/lib/Target/ARM/llvm-gen-arm^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/external/llvm/llvm-gen-arm^.output . $GITHUB_WORKSPACE/artifacts/external/llvm/lib/Target/ARM/llvm-gen-arm^
 
+echo "building llvm-gen-attributes^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja llvm-gen-attributes,
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/llvm/llvm-gen-attributes^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/external/llvm/llvm-gen-attributes^.output . $GITHUB_WORKSPACE/artifacts/external/llvm/llvm-gen-attributes^
+
 echo "building llvm-gen-core^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja llvm-gen-core,
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/llvm/lib/IR/llvm-gen-core^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/external/llvm/llvm-gen-core^.output . $GITHUB_WORKSPACE/artifacts/external/llvm/lib/IR/llvm-gen-core^
 
+echo "building llvm-gen-intrinsics^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja llvm-gen-intrinsics,
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/llvm/llvm-gen-intrinsics^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/external/llvm/llvm-gen-intrinsics^.output . $GITHUB_WORKSPACE/artifacts/external/llvm/llvm-gen-intrinsics^
+
 echo "building llvm-gen-libdriver^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja llvm-gen-libdriver,
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/llvm/lib/LibDriver/llvm-gen-libdriver^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/external/llvm/llvm-gen-libdriver^.output . $GITHUB_WORKSPACE/artifacts/external/llvm/lib/LibDriver/llvm-gen-libdriver^
+
+echo "building llvm-gen-x86^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja llvm-gen-x86,
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/llvm/lib/Target/X86/llvm-gen-x86^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/external/llvm/llvm-gen-x86^.output . $GITHUB_WORKSPACE/artifacts/external/llvm/lib/Target/X86/llvm-gen-x86^
+
+echo "building llvm-tblgen^linux_glibc_x86_64"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja llvm-tblgen,linux_glibc_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/llvm/utils/TableGen/llvm-tblgen^linux_glibc_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/external/llvm/llvm-tblgen^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/llvm/utils/TableGen/llvm-tblgen^linux_glibc_x86_64
 
 rm -rf out
 

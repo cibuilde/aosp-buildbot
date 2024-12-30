@@ -119,15 +119,15 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/system/libbase/libbase^android_x86_64_sh
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^android_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/server_configurable_flags/libflags/server_configurable_flags^android_x86_64_shared/ .
 
-echo "building liblpdump_interface-cpp^android_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja liblpdump_interface-cpp,android_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/extras/partition_tools/aidl/liblpdump_interface-cpp^android_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_09/system/extras/liblpdump_interface-cpp^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/extras/partition_tools/aidl/liblpdump_interface-cpp^android_x86_64_static
-
 echo "building liblpdump_interface-cpp^android_x86_64_shared"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja liblpdump_interface-cpp,android_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/extras/partition_tools/aidl/liblpdump_interface-cpp^android_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_09/system/extras/liblpdump_interface-cpp^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/extras/partition_tools/aidl/liblpdump_interface-cpp^android_x86_64_shared
+
+echo "building liblpdump_interface-cpp^android_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja liblpdump_interface-cpp,android_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/extras/partition_tools/aidl/liblpdump_interface-cpp^android_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_09/system/extras/liblpdump_interface-cpp^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/extras/partition_tools/aidl/liblpdump_interface-cpp^android_x86_64_static
 
 echo "building libprofcollect_libbase_rust^android_x86_64_rlib_dylib-std"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja libprofcollect_libbase_rust,android_x86_64_rlib_dylib-std

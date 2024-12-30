@@ -174,16 +174,6 @@ prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/st
 mkdir -p $GITHUB_WORKSPACE/artifacts/art/odrefresh/libodrstatslog^android_x86_x86_64_static_lto-thin_apex31
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/art/libodrstatslog^android_x86_x86_64_static_lto-thin_apex31.output . $GITHUB_WORKSPACE/artifacts/art/odrefresh/libodrstatslog^android_x86_x86_64_static_lto-thin_apex31
 
-echo "building statslog_art.cpp^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja statslog_art.cpp,
-mkdir -p $GITHUB_WORKSPACE/artifacts/art/runtime/statslog_art.cpp^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/art/statslog_art.cpp^.output . $GITHUB_WORKSPACE/artifacts/art/runtime/statslog_art.cpp^
-
-echo "building statslog_art.h^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja statslog_art.h,
-mkdir -p $GITHUB_WORKSPACE/artifacts/art/runtime/statslog_art.h^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/art/statslog_art.h^.output . $GITHUB_WORKSPACE/artifacts/art/runtime/statslog_art.h^
-
 echo "building libstatslog_art^android_x86_64_static_lto-thin_apex31"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libstatslog_art,android_x86_64_static_lto-thin_apex31
 mkdir -p $GITHUB_WORKSPACE/artifacts/art/runtime/libstatslog_art^android_x86_64_static_lto-thin_apex31
@@ -193,6 +183,16 @@ echo "building libstatslog_art^android_x86_x86_64_static_lto-thin_apex31"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libstatslog_art,android_x86_x86_64_static_lto-thin_apex31
 mkdir -p $GITHUB_WORKSPACE/artifacts/art/runtime/libstatslog_art^android_x86_x86_64_static_lto-thin_apex31
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/art/libstatslog_art^android_x86_x86_64_static_lto-thin_apex31.output . $GITHUB_WORKSPACE/artifacts/art/runtime/libstatslog_art^android_x86_x86_64_static_lto-thin_apex31
+
+echo "building statslog_art.cpp^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja statslog_art.cpp,
+mkdir -p $GITHUB_WORKSPACE/artifacts/art/runtime/statslog_art.cpp^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/art/statslog_art.cpp^.output . $GITHUB_WORKSPACE/artifacts/art/runtime/statslog_art.cpp^
+
+echo "building statslog_art.h^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja statslog_art.h,
+mkdir -p $GITHUB_WORKSPACE/artifacts/art/runtime/statslog_art.h^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/art/statslog_art.h^.output . $GITHUB_WORKSPACE/artifacts/art/runtime/statslog_art.h^
 
 echo "building statslog_odrefresh.cpp^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja statslog_odrefresh.cpp,

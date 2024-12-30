@@ -38,15 +38,15 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/system/core/init/init_first_stage_soong^
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/core/mkbootfs/mkbootfs^linux_glibc_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/tools/mkbootimg/mkbootimg^linux_glibc_x86_64_PY3/ .
 
-echo "building microdroid_ramdisk-5.10^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja microdroid_ramdisk-5.10,android_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/Virtualization/microdroid/microdroid_ramdisk-5.10^android_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/packages/modules/Virtualization/microdroid_ramdisk-5.10^android_common.output . $GITHUB_WORKSPACE/artifacts/packages/modules/Virtualization/microdroid/microdroid_ramdisk-5.10^android_common
-
 echo "building microdroid_boot-5.10^android_x86_64"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja microdroid_boot-5.10,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/Virtualization/microdroid/microdroid_boot-5.10^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/packages/modules/Virtualization/microdroid_boot-5.10^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/packages/modules/Virtualization/microdroid/microdroid_boot-5.10^android_x86_64
+
+echo "building microdroid_ramdisk-5.10^android_common"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja microdroid_ramdisk-5.10,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/Virtualization/microdroid/microdroid_ramdisk-5.10^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/packages/modules/Virtualization/microdroid_ramdisk-5.10^android_common.output . $GITHUB_WORKSPACE/artifacts/packages/modules/Virtualization/microdroid/microdroid_ramdisk-5.10^android_common
 
 rm -rf out
 

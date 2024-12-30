@@ -16,6 +16,16 @@ clone_project platform/prebuilts/build-tools prebuilts/build-tools android12-gsi
 clone_depth_platform prebuilts/go/linux-x86
 
 
+echo "building blueprint-bootstrap-bpdoc^linux_glibc_x86_64"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja blueprint-bootstrap-bpdoc,linux_glibc_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/build/blueprint/blueprint-bootstrap-bpdoc^linux_glibc_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/build/blueprint/blueprint-bootstrap-bpdoc^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/build/blueprint/blueprint-bootstrap-bpdoc^linux_glibc_x86_64
+
+echo "building blueprint-bootstrap^linux_glibc_x86_64"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja blueprint-bootstrap,linux_glibc_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/build/blueprint/blueprint-bootstrap^linux_glibc_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/build/blueprint/blueprint-bootstrap^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/build/blueprint/blueprint-bootstrap^linux_glibc_x86_64
+
 echo "building blueprint-deptools^linux_glibc_x86_64"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja blueprint-deptools,linux_glibc_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/build/blueprint/blueprint-deptools^linux_glibc_x86_64
@@ -40,16 +50,6 @@ echo "building blueprint^linux_glibc_x86_64"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja blueprint,linux_glibc_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/build/blueprint/blueprint^linux_glibc_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/build/blueprint/blueprint^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/build/blueprint/blueprint^linux_glibc_x86_64
-
-echo "building blueprint-bootstrap-bpdoc^linux_glibc_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja blueprint-bootstrap-bpdoc,linux_glibc_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/build/blueprint/blueprint-bootstrap-bpdoc^linux_glibc_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/build/blueprint/blueprint-bootstrap-bpdoc^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/build/blueprint/blueprint-bootstrap-bpdoc^linux_glibc_x86_64
-
-echo "building blueprint-bootstrap^linux_glibc_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja blueprint-bootstrap,linux_glibc_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/build/blueprint/blueprint-bootstrap^linux_glibc_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/build/blueprint/blueprint-bootstrap^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/build/blueprint/blueprint-bootstrap^linux_glibc_x86_64
 
 echo "building bpmodify^linux_glibc_x86_64"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja bpmodify,linux_glibc_x86_64

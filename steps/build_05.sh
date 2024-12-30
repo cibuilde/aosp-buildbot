@@ -453,6 +453,10 @@ gh release --repo cibuilde/aosp-buildbot download android12-gsi_02 --pattern ext
 mkdir -p $GITHUB_WORKSPACE/downloads/external/rust/crates/libloading
 tar xf $GITHUB_WORKSPACE/external_rust_crates_libloading-02.tar.zst -C $GITHUB_WORKSPACE/downloads/external/rust/crates/libloading/
 
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_00 --pattern external_rust_crates_libsqlite3-sys.tar.zst --output external_rust_crates_libsqlite3-sys-00.tar.zst
+mkdir -p $GITHUB_WORKSPACE/downloads/external/rust/crates/libsqlite3-sys
+tar xf $GITHUB_WORKSPACE/external_rust_crates_libsqlite3-sys-00.tar.zst -C $GITHUB_WORKSPACE/downloads/external/rust/crates/libsqlite3-sys/
+
 gh release --repo cibuilde/aosp-buildbot download android12-gsi_03 --pattern external_rust_crates_lock_api.tar.zst --output external_rust_crates_lock_api-03.tar.zst
 mkdir -p $GITHUB_WORKSPACE/downloads/external/rust/crates/lock_api
 tar xf $GITHUB_WORKSPACE/external_rust_crates_lock_api-03.tar.zst -C $GITHUB_WORKSPACE/downloads/external/rust/crates/lock_api/
@@ -701,6 +705,10 @@ gh release --repo cibuilde/aosp-buildbot download android12-gsi_04 --pattern sys
 mkdir -p $GITHUB_WORKSPACE/downloads/system/apex
 tar xf $GITHUB_WORKSPACE/system_apex-04.tar.zst -C $GITHUB_WORKSPACE/downloads/system/apex/
 
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_00 --pattern system_core.tar.zst --output system_core-00.tar.zst
+mkdir -p $GITHUB_WORKSPACE/downloads/system/core
+tar xf $GITHUB_WORKSPACE/system_core-00.tar.zst -C $GITHUB_WORKSPACE/downloads/system/core/
+
 gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern system_core.tar.zst --output system_core-01.tar.zst
 mkdir -p $GITHUB_WORKSPACE/downloads/system/core
 tar xf $GITHUB_WORKSPACE/system_core-01.tar.zst -C $GITHUB_WORKSPACE/downloads/system/core/
@@ -772,6 +780,10 @@ tar xf $GITHUB_WORKSPACE/system_netd-04.tar.zst -C $GITHUB_WORKSPACE/downloads/s
 gh release --repo cibuilde/aosp-buildbot download android12-gsi_04 --pattern system_security.tar.zst --output system_security-04.tar.zst
 mkdir -p $GITHUB_WORKSPACE/downloads/system/security
 tar xf $GITHUB_WORKSPACE/system_security-04.tar.zst -C $GITHUB_WORKSPACE/downloads/system/security/
+
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_00 --pattern system_sepolicy.tar.zst --output system_sepolicy-00.tar.zst
+mkdir -p $GITHUB_WORKSPACE/downloads/system/sepolicy
+tar xf $GITHUB_WORKSPACE/system_sepolicy-00.tar.zst -C $GITHUB_WORKSPACE/downloads/system/sepolicy/
 
 gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern system_sepolicy.tar.zst --output system_sepolicy-01.tar.zst
 mkdir -p $GITHUB_WORKSPACE/downloads/system/sepolicy

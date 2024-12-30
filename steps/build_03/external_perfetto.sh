@@ -51,15 +51,15 @@ prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/st
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/perfetto/heapprofd_client_api^android_x86_x86_64_shared_current
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/external/perfetto/heapprofd_client_api^android_x86_x86_64_shared_current.output . $GITHUB_WORKSPACE/artifacts/external/perfetto/heapprofd_client_api^android_x86_x86_64_shared_current
 
-echo "building perfetto_src_base_version_gen_h^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja perfetto_src_base_version_gen_h,
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/perfetto/perfetto_src_base_version_gen_h^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/external/perfetto/perfetto_src_base_version_gen_h^.output . $GITHUB_WORKSPACE/artifacts/external/perfetto/perfetto_src_base_version_gen_h^
-
 echo "building ipc_plugin^linux_glibc_x86_64"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja ipc_plugin,linux_glibc_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/perfetto/ipc_plugin^linux_glibc_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/external/perfetto/ipc_plugin^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/perfetto/ipc_plugin^linux_glibc_x86_64
+
+echo "building perfetto_src_base_version_gen_h^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja perfetto_src_base_version_gen_h,
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/perfetto/perfetto_src_base_version_gen_h^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/external/perfetto/perfetto_src_base_version_gen_h^.output . $GITHUB_WORKSPACE/artifacts/external/perfetto/perfetto_src_base_version_gen_h^
 
 echo "building perfetto_src_protozero_protoc_plugin_cppgen_plugin^linux_glibc_x86_64"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja perfetto_src_protozero_protoc_plugin_cppgen_plugin,linux_glibc_x86_64

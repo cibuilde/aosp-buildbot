@@ -65,15 +65,15 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/system/tools/sysprop/sysprop_api_dump^li
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/tools/sysprop/sysprop_cpp^linux_glibc_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/tools/sysprop/sysprop_java^linux_glibc_x86_64/ .
 
-echo "building SurfaceFlingerProperties_sysprop_library^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja SurfaceFlingerProperties_sysprop_library,
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/native/services/surfaceflinger/sysprop/SurfaceFlingerProperties_sysprop_library^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/frameworks/native/SurfaceFlingerProperties_sysprop_library^.output . $GITHUB_WORKSPACE/artifacts/frameworks/native/services/surfaceflinger/sysprop/SurfaceFlingerProperties_sysprop_library^
-
 echo "building SurfaceFlingerProperties_java_gen^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja SurfaceFlingerProperties_java_gen,
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/native/services/surfaceflinger/sysprop/SurfaceFlingerProperties_java_gen^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/frameworks/native/SurfaceFlingerProperties_java_gen^.output . $GITHUB_WORKSPACE/artifacts/frameworks/native/services/surfaceflinger/sysprop/SurfaceFlingerProperties_java_gen^
+
+echo "building SurfaceFlingerProperties_sysprop_library^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja SurfaceFlingerProperties_sysprop_library,
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/native/services/surfaceflinger/sysprop/SurfaceFlingerProperties_sysprop_library^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/frameworks/native/SurfaceFlingerProperties_sysprop_library^.output . $GITHUB_WORKSPACE/artifacts/frameworks/native/services/surfaceflinger/sysprop/SurfaceFlingerProperties_sysprop_library^
 
 echo "building libLibGuiProperties^android_vendor.31_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libLibGuiProperties,android_vendor.31_x86_64_static

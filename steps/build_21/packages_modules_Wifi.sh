@@ -79,15 +79,15 @@ prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/st
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/Wifi/framework/framework-wifi-pre-jarjar^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_21/packages/modules/Wifi/framework-wifi-pre-jarjar^android_common.output . $GITHUB_WORKSPACE/artifacts/packages/modules/Wifi/framework/framework-wifi-pre-jarjar^android_common
 
-echo "building framework-wifi.stubs.source.module_lib^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_21.ninja framework-wifi.stubs.source.module_lib,android_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/Wifi/framework/framework-wifi.stubs.source.module_lib^android_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_21/packages/modules/Wifi/framework-wifi.stubs.source.module_lib^android_common.output . $GITHUB_WORKSPACE/artifacts/packages/modules/Wifi/framework/framework-wifi.stubs.source.module_lib^android_common
-
 echo "building framework-wifi.stubs.module_lib^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_21.ninja framework-wifi.stubs.module_lib,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/Wifi/framework/framework-wifi.stubs.module_lib^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_21/packages/modules/Wifi/framework-wifi.stubs.module_lib^android_common.output . $GITHUB_WORKSPACE/artifacts/packages/modules/Wifi/framework/framework-wifi.stubs.module_lib^android_common
+
+echo "building framework-wifi.stubs.source.module_lib^android_common"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_21.ninja framework-wifi.stubs.source.module_lib,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/Wifi/framework/framework-wifi.stubs.source.module_lib^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_21/packages/modules/Wifi/framework-wifi.stubs.source.module_lib^android_common.output . $GITHUB_WORKSPACE/artifacts/packages/modules/Wifi/framework/framework-wifi.stubs.source.module_lib^android_common
 
 echo "building framework-wifi.stubs.source.system^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_21.ninja framework-wifi.stubs.source.system,android_common

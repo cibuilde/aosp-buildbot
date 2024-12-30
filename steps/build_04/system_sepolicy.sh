@@ -42,65 +42,60 @@ prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/st
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/sepolicy/microdroid_vendor_sepolicy.cil.raw^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/sepolicy/microdroid_vendor_sepolicy.cil.raw^android_common.output . $GITHUB_WORKSPACE/artifacts/system/sepolicy/microdroid_vendor_sepolicy.cil.raw^android_common
 
-echo "building plat_pub_policy.cil^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja plat_pub_policy.cil,android_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/sepolicy/plat_pub_policy.cil^android_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/sepolicy/plat_pub_policy.cil^android_common.output . $GITHUB_WORKSPACE/artifacts/system/sepolicy/plat_pub_policy.cil^android_common
+echo "building microdroid_vendor_sepolicy.cil^android_common"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja microdroid_vendor_sepolicy.cil,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/sepolicy/microdroid_vendor_sepolicy.cil^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/sepolicy/microdroid_vendor_sepolicy.cil^android_common.output . $GITHUB_WORKSPACE/artifacts/system/sepolicy/microdroid_vendor_sepolicy.cil^android_common
 
 echo "building plat_mapping_file^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja plat_mapping_file,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/sepolicy/plat_mapping_file^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/sepolicy/plat_mapping_file^android_common.output . $GITHUB_WORKSPACE/artifacts/system/sepolicy/plat_mapping_file^android_common
 
-echo "building plat_sepolicy.cil^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja plat_sepolicy.cil,android_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/sepolicy/plat_sepolicy.cil^android_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/sepolicy/plat_sepolicy.cil^android_common.output . $GITHUB_WORKSPACE/artifacts/system/sepolicy/plat_sepolicy.cil^android_common
-
-echo "building microdroid_vendor_sepolicy.cil^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja microdroid_vendor_sepolicy.cil,android_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/sepolicy/microdroid_vendor_sepolicy.cil^android_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/sepolicy/microdroid_vendor_sepolicy.cil^android_common.output . $GITHUB_WORKSPACE/artifacts/system/sepolicy/microdroid_vendor_sepolicy.cil^android_common
-
-echo "building precompiled_sepolicy.plat_sepolicy_and_mapping.sha256^android_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja precompiled_sepolicy.plat_sepolicy_and_mapping.sha256,android_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/sepolicy/precompiled_sepolicy.plat_sepolicy_and_mapping.sha256^android_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/sepolicy/precompiled_sepolicy.plat_sepolicy_and_mapping.sha256^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/sepolicy/precompiled_sepolicy.plat_sepolicy_and_mapping.sha256^android_x86_64
-
-echo "building product_mapping_file^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja product_mapping_file,android_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/sepolicy/product_mapping_file^android_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/sepolicy/product_mapping_file^android_common.output . $GITHUB_WORKSPACE/artifacts/system/sepolicy/product_mapping_file^android_common
+echo "building plat_pub_policy.cil^android_common"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja plat_pub_policy.cil,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/sepolicy/plat_pub_policy.cil^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/sepolicy/plat_pub_policy.cil^android_common.output . $GITHUB_WORKSPACE/artifacts/system/sepolicy/plat_pub_policy.cil^android_common
 
 echo "building plat_pub_versioned.cil^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja plat_pub_versioned.cil,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/sepolicy/plat_pub_versioned.cil^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/sepolicy/plat_pub_versioned.cil^android_common.output . $GITHUB_WORKSPACE/artifacts/system/sepolicy/plat_pub_versioned.cil^android_common
 
-echo "building plat_sepolicy_and_mapping.sha256_gen^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja plat_sepolicy_and_mapping.sha256_gen,
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/sepolicy/plat_sepolicy_and_mapping.sha256_gen^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/sepolicy/plat_sepolicy_and_mapping.sha256_gen^.output . $GITHUB_WORKSPACE/artifacts/system/sepolicy/plat_sepolicy_and_mapping.sha256_gen^
+echo "building plat_sepolicy.cil^android_common"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja plat_sepolicy.cil,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/sepolicy/plat_sepolicy.cil^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/sepolicy/plat_sepolicy.cil^android_common.output . $GITHUB_WORKSPACE/artifacts/system/sepolicy/plat_sepolicy.cil^android_common
 
 echo "building plat_sepolicy_and_mapping.sha256^android_x86_64"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja plat_sepolicy_and_mapping.sha256,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/sepolicy/plat_sepolicy_and_mapping.sha256^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/sepolicy/plat_sepolicy_and_mapping.sha256^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/sepolicy/plat_sepolicy_and_mapping.sha256^android_x86_64
 
-echo "building precompiled_sepolicy.system_ext_sepolicy_and_mapping.sha256^android_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja precompiled_sepolicy.system_ext_sepolicy_and_mapping.sha256,android_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/sepolicy/precompiled_sepolicy.system_ext_sepolicy_and_mapping.sha256^android_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/sepolicy/precompiled_sepolicy.system_ext_sepolicy_and_mapping.sha256^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/sepolicy/precompiled_sepolicy.system_ext_sepolicy_and_mapping.sha256^android_x86_64
+echo "building plat_sepolicy_and_mapping.sha256_gen^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja plat_sepolicy_and_mapping.sha256_gen,
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/sepolicy/plat_sepolicy_and_mapping.sha256_gen^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/sepolicy/plat_sepolicy_and_mapping.sha256_gen^.output . $GITHUB_WORKSPACE/artifacts/system/sepolicy/plat_sepolicy_and_mapping.sha256_gen^
 
-echo "building product_sepolicy_and_mapping.sha256_gen^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja product_sepolicy_and_mapping.sha256_gen,
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/sepolicy/product_sepolicy_and_mapping.sha256_gen^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/sepolicy/product_sepolicy_and_mapping.sha256_gen^.output . $GITHUB_WORKSPACE/artifacts/system/sepolicy/product_sepolicy_and_mapping.sha256_gen^
+echo "building precompiled_sepolicy.plat_sepolicy_and_mapping.sha256^android_x86_64"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja precompiled_sepolicy.plat_sepolicy_and_mapping.sha256,android_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/sepolicy/precompiled_sepolicy.plat_sepolicy_and_mapping.sha256^android_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/sepolicy/precompiled_sepolicy.plat_sepolicy_and_mapping.sha256^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/sepolicy/precompiled_sepolicy.plat_sepolicy_and_mapping.sha256^android_x86_64
 
 echo "building precompiled_sepolicy.product_sepolicy_and_mapping.sha256^android_x86_64"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja precompiled_sepolicy.product_sepolicy_and_mapping.sha256,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/sepolicy/precompiled_sepolicy.product_sepolicy_and_mapping.sha256^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/sepolicy/precompiled_sepolicy.product_sepolicy_and_mapping.sha256^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/sepolicy/precompiled_sepolicy.product_sepolicy_and_mapping.sha256^android_x86_64
+
+echo "building precompiled_sepolicy.system_ext_sepolicy_and_mapping.sha256^android_x86_64"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja precompiled_sepolicy.system_ext_sepolicy_and_mapping.sha256,android_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/sepolicy/precompiled_sepolicy.system_ext_sepolicy_and_mapping.sha256^android_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/sepolicy/precompiled_sepolicy.system_ext_sepolicy_and_mapping.sha256^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/sepolicy/precompiled_sepolicy.system_ext_sepolicy_and_mapping.sha256^android_x86_64
+
+echo "building product_mapping_file^android_common"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja product_mapping_file,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/sepolicy/product_mapping_file^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/sepolicy/product_mapping_file^android_common.output . $GITHUB_WORKSPACE/artifacts/system/sepolicy/product_mapping_file^android_common
 
 echo "building product_sepolicy.cil^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja product_sepolicy.cil,android_common
@@ -112,40 +107,45 @@ prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/st
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/sepolicy/product_sepolicy_and_mapping.sha256^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/sepolicy/product_sepolicy_and_mapping.sha256^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/sepolicy/product_sepolicy_and_mapping.sha256^android_x86_64
 
-echo "building reqd_policy_mask.cil^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja reqd_policy_mask.cil,android_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/sepolicy/reqd_policy_mask.cil^android_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/sepolicy/reqd_policy_mask.cil^android_common.output . $GITHUB_WORKSPACE/artifacts/system/sepolicy/reqd_policy_mask.cil^android_common
+echo "building product_sepolicy_and_mapping.sha256_gen^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja product_sepolicy_and_mapping.sha256_gen,
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/sepolicy/product_sepolicy_and_mapping.sha256_gen^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/sepolicy/product_sepolicy_and_mapping.sha256_gen^.output . $GITHUB_WORKSPACE/artifacts/system/sepolicy/product_sepolicy_and_mapping.sha256_gen^
 
 echo "building pub_policy.cil^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja pub_policy.cil,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/sepolicy/pub_policy.cil^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/sepolicy/pub_policy.cil^android_common.output . $GITHUB_WORKSPACE/artifacts/system/sepolicy/pub_policy.cil^android_common
 
-echo "building system_ext_pub_policy.cil^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja system_ext_pub_policy.cil,android_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/sepolicy/system_ext_pub_policy.cil^android_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/sepolicy/system_ext_pub_policy.cil^android_common.output . $GITHUB_WORKSPACE/artifacts/system/sepolicy/system_ext_pub_policy.cil^android_common
+echo "building reqd_policy_mask.cil^android_common"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja reqd_policy_mask.cil,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/sepolicy/reqd_policy_mask.cil^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/sepolicy/reqd_policy_mask.cil^android_common.output . $GITHUB_WORKSPACE/artifacts/system/sepolicy/reqd_policy_mask.cil^android_common
 
 echo "building system_ext_mapping_file^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja system_ext_mapping_file,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/sepolicy/system_ext_mapping_file^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/sepolicy/system_ext_mapping_file^android_common.output . $GITHUB_WORKSPACE/artifacts/system/sepolicy/system_ext_mapping_file^android_common
 
+echo "building system_ext_pub_policy.cil^android_common"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja system_ext_pub_policy.cil,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/sepolicy/system_ext_pub_policy.cil^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/sepolicy/system_ext_pub_policy.cil^android_common.output . $GITHUB_WORKSPACE/artifacts/system/sepolicy/system_ext_pub_policy.cil^android_common
+
 echo "building system_ext_sepolicy.cil^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja system_ext_sepolicy.cil,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/sepolicy/system_ext_sepolicy.cil^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/sepolicy/system_ext_sepolicy.cil^android_common.output . $GITHUB_WORKSPACE/artifacts/system/sepolicy/system_ext_sepolicy.cil^android_common
 
-echo "building system_ext_sepolicy_and_mapping.sha256_gen^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja system_ext_sepolicy_and_mapping.sha256_gen,
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/sepolicy/system_ext_sepolicy_and_mapping.sha256_gen^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/sepolicy/system_ext_sepolicy_and_mapping.sha256_gen^.output . $GITHUB_WORKSPACE/artifacts/system/sepolicy/system_ext_sepolicy_and_mapping.sha256_gen^
-
 echo "building system_ext_sepolicy_and_mapping.sha256^android_x86_64"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja system_ext_sepolicy_and_mapping.sha256,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/sepolicy/system_ext_sepolicy_and_mapping.sha256^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/sepolicy/system_ext_sepolicy_and_mapping.sha256^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/sepolicy/system_ext_sepolicy_and_mapping.sha256^android_x86_64
+
+echo "building system_ext_sepolicy_and_mapping.sha256_gen^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja system_ext_sepolicy_and_mapping.sha256_gen,
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/sepolicy/system_ext_sepolicy_and_mapping.sha256_gen^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/sepolicy/system_ext_sepolicy_and_mapping.sha256_gen^.output . $GITHUB_WORKSPACE/artifacts/system/sepolicy/system_ext_sepolicy_and_mapping.sha256_gen^
 
 echo "building userdebug_plat_sepolicy.cil^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja userdebug_plat_sepolicy.cil,android_common

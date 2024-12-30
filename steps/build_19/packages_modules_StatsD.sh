@@ -60,15 +60,15 @@ prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/st
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/StatsD/framework/framework-statsd-internal^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_19/packages/modules/StatsD/framework-statsd-internal^android_common.output . $GITHUB_WORKSPACE/artifacts/packages/modules/StatsD/framework/framework-statsd-internal^android_common
 
-echo "building framework-statsd.stubs.source.module_lib^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_19.ninja framework-statsd.stubs.source.module_lib,android_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/StatsD/framework/framework-statsd.stubs.source.module_lib^android_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_19/packages/modules/StatsD/framework-statsd.stubs.source.module_lib^android_common.output . $GITHUB_WORKSPACE/artifacts/packages/modules/StatsD/framework/framework-statsd.stubs.source.module_lib^android_common
-
 echo "building framework-statsd.stubs.module_lib^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_19.ninja framework-statsd.stubs.module_lib,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/StatsD/framework/framework-statsd.stubs.module_lib^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_19/packages/modules/StatsD/framework-statsd.stubs.module_lib^android_common.output . $GITHUB_WORKSPACE/artifacts/packages/modules/StatsD/framework/framework-statsd.stubs.module_lib^android_common
+
+echo "building framework-statsd.stubs.source.module_lib^android_common"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_19.ninja framework-statsd.stubs.source.module_lib,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/StatsD/framework/framework-statsd.stubs.source.module_lib^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_19/packages/modules/StatsD/framework-statsd.stubs.source.module_lib^android_common.output . $GITHUB_WORKSPACE/artifacts/packages/modules/StatsD/framework/framework-statsd.stubs.source.module_lib^android_common
 
 echo "building framework-statsd.stubs.source.system^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_19.ninja framework-statsd.stubs.source.system,android_common

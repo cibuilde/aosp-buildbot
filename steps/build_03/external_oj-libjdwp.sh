@@ -34,15 +34,15 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/cmd/javac_wrapper/soong_java
 rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/zip/cmd/soong_zip^linux_glibc_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/cmd/zipsync/zipsync^linux_glibc_x86_64/ .
 
-echo "building jdwpgen^linux_glibc_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja jdwpgen,linux_glibc_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/oj-libjdwp/jdwpgen^linux_glibc_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/external/oj-libjdwp/jdwpgen^linux_glibc_common.output . $GITHUB_WORKSPACE/artifacts/external/oj-libjdwp/jdwpgen^linux_glibc_common
-
 echo "building jdwp_generated_headers^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja jdwp_generated_headers,
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/oj-libjdwp/jdwp_generated_headers^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/external/oj-libjdwp/jdwp_generated_headers^.output . $GITHUB_WORKSPACE/artifacts/external/oj-libjdwp/jdwp_generated_headers^
+
+echo "building jdwpgen^linux_glibc_common"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja jdwpgen,linux_glibc_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/oj-libjdwp/jdwpgen^linux_glibc_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/external/oj-libjdwp/jdwpgen^linux_glibc_common.output . $GITHUB_WORKSPACE/artifacts/external/oj-libjdwp/jdwpgen^linux_glibc_common
 
 echo "building libdt_socket^android_x86_64_static_apex31"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libdt_socket,android_x86_64_static_apex31

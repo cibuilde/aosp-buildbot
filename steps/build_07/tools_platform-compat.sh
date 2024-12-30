@@ -31,6 +31,12 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/external/hamcrest/hamcrest-library/hamcr
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/testng/testng^linux_glibc_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/misc/common/commons-cli/commons-cli-1.2^linux_glibc_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/tools/platform-compat/java/com/android/annotationvisitor/annotationvisitor^linux_glibc_common/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/tools/platform-compat/java/com/android/class2nonsdklist/class2nonsdklist^linux_glibc_common/ .
+
+echo "building class2nonsdklist^linux_glibc_common"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja class2nonsdklist,linux_glibc_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/tools/platform-compat/java/com/android/class2nonsdklist/class2nonsdklist^linux_glibc_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/tools/platform-compat/class2nonsdklist^linux_glibc_common.output . $GITHUB_WORKSPACE/artifacts/tools/platform-compat/java/com/android/class2nonsdklist/class2nonsdklist^linux_glibc_common
 
 echo "building class2nonsdklist^linux_glibc_x86_64"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja class2nonsdklist,linux_glibc_x86_64
@@ -41,11 +47,6 @@ echo "building class2nonsdklistlib^linux_glibc_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja class2nonsdklistlib,linux_glibc_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/tools/platform-compat/java/com/android/class2nonsdklist/class2nonsdklistlib^linux_glibc_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/tools/platform-compat/class2nonsdklistlib^linux_glibc_common.output . $GITHUB_WORKSPACE/artifacts/tools/platform-compat/java/com/android/class2nonsdklist/class2nonsdklistlib^linux_glibc_common
-
-echo "building class2nonsdklist^linux_glibc_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja class2nonsdklist,linux_glibc_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/tools/platform-compat/java/com/android/class2nonsdklist/class2nonsdklist^linux_glibc_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/tools/platform-compat/class2nonsdklist^linux_glibc_common.output . $GITHUB_WORKSPACE/artifacts/tools/platform-compat/java/com/android/class2nonsdklist/class2nonsdklist^linux_glibc_common
 
 rm -rf out
 

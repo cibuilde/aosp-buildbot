@@ -94,21 +94,6 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/system/libhidl/transport/manager/1.1/and
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/libhidl/transport/manager/1.2/android.hidl.manager@1.2_genc++_headers^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/libhidl/transport/safe_union/1.0/android.hidl.safe_union@1.0_genc++_headers^/ .
 
-echo "building libbt_init_flags_bridge_header^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libbt_init_flags_bridge_header,
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/bt/gd/rust/shim/libbt_init_flags_bridge_header^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/system/bt/libbt_init_flags_bridge_header^.output . $GITHUB_WORKSPACE/artifacts/system/bt/gd/rust/shim/libbt_init_flags_bridge_header^
-
-echo "building libbt_message_loop_thread_bridge_header^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libbt_message_loop_thread_bridge_header,
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/bt/gd/rust/shim/libbt_message_loop_thread_bridge_header^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/system/bt/libbt_message_loop_thread_bridge_header^.output . $GITHUB_WORKSPACE/artifacts/system/bt/gd/rust/shim/libbt_message_loop_thread_bridge_header^
-
-echo "building libbt_shim_bridge_header^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libbt_shim_bridge_header,
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/bt/gd/rust/shim/libbt_shim_bridge_header^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/system/bt/libbt_shim_bridge_header^.output . $GITHUB_WORKSPACE/artifacts/system/bt/gd/rust/shim/libbt_shim_bridge_header^
-
 echo "building audio.a2dp.default^android_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja audio.a2dp.default,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/bt/audio_a2dp_hw/audio.a2dp.default^android_x86_64_static
@@ -294,15 +279,30 @@ prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/st
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/bt/gd/rust/shim/libbt_init_flags_bridge_code^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/system/bt/libbt_init_flags_bridge_code^.output . $GITHUB_WORKSPACE/artifacts/system/bt/gd/rust/shim/libbt_init_flags_bridge_code^
 
+echo "building libbt_init_flags_bridge_header^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libbt_init_flags_bridge_header,
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/bt/gd/rust/shim/libbt_init_flags_bridge_header^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/system/bt/libbt_init_flags_bridge_header^.output . $GITHUB_WORKSPACE/artifacts/system/bt/gd/rust/shim/libbt_init_flags_bridge_header^
+
 echo "building libbt_message_loop_thread_bridge_code^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libbt_message_loop_thread_bridge_code,
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/bt/gd/rust/shim/libbt_message_loop_thread_bridge_code^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/system/bt/libbt_message_loop_thread_bridge_code^.output . $GITHUB_WORKSPACE/artifacts/system/bt/gd/rust/shim/libbt_message_loop_thread_bridge_code^
 
+echo "building libbt_message_loop_thread_bridge_header^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libbt_message_loop_thread_bridge_header,
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/bt/gd/rust/shim/libbt_message_loop_thread_bridge_header^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/system/bt/libbt_message_loop_thread_bridge_header^.output . $GITHUB_WORKSPACE/artifacts/system/bt/gd/rust/shim/libbt_message_loop_thread_bridge_header^
+
 echo "building libbt_shim_bridge_code^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libbt_shim_bridge_code,
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/bt/gd/rust/shim/libbt_shim_bridge_code^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/system/bt/libbt_shim_bridge_code^.output . $GITHUB_WORKSPACE/artifacts/system/bt/gd/rust/shim/libbt_shim_bridge_code^
+
+echo "building libbt_shim_bridge_header^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libbt_shim_bridge_header,
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/bt/gd/rust/shim/libbt_shim_bridge_header^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/system/bt/libbt_shim_bridge_header^.output . $GITHUB_WORKSPACE/artifacts/system/bt/gd/rust/shim/libbt_shim_bridge_header^
 
 echo "building libbtcore^android_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libbtcore,android_x86_64_static

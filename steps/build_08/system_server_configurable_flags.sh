@@ -53,15 +53,15 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/system/libbase/libbase^android_x86_x86_6
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/server_configurable_flags/libflags/server_configurable_flags^android_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/server_configurable_flags/libflags/server_configurable_flags^android_x86_x86_64_static/ .
 
-echo "building server_configurable_flags^android_x86_64_shared"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja server_configurable_flags,android_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/server_configurable_flags/libflags/server_configurable_flags^android_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/system/server_configurable_flags/server_configurable_flags^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/server_configurable_flags/libflags/server_configurable_flags^android_x86_64_shared
-
 echo "building flags_health_check^android_x86_64"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja flags_health_check,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/server_configurable_flags/disaster_recovery/flags_health_check^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/system/server_configurable_flags/flags_health_check^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/server_configurable_flags/disaster_recovery/flags_health_check^android_x86_64
+
+echo "building server_configurable_flags^android_x86_64_shared"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja server_configurable_flags,android_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/server_configurable_flags/libflags/server_configurable_flags^android_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/system/server_configurable_flags/server_configurable_flags^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/server_configurable_flags/libflags/server_configurable_flags^android_x86_64_shared
 
 echo "building server_configurable_flags^android_x86_x86_64_shared"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja server_configurable_flags,android_x86_x86_64_shared

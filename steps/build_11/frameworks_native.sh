@@ -311,11 +311,6 @@ prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/st
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/native/cmds/dumpstate/dumpstate^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_11/frameworks/native/dumpstate^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/frameworks/native/cmds/dumpstate/dumpstate^android_x86_64
 
-echo "building libgui^android_x86_64_shared"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_11.ninja libgui,android_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/gui/libgui^android_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_11/frameworks/native/libgui^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/gui/libgui^android_x86_64_shared
-
 echo "building libcompositionengine^android_x86_64_static_lto-thin"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_11.ninja libcompositionengine,android_x86_64_static_lto-thin
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/native/services/surfaceflinger/CompositionEngine/libcompositionengine^android_x86_64_static_lto-thin
@@ -331,20 +326,25 @@ prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/st
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/native/services/surfaceflinger/FrameTimeline/libframetimeline^android_x86_64_static_lto-thin
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_11/frameworks/native/libframetimeline^android_x86_64_static_lto-thin.output . $GITHUB_WORKSPACE/artifacts/frameworks/native/services/surfaceflinger/FrameTimeline/libframetimeline^android_x86_64_static_lto-thin
 
+echo "building libgui^android_x86_64_shared"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_11.ninja libgui,android_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/gui/libgui^android_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_11/frameworks/native/libgui^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/gui/libgui^android_x86_64_shared
+
 echo "building libgui^android_x86_x86_64_shared"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_11.ninja libgui,android_x86_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/gui/libgui^android_x86_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_11/frameworks/native/libgui^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/gui/libgui^android_x86_x86_64_shared
 
-echo "building liblayers_proto^android_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_11.ninja liblayers_proto,android_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/native/services/surfaceflinger/layerproto/liblayers_proto^android_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_11/frameworks/native/liblayers_proto^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/native/services/surfaceflinger/layerproto/liblayers_proto^android_x86_64_static
-
 echo "building liblayers_proto^android_x86_64_shared"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_11.ninja liblayers_proto,android_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/native/services/surfaceflinger/layerproto/liblayers_proto^android_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_11/frameworks/native/liblayers_proto^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/native/services/surfaceflinger/layerproto/liblayers_proto^android_x86_64_shared
+
+echo "building liblayers_proto^android_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_11.ninja liblayers_proto,android_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/native/services/surfaceflinger/layerproto/liblayers_proto^android_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_11/frameworks/native/liblayers_proto^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/native/services/surfaceflinger/layerproto/liblayers_proto^android_x86_64_static
 
 echo "building libnativedisplay^android_x86_64_shared"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_11.ninja libnativedisplay,android_x86_64_shared

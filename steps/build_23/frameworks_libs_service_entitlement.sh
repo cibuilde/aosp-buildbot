@@ -35,6 +35,11 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/android_system_stubs_cur
 rsync -a -r $GITHUB_WORKSPACE/downloads/libcore/core-current-stubs-system-modules^android_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/sdk/current/androidx/androidx.annotation_annotation^android_common/ .
 
+echo "building service-entitlement-api^android_common"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_23.ninja service-entitlement-api,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/libs/service_entitlement/service-entitlement-api^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_23/frameworks/libs/service_entitlement/service-entitlement-api^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/libs/service_entitlement/service-entitlement-api^android_common
+
 echo "building service-entitlement-data^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_23.ninja service-entitlement-data,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/libs/service_entitlement/service-entitlement-data^android_common
@@ -44,11 +49,6 @@ echo "building service-entitlement-impl^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_23.ninja service-entitlement-impl,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/libs/service_entitlement/service-entitlement-impl^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_23/frameworks/libs/service_entitlement/service-entitlement-impl^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/libs/service_entitlement/service-entitlement-impl^android_common
-
-echo "building service-entitlement-api^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_23.ninja service-entitlement-api,android_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/libs/service_entitlement/service-entitlement-api^android_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_23/frameworks/libs/service_entitlement/service-entitlement-api^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/libs/service_entitlement/service-entitlement-api^android_common
 
 echo "building service-entitlement^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_23.ninja service-entitlement,android_common

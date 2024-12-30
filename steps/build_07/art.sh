@@ -151,15 +151,25 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/system/unwinding/libbacktrace/libbacktra
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/unwinding/libunwindstack/libunwindstack^android_x86_64_shared_apex31/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/unwinding/libunwindstack/libunwindstack^android_x86_x86_64_shared_apex31/ .
 
+echo "building dex2oat^android_x86_64_apex31"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja dex2oat,android_x86_64_apex31
+mkdir -p $GITHUB_WORKSPACE/artifacts/art/dex2oat/dex2oat^android_x86_64_apex31
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/art/dex2oat^android_x86_64_apex31.output . $GITHUB_WORKSPACE/artifacts/art/dex2oat/dex2oat^android_x86_64_apex31
+
+echo "building dex2oat^android_x86_x86_64_apex31"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja dex2oat,android_x86_x86_64_apex31
+mkdir -p $GITHUB_WORKSPACE/artifacts/art/dex2oat/dex2oat^android_x86_x86_64_apex31
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/art/dex2oat^android_x86_x86_64_apex31.output . $GITHUB_WORKSPACE/artifacts/art/dex2oat/dex2oat^android_x86_x86_64_apex31
+
 echo "building dexdump^android_x86_64_apex31"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja dexdump,android_x86_64_apex31
 mkdir -p $GITHUB_WORKSPACE/artifacts/art/dexdump/dexdump^android_x86_64_apex31
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/art/dexdump^android_x86_64_apex31.output . $GITHUB_WORKSPACE/artifacts/art/dexdump/dexdump^android_x86_64_apex31
 
-echo "building libart^android_x86_64_shared_apex31"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libart,android_x86_64_shared_apex31
-mkdir -p $GITHUB_WORKSPACE/artifacts/art/runtime/libart^android_x86_64_shared_apex31
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/art/libart^android_x86_64_shared_apex31.output . $GITHUB_WORKSPACE/artifacts/art/runtime/libart^android_x86_64_shared_apex31
+echo "building dexlist^android_x86_64_apex31"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja dexlist,android_x86_64_apex31
+mkdir -p $GITHUB_WORKSPACE/artifacts/art/dexlist/dexlist^android_x86_64_apex31
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/art/dexlist^android_x86_64_apex31.output . $GITHUB_WORKSPACE/artifacts/art/dexlist/dexlist^android_x86_64_apex31
 
 echo "building dexoptanalyzer^android_x86_64_apex31"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja dexoptanalyzer,android_x86_64_apex31
@@ -171,85 +181,80 @@ prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/st
 mkdir -p $GITHUB_WORKSPACE/artifacts/art/adbconnection/libadbconnection^android_x86_64_shared_apex31
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/art/libadbconnection^android_x86_64_shared_apex31.output . $GITHUB_WORKSPACE/artifacts/art/adbconnection/libadbconnection^android_x86_64_shared_apex31
 
-echo "building libart-compiler^android_x86_64_shared_apex31"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libart-compiler,android_x86_64_shared_apex31
-mkdir -p $GITHUB_WORKSPACE/artifacts/art/compiler/libart-compiler^android_x86_64_shared_apex31
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/art/libart-compiler^android_x86_64_shared_apex31.output . $GITHUB_WORKSPACE/artifacts/art/compiler/libart-compiler^android_x86_64_shared_apex31
-
-echo "building libartbase^android_x86_x86_64_shared_apex31"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libartbase,android_x86_x86_64_shared_apex31
-mkdir -p $GITHUB_WORKSPACE/artifacts/art/libartbase/libartbase^android_x86_x86_64_shared_apex31
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/art/libartbase^android_x86_x86_64_shared_apex31.output . $GITHUB_WORKSPACE/artifacts/art/libartbase/libartbase^android_x86_x86_64_shared_apex31
-
-echo "building libdexfile^android_x86_x86_64_shared_apex31"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libdexfile,android_x86_x86_64_shared_apex31
-mkdir -p $GITHUB_WORKSPACE/artifacts/art/libdexfile/libdexfile^android_x86_x86_64_shared_apex31
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/art/libdexfile^android_x86_x86_64_shared_apex31.output . $GITHUB_WORKSPACE/artifacts/art/libdexfile/libdexfile^android_x86_x86_64_shared_apex31
-
-echo "building libart^android_x86_x86_64_shared_apex31"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libart,android_x86_x86_64_shared_apex31
-mkdir -p $GITHUB_WORKSPACE/artifacts/art/runtime/libart^android_x86_x86_64_shared_apex31
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/art/libart^android_x86_x86_64_shared_apex31.output . $GITHUB_WORKSPACE/artifacts/art/runtime/libart^android_x86_x86_64_shared_apex31
-
 echo "building libadbconnection^android_x86_x86_64_shared_apex31"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libadbconnection,android_x86_x86_64_shared_apex31
 mkdir -p $GITHUB_WORKSPACE/artifacts/art/adbconnection/libadbconnection^android_x86_x86_64_shared_apex31
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/art/libadbconnection^android_x86_x86_64_shared_apex31.output . $GITHUB_WORKSPACE/artifacts/art/adbconnection/libadbconnection^android_x86_x86_64_shared_apex31
+
+echo "building libart-compiler^android_x86_64_shared_apex31"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libart-compiler,android_x86_64_shared_apex31
+mkdir -p $GITHUB_WORKSPACE/artifacts/art/compiler/libart-compiler^android_x86_64_shared_apex31
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/art/libart-compiler^android_x86_64_shared_apex31.output . $GITHUB_WORKSPACE/artifacts/art/compiler/libart-compiler^android_x86_64_shared_apex31
 
 echo "building libart-compiler^android_x86_x86_64_shared_apex31"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libart-compiler,android_x86_x86_64_shared_apex31
 mkdir -p $GITHUB_WORKSPACE/artifacts/art/compiler/libart-compiler^android_x86_x86_64_shared_apex31
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/art/libart-compiler^android_x86_x86_64_shared_apex31.output . $GITHUB_WORKSPACE/artifacts/art/compiler/libart-compiler^android_x86_x86_64_shared_apex31
 
+echo "building libart-dexlayout^android_x86_64_shared_apex31"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libart-dexlayout,android_x86_64_shared_apex31
+mkdir -p $GITHUB_WORKSPACE/artifacts/art/dexlayout/libart-dexlayout^android_x86_64_shared_apex31
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/art/libart-dexlayout^android_x86_64_shared_apex31.output . $GITHUB_WORKSPACE/artifacts/art/dexlayout/libart-dexlayout^android_x86_64_shared_apex31
+
 echo "building libart-dexlayout^android_x86_x86_64_shared_apex31"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libart-dexlayout,android_x86_x86_64_shared_apex31
 mkdir -p $GITHUB_WORKSPACE/artifacts/art/dexlayout/libart-dexlayout^android_x86_x86_64_shared_apex31
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/art/libart-dexlayout^android_x86_x86_64_shared_apex31.output . $GITHUB_WORKSPACE/artifacts/art/dexlayout/libart-dexlayout^android_x86_x86_64_shared_apex31
 
-echo "building dex2oat^android_x86_x86_64_apex31"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja dex2oat,android_x86_x86_64_apex31
-mkdir -p $GITHUB_WORKSPACE/artifacts/art/dex2oat/dex2oat^android_x86_x86_64_apex31
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/art/dex2oat^android_x86_x86_64_apex31.output . $GITHUB_WORKSPACE/artifacts/art/dex2oat/dex2oat^android_x86_x86_64_apex31
+echo "building libart^android_x86_64_shared_apex31"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libart,android_x86_64_shared_apex31
+mkdir -p $GITHUB_WORKSPACE/artifacts/art/runtime/libart^android_x86_64_shared_apex31
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/art/libart^android_x86_64_shared_apex31.output . $GITHUB_WORKSPACE/artifacts/art/runtime/libart^android_x86_64_shared_apex31
+
+echo "building libart^android_x86_x86_64_shared_apex31"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libart,android_x86_x86_64_shared_apex31
+mkdir -p $GITHUB_WORKSPACE/artifacts/art/runtime/libart^android_x86_x86_64_shared_apex31
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/art/libart^android_x86_x86_64_shared_apex31.output . $GITHUB_WORKSPACE/artifacts/art/runtime/libart^android_x86_x86_64_shared_apex31
 
 echo "building libartbase^android_x86_64_shared_apex31"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libartbase,android_x86_64_shared_apex31
 mkdir -p $GITHUB_WORKSPACE/artifacts/art/libartbase/libartbase^android_x86_64_shared_apex31
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/art/libartbase^android_x86_64_shared_apex31.output . $GITHUB_WORKSPACE/artifacts/art/libartbase/libartbase^android_x86_64_shared_apex31
 
+echo "building libartbase^android_x86_x86_64_shared_apex31"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libartbase,android_x86_x86_64_shared_apex31
+mkdir -p $GITHUB_WORKSPACE/artifacts/art/libartbase/libartbase^android_x86_x86_64_shared_apex31
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/art/libartbase^android_x86_x86_64_shared_apex31.output . $GITHUB_WORKSPACE/artifacts/art/libartbase/libartbase^android_x86_x86_64_shared_apex31
+
 echo "building libdexfile^android_x86_64_shared_apex31"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libdexfile,android_x86_64_shared_apex31
 mkdir -p $GITHUB_WORKSPACE/artifacts/art/libdexfile/libdexfile^android_x86_64_shared_apex31
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/art/libdexfile^android_x86_64_shared_apex31.output . $GITHUB_WORKSPACE/artifacts/art/libdexfile/libdexfile^android_x86_64_shared_apex31
 
-echo "building dex2oat^android_x86_64_apex31"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja dex2oat,android_x86_64_apex31
-mkdir -p $GITHUB_WORKSPACE/artifacts/art/dex2oat/dex2oat^android_x86_64_apex31
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/art/dex2oat^android_x86_64_apex31.output . $GITHUB_WORKSPACE/artifacts/art/dex2oat/dex2oat^android_x86_64_apex31
-
-echo "building dexlist^android_x86_64_apex31"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja dexlist,android_x86_64_apex31
-mkdir -p $GITHUB_WORKSPACE/artifacts/art/dexlist/dexlist^android_x86_64_apex31
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/art/dexlist^android_x86_64_apex31.output . $GITHUB_WORKSPACE/artifacts/art/dexlist/dexlist^android_x86_64_apex31
-
-echo "building libnativeloader^android_x86_64_static_apex31"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libnativeloader,android_x86_64_static_apex31
-mkdir -p $GITHUB_WORKSPACE/artifacts/art/libnativeloader/libnativeloader^android_x86_64_static_apex31
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/art/libnativeloader^android_x86_64_static_apex31.output . $GITHUB_WORKSPACE/artifacts/art/libnativeloader/libnativeloader^android_x86_64_static_apex31
+echo "building libdexfile^android_x86_x86_64_shared_apex31"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libdexfile,android_x86_x86_64_shared_apex31
+mkdir -p $GITHUB_WORKSPACE/artifacts/art/libdexfile/libdexfile^android_x86_x86_64_shared_apex31
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/art/libdexfile^android_x86_x86_64_shared_apex31.output . $GITHUB_WORKSPACE/artifacts/art/libdexfile/libdexfile^android_x86_x86_64_shared_apex31
 
 echo "building libnativeloader^android_x86_64_shared_apex31"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libnativeloader,android_x86_64_shared_apex31
 mkdir -p $GITHUB_WORKSPACE/artifacts/art/libnativeloader/libnativeloader^android_x86_64_shared_apex31
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/art/libnativeloader^android_x86_64_shared_apex31.output . $GITHUB_WORKSPACE/artifacts/art/libnativeloader/libnativeloader^android_x86_64_shared_apex31
 
-echo "building libnativeloader^android_x86_x86_64_static_apex31"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libnativeloader,android_x86_x86_64_static_apex31
-mkdir -p $GITHUB_WORKSPACE/artifacts/art/libnativeloader/libnativeloader^android_x86_x86_64_static_apex31
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/art/libnativeloader^android_x86_x86_64_static_apex31.output . $GITHUB_WORKSPACE/artifacts/art/libnativeloader/libnativeloader^android_x86_x86_64_static_apex31
+echo "building libnativeloader^android_x86_64_static_apex31"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libnativeloader,android_x86_64_static_apex31
+mkdir -p $GITHUB_WORKSPACE/artifacts/art/libnativeloader/libnativeloader^android_x86_64_static_apex31
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/art/libnativeloader^android_x86_64_static_apex31.output . $GITHUB_WORKSPACE/artifacts/art/libnativeloader/libnativeloader^android_x86_64_static_apex31
 
 echo "building libnativeloader^android_x86_x86_64_shared_apex31"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libnativeloader,android_x86_x86_64_shared_apex31
 mkdir -p $GITHUB_WORKSPACE/artifacts/art/libnativeloader/libnativeloader^android_x86_x86_64_shared_apex31
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/art/libnativeloader^android_x86_x86_64_shared_apex31.output . $GITHUB_WORKSPACE/artifacts/art/libnativeloader/libnativeloader^android_x86_x86_64_shared_apex31
+
+echo "building libnativeloader^android_x86_x86_64_static_apex31"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libnativeloader,android_x86_x86_64_static_apex31
+mkdir -p $GITHUB_WORKSPACE/artifacts/art/libnativeloader/libnativeloader^android_x86_x86_64_static_apex31
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/art/libnativeloader^android_x86_x86_64_static_apex31.output . $GITHUB_WORKSPACE/artifacts/art/libnativeloader/libnativeloader^android_x86_x86_64_static_apex31
 
 echo "building libopenjdkjvm^android_x86_64_shared_apex31"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libopenjdkjvm,android_x86_64_shared_apex31
@@ -285,11 +290,6 @@ echo "building libprofile^android_x86_64_shared_apex31"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libprofile,android_x86_64_shared_apex31
 mkdir -p $GITHUB_WORKSPACE/artifacts/art/libprofile/libprofile^android_x86_64_shared_apex31
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/art/libprofile^android_x86_64_shared_apex31.output . $GITHUB_WORKSPACE/artifacts/art/libprofile/libprofile^android_x86_64_shared_apex31
-
-echo "building libart-dexlayout^android_x86_64_shared_apex31"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libart-dexlayout,android_x86_64_shared_apex31
-mkdir -p $GITHUB_WORKSPACE/artifacts/art/dexlayout/libart-dexlayout^android_x86_64_shared_apex31
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/art/libart-dexlayout^android_x86_64_shared_apex31.output . $GITHUB_WORKSPACE/artifacts/art/dexlayout/libart-dexlayout^android_x86_64_shared_apex31
 
 echo "building libprofile^android_x86_x86_64_shared_apex31"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libprofile,android_x86_x86_64_shared_apex31

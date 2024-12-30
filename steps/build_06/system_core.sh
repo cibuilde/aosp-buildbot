@@ -235,15 +235,15 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/system/tools/sysprop/sysprop_api_dump^li
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/tools/sysprop/sysprop_cpp^linux_glibc_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/tools/sysprop/sysprop_java^linux_glibc_x86_64/ .
 
-echo "building com.android.sysprop.init_sysprop_library^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja com.android.sysprop.init_sysprop_library,
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/init/sysprop/com.android.sysprop.init_sysprop_library^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/system/core/com.android.sysprop.init_sysprop_library^.output . $GITHUB_WORKSPACE/artifacts/system/core/init/sysprop/com.android.sysprop.init_sysprop_library^
-
 echo "building com.android.sysprop.init_java_gen^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja com.android.sysprop.init_java_gen,
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/init/sysprop/com.android.sysprop.init_java_gen^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/system/core/com.android.sysprop.init_java_gen^.output . $GITHUB_WORKSPACE/artifacts/system/core/init/sysprop/com.android.sysprop.init_java_gen^
+
+echo "building com.android.sysprop.init_sysprop_library^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja com.android.sysprop.init_sysprop_library,
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/init/sysprop/com.android.sysprop.init_sysprop_library^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/system/core/com.android.sysprop.init_sysprop_library^.output . $GITHUB_WORKSPACE/artifacts/system/core/init/sysprop/com.android.sysprop.init_sysprop_library^
 
 echo "building host_init_verifier^linux_glibc_x86_64"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja host_init_verifier,linux_glibc_x86_64

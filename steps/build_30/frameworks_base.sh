@@ -89,11 +89,6 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/tools/platform-compat/java/android/proce
 rsync -a -r $GITHUB_WORKSPACE/downloads/tools/platform-compat/java/android/processor/compat/unsupportedappusage/unsupportedappusage-annotation-processor^linux_glibc_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/tools/platform-compat/java/android/compat/annotation/unsupportedappusage^android_common/ .
 
-echo "building platform-bootclasspath^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_30.ninja platform-bootclasspath,android_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/boot/platform-bootclasspath^android_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_30/frameworks/base/platform-bootclasspath^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/boot/platform-bootclasspath^android_common
-
 echo "building abx^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_30.ninja abx,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/cmds/abx/abx^android_common
@@ -188,6 +183,11 @@ echo "building overlayable_policy_aidl-java^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_30.ninja overlayable_policy_aidl-java,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/cmds/idmap2/overlayable_policy_aidl-java^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_30/frameworks/base/overlayable_policy_aidl-java^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/cmds/idmap2/overlayable_policy_aidl-java^android_common
+
+echo "building platform-bootclasspath^android_common"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_30.ninja platform-bootclasspath,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/boot/platform-bootclasspath^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_30/frameworks/base/platform-bootclasspath^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/boot/platform-bootclasspath^android_common
 
 echo "building requestsync^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_30.ninja requestsync,android_common

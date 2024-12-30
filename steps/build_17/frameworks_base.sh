@@ -241,15 +241,15 @@ prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/st
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/cmds/bootanimation/bootanimation^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_17/frameworks/base/bootanimation^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/cmds/bootanimation/bootanimation^android_x86_64
 
-echo "building framework-graphics.stubs.source.module_lib^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_17.ninja framework-graphics.stubs.source.module_lib,android_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/libs/hwui/framework-graphics.stubs.source.module_lib^android_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_17/frameworks/base/framework-graphics.stubs.source.module_lib^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/libs/hwui/framework-graphics.stubs.source.module_lib^android_common
-
 echo "building framework-graphics.stubs.module_lib^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_17.ninja framework-graphics.stubs.module_lib,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/libs/hwui/framework-graphics.stubs.module_lib^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_17/frameworks/base/framework-graphics.stubs.module_lib^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/libs/hwui/framework-graphics.stubs.module_lib^android_common
+
+echo "building framework-graphics.stubs.source.module_lib^android_common"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_17.ninja framework-graphics.stubs.source.module_lib,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/libs/hwui/framework-graphics.stubs.source.module_lib^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_17/frameworks/base/framework-graphics.stubs.source.module_lib^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/libs/hwui/framework-graphics.stubs.source.module_lib^android_common
 
 echo "building framework-graphics.stubs.source.system^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_17.ninja framework-graphics.stubs.source.system,android_common

@@ -117,15 +117,15 @@ prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/st
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/apex/appsearch/framework/framework-appsearch.impl^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_19/frameworks/base/framework-appsearch.impl^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/apex/appsearch/framework/framework-appsearch.impl^android_common
 
-echo "building framework-appsearch.stubs.source.module_lib^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_19.ninja framework-appsearch.stubs.source.module_lib,android_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/apex/appsearch/framework/framework-appsearch.stubs.source.module_lib^android_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_19/frameworks/base/framework-appsearch.stubs.source.module_lib^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/apex/appsearch/framework/framework-appsearch.stubs.source.module_lib^android_common
-
 echo "building framework-appsearch.stubs.module_lib^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_19.ninja framework-appsearch.stubs.module_lib,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/apex/appsearch/framework/framework-appsearch.stubs.module_lib^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_19/frameworks/base/framework-appsearch.stubs.module_lib^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/apex/appsearch/framework/framework-appsearch.stubs.module_lib^android_common
+
+echo "building framework-appsearch.stubs.source.module_lib^android_common"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_19.ninja framework-appsearch.stubs.source.module_lib,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/apex/appsearch/framework/framework-appsearch.stubs.source.module_lib^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_19/frameworks/base/framework-appsearch.stubs.source.module_lib^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/apex/appsearch/framework/framework-appsearch.stubs.source.module_lib^android_common
 
 echo "building framework-appsearch.stubs.source.system^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_19.ninja framework-appsearch.stubs.source.system,android_common
@@ -157,15 +157,15 @@ prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/st
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/framework-internal-utils^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_19/frameworks/base/framework-internal-utils^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/framework-internal-utils^android_common
 
-echo "building framework-media.stubs.source.module_lib^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_19.ninja framework-media.stubs.source.module_lib,android_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/apex/media/framework/framework-media.stubs.source.module_lib^android_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_19/frameworks/base/framework-media.stubs.source.module_lib^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/apex/media/framework/framework-media.stubs.source.module_lib^android_common
-
 echo "building framework-media.stubs.module_lib^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_19.ninja framework-media.stubs.module_lib,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/apex/media/framework/framework-media.stubs.module_lib^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_19/frameworks/base/framework-media.stubs.module_lib^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/apex/media/framework/framework-media.stubs.module_lib^android_common
+
+echo "building framework-media.stubs.source.module_lib^android_common"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_19.ninja framework-media.stubs.source.module_lib,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/apex/media/framework/framework-media.stubs.source.module_lib^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_19/frameworks/base/framework-media.stubs.source.module_lib^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/apex/media/framework/framework-media.stubs.source.module_lib^android_common
 
 echo "building framework-media.stubs.source.system^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_19.ninja framework-media.stubs.source.system,android_common

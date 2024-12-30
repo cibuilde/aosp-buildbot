@@ -89,6 +89,7 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/libcore/mmodules/core_platform_api/stabl
 rsync -a -r $GITHUB_WORKSPACE/downloads/libcore/mmodules/core_platform_api/stable.core.platform.api.stubs^android_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/r8/d8^linux_glibc_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/r8/d8^linux_glibc_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/libhidl/transport/base/1.0/android.hidl.base-V1.0-java^android_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/libhidl/transport/safe_union/1.0/android.hidl.safe_union-V1.0-java^android_common/ .
 
 echo "building android.hardware.audio.common-V2.0-java^android_common"
@@ -256,15 +257,15 @@ prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/st
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/secure_element/1.2/android.hardware.secure_element-V1.2-java^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_31/hardware/interfaces/android.hardware.secure_element-V1.2-java^android_common.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/secure_element/1.2/android.hardware.secure_element-V1.2-java^android_common
 
-echo "building android.hardware.security.secureclock-V1-java^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_31.ninja android.hardware.security.secureclock-V1-java,android_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/security/secureclock/aidl/android.hardware.security.secureclock-V1-java^android_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_31/hardware/interfaces/android.hardware.security.secureclock-V1-java^android_common.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/security/secureclock/aidl/android.hardware.security.secureclock-V1-java^android_common
-
 echo "building android.hardware.security.keymint-V1-java^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_31.ninja android.hardware.security.keymint-V1-java,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/security/keymint/aidl/android.hardware.security.keymint-V1-java^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_31/hardware/interfaces/android.hardware.security.keymint-V1-java^android_common.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/security/keymint/aidl/android.hardware.security.keymint-V1-java^android_common
+
+echo "building android.hardware.security.secureclock-V1-java^android_common"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_31.ninja android.hardware.security.secureclock-V1-java,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/security/secureclock/aidl/android.hardware.security.secureclock-V1-java^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_31/hardware/interfaces/android.hardware.security.secureclock-V1-java^android_common.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/security/secureclock/aidl/android.hardware.security.secureclock-V1-java^android_common
 
 echo "building android.hardware.soundtrigger-V2.0-java^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_31.ninja android.hardware.soundtrigger-V2.0-java,android_common

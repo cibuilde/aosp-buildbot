@@ -56,25 +56,25 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/rust/libtest^android_x86_64_rl
 rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/rust/libunicode_width.rust_sysroot^android_x86_64_rlib_apex10000/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/rust/libunwind.rust_sysroot^android_x86_64_rlib_apex10000/ .
 
-echo "building libbit_field_derive^linux_glibc_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libbit_field_derive,linux_glibc_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/crosvm/bit_field/bit_field_derive/libbit_field_derive^linux_glibc_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/external/crosvm/libbit_field_derive^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/crosvm/bit_field/bit_field_derive/libbit_field_derive^linux_glibc_x86_64
-
 echo "building libbit_field^android_x86_64_rlib_rlib-std_apex10000"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libbit_field,android_x86_64_rlib_rlib-std_apex10000
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/crosvm/bit_field/libbit_field^android_x86_64_rlib_rlib-std_apex10000
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/external/crosvm/libbit_field^android_x86_64_rlib_rlib-std_apex10000.output . $GITHUB_WORKSPACE/artifacts/external/crosvm/bit_field/libbit_field^android_x86_64_rlib_rlib-std_apex10000
 
-echo "building libcdisk_spec_proto^android_x86_64_source_apex10000"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libcdisk_spec_proto,android_x86_64_source_apex10000
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/crosvm/protos/libcdisk_spec_proto^android_x86_64_source_apex10000
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/external/crosvm/libcdisk_spec_proto^android_x86_64_source_apex10000.output . $GITHUB_WORKSPACE/artifacts/external/crosvm/protos/libcdisk_spec_proto^android_x86_64_source_apex10000
+echo "building libbit_field_derive^linux_glibc_x86_64"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libbit_field_derive,linux_glibc_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/crosvm/bit_field/bit_field_derive/libbit_field_derive^linux_glibc_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/external/crosvm/libbit_field_derive^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/crosvm/bit_field/bit_field_derive/libbit_field_derive^linux_glibc_x86_64
 
 echo "building libcdisk_spec_proto^android_x86_64_rlib_rlib-std_apex10000"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libcdisk_spec_proto,android_x86_64_rlib_rlib-std_apex10000
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/crosvm/protos/libcdisk_spec_proto^android_x86_64_rlib_rlib-std_apex10000
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/external/crosvm/libcdisk_spec_proto^android_x86_64_rlib_rlib-std_apex10000.output . $GITHUB_WORKSPACE/artifacts/external/crosvm/protos/libcdisk_spec_proto^android_x86_64_rlib_rlib-std_apex10000
+
+echo "building libcdisk_spec_proto^android_x86_64_source_apex10000"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libcdisk_spec_proto,android_x86_64_source_apex10000
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/crosvm/protos/libcdisk_spec_proto^android_x86_64_source_apex10000
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/external/crosvm/libcdisk_spec_proto^android_x86_64_source_apex10000.output . $GITHUB_WORKSPACE/artifacts/external/crosvm/protos/libcdisk_spec_proto^android_x86_64_source_apex10000
 
 echo "building libenumn^linux_glibc_x86_64"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libenumn,linux_glibc_x86_64

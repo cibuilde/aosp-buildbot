@@ -30,6 +30,11 @@ clone_depth_platform system/media
 rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/cmd/sbox/sbox^linux_glibc_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcxx/libc++^linux_glibc_x86_64_shared/ .
 
+echo "building _makenames^linux_glibc_x86_64"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja _makenames,linux_glibc_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/libcap/_makenames^linux_glibc_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/external/libcap/_makenames^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/libcap/_makenames^linux_glibc_x86_64
+
 echo "building cap_names.h^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja cap_names.h,
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/libcap/cap_names.h^
@@ -39,11 +44,6 @@ echo "building cap_names.list.h^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja cap_names.list.h,
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/libcap/cap_names.list.h^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/external/libcap/cap_names.list.h^.output . $GITHUB_WORKSPACE/artifacts/external/libcap/cap_names.list.h^
-
-echo "building _makenames^linux_glibc_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja _makenames,linux_glibc_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/libcap/_makenames^linux_glibc_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/external/libcap/_makenames^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/libcap/_makenames^linux_glibc_x86_64
 
 echo "building libcap^android_recovery_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libcap,android_recovery_x86_64_static

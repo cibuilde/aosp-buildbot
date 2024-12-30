@@ -44,20 +44,21 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/external/zlib/libz^linux_glibc_x86_64_sh
 rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/Gki/libkver/libkver^linux_glibc_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/libbase/libbase^linux_glibc_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/libvintf/libassemblevintf^linux_glibc_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/libvintf/libvintf^linux_glibc_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/libvintf/libvintf^linux_glibc_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^linux_glibc_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/tools/hidl/utils/libhidl-gen-utils^linux_glibc_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/test/vts-testcase/hal/treble/vintf/libvts_vintf_test_common/libvts_vintf_test_common^linux_glibc_x86_64_static/ .
 
-echo "building libvintf^linux_glibc_x86_64_shared"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libvintf,linux_glibc_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/libvintf/libvintf^linux_glibc_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/system/libvintf/libvintf^linux_glibc_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/libvintf/libvintf^linux_glibc_x86_64_shared
-
 echo "building assemble_vintf^linux_glibc_x86_64"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja assemble_vintf,linux_glibc_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/libvintf/assemble_vintf^linux_glibc_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/system/libvintf/assemble_vintf^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/libvintf/assemble_vintf^linux_glibc_x86_64
+
+echo "building libvintf^linux_glibc_x86_64_shared"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libvintf,linux_glibc_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/libvintf/libvintf^linux_glibc_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/system/libvintf/libvintf^linux_glibc_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/libvintf/libvintf^linux_glibc_x86_64_shared
 
 rm -rf out
 

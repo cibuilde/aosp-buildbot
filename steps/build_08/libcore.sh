@@ -84,11 +84,6 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/system/libbase/libbase^android_x86_x86_6
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^android_x86_64_shared_current/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^android_x86_x86_64_shared_current/ .
 
-echo "building art.module.intra.core.api.stubs^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja art.module.intra.core.api.stubs,android_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/libcore/mmodules/intracoreapi/art.module.intra.core.api.stubs^android_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/libcore/art.module.intra.core.api.stubs^android_common.output . $GITHUB_WORKSPACE/artifacts/libcore/mmodules/intracoreapi/art.module.intra.core.api.stubs^android_common
-
 echo "building art-module-intra-core-api-stubs-bootstrap-system-modules^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja art-module-intra-core-api-stubs-bootstrap-system-modules,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/libcore/mmodules/intracoreapi/art-module-intra-core-api-stubs-bootstrap-system-modules^android_common
@@ -103,6 +98,11 @@ echo "building art-module-intra-core-api-stubs-system-modules^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja art-module-intra-core-api-stubs-system-modules,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/libcore/mmodules/intracoreapi/art-module-intra-core-api-stubs-system-modules^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/libcore/art-module-intra-core-api-stubs-system-modules^android_common.output . $GITHUB_WORKSPACE/artifacts/libcore/mmodules/intracoreapi/art-module-intra-core-api-stubs-system-modules^android_common
+
+echo "building art.module.intra.core.api.stubs^android_common"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja art.module.intra.core.api.stubs,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/libcore/mmodules/intracoreapi/art.module.intra.core.api.stubs^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/libcore/art.module.intra.core.api.stubs^android_common.output . $GITHUB_WORKSPACE/artifacts/libcore/mmodules/intracoreapi/art.module.intra.core.api.stubs^android_common
 
 echo "building java.current.stubs^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja java.current.stubs,android_common

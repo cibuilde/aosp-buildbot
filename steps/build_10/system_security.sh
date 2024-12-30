@@ -197,30 +197,30 @@ prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/st
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.remoteprovisioning-rust^android_x86_64_rlib_rlib-std
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/system/security/android.security.remoteprovisioning-rust^android_x86_64_rlib_rlib-std.output . $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.remoteprovisioning-rust^android_x86_64_rlib_rlib-std
 
-echo "building libcredstore_aidl^android_x86_64_shared"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja libcredstore_aidl,android_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/security/identity/libcredstore_aidl^android_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/system/security/libcredstore_aidl^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/security/identity/libcredstore_aidl^android_x86_64_shared
-
 echo "building credstore^android_x86_64"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja credstore,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/security/identity/credstore^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/system/security/credstore^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/security/identity/credstore^android_x86_64
+
+echo "building libcredstore_aidl^android_x86_64_shared"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja libcredstore_aidl,android_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/security/identity/libcredstore_aidl^android_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/system/security/libcredstore_aidl^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/security/identity/libcredstore_aidl^android_x86_64_shared
 
 echo "building libkeystore-wifi-hidl^android_vendor.31_x86_64_shared"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja libkeystore-wifi-hidl,android_vendor.31_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/security/keystore/libkeystore-wifi-hidl^android_vendor.31_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/system/security/libkeystore-wifi-hidl^android_vendor.31_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/security/keystore/libkeystore-wifi-hidl^android_vendor.31_x86_64_shared
 
-echo "building libkeystore2_apc_compat^android_x86_64_shared"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja libkeystore2_apc_compat,android_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/security/keystore2/apc_compat/libkeystore2_apc_compat^android_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/system/security/libkeystore2_apc_compat^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/security/keystore2/apc_compat/libkeystore2_apc_compat^android_x86_64_shared
-
 echo "building libkeystore2_apc_compat-rust^android_x86_64_rlib_rlib-std"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja libkeystore2_apc_compat-rust,android_x86_64_rlib_rlib-std
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/security/keystore2/apc_compat/libkeystore2_apc_compat-rust^android_x86_64_rlib_rlib-std
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/system/security/libkeystore2_apc_compat-rust^android_x86_64_rlib_rlib-std.output . $GITHUB_WORKSPACE/artifacts/system/security/keystore2/apc_compat/libkeystore2_apc_compat-rust^android_x86_64_rlib_rlib-std
+
+echo "building libkeystore2_apc_compat^android_x86_64_shared"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja libkeystore2_apc_compat,android_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/security/keystore2/apc_compat/libkeystore2_apc_compat^android_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/system/security/libkeystore2_apc_compat^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/security/keystore2/apc_compat/libkeystore2_apc_compat^android_x86_64_shared
 
 rm -rf out
 

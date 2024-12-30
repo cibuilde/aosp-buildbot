@@ -42,25 +42,25 @@ prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/st
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/pcre/libpcre2^android_recovery_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/pcre/libpcre2^android_recovery_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/external/pcre/libpcre2^android_recovery_x86_64_shared
 
-echo "building libpcre2^android_vendor.31_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libpcre2,android_vendor.31_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/pcre/libpcre2^android_vendor.31_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/pcre/libpcre2^android_vendor.31_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/pcre/libpcre2^android_vendor.31_x86_64_static
-
 echo "building libpcre2^android_vendor.31_x86_64_shared"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libpcre2,android_vendor.31_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/pcre/libpcre2^android_vendor.31_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/pcre/libpcre2^android_vendor.31_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/external/pcre/libpcre2^android_vendor.31_x86_64_shared
 
-echo "building libpcre2^android_vendor.31_x86_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libpcre2,android_vendor.31_x86_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/pcre/libpcre2^android_vendor.31_x86_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/pcre/libpcre2^android_vendor.31_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/pcre/libpcre2^android_vendor.31_x86_x86_64_static
+echo "building libpcre2^android_vendor.31_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libpcre2,android_vendor.31_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/pcre/libpcre2^android_vendor.31_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/pcre/libpcre2^android_vendor.31_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/pcre/libpcre2^android_vendor.31_x86_64_static
 
 echo "building libpcre2^android_vendor.31_x86_x86_64_shared"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libpcre2,android_vendor.31_x86_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/pcre/libpcre2^android_vendor.31_x86_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/pcre/libpcre2^android_vendor.31_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/external/pcre/libpcre2^android_vendor.31_x86_x86_64_shared
+
+echo "building libpcre2^android_vendor.31_x86_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libpcre2,android_vendor.31_x86_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/pcre/libpcre2^android_vendor.31_x86_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/pcre/libpcre2^android_vendor.31_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/pcre/libpcre2^android_vendor.31_x86_x86_64_static
 
 echo "building libpcre2^android_x86_64_shared"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libpcre2,android_x86_64_shared

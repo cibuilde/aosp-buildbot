@@ -70,15 +70,15 @@ prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/st
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/Permission/framework-s/framework-permission-s-shared^android_common_apex30
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_19/packages/modules/Permission/framework-permission-s-shared^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/packages/modules/Permission/framework-s/framework-permission-s-shared^android_common_apex30
 
-echo "building framework-permission-s.stubs.source.module_lib^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_19.ninja framework-permission-s.stubs.source.module_lib,android_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/Permission/framework-s/framework-permission-s.stubs.source.module_lib^android_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_19/packages/modules/Permission/framework-permission-s.stubs.source.module_lib^android_common.output . $GITHUB_WORKSPACE/artifacts/packages/modules/Permission/framework-s/framework-permission-s.stubs.source.module_lib^android_common
-
 echo "building framework-permission-s.stubs.module_lib^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_19.ninja framework-permission-s.stubs.module_lib,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/Permission/framework-s/framework-permission-s.stubs.module_lib^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_19/packages/modules/Permission/framework-permission-s.stubs.module_lib^android_common.output . $GITHUB_WORKSPACE/artifacts/packages/modules/Permission/framework-s/framework-permission-s.stubs.module_lib^android_common
+
+echo "building framework-permission-s.stubs.source.module_lib^android_common"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_19.ninja framework-permission-s.stubs.source.module_lib,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/Permission/framework-s/framework-permission-s.stubs.source.module_lib^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_19/packages/modules/Permission/framework-permission-s.stubs.source.module_lib^android_common.output . $GITHUB_WORKSPACE/artifacts/packages/modules/Permission/framework-s/framework-permission-s.stubs.source.module_lib^android_common
 
 echo "building framework-permission-s.stubs.source.system^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_19.ninja framework-permission-s.stubs.source.system,android_common

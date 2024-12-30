@@ -18,15 +18,15 @@ clone_project platform/prebuilts/build-tools prebuilts/build-tools android12-gsi
 
 rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/cmd/sbox/sbox^linux_glibc_x86_64/ .
 
-echo "building microdroid_uboot_env_gen_x86_64^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja microdroid_uboot_env_gen_x86_64,
-mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/Virtualization/microdroid/microdroid_uboot_env_gen_x86_64^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/packages/modules/Virtualization/microdroid_uboot_env_gen_x86_64^.output . $GITHUB_WORKSPACE/artifacts/packages/modules/Virtualization/microdroid/microdroid_uboot_env_gen_x86_64^
-
 echo "building microdroid_uboot_env^android_x86_64"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja microdroid_uboot_env,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/Virtualization/microdroid/microdroid_uboot_env^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/packages/modules/Virtualization/microdroid_uboot_env^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/packages/modules/Virtualization/microdroid/microdroid_uboot_env^android_x86_64
+
+echo "building microdroid_uboot_env_gen_x86_64^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja microdroid_uboot_env_gen_x86_64,
+mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/Virtualization/microdroid/microdroid_uboot_env_gen_x86_64^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/packages/modules/Virtualization/microdroid_uboot_env_gen_x86_64^.output . $GITHUB_WORKSPACE/artifacts/packages/modules/Virtualization/microdroid/microdroid_uboot_env_gen_x86_64^
 
 rm -rf out
 

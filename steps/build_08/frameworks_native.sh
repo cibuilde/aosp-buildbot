@@ -223,70 +223,40 @@ prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/st
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/native/cmds/dumpsys/dumpsys_vendor^android_vendor.31_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/frameworks/native/dumpsys_vendor^android_vendor.31_x86_64.output . $GITHUB_WORKSPACE/artifacts/frameworks/native/cmds/dumpsys/dumpsys_vendor^android_vendor.31_x86_64
 
+echo "building framework-permission-aidl-cpp^android_x86_64_shared"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja framework-permission-aidl-cpp,android_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/permission/framework-permission-aidl-cpp^android_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/frameworks/native/framework-permission-aidl-cpp^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/permission/framework-permission-aidl-cpp^android_x86_64_shared
+
 echo "building framework-permission-aidl-cpp^android_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja framework-permission-aidl-cpp,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/permission/framework-permission-aidl-cpp^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/frameworks/native/framework-permission-aidl-cpp^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/permission/framework-permission-aidl-cpp^android_x86_64_static
 
-echo "building framework-permission-aidl-cpp^android_x86_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja framework-permission-aidl-cpp,android_x86_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/permission/framework-permission-aidl-cpp^android_x86_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/frameworks/native/framework-permission-aidl-cpp^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/permission/framework-permission-aidl-cpp^android_x86_x86_64_static
-
-echo "building libactivitymanager_aidl^android_x86_64_shared"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libactivitymanager_aidl,android_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/binder/libactivitymanager_aidl^android_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/frameworks/native/libactivitymanager_aidl^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/binder/libactivitymanager_aidl^android_x86_64_shared
-
-echo "building libactivitymanager_aidl^android_x86_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libactivitymanager_aidl,android_x86_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/binder/libactivitymanager_aidl^android_x86_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/frameworks/native/libactivitymanager_aidl^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/binder/libactivitymanager_aidl^android_x86_x86_64_static
-
-echo "building libandroid_runtime_lazy^android_x86_64_shared"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libandroid_runtime_lazy,android_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/android_runtime_lazy/libandroid_runtime_lazy^android_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/frameworks/native/libandroid_runtime_lazy^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/android_runtime_lazy/libandroid_runtime_lazy^android_x86_64_shared
-
-echo "building libaudiomanager^android_x86_64_shared"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libaudiomanager,android_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/native/services/audiomanager/libaudiomanager^android_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/frameworks/native/libaudiomanager^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/native/services/audiomanager/libaudiomanager^android_x86_64_shared
-
-echo "building libbinder^android_x86_x86_64_shared"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libbinder,android_x86_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/binder/libbinder^android_x86_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/frameworks/native/libbinder^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/binder/libbinder^android_x86_x86_64_shared
+echo "building framework-permission-aidl-cpp^android_x86_64_static_cfi"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja framework-permission-aidl-cpp,android_x86_64_static_cfi
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/permission/framework-permission-aidl-cpp^android_x86_64_static_cfi
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/frameworks/native/framework-permission-aidl-cpp^android_x86_64_static_cfi.output . $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/permission/framework-permission-aidl-cpp^android_x86_64_static_cfi
 
 echo "building framework-permission-aidl-cpp^android_x86_x86_64_shared"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja framework-permission-aidl-cpp,android_x86_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/permission/framework-permission-aidl-cpp^android_x86_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/frameworks/native/framework-permission-aidl-cpp^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/permission/framework-permission-aidl-cpp^android_x86_x86_64_shared
 
+echo "building framework-permission-aidl-cpp^android_x86_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja framework-permission-aidl-cpp,android_x86_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/permission/framework-permission-aidl-cpp^android_x86_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/frameworks/native/framework-permission-aidl-cpp^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/permission/framework-permission-aidl-cpp^android_x86_x86_64_static
+
 echo "building framework-permission-aidl-cpp^android_x86_x86_64_static_cfi"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja framework-permission-aidl-cpp,android_x86_x86_64_static_cfi
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/permission/framework-permission-aidl-cpp^android_x86_x86_64_static_cfi
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/frameworks/native/framework-permission-aidl-cpp^android_x86_x86_64_static_cfi.output . $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/permission/framework-permission-aidl-cpp^android_x86_x86_64_static_cfi
 
-echo "building libaudiomanager^android_x86_x86_64_shared"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libaudiomanager,android_x86_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/native/services/audiomanager/libaudiomanager^android_x86_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/frameworks/native/libaudiomanager^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/native/services/audiomanager/libaudiomanager^android_x86_x86_64_shared
-
-echo "building libbinder^android_x86_64_shared"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libbinder,android_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/binder/libbinder^android_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/frameworks/native/libbinder^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/binder/libbinder^android_x86_64_shared
-
-echo "building framework-permission-aidl-cpp^android_x86_64_shared"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja framework-permission-aidl-cpp,android_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/permission/framework-permission-aidl-cpp^android_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/frameworks/native/framework-permission-aidl-cpp^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/permission/framework-permission-aidl-cpp^android_x86_64_shared
-
-echo "building framework-permission-aidl-cpp^android_x86_64_static_cfi"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja framework-permission-aidl-cpp,android_x86_64_static_cfi
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/permission/framework-permission-aidl-cpp^android_x86_64_static_cfi
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/frameworks/native/framework-permission-aidl-cpp^android_x86_64_static_cfi.output . $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/permission/framework-permission-aidl-cpp^android_x86_64_static_cfi
+echo "building libactivitymanager_aidl^android_x86_64_shared"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libactivitymanager_aidl,android_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/binder/libactivitymanager_aidl^android_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/frameworks/native/libactivitymanager_aidl^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/binder/libactivitymanager_aidl^android_x86_64_shared
 
 echo "building libactivitymanager_aidl^android_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libactivitymanager_aidl,android_x86_64_static
@@ -298,30 +268,50 @@ prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/st
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/binder/libactivitymanager_aidl^android_x86_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/frameworks/native/libactivitymanager_aidl^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/binder/libactivitymanager_aidl^android_x86_x86_64_shared
 
+echo "building libactivitymanager_aidl^android_x86_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libactivitymanager_aidl,android_x86_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/binder/libactivitymanager_aidl^android_x86_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/frameworks/native/libactivitymanager_aidl^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/binder/libactivitymanager_aidl^android_x86_x86_64_static
+
+echo "building libandroid_runtime_lazy^android_x86_64_shared"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libandroid_runtime_lazy,android_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/android_runtime_lazy/libandroid_runtime_lazy^android_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/frameworks/native/libandroid_runtime_lazy^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/android_runtime_lazy/libandroid_runtime_lazy^android_x86_64_shared
+
 echo "building libandroid_runtime_lazy^android_x86_x86_64_shared"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libandroid_runtime_lazy,android_x86_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/android_runtime_lazy/libandroid_runtime_lazy^android_x86_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/frameworks/native/libandroid_runtime_lazy^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/android_runtime_lazy/libandroid_runtime_lazy^android_x86_x86_64_shared
 
-echo "building libbatterystats_aidl^android_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libbatterystats_aidl,android_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/binder/libbatterystats_aidl^android_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/frameworks/native/libbatterystats_aidl^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/binder/libbatterystats_aidl^android_x86_64_static
+echo "building libaudiomanager^android_x86_64_shared"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libaudiomanager,android_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/native/services/audiomanager/libaudiomanager^android_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/frameworks/native/libaudiomanager^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/native/services/audiomanager/libaudiomanager^android_x86_64_shared
+
+echo "building libaudiomanager^android_x86_x86_64_shared"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libaudiomanager,android_x86_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/native/services/audiomanager/libaudiomanager^android_x86_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/frameworks/native/libaudiomanager^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/native/services/audiomanager/libaudiomanager^android_x86_x86_64_shared
 
 echo "building libbatterystats_aidl^android_x86_64_shared"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libbatterystats_aidl,android_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/binder/libbatterystats_aidl^android_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/frameworks/native/libbatterystats_aidl^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/binder/libbatterystats_aidl^android_x86_64_shared
 
-echo "building libbatterystats_aidl^android_x86_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libbatterystats_aidl,android_x86_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/binder/libbatterystats_aidl^android_x86_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/frameworks/native/libbatterystats_aidl^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/binder/libbatterystats_aidl^android_x86_x86_64_static
+echo "building libbatterystats_aidl^android_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libbatterystats_aidl,android_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/binder/libbatterystats_aidl^android_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/frameworks/native/libbatterystats_aidl^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/binder/libbatterystats_aidl^android_x86_64_static
 
 echo "building libbatterystats_aidl^android_x86_x86_64_shared"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libbatterystats_aidl,android_x86_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/binder/libbatterystats_aidl^android_x86_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/frameworks/native/libbatterystats_aidl^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/binder/libbatterystats_aidl^android_x86_x86_64_shared
+
+echo "building libbatterystats_aidl^android_x86_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libbatterystats_aidl,android_x86_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/binder/libbatterystats_aidl^android_x86_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/frameworks/native/libbatterystats_aidl^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/binder/libbatterystats_aidl^android_x86_x86_64_static
 
 echo "building libbinder^android_vendor.31_x86_64_shared"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libbinder,android_vendor.31_x86_64_shared
@@ -332,6 +322,16 @@ echo "building libbinder^android_vendor.31_x86_x86_64_shared"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libbinder,android_vendor.31_x86_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/binder/libbinder^android_vendor.31_x86_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/frameworks/native/libbinder^android_vendor.31_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/binder/libbinder^android_vendor.31_x86_x86_64_shared
+
+echo "building libbinder^android_x86_64_shared"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libbinder,android_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/binder/libbinder^android_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/frameworks/native/libbinder^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/binder/libbinder^android_x86_64_shared
+
+echo "building libbinder^android_x86_x86_64_shared"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libbinder,android_x86_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/binder/libbinder^android_x86_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/frameworks/native/libbinder^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/binder/libbinder^android_x86_x86_64_shared
 
 echo "building libbinder_ndk^android_x86_64_shared"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libbinder_ndk,android_x86_64_shared
@@ -383,25 +383,25 @@ prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/st
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/binder/rust/libbinder_rs^android_x86_64_rlib_rlib-std_apex10000
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/frameworks/native/libbinder_rs^android_x86_64_rlib_rlib-std_apex10000.output . $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/binder/rust/libbinder_rs^android_x86_64_rlib_rlib-std_apex10000
 
-echo "building libbinderdebug^android_vendor.31_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libbinderdebug,android_vendor.31_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/binderdebug/libbinderdebug^android_vendor.31_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/frameworks/native/libbinderdebug^android_vendor.31_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/binderdebug/libbinderdebug^android_vendor.31_x86_64_static
-
 echo "building libbinderdebug^android_vendor.31_x86_64_shared"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libbinderdebug,android_vendor.31_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/binderdebug/libbinderdebug^android_vendor.31_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/frameworks/native/libbinderdebug^android_vendor.31_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/binderdebug/libbinderdebug^android_vendor.31_x86_64_shared
 
-echo "building libbinderdebug^android_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libbinderdebug,android_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/binderdebug/libbinderdebug^android_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/frameworks/native/libbinderdebug^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/binderdebug/libbinderdebug^android_x86_64_static
+echo "building libbinderdebug^android_vendor.31_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libbinderdebug,android_vendor.31_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/binderdebug/libbinderdebug^android_vendor.31_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/frameworks/native/libbinderdebug^android_vendor.31_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/binderdebug/libbinderdebug^android_vendor.31_x86_64_static
 
 echo "building libbinderdebug^android_x86_64_shared"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libbinderdebug,android_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/binderdebug/libbinderdebug^android_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/frameworks/native/libbinderdebug^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/binderdebug/libbinderdebug^android_x86_64_shared
+
+echo "building libbinderdebug^android_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libbinderdebug,android_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/binderdebug/libbinderdebug^android_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/frameworks/native/libbinderdebug^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/binderdebug/libbinderdebug^android_x86_64_static
 
 echo "building libcmd^android_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libcmd,android_x86_64_static
@@ -508,6 +508,11 @@ prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/st
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/vr/libpdx/libpdx^android_x86_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/frameworks/native/libpdx^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/vr/libpdx/libpdx^android_x86_x86_64_static
 
+echo "building libpdx_default_transport^android_x86_64_shared"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libpdx_default_transport,android_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/vr/libpdx_default_transport/libpdx_default_transport^android_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/frameworks/native/libpdx_default_transport^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/vr/libpdx_default_transport/libpdx_default_transport^android_x86_64_shared
+
 echo "building libpdx_default_transport^android_x86_x86_64_shared"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libpdx_default_transport,android_x86_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/vr/libpdx_default_transport/libpdx_default_transport^android_x86_x86_64_shared
@@ -518,35 +523,30 @@ prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/st
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/vr/libpdx_uds/libpdx_uds^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/frameworks/native/libpdx_uds^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/vr/libpdx_uds/libpdx_uds^android_x86_64_static
 
-echo "building libpdx_default_transport^android_x86_64_shared"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libpdx_default_transport,android_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/vr/libpdx_default_transport/libpdx_default_transport^android_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/frameworks/native/libpdx_default_transport^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/vr/libpdx_default_transport/libpdx_default_transport^android_x86_64_shared
-
 echo "building libpdx_uds^android_x86_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libpdx_uds,android_x86_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/vr/libpdx_uds/libpdx_uds^android_x86_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/frameworks/native/libpdx_uds^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/vr/libpdx_uds/libpdx_uds^android_x86_x86_64_static
-
-echo "building libpermission^android_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libpermission,android_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/permission/libpermission^android_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/frameworks/native/libpermission^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/permission/libpermission^android_x86_64_static
 
 echo "building libpermission^android_x86_64_shared"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libpermission,android_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/permission/libpermission^android_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/frameworks/native/libpermission^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/permission/libpermission^android_x86_64_shared
 
-echo "building libpermission^android_x86_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libpermission,android_x86_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/permission/libpermission^android_x86_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/frameworks/native/libpermission^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/permission/libpermission^android_x86_x86_64_static
+echo "building libpermission^android_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libpermission,android_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/permission/libpermission^android_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/frameworks/native/libpermission^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/permission/libpermission^android_x86_64_static
 
 echo "building libpermission^android_x86_x86_64_shared"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libpermission,android_x86_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/permission/libpermission^android_x86_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/frameworks/native/libpermission^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/permission/libpermission^android_x86_x86_64_shared
+
+echo "building libpermission^android_x86_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libpermission,android_x86_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/permission/libpermission^android_x86_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/frameworks/native/libpermission^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/permission/libpermission^android_x86_x86_64_static
 
 echo "building libprocessinfoservice_aidl^android_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libprocessinfoservice_aidl,android_x86_64_static
@@ -558,45 +558,45 @@ prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/st
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/binder/libprocessinfoservice_aidl^android_x86_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/frameworks/native/libprocessinfoservice_aidl^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/binder/libprocessinfoservice_aidl^android_x86_x86_64_static
 
-echo "building libvibrator^android_vendor.31_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libvibrator,android_vendor.31_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/vibrator/libvibrator^android_vendor.31_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/frameworks/native/libvibrator^android_vendor.31_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/vibrator/libvibrator^android_vendor.31_x86_64_static
-
 echo "building libvibrator^android_vendor.31_x86_64_shared"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libvibrator,android_vendor.31_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/vibrator/libvibrator^android_vendor.31_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/frameworks/native/libvibrator^android_vendor.31_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/vibrator/libvibrator^android_vendor.31_x86_64_shared
 
-echo "building libvibrator^android_vendor.31_x86_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libvibrator,android_vendor.31_x86_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/vibrator/libvibrator^android_vendor.31_x86_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/frameworks/native/libvibrator^android_vendor.31_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/vibrator/libvibrator^android_vendor.31_x86_x86_64_static
+echo "building libvibrator^android_vendor.31_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libvibrator,android_vendor.31_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/vibrator/libvibrator^android_vendor.31_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/frameworks/native/libvibrator^android_vendor.31_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/vibrator/libvibrator^android_vendor.31_x86_64_static
 
 echo "building libvibrator^android_vendor.31_x86_x86_64_shared"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libvibrator,android_vendor.31_x86_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/vibrator/libvibrator^android_vendor.31_x86_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/frameworks/native/libvibrator^android_vendor.31_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/vibrator/libvibrator^android_vendor.31_x86_x86_64_shared
 
-echo "building libvibrator^android_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libvibrator,android_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/vibrator/libvibrator^android_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/frameworks/native/libvibrator^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/vibrator/libvibrator^android_x86_64_static
+echo "building libvibrator^android_vendor.31_x86_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libvibrator,android_vendor.31_x86_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/vibrator/libvibrator^android_vendor.31_x86_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/frameworks/native/libvibrator^android_vendor.31_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/vibrator/libvibrator^android_vendor.31_x86_x86_64_static
 
 echo "building libvibrator^android_x86_64_shared"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libvibrator,android_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/vibrator/libvibrator^android_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/frameworks/native/libvibrator^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/vibrator/libvibrator^android_x86_64_shared
 
-echo "building libvibrator^android_x86_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libvibrator,android_x86_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/vibrator/libvibrator^android_x86_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/frameworks/native/libvibrator^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/vibrator/libvibrator^android_x86_x86_64_static
+echo "building libvibrator^android_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libvibrator,android_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/vibrator/libvibrator^android_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/frameworks/native/libvibrator^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/vibrator/libvibrator^android_x86_64_static
 
 echo "building libvibrator^android_x86_x86_64_shared"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libvibrator,android_x86_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/vibrator/libvibrator^android_x86_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/frameworks/native/libvibrator^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/vibrator/libvibrator^android_x86_x86_64_shared
+
+echo "building libvibrator^android_x86_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libvibrator,android_x86_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/vibrator/libvibrator^android_x86_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/frameworks/native/libvibrator^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/vibrator/libvibrator^android_x86_x86_64_static
 
 echo "building service^android_x86_64"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja service,android_x86_64

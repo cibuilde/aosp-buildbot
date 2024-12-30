@@ -35,6 +35,21 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/external/perfetto/perfetto_src_protozero
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/perfetto/protozero_plugin^linux_glibc_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/protobuf/aprotoc^linux_glibc_x86_64/ .
 
+echo "building libperfetto_client_experimental^android_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libperfetto_client_experimental,android_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/perfetto/libperfetto_client_experimental^android_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/perfetto/libperfetto_client_experimental^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/perfetto/libperfetto_client_experimental^android_x86_64_static
+
+echo "building libperfetto_client_experimental^android_x86_64_static_apex31"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libperfetto_client_experimental,android_x86_64_static_apex31
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/perfetto/libperfetto_client_experimental^android_x86_64_static_apex31
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/perfetto/libperfetto_client_experimental^android_x86_64_static_apex31.output . $GITHUB_WORKSPACE/artifacts/external/perfetto/libperfetto_client_experimental^android_x86_64_static_apex31
+
+echo "building libperfetto_client_experimental^android_x86_x86_64_static_apex31"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libperfetto_client_experimental,android_x86_x86_64_static_apex31
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/perfetto/libperfetto_client_experimental^android_x86_x86_64_static_apex31
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/perfetto/libperfetto_client_experimental^android_x86_x86_64_static_apex31.output . $GITHUB_WORKSPACE/artifacts/external/perfetto/libperfetto_client_experimental^android_x86_x86_64_static_apex31
+
 echo "building perfetto_protos_perfetto_common_cpp_gen^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja perfetto_protos_perfetto_common_cpp_gen,
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/perfetto/perfetto_protos_perfetto_common_cpp_gen^
@@ -550,21 +565,6 @@ prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/st
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/perfetto/perfetto_protos_perfetto_trace_interned_data_zero_gen_headers^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/perfetto/perfetto_protos_perfetto_trace_interned_data_zero_gen_headers^.output . $GITHUB_WORKSPACE/artifacts/external/perfetto/perfetto_protos_perfetto_trace_interned_data_zero_gen_headers^
 
-echo "building perfetto_protos_perfetto_trace_non_minimal_lite_gen_headers^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja perfetto_protos_perfetto_trace_non_minimal_lite_gen_headers,
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/perfetto/perfetto_protos_perfetto_trace_non_minimal_lite_gen_headers^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/perfetto/perfetto_protos_perfetto_trace_non_minimal_lite_gen_headers^.output . $GITHUB_WORKSPACE/artifacts/external/perfetto/perfetto_protos_perfetto_trace_non_minimal_lite_gen_headers^
-
-echo "building perfetto_protos_perfetto_trace_perfetto_zero_gen_headers^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja perfetto_protos_perfetto_trace_perfetto_zero_gen_headers,
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/perfetto/perfetto_protos_perfetto_trace_perfetto_zero_gen_headers^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/perfetto/perfetto_protos_perfetto_trace_perfetto_zero_gen_headers^.output . $GITHUB_WORKSPACE/artifacts/external/perfetto/perfetto_protos_perfetto_trace_perfetto_zero_gen_headers^
-
-echo "building libperfetto_client_experimental^android_x86_64_static_apex31"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libperfetto_client_experimental,android_x86_64_static_apex31
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/perfetto/libperfetto_client_experimental^android_x86_64_static_apex31
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/perfetto/libperfetto_client_experimental^android_x86_64_static_apex31.output . $GITHUB_WORKSPACE/artifacts/external/perfetto/libperfetto_client_experimental^android_x86_64_static_apex31
-
 echo "building perfetto_protos_perfetto_trace_minimal_lite_gen^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja perfetto_protos_perfetto_trace_minimal_lite_gen,
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/perfetto/perfetto_protos_perfetto_trace_minimal_lite_gen^
@@ -590,6 +590,11 @@ prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/st
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/perfetto/perfetto_protos_perfetto_trace_non_minimal_lite_gen^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/perfetto/perfetto_protos_perfetto_trace_non_minimal_lite_gen^.output . $GITHUB_WORKSPACE/artifacts/external/perfetto/perfetto_protos_perfetto_trace_non_minimal_lite_gen^
 
+echo "building perfetto_protos_perfetto_trace_non_minimal_lite_gen_headers^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja perfetto_protos_perfetto_trace_non_minimal_lite_gen_headers,
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/perfetto/perfetto_protos_perfetto_trace_non_minimal_lite_gen_headers^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/perfetto/perfetto_protos_perfetto_trace_non_minimal_lite_gen_headers^.output . $GITHUB_WORKSPACE/artifacts/external/perfetto/perfetto_protos_perfetto_trace_non_minimal_lite_gen_headers^
+
 echo "building perfetto_protos_perfetto_trace_non_minimal_zero_gen^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja perfetto_protos_perfetto_trace_non_minimal_zero_gen,
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/perfetto/perfetto_protos_perfetto_trace_non_minimal_zero_gen^
@@ -614,6 +619,11 @@ echo "building perfetto_protos_perfetto_trace_perfetto_zero_gen^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja perfetto_protos_perfetto_trace_perfetto_zero_gen,
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/perfetto/perfetto_protos_perfetto_trace_perfetto_zero_gen^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/perfetto/perfetto_protos_perfetto_trace_perfetto_zero_gen^.output . $GITHUB_WORKSPACE/artifacts/external/perfetto/perfetto_protos_perfetto_trace_perfetto_zero_gen^
+
+echo "building perfetto_protos_perfetto_trace_perfetto_zero_gen_headers^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja perfetto_protos_perfetto_trace_perfetto_zero_gen_headers,
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/perfetto/perfetto_protos_perfetto_trace_perfetto_zero_gen_headers^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/perfetto/perfetto_protos_perfetto_trace_perfetto_zero_gen_headers^.output . $GITHUB_WORKSPACE/artifacts/external/perfetto/perfetto_protos_perfetto_trace_perfetto_zero_gen_headers^
 
 echo "building perfetto_protos_perfetto_trace_power_lite_gen^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja perfetto_protos_perfetto_trace_power_lite_gen,
@@ -675,6 +685,16 @@ prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/st
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/perfetto/perfetto_protos_perfetto_trace_ps_zero_gen_headers^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/perfetto/perfetto_protos_perfetto_trace_ps_zero_gen_headers^.output . $GITHUB_WORKSPACE/artifacts/external/perfetto/perfetto_protos_perfetto_trace_ps_zero_gen_headers^
 
+echo "building perfetto_protos_perfetto_trace_sys_stats_lite_gen^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja perfetto_protos_perfetto_trace_sys_stats_lite_gen,
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/perfetto/perfetto_protos_perfetto_trace_sys_stats_lite_gen^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/perfetto/perfetto_protos_perfetto_trace_sys_stats_lite_gen^.output . $GITHUB_WORKSPACE/artifacts/external/perfetto/perfetto_protos_perfetto_trace_sys_stats_lite_gen^
+
+echo "building perfetto_protos_perfetto_trace_sys_stats_lite_gen_headers^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja perfetto_protos_perfetto_trace_sys_stats_lite_gen_headers,
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/perfetto/perfetto_protos_perfetto_trace_sys_stats_lite_gen_headers^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/perfetto/perfetto_protos_perfetto_trace_sys_stats_lite_gen_headers^.output . $GITHUB_WORKSPACE/artifacts/external/perfetto/perfetto_protos_perfetto_trace_sys_stats_lite_gen_headers^
+
 echo "building perfetto_protos_perfetto_trace_sys_stats_zero_gen^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja perfetto_protos_perfetto_trace_sys_stats_zero_gen,
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/perfetto/perfetto_protos_perfetto_trace_sys_stats_zero_gen^
@@ -684,6 +704,16 @@ echo "building perfetto_protos_perfetto_trace_sys_stats_zero_gen_headers^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja perfetto_protos_perfetto_trace_sys_stats_zero_gen_headers,
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/perfetto/perfetto_protos_perfetto_trace_sys_stats_zero_gen_headers^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/perfetto/perfetto_protos_perfetto_trace_sys_stats_zero_gen_headers^.output . $GITHUB_WORKSPACE/artifacts/external/perfetto/perfetto_protos_perfetto_trace_sys_stats_zero_gen_headers^
+
+echo "building perfetto_protos_perfetto_trace_system_info_lite_gen^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja perfetto_protos_perfetto_trace_system_info_lite_gen,
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/perfetto/perfetto_protos_perfetto_trace_system_info_lite_gen^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/perfetto/perfetto_protos_perfetto_trace_system_info_lite_gen^.output . $GITHUB_WORKSPACE/artifacts/external/perfetto/perfetto_protos_perfetto_trace_system_info_lite_gen^
+
+echo "building perfetto_protos_perfetto_trace_system_info_lite_gen_headers^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja perfetto_protos_perfetto_trace_system_info_lite_gen_headers,
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/perfetto/perfetto_protos_perfetto_trace_system_info_lite_gen_headers^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/perfetto/perfetto_protos_perfetto_trace_system_info_lite_gen_headers^.output . $GITHUB_WORKSPACE/artifacts/external/perfetto/perfetto_protos_perfetto_trace_system_info_lite_gen_headers^
 
 echo "building perfetto_protos_perfetto_trace_system_info_zero_gen^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja perfetto_protos_perfetto_trace_system_info_zero_gen,
@@ -705,46 +735,6 @@ prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/st
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/perfetto/perfetto_protos_perfetto_trace_track_event_cpp_gen_headers^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/perfetto/perfetto_protos_perfetto_trace_track_event_cpp_gen_headers^.output . $GITHUB_WORKSPACE/artifacts/external/perfetto/perfetto_protos_perfetto_trace_track_event_cpp_gen_headers^
 
-echo "building perfetto_protos_perfetto_trace_track_event_zero_gen^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja perfetto_protos_perfetto_trace_track_event_zero_gen,
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/perfetto/perfetto_protos_perfetto_trace_track_event_zero_gen^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/perfetto/perfetto_protos_perfetto_trace_track_event_zero_gen^.output . $GITHUB_WORKSPACE/artifacts/external/perfetto/perfetto_protos_perfetto_trace_track_event_zero_gen^
-
-echo "building perfetto_protos_perfetto_trace_track_event_zero_gen_headers^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja perfetto_protos_perfetto_trace_track_event_zero_gen_headers,
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/perfetto/perfetto_protos_perfetto_trace_track_event_zero_gen_headers^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/perfetto/perfetto_protos_perfetto_trace_track_event_zero_gen_headers^.output . $GITHUB_WORKSPACE/artifacts/external/perfetto/perfetto_protos_perfetto_trace_track_event_zero_gen_headers^
-
-echo "building libperfetto_client_experimental^android_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libperfetto_client_experimental,android_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/perfetto/libperfetto_client_experimental^android_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/perfetto/libperfetto_client_experimental^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/perfetto/libperfetto_client_experimental^android_x86_64_static
-
-echo "building libperfetto_client_experimental^android_x86_x86_64_static_apex31"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libperfetto_client_experimental,android_x86_x86_64_static_apex31
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/perfetto/libperfetto_client_experimental^android_x86_x86_64_static_apex31
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/perfetto/libperfetto_client_experimental^android_x86_x86_64_static_apex31.output . $GITHUB_WORKSPACE/artifacts/external/perfetto/libperfetto_client_experimental^android_x86_x86_64_static_apex31
-
-echo "building perfetto_protos_perfetto_trace_sys_stats_lite_gen^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja perfetto_protos_perfetto_trace_sys_stats_lite_gen,
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/perfetto/perfetto_protos_perfetto_trace_sys_stats_lite_gen^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/perfetto/perfetto_protos_perfetto_trace_sys_stats_lite_gen^.output . $GITHUB_WORKSPACE/artifacts/external/perfetto/perfetto_protos_perfetto_trace_sys_stats_lite_gen^
-
-echo "building perfetto_protos_perfetto_trace_sys_stats_lite_gen_headers^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja perfetto_protos_perfetto_trace_sys_stats_lite_gen_headers,
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/perfetto/perfetto_protos_perfetto_trace_sys_stats_lite_gen_headers^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/perfetto/perfetto_protos_perfetto_trace_sys_stats_lite_gen_headers^.output . $GITHUB_WORKSPACE/artifacts/external/perfetto/perfetto_protos_perfetto_trace_sys_stats_lite_gen_headers^
-
-echo "building perfetto_protos_perfetto_trace_system_info_lite_gen^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja perfetto_protos_perfetto_trace_system_info_lite_gen,
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/perfetto/perfetto_protos_perfetto_trace_system_info_lite_gen^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/perfetto/perfetto_protos_perfetto_trace_system_info_lite_gen^.output . $GITHUB_WORKSPACE/artifacts/external/perfetto/perfetto_protos_perfetto_trace_system_info_lite_gen^
-
-echo "building perfetto_protos_perfetto_trace_system_info_lite_gen_headers^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja perfetto_protos_perfetto_trace_system_info_lite_gen_headers,
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/perfetto/perfetto_protos_perfetto_trace_system_info_lite_gen_headers^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/perfetto/perfetto_protos_perfetto_trace_system_info_lite_gen_headers^.output . $GITHUB_WORKSPACE/artifacts/external/perfetto/perfetto_protos_perfetto_trace_system_info_lite_gen_headers^
-
 echo "building perfetto_protos_perfetto_trace_track_event_lite_gen^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja perfetto_protos_perfetto_trace_track_event_lite_gen,
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/perfetto/perfetto_protos_perfetto_trace_track_event_lite_gen^
@@ -754,6 +744,16 @@ echo "building perfetto_protos_perfetto_trace_track_event_lite_gen_headers^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja perfetto_protos_perfetto_trace_track_event_lite_gen_headers,
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/perfetto/perfetto_protos_perfetto_trace_track_event_lite_gen_headers^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/perfetto/perfetto_protos_perfetto_trace_track_event_lite_gen_headers^.output . $GITHUB_WORKSPACE/artifacts/external/perfetto/perfetto_protos_perfetto_trace_track_event_lite_gen_headers^
+
+echo "building perfetto_protos_perfetto_trace_track_event_zero_gen^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja perfetto_protos_perfetto_trace_track_event_zero_gen,
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/perfetto/perfetto_protos_perfetto_trace_track_event_zero_gen^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/perfetto/perfetto_protos_perfetto_trace_track_event_zero_gen^.output . $GITHUB_WORKSPACE/artifacts/external/perfetto/perfetto_protos_perfetto_trace_track_event_zero_gen^
+
+echo "building perfetto_protos_perfetto_trace_track_event_zero_gen_headers^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja perfetto_protos_perfetto_trace_track_event_zero_gen_headers,
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/perfetto/perfetto_protos_perfetto_trace_track_event_zero_gen_headers^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/perfetto/perfetto_protos_perfetto_trace_track_event_zero_gen_headers^.output . $GITHUB_WORKSPACE/artifacts/external/perfetto/perfetto_protos_perfetto_trace_track_event_zero_gen_headers^
 
 echo "building perfetto_src_perfetto_cmd_gen_cc_config_descriptor^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja perfetto_src_perfetto_cmd_gen_cc_config_descriptor,

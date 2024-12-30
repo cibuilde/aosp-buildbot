@@ -75,95 +75,15 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/tools/common/m2/guava-listenab
 rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/tools/common/m2/kotlinx-coroutines-android^android_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/tools/common/m2/kotlinx-coroutines-android^android_common_apex30/ .
 
-echo "building androidx.annotation_annotation-experimental^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.annotation_annotation-experimental,android_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.annotation_annotation-experimental^android_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.annotation_annotation-experimental^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.annotation_annotation-experimental^android_common
-
-echo "building androidx.activity_activity-nodeps^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.activity_activity-nodeps,android_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.activity_activity-nodeps^android_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.activity_activity-nodeps^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.activity_activity-nodeps^android_common
-
-echo "building androidx.annotation_annotation-experimental^android_common_apex30"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.annotation_annotation-experimental,android_common_apex30
-mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.annotation_annotation-experimental^android_common_apex30
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.annotation_annotation-experimental^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.annotation_annotation-experimental^android_common_apex30
-
-echo "building androidx.appcompat_appcompat-resources-nodeps^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.appcompat_appcompat-resources-nodeps,android_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.appcompat_appcompat-resources-nodeps^android_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.appcompat_appcompat-resources-nodeps^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.appcompat_appcompat-resources-nodeps^android_common
-
-echo "building androidx.arch.core_core-runtime^android_common_apex30"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.arch.core_core-runtime,android_common_apex30
-mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.arch.core_core-runtime^android_common_apex30
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.arch.core_core-runtime^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.arch.core_core-runtime^android_common_apex30
-
-echo "building androidx.core_core^android_common_apex30"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.core_core,android_common_apex30
-mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.core_core^android_common_apex30
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.core_core^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.core_core^android_common_apex30
-
-echo "building androidx.activity_activity-nodeps^android_common_apex30"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.activity_activity-nodeps,android_common_apex30
-mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.activity_activity-nodeps^android_common_apex30
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.activity_activity-nodeps^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.activity_activity-nodeps^android_common_apex30
-
-echo "building androidx.appcompat_appcompat-resources^android_common_apex30"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.appcompat_appcompat-resources,android_common_apex30
-mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.appcompat_appcompat-resources^android_common_apex30
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.appcompat_appcompat-resources^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.appcompat_appcompat-resources^android_common_apex30
+echo "building androidx-constraintlayout_constraintlayout-nodeps^android_common"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx-constraintlayout_constraintlayout-nodeps,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/extras/constraint-layout-x/androidx-constraintlayout_constraintlayout-nodeps^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx-constraintlayout_constraintlayout-nodeps^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/extras/constraint-layout-x/androidx-constraintlayout_constraintlayout-nodeps^android_common
 
 echo "building androidx-constraintlayout_constraintlayout-nodeps^android_common_apex30"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx-constraintlayout_constraintlayout-nodeps,android_common_apex30
 mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/extras/constraint-layout-x/androidx-constraintlayout_constraintlayout-nodeps^android_common_apex30
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx-constraintlayout_constraintlayout-nodeps^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/extras/constraint-layout-x/androidx-constraintlayout_constraintlayout-nodeps^android_common_apex30
-
-echo "building androidx.arch.core_core-runtime^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.arch.core_core-runtime,android_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.arch.core_core-runtime^android_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.arch.core_core-runtime^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.arch.core_core-runtime^android_common
-
-echo "building androidx.appcompat_appcompat-resources^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.appcompat_appcompat-resources,android_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.appcompat_appcompat-resources^android_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.appcompat_appcompat-resources^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.appcompat_appcompat-resources^android_common
-
-echo "building androidx.asynclayoutinflater_asynclayoutinflater-nodeps^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.asynclayoutinflater_asynclayoutinflater-nodeps,android_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.asynclayoutinflater_asynclayoutinflater-nodeps^android_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.asynclayoutinflater_asynclayoutinflater-nodeps^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.asynclayoutinflater_asynclayoutinflater-nodeps^android_common
-
-echo "building androidx.asynclayoutinflater_asynclayoutinflater^android_common_apex30"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.asynclayoutinflater_asynclayoutinflater,android_common_apex30
-mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.asynclayoutinflater_asynclayoutinflater^android_common_apex30
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.asynclayoutinflater_asynclayoutinflater^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.asynclayoutinflater_asynclayoutinflater^android_common_apex30
-
-echo "building androidx.autofill_autofill-nodeps^android_common_apex30"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.autofill_autofill-nodeps,android_common_apex30
-mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.autofill_autofill-nodeps^android_common_apex30
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.autofill_autofill-nodeps^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.autofill_autofill-nodeps^android_common_apex30
-
-echo "building androidx.coordinatorlayout_coordinatorlayout-nodeps^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.coordinatorlayout_coordinatorlayout-nodeps,android_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.coordinatorlayout_coordinatorlayout-nodeps^android_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.coordinatorlayout_coordinatorlayout-nodeps^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.coordinatorlayout_coordinatorlayout-nodeps^android_common
-
-echo "building androidx.coordinatorlayout_coordinatorlayout-nodeps^android_common_apex30"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.coordinatorlayout_coordinatorlayout-nodeps,android_common_apex30
-mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.coordinatorlayout_coordinatorlayout-nodeps^android_common_apex30
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.coordinatorlayout_coordinatorlayout-nodeps^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.coordinatorlayout_coordinatorlayout-nodeps^android_common_apex30
-
-echo "building androidx.core_core-ktx-nodeps^android_common_apex30"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.core_core-ktx-nodeps,android_common_apex30
-mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.core_core-ktx-nodeps^android_common_apex30
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.core_core-ktx-nodeps^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.core_core-ktx-nodeps^android_common_apex30
-
-echo "building androidx.core_core-ktx^android_common_apex30"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.core_core-ktx,android_common_apex30
-mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.core_core-ktx^android_common_apex30
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.core_core-ktx^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.core_core-ktx^android_common_apex30
 
 echo "building androidx.activity_activity-ktx-nodeps^android_common_apex30"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.activity_activity-ktx-nodeps,android_common_apex30
@@ -175,55 +95,215 @@ prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/st
 mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.activity_activity-ktx^android_common_apex30
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.activity_activity-ktx^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.activity_activity-ktx^android_common_apex30
 
-echo "building androidx.cursoradapter_cursoradapter^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.cursoradapter_cursoradapter,android_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.cursoradapter_cursoradapter^android_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.cursoradapter_cursoradapter^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.cursoradapter_cursoradapter^android_common
+echo "building androidx.activity_activity-nodeps^android_common"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.activity_activity-nodeps,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.activity_activity-nodeps^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.activity_activity-nodeps^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.activity_activity-nodeps^android_common
 
-echo "building androidx.customview_customview-nodeps^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.customview_customview-nodeps,android_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.customview_customview-nodeps^android_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.customview_customview-nodeps^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.customview_customview-nodeps^android_common
+echo "building androidx.activity_activity-nodeps^android_common_apex30"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.activity_activity-nodeps,android_common_apex30
+mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.activity_activity-nodeps^android_common_apex30
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.activity_activity-nodeps^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.activity_activity-nodeps^android_common_apex30
 
-echo "building androidx.coordinatorlayout_coordinatorlayout^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.coordinatorlayout_coordinatorlayout,android_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.coordinatorlayout_coordinatorlayout^android_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.coordinatorlayout_coordinatorlayout^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.coordinatorlayout_coordinatorlayout^android_common
+echo "building androidx.activity_activity^android_common"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.activity_activity,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.activity_activity^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.activity_activity^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.activity_activity^android_common
 
-echo "building androidx.customview_customview-nodeps^android_common_apex30"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.customview_customview-nodeps,android_common_apex30
-mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.customview_customview-nodeps^android_common_apex30
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.customview_customview-nodeps^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.customview_customview-nodeps^android_common_apex30
+echo "building androidx.activity_activity^android_common_apex30"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.activity_activity,android_common_apex30
+mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.activity_activity^android_common_apex30
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.activity_activity^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.activity_activity^android_common_apex30
 
-echo "building androidx.customview_customview^android_common_apex30"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.customview_customview,android_common_apex30
-mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.customview_customview^android_common_apex30
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.customview_customview^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.customview_customview^android_common_apex30
+echo "building androidx.annotation_annotation-experimental^android_common"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.annotation_annotation-experimental,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.annotation_annotation-experimental^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.annotation_annotation-experimental^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.annotation_annotation-experimental^android_common
 
-echo "building androidx.drawerlayout_drawerlayout^android_common_apex30"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.drawerlayout_drawerlayout,android_common_apex30
-mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.drawerlayout_drawerlayout^android_common_apex30
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.drawerlayout_drawerlayout^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.drawerlayout_drawerlayout^android_common_apex30
+echo "building androidx.annotation_annotation-experimental^android_common_apex30"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.annotation_annotation-experimental,android_common_apex30
+mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.annotation_annotation-experimental^android_common_apex30
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.annotation_annotation-experimental^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.annotation_annotation-experimental^android_common_apex30
+
+echo "building androidx.appcompat_appcompat-nodeps^android_common"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.appcompat_appcompat-nodeps,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.appcompat_appcompat-nodeps^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.appcompat_appcompat-nodeps^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.appcompat_appcompat-nodeps^android_common
 
 echo "building androidx.appcompat_appcompat-nodeps^android_common_apex30"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.appcompat_appcompat-nodeps,android_common_apex30
 mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.appcompat_appcompat-nodeps^android_common_apex30
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.appcompat_appcompat-nodeps^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.appcompat_appcompat-nodeps^android_common_apex30
 
+echo "building androidx.appcompat_appcompat-resources-nodeps^android_common"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.appcompat_appcompat-resources-nodeps,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.appcompat_appcompat-resources-nodeps^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.appcompat_appcompat-resources-nodeps^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.appcompat_appcompat-resources-nodeps^android_common
+
+echo "building androidx.appcompat_appcompat-resources-nodeps^android_common_apex30"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.appcompat_appcompat-resources-nodeps,android_common_apex30
+mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.appcompat_appcompat-resources-nodeps^android_common_apex30
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.appcompat_appcompat-resources-nodeps^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.appcompat_appcompat-resources-nodeps^android_common_apex30
+
+echo "building androidx.appcompat_appcompat-resources^android_common"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.appcompat_appcompat-resources,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.appcompat_appcompat-resources^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.appcompat_appcompat-resources^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.appcompat_appcompat-resources^android_common
+
+echo "building androidx.appcompat_appcompat-resources^android_common_apex30"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.appcompat_appcompat-resources,android_common_apex30
+mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.appcompat_appcompat-resources^android_common_apex30
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.appcompat_appcompat-resources^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.appcompat_appcompat-resources^android_common_apex30
+
+echo "building androidx.appcompat_appcompat^android_common"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.appcompat_appcompat,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.appcompat_appcompat^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.appcompat_appcompat^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.appcompat_appcompat^android_common
+
 echo "building androidx.appcompat_appcompat^android_common_apex30"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.appcompat_appcompat,android_common_apex30
 mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.appcompat_appcompat^android_common_apex30
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.appcompat_appcompat^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.appcompat_appcompat^android_common_apex30
+
+echo "building androidx.arch.core_core-runtime^android_common"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.arch.core_core-runtime,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.arch.core_core-runtime^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.arch.core_core-runtime^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.arch.core_core-runtime^android_common
+
+echo "building androidx.arch.core_core-runtime^android_common_apex30"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.arch.core_core-runtime,android_common_apex30
+mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.arch.core_core-runtime^android_common_apex30
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.arch.core_core-runtime^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.arch.core_core-runtime^android_common_apex30
+
+echo "building androidx.asynclayoutinflater_asynclayoutinflater-nodeps^android_common"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.asynclayoutinflater_asynclayoutinflater-nodeps,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.asynclayoutinflater_asynclayoutinflater-nodeps^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.asynclayoutinflater_asynclayoutinflater-nodeps^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.asynclayoutinflater_asynclayoutinflater-nodeps^android_common
 
 echo "building androidx.asynclayoutinflater_asynclayoutinflater-nodeps^android_common_apex30"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.asynclayoutinflater_asynclayoutinflater-nodeps,android_common_apex30
 mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.asynclayoutinflater_asynclayoutinflater-nodeps^android_common_apex30
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.asynclayoutinflater_asynclayoutinflater-nodeps^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.asynclayoutinflater_asynclayoutinflater-nodeps^android_common_apex30
 
+echo "building androidx.asynclayoutinflater_asynclayoutinflater^android_common"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.asynclayoutinflater_asynclayoutinflater,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.asynclayoutinflater_asynclayoutinflater^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.asynclayoutinflater_asynclayoutinflater^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.asynclayoutinflater_asynclayoutinflater^android_common
+
+echo "building androidx.asynclayoutinflater_asynclayoutinflater^android_common_apex30"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.asynclayoutinflater_asynclayoutinflater,android_common_apex30
+mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.asynclayoutinflater_asynclayoutinflater^android_common_apex30
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.asynclayoutinflater_asynclayoutinflater^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.asynclayoutinflater_asynclayoutinflater^android_common_apex30
+
+echo "building androidx.autofill_autofill-nodeps^android_common_apex30"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.autofill_autofill-nodeps,android_common_apex30
+mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.autofill_autofill-nodeps^android_common_apex30
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.autofill_autofill-nodeps^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.autofill_autofill-nodeps^android_common_apex30
+
+echo "building androidx.autofill_autofill^android_common_apex30"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.autofill_autofill,android_common_apex30
+mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.autofill_autofill^android_common_apex30
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.autofill_autofill^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.autofill_autofill^android_common_apex30
+
+echo "building androidx.cardview_cardview-nodeps^android_common"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.cardview_cardview-nodeps,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.cardview_cardview-nodeps^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.cardview_cardview-nodeps^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.cardview_cardview-nodeps^android_common
+
+echo "building androidx.cardview_cardview-nodeps^android_common_apex30"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.cardview_cardview-nodeps,android_common_apex30
+mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.cardview_cardview-nodeps^android_common_apex30
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.cardview_cardview-nodeps^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.cardview_cardview-nodeps^android_common_apex30
+
 echo "building androidx.cardview_cardview^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.cardview_cardview,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.cardview_cardview^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.cardview_cardview^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.cardview_cardview^android_common
+
+echo "building androidx.cardview_cardview^android_common_apex30"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.cardview_cardview,android_common_apex30
+mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.cardview_cardview^android_common_apex30
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.cardview_cardview^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.cardview_cardview^android_common_apex30
+
+echo "building androidx.coordinatorlayout_coordinatorlayout-nodeps^android_common"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.coordinatorlayout_coordinatorlayout-nodeps,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.coordinatorlayout_coordinatorlayout-nodeps^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.coordinatorlayout_coordinatorlayout-nodeps^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.coordinatorlayout_coordinatorlayout-nodeps^android_common
+
+echo "building androidx.coordinatorlayout_coordinatorlayout-nodeps^android_common_apex30"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.coordinatorlayout_coordinatorlayout-nodeps,android_common_apex30
+mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.coordinatorlayout_coordinatorlayout-nodeps^android_common_apex30
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.coordinatorlayout_coordinatorlayout-nodeps^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.coordinatorlayout_coordinatorlayout-nodeps^android_common_apex30
+
+echo "building androidx.coordinatorlayout_coordinatorlayout^android_common"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.coordinatorlayout_coordinatorlayout,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.coordinatorlayout_coordinatorlayout^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.coordinatorlayout_coordinatorlayout^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.coordinatorlayout_coordinatorlayout^android_common
+
+echo "building androidx.coordinatorlayout_coordinatorlayout^android_common_apex30"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.coordinatorlayout_coordinatorlayout,android_common_apex30
+mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.coordinatorlayout_coordinatorlayout^android_common_apex30
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.coordinatorlayout_coordinatorlayout^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.coordinatorlayout_coordinatorlayout^android_common_apex30
+
+echo "building androidx.core_core-ktx-nodeps^android_common_apex30"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.core_core-ktx-nodeps,android_common_apex30
+mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.core_core-ktx-nodeps^android_common_apex30
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.core_core-ktx-nodeps^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.core_core-ktx-nodeps^android_common_apex30
+
+echo "building androidx.core_core-ktx^android_common_apex30"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.core_core-ktx,android_common_apex30
+mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.core_core-ktx^android_common_apex30
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.core_core-ktx^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.core_core-ktx^android_common_apex30
+
+echo "building androidx.core_core-nodeps^android_common"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.core_core-nodeps,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.core_core-nodeps^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.core_core-nodeps^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.core_core-nodeps^android_common
+
+echo "building androidx.core_core-nodeps^android_common_apex30"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.core_core-nodeps,android_common_apex30
+mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.core_core-nodeps^android_common_apex30
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.core_core-nodeps^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.core_core-nodeps^android_common_apex30
+
+echo "building androidx.core_core^android_common"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.core_core,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.core_core^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.core_core^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.core_core^android_common
+
+echo "building androidx.core_core^android_common_apex30"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.core_core,android_common_apex30
+mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.core_core^android_common_apex30
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.core_core^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.core_core^android_common_apex30
+
+echo "building androidx.cursoradapter_cursoradapter^android_common"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.cursoradapter_cursoradapter,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.cursoradapter_cursoradapter^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.cursoradapter_cursoradapter^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.cursoradapter_cursoradapter^android_common
+
+echo "building androidx.cursoradapter_cursoradapter^android_common_apex30"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.cursoradapter_cursoradapter,android_common_apex30
+mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.cursoradapter_cursoradapter^android_common_apex30
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.cursoradapter_cursoradapter^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.cursoradapter_cursoradapter^android_common_apex30
+
+echo "building androidx.customview_customview-nodeps^android_common"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.customview_customview-nodeps,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.customview_customview-nodeps^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.customview_customview-nodeps^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.customview_customview-nodeps^android_common
+
+echo "building androidx.customview_customview-nodeps^android_common_apex30"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.customview_customview-nodeps,android_common_apex30
+mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.customview_customview-nodeps^android_common_apex30
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.customview_customview-nodeps^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.customview_customview-nodeps^android_common_apex30
+
+echo "building androidx.customview_customview^android_common"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.customview_customview,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.customview_customview^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.customview_customview^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.customview_customview^android_common
+
+echo "building androidx.customview_customview^android_common_apex30"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.customview_customview,android_common_apex30
+mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.customview_customview^android_common_apex30
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.customview_customview^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.customview_customview^android_common_apex30
 
 echo "building androidx.documentfile_documentfile^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.documentfile_documentfile,android_common
@@ -235,10 +315,30 @@ prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/st
 mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.documentfile_documentfile^android_common_apex30
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.documentfile_documentfile^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.documentfile_documentfile^android_common_apex30
 
+echo "building androidx.drawerlayout_drawerlayout-nodeps^android_common"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.drawerlayout_drawerlayout-nodeps,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.drawerlayout_drawerlayout-nodeps^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.drawerlayout_drawerlayout-nodeps^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.drawerlayout_drawerlayout-nodeps^android_common
+
+echo "building androidx.drawerlayout_drawerlayout-nodeps^android_common_apex30"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.drawerlayout_drawerlayout-nodeps,android_common_apex30
+mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.drawerlayout_drawerlayout-nodeps^android_common_apex30
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.drawerlayout_drawerlayout-nodeps^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.drawerlayout_drawerlayout-nodeps^android_common_apex30
+
 echo "building androidx.drawerlayout_drawerlayout^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.drawerlayout_drawerlayout,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.drawerlayout_drawerlayout^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.drawerlayout_drawerlayout^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.drawerlayout_drawerlayout^android_common
+
+echo "building androidx.drawerlayout_drawerlayout^android_common_apex30"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.drawerlayout_drawerlayout,android_common_apex30
+mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.drawerlayout_drawerlayout^android_common_apex30
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.drawerlayout_drawerlayout^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.drawerlayout_drawerlayout^android_common_apex30
+
+echo "building androidx.dynamicanimation_dynamicanimation-nodeps^android_common"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.dynamicanimation_dynamicanimation-nodeps,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.dynamicanimation_dynamicanimation-nodeps^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.dynamicanimation_dynamicanimation-nodeps^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.dynamicanimation_dynamicanimation-nodeps^android_common
 
 echo "building androidx.dynamicanimation_dynamicanimation-nodeps^android_common_apex30"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.dynamicanimation_dynamicanimation-nodeps,android_common_apex30
@@ -260,41 +360,6 @@ prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/st
 mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.exifinterface_exifinterface^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.exifinterface_exifinterface^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.exifinterface_exifinterface^android_common
 
-echo "building androidx.lifecycle_lifecycle-runtime^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.lifecycle_lifecycle-runtime,android_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.lifecycle_lifecycle-runtime^android_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.lifecycle_lifecycle-runtime^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.lifecycle_lifecycle-runtime^android_common
-
-echo "building androidx.asynclayoutinflater_asynclayoutinflater^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.asynclayoutinflater_asynclayoutinflater,android_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.asynclayoutinflater_asynclayoutinflater^android_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.asynclayoutinflater_asynclayoutinflater^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.asynclayoutinflater_asynclayoutinflater^android_common
-
-echo "building androidx.core_core-nodeps^android_common_apex30"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.core_core-nodeps,android_common_apex30
-mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.core_core-nodeps^android_common_apex30
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.core_core-nodeps^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.core_core-nodeps^android_common_apex30
-
-echo "building androidx.autofill_autofill^android_common_apex30"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.autofill_autofill,android_common_apex30
-mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.autofill_autofill^android_common_apex30
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.autofill_autofill^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.autofill_autofill^android_common_apex30
-
-echo "building androidx.coordinatorlayout_coordinatorlayout^android_common_apex30"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.coordinatorlayout_coordinatorlayout,android_common_apex30
-mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.coordinatorlayout_coordinatorlayout^android_common_apex30
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.coordinatorlayout_coordinatorlayout^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.coordinatorlayout_coordinatorlayout^android_common_apex30
-
-echo "building androidx.customview_customview^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.customview_customview,android_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.customview_customview^android_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.customview_customview^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.customview_customview^android_common
-
-echo "building androidx.drawerlayout_drawerlayout-nodeps^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.drawerlayout_drawerlayout-nodeps,android_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.drawerlayout_drawerlayout-nodeps^android_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.drawerlayout_drawerlayout-nodeps^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.drawerlayout_drawerlayout-nodeps^android_common
-
 echo "building androidx.fragment_fragment-ktx-nodeps^android_common_apex30"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.fragment_fragment-ktx-nodeps,android_common_apex30
 mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.fragment_fragment-ktx-nodeps^android_common_apex30
@@ -305,35 +370,25 @@ prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/st
 mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.fragment_fragment-ktx^android_common_apex30
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.fragment_fragment-ktx^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.fragment_fragment-ktx^android_common_apex30
 
-echo "building androidx.lifecycle_lifecycle-runtime-nodeps^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.lifecycle_lifecycle-runtime-nodeps,android_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.lifecycle_lifecycle-runtime-nodeps^android_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.lifecycle_lifecycle-runtime-nodeps^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.lifecycle_lifecycle-runtime-nodeps^android_common
-
-echo "building androidx.core_core-nodeps^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.core_core-nodeps,android_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.core_core-nodeps^android_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.core_core-nodeps^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.core_core-nodeps^android_common
-
-echo "building androidx.core_core^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.core_core,android_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.core_core^android_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.core_core^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.core_core^android_common
-
-echo "building androidx.loader_loader^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.loader_loader,android_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.loader_loader^android_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.loader_loader^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.loader_loader^android_common
-
 echo "building androidx.fragment_fragment-nodeps^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.fragment_fragment-nodeps,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.fragment_fragment-nodeps^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.fragment_fragment-nodeps^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.fragment_fragment-nodeps^android_common
 
+echo "building androidx.fragment_fragment-nodeps^android_common_apex30"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.fragment_fragment-nodeps,android_common_apex30
+mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.fragment_fragment-nodeps^android_common_apex30
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.fragment_fragment-nodeps^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.fragment_fragment-nodeps^android_common_apex30
+
 echo "building androidx.fragment_fragment^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.fragment_fragment,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.fragment_fragment^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.fragment_fragment^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.fragment_fragment^android_common
+
+echo "building androidx.fragment_fragment^android_common_apex30"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.fragment_fragment,android_common_apex30
+mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.fragment_fragment^android_common_apex30
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.fragment_fragment^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.fragment_fragment^android_common_apex30
 
 echo "building androidx.gridlayout_gridlayout-nodeps^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.gridlayout_gridlayout-nodeps,android_common
@@ -355,125 +410,30 @@ prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/st
 mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.interpolator_interpolator^android_common_apex30
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.interpolator_interpolator^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.interpolator_interpolator^android_common_apex30
 
-echo "building androidx.lifecycle_lifecycle-livedata-core^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.lifecycle_lifecycle-livedata-core,android_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.lifecycle_lifecycle-livedata-core^android_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.lifecycle_lifecycle-livedata-core^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.lifecycle_lifecycle-livedata-core^android_common
-
-echo "building androidx.lifecycle_lifecycle-viewmodel^android_common_apex30"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.lifecycle_lifecycle-viewmodel,android_common_apex30
-mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.lifecycle_lifecycle-viewmodel^android_common_apex30
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.lifecycle_lifecycle-viewmodel^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.lifecycle_lifecycle-viewmodel^android_common_apex30
-
-echo "building androidx.loader_loader-nodeps^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.loader_loader-nodeps,android_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.loader_loader-nodeps^android_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.loader_loader-nodeps^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.loader_loader-nodeps^android_common
-
-echo "building androidx.appcompat_appcompat-nodeps^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.appcompat_appcompat-nodeps,android_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.appcompat_appcompat-nodeps^android_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.appcompat_appcompat-nodeps^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.appcompat_appcompat-nodeps^android_common
-
-echo "building androidx-constraintlayout_constraintlayout-nodeps^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx-constraintlayout_constraintlayout-nodeps,android_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/extras/constraint-layout-x/androidx-constraintlayout_constraintlayout-nodeps^android_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx-constraintlayout_constraintlayout-nodeps^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/extras/constraint-layout-x/androidx-constraintlayout_constraintlayout-nodeps^android_common
-
-echo "building androidx.media_media-nodeps^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.media_media-nodeps,android_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.media_media-nodeps^android_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.media_media-nodeps^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.media_media-nodeps^android_common
-
-echo "building androidx.recyclerview_recyclerview^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.recyclerview_recyclerview,android_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.recyclerview_recyclerview^android_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.recyclerview_recyclerview^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.recyclerview_recyclerview^android_common
-
 echo "building androidx.leanback_leanback-nodeps^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.leanback_leanback-nodeps,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.leanback_leanback-nodeps^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.leanback_leanback-nodeps^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.leanback_leanback-nodeps^android_common
-
-echo "building androidx.legacy_legacy-support-core-utils^android_common_apex30"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.legacy_legacy-support-core-utils,android_common_apex30
-mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.legacy_legacy-support-core-utils^android_common_apex30
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.legacy_legacy-support-core-utils^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.legacy_legacy-support-core-utils^android_common_apex30
-
-echo "building androidx.recyclerview_recyclerview-selection-nodeps^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.recyclerview_recyclerview-selection-nodeps,android_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.recyclerview_recyclerview-selection-nodeps^android_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.recyclerview_recyclerview-selection-nodeps^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.recyclerview_recyclerview-selection-nodeps^android_common
-
-echo "building androidx.recyclerview_recyclerview-selection^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.recyclerview_recyclerview-selection,android_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.recyclerview_recyclerview-selection^android_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.recyclerview_recyclerview-selection^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.recyclerview_recyclerview-selection^android_common
-
-echo "building androidx.slice_slice-view-nodeps^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.slice_slice-view-nodeps,android_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.slice_slice-view-nodeps^android_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.slice_slice-view-nodeps^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.slice_slice-view-nodeps^android_common
-
-echo "building androidx.vectordrawable_vectordrawable^android_common_apex30"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.vectordrawable_vectordrawable,android_common_apex30
-mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.vectordrawable_vectordrawable^android_common_apex30
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.vectordrawable_vectordrawable^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.vectordrawable_vectordrawable^android_common_apex30
-
-echo "building androidx.vectordrawable_vectordrawable-animated-nodeps^android_common_apex30"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.vectordrawable_vectordrawable-animated-nodeps,android_common_apex30
-mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.vectordrawable_vectordrawable-animated-nodeps^android_common_apex30
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.vectordrawable_vectordrawable-animated-nodeps^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.vectordrawable_vectordrawable-animated-nodeps^android_common_apex30
-
-echo "building androidx.appcompat_appcompat-resources-nodeps^android_common_apex30"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.appcompat_appcompat-resources-nodeps,android_common_apex30
-mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.appcompat_appcompat-resources-nodeps^android_common_apex30
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.appcompat_appcompat-resources-nodeps^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.appcompat_appcompat-resources-nodeps^android_common_apex30
-
-echo "building androidx.cardview_cardview-nodeps^android_common_apex30"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.cardview_cardview-nodeps,android_common_apex30
-mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.cardview_cardview-nodeps^android_common_apex30
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.cardview_cardview-nodeps^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.cardview_cardview-nodeps^android_common_apex30
-
-echo "building androidx.cardview_cardview^android_common_apex30"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.cardview_cardview,android_common_apex30
-mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.cardview_cardview^android_common_apex30
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.cardview_cardview^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.cardview_cardview^android_common_apex30
-
-echo "building androidx.cursoradapter_cursoradapter^android_common_apex30"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.cursoradapter_cursoradapter,android_common_apex30
-mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.cursoradapter_cursoradapter^android_common_apex30
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.cursoradapter_cursoradapter^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.cursoradapter_cursoradapter^android_common_apex30
-
-echo "building androidx.drawerlayout_drawerlayout-nodeps^android_common_apex30"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.drawerlayout_drawerlayout-nodeps,android_common_apex30
-mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.drawerlayout_drawerlayout-nodeps^android_common_apex30
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.drawerlayout_drawerlayout-nodeps^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.drawerlayout_drawerlayout-nodeps^android_common_apex30
-
-echo "building androidx.dynamicanimation_dynamicanimation-nodeps^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.dynamicanimation_dynamicanimation-nodeps,android_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.dynamicanimation_dynamicanimation-nodeps^android_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.dynamicanimation_dynamicanimation-nodeps^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.dynamicanimation_dynamicanimation-nodeps^android_common
-
-echo "building androidx.viewpager_viewpager-nodeps^android_common_apex30"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.viewpager_viewpager-nodeps,android_common_apex30
-mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.viewpager_viewpager-nodeps^android_common_apex30
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.viewpager_viewpager-nodeps^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.viewpager_viewpager-nodeps^android_common_apex30
-
-echo "building androidx.fragment_fragment-nodeps^android_common_apex30"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.fragment_fragment-nodeps,android_common_apex30
-mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.fragment_fragment-nodeps^android_common_apex30
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.fragment_fragment-nodeps^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.fragment_fragment-nodeps^android_common_apex30
 
 echo "building androidx.leanback_leanback-nodeps^android_common_apex30"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.leanback_leanback-nodeps,android_common_apex30
 mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.leanback_leanback-nodeps^android_common_apex30
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.leanback_leanback-nodeps^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.leanback_leanback-nodeps^android_common_apex30
 
+echo "building androidx.leanback_leanback-preference-nodeps^android_common"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.leanback_leanback-preference-nodeps,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.leanback_leanback-preference-nodeps^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.leanback_leanback-preference-nodeps^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.leanback_leanback-preference-nodeps^android_common
+
 echo "building androidx.leanback_leanback-preference-nodeps^android_common_apex30"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.leanback_leanback-preference-nodeps,android_common_apex30
 mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.leanback_leanback-preference-nodeps^android_common_apex30
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.leanback_leanback-preference-nodeps^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.leanback_leanback-preference-nodeps^android_common_apex30
+
+echo "building androidx.leanback_leanback-preference^android_common"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.leanback_leanback-preference,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.leanback_leanback-preference^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.leanback_leanback-preference^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.leanback_leanback-preference^android_common
 
 echo "building androidx.leanback_leanback-preference^android_common_apex30"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.leanback_leanback-preference,android_common_apex30
@@ -485,30 +445,55 @@ prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/st
 mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.leanback_leanback^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.leanback_leanback^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.leanback_leanback^android_common
 
-echo "building androidx.leanback_leanback-preference-nodeps^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.leanback_leanback-preference-nodeps,android_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.leanback_leanback-preference-nodeps^android_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.leanback_leanback-preference-nodeps^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.leanback_leanback-preference-nodeps^android_common
-
-echo "building androidx.leanback_leanback-preference^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.leanback_leanback-preference,android_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.leanback_leanback-preference^android_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.leanback_leanback-preference^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.leanback_leanback-preference^android_common
-
 echo "building androidx.leanback_leanback^android_common_apex30"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.leanback_leanback,android_common_apex30
 mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.leanback_leanback^android_common_apex30
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.leanback_leanback^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.leanback_leanback^android_common_apex30
+
+echo "building androidx.legacy_legacy-support-core-ui-nodeps^android_common"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.legacy_legacy-support-core-ui-nodeps,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx-legacy/androidx.legacy_legacy-support-core-ui-nodeps^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.legacy_legacy-support-core-ui-nodeps^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx-legacy/androidx.legacy_legacy-support-core-ui-nodeps^android_common
 
 echo "building androidx.legacy_legacy-support-core-ui-nodeps^android_common_apex30"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.legacy_legacy-support-core-ui-nodeps,android_common_apex30
 mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx-legacy/androidx.legacy_legacy-support-core-ui-nodeps^android_common_apex30
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.legacy_legacy-support-core-ui-nodeps^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx-legacy/androidx.legacy_legacy-support-core-ui-nodeps^android_common_apex30
 
+echo "building androidx.legacy_legacy-support-core-utils-nodeps^android_common"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.legacy_legacy-support-core-utils-nodeps,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.legacy_legacy-support-core-utils-nodeps^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.legacy_legacy-support-core-utils-nodeps^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.legacy_legacy-support-core-utils-nodeps^android_common
+
+echo "building androidx.legacy_legacy-support-core-utils-nodeps^android_common_apex30"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.legacy_legacy-support-core-utils-nodeps,android_common_apex30
+mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.legacy_legacy-support-core-utils-nodeps^android_common_apex30
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.legacy_legacy-support-core-utils-nodeps^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.legacy_legacy-support-core-utils-nodeps^android_common_apex30
+
+echo "building androidx.legacy_legacy-support-core-utils^android_common"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.legacy_legacy-support-core-utils,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.legacy_legacy-support-core-utils^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.legacy_legacy-support-core-utils^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.legacy_legacy-support-core-utils^android_common
+
+echo "building androidx.legacy_legacy-support-core-utils^android_common_apex30"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.legacy_legacy-support-core-utils,android_common_apex30
+mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.legacy_legacy-support-core-utils^android_common_apex30
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.legacy_legacy-support-core-utils^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.legacy_legacy-support-core-utils^android_common_apex30
+
+echo "building androidx.legacy_legacy-support-v13-nodeps^android_common"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.legacy_legacy-support-v13-nodeps,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx-legacy/androidx.legacy_legacy-support-v13-nodeps^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.legacy_legacy-support-v13-nodeps^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx-legacy/androidx.legacy_legacy-support-v13-nodeps^android_common
+
 echo "building androidx.legacy_legacy-support-v13-nodeps^android_common_apex30"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.legacy_legacy-support-v13-nodeps,android_common_apex30
 mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx-legacy/androidx.legacy_legacy-support-v13-nodeps^android_common_apex30
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.legacy_legacy-support-v13-nodeps^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx-legacy/androidx.legacy_legacy-support-v13-nodeps^android_common_apex30
+
+echo "building androidx.lifecycle_lifecycle-extensions-nodeps^android_common"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.lifecycle_lifecycle-extensions-nodeps,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx-legacy/androidx.lifecycle_lifecycle-extensions-nodeps^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.lifecycle_lifecycle-extensions-nodeps^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx-legacy/androidx.lifecycle_lifecycle-extensions-nodeps^android_common
 
 echo "building androidx.lifecycle_lifecycle-extensions-nodeps^android_common_apex30"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.lifecycle_lifecycle-extensions-nodeps,android_common_apex30
@@ -520,30 +505,40 @@ prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/st
 mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.lifecycle_lifecycle-livedata-core-ktx-nodeps^android_common_apex30
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.lifecycle_lifecycle-livedata-core-ktx-nodeps^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.lifecycle_lifecycle-livedata-core-ktx-nodeps^android_common_apex30
 
+echo "building androidx.lifecycle_lifecycle-livedata-core-ktx^android_common_apex30"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.lifecycle_lifecycle-livedata-core-ktx,android_common_apex30
+mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.lifecycle_lifecycle-livedata-core-ktx^android_common_apex30
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.lifecycle_lifecycle-livedata-core-ktx^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.lifecycle_lifecycle-livedata-core-ktx^android_common_apex30
+
 echo "building androidx.lifecycle_lifecycle-livedata-core-nodeps^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.lifecycle_lifecycle-livedata-core-nodeps,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.lifecycle_lifecycle-livedata-core-nodeps^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.lifecycle_lifecycle-livedata-core-nodeps^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.lifecycle_lifecycle-livedata-core-nodeps^android_common
-
-echo "building androidx.appcompat_appcompat^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.appcompat_appcompat,android_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.appcompat_appcompat^android_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.appcompat_appcompat^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.appcompat_appcompat^android_common
-
-echo "building androidx.cardview_cardview-nodeps^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.cardview_cardview-nodeps,android_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.cardview_cardview-nodeps^android_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.cardview_cardview-nodeps^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.cardview_cardview-nodeps^android_common
 
 echo "building androidx.lifecycle_lifecycle-livedata-core-nodeps^android_common_apex30"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.lifecycle_lifecycle-livedata-core-nodeps,android_common_apex30
 mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.lifecycle_lifecycle-livedata-core-nodeps^android_common_apex30
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.lifecycle_lifecycle-livedata-core-nodeps^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.lifecycle_lifecycle-livedata-core-nodeps^android_common_apex30
 
-echo "building androidx.activity_activity^android_common_apex30"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.activity_activity,android_common_apex30
-mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.activity_activity^android_common_apex30
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.activity_activity^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.activity_activity^android_common_apex30
+echo "building androidx.lifecycle_lifecycle-livedata-core^android_common"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.lifecycle_lifecycle-livedata-core,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.lifecycle_lifecycle-livedata-core^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.lifecycle_lifecycle-livedata-core^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.lifecycle_lifecycle-livedata-core^android_common
+
+echo "building androidx.lifecycle_lifecycle-livedata-core^android_common_apex30"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.lifecycle_lifecycle-livedata-core,android_common_apex30
+mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.lifecycle_lifecycle-livedata-core^android_common_apex30
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.lifecycle_lifecycle-livedata-core^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.lifecycle_lifecycle-livedata-core^android_common_apex30
+
+echo "building androidx.lifecycle_lifecycle-livedata-nodeps^android_common"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.lifecycle_lifecycle-livedata-nodeps,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.lifecycle_lifecycle-livedata-nodeps^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.lifecycle_lifecycle-livedata-nodeps^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.lifecycle_lifecycle-livedata-nodeps^android_common
+
+echo "building androidx.lifecycle_lifecycle-livedata-nodeps^android_common_apex30"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.lifecycle_lifecycle-livedata-nodeps,android_common_apex30
+mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.lifecycle_lifecycle-livedata-nodeps^android_common_apex30
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.lifecycle_lifecycle-livedata-nodeps^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.lifecycle_lifecycle-livedata-nodeps^android_common_apex30
 
 echo "building androidx.lifecycle_lifecycle-livedata^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.lifecycle_lifecycle-livedata,android_common
@@ -570,10 +565,55 @@ prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/st
 mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.lifecycle_lifecycle-process^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.lifecycle_lifecycle-process^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.lifecycle_lifecycle-process^android_common
 
+echo "building androidx.lifecycle_lifecycle-process^android_common_apex30"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.lifecycle_lifecycle-process,android_common_apex30
+mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.lifecycle_lifecycle-process^android_common_apex30
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.lifecycle_lifecycle-process^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.lifecycle_lifecycle-process^android_common_apex30
+
+echo "building androidx.lifecycle_lifecycle-runtime-ktx-nodeps^android_common_apex30"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.lifecycle_lifecycle-runtime-ktx-nodeps,android_common_apex30
+mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.lifecycle_lifecycle-runtime-ktx-nodeps^android_common_apex30
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.lifecycle_lifecycle-runtime-ktx-nodeps^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.lifecycle_lifecycle-runtime-ktx-nodeps^android_common_apex30
+
+echo "building androidx.lifecycle_lifecycle-runtime-ktx^android_common_apex30"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.lifecycle_lifecycle-runtime-ktx,android_common_apex30
+mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.lifecycle_lifecycle-runtime-ktx^android_common_apex30
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.lifecycle_lifecycle-runtime-ktx^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.lifecycle_lifecycle-runtime-ktx^android_common_apex30
+
+echo "building androidx.lifecycle_lifecycle-runtime-nodeps^android_common"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.lifecycle_lifecycle-runtime-nodeps,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.lifecycle_lifecycle-runtime-nodeps^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.lifecycle_lifecycle-runtime-nodeps^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.lifecycle_lifecycle-runtime-nodeps^android_common
+
+echo "building androidx.lifecycle_lifecycle-runtime-nodeps^android_common_apex30"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.lifecycle_lifecycle-runtime-nodeps,android_common_apex30
+mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.lifecycle_lifecycle-runtime-nodeps^android_common_apex30
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.lifecycle_lifecycle-runtime-nodeps^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.lifecycle_lifecycle-runtime-nodeps^android_common_apex30
+
+echo "building androidx.lifecycle_lifecycle-runtime^android_common"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.lifecycle_lifecycle-runtime,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.lifecycle_lifecycle-runtime^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.lifecycle_lifecycle-runtime^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.lifecycle_lifecycle-runtime^android_common
+
+echo "building androidx.lifecycle_lifecycle-runtime^android_common_apex30"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.lifecycle_lifecycle-runtime,android_common_apex30
+mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.lifecycle_lifecycle-runtime^android_common_apex30
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.lifecycle_lifecycle-runtime^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.lifecycle_lifecycle-runtime^android_common_apex30
+
+echo "building androidx.lifecycle_lifecycle-service-nodeps^android_common"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.lifecycle_lifecycle-service-nodeps,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.lifecycle_lifecycle-service-nodeps^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.lifecycle_lifecycle-service-nodeps^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.lifecycle_lifecycle-service-nodeps^android_common
+
 echo "building androidx.lifecycle_lifecycle-service-nodeps^android_common_apex30"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.lifecycle_lifecycle-service-nodeps,android_common_apex30
 mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.lifecycle_lifecycle-service-nodeps^android_common_apex30
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.lifecycle_lifecycle-service-nodeps^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.lifecycle_lifecycle-service-nodeps^android_common_apex30
+
+echo "building androidx.lifecycle_lifecycle-service^android_common"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.lifecycle_lifecycle-service,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.lifecycle_lifecycle-service^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.lifecycle_lifecycle-service^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.lifecycle_lifecycle-service^android_common
 
 echo "building androidx.lifecycle_lifecycle-service^android_common_apex30"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.lifecycle_lifecycle-service,android_common_apex30
@@ -610,10 +650,35 @@ prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/st
 mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.lifecycle_lifecycle-viewmodel-savedstate^android_common_apex30
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.lifecycle_lifecycle-viewmodel-savedstate^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.lifecycle_lifecycle-viewmodel-savedstate^android_common_apex30
 
+echo "building androidx.lifecycle_lifecycle-viewmodel^android_common"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.lifecycle_lifecycle-viewmodel,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.lifecycle_lifecycle-viewmodel^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.lifecycle_lifecycle-viewmodel^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.lifecycle_lifecycle-viewmodel^android_common
+
+echo "building androidx.lifecycle_lifecycle-viewmodel^android_common_apex30"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.lifecycle_lifecycle-viewmodel,android_common_apex30
+mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.lifecycle_lifecycle-viewmodel^android_common_apex30
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.lifecycle_lifecycle-viewmodel^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.lifecycle_lifecycle-viewmodel^android_common_apex30
+
+echo "building androidx.loader_loader-nodeps^android_common"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.loader_loader-nodeps,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.loader_loader-nodeps^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.loader_loader-nodeps^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.loader_loader-nodeps^android_common
+
 echo "building androidx.loader_loader-nodeps^android_common_apex30"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.loader_loader-nodeps,android_common_apex30
 mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.loader_loader-nodeps^android_common_apex30
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.loader_loader-nodeps^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.loader_loader-nodeps^android_common_apex30
+
+echo "building androidx.loader_loader^android_common"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.loader_loader,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.loader_loader^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.loader_loader^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.loader_loader^android_common
+
+echo "building androidx.loader_loader^android_common_apex30"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.loader_loader,android_common_apex30
+mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.loader_loader^android_common_apex30
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.loader_loader^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.loader_loader^android_common_apex30
 
 echo "building androidx.localbroadcastmanager_localbroadcastmanager^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.localbroadcastmanager_localbroadcastmanager,android_common
@@ -624,6 +689,11 @@ echo "building androidx.localbroadcastmanager_localbroadcastmanager^android_comm
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.localbroadcastmanager_localbroadcastmanager,android_common_apex30
 mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.localbroadcastmanager_localbroadcastmanager^android_common_apex30
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.localbroadcastmanager_localbroadcastmanager^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.localbroadcastmanager_localbroadcastmanager^android_common_apex30
+
+echo "building androidx.media_media-nodeps^android_common"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.media_media-nodeps,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.media_media-nodeps^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.media_media-nodeps^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.media_media-nodeps^android_common
 
 echo "building androidx.media_media-nodeps^android_common_apex30"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.media_media-nodeps,android_common_apex30
@@ -645,25 +715,40 @@ prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/st
 mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.mediarouter_mediarouter-nodeps^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.mediarouter_mediarouter-nodeps^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.mediarouter_mediarouter-nodeps^android_common
 
-echo "building androidx.navigation_navigation-common-nodeps^android_common_apex30"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.navigation_navigation-common-nodeps,android_common_apex30
-mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.navigation_navigation-common-nodeps^android_common_apex30
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.navigation_navigation-common-nodeps^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.navigation_navigation-common-nodeps^android_common_apex30
+echo "building androidx.mediarouter_mediarouter^android_common"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.mediarouter_mediarouter,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.mediarouter_mediarouter^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.mediarouter_mediarouter^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.mediarouter_mediarouter^android_common
 
 echo "building androidx.navigation_navigation-common-ktx-nodeps^android_common_apex30"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.navigation_navigation-common-ktx-nodeps,android_common_apex30
 mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.navigation_navigation-common-ktx-nodeps^android_common_apex30
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.navigation_navigation-common-ktx-nodeps^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.navigation_navigation-common-ktx-nodeps^android_common_apex30
 
-echo "building androidx.navigation_navigation-runtime-nodeps^android_common_apex30"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.navigation_navigation-runtime-nodeps,android_common_apex30
-mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.navigation_navigation-runtime-nodeps^android_common_apex30
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.navigation_navigation-runtime-nodeps^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.navigation_navigation-runtime-nodeps^android_common_apex30
+echo "building androidx.navigation_navigation-common-ktx^android_common_apex30"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.navigation_navigation-common-ktx,android_common_apex30
+mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.navigation_navigation-common-ktx^android_common_apex30
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.navigation_navigation-common-ktx^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.navigation_navigation-common-ktx^android_common_apex30
 
-echo "building androidx.navigation_navigation-runtime-ktx-nodeps^android_common_apex30"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.navigation_navigation-runtime-ktx-nodeps,android_common_apex30
-mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.navigation_navigation-runtime-ktx-nodeps^android_common_apex30
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.navigation_navigation-runtime-ktx-nodeps^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.navigation_navigation-runtime-ktx-nodeps^android_common_apex30
+echo "building androidx.navigation_navigation-common-nodeps^android_common_apex30"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.navigation_navigation-common-nodeps,android_common_apex30
+mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.navigation_navigation-common-nodeps^android_common_apex30
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.navigation_navigation-common-nodeps^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.navigation_navigation-common-nodeps^android_common_apex30
+
+echo "building androidx.navigation_navigation-common^android_common_apex30"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.navigation_navigation-common,android_common_apex30
+mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.navigation_navigation-common^android_common_apex30
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.navigation_navigation-common^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.navigation_navigation-common^android_common_apex30
+
+echo "building androidx.navigation_navigation-fragment-ktx-nodeps^android_common_apex30"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.navigation_navigation-fragment-ktx-nodeps,android_common_apex30
+mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.navigation_navigation-fragment-ktx-nodeps^android_common_apex30
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.navigation_navigation-fragment-ktx-nodeps^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.navigation_navigation-fragment-ktx-nodeps^android_common_apex30
+
+echo "building androidx.navigation_navigation-fragment-ktx^android_common_apex30"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.navigation_navigation-fragment-ktx,android_common_apex30
+mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.navigation_navigation-fragment-ktx^android_common_apex30
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.navigation_navigation-fragment-ktx^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.navigation_navigation-fragment-ktx^android_common_apex30
 
 echo "building androidx.navigation_navigation-fragment-nodeps^android_common_apex30"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.navigation_navigation-fragment-nodeps,android_common_apex30
@@ -675,180 +760,70 @@ prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/st
 mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.navigation_navigation-fragment^android_common_apex30
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.navigation_navigation-fragment^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.navigation_navigation-fragment^android_common_apex30
 
-echo "building androidx.navigation_navigation-fragment-ktx-nodeps^android_common_apex30"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.navigation_navigation-fragment-ktx-nodeps,android_common_apex30
-mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.navigation_navigation-fragment-ktx-nodeps^android_common_apex30
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.navigation_navigation-fragment-ktx-nodeps^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.navigation_navigation-fragment-ktx-nodeps^android_common_apex30
-
-echo "building androidx.palette_palette-nodeps^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.palette_palette-nodeps,android_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.palette_palette-nodeps^android_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.palette_palette-nodeps^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.palette_palette-nodeps^android_common
-
-echo "building androidx.percentlayout_percentlayout-nodeps^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.percentlayout_percentlayout-nodeps,android_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.percentlayout_percentlayout-nodeps^android_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.percentlayout_percentlayout-nodeps^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.percentlayout_percentlayout-nodeps^android_common
-
-echo "building androidx.preference_preference-nodeps^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.preference_preference-nodeps,android_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.preference_preference-nodeps^android_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.preference_preference-nodeps^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.preference_preference-nodeps^android_common
-
-echo "building androidx.preference_preference^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.preference_preference,android_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.preference_preference^android_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.preference_preference^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.preference_preference^android_common
-
-echo "building androidx.print_print^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.print_print,android_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.print_print^android_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.print_print^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.print_print^android_common
-
-echo "building androidx.legacy_legacy-support-core-utils-nodeps^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.legacy_legacy-support-core-utils-nodeps,android_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.legacy_legacy-support-core-utils-nodeps^android_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.legacy_legacy-support-core-utils-nodeps^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.legacy_legacy-support-core-utils-nodeps^android_common
-
-echo "building androidx.legacy_legacy-support-core-utils^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.legacy_legacy-support-core-utils,android_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.legacy_legacy-support-core-utils^android_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.legacy_legacy-support-core-utils^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.legacy_legacy-support-core-utils^android_common
-
-echo "building androidx.legacy_legacy-support-core-ui-nodeps^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.legacy_legacy-support-core-ui-nodeps,android_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx-legacy/androidx.legacy_legacy-support-core-ui-nodeps^android_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.legacy_legacy-support-core-ui-nodeps^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx-legacy/androidx.legacy_legacy-support-core-ui-nodeps^android_common
-
-echo "building androidx.legacy_legacy-support-v13-nodeps^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.legacy_legacy-support-v13-nodeps,android_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx-legacy/androidx.legacy_legacy-support-v13-nodeps^android_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.legacy_legacy-support-v13-nodeps^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx-legacy/androidx.legacy_legacy-support-v13-nodeps^android_common
-
-echo "building androidx.lifecycle_lifecycle-livedata-core^android_common_apex30"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.lifecycle_lifecycle-livedata-core,android_common_apex30
-mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.lifecycle_lifecycle-livedata-core^android_common_apex30
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.lifecycle_lifecycle-livedata-core^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.lifecycle_lifecycle-livedata-core^android_common_apex30
-
-echo "building androidx.lifecycle_lifecycle-livedata-nodeps^android_common_apex30"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.lifecycle_lifecycle-livedata-nodeps,android_common_apex30
-mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.lifecycle_lifecycle-livedata-nodeps^android_common_apex30
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.lifecycle_lifecycle-livedata-nodeps^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.lifecycle_lifecycle-livedata-nodeps^android_common_apex30
-
-echo "building androidx.lifecycle_lifecycle-runtime-nodeps^android_common_apex30"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.lifecycle_lifecycle-runtime-nodeps,android_common_apex30
-mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.lifecycle_lifecycle-runtime-nodeps^android_common_apex30
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.lifecycle_lifecycle-runtime-nodeps^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.lifecycle_lifecycle-runtime-nodeps^android_common_apex30
-
-echo "building androidx.lifecycle_lifecycle-runtime^android_common_apex30"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.lifecycle_lifecycle-runtime,android_common_apex30
-mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.lifecycle_lifecycle-runtime^android_common_apex30
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.lifecycle_lifecycle-runtime^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.lifecycle_lifecycle-runtime^android_common_apex30
-
-echo "building androidx.lifecycle_lifecycle-runtime-ktx-nodeps^android_common_apex30"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.lifecycle_lifecycle-runtime-ktx-nodeps,android_common_apex30
-mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.lifecycle_lifecycle-runtime-ktx-nodeps^android_common_apex30
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.lifecycle_lifecycle-runtime-ktx-nodeps^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.lifecycle_lifecycle-runtime-ktx-nodeps^android_common_apex30
-
-echo "building androidx.loader_loader^android_common_apex30"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.loader_loader,android_common_apex30
-mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.loader_loader^android_common_apex30
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.loader_loader^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.loader_loader^android_common_apex30
-
-echo "building androidx.viewpager_viewpager^android_common_apex30"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.viewpager_viewpager,android_common_apex30
-mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.viewpager_viewpager^android_common_apex30
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.viewpager_viewpager^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.viewpager_viewpager^android_common_apex30
-
-echo "building androidx.fragment_fragment^android_common_apex30"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.fragment_fragment,android_common_apex30
-mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.fragment_fragment^android_common_apex30
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.fragment_fragment^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.fragment_fragment^android_common_apex30
-
-echo "building androidx.legacy_legacy-support-core-utils-nodeps^android_common_apex30"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.legacy_legacy-support-core-utils-nodeps,android_common_apex30
-mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.legacy_legacy-support-core-utils-nodeps^android_common_apex30
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.legacy_legacy-support-core-utils-nodeps^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.legacy_legacy-support-core-utils-nodeps^android_common_apex30
-
-echo "building androidx.lifecycle_lifecycle-livedata-core-ktx^android_common_apex30"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.lifecycle_lifecycle-livedata-core-ktx,android_common_apex30
-mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.lifecycle_lifecycle-livedata-core-ktx^android_common_apex30
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.lifecycle_lifecycle-livedata-core-ktx^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.lifecycle_lifecycle-livedata-core-ktx^android_common_apex30
-
-echo "building androidx.lifecycle_lifecycle-livedata-nodeps^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.lifecycle_lifecycle-livedata-nodeps,android_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.lifecycle_lifecycle-livedata-nodeps^android_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.lifecycle_lifecycle-livedata-nodeps^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.lifecycle_lifecycle-livedata-nodeps^android_common
-
-echo "building androidx.lifecycle_lifecycle-process^android_common_apex30"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.lifecycle_lifecycle-process,android_common_apex30
-mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.lifecycle_lifecycle-process^android_common_apex30
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.lifecycle_lifecycle-process^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.lifecycle_lifecycle-process^android_common_apex30
-
-echo "building androidx.lifecycle_lifecycle-runtime-ktx^android_common_apex30"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.lifecycle_lifecycle-runtime-ktx,android_common_apex30
-mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.lifecycle_lifecycle-runtime-ktx^android_common_apex30
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.lifecycle_lifecycle-runtime-ktx^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.lifecycle_lifecycle-runtime-ktx^android_common_apex30
-
-echo "building androidx.lifecycle_lifecycle-service-nodeps^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.lifecycle_lifecycle-service-nodeps,android_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.lifecycle_lifecycle-service-nodeps^android_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.lifecycle_lifecycle-service-nodeps^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.lifecycle_lifecycle-service-nodeps^android_common
-
-echo "building androidx.lifecycle_lifecycle-service^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.lifecycle_lifecycle-service,android_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.lifecycle_lifecycle-service^android_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.lifecycle_lifecycle-service^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.lifecycle_lifecycle-service^android_common
-
-echo "building androidx.lifecycle_lifecycle-viewmodel^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.lifecycle_lifecycle-viewmodel,android_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.lifecycle_lifecycle-viewmodel^android_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.lifecycle_lifecycle-viewmodel^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.lifecycle_lifecycle-viewmodel^android_common
-
-echo "building androidx.lifecycle_lifecycle-extensions-nodeps^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.lifecycle_lifecycle-extensions-nodeps,android_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx-legacy/androidx.lifecycle_lifecycle-extensions-nodeps^android_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.lifecycle_lifecycle-extensions-nodeps^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx-legacy/androidx.lifecycle_lifecycle-extensions-nodeps^android_common
-
-echo "building androidx.mediarouter_mediarouter^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.mediarouter_mediarouter,android_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.mediarouter_mediarouter^android_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.mediarouter_mediarouter^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.mediarouter_mediarouter^android_common
-
-echo "building androidx.navigation_navigation-common^android_common_apex30"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.navigation_navigation-common,android_common_apex30
-mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.navigation_navigation-common^android_common_apex30
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.navigation_navigation-common^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.navigation_navigation-common^android_common_apex30
-
-echo "building androidx.navigation_navigation-common-ktx^android_common_apex30"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.navigation_navigation-common-ktx,android_common_apex30
-mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.navigation_navigation-common-ktx^android_common_apex30
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.navigation_navigation-common-ktx^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.navigation_navigation-common-ktx^android_common_apex30
-
-echo "building androidx.navigation_navigation-runtime^android_common_apex30"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.navigation_navigation-runtime,android_common_apex30
-mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.navigation_navigation-runtime^android_common_apex30
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.navigation_navigation-runtime^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.navigation_navigation-runtime^android_common_apex30
+echo "building androidx.navigation_navigation-runtime-ktx-nodeps^android_common_apex30"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.navigation_navigation-runtime-ktx-nodeps,android_common_apex30
+mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.navigation_navigation-runtime-ktx-nodeps^android_common_apex30
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.navigation_navigation-runtime-ktx-nodeps^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.navigation_navigation-runtime-ktx-nodeps^android_common_apex30
 
 echo "building androidx.navigation_navigation-runtime-ktx^android_common_apex30"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.navigation_navigation-runtime-ktx,android_common_apex30
 mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.navigation_navigation-runtime-ktx^android_common_apex30
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.navigation_navigation-runtime-ktx^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.navigation_navigation-runtime-ktx^android_common_apex30
 
-echo "building androidx.navigation_navigation-fragment-ktx^android_common_apex30"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.navigation_navigation-fragment-ktx,android_common_apex30
-mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.navigation_navigation-fragment-ktx^android_common_apex30
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.navigation_navigation-fragment-ktx^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.navigation_navigation-fragment-ktx^android_common_apex30
+echo "building androidx.navigation_navigation-runtime-nodeps^android_common_apex30"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.navigation_navigation-runtime-nodeps,android_common_apex30
+mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.navigation_navigation-runtime-nodeps^android_common_apex30
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.navigation_navigation-runtime-nodeps^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.navigation_navigation-runtime-nodeps^android_common_apex30
+
+echo "building androidx.navigation_navigation-runtime^android_common_apex30"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.navigation_navigation-runtime,android_common_apex30
+mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.navigation_navigation-runtime^android_common_apex30
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.navigation_navigation-runtime^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.navigation_navigation-runtime^android_common_apex30
+
+echo "building androidx.palette_palette-nodeps^android_common"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.palette_palette-nodeps,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.palette_palette-nodeps^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.palette_palette-nodeps^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.palette_palette-nodeps^android_common
 
 echo "building androidx.palette_palette^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.palette_palette,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.palette_palette^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.palette_palette^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.palette_palette^android_common
 
+echo "building androidx.percentlayout_percentlayout-nodeps^android_common"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.percentlayout_percentlayout-nodeps,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.percentlayout_percentlayout-nodeps^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.percentlayout_percentlayout-nodeps^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.percentlayout_percentlayout-nodeps^android_common
+
 echo "building androidx.percentlayout_percentlayout^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.percentlayout_percentlayout,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.percentlayout_percentlayout^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.percentlayout_percentlayout^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.percentlayout_percentlayout^android_common
+
+echo "building androidx.preference_preference-nodeps^android_common"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.preference_preference-nodeps,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.preference_preference-nodeps^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.preference_preference-nodeps^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.preference_preference-nodeps^android_common
+
+echo "building androidx.preference_preference-nodeps^android_common_apex30"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.preference_preference-nodeps,android_common_apex30
+mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.preference_preference-nodeps^android_common_apex30
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.preference_preference-nodeps^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.preference_preference-nodeps^android_common_apex30
+
+echo "building androidx.preference_preference^android_common"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.preference_preference,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.preference_preference^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.preference_preference^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.preference_preference^android_common
+
+echo "building androidx.preference_preference^android_common_apex30"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.preference_preference,android_common_apex30
+mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.preference_preference^android_common_apex30
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.preference_preference^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.preference_preference^android_common_apex30
+
+echo "building androidx.print_print^android_common"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.print_print,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.print_print^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.print_print^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.print_print^android_common
 
 echo "building androidx.print_print^android_common_apex30"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.print_print,android_common_apex30
@@ -864,6 +839,21 @@ echo "building androidx.recyclerview_recyclerview-nodeps^android_common_apex30"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.recyclerview_recyclerview-nodeps,android_common_apex30
 mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.recyclerview_recyclerview-nodeps^android_common_apex30
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.recyclerview_recyclerview-nodeps^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.recyclerview_recyclerview-nodeps^android_common_apex30
+
+echo "building androidx.recyclerview_recyclerview-selection-nodeps^android_common"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.recyclerview_recyclerview-selection-nodeps,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.recyclerview_recyclerview-selection-nodeps^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.recyclerview_recyclerview-selection-nodeps^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.recyclerview_recyclerview-selection-nodeps^android_common
+
+echo "building androidx.recyclerview_recyclerview-selection^android_common"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.recyclerview_recyclerview-selection,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.recyclerview_recyclerview-selection^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.recyclerview_recyclerview-selection^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.recyclerview_recyclerview-selection^android_common
+
+echo "building androidx.recyclerview_recyclerview^android_common"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.recyclerview_recyclerview,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.recyclerview_recyclerview^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.recyclerview_recyclerview^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.recyclerview_recyclerview^android_common
 
 echo "building androidx.recyclerview_recyclerview^android_common_apex30"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.recyclerview_recyclerview,android_common_apex30
@@ -885,16 +875,6 @@ prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/st
 mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.room_room-runtime^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.room_room-runtime^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.room_room-runtime^android_common
 
-echo "building androidx.savedstate_savedstate^android_common_apex30"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.savedstate_savedstate,android_common_apex30
-mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.savedstate_savedstate^android_common_apex30
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.savedstate_savedstate^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.savedstate_savedstate^android_common_apex30
-
-echo "building androidx.preference_preference-nodeps^android_common_apex30"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.preference_preference-nodeps,android_common_apex30
-mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.preference_preference-nodeps^android_common_apex30
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.preference_preference-nodeps^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.preference_preference-nodeps^android_common_apex30
-
 echo "building androidx.savedstate_savedstate-ktx-nodeps^android_common_apex30"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.savedstate_savedstate-ktx-nodeps,android_common_apex30
 mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.savedstate_savedstate-ktx-nodeps^android_common_apex30
@@ -910,6 +890,21 @@ prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/st
 mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.savedstate_savedstate^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.savedstate_savedstate^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.savedstate_savedstate^android_common
 
+echo "building androidx.savedstate_savedstate^android_common_apex30"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.savedstate_savedstate,android_common_apex30
+mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.savedstate_savedstate^android_common_apex30
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.savedstate_savedstate^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.savedstate_savedstate^android_common_apex30
+
+echo "building androidx.slice_slice-builders-nodeps^android_common"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.slice_slice-builders-nodeps,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.slice_slice-builders-nodeps^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.slice_slice-builders-nodeps^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.slice_slice-builders-nodeps^android_common
+
+echo "building androidx.slice_slice-builders^android_common"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.slice_slice-builders,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.slice_slice-builders^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.slice_slice-builders^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.slice_slice-builders^android_common
+
 echo "building androidx.slice_slice-core-nodeps^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.slice_slice-core-nodeps,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.slice_slice-core-nodeps^android_common
@@ -920,10 +915,15 @@ prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/st
 mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.slice_slice-core^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.slice_slice-core^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.slice_slice-core^android_common
 
-echo "building androidx.slice_slice-builders^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.slice_slice-builders,android_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.slice_slice-builders^android_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.slice_slice-builders^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.slice_slice-builders^android_common
+echo "building androidx.slice_slice-view-nodeps^android_common"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.slice_slice-view-nodeps,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.slice_slice-view-nodeps^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.slice_slice-view-nodeps^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.slice_slice-view-nodeps^android_common
+
+echo "building androidx.slice_slice-view^android_common"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.slice_slice-view,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.slice_slice-view^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.slice_slice-view^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.slice_slice-view^android_common
 
 echo "building androidx.slidingpanelayout_slidingpanelayout-nodeps^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.slidingpanelayout_slidingpanelayout-nodeps,android_common
@@ -945,11 +945,6 @@ prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/st
 mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.slidingpanelayout_slidingpanelayout^android_common_apex30
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.slidingpanelayout_slidingpanelayout^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.slidingpanelayout_slidingpanelayout^android_common_apex30
 
-echo "building androidx.sqlite_sqlite^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.sqlite_sqlite,android_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.sqlite_sqlite^android_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.sqlite_sqlite^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.sqlite_sqlite^android_common
-
 echo "building androidx.sqlite_sqlite-framework-nodeps^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.sqlite_sqlite-framework-nodeps,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.sqlite_sqlite-framework-nodeps^android_common
@@ -959,6 +954,11 @@ echo "building androidx.sqlite_sqlite-framework^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.sqlite_sqlite-framework,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.sqlite_sqlite-framework^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.sqlite_sqlite-framework^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.sqlite_sqlite-framework^android_common
+
+echo "building androidx.sqlite_sqlite^android_common"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.sqlite_sqlite,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.sqlite_sqlite^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.sqlite_sqlite^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.sqlite_sqlite^android_common
 
 echo "building androidx.swiperefreshlayout_swiperefreshlayout-nodeps^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.swiperefreshlayout_swiperefreshlayout-nodeps,android_common
@@ -985,110 +985,90 @@ prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/st
 mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.tracing_tracing^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.tracing_tracing^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.tracing_tracing^android_common
 
-echo "building androidx.transition_transition-nodeps^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.transition_transition-nodeps,android_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.transition_transition-nodeps^android_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.transition_transition-nodeps^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.transition_transition-nodeps^android_common
-
-echo "building androidx.transition_transition^android_common_apex30"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.transition_transition,android_common_apex30
-mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.transition_transition^android_common_apex30
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.transition_transition^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.transition_transition^android_common_apex30
-
-echo "building androidx.vectordrawable_vectordrawable^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.vectordrawable_vectordrawable,android_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.vectordrawable_vectordrawable^android_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.vectordrawable_vectordrawable^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.vectordrawable_vectordrawable^android_common
-
-echo "building androidx.vectordrawable_vectordrawable-animated-nodeps^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.vectordrawable_vectordrawable-animated-nodeps,android_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.vectordrawable_vectordrawable-animated-nodeps^android_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.vectordrawable_vectordrawable-animated-nodeps^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.vectordrawable_vectordrawable-animated-nodeps^android_common
-
-echo "building androidx.viewpager_viewpager-nodeps^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.viewpager_viewpager-nodeps,android_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.viewpager_viewpager-nodeps^android_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.viewpager_viewpager-nodeps^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.viewpager_viewpager-nodeps^android_common
-
-echo "building androidx.slice_slice-builders-nodeps^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.slice_slice-builders-nodeps,android_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.slice_slice-builders-nodeps^android_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.slice_slice-builders-nodeps^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.slice_slice-builders-nodeps^android_common
-
-echo "building androidx.slice_slice-view^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.slice_slice-view,android_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.slice_slice-view^android_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.slice_slice-view^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.slice_slice-view^android_common
-
 echo "building androidx.tracing_tracing^android_common_apex30"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.tracing_tracing,android_common_apex30
 mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.tracing_tracing^android_common_apex30
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.tracing_tracing^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.tracing_tracing^android_common_apex30
 
-echo "building androidx.versionedparcelable_versionedparcelable^android_common_apex30"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.versionedparcelable_versionedparcelable,android_common_apex30
-mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.versionedparcelable_versionedparcelable^android_common_apex30
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.versionedparcelable_versionedparcelable^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.versionedparcelable_versionedparcelable^android_common_apex30
+echo "building androidx.transition_transition-nodeps^android_common"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.transition_transition-nodeps,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.transition_transition-nodeps^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.transition_transition-nodeps^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.transition_transition-nodeps^android_common
 
 echo "building androidx.transition_transition-nodeps^android_common_apex30"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.transition_transition-nodeps,android_common_apex30
 mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.transition_transition-nodeps^android_common_apex30
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.transition_transition-nodeps^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.transition_transition-nodeps^android_common_apex30
 
-echo "building androidx.vectordrawable_vectordrawable-nodeps^android_common_apex30"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.vectordrawable_vectordrawable-nodeps,android_common_apex30
-mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.vectordrawable_vectordrawable-nodeps^android_common_apex30
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.vectordrawable_vectordrawable-nodeps^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.vectordrawable_vectordrawable-nodeps^android_common_apex30
-
-echo "building androidx.vectordrawable_vectordrawable-animated^android_common_apex30"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.vectordrawable_vectordrawable-animated,android_common_apex30
-mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.vectordrawable_vectordrawable-animated^android_common_apex30
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.vectordrawable_vectordrawable-animated^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.vectordrawable_vectordrawable-animated^android_common_apex30
-
-echo "building androidx.preference_preference^android_common_apex30"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.preference_preference,android_common_apex30
-mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.preference_preference^android_common_apex30
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.preference_preference^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.preference_preference^android_common_apex30
-
-echo "building androidx.versionedparcelable_versionedparcelable^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.versionedparcelable_versionedparcelable,android_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.versionedparcelable_versionedparcelable^android_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.versionedparcelable_versionedparcelable^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.versionedparcelable_versionedparcelable^android_common
-
-echo "building androidx.activity_activity^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.activity_activity,android_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.activity_activity^android_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.activity_activity^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.activity_activity^android_common
-
 echo "building androidx.transition_transition^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.transition_transition,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.transition_transition^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.transition_transition^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.transition_transition^android_common
 
-echo "building androidx.vectordrawable_vectordrawable-nodeps^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.vectordrawable_vectordrawable-nodeps,android_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.vectordrawable_vectordrawable-nodeps^android_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.vectordrawable_vectordrawable-nodeps^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.vectordrawable_vectordrawable-nodeps^android_common
+echo "building androidx.transition_transition^android_common_apex30"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.transition_transition,android_common_apex30
+mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.transition_transition^android_common_apex30
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.transition_transition^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.transition_transition^android_common_apex30
+
+echo "building androidx.vectordrawable_vectordrawable-animated-nodeps^android_common"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.vectordrawable_vectordrawable-animated-nodeps,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.vectordrawable_vectordrawable-animated-nodeps^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.vectordrawable_vectordrawable-animated-nodeps^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.vectordrawable_vectordrawable-animated-nodeps^android_common
+
+echo "building androidx.vectordrawable_vectordrawable-animated-nodeps^android_common_apex30"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.vectordrawable_vectordrawable-animated-nodeps,android_common_apex30
+mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.vectordrawable_vectordrawable-animated-nodeps^android_common_apex30
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.vectordrawable_vectordrawable-animated-nodeps^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.vectordrawable_vectordrawable-animated-nodeps^android_common_apex30
 
 echo "building androidx.vectordrawable_vectordrawable-animated^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.vectordrawable_vectordrawable-animated,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.vectordrawable_vectordrawable-animated^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.vectordrawable_vectordrawable-animated^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.vectordrawable_vectordrawable-animated^android_common
 
-echo "building androidx.viewpager2_viewpager2-nodeps^android_common_apex30"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.viewpager2_viewpager2-nodeps,android_common_apex30
-mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.viewpager2_viewpager2-nodeps^android_common_apex30
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.viewpager2_viewpager2-nodeps^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.viewpager2_viewpager2-nodeps^android_common_apex30
+echo "building androidx.vectordrawable_vectordrawable-animated^android_common_apex30"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.vectordrawable_vectordrawable-animated,android_common_apex30
+mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.vectordrawable_vectordrawable-animated^android_common_apex30
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.vectordrawable_vectordrawable-animated^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.vectordrawable_vectordrawable-animated^android_common_apex30
 
-echo "building androidx.viewpager_viewpager^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.viewpager_viewpager,android_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.viewpager_viewpager^android_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.viewpager_viewpager^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.viewpager_viewpager^android_common
+echo "building androidx.vectordrawable_vectordrawable-nodeps^android_common"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.vectordrawable_vectordrawable-nodeps,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.vectordrawable_vectordrawable-nodeps^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.vectordrawable_vectordrawable-nodeps^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.vectordrawable_vectordrawable-nodeps^android_common
+
+echo "building androidx.vectordrawable_vectordrawable-nodeps^android_common_apex30"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.vectordrawable_vectordrawable-nodeps,android_common_apex30
+mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.vectordrawable_vectordrawable-nodeps^android_common_apex30
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.vectordrawable_vectordrawable-nodeps^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.vectordrawable_vectordrawable-nodeps^android_common_apex30
+
+echo "building androidx.vectordrawable_vectordrawable^android_common"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.vectordrawable_vectordrawable,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.vectordrawable_vectordrawable^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.vectordrawable_vectordrawable^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.vectordrawable_vectordrawable^android_common
+
+echo "building androidx.vectordrawable_vectordrawable^android_common_apex30"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.vectordrawable_vectordrawable,android_common_apex30
+mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.vectordrawable_vectordrawable^android_common_apex30
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.vectordrawable_vectordrawable^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.vectordrawable_vectordrawable^android_common_apex30
+
+echo "building androidx.versionedparcelable_versionedparcelable^android_common"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.versionedparcelable_versionedparcelable,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.versionedparcelable_versionedparcelable^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.versionedparcelable_versionedparcelable^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.versionedparcelable_versionedparcelable^android_common
+
+echo "building androidx.versionedparcelable_versionedparcelable^android_common_apex30"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.versionedparcelable_versionedparcelable,android_common_apex30
+mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.versionedparcelable_versionedparcelable^android_common_apex30
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.versionedparcelable_versionedparcelable^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.versionedparcelable_versionedparcelable^android_common_apex30
 
 echo "building androidx.viewpager2_viewpager2-nodeps^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.viewpager2_viewpager2-nodeps,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.viewpager2_viewpager2-nodeps^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.viewpager2_viewpager2-nodeps^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.viewpager2_viewpager2-nodeps^android_common
+
+echo "building androidx.viewpager2_viewpager2-nodeps^android_common_apex30"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.viewpager2_viewpager2-nodeps,android_common_apex30
+mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.viewpager2_viewpager2-nodeps^android_common_apex30
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.viewpager2_viewpager2-nodeps^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.viewpager2_viewpager2-nodeps^android_common_apex30
 
 echo "building androidx.viewpager2_viewpager2^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.viewpager2_viewpager2,android_common
@@ -1100,20 +1080,30 @@ prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/st
 mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.viewpager2_viewpager2^android_common_apex30
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.viewpager2_viewpager2^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.viewpager2_viewpager2^android_common_apex30
 
+echo "building androidx.viewpager_viewpager-nodeps^android_common"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.viewpager_viewpager-nodeps,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.viewpager_viewpager-nodeps^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.viewpager_viewpager-nodeps^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.viewpager_viewpager-nodeps^android_common
+
+echo "building androidx.viewpager_viewpager-nodeps^android_common_apex30"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.viewpager_viewpager-nodeps,android_common_apex30
+mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.viewpager_viewpager-nodeps^android_common_apex30
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.viewpager_viewpager-nodeps^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.viewpager_viewpager-nodeps^android_common_apex30
+
+echo "building androidx.viewpager_viewpager^android_common"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.viewpager_viewpager,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.viewpager_viewpager^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.viewpager_viewpager^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.viewpager_viewpager^android_common
+
+echo "building androidx.viewpager_viewpager^android_common_apex30"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.viewpager_viewpager,android_common_apex30
+mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.viewpager_viewpager^android_common_apex30
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.viewpager_viewpager^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.viewpager_viewpager^android_common_apex30
+
 echo "building androidx.webkit_webkit-nodeps^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.webkit_webkit-nodeps,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.webkit_webkit-nodeps^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.webkit_webkit-nodeps^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.webkit_webkit-nodeps^android_common
-
-echo "building androidx.work_work-runtime-nodeps^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.work_work-runtime-nodeps,android_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.work_work-runtime-nodeps^android_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.work_work-runtime-nodeps^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.work_work-runtime-nodeps^android_common
-
-echo "building androidx.work_work-runtime^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.work_work-runtime,android_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.work_work-runtime^android_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.work_work-runtime^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.work_work-runtime^android_common
 
 echo "building androidx.work_work-runtime-ktx-nodeps^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.work_work-runtime-ktx-nodeps,android_common
@@ -1124,6 +1114,16 @@ echo "building androidx.work_work-runtime-ktx^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.work_work-runtime-ktx,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.work_work-runtime-ktx^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.work_work-runtime-ktx^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.work_work-runtime-ktx^android_common
+
+echo "building androidx.work_work-runtime-nodeps^android_common"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.work_work-runtime-nodeps,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.work_work-runtime-nodeps^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.work_work-runtime-nodeps^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.work_work-runtime-nodeps^android_common
+
+echo "building androidx.work_work-runtime^android_common"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja androidx.work_work-runtime,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.work_work-runtime^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/prebuilts/sdk/androidx.work_work-runtime^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.work_work-runtime^android_common
 
 rm -rf out
 

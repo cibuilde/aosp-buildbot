@@ -125,6 +125,10 @@ gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern ext
 mkdir -p $GITHUB_WORKSPACE/downloads/external/dng_sdk
 tar xf $GITHUB_WORKSPACE/external_dng_sdk-01.tar.zst -C $GITHUB_WORKSPACE/downloads/external/dng_sdk/
 
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_00 --pattern external_e2fsprogs.tar.zst --output external_e2fsprogs-00.tar.zst
+mkdir -p $GITHUB_WORKSPACE/downloads/external/e2fsprogs
+tar xf $GITHUB_WORKSPACE/external_e2fsprogs-00.tar.zst -C $GITHUB_WORKSPACE/downloads/external/e2fsprogs/
+
 gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_e2fsprogs.tar.zst --output external_e2fsprogs-01.tar.zst
 mkdir -p $GITHUB_WORKSPACE/downloads/external/e2fsprogs
 tar xf $GITHUB_WORKSPACE/external_e2fsprogs-01.tar.zst -C $GITHUB_WORKSPACE/downloads/external/e2fsprogs/
@@ -1016,6 +1020,10 @@ tar xf $GITHUB_WORKSPACE/system_libhidl-04.tar.zst -C $GITHUB_WORKSPACE/download
 gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern system_libprocinfo.tar.zst --output system_libprocinfo-01.tar.zst
 mkdir -p $GITHUB_WORKSPACE/downloads/system/libprocinfo
 tar xf $GITHUB_WORKSPACE/system_libprocinfo-01.tar.zst -C $GITHUB_WORKSPACE/downloads/system/libprocinfo/
+
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_00 --pattern system_libvintf.tar.zst --output system_libvintf-00.tar.zst
+mkdir -p $GITHUB_WORKSPACE/downloads/system/libvintf
+tar xf $GITHUB_WORKSPACE/system_libvintf-00.tar.zst -C $GITHUB_WORKSPACE/downloads/system/libvintf/
 
 gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern system_libvintf.tar.zst --output system_libvintf-01.tar.zst
 mkdir -p $GITHUB_WORKSPACE/downloads/system/libvintf

@@ -325,11 +325,6 @@ prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/st
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/1.5/android.hardware.wifi-V1.5-java^android_common_apex30
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_16/hardware/interfaces/android.hardware.wifi-V1.5-java^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/1.5/android.hardware.wifi-V1.5-java^android_common_apex30
 
-echo "building android.hardware.wifi.supplicant-V1.0-java^android_common_apex30"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_16.ninja android.hardware.wifi.supplicant-V1.0-java,android_common_apex30
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/supplicant/1.0/android.hardware.wifi.supplicant-V1.0-java^android_common_apex30
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_16/hardware/interfaces/android.hardware.wifi.supplicant-V1.0-java^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/supplicant/1.0/android.hardware.wifi.supplicant-V1.0-java^android_common_apex30
-
 echo "building android.hardware.wifi.hostapd-V1.0-java^android_common_apex30"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_16.ninja android.hardware.wifi.hostapd-V1.0-java,android_common_apex30
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/hostapd/1.0/android.hardware.wifi.hostapd-V1.0-java^android_common_apex30
@@ -349,6 +344,11 @@ echo "building android.hardware.wifi.hostapd-V1.3-java^android_common_apex30"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_16.ninja android.hardware.wifi.hostapd-V1.3-java,android_common_apex30
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/hostapd/1.3/android.hardware.wifi.hostapd-V1.3-java^android_common_apex30
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_16/hardware/interfaces/android.hardware.wifi.hostapd-V1.3-java^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/hostapd/1.3/android.hardware.wifi.hostapd-V1.3-java^android_common_apex30
+
+echo "building android.hardware.wifi.supplicant-V1.0-java^android_common_apex30"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_16.ninja android.hardware.wifi.supplicant-V1.0-java,android_common_apex30
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/supplicant/1.0/android.hardware.wifi.supplicant-V1.0-java^android_common_apex30
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_16/hardware/interfaces/android.hardware.wifi.supplicant-V1.0-java^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/supplicant/1.0/android.hardware.wifi.supplicant-V1.0-java^android_common_apex30
 
 echo "building android.hardware.wifi.supplicant-V1.1-java^android_common_apex30"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_16.ninja android.hardware.wifi.supplicant-V1.1-java,android_common_apex30

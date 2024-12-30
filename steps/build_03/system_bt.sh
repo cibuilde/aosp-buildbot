@@ -30,11 +30,6 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/cmd/sbox/sbox^linux_glibc_x8
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcxx/libc++^linux_glibc_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcxx/libc++fs^linux_glibc_x86_64_static/ .
 
-echo "building bluetooth_packetgen^linux_glibc_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja bluetooth_packetgen,linux_glibc_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/bt/gd/packet/parser/bluetooth_packetgen^linux_glibc_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/system/bt/bluetooth_packetgen^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/bt/gd/packet/parser/bluetooth_packetgen^linux_glibc_x86_64
-
 echo "building BluetoothGeneratedPackets_h^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja BluetoothGeneratedPackets_h,
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/bt/gd/BluetoothGeneratedPackets_h^
@@ -49,6 +44,11 @@ echo "building RootCanalGeneratedPackets_h^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja RootCanalGeneratedPackets_h,
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/bt/vendor_libs/test_vendor_lib/RootCanalGeneratedPackets_h^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/system/bt/RootCanalGeneratedPackets_h^.output . $GITHUB_WORKSPACE/artifacts/system/bt/vendor_libs/test_vendor_lib/RootCanalGeneratedPackets_h^
+
+echo "building bluetooth_packetgen^linux_glibc_x86_64"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja bluetooth_packetgen,linux_glibc_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/bt/gd/packet/parser/bluetooth_packetgen^linux_glibc_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/system/bt/bluetooth_packetgen^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/bt/gd/packet/parser/bluetooth_packetgen^linux_glibc_x86_64
 
 rm -rf out
 

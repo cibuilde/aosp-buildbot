@@ -103,15 +103,15 @@ prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/st
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/SdkExtensions/com.android.sdkext^android_common_com.android.sdkext_image
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_19/packages/modules/SdkExtensions/com.android.sdkext^android_common_com.android.sdkext_image.output . $GITHUB_WORKSPACE/artifacts/packages/modules/SdkExtensions/com.android.sdkext^android_common_com.android.sdkext_image
 
-echo "building framework-sdkextensions.stubs.source.module_lib^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_19.ninja framework-sdkextensions.stubs.source.module_lib,android_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/SdkExtensions/framework/framework-sdkextensions.stubs.source.module_lib^android_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_19/packages/modules/SdkExtensions/framework-sdkextensions.stubs.source.module_lib^android_common.output . $GITHUB_WORKSPACE/artifacts/packages/modules/SdkExtensions/framework/framework-sdkextensions.stubs.source.module_lib^android_common
-
 echo "building framework-sdkextensions.stubs.module_lib^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_19.ninja framework-sdkextensions.stubs.module_lib,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/SdkExtensions/framework/framework-sdkextensions.stubs.module_lib^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_19/packages/modules/SdkExtensions/framework-sdkextensions.stubs.module_lib^android_common.output . $GITHUB_WORKSPACE/artifacts/packages/modules/SdkExtensions/framework/framework-sdkextensions.stubs.module_lib^android_common
+
+echo "building framework-sdkextensions.stubs.source.module_lib^android_common"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_19.ninja framework-sdkextensions.stubs.source.module_lib,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/SdkExtensions/framework/framework-sdkextensions.stubs.source.module_lib^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_19/packages/modules/SdkExtensions/framework-sdkextensions.stubs.source.module_lib^android_common.output . $GITHUB_WORKSPACE/artifacts/packages/modules/SdkExtensions/framework/framework-sdkextensions.stubs.source.module_lib^android_common
 
 echo "building framework-sdkextensions.stubs.source.system^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_19.ninja framework-sdkextensions.stubs.source.system,android_common

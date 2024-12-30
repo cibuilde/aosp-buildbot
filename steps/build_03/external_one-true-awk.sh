@@ -25,11 +25,6 @@ clone_depth_platform system/media
 
 rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/cmd/sbox/sbox^linux_glibc_x86_64/ .
 
-echo "building awkgram.tab.h^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja awkgram.tab.h,
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/one-true-awk/awkgram.tab.h^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/external/one-true-awk/awkgram.tab.h^.output . $GITHUB_WORKSPACE/artifacts/external/one-true-awk/awkgram.tab.h^
-
 echo "building awk-maketab^linux_glibc_x86_64"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja awk-maketab,linux_glibc_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/one-true-awk/awk-maketab^linux_glibc_x86_64
@@ -39,6 +34,11 @@ echo "building awkgram.tab.c^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja awkgram.tab.c,
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/one-true-awk/awkgram.tab.c^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/external/one-true-awk/awkgram.tab.c^.output . $GITHUB_WORKSPACE/artifacts/external/one-true-awk/awkgram.tab.c^
+
+echo "building awkgram.tab.h^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja awkgram.tab.h,
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/one-true-awk/awkgram.tab.h^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/external/one-true-awk/awkgram.tab.h^.output . $GITHUB_WORKSPACE/artifacts/external/one-true-awk/awkgram.tab.h^
 
 echo "building proctab.c^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja proctab.c,

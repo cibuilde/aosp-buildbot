@@ -53,13 +53,25 @@ gh release --repo cibuilde/aosp-buildbot download android12-gsi_14 --pattern ext
 mkdir -p $GITHUB_WORKSPACE/downloads/external/conscrypt
 tar xf $GITHUB_WORKSPACE/external_conscrypt-14.tar.zst -C $GITHUB_WORKSPACE/downloads/external/conscrypt/
 
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_03 --pattern external_icu.tar.zst --output external_icu-03.tar.zst
+mkdir -p $GITHUB_WORKSPACE/downloads/external/icu
+tar xf $GITHUB_WORKSPACE/external_icu-03.tar.zst -C $GITHUB_WORKSPACE/downloads/external/icu/
+
 gh release --repo cibuilde/aosp-buildbot download android12-gsi_14 --pattern external_icu.tar.zst --output external_icu-14.tar.zst
 mkdir -p $GITHUB_WORKSPACE/downloads/external/icu
 tar xf $GITHUB_WORKSPACE/external_icu-14.tar.zst -C $GITHUB_WORKSPACE/downloads/external/icu/
 
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_02 --pattern external_libcxx.tar.zst --output external_libcxx-02.tar.zst
+mkdir -p $GITHUB_WORKSPACE/downloads/external/libcxx
+tar xf $GITHUB_WORKSPACE/external_libcxx-02.tar.zst -C $GITHUB_WORKSPACE/downloads/external/libcxx/
+
 gh release --repo cibuilde/aosp-buildbot download android12-gsi_11 --pattern external_okhttp.tar.zst --output external_okhttp-11.tar.zst
 mkdir -p $GITHUB_WORKSPACE/downloads/external/okhttp
 tar xf $GITHUB_WORKSPACE/external_okhttp-11.tar.zst -C $GITHUB_WORKSPACE/downloads/external/okhttp/
+
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_04 --pattern external_sqlite.tar.zst --output external_sqlite-04.tar.zst
+mkdir -p $GITHUB_WORKSPACE/downloads/external/sqlite
+tar xf $GITHUB_WORKSPACE/external_sqlite-04.tar.zst -C $GITHUB_WORKSPACE/downloads/external/sqlite/
 
 gh release --repo cibuilde/aosp-buildbot download android12-gsi_25 --pattern frameworks_av.tar.zst --output frameworks_av-25.tar.zst
 mkdir -p $GITHUB_WORKSPACE/downloads/frameworks/av

@@ -120,20 +120,20 @@ prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/st
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/logging/liblog/liblog^android_x86_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/system/logging/liblog^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/logging/liblog/liblog^android_x86_x86_64_shared
 
-echo "building liblog_event_list_bindgen^android_x86_64_source"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja liblog_event_list_bindgen,android_x86_64_source
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/logging/liblog/liblog_event_list_bindgen^android_x86_64_source
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/system/logging/liblog_event_list_bindgen^android_x86_64_source.output . $GITHUB_WORKSPACE/artifacts/system/logging/liblog/liblog_event_list_bindgen^android_x86_64_source
+echo "building liblog_event_list^android_x86_64_rlib_rlib-std"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja liblog_event_list,android_x86_64_rlib_rlib-std
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/logging/rust/liblog_event_list^android_x86_64_rlib_rlib-std
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/system/logging/liblog_event_list^android_x86_64_rlib_rlib-std.output . $GITHUB_WORKSPACE/artifacts/system/logging/rust/liblog_event_list^android_x86_64_rlib_rlib-std
 
 echo "building liblog_event_list_bindgen^android_x86_64_rlib_rlib-std"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja liblog_event_list_bindgen,android_x86_64_rlib_rlib-std
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/logging/liblog/liblog_event_list_bindgen^android_x86_64_rlib_rlib-std
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/system/logging/liblog_event_list_bindgen^android_x86_64_rlib_rlib-std.output . $GITHUB_WORKSPACE/artifacts/system/logging/liblog/liblog_event_list_bindgen^android_x86_64_rlib_rlib-std
 
-echo "building liblog_event_list^android_x86_64_rlib_rlib-std"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja liblog_event_list,android_x86_64_rlib_rlib-std
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/logging/rust/liblog_event_list^android_x86_64_rlib_rlib-std
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/system/logging/liblog_event_list^android_x86_64_rlib_rlib-std.output . $GITHUB_WORKSPACE/artifacts/system/logging/rust/liblog_event_list^android_x86_64_rlib_rlib-std
+echo "building liblog_event_list_bindgen^android_x86_64_source"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja liblog_event_list_bindgen,android_x86_64_source
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/logging/liblog/liblog_event_list_bindgen^android_x86_64_source
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/system/logging/liblog_event_list_bindgen^android_x86_64_source.output . $GITHUB_WORKSPACE/artifacts/system/logging/liblog/liblog_event_list_bindgen^android_x86_64_source
 
 rm -rf out
 

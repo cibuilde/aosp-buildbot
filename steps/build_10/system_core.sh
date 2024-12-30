@@ -195,11 +195,6 @@ prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/st
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/healthd/charger^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/system/core/charger^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/core/healthd/charger^android_x86_64
 
-echo "building libfs_mgr_binder^android_x86_64_shared"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja libfs_mgr_binder,android_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/libfs_mgr_binder^android_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/system/core/libfs_mgr_binder^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/libfs_mgr_binder^android_x86_64_shared
-
 echo "building clean_scratch_files^android_x86_64"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja clean_scratch_files,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/clean_scratch_files^android_x86_64
@@ -209,6 +204,11 @@ echo "building fastbootd^android_recovery_x86_64"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja fastbootd,android_recovery_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/fastboot/fastbootd^android_recovery_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/system/core/fastbootd^android_recovery_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/core/fastboot/fastbootd^android_recovery_x86_64
+
+echo "building libfs_mgr_binder^android_x86_64_shared"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja libfs_mgr_binder,android_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/libfs_mgr_binder^android_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/system/core/libfs_mgr_binder^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/libfs_mgr_binder^android_x86_64_shared
 
 echo "building libfs_mgr_binder^android_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja libfs_mgr_binder,android_x86_64_static

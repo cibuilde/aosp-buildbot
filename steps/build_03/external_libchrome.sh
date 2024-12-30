@@ -54,16 +54,6 @@ prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/st
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/libchrome/libchrome-include^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/external/libchrome/libchrome-include^.output . $GITHUB_WORKSPACE/artifacts/external/libchrome/libchrome-include^
 
-echo "building libmojo_jni_headers^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libmojo_jni_headers,
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/libchrome/libmojo_jni_headers^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/external/libchrome/libmojo_jni_headers^.output . $GITHUB_WORKSPACE/artifacts/external/libchrome/libmojo_jni_headers^
-
-echo "building libmojo_jni_registration_headers^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libmojo_jni_registration_headers,
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/libchrome/libmojo_jni_registration_headers^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/external/libchrome/libmojo_jni_registration_headers^.output . $GITHUB_WORKSPACE/artifacts/external/libchrome/libmojo_jni_registration_headers^
-
 echo "building libchrome^android_recovery_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libchrome,android_recovery_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/libchrome/libchrome^android_recovery_x86_64_static
@@ -78,6 +68,16 @@ echo "building libchrome^android_x86_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libchrome,android_x86_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/libchrome/libchrome^android_x86_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/external/libchrome/libchrome^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/libchrome/libchrome^android_x86_x86_64_static
+
+echo "building libmojo_jni_headers^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libmojo_jni_headers,
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/libchrome/libmojo_jni_headers^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/external/libchrome/libmojo_jni_headers^.output . $GITHUB_WORKSPACE/artifacts/external/libchrome/libmojo_jni_headers^
+
+echo "building libmojo_jni_registration_headers^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libmojo_jni_registration_headers,
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/libchrome/libmojo_jni_registration_headers^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/external/libchrome/libmojo_jni_registration_headers^.output . $GITHUB_WORKSPACE/artifacts/external/libchrome/libmojo_jni_registration_headers^
 
 rm -rf out
 

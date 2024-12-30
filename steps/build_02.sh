@@ -29,6 +29,10 @@ gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern bui
 mkdir -p $GITHUB_WORKSPACE/downloads/build/blueprint
 tar xf $GITHUB_WORKSPACE/build_blueprint-01.tar.zst -C $GITHUB_WORKSPACE/downloads/build/blueprint/
 
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_00 --pattern build_soong.tar.zst --output build_soong-00.tar.zst
+mkdir -p $GITHUB_WORKSPACE/downloads/build/soong
+tar xf $GITHUB_WORKSPACE/build_soong-00.tar.zst -C $GITHUB_WORKSPACE/downloads/build/soong/
+
 gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern build_soong.tar.zst --output build_soong-01.tar.zst
 mkdir -p $GITHUB_WORKSPACE/downloads/build/soong
 tar xf $GITHUB_WORKSPACE/build_soong-01.tar.zst -C $GITHUB_WORKSPACE/downloads/build/soong/

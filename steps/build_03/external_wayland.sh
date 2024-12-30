@@ -30,11 +30,6 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/cmd/sbox/sbox^linux_glibc_x8
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/expat/libexpat^linux_glibc_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcxx/libc++^linux_glibc_x86_64_shared/ .
 
-echo "building wayland_scanner^linux_glibc_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja wayland_scanner,linux_glibc_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/wayland/wayland_scanner^linux_glibc_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/external/wayland/wayland_scanner^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/wayland/wayland_scanner^linux_glibc_x86_64
-
 echo "building wayland_core_client_protocol_headers^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja wayland_core_client_protocol_headers,
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/wayland/wayland_core_client_protocol_headers^
@@ -44,6 +39,11 @@ echo "building wayland_core_protocol_sources_static^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja wayland_core_protocol_sources_static,
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/wayland/wayland_core_protocol_sources_static^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/external/wayland/wayland_core_protocol_sources_static^.output . $GITHUB_WORKSPACE/artifacts/external/wayland/wayland_core_protocol_sources_static^
+
+echo "building wayland_scanner^linux_glibc_x86_64"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja wayland_scanner,linux_glibc_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/wayland/wayland_scanner^linux_glibc_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/external/wayland/wayland_scanner^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/wayland/wayland_scanner^linux_glibc_x86_64
 
 rm -rf out
 
