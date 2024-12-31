@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-22.04
     steps:
     - uses: actions/checkout@main
-    - run: sudo apt update && sudo apt install -y ninja-build python2
+    - run: sudo apt update && sudo apt install -y ninja-build python2 libncurses5
     - uses: actions/cache@v4
       with:
         path: cache/bionic.tar.zst

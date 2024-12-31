@@ -1,4 +1,0 @@
-Tag: buid_34 Projects: 2 Targets: 2
-
-frameworks/opt/net/ethernet: ethernet-service^android_common
-packages/apps/Bluetooth: Bluetooth^android_common

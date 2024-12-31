@@ -1,0 +1,4 @@
+##### Tag: android12-gsi_30 Projects: 1 Targets: 27
+
+###### **frameworks/base**: 27
+`abx^android_common` `am^android_common` `android.test.base^android_common` `android.test.mock^android_common` `android.test.runner^android_common` `appwidget^android_common` `bmgr^android_common` `bu^android_common` `com.android.future.usb.accessory^android_common` `com.android.location.provider^android_common` `com.android.media.remotedisplay^android_common` `com.android.mediadrm.signer^android_common` `com.android.nfc_extras^android_common` `content^android_common` `hid^android_common` `incident-helper-cmd^android_common` `javax.obex^android_common` `locksettings^android_common` `overlayable_policy_aidl-java^android_common` `platform-bootclasspath^android_common` `requestsync^android_common` `sm^android_common` `svc^android_common` `telecom^android_common` `uiautomator^android_common` `uinput^android_common` `vr^android_common`

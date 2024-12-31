@@ -1,5 +1,0 @@
-Tag: buid_27 Projects: 3 Targets: 3
-
-frameworks/opt/telephony: telephony-common^android_common
-packages/apps/EmergencyInfo: EmergencyInfo-lib^android_common
-packages/modules/Permission: PermissionController^android_common_apex30
