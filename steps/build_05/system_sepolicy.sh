@@ -25,8 +25,6 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcxx/libc++^linux_glibc_x86_6
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/python/cpython2/py2-launcher-autorun^linux_glibc_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/python/cpython2/Lib/py2-stdlib^linux_glibc_x86_64_PY2/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/sqlite/dist/libsqlite^linux_glibc_x86_64_shared/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/system/sepolicy/tests/combine_maps^linux_glibc_x86_64_PY2/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/system/sepolicy/tests/fc_sort^linux_glibc_x86_64_PY2/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/sepolicy/plat_30.0.cil^android_common/ .
 
 echo "building combine_maps^linux_glibc_x86_64_PY2"
