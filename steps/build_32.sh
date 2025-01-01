@@ -17,8 +17,6 @@ source $GITHUB_WORKSPACE/envsetup.sh
 tar xf $GITHUB_WORKSPACE/ninja-ndk.tar.zst
 tar xf $GITHUB_WORKSPACE/ninja.tar.zst
 
-clone_project platform/prebuilts/clang/host/linux-x86 prebuilts/clang/host/linux-x86 "/clang-r416183b1" "/clang-r416183b" "/soong"
-
 mkdir -p $GITHUB_WORKSPACE/cache
 
 gh release --repo cibuilde/aosp-buildbot download android12-gsi_03 --pattern art.tar.zst --output art-03.tar.zst
@@ -570,11 +568,6 @@ time source steps/build_32/packages_services_Telephony.sh
 time source steps/build_32/packages_wallpapers_LivePicker.sh
 time source steps/build_32/system_hardware_interfaces.sh
 time source steps/build_32/system_security.sh
-
-if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_clang_host_linux-x86.tar.zst" ]; then
-  echo "Compressing prebuilts/clang/host/linux-x86 -> prebuilts_clang_host_linux-x86.tar.zst"
-  tar -cf $GITHUB_WORKSPACE/cache/prebuilts_clang_host_linux-x86.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86/ .
-fi
 
 
 du -ah -d1 $GITHUB_WORKSPACE/cache| sort -h

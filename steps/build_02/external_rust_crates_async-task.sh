@@ -9,7 +9,9 @@ ln -sf $GITHUB_WORKSPACE/ndk.ninja .
 ln -sf $GITHUB_WORKSPACE/ninja-ndk .
 ln -sf $GITHUB_WORKSPACE/ninja .
 
-mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86 prebuilts/clang/host/linux-x86
+if [ -d "$GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86" ]; then
+  mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86 prebuilts/clang/host/linux-x86
+fi
 
 clone_depth_platform external/rust/crates/async-task
 clone_depth_platform libcore

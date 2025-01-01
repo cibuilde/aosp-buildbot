@@ -17,7 +17,7 @@ source $GITHUB_WORKSPACE/envsetup.sh
 tar xf $GITHUB_WORKSPACE/ninja-ndk.tar.zst
 tar xf $GITHUB_WORKSPACE/ninja.tar.zst
 
-clone_project platform/prebuilts/clang/host/linux-x86 prebuilts/clang/host/linux-x86 "/clang-r416183b1" "/clang-r416183b" "/soong"
+clone_project platform/prebuilts/clang/host/linux-x86 prebuilts/clang/host/linux-x86 android12-gsi "/clang-r416183b1" "/clang-r416183b" "/soong"
 
 mkdir -p $GITHUB_WORKSPACE/cache
 
@@ -299,6 +299,115 @@ ln -sf /usr/bin/python2 $GITHUB_WORKSPACE/.bin/python
 export PATH=$GITHUB_WORKSPACE/.bin:$PATH
 
 time source steps/build_03/art.sh
+time source steps/build_03/bionic.sh
+time source steps/build_03/build_make.sh
+time source steps/build_03/cts.sh
+time source steps/build_03/development.sh
+time source steps/build_03/external_angle.sh
+time source steps/build_03/external_apache-commons-bcel.sh
+time source steps/build_03/external_apache-xml.sh
+time source steps/build_03/external_auto.sh
+time source steps/build_03/external_bc.sh
+time source steps/build_03/external_boringssl.sh
+time source steps/build_03/external_bouncycastle.sh
+time source steps/build_03/external_clang.sh
+time source steps/build_03/external_conscrypt.sh
+time source steps/build_03/external_crosvm.sh
+time source steps/build_03/external_dagger2.sh
+time source steps/build_03/external_e2fsprogs.sh
+time source steps/build_03/external_error_prone.sh
+time source steps/build_03/external_f2fs-tools.sh
+time source steps/build_03/external_firebase-messaging.sh
+time source steps/build_03/external_flatbuffers.sh
+time source steps/build_03/external_freetype.sh
+time source steps/build_03/external_google-java-format.sh
+time source steps/build_03/external_guava.sh
+time source steps/build_03/external_guice.sh
+time source steps/build_03/external_hamcrest.sh
+time source steps/build_03/external_icu.sh
+time source steps/build_03/external_iptables.sh
+time source steps/build_03/external_iw.sh
+time source steps/build_03/external_jarjar.sh
+time source steps/build_03/external_javaparser.sh
+time source steps/build_03/external_javapoet.sh
+time source steps/build_03/external_jcommander.sh
+time source steps/build_03/external_jsoncpp.sh
+time source steps/build_03/external_jsr305.sh
+time source steps/build_03/external_jsr330.sh
+time source steps/build_03/external_kmod.sh
+time source steps/build_03/external_kotlinc.sh
+time source steps/build_03/external_kotlinx.metadata.sh
+time source steps/build_03/external_libcap.sh
+time source steps/build_03/external_libchrome.sh
+time source steps/build_03/external_libffi.sh
+time source steps/build_03/external_llvm.sh
+time source steps/build_03/external_lz4.sh
+time source steps/build_03/external_mime-support.sh
+time source steps/build_03/external_minijail.sh
+time source steps/build_03/external_oj-libjdwp.sh
+time source steps/build_03/external_one-true-awk.sh
+time source steps/build_03/external_perfetto.sh
+time source steps/build_03/external_protobuf.sh
+time source steps/build_03/external_python_cpython2.sh
+time source steps/build_03/external_python_cpython3.sh
+time source steps/build_03/external_python_six.sh
+time source steps/build_03/external_rust_crates_bindgen.sh
+time source steps/build_03/external_rust_crates_cexpr.sh
+time source steps/build_03/external_rust_crates_clang-sys.sh
+time source steps/build_03/external_rust_crates_env_logger.sh
+time source steps/build_03/external_rust_crates_futures-channel.sh
+time source steps/build_03/external_rust_crates_getrandom.sh
+time source steps/build_03/external_rust_crates_instant.sh
+time source steps/build_03/external_rust_crates_intrusive-collections.sh
+time source steps/build_03/external_rust_crates_lock_api.sh
+time source steps/build_03/external_rust_crates_log.sh
+time source steps/build_03/external_rust_crates_nix.sh
+time source steps/build_03/external_rust_crates_num_cpus.sh
+time source steps/build_03/external_rust_crates_proc-macro-nested.sh
+time source steps/build_03/external_rust_crates_protobuf.sh
+time source steps/build_03/external_rust_crates_quote.sh
+time source steps/build_03/external_rust_crates_regex.sh
+time source steps/build_03/external_rust_crates_shared_child.sh
+time source steps/build_03/external_selinux.sh
+time source steps/build_03/external_snakeyaml.sh
+time source steps/build_03/external_swiftshader.sh
+time source steps/build_03/external_testng.sh
+time source steps/build_03/external_wayland.sh
+time source steps/build_03/external_zlib.sh
+time source steps/build_03/external_zxing.sh
+time source steps/build_03/frameworks_av.sh
+time source steps/build_03/frameworks_base.sh
+time source steps/build_03/frameworks_native.sh
+time source steps/build_03/frameworks_rs.sh
+time source steps/build_03/frameworks_wilhelm.sh
+time source steps/build_03/hardware_google_camera.sh
+time source steps/build_03/kernel_configs.sh
+time source steps/build_03/libcore.sh
+time source steps/build_03/libnativehelper.sh
+time source steps/build_03/packages_modules_DnsResolver.sh
+time source steps/build_03/packages_modules_NeuralNetworks.sh
+time source steps/build_03/packages_modules_StatsD.sh
+time source steps/build_03/packages_modules_Virtualization.sh
+time source steps/build_03/packages_modules_adb.sh
+time source steps/build_03/packages_services_Car.sh
+time source steps/build_03/prebuilts_gradle-plugin.sh
+time source steps/build_03/prebuilts_manifest-merger.sh
+time source steps/build_03/prebuilts_misc.sh
+time source steps/build_03/prebuilts_r8.sh
+time source steps/build_03/prebuilts_sdk.sh
+time source steps/build_03/prebuilts_tools.sh
+time source steps/build_03/system_apex.sh
+time source steps/build_03/system_bt.sh
+time source steps/build_03/system_connectivity_wificond.sh
+time source steps/build_03/system_core.sh
+time source steps/build_03/system_extras.sh
+time source steps/build_03/system_logging.sh
+time source steps/build_03/system_sepolicy.sh
+time source steps/build_03/system_tools_aidl.sh
+time source steps/build_03/system_tools_hidl.sh
+time source steps/build_03/tools_apksig.sh
+time source steps/build_03/tools_metalava.sh
+time source steps/build_03/tools_platform-compat.sh
 
 if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_clang_host_linux-x86.tar.zst" ]; then
   echo "Compressing prebuilts/clang/host/linux-x86 -> prebuilts_clang_host_linux-x86.tar.zst"

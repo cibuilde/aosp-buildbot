@@ -9,7 +9,9 @@ ln -sf $GITHUB_WORKSPACE/ndk.ninja .
 ln -sf $GITHUB_WORKSPACE/ninja-ndk .
 ln -sf $GITHUB_WORKSPACE/ninja .
 
-mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86 prebuilts/clang/host/linux-x86
+if [ -d "$GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86" ]; then
+  mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86 prebuilts/clang/host/linux-x86
+fi
 
 clone_project platform/prebuilts/build-tools prebuilts/build-tools android12-gsi "/linux-x86/bin" "/linux-x86/lib64" "/path" "/common"
 clone_project platform/prebuilts/gradle-plugin prebuilts/gradle-plugin android12-gsi "/com/android/tools/build/manifest-merger/30.0.0-alpha14/manifest-merger-30.0.0-alpha14.jar" "/com/android/tools/common/30.0.0-alpha14/common-30.0.0-alpha14.jar" "/com/android/tools/external/com-intellij/intellij-core/30.0.0-alpha14/intellij-core-30.0.0-alpha14.jar" "/com/android/tools/external/com-intellij/kotlin-compiler/30.0.0-alpha14/kotlin-compiler-30.0.0-alpha14.jar" "/com/android/tools/external/org-jetbrains/uast/30.0.0-alpha14/uast-30.0.0-alpha14.jar" "/com/android/tools/lint/lint/30.0.0-alpha14/lint-30.0.0-alpha14.jar" "/com/android/tools/lint/lint-api/30.0.0-alpha14/lint-api-30.0.0-alpha14.jar" "/com/android/tools/lint/lint-checks/30.0.0-alpha14/lint-checks-30.0.0-alpha14.jar" "/com/android/tools/lint/lint-gradle/30.0.0-alpha14/lint-gradle-30.0.0-alpha14.jar" "/com/android/tools/lint/lint-model/30.0.0-alpha14/lint-model-30.0.0-alpha14.jar" "/com/android/tools/repository/30.0.0-alpha14/repository-30.0.0-alpha14.jar" "/com/android/tools/sdk-common/30.0.0-alpha14/sdk-common-30.0.0-alpha14.jar" "/com/android/tools/sdklib/30.0.0-alpha14/sdklib-30.0.0-alpha14.jar"
