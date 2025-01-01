@@ -1445,40 +1445,14 @@ gh release --repo cibuilde/aosp-buildbot download android12-gsi_08 --pattern too
 mkdir -p $GITHUB_WORKSPACE/downloads/tools/metalava
 tar xf $GITHUB_WORKSPACE/tools_metalava-08.tar.zst -C $GITHUB_WORKSPACE/downloads/tools/metalava/
 
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/apache-xml
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/apache-xml/apache-xml^android_common_apex31 $GITHUB_WORKSPACE/artifacts/external/apache-xml/
 export OUT_DIR=out
 mkdir -p $GITHUB_WORKSPACE/.bin
 ln -sf /usr/bin/python2 $GITHUB_WORKSPACE/.bin/python
 export PATH=$GITHUB_WORKSPACE/.bin:$PATH
 
-time source steps/build_11/bootable_recovery.sh
-time source steps/build_11/device_generic_vulkan-cereal.sh
-time source steps/build_11/device_google_cuttlefish.sh
-time source steps/build_11/external_angle.sh
 time source steps/build_11/external_apache-xml.sh
-time source steps/build_11/external_conscrypt.sh
-time source steps/build_11/external_crosvm.sh
-time source steps/build_11/external_drm_hwcomposer.sh
-time source steps/build_11/external_icu.sh
-time source steps/build_11/external_minigbm.sh
-time source steps/build_11/external_okhttp.sh
-time source steps/build_11/external_rust_crates_futures.sh
-time source steps/build_11/external_rust_crates_rand.sh
-time source steps/build_11/frameworks_av.sh
-time source steps/build_11/frameworks_base.sh
-time source steps/build_11/frameworks_native.sh
-time source steps/build_11/hardware_google_camera.sh
-time source steps/build_11/hardware_interfaces.sh
-time source steps/build_11/packages_apps_Gallery2.sh
-time source steps/build_11/packages_apps_Nfc.sh
-time source steps/build_11/packages_modules_Virtualization.sh
-time source steps/build_11/system_apex.sh
-time source steps/build_11/system_bt.sh
-time source steps/build_11/system_connectivity_wificond.sh
-time source steps/build_11/system_core.sh
-time source steps/build_11/system_gsid.sh
-time source steps/build_11/system_netd.sh
-time source steps/build_11/system_security.sh
-time source steps/build_11/system_update_engine.sh
 
 if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_clang_host_linux-x86.tar.zst" ]; then
   echo "Compressing prebuilts/clang/host/linux-x86 -> prebuilts_clang_host_linux-x86.tar.zst"

@@ -99,14 +99,13 @@ gh release --repo cibuilde/aosp-buildbot download android12-gsi_13 --pattern too
 mkdir -p $GITHUB_WORKSPACE/downloads/tools/platform-compat
 tar xf $GITHUB_WORKSPACE/tools_platform-compat-13.tar.zst -C $GITHUB_WORKSPACE/downloads/tools/platform-compat/
 
+mkdir -p $GITHUB_WORKSPACE/artifacts/singletons
+rsync -a -r $GITHUB_WORKSPACE/downloads/singletons/sdk^ $GITHUB_WORKSPACE/artifacts/singletons/
 export OUT_DIR=out
 mkdir -p $GITHUB_WORKSPACE/.bin
 ln -sf /usr/bin/python2 $GITHUB_WORKSPACE/.bin/python
 export PATH=$GITHUB_WORKSPACE/.bin:$PATH
 
-time source steps/build_18/frameworks_libs_modules-utils.sh
-time source steps/build_18/hardware_interfaces.sh
-time source steps/build_18/packages_modules_Permission.sh
 time source steps/build_18/singletons.sh
 
 

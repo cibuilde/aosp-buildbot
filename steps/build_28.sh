@@ -195,6 +195,18 @@ gh release --repo cibuilde/aosp-buildbot download android12-gsi_07 --pattern too
 mkdir -p $GITHUB_WORKSPACE/downloads/tools/platform-compat
 tar xf $GITHUB_WORKSPACE/tools_platform-compat-07.tar.zst -C $GITHUB_WORKSPACE/downloads/tools/platform-compat/
 
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base
+rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/ext^android_common $GITHUB_WORKSPACE/artifacts/frameworks/base/
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/apex/appsearch/framework
+rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/apex/appsearch/framework/framework-appsearch^android_common_apex10000 $GITHUB_WORKSPACE/artifacts/frameworks/base/apex/appsearch/framework/
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/libs/hwui
+rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/libs/hwui/framework-graphics^android_common $GITHUB_WORKSPACE/artifacts/frameworks/base/libs/hwui/
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base
+rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/framework-minus-apex^android_common $GITHUB_WORKSPACE/artifacts/frameworks/base/
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/boot
+rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/boot/platform-bootclasspath^android_common $GITHUB_WORKSPACE/artifacts/frameworks/base/boot/
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/apex/media/framework
+rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/apex/media/framework/updatable-media^android_common_apex29 $GITHUB_WORKSPACE/artifacts/frameworks/base/apex/media/framework/
 export OUT_DIR=out
 mkdir -p $GITHUB_WORKSPACE/.bin
 ln -sf /usr/bin/python2 $GITHUB_WORKSPACE/.bin/python

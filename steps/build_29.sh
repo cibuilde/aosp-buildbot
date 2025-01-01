@@ -99,6 +99,36 @@ gh release --repo cibuilde/aosp-buildbot download android12-gsi_20 --pattern pac
 mkdir -p $GITHUB_WORKSPACE/downloads/packages/providers/MediaProvider
 tar xf $GITHUB_WORKSPACE/packages_providers_MediaProvider-20.tar.zst -C $GITHUB_WORKSPACE/downloads/packages/providers/MediaProvider/
 
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/conscrypt
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/conscrypt/conscrypt^android_common_apex29 $GITHUB_WORKSPACE/artifacts/external/conscrypt/
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/icu/android_icu4j
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/icu/android_icu4j/core-icu4j^android_common_apex10000 $GITHUB_WORKSPACE/artifacts/external/icu/android_icu4j/
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/opt/net/ims
+rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/opt/net/ims/ims-common^android_common $GITHUB_WORKSPACE/artifacts/frameworks/opt/net/ims/
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/opt/net/voip
+rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/opt/net/voip/voip-common^android_common $GITHUB_WORKSPACE/artifacts/frameworks/opt/net/voip/
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/opt/telephony
+rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/opt/telephony/telephony-common^android_common $GITHUB_WORKSPACE/artifacts/frameworks/opt/telephony/
+mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/Connectivity/framework
+rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/Connectivity/framework/framework-connectivity^android_common_apex30 $GITHUB_WORKSPACE/artifacts/packages/modules/Connectivity/framework/
+mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/Connectivity/Tethering/common/TetheringLib
+rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/Connectivity/Tethering/common/TetheringLib/framework-tethering^android_common_apex30 $GITHUB_WORKSPACE/artifacts/packages/modules/Connectivity/Tethering/common/TetheringLib/
+mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/IPsec
+rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/IPsec/android.net.ipsec.ike^android_common_com.android.ipsec $GITHUB_WORKSPACE/artifacts/packages/modules/IPsec/
+mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/Permission/framework-s
+rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/Permission/framework-s/framework-permission-s^android_common_apex30 $GITHUB_WORKSPACE/artifacts/packages/modules/Permission/framework-s/
+mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/Permission/framework
+rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/Permission/framework/framework-permission^android_common_apex30 $GITHUB_WORKSPACE/artifacts/packages/modules/Permission/framework/
+mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/Scheduling/framework
+rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/Scheduling/framework/framework-scheduling^android_common_apex10000 $GITHUB_WORKSPACE/artifacts/packages/modules/Scheduling/framework/
+mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/SdkExtensions/framework
+rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/SdkExtensions/framework/framework-sdkextensions^android_common_apex30 $GITHUB_WORKSPACE/artifacts/packages/modules/SdkExtensions/framework/
+mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/StatsD/framework
+rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/StatsD/framework/framework-statsd^android_common_apex30 $GITHUB_WORKSPACE/artifacts/packages/modules/StatsD/framework/
+mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/Wifi/framework
+rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/Wifi/framework/framework-wifi^android_common_apex30 $GITHUB_WORKSPACE/artifacts/packages/modules/Wifi/framework/
+mkdir -p $GITHUB_WORKSPACE/artifacts/packages/providers/MediaProvider/apex/framework
+rsync -a -r $GITHUB_WORKSPACE/downloads/packages/providers/MediaProvider/apex/framework/framework-mediaprovider^android_common_apex30 $GITHUB_WORKSPACE/artifacts/packages/providers/MediaProvider/apex/framework/
 export OUT_DIR=out
 mkdir -p $GITHUB_WORKSPACE/.bin
 ln -sf /usr/bin/python2 $GITHUB_WORKSPACE/.bin/python

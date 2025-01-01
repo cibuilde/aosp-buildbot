@@ -1133,13 +1133,14 @@ gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern too
 mkdir -p $GITHUB_WORKSPACE/downloads/tools/dexter
 tar xf $GITHUB_WORKSPACE/tools_dexter-01.tar.zst -C $GITHUB_WORKSPACE/downloads/tools/dexter/
 
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/boot
+rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/boot/platform-bootclasspath^android_common $GITHUB_WORKSPACE/artifacts/frameworks/base/boot/
 export OUT_DIR=out
 mkdir -p $GITHUB_WORKSPACE/.bin
 ln -sf /usr/bin/python2 $GITHUB_WORKSPACE/.bin/python
 export PATH=$GITHUB_WORKSPACE/.bin:$PATH
 
-time source steps/build_06/external_tensorflow.sh
-time source steps/build_06/system_libbase.sh
+time source steps/build_06/frameworks_base.sh
 
 if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_clang_host_linux-x86.tar.zst" ]; then
   echo "Compressing prebuilts/clang/host/linux-x86 -> prebuilts_clang_host_linux-x86.tar.zst"

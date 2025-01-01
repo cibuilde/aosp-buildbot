@@ -1337,45 +1337,14 @@ gh release --repo cibuilde/aosp-buildbot download android12-gsi_05 --pattern too
 mkdir -p $GITHUB_WORKSPACE/downloads/tools/platform-compat
 tar xf $GITHUB_WORKSPACE/tools_platform-compat-05.tar.zst -C $GITHUB_WORKSPACE/downloads/tools/platform-compat/
 
+mkdir -p $GITHUB_WORKSPACE/artifacts/libcore
+rsync -a -r $GITHUB_WORKSPACE/downloads/libcore/core-oj^android_common_apex31 $GITHUB_WORKSPACE/artifacts/libcore/
 export OUT_DIR=out
 mkdir -p $GITHUB_WORKSPACE/.bin
 ln -sf /usr/bin/python2 $GITHUB_WORKSPACE/.bin/python
 export PATH=$GITHUB_WORKSPACE/.bin:$PATH
 
-time source steps/build_10/bootable_recovery.sh
-time source steps/build_10/device_generic_goldfish.sh
-time source steps/build_10/device_google_cuttlefish.sh
-time source steps/build_10/external_perfetto.sh
-time source steps/build_10/external_rust_crates_android_logger.sh
-time source steps/build_10/external_rust_crates_futures-executor.sh
-time source steps/build_10/external_rust_crates_rand_chacha.sh
-time source steps/build_10/external_rust_crates_zip.sh
-time source steps/build_10/external_swiftshader.sh
-time source steps/build_10/external_vm_tools_p9.sh
-time source steps/build_10/frameworks_av.sh
-time source steps/build_10/frameworks_base.sh
-time source steps/build_10/frameworks_hardware_interfaces.sh
-time source steps/build_10/frameworks_native.sh
-time source steps/build_10/frameworks_rs.sh
-time source steps/build_10/hardware_interfaces.sh
-time source steps/build_10/hardware_libhardware.sh
-time source steps/build_10/hardware_libhardware_legacy.sh
 time source steps/build_10/libcore.sh
-time source steps/build_10/packages_modules_DnsResolver.sh
-time source steps/build_10/packages_modules_NeuralNetworks.sh
-time source steps/build_10/packages_modules_Virtualization.sh
-time source steps/build_10/system_bt.sh
-time source steps/build_10/system_core.sh
-time source steps/build_10/system_extras.sh
-time source steps/build_10/system_hardware_interfaces.sh
-time source steps/build_10/system_keymaster.sh
-time source steps/build_10/system_memory_libmemtrack.sh
-time source steps/build_10/system_netd.sh
-time source steps/build_10/system_nfc.sh
-time source steps/build_10/system_security.sh
-time source steps/build_10/system_tools_hidl.sh
-time source steps/build_10/system_update_engine.sh
-time source steps/build_10/system_vold.sh
 
 if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_clang_host_linux-x86.tar.zst" ]; then
   echo "Compressing prebuilts/clang/host/linux-x86 -> prebuilts_clang_host_linux-x86.tar.zst"

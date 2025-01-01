@@ -341,21 +341,16 @@ gh release --repo cibuilde/aosp-buildbot download android12-gsi_07 --pattern too
 mkdir -p $GITHUB_WORKSPACE/downloads/tools/platform-compat
 tar xf $GITHUB_WORKSPACE/tools_platform-compat-07.tar.zst -C $GITHUB_WORKSPACE/downloads/tools/platform-compat/
 
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base
+rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/ext^android_common $GITHUB_WORKSPACE/artifacts/frameworks/base/
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/libhidl/transport/base/1.0
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/libhidl/transport/base/1.0/android.hidl.base-V1.0-java^android_common $GITHUB_WORKSPACE/artifacts/system/libhidl/transport/base/1.0/
 export OUT_DIR=out
 mkdir -p $GITHUB_WORKSPACE/.bin
 ln -sf /usr/bin/python2 $GITHUB_WORKSPACE/.bin/python
 export PATH=$GITHUB_WORKSPACE/.bin:$PATH
 
-time source steps/build_15/art.sh
-time source steps/build_15/external_neven.sh
-time source steps/build_15/frameworks_av.sh
 time source steps/build_15/frameworks_base.sh
-time source steps/build_15/frameworks_ex.sh
-time source steps/build_15/frameworks_opt_net_voip.sh
-time source steps/build_15/frameworks_rs.sh
-time source steps/build_15/packages_apps_Gallery2.sh
-time source steps/build_15/packages_modules_NetworkStack.sh
-time source steps/build_15/packages_modules_RuntimeI18n.sh
 time source steps/build_15/system_libhidl.sh
 
 if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_clang_host_linux-x86.tar.zst" ]; then

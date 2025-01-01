@@ -255,6 +255,8 @@ gh release --repo cibuilde/aosp-buildbot download android12-gsi_07 --pattern too
 mkdir -p $GITHUB_WORKSPACE/downloads/tools/platform-compat
 tar xf $GITHUB_WORKSPACE/tools_platform-compat-07.tar.zst -C $GITHUB_WORKSPACE/downloads/tools/platform-compat/
 
+mkdir -p $GITHUB_WORKSPACE/artifacts/singletons
+rsync -a -r $GITHUB_WORKSPACE/downloads/singletons/sdk^ $GITHUB_WORKSPACE/artifacts/singletons/
 export OUT_DIR=out
 mkdir -p $GITHUB_WORKSPACE/.bin
 ln -sf /usr/bin/python2 $GITHUB_WORKSPACE/.bin/python
