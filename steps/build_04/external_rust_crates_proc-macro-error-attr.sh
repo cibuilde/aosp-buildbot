@@ -28,6 +28,7 @@ echo "building libproc_macro_error_attr^linux_glibc_x86_64"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libproc_macro_error_attr,linux_glibc_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/rust/crates/proc-macro-error-attr/libproc_macro_error_attr^linux_glibc_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/rust/crates/proc-macro-error-attr/libproc_macro_error_attr^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/rust/crates/proc-macro-error-attr/libproc_macro_error_attr^linux_glibc_x86_64
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/external/rust/crates/proc-macro-error-attr/libproc_macro_error_attr^linux_glibc_x86_64.output $GITHUB_WORKSPACE/artifacts/external/rust/crates/proc-macro-error-attr/libproc_macro_error_attr^linux_glibc_x86_64 $GITHUB_WORKSPACE/artifacts/external/rust/crates/proc-macro-error-attr/libproc_macro_error_attr^linux_glibc_x86_64/addition_copy_files.output
 
 rm -rf out
 

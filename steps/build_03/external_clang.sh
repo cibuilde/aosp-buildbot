@@ -20,6 +20,7 @@ echo "building clang-version^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja clang-version,
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/clang/clang-version^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/external/clang/clang-version^.output . $GITHUB_WORKSPACE/artifacts/external/clang/clang-version^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/external/clang/clang-version^.output $GITHUB_WORKSPACE/artifacts/external/clang/clang-version^ $GITHUB_WORKSPACE/artifacts/external/clang/clang-version^/addition_copy_files.output
 
 rm -rf out
 

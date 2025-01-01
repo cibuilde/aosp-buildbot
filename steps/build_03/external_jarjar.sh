@@ -20,11 +20,13 @@ echo "building jarjar-apache-ant^linux_glibc_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja jarjar-apache-ant,linux_glibc_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/jarjar/jarjar-apache-ant^linux_glibc_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/external/jarjar/jarjar-apache-ant^linux_glibc_common.output . $GITHUB_WORKSPACE/artifacts/external/jarjar/jarjar-apache-ant^linux_glibc_common
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/external/jarjar/jarjar-apache-ant^linux_glibc_common.output $GITHUB_WORKSPACE/artifacts/external/jarjar/jarjar-apache-ant^linux_glibc_common $GITHUB_WORKSPACE/artifacts/external/jarjar/jarjar-apache-ant^linux_glibc_common/addition_copy_files.output
 
 echo "building jarjar-maven-plugin-api^linux_glibc_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja jarjar-maven-plugin-api,linux_glibc_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/jarjar/jarjar-maven-plugin-api^linux_glibc_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/external/jarjar/jarjar-maven-plugin-api^linux_glibc_common.output . $GITHUB_WORKSPACE/artifacts/external/jarjar/jarjar-maven-plugin-api^linux_glibc_common
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/external/jarjar/jarjar-maven-plugin-api^linux_glibc_common.output $GITHUB_WORKSPACE/artifacts/external/jarjar/jarjar-maven-plugin-api^linux_glibc_common $GITHUB_WORKSPACE/artifacts/external/jarjar/jarjar-maven-plugin-api^linux_glibc_common/addition_copy_files.output
 
 rm -rf out
 

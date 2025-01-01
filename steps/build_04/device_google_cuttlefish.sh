@@ -42,31 +42,37 @@ echo "building libcdisk_spec^android_x86_64_static_apex10000"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libcdisk_spec,android_x86_64_static_apex10000
 mkdir -p $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/host/libs/image_aggregator/libcdisk_spec^android_x86_64_static_apex10000
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/device/google/cuttlefish/libcdisk_spec^android_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/host/libs/image_aggregator/libcdisk_spec^android_x86_64_static_apex10000
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/device/google/cuttlefish/libcdisk_spec^android_x86_64_static_apex10000.output $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/host/libs/image_aggregator/libcdisk_spec^android_x86_64_static_apex10000 $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/host/libs/image_aggregator/libcdisk_spec^android_x86_64_static_apex10000/addition_copy_files.output
 
 echo "building libcuttlefish_device_config_proto^android_vendor.31_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libcuttlefish_device_config_proto,android_vendor.31_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/common/libs/device_config/libcuttlefish_device_config_proto^android_vendor.31_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/device/google/cuttlefish/libcuttlefish_device_config_proto^android_vendor.31_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/common/libs/device_config/libcuttlefish_device_config_proto^android_vendor.31_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/device/google/cuttlefish/libcuttlefish_device_config_proto^android_vendor.31_x86_64_static.output $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/common/libs/device_config/libcuttlefish_device_config_proto^android_vendor.31_x86_64_static $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/common/libs/device_config/libcuttlefish_device_config_proto^android_vendor.31_x86_64_static/addition_copy_files.output
 
 echo "building libcuttlefish_device_config_proto^android_vendor.31_x86_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libcuttlefish_device_config_proto,android_vendor.31_x86_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/common/libs/device_config/libcuttlefish_device_config_proto^android_vendor.31_x86_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/device/google/cuttlefish/libcuttlefish_device_config_proto^android_vendor.31_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/common/libs/device_config/libcuttlefish_device_config_proto^android_vendor.31_x86_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/device/google/cuttlefish/libcuttlefish_device_config_proto^android_vendor.31_x86_x86_64_static.output $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/common/libs/device_config/libcuttlefish_device_config_proto^android_vendor.31_x86_x86_64_static $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/common/libs/device_config/libcuttlefish_device_config_proto^android_vendor.31_x86_x86_64_static/addition_copy_files.output
 
 echo "building libcuttlefish_fs_product^android_product.31_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libcuttlefish_fs_product,android_product.31_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/common/libs/fs/libcuttlefish_fs_product^android_product.31_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/device/google/cuttlefish/libcuttlefish_fs_product^android_product.31_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/common/libs/fs/libcuttlefish_fs_product^android_product.31_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/device/google/cuttlefish/libcuttlefish_fs_product^android_product.31_x86_64_static.output $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/common/libs/fs/libcuttlefish_fs_product^android_product.31_x86_64_static $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/common/libs/fs/libcuttlefish_fs_product^android_product.31_x86_64_static/addition_copy_files.output
 
 echo "building libcuttlefish_kernel_log_monitor_utils^android_vendor.31_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libcuttlefish_kernel_log_monitor_utils,android_vendor.31_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/host/commands/kernel_log_monitor/libcuttlefish_kernel_log_monitor_utils^android_vendor.31_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/device/google/cuttlefish/libcuttlefish_kernel_log_monitor_utils^android_vendor.31_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/host/commands/kernel_log_monitor/libcuttlefish_kernel_log_monitor_utils^android_vendor.31_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/device/google/cuttlefish/libcuttlefish_kernel_log_monitor_utils^android_vendor.31_x86_64_static.output $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/host/commands/kernel_log_monitor/libcuttlefish_kernel_log_monitor_utils^android_vendor.31_x86_64_static $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/host/commands/kernel_log_monitor/libcuttlefish_kernel_log_monitor_utils^android_vendor.31_x86_64_static/addition_copy_files.output
 
 echo "building libimage_aggregator^android_x86_64_static_apex10000"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libimage_aggregator,android_x86_64_static_apex10000
 mkdir -p $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/host/libs/image_aggregator/libimage_aggregator^android_x86_64_static_apex10000
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/device/google/cuttlefish/libimage_aggregator^android_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/host/libs/image_aggregator/libimage_aggregator^android_x86_64_static_apex10000
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/device/google/cuttlefish/libimage_aggregator^android_x86_64_static_apex10000.output $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/host/libs/image_aggregator/libimage_aggregator^android_x86_64_static_apex10000 $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/host/libs/image_aggregator/libimage_aggregator^android_x86_64_static_apex10000/addition_copy_files.output
 
 rm -rf out
 

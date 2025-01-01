@@ -118,11 +118,13 @@ echo "building libkeystore-engine-wifi-hidl^android_vendor.31_x86_64_shared"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libkeystore-engine-wifi-hidl,android_vendor.31_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/security/keystore-engine/libkeystore-engine-wifi-hidl^android_vendor.31_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/system/security/libkeystore-engine-wifi-hidl^android_vendor.31_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/security/keystore-engine/libkeystore-engine-wifi-hidl^android_vendor.31_x86_64_shared
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_08/system/security/libkeystore-engine-wifi-hidl^android_vendor.31_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/system/security/keystore-engine/libkeystore-engine-wifi-hidl^android_vendor.31_x86_64_shared $GITHUB_WORKSPACE/artifacts/system/security/keystore-engine/libkeystore-engine-wifi-hidl^android_vendor.31_x86_64_shared/addition_copy_files.output
 
 echo "building libkeystore2_selinux^android_x86_64_rlib_rlib-std"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libkeystore2_selinux,android_x86_64_rlib_rlib-std
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/security/keystore2/selinux/libkeystore2_selinux^android_x86_64_rlib_rlib-std
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/system/security/libkeystore2_selinux^android_x86_64_rlib_rlib-std.output . $GITHUB_WORKSPACE/artifacts/system/security/keystore2/selinux/libkeystore2_selinux^android_x86_64_rlib_rlib-std
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_08/system/security/libkeystore2_selinux^android_x86_64_rlib_rlib-std.output $GITHUB_WORKSPACE/artifacts/system/security/keystore2/selinux/libkeystore2_selinux^android_x86_64_rlib_rlib-std $GITHUB_WORKSPACE/artifacts/system/security/keystore2/selinux/libkeystore2_selinux^android_x86_64_rlib_rlib-std/addition_copy_files.output
 
 rm -rf out
 

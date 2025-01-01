@@ -19,26 +19,31 @@ echo "building llndk.libraries.28.txt^android_x86_64"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja llndk.libraries.28.txt,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/vndk/v28/llndk.libraries.28.txt^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/prebuilts/vndk/v28/llndk.libraries.28.txt^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/prebuilts/vndk/v28/llndk.libraries.28.txt^android_x86_64
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/prebuilts/vndk/v28/llndk.libraries.28.txt^android_x86_64.output $GITHUB_WORKSPACE/artifacts/prebuilts/vndk/v28/llndk.libraries.28.txt^android_x86_64 $GITHUB_WORKSPACE/artifacts/prebuilts/vndk/v28/llndk.libraries.28.txt^android_x86_64/addition_copy_files.output
 
 echo "building vndkcore.libraries.28.txt^android_x86_64"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja vndkcore.libraries.28.txt,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/vndk/v28/vndkcore.libraries.28.txt^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/prebuilts/vndk/v28/vndkcore.libraries.28.txt^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/prebuilts/vndk/v28/vndkcore.libraries.28.txt^android_x86_64
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/prebuilts/vndk/v28/vndkcore.libraries.28.txt^android_x86_64.output $GITHUB_WORKSPACE/artifacts/prebuilts/vndk/v28/vndkcore.libraries.28.txt^android_x86_64 $GITHUB_WORKSPACE/artifacts/prebuilts/vndk/v28/vndkcore.libraries.28.txt^android_x86_64/addition_copy_files.output
 
 echo "building vndkprivate.libraries.28.txt^android_x86_64"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja vndkprivate.libraries.28.txt,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/vndk/v28/vndkprivate.libraries.28.txt^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/prebuilts/vndk/v28/vndkprivate.libraries.28.txt^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/prebuilts/vndk/v28/vndkprivate.libraries.28.txt^android_x86_64
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/prebuilts/vndk/v28/vndkprivate.libraries.28.txt^android_x86_64.output $GITHUB_WORKSPACE/artifacts/prebuilts/vndk/v28/vndkprivate.libraries.28.txt^android_x86_64 $GITHUB_WORKSPACE/artifacts/prebuilts/vndk/v28/vndkprivate.libraries.28.txt^android_x86_64/addition_copy_files.output
 
 echo "building vndkproduct.libraries.28.txt^android_x86_64"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja vndkproduct.libraries.28.txt,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/vndk/v28/vndkproduct.libraries.28.txt^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/prebuilts/vndk/v28/vndkproduct.libraries.28.txt^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/prebuilts/vndk/v28/vndkproduct.libraries.28.txt^android_x86_64
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/prebuilts/vndk/v28/vndkproduct.libraries.28.txt^android_x86_64.output $GITHUB_WORKSPACE/artifacts/prebuilts/vndk/v28/vndkproduct.libraries.28.txt^android_x86_64 $GITHUB_WORKSPACE/artifacts/prebuilts/vndk/v28/vndkproduct.libraries.28.txt^android_x86_64/addition_copy_files.output
 
 echo "building vndksp.libraries.28.txt^android_x86_64"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja vndksp.libraries.28.txt,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/vndk/v28/vndksp.libraries.28.txt^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/prebuilts/vndk/v28/vndksp.libraries.28.txt^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/prebuilts/vndk/v28/vndksp.libraries.28.txt^android_x86_64
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/prebuilts/vndk/v28/vndksp.libraries.28.txt^android_x86_64.output $GITHUB_WORKSPACE/artifacts/prebuilts/vndk/v28/vndksp.libraries.28.txt^android_x86_64 $GITHUB_WORKSPACE/artifacts/prebuilts/vndk/v28/vndksp.libraries.28.txt^android_x86_64/addition_copy_files.output
 
 rm -rf out
 

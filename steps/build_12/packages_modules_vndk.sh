@@ -321,6 +321,7 @@ echo "building com.android.vndk.current^android_common_image"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_12.ninja com.android.vndk.current,android_common_image
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/vndk/apex/com.android.vndk.current^android_common_image
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_12/packages/modules/vndk/com.android.vndk.current^android_common_image.output . $GITHUB_WORKSPACE/artifacts/packages/modules/vndk/apex/com.android.vndk.current^android_common_image
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_12/packages/modules/vndk/com.android.vndk.current^android_common_image.output $GITHUB_WORKSPACE/artifacts/packages/modules/vndk/apex/com.android.vndk.current^android_common_image $GITHUB_WORKSPACE/artifacts/packages/modules/vndk/apex/com.android.vndk.current^android_common_image/addition_copy_files.output
 
 rm -rf out
 

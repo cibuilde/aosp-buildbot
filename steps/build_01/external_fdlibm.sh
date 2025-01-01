@@ -31,11 +31,13 @@ echo "building libfdlibm^android_x86_64_static_apex31"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libfdlibm,android_x86_64_static_apex31
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/fdlibm/libfdlibm^android_x86_64_static_apex31
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/fdlibm/libfdlibm^android_x86_64_static_apex31.output . $GITHUB_WORKSPACE/artifacts/external/fdlibm/libfdlibm^android_x86_64_static_apex31
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/fdlibm/libfdlibm^android_x86_64_static_apex31.output $GITHUB_WORKSPACE/artifacts/external/fdlibm/libfdlibm^android_x86_64_static_apex31 $GITHUB_WORKSPACE/artifacts/external/fdlibm/libfdlibm^android_x86_64_static_apex31/addition_copy_files.output
 
 echo "building libfdlibm^android_x86_x86_64_static_apex31"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libfdlibm,android_x86_x86_64_static_apex31
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/fdlibm/libfdlibm^android_x86_x86_64_static_apex31
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/fdlibm/libfdlibm^android_x86_x86_64_static_apex31.output . $GITHUB_WORKSPACE/artifacts/external/fdlibm/libfdlibm^android_x86_x86_64_static_apex31
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/fdlibm/libfdlibm^android_x86_x86_64_static_apex31.output $GITHUB_WORKSPACE/artifacts/external/fdlibm/libfdlibm^android_x86_x86_64_static_apex31 $GITHUB_WORKSPACE/artifacts/external/fdlibm/libfdlibm^android_x86_x86_64_static_apex31/addition_copy_files.output
 
 rm -rf out
 

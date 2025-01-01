@@ -37,61 +37,73 @@ echo "building clang-gen-arm-neon^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja clang-gen-arm-neon,
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/clang/clang-gen-arm-neon^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/clang/clang-gen-arm-neon^.output . $GITHUB_WORKSPACE/artifacts/external/clang/clang-gen-arm-neon^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/external/clang/clang-gen-arm-neon^.output $GITHUB_WORKSPACE/artifacts/external/clang/clang-gen-arm-neon^ $GITHUB_WORKSPACE/artifacts/external/clang/clang-gen-arm-neon^/addition_copy_files.output
 
 echo "building clang-gen-attributes^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja clang-gen-attributes,
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/clang/clang-gen-attributes^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/clang/clang-gen-attributes^.output . $GITHUB_WORKSPACE/artifacts/external/clang/clang-gen-attributes^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/external/clang/clang-gen-attributes^.output $GITHUB_WORKSPACE/artifacts/external/clang/clang-gen-attributes^ $GITHUB_WORKSPACE/artifacts/external/clang/clang-gen-attributes^/addition_copy_files.output
 
 echo "building clang-gen-checkers^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja clang-gen-checkers,
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/clang/clang-gen-checkers^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/clang/clang-gen-checkers^.output . $GITHUB_WORKSPACE/artifacts/external/clang/clang-gen-checkers^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/external/clang/clang-gen-checkers^.output $GITHUB_WORKSPACE/artifacts/external/clang/clang-gen-checkers^ $GITHUB_WORKSPACE/artifacts/external/clang/clang-gen-checkers^/addition_copy_files.output
 
 echo "building clang-gen-comment-commands^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja clang-gen-comment-commands,
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/clang/clang-gen-comment-commands^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/clang/clang-gen-comment-commands^.output . $GITHUB_WORKSPACE/artifacts/external/clang/clang-gen-comment-commands^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/external/clang/clang-gen-comment-commands^.output $GITHUB_WORKSPACE/artifacts/external/clang/clang-gen-comment-commands^ $GITHUB_WORKSPACE/artifacts/external/clang/clang-gen-comment-commands^/addition_copy_files.output
 
 echo "building clang-gen-comment-html-named-character-references^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja clang-gen-comment-html-named-character-references,
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/clang/clang-gen-comment-html-named-character-references^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/clang/clang-gen-comment-html-named-character-references^.output . $GITHUB_WORKSPACE/artifacts/external/clang/clang-gen-comment-html-named-character-references^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/external/clang/clang-gen-comment-html-named-character-references^.output $GITHUB_WORKSPACE/artifacts/external/clang/clang-gen-comment-html-named-character-references^ $GITHUB_WORKSPACE/artifacts/external/clang/clang-gen-comment-html-named-character-references^/addition_copy_files.output
 
 echo "building clang-gen-comment-nodes^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja clang-gen-comment-nodes,
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/clang/clang-gen-comment-nodes^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/clang/clang-gen-comment-nodes^.output . $GITHUB_WORKSPACE/artifacts/external/clang/clang-gen-comment-nodes^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/external/clang/clang-gen-comment-nodes^.output $GITHUB_WORKSPACE/artifacts/external/clang/clang-gen-comment-nodes^ $GITHUB_WORKSPACE/artifacts/external/clang/clang-gen-comment-nodes^/addition_copy_files.output
 
 echo "building clang-gen-declnodes^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja clang-gen-declnodes,
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/clang/clang-gen-declnodes^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/clang/clang-gen-declnodes^.output . $GITHUB_WORKSPACE/artifacts/external/clang/clang-gen-declnodes^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/external/clang/clang-gen-declnodes^.output $GITHUB_WORKSPACE/artifacts/external/clang/clang-gen-declnodes^ $GITHUB_WORKSPACE/artifacts/external/clang/clang-gen-declnodes^/addition_copy_files.output
 
 echo "building clang-gen-diagnostics^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja clang-gen-diagnostics,
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/clang/clang-gen-diagnostics^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/clang/clang-gen-diagnostics^.output . $GITHUB_WORKSPACE/artifacts/external/clang/clang-gen-diagnostics^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/external/clang/clang-gen-diagnostics^.output $GITHUB_WORKSPACE/artifacts/external/clang/clang-gen-diagnostics^ $GITHUB_WORKSPACE/artifacts/external/clang/clang-gen-diagnostics^/addition_copy_files.output
 
 echo "building clang-gen-html-tags^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja clang-gen-html-tags,
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/clang/clang-gen-html-tags^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/clang/clang-gen-html-tags^.output . $GITHUB_WORKSPACE/artifacts/external/clang/clang-gen-html-tags^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/external/clang/clang-gen-html-tags^.output $GITHUB_WORKSPACE/artifacts/external/clang/clang-gen-html-tags^ $GITHUB_WORKSPACE/artifacts/external/clang/clang-gen-html-tags^/addition_copy_files.output
 
 echo "building clang-gen-options^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja clang-gen-options,
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/clang/clang-gen-options^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/clang/clang-gen-options^.output . $GITHUB_WORKSPACE/artifacts/external/clang/clang-gen-options^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/external/clang/clang-gen-options^.output $GITHUB_WORKSPACE/artifacts/external/clang/clang-gen-options^ $GITHUB_WORKSPACE/artifacts/external/clang/clang-gen-options^/addition_copy_files.output
 
 echo "building clang-gen-statnodes^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja clang-gen-statnodes,
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/clang/clang-gen-statnodes^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/clang/clang-gen-statnodes^.output . $GITHUB_WORKSPACE/artifacts/external/clang/clang-gen-statnodes^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/external/clang/clang-gen-statnodes^.output $GITHUB_WORKSPACE/artifacts/external/clang/clang-gen-statnodes^ $GITHUB_WORKSPACE/artifacts/external/clang/clang-gen-statnodes^/addition_copy_files.output
 
 echo "building clang-tblgen^linux_glibc_x86_64"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja clang-tblgen,linux_glibc_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/clang/utils/TableGen/clang-tblgen^linux_glibc_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/clang/clang-tblgen^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/clang/utils/TableGen/clang-tblgen^linux_glibc_x86_64
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/external/clang/clang-tblgen^linux_glibc_x86_64.output $GITHUB_WORKSPACE/artifacts/external/clang/utils/TableGen/clang-tblgen^linux_glibc_x86_64 $GITHUB_WORKSPACE/artifacts/external/clang/utils/TableGen/clang-tblgen^linux_glibc_x86_64/addition_copy_files.output
 
 rm -rf out
 

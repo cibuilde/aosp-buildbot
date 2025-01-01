@@ -85,16 +85,19 @@ echo "building android.hardware.health@2.1-impl-cuttlefish^android_vendor.31_x86
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja android.hardware.health@2.1-impl-cuttlefish,android_vendor.31_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/guest/hals/health/android.hardware.health@2.1-impl-cuttlefish^android_vendor.31_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/device/google/cuttlefish/android.hardware.health@2.1-impl-cuttlefish^android_vendor.31_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/guest/hals/health/android.hardware.health@2.1-impl-cuttlefish^android_vendor.31_x86_64_shared
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_10/device/google/cuttlefish/android.hardware.health@2.1-impl-cuttlefish^android_vendor.31_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/guest/hals/health/android.hardware.health@2.1-impl-cuttlefish^android_vendor.31_x86_64_shared $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/guest/hals/health/android.hardware.health@2.1-impl-cuttlefish^android_vendor.31_x86_64_shared/addition_copy_files.output
 
 echo "building android.hardware.health@2.1-impl-cuttlefish^android_vendor.31_x86_x86_64_shared"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja android.hardware.health@2.1-impl-cuttlefish,android_vendor.31_x86_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/guest/hals/health/android.hardware.health@2.1-impl-cuttlefish^android_vendor.31_x86_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/device/google/cuttlefish/android.hardware.health@2.1-impl-cuttlefish^android_vendor.31_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/guest/hals/health/android.hardware.health@2.1-impl-cuttlefish^android_vendor.31_x86_x86_64_shared
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_10/device/google/cuttlefish/android.hardware.health@2.1-impl-cuttlefish^android_vendor.31_x86_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/guest/hals/health/android.hardware.health@2.1-impl-cuttlefish^android_vendor.31_x86_x86_64_shared $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/guest/hals/health/android.hardware.health@2.1-impl-cuttlefish^android_vendor.31_x86_x86_64_shared/addition_copy_files.output
 
 echo "building cuttlefish_sensor_injection^android_vendor.31_x86_64"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja cuttlefish_sensor_injection,android_vendor.31_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/guest/commands/sensor_injection/cuttlefish_sensor_injection^android_vendor.31_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/device/google/cuttlefish/cuttlefish_sensor_injection^android_vendor.31_x86_64.output . $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/guest/commands/sensor_injection/cuttlefish_sensor_injection^android_vendor.31_x86_64
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_10/device/google/cuttlefish/cuttlefish_sensor_injection^android_vendor.31_x86_64.output $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/guest/commands/sensor_injection/cuttlefish_sensor_injection^android_vendor.31_x86_64 $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/guest/commands/sensor_injection/cuttlefish_sensor_injection^android_vendor.31_x86_64/addition_copy_files.output
 
 rm -rf out
 

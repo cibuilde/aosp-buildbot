@@ -50,291 +50,349 @@ echo "building AndroidClock.ttf^android_x86_64"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja AndroidClock.ttf,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/data/fonts/AndroidClock.ttf^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/frameworks/base/AndroidClock.ttf^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/data/fonts/AndroidClock.ttf^android_x86_64
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/frameworks/base/AndroidClock.ttf^android_x86_64.output $GITHUB_WORKSPACE/artifacts/frameworks/base/data/fonts/AndroidClock.ttf^android_x86_64 $GITHUB_WORKSPACE/artifacts/frameworks/base/data/fonts/AndroidClock.ttf^android_x86_64/addition_copy_files.output
 
 echo "building DroidSansMono.ttf^android_x86_64"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja DroidSansMono.ttf,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/data/fonts/DroidSansMono.ttf^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/frameworks/base/DroidSansMono.ttf^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/data/fonts/DroidSansMono.ttf^android_x86_64
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/frameworks/base/DroidSansMono.ttf^android_x86_64.output $GITHUB_WORKSPACE/artifacts/frameworks/base/data/fonts/DroidSansMono.ttf^android_x86_64 $GITHUB_WORKSPACE/artifacts/frameworks/base/data/fonts/DroidSansMono.ttf^android_x86_64/addition_copy_files.output
 
 echo "building abx2xml^android_x86_64"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja abx2xml,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/cmds/abx/abx2xml^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/frameworks/base/abx2xml^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/cmds/abx/abx2xml^android_x86_64
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/frameworks/base/abx2xml^android_x86_64.output $GITHUB_WORKSPACE/artifacts/frameworks/base/cmds/abx/abx2xml^android_x86_64 $GITHUB_WORKSPACE/artifacts/frameworks/base/cmds/abx/abx2xml^android_x86_64/addition_copy_files.output
 
 echo "building amidi^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja amidi,
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/media/native/midi/amidi^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/frameworks/base/amidi^.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/media/native/midi/amidi^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/frameworks/base/amidi^.output $GITHUB_WORKSPACE/artifacts/frameworks/base/media/native/midi/amidi^ $GITHUB_WORKSPACE/artifacts/frameworks/base/media/native/midi/amidi^/addition_copy_files.output
 
 echo "building android.test.base.xml^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja android.test.base.xml,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/test-base/android.test.base.xml^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/frameworks/base/android.test.base.xml^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/test-base/android.test.base.xml^android_common
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/frameworks/base/android.test.base.xml^android_common.output $GITHUB_WORKSPACE/artifacts/frameworks/base/test-base/android.test.base.xml^android_common $GITHUB_WORKSPACE/artifacts/frameworks/base/test-base/android.test.base.xml^android_common/addition_copy_files.output
 
 echo "building android.test.mock.xml^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja android.test.mock.xml,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/test-mock/android.test.mock.xml^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/frameworks/base/android.test.mock.xml^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/test-mock/android.test.mock.xml^android_common
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/frameworks/base/android.test.mock.xml^android_common.output $GITHUB_WORKSPACE/artifacts/frameworks/base/test-mock/android.test.mock.xml^android_common $GITHUB_WORKSPACE/artifacts/frameworks/base/test-mock/android.test.mock.xml^android_common/addition_copy_files.output
 
 echo "building android.test.runner.xml^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja android.test.runner.xml,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/test-runner/android.test.runner.xml^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/frameworks/base/android.test.runner.xml^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/test-runner/android.test.runner.xml^android_common
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/frameworks/base/android.test.runner.xml^android_common.output $GITHUB_WORKSPACE/artifacts/frameworks/base/test-runner/android.test.runner.xml^android_common $GITHUB_WORKSPACE/artifacts/frameworks/base/test-runner/android.test.runner.xml^android_common/addition_copy_files.output
 
 echo "building appops^android_x86_64"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja appops,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/cmds/appops/appops^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/frameworks/base/appops^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/cmds/appops/appops^android_x86_64
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/frameworks/base/appops^android_x86_64.output $GITHUB_WORKSPACE/artifacts/frameworks/base/cmds/appops/appops^android_x86_64 $GITHUB_WORKSPACE/artifacts/frameworks/base/cmds/appops/appops^android_x86_64/addition_copy_files.output
 
 echo "building com.android.future.usb.accessory.xml^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja com.android.future.usb.accessory.xml,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/libs/usb/com.android.future.usb.accessory.xml^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/frameworks/base/com.android.future.usb.accessory.xml^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/libs/usb/com.android.future.usb.accessory.xml^android_common
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/frameworks/base/com.android.future.usb.accessory.xml^android_common.output $GITHUB_WORKSPACE/artifacts/frameworks/base/libs/usb/com.android.future.usb.accessory.xml^android_common $GITHUB_WORKSPACE/artifacts/frameworks/base/libs/usb/com.android.future.usb.accessory.xml^android_common/addition_copy_files.output
 
 echo "building com.android.location.provider.xml^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja com.android.location.provider.xml,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/location/lib/com.android.location.provider.xml^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/frameworks/base/com.android.location.provider.xml^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/location/lib/com.android.location.provider.xml^android_common
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/frameworks/base/com.android.location.provider.xml^android_common.output $GITHUB_WORKSPACE/artifacts/frameworks/base/location/lib/com.android.location.provider.xml^android_common $GITHUB_WORKSPACE/artifacts/frameworks/base/location/lib/com.android.location.provider.xml^android_common/addition_copy_files.output
 
 echo "building com.android.media.remotedisplay.xml^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja com.android.media.remotedisplay.xml,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/media/lib/remotedisplay/com.android.media.remotedisplay.xml^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/frameworks/base/com.android.media.remotedisplay.xml^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/media/lib/remotedisplay/com.android.media.remotedisplay.xml^android_common
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/frameworks/base/com.android.media.remotedisplay.xml^android_common.output $GITHUB_WORKSPACE/artifacts/frameworks/base/media/lib/remotedisplay/com.android.media.remotedisplay.xml^android_common $GITHUB_WORKSPACE/artifacts/frameworks/base/media/lib/remotedisplay/com.android.media.remotedisplay.xml^android_common/addition_copy_files.output
 
 echo "building com.android.mediadrm.signer.xml^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja com.android.mediadrm.signer.xml,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/media/lib/signer/com.android.mediadrm.signer.xml^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/frameworks/base/com.android.mediadrm.signer.xml^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/media/lib/signer/com.android.mediadrm.signer.xml^android_common
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/frameworks/base/com.android.mediadrm.signer.xml^android_common.output $GITHUB_WORKSPACE/artifacts/frameworks/base/media/lib/signer/com.android.mediadrm.signer.xml^android_common $GITHUB_WORKSPACE/artifacts/frameworks/base/media/lib/signer/com.android.mediadrm.signer.xml^android_common/addition_copy_files.output
 
 echo "building com.android.nfc_extras.xml^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja com.android.nfc_extras.xml,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/nfc-extras/com.android.nfc_extras.xml^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/frameworks/base/com.android.nfc_extras.xml^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/nfc-extras/com.android.nfc_extras.xml^android_common
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/frameworks/base/com.android.nfc_extras.xml^android_common.output $GITHUB_WORKSPACE/artifacts/frameworks/base/nfc-extras/com.android.nfc_extras.xml^android_common $GITHUB_WORKSPACE/artifacts/frameworks/base/nfc-extras/com.android.nfc_extras.xml^android_common/addition_copy_files.output
 
 echo "building device_config^android_x86_64"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja device_config,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/cmds/device_config/device_config^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/frameworks/base/device_config^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/cmds/device_config/device_config^android_x86_64
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/frameworks/base/device_config^android_x86_64.output $GITHUB_WORKSPACE/artifacts/frameworks/base/cmds/device_config/device_config^android_x86_64 $GITHUB_WORKSPACE/artifacts/frameworks/base/cmds/device_config/device_config^android_x86_64/addition_copy_files.output
 
 echo "building dpm^android_x86_64"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja dpm,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/cmds/dpm/dpm^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/frameworks/base/dpm^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/cmds/dpm/dpm^android_x86_64
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/frameworks/base/dpm^android_x86_64.output $GITHUB_WORKSPACE/artifacts/frameworks/base/cmds/dpm/dpm^android_x86_64 $GITHUB_WORKSPACE/artifacts/frameworks/base/cmds/dpm/dpm^android_x86_64/addition_copy_files.output
 
 echo "building ext^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja ext,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/ext^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/frameworks/base/ext^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/ext^android_common
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/frameworks/base/ext^android_common.output $GITHUB_WORKSPACE/artifacts/frameworks/base/ext^android_common $GITHUB_WORKSPACE/artifacts/frameworks/base/ext^android_common/addition_copy_files.output
 
 echo "building fonts.xml^android_x86_64"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja fonts.xml,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/data/fonts/fonts.xml^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/frameworks/base/fonts.xml^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/data/fonts/fonts.xml^android_x86_64
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/frameworks/base/fonts.xml^android_x86_64.output $GITHUB_WORKSPACE/artifacts/frameworks/base/data/fonts/fonts.xml^android_x86_64 $GITHUB_WORKSPACE/artifacts/frameworks/base/data/fonts/fonts.xml^android_x86_64/addition_copy_files.output
 
 echo "building framework-graphics^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja framework-graphics,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/libs/hwui/framework-graphics^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/frameworks/base/framework-graphics^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/libs/hwui/framework-graphics^android_common
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/frameworks/base/framework-graphics^android_common.output $GITHUB_WORKSPACE/artifacts/frameworks/base/libs/hwui/framework-graphics^android_common $GITHUB_WORKSPACE/artifacts/frameworks/base/libs/hwui/framework-graphics^android_common/addition_copy_files.output
 
 echo "building framework-minus-apex^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja framework-minus-apex,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/framework-minus-apex^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/frameworks/base/framework-minus-apex^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/framework-minus-apex^android_common
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/frameworks/base/framework-minus-apex^android_common.output $GITHUB_WORKSPACE/artifacts/frameworks/base/framework-minus-apex^android_common $GITHUB_WORKSPACE/artifacts/frameworks/base/framework-minus-apex^android_common/addition_copy_files.output
 
 echo "building framework-sysconfig.xml^android_x86_64"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja framework-sysconfig.xml,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/data/etc/framework-sysconfig.xml^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/frameworks/base/framework-sysconfig.xml^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/data/etc/framework-sysconfig.xml^android_x86_64
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/frameworks/base/framework-sysconfig.xml^android_x86_64.output $GITHUB_WORKSPACE/artifacts/frameworks/base/data/etc/framework-sysconfig.xml^android_x86_64 $GITHUB_WORKSPACE/artifacts/frameworks/base/data/etc/framework-sysconfig.xml^android_x86_64/addition_copy_files.output
 
 echo "building gps_debug.conf^android_x86_64"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja gps_debug.conf,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/services/core/gps_debug.conf^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/frameworks/base/gps_debug.conf^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/services/core/gps_debug.conf^android_x86_64
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/frameworks/base/gps_debug.conf^android_x86_64.output $GITHUB_WORKSPACE/artifacts/frameworks/base/services/core/gps_debug.conf^android_x86_64 $GITHUB_WORKSPACE/artifacts/frameworks/base/services/core/gps_debug.conf^android_x86_64/addition_copy_files.output
 
 echo "building hiddenapi-package-whitelist.xml^android_x86_64"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja hiddenapi-package-whitelist.xml,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/data/etc/hiddenapi-package-whitelist.xml^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/frameworks/base/hiddenapi-package-whitelist.xml^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/data/etc/hiddenapi-package-whitelist.xml^android_x86_64
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/frameworks/base/hiddenapi-package-whitelist.xml^android_x86_64.output $GITHUB_WORKSPACE/artifacts/frameworks/base/data/etc/hiddenapi-package-whitelist.xml^android_x86_64 $GITHUB_WORKSPACE/artifacts/frameworks/base/data/etc/hiddenapi-package-whitelist.xml^android_x86_64/addition_copy_files.output
 
 echo "building ime^android_x86_64"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja ime,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/cmds/ime/ime^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/frameworks/base/ime^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/cmds/ime/ime^android_x86_64
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/frameworks/base/ime^android_x86_64.output $GITHUB_WORKSPACE/artifacts/frameworks/base/cmds/ime/ime^android_x86_64 $GITHUB_WORKSPACE/artifacts/frameworks/base/cmds/ime/ime^android_x86_64/addition_copy_files.output
 
 echo "building input^android_x86_64"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja input,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/cmds/input/input^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/frameworks/base/input^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/cmds/input/input^android_x86_64
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/frameworks/base/input^android_x86_64.output $GITHUB_WORKSPACE/artifacts/frameworks/base/cmds/input/input^android_x86_64 $GITHUB_WORKSPACE/artifacts/frameworks/base/cmds/input/input^android_x86_64/addition_copy_files.output
 
 echo "building javax.obex.xml^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja javax.obex.xml,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/obex/javax.obex.xml^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/frameworks/base/javax.obex.xml^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/obex/javax.obex.xml^android_common
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/frameworks/base/javax.obex.xml^android_common.output $GITHUB_WORKSPACE/artifacts/frameworks/base/obex/javax.obex.xml^android_common $GITHUB_WORKSPACE/artifacts/frameworks/base/obex/javax.obex.xml^android_common/addition_copy_files.output
 
 echo "building libaapt^linux_glibc_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libaapt,linux_glibc_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/tools/aapt/libaapt^linux_glibc_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/frameworks/base/libaapt^linux_glibc_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/tools/aapt/libaapt^linux_glibc_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/frameworks/base/libaapt^linux_glibc_x86_64_static.output $GITHUB_WORKSPACE/artifacts/frameworks/base/tools/aapt/libaapt^linux_glibc_x86_64_static $GITHUB_WORKSPACE/artifacts/frameworks/base/tools/aapt/libaapt^linux_glibc_x86_64_static/addition_copy_files.output
 
 echo "building libidmap2_policies^linux_glibc_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libidmap2_policies,linux_glibc_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/cmds/idmap2/libidmap2_policies^linux_glibc_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/frameworks/base/libidmap2_policies^linux_glibc_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/cmds/idmap2/libidmap2_policies^linux_glibc_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/frameworks/base/libidmap2_policies^linux_glibc_x86_64_static.output $GITHUB_WORKSPACE/artifacts/frameworks/base/cmds/idmap2/libidmap2_policies^linux_glibc_x86_64_static $GITHUB_WORKSPACE/artifacts/frameworks/base/cmds/idmap2/libidmap2_policies^linux_glibc_x86_64_static/addition_copy_files.output
 
 echo "building liblockagent^android_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja liblockagent,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/tools/lock_agent/liblockagent^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/frameworks/base/liblockagent^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/tools/lock_agent/liblockagent^android_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/frameworks/base/liblockagent^android_x86_64_static.output $GITHUB_WORKSPACE/artifacts/frameworks/base/tools/lock_agent/liblockagent^android_x86_64_static $GITHUB_WORKSPACE/artifacts/frameworks/base/tools/lock_agent/liblockagent^android_x86_64_static/addition_copy_files.output
 
 echo "building libprotoutil^android_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libprotoutil,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/libs/protoutil/libprotoutil^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/frameworks/base/libprotoutil^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/libs/protoutil/libprotoutil^android_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/frameworks/base/libprotoutil^android_x86_64_static.output $GITHUB_WORKSPACE/artifacts/frameworks/base/libs/protoutil/libprotoutil^android_x86_64_static $GITHUB_WORKSPACE/artifacts/frameworks/base/libs/protoutil/libprotoutil^android_x86_64_static/addition_copy_files.output
 
 echo "building libprotoutil^android_x86_64_static_apex30"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libprotoutil,android_x86_64_static_apex30
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/libs/protoutil/libprotoutil^android_x86_64_static_apex30
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/frameworks/base/libprotoutil^android_x86_64_static_apex30.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/libs/protoutil/libprotoutil^android_x86_64_static_apex30
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/frameworks/base/libprotoutil^android_x86_64_static_apex30.output $GITHUB_WORKSPACE/artifacts/frameworks/base/libs/protoutil/libprotoutil^android_x86_64_static_apex30 $GITHUB_WORKSPACE/artifacts/frameworks/base/libs/protoutil/libprotoutil^android_x86_64_static_apex30/addition_copy_files.output
 
 echo "building libprotoutil^android_x86_64_static_lto-thin"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libprotoutil,android_x86_64_static_lto-thin
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/libs/protoutil/libprotoutil^android_x86_64_static_lto-thin
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/frameworks/base/libprotoutil^android_x86_64_static_lto-thin.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/libs/protoutil/libprotoutil^android_x86_64_static_lto-thin
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/frameworks/base/libprotoutil^android_x86_64_static_lto-thin.output $GITHUB_WORKSPACE/artifacts/frameworks/base/libs/protoutil/libprotoutil^android_x86_64_static_lto-thin $GITHUB_WORKSPACE/artifacts/frameworks/base/libs/protoutil/libprotoutil^android_x86_64_static_lto-thin/addition_copy_files.output
 
 echo "building libprotoutil^android_x86_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libprotoutil,android_x86_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/libs/protoutil/libprotoutil^android_x86_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/frameworks/base/libprotoutil^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/libs/protoutil/libprotoutil^android_x86_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/frameworks/base/libprotoutil^android_x86_x86_64_static.output $GITHUB_WORKSPACE/artifacts/frameworks/base/libs/protoutil/libprotoutil^android_x86_x86_64_static $GITHUB_WORKSPACE/artifacts/frameworks/base/libs/protoutil/libprotoutil^android_x86_x86_64_static/addition_copy_files.output
 
 echo "building libprotoutil^android_x86_x86_64_static_lto-thin"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libprotoutil,android_x86_x86_64_static_lto-thin
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/libs/protoutil/libprotoutil^android_x86_x86_64_static_lto-thin
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/frameworks/base/libprotoutil^android_x86_x86_64_static_lto-thin.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/libs/protoutil/libprotoutil^android_x86_x86_64_static_lto-thin
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/frameworks/base/libprotoutil^android_x86_x86_64_static_lto-thin.output $GITHUB_WORKSPACE/artifacts/frameworks/base/libs/protoutil/libprotoutil^android_x86_x86_64_static_lto-thin $GITHUB_WORKSPACE/artifacts/frameworks/base/libs/protoutil/libprotoutil^android_x86_x86_64_static_lto-thin/addition_copy_files.output
 
 echo "building libviewcompiler^android_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libviewcompiler,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/startop/view_compiler/libviewcompiler^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/frameworks/base/libviewcompiler^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/startop/view_compiler/libviewcompiler^android_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/frameworks/base/libviewcompiler^android_x86_64_static.output $GITHUB_WORKSPACE/artifacts/frameworks/base/startop/view_compiler/libviewcompiler^android_x86_64_static $GITHUB_WORKSPACE/artifacts/frameworks/base/startop/view_compiler/libviewcompiler^android_x86_64_static/addition_copy_files.output
 
 echo "building platform-bootclasspath^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja platform-bootclasspath,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/boot/platform-bootclasspath^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/frameworks/base/platform-bootclasspath^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/boot/platform-bootclasspath^android_common
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/frameworks/base/platform-bootclasspath^android_common.output $GITHUB_WORKSPACE/artifacts/frameworks/base/boot/platform-bootclasspath^android_common $GITHUB_WORKSPACE/artifacts/frameworks/base/boot/platform-bootclasspath^android_common/addition_copy_files.output
 
 echo "building platform.xml^android_x86_64"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja platform.xml,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/data/etc/platform.xml^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/frameworks/base/platform.xml^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/data/etc/platform.xml^android_x86_64
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/frameworks/base/platform.xml^android_x86_64.output $GITHUB_WORKSPACE/artifacts/frameworks/base/data/etc/platform.xml^android_x86_64 $GITHUB_WORKSPACE/artifacts/frameworks/base/data/etc/platform.xml^android_x86_64/addition_copy_files.output
 
 echo "building pm^android_x86_64"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja pm,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/cmds/pm/pm^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/frameworks/base/pm^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/cmds/pm/pm^android_x86_64
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/frameworks/base/pm^android_x86_64.output $GITHUB_WORKSPACE/artifacts/frameworks/base/cmds/pm/pm^android_x86_64 $GITHUB_WORKSPACE/artifacts/frameworks/base/cmds/pm/pm^android_x86_64/addition_copy_files.output
 
 echo "building preinstalled-packages-platform-overlays.xml^android_x86_64"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja preinstalled-packages-platform-overlays.xml,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/data/etc/preinstalled-packages-platform-overlays.xml^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/frameworks/base/preinstalled-packages-platform-overlays.xml^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/data/etc/preinstalled-packages-platform-overlays.xml^android_x86_64
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/frameworks/base/preinstalled-packages-platform-overlays.xml^android_x86_64.output $GITHUB_WORKSPACE/artifacts/frameworks/base/data/etc/preinstalled-packages-platform-overlays.xml^android_x86_64 $GITHUB_WORKSPACE/artifacts/frameworks/base/data/etc/preinstalled-packages-platform-overlays.xml^android_x86_64/addition_copy_files.output
 
 echo "building preinstalled-packages-platform.xml^android_x86_64"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja preinstalled-packages-platform.xml,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/data/etc/preinstalled-packages-platform.xml^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/frameworks/base/preinstalled-packages-platform.xml^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/data/etc/preinstalled-packages-platform.xml^android_x86_64
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/frameworks/base/preinstalled-packages-platform.xml^android_x86_64.output $GITHUB_WORKSPACE/artifacts/frameworks/base/data/etc/preinstalled-packages-platform.xml^android_x86_64 $GITHUB_WORKSPACE/artifacts/frameworks/base/data/etc/preinstalled-packages-platform.xml^android_x86_64/addition_copy_files.output
 
 echo "building privapp-permissions-platform.xml^android_x86_64"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja privapp-permissions-platform.xml,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/data/etc/privapp-permissions-platform.xml^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/frameworks/base/privapp-permissions-platform.xml^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/data/etc/privapp-permissions-platform.xml^android_x86_64
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/frameworks/base/privapp-permissions-platform.xml^android_x86_64.output $GITHUB_WORKSPACE/artifacts/frameworks/base/data/etc/privapp-permissions-platform.xml^android_x86_64 $GITHUB_WORKSPACE/artifacts/frameworks/base/data/etc/privapp-permissions-platform.xml^android_x86_64/addition_copy_files.output
 
 echo "building privapp_whitelist_com.android.carrierconfig^android_x86_64"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja privapp_whitelist_com.android.carrierconfig,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/data/etc/privapp_whitelist_com.android.carrierconfig^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/frameworks/base/privapp_whitelist_com.android.carrierconfig^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/data/etc/privapp_whitelist_com.android.carrierconfig^android_x86_64
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/frameworks/base/privapp_whitelist_com.android.carrierconfig^android_x86_64.output $GITHUB_WORKSPACE/artifacts/frameworks/base/data/etc/privapp_whitelist_com.android.carrierconfig^android_x86_64 $GITHUB_WORKSPACE/artifacts/frameworks/base/data/etc/privapp_whitelist_com.android.carrierconfig^android_x86_64/addition_copy_files.output
 
 echo "building privapp_whitelist_com.android.contacts^android_x86_64"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja privapp_whitelist_com.android.contacts,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/data/etc/privapp_whitelist_com.android.contacts^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/frameworks/base/privapp_whitelist_com.android.contacts^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/data/etc/privapp_whitelist_com.android.contacts^android_x86_64
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/frameworks/base/privapp_whitelist_com.android.contacts^android_x86_64.output $GITHUB_WORKSPACE/artifacts/frameworks/base/data/etc/privapp_whitelist_com.android.contacts^android_x86_64 $GITHUB_WORKSPACE/artifacts/frameworks/base/data/etc/privapp_whitelist_com.android.contacts^android_x86_64/addition_copy_files.output
 
 echo "building privapp_whitelist_com.android.dialer^android_x86_64"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja privapp_whitelist_com.android.dialer,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/data/etc/privapp_whitelist_com.android.dialer^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/frameworks/base/privapp_whitelist_com.android.dialer^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/data/etc/privapp_whitelist_com.android.dialer^android_x86_64
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/frameworks/base/privapp_whitelist_com.android.dialer^android_x86_64.output $GITHUB_WORKSPACE/artifacts/frameworks/base/data/etc/privapp_whitelist_com.android.dialer^android_x86_64 $GITHUB_WORKSPACE/artifacts/frameworks/base/data/etc/privapp_whitelist_com.android.dialer^android_x86_64/addition_copy_files.output
 
 echo "building privapp_whitelist_com.android.documentsui^android_x86_64"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja privapp_whitelist_com.android.documentsui,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/data/etc/privapp_whitelist_com.android.documentsui^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/frameworks/base/privapp_whitelist_com.android.documentsui^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/data/etc/privapp_whitelist_com.android.documentsui^android_x86_64
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/frameworks/base/privapp_whitelist_com.android.documentsui^android_x86_64.output $GITHUB_WORKSPACE/artifacts/frameworks/base/data/etc/privapp_whitelist_com.android.documentsui^android_x86_64 $GITHUB_WORKSPACE/artifacts/frameworks/base/data/etc/privapp_whitelist_com.android.documentsui^android_x86_64/addition_copy_files.output
 
 echo "building privapp_whitelist_com.android.emergency^android_x86_64"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja privapp_whitelist_com.android.emergency,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/data/etc/privapp_whitelist_com.android.emergency^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/frameworks/base/privapp_whitelist_com.android.emergency^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/data/etc/privapp_whitelist_com.android.emergency^android_x86_64
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/frameworks/base/privapp_whitelist_com.android.emergency^android_x86_64.output $GITHUB_WORKSPACE/artifacts/frameworks/base/data/etc/privapp_whitelist_com.android.emergency^android_x86_64 $GITHUB_WORKSPACE/artifacts/frameworks/base/data/etc/privapp_whitelist_com.android.emergency^android_x86_64/addition_copy_files.output
 
 echo "building privapp_whitelist_com.android.imsserviceentitlement^android_x86_64"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja privapp_whitelist_com.android.imsserviceentitlement,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/data/etc/privapp_whitelist_com.android.imsserviceentitlement^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/frameworks/base/privapp_whitelist_com.android.imsserviceentitlement^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/data/etc/privapp_whitelist_com.android.imsserviceentitlement^android_x86_64
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/frameworks/base/privapp_whitelist_com.android.imsserviceentitlement^android_x86_64.output $GITHUB_WORKSPACE/artifacts/frameworks/base/data/etc/privapp_whitelist_com.android.imsserviceentitlement^android_x86_64 $GITHUB_WORKSPACE/artifacts/frameworks/base/data/etc/privapp_whitelist_com.android.imsserviceentitlement^android_x86_64/addition_copy_files.output
 
 echo "building privapp_whitelist_com.android.launcher3^android_x86_64"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja privapp_whitelist_com.android.launcher3,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/data/etc/privapp_whitelist_com.android.launcher3^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/frameworks/base/privapp_whitelist_com.android.launcher3^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/data/etc/privapp_whitelist_com.android.launcher3^android_x86_64
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/frameworks/base/privapp_whitelist_com.android.launcher3^android_x86_64.output $GITHUB_WORKSPACE/artifacts/frameworks/base/data/etc/privapp_whitelist_com.android.launcher3^android_x86_64 $GITHUB_WORKSPACE/artifacts/frameworks/base/data/etc/privapp_whitelist_com.android.launcher3^android_x86_64/addition_copy_files.output
 
 echo "building privapp_whitelist_com.android.networkstack.tethering^android_x86_64"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja privapp_whitelist_com.android.networkstack.tethering,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/data/etc/privapp_whitelist_com.android.networkstack.tethering^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/frameworks/base/privapp_whitelist_com.android.networkstack.tethering^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/data/etc/privapp_whitelist_com.android.networkstack.tethering^android_x86_64
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/frameworks/base/privapp_whitelist_com.android.networkstack.tethering^android_x86_64.output $GITHUB_WORKSPACE/artifacts/frameworks/base/data/etc/privapp_whitelist_com.android.networkstack.tethering^android_x86_64 $GITHUB_WORKSPACE/artifacts/frameworks/base/data/etc/privapp_whitelist_com.android.networkstack.tethering^android_x86_64/addition_copy_files.output
 
 echo "building privapp_whitelist_com.android.networkstack^android_x86_64"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja privapp_whitelist_com.android.networkstack,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/data/etc/privapp_whitelist_com.android.networkstack^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/frameworks/base/privapp_whitelist_com.android.networkstack^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/data/etc/privapp_whitelist_com.android.networkstack^android_x86_64
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/frameworks/base/privapp_whitelist_com.android.networkstack^android_x86_64.output $GITHUB_WORKSPACE/artifacts/frameworks/base/data/etc/privapp_whitelist_com.android.networkstack^android_x86_64 $GITHUB_WORKSPACE/artifacts/frameworks/base/data/etc/privapp_whitelist_com.android.networkstack^android_x86_64/addition_copy_files.output
 
 echo "building privapp_whitelist_com.android.provision^android_x86_64"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja privapp_whitelist_com.android.provision,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/data/etc/privapp_whitelist_com.android.provision^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/frameworks/base/privapp_whitelist_com.android.provision^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/data/etc/privapp_whitelist_com.android.provision^android_x86_64
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/frameworks/base/privapp_whitelist_com.android.provision^android_x86_64.output $GITHUB_WORKSPACE/artifacts/frameworks/base/data/etc/privapp_whitelist_com.android.provision^android_x86_64 $GITHUB_WORKSPACE/artifacts/frameworks/base/data/etc/privapp_whitelist_com.android.provision^android_x86_64/addition_copy_files.output
 
 echo "building privapp_whitelist_com.android.settings.intelligence^android_x86_64"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja privapp_whitelist_com.android.settings.intelligence,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/data/etc/privapp_whitelist_com.android.settings.intelligence^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/frameworks/base/privapp_whitelist_com.android.settings.intelligence^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/data/etc/privapp_whitelist_com.android.settings.intelligence^android_x86_64
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/frameworks/base/privapp_whitelist_com.android.settings.intelligence^android_x86_64.output $GITHUB_WORKSPACE/artifacts/frameworks/base/data/etc/privapp_whitelist_com.android.settings.intelligence^android_x86_64 $GITHUB_WORKSPACE/artifacts/frameworks/base/data/etc/privapp_whitelist_com.android.settings.intelligence^android_x86_64/addition_copy_files.output
 
 echo "building privapp_whitelist_com.android.settings^android_x86_64"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja privapp_whitelist_com.android.settings,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/data/etc/privapp_whitelist_com.android.settings^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/frameworks/base/privapp_whitelist_com.android.settings^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/data/etc/privapp_whitelist_com.android.settings^android_x86_64
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/frameworks/base/privapp_whitelist_com.android.settings^android_x86_64.output $GITHUB_WORKSPACE/artifacts/frameworks/base/data/etc/privapp_whitelist_com.android.settings^android_x86_64 $GITHUB_WORKSPACE/artifacts/frameworks/base/data/etc/privapp_whitelist_com.android.settings^android_x86_64/addition_copy_files.output
 
 echo "building privapp_whitelist_com.android.storagemanager^android_x86_64"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja privapp_whitelist_com.android.storagemanager,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/data/etc/privapp_whitelist_com.android.storagemanager^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/frameworks/base/privapp_whitelist_com.android.storagemanager^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/data/etc/privapp_whitelist_com.android.storagemanager^android_x86_64
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/frameworks/base/privapp_whitelist_com.android.storagemanager^android_x86_64.output $GITHUB_WORKSPACE/artifacts/frameworks/base/data/etc/privapp_whitelist_com.android.storagemanager^android_x86_64 $GITHUB_WORKSPACE/artifacts/frameworks/base/data/etc/privapp_whitelist_com.android.storagemanager^android_x86_64/addition_copy_files.output
 
 echo "building privapp_whitelist_com.android.systemui^android_x86_64"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja privapp_whitelist_com.android.systemui,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/data/etc/privapp_whitelist_com.android.systemui^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/frameworks/base/privapp_whitelist_com.android.systemui^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/data/etc/privapp_whitelist_com.android.systemui^android_x86_64
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/frameworks/base/privapp_whitelist_com.android.systemui^android_x86_64.output $GITHUB_WORKSPACE/artifacts/frameworks/base/data/etc/privapp_whitelist_com.android.systemui^android_x86_64 $GITHUB_WORKSPACE/artifacts/frameworks/base/data/etc/privapp_whitelist_com.android.systemui^android_x86_64/addition_copy_files.output
 
 echo "building settings^android_x86_64"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja settings,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/cmds/settings/settings^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/frameworks/base/settings^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/cmds/settings/settings^android_x86_64
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/frameworks/base/settings^android_x86_64.output $GITHUB_WORKSPACE/artifacts/frameworks/base/cmds/settings/settings^android_x86_64 $GITHUB_WORKSPACE/artifacts/frameworks/base/cmds/settings/settings^android_x86_64/addition_copy_files.output
 
 echo "building start_with_lockagent^android_x86_64"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja start_with_lockagent,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/tools/lock_agent/start_with_lockagent^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/frameworks/base/start_with_lockagent^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/tools/lock_agent/start_with_lockagent^android_x86_64
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/frameworks/base/start_with_lockagent^android_x86_64.output $GITHUB_WORKSPACE/artifacts/frameworks/base/tools/lock_agent/start_with_lockagent^android_x86_64 $GITHUB_WORKSPACE/artifacts/frameworks/base/tools/lock_agent/start_with_lockagent^android_x86_64/addition_copy_files.output
 
 echo "building wm^android_x86_64"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja wm,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/cmds/wm/wm^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/frameworks/base/wm^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/cmds/wm/wm^android_x86_64
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/frameworks/base/wm^android_x86_64.output $GITHUB_WORKSPACE/artifacts/frameworks/base/cmds/wm/wm^android_x86_64 $GITHUB_WORKSPACE/artifacts/frameworks/base/cmds/wm/wm^android_x86_64/addition_copy_files.output
 
 echo "building xml2abx^android_x86_64"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja xml2abx,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/cmds/abx/xml2abx^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/frameworks/base/xml2abx^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/cmds/abx/xml2abx^android_x86_64
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/frameworks/base/xml2abx^android_x86_64.output $GITHUB_WORKSPACE/artifacts/frameworks/base/cmds/abx/xml2abx^android_x86_64 $GITHUB_WORKSPACE/artifacts/frameworks/base/cmds/abx/xml2abx^android_x86_64/addition_copy_files.output
 
 rm -rf out
 

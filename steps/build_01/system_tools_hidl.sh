@@ -36,41 +36,49 @@ echo "building libhidl-gen-hash^android_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libhidl-gen-hash,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/tools/hidl/hashing/libhidl-gen-hash^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/tools/hidl/libhidl-gen-hash^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/tools/hidl/hashing/libhidl-gen-hash^android_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/system/tools/hidl/libhidl-gen-hash^android_x86_64_static.output $GITHUB_WORKSPACE/artifacts/system/tools/hidl/hashing/libhidl-gen-hash^android_x86_64_static $GITHUB_WORKSPACE/artifacts/system/tools/hidl/hashing/libhidl-gen-hash^android_x86_64_static/addition_copy_files.output
 
 echo "building libhidl-gen-hash^linux_glibc_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libhidl-gen-hash,linux_glibc_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/tools/hidl/hashing/libhidl-gen-hash^linux_glibc_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/tools/hidl/libhidl-gen-hash^linux_glibc_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/tools/hidl/hashing/libhidl-gen-hash^linux_glibc_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/system/tools/hidl/libhidl-gen-hash^linux_glibc_x86_64_static.output $GITHUB_WORKSPACE/artifacts/system/tools/hidl/hashing/libhidl-gen-hash^linux_glibc_x86_64_static $GITHUB_WORKSPACE/artifacts/system/tools/hidl/hashing/libhidl-gen-hash^linux_glibc_x86_64_static/addition_copy_files.output
 
 echo "building libhidl-gen-host-utils^linux_glibc_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libhidl-gen-host-utils,linux_glibc_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/tools/hidl/host_utils/libhidl-gen-host-utils^linux_glibc_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/tools/hidl/libhidl-gen-host-utils^linux_glibc_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/tools/hidl/host_utils/libhidl-gen-host-utils^linux_glibc_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/system/tools/hidl/libhidl-gen-host-utils^linux_glibc_x86_64_static.output $GITHUB_WORKSPACE/artifacts/system/tools/hidl/host_utils/libhidl-gen-host-utils^linux_glibc_x86_64_static $GITHUB_WORKSPACE/artifacts/system/tools/hidl/host_utils/libhidl-gen-host-utils^linux_glibc_x86_64_static/addition_copy_files.output
 
 echo "building libhidl-gen-utils^android_recovery_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libhidl-gen-utils,android_recovery_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/tools/hidl/utils/libhidl-gen-utils^android_recovery_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/tools/hidl/libhidl-gen-utils^android_recovery_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/tools/hidl/utils/libhidl-gen-utils^android_recovery_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/system/tools/hidl/libhidl-gen-utils^android_recovery_x86_64_static.output $GITHUB_WORKSPACE/artifacts/system/tools/hidl/utils/libhidl-gen-utils^android_recovery_x86_64_static $GITHUB_WORKSPACE/artifacts/system/tools/hidl/utils/libhidl-gen-utils^android_recovery_x86_64_static/addition_copy_files.output
 
 echo "building libhidl-gen-utils^android_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libhidl-gen-utils,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/tools/hidl/utils/libhidl-gen-utils^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/tools/hidl/libhidl-gen-utils^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/tools/hidl/utils/libhidl-gen-utils^android_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/system/tools/hidl/libhidl-gen-utils^android_x86_64_static.output $GITHUB_WORKSPACE/artifacts/system/tools/hidl/utils/libhidl-gen-utils^android_x86_64_static $GITHUB_WORKSPACE/artifacts/system/tools/hidl/utils/libhidl-gen-utils^android_x86_64_static/addition_copy_files.output
 
 echo "building libhidl-gen-utils^android_x86_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libhidl-gen-utils,android_x86_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/tools/hidl/utils/libhidl-gen-utils^android_x86_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/tools/hidl/libhidl-gen-utils^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/tools/hidl/utils/libhidl-gen-utils^android_x86_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/system/tools/hidl/libhidl-gen-utils^android_x86_x86_64_static.output $GITHUB_WORKSPACE/artifacts/system/tools/hidl/utils/libhidl-gen-utils^android_x86_x86_64_static $GITHUB_WORKSPACE/artifacts/system/tools/hidl/utils/libhidl-gen-utils^android_x86_x86_64_static/addition_copy_files.output
 
 echo "building libhidl-gen-utils^linux_glibc_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libhidl-gen-utils,linux_glibc_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/tools/hidl/utils/libhidl-gen-utils^linux_glibc_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/tools/hidl/libhidl-gen-utils^linux_glibc_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/tools/hidl/utils/libhidl-gen-utils^linux_glibc_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/system/tools/hidl/libhidl-gen-utils^linux_glibc_x86_64_static.output $GITHUB_WORKSPACE/artifacts/system/tools/hidl/utils/libhidl-gen-utils^linux_glibc_x86_64_static $GITHUB_WORKSPACE/artifacts/system/tools/hidl/utils/libhidl-gen-utils^linux_glibc_x86_64_static/addition_copy_files.output
 
 echo "building libhidl-gen^linux_glibc_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libhidl-gen,linux_glibc_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/tools/hidl/libhidl-gen^linux_glibc_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/tools/hidl/libhidl-gen^linux_glibc_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/tools/hidl/libhidl-gen^linux_glibc_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/system/tools/hidl/libhidl-gen^linux_glibc_x86_64_static.output $GITHUB_WORKSPACE/artifacts/system/tools/hidl/libhidl-gen^linux_glibc_x86_64_static $GITHUB_WORKSPACE/artifacts/system/tools/hidl/libhidl-gen^linux_glibc_x86_64_static/addition_copy_files.output
 
 rm -rf out
 

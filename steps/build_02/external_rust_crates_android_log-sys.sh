@@ -72,16 +72,19 @@ echo "building libandroid_log_sys^android_x86_64_rlib_rlib-std"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_02.ninja libandroid_log_sys,android_x86_64_rlib_rlib-std
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/rust/crates/android_log-sys/libandroid_log_sys^android_x86_64_rlib_rlib-std
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_02/external/rust/crates/android_log-sys/libandroid_log_sys^android_x86_64_rlib_rlib-std.output . $GITHUB_WORKSPACE/artifacts/external/rust/crates/android_log-sys/libandroid_log_sys^android_x86_64_rlib_rlib-std
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_02/external/rust/crates/android_log-sys/libandroid_log_sys^android_x86_64_rlib_rlib-std.output $GITHUB_WORKSPACE/artifacts/external/rust/crates/android_log-sys/libandroid_log_sys^android_x86_64_rlib_rlib-std $GITHUB_WORKSPACE/artifacts/external/rust/crates/android_log-sys/libandroid_log_sys^android_x86_64_rlib_rlib-std/addition_copy_files.output
 
 echo "building libandroid_log_sys^android_x86_64_rlib_rlib-std_apex10000"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_02.ninja libandroid_log_sys,android_x86_64_rlib_rlib-std_apex10000
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/rust/crates/android_log-sys/libandroid_log_sys^android_x86_64_rlib_rlib-std_apex10000
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_02/external/rust/crates/android_log-sys/libandroid_log_sys^android_x86_64_rlib_rlib-std_apex10000.output . $GITHUB_WORKSPACE/artifacts/external/rust/crates/android_log-sys/libandroid_log_sys^android_x86_64_rlib_rlib-std_apex10000
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_02/external/rust/crates/android_log-sys/libandroid_log_sys^android_x86_64_rlib_rlib-std_apex10000.output $GITHUB_WORKSPACE/artifacts/external/rust/crates/android_log-sys/libandroid_log_sys^android_x86_64_rlib_rlib-std_apex10000 $GITHUB_WORKSPACE/artifacts/external/rust/crates/android_log-sys/libandroid_log_sys^android_x86_64_rlib_rlib-std_apex10000/addition_copy_files.output
 
 echo "building libandroid_log_sys^android_x86_x86_64_rlib_rlib-std"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_02.ninja libandroid_log_sys,android_x86_x86_64_rlib_rlib-std
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/rust/crates/android_log-sys/libandroid_log_sys^android_x86_x86_64_rlib_rlib-std
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_02/external/rust/crates/android_log-sys/libandroid_log_sys^android_x86_x86_64_rlib_rlib-std.output . $GITHUB_WORKSPACE/artifacts/external/rust/crates/android_log-sys/libandroid_log_sys^android_x86_x86_64_rlib_rlib-std
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_02/external/rust/crates/android_log-sys/libandroid_log_sys^android_x86_x86_64_rlib_rlib-std.output $GITHUB_WORKSPACE/artifacts/external/rust/crates/android_log-sys/libandroid_log_sys^android_x86_x86_64_rlib_rlib-std $GITHUB_WORKSPACE/artifacts/external/rust/crates/android_log-sys/libandroid_log_sys^android_x86_x86_64_rlib_rlib-std/addition_copy_files.output
 
 rm -rf out
 

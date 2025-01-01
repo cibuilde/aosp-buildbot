@@ -103,21 +103,25 @@ echo "building libbt_packets^android_x86_64_rlib_rlib-std"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libbt_packets,android_x86_64_rlib_rlib-std
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/bt/gd/libbt_packets^android_x86_64_rlib_rlib-std
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/bt/libbt_packets^android_x86_64_rlib_rlib-std.output . $GITHUB_WORKSPACE/artifacts/system/bt/gd/libbt_packets^android_x86_64_rlib_rlib-std
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_07/system/bt/libbt_packets^android_x86_64_rlib_rlib-std.output $GITHUB_WORKSPACE/artifacts/system/bt/gd/libbt_packets^android_x86_64_rlib_rlib-std $GITHUB_WORKSPACE/artifacts/system/bt/gd/libbt_packets^android_x86_64_rlib_rlib-std/addition_copy_files.output
 
 echo "building libbt_packets^android_x86_x86_64_rlib_rlib-std"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libbt_packets,android_x86_x86_64_rlib_rlib-std
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/bt/gd/libbt_packets^android_x86_x86_64_rlib_rlib-std
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/bt/libbt_packets^android_x86_x86_64_rlib_rlib-std.output . $GITHUB_WORKSPACE/artifacts/system/bt/gd/libbt_packets^android_x86_x86_64_rlib_rlib-std
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_07/system/bt/libbt_packets^android_x86_x86_64_rlib_rlib-std.output $GITHUB_WORKSPACE/artifacts/system/bt/gd/libbt_packets^android_x86_x86_64_rlib_rlib-std $GITHUB_WORKSPACE/artifacts/system/bt/gd/libbt_packets^android_x86_x86_64_rlib_rlib-std/addition_copy_files.output
 
 echo "building libgddi^android_x86_64_rlib_rlib-std"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libgddi,android_x86_64_rlib_rlib-std
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/bt/gd/rust/gddi/libgddi^android_x86_64_rlib_rlib-std
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/bt/libgddi^android_x86_64_rlib_rlib-std.output . $GITHUB_WORKSPACE/artifacts/system/bt/gd/rust/gddi/libgddi^android_x86_64_rlib_rlib-std
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_07/system/bt/libgddi^android_x86_64_rlib_rlib-std.output $GITHUB_WORKSPACE/artifacts/system/bt/gd/rust/gddi/libgddi^android_x86_64_rlib_rlib-std $GITHUB_WORKSPACE/artifacts/system/bt/gd/rust/gddi/libgddi^android_x86_64_rlib_rlib-std/addition_copy_files.output
 
 echo "building libgddi^android_x86_x86_64_rlib_rlib-std"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libgddi,android_x86_x86_64_rlib_rlib-std
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/bt/gd/rust/gddi/libgddi^android_x86_x86_64_rlib_rlib-std
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/bt/libgddi^android_x86_x86_64_rlib_rlib-std.output . $GITHUB_WORKSPACE/artifacts/system/bt/gd/rust/gddi/libgddi^android_x86_x86_64_rlib_rlib-std
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_07/system/bt/libgddi^android_x86_x86_64_rlib_rlib-std.output $GITHUB_WORKSPACE/artifacts/system/bt/gd/rust/gddi/libgddi^android_x86_x86_64_rlib_rlib-std $GITHUB_WORKSPACE/artifacts/system/bt/gd/rust/gddi/libgddi^android_x86_x86_64_rlib_rlib-std/addition_copy_files.output
 
 rm -rf out
 

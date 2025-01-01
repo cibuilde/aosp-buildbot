@@ -153,21 +153,25 @@ echo "building MediaProviderLegacy^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_32.ninja MediaProviderLegacy,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/providers/MediaProvider/legacy/MediaProviderLegacy^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_32/packages/providers/MediaProvider/MediaProviderLegacy^android_common.output . $GITHUB_WORKSPACE/artifacts/packages/providers/MediaProvider/legacy/MediaProviderLegacy^android_common
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_32/packages/providers/MediaProvider/MediaProviderLegacy^android_common.output $GITHUB_WORKSPACE/artifacts/packages/providers/MediaProvider/legacy/MediaProviderLegacy^android_common $GITHUB_WORKSPACE/artifacts/packages/providers/MediaProvider/legacy/MediaProviderLegacy^android_common/addition_copy_files.output
 
 echo "building MediaProvider^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_32.ninja MediaProvider,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/providers/MediaProvider/MediaProvider^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_32/packages/providers/MediaProvider/MediaProvider^android_common.output . $GITHUB_WORKSPACE/artifacts/packages/providers/MediaProvider/MediaProvider^android_common
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_32/packages/providers/MediaProvider/MediaProvider^android_common.output $GITHUB_WORKSPACE/artifacts/packages/providers/MediaProvider/MediaProvider^android_common $GITHUB_WORKSPACE/artifacts/packages/providers/MediaProvider/MediaProvider^android_common/addition_copy_files.output
 
 echo "building com.android.mediaprovider^android_common_com.android.mediaprovider_image"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_32.ninja com.android.mediaprovider,android_common_com.android.mediaprovider_image
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/providers/MediaProvider/apex/com.android.mediaprovider^android_common_com.android.mediaprovider_image
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_32/packages/providers/MediaProvider/com.android.mediaprovider^android_common_com.android.mediaprovider_image.output . $GITHUB_WORKSPACE/artifacts/packages/providers/MediaProvider/apex/com.android.mediaprovider^android_common_com.android.mediaprovider_image
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_32/packages/providers/MediaProvider/com.android.mediaprovider^android_common_com.android.mediaprovider_image.output $GITHUB_WORKSPACE/artifacts/packages/providers/MediaProvider/apex/com.android.mediaprovider^android_common_com.android.mediaprovider_image $GITHUB_WORKSPACE/artifacts/packages/providers/MediaProvider/apex/com.android.mediaprovider^android_common_com.android.mediaprovider_image/addition_copy_files.output
 
 echo "building media-provider-platform-compat-config^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_32.ninja media-provider-platform-compat-config,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/providers/MediaProvider/media-provider-platform-compat-config^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_32/packages/providers/MediaProvider/media-provider-platform-compat-config^android_common.output . $GITHUB_WORKSPACE/artifacts/packages/providers/MediaProvider/media-provider-platform-compat-config^android_common
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_32/packages/providers/MediaProvider/media-provider-platform-compat-config^android_common.output $GITHUB_WORKSPACE/artifacts/packages/providers/MediaProvider/media-provider-platform-compat-config^android_common $GITHUB_WORKSPACE/artifacts/packages/providers/MediaProvider/media-provider-platform-compat-config^android_common/addition_copy_files.output
 
 rm -rf out
 

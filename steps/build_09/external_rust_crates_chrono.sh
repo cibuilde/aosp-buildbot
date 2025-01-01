@@ -54,6 +54,7 @@ echo "building libchrono^android_x86_64_dylib"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja libchrono,android_x86_64_dylib
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/rust/crates/chrono/libchrono^android_x86_64_dylib
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_09/external/rust/crates/chrono/libchrono^android_x86_64_dylib.output . $GITHUB_WORKSPACE/artifacts/external/rust/crates/chrono/libchrono^android_x86_64_dylib
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_09/external/rust/crates/chrono/libchrono^android_x86_64_dylib.output $GITHUB_WORKSPACE/artifacts/external/rust/crates/chrono/libchrono^android_x86_64_dylib $GITHUB_WORKSPACE/artifacts/external/rust/crates/chrono/libchrono^android_x86_64_dylib/addition_copy_files.output
 
 rm -rf out
 

@@ -98,11 +98,13 @@ echo "building libkeystore2_crypto_rust^android_x86_64_rlib_rlib-std"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libkeystore2_crypto_rust,android_x86_64_rlib_rlib-std
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/security/keystore2/src/crypto/libkeystore2_crypto_rust^android_x86_64_rlib_rlib-std
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/security/libkeystore2_crypto_rust^android_x86_64_rlib_rlib-std.output . $GITHUB_WORKSPACE/artifacts/system/security/keystore2/src/crypto/libkeystore2_crypto_rust^android_x86_64_rlib_rlib-std
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_07/system/security/libkeystore2_crypto_rust^android_x86_64_rlib_rlib-std.output $GITHUB_WORKSPACE/artifacts/system/security/keystore2/src/crypto/libkeystore2_crypto_rust^android_x86_64_rlib_rlib-std $GITHUB_WORKSPACE/artifacts/system/security/keystore2/src/crypto/libkeystore2_crypto_rust^android_x86_64_rlib_rlib-std/addition_copy_files.output
 
 echo "building libkeystore2_system_property-rust^android_x86_64_rlib_rlib-std"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libkeystore2_system_property-rust,android_x86_64_rlib_rlib-std
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/security/keystore2/system_property/libkeystore2_system_property-rust^android_x86_64_rlib_rlib-std
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/security/libkeystore2_system_property-rust^android_x86_64_rlib_rlib-std.output . $GITHUB_WORKSPACE/artifacts/system/security/keystore2/system_property/libkeystore2_system_property-rust^android_x86_64_rlib_rlib-std
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_07/system/security/libkeystore2_system_property-rust^android_x86_64_rlib_rlib-std.output $GITHUB_WORKSPACE/artifacts/system/security/keystore2/system_property/libkeystore2_system_property-rust^android_x86_64_rlib_rlib-std $GITHUB_WORKSPACE/artifacts/system/security/keystore2/system_property/libkeystore2_system_property-rust^android_x86_64_rlib_rlib-std/addition_copy_files.output
 
 rm -rf out
 

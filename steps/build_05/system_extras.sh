@@ -85,21 +85,25 @@ echo "building libext4_utils^linux_glibc_x86_64_shared"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libext4_utils,linux_glibc_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/extras/ext4_utils/libext4_utils^linux_glibc_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/system/extras/libext4_utils^linux_glibc_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/extras/ext4_utils/libext4_utils^linux_glibc_x86_64_shared
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/system/extras/libext4_utils^linux_glibc_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/system/extras/ext4_utils/libext4_utils^linux_glibc_x86_64_shared $GITHUB_WORKSPACE/artifacts/system/extras/ext4_utils/libext4_utils^linux_glibc_x86_64_shared/addition_copy_files.output
 
 echo "building libsimpleperf_profcollect_bindgen^android_x86_64_source"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libsimpleperf_profcollect_bindgen,android_x86_64_source
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/extras/simpleperf/libsimpleperf_profcollect_bindgen^android_x86_64_source
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/system/extras/libsimpleperf_profcollect_bindgen^android_x86_64_source.output . $GITHUB_WORKSPACE/artifacts/system/extras/simpleperf/libsimpleperf_profcollect_bindgen^android_x86_64_source
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/system/extras/libsimpleperf_profcollect_bindgen^android_x86_64_source.output $GITHUB_WORKSPACE/artifacts/system/extras/simpleperf/libsimpleperf_profcollect_bindgen^android_x86_64_source $GITHUB_WORKSPACE/artifacts/system/extras/simpleperf/libsimpleperf_profcollect_bindgen^android_x86_64_source/addition_copy_files.output
 
 echo "building mkuserimg_mke2fs^linux_glibc_x86_64_PY2"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja mkuserimg_mke2fs,linux_glibc_x86_64_PY2
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/extras/ext4_utils/mkuserimg_mke2fs^linux_glibc_x86_64_PY2
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/system/extras/mkuserimg_mke2fs^linux_glibc_x86_64_PY2.output . $GITHUB_WORKSPACE/artifacts/system/extras/ext4_utils/mkuserimg_mke2fs^linux_glibc_x86_64_PY2
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/system/extras/mkuserimg_mke2fs^linux_glibc_x86_64_PY2.output $GITHUB_WORKSPACE/artifacts/system/extras/ext4_utils/mkuserimg_mke2fs^linux_glibc_x86_64_PY2 $GITHUB_WORKSPACE/artifacts/system/extras/ext4_utils/mkuserimg_mke2fs^linux_glibc_x86_64_PY2/addition_copy_files.output
 
 echo "building schedtest^android_x86_64"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja schedtest,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/extras/tests/schedtest/schedtest^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/system/extras/schedtest^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/extras/tests/schedtest/schedtest^android_x86_64
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/system/extras/schedtest^android_x86_64.output $GITHUB_WORKSPACE/artifacts/system/extras/tests/schedtest/schedtest^android_x86_64 $GITHUB_WORKSPACE/artifacts/system/extras/tests/schedtest/schedtest^android_x86_64/addition_copy_files.output
 
 rm -rf out
 

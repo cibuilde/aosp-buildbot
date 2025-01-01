@@ -73,71 +73,85 @@ echo "building framework-connectivity.stubs.module_lib^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_19.ninja framework-connectivity.stubs.module_lib,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/Connectivity/framework/framework-connectivity.stubs.module_lib^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_19/packages/modules/Connectivity/framework-connectivity.stubs.module_lib^android_common.output . $GITHUB_WORKSPACE/artifacts/packages/modules/Connectivity/framework/framework-connectivity.stubs.module_lib^android_common
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_19/packages/modules/Connectivity/framework-connectivity.stubs.module_lib^android_common.output $GITHUB_WORKSPACE/artifacts/packages/modules/Connectivity/framework/framework-connectivity.stubs.module_lib^android_common $GITHUB_WORKSPACE/artifacts/packages/modules/Connectivity/framework/framework-connectivity.stubs.module_lib^android_common/addition_copy_files.output
 
 echo "building framework-connectivity.stubs.source.module_lib^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_19.ninja framework-connectivity.stubs.source.module_lib,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/Connectivity/framework/framework-connectivity.stubs.source.module_lib^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_19/packages/modules/Connectivity/framework-connectivity.stubs.source.module_lib^android_common.output . $GITHUB_WORKSPACE/artifacts/packages/modules/Connectivity/framework/framework-connectivity.stubs.source.module_lib^android_common
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_19/packages/modules/Connectivity/framework-connectivity.stubs.source.module_lib^android_common.output $GITHUB_WORKSPACE/artifacts/packages/modules/Connectivity/framework/framework-connectivity.stubs.source.module_lib^android_common $GITHUB_WORKSPACE/artifacts/packages/modules/Connectivity/framework/framework-connectivity.stubs.source.module_lib^android_common/addition_copy_files.output
 
 echo "building framework-connectivity.stubs.source.system^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_19.ninja framework-connectivity.stubs.source.system,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/Connectivity/framework/framework-connectivity.stubs.source.system^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_19/packages/modules/Connectivity/framework-connectivity.stubs.source.system^android_common.output . $GITHUB_WORKSPACE/artifacts/packages/modules/Connectivity/framework/framework-connectivity.stubs.source.system^android_common
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_19/packages/modules/Connectivity/framework-connectivity.stubs.source.system^android_common.output $GITHUB_WORKSPACE/artifacts/packages/modules/Connectivity/framework/framework-connectivity.stubs.source.system^android_common $GITHUB_WORKSPACE/artifacts/packages/modules/Connectivity/framework/framework-connectivity.stubs.source.system^android_common/addition_copy_files.output
 
 echo "building framework-connectivity.stubs.source^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_19.ninja framework-connectivity.stubs.source,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/Connectivity/framework/framework-connectivity.stubs.source^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_19/packages/modules/Connectivity/framework-connectivity.stubs.source^android_common.output . $GITHUB_WORKSPACE/artifacts/packages/modules/Connectivity/framework/framework-connectivity.stubs.source^android_common
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_19/packages/modules/Connectivity/framework-connectivity.stubs.source^android_common.output $GITHUB_WORKSPACE/artifacts/packages/modules/Connectivity/framework/framework-connectivity.stubs.source^android_common $GITHUB_WORKSPACE/artifacts/packages/modules/Connectivity/framework/framework-connectivity.stubs.source^android_common/addition_copy_files.output
 
 echo "building framework-connectivity.stubs.system^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_19.ninja framework-connectivity.stubs.system,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/Connectivity/framework/framework-connectivity.stubs.system^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_19/packages/modules/Connectivity/framework-connectivity.stubs.system^android_common.output . $GITHUB_WORKSPACE/artifacts/packages/modules/Connectivity/framework/framework-connectivity.stubs.system^android_common
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_19/packages/modules/Connectivity/framework-connectivity.stubs.system^android_common.output $GITHUB_WORKSPACE/artifacts/packages/modules/Connectivity/framework/framework-connectivity.stubs.system^android_common $GITHUB_WORKSPACE/artifacts/packages/modules/Connectivity/framework/framework-connectivity.stubs.system^android_common/addition_copy_files.output
 
 echo "building framework-connectivity.stubs^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_19.ninja framework-connectivity.stubs,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/Connectivity/framework/framework-connectivity.stubs^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_19/packages/modules/Connectivity/framework-connectivity.stubs^android_common.output . $GITHUB_WORKSPACE/artifacts/packages/modules/Connectivity/framework/framework-connectivity.stubs^android_common
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_19/packages/modules/Connectivity/framework-connectivity.stubs^android_common.output $GITHUB_WORKSPACE/artifacts/packages/modules/Connectivity/framework/framework-connectivity.stubs^android_common $GITHUB_WORKSPACE/artifacts/packages/modules/Connectivity/framework/framework-connectivity.stubs^android_common/addition_copy_files.output
 
 echo "building framework-connectivity^android_common_apex30"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_19.ninja framework-connectivity,android_common_apex30
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/Connectivity/framework/framework-connectivity^android_common_apex30
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_19/packages/modules/Connectivity/framework-connectivity^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/packages/modules/Connectivity/framework/framework-connectivity^android_common_apex30
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_19/packages/modules/Connectivity/framework-connectivity^android_common_apex30.output $GITHUB_WORKSPACE/artifacts/packages/modules/Connectivity/framework/framework-connectivity^android_common_apex30 $GITHUB_WORKSPACE/artifacts/packages/modules/Connectivity/framework/framework-connectivity^android_common_apex30/addition_copy_files.output
 
 echo "building framework-tethering.stubs.module_lib^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_19.ninja framework-tethering.stubs.module_lib,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/Connectivity/Tethering/common/TetheringLib/framework-tethering.stubs.module_lib^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_19/packages/modules/Connectivity/framework-tethering.stubs.module_lib^android_common.output . $GITHUB_WORKSPACE/artifacts/packages/modules/Connectivity/Tethering/common/TetheringLib/framework-tethering.stubs.module_lib^android_common
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_19/packages/modules/Connectivity/framework-tethering.stubs.module_lib^android_common.output $GITHUB_WORKSPACE/artifacts/packages/modules/Connectivity/Tethering/common/TetheringLib/framework-tethering.stubs.module_lib^android_common $GITHUB_WORKSPACE/artifacts/packages/modules/Connectivity/Tethering/common/TetheringLib/framework-tethering.stubs.module_lib^android_common/addition_copy_files.output
 
 echo "building framework-tethering.stubs.source.module_lib^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_19.ninja framework-tethering.stubs.source.module_lib,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/Connectivity/Tethering/common/TetheringLib/framework-tethering.stubs.source.module_lib^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_19/packages/modules/Connectivity/framework-tethering.stubs.source.module_lib^android_common.output . $GITHUB_WORKSPACE/artifacts/packages/modules/Connectivity/Tethering/common/TetheringLib/framework-tethering.stubs.source.module_lib^android_common
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_19/packages/modules/Connectivity/framework-tethering.stubs.source.module_lib^android_common.output $GITHUB_WORKSPACE/artifacts/packages/modules/Connectivity/Tethering/common/TetheringLib/framework-tethering.stubs.source.module_lib^android_common $GITHUB_WORKSPACE/artifacts/packages/modules/Connectivity/Tethering/common/TetheringLib/framework-tethering.stubs.source.module_lib^android_common/addition_copy_files.output
 
 echo "building framework-tethering.stubs.source.system^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_19.ninja framework-tethering.stubs.source.system,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/Connectivity/Tethering/common/TetheringLib/framework-tethering.stubs.source.system^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_19/packages/modules/Connectivity/framework-tethering.stubs.source.system^android_common.output . $GITHUB_WORKSPACE/artifacts/packages/modules/Connectivity/Tethering/common/TetheringLib/framework-tethering.stubs.source.system^android_common
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_19/packages/modules/Connectivity/framework-tethering.stubs.source.system^android_common.output $GITHUB_WORKSPACE/artifacts/packages/modules/Connectivity/Tethering/common/TetheringLib/framework-tethering.stubs.source.system^android_common $GITHUB_WORKSPACE/artifacts/packages/modules/Connectivity/Tethering/common/TetheringLib/framework-tethering.stubs.source.system^android_common/addition_copy_files.output
 
 echo "building framework-tethering.stubs.source^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_19.ninja framework-tethering.stubs.source,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/Connectivity/Tethering/common/TetheringLib/framework-tethering.stubs.source^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_19/packages/modules/Connectivity/framework-tethering.stubs.source^android_common.output . $GITHUB_WORKSPACE/artifacts/packages/modules/Connectivity/Tethering/common/TetheringLib/framework-tethering.stubs.source^android_common
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_19/packages/modules/Connectivity/framework-tethering.stubs.source^android_common.output $GITHUB_WORKSPACE/artifacts/packages/modules/Connectivity/Tethering/common/TetheringLib/framework-tethering.stubs.source^android_common $GITHUB_WORKSPACE/artifacts/packages/modules/Connectivity/Tethering/common/TetheringLib/framework-tethering.stubs.source^android_common/addition_copy_files.output
 
 echo "building framework-tethering.stubs.system^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_19.ninja framework-tethering.stubs.system,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/Connectivity/Tethering/common/TetheringLib/framework-tethering.stubs.system^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_19/packages/modules/Connectivity/framework-tethering.stubs.system^android_common.output . $GITHUB_WORKSPACE/artifacts/packages/modules/Connectivity/Tethering/common/TetheringLib/framework-tethering.stubs.system^android_common
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_19/packages/modules/Connectivity/framework-tethering.stubs.system^android_common.output $GITHUB_WORKSPACE/artifacts/packages/modules/Connectivity/Tethering/common/TetheringLib/framework-tethering.stubs.system^android_common $GITHUB_WORKSPACE/artifacts/packages/modules/Connectivity/Tethering/common/TetheringLib/framework-tethering.stubs.system^android_common/addition_copy_files.output
 
 echo "building framework-tethering.stubs^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_19.ninja framework-tethering.stubs,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/Connectivity/Tethering/common/TetheringLib/framework-tethering.stubs^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_19/packages/modules/Connectivity/framework-tethering.stubs^android_common.output . $GITHUB_WORKSPACE/artifacts/packages/modules/Connectivity/Tethering/common/TetheringLib/framework-tethering.stubs^android_common
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_19/packages/modules/Connectivity/framework-tethering.stubs^android_common.output $GITHUB_WORKSPACE/artifacts/packages/modules/Connectivity/Tethering/common/TetheringLib/framework-tethering.stubs^android_common $GITHUB_WORKSPACE/artifacts/packages/modules/Connectivity/Tethering/common/TetheringLib/framework-tethering.stubs^android_common/addition_copy_files.output
 
 echo "building framework-tethering^android_common_apex30"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_19.ninja framework-tethering,android_common_apex30
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/Connectivity/Tethering/common/TetheringLib/framework-tethering^android_common_apex30
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_19/packages/modules/Connectivity/framework-tethering^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/packages/modules/Connectivity/Tethering/common/TetheringLib/framework-tethering^android_common_apex30
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_19/packages/modules/Connectivity/framework-tethering^android_common_apex30.output $GITHUB_WORKSPACE/artifacts/packages/modules/Connectivity/Tethering/common/TetheringLib/framework-tethering^android_common_apex30 $GITHUB_WORKSPACE/artifacts/packages/modules/Connectivity/Tethering/common/TetheringLib/framework-tethering^android_common_apex30/addition_copy_files.output
 
 rm -rf out
 

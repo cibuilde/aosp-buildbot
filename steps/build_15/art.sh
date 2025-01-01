@@ -157,11 +157,13 @@ echo "building art-bootclasspath-fragment^android_common_apex31"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_15.ninja art-bootclasspath-fragment,android_common_apex31
 mkdir -p $GITHUB_WORKSPACE/artifacts/art/build/boot/art-bootclasspath-fragment^android_common_apex31
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_15/art/art-bootclasspath-fragment^android_common_apex31.output . $GITHUB_WORKSPACE/artifacts/art/build/boot/art-bootclasspath-fragment^android_common_apex31
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_15/art/art-bootclasspath-fragment^android_common_apex31.output $GITHUB_WORKSPACE/artifacts/art/build/boot/art-bootclasspath-fragment^android_common_apex31 $GITHUB_WORKSPACE/artifacts/art/build/boot/art-bootclasspath-fragment^android_common_apex31/addition_copy_files.output
 
 echo "building com.android.art^android_common_com.android.art_image"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_15.ninja com.android.art,android_common_com.android.art_image
 mkdir -p $GITHUB_WORKSPACE/artifacts/art/build/apex/com.android.art^android_common_com.android.art_image
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_15/art/com.android.art^android_common_com.android.art_image.output . $GITHUB_WORKSPACE/artifacts/art/build/apex/com.android.art^android_common_com.android.art_image
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_15/art/com.android.art^android_common_com.android.art_image.output $GITHUB_WORKSPACE/artifacts/art/build/apex/com.android.art^android_common_com.android.art_image $GITHUB_WORKSPACE/artifacts/art/build/apex/com.android.art^android_common_com.android.art_image/addition_copy_files.output
 
 rm -rf out
 

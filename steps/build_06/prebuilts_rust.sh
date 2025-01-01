@@ -62,41 +62,49 @@ echo "building libgetopts^android_x86_64_dylib"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libgetopts,android_x86_64_dylib
 mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/rust/libgetopts^android_x86_64_dylib
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/prebuilts/rust/libgetopts^android_x86_64_dylib.output . $GITHUB_WORKSPACE/artifacts/prebuilts/rust/libgetopts^android_x86_64_dylib
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_06/prebuilts/rust/libgetopts^android_x86_64_dylib.output $GITHUB_WORKSPACE/artifacts/prebuilts/rust/libgetopts^android_x86_64_dylib $GITHUB_WORKSPACE/artifacts/prebuilts/rust/libgetopts^android_x86_64_dylib/addition_copy_files.output
 
 echo "building libgetopts^android_x86_64_dylib_apex10000"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libgetopts,android_x86_64_dylib_apex10000
 mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/rust/libgetopts^android_x86_64_dylib_apex10000
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/prebuilts/rust/libgetopts^android_x86_64_dylib_apex10000.output . $GITHUB_WORKSPACE/artifacts/prebuilts/rust/libgetopts^android_x86_64_dylib_apex10000
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_06/prebuilts/rust/libgetopts^android_x86_64_dylib_apex10000.output $GITHUB_WORKSPACE/artifacts/prebuilts/rust/libgetopts^android_x86_64_dylib_apex10000 $GITHUB_WORKSPACE/artifacts/prebuilts/rust/libgetopts^android_x86_64_dylib_apex10000/addition_copy_files.output
 
 echo "building libstd^android_x86_64_dylib"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libstd,android_x86_64_dylib
 mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/rust/libstd^android_x86_64_dylib
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/prebuilts/rust/libstd^android_x86_64_dylib.output . $GITHUB_WORKSPACE/artifacts/prebuilts/rust/libstd^android_x86_64_dylib
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_06/prebuilts/rust/libstd^android_x86_64_dylib.output $GITHUB_WORKSPACE/artifacts/prebuilts/rust/libstd^android_x86_64_dylib $GITHUB_WORKSPACE/artifacts/prebuilts/rust/libstd^android_x86_64_dylib/addition_copy_files.output
 
 echo "building libstd^android_x86_64_dylib_apex10000"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libstd,android_x86_64_dylib_apex10000
 mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/rust/libstd^android_x86_64_dylib_apex10000
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/prebuilts/rust/libstd^android_x86_64_dylib_apex10000.output . $GITHUB_WORKSPACE/artifacts/prebuilts/rust/libstd^android_x86_64_dylib_apex10000
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_06/prebuilts/rust/libstd^android_x86_64_dylib_apex10000.output $GITHUB_WORKSPACE/artifacts/prebuilts/rust/libstd^android_x86_64_dylib_apex10000 $GITHUB_WORKSPACE/artifacts/prebuilts/rust/libstd^android_x86_64_dylib_apex10000/addition_copy_files.output
 
 echo "building libterm^android_x86_64_dylib"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libterm,android_x86_64_dylib
 mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/rust/libterm^android_x86_64_dylib
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/prebuilts/rust/libterm^android_x86_64_dylib.output . $GITHUB_WORKSPACE/artifacts/prebuilts/rust/libterm^android_x86_64_dylib
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_06/prebuilts/rust/libterm^android_x86_64_dylib.output $GITHUB_WORKSPACE/artifacts/prebuilts/rust/libterm^android_x86_64_dylib $GITHUB_WORKSPACE/artifacts/prebuilts/rust/libterm^android_x86_64_dylib/addition_copy_files.output
 
 echo "building libterm^android_x86_64_dylib_apex10000"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libterm,android_x86_64_dylib_apex10000
 mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/rust/libterm^android_x86_64_dylib_apex10000
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/prebuilts/rust/libterm^android_x86_64_dylib_apex10000.output . $GITHUB_WORKSPACE/artifacts/prebuilts/rust/libterm^android_x86_64_dylib_apex10000
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_06/prebuilts/rust/libterm^android_x86_64_dylib_apex10000.output $GITHUB_WORKSPACE/artifacts/prebuilts/rust/libterm^android_x86_64_dylib_apex10000 $GITHUB_WORKSPACE/artifacts/prebuilts/rust/libterm^android_x86_64_dylib_apex10000/addition_copy_files.output
 
 echo "building libtest^android_x86_64_dylib"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libtest,android_x86_64_dylib
 mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/rust/libtest^android_x86_64_dylib
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/prebuilts/rust/libtest^android_x86_64_dylib.output . $GITHUB_WORKSPACE/artifacts/prebuilts/rust/libtest^android_x86_64_dylib
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_06/prebuilts/rust/libtest^android_x86_64_dylib.output $GITHUB_WORKSPACE/artifacts/prebuilts/rust/libtest^android_x86_64_dylib $GITHUB_WORKSPACE/artifacts/prebuilts/rust/libtest^android_x86_64_dylib/addition_copy_files.output
 
 echo "building libtest^android_x86_64_dylib_apex10000"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libtest,android_x86_64_dylib_apex10000
 mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/rust/libtest^android_x86_64_dylib_apex10000
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/prebuilts/rust/libtest^android_x86_64_dylib_apex10000.output . $GITHUB_WORKSPACE/artifacts/prebuilts/rust/libtest^android_x86_64_dylib_apex10000
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_06/prebuilts/rust/libtest^android_x86_64_dylib_apex10000.output $GITHUB_WORKSPACE/artifacts/prebuilts/rust/libtest^android_x86_64_dylib_apex10000 $GITHUB_WORKSPACE/artifacts/prebuilts/rust/libtest^android_x86_64_dylib_apex10000/addition_copy_files.output
 
 rm -rf out
 

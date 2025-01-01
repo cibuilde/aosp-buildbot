@@ -27,51 +27,61 @@ echo "building android-arch-core-runtime-nodeps^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja android-arch-core-runtime-nodeps,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/extras/app-toolkit/android-arch-core-runtime-nodeps^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/prebuilts/sdk/android-arch-core-runtime-nodeps^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/extras/app-toolkit/android-arch-core-runtime-nodeps^android_common
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_07/prebuilts/sdk/android-arch-core-runtime-nodeps^android_common.output $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/extras/app-toolkit/android-arch-core-runtime-nodeps^android_common $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/extras/app-toolkit/android-arch-core-runtime-nodeps^android_common/addition_copy_files.output
 
 echo "building android-arch-lifecycle-runtime-nodeps^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja android-arch-lifecycle-runtime-nodeps,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/extras/app-toolkit/android-arch-lifecycle-runtime-nodeps^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/prebuilts/sdk/android-arch-lifecycle-runtime-nodeps^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/extras/app-toolkit/android-arch-lifecycle-runtime-nodeps^android_common
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_07/prebuilts/sdk/android-arch-lifecycle-runtime-nodeps^android_common.output $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/extras/app-toolkit/android-arch-lifecycle-runtime-nodeps^android_common $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/extras/app-toolkit/android-arch-lifecycle-runtime-nodeps^android_common/addition_copy_files.output
 
 echo "building android-arch-lifecycle-viewmodel-nodeps^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja android-arch-lifecycle-viewmodel-nodeps,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/extras/app-toolkit/android-arch-lifecycle-viewmodel-nodeps^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/prebuilts/sdk/android-arch-lifecycle-viewmodel-nodeps^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/extras/app-toolkit/android-arch-lifecycle-viewmodel-nodeps^android_common
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_07/prebuilts/sdk/android-arch-lifecycle-viewmodel-nodeps^android_common.output $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/extras/app-toolkit/android-arch-lifecycle-viewmodel-nodeps^android_common $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/extras/app-toolkit/android-arch-lifecycle-viewmodel-nodeps^android_common/addition_copy_files.output
 
 echo "building android-support-cursoradapter-nodeps^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja android-support-cursoradapter-nodeps,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/support/android-support-cursoradapter-nodeps^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/prebuilts/sdk/android-support-cursoradapter-nodeps^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/support/android-support-cursoradapter-nodeps^android_common
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_07/prebuilts/sdk/android-support-cursoradapter-nodeps^android_common.output $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/support/android-support-cursoradapter-nodeps^android_common $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/support/android-support-cursoradapter-nodeps^android_common/addition_copy_files.output
 
 echo "building android-support-documentfile-nodeps^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja android-support-documentfile-nodeps,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/support/android-support-documentfile-nodeps^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/prebuilts/sdk/android-support-documentfile-nodeps^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/support/android-support-documentfile-nodeps^android_common
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_07/prebuilts/sdk/android-support-documentfile-nodeps^android_common.output $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/support/android-support-documentfile-nodeps^android_common $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/support/android-support-documentfile-nodeps^android_common/addition_copy_files.output
 
 echo "building android-support-interpolator-nodeps^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja android-support-interpolator-nodeps,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/support/android-support-interpolator-nodeps^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/prebuilts/sdk/android-support-interpolator-nodeps^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/support/android-support-interpolator-nodeps^android_common
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_07/prebuilts/sdk/android-support-interpolator-nodeps^android_common.output $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/support/android-support-interpolator-nodeps^android_common $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/support/android-support-interpolator-nodeps^android_common/addition_copy_files.output
 
 echo "building android-support-localbroadcastmanager-nodeps^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja android-support-localbroadcastmanager-nodeps,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/support/android-support-localbroadcastmanager-nodeps^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/prebuilts/sdk/android-support-localbroadcastmanager-nodeps^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/support/android-support-localbroadcastmanager-nodeps^android_common
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_07/prebuilts/sdk/android-support-localbroadcastmanager-nodeps^android_common.output $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/support/android-support-localbroadcastmanager-nodeps^android_common $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/support/android-support-localbroadcastmanager-nodeps^android_common/addition_copy_files.output
 
 echo "building android-support-print-nodeps^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja android-support-print-nodeps,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/support/android-support-print-nodeps^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/prebuilts/sdk/android-support-print-nodeps^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/support/android-support-print-nodeps^android_common
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_07/prebuilts/sdk/android-support-print-nodeps^android_common.output $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/support/android-support-print-nodeps^android_common $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/support/android-support-print-nodeps^android_common/addition_copy_files.output
 
 echo "building android-support-v7-cardview-nodeps^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja android-support-v7-cardview-nodeps,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/support/android-support-v7-cardview-nodeps^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/prebuilts/sdk/android-support-v7-cardview-nodeps^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/support/android-support-v7-cardview-nodeps^android_common
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_07/prebuilts/sdk/android-support-v7-cardview-nodeps^android_common.output $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/support/android-support-v7-cardview-nodeps^android_common $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/support/android-support-v7-cardview-nodeps^android_common/addition_copy_files.output
 
 echo "building android-versionedparcelable-nodeps^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja android-versionedparcelable-nodeps,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/support/android-versionedparcelable-nodeps^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/prebuilts/sdk/android-versionedparcelable-nodeps^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/support/android-versionedparcelable-nodeps^android_common
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_07/prebuilts/sdk/android-versionedparcelable-nodeps^android_common.output $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/support/android-versionedparcelable-nodeps^android_common $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/support/android-versionedparcelable-nodeps^android_common/addition_copy_files.output
 
 rm -rf out
 

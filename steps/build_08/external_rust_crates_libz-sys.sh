@@ -52,6 +52,7 @@ echo "building liblibz_sys^android_x86_64_dylib"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja liblibz_sys,android_x86_64_dylib
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/rust/crates/libz-sys/liblibz_sys^android_x86_64_dylib
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/external/rust/crates/libz-sys/liblibz_sys^android_x86_64_dylib.output . $GITHUB_WORKSPACE/artifacts/external/rust/crates/libz-sys/liblibz_sys^android_x86_64_dylib
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_08/external/rust/crates/libz-sys/liblibz_sys^android_x86_64_dylib.output $GITHUB_WORKSPACE/artifacts/external/rust/crates/libz-sys/liblibz_sys^android_x86_64_dylib $GITHUB_WORKSPACE/artifacts/external/rust/crates/libz-sys/liblibz_sys^android_x86_64_dylib/addition_copy_files.output
 
 rm -rf out
 

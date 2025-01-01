@@ -258,256 +258,307 @@ echo "building PluginCoreLib^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_22.ninja PluginCoreLib,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SystemUI/plugin_core/PluginCoreLib^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_22/frameworks/base/PluginCoreLib^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SystemUI/plugin_core/PluginCoreLib^android_common
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_22/frameworks/base/PluginCoreLib^android_common.output $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SystemUI/plugin_core/PluginCoreLib^android_common $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SystemUI/plugin_core/PluginCoreLib^android_common/addition_copy_files.output
 
 echo "building SettingsLib-search^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_22.ninja SettingsLib-search,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/search/SettingsLib-search^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_22/frameworks/base/SettingsLib-search^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/search/SettingsLib-search^android_common
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_22/frameworks/base/SettingsLib-search^android_common.output $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/search/SettingsLib-search^android_common $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/search/SettingsLib-search^android_common/addition_copy_files.output
 
 echo "building SettingsLibActionBarShadow^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_22.ninja SettingsLibActionBarShadow,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/ActionBarShadow/SettingsLibActionBarShadow^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_22/frameworks/base/SettingsLibActionBarShadow^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/ActionBarShadow/SettingsLibActionBarShadow^android_common
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_22/frameworks/base/SettingsLibActionBarShadow^android_common.output $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/ActionBarShadow/SettingsLibActionBarShadow^android_common $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/ActionBarShadow/SettingsLibActionBarShadow^android_common/addition_copy_files.output
 
 echo "building SettingsLibActionBarShadow^android_common_apex30"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_22.ninja SettingsLibActionBarShadow,android_common_apex30
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/ActionBarShadow/SettingsLibActionBarShadow^android_common_apex30
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_22/frameworks/base/SettingsLibActionBarShadow^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/ActionBarShadow/SettingsLibActionBarShadow^android_common_apex30
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_22/frameworks/base/SettingsLibActionBarShadow^android_common_apex30.output $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/ActionBarShadow/SettingsLibActionBarShadow^android_common_apex30 $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/ActionBarShadow/SettingsLibActionBarShadow^android_common_apex30/addition_copy_files.output
 
 echo "building SettingsLibActionButtonsPreference^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_22.ninja SettingsLibActionButtonsPreference,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/ActionButtonsPreference/SettingsLibActionButtonsPreference^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_22/frameworks/base/SettingsLibActionButtonsPreference^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/ActionButtonsPreference/SettingsLibActionButtonsPreference^android_common
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_22/frameworks/base/SettingsLibActionButtonsPreference^android_common.output $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/ActionButtonsPreference/SettingsLibActionButtonsPreference^android_common $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/ActionButtonsPreference/SettingsLibActionButtonsPreference^android_common/addition_copy_files.output
 
 echo "building SettingsLibAppPreference^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_22.ninja SettingsLibAppPreference,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/AppPreference/SettingsLibAppPreference^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_22/frameworks/base/SettingsLibAppPreference^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/AppPreference/SettingsLibAppPreference^android_common
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_22/frameworks/base/SettingsLibAppPreference^android_common.output $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/AppPreference/SettingsLibAppPreference^android_common $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/AppPreference/SettingsLibAppPreference^android_common/addition_copy_files.output
 
 echo "building SettingsLibAppPreference^android_common_apex30"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_22.ninja SettingsLibAppPreference,android_common_apex30
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/AppPreference/SettingsLibAppPreference^android_common_apex30
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_22/frameworks/base/SettingsLibAppPreference^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/AppPreference/SettingsLibAppPreference^android_common_apex30
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_22/frameworks/base/SettingsLibAppPreference^android_common_apex30.output $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/AppPreference/SettingsLibAppPreference^android_common_apex30 $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/AppPreference/SettingsLibAppPreference^android_common_apex30/addition_copy_files.output
 
 echo "building SettingsLibBannerMessagePreference^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_22.ninja SettingsLibBannerMessagePreference,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/BannerMessagePreference/SettingsLibBannerMessagePreference^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_22/frameworks/base/SettingsLibBannerMessagePreference^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/BannerMessagePreference/SettingsLibBannerMessagePreference^android_common
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_22/frameworks/base/SettingsLibBannerMessagePreference^android_common.output $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/BannerMessagePreference/SettingsLibBannerMessagePreference^android_common $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/BannerMessagePreference/SettingsLibBannerMessagePreference^android_common/addition_copy_files.output
 
 echo "building SettingsLibBarChartPreference^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_22.ninja SettingsLibBarChartPreference,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/BarChartPreference/SettingsLibBarChartPreference^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_22/frameworks/base/SettingsLibBarChartPreference^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/BarChartPreference/SettingsLibBarChartPreference^android_common
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_22/frameworks/base/SettingsLibBarChartPreference^android_common.output $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/BarChartPreference/SettingsLibBarChartPreference^android_common $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/BarChartPreference/SettingsLibBarChartPreference^android_common/addition_copy_files.output
 
 echo "building SettingsLibBarChartPreference^android_common_apex30"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_22.ninja SettingsLibBarChartPreference,android_common_apex30
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/BarChartPreference/SettingsLibBarChartPreference^android_common_apex30
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_22/frameworks/base/SettingsLibBarChartPreference^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/BarChartPreference/SettingsLibBarChartPreference^android_common_apex30
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_22/frameworks/base/SettingsLibBarChartPreference^android_common_apex30.output $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/BarChartPreference/SettingsLibBarChartPreference^android_common_apex30 $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/BarChartPreference/SettingsLibBarChartPreference^android_common_apex30/addition_copy_files.output
 
 echo "building SettingsLibEmergencyNumber^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_22.ninja SettingsLibEmergencyNumber,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/EmergencyNumber/SettingsLibEmergencyNumber^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_22/frameworks/base/SettingsLibEmergencyNumber^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/EmergencyNumber/SettingsLibEmergencyNumber^android_common
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_22/frameworks/base/SettingsLibEmergencyNumber^android_common.output $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/EmergencyNumber/SettingsLibEmergencyNumber^android_common $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/EmergencyNumber/SettingsLibEmergencyNumber^android_common/addition_copy_files.output
 
 echo "building SettingsLibEntityHeaderWidgets^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_22.ninja SettingsLibEntityHeaderWidgets,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/EntityHeaderWidgets/SettingsLibEntityHeaderWidgets^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_22/frameworks/base/SettingsLibEntityHeaderWidgets^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/EntityHeaderWidgets/SettingsLibEntityHeaderWidgets^android_common
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_22/frameworks/base/SettingsLibEntityHeaderWidgets^android_common.output $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/EntityHeaderWidgets/SettingsLibEntityHeaderWidgets^android_common $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/EntityHeaderWidgets/SettingsLibEntityHeaderWidgets^android_common/addition_copy_files.output
 
 echo "building SettingsLibFooterPreference^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_22.ninja SettingsLibFooterPreference,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/FooterPreference/SettingsLibFooterPreference^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_22/frameworks/base/SettingsLibFooterPreference^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/FooterPreference/SettingsLibFooterPreference^android_common
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_22/frameworks/base/SettingsLibFooterPreference^android_common.output $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/FooterPreference/SettingsLibFooterPreference^android_common $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/FooterPreference/SettingsLibFooterPreference^android_common/addition_copy_files.output
 
 echo "building SettingsLibFooterPreference^android_common_apex30"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_22.ninja SettingsLibFooterPreference,android_common_apex30
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/FooterPreference/SettingsLibFooterPreference^android_common_apex30
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_22/frameworks/base/SettingsLibFooterPreference^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/FooterPreference/SettingsLibFooterPreference^android_common_apex30
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_22/frameworks/base/SettingsLibFooterPreference^android_common_apex30.output $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/FooterPreference/SettingsLibFooterPreference^android_common_apex30 $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/FooterPreference/SettingsLibFooterPreference^android_common_apex30/addition_copy_files.output
 
 echo "building SettingsLibHelpUtils^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_22.ninja SettingsLibHelpUtils,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/HelpUtils/SettingsLibHelpUtils^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_22/frameworks/base/SettingsLibHelpUtils^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/HelpUtils/SettingsLibHelpUtils^android_common
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_22/frameworks/base/SettingsLibHelpUtils^android_common.output $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/HelpUtils/SettingsLibHelpUtils^android_common $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/HelpUtils/SettingsLibHelpUtils^android_common/addition_copy_files.output
 
 echo "building SettingsLibHelpUtils^android_common_apex30"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_22.ninja SettingsLibHelpUtils,android_common_apex30
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/HelpUtils/SettingsLibHelpUtils^android_common_apex30
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_22/frameworks/base/SettingsLibHelpUtils^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/HelpUtils/SettingsLibHelpUtils^android_common_apex30
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_22/frameworks/base/SettingsLibHelpUtils^android_common_apex30.output $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/HelpUtils/SettingsLibHelpUtils^android_common_apex30 $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/HelpUtils/SettingsLibHelpUtils^android_common_apex30/addition_copy_files.output
 
 echo "building SettingsLibLayoutPreference^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_22.ninja SettingsLibLayoutPreference,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/LayoutPreference/SettingsLibLayoutPreference^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_22/frameworks/base/SettingsLibLayoutPreference^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/LayoutPreference/SettingsLibLayoutPreference^android_common
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_22/frameworks/base/SettingsLibLayoutPreference^android_common.output $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/LayoutPreference/SettingsLibLayoutPreference^android_common $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/LayoutPreference/SettingsLibLayoutPreference^android_common/addition_copy_files.output
 
 echo "building SettingsLibLayoutPreference^android_common_apex30"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_22.ninja SettingsLibLayoutPreference,android_common_apex30
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/LayoutPreference/SettingsLibLayoutPreference^android_common_apex30
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_22/frameworks/base/SettingsLibLayoutPreference^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/LayoutPreference/SettingsLibLayoutPreference^android_common_apex30
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_22/frameworks/base/SettingsLibLayoutPreference^android_common_apex30.output $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/LayoutPreference/SettingsLibLayoutPreference^android_common_apex30 $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/LayoutPreference/SettingsLibLayoutPreference^android_common_apex30/addition_copy_files.output
 
 echo "building SettingsLibMainSwitchPreference^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_22.ninja SettingsLibMainSwitchPreference,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/MainSwitchPreference/SettingsLibMainSwitchPreference^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_22/frameworks/base/SettingsLibMainSwitchPreference^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/MainSwitchPreference/SettingsLibMainSwitchPreference^android_common
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_22/frameworks/base/SettingsLibMainSwitchPreference^android_common.output $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/MainSwitchPreference/SettingsLibMainSwitchPreference^android_common $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/MainSwitchPreference/SettingsLibMainSwitchPreference^android_common/addition_copy_files.output
 
 echo "building SettingsLibMainSwitchPreference^android_common_apex30"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_22.ninja SettingsLibMainSwitchPreference,android_common_apex30
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/MainSwitchPreference/SettingsLibMainSwitchPreference^android_common_apex30
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_22/frameworks/base/SettingsLibMainSwitchPreference^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/MainSwitchPreference/SettingsLibMainSwitchPreference^android_common_apex30
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_22/frameworks/base/SettingsLibMainSwitchPreference^android_common_apex30.output $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/MainSwitchPreference/SettingsLibMainSwitchPreference^android_common_apex30 $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/MainSwitchPreference/SettingsLibMainSwitchPreference^android_common_apex30/addition_copy_files.output
 
 echo "building SettingsLibProgressBar^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_22.ninja SettingsLibProgressBar,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/ProgressBar/SettingsLibProgressBar^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_22/frameworks/base/SettingsLibProgressBar^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/ProgressBar/SettingsLibProgressBar^android_common
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_22/frameworks/base/SettingsLibProgressBar^android_common.output $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/ProgressBar/SettingsLibProgressBar^android_common $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/ProgressBar/SettingsLibProgressBar^android_common/addition_copy_files.output
 
 echo "building SettingsLibProgressBar^android_common_apex30"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_22.ninja SettingsLibProgressBar,android_common_apex30
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/ProgressBar/SettingsLibProgressBar^android_common_apex30
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_22/frameworks/base/SettingsLibProgressBar^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/ProgressBar/SettingsLibProgressBar^android_common_apex30
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_22/frameworks/base/SettingsLibProgressBar^android_common_apex30.output $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/ProgressBar/SettingsLibProgressBar^android_common_apex30 $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/ProgressBar/SettingsLibProgressBar^android_common_apex30/addition_copy_files.output
 
 echo "building SettingsLibRadioButtonPreference^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_22.ninja SettingsLibRadioButtonPreference,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/RadioButtonPreference/SettingsLibRadioButtonPreference^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_22/frameworks/base/SettingsLibRadioButtonPreference^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/RadioButtonPreference/SettingsLibRadioButtonPreference^android_common
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_22/frameworks/base/SettingsLibRadioButtonPreference^android_common.output $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/RadioButtonPreference/SettingsLibRadioButtonPreference^android_common $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/RadioButtonPreference/SettingsLibRadioButtonPreference^android_common/addition_copy_files.output
 
 echo "building SettingsLibRadioButtonPreference^android_common_apex30"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_22.ninja SettingsLibRadioButtonPreference,android_common_apex30
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/RadioButtonPreference/SettingsLibRadioButtonPreference^android_common_apex30
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_22/frameworks/base/SettingsLibRadioButtonPreference^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/RadioButtonPreference/SettingsLibRadioButtonPreference^android_common_apex30
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_22/frameworks/base/SettingsLibRadioButtonPreference^android_common_apex30.output $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/RadioButtonPreference/SettingsLibRadioButtonPreference^android_common_apex30 $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/RadioButtonPreference/SettingsLibRadioButtonPreference^android_common_apex30/addition_copy_files.output
 
 echo "building SettingsLibRestrictedLockUtils^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_22.ninja SettingsLibRestrictedLockUtils,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/RestrictedLockUtils/SettingsLibRestrictedLockUtils^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_22/frameworks/base/SettingsLibRestrictedLockUtils^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/RestrictedLockUtils/SettingsLibRestrictedLockUtils^android_common
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_22/frameworks/base/SettingsLibRestrictedLockUtils^android_common.output $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/RestrictedLockUtils/SettingsLibRestrictedLockUtils^android_common $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/RestrictedLockUtils/SettingsLibRestrictedLockUtils^android_common/addition_copy_files.output
 
 echo "building SettingsLibRestrictedLockUtils^android_common_apex30"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_22.ninja SettingsLibRestrictedLockUtils,android_common_apex30
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/RestrictedLockUtils/SettingsLibRestrictedLockUtils^android_common_apex30
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_22/frameworks/base/SettingsLibRestrictedLockUtils^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/RestrictedLockUtils/SettingsLibRestrictedLockUtils^android_common_apex30
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_22/frameworks/base/SettingsLibRestrictedLockUtils^android_common_apex30.output $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/RestrictedLockUtils/SettingsLibRestrictedLockUtils^android_common_apex30 $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/RestrictedLockUtils/SettingsLibRestrictedLockUtils^android_common_apex30/addition_copy_files.output
 
 echo "building SettingsLibSearchWidget^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_22.ninja SettingsLibSearchWidget,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/SearchWidget/SettingsLibSearchWidget^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_22/frameworks/base/SettingsLibSearchWidget^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/SearchWidget/SettingsLibSearchWidget^android_common
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_22/frameworks/base/SettingsLibSearchWidget^android_common.output $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/SearchWidget/SettingsLibSearchWidget^android_common $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/SearchWidget/SettingsLibSearchWidget^android_common/addition_copy_files.output
 
 echo "building SettingsLibSearchWidget^android_common_apex30"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_22.ninja SettingsLibSearchWidget,android_common_apex30
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/SearchWidget/SettingsLibSearchWidget^android_common_apex30
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_22/frameworks/base/SettingsLibSearchWidget^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/SearchWidget/SettingsLibSearchWidget^android_common_apex30
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_22/frameworks/base/SettingsLibSearchWidget^android_common_apex30.output $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/SearchWidget/SettingsLibSearchWidget^android_common_apex30 $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/SearchWidget/SettingsLibSearchWidget^android_common_apex30/addition_copy_files.output
 
 echo "building SettingsLibSettingsSpinner^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_22.ninja SettingsLibSettingsSpinner,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/SettingsSpinner/SettingsLibSettingsSpinner^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_22/frameworks/base/SettingsLibSettingsSpinner^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/SettingsSpinner/SettingsLibSettingsSpinner^android_common
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_22/frameworks/base/SettingsLibSettingsSpinner^android_common.output $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/SettingsSpinner/SettingsLibSettingsSpinner^android_common $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/SettingsSpinner/SettingsLibSettingsSpinner^android_common/addition_copy_files.output
 
 echo "building SettingsLibSettingsTheme^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_22.ninja SettingsLibSettingsTheme,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/SettingsTheme/SettingsLibSettingsTheme^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_22/frameworks/base/SettingsLibSettingsTheme^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/SettingsTheme/SettingsLibSettingsTheme^android_common
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_22/frameworks/base/SettingsLibSettingsTheme^android_common.output $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/SettingsTheme/SettingsLibSettingsTheme^android_common $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/SettingsTheme/SettingsLibSettingsTheme^android_common/addition_copy_files.output
 
 echo "building SettingsLibSettingsTheme^android_common_apex30"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_22.ninja SettingsLibSettingsTheme,android_common_apex30
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/SettingsTheme/SettingsLibSettingsTheme^android_common_apex30
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_22/frameworks/base/SettingsLibSettingsTheme^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/SettingsTheme/SettingsLibSettingsTheme^android_common_apex30
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_22/frameworks/base/SettingsLibSettingsTheme^android_common_apex30.output $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/SettingsTheme/SettingsLibSettingsTheme^android_common_apex30 $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/SettingsTheme/SettingsLibSettingsTheme^android_common_apex30/addition_copy_files.output
 
 echo "building SettingsLibTopIntroPreference^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_22.ninja SettingsLibTopIntroPreference,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/TopIntroPreference/SettingsLibTopIntroPreference^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_22/frameworks/base/SettingsLibTopIntroPreference^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/TopIntroPreference/SettingsLibTopIntroPreference^android_common
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_22/frameworks/base/SettingsLibTopIntroPreference^android_common.output $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/TopIntroPreference/SettingsLibTopIntroPreference^android_common $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/TopIntroPreference/SettingsLibTopIntroPreference^android_common/addition_copy_files.output
 
 echo "building SettingsLibTwoTargetPreference^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_22.ninja SettingsLibTwoTargetPreference,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/TwoTargetPreference/SettingsLibTwoTargetPreference^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_22/frameworks/base/SettingsLibTwoTargetPreference^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/TwoTargetPreference/SettingsLibTwoTargetPreference^android_common
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_22/frameworks/base/SettingsLibTwoTargetPreference^android_common.output $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/TwoTargetPreference/SettingsLibTwoTargetPreference^android_common $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/TwoTargetPreference/SettingsLibTwoTargetPreference^android_common/addition_copy_files.output
 
 echo "building SettingsLibTwoTargetPreference^android_common_apex30"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_22.ninja SettingsLibTwoTargetPreference,android_common_apex30
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/TwoTargetPreference/SettingsLibTwoTargetPreference^android_common_apex30
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_22/frameworks/base/SettingsLibTwoTargetPreference^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/TwoTargetPreference/SettingsLibTwoTargetPreference^android_common_apex30
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_22/frameworks/base/SettingsLibTwoTargetPreference^android_common_apex30.output $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/TwoTargetPreference/SettingsLibTwoTargetPreference^android_common_apex30 $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/TwoTargetPreference/SettingsLibTwoTargetPreference^android_common_apex30/addition_copy_files.output
 
 echo "building SettingsLibUtils^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_22.ninja SettingsLibUtils,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/Utils/SettingsLibUtils^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_22/frameworks/base/SettingsLibUtils^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/Utils/SettingsLibUtils^android_common
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_22/frameworks/base/SettingsLibUtils^android_common.output $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/Utils/SettingsLibUtils^android_common $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/Utils/SettingsLibUtils^android_common/addition_copy_files.output
 
 echo "building SettingsLibUtils^android_common_apex30"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_22.ninja SettingsLibUtils,android_common_apex30
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/Utils/SettingsLibUtils^android_common_apex30
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_22/frameworks/base/SettingsLibUtils^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/Utils/SettingsLibUtils^android_common_apex30
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_22/frameworks/base/SettingsLibUtils^android_common_apex30.output $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/Utils/SettingsLibUtils^android_common_apex30 $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/Utils/SettingsLibUtils^android_common_apex30/addition_copy_files.output
 
 echo "building android-non-updatable.stubs.system^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_22.ninja android-non-updatable.stubs.system,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/android-non-updatable.stubs.system^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_22/frameworks/base/android-non-updatable.stubs.system^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/android-non-updatable.stubs.system^android_common
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_22/frameworks/base/android-non-updatable.stubs.system^android_common.output $GITHUB_WORKSPACE/artifacts/frameworks/base/android-non-updatable.stubs.system^android_common $GITHUB_WORKSPACE/artifacts/frameworks/base/android-non-updatable.stubs.system^android_common/addition_copy_files.output
 
 echo "building android-non-updatable.stubs.test^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_22.ninja android-non-updatable.stubs.test,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/android-non-updatable.stubs.test^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_22/frameworks/base/android-non-updatable.stubs.test^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/android-non-updatable.stubs.test^android_common
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_22/frameworks/base/android-non-updatable.stubs.test^android_common.output $GITHUB_WORKSPACE/artifacts/frameworks/base/android-non-updatable.stubs.test^android_common $GITHUB_WORKSPACE/artifacts/frameworks/base/android-non-updatable.stubs.test^android_common/addition_copy_files.output
 
 echo "building android-non-updatable.stubs^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_22.ninja android-non-updatable.stubs,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/android-non-updatable.stubs^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_22/frameworks/base/android-non-updatable.stubs^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/android-non-updatable.stubs^android_common
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_22/frameworks/base/android-non-updatable.stubs^android_common.output $GITHUB_WORKSPACE/artifacts/frameworks/base/android-non-updatable.stubs^android_common $GITHUB_WORKSPACE/artifacts/frameworks/base/android-non-updatable.stubs^android_common/addition_copy_files.output
 
 echo "building android_stubs_current^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_22.ninja android_stubs_current,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/android_stubs_current^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_22/frameworks/base/android_stubs_current^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/android_stubs_current^android_common
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_22/frameworks/base/android_stubs_current^android_common.output $GITHUB_WORKSPACE/artifacts/frameworks/base/android_stubs_current^android_common $GITHUB_WORKSPACE/artifacts/frameworks/base/android_stubs_current^android_common/addition_copy_files.output
 
 echo "building android_system_stubs_current^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_22.ninja android_system_stubs_current,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/android_system_stubs_current^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_22/frameworks/base/android_system_stubs_current^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/android_system_stubs_current^android_common
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_22/frameworks/base/android_system_stubs_current^android_common.output $GITHUB_WORKSPACE/artifacts/frameworks/base/android_system_stubs_current^android_common $GITHUB_WORKSPACE/artifacts/frameworks/base/android_system_stubs_current^android_common/addition_copy_files.output
 
 echo "building android_test_stubs_current^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_22.ninja android_test_stubs_current,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/android_test_stubs_current^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_22/frameworks/base/android_test_stubs_current^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/android_test_stubs_current^android_common
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_22/frameworks/base/android_test_stubs_current^android_common.output $GITHUB_WORKSPACE/artifacts/frameworks/base/android_test_stubs_current^android_common $GITHUB_WORKSPACE/artifacts/frameworks/base/android_test_stubs_current^android_common/addition_copy_files.output
 
 echo "building audio_common-aidl-java^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_22.ninja audio_common-aidl-java,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/media/audio_common-aidl-java^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_22/frameworks/base/audio_common-aidl-java^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/media/audio_common-aidl-java^android_common
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_22/frameworks/base/audio_common-aidl-java^android_common.output $GITHUB_WORKSPACE/artifacts/frameworks/base/media/audio_common-aidl-java^android_common $GITHUB_WORKSPACE/artifacts/frameworks/base/media/audio_common-aidl-java^android_common/addition_copy_files.output
 
 echo "building com.android.appsearch-bootclasspath-fragment^android_common_apex10000"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_22.ninja com.android.appsearch-bootclasspath-fragment,android_common_apex10000
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/apex/appsearch/com.android.appsearch-bootclasspath-fragment^android_common_apex10000
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_22/frameworks/base/com.android.appsearch-bootclasspath-fragment^android_common_apex10000.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/apex/appsearch/com.android.appsearch-bootclasspath-fragment^android_common_apex10000
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_22/frameworks/base/com.android.appsearch-bootclasspath-fragment^android_common_apex10000.output $GITHUB_WORKSPACE/artifacts/frameworks/base/apex/appsearch/com.android.appsearch-bootclasspath-fragment^android_common_apex10000 $GITHUB_WORKSPACE/artifacts/frameworks/base/apex/appsearch/com.android.appsearch-bootclasspath-fragment^android_common_apex10000/addition_copy_files.output
 
 echo "building framework-updatable-stubs-module_libs_api^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_22.ninja framework-updatable-stubs-module_libs_api,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/framework-updatable-stubs-module_libs_api^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_22/frameworks/base/framework-updatable-stubs-module_libs_api^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/framework-updatable-stubs-module_libs_api^android_common
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_22/frameworks/base/framework-updatable-stubs-module_libs_api^android_common.output $GITHUB_WORKSPACE/artifacts/frameworks/base/framework-updatable-stubs-module_libs_api^android_common $GITHUB_WORKSPACE/artifacts/frameworks/base/framework-updatable-stubs-module_libs_api^android_common/addition_copy_files.output
 
 echo "building frameworks-base-api-current.txt^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_22.ninja frameworks-base-api-current.txt,
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/api/frameworks-base-api-current.txt^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_22/frameworks/base/frameworks-base-api-current.txt^.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/api/frameworks-base-api-current.txt^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_22/frameworks/base/frameworks-base-api-current.txt^.output $GITHUB_WORKSPACE/artifacts/frameworks/base/api/frameworks-base-api-current.txt^ $GITHUB_WORKSPACE/artifacts/frameworks/base/api/frameworks-base-api-current.txt^/addition_copy_files.output
 
 echo "building frameworks-base-api-removed.txt^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_22.ninja frameworks-base-api-removed.txt,
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/api/frameworks-base-api-removed.txt^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_22/frameworks/base/frameworks-base-api-removed.txt^.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/api/frameworks-base-api-removed.txt^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_22/frameworks/base/frameworks-base-api-removed.txt^.output $GITHUB_WORKSPACE/artifacts/frameworks/base/api/frameworks-base-api-removed.txt^ $GITHUB_WORKSPACE/artifacts/frameworks/base/api/frameworks-base-api-removed.txt^/addition_copy_files.output
 
 echo "building frameworks-base-api-system-removed.txt^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_22.ninja frameworks-base-api-system-removed.txt,
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/api/frameworks-base-api-system-removed.txt^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_22/frameworks/base/frameworks-base-api-system-removed.txt^.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/api/frameworks-base-api-system-removed.txt^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_22/frameworks/base/frameworks-base-api-system-removed.txt^.output $GITHUB_WORKSPACE/artifacts/frameworks/base/api/frameworks-base-api-system-removed.txt^ $GITHUB_WORKSPACE/artifacts/frameworks/base/api/frameworks-base-api-system-removed.txt^/addition_copy_files.output
 
 echo "building media_permission-aidl-java^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_22.ninja media_permission-aidl-java,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/media/media_permission-aidl-java^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_22/frameworks/base/media_permission-aidl-java^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/media/media_permission-aidl-java^android_common
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_22/frameworks/base/media_permission-aidl-java^android_common.output $GITHUB_WORKSPACE/artifacts/frameworks/base/media/media_permission-aidl-java^android_common $GITHUB_WORKSPACE/artifacts/frameworks/base/media/media_permission-aidl-java^android_common/addition_copy_files.output
 
 echo "building metrics-constants-protos^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_22.ninja metrics-constants-protos,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/proto/metrics-constants-protos^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_22/frameworks/base/metrics-constants-protos^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/proto/metrics-constants-protos^android_common
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_22/frameworks/base/metrics-constants-protos^android_common.output $GITHUB_WORKSPACE/artifacts/frameworks/base/proto/metrics-constants-protos^android_common $GITHUB_WORKSPACE/artifacts/frameworks/base/proto/metrics-constants-protos^android_common/addition_copy_files.output
 
 echo "building soundtrigger_middleware-aidl-java^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_22.ninja soundtrigger_middleware-aidl-java,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/media/soundtrigger_middleware-aidl-java^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_22/frameworks/base/soundtrigger_middleware-aidl-java^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/media/soundtrigger_middleware-aidl-java^android_common
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_22/frameworks/base/soundtrigger_middleware-aidl-java^android_common.output $GITHUB_WORKSPACE/artifacts/frameworks/base/media/soundtrigger_middleware-aidl-java^android_common $GITHUB_WORKSPACE/artifacts/frameworks/base/media/soundtrigger_middleware-aidl-java^android_common/addition_copy_files.output
 
 rm -rf out
 

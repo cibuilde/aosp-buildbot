@@ -31,11 +31,13 @@ echo "building framework-permission-s^android_common_apex30"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_29.ninja framework-permission-s,android_common_apex30
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/Permission/framework-s/framework-permission-s^android_common_apex30
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_29/packages/modules/Permission/framework-permission-s^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/packages/modules/Permission/framework-s/framework-permission-s^android_common_apex30
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_29/packages/modules/Permission/framework-permission-s^android_common_apex30.output $GITHUB_WORKSPACE/artifacts/packages/modules/Permission/framework-s/framework-permission-s^android_common_apex30 $GITHUB_WORKSPACE/artifacts/packages/modules/Permission/framework-s/framework-permission-s^android_common_apex30/addition_copy_files.output
 
 echo "building framework-permission^android_common_apex30"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_29.ninja framework-permission,android_common_apex30
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/Permission/framework/framework-permission^android_common_apex30
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_29/packages/modules/Permission/framework-permission^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/packages/modules/Permission/framework/framework-permission^android_common_apex30
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_29/packages/modules/Permission/framework-permission^android_common_apex30.output $GITHUB_WORKSPACE/artifacts/packages/modules/Permission/framework/framework-permission^android_common_apex30 $GITHUB_WORKSPACE/artifacts/packages/modules/Permission/framework/framework-permission^android_common_apex30/addition_copy_files.output
 
 rm -rf out
 

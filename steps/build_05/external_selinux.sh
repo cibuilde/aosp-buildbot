@@ -51,6 +51,7 @@ echo "building libselinux_bindgen^android_x86_64_source"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libselinux_bindgen,android_x86_64_source
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/selinux/libselinux/libselinux_bindgen^android_x86_64_source
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/external/selinux/libselinux_bindgen^android_x86_64_source.output . $GITHUB_WORKSPACE/artifacts/external/selinux/libselinux/libselinux_bindgen^android_x86_64_source
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/external/selinux/libselinux_bindgen^android_x86_64_source.output $GITHUB_WORKSPACE/artifacts/external/selinux/libselinux/libselinux_bindgen^android_x86_64_source $GITHUB_WORKSPACE/artifacts/external/selinux/libselinux/libselinux_bindgen^android_x86_64_source/addition_copy_files.output
 
 rm -rf out
 

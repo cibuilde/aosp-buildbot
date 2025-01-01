@@ -34,6 +34,7 @@ echo "building libimage_io^android_x86_64_shared"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libimage_io,android_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/image_io/libimage_io^android_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/external/image_io/libimage_io^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/external/image_io/libimage_io^android_x86_64_shared
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/external/image_io/libimage_io^android_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/external/image_io/libimage_io^android_x86_64_shared $GITHUB_WORKSPACE/artifacts/external/image_io/libimage_io^android_x86_64_shared/addition_copy_files.output
 
 rm -rf out
 

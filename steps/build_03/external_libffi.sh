@@ -32,11 +32,13 @@ echo "building ffi_header^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja ffi_header,
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/libffi/ffi_header^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/external/libffi/ffi_header^.output . $GITHUB_WORKSPACE/artifacts/external/libffi/ffi_header^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/external/libffi/ffi_header^.output $GITHUB_WORKSPACE/artifacts/external/libffi/ffi_header^ $GITHUB_WORKSPACE/artifacts/external/libffi/ffi_header^/addition_copy_files.output
 
 echo "building libffi^android_x86_64_static_apex10000"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libffi,android_x86_64_static_apex10000
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/libffi/libffi^android_x86_64_static_apex10000
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/external/libffi/libffi^android_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/external/libffi/libffi^android_x86_64_static_apex10000
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/external/libffi/libffi^android_x86_64_static_apex10000.output $GITHUB_WORKSPACE/artifacts/external/libffi/libffi^android_x86_64_static_apex10000 $GITHUB_WORKSPACE/artifacts/external/libffi/libffi^android_x86_64_static_apex10000/addition_copy_files.output
 
 rm -rf out
 

@@ -45,6 +45,7 @@ echo "building libnetworkstackutilsjni^android_x86_64_sdk_shared"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libnetworkstackutilsjni,android_x86_64_sdk_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/NetworkStack/libnetworkstackutilsjni^android_x86_64_sdk_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/packages/modules/NetworkStack/libnetworkstackutilsjni^android_x86_64_sdk_shared.output . $GITHUB_WORKSPACE/artifacts/packages/modules/NetworkStack/libnetworkstackutilsjni^android_x86_64_sdk_shared
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_07/packages/modules/NetworkStack/libnetworkstackutilsjni^android_x86_64_sdk_shared.output $GITHUB_WORKSPACE/artifacts/packages/modules/NetworkStack/libnetworkstackutilsjni^android_x86_64_sdk_shared $GITHUB_WORKSPACE/artifacts/packages/modules/NetworkStack/libnetworkstackutilsjni^android_x86_64_sdk_shared/addition_copy_files.output
 
 rm -rf out
 

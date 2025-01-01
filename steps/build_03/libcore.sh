@@ -21,11 +21,13 @@ echo "building core-oj^android_common_apex31"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja core-oj,android_common_apex31
 mkdir -p $GITHUB_WORKSPACE/artifacts/libcore/core-oj^android_common_apex31
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/libcore/core-oj^android_common_apex31.output . $GITHUB_WORKSPACE/artifacts/libcore/core-oj^android_common_apex31
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/libcore/core-oj^android_common_apex31.output $GITHUB_WORKSPACE/artifacts/libcore/core-oj^android_common_apex31 $GITHUB_WORKSPACE/artifacts/libcore/core-oj^android_common_apex31/addition_copy_files.output
 
 echo "building notices-for-stubs-jar^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja notices-for-stubs-jar,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/libcore/notices-for-stubs-jar^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/libcore/notices-for-stubs-jar^android_common.output . $GITHUB_WORKSPACE/artifacts/libcore/notices-for-stubs-jar^android_common
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/libcore/notices-for-stubs-jar^android_common.output $GITHUB_WORKSPACE/artifacts/libcore/notices-for-stubs-jar^android_common $GITHUB_WORKSPACE/artifacts/libcore/notices-for-stubs-jar^android_common/addition_copy_files.output
 
 rm -rf out
 

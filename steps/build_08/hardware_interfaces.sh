@@ -85,111 +85,133 @@ echo "building android.hardware.graphics.allocator@2.0^android_x86_64_shared_ape
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja android.hardware.graphics.allocator@2.0,android_x86_64_shared_apex29
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/graphics/allocator/2.0/android.hardware.graphics.allocator@2.0^android_x86_64_shared_apex29
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/hardware/interfaces/android.hardware.graphics.allocator@2.0^android_x86_64_shared_apex29.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/graphics/allocator/2.0/android.hardware.graphics.allocator@2.0^android_x86_64_shared_apex29
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_08/hardware/interfaces/android.hardware.graphics.allocator@2.0^android_x86_64_shared_apex29.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/graphics/allocator/2.0/android.hardware.graphics.allocator@2.0^android_x86_64_shared_apex29 $GITHUB_WORKSPACE/artifacts/hardware/interfaces/graphics/allocator/2.0/android.hardware.graphics.allocator@2.0^android_x86_64_shared_apex29/addition_copy_files.output
 
 echo "building android.hardware.graphics.allocator@3.0^android_x86_64_shared_apex29"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja android.hardware.graphics.allocator@3.0,android_x86_64_shared_apex29
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/graphics/allocator/3.0/android.hardware.graphics.allocator@3.0^android_x86_64_shared_apex29
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/hardware/interfaces/android.hardware.graphics.allocator@3.0^android_x86_64_shared_apex29.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/graphics/allocator/3.0/android.hardware.graphics.allocator@3.0^android_x86_64_shared_apex29
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_08/hardware/interfaces/android.hardware.graphics.allocator@3.0^android_x86_64_shared_apex29.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/graphics/allocator/3.0/android.hardware.graphics.allocator@3.0^android_x86_64_shared_apex29 $GITHUB_WORKSPACE/artifacts/hardware/interfaces/graphics/allocator/3.0/android.hardware.graphics.allocator@3.0^android_x86_64_shared_apex29/addition_copy_files.output
 
 echo "building android.hardware.graphics.allocator@4.0^android_x86_64_shared_apex29"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja android.hardware.graphics.allocator@4.0,android_x86_64_shared_apex29
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/graphics/allocator/4.0/android.hardware.graphics.allocator@4.0^android_x86_64_shared_apex29
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/hardware/interfaces/android.hardware.graphics.allocator@4.0^android_x86_64_shared_apex29.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/graphics/allocator/4.0/android.hardware.graphics.allocator@4.0^android_x86_64_shared_apex29
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_08/hardware/interfaces/android.hardware.graphics.allocator@4.0^android_x86_64_shared_apex29.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/graphics/allocator/4.0/android.hardware.graphics.allocator@4.0^android_x86_64_shared_apex29 $GITHUB_WORKSPACE/artifacts/hardware/interfaces/graphics/allocator/4.0/android.hardware.graphics.allocator@4.0^android_x86_64_shared_apex29/addition_copy_files.output
 
 echo "building android.hardware.graphics.bufferqueue@1.0^android_x86_64_shared_apex29"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja android.hardware.graphics.bufferqueue@1.0,android_x86_64_shared_apex29
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/graphics/bufferqueue/1.0/android.hardware.graphics.bufferqueue@1.0^android_x86_64_shared_apex29
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/hardware/interfaces/android.hardware.graphics.bufferqueue@1.0^android_x86_64_shared_apex29.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/graphics/bufferqueue/1.0/android.hardware.graphics.bufferqueue@1.0^android_x86_64_shared_apex29
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_08/hardware/interfaces/android.hardware.graphics.bufferqueue@1.0^android_x86_64_shared_apex29.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/graphics/bufferqueue/1.0/android.hardware.graphics.bufferqueue@1.0^android_x86_64_shared_apex29 $GITHUB_WORKSPACE/artifacts/hardware/interfaces/graphics/bufferqueue/1.0/android.hardware.graphics.bufferqueue@1.0^android_x86_64_shared_apex29/addition_copy_files.output
 
 echo "building android.hardware.graphics.bufferqueue@2.0^android_x86_64_shared_apex29"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja android.hardware.graphics.bufferqueue@2.0,android_x86_64_shared_apex29
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/graphics/bufferqueue/2.0/android.hardware.graphics.bufferqueue@2.0^android_x86_64_shared_apex29
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/hardware/interfaces/android.hardware.graphics.bufferqueue@2.0^android_x86_64_shared_apex29.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/graphics/bufferqueue/2.0/android.hardware.graphics.bufferqueue@2.0^android_x86_64_shared_apex29
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_08/hardware/interfaces/android.hardware.graphics.bufferqueue@2.0^android_x86_64_shared_apex29.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/graphics/bufferqueue/2.0/android.hardware.graphics.bufferqueue@2.0^android_x86_64_shared_apex29 $GITHUB_WORKSPACE/artifacts/hardware/interfaces/graphics/bufferqueue/2.0/android.hardware.graphics.bufferqueue@2.0^android_x86_64_shared_apex29/addition_copy_files.output
 
 echo "building android.hardware.graphics.common@1.0^android_x86_64_shared_apex29"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja android.hardware.graphics.common@1.0,android_x86_64_shared_apex29
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/graphics/common/1.0/android.hardware.graphics.common@1.0^android_x86_64_shared_apex29
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/hardware/interfaces/android.hardware.graphics.common@1.0^android_x86_64_shared_apex29.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/graphics/common/1.0/android.hardware.graphics.common@1.0^android_x86_64_shared_apex29
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_08/hardware/interfaces/android.hardware.graphics.common@1.0^android_x86_64_shared_apex29.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/graphics/common/1.0/android.hardware.graphics.common@1.0^android_x86_64_shared_apex29 $GITHUB_WORKSPACE/artifacts/hardware/interfaces/graphics/common/1.0/android.hardware.graphics.common@1.0^android_x86_64_shared_apex29/addition_copy_files.output
 
 echo "building android.hardware.graphics.common@1.1^android_x86_64_shared_apex29"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja android.hardware.graphics.common@1.1,android_x86_64_shared_apex29
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/graphics/common/1.1/android.hardware.graphics.common@1.1^android_x86_64_shared_apex29
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/hardware/interfaces/android.hardware.graphics.common@1.1^android_x86_64_shared_apex29.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/graphics/common/1.1/android.hardware.graphics.common@1.1^android_x86_64_shared_apex29
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_08/hardware/interfaces/android.hardware.graphics.common@1.1^android_x86_64_shared_apex29.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/graphics/common/1.1/android.hardware.graphics.common@1.1^android_x86_64_shared_apex29 $GITHUB_WORKSPACE/artifacts/hardware/interfaces/graphics/common/1.1/android.hardware.graphics.common@1.1^android_x86_64_shared_apex29/addition_copy_files.output
 
 echo "building android.hardware.graphics.common@1.2^android_x86_64_shared_apex29"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja android.hardware.graphics.common@1.2,android_x86_64_shared_apex29
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/graphics/common/1.2/android.hardware.graphics.common@1.2^android_x86_64_shared_apex29
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/hardware/interfaces/android.hardware.graphics.common@1.2^android_x86_64_shared_apex29.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/graphics/common/1.2/android.hardware.graphics.common@1.2^android_x86_64_shared_apex29
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_08/hardware/interfaces/android.hardware.graphics.common@1.2^android_x86_64_shared_apex29.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/graphics/common/1.2/android.hardware.graphics.common@1.2^android_x86_64_shared_apex29 $GITHUB_WORKSPACE/artifacts/hardware/interfaces/graphics/common/1.2/android.hardware.graphics.common@1.2^android_x86_64_shared_apex29/addition_copy_files.output
 
 echo "building android.hardware.graphics.mapper@2.0^android_x86_64_shared_apex29"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja android.hardware.graphics.mapper@2.0,android_x86_64_shared_apex29
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/graphics/mapper/2.0/android.hardware.graphics.mapper@2.0^android_x86_64_shared_apex29
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/hardware/interfaces/android.hardware.graphics.mapper@2.0^android_x86_64_shared_apex29.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/graphics/mapper/2.0/android.hardware.graphics.mapper@2.0^android_x86_64_shared_apex29
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_08/hardware/interfaces/android.hardware.graphics.mapper@2.0^android_x86_64_shared_apex29.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/graphics/mapper/2.0/android.hardware.graphics.mapper@2.0^android_x86_64_shared_apex29 $GITHUB_WORKSPACE/artifacts/hardware/interfaces/graphics/mapper/2.0/android.hardware.graphics.mapper@2.0^android_x86_64_shared_apex29/addition_copy_files.output
 
 echo "building android.hardware.graphics.mapper@2.1^android_x86_64_shared_apex29"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja android.hardware.graphics.mapper@2.1,android_x86_64_shared_apex29
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/graphics/mapper/2.1/android.hardware.graphics.mapper@2.1^android_x86_64_shared_apex29
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/hardware/interfaces/android.hardware.graphics.mapper@2.1^android_x86_64_shared_apex29.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/graphics/mapper/2.1/android.hardware.graphics.mapper@2.1^android_x86_64_shared_apex29
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_08/hardware/interfaces/android.hardware.graphics.mapper@2.1^android_x86_64_shared_apex29.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/graphics/mapper/2.1/android.hardware.graphics.mapper@2.1^android_x86_64_shared_apex29 $GITHUB_WORKSPACE/artifacts/hardware/interfaces/graphics/mapper/2.1/android.hardware.graphics.mapper@2.1^android_x86_64_shared_apex29/addition_copy_files.output
 
 echo "building android.hardware.graphics.mapper@3.0^android_x86_64_shared_apex29"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja android.hardware.graphics.mapper@3.0,android_x86_64_shared_apex29
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/graphics/mapper/3.0/android.hardware.graphics.mapper@3.0^android_x86_64_shared_apex29
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/hardware/interfaces/android.hardware.graphics.mapper@3.0^android_x86_64_shared_apex29.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/graphics/mapper/3.0/android.hardware.graphics.mapper@3.0^android_x86_64_shared_apex29
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_08/hardware/interfaces/android.hardware.graphics.mapper@3.0^android_x86_64_shared_apex29.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/graphics/mapper/3.0/android.hardware.graphics.mapper@3.0^android_x86_64_shared_apex29 $GITHUB_WORKSPACE/artifacts/hardware/interfaces/graphics/mapper/3.0/android.hardware.graphics.mapper@3.0^android_x86_64_shared_apex29/addition_copy_files.output
 
 echo "building android.hardware.graphics.mapper@4.0^android_x86_64_shared_apex29"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja android.hardware.graphics.mapper@4.0,android_x86_64_shared_apex29
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/graphics/mapper/4.0/android.hardware.graphics.mapper@4.0^android_x86_64_shared_apex29
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/hardware/interfaces/android.hardware.graphics.mapper@4.0^android_x86_64_shared_apex29.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/graphics/mapper/4.0/android.hardware.graphics.mapper@4.0^android_x86_64_shared_apex29
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_08/hardware/interfaces/android.hardware.graphics.mapper@4.0^android_x86_64_shared_apex29.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/graphics/mapper/4.0/android.hardware.graphics.mapper@4.0^android_x86_64_shared_apex29 $GITHUB_WORKSPACE/artifacts/hardware/interfaces/graphics/mapper/4.0/android.hardware.graphics.mapper@4.0^android_x86_64_shared_apex29/addition_copy_files.output
 
 echo "building android.hardware.media.bufferpool@2.0^android_x86_64_shared_apex29"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja android.hardware.media.bufferpool@2.0,android_x86_64_shared_apex29
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/media/bufferpool/2.0/android.hardware.media.bufferpool@2.0^android_x86_64_shared_apex29
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/hardware/interfaces/android.hardware.media.bufferpool@2.0^android_x86_64_shared_apex29.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/media/bufferpool/2.0/android.hardware.media.bufferpool@2.0^android_x86_64_shared_apex29
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_08/hardware/interfaces/android.hardware.media.bufferpool@2.0^android_x86_64_shared_apex29.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/media/bufferpool/2.0/android.hardware.media.bufferpool@2.0^android_x86_64_shared_apex29 $GITHUB_WORKSPACE/artifacts/hardware/interfaces/media/bufferpool/2.0/android.hardware.media.bufferpool@2.0^android_x86_64_shared_apex29/addition_copy_files.output
 
 echo "building android.hardware.media.c2@1.0^android_x86_64_shared_apex29"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja android.hardware.media.c2@1.0,android_x86_64_shared_apex29
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/media/c2/1.0/android.hardware.media.c2@1.0^android_x86_64_shared_apex29
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/hardware/interfaces/android.hardware.media.c2@1.0^android_x86_64_shared_apex29.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/media/c2/1.0/android.hardware.media.c2@1.0^android_x86_64_shared_apex29
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_08/hardware/interfaces/android.hardware.media.c2@1.0^android_x86_64_shared_apex29.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/media/c2/1.0/android.hardware.media.c2@1.0^android_x86_64_shared_apex29 $GITHUB_WORKSPACE/artifacts/hardware/interfaces/media/c2/1.0/android.hardware.media.c2@1.0^android_x86_64_shared_apex29/addition_copy_files.output
 
 echo "building android.hardware.media.c2@1.1^android_x86_64_shared_apex29"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja android.hardware.media.c2@1.1,android_x86_64_shared_apex29
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/media/c2/1.1/android.hardware.media.c2@1.1^android_x86_64_shared_apex29
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/hardware/interfaces/android.hardware.media.c2@1.1^android_x86_64_shared_apex29.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/media/c2/1.1/android.hardware.media.c2@1.1^android_x86_64_shared_apex29
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_08/hardware/interfaces/android.hardware.media.c2@1.1^android_x86_64_shared_apex29.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/media/c2/1.1/android.hardware.media.c2@1.1^android_x86_64_shared_apex29 $GITHUB_WORKSPACE/artifacts/hardware/interfaces/media/c2/1.1/android.hardware.media.c2@1.1^android_x86_64_shared_apex29/addition_copy_files.output
 
 echo "building android.hardware.media.c2@1.2^android_x86_64_shared_apex29"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja android.hardware.media.c2@1.2,android_x86_64_shared_apex29
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/media/c2/1.2/android.hardware.media.c2@1.2^android_x86_64_shared_apex29
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/hardware/interfaces/android.hardware.media.c2@1.2^android_x86_64_shared_apex29.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/media/c2/1.2/android.hardware.media.c2@1.2^android_x86_64_shared_apex29
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_08/hardware/interfaces/android.hardware.media.c2@1.2^android_x86_64_shared_apex29.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/media/c2/1.2/android.hardware.media.c2@1.2^android_x86_64_shared_apex29 $GITHUB_WORKSPACE/artifacts/hardware/interfaces/media/c2/1.2/android.hardware.media.c2@1.2^android_x86_64_shared_apex29/addition_copy_files.output
 
 echo "building android.hardware.media.omx@1.0^android_x86_64_shared_apex29"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja android.hardware.media.omx@1.0,android_x86_64_shared_apex29
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/media/omx/1.0/android.hardware.media.omx@1.0^android_x86_64_shared_apex29
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/hardware/interfaces/android.hardware.media.omx@1.0^android_x86_64_shared_apex29.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/media/omx/1.0/android.hardware.media.omx@1.0^android_x86_64_shared_apex29
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_08/hardware/interfaces/android.hardware.media.omx@1.0^android_x86_64_shared_apex29.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/media/omx/1.0/android.hardware.media.omx@1.0^android_x86_64_shared_apex29 $GITHUB_WORKSPACE/artifacts/hardware/interfaces/media/omx/1.0/android.hardware.media.omx@1.0^android_x86_64_shared_apex29/addition_copy_files.output
 
 echo "building android.hardware.media@1.0^android_x86_64_shared_apex29"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja android.hardware.media@1.0,android_x86_64_shared_apex29
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/media/1.0/android.hardware.media@1.0^android_x86_64_shared_apex29
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/hardware/interfaces/android.hardware.media@1.0^android_x86_64_shared_apex29.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/media/1.0/android.hardware.media@1.0^android_x86_64_shared_apex29
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_08/hardware/interfaces/android.hardware.media@1.0^android_x86_64_shared_apex29.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/media/1.0/android.hardware.media@1.0^android_x86_64_shared_apex29 $GITHUB_WORKSPACE/artifacts/hardware/interfaces/media/1.0/android.hardware.media@1.0^android_x86_64_shared_apex29/addition_copy_files.output
 
 echo "building framework_compatibility_matrix.3.xml^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja framework_compatibility_matrix.3.xml,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/compatibility_matrices/framework_compatibility_matrix.3.xml^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/hardware/interfaces/framework_compatibility_matrix.3.xml^android_common.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/compatibility_matrices/framework_compatibility_matrix.3.xml^android_common
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_08/hardware/interfaces/framework_compatibility_matrix.3.xml^android_common.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/compatibility_matrices/framework_compatibility_matrix.3.xml^android_common $GITHUB_WORKSPACE/artifacts/hardware/interfaces/compatibility_matrices/framework_compatibility_matrix.3.xml^android_common/addition_copy_files.output
 
 echo "building framework_compatibility_matrix.4.xml^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja framework_compatibility_matrix.4.xml,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/compatibility_matrices/framework_compatibility_matrix.4.xml^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/hardware/interfaces/framework_compatibility_matrix.4.xml^android_common.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/compatibility_matrices/framework_compatibility_matrix.4.xml^android_common
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_08/hardware/interfaces/framework_compatibility_matrix.4.xml^android_common.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/compatibility_matrices/framework_compatibility_matrix.4.xml^android_common $GITHUB_WORKSPACE/artifacts/hardware/interfaces/compatibility_matrices/framework_compatibility_matrix.4.xml^android_common/addition_copy_files.output
 
 echo "building framework_compatibility_matrix.5.xml^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja framework_compatibility_matrix.5.xml,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/compatibility_matrices/framework_compatibility_matrix.5.xml^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/hardware/interfaces/framework_compatibility_matrix.5.xml^android_common.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/compatibility_matrices/framework_compatibility_matrix.5.xml^android_common
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_08/hardware/interfaces/framework_compatibility_matrix.5.xml^android_common.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/compatibility_matrices/framework_compatibility_matrix.5.xml^android_common $GITHUB_WORKSPACE/artifacts/hardware/interfaces/compatibility_matrices/framework_compatibility_matrix.5.xml^android_common/addition_copy_files.output
 
 echo "building framework_compatibility_matrix.6.xml^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja framework_compatibility_matrix.6.xml,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/compatibility_matrices/framework_compatibility_matrix.6.xml^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/hardware/interfaces/framework_compatibility_matrix.6.xml^android_common.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/compatibility_matrices/framework_compatibility_matrix.6.xml^android_common
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_08/hardware/interfaces/framework_compatibility_matrix.6.xml^android_common.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/compatibility_matrices/framework_compatibility_matrix.6.xml^android_common $GITHUB_WORKSPACE/artifacts/hardware/interfaces/compatibility_matrices/framework_compatibility_matrix.6.xml^android_common/addition_copy_files.output
 
 rm -rf out
 

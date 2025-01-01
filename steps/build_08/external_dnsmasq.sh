@@ -40,6 +40,7 @@ echo "building dnsmasq^android_x86_64"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja dnsmasq,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/dnsmasq/src/dnsmasq^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/external/dnsmasq/dnsmasq^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/dnsmasq/src/dnsmasq^android_x86_64
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_08/external/dnsmasq/dnsmasq^android_x86_64.output $GITHUB_WORKSPACE/artifacts/external/dnsmasq/src/dnsmasq^android_x86_64 $GITHUB_WORKSPACE/artifacts/external/dnsmasq/src/dnsmasq^android_x86_64/addition_copy_files.output
 
 rm -rf out
 

@@ -44,6 +44,7 @@ echo "building ethernet-service^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_34.ninja ethernet-service,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/opt/net/ethernet/ethernet-service^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_34/frameworks/opt/net/ethernet/ethernet-service^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/opt/net/ethernet/ethernet-service^android_common
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_34/frameworks/opt/net/ethernet/ethernet-service^android_common.output $GITHUB_WORKSPACE/artifacts/frameworks/opt/net/ethernet/ethernet-service^android_common $GITHUB_WORKSPACE/artifacts/frameworks/opt/net/ethernet/ethernet-service^android_common/addition_copy_files.output
 
 rm -rf out
 

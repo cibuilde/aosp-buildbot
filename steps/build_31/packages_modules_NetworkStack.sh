@@ -51,41 +51,49 @@ echo "building NetworkStackApi29Shims^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_31.ninja NetworkStackApi29Shims,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/NetworkStack/NetworkStackApi29Shims^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_31/packages/modules/NetworkStack/NetworkStackApi29Shims^android_common.output . $GITHUB_WORKSPACE/artifacts/packages/modules/NetworkStack/NetworkStackApi29Shims^android_common
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_31/packages/modules/NetworkStack/NetworkStackApi29Shims^android_common.output $GITHUB_WORKSPACE/artifacts/packages/modules/NetworkStack/NetworkStackApi29Shims^android_common $GITHUB_WORKSPACE/artifacts/packages/modules/NetworkStack/NetworkStackApi29Shims^android_common/addition_copy_files.output
 
 echo "building NetworkStackApi30Shims^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_31.ninja NetworkStackApi30Shims,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/NetworkStack/NetworkStackApi30Shims^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_31/packages/modules/NetworkStack/NetworkStackApi30Shims^android_common.output . $GITHUB_WORKSPACE/artifacts/packages/modules/NetworkStack/NetworkStackApi30Shims^android_common
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_31/packages/modules/NetworkStack/NetworkStackApi30Shims^android_common.output $GITHUB_WORKSPACE/artifacts/packages/modules/NetworkStack/NetworkStackApi30Shims^android_common $GITHUB_WORKSPACE/artifacts/packages/modules/NetworkStack/NetworkStackApi30Shims^android_common/addition_copy_files.output
 
 echo "building NetworkStackApi31Shims^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_31.ninja NetworkStackApi31Shims,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/NetworkStack/NetworkStackApi31Shims^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_31/packages/modules/NetworkStack/NetworkStackApi31Shims^android_common.output . $GITHUB_WORKSPACE/artifacts/packages/modules/NetworkStack/NetworkStackApi31Shims^android_common
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_31/packages/modules/NetworkStack/NetworkStackApi31Shims^android_common.output $GITHUB_WORKSPACE/artifacts/packages/modules/NetworkStack/NetworkStackApi31Shims^android_common $GITHUB_WORKSPACE/artifacts/packages/modules/NetworkStack/NetworkStackApi31Shims^android_common/addition_copy_files.output
 
 echo "building NetworkStackApiStableShims^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_31.ninja NetworkStackApiStableShims,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/NetworkStack/NetworkStackApiStableShims^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_31/packages/modules/NetworkStack/NetworkStackApiStableShims^android_common.output . $GITHUB_WORKSPACE/artifacts/packages/modules/NetworkStack/NetworkStackApiStableShims^android_common
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_31/packages/modules/NetworkStack/NetworkStackApiStableShims^android_common.output $GITHUB_WORKSPACE/artifacts/packages/modules/NetworkStack/NetworkStackApiStableShims^android_common $GITHUB_WORKSPACE/artifacts/packages/modules/NetworkStack/NetworkStackApiStableShims^android_common/addition_copy_files.output
 
 echo "building NetworkStackShimsCommon^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_31.ninja NetworkStackShimsCommon,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/NetworkStack/NetworkStackShimsCommon^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_31/packages/modules/NetworkStack/NetworkStackShimsCommon^android_common.output . $GITHUB_WORKSPACE/artifacts/packages/modules/NetworkStack/NetworkStackShimsCommon^android_common
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_31/packages/modules/NetworkStack/NetworkStackShimsCommon^android_common.output $GITHUB_WORKSPACE/artifacts/packages/modules/NetworkStack/NetworkStackShimsCommon^android_common $GITHUB_WORKSPACE/artifacts/packages/modules/NetworkStack/NetworkStackShimsCommon^android_common/addition_copy_files.output
 
 echo "building ipmemorystore-aidl-interfaces-V10-java^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_31.ninja ipmemorystore-aidl-interfaces-V10-java,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/NetworkStack/common/networkstackclient/ipmemorystore-aidl-interfaces-V10-java^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_31/packages/modules/NetworkStack/ipmemorystore-aidl-interfaces-V10-java^android_common.output . $GITHUB_WORKSPACE/artifacts/packages/modules/NetworkStack/common/networkstackclient/ipmemorystore-aidl-interfaces-V10-java^android_common
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_31/packages/modules/NetworkStack/ipmemorystore-aidl-interfaces-V10-java^android_common.output $GITHUB_WORKSPACE/artifacts/packages/modules/NetworkStack/common/networkstackclient/ipmemorystore-aidl-interfaces-V10-java^android_common $GITHUB_WORKSPACE/artifacts/packages/modules/NetworkStack/common/networkstackclient/ipmemorystore-aidl-interfaces-V10-java^android_common/addition_copy_files.output
 
 echo "building networkstack-aidl-interfaces-V10-java^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_31.ninja networkstack-aidl-interfaces-V10-java,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/NetworkStack/common/networkstackclient/networkstack-aidl-interfaces-V10-java^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_31/packages/modules/NetworkStack/networkstack-aidl-interfaces-V10-java^android_common.output . $GITHUB_WORKSPACE/artifacts/packages/modules/NetworkStack/common/networkstackclient/networkstack-aidl-interfaces-V10-java^android_common
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_31/packages/modules/NetworkStack/networkstack-aidl-interfaces-V10-java^android_common.output $GITHUB_WORKSPACE/artifacts/packages/modules/NetworkStack/common/networkstackclient/networkstack-aidl-interfaces-V10-java^android_common $GITHUB_WORKSPACE/artifacts/packages/modules/NetworkStack/common/networkstackclient/networkstack-aidl-interfaces-V10-java^android_common/addition_copy_files.output
 
 echo "building networkstack-client^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_31.ninja networkstack-client,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/NetworkStack/common/networkstackclient/networkstack-client^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_31/packages/modules/NetworkStack/networkstack-client^android_common.output . $GITHUB_WORKSPACE/artifacts/packages/modules/NetworkStack/common/networkstackclient/networkstack-client^android_common
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_31/packages/modules/NetworkStack/networkstack-client^android_common.output $GITHUB_WORKSPACE/artifacts/packages/modules/NetworkStack/common/networkstackclient/networkstack-client^android_common $GITHUB_WORKSPACE/artifacts/packages/modules/NetworkStack/common/networkstackclient/networkstack-client^android_common/addition_copy_files.output
 
 rm -rf out
 

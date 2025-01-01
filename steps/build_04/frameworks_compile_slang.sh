@@ -22,6 +22,7 @@ echo "building slang-gen-options^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja slang-gen-options,
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/compile/slang/slang-gen-options^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/compile/slang/slang-gen-options^.output . $GITHUB_WORKSPACE/artifacts/frameworks/compile/slang/slang-gen-options^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/frameworks/compile/slang/slang-gen-options^.output $GITHUB_WORKSPACE/artifacts/frameworks/compile/slang/slang-gen-options^ $GITHUB_WORKSPACE/artifacts/frameworks/compile/slang/slang-gen-options^/addition_copy_files.output
 
 rm -rf out
 

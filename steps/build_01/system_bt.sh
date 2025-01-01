@@ -19,11 +19,13 @@ echo "building bt_did.conf^android_x86_64"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja bt_did.conf,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/bt/conf/bt_did.conf^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/bt/bt_did.conf^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/bt/conf/bt_did.conf^android_x86_64
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/system/bt/bt_did.conf^android_x86_64.output $GITHUB_WORKSPACE/artifacts/system/bt/conf/bt_did.conf^android_x86_64 $GITHUB_WORKSPACE/artifacts/system/bt/conf/bt_did.conf^android_x86_64/addition_copy_files.output
 
 echo "building bt_stack.conf^android_x86_64"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja bt_stack.conf,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/bt/conf/bt_stack.conf^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/bt/bt_stack.conf^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/bt/conf/bt_stack.conf^android_x86_64
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/system/bt/bt_stack.conf^android_x86_64.output $GITHUB_WORKSPACE/artifacts/system/bt/conf/bt_stack.conf^android_x86_64 $GITHUB_WORKSPACE/artifacts/system/bt/conf/bt_stack.conf^android_x86_64/addition_copy_files.output
 
 rm -rf out
 

@@ -25,11 +25,13 @@ echo "building tflite_support_spm_config^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja tflite_support_spm_config,
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/tflite-support/tflite_support_spm_config^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/tflite-support/tflite_support_spm_config^.output . $GITHUB_WORKSPACE/artifacts/external/tflite-support/tflite_support_spm_config^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/external/tflite-support/tflite_support_spm_config^.output $GITHUB_WORKSPACE/artifacts/external/tflite-support/tflite_support_spm_config^ $GITHUB_WORKSPACE/artifacts/external/tflite-support/tflite_support_spm_config^/addition_copy_files.output
 
 echo "building tflite_support_spm_encoder_config^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja tflite_support_spm_encoder_config,
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/tflite-support/tflite_support_spm_encoder_config^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/tflite-support/tflite_support_spm_encoder_config^.output . $GITHUB_WORKSPACE/artifacts/external/tflite-support/tflite_support_spm_encoder_config^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/external/tflite-support/tflite_support_spm_encoder_config^.output $GITHUB_WORKSPACE/artifacts/external/tflite-support/tflite_support_spm_encoder_config^ $GITHUB_WORKSPACE/artifacts/external/tflite-support/tflite_support_spm_encoder_config^/addition_copy_files.output
 
 rm -rf out
 

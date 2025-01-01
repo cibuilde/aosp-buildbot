@@ -51,66 +51,79 @@ echo "building libLLVMBitWriter_2_9^linux_glibc_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libLLVMBitWriter_2_9,linux_glibc_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/compile/slang/BitWriter_2_9/libLLVMBitWriter_2_9^linux_glibc_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/frameworks/compile/slang/libLLVMBitWriter_2_9^linux_glibc_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/compile/slang/BitWriter_2_9/libLLVMBitWriter_2_9^linux_glibc_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/frameworks/compile/slang/libLLVMBitWriter_2_9^linux_glibc_x86_64_static.output $GITHUB_WORKSPACE/artifacts/frameworks/compile/slang/BitWriter_2_9/libLLVMBitWriter_2_9^linux_glibc_x86_64_static $GITHUB_WORKSPACE/artifacts/frameworks/compile/slang/BitWriter_2_9/libLLVMBitWriter_2_9^linux_glibc_x86_64_static/addition_copy_files.output
 
 echo "building libLLVMBitWriter_2_9_func^linux_glibc_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libLLVMBitWriter_2_9_func,linux_glibc_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/compile/slang/BitWriter_2_9_func/libLLVMBitWriter_2_9_func^linux_glibc_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/frameworks/compile/slang/libLLVMBitWriter_2_9_func^linux_glibc_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/compile/slang/BitWriter_2_9_func/libLLVMBitWriter_2_9_func^linux_glibc_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/frameworks/compile/slang/libLLVMBitWriter_2_9_func^linux_glibc_x86_64_static.output $GITHUB_WORKSPACE/artifacts/frameworks/compile/slang/BitWriter_2_9_func/libLLVMBitWriter_2_9_func^linux_glibc_x86_64_static $GITHUB_WORKSPACE/artifacts/frameworks/compile/slang/BitWriter_2_9_func/libLLVMBitWriter_2_9_func^linux_glibc_x86_64_static/addition_copy_files.output
 
 echo "building libLLVMBitWriter_3_2^android_vendor.31_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libLLVMBitWriter_3_2,android_vendor.31_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/compile/slang/BitWriter_3_2/libLLVMBitWriter_3_2^android_vendor.31_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/frameworks/compile/slang/libLLVMBitWriter_3_2^android_vendor.31_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/compile/slang/BitWriter_3_2/libLLVMBitWriter_3_2^android_vendor.31_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/frameworks/compile/slang/libLLVMBitWriter_3_2^android_vendor.31_x86_64_static.output $GITHUB_WORKSPACE/artifacts/frameworks/compile/slang/BitWriter_3_2/libLLVMBitWriter_3_2^android_vendor.31_x86_64_static $GITHUB_WORKSPACE/artifacts/frameworks/compile/slang/BitWriter_3_2/libLLVMBitWriter_3_2^android_vendor.31_x86_64_static/addition_copy_files.output
 
 echo "building libLLVMBitWriter_3_2^android_vendor.31_x86_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libLLVMBitWriter_3_2,android_vendor.31_x86_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/compile/slang/BitWriter_3_2/libLLVMBitWriter_3_2^android_vendor.31_x86_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/frameworks/compile/slang/libLLVMBitWriter_3_2^android_vendor.31_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/compile/slang/BitWriter_3_2/libLLVMBitWriter_3_2^android_vendor.31_x86_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/frameworks/compile/slang/libLLVMBitWriter_3_2^android_vendor.31_x86_x86_64_static.output $GITHUB_WORKSPACE/artifacts/frameworks/compile/slang/BitWriter_3_2/libLLVMBitWriter_3_2^android_vendor.31_x86_x86_64_static $GITHUB_WORKSPACE/artifacts/frameworks/compile/slang/BitWriter_3_2/libLLVMBitWriter_3_2^android_vendor.31_x86_x86_64_static/addition_copy_files.output
 
 echo "building libLLVMBitWriter_3_2^android_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libLLVMBitWriter_3_2,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/compile/slang/BitWriter_3_2/libLLVMBitWriter_3_2^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/frameworks/compile/slang/libLLVMBitWriter_3_2^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/compile/slang/BitWriter_3_2/libLLVMBitWriter_3_2^android_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/frameworks/compile/slang/libLLVMBitWriter_3_2^android_x86_64_static.output $GITHUB_WORKSPACE/artifacts/frameworks/compile/slang/BitWriter_3_2/libLLVMBitWriter_3_2^android_x86_64_static $GITHUB_WORKSPACE/artifacts/frameworks/compile/slang/BitWriter_3_2/libLLVMBitWriter_3_2^android_x86_64_static/addition_copy_files.output
 
 echo "building libLLVMBitWriter_3_2^android_x86_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libLLVMBitWriter_3_2,android_x86_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/compile/slang/BitWriter_3_2/libLLVMBitWriter_3_2^android_x86_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/frameworks/compile/slang/libLLVMBitWriter_3_2^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/compile/slang/BitWriter_3_2/libLLVMBitWriter_3_2^android_x86_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/frameworks/compile/slang/libLLVMBitWriter_3_2^android_x86_x86_64_static.output $GITHUB_WORKSPACE/artifacts/frameworks/compile/slang/BitWriter_3_2/libLLVMBitWriter_3_2^android_x86_x86_64_static $GITHUB_WORKSPACE/artifacts/frameworks/compile/slang/BitWriter_3_2/libLLVMBitWriter_3_2^android_x86_x86_64_static/addition_copy_files.output
 
 echo "building libLLVMBitWriter_3_2^linux_glibc_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libLLVMBitWriter_3_2,linux_glibc_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/compile/slang/BitWriter_3_2/libLLVMBitWriter_3_2^linux_glibc_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/frameworks/compile/slang/libLLVMBitWriter_3_2^linux_glibc_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/compile/slang/BitWriter_3_2/libLLVMBitWriter_3_2^linux_glibc_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/frameworks/compile/slang/libLLVMBitWriter_3_2^linux_glibc_x86_64_static.output $GITHUB_WORKSPACE/artifacts/frameworks/compile/slang/BitWriter_3_2/libLLVMBitWriter_3_2^linux_glibc_x86_64_static $GITHUB_WORKSPACE/artifacts/frameworks/compile/slang/BitWriter_3_2/libLLVMBitWriter_3_2^linux_glibc_x86_64_static/addition_copy_files.output
 
 echo "building libStripUnkAttr^android_vendor.31_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libStripUnkAttr,android_vendor.31_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/compile/slang/StripUnkAttr/libStripUnkAttr^android_vendor.31_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/frameworks/compile/slang/libStripUnkAttr^android_vendor.31_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/compile/slang/StripUnkAttr/libStripUnkAttr^android_vendor.31_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/frameworks/compile/slang/libStripUnkAttr^android_vendor.31_x86_64_static.output $GITHUB_WORKSPACE/artifacts/frameworks/compile/slang/StripUnkAttr/libStripUnkAttr^android_vendor.31_x86_64_static $GITHUB_WORKSPACE/artifacts/frameworks/compile/slang/StripUnkAttr/libStripUnkAttr^android_vendor.31_x86_64_static/addition_copy_files.output
 
 echo "building libStripUnkAttr^android_vendor.31_x86_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libStripUnkAttr,android_vendor.31_x86_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/compile/slang/StripUnkAttr/libStripUnkAttr^android_vendor.31_x86_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/frameworks/compile/slang/libStripUnkAttr^android_vendor.31_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/compile/slang/StripUnkAttr/libStripUnkAttr^android_vendor.31_x86_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/frameworks/compile/slang/libStripUnkAttr^android_vendor.31_x86_x86_64_static.output $GITHUB_WORKSPACE/artifacts/frameworks/compile/slang/StripUnkAttr/libStripUnkAttr^android_vendor.31_x86_x86_64_static $GITHUB_WORKSPACE/artifacts/frameworks/compile/slang/StripUnkAttr/libStripUnkAttr^android_vendor.31_x86_x86_64_static/addition_copy_files.output
 
 echo "building libStripUnkAttr^android_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libStripUnkAttr,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/compile/slang/StripUnkAttr/libStripUnkAttr^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/frameworks/compile/slang/libStripUnkAttr^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/compile/slang/StripUnkAttr/libStripUnkAttr^android_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/frameworks/compile/slang/libStripUnkAttr^android_x86_64_static.output $GITHUB_WORKSPACE/artifacts/frameworks/compile/slang/StripUnkAttr/libStripUnkAttr^android_x86_64_static $GITHUB_WORKSPACE/artifacts/frameworks/compile/slang/StripUnkAttr/libStripUnkAttr^android_x86_64_static/addition_copy_files.output
 
 echo "building libStripUnkAttr^android_x86_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libStripUnkAttr,android_x86_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/compile/slang/StripUnkAttr/libStripUnkAttr^android_x86_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/frameworks/compile/slang/libStripUnkAttr^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/compile/slang/StripUnkAttr/libStripUnkAttr^android_x86_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/frameworks/compile/slang/libStripUnkAttr^android_x86_x86_64_static.output $GITHUB_WORKSPACE/artifacts/frameworks/compile/slang/StripUnkAttr/libStripUnkAttr^android_x86_x86_64_static $GITHUB_WORKSPACE/artifacts/frameworks/compile/slang/StripUnkAttr/libStripUnkAttr^android_x86_x86_64_static/addition_copy_files.output
 
 echo "building libStripUnkAttr^linux_glibc_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libStripUnkAttr,linux_glibc_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/compile/slang/StripUnkAttr/libStripUnkAttr^linux_glibc_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/frameworks/compile/slang/libStripUnkAttr^linux_glibc_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/compile/slang/StripUnkAttr/libStripUnkAttr^linux_glibc_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/frameworks/compile/slang/libStripUnkAttr^linux_glibc_x86_64_static.output $GITHUB_WORKSPACE/artifacts/frameworks/compile/slang/StripUnkAttr/libStripUnkAttr^linux_glibc_x86_64_static $GITHUB_WORKSPACE/artifacts/frameworks/compile/slang/StripUnkAttr/libStripUnkAttr^linux_glibc_x86_64_static/addition_copy_files.output
 
 echo "building libslang^linux_glibc_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libslang,linux_glibc_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/compile/slang/libslang^linux_glibc_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/frameworks/compile/slang/libslang^linux_glibc_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/compile/slang/libslang^linux_glibc_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/frameworks/compile/slang/libslang^linux_glibc_x86_64_static.output $GITHUB_WORKSPACE/artifacts/frameworks/compile/slang/libslang^linux_glibc_x86_64_static $GITHUB_WORKSPACE/artifacts/frameworks/compile/slang/libslang^linux_glibc_x86_64_static/addition_copy_files.output
 
 rm -rf out
 

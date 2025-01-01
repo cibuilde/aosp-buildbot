@@ -22,11 +22,13 @@ echo "building vendor.nxp.nxpnfc@1.0-inheritance-hierarchy^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja vendor.nxp.nxpnfc@1.0-inheritance-hierarchy,
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/nxp/nfc/intf/nxpnfc/1.0/vendor.nxp.nxpnfc@1.0-inheritance-hierarchy^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/nxp/nfc/vendor.nxp.nxpnfc@1.0-inheritance-hierarchy^.output . $GITHUB_WORKSPACE/artifacts/hardware/nxp/nfc/intf/nxpnfc/1.0/vendor.nxp.nxpnfc@1.0-inheritance-hierarchy^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/nxp/nfc/vendor.nxp.nxpnfc@1.0-inheritance-hierarchy^.output $GITHUB_WORKSPACE/artifacts/hardware/nxp/nfc/intf/nxpnfc/1.0/vendor.nxp.nxpnfc@1.0-inheritance-hierarchy^ $GITHUB_WORKSPACE/artifacts/hardware/nxp/nfc/intf/nxpnfc/1.0/vendor.nxp.nxpnfc@1.0-inheritance-hierarchy^/addition_copy_files.output
 
 echo "building vendor.nxp.nxpnfc@2.0-inheritance-hierarchy^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja vendor.nxp.nxpnfc@2.0-inheritance-hierarchy,
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/nxp/nfc/intf/nxpnfc/2.0/vendor.nxp.nxpnfc@2.0-inheritance-hierarchy^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/nxp/nfc/vendor.nxp.nxpnfc@2.0-inheritance-hierarchy^.output . $GITHUB_WORKSPACE/artifacts/hardware/nxp/nfc/intf/nxpnfc/2.0/vendor.nxp.nxpnfc@2.0-inheritance-hierarchy^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/nxp/nfc/vendor.nxp.nxpnfc@2.0-inheritance-hierarchy^.output $GITHUB_WORKSPACE/artifacts/hardware/nxp/nfc/intf/nxpnfc/2.0/vendor.nxp.nxpnfc@2.0-inheritance-hierarchy^ $GITHUB_WORKSPACE/artifacts/hardware/nxp/nfc/intf/nxpnfc/2.0/vendor.nxp.nxpnfc@2.0-inheritance-hierarchy^/addition_copy_files.output
 
 rm -rf out
 

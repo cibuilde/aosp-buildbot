@@ -34,6 +34,7 @@ echo "building ext^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_15.ninja ext,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/ext^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_15/frameworks/base/ext^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/ext^android_common
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_15/frameworks/base/ext^android_common.output $GITHUB_WORKSPACE/artifacts/frameworks/base/ext^android_common $GITHUB_WORKSPACE/artifacts/frameworks/base/ext^android_common/addition_copy_files.output
 
 rm -rf out
 

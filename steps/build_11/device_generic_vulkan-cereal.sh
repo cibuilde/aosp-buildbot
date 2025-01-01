@@ -60,6 +60,7 @@ echo "building libgfxstream_backend^android_x86_64_shared"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_11.ninja libgfxstream_backend,android_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/device/generic/vulkan-cereal/stream-servers/libgfxstream_backend^android_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_11/device/generic/vulkan-cereal/libgfxstream_backend^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/device/generic/vulkan-cereal/stream-servers/libgfxstream_backend^android_x86_64_shared
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_11/device/generic/vulkan-cereal/libgfxstream_backend^android_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/device/generic/vulkan-cereal/stream-servers/libgfxstream_backend^android_x86_64_shared $GITHUB_WORKSPACE/artifacts/device/generic/vulkan-cereal/stream-servers/libgfxstream_backend^android_x86_64_shared/addition_copy_files.output
 
 rm -rf out
 

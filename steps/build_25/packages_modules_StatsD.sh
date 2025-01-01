@@ -74,11 +74,13 @@ echo "building com.android.os.statsd^android_common_com.android.os.statsd_image"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_25.ninja com.android.os.statsd,android_common_com.android.os.statsd_image
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/StatsD/apex/com.android.os.statsd^android_common_com.android.os.statsd_image
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_25/packages/modules/StatsD/com.android.os.statsd^android_common_com.android.os.statsd_image.output . $GITHUB_WORKSPACE/artifacts/packages/modules/StatsD/apex/com.android.os.statsd^android_common_com.android.os.statsd_image
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_25/packages/modules/StatsD/com.android.os.statsd^android_common_com.android.os.statsd_image.output $GITHUB_WORKSPACE/artifacts/packages/modules/StatsD/apex/com.android.os.statsd^android_common_com.android.os.statsd_image $GITHUB_WORKSPACE/artifacts/packages/modules/StatsD/apex/com.android.os.statsd^android_common_com.android.os.statsd_image/addition_copy_files.output
 
 echo "building service-statsd^android_common_apex30"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_25.ninja service-statsd,android_common_apex30
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/StatsD/service/service-statsd^android_common_apex30
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_25/packages/modules/StatsD/service-statsd^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/packages/modules/StatsD/service/service-statsd^android_common_apex30
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_25/packages/modules/StatsD/service-statsd^android_common_apex30.output $GITHUB_WORKSPACE/artifacts/packages/modules/StatsD/service/service-statsd^android_common_apex30 $GITHUB_WORKSPACE/artifacts/packages/modules/StatsD/service/service-statsd^android_common_apex30/addition_copy_files.output
 
 rm -rf out
 

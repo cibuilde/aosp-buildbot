@@ -31,61 +31,73 @@ echo "building libminijail_gen_constants_obj^android_recovery_x86_64"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libminijail_gen_constants_obj,android_recovery_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/minijail/libminijail_gen_constants_obj^android_recovery_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/minijail/libminijail_gen_constants_obj^android_recovery_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/minijail/libminijail_gen_constants_obj^android_recovery_x86_64
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/minijail/libminijail_gen_constants_obj^android_recovery_x86_64.output $GITHUB_WORKSPACE/artifacts/external/minijail/libminijail_gen_constants_obj^android_recovery_x86_64 $GITHUB_WORKSPACE/artifacts/external/minijail/libminijail_gen_constants_obj^android_recovery_x86_64/addition_copy_files.output
 
 echo "building libminijail_gen_constants_obj^android_vendor.31_x86_64"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libminijail_gen_constants_obj,android_vendor.31_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/minijail/libminijail_gen_constants_obj^android_vendor.31_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/minijail/libminijail_gen_constants_obj^android_vendor.31_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/minijail/libminijail_gen_constants_obj^android_vendor.31_x86_64
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/minijail/libminijail_gen_constants_obj^android_vendor.31_x86_64.output $GITHUB_WORKSPACE/artifacts/external/minijail/libminijail_gen_constants_obj^android_vendor.31_x86_64 $GITHUB_WORKSPACE/artifacts/external/minijail/libminijail_gen_constants_obj^android_vendor.31_x86_64/addition_copy_files.output
 
 echo "building libminijail_gen_constants_obj^android_vendor.31_x86_x86_64"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libminijail_gen_constants_obj,android_vendor.31_x86_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/minijail/libminijail_gen_constants_obj^android_vendor.31_x86_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/minijail/libminijail_gen_constants_obj^android_vendor.31_x86_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/minijail/libminijail_gen_constants_obj^android_vendor.31_x86_x86_64
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/minijail/libminijail_gen_constants_obj^android_vendor.31_x86_x86_64.output $GITHUB_WORKSPACE/artifacts/external/minijail/libminijail_gen_constants_obj^android_vendor.31_x86_x86_64 $GITHUB_WORKSPACE/artifacts/external/minijail/libminijail_gen_constants_obj^android_vendor.31_x86_x86_64/addition_copy_files.output
 
 echo "building libminijail_gen_constants_obj^android_x86_64"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libminijail_gen_constants_obj,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/minijail/libminijail_gen_constants_obj^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/minijail/libminijail_gen_constants_obj^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/minijail/libminijail_gen_constants_obj^android_x86_64
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/minijail/libminijail_gen_constants_obj^android_x86_64.output $GITHUB_WORKSPACE/artifacts/external/minijail/libminijail_gen_constants_obj^android_x86_64 $GITHUB_WORKSPACE/artifacts/external/minijail/libminijail_gen_constants_obj^android_x86_64/addition_copy_files.output
 
 echo "building libminijail_gen_constants_obj^android_x86_64_apex10000"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libminijail_gen_constants_obj,android_x86_64_apex10000
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/minijail/libminijail_gen_constants_obj^android_x86_64_apex10000
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/minijail/libminijail_gen_constants_obj^android_x86_64_apex10000.output . $GITHUB_WORKSPACE/artifacts/external/minijail/libminijail_gen_constants_obj^android_x86_64_apex10000
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/minijail/libminijail_gen_constants_obj^android_x86_64_apex10000.output $GITHUB_WORKSPACE/artifacts/external/minijail/libminijail_gen_constants_obj^android_x86_64_apex10000 $GITHUB_WORKSPACE/artifacts/external/minijail/libminijail_gen_constants_obj^android_x86_64_apex10000/addition_copy_files.output
 
 echo "building libminijail_gen_constants_obj^android_x86_64_apex29"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libminijail_gen_constants_obj,android_x86_64_apex29
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/minijail/libminijail_gen_constants_obj^android_x86_64_apex29
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/minijail/libminijail_gen_constants_obj^android_x86_64_apex29.output . $GITHUB_WORKSPACE/artifacts/external/minijail/libminijail_gen_constants_obj^android_x86_64_apex29
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/minijail/libminijail_gen_constants_obj^android_x86_64_apex29.output $GITHUB_WORKSPACE/artifacts/external/minijail/libminijail_gen_constants_obj^android_x86_64_apex29 $GITHUB_WORKSPACE/artifacts/external/minijail/libminijail_gen_constants_obj^android_x86_64_apex29/addition_copy_files.output
 
 echo "building libminijail_gen_syscall_obj^android_recovery_x86_64"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libminijail_gen_syscall_obj,android_recovery_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/minijail/libminijail_gen_syscall_obj^android_recovery_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/minijail/libminijail_gen_syscall_obj^android_recovery_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/minijail/libminijail_gen_syscall_obj^android_recovery_x86_64
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/minijail/libminijail_gen_syscall_obj^android_recovery_x86_64.output $GITHUB_WORKSPACE/artifacts/external/minijail/libminijail_gen_syscall_obj^android_recovery_x86_64 $GITHUB_WORKSPACE/artifacts/external/minijail/libminijail_gen_syscall_obj^android_recovery_x86_64/addition_copy_files.output
 
 echo "building libminijail_gen_syscall_obj^android_vendor.31_x86_64"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libminijail_gen_syscall_obj,android_vendor.31_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/minijail/libminijail_gen_syscall_obj^android_vendor.31_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/minijail/libminijail_gen_syscall_obj^android_vendor.31_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/minijail/libminijail_gen_syscall_obj^android_vendor.31_x86_64
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/minijail/libminijail_gen_syscall_obj^android_vendor.31_x86_64.output $GITHUB_WORKSPACE/artifacts/external/minijail/libminijail_gen_syscall_obj^android_vendor.31_x86_64 $GITHUB_WORKSPACE/artifacts/external/minijail/libminijail_gen_syscall_obj^android_vendor.31_x86_64/addition_copy_files.output
 
 echo "building libminijail_gen_syscall_obj^android_vendor.31_x86_x86_64"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libminijail_gen_syscall_obj,android_vendor.31_x86_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/minijail/libminijail_gen_syscall_obj^android_vendor.31_x86_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/minijail/libminijail_gen_syscall_obj^android_vendor.31_x86_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/minijail/libminijail_gen_syscall_obj^android_vendor.31_x86_x86_64
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/minijail/libminijail_gen_syscall_obj^android_vendor.31_x86_x86_64.output $GITHUB_WORKSPACE/artifacts/external/minijail/libminijail_gen_syscall_obj^android_vendor.31_x86_x86_64 $GITHUB_WORKSPACE/artifacts/external/minijail/libminijail_gen_syscall_obj^android_vendor.31_x86_x86_64/addition_copy_files.output
 
 echo "building libminijail_gen_syscall_obj^android_x86_64"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libminijail_gen_syscall_obj,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/minijail/libminijail_gen_syscall_obj^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/minijail/libminijail_gen_syscall_obj^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/minijail/libminijail_gen_syscall_obj^android_x86_64
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/minijail/libminijail_gen_syscall_obj^android_x86_64.output $GITHUB_WORKSPACE/artifacts/external/minijail/libminijail_gen_syscall_obj^android_x86_64 $GITHUB_WORKSPACE/artifacts/external/minijail/libminijail_gen_syscall_obj^android_x86_64/addition_copy_files.output
 
 echo "building libminijail_gen_syscall_obj^android_x86_64_apex10000"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libminijail_gen_syscall_obj,android_x86_64_apex10000
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/minijail/libminijail_gen_syscall_obj^android_x86_64_apex10000
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/minijail/libminijail_gen_syscall_obj^android_x86_64_apex10000.output . $GITHUB_WORKSPACE/artifacts/external/minijail/libminijail_gen_syscall_obj^android_x86_64_apex10000
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/minijail/libminijail_gen_syscall_obj^android_x86_64_apex10000.output $GITHUB_WORKSPACE/artifacts/external/minijail/libminijail_gen_syscall_obj^android_x86_64_apex10000 $GITHUB_WORKSPACE/artifacts/external/minijail/libminijail_gen_syscall_obj^android_x86_64_apex10000/addition_copy_files.output
 
 echo "building libminijail_gen_syscall_obj^android_x86_64_apex29"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libminijail_gen_syscall_obj,android_x86_64_apex29
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/minijail/libminijail_gen_syscall_obj^android_x86_64_apex29
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/minijail/libminijail_gen_syscall_obj^android_x86_64_apex29.output . $GITHUB_WORKSPACE/artifacts/external/minijail/libminijail_gen_syscall_obj^android_x86_64_apex29
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/minijail/libminijail_gen_syscall_obj^android_x86_64_apex29.output $GITHUB_WORKSPACE/artifacts/external/minijail/libminijail_gen_syscall_obj^android_x86_64_apex29 $GITHUB_WORKSPACE/artifacts/external/minijail/libminijail_gen_syscall_obj^android_x86_64_apex29/addition_copy_files.output
 
 rm -rf out
 

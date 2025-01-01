@@ -58,36 +58,43 @@ echo "building framework-scheduling.stubs.module_lib^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_19.ninja framework-scheduling.stubs.module_lib,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/Scheduling/framework/framework-scheduling.stubs.module_lib^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_19/packages/modules/Scheduling/framework-scheduling.stubs.module_lib^android_common.output . $GITHUB_WORKSPACE/artifacts/packages/modules/Scheduling/framework/framework-scheduling.stubs.module_lib^android_common
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_19/packages/modules/Scheduling/framework-scheduling.stubs.module_lib^android_common.output $GITHUB_WORKSPACE/artifacts/packages/modules/Scheduling/framework/framework-scheduling.stubs.module_lib^android_common $GITHUB_WORKSPACE/artifacts/packages/modules/Scheduling/framework/framework-scheduling.stubs.module_lib^android_common/addition_copy_files.output
 
 echo "building framework-scheduling.stubs.source.module_lib^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_19.ninja framework-scheduling.stubs.source.module_lib,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/Scheduling/framework/framework-scheduling.stubs.source.module_lib^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_19/packages/modules/Scheduling/framework-scheduling.stubs.source.module_lib^android_common.output . $GITHUB_WORKSPACE/artifacts/packages/modules/Scheduling/framework/framework-scheduling.stubs.source.module_lib^android_common
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_19/packages/modules/Scheduling/framework-scheduling.stubs.source.module_lib^android_common.output $GITHUB_WORKSPACE/artifacts/packages/modules/Scheduling/framework/framework-scheduling.stubs.source.module_lib^android_common $GITHUB_WORKSPACE/artifacts/packages/modules/Scheduling/framework/framework-scheduling.stubs.source.module_lib^android_common/addition_copy_files.output
 
 echo "building framework-scheduling.stubs.source.system^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_19.ninja framework-scheduling.stubs.source.system,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/Scheduling/framework/framework-scheduling.stubs.source.system^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_19/packages/modules/Scheduling/framework-scheduling.stubs.source.system^android_common.output . $GITHUB_WORKSPACE/artifacts/packages/modules/Scheduling/framework/framework-scheduling.stubs.source.system^android_common
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_19/packages/modules/Scheduling/framework-scheduling.stubs.source.system^android_common.output $GITHUB_WORKSPACE/artifacts/packages/modules/Scheduling/framework/framework-scheduling.stubs.source.system^android_common $GITHUB_WORKSPACE/artifacts/packages/modules/Scheduling/framework/framework-scheduling.stubs.source.system^android_common/addition_copy_files.output
 
 echo "building framework-scheduling.stubs.source^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_19.ninja framework-scheduling.stubs.source,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/Scheduling/framework/framework-scheduling.stubs.source^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_19/packages/modules/Scheduling/framework-scheduling.stubs.source^android_common.output . $GITHUB_WORKSPACE/artifacts/packages/modules/Scheduling/framework/framework-scheduling.stubs.source^android_common
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_19/packages/modules/Scheduling/framework-scheduling.stubs.source^android_common.output $GITHUB_WORKSPACE/artifacts/packages/modules/Scheduling/framework/framework-scheduling.stubs.source^android_common $GITHUB_WORKSPACE/artifacts/packages/modules/Scheduling/framework/framework-scheduling.stubs.source^android_common/addition_copy_files.output
 
 echo "building framework-scheduling.stubs.system^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_19.ninja framework-scheduling.stubs.system,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/Scheduling/framework/framework-scheduling.stubs.system^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_19/packages/modules/Scheduling/framework-scheduling.stubs.system^android_common.output . $GITHUB_WORKSPACE/artifacts/packages/modules/Scheduling/framework/framework-scheduling.stubs.system^android_common
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_19/packages/modules/Scheduling/framework-scheduling.stubs.system^android_common.output $GITHUB_WORKSPACE/artifacts/packages/modules/Scheduling/framework/framework-scheduling.stubs.system^android_common $GITHUB_WORKSPACE/artifacts/packages/modules/Scheduling/framework/framework-scheduling.stubs.system^android_common/addition_copy_files.output
 
 echo "building framework-scheduling.stubs^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_19.ninja framework-scheduling.stubs,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/Scheduling/framework/framework-scheduling.stubs^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_19/packages/modules/Scheduling/framework-scheduling.stubs^android_common.output . $GITHUB_WORKSPACE/artifacts/packages/modules/Scheduling/framework/framework-scheduling.stubs^android_common
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_19/packages/modules/Scheduling/framework-scheduling.stubs^android_common.output $GITHUB_WORKSPACE/artifacts/packages/modules/Scheduling/framework/framework-scheduling.stubs^android_common $GITHUB_WORKSPACE/artifacts/packages/modules/Scheduling/framework/framework-scheduling.stubs^android_common/addition_copy_files.output
 
 echo "building framework-scheduling^android_common_apex10000"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_19.ninja framework-scheduling,android_common_apex10000
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/Scheduling/framework/framework-scheduling^android_common_apex10000
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_19/packages/modules/Scheduling/framework-scheduling^android_common_apex10000.output . $GITHUB_WORKSPACE/artifacts/packages/modules/Scheduling/framework/framework-scheduling^android_common_apex10000
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_19/packages/modules/Scheduling/framework-scheduling^android_common_apex10000.output $GITHUB_WORKSPACE/artifacts/packages/modules/Scheduling/framework/framework-scheduling^android_common_apex10000 $GITHUB_WORKSPACE/artifacts/packages/modules/Scheduling/framework/framework-scheduling^android_common_apex10000/addition_copy_files.output
 
 rm -rf out
 

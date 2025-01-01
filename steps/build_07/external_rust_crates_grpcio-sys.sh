@@ -119,21 +119,25 @@ echo "building libgrpc_wrap^android_x86_64_shared"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libgrpc_wrap,android_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/rust/crates/grpcio-sys/libgrpc_wrap^android_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/external/rust/crates/grpcio-sys/libgrpc_wrap^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/external/rust/crates/grpcio-sys/libgrpc_wrap^android_x86_64_shared
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_07/external/rust/crates/grpcio-sys/libgrpc_wrap^android_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/external/rust/crates/grpcio-sys/libgrpc_wrap^android_x86_64_shared $GITHUB_WORKSPACE/artifacts/external/rust/crates/grpcio-sys/libgrpc_wrap^android_x86_64_shared/addition_copy_files.output
 
 echo "building libgrpc_wrap^android_x86_x86_64_shared"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libgrpc_wrap,android_x86_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/rust/crates/grpcio-sys/libgrpc_wrap^android_x86_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/external/rust/crates/grpcio-sys/libgrpc_wrap^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/external/rust/crates/grpcio-sys/libgrpc_wrap^android_x86_x86_64_shared
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_07/external/rust/crates/grpcio-sys/libgrpc_wrap^android_x86_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/external/rust/crates/grpcio-sys/libgrpc_wrap^android_x86_x86_64_shared $GITHUB_WORKSPACE/artifacts/external/rust/crates/grpcio-sys/libgrpc_wrap^android_x86_x86_64_shared/addition_copy_files.output
 
 echo "building libgrpcio_sys^android_x86_64_rlib_rlib-std"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libgrpcio_sys,android_x86_64_rlib_rlib-std
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/rust/crates/grpcio-sys/libgrpcio_sys^android_x86_64_rlib_rlib-std
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/external/rust/crates/grpcio-sys/libgrpcio_sys^android_x86_64_rlib_rlib-std.output . $GITHUB_WORKSPACE/artifacts/external/rust/crates/grpcio-sys/libgrpcio_sys^android_x86_64_rlib_rlib-std
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_07/external/rust/crates/grpcio-sys/libgrpcio_sys^android_x86_64_rlib_rlib-std.output $GITHUB_WORKSPACE/artifacts/external/rust/crates/grpcio-sys/libgrpcio_sys^android_x86_64_rlib_rlib-std $GITHUB_WORKSPACE/artifacts/external/rust/crates/grpcio-sys/libgrpcio_sys^android_x86_64_rlib_rlib-std/addition_copy_files.output
 
 echo "building libgrpcio_sys^android_x86_x86_64_rlib_rlib-std"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libgrpcio_sys,android_x86_x86_64_rlib_rlib-std
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/rust/crates/grpcio-sys/libgrpcio_sys^android_x86_x86_64_rlib_rlib-std
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/external/rust/crates/grpcio-sys/libgrpcio_sys^android_x86_x86_64_rlib_rlib-std.output . $GITHUB_WORKSPACE/artifacts/external/rust/crates/grpcio-sys/libgrpcio_sys^android_x86_x86_64_rlib_rlib-std
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_07/external/rust/crates/grpcio-sys/libgrpcio_sys^android_x86_x86_64_rlib_rlib-std.output $GITHUB_WORKSPACE/artifacts/external/rust/crates/grpcio-sys/libgrpcio_sys^android_x86_x86_64_rlib_rlib-std $GITHUB_WORKSPACE/artifacts/external/rust/crates/grpcio-sys/libgrpcio_sys^android_x86_x86_64_rlib_rlib-std/addition_copy_files.output
 
 rm -rf out
 

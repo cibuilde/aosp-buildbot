@@ -53,36 +53,43 @@ echo "building e2fsdroid^linux_glibc_x86_64"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja e2fsdroid,linux_glibc_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/contrib/android/e2fsdroid^linux_glibc_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/external/e2fsprogs/e2fsdroid^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/contrib/android/e2fsdroid^linux_glibc_x86_64
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/external/e2fsprogs/e2fsdroid^linux_glibc_x86_64.output $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/contrib/android/e2fsdroid^linux_glibc_x86_64 $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/contrib/android/e2fsdroid^linux_glibc_x86_64/addition_copy_files.output
 
 echo "building libext2_blkid^linux_glibc_x86_64_shared"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libext2_blkid,linux_glibc_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/lib/blkid/libext2_blkid^linux_glibc_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/external/e2fsprogs/libext2_blkid^linux_glibc_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/lib/blkid/libext2_blkid^linux_glibc_x86_64_shared
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/external/e2fsprogs/libext2_blkid^linux_glibc_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/lib/blkid/libext2_blkid^linux_glibc_x86_64_shared $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/lib/blkid/libext2_blkid^linux_glibc_x86_64_shared/addition_copy_files.output
 
 echo "building libext2_com_err^linux_glibc_x86_64_shared"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libext2_com_err,linux_glibc_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/lib/et/libext2_com_err^linux_glibc_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/external/e2fsprogs/libext2_com_err^linux_glibc_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/lib/et/libext2_com_err^linux_glibc_x86_64_shared
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/external/e2fsprogs/libext2_com_err^linux_glibc_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/lib/et/libext2_com_err^linux_glibc_x86_64_shared $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/lib/et/libext2_com_err^linux_glibc_x86_64_shared/addition_copy_files.output
 
 echo "building libext2_e2p^linux_glibc_x86_64_shared"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libext2_e2p,linux_glibc_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/lib/e2p/libext2_e2p^linux_glibc_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/external/e2fsprogs/libext2_e2p^linux_glibc_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/lib/e2p/libext2_e2p^linux_glibc_x86_64_shared
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/external/e2fsprogs/libext2_e2p^linux_glibc_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/lib/e2p/libext2_e2p^linux_glibc_x86_64_shared $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/lib/e2p/libext2_e2p^linux_glibc_x86_64_shared/addition_copy_files.output
 
 echo "building libext2_uuid^linux_glibc_x86_64_shared"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libext2_uuid,linux_glibc_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/lib/uuid/libext2_uuid^linux_glibc_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/external/e2fsprogs/libext2_uuid^linux_glibc_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/lib/uuid/libext2_uuid^linux_glibc_x86_64_shared
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/external/e2fsprogs/libext2_uuid^linux_glibc_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/lib/uuid/libext2_uuid^linux_glibc_x86_64_shared $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/lib/uuid/libext2_uuid^linux_glibc_x86_64_shared/addition_copy_files.output
 
 echo "building mke2fs^linux_glibc_x86_64"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja mke2fs,linux_glibc_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/misc/mke2fs^linux_glibc_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/external/e2fsprogs/mke2fs^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/misc/mke2fs^linux_glibc_x86_64
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/external/e2fsprogs/mke2fs^linux_glibc_x86_64.output $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/misc/mke2fs^linux_glibc_x86_64 $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/misc/mke2fs^linux_glibc_x86_64/addition_copy_files.output
 
 echo "building resize2fs^linux_glibc_x86_64"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja resize2fs,linux_glibc_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/resize/resize2fs^linux_glibc_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/external/e2fsprogs/resize2fs^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/resize/resize2fs^linux_glibc_x86_64
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/external/e2fsprogs/resize2fs^linux_glibc_x86_64.output $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/resize/resize2fs^linux_glibc_x86_64 $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/resize/resize2fs^linux_glibc_x86_64/addition_copy_files.output
 
 rm -rf out
 

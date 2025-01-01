@@ -58,16 +58,19 @@ echo "building libnetdutils^android_x86_64_shared_cfi"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libnetdutils,android_x86_64_shared_cfi
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/netd/libnetdutils/libnetdutils^android_x86_64_shared_cfi
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/netd/libnetdutils^android_x86_64_shared_cfi.output . $GITHUB_WORKSPACE/artifacts/system/netd/libnetdutils/libnetdutils^android_x86_64_shared_cfi
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_07/system/netd/libnetdutils^android_x86_64_shared_cfi.output $GITHUB_WORKSPACE/artifacts/system/netd/libnetdutils/libnetdutils^android_x86_64_shared_cfi $GITHUB_WORKSPACE/artifacts/system/netd/libnetdutils/libnetdutils^android_x86_64_shared_cfi/addition_copy_files.output
 
 echo "building libnetdutils^android_x86_x86_64_shared_cfi"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libnetdutils,android_x86_x86_64_shared_cfi
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/netd/libnetdutils/libnetdutils^android_x86_x86_64_shared_cfi
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/netd/libnetdutils^android_x86_x86_64_shared_cfi.output . $GITHUB_WORKSPACE/artifacts/system/netd/libnetdutils/libnetdutils^android_x86_x86_64_shared_cfi
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_07/system/netd/libnetdutils^android_x86_x86_64_shared_cfi.output $GITHUB_WORKSPACE/artifacts/system/netd/libnetdutils/libnetdutils^android_x86_x86_64_shared_cfi $GITHUB_WORKSPACE/artifacts/system/netd/libnetdutils/libnetdutils^android_x86_x86_64_shared_cfi/addition_copy_files.output
 
 echo "building netutils-wrapper-1.0^android_x86_64_cfi"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja netutils-wrapper-1.0,android_x86_64_cfi
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/netd/netutils_wrappers/netutils-wrapper-1.0^android_x86_64_cfi
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/netd/netutils-wrapper-1.0^android_x86_64_cfi.output . $GITHUB_WORKSPACE/artifacts/system/netd/netutils_wrappers/netutils-wrapper-1.0^android_x86_64_cfi
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_07/system/netd/netutils-wrapper-1.0^android_x86_64_cfi.output $GITHUB_WORKSPACE/artifacts/system/netd/netutils_wrappers/netutils-wrapper-1.0^android_x86_64_cfi $GITHUB_WORKSPACE/artifacts/system/netd/netutils_wrappers/netutils-wrapper-1.0^android_x86_64_cfi/addition_copy_files.output
 
 rm -rf out
 

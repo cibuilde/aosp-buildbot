@@ -35,21 +35,25 @@ echo "building libcompiler_rt^android_vendor.31_x86_64_shared"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libcompiler_rt,android_vendor.31_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/compiler-rt/libcompiler_rt^android_vendor.31_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/compiler-rt/libcompiler_rt^android_vendor.31_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/external/compiler-rt/libcompiler_rt^android_vendor.31_x86_64_shared
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/external/compiler-rt/libcompiler_rt^android_vendor.31_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/external/compiler-rt/libcompiler_rt^android_vendor.31_x86_64_shared $GITHUB_WORKSPACE/artifacts/external/compiler-rt/libcompiler_rt^android_vendor.31_x86_64_shared/addition_copy_files.output
 
 echo "building libcompiler_rt^android_vendor.31_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libcompiler_rt,android_vendor.31_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/compiler-rt/libcompiler_rt^android_vendor.31_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/compiler-rt/libcompiler_rt^android_vendor.31_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/compiler-rt/libcompiler_rt^android_vendor.31_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/external/compiler-rt/libcompiler_rt^android_vendor.31_x86_64_static.output $GITHUB_WORKSPACE/artifacts/external/compiler-rt/libcompiler_rt^android_vendor.31_x86_64_static $GITHUB_WORKSPACE/artifacts/external/compiler-rt/libcompiler_rt^android_vendor.31_x86_64_static/addition_copy_files.output
 
 echo "building libcompiler_rt^android_vendor.31_x86_x86_64_shared"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libcompiler_rt,android_vendor.31_x86_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/compiler-rt/libcompiler_rt^android_vendor.31_x86_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/compiler-rt/libcompiler_rt^android_vendor.31_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/external/compiler-rt/libcompiler_rt^android_vendor.31_x86_x86_64_shared
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/external/compiler-rt/libcompiler_rt^android_vendor.31_x86_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/external/compiler-rt/libcompiler_rt^android_vendor.31_x86_x86_64_shared $GITHUB_WORKSPACE/artifacts/external/compiler-rt/libcompiler_rt^android_vendor.31_x86_x86_64_shared/addition_copy_files.output
 
 echo "building libcompiler_rt^android_vendor.31_x86_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libcompiler_rt,android_vendor.31_x86_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/compiler-rt/libcompiler_rt^android_vendor.31_x86_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/compiler-rt/libcompiler_rt^android_vendor.31_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/compiler-rt/libcompiler_rt^android_vendor.31_x86_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/external/compiler-rt/libcompiler_rt^android_vendor.31_x86_x86_64_static.output $GITHUB_WORKSPACE/artifacts/external/compiler-rt/libcompiler_rt^android_vendor.31_x86_x86_64_static $GITHUB_WORKSPACE/artifacts/external/compiler-rt/libcompiler_rt^android_vendor.31_x86_x86_64_static/addition_copy_files.output
 
 rm -rf out
 

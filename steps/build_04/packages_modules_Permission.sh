@@ -29,6 +29,7 @@ echo "building service-permission-javastream-protos^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja service-permission-javastream-protos,
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/Permission/service/service-permission-javastream-protos^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/packages/modules/Permission/service-permission-javastream-protos^.output . $GITHUB_WORKSPACE/artifacts/packages/modules/Permission/service/service-permission-javastream-protos^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/packages/modules/Permission/service-permission-javastream-protos^.output $GITHUB_WORKSPACE/artifacts/packages/modules/Permission/service/service-permission-javastream-protos^ $GITHUB_WORKSPACE/artifacts/packages/modules/Permission/service/service-permission-javastream-protos^/addition_copy_files.output
 
 rm -rf out
 

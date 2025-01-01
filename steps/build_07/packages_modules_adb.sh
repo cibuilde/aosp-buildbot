@@ -110,21 +110,25 @@ echo "building com.android.adbd^android_common_com.android.adbd_image"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja com.android.adbd,android_common_com.android.adbd_image
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/adb/apex/com.android.adbd^android_common_com.android.adbd_image
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/packages/modules/adb/com.android.adbd^android_common_com.android.adbd_image.output . $GITHUB_WORKSPACE/artifacts/packages/modules/adb/apex/com.android.adbd^android_common_com.android.adbd_image
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_07/packages/modules/adb/com.android.adbd^android_common_com.android.adbd_image.output $GITHUB_WORKSPACE/artifacts/packages/modules/adb/apex/com.android.adbd^android_common_com.android.adbd_image $GITHUB_WORKSPACE/artifacts/packages/modules/adb/apex/com.android.adbd^android_common_com.android.adbd_image/addition_copy_files.output
 
 echo "building libadb_pairing_server^android_x86_64_shared_apex10000"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libadb_pairing_server,android_x86_64_shared_apex10000
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/adb/pairing_connection/libadb_pairing_server^android_x86_64_shared_apex10000
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/packages/modules/adb/libadb_pairing_server^android_x86_64_shared_apex10000.output . $GITHUB_WORKSPACE/artifacts/packages/modules/adb/pairing_connection/libadb_pairing_server^android_x86_64_shared_apex10000
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_07/packages/modules/adb/libadb_pairing_server^android_x86_64_shared_apex10000.output $GITHUB_WORKSPACE/artifacts/packages/modules/adb/pairing_connection/libadb_pairing_server^android_x86_64_shared_apex10000 $GITHUB_WORKSPACE/artifacts/packages/modules/adb/pairing_connection/libadb_pairing_server^android_x86_64_shared_apex10000/addition_copy_files.output
 
 echo "building libadb_pairing_server^android_x86_x86_64_shared_apex10000"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libadb_pairing_server,android_x86_x86_64_shared_apex10000
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/adb/pairing_connection/libadb_pairing_server^android_x86_x86_64_shared_apex10000
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/packages/modules/adb/libadb_pairing_server^android_x86_x86_64_shared_apex10000.output . $GITHUB_WORKSPACE/artifacts/packages/modules/adb/pairing_connection/libadb_pairing_server^android_x86_x86_64_shared_apex10000
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_07/packages/modules/adb/libadb_pairing_server^android_x86_x86_64_shared_apex10000.output $GITHUB_WORKSPACE/artifacts/packages/modules/adb/pairing_connection/libadb_pairing_server^android_x86_x86_64_shared_apex10000 $GITHUB_WORKSPACE/artifacts/packages/modules/adb/pairing_connection/libadb_pairing_server^android_x86_x86_64_shared_apex10000/addition_copy_files.output
 
 echo "building libadb_protos^android_recovery_x86_64_shared"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libadb_protos,android_recovery_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/adb/proto/libadb_protos^android_recovery_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/packages/modules/adb/libadb_protos^android_recovery_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/packages/modules/adb/proto/libadb_protos^android_recovery_x86_64_shared
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_07/packages/modules/adb/libadb_protos^android_recovery_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/packages/modules/adb/proto/libadb_protos^android_recovery_x86_64_shared $GITHUB_WORKSPACE/artifacts/packages/modules/adb/proto/libadb_protos^android_recovery_x86_64_shared/addition_copy_files.output
 
 rm -rf out
 

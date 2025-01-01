@@ -31,11 +31,13 @@ echo "building kotlinx_coroutines^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_14.ninja kotlinx_coroutines,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/kotlinx.coroutines/kotlinx_coroutines^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_14/external/kotlinx.coroutines/kotlinx_coroutines^android_common.output . $GITHUB_WORKSPACE/artifacts/external/kotlinx.coroutines/kotlinx_coroutines^android_common
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_14/external/kotlinx.coroutines/kotlinx_coroutines^android_common.output $GITHUB_WORKSPACE/artifacts/external/kotlinx.coroutines/kotlinx_coroutines^android_common $GITHUB_WORKSPACE/artifacts/external/kotlinx.coroutines/kotlinx_coroutines^android_common/addition_copy_files.output
 
 echo "building kotlinx_coroutines_android^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_14.ninja kotlinx_coroutines_android,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/kotlinx.coroutines/kotlinx_coroutines_android^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_14/external/kotlinx.coroutines/kotlinx_coroutines_android^android_common.output . $GITHUB_WORKSPACE/artifacts/external/kotlinx.coroutines/kotlinx_coroutines_android^android_common
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_14/external/kotlinx.coroutines/kotlinx_coroutines_android^android_common.output $GITHUB_WORKSPACE/artifacts/external/kotlinx.coroutines/kotlinx_coroutines_android^android_common $GITHUB_WORKSPACE/artifacts/external/kotlinx.coroutines/kotlinx_coroutines_android^android_common/addition_copy_files.output
 
 rm -rf out
 

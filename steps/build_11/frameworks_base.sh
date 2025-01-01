@@ -119,31 +119,37 @@ echo "building libmedia_jni_utils^android_x86_64_shared"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_11.ninja libmedia_jni_utils,android_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/media/jni/libmedia_jni_utils^android_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_11/frameworks/base/libmedia_jni_utils^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/media/jni/libmedia_jni_utils^android_x86_64_shared
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_11/frameworks/base/libmedia_jni_utils^android_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/frameworks/base/media/jni/libmedia_jni_utils^android_x86_64_shared $GITHUB_WORKSPACE/artifacts/frameworks/base/media/jni/libmedia_jni_utils^android_x86_64_shared/addition_copy_files.output
 
 echo "building libmedia_jni_utils^android_x86_x86_64_shared"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_11.ninja libmedia_jni_utils,android_x86_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/media/jni/libmedia_jni_utils^android_x86_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_11/frameworks/base/libmedia_jni_utils^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/media/jni/libmedia_jni_utils^android_x86_x86_64_shared
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_11/frameworks/base/libmedia_jni_utils^android_x86_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/frameworks/base/media/jni/libmedia_jni_utils^android_x86_x86_64_shared $GITHUB_WORKSPACE/artifacts/frameworks/base/media/jni/libmedia_jni_utils^android_x86_x86_64_shared/addition_copy_files.output
 
 echo "building service.incremental^android_x86_64_shared"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_11.ninja service.incremental,android_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/services/incremental/service.incremental^android_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_11/frameworks/base/service.incremental^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/services/incremental/service.incremental^android_x86_64_shared
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_11/frameworks/base/service.incremental^android_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/frameworks/base/services/incremental/service.incremental^android_x86_64_shared $GITHUB_WORKSPACE/artifacts/frameworks/base/services/incremental/service.incremental^android_x86_64_shared/addition_copy_files.output
 
 echo "building service.incremental^android_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_11.ninja service.incremental,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/services/incremental/service.incremental^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_11/frameworks/base/service.incremental^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/services/incremental/service.incremental^android_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_11/frameworks/base/service.incremental^android_x86_64_static.output $GITHUB_WORKSPACE/artifacts/frameworks/base/services/incremental/service.incremental^android_x86_64_static $GITHUB_WORKSPACE/artifacts/frameworks/base/services/incremental/service.incremental^android_x86_64_static/addition_copy_files.output
 
 echo "building service.incremental^android_x86_x86_64_shared"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_11.ninja service.incremental,android_x86_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/services/incremental/service.incremental^android_x86_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_11/frameworks/base/service.incremental^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/services/incremental/service.incremental^android_x86_x86_64_shared
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_11/frameworks/base/service.incremental^android_x86_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/frameworks/base/services/incremental/service.incremental^android_x86_x86_64_shared $GITHUB_WORKSPACE/artifacts/frameworks/base/services/incremental/service.incremental^android_x86_x86_64_shared/addition_copy_files.output
 
 echo "building service.incremental^android_x86_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_11.ninja service.incremental,android_x86_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/services/incremental/service.incremental^android_x86_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_11/frameworks/base/service.incremental^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/services/incremental/service.incremental^android_x86_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_11/frameworks/base/service.incremental^android_x86_x86_64_static.output $GITHUB_WORKSPACE/artifacts/frameworks/base/services/incremental/service.incremental^android_x86_x86_64_static $GITHUB_WORKSPACE/artifacts/frameworks/base/services/incremental/service.incremental^android_x86_x86_64_static/addition_copy_files.output
 
 rm -rf out
 

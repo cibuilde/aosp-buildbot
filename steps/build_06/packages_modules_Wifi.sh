@@ -34,6 +34,7 @@ echo "building statslog-wifi-java-gen^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja statslog-wifi-java-gen,
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/Wifi/service/statslog-wifi-java-gen^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/packages/modules/Wifi/statslog-wifi-java-gen^.output . $GITHUB_WORKSPACE/artifacts/packages/modules/Wifi/service/statslog-wifi-java-gen^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_06/packages/modules/Wifi/statslog-wifi-java-gen^.output $GITHUB_WORKSPACE/artifacts/packages/modules/Wifi/service/statslog-wifi-java-gen^ $GITHUB_WORKSPACE/artifacts/packages/modules/Wifi/service/statslog-wifi-java-gen^/addition_copy_files.output
 
 rm -rf out
 

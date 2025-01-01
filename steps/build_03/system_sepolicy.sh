@@ -38,26 +38,31 @@ echo "building build_sepolicy^linux_glibc_x86_64_PY2"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja build_sepolicy,linux_glibc_x86_64_PY2
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/sepolicy/build/build_sepolicy^linux_glibc_x86_64_PY2
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/system/sepolicy/build_sepolicy^linux_glibc_x86_64_PY2.output . $GITHUB_WORKSPACE/artifacts/system/sepolicy/build/build_sepolicy^linux_glibc_x86_64_PY2
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/system/sepolicy/build_sepolicy^linux_glibc_x86_64_PY2.output $GITHUB_WORKSPACE/artifacts/system/sepolicy/build/build_sepolicy^linux_glibc_x86_64_PY2 $GITHUB_WORKSPACE/artifacts/system/sepolicy/build/build_sepolicy^linux_glibc_x86_64_PY2/addition_copy_files.output
 
 echo "building check_prop_prefix^linux_glibc_x86_64_PY3"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja check_prop_prefix,linux_glibc_x86_64_PY3
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/sepolicy/tests/check_prop_prefix^linux_glibc_x86_64_PY3
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/system/sepolicy/check_prop_prefix^linux_glibc_x86_64_PY3.output . $GITHUB_WORKSPACE/artifacts/system/sepolicy/tests/check_prop_prefix^linux_glibc_x86_64_PY3
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/system/sepolicy/check_prop_prefix^linux_glibc_x86_64_PY3.output $GITHUB_WORKSPACE/artifacts/system/sepolicy/tests/check_prop_prefix^linux_glibc_x86_64_PY3 $GITHUB_WORKSPACE/artifacts/system/sepolicy/tests/check_prop_prefix^linux_glibc_x86_64_PY3/addition_copy_files.output
 
 echo "building checkfc^linux_glibc_x86_64"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja checkfc,linux_glibc_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/sepolicy/tools/checkfc^linux_glibc_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/system/sepolicy/checkfc^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/sepolicy/tools/checkfc^linux_glibc_x86_64
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/system/sepolicy/checkfc^linux_glibc_x86_64.output $GITHUB_WORKSPACE/artifacts/system/sepolicy/tools/checkfc^linux_glibc_x86_64 $GITHUB_WORKSPACE/artifacts/system/sepolicy/tools/checkfc^linux_glibc_x86_64/addition_copy_files.output
 
 echo "building insertkeys.py^linux_glibc_x86_64"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja insertkeys.py,linux_glibc_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/sepolicy/tools/insertkeys.py^linux_glibc_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/system/sepolicy/insertkeys.py^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/sepolicy/tools/insertkeys.py^linux_glibc_x86_64
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/system/sepolicy/insertkeys.py^linux_glibc_x86_64.output $GITHUB_WORKSPACE/artifacts/system/sepolicy/tools/insertkeys.py^linux_glibc_x86_64 $GITHUB_WORKSPACE/artifacts/system/sepolicy/tools/insertkeys.py^linux_glibc_x86_64/addition_copy_files.output
 
 echo "building vendor_property_contexts^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja vendor_property_contexts,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/sepolicy/vendor_property_contexts^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/system/sepolicy/vendor_property_contexts^android_common.output . $GITHUB_WORKSPACE/artifacts/system/sepolicy/vendor_property_contexts^android_common
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/system/sepolicy/vendor_property_contexts^android_common.output $GITHUB_WORKSPACE/artifacts/system/sepolicy/vendor_property_contexts^android_common $GITHUB_WORKSPACE/artifacts/system/sepolicy/vendor_property_contexts^android_common/addition_copy_files.output
 
 rm -rf out
 

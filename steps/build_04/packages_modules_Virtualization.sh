@@ -39,26 +39,31 @@ echo "building android.system.virtmanager-rust-source^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.system.virtmanager-rust-source,
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/Virtualization/virtmanager/aidl/android.system.virtmanager-rust-source^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/packages/modules/Virtualization/android.system.virtmanager-rust-source^.output . $GITHUB_WORKSPACE/artifacts/packages/modules/Virtualization/virtmanager/aidl/android.system.virtmanager-rust-source^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/packages/modules/Virtualization/android.system.virtmanager-rust-source^.output $GITHUB_WORKSPACE/artifacts/packages/modules/Virtualization/virtmanager/aidl/android.system.virtmanager-rust-source^ $GITHUB_WORKSPACE/artifacts/packages/modules/Virtualization/virtmanager/aidl/android.system.virtmanager-rust-source^/addition_copy_files.output
 
 echo "building android.system.virtmanager-rust^android_x86_64_source_apex10000"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.system.virtmanager-rust,android_x86_64_source_apex10000
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/Virtualization/virtmanager/aidl/android.system.virtmanager-rust^android_x86_64_source_apex10000
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/packages/modules/Virtualization/android.system.virtmanager-rust^android_x86_64_source_apex10000.output . $GITHUB_WORKSPACE/artifacts/packages/modules/Virtualization/virtmanager/aidl/android.system.virtmanager-rust^android_x86_64_source_apex10000
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/packages/modules/Virtualization/android.system.virtmanager-rust^android_x86_64_source_apex10000.output $GITHUB_WORKSPACE/artifacts/packages/modules/Virtualization/virtmanager/aidl/android.system.virtmanager-rust^android_x86_64_source_apex10000 $GITHUB_WORKSPACE/artifacts/packages/modules/Virtualization/virtmanager/aidl/android.system.virtmanager-rust^android_x86_64_source_apex10000/addition_copy_files.output
 
 echo "building authfs_aidl_interface-rust-source^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja authfs_aidl_interface-rust-source,
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/Virtualization/authfs/aidl/authfs_aidl_interface-rust-source^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/packages/modules/Virtualization/authfs_aidl_interface-rust-source^.output . $GITHUB_WORKSPACE/artifacts/packages/modules/Virtualization/authfs/aidl/authfs_aidl_interface-rust-source^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/packages/modules/Virtualization/authfs_aidl_interface-rust-source^.output $GITHUB_WORKSPACE/artifacts/packages/modules/Virtualization/authfs/aidl/authfs_aidl_interface-rust-source^ $GITHUB_WORKSPACE/artifacts/packages/modules/Virtualization/authfs/aidl/authfs_aidl_interface-rust-source^/addition_copy_files.output
 
 echo "building authfs_aidl_interface-rust^android_x86_64_source_apex10000"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja authfs_aidl_interface-rust,android_x86_64_source_apex10000
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/Virtualization/authfs/aidl/authfs_aidl_interface-rust^android_x86_64_source_apex10000
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/packages/modules/Virtualization/authfs_aidl_interface-rust^android_x86_64_source_apex10000.output . $GITHUB_WORKSPACE/artifacts/packages/modules/Virtualization/authfs/aidl/authfs_aidl_interface-rust^android_x86_64_source_apex10000
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/packages/modules/Virtualization/authfs_aidl_interface-rust^android_x86_64_source_apex10000.output $GITHUB_WORKSPACE/artifacts/packages/modules/Virtualization/authfs/aidl/authfs_aidl_interface-rust^android_x86_64_source_apex10000 $GITHUB_WORKSPACE/artifacts/packages/modules/Virtualization/authfs/aidl/authfs_aidl_interface-rust^android_x86_64_source_apex10000/addition_copy_files.output
 
 echo "building lib_microdroid_signature_proto_lite^android_x86_64_static_apex10000"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja lib_microdroid_signature_proto_lite,android_x86_64_static_apex10000
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/Virtualization/microdroid/signature/lib_microdroid_signature_proto_lite^android_x86_64_static_apex10000
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/packages/modules/Virtualization/lib_microdroid_signature_proto_lite^android_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/packages/modules/Virtualization/microdroid/signature/lib_microdroid_signature_proto_lite^android_x86_64_static_apex10000
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/packages/modules/Virtualization/lib_microdroid_signature_proto_lite^android_x86_64_static_apex10000.output $GITHUB_WORKSPACE/artifacts/packages/modules/Virtualization/microdroid/signature/lib_microdroid_signature_proto_lite^android_x86_64_static_apex10000 $GITHUB_WORKSPACE/artifacts/packages/modules/Virtualization/microdroid/signature/lib_microdroid_signature_proto_lite^android_x86_64_static_apex10000/addition_copy_files.output
 
 rm -rf out
 

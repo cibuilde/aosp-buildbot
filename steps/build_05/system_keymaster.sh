@@ -58,26 +58,31 @@ echo "building lib_android_keymaster_keymint_utils^android_vendor.31_x86_64_stat
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja lib_android_keymaster_keymint_utils,android_vendor.31_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/keymaster/lib_android_keymaster_keymint_utils^android_vendor.31_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/system/keymaster/lib_android_keymaster_keymint_utils^android_vendor.31_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/keymaster/lib_android_keymaster_keymint_utils^android_vendor.31_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/system/keymaster/lib_android_keymaster_keymint_utils^android_vendor.31_x86_64_static.output $GITHUB_WORKSPACE/artifacts/system/keymaster/lib_android_keymaster_keymint_utils^android_vendor.31_x86_64_static $GITHUB_WORKSPACE/artifacts/system/keymaster/lib_android_keymaster_keymint_utils^android_vendor.31_x86_64_static/addition_copy_files.output
 
 echo "building lib_android_keymaster_keymint_utils^android_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja lib_android_keymaster_keymint_utils,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/keymaster/lib_android_keymaster_keymint_utils^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/system/keymaster/lib_android_keymaster_keymint_utils^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/keymaster/lib_android_keymaster_keymint_utils^android_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/system/keymaster/lib_android_keymaster_keymint_utils^android_x86_64_static.output $GITHUB_WORKSPACE/artifacts/system/keymaster/lib_android_keymaster_keymint_utils^android_x86_64_static $GITHUB_WORKSPACE/artifacts/system/keymaster/lib_android_keymaster_keymint_utils^android_x86_64_static/addition_copy_files.output
 
 echo "building libkeymaster_messages^android_x86_64_shared"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libkeymaster_messages,android_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/keymaster/libkeymaster_messages^android_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/system/keymaster/libkeymaster_messages^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/keymaster/libkeymaster_messages^android_x86_64_shared
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/system/keymaster/libkeymaster_messages^android_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/system/keymaster/libkeymaster_messages^android_x86_64_shared $GITHUB_WORKSPACE/artifacts/system/keymaster/libkeymaster_messages^android_x86_64_shared/addition_copy_files.output
 
 echo "building libkeymint^android_vendor.31_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libkeymint,android_vendor.31_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/keymaster/libkeymint^android_vendor.31_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/system/keymaster/libkeymint^android_vendor.31_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/keymaster/libkeymint^android_vendor.31_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/system/keymaster/libkeymint^android_vendor.31_x86_64_static.output $GITHUB_WORKSPACE/artifacts/system/keymaster/libkeymint^android_vendor.31_x86_64_static $GITHUB_WORKSPACE/artifacts/system/keymaster/libkeymint^android_vendor.31_x86_64_static/addition_copy_files.output
 
 echo "building libkeymint^android_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libkeymint,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/keymaster/libkeymint^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/system/keymaster/libkeymint^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/keymaster/libkeymint^android_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/system/keymaster/libkeymint^android_x86_64_static.output $GITHUB_WORKSPACE/artifacts/system/keymaster/libkeymint^android_x86_64_static $GITHUB_WORKSPACE/artifacts/system/keymaster/libkeymint^android_x86_64_static/addition_copy_files.output
 
 rm -rf out
 

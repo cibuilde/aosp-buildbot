@@ -39,36 +39,43 @@ echo "building libadb_pairing_connection^android_x86_64_shared_current"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libadb_pairing_connection,android_x86_64_shared_current
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/adb/pairing_connection/libadb_pairing_connection^android_x86_64_shared_current
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/packages/modules/adb/libadb_pairing_connection^android_x86_64_shared_current.output . $GITHUB_WORKSPACE/artifacts/packages/modules/adb/pairing_connection/libadb_pairing_connection^android_x86_64_shared_current
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/packages/modules/adb/libadb_pairing_connection^android_x86_64_shared_current.output $GITHUB_WORKSPACE/artifacts/packages/modules/adb/pairing_connection/libadb_pairing_connection^android_x86_64_shared_current $GITHUB_WORKSPACE/artifacts/packages/modules/adb/pairing_connection/libadb_pairing_connection^android_x86_64_shared_current/addition_copy_files.output
 
 echo "building libadb_pairing_connection^android_x86_x86_64_shared_current"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libadb_pairing_connection,android_x86_x86_64_shared_current
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/adb/pairing_connection/libadb_pairing_connection^android_x86_x86_64_shared_current
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/packages/modules/adb/libadb_pairing_connection^android_x86_x86_64_shared_current.output . $GITHUB_WORKSPACE/artifacts/packages/modules/adb/pairing_connection/libadb_pairing_connection^android_x86_x86_64_shared_current
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/packages/modules/adb/libadb_pairing_connection^android_x86_x86_64_shared_current.output $GITHUB_WORKSPACE/artifacts/packages/modules/adb/pairing_connection/libadb_pairing_connection^android_x86_x86_64_shared_current $GITHUB_WORKSPACE/artifacts/packages/modules/adb/pairing_connection/libadb_pairing_connection^android_x86_x86_64_shared_current/addition_copy_files.output
 
 echo "building libadb_pairing_server^android_x86_64_shared_current"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libadb_pairing_server,android_x86_64_shared_current
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/adb/pairing_connection/libadb_pairing_server^android_x86_64_shared_current
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/packages/modules/adb/libadb_pairing_server^android_x86_64_shared_current.output . $GITHUB_WORKSPACE/artifacts/packages/modules/adb/pairing_connection/libadb_pairing_server^android_x86_64_shared_current
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/packages/modules/adb/libadb_pairing_server^android_x86_64_shared_current.output $GITHUB_WORKSPACE/artifacts/packages/modules/adb/pairing_connection/libadb_pairing_server^android_x86_64_shared_current $GITHUB_WORKSPACE/artifacts/packages/modules/adb/pairing_connection/libadb_pairing_server^android_x86_64_shared_current/addition_copy_files.output
 
 echo "building libadb_pairing_server^android_x86_x86_64_shared_current"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libadb_pairing_server,android_x86_x86_64_shared_current
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/adb/pairing_connection/libadb_pairing_server^android_x86_x86_64_shared_current
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/packages/modules/adb/libadb_pairing_server^android_x86_x86_64_shared_current.output . $GITHUB_WORKSPACE/artifacts/packages/modules/adb/pairing_connection/libadb_pairing_server^android_x86_x86_64_shared_current
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/packages/modules/adb/libadb_pairing_server^android_x86_x86_64_shared_current.output $GITHUB_WORKSPACE/artifacts/packages/modules/adb/pairing_connection/libadb_pairing_server^android_x86_x86_64_shared_current $GITHUB_WORKSPACE/artifacts/packages/modules/adb/pairing_connection/libadb_pairing_server^android_x86_x86_64_shared_current/addition_copy_files.output
 
 echo "building libadbconnection_client^android_x86_64_shared_current"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libadbconnection_client,android_x86_64_shared_current
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/adb/libs/adbconnection/libadbconnection_client^android_x86_64_shared_current
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/packages/modules/adb/libadbconnection_client^android_x86_64_shared_current.output . $GITHUB_WORKSPACE/artifacts/packages/modules/adb/libs/adbconnection/libadbconnection_client^android_x86_64_shared_current
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/packages/modules/adb/libadbconnection_client^android_x86_64_shared_current.output $GITHUB_WORKSPACE/artifacts/packages/modules/adb/libs/adbconnection/libadbconnection_client^android_x86_64_shared_current $GITHUB_WORKSPACE/artifacts/packages/modules/adb/libs/adbconnection/libadbconnection_client^android_x86_64_shared_current/addition_copy_files.output
 
 echo "building libadbconnection_client^android_x86_x86_64_shared_current"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libadbconnection_client,android_x86_x86_64_shared_current
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/adb/libs/adbconnection/libadbconnection_client^android_x86_x86_64_shared_current
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/packages/modules/adb/libadbconnection_client^android_x86_x86_64_shared_current.output . $GITHUB_WORKSPACE/artifacts/packages/modules/adb/libs/adbconnection/libadbconnection_client^android_x86_x86_64_shared_current
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/packages/modules/adb/libadbconnection_client^android_x86_x86_64_shared_current.output $GITHUB_WORKSPACE/artifacts/packages/modules/adb/libs/adbconnection/libadbconnection_client^android_x86_x86_64_shared_current $GITHUB_WORKSPACE/artifacts/packages/modules/adb/libs/adbconnection/libadbconnection_client^android_x86_x86_64_shared_current/addition_copy_files.output
 
 echo "building libadbd_fs^android_x86_64_shared_current"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libadbd_fs,android_x86_64_shared_current
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/adb/libs/libadbd_fs/libadbd_fs^android_x86_64_shared_current
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/packages/modules/adb/libadbd_fs^android_x86_64_shared_current.output . $GITHUB_WORKSPACE/artifacts/packages/modules/adb/libs/libadbd_fs/libadbd_fs^android_x86_64_shared_current
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/packages/modules/adb/libadbd_fs^android_x86_64_shared_current.output $GITHUB_WORKSPACE/artifacts/packages/modules/adb/libs/libadbd_fs/libadbd_fs^android_x86_64_shared_current $GITHUB_WORKSPACE/artifacts/packages/modules/adb/libs/libadbd_fs/libadbd_fs^android_x86_64_shared_current/addition_copy_files.output
 
 rm -rf out
 

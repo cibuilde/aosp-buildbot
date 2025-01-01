@@ -33,11 +33,13 @@ echo "building time_zone_distro^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_25.ninja time_zone_distro,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/timezone/distro/core/time_zone_distro^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_25/system/timezone/time_zone_distro^android_common.output . $GITHUB_WORKSPACE/artifacts/system/timezone/distro/core/time_zone_distro^android_common
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_25/system/timezone/time_zone_distro^android_common.output $GITHUB_WORKSPACE/artifacts/system/timezone/distro/core/time_zone_distro^android_common $GITHUB_WORKSPACE/artifacts/system/timezone/distro/core/time_zone_distro^android_common/addition_copy_files.output
 
 echo "building time_zone_distro_installer^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_25.ninja time_zone_distro_installer,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/timezone/distro/installer/time_zone_distro_installer^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_25/system/timezone/time_zone_distro_installer^android_common.output . $GITHUB_WORKSPACE/artifacts/system/timezone/distro/installer/time_zone_distro_installer^android_common
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_25/system/timezone/time_zone_distro_installer^android_common.output $GITHUB_WORKSPACE/artifacts/system/timezone/distro/installer/time_zone_distro_installer^android_common $GITHUB_WORKSPACE/artifacts/system/timezone/distro/installer/time_zone_distro_installer^android_common/addition_copy_files.output
 
 rm -rf out
 

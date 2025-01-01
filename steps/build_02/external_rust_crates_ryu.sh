@@ -38,6 +38,7 @@ echo "building libryu^android_x86_64_rlib_rlib-std_apex10000"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_02.ninja libryu,android_x86_64_rlib_rlib-std_apex10000
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/rust/crates/ryu/libryu^android_x86_64_rlib_rlib-std_apex10000
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_02/external/rust/crates/ryu/libryu^android_x86_64_rlib_rlib-std_apex10000.output . $GITHUB_WORKSPACE/artifacts/external/rust/crates/ryu/libryu^android_x86_64_rlib_rlib-std_apex10000
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_02/external/rust/crates/ryu/libryu^android_x86_64_rlib_rlib-std_apex10000.output $GITHUB_WORKSPACE/artifacts/external/rust/crates/ryu/libryu^android_x86_64_rlib_rlib-std_apex10000 $GITHUB_WORKSPACE/artifacts/external/rust/crates/ryu/libryu^android_x86_64_rlib_rlib-std_apex10000/addition_copy_files.output
 
 rm -rf out
 

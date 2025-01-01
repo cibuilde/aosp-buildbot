@@ -100,36 +100,43 @@ echo "building libbase^android_recovery_x86_64_shared"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libbase,android_recovery_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/libbase/libbase^android_recovery_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/system/libbase/libbase^android_recovery_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/libbase/libbase^android_recovery_x86_64_shared
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_06/system/libbase/libbase^android_recovery_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/system/libbase/libbase^android_recovery_x86_64_shared $GITHUB_WORKSPACE/artifacts/system/libbase/libbase^android_recovery_x86_64_shared/addition_copy_files.output
 
 echo "building libbase^android_vendor.31_x86_64_shared"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libbase,android_vendor.31_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/libbase/libbase^android_vendor.31_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/system/libbase/libbase^android_vendor.31_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/libbase/libbase^android_vendor.31_x86_64_shared
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_06/system/libbase/libbase^android_vendor.31_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/system/libbase/libbase^android_vendor.31_x86_64_shared $GITHUB_WORKSPACE/artifacts/system/libbase/libbase^android_vendor.31_x86_64_shared/addition_copy_files.output
 
 echo "building libbase^android_vendor.31_x86_x86_64_shared"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libbase,android_vendor.31_x86_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/libbase/libbase^android_vendor.31_x86_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/system/libbase/libbase^android_vendor.31_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/libbase/libbase^android_vendor.31_x86_x86_64_shared
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_06/system/libbase/libbase^android_vendor.31_x86_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/system/libbase/libbase^android_vendor.31_x86_x86_64_shared $GITHUB_WORKSPACE/artifacts/system/libbase/libbase^android_vendor.31_x86_x86_64_shared/addition_copy_files.output
 
 echo "building libbase^android_vendor_ramdisk_x86_64_shared"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libbase,android_vendor_ramdisk_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/libbase/libbase^android_vendor_ramdisk_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/system/libbase/libbase^android_vendor_ramdisk_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/libbase/libbase^android_vendor_ramdisk_x86_64_shared
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_06/system/libbase/libbase^android_vendor_ramdisk_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/system/libbase/libbase^android_vendor_ramdisk_x86_64_shared $GITHUB_WORKSPACE/artifacts/system/libbase/libbase^android_vendor_ramdisk_x86_64_shared/addition_copy_files.output
 
 echo "building libbase^android_x86_64_shared"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libbase,android_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/libbase/libbase^android_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/system/libbase/libbase^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/libbase/libbase^android_x86_64_shared
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_06/system/libbase/libbase^android_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/system/libbase/libbase^android_x86_64_shared $GITHUB_WORKSPACE/artifacts/system/libbase/libbase^android_x86_64_shared/addition_copy_files.output
 
 echo "building libbase^android_x86_x86_64_shared"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libbase,android_x86_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/libbase/libbase^android_x86_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/system/libbase/libbase^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/libbase/libbase^android_x86_x86_64_shared
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_06/system/libbase/libbase^android_x86_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/system/libbase/libbase^android_x86_x86_64_shared $GITHUB_WORKSPACE/artifacts/system/libbase/libbase^android_x86_x86_64_shared/addition_copy_files.output
 
 echo "building libbase_ndk^android_x86_64_sdk_static_apex30"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libbase_ndk,android_x86_64_sdk_static_apex30
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/libbase/libbase_ndk^android_x86_64_sdk_static_apex30
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/system/libbase/libbase_ndk^android_x86_64_sdk_static_apex30.output . $GITHUB_WORKSPACE/artifacts/system/libbase/libbase_ndk^android_x86_64_sdk_static_apex30
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_06/system/libbase/libbase_ndk^android_x86_64_sdk_static_apex30.output $GITHUB_WORKSPACE/artifacts/system/libbase/libbase_ndk^android_x86_64_sdk_static_apex30 $GITHUB_WORKSPACE/artifacts/system/libbase/libbase_ndk^android_x86_64_sdk_static_apex30/addition_copy_files.output
 
 rm -rf out
 

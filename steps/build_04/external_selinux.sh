@@ -37,6 +37,7 @@ echo "building secilc^android_x86_64"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja secilc,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/selinux/secilc/secilc^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/selinux/secilc^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/selinux/secilc/secilc^android_x86_64
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/external/selinux/secilc^android_x86_64.output $GITHUB_WORKSPACE/artifacts/external/selinux/secilc/secilc^android_x86_64 $GITHUB_WORKSPACE/artifacts/external/selinux/secilc/secilc^android_x86_64/addition_copy_files.output
 
 rm -rf out
 

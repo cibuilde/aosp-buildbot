@@ -168,16 +168,19 @@ echo "building microdroid^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_12.ninja microdroid,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/Virtualization/microdroid/microdroid^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_12/packages/modules/Virtualization/microdroid^android_common.output . $GITHUB_WORKSPACE/artifacts/packages/modules/Virtualization/microdroid/microdroid^android_common
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_12/packages/modules/Virtualization/microdroid^android_common.output $GITHUB_WORKSPACE/artifacts/packages/modules/Virtualization/microdroid/microdroid^android_common $GITHUB_WORKSPACE/artifacts/packages/modules/Virtualization/microdroid/microdroid^android_common/addition_copy_files.output
 
 echo "building microdroid_super^android_x86_64"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_12.ninja microdroid_super,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/Virtualization/microdroid/microdroid_super^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_12/packages/modules/Virtualization/microdroid_super^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/packages/modules/Virtualization/microdroid/microdroid_super^android_x86_64
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_12/packages/modules/Virtualization/microdroid_super^android_x86_64.output $GITHUB_WORKSPACE/artifacts/packages/modules/Virtualization/microdroid/microdroid_super^android_x86_64 $GITHUB_WORKSPACE/artifacts/packages/modules/Virtualization/microdroid/microdroid_super^android_x86_64/addition_copy_files.output
 
 echo "building microdroid_vbmeta_system^android_x86_64"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_12.ninja microdroid_vbmeta_system,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/Virtualization/microdroid/microdroid_vbmeta_system^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_12/packages/modules/Virtualization/microdroid_vbmeta_system^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/packages/modules/Virtualization/microdroid/microdroid_vbmeta_system^android_x86_64
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_12/packages/modules/Virtualization/microdroid_vbmeta_system^android_x86_64.output $GITHUB_WORKSPACE/artifacts/packages/modules/Virtualization/microdroid/microdroid_vbmeta_system^android_x86_64 $GITHUB_WORKSPACE/artifacts/packages/modules/Virtualization/microdroid/microdroid_vbmeta_system^android_x86_64/addition_copy_files.output
 
 rm -rf out
 

@@ -36,6 +36,7 @@ echo "building turbine^linux_glibc_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja turbine,linux_glibc_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/turbine/turbine^linux_glibc_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/external/turbine/turbine^linux_glibc_common.output . $GITHUB_WORKSPACE/artifacts/external/turbine/turbine^linux_glibc_common
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_07/external/turbine/turbine^linux_glibc_common.output $GITHUB_WORKSPACE/artifacts/external/turbine/turbine^linux_glibc_common $GITHUB_WORKSPACE/artifacts/external/turbine/turbine^linux_glibc_common/addition_copy_files.output
 
 rm -rf out
 

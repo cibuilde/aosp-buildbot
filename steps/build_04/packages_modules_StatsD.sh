@@ -65,76 +65,91 @@ echo "building libkll-protos^android_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libkll-protos,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/StatsD/lib/libkll/proto/libkll-protos^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/packages/modules/StatsD/libkll-protos^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/packages/modules/StatsD/lib/libkll/proto/libkll-protos^android_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/packages/modules/StatsD/libkll-protos^android_x86_64_static.output $GITHUB_WORKSPACE/artifacts/packages/modules/StatsD/lib/libkll/proto/libkll-protos^android_x86_64_static $GITHUB_WORKSPACE/artifacts/packages/modules/StatsD/lib/libkll/proto/libkll-protos^android_x86_64_static/addition_copy_files.output
 
 echo "building libkll-protos^android_x86_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libkll-protos,android_x86_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/StatsD/lib/libkll/proto/libkll-protos^android_x86_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/packages/modules/StatsD/libkll-protos^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/packages/modules/StatsD/lib/libkll/proto/libkll-protos^android_x86_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/packages/modules/StatsD/libkll-protos^android_x86_x86_64_static.output $GITHUB_WORKSPACE/artifacts/packages/modules/StatsD/lib/libkll/proto/libkll-protos^android_x86_x86_64_static $GITHUB_WORKSPACE/artifacts/packages/modules/StatsD/lib/libkll/proto/libkll-protos^android_x86_x86_64_static/addition_copy_files.output
 
 echo "building libkll^android_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libkll,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/StatsD/lib/libkll/libkll^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/packages/modules/StatsD/libkll^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/packages/modules/StatsD/lib/libkll/libkll^android_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/packages/modules/StatsD/libkll^android_x86_64_static.output $GITHUB_WORKSPACE/artifacts/packages/modules/StatsD/lib/libkll/libkll^android_x86_64_static $GITHUB_WORKSPACE/artifacts/packages/modules/StatsD/lib/libkll/libkll^android_x86_64_static/addition_copy_files.output
 
 echo "building libkll^android_x86_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libkll,android_x86_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/StatsD/lib/libkll/libkll^android_x86_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/packages/modules/StatsD/libkll^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/packages/modules/StatsD/lib/libkll/libkll^android_x86_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/packages/modules/StatsD/libkll^android_x86_x86_64_static.output $GITHUB_WORKSPACE/artifacts/packages/modules/StatsD/lib/libkll/libkll^android_x86_x86_64_static $GITHUB_WORKSPACE/artifacts/packages/modules/StatsD/lib/libkll/libkll^android_x86_x86_64_static/addition_copy_files.output
 
 echo "building libstats_jni^android_x86_64_shared_apex30"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libstats_jni,android_x86_64_shared_apex30
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/StatsD/framework/libstats_jni^android_x86_64_shared_apex30
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/packages/modules/StatsD/libstats_jni^android_x86_64_shared_apex30.output . $GITHUB_WORKSPACE/artifacts/packages/modules/StatsD/framework/libstats_jni^android_x86_64_shared_apex30
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/packages/modules/StatsD/libstats_jni^android_x86_64_shared_apex30.output $GITHUB_WORKSPACE/artifacts/packages/modules/StatsD/framework/libstats_jni^android_x86_64_shared_apex30 $GITHUB_WORKSPACE/artifacts/packages/modules/StatsD/framework/libstats_jni^android_x86_64_shared_apex30/addition_copy_files.output
 
 echo "building libstats_jni^android_x86_x86_64_shared_apex30"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libstats_jni,android_x86_x86_64_shared_apex30
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/StatsD/framework/libstats_jni^android_x86_x86_64_shared_apex30
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/packages/modules/StatsD/libstats_jni^android_x86_x86_64_shared_apex30.output . $GITHUB_WORKSPACE/artifacts/packages/modules/StatsD/framework/libstats_jni^android_x86_x86_64_shared_apex30
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/packages/modules/StatsD/libstats_jni^android_x86_x86_64_shared_apex30.output $GITHUB_WORKSPACE/artifacts/packages/modules/StatsD/framework/libstats_jni^android_x86_x86_64_shared_apex30 $GITHUB_WORKSPACE/artifacts/packages/modules/StatsD/framework/libstats_jni^android_x86_x86_64_shared_apex30/addition_copy_files.output
 
 echo "building libstatspull^android_x86_64_shared_com.android.os.statsd"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libstatspull,android_x86_64_shared_com.android.os.statsd
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/StatsD/lib/libstatspull/libstatspull^android_x86_64_shared_com.android.os.statsd
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/packages/modules/StatsD/libstatspull^android_x86_64_shared_com.android.os.statsd.output . $GITHUB_WORKSPACE/artifacts/packages/modules/StatsD/lib/libstatspull/libstatspull^android_x86_64_shared_com.android.os.statsd
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/packages/modules/StatsD/libstatspull^android_x86_64_shared_com.android.os.statsd.output $GITHUB_WORKSPACE/artifacts/packages/modules/StatsD/lib/libstatspull/libstatspull^android_x86_64_shared_com.android.os.statsd $GITHUB_WORKSPACE/artifacts/packages/modules/StatsD/lib/libstatspull/libstatspull^android_x86_64_shared_com.android.os.statsd/addition_copy_files.output
 
 echo "building libstatspull^android_x86_x86_64_shared_com.android.os.statsd"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libstatspull,android_x86_x86_64_shared_com.android.os.statsd
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/StatsD/lib/libstatspull/libstatspull^android_x86_x86_64_shared_com.android.os.statsd
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/packages/modules/StatsD/libstatspull^android_x86_x86_64_shared_com.android.os.statsd.output . $GITHUB_WORKSPACE/artifacts/packages/modules/StatsD/lib/libstatspull/libstatspull^android_x86_x86_64_shared_com.android.os.statsd
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/packages/modules/StatsD/libstatspull^android_x86_x86_64_shared_com.android.os.statsd.output $GITHUB_WORKSPACE/artifacts/packages/modules/StatsD/lib/libstatspull/libstatspull^android_x86_x86_64_shared_com.android.os.statsd $GITHUB_WORKSPACE/artifacts/packages/modules/StatsD/lib/libstatspull/libstatspull^android_x86_x86_64_shared_com.android.os.statsd/addition_copy_files.output
 
 echo "building libstatssocket^android_x86_64_shared"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libstatssocket,android_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/StatsD/lib/libstatssocket/libstatssocket^android_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/packages/modules/StatsD/libstatssocket^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/packages/modules/StatsD/lib/libstatssocket/libstatssocket^android_x86_64_shared
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/packages/modules/StatsD/libstatssocket^android_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/packages/modules/StatsD/lib/libstatssocket/libstatssocket^android_x86_64_shared $GITHUB_WORKSPACE/artifacts/packages/modules/StatsD/lib/libstatssocket/libstatssocket^android_x86_64_shared/addition_copy_files.output
 
 echo "building libstatssocket^android_x86_64_shared_apex30"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libstatssocket,android_x86_64_shared_apex30
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/StatsD/lib/libstatssocket/libstatssocket^android_x86_64_shared_apex30
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/packages/modules/StatsD/libstatssocket^android_x86_64_shared_apex30.output . $GITHUB_WORKSPACE/artifacts/packages/modules/StatsD/lib/libstatssocket/libstatssocket^android_x86_64_shared_apex30
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/packages/modules/StatsD/libstatssocket^android_x86_64_shared_apex30.output $GITHUB_WORKSPACE/artifacts/packages/modules/StatsD/lib/libstatssocket/libstatssocket^android_x86_64_shared_apex30 $GITHUB_WORKSPACE/artifacts/packages/modules/StatsD/lib/libstatssocket/libstatssocket^android_x86_64_shared_apex30/addition_copy_files.output
 
 echo "building libstatssocket^android_x86_x86_64_shared_apex30"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libstatssocket,android_x86_x86_64_shared_apex30
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/StatsD/lib/libstatssocket/libstatssocket^android_x86_x86_64_shared_apex30
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/packages/modules/StatsD/libstatssocket^android_x86_x86_64_shared_apex30.output . $GITHUB_WORKSPACE/artifacts/packages/modules/StatsD/lib/libstatssocket/libstatssocket^android_x86_x86_64_shared_apex30
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/packages/modules/StatsD/libstatssocket^android_x86_x86_64_shared_apex30.output $GITHUB_WORKSPACE/artifacts/packages/modules/StatsD/lib/libstatssocket/libstatssocket^android_x86_x86_64_shared_apex30 $GITHUB_WORKSPACE/artifacts/packages/modules/StatsD/lib/libstatssocket/libstatssocket^android_x86_x86_64_shared_apex30/addition_copy_files.output
 
 echo "building statsd-aidl-ndk_platform-source^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja statsd-aidl-ndk_platform-source,
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/StatsD/aidl/statsd-aidl-ndk_platform-source^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/packages/modules/StatsD/statsd-aidl-ndk_platform-source^.output . $GITHUB_WORKSPACE/artifacts/packages/modules/StatsD/aidl/statsd-aidl-ndk_platform-source^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/packages/modules/StatsD/statsd-aidl-ndk_platform-source^.output $GITHUB_WORKSPACE/artifacts/packages/modules/StatsD/aidl/statsd-aidl-ndk_platform-source^ $GITHUB_WORKSPACE/artifacts/packages/modules/StatsD/aidl/statsd-aidl-ndk_platform-source^/addition_copy_files.output
 
 echo "building statsd-aidl-ndk_platform^android_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja statsd-aidl-ndk_platform,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/StatsD/aidl/statsd-aidl-ndk_platform^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/packages/modules/StatsD/statsd-aidl-ndk_platform^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/packages/modules/StatsD/aidl/statsd-aidl-ndk_platform^android_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/packages/modules/StatsD/statsd-aidl-ndk_platform^android_x86_64_static.output $GITHUB_WORKSPACE/artifacts/packages/modules/StatsD/aidl/statsd-aidl-ndk_platform^android_x86_64_static $GITHUB_WORKSPACE/artifacts/packages/modules/StatsD/aidl/statsd-aidl-ndk_platform^android_x86_64_static/addition_copy_files.output
 
 echo "building statsd-aidl-ndk_platform^android_x86_64_static_com.android.os.statsd"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja statsd-aidl-ndk_platform,android_x86_64_static_com.android.os.statsd
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/StatsD/aidl/statsd-aidl-ndk_platform^android_x86_64_static_com.android.os.statsd
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/packages/modules/StatsD/statsd-aidl-ndk_platform^android_x86_64_static_com.android.os.statsd.output . $GITHUB_WORKSPACE/artifacts/packages/modules/StatsD/aidl/statsd-aidl-ndk_platform^android_x86_64_static_com.android.os.statsd
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/packages/modules/StatsD/statsd-aidl-ndk_platform^android_x86_64_static_com.android.os.statsd.output $GITHUB_WORKSPACE/artifacts/packages/modules/StatsD/aidl/statsd-aidl-ndk_platform^android_x86_64_static_com.android.os.statsd $GITHUB_WORKSPACE/artifacts/packages/modules/StatsD/aidl/statsd-aidl-ndk_platform^android_x86_64_static_com.android.os.statsd/addition_copy_files.output
 
 echo "building statsd-aidl-ndk_platform^android_x86_x86_64_static_com.android.os.statsd"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja statsd-aidl-ndk_platform,android_x86_x86_64_static_com.android.os.statsd
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/StatsD/aidl/statsd-aidl-ndk_platform^android_x86_x86_64_static_com.android.os.statsd
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/packages/modules/StatsD/statsd-aidl-ndk_platform^android_x86_x86_64_static_com.android.os.statsd.output . $GITHUB_WORKSPACE/artifacts/packages/modules/StatsD/aidl/statsd-aidl-ndk_platform^android_x86_x86_64_static_com.android.os.statsd
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/packages/modules/StatsD/statsd-aidl-ndk_platform^android_x86_x86_64_static_com.android.os.statsd.output $GITHUB_WORKSPACE/artifacts/packages/modules/StatsD/aidl/statsd-aidl-ndk_platform^android_x86_x86_64_static_com.android.os.statsd $GITHUB_WORKSPACE/artifacts/packages/modules/StatsD/aidl/statsd-aidl-ndk_platform^android_x86_x86_64_static_com.android.os.statsd/addition_copy_files.output
 
 rm -rf out
 

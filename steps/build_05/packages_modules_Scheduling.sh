@@ -25,6 +25,7 @@ echo "building reboot-stats-parser^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja reboot-stats-parser,
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/Scheduling/service/reboot-stats-parser/reboot-stats-parser^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/packages/modules/Scheduling/reboot-stats-parser^.output . $GITHUB_WORKSPACE/artifacts/packages/modules/Scheduling/service/reboot-stats-parser/reboot-stats-parser^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/packages/modules/Scheduling/reboot-stats-parser^.output $GITHUB_WORKSPACE/artifacts/packages/modules/Scheduling/service/reboot-stats-parser/reboot-stats-parser^ $GITHUB_WORKSPACE/artifacts/packages/modules/Scheduling/service/reboot-stats-parser/reboot-stats-parser^/addition_copy_files.output
 
 rm -rf out
 

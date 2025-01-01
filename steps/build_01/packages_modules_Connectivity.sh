@@ -22,11 +22,13 @@ echo "building offload.o^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja offload.o,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/Connectivity/Tethering/bpf_progs/offload.o^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/packages/modules/Connectivity/offload.o^android_common.output . $GITHUB_WORKSPACE/artifacts/packages/modules/Connectivity/Tethering/bpf_progs/offload.o^android_common
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/packages/modules/Connectivity/offload.o^android_common.output $GITHUB_WORKSPACE/artifacts/packages/modules/Connectivity/Tethering/bpf_progs/offload.o^android_common $GITHUB_WORKSPACE/artifacts/packages/modules/Connectivity/Tethering/bpf_progs/offload.o^android_common/addition_copy_files.output
 
 echo "building test.o^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja test.o,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/Connectivity/Tethering/bpf_progs/test.o^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/packages/modules/Connectivity/test.o^android_common.output . $GITHUB_WORKSPACE/artifacts/packages/modules/Connectivity/Tethering/bpf_progs/test.o^android_common
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/packages/modules/Connectivity/test.o^android_common.output $GITHUB_WORKSPACE/artifacts/packages/modules/Connectivity/Tethering/bpf_progs/test.o^android_common $GITHUB_WORKSPACE/artifacts/packages/modules/Connectivity/Tethering/bpf_progs/test.o^android_common/addition_copy_files.output
 
 rm -rf out
 

@@ -112,11 +112,13 @@ echo "building com.android.media-bootclasspath-fragment^android_common_apex29"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_25.ninja com.android.media-bootclasspath-fragment,android_common_apex29
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/apex/com.android.media-bootclasspath-fragment^android_common_apex29
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_25/frameworks/av/com.android.media-bootclasspath-fragment^android_common_apex29.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/apex/com.android.media-bootclasspath-fragment^android_common_apex29
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_25/frameworks/av/com.android.media-bootclasspath-fragment^android_common_apex29.output $GITHUB_WORKSPACE/artifacts/frameworks/av/apex/com.android.media-bootclasspath-fragment^android_common_apex29 $GITHUB_WORKSPACE/artifacts/frameworks/av/apex/com.android.media-bootclasspath-fragment^android_common_apex29/addition_copy_files.output
 
 echo "building com.android.media^android_common_cfi_com.android.media_image"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_25.ninja com.android.media,android_common_cfi_com.android.media_image
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/apex/com.android.media^android_common_cfi_com.android.media_image
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_25/frameworks/av/com.android.media^android_common_cfi_com.android.media_image.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/apex/com.android.media^android_common_cfi_com.android.media_image
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_25/frameworks/av/com.android.media^android_common_cfi_com.android.media_image.output $GITHUB_WORKSPACE/artifacts/frameworks/av/apex/com.android.media^android_common_cfi_com.android.media_image $GITHUB_WORKSPACE/artifacts/frameworks/av/apex/com.android.media^android_common_cfi_com.android.media_image/addition_copy_files.output
 
 rm -rf out
 

@@ -48,21 +48,25 @@ echo "building org.apache.http.legacy.stubs.source.system^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_25.ninja org.apache.http.legacy.stubs.source.system,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/apache-http/org.apache.http.legacy.stubs.source.system^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_25/external/apache-http/org.apache.http.legacy.stubs.source.system^android_common.output . $GITHUB_WORKSPACE/artifacts/external/apache-http/org.apache.http.legacy.stubs.source.system^android_common
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_25/external/apache-http/org.apache.http.legacy.stubs.source.system^android_common.output $GITHUB_WORKSPACE/artifacts/external/apache-http/org.apache.http.legacy.stubs.source.system^android_common $GITHUB_WORKSPACE/artifacts/external/apache-http/org.apache.http.legacy.stubs.source.system^android_common/addition_copy_files.output
 
 echo "building org.apache.http.legacy.stubs.source^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_25.ninja org.apache.http.legacy.stubs.source,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/apache-http/org.apache.http.legacy.stubs.source^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_25/external/apache-http/org.apache.http.legacy.stubs.source^android_common.output . $GITHUB_WORKSPACE/artifacts/external/apache-http/org.apache.http.legacy.stubs.source^android_common
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_25/external/apache-http/org.apache.http.legacy.stubs.source^android_common.output $GITHUB_WORKSPACE/artifacts/external/apache-http/org.apache.http.legacy.stubs.source^android_common $GITHUB_WORKSPACE/artifacts/external/apache-http/org.apache.http.legacy.stubs.source^android_common/addition_copy_files.output
 
 echo "building org.apache.http.legacy.stubs.system^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_25.ninja org.apache.http.legacy.stubs.system,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/apache-http/org.apache.http.legacy.stubs.system^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_25/external/apache-http/org.apache.http.legacy.stubs.system^android_common.output . $GITHUB_WORKSPACE/artifacts/external/apache-http/org.apache.http.legacy.stubs.system^android_common
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_25/external/apache-http/org.apache.http.legacy.stubs.system^android_common.output $GITHUB_WORKSPACE/artifacts/external/apache-http/org.apache.http.legacy.stubs.system^android_common $GITHUB_WORKSPACE/artifacts/external/apache-http/org.apache.http.legacy.stubs.system^android_common/addition_copy_files.output
 
 echo "building org.apache.http.legacy.stubs^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_25.ninja org.apache.http.legacy.stubs,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/apache-http/org.apache.http.legacy.stubs^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_25/external/apache-http/org.apache.http.legacy.stubs^android_common.output . $GITHUB_WORKSPACE/artifacts/external/apache-http/org.apache.http.legacy.stubs^android_common
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_25/external/apache-http/org.apache.http.legacy.stubs^android_common.output $GITHUB_WORKSPACE/artifacts/external/apache-http/org.apache.http.legacy.stubs^android_common $GITHUB_WORKSPACE/artifacts/external/apache-http/org.apache.http.legacy.stubs^android_common/addition_copy_files.output
 
 rm -rf out
 

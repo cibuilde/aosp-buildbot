@@ -138,56 +138,67 @@ echo "building android.security.apc-ndk_platform^android_x86_64_shared"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja android.security.apc-ndk_platform,android_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.apc-ndk_platform^android_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_09/system/security/android.security.apc-ndk_platform^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.apc-ndk_platform^android_x86_64_shared
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_09/system/security/android.security.apc-ndk_platform^android_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.apc-ndk_platform^android_x86_64_shared $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.apc-ndk_platform^android_x86_64_shared/addition_copy_files.output
 
 echo "building android.security.apc-rust^android_x86_64_rlib_rlib-std"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja android.security.apc-rust,android_x86_64_rlib_rlib-std
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.apc-rust^android_x86_64_rlib_rlib-std
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_09/system/security/android.security.apc-rust^android_x86_64_rlib_rlib-std.output . $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.apc-rust^android_x86_64_rlib_rlib-std
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_09/system/security/android.security.apc-rust^android_x86_64_rlib_rlib-std.output $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.apc-rust^android_x86_64_rlib_rlib-std $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.apc-rust^android_x86_64_rlib_rlib-std/addition_copy_files.output
 
 echo "building android.security.legacykeystore-ndk_platform^android_x86_64_shared"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja android.security.legacykeystore-ndk_platform,android_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.legacykeystore-ndk_platform^android_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_09/system/security/android.security.legacykeystore-ndk_platform^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.legacykeystore-ndk_platform^android_x86_64_shared
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_09/system/security/android.security.legacykeystore-ndk_platform^android_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.legacykeystore-ndk_platform^android_x86_64_shared $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.legacykeystore-ndk_platform^android_x86_64_shared/addition_copy_files.output
 
 echo "building android.security.legacykeystore-rust^android_x86_64_rlib_rlib-std"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja android.security.legacykeystore-rust,android_x86_64_rlib_rlib-std
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.legacykeystore-rust^android_x86_64_rlib_rlib-std
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_09/system/security/android.security.legacykeystore-rust^android_x86_64_rlib_rlib-std.output . $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.legacykeystore-rust^android_x86_64_rlib_rlib-std
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_09/system/security/android.security.legacykeystore-rust^android_x86_64_rlib_rlib-std.output $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.legacykeystore-rust^android_x86_64_rlib_rlib-std $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.legacykeystore-rust^android_x86_64_rlib_rlib-std/addition_copy_files.output
 
 echo "building fsverity_init^android_x86_64"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja fsverity_init,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/security/fsverity_init/fsverity_init^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_09/system/security/fsverity_init^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/security/fsverity_init/fsverity_init^android_x86_64
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_09/system/security/fsverity_init^android_x86_64.output $GITHUB_WORKSPACE/artifacts/system/security/fsverity_init/fsverity_init^android_x86_64 $GITHUB_WORKSPACE/artifacts/system/security/fsverity_init/fsverity_init^android_x86_64/addition_copy_files.output
 
 echo "building libkeystore-attestation-application-id^android_x86_64_shared"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja libkeystore-attestation-application-id,android_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/security/keystore/libkeystore-attestation-application-id^android_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_09/system/security/libkeystore-attestation-application-id^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/security/keystore/libkeystore-attestation-application-id^android_x86_64_shared
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_09/system/security/libkeystore-attestation-application-id^android_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/system/security/keystore/libkeystore-attestation-application-id^android_x86_64_shared $GITHUB_WORKSPACE/artifacts/system/security/keystore/libkeystore-attestation-application-id^android_x86_64_shared/addition_copy_files.output
 
 echo "building libkeystore2_aaid-rust^android_x86_64_rlib_rlib-std"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja libkeystore2_aaid-rust,android_x86_64_rlib_rlib-std
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aaid/libkeystore2_aaid-rust^android_x86_64_rlib_rlib-std
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_09/system/security/libkeystore2_aaid-rust^android_x86_64_rlib_rlib-std.output . $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aaid/libkeystore2_aaid-rust^android_x86_64_rlib_rlib-std
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_09/system/security/libkeystore2_aaid-rust^android_x86_64_rlib_rlib-std.output $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aaid/libkeystore2_aaid-rust^android_x86_64_rlib_rlib-std $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aaid/libkeystore2_aaid-rust^android_x86_64_rlib_rlib-std/addition_copy_files.output
 
 echo "building libkeystore2_aaid^android_x86_64_shared"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja libkeystore2_aaid,android_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aaid/libkeystore2_aaid^android_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_09/system/security/libkeystore2_aaid^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aaid/libkeystore2_aaid^android_x86_64_shared
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_09/system/security/libkeystore2_aaid^android_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aaid/libkeystore2_aaid^android_x86_64_shared $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aaid/libkeystore2_aaid^android_x86_64_shared/addition_copy_files.output
 
 echo "building libkeystore2_vintf_bindgen^android_x86_64_rlib_rlib-std"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja libkeystore2_vintf_bindgen,android_x86_64_rlib_rlib-std
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/security/keystore2/src/vintf/libkeystore2_vintf_bindgen^android_x86_64_rlib_rlib-std
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_09/system/security/libkeystore2_vintf_bindgen^android_x86_64_rlib_rlib-std.output . $GITHUB_WORKSPACE/artifacts/system/security/keystore2/src/vintf/libkeystore2_vintf_bindgen^android_x86_64_rlib_rlib-std
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_09/system/security/libkeystore2_vintf_bindgen^android_x86_64_rlib_rlib-std.output $GITHUB_WORKSPACE/artifacts/system/security/keystore2/src/vintf/libkeystore2_vintf_bindgen^android_x86_64_rlib_rlib-std $GITHUB_WORKSPACE/artifacts/system/security/keystore2/src/vintf/libkeystore2_vintf_bindgen^android_x86_64_rlib_rlib-std/addition_copy_files.output
 
 echo "building libkeystore2_vintf_cpp^android_x86_64_shared"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja libkeystore2_vintf_cpp,android_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/security/keystore2/src/vintf/libkeystore2_vintf_cpp^android_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_09/system/security/libkeystore2_vintf_cpp^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/security/keystore2/src/vintf/libkeystore2_vintf_cpp^android_x86_64_shared
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_09/system/security/libkeystore2_vintf_cpp^android_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/system/security/keystore2/src/vintf/libkeystore2_vintf_cpp^android_x86_64_shared $GITHUB_WORKSPACE/artifacts/system/security/keystore2/src/vintf/libkeystore2_vintf_cpp^android_x86_64_shared/addition_copy_files.output
 
 echo "building libkeystore2_vintf_rust^android_x86_64_rlib_rlib-std"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja libkeystore2_vintf_rust,android_x86_64_rlib_rlib-std
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/security/keystore2/src/vintf/libkeystore2_vintf_rust^android_x86_64_rlib_rlib-std
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_09/system/security/libkeystore2_vintf_rust^android_x86_64_rlib_rlib-std.output . $GITHUB_WORKSPACE/artifacts/system/security/keystore2/src/vintf/libkeystore2_vintf_rust^android_x86_64_rlib_rlib-std
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_09/system/security/libkeystore2_vintf_rust^android_x86_64_rlib_rlib-std.output $GITHUB_WORKSPACE/artifacts/system/security/keystore2/src/vintf/libkeystore2_vintf_rust^android_x86_64_rlib_rlib-std $GITHUB_WORKSPACE/artifacts/system/security/keystore2/src/vintf/libkeystore2_vintf_rust^android_x86_64_rlib_rlib-std/addition_copy_files.output
 
 rm -rf out
 

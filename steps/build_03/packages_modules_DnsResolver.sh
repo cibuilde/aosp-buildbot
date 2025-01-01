@@ -42,6 +42,7 @@ echo "building libnetd_resolv^android_x86_64_shared_current"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libnetd_resolv,android_x86_64_shared_current
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/DnsResolver/libnetd_resolv^android_x86_64_shared_current
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/packages/modules/DnsResolver/libnetd_resolv^android_x86_64_shared_current.output . $GITHUB_WORKSPACE/artifacts/packages/modules/DnsResolver/libnetd_resolv^android_x86_64_shared_current
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/packages/modules/DnsResolver/libnetd_resolv^android_x86_64_shared_current.output $GITHUB_WORKSPACE/artifacts/packages/modules/DnsResolver/libnetd_resolv^android_x86_64_shared_current $GITHUB_WORKSPACE/artifacts/packages/modules/DnsResolver/libnetd_resolv^android_x86_64_shared_current/addition_copy_files.output
 
 rm -rf out
 

@@ -115,6 +115,7 @@ echo "building vm^android_x86_64_apex10000"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja vm,android_x86_64_apex10000
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/Virtualization/vm/vm^android_x86_64_apex10000
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/packages/modules/Virtualization/vm^android_x86_64_apex10000.output . $GITHUB_WORKSPACE/artifacts/packages/modules/Virtualization/vm/vm^android_x86_64_apex10000
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_10/packages/modules/Virtualization/vm^android_x86_64_apex10000.output $GITHUB_WORKSPACE/artifacts/packages/modules/Virtualization/vm/vm^android_x86_64_apex10000 $GITHUB_WORKSPACE/artifacts/packages/modules/Virtualization/vm/vm^android_x86_64_apex10000/addition_copy_files.output
 
 rm -rf out
 

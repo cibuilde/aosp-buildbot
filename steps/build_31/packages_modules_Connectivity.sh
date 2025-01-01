@@ -134,36 +134,43 @@ echo "building TetheringApiCurrentLib^android_common_apex30"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_31.ninja TetheringApiCurrentLib,android_common_apex30
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/Connectivity/Tethering/TetheringApiCurrentLib^android_common_apex30
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_31/packages/modules/Connectivity/TetheringApiCurrentLib^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/packages/modules/Connectivity/Tethering/TetheringApiCurrentLib^android_common_apex30
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_31/packages/modules/Connectivity/TetheringApiCurrentLib^android_common_apex30.output $GITHUB_WORKSPACE/artifacts/packages/modules/Connectivity/Tethering/TetheringApiCurrentLib^android_common_apex30 $GITHUB_WORKSPACE/artifacts/packages/modules/Connectivity/Tethering/TetheringApiCurrentLib^android_common_apex30/addition_copy_files.output
 
 echo "building Tethering^android_common_apex30"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_31.ninja Tethering,android_common_apex30
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/Connectivity/Tethering/Tethering^android_common_apex30
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_31/packages/modules/Connectivity/Tethering^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/packages/modules/Connectivity/Tethering/Tethering^android_common_apex30
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_31/packages/modules/Connectivity/Tethering^android_common_apex30.output $GITHUB_WORKSPACE/artifacts/packages/modules/Connectivity/Tethering/Tethering^android_common_apex30 $GITHUB_WORKSPACE/artifacts/packages/modules/Connectivity/Tethering/Tethering^android_common_apex30/addition_copy_files.output
 
 echo "building com.android.tethering^android_common_com.android.tethering_image"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_31.ninja com.android.tethering,android_common_com.android.tethering_image
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/Connectivity/Tethering/apex/com.android.tethering^android_common_com.android.tethering_image
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_31/packages/modules/Connectivity/com.android.tethering^android_common_com.android.tethering_image.output . $GITHUB_WORKSPACE/artifacts/packages/modules/Connectivity/Tethering/apex/com.android.tethering^android_common_com.android.tethering_image
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_31/packages/modules/Connectivity/com.android.tethering^android_common_com.android.tethering_image.output $GITHUB_WORKSPACE/artifacts/packages/modules/Connectivity/Tethering/apex/com.android.tethering^android_common_com.android.tethering_image $GITHUB_WORKSPACE/artifacts/packages/modules/Connectivity/Tethering/apex/com.android.tethering^android_common_com.android.tethering_image/addition_copy_files.output
 
 echo "building framework-connectivity.impl^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_31.ninja framework-connectivity.impl,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/Connectivity/framework/framework-connectivity.impl^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_31/packages/modules/Connectivity/framework-connectivity.impl^android_common.output . $GITHUB_WORKSPACE/artifacts/packages/modules/Connectivity/framework/framework-connectivity.impl^android_common
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_31/packages/modules/Connectivity/framework-connectivity.impl^android_common.output $GITHUB_WORKSPACE/artifacts/packages/modules/Connectivity/framework/framework-connectivity.impl^android_common $GITHUB_WORKSPACE/artifacts/packages/modules/Connectivity/framework/framework-connectivity.impl^android_common/addition_copy_files.output
 
 echo "building framework-tethering.impl^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_31.ninja framework-tethering.impl,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/Connectivity/Tethering/common/TetheringLib/framework-tethering.impl^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_31/packages/modules/Connectivity/framework-tethering.impl^android_common.output . $GITHUB_WORKSPACE/artifacts/packages/modules/Connectivity/Tethering/common/TetheringLib/framework-tethering.impl^android_common
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_31/packages/modules/Connectivity/framework-tethering.impl^android_common.output $GITHUB_WORKSPACE/artifacts/packages/modules/Connectivity/Tethering/common/TetheringLib/framework-tethering.impl^android_common $GITHUB_WORKSPACE/artifacts/packages/modules/Connectivity/Tethering/common/TetheringLib/framework-tethering.impl^android_common/addition_copy_files.output
 
 echo "building service-connectivity-pre-jarjar^android_common_apex30"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_31.ninja service-connectivity-pre-jarjar,android_common_apex30
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/Connectivity/service/service-connectivity-pre-jarjar^android_common_apex30
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_31/packages/modules/Connectivity/service-connectivity-pre-jarjar^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/packages/modules/Connectivity/service/service-connectivity-pre-jarjar^android_common_apex30
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_31/packages/modules/Connectivity/service-connectivity-pre-jarjar^android_common_apex30.output $GITHUB_WORKSPACE/artifacts/packages/modules/Connectivity/service/service-connectivity-pre-jarjar^android_common_apex30 $GITHUB_WORKSPACE/artifacts/packages/modules/Connectivity/service/service-connectivity-pre-jarjar^android_common_apex30/addition_copy_files.output
 
 echo "building service-connectivity^android_common_apex30"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_31.ninja service-connectivity,android_common_apex30
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/Connectivity/service/service-connectivity^android_common_apex30
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_31/packages/modules/Connectivity/service-connectivity^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/packages/modules/Connectivity/service/service-connectivity^android_common_apex30
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_31/packages/modules/Connectivity/service-connectivity^android_common_apex30.output $GITHUB_WORKSPACE/artifacts/packages/modules/Connectivity/service/service-connectivity^android_common_apex30 $GITHUB_WORKSPACE/artifacts/packages/modules/Connectivity/service/service-connectivity^android_common_apex30/addition_copy_files.output
 
 rm -rf out
 

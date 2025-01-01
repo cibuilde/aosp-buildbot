@@ -50,36 +50,43 @@ echo "building libtinyalsa^android_x86_64_shared"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libtinyalsa,android_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/tinyalsa/libtinyalsa^android_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/external/tinyalsa/libtinyalsa^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/external/tinyalsa/libtinyalsa^android_x86_64_shared
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/external/tinyalsa/libtinyalsa^android_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/external/tinyalsa/libtinyalsa^android_x86_64_shared $GITHUB_WORKSPACE/artifacts/external/tinyalsa/libtinyalsa^android_x86_64_shared/addition_copy_files.output
 
 echo "building libtinyalsa^android_x86_x86_64_shared"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libtinyalsa,android_x86_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/tinyalsa/libtinyalsa^android_x86_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/external/tinyalsa/libtinyalsa^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/external/tinyalsa/libtinyalsa^android_x86_x86_64_shared
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/external/tinyalsa/libtinyalsa^android_x86_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/external/tinyalsa/libtinyalsa^android_x86_x86_64_shared $GITHUB_WORKSPACE/artifacts/external/tinyalsa/libtinyalsa^android_x86_x86_64_shared/addition_copy_files.output
 
 echo "building tinycap^android_x86_64"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja tinycap,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/tinyalsa/tinycap^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/external/tinyalsa/tinycap^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/tinyalsa/tinycap^android_x86_64
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/external/tinyalsa/tinycap^android_x86_64.output $GITHUB_WORKSPACE/artifacts/external/tinyalsa/tinycap^android_x86_64 $GITHUB_WORKSPACE/artifacts/external/tinyalsa/tinycap^android_x86_64/addition_copy_files.output
 
 echo "building tinyhostless^android_x86_64"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja tinyhostless,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/tinyalsa/tinyhostless^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/external/tinyalsa/tinyhostless^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/tinyalsa/tinyhostless^android_x86_64
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/external/tinyalsa/tinyhostless^android_x86_64.output $GITHUB_WORKSPACE/artifacts/external/tinyalsa/tinyhostless^android_x86_64 $GITHUB_WORKSPACE/artifacts/external/tinyalsa/tinyhostless^android_x86_64/addition_copy_files.output
 
 echo "building tinymix^android_x86_64"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja tinymix,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/tinyalsa/tinymix^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/external/tinyalsa/tinymix^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/tinyalsa/tinymix^android_x86_64
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/external/tinyalsa/tinymix^android_x86_64.output $GITHUB_WORKSPACE/artifacts/external/tinyalsa/tinymix^android_x86_64 $GITHUB_WORKSPACE/artifacts/external/tinyalsa/tinymix^android_x86_64/addition_copy_files.output
 
 echo "building tinypcminfo^android_x86_64"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja tinypcminfo,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/tinyalsa/tinypcminfo^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/external/tinyalsa/tinypcminfo^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/tinyalsa/tinypcminfo^android_x86_64
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/external/tinyalsa/tinypcminfo^android_x86_64.output $GITHUB_WORKSPACE/artifacts/external/tinyalsa/tinypcminfo^android_x86_64 $GITHUB_WORKSPACE/artifacts/external/tinyalsa/tinypcminfo^android_x86_64/addition_copy_files.output
 
 echo "building tinyplay^android_x86_64"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja tinyplay,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/tinyalsa/tinyplay^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/external/tinyalsa/tinyplay^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/tinyalsa/tinyplay^android_x86_64
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/external/tinyalsa/tinyplay^android_x86_64.output $GITHUB_WORKSPACE/artifacts/external/tinyalsa/tinyplay^android_x86_64 $GITHUB_WORKSPACE/artifacts/external/tinyalsa/tinyplay^android_x86_64/addition_copy_files.output
 
 rm -rf out
 

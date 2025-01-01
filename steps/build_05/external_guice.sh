@@ -34,16 +34,19 @@ echo "building guice^linux_glibc_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja guice,linux_glibc_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/guice/guice^linux_glibc_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/external/guice/guice^linux_glibc_common.output . $GITHUB_WORKSPACE/artifacts/external/guice/guice^linux_glibc_common
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/external/guice/guice^linux_glibc_common.output $GITHUB_WORKSPACE/artifacts/external/guice/guice^linux_glibc_common $GITHUB_WORKSPACE/artifacts/external/guice/guice^linux_glibc_common/addition_copy_files.output
 
 echo "building guice_munge^linux_glibc_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja guice_munge,linux_glibc_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/guice/guice_munge^linux_glibc_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/external/guice/guice_munge^linux_glibc_common.output . $GITHUB_WORKSPACE/artifacts/external/guice/guice_munge^linux_glibc_common
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/external/guice/guice_munge^linux_glibc_common.output $GITHUB_WORKSPACE/artifacts/external/guice/guice_munge^linux_glibc_common $GITHUB_WORKSPACE/artifacts/external/guice/guice_munge^linux_glibc_common/addition_copy_files.output
 
 echo "building guice_munged_srcs^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja guice_munged_srcs,
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/guice/guice_munged_srcs^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/external/guice/guice_munged_srcs^.output . $GITHUB_WORKSPACE/artifacts/external/guice/guice_munged_srcs^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/external/guice/guice_munged_srcs^.output $GITHUB_WORKSPACE/artifacts/external/guice/guice_munged_srcs^ $GITHUB_WORKSPACE/artifacts/external/guice/guice_munged_srcs^/addition_copy_files.output
 
 rm -rf out
 

@@ -81,11 +81,13 @@ echo "building com.android.i18n^android_common_com.android.i18n_image"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_15.ninja com.android.i18n,android_common_com.android.i18n_image
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/RuntimeI18n/apex/com.android.i18n^android_common_com.android.i18n_image
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_15/packages/modules/RuntimeI18n/com.android.i18n^android_common_com.android.i18n_image.output . $GITHUB_WORKSPACE/artifacts/packages/modules/RuntimeI18n/apex/com.android.i18n^android_common_com.android.i18n_image
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_15/packages/modules/RuntimeI18n/com.android.i18n^android_common_com.android.i18n_image.output $GITHUB_WORKSPACE/artifacts/packages/modules/RuntimeI18n/apex/com.android.i18n^android_common_com.android.i18n_image $GITHUB_WORKSPACE/artifacts/packages/modules/RuntimeI18n/apex/com.android.i18n^android_common_com.android.i18n_image/addition_copy_files.output
 
 echo "building i18n-bootclasspath-fragment^android_common_apex10000"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_15.ninja i18n-bootclasspath-fragment,android_common_apex10000
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/RuntimeI18n/apex/i18n-bootclasspath-fragment^android_common_apex10000
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_15/packages/modules/RuntimeI18n/i18n-bootclasspath-fragment^android_common_apex10000.output . $GITHUB_WORKSPACE/artifacts/packages/modules/RuntimeI18n/apex/i18n-bootclasspath-fragment^android_common_apex10000
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_15/packages/modules/RuntimeI18n/i18n-bootclasspath-fragment^android_common_apex10000.output $GITHUB_WORKSPACE/artifacts/packages/modules/RuntimeI18n/apex/i18n-bootclasspath-fragment^android_common_apex10000 $GITHUB_WORKSPACE/artifacts/packages/modules/RuntimeI18n/apex/i18n-bootclasspath-fragment^android_common_apex10000/addition_copy_files.output
 
 rm -rf out
 

@@ -89,6 +89,7 @@ echo "building netd^android_x86_64_cfi"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja netd,android_x86_64_cfi
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/netd/server/netd^android_x86_64_cfi
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/system/netd/netd^android_x86_64_cfi.output . $GITHUB_WORKSPACE/artifacts/system/netd/server/netd^android_x86_64_cfi
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_10/system/netd/netd^android_x86_64_cfi.output $GITHUB_WORKSPACE/artifacts/system/netd/server/netd^android_x86_64_cfi $GITHUB_WORKSPACE/artifacts/system/netd/server/netd^android_x86_64_cfi/addition_copy_files.output
 
 rm -rf out
 

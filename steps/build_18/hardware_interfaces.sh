@@ -32,6 +32,7 @@ echo "building android.hardware.vibrator-V2-java^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_18.ninja android.hardware.vibrator-V2-java,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/vibrator/aidl/android.hardware.vibrator-V2-java^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_18/hardware/interfaces/android.hardware.vibrator-V2-java^android_common.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/vibrator/aidl/android.hardware.vibrator-V2-java^android_common
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_18/hardware/interfaces/android.hardware.vibrator-V2-java^android_common.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/vibrator/aidl/android.hardware.vibrator-V2-java^android_common $GITHUB_WORKSPACE/artifacts/hardware/interfaces/vibrator/aidl/android.hardware.vibrator-V2-java^android_common/addition_copy_files.output
 
 rm -rf out
 

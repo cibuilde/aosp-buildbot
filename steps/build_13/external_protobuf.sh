@@ -31,21 +31,25 @@ echo "building libcore_private.stubs^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_13.ninja libcore_private.stubs,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/protobuf/libcore_private.stubs^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_13/external/protobuf/libcore_private.stubs^android_common.output . $GITHUB_WORKSPACE/artifacts/external/protobuf/libcore_private.stubs^android_common
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_13/external/protobuf/libcore_private.stubs^android_common.output $GITHUB_WORKSPACE/artifacts/external/protobuf/libcore_private.stubs^android_common $GITHUB_WORKSPACE/artifacts/external/protobuf/libcore_private.stubs^android_common/addition_copy_files.output
 
 echo "building libprotobuf-java-lite^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_13.ninja libprotobuf-java-lite,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/protobuf/libprotobuf-java-lite^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_13/external/protobuf/libprotobuf-java-lite^android_common.output . $GITHUB_WORKSPACE/artifacts/external/protobuf/libprotobuf-java-lite^android_common
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_13/external/protobuf/libprotobuf-java-lite^android_common.output $GITHUB_WORKSPACE/artifacts/external/protobuf/libprotobuf-java-lite^android_common $GITHUB_WORKSPACE/artifacts/external/protobuf/libprotobuf-java-lite^android_common/addition_copy_files.output
 
 echo "building libprotobuf-java-lite^android_common_apex10000"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_13.ninja libprotobuf-java-lite,android_common_apex10000
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/protobuf/libprotobuf-java-lite^android_common_apex10000
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_13/external/protobuf/libprotobuf-java-lite^android_common_apex10000.output . $GITHUB_WORKSPACE/artifacts/external/protobuf/libprotobuf-java-lite^android_common_apex10000
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_13/external/protobuf/libprotobuf-java-lite^android_common_apex10000.output $GITHUB_WORKSPACE/artifacts/external/protobuf/libprotobuf-java-lite^android_common_apex10000 $GITHUB_WORKSPACE/artifacts/external/protobuf/libprotobuf-java-lite^android_common_apex10000/addition_copy_files.output
 
 echo "building libprotobuf-java-lite^android_common_apex30"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_13.ninja libprotobuf-java-lite,android_common_apex30
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/protobuf/libprotobuf-java-lite^android_common_apex30
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_13/external/protobuf/libprotobuf-java-lite^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/external/protobuf/libprotobuf-java-lite^android_common_apex30
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_13/external/protobuf/libprotobuf-java-lite^android_common_apex30.output $GITHUB_WORKSPACE/artifacts/external/protobuf/libprotobuf-java-lite^android_common_apex30 $GITHUB_WORKSPACE/artifacts/external/protobuf/libprotobuf-java-lite^android_common_apex30/addition_copy_files.output
 
 rm -rf out
 

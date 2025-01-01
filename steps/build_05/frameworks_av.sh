@@ -106,286 +106,343 @@ echo "building libcodec2^android_x86_64_shared"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libcodec2,android_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/core/libcodec2^android_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/frameworks/av/libcodec2^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/core/libcodec2^android_x86_64_shared
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/frameworks/av/libcodec2^android_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/core/libcodec2^android_x86_64_shared $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/core/libcodec2^android_x86_64_shared/addition_copy_files.output
 
 echo "building libcodec2^android_x86_64_shared_apex29"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libcodec2,android_x86_64_shared_apex29
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/core/libcodec2^android_x86_64_shared_apex29
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/frameworks/av/libcodec2^android_x86_64_shared_apex29.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/core/libcodec2^android_x86_64_shared_apex29
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/frameworks/av/libcodec2^android_x86_64_shared_apex29.output $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/core/libcodec2^android_x86_64_shared_apex29 $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/core/libcodec2^android_x86_64_shared_apex29/addition_copy_files.output
 
 echo "building libcodec2^android_x86_x86_64_shared"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libcodec2,android_x86_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/core/libcodec2^android_x86_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/frameworks/av/libcodec2^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/core/libcodec2^android_x86_x86_64_shared
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/frameworks/av/libcodec2^android_x86_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/core/libcodec2^android_x86_x86_64_shared $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/core/libcodec2^android_x86_x86_64_shared/addition_copy_files.output
 
 echo "building libcodec2_hidl@1.0^android_x86_64_static_com.android.media.swcodec"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libcodec2_hidl@1.0,android_x86_64_static_com.android.media.swcodec
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/hidl/1.0/utils/libcodec2_hidl@1.0^android_x86_64_static_com.android.media.swcodec
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/frameworks/av/libcodec2_hidl@1.0^android_x86_64_static_com.android.media.swcodec.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/hidl/1.0/utils/libcodec2_hidl@1.0^android_x86_64_static_com.android.media.swcodec
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/frameworks/av/libcodec2_hidl@1.0^android_x86_64_static_com.android.media.swcodec.output $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/hidl/1.0/utils/libcodec2_hidl@1.0^android_x86_64_static_com.android.media.swcodec $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/hidl/1.0/utils/libcodec2_hidl@1.0^android_x86_64_static_com.android.media.swcodec/addition_copy_files.output
 
 echo "building libcodec2_hidl@1.1^android_x86_64_static_com.android.media.swcodec"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libcodec2_hidl@1.1,android_x86_64_static_com.android.media.swcodec
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/hidl/1.1/utils/libcodec2_hidl@1.1^android_x86_64_static_com.android.media.swcodec
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/frameworks/av/libcodec2_hidl@1.1^android_x86_64_static_com.android.media.swcodec.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/hidl/1.1/utils/libcodec2_hidl@1.1^android_x86_64_static_com.android.media.swcodec
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/frameworks/av/libcodec2_hidl@1.1^android_x86_64_static_com.android.media.swcodec.output $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/hidl/1.1/utils/libcodec2_hidl@1.1^android_x86_64_static_com.android.media.swcodec $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/hidl/1.1/utils/libcodec2_hidl@1.1^android_x86_64_static_com.android.media.swcodec/addition_copy_files.output
 
 echo "building libcodec2_hidl@1.2^android_x86_64_static_com.android.media.swcodec"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libcodec2_hidl@1.2,android_x86_64_static_com.android.media.swcodec
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/hidl/1.2/utils/libcodec2_hidl@1.2^android_x86_64_static_com.android.media.swcodec
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/frameworks/av/libcodec2_hidl@1.2^android_x86_64_static_com.android.media.swcodec.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/hidl/1.2/utils/libcodec2_hidl@1.2^android_x86_64_static_com.android.media.swcodec
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/frameworks/av/libcodec2_hidl@1.2^android_x86_64_static_com.android.media.swcodec.output $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/hidl/1.2/utils/libcodec2_hidl@1.2^android_x86_64_static_com.android.media.swcodec $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/hidl/1.2/utils/libcodec2_hidl@1.2^android_x86_64_static_com.android.media.swcodec/addition_copy_files.output
 
 echo "building libcodec2_soft_aacdec^android_x86_64_static_cfi_com.android.media.swcodec"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libcodec2_soft_aacdec,android_x86_64_static_cfi_com.android.media.swcodec
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/components/aac/libcodec2_soft_aacdec^android_x86_64_static_cfi_com.android.media.swcodec
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/frameworks/av/libcodec2_soft_aacdec^android_x86_64_static_cfi_com.android.media.swcodec.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/components/aac/libcodec2_soft_aacdec^android_x86_64_static_cfi_com.android.media.swcodec
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/frameworks/av/libcodec2_soft_aacdec^android_x86_64_static_cfi_com.android.media.swcodec.output $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/components/aac/libcodec2_soft_aacdec^android_x86_64_static_cfi_com.android.media.swcodec $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/components/aac/libcodec2_soft_aacdec^android_x86_64_static_cfi_com.android.media.swcodec/addition_copy_files.output
 
 echo "building libcodec2_soft_aacenc^android_x86_64_static_cfi_com.android.media.swcodec"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libcodec2_soft_aacenc,android_x86_64_static_cfi_com.android.media.swcodec
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/components/aac/libcodec2_soft_aacenc^android_x86_64_static_cfi_com.android.media.swcodec
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/frameworks/av/libcodec2_soft_aacenc^android_x86_64_static_cfi_com.android.media.swcodec.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/components/aac/libcodec2_soft_aacenc^android_x86_64_static_cfi_com.android.media.swcodec
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/frameworks/av/libcodec2_soft_aacenc^android_x86_64_static_cfi_com.android.media.swcodec.output $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/components/aac/libcodec2_soft_aacenc^android_x86_64_static_cfi_com.android.media.swcodec $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/components/aac/libcodec2_soft_aacenc^android_x86_64_static_cfi_com.android.media.swcodec/addition_copy_files.output
 
 echo "building libcodec2_soft_amrnbdec^android_x86_64_static_cfi_com.android.media.swcodec"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libcodec2_soft_amrnbdec,android_x86_64_static_cfi_com.android.media.swcodec
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/components/amr_nb_wb/libcodec2_soft_amrnbdec^android_x86_64_static_cfi_com.android.media.swcodec
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/frameworks/av/libcodec2_soft_amrnbdec^android_x86_64_static_cfi_com.android.media.swcodec.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/components/amr_nb_wb/libcodec2_soft_amrnbdec^android_x86_64_static_cfi_com.android.media.swcodec
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/frameworks/av/libcodec2_soft_amrnbdec^android_x86_64_static_cfi_com.android.media.swcodec.output $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/components/amr_nb_wb/libcodec2_soft_amrnbdec^android_x86_64_static_cfi_com.android.media.swcodec $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/components/amr_nb_wb/libcodec2_soft_amrnbdec^android_x86_64_static_cfi_com.android.media.swcodec/addition_copy_files.output
 
 echo "building libcodec2_soft_amrnbenc^android_x86_64_static_cfi_com.android.media.swcodec"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libcodec2_soft_amrnbenc,android_x86_64_static_cfi_com.android.media.swcodec
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/components/amr_nb_wb/libcodec2_soft_amrnbenc^android_x86_64_static_cfi_com.android.media.swcodec
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/frameworks/av/libcodec2_soft_amrnbenc^android_x86_64_static_cfi_com.android.media.swcodec.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/components/amr_nb_wb/libcodec2_soft_amrnbenc^android_x86_64_static_cfi_com.android.media.swcodec
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/frameworks/av/libcodec2_soft_amrnbenc^android_x86_64_static_cfi_com.android.media.swcodec.output $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/components/amr_nb_wb/libcodec2_soft_amrnbenc^android_x86_64_static_cfi_com.android.media.swcodec $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/components/amr_nb_wb/libcodec2_soft_amrnbenc^android_x86_64_static_cfi_com.android.media.swcodec/addition_copy_files.output
 
 echo "building libcodec2_soft_amrwbdec^android_x86_64_static_cfi_com.android.media.swcodec"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libcodec2_soft_amrwbdec,android_x86_64_static_cfi_com.android.media.swcodec
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/components/amr_nb_wb/libcodec2_soft_amrwbdec^android_x86_64_static_cfi_com.android.media.swcodec
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/frameworks/av/libcodec2_soft_amrwbdec^android_x86_64_static_cfi_com.android.media.swcodec.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/components/amr_nb_wb/libcodec2_soft_amrwbdec^android_x86_64_static_cfi_com.android.media.swcodec
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/frameworks/av/libcodec2_soft_amrwbdec^android_x86_64_static_cfi_com.android.media.swcodec.output $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/components/amr_nb_wb/libcodec2_soft_amrwbdec^android_x86_64_static_cfi_com.android.media.swcodec $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/components/amr_nb_wb/libcodec2_soft_amrwbdec^android_x86_64_static_cfi_com.android.media.swcodec/addition_copy_files.output
 
 echo "building libcodec2_soft_amrwbenc^android_x86_64_static_cfi_com.android.media.swcodec"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libcodec2_soft_amrwbenc,android_x86_64_static_cfi_com.android.media.swcodec
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/components/amr_nb_wb/libcodec2_soft_amrwbenc^android_x86_64_static_cfi_com.android.media.swcodec
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/frameworks/av/libcodec2_soft_amrwbenc^android_x86_64_static_cfi_com.android.media.swcodec.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/components/amr_nb_wb/libcodec2_soft_amrwbenc^android_x86_64_static_cfi_com.android.media.swcodec
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/frameworks/av/libcodec2_soft_amrwbenc^android_x86_64_static_cfi_com.android.media.swcodec.output $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/components/amr_nb_wb/libcodec2_soft_amrwbenc^android_x86_64_static_cfi_com.android.media.swcodec $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/components/amr_nb_wb/libcodec2_soft_amrwbenc^android_x86_64_static_cfi_com.android.media.swcodec/addition_copy_files.output
 
 echo "building libcodec2_soft_av1dec_gav1^android_x86_64_static_cfi_com.android.media.swcodec"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libcodec2_soft_av1dec_gav1,android_x86_64_static_cfi_com.android.media.swcodec
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/components/gav1/libcodec2_soft_av1dec_gav1^android_x86_64_static_cfi_com.android.media.swcodec
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/frameworks/av/libcodec2_soft_av1dec_gav1^android_x86_64_static_cfi_com.android.media.swcodec.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/components/gav1/libcodec2_soft_av1dec_gav1^android_x86_64_static_cfi_com.android.media.swcodec
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/frameworks/av/libcodec2_soft_av1dec_gav1^android_x86_64_static_cfi_com.android.media.swcodec.output $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/components/gav1/libcodec2_soft_av1dec_gav1^android_x86_64_static_cfi_com.android.media.swcodec $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/components/gav1/libcodec2_soft_av1dec_gav1^android_x86_64_static_cfi_com.android.media.swcodec/addition_copy_files.output
 
 echo "building libcodec2_soft_avcdec^android_x86_64_static_cfi_com.android.media.swcodec"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libcodec2_soft_avcdec,android_x86_64_static_cfi_com.android.media.swcodec
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/components/avc/libcodec2_soft_avcdec^android_x86_64_static_cfi_com.android.media.swcodec
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/frameworks/av/libcodec2_soft_avcdec^android_x86_64_static_cfi_com.android.media.swcodec.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/components/avc/libcodec2_soft_avcdec^android_x86_64_static_cfi_com.android.media.swcodec
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/frameworks/av/libcodec2_soft_avcdec^android_x86_64_static_cfi_com.android.media.swcodec.output $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/components/avc/libcodec2_soft_avcdec^android_x86_64_static_cfi_com.android.media.swcodec $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/components/avc/libcodec2_soft_avcdec^android_x86_64_static_cfi_com.android.media.swcodec/addition_copy_files.output
 
 echo "building libcodec2_soft_avcenc^android_x86_64_static_cfi_com.android.media.swcodec"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libcodec2_soft_avcenc,android_x86_64_static_cfi_com.android.media.swcodec
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/components/avc/libcodec2_soft_avcenc^android_x86_64_static_cfi_com.android.media.swcodec
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/frameworks/av/libcodec2_soft_avcenc^android_x86_64_static_cfi_com.android.media.swcodec.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/components/avc/libcodec2_soft_avcenc^android_x86_64_static_cfi_com.android.media.swcodec
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/frameworks/av/libcodec2_soft_avcenc^android_x86_64_static_cfi_com.android.media.swcodec.output $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/components/avc/libcodec2_soft_avcenc^android_x86_64_static_cfi_com.android.media.swcodec $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/components/avc/libcodec2_soft_avcenc^android_x86_64_static_cfi_com.android.media.swcodec/addition_copy_files.output
 
 echo "building libcodec2_soft_common^android_x86_64_static_cfi_com.android.media.swcodec"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libcodec2_soft_common,android_x86_64_static_cfi_com.android.media.swcodec
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/components/base/libcodec2_soft_common^android_x86_64_static_cfi_com.android.media.swcodec
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/frameworks/av/libcodec2_soft_common^android_x86_64_static_cfi_com.android.media.swcodec.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/components/base/libcodec2_soft_common^android_x86_64_static_cfi_com.android.media.swcodec
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/frameworks/av/libcodec2_soft_common^android_x86_64_static_cfi_com.android.media.swcodec.output $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/components/base/libcodec2_soft_common^android_x86_64_static_cfi_com.android.media.swcodec $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/components/base/libcodec2_soft_common^android_x86_64_static_cfi_com.android.media.swcodec/addition_copy_files.output
 
 echo "building libcodec2_soft_flacdec^android_x86_64_static_cfi_com.android.media.swcodec"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libcodec2_soft_flacdec,android_x86_64_static_cfi_com.android.media.swcodec
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/components/flac/libcodec2_soft_flacdec^android_x86_64_static_cfi_com.android.media.swcodec
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/frameworks/av/libcodec2_soft_flacdec^android_x86_64_static_cfi_com.android.media.swcodec.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/components/flac/libcodec2_soft_flacdec^android_x86_64_static_cfi_com.android.media.swcodec
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/frameworks/av/libcodec2_soft_flacdec^android_x86_64_static_cfi_com.android.media.swcodec.output $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/components/flac/libcodec2_soft_flacdec^android_x86_64_static_cfi_com.android.media.swcodec $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/components/flac/libcodec2_soft_flacdec^android_x86_64_static_cfi_com.android.media.swcodec/addition_copy_files.output
 
 echo "building libcodec2_soft_flacenc^android_x86_64_static_cfi_com.android.media.swcodec"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libcodec2_soft_flacenc,android_x86_64_static_cfi_com.android.media.swcodec
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/components/flac/libcodec2_soft_flacenc^android_x86_64_static_cfi_com.android.media.swcodec
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/frameworks/av/libcodec2_soft_flacenc^android_x86_64_static_cfi_com.android.media.swcodec.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/components/flac/libcodec2_soft_flacenc^android_x86_64_static_cfi_com.android.media.swcodec
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/frameworks/av/libcodec2_soft_flacenc^android_x86_64_static_cfi_com.android.media.swcodec.output $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/components/flac/libcodec2_soft_flacenc^android_x86_64_static_cfi_com.android.media.swcodec $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/components/flac/libcodec2_soft_flacenc^android_x86_64_static_cfi_com.android.media.swcodec/addition_copy_files.output
 
 echo "building libcodec2_soft_g711alawdec^android_x86_64_static_cfi_com.android.media.swcodec"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libcodec2_soft_g711alawdec,android_x86_64_static_cfi_com.android.media.swcodec
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/components/g711/libcodec2_soft_g711alawdec^android_x86_64_static_cfi_com.android.media.swcodec
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/frameworks/av/libcodec2_soft_g711alawdec^android_x86_64_static_cfi_com.android.media.swcodec.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/components/g711/libcodec2_soft_g711alawdec^android_x86_64_static_cfi_com.android.media.swcodec
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/frameworks/av/libcodec2_soft_g711alawdec^android_x86_64_static_cfi_com.android.media.swcodec.output $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/components/g711/libcodec2_soft_g711alawdec^android_x86_64_static_cfi_com.android.media.swcodec $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/components/g711/libcodec2_soft_g711alawdec^android_x86_64_static_cfi_com.android.media.swcodec/addition_copy_files.output
 
 echo "building libcodec2_soft_g711mlawdec^android_x86_64_static_cfi_com.android.media.swcodec"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libcodec2_soft_g711mlawdec,android_x86_64_static_cfi_com.android.media.swcodec
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/components/g711/libcodec2_soft_g711mlawdec^android_x86_64_static_cfi_com.android.media.swcodec
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/frameworks/av/libcodec2_soft_g711mlawdec^android_x86_64_static_cfi_com.android.media.swcodec.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/components/g711/libcodec2_soft_g711mlawdec^android_x86_64_static_cfi_com.android.media.swcodec
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/frameworks/av/libcodec2_soft_g711mlawdec^android_x86_64_static_cfi_com.android.media.swcodec.output $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/components/g711/libcodec2_soft_g711mlawdec^android_x86_64_static_cfi_com.android.media.swcodec $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/components/g711/libcodec2_soft_g711mlawdec^android_x86_64_static_cfi_com.android.media.swcodec/addition_copy_files.output
 
 echo "building libcodec2_soft_gsmdec^android_x86_64_static_cfi_com.android.media.swcodec"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libcodec2_soft_gsmdec,android_x86_64_static_cfi_com.android.media.swcodec
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/components/gsm/libcodec2_soft_gsmdec^android_x86_64_static_cfi_com.android.media.swcodec
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/frameworks/av/libcodec2_soft_gsmdec^android_x86_64_static_cfi_com.android.media.swcodec.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/components/gsm/libcodec2_soft_gsmdec^android_x86_64_static_cfi_com.android.media.swcodec
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/frameworks/av/libcodec2_soft_gsmdec^android_x86_64_static_cfi_com.android.media.swcodec.output $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/components/gsm/libcodec2_soft_gsmdec^android_x86_64_static_cfi_com.android.media.swcodec $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/components/gsm/libcodec2_soft_gsmdec^android_x86_64_static_cfi_com.android.media.swcodec/addition_copy_files.output
 
 echo "building libcodec2_soft_h263dec^android_x86_64_static_com.android.media.swcodec"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libcodec2_soft_h263dec,android_x86_64_static_com.android.media.swcodec
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/components/mpeg4_h263/libcodec2_soft_h263dec^android_x86_64_static_com.android.media.swcodec
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/frameworks/av/libcodec2_soft_h263dec^android_x86_64_static_com.android.media.swcodec.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/components/mpeg4_h263/libcodec2_soft_h263dec^android_x86_64_static_com.android.media.swcodec
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/frameworks/av/libcodec2_soft_h263dec^android_x86_64_static_com.android.media.swcodec.output $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/components/mpeg4_h263/libcodec2_soft_h263dec^android_x86_64_static_com.android.media.swcodec $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/components/mpeg4_h263/libcodec2_soft_h263dec^android_x86_64_static_com.android.media.swcodec/addition_copy_files.output
 
 echo "building libcodec2_soft_h263enc^android_x86_64_static_com.android.media.swcodec"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libcodec2_soft_h263enc,android_x86_64_static_com.android.media.swcodec
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/components/mpeg4_h263/libcodec2_soft_h263enc^android_x86_64_static_com.android.media.swcodec
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/frameworks/av/libcodec2_soft_h263enc^android_x86_64_static_com.android.media.swcodec.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/components/mpeg4_h263/libcodec2_soft_h263enc^android_x86_64_static_com.android.media.swcodec
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/frameworks/av/libcodec2_soft_h263enc^android_x86_64_static_com.android.media.swcodec.output $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/components/mpeg4_h263/libcodec2_soft_h263enc^android_x86_64_static_com.android.media.swcodec $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/components/mpeg4_h263/libcodec2_soft_h263enc^android_x86_64_static_com.android.media.swcodec/addition_copy_files.output
 
 echo "building libcodec2_soft_hevcdec^android_x86_64_static_cfi_com.android.media.swcodec"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libcodec2_soft_hevcdec,android_x86_64_static_cfi_com.android.media.swcodec
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/components/hevc/libcodec2_soft_hevcdec^android_x86_64_static_cfi_com.android.media.swcodec
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/frameworks/av/libcodec2_soft_hevcdec^android_x86_64_static_cfi_com.android.media.swcodec.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/components/hevc/libcodec2_soft_hevcdec^android_x86_64_static_cfi_com.android.media.swcodec
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/frameworks/av/libcodec2_soft_hevcdec^android_x86_64_static_cfi_com.android.media.swcodec.output $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/components/hevc/libcodec2_soft_hevcdec^android_x86_64_static_cfi_com.android.media.swcodec $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/components/hevc/libcodec2_soft_hevcdec^android_x86_64_static_cfi_com.android.media.swcodec/addition_copy_files.output
 
 echo "building libcodec2_soft_hevcenc^android_x86_64_static_cfi_com.android.media.swcodec"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libcodec2_soft_hevcenc,android_x86_64_static_cfi_com.android.media.swcodec
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/components/hevc/libcodec2_soft_hevcenc^android_x86_64_static_cfi_com.android.media.swcodec
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/frameworks/av/libcodec2_soft_hevcenc^android_x86_64_static_cfi_com.android.media.swcodec.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/components/hevc/libcodec2_soft_hevcenc^android_x86_64_static_cfi_com.android.media.swcodec
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/frameworks/av/libcodec2_soft_hevcenc^android_x86_64_static_cfi_com.android.media.swcodec.output $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/components/hevc/libcodec2_soft_hevcenc^android_x86_64_static_cfi_com.android.media.swcodec $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/components/hevc/libcodec2_soft_hevcenc^android_x86_64_static_cfi_com.android.media.swcodec/addition_copy_files.output
 
 echo "building libcodec2_soft_mp3dec^android_x86_64_static_cfi_com.android.media.swcodec"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libcodec2_soft_mp3dec,android_x86_64_static_cfi_com.android.media.swcodec
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/components/mp3/libcodec2_soft_mp3dec^android_x86_64_static_cfi_com.android.media.swcodec
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/frameworks/av/libcodec2_soft_mp3dec^android_x86_64_static_cfi_com.android.media.swcodec.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/components/mp3/libcodec2_soft_mp3dec^android_x86_64_static_cfi_com.android.media.swcodec
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/frameworks/av/libcodec2_soft_mp3dec^android_x86_64_static_cfi_com.android.media.swcodec.output $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/components/mp3/libcodec2_soft_mp3dec^android_x86_64_static_cfi_com.android.media.swcodec $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/components/mp3/libcodec2_soft_mp3dec^android_x86_64_static_cfi_com.android.media.swcodec/addition_copy_files.output
 
 echo "building libcodec2_soft_mpeg2dec^android_x86_64_static_com.android.media.swcodec"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libcodec2_soft_mpeg2dec,android_x86_64_static_com.android.media.swcodec
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/components/mpeg2/libcodec2_soft_mpeg2dec^android_x86_64_static_com.android.media.swcodec
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/frameworks/av/libcodec2_soft_mpeg2dec^android_x86_64_static_com.android.media.swcodec.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/components/mpeg2/libcodec2_soft_mpeg2dec^android_x86_64_static_com.android.media.swcodec
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/frameworks/av/libcodec2_soft_mpeg2dec^android_x86_64_static_com.android.media.swcodec.output $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/components/mpeg2/libcodec2_soft_mpeg2dec^android_x86_64_static_com.android.media.swcodec $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/components/mpeg2/libcodec2_soft_mpeg2dec^android_x86_64_static_com.android.media.swcodec/addition_copy_files.output
 
 echo "building libcodec2_soft_mpeg4dec^android_x86_64_static_com.android.media.swcodec"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libcodec2_soft_mpeg4dec,android_x86_64_static_com.android.media.swcodec
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/components/mpeg4_h263/libcodec2_soft_mpeg4dec^android_x86_64_static_com.android.media.swcodec
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/frameworks/av/libcodec2_soft_mpeg4dec^android_x86_64_static_com.android.media.swcodec.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/components/mpeg4_h263/libcodec2_soft_mpeg4dec^android_x86_64_static_com.android.media.swcodec
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/frameworks/av/libcodec2_soft_mpeg4dec^android_x86_64_static_com.android.media.swcodec.output $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/components/mpeg4_h263/libcodec2_soft_mpeg4dec^android_x86_64_static_com.android.media.swcodec $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/components/mpeg4_h263/libcodec2_soft_mpeg4dec^android_x86_64_static_com.android.media.swcodec/addition_copy_files.output
 
 echo "building libcodec2_soft_mpeg4enc^android_x86_64_static_com.android.media.swcodec"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libcodec2_soft_mpeg4enc,android_x86_64_static_com.android.media.swcodec
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/components/mpeg4_h263/libcodec2_soft_mpeg4enc^android_x86_64_static_com.android.media.swcodec
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/frameworks/av/libcodec2_soft_mpeg4enc^android_x86_64_static_com.android.media.swcodec.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/components/mpeg4_h263/libcodec2_soft_mpeg4enc^android_x86_64_static_com.android.media.swcodec
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/frameworks/av/libcodec2_soft_mpeg4enc^android_x86_64_static_com.android.media.swcodec.output $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/components/mpeg4_h263/libcodec2_soft_mpeg4enc^android_x86_64_static_com.android.media.swcodec $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/components/mpeg4_h263/libcodec2_soft_mpeg4enc^android_x86_64_static_com.android.media.swcodec/addition_copy_files.output
 
 echo "building libcodec2_soft_opusdec^android_x86_64_static_cfi_com.android.media.swcodec"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libcodec2_soft_opusdec,android_x86_64_static_cfi_com.android.media.swcodec
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/components/opus/libcodec2_soft_opusdec^android_x86_64_static_cfi_com.android.media.swcodec
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/frameworks/av/libcodec2_soft_opusdec^android_x86_64_static_cfi_com.android.media.swcodec.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/components/opus/libcodec2_soft_opusdec^android_x86_64_static_cfi_com.android.media.swcodec
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/frameworks/av/libcodec2_soft_opusdec^android_x86_64_static_cfi_com.android.media.swcodec.output $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/components/opus/libcodec2_soft_opusdec^android_x86_64_static_cfi_com.android.media.swcodec $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/components/opus/libcodec2_soft_opusdec^android_x86_64_static_cfi_com.android.media.swcodec/addition_copy_files.output
 
 echo "building libcodec2_soft_opusenc^android_x86_64_static_cfi_com.android.media.swcodec"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libcodec2_soft_opusenc,android_x86_64_static_cfi_com.android.media.swcodec
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/components/opus/libcodec2_soft_opusenc^android_x86_64_static_cfi_com.android.media.swcodec
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/frameworks/av/libcodec2_soft_opusenc^android_x86_64_static_cfi_com.android.media.swcodec.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/components/opus/libcodec2_soft_opusenc^android_x86_64_static_cfi_com.android.media.swcodec
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/frameworks/av/libcodec2_soft_opusenc^android_x86_64_static_cfi_com.android.media.swcodec.output $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/components/opus/libcodec2_soft_opusenc^android_x86_64_static_cfi_com.android.media.swcodec $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/components/opus/libcodec2_soft_opusenc^android_x86_64_static_cfi_com.android.media.swcodec/addition_copy_files.output
 
 echo "building libcodec2_soft_rawdec^android_x86_64_static_cfi_com.android.media.swcodec"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libcodec2_soft_rawdec,android_x86_64_static_cfi_com.android.media.swcodec
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/components/raw/libcodec2_soft_rawdec^android_x86_64_static_cfi_com.android.media.swcodec
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/frameworks/av/libcodec2_soft_rawdec^android_x86_64_static_cfi_com.android.media.swcodec.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/components/raw/libcodec2_soft_rawdec^android_x86_64_static_cfi_com.android.media.swcodec
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/frameworks/av/libcodec2_soft_rawdec^android_x86_64_static_cfi_com.android.media.swcodec.output $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/components/raw/libcodec2_soft_rawdec^android_x86_64_static_cfi_com.android.media.swcodec $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/components/raw/libcodec2_soft_rawdec^android_x86_64_static_cfi_com.android.media.swcodec/addition_copy_files.output
 
 echo "building libcodec2_soft_vorbisdec^android_x86_64_static_cfi_com.android.media.swcodec"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libcodec2_soft_vorbisdec,android_x86_64_static_cfi_com.android.media.swcodec
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/components/vorbis/libcodec2_soft_vorbisdec^android_x86_64_static_cfi_com.android.media.swcodec
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/frameworks/av/libcodec2_soft_vorbisdec^android_x86_64_static_cfi_com.android.media.swcodec.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/components/vorbis/libcodec2_soft_vorbisdec^android_x86_64_static_cfi_com.android.media.swcodec
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/frameworks/av/libcodec2_soft_vorbisdec^android_x86_64_static_cfi_com.android.media.swcodec.output $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/components/vorbis/libcodec2_soft_vorbisdec^android_x86_64_static_cfi_com.android.media.swcodec $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/components/vorbis/libcodec2_soft_vorbisdec^android_x86_64_static_cfi_com.android.media.swcodec/addition_copy_files.output
 
 echo "building libcodec2_soft_vp8dec^android_x86_64_static_cfi_com.android.media.swcodec"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libcodec2_soft_vp8dec,android_x86_64_static_cfi_com.android.media.swcodec
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/components/vpx/libcodec2_soft_vp8dec^android_x86_64_static_cfi_com.android.media.swcodec
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/frameworks/av/libcodec2_soft_vp8dec^android_x86_64_static_cfi_com.android.media.swcodec.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/components/vpx/libcodec2_soft_vp8dec^android_x86_64_static_cfi_com.android.media.swcodec
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/frameworks/av/libcodec2_soft_vp8dec^android_x86_64_static_cfi_com.android.media.swcodec.output $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/components/vpx/libcodec2_soft_vp8dec^android_x86_64_static_cfi_com.android.media.swcodec $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/components/vpx/libcodec2_soft_vp8dec^android_x86_64_static_cfi_com.android.media.swcodec/addition_copy_files.output
 
 echo "building libcodec2_soft_vp8enc^android_x86_64_static_cfi_com.android.media.swcodec"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libcodec2_soft_vp8enc,android_x86_64_static_cfi_com.android.media.swcodec
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/components/vpx/libcodec2_soft_vp8enc^android_x86_64_static_cfi_com.android.media.swcodec
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/frameworks/av/libcodec2_soft_vp8enc^android_x86_64_static_cfi_com.android.media.swcodec.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/components/vpx/libcodec2_soft_vp8enc^android_x86_64_static_cfi_com.android.media.swcodec
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/frameworks/av/libcodec2_soft_vp8enc^android_x86_64_static_cfi_com.android.media.swcodec.output $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/components/vpx/libcodec2_soft_vp8enc^android_x86_64_static_cfi_com.android.media.swcodec $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/components/vpx/libcodec2_soft_vp8enc^android_x86_64_static_cfi_com.android.media.swcodec/addition_copy_files.output
 
 echo "building libcodec2_soft_vp9dec^android_x86_64_static_cfi_com.android.media.swcodec"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libcodec2_soft_vp9dec,android_x86_64_static_cfi_com.android.media.swcodec
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/components/vpx/libcodec2_soft_vp9dec^android_x86_64_static_cfi_com.android.media.swcodec
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/frameworks/av/libcodec2_soft_vp9dec^android_x86_64_static_cfi_com.android.media.swcodec.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/components/vpx/libcodec2_soft_vp9dec^android_x86_64_static_cfi_com.android.media.swcodec
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/frameworks/av/libcodec2_soft_vp9dec^android_x86_64_static_cfi_com.android.media.swcodec.output $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/components/vpx/libcodec2_soft_vp9dec^android_x86_64_static_cfi_com.android.media.swcodec $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/components/vpx/libcodec2_soft_vp9dec^android_x86_64_static_cfi_com.android.media.swcodec/addition_copy_files.output
 
 echo "building libcodec2_soft_vp9enc^android_x86_64_static_cfi_com.android.media.swcodec"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libcodec2_soft_vp9enc,android_x86_64_static_cfi_com.android.media.swcodec
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/components/vpx/libcodec2_soft_vp9enc^android_x86_64_static_cfi_com.android.media.swcodec
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/frameworks/av/libcodec2_soft_vp9enc^android_x86_64_static_cfi_com.android.media.swcodec.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/components/vpx/libcodec2_soft_vp9enc^android_x86_64_static_cfi_com.android.media.swcodec
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/frameworks/av/libcodec2_soft_vp9enc^android_x86_64_static_cfi_com.android.media.swcodec.output $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/components/vpx/libcodec2_soft_vp9enc^android_x86_64_static_cfi_com.android.media.swcodec $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/components/vpx/libcodec2_soft_vp9enc^android_x86_64_static_cfi_com.android.media.swcodec/addition_copy_files.output
 
 echo "building libcodec2_vndk^android_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libcodec2_vndk,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/vndk/libcodec2_vndk^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/frameworks/av/libcodec2_vndk^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/vndk/libcodec2_vndk^android_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/frameworks/av/libcodec2_vndk^android_x86_64_static.output $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/vndk/libcodec2_vndk^android_x86_64_static $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/vndk/libcodec2_vndk^android_x86_64_static/addition_copy_files.output
 
 echo "building libcodec2_vndk^android_x86_64_static_com.android.media.swcodec"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libcodec2_vndk,android_x86_64_static_com.android.media.swcodec
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/vndk/libcodec2_vndk^android_x86_64_static_com.android.media.swcodec
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/frameworks/av/libcodec2_vndk^android_x86_64_static_com.android.media.swcodec.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/vndk/libcodec2_vndk^android_x86_64_static_com.android.media.swcodec
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/frameworks/av/libcodec2_vndk^android_x86_64_static_com.android.media.swcodec.output $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/vndk/libcodec2_vndk^android_x86_64_static_com.android.media.swcodec $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/vndk/libcodec2_vndk^android_x86_64_static_com.android.media.swcodec/addition_copy_files.output
 
 echo "building libcodec2_vndk^android_x86_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libcodec2_vndk,android_x86_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/vndk/libcodec2_vndk^android_x86_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/frameworks/av/libcodec2_vndk^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/vndk/libcodec2_vndk^android_x86_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/frameworks/av/libcodec2_vndk^android_x86_x86_64_static.output $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/vndk/libcodec2_vndk^android_x86_x86_64_static $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/vndk/libcodec2_vndk^android_x86_x86_64_static/addition_copy_files.output
 
 echo "building librenderfright^android_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja librenderfright,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libstagefright/renderfright/librenderfright^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/frameworks/av/librenderfright^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libstagefright/renderfright/librenderfright^android_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/frameworks/av/librenderfright^android_x86_64_static.output $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libstagefright/renderfright/librenderfright^android_x86_64_static $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libstagefright/renderfright/librenderfright^android_x86_64_static/addition_copy_files.output
 
 echo "building librenderfright^android_x86_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja librenderfright,android_x86_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libstagefright/renderfright/librenderfright^android_x86_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/frameworks/av/librenderfright^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libstagefright/renderfright/librenderfright^android_x86_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/frameworks/av/librenderfright^android_x86_x86_64_static.output $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libstagefright/renderfright/librenderfright^android_x86_x86_64_static $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libstagefright/renderfright/librenderfright^android_x86_x86_64_static/addition_copy_files.output
 
 echo "building libsfplugin_ccodec_utils^android_x86_64_static_cfi"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libsfplugin_ccodec_utils,android_x86_64_static_cfi
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/sfplugin/utils/libsfplugin_ccodec_utils^android_x86_64_static_cfi
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/frameworks/av/libsfplugin_ccodec_utils^android_x86_64_static_cfi.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/sfplugin/utils/libsfplugin_ccodec_utils^android_x86_64_static_cfi
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/frameworks/av/libsfplugin_ccodec_utils^android_x86_64_static_cfi.output $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/sfplugin/utils/libsfplugin_ccodec_utils^android_x86_64_static_cfi $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/sfplugin/utils/libsfplugin_ccodec_utils^android_x86_64_static_cfi/addition_copy_files.output
 
 echo "building libsfplugin_ccodec_utils^android_x86_64_static_cfi_com.android.media.swcodec"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libsfplugin_ccodec_utils,android_x86_64_static_cfi_com.android.media.swcodec
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/sfplugin/utils/libsfplugin_ccodec_utils^android_x86_64_static_cfi_com.android.media.swcodec
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/frameworks/av/libsfplugin_ccodec_utils^android_x86_64_static_cfi_com.android.media.swcodec.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/sfplugin/utils/libsfplugin_ccodec_utils^android_x86_64_static_cfi_com.android.media.swcodec
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/frameworks/av/libsfplugin_ccodec_utils^android_x86_64_static_cfi_com.android.media.swcodec.output $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/sfplugin/utils/libsfplugin_ccodec_utils^android_x86_64_static_cfi_com.android.media.swcodec $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/sfplugin/utils/libsfplugin_ccodec_utils^android_x86_64_static_cfi_com.android.media.swcodec/addition_copy_files.output
 
 echo "building libsfplugin_ccodec_utils^android_x86_x86_64_static_cfi"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libsfplugin_ccodec_utils,android_x86_x86_64_static_cfi
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/sfplugin/utils/libsfplugin_ccodec_utils^android_x86_x86_64_static_cfi
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/frameworks/av/libsfplugin_ccodec_utils^android_x86_x86_64_static_cfi.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/sfplugin/utils/libsfplugin_ccodec_utils^android_x86_x86_64_static_cfi
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/frameworks/av/libsfplugin_ccodec_utils^android_x86_x86_64_static_cfi.output $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/sfplugin/utils/libsfplugin_ccodec_utils^android_x86_x86_64_static_cfi $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codec2/sfplugin/utils/libsfplugin_ccodec_utils^android_x86_x86_64_static_cfi/addition_copy_files.output
 
 echo "building libstagefright_amrnb_common^android_x86_64_shared"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libstagefright_amrnb_common,android_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codecs/amrnb/common/libstagefright_amrnb_common^android_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/frameworks/av/libstagefright_amrnb_common^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codecs/amrnb/common/libstagefright_amrnb_common^android_x86_64_shared
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/frameworks/av/libstagefright_amrnb_common^android_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codecs/amrnb/common/libstagefright_amrnb_common^android_x86_64_shared $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codecs/amrnb/common/libstagefright_amrnb_common^android_x86_64_shared/addition_copy_files.output
 
 echo "building libstagefright_amrnb_common^android_x86_64_shared_apex29"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libstagefright_amrnb_common,android_x86_64_shared_apex29
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codecs/amrnb/common/libstagefright_amrnb_common^android_x86_64_shared_apex29
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/frameworks/av/libstagefright_amrnb_common^android_x86_64_shared_apex29.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codecs/amrnb/common/libstagefright_amrnb_common^android_x86_64_shared_apex29
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/frameworks/av/libstagefright_amrnb_common^android_x86_64_shared_apex29.output $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codecs/amrnb/common/libstagefright_amrnb_common^android_x86_64_shared_apex29 $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codecs/amrnb/common/libstagefright_amrnb_common^android_x86_64_shared_apex29/addition_copy_files.output
 
 echo "building libstagefright_amrnb_common^android_x86_x86_64_shared"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libstagefright_amrnb_common,android_x86_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codecs/amrnb/common/libstagefright_amrnb_common^android_x86_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/frameworks/av/libstagefright_amrnb_common^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codecs/amrnb/common/libstagefright_amrnb_common^android_x86_x86_64_shared
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/frameworks/av/libstagefright_amrnb_common^android_x86_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codecs/amrnb/common/libstagefright_amrnb_common^android_x86_x86_64_shared $GITHUB_WORKSPACE/artifacts/frameworks/av/media/codecs/amrnb/common/libstagefright_amrnb_common^android_x86_x86_64_shared/addition_copy_files.output
 
 echo "building libstagefright_bufferpool@2.0.1^android_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libstagefright_bufferpool@2.0.1,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/bufferpool/2.0/libstagefright_bufferpool@2.0.1^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/frameworks/av/libstagefright_bufferpool@2.0.1^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/bufferpool/2.0/libstagefright_bufferpool@2.0.1^android_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/frameworks/av/libstagefright_bufferpool@2.0.1^android_x86_64_static.output $GITHUB_WORKSPACE/artifacts/frameworks/av/media/bufferpool/2.0/libstagefright_bufferpool@2.0.1^android_x86_64_static $GITHUB_WORKSPACE/artifacts/frameworks/av/media/bufferpool/2.0/libstagefright_bufferpool@2.0.1^android_x86_64_static/addition_copy_files.output
 
 echo "building libstagefright_bufferpool@2.0.1^android_x86_64_static_apex29"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libstagefright_bufferpool@2.0.1,android_x86_64_static_apex29
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/bufferpool/2.0/libstagefright_bufferpool@2.0.1^android_x86_64_static_apex29
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/frameworks/av/libstagefright_bufferpool@2.0.1^android_x86_64_static_apex29.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/bufferpool/2.0/libstagefright_bufferpool@2.0.1^android_x86_64_static_apex29
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/frameworks/av/libstagefright_bufferpool@2.0.1^android_x86_64_static_apex29.output $GITHUB_WORKSPACE/artifacts/frameworks/av/media/bufferpool/2.0/libstagefright_bufferpool@2.0.1^android_x86_64_static_apex29 $GITHUB_WORKSPACE/artifacts/frameworks/av/media/bufferpool/2.0/libstagefright_bufferpool@2.0.1^android_x86_64_static_apex29/addition_copy_files.output
 
 echo "building libstagefright_bufferpool@2.0.1^android_x86_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libstagefright_bufferpool@2.0.1,android_x86_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/bufferpool/2.0/libstagefright_bufferpool@2.0.1^android_x86_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/frameworks/av/libstagefright_bufferpool@2.0.1^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/bufferpool/2.0/libstagefright_bufferpool@2.0.1^android_x86_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/frameworks/av/libstagefright_bufferpool@2.0.1^android_x86_x86_64_static.output $GITHUB_WORKSPACE/artifacts/frameworks/av/media/bufferpool/2.0/libstagefright_bufferpool@2.0.1^android_x86_x86_64_static $GITHUB_WORKSPACE/artifacts/frameworks/av/media/bufferpool/2.0/libstagefright_bufferpool@2.0.1^android_x86_x86_64_static/addition_copy_files.output
 
 echo "building libstagefright_bufferpool@2.0^android_vendor.31_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libstagefright_bufferpool@2.0,android_vendor.31_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/bufferpool/2.0/libstagefright_bufferpool@2.0^android_vendor.31_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/frameworks/av/libstagefright_bufferpool@2.0^android_vendor.31_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/bufferpool/2.0/libstagefright_bufferpool@2.0^android_vendor.31_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/frameworks/av/libstagefright_bufferpool@2.0^android_vendor.31_x86_64_static.output $GITHUB_WORKSPACE/artifacts/frameworks/av/media/bufferpool/2.0/libstagefright_bufferpool@2.0^android_vendor.31_x86_64_static $GITHUB_WORKSPACE/artifacts/frameworks/av/media/bufferpool/2.0/libstagefright_bufferpool@2.0^android_vendor.31_x86_64_static/addition_copy_files.output
 
 echo "building libstagefright_bufferpool@2.0^android_vendor.31_x86_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libstagefright_bufferpool@2.0,android_vendor.31_x86_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/bufferpool/2.0/libstagefright_bufferpool@2.0^android_vendor.31_x86_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/frameworks/av/libstagefright_bufferpool@2.0^android_vendor.31_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/bufferpool/2.0/libstagefright_bufferpool@2.0^android_vendor.31_x86_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/frameworks/av/libstagefright_bufferpool@2.0^android_vendor.31_x86_x86_64_static.output $GITHUB_WORKSPACE/artifacts/frameworks/av/media/bufferpool/2.0/libstagefright_bufferpool@2.0^android_vendor.31_x86_x86_64_static $GITHUB_WORKSPACE/artifacts/frameworks/av/media/bufferpool/2.0/libstagefright_bufferpool@2.0^android_vendor.31_x86_x86_64_static/addition_copy_files.output
 
 echo "building libstagefright_color_conversion^android_x86_64_static_cfi"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libstagefright_color_conversion,android_x86_64_static_cfi
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libstagefright/colorconversion/libstagefright_color_conversion^android_x86_64_static_cfi
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/frameworks/av/libstagefright_color_conversion^android_x86_64_static_cfi.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libstagefright/colorconversion/libstagefright_color_conversion^android_x86_64_static_cfi
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/frameworks/av/libstagefright_color_conversion^android_x86_64_static_cfi.output $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libstagefright/colorconversion/libstagefright_color_conversion^android_x86_64_static_cfi $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libstagefright/colorconversion/libstagefright_color_conversion^android_x86_64_static_cfi/addition_copy_files.output
 
 echo "building libstagefright_color_conversion^android_x86_x86_64_static_cfi"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libstagefright_color_conversion,android_x86_x86_64_static_cfi
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libstagefright/colorconversion/libstagefright_color_conversion^android_x86_x86_64_static_cfi
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/frameworks/av/libstagefright_color_conversion^android_x86_x86_64_static_cfi.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libstagefright/colorconversion/libstagefright_color_conversion^android_x86_x86_64_static_cfi
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/frameworks/av/libstagefright_color_conversion^android_x86_x86_64_static_cfi.output $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libstagefright/colorconversion/libstagefright_color_conversion^android_x86_x86_64_static_cfi $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libstagefright/colorconversion/libstagefright_color_conversion^android_x86_x86_64_static_cfi/addition_copy_files.output
 
 echo "building libstagefright_enc_common^android_x86_64_shared_apex29"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libstagefright_enc_common,android_x86_64_shared_apex29
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libstagefright/codecs/common/libstagefright_enc_common^android_x86_64_shared_apex29
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/frameworks/av/libstagefright_enc_common^android_x86_64_shared_apex29.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libstagefright/codecs/common/libstagefright_enc_common^android_x86_64_shared_apex29
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/frameworks/av/libstagefright_enc_common^android_x86_64_shared_apex29.output $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libstagefright/codecs/common/libstagefright_enc_common^android_x86_64_shared_apex29 $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libstagefright/codecs/common/libstagefright_enc_common^android_x86_64_shared_apex29/addition_copy_files.output
 
 echo "building libstagefright_flacdec^android_x86_64_shared_cfi_apex29"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libstagefright_flacdec,android_x86_64_shared_cfi_apex29
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libstagefright/flac/dec/libstagefright_flacdec^android_x86_64_shared_cfi_apex29
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/frameworks/av/libstagefright_flacdec^android_x86_64_shared_cfi_apex29.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libstagefright/flac/dec/libstagefright_flacdec^android_x86_64_shared_cfi_apex29
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/frameworks/av/libstagefright_flacdec^android_x86_64_shared_cfi_apex29.output $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libstagefright/flac/dec/libstagefright_flacdec^android_x86_64_shared_cfi_apex29 $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libstagefright/flac/dec/libstagefright_flacdec^android_x86_64_shared_cfi_apex29/addition_copy_files.output
 
 rm -rf out
 

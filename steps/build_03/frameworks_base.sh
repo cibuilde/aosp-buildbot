@@ -78,411 +78,493 @@ echo "building aapt^linux_glibc_x86_64"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja aapt,linux_glibc_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/tools/aapt/aapt^linux_glibc_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/base/aapt^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/tools/aapt/aapt^linux_glibc_x86_64
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/frameworks/base/aapt^linux_glibc_x86_64.output $GITHUB_WORKSPACE/artifacts/frameworks/base/tools/aapt/aapt^linux_glibc_x86_64 $GITHUB_WORKSPACE/artifacts/frameworks/base/tools/aapt/aapt^linux_glibc_x86_64/addition_copy_files.output
 
 echo "building android.mime.types.minimized^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja android.mime.types.minimized,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/mime/android.mime.types.minimized^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/base/android.mime.types.minimized^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/mime/android.mime.types.minimized^android_common
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/frameworks/base/android.mime.types.minimized^android_common.output $GITHUB_WORKSPACE/artifacts/frameworks/base/mime/android.mime.types.minimized^android_common $GITHUB_WORKSPACE/artifacts/frameworks/base/mime/android.mime.types.minimized^android_common/addition_copy_files.output
 
 echo "building libamidi.ndk^android_x86_64_sdk_shared_29"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libamidi.ndk,android_x86_64_sdk_shared_29
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/media/native/midi/libamidi.ndk^android_x86_64_sdk_shared_29
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/base/libamidi.ndk^android_x86_64_sdk_shared_29.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/media/native/midi/libamidi.ndk^android_x86_64_sdk_shared_29
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/frameworks/base/libamidi.ndk^android_x86_64_sdk_shared_29.output $GITHUB_WORKSPACE/artifacts/frameworks/base/media/native/midi/libamidi.ndk^android_x86_64_sdk_shared_29 $GITHUB_WORKSPACE/artifacts/frameworks/base/media/native/midi/libamidi.ndk^android_x86_64_sdk_shared_29/addition_copy_files.output
 
 echo "building libamidi.ndk^android_x86_64_sdk_shared_30"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libamidi.ndk,android_x86_64_sdk_shared_30
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/media/native/midi/libamidi.ndk^android_x86_64_sdk_shared_30
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/base/libamidi.ndk^android_x86_64_sdk_shared_30.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/media/native/midi/libamidi.ndk^android_x86_64_sdk_shared_30
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/frameworks/base/libamidi.ndk^android_x86_64_sdk_shared_30.output $GITHUB_WORKSPACE/artifacts/frameworks/base/media/native/midi/libamidi.ndk^android_x86_64_sdk_shared_30 $GITHUB_WORKSPACE/artifacts/frameworks/base/media/native/midi/libamidi.ndk^android_x86_64_sdk_shared_30/addition_copy_files.output
 
 echo "building libamidi.ndk^android_x86_64_sdk_shared_31"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libamidi.ndk,android_x86_64_sdk_shared_31
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/media/native/midi/libamidi.ndk^android_x86_64_sdk_shared_31
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/base/libamidi.ndk^android_x86_64_sdk_shared_31.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/media/native/midi/libamidi.ndk^android_x86_64_sdk_shared_31
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/frameworks/base/libamidi.ndk^android_x86_64_sdk_shared_31.output $GITHUB_WORKSPACE/artifacts/frameworks/base/media/native/midi/libamidi.ndk^android_x86_64_sdk_shared_31 $GITHUB_WORKSPACE/artifacts/frameworks/base/media/native/midi/libamidi.ndk^android_x86_64_sdk_shared_31/addition_copy_files.output
 
 echo "building libamidi.ndk^android_x86_64_sdk_shared_REL"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libamidi.ndk,android_x86_64_sdk_shared_REL
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/media/native/midi/libamidi.ndk^android_x86_64_sdk_shared_REL
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/base/libamidi.ndk^android_x86_64_sdk_shared_REL.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/media/native/midi/libamidi.ndk^android_x86_64_sdk_shared_REL
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/frameworks/base/libamidi.ndk^android_x86_64_sdk_shared_REL.output $GITHUB_WORKSPACE/artifacts/frameworks/base/media/native/midi/libamidi.ndk^android_x86_64_sdk_shared_REL $GITHUB_WORKSPACE/artifacts/frameworks/base/media/native/midi/libamidi.ndk^android_x86_64_sdk_shared_REL/addition_copy_files.output
 
 echo "building libamidi.ndk^android_x86_64_sdk_shared_current"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libamidi.ndk,android_x86_64_sdk_shared_current
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/media/native/midi/libamidi.ndk^android_x86_64_sdk_shared_current
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/base/libamidi.ndk^android_x86_64_sdk_shared_current.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/media/native/midi/libamidi.ndk^android_x86_64_sdk_shared_current
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/frameworks/base/libamidi.ndk^android_x86_64_sdk_shared_current.output $GITHUB_WORKSPACE/artifacts/frameworks/base/media/native/midi/libamidi.ndk^android_x86_64_sdk_shared_current $GITHUB_WORKSPACE/artifacts/frameworks/base/media/native/midi/libamidi.ndk^android_x86_64_sdk_shared_current/addition_copy_files.output
 
 echo "building libamidi.ndk^android_x86_x86_64_sdk_shared_29"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libamidi.ndk,android_x86_x86_64_sdk_shared_29
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/media/native/midi/libamidi.ndk^android_x86_x86_64_sdk_shared_29
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/base/libamidi.ndk^android_x86_x86_64_sdk_shared_29.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/media/native/midi/libamidi.ndk^android_x86_x86_64_sdk_shared_29
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/frameworks/base/libamidi.ndk^android_x86_x86_64_sdk_shared_29.output $GITHUB_WORKSPACE/artifacts/frameworks/base/media/native/midi/libamidi.ndk^android_x86_x86_64_sdk_shared_29 $GITHUB_WORKSPACE/artifacts/frameworks/base/media/native/midi/libamidi.ndk^android_x86_x86_64_sdk_shared_29/addition_copy_files.output
 
 echo "building libamidi.ndk^android_x86_x86_64_sdk_shared_30"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libamidi.ndk,android_x86_x86_64_sdk_shared_30
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/media/native/midi/libamidi.ndk^android_x86_x86_64_sdk_shared_30
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/base/libamidi.ndk^android_x86_x86_64_sdk_shared_30.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/media/native/midi/libamidi.ndk^android_x86_x86_64_sdk_shared_30
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/frameworks/base/libamidi.ndk^android_x86_x86_64_sdk_shared_30.output $GITHUB_WORKSPACE/artifacts/frameworks/base/media/native/midi/libamidi.ndk^android_x86_x86_64_sdk_shared_30 $GITHUB_WORKSPACE/artifacts/frameworks/base/media/native/midi/libamidi.ndk^android_x86_x86_64_sdk_shared_30/addition_copy_files.output
 
 echo "building libamidi.ndk^android_x86_x86_64_sdk_shared_31"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libamidi.ndk,android_x86_x86_64_sdk_shared_31
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/media/native/midi/libamidi.ndk^android_x86_x86_64_sdk_shared_31
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/base/libamidi.ndk^android_x86_x86_64_sdk_shared_31.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/media/native/midi/libamidi.ndk^android_x86_x86_64_sdk_shared_31
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/frameworks/base/libamidi.ndk^android_x86_x86_64_sdk_shared_31.output $GITHUB_WORKSPACE/artifacts/frameworks/base/media/native/midi/libamidi.ndk^android_x86_x86_64_sdk_shared_31 $GITHUB_WORKSPACE/artifacts/frameworks/base/media/native/midi/libamidi.ndk^android_x86_x86_64_sdk_shared_31/addition_copy_files.output
 
 echo "building libamidi.ndk^android_x86_x86_64_sdk_shared_REL"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libamidi.ndk,android_x86_x86_64_sdk_shared_REL
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/media/native/midi/libamidi.ndk^android_x86_x86_64_sdk_shared_REL
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/base/libamidi.ndk^android_x86_x86_64_sdk_shared_REL.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/media/native/midi/libamidi.ndk^android_x86_x86_64_sdk_shared_REL
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/frameworks/base/libamidi.ndk^android_x86_x86_64_sdk_shared_REL.output $GITHUB_WORKSPACE/artifacts/frameworks/base/media/native/midi/libamidi.ndk^android_x86_x86_64_sdk_shared_REL $GITHUB_WORKSPACE/artifacts/frameworks/base/media/native/midi/libamidi.ndk^android_x86_x86_64_sdk_shared_REL/addition_copy_files.output
 
 echo "building libamidi.ndk^android_x86_x86_64_sdk_shared_current"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libamidi.ndk,android_x86_x86_64_sdk_shared_current
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/media/native/midi/libamidi.ndk^android_x86_x86_64_sdk_shared_current
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/base/libamidi.ndk^android_x86_x86_64_sdk_shared_current.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/media/native/midi/libamidi.ndk^android_x86_x86_64_sdk_shared_current
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/frameworks/base/libamidi.ndk^android_x86_x86_64_sdk_shared_current.output $GITHUB_WORKSPACE/artifacts/frameworks/base/media/native/midi/libamidi.ndk^android_x86_x86_64_sdk_shared_current $GITHUB_WORKSPACE/artifacts/frameworks/base/media/native/midi/libamidi.ndk^android_x86_x86_64_sdk_shared_current/addition_copy_files.output
 
 echo "building libandroid.ndk^android_x86_64_sdk_shared_21"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libandroid.ndk,android_x86_64_sdk_shared_21
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/native/android/libandroid.ndk^android_x86_64_sdk_shared_21
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/base/libandroid.ndk^android_x86_64_sdk_shared_21.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/native/android/libandroid.ndk^android_x86_64_sdk_shared_21
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/frameworks/base/libandroid.ndk^android_x86_64_sdk_shared_21.output $GITHUB_WORKSPACE/artifacts/frameworks/base/native/android/libandroid.ndk^android_x86_64_sdk_shared_21 $GITHUB_WORKSPACE/artifacts/frameworks/base/native/android/libandroid.ndk^android_x86_64_sdk_shared_21/addition_copy_files.output
 
 echo "building libandroid.ndk^android_x86_64_sdk_shared_22"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libandroid.ndk,android_x86_64_sdk_shared_22
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/native/android/libandroid.ndk^android_x86_64_sdk_shared_22
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/base/libandroid.ndk^android_x86_64_sdk_shared_22.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/native/android/libandroid.ndk^android_x86_64_sdk_shared_22
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/frameworks/base/libandroid.ndk^android_x86_64_sdk_shared_22.output $GITHUB_WORKSPACE/artifacts/frameworks/base/native/android/libandroid.ndk^android_x86_64_sdk_shared_22 $GITHUB_WORKSPACE/artifacts/frameworks/base/native/android/libandroid.ndk^android_x86_64_sdk_shared_22/addition_copy_files.output
 
 echo "building libandroid.ndk^android_x86_64_sdk_shared_23"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libandroid.ndk,android_x86_64_sdk_shared_23
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/native/android/libandroid.ndk^android_x86_64_sdk_shared_23
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/base/libandroid.ndk^android_x86_64_sdk_shared_23.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/native/android/libandroid.ndk^android_x86_64_sdk_shared_23
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/frameworks/base/libandroid.ndk^android_x86_64_sdk_shared_23.output $GITHUB_WORKSPACE/artifacts/frameworks/base/native/android/libandroid.ndk^android_x86_64_sdk_shared_23 $GITHUB_WORKSPACE/artifacts/frameworks/base/native/android/libandroid.ndk^android_x86_64_sdk_shared_23/addition_copy_files.output
 
 echo "building libandroid.ndk^android_x86_64_sdk_shared_24"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libandroid.ndk,android_x86_64_sdk_shared_24
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/native/android/libandroid.ndk^android_x86_64_sdk_shared_24
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/base/libandroid.ndk^android_x86_64_sdk_shared_24.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/native/android/libandroid.ndk^android_x86_64_sdk_shared_24
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/frameworks/base/libandroid.ndk^android_x86_64_sdk_shared_24.output $GITHUB_WORKSPACE/artifacts/frameworks/base/native/android/libandroid.ndk^android_x86_64_sdk_shared_24 $GITHUB_WORKSPACE/artifacts/frameworks/base/native/android/libandroid.ndk^android_x86_64_sdk_shared_24/addition_copy_files.output
 
 echo "building libandroid.ndk^android_x86_64_sdk_shared_25"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libandroid.ndk,android_x86_64_sdk_shared_25
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/native/android/libandroid.ndk^android_x86_64_sdk_shared_25
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/base/libandroid.ndk^android_x86_64_sdk_shared_25.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/native/android/libandroid.ndk^android_x86_64_sdk_shared_25
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/frameworks/base/libandroid.ndk^android_x86_64_sdk_shared_25.output $GITHUB_WORKSPACE/artifacts/frameworks/base/native/android/libandroid.ndk^android_x86_64_sdk_shared_25 $GITHUB_WORKSPACE/artifacts/frameworks/base/native/android/libandroid.ndk^android_x86_64_sdk_shared_25/addition_copy_files.output
 
 echo "building libandroid.ndk^android_x86_64_sdk_shared_26"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libandroid.ndk,android_x86_64_sdk_shared_26
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/native/android/libandroid.ndk^android_x86_64_sdk_shared_26
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/base/libandroid.ndk^android_x86_64_sdk_shared_26.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/native/android/libandroid.ndk^android_x86_64_sdk_shared_26
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/frameworks/base/libandroid.ndk^android_x86_64_sdk_shared_26.output $GITHUB_WORKSPACE/artifacts/frameworks/base/native/android/libandroid.ndk^android_x86_64_sdk_shared_26 $GITHUB_WORKSPACE/artifacts/frameworks/base/native/android/libandroid.ndk^android_x86_64_sdk_shared_26/addition_copy_files.output
 
 echo "building libandroid.ndk^android_x86_64_sdk_shared_27"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libandroid.ndk,android_x86_64_sdk_shared_27
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/native/android/libandroid.ndk^android_x86_64_sdk_shared_27
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/base/libandroid.ndk^android_x86_64_sdk_shared_27.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/native/android/libandroid.ndk^android_x86_64_sdk_shared_27
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/frameworks/base/libandroid.ndk^android_x86_64_sdk_shared_27.output $GITHUB_WORKSPACE/artifacts/frameworks/base/native/android/libandroid.ndk^android_x86_64_sdk_shared_27 $GITHUB_WORKSPACE/artifacts/frameworks/base/native/android/libandroid.ndk^android_x86_64_sdk_shared_27/addition_copy_files.output
 
 echo "building libandroid.ndk^android_x86_64_sdk_shared_28"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libandroid.ndk,android_x86_64_sdk_shared_28
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/native/android/libandroid.ndk^android_x86_64_sdk_shared_28
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/base/libandroid.ndk^android_x86_64_sdk_shared_28.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/native/android/libandroid.ndk^android_x86_64_sdk_shared_28
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/frameworks/base/libandroid.ndk^android_x86_64_sdk_shared_28.output $GITHUB_WORKSPACE/artifacts/frameworks/base/native/android/libandroid.ndk^android_x86_64_sdk_shared_28 $GITHUB_WORKSPACE/artifacts/frameworks/base/native/android/libandroid.ndk^android_x86_64_sdk_shared_28/addition_copy_files.output
 
 echo "building libandroid.ndk^android_x86_64_sdk_shared_29"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libandroid.ndk,android_x86_64_sdk_shared_29
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/native/android/libandroid.ndk^android_x86_64_sdk_shared_29
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/base/libandroid.ndk^android_x86_64_sdk_shared_29.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/native/android/libandroid.ndk^android_x86_64_sdk_shared_29
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/frameworks/base/libandroid.ndk^android_x86_64_sdk_shared_29.output $GITHUB_WORKSPACE/artifacts/frameworks/base/native/android/libandroid.ndk^android_x86_64_sdk_shared_29 $GITHUB_WORKSPACE/artifacts/frameworks/base/native/android/libandroid.ndk^android_x86_64_sdk_shared_29/addition_copy_files.output
 
 echo "building libandroid.ndk^android_x86_64_sdk_shared_30"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libandroid.ndk,android_x86_64_sdk_shared_30
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/native/android/libandroid.ndk^android_x86_64_sdk_shared_30
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/base/libandroid.ndk^android_x86_64_sdk_shared_30.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/native/android/libandroid.ndk^android_x86_64_sdk_shared_30
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/frameworks/base/libandroid.ndk^android_x86_64_sdk_shared_30.output $GITHUB_WORKSPACE/artifacts/frameworks/base/native/android/libandroid.ndk^android_x86_64_sdk_shared_30 $GITHUB_WORKSPACE/artifacts/frameworks/base/native/android/libandroid.ndk^android_x86_64_sdk_shared_30/addition_copy_files.output
 
 echo "building libandroid.ndk^android_x86_64_sdk_shared_31"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libandroid.ndk,android_x86_64_sdk_shared_31
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/native/android/libandroid.ndk^android_x86_64_sdk_shared_31
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/base/libandroid.ndk^android_x86_64_sdk_shared_31.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/native/android/libandroid.ndk^android_x86_64_sdk_shared_31
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/frameworks/base/libandroid.ndk^android_x86_64_sdk_shared_31.output $GITHUB_WORKSPACE/artifacts/frameworks/base/native/android/libandroid.ndk^android_x86_64_sdk_shared_31 $GITHUB_WORKSPACE/artifacts/frameworks/base/native/android/libandroid.ndk^android_x86_64_sdk_shared_31/addition_copy_files.output
 
 echo "building libandroid.ndk^android_x86_64_sdk_shared_REL"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libandroid.ndk,android_x86_64_sdk_shared_REL
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/native/android/libandroid.ndk^android_x86_64_sdk_shared_REL
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/base/libandroid.ndk^android_x86_64_sdk_shared_REL.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/native/android/libandroid.ndk^android_x86_64_sdk_shared_REL
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/frameworks/base/libandroid.ndk^android_x86_64_sdk_shared_REL.output $GITHUB_WORKSPACE/artifacts/frameworks/base/native/android/libandroid.ndk^android_x86_64_sdk_shared_REL $GITHUB_WORKSPACE/artifacts/frameworks/base/native/android/libandroid.ndk^android_x86_64_sdk_shared_REL/addition_copy_files.output
 
 echo "building libandroid.ndk^android_x86_64_sdk_shared_current"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libandroid.ndk,android_x86_64_sdk_shared_current
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/native/android/libandroid.ndk^android_x86_64_sdk_shared_current
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/base/libandroid.ndk^android_x86_64_sdk_shared_current.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/native/android/libandroid.ndk^android_x86_64_sdk_shared_current
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/frameworks/base/libandroid.ndk^android_x86_64_sdk_shared_current.output $GITHUB_WORKSPACE/artifacts/frameworks/base/native/android/libandroid.ndk^android_x86_64_sdk_shared_current $GITHUB_WORKSPACE/artifacts/frameworks/base/native/android/libandroid.ndk^android_x86_64_sdk_shared_current/addition_copy_files.output
 
 echo "building libandroid.ndk^android_x86_x86_64_sdk_shared_16"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libandroid.ndk,android_x86_x86_64_sdk_shared_16
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/native/android/libandroid.ndk^android_x86_x86_64_sdk_shared_16
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/base/libandroid.ndk^android_x86_x86_64_sdk_shared_16.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/native/android/libandroid.ndk^android_x86_x86_64_sdk_shared_16
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/frameworks/base/libandroid.ndk^android_x86_x86_64_sdk_shared_16.output $GITHUB_WORKSPACE/artifacts/frameworks/base/native/android/libandroid.ndk^android_x86_x86_64_sdk_shared_16 $GITHUB_WORKSPACE/artifacts/frameworks/base/native/android/libandroid.ndk^android_x86_x86_64_sdk_shared_16/addition_copy_files.output
 
 echo "building libandroid.ndk^android_x86_x86_64_sdk_shared_17"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libandroid.ndk,android_x86_x86_64_sdk_shared_17
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/native/android/libandroid.ndk^android_x86_x86_64_sdk_shared_17
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/base/libandroid.ndk^android_x86_x86_64_sdk_shared_17.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/native/android/libandroid.ndk^android_x86_x86_64_sdk_shared_17
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/frameworks/base/libandroid.ndk^android_x86_x86_64_sdk_shared_17.output $GITHUB_WORKSPACE/artifacts/frameworks/base/native/android/libandroid.ndk^android_x86_x86_64_sdk_shared_17 $GITHUB_WORKSPACE/artifacts/frameworks/base/native/android/libandroid.ndk^android_x86_x86_64_sdk_shared_17/addition_copy_files.output
 
 echo "building libandroid.ndk^android_x86_x86_64_sdk_shared_18"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libandroid.ndk,android_x86_x86_64_sdk_shared_18
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/native/android/libandroid.ndk^android_x86_x86_64_sdk_shared_18
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/base/libandroid.ndk^android_x86_x86_64_sdk_shared_18.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/native/android/libandroid.ndk^android_x86_x86_64_sdk_shared_18
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/frameworks/base/libandroid.ndk^android_x86_x86_64_sdk_shared_18.output $GITHUB_WORKSPACE/artifacts/frameworks/base/native/android/libandroid.ndk^android_x86_x86_64_sdk_shared_18 $GITHUB_WORKSPACE/artifacts/frameworks/base/native/android/libandroid.ndk^android_x86_x86_64_sdk_shared_18/addition_copy_files.output
 
 echo "building libandroid.ndk^android_x86_x86_64_sdk_shared_19"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libandroid.ndk,android_x86_x86_64_sdk_shared_19
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/native/android/libandroid.ndk^android_x86_x86_64_sdk_shared_19
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/base/libandroid.ndk^android_x86_x86_64_sdk_shared_19.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/native/android/libandroid.ndk^android_x86_x86_64_sdk_shared_19
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/frameworks/base/libandroid.ndk^android_x86_x86_64_sdk_shared_19.output $GITHUB_WORKSPACE/artifacts/frameworks/base/native/android/libandroid.ndk^android_x86_x86_64_sdk_shared_19 $GITHUB_WORKSPACE/artifacts/frameworks/base/native/android/libandroid.ndk^android_x86_x86_64_sdk_shared_19/addition_copy_files.output
 
 echo "building libandroid.ndk^android_x86_x86_64_sdk_shared_20"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libandroid.ndk,android_x86_x86_64_sdk_shared_20
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/native/android/libandroid.ndk^android_x86_x86_64_sdk_shared_20
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/base/libandroid.ndk^android_x86_x86_64_sdk_shared_20.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/native/android/libandroid.ndk^android_x86_x86_64_sdk_shared_20
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/frameworks/base/libandroid.ndk^android_x86_x86_64_sdk_shared_20.output $GITHUB_WORKSPACE/artifacts/frameworks/base/native/android/libandroid.ndk^android_x86_x86_64_sdk_shared_20 $GITHUB_WORKSPACE/artifacts/frameworks/base/native/android/libandroid.ndk^android_x86_x86_64_sdk_shared_20/addition_copy_files.output
 
 echo "building libandroid.ndk^android_x86_x86_64_sdk_shared_21"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libandroid.ndk,android_x86_x86_64_sdk_shared_21
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/native/android/libandroid.ndk^android_x86_x86_64_sdk_shared_21
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/base/libandroid.ndk^android_x86_x86_64_sdk_shared_21.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/native/android/libandroid.ndk^android_x86_x86_64_sdk_shared_21
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/frameworks/base/libandroid.ndk^android_x86_x86_64_sdk_shared_21.output $GITHUB_WORKSPACE/artifacts/frameworks/base/native/android/libandroid.ndk^android_x86_x86_64_sdk_shared_21 $GITHUB_WORKSPACE/artifacts/frameworks/base/native/android/libandroid.ndk^android_x86_x86_64_sdk_shared_21/addition_copy_files.output
 
 echo "building libandroid.ndk^android_x86_x86_64_sdk_shared_22"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libandroid.ndk,android_x86_x86_64_sdk_shared_22
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/native/android/libandroid.ndk^android_x86_x86_64_sdk_shared_22
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/base/libandroid.ndk^android_x86_x86_64_sdk_shared_22.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/native/android/libandroid.ndk^android_x86_x86_64_sdk_shared_22
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/frameworks/base/libandroid.ndk^android_x86_x86_64_sdk_shared_22.output $GITHUB_WORKSPACE/artifacts/frameworks/base/native/android/libandroid.ndk^android_x86_x86_64_sdk_shared_22 $GITHUB_WORKSPACE/artifacts/frameworks/base/native/android/libandroid.ndk^android_x86_x86_64_sdk_shared_22/addition_copy_files.output
 
 echo "building libandroid.ndk^android_x86_x86_64_sdk_shared_23"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libandroid.ndk,android_x86_x86_64_sdk_shared_23
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/native/android/libandroid.ndk^android_x86_x86_64_sdk_shared_23
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/base/libandroid.ndk^android_x86_x86_64_sdk_shared_23.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/native/android/libandroid.ndk^android_x86_x86_64_sdk_shared_23
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/frameworks/base/libandroid.ndk^android_x86_x86_64_sdk_shared_23.output $GITHUB_WORKSPACE/artifacts/frameworks/base/native/android/libandroid.ndk^android_x86_x86_64_sdk_shared_23 $GITHUB_WORKSPACE/artifacts/frameworks/base/native/android/libandroid.ndk^android_x86_x86_64_sdk_shared_23/addition_copy_files.output
 
 echo "building libandroid.ndk^android_x86_x86_64_sdk_shared_24"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libandroid.ndk,android_x86_x86_64_sdk_shared_24
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/native/android/libandroid.ndk^android_x86_x86_64_sdk_shared_24
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/base/libandroid.ndk^android_x86_x86_64_sdk_shared_24.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/native/android/libandroid.ndk^android_x86_x86_64_sdk_shared_24
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/frameworks/base/libandroid.ndk^android_x86_x86_64_sdk_shared_24.output $GITHUB_WORKSPACE/artifacts/frameworks/base/native/android/libandroid.ndk^android_x86_x86_64_sdk_shared_24 $GITHUB_WORKSPACE/artifacts/frameworks/base/native/android/libandroid.ndk^android_x86_x86_64_sdk_shared_24/addition_copy_files.output
 
 echo "building libandroid.ndk^android_x86_x86_64_sdk_shared_25"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libandroid.ndk,android_x86_x86_64_sdk_shared_25
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/native/android/libandroid.ndk^android_x86_x86_64_sdk_shared_25
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/base/libandroid.ndk^android_x86_x86_64_sdk_shared_25.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/native/android/libandroid.ndk^android_x86_x86_64_sdk_shared_25
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/frameworks/base/libandroid.ndk^android_x86_x86_64_sdk_shared_25.output $GITHUB_WORKSPACE/artifacts/frameworks/base/native/android/libandroid.ndk^android_x86_x86_64_sdk_shared_25 $GITHUB_WORKSPACE/artifacts/frameworks/base/native/android/libandroid.ndk^android_x86_x86_64_sdk_shared_25/addition_copy_files.output
 
 echo "building libandroid.ndk^android_x86_x86_64_sdk_shared_26"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libandroid.ndk,android_x86_x86_64_sdk_shared_26
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/native/android/libandroid.ndk^android_x86_x86_64_sdk_shared_26
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/base/libandroid.ndk^android_x86_x86_64_sdk_shared_26.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/native/android/libandroid.ndk^android_x86_x86_64_sdk_shared_26
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/frameworks/base/libandroid.ndk^android_x86_x86_64_sdk_shared_26.output $GITHUB_WORKSPACE/artifacts/frameworks/base/native/android/libandroid.ndk^android_x86_x86_64_sdk_shared_26 $GITHUB_WORKSPACE/artifacts/frameworks/base/native/android/libandroid.ndk^android_x86_x86_64_sdk_shared_26/addition_copy_files.output
 
 echo "building libandroid.ndk^android_x86_x86_64_sdk_shared_27"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libandroid.ndk,android_x86_x86_64_sdk_shared_27
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/native/android/libandroid.ndk^android_x86_x86_64_sdk_shared_27
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/base/libandroid.ndk^android_x86_x86_64_sdk_shared_27.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/native/android/libandroid.ndk^android_x86_x86_64_sdk_shared_27
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/frameworks/base/libandroid.ndk^android_x86_x86_64_sdk_shared_27.output $GITHUB_WORKSPACE/artifacts/frameworks/base/native/android/libandroid.ndk^android_x86_x86_64_sdk_shared_27 $GITHUB_WORKSPACE/artifacts/frameworks/base/native/android/libandroid.ndk^android_x86_x86_64_sdk_shared_27/addition_copy_files.output
 
 echo "building libandroid.ndk^android_x86_x86_64_sdk_shared_28"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libandroid.ndk,android_x86_x86_64_sdk_shared_28
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/native/android/libandroid.ndk^android_x86_x86_64_sdk_shared_28
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/base/libandroid.ndk^android_x86_x86_64_sdk_shared_28.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/native/android/libandroid.ndk^android_x86_x86_64_sdk_shared_28
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/frameworks/base/libandroid.ndk^android_x86_x86_64_sdk_shared_28.output $GITHUB_WORKSPACE/artifacts/frameworks/base/native/android/libandroid.ndk^android_x86_x86_64_sdk_shared_28 $GITHUB_WORKSPACE/artifacts/frameworks/base/native/android/libandroid.ndk^android_x86_x86_64_sdk_shared_28/addition_copy_files.output
 
 echo "building libandroid.ndk^android_x86_x86_64_sdk_shared_29"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libandroid.ndk,android_x86_x86_64_sdk_shared_29
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/native/android/libandroid.ndk^android_x86_x86_64_sdk_shared_29
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/base/libandroid.ndk^android_x86_x86_64_sdk_shared_29.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/native/android/libandroid.ndk^android_x86_x86_64_sdk_shared_29
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/frameworks/base/libandroid.ndk^android_x86_x86_64_sdk_shared_29.output $GITHUB_WORKSPACE/artifacts/frameworks/base/native/android/libandroid.ndk^android_x86_x86_64_sdk_shared_29 $GITHUB_WORKSPACE/artifacts/frameworks/base/native/android/libandroid.ndk^android_x86_x86_64_sdk_shared_29/addition_copy_files.output
 
 echo "building libandroid.ndk^android_x86_x86_64_sdk_shared_30"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libandroid.ndk,android_x86_x86_64_sdk_shared_30
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/native/android/libandroid.ndk^android_x86_x86_64_sdk_shared_30
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/base/libandroid.ndk^android_x86_x86_64_sdk_shared_30.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/native/android/libandroid.ndk^android_x86_x86_64_sdk_shared_30
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/frameworks/base/libandroid.ndk^android_x86_x86_64_sdk_shared_30.output $GITHUB_WORKSPACE/artifacts/frameworks/base/native/android/libandroid.ndk^android_x86_x86_64_sdk_shared_30 $GITHUB_WORKSPACE/artifacts/frameworks/base/native/android/libandroid.ndk^android_x86_x86_64_sdk_shared_30/addition_copy_files.output
 
 echo "building libandroid.ndk^android_x86_x86_64_sdk_shared_31"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libandroid.ndk,android_x86_x86_64_sdk_shared_31
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/native/android/libandroid.ndk^android_x86_x86_64_sdk_shared_31
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/base/libandroid.ndk^android_x86_x86_64_sdk_shared_31.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/native/android/libandroid.ndk^android_x86_x86_64_sdk_shared_31
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/frameworks/base/libandroid.ndk^android_x86_x86_64_sdk_shared_31.output $GITHUB_WORKSPACE/artifacts/frameworks/base/native/android/libandroid.ndk^android_x86_x86_64_sdk_shared_31 $GITHUB_WORKSPACE/artifacts/frameworks/base/native/android/libandroid.ndk^android_x86_x86_64_sdk_shared_31/addition_copy_files.output
 
 echo "building libandroid.ndk^android_x86_x86_64_sdk_shared_REL"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libandroid.ndk,android_x86_x86_64_sdk_shared_REL
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/native/android/libandroid.ndk^android_x86_x86_64_sdk_shared_REL
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/base/libandroid.ndk^android_x86_x86_64_sdk_shared_REL.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/native/android/libandroid.ndk^android_x86_x86_64_sdk_shared_REL
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/frameworks/base/libandroid.ndk^android_x86_x86_64_sdk_shared_REL.output $GITHUB_WORKSPACE/artifacts/frameworks/base/native/android/libandroid.ndk^android_x86_x86_64_sdk_shared_REL $GITHUB_WORKSPACE/artifacts/frameworks/base/native/android/libandroid.ndk^android_x86_x86_64_sdk_shared_REL/addition_copy_files.output
 
 echo "building libandroid.ndk^android_x86_x86_64_sdk_shared_current"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libandroid.ndk,android_x86_x86_64_sdk_shared_current
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/native/android/libandroid.ndk^android_x86_x86_64_sdk_shared_current
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/base/libandroid.ndk^android_x86_x86_64_sdk_shared_current.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/native/android/libandroid.ndk^android_x86_x86_64_sdk_shared_current
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/frameworks/base/libandroid.ndk^android_x86_x86_64_sdk_shared_current.output $GITHUB_WORKSPACE/artifacts/frameworks/base/native/android/libandroid.ndk^android_x86_x86_64_sdk_shared_current $GITHUB_WORKSPACE/artifacts/frameworks/base/native/android/libandroid.ndk^android_x86_x86_64_sdk_shared_current/addition_copy_files.output
 
 echo "building libandroid^android_x86_64_shared_31"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libandroid,android_x86_64_shared_31
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/native/android/libandroid^android_x86_64_shared_31
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/base/libandroid^android_x86_64_shared_31.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/native/android/libandroid^android_x86_64_shared_31
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/frameworks/base/libandroid^android_x86_64_shared_31.output $GITHUB_WORKSPACE/artifacts/frameworks/base/native/android/libandroid^android_x86_64_shared_31 $GITHUB_WORKSPACE/artifacts/frameworks/base/native/android/libandroid^android_x86_64_shared_31/addition_copy_files.output
 
 echo "building libandroid^android_x86_64_shared_current"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libandroid,android_x86_64_shared_current
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/native/android/libandroid^android_x86_64_shared_current
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/base/libandroid^android_x86_64_shared_current.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/native/android/libandroid^android_x86_64_shared_current
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/frameworks/base/libandroid^android_x86_64_shared_current.output $GITHUB_WORKSPACE/artifacts/frameworks/base/native/android/libandroid^android_x86_64_shared_current $GITHUB_WORKSPACE/artifacts/frameworks/base/native/android/libandroid^android_x86_64_shared_current/addition_copy_files.output
 
 echo "building libandroid^android_x86_x86_64_shared_current"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libandroid,android_x86_x86_64_shared_current
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/native/android/libandroid^android_x86_x86_64_shared_current
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/base/libandroid^android_x86_x86_64_shared_current.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/native/android/libandroid^android_x86_x86_64_shared_current
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/frameworks/base/libandroid^android_x86_x86_64_shared_current.output $GITHUB_WORKSPACE/artifacts/frameworks/base/native/android/libandroid^android_x86_x86_64_shared_current $GITHUB_WORKSPACE/artifacts/frameworks/base/native/android/libandroid^android_x86_x86_64_shared_current/addition_copy_files.output
 
 echo "building libincident^android_x86_64_shared_current"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libincident,android_x86_64_shared_current
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/libs/incident/libincident^android_x86_64_shared_current
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/base/libincident^android_x86_64_shared_current.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/libs/incident/libincident^android_x86_64_shared_current
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/frameworks/base/libincident^android_x86_64_shared_current.output $GITHUB_WORKSPACE/artifacts/frameworks/base/libs/incident/libincident^android_x86_64_shared_current $GITHUB_WORKSPACE/artifacts/frameworks/base/libs/incident/libincident^android_x86_64_shared_current/addition_copy_files.output
 
 echo "building libjnigraphics.ndk^android_x86_64_sdk_shared_21"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libjnigraphics.ndk,android_x86_64_sdk_shared_21
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/native/graphics/jni/libjnigraphics.ndk^android_x86_64_sdk_shared_21
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/base/libjnigraphics.ndk^android_x86_64_sdk_shared_21.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/native/graphics/jni/libjnigraphics.ndk^android_x86_64_sdk_shared_21
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/frameworks/base/libjnigraphics.ndk^android_x86_64_sdk_shared_21.output $GITHUB_WORKSPACE/artifacts/frameworks/base/native/graphics/jni/libjnigraphics.ndk^android_x86_64_sdk_shared_21 $GITHUB_WORKSPACE/artifacts/frameworks/base/native/graphics/jni/libjnigraphics.ndk^android_x86_64_sdk_shared_21/addition_copy_files.output
 
 echo "building libjnigraphics.ndk^android_x86_64_sdk_shared_22"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libjnigraphics.ndk,android_x86_64_sdk_shared_22
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/native/graphics/jni/libjnigraphics.ndk^android_x86_64_sdk_shared_22
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/base/libjnigraphics.ndk^android_x86_64_sdk_shared_22.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/native/graphics/jni/libjnigraphics.ndk^android_x86_64_sdk_shared_22
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/frameworks/base/libjnigraphics.ndk^android_x86_64_sdk_shared_22.output $GITHUB_WORKSPACE/artifacts/frameworks/base/native/graphics/jni/libjnigraphics.ndk^android_x86_64_sdk_shared_22 $GITHUB_WORKSPACE/artifacts/frameworks/base/native/graphics/jni/libjnigraphics.ndk^android_x86_64_sdk_shared_22/addition_copy_files.output
 
 echo "building libjnigraphics.ndk^android_x86_64_sdk_shared_23"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libjnigraphics.ndk,android_x86_64_sdk_shared_23
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/native/graphics/jni/libjnigraphics.ndk^android_x86_64_sdk_shared_23
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/base/libjnigraphics.ndk^android_x86_64_sdk_shared_23.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/native/graphics/jni/libjnigraphics.ndk^android_x86_64_sdk_shared_23
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/frameworks/base/libjnigraphics.ndk^android_x86_64_sdk_shared_23.output $GITHUB_WORKSPACE/artifacts/frameworks/base/native/graphics/jni/libjnigraphics.ndk^android_x86_64_sdk_shared_23 $GITHUB_WORKSPACE/artifacts/frameworks/base/native/graphics/jni/libjnigraphics.ndk^android_x86_64_sdk_shared_23/addition_copy_files.output
 
 echo "building libjnigraphics.ndk^android_x86_64_sdk_shared_24"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libjnigraphics.ndk,android_x86_64_sdk_shared_24
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/native/graphics/jni/libjnigraphics.ndk^android_x86_64_sdk_shared_24
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/base/libjnigraphics.ndk^android_x86_64_sdk_shared_24.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/native/graphics/jni/libjnigraphics.ndk^android_x86_64_sdk_shared_24
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/frameworks/base/libjnigraphics.ndk^android_x86_64_sdk_shared_24.output $GITHUB_WORKSPACE/artifacts/frameworks/base/native/graphics/jni/libjnigraphics.ndk^android_x86_64_sdk_shared_24 $GITHUB_WORKSPACE/artifacts/frameworks/base/native/graphics/jni/libjnigraphics.ndk^android_x86_64_sdk_shared_24/addition_copy_files.output
 
 echo "building libjnigraphics.ndk^android_x86_64_sdk_shared_25"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libjnigraphics.ndk,android_x86_64_sdk_shared_25
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/native/graphics/jni/libjnigraphics.ndk^android_x86_64_sdk_shared_25
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/base/libjnigraphics.ndk^android_x86_64_sdk_shared_25.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/native/graphics/jni/libjnigraphics.ndk^android_x86_64_sdk_shared_25
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/frameworks/base/libjnigraphics.ndk^android_x86_64_sdk_shared_25.output $GITHUB_WORKSPACE/artifacts/frameworks/base/native/graphics/jni/libjnigraphics.ndk^android_x86_64_sdk_shared_25 $GITHUB_WORKSPACE/artifacts/frameworks/base/native/graphics/jni/libjnigraphics.ndk^android_x86_64_sdk_shared_25/addition_copy_files.output
 
 echo "building libjnigraphics.ndk^android_x86_64_sdk_shared_26"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libjnigraphics.ndk,android_x86_64_sdk_shared_26
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/native/graphics/jni/libjnigraphics.ndk^android_x86_64_sdk_shared_26
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/base/libjnigraphics.ndk^android_x86_64_sdk_shared_26.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/native/graphics/jni/libjnigraphics.ndk^android_x86_64_sdk_shared_26
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/frameworks/base/libjnigraphics.ndk^android_x86_64_sdk_shared_26.output $GITHUB_WORKSPACE/artifacts/frameworks/base/native/graphics/jni/libjnigraphics.ndk^android_x86_64_sdk_shared_26 $GITHUB_WORKSPACE/artifacts/frameworks/base/native/graphics/jni/libjnigraphics.ndk^android_x86_64_sdk_shared_26/addition_copy_files.output
 
 echo "building libjnigraphics.ndk^android_x86_64_sdk_shared_27"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libjnigraphics.ndk,android_x86_64_sdk_shared_27
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/native/graphics/jni/libjnigraphics.ndk^android_x86_64_sdk_shared_27
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/base/libjnigraphics.ndk^android_x86_64_sdk_shared_27.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/native/graphics/jni/libjnigraphics.ndk^android_x86_64_sdk_shared_27
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/frameworks/base/libjnigraphics.ndk^android_x86_64_sdk_shared_27.output $GITHUB_WORKSPACE/artifacts/frameworks/base/native/graphics/jni/libjnigraphics.ndk^android_x86_64_sdk_shared_27 $GITHUB_WORKSPACE/artifacts/frameworks/base/native/graphics/jni/libjnigraphics.ndk^android_x86_64_sdk_shared_27/addition_copy_files.output
 
 echo "building libjnigraphics.ndk^android_x86_64_sdk_shared_28"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libjnigraphics.ndk,android_x86_64_sdk_shared_28
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/native/graphics/jni/libjnigraphics.ndk^android_x86_64_sdk_shared_28
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/base/libjnigraphics.ndk^android_x86_64_sdk_shared_28.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/native/graphics/jni/libjnigraphics.ndk^android_x86_64_sdk_shared_28
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/frameworks/base/libjnigraphics.ndk^android_x86_64_sdk_shared_28.output $GITHUB_WORKSPACE/artifacts/frameworks/base/native/graphics/jni/libjnigraphics.ndk^android_x86_64_sdk_shared_28 $GITHUB_WORKSPACE/artifacts/frameworks/base/native/graphics/jni/libjnigraphics.ndk^android_x86_64_sdk_shared_28/addition_copy_files.output
 
 echo "building libjnigraphics.ndk^android_x86_64_sdk_shared_29"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libjnigraphics.ndk,android_x86_64_sdk_shared_29
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/native/graphics/jni/libjnigraphics.ndk^android_x86_64_sdk_shared_29
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/base/libjnigraphics.ndk^android_x86_64_sdk_shared_29.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/native/graphics/jni/libjnigraphics.ndk^android_x86_64_sdk_shared_29
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/frameworks/base/libjnigraphics.ndk^android_x86_64_sdk_shared_29.output $GITHUB_WORKSPACE/artifacts/frameworks/base/native/graphics/jni/libjnigraphics.ndk^android_x86_64_sdk_shared_29 $GITHUB_WORKSPACE/artifacts/frameworks/base/native/graphics/jni/libjnigraphics.ndk^android_x86_64_sdk_shared_29/addition_copy_files.output
 
 echo "building libjnigraphics.ndk^android_x86_64_sdk_shared_30"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libjnigraphics.ndk,android_x86_64_sdk_shared_30
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/native/graphics/jni/libjnigraphics.ndk^android_x86_64_sdk_shared_30
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/base/libjnigraphics.ndk^android_x86_64_sdk_shared_30.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/native/graphics/jni/libjnigraphics.ndk^android_x86_64_sdk_shared_30
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/frameworks/base/libjnigraphics.ndk^android_x86_64_sdk_shared_30.output $GITHUB_WORKSPACE/artifacts/frameworks/base/native/graphics/jni/libjnigraphics.ndk^android_x86_64_sdk_shared_30 $GITHUB_WORKSPACE/artifacts/frameworks/base/native/graphics/jni/libjnigraphics.ndk^android_x86_64_sdk_shared_30/addition_copy_files.output
 
 echo "building libjnigraphics.ndk^android_x86_64_sdk_shared_31"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libjnigraphics.ndk,android_x86_64_sdk_shared_31
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/native/graphics/jni/libjnigraphics.ndk^android_x86_64_sdk_shared_31
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/base/libjnigraphics.ndk^android_x86_64_sdk_shared_31.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/native/graphics/jni/libjnigraphics.ndk^android_x86_64_sdk_shared_31
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/frameworks/base/libjnigraphics.ndk^android_x86_64_sdk_shared_31.output $GITHUB_WORKSPACE/artifacts/frameworks/base/native/graphics/jni/libjnigraphics.ndk^android_x86_64_sdk_shared_31 $GITHUB_WORKSPACE/artifacts/frameworks/base/native/graphics/jni/libjnigraphics.ndk^android_x86_64_sdk_shared_31/addition_copy_files.output
 
 echo "building libjnigraphics.ndk^android_x86_64_sdk_shared_REL"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libjnigraphics.ndk,android_x86_64_sdk_shared_REL
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/native/graphics/jni/libjnigraphics.ndk^android_x86_64_sdk_shared_REL
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/base/libjnigraphics.ndk^android_x86_64_sdk_shared_REL.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/native/graphics/jni/libjnigraphics.ndk^android_x86_64_sdk_shared_REL
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/frameworks/base/libjnigraphics.ndk^android_x86_64_sdk_shared_REL.output $GITHUB_WORKSPACE/artifacts/frameworks/base/native/graphics/jni/libjnigraphics.ndk^android_x86_64_sdk_shared_REL $GITHUB_WORKSPACE/artifacts/frameworks/base/native/graphics/jni/libjnigraphics.ndk^android_x86_64_sdk_shared_REL/addition_copy_files.output
 
 echo "building libjnigraphics.ndk^android_x86_64_sdk_shared_current"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libjnigraphics.ndk,android_x86_64_sdk_shared_current
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/native/graphics/jni/libjnigraphics.ndk^android_x86_64_sdk_shared_current
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/base/libjnigraphics.ndk^android_x86_64_sdk_shared_current.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/native/graphics/jni/libjnigraphics.ndk^android_x86_64_sdk_shared_current
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/frameworks/base/libjnigraphics.ndk^android_x86_64_sdk_shared_current.output $GITHUB_WORKSPACE/artifacts/frameworks/base/native/graphics/jni/libjnigraphics.ndk^android_x86_64_sdk_shared_current $GITHUB_WORKSPACE/artifacts/frameworks/base/native/graphics/jni/libjnigraphics.ndk^android_x86_64_sdk_shared_current/addition_copy_files.output
 
 echo "building libjnigraphics.ndk^android_x86_x86_64_sdk_shared_16"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libjnigraphics.ndk,android_x86_x86_64_sdk_shared_16
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/native/graphics/jni/libjnigraphics.ndk^android_x86_x86_64_sdk_shared_16
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/base/libjnigraphics.ndk^android_x86_x86_64_sdk_shared_16.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/native/graphics/jni/libjnigraphics.ndk^android_x86_x86_64_sdk_shared_16
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/frameworks/base/libjnigraphics.ndk^android_x86_x86_64_sdk_shared_16.output $GITHUB_WORKSPACE/artifacts/frameworks/base/native/graphics/jni/libjnigraphics.ndk^android_x86_x86_64_sdk_shared_16 $GITHUB_WORKSPACE/artifacts/frameworks/base/native/graphics/jni/libjnigraphics.ndk^android_x86_x86_64_sdk_shared_16/addition_copy_files.output
 
 echo "building libjnigraphics.ndk^android_x86_x86_64_sdk_shared_17"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libjnigraphics.ndk,android_x86_x86_64_sdk_shared_17
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/native/graphics/jni/libjnigraphics.ndk^android_x86_x86_64_sdk_shared_17
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/base/libjnigraphics.ndk^android_x86_x86_64_sdk_shared_17.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/native/graphics/jni/libjnigraphics.ndk^android_x86_x86_64_sdk_shared_17
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/frameworks/base/libjnigraphics.ndk^android_x86_x86_64_sdk_shared_17.output $GITHUB_WORKSPACE/artifacts/frameworks/base/native/graphics/jni/libjnigraphics.ndk^android_x86_x86_64_sdk_shared_17 $GITHUB_WORKSPACE/artifacts/frameworks/base/native/graphics/jni/libjnigraphics.ndk^android_x86_x86_64_sdk_shared_17/addition_copy_files.output
 
 echo "building libjnigraphics.ndk^android_x86_x86_64_sdk_shared_18"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libjnigraphics.ndk,android_x86_x86_64_sdk_shared_18
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/native/graphics/jni/libjnigraphics.ndk^android_x86_x86_64_sdk_shared_18
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/base/libjnigraphics.ndk^android_x86_x86_64_sdk_shared_18.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/native/graphics/jni/libjnigraphics.ndk^android_x86_x86_64_sdk_shared_18
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/frameworks/base/libjnigraphics.ndk^android_x86_x86_64_sdk_shared_18.output $GITHUB_WORKSPACE/artifacts/frameworks/base/native/graphics/jni/libjnigraphics.ndk^android_x86_x86_64_sdk_shared_18 $GITHUB_WORKSPACE/artifacts/frameworks/base/native/graphics/jni/libjnigraphics.ndk^android_x86_x86_64_sdk_shared_18/addition_copy_files.output
 
 echo "building libjnigraphics.ndk^android_x86_x86_64_sdk_shared_19"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libjnigraphics.ndk,android_x86_x86_64_sdk_shared_19
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/native/graphics/jni/libjnigraphics.ndk^android_x86_x86_64_sdk_shared_19
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/base/libjnigraphics.ndk^android_x86_x86_64_sdk_shared_19.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/native/graphics/jni/libjnigraphics.ndk^android_x86_x86_64_sdk_shared_19
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/frameworks/base/libjnigraphics.ndk^android_x86_x86_64_sdk_shared_19.output $GITHUB_WORKSPACE/artifacts/frameworks/base/native/graphics/jni/libjnigraphics.ndk^android_x86_x86_64_sdk_shared_19 $GITHUB_WORKSPACE/artifacts/frameworks/base/native/graphics/jni/libjnigraphics.ndk^android_x86_x86_64_sdk_shared_19/addition_copy_files.output
 
 echo "building libjnigraphics.ndk^android_x86_x86_64_sdk_shared_20"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libjnigraphics.ndk,android_x86_x86_64_sdk_shared_20
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/native/graphics/jni/libjnigraphics.ndk^android_x86_x86_64_sdk_shared_20
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/base/libjnigraphics.ndk^android_x86_x86_64_sdk_shared_20.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/native/graphics/jni/libjnigraphics.ndk^android_x86_x86_64_sdk_shared_20
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/frameworks/base/libjnigraphics.ndk^android_x86_x86_64_sdk_shared_20.output $GITHUB_WORKSPACE/artifacts/frameworks/base/native/graphics/jni/libjnigraphics.ndk^android_x86_x86_64_sdk_shared_20 $GITHUB_WORKSPACE/artifacts/frameworks/base/native/graphics/jni/libjnigraphics.ndk^android_x86_x86_64_sdk_shared_20/addition_copy_files.output
 
 echo "building libjnigraphics.ndk^android_x86_x86_64_sdk_shared_21"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libjnigraphics.ndk,android_x86_x86_64_sdk_shared_21
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/native/graphics/jni/libjnigraphics.ndk^android_x86_x86_64_sdk_shared_21
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/base/libjnigraphics.ndk^android_x86_x86_64_sdk_shared_21.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/native/graphics/jni/libjnigraphics.ndk^android_x86_x86_64_sdk_shared_21
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/frameworks/base/libjnigraphics.ndk^android_x86_x86_64_sdk_shared_21.output $GITHUB_WORKSPACE/artifacts/frameworks/base/native/graphics/jni/libjnigraphics.ndk^android_x86_x86_64_sdk_shared_21 $GITHUB_WORKSPACE/artifacts/frameworks/base/native/graphics/jni/libjnigraphics.ndk^android_x86_x86_64_sdk_shared_21/addition_copy_files.output
 
 echo "building libjnigraphics.ndk^android_x86_x86_64_sdk_shared_22"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libjnigraphics.ndk,android_x86_x86_64_sdk_shared_22
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/native/graphics/jni/libjnigraphics.ndk^android_x86_x86_64_sdk_shared_22
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/base/libjnigraphics.ndk^android_x86_x86_64_sdk_shared_22.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/native/graphics/jni/libjnigraphics.ndk^android_x86_x86_64_sdk_shared_22
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/frameworks/base/libjnigraphics.ndk^android_x86_x86_64_sdk_shared_22.output $GITHUB_WORKSPACE/artifacts/frameworks/base/native/graphics/jni/libjnigraphics.ndk^android_x86_x86_64_sdk_shared_22 $GITHUB_WORKSPACE/artifacts/frameworks/base/native/graphics/jni/libjnigraphics.ndk^android_x86_x86_64_sdk_shared_22/addition_copy_files.output
 
 echo "building libjnigraphics.ndk^android_x86_x86_64_sdk_shared_23"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libjnigraphics.ndk,android_x86_x86_64_sdk_shared_23
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/native/graphics/jni/libjnigraphics.ndk^android_x86_x86_64_sdk_shared_23
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/base/libjnigraphics.ndk^android_x86_x86_64_sdk_shared_23.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/native/graphics/jni/libjnigraphics.ndk^android_x86_x86_64_sdk_shared_23
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/frameworks/base/libjnigraphics.ndk^android_x86_x86_64_sdk_shared_23.output $GITHUB_WORKSPACE/artifacts/frameworks/base/native/graphics/jni/libjnigraphics.ndk^android_x86_x86_64_sdk_shared_23 $GITHUB_WORKSPACE/artifacts/frameworks/base/native/graphics/jni/libjnigraphics.ndk^android_x86_x86_64_sdk_shared_23/addition_copy_files.output
 
 echo "building libjnigraphics.ndk^android_x86_x86_64_sdk_shared_24"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libjnigraphics.ndk,android_x86_x86_64_sdk_shared_24
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/native/graphics/jni/libjnigraphics.ndk^android_x86_x86_64_sdk_shared_24
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/base/libjnigraphics.ndk^android_x86_x86_64_sdk_shared_24.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/native/graphics/jni/libjnigraphics.ndk^android_x86_x86_64_sdk_shared_24
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/frameworks/base/libjnigraphics.ndk^android_x86_x86_64_sdk_shared_24.output $GITHUB_WORKSPACE/artifacts/frameworks/base/native/graphics/jni/libjnigraphics.ndk^android_x86_x86_64_sdk_shared_24 $GITHUB_WORKSPACE/artifacts/frameworks/base/native/graphics/jni/libjnigraphics.ndk^android_x86_x86_64_sdk_shared_24/addition_copy_files.output
 
 echo "building libjnigraphics.ndk^android_x86_x86_64_sdk_shared_25"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libjnigraphics.ndk,android_x86_x86_64_sdk_shared_25
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/native/graphics/jni/libjnigraphics.ndk^android_x86_x86_64_sdk_shared_25
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/base/libjnigraphics.ndk^android_x86_x86_64_sdk_shared_25.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/native/graphics/jni/libjnigraphics.ndk^android_x86_x86_64_sdk_shared_25
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/frameworks/base/libjnigraphics.ndk^android_x86_x86_64_sdk_shared_25.output $GITHUB_WORKSPACE/artifacts/frameworks/base/native/graphics/jni/libjnigraphics.ndk^android_x86_x86_64_sdk_shared_25 $GITHUB_WORKSPACE/artifacts/frameworks/base/native/graphics/jni/libjnigraphics.ndk^android_x86_x86_64_sdk_shared_25/addition_copy_files.output
 
 echo "building libjnigraphics.ndk^android_x86_x86_64_sdk_shared_26"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libjnigraphics.ndk,android_x86_x86_64_sdk_shared_26
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/native/graphics/jni/libjnigraphics.ndk^android_x86_x86_64_sdk_shared_26
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/base/libjnigraphics.ndk^android_x86_x86_64_sdk_shared_26.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/native/graphics/jni/libjnigraphics.ndk^android_x86_x86_64_sdk_shared_26
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/frameworks/base/libjnigraphics.ndk^android_x86_x86_64_sdk_shared_26.output $GITHUB_WORKSPACE/artifacts/frameworks/base/native/graphics/jni/libjnigraphics.ndk^android_x86_x86_64_sdk_shared_26 $GITHUB_WORKSPACE/artifacts/frameworks/base/native/graphics/jni/libjnigraphics.ndk^android_x86_x86_64_sdk_shared_26/addition_copy_files.output
 
 echo "building libjnigraphics.ndk^android_x86_x86_64_sdk_shared_27"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libjnigraphics.ndk,android_x86_x86_64_sdk_shared_27
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/native/graphics/jni/libjnigraphics.ndk^android_x86_x86_64_sdk_shared_27
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/base/libjnigraphics.ndk^android_x86_x86_64_sdk_shared_27.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/native/graphics/jni/libjnigraphics.ndk^android_x86_x86_64_sdk_shared_27
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/frameworks/base/libjnigraphics.ndk^android_x86_x86_64_sdk_shared_27.output $GITHUB_WORKSPACE/artifacts/frameworks/base/native/graphics/jni/libjnigraphics.ndk^android_x86_x86_64_sdk_shared_27 $GITHUB_WORKSPACE/artifacts/frameworks/base/native/graphics/jni/libjnigraphics.ndk^android_x86_x86_64_sdk_shared_27/addition_copy_files.output
 
 echo "building libjnigraphics.ndk^android_x86_x86_64_sdk_shared_28"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libjnigraphics.ndk,android_x86_x86_64_sdk_shared_28
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/native/graphics/jni/libjnigraphics.ndk^android_x86_x86_64_sdk_shared_28
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/base/libjnigraphics.ndk^android_x86_x86_64_sdk_shared_28.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/native/graphics/jni/libjnigraphics.ndk^android_x86_x86_64_sdk_shared_28
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/frameworks/base/libjnigraphics.ndk^android_x86_x86_64_sdk_shared_28.output $GITHUB_WORKSPACE/artifacts/frameworks/base/native/graphics/jni/libjnigraphics.ndk^android_x86_x86_64_sdk_shared_28 $GITHUB_WORKSPACE/artifacts/frameworks/base/native/graphics/jni/libjnigraphics.ndk^android_x86_x86_64_sdk_shared_28/addition_copy_files.output
 
 echo "building libjnigraphics.ndk^android_x86_x86_64_sdk_shared_29"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libjnigraphics.ndk,android_x86_x86_64_sdk_shared_29
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/native/graphics/jni/libjnigraphics.ndk^android_x86_x86_64_sdk_shared_29
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/base/libjnigraphics.ndk^android_x86_x86_64_sdk_shared_29.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/native/graphics/jni/libjnigraphics.ndk^android_x86_x86_64_sdk_shared_29
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/frameworks/base/libjnigraphics.ndk^android_x86_x86_64_sdk_shared_29.output $GITHUB_WORKSPACE/artifacts/frameworks/base/native/graphics/jni/libjnigraphics.ndk^android_x86_x86_64_sdk_shared_29 $GITHUB_WORKSPACE/artifacts/frameworks/base/native/graphics/jni/libjnigraphics.ndk^android_x86_x86_64_sdk_shared_29/addition_copy_files.output
 
 echo "building libjnigraphics.ndk^android_x86_x86_64_sdk_shared_30"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libjnigraphics.ndk,android_x86_x86_64_sdk_shared_30
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/native/graphics/jni/libjnigraphics.ndk^android_x86_x86_64_sdk_shared_30
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/base/libjnigraphics.ndk^android_x86_x86_64_sdk_shared_30.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/native/graphics/jni/libjnigraphics.ndk^android_x86_x86_64_sdk_shared_30
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/frameworks/base/libjnigraphics.ndk^android_x86_x86_64_sdk_shared_30.output $GITHUB_WORKSPACE/artifacts/frameworks/base/native/graphics/jni/libjnigraphics.ndk^android_x86_x86_64_sdk_shared_30 $GITHUB_WORKSPACE/artifacts/frameworks/base/native/graphics/jni/libjnigraphics.ndk^android_x86_x86_64_sdk_shared_30/addition_copy_files.output
 
 echo "building libjnigraphics.ndk^android_x86_x86_64_sdk_shared_31"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libjnigraphics.ndk,android_x86_x86_64_sdk_shared_31
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/native/graphics/jni/libjnigraphics.ndk^android_x86_x86_64_sdk_shared_31
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/base/libjnigraphics.ndk^android_x86_x86_64_sdk_shared_31.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/native/graphics/jni/libjnigraphics.ndk^android_x86_x86_64_sdk_shared_31
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/frameworks/base/libjnigraphics.ndk^android_x86_x86_64_sdk_shared_31.output $GITHUB_WORKSPACE/artifacts/frameworks/base/native/graphics/jni/libjnigraphics.ndk^android_x86_x86_64_sdk_shared_31 $GITHUB_WORKSPACE/artifacts/frameworks/base/native/graphics/jni/libjnigraphics.ndk^android_x86_x86_64_sdk_shared_31/addition_copy_files.output
 
 echo "building libjnigraphics.ndk^android_x86_x86_64_sdk_shared_REL"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libjnigraphics.ndk,android_x86_x86_64_sdk_shared_REL
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/native/graphics/jni/libjnigraphics.ndk^android_x86_x86_64_sdk_shared_REL
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/base/libjnigraphics.ndk^android_x86_x86_64_sdk_shared_REL.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/native/graphics/jni/libjnigraphics.ndk^android_x86_x86_64_sdk_shared_REL
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/frameworks/base/libjnigraphics.ndk^android_x86_x86_64_sdk_shared_REL.output $GITHUB_WORKSPACE/artifacts/frameworks/base/native/graphics/jni/libjnigraphics.ndk^android_x86_x86_64_sdk_shared_REL $GITHUB_WORKSPACE/artifacts/frameworks/base/native/graphics/jni/libjnigraphics.ndk^android_x86_x86_64_sdk_shared_REL/addition_copy_files.output
 
 echo "building libjnigraphics.ndk^android_x86_x86_64_sdk_shared_current"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libjnigraphics.ndk,android_x86_x86_64_sdk_shared_current
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/native/graphics/jni/libjnigraphics.ndk^android_x86_x86_64_sdk_shared_current
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/base/libjnigraphics.ndk^android_x86_x86_64_sdk_shared_current.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/native/graphics/jni/libjnigraphics.ndk^android_x86_x86_64_sdk_shared_current
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/frameworks/base/libjnigraphics.ndk^android_x86_x86_64_sdk_shared_current.output $GITHUB_WORKSPACE/artifacts/frameworks/base/native/graphics/jni/libjnigraphics.ndk^android_x86_x86_64_sdk_shared_current $GITHUB_WORKSPACE/artifacts/frameworks/base/native/graphics/jni/libjnigraphics.ndk^android_x86_x86_64_sdk_shared_current/addition_copy_files.output
 
 echo "building protoc-gen-cppstream^linux_glibc_x86_64"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja protoc-gen-cppstream,linux_glibc_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/tools/streaming_proto/protoc-gen-cppstream^linux_glibc_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/base/protoc-gen-cppstream^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/tools/streaming_proto/protoc-gen-cppstream^linux_glibc_x86_64
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/frameworks/base/protoc-gen-cppstream^linux_glibc_x86_64.output $GITHUB_WORKSPACE/artifacts/frameworks/base/tools/streaming_proto/protoc-gen-cppstream^linux_glibc_x86_64 $GITHUB_WORKSPACE/artifacts/frameworks/base/tools/streaming_proto/protoc-gen-cppstream^linux_glibc_x86_64/addition_copy_files.output
 
 echo "building protoc-gen-javastream^linux_glibc_x86_64"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja protoc-gen-javastream,linux_glibc_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/tools/streaming_proto/protoc-gen-javastream^linux_glibc_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/base/protoc-gen-javastream^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/tools/streaming_proto/protoc-gen-javastream^linux_glibc_x86_64
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/frameworks/base/protoc-gen-javastream^linux_glibc_x86_64.output $GITHUB_WORKSPACE/artifacts/frameworks/base/tools/streaming_proto/protoc-gen-javastream^linux_glibc_x86_64 $GITHUB_WORKSPACE/artifacts/frameworks/base/tools/streaming_proto/protoc-gen-javastream^linux_glibc_x86_64/addition_copy_files.output
 
 echo "building services.speech^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja services.speech,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/services/core/java/com/android/server/speech/services.speech^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/base/services.speech^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/services/core/java/com/android/server/speech/services.speech^android_common
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/frameworks/base/services.speech^android_common.output $GITHUB_WORKSPACE/artifacts/frameworks/base/services/core/java/com/android/server/speech/services.speech^android_common $GITHUB_WORKSPACE/artifacts/frameworks/base/services/core/java/com/android/server/speech/services.speech^android_common/addition_copy_files.output
 
 echo "building vendor.mime.types.minimized^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja vendor.mime.types.minimized,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/mime/vendor.mime.types.minimized^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/base/vendor.mime.types.minimized^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/mime/vendor.mime.types.minimized^android_common
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/frameworks/base/vendor.mime.types.minimized^android_common.output $GITHUB_WORKSPACE/artifacts/frameworks/base/mime/vendor.mime.types.minimized^android_common $GITHUB_WORKSPACE/artifacts/frameworks/base/mime/vendor.mime.types.minimized^android_common/addition_copy_files.output
 
 rm -rf out
 

@@ -59,11 +59,13 @@ echo "building libgrpc++^android_x86_64_shared"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libgrpc++,android_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc++^android_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/external/grpc-grpc/libgrpc++^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc++^android_x86_64_shared
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_06/external/grpc-grpc/libgrpc++^android_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc++^android_x86_64_shared $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc++^android_x86_64_shared/addition_copy_files.output
 
 echo "building libgrpc++^android_x86_x86_64_shared"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libgrpc++,android_x86_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc++^android_x86_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/external/grpc-grpc/libgrpc++^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc++^android_x86_x86_64_shared
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_06/external/grpc-grpc/libgrpc++^android_x86_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc++^android_x86_x86_64_shared $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc++^android_x86_x86_64_shared/addition_copy_files.output
 
 rm -rf out
 

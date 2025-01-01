@@ -58,21 +58,25 @@ echo "building TextClassifierNotificationLibNoManifest^android_common_apex30"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_23.ninja TextClassifierNotificationLibNoManifest,android_common_apex30
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/libtextclassifier/notification/TextClassifierNotificationLibNoManifest^android_common_apex30
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_23/external/libtextclassifier/TextClassifierNotificationLibNoManifest^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/external/libtextclassifier/notification/TextClassifierNotificationLibNoManifest^android_common_apex30
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_23/external/libtextclassifier/TextClassifierNotificationLibNoManifest^android_common_apex30.output $GITHUB_WORKSPACE/artifacts/external/libtextclassifier/notification/TextClassifierNotificationLibNoManifest^android_common_apex30 $GITHUB_WORKSPACE/artifacts/external/libtextclassifier/notification/TextClassifierNotificationLibNoManifest^android_common_apex30/addition_copy_files.output
 
 echo "building TextClassifierServiceLibNoManifest^android_common_apex30"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_23.ninja TextClassifierServiceLibNoManifest,android_common_apex30
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/libtextclassifier/java/TextClassifierServiceLibNoManifest^android_common_apex30
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_23/external/libtextclassifier/TextClassifierServiceLibNoManifest^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/external/libtextclassifier/java/TextClassifierServiceLibNoManifest^android_common_apex30
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_23/external/libtextclassifier/TextClassifierServiceLibNoManifest^android_common_apex30.output $GITHUB_WORKSPACE/artifacts/external/libtextclassifier/java/TextClassifierServiceLibNoManifest^android_common_apex30 $GITHUB_WORKSPACE/artifacts/external/libtextclassifier/java/TextClassifierServiceLibNoManifest^android_common_apex30/addition_copy_files.output
 
 echo "building libtextclassifier-java^android_common_apex30"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_23.ninja libtextclassifier-java,android_common_apex30
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/libtextclassifier/jni/libtextclassifier-java^android_common_apex30
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_23/external/libtextclassifier/libtextclassifier-java^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/external/libtextclassifier/jni/libtextclassifier-java^android_common_apex30
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_23/external/libtextclassifier/libtextclassifier-java^android_common_apex30.output $GITHUB_WORKSPACE/artifacts/external/libtextclassifier/jni/libtextclassifier-java^android_common_apex30 $GITHUB_WORKSPACE/artifacts/external/libtextclassifier/jni/libtextclassifier-java^android_common_apex30/addition_copy_files.output
 
 echo "building textclassifier-statsd^android_common_apex30"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_23.ninja textclassifier-statsd,android_common_apex30
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/libtextclassifier/java/textclassifier-statsd^android_common_apex30
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_23/external/libtextclassifier/textclassifier-statsd^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/external/libtextclassifier/java/textclassifier-statsd^android_common_apex30
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_23/external/libtextclassifier/textclassifier-statsd^android_common_apex30.output $GITHUB_WORKSPACE/artifacts/external/libtextclassifier/java/textclassifier-statsd^android_common_apex30 $GITHUB_WORKSPACE/artifacts/external/libtextclassifier/java/textclassifier-statsd^android_common_apex30/addition_copy_files.output
 
 rm -rf out
 

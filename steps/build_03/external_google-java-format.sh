@@ -23,6 +23,7 @@ echo "building google_java_format_android_annotation_stubs^linux_glibc_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja google_java_format_android_annotation_stubs,linux_glibc_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/google-java-format/google_java_format_android_annotation_stubs^linux_glibc_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/external/google-java-format/google_java_format_android_annotation_stubs^linux_glibc_common.output . $GITHUB_WORKSPACE/artifacts/external/google-java-format/google_java_format_android_annotation_stubs^linux_glibc_common
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/external/google-java-format/google_java_format_android_annotation_stubs^linux_glibc_common.output $GITHUB_WORKSPACE/artifacts/external/google-java-format/google_java_format_android_annotation_stubs^linux_glibc_common $GITHUB_WORKSPACE/artifacts/external/google-java-format/google_java_format_android_annotation_stubs^linux_glibc_common/addition_copy_files.output
 
 rm -rf out
 

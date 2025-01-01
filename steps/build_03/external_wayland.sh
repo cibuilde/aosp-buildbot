@@ -34,16 +34,19 @@ echo "building wayland_core_client_protocol_headers^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja wayland_core_client_protocol_headers,
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/wayland/wayland_core_client_protocol_headers^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/external/wayland/wayland_core_client_protocol_headers^.output . $GITHUB_WORKSPACE/artifacts/external/wayland/wayland_core_client_protocol_headers^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/external/wayland/wayland_core_client_protocol_headers^.output $GITHUB_WORKSPACE/artifacts/external/wayland/wayland_core_client_protocol_headers^ $GITHUB_WORKSPACE/artifacts/external/wayland/wayland_core_client_protocol_headers^/addition_copy_files.output
 
 echo "building wayland_core_protocol_sources_static^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja wayland_core_protocol_sources_static,
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/wayland/wayland_core_protocol_sources_static^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/external/wayland/wayland_core_protocol_sources_static^.output . $GITHUB_WORKSPACE/artifacts/external/wayland/wayland_core_protocol_sources_static^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/external/wayland/wayland_core_protocol_sources_static^.output $GITHUB_WORKSPACE/artifacts/external/wayland/wayland_core_protocol_sources_static^ $GITHUB_WORKSPACE/artifacts/external/wayland/wayland_core_protocol_sources_static^/addition_copy_files.output
 
 echo "building wayland_scanner^linux_glibc_x86_64"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja wayland_scanner,linux_glibc_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/wayland/wayland_scanner^linux_glibc_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/external/wayland/wayland_scanner^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/wayland/wayland_scanner^linux_glibc_x86_64
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/external/wayland/wayland_scanner^linux_glibc_x86_64.output $GITHUB_WORKSPACE/artifacts/external/wayland/wayland_scanner^linux_glibc_x86_64 $GITHUB_WORKSPACE/artifacts/external/wayland/wayland_scanner^linux_glibc_x86_64/addition_copy_files.output
 
 rm -rf out
 

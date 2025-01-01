@@ -20,11 +20,13 @@ echo "building android-car-last-released-api^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja android-car-last-released-api,
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/services/Car/car-lib/android-car-last-released-api^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/packages/services/Car/android-car-last-released-api^.output . $GITHUB_WORKSPACE/artifacts/packages/services/Car/car-lib/android-car-last-released-api^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/packages/services/Car/android-car-last-released-api^.output $GITHUB_WORKSPACE/artifacts/packages/services/Car/car-lib/android-car-last-released-api^ $GITHUB_WORKSPACE/artifacts/packages/services/Car/car-lib/android-car-last-released-api^/addition_copy_files.output
 
 echo "building android-car-last-released-system-api^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja android-car-last-released-system-api,
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/services/Car/car-lib/android-car-last-released-system-api^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/packages/services/Car/android-car-last-released-system-api^.output . $GITHUB_WORKSPACE/artifacts/packages/services/Car/car-lib/android-car-last-released-system-api^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/packages/services/Car/android-car-last-released-system-api^.output $GITHUB_WORKSPACE/artifacts/packages/services/Car/car-lib/android-car-last-released-system-api^ $GITHUB_WORKSPACE/artifacts/packages/services/Car/car-lib/android-car-last-released-system-api^/addition_copy_files.output
 
 rm -rf out
 

@@ -48,6 +48,7 @@ echo "building libppv_lite86^android_x86_64_dylib"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libppv_lite86,android_x86_64_dylib
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/rust/crates/ppv-lite86/libppv_lite86^android_x86_64_dylib
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/external/rust/crates/ppv-lite86/libppv_lite86^android_x86_64_dylib.output . $GITHUB_WORKSPACE/artifacts/external/rust/crates/ppv-lite86/libppv_lite86^android_x86_64_dylib
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_07/external/rust/crates/ppv-lite86/libppv_lite86^android_x86_64_dylib.output $GITHUB_WORKSPACE/artifacts/external/rust/crates/ppv-lite86/libppv_lite86^android_x86_64_dylib $GITHUB_WORKSPACE/artifacts/external/rust/crates/ppv-lite86/libppv_lite86^android_x86_64_dylib/addition_copy_files.output
 
 rm -rf out
 

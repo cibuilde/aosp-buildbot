@@ -35,6 +35,7 @@ echo "building protoc-gen-nanopb^linux_glibc_x86_64_PY2"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja protoc-gen-nanopb,linux_glibc_x86_64_PY2
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/nanopb-c/generator/protoc-gen-nanopb^linux_glibc_x86_64_PY2
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/external/nanopb-c/protoc-gen-nanopb^linux_glibc_x86_64_PY2.output . $GITHUB_WORKSPACE/artifacts/external/nanopb-c/generator/protoc-gen-nanopb^linux_glibc_x86_64_PY2
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/external/nanopb-c/protoc-gen-nanopb^linux_glibc_x86_64_PY2.output $GITHUB_WORKSPACE/artifacts/external/nanopb-c/generator/protoc-gen-nanopb^linux_glibc_x86_64_PY2 $GITHUB_WORKSPACE/artifacts/external/nanopb-c/generator/protoc-gen-nanopb^linux_glibc_x86_64_PY2/addition_copy_files.output
 
 rm -rf out
 

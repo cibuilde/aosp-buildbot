@@ -357,11 +357,13 @@ echo "building authfs^android_x86_64_apex10000"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_13.ninja authfs,android_x86_64_apex10000
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/Virtualization/authfs/authfs^android_x86_64_apex10000
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_13/packages/modules/Virtualization/authfs^android_x86_64_apex10000.output . $GITHUB_WORKSPACE/artifacts/packages/modules/Virtualization/authfs/authfs^android_x86_64_apex10000
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_13/packages/modules/Virtualization/authfs^android_x86_64_apex10000.output $GITHUB_WORKSPACE/artifacts/packages/modules/Virtualization/authfs/authfs^android_x86_64_apex10000 $GITHUB_WORKSPACE/artifacts/packages/modules/Virtualization/authfs/authfs^android_x86_64_apex10000/addition_copy_files.output
 
 echo "building com.android.virt^android_common_com.android.virt_image"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_13.ninja com.android.virt,android_common_com.android.virt_image
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/Virtualization/apex/com.android.virt^android_common_com.android.virt_image
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_13/packages/modules/Virtualization/com.android.virt^android_common_com.android.virt_image.output . $GITHUB_WORKSPACE/artifacts/packages/modules/Virtualization/apex/com.android.virt^android_common_com.android.virt_image
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_13/packages/modules/Virtualization/com.android.virt^android_common_com.android.virt_image.output $GITHUB_WORKSPACE/artifacts/packages/modules/Virtualization/apex/com.android.virt^android_common_com.android.virt_image $GITHUB_WORKSPACE/artifacts/packages/modules/Virtualization/apex/com.android.virt^android_common_com.android.virt_image/addition_copy_files.output
 
 rm -rf out
 

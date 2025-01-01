@@ -140,31 +140,37 @@ echo "building libOpenMAXAL^android_x86_64_shared"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_16.ninja libOpenMAXAL,android_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/wilhelm/src/libOpenMAXAL^android_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_16/frameworks/wilhelm/libOpenMAXAL^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/wilhelm/src/libOpenMAXAL^android_x86_64_shared
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_16/frameworks/wilhelm/libOpenMAXAL^android_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/frameworks/wilhelm/src/libOpenMAXAL^android_x86_64_shared $GITHUB_WORKSPACE/artifacts/frameworks/wilhelm/src/libOpenMAXAL^android_x86_64_shared/addition_copy_files.output
 
 echo "building libOpenMAXAL^android_x86_x86_64_shared"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_16.ninja libOpenMAXAL,android_x86_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/wilhelm/src/libOpenMAXAL^android_x86_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_16/frameworks/wilhelm/libOpenMAXAL^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/wilhelm/src/libOpenMAXAL^android_x86_x86_64_shared
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_16/frameworks/wilhelm/libOpenMAXAL^android_x86_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/frameworks/wilhelm/src/libOpenMAXAL^android_x86_x86_64_shared $GITHUB_WORKSPACE/artifacts/frameworks/wilhelm/src/libOpenMAXAL^android_x86_x86_64_shared/addition_copy_files.output
 
 echo "building libOpenSLES^android_x86_64_shared"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_16.ninja libOpenSLES,android_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/wilhelm/src/libOpenSLES^android_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_16/frameworks/wilhelm/libOpenSLES^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/wilhelm/src/libOpenSLES^android_x86_64_shared
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_16/frameworks/wilhelm/libOpenSLES^android_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/frameworks/wilhelm/src/libOpenSLES^android_x86_64_shared $GITHUB_WORKSPACE/artifacts/frameworks/wilhelm/src/libOpenSLES^android_x86_64_shared/addition_copy_files.output
 
 echo "building libOpenSLES^android_x86_x86_64_shared"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_16.ninja libOpenSLES,android_x86_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/wilhelm/src/libOpenSLES^android_x86_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_16/frameworks/wilhelm/libOpenSLES^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/wilhelm/src/libOpenSLES^android_x86_x86_64_shared
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_16/frameworks/wilhelm/libOpenSLES^android_x86_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/frameworks/wilhelm/src/libOpenSLES^android_x86_x86_64_shared $GITHUB_WORKSPACE/artifacts/frameworks/wilhelm/src/libOpenSLES^android_x86_x86_64_shared/addition_copy_files.output
 
 echo "building libwilhelm^android_x86_64_shared"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_16.ninja libwilhelm,android_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/wilhelm/src/libwilhelm^android_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_16/frameworks/wilhelm/libwilhelm^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/wilhelm/src/libwilhelm^android_x86_64_shared
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_16/frameworks/wilhelm/libwilhelm^android_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/frameworks/wilhelm/src/libwilhelm^android_x86_64_shared $GITHUB_WORKSPACE/artifacts/frameworks/wilhelm/src/libwilhelm^android_x86_64_shared/addition_copy_files.output
 
 echo "building libwilhelm^android_x86_x86_64_shared"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_16.ninja libwilhelm,android_x86_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/wilhelm/src/libwilhelm^android_x86_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_16/frameworks/wilhelm/libwilhelm^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/wilhelm/src/libwilhelm^android_x86_x86_64_shared
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_16/frameworks/wilhelm/libwilhelm^android_x86_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/frameworks/wilhelm/src/libwilhelm^android_x86_x86_64_shared $GITHUB_WORKSPACE/artifacts/frameworks/wilhelm/src/libwilhelm^android_x86_x86_64_shared/addition_copy_files.output
 
 rm -rf out
 

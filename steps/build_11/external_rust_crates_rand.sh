@@ -60,6 +60,7 @@ echo "building librand^android_x86_64_dylib"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_11.ninja librand,android_x86_64_dylib
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/rust/crates/rand/librand^android_x86_64_dylib
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_11/external/rust/crates/rand/librand^android_x86_64_dylib.output . $GITHUB_WORKSPACE/artifacts/external/rust/crates/rand/librand^android_x86_64_dylib
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_11/external/rust/crates/rand/librand^android_x86_64_dylib.output $GITHUB_WORKSPACE/artifacts/external/rust/crates/rand/librand^android_x86_64_dylib $GITHUB_WORKSPACE/artifacts/external/rust/crates/rand/librand^android_x86_64_dylib/addition_copy_files.output
 
 rm -rf out
 

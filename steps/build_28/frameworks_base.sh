@@ -114,36 +114,43 @@ echo "building ext^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_28.ninja ext,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/ext^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_28/frameworks/base/ext^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/ext^android_common
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_28/frameworks/base/ext^android_common.output $GITHUB_WORKSPACE/artifacts/frameworks/base/ext^android_common $GITHUB_WORKSPACE/artifacts/frameworks/base/ext^android_common/addition_copy_files.output
 
 echo "building framework-appsearch^android_common_apex10000"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_28.ninja framework-appsearch,android_common_apex10000
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/apex/appsearch/framework/framework-appsearch^android_common_apex10000
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_28/frameworks/base/framework-appsearch^android_common_apex10000.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/apex/appsearch/framework/framework-appsearch^android_common_apex10000
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_28/frameworks/base/framework-appsearch^android_common_apex10000.output $GITHUB_WORKSPACE/artifacts/frameworks/base/apex/appsearch/framework/framework-appsearch^android_common_apex10000 $GITHUB_WORKSPACE/artifacts/frameworks/base/apex/appsearch/framework/framework-appsearch^android_common_apex10000/addition_copy_files.output
 
 echo "building framework-graphics^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_28.ninja framework-graphics,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/libs/hwui/framework-graphics^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_28/frameworks/base/framework-graphics^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/libs/hwui/framework-graphics^android_common
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_28/frameworks/base/framework-graphics^android_common.output $GITHUB_WORKSPACE/artifacts/frameworks/base/libs/hwui/framework-graphics^android_common $GITHUB_WORKSPACE/artifacts/frameworks/base/libs/hwui/framework-graphics^android_common/addition_copy_files.output
 
 echo "building framework-minus-apex^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_28.ninja framework-minus-apex,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/framework-minus-apex^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_28/frameworks/base/framework-minus-apex^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/framework-minus-apex^android_common
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_28/frameworks/base/framework-minus-apex^android_common.output $GITHUB_WORKSPACE/artifacts/frameworks/base/framework-minus-apex^android_common $GITHUB_WORKSPACE/artifacts/frameworks/base/framework-minus-apex^android_common/addition_copy_files.output
 
 echo "building framework-platform-compat-config^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_28.ninja framework-platform-compat-config,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/framework-platform-compat-config^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_28/frameworks/base/framework-platform-compat-config^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/framework-platform-compat-config^android_common
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_28/frameworks/base/framework-platform-compat-config^android_common.output $GITHUB_WORKSPACE/artifacts/frameworks/base/framework-platform-compat-config^android_common $GITHUB_WORKSPACE/artifacts/frameworks/base/framework-platform-compat-config^android_common/addition_copy_files.output
 
 echo "building platform-bootclasspath^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_28.ninja platform-bootclasspath,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/boot/platform-bootclasspath^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_28/frameworks/base/platform-bootclasspath^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/boot/platform-bootclasspath^android_common
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_28/frameworks/base/platform-bootclasspath^android_common.output $GITHUB_WORKSPACE/artifacts/frameworks/base/boot/platform-bootclasspath^android_common $GITHUB_WORKSPACE/artifacts/frameworks/base/boot/platform-bootclasspath^android_common/addition_copy_files.output
 
 echo "building updatable-media^android_common_apex29"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_28.ninja updatable-media,android_common_apex29
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/apex/media/framework/updatable-media^android_common_apex29
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_28/frameworks/base/updatable-media^android_common_apex29.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/apex/media/framework/updatable-media^android_common_apex29
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_28/frameworks/base/updatable-media^android_common_apex29.output $GITHUB_WORKSPACE/artifacts/frameworks/base/apex/media/framework/updatable-media^android_common_apex29 $GITHUB_WORKSPACE/artifacts/frameworks/base/apex/media/framework/updatable-media^android_common_apex29/addition_copy_files.output
 
 rm -rf out
 

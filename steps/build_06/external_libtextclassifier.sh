@@ -44,11 +44,13 @@ echo "building libtextclassifier_hash^android_vendor.31_x86_64_shared"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libtextclassifier_hash,android_vendor.31_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/libtextclassifier/native/libtextclassifier_hash^android_vendor.31_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/external/libtextclassifier/libtextclassifier_hash^android_vendor.31_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/external/libtextclassifier/native/libtextclassifier_hash^android_vendor.31_x86_64_shared
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_06/external/libtextclassifier/libtextclassifier_hash^android_vendor.31_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/external/libtextclassifier/native/libtextclassifier_hash^android_vendor.31_x86_64_shared $GITHUB_WORKSPACE/artifacts/external/libtextclassifier/native/libtextclassifier_hash^android_vendor.31_x86_64_shared/addition_copy_files.output
 
 echo "building statslog-textclassifier-java-gen^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja statslog-textclassifier-java-gen,
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/libtextclassifier/java/statslog-textclassifier-java-gen^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/external/libtextclassifier/statslog-textclassifier-java-gen^.output . $GITHUB_WORKSPACE/artifacts/external/libtextclassifier/java/statslog-textclassifier-java-gen^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_06/external/libtextclassifier/statslog-textclassifier-java-gen^.output $GITHUB_WORKSPACE/artifacts/external/libtextclassifier/java/statslog-textclassifier-java-gen^ $GITHUB_WORKSPACE/artifacts/external/libtextclassifier/java/statslog-textclassifier-java-gen^/addition_copy_files.output
 
 rm -rf out
 

@@ -73,26 +73,31 @@ echo "building fsck.f2fs^android_x86_64"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja fsck.f2fs,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/f2fs-tools/fsck.f2fs^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/external/f2fs-tools/fsck.f2fs^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/f2fs-tools/fsck.f2fs^android_x86_64
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_08/external/f2fs-tools/fsck.f2fs^android_x86_64.output $GITHUB_WORKSPACE/artifacts/external/f2fs-tools/fsck.f2fs^android_x86_64 $GITHUB_WORKSPACE/artifacts/external/f2fs-tools/fsck.f2fs^android_x86_64/addition_copy_files.output
 
 echo "building make_f2fs^android_recovery_x86_64"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja make_f2fs,android_recovery_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/f2fs-tools/make_f2fs^android_recovery_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/external/f2fs-tools/make_f2fs^android_recovery_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/f2fs-tools/make_f2fs^android_recovery_x86_64
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_08/external/f2fs-tools/make_f2fs^android_recovery_x86_64.output $GITHUB_WORKSPACE/artifacts/external/f2fs-tools/make_f2fs^android_recovery_x86_64 $GITHUB_WORKSPACE/artifacts/external/f2fs-tools/make_f2fs^android_recovery_x86_64/addition_copy_files.output
 
 echo "building make_f2fs^android_x86_64"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja make_f2fs,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/f2fs-tools/make_f2fs^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/external/f2fs-tools/make_f2fs^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/f2fs-tools/make_f2fs^android_x86_64
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_08/external/f2fs-tools/make_f2fs^android_x86_64.output $GITHUB_WORKSPACE/artifacts/external/f2fs-tools/make_f2fs^android_x86_64 $GITHUB_WORKSPACE/artifacts/external/f2fs-tools/make_f2fs^android_x86_64/addition_copy_files.output
 
 echo "building sload_f2fs^android_recovery_x86_64"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja sload_f2fs,android_recovery_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/f2fs-tools/sload_f2fs^android_recovery_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/external/f2fs-tools/sload_f2fs^android_recovery_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/f2fs-tools/sload_f2fs^android_recovery_x86_64
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_08/external/f2fs-tools/sload_f2fs^android_recovery_x86_64.output $GITHUB_WORKSPACE/artifacts/external/f2fs-tools/sload_f2fs^android_recovery_x86_64 $GITHUB_WORKSPACE/artifacts/external/f2fs-tools/sload_f2fs^android_recovery_x86_64/addition_copy_files.output
 
 echo "building sload_f2fs^android_x86_64"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja sload_f2fs,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/f2fs-tools/sload_f2fs^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/external/f2fs-tools/sload_f2fs^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/f2fs-tools/sload_f2fs^android_x86_64
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_08/external/f2fs-tools/sload_f2fs^android_x86_64.output $GITHUB_WORKSPACE/artifacts/external/f2fs-tools/sload_f2fs^android_x86_64 $GITHUB_WORKSPACE/artifacts/external/f2fs-tools/sload_f2fs^android_x86_64/addition_copy_files.output
 
 rm -rf out
 

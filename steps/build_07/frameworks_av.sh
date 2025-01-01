@@ -67,26 +67,31 @@ echo "building libavservices_minijail^android_x86_64_shared"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libavservices_minijail,android_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/services/minijail/libavservices_minijail^android_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/frameworks/av/libavservices_minijail^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/services/minijail/libavservices_minijail^android_x86_64_shared
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_07/frameworks/av/libavservices_minijail^android_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/frameworks/av/services/minijail/libavservices_minijail^android_x86_64_shared $GITHUB_WORKSPACE/artifacts/frameworks/av/services/minijail/libavservices_minijail^android_x86_64_shared/addition_copy_files.output
 
 echo "building libavservices_minijail^android_x86_64_shared_apex29"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libavservices_minijail,android_x86_64_shared_apex29
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/services/minijail/libavservices_minijail^android_x86_64_shared_apex29
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/frameworks/av/libavservices_minijail^android_x86_64_shared_apex29.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/services/minijail/libavservices_minijail^android_x86_64_shared_apex29
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_07/frameworks/av/libavservices_minijail^android_x86_64_shared_apex29.output $GITHUB_WORKSPACE/artifacts/frameworks/av/services/minijail/libavservices_minijail^android_x86_64_shared_apex29 $GITHUB_WORKSPACE/artifacts/frameworks/av/services/minijail/libavservices_minijail^android_x86_64_shared_apex29/addition_copy_files.output
 
 echo "building libmtp^android_x86_64_shared"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libmtp,android_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/mtp/libmtp^android_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/frameworks/av/libmtp^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/mtp/libmtp^android_x86_64_shared
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_07/frameworks/av/libmtp^android_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/frameworks/av/media/mtp/libmtp^android_x86_64_shared $GITHUB_WORKSPACE/artifacts/frameworks/av/media/mtp/libmtp^android_x86_64_shared/addition_copy_files.output
 
 echo "building libmtp^android_x86_x86_64_shared"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libmtp,android_x86_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/mtp/libmtp^android_x86_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/frameworks/av/libmtp^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/mtp/libmtp^android_x86_x86_64_shared
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_07/frameworks/av/libmtp^android_x86_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/frameworks/av/media/mtp/libmtp^android_x86_x86_64_shared $GITHUB_WORKSPACE/artifacts/frameworks/av/media/mtp/libmtp^android_x86_x86_64_shared/addition_copy_files.output
 
 echo "building libstagefright_foundation^android_x86_64_shared_cfi_apex29"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libstagefright_foundation,android_x86_64_shared_cfi_apex29
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libstagefright/foundation/libstagefright_foundation^android_x86_64_shared_cfi_apex29
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/frameworks/av/libstagefright_foundation^android_x86_64_shared_cfi_apex29.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libstagefright/foundation/libstagefright_foundation^android_x86_64_shared_cfi_apex29
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_07/frameworks/av/libstagefright_foundation^android_x86_64_shared_cfi_apex29.output $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libstagefright/foundation/libstagefright_foundation^android_x86_64_shared_cfi_apex29 $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libstagefright/foundation/libstagefright_foundation^android_x86_64_shared_cfi_apex29/addition_copy_files.output
 
 rm -rf out
 

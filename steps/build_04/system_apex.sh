@@ -51,81 +51,97 @@ echo "building apex_aidl_interface-cpp-source^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja apex_aidl_interface-cpp-source,
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/apex/apexd/apex_aidl_interface-cpp-source^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/apex/apex_aidl_interface-cpp-source^.output . $GITHUB_WORKSPACE/artifacts/system/apex/apexd/apex_aidl_interface-cpp-source^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/system/apex/apex_aidl_interface-cpp-source^.output $GITHUB_WORKSPACE/artifacts/system/apex/apexd/apex_aidl_interface-cpp-source^ $GITHUB_WORKSPACE/artifacts/system/apex/apexd/apex_aidl_interface-cpp-source^/addition_copy_files.output
 
 echo "building apex_aidl_interface-java-source^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja apex_aidl_interface-java-source,
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/apex/apexd/apex_aidl_interface-java-source^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/apex/apex_aidl_interface-java-source^.output . $GITHUB_WORKSPACE/artifacts/system/apex/apexd/apex_aidl_interface-java-source^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/system/apex/apex_aidl_interface-java-source^.output $GITHUB_WORKSPACE/artifacts/system/apex/apexd/apex_aidl_interface-java-source^ $GITHUB_WORKSPACE/artifacts/system/apex/apexd/apex_aidl_interface-java-source^/addition_copy_files.output
 
 echo "building apex_aidl_interface-java^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja apex_aidl_interface-java,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/apex/apexd/apex_aidl_interface-java^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/apex/apex_aidl_interface-java^android_common.output . $GITHUB_WORKSPACE/artifacts/system/apex/apexd/apex_aidl_interface-java^android_common
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/system/apex/apex_aidl_interface-java^android_common.output $GITHUB_WORKSPACE/artifacts/system/apex/apexd/apex_aidl_interface-java^android_common $GITHUB_WORKSPACE/artifacts/system/apex/apexd/apex_aidl_interface-java^android_common/addition_copy_files.output
 
 echo "building apex_build_info_proto^linux_glibc_x86_64_PY2"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja apex_build_info_proto,linux_glibc_x86_64_PY2
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/apex/proto/apex_build_info_proto^linux_glibc_x86_64_PY2
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/apex/apex_build_info_proto^linux_glibc_x86_64_PY2.output . $GITHUB_WORKSPACE/artifacts/system/apex/proto/apex_build_info_proto^linux_glibc_x86_64_PY2
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/system/apex/apex_build_info_proto^linux_glibc_x86_64_PY2.output $GITHUB_WORKSPACE/artifacts/system/apex/proto/apex_build_info_proto^linux_glibc_x86_64_PY2 $GITHUB_WORKSPACE/artifacts/system/apex/proto/apex_build_info_proto^linux_glibc_x86_64_PY2/addition_copy_files.output
 
 echo "building apex_manifest_proto^linux_glibc_x86_64_PY2"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja apex_manifest_proto,linux_glibc_x86_64_PY2
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/apex/proto/apex_manifest_proto^linux_glibc_x86_64_PY2
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/apex/apex_manifest_proto^linux_glibc_x86_64_PY2.output . $GITHUB_WORKSPACE/artifacts/system/apex/proto/apex_manifest_proto^linux_glibc_x86_64_PY2
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/system/apex/apex_manifest_proto^linux_glibc_x86_64_PY2.output $GITHUB_WORKSPACE/artifacts/system/apex/proto/apex_manifest_proto^linux_glibc_x86_64_PY2 $GITHUB_WORKSPACE/artifacts/system/apex/proto/apex_manifest_proto^linux_glibc_x86_64_PY2/addition_copy_files.output
 
 echo "building apex_manifest_proto^linux_glibc_x86_64_PY3"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja apex_manifest_proto,linux_glibc_x86_64_PY3
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/apex/proto/apex_manifest_proto^linux_glibc_x86_64_PY3
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/apex/apex_manifest_proto^linux_glibc_x86_64_PY3.output . $GITHUB_WORKSPACE/artifacts/system/apex/proto/apex_manifest_proto^linux_glibc_x86_64_PY3
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/system/apex/apex_manifest_proto^linux_glibc_x86_64_PY3.output $GITHUB_WORKSPACE/artifacts/system/apex/proto/apex_manifest_proto^linux_glibc_x86_64_PY3 $GITHUB_WORKSPACE/artifacts/system/apex/proto/apex_manifest_proto^linux_glibc_x86_64_PY3/addition_copy_files.output
 
 echo "building lib_apex_manifest_proto^android_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja lib_apex_manifest_proto,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/apex/proto/lib_apex_manifest_proto^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/apex/lib_apex_manifest_proto^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/apex/proto/lib_apex_manifest_proto^android_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/system/apex/lib_apex_manifest_proto^android_x86_64_static.output $GITHUB_WORKSPACE/artifacts/system/apex/proto/lib_apex_manifest_proto^android_x86_64_static $GITHUB_WORKSPACE/artifacts/system/apex/proto/lib_apex_manifest_proto^android_x86_64_static/addition_copy_files.output
 
 echo "building lib_apex_manifest_proto_lite^android_recovery_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja lib_apex_manifest_proto_lite,android_recovery_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/apex/proto/lib_apex_manifest_proto_lite^android_recovery_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/apex/lib_apex_manifest_proto_lite^android_recovery_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/apex/proto/lib_apex_manifest_proto_lite^android_recovery_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/system/apex/lib_apex_manifest_proto_lite^android_recovery_x86_64_static.output $GITHUB_WORKSPACE/artifacts/system/apex/proto/lib_apex_manifest_proto_lite^android_recovery_x86_64_static $GITHUB_WORKSPACE/artifacts/system/apex/proto/lib_apex_manifest_proto_lite^android_recovery_x86_64_static/addition_copy_files.output
 
 echo "building lib_apex_manifest_proto_lite^android_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja lib_apex_manifest_proto_lite,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/apex/proto/lib_apex_manifest_proto_lite^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/apex/lib_apex_manifest_proto_lite^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/apex/proto/lib_apex_manifest_proto_lite^android_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/system/apex/lib_apex_manifest_proto_lite^android_x86_64_static.output $GITHUB_WORKSPACE/artifacts/system/apex/proto/lib_apex_manifest_proto_lite^android_x86_64_static $GITHUB_WORKSPACE/artifacts/system/apex/proto/lib_apex_manifest_proto_lite^android_x86_64_static/addition_copy_files.output
 
 echo "building lib_apex_manifest_proto_lite^android_x86_64_static_apex10000"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja lib_apex_manifest_proto_lite,android_x86_64_static_apex10000
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/apex/proto/lib_apex_manifest_proto_lite^android_x86_64_static_apex10000
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/apex/lib_apex_manifest_proto_lite^android_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/system/apex/proto/lib_apex_manifest_proto_lite^android_x86_64_static_apex10000
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/system/apex/lib_apex_manifest_proto_lite^android_x86_64_static_apex10000.output $GITHUB_WORKSPACE/artifacts/system/apex/proto/lib_apex_manifest_proto_lite^android_x86_64_static_apex10000 $GITHUB_WORKSPACE/artifacts/system/apex/proto/lib_apex_manifest_proto_lite^android_x86_64_static_apex10000/addition_copy_files.output
 
 echo "building lib_apex_manifest_proto_lite^linux_glibc_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja lib_apex_manifest_proto_lite,linux_glibc_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/apex/proto/lib_apex_manifest_proto_lite^linux_glibc_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/apex/lib_apex_manifest_proto_lite^linux_glibc_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/apex/proto/lib_apex_manifest_proto_lite^linux_glibc_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/system/apex/lib_apex_manifest_proto_lite^linux_glibc_x86_64_static.output $GITHUB_WORKSPACE/artifacts/system/apex/proto/lib_apex_manifest_proto_lite^linux_glibc_x86_64_static $GITHUB_WORKSPACE/artifacts/system/apex/proto/lib_apex_manifest_proto_lite^linux_glibc_x86_64_static/addition_copy_files.output
 
 echo "building lib_apex_session_state_proto^android_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja lib_apex_session_state_proto,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/apex/proto/lib_apex_session_state_proto^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/apex/lib_apex_session_state_proto^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/apex/proto/lib_apex_session_state_proto^android_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/system/apex/lib_apex_session_state_proto^android_x86_64_static.output $GITHUB_WORKSPACE/artifacts/system/apex/proto/lib_apex_session_state_proto^android_x86_64_static $GITHUB_WORKSPACE/artifacts/system/apex/proto/lib_apex_session_state_proto^android_x86_64_static/addition_copy_files.output
 
 echo "building libapex^android_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libapex,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/apex/apexd/libapex^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/apex/libapex^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/apex/apexd/libapex^android_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/system/apex/libapex^android_x86_64_static.output $GITHUB_WORKSPACE/artifacts/system/apex/apexd/libapex^android_x86_64_static $GITHUB_WORKSPACE/artifacts/system/apex/apexd/libapex^android_x86_64_static/addition_copy_files.output
 
 echo "building libapexutil^android_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libapexutil,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/apex/libs/libapexutil/libapexutil^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/apex/libapexutil^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/apex/libs/libapexutil/libapexutil^android_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/system/apex/libapexutil^android_x86_64_static.output $GITHUB_WORKSPACE/artifacts/system/apex/libs/libapexutil/libapexutil^android_x86_64_static $GITHUB_WORKSPACE/artifacts/system/apex/libs/libapexutil/libapexutil^android_x86_64_static/addition_copy_files.output
 
 echo "building libapexutil^android_x86_64_static_apex10000"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libapexutil,android_x86_64_static_apex10000
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/apex/libs/libapexutil/libapexutil^android_x86_64_static_apex10000
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/apex/libapexutil^android_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/system/apex/libs/libapexutil/libapexutil^android_x86_64_static_apex10000
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/system/apex/libapexutil^android_x86_64_static_apex10000.output $GITHUB_WORKSPACE/artifacts/system/apex/libs/libapexutil/libapexutil^android_x86_64_static_apex10000 $GITHUB_WORKSPACE/artifacts/system/apex/libs/libapexutil/libapexutil^android_x86_64_static_apex10000/addition_copy_files.output
 
 echo "building libapexutil^linux_glibc_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libapexutil,linux_glibc_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/apex/libs/libapexutil/libapexutil^linux_glibc_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/apex/libapexutil^linux_glibc_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/apex/libs/libapexutil/libapexutil^linux_glibc_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/system/apex/libapexutil^linux_glibc_x86_64_static.output $GITHUB_WORKSPACE/artifacts/system/apex/libs/libapexutil/libapexutil^linux_glibc_x86_64_static $GITHUB_WORKSPACE/artifacts/system/apex/libs/libapexutil/libapexutil^linux_glibc_x86_64_static/addition_copy_files.output
 
 rm -rf out
 

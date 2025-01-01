@@ -102,31 +102,37 @@ echo "building com.android.resolv^android_common_cfi_com.android.resolv_image"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja com.android.resolv,android_common_cfi_com.android.resolv_image
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/DnsResolver/apex/com.android.resolv^android_common_cfi_com.android.resolv_image
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/packages/modules/DnsResolver/com.android.resolv^android_common_cfi_com.android.resolv_image.output . $GITHUB_WORKSPACE/artifacts/packages/modules/DnsResolver/apex/com.android.resolv^android_common_cfi_com.android.resolv_image
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_06/packages/modules/DnsResolver/com.android.resolv^android_common_cfi_com.android.resolv_image.output $GITHUB_WORKSPACE/artifacts/packages/modules/DnsResolver/apex/com.android.resolv^android_common_cfi_com.android.resolv_image $GITHUB_WORKSPACE/artifacts/packages/modules/DnsResolver/apex/com.android.resolv^android_common_cfi_com.android.resolv_image/addition_copy_files.output
 
 echo "building libnetd_resolv^android_x86_64_shared_cfi_com.android.resolv"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libnetd_resolv,android_x86_64_shared_cfi_com.android.resolv
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/DnsResolver/libnetd_resolv^android_x86_64_shared_cfi_com.android.resolv
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/packages/modules/DnsResolver/libnetd_resolv^android_x86_64_shared_cfi_com.android.resolv.output . $GITHUB_WORKSPACE/artifacts/packages/modules/DnsResolver/libnetd_resolv^android_x86_64_shared_cfi_com.android.resolv
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_06/packages/modules/DnsResolver/libnetd_resolv^android_x86_64_shared_cfi_com.android.resolv.output $GITHUB_WORKSPACE/artifacts/packages/modules/DnsResolver/libnetd_resolv^android_x86_64_shared_cfi_com.android.resolv $GITHUB_WORKSPACE/artifacts/packages/modules/DnsResolver/libnetd_resolv^android_x86_64_shared_cfi_com.android.resolv/addition_copy_files.output
 
 echo "building libnetd_resolv^android_x86_64_static_cfi_com.android.resolv"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libnetd_resolv,android_x86_64_static_cfi_com.android.resolv
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/DnsResolver/libnetd_resolv^android_x86_64_static_cfi_com.android.resolv
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/packages/modules/DnsResolver/libnetd_resolv^android_x86_64_static_cfi_com.android.resolv.output . $GITHUB_WORKSPACE/artifacts/packages/modules/DnsResolver/libnetd_resolv^android_x86_64_static_cfi_com.android.resolv
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_06/packages/modules/DnsResolver/libnetd_resolv^android_x86_64_static_cfi_com.android.resolv.output $GITHUB_WORKSPACE/artifacts/packages/modules/DnsResolver/libnetd_resolv^android_x86_64_static_cfi_com.android.resolv $GITHUB_WORKSPACE/artifacts/packages/modules/DnsResolver/libnetd_resolv^android_x86_64_static_cfi_com.android.resolv/addition_copy_files.output
 
 echo "building libstatslog_resolv^android_x86_64_static_cfi_apex29"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libstatslog_resolv,android_x86_64_static_cfi_apex29
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/DnsResolver/libstatslog_resolv^android_x86_64_static_cfi_apex29
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/packages/modules/DnsResolver/libstatslog_resolv^android_x86_64_static_cfi_apex29.output . $GITHUB_WORKSPACE/artifacts/packages/modules/DnsResolver/libstatslog_resolv^android_x86_64_static_cfi_apex29
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_06/packages/modules/DnsResolver/libstatslog_resolv^android_x86_64_static_cfi_apex29.output $GITHUB_WORKSPACE/artifacts/packages/modules/DnsResolver/libstatslog_resolv^android_x86_64_static_cfi_apex29 $GITHUB_WORKSPACE/artifacts/packages/modules/DnsResolver/libstatslog_resolv^android_x86_64_static_cfi_apex29/addition_copy_files.output
 
 echo "building statslog_resolv.cpp^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja statslog_resolv.cpp,
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/DnsResolver/statslog_resolv.cpp^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/packages/modules/DnsResolver/statslog_resolv.cpp^.output . $GITHUB_WORKSPACE/artifacts/packages/modules/DnsResolver/statslog_resolv.cpp^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_06/packages/modules/DnsResolver/statslog_resolv.cpp^.output $GITHUB_WORKSPACE/artifacts/packages/modules/DnsResolver/statslog_resolv.cpp^ $GITHUB_WORKSPACE/artifacts/packages/modules/DnsResolver/statslog_resolv.cpp^/addition_copy_files.output
 
 echo "building statslog_resolv.h^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja statslog_resolv.h,
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/DnsResolver/statslog_resolv.h^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/packages/modules/DnsResolver/statslog_resolv.h^.output . $GITHUB_WORKSPACE/artifacts/packages/modules/DnsResolver/statslog_resolv.h^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_06/packages/modules/DnsResolver/statslog_resolv.h^.output $GITHUB_WORKSPACE/artifacts/packages/modules/DnsResolver/statslog_resolv.h^ $GITHUB_WORKSPACE/artifacts/packages/modules/DnsResolver/statslog_resolv.h^/addition_copy_files.output
 
 rm -rf out
 

@@ -34,46 +34,55 @@ echo "building _makenames^linux_glibc_x86_64"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja _makenames,linux_glibc_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/libcap/_makenames^linux_glibc_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/external/libcap/_makenames^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/libcap/_makenames^linux_glibc_x86_64
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/external/libcap/_makenames^linux_glibc_x86_64.output $GITHUB_WORKSPACE/artifacts/external/libcap/_makenames^linux_glibc_x86_64 $GITHUB_WORKSPACE/artifacts/external/libcap/_makenames^linux_glibc_x86_64/addition_copy_files.output
 
 echo "building cap_names.h^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja cap_names.h,
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/libcap/cap_names.h^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/external/libcap/cap_names.h^.output . $GITHUB_WORKSPACE/artifacts/external/libcap/cap_names.h^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/external/libcap/cap_names.h^.output $GITHUB_WORKSPACE/artifacts/external/libcap/cap_names.h^ $GITHUB_WORKSPACE/artifacts/external/libcap/cap_names.h^/addition_copy_files.output
 
 echo "building cap_names.list.h^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja cap_names.list.h,
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/libcap/cap_names.list.h^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/external/libcap/cap_names.list.h^.output . $GITHUB_WORKSPACE/artifacts/external/libcap/cap_names.list.h^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/external/libcap/cap_names.list.h^.output $GITHUB_WORKSPACE/artifacts/external/libcap/cap_names.list.h^ $GITHUB_WORKSPACE/artifacts/external/libcap/cap_names.list.h^/addition_copy_files.output
 
 echo "building libcap^android_recovery_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libcap,android_recovery_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/libcap/libcap^android_recovery_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/external/libcap/libcap^android_recovery_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/libcap/libcap^android_recovery_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/external/libcap/libcap^android_recovery_x86_64_static.output $GITHUB_WORKSPACE/artifacts/external/libcap/libcap^android_recovery_x86_64_static $GITHUB_WORKSPACE/artifacts/external/libcap/libcap^android_recovery_x86_64_static/addition_copy_files.output
 
 echo "building libcap^android_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libcap,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/libcap/libcap^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/external/libcap/libcap^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/libcap/libcap^android_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/external/libcap/libcap^android_x86_64_static.output $GITHUB_WORKSPACE/artifacts/external/libcap/libcap^android_x86_64_static $GITHUB_WORKSPACE/artifacts/external/libcap/libcap^android_x86_64_static/addition_copy_files.output
 
 echo "building libcap^android_x86_64_static_apex10000"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libcap,android_x86_64_static_apex10000
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/libcap/libcap^android_x86_64_static_apex10000
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/external/libcap/libcap^android_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/external/libcap/libcap^android_x86_64_static_apex10000
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/external/libcap/libcap^android_x86_64_static_apex10000.output $GITHUB_WORKSPACE/artifacts/external/libcap/libcap^android_x86_64_static_apex10000 $GITHUB_WORKSPACE/artifacts/external/libcap/libcap^android_x86_64_static_apex10000/addition_copy_files.output
 
 echo "building libcap^android_x86_64_static_apex29"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libcap,android_x86_64_static_apex29
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/libcap/libcap^android_x86_64_static_apex29
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/external/libcap/libcap^android_x86_64_static_apex29.output . $GITHUB_WORKSPACE/artifacts/external/libcap/libcap^android_x86_64_static_apex29
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/external/libcap/libcap^android_x86_64_static_apex29.output $GITHUB_WORKSPACE/artifacts/external/libcap/libcap^android_x86_64_static_apex29 $GITHUB_WORKSPACE/artifacts/external/libcap/libcap^android_x86_64_static_apex29/addition_copy_files.output
 
 echo "building libcap^android_x86_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libcap,android_x86_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/libcap/libcap^android_x86_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/external/libcap/libcap^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/libcap/libcap^android_x86_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/external/libcap/libcap^android_x86_x86_64_static.output $GITHUB_WORKSPACE/artifacts/external/libcap/libcap^android_x86_x86_64_static $GITHUB_WORKSPACE/artifacts/external/libcap/libcap^android_x86_x86_64_static/addition_copy_files.output
 
 echo "building libcap^linux_glibc_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libcap,linux_glibc_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/libcap/libcap^linux_glibc_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/external/libcap/libcap^linux_glibc_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/libcap/libcap^linux_glibc_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/external/libcap/libcap^linux_glibc_x86_64_static.output $GITHUB_WORKSPACE/artifacts/external/libcap/libcap^linux_glibc_x86_64_static $GITHUB_WORKSPACE/artifacts/external/libcap/libcap^linux_glibc_x86_64_static/addition_copy_files.output
 
 rm -rf out
 

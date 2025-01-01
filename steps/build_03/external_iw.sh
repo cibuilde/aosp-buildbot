@@ -20,6 +20,7 @@ echo "building iw_version^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja iw_version,
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/iw/iw_version^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/external/iw/iw_version^.output . $GITHUB_WORKSPACE/artifacts/external/iw/iw_version^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/external/iw/iw_version^.output $GITHUB_WORKSPACE/artifacts/external/iw/iw_version^ $GITHUB_WORKSPACE/artifacts/external/iw/iw_version^/addition_copy_files.output
 
 rm -rf out
 

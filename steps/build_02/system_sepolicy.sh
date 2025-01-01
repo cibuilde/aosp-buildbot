@@ -32,16 +32,19 @@ echo "building checkseapp^linux_glibc_x86_64"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_02.ninja checkseapp,linux_glibc_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/sepolicy/tools/checkseapp^linux_glibc_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_02/system/sepolicy/checkseapp^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/sepolicy/tools/checkseapp^linux_glibc_x86_64
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_02/system/sepolicy/checkseapp^linux_glibc_x86_64.output $GITHUB_WORKSPACE/artifacts/system/sepolicy/tools/checkseapp^linux_glibc_x86_64 $GITHUB_WORKSPACE/artifacts/system/sepolicy/tools/checkseapp^linux_glibc_x86_64/addition_copy_files.output
 
 echo "building sepolicy-analyze^linux_glibc_x86_64"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_02.ninja sepolicy-analyze,linux_glibc_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/sepolicy/tools/sepolicy-analyze/sepolicy-analyze^linux_glibc_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_02/system/sepolicy/sepolicy-analyze^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/sepolicy/tools/sepolicy-analyze/sepolicy-analyze^linux_glibc_x86_64
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_02/system/sepolicy/sepolicy-analyze^linux_glibc_x86_64.output $GITHUB_WORKSPACE/artifacts/system/sepolicy/tools/sepolicy-analyze/sepolicy-analyze^linux_glibc_x86_64 $GITHUB_WORKSPACE/artifacts/system/sepolicy/tools/sepolicy-analyze/sepolicy-analyze^linux_glibc_x86_64/addition_copy_files.output
 
 echo "building version_policy^linux_glibc_x86_64"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_02.ninja version_policy,linux_glibc_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/sepolicy/tools/version_policy^linux_glibc_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_02/system/sepolicy/version_policy^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/sepolicy/tools/version_policy^linux_glibc_x86_64
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_02/system/sepolicy/version_policy^linux_glibc_x86_64.output $GITHUB_WORKSPACE/artifacts/system/sepolicy/tools/version_policy^linux_glibc_x86_64 $GITHUB_WORKSPACE/artifacts/system/sepolicy/tools/version_policy^linux_glibc_x86_64/addition_copy_files.output
 
 rm -rf out
 

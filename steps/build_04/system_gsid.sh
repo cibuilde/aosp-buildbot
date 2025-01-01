@@ -21,6 +21,7 @@ echo "building gsi_aidl_interface-cpp-source^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja gsi_aidl_interface-cpp-source,
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/gsid/gsi_aidl_interface-cpp-source^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/gsid/gsi_aidl_interface-cpp-source^.output . $GITHUB_WORKSPACE/artifacts/system/gsid/gsi_aidl_interface-cpp-source^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/system/gsid/gsi_aidl_interface-cpp-source^.output $GITHUB_WORKSPACE/artifacts/system/gsid/gsi_aidl_interface-cpp-source^ $GITHUB_WORKSPACE/artifacts/system/gsid/gsi_aidl_interface-cpp-source^/addition_copy_files.output
 
 rm -rf out
 

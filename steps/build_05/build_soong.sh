@@ -33,16 +33,19 @@ echo "building conv_linker_config^linux_glibc_x86_64_PY3"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja conv_linker_config,linux_glibc_x86_64_PY3
 mkdir -p $GITHUB_WORKSPACE/artifacts/build/soong/scripts/conv_linker_config^linux_glibc_x86_64_PY3
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/build/soong/conv_linker_config^linux_glibc_x86_64_PY3.output . $GITHUB_WORKSPACE/artifacts/build/soong/scripts/conv_linker_config^linux_glibc_x86_64_PY3
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/build/soong/conv_linker_config^linux_glibc_x86_64_PY3.output $GITHUB_WORKSPACE/artifacts/build/soong/scripts/conv_linker_config^linux_glibc_x86_64_PY3 $GITHUB_WORKSPACE/artifacts/build/soong/scripts/conv_linker_config^linux_glibc_x86_64_PY3/addition_copy_files.output
 
 echo "building generate_hiddenapi_lists^linux_glibc_x86_64_PY3"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja generate_hiddenapi_lists,linux_glibc_x86_64_PY3
 mkdir -p $GITHUB_WORKSPACE/artifacts/build/soong/scripts/hiddenapi/generate_hiddenapi_lists^linux_glibc_x86_64_PY3
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/build/soong/generate_hiddenapi_lists^linux_glibc_x86_64_PY3.output . $GITHUB_WORKSPACE/artifacts/build/soong/scripts/hiddenapi/generate_hiddenapi_lists^linux_glibc_x86_64_PY3
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/build/soong/generate_hiddenapi_lists^linux_glibc_x86_64_PY3.output $GITHUB_WORKSPACE/artifacts/build/soong/scripts/hiddenapi/generate_hiddenapi_lists^linux_glibc_x86_64_PY3 $GITHUB_WORKSPACE/artifacts/build/soong/scripts/hiddenapi/generate_hiddenapi_lists^linux_glibc_x86_64_PY3/addition_copy_files.output
 
 echo "building merge_csv^linux_glibc_x86_64_PY3"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja merge_csv,linux_glibc_x86_64_PY3
 mkdir -p $GITHUB_WORKSPACE/artifacts/build/soong/scripts/hiddenapi/merge_csv^linux_glibc_x86_64_PY3
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/build/soong/merge_csv^linux_glibc_x86_64_PY3.output . $GITHUB_WORKSPACE/artifacts/build/soong/scripts/hiddenapi/merge_csv^linux_glibc_x86_64_PY3
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/build/soong/merge_csv^linux_glibc_x86_64_PY3.output $GITHUB_WORKSPACE/artifacts/build/soong/scripts/hiddenapi/merge_csv^linux_glibc_x86_64_PY3 $GITHUB_WORKSPACE/artifacts/build/soong/scripts/hiddenapi/merge_csv^linux_glibc_x86_64_PY3/addition_copy_files.output
 
 rm -rf out
 

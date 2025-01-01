@@ -20,6 +20,7 @@ echo "building testng-generated-srcs^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja testng-generated-srcs,
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/testng/testng-generated-srcs^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/external/testng/testng-generated-srcs^.output . $GITHUB_WORKSPACE/artifacts/external/testng/testng-generated-srcs^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/external/testng/testng-generated-srcs^.output $GITHUB_WORKSPACE/artifacts/external/testng/testng-generated-srcs^ $GITHUB_WORKSPACE/artifacts/external/testng/testng-generated-srcs^/addition_copy_files.output
 
 rm -rf out
 

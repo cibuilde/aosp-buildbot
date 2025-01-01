@@ -123,11 +123,13 @@ echo "building setupdesign-lottie-loading-layout^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_25.ninja setupdesign-lottie-loading-layout,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/setupdesign/lottie_loading_layout/setupdesign-lottie-loading-layout^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_25/external/setupdesign/setupdesign-lottie-loading-layout^android_common.output . $GITHUB_WORKSPACE/artifacts/external/setupdesign/lottie_loading_layout/setupdesign-lottie-loading-layout^android_common
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_25/external/setupdesign/setupdesign-lottie-loading-layout^android_common.output $GITHUB_WORKSPACE/artifacts/external/setupdesign/lottie_loading_layout/setupdesign-lottie-loading-layout^android_common $GITHUB_WORKSPACE/artifacts/external/setupdesign/lottie_loading_layout/setupdesign-lottie-loading-layout^android_common/addition_copy_files.output
 
 echo "building setupdesign^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_25.ninja setupdesign,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/setupdesign/setupdesign^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_25/external/setupdesign/setupdesign^android_common.output . $GITHUB_WORKSPACE/artifacts/external/setupdesign/setupdesign^android_common
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_25/external/setupdesign/setupdesign^android_common.output $GITHUB_WORKSPACE/artifacts/external/setupdesign/setupdesign^android_common $GITHUB_WORKSPACE/artifacts/external/setupdesign/setupdesign^android_common/addition_copy_files.output
 
 rm -rf out
 

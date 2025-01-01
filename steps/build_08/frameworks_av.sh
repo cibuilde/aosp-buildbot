@@ -113,141 +113,169 @@ echo "building libaudio-resampler^android_x86_64_shared"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libaudio-resampler,android_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libaudioprocessing/audio-resampler/libaudio-resampler^android_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/frameworks/av/libaudio-resampler^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libaudioprocessing/audio-resampler/libaudio-resampler^android_x86_64_shared
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_08/frameworks/av/libaudio-resampler^android_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libaudioprocessing/audio-resampler/libaudio-resampler^android_x86_64_shared $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libaudioprocessing/audio-resampler/libaudio-resampler^android_x86_64_shared/addition_copy_files.output
 
 echo "building libaudio-resampler^android_x86_x86_64_shared"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libaudio-resampler,android_x86_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libaudioprocessing/audio-resampler/libaudio-resampler^android_x86_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/frameworks/av/libaudio-resampler^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libaudioprocessing/audio-resampler/libaudio-resampler^android_x86_x86_64_shared
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_08/frameworks/av/libaudio-resampler^android_x86_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libaudioprocessing/audio-resampler/libaudio-resampler^android_x86_x86_64_shared $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libaudioprocessing/audio-resampler/libaudio-resampler^android_x86_x86_64_shared/addition_copy_files.output
 
 echo "building libaudiopreprocessing^android_vendor.31_x86_64_shared"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libaudiopreprocessing,android_vendor.31_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libeffects/preprocessing/libaudiopreprocessing^android_vendor.31_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/frameworks/av/libaudiopreprocessing^android_vendor.31_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libeffects/preprocessing/libaudiopreprocessing^android_vendor.31_x86_64_shared
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_08/frameworks/av/libaudiopreprocessing^android_vendor.31_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libeffects/preprocessing/libaudiopreprocessing^android_vendor.31_x86_64_shared $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libeffects/preprocessing/libaudiopreprocessing^android_vendor.31_x86_64_shared/addition_copy_files.output
 
 echo "building libaudiopreprocessing^android_vendor.31_x86_x86_64_shared"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libaudiopreprocessing,android_vendor.31_x86_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libeffects/preprocessing/libaudiopreprocessing^android_vendor.31_x86_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/frameworks/av/libaudiopreprocessing^android_vendor.31_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libeffects/preprocessing/libaudiopreprocessing^android_vendor.31_x86_x86_64_shared
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_08/frameworks/av/libaudiopreprocessing^android_vendor.31_x86_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libeffects/preprocessing/libaudiopreprocessing^android_vendor.31_x86_x86_64_shared $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libeffects/preprocessing/libaudiopreprocessing^android_vendor.31_x86_x86_64_shared/addition_copy_files.output
 
 echo "building libavservices_minijail^android_vendor.31_x86_x86_64_shared"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libavservices_minijail,android_vendor.31_x86_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/services/minijail/libavservices_minijail^android_vendor.31_x86_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/frameworks/av/libavservices_minijail^android_vendor.31_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/services/minijail/libavservices_minijail^android_vendor.31_x86_x86_64_shared
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_08/frameworks/av/libavservices_minijail^android_vendor.31_x86_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/frameworks/av/services/minijail/libavservices_minijail^android_vendor.31_x86_x86_64_shared $GITHUB_WORKSPACE/artifacts/frameworks/av/services/minijail/libavservices_minijail^android_vendor.31_x86_x86_64_shared/addition_copy_files.output
 
 echo "building libclearkeycasplugin^android_vendor.31_x86_64_shared"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libclearkeycasplugin,android_vendor.31_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/drm/mediacas/plugins/clearkey/libclearkeycasplugin^android_vendor.31_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/frameworks/av/libclearkeycasplugin^android_vendor.31_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/drm/mediacas/plugins/clearkey/libclearkeycasplugin^android_vendor.31_x86_64_shared
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_08/frameworks/av/libclearkeycasplugin^android_vendor.31_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/frameworks/av/drm/mediacas/plugins/clearkey/libclearkeycasplugin^android_vendor.31_x86_64_shared $GITHUB_WORKSPACE/artifacts/frameworks/av/drm/mediacas/plugins/clearkey/libclearkeycasplugin^android_vendor.31_x86_64_shared/addition_copy_files.output
 
 echo "building libclearkeycasplugin^android_vendor.31_x86_x86_64_shared"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libclearkeycasplugin,android_vendor.31_x86_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/drm/mediacas/plugins/clearkey/libclearkeycasplugin^android_vendor.31_x86_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/frameworks/av/libclearkeycasplugin^android_vendor.31_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/drm/mediacas/plugins/clearkey/libclearkeycasplugin^android_vendor.31_x86_x86_64_shared
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_08/frameworks/av/libclearkeycasplugin^android_vendor.31_x86_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/frameworks/av/drm/mediacas/plugins/clearkey/libclearkeycasplugin^android_vendor.31_x86_x86_64_shared $GITHUB_WORKSPACE/artifacts/frameworks/av/drm/mediacas/plugins/clearkey/libclearkeycasplugin^android_vendor.31_x86_x86_64_shared/addition_copy_files.output
 
 echo "building libdrmclearkeyplugin^android_vendor.31_x86_64_shared"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libdrmclearkeyplugin,android_vendor.31_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/drm/mediadrm/plugins/clearkey/default/libdrmclearkeyplugin^android_vendor.31_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/frameworks/av/libdrmclearkeyplugin^android_vendor.31_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/drm/mediadrm/plugins/clearkey/default/libdrmclearkeyplugin^android_vendor.31_x86_64_shared
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_08/frameworks/av/libdrmclearkeyplugin^android_vendor.31_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/frameworks/av/drm/mediadrm/plugins/clearkey/default/libdrmclearkeyplugin^android_vendor.31_x86_64_shared $GITHUB_WORKSPACE/artifacts/frameworks/av/drm/mediadrm/plugins/clearkey/default/libdrmclearkeyplugin^android_vendor.31_x86_64_shared/addition_copy_files.output
 
 echo "building libdrmclearkeyplugin^android_vendor.31_x86_x86_64_shared"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libdrmclearkeyplugin,android_vendor.31_x86_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/drm/mediadrm/plugins/clearkey/default/libdrmclearkeyplugin^android_vendor.31_x86_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/frameworks/av/libdrmclearkeyplugin^android_vendor.31_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/drm/mediadrm/plugins/clearkey/default/libdrmclearkeyplugin^android_vendor.31_x86_x86_64_shared
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_08/frameworks/av/libdrmclearkeyplugin^android_vendor.31_x86_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/frameworks/av/drm/mediadrm/plugins/clearkey/default/libdrmclearkeyplugin^android_vendor.31_x86_x86_64_shared $GITHUB_WORKSPACE/artifacts/frameworks/av/drm/mediadrm/plugins/clearkey/default/libdrmclearkeyplugin^android_vendor.31_x86_x86_64_shared/addition_copy_files.output
 
 echo "building libdynproc^android_vendor.31_x86_64_shared"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libdynproc,android_vendor.31_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libeffects/dynamicsproc/libdynproc^android_vendor.31_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/frameworks/av/libdynproc^android_vendor.31_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libeffects/dynamicsproc/libdynproc^android_vendor.31_x86_64_shared
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_08/frameworks/av/libdynproc^android_vendor.31_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libeffects/dynamicsproc/libdynproc^android_vendor.31_x86_64_shared $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libeffects/dynamicsproc/libdynproc^android_vendor.31_x86_64_shared/addition_copy_files.output
 
 echo "building libdynproc^android_vendor.31_x86_x86_64_shared"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libdynproc,android_vendor.31_x86_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libeffects/dynamicsproc/libdynproc^android_vendor.31_x86_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/frameworks/av/libdynproc^android_vendor.31_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libeffects/dynamicsproc/libdynproc^android_vendor.31_x86_x86_64_shared
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_08/frameworks/av/libdynproc^android_vendor.31_x86_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libeffects/dynamicsproc/libdynproc^android_vendor.31_x86_x86_64_shared $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libeffects/dynamicsproc/libdynproc^android_vendor.31_x86_x86_64_shared/addition_copy_files.output
 
 echo "building libeffectproxy^android_vendor.31_x86_64_shared"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libeffectproxy,android_vendor.31_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libeffects/proxy/libeffectproxy^android_vendor.31_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/frameworks/av/libeffectproxy^android_vendor.31_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libeffects/proxy/libeffectproxy^android_vendor.31_x86_64_shared
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_08/frameworks/av/libeffectproxy^android_vendor.31_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libeffects/proxy/libeffectproxy^android_vendor.31_x86_64_shared $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libeffects/proxy/libeffectproxy^android_vendor.31_x86_64_shared/addition_copy_files.output
 
 echo "building libeffectproxy^android_vendor.31_x86_x86_64_shared"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libeffectproxy,android_vendor.31_x86_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libeffects/proxy/libeffectproxy^android_vendor.31_x86_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/frameworks/av/libeffectproxy^android_vendor.31_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libeffects/proxy/libeffectproxy^android_vendor.31_x86_x86_64_shared
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_08/frameworks/av/libeffectproxy^android_vendor.31_x86_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libeffects/proxy/libeffectproxy^android_vendor.31_x86_x86_64_shared $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libeffects/proxy/libeffectproxy^android_vendor.31_x86_x86_64_shared/addition_copy_files.output
 
 echo "building libeffects^android_vendor.31_x86_64_shared"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libeffects,android_vendor.31_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libeffects/factory/libeffects^android_vendor.31_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/frameworks/av/libeffects^android_vendor.31_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libeffects/factory/libeffects^android_vendor.31_x86_64_shared
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_08/frameworks/av/libeffects^android_vendor.31_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libeffects/factory/libeffects^android_vendor.31_x86_64_shared $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libeffects/factory/libeffects^android_vendor.31_x86_64_shared/addition_copy_files.output
 
 echo "building libeffects^android_vendor.31_x86_x86_64_shared"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libeffects,android_vendor.31_x86_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libeffects/factory/libeffects^android_vendor.31_x86_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/frameworks/av/libeffects^android_vendor.31_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libeffects/factory/libeffects^android_vendor.31_x86_x86_64_shared
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_08/frameworks/av/libeffects^android_vendor.31_x86_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libeffects/factory/libeffects^android_vendor.31_x86_x86_64_shared $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libeffects/factory/libeffects^android_vendor.31_x86_x86_64_shared/addition_copy_files.output
 
 echo "building libeffectsconfig^android_vendor.31_x86_64_shared"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libeffectsconfig,android_vendor.31_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libeffects/config/libeffectsconfig^android_vendor.31_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/frameworks/av/libeffectsconfig^android_vendor.31_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libeffects/config/libeffectsconfig^android_vendor.31_x86_64_shared
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_08/frameworks/av/libeffectsconfig^android_vendor.31_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libeffects/config/libeffectsconfig^android_vendor.31_x86_64_shared $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libeffects/config/libeffectsconfig^android_vendor.31_x86_64_shared/addition_copy_files.output
 
 echo "building libeffectsconfig^android_vendor.31_x86_x86_64_shared"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libeffectsconfig,android_vendor.31_x86_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libeffects/config/libeffectsconfig^android_vendor.31_x86_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/frameworks/av/libeffectsconfig^android_vendor.31_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libeffects/config/libeffectsconfig^android_vendor.31_x86_x86_64_shared
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_08/frameworks/av/libeffectsconfig^android_vendor.31_x86_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libeffects/config/libeffectsconfig^android_vendor.31_x86_x86_64_shared $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libeffects/config/libeffectsconfig^android_vendor.31_x86_x86_64_shared/addition_copy_files.output
 
 echo "building libeffectsconfig^android_x86_64_shared"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libeffectsconfig,android_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libeffects/config/libeffectsconfig^android_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/frameworks/av/libeffectsconfig^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libeffects/config/libeffectsconfig^android_x86_64_shared
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_08/frameworks/av/libeffectsconfig^android_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libeffects/config/libeffectsconfig^android_x86_64_shared $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libeffects/config/libeffectsconfig^android_x86_64_shared/addition_copy_files.output
 
 echo "building libimg_utils^android_x86_64_shared"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libimg_utils,android_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/img_utils/libimg_utils^android_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/frameworks/av/libimg_utils^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/img_utils/libimg_utils^android_x86_64_shared
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_08/frameworks/av/libimg_utils^android_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/frameworks/av/media/img_utils/libimg_utils^android_x86_64_shared $GITHUB_WORKSPACE/artifacts/frameworks/av/media/img_utils/libimg_utils^android_x86_64_shared/addition_copy_files.output
 
 echo "building libimg_utils^android_x86_x86_64_shared"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libimg_utils,android_x86_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/img_utils/libimg_utils^android_x86_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/frameworks/av/libimg_utils^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/img_utils/libimg_utils^android_x86_x86_64_shared
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_08/frameworks/av/libimg_utils^android_x86_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/frameworks/av/media/img_utils/libimg_utils^android_x86_x86_64_shared $GITHUB_WORKSPACE/artifacts/frameworks/av/media/img_utils/libimg_utils^android_x86_x86_64_shared/addition_copy_files.output
 
 echo "building libldnhncr^android_vendor.31_x86_64_shared"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libldnhncr,android_vendor.31_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libeffects/loudness/libldnhncr^android_vendor.31_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/frameworks/av/libldnhncr^android_vendor.31_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libeffects/loudness/libldnhncr^android_vendor.31_x86_64_shared
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_08/frameworks/av/libldnhncr^android_vendor.31_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libeffects/loudness/libldnhncr^android_vendor.31_x86_64_shared $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libeffects/loudness/libldnhncr^android_vendor.31_x86_64_shared/addition_copy_files.output
 
 echo "building libldnhncr^android_vendor.31_x86_x86_64_shared"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libldnhncr,android_vendor.31_x86_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libeffects/loudness/libldnhncr^android_vendor.31_x86_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/frameworks/av/libldnhncr^android_vendor.31_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libeffects/loudness/libldnhncr^android_vendor.31_x86_x86_64_shared
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_08/frameworks/av/libldnhncr^android_vendor.31_x86_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libeffects/loudness/libldnhncr^android_vendor.31_x86_x86_64_shared $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libeffects/loudness/libldnhncr^android_vendor.31_x86_x86_64_shared/addition_copy_files.output
 
 echo "building libmedia_helper^android_vendor.31_x86_64_shared"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libmedia_helper,android_vendor.31_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libmediahelper/libmedia_helper^android_vendor.31_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/frameworks/av/libmedia_helper^android_vendor.31_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libmediahelper/libmedia_helper^android_vendor.31_x86_64_shared
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_08/frameworks/av/libmedia_helper^android_vendor.31_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libmediahelper/libmedia_helper^android_vendor.31_x86_64_shared $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libmediahelper/libmedia_helper^android_vendor.31_x86_64_shared/addition_copy_files.output
 
 echo "building libmedia_helper^android_vendor.31_x86_x86_64_shared"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libmedia_helper,android_vendor.31_x86_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libmediahelper/libmedia_helper^android_vendor.31_x86_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/frameworks/av/libmedia_helper^android_vendor.31_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libmediahelper/libmedia_helper^android_vendor.31_x86_x86_64_shared
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_08/frameworks/av/libmedia_helper^android_vendor.31_x86_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libmediahelper/libmedia_helper^android_vendor.31_x86_x86_64_shared $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libmediahelper/libmedia_helper^android_vendor.31_x86_x86_64_shared/addition_copy_files.output
 
 echo "building libmedia_helper^android_x86_64_shared"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libmedia_helper,android_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libmediahelper/libmedia_helper^android_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/frameworks/av/libmedia_helper^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libmediahelper/libmedia_helper^android_x86_64_shared
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_08/frameworks/av/libmedia_helper^android_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libmediahelper/libmedia_helper^android_x86_64_shared $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libmediahelper/libmedia_helper^android_x86_64_shared/addition_copy_files.output
 
 echo "building libmedia_helper^android_x86_x86_64_shared"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libmedia_helper,android_x86_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libmediahelper/libmedia_helper^android_x86_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/frameworks/av/libmedia_helper^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libmediahelper/libmedia_helper^android_x86_x86_64_shared
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_08/frameworks/av/libmedia_helper^android_x86_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libmediahelper/libmedia_helper^android_x86_x86_64_shared $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libmediahelper/libmedia_helper^android_x86_x86_64_shared/addition_copy_files.output
 
 echo "building libstagefright_foundation^android_vendor.31_x86_64_shared"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libstagefright_foundation,android_vendor.31_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libstagefright/foundation/libstagefright_foundation^android_vendor.31_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/frameworks/av/libstagefright_foundation^android_vendor.31_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libstagefright/foundation/libstagefright_foundation^android_vendor.31_x86_64_shared
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_08/frameworks/av/libstagefright_foundation^android_vendor.31_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libstagefright/foundation/libstagefright_foundation^android_vendor.31_x86_64_shared $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libstagefright/foundation/libstagefright_foundation^android_vendor.31_x86_64_shared/addition_copy_files.output
 
 echo "building libstagefright_foundation^android_vendor.31_x86_x86_64_shared"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libstagefright_foundation,android_vendor.31_x86_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libstagefright/foundation/libstagefright_foundation^android_vendor.31_x86_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/frameworks/av/libstagefright_foundation^android_vendor.31_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libstagefright/foundation/libstagefright_foundation^android_vendor.31_x86_x86_64_shared
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_08/frameworks/av/libstagefright_foundation^android_vendor.31_x86_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libstagefright/foundation/libstagefright_foundation^android_vendor.31_x86_x86_64_shared $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libstagefright/foundation/libstagefright_foundation^android_vendor.31_x86_x86_64_shared/addition_copy_files.output
 
 rm -rf out
 

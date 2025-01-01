@@ -48,26 +48,31 @@ echo "building android.car-stub-docs^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_25.ninja android.car-stub-docs,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/services/Car/car-lib/android.car-stub-docs^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_25/packages/services/Car/android.car-stub-docs^android_common.output . $GITHUB_WORKSPACE/artifacts/packages/services/Car/car-lib/android.car-stub-docs^android_common
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_25/packages/services/Car/android.car-stub-docs^android_common.output $GITHUB_WORKSPACE/artifacts/packages/services/Car/car-lib/android.car-stub-docs^android_common $GITHUB_WORKSPACE/artifacts/packages/services/Car/car-lib/android.car-stub-docs^android_common/addition_copy_files.output
 
 echo "building android.car-stubs-docs^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_25.ninja android.car-stubs-docs,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/services/Car/car-lib/android.car-stubs-docs^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_25/packages/services/Car/android.car-stubs-docs^android_common.output . $GITHUB_WORKSPACE/artifacts/packages/services/Car/car-lib/android.car-stubs-docs^android_common
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_25/packages/services/Car/android.car-stubs-docs^android_common.output $GITHUB_WORKSPACE/artifacts/packages/services/Car/car-lib/android.car-stubs-docs^android_common $GITHUB_WORKSPACE/artifacts/packages/services/Car/car-lib/android.car-stubs-docs^android_common/addition_copy_files.output
 
 echo "building android.car-stubs^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_25.ninja android.car-stubs,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/services/Car/car-lib/android.car-stubs^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_25/packages/services/Car/android.car-stubs^android_common.output . $GITHUB_WORKSPACE/artifacts/packages/services/Car/car-lib/android.car-stubs^android_common
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_25/packages/services/Car/android.car-stubs^android_common.output $GITHUB_WORKSPACE/artifacts/packages/services/Car/car-lib/android.car-stubs^android_common $GITHUB_WORKSPACE/artifacts/packages/services/Car/car-lib/android.car-stubs^android_common/addition_copy_files.output
 
 echo "building android.car-system-stubs-docs^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_25.ninja android.car-system-stubs-docs,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/services/Car/car-lib/android.car-system-stubs-docs^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_25/packages/services/Car/android.car-system-stubs-docs^android_common.output . $GITHUB_WORKSPACE/artifacts/packages/services/Car/car-lib/android.car-system-stubs-docs^android_common
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_25/packages/services/Car/android.car-system-stubs-docs^android_common.output $GITHUB_WORKSPACE/artifacts/packages/services/Car/car-lib/android.car-system-stubs-docs^android_common $GITHUB_WORKSPACE/artifacts/packages/services/Car/car-lib/android.car-system-stubs-docs^android_common/addition_copy_files.output
 
 echo "building android.car^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_25.ninja android.car,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/services/Car/car-lib/android.car^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_25/packages/services/Car/android.car^android_common.output . $GITHUB_WORKSPACE/artifacts/packages/services/Car/car-lib/android.car^android_common
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_25/packages/services/Car/android.car^android_common.output $GITHUB_WORKSPACE/artifacts/packages/services/Car/car-lib/android.car^android_common $GITHUB_WORKSPACE/artifacts/packages/services/Car/car-lib/android.car^android_common/addition_copy_files.output
 
 rm -rf out
 

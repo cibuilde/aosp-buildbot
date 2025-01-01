@@ -78,6 +78,7 @@ echo "building wificond^android_x86_64"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_11.ninja wificond,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/connectivity/wificond/wificond^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_11/system/connectivity/wificond/wificond^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/connectivity/wificond/wificond^android_x86_64
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_11/system/connectivity/wificond/wificond^android_x86_64.output $GITHUB_WORKSPACE/artifacts/system/connectivity/wificond/wificond^android_x86_64 $GITHUB_WORKSPACE/artifacts/system/connectivity/wificond/wificond^android_x86_64/addition_copy_files.output
 
 rm -rf out
 

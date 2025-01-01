@@ -40,21 +40,25 @@ echo "building conv_classpaths_proto^linux_glibc_x86_64_PY3"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja conv_classpaths_proto,linux_glibc_x86_64_PY3
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/common/tools/conv_classpaths_proto^linux_glibc_x86_64_PY3
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/packages/modules/common/conv_classpaths_proto^linux_glibc_x86_64_PY3.output . $GITHUB_WORKSPACE/artifacts/packages/modules/common/tools/conv_classpaths_proto^linux_glibc_x86_64_PY3
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/packages/modules/common/conv_classpaths_proto^linux_glibc_x86_64_PY3.output $GITHUB_WORKSPACE/artifacts/packages/modules/common/tools/conv_classpaths_proto^linux_glibc_x86_64_PY3 $GITHUB_WORKSPACE/artifacts/packages/modules/common/tools/conv_classpaths_proto^linux_glibc_x86_64_PY3/addition_copy_files.output
 
 echo "building cur_sdkinfo_src^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja cur_sdkinfo_src,
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/common/tools/cur_sdkinfo_src^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/packages/modules/common/cur_sdkinfo_src^.output . $GITHUB_WORKSPACE/artifacts/packages/modules/common/tools/cur_sdkinfo_src^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/packages/modules/common/cur_sdkinfo_src^.output $GITHUB_WORKSPACE/artifacts/packages/modules/common/tools/cur_sdkinfo_src^ $GITHUB_WORKSPACE/artifacts/packages/modules/common/tools/cur_sdkinfo_src^/addition_copy_files.output
 
 echo "building current_sdkinfo^android_x86_64"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja current_sdkinfo,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/common/tools/current_sdkinfo^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/packages/modules/common/current_sdkinfo^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/packages/modules/common/tools/current_sdkinfo^android_x86_64
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/packages/modules/common/current_sdkinfo^android_x86_64.output $GITHUB_WORKSPACE/artifacts/packages/modules/common/tools/current_sdkinfo^android_x86_64 $GITHUB_WORKSPACE/artifacts/packages/modules/common/tools/current_sdkinfo^android_x86_64/addition_copy_files.output
 
 echo "building gen_sdkinfo^linux_glibc_x86_64_PY3"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja gen_sdkinfo,linux_glibc_x86_64_PY3
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/common/tools/gen_sdkinfo^linux_glibc_x86_64_PY3
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/packages/modules/common/gen_sdkinfo^linux_glibc_x86_64_PY3.output . $GITHUB_WORKSPACE/artifacts/packages/modules/common/tools/gen_sdkinfo^linux_glibc_x86_64_PY3
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/packages/modules/common/gen_sdkinfo^linux_glibc_x86_64_PY3.output $GITHUB_WORKSPACE/artifacts/packages/modules/common/tools/gen_sdkinfo^linux_glibc_x86_64_PY3 $GITHUB_WORKSPACE/artifacts/packages/modules/common/tools/gen_sdkinfo^linux_glibc_x86_64_PY3/addition_copy_files.output
 
 rm -rf out
 

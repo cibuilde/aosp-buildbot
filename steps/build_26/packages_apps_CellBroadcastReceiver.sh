@@ -51,6 +51,7 @@ echo "building com.android.cellbroadcast^android_common_com.android.cellbroadcas
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_26.ninja com.android.cellbroadcast,android_common_com.android.cellbroadcast_image
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/apps/CellBroadcastReceiver/apex/com.android.cellbroadcast^android_common_com.android.cellbroadcast_image
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_26/packages/apps/CellBroadcastReceiver/com.android.cellbroadcast^android_common_com.android.cellbroadcast_image.output . $GITHUB_WORKSPACE/artifacts/packages/apps/CellBroadcastReceiver/apex/com.android.cellbroadcast^android_common_com.android.cellbroadcast_image
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_26/packages/apps/CellBroadcastReceiver/com.android.cellbroadcast^android_common_com.android.cellbroadcast_image.output $GITHUB_WORKSPACE/artifacts/packages/apps/CellBroadcastReceiver/apex/com.android.cellbroadcast^android_common_com.android.cellbroadcast_image $GITHUB_WORKSPACE/artifacts/packages/apps/CellBroadcastReceiver/apex/com.android.cellbroadcast^android_common_com.android.cellbroadcast_image/addition_copy_files.output
 
 rm -rf out
 

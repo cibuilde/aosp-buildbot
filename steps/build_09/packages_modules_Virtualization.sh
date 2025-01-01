@@ -125,21 +125,25 @@ echo "building android.system.virtmanager-rust^android_x86_64_dylib_apex10000"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja android.system.virtmanager-rust,android_x86_64_dylib_apex10000
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/Virtualization/virtmanager/aidl/android.system.virtmanager-rust^android_x86_64_dylib_apex10000
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_09/packages/modules/Virtualization/android.system.virtmanager-rust^android_x86_64_dylib_apex10000.output . $GITHUB_WORKSPACE/artifacts/packages/modules/Virtualization/virtmanager/aidl/android.system.virtmanager-rust^android_x86_64_dylib_apex10000
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_09/packages/modules/Virtualization/android.system.virtmanager-rust^android_x86_64_dylib_apex10000.output $GITHUB_WORKSPACE/artifacts/packages/modules/Virtualization/virtmanager/aidl/android.system.virtmanager-rust^android_x86_64_dylib_apex10000 $GITHUB_WORKSPACE/artifacts/packages/modules/Virtualization/virtmanager/aidl/android.system.virtmanager-rust^android_x86_64_dylib_apex10000/addition_copy_files.output
 
 echo "building android.system.virtmanager-rust^android_x86_64_rlib_rlib-std_apex10000"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja android.system.virtmanager-rust,android_x86_64_rlib_rlib-std_apex10000
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/Virtualization/virtmanager/aidl/android.system.virtmanager-rust^android_x86_64_rlib_rlib-std_apex10000
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_09/packages/modules/Virtualization/android.system.virtmanager-rust^android_x86_64_rlib_rlib-std_apex10000.output . $GITHUB_WORKSPACE/artifacts/packages/modules/Virtualization/virtmanager/aidl/android.system.virtmanager-rust^android_x86_64_rlib_rlib-std_apex10000
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_09/packages/modules/Virtualization/android.system.virtmanager-rust^android_x86_64_rlib_rlib-std_apex10000.output $GITHUB_WORKSPACE/artifacts/packages/modules/Virtualization/virtmanager/aidl/android.system.virtmanager-rust^android_x86_64_rlib_rlib-std_apex10000 $GITHUB_WORKSPACE/artifacts/packages/modules/Virtualization/virtmanager/aidl/android.system.virtmanager-rust^android_x86_64_rlib_rlib-std_apex10000/addition_copy_files.output
 
 echo "building authfs_aidl_interface-rust^android_x86_64_dylib_apex10000"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja authfs_aidl_interface-rust,android_x86_64_dylib_apex10000
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/Virtualization/authfs/aidl/authfs_aidl_interface-rust^android_x86_64_dylib_apex10000
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_09/packages/modules/Virtualization/authfs_aidl_interface-rust^android_x86_64_dylib_apex10000.output . $GITHUB_WORKSPACE/artifacts/packages/modules/Virtualization/authfs/aidl/authfs_aidl_interface-rust^android_x86_64_dylib_apex10000
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_09/packages/modules/Virtualization/authfs_aidl_interface-rust^android_x86_64_dylib_apex10000.output $GITHUB_WORKSPACE/artifacts/packages/modules/Virtualization/authfs/aidl/authfs_aidl_interface-rust^android_x86_64_dylib_apex10000 $GITHUB_WORKSPACE/artifacts/packages/modules/Virtualization/authfs/aidl/authfs_aidl_interface-rust^android_x86_64_dylib_apex10000/addition_copy_files.output
 
 echo "building virtmanager^android_x86_64_apex10000"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja virtmanager,android_x86_64_apex10000
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/Virtualization/virtmanager/virtmanager^android_x86_64_apex10000
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_09/packages/modules/Virtualization/virtmanager^android_x86_64_apex10000.output . $GITHUB_WORKSPACE/artifacts/packages/modules/Virtualization/virtmanager/virtmanager^android_x86_64_apex10000
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_09/packages/modules/Virtualization/virtmanager^android_x86_64_apex10000.output $GITHUB_WORKSPACE/artifacts/packages/modules/Virtualization/virtmanager/virtmanager^android_x86_64_apex10000 $GITHUB_WORKSPACE/artifacts/packages/modules/Virtualization/virtmanager/virtmanager^android_x86_64_apex10000/addition_copy_files.output
 
 rm -rf out
 

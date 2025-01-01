@@ -42,76 +42,91 @@ echo "building bcc_strip_attr^linux_glibc_x86_64"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja bcc_strip_attr,linux_glibc_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/compile/libbcc/tools/bcc_strip_attr/bcc_strip_attr^linux_glibc_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/compile/libbcc/bcc_strip_attr^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/frameworks/compile/libbcc/tools/bcc_strip_attr/bcc_strip_attr^linux_glibc_x86_64
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/frameworks/compile/libbcc/bcc_strip_attr^linux_glibc_x86_64.output $GITHUB_WORKSPACE/artifacts/frameworks/compile/libbcc/tools/bcc_strip_attr/bcc_strip_attr^linux_glibc_x86_64 $GITHUB_WORKSPACE/artifacts/frameworks/compile/libbcc/tools/bcc_strip_attr/bcc_strip_attr^linux_glibc_x86_64/addition_copy_files.output
 
 echo "building libLLVMBitReader_2_7^android_vendor.31_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libLLVMBitReader_2_7,android_vendor.31_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/compile/libbcc/bcinfo/BitReader_2_7/libLLVMBitReader_2_7^android_vendor.31_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/compile/libbcc/libLLVMBitReader_2_7^android_vendor.31_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/compile/libbcc/bcinfo/BitReader_2_7/libLLVMBitReader_2_7^android_vendor.31_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/frameworks/compile/libbcc/libLLVMBitReader_2_7^android_vendor.31_x86_64_static.output $GITHUB_WORKSPACE/artifacts/frameworks/compile/libbcc/bcinfo/BitReader_2_7/libLLVMBitReader_2_7^android_vendor.31_x86_64_static $GITHUB_WORKSPACE/artifacts/frameworks/compile/libbcc/bcinfo/BitReader_2_7/libLLVMBitReader_2_7^android_vendor.31_x86_64_static/addition_copy_files.output
 
 echo "building libLLVMBitReader_2_7^android_vendor.31_x86_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libLLVMBitReader_2_7,android_vendor.31_x86_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/compile/libbcc/bcinfo/BitReader_2_7/libLLVMBitReader_2_7^android_vendor.31_x86_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/compile/libbcc/libLLVMBitReader_2_7^android_vendor.31_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/compile/libbcc/bcinfo/BitReader_2_7/libLLVMBitReader_2_7^android_vendor.31_x86_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/frameworks/compile/libbcc/libLLVMBitReader_2_7^android_vendor.31_x86_x86_64_static.output $GITHUB_WORKSPACE/artifacts/frameworks/compile/libbcc/bcinfo/BitReader_2_7/libLLVMBitReader_2_7^android_vendor.31_x86_x86_64_static $GITHUB_WORKSPACE/artifacts/frameworks/compile/libbcc/bcinfo/BitReader_2_7/libLLVMBitReader_2_7^android_vendor.31_x86_x86_64_static/addition_copy_files.output
 
 echo "building libLLVMBitReader_2_7^android_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libLLVMBitReader_2_7,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/compile/libbcc/bcinfo/BitReader_2_7/libLLVMBitReader_2_7^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/compile/libbcc/libLLVMBitReader_2_7^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/compile/libbcc/bcinfo/BitReader_2_7/libLLVMBitReader_2_7^android_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/frameworks/compile/libbcc/libLLVMBitReader_2_7^android_x86_64_static.output $GITHUB_WORKSPACE/artifacts/frameworks/compile/libbcc/bcinfo/BitReader_2_7/libLLVMBitReader_2_7^android_x86_64_static $GITHUB_WORKSPACE/artifacts/frameworks/compile/libbcc/bcinfo/BitReader_2_7/libLLVMBitReader_2_7^android_x86_64_static/addition_copy_files.output
 
 echo "building libLLVMBitReader_2_7^android_x86_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libLLVMBitReader_2_7,android_x86_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/compile/libbcc/bcinfo/BitReader_2_7/libLLVMBitReader_2_7^android_x86_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/compile/libbcc/libLLVMBitReader_2_7^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/compile/libbcc/bcinfo/BitReader_2_7/libLLVMBitReader_2_7^android_x86_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/frameworks/compile/libbcc/libLLVMBitReader_2_7^android_x86_x86_64_static.output $GITHUB_WORKSPACE/artifacts/frameworks/compile/libbcc/bcinfo/BitReader_2_7/libLLVMBitReader_2_7^android_x86_x86_64_static $GITHUB_WORKSPACE/artifacts/frameworks/compile/libbcc/bcinfo/BitReader_2_7/libLLVMBitReader_2_7^android_x86_x86_64_static/addition_copy_files.output
 
 echo "building libLLVMBitReader_2_7^linux_glibc_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libLLVMBitReader_2_7,linux_glibc_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/compile/libbcc/bcinfo/BitReader_2_7/libLLVMBitReader_2_7^linux_glibc_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/compile/libbcc/libLLVMBitReader_2_7^linux_glibc_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/compile/libbcc/bcinfo/BitReader_2_7/libLLVMBitReader_2_7^linux_glibc_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/frameworks/compile/libbcc/libLLVMBitReader_2_7^linux_glibc_x86_64_static.output $GITHUB_WORKSPACE/artifacts/frameworks/compile/libbcc/bcinfo/BitReader_2_7/libLLVMBitReader_2_7^linux_glibc_x86_64_static $GITHUB_WORKSPACE/artifacts/frameworks/compile/libbcc/bcinfo/BitReader_2_7/libLLVMBitReader_2_7^linux_glibc_x86_64_static/addition_copy_files.output
 
 echo "building libLLVMBitReader_3_0^android_vendor.31_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libLLVMBitReader_3_0,android_vendor.31_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/compile/libbcc/bcinfo/BitReader_3_0/libLLVMBitReader_3_0^android_vendor.31_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/compile/libbcc/libLLVMBitReader_3_0^android_vendor.31_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/compile/libbcc/bcinfo/BitReader_3_0/libLLVMBitReader_3_0^android_vendor.31_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/frameworks/compile/libbcc/libLLVMBitReader_3_0^android_vendor.31_x86_64_static.output $GITHUB_WORKSPACE/artifacts/frameworks/compile/libbcc/bcinfo/BitReader_3_0/libLLVMBitReader_3_0^android_vendor.31_x86_64_static $GITHUB_WORKSPACE/artifacts/frameworks/compile/libbcc/bcinfo/BitReader_3_0/libLLVMBitReader_3_0^android_vendor.31_x86_64_static/addition_copy_files.output
 
 echo "building libLLVMBitReader_3_0^android_vendor.31_x86_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libLLVMBitReader_3_0,android_vendor.31_x86_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/compile/libbcc/bcinfo/BitReader_3_0/libLLVMBitReader_3_0^android_vendor.31_x86_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/compile/libbcc/libLLVMBitReader_3_0^android_vendor.31_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/compile/libbcc/bcinfo/BitReader_3_0/libLLVMBitReader_3_0^android_vendor.31_x86_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/frameworks/compile/libbcc/libLLVMBitReader_3_0^android_vendor.31_x86_x86_64_static.output $GITHUB_WORKSPACE/artifacts/frameworks/compile/libbcc/bcinfo/BitReader_3_0/libLLVMBitReader_3_0^android_vendor.31_x86_x86_64_static $GITHUB_WORKSPACE/artifacts/frameworks/compile/libbcc/bcinfo/BitReader_3_0/libLLVMBitReader_3_0^android_vendor.31_x86_x86_64_static/addition_copy_files.output
 
 echo "building libLLVMBitReader_3_0^android_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libLLVMBitReader_3_0,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/compile/libbcc/bcinfo/BitReader_3_0/libLLVMBitReader_3_0^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/compile/libbcc/libLLVMBitReader_3_0^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/compile/libbcc/bcinfo/BitReader_3_0/libLLVMBitReader_3_0^android_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/frameworks/compile/libbcc/libLLVMBitReader_3_0^android_x86_64_static.output $GITHUB_WORKSPACE/artifacts/frameworks/compile/libbcc/bcinfo/BitReader_3_0/libLLVMBitReader_3_0^android_x86_64_static $GITHUB_WORKSPACE/artifacts/frameworks/compile/libbcc/bcinfo/BitReader_3_0/libLLVMBitReader_3_0^android_x86_64_static/addition_copy_files.output
 
 echo "building libLLVMBitReader_3_0^android_x86_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libLLVMBitReader_3_0,android_x86_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/compile/libbcc/bcinfo/BitReader_3_0/libLLVMBitReader_3_0^android_x86_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/compile/libbcc/libLLVMBitReader_3_0^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/compile/libbcc/bcinfo/BitReader_3_0/libLLVMBitReader_3_0^android_x86_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/frameworks/compile/libbcc/libLLVMBitReader_3_0^android_x86_x86_64_static.output $GITHUB_WORKSPACE/artifacts/frameworks/compile/libbcc/bcinfo/BitReader_3_0/libLLVMBitReader_3_0^android_x86_x86_64_static $GITHUB_WORKSPACE/artifacts/frameworks/compile/libbcc/bcinfo/BitReader_3_0/libLLVMBitReader_3_0^android_x86_x86_64_static/addition_copy_files.output
 
 echo "building libLLVMBitReader_3_0^linux_glibc_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libLLVMBitReader_3_0,linux_glibc_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/compile/libbcc/bcinfo/BitReader_3_0/libLLVMBitReader_3_0^linux_glibc_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/compile/libbcc/libLLVMBitReader_3_0^linux_glibc_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/compile/libbcc/bcinfo/BitReader_3_0/libLLVMBitReader_3_0^linux_glibc_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/frameworks/compile/libbcc/libLLVMBitReader_3_0^linux_glibc_x86_64_static.output $GITHUB_WORKSPACE/artifacts/frameworks/compile/libbcc/bcinfo/BitReader_3_0/libLLVMBitReader_3_0^linux_glibc_x86_64_static $GITHUB_WORKSPACE/artifacts/frameworks/compile/libbcc/bcinfo/BitReader_3_0/libLLVMBitReader_3_0^linux_glibc_x86_64_static/addition_copy_files.output
 
 echo "building libLLVMWrap^android_vendor.31_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libLLVMWrap,android_vendor.31_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/compile/libbcc/bcinfo/Wrap/libLLVMWrap^android_vendor.31_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/compile/libbcc/libLLVMWrap^android_vendor.31_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/compile/libbcc/bcinfo/Wrap/libLLVMWrap^android_vendor.31_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/frameworks/compile/libbcc/libLLVMWrap^android_vendor.31_x86_64_static.output $GITHUB_WORKSPACE/artifacts/frameworks/compile/libbcc/bcinfo/Wrap/libLLVMWrap^android_vendor.31_x86_64_static $GITHUB_WORKSPACE/artifacts/frameworks/compile/libbcc/bcinfo/Wrap/libLLVMWrap^android_vendor.31_x86_64_static/addition_copy_files.output
 
 echo "building libLLVMWrap^android_vendor.31_x86_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libLLVMWrap,android_vendor.31_x86_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/compile/libbcc/bcinfo/Wrap/libLLVMWrap^android_vendor.31_x86_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/compile/libbcc/libLLVMWrap^android_vendor.31_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/compile/libbcc/bcinfo/Wrap/libLLVMWrap^android_vendor.31_x86_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/frameworks/compile/libbcc/libLLVMWrap^android_vendor.31_x86_x86_64_static.output $GITHUB_WORKSPACE/artifacts/frameworks/compile/libbcc/bcinfo/Wrap/libLLVMWrap^android_vendor.31_x86_x86_64_static $GITHUB_WORKSPACE/artifacts/frameworks/compile/libbcc/bcinfo/Wrap/libLLVMWrap^android_vendor.31_x86_x86_64_static/addition_copy_files.output
 
 echo "building libbcc^android_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libbcc,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/compile/libbcc/lib/libbcc^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/compile/libbcc/libbcc^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/compile/libbcc/lib/libbcc^android_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/frameworks/compile/libbcc/libbcc^android_x86_64_static.output $GITHUB_WORKSPACE/artifacts/frameworks/compile/libbcc/lib/libbcc^android_x86_64_static $GITHUB_WORKSPACE/artifacts/frameworks/compile/libbcc/lib/libbcc^android_x86_64_static/addition_copy_files.output
 
 echo "building libbcc_binary^android_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libbcc_binary,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/compile/libbcc/tools/bcc/libbcc_binary^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/compile/libbcc/libbcc_binary^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/compile/libbcc/tools/bcc/libbcc_binary^android_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/frameworks/compile/libbcc/libbcc_binary^android_x86_64_static.output $GITHUB_WORKSPACE/artifacts/frameworks/compile/libbcc/tools/bcc/libbcc_binary^android_x86_64_static $GITHUB_WORKSPACE/artifacts/frameworks/compile/libbcc/tools/bcc/libbcc_binary^android_x86_64_static/addition_copy_files.output
 
 rm -rf out
 

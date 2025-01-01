@@ -38,16 +38,19 @@ echo "building libkeystore2_aaid^android_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libkeystore2_aaid,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aaid/libkeystore2_aaid^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/security/libkeystore2_aaid^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aaid/libkeystore2_aaid^android_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/system/security/libkeystore2_aaid^android_x86_64_static.output $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aaid/libkeystore2_aaid^android_x86_64_static $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aaid/libkeystore2_aaid^android_x86_64_static/addition_copy_files.output
 
 echo "building libkeystore2_crypto^android_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libkeystore2_crypto,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/security/keystore2/src/crypto/libkeystore2_crypto^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/security/libkeystore2_crypto^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/security/keystore2/src/crypto/libkeystore2_crypto^android_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/system/security/libkeystore2_crypto^android_x86_64_static.output $GITHUB_WORKSPACE/artifacts/system/security/keystore2/src/crypto/libkeystore2_crypto^android_x86_64_static $GITHUB_WORKSPACE/artifacts/system/security/keystore2/src/crypto/libkeystore2_crypto^android_x86_64_static/addition_copy_files.output
 
 echo "building libkeystore2_vintf_cpp^android_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libkeystore2_vintf_cpp,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/security/keystore2/src/vintf/libkeystore2_vintf_cpp^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/security/libkeystore2_vintf_cpp^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/security/keystore2/src/vintf/libkeystore2_vintf_cpp^android_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/system/security/libkeystore2_vintf_cpp^android_x86_64_static.output $GITHUB_WORKSPACE/artifacts/system/security/keystore2/src/vintf/libkeystore2_vintf_cpp^android_x86_64_static $GITHUB_WORKSPACE/artifacts/system/security/keystore2/src/vintf/libkeystore2_vintf_cpp^android_x86_64_static/addition_copy_files.output
 
 rm -rf out
 

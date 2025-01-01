@@ -20,46 +20,55 @@ echo "building asm-6.0^linux_glibc_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja asm-6.0,linux_glibc_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/misc/common/asm/asm-6.0^linux_glibc_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/prebuilts/misc/asm-6.0^linux_glibc_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/misc/common/asm/asm-6.0^linux_glibc_common
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/prebuilts/misc/asm-6.0^linux_glibc_common.output $GITHUB_WORKSPACE/artifacts/prebuilts/misc/common/asm/asm-6.0^linux_glibc_common $GITHUB_WORKSPACE/artifacts/prebuilts/misc/common/asm/asm-6.0^linux_glibc_common/addition_copy_files.output
 
 echo "building asm-7.0^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja asm-7.0,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/misc/common/asm/asm-7.0^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/prebuilts/misc/asm-7.0^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/misc/common/asm/asm-7.0^android_common
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/prebuilts/misc/asm-7.0^android_common.output $GITHUB_WORKSPACE/artifacts/prebuilts/misc/common/asm/asm-7.0^android_common $GITHUB_WORKSPACE/artifacts/prebuilts/misc/common/asm/asm-7.0^android_common/addition_copy_files.output
 
 echo "building asm-analysis-6.0^linux_glibc_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja asm-analysis-6.0,linux_glibc_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/misc/common/asm/asm-analysis-6.0^linux_glibc_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/prebuilts/misc/asm-analysis-6.0^linux_glibc_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/misc/common/asm/asm-analysis-6.0^linux_glibc_common
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/prebuilts/misc/asm-analysis-6.0^linux_glibc_common.output $GITHUB_WORKSPACE/artifacts/prebuilts/misc/common/asm/asm-analysis-6.0^linux_glibc_common $GITHUB_WORKSPACE/artifacts/prebuilts/misc/common/asm/asm-analysis-6.0^linux_glibc_common/addition_copy_files.output
 
 echo "building asm-commons-6.0^linux_glibc_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja asm-commons-6.0,linux_glibc_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/misc/common/asm/asm-commons-6.0^linux_glibc_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/prebuilts/misc/asm-commons-6.0^linux_glibc_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/misc/common/asm/asm-commons-6.0^linux_glibc_common
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/prebuilts/misc/asm-commons-6.0^linux_glibc_common.output $GITHUB_WORKSPACE/artifacts/prebuilts/misc/common/asm/asm-commons-6.0^linux_glibc_common $GITHUB_WORKSPACE/artifacts/prebuilts/misc/common/asm/asm-commons-6.0^linux_glibc_common/addition_copy_files.output
 
 echo "building asm-commons-7.0^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja asm-commons-7.0,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/misc/common/asm/asm-commons-7.0^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/prebuilts/misc/asm-commons-7.0^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/misc/common/asm/asm-commons-7.0^android_common
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/prebuilts/misc/asm-commons-7.0^android_common.output $GITHUB_WORKSPACE/artifacts/prebuilts/misc/common/asm/asm-commons-7.0^android_common $GITHUB_WORKSPACE/artifacts/prebuilts/misc/common/asm/asm-commons-7.0^android_common/addition_copy_files.output
 
 echo "building asm-tree-6.0^linux_glibc_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja asm-tree-6.0,linux_glibc_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/misc/common/asm/asm-tree-6.0^linux_glibc_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/prebuilts/misc/asm-tree-6.0^linux_glibc_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/misc/common/asm/asm-tree-6.0^linux_glibc_common
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/prebuilts/misc/asm-tree-6.0^linux_glibc_common.output $GITHUB_WORKSPACE/artifacts/prebuilts/misc/common/asm/asm-tree-6.0^linux_glibc_common $GITHUB_WORKSPACE/artifacts/prebuilts/misc/common/asm/asm-tree-6.0^linux_glibc_common/addition_copy_files.output
 
 echo "building asm-tree-7.0^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja asm-tree-7.0,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/misc/common/asm/asm-tree-7.0^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/prebuilts/misc/asm-tree-7.0^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/misc/common/asm/asm-tree-7.0^android_common
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/prebuilts/misc/asm-tree-7.0^android_common.output $GITHUB_WORKSPACE/artifacts/prebuilts/misc/common/asm/asm-tree-7.0^android_common $GITHUB_WORKSPACE/artifacts/prebuilts/misc/common/asm/asm-tree-7.0^android_common/addition_copy_files.output
 
 echo "building commons-cli-1.2^linux_glibc_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja commons-cli-1.2,linux_glibc_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/misc/common/commons-cli/commons-cli-1.2^linux_glibc_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/prebuilts/misc/commons-cli-1.2^linux_glibc_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/misc/common/commons-cli/commons-cli-1.2^linux_glibc_common
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/prebuilts/misc/commons-cli-1.2^linux_glibc_common.output $GITHUB_WORKSPACE/artifacts/prebuilts/misc/common/commons-cli/commons-cli-1.2^linux_glibc_common $GITHUB_WORKSPACE/artifacts/prebuilts/misc/common/commons-cli/commons-cli-1.2^linux_glibc_common/addition_copy_files.output
 
 echo "building guava-21.0^linux_glibc_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja guava-21.0,linux_glibc_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/misc/common/guava/guava-21.0^linux_glibc_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/prebuilts/misc/guava-21.0^linux_glibc_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/misc/common/guava/guava-21.0^linux_glibc_common
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/prebuilts/misc/guava-21.0^linux_glibc_common.output $GITHUB_WORKSPACE/artifacts/prebuilts/misc/common/guava/guava-21.0^linux_glibc_common $GITHUB_WORKSPACE/artifacts/prebuilts/misc/common/guava/guava-21.0^linux_glibc_common/addition_copy_files.output
 
 rm -rf out
 

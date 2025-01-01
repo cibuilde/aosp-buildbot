@@ -7,7 +7,7 @@ env:
   branch: 'android12-gsi'
   GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 jobs:
-  build_12:
+  build_3:
     runs-on: ubuntu-22.04
     steps:
     - uses: actions/checkout@main
@@ -22,8 +22,8 @@ jobs:
         key: bionic@${{ env.branch }}
     - uses: actions/cache@v4
       with:
-        path: cache/bootable_recovery.tar.zst
-        key: bootable_recovery@${{ env.branch }}
+        path: cache/build_make.tar.zst
+        key: build_make@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/build_soong.tar.zst
@@ -34,6 +34,42 @@ jobs:
         key: cts@${{ env.branch }}
     - uses: actions/cache@v4
       with:
+        path: cache/dalvik.tar.zst
+        key: dalvik@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/development.tar.zst
+        key: development@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/device_google_cuttlefish.tar.zst
+        key: device_google_cuttlefish@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/device_google_cuttlefish_prebuilts.tar.zst
+        key: device_google_cuttlefish_prebuilts@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_angle.tar.zst
+        key: external_angle@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_apache-commons-bcel.tar.zst
+        key: external_apache-commons-bcel@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_apache-xml.tar.zst
+        key: external_apache-xml@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_arm-optimized-routines.tar.zst
+        key: external_arm-optimized-routines@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_auto.tar.zst
+        key: external_auto@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
         path: cache/external_avb.tar.zst
         key: external_avb@${{ env.branch }}
     - uses: actions/cache@v4
@@ -42,48 +78,64 @@ jobs:
         key: external_bc@${{ env.branch }}
     - uses: actions/cache@v4
       with:
-        path: cache/external_bcc.tar.zst
-        key: external_bcc@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
         path: cache/external_boringssl.tar.zst
         key: external_boringssl@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_bouncycastle.tar.zst
+        key: external_bouncycastle@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/external_clang.tar.zst
         key: external_clang@${{ env.branch }}
     - uses: actions/cache@v4
       with:
-        path: cache/external_compiler-rt.tar.zst
-        key: external_compiler-rt@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
         path: cache/external_conscrypt.tar.zst
         key: external_conscrypt@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_cpu_features.tar.zst
+        key: external_cpu_features@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/external_crosvm.tar.zst
         key: external_crosvm@${{ env.branch }}
     - uses: actions/cache@v4
       with:
-        path: cache/external_dng_sdk.tar.zst
-        key: external_dng_sdk@${{ env.branch }}
+        path: cache/external_dagger2.tar.zst
+        key: external_dagger2@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_dlmalloc.tar.zst
+        key: external_dlmalloc@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/external_e2fsprogs.tar.zst
         key: external_e2fsprogs@${{ env.branch }}
     - uses: actions/cache@v4
       with:
+        path: cache/external_error_prone.tar.zst
+        key: external_error_prone@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
         path: cache/external_expat.tar.zst
         key: external_expat@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_f2fs-tools.tar.zst
+        key: external_f2fs-tools@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/external_fec.tar.zst
         key: external_fec@${{ env.branch }}
     - uses: actions/cache@v4
       with:
-        path: cache/external_flac.tar.zst
-        key: external_flac@${{ env.branch }}
+        path: cache/external_firebase-messaging.tar.zst
+        key: external_firebase-messaging@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_flatbuffers.tar.zst
+        key: external_flatbuffers@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/external_fmtlib.tar.zst
@@ -94,12 +146,28 @@ jobs:
         key: external_freetype@${{ env.branch }}
     - uses: actions/cache@v4
       with:
-        path: cache/external_giflib.tar.zst
-        key: external_giflib@${{ env.branch }}
+        path: cache/external_google-java-format.tar.zst
+        key: external_google-java-format@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/external_googletest.tar.zst
         key: external_googletest@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_guava.tar.zst
+        key: external_guava@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_guice.tar.zst
+        key: external_guice@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_gwp_asan.tar.zst
+        key: external_gwp_asan@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_hamcrest.tar.zst
+        key: external_hamcrest@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/external_harfbuzz_ng.tar.zst
@@ -110,16 +178,60 @@ jobs:
         key: external_icu@${{ env.branch }}
     - uses: actions/cache@v4
       with:
-        path: cache/external_ipsec-tools.tar.zst
-        key: external_ipsec-tools@${{ env.branch }}
+        path: cache/external_iptables.tar.zst
+        key: external_iptables@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_iw.tar.zst
+        key: external_iw@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_jarjar.tar.zst
+        key: external_jarjar@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_javaparser.tar.zst
+        key: external_javaparser@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_javapoet.tar.zst
+        key: external_javapoet@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_jcommander.tar.zst
+        key: external_jcommander@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/external_jsoncpp.tar.zst
         key: external_jsoncpp@${{ env.branch }}
     - uses: actions/cache@v4
       with:
+        path: cache/external_jsr305.tar.zst
+        key: external_jsr305@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_jsr330.tar.zst
+        key: external_jsr330@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_kmod.tar.zst
+        key: external_kmod@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_kotlinc.tar.zst
+        key: external_kotlinc@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_kotlinx.metadata.tar.zst
+        key: external_kotlinx.metadata@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
         path: cache/external_libcap.tar.zst
         key: external_libcap@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_libchrome.tar.zst
+        key: external_libchrome@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/external_libcxx.tar.zst
@@ -130,112 +242,108 @@ jobs:
         key: external_libcxxabi@${{ env.branch }}
     - uses: actions/cache@v4
       with:
-        path: cache/external_libjpeg-turbo.tar.zst
-        key: external_libjpeg-turbo@${{ env.branch }}
+        path: cache/external_libevent.tar.zst
+        key: external_libevent@${{ env.branch }}
     - uses: actions/cache@v4
       with:
-        path: cache/external_libogg.tar.zst
-        key: external_libogg@${{ env.branch }}
+        path: cache/external_libffi.tar.zst
+        key: external_libffi@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/external_libpng.tar.zst
         key: external_libpng@${{ env.branch }}
     - uses: actions/cache@v4
       with:
-        path: cache/external_libvpx.tar.zst
-        key: external_libvpx@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
         path: cache/external_libxml2.tar.zst
         key: external_libxml2@${{ env.branch }}
     - uses: actions/cache@v4
       with:
-        path: cache/external_libyuv.tar.zst
-        key: external_libyuv@${{ env.branch }}
+        path: cache/external_llvm.tar.zst
+        key: external_llvm@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_lz4.tar.zst
+        key: external_lz4@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/external_lzma.tar.zst
         key: external_lzma@${{ env.branch }}
     - uses: actions/cache@v4
       with:
+        path: cache/external_mime-support.tar.zst
+        key: external_mime-support@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
         path: cache/external_minijail.tar.zst
         key: external_minijail@${{ env.branch }}
     - uses: actions/cache@v4
       with:
-        path: cache/external_mksh.tar.zst
-        key: external_mksh@${{ env.branch }}
+        path: cache/external_modp_b64.tar.zst
+        key: external_modp_b64@${{ env.branch }}
     - uses: actions/cache@v4
       with:
-        path: cache/external_parameter-framework.tar.zst
-        key: external_parameter-framework@${{ env.branch }}
+        path: cache/external_oj-libjdwp.tar.zst
+        key: external_oj-libjdwp@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_one-true-awk.tar.zst
+        key: external_one-true-awk@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/external_pcre.tar.zst
         key: external_pcre@${{ env.branch }}
     - uses: actions/cache@v4
       with:
-        path: cache/external_pdfium.tar.zst
-        key: external_pdfium@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
         path: cache/external_perfetto.tar.zst
         key: external_perfetto@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_piex.tar.zst
-        key: external_piex@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/external_protobuf.tar.zst
         key: external_protobuf@${{ env.branch }}
     - uses: actions/cache@v4
       with:
-        path: cache/external_rust_crates_android_log-sys.tar.zst
-        key: external_rust_crates_android_log-sys@${{ env.branch }}
+        path: cache/external_python_cpython2.tar.zst
+        key: external_python_cpython2@${{ env.branch }}
     - uses: actions/cache@v4
       with:
-        path: cache/external_rust_crates_android_logger.tar.zst
-        key: external_rust_crates_android_logger@${{ env.branch }}
+        path: cache/external_python_cpython3.tar.zst
+        key: external_python_cpython3@${{ env.branch }}
     - uses: actions/cache@v4
       with:
-        path: cache/external_rust_crates_anyhow.tar.zst
-        key: external_rust_crates_anyhow@${{ env.branch }}
+        path: cache/external_python_six.tar.zst
+        key: external_python_six@${{ env.branch }}
     - uses: actions/cache@v4
       with:
-        path: cache/external_rust_crates_async-task.tar.zst
-        key: external_rust_crates_async-task@${{ env.branch }}
+        path: cache/external_rust_crates_aho-corasick.tar.zst
+        key: external_rust_crates_aho-corasick@${{ env.branch }}
     - uses: actions/cache@v4
       with:
-        path: cache/external_rust_crates_async-trait.tar.zst
-        key: external_rust_crates_async-trait@${{ env.branch }}
+        path: cache/external_rust_crates_bindgen.tar.zst
+        key: external_rust_crates_bindgen@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/external_rust_crates_bitflags.tar.zst
         key: external_rust_crates_bitflags@${{ env.branch }}
     - uses: actions/cache@v4
       with:
-        path: cache/external_rust_crates_byteorder.tar.zst
-        key: external_rust_crates_byteorder@${{ env.branch }}
+        path: cache/external_rust_crates_bytes.tar.zst
+        key: external_rust_crates_bytes@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_rust_crates_cexpr.tar.zst
+        key: external_rust_crates_cexpr@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/external_rust_crates_cfg-if.tar.zst
         key: external_rust_crates_cfg-if@${{ env.branch }}
     - uses: actions/cache@v4
       with:
-        path: cache/external_rust_crates_chrono.tar.zst
-        key: external_rust_crates_chrono@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_rust_crates_crc32fast.tar.zst
-        key: external_rust_crates_crc32fast@${{ env.branch }}
+        path: cache/external_rust_crates_clang-sys.tar.zst
+        key: external_rust_crates_clang-sys@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/external_rust_crates_env_logger.tar.zst
         key: external_rust_crates_env_logger@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_rust_crates_flate2.tar.zst
-        key: external_rust_crates_flate2@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/external_rust_crates_futures.tar.zst
@@ -250,60 +358,36 @@ jobs:
         key: external_rust_crates_futures-core@${{ env.branch }}
     - uses: actions/cache@v4
       with:
-        path: cache/external_rust_crates_futures-executor.tar.zst
-        key: external_rust_crates_futures-executor@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_rust_crates_futures-io.tar.zst
-        key: external_rust_crates_futures-io@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_rust_crates_futures-macro.tar.zst
-        key: external_rust_crates_futures-macro@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_rust_crates_futures-sink.tar.zst
-        key: external_rust_crates_futures-sink@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_rust_crates_futures-task.tar.zst
-        key: external_rust_crates_futures-task@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_rust_crates_futures-util.tar.zst
-        key: external_rust_crates_futures-util@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
         path: cache/external_rust_crates_getrandom.tar.zst
         key: external_rust_crates_getrandom@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_rust_crates_glob.tar.zst
+        key: external_rust_crates_glob@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_rust_crates_instant.tar.zst
+        key: external_rust_crates_instant@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/external_rust_crates_intrusive-collections.tar.zst
         key: external_rust_crates_intrusive-collections@${{ env.branch }}
     - uses: actions/cache@v4
       with:
-        path: cache/external_rust_crates_itoa.tar.zst
-        key: external_rust_crates_itoa@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_rust_crates_lazy_static.tar.zst
-        key: external_rust_crates_lazy_static@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
         path: cache/external_rust_crates_libc.tar.zst
         key: external_rust_crates_libc@${{ env.branch }}
     - uses: actions/cache@v4
       with:
-        path: cache/external_rust_crates_libz-sys.tar.zst
-        key: external_rust_crates_libz-sys@${{ env.branch }}
+        path: cache/external_rust_crates_libloading.tar.zst
+        key: external_rust_crates_libloading@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_rust_crates_lock_api.tar.zst
+        key: external_rust_crates_lock_api@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/external_rust_crates_log.tar.zst
         key: external_rust_crates_log@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_rust_crates_macaddr.tar.zst
-        key: external_rust_crates_macaddr@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/external_rust_crates_memchr.tar.zst
@@ -314,152 +398,104 @@ jobs:
         key: external_rust_crates_memoffset@${{ env.branch }}
     - uses: actions/cache@v4
       with:
-        path: cache/external_rust_crates_num-integer.tar.zst
-        key: external_rust_crates_num-integer@${{ env.branch }}
+        path: cache/external_rust_crates_nix.tar.zst
+        key: external_rust_crates_nix@${{ env.branch }}
     - uses: actions/cache@v4
       with:
-        path: cache/external_rust_crates_num-traits.tar.zst
-        key: external_rust_crates_num-traits@${{ env.branch }}
+        path: cache/external_rust_crates_nom.tar.zst
+        key: external_rust_crates_nom@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/external_rust_crates_num_cpus.tar.zst
         key: external_rust_crates_num_cpus@${{ env.branch }}
     - uses: actions/cache@v4
       with:
-        path: cache/external_rust_crates_paste.tar.zst
-        key: external_rust_crates_paste@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_rust_crates_pin-project.tar.zst
-        key: external_rust_crates_pin-project@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_rust_crates_pin-project-lite.tar.zst
-        key: external_rust_crates_pin-project-lite@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_rust_crates_pin-utils.tar.zst
-        key: external_rust_crates_pin-utils@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_rust_crates_ppv-lite86.tar.zst
-        key: external_rust_crates_ppv-lite86@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_rust_crates_proc-macro-hack.tar.zst
-        key: external_rust_crates_proc-macro-hack@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
         path: cache/external_rust_crates_proc-macro-nested.tar.zst
         key: external_rust_crates_proc-macro-nested@${{ env.branch }}
     - uses: actions/cache@v4
       with:
-        path: cache/external_rust_crates_rand.tar.zst
-        key: external_rust_crates_rand@${{ env.branch }}
+        path: cache/external_rust_crates_proc-macro2.tar.zst
+        key: external_rust_crates_proc-macro2@${{ env.branch }}
     - uses: actions/cache@v4
       with:
-        path: cache/external_rust_crates_rand_chacha.tar.zst
-        key: external_rust_crates_rand_chacha@${{ env.branch }}
+        path: cache/external_rust_crates_protobuf.tar.zst
+        key: external_rust_crates_protobuf@${{ env.branch }}
     - uses: actions/cache@v4
       with:
-        path: cache/external_rust_crates_rand_core.tar.zst
-        key: external_rust_crates_rand_core@${{ env.branch }}
+        path: cache/external_rust_crates_quote.tar.zst
+        key: external_rust_crates_quote@${{ env.branch }}
     - uses: actions/cache@v4
       with:
-        path: cache/external_rust_crates_ryu.tar.zst
-        key: external_rust_crates_ryu@${{ env.branch }}
+        path: cache/external_rust_crates_regex.tar.zst
+        key: external_rust_crates_regex@${{ env.branch }}
     - uses: actions/cache@v4
       with:
-        path: cache/external_rust_crates_serde.tar.zst
-        key: external_rust_crates_serde@${{ env.branch }}
+        path: cache/external_rust_crates_regex-syntax.tar.zst
+        key: external_rust_crates_regex-syntax@${{ env.branch }}
     - uses: actions/cache@v4
       with:
-        path: cache/external_rust_crates_serde_derive.tar.zst
-        key: external_rust_crates_serde_derive@${{ env.branch }}
+        path: cache/external_rust_crates_scopeguard.tar.zst
+        key: external_rust_crates_scopeguard@${{ env.branch }}
     - uses: actions/cache@v4
       with:
-        path: cache/external_rust_crates_serde_json.tar.zst
-        key: external_rust_crates_serde_json@${{ env.branch }}
+        path: cache/external_rust_crates_shared_child.tar.zst
+        key: external_rust_crates_shared_child@${{ env.branch }}
     - uses: actions/cache@v4
       with:
-        path: cache/external_rust_crates_slab.tar.zst
-        key: external_rust_crates_slab@${{ env.branch }}
+        path: cache/external_rust_crates_unicode-xid.tar.zst
+        key: external_rust_crates_unicode-xid@${{ env.branch }}
     - uses: actions/cache@v4
       with:
-        path: cache/external_rust_crates_smallvec.tar.zst
-        key: external_rust_crates_smallvec@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_rust_crates_thiserror.tar.zst
-        key: external_rust_crates_thiserror@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_rust_crates_thiserror-impl.tar.zst
-        key: external_rust_crates_thiserror-impl@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_rust_crates_uuid.tar.zst
-        key: external_rust_crates_uuid@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_rust_crates_zip.tar.zst
-        key: external_rust_crates_zip@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_rust_cxx.tar.zst
-        key: external_rust_cxx@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_scrypt.tar.zst
-        key: external_scrypt@${{ env.branch }}
+        path: cache/external_scudo.tar.zst
+        key: external_scudo@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/external_selinux.tar.zst
         key: external_selinux@${{ env.branch }}
     - uses: actions/cache@v4
       with:
-        path: cache/external_sfntly.tar.zst
-        key: external_sfntly@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
         path: cache/external_skia.tar.zst
         key: external_skia@${{ env.branch }}
     - uses: actions/cache@v4
       with:
-        path: cache/external_sonic.tar.zst
-        key: external_sonic@${{ env.branch }}
+        path: cache/external_snakeyaml.tar.zst
+        key: external_snakeyaml@${{ env.branch }}
     - uses: actions/cache@v4
       with:
-        path: cache/external_sonivox.tar.zst
-        key: external_sonivox@${{ env.branch }}
+        path: cache/external_sqlite.tar.zst
+        key: external_sqlite@${{ env.branch }}
     - uses: actions/cache@v4
       with:
-        path: cache/external_tinyalsa.tar.zst
-        key: external_tinyalsa@${{ env.branch }}
+        path: cache/external_swiftshader.tar.zst
+        key: external_swiftshader@${{ env.branch }}
     - uses: actions/cache@v4
       with:
-        path: cache/external_tinyxml2.tar.zst
-        key: external_tinyxml2@${{ env.branch }}
+        path: cache/external_testng.tar.zst
+        key: external_testng@${{ env.branch }}
     - uses: actions/cache@v4
       with:
-        path: cache/external_toybox.tar.zst
-        key: external_toybox@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_tremolo.tar.zst
-        key: external_tremolo@${{ env.branch }}
+        path: cache/external_vixl.tar.zst
+        key: external_vixl@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/external_vulkan-headers.tar.zst
         key: external_vulkan-headers@${{ env.branch }}
     - uses: actions/cache@v4
       with:
-        path: cache/external_webp.tar.zst
-        key: external_webp@${{ env.branch }}
+        path: cache/external_wayland.tar.zst
+        key: external_wayland@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/external_zlib.tar.zst
         key: external_zlib@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_zopfli.tar.zst
+        key: external_zopfli@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_zxing.tar.zst
+        key: external_zxing@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/frameworks_av.tar.zst
@@ -474,10 +510,6 @@ jobs:
         key: frameworks_hardware_interfaces@${{ env.branch }}
     - uses: actions/cache@v4
       with:
-        path: cache/frameworks_libs_net.tar.zst
-        key: frameworks_libs_net@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
         path: cache/frameworks_minikin.tar.zst
         key: frameworks_minikin@${{ env.branch }}
     - uses: actions/cache@v4
@@ -486,12 +518,16 @@ jobs:
         key: frameworks_native@${{ env.branch }}
     - uses: actions/cache@v4
       with:
-        path: cache/frameworks_proto_logging.tar.zst
-        key: frameworks_proto_logging@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
         path: cache/frameworks_rs.tar.zst
         key: frameworks_rs@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/frameworks_wilhelm.tar.zst
+        key: frameworks_wilhelm@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/hardware_google_camera.tar.zst
+        key: hardware_google_camera@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/hardware_interfaces.tar.zst
@@ -510,12 +546,24 @@ jobs:
         key: hardware_ril@${{ env.branch }}
     - uses: actions/cache@v4
       with:
+        path: cache/kernel_configs.tar.zst
+        key: kernel_configs@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
         path: cache/libcore.tar.zst
         key: libcore@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/libnativehelper.tar.zst
         key: libnativehelper@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/packages_modules_DnsResolver.tar.zst
+        key: packages_modules_DnsResolver@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/packages_modules_NeuralNetworks.tar.zst
+        key: packages_modules_NeuralNetworks@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/packages_modules_StatsD.tar.zst
@@ -530,24 +578,60 @@ jobs:
         key: packages_modules_adb@${{ env.branch }}
     - uses: actions/cache@v4
       with:
-        path: cache/packages_modules_vndk.tar.zst
-        key: packages_modules_vndk@${{ env.branch }}
+        path: cache/packages_services_Car.tar.zst
+        key: packages_services_Car@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/prebuilts_build-tools.tar.zst
         key: prebuilts_build-tools@${{ env.branch }}
     - uses: actions/cache@v4
       with:
+        path: cache/prebuilts_clang-tools.tar.zst
+        key: prebuilts_clang-tools@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
         path: cache/prebuilts_clang_host_linux-x86.tar.zst
         key: prebuilts_clang_host_linux-x86@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/prebuilts_gcc_linux-x86_aarch64_aarch64-linux-android-4.9.tar.zst
+        key: prebuilts_gcc_linux-x86_aarch64_aarch64-linux-android-4.9@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/prebuilts_gcc_linux-x86_arm_arm-linux-androideabi-4.9.tar.zst
+        key: prebuilts_gcc_linux-x86_arm_arm-linux-androideabi-4.9@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/prebuilts_gcc_linux-x86_host_x86_64-linux-glibc2.17-4.8.tar.zst
+        key: prebuilts_gcc_linux-x86_host_x86_64-linux-glibc2.17-4.8@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/prebuilts_gcc_linux-x86_x86_x86_64-linux-android-4.9.tar.zst
         key: prebuilts_gcc_linux-x86_x86_x86_64-linux-android-4.9@${{ env.branch }}
     - uses: actions/cache@v4
       with:
+        path: cache/prebuilts_gradle-plugin.tar.zst
+        key: prebuilts_gradle-plugin@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
         path: cache/prebuilts_jdk_jdk11.tar.zst
         key: prebuilts_jdk_jdk11@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/prebuilts_jdk_jdk8.tar.zst
+        key: prebuilts_jdk_jdk8@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/prebuilts_manifest-merger.tar.zst
+        key: prebuilts_manifest-merger@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/prebuilts_misc.tar.zst
+        key: prebuilts_misc@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/prebuilts_r8.tar.zst
+        key: prebuilts_r8@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/prebuilts_rust.tar.zst
@@ -558,16 +642,20 @@ jobs:
         key: prebuilts_sdk@${{ env.branch }}
     - uses: actions/cache@v4
       with:
+        path: cache/prebuilts_tools.tar.zst
+        key: prebuilts_tools@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
         path: cache/system_apex.tar.zst
         key: system_apex@${{ env.branch }}
     - uses: actions/cache@v4
       with:
-        path: cache/system_bpf.tar.zst
-        key: system_bpf@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
         path: cache/system_bt.tar.zst
         key: system_bt@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/system_connectivity_wificond.tar.zst
+        key: system_connectivity_wificond@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/system_core.tar.zst
@@ -576,18 +664,6 @@ jobs:
       with:
         path: cache/system_extras.tar.zst
         key: system_extras@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/system_gatekeeper.tar.zst
-        key: system_gatekeeper@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/system_gsid.tar.zst
-        key: system_gsid@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/system_hardware_interfaces.tar.zst
-        key: system_hardware_interfaces@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/system_incremental_delivery.tar.zst
@@ -614,868 +690,10 @@ jobs:
         key: system_libprocinfo@${{ env.branch }}
     - uses: actions/cache@v4
       with:
-        path: cache/system_libvintf.tar.zst
-        key: system_libvintf@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/system_libziparchive.tar.zst
-        key: system_libziparchive@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/system_linkerconfig.tar.zst
-        key: system_linkerconfig@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/system_logging.tar.zst
-        key: system_logging@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/system_media.tar.zst
-        key: system_media@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/system_memory_libmeminfo.tar.zst
-        key: system_memory_libmeminfo@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/system_memory_libmemunreachable.tar.zst
-        key: system_memory_libmemunreachable@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/system_memory_lmkd.tar.zst
-        key: system_memory_lmkd@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/system_netd.tar.zst
-        key: system_netd@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/system_security.tar.zst
-        key: system_security@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/system_sepolicy.tar.zst
-        key: system_sepolicy@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/system_server_configurable_flags.tar.zst
-        key: system_server_configurable_flags@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/system_tools_hidl.tar.zst
-        key: system_tools_hidl@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/system_unwinding.tar.zst
-        key: system_unwinding@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/system_vold.tar.zst
-        key: system_vold@${{ env.branch }}
-    - run: bash steps/build_12.sh
-  build_13:
-    needs: build_12
-    runs-on: ubuntu-22.04
-    steps:
-    - uses: actions/checkout@main
-    - run: sudo apt update && sudo apt install -y ninja-build python2 libncurses5
-    - uses: actions/cache@v4
-      with:
-        path: cache/art.tar.zst
-        key: art@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/bionic.tar.zst
-        key: bionic@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/build_soong.tar.zst
-        key: build_soong@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_auto.tar.zst
-        key: external_auto@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_boringssl.tar.zst
-        key: external_boringssl@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_bouncycastle.tar.zst
-        key: external_bouncycastle@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_cbor-java.tar.zst
-        key: external_cbor-java@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_crosvm.tar.zst
-        key: external_crosvm@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_dynamic_depth.tar.zst
-        key: external_dynamic_depth@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_fmtlib.tar.zst
-        key: external_fmtlib@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_guava.tar.zst
-        key: external_guava@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_hamcrest.tar.zst
-        key: external_hamcrest@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_icu.tar.zst
-        key: external_icu@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_image_io.tar.zst
-        key: external_image_io@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_jsr305.tar.zst
-        key: external_jsr305@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_jsr330.tar.zst
-        key: external_jsr330@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_kotlinc.tar.zst
-        key: external_kotlinc@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_kotlinx.atomicfu.tar.zst
-        key: external_kotlinx.atomicfu@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_libcap.tar.zst
-        key: external_libcap@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_libcxx.tar.zst
-        key: external_libcxx@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_libcxxabi.tar.zst
-        key: external_libcxxabi@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_libexif.tar.zst
-        key: external_libexif@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_libjpeg-turbo.tar.zst
-        key: external_libjpeg-turbo@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_libogg.tar.zst
-        key: external_libogg@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_libvpx.tar.zst
-        key: external_libvpx@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_libxml2.tar.zst
-        key: external_libxml2@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_libyuv.tar.zst
-        key: external_libyuv@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_nist-sip.tar.zst
-        key: external_nist-sip@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_protobuf.tar.zst
-        key: external_protobuf@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_rust_crates_android_log-sys.tar.zst
-        key: external_rust_crates_android_log-sys@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_rust_crates_android_logger.tar.zst
-        key: external_rust_crates_android_logger@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_rust_crates_anyhow.tar.zst
-        key: external_rust_crates_anyhow@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_rust_crates_async-task.tar.zst
-        key: external_rust_crates_async-task@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_rust_crates_async-trait.tar.zst
-        key: external_rust_crates_async-trait@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_rust_crates_bitflags.tar.zst
-        key: external_rust_crates_bitflags@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_rust_crates_cfg-if.tar.zst
-        key: external_rust_crates_cfg-if@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_rust_crates_clap.tar.zst
-        key: external_rust_crates_clap@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_rust_crates_env_logger.tar.zst
-        key: external_rust_crates_env_logger@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_rust_crates_futures.tar.zst
-        key: external_rust_crates_futures@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_rust_crates_futures-channel.tar.zst
-        key: external_rust_crates_futures-channel@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_rust_crates_futures-core.tar.zst
-        key: external_rust_crates_futures-core@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_rust_crates_futures-executor.tar.zst
-        key: external_rust_crates_futures-executor@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_rust_crates_futures-io.tar.zst
-        key: external_rust_crates_futures-io@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_rust_crates_futures-macro.tar.zst
-        key: external_rust_crates_futures-macro@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_rust_crates_futures-sink.tar.zst
-        key: external_rust_crates_futures-sink@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_rust_crates_futures-task.tar.zst
-        key: external_rust_crates_futures-task@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_rust_crates_futures-util.tar.zst
-        key: external_rust_crates_futures-util@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_rust_crates_intrusive-collections.tar.zst
-        key: external_rust_crates_intrusive-collections@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_rust_crates_itoa.tar.zst
-        key: external_rust_crates_itoa@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_rust_crates_lazy_static.tar.zst
-        key: external_rust_crates_lazy_static@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_rust_crates_libc.tar.zst
-        key: external_rust_crates_libc@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_rust_crates_log.tar.zst
-        key: external_rust_crates_log@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_rust_crates_memchr.tar.zst
-        key: external_rust_crates_memchr@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_rust_crates_memoffset.tar.zst
-        key: external_rust_crates_memoffset@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_rust_crates_num_cpus.tar.zst
-        key: external_rust_crates_num_cpus@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_rust_crates_paste.tar.zst
-        key: external_rust_crates_paste@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_rust_crates_pin-project.tar.zst
-        key: external_rust_crates_pin-project@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_rust_crates_pin-project-lite.tar.zst
-        key: external_rust_crates_pin-project-lite@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_rust_crates_pin-utils.tar.zst
-        key: external_rust_crates_pin-utils@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_rust_crates_proc-macro-hack.tar.zst
-        key: external_rust_crates_proc-macro-hack@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_rust_crates_proc-macro-nested.tar.zst
-        key: external_rust_crates_proc-macro-nested@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_rust_crates_ryu.tar.zst
-        key: external_rust_crates_ryu@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_rust_crates_serde.tar.zst
-        key: external_rust_crates_serde@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_rust_crates_serde_derive.tar.zst
-        key: external_rust_crates_serde_derive@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_rust_crates_serde_json.tar.zst
-        key: external_rust_crates_serde_json@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_rust_crates_slab.tar.zst
-        key: external_rust_crates_slab@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_rust_crates_smallvec.tar.zst
-        key: external_rust_crates_smallvec@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_rust_crates_structopt.tar.zst
-        key: external_rust_crates_structopt@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_rust_crates_structopt-derive.tar.zst
-        key: external_rust_crates_structopt-derive@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_rust_crates_textwrap.tar.zst
-        key: external_rust_crates_textwrap@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_rust_crates_thiserror.tar.zst
-        key: external_rust_crates_thiserror@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_rust_crates_thiserror-impl.tar.zst
-        key: external_rust_crates_thiserror-impl@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_tagsoup.tar.zst
-        key: external_tagsoup@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/frameworks_av.tar.zst
-        key: frameworks_av@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/frameworks_base.tar.zst
-        key: frameworks_base@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/frameworks_hardware_interfaces.tar.zst
-        key: frameworks_hardware_interfaces@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/frameworks_libs_modules-utils.tar.zst
-        key: frameworks_libs_modules-utils@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/frameworks_native.tar.zst
-        key: frameworks_native@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/frameworks_proto_logging.tar.zst
-        key: frameworks_proto_logging@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/frameworks_rs.tar.zst
-        key: frameworks_rs@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/hardware_interfaces.tar.zst
-        key: hardware_interfaces@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/hardware_libhardware.tar.zst
-        key: hardware_libhardware@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/hardware_libhardware_legacy.tar.zst
-        key: hardware_libhardware_legacy@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/hardware_ril.tar.zst
-        key: hardware_ril@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/libcore.tar.zst
-        key: libcore@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/libnativehelper.tar.zst
-        key: libnativehelper@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/packages_modules_Virtualization.tar.zst
-        key: packages_modules_Virtualization@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/packages_providers_TelephonyProvider.tar.zst
-        key: packages_providers_TelephonyProvider@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/prebuilts_build-tools.tar.zst
-        key: prebuilts_build-tools@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/prebuilts_clang_host_linux-x86.tar.zst
-        key: prebuilts_clang_host_linux-x86@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/prebuilts_gcc_linux-x86_x86_x86_64-linux-android-4.9.tar.zst
-        key: prebuilts_gcc_linux-x86_x86_x86_64-linux-android-4.9@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/prebuilts_jdk_jdk11.tar.zst
-        key: prebuilts_jdk_jdk11@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/prebuilts_rust.tar.zst
-        key: prebuilts_rust@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/prebuilts_sdk.tar.zst
-        key: prebuilts_sdk@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/system_bt.tar.zst
-        key: system_bt@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/system_core.tar.zst
-        key: system_core@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/system_libbase.tar.zst
-        key: system_libbase@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/system_libfmq.tar.zst
-        key: system_libfmq@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/system_libhidl.tar.zst
-        key: system_libhidl@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/system_libhwbinder.tar.zst
-        key: system_libhwbinder@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/system_logging.tar.zst
-        key: system_logging@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/system_media.tar.zst
-        key: system_media@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/system_memory_libmemunreachable.tar.zst
-        key: system_memory_libmemunreachable@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/system_netd.tar.zst
-        key: system_netd@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/system_sepolicy.tar.zst
-        key: system_sepolicy@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/system_tools_sysprop.tar.zst
-        key: system_tools_sysprop@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/system_unwinding.tar.zst
-        key: system_unwinding@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/tools_metalava.tar.zst
-        key: tools_metalava@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/tools_platform-compat.tar.zst
-        key: tools_platform-compat@${{ env.branch }}
-    - run: bash steps/build_13.sh
-  build_14:
-    needs: build_13
-    runs-on: ubuntu-22.04
-    steps:
-    - uses: actions/checkout@main
-    - run: sudo apt update && sudo apt install -y ninja-build python2 libncurses5
-    - uses: actions/cache@v4
-      with:
-        path: cache/art.tar.zst
-        key: art@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/bionic.tar.zst
-        key: bionic@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/build_soong.tar.zst
-        key: build_soong@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/cts.tar.zst
-        key: cts@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_bc.tar.zst
-        key: external_bc@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_bcc.tar.zst
-        key: external_bcc@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_boringssl.tar.zst
-        key: external_boringssl@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_bouncycastle.tar.zst
-        key: external_bouncycastle@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_cblas.tar.zst
-        key: external_cblas@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_conscrypt.tar.zst
-        key: external_conscrypt@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_dagger2.tar.zst
-        key: external_dagger2@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_dng_sdk.tar.zst
-        key: external_dng_sdk@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_exoplayer.tar.zst
-        key: external_exoplayer@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_expat.tar.zst
-        key: external_expat@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_fmtlib.tar.zst
-        key: external_fmtlib@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_freetype.tar.zst
-        key: external_freetype@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_gemmlowp.tar.zst
-        key: external_gemmlowp@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_giflib.tar.zst
-        key: external_giflib@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_googletest.tar.zst
-        key: external_googletest@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_guava.tar.zst
-        key: external_guava@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_hamcrest.tar.zst
-        key: external_hamcrest@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_harfbuzz_ng.tar.zst
-        key: external_harfbuzz_ng@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_icing.tar.zst
-        key: external_icing@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_icu.tar.zst
-        key: external_icu@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_jsr305.tar.zst
-        key: external_jsr305@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_jsr330.tar.zst
-        key: external_jsr330@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_junit.tar.zst
-        key: external_junit@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_kotlinc.tar.zst
-        key: external_kotlinc@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_kotlinx.atomicfu.tar.zst
-        key: external_kotlinx.atomicfu@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_kotlinx.coroutines.tar.zst
-        key: external_kotlinx.coroutines@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_libcxx.tar.zst
-        key: external_libcxx@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_libcxxabi.tar.zst
-        key: external_libcxxabi@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_libjpeg-turbo.tar.zst
-        key: external_libjpeg-turbo@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_libphonenumber.tar.zst
-        key: external_libphonenumber@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_libpng.tar.zst
-        key: external_libpng@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_libxml2.tar.zst
-        key: external_libxml2@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_pdfium.tar.zst
-        key: external_pdfium@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_piex.tar.zst
-        key: external_piex@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_protobuf.tar.zst
-        key: external_protobuf@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_rappor.tar.zst
-        key: external_rappor@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_scrypt.tar.zst
-        key: external_scrypt@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_selinux.tar.zst
-        key: external_selinux@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_sfntly.tar.zst
-        key: external_sfntly@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_skia.tar.zst
-        key: external_skia@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_sonivox.tar.zst
-        key: external_sonivox@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_sqlite.tar.zst
-        key: external_sqlite@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_tinyalsa.tar.zst
-        key: external_tinyalsa@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_vulkan-headers.tar.zst
-        key: external_vulkan-headers@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_webp.tar.zst
-        key: external_webp@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_zlib.tar.zst
-        key: external_zlib@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/frameworks_av.tar.zst
-        key: frameworks_av@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/frameworks_base.tar.zst
-        key: frameworks_base@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/frameworks_compile_libbcc.tar.zst
-        key: frameworks_compile_libbcc@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/frameworks_hardware_interfaces.tar.zst
-        key: frameworks_hardware_interfaces@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/frameworks_libs_modules-utils.tar.zst
-        key: frameworks_libs_modules-utils@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/frameworks_libs_net.tar.zst
-        key: frameworks_libs_net@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/frameworks_minikin.tar.zst
-        key: frameworks_minikin@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/frameworks_native.tar.zst
-        key: frameworks_native@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/frameworks_proto_logging.tar.zst
-        key: frameworks_proto_logging@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/frameworks_rs.tar.zst
-        key: frameworks_rs@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/hardware_interfaces.tar.zst
-        key: hardware_interfaces@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/hardware_libhardware.tar.zst
-        key: hardware_libhardware@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/hardware_libhardware_legacy.tar.zst
-        key: hardware_libhardware_legacy@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/hardware_ril.tar.zst
-        key: hardware_ril@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/libcore.tar.zst
-        key: libcore@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/libnativehelper.tar.zst
-        key: libnativehelper@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/packages_inputmethods_LatinIME.tar.zst
-        key: packages_inputmethods_LatinIME@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/packages_modules_DnsResolver.tar.zst
-        key: packages_modules_DnsResolver@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/packages_modules_Gki.tar.zst
-        key: packages_modules_Gki@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/packages_modules_StatsD.tar.zst
-        key: packages_modules_StatsD@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/packages_modules_adb.tar.zst
-        key: packages_modules_adb@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/prebuilts_build-tools.tar.zst
-        key: prebuilts_build-tools@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/prebuilts_clang_host_linux-x86.tar.zst
-        key: prebuilts_clang_host_linux-x86@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/prebuilts_gcc_linux-x86_x86_x86_64-linux-android-4.9.tar.zst
-        key: prebuilts_gcc_linux-x86_x86_x86_64-linux-android-4.9@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/prebuilts_jdk_jdk11.tar.zst
-        key: prebuilts_jdk_jdk11@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/prebuilts_sdk.tar.zst
-        key: prebuilts_sdk@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/system_apex.tar.zst
-        key: system_apex@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/system_bpf.tar.zst
-        key: system_bpf@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/system_bt.tar.zst
-        key: system_bt@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/system_core.tar.zst
-        key: system_core@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/system_hardware_interfaces.tar.zst
-        key: system_hardware_interfaces@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/system_incremental_delivery.tar.zst
-        key: system_incremental_delivery@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/system_libbase.tar.zst
-        key: system_libbase@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/system_libfmq.tar.zst
-        key: system_libfmq@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/system_libhidl.tar.zst
-        key: system_libhidl@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/system_libhwbinder.tar.zst
-        key: system_libhwbinder@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
         path: cache/system_libsysprop.tar.zst
         key: system_libsysprop@${{ env.branch }}
     - uses: actions/cache@v4
       with:
-        path: cache/system_libvintf.tar.zst
-        key: system_libvintf@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
         path: cache/system_libziparchive.tar.zst
         key: system_libziparchive@${{ env.branch }}
     - uses: actions/cache@v4
@@ -1486,22 +704,6 @@ jobs:
       with:
         path: cache/system_media.tar.zst
         key: system_media@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/system_memory_libmeminfo.tar.zst
-        key: system_memory_libmeminfo@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/system_memory_libmemtrack.tar.zst
-        key: system_memory_libmemtrack@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/system_memory_libmemunreachable.tar.zst
-        key: system_memory_libmemunreachable@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/system_memory_lmkd.tar.zst
-        key: system_memory_lmkd@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/system_netd.tar.zst
@@ -1524,16 +726,16 @@ jobs:
         key: system_tools_hidl@${{ env.branch }}
     - uses: actions/cache@v4
       with:
-        path: cache/system_tools_sysprop.tar.zst
-        key: system_tools_sysprop@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
         path: cache/system_unwinding.tar.zst
         key: system_unwinding@${{ env.branch }}
     - uses: actions/cache@v4
       with:
-        path: cache/tools_apifinder.tar.zst
-        key: tools_apifinder@${{ env.branch }}
+        path: cache/tools_apksig.tar.zst
+        key: tools_apksig@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/tools_build.tar.zst
+        key: tools_build@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/tools_metalava.tar.zst
@@ -1542,9 +744,9 @@ jobs:
       with:
         path: cache/tools_platform-compat.tar.zst
         key: tools_platform-compat@${{ env.branch }}
-    - run: bash steps/build_14.sh
+    - run: bash steps/build_03.sh
   build_15:
-    needs: build_14
+    needs: build_3
     runs-on: ubuntu-22.04
     steps:
     - uses: actions/checkout@main

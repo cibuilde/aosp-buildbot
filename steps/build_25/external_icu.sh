@@ -32,6 +32,7 @@ echo "building icu4j_calendar_astronomer^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_25.ninja icu4j_calendar_astronomer,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/icu/icu4j/icu4j_calendar_astronomer^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_25/external/icu/icu4j_calendar_astronomer^android_common.output . $GITHUB_WORKSPACE/artifacts/external/icu/icu4j/icu4j_calendar_astronomer^android_common
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_25/external/icu/icu4j_calendar_astronomer^android_common.output $GITHUB_WORKSPACE/artifacts/external/icu/icu4j/icu4j_calendar_astronomer^android_common $GITHUB_WORKSPACE/artifacts/external/icu/icu4j/icu4j_calendar_astronomer^android_common/addition_copy_files.output
 
 rm -rf out
 

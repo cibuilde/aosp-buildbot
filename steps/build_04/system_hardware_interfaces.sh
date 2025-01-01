@@ -44,131 +44,157 @@ echo "building android.system.keystore2-V1-cpp-source^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.system.keystore2-V1-cpp-source,
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/hardware/interfaces/keystore2/aidl/android.system.keystore2-V1-cpp-source^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/hardware/interfaces/android.system.keystore2-V1-cpp-source^.output . $GITHUB_WORKSPACE/artifacts/system/hardware/interfaces/keystore2/aidl/android.system.keystore2-V1-cpp-source^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/system/hardware/interfaces/android.system.keystore2-V1-cpp-source^.output $GITHUB_WORKSPACE/artifacts/system/hardware/interfaces/keystore2/aidl/android.system.keystore2-V1-cpp-source^ $GITHUB_WORKSPACE/artifacts/system/hardware/interfaces/keystore2/aidl/android.system.keystore2-V1-cpp-source^/addition_copy_files.output
 
 echo "building android.system.keystore2-V1-java-source^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.system.keystore2-V1-java-source,
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/hardware/interfaces/keystore2/aidl/android.system.keystore2-V1-java-source^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/hardware/interfaces/android.system.keystore2-V1-java-source^.output . $GITHUB_WORKSPACE/artifacts/system/hardware/interfaces/keystore2/aidl/android.system.keystore2-V1-java-source^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/system/hardware/interfaces/android.system.keystore2-V1-java-source^.output $GITHUB_WORKSPACE/artifacts/system/hardware/interfaces/keystore2/aidl/android.system.keystore2-V1-java-source^ $GITHUB_WORKSPACE/artifacts/system/hardware/interfaces/keystore2/aidl/android.system.keystore2-V1-java-source^/addition_copy_files.output
 
 echo "building android.system.keystore2-V1-ndk_platform-source^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.system.keystore2-V1-ndk_platform-source,
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/hardware/interfaces/keystore2/aidl/android.system.keystore2-V1-ndk_platform-source^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/hardware/interfaces/android.system.keystore2-V1-ndk_platform-source^.output . $GITHUB_WORKSPACE/artifacts/system/hardware/interfaces/keystore2/aidl/android.system.keystore2-V1-ndk_platform-source^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/system/hardware/interfaces/android.system.keystore2-V1-ndk_platform-source^.output $GITHUB_WORKSPACE/artifacts/system/hardware/interfaces/keystore2/aidl/android.system.keystore2-V1-ndk_platform-source^ $GITHUB_WORKSPACE/artifacts/system/hardware/interfaces/keystore2/aidl/android.system.keystore2-V1-ndk_platform-source^/addition_copy_files.output
 
 echo "building android.system.keystore2-V1-rust-source^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.system.keystore2-V1-rust-source,
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/hardware/interfaces/keystore2/aidl/android.system.keystore2-V1-rust-source^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/hardware/interfaces/android.system.keystore2-V1-rust-source^.output . $GITHUB_WORKSPACE/artifacts/system/hardware/interfaces/keystore2/aidl/android.system.keystore2-V1-rust-source^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/system/hardware/interfaces/android.system.keystore2-V1-rust-source^.output $GITHUB_WORKSPACE/artifacts/system/hardware/interfaces/keystore2/aidl/android.system.keystore2-V1-rust-source^ $GITHUB_WORKSPACE/artifacts/system/hardware/interfaces/keystore2/aidl/android.system.keystore2-V1-rust-source^/addition_copy_files.output
 
 echo "building android.system.keystore2-V1-rust^android_x86_64_source"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.system.keystore2-V1-rust,android_x86_64_source
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/hardware/interfaces/keystore2/aidl/android.system.keystore2-V1-rust^android_x86_64_source
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/hardware/interfaces/android.system.keystore2-V1-rust^android_x86_64_source.output . $GITHUB_WORKSPACE/artifacts/system/hardware/interfaces/keystore2/aidl/android.system.keystore2-V1-rust^android_x86_64_source
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/system/hardware/interfaces/android.system.keystore2-V1-rust^android_x86_64_source.output $GITHUB_WORKSPACE/artifacts/system/hardware/interfaces/keystore2/aidl/android.system.keystore2-V1-rust^android_x86_64_source $GITHUB_WORKSPACE/artifacts/system/hardware/interfaces/keystore2/aidl/android.system.keystore2-V1-rust^android_x86_64_source/addition_copy_files.output
 
 echo "building android.system.keystore2-api^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.system.keystore2-api,
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/hardware/interfaces/keystore2/aidl/android.system.keystore2-api^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/hardware/interfaces/android.system.keystore2-api^.output . $GITHUB_WORKSPACE/artifacts/system/hardware/interfaces/keystore2/aidl/android.system.keystore2-api^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/system/hardware/interfaces/android.system.keystore2-api^.output $GITHUB_WORKSPACE/artifacts/system/hardware/interfaces/keystore2/aidl/android.system.keystore2-api^ $GITHUB_WORKSPACE/artifacts/system/hardware/interfaces/keystore2/aidl/android.system.keystore2-api^/addition_copy_files.output
 
 echo "building android.system.net.netd@1.0-inheritance-hierarchy^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.system.net.netd@1.0-inheritance-hierarchy,
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/hardware/interfaces/net/netd/1.0/android.system.net.netd@1.0-inheritance-hierarchy^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/hardware/interfaces/android.system.net.netd@1.0-inheritance-hierarchy^.output . $GITHUB_WORKSPACE/artifacts/system/hardware/interfaces/net/netd/1.0/android.system.net.netd@1.0-inheritance-hierarchy^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/system/hardware/interfaces/android.system.net.netd@1.0-inheritance-hierarchy^.output $GITHUB_WORKSPACE/artifacts/system/hardware/interfaces/net/netd/1.0/android.system.net.netd@1.0-inheritance-hierarchy^ $GITHUB_WORKSPACE/artifacts/system/hardware/interfaces/net/netd/1.0/android.system.net.netd@1.0-inheritance-hierarchy^/addition_copy_files.output
 
 echo "building android.system.net.netd@1.0_genc++^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.system.net.netd@1.0_genc++,
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/hardware/interfaces/net/netd/1.0/android.system.net.netd@1.0_genc++^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/hardware/interfaces/android.system.net.netd@1.0_genc++^.output . $GITHUB_WORKSPACE/artifacts/system/hardware/interfaces/net/netd/1.0/android.system.net.netd@1.0_genc++^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/system/hardware/interfaces/android.system.net.netd@1.0_genc++^.output $GITHUB_WORKSPACE/artifacts/system/hardware/interfaces/net/netd/1.0/android.system.net.netd@1.0_genc++^ $GITHUB_WORKSPACE/artifacts/system/hardware/interfaces/net/netd/1.0/android.system.net.netd@1.0_genc++^/addition_copy_files.output
 
 echo "building android.system.net.netd@1.0_genc++_headers^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.system.net.netd@1.0_genc++_headers,
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/hardware/interfaces/net/netd/1.0/android.system.net.netd@1.0_genc++_headers^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/hardware/interfaces/android.system.net.netd@1.0_genc++_headers^.output . $GITHUB_WORKSPACE/artifacts/system/hardware/interfaces/net/netd/1.0/android.system.net.netd@1.0_genc++_headers^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/system/hardware/interfaces/android.system.net.netd@1.0_genc++_headers^.output $GITHUB_WORKSPACE/artifacts/system/hardware/interfaces/net/netd/1.0/android.system.net.netd@1.0_genc++_headers^ $GITHUB_WORKSPACE/artifacts/system/hardware/interfaces/net/netd/1.0/android.system.net.netd@1.0_genc++_headers^/addition_copy_files.output
 
 echo "building android.system.net.netd@1.1-inheritance-hierarchy^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.system.net.netd@1.1-inheritance-hierarchy,
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/hardware/interfaces/net/netd/1.1/android.system.net.netd@1.1-inheritance-hierarchy^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/hardware/interfaces/android.system.net.netd@1.1-inheritance-hierarchy^.output . $GITHUB_WORKSPACE/artifacts/system/hardware/interfaces/net/netd/1.1/android.system.net.netd@1.1-inheritance-hierarchy^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/system/hardware/interfaces/android.system.net.netd@1.1-inheritance-hierarchy^.output $GITHUB_WORKSPACE/artifacts/system/hardware/interfaces/net/netd/1.1/android.system.net.netd@1.1-inheritance-hierarchy^ $GITHUB_WORKSPACE/artifacts/system/hardware/interfaces/net/netd/1.1/android.system.net.netd@1.1-inheritance-hierarchy^/addition_copy_files.output
 
 echo "building android.system.net.netd@1.1_genc++^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.system.net.netd@1.1_genc++,
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/hardware/interfaces/net/netd/1.1/android.system.net.netd@1.1_genc++^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/hardware/interfaces/android.system.net.netd@1.1_genc++^.output . $GITHUB_WORKSPACE/artifacts/system/hardware/interfaces/net/netd/1.1/android.system.net.netd@1.1_genc++^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/system/hardware/interfaces/android.system.net.netd@1.1_genc++^.output $GITHUB_WORKSPACE/artifacts/system/hardware/interfaces/net/netd/1.1/android.system.net.netd@1.1_genc++^ $GITHUB_WORKSPACE/artifacts/system/hardware/interfaces/net/netd/1.1/android.system.net.netd@1.1_genc++^/addition_copy_files.output
 
 echo "building android.system.net.netd@1.1_genc++_headers^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.system.net.netd@1.1_genc++_headers,
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/hardware/interfaces/net/netd/1.1/android.system.net.netd@1.1_genc++_headers^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/hardware/interfaces/android.system.net.netd@1.1_genc++_headers^.output . $GITHUB_WORKSPACE/artifacts/system/hardware/interfaces/net/netd/1.1/android.system.net.netd@1.1_genc++_headers^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/system/hardware/interfaces/android.system.net.netd@1.1_genc++_headers^.output $GITHUB_WORKSPACE/artifacts/system/hardware/interfaces/net/netd/1.1/android.system.net.netd@1.1_genc++_headers^ $GITHUB_WORKSPACE/artifacts/system/hardware/interfaces/net/netd/1.1/android.system.net.netd@1.1_genc++_headers^/addition_copy_files.output
 
 echo "building android.system.suspend.control-V1-cpp-source^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.system.suspend.control-V1-cpp-source,
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/hardware/interfaces/suspend/aidl/android.system.suspend.control-V1-cpp-source^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/hardware/interfaces/android.system.suspend.control-V1-cpp-source^.output . $GITHUB_WORKSPACE/artifacts/system/hardware/interfaces/suspend/aidl/android.system.suspend.control-V1-cpp-source^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/system/hardware/interfaces/android.system.suspend.control-V1-cpp-source^.output $GITHUB_WORKSPACE/artifacts/system/hardware/interfaces/suspend/aidl/android.system.suspend.control-V1-cpp-source^ $GITHUB_WORKSPACE/artifacts/system/hardware/interfaces/suspend/aidl/android.system.suspend.control-V1-cpp-source^/addition_copy_files.output
 
 echo "building android.system.suspend.control-V1-ndk-source^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.system.suspend.control-V1-ndk-source,
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/hardware/interfaces/suspend/aidl/android.system.suspend.control-V1-ndk-source^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/hardware/interfaces/android.system.suspend.control-V1-ndk-source^.output . $GITHUB_WORKSPACE/artifacts/system/hardware/interfaces/suspend/aidl/android.system.suspend.control-V1-ndk-source^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/system/hardware/interfaces/android.system.suspend.control-V1-ndk-source^.output $GITHUB_WORKSPACE/artifacts/system/hardware/interfaces/suspend/aidl/android.system.suspend.control-V1-ndk-source^ $GITHUB_WORKSPACE/artifacts/system/hardware/interfaces/suspend/aidl/android.system.suspend.control-V1-ndk-source^/addition_copy_files.output
 
 echo "building android.system.suspend.control-V1-ndk^android_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.system.suspend.control-V1-ndk,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/hardware/interfaces/suspend/aidl/android.system.suspend.control-V1-ndk^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/hardware/interfaces/android.system.suspend.control-V1-ndk^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/hardware/interfaces/suspend/aidl/android.system.suspend.control-V1-ndk^android_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/system/hardware/interfaces/android.system.suspend.control-V1-ndk^android_x86_64_static.output $GITHUB_WORKSPACE/artifacts/system/hardware/interfaces/suspend/aidl/android.system.suspend.control-V1-ndk^android_x86_64_static $GITHUB_WORKSPACE/artifacts/system/hardware/interfaces/suspend/aidl/android.system.suspend.control-V1-ndk^android_x86_64_static/addition_copy_files.output
 
 echo "building android.system.suspend.control-V1-ndk^android_x86_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.system.suspend.control-V1-ndk,android_x86_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/hardware/interfaces/suspend/aidl/android.system.suspend.control-V1-ndk^android_x86_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/hardware/interfaces/android.system.suspend.control-V1-ndk^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/hardware/interfaces/suspend/aidl/android.system.suspend.control-V1-ndk^android_x86_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/system/hardware/interfaces/android.system.suspend.control-V1-ndk^android_x86_x86_64_static.output $GITHUB_WORKSPACE/artifacts/system/hardware/interfaces/suspend/aidl/android.system.suspend.control-V1-ndk^android_x86_x86_64_static $GITHUB_WORKSPACE/artifacts/system/hardware/interfaces/suspend/aidl/android.system.suspend.control-V1-ndk^android_x86_x86_64_static/addition_copy_files.output
 
 echo "building android.system.suspend.control-api^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.system.suspend.control-api,
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/hardware/interfaces/suspend/aidl/android.system.suspend.control-api^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/hardware/interfaces/android.system.suspend.control-api^.output . $GITHUB_WORKSPACE/artifacts/system/hardware/interfaces/suspend/aidl/android.system.suspend.control-api^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/system/hardware/interfaces/android.system.suspend.control-api^.output $GITHUB_WORKSPACE/artifacts/system/hardware/interfaces/suspend/aidl/android.system.suspend.control-api^ $GITHUB_WORKSPACE/artifacts/system/hardware/interfaces/suspend/aidl/android.system.suspend.control-api^/addition_copy_files.output
 
 echo "building android.system.suspend.control.internal-cpp-source^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.system.suspend.control.internal-cpp-source,
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/hardware/interfaces/suspend/aidl/android.system.suspend.control.internal-cpp-source^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/hardware/interfaces/android.system.suspend.control.internal-cpp-source^.output . $GITHUB_WORKSPACE/artifacts/system/hardware/interfaces/suspend/aidl/android.system.suspend.control.internal-cpp-source^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/system/hardware/interfaces/android.system.suspend.control.internal-cpp-source^.output $GITHUB_WORKSPACE/artifacts/system/hardware/interfaces/suspend/aidl/android.system.suspend.control.internal-cpp-source^ $GITHUB_WORKSPACE/artifacts/system/hardware/interfaces/suspend/aidl/android.system.suspend.control.internal-cpp-source^/addition_copy_files.output
 
 echo "building android.system.suspend.control.internal-java-source^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.system.suspend.control.internal-java-source,
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/hardware/interfaces/suspend/aidl/android.system.suspend.control.internal-java-source^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/hardware/interfaces/android.system.suspend.control.internal-java-source^.output . $GITHUB_WORKSPACE/artifacts/system/hardware/interfaces/suspend/aidl/android.system.suspend.control.internal-java-source^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/system/hardware/interfaces/android.system.suspend.control.internal-java-source^.output $GITHUB_WORKSPACE/artifacts/system/hardware/interfaces/suspend/aidl/android.system.suspend.control.internal-java-source^ $GITHUB_WORKSPACE/artifacts/system/hardware/interfaces/suspend/aidl/android.system.suspend.control.internal-java-source^/addition_copy_files.output
 
 echo "building android.system.suspend.control.internal-java^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.system.suspend.control.internal-java,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/hardware/interfaces/suspend/aidl/android.system.suspend.control.internal-java^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/hardware/interfaces/android.system.suspend.control.internal-java^android_common.output . $GITHUB_WORKSPACE/artifacts/system/hardware/interfaces/suspend/aidl/android.system.suspend.control.internal-java^android_common
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/system/hardware/interfaces/android.system.suspend.control.internal-java^android_common.output $GITHUB_WORKSPACE/artifacts/system/hardware/interfaces/suspend/aidl/android.system.suspend.control.internal-java^android_common $GITHUB_WORKSPACE/artifacts/system/hardware/interfaces/suspend/aidl/android.system.suspend.control.internal-java^android_common/addition_copy_files.output
 
 echo "building android.system.suspend@1.0-inheritance-hierarchy^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.system.suspend@1.0-inheritance-hierarchy,
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/hardware/interfaces/suspend/1.0/android.system.suspend@1.0-inheritance-hierarchy^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/hardware/interfaces/android.system.suspend@1.0-inheritance-hierarchy^.output . $GITHUB_WORKSPACE/artifacts/system/hardware/interfaces/suspend/1.0/android.system.suspend@1.0-inheritance-hierarchy^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/system/hardware/interfaces/android.system.suspend@1.0-inheritance-hierarchy^.output $GITHUB_WORKSPACE/artifacts/system/hardware/interfaces/suspend/1.0/android.system.suspend@1.0-inheritance-hierarchy^ $GITHUB_WORKSPACE/artifacts/system/hardware/interfaces/suspend/1.0/android.system.suspend@1.0-inheritance-hierarchy^/addition_copy_files.output
 
 echo "building android.system.suspend@1.0_genc++^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.system.suspend@1.0_genc++,
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/hardware/interfaces/suspend/1.0/android.system.suspend@1.0_genc++^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/hardware/interfaces/android.system.suspend@1.0_genc++^.output . $GITHUB_WORKSPACE/artifacts/system/hardware/interfaces/suspend/1.0/android.system.suspend@1.0_genc++^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/system/hardware/interfaces/android.system.suspend@1.0_genc++^.output $GITHUB_WORKSPACE/artifacts/system/hardware/interfaces/suspend/1.0/android.system.suspend@1.0_genc++^ $GITHUB_WORKSPACE/artifacts/system/hardware/interfaces/suspend/1.0/android.system.suspend@1.0_genc++^/addition_copy_files.output
 
 echo "building android.system.suspend@1.0_genc++_headers^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.system.suspend@1.0_genc++_headers,
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/hardware/interfaces/suspend/1.0/android.system.suspend@1.0_genc++_headers^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/hardware/interfaces/android.system.suspend@1.0_genc++_headers^.output . $GITHUB_WORKSPACE/artifacts/system/hardware/interfaces/suspend/1.0/android.system.suspend@1.0_genc++_headers^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/system/hardware/interfaces/android.system.suspend@1.0_genc++_headers^.output $GITHUB_WORKSPACE/artifacts/system/hardware/interfaces/suspend/1.0/android.system.suspend@1.0_genc++_headers^ $GITHUB_WORKSPACE/artifacts/system/hardware/interfaces/suspend/1.0/android.system.suspend@1.0_genc++_headers^/addition_copy_files.output
 
 echo "building android.system.wifi.keystore@1.0-inheritance-hierarchy^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.system.wifi.keystore@1.0-inheritance-hierarchy,
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/hardware/interfaces/wifi/keystore/1.0/android.system.wifi.keystore@1.0-inheritance-hierarchy^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/hardware/interfaces/android.system.wifi.keystore@1.0-inheritance-hierarchy^.output . $GITHUB_WORKSPACE/artifacts/system/hardware/interfaces/wifi/keystore/1.0/android.system.wifi.keystore@1.0-inheritance-hierarchy^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/system/hardware/interfaces/android.system.wifi.keystore@1.0-inheritance-hierarchy^.output $GITHUB_WORKSPACE/artifacts/system/hardware/interfaces/wifi/keystore/1.0/android.system.wifi.keystore@1.0-inheritance-hierarchy^ $GITHUB_WORKSPACE/artifacts/system/hardware/interfaces/wifi/keystore/1.0/android.system.wifi.keystore@1.0-inheritance-hierarchy^/addition_copy_files.output
 
 echo "building android.system.wifi.keystore@1.0_genc++^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.system.wifi.keystore@1.0_genc++,
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/hardware/interfaces/wifi/keystore/1.0/android.system.wifi.keystore@1.0_genc++^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/hardware/interfaces/android.system.wifi.keystore@1.0_genc++^.output . $GITHUB_WORKSPACE/artifacts/system/hardware/interfaces/wifi/keystore/1.0/android.system.wifi.keystore@1.0_genc++^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/system/hardware/interfaces/android.system.wifi.keystore@1.0_genc++^.output $GITHUB_WORKSPACE/artifacts/system/hardware/interfaces/wifi/keystore/1.0/android.system.wifi.keystore@1.0_genc++^ $GITHUB_WORKSPACE/artifacts/system/hardware/interfaces/wifi/keystore/1.0/android.system.wifi.keystore@1.0_genc++^/addition_copy_files.output
 
 echo "building android.system.wifi.keystore@1.0_genc++_headers^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.system.wifi.keystore@1.0_genc++_headers,
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/hardware/interfaces/wifi/keystore/1.0/android.system.wifi.keystore@1.0_genc++_headers^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/hardware/interfaces/android.system.wifi.keystore@1.0_genc++_headers^.output . $GITHUB_WORKSPACE/artifacts/system/hardware/interfaces/wifi/keystore/1.0/android.system.wifi.keystore@1.0_genc++_headers^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/system/hardware/interfaces/android.system.wifi.keystore@1.0_genc++_headers^.output $GITHUB_WORKSPACE/artifacts/system/hardware/interfaces/wifi/keystore/1.0/android.system.wifi.keystore@1.0_genc++_headers^ $GITHUB_WORKSPACE/artifacts/system/hardware/interfaces/wifi/keystore/1.0/android.system.wifi.keystore@1.0_genc++_headers^/addition_copy_files.output
 
 rm -rf out
 

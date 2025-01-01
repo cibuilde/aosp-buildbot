@@ -44,11 +44,13 @@ echo "building androidx.camera.extensions.impl^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_31.ninja androidx.camera.extensions.impl,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/ex/camera2/extensions/sample/androidx.camera.extensions.impl^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_31/frameworks/ex/androidx.camera.extensions.impl^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/ex/camera2/extensions/sample/androidx.camera.extensions.impl^android_common
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_31/frameworks/ex/androidx.camera.extensions.impl^android_common.output $GITHUB_WORKSPACE/artifacts/frameworks/ex/camera2/extensions/sample/androidx.camera.extensions.impl^android_common $GITHUB_WORKSPACE/artifacts/frameworks/ex/camera2/extensions/sample/androidx.camera.extensions.impl^android_common/addition_copy_files.output
 
 echo "building androidx.camera.extensions.stub^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_31.ninja androidx.camera.extensions.stub,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/ex/camera2/extensions/stub/androidx.camera.extensions.stub^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_31/frameworks/ex/androidx.camera.extensions.stub^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/ex/camera2/extensions/stub/androidx.camera.extensions.stub^android_common
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_31/frameworks/ex/androidx.camera.extensions.stub^android_common.output $GITHUB_WORKSPACE/artifacts/frameworks/ex/camera2/extensions/stub/androidx.camera.extensions.stub^android_common $GITHUB_WORKSPACE/artifacts/frameworks/ex/camera2/extensions/stub/androidx.camera.extensions.stub^android_common/addition_copy_files.output
 
 rm -rf out
 

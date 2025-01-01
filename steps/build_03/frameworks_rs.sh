@@ -22,11 +22,13 @@ echo "building rs_generated_headers^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja rs_generated_headers,
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/rs/rs_generated_headers^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/rs/rs_generated_headers^.output . $GITHUB_WORKSPACE/artifacts/frameworks/rs/rs_generated_headers^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/frameworks/rs/rs_generated_headers^.output $GITHUB_WORKSPACE/artifacts/frameworks/rs/rs_generated_headers^ $GITHUB_WORKSPACE/artifacts/frameworks/rs/rs_generated_headers^/addition_copy_files.output
 
 echo "building rs_generated_sources^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja rs_generated_sources,
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/rs/rs_generated_sources^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/frameworks/rs/rs_generated_sources^.output . $GITHUB_WORKSPACE/artifacts/frameworks/rs/rs_generated_sources^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/frameworks/rs/rs_generated_sources^.output $GITHUB_WORKSPACE/artifacts/frameworks/rs/rs_generated_sources^ $GITHUB_WORKSPACE/artifacts/frameworks/rs/rs_generated_sources^/addition_copy_files.output
 
 rm -rf out
 

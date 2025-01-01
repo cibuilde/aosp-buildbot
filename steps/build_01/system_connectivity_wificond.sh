@@ -33,6 +33,7 @@ echo "building libwificond_nl^android_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libwificond_nl,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/connectivity/wificond/libwificond_nl^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/connectivity/wificond/libwificond_nl^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/connectivity/wificond/libwificond_nl^android_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/system/connectivity/wificond/libwificond_nl^android_x86_64_static.output $GITHUB_WORKSPACE/artifacts/system/connectivity/wificond/libwificond_nl^android_x86_64_static $GITHUB_WORKSPACE/artifacts/system/connectivity/wificond/libwificond_nl^android_x86_64_static/addition_copy_files.output
 
 rm -rf out
 

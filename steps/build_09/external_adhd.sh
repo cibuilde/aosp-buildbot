@@ -65,16 +65,19 @@ echo "building libaudio_streams^android_x86_64_rlib_rlib-std_apex10000"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja libaudio_streams,android_x86_64_rlib_rlib-std_apex10000
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/adhd/audio_streams/libaudio_streams^android_x86_64_rlib_rlib-std_apex10000
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_09/external/adhd/libaudio_streams^android_x86_64_rlib_rlib-std_apex10000.output . $GITHUB_WORKSPACE/artifacts/external/adhd/audio_streams/libaudio_streams^android_x86_64_rlib_rlib-std_apex10000
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_09/external/adhd/libaudio_streams^android_x86_64_rlib_rlib-std_apex10000.output $GITHUB_WORKSPACE/artifacts/external/adhd/audio_streams/libaudio_streams^android_x86_64_rlib_rlib-std_apex10000 $GITHUB_WORKSPACE/artifacts/external/adhd/audio_streams/libaudio_streams^android_x86_64_rlib_rlib-std_apex10000/addition_copy_files.output
 
 echo "building libcras_sys^android_x86_64_rlib_rlib-std_apex10000"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja libcras_sys,android_x86_64_rlib_rlib-std_apex10000
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/adhd/cras/client/cras-sys/libcras_sys^android_x86_64_rlib_rlib-std_apex10000
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_09/external/adhd/libcras_sys^android_x86_64_rlib_rlib-std_apex10000.output . $GITHUB_WORKSPACE/artifacts/external/adhd/cras/client/cras-sys/libcras_sys^android_x86_64_rlib_rlib-std_apex10000
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_09/external/adhd/libcras_sys^android_x86_64_rlib_rlib-std_apex10000.output $GITHUB_WORKSPACE/artifacts/external/adhd/cras/client/cras-sys/libcras_sys^android_x86_64_rlib_rlib-std_apex10000 $GITHUB_WORKSPACE/artifacts/external/adhd/cras/client/cras-sys/libcras_sys^android_x86_64_rlib_rlib-std_apex10000/addition_copy_files.output
 
 echo "building liblibcras^android_x86_64_rlib_rlib-std_apex10000"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja liblibcras,android_x86_64_rlib_rlib-std_apex10000
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/adhd/cras/client/libcras/liblibcras^android_x86_64_rlib_rlib-std_apex10000
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_09/external/adhd/liblibcras^android_x86_64_rlib_rlib-std_apex10000.output . $GITHUB_WORKSPACE/artifacts/external/adhd/cras/client/libcras/liblibcras^android_x86_64_rlib_rlib-std_apex10000
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_09/external/adhd/liblibcras^android_x86_64_rlib_rlib-std_apex10000.output $GITHUB_WORKSPACE/artifacts/external/adhd/cras/client/libcras/liblibcras^android_x86_64_rlib_rlib-std_apex10000 $GITHUB_WORKSPACE/artifacts/external/adhd/cras/client/libcras/liblibcras^android_x86_64_rlib_rlib-std_apex10000/addition_copy_files.output
 
 rm -rf out
 

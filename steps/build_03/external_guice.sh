@@ -20,11 +20,13 @@ echo "building guice_munge_manifest^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja guice_munge_manifest,
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/guice/guice_munge_manifest^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/external/guice/guice_munge_manifest^.output . $GITHUB_WORKSPACE/artifacts/external/guice/guice_munge_manifest^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/external/guice/guice_munge_manifest^.output $GITHUB_WORKSPACE/artifacts/external/guice/guice_munge_manifest^ $GITHUB_WORKSPACE/artifacts/external/guice/guice_munge_manifest^/addition_copy_files.output
 
 echo "building guice_munge_srcjar^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja guice_munge_srcjar,
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/guice/guice_munge_srcjar^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/external/guice/guice_munge_srcjar^.output . $GITHUB_WORKSPACE/artifacts/external/guice/guice_munge_srcjar^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/external/guice/guice_munge_srcjar^.output $GITHUB_WORKSPACE/artifacts/external/guice/guice_munge_srcjar^ $GITHUB_WORKSPACE/artifacts/external/guice/guice_munge_srcjar^/addition_copy_files.output
 
 rm -rf out
 

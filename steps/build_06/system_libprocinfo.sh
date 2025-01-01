@@ -43,11 +43,13 @@ echo "building libprocinfo^android_x86_64_shared_apex10000"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libprocinfo,android_x86_64_shared_apex10000
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/libprocinfo/libprocinfo^android_x86_64_shared_apex10000
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/system/libprocinfo/libprocinfo^android_x86_64_shared_apex10000.output . $GITHUB_WORKSPACE/artifacts/system/libprocinfo/libprocinfo^android_x86_64_shared_apex10000
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_06/system/libprocinfo/libprocinfo^android_x86_64_shared_apex10000.output $GITHUB_WORKSPACE/artifacts/system/libprocinfo/libprocinfo^android_x86_64_shared_apex10000 $GITHUB_WORKSPACE/artifacts/system/libprocinfo/libprocinfo^android_x86_64_shared_apex10000/addition_copy_files.output
 
 echo "building libprocinfo^android_x86_x86_64_shared_apex10000"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libprocinfo,android_x86_x86_64_shared_apex10000
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/libprocinfo/libprocinfo^android_x86_x86_64_shared_apex10000
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/system/libprocinfo/libprocinfo^android_x86_x86_64_shared_apex10000.output . $GITHUB_WORKSPACE/artifacts/system/libprocinfo/libprocinfo^android_x86_x86_64_shared_apex10000
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_06/system/libprocinfo/libprocinfo^android_x86_x86_64_shared_apex10000.output $GITHUB_WORKSPACE/artifacts/system/libprocinfo/libprocinfo^android_x86_x86_64_shared_apex10000 $GITHUB_WORKSPACE/artifacts/system/libprocinfo/libprocinfo^android_x86_x86_64_shared_apex10000/addition_copy_files.output
 
 rm -rf out
 

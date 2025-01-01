@@ -66,6 +66,7 @@ echo "building com.android.runtime^android_common_com.android.runtime_image"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja com.android.runtime,android_common_com.android.runtime_image
 mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/apex/com.android.runtime^android_common_com.android.runtime_image
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/bionic/com.android.runtime^android_common_com.android.runtime_image.output . $GITHUB_WORKSPACE/artifacts/bionic/apex/com.android.runtime^android_common_com.android.runtime_image
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_08/bionic/com.android.runtime^android_common_com.android.runtime_image.output $GITHUB_WORKSPACE/artifacts/bionic/apex/com.android.runtime^android_common_com.android.runtime_image $GITHUB_WORKSPACE/artifacts/bionic/apex/com.android.runtime^android_common_com.android.runtime_image/addition_copy_files.output
 
 rm -rf out
 

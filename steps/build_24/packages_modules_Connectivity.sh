@@ -82,11 +82,13 @@ echo "building com.android.tethering-bootclasspath-fragment^android_common_apex3
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_24.ninja com.android.tethering-bootclasspath-fragment,android_common_apex30
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/Connectivity/Tethering/apex/com.android.tethering-bootclasspath-fragment^android_common_apex30
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_24/packages/modules/Connectivity/com.android.tethering-bootclasspath-fragment^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/packages/modules/Connectivity/Tethering/apex/com.android.tethering-bootclasspath-fragment^android_common_apex30
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_24/packages/modules/Connectivity/com.android.tethering-bootclasspath-fragment^android_common_apex30.output $GITHUB_WORKSPACE/artifacts/packages/modules/Connectivity/Tethering/apex/com.android.tethering-bootclasspath-fragment^android_common_apex30 $GITHUB_WORKSPACE/artifacts/packages/modules/Connectivity/Tethering/apex/com.android.tethering-bootclasspath-fragment^android_common_apex30/addition_copy_files.output
 
 echo "building framework-connectivity^android_common_apex30"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_24.ninja framework-connectivity,android_common_apex30
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/Connectivity/framework/framework-connectivity^android_common_apex30
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_24/packages/modules/Connectivity/framework-connectivity^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/packages/modules/Connectivity/framework/framework-connectivity^android_common_apex30
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_24/packages/modules/Connectivity/framework-connectivity^android_common_apex30.output $GITHUB_WORKSPACE/artifacts/packages/modules/Connectivity/framework/framework-connectivity^android_common_apex30 $GITHUB_WORKSPACE/artifacts/packages/modules/Connectivity/framework/framework-connectivity^android_common_apex30/addition_copy_files.output
 
 rm -rf out
 

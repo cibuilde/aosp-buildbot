@@ -89,6 +89,7 @@ echo "building WifiTrackerLib^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_25.ninja WifiTrackerLib,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/opt/net/wifi/libs/WifiTrackerLib/WifiTrackerLib^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_25/frameworks/opt/net/wifi/WifiTrackerLib^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/opt/net/wifi/libs/WifiTrackerLib/WifiTrackerLib^android_common
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_25/frameworks/opt/net/wifi/WifiTrackerLib^android_common.output $GITHUB_WORKSPACE/artifacts/frameworks/opt/net/wifi/libs/WifiTrackerLib/WifiTrackerLib^android_common $GITHUB_WORKSPACE/artifacts/frameworks/opt/net/wifi/libs/WifiTrackerLib/WifiTrackerLib^android_common/addition_copy_files.output
 
 rm -rf out
 

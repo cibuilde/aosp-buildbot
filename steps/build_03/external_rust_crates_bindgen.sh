@@ -20,6 +20,7 @@ echo "building copy_bindgen_build_out^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja copy_bindgen_build_out,
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/rust/crates/bindgen/copy_bindgen_build_out^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/external/rust/crates/bindgen/copy_bindgen_build_out^.output . $GITHUB_WORKSPACE/artifacts/external/rust/crates/bindgen/copy_bindgen_build_out^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/external/rust/crates/bindgen/copy_bindgen_build_out^.output $GITHUB_WORKSPACE/artifacts/external/rust/crates/bindgen/copy_bindgen_build_out^ $GITHUB_WORKSPACE/artifacts/external/rust/crates/bindgen/copy_bindgen_build_out^/addition_copy_files.output
 
 rm -rf out
 

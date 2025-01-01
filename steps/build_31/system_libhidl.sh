@@ -45,21 +45,25 @@ echo "building android.hidl.base-V1.0-java^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_31.ninja android.hidl.base-V1.0-java,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/libhidl/transport/base/1.0/android.hidl.base-V1.0-java^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_31/system/libhidl/android.hidl.base-V1.0-java^android_common.output . $GITHUB_WORKSPACE/artifacts/system/libhidl/transport/base/1.0/android.hidl.base-V1.0-java^android_common
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_31/system/libhidl/android.hidl.base-V1.0-java^android_common.output $GITHUB_WORKSPACE/artifacts/system/libhidl/transport/base/1.0/android.hidl.base-V1.0-java^android_common $GITHUB_WORKSPACE/artifacts/system/libhidl/transport/base/1.0/android.hidl.base-V1.0-java^android_common/addition_copy_files.output
 
 echo "building android.hidl.manager-V1.0-java^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_31.ninja android.hidl.manager-V1.0-java,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/libhidl/transport/manager/1.0/android.hidl.manager-V1.0-java^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_31/system/libhidl/android.hidl.manager-V1.0-java^android_common.output . $GITHUB_WORKSPACE/artifacts/system/libhidl/transport/manager/1.0/android.hidl.manager-V1.0-java^android_common
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_31/system/libhidl/android.hidl.manager-V1.0-java^android_common.output $GITHUB_WORKSPACE/artifacts/system/libhidl/transport/manager/1.0/android.hidl.manager-V1.0-java^android_common $GITHUB_WORKSPACE/artifacts/system/libhidl/transport/manager/1.0/android.hidl.manager-V1.0-java^android_common/addition_copy_files.output
 
 echo "building android.hidl.manager-V1.1-java^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_31.ninja android.hidl.manager-V1.1-java,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/libhidl/transport/manager/1.1/android.hidl.manager-V1.1-java^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_31/system/libhidl/android.hidl.manager-V1.1-java^android_common.output . $GITHUB_WORKSPACE/artifacts/system/libhidl/transport/manager/1.1/android.hidl.manager-V1.1-java^android_common
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_31/system/libhidl/android.hidl.manager-V1.1-java^android_common.output $GITHUB_WORKSPACE/artifacts/system/libhidl/transport/manager/1.1/android.hidl.manager-V1.1-java^android_common $GITHUB_WORKSPACE/artifacts/system/libhidl/transport/manager/1.1/android.hidl.manager-V1.1-java^android_common/addition_copy_files.output
 
 echo "building android.hidl.manager-V1.2-java^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_31.ninja android.hidl.manager-V1.2-java,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/libhidl/transport/manager/1.2/android.hidl.manager-V1.2-java^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_31/system/libhidl/android.hidl.manager-V1.2-java^android_common.output . $GITHUB_WORKSPACE/artifacts/system/libhidl/transport/manager/1.2/android.hidl.manager-V1.2-java^android_common
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_31/system/libhidl/android.hidl.manager-V1.2-java^android_common.output $GITHUB_WORKSPACE/artifacts/system/libhidl/transport/manager/1.2/android.hidl.manager-V1.2-java^android_common $GITHUB_WORKSPACE/artifacts/system/libhidl/transport/manager/1.2/android.hidl.manager-V1.2-java^android_common/addition_copy_files.output
 
 rm -rf out
 

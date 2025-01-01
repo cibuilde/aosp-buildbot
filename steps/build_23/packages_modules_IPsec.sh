@@ -84,11 +84,13 @@ echo "building com.android.ipsec-bootclasspath-fragment^android_common_com.andro
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_23.ninja com.android.ipsec-bootclasspath-fragment,android_common_com.android.ipsec
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/IPsec/apex/com.android.ipsec-bootclasspath-fragment^android_common_com.android.ipsec
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_23/packages/modules/IPsec/com.android.ipsec-bootclasspath-fragment^android_common_com.android.ipsec.output . $GITHUB_WORKSPACE/artifacts/packages/modules/IPsec/apex/com.android.ipsec-bootclasspath-fragment^android_common_com.android.ipsec
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_23/packages/modules/IPsec/com.android.ipsec-bootclasspath-fragment^android_common_com.android.ipsec.output $GITHUB_WORKSPACE/artifacts/packages/modules/IPsec/apex/com.android.ipsec-bootclasspath-fragment^android_common_com.android.ipsec $GITHUB_WORKSPACE/artifacts/packages/modules/IPsec/apex/com.android.ipsec-bootclasspath-fragment^android_common_com.android.ipsec/addition_copy_files.output
 
 echo "building com.android.ipsec^android_common_com.android.ipsec_image"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_23.ninja com.android.ipsec,android_common_com.android.ipsec_image
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/IPsec/apex/com.android.ipsec^android_common_com.android.ipsec_image
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_23/packages/modules/IPsec/com.android.ipsec^android_common_com.android.ipsec_image.output . $GITHUB_WORKSPACE/artifacts/packages/modules/IPsec/apex/com.android.ipsec^android_common_com.android.ipsec_image
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_23/packages/modules/IPsec/com.android.ipsec^android_common_com.android.ipsec_image.output $GITHUB_WORKSPACE/artifacts/packages/modules/IPsec/apex/com.android.ipsec^android_common_com.android.ipsec_image $GITHUB_WORKSPACE/artifacts/packages/modules/IPsec/apex/com.android.ipsec^android_common_com.android.ipsec_image/addition_copy_files.output
 
 rm -rf out
 

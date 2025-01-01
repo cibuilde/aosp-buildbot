@@ -29,6 +29,7 @@ echo "building hamcrest^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_13.ninja hamcrest,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/hamcrest/hamcrest-core/hamcrest^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_13/external/hamcrest/hamcrest^android_common.output . $GITHUB_WORKSPACE/artifacts/external/hamcrest/hamcrest-core/hamcrest^android_common
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_13/external/hamcrest/hamcrest^android_common.output $GITHUB_WORKSPACE/artifacts/external/hamcrest/hamcrest-core/hamcrest^android_common $GITHUB_WORKSPACE/artifacts/external/hamcrest/hamcrest-core/hamcrest^android_common/addition_copy_files.output
 
 rm -rf out
 

@@ -31,6 +31,7 @@ echo "building microdroid_vendor_boot-5.10^android_x86_64"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja microdroid_vendor_boot-5.10,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/Virtualization/microdroid/microdroid_vendor_boot-5.10^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/packages/modules/Virtualization/microdroid_vendor_boot-5.10^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/packages/modules/Virtualization/microdroid/microdroid_vendor_boot-5.10^android_x86_64
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_06/packages/modules/Virtualization/microdroid_vendor_boot-5.10^android_x86_64.output $GITHUB_WORKSPACE/artifacts/packages/modules/Virtualization/microdroid/microdroid_vendor_boot-5.10^android_x86_64 $GITHUB_WORKSPACE/artifacts/packages/modules/Virtualization/microdroid/microdroid_vendor_boot-5.10^android_x86_64/addition_copy_files.output
 
 rm -rf out
 

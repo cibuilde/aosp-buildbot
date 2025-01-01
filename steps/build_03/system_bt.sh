@@ -34,21 +34,25 @@ echo "building BluetoothGeneratedPackets_h^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja BluetoothGeneratedPackets_h,
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/bt/gd/BluetoothGeneratedPackets_h^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/system/bt/BluetoothGeneratedPackets_h^.output . $GITHUB_WORKSPACE/artifacts/system/bt/gd/BluetoothGeneratedPackets_h^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/system/bt/BluetoothGeneratedPackets_h^.output $GITHUB_WORKSPACE/artifacts/system/bt/gd/BluetoothGeneratedPackets_h^ $GITHUB_WORKSPACE/artifacts/system/bt/gd/BluetoothGeneratedPackets_h^/addition_copy_files.output
 
 echo "building BluetoothGeneratedPackets_rust^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja BluetoothGeneratedPackets_rust,
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/bt/gd/BluetoothGeneratedPackets_rust^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/system/bt/BluetoothGeneratedPackets_rust^.output . $GITHUB_WORKSPACE/artifacts/system/bt/gd/BluetoothGeneratedPackets_rust^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/system/bt/BluetoothGeneratedPackets_rust^.output $GITHUB_WORKSPACE/artifacts/system/bt/gd/BluetoothGeneratedPackets_rust^ $GITHUB_WORKSPACE/artifacts/system/bt/gd/BluetoothGeneratedPackets_rust^/addition_copy_files.output
 
 echo "building RootCanalGeneratedPackets_h^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja RootCanalGeneratedPackets_h,
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/bt/vendor_libs/test_vendor_lib/RootCanalGeneratedPackets_h^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/system/bt/RootCanalGeneratedPackets_h^.output . $GITHUB_WORKSPACE/artifacts/system/bt/vendor_libs/test_vendor_lib/RootCanalGeneratedPackets_h^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/system/bt/RootCanalGeneratedPackets_h^.output $GITHUB_WORKSPACE/artifacts/system/bt/vendor_libs/test_vendor_lib/RootCanalGeneratedPackets_h^ $GITHUB_WORKSPACE/artifacts/system/bt/vendor_libs/test_vendor_lib/RootCanalGeneratedPackets_h^/addition_copy_files.output
 
 echo "building bluetooth_packetgen^linux_glibc_x86_64"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja bluetooth_packetgen,linux_glibc_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/bt/gd/packet/parser/bluetooth_packetgen^linux_glibc_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/system/bt/bluetooth_packetgen^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/bt/gd/packet/parser/bluetooth_packetgen^linux_glibc_x86_64
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/system/bt/bluetooth_packetgen^linux_glibc_x86_64.output $GITHUB_WORKSPACE/artifacts/system/bt/gd/packet/parser/bluetooth_packetgen^linux_glibc_x86_64 $GITHUB_WORKSPACE/artifacts/system/bt/gd/packet/parser/bluetooth_packetgen^linux_glibc_x86_64/addition_copy_files.output
 
 rm -rf out
 

@@ -25,41 +25,49 @@ echo "building libc++abi^android_product.31_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libc++abi,android_product.31_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/libcxxabi/libc++abi^android_product.31_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/libcxxabi/libc++abi^android_product.31_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/libcxxabi/libc++abi^android_product.31_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/external/libcxxabi/libc++abi^android_product.31_x86_64_static.output $GITHUB_WORKSPACE/artifacts/external/libcxxabi/libc++abi^android_product.31_x86_64_static $GITHUB_WORKSPACE/artifacts/external/libcxxabi/libc++abi^android_product.31_x86_64_static/addition_copy_files.output
 
 echo "building libc++abi^android_vendor.31_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libc++abi,android_vendor.31_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/libcxxabi/libc++abi^android_vendor.31_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/libcxxabi/libc++abi^android_vendor.31_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/libcxxabi/libc++abi^android_vendor.31_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/external/libcxxabi/libc++abi^android_vendor.31_x86_64_static.output $GITHUB_WORKSPACE/artifacts/external/libcxxabi/libc++abi^android_vendor.31_x86_64_static $GITHUB_WORKSPACE/artifacts/external/libcxxabi/libc++abi^android_vendor.31_x86_64_static/addition_copy_files.output
 
 echo "building libc++abi^android_vendor.31_x86_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libc++abi,android_vendor.31_x86_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/libcxxabi/libc++abi^android_vendor.31_x86_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/libcxxabi/libc++abi^android_vendor.31_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/libcxxabi/libc++abi^android_vendor.31_x86_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/external/libcxxabi/libc++abi^android_vendor.31_x86_x86_64_static.output $GITHUB_WORKSPACE/artifacts/external/libcxxabi/libc++abi^android_vendor.31_x86_x86_64_static $GITHUB_WORKSPACE/artifacts/external/libcxxabi/libc++abi^android_vendor.31_x86_x86_64_static/addition_copy_files.output
 
 echo "building libc++demangle^android_product.31_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libc++demangle,android_product.31_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/libcxxabi/libc++demangle^android_product.31_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/libcxxabi/libc++demangle^android_product.31_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/libcxxabi/libc++demangle^android_product.31_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/external/libcxxabi/libc++demangle^android_product.31_x86_64_static.output $GITHUB_WORKSPACE/artifacts/external/libcxxabi/libc++demangle^android_product.31_x86_64_static $GITHUB_WORKSPACE/artifacts/external/libcxxabi/libc++demangle^android_product.31_x86_64_static/addition_copy_files.output
 
 echo "building libc++demangle^android_vendor.31_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libc++demangle,android_vendor.31_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/libcxxabi/libc++demangle^android_vendor.31_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/libcxxabi/libc++demangle^android_vendor.31_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/libcxxabi/libc++demangle^android_vendor.31_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/external/libcxxabi/libc++demangle^android_vendor.31_x86_64_static.output $GITHUB_WORKSPACE/artifacts/external/libcxxabi/libc++demangle^android_vendor.31_x86_64_static $GITHUB_WORKSPACE/artifacts/external/libcxxabi/libc++demangle^android_vendor.31_x86_64_static/addition_copy_files.output
 
 echo "building libc++demangle^android_vendor.31_x86_64_static_lto-thin"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libc++demangle,android_vendor.31_x86_64_static_lto-thin
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/libcxxabi/libc++demangle^android_vendor.31_x86_64_static_lto-thin
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/libcxxabi/libc++demangle^android_vendor.31_x86_64_static_lto-thin.output . $GITHUB_WORKSPACE/artifacts/external/libcxxabi/libc++demangle^android_vendor.31_x86_64_static_lto-thin
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/external/libcxxabi/libc++demangle^android_vendor.31_x86_64_static_lto-thin.output $GITHUB_WORKSPACE/artifacts/external/libcxxabi/libc++demangle^android_vendor.31_x86_64_static_lto-thin $GITHUB_WORKSPACE/artifacts/external/libcxxabi/libc++demangle^android_vendor.31_x86_64_static_lto-thin/addition_copy_files.output
 
 echo "building libc++demangle^android_vendor.31_x86_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libc++demangle,android_vendor.31_x86_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/libcxxabi/libc++demangle^android_vendor.31_x86_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/libcxxabi/libc++demangle^android_vendor.31_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/libcxxabi/libc++demangle^android_vendor.31_x86_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/external/libcxxabi/libc++demangle^android_vendor.31_x86_x86_64_static.output $GITHUB_WORKSPACE/artifacts/external/libcxxabi/libc++demangle^android_vendor.31_x86_x86_64_static $GITHUB_WORKSPACE/artifacts/external/libcxxabi/libc++demangle^android_vendor.31_x86_x86_64_static/addition_copy_files.output
 
 echo "building libc++demangle^android_vendor.31_x86_x86_64_static_lto-thin"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libc++demangle,android_vendor.31_x86_x86_64_static_lto-thin
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/libcxxabi/libc++demangle^android_vendor.31_x86_x86_64_static_lto-thin
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/libcxxabi/libc++demangle^android_vendor.31_x86_x86_64_static_lto-thin.output . $GITHUB_WORKSPACE/artifacts/external/libcxxabi/libc++demangle^android_vendor.31_x86_x86_64_static_lto-thin
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/external/libcxxabi/libc++demangle^android_vendor.31_x86_x86_64_static_lto-thin.output $GITHUB_WORKSPACE/artifacts/external/libcxxabi/libc++demangle^android_vendor.31_x86_x86_64_static_lto-thin $GITHUB_WORKSPACE/artifacts/external/libcxxabi/libc++demangle^android_vendor.31_x86_x86_64_static_lto-thin/addition_copy_files.output
 
 rm -rf out
 

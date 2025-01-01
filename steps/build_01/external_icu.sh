@@ -34,86 +34,103 @@ echo "building apex_icu.dat^android_x86_64"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja apex_icu.dat,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/icu/icu4c/source/stubdata/apex_icu.dat^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/icu/apex_icu.dat^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/icu/icu4c/source/stubdata/apex_icu.dat^android_x86_64
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/icu/apex_icu.dat^android_x86_64.output $GITHUB_WORKSPACE/artifacts/external/icu/icu4c/source/stubdata/apex_icu.dat^android_x86_64 $GITHUB_WORKSPACE/artifacts/external/icu/icu4c/source/stubdata/apex_icu.dat^android_x86_64/addition_copy_files.output
 
 echo "building libandroidicu_static^android_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libandroidicu_static,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/icu/libandroidicu/static_shim/libandroidicu_static^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/icu/libandroidicu_static^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/icu/libandroidicu/static_shim/libandroidicu_static^android_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/icu/libandroidicu_static^android_x86_64_static.output $GITHUB_WORKSPACE/artifacts/external/icu/libandroidicu/static_shim/libandroidicu_static^android_x86_64_static $GITHUB_WORKSPACE/artifacts/external/icu/libandroidicu/static_shim/libandroidicu_static^android_x86_64_static/addition_copy_files.output
 
 echo "building libandroidicu_static^android_x86_64_static_apex10000"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libandroidicu_static,android_x86_64_static_apex10000
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/icu/libandroidicu/static_shim/libandroidicu_static^android_x86_64_static_apex10000
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/icu/libandroidicu_static^android_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/external/icu/libandroidicu/static_shim/libandroidicu_static^android_x86_64_static_apex10000
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/icu/libandroidicu_static^android_x86_64_static_apex10000.output $GITHUB_WORKSPACE/artifacts/external/icu/libandroidicu/static_shim/libandroidicu_static^android_x86_64_static_apex10000 $GITHUB_WORKSPACE/artifacts/external/icu/libandroidicu/static_shim/libandroidicu_static^android_x86_64_static_apex10000/addition_copy_files.output
 
 echo "building libandroidicu_static^android_x86_x86_64_static_apex10000"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libandroidicu_static,android_x86_x86_64_static_apex10000
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/icu/libandroidicu/static_shim/libandroidicu_static^android_x86_x86_64_static_apex10000
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/icu/libandroidicu_static^android_x86_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/external/icu/libandroidicu/static_shim/libandroidicu_static^android_x86_x86_64_static_apex10000
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/icu/libandroidicu_static^android_x86_x86_64_static_apex10000.output $GITHUB_WORKSPACE/artifacts/external/icu/libandroidicu/static_shim/libandroidicu_static^android_x86_x86_64_static_apex10000 $GITHUB_WORKSPACE/artifacts/external/icu/libandroidicu/static_shim/libandroidicu_static^android_x86_x86_64_static_apex10000/addition_copy_files.output
 
 echo "building libandroidicuinit^android_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libandroidicuinit,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/icu/libandroidicuinit/libandroidicuinit^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/icu/libandroidicuinit^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/icu/libandroidicuinit/libandroidicuinit^android_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/icu/libandroidicuinit^android_x86_64_static.output $GITHUB_WORKSPACE/artifacts/external/icu/libandroidicuinit/libandroidicuinit^android_x86_64_static $GITHUB_WORKSPACE/artifacts/external/icu/libandroidicuinit/libandroidicuinit^android_x86_64_static/addition_copy_files.output
 
 echo "building libandroidicuinit^android_x86_64_static_apex10000"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libandroidicuinit,android_x86_64_static_apex10000
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/icu/libandroidicuinit/libandroidicuinit^android_x86_64_static_apex10000
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/icu/libandroidicuinit^android_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/external/icu/libandroidicuinit/libandroidicuinit^android_x86_64_static_apex10000
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/icu/libandroidicuinit^android_x86_64_static_apex10000.output $GITHUB_WORKSPACE/artifacts/external/icu/libandroidicuinit/libandroidicuinit^android_x86_64_static_apex10000 $GITHUB_WORKSPACE/artifacts/external/icu/libandroidicuinit/libandroidicuinit^android_x86_64_static_apex10000/addition_copy_files.output
 
 echo "building libandroidicuinit^android_x86_x86_64_static_apex10000"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libandroidicuinit,android_x86_x86_64_static_apex10000
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/icu/libandroidicuinit/libandroidicuinit^android_x86_x86_64_static_apex10000
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/icu/libandroidicuinit^android_x86_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/external/icu/libandroidicuinit/libandroidicuinit^android_x86_x86_64_static_apex10000
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/icu/libandroidicuinit^android_x86_x86_64_static_apex10000.output $GITHUB_WORKSPACE/artifacts/external/icu/libandroidicuinit/libandroidicuinit^android_x86_x86_64_static_apex10000 $GITHUB_WORKSPACE/artifacts/external/icu/libandroidicuinit/libandroidicuinit^android_x86_x86_64_static_apex10000/addition_copy_files.output
 
 echo "building libandroidicuinit^linux_glibc_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libandroidicuinit,linux_glibc_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/icu/libandroidicuinit/libandroidicuinit^linux_glibc_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/icu/libandroidicuinit^linux_glibc_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/icu/libandroidicuinit/libandroidicuinit^linux_glibc_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/icu/libandroidicuinit^linux_glibc_x86_64_static.output $GITHUB_WORKSPACE/artifacts/external/icu/libandroidicuinit/libandroidicuinit^linux_glibc_x86_64_static $GITHUB_WORKSPACE/artifacts/external/icu/libandroidicuinit/libandroidicuinit^linux_glibc_x86_64_static/addition_copy_files.output
 
 echo "building libicu_ndk_headers^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libicu_ndk_headers,
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/icu/libicu/libicu_ndk_headers^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/icu/libicu_ndk_headers^.output . $GITHUB_WORKSPACE/artifacts/external/icu/libicu/libicu_ndk_headers^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/icu/libicu_ndk_headers^.output $GITHUB_WORKSPACE/artifacts/external/icu/libicu/libicu_ndk_headers^ $GITHUB_WORKSPACE/artifacts/external/icu/libicu/libicu_ndk_headers^/addition_copy_files.output
 
 echo "building libicu_static^android_x86_64_static_apex10000"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libicu_static,android_x86_64_static_apex10000
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/icu/libicu/src/libicu_static^android_x86_64_static_apex10000
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/icu/libicu_static^android_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/external/icu/libicu/src/libicu_static^android_x86_64_static_apex10000
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/icu/libicu_static^android_x86_64_static_apex10000.output $GITHUB_WORKSPACE/artifacts/external/icu/libicu/src/libicu_static^android_x86_64_static_apex10000 $GITHUB_WORKSPACE/artifacts/external/icu/libicu/src/libicu_static^android_x86_64_static_apex10000/addition_copy_files.output
 
 echo "building libicu_static^android_x86_x86_64_static_apex10000"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libicu_static,android_x86_x86_64_static_apex10000
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/icu/libicu/src/libicu_static^android_x86_x86_64_static_apex10000
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/icu/libicu_static^android_x86_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/external/icu/libicu/src/libicu_static^android_x86_x86_64_static_apex10000
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/icu/libicu_static^android_x86_x86_64_static_apex10000.output $GITHUB_WORKSPACE/artifacts/external/icu/libicu/src/libicu_static^android_x86_x86_64_static_apex10000 $GITHUB_WORKSPACE/artifacts/external/icu/libicu/src/libicu_static^android_x86_x86_64_static_apex10000/addition_copy_files.output
 
 echo "building libicui18n^linux_glibc_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libicui18n,linux_glibc_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/icu/icu4c/source/i18n/libicui18n^linux_glibc_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/icu/libicui18n^linux_glibc_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/icu/icu4c/source/i18n/libicui18n^linux_glibc_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/icu/libicui18n^linux_glibc_x86_64_static.output $GITHUB_WORKSPACE/artifacts/external/icu/icu4c/source/i18n/libicui18n^linux_glibc_x86_64_static $GITHUB_WORKSPACE/artifacts/external/icu/icu4c/source/i18n/libicui18n^linux_glibc_x86_64_static/addition_copy_files.output
 
 echo "building libicuuc^linux_glibc_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libicuuc,linux_glibc_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/icu/icu4c/source/common/libicuuc^linux_glibc_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/icu/libicuuc^linux_glibc_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/icu/icu4c/source/common/libicuuc^linux_glibc_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/icu/libicuuc^linux_glibc_x86_64_static.output $GITHUB_WORKSPACE/artifacts/external/icu/icu4c/source/common/libicuuc^linux_glibc_x86_64_static $GITHUB_WORKSPACE/artifacts/external/icu/icu4c/source/common/libicuuc^linux_glibc_x86_64_static/addition_copy_files.output
 
 echo "building libicuuc_stubdata^android_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libicuuc_stubdata,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/icu/icu4c/source/libicuuc_stubdata^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/icu/libicuuc_stubdata^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/icu/icu4c/source/libicuuc_stubdata^android_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/icu/libicuuc_stubdata^android_x86_64_static.output $GITHUB_WORKSPACE/artifacts/external/icu/icu4c/source/libicuuc_stubdata^android_x86_64_static $GITHUB_WORKSPACE/artifacts/external/icu/icu4c/source/libicuuc_stubdata^android_x86_64_static/addition_copy_files.output
 
 echo "building libicuuc_stubdata^android_x86_64_static_apex10000"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libicuuc_stubdata,android_x86_64_static_apex10000
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/icu/icu4c/source/libicuuc_stubdata^android_x86_64_static_apex10000
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/icu/libicuuc_stubdata^android_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/external/icu/icu4c/source/libicuuc_stubdata^android_x86_64_static_apex10000
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/icu/libicuuc_stubdata^android_x86_64_static_apex10000.output $GITHUB_WORKSPACE/artifacts/external/icu/icu4c/source/libicuuc_stubdata^android_x86_64_static_apex10000 $GITHUB_WORKSPACE/artifacts/external/icu/icu4c/source/libicuuc_stubdata^android_x86_64_static_apex10000/addition_copy_files.output
 
 echo "building libicuuc_stubdata^android_x86_x86_64_static_apex10000"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libicuuc_stubdata,android_x86_x86_64_static_apex10000
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/icu/icu4c/source/libicuuc_stubdata^android_x86_x86_64_static_apex10000
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/icu/libicuuc_stubdata^android_x86_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/external/icu/icu4c/source/libicuuc_stubdata^android_x86_x86_64_static_apex10000
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/icu/libicuuc_stubdata^android_x86_x86_64_static_apex10000.output $GITHUB_WORKSPACE/artifacts/external/icu/icu4c/source/libicuuc_stubdata^android_x86_x86_64_static_apex10000 $GITHUB_WORKSPACE/artifacts/external/icu/icu4c/source/libicuuc_stubdata^android_x86_x86_64_static_apex10000/addition_copy_files.output
 
 echo "building libicuuc_stubdata^linux_glibc_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libicuuc_stubdata,linux_glibc_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/icu/icu4c/source/libicuuc_stubdata^linux_glibc_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/icu/libicuuc_stubdata^linux_glibc_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/icu/icu4c/source/libicuuc_stubdata^linux_glibc_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/icu/libicuuc_stubdata^linux_glibc_x86_64_static.output $GITHUB_WORKSPACE/artifacts/external/icu/icu4c/source/libicuuc_stubdata^linux_glibc_x86_64_static $GITHUB_WORKSPACE/artifacts/external/icu/icu4c/source/libicuuc_stubdata^linux_glibc_x86_64_static/addition_copy_files.output
 
 rm -rf out
 

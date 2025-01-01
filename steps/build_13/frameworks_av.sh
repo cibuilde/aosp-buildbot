@@ -325,61 +325,73 @@ echo "building cameraserver^android_x86_64"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_13.ninja cameraserver,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/camera/cameraserver/cameraserver^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_13/frameworks/av/cameraserver^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/camera/cameraserver/cameraserver^android_x86_64
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_13/frameworks/av/cameraserver^android_x86_64.output $GITHUB_WORKSPACE/artifacts/frameworks/av/camera/cameraserver/cameraserver^android_x86_64 $GITHUB_WORKSPACE/artifacts/frameworks/av/camera/cameraserver/cameraserver^android_x86_64/addition_copy_files.output
 
 echo "building libcameraservice^android_x86_64_shared"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_13.ninja libcameraservice,android_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/services/camera/libcameraservice/libcameraservice^android_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_13/frameworks/av/libcameraservice^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/services/camera/libcameraservice/libcameraservice^android_x86_64_shared
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_13/frameworks/av/libcameraservice^android_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/frameworks/av/services/camera/libcameraservice/libcameraservice^android_x86_64_shared $GITHUB_WORKSPACE/artifacts/frameworks/av/services/camera/libcameraservice/libcameraservice^android_x86_64_shared/addition_copy_files.output
 
 echo "building libmediaextractorservice^android_x86_64_shared"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_13.ninja libmediaextractorservice,android_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/services/mediaextractor/libmediaextractorservice^android_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_13/frameworks/av/libmediaextractorservice^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/services/mediaextractor/libmediaextractorservice^android_x86_64_shared
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_13/frameworks/av/libmediaextractorservice^android_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/frameworks/av/services/mediaextractor/libmediaextractorservice^android_x86_64_shared $GITHUB_WORKSPACE/artifacts/frameworks/av/services/mediaextractor/libmediaextractorservice^android_x86_64_shared/addition_copy_files.output
 
 echo "building libmediandk^android_x86_64_shared"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_13.ninja libmediandk,android_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/ndk/libmediandk^android_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_13/frameworks/av/libmediandk^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/ndk/libmediandk^android_x86_64_shared
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_13/frameworks/av/libmediandk^android_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/frameworks/av/media/ndk/libmediandk^android_x86_64_shared $GITHUB_WORKSPACE/artifacts/frameworks/av/media/ndk/libmediandk^android_x86_64_shared/addition_copy_files.output
 
 echo "building libmediandk^android_x86_x86_64_shared"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_13.ninja libmediandk,android_x86_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/ndk/libmediandk^android_x86_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_13/frameworks/av/libmediandk^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/ndk/libmediandk^android_x86_x86_64_shared
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_13/frameworks/av/libmediandk^android_x86_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/frameworks/av/media/ndk/libmediandk^android_x86_x86_64_shared $GITHUB_WORKSPACE/artifacts/frameworks/av/media/ndk/libmediandk^android_x86_x86_64_shared/addition_copy_files.output
 
 echo "building libmediaplayerservice^android_x86_x86_64_shared_cfi"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_13.ninja libmediaplayerservice,android_x86_x86_64_shared_cfi
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libmediaplayerservice/libmediaplayerservice^android_x86_x86_64_shared_cfi
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_13/frameworks/av/libmediaplayerservice^android_x86_x86_64_shared_cfi.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libmediaplayerservice/libmediaplayerservice^android_x86_x86_64_shared_cfi
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_13/frameworks/av/libmediaplayerservice^android_x86_x86_64_shared_cfi.output $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libmediaplayerservice/libmediaplayerservice^android_x86_x86_64_shared_cfi $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libmediaplayerservice/libmediaplayerservice^android_x86_x86_64_shared_cfi/addition_copy_files.output
 
 echo "building libstagefright^android_x86_64_shared_cfi"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_13.ninja libstagefright,android_x86_64_shared_cfi
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libstagefright/libstagefright^android_x86_64_shared_cfi
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_13/frameworks/av/libstagefright^android_x86_64_shared_cfi.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libstagefright/libstagefright^android_x86_64_shared_cfi
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_13/frameworks/av/libstagefright^android_x86_64_shared_cfi.output $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libstagefright/libstagefright^android_x86_64_shared_cfi $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libstagefright/libstagefright^android_x86_64_shared_cfi/addition_copy_files.output
 
 echo "building libstagefright^android_x86_x86_64_shared_cfi"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_13.ninja libstagefright,android_x86_x86_64_shared_cfi
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libstagefright/libstagefright^android_x86_x86_64_shared_cfi
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_13/frameworks/av/libstagefright^android_x86_x86_64_shared_cfi.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libstagefright/libstagefright^android_x86_x86_64_shared_cfi
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_13/frameworks/av/libstagefright^android_x86_x86_64_shared_cfi.output $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libstagefright/libstagefright^android_x86_x86_64_shared_cfi $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libstagefright/libstagefright^android_x86_x86_64_shared_cfi/addition_copy_files.output
 
 echo "building libstagefright_httplive^android_x86_x86_64_shared_cfi"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_13.ninja libstagefright_httplive,android_x86_x86_64_shared_cfi
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libstagefright/httplive/libstagefright_httplive^android_x86_x86_64_shared_cfi
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_13/frameworks/av/libstagefright_httplive^android_x86_x86_64_shared_cfi.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libstagefright/httplive/libstagefright_httplive^android_x86_x86_64_shared_cfi
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_13/frameworks/av/libstagefright_httplive^android_x86_x86_64_shared_cfi.output $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libstagefright/httplive/libstagefright_httplive^android_x86_x86_64_shared_cfi $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libstagefright/httplive/libstagefright_httplive^android_x86_x86_64_shared_cfi/addition_copy_files.output
 
 echo "building mediaextractor^android_x86_64"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_13.ninja mediaextractor,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/services/mediaextractor/mediaextractor^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_13/frameworks/av/mediaextractor^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/services/mediaextractor/mediaextractor^android_x86_64
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_13/frameworks/av/mediaextractor^android_x86_64.output $GITHUB_WORKSPACE/artifacts/frameworks/av/services/mediaextractor/mediaextractor^android_x86_64 $GITHUB_WORKSPACE/artifacts/frameworks/av/services/mediaextractor/mediaextractor^android_x86_64/addition_copy_files.output
 
 echo "building mediaserver^android_x86_x86_64"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_13.ninja mediaserver,android_x86_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/mediaserver/mediaserver^android_x86_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_13/frameworks/av/mediaserver^android_x86_x86_64.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/mediaserver/mediaserver^android_x86_x86_64
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_13/frameworks/av/mediaserver^android_x86_x86_64.output $GITHUB_WORKSPACE/artifacts/frameworks/av/media/mediaserver/mediaserver^android_x86_x86_64 $GITHUB_WORKSPACE/artifacts/frameworks/av/media/mediaserver/mediaserver^android_x86_x86_64/addition_copy_files.output
 
 echo "building screenrecord^android_x86_64"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_13.ninja screenrecord,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/cmds/screenrecord/screenrecord^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_13/frameworks/av/screenrecord^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/cmds/screenrecord/screenrecord^android_x86_64
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_13/frameworks/av/screenrecord^android_x86_64.output $GITHUB_WORKSPACE/artifacts/frameworks/av/cmds/screenrecord/screenrecord^android_x86_64 $GITHUB_WORKSPACE/artifacts/frameworks/av/cmds/screenrecord/screenrecord^android_x86_64/addition_copy_files.output
 
 rm -rf out
 

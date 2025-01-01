@@ -39,6 +39,7 @@ echo "building dnsresolver_aidl_interface-V9-java^android_common_apex30"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_24.ninja dnsresolver_aidl_interface-V9-java,android_common_apex30
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/DnsResolver/dnsresolver_aidl_interface-V9-java^android_common_apex30
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_24/packages/modules/DnsResolver/dnsresolver_aidl_interface-V9-java^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/packages/modules/DnsResolver/dnsresolver_aidl_interface-V9-java^android_common_apex30
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_24/packages/modules/DnsResolver/dnsresolver_aidl_interface-V9-java^android_common_apex30.output $GITHUB_WORKSPACE/artifacts/packages/modules/DnsResolver/dnsresolver_aidl_interface-V9-java^android_common_apex30 $GITHUB_WORKSPACE/artifacts/packages/modules/DnsResolver/dnsresolver_aidl_interface-V9-java^android_common_apex30/addition_copy_files.output
 
 rm -rf out
 

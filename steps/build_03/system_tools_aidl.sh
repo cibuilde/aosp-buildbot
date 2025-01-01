@@ -39,21 +39,25 @@ echo "building aidl-cpp^linux_glibc_x86_64"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja aidl-cpp,linux_glibc_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/tools/aidl/aidl-cpp^linux_glibc_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/system/tools/aidl/aidl-cpp^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/tools/aidl/aidl-cpp^linux_glibc_x86_64
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/system/tools/aidl/aidl-cpp^linux_glibc_x86_64.output $GITHUB_WORKSPACE/artifacts/system/tools/aidl/aidl-cpp^linux_glibc_x86_64 $GITHUB_WORKSPACE/artifacts/system/tools/aidl/aidl-cpp^linux_glibc_x86_64/addition_copy_files.output
 
 echo "building aidl^linux_glibc_x86_64"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja aidl,linux_glibc_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/tools/aidl/aidl^linux_glibc_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/system/tools/aidl/aidl^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/tools/aidl/aidl^linux_glibc_x86_64
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/system/tools/aidl/aidl^linux_glibc_x86_64.output $GITHUB_WORKSPACE/artifacts/system/tools/aidl/aidl^linux_glibc_x86_64 $GITHUB_WORKSPACE/artifacts/system/tools/aidl/aidl^linux_glibc_x86_64/addition_copy_files.output
 
 echo "building lazy_test_service_aidl-cpp-source^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja lazy_test_service_aidl-cpp-source,
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/tools/aidl/tests/lazy_test/lazy_test_service_aidl-cpp-source^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/system/tools/aidl/lazy_test_service_aidl-cpp-source^.output . $GITHUB_WORKSPACE/artifacts/system/tools/aidl/tests/lazy_test/lazy_test_service_aidl-cpp-source^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/system/tools/aidl/lazy_test_service_aidl-cpp-source^.output $GITHUB_WORKSPACE/artifacts/system/tools/aidl/tests/lazy_test/lazy_test_service_aidl-cpp-source^ $GITHUB_WORKSPACE/artifacts/system/tools/aidl/tests/lazy_test/lazy_test_service_aidl-cpp-source^/addition_copy_files.output
 
 echo "building libaidl-common^linux_glibc_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libaidl-common,linux_glibc_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/tools/aidl/libaidl-common^linux_glibc_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/system/tools/aidl/libaidl-common^linux_glibc_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/tools/aidl/libaidl-common^linux_glibc_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/system/tools/aidl/libaidl-common^linux_glibc_x86_64_static.output $GITHUB_WORKSPACE/artifacts/system/tools/aidl/libaidl-common^linux_glibc_x86_64_static $GITHUB_WORKSPACE/artifacts/system/tools/aidl/libaidl-common^linux_glibc_x86_64_static/addition_copy_files.output
 
 rm -rf out
 

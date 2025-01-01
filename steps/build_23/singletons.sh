@@ -28,6 +28,7 @@ echo "building sdk^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_23.ninja sdk,
 mkdir -p $GITHUB_WORKSPACE/artifacts/singletons/sdk^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_23/singletons/sdk^.output . $GITHUB_WORKSPACE/artifacts/singletons/sdk^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_23/singletons/sdk^.output $GITHUB_WORKSPACE/artifacts/singletons/sdk^ $GITHUB_WORKSPACE/artifacts/singletons/sdk^/addition_copy_files.output
 
 rm -rf out
 

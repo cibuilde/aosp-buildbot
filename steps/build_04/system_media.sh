@@ -30,31 +30,37 @@ echo "building libaudioutils^android_vendor.31_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libaudioutils,android_vendor.31_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/media/audio_utils/libaudioutils^android_vendor.31_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/media/libaudioutils^android_vendor.31_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/media/audio_utils/libaudioutils^android_vendor.31_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/system/media/libaudioutils^android_vendor.31_x86_64_static.output $GITHUB_WORKSPACE/artifacts/system/media/audio_utils/libaudioutils^android_vendor.31_x86_64_static $GITHUB_WORKSPACE/artifacts/system/media/audio_utils/libaudioutils^android_vendor.31_x86_64_static/addition_copy_files.output
 
 echo "building libaudioutils^android_vendor.31_x86_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libaudioutils,android_vendor.31_x86_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/media/audio_utils/libaudioutils^android_vendor.31_x86_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/media/libaudioutils^android_vendor.31_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/media/audio_utils/libaudioutils^android_vendor.31_x86_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/system/media/libaudioutils^android_vendor.31_x86_x86_64_static.output $GITHUB_WORKSPACE/artifacts/system/media/audio_utils/libaudioutils^android_vendor.31_x86_x86_64_static $GITHUB_WORKSPACE/artifacts/system/media/audio_utils/libaudioutils^android_vendor.31_x86_x86_64_static/addition_copy_files.output
 
 echo "building libaudioutils^android_vendor.31_x86_x86_64_static_cfi"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libaudioutils,android_vendor.31_x86_x86_64_static_cfi
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/media/audio_utils/libaudioutils^android_vendor.31_x86_x86_64_static_cfi
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/media/libaudioutils^android_vendor.31_x86_x86_64_static_cfi.output . $GITHUB_WORKSPACE/artifacts/system/media/audio_utils/libaudioutils^android_vendor.31_x86_x86_64_static_cfi
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/system/media/libaudioutils^android_vendor.31_x86_x86_64_static_cfi.output $GITHUB_WORKSPACE/artifacts/system/media/audio_utils/libaudioutils^android_vendor.31_x86_x86_64_static_cfi $GITHUB_WORKSPACE/artifacts/system/media/audio_utils/libaudioutils^android_vendor.31_x86_x86_64_static_cfi/addition_copy_files.output
 
 echo "building libaudioutils_fixedfft^android_vendor.31_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libaudioutils_fixedfft,android_vendor.31_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/media/audio_utils/libaudioutils_fixedfft^android_vendor.31_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/media/libaudioutils_fixedfft^android_vendor.31_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/media/audio_utils/libaudioutils_fixedfft^android_vendor.31_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/system/media/libaudioutils_fixedfft^android_vendor.31_x86_64_static.output $GITHUB_WORKSPACE/artifacts/system/media/audio_utils/libaudioutils_fixedfft^android_vendor.31_x86_64_static $GITHUB_WORKSPACE/artifacts/system/media/audio_utils/libaudioutils_fixedfft^android_vendor.31_x86_64_static/addition_copy_files.output
 
 echo "building libaudioutils_fixedfft^android_vendor.31_x86_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libaudioutils_fixedfft,android_vendor.31_x86_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/media/audio_utils/libaudioutils_fixedfft^android_vendor.31_x86_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/media/libaudioutils_fixedfft^android_vendor.31_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/media/audio_utils/libaudioutils_fixedfft^android_vendor.31_x86_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/system/media/libaudioutils_fixedfft^android_vendor.31_x86_x86_64_static.output $GITHUB_WORKSPACE/artifacts/system/media/audio_utils/libaudioutils_fixedfft^android_vendor.31_x86_x86_64_static $GITHUB_WORKSPACE/artifacts/system/media/audio_utils/libaudioutils_fixedfft^android_vendor.31_x86_x86_64_static/addition_copy_files.output
 
 echo "building libaudioutils_fixedfft^android_vendor.31_x86_x86_64_static_cfi"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libaudioutils_fixedfft,android_vendor.31_x86_x86_64_static_cfi
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/media/audio_utils/libaudioutils_fixedfft^android_vendor.31_x86_x86_64_static_cfi
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/media/libaudioutils_fixedfft^android_vendor.31_x86_x86_64_static_cfi.output . $GITHUB_WORKSPACE/artifacts/system/media/audio_utils/libaudioutils_fixedfft^android_vendor.31_x86_x86_64_static_cfi
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/system/media/libaudioutils_fixedfft^android_vendor.31_x86_x86_64_static_cfi.output $GITHUB_WORKSPACE/artifacts/system/media/audio_utils/libaudioutils_fixedfft^android_vendor.31_x86_x86_64_static_cfi $GITHUB_WORKSPACE/artifacts/system/media/audio_utils/libaudioutils_fixedfft^android_vendor.31_x86_x86_64_static_cfi/addition_copy_files.output
 
 rm -rf out
 

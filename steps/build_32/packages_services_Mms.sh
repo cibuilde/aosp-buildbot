@@ -63,6 +63,7 @@ echo "building MmsService^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_32.ninja MmsService,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/services/Mms/MmsService^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_32/packages/services/Mms/MmsService^android_common.output . $GITHUB_WORKSPACE/artifacts/packages/services/Mms/MmsService^android_common
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_32/packages/services/Mms/MmsService^android_common.output $GITHUB_WORKSPACE/artifacts/packages/services/Mms/MmsService^android_common $GITHUB_WORKSPACE/artifacts/packages/services/Mms/MmsService^android_common/addition_copy_files.output
 
 rm -rf out
 

@@ -29,6 +29,7 @@ echo "building core-icu4j^android_common_apex10000"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_29.ninja core-icu4j,android_common_apex10000
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/icu/android_icu4j/core-icu4j^android_common_apex10000
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_29/external/icu/core-icu4j^android_common_apex10000.output . $GITHUB_WORKSPACE/artifacts/external/icu/android_icu4j/core-icu4j^android_common_apex10000
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_29/external/icu/core-icu4j^android_common_apex10000.output $GITHUB_WORKSPACE/artifacts/external/icu/android_icu4j/core-icu4j^android_common_apex10000 $GITHUB_WORKSPACE/artifacts/external/icu/android_icu4j/core-icu4j^android_common_apex10000/addition_copy_files.output
 
 rm -rf out
 

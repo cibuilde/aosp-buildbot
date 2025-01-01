@@ -46,16 +46,19 @@ echo "building libandroidicu^android_x86_64_shared"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libandroidicu,android_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/icu/libandroidicu/libandroidicu^android_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/external/icu/libandroidicu^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/external/icu/libandroidicu/libandroidicu^android_x86_64_shared
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_07/external/icu/libandroidicu^android_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/external/icu/libandroidicu/libandroidicu^android_x86_64_shared $GITHUB_WORKSPACE/artifacts/external/icu/libandroidicu/libandroidicu^android_x86_64_shared/addition_copy_files.output
 
 echo "building libicui18n^android_x86_64_shared"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libicui18n,android_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/icu/icu4c/source/i18n/libicui18n^android_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/external/icu/libicui18n^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/external/icu/icu4c/source/i18n/libicui18n^android_x86_64_shared
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_07/external/icu/libicui18n^android_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/external/icu/icu4c/source/i18n/libicui18n^android_x86_64_shared $GITHUB_WORKSPACE/artifacts/external/icu/icu4c/source/i18n/libicui18n^android_x86_64_shared/addition_copy_files.output
 
 echo "building libicuuc^android_x86_64_shared"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libicuuc,android_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/icu/icu4c/source/common/libicuuc^android_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/external/icu/libicuuc^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/external/icu/icu4c/source/common/libicuuc^android_x86_64_shared
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_07/external/icu/libicuuc^android_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/external/icu/icu4c/source/common/libicuuc^android_x86_64_shared $GITHUB_WORKSPACE/artifacts/external/icu/icu4c/source/common/libicuuc^android_x86_64_shared/addition_copy_files.output
 
 rm -rf out
 

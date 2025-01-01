@@ -45,26 +45,31 @@ echo "building auto_annotation_plugin^linux_glibc_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja auto_annotation_plugin,linux_glibc_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/auto/value/auto_annotation_plugin^linux_glibc_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/external/auto/auto_annotation_plugin^linux_glibc_common.output . $GITHUB_WORKSPACE/artifacts/external/auto/value/auto_annotation_plugin^linux_glibc_common
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_06/external/auto/auto_annotation_plugin^linux_glibc_common.output $GITHUB_WORKSPACE/artifacts/external/auto/value/auto_annotation_plugin^linux_glibc_common $GITHUB_WORKSPACE/artifacts/external/auto/value/auto_annotation_plugin^linux_glibc_common/addition_copy_files.output
 
 echo "building auto_factory_plugin^linux_glibc_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja auto_factory_plugin,linux_glibc_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/auto/factory/auto_factory_plugin^linux_glibc_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/external/auto/auto_factory_plugin^linux_glibc_common.output . $GITHUB_WORKSPACE/artifacts/external/auto/factory/auto_factory_plugin^linux_glibc_common
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_06/external/auto/auto_factory_plugin^linux_glibc_common.output $GITHUB_WORKSPACE/artifacts/external/auto/factory/auto_factory_plugin^linux_glibc_common $GITHUB_WORKSPACE/artifacts/external/auto/factory/auto_factory_plugin^linux_glibc_common/addition_copy_files.output
 
 echo "building auto_value_memoized_extension_plugin^linux_glibc_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja auto_value_memoized_extension_plugin,linux_glibc_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/auto/value/auto_value_memoized_extension_plugin^linux_glibc_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/external/auto/auto_value_memoized_extension_plugin^linux_glibc_common.output . $GITHUB_WORKSPACE/artifacts/external/auto/value/auto_value_memoized_extension_plugin^linux_glibc_common
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_06/external/auto/auto_value_memoized_extension_plugin^linux_glibc_common.output $GITHUB_WORKSPACE/artifacts/external/auto/value/auto_value_memoized_extension_plugin^linux_glibc_common $GITHUB_WORKSPACE/artifacts/external/auto/value/auto_value_memoized_extension_plugin^linux_glibc_common/addition_copy_files.output
 
 echo "building auto_value_plugin^linux_glibc_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja auto_value_plugin,linux_glibc_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/auto/value/auto_value_plugin^linux_glibc_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/external/auto/auto_value_plugin^linux_glibc_common.output . $GITHUB_WORKSPACE/artifacts/external/auto/value/auto_value_plugin^linux_glibc_common
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_06/external/auto/auto_value_plugin^linux_glibc_common.output $GITHUB_WORKSPACE/artifacts/external/auto/value/auto_value_plugin^linux_glibc_common $GITHUB_WORKSPACE/artifacts/external/auto/value/auto_value_plugin^linux_glibc_common/addition_copy_files.output
 
 echo "building libauto_value_plugin^linux_glibc_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libauto_value_plugin,linux_glibc_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/auto/value/libauto_value_plugin^linux_glibc_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/external/auto/libauto_value_plugin^linux_glibc_common.output . $GITHUB_WORKSPACE/artifacts/external/auto/value/libauto_value_plugin^linux_glibc_common
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_06/external/auto/libauto_value_plugin^linux_glibc_common.output $GITHUB_WORKSPACE/artifacts/external/auto/value/libauto_value_plugin^linux_glibc_common $GITHUB_WORKSPACE/artifacts/external/auto/value/libauto_value_plugin^linux_glibc_common/addition_copy_files.output
 
 rm -rf out
 

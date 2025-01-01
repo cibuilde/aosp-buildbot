@@ -217,16 +217,19 @@ echo "building SettingsLib^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_26.ninja SettingsLib,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/SettingsLib^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_26/frameworks/base/SettingsLib^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/SettingsLib^android_common
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_26/frameworks/base/SettingsLib^android_common.output $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/SettingsLib^android_common $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/SettingsLib^android_common/addition_copy_files.output
 
 echo "building SystemUI-core^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_26.ninja SystemUI-core,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SystemUI/SystemUI-core^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_26/frameworks/base/SystemUI-core^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SystemUI/SystemUI-core^android_common
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_26/frameworks/base/SystemUI-core^android_common.output $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SystemUI/SystemUI-core^android_common $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SystemUI/SystemUI-core^android_common/addition_copy_files.output
 
 echo "building combined-removed-dex^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_26.ninja combined-removed-dex,
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/api/combined-removed-dex^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_26/frameworks/base/combined-removed-dex^.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/api/combined-removed-dex^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_26/frameworks/base/combined-removed-dex^.output $GITHUB_WORKSPACE/artifacts/frameworks/base/api/combined-removed-dex^ $GITHUB_WORKSPACE/artifacts/frameworks/base/api/combined-removed-dex^/addition_copy_files.output
 
 rm -rf out
 

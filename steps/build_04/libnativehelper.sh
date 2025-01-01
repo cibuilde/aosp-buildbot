@@ -42,11 +42,13 @@ echo "building libnativehelper^android_x86_64_shared_apex31"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libnativehelper,android_x86_64_shared_apex31
 mkdir -p $GITHUB_WORKSPACE/artifacts/libnativehelper/libnativehelper^android_x86_64_shared_apex31
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/libnativehelper/libnativehelper^android_x86_64_shared_apex31.output . $GITHUB_WORKSPACE/artifacts/libnativehelper/libnativehelper^android_x86_64_shared_apex31
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/libnativehelper/libnativehelper^android_x86_64_shared_apex31.output $GITHUB_WORKSPACE/artifacts/libnativehelper/libnativehelper^android_x86_64_shared_apex31 $GITHUB_WORKSPACE/artifacts/libnativehelper/libnativehelper^android_x86_64_shared_apex31/addition_copy_files.output
 
 echo "building libnativehelper^android_x86_x86_64_shared_apex31"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libnativehelper,android_x86_x86_64_shared_apex31
 mkdir -p $GITHUB_WORKSPACE/artifacts/libnativehelper/libnativehelper^android_x86_x86_64_shared_apex31
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/libnativehelper/libnativehelper^android_x86_x86_64_shared_apex31.output . $GITHUB_WORKSPACE/artifacts/libnativehelper/libnativehelper^android_x86_x86_64_shared_apex31
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/libnativehelper/libnativehelper^android_x86_x86_64_shared_apex31.output $GITHUB_WORKSPACE/artifacts/libnativehelper/libnativehelper^android_x86_x86_64_shared_apex31 $GITHUB_WORKSPACE/artifacts/libnativehelper/libnativehelper^android_x86_x86_64_shared_apex31/addition_copy_files.output
 
 rm -rf out
 

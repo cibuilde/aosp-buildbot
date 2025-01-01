@@ -40,141 +40,169 @@ echo "building android.security.apc-java-source^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.security.apc-java-source,
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.apc-java-source^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/security/android.security.apc-java-source^.output . $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.apc-java-source^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/system/security/android.security.apc-java-source^.output $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.apc-java-source^ $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.apc-java-source^/addition_copy_files.output
 
 echo "building android.security.apc-ndk_platform-source^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.security.apc-ndk_platform-source,
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.apc-ndk_platform-source^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/security/android.security.apc-ndk_platform-source^.output . $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.apc-ndk_platform-source^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/system/security/android.security.apc-ndk_platform-source^.output $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.apc-ndk_platform-source^ $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.apc-ndk_platform-source^/addition_copy_files.output
 
 echo "building android.security.apc-ndk_platform^android_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.security.apc-ndk_platform,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.apc-ndk_platform^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/security/android.security.apc-ndk_platform^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.apc-ndk_platform^android_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/system/security/android.security.apc-ndk_platform^android_x86_64_static.output $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.apc-ndk_platform^android_x86_64_static $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.apc-ndk_platform^android_x86_64_static/addition_copy_files.output
 
 echo "building android.security.apc-rust-source^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.security.apc-rust-source,
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.apc-rust-source^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/security/android.security.apc-rust-source^.output . $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.apc-rust-source^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/system/security/android.security.apc-rust-source^.output $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.apc-rust-source^ $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.apc-rust-source^/addition_copy_files.output
 
 echo "building android.security.apc-rust^android_x86_64_source"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.security.apc-rust,android_x86_64_source
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.apc-rust^android_x86_64_source
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/security/android.security.apc-rust^android_x86_64_source.output . $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.apc-rust^android_x86_64_source
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/system/security/android.security.apc-rust^android_x86_64_source.output $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.apc-rust^android_x86_64_source $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.apc-rust^android_x86_64_source/addition_copy_files.output
 
 echo "building android.security.authorization-java-source^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.security.authorization-java-source,
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.authorization-java-source^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/security/android.security.authorization-java-source^.output . $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.authorization-java-source^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/system/security/android.security.authorization-java-source^.output $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.authorization-java-source^ $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.authorization-java-source^/addition_copy_files.output
 
 echo "building android.security.authorization-ndk_platform-source^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.security.authorization-ndk_platform-source,
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.authorization-ndk_platform-source^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/security/android.security.authorization-ndk_platform-source^.output . $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.authorization-ndk_platform-source^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/system/security/android.security.authorization-ndk_platform-source^.output $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.authorization-ndk_platform-source^ $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.authorization-ndk_platform-source^/addition_copy_files.output
 
 echo "building android.security.authorization-rust-source^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.security.authorization-rust-source,
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.authorization-rust-source^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/security/android.security.authorization-rust-source^.output . $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.authorization-rust-source^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/system/security/android.security.authorization-rust-source^.output $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.authorization-rust-source^ $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.authorization-rust-source^/addition_copy_files.output
 
 echo "building android.security.authorization-rust^android_x86_64_source"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.security.authorization-rust,android_x86_64_source
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.authorization-rust^android_x86_64_source
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/security/android.security.authorization-rust^android_x86_64_source.output . $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.authorization-rust^android_x86_64_source
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/system/security/android.security.authorization-rust^android_x86_64_source.output $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.authorization-rust^android_x86_64_source $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.authorization-rust^android_x86_64_source/addition_copy_files.output
 
 echo "building android.security.compat-ndk_platform-source^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.security.compat-ndk_platform-source,
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.compat-ndk_platform-source^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/security/android.security.compat-ndk_platform-source^.output . $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.compat-ndk_platform-source^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/system/security/android.security.compat-ndk_platform-source^.output $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.compat-ndk_platform-source^ $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.compat-ndk_platform-source^/addition_copy_files.output
 
 echo "building android.security.compat-rust-source^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.security.compat-rust-source,
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.compat-rust-source^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/security/android.security.compat-rust-source^.output . $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.compat-rust-source^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/system/security/android.security.compat-rust-source^.output $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.compat-rust-source^ $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.compat-rust-source^/addition_copy_files.output
 
 echo "building android.security.compat-rust^android_x86_64_source"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.security.compat-rust,android_x86_64_source
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.compat-rust^android_x86_64_source
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/security/android.security.compat-rust^android_x86_64_source.output . $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.compat-rust^android_x86_64_source
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/system/security/android.security.compat-rust^android_x86_64_source.output $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.compat-rust^android_x86_64_source $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.compat-rust^android_x86_64_source/addition_copy_files.output
 
 echo "building android.security.legacykeystore-java-source^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.security.legacykeystore-java-source,
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.legacykeystore-java-source^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/security/android.security.legacykeystore-java-source^.output . $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.legacykeystore-java-source^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/system/security/android.security.legacykeystore-java-source^.output $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.legacykeystore-java-source^ $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.legacykeystore-java-source^/addition_copy_files.output
 
 echo "building android.security.legacykeystore-ndk_platform-source^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.security.legacykeystore-ndk_platform-source,
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.legacykeystore-ndk_platform-source^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/security/android.security.legacykeystore-ndk_platform-source^.output . $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.legacykeystore-ndk_platform-source^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/system/security/android.security.legacykeystore-ndk_platform-source^.output $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.legacykeystore-ndk_platform-source^ $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.legacykeystore-ndk_platform-source^/addition_copy_files.output
 
 echo "building android.security.legacykeystore-ndk_platform^android_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.security.legacykeystore-ndk_platform,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.legacykeystore-ndk_platform^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/security/android.security.legacykeystore-ndk_platform^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.legacykeystore-ndk_platform^android_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/system/security/android.security.legacykeystore-ndk_platform^android_x86_64_static.output $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.legacykeystore-ndk_platform^android_x86_64_static $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.legacykeystore-ndk_platform^android_x86_64_static/addition_copy_files.output
 
 echo "building android.security.legacykeystore-rust-source^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.security.legacykeystore-rust-source,
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.legacykeystore-rust-source^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/security/android.security.legacykeystore-rust-source^.output . $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.legacykeystore-rust-source^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/system/security/android.security.legacykeystore-rust-source^.output $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.legacykeystore-rust-source^ $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.legacykeystore-rust-source^/addition_copy_files.output
 
 echo "building android.security.legacykeystore-rust^android_x86_64_source"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.security.legacykeystore-rust,android_x86_64_source
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.legacykeystore-rust^android_x86_64_source
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/security/android.security.legacykeystore-rust^android_x86_64_source.output . $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.legacykeystore-rust^android_x86_64_source
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/system/security/android.security.legacykeystore-rust^android_x86_64_source.output $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.legacykeystore-rust^android_x86_64_source $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.legacykeystore-rust^android_x86_64_source/addition_copy_files.output
 
 echo "building android.security.maintenance-java-source^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.security.maintenance-java-source,
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.maintenance-java-source^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/security/android.security.maintenance-java-source^.output . $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.maintenance-java-source^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/system/security/android.security.maintenance-java-source^.output $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.maintenance-java-source^ $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.maintenance-java-source^/addition_copy_files.output
 
 echo "building android.security.maintenance-ndk_platform-source^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.security.maintenance-ndk_platform-source,
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.maintenance-ndk_platform-source^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/security/android.security.maintenance-ndk_platform-source^.output . $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.maintenance-ndk_platform-source^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/system/security/android.security.maintenance-ndk_platform-source^.output $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.maintenance-ndk_platform-source^ $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.maintenance-ndk_platform-source^/addition_copy_files.output
 
 echo "building android.security.maintenance-rust-source^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.security.maintenance-rust-source,
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.maintenance-rust-source^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/security/android.security.maintenance-rust-source^.output . $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.maintenance-rust-source^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/system/security/android.security.maintenance-rust-source^.output $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.maintenance-rust-source^ $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.maintenance-rust-source^/addition_copy_files.output
 
 echo "building android.security.maintenance-rust^android_x86_64_source"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.security.maintenance-rust,android_x86_64_source
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.maintenance-rust^android_x86_64_source
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/security/android.security.maintenance-rust^android_x86_64_source.output . $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.maintenance-rust^android_x86_64_source
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/system/security/android.security.maintenance-rust^android_x86_64_source.output $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.maintenance-rust^android_x86_64_source $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.maintenance-rust^android_x86_64_source/addition_copy_files.output
 
 echo "building android.security.metrics-java-source^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.security.metrics-java-source,
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.metrics-java-source^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/security/android.security.metrics-java-source^.output . $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.metrics-java-source^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/system/security/android.security.metrics-java-source^.output $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.metrics-java-source^ $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.metrics-java-source^/addition_copy_files.output
 
 echo "building android.security.metrics-rust-source^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.security.metrics-rust-source,
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.metrics-rust-source^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/security/android.security.metrics-rust-source^.output . $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.metrics-rust-source^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/system/security/android.security.metrics-rust-source^.output $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.metrics-rust-source^ $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.metrics-rust-source^/addition_copy_files.output
 
 echo "building android.security.metrics-rust^android_x86_64_source"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.security.metrics-rust,android_x86_64_source
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.metrics-rust^android_x86_64_source
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/security/android.security.metrics-rust^android_x86_64_source.output . $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.metrics-rust^android_x86_64_source
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/system/security/android.security.metrics-rust^android_x86_64_source.output $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.metrics-rust^android_x86_64_source $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.metrics-rust^android_x86_64_source/addition_copy_files.output
 
 echo "building android.security.remoteprovisioning-java-source^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.security.remoteprovisioning-java-source,
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.remoteprovisioning-java-source^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/security/android.security.remoteprovisioning-java-source^.output . $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.remoteprovisioning-java-source^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/system/security/android.security.remoteprovisioning-java-source^.output $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.remoteprovisioning-java-source^ $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.remoteprovisioning-java-source^/addition_copy_files.output
 
 echo "building android.security.remoteprovisioning-rust-source^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.security.remoteprovisioning-rust-source,
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.remoteprovisioning-rust-source^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/security/android.security.remoteprovisioning-rust-source^.output . $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.remoteprovisioning-rust-source^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/system/security/android.security.remoteprovisioning-rust-source^.output $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.remoteprovisioning-rust-source^ $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.remoteprovisioning-rust-source^/addition_copy_files.output
 
 echo "building android.security.remoteprovisioning-rust^android_x86_64_source"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.security.remoteprovisioning-rust,android_x86_64_source
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.remoteprovisioning-rust^android_x86_64_source
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/security/android.security.remoteprovisioning-rust^android_x86_64_source.output . $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.remoteprovisioning-rust^android_x86_64_source
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/system/security/android.security.remoteprovisioning-rust^android_x86_64_source.output $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.remoteprovisioning-rust^android_x86_64_source $GITHUB_WORKSPACE/artifacts/system/security/keystore2/aidl/android.security.remoteprovisioning-rust^android_x86_64_source/addition_copy_files.output
 
 echo "building lib_odsign_proto^android_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja lib_odsign_proto,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/security/ondevice-signing/proto/lib_odsign_proto^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/security/lib_odsign_proto^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/security/ondevice-signing/proto/lib_odsign_proto^android_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/system/security/lib_odsign_proto^android_x86_64_static.output $GITHUB_WORKSPACE/artifacts/system/security/ondevice-signing/proto/lib_odsign_proto^android_x86_64_static $GITHUB_WORKSPACE/artifacts/system/security/ondevice-signing/proto/lib_odsign_proto^android_x86_64_static/addition_copy_files.output
 
 rm -rf out
 

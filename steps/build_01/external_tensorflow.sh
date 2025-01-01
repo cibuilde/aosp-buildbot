@@ -35,11 +35,13 @@ echo "building libtflite_kernel_utils^android_x86_64_static_apex30"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libtflite_kernel_utils,android_x86_64_static_apex30
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/tensorflow/tensorflow/lite/kernels/libtflite_kernel_utils^android_x86_64_static_apex30
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/tensorflow/libtflite_kernel_utils^android_x86_64_static_apex30.output . $GITHUB_WORKSPACE/artifacts/external/tensorflow/tensorflow/lite/kernels/libtflite_kernel_utils^android_x86_64_static_apex30
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/tensorflow/libtflite_kernel_utils^android_x86_64_static_apex30.output $GITHUB_WORKSPACE/artifacts/external/tensorflow/tensorflow/lite/kernels/libtflite_kernel_utils^android_x86_64_static_apex30 $GITHUB_WORKSPACE/artifacts/external/tensorflow/tensorflow/lite/kernels/libtflite_kernel_utils^android_x86_64_static_apex30/addition_copy_files.output
 
 echo "building libtflite_kernel_utils^android_x86_x86_64_static_apex30"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libtflite_kernel_utils,android_x86_x86_64_static_apex30
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/tensorflow/tensorflow/lite/kernels/libtflite_kernel_utils^android_x86_x86_64_static_apex30
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/tensorflow/libtflite_kernel_utils^android_x86_x86_64_static_apex30.output . $GITHUB_WORKSPACE/artifacts/external/tensorflow/tensorflow/lite/kernels/libtflite_kernel_utils^android_x86_x86_64_static_apex30
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/tensorflow/libtflite_kernel_utils^android_x86_x86_64_static_apex30.output $GITHUB_WORKSPACE/artifacts/external/tensorflow/tensorflow/lite/kernels/libtflite_kernel_utils^android_x86_x86_64_static_apex30 $GITHUB_WORKSPACE/artifacts/external/tensorflow/tensorflow/lite/kernels/libtflite_kernel_utils^android_x86_x86_64_static_apex30/addition_copy_files.output
 
 rm -rf out
 

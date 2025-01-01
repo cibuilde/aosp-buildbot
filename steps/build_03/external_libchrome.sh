@@ -43,41 +43,49 @@ echo "building jni_generator^linux_glibc_x86_64_PY2"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja jni_generator,linux_glibc_x86_64_PY2
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/libchrome/jni_generator^linux_glibc_x86_64_PY2
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/external/libchrome/jni_generator^linux_glibc_x86_64_PY2.output . $GITHUB_WORKSPACE/artifacts/external/libchrome/jni_generator^linux_glibc_x86_64_PY2
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/external/libchrome/jni_generator^linux_glibc_x86_64_PY2.output $GITHUB_WORKSPACE/artifacts/external/libchrome/jni_generator^linux_glibc_x86_64_PY2 $GITHUB_WORKSPACE/artifacts/external/libchrome/jni_generator^linux_glibc_x86_64_PY2/addition_copy_files.output
 
 echo "building jni_registration_generator^linux_glibc_x86_64_PY2"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja jni_registration_generator,linux_glibc_x86_64_PY2
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/libchrome/jni_registration_generator^linux_glibc_x86_64_PY2
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/external/libchrome/jni_registration_generator^linux_glibc_x86_64_PY2.output . $GITHUB_WORKSPACE/artifacts/external/libchrome/jni_registration_generator^linux_glibc_x86_64_PY2
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/external/libchrome/jni_registration_generator^linux_glibc_x86_64_PY2.output $GITHUB_WORKSPACE/artifacts/external/libchrome/jni_registration_generator^linux_glibc_x86_64_PY2 $GITHUB_WORKSPACE/artifacts/external/libchrome/jni_registration_generator^linux_glibc_x86_64_PY2/addition_copy_files.output
 
 echo "building libchrome-include^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libchrome-include,
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/libchrome/libchrome-include^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/external/libchrome/libchrome-include^.output . $GITHUB_WORKSPACE/artifacts/external/libchrome/libchrome-include^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/external/libchrome/libchrome-include^.output $GITHUB_WORKSPACE/artifacts/external/libchrome/libchrome-include^ $GITHUB_WORKSPACE/artifacts/external/libchrome/libchrome-include^/addition_copy_files.output
 
 echo "building libchrome^android_recovery_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libchrome,android_recovery_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/libchrome/libchrome^android_recovery_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/external/libchrome/libchrome^android_recovery_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/libchrome/libchrome^android_recovery_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/external/libchrome/libchrome^android_recovery_x86_64_static.output $GITHUB_WORKSPACE/artifacts/external/libchrome/libchrome^android_recovery_x86_64_static $GITHUB_WORKSPACE/artifacts/external/libchrome/libchrome^android_recovery_x86_64_static/addition_copy_files.output
 
 echo "building libchrome^android_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libchrome,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/libchrome/libchrome^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/external/libchrome/libchrome^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/libchrome/libchrome^android_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/external/libchrome/libchrome^android_x86_64_static.output $GITHUB_WORKSPACE/artifacts/external/libchrome/libchrome^android_x86_64_static $GITHUB_WORKSPACE/artifacts/external/libchrome/libchrome^android_x86_64_static/addition_copy_files.output
 
 echo "building libchrome^android_x86_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libchrome,android_x86_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/libchrome/libchrome^android_x86_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/external/libchrome/libchrome^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/libchrome/libchrome^android_x86_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/external/libchrome/libchrome^android_x86_x86_64_static.output $GITHUB_WORKSPACE/artifacts/external/libchrome/libchrome^android_x86_x86_64_static $GITHUB_WORKSPACE/artifacts/external/libchrome/libchrome^android_x86_x86_64_static/addition_copy_files.output
 
 echo "building libmojo_jni_headers^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libmojo_jni_headers,
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/libchrome/libmojo_jni_headers^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/external/libchrome/libmojo_jni_headers^.output . $GITHUB_WORKSPACE/artifacts/external/libchrome/libmojo_jni_headers^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/external/libchrome/libmojo_jni_headers^.output $GITHUB_WORKSPACE/artifacts/external/libchrome/libmojo_jni_headers^ $GITHUB_WORKSPACE/artifacts/external/libchrome/libmojo_jni_headers^/addition_copy_files.output
 
 echo "building libmojo_jni_registration_headers^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libmojo_jni_registration_headers,
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/libchrome/libmojo_jni_registration_headers^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/external/libchrome/libmojo_jni_registration_headers^.output . $GITHUB_WORKSPACE/artifacts/external/libchrome/libmojo_jni_registration_headers^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/external/libchrome/libmojo_jni_registration_headers^.output $GITHUB_WORKSPACE/artifacts/external/libchrome/libmojo_jni_registration_headers^ $GITHUB_WORKSPACE/artifacts/external/libchrome/libmojo_jni_registration_headers^/addition_copy_files.output
 
 rm -rf out
 

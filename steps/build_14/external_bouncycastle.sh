@@ -39,6 +39,7 @@ echo "building bouncycastle^android_common_apex31"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_14.ninja bouncycastle,android_common_apex31
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/bouncycastle/bouncycastle^android_common_apex31
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_14/external/bouncycastle/bouncycastle^android_common_apex31.output . $GITHUB_WORKSPACE/artifacts/external/bouncycastle/bouncycastle^android_common_apex31
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_14/external/bouncycastle/bouncycastle^android_common_apex31.output $GITHUB_WORKSPACE/artifacts/external/bouncycastle/bouncycastle^android_common_apex31 $GITHUB_WORKSPACE/artifacts/external/bouncycastle/bouncycastle^android_common_apex31/addition_copy_files.output
 
 rm -rf out
 

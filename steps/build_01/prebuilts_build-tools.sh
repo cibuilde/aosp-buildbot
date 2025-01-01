@@ -18,21 +18,25 @@ echo "building bison^linux_glibc_x86_64"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja bison,linux_glibc_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/build-tools/bison^linux_glibc_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/prebuilts/build-tools/bison^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/prebuilts/build-tools/bison^linux_glibc_x86_64
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/prebuilts/build-tools/bison^linux_glibc_x86_64.output $GITHUB_WORKSPACE/artifacts/prebuilts/build-tools/bison^linux_glibc_x86_64 $GITHUB_WORKSPACE/artifacts/prebuilts/build-tools/bison^linux_glibc_x86_64/addition_copy_files.output
 
 echo "building flex^linux_glibc_x86_64"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja flex,linux_glibc_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/build-tools/flex^linux_glibc_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/prebuilts/build-tools/flex^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/prebuilts/build-tools/flex^linux_glibc_x86_64
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/prebuilts/build-tools/flex^linux_glibc_x86_64.output $GITHUB_WORKSPACE/artifacts/prebuilts/build-tools/flex^linux_glibc_x86_64 $GITHUB_WORKSPACE/artifacts/prebuilts/build-tools/flex^linux_glibc_x86_64/addition_copy_files.output
 
 echo "building m4^linux_glibc_x86_64"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja m4,linux_glibc_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/build-tools/m4^linux_glibc_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/prebuilts/build-tools/m4^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/prebuilts/build-tools/m4^linux_glibc_x86_64
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/prebuilts/build-tools/m4^linux_glibc_x86_64.output $GITHUB_WORKSPACE/artifacts/prebuilts/build-tools/m4^linux_glibc_x86_64 $GITHUB_WORKSPACE/artifacts/prebuilts/build-tools/m4^linux_glibc_x86_64/addition_copy_files.output
 
 echo "building prebuilt_py3-launcher-autorun^linux_glibc_x86_64"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja prebuilt_py3-launcher-autorun,linux_glibc_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/build-tools/prebuilt_py3-launcher-autorun^linux_glibc_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/prebuilts/build-tools/prebuilt_py3-launcher-autorun^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/prebuilts/build-tools/prebuilt_py3-launcher-autorun^linux_glibc_x86_64
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/prebuilts/build-tools/prebuilt_py3-launcher-autorun^linux_glibc_x86_64.output $GITHUB_WORKSPACE/artifacts/prebuilts/build-tools/prebuilt_py3-launcher-autorun^linux_glibc_x86_64 $GITHUB_WORKSPACE/artifacts/prebuilts/build-tools/prebuilt_py3-launcher-autorun^linux_glibc_x86_64/addition_copy_files.output
 
 rm -rf out
 

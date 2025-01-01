@@ -37,76 +37,91 @@ echo "building libbacktrace^linux_glibc_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libbacktrace,linux_glibc_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/unwinding/libbacktrace/libbacktrace^linux_glibc_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/unwinding/libbacktrace^linux_glibc_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/unwinding/libbacktrace/libbacktrace^linux_glibc_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/system/unwinding/libbacktrace^linux_glibc_x86_64_static.output $GITHUB_WORKSPACE/artifacts/system/unwinding/libbacktrace/libbacktrace^linux_glibc_x86_64_static $GITHUB_WORKSPACE/artifacts/system/unwinding/libbacktrace/libbacktrace^linux_glibc_x86_64_static/addition_copy_files.output
 
 echo "building libunwindstack^android_recovery_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libunwindstack,android_recovery_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/unwinding/libunwindstack/libunwindstack^android_recovery_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/unwinding/libunwindstack^android_recovery_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/unwinding/libunwindstack/libunwindstack^android_recovery_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/system/unwinding/libunwindstack^android_recovery_x86_64_static.output $GITHUB_WORKSPACE/artifacts/system/unwinding/libunwindstack/libunwindstack^android_recovery_x86_64_static $GITHUB_WORKSPACE/artifacts/system/unwinding/libunwindstack/libunwindstack^android_recovery_x86_64_static/addition_copy_files.output
 
 echo "building libunwindstack^android_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libunwindstack,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/unwinding/libunwindstack/libunwindstack^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/unwinding/libunwindstack^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/unwinding/libunwindstack/libunwindstack^android_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/system/unwinding/libunwindstack^android_x86_64_static.output $GITHUB_WORKSPACE/artifacts/system/unwinding/libunwindstack/libunwindstack^android_x86_64_static $GITHUB_WORKSPACE/artifacts/system/unwinding/libunwindstack/libunwindstack^android_x86_64_static/addition_copy_files.output
 
 echo "building libunwindstack^android_x86_64_static_apex10000"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libunwindstack,android_x86_64_static_apex10000
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/unwinding/libunwindstack/libunwindstack^android_x86_64_static_apex10000
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/unwinding/libunwindstack^android_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/system/unwinding/libunwindstack/libunwindstack^android_x86_64_static_apex10000
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/system/unwinding/libunwindstack^android_x86_64_static_apex10000.output $GITHUB_WORKSPACE/artifacts/system/unwinding/libunwindstack/libunwindstack^android_x86_64_static_apex10000 $GITHUB_WORKSPACE/artifacts/system/unwinding/libunwindstack/libunwindstack^android_x86_64_static_apex10000/addition_copy_files.output
 
 echo "building libunwindstack^android_x86_64_static_apex31"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libunwindstack,android_x86_64_static_apex31
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/unwinding/libunwindstack/libunwindstack^android_x86_64_static_apex31
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/unwinding/libunwindstack^android_x86_64_static_apex31.output . $GITHUB_WORKSPACE/artifacts/system/unwinding/libunwindstack/libunwindstack^android_x86_64_static_apex31
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/system/unwinding/libunwindstack^android_x86_64_static_apex31.output $GITHUB_WORKSPACE/artifacts/system/unwinding/libunwindstack/libunwindstack^android_x86_64_static_apex31 $GITHUB_WORKSPACE/artifacts/system/unwinding/libunwindstack/libunwindstack^android_x86_64_static_apex31/addition_copy_files.output
 
 echo "building libunwindstack^android_x86_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libunwindstack,android_x86_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/unwinding/libunwindstack/libunwindstack^android_x86_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/unwinding/libunwindstack^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/unwinding/libunwindstack/libunwindstack^android_x86_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/system/unwinding/libunwindstack^android_x86_x86_64_static.output $GITHUB_WORKSPACE/artifacts/system/unwinding/libunwindstack/libunwindstack^android_x86_x86_64_static $GITHUB_WORKSPACE/artifacts/system/unwinding/libunwindstack/libunwindstack^android_x86_x86_64_static/addition_copy_files.output
 
 echo "building libunwindstack^android_x86_x86_64_static_apex10000"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libunwindstack,android_x86_x86_64_static_apex10000
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/unwinding/libunwindstack/libunwindstack^android_x86_x86_64_static_apex10000
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/unwinding/libunwindstack^android_x86_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/system/unwinding/libunwindstack/libunwindstack^android_x86_x86_64_static_apex10000
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/system/unwinding/libunwindstack^android_x86_x86_64_static_apex10000.output $GITHUB_WORKSPACE/artifacts/system/unwinding/libunwindstack/libunwindstack^android_x86_x86_64_static_apex10000 $GITHUB_WORKSPACE/artifacts/system/unwinding/libunwindstack/libunwindstack^android_x86_x86_64_static_apex10000/addition_copy_files.output
 
 echo "building libunwindstack^android_x86_x86_64_static_apex31"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libunwindstack,android_x86_x86_64_static_apex31
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/unwinding/libunwindstack/libunwindstack^android_x86_x86_64_static_apex31
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/unwinding/libunwindstack^android_x86_x86_64_static_apex31.output . $GITHUB_WORKSPACE/artifacts/system/unwinding/libunwindstack/libunwindstack^android_x86_x86_64_static_apex31
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/system/unwinding/libunwindstack^android_x86_x86_64_static_apex31.output $GITHUB_WORKSPACE/artifacts/system/unwinding/libunwindstack/libunwindstack^android_x86_x86_64_static_apex31 $GITHUB_WORKSPACE/artifacts/system/unwinding/libunwindstack/libunwindstack^android_x86_x86_64_static_apex31/addition_copy_files.output
 
 echo "building libunwindstack^linux_glibc_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libunwindstack,linux_glibc_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/unwinding/libunwindstack/libunwindstack^linux_glibc_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/unwinding/libunwindstack^linux_glibc_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/unwinding/libunwindstack/libunwindstack^linux_glibc_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/system/unwinding/libunwindstack^linux_glibc_x86_64_static.output $GITHUB_WORKSPACE/artifacts/system/unwinding/libunwindstack/libunwindstack^linux_glibc_x86_64_static $GITHUB_WORKSPACE/artifacts/system/unwinding/libunwindstack/libunwindstack^linux_glibc_x86_64_static/addition_copy_files.output
 
 echo "building libunwindstack_no_dex^android_recovery_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libunwindstack_no_dex,android_recovery_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/unwinding/libunwindstack/libunwindstack_no_dex^android_recovery_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/unwinding/libunwindstack_no_dex^android_recovery_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/unwinding/libunwindstack/libunwindstack_no_dex^android_recovery_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/system/unwinding/libunwindstack_no_dex^android_recovery_x86_64_static.output $GITHUB_WORKSPACE/artifacts/system/unwinding/libunwindstack/libunwindstack_no_dex^android_recovery_x86_64_static $GITHUB_WORKSPACE/artifacts/system/unwinding/libunwindstack/libunwindstack_no_dex^android_recovery_x86_64_static/addition_copy_files.output
 
 echo "building libunwindstack_no_dex^android_vendor_ramdisk_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libunwindstack_no_dex,android_vendor_ramdisk_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/unwinding/libunwindstack/libunwindstack_no_dex^android_vendor_ramdisk_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/unwinding/libunwindstack_no_dex^android_vendor_ramdisk_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/unwinding/libunwindstack/libunwindstack_no_dex^android_vendor_ramdisk_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/system/unwinding/libunwindstack_no_dex^android_vendor_ramdisk_x86_64_static.output $GITHUB_WORKSPACE/artifacts/system/unwinding/libunwindstack/libunwindstack_no_dex^android_vendor_ramdisk_x86_64_static $GITHUB_WORKSPACE/artifacts/system/unwinding/libunwindstack/libunwindstack_no_dex^android_vendor_ramdisk_x86_64_static/addition_copy_files.output
 
 echo "building libunwindstack_no_dex^android_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libunwindstack_no_dex,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/unwinding/libunwindstack/libunwindstack_no_dex^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/unwinding/libunwindstack_no_dex^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/unwinding/libunwindstack/libunwindstack_no_dex^android_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/system/unwinding/libunwindstack_no_dex^android_x86_64_static.output $GITHUB_WORKSPACE/artifacts/system/unwinding/libunwindstack/libunwindstack_no_dex^android_x86_64_static $GITHUB_WORKSPACE/artifacts/system/unwinding/libunwindstack/libunwindstack_no_dex^android_x86_64_static/addition_copy_files.output
 
 echo "building libunwindstack_no_dex^android_x86_64_static_apex10000"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libunwindstack_no_dex,android_x86_64_static_apex10000
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/unwinding/libunwindstack/libunwindstack_no_dex^android_x86_64_static_apex10000
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/unwinding/libunwindstack_no_dex^android_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/system/unwinding/libunwindstack/libunwindstack_no_dex^android_x86_64_static_apex10000
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/system/unwinding/libunwindstack_no_dex^android_x86_64_static_apex10000.output $GITHUB_WORKSPACE/artifacts/system/unwinding/libunwindstack/libunwindstack_no_dex^android_x86_64_static_apex10000 $GITHUB_WORKSPACE/artifacts/system/unwinding/libunwindstack/libunwindstack_no_dex^android_x86_64_static_apex10000/addition_copy_files.output
 
 echo "building libunwindstack_no_dex^android_x86_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libunwindstack_no_dex,android_x86_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/unwinding/libunwindstack/libunwindstack_no_dex^android_x86_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/unwinding/libunwindstack_no_dex^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/unwinding/libunwindstack/libunwindstack_no_dex^android_x86_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/system/unwinding/libunwindstack_no_dex^android_x86_x86_64_static.output $GITHUB_WORKSPACE/artifacts/system/unwinding/libunwindstack/libunwindstack_no_dex^android_x86_x86_64_static $GITHUB_WORKSPACE/artifacts/system/unwinding/libunwindstack/libunwindstack_no_dex^android_x86_x86_64_static/addition_copy_files.output
 
 echo "building libunwindstack_no_dex^android_x86_x86_64_static_apex10000"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libunwindstack_no_dex,android_x86_x86_64_static_apex10000
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/unwinding/libunwindstack/libunwindstack_no_dex^android_x86_x86_64_static_apex10000
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/unwinding/libunwindstack_no_dex^android_x86_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/system/unwinding/libunwindstack/libunwindstack_no_dex^android_x86_x86_64_static_apex10000
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/system/unwinding/libunwindstack_no_dex^android_x86_x86_64_static_apex10000.output $GITHUB_WORKSPACE/artifacts/system/unwinding/libunwindstack/libunwindstack_no_dex^android_x86_x86_64_static_apex10000 $GITHUB_WORKSPACE/artifacts/system/unwinding/libunwindstack/libunwindstack_no_dex^android_x86_x86_64_static_apex10000/addition_copy_files.output
 
 rm -rf out
 

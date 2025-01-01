@@ -44,6 +44,7 @@ echo "building libtflite_static^android_x86_64_sdk_static_apex30"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libtflite_static,android_x86_64_sdk_static_apex30
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/tensorflow/tensorflow/lite/libtflite_static^android_x86_64_sdk_static_apex30
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/external/tensorflow/libtflite_static^android_x86_64_sdk_static_apex30.output . $GITHUB_WORKSPACE/artifacts/external/tensorflow/tensorflow/lite/libtflite_static^android_x86_64_sdk_static_apex30
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_06/external/tensorflow/libtflite_static^android_x86_64_sdk_static_apex30.output $GITHUB_WORKSPACE/artifacts/external/tensorflow/tensorflow/lite/libtflite_static^android_x86_64_sdk_static_apex30 $GITHUB_WORKSPACE/artifacts/external/tensorflow/tensorflow/lite/libtflite_static^android_x86_64_sdk_static_apex30/addition_copy_files.output
 
 rm -rf out
 

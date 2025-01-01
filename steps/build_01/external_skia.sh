@@ -43,16 +43,19 @@ echo "building libskia^android_x86_64_static_lto-thin"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libskia,android_x86_64_static_lto-thin
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/skia/libskia^android_x86_64_static_lto-thin
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/skia/libskia^android_x86_64_static_lto-thin.output . $GITHUB_WORKSPACE/artifacts/external/skia/libskia^android_x86_64_static_lto-thin
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/skia/libskia^android_x86_64_static_lto-thin.output $GITHUB_WORKSPACE/artifacts/external/skia/libskia^android_x86_64_static_lto-thin $GITHUB_WORKSPACE/artifacts/external/skia/libskia^android_x86_64_static_lto-thin/addition_copy_files.output
 
 echo "building libskia^android_x86_x86_64_static_lto-thin"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libskia,android_x86_x86_64_static_lto-thin
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/skia/libskia^android_x86_x86_64_static_lto-thin
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/skia/libskia^android_x86_x86_64_static_lto-thin.output . $GITHUB_WORKSPACE/artifacts/external/skia/libskia^android_x86_x86_64_static_lto-thin
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/skia/libskia^android_x86_x86_64_static_lto-thin.output $GITHUB_WORKSPACE/artifacts/external/skia/libskia^android_x86_x86_64_static_lto-thin $GITHUB_WORKSPACE/artifacts/external/skia/libskia^android_x86_x86_64_static_lto-thin/addition_copy_files.output
 
 echo "building libskia_renderengine^android_x86_64_static_lto-thin"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libskia_renderengine,android_x86_64_static_lto-thin
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/skia/libskia_renderengine^android_x86_64_static_lto-thin
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/skia/libskia_renderengine^android_x86_64_static_lto-thin.output . $GITHUB_WORKSPACE/artifacts/external/skia/libskia_renderengine^android_x86_64_static_lto-thin
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/skia/libskia_renderengine^android_x86_64_static_lto-thin.output $GITHUB_WORKSPACE/artifacts/external/skia/libskia_renderengine^android_x86_64_static_lto-thin $GITHUB_WORKSPACE/artifacts/external/skia/libskia_renderengine^android_x86_64_static_lto-thin/addition_copy_files.output
 
 rm -rf out
 

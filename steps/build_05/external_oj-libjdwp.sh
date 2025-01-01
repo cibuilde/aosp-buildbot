@@ -44,31 +44,37 @@ echo "building libdt_socket^android_x86_64_shared_apex31"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libdt_socket,android_x86_64_shared_apex31
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/oj-libjdwp/libdt_socket^android_x86_64_shared_apex31
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/external/oj-libjdwp/libdt_socket^android_x86_64_shared_apex31.output . $GITHUB_WORKSPACE/artifacts/external/oj-libjdwp/libdt_socket^android_x86_64_shared_apex31
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/external/oj-libjdwp/libdt_socket^android_x86_64_shared_apex31.output $GITHUB_WORKSPACE/artifacts/external/oj-libjdwp/libdt_socket^android_x86_64_shared_apex31 $GITHUB_WORKSPACE/artifacts/external/oj-libjdwp/libdt_socket^android_x86_64_shared_apex31/addition_copy_files.output
 
 echo "building libdt_socket^android_x86_x86_64_shared_apex31"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libdt_socket,android_x86_x86_64_shared_apex31
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/oj-libjdwp/libdt_socket^android_x86_x86_64_shared_apex31
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/external/oj-libjdwp/libdt_socket^android_x86_x86_64_shared_apex31.output . $GITHUB_WORKSPACE/artifacts/external/oj-libjdwp/libdt_socket^android_x86_x86_64_shared_apex31
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/external/oj-libjdwp/libdt_socket^android_x86_x86_64_shared_apex31.output $GITHUB_WORKSPACE/artifacts/external/oj-libjdwp/libdt_socket^android_x86_x86_64_shared_apex31 $GITHUB_WORKSPACE/artifacts/external/oj-libjdwp/libdt_socket^android_x86_x86_64_shared_apex31/addition_copy_files.output
 
 echo "building libjdwp^android_x86_64_shared_apex31"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libjdwp,android_x86_64_shared_apex31
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/oj-libjdwp/libjdwp^android_x86_64_shared_apex31
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/external/oj-libjdwp/libjdwp^android_x86_64_shared_apex31.output . $GITHUB_WORKSPACE/artifacts/external/oj-libjdwp/libjdwp^android_x86_64_shared_apex31
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/external/oj-libjdwp/libjdwp^android_x86_64_shared_apex31.output $GITHUB_WORKSPACE/artifacts/external/oj-libjdwp/libjdwp^android_x86_64_shared_apex31 $GITHUB_WORKSPACE/artifacts/external/oj-libjdwp/libjdwp^android_x86_64_shared_apex31/addition_copy_files.output
 
 echo "building libjdwp^android_x86_x86_64_shared_apex31"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libjdwp,android_x86_x86_64_shared_apex31
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/oj-libjdwp/libjdwp^android_x86_x86_64_shared_apex31
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/external/oj-libjdwp/libjdwp^android_x86_x86_64_shared_apex31.output . $GITHUB_WORKSPACE/artifacts/external/oj-libjdwp/libjdwp^android_x86_x86_64_shared_apex31
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/external/oj-libjdwp/libjdwp^android_x86_x86_64_shared_apex31.output $GITHUB_WORKSPACE/artifacts/external/oj-libjdwp/libjdwp^android_x86_x86_64_shared_apex31 $GITHUB_WORKSPACE/artifacts/external/oj-libjdwp/libjdwp^android_x86_x86_64_shared_apex31/addition_copy_files.output
 
 echo "building libnpt^android_x86_64_shared_apex31"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libnpt,android_x86_64_shared_apex31
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/oj-libjdwp/libnpt^android_x86_64_shared_apex31
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/external/oj-libjdwp/libnpt^android_x86_64_shared_apex31.output . $GITHUB_WORKSPACE/artifacts/external/oj-libjdwp/libnpt^android_x86_64_shared_apex31
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/external/oj-libjdwp/libnpt^android_x86_64_shared_apex31.output $GITHUB_WORKSPACE/artifacts/external/oj-libjdwp/libnpt^android_x86_64_shared_apex31 $GITHUB_WORKSPACE/artifacts/external/oj-libjdwp/libnpt^android_x86_64_shared_apex31/addition_copy_files.output
 
 echo "building libnpt^android_x86_x86_64_shared_apex31"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libnpt,android_x86_x86_64_shared_apex31
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/oj-libjdwp/libnpt^android_x86_x86_64_shared_apex31
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/external/oj-libjdwp/libnpt^android_x86_x86_64_shared_apex31.output . $GITHUB_WORKSPACE/artifacts/external/oj-libjdwp/libnpt^android_x86_x86_64_shared_apex31
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/external/oj-libjdwp/libnpt^android_x86_x86_64_shared_apex31.output $GITHUB_WORKSPACE/artifacts/external/oj-libjdwp/libnpt^android_x86_x86_64_shared_apex31 $GITHUB_WORKSPACE/artifacts/external/oj-libjdwp/libnpt^android_x86_x86_64_shared_apex31/addition_copy_files.output
 
 rm -rf out
 

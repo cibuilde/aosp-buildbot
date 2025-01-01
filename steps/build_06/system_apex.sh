@@ -44,21 +44,25 @@ echo "building com.android.sysprop.apex_java_gen^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja com.android.sysprop.apex_java_gen,
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/apex/apexd/sysprop/com.android.sysprop.apex_java_gen^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/system/apex/com.android.sysprop.apex_java_gen^.output . $GITHUB_WORKSPACE/artifacts/system/apex/apexd/sysprop/com.android.sysprop.apex_java_gen^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_06/system/apex/com.android.sysprop.apex_java_gen^.output $GITHUB_WORKSPACE/artifacts/system/apex/apexd/sysprop/com.android.sysprop.apex_java_gen^ $GITHUB_WORKSPACE/artifacts/system/apex/apexd/sysprop/com.android.sysprop.apex_java_gen^/addition_copy_files.output
 
 echo "building com.android.sysprop.apex_sysprop_library^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja com.android.sysprop.apex_sysprop_library,
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/apex/apexd/sysprop/com.android.sysprop.apex_sysprop_library^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/system/apex/com.android.sysprop.apex_sysprop_library^.output . $GITHUB_WORKSPACE/artifacts/system/apex/apexd/sysprop/com.android.sysprop.apex_sysprop_library^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_06/system/apex/com.android.sysprop.apex_sysprop_library^.output $GITHUB_WORKSPACE/artifacts/system/apex/apexd/sysprop/com.android.sysprop.apex_sysprop_library^ $GITHUB_WORKSPACE/artifacts/system/apex/apexd/sysprop/com.android.sysprop.apex_sysprop_library^/addition_copy_files.output
 
 echo "building libcom.android.sysprop.apex^android_recovery_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libcom.android.sysprop.apex,android_recovery_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/apex/apexd/sysprop/libcom.android.sysprop.apex^android_recovery_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/system/apex/libcom.android.sysprop.apex^android_recovery_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/apex/apexd/sysprop/libcom.android.sysprop.apex^android_recovery_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_06/system/apex/libcom.android.sysprop.apex^android_recovery_x86_64_static.output $GITHUB_WORKSPACE/artifacts/system/apex/apexd/sysprop/libcom.android.sysprop.apex^android_recovery_x86_64_static $GITHUB_WORKSPACE/artifacts/system/apex/apexd/sysprop/libcom.android.sysprop.apex^android_recovery_x86_64_static/addition_copy_files.output
 
 echo "building libcom.android.sysprop.apex^android_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libcom.android.sysprop.apex,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/apex/apexd/sysprop/libcom.android.sysprop.apex^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/system/apex/libcom.android.sysprop.apex^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/apex/apexd/sysprop/libcom.android.sysprop.apex^android_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_06/system/apex/libcom.android.sysprop.apex^android_x86_64_static.output $GITHUB_WORKSPACE/artifacts/system/apex/apexd/sysprop/libcom.android.sysprop.apex^android_x86_64_static $GITHUB_WORKSPACE/artifacts/system/apex/apexd/sysprop/libcom.android.sysprop.apex^android_x86_64_static/addition_copy_files.output
 
 rm -rf out
 

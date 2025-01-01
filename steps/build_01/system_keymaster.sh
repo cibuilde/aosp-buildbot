@@ -36,21 +36,25 @@ echo "building libcppcose_rkp^android_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libcppcose_rkp,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/keymaster/libcppcose_rkp^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/keymaster/libcppcose_rkp^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/keymaster/libcppcose_rkp^android_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/system/keymaster/libcppcose_rkp^android_x86_64_static.output $GITHUB_WORKSPACE/artifacts/system/keymaster/libcppcose_rkp^android_x86_64_static $GITHUB_WORKSPACE/artifacts/system/keymaster/libcppcose_rkp^android_x86_64_static/addition_copy_files.output
 
 echo "building libkeymaster_portable^android_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libkeymaster_portable,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/keymaster/libkeymaster_portable^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/keymaster/libkeymaster_portable^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/keymaster/libkeymaster_portable^android_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/system/keymaster/libkeymaster_portable^android_x86_64_static.output $GITHUB_WORKSPACE/artifacts/system/keymaster/libkeymaster_portable^android_x86_64_static $GITHUB_WORKSPACE/artifacts/system/keymaster/libkeymaster_portable^android_x86_64_static/addition_copy_files.output
 
 echo "building libpuresoftkeymasterdevice^android_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libpuresoftkeymasterdevice,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/keymaster/libpuresoftkeymasterdevice^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/keymaster/libpuresoftkeymasterdevice^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/keymaster/libpuresoftkeymasterdevice^android_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/system/keymaster/libpuresoftkeymasterdevice^android_x86_64_static.output $GITHUB_WORKSPACE/artifacts/system/keymaster/libpuresoftkeymasterdevice^android_x86_64_static $GITHUB_WORKSPACE/artifacts/system/keymaster/libpuresoftkeymasterdevice^android_x86_64_static/addition_copy_files.output
 
 echo "building libsoft_attestation_cert^android_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libsoft_attestation_cert,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/keymaster/libsoft_attestation_cert^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/keymaster/libsoft_attestation_cert^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/keymaster/libsoft_attestation_cert^android_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/system/keymaster/libsoft_attestation_cert^android_x86_64_static.output $GITHUB_WORKSPACE/artifacts/system/keymaster/libsoft_attestation_cert^android_x86_64_static $GITHUB_WORKSPACE/artifacts/system/keymaster/libsoft_attestation_cert^android_x86_64_static/addition_copy_files.output
 
 rm -rf out
 

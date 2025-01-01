@@ -29,6 +29,7 @@ echo "building libfuse^android_x86_64_sdk_shared_apex30"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libfuse,android_x86_64_sdk_shared_apex30
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/libfuse/libfuse^android_x86_64_sdk_shared_apex30
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/external/libfuse/libfuse^android_x86_64_sdk_shared_apex30.output . $GITHUB_WORKSPACE/artifacts/external/libfuse/libfuse^android_x86_64_sdk_shared_apex30
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_06/external/libfuse/libfuse^android_x86_64_sdk_shared_apex30.output $GITHUB_WORKSPACE/artifacts/external/libfuse/libfuse^android_x86_64_sdk_shared_apex30 $GITHUB_WORKSPACE/artifacts/external/libfuse/libfuse^android_x86_64_sdk_shared_apex30/addition_copy_files.output
 
 rm -rf out
 
