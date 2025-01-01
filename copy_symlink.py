@@ -24,19 +24,24 @@ def open_file(file_path, output_dir, copy_result_file):
     """
     Reads the file containing paths, resolves symlinks, and copies the source to the 'output' directory.
     """
-    with open(file_path, 'r') as file, open(copy_result_file, 'a') as result_file:
+    with open(file_path, 'r') as file:
+        result_file = None
         for line in file:
             line = line.strip()
             if not line:
                 continue
-            process_path(line, output_dir, result_file)
+            process_path(line, output_dir, copy_result_file, result_file)
+        if result_file:
+            result_file.close()
 
-def process_path(path, output_dir, result_file):
+def process_path(path, output_dir, copy_result_file, result_file):
     # Resolve symlink to real file/directory
     if not os.path.islink(path):
         return
 
     real_path = resolve_symlink(path)
+    if not result_file:
+        result_file = open(copy_result_file, 'a')
     result_file.write(f'{real_path}\n')
 
     # Determine the relative path from the original directory
@@ -53,7 +58,7 @@ def process_path(path, output_dir, result_file):
     copy_file_or_directory(real_path, dest_path)
     print(f"Copied {real_path} to {dest_path}")
 
-    process_path(real_path, output_dir, result_file)
+    process_path(real_path, output_dir, copy_result_file, result_file)
 
 if __name__ == "__main__":
     # Setup argument parsing
