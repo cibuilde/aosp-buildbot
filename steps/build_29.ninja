@@ -5,7 +5,6 @@ pool highmem_pool
  depth = 5
 
 include ninja/global.ninja
-include ninja/singleton.ninja
 
 include ninja/external/conscrypt/conscrypt^android_common_apex29.ninja
 include ninja/external/icu/android_icu4j/core-icu4j^android_common_apex10000.ninja

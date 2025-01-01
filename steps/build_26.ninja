@@ -5,7 +5,6 @@ pool highmem_pool
  depth = 5
 
 include ninja/global.ninja
-include ninja/singleton.ninja
 
 include ninja/frameworks/base/api/combined-removed-dex^.ninja
 include ninja/frameworks/base/packages/SettingsLib/SettingsLib^android_common.ninja

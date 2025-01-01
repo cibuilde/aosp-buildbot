@@ -5,7 +5,6 @@ pool highmem_pool
  depth = 5
 
 include ninja/global.ninja
-include ninja/singleton.ninja
 
 include ninja/frameworks/opt/net/ethernet/ethernet-service^android_common.ninja
 include ninja/packages/apps/Bluetooth/Bluetooth^android_common.ninja

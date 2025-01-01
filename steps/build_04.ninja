@@ -6,7 +6,6 @@ pool highmem_pool
 
 include ninja/global.ninja
 include ndk.ninja
-include ninja/singleton.ninja
 
 include ninja/bootable/recovery/applypatch/libapplypatch^android_vendor.31_x86_64_static.ninja
 include ninja/bootable/recovery/applypatch/libapplypatch_modes^android_vendor.31_x86_64_static.ninja
@@ -1616,6 +1615,7 @@ include ninja/prebuilts/tools/common/m2/kotlinx-coroutines-android^android_commo
 include ninja/prebuilts/tools/common/m2/kotlinx-coroutines-android^android_common_apex30.ninja
 include ninja/prebuilts/tools/common/m2/kotlinx-coroutines-core^android_common.ninja
 include ninja/prebuilts/tools/common/m2/kotlinx-coroutines-core^android_common_apex30.ninja
+include ninja/singletons/ndk^.ninja
 include ninja/system/apex/apexd/apex_aidl_interface-cpp-source^.ninja
 include ninja/system/apex/apexd/apex_aidl_interface-java-source^.ninja
 include ninja/system/apex/apexd/apex_aidl_interface-java^android_common.ninja

@@ -5,7 +5,6 @@ pool highmem_pool
  depth = 5
 
 include ninja/global.ninja
-include ninja/singleton.ninja
 
 include ninja/frameworks/opt/telephony/telephony-common^android_common.ninja
 include ninja/packages/apps/EmergencyInfo/EmergencyInfo-lib^android_common.ninja

@@ -18,26 +18,19 @@ clone_depth_platform bionic
 clone_depth_platform build/soong
 clone_depth_platform external/fmtlib
 clone_depth_platform external/googletest
-clone_depth_platform external/icu
 clone_depth_platform external/libcxx
 clone_depth_platform external/libcxxabi
 clone_depth_platform external/lzma
 clone_depth_platform external/protobuf
-clone_depth_platform external/vulkan-headers
 clone_depth_platform external/zlib
 clone_depth_platform frameworks/av
-clone_sparse_exclude frameworks/base "!/data/videos" "!/media/tests/contents" "!/docs" "!/native/graphics/jni/fuzz" "!/cmd/incidentd/testdata"
 clone_depth_platform frameworks/native
-clone_depth_platform frameworks/wilhelm
 clone_depth_platform hardware/libhardware
 clone_depth_platform hardware/libhardware_legacy
 clone_depth_platform hardware/ril
-clone_depth_platform libnativehelper
-clone_depth_platform packages/modules/NeuralNetworks
 clone_project platform/prebuilts/build-tools prebuilts/build-tools android12-gsi "/linux-x86/bin" "/linux-x86/lib64" "/path" "/common"
 clone_depth_platform prebuilts/gcc/linux-x86/x86/x86_64-linux-android-4.9
 clone_depth_platform system/core
-clone_sparse_exclude system/extras "!/simpleperf/scripts" "!/simpleperf/testdata" "!/simpleperf/demo" "!/simpleperf/doc" "!/memory_replay/traces" "!/ioshark/*.tgz" "!/ioshark/*.tar.gz"
 clone_depth_platform system/libbase
 clone_depth_platform system/libprocinfo
 clone_depth_platform system/libziparchive
@@ -299,10 +292,6 @@ if [ ! -f "$GITHUB_WORKSPACE/cache/external_googletest.tar.zst" ]; then
   echo "Compressing external/googletest -> external_googletest.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/external_googletest.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/googletest/ .
 fi
-if [ ! -f "$GITHUB_WORKSPACE/cache/external_icu.tar.zst" ]; then
-  echo "Compressing external/icu -> external_icu.tar.zst"
-  tar -cf $GITHUB_WORKSPACE/cache/external_icu.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/icu/ .
-fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/external_libcxx.tar.zst" ]; then
   echo "Compressing external/libcxx -> external_libcxx.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/external_libcxx.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/libcxx/ .
@@ -319,10 +308,6 @@ if [ ! -f "$GITHUB_WORKSPACE/cache/external_protobuf.tar.zst" ]; then
   echo "Compressing external/protobuf -> external_protobuf.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/external_protobuf.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/protobuf/ .
 fi
-if [ ! -f "$GITHUB_WORKSPACE/cache/external_vulkan-headers.tar.zst" ]; then
-  echo "Compressing external/vulkan-headers -> external_vulkan-headers.tar.zst"
-  tar -cf $GITHUB_WORKSPACE/cache/external_vulkan-headers.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/vulkan-headers/ .
-fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/external_zlib.tar.zst" ]; then
   echo "Compressing external/zlib -> external_zlib.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/external_zlib.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/zlib/ .
@@ -331,17 +316,9 @@ if [ ! -f "$GITHUB_WORKSPACE/cache/frameworks_av.tar.zst" ]; then
   echo "Compressing frameworks/av -> frameworks_av.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/frameworks_av.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/frameworks/av/ .
 fi
-if [ ! -f "$GITHUB_WORKSPACE/cache/frameworks_base.tar.zst" ]; then
-  echo "Compressing frameworks/base -> frameworks_base.tar.zst"
-  tar -cf $GITHUB_WORKSPACE/cache/frameworks_base.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/frameworks/base/ .
-fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/frameworks_native.tar.zst" ]; then
   echo "Compressing frameworks/native -> frameworks_native.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/frameworks_native.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/frameworks/native/ .
-fi
-if [ ! -f "$GITHUB_WORKSPACE/cache/frameworks_wilhelm.tar.zst" ]; then
-  echo "Compressing frameworks/wilhelm -> frameworks_wilhelm.tar.zst"
-  tar -cf $GITHUB_WORKSPACE/cache/frameworks_wilhelm.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/frameworks/wilhelm/ .
 fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/hardware_libhardware.tar.zst" ]; then
   echo "Compressing hardware/libhardware -> hardware_libhardware.tar.zst"
@@ -355,14 +332,6 @@ if [ ! -f "$GITHUB_WORKSPACE/cache/hardware_ril.tar.zst" ]; then
   echo "Compressing hardware/ril -> hardware_ril.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/hardware_ril.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/hardware/ril/ .
 fi
-if [ ! -f "$GITHUB_WORKSPACE/cache/libnativehelper.tar.zst" ]; then
-  echo "Compressing libnativehelper -> libnativehelper.tar.zst"
-  tar -cf $GITHUB_WORKSPACE/cache/libnativehelper.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/libnativehelper/ .
-fi
-if [ ! -f "$GITHUB_WORKSPACE/cache/packages_modules_NeuralNetworks.tar.zst" ]; then
-  echo "Compressing packages/modules/NeuralNetworks -> packages_modules_NeuralNetworks.tar.zst"
-  tar -cf $GITHUB_WORKSPACE/cache/packages_modules_NeuralNetworks.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/packages/modules/NeuralNetworks/ .
-fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_build-tools.tar.zst" ]; then
   echo "Compressing prebuilts/build-tools -> prebuilts_build-tools.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/prebuilts_build-tools.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/prebuilts/build-tools/ .
@@ -374,10 +343,6 @@ fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/system_core.tar.zst" ]; then
   echo "Compressing system/core -> system_core.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/system_core.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/system/core/ .
-fi
-if [ ! -f "$GITHUB_WORKSPACE/cache/system_extras.tar.zst" ]; then
-  echo "Compressing system/extras -> system_extras.tar.zst"
-  tar -cf $GITHUB_WORKSPACE/cache/system_extras.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/system/extras/ .
 fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/system_libbase.tar.zst" ]; then
   echo "Compressing system/libbase -> system_libbase.tar.zst"

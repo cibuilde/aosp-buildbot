@@ -5,7 +5,6 @@ pool highmem_pool
  depth = 5
 
 include ninja/global.ninja
-include ninja/singleton.ninja
 
 include ninja/bootable/recovery/minadbd/minadbd^android_recovery_x86_64.ninja
 include ninja/bootable/recovery/recovery^android_recovery_x86_64.ninja

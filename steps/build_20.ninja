@@ -5,7 +5,6 @@ pool highmem_pool
  depth = 5
 
 include ninja/global.ninja
-include ninja/singleton.ninja
 
 include ninja/frameworks/base/framework-wifi-util-lib^android_common.ninja
 include ninja/frameworks/base/framework-wifi-util-lib^android_common_apex30.ninja

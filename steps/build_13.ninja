@@ -5,7 +5,6 @@ pool highmem_pool
  depth = 5
 
 include ninja/global.ninja
-include ninja/singleton.ninja
 
 include ninja/external/auto/value/auto_value_annotations^android_common.ninja
 include ninja/external/bouncycastle/bouncycastle-repackaged-unbundled^android_common.ninja

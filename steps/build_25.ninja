@@ -5,7 +5,6 @@ pool highmem_pool
  depth = 5
 
 include ninja/global.ninja
-include ninja/singleton.ninja
 
 include ninja/external/apache-http/org.apache.http.legacy.stubs.source.system^android_common.ninja
 include ninja/external/apache-http/org.apache.http.legacy.stubs.source^android_common.ninja

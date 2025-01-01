@@ -5,7 +5,6 @@ pool highmem_pool
  depth = 5
 
 include ninja/global.ninja
-include ninja/singleton.ninja
 
 include ninja/bionic/apex/com.android.runtime^android_common_com.android.runtime_image.ninja
 include ninja/bootable/recovery/applypatch/applypatch^android_vendor.31_x86_64.ninja

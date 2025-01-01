@@ -5,7 +5,6 @@ pool highmem_pool
  depth = 5
 
 include ninja/global.ninja
-include ninja/singleton.ninja
 
 include ninja/art/build/apex/art-linker-config^android_x86_64.ninja
 include ninja/art/disassembler/libart-disassembler^android_x86_64_shared_apex31.ninja

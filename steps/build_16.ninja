@@ -5,7 +5,6 @@ pool highmem_pool
  depth = 5
 
 include ninja/global.ninja
-include ninja/singleton.ninja
 
 include ninja/frameworks/wilhelm/src/libOpenMAXAL^android_x86_64_shared.ninja
 include ninja/frameworks/wilhelm/src/libOpenMAXAL^android_x86_x86_64_shared.ninja

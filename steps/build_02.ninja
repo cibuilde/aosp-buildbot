@@ -5,7 +5,6 @@ pool highmem_pool
  depth = 5
 
 include ninja/global.ninja
-include ninja/singleton.ninja
 
 include ninja/bionic/libc/system_properties/libsystemproperties^android_native_bridge_arm64_armv8-a_static.ninja
 include ninja/bionic/libc/system_properties/libsystemproperties^android_native_bridge_arm_armv7-a-neon_static.ninja

@@ -14,7 +14,6 @@ if [ -d "$GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86" ]; then
 fi
 
 clone_depth_platform art
-clone_sparse_exclude frameworks/base "!/data/videos" "!/media/tests/contents" "!/docs" "!/native/graphics/jni/fuzz" "!/cmd/incidentd/testdata"
 clone_depth_platform frameworks/libs/modules-utils
 clone_depth_platform packages/modules/Connectivity
 clone_depth_platform packages/modules/Wifi
@@ -43,10 +42,6 @@ du -ah -d1 packages_modules_Wifi*.tar.zst | sort -h
 if [ ! -f "$GITHUB_WORKSPACE/cache/art.tar.zst" ]; then
   echo "Compressing art -> art.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/art.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/art/ .
-fi
-if [ ! -f "$GITHUB_WORKSPACE/cache/frameworks_base.tar.zst" ]; then
-  echo "Compressing frameworks/base -> frameworks_base.tar.zst"
-  tar -cf $GITHUB_WORKSPACE/cache/frameworks_base.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/frameworks/base/ .
 fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/frameworks_libs_modules-utils.tar.zst" ]; then
   echo "Compressing frameworks/libs/modules-utils -> frameworks_libs_modules-utils.tar.zst"

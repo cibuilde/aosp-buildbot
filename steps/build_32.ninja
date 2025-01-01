@@ -5,7 +5,6 @@ pool highmem_pool
  depth = 5
 
 include ninja/global.ninja
-include ninja/singleton.ninja
 
 include ninja/device/google/cuttlefish/guest/monitoring/cuttlefish_service/CuttlefishService^android_common.ninja
 include ninja/external/chromium-webview/webview^android_common.ninja

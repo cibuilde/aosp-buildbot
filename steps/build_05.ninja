@@ -5,7 +5,6 @@ pool highmem_pool
  depth = 5
 
 include ninja/global.ninja
-include ninja/singleton.ninja
 
 include ninja/art/dalvikvm/dalvikvm^android_x86_64_apex31.ninja
 include ninja/art/dalvikvm/dalvikvm^android_x86_x86_64_apex31.ninja

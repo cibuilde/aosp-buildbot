@@ -738,10 +738,6 @@ jobs:
         key: external_vm_tools_p9@${{ env.branch }}
     - uses: actions/cache@v4
       with:
-        path: cache/external_vulkan-headers.tar.zst
-        key: external_vulkan-headers@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
         path: cache/external_webrtc.tar.zst
         key: external_webrtc@${{ env.branch }}
     - uses: actions/cache@v4
@@ -788,10 +784,6 @@ jobs:
       with:
         path: cache/frameworks_proto_logging.tar.zst
         key: frameworks_proto_logging@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/frameworks_wilhelm.tar.zst
-        key: frameworks_wilhelm@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/hardware_interfaces.tar.zst

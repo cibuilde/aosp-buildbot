@@ -5,7 +5,6 @@ pool highmem_pool
  depth = 5
 
 include ninja/global.ninja
-include ninja/singleton.ninja
 
 include ninja/build/make/tools/releasetools/ota_metadata_proto_java^android_common.ninja
 include ninja/external/adhd/audio_streams/libaudio_streams^android_x86_64_rlib_rlib-std_apex10000.ninja

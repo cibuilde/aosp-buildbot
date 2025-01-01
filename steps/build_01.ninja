@@ -5,7 +5,6 @@ pool highmem_pool
  depth = 5
 
 include ninja/global.ninja
-include ninja/singleton.ninja
 
 include ninja/art/dexlayout/libart-dexlayout^android_x86_64_static_apex31.ninja
 include ninja/art/dexlayout/libart-dexlayout^android_x86_x86_64_static_apex31.ninja
@@ -1633,6 +1632,16 @@ include ninja/prebuilts/vndk/v30/vndkcore.libraries.30.txt^android_x86_64.ninja
 include ninja/prebuilts/vndk/v30/vndkprivate.libraries.30.txt^android_x86_64.ninja
 include ninja/prebuilts/vndk/v30/vndkproduct.libraries.30.txt^android_x86_64.ninja
 include ninja/prebuilts/vndk/v30/vndksp.libraries.30.txt^android_x86_64.ninja
+include ninja/singletons/api_levels^.ninja
+include ninja/singletons/dex_bootjars^.ninja
+include ninja/singletons/dexpreopt-soong-config^.ninja
+include ninja/singletons/llndk_libraries_txt^.ninja
+include ninja/singletons/sdk^.ninja
+include ninja/singletons/vndkcore_libraries_txt^.ninja
+include ninja/singletons/vndkcorevariant_libraries_txt^.ninja
+include ninja/singletons/vndkprivate_libraries_txt^.ninja
+include ninja/singletons/vndkproduct_libraries_txt^.ninja
+include ninja/singletons/vndksp_libraries_txt^.ninja
 include ninja/system/apex/shim/com.android.apex.cts.shim.v1_prebuilt^android_common_com.android.apex.cts.shim.v1_prebuilt.ninja
 include ninja/system/bpf/libbpf_android/libbpf_android^android_x86_64_static.ninja
 include ninja/system/bpf/libbpf_android/libbpf_android^android_x86_x86_64_static.ninja

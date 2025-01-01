@@ -5,7 +5,6 @@ pool highmem_pool
  depth = 5
 
 include ninja/global.ninja
-include ninja/singleton.ninja
 
 include ninja/frameworks/base/apex/blobstore/service/service-blobstore^android_common.ninja
 include ninja/frameworks/base/apex/jobscheduler/service/service-jobscheduler^android_common.ninja

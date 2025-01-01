@@ -5,7 +5,6 @@ pool highmem_pool
  depth = 5
 
 include ninja/global.ninja
-include ninja/singleton.ninja
 
 include ninja/external/crosvm/base/libbase_rust^android_x86_64_dylib.ninja
 include ninja/external/crosvm/base/libbase_rust^android_x86_64_dylib_apex10000.ninja

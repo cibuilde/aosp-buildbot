@@ -5,7 +5,6 @@ pool highmem_pool
  depth = 5
 
 include ninja/global.ninja
-include ninja/singleton.ninja
 
 include ninja/frameworks/base/apex/appsearch/framework/framework-appsearch^android_common_apex10000.ninja
 include ninja/frameworks/base/apex/media/framework/updatable-media^android_common_apex29.ninja

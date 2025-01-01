@@ -494,10 +494,6 @@ jobs:
         key: external_vixl@${{ env.branch }}
     - uses: actions/cache@v4
       with:
-        path: cache/external_vulkan-headers.tar.zst
-        key: external_vulkan-headers@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
         path: cache/external_zlib.tar.zst
         key: external_zlib@${{ env.branch }}
     - uses: actions/cache@v4
@@ -528,10 +524,6 @@ jobs:
       with:
         path: cache/frameworks_opt_net_wifi.tar.zst
         key: frameworks_opt_net_wifi@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/frameworks_wilhelm.tar.zst
-        key: frameworks_wilhelm@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/hardware_interfaces.tar.zst
@@ -576,10 +568,6 @@ jobs:
       with:
         path: cache/packages_modules_NetworkStack.tar.zst
         key: packages_modules_NetworkStack@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/packages_modules_NeuralNetworks.tar.zst
-        key: packages_modules_NeuralNetworks@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/packages_modules_StatsD.tar.zst
