@@ -327,6 +327,10 @@ gh release --repo cibuilde/aosp-buildbot download android12-gsi_23 --pattern sys
 mkdir -p $GITHUB_WORKSPACE/downloads/system/netd
 tar xf $GITHUB_WORKSPACE/system_netd-23.tar.zst -C $GITHUB_WORKSPACE/downloads/system/netd/
 
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_03 --pattern system_tools_aidl.tar.zst --output system_tools_aidl-03.tar.zst
+mkdir -p $GITHUB_WORKSPACE/downloads/system/tools/aidl
+tar xf $GITHUB_WORKSPACE/system_tools_aidl-03.tar.zst -C $GITHUB_WORKSPACE/downloads/system/tools/aidl/
+
 gh release --repo cibuilde/aosp-buildbot download android12-gsi_06 --pattern tools_apifinder.tar.zst --output tools_apifinder-06.tar.zst
 mkdir -p $GITHUB_WORKSPACE/downloads/tools/apifinder
 tar xf $GITHUB_WORKSPACE/tools_apifinder-06.tar.zst -C $GITHUB_WORKSPACE/downloads/tools/apifinder/

@@ -58,10 +58,14 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/test-base/android.test.b
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/test-mock/android.test.mock.stubs.system^android_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/android_system_stubs_current^android_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/ext^android_common/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/apex/appsearch/framework/framework-appsearch^android_common_apex10000/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/libs/hwui/framework-graphics^android_common/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/framework-minus-apex^android_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/framework^android_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/cmds/idmap2/overlayable_policy_aidl-java-source^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/tools/streaming_proto/protoc-gen-javastream^linux_glibc_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/cmds/uiautomator/library/uiautomator.core^android_common/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/apex/media/framework/updatable-media^android_common_apex29/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/libs/modules-utils/java/framework-annotations-lib^android_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/opt/net/ims/ims-common^android_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/opt/net/voip/voip-common^android_common/ .

@@ -297,6 +297,7 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/sdk/current/extras/material-de
 rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/sdk/current/extras/material-design-x/com.google.android.material_material^android_common_apex30/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/tools/common/m2/kotlinx-coroutines-android^android_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/tools/common/m2/kotlinx-coroutines-core^android_common/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/singletons/sdk^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/apex/apexer/apexer^linux_glibc_x86_64_PY2/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/apex/apexer/conv_apex_manifest^linux_glibc_x86_64_PY2/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/hardware/interfaces/keystore2/aidl/android.system.keystore2-V1-java-source^/ .

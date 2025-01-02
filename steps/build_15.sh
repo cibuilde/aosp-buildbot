@@ -350,7 +350,16 @@ mkdir -p $GITHUB_WORKSPACE/.bin
 ln -sf /usr/bin/python2 $GITHUB_WORKSPACE/.bin/python
 export PATH=$GITHUB_WORKSPACE/.bin:$PATH
 
+time source steps/build_15/art.sh
+time source steps/build_15/external_neven.sh
+time source steps/build_15/frameworks_av.sh
 time source steps/build_15/frameworks_base.sh
+time source steps/build_15/frameworks_ex.sh
+time source steps/build_15/frameworks_opt_net_voip.sh
+time source steps/build_15/frameworks_rs.sh
+time source steps/build_15/packages_apps_Gallery2.sh
+time source steps/build_15/packages_modules_NetworkStack.sh
+time source steps/build_15/packages_modules_RuntimeI18n.sh
 time source steps/build_15/system_libhidl.sh
 
 if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_clang_host_linux-x86.tar.zst" ]; then

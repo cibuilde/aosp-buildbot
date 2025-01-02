@@ -106,6 +106,9 @@ mkdir -p $GITHUB_WORKSPACE/.bin
 ln -sf /usr/bin/python2 $GITHUB_WORKSPACE/.bin/python
 export PATH=$GITHUB_WORKSPACE/.bin:$PATH
 
+time source steps/build_18/frameworks_libs_modules-utils.sh
+time source steps/build_18/hardware_interfaces.sh
+time source steps/build_18/packages_modules_Permission.sh
 time source steps/build_18/singletons.sh
 
 

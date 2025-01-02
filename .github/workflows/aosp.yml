@@ -7,7 +7,7 @@ env:
   branch: 'android12-gsi'
   GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 jobs:
-  build_9:
+  build_24:
     runs-on: ubuntu-22.04
     steps:
     - uses: actions/checkout@main
@@ -16,14 +16,6 @@ jobs:
       with:
         path: cache/art.tar.zst
         key: art@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/bionic.tar.zst
-        key: bionic@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/bootable_recovery.tar.zst
-        key: bootable_recovery@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/build_make.tar.zst
@@ -38,460 +30,72 @@ jobs:
         key: cts@${{ env.branch }}
     - uses: actions/cache@v4
       with:
-        path: cache/device_generic_vulkan-cereal.tar.zst
-        key: device_generic_vulkan-cereal@${{ env.branch }}
+        path: cache/external_apache-commons-compress.tar.zst
+        key: external_apache-commons-compress@${{ env.branch }}
     - uses: actions/cache@v4
       with:
-        path: cache/external_Reactive-Extensions_RxCpp.tar.zst
-        key: external_Reactive-Extensions_RxCpp@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_adhd.tar.zst
-        key: external_adhd@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_avb.tar.zst
-        key: external_avb@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_bc.tar.zst
-        key: external_bc@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_bcc.tar.zst
-        key: external_bcc@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_boringssl.tar.zst
-        key: external_boringssl@${{ env.branch }}
+        path: cache/external_bouncycastle.tar.zst
+        key: external_bouncycastle@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/external_brotli.tar.zst
         key: external_brotli@${{ env.branch }}
     - uses: actions/cache@v4
       with:
-        path: cache/external_cblas.tar.zst
-        key: external_cblas@${{ env.branch }}
+        path: cache/external_exoplayer.tar.zst
+        key: external_exoplayer@${{ env.branch }}
     - uses: actions/cache@v4
       with:
-        path: cache/external_compiler-rt.tar.zst
-        key: external_compiler-rt@${{ env.branch }}
+        path: cache/external_glide.tar.zst
+        key: external_glide@${{ env.branch }}
     - uses: actions/cache@v4
       with:
-        path: cache/external_conscrypt.tar.zst
-        key: external_conscrypt@${{ env.branch }}
+        path: cache/external_icing.tar.zst
+        key: external_icing@${{ env.branch }}
     - uses: actions/cache@v4
       with:
-        path: cache/external_crosvm.tar.zst
-        key: external_crosvm@${{ env.branch }}
+        path: cache/external_jsr330.tar.zst
+        key: external_jsr330@${{ env.branch }}
     - uses: actions/cache@v4
       with:
-        path: cache/external_e2fsprogs.tar.zst
-        key: external_e2fsprogs@${{ env.branch }}
+        path: cache/external_junit.tar.zst
+        key: external_junit@${{ env.branch }}
     - uses: actions/cache@v4
       with:
-        path: cache/external_fmtlib.tar.zst
-        key: external_fmtlib@${{ env.branch }}
+        path: cache/external_kotlinc.tar.zst
+        key: external_kotlinc@${{ env.branch }}
     - uses: actions/cache@v4
       with:
-        path: cache/external_freetype.tar.zst
-        key: external_freetype@${{ env.branch }}
+        path: cache/external_libbackup.tar.zst
+        key: external_libbackup@${{ env.branch }}
     - uses: actions/cache@v4
       with:
-        path: cache/external_gemmlowp.tar.zst
-        key: external_gemmlowp@${{ env.branch }}
+        path: cache/external_libtextclassifier.tar.zst
+        key: external_libtextclassifier@${{ env.branch }}
     - uses: actions/cache@v4
       with:
-        path: cache/external_gflags.tar.zst
-        key: external_gflags@${{ env.branch }}
+        path: cache/external_lottie.tar.zst
+        key: external_lottie@${{ env.branch }}
     - uses: actions/cache@v4
       with:
-        path: cache/external_google-fruit.tar.zst
-        key: external_google-fruit@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_googletest.tar.zst
-        key: external_googletest@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_grpc-grpc.tar.zst
-        key: external_grpc-grpc@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_harfbuzz_ng.tar.zst
-        key: external_harfbuzz_ng@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_icu.tar.zst
-        key: external_icu@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_jsoncpp.tar.zst
-        key: external_jsoncpp@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_libbrillo.tar.zst
-        key: external_libbrillo@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_libcap.tar.zst
-        key: external_libcap@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_libchrome.tar.zst
-        key: external_libchrome@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_libchromeos-rs.tar.zst
-        key: external_libchromeos-rs@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_libcppbor.tar.zst
-        key: external_libcppbor@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_libcxx.tar.zst
-        key: external_libcxx@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_libcxxabi.tar.zst
-        key: external_libcxxabi@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_libdrm.tar.zst
-        key: external_libdrm@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_libepoxy.tar.zst
-        key: external_libepoxy@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_libffi.tar.zst
-        key: external_libffi@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_libpcap.tar.zst
-        key: external_libpcap@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_libphonenumber.tar.zst
-        key: external_libphonenumber@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_libxml2.tar.zst
-        key: external_libxml2@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_minigbm.tar.zst
-        key: external_minigbm@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_minijail.tar.zst
-        key: external_minijail@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_modp_b64.tar.zst
-        key: external_modp_b64@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_perfetto.tar.zst
-        key: external_perfetto@${{ env.branch }}
+        path: cache/external_okio.tar.zst
+        key: external_okio@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/external_protobuf.tar.zst
         key: external_protobuf@${{ env.branch }}
     - uses: actions/cache@v4
       with:
-        path: cache/external_rust_crates_android_log-sys.tar.zst
-        key: external_rust_crates_android_log-sys@${{ env.branch }}
+        path: cache/external_setupcompat.tar.zst
+        key: external_setupcompat@${{ env.branch }}
     - uses: actions/cache@v4
       with:
-        path: cache/external_rust_crates_android_logger.tar.zst
-        key: external_rust_crates_android_logger@${{ env.branch }}
+        path: cache/external_volley.tar.zst
+        key: external_volley@${{ env.branch }}
     - uses: actions/cache@v4
       with:
-        path: cache/external_rust_crates_anyhow.tar.zst
-        key: external_rust_crates_anyhow@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_rust_crates_async-task.tar.zst
-        key: external_rust_crates_async-task@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_rust_crates_async-trait.tar.zst
-        key: external_rust_crates_async-trait@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_rust_crates_bitflags.tar.zst
-        key: external_rust_crates_bitflags@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_rust_crates_bytes.tar.zst
-        key: external_rust_crates_bytes@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_rust_crates_cfg-if.tar.zst
-        key: external_rust_crates_cfg-if@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_rust_crates_chrono.tar.zst
-        key: external_rust_crates_chrono@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_rust_crates_clap.tar.zst
-        key: external_rust_crates_clap@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_rust_crates_crc32fast.tar.zst
-        key: external_rust_crates_crc32fast@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_rust_crates_downcast-rs.tar.zst
-        key: external_rust_crates_downcast-rs@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_rust_crates_env_logger.tar.zst
-        key: external_rust_crates_env_logger@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_rust_crates_flate2.tar.zst
-        key: external_rust_crates_flate2@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_rust_crates_futures.tar.zst
-        key: external_rust_crates_futures@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_rust_crates_futures-channel.tar.zst
-        key: external_rust_crates_futures-channel@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_rust_crates_futures-core.tar.zst
-        key: external_rust_crates_futures-core@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_rust_crates_futures-executor.tar.zst
-        key: external_rust_crates_futures-executor@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_rust_crates_futures-io.tar.zst
-        key: external_rust_crates_futures-io@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_rust_crates_futures-macro.tar.zst
-        key: external_rust_crates_futures-macro@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_rust_crates_futures-sink.tar.zst
-        key: external_rust_crates_futures-sink@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_rust_crates_futures-task.tar.zst
-        key: external_rust_crates_futures-task@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_rust_crates_futures-util.tar.zst
-        key: external_rust_crates_futures-util@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_rust_crates_getrandom.tar.zst
-        key: external_rust_crates_getrandom@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_rust_crates_grpcio.tar.zst
-        key: external_rust_crates_grpcio@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_rust_crates_grpcio-sys.tar.zst
-        key: external_rust_crates_grpcio-sys@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_rust_crates_instant.tar.zst
-        key: external_rust_crates_instant@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_rust_crates_intrusive-collections.tar.zst
-        key: external_rust_crates_intrusive-collections@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_rust_crates_itoa.tar.zst
-        key: external_rust_crates_itoa@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_rust_crates_lazy_static.tar.zst
-        key: external_rust_crates_lazy_static@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_rust_crates_libc.tar.zst
-        key: external_rust_crates_libc@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_rust_crates_libz-sys.tar.zst
-        key: external_rust_crates_libz-sys@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_rust_crates_lock_api.tar.zst
-        key: external_rust_crates_lock_api@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_rust_crates_log.tar.zst
-        key: external_rust_crates_log@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_rust_crates_memchr.tar.zst
-        key: external_rust_crates_memchr@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_rust_crates_memoffset.tar.zst
-        key: external_rust_crates_memoffset@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_rust_crates_num-integer.tar.zst
-        key: external_rust_crates_num-integer@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_rust_crates_num-traits.tar.zst
-        key: external_rust_crates_num-traits@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_rust_crates_num_cpus.tar.zst
-        key: external_rust_crates_num_cpus@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_rust_crates_parking_lot.tar.zst
-        key: external_rust_crates_parking_lot@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_rust_crates_parking_lot_core.tar.zst
-        key: external_rust_crates_parking_lot_core@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_rust_crates_paste.tar.zst
-        key: external_rust_crates_paste@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_rust_crates_pin-project.tar.zst
-        key: external_rust_crates_pin-project@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_rust_crates_pin-project-lite.tar.zst
-        key: external_rust_crates_pin-project-lite@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_rust_crates_pin-utils.tar.zst
-        key: external_rust_crates_pin-utils@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_rust_crates_proc-macro-hack.tar.zst
-        key: external_rust_crates_proc-macro-hack@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_rust_crates_proc-macro-nested.tar.zst
-        key: external_rust_crates_proc-macro-nested@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_rust_crates_protobuf.tar.zst
-        key: external_rust_crates_protobuf@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_rust_crates_rand.tar.zst
-        key: external_rust_crates_rand@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_rust_crates_rand_core.tar.zst
-        key: external_rust_crates_rand_core@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_rust_crates_remain.tar.zst
-        key: external_rust_crates_remain@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_rust_crates_ryu.tar.zst
-        key: external_rust_crates_ryu@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_rust_crates_scopeguard.tar.zst
-        key: external_rust_crates_scopeguard@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_rust_crates_serde.tar.zst
-        key: external_rust_crates_serde@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_rust_crates_serde_derive.tar.zst
-        key: external_rust_crates_serde_derive@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_rust_crates_serde_json.tar.zst
-        key: external_rust_crates_serde_json@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_rust_crates_shared_child.tar.zst
-        key: external_rust_crates_shared_child@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_rust_crates_slab.tar.zst
-        key: external_rust_crates_slab@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_rust_crates_smallvec.tar.zst
-        key: external_rust_crates_smallvec@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_rust_crates_structopt.tar.zst
-        key: external_rust_crates_structopt@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_rust_crates_structopt-derive.tar.zst
-        key: external_rust_crates_structopt-derive@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_rust_crates_textwrap.tar.zst
-        key: external_rust_crates_textwrap@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_rust_crates_thiserror.tar.zst
-        key: external_rust_crates_thiserror@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_rust_crates_thiserror-impl.tar.zst
-        key: external_rust_crates_thiserror-impl@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_rust_crates_vmm_vhost.tar.zst
-        key: external_rust_crates_vmm_vhost@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_rust_cxx.tar.zst
-        key: external_rust_cxx@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_scrypt.tar.zst
-        key: external_scrypt@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_selinux.tar.zst
-        key: external_selinux@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_sonic.tar.zst
-        key: external_sonic@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_sqlite.tar.zst
-        key: external_sqlite@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_tinyxml2.tar.zst
-        key: external_tinyxml2@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_virglrenderer.tar.zst
-        key: external_virglrenderer@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_wayland.tar.zst
-        key: external_wayland@${{ env.branch }}
+        path: cache/external_xz-java.tar.zst
+        key: external_xz-java@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/external_zlib.tar.zst
@@ -506,124 +110,96 @@ jobs:
         key: frameworks_base@${{ env.branch }}
     - uses: actions/cache@v4
       with:
-        path: cache/frameworks_compile_libbcc.tar.zst
-        key: frameworks_compile_libbcc@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/frameworks_hardware_interfaces.tar.zst
-        key: frameworks_hardware_interfaces@${{ env.branch }}
+        path: cache/frameworks_libs_modules-utils.tar.zst
+        key: frameworks_libs_modules-utils@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/frameworks_libs_net.tar.zst
         key: frameworks_libs_net@${{ env.branch }}
     - uses: actions/cache@v4
       with:
-        path: cache/frameworks_minikin.tar.zst
-        key: frameworks_minikin@${{ env.branch }}
+        path: cache/frameworks_libs_systemui.tar.zst
+        key: frameworks_libs_systemui@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/frameworks_native.tar.zst
         key: frameworks_native@${{ env.branch }}
     - uses: actions/cache@v4
       with:
-        path: cache/frameworks_opt_net_wifi.tar.zst
-        key: frameworks_opt_net_wifi@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/frameworks_opt_telephony.tar.zst
-        key: frameworks_opt_telephony@${{ env.branch }}
+        path: cache/frameworks_opt_photoviewer.tar.zst
+        key: frameworks_opt_photoviewer@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/frameworks_proto_logging.tar.zst
         key: frameworks_proto_logging@${{ env.branch }}
     - uses: actions/cache@v4
       with:
-        path: cache/frameworks_rs.tar.zst
-        key: frameworks_rs@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
         path: cache/hardware_interfaces.tar.zst
         key: hardware_interfaces@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/hardware_libhardware.tar.zst
-        key: hardware_libhardware@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/hardware_libhardware_legacy.tar.zst
-        key: hardware_libhardware_legacy@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/hardware_ril.tar.zst
-        key: hardware_ril@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/libcore.tar.zst
         key: libcore@${{ env.branch }}
     - uses: actions/cache@v4
       with:
-        path: cache/libnativehelper.tar.zst
-        key: libnativehelper@${{ env.branch }}
+        path: cache/packages_apps_Launcher3.tar.zst
+        key: packages_apps_Launcher3@${{ env.branch }}
     - uses: actions/cache@v4
       with:
-        path: cache/packages_apps_Bluetooth.tar.zst
-        key: packages_apps_Bluetooth@${{ env.branch }}
+        path: cache/packages_apps_Settings.tar.zst
+        key: packages_apps_Settings@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/packages_apps_SettingsIntelligence.tar.zst
+        key: packages_apps_SettingsIntelligence@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/packages_modules_Connectivity.tar.zst
+        key: packages_modules_Connectivity@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/packages_modules_DnsResolver.tar.zst
         key: packages_modules_DnsResolver@${{ env.branch }}
     - uses: actions/cache@v4
       with:
-        path: cache/packages_modules_Gki.tar.zst
-        key: packages_modules_Gki@${{ env.branch }}
+        path: cache/packages_modules_ExtServices.tar.zst
+        key: packages_modules_ExtServices@${{ env.branch }}
     - uses: actions/cache@v4
       with:
-        path: cache/packages_modules_NeuralNetworks.tar.zst
-        key: packages_modules_NeuralNetworks@${{ env.branch }}
+        path: cache/packages_modules_NetworkStack.tar.zst
+        key: packages_modules_NetworkStack@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/packages_modules_Permission.tar.zst
+        key: packages_modules_Permission@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/packages_modules_StatsD.tar.zst
         key: packages_modules_StatsD@${{ env.branch }}
     - uses: actions/cache@v4
       with:
-        path: cache/packages_modules_Virtualization.tar.zst
-        key: packages_modules_Virtualization@${{ env.branch }}
+        path: cache/packages_modules_Wifi.tar.zst
+        key: packages_modules_Wifi@${{ env.branch }}
     - uses: actions/cache@v4
       with:
-        path: cache/packages_modules_adb.tar.zst
-        key: packages_modules_adb@${{ env.branch }}
+        path: cache/packages_modules_common.tar.zst
+        key: packages_modules_common@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/prebuilts_build-tools.tar.zst
         key: prebuilts_build-tools@${{ env.branch }}
     - uses: actions/cache@v4
       with:
-        path: cache/prebuilts_clang_host_linux-x86.tar.zst
-        key: prebuilts_clang_host_linux-x86@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/prebuilts_gcc_linux-x86_x86_x86_64-linux-android-4.9.tar.zst
-        key: prebuilts_gcc_linux-x86_x86_x86_64-linux-android-4.9@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
         path: cache/prebuilts_jdk_jdk11.tar.zst
         key: prebuilts_jdk_jdk11@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/prebuilts_rust.tar.zst
-        key: prebuilts_rust@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/prebuilts_sdk.tar.zst
         key: prebuilts_sdk@${{ env.branch }}
     - uses: actions/cache@v4
       with:
-        path: cache/system_apex.tar.zst
-        key: system_apex@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/system_bpf.tar.zst
-        key: system_bpf@${{ env.branch }}
+        path: cache/prebuilts_tools.tar.zst
+        key: prebuilts_tools@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/system_bt.tar.zst
@@ -642,76 +218,12 @@ jobs:
         key: system_extras@${{ env.branch }}
     - uses: actions/cache@v4
       with:
-        path: cache/system_gatekeeper.tar.zst
-        key: system_gatekeeper@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
         path: cache/system_gsid.tar.zst
         key: system_gsid@${{ env.branch }}
     - uses: actions/cache@v4
       with:
-        path: cache/system_hardware_interfaces.tar.zst
-        key: system_hardware_interfaces@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/system_hwservicemanager.tar.zst
-        key: system_hwservicemanager@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/system_incremental_delivery.tar.zst
-        key: system_incremental_delivery@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
         path: cache/system_iorap.tar.zst
         key: system_iorap@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/system_keymaster.tar.zst
-        key: system_keymaster@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/system_libbase.tar.zst
-        key: system_libbase@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/system_libfmq.tar.zst
-        key: system_libfmq@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/system_libhidl.tar.zst
-        key: system_libhidl@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/system_libhwbinder.tar.zst
-        key: system_libhwbinder@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/system_libprocinfo.tar.zst
-        key: system_libprocinfo@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/system_libvintf.tar.zst
-        key: system_libvintf@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/system_libziparchive.tar.zst
-        key: system_libziparchive@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/system_logging.tar.zst
-        key: system_logging@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/system_media.tar.zst
-        key: system_media@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/system_memory_libmemunreachable.tar.zst
-        key: system_memory_libmemunreachable@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/system_memory_lmkd.tar.zst
-        key: system_memory_lmkd@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/system_netd.tar.zst
@@ -722,30 +234,1724 @@ jobs:
         key: system_security@${{ env.branch }}
     - uses: actions/cache@v4
       with:
-        path: cache/system_server_configurable_flags.tar.zst
-        key: system_server_configurable_flags@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/system_tools_aidl.tar.zst
-        key: system_tools_aidl@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/system_tools_hidl.tar.zst
-        key: system_tools_hidl@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/system_unwinding.tar.zst
-        key: system_unwinding@${{ env.branch }}
+        path: cache/system_sepolicy.tar.zst
+        key: system_sepolicy@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/system_update_engine.tar.zst
         key: system_update_engine@${{ env.branch }}
     - uses: actions/cache@v4
       with:
-        path: cache/tools_dexter.tar.zst
-        key: tools_dexter@${{ env.branch }}
+        path: cache/system_vold.tar.zst
+        key: system_vold@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/tools_apifinder.tar.zst
+        key: tools_apifinder@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/tools_platform-compat.tar.zst
         key: tools_platform-compat@${{ env.branch }}
-    - run: bash steps/build_09.sh
+    - run: bash steps/build_24.sh
+  build_25:
+    needs: build_24
+    runs-on: ubuntu-22.04
+    steps:
+    - uses: actions/checkout@main
+    - run: sudo apt update && sudo apt install -y ninja-build python2 libncurses5
+    - uses: actions/cache@v4
+      with:
+        path: cache/art.tar.zst
+        key: art@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/build_make.tar.zst
+        key: build_make@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/build_soong.tar.zst
+        key: build_soong@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/cts.tar.zst
+        key: cts@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_apache-http.tar.zst
+        key: external_apache-http@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_guava.tar.zst
+        key: external_guava@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_icu.tar.zst
+        key: external_icu@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_ims.tar.zst
+        key: external_ims@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_libtextclassifier.tar.zst
+        key: external_libtextclassifier@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_lottie.tar.zst
+        key: external_lottie@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_nist-sip.tar.zst
+        key: external_nist-sip@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_protobuf.tar.zst
+        key: external_protobuf@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_setupcompat.tar.zst
+        key: external_setupcompat@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_setupdesign.tar.zst
+        key: external_setupdesign@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/frameworks_av.tar.zst
+        key: frameworks_av@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/frameworks_base.tar.zst
+        key: frameworks_base@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/frameworks_libs_modules-utils.tar.zst
+        key: frameworks_libs_modules-utils@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/frameworks_libs_net.tar.zst
+        key: frameworks_libs_net@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/frameworks_opt_net_voip.tar.zst
+        key: frameworks_opt_net_voip@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/frameworks_opt_net_wifi.tar.zst
+        key: frameworks_opt_net_wifi@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/hardware_ril.tar.zst
+        key: hardware_ril@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/libcore.tar.zst
+        key: libcore@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/packages_apps_Bluetooth.tar.zst
+        key: packages_apps_Bluetooth@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/packages_apps_CellBroadcastReceiver.tar.zst
+        key: packages_apps_CellBroadcastReceiver@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/packages_apps_EmergencyInfo.tar.zst
+        key: packages_apps_EmergencyInfo@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/packages_apps_ManagedProvisioning.tar.zst
+        key: packages_apps_ManagedProvisioning@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/packages_apps_Settings.tar.zst
+        key: packages_apps_Settings@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/packages_modules_CellBroadcastService.tar.zst
+        key: packages_modules_CellBroadcastService@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/packages_modules_Connectivity.tar.zst
+        key: packages_modules_Connectivity@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/packages_modules_ExtServices.tar.zst
+        key: packages_modules_ExtServices@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/packages_modules_NetworkStack.tar.zst
+        key: packages_modules_NetworkStack@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/packages_modules_Permission.tar.zst
+        key: packages_modules_Permission@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/packages_modules_StatsD.tar.zst
+        key: packages_modules_StatsD@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/packages_modules_Wifi.tar.zst
+        key: packages_modules_Wifi@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/packages_services_Car.tar.zst
+        key: packages_services_Car@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/prebuilts_build-tools.tar.zst
+        key: prebuilts_build-tools@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/prebuilts_jdk_jdk11.tar.zst
+        key: prebuilts_jdk_jdk11@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/prebuilts_sdk.tar.zst
+        key: prebuilts_sdk@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/system_bt.tar.zst
+        key: system_bt@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/system_core.tar.zst
+        key: system_core@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/system_netd.tar.zst
+        key: system_netd@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/system_sepolicy.tar.zst
+        key: system_sepolicy@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/system_timezone.tar.zst
+        key: system_timezone@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/tools_apifinder.tar.zst
+        key: tools_apifinder@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/tools_platform-compat.tar.zst
+        key: tools_platform-compat@${{ env.branch }}
+    - run: bash steps/build_25.sh
+  build_26:
+    needs: build_25
+    runs-on: ubuntu-22.04
+    steps:
+    - uses: actions/checkout@main
+    - run: sudo apt update && sudo apt install -y ninja-build python2 libncurses5
+    - uses: actions/cache@v4
+      with:
+        path: cache/art.tar.zst
+        key: art@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/build_soong.tar.zst
+        key: build_soong@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_auto.tar.zst
+        key: external_auto@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_bouncycastle.tar.zst
+        key: external_bouncycastle@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_dagger2.tar.zst
+        key: external_dagger2@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_error_prone.tar.zst
+        key: external_error_prone@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_firebase-messaging.tar.zst
+        key: external_firebase-messaging@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_guava.tar.zst
+        key: external_guava@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_ims.tar.zst
+        key: external_ims@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_jsr305.tar.zst
+        key: external_jsr305@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_jsr330.tar.zst
+        key: external_jsr330@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_kotlinc.tar.zst
+        key: external_kotlinc@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_kotlinx.coroutines.tar.zst
+        key: external_kotlinx.coroutines@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_ksoap2.tar.zst
+        key: external_ksoap2@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_lottie.tar.zst
+        key: external_lottie@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_nanohttpd.tar.zst
+        key: external_nanohttpd@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_protobuf.tar.zst
+        key: external_protobuf@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_setupdesign.tar.zst
+        key: external_setupdesign@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/frameworks_base.tar.zst
+        key: frameworks_base@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/frameworks_libs_modules-utils.tar.zst
+        key: frameworks_libs_modules-utils@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/frameworks_libs_net.tar.zst
+        key: frameworks_libs_net@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/frameworks_libs_service_entitlement.tar.zst
+        key: frameworks_libs_service_entitlement@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/frameworks_libs_systemui.tar.zst
+        key: frameworks_libs_systemui@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/frameworks_opt_net_ims.tar.zst
+        key: frameworks_opt_net_ims@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/frameworks_opt_net_wifi.tar.zst
+        key: frameworks_opt_net_wifi@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/hardware_interfaces.tar.zst
+        key: hardware_interfaces@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/libcore.tar.zst
+        key: libcore@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/packages_apps_Car_libs.tar.zst
+        key: packages_apps_Car_libs@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/packages_apps_CellBroadcastReceiver.tar.zst
+        key: packages_apps_CellBroadcastReceiver@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/packages_apps_ImsServiceEntitlement.tar.zst
+        key: packages_apps_ImsServiceEntitlement@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/packages_modules_Connectivity.tar.zst
+        key: packages_modules_Connectivity@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/packages_modules_StatsD.tar.zst
+        key: packages_modules_StatsD@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/packages_modules_Wifi.tar.zst
+        key: packages_modules_Wifi@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/packages_services_Car.tar.zst
+        key: packages_services_Car@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/prebuilts_build-tools.tar.zst
+        key: prebuilts_build-tools@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/prebuilts_jdk_jdk11.tar.zst
+        key: prebuilts_jdk_jdk11@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/prebuilts_sdk.tar.zst
+        key: prebuilts_sdk@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/system_core.tar.zst
+        key: system_core@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/system_libhidl.tar.zst
+        key: system_libhidl@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/system_sepolicy.tar.zst
+        key: system_sepolicy@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/tools_apifinder.tar.zst
+        key: tools_apifinder@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/tools_metalava.tar.zst
+        key: tools_metalava@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/tools_platform-compat.tar.zst
+        key: tools_platform-compat@${{ env.branch }}
+    - run: bash steps/build_26.sh
+  build_27:
+    needs: build_26
+    runs-on: ubuntu-22.04
+    steps:
+    - uses: actions/checkout@main
+    - run: sudo apt update && sudo apt install -y ninja-build python2 libncurses5
+    - uses: actions/cache@v4
+      with:
+        path: cache/art.tar.zst
+        key: art@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/build_make.tar.zst
+        key: build_make@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/cts.tar.zst
+        key: cts@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_guava.tar.zst
+        key: external_guava@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_kotlinc.tar.zst
+        key: external_kotlinc@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_libphonenumber.tar.zst
+        key: external_libphonenumber@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_protobuf.tar.zst
+        key: external_protobuf@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/frameworks_base.tar.zst
+        key: frameworks_base@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/frameworks_libs_modules-utils.tar.zst
+        key: frameworks_libs_modules-utils@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/frameworks_libs_net.tar.zst
+        key: frameworks_libs_net@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/frameworks_libs_systemui.tar.zst
+        key: frameworks_libs_systemui@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/frameworks_opt_net_ims.tar.zst
+        key: frameworks_opt_net_ims@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/frameworks_opt_net_voip.tar.zst
+        key: frameworks_opt_net_voip@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/frameworks_opt_telephony.tar.zst
+        key: frameworks_opt_telephony@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/hardware_interfaces.tar.zst
+        key: hardware_interfaces@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/libcore.tar.zst
+        key: libcore@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/packages_apps_Car_libs.tar.zst
+        key: packages_apps_Car_libs@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/packages_apps_EmergencyInfo.tar.zst
+        key: packages_apps_EmergencyInfo@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/packages_modules_Permission.tar.zst
+        key: packages_modules_Permission@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/packages_services_Car.tar.zst
+        key: packages_services_Car@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/packages_services_Telephony.tar.zst
+        key: packages_services_Telephony@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/prebuilts_build-tools.tar.zst
+        key: prebuilts_build-tools@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/prebuilts_jdk_jdk11.tar.zst
+        key: prebuilts_jdk_jdk11@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/prebuilts_sdk.tar.zst
+        key: prebuilts_sdk@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/prebuilts_tools.tar.zst
+        key: prebuilts_tools@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/system_libsysprop.tar.zst
+        key: system_libsysprop@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/tools_apifinder.tar.zst
+        key: tools_apifinder@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/tools_platform-compat.tar.zst
+        key: tools_platform-compat@${{ env.branch }}
+    - run: bash steps/build_27.sh
+  build_28:
+    needs: build_27
+    runs-on: ubuntu-22.04
+    steps:
+    - uses: actions/checkout@main
+    - run: sudo apt update && sudo apt install -y ninja-build python2 libncurses5
+    - uses: actions/cache@v4
+      with:
+        path: cache/art.tar.zst
+        key: art@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/build_make.tar.zst
+        key: build_make@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/cts.tar.zst
+        key: cts@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_apache-xml.tar.zst
+        key: external_apache-xml@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_bouncycastle.tar.zst
+        key: external_bouncycastle@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_conscrypt.tar.zst
+        key: external_conscrypt@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_exoplayer.tar.zst
+        key: external_exoplayer@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_icu.tar.zst
+        key: external_icu@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_libphonenumber.tar.zst
+        key: external_libphonenumber@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_okhttp.tar.zst
+        key: external_okhttp@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_rappor.tar.zst
+        key: external_rappor@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_tagsoup.tar.zst
+        key: external_tagsoup@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/frameworks_av.tar.zst
+        key: frameworks_av@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/frameworks_base.tar.zst
+        key: frameworks_base@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/frameworks_libs_modules-utils.tar.zst
+        key: frameworks_libs_modules-utils@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/frameworks_native.tar.zst
+        key: frameworks_native@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/frameworks_opt_net_ims.tar.zst
+        key: frameworks_opt_net_ims@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/frameworks_opt_net_voip.tar.zst
+        key: frameworks_opt_net_voip@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/frameworks_opt_telephony.tar.zst
+        key: frameworks_opt_telephony@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/frameworks_proto_logging.tar.zst
+        key: frameworks_proto_logging@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/hardware_interfaces.tar.zst
+        key: hardware_interfaces@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/libcore.tar.zst
+        key: libcore@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/packages_modules_Connectivity.tar.zst
+        key: packages_modules_Connectivity@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/packages_modules_IPsec.tar.zst
+        key: packages_modules_IPsec@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/packages_modules_Permission.tar.zst
+        key: packages_modules_Permission@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/packages_modules_RuntimeI18n.tar.zst
+        key: packages_modules_RuntimeI18n@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/packages_modules_Scheduling.tar.zst
+        key: packages_modules_Scheduling@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/packages_modules_SdkExtensions.tar.zst
+        key: packages_modules_SdkExtensions@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/packages_modules_StatsD.tar.zst
+        key: packages_modules_StatsD@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/packages_modules_Wifi.tar.zst
+        key: packages_modules_Wifi@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/packages_modules_common.tar.zst
+        key: packages_modules_common@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/packages_providers_MediaProvider.tar.zst
+        key: packages_providers_MediaProvider@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/prebuilts_build-tools.tar.zst
+        key: prebuilts_build-tools@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/prebuilts_jdk_jdk11.tar.zst
+        key: prebuilts_jdk_jdk11@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/prebuilts_sdk.tar.zst
+        key: prebuilts_sdk@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/system_bt.tar.zst
+        key: system_bt@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/system_connectivity_wificond.tar.zst
+        key: system_connectivity_wificond@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/system_core.tar.zst
+        key: system_core@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/system_gsid.tar.zst
+        key: system_gsid@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/system_security.tar.zst
+        key: system_security@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/system_update_engine.tar.zst
+        key: system_update_engine@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/system_vold.tar.zst
+        key: system_vold@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/tools_apifinder.tar.zst
+        key: tools_apifinder@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/tools_platform-compat.tar.zst
+        key: tools_platform-compat@${{ env.branch }}
+    - run: bash steps/build_28.sh
+  build_29:
+    needs: build_28
+    runs-on: ubuntu-22.04
+    steps:
+    - uses: actions/checkout@main
+    - run: sudo apt update && sudo apt install -y ninja-build python2 libncurses5
+    - uses: actions/cache@v4
+      with:
+        path: cache/art.tar.zst
+        key: art@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/build_make.tar.zst
+        key: build_make@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_conscrypt.tar.zst
+        key: external_conscrypt@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_icu.tar.zst
+        key: external_icu@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_ims.tar.zst
+        key: external_ims@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_libphonenumber.tar.zst
+        key: external_libphonenumber@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_nist-sip.tar.zst
+        key: external_nist-sip@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/frameworks_base.tar.zst
+        key: frameworks_base@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/frameworks_libs_modules-utils.tar.zst
+        key: frameworks_libs_modules-utils@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/frameworks_libs_net.tar.zst
+        key: frameworks_libs_net@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/frameworks_native.tar.zst
+        key: frameworks_native@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/frameworks_opt_net_ims.tar.zst
+        key: frameworks_opt_net_ims@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/frameworks_opt_net_voip.tar.zst
+        key: frameworks_opt_net_voip@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/frameworks_opt_telephony.tar.zst
+        key: frameworks_opt_telephony@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/hardware_interfaces.tar.zst
+        key: hardware_interfaces@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/libcore.tar.zst
+        key: libcore@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/packages_modules_Connectivity.tar.zst
+        key: packages_modules_Connectivity@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/packages_modules_IPsec.tar.zst
+        key: packages_modules_IPsec@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/packages_modules_Permission.tar.zst
+        key: packages_modules_Permission@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/packages_modules_Scheduling.tar.zst
+        key: packages_modules_Scheduling@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/packages_modules_SdkExtensions.tar.zst
+        key: packages_modules_SdkExtensions@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/packages_modules_StatsD.tar.zst
+        key: packages_modules_StatsD@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/packages_modules_Wifi.tar.zst
+        key: packages_modules_Wifi@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/packages_modules_common.tar.zst
+        key: packages_modules_common@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/packages_providers_MediaProvider.tar.zst
+        key: packages_providers_MediaProvider@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/packages_services_Telephony.tar.zst
+        key: packages_services_Telephony@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/prebuilts_build-tools.tar.zst
+        key: prebuilts_build-tools@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/prebuilts_jdk_jdk11.tar.zst
+        key: prebuilts_jdk_jdk11@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/prebuilts_sdk.tar.zst
+        key: prebuilts_sdk@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/system_libsysprop.tar.zst
+        key: system_libsysprop@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/tools_apifinder.tar.zst
+        key: tools_apifinder@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/tools_platform-compat.tar.zst
+        key: tools_platform-compat@${{ env.branch }}
+    - run: bash steps/build_29.sh
+  build_30:
+    needs: build_29
+    runs-on: ubuntu-22.04
+    steps:
+    - uses: actions/checkout@main
+    - run: sudo apt update && sudo apt install -y ninja-build python2 libncurses5
+    - uses: actions/cache@v4
+      with:
+        path: cache/art.tar.zst
+        key: art@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/cts.tar.zst
+        key: cts@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_conscrypt.tar.zst
+        key: external_conscrypt@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_icu.tar.zst
+        key: external_icu@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_protobuf.tar.zst
+        key: external_protobuf@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/frameworks_base.tar.zst
+        key: frameworks_base@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/frameworks_libs_modules-utils.tar.zst
+        key: frameworks_libs_modules-utils@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/frameworks_native.tar.zst
+        key: frameworks_native@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/frameworks_opt_net_ims.tar.zst
+        key: frameworks_opt_net_ims@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/frameworks_opt_net_voip.tar.zst
+        key: frameworks_opt_net_voip@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/frameworks_opt_telephony.tar.zst
+        key: frameworks_opt_telephony@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/libcore.tar.zst
+        key: libcore@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/packages_modules_Connectivity.tar.zst
+        key: packages_modules_Connectivity@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/packages_modules_IPsec.tar.zst
+        key: packages_modules_IPsec@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/packages_modules_Permission.tar.zst
+        key: packages_modules_Permission@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/packages_modules_Scheduling.tar.zst
+        key: packages_modules_Scheduling@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/packages_modules_SdkExtensions.tar.zst
+        key: packages_modules_SdkExtensions@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/packages_modules_StatsD.tar.zst
+        key: packages_modules_StatsD@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/packages_modules_Wifi.tar.zst
+        key: packages_modules_Wifi@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/packages_providers_MediaProvider.tar.zst
+        key: packages_providers_MediaProvider@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/prebuilts_build-tools.tar.zst
+        key: prebuilts_build-tools@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/prebuilts_jdk_jdk11.tar.zst
+        key: prebuilts_jdk_jdk11@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/prebuilts_sdk.tar.zst
+        key: prebuilts_sdk@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/tools_platform-compat.tar.zst
+        key: tools_platform-compat@${{ env.branch }}
+    - run: bash steps/build_30.sh
+  build_31:
+    needs: build_30
+    runs-on: ubuntu-22.04
+    steps:
+    - uses: actions/checkout@main
+    - run: sudo apt update && sudo apt install -y ninja-build python2 libncurses5
+    - uses: actions/cache@v4
+      with:
+        path: cache/art.tar.zst
+        key: art@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/build_make.tar.zst
+        key: build_make@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/build_soong.tar.zst
+        key: build_soong@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_apache-http.tar.zst
+        key: external_apache-http@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_guava.tar.zst
+        key: external_guava@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_jacoco.tar.zst
+        key: external_jacoco@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/frameworks_av.tar.zst
+        key: frameworks_av@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/frameworks_base.tar.zst
+        key: frameworks_base@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/frameworks_ex.tar.zst
+        key: frameworks_ex@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/frameworks_libs_modules-utils.tar.zst
+        key: frameworks_libs_modules-utils@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/frameworks_libs_net.tar.zst
+        key: frameworks_libs_net@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/frameworks_native.tar.zst
+        key: frameworks_native@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/hardware_interfaces.tar.zst
+        key: hardware_interfaces@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/libcore.tar.zst
+        key: libcore@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/libnativehelper.tar.zst
+        key: libnativehelper@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/packages_modules_Connectivity.tar.zst
+        key: packages_modules_Connectivity@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/packages_modules_DnsResolver.tar.zst
+        key: packages_modules_DnsResolver@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/packages_modules_NetworkStack.tar.zst
+        key: packages_modules_NetworkStack@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/packages_modules_Permission.tar.zst
+        key: packages_modules_Permission@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/packages_modules_Scheduling.tar.zst
+        key: packages_modules_Scheduling@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/packages_modules_StatsD.tar.zst
+        key: packages_modules_StatsD@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/packages_modules_Wifi.tar.zst
+        key: packages_modules_Wifi@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/packages_modules_common.tar.zst
+        key: packages_modules_common@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/packages_providers_MediaProvider.tar.zst
+        key: packages_providers_MediaProvider@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/prebuilts_build-tools.tar.zst
+        key: prebuilts_build-tools@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/prebuilts_jdk_jdk11.tar.zst
+        key: prebuilts_jdk_jdk11@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/prebuilts_misc.tar.zst
+        key: prebuilts_misc@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/prebuilts_sdk.tar.zst
+        key: prebuilts_sdk@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/system_core.tar.zst
+        key: system_core@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/system_libhidl.tar.zst
+        key: system_libhidl@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/system_libsysprop.tar.zst
+        key: system_libsysprop@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/system_netd.tar.zst
+        key: system_netd@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/system_sepolicy.tar.zst
+        key: system_sepolicy@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/tools_apifinder.tar.zst
+        key: tools_apifinder@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/tools_metalava.tar.zst
+        key: tools_metalava@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/tools_platform-compat.tar.zst
+        key: tools_platform-compat@${{ env.branch }}
+    - run: bash steps/build_31.sh
+  build_32:
+    needs: build_31
+    runs-on: ubuntu-22.04
+    steps:
+    - uses: actions/checkout@main
+    - run: sudo apt update && sudo apt install -y ninja-build python2 libncurses5
+    - uses: actions/cache@v4
+      with:
+        path: cache/art.tar.zst
+        key: art@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/build_make.tar.zst
+        key: build_make@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/build_soong.tar.zst
+        key: build_soong@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/cts.tar.zst
+        key: cts@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/development.tar.zst
+        key: development@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/device_google_cuttlefish.tar.zst
+        key: device_google_cuttlefish@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_apache-commons-compress.tar.zst
+        key: external_apache-commons-compress@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_apache-http.tar.zst
+        key: external_apache-http@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_auto.tar.zst
+        key: external_auto@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_bouncycastle.tar.zst
+        key: external_bouncycastle@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_chromium-webview.tar.zst
+        key: external_chromium-webview@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_firebase-messaging.tar.zst
+        key: external_firebase-messaging@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_guava.tar.zst
+        key: external_guava@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_jacoco.tar.zst
+        key: external_jacoco@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_jsr305.tar.zst
+        key: external_jsr305@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_junit.tar.zst
+        key: external_junit@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_kotlinc.tar.zst
+        key: external_kotlinc@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_libphonenumber.tar.zst
+        key: external_libphonenumber@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_lottie.tar.zst
+        key: external_lottie@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_mp4parser.tar.zst
+        key: external_mp4parser@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_nist-sip.tar.zst
+        key: external_nist-sip@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_protobuf.tar.zst
+        key: external_protobuf@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_setupcompat.tar.zst
+        key: external_setupcompat@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_setupdesign.tar.zst
+        key: external_setupdesign@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_xmp_toolkit.tar.zst
+        key: external_xmp_toolkit@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_xz-java.tar.zst
+        key: external_xz-java@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_zxing.tar.zst
+        key: external_zxing@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/frameworks_base.tar.zst
+        key: frameworks_base@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/frameworks_ex.tar.zst
+        key: frameworks_ex@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/frameworks_libs_modules-utils.tar.zst
+        key: frameworks_libs_modules-utils@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/frameworks_libs_net.tar.zst
+        key: frameworks_libs_net@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/frameworks_libs_systemui.tar.zst
+        key: frameworks_libs_systemui@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/frameworks_native.tar.zst
+        key: frameworks_native@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/frameworks_opt_calendar.tar.zst
+        key: frameworks_opt_calendar@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/frameworks_opt_net_ims.tar.zst
+        key: frameworks_opt_net_ims@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/frameworks_opt_net_voip.tar.zst
+        key: frameworks_opt_net_voip@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/frameworks_opt_net_wifi.tar.zst
+        key: frameworks_opt_net_wifi@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/frameworks_opt_setupwizard.tar.zst
+        key: frameworks_opt_setupwizard@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/frameworks_opt_telephony.tar.zst
+        key: frameworks_opt_telephony@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/frameworks_opt_vcard.tar.zst
+        key: frameworks_opt_vcard@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/frameworks_proto_logging.tar.zst
+        key: frameworks_proto_logging@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/hardware_interfaces.tar.zst
+        key: hardware_interfaces@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/libcore.tar.zst
+        key: libcore@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/packages_apps_Browser2.tar.zst
+        key: packages_apps_Browser2@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/packages_apps_Car_libs.tar.zst
+        key: packages_apps_Car_libs@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/packages_apps_CarrierConfig.tar.zst
+        key: packages_apps_CarrierConfig@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/packages_apps_CellBroadcastReceiver.tar.zst
+        key: packages_apps_CellBroadcastReceiver@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/packages_apps_CertInstaller.tar.zst
+        key: packages_apps_CertInstaller@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/packages_apps_Contacts.tar.zst
+        key: packages_apps_Contacts@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/packages_apps_DeskClock.tar.zst
+        key: packages_apps_DeskClock@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/packages_apps_DocumentsUI.tar.zst
+        key: packages_apps_DocumentsUI@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/packages_apps_EmergencyInfo.tar.zst
+        key: packages_apps_EmergencyInfo@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/packages_apps_Gallery.tar.zst
+        key: packages_apps_Gallery@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/packages_apps_Gallery2.tar.zst
+        key: packages_apps_Gallery2@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/packages_apps_HTMLViewer.tar.zst
+        key: packages_apps_HTMLViewer@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/packages_apps_ImsServiceEntitlement.tar.zst
+        key: packages_apps_ImsServiceEntitlement@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/packages_apps_KeyChain.tar.zst
+        key: packages_apps_KeyChain@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/packages_apps_ManagedProvisioning.tar.zst
+        key: packages_apps_ManagedProvisioning@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/packages_apps_Music.tar.zst
+        key: packages_apps_Music@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/packages_apps_MusicFX.tar.zst
+        key: packages_apps_MusicFX@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/packages_apps_Nfc.tar.zst
+        key: packages_apps_Nfc@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/packages_apps_OneTimeInitializer.tar.zst
+        key: packages_apps_OneTimeInitializer@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/packages_apps_PhoneCommon.tar.zst
+        key: packages_apps_PhoneCommon@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/packages_apps_Provision.tar.zst
+        key: packages_apps_Provision@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/packages_apps_QuickSearchBox.tar.zst
+        key: packages_apps_QuickSearchBox@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/packages_apps_SecureElement.tar.zst
+        key: packages_apps_SecureElement@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/packages_apps_Settings.tar.zst
+        key: packages_apps_Settings@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/packages_apps_SettingsIntelligence.tar.zst
+        key: packages_apps_SettingsIntelligence@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/packages_apps_Stk.tar.zst
+        key: packages_apps_Stk@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/packages_apps_StorageManager.tar.zst
+        key: packages_apps_StorageManager@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/packages_apps_Tag.tar.zst
+        key: packages_apps_Tag@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/packages_apps_Traceur.tar.zst
+        key: packages_apps_Traceur@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/packages_apps_WallpaperPicker.tar.zst
+        key: packages_apps_WallpaperPicker@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/packages_inputmethods_LatinIME.tar.zst
+        key: packages_inputmethods_LatinIME@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/packages_modules_CaptivePortalLogin.tar.zst
+        key: packages_modules_CaptivePortalLogin@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/packages_modules_NetworkPermissionConfig.tar.zst
+        key: packages_modules_NetworkPermissionConfig@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/packages_modules_NetworkStack.tar.zst
+        key: packages_modules_NetworkStack@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/packages_modules_StatsD.tar.zst
+        key: packages_modules_StatsD@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/packages_providers_BlockedNumberProvider.tar.zst
+        key: packages_providers_BlockedNumberProvider@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/packages_providers_BookmarkProvider.tar.zst
+        key: packages_providers_BookmarkProvider@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/packages_providers_CalendarProvider.tar.zst
+        key: packages_providers_CalendarProvider@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/packages_providers_CallLogProvider.tar.zst
+        key: packages_providers_CallLogProvider@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/packages_providers_ContactsProvider.tar.zst
+        key: packages_providers_ContactsProvider@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/packages_providers_DownloadProvider.tar.zst
+        key: packages_providers_DownloadProvider@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/packages_providers_MediaProvider.tar.zst
+        key: packages_providers_MediaProvider@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/packages_providers_PartnerBookmarksProvider.tar.zst
+        key: packages_providers_PartnerBookmarksProvider@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/packages_providers_TelephonyProvider.tar.zst
+        key: packages_providers_TelephonyProvider@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/packages_providers_UserDictionaryProvider.tar.zst
+        key: packages_providers_UserDictionaryProvider@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/packages_screensavers_Basic.tar.zst
+        key: packages_screensavers_Basic@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/packages_screensavers_PhotoTable.tar.zst
+        key: packages_screensavers_PhotoTable@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/packages_services_AlternativeNetworkAccess.tar.zst
+        key: packages_services_AlternativeNetworkAccess@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/packages_services_BuiltInPrintService.tar.zst
+        key: packages_services_BuiltInPrintService@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/packages_services_Car.tar.zst
+        key: packages_services_Car@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/packages_services_Mms.tar.zst
+        key: packages_services_Mms@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/packages_services_Mtp.tar.zst
+        key: packages_services_Mtp@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/packages_services_Telecomm.tar.zst
+        key: packages_services_Telecomm@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/packages_services_Telephony.tar.zst
+        key: packages_services_Telephony@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/packages_wallpapers_LivePicker.tar.zst
+        key: packages_wallpapers_LivePicker@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/prebuilts_build-tools.tar.zst
+        key: prebuilts_build-tools@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/prebuilts_jdk_jdk11.tar.zst
+        key: prebuilts_jdk_jdk11@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/prebuilts_sdk.tar.zst
+        key: prebuilts_sdk@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/prebuilts_tools.tar.zst
+        key: prebuilts_tools@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/system_core.tar.zst
+        key: system_core@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/system_hardware_interfaces.tar.zst
+        key: system_hardware_interfaces@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/system_libhidl.tar.zst
+        key: system_libhidl@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/system_libsysprop.tar.zst
+        key: system_libsysprop@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/system_netd.tar.zst
+        key: system_netd@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/system_security.tar.zst
+        key: system_security@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/system_sepolicy.tar.zst
+        key: system_sepolicy@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/tools_apifinder.tar.zst
+        key: tools_apifinder@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/tools_platform-compat.tar.zst
+        key: tools_platform-compat@${{ env.branch }}
+    - run: bash steps/build_32.sh
+  build_33:
+    needs: build_32
+    runs-on: ubuntu-22.04
+    steps:
+    - uses: actions/checkout@main
+    - run: sudo apt update && sudo apt install -y ninja-build python2 libncurses5
+    - uses: actions/cache@v4
+      with:
+        path: cache/art.tar.zst
+        key: art@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/build_make.tar.zst
+        key: build_make@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/build_soong.tar.zst
+        key: build_soong@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_apache-http.tar.zst
+        key: external_apache-http@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_cbor-java.tar.zst
+        key: external_cbor-java@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_icu.tar.zst
+        key: external_icu@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/frameworks_av.tar.zst
+        key: frameworks_av@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/frameworks_base.tar.zst
+        key: frameworks_base@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/frameworks_libs_modules-utils.tar.zst
+        key: frameworks_libs_modules-utils@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/frameworks_libs_net.tar.zst
+        key: frameworks_libs_net@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/frameworks_native.tar.zst
+        key: frameworks_native@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/hardware_interfaces.tar.zst
+        key: hardware_interfaces@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/libcore.tar.zst
+        key: libcore@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/packages_apps_RemoteProvisioner.tar.zst
+        key: packages_apps_RemoteProvisioner@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/packages_modules_Connectivity.tar.zst
+        key: packages_modules_Connectivity@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/packages_modules_NetworkStack.tar.zst
+        key: packages_modules_NetworkStack@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/packages_modules_Permission.tar.zst
+        key: packages_modules_Permission@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/prebuilts_build-tools.tar.zst
+        key: prebuilts_build-tools@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/prebuilts_jdk_jdk11.tar.zst
+        key: prebuilts_jdk_jdk11@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/system_core.tar.zst
+        key: system_core@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/system_extras.tar.zst
+        key: system_extras@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/system_gsid.tar.zst
+        key: system_gsid@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/system_hardware_interfaces.tar.zst
+        key: system_hardware_interfaces@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/system_iorap.tar.zst
+        key: system_iorap@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/system_libhidl.tar.zst
+        key: system_libhidl@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/system_security.tar.zst
+        key: system_security@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/system_timezone.tar.zst
+        key: system_timezone@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/system_vold.tar.zst
+        key: system_vold@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/tools_platform-compat.tar.zst
+        key: tools_platform-compat@${{ env.branch }}
+    - run: bash steps/build_33.sh
+  build_34:
+    needs: build_33
+    runs-on: ubuntu-22.04
+    steps:
+    - uses: actions/checkout@main
+    - run: sudo apt update && sudo apt install -y ninja-build python2 libncurses5
+    - uses: actions/cache@v4
+      with:
+        path: cache/art.tar.zst
+        key: art@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/build_make.tar.zst
+        key: build_make@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_apache-http.tar.zst
+        key: external_apache-http@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_guava.tar.zst
+        key: external_guava@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_protobuf.tar.zst
+        key: external_protobuf@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/frameworks_base.tar.zst
+        key: frameworks_base@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/frameworks_opt_net_ethernet.tar.zst
+        key: frameworks_opt_net_ethernet@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/frameworks_opt_vcard.tar.zst
+        key: frameworks_opt_vcard@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/hardware_ril.tar.zst
+        key: hardware_ril@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/libcore.tar.zst
+        key: libcore@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/packages_apps_Bluetooth.tar.zst
+        key: packages_apps_Bluetooth@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/prebuilts_build-tools.tar.zst
+        key: prebuilts_build-tools@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/prebuilts_jdk_jdk11.tar.zst
+        key: prebuilts_jdk_jdk11@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/prebuilts_sdk.tar.zst
+        key: prebuilts_sdk@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/system_bt.tar.zst
+        key: system_bt@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/system_libhidl.tar.zst
+        key: system_libhidl@${{ env.branch }}
+    - run: bash steps/build_34.sh
