@@ -79,6 +79,10 @@ gh release --repo cibuilde/aosp-buildbot download android12-gsi_11 --pattern ext
 mkdir -p $GITHUB_WORKSPACE/downloads/external/okhttp
 tar xf $GITHUB_WORKSPACE/external_okhttp-11.tar.zst -C $GITHUB_WORKSPACE/downloads/external/okhttp/
 
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_03 --pattern external_protobuf.tar.zst --output external_protobuf-03.tar.zst
+mkdir -p $GITHUB_WORKSPACE/downloads/external/protobuf
+tar xf $GITHUB_WORKSPACE/external_protobuf-03.tar.zst -C $GITHUB_WORKSPACE/downloads/external/protobuf/
+
 gh release --repo cibuilde/aosp-buildbot download android12-gsi_14 --pattern external_rappor.tar.zst --output external_rappor-14.tar.zst
 mkdir -p $GITHUB_WORKSPACE/downloads/external/rappor
 tar xf $GITHUB_WORKSPACE/external_rappor-14.tar.zst -C $GITHUB_WORKSPACE/downloads/external/rappor/
@@ -90,6 +94,10 @@ tar xf $GITHUB_WORKSPACE/external_sqlite-04.tar.zst -C $GITHUB_WORKSPACE/downloa
 gh release --repo cibuilde/aosp-buildbot download android12-gsi_13 --pattern external_tagsoup.tar.zst --output external_tagsoup-13.tar.zst
 mkdir -p $GITHUB_WORKSPACE/downloads/external/tagsoup
 tar xf $GITHUB_WORKSPACE/external_tagsoup-13.tar.zst -C $GITHUB_WORKSPACE/downloads/external/tagsoup/
+
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_07 --pattern external_turbine.tar.zst --output external_turbine-07.tar.zst
+mkdir -p $GITHUB_WORKSPACE/downloads/external/turbine
+tar xf $GITHUB_WORKSPACE/external_turbine-07.tar.zst -C $GITHUB_WORKSPACE/downloads/external/turbine/
 
 gh release --repo cibuilde/aosp-buildbot download android12-gsi_25 --pattern frameworks_av.tar.zst --output frameworks_av-25.tar.zst
 mkdir -p $GITHUB_WORKSPACE/downloads/frameworks/av
@@ -210,6 +218,10 @@ tar xf $GITHUB_WORKSPACE/packages_modules_Wifi-23.tar.zst -C $GITHUB_WORKSPACE/d
 gh release --repo cibuilde/aosp-buildbot download android12-gsi_20 --pattern packages_providers_MediaProvider.tar.zst --output packages_providers_MediaProvider-20.tar.zst
 mkdir -p $GITHUB_WORKSPACE/downloads/packages/providers/MediaProvider
 tar xf $GITHUB_WORKSPACE/packages_providers_MediaProvider-20.tar.zst -C $GITHUB_WORKSPACE/downloads/packages/providers/MediaProvider/
+
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_03 --pattern prebuilts_r8.tar.zst --output prebuilts_r8-03.tar.zst
+mkdir -p $GITHUB_WORKSPACE/downloads/prebuilts/r8
+tar xf $GITHUB_WORKSPACE/prebuilts_r8-03.tar.zst -C $GITHUB_WORKSPACE/downloads/prebuilts/r8/
 
 gh release --repo cibuilde/aosp-buildbot download android12-gsi_06 --pattern tools_apifinder.tar.zst --output tools_apifinder-06.tar.zst
 mkdir -p $GITHUB_WORKSPACE/downloads/tools/apifinder

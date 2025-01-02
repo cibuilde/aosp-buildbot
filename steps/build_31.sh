@@ -371,6 +371,10 @@ gh release --repo cibuilde/aosp-buildbot download android12-gsi_03 --pattern sys
 mkdir -p $GITHUB_WORKSPACE/downloads/system/tools/aidl
 tar xf $GITHUB_WORKSPACE/system_tools_aidl-03.tar.zst -C $GITHUB_WORKSPACE/downloads/system/tools/aidl/
 
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_03 --pattern system_tools_hidl.tar.zst --output system_tools_hidl-03.tar.zst
+mkdir -p $GITHUB_WORKSPACE/downloads/system/tools/hidl
+tar xf $GITHUB_WORKSPACE/system_tools_hidl-03.tar.zst -C $GITHUB_WORKSPACE/downloads/system/tools/hidl/
+
 gh release --repo cibuilde/aosp-buildbot download android12-gsi_06 --pattern tools_apifinder.tar.zst --output tools_apifinder-06.tar.zst
 mkdir -p $GITHUB_WORKSPACE/downloads/tools/apifinder
 tar xf $GITHUB_WORKSPACE/tools_apifinder-06.tar.zst -C $GITHUB_WORKSPACE/downloads/tools/apifinder/
