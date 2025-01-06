@@ -37,6 +37,7 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/cmd/zipsync/zipsync^linux_gl
 rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/scripts/jsonmodify^linux_glibc_x86_64_PY2/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/scripts/manifest_fixer^linux_glibc_x86_64_PY2/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/scripts/manifest_check^linux_glibc_x86_64_PY2/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/symbol_inject/cmd/symbol_inject^linux_glibc_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/zip/cmd/soong_zip^linux_glibc_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/avb/avbtool^linux_glibc_x86_64_PY3/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/conscrypt/libconscrypt_openjdk_jni^linux_glibc_x86_64_shared/ .
@@ -45,10 +46,14 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/external/e2fsprogs/misc/mke2fs^linux_gli
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/e2fsprogs/resize/resize2fs^linux_glibc_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/f2fs-tools/make_f2fs^linux_glibc_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/f2fs-tools/sload_f2fs^linux_glibc_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/icu/icu4c/source/common/libicuuc^linux_glibc_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/icu/icu4c/source/i18n/libicui18n^linux_glibc_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcxx/libc++^linux_glibc_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/libtextclassifier/java/TextClassifierServiceLibNoManifest^android_common_apex30/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/libtextclassifier/native/libtextclassifier^android_x86_64_sdk_shared_apex30/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/libtextclassifier/notification/TextClassifierNotificationLibNoManifest^android_common_apex30/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/selinux/libselinux/sefcontext_compile^linux_glibc_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/sqlite/dist/libsqlite^linux_glibc_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/framework^android_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/ext^android_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/android_system_stubs_current^android_common/ .
@@ -61,6 +66,7 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/libcore/mmodules/core_platform_api/legac
 rsync -a -r $GITHUB_WORKSPACE/downloads/libnativehelper/libnativehelper_compat_libc++^android_x86_64_sdk_shared_apex30/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/ExtServices/ExtServices-core^android_common_apex30/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/ExtServices/jni/libextservices_jni^android_x86_64_sdk_shared_apex30/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/manifest-merger/manifest-merger^linux_glibc_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/manifest-merger/manifest-merger^linux_glibc_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/r8/r8-compat-proguard^linux_glibc_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/sdk/current/androidx/androidx.annotation_annotation-experimental-nodeps^android_common_apex30/ .

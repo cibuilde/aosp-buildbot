@@ -18,6 +18,7 @@ echo "Preparing for kernel/prebuilts/common-modules/virtual-device/5.10/x86-64"
 clone_depth kernel/prebuilts/common-modules/virtual-device/5.10/x86-64
 
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/kmod/depmod^linux_glibc_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcxx/libc++^linux_glibc_x86_64_shared/ .
 
 echo "building virt_device_prebuilts_kernel_modules-5.10-x86_64^android_x86_64"
 prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja virt_device_prebuilts_kernel_modules-5.10-x86_64,android_x86_64

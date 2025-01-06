@@ -33,8 +33,19 @@ clone_depth_platform system/media
 clone_depth_platform system/server_configurable_flags
 
 rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/cmd/sbox/sbox^linux_glibc_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/rust/crates/bitflags/libbitflags^linux_glibc_x86_64_rlib_rlib-std/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/rust/crates/clap/libclap^linux_glibc_x86_64_rlib_rlib-std/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/rust/crates/codespan-reporting/libcodespan_reporting^linux_glibc_x86_64_rlib_rlib-std/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/rust/crates/proc-macro2/libproc_macro2^linux_glibc_x86_64_rlib_rlib-std/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/rust/crates/quote/libquote^linux_glibc_x86_64_rlib_rlib-std/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/rust/crates/syn/libsyn^linux_glibc_x86_64_rlib_rlib-std/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/rust/crates/termcolor/libtermcolor^linux_glibc_x86_64_rlib_rlib-std/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/rust/crates/textwrap/libtextwrap^linux_glibc_x86_64_rlib_rlib-std/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/rust/crates/unicode-width/libunicode_width^linux_glibc_x86_64_rlib_rlib-std/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/rust/crates/unicode-xid/libunicode_xid^linux_glibc_x86_64_rlib_rlib-std/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/rust/cxx/cxx-bridge-header^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/rust/cxx/gen/cmd/cxxbridge^linux_glibc_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/rust/cxx/gen/cmd/libcxxbridge_cmd^linux_glibc_x86_64_rlib_rlib-std/ .
 
 echo "building libprofcollect_libbase^android_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libprofcollect_libbase,android_x86_64_static

@@ -17,6 +17,7 @@ echo "Preparing for system/gsid"
 
 clone_depth_platform system/gsid
 
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcxx/libc++^linux_glibc_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/tools/aidl/aidl^linux_glibc_x86_64/ .
 
 echo "building gsi_aidl_interface-cpp-source^"

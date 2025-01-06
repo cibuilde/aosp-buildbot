@@ -36,6 +36,7 @@ clone_depth_platform system/unwinding
 rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/cmd/dep_fixer/dep_fixer^linux_glibc_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/cmd/sbox/sbox^linux_glibc_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/fmtlib/fmtlib^android_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcxx/libc++^linux_glibc_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/native/libs/binder/libbinder^android_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/connectivity/wificond/libwificond_nl^android_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/connectivity/wificond/libwificond_event_loop^android_x86_64_static/ .

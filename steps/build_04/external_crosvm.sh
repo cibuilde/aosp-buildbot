@@ -31,6 +31,7 @@ clone_depth_platform system/core
 clone_depth_platform system/logging
 clone_depth_platform system/media
 
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcxx/libc++^linux_glibc_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/libffi/ffi_header^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/wayland/wayland_core_client_protocol_headers^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/wayland/wayland_scanner^linux_glibc_x86_64/ .

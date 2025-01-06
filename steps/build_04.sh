@@ -214,6 +214,10 @@ gh release --repo cibuilde/aosp-buildbot download android12-gsi_03 --pattern ext
 mkdir -p $GITHUB_WORKSPACE/downloads/external/python/six
 tar xf $GITHUB_WORKSPACE/external_python_six-03.tar.zst -C $GITHUB_WORKSPACE/downloads/external/python/six/
 
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_02 --pattern external_rust_crates_aho-corasick.tar.zst --output external_rust_crates_aho-corasick-02.tar.zst
+mkdir -p $GITHUB_WORKSPACE/downloads/external/rust/crates/aho-corasick
+tar xf $GITHUB_WORKSPACE/external_rust_crates_aho-corasick-02.tar.zst -C $GITHUB_WORKSPACE/downloads/external/rust/crates/aho-corasick/
+
 gh release --repo cibuilde/aosp-buildbot download android12-gsi_03 --pattern external_rust_crates_bindgen.tar.zst --output external_rust_crates_bindgen-03.tar.zst
 mkdir -p $GITHUB_WORKSPACE/downloads/external/rust/crates/bindgen
 tar xf $GITHUB_WORKSPACE/external_rust_crates_bindgen-03.tar.zst -C $GITHUB_WORKSPACE/downloads/external/rust/crates/bindgen/
@@ -222,9 +226,17 @@ gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern ext
 mkdir -p $GITHUB_WORKSPACE/downloads/external/rust/crates/bitflags
 tar xf $GITHUB_WORKSPACE/external_rust_crates_bitflags-01.tar.zst -C $GITHUB_WORKSPACE/downloads/external/rust/crates/bitflags/
 
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_rust_crates_bytes.tar.zst --output external_rust_crates_bytes-01.tar.zst
+mkdir -p $GITHUB_WORKSPACE/downloads/external/rust/crates/bytes
+tar xf $GITHUB_WORKSPACE/external_rust_crates_bytes-01.tar.zst -C $GITHUB_WORKSPACE/downloads/external/rust/crates/bytes/
+
 gh release --repo cibuilde/aosp-buildbot download android12-gsi_03 --pattern external_rust_crates_cexpr.tar.zst --output external_rust_crates_cexpr-03.tar.zst
 mkdir -p $GITHUB_WORKSPACE/downloads/external/rust/crates/cexpr
 tar xf $GITHUB_WORKSPACE/external_rust_crates_cexpr-03.tar.zst -C $GITHUB_WORKSPACE/downloads/external/rust/crates/cexpr/
+
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_rust_crates_cfg-if.tar.zst --output external_rust_crates_cfg-if-01.tar.zst
+mkdir -p $GITHUB_WORKSPACE/downloads/external/rust/crates/cfg-if
+tar xf $GITHUB_WORKSPACE/external_rust_crates_cfg-if-01.tar.zst -C $GITHUB_WORKSPACE/downloads/external/rust/crates/cfg-if/
 
 gh release --repo cibuilde/aosp-buildbot download android12-gsi_02 --pattern external_rust_crates_cfg-if.tar.zst --output external_rust_crates_cfg-if-02.tar.zst
 mkdir -p $GITHUB_WORKSPACE/downloads/external/rust/crates/cfg-if
@@ -238,6 +250,10 @@ gh release --repo cibuilde/aosp-buildbot download android12-gsi_02 --pattern ext
 mkdir -p $GITHUB_WORKSPACE/downloads/external/rust/crates/clap
 tar xf $GITHUB_WORKSPACE/external_rust_crates_clap-02.tar.zst -C $GITHUB_WORKSPACE/downloads/external/rust/crates/clap/
 
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_rust_crates_either.tar.zst --output external_rust_crates_either-01.tar.zst
+mkdir -p $GITHUB_WORKSPACE/downloads/external/rust/crates/either
+tar xf $GITHUB_WORKSPACE/external_rust_crates_either-01.tar.zst -C $GITHUB_WORKSPACE/downloads/external/rust/crates/either/
+
 gh release --repo cibuilde/aosp-buildbot download android12-gsi_03 --pattern external_rust_crates_env_logger.tar.zst --output external_rust_crates_env_logger-03.tar.zst
 mkdir -p $GITHUB_WORKSPACE/downloads/external/rust/crates/env_logger
 tar xf $GITHUB_WORKSPACE/external_rust_crates_env_logger-03.tar.zst -C $GITHUB_WORKSPACE/downloads/external/rust/crates/env_logger/
@@ -245,6 +261,10 @@ tar xf $GITHUB_WORKSPACE/external_rust_crates_env_logger-03.tar.zst -C $GITHUB_W
 gh release --repo cibuilde/aosp-buildbot download android12-gsi_03 --pattern external_rust_crates_getrandom.tar.zst --output external_rust_crates_getrandom-03.tar.zst
 mkdir -p $GITHUB_WORKSPACE/downloads/external/rust/crates/getrandom
 tar xf $GITHUB_WORKSPACE/external_rust_crates_getrandom-03.tar.zst -C $GITHUB_WORKSPACE/downloads/external/rust/crates/getrandom/
+
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_rust_crates_glob.tar.zst --output external_rust_crates_glob-01.tar.zst
+mkdir -p $GITHUB_WORKSPACE/downloads/external/rust/crates/glob
+tar xf $GITHUB_WORKSPACE/external_rust_crates_glob-01.tar.zst -C $GITHUB_WORKSPACE/downloads/external/rust/crates/glob/
 
 gh release --repo cibuilde/aosp-buildbot download android12-gsi_03 --pattern external_rust_crates_instant.tar.zst --output external_rust_crates_instant-03.tar.zst
 mkdir -p $GITHUB_WORKSPACE/downloads/external/rust/crates/instant
@@ -262,13 +282,33 @@ gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern ext
 mkdir -p $GITHUB_WORKSPACE/downloads/external/rust/crates/lazycell
 tar xf $GITHUB_WORKSPACE/external_rust_crates_lazycell-01.tar.zst -C $GITHUB_WORKSPACE/downloads/external/rust/crates/lazycell/
 
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_rust_crates_libc.tar.zst --output external_rust_crates_libc-01.tar.zst
+mkdir -p $GITHUB_WORKSPACE/downloads/external/rust/crates/libc
+tar xf $GITHUB_WORKSPACE/external_rust_crates_libc-01.tar.zst -C $GITHUB_WORKSPACE/downloads/external/rust/crates/libc/
+
 gh release --repo cibuilde/aosp-buildbot download android12-gsi_02 --pattern external_rust_crates_libc.tar.zst --output external_rust_crates_libc-02.tar.zst
 mkdir -p $GITHUB_WORKSPACE/downloads/external/rust/crates/libc
 tar xf $GITHUB_WORKSPACE/external_rust_crates_libc-02.tar.zst -C $GITHUB_WORKSPACE/downloads/external/rust/crates/libc/
 
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_02 --pattern external_rust_crates_libloading.tar.zst --output external_rust_crates_libloading-02.tar.zst
+mkdir -p $GITHUB_WORKSPACE/downloads/external/rust/crates/libloading
+tar xf $GITHUB_WORKSPACE/external_rust_crates_libloading-02.tar.zst -C $GITHUB_WORKSPACE/downloads/external/rust/crates/libloading/
+
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_02 --pattern external_rust_crates_log.tar.zst --output external_rust_crates_log-02.tar.zst
+mkdir -p $GITHUB_WORKSPACE/downloads/external/rust/crates/log
+tar xf $GITHUB_WORKSPACE/external_rust_crates_log-02.tar.zst -C $GITHUB_WORKSPACE/downloads/external/rust/crates/log/
+
 gh release --repo cibuilde/aosp-buildbot download android12-gsi_03 --pattern external_rust_crates_log.tar.zst --output external_rust_crates_log-03.tar.zst
 mkdir -p $GITHUB_WORKSPACE/downloads/external/rust/crates/log
 tar xf $GITHUB_WORKSPACE/external_rust_crates_log-03.tar.zst -C $GITHUB_WORKSPACE/downloads/external/rust/crates/log/
+
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_rust_crates_memchr.tar.zst --output external_rust_crates_memchr-01.tar.zst
+mkdir -p $GITHUB_WORKSPACE/downloads/external/rust/crates/memchr
+tar xf $GITHUB_WORKSPACE/external_rust_crates_memchr-01.tar.zst -C $GITHUB_WORKSPACE/downloads/external/rust/crates/memchr/
+
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_02 --pattern external_rust_crates_nom.tar.zst --output external_rust_crates_nom-02.tar.zst
+mkdir -p $GITHUB_WORKSPACE/downloads/external/rust/crates/nom
+tar xf $GITHUB_WORKSPACE/external_rust_crates_nom-02.tar.zst -C $GITHUB_WORKSPACE/downloads/external/rust/crates/nom/
 
 gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_rust_crates_peeking_take_while.tar.zst --output external_rust_crates_peeking_take_while-01.tar.zst
 mkdir -p $GITHUB_WORKSPACE/downloads/external/rust/crates/peeking_take_while
@@ -290,6 +330,10 @@ gh release --repo cibuilde/aosp-buildbot download android12-gsi_03 --pattern ext
 mkdir -p $GITHUB_WORKSPACE/downloads/external/rust/crates/regex
 tar xf $GITHUB_WORKSPACE/external_rust_crates_regex-03.tar.zst -C $GITHUB_WORKSPACE/downloads/external/rust/crates/regex/
 
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_rust_crates_regex-syntax.tar.zst --output external_rust_crates_regex-syntax-01.tar.zst
+mkdir -p $GITHUB_WORKSPACE/downloads/external/rust/crates/regex-syntax
+tar xf $GITHUB_WORKSPACE/external_rust_crates_regex-syntax-01.tar.zst -C $GITHUB_WORKSPACE/downloads/external/rust/crates/regex-syntax/
+
 gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_rust_crates_rustc-hash.tar.zst --output external_rust_crates_rustc-hash-01.tar.zst
 mkdir -p $GITHUB_WORKSPACE/downloads/external/rust/crates/rustc-hash
 tar xf $GITHUB_WORKSPACE/external_rust_crates_rustc-hash-01.tar.zst -C $GITHUB_WORKSPACE/downloads/external/rust/crates/rustc-hash/
@@ -301,6 +345,10 @@ tar xf $GITHUB_WORKSPACE/external_rust_crates_shlex-01.tar.zst -C $GITHUB_WORKSP
 gh release --repo cibuilde/aosp-buildbot download android12-gsi_02 --pattern external_rust_crates_smallvec.tar.zst --output external_rust_crates_smallvec-02.tar.zst
 mkdir -p $GITHUB_WORKSPACE/downloads/external/rust/crates/smallvec
 tar xf $GITHUB_WORKSPACE/external_rust_crates_smallvec-02.tar.zst -C $GITHUB_WORKSPACE/downloads/external/rust/crates/smallvec/
+
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_rust_crates_textwrap.tar.zst --output external_rust_crates_textwrap-01.tar.zst
+mkdir -p $GITHUB_WORKSPACE/downloads/external/rust/crates/textwrap
+tar xf $GITHUB_WORKSPACE/external_rust_crates_textwrap-01.tar.zst -C $GITHUB_WORKSPACE/downloads/external/rust/crates/textwrap/
 
 gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_rust_crates_unicode-xid.tar.zst --output external_rust_crates_unicode-xid-01.tar.zst
 mkdir -p $GITHUB_WORKSPACE/downloads/external/rust/crates/unicode-xid

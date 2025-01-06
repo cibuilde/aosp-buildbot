@@ -21,6 +21,8 @@ clone_depth_platform prebuilts/gcc/linux-x86/x86/x86_64-linux-android-4.9
 
 rsync -a -r $GITHUB_WORKSPACE/downloads/singletons/api_levels^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/cc/ndkstubgen/ndkstubgen^linux_glibc_x86_64_PY3/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/cmd/merge_zips/merge_zips^linux_glibc_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/zip/cmd/soong_zip^linux_glibc_x86_64/ .
 
 echo "building libft2^android_vendor.31_x86_64_shared"
 prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libft2,android_vendor.31_x86_64_shared

@@ -91,6 +91,7 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcxx/libc++^android_x86_64_sh
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcxx/libc++^android_x86_64_shared_apex29/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcxx/libc++^android_x86_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcxx/libc++^android_x86_x86_64_shared_apex29/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcxx/libc++^linux_glibc_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcxxabi/libc++demangle^android_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcxxabi/libc++demangle^android_x86_64_static_apex29/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcxxabi/libc++demangle^android_x86_x86_64_static/ .
@@ -199,6 +200,7 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/av/services/mediaresourcemana
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/av/services/oboeservice/libaaudioservice^android_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/media/audio_common-aidl-cpp-source^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/native/android/libandroid^android_x86_64_shared_31/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/compile/libbcc/bcinfo/libbcinfo^linux_glibc_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/compile/slang/llvm-rs-cc^linux_glibc_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/native/libs/arect/libarect^android_x86_64_static_cfi_apex29/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/native/libs/binder/libactivitymanager_aidl^android_x86_64_shared/ .
@@ -293,6 +295,8 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/media/omx/1.0/androi
 rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/media/omx/1.0/android.hardware.media.omx@1.0_genc++_headers^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/libhardware_legacy/libhardware_legacy^android_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/StatsD/lib/libstatssocket/libstatssocket^android_x86_64_shared_30/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/sdk/tools/prebuilt_libLLVM_android^linux_glibc_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/sdk/tools/prebuilt_libclang_android^linux_glibc_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/core/libcutils/libcutils^android_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/core/libcutils/libcutils^android_x86_64_shared_apex29/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/core/libcutils/libcutils^android_x86_64_static_cfi_apex29/ .

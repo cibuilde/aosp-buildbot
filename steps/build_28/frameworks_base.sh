@@ -49,7 +49,11 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/external/bouncycastle/bouncycastle^andro
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/conscrypt/conscrypt^android_common_apex29/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/conscrypt/apex/com.android.conscrypt-bootclasspath-fragment^android_common_apex29/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/icu/android_icu4j/core-icu4j^android_common_apex10000/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/icu/icu4c/source/common/libicuuc^linux_glibc_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/icu/icu4c/source/i18n/libicui18n^linux_glibc_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcxx/libc++^linux_glibc_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/okhttp/okhttp^android_common_apex31/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/sqlite/dist/libsqlite^linux_glibc_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/av/apex/com.android.media-bootclasspath-fragment^android_common_apex29/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/android_stubs_current^android_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/android_system_stubs_current^android_common/ .
@@ -82,6 +86,7 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/Wifi/framework/framewor
 rsync -a -r $GITHUB_WORKSPACE/downloads/packages/providers/MediaProvider/apex/com.android.mediaprovider-bootclasspath-fragment^android_common_apex30/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/packages/providers/MediaProvider/apex/framework/framework-mediaprovider^android_common_apex30/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/tools/platform-compat/build/process-compat-config^linux_glibc_x86_64_PY2/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/tools/platform-compat/java/com/android/class2nonsdklist/class2nonsdklist^linux_glibc_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/tools/platform-compat/java/com/android/class2nonsdklist/class2nonsdklist^linux_glibc_x86_64/ .
 
 echo "building framework-minus-apex^android_common"

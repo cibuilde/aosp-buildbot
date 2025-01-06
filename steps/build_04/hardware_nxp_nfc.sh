@@ -18,6 +18,7 @@ echo "Preparing for hardware/nxp/nfc"
 clone_depth_platform hardware/nxp/nfc
 clone_depth_platform system/libhidl
 
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcxx/libc++^linux_glibc_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/tools/hidl/hidl-gen^linux_glibc_x86_64/ .
 
 echo "building vendor.nxp.nxpnfc@1.0-inheritance-hierarchy^"

@@ -52,6 +52,10 @@ gh release --repo cibuilde/aosp-buildbot download android12-gsi_04 --pattern ext
 mkdir -p $GITHUB_WORKSPACE/downloads/external/guava
 tar xf $GITHUB_WORKSPACE/external_guava-04.tar.zst -C $GITHUB_WORKSPACE/downloads/external/guava/
 
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_03 --pattern external_icu.tar.zst --output external_icu-03.tar.zst
+mkdir -p $GITHUB_WORKSPACE/downloads/external/icu
+tar xf $GITHUB_WORKSPACE/external_icu-03.tar.zst -C $GITHUB_WORKSPACE/downloads/external/icu/
+
 gh release --repo cibuilde/aosp-buildbot download android12-gsi_04 --pattern external_jarjar.tar.zst --output external_jarjar-04.tar.zst
 mkdir -p $GITHUB_WORKSPACE/downloads/external/jarjar
 tar xf $GITHUB_WORKSPACE/external_jarjar-04.tar.zst -C $GITHUB_WORKSPACE/downloads/external/jarjar/
@@ -59,6 +63,10 @@ tar xf $GITHUB_WORKSPACE/external_jarjar-04.tar.zst -C $GITHUB_WORKSPACE/downloa
 gh release --repo cibuilde/aosp-buildbot download android12-gsi_03 --pattern external_kotlinc.tar.zst --output external_kotlinc-03.tar.zst
 mkdir -p $GITHUB_WORKSPACE/downloads/external/kotlinc
 tar xf $GITHUB_WORKSPACE/external_kotlinc-03.tar.zst -C $GITHUB_WORKSPACE/downloads/external/kotlinc/
+
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_02 --pattern external_libcxx.tar.zst --output external_libcxx-02.tar.zst
+mkdir -p $GITHUB_WORKSPACE/downloads/external/libcxx
+tar xf $GITHUB_WORKSPACE/external_libcxx-02.tar.zst -C $GITHUB_WORKSPACE/downloads/external/libcxx/
 
 gh release --repo cibuilde/aosp-buildbot download android12-gsi_08 --pattern external_libphonenumber.tar.zst --output external_libphonenumber-08.tar.zst
 mkdir -p $GITHUB_WORKSPACE/downloads/external/libphonenumber
@@ -79,6 +87,10 @@ tar xf $GITHUB_WORKSPACE/external_protobuf-13.tar.zst -C $GITHUB_WORKSPACE/downl
 gh release --repo cibuilde/aosp-buildbot download android12-gsi_02 --pattern external_selinux.tar.zst --output external_selinux-02.tar.zst
 mkdir -p $GITHUB_WORKSPACE/downloads/external/selinux
 tar xf $GITHUB_WORKSPACE/external_selinux-02.tar.zst -C $GITHUB_WORKSPACE/downloads/external/selinux/
+
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_04 --pattern external_sqlite.tar.zst --output external_sqlite-04.tar.zst
+mkdir -p $GITHUB_WORKSPACE/downloads/external/sqlite
+tar xf $GITHUB_WORKSPACE/external_sqlite-04.tar.zst -C $GITHUB_WORKSPACE/downloads/external/sqlite/
 
 gh release --repo cibuilde/aosp-buildbot download android12-gsi_07 --pattern external_turbine.tar.zst --output external_turbine-07.tar.zst
 mkdir -p $GITHUB_WORKSPACE/downloads/external/turbine

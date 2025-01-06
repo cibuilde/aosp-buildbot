@@ -34,6 +34,8 @@ clone_depth_platform system/media
 
 rsync -a -r $GITHUB_WORKSPACE/downloads/singletons/api_levels^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/cc/ndkstubgen/ndkstubgen^linux_glibc_x86_64_PY3/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/cmd/merge_zips/merge_zips^linux_glibc_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/zip/cmd/soong_zip^linux_glibc_x86_64/ .
 
 echo "building libadbconnection_client^android_x86_64_shared_current"
 prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libadbconnection_client,android_x86_64_shared_current

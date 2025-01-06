@@ -33,6 +33,7 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/libcore/core-lambda-stubs-for-system-mod
 rsync -a -r $GITHUB_WORKSPACE/downloads/libcore/core-generated-annotation-stubs^android_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/libcore/art.module.public.api.stubs.module_lib^android_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/libcore/art.module.public.api.stubs^android_common/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/r8/d8^linux_glibc_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/r8/d8^linux_glibc_x86_64/ .
 
 echo "building core.current.stubs^android_common"

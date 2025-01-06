@@ -154,6 +154,10 @@ gh release --repo cibuilde/aosp-buildbot download android12-gsi_13 --pattern ext
 mkdir -p $GITHUB_WORKSPACE/downloads/external/kotlinx.atomicfu
 tar xf $GITHUB_WORKSPACE/external_kotlinx.atomicfu-13.tar.zst -C $GITHUB_WORKSPACE/downloads/external/kotlinx.atomicfu/
 
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_02 --pattern external_libcxx.tar.zst --output external_libcxx-02.tar.zst
+mkdir -p $GITHUB_WORKSPACE/downloads/external/libcxx
+tar xf $GITHUB_WORKSPACE/external_libcxx-02.tar.zst -C $GITHUB_WORKSPACE/downloads/external/libcxx/
+
 gh release --repo cibuilde/aosp-buildbot download android12-gsi_04 --pattern external_libcxx.tar.zst --output external_libcxx-04.tar.zst
 mkdir -p $GITHUB_WORKSPACE/downloads/external/libcxx
 tar xf $GITHUB_WORKSPACE/external_libcxx-04.tar.zst -C $GITHUB_WORKSPACE/downloads/external/libcxx/
@@ -217,6 +221,10 @@ tar xf $GITHUB_WORKSPACE/external_skia-01.tar.zst -C $GITHUB_WORKSPACE/downloads
 gh release --repo cibuilde/aosp-buildbot download android12-gsi_06 --pattern external_sonivox.tar.zst --output external_sonivox-06.tar.zst
 mkdir -p $GITHUB_WORKSPACE/downloads/external/sonivox
 tar xf $GITHUB_WORKSPACE/external_sonivox-06.tar.zst -C $GITHUB_WORKSPACE/downloads/external/sonivox/
+
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_04 --pattern external_sqlite.tar.zst --output external_sqlite-04.tar.zst
+mkdir -p $GITHUB_WORKSPACE/downloads/external/sqlite
+tar xf $GITHUB_WORKSPACE/external_sqlite-04.tar.zst -C $GITHUB_WORKSPACE/downloads/external/sqlite/
 
 gh release --repo cibuilde/aosp-buildbot download android12-gsi_06 --pattern external_sqlite.tar.zst --output external_sqlite-06.tar.zst
 mkdir -p $GITHUB_WORKSPACE/downloads/external/sqlite
