@@ -1,6 +1,5 @@
-set -e
 
-echo "entering external/protobuf"
+set -e
 
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
@@ -12,6 +11,8 @@ ln -sf $GITHUB_WORKSPACE/ninja .
 if [ -d "$GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86" ]; then
   mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86 prebuilts/clang/host/linux-x86
 fi
+
+echo "Preparing for external/protobuf"
 
 clone_depth_platform bionic
 clone_depth_platform build/soong
@@ -25,12 +26,16 @@ clone_depth_platform frameworks/native
 clone_depth_platform hardware/libhardware
 clone_depth_platform hardware/libhardware_legacy
 clone_depth_platform hardware/ril
-clone_project platform/prebuilts/build-tools prebuilts/build-tools android12-gsi "/linux-x86/bin" "/linux-x86/lib64" "/path" "/common"
 clone_depth_platform prebuilts/gcc/linux-x86/x86/x86_64-linux-android-4.9
 clone_depth_platform system/core
 clone_depth_platform system/logging
 clone_depth_platform system/media
 
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/libc^android_recovery_x86_64_shared_current/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/libc^android_vendor.31_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/libc^android_vendor.31_x86_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/libc^android_x86_64_shared_current/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/libc^android_x86_x86_64_shared_current/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/crtbegin_so^android_recovery_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/crtbegin_so^android_vendor.31_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/crtbegin_so^android_vendor.31_x86_x86_64/ .
@@ -41,11 +46,6 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/crtend_so^android_vendor.31_
 rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/crtend_so^android_vendor.31_x86_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/crtend_so^android_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/crtend_so^android_x86_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/libc^android_recovery_x86_64_shared_current/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/libc^android_vendor.31_x86_64_shared/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/libc^android_vendor.31_x86_x86_64_shared/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/libc^android_x86_64_shared_current/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/libc^android_x86_x86_64_shared_current/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libdl/libdl^android_recovery_x86_64_shared_current/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libdl/libdl^android_vendor.31_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libdl/libdl^android_vendor.31_x86_x86_64_shared/ .
@@ -81,30 +81,6 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^android_ven
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^android_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^android_x86_x86_64_shared/ .
 
-echo "building libprotobuf-cpp-full^android_vendor.31_x86_64_shared"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libprotobuf-cpp-full,android_vendor.31_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/protobuf/libprotobuf-cpp-full^android_vendor.31_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/external/protobuf/libprotobuf-cpp-full^android_vendor.31_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/external/protobuf/libprotobuf-cpp-full^android_vendor.31_x86_64_shared
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_06/external/protobuf/libprotobuf-cpp-full^android_vendor.31_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/external/protobuf/libprotobuf-cpp-full^android_vendor.31_x86_64_shared $GITHUB_WORKSPACE/artifacts/external/protobuf/libprotobuf-cpp-full^android_vendor.31_x86_64_shared/addition_copy_files.output
-
-echo "building libprotobuf-cpp-full^android_vendor.31_x86_x86_64_shared"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libprotobuf-cpp-full,android_vendor.31_x86_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/protobuf/libprotobuf-cpp-full^android_vendor.31_x86_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/external/protobuf/libprotobuf-cpp-full^android_vendor.31_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/external/protobuf/libprotobuf-cpp-full^android_vendor.31_x86_x86_64_shared
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_06/external/protobuf/libprotobuf-cpp-full^android_vendor.31_x86_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/external/protobuf/libprotobuf-cpp-full^android_vendor.31_x86_x86_64_shared $GITHUB_WORKSPACE/artifacts/external/protobuf/libprotobuf-cpp-full^android_vendor.31_x86_x86_64_shared/addition_copy_files.output
-
-echo "building libprotobuf-cpp-full^android_x86_64_shared"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libprotobuf-cpp-full,android_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/protobuf/libprotobuf-cpp-full^android_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/external/protobuf/libprotobuf-cpp-full^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/external/protobuf/libprotobuf-cpp-full^android_x86_64_shared
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_06/external/protobuf/libprotobuf-cpp-full^android_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/external/protobuf/libprotobuf-cpp-full^android_x86_64_shared $GITHUB_WORKSPACE/artifacts/external/protobuf/libprotobuf-cpp-full^android_x86_64_shared/addition_copy_files.output
-
-echo "building libprotobuf-cpp-full^android_x86_x86_64_shared"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libprotobuf-cpp-full,android_x86_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/protobuf/libprotobuf-cpp-full^android_x86_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/external/protobuf/libprotobuf-cpp-full^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/external/protobuf/libprotobuf-cpp-full^android_x86_x86_64_shared
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_06/external/protobuf/libprotobuf-cpp-full^android_x86_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/external/protobuf/libprotobuf-cpp-full^android_x86_x86_64_shared $GITHUB_WORKSPACE/artifacts/external/protobuf/libprotobuf-cpp-full^android_x86_x86_64_shared/addition_copy_files.output
-
 echo "building libprotobuf-cpp-lite^android_recovery_x86_64_shared"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libprotobuf-cpp-lite,android_recovery_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/protobuf/libprotobuf-cpp-lite^android_recovery_x86_64_shared
@@ -135,6 +111,31 @@ mkdir -p $GITHUB_WORKSPACE/artifacts/external/protobuf/libprotobuf-cpp-lite^andr
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/external/protobuf/libprotobuf-cpp-lite^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/external/protobuf/libprotobuf-cpp-lite^android_x86_x86_64_shared
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_06/external/protobuf/libprotobuf-cpp-lite^android_x86_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/external/protobuf/libprotobuf-cpp-lite^android_x86_x86_64_shared $GITHUB_WORKSPACE/artifacts/external/protobuf/libprotobuf-cpp-lite^android_x86_x86_64_shared/addition_copy_files.output
 
+echo "building libprotobuf-cpp-full^android_vendor.31_x86_64_shared"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libprotobuf-cpp-full,android_vendor.31_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/protobuf/libprotobuf-cpp-full^android_vendor.31_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/external/protobuf/libprotobuf-cpp-full^android_vendor.31_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/external/protobuf/libprotobuf-cpp-full^android_vendor.31_x86_64_shared
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_06/external/protobuf/libprotobuf-cpp-full^android_vendor.31_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/external/protobuf/libprotobuf-cpp-full^android_vendor.31_x86_64_shared $GITHUB_WORKSPACE/artifacts/external/protobuf/libprotobuf-cpp-full^android_vendor.31_x86_64_shared/addition_copy_files.output
+
+echo "building libprotobuf-cpp-full^android_vendor.31_x86_x86_64_shared"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libprotobuf-cpp-full,android_vendor.31_x86_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/protobuf/libprotobuf-cpp-full^android_vendor.31_x86_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/external/protobuf/libprotobuf-cpp-full^android_vendor.31_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/external/protobuf/libprotobuf-cpp-full^android_vendor.31_x86_x86_64_shared
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_06/external/protobuf/libprotobuf-cpp-full^android_vendor.31_x86_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/external/protobuf/libprotobuf-cpp-full^android_vendor.31_x86_x86_64_shared $GITHUB_WORKSPACE/artifacts/external/protobuf/libprotobuf-cpp-full^android_vendor.31_x86_x86_64_shared/addition_copy_files.output
+
+echo "building libprotobuf-cpp-full^android_x86_64_shared"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libprotobuf-cpp-full,android_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/protobuf/libprotobuf-cpp-full^android_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/external/protobuf/libprotobuf-cpp-full^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/external/protobuf/libprotobuf-cpp-full^android_x86_64_shared
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_06/external/protobuf/libprotobuf-cpp-full^android_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/external/protobuf/libprotobuf-cpp-full^android_x86_64_shared $GITHUB_WORKSPACE/artifacts/external/protobuf/libprotobuf-cpp-full^android_x86_64_shared/addition_copy_files.output
+
+echo "building libprotobuf-cpp-full^android_x86_x86_64_shared"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libprotobuf-cpp-full,android_x86_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/protobuf/libprotobuf-cpp-full^android_x86_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/external/protobuf/libprotobuf-cpp-full^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/external/protobuf/libprotobuf-cpp-full^android_x86_x86_64_shared
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_06/external/protobuf/libprotobuf-cpp-full^android_x86_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/external/protobuf/libprotobuf-cpp-full^android_x86_x86_64_shared $GITHUB_WORKSPACE/artifacts/external/protobuf/libprotobuf-cpp-full^android_x86_x86_64_shared/addition_copy_files.output
+
+
 rm -rf out
 
 cd $GITHUB_WORKSPACE/
@@ -142,6 +143,7 @@ tar -cf external_protobuf.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKS
 gh release --repo cibuilde/aosp-buildbot upload android12-gsi_06 external_protobuf.tar.zst --clobber
 
 du -ah -d1 external_protobuf*.tar.zst | sort -h
+
 
 if [ ! -f "$GITHUB_WORKSPACE/cache/bionic.tar.zst" ]; then
   echo "Compressing bionic -> bionic.tar.zst"
@@ -191,10 +193,6 @@ if [ ! -f "$GITHUB_WORKSPACE/cache/hardware_ril.tar.zst" ]; then
   echo "Compressing hardware/ril -> hardware_ril.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/hardware_ril.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/hardware/ril/ .
 fi
-if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_build-tools.tar.zst" ]; then
-  echo "Compressing prebuilts/build-tools -> prebuilts_build-tools.tar.zst"
-  tar -cf $GITHUB_WORKSPACE/cache/prebuilts_build-tools.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/prebuilts/build-tools/ .
-fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_gcc_linux-x86_x86_x86_64-linux-android-4.9.tar.zst" ]; then
   echo "Compressing prebuilts/gcc/linux-x86/x86/x86_64-linux-android-4.9 -> prebuilts_gcc_linux-x86_x86_x86_64-linux-android-4.9.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/prebuilts_gcc_linux-x86_x86_x86_64-linux-android-4.9.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/prebuilts/gcc/linux-x86/x86/x86_64-linux-android-4.9/ .
@@ -211,5 +209,6 @@ if [ ! -f "$GITHUB_WORKSPACE/cache/system_media.tar.zst" ]; then
   echo "Compressing system/media -> system_media.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/system_media.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/system/media/ .
 fi
+
 
 rm -rf aosp

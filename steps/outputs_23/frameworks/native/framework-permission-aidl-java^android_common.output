@@ -1,3 +1,2 @@
-out/soong/.intermediates/frameworks/native/libs/permission/framework-permission-aidl-java/android_common/turbine/framework-permission-aidl-java.jar
-out/soong/.intermediates/frameworks/native/libs/permission/framework-permission-aidl-java/android_common/turbine-combined/framework-permission-aidl-java.jar
 out/soong/.intermediates/frameworks/native/libs/permission/framework-permission-aidl-java/android_common/javac/framework-permission-aidl-java.jar
+out/soong/.intermediates/frameworks/native/libs/permission/framework-permission-aidl-java/android_common/turbine-combined/framework-permission-aidl-java.jar

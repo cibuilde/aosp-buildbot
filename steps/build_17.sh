@@ -1,8 +1,6 @@
+
 set -e
 
-
-#sudo apt purge -y azure-cli microsoft-edge-stable google-cloud-cli dotnet-sdk-7.0 dotnet-sdk-8.0 google-chrome-stable dotnet-sdk-6.0 firefox
-#sudo apt autoremove -y
 sudo rm -rf /usr/local/.ghcup
 sudo rm -rf /usr/local/lib/android/sdk
 sudo rm -rf /usr/local/lib/node_modules
@@ -10,16 +8,14 @@ sudo rm -rf /usr/local/share/powershell
 sudo rm -rf /usr/local/share/chromium
 sudo rm -rf /usr/local/share/swift
 sudo rm -rf /opt/hostedtoolcache
-#sudo dpkg-query -W -f='${Installed-Size;8}  ${Package}\n' | sort -n
 df -h
 
 source $GITHUB_WORKSPACE/envsetup.sh
 tar xf $GITHUB_WORKSPACE/ninja-ndk.tar.zst
 tar xf $GITHUB_WORKSPACE/ninja.tar.zst
+mkdir -p $GITHUB_WORKSPACE/cache
 
 clone_project platform/prebuilts/clang/host/linux-x86 prebuilts/clang/host/linux-x86 android12-gsi "/clang-r416183b1" "/clang-r416183b" "/soong"
-
-mkdir -p $GITHUB_WORKSPACE/cache
 
 gh release --repo cibuilde/aosp-buildbot download android12-gsi_03 --pattern art.tar.zst --output art-03.tar.zst
 mkdir -p $GITHUB_WORKSPACE/downloads/art
@@ -45,10 +41,6 @@ gh release --repo cibuilde/aosp-buildbot download android12-gsi_02 --pattern bui
 mkdir -p $GITHUB_WORKSPACE/downloads/build/soong
 tar xf $GITHUB_WORKSPACE/build_soong-02.tar.zst -C $GITHUB_WORKSPACE/downloads/build/soong/
 
-gh release --repo cibuilde/aosp-buildbot download android12-gsi_02 --pattern external_libcxx.tar.zst --output external_libcxx-02.tar.zst
-mkdir -p $GITHUB_WORKSPACE/downloads/external/libcxx
-tar xf $GITHUB_WORKSPACE/external_libcxx-02.tar.zst -C $GITHUB_WORKSPACE/downloads/external/libcxx/
-
 gh release --repo cibuilde/aosp-buildbot download android12-gsi_04 --pattern external_libcxx.tar.zst --output external_libcxx-04.tar.zst
 mkdir -p $GITHUB_WORKSPACE/downloads/external/libcxx
 tar xf $GITHUB_WORKSPACE/external_libcxx-04.tar.zst -C $GITHUB_WORKSPACE/downloads/external/libcxx/
@@ -56,10 +48,6 @@ tar xf $GITHUB_WORKSPACE/external_libcxx-04.tar.zst -C $GITHUB_WORKSPACE/downloa
 gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_libcxxabi.tar.zst --output external_libcxxabi-01.tar.zst
 mkdir -p $GITHUB_WORKSPACE/downloads/external/libcxxabi
 tar xf $GITHUB_WORKSPACE/external_libcxxabi-01.tar.zst -C $GITHUB_WORKSPACE/downloads/external/libcxxabi/
-
-gh release --repo cibuilde/aosp-buildbot download android12-gsi_03 --pattern external_protobuf.tar.zst --output external_protobuf-03.tar.zst
-mkdir -p $GITHUB_WORKSPACE/downloads/external/protobuf
-tar xf $GITHUB_WORKSPACE/external_protobuf-03.tar.zst -C $GITHUB_WORKSPACE/downloads/external/protobuf/
 
 gh release --repo cibuilde/aosp-buildbot download android12-gsi_07 --pattern external_turbine.tar.zst --output external_turbine-07.tar.zst
 mkdir -p $GITHUB_WORKSPACE/downloads/external/turbine
@@ -80,10 +68,6 @@ tar xf $GITHUB_WORKSPACE/frameworks_av-11.tar.zst -C $GITHUB_WORKSPACE/downloads
 gh release --repo cibuilde/aosp-buildbot download android12-gsi_12 --pattern frameworks_av.tar.zst --output frameworks_av-12.tar.zst
 mkdir -p $GITHUB_WORKSPACE/downloads/frameworks/av
 tar xf $GITHUB_WORKSPACE/frameworks_av-12.tar.zst -C $GITHUB_WORKSPACE/downloads/frameworks/av/
-
-gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern frameworks_base.tar.zst --output frameworks_base-01.tar.zst
-mkdir -p $GITHUB_WORKSPACE/downloads/frameworks/base
-tar xf $GITHUB_WORKSPACE/frameworks_base-01.tar.zst -C $GITHUB_WORKSPACE/downloads/frameworks/base/
 
 gh release --repo cibuilde/aosp-buildbot download android12-gsi_04 --pattern frameworks_base.tar.zst --output frameworks_base-04.tar.zst
 mkdir -p $GITHUB_WORKSPACE/downloads/frameworks/base
@@ -157,10 +141,6 @@ gh release --repo cibuilde/aosp-buildbot download android12-gsi_03 --pattern pre
 mkdir -p $GITHUB_WORKSPACE/downloads/prebuilts/sdk
 tar xf $GITHUB_WORKSPACE/prebuilts_sdk-03.tar.zst -C $GITHUB_WORKSPACE/downloads/prebuilts/sdk/
 
-gh release --repo cibuilde/aosp-buildbot download android12-gsi_04 --pattern prebuilts_sdk.tar.zst --output prebuilts_sdk-04.tar.zst
-mkdir -p $GITHUB_WORKSPACE/downloads/prebuilts/sdk
-tar xf $GITHUB_WORKSPACE/prebuilts_sdk-04.tar.zst -C $GITHUB_WORKSPACE/downloads/prebuilts/sdk/
-
 gh release --repo cibuilde/aosp-buildbot download android12-gsi_07 --pattern system_core.tar.zst --output system_core-07.tar.zst
 mkdir -p $GITHUB_WORKSPACE/downloads/system/core
 tar xf $GITHUB_WORKSPACE/system_core-07.tar.zst -C $GITHUB_WORKSPACE/downloads/system/core/
@@ -205,8 +185,6 @@ gh release --repo cibuilde/aosp-buildbot download android12-gsi_08 --pattern too
 mkdir -p $GITHUB_WORKSPACE/downloads/tools/metalava
 tar xf $GITHUB_WORKSPACE/tools_metalava-08.tar.zst -C $GITHUB_WORKSPACE/downloads/tools/metalava/
 
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/libs/hwui
-rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/libs/hwui/framework-graphics^android_common $GITHUB_WORKSPACE/artifacts/frameworks/base/libs/hwui/
 export OUT_DIR=out
 mkdir -p $GITHUB_WORKSPACE/.bin
 ln -sf /usr/bin/python2 $GITHUB_WORKSPACE/.bin/python

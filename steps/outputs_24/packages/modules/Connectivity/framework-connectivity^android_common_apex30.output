@@ -1,7 +1,2 @@
-out/soong/.intermediates/packages/modules/Connectivity/framework/framework-connectivity/android_common_apex30/turbine/framework-connectivity.jar
-out/soong/.intermediates/packages/modules/Connectivity/framework/framework-connectivity/android_common_apex30/turbine-combined/framework-connectivity.jar
-out/soong/.intermediates/packages/modules/Connectivity/framework/framework-connectivity/android_common_apex30/turbine-jarjar/framework-connectivity.jar
-out/soong/.intermediates/packages/modules/Connectivity/framework/framework-connectivity/android_common_apex30/javac/framework-connectivity.jar
-out/soong/.intermediates/packages/modules/Connectivity/framework/framework-connectivity/android_common_apex30/jarjar/framework-connectivity.jar
-out/soong/.intermediates/packages/modules/Connectivity/framework/framework-connectivity/android_common_apex30/dex/framework-connectivity.jar
 out/soong/.intermediates/packages/modules/Connectivity/framework/framework-connectivity/android_common_apex30/aligned/framework-connectivity.jar
+out/soong/.intermediates/packages/modules/Connectivity/framework/framework-connectivity/android_common_apex30/turbine-jarjar/framework-connectivity.jar

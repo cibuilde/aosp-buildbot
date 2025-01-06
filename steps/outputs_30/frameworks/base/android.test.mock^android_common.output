@@ -4,5 +4,4 @@ out/soong/.intermediates/frameworks/base/test-mock/android.test.mock/android_com
 out/soong/.intermediates/frameworks/base/test-mock/android.test.mock/android_common/dexpreopt/oat/x86/javalib.vdex
 out/soong/.intermediates/frameworks/base/test-mock/android.test.mock/android_common/dexpreopt/oat/x86_64/javalib.odex
 out/soong/.intermediates/frameworks/base/test-mock/android.test.mock/android_common/dexpreopt/oat/x86_64/javalib.vdex
-out/soong/.intermediates/frameworks/base/test-mock/android.test.mock/android_common/javac/android.test.mock.jar
 out/soong/.intermediates/frameworks/base/test-mock/android.test.mock/android_common/turbine-combined/android.test.mock.jar

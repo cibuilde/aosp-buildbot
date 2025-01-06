@@ -6,16 +6,19 @@ pool highmem_pool
 
 include ninja/global.ninja
 
-include ninja/external/bouncycastle/bouncycastle^android_common_apex31.ninja
+include ninja/external/bouncycastle/bouncycastle^android_common_apex31^00.ninja
+include ninja/external/bouncycastle/bouncycastle^android_common_apex31^14.ninja
 include ninja/external/conscrypt/apex/com.android.conscrypt-bootclasspath-fragment^android_common_apex29.ninja
 include ninja/external/conscrypt/apex/com.android.conscrypt^android_common_com.android.conscrypt_image.ninja
-include ninja/external/conscrypt/conscrypt^android_common_apex29.ninja
+include ninja/external/conscrypt/conscrypt^android_common_apex29^00.ninja
+include ninja/external/conscrypt/conscrypt^android_common_apex29^14.ninja
 include ninja/external/dagger2/dagger2^android_common.ninja
 include ninja/external/exoplayer/exoplayer2-extractor-annotation-stubs^android_common_apex29.ninja
 include ninja/external/exoplayer/exoplayer2-extractor^android_common_apex29.ninja
 include ninja/external/icing/proto/icing-java-proto-lite^android_common_apex10000.ninja
 include ninja/external/icu/android_icu4j/core-icu4j^android_common.ninja
-include ninja/external/icu/android_icu4j/core-icu4j^android_common_apex10000.ninja
+include ninja/external/icu/android_icu4j/core-icu4j^android_common_apex10000^00.ninja
+include ninja/external/icu/android_icu4j/core-icu4j^android_common_apex10000^14.ninja
 include ninja/external/icu/android_icu4j/core-repackaged-icu4j^android_common.ninja
 include ninja/external/icu/android_icu4j/core-repackaged-icu4j^android_common_apex10000.ninja
 include ninja/external/icu/android_icu4j/icu4j-platform-compat-config^android_common.ninja
@@ -76,27 +79,27 @@ include ninja/system/core/init/sysprop/com.android.sysprop.init^android_common.n
 include ninja/system/libsysprop/srcs/PlatformProperties^android_common.ninja
 include ninja/system/libsysprop/srcs/PlatformProperties_public^android_common.ninja
 
-build bouncycastle,android_common_apex31: phony out/soong/.intermediates/external/bouncycastle/bouncycastle/android_common_apex31/aligned/bouncycastle.jar out/soong/.intermediates/external/bouncycastle/bouncycastle/android_common_apex31/dex/bouncycastle.jar out/soong/.intermediates/external/bouncycastle/bouncycastle/android_common_apex31/javac/bouncycastle.jar out/soong/.intermediates/external/bouncycastle/bouncycastle/android_common_apex31/turbine-combined/bouncycastle.jar out/soong/.intermediates/external/bouncycastle/bouncycastle/android_common_apex31/turbine/bouncycastle.jar
+build bouncycastle,android_common_apex31: phony out/soong/.intermediates/external/bouncycastle/bouncycastle/android_common_apex31/aligned/bouncycastle.jar out/soong/.intermediates/external/bouncycastle/bouncycastle/android_common_apex31/turbine-combined/bouncycastle.jar
 
 build external_bouncycastle-targets: phony bouncycastle,android_common_apex31
 
-build com.android.conscrypt-bootclasspath-fragment,android_common_apex29: phony out/soong/.intermediates/external/conscrypt/apex/com.android.conscrypt-bootclasspath-fragment/android_common_apex29/bootclasspath.pb out/soong/.intermediates/external/conscrypt/apex/com.android.conscrypt-bootclasspath-fragment/android_common_apex29/hiddenapi-modular/encoded/conscrypt.jar out/soong/.intermediates/external/conscrypt/apex/com.android.conscrypt-bootclasspath-fragment/android_common_apex29/modular-hiddenapi/annotation-flags.csv
+build conscrypt,android_common_apex29: phony out/soong/.intermediates/external/conscrypt/conscrypt/android_common_apex29/aligned/conscrypt.jar out/soong/.intermediates/external/conscrypt/conscrypt/android_common_apex29/turbine-combined/conscrypt.jar
 
 build com.android.conscrypt,android_common_com.android.conscrypt_image: phony out/soong/.intermediates/external/conscrypt/apex/com.android.conscrypt/android_common_com.android.conscrypt_image/apex_manifest.pb out/soong/.intermediates/external/conscrypt/apex/com.android.conscrypt/android_common_com.android.conscrypt_image/apex_pubkey out/soong/.intermediates/external/conscrypt/apex/com.android.conscrypt/android_common_com.android.conscrypt_image/com.android.conscrypt.apex
 
-build conscrypt,android_common_apex29: phony out/soong/.intermediates/external/conscrypt/conscrypt/android_common_apex29/aligned/conscrypt.jar out/soong/.intermediates/external/conscrypt/conscrypt/android_common_apex29/dex/conscrypt.jar out/soong/.intermediates/external/conscrypt/conscrypt/android_common_apex29/javac/conscrypt.jar out/soong/.intermediates/external/conscrypt/conscrypt/android_common_apex29/turbine-combined/conscrypt.jar out/soong/.intermediates/external/conscrypt/conscrypt/android_common_apex29/turbine/conscrypt.jar
+build com.android.conscrypt-bootclasspath-fragment,android_common_apex29: phony out/soong/.intermediates/external/conscrypt/apex/com.android.conscrypt-bootclasspath-fragment/android_common_apex29/bootclasspath.pb out/soong/.intermediates/external/conscrypt/apex/com.android.conscrypt-bootclasspath-fragment/android_common_apex29/hiddenapi-modular/encoded/conscrypt.jar out/soong/.intermediates/external/conscrypt/apex/com.android.conscrypt-bootclasspath-fragment/android_common_apex29/modular-hiddenapi/annotation-flags.csv
 
-build external_conscrypt-targets: phony com.android.conscrypt-bootclasspath-fragment,android_common_apex29 com.android.conscrypt,android_common_com.android.conscrypt_image conscrypt,android_common_apex29
+build external_conscrypt-targets: phony com.android.conscrypt,android_common_com.android.conscrypt_image com.android.conscrypt-bootclasspath-fragment,android_common_apex29 conscrypt,android_common_apex29
 
 build dagger2,android_common: phony out/soong/.intermediates/external/dagger2/dagger2/android_common/javac/dagger2.jar out/soong/.intermediates/external/dagger2/dagger2/android_common/turbine-combined/dagger2.jar
 
 build external_dagger2-targets: phony dagger2,android_common
 
-build exoplayer2-extractor-annotation-stubs,android_common_apex29: phony out/soong/.intermediates/external/exoplayer/exoplayer2-extractor-annotation-stubs/android_common_apex29/combined/exoplayer2-extractor-annotation-stubs.jar out/soong/.intermediates/external/exoplayer/exoplayer2-extractor-annotation-stubs/android_common_apex29/turbine-combined/exoplayer2-extractor-annotation-stubs.jar
-
 build exoplayer2-extractor,android_common_apex29: phony out/soong/.intermediates/external/exoplayer/exoplayer2-extractor/android_common_apex29/jarjar/exoplayer2-extractor.jar out/soong/.intermediates/external/exoplayer/exoplayer2-extractor/android_common_apex29/turbine-jarjar/exoplayer2-extractor.jar
 
-build external_exoplayer-targets: phony exoplayer2-extractor-annotation-stubs,android_common_apex29 exoplayer2-extractor,android_common_apex29
+build exoplayer2-extractor-annotation-stubs,android_common_apex29: phony out/soong/.intermediates/external/exoplayer/exoplayer2-extractor-annotation-stubs/android_common_apex29/combined/exoplayer2-extractor-annotation-stubs.jar out/soong/.intermediates/external/exoplayer/exoplayer2-extractor-annotation-stubs/android_common_apex29/turbine-combined/exoplayer2-extractor-annotation-stubs.jar
+
+build external_exoplayer-targets: phony exoplayer2-extractor,android_common_apex29 exoplayer2-extractor-annotation-stubs,android_common_apex29
 
 build icing-java-proto-lite,android_common_apex10000: phony out/soong/.intermediates/external/icing/proto/icing-java-proto-lite/android_common_apex10000/combined/icing-java-proto-lite.jar out/soong/.intermediates/external/icing/proto/icing-java-proto-lite/android_common_apex10000/turbine-combined/icing-java-proto-lite.jar
 
@@ -104,13 +107,13 @@ build external_icing-targets: phony icing-java-proto-lite,android_common_apex100
 
 build core-icu4j,android_common: phony out/soong/.intermediates/external/icu/android_icu4j/core-icu4j/android_common/dex-withres-aligned/core-icu4j.jar
 
-build core-icu4j,android_common_apex10000: phony out/soong/.intermediates/external/icu/android_icu4j/core-icu4j/android_common_apex10000/aligned/core-icu4j.jar out/soong/.intermediates/external/icu/android_icu4j/core-icu4j/android_common_apex10000/combined/core-icu4j.jar out/soong/.intermediates/external/icu/android_icu4j/core-icu4j/android_common_apex10000/dex-withres-aligned/core-icu4j.jar out/soong/.intermediates/external/icu/android_icu4j/core-icu4j/android_common_apex10000/dex-withres/core-icu4j.jar out/soong/.intermediates/external/icu/android_icu4j/core-icu4j/android_common_apex10000/dex/core-icu4j.jar out/soong/.intermediates/external/icu/android_icu4j/core-icu4j/android_common_apex10000/jarjar/core-icu4j.jar out/soong/.intermediates/external/icu/android_icu4j/core-icu4j/android_common_apex10000/javac/core-icu4j.jar out/soong/.intermediates/external/icu/android_icu4j/core-icu4j/android_common_apex10000/res-jarjar/core-icu4j.jar out/soong/.intermediates/external/icu/android_icu4j/core-icu4j/android_common_apex10000/turbine-combined/core-icu4j.jar out/soong/.intermediates/external/icu/android_icu4j/core-icu4j/android_common_apex10000/turbine-jarjar/core-icu4j.jar out/soong/.intermediates/external/icu/android_icu4j/core-icu4j/android_common_apex10000/turbine/core-icu4j.jar out/soong/.intermediates/external/icu/android_icu4j/core-icu4j/android_common_apex10000/withres/core-icu4j.jar
+build core-icu4j,android_common_apex10000: phony out/soong/.intermediates/external/icu/android_icu4j/core-icu4j/android_common_apex10000/dex-withres-aligned/core-icu4j.jar out/soong/.intermediates/external/icu/android_icu4j/core-icu4j/android_common_apex10000/turbine-jarjar/core-icu4j.jar out/soong/.intermediates/external/icu/android_icu4j/core-icu4j/android_common_apex10000/withres/core-icu4j.jar
+
+build icu4j-platform-compat-config,android_common: phony out/soong/.intermediates/external/icu/android_icu4j/icu4j-platform-compat-config/android_common/icu4j-platform-compat-config.xml
 
 build core-repackaged-icu4j,android_common: phony out/soong/.intermediates/external/icu/android_icu4j/core-repackaged-icu4j/android_common/javac/core-repackaged-icu4j.jar out/soong/.intermediates/external/icu/android_icu4j/core-repackaged-icu4j/android_common/res/core-repackaged-icu4j.jar out/soong/.intermediates/external/icu/android_icu4j/core-repackaged-icu4j/android_common/turbine-combined/core-repackaged-icu4j.jar
 
 build core-repackaged-icu4j,android_common_apex10000: phony out/soong/.intermediates/external/icu/android_icu4j/core-repackaged-icu4j/android_common_apex10000/javac/core-repackaged-icu4j.jar out/soong/.intermediates/external/icu/android_icu4j/core-repackaged-icu4j/android_common_apex10000/res/core-repackaged-icu4j.jar out/soong/.intermediates/external/icu/android_icu4j/core-repackaged-icu4j/android_common_apex10000/turbine-combined/core-repackaged-icu4j.jar
-
-build icu4j-platform-compat-config,android_common: phony out/soong/.intermediates/external/icu/android_icu4j/icu4j-platform-compat-config/android_common/icu4j-platform-compat-config.xml
 
 build external_icu-targets: phony core-icu4j,android_common core-icu4j,android_common_apex10000 core-repackaged-icu4j,android_common core-repackaged-icu4j,android_common_apex10000 icu4j-platform-compat-config,android_common
 
@@ -132,49 +135,31 @@ build rappor,android_common: phony out/soong/.intermediates/external/rappor/rapp
 
 build external_rappor-targets: phony rappor,android_common
 
-build com.android.sysprop.localization,android_common: phony out/soong/.intermediates/frameworks/base/core/sysprop/com.android.sysprop.localization/android_common/javac/com.android.sysprop.localization.jar out/soong/.intermediates/frameworks/base/core/sysprop/com.android.sysprop.localization/android_common/turbine-combined/com.android.sysprop.localization.jar
-
-build com.android.sysprop.watchdog,android_common: phony out/soong/.intermediates/frameworks/base/core/sysprop/com.android.sysprop.watchdog/android_common/javac/com.android.sysprop.watchdog.jar out/soong/.intermediates/frameworks/base/core/sysprop/com.android.sysprop.watchdog/android_common/turbine-combined/com.android.sysprop.watchdog.jar
-
 build hwbinder-stubs-docs,android_common: phony out/soong/.intermediates/frameworks/base/hwbinder-stubs-docs/android_common/metalava/hwbinder-stubs-docs-stubs.srcjar
 
 build hwbinder.stubs,android_common: phony out/soong/.intermediates/frameworks/base/hwbinder.stubs/android_common/turbine-combined/hwbinder.stubs.jar
 
-build libamidi,android_x86_64_shared: phony out/soong/.intermediates/frameworks/base/media/native/midi/libamidi/android_x86_64_shared/libamidi.so
+build libbootanimation,android_x86_64_shared: phony out/soong/.intermediates/frameworks/base/cmds/bootanimation/libbootanimation/android_x86_64_shared/libbootanimation.so out/soong/.intermediates/frameworks/base/cmds/bootanimation/libbootanimation/android_x86_64_shared/libbootanimation.so.toc
 
-build libamidi,android_x86_x86_64_shared: phony out/soong/.intermediates/frameworks/base/media/native/midi/libamidi/android_x86_x86_64_shared/libamidi.so
+build libhidcommand_jni,android_x86_64_shared: phony out/soong/.intermediates/frameworks/base/cmds/hid/jni/libhidcommand_jni/android_x86_64_shared/libhidcommand_jni.so
 
-build libandroid,android_x86_64_shared: phony out/soong/.intermediates/frameworks/base/native/android/libandroid/android_x86_64_shared/libandroid.so out/soong/.intermediates/frameworks/base/native/android/libandroid/android_x86_64_shared/libandroid.so.toc
+build screencap,android_x86_64: phony out/soong/.intermediates/frameworks/base/cmds/screencap/screencap/android_x86_64/screencap
 
-build libandroid,android_x86_x86_64_shared: phony out/soong/.intermediates/frameworks/base/native/android/libandroid/android_x86_x86_64_shared/libandroid.so out/soong/.intermediates/frameworks/base/native/android/libandroid/android_x86_x86_64_shared/libandroid.so.toc
+build libuinputcommand_jni,android_x86_64_shared: phony out/soong/.intermediates/frameworks/base/cmds/uinput/jni/libuinputcommand_jni/android_x86_64_shared/libuinputcommand_jni.so
 
 build libandroid_runtime,android_x86_64_shared: phony out/soong/.intermediates/frameworks/base/core/jni/libandroid_runtime/android_x86_64_shared/libandroid_runtime.so out/soong/.intermediates/frameworks/base/core/jni/libandroid_runtime/android_x86_64_shared/libandroid_runtime.so.toc
 
 build libandroid_runtime,android_x86_x86_64_shared: phony out/soong/.intermediates/frameworks/base/core/jni/libandroid_runtime/android_x86_x86_64_shared/libandroid_runtime.so out/soong/.intermediates/frameworks/base/core/jni/libandroid_runtime/android_x86_x86_64_shared/libandroid_runtime.so.toc
 
-build libandroid_servers,android_x86_64_shared: phony out/soong/.intermediates/frameworks/base/services/libandroid_servers/android_x86_64_shared/libandroid_servers.so
+build com.android.sysprop.localization,android_common: phony out/soong/.intermediates/frameworks/base/core/sysprop/com.android.sysprop.localization/android_common/javac/com.android.sysprop.localization.jar out/soong/.intermediates/frameworks/base/core/sysprop/com.android.sysprop.localization/android_common/turbine-combined/com.android.sysprop.localization.jar
 
-build libandroid_servers,android_x86_x86_64_shared: phony out/soong/.intermediates/frameworks/base/services/libandroid_servers/android_x86_x86_64_shared/libandroid_servers.so
-
-build libaudioeffect_jni,android_x86_64_shared: phony out/soong/.intermediates/frameworks/base/media/jni/audioeffect/libaudioeffect_jni/android_x86_64_shared/libaudioeffect_jni.so
-
-build libaudioeffect_jni,android_x86_x86_64_shared: phony out/soong/.intermediates/frameworks/base/media/jni/audioeffect/libaudioeffect_jni/android_x86_x86_64_shared/libaudioeffect_jni.so
-
-build libbootanimation,android_x86_64_shared: phony out/soong/.intermediates/frameworks/base/cmds/bootanimation/libbootanimation/android_x86_64_shared/libbootanimation.so out/soong/.intermediates/frameworks/base/cmds/bootanimation/libbootanimation/android_x86_64_shared/libbootanimation.so.toc
+build com.android.sysprop.watchdog,android_common: phony out/soong/.intermediates/frameworks/base/core/sysprop/com.android.sysprop.watchdog/android_common/javac/com.android.sysprop.watchdog.jar out/soong/.intermediates/frameworks/base/core/sysprop/com.android.sysprop.watchdog/android_common/turbine-combined/com.android.sysprop.watchdog.jar
 
 build libdrmframework_jni,android_x86_64_shared: phony out/soong/.intermediates/frameworks/base/drm/jni/libdrmframework_jni/android_x86_64_shared/libdrmframework_jni.so
 
 build libdrmframework_jni,android_x86_x86_64_shared: phony out/soong/.intermediates/frameworks/base/drm/jni/libdrmframework_jni/android_x86_x86_64_shared/libdrmframework_jni.so
 
-build libfilterfw,android_x86_64_shared: phony out/soong/.intermediates/frameworks/base/media/mca/filterfw/libfilterfw/android_x86_64_shared/libfilterfw.so out/soong/.intermediates/frameworks/base/media/mca/filterfw/libfilterfw/android_x86_64_shared/libfilterfw.so.toc
-
-build libfilterfw,android_x86_x86_64_shared: phony out/soong/.intermediates/frameworks/base/media/mca/filterfw/libfilterfw/android_x86_x86_64_shared/libfilterfw.so out/soong/.intermediates/frameworks/base/media/mca/filterfw/libfilterfw/android_x86_x86_64_shared/libfilterfw.so.toc
-
-build libfilterpack_imageproc,android_x86_64_shared: phony out/soong/.intermediates/frameworks/base/media/mca/filterpacks/libfilterpack_imageproc/android_x86_64_shared/libfilterpack_imageproc.so
-
-build libfilterpack_imageproc,android_x86_x86_64_shared: phony out/soong/.intermediates/frameworks/base/media/mca/filterpacks/libfilterpack_imageproc/android_x86_x86_64_shared/libfilterpack_imageproc.so
-
-build libhidcommand_jni,android_x86_64_shared: phony out/soong/.intermediates/frameworks/base/cmds/hid/jni/libhidcommand_jni/android_x86_64_shared/libhidcommand_jni.so
+build updatable-driver-protos,android_common: phony out/soong/.intermediates/frameworks/base/graphics/proto/updatable-driver-protos/android_common/jarjar/updatable-driver-protos.jar out/soong/.intermediates/frameworks/base/graphics/proto/updatable-driver-protos/android_common/turbine-jarjar/updatable-driver-protos.jar
 
 build libhwui,android_x86_64_shared: phony out/soong/.intermediates/frameworks/base/libs/hwui/libhwui/android_x86_64_shared/libhwui.so out/soong/.intermediates/frameworks/base/libs/hwui/libhwui/android_x86_64_shared/libhwui.so.toc
 
@@ -184,29 +169,47 @@ build libinputservice,android_x86_64_shared: phony out/soong/.intermediates/fram
 
 build libinputservice,android_x86_x86_64_shared: phony out/soong/.intermediates/frameworks/base/libs/input/libinputservice/android_x86_x86_64_shared/libinputservice.so out/soong/.intermediates/frameworks/base/libs/input/libinputservice/android_x86_x86_64_shared/libinputservice.so.toc
 
-build libjnigraphics,android_x86_64_shared: phony out/soong/.intermediates/frameworks/base/native/graphics/jni/libjnigraphics/android_x86_64_shared/libjnigraphics.so out/soong/.intermediates/frameworks/base/native/graphics/jni/libjnigraphics/android_x86_64_shared/libjnigraphics.so.toc
-
-build libjnigraphics,android_x86_x86_64_shared: phony out/soong/.intermediates/frameworks/base/native/graphics/jni/libjnigraphics/android_x86_x86_64_shared/libjnigraphics.so out/soong/.intermediates/frameworks/base/native/graphics/jni/libjnigraphics/android_x86_x86_64_shared/libjnigraphics.so.toc
-
 build libmedia_jni,android_x86_64_shared: phony out/soong/.intermediates/frameworks/base/media/jni/libmedia_jni/android_x86_64_shared/libmedia_jni.so
 
 build libmedia_jni,android_x86_x86_64_shared: phony out/soong/.intermediates/frameworks/base/media/jni/libmedia_jni/android_x86_x86_64_shared/libmedia_jni.so
 
-build libprintspooler_jni,android_x86_64_shared: phony out/soong/.intermediates/frameworks/base/packages/PrintSpooler/jni/libprintspooler_jni/android_x86_64_shared/libprintspooler_jni.so
+build libaudioeffect_jni,android_x86_64_shared: phony out/soong/.intermediates/frameworks/base/media/jni/audioeffect/libaudioeffect_jni/android_x86_64_shared/libaudioeffect_jni.so
+
+build libaudioeffect_jni,android_x86_x86_64_shared: phony out/soong/.intermediates/frameworks/base/media/jni/audioeffect/libaudioeffect_jni/android_x86_x86_64_shared/libaudioeffect_jni.so
 
 build libsoundpool,android_x86_64_shared: phony out/soong/.intermediates/frameworks/base/media/jni/soundpool/libsoundpool/android_x86_64_shared/libsoundpool.so
 
 build libsoundpool,android_x86_x86_64_shared: phony out/soong/.intermediates/frameworks/base/media/jni/soundpool/libsoundpool/android_x86_x86_64_shared/libsoundpool.so
 
-build libuinputcommand_jni,android_x86_64_shared: phony out/soong/.intermediates/frameworks/base/cmds/uinput/jni/libuinputcommand_jni/android_x86_64_shared/libuinputcommand_jni.so
+build libfilterfw,android_x86_64_shared: phony out/soong/.intermediates/frameworks/base/media/mca/filterfw/libfilterfw/android_x86_64_shared/libfilterfw.so out/soong/.intermediates/frameworks/base/media/mca/filterfw/libfilterfw/android_x86_64_shared/libfilterfw.so.toc
+
+build libfilterfw,android_x86_x86_64_shared: phony out/soong/.intermediates/frameworks/base/media/mca/filterfw/libfilterfw/android_x86_x86_64_shared/libfilterfw.so out/soong/.intermediates/frameworks/base/media/mca/filterfw/libfilterfw/android_x86_x86_64_shared/libfilterfw.so.toc
+
+build libfilterpack_imageproc,android_x86_64_shared: phony out/soong/.intermediates/frameworks/base/media/mca/filterpacks/libfilterpack_imageproc/android_x86_64_shared/libfilterpack_imageproc.so
+
+build libfilterpack_imageproc,android_x86_x86_64_shared: phony out/soong/.intermediates/frameworks/base/media/mca/filterpacks/libfilterpack_imageproc/android_x86_x86_64_shared/libfilterpack_imageproc.so
+
+build libamidi,android_x86_64_shared: phony out/soong/.intermediates/frameworks/base/media/native/midi/libamidi/android_x86_64_shared/libamidi.so
+
+build libamidi,android_x86_x86_64_shared: phony out/soong/.intermediates/frameworks/base/media/native/midi/libamidi/android_x86_x86_64_shared/libamidi.so
+
+build libandroid,android_x86_64_shared: phony out/soong/.intermediates/frameworks/base/native/android/libandroid/android_x86_64_shared/libandroid.so out/soong/.intermediates/frameworks/base/native/android/libandroid/android_x86_64_shared/libandroid.so.toc
+
+build libandroid,android_x86_x86_64_shared: phony out/soong/.intermediates/frameworks/base/native/android/libandroid/android_x86_x86_64_shared/libandroid.so out/soong/.intermediates/frameworks/base/native/android/libandroid/android_x86_x86_64_shared/libandroid.so.toc
+
+build libjnigraphics,android_x86_64_shared: phony out/soong/.intermediates/frameworks/base/native/graphics/jni/libjnigraphics/android_x86_64_shared/libjnigraphics.so out/soong/.intermediates/frameworks/base/native/graphics/jni/libjnigraphics/android_x86_64_shared/libjnigraphics.so.toc
+
+build libjnigraphics,android_x86_x86_64_shared: phony out/soong/.intermediates/frameworks/base/native/graphics/jni/libjnigraphics/android_x86_x86_64_shared/libjnigraphics.so out/soong/.intermediates/frameworks/base/native/graphics/jni/libjnigraphics/android_x86_x86_64_shared/libjnigraphics.so.toc
 
 build libwebviewchromium_plat_support,android_x86_64_shared: phony out/soong/.intermediates/frameworks/base/native/webview/plat_support/libwebviewchromium_plat_support/android_x86_64_shared/libwebviewchromium_plat_support.so
 
 build libwebviewchromium_plat_support,android_x86_x86_64_shared: phony out/soong/.intermediates/frameworks/base/native/webview/plat_support/libwebviewchromium_plat_support/android_x86_x86_64_shared/libwebviewchromium_plat_support.so
 
-build screencap,android_x86_64: phony out/soong/.intermediates/frameworks/base/cmds/screencap/screencap/android_x86_64/screencap
+build libprintspooler_jni,android_x86_64_shared: phony out/soong/.intermediates/frameworks/base/packages/PrintSpooler/jni/libprintspooler_jni/android_x86_64_shared/libprintspooler_jni.so
 
-build updatable-driver-protos,android_common: phony out/soong/.intermediates/frameworks/base/graphics/proto/updatable-driver-protos/android_common/jarjar/updatable-driver-protos.jar out/soong/.intermediates/frameworks/base/graphics/proto/updatable-driver-protos/android_common/turbine-jarjar/updatable-driver-protos.jar
+build libandroid_servers,android_x86_64_shared: phony out/soong/.intermediates/frameworks/base/services/libandroid_servers/android_x86_64_shared/libandroid_servers.so
+
+build libandroid_servers,android_x86_x86_64_shared: phony out/soong/.intermediates/frameworks/base/services/libandroid_servers/android_x86_x86_64_shared/libandroid_servers.so
 
 build frameworks_base-targets: phony com.android.sysprop.localization,android_common com.android.sysprop.watchdog,android_common hwbinder-stubs-docs,android_common hwbinder.stubs,android_common libamidi,android_x86_64_shared libamidi,android_x86_x86_64_shared libandroid,android_x86_64_shared libandroid,android_x86_x86_64_shared libandroid_runtime,android_x86_64_shared libandroid_runtime,android_x86_x86_64_shared libandroid_servers,android_x86_64_shared libandroid_servers,android_x86_x86_64_shared libaudioeffect_jni,android_x86_64_shared libaudioeffect_jni,android_x86_x86_64_shared libbootanimation,android_x86_64_shared libdrmframework_jni,android_x86_64_shared libdrmframework_jni,android_x86_x86_64_shared libfilterfw,android_x86_64_shared libfilterfw,android_x86_x86_64_shared libfilterpack_imageproc,android_x86_64_shared libfilterpack_imageproc,android_x86_x86_64_shared libhidcommand_jni,android_x86_64_shared libhwui,android_x86_64_shared libhwui,android_x86_x86_64_shared libinputservice,android_x86_64_shared libinputservice,android_x86_x86_64_shared libjnigraphics,android_x86_64_shared libjnigraphics,android_x86_x86_64_shared libmedia_jni,android_x86_64_shared libmedia_jni,android_x86_x86_64_shared libprintspooler_jni,android_x86_64_shared libsoundpool,android_x86_64_shared libsoundpool,android_x86_x86_64_shared libuinputcommand_jni,android_x86_64_shared libwebviewchromium_plat_support,android_x86_64_shared libwebviewchromium_plat_support,android_x86_x86_64_shared screencap,android_x86_64 updatable-driver-protos,android_common
 
@@ -218,17 +221,17 @@ build networkstackprotos,android_common: phony out/soong/.intermediates/framewor
 
 build frameworks_proto_logging-targets: phony networkstackprotos,android_common
 
-build libRSCpuRef,android_x86_64_shared: phony out/soong/.intermediates/frameworks/rs/cpu_ref/libRSCpuRef/android_x86_64_shared/libRSCpuRef.so out/soong/.intermediates/frameworks/rs/cpu_ref/libRSCpuRef/android_x86_64_shared/libRSCpuRef.so.toc
+build libRS_internal,android_x86_64_shared: phony out/soong/.intermediates/frameworks/rs/libRS_internal/android_x86_64_shared/libRS_internal.so out/soong/.intermediates/frameworks/rs/libRS_internal/android_x86_64_shared/libRS_internal.so.toc
 
-build libRSCpuRef,android_x86_x86_64_shared: phony out/soong/.intermediates/frameworks/rs/cpu_ref/libRSCpuRef/android_x86_x86_64_shared/libRSCpuRef.so out/soong/.intermediates/frameworks/rs/cpu_ref/libRSCpuRef/android_x86_x86_64_shared/libRSCpuRef.so.toc
+build libRS_internal,android_x86_x86_64_shared: phony out/soong/.intermediates/frameworks/rs/libRS_internal/android_x86_x86_64_shared/libRS_internal.so out/soong/.intermediates/frameworks/rs/libRS_internal/android_x86_x86_64_shared/libRS_internal.so.toc
 
 build libRSDriver,android_x86_64_shared: phony out/soong/.intermediates/frameworks/rs/libRSDriver/android_x86_64_shared/libRSDriver.so
 
 build libRSDriver,android_x86_x86_64_shared: phony out/soong/.intermediates/frameworks/rs/libRSDriver/android_x86_x86_64_shared/libRSDriver.so
 
-build libRS_internal,android_x86_64_shared: phony out/soong/.intermediates/frameworks/rs/libRS_internal/android_x86_64_shared/libRS_internal.so out/soong/.intermediates/frameworks/rs/libRS_internal/android_x86_64_shared/libRS_internal.so.toc
+build libRSCpuRef,android_x86_64_shared: phony out/soong/.intermediates/frameworks/rs/cpu_ref/libRSCpuRef/android_x86_64_shared/libRSCpuRef.so out/soong/.intermediates/frameworks/rs/cpu_ref/libRSCpuRef/android_x86_64_shared/libRSCpuRef.so.toc
 
-build libRS_internal,android_x86_x86_64_shared: phony out/soong/.intermediates/frameworks/rs/libRS_internal/android_x86_x86_64_shared/libRS_internal.so out/soong/.intermediates/frameworks/rs/libRS_internal/android_x86_x86_64_shared/libRS_internal.so.toc
+build libRSCpuRef,android_x86_x86_64_shared: phony out/soong/.intermediates/frameworks/rs/cpu_ref/libRSCpuRef/android_x86_x86_64_shared/libRSCpuRef.so out/soong/.intermediates/frameworks/rs/cpu_ref/libRSCpuRef/android_x86_x86_64_shared/libRSCpuRef.so.toc
 
 build frameworks_rs-targets: phony libRSCpuRef,android_x86_64_shared libRSCpuRef,android_x86_x86_64_shared libRSDriver,android_x86_64_shared libRSDriver,android_x86_x86_64_shared libRS_internal,android_x86_64_shared libRS_internal,android_x86_x86_64_shared
 

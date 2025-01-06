@@ -9,28 +9,36 @@ include ninja/global.ninja
 include ninja/frameworks/base/api/combined-removed-dex^.ninja
 include ninja/frameworks/base/packages/SettingsLib/SettingsLib^android_common.ninja
 include ninja/frameworks/base/packages/SystemUI/SystemUI-core^android_common.ninja
-include ninja/frameworks/opt/net/ims/ims-common^android_common.ninja
+include ninja/frameworks/opt/net/ims/ims-common^android_common^00.ninja
+include ninja/frameworks/opt/net/ims/ims-common^android_common^26.ninja
 include ninja/packages/apps/Car/libs/car-ui-lib/car-ui-lib^android_common.ninja
 include ninja/packages/apps/Car/libs/car-ui-lib/car-ui-lib^android_common_apex30.ninja
 include ninja/packages/apps/CellBroadcastReceiver/apex/com.android.cellbroadcast^android_common_com.android.cellbroadcast_image.ninja
 include ninja/packages/apps/ImsServiceEntitlement/ImsServiceEntitlementLib^android_common.ninja
+include ninja/packages/modules/Connectivity/Tethering/TetheringApiCurrentLib^android_common_apex30.ninja
+include ninja/packages/modules/Connectivity/Tethering/Tethering^android_common_apex30.ninja
+include ninja/packages/modules/Connectivity/Tethering/apex/com.android.tethering^android_common_com.android.tethering_image.ninja
+include ninja/packages/modules/Wifi/apex/com.android.wifi^android_common_com.android.wifi_image.ninja
+include ninja/packages/modules/Wifi/service/service-wifi^android_common_apex30.ninja
 include ninja/packages/modules/Wifi/service/wifi-service-pre-jarjar^android_common_apex30.ninja
-
-build SettingsLib,android_common: phony out/soong/.intermediates/frameworks/base/packages/SettingsLib/SettingsLib/android_common/combined/SettingsLib.jar out/soong/.intermediates/frameworks/base/packages/SettingsLib/SettingsLib/android_common/manifest_fixer/AndroidManifest.xml out/soong/.intermediates/frameworks/base/packages/SettingsLib/SettingsLib/android_common/package-res.apk out/soong/.intermediates/frameworks/base/packages/SettingsLib/SettingsLib/android_common/turbine-combined/SettingsLib.jar
-
-build SystemUI-core,android_common: phony out/soong/.intermediates/frameworks/base/packages/SystemUI/SystemUI-core/android_common/combined/SystemUI-core.jar out/soong/.intermediates/frameworks/base/packages/SystemUI/SystemUI-core/android_common/manifest_fixer/AndroidManifest.xml out/soong/.intermediates/frameworks/base/packages/SystemUI/SystemUI-core/android_common/package-res.apk
+include ninja/system/hardware/interfaces/keystore2/aidl/android.system.keystore2-V1-java^android_common.ninja
+include ninja/system/security/keystore2/aidl/android.security.remoteprovisioning-java^android_common.ninja
 
 build combined-removed-dex,: phony out/soong/.intermediates/frameworks/base/api/combined-removed-dex/gen/combined-removed-dex.txt
 
+build SettingsLib,android_common: phony out/soong/.intermediates/frameworks/base/packages/SettingsLib/SettingsLib/android_common/combined/SettingsLib.jar out/soong/.intermediates/frameworks/base/packages/SettingsLib/SettingsLib/android_common/package-res.apk out/soong/.intermediates/frameworks/base/packages/SettingsLib/SettingsLib/android_common/turbine-combined/SettingsLib.jar
+
+build SystemUI-core,android_common: phony out/soong/.intermediates/frameworks/base/packages/SystemUI/SystemUI-core/android_common/combined/SystemUI-core.jar out/soong/.intermediates/frameworks/base/packages/SystemUI/SystemUI-core/android_common/package-res.apk
+
 build frameworks_base-targets: phony SettingsLib,android_common SystemUI-core,android_common combined-removed-dex,
 
-build ims-common,android_common: phony out/soong/.intermediates/frameworks/opt/net/ims/ims-common/android_common/aligned/ims-common.jar out/soong/.intermediates/frameworks/opt/net/ims/ims-common/android_common/combined/ims-common.jar out/soong/.intermediates/frameworks/opt/net/ims/ims-common/android_common/dex/ims-common.jar out/soong/.intermediates/frameworks/opt/net/ims/ims-common/android_common/jarjar/ims-common.jar out/soong/.intermediates/frameworks/opt/net/ims/ims-common/android_common/javac/ims-common.jar out/soong/.intermediates/frameworks/opt/net/ims/ims-common/android_common/turbine-combined/ims-common.jar out/soong/.intermediates/frameworks/opt/net/ims/ims-common/android_common/turbine-jarjar/ims-common.jar out/soong/.intermediates/frameworks/opt/net/ims/ims-common/android_common/turbine/ims-common.jar
+build ims-common,android_common: phony out/soong/.intermediates/frameworks/opt/net/ims/ims-common/android_common/aligned/ims-common.jar out/soong/.intermediates/frameworks/opt/net/ims/ims-common/android_common/jarjar/ims-common.jar out/soong/.intermediates/frameworks/opt/net/ims/ims-common/android_common/turbine-jarjar/ims-common.jar
 
 build frameworks_opt_net_ims-targets: phony ims-common,android_common
 
-build car-ui-lib,android_common: phony out/soong/.intermediates/packages/apps/Car/libs/car-ui-lib/car-ui-lib/android_common/combined/car-ui-lib.jar out/soong/.intermediates/packages/apps/Car/libs/car-ui-lib/car-ui-lib/android_common/manifest_fixer/AndroidManifest.xml out/soong/.intermediates/packages/apps/Car/libs/car-ui-lib/car-ui-lib/android_common/package-res.apk out/soong/.intermediates/packages/apps/Car/libs/car-ui-lib/car-ui-lib/android_common/turbine-combined/car-ui-lib.jar
+build car-ui-lib,android_common: phony out/soong/.intermediates/packages/apps/Car/libs/car-ui-lib/car-ui-lib/android_common/combined/car-ui-lib.jar out/soong/.intermediates/packages/apps/Car/libs/car-ui-lib/car-ui-lib/android_common/package-res.apk out/soong/.intermediates/packages/apps/Car/libs/car-ui-lib/car-ui-lib/android_common/turbine-combined/car-ui-lib.jar
 
-build car-ui-lib,android_common_apex30: phony out/soong/.intermediates/packages/apps/Car/libs/car-ui-lib/car-ui-lib/android_common_apex30/combined/car-ui-lib.jar out/soong/.intermediates/packages/apps/Car/libs/car-ui-lib/car-ui-lib/android_common_apex30/manifest_fixer/AndroidManifest.xml out/soong/.intermediates/packages/apps/Car/libs/car-ui-lib/car-ui-lib/android_common_apex30/package-res.apk out/soong/.intermediates/packages/apps/Car/libs/car-ui-lib/car-ui-lib/android_common_apex30/turbine-combined/car-ui-lib.jar
+build car-ui-lib,android_common_apex30: phony out/soong/.intermediates/packages/apps/Car/libs/car-ui-lib/car-ui-lib/android_common_apex30/combined/car-ui-lib.jar out/soong/.intermediates/packages/apps/Car/libs/car-ui-lib/car-ui-lib/android_common_apex30/package-res.apk out/soong/.intermediates/packages/apps/Car/libs/car-ui-lib/car-ui-lib/android_common_apex30/turbine-combined/car-ui-lib.jar
 
 build packages_apps_Car_libs-targets: phony car-ui-lib,android_common car-ui-lib,android_common_apex30
 
@@ -38,12 +46,32 @@ build com.android.cellbroadcast,android_common_com.android.cellbroadcast_image: 
 
 build packages_apps_CellBroadcastReceiver-targets: phony com.android.cellbroadcast,android_common_com.android.cellbroadcast_image
 
-build ImsServiceEntitlementLib,android_common: phony out/soong/.intermediates/packages/apps/ImsServiceEntitlement/ImsServiceEntitlementLib/android_common/combined/ImsServiceEntitlementLib.jar out/soong/.intermediates/packages/apps/ImsServiceEntitlement/ImsServiceEntitlementLib/android_common/manifest_fixer/AndroidManifest.xml out/soong/.intermediates/packages/apps/ImsServiceEntitlement/ImsServiceEntitlementLib/android_common/package-res.apk out/soong/.intermediates/packages/apps/ImsServiceEntitlement/ImsServiceEntitlementLib/android_common/turbine-combined/ImsServiceEntitlementLib.jar
+build ImsServiceEntitlementLib,android_common: phony out/soong/.intermediates/packages/apps/ImsServiceEntitlement/ImsServiceEntitlementLib/android_common/combined/ImsServiceEntitlementLib.jar out/soong/.intermediates/packages/apps/ImsServiceEntitlement/ImsServiceEntitlementLib/android_common/package-res.apk out/soong/.intermediates/packages/apps/ImsServiceEntitlement/ImsServiceEntitlementLib/android_common/turbine-combined/ImsServiceEntitlementLib.jar
 
 build packages_apps_ImsServiceEntitlement-targets: phony ImsServiceEntitlementLib,android_common
 
+build Tethering,android_common_apex30: phony out/soong/.intermediates/packages/modules/Connectivity/Tethering/Tethering/android_common_apex30/Tethering.apk
+
+build TetheringApiCurrentLib,android_common_apex30: phony out/soong/.intermediates/packages/modules/Connectivity/Tethering/TetheringApiCurrentLib/android_common_apex30/combined/TetheringApiCurrentLib.jar out/soong/.intermediates/packages/modules/Connectivity/Tethering/TetheringApiCurrentLib/android_common_apex30/package-res.apk out/soong/.intermediates/packages/modules/Connectivity/Tethering/TetheringApiCurrentLib/android_common_apex30/turbine-combined/TetheringApiCurrentLib.jar
+
+build com.android.tethering,android_common_com.android.tethering_image: phony out/soong/.intermediates/packages/modules/Connectivity/Tethering/apex/com.android.tethering/android_common_com.android.tethering_image/apex_manifest.pb out/soong/.intermediates/packages/modules/Connectivity/Tethering/apex/com.android.tethering/android_common_com.android.tethering_image/apex_pubkey out/soong/.intermediates/packages/modules/Connectivity/Tethering/apex/com.android.tethering/android_common_com.android.tethering_image/com.android.tethering.capex
+
+build packages_modules_Connectivity-targets: phony Tethering,android_common_apex30 TetheringApiCurrentLib,android_common_apex30 com.android.tethering,android_common_com.android.tethering_image
+
+build com.android.wifi,android_common_com.android.wifi_image: phony out/soong/.intermediates/packages/modules/Wifi/apex/com.android.wifi/android_common_com.android.wifi_image/apex_manifest.pb out/soong/.intermediates/packages/modules/Wifi/apex/com.android.wifi/android_common_com.android.wifi_image/apex_pubkey out/soong/.intermediates/packages/modules/Wifi/apex/com.android.wifi/android_common_com.android.wifi_image/com.android.wifi.capex
+
+build service-wifi,android_common_apex30: phony out/soong/.intermediates/packages/modules/Wifi/service/service-wifi/android_common_apex30/aligned/service-wifi.jar out/soong/.intermediates/packages/modules/Wifi/service/service-wifi/android_common_apex30/turbine-jarjar/service-wifi.jar
+
 build wifi-service-pre-jarjar,android_common_apex30: phony out/soong/.intermediates/packages/modules/Wifi/service/wifi-service-pre-jarjar/android_common_apex30/combined/wifi-service-pre-jarjar.jar out/soong/.intermediates/packages/modules/Wifi/service/wifi-service-pre-jarjar/android_common_apex30/turbine-combined/wifi-service-pre-jarjar.jar
 
-build packages_modules_Wifi-targets: phony wifi-service-pre-jarjar,android_common_apex30
+build packages_modules_Wifi-targets: phony com.android.wifi,android_common_com.android.wifi_image service-wifi,android_common_apex30 wifi-service-pre-jarjar,android_common_apex30
+
+build android.system.keystore2-V1-java,android_common: phony out/soong/.intermediates/system/hardware/interfaces/keystore2/aidl/android.system.keystore2-V1-java/android_common/turbine-combined/android.system.keystore2-V1-java.jar
+
+build system_hardware_interfaces-targets: phony android.system.keystore2-V1-java,android_common
+
+build android.security.remoteprovisioning-java,android_common: phony out/soong/.intermediates/system/security/keystore2/aidl/android.security.remoteprovisioning-java/android_common/combined/android.security.remoteprovisioning-java.jar out/soong/.intermediates/system/security/keystore2/aidl/android.security.remoteprovisioning-java/android_common/turbine-combined/android.security.remoteprovisioning-java.jar
+
+build system_security-targets: phony android.security.remoteprovisioning-java,android_common
 
 

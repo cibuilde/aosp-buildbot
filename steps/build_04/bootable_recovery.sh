@@ -1,6 +1,5 @@
-set -e
 
-echo "entering bootable/recovery"
+set -e
 
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
@@ -13,6 +12,8 @@ if [ -d "$GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86" ]; then
   mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86 prebuilts/clang/host/linux-x86
 fi
 
+echo "Preparing for bootable/recovery"
+
 clone_depth_platform bionic
 clone_depth_platform bootable/recovery
 clone_depth_platform external/boringssl
@@ -23,7 +24,6 @@ clone_depth_platform external/libcxx
 clone_depth_platform external/libcxxabi
 clone_depth_platform external/selinux
 clone_depth_platform external/zlib
-clone_project platform/prebuilts/build-tools prebuilts/build-tools android12-gsi "/linux-x86/bin" "/linux-x86/lib64" "/path" "/common"
 clone_depth_platform prebuilts/gcc/linux-x86/x86/x86_64-linux-android-4.9
 clone_depth_platform system/core
 clone_depth_platform system/libbase
@@ -68,6 +68,7 @@ mkdir -p $GITHUB_WORKSPACE/artifacts/bootable/recovery/otautil/libotautil^androi
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/bootable/recovery/libotautil^android_vendor.31_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bootable/recovery/otautil/libotautil^android_vendor.31_x86_64_static
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/bootable/recovery/libotautil^android_vendor.31_x86_64_static.output $GITHUB_WORKSPACE/artifacts/bootable/recovery/otautil/libotautil^android_vendor.31_x86_64_static $GITHUB_WORKSPACE/artifacts/bootable/recovery/otautil/libotautil^android_vendor.31_x86_64_static/addition_copy_files.output
 
+
 rm -rf out
 
 cd $GITHUB_WORKSPACE/
@@ -75,6 +76,7 @@ tar -cf bootable_recovery.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKS
 gh release --repo cibuilde/aosp-buildbot upload android12-gsi_04 bootable_recovery.tar.zst --clobber
 
 du -ah -d1 bootable_recovery*.tar.zst | sort -h
+
 
 if [ ! -f "$GITHUB_WORKSPACE/cache/bionic.tar.zst" ]; then
   echo "Compressing bionic -> bionic.tar.zst"
@@ -116,10 +118,6 @@ if [ ! -f "$GITHUB_WORKSPACE/cache/external_zlib.tar.zst" ]; then
   echo "Compressing external/zlib -> external_zlib.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/external_zlib.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/zlib/ .
 fi
-if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_build-tools.tar.zst" ]; then
-  echo "Compressing prebuilts/build-tools -> prebuilts_build-tools.tar.zst"
-  tar -cf $GITHUB_WORKSPACE/cache/prebuilts_build-tools.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/prebuilts/build-tools/ .
-fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_gcc_linux-x86_x86_x86_64-linux-android-4.9.tar.zst" ]; then
   echo "Compressing prebuilts/gcc/linux-x86/x86/x86_64-linux-android-4.9 -> prebuilts_gcc_linux-x86_x86_x86_64-linux-android-4.9.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/prebuilts_gcc_linux-x86_x86_x86_64-linux-android-4.9.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/prebuilts/gcc/linux-x86/x86/x86_64-linux-android-4.9/ .
@@ -132,5 +130,6 @@ if [ ! -f "$GITHUB_WORKSPACE/cache/system_libbase.tar.zst" ]; then
   echo "Compressing system/libbase -> system_libbase.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/system_libbase.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/system/libbase/ .
 fi
+
 
 rm -rf aosp

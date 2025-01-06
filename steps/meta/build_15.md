@@ -1,4 +1,4 @@
-##### Tag: android12-gsi_15 Projects: 11 Targets: 25
+##### Tag: android12-gsi_15 Projects: 12 Targets: 26
 
 ###### **art**: 2
 `art-bootclasspath-fragment^android_common_apex31` `com.android.art^android_common_com.android.art_image`
@@ -14,6 +14,8 @@
 `librtp_jni^android_x86_64_shared` `librtp_jni^android_x86_x86_64_shared`
 ###### **frameworks/rs**: 2
 `libRSCacheDir^android_x86_64_shared` `libRSCacheDir^android_x86_x86_64_shared`
+###### **hardware/interfaces**: 1
+`android.hardware.audio.common-V2.0-java^android_common`
 ###### **packages/apps/Gallery2**: 1
 `libjni_filtershow_filters^android_x86_64_shared`
 ###### **packages/modules/NetworkStack**: 1

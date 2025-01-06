@@ -22,10 +22,6 @@ jobs:
         key: build_make@${{ env.branch }}
     - uses: actions/cache@v4
       with:
-        path: cache/build_soong.tar.zst
-        key: build_soong@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
         path: cache/cts.tar.zst
         key: cts@${{ env.branch }}
     - uses: actions/cache@v4
@@ -94,6 +90,10 @@ jobs:
         key: frameworks_opt_net_wifi@${{ env.branch }}
     - uses: actions/cache@v4
       with:
+        path: cache/hardware_interfaces.tar.zst
+        key: hardware_interfaces@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
         path: cache/hardware_ril.tar.zst
         key: hardware_ril@${{ env.branch }}
     - uses: actions/cache@v4
@@ -130,6 +130,10 @@ jobs:
         key: packages_modules_Connectivity@${{ env.branch }}
     - uses: actions/cache@v4
       with:
+        path: cache/packages_modules_DnsResolver.tar.zst
+        key: packages_modules_DnsResolver@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
         path: cache/packages_modules_ExtServices.tar.zst
         key: packages_modules_ExtServices@${{ env.branch }}
     - uses: actions/cache@v4
@@ -142,12 +146,24 @@ jobs:
         key: packages_modules_Permission@${{ env.branch }}
     - uses: actions/cache@v4
       with:
+        path: cache/packages_modules_Scheduling.tar.zst
+        key: packages_modules_Scheduling@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
         path: cache/packages_modules_StatsD.tar.zst
         key: packages_modules_StatsD@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/packages_modules_Wifi.tar.zst
         key: packages_modules_Wifi@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/packages_modules_common.tar.zst
+        key: packages_modules_common@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/packages_providers_MediaProvider.tar.zst
+        key: packages_providers_MediaProvider@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/packages_services_Car.tar.zst
@@ -170,8 +186,8 @@ jobs:
         key: system_bt@${{ env.branch }}
     - uses: actions/cache@v4
       with:
-        path: cache/system_core.tar.zst
-        key: system_core@${{ env.branch }}
+        path: cache/system_libsysprop.tar.zst
+        key: system_libsysprop@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/system_netd.tar.zst
@@ -188,6 +204,10 @@ jobs:
       with:
         path: cache/tools_apifinder.tar.zst
         key: tools_apifinder@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/tools_metalava.tar.zst
+        key: tools_metalava@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/tools_platform-compat.tar.zst

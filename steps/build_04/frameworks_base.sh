@@ -1,6 +1,5 @@
-set -e
 
-echo "entering frameworks/base"
+set -e
 
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
@@ -12,6 +11,8 @@ ln -sf $GITHUB_WORKSPACE/ninja .
 if [ -d "$GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86" ]; then
   mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86 prebuilts/clang/host/linux-x86
 fi
+
+echo "Preparing for frameworks/base"
 
 clone_depth_platform art
 clone_depth_platform bionic
@@ -40,7 +41,6 @@ clone_depth_platform libnativehelper
 clone_depth_platform packages/modules/Connectivity
 clone_depth_platform packages/modules/Permission
 clone_depth_platform packages/modules/StatsD
-clone_project platform/prebuilts/build-tools prebuilts/build-tools android12-gsi "/linux-x86/bin" "/linux-x86/lib64" "/path" "/common"
 clone_project platform/prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8 prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8 android12-gsi "/sysroot" "/lib/gcc/x86_64-linux/4.8.3" "/x86_64-linux/lib64" "/x86_64-linux/lib32"
 clone_depth_platform prebuilts/gcc/linux-x86/x86/x86_64-linux-android-4.9
 clone_project platform/prebuilts/jdk/jdk11 prebuilts/jdk/jdk11 android12-gsi "/linux-x86"
@@ -63,38 +63,52 @@ clone_depth_platform system/update_engine
 clone_depth_platform system/vold
 clone_depth_platform tools/metalava
 
-rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/cmd/dep_fixer/dep_fixer^linux_glibc_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/scripts/gen-kotlin-build-file.py^linux_glibc_x86_64_PY3/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/cc/libbuildversion/libbuildversion^linux_glibc_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/cmd/dep_fixer/dep_fixer^linux_glibc_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/cmd/javac_wrapper/soong_javac_wrapper^linux_glibc_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/cmd/merge_zips/merge_zips^linux_glibc_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/cmd/sbox/sbox^linux_glibc_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/cmd/javac_wrapper/soong_javac_wrapper^linux_glibc_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/zip/cmd/soong_zip^linux_glibc_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/symbol_inject/cmd/symbol_inject^linux_glibc_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/cmd/zipsync/zipsync^linux_glibc_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/scripts/gen-kotlin-build-file.py^linux_glibc_x86_64_PY3/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/symbol_inject/cmd/symbol_inject^linux_glibc_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/zip/cmd/soong_zip^linux_glibc_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/cts/libs/json/json^linux_glibc_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/expat/libexpat^linux_glibc_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/javaparser/javaparser^linux_glibc_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/javapoet/javapoet^linux_glibc_common/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/kotlinc/kotlin-stdlib^linux_glibc_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/kotlinc/kotlin-stdlib-jdk7^linux_glibc_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/kotlinc/kotlin-stdlib-jdk8^linux_glibc_common/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/kotlinc/kotlin-stdlib^linux_glibc_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcxx/libc++^linux_glibc_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcxx/libc++_static^linux_glibc_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/libpng/libpng^linux_glibc_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/mime-support/debian.mime.types.minimized^android_common/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/protobuf/aprotoc^linux_glibc_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/protobuf/libprotobuf-cpp-full^linux_glibc_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/protobuf/libprotobuf-cpp-full^linux_glibc_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/protobuf/aprotoc^linux_glibc_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/protobuf/libprotobuf-java-full^linux_glibc_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/zlib/libz^linux_glibc_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/zlib/libz^linux_glibc_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/mime/android.mime.types.minimized^android_common/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/libs/androidfw/libandroidfw^linux_glibc_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/libplatformprotos^linux_glibc_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/libplatformprotos^linux_glibc_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/platformprotos^linux_glibc_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/cmds/idmap2/libidmap2_policies^linux_glibc_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/tools/streaming_proto/protoc-gen-cppstream^linux_glibc_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/tools/streaming_proto/protoc-gen-javastream^linux_glibc_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/core/java/android.os.permissions_aidl-rust-source^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/core/res/remote-color-resources-compile-public^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/core/res/remote-color-resources-compile-colors^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/core/res/remote-color-resources-apk^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/core/res/remote-color-resources-arsc^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/libs/androidfw/libandroidfw^linux_glibc_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/mime/android.mime.types.minimized^android_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/mime/vendor.mime.types.minimized^android_common/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/tools/aapt2/aapt2^linux_glibc_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/tools/aapt2/libaapt2^linux_glibc_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/tools/codegen/codegen-version-info^linux_glibc_common/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/tools/incident_section_gen/incident-section-gen^linux_glibc_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/tools/protologtool/protologtool-lib^linux_glibc_common/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/tools/sdkparcelables/sdkparcelables^linux_glibc_common/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/tools/streaming_proto/protoc-gen-javastream^linux_glibc_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/tools/streaming_proto/protoc-gen-cppstream^linux_glibc_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/misc/common/asm/asm-6.0^linux_glibc_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/misc/common/asm/asm-analysis-6.0^linux_glibc_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/misc/common/asm/asm-commons-6.0^linux_glibc_common/ .
@@ -106,63 +120,9 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/system/core/libutils/libutils^linux_glib
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/libbase/libbase^linux_glibc_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/libziparchive/libziparchive^linux_glibc_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^linux_glibc_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/system/tools/aidl/aidl-cpp^linux_glibc_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/tools/aidl/aidl^linux_glibc_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/tools/aidl/aidl-cpp^linux_glibc_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/tools/metalava/stub-annotations^linux_glibc_common/ .
-
-echo "building SettingsLib-annotation-processor^linux_glibc_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja SettingsLib-annotation-processor,linux_glibc_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/search/SettingsLib-annotation-processor^linux_glibc_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/base/SettingsLib-annotation-processor^linux_glibc_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/search/SettingsLib-annotation-processor^linux_glibc_common
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/frameworks/base/SettingsLib-annotation-processor^linux_glibc_common.output $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/search/SettingsLib-annotation-processor^linux_glibc_common $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/search/SettingsLib-annotation-processor^linux_glibc_common/addition_copy_files.output
-
-echo "building aapt2^linux_glibc_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja aapt2,linux_glibc_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/tools/aapt2/aapt2^linux_glibc_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/base/aapt2^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/tools/aapt2/aapt2^linux_glibc_x86_64
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/frameworks/base/aapt2^linux_glibc_x86_64.output $GITHUB_WORKSPACE/artifacts/frameworks/base/tools/aapt2/aapt2^linux_glibc_x86_64 $GITHUB_WORKSPACE/artifacts/frameworks/base/tools/aapt2/aapt2^linux_glibc_x86_64/addition_copy_files.output
-
-echo "building android.os.permissions_aidl-rust-source^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.os.permissions_aidl-rust-source,
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/core/java/android.os.permissions_aidl-rust-source^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/base/android.os.permissions_aidl-rust-source^.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/core/java/android.os.permissions_aidl-rust-source^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/frameworks/base/android.os.permissions_aidl-rust-source^.output $GITHUB_WORKSPACE/artifacts/frameworks/base/core/java/android.os.permissions_aidl-rust-source^ $GITHUB_WORKSPACE/artifacts/frameworks/base/core/java/android.os.permissions_aidl-rust-source^/addition_copy_files.output
-
-echo "building android.os.permissions_aidl-rust^android_x86_64_source"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.os.permissions_aidl-rust,android_x86_64_source
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/core/java/android.os.permissions_aidl-rust^android_x86_64_source
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/base/android.os.permissions_aidl-rust^android_x86_64_source.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/core/java/android.os.permissions_aidl-rust^android_x86_64_source
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/frameworks/base/android.os.permissions_aidl-rust^android_x86_64_source.output $GITHUB_WORKSPACE/artifacts/frameworks/base/core/java/android.os.permissions_aidl-rust^android_x86_64_source $GITHUB_WORKSPACE/artifacts/frameworks/base/core/java/android.os.permissions_aidl-rust^android_x86_64_source/addition_copy_files.output
-
-echo "building audio_common-aidl-cpp-source^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja audio_common-aidl-cpp-source,
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/media/audio_common-aidl-cpp-source^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/base/audio_common-aidl-cpp-source^.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/media/audio_common-aidl-cpp-source^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/frameworks/base/audio_common-aidl-cpp-source^.output $GITHUB_WORKSPACE/artifacts/frameworks/base/media/audio_common-aidl-cpp-source^ $GITHUB_WORKSPACE/artifacts/frameworks/base/media/audio_common-aidl-cpp-source^/addition_copy_files.output
-
-echo "building audio_common-aidl-java-source^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja audio_common-aidl-java-source,
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/media/audio_common-aidl-java-source^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/base/audio_common-aidl-java-source^.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/media/audio_common-aidl-java-source^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/frameworks/base/audio_common-aidl-java-source^.output $GITHUB_WORKSPACE/artifacts/frameworks/base/media/audio_common-aidl-java-source^ $GITHUB_WORKSPACE/artifacts/frameworks/base/media/audio_common-aidl-java-source^/addition_copy_files.output
-
-echo "building codegen-version-info^linux_glibc_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja codegen-version-info,linux_glibc_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/tools/codegen/codegen-version-info^linux_glibc_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/base/codegen-version-info^linux_glibc_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/tools/codegen/codegen-version-info^linux_glibc_common
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/frameworks/base/codegen-version-info^linux_glibc_common.output $GITHUB_WORKSPACE/artifacts/frameworks/base/tools/codegen/codegen-version-info^linux_glibc_common $GITHUB_WORKSPACE/artifacts/frameworks/base/tools/codegen/codegen-version-info^linux_glibc_common/addition_copy_files.output
-
-echo "building framework-cppstream-protos^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja framework-cppstream-protos,
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/framework-cppstream-protos^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/base/framework-cppstream-protos^.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/framework-cppstream-protos^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/frameworks/base/framework-cppstream-protos^.output $GITHUB_WORKSPACE/artifacts/frameworks/base/framework-cppstream-protos^ $GITHUB_WORKSPACE/artifacts/frameworks/base/framework-cppstream-protos^/addition_copy_files.output
-
-echo "building framework-javastream-protos^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja framework-javastream-protos,
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/framework-javastream-protos^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/base/framework-javastream-protos^.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/framework-javastream-protos^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/frameworks/base/framework-javastream-protos^.output $GITHUB_WORKSPACE/artifacts/frameworks/base/framework-javastream-protos^ $GITHUB_WORKSPACE/artifacts/frameworks/base/framework-javastream-protos^/addition_copy_files.output
 
 echo "building framework-minus-apex^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja framework-minus-apex,android_common
@@ -170,41 +130,11 @@ mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/framework-minus-apex^androi
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/base/framework-minus-apex^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/framework-minus-apex^android_common
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/frameworks/base/framework-minus-apex^android_common.output $GITHUB_WORKSPACE/artifacts/frameworks/base/framework-minus-apex^android_common $GITHUB_WORKSPACE/artifacts/frameworks/base/framework-minus-apex^android_common/addition_copy_files.output
 
-echo "building incident-section-gen^linux_glibc_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja incident-section-gen,linux_glibc_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/tools/incident_section_gen/incident-section-gen^linux_glibc_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/base/incident-section-gen^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/tools/incident_section_gen/incident-section-gen^linux_glibc_x86_64
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/frameworks/base/incident-section-gen^linux_glibc_x86_64.output $GITHUB_WORKSPACE/artifacts/frameworks/base/tools/incident_section_gen/incident-section-gen^linux_glibc_x86_64 $GITHUB_WORKSPACE/artifacts/frameworks/base/tools/incident_section_gen/incident-section-gen^linux_glibc_x86_64/addition_copy_files.output
-
-echo "building incident_sections^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja incident_sections,
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/cmds/incident/incident_sections^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/base/incident_sections^.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/cmds/incident/incident_sections^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/frameworks/base/incident_sections^.output $GITHUB_WORKSPACE/artifacts/frameworks/base/cmds/incident/incident_sections^ $GITHUB_WORKSPACE/artifacts/frameworks/base/cmds/incident/incident_sections^/addition_copy_files.output
-
-echo "building incidentd_section_list^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja incidentd_section_list,
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/cmds/incidentd/incidentd_section_list^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/base/incidentd_section_list^.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/cmds/incidentd/incidentd_section_list^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/frameworks/base/incidentd_section_list^.output $GITHUB_WORKSPACE/artifacts/frameworks/base/cmds/incidentd/incidentd_section_list^ $GITHUB_WORKSPACE/artifacts/frameworks/base/cmds/incidentd/incidentd_section_list^/addition_copy_files.output
-
-echo "building libaapt2^linux_glibc_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libaapt2,linux_glibc_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/tools/aapt2/libaapt2^linux_glibc_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/base/libaapt2^linux_glibc_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/tools/aapt2/libaapt2^linux_glibc_x86_64_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/frameworks/base/libaapt2^linux_glibc_x86_64_static.output $GITHUB_WORKSPACE/artifacts/frameworks/base/tools/aapt2/libaapt2^linux_glibc_x86_64_static $GITHUB_WORKSPACE/artifacts/frameworks/base/tools/aapt2/libaapt2^linux_glibc_x86_64_static/addition_copy_files.output
-
-echo "building libidmap2_protos^android_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libidmap2_protos,android_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/cmds/idmap2/libidmap2_protos^android_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/base/libidmap2_protos^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/cmds/idmap2/libidmap2_protos^android_x86_64_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/frameworks/base/libidmap2_protos^android_x86_64_static.output $GITHUB_WORKSPACE/artifacts/frameworks/base/cmds/idmap2/libidmap2_protos^android_x86_64_static $GITHUB_WORKSPACE/artifacts/frameworks/base/cmds/idmap2/libidmap2_protos^android_x86_64_static/addition_copy_files.output
-
-echo "building libidmap2daidl^android_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libidmap2daidl,android_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/cmds/idmap2/libidmap2daidl^android_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/base/libidmap2daidl^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/cmds/idmap2/libidmap2daidl^android_x86_64_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/frameworks/base/libidmap2daidl^android_x86_64_static.output $GITHUB_WORKSPACE/artifacts/frameworks/base/cmds/idmap2/libidmap2daidl^android_x86_64_static $GITHUB_WORKSPACE/artifacts/frameworks/base/cmds/idmap2/libidmap2daidl^android_x86_64_static/addition_copy_files.output
+echo "building framework-javastream-protos^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja framework-javastream-protos,
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/framework-javastream-protos^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/base/framework-javastream-protos^.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/framework-javastream-protos^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/frameworks/base/framework-javastream-protos^.output $GITHUB_WORKSPACE/artifacts/frameworks/base/framework-javastream-protos^ $GITHUB_WORKSPACE/artifacts/frameworks/base/framework-javastream-protos^/addition_copy_files.output
 
 echo "building libplatformprotos^android_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libplatformprotos,android_x86_64_static
@@ -230,11 +160,101 @@ mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/libplatformprotos^linux_gli
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/base/libplatformprotos^linux_glibc_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/libplatformprotos^linux_glibc_x86_64_static
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/frameworks/base/libplatformprotos^linux_glibc_x86_64_static.output $GITHUB_WORKSPACE/artifacts/frameworks/base/libplatformprotos^linux_glibc_x86_64_static $GITHUB_WORKSPACE/artifacts/frameworks/base/libplatformprotos^linux_glibc_x86_64_static/addition_copy_files.output
 
-echo "building lockedregioncodeinjection^linux_glibc_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja lockedregioncodeinjection,linux_glibc_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/tools/locked_region_code_injection/lockedregioncodeinjection^linux_glibc_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/base/lockedregioncodeinjection^linux_glibc_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/tools/locked_region_code_injection/lockedregioncodeinjection^linux_glibc_common
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/frameworks/base/lockedregioncodeinjection^linux_glibc_common.output $GITHUB_WORKSPACE/artifacts/frameworks/base/tools/locked_region_code_injection/lockedregioncodeinjection^linux_glibc_common $GITHUB_WORKSPACE/artifacts/frameworks/base/tools/locked_region_code_injection/lockedregioncodeinjection^linux_glibc_common/addition_copy_files.output
+echo "building framework-cppstream-protos^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja framework-cppstream-protos,
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/framework-cppstream-protos^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/base/framework-cppstream-protos^.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/framework-cppstream-protos^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/frameworks/base/framework-cppstream-protos^.output $GITHUB_WORKSPACE/artifacts/frameworks/base/framework-cppstream-protos^ $GITHUB_WORKSPACE/artifacts/frameworks/base/framework-cppstream-protos^/addition_copy_files.output
+
+echo "building platformprotos^linux_glibc_common"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja platformprotos,linux_glibc_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/platformprotos^linux_glibc_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/base/platformprotos^linux_glibc_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/platformprotos^linux_glibc_common
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/frameworks/base/platformprotos^linux_glibc_common.output $GITHUB_WORKSPACE/artifacts/frameworks/base/platformprotos^linux_glibc_common $GITHUB_WORKSPACE/artifacts/frameworks/base/platformprotos^linux_glibc_common/addition_copy_files.output
+
+echo "building libidmap2_protos^android_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libidmap2_protos,android_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/cmds/idmap2/libidmap2_protos^android_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/base/libidmap2_protos^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/cmds/idmap2/libidmap2_protos^android_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/frameworks/base/libidmap2_protos^android_x86_64_static.output $GITHUB_WORKSPACE/artifacts/frameworks/base/cmds/idmap2/libidmap2_protos^android_x86_64_static $GITHUB_WORKSPACE/artifacts/frameworks/base/cmds/idmap2/libidmap2_protos^android_x86_64_static/addition_copy_files.output
+
+echo "building libidmap2daidl^android_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libidmap2daidl,android_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/cmds/idmap2/libidmap2daidl^android_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/base/libidmap2daidl^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/cmds/idmap2/libidmap2daidl^android_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/frameworks/base/libidmap2daidl^android_x86_64_static.output $GITHUB_WORKSPACE/artifacts/frameworks/base/cmds/idmap2/libidmap2daidl^android_x86_64_static $GITHUB_WORKSPACE/artifacts/frameworks/base/cmds/idmap2/libidmap2daidl^android_x86_64_static/addition_copy_files.output
+
+echo "building overlayable_policy_aidl-java-source^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja overlayable_policy_aidl-java-source,
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/cmds/idmap2/overlayable_policy_aidl-java-source^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/base/overlayable_policy_aidl-java-source^.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/cmds/idmap2/overlayable_policy_aidl-java-source^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/frameworks/base/overlayable_policy_aidl-java-source^.output $GITHUB_WORKSPACE/artifacts/frameworks/base/cmds/idmap2/overlayable_policy_aidl-java-source^ $GITHUB_WORKSPACE/artifacts/frameworks/base/cmds/idmap2/overlayable_policy_aidl-java-source^/addition_copy_files.output
+
+echo "building incident_sections^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja incident_sections,
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/cmds/incident/incident_sections^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/base/incident_sections^.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/cmds/incident/incident_sections^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/frameworks/base/incident_sections^.output $GITHUB_WORKSPACE/artifacts/frameworks/base/cmds/incident/incident_sections^ $GITHUB_WORKSPACE/artifacts/frameworks/base/cmds/incident/incident_sections^/addition_copy_files.output
+
+echo "building incidentd_section_list^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja incidentd_section_list,
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/cmds/incidentd/incidentd_section_list^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/base/incidentd_section_list^.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/cmds/incidentd/incidentd_section_list^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/frameworks/base/incidentd_section_list^.output $GITHUB_WORKSPACE/artifacts/frameworks/base/cmds/incidentd/incidentd_section_list^ $GITHUB_WORKSPACE/artifacts/frameworks/base/cmds/incidentd/incidentd_section_list^/addition_copy_files.output
+
+echo "building android.os.permissions_aidl-rust-source^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.os.permissions_aidl-rust-source,
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/core/java/android.os.permissions_aidl-rust-source^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/base/android.os.permissions_aidl-rust-source^.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/core/java/android.os.permissions_aidl-rust-source^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/frameworks/base/android.os.permissions_aidl-rust-source^.output $GITHUB_WORKSPACE/artifacts/frameworks/base/core/java/android.os.permissions_aidl-rust-source^ $GITHUB_WORKSPACE/artifacts/frameworks/base/core/java/android.os.permissions_aidl-rust-source^/addition_copy_files.output
+
+echo "building android.os.permissions_aidl-rust^android_x86_64_source"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.os.permissions_aidl-rust,android_x86_64_source
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/core/java/android.os.permissions_aidl-rust^android_x86_64_source
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/base/android.os.permissions_aidl-rust^android_x86_64_source.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/core/java/android.os.permissions_aidl-rust^android_x86_64_source
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/frameworks/base/android.os.permissions_aidl-rust^android_x86_64_source.output $GITHUB_WORKSPACE/artifacts/frameworks/base/core/java/android.os.permissions_aidl-rust^android_x86_64_source $GITHUB_WORKSPACE/artifacts/frameworks/base/core/java/android.os.permissions_aidl-rust^android_x86_64_source/addition_copy_files.output
+
+echo "building remote-color-resources-compile-public^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja remote-color-resources-compile-public,
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/core/res/remote-color-resources-compile-public^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/base/remote-color-resources-compile-public^.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/core/res/remote-color-resources-compile-public^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/frameworks/base/remote-color-resources-compile-public^.output $GITHUB_WORKSPACE/artifacts/frameworks/base/core/res/remote-color-resources-compile-public^ $GITHUB_WORKSPACE/artifacts/frameworks/base/core/res/remote-color-resources-compile-public^/addition_copy_files.output
+
+echo "building remote-color-resources-compile-colors^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja remote-color-resources-compile-colors,
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/core/res/remote-color-resources-compile-colors^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/base/remote-color-resources-compile-colors^.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/core/res/remote-color-resources-compile-colors^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/frameworks/base/remote-color-resources-compile-colors^.output $GITHUB_WORKSPACE/artifacts/frameworks/base/core/res/remote-color-resources-compile-colors^ $GITHUB_WORKSPACE/artifacts/frameworks/base/core/res/remote-color-resources-compile-colors^/addition_copy_files.output
+
+echo "building remote-color-resources-apk^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja remote-color-resources-apk,
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/core/res/remote-color-resources-apk^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/base/remote-color-resources-apk^.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/core/res/remote-color-resources-apk^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/frameworks/base/remote-color-resources-apk^.output $GITHUB_WORKSPACE/artifacts/frameworks/base/core/res/remote-color-resources-apk^ $GITHUB_WORKSPACE/artifacts/frameworks/base/core/res/remote-color-resources-apk^/addition_copy_files.output
+
+echo "building remote-color-resources-arsc^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja remote-color-resources-arsc,
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/core/res/remote-color-resources-arsc^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/base/remote-color-resources-arsc^.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/core/res/remote-color-resources-arsc^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/frameworks/base/remote-color-resources-arsc^.output $GITHUB_WORKSPACE/artifacts/frameworks/base/core/res/remote-color-resources-arsc^ $GITHUB_WORKSPACE/artifacts/frameworks/base/core/res/remote-color-resources-arsc^/addition_copy_files.output
+
+echo "building remote-color-resources-arsc-zip^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja remote-color-resources-arsc-zip,
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/core/res/remote-color-resources-arsc-zip^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/base/remote-color-resources-arsc-zip^.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/core/res/remote-color-resources-arsc-zip^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/frameworks/base/remote-color-resources-arsc-zip^.output $GITHUB_WORKSPACE/artifacts/frameworks/base/core/res/remote-color-resources-arsc-zip^ $GITHUB_WORKSPACE/artifacts/frameworks/base/core/res/remote-color-resources-arsc-zip^/addition_copy_files.output
+
+echo "building audio_common-aidl-cpp-source^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja audio_common-aidl-cpp-source,
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/media/audio_common-aidl-cpp-source^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/base/audio_common-aidl-cpp-source^.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/media/audio_common-aidl-cpp-source^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/frameworks/base/audio_common-aidl-cpp-source^.output $GITHUB_WORKSPACE/artifacts/frameworks/base/media/audio_common-aidl-cpp-source^ $GITHUB_WORKSPACE/artifacts/frameworks/base/media/audio_common-aidl-cpp-source^/addition_copy_files.output
+
+echo "building audio_common-aidl-java-source^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja audio_common-aidl-java-source,
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/media/audio_common-aidl-java-source^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/base/audio_common-aidl-java-source^.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/media/audio_common-aidl-java-source^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/frameworks/base/audio_common-aidl-java-source^.output $GITHUB_WORKSPACE/artifacts/frameworks/base/media/audio_common-aidl-java-source^ $GITHUB_WORKSPACE/artifacts/frameworks/base/media/audio_common-aidl-java-source^/addition_copy_files.output
 
 echo "building media_permission-aidl-cpp-source^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja media_permission-aidl-cpp-source,
@@ -248,77 +268,29 @@ mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/media/media_permission-aidl
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/base/media_permission-aidl-java-source^.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/media/media_permission-aidl-java-source^
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/frameworks/base/media_permission-aidl-java-source^.output $GITHUB_WORKSPACE/artifacts/frameworks/base/media/media_permission-aidl-java-source^ $GITHUB_WORKSPACE/artifacts/frameworks/base/media/media_permission-aidl-java-source^/addition_copy_files.output
 
+echo "building soundtrigger_middleware-aidl-java-source^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja soundtrigger_middleware-aidl-java-source,
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/media/soundtrigger_middleware-aidl-java-source^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/base/soundtrigger_middleware-aidl-java-source^.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/media/soundtrigger_middleware-aidl-java-source^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/frameworks/base/soundtrigger_middleware-aidl-java-source^.output $GITHUB_WORKSPACE/artifacts/frameworks/base/media/soundtrigger_middleware-aidl-java-source^ $GITHUB_WORKSPACE/artifacts/frameworks/base/media/soundtrigger_middleware-aidl-java-source^/addition_copy_files.output
+
+echo "building tv_tuner_resource_manager_aidl_interface-java-source^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja tv_tuner_resource_manager_aidl_interface-java-source,
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/media/java/android/media/tv/tunerresourcemanager/tv_tuner_resource_manager_aidl_interface-java-source^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/base/tv_tuner_resource_manager_aidl_interface-java-source^.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/media/java/android/media/tv/tunerresourcemanager/tv_tuner_resource_manager_aidl_interface-java-source^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/frameworks/base/tv_tuner_resource_manager_aidl_interface-java-source^.output $GITHUB_WORKSPACE/artifacts/frameworks/base/media/java/android/media/tv/tunerresourcemanager/tv_tuner_resource_manager_aidl_interface-java-source^ $GITHUB_WORKSPACE/artifacts/frameworks/base/media/java/android/media/tv/tunerresourcemanager/tv_tuner_resource_manager_aidl_interface-java-source^/addition_copy_files.output
+
 echo "building mimemap-res.jar^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja mimemap-res.jar,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/mime/mimemap-res.jar^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/base/mimemap-res.jar^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/mime/mimemap-res.jar^android_common
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/frameworks/base/mimemap-res.jar^android_common.output $GITHUB_WORKSPACE/artifacts/frameworks/base/mime/mimemap-res.jar^android_common $GITHUB_WORKSPACE/artifacts/frameworks/base/mime/mimemap-res.jar^android_common/addition_copy_files.output
 
-echo "building overlayable_policy_aidl-java-source^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja overlayable_policy_aidl-java-source,
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/cmds/idmap2/overlayable_policy_aidl-java-source^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/base/overlayable_policy_aidl-java-source^.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/cmds/idmap2/overlayable_policy_aidl-java-source^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/frameworks/base/overlayable_policy_aidl-java-source^.output $GITHUB_WORKSPACE/artifacts/frameworks/base/cmds/idmap2/overlayable_policy_aidl-java-source^ $GITHUB_WORKSPACE/artifacts/frameworks/base/cmds/idmap2/overlayable_policy_aidl-java-source^/addition_copy_files.output
-
-echo "building platformprotos^linux_glibc_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja platformprotos,linux_glibc_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/platformprotos^linux_glibc_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/base/platformprotos^linux_glibc_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/platformprotos^linux_glibc_common
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/frameworks/base/platformprotos^linux_glibc_common.output $GITHUB_WORKSPACE/artifacts/frameworks/base/platformprotos^linux_glibc_common $GITHUB_WORKSPACE/artifacts/frameworks/base/platformprotos^linux_glibc_common/addition_copy_files.output
-
-echo "building protologtool-lib^linux_glibc_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja protologtool-lib,linux_glibc_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/tools/protologtool/protologtool-lib^linux_glibc_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/base/protologtool-lib^linux_glibc_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/tools/protologtool/protologtool-lib^linux_glibc_common
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/frameworks/base/protologtool-lib^linux_glibc_common.output $GITHUB_WORKSPACE/artifacts/frameworks/base/tools/protologtool/protologtool-lib^linux_glibc_common $GITHUB_WORKSPACE/artifacts/frameworks/base/tools/protologtool/protologtool-lib^linux_glibc_common/addition_copy_files.output
-
-echo "building protologtool^linux_glibc_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja protologtool,linux_glibc_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/tools/protologtool/protologtool^linux_glibc_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/base/protologtool^linux_glibc_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/tools/protologtool/protologtool^linux_glibc_common
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/frameworks/base/protologtool^linux_glibc_common.output $GITHUB_WORKSPACE/artifacts/frameworks/base/tools/protologtool/protologtool^linux_glibc_common $GITHUB_WORKSPACE/artifacts/frameworks/base/tools/protologtool/protologtool^linux_glibc_common/addition_copy_files.output
-
-echo "building remote-color-resources-apk^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja remote-color-resources-apk,
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/core/res/remote-color-resources-apk^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/base/remote-color-resources-apk^.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/core/res/remote-color-resources-apk^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/frameworks/base/remote-color-resources-apk^.output $GITHUB_WORKSPACE/artifacts/frameworks/base/core/res/remote-color-resources-apk^ $GITHUB_WORKSPACE/artifacts/frameworks/base/core/res/remote-color-resources-apk^/addition_copy_files.output
-
-echo "building remote-color-resources-arsc-zip^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja remote-color-resources-arsc-zip,
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/core/res/remote-color-resources-arsc-zip^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/base/remote-color-resources-arsc-zip^.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/core/res/remote-color-resources-arsc-zip^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/frameworks/base/remote-color-resources-arsc-zip^.output $GITHUB_WORKSPACE/artifacts/frameworks/base/core/res/remote-color-resources-arsc-zip^ $GITHUB_WORKSPACE/artifacts/frameworks/base/core/res/remote-color-resources-arsc-zip^/addition_copy_files.output
-
-echo "building remote-color-resources-arsc^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja remote-color-resources-arsc,
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/core/res/remote-color-resources-arsc^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/base/remote-color-resources-arsc^.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/core/res/remote-color-resources-arsc^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/frameworks/base/remote-color-resources-arsc^.output $GITHUB_WORKSPACE/artifacts/frameworks/base/core/res/remote-color-resources-arsc^ $GITHUB_WORKSPACE/artifacts/frameworks/base/core/res/remote-color-resources-arsc^/addition_copy_files.output
-
-echo "building remote-color-resources-compile-colors^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja remote-color-resources-compile-colors,
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/core/res/remote-color-resources-compile-colors^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/base/remote-color-resources-compile-colors^.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/core/res/remote-color-resources-compile-colors^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/frameworks/base/remote-color-resources-compile-colors^.output $GITHUB_WORKSPACE/artifacts/frameworks/base/core/res/remote-color-resources-compile-colors^ $GITHUB_WORKSPACE/artifacts/frameworks/base/core/res/remote-color-resources-compile-colors^/addition_copy_files.output
-
-echo "building remote-color-resources-compile-public^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja remote-color-resources-compile-public,
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/core/res/remote-color-resources-compile-public^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/base/remote-color-resources-compile-public^.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/core/res/remote-color-resources-compile-public^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/frameworks/base/remote-color-resources-compile-public^.output $GITHUB_WORKSPACE/artifacts/frameworks/base/core/res/remote-color-resources-compile-public^ $GITHUB_WORKSPACE/artifacts/frameworks/base/core/res/remote-color-resources-compile-public^/addition_copy_files.output
-
-echo "building sdkparcelables^linux_glibc_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja sdkparcelables,linux_glibc_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/tools/sdkparcelables/sdkparcelables^linux_glibc_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/base/sdkparcelables^linux_glibc_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/tools/sdkparcelables/sdkparcelables^linux_glibc_common
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/frameworks/base/sdkparcelables^linux_glibc_common.output $GITHUB_WORKSPACE/artifacts/frameworks/base/tools/sdkparcelables/sdkparcelables^linux_glibc_common $GITHUB_WORKSPACE/artifacts/frameworks/base/tools/sdkparcelables/sdkparcelables^linux_glibc_common/addition_copy_files.output
-
-echo "building sdkparcelables^linux_glibc_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja sdkparcelables,linux_glibc_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/tools/sdkparcelables/sdkparcelables^linux_glibc_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/base/sdkparcelables^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/tools/sdkparcelables/sdkparcelables^linux_glibc_x86_64
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/frameworks/base/sdkparcelables^linux_glibc_x86_64.output $GITHUB_WORKSPACE/artifacts/frameworks/base/tools/sdkparcelables/sdkparcelables^linux_glibc_x86_64 $GITHUB_WORKSPACE/artifacts/frameworks/base/tools/sdkparcelables/sdkparcelables^linux_glibc_x86_64/addition_copy_files.output
+echo "building SettingsLib-annotation-processor^linux_glibc_common"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja SettingsLib-annotation-processor,linux_glibc_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/search/SettingsLib-annotation-processor^linux_glibc_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/base/SettingsLib-annotation-processor^linux_glibc_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/search/SettingsLib-annotation-processor^linux_glibc_common
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/frameworks/base/SettingsLib-annotation-processor^linux_glibc_common.output $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/search/SettingsLib-annotation-processor^linux_glibc_common $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/search/SettingsLib-annotation-processor^linux_glibc_common/addition_copy_files.output
 
 echo "building service.incremental.proto^android_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja service.incremental.proto,android_x86_64_static
@@ -332,11 +304,35 @@ mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/services/incremental/servic
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/base/service.incremental.proto^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/services/incremental/service.incremental.proto^android_x86_x86_64_static
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/frameworks/base/service.incremental.proto^android_x86_x86_64_static.output $GITHUB_WORKSPACE/artifacts/frameworks/base/services/incremental/service.incremental.proto^android_x86_x86_64_static $GITHUB_WORKSPACE/artifacts/frameworks/base/services/incremental/service.incremental.proto^android_x86_x86_64_static/addition_copy_files.output
 
-echo "building soundtrigger_middleware-aidl-java-source^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja soundtrigger_middleware-aidl-java-source,
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/media/soundtrigger_middleware-aidl-java-source^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/base/soundtrigger_middleware-aidl-java-source^.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/media/soundtrigger_middleware-aidl-java-source^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/frameworks/base/soundtrigger_middleware-aidl-java-source^.output $GITHUB_WORKSPACE/artifacts/frameworks/base/media/soundtrigger_middleware-aidl-java-source^ $GITHUB_WORKSPACE/artifacts/frameworks/base/media/soundtrigger_middleware-aidl-java-source^/addition_copy_files.output
+echo "building aapt2^linux_glibc_x86_64"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja aapt2,linux_glibc_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/tools/aapt2/aapt2^linux_glibc_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/base/aapt2^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/tools/aapt2/aapt2^linux_glibc_x86_64
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/frameworks/base/aapt2^linux_glibc_x86_64.output $GITHUB_WORKSPACE/artifacts/frameworks/base/tools/aapt2/aapt2^linux_glibc_x86_64 $GITHUB_WORKSPACE/artifacts/frameworks/base/tools/aapt2/aapt2^linux_glibc_x86_64/addition_copy_files.output
+
+echo "building libaapt2^linux_glibc_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libaapt2,linux_glibc_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/tools/aapt2/libaapt2^linux_glibc_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/base/libaapt2^linux_glibc_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/tools/aapt2/libaapt2^linux_glibc_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/frameworks/base/libaapt2^linux_glibc_x86_64_static.output $GITHUB_WORKSPACE/artifacts/frameworks/base/tools/aapt2/libaapt2^linux_glibc_x86_64_static $GITHUB_WORKSPACE/artifacts/frameworks/base/tools/aapt2/libaapt2^linux_glibc_x86_64_static/addition_copy_files.output
+
+echo "building codegen-version-info^linux_glibc_common"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja codegen-version-info,linux_glibc_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/tools/codegen/codegen-version-info^linux_glibc_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/base/codegen-version-info^linux_glibc_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/tools/codegen/codegen-version-info^linux_glibc_common
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/frameworks/base/codegen-version-info^linux_glibc_common.output $GITHUB_WORKSPACE/artifacts/frameworks/base/tools/codegen/codegen-version-info^linux_glibc_common $GITHUB_WORKSPACE/artifacts/frameworks/base/tools/codegen/codegen-version-info^linux_glibc_common/addition_copy_files.output
+
+echo "building incident-section-gen^linux_glibc_x86_64"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja incident-section-gen,linux_glibc_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/tools/incident_section_gen/incident-section-gen^linux_glibc_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/base/incident-section-gen^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/tools/incident_section_gen/incident-section-gen^linux_glibc_x86_64
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/frameworks/base/incident-section-gen^linux_glibc_x86_64.output $GITHUB_WORKSPACE/artifacts/frameworks/base/tools/incident_section_gen/incident-section-gen^linux_glibc_x86_64 $GITHUB_WORKSPACE/artifacts/frameworks/base/tools/incident_section_gen/incident-section-gen^linux_glibc_x86_64/addition_copy_files.output
+
+echo "building lockedregioncodeinjection^linux_glibc_common"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja lockedregioncodeinjection,linux_glibc_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/tools/locked_region_code_injection/lockedregioncodeinjection^linux_glibc_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/base/lockedregioncodeinjection^linux_glibc_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/tools/locked_region_code_injection/lockedregioncodeinjection^linux_glibc_common
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/frameworks/base/lockedregioncodeinjection^linux_glibc_common.output $GITHUB_WORKSPACE/artifacts/frameworks/base/tools/locked_region_code_injection/lockedregioncodeinjection^linux_glibc_common $GITHUB_WORKSPACE/artifacts/frameworks/base/tools/locked_region_code_injection/lockedregioncodeinjection^linux_glibc_common/addition_copy_files.output
 
 echo "building staledataclass-annotation-processor^linux_glibc_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja staledataclass-annotation-processor,linux_glibc_common
@@ -344,17 +340,36 @@ mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/tools/processors/staledatac
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/base/staledataclass-annotation-processor^linux_glibc_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/tools/processors/staledataclass/staledataclass-annotation-processor^linux_glibc_common
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/frameworks/base/staledataclass-annotation-processor^linux_glibc_common.output $GITHUB_WORKSPACE/artifacts/frameworks/base/tools/processors/staledataclass/staledataclass-annotation-processor^linux_glibc_common $GITHUB_WORKSPACE/artifacts/frameworks/base/tools/processors/staledataclass/staledataclass-annotation-processor^linux_glibc_common/addition_copy_files.output
 
-echo "building tv_tuner_resource_manager_aidl_interface-java-source^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja tv_tuner_resource_manager_aidl_interface-java-source,
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/media/java/android/media/tv/tunerresourcemanager/tv_tuner_resource_manager_aidl_interface-java-source^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/base/tv_tuner_resource_manager_aidl_interface-java-source^.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/media/java/android/media/tv/tunerresourcemanager/tv_tuner_resource_manager_aidl_interface-java-source^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/frameworks/base/tv_tuner_resource_manager_aidl_interface-java-source^.output $GITHUB_WORKSPACE/artifacts/frameworks/base/media/java/android/media/tv/tunerresourcemanager/tv_tuner_resource_manager_aidl_interface-java-source^ $GITHUB_WORKSPACE/artifacts/frameworks/base/media/java/android/media/tv/tunerresourcemanager/tv_tuner_resource_manager_aidl_interface-java-source^/addition_copy_files.output
-
 echo "building view-inspector-annotation-processor^linux_glibc_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja view-inspector-annotation-processor,linux_glibc_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/tools/processors/view_inspector/view-inspector-annotation-processor^linux_glibc_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/base/view-inspector-annotation-processor^linux_glibc_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/tools/processors/view_inspector/view-inspector-annotation-processor^linux_glibc_common
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/frameworks/base/view-inspector-annotation-processor^linux_glibc_common.output $GITHUB_WORKSPACE/artifacts/frameworks/base/tools/processors/view_inspector/view-inspector-annotation-processor^linux_glibc_common $GITHUB_WORKSPACE/artifacts/frameworks/base/tools/processors/view_inspector/view-inspector-annotation-processor^linux_glibc_common/addition_copy_files.output
+
+echo "building protologtool-lib^linux_glibc_common"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja protologtool-lib,linux_glibc_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/tools/protologtool/protologtool-lib^linux_glibc_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/base/protologtool-lib^linux_glibc_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/tools/protologtool/protologtool-lib^linux_glibc_common
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/frameworks/base/protologtool-lib^linux_glibc_common.output $GITHUB_WORKSPACE/artifacts/frameworks/base/tools/protologtool/protologtool-lib^linux_glibc_common $GITHUB_WORKSPACE/artifacts/frameworks/base/tools/protologtool/protologtool-lib^linux_glibc_common/addition_copy_files.output
+
+echo "building protologtool^linux_glibc_common"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja protologtool,linux_glibc_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/tools/protologtool/protologtool^linux_glibc_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/base/protologtool^linux_glibc_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/tools/protologtool/protologtool^linux_glibc_common
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/frameworks/base/protologtool^linux_glibc_common.output $GITHUB_WORKSPACE/artifacts/frameworks/base/tools/protologtool/protologtool^linux_glibc_common $GITHUB_WORKSPACE/artifacts/frameworks/base/tools/protologtool/protologtool^linux_glibc_common/addition_copy_files.output
+
+echo "building sdkparcelables^linux_glibc_common"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja sdkparcelables,linux_glibc_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/tools/sdkparcelables/sdkparcelables^linux_glibc_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/base/sdkparcelables^linux_glibc_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/tools/sdkparcelables/sdkparcelables^linux_glibc_common
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/frameworks/base/sdkparcelables^linux_glibc_common.output $GITHUB_WORKSPACE/artifacts/frameworks/base/tools/sdkparcelables/sdkparcelables^linux_glibc_common $GITHUB_WORKSPACE/artifacts/frameworks/base/tools/sdkparcelables/sdkparcelables^linux_glibc_common/addition_copy_files.output
+
+echo "building sdkparcelables^linux_glibc_x86_64"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja sdkparcelables,linux_glibc_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/tools/sdkparcelables/sdkparcelables^linux_glibc_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/base/sdkparcelables^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/tools/sdkparcelables/sdkparcelables^linux_glibc_x86_64
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/frameworks/base/sdkparcelables^linux_glibc_x86_64.output $GITHUB_WORKSPACE/artifacts/frameworks/base/tools/sdkparcelables/sdkparcelables^linux_glibc_x86_64 $GITHUB_WORKSPACE/artifacts/frameworks/base/tools/sdkparcelables/sdkparcelables^linux_glibc_x86_64/addition_copy_files.output
+
 
 rm -rf out
 
@@ -363,6 +378,7 @@ tar -cf frameworks_base.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPA
 gh release --repo cibuilde/aosp-buildbot upload android12-gsi_04 frameworks_base.tar.zst --clobber
 
 du -ah -d1 frameworks_base*.tar.zst | sort -h
+
 
 if [ ! -f "$GITHUB_WORKSPACE/cache/art.tar.zst" ]; then
   echo "Compressing art -> art.tar.zst"
@@ -472,10 +488,6 @@ if [ ! -f "$GITHUB_WORKSPACE/cache/packages_modules_StatsD.tar.zst" ]; then
   echo "Compressing packages/modules/StatsD -> packages_modules_StatsD.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/packages_modules_StatsD.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/packages/modules/StatsD/ .
 fi
-if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_build-tools.tar.zst" ]; then
-  echo "Compressing prebuilts/build-tools -> prebuilts_build-tools.tar.zst"
-  tar -cf $GITHUB_WORKSPACE/cache/prebuilts_build-tools.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/prebuilts/build-tools/ .
-fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_gcc_linux-x86_host_x86_64-linux-glibc2.17-4.8.tar.zst" ]; then
   echo "Compressing prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8 -> prebuilts_gcc_linux-x86_host_x86_64-linux-glibc2.17-4.8.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/prebuilts_gcc_linux-x86_host_x86_64-linux-glibc2.17-4.8.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8/ .
@@ -560,5 +572,6 @@ if [ ! -f "$GITHUB_WORKSPACE/cache/tools_metalava.tar.zst" ]; then
   echo "Compressing tools/metalava -> tools_metalava.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/tools_metalava.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/tools/metalava/ .
 fi
+
 
 rm -rf aosp

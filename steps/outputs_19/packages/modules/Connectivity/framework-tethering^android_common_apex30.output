@@ -1,8 +1,2 @@
-out/soong/.intermediates/packages/modules/Connectivity/Tethering/common/TetheringLib/framework-tethering/android_common_apex30/gen/aidl/aidl0.srcjar
-out/soong/.intermediates/packages/modules/Connectivity/Tethering/common/TetheringLib/framework-tethering/android_common_apex30/turbine/framework-tethering.jar
-out/soong/.intermediates/packages/modules/Connectivity/Tethering/common/TetheringLib/framework-tethering/android_common_apex30/turbine-combined/framework-tethering.jar
-out/soong/.intermediates/packages/modules/Connectivity/Tethering/common/TetheringLib/framework-tethering/android_common_apex30/turbine-jarjar/framework-tethering.jar
-out/soong/.intermediates/packages/modules/Connectivity/Tethering/common/TetheringLib/framework-tethering/android_common_apex30/javac/framework-tethering.jar
-out/soong/.intermediates/packages/modules/Connectivity/Tethering/common/TetheringLib/framework-tethering/android_common_apex30/jarjar/framework-tethering.jar
-out/soong/.intermediates/packages/modules/Connectivity/Tethering/common/TetheringLib/framework-tethering/android_common_apex30/dex/framework-tethering.jar
 out/soong/.intermediates/packages/modules/Connectivity/Tethering/common/TetheringLib/framework-tethering/android_common_apex30/aligned/framework-tethering.jar
+out/soong/.intermediates/packages/modules/Connectivity/Tethering/common/TetheringLib/framework-tethering/android_common_apex30/turbine-jarjar/framework-tethering.jar

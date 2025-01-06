@@ -18,6 +18,10 @@ jobs:
         key: art@${{ env.branch }}
     - uses: actions/cache@v4
       with:
+        path: cache/build_make.tar.zst
+        key: build_make@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
         path: cache/build_soong.tar.zst
         key: build_soong@${{ env.branch }}
     - uses: actions/cache@v4
@@ -122,6 +126,10 @@ jobs:
         key: libcore@${{ env.branch }}
     - uses: actions/cache@v4
       with:
+        path: cache/libnativehelper.tar.zst
+        key: libnativehelper@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
         path: cache/packages_apps_Car_libs.tar.zst
         key: packages_apps_Car_libs@${{ env.branch }}
     - uses: actions/cache@v4
@@ -136,6 +144,10 @@ jobs:
       with:
         path: cache/packages_modules_Connectivity.tar.zst
         key: packages_modules_Connectivity@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/packages_modules_NetworkStack.tar.zst
+        key: packages_modules_NetworkStack@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/packages_modules_StatsD.tar.zst
@@ -162,12 +174,16 @@ jobs:
         key: prebuilts_sdk@${{ env.branch }}
     - uses: actions/cache@v4
       with:
-        path: cache/system_core.tar.zst
-        key: system_core@${{ env.branch }}
+        path: cache/system_hardware_interfaces.tar.zst
+        key: system_hardware_interfaces@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/system_libhidl.tar.zst
         key: system_libhidl@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/system_security.tar.zst
+        key: system_security@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/system_sepolicy.tar.zst

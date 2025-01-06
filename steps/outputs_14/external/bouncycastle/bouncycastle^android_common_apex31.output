@@ -1,5 +1,2 @@
-out/soong/.intermediates/external/bouncycastle/bouncycastle/android_common_apex31/turbine/bouncycastle.jar
-out/soong/.intermediates/external/bouncycastle/bouncycastle/android_common_apex31/turbine-combined/bouncycastle.jar
-out/soong/.intermediates/external/bouncycastle/bouncycastle/android_common_apex31/javac/bouncycastle.jar
-out/soong/.intermediates/external/bouncycastle/bouncycastle/android_common_apex31/dex/bouncycastle.jar
 out/soong/.intermediates/external/bouncycastle/bouncycastle/android_common_apex31/aligned/bouncycastle.jar
+out/soong/.intermediates/external/bouncycastle/bouncycastle/android_common_apex31/turbine-combined/bouncycastle.jar

@@ -2,7 +2,5 @@ out/soong/.intermediates/frameworks/base/packages/ExternalStorageProvider/Extern
 out/soong/.intermediates/frameworks/base/packages/ExternalStorageProvider/ExternalStorageProvider/android_common/dexpreopt/dexpreopt.config
 out/soong/.intermediates/frameworks/base/packages/ExternalStorageProvider/ExternalStorageProvider/android_common/dexpreopt/oat/x86_64/package.odex
 out/soong/.intermediates/frameworks/base/packages/ExternalStorageProvider/ExternalStorageProvider/android_common/dexpreopt/oat/x86_64/package.vdex
-out/soong/.intermediates/frameworks/base/packages/ExternalStorageProvider/ExternalStorageProvider/android_common/javac/ExternalStorageProvider.jar
-out/soong/.intermediates/frameworks/base/packages/ExternalStorageProvider/ExternalStorageProvider/android_common/package-res.apk
 out/soong/.intermediates/frameworks/base/packages/ExternalStorageProvider/ExternalStorageProvider/android_common/proguard_dictionary
 out/soong/.intermediates/frameworks/base/packages/ExternalStorageProvider/ExternalStorageProvider/android_common/proguard_usage.zip

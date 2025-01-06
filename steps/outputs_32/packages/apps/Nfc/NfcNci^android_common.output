@@ -1,6 +1,4 @@
 out/soong/.intermediates/packages/apps/Nfc/NfcNci/android_common/NfcNci.apk
-out/soong/.intermediates/packages/apps/Nfc/NfcNci/android_common/combined/NfcNci.jar
 out/soong/.intermediates/packages/apps/Nfc/NfcNci/android_common/dexpreopt/dexpreopt.config
 out/soong/.intermediates/packages/apps/Nfc/NfcNci/android_common/dexpreopt/oat/x86_64/package.odex
 out/soong/.intermediates/packages/apps/Nfc/NfcNci/android_common/dexpreopt/oat/x86_64/package.vdex
-out/soong/.intermediates/packages/apps/Nfc/NfcNci/android_common/package-res.apk

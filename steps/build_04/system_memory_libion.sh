@@ -1,6 +1,5 @@
-set -e
 
-echo "entering system/memory/libion"
+set -e
 
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
@@ -13,10 +12,11 @@ if [ -d "$GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86" ]; then
   mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86 prebuilts/clang/host/linux-x86
 fi
 
+echo "Preparing for system/memory/libion"
+
 clone_depth_platform bionic
 clone_depth_platform external/libcxx
 clone_depth_platform external/libcxxabi
-clone_project platform/prebuilts/build-tools prebuilts/build-tools android12-gsi "/linux-x86/bin" "/linux-x86/lib64" "/path" "/common"
 clone_depth_platform prebuilts/gcc/linux-x86/x86/x86_64-linux-android-4.9
 clone_depth_platform system/logging
 clone_depth_platform system/memory/libion
@@ -36,6 +36,7 @@ mkdir -p $GITHUB_WORKSPACE/artifacts/system/memory/libion/libion^android_vendor.
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/memory/libion/libion^android_vendor.31_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/memory/libion/libion^android_vendor.31_x86_x86_64_static
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/system/memory/libion/libion^android_vendor.31_x86_x86_64_static.output $GITHUB_WORKSPACE/artifacts/system/memory/libion/libion^android_vendor.31_x86_x86_64_static $GITHUB_WORKSPACE/artifacts/system/memory/libion/libion^android_vendor.31_x86_x86_64_static/addition_copy_files.output
 
+
 rm -rf out
 
 cd $GITHUB_WORKSPACE/
@@ -43,6 +44,7 @@ tar -cf system_memory_libion.tar.zst --use-compress-program zstdmt -C $GITHUB_WO
 gh release --repo cibuilde/aosp-buildbot upload android12-gsi_04 system_memory_libion.tar.zst --clobber
 
 du -ah -d1 system_memory_libion*.tar.zst | sort -h
+
 
 if [ ! -f "$GITHUB_WORKSPACE/cache/bionic.tar.zst" ]; then
   echo "Compressing bionic -> bionic.tar.zst"
@@ -56,10 +58,6 @@ if [ ! -f "$GITHUB_WORKSPACE/cache/external_libcxxabi.tar.zst" ]; then
   echo "Compressing external/libcxxabi -> external_libcxxabi.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/external_libcxxabi.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/libcxxabi/ .
 fi
-if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_build-tools.tar.zst" ]; then
-  echo "Compressing prebuilts/build-tools -> prebuilts_build-tools.tar.zst"
-  tar -cf $GITHUB_WORKSPACE/cache/prebuilts_build-tools.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/prebuilts/build-tools/ .
-fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_gcc_linux-x86_x86_x86_64-linux-android-4.9.tar.zst" ]; then
   echo "Compressing prebuilts/gcc/linux-x86/x86/x86_64-linux-android-4.9 -> prebuilts_gcc_linux-x86_x86_x86_64-linux-android-4.9.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/prebuilts_gcc_linux-x86_x86_x86_64-linux-android-4.9.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/prebuilts/gcc/linux-x86/x86/x86_64-linux-android-4.9/ .
@@ -72,5 +70,6 @@ if [ ! -f "$GITHUB_WORKSPACE/cache/system_memory_libion.tar.zst" ]; then
   echo "Compressing system/memory/libion -> system_memory_libion.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/system_memory_libion.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/system/memory/libion/ .
 fi
+
 
 rm -rf aosp

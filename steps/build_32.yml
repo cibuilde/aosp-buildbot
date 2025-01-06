@@ -30,10 +30,6 @@ jobs:
         key: cts@${{ env.branch }}
     - uses: actions/cache@v4
       with:
-        path: cache/development.tar.zst
-        key: development@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
         path: cache/device_google_cuttlefish.tar.zst
         key: device_google_cuttlefish@${{ env.branch }}
     - uses: actions/cache@v4
@@ -54,6 +50,10 @@ jobs:
         key: external_bouncycastle@${{ env.branch }}
     - uses: actions/cache@v4
       with:
+        path: cache/external_cbor-java.tar.zst
+        key: external_cbor-java@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
         path: cache/external_chromium-webview.tar.zst
         key: external_chromium-webview@${{ env.branch }}
     - uses: actions/cache@v4
@@ -66,8 +66,8 @@ jobs:
         key: external_guava@${{ env.branch }}
     - uses: actions/cache@v4
       with:
-        path: cache/external_jacoco.tar.zst
-        key: external_jacoco@${{ env.branch }}
+        path: cache/external_icu.tar.zst
+        key: external_icu@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/external_jsr305.tar.zst
@@ -118,8 +118,8 @@ jobs:
         key: external_xz-java@${{ env.branch }}
     - uses: actions/cache@v4
       with:
-        path: cache/external_zxing.tar.zst
-        key: external_zxing@${{ env.branch }}
+        path: cache/frameworks_av.tar.zst
+        key: frameworks_av@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/frameworks_base.tar.zst
@@ -182,8 +182,16 @@ jobs:
         key: hardware_interfaces@${{ env.branch }}
     - uses: actions/cache@v4
       with:
+        path: cache/hardware_ril.tar.zst
+        key: hardware_ril@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
         path: cache/libcore.tar.zst
         key: libcore@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/packages_apps_Bluetooth.tar.zst
+        key: packages_apps_Bluetooth@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/packages_apps_Browser2.tar.zst
@@ -274,6 +282,10 @@ jobs:
         key: packages_apps_QuickSearchBox@${{ env.branch }}
     - uses: actions/cache@v4
       with:
+        path: cache/packages_apps_RemoteProvisioner.tar.zst
+        key: packages_apps_RemoteProvisioner@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
         path: cache/packages_apps_SecureElement.tar.zst
         key: packages_apps_SecureElement@${{ env.branch }}
     - uses: actions/cache@v4
@@ -314,6 +326,10 @@ jobs:
         key: packages_modules_CaptivePortalLogin@${{ env.branch }}
     - uses: actions/cache@v4
       with:
+        path: cache/packages_modules_Connectivity.tar.zst
+        key: packages_modules_Connectivity@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
         path: cache/packages_modules_NetworkPermissionConfig.tar.zst
         key: packages_modules_NetworkPermissionConfig@${{ env.branch }}
     - uses: actions/cache@v4
@@ -322,8 +338,8 @@ jobs:
         key: packages_modules_NetworkStack@${{ env.branch }}
     - uses: actions/cache@v4
       with:
-        path: cache/packages_modules_StatsD.tar.zst
-        key: packages_modules_StatsD@${{ env.branch }}
+        path: cache/packages_modules_Permission.tar.zst
+        key: packages_modules_Permission@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/packages_providers_BlockedNumberProvider.tar.zst
@@ -422,12 +438,28 @@ jobs:
         key: prebuilts_tools@${{ env.branch }}
     - uses: actions/cache@v4
       with:
+        path: cache/system_bt.tar.zst
+        key: system_bt@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
         path: cache/system_core.tar.zst
         key: system_core@${{ env.branch }}
     - uses: actions/cache@v4
       with:
+        path: cache/system_extras.tar.zst
+        key: system_extras@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/system_gsid.tar.zst
+        key: system_gsid@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
         path: cache/system_hardware_interfaces.tar.zst
         key: system_hardware_interfaces@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/system_iorap.tar.zst
+        key: system_iorap@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/system_libhidl.tar.zst
@@ -438,16 +470,16 @@ jobs:
         key: system_libsysprop@${{ env.branch }}
     - uses: actions/cache@v4
       with:
-        path: cache/system_netd.tar.zst
-        key: system_netd@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
         path: cache/system_security.tar.zst
         key: system_security@${{ env.branch }}
     - uses: actions/cache@v4
       with:
-        path: cache/system_sepolicy.tar.zst
-        key: system_sepolicy@${{ env.branch }}
+        path: cache/system_timezone.tar.zst
+        key: system_timezone@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/system_vold.tar.zst
+        key: system_vold@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/tools_apifinder.tar.zst

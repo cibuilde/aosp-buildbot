@@ -1,6 +1,5 @@
-set -e
 
-echo "entering packages/modules/Virtualization"
+set -e
 
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
@@ -13,6 +12,8 @@ if [ -d "$GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86" ]; then
   mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86 prebuilts/clang/host/linux-x86
 fi
 
+echo "Preparing for packages/modules/Virtualization"
+
 clone_depth_platform art
 clone_depth_platform bionic
 clone_depth_platform bootable/recovery
@@ -22,7 +23,6 @@ clone_depth_platform external/e2fsprogs
 clone_depth_platform external/jsoncpp
 clone_depth_platform external/libcap
 clone_depth_platform external/libcxx
-clone_depth_platform external/libcxxabi
 clone_depth_platform external/lzma
 clone_depth_platform external/minijail
 clone_depth_platform external/mksh
@@ -36,7 +36,6 @@ clone_depth_platform external/zlib
 clone_depth_platform frameworks/native
 clone_depth_platform packages/modules/Virtualization
 clone_depth_platform packages/modules/adb
-clone_project platform/prebuilts/build-tools prebuilts/build-tools android12-gsi "/linux-x86/bin" "/linux-x86/lib64" "/path" "/common"
 clone_depth_platform system/apex
 clone_depth_platform system/core
 clone_sparse_exclude system/extras "!/simpleperf/scripts" "!/simpleperf/testdata" "!/simpleperf/demo" "!/simpleperf/doc" "!/memory_replay/traces" "!/ioshark/*.tgz" "!/ioshark/*.tar.gz"
@@ -52,40 +51,29 @@ clone_depth_platform system/tools/hidl
 clone_depth_platform system/unwinding
 
 rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/apex/com.android.runtime^android_common_com.android.runtime_image/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/linker/ld-android^android_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/libc^android_x86_64_shared/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libdl/libdl^android_x86_64_shared/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libdl/libdl_android^android_x86_64_shared/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libm/libm^android_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/libstdc++^android_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libdl/libdl_android^android_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libdl/libdl^android_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libm/libm^android_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/linker/linker^android_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/linker/ld-android^android_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/bootable/recovery/bootloader_message/libbootloader_message^android_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/build/make/tools/releasetools/build_image^linux_glibc_x86_64_PY2/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/build/make/tools/releasetools/sparse_img^linux_glibc_x86_64_PY2/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/scripts/conv_linker_config^linux_glibc_x86_64_PY3/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/cmd/merge_zips/merge_zips^linux_glibc_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/zip/cmd/soong_zip^linux_glibc_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/cmd/zip2zip/zip2zip^linux_glibc_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/cmd/zipsync/zipsync^linux_glibc_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/scripts/conv_linker_config^linux_glibc_x86_64_PY3/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/zip/cmd/soong_zip^linux_glibc_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/avb/avbtool^linux_glibc_x86_64_PY3/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/boringssl/libcrypto^android_x86_64_shared/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/boringssl/libcrypto^linux_glibc_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/e2fsprogs/contrib/android/e2fsdroid^linux_glibc_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/e2fsprogs/lib/blkid/libext2_blkid^linux_glibc_x86_64_shared/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/e2fsprogs/lib/et/libext2_com_err^linux_glibc_x86_64_shared/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/e2fsprogs/lib/e2p/libext2_e2p^linux_glibc_x86_64_shared/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/e2fsprogs/lib/support/libext2_quota^linux_glibc_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/e2fsprogs/lib/uuid/libext2_uuid^android_x86_64_shared/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/e2fsprogs/lib/uuid/libext2_uuid^linux_glibc_x86_64_shared/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/e2fsprogs/lib/ext2fs/libext2fs^linux_glibc_x86_64_shared/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/e2fsprogs/misc/mke2fs^linux_glibc_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/e2fsprogs/misc/tune2fs^linux_glibc_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/icu/icu4c/source/i18n/libicui18n^linux_glibc_x86_64_shared/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/icu/icu4c/source/common/libicuuc^linux_glibc_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/e2fsprogs/misc/mke2fs^linux_glibc_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/jsoncpp/libjsoncpp^android_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcap/libcap^android_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcxx/libc++^android_x86_64_shared/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcxx/libc++^linux_glibc_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/lzma/C/liblzma^android_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/minijail/libminijail^android_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/mksh/sh^android_x86_64/ .
@@ -93,84 +81,71 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/external/pcre/libpcre2^android_x86_64_sh
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/perfetto/heapprofd_client_api^android_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/protobuf/libprotobuf-cpp-full^android_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/selinux/libselinux/libselinux^android_x86_64_shared/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/selinux/secilc/secilc^android_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/selinux/libselinux/sefcontext_compile^linux_glibc_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/sqlite/dist/libsqlite^linux_glibc_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/selinux/secilc/secilc^android_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/tinyxml2/libtinyxml2^android_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/toybox/toybox^android_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/zlib/libz^android_x86_64_shared/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/zlib/libz^linux_glibc_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/native/cmds/servicemanager/servicemanager^android_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/native/libs/adbd_auth/libadbd_auth^android_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/native/libs/binder/libbinder^android_x86_64_shared/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/native/cmds/servicemanager/servicemanager^android_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/Virtualization/microdroid/microdroid_build_prop^android_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/Virtualization/microdroid/microdroid_init_rc^android_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/Virtualization/microdroid/microdroid_vendor^android_common/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/Virtualization/microdroid/microdroid^android_common/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/Virtualization/microdroid/microdroid_init_rc^android_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/adb/libs/libadbd_fs/libadbd_fs^android_x86_64_shared/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/system/apex/apexd/apex_aidl_interface-cpp^android_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/apex/apexd/apexd^android_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/system/core/libprocessgroup/profiles/cgroups.json^android_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/system/core/debuggerd/debuggerd^android_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/system/core/libsparse/img2simg^linux_glibc_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/system/core/init/init_second_stage^android_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/system/core/libprocessgroup/cgrouprc/libcgrouprc^android_x86_64_shared/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/system/core/libcrypto_utils/libcrypto_utils^android_x86_64_shared/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/system/core/libcrypto_utils/libcrypto_utils^linux_glibc_x86_64_shared/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/system/core/libcutils/libcutils^android_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/apex/apexd/apex_aidl_interface-cpp^android_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/core/debuggerd/libdebuggerd_client^android_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/core/debuggerd/debuggerd^android_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/core/debuggerd/tombstoned^android_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/core/fs_mgr/libfs_mgr^android_x86_64_shared/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/system/core/libkeyutils/libkeyutils^android_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/core/fs_mgr/liblp/liblp^android_x86_64_shared/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/system/core/fs_mgr/liblp/liblp^linux_glibc_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/core/init/init_second_stage^android_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/core/libcrypto_utils/libcrypto_utils^android_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/core/libcutils/libcutils^android_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/core/libkeyutils/libkeyutils^android_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/core/libpackagelistparser/libpackagelistparser^android_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/core/libprocessgroup/libprocessgroup^android_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/core/libprocessgroup/cgrouprc/libcgrouprc^android_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/core/libprocessgroup/profiles/cgroups.json^android_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/core/libprocessgroup/setup/libprocessgroup_setup^android_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/core/libsparse/img2simg^linux_glibc_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/core/libsparse/libsparse^android_x86_64_shared/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/system/core/libsparse/libsparse^linux_glibc_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/core/libsysutils/libsysutils^android_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/core/libutils/libutils^android_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/core/libvndksupport/libvndksupport^android_x86_64_shared/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/system/core/rootdir/public.libraries.android.txt^android_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/core/reboot/reboot^android_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/system/core/run-as/run-as^android_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/system/core/debuggerd/tombstoned^android_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/system/core/toolbox/toolbox^android_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/core/rootdir/ueventd.rc^android_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/core/rootdir/public.libraries.android.txt^android_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/core/run-as/run-as^android_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/core/toolbox/toolbox^android_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/extras/ext4_utils/libext4_utils^android_x86_64_shared/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/system/extras/ext4_utils/libext4_utils^linux_glibc_x86_64_shared/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/system/extras/libfec/libfec^android_x86_64_shared/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/system/extras/squashfs_utils/libsquashfs_utils^android_x86_64_shared/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/system/extras/partition_tools/lpmake^linux_glibc_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/extras/ext4_utils/mkuserimg_mke2fs^linux_glibc_x86_64_PY2/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/extras/libfec/libfec^android_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/extras/partition_tools/lpmake^linux_glibc_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/extras/squashfs_utils/libsquashfs_utils^android_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/gsid/libgsi^android_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/libbase/libbase^android_x86_64_shared/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/system/libbase/libbase^linux_glibc_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/libprocinfo/libprocinfo^android_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/libvintf/libvintf^android_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/libziparchive/libziparchive^android_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/linkerconfig/linkerconfig^android_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^android_x86_64_shared/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^linux_glibc_x86_64_shared/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/logwrapper/liblogwrap^android_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/logcat/logcat^android_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/logd/logd^android_x86_64_cfi/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/logwrapper/liblogwrap^android_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/sepolicy/plat_file_contexts^android_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/sepolicy/plat_hwservice_contexts^android_common/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/system/sepolicy/plat_keystore2_key_contexts^android_common/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/system/sepolicy/plat_mapping_file^android_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/sepolicy/plat_property_contexts^android_common/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/system/sepolicy/plat_sepolicy.cil^android_common/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/system/sepolicy/plat_sepolicy_and_mapping.sha256^android_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/sepolicy/plat_service_contexts^android_common/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/sepolicy/plat_keystore2_key_contexts^android_common/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/sepolicy/plat_sepolicy.cil^android_common/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/sepolicy/plat_mapping_file^android_common/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/sepolicy/plat_sepolicy_and_mapping.sha256^android_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/tools/hidl/utils/libhidl-gen-utils^android_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/unwinding/libbacktrace/libbacktrace^android_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/unwinding/libunwindstack/libunwindstack^android_x86_64_shared/ .
-
-echo "building microdroid^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_12.ninja microdroid,android_common
-mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/Virtualization/microdroid/microdroid^android_common
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_12/packages/modules/Virtualization/microdroid^android_common.output . $GITHUB_WORKSPACE/artifacts/packages/modules/Virtualization/microdroid/microdroid^android_common
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_12/packages/modules/Virtualization/microdroid^android_common.output $GITHUB_WORKSPACE/artifacts/packages/modules/Virtualization/microdroid/microdroid^android_common $GITHUB_WORKSPACE/artifacts/packages/modules/Virtualization/microdroid/microdroid^android_common/addition_copy_files.output
 
 echo "building microdroid_super^android_x86_64"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_12.ninja microdroid_super,android_x86_64
@@ -184,6 +159,13 @@ mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/Virtualization/microdroid/
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_12/packages/modules/Virtualization/microdroid_vbmeta_system^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/packages/modules/Virtualization/microdroid/microdroid_vbmeta_system^android_x86_64
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_12/packages/modules/Virtualization/microdroid_vbmeta_system^android_x86_64.output $GITHUB_WORKSPACE/artifacts/packages/modules/Virtualization/microdroid/microdroid_vbmeta_system^android_x86_64 $GITHUB_WORKSPACE/artifacts/packages/modules/Virtualization/microdroid/microdroid_vbmeta_system^android_x86_64/addition_copy_files.output
 
+echo "building microdroid^android_common"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_12.ninja microdroid,android_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/Virtualization/microdroid/microdroid^android_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_12/packages/modules/Virtualization/microdroid^android_common.output . $GITHUB_WORKSPACE/artifacts/packages/modules/Virtualization/microdroid/microdroid^android_common
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_12/packages/modules/Virtualization/microdroid^android_common.output $GITHUB_WORKSPACE/artifacts/packages/modules/Virtualization/microdroid/microdroid^android_common $GITHUB_WORKSPACE/artifacts/packages/modules/Virtualization/microdroid/microdroid^android_common/addition_copy_files.output
+
+
 rm -rf out
 
 cd $GITHUB_WORKSPACE/
@@ -191,6 +173,7 @@ tar -cf packages_modules_Virtualization.tar.zst --use-compress-program zstdmt -C
 gh release --repo cibuilde/aosp-buildbot upload android12-gsi_12 packages_modules_Virtualization.tar.zst --clobber
 
 du -ah -d1 packages_modules_Virtualization*.tar.zst | sort -h
+
 
 if [ ! -f "$GITHUB_WORKSPACE/cache/art.tar.zst" ]; then
   echo "Compressing art -> art.tar.zst"
@@ -227,10 +210,6 @@ fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/external_libcxx.tar.zst" ]; then
   echo "Compressing external/libcxx -> external_libcxx.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/external_libcxx.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/libcxx/ .
-fi
-if [ ! -f "$GITHUB_WORKSPACE/cache/external_libcxxabi.tar.zst" ]; then
-  echo "Compressing external/libcxxabi -> external_libcxxabi.tar.zst"
-  tar -cf $GITHUB_WORKSPACE/cache/external_libcxxabi.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/libcxxabi/ .
 fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/external_lzma.tar.zst" ]; then
   echo "Compressing external/lzma -> external_lzma.tar.zst"
@@ -284,10 +263,6 @@ if [ ! -f "$GITHUB_WORKSPACE/cache/packages_modules_adb.tar.zst" ]; then
   echo "Compressing packages/modules/adb -> packages_modules_adb.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/packages_modules_adb.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/packages/modules/adb/ .
 fi
-if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_build-tools.tar.zst" ]; then
-  echo "Compressing prebuilts/build-tools -> prebuilts_build-tools.tar.zst"
-  tar -cf $GITHUB_WORKSPACE/cache/prebuilts_build-tools.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/prebuilts/build-tools/ .
-fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/system_apex.tar.zst" ]; then
   echo "Compressing system/apex -> system_apex.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/system_apex.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/system/apex/ .
@@ -340,5 +315,6 @@ if [ ! -f "$GITHUB_WORKSPACE/cache/system_unwinding.tar.zst" ]; then
   echo "Compressing system/unwinding -> system_unwinding.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/system_unwinding.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/system/unwinding/ .
 fi
+
 
 rm -rf aosp

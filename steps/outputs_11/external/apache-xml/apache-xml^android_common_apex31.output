@@ -1,8 +1,3 @@
-out/soong/.intermediates/external/apache-xml/apache-xml/android_common_apex31/turbine/apache-xml.jar
-out/soong/.intermediates/external/apache-xml/apache-xml/android_common_apex31/turbine-combined/apache-xml.jar
-out/soong/.intermediates/external/apache-xml/apache-xml/android_common_apex31/javac/apache-xml.jar
-out/soong/.intermediates/external/apache-xml/apache-xml/android_common_apex31/withres/apache-xml.jar
-out/soong/.intermediates/external/apache-xml/apache-xml/android_common_apex31/dex/apache-xml.jar
-out/soong/.intermediates/external/apache-xml/apache-xml/android_common_apex31/aligned/apache-xml.jar
-out/soong/.intermediates/external/apache-xml/apache-xml/android_common_apex31/dex-withres/apache-xml.jar
 out/soong/.intermediates/external/apache-xml/apache-xml/android_common_apex31/dex-withres-aligned/apache-xml.jar
+out/soong/.intermediates/external/apache-xml/apache-xml/android_common_apex31/turbine-combined/apache-xml.jar
+out/soong/.intermediates/external/apache-xml/apache-xml/android_common_apex31/withres/apache-xml.jar

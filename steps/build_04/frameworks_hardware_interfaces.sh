@@ -1,6 +1,5 @@
-set -e
 
-echo "entering frameworks/hardware/interfaces"
+set -e
 
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
@@ -13,6 +12,8 @@ if [ -d "$GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86" ]; then
   mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86 prebuilts/clang/host/linux-x86
 fi
 
+echo "Preparing for frameworks/hardware/interfaces"
+
 clone_depth_platform bionic
 clone_depth_platform external/libcxx
 clone_depth_platform external/libcxxabi
@@ -24,7 +25,6 @@ clone_depth_platform hardware/libhardware
 clone_depth_platform hardware/libhardware_legacy
 clone_depth_platform hardware/ril
 clone_depth_platform libnativehelper
-clone_project platform/prebuilts/build-tools prebuilts/build-tools android12-gsi "/linux-x86/bin" "/linux-x86/lib64" "/path" "/common"
 clone_depth_platform prebuilts/gcc/linux-x86/x86/x86_64-linux-android-4.9
 clone_depth_platform system/core
 clone_depth_platform system/libhidl
@@ -32,8 +32,8 @@ clone_depth_platform system/logging
 clone_depth_platform system/media
 clone_depth_platform system/tools/aidl
 
-rsync -a -r $GITHUB_WORKSPACE/downloads/build/blueprint/bpmodify^linux_glibc_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcxx/libc++^linux_glibc_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/hardware/interfaces/stats/aidl/android.frameworks.stats-V1-ndk_platform-source^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/hardware/interfaces/stats/aidl/android.frameworks.stats-api^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/tools/aidl/aidl^linux_glibc_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/tools/hidl/hidl-gen^linux_glibc_x86_64/ .
 
@@ -217,6 +217,24 @@ mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/sensorservic
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/hardware/interfaces/android.frameworks.sensorservice@1.0_genc++_headers^.output . $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/sensorservice/1.0/android.frameworks.sensorservice@1.0_genc++_headers^
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/frameworks/hardware/interfaces/android.frameworks.sensorservice@1.0_genc++_headers^.output $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/sensorservice/1.0/android.frameworks.sensorservice@1.0_genc++_headers^ $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/sensorservice/1.0/android.frameworks.sensorservice@1.0_genc++_headers^/addition_copy_files.output
 
+echo "building android.frameworks.stats@1.0-inheritance-hierarchy^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.frameworks.stats@1.0-inheritance-hierarchy,
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/stats/1.0/android.frameworks.stats@1.0-inheritance-hierarchy^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/hardware/interfaces/android.frameworks.stats@1.0-inheritance-hierarchy^.output . $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/stats/1.0/android.frameworks.stats@1.0-inheritance-hierarchy^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/frameworks/hardware/interfaces/android.frameworks.stats@1.0-inheritance-hierarchy^.output $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/stats/1.0/android.frameworks.stats@1.0-inheritance-hierarchy^ $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/stats/1.0/android.frameworks.stats@1.0-inheritance-hierarchy^/addition_copy_files.output
+
+echo "building android.frameworks.stats@1.0_genc++^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.frameworks.stats@1.0_genc++,
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/stats/1.0/android.frameworks.stats@1.0_genc++^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/hardware/interfaces/android.frameworks.stats@1.0_genc++^.output . $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/stats/1.0/android.frameworks.stats@1.0_genc++^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/frameworks/hardware/interfaces/android.frameworks.stats@1.0_genc++^.output $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/stats/1.0/android.frameworks.stats@1.0_genc++^ $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/stats/1.0/android.frameworks.stats@1.0_genc++^/addition_copy_files.output
+
+echo "building android.frameworks.stats@1.0_genc++_headers^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.frameworks.stats@1.0_genc++_headers,
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/stats/1.0/android.frameworks.stats@1.0_genc++_headers^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/hardware/interfaces/android.frameworks.stats@1.0_genc++_headers^.output . $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/stats/1.0/android.frameworks.stats@1.0_genc++_headers^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/frameworks/hardware/interfaces/android.frameworks.stats@1.0_genc++_headers^.output $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/stats/1.0/android.frameworks.stats@1.0_genc++_headers^ $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/stats/1.0/android.frameworks.stats@1.0_genc++_headers^/addition_copy_files.output
+
 echo "building android.frameworks.stats-V1-ndk_platform-source^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.frameworks.stats-V1-ndk_platform-source,
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/stats/aidl/android.frameworks.stats-V1-ndk_platform-source^
@@ -241,24 +259,6 @@ mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/stats/aidl/a
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/hardware/interfaces/android.frameworks.stats-api^.output . $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/stats/aidl/android.frameworks.stats-api^
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/frameworks/hardware/interfaces/android.frameworks.stats-api^.output $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/stats/aidl/android.frameworks.stats-api^ $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/stats/aidl/android.frameworks.stats-api^/addition_copy_files.output
 
-echo "building android.frameworks.stats@1.0-inheritance-hierarchy^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.frameworks.stats@1.0-inheritance-hierarchy,
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/stats/1.0/android.frameworks.stats@1.0-inheritance-hierarchy^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/hardware/interfaces/android.frameworks.stats@1.0-inheritance-hierarchy^.output . $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/stats/1.0/android.frameworks.stats@1.0-inheritance-hierarchy^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/frameworks/hardware/interfaces/android.frameworks.stats@1.0-inheritance-hierarchy^.output $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/stats/1.0/android.frameworks.stats@1.0-inheritance-hierarchy^ $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/stats/1.0/android.frameworks.stats@1.0-inheritance-hierarchy^/addition_copy_files.output
-
-echo "building android.frameworks.stats@1.0_genc++^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.frameworks.stats@1.0_genc++,
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/stats/1.0/android.frameworks.stats@1.0_genc++^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/hardware/interfaces/android.frameworks.stats@1.0_genc++^.output . $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/stats/1.0/android.frameworks.stats@1.0_genc++^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/frameworks/hardware/interfaces/android.frameworks.stats@1.0_genc++^.output $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/stats/1.0/android.frameworks.stats@1.0_genc++^ $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/stats/1.0/android.frameworks.stats@1.0_genc++^/addition_copy_files.output
-
-echo "building android.frameworks.stats@1.0_genc++_headers^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.frameworks.stats@1.0_genc++_headers,
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/stats/1.0/android.frameworks.stats@1.0_genc++_headers^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/hardware/interfaces/android.frameworks.stats@1.0_genc++_headers^.output . $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/stats/1.0/android.frameworks.stats@1.0_genc++_headers^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/frameworks/hardware/interfaces/android.frameworks.stats@1.0_genc++_headers^.output $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/stats/1.0/android.frameworks.stats@1.0_genc++_headers^ $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/stats/1.0/android.frameworks.stats@1.0_genc++_headers^/addition_copy_files.output
-
 echo "building android.frameworks.vr.composer@1.0-inheritance-hierarchy^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.frameworks.vr.composer@1.0-inheritance-hierarchy,
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/vr/composer/1.0/android.frameworks.vr.composer@1.0-inheritance-hierarchy^
@@ -271,6 +271,7 @@ mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/vr/composer/
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/frameworks/hardware/interfaces/android.frameworks.vr.composer@2.0-inheritance-hierarchy^.output . $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/vr/composer/2.0/android.frameworks.vr.composer@2.0-inheritance-hierarchy^
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/frameworks/hardware/interfaces/android.frameworks.vr.composer@2.0-inheritance-hierarchy^.output $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/vr/composer/2.0/android.frameworks.vr.composer@2.0-inheritance-hierarchy^ $GITHUB_WORKSPACE/artifacts/frameworks/hardware/interfaces/vr/composer/2.0/android.frameworks.vr.composer@2.0-inheritance-hierarchy^/addition_copy_files.output
 
+
 rm -rf out
 
 cd $GITHUB_WORKSPACE/
@@ -278,6 +279,7 @@ tar -cf frameworks_hardware_interfaces.tar.zst --use-compress-program zstdmt -C 
 gh release --repo cibuilde/aosp-buildbot upload android12-gsi_04 frameworks_hardware_interfaces.tar.zst --clobber
 
 du -ah -d1 frameworks_hardware_interfaces*.tar.zst | sort -h
+
 
 if [ ! -f "$GITHUB_WORKSPACE/cache/bionic.tar.zst" ]; then
   echo "Compressing bionic -> bionic.tar.zst"
@@ -323,10 +325,6 @@ if [ ! -f "$GITHUB_WORKSPACE/cache/libnativehelper.tar.zst" ]; then
   echo "Compressing libnativehelper -> libnativehelper.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/libnativehelper.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/libnativehelper/ .
 fi
-if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_build-tools.tar.zst" ]; then
-  echo "Compressing prebuilts/build-tools -> prebuilts_build-tools.tar.zst"
-  tar -cf $GITHUB_WORKSPACE/cache/prebuilts_build-tools.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/prebuilts/build-tools/ .
-fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_gcc_linux-x86_x86_x86_64-linux-android-4.9.tar.zst" ]; then
   echo "Compressing prebuilts/gcc/linux-x86/x86/x86_64-linux-android-4.9 -> prebuilts_gcc_linux-x86_x86_x86_64-linux-android-4.9.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/prebuilts_gcc_linux-x86_x86_x86_64-linux-android-4.9.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/prebuilts/gcc/linux-x86/x86/x86_64-linux-android-4.9/ .
@@ -351,5 +349,6 @@ if [ ! -f "$GITHUB_WORKSPACE/cache/system_tools_aidl.tar.zst" ]; then
   echo "Compressing system/tools/aidl -> system_tools_aidl.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/system_tools_aidl.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/system/tools/aidl/ .
 fi
+
 
 rm -rf aosp

@@ -227,4 +227,3 @@ out/soong/.intermediates/bionic/libm/libm/android_x86_64_static/obj/bionic/libm/
 out/soong/.intermediates/bionic/libm/libm/android_x86_64_static/obj/bionic/libm/x86_64/sqrtf.o
 out/soong/.intermediates/bionic/libm/libm/android_x86_64_static/obj/bionic/libm/x86_64/trunc.o
 out/soong/.intermediates/bionic/libm/libm/android_x86_64_static/obj/bionic/libm/x86_64/truncf.o
-out/soong/ndk/sysroot/usr/lib/x86_64-linux-android/libm.a

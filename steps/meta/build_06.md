@@ -1,4 +1,4 @@
-##### Tag: android12-gsi_06 Projects: 114 Targets: 500
+##### Tag: android12-gsi_06 Projects: 115 Targets: 501
 
 ###### **art**: 19
 `art-linker-config^android_x86_64` `libart-disassembler^android_x86_64_shared_apex31` `libart-disassembler^android_x86_x86_64_shared_apex31` `libart^android_x86_64_static_apex31` `libart^android_x86_x86_64_static_apex31` `libdt_fd_forward^android_x86_64_shared_apex31` `libdt_fd_forward^android_x86_x86_64_shared_apex31` `libnativebridge_lazy^android_x86_64_shared` `libnativebridge_lazy^android_x86_x86_64_shared` `libnativeloader_lazy^android_x86_64_shared` `libnativeloader_lazy^android_x86_x86_64_shared` `libodrstatslog^android_x86_64_static_lto-thin_apex31` `libodrstatslog^android_x86_x86_64_static_lto-thin_apex31` `libstatslog_art^android_x86_64_static_lto-thin_apex31` `libstatslog_art^android_x86_x86_64_static_lto-thin_apex31` `statslog_art.cpp^` `statslog_art.h^` `statslog_odrefresh.cpp^` `statslog_odrefresh.h^`
@@ -154,6 +154,8 @@
 `com.android.resolv^android_common_cfi_com.android.resolv_image` `libnetd_resolv^android_x86_64_shared_cfi_com.android.resolv` `libnetd_resolv^android_x86_64_static_cfi_com.android.resolv` `libstatslog_resolv^android_x86_64_static_cfi_apex29` `statslog_resolv.cpp^` `statslog_resolv.h^`
 ###### **packages/modules/Gki**: 2
 `libgkiprops^android_recovery_x86_64_static` `libgkiprops^android_x86_64_static`
+###### **packages/modules/ModuleMetadata**: 1
+`ModuleMetadata^android_common`
 ###### **packages/modules/NetworkStack**: 1
 `statslog-networkstack-java-gen-stable^`
 ###### **packages/modules/NeuralNetworks**: 6

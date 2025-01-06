@@ -1,0 +1,4 @@
+out/soong/.intermediates/packages/apps/Bluetooth/Bluetooth/android_common/Bluetooth.apk
+out/soong/.intermediates/packages/apps/Bluetooth/Bluetooth/android_common/dexpreopt/dexpreopt.config
+out/soong/.intermediates/packages/apps/Bluetooth/Bluetooth/android_common/dexpreopt/oat/x86_64/package.odex
+out/soong/.intermediates/packages/apps/Bluetooth/Bluetooth/android_common/dexpreopt/oat/x86_64/package.vdex

@@ -1,6 +1,5 @@
-set -e
 
-echo "entering bootable/recovery"
+set -e
 
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
@@ -12,6 +11,8 @@ ln -sf $GITHUB_WORKSPACE/ninja .
 if [ -d "$GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86" ]; then
   mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86 prebuilts/clang/host/linux-x86
 fi
+
+echo "Preparing for bootable/recovery"
 
 clone_depth_platform art
 clone_depth_platform bionic
@@ -43,7 +44,6 @@ clone_depth_platform hardware/libhardware_legacy
 clone_depth_platform hardware/ril
 clone_depth_platform packages/modules/Gki
 clone_depth_platform packages/modules/adb
-clone_project platform/prebuilts/build-tools prebuilts/build-tools android12-gsi "/linux-x86/bin" "/linux-x86/lib64" "/path" "/common"
 clone_depth_platform prebuilts/gcc/linux-x86/x86/x86_64-linux-android-4.9
 clone_depth_platform system/core
 clone_sparse_exclude system/extras "!/simpleperf/scripts" "!/simpleperf/testdata" "!/simpleperf/demo" "!/simpleperf/doc" "!/memory_replay/traces" "!/ioshark/*.tgz" "!/ioshark/*.tar.gz"
@@ -60,16 +60,18 @@ clone_depth_platform system/tools/hidl
 clone_depth_platform system/unwinding
 clone_depth_platform system/update_engine
 
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/libc^android_recovery_x86_64_shared_current/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/libc^android_x86_64_shared_current/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/crtbegin_dynamic^android_recovery_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/crtbegin_dynamic^android_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/crtend_android^android_recovery_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/crtend_android^android_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/libc^android_recovery_x86_64_shared_current/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/libc^android_x86_64_shared_current/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libdl/libdl^android_recovery_x86_64_shared_current/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libdl/libdl^android_x86_64_shared_current/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libm/libm^android_recovery_x86_64_shared_current/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libm/libm^android_x86_64_shared_current/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bootable/recovery/librecovery^android_recovery_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bootable/recovery/librecovery_fastboot^android_recovery_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/bootable/recovery/bootloader_message/libbootloader_message^android_recovery_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/bootable/recovery/bootloader_message/libbootloader_message^android_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/bootable/recovery/fuse_sideload/libfusesideload^android_recovery_x86_64_shared/ .
@@ -79,8 +81,6 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/bootable/recovery/minadbd/libminadbd_ser
 rsync -a -r $GITHUB_WORKSPACE/downloads/bootable/recovery/minui/libminui^android_recovery_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/bootable/recovery/otautil/libotautil^android_recovery_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/bootable/recovery/otautil/libotautil^android_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/bootable/recovery/librecovery^android_recovery_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/bootable/recovery/librecovery_fastboot^android_recovery_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/bootable/recovery/recovery_ui/librecovery_ui^android_recovery_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/bootable/recovery/recovery_ui/librecovery_ui_default^android_recovery_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/bootable/recovery/recovery_utils/librecovery_utils^android_recovery_x86_64_static/ .
@@ -109,36 +109,36 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/health/1.0/android.h
 rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/health/2.0/android.hardware.health@2.0^android_recovery_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/health/2.0/android.hardware.health@2.0_genc++_headers^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/health/2.0/utils/libhealthhalutils/libhealthhalutils^android_recovery_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/adb/crypto/libadb_crypto^android_recovery_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/adb/proto/libadb_protos^android_recovery_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/adb/libadb_sysdeps^android_recovery_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/adb/tls/libadb_tls_connection^android_recovery_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/adb/libs/adbconnection/libadbconnection_server^android_recovery_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/adb/libadbd^android_recovery_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/adb/libadbd_core^android_recovery_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/adb/libadbd^android_recovery_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/adb/crypto/libadb_crypto^android_recovery_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/adb/libs/adbconnection/libadbconnection_server^android_recovery_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/adb/libs/libadbd_fs/libadbd_fs^android_recovery_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/adb/proto/libapp_processes_protos_lite^android_recovery_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/system/core/libasyncio/libasyncio^android_recovery_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/system/core/libcrypto_utils/libcrypto_utils^android_recovery_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/system/core/libcutils/libcutils^android_recovery_x86_64_shared/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/system/core/libcutils/libcutils^android_x86_64_shared/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/system/core/libcutils/libcutils_sockets^android_recovery_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/adb/proto/libadb_protos^android_recovery_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/adb/tls/libadb_tls_connection^android_recovery_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/core/diagnose_usb/libdiagnose_usb^android_recovery_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/core/fs_mgr/libfs_mgr^android_recovery_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/core/fs_mgr/libfs_mgr^android_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/core/fs_mgr/libfstab^android_recovery_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/core/fs_mgr/liblp/liblp^android_recovery_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/core/fs_mgr/libsnapshot/libsnapshot_nobinder^android_recovery_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/core/libasyncio/libasyncio^android_recovery_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/core/libcrypto_utils/libcrypto_utils^android_recovery_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/core/libcutils/libcutils^android_recovery_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/core/libcutils/libcutils^android_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/core/libcutils/libcutils_sockets^android_recovery_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/core/libutils/libutils^android_recovery_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/extras/ext4_utils/libext4_utils^android_recovery_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/libbase/libbase^android_recovery_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/libbase/libbase^android_recovery_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/libbase/libbase^android_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/libhidl/libhidlbase^android_recovery_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/libhidl/transport/base/1.0/android.hidl.base@1.0_genc++_headers^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/libhidl/transport/manager/1.0/android.hidl.manager@1.0_genc++_headers^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/libhidl/transport/manager/1.1/android.hidl.manager@1.1_genc++_headers^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/libhidl/transport/manager/1.2/android.hidl.manager@1.2_genc++_headers^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/system/libhidl/libhidlbase^android_recovery_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/libvintf/libvintf^android_recovery_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/libziparchive/libziparchive^android_recovery_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/libziparchive/libziparchive^android_recovery_x86_64_static/ .
@@ -147,23 +147,24 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^android_rec
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/tools/hidl/utils/libhidl-gen-utils^android_recovery_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/update_engine/update_metadata-protos^android_recovery_x86_64_static/ .
 
-echo "building minadbd^android_recovery_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja minadbd,android_recovery_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/bootable/recovery/minadbd/minadbd^android_recovery_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/bootable/recovery/minadbd^android_recovery_x86_64.output . $GITHUB_WORKSPACE/artifacts/bootable/recovery/minadbd/minadbd^android_recovery_x86_64
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_10/bootable/recovery/minadbd^android_recovery_x86_64.output $GITHUB_WORKSPACE/artifacts/bootable/recovery/minadbd/minadbd^android_recovery_x86_64 $GITHUB_WORKSPACE/artifacts/bootable/recovery/minadbd/minadbd^android_recovery_x86_64/addition_copy_files.output
-
 echo "building recovery^android_recovery_x86_64"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja recovery,android_recovery_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/bootable/recovery/recovery^android_recovery_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/bootable/recovery/recovery^android_recovery_x86_64.output . $GITHUB_WORKSPACE/artifacts/bootable/recovery/recovery^android_recovery_x86_64
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_10/bootable/recovery/recovery^android_recovery_x86_64.output $GITHUB_WORKSPACE/artifacts/bootable/recovery/recovery^android_recovery_x86_64 $GITHUB_WORKSPACE/artifacts/bootable/recovery/recovery^android_recovery_x86_64/addition_copy_files.output
 
+echo "building minadbd^android_recovery_x86_64"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja minadbd,android_recovery_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/bootable/recovery/minadbd/minadbd^android_recovery_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/bootable/recovery/minadbd^android_recovery_x86_64.output . $GITHUB_WORKSPACE/artifacts/bootable/recovery/minadbd/minadbd^android_recovery_x86_64
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_10/bootable/recovery/minadbd^android_recovery_x86_64.output $GITHUB_WORKSPACE/artifacts/bootable/recovery/minadbd/minadbd^android_recovery_x86_64 $GITHUB_WORKSPACE/artifacts/bootable/recovery/minadbd/minadbd^android_recovery_x86_64/addition_copy_files.output
+
 echo "building uncrypt^android_x86_64"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja uncrypt,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/bootable/recovery/uncrypt/uncrypt^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/bootable/recovery/uncrypt^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/bootable/recovery/uncrypt/uncrypt^android_x86_64
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_10/bootable/recovery/uncrypt^android_x86_64.output $GITHUB_WORKSPACE/artifacts/bootable/recovery/uncrypt/uncrypt^android_x86_64 $GITHUB_WORKSPACE/artifacts/bootable/recovery/uncrypt/uncrypt^android_x86_64/addition_copy_files.output
+
 
 rm -rf out
 
@@ -172,6 +173,7 @@ tar -cf bootable_recovery.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKS
 gh release --repo cibuilde/aosp-buildbot upload android12-gsi_10 bootable_recovery.tar.zst --clobber
 
 du -ah -d1 bootable_recovery*.tar.zst | sort -h
+
 
 if [ ! -f "$GITHUB_WORKSPACE/cache/art.tar.zst" ]; then
   echo "Compressing art -> art.tar.zst"
@@ -281,10 +283,6 @@ if [ ! -f "$GITHUB_WORKSPACE/cache/packages_modules_adb.tar.zst" ]; then
   echo "Compressing packages/modules/adb -> packages_modules_adb.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/packages_modules_adb.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/packages/modules/adb/ .
 fi
-if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_build-tools.tar.zst" ]; then
-  echo "Compressing prebuilts/build-tools -> prebuilts_build-tools.tar.zst"
-  tar -cf $GITHUB_WORKSPACE/cache/prebuilts_build-tools.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/prebuilts/build-tools/ .
-fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_gcc_linux-x86_x86_x86_64-linux-android-4.9.tar.zst" ]; then
   echo "Compressing prebuilts/gcc/linux-x86/x86/x86_64-linux-android-4.9 -> prebuilts_gcc_linux-x86_x86_x86_64-linux-android-4.9.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/prebuilts_gcc_linux-x86_x86_x86_64-linux-android-4.9.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/prebuilts/gcc/linux-x86/x86/x86_64-linux-android-4.9/ .
@@ -345,5 +343,6 @@ if [ ! -f "$GITHUB_WORKSPACE/cache/system_update_engine.tar.zst" ]; then
   echo "Compressing system/update_engine -> system_update_engine.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/system_update_engine.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/system/update_engine/ .
 fi
+
 
 rm -rf aosp

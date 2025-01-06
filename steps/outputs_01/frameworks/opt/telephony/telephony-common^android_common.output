@@ -1,2 +1,2 @@
-out/soong/.intermediates/frameworks/opt/telephony/telephony-common/android_common/gen/logtags/frameworks/opt/telephony/src/java/com/android/internal/telephony/EventLogTags.java
 out/soong/.intermediates/frameworks/opt/telephony/telephony-common/android_common/dexpreopt/dexpreopt.config
+out/soong/.intermediates/frameworks/opt/telephony/telephony-common/android_common/gen/logtags/frameworks/opt/telephony/src/java/com/android/internal/telephony/EventLogTags.java

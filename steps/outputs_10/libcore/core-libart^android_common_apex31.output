@@ -1,5 +1,2 @@
-out/soong/.intermediates/libcore/core-libart/android_common_apex31/turbine/core-libart.jar
-out/soong/.intermediates/libcore/core-libart/android_common_apex31/turbine-combined/core-libart.jar
-out/soong/.intermediates/libcore/core-libart/android_common_apex31/javac/core-libart.jar
-out/soong/.intermediates/libcore/core-libart/android_common_apex31/dex/core-libart.jar
 out/soong/.intermediates/libcore/core-libart/android_common_apex31/aligned/core-libart.jar
+out/soong/.intermediates/libcore/core-libart/android_common_apex31/turbine-combined/core-libart.jar

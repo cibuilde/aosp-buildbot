@@ -1,15 +1,15 @@
-##### Tag: android12-gsi_02 Projects: 51 Targets: 178
+##### Tag: android12-gsi_02 Projects: 50 Targets: 153
 
-###### **bionic**: 16
-`libm^android_native_bridge_arm64_armv8-a_static` `libm^android_native_bridge_arm_armv7-a-neon_static` `libm^android_recovery_x86_64_static` `libm^android_vendor_ramdisk_x86_64_static` `libm^android_x86_64_static_apex10000` `libm^android_x86_64_static` `libm^android_x86_x86_64_static_apex10000` `libm^android_x86_x86_64_static` `libsystemproperties^android_native_bridge_arm64_armv8-a_static` `libsystemproperties^android_native_bridge_arm_armv7-a-neon_static` `libsystemproperties^android_recovery_x86_64_static` `libsystemproperties^android_vendor_ramdisk_x86_64_static` `libsystemproperties^android_x86_64_static_apex10000` `libsystemproperties^android_x86_64_static` `libsystemproperties^android_x86_x86_64_static_apex10000` `libsystemproperties^android_x86_x86_64_static`
-###### **bootable/recovery**: 3
-`libminui^android_recovery_x86_64_static` `libminui^android_x86_64_static` `libminui^android_x86_x86_64_static`
-###### **build/soong**: 26
-`construct_context^linux_glibc_x86_64_PY2` `dexpreopt_gen^linux_glibc_x86_64` `extract_jar_packages^linux_glibc_x86_64` `gen-kotlin-build-file.py^linux_glibc_x86_64_PY3` `jsonmodify^linux_glibc_x86_64_PY2` `manifest_check^linux_glibc_x86_64_PY2` `manifest_fixer^linux_glibc_x86_64_PY2` `manifest_utils^linux_glibc_x86_64_PY2` `merge_zips^linux_glibc_x86_64` `ndk_api_coverage_parser^linux_glibc_x86_64_PY3` `ndkstubgen^linux_glibc_x86_64_PY3` `ninja_rsp^linux_glibc_x86_64_PY3` `sbox^linux_glibc_x86_64` `sbox_proto^linux_glibc_x86_64` `soong-android-soongconfig^linux_glibc_x86_64` `soong-android^linux_glibc_x86_64` `soong-bazel^linux_glibc_x86_64` `soong-dexpreopt^linux_glibc_x86_64` `soong-shared^linux_glibc_x86_64` `soong-ui-metrics_proto^linux_glibc_x86_64` `soong-zip^linux_glibc_x86_64` `soong^linux_glibc_x86_64` `soong_zip^linux_glibc_x86_64` `symbolfile^linux_glibc_x86_64_PY3` `zip2zip^linux_glibc_x86_64` `zipsync^linux_glibc_x86_64`
+###### **bionic**: 6
+`libm^android_recovery_x86_64_static` `libm^android_vendor_ramdisk_x86_64_static` `libm^android_x86_64_static_apex10000` `libm^android_x86_64_static` `libm^android_x86_x86_64_static_apex10000` `libm^android_x86_x86_64_static`
+###### **bootable/recovery**: 2
+`libminui^android_recovery_x86_64_static` `libminui^android_x86_64_static`
+###### **build/soong**: 25
+`construct_context^linux_glibc_x86_64_PY2` `dexpreopt_gen^linux_glibc_x86_64` `extract_jar_packages^linux_glibc_x86_64` `gen-kotlin-build-file.py^linux_glibc_x86_64_PY3` `jsonmodify^linux_glibc_x86_64_PY2` `manifest_check^linux_glibc_x86_64_PY2` `manifest_fixer^linux_glibc_x86_64_PY2` `manifest_utils^linux_glibc_x86_64_PY2` `merge_zips^linux_glibc_x86_64` `ndkstubgen^linux_glibc_x86_64_PY3` `ninja_rsp^linux_glibc_x86_64_PY3` `sbox^linux_glibc_x86_64` `sbox_proto^linux_glibc_x86_64` `soong-android-soongconfig^linux_glibc_x86_64` `soong-android^linux_glibc_x86_64` `soong-bazel^linux_glibc_x86_64` `soong-dexpreopt^linux_glibc_x86_64` `soong-shared^linux_glibc_x86_64` `soong-ui-metrics_proto^linux_glibc_x86_64` `soong-zip^linux_glibc_x86_64` `soong^linux_glibc_x86_64` `soong_zip^linux_glibc_x86_64` `symbolfile^linux_glibc_x86_64_PY3` `zip2zip^linux_glibc_x86_64` `zipsync^linux_glibc_x86_64`
 ###### **external/crosvm**: 4
 `libassertions^android_x86_64_rlib_rlib-std_apex10000` `librand_ish^android_x86_64_rlib_rlib-std_apex10000` `libsync_rust^android_x86_64_rlib_rlib-std_apex10000` `libsyscall_defines^android_x86_64_rlib_rlib-std_apex10000`
-###### **external/grpc-grpc**: 6
-`libgrpc^android_x86_64_static` `libgrpc^android_x86_x86_64_static` `libgrpc_base^android_x86_64_static` `libgrpc_base^android_x86_x86_64_static` `libgrpc_base_c^android_x86_64_static` `libgrpc_base_c^android_x86_x86_64_static`
+###### **external/grpc-grpc**: 2
+`libgrpc^android_x86_64_static` `libgrpc^android_x86_x86_64_static`
 ###### **external/libcxx**: 17
 `libc++^linux_glibc_x86_64_shared` `libc++^linux_glibc_x86_shared` `libc++_static^android_recovery_x86_64_static` `libc++_static^android_vendor_ramdisk_x86_64_static` `libc++_static^android_x86_64_static_apex10000` `libc++_static^android_x86_64_static_apex29` `libc++_static^android_x86_64_static_apex30` `libc++_static^android_x86_64_static_apex31` `libc++_static^android_x86_64_static_cfi_apex29` `libc++_static^android_x86_64_static` `libc++_static^android_x86_x86_64_static_apex10000` `libc++_static^android_x86_x86_64_static_apex29` `libc++_static^android_x86_x86_64_static_apex30` `libc++_static^android_x86_x86_64_static_apex31` `libc++_static^android_x86_x86_64_static` `libc++_static^linux_glibc_x86_64_static` `libc++_static^linux_glibc_x86_static`
 ###### **external/rust/crates/aho-corasick**: 1
@@ -88,16 +88,14 @@
 `libandroidfw^linux_glibc_x86_64_static`
 ###### **packages/modules/Virtualization**: 1
 `microdroid_bootloader^android_x86_64`
-###### **packages/modules/adb**: 3
-`libadbd_fs^android_recovery_x86_64_static` `libadbd_fs^android_x86_64_static` `libadbd_fs^android_x86_x86_64_static`
 ###### **system/bt**: 2
 `libbt_hci_custom_types^android_x86_64_rlib_rlib-std` `libbt_hci_custom_types^android_x86_x86_64_rlib_rlib-std`
 ###### **system/core**: 2
 `libfs_mgr^android_recovery_x86_64_static` `libfs_mgr^android_x86_64_static`
-###### **system/libbase**: 16
-`libbase^android_recovery_x86_64_static` `libbase^android_vendor_ramdisk_x86_64_static` `libbase^android_x86_64_static_apex10000` `libbase^android_x86_64_static_apex29` `libbase^android_x86_64_static_apex30` `libbase^android_x86_64_static_apex31` `libbase^android_x86_64_static_cfi_apex29` `libbase^android_x86_64_static` `libbase^android_x86_x86_64_static_apex10000` `libbase^android_x86_x86_64_static_apex29` `libbase^android_x86_x86_64_static_apex30` `libbase^android_x86_x86_64_static_apex31` `libbase^android_x86_x86_64_static` `libbase^linux_glibc_x86_64_static` `libbase^linux_glibc_x86_static` `libbase_ndk^android_x86_64_static`
-###### **system/libvintf**: 4
-`libvintf^android_recovery_x86_64_static` `libvintf^android_x86_64_static` `libvintf^android_x86_x86_64_static` `libvintf^linux_glibc_x86_64_static`
+###### **system/libbase**: 13
+`libbase^android_recovery_x86_64_static` `libbase^android_vendor_ramdisk_x86_64_static` `libbase^android_x86_64_static_apex10000` `libbase^android_x86_64_static_apex29` `libbase^android_x86_64_static_apex30` `libbase^android_x86_64_static_cfi_apex29` `libbase^android_x86_64_static` `libbase^android_x86_x86_64_static_apex10000` `libbase^android_x86_x86_64_static_apex30` `libbase^android_x86_x86_64_static` `libbase^linux_glibc_x86_64_static` `libbase^linux_glibc_x86_static` `libbase_ndk^android_x86_64_static`
+###### **system/libvintf**: 1
+`libvintf^android_recovery_x86_64_static`
 ###### **system/sepolicy**: 3
 `checkseapp^linux_glibc_x86_64` `sepolicy-analyze^linux_glibc_x86_64` `version_policy^linux_glibc_x86_64`
 ###### **system/unwinding**: 1

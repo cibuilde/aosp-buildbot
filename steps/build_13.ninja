@@ -7,7 +7,8 @@ pool highmem_pool
 include ninja/global.ninja
 
 include ninja/external/auto/value/auto_value_annotations^android_common.ninja
-include ninja/external/bouncycastle/bouncycastle-repackaged-unbundled^android_common.ninja
+include ninja/external/bouncycastle/bouncycastle-repackaged-unbundled^android_common^00.ninja
+include ninja/external/bouncycastle/bouncycastle-repackaged-unbundled^android_common^13.ninja
 include ninja/external/bouncycastle/bouncycastle-unbundled^android_common.ninja
 include ninja/external/bouncycastle/bouncycastle-unbundled^android_common_apex30.ninja
 include ninja/external/bouncycastle/bouncycastle_ike_digests^android_common.ninja
@@ -64,13 +65,13 @@ build auto_value_annotations,android_common: phony out/soong/.intermediates/exte
 
 build external_auto-targets: phony auto_value_annotations,android_common
 
-build bouncycastle-repackaged-unbundled,android_common: phony out/soong/.intermediates/external/bouncycastle/bouncycastle-repackaged-unbundled/android_common/javac/bouncycastle-repackaged-unbundled.jar out/soong/.intermediates/external/bouncycastle/bouncycastle-repackaged-unbundled/android_common/turbine-combined/bouncycastle-repackaged-unbundled.jar out/soong/.intermediates/external/bouncycastle/bouncycastle-repackaged-unbundled/android_common/turbine/bouncycastle-repackaged-unbundled.jar
+build bouncycastle-repackaged-unbundled,android_common: phony out/soong/.intermediates/external/bouncycastle/bouncycastle-repackaged-unbundled/android_common/javac/bouncycastle-repackaged-unbundled.jar out/soong/.intermediates/external/bouncycastle/bouncycastle-repackaged-unbundled/android_common/turbine-combined/bouncycastle-repackaged-unbundled.jar
 
 build bouncycastle-unbundled,android_common: phony out/soong/.intermediates/external/bouncycastle/bouncycastle-unbundled/android_common/javac/bouncycastle-unbundled.jar out/soong/.intermediates/external/bouncycastle/bouncycastle-unbundled/android_common/turbine-combined/bouncycastle-unbundled.jar
 
 build bouncycastle-unbundled,android_common_apex30: phony out/soong/.intermediates/external/bouncycastle/bouncycastle-unbundled/android_common_apex30/javac/bouncycastle-unbundled.jar out/soong/.intermediates/external/bouncycastle/bouncycastle-unbundled/android_common_apex30/turbine-combined/bouncycastle-unbundled.jar
 
-build bouncycastle_ike_digests,android_common: phony out/soong/.intermediates/external/bouncycastle/bouncycastle_ike_digests/android_common/javac/bouncycastle_ike_digests.jar out/soong/.intermediates/external/bouncycastle/bouncycastle_ike_digests/android_common/turbine-combined/bouncycastle_ike_digests.jar
+build bouncycastle_ike_digests,android_common: phony out/soong/.intermediates/external/bouncycastle/bouncycastle_ike_digests/android_common/turbine-combined/bouncycastle_ike_digests.jar
 
 build bouncycastle_ike_digests,android_common_apex30: phony out/soong/.intermediates/external/bouncycastle/bouncycastle_ike_digests/android_common_apex30/javac/bouncycastle_ike_digests.jar out/soong/.intermediates/external/bouncycastle/bouncycastle_ike_digests/android_common_apex30/turbine-combined/bouncycastle_ike_digests.jar
 
@@ -106,13 +107,13 @@ build nist-sip,android_common: phony out/soong/.intermediates/external/nist-sip/
 
 build external_nist-sip-targets: phony nist-sip,android_common
 
-build libcore_private.stubs,android_common: phony out/soong/.intermediates/external/protobuf/libcore_private.stubs/android_common/turbine-combined/libcore_private.stubs.jar
-
 build libprotobuf-java-lite,android_common: phony out/soong/.intermediates/external/protobuf/libprotobuf-java-lite/android_common/javac/libprotobuf-java-lite.jar out/soong/.intermediates/external/protobuf/libprotobuf-java-lite/android_common/turbine-combined/libprotobuf-java-lite.jar
 
 build libprotobuf-java-lite,android_common_apex10000: phony out/soong/.intermediates/external/protobuf/libprotobuf-java-lite/android_common_apex10000/javac/libprotobuf-java-lite.jar out/soong/.intermediates/external/protobuf/libprotobuf-java-lite/android_common_apex10000/turbine-combined/libprotobuf-java-lite.jar
 
 build libprotobuf-java-lite,android_common_apex30: phony out/soong/.intermediates/external/protobuf/libprotobuf-java-lite/android_common_apex30/javac/libprotobuf-java-lite.jar out/soong/.intermediates/external/protobuf/libprotobuf-java-lite/android_common_apex30/turbine-combined/libprotobuf-java-lite.jar
+
+build libcore_private.stubs,android_common: phony out/soong/.intermediates/external/protobuf/libcore_private.stubs/android_common/turbine-combined/libcore_private.stubs.jar
 
 build external_protobuf-targets: phony libcore_private.stubs,android_common libprotobuf-java-lite,android_common libprotobuf-java-lite,android_common_apex10000 libprotobuf-java-lite,android_common_apex30
 
@@ -122,13 +123,7 @@ build external_tagsoup-targets: phony tagsoup,android_common
 
 build cameraserver,android_x86_64: phony out/soong/.intermediates/frameworks/av/camera/cameraserver/cameraserver/android_x86_64/cameraserver
 
-build libcameraservice,android_x86_64_shared: phony out/soong/.intermediates/frameworks/av/services/camera/libcameraservice/libcameraservice/android_x86_64_shared/libcameraservice.so out/soong/.intermediates/frameworks/av/services/camera/libcameraservice/libcameraservice/android_x86_64_shared/libcameraservice.so.toc
-
-build libmediaextractorservice,android_x86_64_shared: phony out/soong/.intermediates/frameworks/av/services/mediaextractor/libmediaextractorservice/android_x86_64_shared/libmediaextractorservice.so out/soong/.intermediates/frameworks/av/services/mediaextractor/libmediaextractorservice/android_x86_64_shared/libmediaextractorservice.so.toc
-
-build libmediandk,android_x86_64_shared: phony out/soong/.intermediates/frameworks/av/media/ndk/libmediandk/android_x86_64_shared/libmediandk.so out/soong/.intermediates/frameworks/av/media/ndk/libmediandk/android_x86_64_shared/libmediandk.so.toc
-
-build libmediandk,android_x86_x86_64_shared: phony out/soong/.intermediates/frameworks/av/media/ndk/libmediandk/android_x86_x86_64_shared/libmediandk.so out/soong/.intermediates/frameworks/av/media/ndk/libmediandk/android_x86_x86_64_shared/libmediandk.so.toc
+build screenrecord,android_x86_64: phony out/soong/.intermediates/frameworks/av/cmds/screenrecord/screenrecord/android_x86_64/screenrecord
 
 build libmediaplayerservice,android_x86_x86_64_shared_cfi: phony out/soong/.intermediates/frameworks/av/media/libmediaplayerservice/libmediaplayerservice/android_x86_x86_64_shared_cfi/libmediaplayerservice.so out/soong/.intermediates/frameworks/av/media/libmediaplayerservice/libmediaplayerservice/android_x86_x86_64_shared_cfi/libmediaplayerservice.so.toc
 
@@ -138,11 +133,17 @@ build libstagefright,android_x86_x86_64_shared_cfi: phony out/soong/.intermediat
 
 build libstagefright_httplive,android_x86_x86_64_shared_cfi: phony out/soong/.intermediates/frameworks/av/media/libstagefright/httplive/libstagefright_httplive/android_x86_x86_64_shared_cfi/libstagefright_httplive.so out/soong/.intermediates/frameworks/av/media/libstagefright/httplive/libstagefright_httplive/android_x86_x86_64_shared_cfi/libstagefright_httplive.so.toc
 
-build mediaextractor,android_x86_64: phony out/soong/.intermediates/frameworks/av/services/mediaextractor/mediaextractor/android_x86_64/mediaextractor
-
 build mediaserver,android_x86_x86_64: phony out/soong/.intermediates/frameworks/av/media/mediaserver/mediaserver/android_x86_x86_64/mediaserver
 
-build screenrecord,android_x86_64: phony out/soong/.intermediates/frameworks/av/cmds/screenrecord/screenrecord/android_x86_64/screenrecord
+build libmediandk,android_x86_64_shared: phony out/soong/.intermediates/frameworks/av/media/ndk/libmediandk/android_x86_64_shared/libmediandk.so out/soong/.intermediates/frameworks/av/media/ndk/libmediandk/android_x86_64_shared/libmediandk.so.toc
+
+build libmediandk,android_x86_x86_64_shared: phony out/soong/.intermediates/frameworks/av/media/ndk/libmediandk/android_x86_x86_64_shared/libmediandk.so out/soong/.intermediates/frameworks/av/media/ndk/libmediandk/android_x86_x86_64_shared/libmediandk.so.toc
+
+build libcameraservice,android_x86_64_shared: phony out/soong/.intermediates/frameworks/av/services/camera/libcameraservice/libcameraservice/android_x86_64_shared/libcameraservice.so out/soong/.intermediates/frameworks/av/services/camera/libcameraservice/libcameraservice/android_x86_64_shared/libcameraservice.so.toc
+
+build libmediaextractorservice,android_x86_64_shared: phony out/soong/.intermediates/frameworks/av/services/mediaextractor/libmediaextractorservice/android_x86_64_shared/libmediaextractorservice.so out/soong/.intermediates/frameworks/av/services/mediaextractor/libmediaextractorservice/android_x86_64_shared/libmediaextractorservice.so.toc
+
+build mediaextractor,android_x86_64: phony out/soong/.intermediates/frameworks/av/services/mediaextractor/mediaextractor/android_x86_64/mediaextractor
 
 build frameworks_av-targets: phony cameraserver,android_x86_64 libcameraservice,android_x86_64_shared libmediaextractorservice,android_x86_64_shared libmediandk,android_x86_64_shared libmediandk,android_x86_x86_64_shared libmediaplayerservice,android_x86_x86_64_shared_cfi libstagefright,android_x86_64_shared_cfi libstagefright,android_x86_x86_64_shared_cfi libstagefright_httplive,android_x86_x86_64_shared_cfi mediaextractor,android_x86_64 mediaserver,android_x86_x86_64 screenrecord,android_x86_64
 
@@ -178,15 +179,15 @@ build android.hardware.usb-V1.1-java-constants,android_common: phony out/soong/.
 
 build android.hardware.usb-V1.2-java-constants,android_common: phony out/soong/.intermediates/hardware/interfaces/usb/1.2/android.hardware.usb-V1.2-java-constants/android_common/javac/android.hardware.usb-V1.2-java-constants.jar out/soong/.intermediates/hardware/interfaces/usb/1.2/android.hardware.usb-V1.2-java-constants/android_common/turbine-combined/android.hardware.usb-V1.2-java-constants.jar
 
-build android.hardware.wifi-V1.0-java-constants,android_common: phony out/soong/.intermediates/hardware/interfaces/wifi/1.0/android.hardware.wifi-V1.0-java-constants/android_common/javac/android.hardware.wifi-V1.0-java-constants.jar out/soong/.intermediates/hardware/interfaces/wifi/1.0/android.hardware.wifi-V1.0-java-constants/android_common/turbine-combined/android.hardware.wifi-V1.0-java-constants.jar
+build android.hardware.wifi-V1.0-java-constants,android_common: phony out/soong/.intermediates/hardware/interfaces/wifi/1.0/android.hardware.wifi-V1.0-java-constants/android_common/turbine-combined/android.hardware.wifi-V1.0-java-constants.jar
 
 build android.hardware.wifi-V1.0-java-constants,android_common_apex30: phony out/soong/.intermediates/hardware/interfaces/wifi/1.0/android.hardware.wifi-V1.0-java-constants/android_common_apex30/javac/android.hardware.wifi-V1.0-java-constants.jar out/soong/.intermediates/hardware/interfaces/wifi/1.0/android.hardware.wifi-V1.0-java-constants/android_common_apex30/turbine-combined/android.hardware.wifi-V1.0-java-constants.jar
 
 build hardware_interfaces-targets: phony android.hardware.health-V1.0-java-constants,android_common android.hardware.thermal-V1.0-java-constants,android_common android.hardware.tv.input-V1.0-java-constants,android_common android.hardware.tv.tuner-V1.0-java-constants,android_common android.hardware.tv.tuner-V1.1-java-constants,android_common android.hardware.usb-V1.0-java-constants,android_common android.hardware.usb-V1.1-java-constants,android_common android.hardware.usb-V1.2-java-constants,android_common android.hardware.wifi-V1.0-java-constants,android_common android.hardware.wifi-V1.0-java-constants,android_common_apex30
 
-build authfs,android_x86_64_apex10000: phony out/soong/.intermediates/packages/modules/Virtualization/authfs/authfs/android_x86_64_apex10000/stripped/authfs
-
 build com.android.virt,android_common_com.android.virt_image: phony out/soong/.intermediates/packages/modules/Virtualization/apex/com.android.virt/android_common_com.android.virt_image/apex_manifest.pb out/soong/.intermediates/packages/modules/Virtualization/apex/com.android.virt/android_common_com.android.virt_image/apex_pubkey out/soong/.intermediates/packages/modules/Virtualization/apex/com.android.virt/android_common_com.android.virt_image/com.android.virt.apex
+
+build authfs,android_x86_64_apex10000: phony out/soong/.intermediates/packages/modules/Virtualization/authfs/authfs/android_x86_64_apex10000/stripped/authfs
 
 build packages_modules_Virtualization-targets: phony authfs,android_x86_64_apex10000 com.android.virt,android_common_com.android.virt_image
 

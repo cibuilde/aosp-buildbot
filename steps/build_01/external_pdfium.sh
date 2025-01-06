@@ -1,6 +1,5 @@
-set -e
 
-echo "entering external/pdfium"
+set -e
 
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
@@ -12,6 +11,8 @@ ln -sf $GITHUB_WORKSPACE/ninja .
 if [ -d "$GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86" ]; then
   mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86 prebuilts/clang/host/linux-x86
 fi
+
+echo "Preparing for external/pdfium"
 
 clone_depth_platform art
 clone_depth_platform bionic
@@ -27,24 +28,23 @@ clone_depth_platform frameworks/native
 clone_depth_platform hardware/libhardware
 clone_depth_platform hardware/libhardware_legacy
 clone_depth_platform hardware/ril
-clone_project platform/prebuilts/build-tools prebuilts/build-tools android12-gsi "/linux-x86/bin" "/linux-x86/lib64" "/path" "/common"
 clone_depth_platform prebuilts/gcc/linux-x86/x86/x86_64-linux-android-4.9
 clone_depth_platform system/core
 clone_depth_platform system/logging
 clone_depth_platform system/media
 
 
-echo "building libpdfium-agg^android_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libpdfium-agg,android_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/pdfium/third_party/libpdfium-agg^android_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/pdfium/libpdfium-agg^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/pdfium/third_party/libpdfium-agg^android_x86_64_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/pdfium/libpdfium-agg^android_x86_64_static.output $GITHUB_WORKSPACE/artifacts/external/pdfium/third_party/libpdfium-agg^android_x86_64_static $GITHUB_WORKSPACE/artifacts/external/pdfium/third_party/libpdfium-agg^android_x86_64_static/addition_copy_files.output
+echo "building libpdfium-fdrm^android_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libpdfium-fdrm,android_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/pdfium/core/fdrm/libpdfium-fdrm^android_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/pdfium/libpdfium-fdrm^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/pdfium/core/fdrm/libpdfium-fdrm^android_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/pdfium/libpdfium-fdrm^android_x86_64_static.output $GITHUB_WORKSPACE/artifacts/external/pdfium/core/fdrm/libpdfium-fdrm^android_x86_64_static $GITHUB_WORKSPACE/artifacts/external/pdfium/core/fdrm/libpdfium-fdrm^android_x86_64_static/addition_copy_files.output
 
-echo "building libpdfium-agg^android_x86_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libpdfium-agg,android_x86_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/pdfium/third_party/libpdfium-agg^android_x86_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/pdfium/libpdfium-agg^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/pdfium/third_party/libpdfium-agg^android_x86_x86_64_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/pdfium/libpdfium-agg^android_x86_x86_64_static.output $GITHUB_WORKSPACE/artifacts/external/pdfium/third_party/libpdfium-agg^android_x86_x86_64_static $GITHUB_WORKSPACE/artifacts/external/pdfium/third_party/libpdfium-agg^android_x86_x86_64_static/addition_copy_files.output
+echo "building libpdfium-fdrm^android_x86_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libpdfium-fdrm,android_x86_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/pdfium/core/fdrm/libpdfium-fdrm^android_x86_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/pdfium/libpdfium-fdrm^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/pdfium/core/fdrm/libpdfium-fdrm^android_x86_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/pdfium/libpdfium-fdrm^android_x86_x86_64_static.output $GITHUB_WORKSPACE/artifacts/external/pdfium/core/fdrm/libpdfium-fdrm^android_x86_x86_64_static $GITHUB_WORKSPACE/artifacts/external/pdfium/core/fdrm/libpdfium-fdrm^android_x86_x86_64_static/addition_copy_files.output
 
 echo "building libpdfium-cmaps^android_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libpdfium-cmaps,android_x86_64_static
@@ -70,18 +70,6 @@ mkdir -p $GITHUB_WORKSPACE/artifacts/external/pdfium/core/fpdfapi/edit/libpdfium
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/pdfium/libpdfium-edit^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/pdfium/core/fpdfapi/edit/libpdfium-edit^android_x86_x86_64_static
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/pdfium/libpdfium-edit^android_x86_x86_64_static.output $GITHUB_WORKSPACE/artifacts/external/pdfium/core/fpdfapi/edit/libpdfium-edit^android_x86_x86_64_static $GITHUB_WORKSPACE/artifacts/external/pdfium/core/fpdfapi/edit/libpdfium-edit^android_x86_x86_64_static/addition_copy_files.output
 
-echo "building libpdfium-fdrm^android_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libpdfium-fdrm,android_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/pdfium/core/fdrm/libpdfium-fdrm^android_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/pdfium/libpdfium-fdrm^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/pdfium/core/fdrm/libpdfium-fdrm^android_x86_64_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/pdfium/libpdfium-fdrm^android_x86_64_static.output $GITHUB_WORKSPACE/artifacts/external/pdfium/core/fdrm/libpdfium-fdrm^android_x86_64_static $GITHUB_WORKSPACE/artifacts/external/pdfium/core/fdrm/libpdfium-fdrm^android_x86_64_static/addition_copy_files.output
-
-echo "building libpdfium-fdrm^android_x86_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libpdfium-fdrm,android_x86_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/pdfium/core/fdrm/libpdfium-fdrm^android_x86_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/pdfium/libpdfium-fdrm^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/pdfium/core/fdrm/libpdfium-fdrm^android_x86_x86_64_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/pdfium/libpdfium-fdrm^android_x86_x86_64_static.output $GITHUB_WORKSPACE/artifacts/external/pdfium/core/fdrm/libpdfium-fdrm^android_x86_x86_64_static $GITHUB_WORKSPACE/artifacts/external/pdfium/core/fdrm/libpdfium-fdrm^android_x86_x86_64_static/addition_copy_files.output
-
 echo "building libpdfium-font^android_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libpdfium-font,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/pdfium/core/fpdfapi/font/libpdfium-font^android_x86_64_static
@@ -94,17 +82,41 @@ mkdir -p $GITHUB_WORKSPACE/artifacts/external/pdfium/core/fpdfapi/font/libpdfium
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/pdfium/libpdfium-font^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/pdfium/core/fpdfapi/font/libpdfium-font^android_x86_x86_64_static
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/pdfium/libpdfium-font^android_x86_x86_64_static.output $GITHUB_WORKSPACE/artifacts/external/pdfium/core/fpdfapi/font/libpdfium-font^android_x86_x86_64_static $GITHUB_WORKSPACE/artifacts/external/pdfium/core/fpdfapi/font/libpdfium-font^android_x86_x86_64_static/addition_copy_files.output
 
-echo "building libpdfium-formfiller^android_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libpdfium-formfiller,android_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/pdfium/fpdfsdk/formfiller/libpdfium-formfiller^android_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/pdfium/libpdfium-formfiller^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/pdfium/fpdfsdk/formfiller/libpdfium-formfiller^android_x86_64_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/pdfium/libpdfium-formfiller^android_x86_64_static.output $GITHUB_WORKSPACE/artifacts/external/pdfium/fpdfsdk/formfiller/libpdfium-formfiller^android_x86_64_static $GITHUB_WORKSPACE/artifacts/external/pdfium/fpdfsdk/formfiller/libpdfium-formfiller^android_x86_64_static/addition_copy_files.output
+echo "building libpdfium-page^android_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libpdfium-page,android_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/pdfium/core/fpdfapi/page/libpdfium-page^android_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/pdfium/libpdfium-page^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/pdfium/core/fpdfapi/page/libpdfium-page^android_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/pdfium/libpdfium-page^android_x86_64_static.output $GITHUB_WORKSPACE/artifacts/external/pdfium/core/fpdfapi/page/libpdfium-page^android_x86_64_static $GITHUB_WORKSPACE/artifacts/external/pdfium/core/fpdfapi/page/libpdfium-page^android_x86_64_static/addition_copy_files.output
 
-echo "building libpdfium-formfiller^android_x86_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libpdfium-formfiller,android_x86_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/pdfium/fpdfsdk/formfiller/libpdfium-formfiller^android_x86_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/pdfium/libpdfium-formfiller^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/pdfium/fpdfsdk/formfiller/libpdfium-formfiller^android_x86_x86_64_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/pdfium/libpdfium-formfiller^android_x86_x86_64_static.output $GITHUB_WORKSPACE/artifacts/external/pdfium/fpdfsdk/formfiller/libpdfium-formfiller^android_x86_x86_64_static $GITHUB_WORKSPACE/artifacts/external/pdfium/fpdfsdk/formfiller/libpdfium-formfiller^android_x86_x86_64_static/addition_copy_files.output
+echo "building libpdfium-page^android_x86_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libpdfium-page,android_x86_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/pdfium/core/fpdfapi/page/libpdfium-page^android_x86_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/pdfium/libpdfium-page^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/pdfium/core/fpdfapi/page/libpdfium-page^android_x86_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/pdfium/libpdfium-page^android_x86_x86_64_static.output $GITHUB_WORKSPACE/artifacts/external/pdfium/core/fpdfapi/page/libpdfium-page^android_x86_x86_64_static $GITHUB_WORKSPACE/artifacts/external/pdfium/core/fpdfapi/page/libpdfium-page^android_x86_x86_64_static/addition_copy_files.output
+
+echo "building libpdfium-parser^android_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libpdfium-parser,android_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/pdfium/core/fpdfapi/parser/libpdfium-parser^android_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/pdfium/libpdfium-parser^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/pdfium/core/fpdfapi/parser/libpdfium-parser^android_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/pdfium/libpdfium-parser^android_x86_64_static.output $GITHUB_WORKSPACE/artifacts/external/pdfium/core/fpdfapi/parser/libpdfium-parser^android_x86_64_static $GITHUB_WORKSPACE/artifacts/external/pdfium/core/fpdfapi/parser/libpdfium-parser^android_x86_64_static/addition_copy_files.output
+
+echo "building libpdfium-parser^android_x86_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libpdfium-parser,android_x86_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/pdfium/core/fpdfapi/parser/libpdfium-parser^android_x86_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/pdfium/libpdfium-parser^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/pdfium/core/fpdfapi/parser/libpdfium-parser^android_x86_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/pdfium/libpdfium-parser^android_x86_x86_64_static.output $GITHUB_WORKSPACE/artifacts/external/pdfium/core/fpdfapi/parser/libpdfium-parser^android_x86_x86_64_static $GITHUB_WORKSPACE/artifacts/external/pdfium/core/fpdfapi/parser/libpdfium-parser^android_x86_x86_64_static/addition_copy_files.output
+
+echo "building libpdfium-render^android_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libpdfium-render,android_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/pdfium/core/fpdfapi/render/libpdfium-render^android_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/pdfium/libpdfium-render^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/pdfium/core/fpdfapi/render/libpdfium-render^android_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/pdfium/libpdfium-render^android_x86_64_static.output $GITHUB_WORKSPACE/artifacts/external/pdfium/core/fpdfapi/render/libpdfium-render^android_x86_64_static $GITHUB_WORKSPACE/artifacts/external/pdfium/core/fpdfapi/render/libpdfium-render^android_x86_64_static/addition_copy_files.output
+
+echo "building libpdfium-render^android_x86_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libpdfium-render,android_x86_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/pdfium/core/fpdfapi/render/libpdfium-render^android_x86_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/pdfium/libpdfium-render^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/pdfium/core/fpdfapi/render/libpdfium-render^android_x86_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/pdfium/libpdfium-render^android_x86_x86_64_static.output $GITHUB_WORKSPACE/artifacts/external/pdfium/core/fpdfapi/render/libpdfium-render^android_x86_x86_64_static $GITHUB_WORKSPACE/artifacts/external/pdfium/core/fpdfapi/render/libpdfium-render^android_x86_x86_64_static/addition_copy_files.output
 
 echo "building libpdfium-fpdfdoc^android_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libpdfium-fpdfdoc,android_x86_64_static
@@ -117,18 +129,6 @@ prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/st
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/pdfium/core/fpdfdoc/libpdfium-fpdfdoc^android_x86_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/pdfium/libpdfium-fpdfdoc^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/pdfium/core/fpdfdoc/libpdfium-fpdfdoc^android_x86_x86_64_static
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/pdfium/libpdfium-fpdfdoc^android_x86_x86_64_static.output $GITHUB_WORKSPACE/artifacts/external/pdfium/core/fpdfdoc/libpdfium-fpdfdoc^android_x86_x86_64_static $GITHUB_WORKSPACE/artifacts/external/pdfium/core/fpdfdoc/libpdfium-fpdfdoc^android_x86_x86_64_static/addition_copy_files.output
-
-echo "building libpdfium-fpdfsdk^android_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libpdfium-fpdfsdk,android_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/pdfium/fpdfsdk/libpdfium-fpdfsdk^android_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/pdfium/libpdfium-fpdfsdk^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/pdfium/fpdfsdk/libpdfium-fpdfsdk^android_x86_64_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/pdfium/libpdfium-fpdfsdk^android_x86_64_static.output $GITHUB_WORKSPACE/artifacts/external/pdfium/fpdfsdk/libpdfium-fpdfsdk^android_x86_64_static $GITHUB_WORKSPACE/artifacts/external/pdfium/fpdfsdk/libpdfium-fpdfsdk^android_x86_64_static/addition_copy_files.output
-
-echo "building libpdfium-fpdfsdk^android_x86_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libpdfium-fpdfsdk,android_x86_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/pdfium/fpdfsdk/libpdfium-fpdfsdk^android_x86_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/pdfium/libpdfium-fpdfsdk^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/pdfium/fpdfsdk/libpdfium-fpdfsdk^android_x86_x86_64_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/pdfium/libpdfium-fpdfsdk^android_x86_x86_64_static.output $GITHUB_WORKSPACE/artifacts/external/pdfium/fpdfsdk/libpdfium-fpdfsdk^android_x86_x86_64_static $GITHUB_WORKSPACE/artifacts/external/pdfium/fpdfsdk/libpdfium-fpdfsdk^android_x86_x86_64_static/addition_copy_files.output
 
 echo "building libpdfium-fpdftext^android_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libpdfium-fpdftext,android_x86_64_static
@@ -178,65 +178,29 @@ mkdir -p $GITHUB_WORKSPACE/artifacts/external/pdfium/core/fxge/libpdfium-fxge^an
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/pdfium/libpdfium-fxge^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/pdfium/core/fxge/libpdfium-fxge^android_x86_x86_64_static
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/pdfium/libpdfium-fxge^android_x86_x86_64_static.output $GITHUB_WORKSPACE/artifacts/external/pdfium/core/fxge/libpdfium-fxge^android_x86_x86_64_static $GITHUB_WORKSPACE/artifacts/external/pdfium/core/fxge/libpdfium-fxge^android_x86_x86_64_static/addition_copy_files.output
 
-echo "building libpdfium-fxjs^android_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libpdfium-fxjs,android_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/pdfium/fxjs/libpdfium-fxjs^android_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/pdfium/libpdfium-fxjs^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/pdfium/fxjs/libpdfium-fxjs^android_x86_64_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/pdfium/libpdfium-fxjs^android_x86_64_static.output $GITHUB_WORKSPACE/artifacts/external/pdfium/fxjs/libpdfium-fxjs^android_x86_64_static $GITHUB_WORKSPACE/artifacts/external/pdfium/fxjs/libpdfium-fxjs^android_x86_64_static/addition_copy_files.output
+echo "building libpdfium-fpdfsdk^android_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libpdfium-fpdfsdk,android_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/pdfium/fpdfsdk/libpdfium-fpdfsdk^android_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/pdfium/libpdfium-fpdfsdk^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/pdfium/fpdfsdk/libpdfium-fpdfsdk^android_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/pdfium/libpdfium-fpdfsdk^android_x86_64_static.output $GITHUB_WORKSPACE/artifacts/external/pdfium/fpdfsdk/libpdfium-fpdfsdk^android_x86_64_static $GITHUB_WORKSPACE/artifacts/external/pdfium/fpdfsdk/libpdfium-fpdfsdk^android_x86_64_static/addition_copy_files.output
 
-echo "building libpdfium-fxjs^android_x86_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libpdfium-fxjs,android_x86_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/pdfium/fxjs/libpdfium-fxjs^android_x86_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/pdfium/libpdfium-fxjs^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/pdfium/fxjs/libpdfium-fxjs^android_x86_x86_64_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/pdfium/libpdfium-fxjs^android_x86_x86_64_static.output $GITHUB_WORKSPACE/artifacts/external/pdfium/fxjs/libpdfium-fxjs^android_x86_x86_64_static $GITHUB_WORKSPACE/artifacts/external/pdfium/fxjs/libpdfium-fxjs^android_x86_x86_64_static/addition_copy_files.output
+echo "building libpdfium-fpdfsdk^android_x86_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libpdfium-fpdfsdk,android_x86_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/pdfium/fpdfsdk/libpdfium-fpdfsdk^android_x86_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/pdfium/libpdfium-fpdfsdk^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/pdfium/fpdfsdk/libpdfium-fpdfsdk^android_x86_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/pdfium/libpdfium-fpdfsdk^android_x86_x86_64_static.output $GITHUB_WORKSPACE/artifacts/external/pdfium/fpdfsdk/libpdfium-fpdfsdk^android_x86_x86_64_static $GITHUB_WORKSPACE/artifacts/external/pdfium/fpdfsdk/libpdfium-fpdfsdk^android_x86_x86_64_static/addition_copy_files.output
 
-echo "building libpdfium-lcms2^android_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libpdfium-lcms2,android_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/pdfium/third_party/libpdfium-lcms2^android_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/pdfium/libpdfium-lcms2^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/pdfium/third_party/libpdfium-lcms2^android_x86_64_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/pdfium/libpdfium-lcms2^android_x86_64_static.output $GITHUB_WORKSPACE/artifacts/external/pdfium/third_party/libpdfium-lcms2^android_x86_64_static $GITHUB_WORKSPACE/artifacts/external/pdfium/third_party/libpdfium-lcms2^android_x86_64_static/addition_copy_files.output
+echo "building libpdfium-formfiller^android_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libpdfium-formfiller,android_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/pdfium/fpdfsdk/formfiller/libpdfium-formfiller^android_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/pdfium/libpdfium-formfiller^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/pdfium/fpdfsdk/formfiller/libpdfium-formfiller^android_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/pdfium/libpdfium-formfiller^android_x86_64_static.output $GITHUB_WORKSPACE/artifacts/external/pdfium/fpdfsdk/formfiller/libpdfium-formfiller^android_x86_64_static $GITHUB_WORKSPACE/artifacts/external/pdfium/fpdfsdk/formfiller/libpdfium-formfiller^android_x86_64_static/addition_copy_files.output
 
-echo "building libpdfium-lcms2^android_x86_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libpdfium-lcms2,android_x86_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/pdfium/third_party/libpdfium-lcms2^android_x86_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/pdfium/libpdfium-lcms2^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/pdfium/third_party/libpdfium-lcms2^android_x86_x86_64_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/pdfium/libpdfium-lcms2^android_x86_x86_64_static.output $GITHUB_WORKSPACE/artifacts/external/pdfium/third_party/libpdfium-lcms2^android_x86_x86_64_static $GITHUB_WORKSPACE/artifacts/external/pdfium/third_party/libpdfium-lcms2^android_x86_x86_64_static/addition_copy_files.output
-
-echo "building libpdfium-libopenjpeg2^android_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libpdfium-libopenjpeg2,android_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/pdfium/third_party/libpdfium-libopenjpeg2^android_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/pdfium/libpdfium-libopenjpeg2^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/pdfium/third_party/libpdfium-libopenjpeg2^android_x86_64_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/pdfium/libpdfium-libopenjpeg2^android_x86_64_static.output $GITHUB_WORKSPACE/artifacts/external/pdfium/third_party/libpdfium-libopenjpeg2^android_x86_64_static $GITHUB_WORKSPACE/artifacts/external/pdfium/third_party/libpdfium-libopenjpeg2^android_x86_64_static/addition_copy_files.output
-
-echo "building libpdfium-libopenjpeg2^android_x86_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libpdfium-libopenjpeg2,android_x86_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/pdfium/third_party/libpdfium-libopenjpeg2^android_x86_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/pdfium/libpdfium-libopenjpeg2^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/pdfium/third_party/libpdfium-libopenjpeg2^android_x86_x86_64_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/pdfium/libpdfium-libopenjpeg2^android_x86_x86_64_static.output $GITHUB_WORKSPACE/artifacts/external/pdfium/third_party/libpdfium-libopenjpeg2^android_x86_x86_64_static $GITHUB_WORKSPACE/artifacts/external/pdfium/third_party/libpdfium-libopenjpeg2^android_x86_x86_64_static/addition_copy_files.output
-
-echo "building libpdfium-page^android_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libpdfium-page,android_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/pdfium/core/fpdfapi/page/libpdfium-page^android_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/pdfium/libpdfium-page^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/pdfium/core/fpdfapi/page/libpdfium-page^android_x86_64_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/pdfium/libpdfium-page^android_x86_64_static.output $GITHUB_WORKSPACE/artifacts/external/pdfium/core/fpdfapi/page/libpdfium-page^android_x86_64_static $GITHUB_WORKSPACE/artifacts/external/pdfium/core/fpdfapi/page/libpdfium-page^android_x86_64_static/addition_copy_files.output
-
-echo "building libpdfium-page^android_x86_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libpdfium-page,android_x86_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/pdfium/core/fpdfapi/page/libpdfium-page^android_x86_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/pdfium/libpdfium-page^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/pdfium/core/fpdfapi/page/libpdfium-page^android_x86_x86_64_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/pdfium/libpdfium-page^android_x86_x86_64_static.output $GITHUB_WORKSPACE/artifacts/external/pdfium/core/fpdfapi/page/libpdfium-page^android_x86_x86_64_static $GITHUB_WORKSPACE/artifacts/external/pdfium/core/fpdfapi/page/libpdfium-page^android_x86_x86_64_static/addition_copy_files.output
-
-echo "building libpdfium-parser^android_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libpdfium-parser,android_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/pdfium/core/fpdfapi/parser/libpdfium-parser^android_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/pdfium/libpdfium-parser^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/pdfium/core/fpdfapi/parser/libpdfium-parser^android_x86_64_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/pdfium/libpdfium-parser^android_x86_64_static.output $GITHUB_WORKSPACE/artifacts/external/pdfium/core/fpdfapi/parser/libpdfium-parser^android_x86_64_static $GITHUB_WORKSPACE/artifacts/external/pdfium/core/fpdfapi/parser/libpdfium-parser^android_x86_64_static/addition_copy_files.output
-
-echo "building libpdfium-parser^android_x86_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libpdfium-parser,android_x86_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/pdfium/core/fpdfapi/parser/libpdfium-parser^android_x86_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/pdfium/libpdfium-parser^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/pdfium/core/fpdfapi/parser/libpdfium-parser^android_x86_x86_64_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/pdfium/libpdfium-parser^android_x86_x86_64_static.output $GITHUB_WORKSPACE/artifacts/external/pdfium/core/fpdfapi/parser/libpdfium-parser^android_x86_x86_64_static $GITHUB_WORKSPACE/artifacts/external/pdfium/core/fpdfapi/parser/libpdfium-parser^android_x86_x86_64_static/addition_copy_files.output
+echo "building libpdfium-formfiller^android_x86_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libpdfium-formfiller,android_x86_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/pdfium/fpdfsdk/formfiller/libpdfium-formfiller^android_x86_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/pdfium/libpdfium-formfiller^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/pdfium/fpdfsdk/formfiller/libpdfium-formfiller^android_x86_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/pdfium/libpdfium-formfiller^android_x86_x86_64_static.output $GITHUB_WORKSPACE/artifacts/external/pdfium/fpdfsdk/formfiller/libpdfium-formfiller^android_x86_x86_64_static $GITHUB_WORKSPACE/artifacts/external/pdfium/fpdfsdk/formfiller/libpdfium-formfiller^android_x86_x86_64_static/addition_copy_files.output
 
 echo "building libpdfium-pwl^android_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libpdfium-pwl,android_x86_64_static
@@ -250,17 +214,17 @@ mkdir -p $GITHUB_WORKSPACE/artifacts/external/pdfium/fpdfsdk/pwl/libpdfium-pwl^a
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/pdfium/libpdfium-pwl^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/pdfium/fpdfsdk/pwl/libpdfium-pwl^android_x86_x86_64_static
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/pdfium/libpdfium-pwl^android_x86_x86_64_static.output $GITHUB_WORKSPACE/artifacts/external/pdfium/fpdfsdk/pwl/libpdfium-pwl^android_x86_x86_64_static $GITHUB_WORKSPACE/artifacts/external/pdfium/fpdfsdk/pwl/libpdfium-pwl^android_x86_x86_64_static/addition_copy_files.output
 
-echo "building libpdfium-render^android_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libpdfium-render,android_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/pdfium/core/fpdfapi/render/libpdfium-render^android_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/pdfium/libpdfium-render^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/pdfium/core/fpdfapi/render/libpdfium-render^android_x86_64_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/pdfium/libpdfium-render^android_x86_64_static.output $GITHUB_WORKSPACE/artifacts/external/pdfium/core/fpdfapi/render/libpdfium-render^android_x86_64_static $GITHUB_WORKSPACE/artifacts/external/pdfium/core/fpdfapi/render/libpdfium-render^android_x86_64_static/addition_copy_files.output
+echo "building libpdfium-fxjs^android_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libpdfium-fxjs,android_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/pdfium/fxjs/libpdfium-fxjs^android_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/pdfium/libpdfium-fxjs^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/pdfium/fxjs/libpdfium-fxjs^android_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/pdfium/libpdfium-fxjs^android_x86_64_static.output $GITHUB_WORKSPACE/artifacts/external/pdfium/fxjs/libpdfium-fxjs^android_x86_64_static $GITHUB_WORKSPACE/artifacts/external/pdfium/fxjs/libpdfium-fxjs^android_x86_64_static/addition_copy_files.output
 
-echo "building libpdfium-render^android_x86_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libpdfium-render,android_x86_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/pdfium/core/fpdfapi/render/libpdfium-render^android_x86_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/pdfium/libpdfium-render^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/pdfium/core/fpdfapi/render/libpdfium-render^android_x86_x86_64_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/pdfium/libpdfium-render^android_x86_x86_64_static.output $GITHUB_WORKSPACE/artifacts/external/pdfium/core/fpdfapi/render/libpdfium-render^android_x86_x86_64_static $GITHUB_WORKSPACE/artifacts/external/pdfium/core/fpdfapi/render/libpdfium-render^android_x86_x86_64_static/addition_copy_files.output
+echo "building libpdfium-fxjs^android_x86_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libpdfium-fxjs,android_x86_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/pdfium/fxjs/libpdfium-fxjs^android_x86_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/pdfium/libpdfium-fxjs^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/pdfium/fxjs/libpdfium-fxjs^android_x86_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/pdfium/libpdfium-fxjs^android_x86_x86_64_static.output $GITHUB_WORKSPACE/artifacts/external/pdfium/fxjs/libpdfium-fxjs^android_x86_x86_64_static $GITHUB_WORKSPACE/artifacts/external/pdfium/fxjs/libpdfium-fxjs^android_x86_x86_64_static/addition_copy_files.output
 
 echo "building libpdfium-skia_shared^android_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libpdfium-skia_shared,android_x86_64_static
@@ -286,6 +250,43 @@ mkdir -p $GITHUB_WORKSPACE/artifacts/external/pdfium/third_party/libpdfium-third
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/pdfium/libpdfium-third_party-base^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/pdfium/third_party/libpdfium-third_party-base^android_x86_x86_64_static
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/pdfium/libpdfium-third_party-base^android_x86_x86_64_static.output $GITHUB_WORKSPACE/artifacts/external/pdfium/third_party/libpdfium-third_party-base^android_x86_x86_64_static $GITHUB_WORKSPACE/artifacts/external/pdfium/third_party/libpdfium-third_party-base^android_x86_x86_64_static/addition_copy_files.output
 
+echo "building libpdfium-lcms2^android_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libpdfium-lcms2,android_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/pdfium/third_party/libpdfium-lcms2^android_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/pdfium/libpdfium-lcms2^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/pdfium/third_party/libpdfium-lcms2^android_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/pdfium/libpdfium-lcms2^android_x86_64_static.output $GITHUB_WORKSPACE/artifacts/external/pdfium/third_party/libpdfium-lcms2^android_x86_64_static $GITHUB_WORKSPACE/artifacts/external/pdfium/third_party/libpdfium-lcms2^android_x86_64_static/addition_copy_files.output
+
+echo "building libpdfium-lcms2^android_x86_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libpdfium-lcms2,android_x86_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/pdfium/third_party/libpdfium-lcms2^android_x86_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/pdfium/libpdfium-lcms2^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/pdfium/third_party/libpdfium-lcms2^android_x86_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/pdfium/libpdfium-lcms2^android_x86_x86_64_static.output $GITHUB_WORKSPACE/artifacts/external/pdfium/third_party/libpdfium-lcms2^android_x86_x86_64_static $GITHUB_WORKSPACE/artifacts/external/pdfium/third_party/libpdfium-lcms2^android_x86_x86_64_static/addition_copy_files.output
+
+echo "building libpdfium-libopenjpeg2^android_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libpdfium-libopenjpeg2,android_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/pdfium/third_party/libpdfium-libopenjpeg2^android_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/pdfium/libpdfium-libopenjpeg2^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/pdfium/third_party/libpdfium-libopenjpeg2^android_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/pdfium/libpdfium-libopenjpeg2^android_x86_64_static.output $GITHUB_WORKSPACE/artifacts/external/pdfium/third_party/libpdfium-libopenjpeg2^android_x86_64_static $GITHUB_WORKSPACE/artifacts/external/pdfium/third_party/libpdfium-libopenjpeg2^android_x86_64_static/addition_copy_files.output
+
+echo "building libpdfium-libopenjpeg2^android_x86_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libpdfium-libopenjpeg2,android_x86_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/pdfium/third_party/libpdfium-libopenjpeg2^android_x86_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/pdfium/libpdfium-libopenjpeg2^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/pdfium/third_party/libpdfium-libopenjpeg2^android_x86_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/pdfium/libpdfium-libopenjpeg2^android_x86_x86_64_static.output $GITHUB_WORKSPACE/artifacts/external/pdfium/third_party/libpdfium-libopenjpeg2^android_x86_x86_64_static $GITHUB_WORKSPACE/artifacts/external/pdfium/third_party/libpdfium-libopenjpeg2^android_x86_x86_64_static/addition_copy_files.output
+
+echo "building libpdfium-agg^android_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libpdfium-agg,android_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/pdfium/third_party/libpdfium-agg^android_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/pdfium/libpdfium-agg^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/pdfium/third_party/libpdfium-agg^android_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/pdfium/libpdfium-agg^android_x86_64_static.output $GITHUB_WORKSPACE/artifacts/external/pdfium/third_party/libpdfium-agg^android_x86_64_static $GITHUB_WORKSPACE/artifacts/external/pdfium/third_party/libpdfium-agg^android_x86_64_static/addition_copy_files.output
+
+echo "building libpdfium-agg^android_x86_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libpdfium-agg,android_x86_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/pdfium/third_party/libpdfium-agg^android_x86_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/pdfium/libpdfium-agg^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/pdfium/third_party/libpdfium-agg^android_x86_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/pdfium/libpdfium-agg^android_x86_x86_64_static.output $GITHUB_WORKSPACE/artifacts/external/pdfium/third_party/libpdfium-agg^android_x86_x86_64_static $GITHUB_WORKSPACE/artifacts/external/pdfium/third_party/libpdfium-agg^android_x86_x86_64_static/addition_copy_files.output
+
+
 rm -rf out
 
 cd $GITHUB_WORKSPACE/
@@ -293,6 +294,7 @@ tar -cf external_pdfium.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPA
 gh release --repo cibuilde/aosp-buildbot upload android12-gsi_01 external_pdfium.tar.zst --clobber
 
 du -ah -d1 external_pdfium*.tar.zst | sort -h
+
 
 if [ ! -f "$GITHUB_WORKSPACE/cache/art.tar.zst" ]; then
   echo "Compressing art -> art.tar.zst"
@@ -350,10 +352,6 @@ if [ ! -f "$GITHUB_WORKSPACE/cache/hardware_ril.tar.zst" ]; then
   echo "Compressing hardware/ril -> hardware_ril.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/hardware_ril.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/hardware/ril/ .
 fi
-if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_build-tools.tar.zst" ]; then
-  echo "Compressing prebuilts/build-tools -> prebuilts_build-tools.tar.zst"
-  tar -cf $GITHUB_WORKSPACE/cache/prebuilts_build-tools.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/prebuilts/build-tools/ .
-fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_gcc_linux-x86_x86_x86_64-linux-android-4.9.tar.zst" ]; then
   echo "Compressing prebuilts/gcc/linux-x86/x86/x86_64-linux-android-4.9 -> prebuilts_gcc_linux-x86_x86_x86_64-linux-android-4.9.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/prebuilts_gcc_linux-x86_x86_x86_64-linux-android-4.9.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/prebuilts/gcc/linux-x86/x86/x86_64-linux-android-4.9/ .
@@ -370,5 +368,6 @@ if [ ! -f "$GITHUB_WORKSPACE/cache/system_media.tar.zst" ]; then
   echo "Compressing system/media -> system_media.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/system_media.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/system/media/ .
 fi
+
 
 rm -rf aosp

@@ -1,8 +1,6 @@
 out/soong/.intermediates/packages/inputmethods/LatinIME/java/LatinIME/android_common/LatinIME.apk
-out/soong/.intermediates/packages/inputmethods/LatinIME/java/LatinIME/android_common/combined/LatinIME.jar
 out/soong/.intermediates/packages/inputmethods/LatinIME/java/LatinIME/android_common/dexpreopt/dexpreopt.config
 out/soong/.intermediates/packages/inputmethods/LatinIME/java/LatinIME/android_common/dexpreopt/oat/x86_64/package.odex
 out/soong/.intermediates/packages/inputmethods/LatinIME/java/LatinIME/android_common/dexpreopt/oat/x86_64/package.vdex
-out/soong/.intermediates/packages/inputmethods/LatinIME/java/LatinIME/android_common/package-res.apk
 out/soong/.intermediates/packages/inputmethods/LatinIME/java/LatinIME/android_common/proguard_dictionary
 out/soong/.intermediates/packages/inputmethods/LatinIME/java/LatinIME/android_common/proguard_usage.zip

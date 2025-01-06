@@ -1,4 +1,2 @@
-out/soong/.intermediates/hardware/interfaces/thermal/1.1/android.hardware.thermal-V1.1-java/android_common/turbine/android.hardware.thermal-V1.1-java.jar
-out/soong/.intermediates/hardware/interfaces/thermal/1.1/android.hardware.thermal-V1.1-java/android_common/turbine-combined/android.hardware.thermal-V1.1-java.jar
-out/soong/.intermediates/hardware/interfaces/thermal/1.1/android.hardware.thermal-V1.1-java/android_common/javac/android.hardware.thermal-V1.1-java.jar
 out/soong/.intermediates/hardware/interfaces/thermal/1.1/android.hardware.thermal-V1.1-java/android_common/combined/android.hardware.thermal-V1.1-java.jar
+out/soong/.intermediates/hardware/interfaces/thermal/1.1/android.hardware.thermal-V1.1-java/android_common/turbine-combined/android.hardware.thermal-V1.1-java.jar

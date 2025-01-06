@@ -2,7 +2,5 @@ out/soong/.intermediates/packages/modules/NetworkStack/NetworkStack/android_comm
 out/soong/.intermediates/packages/modules/NetworkStack/NetworkStack/android_common/dexpreopt/dexpreopt.config
 out/soong/.intermediates/packages/modules/NetworkStack/NetworkStack/android_common/dexpreopt/oat/x86_64/package.odex
 out/soong/.intermediates/packages/modules/NetworkStack/NetworkStack/android_common/dexpreopt/oat/x86_64/package.vdex
-out/soong/.intermediates/packages/modules/NetworkStack/NetworkStack/android_common/jarjar/NetworkStack.jar
-out/soong/.intermediates/packages/modules/NetworkStack/NetworkStack/android_common/package-res.apk
 out/soong/.intermediates/packages/modules/NetworkStack/NetworkStack/android_common/proguard_dictionary
 out/soong/.intermediates/packages/modules/NetworkStack/NetworkStack/android_common/proguard_usage.zip

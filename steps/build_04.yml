@@ -7,7 +7,7 @@ env:
   branch: 'android12-gsi'
   GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 jobs:
-  build_4:
+  build_04:
     runs-on: ubuntu-22.04
     steps:
     - uses: actions/checkout@main
@@ -364,6 +364,14 @@ jobs:
       with:
         path: cache/external_puffin.tar.zst
         key: external_puffin@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_python_cpython3.tar.zst
+        key: external_python_cpython3@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_python_six.tar.zst
+        key: external_python_six@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/external_rnnoise.tar.zst

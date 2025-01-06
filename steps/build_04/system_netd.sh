@@ -1,6 +1,5 @@
-set -e
 
-echo "entering system/netd"
+set -e
 
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
@@ -13,6 +12,8 @@ if [ -d "$GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86" ]; then
   mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86 prebuilts/clang/host/linux-x86
 fi
 
+echo "Preparing for system/netd"
+
 clone_depth_platform bionic
 clone_depth_platform external/compiler-rt
 clone_depth_platform external/libcxx
@@ -23,7 +24,6 @@ clone_depth_platform hardware/libhardware
 clone_depth_platform hardware/libhardware_legacy
 clone_depth_platform hardware/ril
 clone_depth_platform libnativehelper
-clone_project platform/prebuilts/build-tools prebuilts/build-tools android12-gsi "/linux-x86/bin" "/linux-x86/lib64" "/path" "/common"
 clone_depth_platform prebuilts/gcc/linux-x86/x86/x86_64-linux-android-4.9
 clone_depth_platform system/core
 clone_depth_platform system/logging
@@ -31,39 +31,11 @@ clone_depth_platform system/media
 clone_depth_platform system/netd
 clone_depth_platform system/tools/aidl
 
-rsync -a -r $GITHUB_WORKSPACE/downloads/build/blueprint/bpmodify^linux_glibc_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcxx/libc++^linux_glibc_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/netd/server/netd_event_listener_interface-V1-ndk_platform-source^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/netd/server/netd_event_listener_interface-V1-ndk_platform^android_x86_64_static_cfi_com.android.resolv/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/netd/server/netd_event_listener_interface-api^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/netd/server/netd_aidl_interface-api^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/tools/aidl/aidl^linux_glibc_x86_64/ .
-
-echo "building netd_aidl_interface-V3-java-source^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja netd_aidl_interface-V3-java-source,
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/netd/server/netd_aidl_interface-V3-java-source^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/netd/netd_aidl_interface-V3-java-source^.output . $GITHUB_WORKSPACE/artifacts/system/netd/server/netd_aidl_interface-V3-java-source^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/system/netd/netd_aidl_interface-V3-java-source^.output $GITHUB_WORKSPACE/artifacts/system/netd/server/netd_aidl_interface-V3-java-source^ $GITHUB_WORKSPACE/artifacts/system/netd/server/netd_aidl_interface-V3-java-source^/addition_copy_files.output
-
-echo "building netd_aidl_interface-V6-cpp-source^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja netd_aidl_interface-V6-cpp-source,
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/netd/server/netd_aidl_interface-V6-cpp-source^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/netd/netd_aidl_interface-V6-cpp-source^.output . $GITHUB_WORKSPACE/artifacts/system/netd/server/netd_aidl_interface-V6-cpp-source^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/system/netd/netd_aidl_interface-V6-cpp-source^.output $GITHUB_WORKSPACE/artifacts/system/netd/server/netd_aidl_interface-V6-cpp-source^ $GITHUB_WORKSPACE/artifacts/system/netd/server/netd_aidl_interface-V6-cpp-source^/addition_copy_files.output
-
-echo "building netd_aidl_interface-V7-cpp-source^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja netd_aidl_interface-V7-cpp-source,
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/netd/server/netd_aidl_interface-V7-cpp-source^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/netd/netd_aidl_interface-V7-cpp-source^.output . $GITHUB_WORKSPACE/artifacts/system/netd/server/netd_aidl_interface-V7-cpp-source^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/system/netd/netd_aidl_interface-V7-cpp-source^.output $GITHUB_WORKSPACE/artifacts/system/netd/server/netd_aidl_interface-V7-cpp-source^ $GITHUB_WORKSPACE/artifacts/system/netd/server/netd_aidl_interface-V7-cpp-source^/addition_copy_files.output
-
-echo "building netd_aidl_interface-V7-java-source^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja netd_aidl_interface-V7-java-source,
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/netd/server/netd_aidl_interface-V7-java-source^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/netd/netd_aidl_interface-V7-java-source^.output . $GITHUB_WORKSPACE/artifacts/system/netd/server/netd_aidl_interface-V7-java-source^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/system/netd/netd_aidl_interface-V7-java-source^.output $GITHUB_WORKSPACE/artifacts/system/netd/server/netd_aidl_interface-V7-java-source^ $GITHUB_WORKSPACE/artifacts/system/netd/server/netd_aidl_interface-V7-java-source^/addition_copy_files.output
-
-echo "building netd_aidl_interface-api^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja netd_aidl_interface-api,
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/netd/server/netd_aidl_interface-api^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/netd/netd_aidl_interface-api^.output . $GITHUB_WORKSPACE/artifacts/system/netd/server/netd_aidl_interface-api^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/system/netd/netd_aidl_interface-api^.output $GITHUB_WORKSPACE/artifacts/system/netd/server/netd_aidl_interface-api^ $GITHUB_WORKSPACE/artifacts/system/netd/server/netd_aidl_interface-api^/addition_copy_files.output
 
 echo "building netd_event_listener_interface-V1-cpp-source^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja netd_event_listener_interface-V1-cpp-source,
@@ -95,17 +67,48 @@ mkdir -p $GITHUB_WORKSPACE/artifacts/system/netd/server/netd_event_listener_inte
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/netd/netd_event_listener_interface-api^.output . $GITHUB_WORKSPACE/artifacts/system/netd/server/netd_event_listener_interface-api^
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/system/netd/netd_event_listener_interface-api^.output $GITHUB_WORKSPACE/artifacts/system/netd/server/netd_event_listener_interface-api^ $GITHUB_WORKSPACE/artifacts/system/netd/server/netd_event_listener_interface-api^/addition_copy_files.output
 
+echo "building oemnetd_aidl_interface-cpp-source^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja oemnetd_aidl_interface-cpp-source,
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/netd/server/oemnetd_aidl_interface-cpp-source^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/netd/oemnetd_aidl_interface-cpp-source^.output . $GITHUB_WORKSPACE/artifacts/system/netd/server/oemnetd_aidl_interface-cpp-source^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/system/netd/oemnetd_aidl_interface-cpp-source^.output $GITHUB_WORKSPACE/artifacts/system/netd/server/oemnetd_aidl_interface-cpp-source^ $GITHUB_WORKSPACE/artifacts/system/netd/server/oemnetd_aidl_interface-cpp-source^/addition_copy_files.output
+
 echo "building netd_event_listener_interface-lateststable-ndk_platform^android_x86_64_static_cfi_com.android.resolv"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja netd_event_listener_interface-lateststable-ndk_platform,android_x86_64_static_cfi_com.android.resolv
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/netd/server/netd_event_listener_interface-lateststable-ndk_platform^android_x86_64_static_cfi_com.android.resolv
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/netd/netd_event_listener_interface-lateststable-ndk_platform^android_x86_64_static_cfi_com.android.resolv.output . $GITHUB_WORKSPACE/artifacts/system/netd/server/netd_event_listener_interface-lateststable-ndk_platform^android_x86_64_static_cfi_com.android.resolv
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/system/netd/netd_event_listener_interface-lateststable-ndk_platform^android_x86_64_static_cfi_com.android.resolv.output $GITHUB_WORKSPACE/artifacts/system/netd/server/netd_event_listener_interface-lateststable-ndk_platform^android_x86_64_static_cfi_com.android.resolv $GITHUB_WORKSPACE/artifacts/system/netd/server/netd_event_listener_interface-lateststable-ndk_platform^android_x86_64_static_cfi_com.android.resolv/addition_copy_files.output
 
-echo "building oemnetd_aidl_interface-cpp-source^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja oemnetd_aidl_interface-cpp-source,
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/netd/server/oemnetd_aidl_interface-cpp-source^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/netd/oemnetd_aidl_interface-cpp-source^.output . $GITHUB_WORKSPACE/artifacts/system/netd/server/oemnetd_aidl_interface-cpp-source^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/system/netd/oemnetd_aidl_interface-cpp-source^.output $GITHUB_WORKSPACE/artifacts/system/netd/server/oemnetd_aidl_interface-cpp-source^ $GITHUB_WORKSPACE/artifacts/system/netd/server/oemnetd_aidl_interface-cpp-source^/addition_copy_files.output
+echo "building netd_aidl_interface-V3-java-source^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja netd_aidl_interface-V3-java-source,
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/netd/server/netd_aidl_interface-V3-java-source^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/netd/netd_aidl_interface-V3-java-source^.output . $GITHUB_WORKSPACE/artifacts/system/netd/server/netd_aidl_interface-V3-java-source^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/system/netd/netd_aidl_interface-V3-java-source^.output $GITHUB_WORKSPACE/artifacts/system/netd/server/netd_aidl_interface-V3-java-source^ $GITHUB_WORKSPACE/artifacts/system/netd/server/netd_aidl_interface-V3-java-source^/addition_copy_files.output
+
+echo "building netd_aidl_interface-V6-cpp-source^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja netd_aidl_interface-V6-cpp-source,
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/netd/server/netd_aidl_interface-V6-cpp-source^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/netd/netd_aidl_interface-V6-cpp-source^.output . $GITHUB_WORKSPACE/artifacts/system/netd/server/netd_aidl_interface-V6-cpp-source^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/system/netd/netd_aidl_interface-V6-cpp-source^.output $GITHUB_WORKSPACE/artifacts/system/netd/server/netd_aidl_interface-V6-cpp-source^ $GITHUB_WORKSPACE/artifacts/system/netd/server/netd_aidl_interface-V6-cpp-source^/addition_copy_files.output
+
+echo "building netd_aidl_interface-V7-cpp-source^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja netd_aidl_interface-V7-cpp-source,
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/netd/server/netd_aidl_interface-V7-cpp-source^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/netd/netd_aidl_interface-V7-cpp-source^.output . $GITHUB_WORKSPACE/artifacts/system/netd/server/netd_aidl_interface-V7-cpp-source^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/system/netd/netd_aidl_interface-V7-cpp-source^.output $GITHUB_WORKSPACE/artifacts/system/netd/server/netd_aidl_interface-V7-cpp-source^ $GITHUB_WORKSPACE/artifacts/system/netd/server/netd_aidl_interface-V7-cpp-source^/addition_copy_files.output
+
+echo "building netd_aidl_interface-V7-java-source^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja netd_aidl_interface-V7-java-source,
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/netd/server/netd_aidl_interface-V7-java-source^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/netd/netd_aidl_interface-V7-java-source^.output . $GITHUB_WORKSPACE/artifacts/system/netd/server/netd_aidl_interface-V7-java-source^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/system/netd/netd_aidl_interface-V7-java-source^.output $GITHUB_WORKSPACE/artifacts/system/netd/server/netd_aidl_interface-V7-java-source^ $GITHUB_WORKSPACE/artifacts/system/netd/server/netd_aidl_interface-V7-java-source^/addition_copy_files.output
+
+echo "building netd_aidl_interface-api^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja netd_aidl_interface-api,
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/netd/server/netd_aidl_interface-api^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/netd/netd_aidl_interface-api^.output . $GITHUB_WORKSPACE/artifacts/system/netd/server/netd_aidl_interface-api^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/system/netd/netd_aidl_interface-api^.output $GITHUB_WORKSPACE/artifacts/system/netd/server/netd_aidl_interface-api^ $GITHUB_WORKSPACE/artifacts/system/netd/server/netd_aidl_interface-api^/addition_copy_files.output
+
 
 rm -rf out
 
@@ -114,6 +117,7 @@ tar -cf system_netd.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/a
 gh release --repo cibuilde/aosp-buildbot upload android12-gsi_04 system_netd.tar.zst --clobber
 
 du -ah -d1 system_netd*.tar.zst | sort -h
+
 
 if [ ! -f "$GITHUB_WORKSPACE/cache/bionic.tar.zst" ]; then
   echo "Compressing bionic -> bionic.tar.zst"
@@ -155,10 +159,6 @@ if [ ! -f "$GITHUB_WORKSPACE/cache/libnativehelper.tar.zst" ]; then
   echo "Compressing libnativehelper -> libnativehelper.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/libnativehelper.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/libnativehelper/ .
 fi
-if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_build-tools.tar.zst" ]; then
-  echo "Compressing prebuilts/build-tools -> prebuilts_build-tools.tar.zst"
-  tar -cf $GITHUB_WORKSPACE/cache/prebuilts_build-tools.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/prebuilts/build-tools/ .
-fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_gcc_linux-x86_x86_x86_64-linux-android-4.9.tar.zst" ]; then
   echo "Compressing prebuilts/gcc/linux-x86/x86/x86_64-linux-android-4.9 -> prebuilts_gcc_linux-x86_x86_x86_64-linux-android-4.9.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/prebuilts_gcc_linux-x86_x86_x86_64-linux-android-4.9.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/prebuilts/gcc/linux-x86/x86/x86_64-linux-android-4.9/ .
@@ -183,5 +183,6 @@ if [ ! -f "$GITHUB_WORKSPACE/cache/system_tools_aidl.tar.zst" ]; then
   echo "Compressing system/tools/aidl -> system_tools_aidl.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/system_tools_aidl.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/system/tools/aidl/ .
 fi
+
 
 rm -rf aosp

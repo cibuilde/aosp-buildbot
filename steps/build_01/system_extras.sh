@@ -1,6 +1,5 @@
-set -e
 
-echo "entering system/extras"
+set -e
 
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
@@ -12,6 +11,8 @@ ln -sf $GITHUB_WORKSPACE/ninja .
 if [ -d "$GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86" ]; then
   mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86 prebuilts/clang/host/linux-x86
 fi
+
+echo "Preparing for system/extras"
 
 clone_depth_platform bionic
 clone_depth_platform external/avb
@@ -29,7 +30,6 @@ clone_depth_platform hardware/libhardware
 clone_depth_platform hardware/libhardware_legacy
 clone_depth_platform hardware/ril
 clone_depth_platform libnativehelper
-clone_project platform/prebuilts/build-tools prebuilts/build-tools android12-gsi "/linux-x86/bin" "/linux-x86/lib64" "/path" "/common"
 clone_project platform/prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8 prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8 android12-gsi "/sysroot" "/lib/gcc/x86_64-linux/4.8.3" "/x86_64-linux/lib64" "/x86_64-linux/lib32"
 clone_depth_platform prebuilts/gcc/linux-x86/x86/x86_64-linux-android-4.9
 clone_depth_platform system/core
@@ -44,6 +44,12 @@ prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/st
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/extras/checkpoint_gc/checkpoint_gc^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/extras/checkpoint_gc^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/extras/checkpoint_gc/checkpoint_gc^android_x86_64
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/system/extras/checkpoint_gc^android_x86_64.output $GITHUB_WORKSPACE/artifacts/system/extras/checkpoint_gc/checkpoint_gc^android_x86_64 $GITHUB_WORKSPACE/artifacts/system/extras/checkpoint_gc/checkpoint_gc^android_x86_64/addition_copy_files.output
+
+echo "building preloads_copy.sh^android_x86_64"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja preloads_copy.sh,android_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/extras/cppreopts/preloads_copy.sh^android_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/extras/preloads_copy.sh^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/extras/cppreopts/preloads_copy.sh^android_x86_64
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/system/extras/preloads_copy.sh^android_x86_64.output $GITHUB_WORKSPACE/artifacts/system/extras/cppreopts/preloads_copy.sh^android_x86_64 $GITHUB_WORKSPACE/artifacts/system/extras/cppreopts/preloads_copy.sh^android_x86_64/addition_copy_files.output
 
 echo "building cppreopts.sh^android_x86_64"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja cppreopts.sh,android_x86_64
@@ -80,6 +86,18 @@ prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/st
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/extras/ext4_utils/libext4_utils^linux_glibc_x86_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/extras/libext4_utils^linux_glibc_x86_static.output . $GITHUB_WORKSPACE/artifacts/system/extras/ext4_utils/libext4_utils^linux_glibc_x86_static
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/system/extras/libext4_utils^linux_glibc_x86_static.output $GITHUB_WORKSPACE/artifacts/system/extras/ext4_utils/libext4_utils^linux_glibc_x86_static $GITHUB_WORKSPACE/artifacts/system/extras/ext4_utils/libext4_utils^linux_glibc_x86_static/addition_copy_files.output
+
+echo "building mke2fs.conf^android_recovery_x86_64"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja mke2fs.conf,android_recovery_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/extras/ext4_utils/mke2fs.conf^android_recovery_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/extras/mke2fs.conf^android_recovery_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/extras/ext4_utils/mke2fs.conf^android_recovery_x86_64
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/system/extras/mke2fs.conf^android_recovery_x86_64.output $GITHUB_WORKSPACE/artifacts/system/extras/ext4_utils/mke2fs.conf^android_recovery_x86_64 $GITHUB_WORKSPACE/artifacts/system/extras/ext4_utils/mke2fs.conf^android_recovery_x86_64/addition_copy_files.output
+
+echo "building mke2fs.conf^android_x86_64"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja mke2fs.conf,android_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/extras/ext4_utils/mke2fs.conf^android_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/extras/mke2fs.conf^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/extras/ext4_utils/mke2fs.conf^android_x86_64
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/system/extras/mke2fs.conf^android_x86_64.output $GITHUB_WORKSPACE/artifacts/system/extras/ext4_utils/mke2fs.conf^android_x86_64 $GITHUB_WORKSPACE/artifacts/system/extras/ext4_utils/mke2fs.conf^android_x86_64/addition_copy_files.output
 
 echo "building libfec^android_recovery_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libfec,android_recovery_x86_64_static
@@ -123,6 +141,12 @@ mkdir -p $GITHUB_WORKSPACE/artifacts/system/extras/libjsonpb/parse/libjsonpbpars
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/extras/libjsonpbparse^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/extras/libjsonpb/parse/libjsonpbparse^android_x86_64_static
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/system/extras/libjsonpbparse^android_x86_64_static.output $GITHUB_WORKSPACE/artifacts/system/extras/libjsonpb/parse/libjsonpbparse^android_x86_64_static $GITHUB_WORKSPACE/artifacts/system/extras/libjsonpb/parse/libjsonpbparse^android_x86_64_static/addition_copy_files.output
 
+echo "building ndk_jni.h^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja ndk_jni.h,
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/extras/module_ndk_libs/libnativehelper/ndk_jni.h^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/extras/ndk_jni.h^.output . $GITHUB_WORKSPACE/artifacts/system/extras/module_ndk_libs/libnativehelper/ndk_jni.h^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/system/extras/ndk_jni.h^.output $GITHUB_WORKSPACE/artifacts/system/extras/module_ndk_libs/libnativehelper/ndk_jni.h^ $GITHUB_WORKSPACE/artifacts/system/extras/module_ndk_libs/libnativehelper/ndk_jni.h^/addition_copy_files.output
+
 echo "building libnativehelper_ndk_headers^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libnativehelper_ndk_headers,
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/extras/module_ndk_libs/libnativehelper/libnativehelper_ndk_headers^
@@ -165,29 +189,6 @@ mkdir -p $GITHUB_WORKSPACE/artifacts/system/extras/verity/libverity_tree^android
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/extras/libverity_tree^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/extras/verity/libverity_tree^android_x86_64_static
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/system/extras/libverity_tree^android_x86_64_static.output $GITHUB_WORKSPACE/artifacts/system/extras/verity/libverity_tree^android_x86_64_static $GITHUB_WORKSPACE/artifacts/system/extras/verity/libverity_tree^android_x86_64_static/addition_copy_files.output
 
-echo "building mke2fs.conf^android_recovery_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja mke2fs.conf,android_recovery_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/extras/ext4_utils/mke2fs.conf^android_recovery_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/extras/mke2fs.conf^android_recovery_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/extras/ext4_utils/mke2fs.conf^android_recovery_x86_64
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/system/extras/mke2fs.conf^android_recovery_x86_64.output $GITHUB_WORKSPACE/artifacts/system/extras/ext4_utils/mke2fs.conf^android_recovery_x86_64 $GITHUB_WORKSPACE/artifacts/system/extras/ext4_utils/mke2fs.conf^android_recovery_x86_64/addition_copy_files.output
-
-echo "building mke2fs.conf^android_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja mke2fs.conf,android_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/extras/ext4_utils/mke2fs.conf^android_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/extras/mke2fs.conf^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/extras/ext4_utils/mke2fs.conf^android_x86_64
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/system/extras/mke2fs.conf^android_x86_64.output $GITHUB_WORKSPACE/artifacts/system/extras/ext4_utils/mke2fs.conf^android_x86_64 $GITHUB_WORKSPACE/artifacts/system/extras/ext4_utils/mke2fs.conf^android_x86_64/addition_copy_files.output
-
-echo "building ndk_jni.h^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja ndk_jni.h,
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/extras/module_ndk_libs/libnativehelper/ndk_jni.h^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/extras/ndk_jni.h^.output . $GITHUB_WORKSPACE/artifacts/system/extras/module_ndk_libs/libnativehelper/ndk_jni.h^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/system/extras/ndk_jni.h^.output $GITHUB_WORKSPACE/artifacts/system/extras/module_ndk_libs/libnativehelper/ndk_jni.h^ $GITHUB_WORKSPACE/artifacts/system/extras/module_ndk_libs/libnativehelper/ndk_jni.h^/addition_copy_files.output
-
-echo "building preloads_copy.sh^android_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja preloads_copy.sh,android_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/extras/cppreopts/preloads_copy.sh^android_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/extras/preloads_copy.sh^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/extras/cppreopts/preloads_copy.sh^android_x86_64
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/system/extras/preloads_copy.sh^android_x86_64.output $GITHUB_WORKSPACE/artifacts/system/extras/cppreopts/preloads_copy.sh^android_x86_64 $GITHUB_WORKSPACE/artifacts/system/extras/cppreopts/preloads_copy.sh^android_x86_64/addition_copy_files.output
 
 rm -rf out
 
@@ -196,6 +197,7 @@ tar -cf system_extras.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE
 gh release --repo cibuilde/aosp-buildbot upload android12-gsi_01 system_extras.tar.zst --clobber
 
 du -ah -d1 system_extras*.tar.zst | sort -h
+
 
 if [ ! -f "$GITHUB_WORKSPACE/cache/bionic.tar.zst" ]; then
   echo "Compressing bionic -> bionic.tar.zst"
@@ -261,10 +263,6 @@ if [ ! -f "$GITHUB_WORKSPACE/cache/libnativehelper.tar.zst" ]; then
   echo "Compressing libnativehelper -> libnativehelper.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/libnativehelper.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/libnativehelper/ .
 fi
-if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_build-tools.tar.zst" ]; then
-  echo "Compressing prebuilts/build-tools -> prebuilts_build-tools.tar.zst"
-  tar -cf $GITHUB_WORKSPACE/cache/prebuilts_build-tools.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/prebuilts/build-tools/ .
-fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_gcc_linux-x86_host_x86_64-linux-glibc2.17-4.8.tar.zst" ]; then
   echo "Compressing prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8 -> prebuilts_gcc_linux-x86_host_x86_64-linux-glibc2.17-4.8.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/prebuilts_gcc_linux-x86_host_x86_64-linux-glibc2.17-4.8.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8/ .
@@ -293,5 +291,6 @@ if [ ! -f "$GITHUB_WORKSPACE/cache/system_media.tar.zst" ]; then
   echo "Compressing system/media -> system_media.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/system_media.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/system/media/ .
 fi
+
 
 rm -rf aosp

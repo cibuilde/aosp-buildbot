@@ -7,7 +7,7 @@ env:
   branch: 'android12-gsi'
   GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 jobs:
-  build_2:
+  build_02:
     runs-on: ubuntu-22.04
     steps:
     - uses: actions/checkout@main
@@ -68,10 +68,6 @@ jobs:
       with:
         path: cache/external_grpc-grpc.tar.zst
         key: external_grpc-grpc@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_gwp_asan.tar.zst
-        key: external_gwp_asan@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/external_libcxx.tar.zst
@@ -318,24 +314,8 @@ jobs:
         key: packages_modules_Virtualization@${{ env.branch }}
     - uses: actions/cache@v4
       with:
-        path: cache/packages_modules_adb.tar.zst
-        key: packages_modules_adb@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/prebuilts_build-tools.tar.zst
-        key: prebuilts_build-tools@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
         path: cache/prebuilts_clang_host_linux-x86.tar.zst
         key: prebuilts_clang_host_linux-x86@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/prebuilts_gcc_linux-x86_aarch64_aarch64-linux-android-4.9.tar.zst
-        key: prebuilts_gcc_linux-x86_aarch64_aarch64-linux-android-4.9@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/prebuilts_gcc_linux-x86_arm_arm-linux-androideabi-4.9.tar.zst
-        key: prebuilts_gcc_linux-x86_arm_arm-linux-androideabi-4.9@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/prebuilts_gcc_linux-x86_host_x86_64-linux-glibc2.17-4.8.tar.zst

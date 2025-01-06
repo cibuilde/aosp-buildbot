@@ -1,6 +1,5 @@
-set -e
 
-echo "entering art"
+set -e
 
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
@@ -12,6 +11,8 @@ ln -sf $GITHUB_WORKSPACE/ninja .
 if [ -d "$GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86" ]; then
   mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86 prebuilts/clang/host/linux-x86
 fi
+
+echo "Preparing for art"
 
 clone_depth_platform art
 clone_depth_platform bionic
@@ -39,7 +40,6 @@ clone_depth_platform libcore
 clone_depth_platform libnativehelper
 clone_depth_platform packages/modules/StatsD
 clone_depth_platform packages/modules/adb
-clone_project platform/prebuilts/build-tools prebuilts/build-tools android12-gsi "/linux-x86/bin" "/linux-x86/lib64" "/path" "/common"
 clone_depth_platform prebuilts/gcc/linux-x86/x86/x86_64-linux-android-4.9
 clone_depth_platform system/apex
 clone_depth_platform system/core
@@ -50,58 +50,74 @@ clone_depth_platform system/logging
 clone_depth_platform system/media
 clone_depth_platform system/unwinding
 
-rsync -a -r $GITHUB_WORKSPACE/downloads/art/odrefresh/art-apex-cache-info^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/art/odrefresh/art-odrefresh-operator-srcs^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/art/compiler/art_compiler_operator_srcs^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/art/tools/cpp-define-generator/cpp-define-generator-asm-support^android_x86_64_apex31/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/art/tools/cpp-define-generator/cpp-define-generator-asm-support^android_x86_x86_64_apex31/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/art/adbconnection/libadbconnection^android_x86_64_static_apex31/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/art/adbconnection/libadbconnection^android_x86_x86_64_static_apex31/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/art/compiler/art_compiler_operator_srcs^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/art/compiler/libart-compiler^android_x86_64_shared_apex31/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/art/compiler/libart-compiler^android_x86_x86_64_shared_apex31/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/art/dex2oat/libart-dex2oat^android_x86_64_static_lto-thin_apex31/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/art/dex2oat/libart-dex2oat^android_x86_x86_64_static_lto-thin_apex31/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/art/dexlayout/libart-dexlayout^android_x86_64_shared_apex31/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/art/dexlayout/libart-dexlayout^android_x86_64_static_apex31/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/art/dexlayout/libart-dexlayout^android_x86_x86_64_shared_apex31/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/art/dexlayout/libart-dexlayout^android_x86_x86_64_static_apex31/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/art/disassembler/libart-disassembler^android_x86_64_shared_apex31/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/art/runtime/libart^android_x86_64_static_apex31/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/art/runtime/libart^android_x86_x86_64_static_apex31/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/art/libartbase/libartbase^android_x86_64_shared_apex31/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/art/libartbase/libartbase^android_x86_64_static_apex31/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/art/libartbase/libartbase^android_x86_x86_64_shared_apex31/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/art/libartbase/libartbase^android_x86_x86_64_static_apex31/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/art/libartpalette/libartpalette^android_x86_64_shared_apex31/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/art/libartpalette/libartpalette^android_x86_x86_64_shared_apex31/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/art/libdexfile/libdexfile^android_x86_64_shared_apex31/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/art/libdexfile/libdexfile^android_x86_64_static_apex31/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/art/libdexfile/libdexfile^android_x86_x86_64_shared_apex31/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/art/libdexfile/libdexfile^android_x86_x86_64_static_apex31/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/art/libelffile/libelffile^android_x86_64_static_lto-thin_apex31/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/art/libelffile/libelffile^android_x86_x86_64_static_lto-thin_apex31/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/art/libnativebridge/libnativebridge^android_x86_64_shared_apex31/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/art/libnativebridge/libnativebridge^android_x86_x86_64_shared_apex31/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/art/libnativeloader/libnativeloader^android_x86_64_shared_apex31/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/art/libnativeloader/libnativeloader^android_x86_64_static_apex31/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/art/libnativeloader/libnativeloader^android_x86_x86_64_shared_apex31/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/art/libnativeloader/libnativeloader^android_x86_x86_64_static_apex31/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/art/libprofile/libprofile^android_x86_64_shared_apex31/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/art/libprofile/libprofile^android_x86_64_static_apex31/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/art/libprofile/libprofile^android_x86_x86_64_shared_apex31/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/art/libprofile/libprofile^android_x86_x86_64_static_apex31/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/art/odrefresh/libodrstatslog^android_x86_64_static_lto-thin_apex31/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/art/odrefresh/libodrstatslog^android_x86_x86_64_static_lto-thin_apex31/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/art/odrefresh/art-apex-cache-info^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/art/odrefresh/art-odrefresh-operator-srcs^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/art/openjdkjvm/libopenjdkjvm^android_x86_64_static_apex31/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/art/openjdkjvm/libopenjdkjvm^android_x86_x86_64_static_apex31/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/art/openjdkjvmti/libopenjdkjvmti^android_x86_64_static_apex31/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/art/openjdkjvmti/libopenjdkjvmti^android_x86_x86_64_static_apex31/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/art/perfetto_hprof/libperfetto_hprof^android_x86_64_static_apex31/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/art/perfetto_hprof/libperfetto_hprof^android_x86_x86_64_static_apex31/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/art/libprofile/libprofile^android_x86_64_static_apex31/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/art/libprofile/libprofile^android_x86_x86_64_static_apex31/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/art/sigchainlib/libsigchain^android_x86_64_shared_apex31/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/art/sigchainlib/libsigchain^android_x86_x86_64_shared_apex31/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/art/runtime/libart^android_x86_64_shared_apex31/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/art/runtime/libart^android_x86_64_static_apex31/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/art/runtime/libart^android_x86_x86_64_shared_apex31/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/art/runtime/libart^android_x86_x86_64_static_apex31/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/art/runtime/libstatslog_art^android_x86_64_static_lto-thin_apex31/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/art/runtime/libstatslog_art^android_x86_x86_64_static_lto-thin_apex31/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/crtbegin_dynamic^android_x86_64_apex31/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/crtbegin_dynamic^android_x86_x86_64_apex31/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/crtbegin_so^android_x86_64_apex31/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/crtbegin_so^android_x86_x86_64_apex31/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/crtend_android^android_x86_64_apex31/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/crtend_android^android_x86_x86_64_apex31/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/crtend_so^android_x86_64_apex31/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/crtend_so^android_x86_x86_64_apex31/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/art/sigchainlib/libsigchain^android_x86_64_shared_apex31/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/art/sigchainlib/libsigchain^android_x86_x86_64_shared_apex31/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/art/tools/cpp-define-generator/cpp-define-generator-asm-support^android_x86_64_apex31/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/art/tools/cpp-define-generator/cpp-define-generator-asm-support^android_x86_x86_64_apex31/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/libc^android_x86_64_shared_current/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/libc^android_x86_x86_64_shared_current/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libdl/libdl^android_x86_64_shared_current/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libdl/libdl^android_x86_x86_64_shared_current/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/crtbegin_so^android_x86_64_apex31/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/crtbegin_so^android_x86_x86_64_apex31/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/crtend_so^android_x86_64_apex31/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/crtend_so^android_x86_x86_64_apex31/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/crtbegin_dynamic^android_x86_64_apex31/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/crtbegin_dynamic^android_x86_x86_64_apex31/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/crtend_android^android_x86_64_apex31/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/crtend_android^android_x86_x86_64_apex31/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libdl/libdl_android^android_x86_64_shared_current/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libdl/libdl_android^android_x86_x86_64_shared_current/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libdl/libdl^android_x86_64_shared_current/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libdl/libdl^android_x86_x86_64_shared_current/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libm/libm^android_x86_64_shared_current/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libm/libm^android_x86_x86_64_shared_current/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/boringssl/libcrypto^android_x86_64_shared_apex31/ .
@@ -153,36 +169,6 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/system/unwinding/libbacktrace/libbacktra
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/unwinding/libunwindstack/libunwindstack^android_x86_64_shared_apex31/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/unwinding/libunwindstack/libunwindstack^android_x86_x86_64_shared_apex31/ .
 
-echo "building dex2oat^android_x86_64_apex31"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja dex2oat,android_x86_64_apex31
-mkdir -p $GITHUB_WORKSPACE/artifacts/art/dex2oat/dex2oat^android_x86_64_apex31
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/art/dex2oat^android_x86_64_apex31.output . $GITHUB_WORKSPACE/artifacts/art/dex2oat/dex2oat^android_x86_64_apex31
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_07/art/dex2oat^android_x86_64_apex31.output $GITHUB_WORKSPACE/artifacts/art/dex2oat/dex2oat^android_x86_64_apex31 $GITHUB_WORKSPACE/artifacts/art/dex2oat/dex2oat^android_x86_64_apex31/addition_copy_files.output
-
-echo "building dex2oat^android_x86_x86_64_apex31"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja dex2oat,android_x86_x86_64_apex31
-mkdir -p $GITHUB_WORKSPACE/artifacts/art/dex2oat/dex2oat^android_x86_x86_64_apex31
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/art/dex2oat^android_x86_x86_64_apex31.output . $GITHUB_WORKSPACE/artifacts/art/dex2oat/dex2oat^android_x86_x86_64_apex31
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_07/art/dex2oat^android_x86_x86_64_apex31.output $GITHUB_WORKSPACE/artifacts/art/dex2oat/dex2oat^android_x86_x86_64_apex31 $GITHUB_WORKSPACE/artifacts/art/dex2oat/dex2oat^android_x86_x86_64_apex31/addition_copy_files.output
-
-echo "building dexdump^android_x86_64_apex31"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja dexdump,android_x86_64_apex31
-mkdir -p $GITHUB_WORKSPACE/artifacts/art/dexdump/dexdump^android_x86_64_apex31
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/art/dexdump^android_x86_64_apex31.output . $GITHUB_WORKSPACE/artifacts/art/dexdump/dexdump^android_x86_64_apex31
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_07/art/dexdump^android_x86_64_apex31.output $GITHUB_WORKSPACE/artifacts/art/dexdump/dexdump^android_x86_64_apex31 $GITHUB_WORKSPACE/artifacts/art/dexdump/dexdump^android_x86_64_apex31/addition_copy_files.output
-
-echo "building dexlist^android_x86_64_apex31"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja dexlist,android_x86_64_apex31
-mkdir -p $GITHUB_WORKSPACE/artifacts/art/dexlist/dexlist^android_x86_64_apex31
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/art/dexlist^android_x86_64_apex31.output . $GITHUB_WORKSPACE/artifacts/art/dexlist/dexlist^android_x86_64_apex31
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_07/art/dexlist^android_x86_64_apex31.output $GITHUB_WORKSPACE/artifacts/art/dexlist/dexlist^android_x86_64_apex31 $GITHUB_WORKSPACE/artifacts/art/dexlist/dexlist^android_x86_64_apex31/addition_copy_files.output
-
-echo "building dexoptanalyzer^android_x86_64_apex31"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja dexoptanalyzer,android_x86_64_apex31
-mkdir -p $GITHUB_WORKSPACE/artifacts/art/dexoptanalyzer/dexoptanalyzer^android_x86_64_apex31
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/art/dexoptanalyzer^android_x86_64_apex31.output . $GITHUB_WORKSPACE/artifacts/art/dexoptanalyzer/dexoptanalyzer^android_x86_64_apex31
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_07/art/dexoptanalyzer^android_x86_64_apex31.output $GITHUB_WORKSPACE/artifacts/art/dexoptanalyzer/dexoptanalyzer^android_x86_64_apex31 $GITHUB_WORKSPACE/artifacts/art/dexoptanalyzer/dexoptanalyzer^android_x86_64_apex31/addition_copy_files.output
-
 echo "building libadbconnection^android_x86_64_shared_apex31"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libadbconnection,android_x86_64_shared_apex31
 mkdir -p $GITHUB_WORKSPACE/artifacts/art/adbconnection/libadbconnection^android_x86_64_shared_apex31
@@ -207,6 +193,24 @@ mkdir -p $GITHUB_WORKSPACE/artifacts/art/compiler/libart-compiler^android_x86_x8
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/art/libart-compiler^android_x86_x86_64_shared_apex31.output . $GITHUB_WORKSPACE/artifacts/art/compiler/libart-compiler^android_x86_x86_64_shared_apex31
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_07/art/libart-compiler^android_x86_x86_64_shared_apex31.output $GITHUB_WORKSPACE/artifacts/art/compiler/libart-compiler^android_x86_x86_64_shared_apex31 $GITHUB_WORKSPACE/artifacts/art/compiler/libart-compiler^android_x86_x86_64_shared_apex31/addition_copy_files.output
 
+echo "building dex2oat^android_x86_64_apex31"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja dex2oat,android_x86_64_apex31
+mkdir -p $GITHUB_WORKSPACE/artifacts/art/dex2oat/dex2oat^android_x86_64_apex31
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/art/dex2oat^android_x86_64_apex31.output . $GITHUB_WORKSPACE/artifacts/art/dex2oat/dex2oat^android_x86_64_apex31
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_07/art/dex2oat^android_x86_64_apex31.output $GITHUB_WORKSPACE/artifacts/art/dex2oat/dex2oat^android_x86_64_apex31 $GITHUB_WORKSPACE/artifacts/art/dex2oat/dex2oat^android_x86_64_apex31/addition_copy_files.output
+
+echo "building dex2oat^android_x86_x86_64_apex31"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja dex2oat,android_x86_x86_64_apex31
+mkdir -p $GITHUB_WORKSPACE/artifacts/art/dex2oat/dex2oat^android_x86_x86_64_apex31
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/art/dex2oat^android_x86_x86_64_apex31.output . $GITHUB_WORKSPACE/artifacts/art/dex2oat/dex2oat^android_x86_x86_64_apex31
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_07/art/dex2oat^android_x86_x86_64_apex31.output $GITHUB_WORKSPACE/artifacts/art/dex2oat/dex2oat^android_x86_x86_64_apex31 $GITHUB_WORKSPACE/artifacts/art/dex2oat/dex2oat^android_x86_x86_64_apex31/addition_copy_files.output
+
+echo "building dexdump^android_x86_64_apex31"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja dexdump,android_x86_64_apex31
+mkdir -p $GITHUB_WORKSPACE/artifacts/art/dexdump/dexdump^android_x86_64_apex31
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/art/dexdump^android_x86_64_apex31.output . $GITHUB_WORKSPACE/artifacts/art/dexdump/dexdump^android_x86_64_apex31
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_07/art/dexdump^android_x86_64_apex31.output $GITHUB_WORKSPACE/artifacts/art/dexdump/dexdump^android_x86_64_apex31 $GITHUB_WORKSPACE/artifacts/art/dexdump/dexdump^android_x86_64_apex31/addition_copy_files.output
+
 echo "building libart-dexlayout^android_x86_64_shared_apex31"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libart-dexlayout,android_x86_64_shared_apex31
 mkdir -p $GITHUB_WORKSPACE/artifacts/art/dexlayout/libart-dexlayout^android_x86_64_shared_apex31
@@ -219,17 +223,17 @@ mkdir -p $GITHUB_WORKSPACE/artifacts/art/dexlayout/libart-dexlayout^android_x86_
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/art/libart-dexlayout^android_x86_x86_64_shared_apex31.output . $GITHUB_WORKSPACE/artifacts/art/dexlayout/libart-dexlayout^android_x86_x86_64_shared_apex31
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_07/art/libart-dexlayout^android_x86_x86_64_shared_apex31.output $GITHUB_WORKSPACE/artifacts/art/dexlayout/libart-dexlayout^android_x86_x86_64_shared_apex31 $GITHUB_WORKSPACE/artifacts/art/dexlayout/libart-dexlayout^android_x86_x86_64_shared_apex31/addition_copy_files.output
 
-echo "building libart^android_x86_64_shared_apex31"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libart,android_x86_64_shared_apex31
-mkdir -p $GITHUB_WORKSPACE/artifacts/art/runtime/libart^android_x86_64_shared_apex31
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/art/libart^android_x86_64_shared_apex31.output . $GITHUB_WORKSPACE/artifacts/art/runtime/libart^android_x86_64_shared_apex31
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_07/art/libart^android_x86_64_shared_apex31.output $GITHUB_WORKSPACE/artifacts/art/runtime/libart^android_x86_64_shared_apex31 $GITHUB_WORKSPACE/artifacts/art/runtime/libart^android_x86_64_shared_apex31/addition_copy_files.output
+echo "building dexlist^android_x86_64_apex31"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja dexlist,android_x86_64_apex31
+mkdir -p $GITHUB_WORKSPACE/artifacts/art/dexlist/dexlist^android_x86_64_apex31
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/art/dexlist^android_x86_64_apex31.output . $GITHUB_WORKSPACE/artifacts/art/dexlist/dexlist^android_x86_64_apex31
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_07/art/dexlist^android_x86_64_apex31.output $GITHUB_WORKSPACE/artifacts/art/dexlist/dexlist^android_x86_64_apex31 $GITHUB_WORKSPACE/artifacts/art/dexlist/dexlist^android_x86_64_apex31/addition_copy_files.output
 
-echo "building libart^android_x86_x86_64_shared_apex31"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libart,android_x86_x86_64_shared_apex31
-mkdir -p $GITHUB_WORKSPACE/artifacts/art/runtime/libart^android_x86_x86_64_shared_apex31
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/art/libart^android_x86_x86_64_shared_apex31.output . $GITHUB_WORKSPACE/artifacts/art/runtime/libart^android_x86_x86_64_shared_apex31
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_07/art/libart^android_x86_x86_64_shared_apex31.output $GITHUB_WORKSPACE/artifacts/art/runtime/libart^android_x86_x86_64_shared_apex31 $GITHUB_WORKSPACE/artifacts/art/runtime/libart^android_x86_x86_64_shared_apex31/addition_copy_files.output
+echo "building dexoptanalyzer^android_x86_64_apex31"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja dexoptanalyzer,android_x86_64_apex31
+mkdir -p $GITHUB_WORKSPACE/artifacts/art/dexoptanalyzer/dexoptanalyzer^android_x86_64_apex31
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/art/dexoptanalyzer^android_x86_64_apex31.output . $GITHUB_WORKSPACE/artifacts/art/dexoptanalyzer/dexoptanalyzer^android_x86_64_apex31
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_07/art/dexoptanalyzer^android_x86_64_apex31.output $GITHUB_WORKSPACE/artifacts/art/dexoptanalyzer/dexoptanalyzer^android_x86_64_apex31 $GITHUB_WORKSPACE/artifacts/art/dexoptanalyzer/dexoptanalyzer^android_x86_64_apex31/addition_copy_files.output
 
 echo "building libartbase^android_x86_64_shared_apex31"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libartbase,android_x86_64_shared_apex31
@@ -279,6 +283,30 @@ mkdir -p $GITHUB_WORKSPACE/artifacts/art/libnativeloader/libnativeloader^android
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/art/libnativeloader^android_x86_x86_64_static_apex31.output . $GITHUB_WORKSPACE/artifacts/art/libnativeloader/libnativeloader^android_x86_x86_64_static_apex31
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_07/art/libnativeloader^android_x86_x86_64_static_apex31.output $GITHUB_WORKSPACE/artifacts/art/libnativeloader/libnativeloader^android_x86_x86_64_static_apex31 $GITHUB_WORKSPACE/artifacts/art/libnativeloader/libnativeloader^android_x86_x86_64_static_apex31/addition_copy_files.output
 
+echo "building libprofile^android_x86_64_shared_apex31"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libprofile,android_x86_64_shared_apex31
+mkdir -p $GITHUB_WORKSPACE/artifacts/art/libprofile/libprofile^android_x86_64_shared_apex31
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/art/libprofile^android_x86_64_shared_apex31.output . $GITHUB_WORKSPACE/artifacts/art/libprofile/libprofile^android_x86_64_shared_apex31
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_07/art/libprofile^android_x86_64_shared_apex31.output $GITHUB_WORKSPACE/artifacts/art/libprofile/libprofile^android_x86_64_shared_apex31 $GITHUB_WORKSPACE/artifacts/art/libprofile/libprofile^android_x86_64_shared_apex31/addition_copy_files.output
+
+echo "building libprofile^android_x86_x86_64_shared_apex31"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libprofile,android_x86_x86_64_shared_apex31
+mkdir -p $GITHUB_WORKSPACE/artifacts/art/libprofile/libprofile^android_x86_x86_64_shared_apex31
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/art/libprofile^android_x86_x86_64_shared_apex31.output . $GITHUB_WORKSPACE/artifacts/art/libprofile/libprofile^android_x86_x86_64_shared_apex31
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_07/art/libprofile^android_x86_x86_64_shared_apex31.output $GITHUB_WORKSPACE/artifacts/art/libprofile/libprofile^android_x86_x86_64_shared_apex31 $GITHUB_WORKSPACE/artifacts/art/libprofile/libprofile^android_x86_x86_64_shared_apex31/addition_copy_files.output
+
+echo "building oatdump^android_x86_64_apex31"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja oatdump,android_x86_64_apex31
+mkdir -p $GITHUB_WORKSPACE/artifacts/art/oatdump/oatdump^android_x86_64_apex31
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/art/oatdump^android_x86_64_apex31.output . $GITHUB_WORKSPACE/artifacts/art/oatdump/oatdump^android_x86_64_apex31
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_07/art/oatdump^android_x86_64_apex31.output $GITHUB_WORKSPACE/artifacts/art/oatdump/oatdump^android_x86_64_apex31 $GITHUB_WORKSPACE/artifacts/art/oatdump/oatdump^android_x86_64_apex31/addition_copy_files.output
+
+echo "building odrefresh^android_x86_64_apex31"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja odrefresh,android_x86_64_apex31
+mkdir -p $GITHUB_WORKSPACE/artifacts/art/odrefresh/odrefresh^android_x86_64_apex31
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/art/odrefresh^android_x86_64_apex31.output . $GITHUB_WORKSPACE/artifacts/art/odrefresh/odrefresh^android_x86_64_apex31
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_07/art/odrefresh^android_x86_64_apex31.output $GITHUB_WORKSPACE/artifacts/art/odrefresh/odrefresh^android_x86_64_apex31 $GITHUB_WORKSPACE/artifacts/art/odrefresh/odrefresh^android_x86_64_apex31/addition_copy_files.output
+
 echo "building libopenjdkjvm^android_x86_64_shared_apex31"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libopenjdkjvm,android_x86_64_shared_apex31
 mkdir -p $GITHUB_WORKSPACE/artifacts/art/openjdkjvm/libopenjdkjvm^android_x86_64_shared_apex31
@@ -315,35 +343,24 @@ mkdir -p $GITHUB_WORKSPACE/artifacts/art/perfetto_hprof/libperfetto_hprof^androi
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/art/libperfetto_hprof^android_x86_x86_64_shared_apex31.output . $GITHUB_WORKSPACE/artifacts/art/perfetto_hprof/libperfetto_hprof^android_x86_x86_64_shared_apex31
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_07/art/libperfetto_hprof^android_x86_x86_64_shared_apex31.output $GITHUB_WORKSPACE/artifacts/art/perfetto_hprof/libperfetto_hprof^android_x86_x86_64_shared_apex31 $GITHUB_WORKSPACE/artifacts/art/perfetto_hprof/libperfetto_hprof^android_x86_x86_64_shared_apex31/addition_copy_files.output
 
-echo "building libprofile^android_x86_64_shared_apex31"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libprofile,android_x86_64_shared_apex31
-mkdir -p $GITHUB_WORKSPACE/artifacts/art/libprofile/libprofile^android_x86_64_shared_apex31
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/art/libprofile^android_x86_64_shared_apex31.output . $GITHUB_WORKSPACE/artifacts/art/libprofile/libprofile^android_x86_64_shared_apex31
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_07/art/libprofile^android_x86_64_shared_apex31.output $GITHUB_WORKSPACE/artifacts/art/libprofile/libprofile^android_x86_64_shared_apex31 $GITHUB_WORKSPACE/artifacts/art/libprofile/libprofile^android_x86_64_shared_apex31/addition_copy_files.output
-
-echo "building libprofile^android_x86_x86_64_shared_apex31"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libprofile,android_x86_x86_64_shared_apex31
-mkdir -p $GITHUB_WORKSPACE/artifacts/art/libprofile/libprofile^android_x86_x86_64_shared_apex31
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/art/libprofile^android_x86_x86_64_shared_apex31.output . $GITHUB_WORKSPACE/artifacts/art/libprofile/libprofile^android_x86_x86_64_shared_apex31
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_07/art/libprofile^android_x86_x86_64_shared_apex31.output $GITHUB_WORKSPACE/artifacts/art/libprofile/libprofile^android_x86_x86_64_shared_apex31 $GITHUB_WORKSPACE/artifacts/art/libprofile/libprofile^android_x86_x86_64_shared_apex31/addition_copy_files.output
-
-echo "building oatdump^android_x86_64_apex31"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja oatdump,android_x86_64_apex31
-mkdir -p $GITHUB_WORKSPACE/artifacts/art/oatdump/oatdump^android_x86_64_apex31
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/art/oatdump^android_x86_64_apex31.output . $GITHUB_WORKSPACE/artifacts/art/oatdump/oatdump^android_x86_64_apex31
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_07/art/oatdump^android_x86_64_apex31.output $GITHUB_WORKSPACE/artifacts/art/oatdump/oatdump^android_x86_64_apex31 $GITHUB_WORKSPACE/artifacts/art/oatdump/oatdump^android_x86_64_apex31/addition_copy_files.output
-
-echo "building odrefresh^android_x86_64_apex31"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja odrefresh,android_x86_64_apex31
-mkdir -p $GITHUB_WORKSPACE/artifacts/art/odrefresh/odrefresh^android_x86_64_apex31
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/art/odrefresh^android_x86_64_apex31.output . $GITHUB_WORKSPACE/artifacts/art/odrefresh/odrefresh^android_x86_64_apex31
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_07/art/odrefresh^android_x86_64_apex31.output $GITHUB_WORKSPACE/artifacts/art/odrefresh/odrefresh^android_x86_64_apex31 $GITHUB_WORKSPACE/artifacts/art/odrefresh/odrefresh^android_x86_64_apex31/addition_copy_files.output
-
 echo "building profman^android_x86_64_apex31"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja profman,android_x86_64_apex31
 mkdir -p $GITHUB_WORKSPACE/artifacts/art/profman/profman^android_x86_64_apex31
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/art/profman^android_x86_64_apex31.output . $GITHUB_WORKSPACE/artifacts/art/profman/profman^android_x86_64_apex31
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_07/art/profman^android_x86_64_apex31.output $GITHUB_WORKSPACE/artifacts/art/profman/profman^android_x86_64_apex31 $GITHUB_WORKSPACE/artifacts/art/profman/profman^android_x86_64_apex31/addition_copy_files.output
+
+echo "building libart^android_x86_64_shared_apex31"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libart,android_x86_64_shared_apex31
+mkdir -p $GITHUB_WORKSPACE/artifacts/art/runtime/libart^android_x86_64_shared_apex31
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/art/libart^android_x86_64_shared_apex31.output . $GITHUB_WORKSPACE/artifacts/art/runtime/libart^android_x86_64_shared_apex31
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_07/art/libart^android_x86_64_shared_apex31.output $GITHUB_WORKSPACE/artifacts/art/runtime/libart^android_x86_64_shared_apex31 $GITHUB_WORKSPACE/artifacts/art/runtime/libart^android_x86_64_shared_apex31/addition_copy_files.output
+
+echo "building libart^android_x86_x86_64_shared_apex31"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libart,android_x86_x86_64_shared_apex31
+mkdir -p $GITHUB_WORKSPACE/artifacts/art/runtime/libart^android_x86_x86_64_shared_apex31
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/art/libart^android_x86_x86_64_shared_apex31.output . $GITHUB_WORKSPACE/artifacts/art/runtime/libart^android_x86_x86_64_shared_apex31
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_07/art/libart^android_x86_x86_64_shared_apex31.output $GITHUB_WORKSPACE/artifacts/art/runtime/libart^android_x86_x86_64_shared_apex31 $GITHUB_WORKSPACE/artifacts/art/runtime/libart^android_x86_x86_64_shared_apex31/addition_copy_files.output
+
 
 rm -rf out
 
@@ -352,6 +369,7 @@ tar -cf art.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/artifacts
 gh release --repo cibuilde/aosp-buildbot upload android12-gsi_07 art.tar.zst --clobber
 
 du -ah -d1 art*.tar.zst | sort -h
+
 
 if [ ! -f "$GITHUB_WORKSPACE/cache/art.tar.zst" ]; then
   echo "Compressing art -> art.tar.zst"
@@ -457,10 +475,6 @@ if [ ! -f "$GITHUB_WORKSPACE/cache/packages_modules_adb.tar.zst" ]; then
   echo "Compressing packages/modules/adb -> packages_modules_adb.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/packages_modules_adb.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/packages/modules/adb/ .
 fi
-if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_build-tools.tar.zst" ]; then
-  echo "Compressing prebuilts/build-tools -> prebuilts_build-tools.tar.zst"
-  tar -cf $GITHUB_WORKSPACE/cache/prebuilts_build-tools.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/prebuilts/build-tools/ .
-fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_gcc_linux-x86_x86_x86_64-linux-android-4.9.tar.zst" ]; then
   echo "Compressing prebuilts/gcc/linux-x86/x86/x86_64-linux-android-4.9 -> prebuilts_gcc_linux-x86_x86_x86_64-linux-android-4.9.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/prebuilts_gcc_linux-x86_x86_x86_64-linux-android-4.9.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/prebuilts/gcc/linux-x86/x86/x86_64-linux-android-4.9/ .
@@ -497,5 +511,6 @@ if [ ! -f "$GITHUB_WORKSPACE/cache/system_unwinding.tar.zst" ]; then
   echo "Compressing system/unwinding -> system_unwinding.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/system_unwinding.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/system/unwinding/ .
 fi
+
 
 rm -rf aosp

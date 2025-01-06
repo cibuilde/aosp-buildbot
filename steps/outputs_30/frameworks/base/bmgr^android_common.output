@@ -3,5 +3,4 @@ out/soong/.intermediates/frameworks/base/cmds/bmgr/bmgr/android_common/dexpreopt
 out/soong/.intermediates/frameworks/base/cmds/bmgr/bmgr/android_common/dexpreopt/oat/x86/javalib.vdex
 out/soong/.intermediates/frameworks/base/cmds/bmgr/bmgr/android_common/dexpreopt/oat/x86_64/javalib.odex
 out/soong/.intermediates/frameworks/base/cmds/bmgr/bmgr/android_common/dexpreopt/oat/x86_64/javalib.vdex
-out/soong/.intermediates/frameworks/base/cmds/bmgr/bmgr/android_common/javac/bmgr.jar
 out/soong/.intermediates/frameworks/base/cmds/bmgr/bmgr/android_common/turbine-combined/bmgr.jar

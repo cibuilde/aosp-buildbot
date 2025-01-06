@@ -18,28 +18,8 @@ jobs:
         key: art@${{ env.branch }}
     - uses: actions/cache@v4
       with:
-        path: cache/build_make.tar.zst
-        key: build_make@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/build_soong.tar.zst
-        key: build_soong@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
         path: cache/external_apache-http.tar.zst
         key: external_apache-http@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_guava.tar.zst
-        key: external_guava@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_jacoco.tar.zst
-        key: external_jacoco@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/frameworks_av.tar.zst
-        key: frameworks_av@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/frameworks_base.tar.zst
@@ -50,64 +30,8 @@ jobs:
         key: frameworks_ex@${{ env.branch }}
     - uses: actions/cache@v4
       with:
-        path: cache/frameworks_libs_modules-utils.tar.zst
-        key: frameworks_libs_modules-utils@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/frameworks_libs_net.tar.zst
-        key: frameworks_libs_net@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/frameworks_native.tar.zst
-        key: frameworks_native@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/hardware_interfaces.tar.zst
-        key: hardware_interfaces@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
         path: cache/libcore.tar.zst
         key: libcore@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/libnativehelper.tar.zst
-        key: libnativehelper@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/packages_modules_Connectivity.tar.zst
-        key: packages_modules_Connectivity@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/packages_modules_DnsResolver.tar.zst
-        key: packages_modules_DnsResolver@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/packages_modules_NetworkStack.tar.zst
-        key: packages_modules_NetworkStack@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/packages_modules_Permission.tar.zst
-        key: packages_modules_Permission@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/packages_modules_Scheduling.tar.zst
-        key: packages_modules_Scheduling@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/packages_modules_StatsD.tar.zst
-        key: packages_modules_StatsD@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/packages_modules_Wifi.tar.zst
-        key: packages_modules_Wifi@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/packages_modules_common.tar.zst
-        key: packages_modules_common@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/packages_providers_MediaProvider.tar.zst
-        key: packages_providers_MediaProvider@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/prebuilts_build-tools.tar.zst
@@ -118,42 +42,6 @@ jobs:
         key: prebuilts_jdk_jdk11@${{ env.branch }}
     - uses: actions/cache@v4
       with:
-        path: cache/prebuilts_misc.tar.zst
-        key: prebuilts_misc@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/prebuilts_sdk.tar.zst
-        key: prebuilts_sdk@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/system_core.tar.zst
-        key: system_core@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
         path: cache/system_libhidl.tar.zst
         key: system_libhidl@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/system_libsysprop.tar.zst
-        key: system_libsysprop@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/system_netd.tar.zst
-        key: system_netd@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/system_sepolicy.tar.zst
-        key: system_sepolicy@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/tools_apifinder.tar.zst
-        key: tools_apifinder@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/tools_metalava.tar.zst
-        key: tools_metalava@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/tools_platform-compat.tar.zst
-        key: tools_platform-compat@${{ env.branch }}
     - run: bash steps/build_31.sh

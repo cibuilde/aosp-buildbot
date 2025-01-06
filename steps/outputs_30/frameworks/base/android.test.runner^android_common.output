@@ -4,5 +4,4 @@ out/soong/.intermediates/frameworks/base/test-runner/android.test.runner/android
 out/soong/.intermediates/frameworks/base/test-runner/android.test.runner/android_common/dexpreopt/oat/x86/javalib.vdex
 out/soong/.intermediates/frameworks/base/test-runner/android.test.runner/android_common/dexpreopt/oat/x86_64/javalib.odex
 out/soong/.intermediates/frameworks/base/test-runner/android.test.runner/android_common/dexpreopt/oat/x86_64/javalib.vdex
-out/soong/.intermediates/frameworks/base/test-runner/android.test.runner/android_common/javac/android.test.runner.jar
 out/soong/.intermediates/frameworks/base/test-runner/android.test.runner/android_common/turbine-combined/android.test.runner.jar

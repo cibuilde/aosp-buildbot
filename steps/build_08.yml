@@ -7,7 +7,7 @@ env:
   branch: 'android12-gsi'
   GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 jobs:
-  build_8:
+  build_08:
     runs-on: ubuntu-22.04
     steps:
     - uses: actions/checkout@main
@@ -144,6 +144,10 @@ jobs:
       with:
         path: cache/external_iproute2.tar.zst
         key: external_iproute2@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_jacoco.tar.zst
+        key: external_jacoco@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/external_jsmn.tar.zst
@@ -582,10 +586,6 @@ jobs:
         key: packages_modules_Gki@${{ env.branch }}
     - uses: actions/cache@v4
       with:
-        path: cache/packages_modules_ModuleMetadata.tar.zst
-        key: packages_modules_ModuleMetadata@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
         path: cache/packages_modules_StatsD.tar.zst
         key: packages_modules_StatsD@${{ env.branch }}
     - uses: actions/cache@v4
@@ -616,6 +616,10 @@ jobs:
       with:
         path: cache/prebuilts_jdk_jdk11.tar.zst
         key: prebuilts_jdk_jdk11@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/prebuilts_misc.tar.zst
+        key: prebuilts_misc@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/prebuilts_rust.tar.zst

@@ -1,6 +1,5 @@
-set -e
 
-echo "entering system/extras"
+set -e
 
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
@@ -12,6 +11,8 @@ ln -sf $GITHUB_WORKSPACE/ninja .
 if [ -d "$GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86" ]; then
   mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86 prebuilts/clang/host/linux-x86
 fi
+
+echo "Preparing for system/extras"
 
 clone_depth_platform art
 clone_depth_platform bionic
@@ -31,7 +32,6 @@ clone_depth_platform frameworks/native
 clone_depth_platform hardware/libhardware
 clone_depth_platform hardware/libhardware_legacy
 clone_depth_platform hardware/ril
-clone_project platform/prebuilts/build-tools prebuilts/build-tools android12-gsi "/linux-x86/bin" "/linux-x86/lib64" "/path" "/common"
 clone_depth_platform prebuilts/gcc/linux-x86/x86/x86_64-linux-android-4.9
 clone_depth_platform system/core
 clone_sparse_exclude system/extras "!/simpleperf/scripts" "!/simpleperf/testdata" "!/simpleperf/demo" "!/simpleperf/doc" "!/memory_replay/traces" "!/ioshark/*.tgz" "!/ioshark/*.tar.gz"
@@ -44,12 +44,10 @@ clone_depth_platform system/tools/aidl
 clone_depth_platform system/unwinding
 
 rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/cmd/dep_fixer/dep_fixer^linux_glibc_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/cc/libbuildversion/libbuildversion^android_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/symbol_inject/cmd/symbol_inject^linux_glibc_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcxx/libc++^linux_glibc_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/llvm/llvm-gen-attributes^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/llvm/llvm-gen-intrinsics^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/protobuf/aprotoc^linux_glibc_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/extras/profcollectd/libprofcollectd/profcollectd_aidl_interface-rust-source^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/tools/aidl/aidl^linux_glibc_x86_64/ .
 
 echo "building liblpdump_interface-cpp-source^"
@@ -57,24 +55,6 @@ prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/st
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/extras/partition_tools/aidl/liblpdump_interface-cpp-source^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/extras/liblpdump_interface-cpp-source^.output . $GITHUB_WORKSPACE/artifacts/system/extras/partition_tools/aidl/liblpdump_interface-cpp-source^
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/system/extras/liblpdump_interface-cpp-source^.output $GITHUB_WORKSPACE/artifacts/system/extras/partition_tools/aidl/liblpdump_interface-cpp-source^ $GITHUB_WORKSPACE/artifacts/system/extras/partition_tools/aidl/liblpdump_interface-cpp-source^/addition_copy_files.output
-
-echo "building libsimpleperf^android_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libsimpleperf,android_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/extras/simpleperf/libsimpleperf^android_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/extras/libsimpleperf^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/extras/simpleperf/libsimpleperf^android_x86_64_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/system/extras/libsimpleperf^android_x86_64_static.output $GITHUB_WORKSPACE/artifacts/system/extras/simpleperf/libsimpleperf^android_x86_64_static $GITHUB_WORKSPACE/artifacts/system/extras/simpleperf/libsimpleperf^android_x86_64_static/addition_copy_files.output
-
-echo "building libsimpleperf_etm_decoder^android_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libsimpleperf_etm_decoder,android_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/extras/simpleperf/libsimpleperf_etm_decoder^android_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/extras/libsimpleperf_etm_decoder^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/extras/simpleperf/libsimpleperf_etm_decoder^android_x86_64_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/system/extras/libsimpleperf_etm_decoder^android_x86_64_static.output $GITHUB_WORKSPACE/artifacts/system/extras/simpleperf/libsimpleperf_etm_decoder^android_x86_64_static $GITHUB_WORKSPACE/artifacts/system/extras/simpleperf/libsimpleperf_etm_decoder^android_x86_64_static/addition_copy_files.output
-
-echo "building libsimpleperf_profcollect^android_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libsimpleperf_profcollect,android_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/extras/simpleperf/libsimpleperf_profcollect^android_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/extras/libsimpleperf_profcollect^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/extras/simpleperf/libsimpleperf_profcollect^android_x86_64_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/system/extras/libsimpleperf_profcollect^android_x86_64_static.output $GITHUB_WORKSPACE/artifacts/system/extras/simpleperf/libsimpleperf_profcollect^android_x86_64_static $GITHUB_WORKSPACE/artifacts/system/extras/simpleperf/libsimpleperf_profcollect^android_x86_64_static/addition_copy_files.output
 
 echo "building profcollectd_aidl_interface-rust-source^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja profcollectd_aidl_interface-rust-source,
@@ -88,6 +68,25 @@ mkdir -p $GITHUB_WORKSPACE/artifacts/system/extras/profcollectd/libprofcollectd/
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/extras/profcollectd_aidl_interface-rust^android_x86_64_source.output . $GITHUB_WORKSPACE/artifacts/system/extras/profcollectd/libprofcollectd/profcollectd_aidl_interface-rust^android_x86_64_source
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/system/extras/profcollectd_aidl_interface-rust^android_x86_64_source.output $GITHUB_WORKSPACE/artifacts/system/extras/profcollectd/libprofcollectd/profcollectd_aidl_interface-rust^android_x86_64_source $GITHUB_WORKSPACE/artifacts/system/extras/profcollectd/libprofcollectd/profcollectd_aidl_interface-rust^android_x86_64_source/addition_copy_files.output
 
+echo "building libsimpleperf^android_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libsimpleperf,android_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/extras/simpleperf/libsimpleperf^android_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/extras/libsimpleperf^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/extras/simpleperf/libsimpleperf^android_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/system/extras/libsimpleperf^android_x86_64_static.output $GITHUB_WORKSPACE/artifacts/system/extras/simpleperf/libsimpleperf^android_x86_64_static $GITHUB_WORKSPACE/artifacts/system/extras/simpleperf/libsimpleperf^android_x86_64_static/addition_copy_files.output
+
+echo "building libsimpleperf_profcollect^android_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libsimpleperf_profcollect,android_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/extras/simpleperf/libsimpleperf_profcollect^android_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/extras/libsimpleperf_profcollect^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/extras/simpleperf/libsimpleperf_profcollect^android_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/system/extras/libsimpleperf_profcollect^android_x86_64_static.output $GITHUB_WORKSPACE/artifacts/system/extras/simpleperf/libsimpleperf_profcollect^android_x86_64_static $GITHUB_WORKSPACE/artifacts/system/extras/simpleperf/libsimpleperf_profcollect^android_x86_64_static/addition_copy_files.output
+
+echo "building libsimpleperf_etm_decoder^android_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libsimpleperf_etm_decoder,android_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/extras/simpleperf/libsimpleperf_etm_decoder^android_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/system/extras/libsimpleperf_etm_decoder^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/extras/simpleperf/libsimpleperf_etm_decoder^android_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/system/extras/libsimpleperf_etm_decoder^android_x86_64_static.output $GITHUB_WORKSPACE/artifacts/system/extras/simpleperf/libsimpleperf_etm_decoder^android_x86_64_static $GITHUB_WORKSPACE/artifacts/system/extras/simpleperf/libsimpleperf_etm_decoder^android_x86_64_static/addition_copy_files.output
+
+
 rm -rf out
 
 cd $GITHUB_WORKSPACE/
@@ -95,6 +94,7 @@ tar -cf system_extras.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE
 gh release --repo cibuilde/aosp-buildbot upload android12-gsi_04 system_extras.tar.zst --clobber
 
 du -ah -d1 system_extras*.tar.zst | sort -h
+
 
 if [ ! -f "$GITHUB_WORKSPACE/cache/art.tar.zst" ]; then
   echo "Compressing art -> art.tar.zst"
@@ -168,10 +168,6 @@ if [ ! -f "$GITHUB_WORKSPACE/cache/hardware_ril.tar.zst" ]; then
   echo "Compressing hardware/ril -> hardware_ril.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/hardware_ril.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/hardware/ril/ .
 fi
-if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_build-tools.tar.zst" ]; then
-  echo "Compressing prebuilts/build-tools -> prebuilts_build-tools.tar.zst"
-  tar -cf $GITHUB_WORKSPACE/cache/prebuilts_build-tools.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/prebuilts/build-tools/ .
-fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_gcc_linux-x86_x86_x86_64-linux-android-4.9.tar.zst" ]; then
   echo "Compressing prebuilts/gcc/linux-x86/x86/x86_64-linux-android-4.9 -> prebuilts_gcc_linux-x86_x86_x86_64-linux-android-4.9.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/prebuilts_gcc_linux-x86_x86_x86_64-linux-android-4.9.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/prebuilts/gcc/linux-x86/x86/x86_64-linux-android-4.9/ .
@@ -212,5 +208,6 @@ if [ ! -f "$GITHUB_WORKSPACE/cache/system_unwinding.tar.zst" ]; then
   echo "Compressing system/unwinding -> system_unwinding.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/system_unwinding.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/system/unwinding/ .
 fi
+
 
 rm -rf aosp

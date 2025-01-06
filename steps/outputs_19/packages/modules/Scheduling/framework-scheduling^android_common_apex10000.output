@@ -1,6 +1,2 @@
-out/soong/.intermediates/packages/modules/Scheduling/framework/framework-scheduling/android_common_apex10000/gen/aidl/aidl0.srcjar
-out/soong/.intermediates/packages/modules/Scheduling/framework/framework-scheduling/android_common_apex10000/turbine/framework-scheduling.jar
-out/soong/.intermediates/packages/modules/Scheduling/framework/framework-scheduling/android_common_apex10000/turbine-combined/framework-scheduling.jar
-out/soong/.intermediates/packages/modules/Scheduling/framework/framework-scheduling/android_common_apex10000/javac/framework-scheduling.jar
-out/soong/.intermediates/packages/modules/Scheduling/framework/framework-scheduling/android_common_apex10000/dex/framework-scheduling.jar
 out/soong/.intermediates/packages/modules/Scheduling/framework/framework-scheduling/android_common_apex10000/aligned/framework-scheduling.jar
+out/soong/.intermediates/packages/modules/Scheduling/framework/framework-scheduling/android_common_apex10000/turbine-combined/framework-scheduling.jar

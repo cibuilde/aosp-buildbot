@@ -1,6 +1,5 @@
-set -e
 
-echo "entering external/pdfium"
+set -e
 
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
@@ -13,6 +12,8 @@ if [ -d "$GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86" ]; then
   mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86 prebuilts/clang/host/linux-x86
 fi
 
+echo "Preparing for external/pdfium"
+
 clone_depth_platform art
 clone_depth_platform bionic
 clone_depth_platform build/soong
@@ -23,15 +24,14 @@ clone_depth_platform external/libcxxabi
 clone_depth_platform external/libjpeg-turbo
 clone_depth_platform external/pdfium
 clone_depth_platform external/zlib
-clone_project platform/prebuilts/build-tools prebuilts/build-tools android12-gsi "/linux-x86/bin" "/linux-x86/lib64" "/path" "/common"
 clone_depth_platform prebuilts/gcc/linux-x86/x86/x86_64-linux-android-4.9
 
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/libc^android_x86_64_shared_current/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/libc^android_x86_x86_64_shared_current/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/crtbegin_so^android_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/crtbegin_so^android_x86_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/crtend_so^android_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/crtend_so^android_x86_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/libc^android_x86_64_shared_current/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/libc^android_x86_x86_64_shared_current/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libdl/libdl^android_x86_64_shared_current/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libdl/libdl^android_x86_x86_64_shared_current/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libm/libm^android_x86_64_shared_current/ .
@@ -46,22 +46,22 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcxxabi/libc++demangle^androi
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcxxabi/libc++demangle^android_x86_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/libjpeg-turbo/libjpeg^android_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/libjpeg-turbo/libjpeg^android_x86_x86_64_shared/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/pdfium/third_party/libpdfium-agg^android_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/pdfium/third_party/libpdfium-agg^android_x86_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/pdfium/core/fdrm/libpdfium-fdrm^android_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/pdfium/core/fdrm/libpdfium-fdrm^android_x86_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/pdfium/core/fpdfapi/cmaps/libpdfium-cmaps^android_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/pdfium/core/fpdfapi/cmaps/libpdfium-cmaps^android_x86_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/pdfium/core/fpdfapi/edit/libpdfium-edit^android_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/pdfium/core/fpdfapi/edit/libpdfium-edit^android_x86_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/pdfium/core/fdrm/libpdfium-fdrm^android_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/pdfium/core/fdrm/libpdfium-fdrm^android_x86_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/pdfium/core/fpdfapi/font/libpdfium-font^android_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/pdfium/core/fpdfapi/font/libpdfium-font^android_x86_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/pdfium/fpdfsdk/formfiller/libpdfium-formfiller^android_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/pdfium/fpdfsdk/formfiller/libpdfium-formfiller^android_x86_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/pdfium/core/fpdfapi/page/libpdfium-page^android_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/pdfium/core/fpdfapi/page/libpdfium-page^android_x86_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/pdfium/core/fpdfapi/parser/libpdfium-parser^android_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/pdfium/core/fpdfapi/parser/libpdfium-parser^android_x86_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/pdfium/core/fpdfapi/render/libpdfium-render^android_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/pdfium/core/fpdfapi/render/libpdfium-render^android_x86_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/pdfium/core/fpdfdoc/libpdfium-fpdfdoc^android_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/pdfium/core/fpdfdoc/libpdfium-fpdfdoc^android_x86_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/pdfium/fpdfsdk/libpdfium-fpdfsdk^android_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/pdfium/fpdfsdk/libpdfium-fpdfsdk^android_x86_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/pdfium/core/fpdftext/libpdfium-fpdftext^android_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/pdfium/core/fpdftext/libpdfium-fpdftext^android_x86_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/pdfium/core/fxcodec/libpdfium-fxcodec^android_x86_64_static/ .
@@ -70,24 +70,24 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/external/pdfium/core/fxcrt/libpdfium-fxc
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/pdfium/core/fxcrt/libpdfium-fxcrt^android_x86_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/pdfium/core/fxge/libpdfium-fxge^android_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/pdfium/core/fxge/libpdfium-fxge^android_x86_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/pdfium/fxjs/libpdfium-fxjs^android_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/pdfium/fxjs/libpdfium-fxjs^android_x86_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/pdfium/third_party/libpdfium-lcms2^android_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/pdfium/third_party/libpdfium-lcms2^android_x86_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/pdfium/third_party/libpdfium-libopenjpeg2^android_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/pdfium/third_party/libpdfium-libopenjpeg2^android_x86_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/pdfium/core/fpdfapi/page/libpdfium-page^android_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/pdfium/core/fpdfapi/page/libpdfium-page^android_x86_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/pdfium/core/fpdfapi/parser/libpdfium-parser^android_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/pdfium/core/fpdfapi/parser/libpdfium-parser^android_x86_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/pdfium/fpdfsdk/libpdfium-fpdfsdk^android_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/pdfium/fpdfsdk/libpdfium-fpdfsdk^android_x86_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/pdfium/fpdfsdk/formfiller/libpdfium-formfiller^android_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/pdfium/fpdfsdk/formfiller/libpdfium-formfiller^android_x86_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/pdfium/fpdfsdk/pwl/libpdfium-pwl^android_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/pdfium/fpdfsdk/pwl/libpdfium-pwl^android_x86_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/pdfium/core/fpdfapi/render/libpdfium-render^android_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/pdfium/core/fpdfapi/render/libpdfium-render^android_x86_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/pdfium/fxjs/libpdfium-fxjs^android_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/pdfium/fxjs/libpdfium-fxjs^android_x86_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/pdfium/third_party/libpdfium-skia_shared^android_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/pdfium/third_party/libpdfium-skia_shared^android_x86_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/pdfium/third_party/libpdfium-third_party-base^android_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/pdfium/third_party/libpdfium-third_party-base^android_x86_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/pdfium/third_party/libpdfium-lcms2^android_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/pdfium/third_party/libpdfium-lcms2^android_x86_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/pdfium/third_party/libpdfium-libopenjpeg2^android_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/pdfium/third_party/libpdfium-libopenjpeg2^android_x86_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/pdfium/third_party/libpdfium-agg^android_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/pdfium/third_party/libpdfium-agg^android_x86_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/zlib/libz^android_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/zlib/libz^android_x86_x86_64_shared/ .
 
@@ -103,6 +103,7 @@ mkdir -p $GITHUB_WORKSPACE/artifacts/external/pdfium/libpdfium^android_x86_x86_6
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/external/pdfium/libpdfium^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/external/pdfium/libpdfium^android_x86_x86_64_shared
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_07/external/pdfium/libpdfium^android_x86_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/external/pdfium/libpdfium^android_x86_x86_64_shared $GITHUB_WORKSPACE/artifacts/external/pdfium/libpdfium^android_x86_x86_64_shared/addition_copy_files.output
 
+
 rm -rf out
 
 cd $GITHUB_WORKSPACE/
@@ -110,6 +111,7 @@ tar -cf external_pdfium.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPA
 gh release --repo cibuilde/aosp-buildbot upload android12-gsi_07 external_pdfium.tar.zst --clobber
 
 du -ah -d1 external_pdfium*.tar.zst | sort -h
+
 
 if [ ! -f "$GITHUB_WORKSPACE/cache/art.tar.zst" ]; then
   echo "Compressing art -> art.tar.zst"
@@ -151,13 +153,10 @@ if [ ! -f "$GITHUB_WORKSPACE/cache/external_zlib.tar.zst" ]; then
   echo "Compressing external/zlib -> external_zlib.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/external_zlib.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/zlib/ .
 fi
-if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_build-tools.tar.zst" ]; then
-  echo "Compressing prebuilts/build-tools -> prebuilts_build-tools.tar.zst"
-  tar -cf $GITHUB_WORKSPACE/cache/prebuilts_build-tools.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/prebuilts/build-tools/ .
-fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_gcc_linux-x86_x86_x86_64-linux-android-4.9.tar.zst" ]; then
   echo "Compressing prebuilts/gcc/linux-x86/x86/x86_64-linux-android-4.9 -> prebuilts_gcc_linux-x86_x86_x86_64-linux-android-4.9.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/prebuilts_gcc_linux-x86_x86_x86_64-linux-android-4.9.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/prebuilts/gcc/linux-x86/x86/x86_64-linux-android-4.9/ .
 fi
+
 
 rm -rf aosp

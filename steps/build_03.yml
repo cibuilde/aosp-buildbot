@@ -7,7 +7,7 @@ env:
   branch: 'android12-gsi'
   GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 jobs:
-  build_3:
+  build_03:
     runs-on: ubuntu-22.04
     steps:
     - uses: actions/checkout@main
@@ -594,14 +594,6 @@ jobs:
         key: prebuilts_clang_host_linux-x86@${{ env.branch }}
     - uses: actions/cache@v4
       with:
-        path: cache/prebuilts_gcc_linux-x86_aarch64_aarch64-linux-android-4.9.tar.zst
-        key: prebuilts_gcc_linux-x86_aarch64_aarch64-linux-android-4.9@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/prebuilts_gcc_linux-x86_arm_arm-linux-androideabi-4.9.tar.zst
-        key: prebuilts_gcc_linux-x86_arm_arm-linux-androideabi-4.9@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
         path: cache/prebuilts_gcc_linux-x86_host_x86_64-linux-glibc2.17-4.8.tar.zst
         key: prebuilts_gcc_linux-x86_host_x86_64-linux-glibc2.17-4.8@${{ env.branch }}
     - uses: actions/cache@v4
@@ -652,10 +644,6 @@ jobs:
       with:
         path: cache/system_bt.tar.zst
         key: system_bt@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/system_connectivity_wificond.tar.zst
-        key: system_connectivity_wificond@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/system_core.tar.zst

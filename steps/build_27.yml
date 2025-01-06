@@ -118,6 +118,10 @@ jobs:
         key: system_libsysprop@${{ env.branch }}
     - uses: actions/cache@v4
       with:
+        path: cache/system_sepolicy.tar.zst
+        key: system_sepolicy@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
         path: cache/tools_apifinder.tar.zst
         key: tools_apifinder@${{ env.branch }}
     - uses: actions/cache@v4

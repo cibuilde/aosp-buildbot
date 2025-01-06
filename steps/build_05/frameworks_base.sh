@@ -1,6 +1,5 @@
-set -e
 
-echo "entering frameworks/base"
+set -e
 
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
@@ -12,6 +11,8 @@ ln -sf $GITHUB_WORKSPACE/ninja .
 if [ -d "$GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86" ]; then
   mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86 prebuilts/clang/host/linux-x86
 fi
+
+echo "Preparing for frameworks/base"
 
 clone_depth_platform bionic
 clone_depth_platform build/soong
@@ -25,7 +26,6 @@ clone_depth_platform hardware/libhardware
 clone_depth_platform hardware/libhardware_legacy
 clone_depth_platform hardware/ril
 clone_depth_platform libnativehelper
-clone_project platform/prebuilts/build-tools prebuilts/build-tools android12-gsi "/linux-x86/bin" "/linux-x86/lib64" "/path" "/common"
 clone_project platform/prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8 prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8 android12-gsi "/sysroot" "/lib/gcc/x86_64-linux/4.8.3" "/x86_64-linux/lib64" "/x86_64-linux/lib32"
 clone_depth_platform prebuilts/gcc/linux-x86/x86/x86_64-linux-android-4.9
 clone_depth_platform system/core
@@ -34,21 +34,18 @@ clone_depth_platform system/logging
 clone_depth_platform system/media
 clone_depth_platform system/unwinding
 
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/libc^android_x86_64_shared_current/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/libc^android_x86_x86_64_shared_current/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/crtbegin_so^android_x86_64_apex29/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/crtbegin_so^android_x86_x86_64_apex29/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/crtend_so^android_x86_64_apex29/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/crtend_so^android_x86_x86_64_apex29/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/libc^android_x86_64_shared_current/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/libc^android_x86_x86_64_shared_current/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libdl/libdl^android_x86_64_shared_current/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libdl/libdl^android_x86_x86_64_shared_current/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libm/libm^android_x86_64_shared_current/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libm/libm^android_x86_x86_64_shared_current/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/cmd/merge_zips/merge_zips^linux_glibc_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/cmd/sbox/sbox^linux_glibc_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/cmd/javac_wrapper/soong_javac_wrapper^linux_glibc_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/zip/cmd/soong_zip^linux_glibc_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/cmd/zipsync/zipsync^linux_glibc_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcxx/libc++^android_x86_64_shared_apex29/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcxx/libc++^android_x86_x86_64_shared_apex29/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcxx/libc++^linux_glibc_x86_64_shared/ .
@@ -58,6 +55,7 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/av/media/libmediametrics/libm
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/av/media/libmediametrics/libmediametrics^android_x86_x86_64_shared_current/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/native/android/libandroid^android_x86_64_shared_current/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/native/android/libandroid^android_x86_x86_64_shared_current/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/tools/validatekeymaps/validatekeymaps^linux_glibc_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/native/libs/binder/libbinder^linux_glibc_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/native/libs/input/libinput^linux_glibc_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/native/libs/ui/libui-types^linux_glibc_x86_64_static/ .
@@ -67,26 +65,7 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/system/libbase/libbase^linux_glibc_x86_6
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^android_x86_64_shared_current/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^android_x86_x86_64_shared_current/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^linux_glibc_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/system/tools/xsdc/xsdc^linux_glibc_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/tools/xsdc/xsdc^linux_glibc_x86_64/ .
-
-echo "building device-state-config^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja device-state-config,
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/services/core/xsd/device-state-config^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/frameworks/base/device-state-config^.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/services/core/xsd/device-state-config^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/frameworks/base/device-state-config^.output $GITHUB_WORKSPACE/artifacts/frameworks/base/services/core/xsd/device-state-config^ $GITHUB_WORKSPACE/artifacts/frameworks/base/services/core/xsd/device-state-config^/addition_copy_files.output
-
-echo "building display-device-config^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja display-device-config,
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/services/core/xsd/display-device-config^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/frameworks/base/display-device-config^.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/services/core/xsd/display-device-config^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/frameworks/base/display-device-config^.output $GITHUB_WORKSPACE/artifacts/frameworks/base/services/core/xsd/display-device-config^ $GITHUB_WORKSPACE/artifacts/frameworks/base/services/core/xsd/display-device-config^/addition_copy_files.output
-
-echo "building display-layout-config^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja display-layout-config,
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/services/core/xsd/display-layout-config^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/frameworks/base/display-layout-config^.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/services/core/xsd/display-layout-config^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/frameworks/base/display-layout-config^.output $GITHUB_WORKSPACE/artifacts/frameworks/base/services/core/xsd/display-layout-config^ $GITHUB_WORKSPACE/artifacts/frameworks/base/services/core/xsd/display-layout-config^/addition_copy_files.output
 
 echo "building libmediaparser-jni^android_x86_64_shared_apex29"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libmediaparser-jni,android_x86_64_shared_apex29
@@ -100,6 +79,12 @@ mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/apex/media/framework/libmed
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/frameworks/base/libmediaparser-jni^android_x86_x86_64_shared_apex29.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/apex/media/framework/libmediaparser-jni^android_x86_x86_64_shared_apex29
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/frameworks/base/libmediaparser-jni^android_x86_x86_64_shared_apex29.output $GITHUB_WORKSPACE/artifacts/frameworks/base/apex/media/framework/libmediaparser-jni^android_x86_x86_64_shared_apex29 $GITHUB_WORKSPACE/artifacts/frameworks/base/apex/media/framework/libmediaparser-jni^android_x86_x86_64_shared_apex29/addition_copy_files.output
 
+echo "building validate_input_devices_keymaps^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja validate_input_devices_keymaps,
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/InputDevices/validate_input_devices_keymaps^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/frameworks/base/validate_input_devices_keymaps^.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/InputDevices/validate_input_devices_keymaps^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/frameworks/base/validate_input_devices_keymaps^.output $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/InputDevices/validate_input_devices_keymaps^ $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/InputDevices/validate_input_devices_keymaps^/addition_copy_files.output
+
 echo "building platform-compat-config^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja platform-compat-config,
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/services/core/xsd/platform-compat-config^
@@ -112,17 +97,30 @@ mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/services/core/xsd/platform-
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/frameworks/base/platform-compat-overrides^.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/services/core/xsd/platform-compat-overrides^
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/frameworks/base/platform-compat-overrides^.output $GITHUB_WORKSPACE/artifacts/frameworks/base/services/core/xsd/platform-compat-overrides^ $GITHUB_WORKSPACE/artifacts/frameworks/base/services/core/xsd/platform-compat-overrides^/addition_copy_files.output
 
-echo "building validate_input_devices_keymaps^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja validate_input_devices_keymaps,
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/InputDevices/validate_input_devices_keymaps^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/frameworks/base/validate_input_devices_keymaps^.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/InputDevices/validate_input_devices_keymaps^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/frameworks/base/validate_input_devices_keymaps^.output $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/InputDevices/validate_input_devices_keymaps^ $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/InputDevices/validate_input_devices_keymaps^/addition_copy_files.output
+echo "building display-device-config^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja display-device-config,
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/services/core/xsd/display-device-config^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/frameworks/base/display-device-config^.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/services/core/xsd/display-device-config^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/frameworks/base/display-device-config^.output $GITHUB_WORKSPACE/artifacts/frameworks/base/services/core/xsd/display-device-config^ $GITHUB_WORKSPACE/artifacts/frameworks/base/services/core/xsd/display-device-config^/addition_copy_files.output
+
+echo "building display-layout-config^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja display-layout-config,
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/services/core/xsd/display-layout-config^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/frameworks/base/display-layout-config^.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/services/core/xsd/display-layout-config^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/frameworks/base/display-layout-config^.output $GITHUB_WORKSPACE/artifacts/frameworks/base/services/core/xsd/display-layout-config^ $GITHUB_WORKSPACE/artifacts/frameworks/base/services/core/xsd/display-layout-config^/addition_copy_files.output
+
+echo "building device-state-config^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja device-state-config,
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/services/core/xsd/device-state-config^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/frameworks/base/device-state-config^.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/services/core/xsd/device-state-config^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/frameworks/base/device-state-config^.output $GITHUB_WORKSPACE/artifacts/frameworks/base/services/core/xsd/device-state-config^ $GITHUB_WORKSPACE/artifacts/frameworks/base/services/core/xsd/device-state-config^/addition_copy_files.output
 
 echo "building validatekeymaps^linux_glibc_x86_64"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja validatekeymaps,linux_glibc_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/tools/validatekeymaps/validatekeymaps^linux_glibc_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/frameworks/base/validatekeymaps^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/tools/validatekeymaps/validatekeymaps^linux_glibc_x86_64
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/frameworks/base/validatekeymaps^linux_glibc_x86_64.output $GITHUB_WORKSPACE/artifacts/frameworks/base/tools/validatekeymaps/validatekeymaps^linux_glibc_x86_64 $GITHUB_WORKSPACE/artifacts/frameworks/base/tools/validatekeymaps/validatekeymaps^linux_glibc_x86_64/addition_copy_files.output
+
 
 rm -rf out
 
@@ -131,6 +129,7 @@ tar -cf frameworks_base.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPA
 gh release --repo cibuilde/aosp-buildbot upload android12-gsi_05 frameworks_base.tar.zst --clobber
 
 du -ah -d1 frameworks_base*.tar.zst | sort -h
+
 
 if [ ! -f "$GITHUB_WORKSPACE/cache/bionic.tar.zst" ]; then
   echo "Compressing bionic -> bionic.tar.zst"
@@ -180,10 +179,6 @@ if [ ! -f "$GITHUB_WORKSPACE/cache/libnativehelper.tar.zst" ]; then
   echo "Compressing libnativehelper -> libnativehelper.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/libnativehelper.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/libnativehelper/ .
 fi
-if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_build-tools.tar.zst" ]; then
-  echo "Compressing prebuilts/build-tools -> prebuilts_build-tools.tar.zst"
-  tar -cf $GITHUB_WORKSPACE/cache/prebuilts_build-tools.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/prebuilts/build-tools/ .
-fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_gcc_linux-x86_host_x86_64-linux-glibc2.17-4.8.tar.zst" ]; then
   echo "Compressing prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8 -> prebuilts_gcc_linux-x86_host_x86_64-linux-glibc2.17-4.8.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/prebuilts_gcc_linux-x86_host_x86_64-linux-glibc2.17-4.8.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8/ .
@@ -212,5 +207,6 @@ if [ ! -f "$GITHUB_WORKSPACE/cache/system_unwinding.tar.zst" ]; then
   echo "Compressing system/unwinding -> system_unwinding.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/system_unwinding.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/system/unwinding/ .
 fi
+
 
 rm -rf aosp

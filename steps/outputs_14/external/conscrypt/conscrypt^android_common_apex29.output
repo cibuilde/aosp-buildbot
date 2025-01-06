@@ -1,5 +1,2 @@
-out/soong/.intermediates/external/conscrypt/conscrypt/android_common_apex29/turbine/conscrypt.jar
-out/soong/.intermediates/external/conscrypt/conscrypt/android_common_apex29/turbine-combined/conscrypt.jar
-out/soong/.intermediates/external/conscrypt/conscrypt/android_common_apex29/javac/conscrypt.jar
-out/soong/.intermediates/external/conscrypt/conscrypt/android_common_apex29/dex/conscrypt.jar
 out/soong/.intermediates/external/conscrypt/conscrypt/android_common_apex29/aligned/conscrypt.jar
+out/soong/.intermediates/external/conscrypt/conscrypt/android_common_apex29/turbine-combined/conscrypt.jar

@@ -1,4 +1,2 @@
-out/soong/.intermediates/hardware/interfaces/radio/1.5/android.hardware.radio-V1.5-java/android_common/turbine/android.hardware.radio-V1.5-java.jar
-out/soong/.intermediates/hardware/interfaces/radio/1.5/android.hardware.radio-V1.5-java/android_common/turbine-combined/android.hardware.radio-V1.5-java.jar
-out/soong/.intermediates/hardware/interfaces/radio/1.5/android.hardware.radio-V1.5-java/android_common/javac/android.hardware.radio-V1.5-java.jar
 out/soong/.intermediates/hardware/interfaces/radio/1.5/android.hardware.radio-V1.5-java/android_common/combined/android.hardware.radio-V1.5-java.jar
+out/soong/.intermediates/hardware/interfaces/radio/1.5/android.hardware.radio-V1.5-java/android_common/turbine-combined/android.hardware.radio-V1.5-java.jar

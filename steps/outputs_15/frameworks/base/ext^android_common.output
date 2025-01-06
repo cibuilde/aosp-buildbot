@@ -1,7 +1,4 @@
-out/soong/.intermediates/frameworks/base/ext/android_common/turbine-combined/ext.jar
 out/soong/.intermediates/frameworks/base/ext/android_common/combined/ext.jar
-out/soong/.intermediates/frameworks/base/ext/android_common/withres/ext.jar
-out/soong/.intermediates/frameworks/base/ext/android_common/dex/ext.jar
-out/soong/.intermediates/frameworks/base/ext/android_common/aligned/ext.jar
-out/soong/.intermediates/frameworks/base/ext/android_common/dex-withres/ext.jar
 out/soong/.intermediates/frameworks/base/ext/android_common/dex-withres-aligned/ext.jar
+out/soong/.intermediates/frameworks/base/ext/android_common/turbine-combined/ext.jar
+out/soong/.intermediates/frameworks/base/ext/android_common/withres/ext.jar

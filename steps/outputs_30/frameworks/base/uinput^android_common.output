@@ -3,5 +3,4 @@ out/soong/.intermediates/frameworks/base/cmds/uinput/uinput/android_common/dexpr
 out/soong/.intermediates/frameworks/base/cmds/uinput/uinput/android_common/dexpreopt/oat/x86/javalib.vdex
 out/soong/.intermediates/frameworks/base/cmds/uinput/uinput/android_common/dexpreopt/oat/x86_64/javalib.odex
 out/soong/.intermediates/frameworks/base/cmds/uinput/uinput/android_common/dexpreopt/oat/x86_64/javalib.vdex
-out/soong/.intermediates/frameworks/base/cmds/uinput/uinput/android_common/javac/uinput.jar
 out/soong/.intermediates/frameworks/base/cmds/uinput/uinput/android_common/turbine-combined/uinput.jar

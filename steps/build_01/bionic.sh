@@ -1,6 +1,5 @@
-set -e
 
-echo "entering bionic"
+set -e
 
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
@@ -12,6 +11,8 @@ ln -sf $GITHUB_WORKSPACE/ninja .
 if [ -d "$GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86" ]; then
   mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86 prebuilts/clang/host/linux-x86
 fi
+
+echo "Preparing for bionic"
 
 clone_depth_platform art
 clone_depth_platform bionic
@@ -27,10 +28,7 @@ clone_depth_platform frameworks/native
 clone_depth_platform hardware/libhardware
 clone_depth_platform hardware/libhardware_legacy
 clone_depth_platform hardware/ril
-clone_project platform/prebuilts/build-tools prebuilts/build-tools android12-gsi "/linux-x86/bin" "/linux-x86/lib64" "/path" "/common"
 clone_project platform/prebuilts/clang-tools prebuilts/clang-tools android12-gsi "/linux-x86/bin" "/linux-x86/lib64/clang"
-clone_depth_platform prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9
-clone_depth_platform prebuilts/gcc/linux-x86/arm/arm-linux-androideabi-4.9
 clone_depth_platform prebuilts/gcc/linux-x86/x86/x86_64-linux-android-4.9
 clone_depth_platform system/core
 clone_depth_platform system/libbase
@@ -39,210 +37,287 @@ clone_depth_platform system/logging
 clone_depth_platform system/media
 clone_depth_platform system/unwinding
 
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/crtbrand^android_product.31_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/crtbrand^android_recovery_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/crtbrand^android_vendor.31_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/crtbrand^android_vendor.31_x86_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/crtbrand^android_vendor_ramdisk_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/crtbrand^android_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/crtbrand^android_x86_64_apex10000/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/crtbrand^android_x86_64_apex29/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/crtbrand^android_x86_64_apex30/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/crtbrand^android_x86_64_apex31/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/crtbrand^android_x86_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/crtbrand^android_x86_x86_64_apex10000/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/crtbrand^android_x86_x86_64_apex29/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/crtbrand^android_x86_x86_64_apex30/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/crtbrand^android_x86_x86_64_apex31/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libdl/libdl_android^android_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libdl/libdl_android^android_x86_64_static_apex10000/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libdl/libdl_android^android_x86_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libdl/libdl_android^android_x86_x86_64_static_apex10000/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/linker/ld-android^android_recovery_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/linker/ld-android^android_vendor_ramdisk_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/linker/ld-android^android_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/linker/ld-android^android_x86_64_shared_apex10000/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/linker/ld-android^android_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/linker/ld-android^android_x86_64_static_apex10000/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/linker/ld-android^android_x86_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/linker/ld-android^android_x86_x86_64_shared_apex10000/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/linker/ld-android^android_x86_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/linker/ld-android^android_x86_x86_64_static_apex10000/ .
 
-echo "building common_libc^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja common_libc,
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/common_libc^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/common_libc^.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/common_libc^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/common_libc^.output $GITHUB_WORKSPACE/artifacts/bionic/libc/common_libc^ $GITHUB_WORKSPACE/artifacts/bionic/libc/common_libc^/addition_copy_files.output
+echo "building libc_bionic_systrace^android_recovery_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_bionic_systrace,android_recovery_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bionic_systrace^android_recovery_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_bionic_systrace^android_recovery_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bionic_systrace^android_recovery_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_bionic_systrace^android_recovery_x86_64_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bionic_systrace^android_recovery_x86_64_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bionic_systrace^android_recovery_x86_64_static/addition_copy_files.output
 
-echo "building crtbegin_dynamic^android_product.31_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja crtbegin_dynamic,android_product.31_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_dynamic^android_product.31_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/crtbegin_dynamic^android_product.31_x86_64.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_dynamic^android_product.31_x86_64
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/crtbegin_dynamic^android_product.31_x86_64.output $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_dynamic^android_product.31_x86_64 $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_dynamic^android_product.31_x86_64/addition_copy_files.output
+echo "building libc_bionic_systrace^android_vendor_ramdisk_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_bionic_systrace,android_vendor_ramdisk_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bionic_systrace^android_vendor_ramdisk_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_bionic_systrace^android_vendor_ramdisk_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bionic_systrace^android_vendor_ramdisk_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_bionic_systrace^android_vendor_ramdisk_x86_64_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bionic_systrace^android_vendor_ramdisk_x86_64_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bionic_systrace^android_vendor_ramdisk_x86_64_static/addition_copy_files.output
 
-echo "building crtbegin_dynamic^android_recovery_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja crtbegin_dynamic,android_recovery_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_dynamic^android_recovery_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/crtbegin_dynamic^android_recovery_x86_64.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_dynamic^android_recovery_x86_64
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/crtbegin_dynamic^android_recovery_x86_64.output $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_dynamic^android_recovery_x86_64 $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_dynamic^android_recovery_x86_64/addition_copy_files.output
+echo "building libc_bionic_systrace^android_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_bionic_systrace,android_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bionic_systrace^android_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_bionic_systrace^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bionic_systrace^android_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_bionic_systrace^android_x86_64_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bionic_systrace^android_x86_64_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bionic_systrace^android_x86_64_static/addition_copy_files.output
 
-echo "building crtbegin_dynamic^android_vendor.31_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja crtbegin_dynamic,android_vendor.31_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_dynamic^android_vendor.31_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/crtbegin_dynamic^android_vendor.31_x86_64.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_dynamic^android_vendor.31_x86_64
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/crtbegin_dynamic^android_vendor.31_x86_64.output $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_dynamic^android_vendor.31_x86_64 $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_dynamic^android_vendor.31_x86_64/addition_copy_files.output
+echo "building libc_bionic_systrace^android_x86_64_static_apex10000"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_bionic_systrace,android_x86_64_static_apex10000
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bionic_systrace^android_x86_64_static_apex10000
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_bionic_systrace^android_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bionic_systrace^android_x86_64_static_apex10000
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_bionic_systrace^android_x86_64_static_apex10000.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bionic_systrace^android_x86_64_static_apex10000 $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bionic_systrace^android_x86_64_static_apex10000/addition_copy_files.output
 
-echo "building crtbegin_dynamic^android_vendor.31_x86_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja crtbegin_dynamic,android_vendor.31_x86_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_dynamic^android_vendor.31_x86_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/crtbegin_dynamic^android_vendor.31_x86_x86_64.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_dynamic^android_vendor.31_x86_x86_64
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/crtbegin_dynamic^android_vendor.31_x86_x86_64.output $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_dynamic^android_vendor.31_x86_x86_64 $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_dynamic^android_vendor.31_x86_x86_64/addition_copy_files.output
+echo "building libc_bionic_systrace^android_x86_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_bionic_systrace,android_x86_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bionic_systrace^android_x86_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_bionic_systrace^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bionic_systrace^android_x86_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_bionic_systrace^android_x86_x86_64_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bionic_systrace^android_x86_x86_64_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bionic_systrace^android_x86_x86_64_static/addition_copy_files.output
 
-echo "building crtbegin_dynamic^android_vendor_ramdisk_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja crtbegin_dynamic,android_vendor_ramdisk_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_dynamic^android_vendor_ramdisk_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/crtbegin_dynamic^android_vendor_ramdisk_x86_64.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_dynamic^android_vendor_ramdisk_x86_64
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/crtbegin_dynamic^android_vendor_ramdisk_x86_64.output $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_dynamic^android_vendor_ramdisk_x86_64 $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_dynamic^android_vendor_ramdisk_x86_64/addition_copy_files.output
+echo "building libc_bionic_systrace^android_x86_x86_64_static_apex10000"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_bionic_systrace,android_x86_x86_64_static_apex10000
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bionic_systrace^android_x86_x86_64_static_apex10000
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_bionic_systrace^android_x86_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bionic_systrace^android_x86_x86_64_static_apex10000
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_bionic_systrace^android_x86_x86_64_static_apex10000.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bionic_systrace^android_x86_x86_64_static_apex10000 $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bionic_systrace^android_x86_x86_64_static_apex10000/addition_copy_files.output
 
-echo "building crtbegin_dynamic^android_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja crtbegin_dynamic,android_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_dynamic^android_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/crtbegin_dynamic^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_dynamic^android_x86_64
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/crtbegin_dynamic^android_x86_64.output $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_dynamic^android_x86_64 $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_dynamic^android_x86_64/addition_copy_files.output
+echo "building libc_pthread^android_recovery_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_pthread,android_recovery_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_pthread^android_recovery_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_pthread^android_recovery_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_pthread^android_recovery_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_pthread^android_recovery_x86_64_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_pthread^android_recovery_x86_64_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_pthread^android_recovery_x86_64_static/addition_copy_files.output
 
-echo "building crtbegin_dynamic^android_x86_64_apex10000"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja crtbegin_dynamic,android_x86_64_apex10000
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_dynamic^android_x86_64_apex10000
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/crtbegin_dynamic^android_x86_64_apex10000.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_dynamic^android_x86_64_apex10000
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/crtbegin_dynamic^android_x86_64_apex10000.output $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_dynamic^android_x86_64_apex10000 $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_dynamic^android_x86_64_apex10000/addition_copy_files.output
+echo "building libc_pthread^android_vendor_ramdisk_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_pthread,android_vendor_ramdisk_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_pthread^android_vendor_ramdisk_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_pthread^android_vendor_ramdisk_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_pthread^android_vendor_ramdisk_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_pthread^android_vendor_ramdisk_x86_64_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_pthread^android_vendor_ramdisk_x86_64_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_pthread^android_vendor_ramdisk_x86_64_static/addition_copy_files.output
 
-echo "building crtbegin_dynamic^android_x86_64_apex29"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja crtbegin_dynamic,android_x86_64_apex29
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_dynamic^android_x86_64_apex29
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/crtbegin_dynamic^android_x86_64_apex29.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_dynamic^android_x86_64_apex29
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/crtbegin_dynamic^android_x86_64_apex29.output $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_dynamic^android_x86_64_apex29 $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_dynamic^android_x86_64_apex29/addition_copy_files.output
+echo "building libc_pthread^android_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_pthread,android_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_pthread^android_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_pthread^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_pthread^android_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_pthread^android_x86_64_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_pthread^android_x86_64_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_pthread^android_x86_64_static/addition_copy_files.output
 
-echo "building crtbegin_dynamic^android_x86_64_apex30"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja crtbegin_dynamic,android_x86_64_apex30
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_dynamic^android_x86_64_apex30
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/crtbegin_dynamic^android_x86_64_apex30.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_dynamic^android_x86_64_apex30
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/crtbegin_dynamic^android_x86_64_apex30.output $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_dynamic^android_x86_64_apex30 $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_dynamic^android_x86_64_apex30/addition_copy_files.output
+echo "building libc_pthread^android_x86_64_static_apex10000"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_pthread,android_x86_64_static_apex10000
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_pthread^android_x86_64_static_apex10000
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_pthread^android_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_pthread^android_x86_64_static_apex10000
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_pthread^android_x86_64_static_apex10000.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_pthread^android_x86_64_static_apex10000 $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_pthread^android_x86_64_static_apex10000/addition_copy_files.output
 
-echo "building crtbegin_dynamic^android_x86_64_apex31"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja crtbegin_dynamic,android_x86_64_apex31
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_dynamic^android_x86_64_apex31
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/crtbegin_dynamic^android_x86_64_apex31.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_dynamic^android_x86_64_apex31
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/crtbegin_dynamic^android_x86_64_apex31.output $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_dynamic^android_x86_64_apex31 $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_dynamic^android_x86_64_apex31/addition_copy_files.output
+echo "building libc_pthread^android_x86_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_pthread,android_x86_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_pthread^android_x86_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_pthread^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_pthread^android_x86_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_pthread^android_x86_x86_64_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_pthread^android_x86_x86_64_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_pthread^android_x86_x86_64_static/addition_copy_files.output
 
-echo "building crtbegin_dynamic^android_x86_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja crtbegin_dynamic,android_x86_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_dynamic^android_x86_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/crtbegin_dynamic^android_x86_x86_64.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_dynamic^android_x86_x86_64
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/crtbegin_dynamic^android_x86_x86_64.output $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_dynamic^android_x86_x86_64 $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_dynamic^android_x86_x86_64/addition_copy_files.output
+echo "building libc_pthread^android_x86_x86_64_static_apex10000"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_pthread,android_x86_x86_64_static_apex10000
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_pthread^android_x86_x86_64_static_apex10000
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_pthread^android_x86_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_pthread^android_x86_x86_64_static_apex10000
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_pthread^android_x86_x86_64_static_apex10000.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_pthread^android_x86_x86_64_static_apex10000 $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_pthread^android_x86_x86_64_static_apex10000/addition_copy_files.output
 
-echo "building crtbegin_dynamic^android_x86_x86_64_apex10000"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja crtbegin_dynamic,android_x86_x86_64_apex10000
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_dynamic^android_x86_x86_64_apex10000
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/crtbegin_dynamic^android_x86_x86_64_apex10000.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_dynamic^android_x86_x86_64_apex10000
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/crtbegin_dynamic^android_x86_x86_64_apex10000.output $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_dynamic^android_x86_x86_64_apex10000 $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_dynamic^android_x86_x86_64_apex10000/addition_copy_files.output
+echo "building libc_nopthread^android_recovery_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_nopthread,android_recovery_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_nopthread^android_recovery_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_nopthread^android_recovery_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_nopthread^android_recovery_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_nopthread^android_recovery_x86_64_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_nopthread^android_recovery_x86_64_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_nopthread^android_recovery_x86_64_static/addition_copy_files.output
 
-echo "building crtbegin_dynamic^android_x86_x86_64_apex29"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja crtbegin_dynamic,android_x86_x86_64_apex29
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_dynamic^android_x86_x86_64_apex29
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/crtbegin_dynamic^android_x86_x86_64_apex29.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_dynamic^android_x86_x86_64_apex29
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/crtbegin_dynamic^android_x86_x86_64_apex29.output $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_dynamic^android_x86_x86_64_apex29 $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_dynamic^android_x86_x86_64_apex29/addition_copy_files.output
+echo "building libc_nopthread^android_vendor_ramdisk_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_nopthread,android_vendor_ramdisk_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_nopthread^android_vendor_ramdisk_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_nopthread^android_vendor_ramdisk_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_nopthread^android_vendor_ramdisk_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_nopthread^android_vendor_ramdisk_x86_64_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_nopthread^android_vendor_ramdisk_x86_64_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_nopthread^android_vendor_ramdisk_x86_64_static/addition_copy_files.output
 
-echo "building crtbegin_dynamic^android_x86_x86_64_apex31"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja crtbegin_dynamic,android_x86_x86_64_apex31
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_dynamic^android_x86_x86_64_apex31
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/crtbegin_dynamic^android_x86_x86_64_apex31.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_dynamic^android_x86_x86_64_apex31
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/crtbegin_dynamic^android_x86_x86_64_apex31.output $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_dynamic^android_x86_x86_64_apex31 $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_dynamic^android_x86_x86_64_apex31/addition_copy_files.output
+echo "building libc_nopthread^android_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_nopthread,android_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_nopthread^android_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_nopthread^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_nopthread^android_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_nopthread^android_x86_64_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_nopthread^android_x86_64_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_nopthread^android_x86_64_static/addition_copy_files.output
 
-echo "building crtbegin_so^android_product.31_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja crtbegin_so,android_product.31_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_so^android_product.31_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/crtbegin_so^android_product.31_x86_64.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_so^android_product.31_x86_64
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/crtbegin_so^android_product.31_x86_64.output $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_so^android_product.31_x86_64 $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_so^android_product.31_x86_64/addition_copy_files.output
+echo "building libc_nopthread^android_x86_64_static_apex10000"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_nopthread,android_x86_64_static_apex10000
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_nopthread^android_x86_64_static_apex10000
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_nopthread^android_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_nopthread^android_x86_64_static_apex10000
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_nopthread^android_x86_64_static_apex10000.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_nopthread^android_x86_64_static_apex10000 $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_nopthread^android_x86_64_static_apex10000/addition_copy_files.output
 
-echo "building crtbegin_so^android_recovery_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja crtbegin_so,android_recovery_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_so^android_recovery_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/crtbegin_so^android_recovery_x86_64.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_so^android_recovery_x86_64
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/crtbegin_so^android_recovery_x86_64.output $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_so^android_recovery_x86_64 $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_so^android_recovery_x86_64/addition_copy_files.output
+echo "building libc_nopthread^android_x86_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_nopthread,android_x86_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_nopthread^android_x86_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_nopthread^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_nopthread^android_x86_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_nopthread^android_x86_x86_64_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_nopthread^android_x86_x86_64_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_nopthread^android_x86_x86_64_static/addition_copy_files.output
 
-echo "building crtbegin_so^android_vendor.31_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja crtbegin_so,android_vendor.31_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_so^android_vendor.31_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/crtbegin_so^android_vendor.31_x86_64.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_so^android_vendor.31_x86_64
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/crtbegin_so^android_vendor.31_x86_64.output $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_so^android_vendor.31_x86_64 $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_so^android_vendor.31_x86_64/addition_copy_files.output
+echo "building libc_nopthread^android_x86_x86_64_static_apex10000"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_nopthread,android_x86_x86_64_static_apex10000
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_nopthread^android_x86_x86_64_static_apex10000
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_nopthread^android_x86_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_nopthread^android_x86_x86_64_static_apex10000
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_nopthread^android_x86_x86_64_static_apex10000.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_nopthread^android_x86_x86_64_static_apex10000 $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_nopthread^android_x86_x86_64_static_apex10000/addition_copy_files.output
 
-echo "building crtbegin_so^android_vendor.31_x86_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja crtbegin_so,android_vendor.31_x86_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_so^android_vendor.31_x86_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/crtbegin_so^android_vendor.31_x86_x86_64.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_so^android_vendor.31_x86_x86_64
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/crtbegin_so^android_vendor.31_x86_x86_64.output $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_so^android_vendor.31_x86_x86_64 $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_so^android_vendor.31_x86_x86_64/addition_copy_files.output
+echo "building libc_dynamic_dispatch^android_recovery_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_dynamic_dispatch,android_recovery_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_dynamic_dispatch^android_recovery_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_dynamic_dispatch^android_recovery_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_dynamic_dispatch^android_recovery_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_dynamic_dispatch^android_recovery_x86_64_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_dynamic_dispatch^android_recovery_x86_64_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_dynamic_dispatch^android_recovery_x86_64_static/addition_copy_files.output
 
-echo "building crtbegin_so^android_vendor_ramdisk_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja crtbegin_so,android_vendor_ramdisk_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_so^android_vendor_ramdisk_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/crtbegin_so^android_vendor_ramdisk_x86_64.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_so^android_vendor_ramdisk_x86_64
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/crtbegin_so^android_vendor_ramdisk_x86_64.output $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_so^android_vendor_ramdisk_x86_64 $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_so^android_vendor_ramdisk_x86_64/addition_copy_files.output
+echo "building libc_dynamic_dispatch^android_vendor_ramdisk_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_dynamic_dispatch,android_vendor_ramdisk_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_dynamic_dispatch^android_vendor_ramdisk_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_dynamic_dispatch^android_vendor_ramdisk_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_dynamic_dispatch^android_vendor_ramdisk_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_dynamic_dispatch^android_vendor_ramdisk_x86_64_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_dynamic_dispatch^android_vendor_ramdisk_x86_64_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_dynamic_dispatch^android_vendor_ramdisk_x86_64_static/addition_copy_files.output
 
-echo "building crtbegin_so^android_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja crtbegin_so,android_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_so^android_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/crtbegin_so^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_so^android_x86_64
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/crtbegin_so^android_x86_64.output $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_so^android_x86_64 $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_so^android_x86_64/addition_copy_files.output
+echo "building libc_dynamic_dispatch^android_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_dynamic_dispatch,android_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_dynamic_dispatch^android_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_dynamic_dispatch^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_dynamic_dispatch^android_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_dynamic_dispatch^android_x86_64_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_dynamic_dispatch^android_x86_64_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_dynamic_dispatch^android_x86_64_static/addition_copy_files.output
 
-echo "building crtbegin_so^android_x86_64_apex10000"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja crtbegin_so,android_x86_64_apex10000
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_so^android_x86_64_apex10000
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/crtbegin_so^android_x86_64_apex10000.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_so^android_x86_64_apex10000
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/crtbegin_so^android_x86_64_apex10000.output $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_so^android_x86_64_apex10000 $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_so^android_x86_64_apex10000/addition_copy_files.output
+echo "building libc_dynamic_dispatch^android_x86_64_static_apex10000"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_dynamic_dispatch,android_x86_64_static_apex10000
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_dynamic_dispatch^android_x86_64_static_apex10000
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_dynamic_dispatch^android_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_dynamic_dispatch^android_x86_64_static_apex10000
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_dynamic_dispatch^android_x86_64_static_apex10000.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_dynamic_dispatch^android_x86_64_static_apex10000 $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_dynamic_dispatch^android_x86_64_static_apex10000/addition_copy_files.output
 
-echo "building crtbegin_so^android_x86_64_apex29"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja crtbegin_so,android_x86_64_apex29
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_so^android_x86_64_apex29
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/crtbegin_so^android_x86_64_apex29.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_so^android_x86_64_apex29
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/crtbegin_so^android_x86_64_apex29.output $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_so^android_x86_64_apex29 $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_so^android_x86_64_apex29/addition_copy_files.output
+echo "building libc_dynamic_dispatch^android_x86_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_dynamic_dispatch,android_x86_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_dynamic_dispatch^android_x86_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_dynamic_dispatch^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_dynamic_dispatch^android_x86_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_dynamic_dispatch^android_x86_x86_64_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_dynamic_dispatch^android_x86_x86_64_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_dynamic_dispatch^android_x86_x86_64_static/addition_copy_files.output
 
-echo "building crtbegin_so^android_x86_64_apex30"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja crtbegin_so,android_x86_64_apex30
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_so^android_x86_64_apex30
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/crtbegin_so^android_x86_64_apex30.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_so^android_x86_64_apex30
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/crtbegin_so^android_x86_64_apex30.output $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_so^android_x86_64_apex30 $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_so^android_x86_64_apex30/addition_copy_files.output
+echo "building libc_dynamic_dispatch^android_x86_x86_64_static_apex10000"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_dynamic_dispatch,android_x86_x86_64_static_apex10000
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_dynamic_dispatch^android_x86_x86_64_static_apex10000
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_dynamic_dispatch^android_x86_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_dynamic_dispatch^android_x86_x86_64_static_apex10000
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_dynamic_dispatch^android_x86_x86_64_static_apex10000.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_dynamic_dispatch^android_x86_x86_64_static_apex10000 $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_dynamic_dispatch^android_x86_x86_64_static_apex10000/addition_copy_files.output
 
-echo "building crtbegin_so^android_x86_64_apex31"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja crtbegin_so,android_x86_64_apex31
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_so^android_x86_64_apex31
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/crtbegin_so^android_x86_64_apex31.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_so^android_x86_64_apex31
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/crtbegin_so^android_x86_64_apex31.output $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_so^android_x86_64_apex31 $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_so^android_x86_64_apex31/addition_copy_files.output
+echo "building libc_unwind_static^android_recovery_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_unwind_static,android_recovery_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_unwind_static^android_recovery_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_unwind_static^android_recovery_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_unwind_static^android_recovery_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_unwind_static^android_recovery_x86_64_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_unwind_static^android_recovery_x86_64_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_unwind_static^android_recovery_x86_64_static/addition_copy_files.output
 
-echo "building crtbegin_so^android_x86_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja crtbegin_so,android_x86_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_so^android_x86_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/crtbegin_so^android_x86_x86_64.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_so^android_x86_x86_64
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/crtbegin_so^android_x86_x86_64.output $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_so^android_x86_x86_64 $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_so^android_x86_x86_64/addition_copy_files.output
+echo "building libc_unwind_static^android_vendor_ramdisk_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_unwind_static,android_vendor_ramdisk_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_unwind_static^android_vendor_ramdisk_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_unwind_static^android_vendor_ramdisk_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_unwind_static^android_vendor_ramdisk_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_unwind_static^android_vendor_ramdisk_x86_64_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_unwind_static^android_vendor_ramdisk_x86_64_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_unwind_static^android_vendor_ramdisk_x86_64_static/addition_copy_files.output
 
-echo "building crtbegin_so^android_x86_x86_64_apex10000"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja crtbegin_so,android_x86_x86_64_apex10000
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_so^android_x86_x86_64_apex10000
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/crtbegin_so^android_x86_x86_64_apex10000.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_so^android_x86_x86_64_apex10000
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/crtbegin_so^android_x86_x86_64_apex10000.output $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_so^android_x86_x86_64_apex10000 $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_so^android_x86_x86_64_apex10000/addition_copy_files.output
+echo "building libc_unwind_static^android_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_unwind_static,android_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_unwind_static^android_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_unwind_static^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_unwind_static^android_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_unwind_static^android_x86_64_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_unwind_static^android_x86_64_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_unwind_static^android_x86_64_static/addition_copy_files.output
 
-echo "building crtbegin_so^android_x86_x86_64_apex29"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja crtbegin_so,android_x86_x86_64_apex29
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_so^android_x86_x86_64_apex29
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/crtbegin_so^android_x86_x86_64_apex29.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_so^android_x86_x86_64_apex29
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/crtbegin_so^android_x86_x86_64_apex29.output $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_so^android_x86_x86_64_apex29 $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_so^android_x86_x86_64_apex29/addition_copy_files.output
+echo "building libc_unwind_static^android_x86_64_static_apex10000"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_unwind_static,android_x86_64_static_apex10000
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_unwind_static^android_x86_64_static_apex10000
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_unwind_static^android_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_unwind_static^android_x86_64_static_apex10000
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_unwind_static^android_x86_64_static_apex10000.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_unwind_static^android_x86_64_static_apex10000 $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_unwind_static^android_x86_64_static_apex10000/addition_copy_files.output
 
-echo "building crtbegin_so^android_x86_x86_64_apex30"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja crtbegin_so,android_x86_x86_64_apex30
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_so^android_x86_x86_64_apex30
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/crtbegin_so^android_x86_x86_64_apex30.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_so^android_x86_x86_64_apex30
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/crtbegin_so^android_x86_x86_64_apex30.output $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_so^android_x86_x86_64_apex30 $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_so^android_x86_x86_64_apex30/addition_copy_files.output
+echo "building libc_unwind_static^android_x86_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_unwind_static,android_x86_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_unwind_static^android_x86_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_unwind_static^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_unwind_static^android_x86_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_unwind_static^android_x86_x86_64_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_unwind_static^android_x86_x86_64_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_unwind_static^android_x86_x86_64_static/addition_copy_files.output
 
-echo "building crtbegin_so^android_x86_x86_64_apex31"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja crtbegin_so,android_x86_x86_64_apex31
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_so^android_x86_x86_64_apex31
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/crtbegin_so^android_x86_x86_64_apex31.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_so^android_x86_x86_64_apex31
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/crtbegin_so^android_x86_x86_64_apex31.output $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_so^android_x86_x86_64_apex31 $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_so^android_x86_x86_64_apex31/addition_copy_files.output
+echo "building libc_unwind_static^android_x86_x86_64_static_apex10000"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_unwind_static,android_x86_x86_64_static_apex10000
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_unwind_static^android_x86_x86_64_static_apex10000
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_unwind_static^android_x86_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_unwind_static^android_x86_x86_64_static_apex10000
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_unwind_static^android_x86_x86_64_static_apex10000.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_unwind_static^android_x86_x86_64_static_apex10000 $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_unwind_static^android_x86_x86_64_static_apex10000/addition_copy_files.output
 
-echo "building crtbegin_static^android_recovery_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja crtbegin_static,android_recovery_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_static^android_recovery_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/crtbegin_static^android_recovery_x86_64.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_static^android_recovery_x86_64
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/crtbegin_static^android_recovery_x86_64.output $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_static^android_recovery_x86_64 $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_static^android_recovery_x86_64/addition_copy_files.output
+echo "building libc_bootstrap^android_recovery_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_bootstrap,android_recovery_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bootstrap^android_recovery_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_bootstrap^android_recovery_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bootstrap^android_recovery_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_bootstrap^android_recovery_x86_64_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bootstrap^android_recovery_x86_64_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bootstrap^android_recovery_x86_64_static/addition_copy_files.output
 
-echo "building crtbegin_static^android_vendor_ramdisk_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja crtbegin_static,android_vendor_ramdisk_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_static^android_vendor_ramdisk_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/crtbegin_static^android_vendor_ramdisk_x86_64.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_static^android_vendor_ramdisk_x86_64
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/crtbegin_static^android_vendor_ramdisk_x86_64.output $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_static^android_vendor_ramdisk_x86_64 $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_static^android_vendor_ramdisk_x86_64/addition_copy_files.output
+echo "building libc_bootstrap^android_vendor_ramdisk_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_bootstrap,android_vendor_ramdisk_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bootstrap^android_vendor_ramdisk_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_bootstrap^android_vendor_ramdisk_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bootstrap^android_vendor_ramdisk_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_bootstrap^android_vendor_ramdisk_x86_64_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bootstrap^android_vendor_ramdisk_x86_64_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bootstrap^android_vendor_ramdisk_x86_64_static/addition_copy_files.output
 
-echo "building crtbegin_static^android_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja crtbegin_static,android_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_static^android_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/crtbegin_static^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_static^android_x86_64
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/crtbegin_static^android_x86_64.output $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_static^android_x86_64 $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_static^android_x86_64/addition_copy_files.output
+echo "building libc_bootstrap^android_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_bootstrap,android_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bootstrap^android_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_bootstrap^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bootstrap^android_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_bootstrap^android_x86_64_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bootstrap^android_x86_64_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bootstrap^android_x86_64_static/addition_copy_files.output
 
-echo "building crtbegin_static^android_x86_64_apex10000"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja crtbegin_static,android_x86_64_apex10000
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_static^android_x86_64_apex10000
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/crtbegin_static^android_x86_64_apex10000.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_static^android_x86_64_apex10000
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/crtbegin_static^android_x86_64_apex10000.output $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_static^android_x86_64_apex10000 $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_static^android_x86_64_apex10000/addition_copy_files.output
+echo "building libc_bootstrap^android_x86_64_static_apex10000"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_bootstrap,android_x86_64_static_apex10000
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bootstrap^android_x86_64_static_apex10000
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_bootstrap^android_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bootstrap^android_x86_64_static_apex10000
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_bootstrap^android_x86_64_static_apex10000.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bootstrap^android_x86_64_static_apex10000 $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bootstrap^android_x86_64_static_apex10000/addition_copy_files.output
+
+echo "building libc_bootstrap^android_x86_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_bootstrap,android_x86_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bootstrap^android_x86_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_bootstrap^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bootstrap^android_x86_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_bootstrap^android_x86_x86_64_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bootstrap^android_x86_x86_64_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bootstrap^android_x86_x86_64_static/addition_copy_files.output
+
+echo "building libc_bootstrap^android_x86_x86_64_static_apex10000"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_bootstrap,android_x86_x86_64_static_apex10000
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bootstrap^android_x86_x86_64_static_apex10000
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_bootstrap^android_x86_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bootstrap^android_x86_x86_64_static_apex10000
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_bootstrap^android_x86_x86_64_static_apex10000.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bootstrap^android_x86_x86_64_static_apex10000 $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bootstrap^android_x86_x86_64_static_apex10000/addition_copy_files.output
+
+echo "building libstdc++^android_recovery_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libstdc++,android_recovery_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libstdc++^android_recovery_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libstdc++^android_recovery_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libstdc++^android_recovery_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libstdc++^android_recovery_x86_64_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libstdc++^android_recovery_x86_64_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libstdc++^android_recovery_x86_64_static/addition_copy_files.output
+
+echo "building libstdc++^android_vendor_ramdisk_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libstdc++,android_vendor_ramdisk_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libstdc++^android_vendor_ramdisk_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libstdc++^android_vendor_ramdisk_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libstdc++^android_vendor_ramdisk_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libstdc++^android_vendor_ramdisk_x86_64_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libstdc++^android_vendor_ramdisk_x86_64_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libstdc++^android_vendor_ramdisk_x86_64_static/addition_copy_files.output
+
+echo "building libstdc++^android_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libstdc++,android_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libstdc++^android_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libstdc++^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libstdc++^android_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libstdc++^android_x86_64_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libstdc++^android_x86_64_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libstdc++^android_x86_64_static/addition_copy_files.output
+
+echo "building libstdc++^android_x86_64_static_apex10000"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libstdc++,android_x86_64_static_apex10000
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libstdc++^android_x86_64_static_apex10000
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libstdc++^android_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libstdc++^android_x86_64_static_apex10000
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libstdc++^android_x86_64_static_apex10000.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libstdc++^android_x86_64_static_apex10000 $GITHUB_WORKSPACE/artifacts/bionic/libc/libstdc++^android_x86_64_static_apex10000/addition_copy_files.output
+
+echo "building libstdc++^android_x86_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libstdc++,android_x86_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libstdc++^android_x86_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libstdc++^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libstdc++^android_x86_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libstdc++^android_x86_x86_64_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libstdc++^android_x86_x86_64_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libstdc++^android_x86_x86_64_static/addition_copy_files.output
+
+echo "building libstdc++^android_x86_x86_64_static_apex10000"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libstdc++,android_x86_x86_64_static_apex10000
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libstdc++^android_x86_x86_64_static_apex10000
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libstdc++^android_x86_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libstdc++^android_x86_x86_64_static_apex10000
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libstdc++^android_x86_x86_64_static_apex10000.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libstdc++^android_x86_x86_64_static_apex10000 $GITHUB_WORKSPACE/artifacts/bionic/libc/libstdc++^android_x86_x86_64_static_apex10000/addition_copy_files.output
 
 echo "building crtbrand^android_product.31_x86_64"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja crtbrand,android_product.31_x86_64
@@ -334,89 +409,131 @@ mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbrand^android_x86_x86_64_ape
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/crtbrand^android_x86_x86_64_apex31.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbrand^android_x86_x86_64_apex31
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/crtbrand^android_x86_x86_64_apex31.output $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbrand^android_x86_x86_64_apex31 $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbrand^android_x86_x86_64_apex31/addition_copy_files.output
 
-echo "building crtend_android^android_product.31_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja crtend_android,android_product.31_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/crtend_android^android_product.31_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/crtend_android^android_product.31_x86_64.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/crtend_android^android_product.31_x86_64
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/crtend_android^android_product.31_x86_64.output $GITHUB_WORKSPACE/artifacts/bionic/libc/crtend_android^android_product.31_x86_64 $GITHUB_WORKSPACE/artifacts/bionic/libc/crtend_android^android_product.31_x86_64/addition_copy_files.output
+echo "building crtbegin_so^android_product.31_x86_64"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja crtbegin_so,android_product.31_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_so^android_product.31_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/crtbegin_so^android_product.31_x86_64.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_so^android_product.31_x86_64
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/crtbegin_so^android_product.31_x86_64.output $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_so^android_product.31_x86_64 $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_so^android_product.31_x86_64/addition_copy_files.output
 
-echo "building crtend_android^android_recovery_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja crtend_android,android_recovery_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/crtend_android^android_recovery_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/crtend_android^android_recovery_x86_64.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/crtend_android^android_recovery_x86_64
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/crtend_android^android_recovery_x86_64.output $GITHUB_WORKSPACE/artifacts/bionic/libc/crtend_android^android_recovery_x86_64 $GITHUB_WORKSPACE/artifacts/bionic/libc/crtend_android^android_recovery_x86_64/addition_copy_files.output
+echo "building crtbegin_so^android_recovery_x86_64"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja crtbegin_so,android_recovery_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_so^android_recovery_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/crtbegin_so^android_recovery_x86_64.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_so^android_recovery_x86_64
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/crtbegin_so^android_recovery_x86_64.output $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_so^android_recovery_x86_64 $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_so^android_recovery_x86_64/addition_copy_files.output
 
-echo "building crtend_android^android_vendor.31_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja crtend_android,android_vendor.31_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/crtend_android^android_vendor.31_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/crtend_android^android_vendor.31_x86_64.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/crtend_android^android_vendor.31_x86_64
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/crtend_android^android_vendor.31_x86_64.output $GITHUB_WORKSPACE/artifacts/bionic/libc/crtend_android^android_vendor.31_x86_64 $GITHUB_WORKSPACE/artifacts/bionic/libc/crtend_android^android_vendor.31_x86_64/addition_copy_files.output
+echo "building crtbegin_so^android_vendor.31_x86_64"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja crtbegin_so,android_vendor.31_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_so^android_vendor.31_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/crtbegin_so^android_vendor.31_x86_64.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_so^android_vendor.31_x86_64
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/crtbegin_so^android_vendor.31_x86_64.output $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_so^android_vendor.31_x86_64 $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_so^android_vendor.31_x86_64/addition_copy_files.output
 
-echo "building crtend_android^android_vendor.31_x86_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja crtend_android,android_vendor.31_x86_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/crtend_android^android_vendor.31_x86_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/crtend_android^android_vendor.31_x86_x86_64.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/crtend_android^android_vendor.31_x86_x86_64
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/crtend_android^android_vendor.31_x86_x86_64.output $GITHUB_WORKSPACE/artifacts/bionic/libc/crtend_android^android_vendor.31_x86_x86_64 $GITHUB_WORKSPACE/artifacts/bionic/libc/crtend_android^android_vendor.31_x86_x86_64/addition_copy_files.output
+echo "building crtbegin_so^android_vendor.31_x86_x86_64"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja crtbegin_so,android_vendor.31_x86_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_so^android_vendor.31_x86_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/crtbegin_so^android_vendor.31_x86_x86_64.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_so^android_vendor.31_x86_x86_64
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/crtbegin_so^android_vendor.31_x86_x86_64.output $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_so^android_vendor.31_x86_x86_64 $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_so^android_vendor.31_x86_x86_64/addition_copy_files.output
 
-echo "building crtend_android^android_vendor_ramdisk_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja crtend_android,android_vendor_ramdisk_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/crtend_android^android_vendor_ramdisk_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/crtend_android^android_vendor_ramdisk_x86_64.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/crtend_android^android_vendor_ramdisk_x86_64
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/crtend_android^android_vendor_ramdisk_x86_64.output $GITHUB_WORKSPACE/artifacts/bionic/libc/crtend_android^android_vendor_ramdisk_x86_64 $GITHUB_WORKSPACE/artifacts/bionic/libc/crtend_android^android_vendor_ramdisk_x86_64/addition_copy_files.output
+echo "building crtbegin_so^android_vendor_ramdisk_x86_64"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja crtbegin_so,android_vendor_ramdisk_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_so^android_vendor_ramdisk_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/crtbegin_so^android_vendor_ramdisk_x86_64.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_so^android_vendor_ramdisk_x86_64
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/crtbegin_so^android_vendor_ramdisk_x86_64.output $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_so^android_vendor_ramdisk_x86_64 $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_so^android_vendor_ramdisk_x86_64/addition_copy_files.output
 
-echo "building crtend_android^android_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja crtend_android,android_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/crtend_android^android_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/crtend_android^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/crtend_android^android_x86_64
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/crtend_android^android_x86_64.output $GITHUB_WORKSPACE/artifacts/bionic/libc/crtend_android^android_x86_64 $GITHUB_WORKSPACE/artifacts/bionic/libc/crtend_android^android_x86_64/addition_copy_files.output
+echo "building crtbegin_so^android_x86_64"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja crtbegin_so,android_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_so^android_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/crtbegin_so^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_so^android_x86_64
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/crtbegin_so^android_x86_64.output $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_so^android_x86_64 $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_so^android_x86_64/addition_copy_files.output
 
-echo "building crtend_android^android_x86_64_apex10000"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja crtend_android,android_x86_64_apex10000
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/crtend_android^android_x86_64_apex10000
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/crtend_android^android_x86_64_apex10000.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/crtend_android^android_x86_64_apex10000
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/crtend_android^android_x86_64_apex10000.output $GITHUB_WORKSPACE/artifacts/bionic/libc/crtend_android^android_x86_64_apex10000 $GITHUB_WORKSPACE/artifacts/bionic/libc/crtend_android^android_x86_64_apex10000/addition_copy_files.output
+echo "building crtbegin_so^android_x86_64_apex10000"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja crtbegin_so,android_x86_64_apex10000
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_so^android_x86_64_apex10000
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/crtbegin_so^android_x86_64_apex10000.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_so^android_x86_64_apex10000
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/crtbegin_so^android_x86_64_apex10000.output $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_so^android_x86_64_apex10000 $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_so^android_x86_64_apex10000/addition_copy_files.output
 
-echo "building crtend_android^android_x86_64_apex29"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja crtend_android,android_x86_64_apex29
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/crtend_android^android_x86_64_apex29
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/crtend_android^android_x86_64_apex29.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/crtend_android^android_x86_64_apex29
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/crtend_android^android_x86_64_apex29.output $GITHUB_WORKSPACE/artifacts/bionic/libc/crtend_android^android_x86_64_apex29 $GITHUB_WORKSPACE/artifacts/bionic/libc/crtend_android^android_x86_64_apex29/addition_copy_files.output
+echo "building crtbegin_so^android_x86_64_apex29"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja crtbegin_so,android_x86_64_apex29
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_so^android_x86_64_apex29
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/crtbegin_so^android_x86_64_apex29.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_so^android_x86_64_apex29
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/crtbegin_so^android_x86_64_apex29.output $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_so^android_x86_64_apex29 $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_so^android_x86_64_apex29/addition_copy_files.output
 
-echo "building crtend_android^android_x86_64_apex30"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja crtend_android,android_x86_64_apex30
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/crtend_android^android_x86_64_apex30
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/crtend_android^android_x86_64_apex30.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/crtend_android^android_x86_64_apex30
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/crtend_android^android_x86_64_apex30.output $GITHUB_WORKSPACE/artifacts/bionic/libc/crtend_android^android_x86_64_apex30 $GITHUB_WORKSPACE/artifacts/bionic/libc/crtend_android^android_x86_64_apex30/addition_copy_files.output
+echo "building crtbegin_so^android_x86_64_apex30"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja crtbegin_so,android_x86_64_apex30
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_so^android_x86_64_apex30
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/crtbegin_so^android_x86_64_apex30.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_so^android_x86_64_apex30
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/crtbegin_so^android_x86_64_apex30.output $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_so^android_x86_64_apex30 $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_so^android_x86_64_apex30/addition_copy_files.output
 
-echo "building crtend_android^android_x86_64_apex31"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja crtend_android,android_x86_64_apex31
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/crtend_android^android_x86_64_apex31
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/crtend_android^android_x86_64_apex31.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/crtend_android^android_x86_64_apex31
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/crtend_android^android_x86_64_apex31.output $GITHUB_WORKSPACE/artifacts/bionic/libc/crtend_android^android_x86_64_apex31 $GITHUB_WORKSPACE/artifacts/bionic/libc/crtend_android^android_x86_64_apex31/addition_copy_files.output
+echo "building crtbegin_so^android_x86_64_apex31"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja crtbegin_so,android_x86_64_apex31
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_so^android_x86_64_apex31
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/crtbegin_so^android_x86_64_apex31.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_so^android_x86_64_apex31
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/crtbegin_so^android_x86_64_apex31.output $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_so^android_x86_64_apex31 $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_so^android_x86_64_apex31/addition_copy_files.output
 
-echo "building crtend_android^android_x86_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja crtend_android,android_x86_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/crtend_android^android_x86_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/crtend_android^android_x86_x86_64.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/crtend_android^android_x86_x86_64
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/crtend_android^android_x86_x86_64.output $GITHUB_WORKSPACE/artifacts/bionic/libc/crtend_android^android_x86_x86_64 $GITHUB_WORKSPACE/artifacts/bionic/libc/crtend_android^android_x86_x86_64/addition_copy_files.output
+echo "building crtbegin_so^android_x86_x86_64"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja crtbegin_so,android_x86_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_so^android_x86_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/crtbegin_so^android_x86_x86_64.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_so^android_x86_x86_64
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/crtbegin_so^android_x86_x86_64.output $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_so^android_x86_x86_64 $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_so^android_x86_x86_64/addition_copy_files.output
 
-echo "building crtend_android^android_x86_x86_64_apex10000"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja crtend_android,android_x86_x86_64_apex10000
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/crtend_android^android_x86_x86_64_apex10000
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/crtend_android^android_x86_x86_64_apex10000.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/crtend_android^android_x86_x86_64_apex10000
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/crtend_android^android_x86_x86_64_apex10000.output $GITHUB_WORKSPACE/artifacts/bionic/libc/crtend_android^android_x86_x86_64_apex10000 $GITHUB_WORKSPACE/artifacts/bionic/libc/crtend_android^android_x86_x86_64_apex10000/addition_copy_files.output
+echo "building crtbegin_so^android_x86_x86_64_apex10000"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja crtbegin_so,android_x86_x86_64_apex10000
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_so^android_x86_x86_64_apex10000
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/crtbegin_so^android_x86_x86_64_apex10000.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_so^android_x86_x86_64_apex10000
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/crtbegin_so^android_x86_x86_64_apex10000.output $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_so^android_x86_x86_64_apex10000 $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_so^android_x86_x86_64_apex10000/addition_copy_files.output
 
-echo "building crtend_android^android_x86_x86_64_apex29"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja crtend_android,android_x86_x86_64_apex29
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/crtend_android^android_x86_x86_64_apex29
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/crtend_android^android_x86_x86_64_apex29.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/crtend_android^android_x86_x86_64_apex29
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/crtend_android^android_x86_x86_64_apex29.output $GITHUB_WORKSPACE/artifacts/bionic/libc/crtend_android^android_x86_x86_64_apex29 $GITHUB_WORKSPACE/artifacts/bionic/libc/crtend_android^android_x86_x86_64_apex29/addition_copy_files.output
+echo "building crtbegin_so^android_x86_x86_64_apex29"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja crtbegin_so,android_x86_x86_64_apex29
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_so^android_x86_x86_64_apex29
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/crtbegin_so^android_x86_x86_64_apex29.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_so^android_x86_x86_64_apex29
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/crtbegin_so^android_x86_x86_64_apex29.output $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_so^android_x86_x86_64_apex29 $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_so^android_x86_x86_64_apex29/addition_copy_files.output
 
-echo "building crtend_android^android_x86_x86_64_apex31"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja crtend_android,android_x86_x86_64_apex31
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/crtend_android^android_x86_x86_64_apex31
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/crtend_android^android_x86_x86_64_apex31.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/crtend_android^android_x86_x86_64_apex31
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/crtend_android^android_x86_x86_64_apex31.output $GITHUB_WORKSPACE/artifacts/bionic/libc/crtend_android^android_x86_x86_64_apex31 $GITHUB_WORKSPACE/artifacts/bionic/libc/crtend_android^android_x86_x86_64_apex31/addition_copy_files.output
+echo "building crtbegin_so^android_x86_x86_64_apex30"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja crtbegin_so,android_x86_x86_64_apex30
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_so^android_x86_x86_64_apex30
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/crtbegin_so^android_x86_x86_64_apex30.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_so^android_x86_x86_64_apex30
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/crtbegin_so^android_x86_x86_64_apex30.output $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_so^android_x86_x86_64_apex30 $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_so^android_x86_x86_64_apex30/addition_copy_files.output
+
+echo "building crtbegin_so^android_x86_x86_64_apex31"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja crtbegin_so,android_x86_x86_64_apex31
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_so^android_x86_x86_64_apex31
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/crtbegin_so^android_x86_x86_64_apex31.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_so^android_x86_x86_64_apex31
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/crtbegin_so^android_x86_x86_64_apex31.output $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_so^android_x86_x86_64_apex31 $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_so^android_x86_x86_64_apex31/addition_copy_files.output
+
+echo "building libc_init_static^android_recovery_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_init_static,android_recovery_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_init_static^android_recovery_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_init_static^android_recovery_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_init_static^android_recovery_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_init_static^android_recovery_x86_64_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_init_static^android_recovery_x86_64_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_init_static^android_recovery_x86_64_static/addition_copy_files.output
+
+echo "building libc_init_static^android_vendor_ramdisk_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_init_static,android_vendor_ramdisk_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_init_static^android_vendor_ramdisk_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_init_static^android_vendor_ramdisk_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_init_static^android_vendor_ramdisk_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_init_static^android_vendor_ramdisk_x86_64_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_init_static^android_vendor_ramdisk_x86_64_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_init_static^android_vendor_ramdisk_x86_64_static/addition_copy_files.output
+
+echo "building libc_init_static^android_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_init_static,android_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_init_static^android_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_init_static^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_init_static^android_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_init_static^android_x86_64_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_init_static^android_x86_64_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_init_static^android_x86_64_static/addition_copy_files.output
+
+echo "building libc_init_static^android_x86_64_static_apex10000"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_init_static,android_x86_64_static_apex10000
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_init_static^android_x86_64_static_apex10000
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_init_static^android_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_init_static^android_x86_64_static_apex10000
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_init_static^android_x86_64_static_apex10000.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_init_static^android_x86_64_static_apex10000 $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_init_static^android_x86_64_static_apex10000/addition_copy_files.output
+
+echo "building libc_init_static^android_x86_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_init_static,android_x86_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_init_static^android_x86_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_init_static^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_init_static^android_x86_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_init_static^android_x86_x86_64_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_init_static^android_x86_x86_64_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_init_static^android_x86_x86_64_static/addition_copy_files.output
+
+echo "building libc_init_static^android_x86_x86_64_static_apex10000"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_init_static,android_x86_x86_64_static_apex10000
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_init_static^android_x86_x86_64_static_apex10000
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_init_static^android_x86_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_init_static^android_x86_x86_64_static_apex10000
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_init_static^android_x86_x86_64_static_apex10000.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_init_static^android_x86_x86_64_static_apex10000 $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_init_static^android_x86_x86_64_static_apex10000/addition_copy_files.output
 
 echo "building crtend_so^android_product.31_x86_64"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja crtend_so,android_product.31_x86_64
@@ -508,95 +625,725 @@ mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/crtend_so^android_x86_x86_64_ap
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/crtend_so^android_x86_x86_64_apex31.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/crtend_so^android_x86_x86_64_apex31
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/crtend_so^android_x86_x86_64_apex31.output $GITHUB_WORKSPACE/artifacts/bionic/libc/crtend_so^android_x86_x86_64_apex31 $GITHUB_WORKSPACE/artifacts/bionic/libc/crtend_so^android_x86_x86_64_apex31/addition_copy_files.output
 
-echo "building ld-android^android_recovery_x86_64_shared"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja ld-android,android_recovery_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/linker/ld-android^android_recovery_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/ld-android^android_recovery_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/bionic/linker/ld-android^android_recovery_x86_64_shared
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/ld-android^android_recovery_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/bionic/linker/ld-android^android_recovery_x86_64_shared $GITHUB_WORKSPACE/artifacts/bionic/linker/ld-android^android_recovery_x86_64_shared/addition_copy_files.output
+echo "building crtbegin_static^android_recovery_x86_64"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja crtbegin_static,android_recovery_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_static^android_recovery_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/crtbegin_static^android_recovery_x86_64.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_static^android_recovery_x86_64
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/crtbegin_static^android_recovery_x86_64.output $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_static^android_recovery_x86_64 $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_static^android_recovery_x86_64/addition_copy_files.output
 
-echo "building ld-android^android_recovery_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja ld-android,android_recovery_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/linker/ld-android^android_recovery_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/ld-android^android_recovery_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bionic/linker/ld-android^android_recovery_x86_64_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/ld-android^android_recovery_x86_64_static.output $GITHUB_WORKSPACE/artifacts/bionic/linker/ld-android^android_recovery_x86_64_static $GITHUB_WORKSPACE/artifacts/bionic/linker/ld-android^android_recovery_x86_64_static/addition_copy_files.output
+echo "building crtbegin_static^android_vendor_ramdisk_x86_64"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja crtbegin_static,android_vendor_ramdisk_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_static^android_vendor_ramdisk_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/crtbegin_static^android_vendor_ramdisk_x86_64.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_static^android_vendor_ramdisk_x86_64
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/crtbegin_static^android_vendor_ramdisk_x86_64.output $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_static^android_vendor_ramdisk_x86_64 $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_static^android_vendor_ramdisk_x86_64/addition_copy_files.output
 
-echo "building ld-android^android_vendor_ramdisk_x86_64_shared"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja ld-android,android_vendor_ramdisk_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/linker/ld-android^android_vendor_ramdisk_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/ld-android^android_vendor_ramdisk_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/bionic/linker/ld-android^android_vendor_ramdisk_x86_64_shared
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/ld-android^android_vendor_ramdisk_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/bionic/linker/ld-android^android_vendor_ramdisk_x86_64_shared $GITHUB_WORKSPACE/artifacts/bionic/linker/ld-android^android_vendor_ramdisk_x86_64_shared/addition_copy_files.output
+echo "building crtbegin_static^android_x86_64"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja crtbegin_static,android_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_static^android_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/crtbegin_static^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_static^android_x86_64
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/crtbegin_static^android_x86_64.output $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_static^android_x86_64 $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_static^android_x86_64/addition_copy_files.output
 
-echo "building ld-android^android_vendor_ramdisk_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja ld-android,android_vendor_ramdisk_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/linker/ld-android^android_vendor_ramdisk_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/ld-android^android_vendor_ramdisk_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bionic/linker/ld-android^android_vendor_ramdisk_x86_64_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/ld-android^android_vendor_ramdisk_x86_64_static.output $GITHUB_WORKSPACE/artifacts/bionic/linker/ld-android^android_vendor_ramdisk_x86_64_static $GITHUB_WORKSPACE/artifacts/bionic/linker/ld-android^android_vendor_ramdisk_x86_64_static/addition_copy_files.output
+echo "building crtbegin_static^android_x86_64_apex10000"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja crtbegin_static,android_x86_64_apex10000
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_static^android_x86_64_apex10000
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/crtbegin_static^android_x86_64_apex10000.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_static^android_x86_64_apex10000
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/crtbegin_static^android_x86_64_apex10000.output $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_static^android_x86_64_apex10000 $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_static^android_x86_64_apex10000/addition_copy_files.output
 
-echo "building ld-android^android_x86_64_shared"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja ld-android,android_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/linker/ld-android^android_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/ld-android^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/bionic/linker/ld-android^android_x86_64_shared
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/ld-android^android_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/bionic/linker/ld-android^android_x86_64_shared $GITHUB_WORKSPACE/artifacts/bionic/linker/ld-android^android_x86_64_shared/addition_copy_files.output
+echo "building crtbegin_dynamic^android_product.31_x86_64"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja crtbegin_dynamic,android_product.31_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_dynamic^android_product.31_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/crtbegin_dynamic^android_product.31_x86_64.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_dynamic^android_product.31_x86_64
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/crtbegin_dynamic^android_product.31_x86_64.output $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_dynamic^android_product.31_x86_64 $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_dynamic^android_product.31_x86_64/addition_copy_files.output
 
-echo "building ld-android^android_x86_64_shared_apex10000"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja ld-android,android_x86_64_shared_apex10000
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/linker/ld-android^android_x86_64_shared_apex10000
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/ld-android^android_x86_64_shared_apex10000.output . $GITHUB_WORKSPACE/artifacts/bionic/linker/ld-android^android_x86_64_shared_apex10000
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/ld-android^android_x86_64_shared_apex10000.output $GITHUB_WORKSPACE/artifacts/bionic/linker/ld-android^android_x86_64_shared_apex10000 $GITHUB_WORKSPACE/artifacts/bionic/linker/ld-android^android_x86_64_shared_apex10000/addition_copy_files.output
+echo "building crtbegin_dynamic^android_recovery_x86_64"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja crtbegin_dynamic,android_recovery_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_dynamic^android_recovery_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/crtbegin_dynamic^android_recovery_x86_64.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_dynamic^android_recovery_x86_64
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/crtbegin_dynamic^android_recovery_x86_64.output $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_dynamic^android_recovery_x86_64 $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_dynamic^android_recovery_x86_64/addition_copy_files.output
 
-echo "building ld-android^android_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja ld-android,android_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/linker/ld-android^android_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/ld-android^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bionic/linker/ld-android^android_x86_64_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/ld-android^android_x86_64_static.output $GITHUB_WORKSPACE/artifacts/bionic/linker/ld-android^android_x86_64_static $GITHUB_WORKSPACE/artifacts/bionic/linker/ld-android^android_x86_64_static/addition_copy_files.output
+echo "building crtbegin_dynamic^android_vendor.31_x86_64"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja crtbegin_dynamic,android_vendor.31_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_dynamic^android_vendor.31_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/crtbegin_dynamic^android_vendor.31_x86_64.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_dynamic^android_vendor.31_x86_64
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/crtbegin_dynamic^android_vendor.31_x86_64.output $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_dynamic^android_vendor.31_x86_64 $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_dynamic^android_vendor.31_x86_64/addition_copy_files.output
 
-echo "building ld-android^android_x86_64_static_apex10000"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja ld-android,android_x86_64_static_apex10000
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/linker/ld-android^android_x86_64_static_apex10000
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/ld-android^android_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/bionic/linker/ld-android^android_x86_64_static_apex10000
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/ld-android^android_x86_64_static_apex10000.output $GITHUB_WORKSPACE/artifacts/bionic/linker/ld-android^android_x86_64_static_apex10000 $GITHUB_WORKSPACE/artifacts/bionic/linker/ld-android^android_x86_64_static_apex10000/addition_copy_files.output
+echo "building crtbegin_dynamic^android_vendor.31_x86_x86_64"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja crtbegin_dynamic,android_vendor.31_x86_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_dynamic^android_vendor.31_x86_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/crtbegin_dynamic^android_vendor.31_x86_x86_64.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_dynamic^android_vendor.31_x86_x86_64
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/crtbegin_dynamic^android_vendor.31_x86_x86_64.output $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_dynamic^android_vendor.31_x86_x86_64 $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_dynamic^android_vendor.31_x86_x86_64/addition_copy_files.output
 
-echo "building ld-android^android_x86_x86_64_shared"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja ld-android,android_x86_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/linker/ld-android^android_x86_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/ld-android^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/bionic/linker/ld-android^android_x86_x86_64_shared
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/ld-android^android_x86_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/bionic/linker/ld-android^android_x86_x86_64_shared $GITHUB_WORKSPACE/artifacts/bionic/linker/ld-android^android_x86_x86_64_shared/addition_copy_files.output
+echo "building crtbegin_dynamic^android_vendor_ramdisk_x86_64"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja crtbegin_dynamic,android_vendor_ramdisk_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_dynamic^android_vendor_ramdisk_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/crtbegin_dynamic^android_vendor_ramdisk_x86_64.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_dynamic^android_vendor_ramdisk_x86_64
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/crtbegin_dynamic^android_vendor_ramdisk_x86_64.output $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_dynamic^android_vendor_ramdisk_x86_64 $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_dynamic^android_vendor_ramdisk_x86_64/addition_copy_files.output
 
-echo "building ld-android^android_x86_x86_64_shared_apex10000"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja ld-android,android_x86_x86_64_shared_apex10000
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/linker/ld-android^android_x86_x86_64_shared_apex10000
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/ld-android^android_x86_x86_64_shared_apex10000.output . $GITHUB_WORKSPACE/artifacts/bionic/linker/ld-android^android_x86_x86_64_shared_apex10000
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/ld-android^android_x86_x86_64_shared_apex10000.output $GITHUB_WORKSPACE/artifacts/bionic/linker/ld-android^android_x86_x86_64_shared_apex10000 $GITHUB_WORKSPACE/artifacts/bionic/linker/ld-android^android_x86_x86_64_shared_apex10000/addition_copy_files.output
+echo "building crtbegin_dynamic^android_x86_64"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja crtbegin_dynamic,android_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_dynamic^android_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/crtbegin_dynamic^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_dynamic^android_x86_64
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/crtbegin_dynamic^android_x86_64.output $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_dynamic^android_x86_64 $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_dynamic^android_x86_64/addition_copy_files.output
 
-echo "building ld-android^android_x86_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja ld-android,android_x86_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/linker/ld-android^android_x86_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/ld-android^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bionic/linker/ld-android^android_x86_x86_64_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/ld-android^android_x86_x86_64_static.output $GITHUB_WORKSPACE/artifacts/bionic/linker/ld-android^android_x86_x86_64_static $GITHUB_WORKSPACE/artifacts/bionic/linker/ld-android^android_x86_x86_64_static/addition_copy_files.output
+echo "building crtbegin_dynamic^android_x86_64_apex10000"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja crtbegin_dynamic,android_x86_64_apex10000
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_dynamic^android_x86_64_apex10000
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/crtbegin_dynamic^android_x86_64_apex10000.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_dynamic^android_x86_64_apex10000
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/crtbegin_dynamic^android_x86_64_apex10000.output $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_dynamic^android_x86_64_apex10000 $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_dynamic^android_x86_64_apex10000/addition_copy_files.output
 
-echo "building ld-android^android_x86_x86_64_static_apex10000"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja ld-android,android_x86_x86_64_static_apex10000
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/linker/ld-android^android_x86_x86_64_static_apex10000
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/ld-android^android_x86_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/bionic/linker/ld-android^android_x86_x86_64_static_apex10000
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/ld-android^android_x86_x86_64_static_apex10000.output $GITHUB_WORKSPACE/artifacts/bionic/linker/ld-android^android_x86_x86_64_static_apex10000 $GITHUB_WORKSPACE/artifacts/bionic/linker/ld-android^android_x86_x86_64_static_apex10000/addition_copy_files.output
+echo "building crtbegin_dynamic^android_x86_64_apex29"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja crtbegin_dynamic,android_x86_64_apex29
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_dynamic^android_x86_64_apex29
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/crtbegin_dynamic^android_x86_64_apex29.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_dynamic^android_x86_64_apex29
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/crtbegin_dynamic^android_x86_64_apex29.output $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_dynamic^android_x86_64_apex29 $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_dynamic^android_x86_64_apex29/addition_copy_files.output
 
-echo "building ldd^android_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja ldd,android_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/linker/ldd^android_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/ldd^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/bionic/linker/ldd^android_x86_64
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/ldd^android_x86_64.output $GITHUB_WORKSPACE/artifacts/bionic/linker/ldd^android_x86_64 $GITHUB_WORKSPACE/artifacts/bionic/linker/ldd^android_x86_64/addition_copy_files.output
+echo "building crtbegin_dynamic^android_x86_64_apex30"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja crtbegin_dynamic,android_x86_64_apex30
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_dynamic^android_x86_64_apex30
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/crtbegin_dynamic^android_x86_64_apex30.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_dynamic^android_x86_64_apex30
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/crtbegin_dynamic^android_x86_64_apex30.output $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_dynamic^android_x86_64_apex30 $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_dynamic^android_x86_64_apex30/addition_copy_files.output
 
-echo "building libasync_safe^android_native_bridge_arm64_armv8-a_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libasync_safe,android_native_bridge_arm64_armv8-a_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/async_safe/libasync_safe^android_native_bridge_arm64_armv8-a_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libasync_safe^android_native_bridge_arm64_armv8-a_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/async_safe/libasync_safe^android_native_bridge_arm64_armv8-a_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libasync_safe^android_native_bridge_arm64_armv8-a_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/async_safe/libasync_safe^android_native_bridge_arm64_armv8-a_static $GITHUB_WORKSPACE/artifacts/bionic/libc/async_safe/libasync_safe^android_native_bridge_arm64_armv8-a_static/addition_copy_files.output
+echo "building crtbegin_dynamic^android_x86_64_apex31"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja crtbegin_dynamic,android_x86_64_apex31
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_dynamic^android_x86_64_apex31
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/crtbegin_dynamic^android_x86_64_apex31.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_dynamic^android_x86_64_apex31
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/crtbegin_dynamic^android_x86_64_apex31.output $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_dynamic^android_x86_64_apex31 $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_dynamic^android_x86_64_apex31/addition_copy_files.output
 
-echo "building libasync_safe^android_native_bridge_arm_armv7-a-neon_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libasync_safe,android_native_bridge_arm_armv7-a-neon_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/async_safe/libasync_safe^android_native_bridge_arm_armv7-a-neon_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libasync_safe^android_native_bridge_arm_armv7-a-neon_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/async_safe/libasync_safe^android_native_bridge_arm_armv7-a-neon_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libasync_safe^android_native_bridge_arm_armv7-a-neon_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/async_safe/libasync_safe^android_native_bridge_arm_armv7-a-neon_static $GITHUB_WORKSPACE/artifacts/bionic/libc/async_safe/libasync_safe^android_native_bridge_arm_armv7-a-neon_static/addition_copy_files.output
+echo "building crtbegin_dynamic^android_x86_x86_64"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja crtbegin_dynamic,android_x86_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_dynamic^android_x86_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/crtbegin_dynamic^android_x86_x86_64.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_dynamic^android_x86_x86_64
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/crtbegin_dynamic^android_x86_x86_64.output $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_dynamic^android_x86_x86_64 $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_dynamic^android_x86_x86_64/addition_copy_files.output
+
+echo "building crtbegin_dynamic^android_x86_x86_64_apex10000"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja crtbegin_dynamic,android_x86_x86_64_apex10000
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_dynamic^android_x86_x86_64_apex10000
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/crtbegin_dynamic^android_x86_x86_64_apex10000.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_dynamic^android_x86_x86_64_apex10000
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/crtbegin_dynamic^android_x86_x86_64_apex10000.output $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_dynamic^android_x86_x86_64_apex10000 $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_dynamic^android_x86_x86_64_apex10000/addition_copy_files.output
+
+echo "building crtbegin_dynamic^android_x86_x86_64_apex29"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja crtbegin_dynamic,android_x86_x86_64_apex29
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_dynamic^android_x86_x86_64_apex29
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/crtbegin_dynamic^android_x86_x86_64_apex29.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_dynamic^android_x86_x86_64_apex29
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/crtbegin_dynamic^android_x86_x86_64_apex29.output $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_dynamic^android_x86_x86_64_apex29 $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_dynamic^android_x86_x86_64_apex29/addition_copy_files.output
+
+echo "building crtbegin_dynamic^android_x86_x86_64_apex31"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja crtbegin_dynamic,android_x86_x86_64_apex31
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_dynamic^android_x86_x86_64_apex31
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/crtbegin_dynamic^android_x86_x86_64_apex31.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_dynamic^android_x86_x86_64_apex31
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/crtbegin_dynamic^android_x86_x86_64_apex31.output $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_dynamic^android_x86_x86_64_apex31 $GITHUB_WORKSPACE/artifacts/bionic/libc/crtbegin_dynamic^android_x86_x86_64_apex31/addition_copy_files.output
+
+echo "building crtend_android^android_product.31_x86_64"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja crtend_android,android_product.31_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/crtend_android^android_product.31_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/crtend_android^android_product.31_x86_64.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/crtend_android^android_product.31_x86_64
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/crtend_android^android_product.31_x86_64.output $GITHUB_WORKSPACE/artifacts/bionic/libc/crtend_android^android_product.31_x86_64 $GITHUB_WORKSPACE/artifacts/bionic/libc/crtend_android^android_product.31_x86_64/addition_copy_files.output
+
+echo "building crtend_android^android_recovery_x86_64"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja crtend_android,android_recovery_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/crtend_android^android_recovery_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/crtend_android^android_recovery_x86_64.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/crtend_android^android_recovery_x86_64
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/crtend_android^android_recovery_x86_64.output $GITHUB_WORKSPACE/artifacts/bionic/libc/crtend_android^android_recovery_x86_64 $GITHUB_WORKSPACE/artifacts/bionic/libc/crtend_android^android_recovery_x86_64/addition_copy_files.output
+
+echo "building crtend_android^android_vendor.31_x86_64"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja crtend_android,android_vendor.31_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/crtend_android^android_vendor.31_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/crtend_android^android_vendor.31_x86_64.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/crtend_android^android_vendor.31_x86_64
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/crtend_android^android_vendor.31_x86_64.output $GITHUB_WORKSPACE/artifacts/bionic/libc/crtend_android^android_vendor.31_x86_64 $GITHUB_WORKSPACE/artifacts/bionic/libc/crtend_android^android_vendor.31_x86_64/addition_copy_files.output
+
+echo "building crtend_android^android_vendor.31_x86_x86_64"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja crtend_android,android_vendor.31_x86_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/crtend_android^android_vendor.31_x86_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/crtend_android^android_vendor.31_x86_x86_64.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/crtend_android^android_vendor.31_x86_x86_64
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/crtend_android^android_vendor.31_x86_x86_64.output $GITHUB_WORKSPACE/artifacts/bionic/libc/crtend_android^android_vendor.31_x86_x86_64 $GITHUB_WORKSPACE/artifacts/bionic/libc/crtend_android^android_vendor.31_x86_x86_64/addition_copy_files.output
+
+echo "building crtend_android^android_vendor_ramdisk_x86_64"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja crtend_android,android_vendor_ramdisk_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/crtend_android^android_vendor_ramdisk_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/crtend_android^android_vendor_ramdisk_x86_64.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/crtend_android^android_vendor_ramdisk_x86_64
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/crtend_android^android_vendor_ramdisk_x86_64.output $GITHUB_WORKSPACE/artifacts/bionic/libc/crtend_android^android_vendor_ramdisk_x86_64 $GITHUB_WORKSPACE/artifacts/bionic/libc/crtend_android^android_vendor_ramdisk_x86_64/addition_copy_files.output
+
+echo "building crtend_android^android_x86_64"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja crtend_android,android_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/crtend_android^android_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/crtend_android^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/crtend_android^android_x86_64
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/crtend_android^android_x86_64.output $GITHUB_WORKSPACE/artifacts/bionic/libc/crtend_android^android_x86_64 $GITHUB_WORKSPACE/artifacts/bionic/libc/crtend_android^android_x86_64/addition_copy_files.output
+
+echo "building crtend_android^android_x86_64_apex10000"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja crtend_android,android_x86_64_apex10000
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/crtend_android^android_x86_64_apex10000
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/crtend_android^android_x86_64_apex10000.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/crtend_android^android_x86_64_apex10000
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/crtend_android^android_x86_64_apex10000.output $GITHUB_WORKSPACE/artifacts/bionic/libc/crtend_android^android_x86_64_apex10000 $GITHUB_WORKSPACE/artifacts/bionic/libc/crtend_android^android_x86_64_apex10000/addition_copy_files.output
+
+echo "building crtend_android^android_x86_64_apex29"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja crtend_android,android_x86_64_apex29
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/crtend_android^android_x86_64_apex29
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/crtend_android^android_x86_64_apex29.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/crtend_android^android_x86_64_apex29
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/crtend_android^android_x86_64_apex29.output $GITHUB_WORKSPACE/artifacts/bionic/libc/crtend_android^android_x86_64_apex29 $GITHUB_WORKSPACE/artifacts/bionic/libc/crtend_android^android_x86_64_apex29/addition_copy_files.output
+
+echo "building crtend_android^android_x86_64_apex30"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja crtend_android,android_x86_64_apex30
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/crtend_android^android_x86_64_apex30
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/crtend_android^android_x86_64_apex30.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/crtend_android^android_x86_64_apex30
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/crtend_android^android_x86_64_apex30.output $GITHUB_WORKSPACE/artifacts/bionic/libc/crtend_android^android_x86_64_apex30 $GITHUB_WORKSPACE/artifacts/bionic/libc/crtend_android^android_x86_64_apex30/addition_copy_files.output
+
+echo "building crtend_android^android_x86_64_apex31"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja crtend_android,android_x86_64_apex31
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/crtend_android^android_x86_64_apex31
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/crtend_android^android_x86_64_apex31.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/crtend_android^android_x86_64_apex31
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/crtend_android^android_x86_64_apex31.output $GITHUB_WORKSPACE/artifacts/bionic/libc/crtend_android^android_x86_64_apex31 $GITHUB_WORKSPACE/artifacts/bionic/libc/crtend_android^android_x86_64_apex31/addition_copy_files.output
+
+echo "building crtend_android^android_x86_x86_64"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja crtend_android,android_x86_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/crtend_android^android_x86_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/crtend_android^android_x86_x86_64.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/crtend_android^android_x86_x86_64
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/crtend_android^android_x86_x86_64.output $GITHUB_WORKSPACE/artifacts/bionic/libc/crtend_android^android_x86_x86_64 $GITHUB_WORKSPACE/artifacts/bionic/libc/crtend_android^android_x86_x86_64/addition_copy_files.output
+
+echo "building crtend_android^android_x86_x86_64_apex10000"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja crtend_android,android_x86_x86_64_apex10000
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/crtend_android^android_x86_x86_64_apex10000
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/crtend_android^android_x86_x86_64_apex10000.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/crtend_android^android_x86_x86_64_apex10000
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/crtend_android^android_x86_x86_64_apex10000.output $GITHUB_WORKSPACE/artifacts/bionic/libc/crtend_android^android_x86_x86_64_apex10000 $GITHUB_WORKSPACE/artifacts/bionic/libc/crtend_android^android_x86_x86_64_apex10000/addition_copy_files.output
+
+echo "building crtend_android^android_x86_x86_64_apex29"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja crtend_android,android_x86_x86_64_apex29
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/crtend_android^android_x86_x86_64_apex29
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/crtend_android^android_x86_x86_64_apex29.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/crtend_android^android_x86_x86_64_apex29
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/crtend_android^android_x86_x86_64_apex29.output $GITHUB_WORKSPACE/artifacts/bionic/libc/crtend_android^android_x86_x86_64_apex29 $GITHUB_WORKSPACE/artifacts/bionic/libc/crtend_android^android_x86_x86_64_apex29/addition_copy_files.output
+
+echo "building crtend_android^android_x86_x86_64_apex31"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja crtend_android,android_x86_x86_64_apex31
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/crtend_android^android_x86_x86_64_apex31
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/crtend_android^android_x86_x86_64_apex31.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/crtend_android^android_x86_x86_64_apex31
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/crtend_android^android_x86_x86_64_apex31.output $GITHUB_WORKSPACE/artifacts/bionic/libc/crtend_android^android_x86_x86_64_apex31 $GITHUB_WORKSPACE/artifacts/bionic/libc/crtend_android^android_x86_x86_64_apex31/addition_copy_files.output
+
+echo "building common_libc^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja common_libc,
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/common_libc^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/common_libc^.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/common_libc^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/common_libc^.output $GITHUB_WORKSPACE/artifacts/bionic/libc/common_libc^ $GITHUB_WORKSPACE/artifacts/bionic/libc/common_libc^/addition_copy_files.output
+
+echo "building libc_uapi^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_uapi,
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_uapi^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_uapi^.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_uapi^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_uapi^.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_uapi^ $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_uapi^/addition_copy_files.output
+
+echo "building libc_init_dynamic^android_recovery_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_init_dynamic,android_recovery_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_init_dynamic^android_recovery_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_init_dynamic^android_recovery_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_init_dynamic^android_recovery_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_init_dynamic^android_recovery_x86_64_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_init_dynamic^android_recovery_x86_64_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_init_dynamic^android_recovery_x86_64_static/addition_copy_files.output
+
+echo "building libc_init_dynamic^android_vendor_ramdisk_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_init_dynamic,android_vendor_ramdisk_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_init_dynamic^android_vendor_ramdisk_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_init_dynamic^android_vendor_ramdisk_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_init_dynamic^android_vendor_ramdisk_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_init_dynamic^android_vendor_ramdisk_x86_64_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_init_dynamic^android_vendor_ramdisk_x86_64_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_init_dynamic^android_vendor_ramdisk_x86_64_static/addition_copy_files.output
+
+echo "building libc_init_dynamic^android_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_init_dynamic,android_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_init_dynamic^android_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_init_dynamic^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_init_dynamic^android_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_init_dynamic^android_x86_64_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_init_dynamic^android_x86_64_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_init_dynamic^android_x86_64_static/addition_copy_files.output
+
+echo "building libc_init_dynamic^android_x86_64_static_apex10000"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_init_dynamic,android_x86_64_static_apex10000
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_init_dynamic^android_x86_64_static_apex10000
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_init_dynamic^android_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_init_dynamic^android_x86_64_static_apex10000
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_init_dynamic^android_x86_64_static_apex10000.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_init_dynamic^android_x86_64_static_apex10000 $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_init_dynamic^android_x86_64_static_apex10000/addition_copy_files.output
+
+echo "building libc_init_dynamic^android_x86_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_init_dynamic,android_x86_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_init_dynamic^android_x86_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_init_dynamic^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_init_dynamic^android_x86_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_init_dynamic^android_x86_x86_64_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_init_dynamic^android_x86_x86_64_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_init_dynamic^android_x86_x86_64_static/addition_copy_files.output
+
+echo "building libc_init_dynamic^android_x86_x86_64_static_apex10000"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_init_dynamic,android_x86_x86_64_static_apex10000
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_init_dynamic^android_x86_x86_64_static_apex10000
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_init_dynamic^android_x86_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_init_dynamic^android_x86_x86_64_static_apex10000
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_init_dynamic^android_x86_x86_64_static_apex10000.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_init_dynamic^android_x86_x86_64_static_apex10000 $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_init_dynamic^android_x86_x86_64_static_apex10000/addition_copy_files.output
+
+echo "building libc_kernel_android_uapi_linux^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_kernel_android_uapi_linux,
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_kernel_android_uapi_linux^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_kernel_android_uapi_linux^.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_kernel_android_uapi_linux^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_kernel_android_uapi_linux^.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_kernel_android_uapi_linux^ $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_kernel_android_uapi_linux^/addition_copy_files.output
+
+echo "building libc_kernel_android_scsi^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_kernel_android_scsi,
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_kernel_android_scsi^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_kernel_android_scsi^.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_kernel_android_scsi^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_kernel_android_scsi^.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_kernel_android_scsi^ $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_kernel_android_scsi^/addition_copy_files.output
+
+echo "building libc_asm_arm^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_asm_arm,
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_asm_arm^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_asm_arm^.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_asm_arm^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_asm_arm^.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_asm_arm^ $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_asm_arm^/addition_copy_files.output
+
+echo "building libc_asm_arm64^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_asm_arm64,
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_asm_arm64^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_asm_arm64^.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_asm_arm64^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_asm_arm64^.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_asm_arm64^ $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_asm_arm64^/addition_copy_files.output
+
+echo "building libc_asm_x86^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_asm_x86,
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_asm_x86^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_asm_x86^.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_asm_x86^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_asm_x86^.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_asm_x86^ $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_asm_x86^/addition_copy_files.output
+
+echo "building libc_asm_x86_64^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_asm_x86_64,
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_asm_x86_64^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_asm_x86_64^.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_asm_x86_64^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_asm_x86_64^.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_asm_x86_64^ $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_asm_x86_64^/addition_copy_files.output
+
+echo "building libseccomp_gen_syscall_nrs_arm^android_x86_64"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libseccomp_gen_syscall_nrs_arm,android_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libseccomp_gen_syscall_nrs_arm^android_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libseccomp_gen_syscall_nrs_arm^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libseccomp_gen_syscall_nrs_arm^android_x86_64
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libseccomp_gen_syscall_nrs_arm^android_x86_64.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libseccomp_gen_syscall_nrs_arm^android_x86_64 $GITHUB_WORKSPACE/artifacts/bionic/libc/libseccomp_gen_syscall_nrs_arm^android_x86_64/addition_copy_files.output
+
+echo "building libseccomp_gen_syscall_nrs_arm^android_x86_x86_64"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libseccomp_gen_syscall_nrs_arm,android_x86_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libseccomp_gen_syscall_nrs_arm^android_x86_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libseccomp_gen_syscall_nrs_arm^android_x86_x86_64.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libseccomp_gen_syscall_nrs_arm^android_x86_x86_64
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libseccomp_gen_syscall_nrs_arm^android_x86_x86_64.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libseccomp_gen_syscall_nrs_arm^android_x86_x86_64 $GITHUB_WORKSPACE/artifacts/bionic/libc/libseccomp_gen_syscall_nrs_arm^android_x86_x86_64/addition_copy_files.output
+
+echo "building libseccomp_gen_syscall_nrs_arm64^android_x86_64"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libseccomp_gen_syscall_nrs_arm64,android_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libseccomp_gen_syscall_nrs_arm64^android_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libseccomp_gen_syscall_nrs_arm64^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libseccomp_gen_syscall_nrs_arm64^android_x86_64
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libseccomp_gen_syscall_nrs_arm64^android_x86_64.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libseccomp_gen_syscall_nrs_arm64^android_x86_64 $GITHUB_WORKSPACE/artifacts/bionic/libc/libseccomp_gen_syscall_nrs_arm64^android_x86_64/addition_copy_files.output
+
+echo "building libseccomp_gen_syscall_nrs_arm64^android_x86_x86_64"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libseccomp_gen_syscall_nrs_arm64,android_x86_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libseccomp_gen_syscall_nrs_arm64^android_x86_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libseccomp_gen_syscall_nrs_arm64^android_x86_x86_64.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libseccomp_gen_syscall_nrs_arm64^android_x86_x86_64
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libseccomp_gen_syscall_nrs_arm64^android_x86_x86_64.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libseccomp_gen_syscall_nrs_arm64^android_x86_x86_64 $GITHUB_WORKSPACE/artifacts/bionic/libc/libseccomp_gen_syscall_nrs_arm64^android_x86_x86_64/addition_copy_files.output
+
+echo "building libc_tzcode^android_recovery_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_tzcode,android_recovery_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_tzcode^android_recovery_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_tzcode^android_recovery_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_tzcode^android_recovery_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_tzcode^android_recovery_x86_64_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_tzcode^android_recovery_x86_64_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_tzcode^android_recovery_x86_64_static/addition_copy_files.output
+
+echo "building libc_tzcode^android_vendor_ramdisk_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_tzcode,android_vendor_ramdisk_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_tzcode^android_vendor_ramdisk_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_tzcode^android_vendor_ramdisk_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_tzcode^android_vendor_ramdisk_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_tzcode^android_vendor_ramdisk_x86_64_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_tzcode^android_vendor_ramdisk_x86_64_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_tzcode^android_vendor_ramdisk_x86_64_static/addition_copy_files.output
+
+echo "building libc_tzcode^android_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_tzcode,android_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_tzcode^android_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_tzcode^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_tzcode^android_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_tzcode^android_x86_64_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_tzcode^android_x86_64_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_tzcode^android_x86_64_static/addition_copy_files.output
+
+echo "building libc_tzcode^android_x86_64_static_apex10000"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_tzcode,android_x86_64_static_apex10000
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_tzcode^android_x86_64_static_apex10000
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_tzcode^android_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_tzcode^android_x86_64_static_apex10000
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_tzcode^android_x86_64_static_apex10000.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_tzcode^android_x86_64_static_apex10000 $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_tzcode^android_x86_64_static_apex10000/addition_copy_files.output
+
+echo "building libc_tzcode^android_x86_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_tzcode,android_x86_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_tzcode^android_x86_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_tzcode^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_tzcode^android_x86_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_tzcode^android_x86_x86_64_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_tzcode^android_x86_x86_64_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_tzcode^android_x86_x86_64_static/addition_copy_files.output
+
+echo "building libc_tzcode^android_x86_x86_64_static_apex10000"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_tzcode,android_x86_x86_64_static_apex10000
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_tzcode^android_x86_x86_64_static_apex10000
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_tzcode^android_x86_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_tzcode^android_x86_x86_64_static_apex10000
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_tzcode^android_x86_x86_64_static_apex10000.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_tzcode^android_x86_x86_64_static_apex10000 $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_tzcode^android_x86_x86_64_static_apex10000/addition_copy_files.output
+
+echo "building libseccomp_gen_syscall_nrs_x86^android_x86_64"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libseccomp_gen_syscall_nrs_x86,android_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libseccomp_gen_syscall_nrs_x86^android_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libseccomp_gen_syscall_nrs_x86^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libseccomp_gen_syscall_nrs_x86^android_x86_64
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libseccomp_gen_syscall_nrs_x86^android_x86_64.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libseccomp_gen_syscall_nrs_x86^android_x86_64 $GITHUB_WORKSPACE/artifacts/bionic/libc/libseccomp_gen_syscall_nrs_x86^android_x86_64/addition_copy_files.output
+
+echo "building libseccomp_gen_syscall_nrs_x86^android_x86_x86_64"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libseccomp_gen_syscall_nrs_x86,android_x86_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libseccomp_gen_syscall_nrs_x86^android_x86_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libseccomp_gen_syscall_nrs_x86^android_x86_x86_64.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libseccomp_gen_syscall_nrs_x86^android_x86_x86_64
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libseccomp_gen_syscall_nrs_x86^android_x86_x86_64.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libseccomp_gen_syscall_nrs_x86^android_x86_x86_64 $GITHUB_WORKSPACE/artifacts/bionic/libc/libseccomp_gen_syscall_nrs_x86^android_x86_x86_64/addition_copy_files.output
+
+echo "building libseccomp_gen_syscall_nrs_x86_64^android_x86_64"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libseccomp_gen_syscall_nrs_x86_64,android_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libseccomp_gen_syscall_nrs_x86_64^android_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libseccomp_gen_syscall_nrs_x86_64^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libseccomp_gen_syscall_nrs_x86_64^android_x86_64
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libseccomp_gen_syscall_nrs_x86_64^android_x86_64.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libseccomp_gen_syscall_nrs_x86_64^android_x86_64 $GITHUB_WORKSPACE/artifacts/bionic/libc/libseccomp_gen_syscall_nrs_x86_64^android_x86_64/addition_copy_files.output
+
+echo "building libseccomp_gen_syscall_nrs_x86_64^android_x86_x86_64"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libseccomp_gen_syscall_nrs_x86_64,android_x86_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libseccomp_gen_syscall_nrs_x86_64^android_x86_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libseccomp_gen_syscall_nrs_x86_64^android_x86_x86_64.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libseccomp_gen_syscall_nrs_x86_64^android_x86_x86_64
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libseccomp_gen_syscall_nrs_x86_64^android_x86_x86_64.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libseccomp_gen_syscall_nrs_x86_64^android_x86_x86_64 $GITHUB_WORKSPACE/artifacts/bionic/libc/libseccomp_gen_syscall_nrs_x86_64^android_x86_x86_64/addition_copy_files.output
+
+echo "building libc_dns^android_recovery_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_dns,android_recovery_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_dns^android_recovery_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_dns^android_recovery_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_dns^android_recovery_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_dns^android_recovery_x86_64_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_dns^android_recovery_x86_64_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_dns^android_recovery_x86_64_static/addition_copy_files.output
+
+echo "building libc_dns^android_vendor_ramdisk_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_dns,android_vendor_ramdisk_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_dns^android_vendor_ramdisk_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_dns^android_vendor_ramdisk_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_dns^android_vendor_ramdisk_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_dns^android_vendor_ramdisk_x86_64_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_dns^android_vendor_ramdisk_x86_64_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_dns^android_vendor_ramdisk_x86_64_static/addition_copy_files.output
+
+echo "building libc_dns^android_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_dns,android_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_dns^android_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_dns^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_dns^android_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_dns^android_x86_64_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_dns^android_x86_64_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_dns^android_x86_64_static/addition_copy_files.output
+
+echo "building libc_dns^android_x86_64_static_apex10000"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_dns,android_x86_64_static_apex10000
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_dns^android_x86_64_static_apex10000
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_dns^android_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_dns^android_x86_64_static_apex10000
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_dns^android_x86_64_static_apex10000.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_dns^android_x86_64_static_apex10000 $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_dns^android_x86_64_static_apex10000/addition_copy_files.output
+
+echo "building libc_dns^android_x86_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_dns,android_x86_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_dns^android_x86_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_dns^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_dns^android_x86_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_dns^android_x86_x86_64_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_dns^android_x86_x86_64_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_dns^android_x86_x86_64_static/addition_copy_files.output
+
+echo "building libc_dns^android_x86_x86_64_static_apex10000"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_dns,android_x86_x86_64_static_apex10000
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_dns^android_x86_x86_64_static_apex10000
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_dns^android_x86_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_dns^android_x86_x86_64_static_apex10000
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_dns^android_x86_x86_64_static_apex10000.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_dns^android_x86_x86_64_static_apex10000 $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_dns^android_x86_x86_64_static_apex10000/addition_copy_files.output
+
+echo "building libc_freebsd^android_recovery_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_freebsd,android_recovery_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_freebsd^android_recovery_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_freebsd^android_recovery_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_freebsd^android_recovery_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_freebsd^android_recovery_x86_64_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_freebsd^android_recovery_x86_64_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_freebsd^android_recovery_x86_64_static/addition_copy_files.output
+
+echo "building libc_freebsd^android_vendor_ramdisk_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_freebsd,android_vendor_ramdisk_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_freebsd^android_vendor_ramdisk_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_freebsd^android_vendor_ramdisk_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_freebsd^android_vendor_ramdisk_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_freebsd^android_vendor_ramdisk_x86_64_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_freebsd^android_vendor_ramdisk_x86_64_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_freebsd^android_vendor_ramdisk_x86_64_static/addition_copy_files.output
+
+echo "building libc_freebsd^android_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_freebsd,android_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_freebsd^android_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_freebsd^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_freebsd^android_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_freebsd^android_x86_64_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_freebsd^android_x86_64_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_freebsd^android_x86_64_static/addition_copy_files.output
+
+echo "building libc_freebsd^android_x86_64_static_apex10000"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_freebsd,android_x86_64_static_apex10000
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_freebsd^android_x86_64_static_apex10000
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_freebsd^android_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_freebsd^android_x86_64_static_apex10000
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_freebsd^android_x86_64_static_apex10000.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_freebsd^android_x86_64_static_apex10000 $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_freebsd^android_x86_64_static_apex10000/addition_copy_files.output
+
+echo "building libc_freebsd^android_x86_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_freebsd,android_x86_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_freebsd^android_x86_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_freebsd^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_freebsd^android_x86_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_freebsd^android_x86_x86_64_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_freebsd^android_x86_x86_64_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_freebsd^android_x86_x86_64_static/addition_copy_files.output
+
+echo "building libc_freebsd^android_x86_x86_64_static_apex10000"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_freebsd,android_x86_x86_64_static_apex10000
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_freebsd^android_x86_x86_64_static_apex10000
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_freebsd^android_x86_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_freebsd^android_x86_x86_64_static_apex10000
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_freebsd^android_x86_x86_64_static_apex10000.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_freebsd^android_x86_x86_64_static_apex10000 $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_freebsd^android_x86_x86_64_static_apex10000/addition_copy_files.output
+
+echo "building libc_freebsd_large_stack^android_recovery_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_freebsd_large_stack,android_recovery_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_freebsd_large_stack^android_recovery_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_freebsd_large_stack^android_recovery_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_freebsd_large_stack^android_recovery_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_freebsd_large_stack^android_recovery_x86_64_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_freebsd_large_stack^android_recovery_x86_64_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_freebsd_large_stack^android_recovery_x86_64_static/addition_copy_files.output
+
+echo "building libc_freebsd_large_stack^android_vendor_ramdisk_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_freebsd_large_stack,android_vendor_ramdisk_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_freebsd_large_stack^android_vendor_ramdisk_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_freebsd_large_stack^android_vendor_ramdisk_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_freebsd_large_stack^android_vendor_ramdisk_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_freebsd_large_stack^android_vendor_ramdisk_x86_64_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_freebsd_large_stack^android_vendor_ramdisk_x86_64_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_freebsd_large_stack^android_vendor_ramdisk_x86_64_static/addition_copy_files.output
+
+echo "building libc_freebsd_large_stack^android_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_freebsd_large_stack,android_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_freebsd_large_stack^android_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_freebsd_large_stack^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_freebsd_large_stack^android_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_freebsd_large_stack^android_x86_64_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_freebsd_large_stack^android_x86_64_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_freebsd_large_stack^android_x86_64_static/addition_copy_files.output
+
+echo "building libc_freebsd_large_stack^android_x86_64_static_apex10000"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_freebsd_large_stack,android_x86_64_static_apex10000
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_freebsd_large_stack^android_x86_64_static_apex10000
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_freebsd_large_stack^android_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_freebsd_large_stack^android_x86_64_static_apex10000
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_freebsd_large_stack^android_x86_64_static_apex10000.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_freebsd_large_stack^android_x86_64_static_apex10000 $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_freebsd_large_stack^android_x86_64_static_apex10000/addition_copy_files.output
+
+echo "building libc_freebsd_large_stack^android_x86_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_freebsd_large_stack,android_x86_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_freebsd_large_stack^android_x86_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_freebsd_large_stack^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_freebsd_large_stack^android_x86_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_freebsd_large_stack^android_x86_x86_64_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_freebsd_large_stack^android_x86_x86_64_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_freebsd_large_stack^android_x86_x86_64_static/addition_copy_files.output
+
+echo "building libc_freebsd_large_stack^android_x86_x86_64_static_apex10000"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_freebsd_large_stack,android_x86_x86_64_static_apex10000
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_freebsd_large_stack^android_x86_x86_64_static_apex10000
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_freebsd_large_stack^android_x86_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_freebsd_large_stack^android_x86_x86_64_static_apex10000
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_freebsd_large_stack^android_x86_x86_64_static_apex10000.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_freebsd_large_stack^android_x86_x86_64_static_apex10000 $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_freebsd_large_stack^android_x86_x86_64_static_apex10000/addition_copy_files.output
+
+echo "building libc_netbsd^android_recovery_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_netbsd,android_recovery_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_netbsd^android_recovery_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_netbsd^android_recovery_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_netbsd^android_recovery_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_netbsd^android_recovery_x86_64_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_netbsd^android_recovery_x86_64_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_netbsd^android_recovery_x86_64_static/addition_copy_files.output
+
+echo "building libc_netbsd^android_vendor_ramdisk_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_netbsd,android_vendor_ramdisk_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_netbsd^android_vendor_ramdisk_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_netbsd^android_vendor_ramdisk_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_netbsd^android_vendor_ramdisk_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_netbsd^android_vendor_ramdisk_x86_64_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_netbsd^android_vendor_ramdisk_x86_64_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_netbsd^android_vendor_ramdisk_x86_64_static/addition_copy_files.output
+
+echo "building libc_netbsd^android_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_netbsd,android_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_netbsd^android_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_netbsd^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_netbsd^android_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_netbsd^android_x86_64_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_netbsd^android_x86_64_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_netbsd^android_x86_64_static/addition_copy_files.output
+
+echo "building libc_netbsd^android_x86_64_static_apex10000"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_netbsd,android_x86_64_static_apex10000
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_netbsd^android_x86_64_static_apex10000
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_netbsd^android_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_netbsd^android_x86_64_static_apex10000
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_netbsd^android_x86_64_static_apex10000.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_netbsd^android_x86_64_static_apex10000 $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_netbsd^android_x86_64_static_apex10000/addition_copy_files.output
+
+echo "building libc_netbsd^android_x86_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_netbsd,android_x86_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_netbsd^android_x86_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_netbsd^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_netbsd^android_x86_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_netbsd^android_x86_x86_64_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_netbsd^android_x86_x86_64_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_netbsd^android_x86_x86_64_static/addition_copy_files.output
+
+echo "building libc_netbsd^android_x86_x86_64_static_apex10000"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_netbsd,android_x86_x86_64_static_apex10000
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_netbsd^android_x86_x86_64_static_apex10000
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_netbsd^android_x86_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_netbsd^android_x86_x86_64_static_apex10000
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_netbsd^android_x86_x86_64_static_apex10000.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_netbsd^android_x86_x86_64_static_apex10000 $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_netbsd^android_x86_x86_64_static_apex10000/addition_copy_files.output
+
+echo "building libc_openbsd_ndk^android_recovery_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_openbsd_ndk,android_recovery_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_openbsd_ndk^android_recovery_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_openbsd_ndk^android_recovery_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_openbsd_ndk^android_recovery_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_openbsd_ndk^android_recovery_x86_64_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_openbsd_ndk^android_recovery_x86_64_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_openbsd_ndk^android_recovery_x86_64_static/addition_copy_files.output
+
+echo "building libc_openbsd_ndk^android_vendor_ramdisk_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_openbsd_ndk,android_vendor_ramdisk_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_openbsd_ndk^android_vendor_ramdisk_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_openbsd_ndk^android_vendor_ramdisk_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_openbsd_ndk^android_vendor_ramdisk_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_openbsd_ndk^android_vendor_ramdisk_x86_64_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_openbsd_ndk^android_vendor_ramdisk_x86_64_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_openbsd_ndk^android_vendor_ramdisk_x86_64_static/addition_copy_files.output
+
+echo "building libc_openbsd_ndk^android_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_openbsd_ndk,android_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_openbsd_ndk^android_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_openbsd_ndk^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_openbsd_ndk^android_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_openbsd_ndk^android_x86_64_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_openbsd_ndk^android_x86_64_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_openbsd_ndk^android_x86_64_static/addition_copy_files.output
+
+echo "building libc_openbsd_ndk^android_x86_64_static_apex10000"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_openbsd_ndk,android_x86_64_static_apex10000
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_openbsd_ndk^android_x86_64_static_apex10000
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_openbsd_ndk^android_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_openbsd_ndk^android_x86_64_static_apex10000
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_openbsd_ndk^android_x86_64_static_apex10000.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_openbsd_ndk^android_x86_64_static_apex10000 $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_openbsd_ndk^android_x86_64_static_apex10000/addition_copy_files.output
+
+echo "building libc_openbsd_ndk^android_x86_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_openbsd_ndk,android_x86_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_openbsd_ndk^android_x86_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_openbsd_ndk^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_openbsd_ndk^android_x86_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_openbsd_ndk^android_x86_x86_64_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_openbsd_ndk^android_x86_x86_64_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_openbsd_ndk^android_x86_x86_64_static/addition_copy_files.output
+
+echo "building libc_openbsd_ndk^android_x86_x86_64_static_apex10000"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_openbsd_ndk,android_x86_x86_64_static_apex10000
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_openbsd_ndk^android_x86_x86_64_static_apex10000
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_openbsd_ndk^android_x86_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_openbsd_ndk^android_x86_x86_64_static_apex10000
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_openbsd_ndk^android_x86_x86_64_static_apex10000.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_openbsd_ndk^android_x86_x86_64_static_apex10000 $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_openbsd_ndk^android_x86_x86_64_static_apex10000/addition_copy_files.output
+
+echo "building libc_openbsd_large_stack^android_recovery_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_openbsd_large_stack,android_recovery_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_openbsd_large_stack^android_recovery_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_openbsd_large_stack^android_recovery_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_openbsd_large_stack^android_recovery_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_openbsd_large_stack^android_recovery_x86_64_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_openbsd_large_stack^android_recovery_x86_64_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_openbsd_large_stack^android_recovery_x86_64_static/addition_copy_files.output
+
+echo "building libc_openbsd_large_stack^android_vendor_ramdisk_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_openbsd_large_stack,android_vendor_ramdisk_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_openbsd_large_stack^android_vendor_ramdisk_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_openbsd_large_stack^android_vendor_ramdisk_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_openbsd_large_stack^android_vendor_ramdisk_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_openbsd_large_stack^android_vendor_ramdisk_x86_64_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_openbsd_large_stack^android_vendor_ramdisk_x86_64_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_openbsd_large_stack^android_vendor_ramdisk_x86_64_static/addition_copy_files.output
+
+echo "building libc_openbsd_large_stack^android_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_openbsd_large_stack,android_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_openbsd_large_stack^android_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_openbsd_large_stack^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_openbsd_large_stack^android_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_openbsd_large_stack^android_x86_64_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_openbsd_large_stack^android_x86_64_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_openbsd_large_stack^android_x86_64_static/addition_copy_files.output
+
+echo "building libc_openbsd_large_stack^android_x86_64_static_apex10000"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_openbsd_large_stack,android_x86_64_static_apex10000
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_openbsd_large_stack^android_x86_64_static_apex10000
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_openbsd_large_stack^android_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_openbsd_large_stack^android_x86_64_static_apex10000
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_openbsd_large_stack^android_x86_64_static_apex10000.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_openbsd_large_stack^android_x86_64_static_apex10000 $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_openbsd_large_stack^android_x86_64_static_apex10000/addition_copy_files.output
+
+echo "building libc_openbsd_large_stack^android_x86_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_openbsd_large_stack,android_x86_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_openbsd_large_stack^android_x86_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_openbsd_large_stack^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_openbsd_large_stack^android_x86_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_openbsd_large_stack^android_x86_x86_64_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_openbsd_large_stack^android_x86_x86_64_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_openbsd_large_stack^android_x86_x86_64_static/addition_copy_files.output
+
+echo "building libc_openbsd_large_stack^android_x86_x86_64_static_apex10000"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_openbsd_large_stack,android_x86_x86_64_static_apex10000
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_openbsd_large_stack^android_x86_x86_64_static_apex10000
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_openbsd_large_stack^android_x86_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_openbsd_large_stack^android_x86_x86_64_static_apex10000
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_openbsd_large_stack^android_x86_x86_64_static_apex10000.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_openbsd_large_stack^android_x86_x86_64_static_apex10000 $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_openbsd_large_stack^android_x86_x86_64_static_apex10000/addition_copy_files.output
+
+echo "building libc_openbsd^android_recovery_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_openbsd,android_recovery_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_openbsd^android_recovery_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_openbsd^android_recovery_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_openbsd^android_recovery_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_openbsd^android_recovery_x86_64_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_openbsd^android_recovery_x86_64_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_openbsd^android_recovery_x86_64_static/addition_copy_files.output
+
+echo "building libc_openbsd^android_vendor_ramdisk_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_openbsd,android_vendor_ramdisk_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_openbsd^android_vendor_ramdisk_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_openbsd^android_vendor_ramdisk_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_openbsd^android_vendor_ramdisk_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_openbsd^android_vendor_ramdisk_x86_64_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_openbsd^android_vendor_ramdisk_x86_64_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_openbsd^android_vendor_ramdisk_x86_64_static/addition_copy_files.output
+
+echo "building libc_openbsd^android_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_openbsd,android_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_openbsd^android_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_openbsd^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_openbsd^android_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_openbsd^android_x86_64_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_openbsd^android_x86_64_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_openbsd^android_x86_64_static/addition_copy_files.output
+
+echo "building libc_openbsd^android_x86_64_static_apex10000"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_openbsd,android_x86_64_static_apex10000
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_openbsd^android_x86_64_static_apex10000
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_openbsd^android_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_openbsd^android_x86_64_static_apex10000
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_openbsd^android_x86_64_static_apex10000.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_openbsd^android_x86_64_static_apex10000 $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_openbsd^android_x86_64_static_apex10000/addition_copy_files.output
+
+echo "building libc_openbsd^android_x86_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_openbsd,android_x86_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_openbsd^android_x86_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_openbsd^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_openbsd^android_x86_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_openbsd^android_x86_x86_64_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_openbsd^android_x86_x86_64_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_openbsd^android_x86_x86_64_static/addition_copy_files.output
+
+echo "building libc_openbsd^android_x86_x86_64_static_apex10000"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_openbsd,android_x86_x86_64_static_apex10000
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_openbsd^android_x86_x86_64_static_apex10000
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_openbsd^android_x86_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_openbsd^android_x86_x86_64_static_apex10000
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_openbsd^android_x86_x86_64_static_apex10000.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_openbsd^android_x86_x86_64_static_apex10000 $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_openbsd^android_x86_x86_64_static_apex10000/addition_copy_files.output
+
+echo "building libc_gdtoa^android_recovery_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_gdtoa,android_recovery_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_gdtoa^android_recovery_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_gdtoa^android_recovery_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_gdtoa^android_recovery_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_gdtoa^android_recovery_x86_64_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_gdtoa^android_recovery_x86_64_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_gdtoa^android_recovery_x86_64_static/addition_copy_files.output
+
+echo "building libc_gdtoa^android_vendor_ramdisk_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_gdtoa,android_vendor_ramdisk_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_gdtoa^android_vendor_ramdisk_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_gdtoa^android_vendor_ramdisk_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_gdtoa^android_vendor_ramdisk_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_gdtoa^android_vendor_ramdisk_x86_64_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_gdtoa^android_vendor_ramdisk_x86_64_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_gdtoa^android_vendor_ramdisk_x86_64_static/addition_copy_files.output
+
+echo "building libc_gdtoa^android_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_gdtoa,android_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_gdtoa^android_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_gdtoa^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_gdtoa^android_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_gdtoa^android_x86_64_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_gdtoa^android_x86_64_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_gdtoa^android_x86_64_static/addition_copy_files.output
+
+echo "building libc_gdtoa^android_x86_64_static_apex10000"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_gdtoa,android_x86_64_static_apex10000
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_gdtoa^android_x86_64_static_apex10000
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_gdtoa^android_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_gdtoa^android_x86_64_static_apex10000
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_gdtoa^android_x86_64_static_apex10000.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_gdtoa^android_x86_64_static_apex10000 $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_gdtoa^android_x86_64_static_apex10000/addition_copy_files.output
+
+echo "building libc_gdtoa^android_x86_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_gdtoa,android_x86_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_gdtoa^android_x86_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_gdtoa^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_gdtoa^android_x86_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_gdtoa^android_x86_x86_64_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_gdtoa^android_x86_x86_64_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_gdtoa^android_x86_x86_64_static/addition_copy_files.output
+
+echo "building libc_gdtoa^android_x86_x86_64_static_apex10000"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_gdtoa,android_x86_x86_64_static_apex10000
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_gdtoa^android_x86_x86_64_static_apex10000
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_gdtoa^android_x86_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_gdtoa^android_x86_x86_64_static_apex10000
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_gdtoa^android_x86_x86_64_static_apex10000.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_gdtoa^android_x86_x86_64_static_apex10000 $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_gdtoa^android_x86_x86_64_static_apex10000/addition_copy_files.output
+
+echo "building libc_fortify^android_recovery_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_fortify,android_recovery_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_fortify^android_recovery_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_fortify^android_recovery_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_fortify^android_recovery_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_fortify^android_recovery_x86_64_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_fortify^android_recovery_x86_64_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_fortify^android_recovery_x86_64_static/addition_copy_files.output
+
+echo "building libc_fortify^android_vendor_ramdisk_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_fortify,android_vendor_ramdisk_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_fortify^android_vendor_ramdisk_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_fortify^android_vendor_ramdisk_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_fortify^android_vendor_ramdisk_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_fortify^android_vendor_ramdisk_x86_64_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_fortify^android_vendor_ramdisk_x86_64_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_fortify^android_vendor_ramdisk_x86_64_static/addition_copy_files.output
+
+echo "building libc_fortify^android_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_fortify,android_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_fortify^android_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_fortify^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_fortify^android_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_fortify^android_x86_64_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_fortify^android_x86_64_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_fortify^android_x86_64_static/addition_copy_files.output
+
+echo "building libc_fortify^android_x86_64_static_apex10000"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_fortify,android_x86_64_static_apex10000
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_fortify^android_x86_64_static_apex10000
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_fortify^android_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_fortify^android_x86_64_static_apex10000
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_fortify^android_x86_64_static_apex10000.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_fortify^android_x86_64_static_apex10000 $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_fortify^android_x86_64_static_apex10000/addition_copy_files.output
+
+echo "building libc_fortify^android_x86_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_fortify,android_x86_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_fortify^android_x86_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_fortify^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_fortify^android_x86_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_fortify^android_x86_x86_64_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_fortify^android_x86_x86_64_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_fortify^android_x86_x86_64_static/addition_copy_files.output
+
+echo "building libc_fortify^android_x86_x86_64_static_apex10000"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_fortify,android_x86_x86_64_static_apex10000
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_fortify^android_x86_x86_64_static_apex10000
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_fortify^android_x86_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_fortify^android_x86_x86_64_static_apex10000
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_fortify^android_x86_x86_64_static_apex10000.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_fortify^android_x86_x86_64_static_apex10000 $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_fortify^android_x86_x86_64_static_apex10000/addition_copy_files.output
+
+echo "building libc_bionic^android_recovery_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_bionic,android_recovery_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bionic^android_recovery_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_bionic^android_recovery_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bionic^android_recovery_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_bionic^android_recovery_x86_64_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bionic^android_recovery_x86_64_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bionic^android_recovery_x86_64_static/addition_copy_files.output
+
+echo "building libc_bionic^android_vendor_ramdisk_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_bionic,android_vendor_ramdisk_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bionic^android_vendor_ramdisk_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_bionic^android_vendor_ramdisk_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bionic^android_vendor_ramdisk_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_bionic^android_vendor_ramdisk_x86_64_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bionic^android_vendor_ramdisk_x86_64_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bionic^android_vendor_ramdisk_x86_64_static/addition_copy_files.output
+
+echo "building libc_bionic^android_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_bionic,android_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bionic^android_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_bionic^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bionic^android_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_bionic^android_x86_64_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bionic^android_x86_64_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bionic^android_x86_64_static/addition_copy_files.output
+
+echo "building libc_bionic^android_x86_64_static_apex10000"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_bionic,android_x86_64_static_apex10000
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bionic^android_x86_64_static_apex10000
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_bionic^android_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bionic^android_x86_64_static_apex10000
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_bionic^android_x86_64_static_apex10000.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bionic^android_x86_64_static_apex10000 $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bionic^android_x86_64_static_apex10000/addition_copy_files.output
+
+echo "building libc_bionic^android_x86_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_bionic,android_x86_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bionic^android_x86_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_bionic^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bionic^android_x86_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_bionic^android_x86_x86_64_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bionic^android_x86_x86_64_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bionic^android_x86_x86_64_static/addition_copy_files.output
+
+echo "building libc_bionic^android_x86_x86_64_static_apex10000"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_bionic,android_x86_x86_64_static_apex10000
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bionic^android_x86_x86_64_static_apex10000
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_bionic^android_x86_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bionic^android_x86_x86_64_static_apex10000
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_bionic^android_x86_x86_64_static_apex10000.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bionic^android_x86_x86_64_static_apex10000 $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bionic^android_x86_x86_64_static_apex10000/addition_copy_files.output
 
 echo "building libasync_safe^android_recovery_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libasync_safe,android_recovery_x86_64_static
@@ -670,552 +1417,6 @@ mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/async_safe/libasync_safe^androi
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libasync_safe^android_x86_x86_64_static_lto-thin.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/async_safe/libasync_safe^android_x86_x86_64_static_lto-thin
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libasync_safe^android_x86_x86_64_static_lto-thin.output $GITHUB_WORKSPACE/artifacts/bionic/libc/async_safe/libasync_safe^android_x86_x86_64_static_lto-thin $GITHUB_WORKSPACE/artifacts/bionic/libc/async_safe/libasync_safe^android_x86_x86_64_static_lto-thin/addition_copy_files.output
 
-echo "building libc_aeabi^android_native_bridge_arm_armv7-a-neon_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_aeabi,android_native_bridge_arm_armv7-a-neon_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_aeabi^android_native_bridge_arm_armv7-a-neon_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_aeabi^android_native_bridge_arm_armv7-a-neon_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_aeabi^android_native_bridge_arm_armv7-a-neon_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_aeabi^android_native_bridge_arm_armv7-a-neon_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_aeabi^android_native_bridge_arm_armv7-a-neon_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_aeabi^android_native_bridge_arm_armv7-a-neon_static/addition_copy_files.output
-
-echo "building libc_asm_arm64^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_asm_arm64,
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_asm_arm64^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_asm_arm64^.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_asm_arm64^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_asm_arm64^.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_asm_arm64^ $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_asm_arm64^/addition_copy_files.output
-
-echo "building libc_asm_arm^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_asm_arm,
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_asm_arm^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_asm_arm^.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_asm_arm^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_asm_arm^.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_asm_arm^ $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_asm_arm^/addition_copy_files.output
-
-echo "building libc_asm_x86^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_asm_x86,
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_asm_x86^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_asm_x86^.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_asm_x86^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_asm_x86^.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_asm_x86^ $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_asm_x86^/addition_copy_files.output
-
-echo "building libc_asm_x86_64^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_asm_x86_64,
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_asm_x86_64^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_asm_x86_64^.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_asm_x86_64^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_asm_x86_64^.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_asm_x86_64^ $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_asm_x86_64^/addition_copy_files.output
-
-echo "building libc_bionic^android_native_bridge_arm64_armv8-a_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_bionic,android_native_bridge_arm64_armv8-a_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bionic^android_native_bridge_arm64_armv8-a_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_bionic^android_native_bridge_arm64_armv8-a_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bionic^android_native_bridge_arm64_armv8-a_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_bionic^android_native_bridge_arm64_armv8-a_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bionic^android_native_bridge_arm64_armv8-a_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bionic^android_native_bridge_arm64_armv8-a_static/addition_copy_files.output
-
-echo "building libc_bionic^android_native_bridge_arm_armv7-a-neon_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_bionic,android_native_bridge_arm_armv7-a-neon_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bionic^android_native_bridge_arm_armv7-a-neon_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_bionic^android_native_bridge_arm_armv7-a-neon_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bionic^android_native_bridge_arm_armv7-a-neon_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_bionic^android_native_bridge_arm_armv7-a-neon_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bionic^android_native_bridge_arm_armv7-a-neon_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bionic^android_native_bridge_arm_armv7-a-neon_static/addition_copy_files.output
-
-echo "building libc_bionic^android_recovery_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_bionic,android_recovery_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bionic^android_recovery_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_bionic^android_recovery_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bionic^android_recovery_x86_64_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_bionic^android_recovery_x86_64_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bionic^android_recovery_x86_64_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bionic^android_recovery_x86_64_static/addition_copy_files.output
-
-echo "building libc_bionic^android_vendor_ramdisk_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_bionic,android_vendor_ramdisk_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bionic^android_vendor_ramdisk_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_bionic^android_vendor_ramdisk_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bionic^android_vendor_ramdisk_x86_64_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_bionic^android_vendor_ramdisk_x86_64_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bionic^android_vendor_ramdisk_x86_64_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bionic^android_vendor_ramdisk_x86_64_static/addition_copy_files.output
-
-echo "building libc_bionic^android_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_bionic,android_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bionic^android_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_bionic^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bionic^android_x86_64_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_bionic^android_x86_64_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bionic^android_x86_64_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bionic^android_x86_64_static/addition_copy_files.output
-
-echo "building libc_bionic^android_x86_64_static_apex10000"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_bionic,android_x86_64_static_apex10000
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bionic^android_x86_64_static_apex10000
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_bionic^android_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bionic^android_x86_64_static_apex10000
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_bionic^android_x86_64_static_apex10000.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bionic^android_x86_64_static_apex10000 $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bionic^android_x86_64_static_apex10000/addition_copy_files.output
-
-echo "building libc_bionic^android_x86_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_bionic,android_x86_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bionic^android_x86_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_bionic^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bionic^android_x86_x86_64_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_bionic^android_x86_x86_64_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bionic^android_x86_x86_64_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bionic^android_x86_x86_64_static/addition_copy_files.output
-
-echo "building libc_bionic^android_x86_x86_64_static_apex10000"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_bionic,android_x86_x86_64_static_apex10000
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bionic^android_x86_x86_64_static_apex10000
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_bionic^android_x86_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bionic^android_x86_x86_64_static_apex10000
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_bionic^android_x86_x86_64_static_apex10000.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bionic^android_x86_x86_64_static_apex10000 $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bionic^android_x86_x86_64_static_apex10000/addition_copy_files.output
-
-echo "building libc_bionic_systrace^android_native_bridge_arm64_armv8-a_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_bionic_systrace,android_native_bridge_arm64_armv8-a_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bionic_systrace^android_native_bridge_arm64_armv8-a_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_bionic_systrace^android_native_bridge_arm64_armv8-a_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bionic_systrace^android_native_bridge_arm64_armv8-a_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_bionic_systrace^android_native_bridge_arm64_armv8-a_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bionic_systrace^android_native_bridge_arm64_armv8-a_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bionic_systrace^android_native_bridge_arm64_armv8-a_static/addition_copy_files.output
-
-echo "building libc_bionic_systrace^android_native_bridge_arm_armv7-a-neon_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_bionic_systrace,android_native_bridge_arm_armv7-a-neon_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bionic_systrace^android_native_bridge_arm_armv7-a-neon_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_bionic_systrace^android_native_bridge_arm_armv7-a-neon_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bionic_systrace^android_native_bridge_arm_armv7-a-neon_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_bionic_systrace^android_native_bridge_arm_armv7-a-neon_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bionic_systrace^android_native_bridge_arm_armv7-a-neon_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bionic_systrace^android_native_bridge_arm_armv7-a-neon_static/addition_copy_files.output
-
-echo "building libc_bionic_systrace^android_recovery_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_bionic_systrace,android_recovery_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bionic_systrace^android_recovery_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_bionic_systrace^android_recovery_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bionic_systrace^android_recovery_x86_64_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_bionic_systrace^android_recovery_x86_64_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bionic_systrace^android_recovery_x86_64_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bionic_systrace^android_recovery_x86_64_static/addition_copy_files.output
-
-echo "building libc_bionic_systrace^android_vendor_ramdisk_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_bionic_systrace,android_vendor_ramdisk_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bionic_systrace^android_vendor_ramdisk_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_bionic_systrace^android_vendor_ramdisk_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bionic_systrace^android_vendor_ramdisk_x86_64_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_bionic_systrace^android_vendor_ramdisk_x86_64_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bionic_systrace^android_vendor_ramdisk_x86_64_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bionic_systrace^android_vendor_ramdisk_x86_64_static/addition_copy_files.output
-
-echo "building libc_bionic_systrace^android_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_bionic_systrace,android_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bionic_systrace^android_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_bionic_systrace^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bionic_systrace^android_x86_64_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_bionic_systrace^android_x86_64_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bionic_systrace^android_x86_64_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bionic_systrace^android_x86_64_static/addition_copy_files.output
-
-echo "building libc_bionic_systrace^android_x86_64_static_apex10000"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_bionic_systrace,android_x86_64_static_apex10000
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bionic_systrace^android_x86_64_static_apex10000
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_bionic_systrace^android_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bionic_systrace^android_x86_64_static_apex10000
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_bionic_systrace^android_x86_64_static_apex10000.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bionic_systrace^android_x86_64_static_apex10000 $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bionic_systrace^android_x86_64_static_apex10000/addition_copy_files.output
-
-echo "building libc_bionic_systrace^android_x86_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_bionic_systrace,android_x86_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bionic_systrace^android_x86_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_bionic_systrace^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bionic_systrace^android_x86_x86_64_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_bionic_systrace^android_x86_x86_64_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bionic_systrace^android_x86_x86_64_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bionic_systrace^android_x86_x86_64_static/addition_copy_files.output
-
-echo "building libc_bionic_systrace^android_x86_x86_64_static_apex10000"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_bionic_systrace,android_x86_x86_64_static_apex10000
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bionic_systrace^android_x86_x86_64_static_apex10000
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_bionic_systrace^android_x86_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bionic_systrace^android_x86_x86_64_static_apex10000
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_bionic_systrace^android_x86_x86_64_static_apex10000.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bionic_systrace^android_x86_x86_64_static_apex10000 $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bionic_systrace^android_x86_x86_64_static_apex10000/addition_copy_files.output
-
-echo "building libc_bootstrap^android_native_bridge_arm64_armv8-a_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_bootstrap,android_native_bridge_arm64_armv8-a_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bootstrap^android_native_bridge_arm64_armv8-a_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_bootstrap^android_native_bridge_arm64_armv8-a_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bootstrap^android_native_bridge_arm64_armv8-a_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_bootstrap^android_native_bridge_arm64_armv8-a_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bootstrap^android_native_bridge_arm64_armv8-a_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bootstrap^android_native_bridge_arm64_armv8-a_static/addition_copy_files.output
-
-echo "building libc_bootstrap^android_native_bridge_arm_armv7-a-neon_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_bootstrap,android_native_bridge_arm_armv7-a-neon_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bootstrap^android_native_bridge_arm_armv7-a-neon_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_bootstrap^android_native_bridge_arm_armv7-a-neon_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bootstrap^android_native_bridge_arm_armv7-a-neon_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_bootstrap^android_native_bridge_arm_armv7-a-neon_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bootstrap^android_native_bridge_arm_armv7-a-neon_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bootstrap^android_native_bridge_arm_armv7-a-neon_static/addition_copy_files.output
-
-echo "building libc_bootstrap^android_recovery_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_bootstrap,android_recovery_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bootstrap^android_recovery_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_bootstrap^android_recovery_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bootstrap^android_recovery_x86_64_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_bootstrap^android_recovery_x86_64_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bootstrap^android_recovery_x86_64_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bootstrap^android_recovery_x86_64_static/addition_copy_files.output
-
-echo "building libc_bootstrap^android_vendor_ramdisk_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_bootstrap,android_vendor_ramdisk_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bootstrap^android_vendor_ramdisk_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_bootstrap^android_vendor_ramdisk_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bootstrap^android_vendor_ramdisk_x86_64_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_bootstrap^android_vendor_ramdisk_x86_64_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bootstrap^android_vendor_ramdisk_x86_64_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bootstrap^android_vendor_ramdisk_x86_64_static/addition_copy_files.output
-
-echo "building libc_bootstrap^android_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_bootstrap,android_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bootstrap^android_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_bootstrap^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bootstrap^android_x86_64_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_bootstrap^android_x86_64_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bootstrap^android_x86_64_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bootstrap^android_x86_64_static/addition_copy_files.output
-
-echo "building libc_bootstrap^android_x86_64_static_apex10000"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_bootstrap,android_x86_64_static_apex10000
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bootstrap^android_x86_64_static_apex10000
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_bootstrap^android_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bootstrap^android_x86_64_static_apex10000
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_bootstrap^android_x86_64_static_apex10000.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bootstrap^android_x86_64_static_apex10000 $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bootstrap^android_x86_64_static_apex10000/addition_copy_files.output
-
-echo "building libc_bootstrap^android_x86_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_bootstrap,android_x86_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bootstrap^android_x86_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_bootstrap^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bootstrap^android_x86_x86_64_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_bootstrap^android_x86_x86_64_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bootstrap^android_x86_x86_64_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bootstrap^android_x86_x86_64_static/addition_copy_files.output
-
-echo "building libc_bootstrap^android_x86_x86_64_static_apex10000"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_bootstrap,android_x86_x86_64_static_apex10000
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bootstrap^android_x86_x86_64_static_apex10000
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_bootstrap^android_x86_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bootstrap^android_x86_x86_64_static_apex10000
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_bootstrap^android_x86_x86_64_static_apex10000.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bootstrap^android_x86_x86_64_static_apex10000 $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_bootstrap^android_x86_x86_64_static_apex10000/addition_copy_files.output
-
-echo "building libc_dns^android_native_bridge_arm64_armv8-a_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_dns,android_native_bridge_arm64_armv8-a_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_dns^android_native_bridge_arm64_armv8-a_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_dns^android_native_bridge_arm64_armv8-a_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_dns^android_native_bridge_arm64_armv8-a_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_dns^android_native_bridge_arm64_armv8-a_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_dns^android_native_bridge_arm64_armv8-a_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_dns^android_native_bridge_arm64_armv8-a_static/addition_copy_files.output
-
-echo "building libc_dns^android_native_bridge_arm_armv7-a-neon_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_dns,android_native_bridge_arm_armv7-a-neon_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_dns^android_native_bridge_arm_armv7-a-neon_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_dns^android_native_bridge_arm_armv7-a-neon_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_dns^android_native_bridge_arm_armv7-a-neon_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_dns^android_native_bridge_arm_armv7-a-neon_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_dns^android_native_bridge_arm_armv7-a-neon_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_dns^android_native_bridge_arm_armv7-a-neon_static/addition_copy_files.output
-
-echo "building libc_dns^android_recovery_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_dns,android_recovery_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_dns^android_recovery_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_dns^android_recovery_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_dns^android_recovery_x86_64_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_dns^android_recovery_x86_64_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_dns^android_recovery_x86_64_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_dns^android_recovery_x86_64_static/addition_copy_files.output
-
-echo "building libc_dns^android_vendor_ramdisk_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_dns,android_vendor_ramdisk_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_dns^android_vendor_ramdisk_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_dns^android_vendor_ramdisk_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_dns^android_vendor_ramdisk_x86_64_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_dns^android_vendor_ramdisk_x86_64_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_dns^android_vendor_ramdisk_x86_64_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_dns^android_vendor_ramdisk_x86_64_static/addition_copy_files.output
-
-echo "building libc_dns^android_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_dns,android_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_dns^android_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_dns^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_dns^android_x86_64_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_dns^android_x86_64_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_dns^android_x86_64_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_dns^android_x86_64_static/addition_copy_files.output
-
-echo "building libc_dns^android_x86_64_static_apex10000"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_dns,android_x86_64_static_apex10000
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_dns^android_x86_64_static_apex10000
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_dns^android_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_dns^android_x86_64_static_apex10000
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_dns^android_x86_64_static_apex10000.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_dns^android_x86_64_static_apex10000 $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_dns^android_x86_64_static_apex10000/addition_copy_files.output
-
-echo "building libc_dns^android_x86_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_dns,android_x86_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_dns^android_x86_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_dns^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_dns^android_x86_x86_64_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_dns^android_x86_x86_64_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_dns^android_x86_x86_64_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_dns^android_x86_x86_64_static/addition_copy_files.output
-
-echo "building libc_dns^android_x86_x86_64_static_apex10000"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_dns,android_x86_x86_64_static_apex10000
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_dns^android_x86_x86_64_static_apex10000
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_dns^android_x86_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_dns^android_x86_x86_64_static_apex10000
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_dns^android_x86_x86_64_static_apex10000.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_dns^android_x86_x86_64_static_apex10000 $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_dns^android_x86_x86_64_static_apex10000/addition_copy_files.output
-
-echo "building libc_dynamic_dispatch^android_recovery_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_dynamic_dispatch,android_recovery_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_dynamic_dispatch^android_recovery_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_dynamic_dispatch^android_recovery_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_dynamic_dispatch^android_recovery_x86_64_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_dynamic_dispatch^android_recovery_x86_64_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_dynamic_dispatch^android_recovery_x86_64_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_dynamic_dispatch^android_recovery_x86_64_static/addition_copy_files.output
-
-echo "building libc_dynamic_dispatch^android_vendor_ramdisk_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_dynamic_dispatch,android_vendor_ramdisk_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_dynamic_dispatch^android_vendor_ramdisk_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_dynamic_dispatch^android_vendor_ramdisk_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_dynamic_dispatch^android_vendor_ramdisk_x86_64_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_dynamic_dispatch^android_vendor_ramdisk_x86_64_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_dynamic_dispatch^android_vendor_ramdisk_x86_64_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_dynamic_dispatch^android_vendor_ramdisk_x86_64_static/addition_copy_files.output
-
-echo "building libc_dynamic_dispatch^android_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_dynamic_dispatch,android_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_dynamic_dispatch^android_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_dynamic_dispatch^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_dynamic_dispatch^android_x86_64_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_dynamic_dispatch^android_x86_64_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_dynamic_dispatch^android_x86_64_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_dynamic_dispatch^android_x86_64_static/addition_copy_files.output
-
-echo "building libc_dynamic_dispatch^android_x86_64_static_apex10000"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_dynamic_dispatch,android_x86_64_static_apex10000
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_dynamic_dispatch^android_x86_64_static_apex10000
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_dynamic_dispatch^android_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_dynamic_dispatch^android_x86_64_static_apex10000
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_dynamic_dispatch^android_x86_64_static_apex10000.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_dynamic_dispatch^android_x86_64_static_apex10000 $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_dynamic_dispatch^android_x86_64_static_apex10000/addition_copy_files.output
-
-echo "building libc_dynamic_dispatch^android_x86_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_dynamic_dispatch,android_x86_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_dynamic_dispatch^android_x86_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_dynamic_dispatch^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_dynamic_dispatch^android_x86_x86_64_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_dynamic_dispatch^android_x86_x86_64_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_dynamic_dispatch^android_x86_x86_64_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_dynamic_dispatch^android_x86_x86_64_static/addition_copy_files.output
-
-echo "building libc_dynamic_dispatch^android_x86_x86_64_static_apex10000"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_dynamic_dispatch,android_x86_x86_64_static_apex10000
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_dynamic_dispatch^android_x86_x86_64_static_apex10000
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_dynamic_dispatch^android_x86_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_dynamic_dispatch^android_x86_x86_64_static_apex10000
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_dynamic_dispatch^android_x86_x86_64_static_apex10000.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_dynamic_dispatch^android_x86_x86_64_static_apex10000 $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_dynamic_dispatch^android_x86_x86_64_static_apex10000/addition_copy_files.output
-
-echo "building libc_fortify^android_native_bridge_arm64_armv8-a_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_fortify,android_native_bridge_arm64_armv8-a_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_fortify^android_native_bridge_arm64_armv8-a_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_fortify^android_native_bridge_arm64_armv8-a_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_fortify^android_native_bridge_arm64_armv8-a_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_fortify^android_native_bridge_arm64_armv8-a_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_fortify^android_native_bridge_arm64_armv8-a_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_fortify^android_native_bridge_arm64_armv8-a_static/addition_copy_files.output
-
-echo "building libc_fortify^android_native_bridge_arm_armv7-a-neon_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_fortify,android_native_bridge_arm_armv7-a-neon_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_fortify^android_native_bridge_arm_armv7-a-neon_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_fortify^android_native_bridge_arm_armv7-a-neon_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_fortify^android_native_bridge_arm_armv7-a-neon_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_fortify^android_native_bridge_arm_armv7-a-neon_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_fortify^android_native_bridge_arm_armv7-a-neon_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_fortify^android_native_bridge_arm_armv7-a-neon_static/addition_copy_files.output
-
-echo "building libc_fortify^android_recovery_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_fortify,android_recovery_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_fortify^android_recovery_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_fortify^android_recovery_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_fortify^android_recovery_x86_64_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_fortify^android_recovery_x86_64_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_fortify^android_recovery_x86_64_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_fortify^android_recovery_x86_64_static/addition_copy_files.output
-
-echo "building libc_fortify^android_vendor_ramdisk_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_fortify,android_vendor_ramdisk_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_fortify^android_vendor_ramdisk_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_fortify^android_vendor_ramdisk_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_fortify^android_vendor_ramdisk_x86_64_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_fortify^android_vendor_ramdisk_x86_64_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_fortify^android_vendor_ramdisk_x86_64_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_fortify^android_vendor_ramdisk_x86_64_static/addition_copy_files.output
-
-echo "building libc_fortify^android_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_fortify,android_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_fortify^android_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_fortify^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_fortify^android_x86_64_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_fortify^android_x86_64_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_fortify^android_x86_64_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_fortify^android_x86_64_static/addition_copy_files.output
-
-echo "building libc_fortify^android_x86_64_static_apex10000"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_fortify,android_x86_64_static_apex10000
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_fortify^android_x86_64_static_apex10000
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_fortify^android_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_fortify^android_x86_64_static_apex10000
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_fortify^android_x86_64_static_apex10000.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_fortify^android_x86_64_static_apex10000 $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_fortify^android_x86_64_static_apex10000/addition_copy_files.output
-
-echo "building libc_fortify^android_x86_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_fortify,android_x86_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_fortify^android_x86_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_fortify^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_fortify^android_x86_x86_64_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_fortify^android_x86_x86_64_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_fortify^android_x86_x86_64_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_fortify^android_x86_x86_64_static/addition_copy_files.output
-
-echo "building libc_fortify^android_x86_x86_64_static_apex10000"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_fortify,android_x86_x86_64_static_apex10000
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_fortify^android_x86_x86_64_static_apex10000
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_fortify^android_x86_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_fortify^android_x86_x86_64_static_apex10000
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_fortify^android_x86_x86_64_static_apex10000.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_fortify^android_x86_x86_64_static_apex10000 $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_fortify^android_x86_x86_64_static_apex10000/addition_copy_files.output
-
-echo "building libc_freebsd^android_native_bridge_arm64_armv8-a_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_freebsd,android_native_bridge_arm64_armv8-a_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_freebsd^android_native_bridge_arm64_armv8-a_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_freebsd^android_native_bridge_arm64_armv8-a_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_freebsd^android_native_bridge_arm64_armv8-a_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_freebsd^android_native_bridge_arm64_armv8-a_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_freebsd^android_native_bridge_arm64_armv8-a_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_freebsd^android_native_bridge_arm64_armv8-a_static/addition_copy_files.output
-
-echo "building libc_freebsd^android_native_bridge_arm_armv7-a-neon_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_freebsd,android_native_bridge_arm_armv7-a-neon_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_freebsd^android_native_bridge_arm_armv7-a-neon_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_freebsd^android_native_bridge_arm_armv7-a-neon_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_freebsd^android_native_bridge_arm_armv7-a-neon_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_freebsd^android_native_bridge_arm_armv7-a-neon_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_freebsd^android_native_bridge_arm_armv7-a-neon_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_freebsd^android_native_bridge_arm_armv7-a-neon_static/addition_copy_files.output
-
-echo "building libc_freebsd^android_recovery_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_freebsd,android_recovery_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_freebsd^android_recovery_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_freebsd^android_recovery_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_freebsd^android_recovery_x86_64_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_freebsd^android_recovery_x86_64_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_freebsd^android_recovery_x86_64_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_freebsd^android_recovery_x86_64_static/addition_copy_files.output
-
-echo "building libc_freebsd^android_vendor_ramdisk_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_freebsd,android_vendor_ramdisk_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_freebsd^android_vendor_ramdisk_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_freebsd^android_vendor_ramdisk_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_freebsd^android_vendor_ramdisk_x86_64_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_freebsd^android_vendor_ramdisk_x86_64_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_freebsd^android_vendor_ramdisk_x86_64_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_freebsd^android_vendor_ramdisk_x86_64_static/addition_copy_files.output
-
-echo "building libc_freebsd^android_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_freebsd,android_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_freebsd^android_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_freebsd^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_freebsd^android_x86_64_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_freebsd^android_x86_64_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_freebsd^android_x86_64_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_freebsd^android_x86_64_static/addition_copy_files.output
-
-echo "building libc_freebsd^android_x86_64_static_apex10000"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_freebsd,android_x86_64_static_apex10000
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_freebsd^android_x86_64_static_apex10000
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_freebsd^android_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_freebsd^android_x86_64_static_apex10000
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_freebsd^android_x86_64_static_apex10000.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_freebsd^android_x86_64_static_apex10000 $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_freebsd^android_x86_64_static_apex10000/addition_copy_files.output
-
-echo "building libc_freebsd^android_x86_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_freebsd,android_x86_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_freebsd^android_x86_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_freebsd^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_freebsd^android_x86_x86_64_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_freebsd^android_x86_x86_64_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_freebsd^android_x86_x86_64_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_freebsd^android_x86_x86_64_static/addition_copy_files.output
-
-echo "building libc_freebsd^android_x86_x86_64_static_apex10000"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_freebsd,android_x86_x86_64_static_apex10000
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_freebsd^android_x86_x86_64_static_apex10000
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_freebsd^android_x86_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_freebsd^android_x86_x86_64_static_apex10000
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_freebsd^android_x86_x86_64_static_apex10000.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_freebsd^android_x86_x86_64_static_apex10000 $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_freebsd^android_x86_x86_64_static_apex10000/addition_copy_files.output
-
-echo "building libc_freebsd_large_stack^android_native_bridge_arm64_armv8-a_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_freebsd_large_stack,android_native_bridge_arm64_armv8-a_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_freebsd_large_stack^android_native_bridge_arm64_armv8-a_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_freebsd_large_stack^android_native_bridge_arm64_armv8-a_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_freebsd_large_stack^android_native_bridge_arm64_armv8-a_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_freebsd_large_stack^android_native_bridge_arm64_armv8-a_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_freebsd_large_stack^android_native_bridge_arm64_armv8-a_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_freebsd_large_stack^android_native_bridge_arm64_armv8-a_static/addition_copy_files.output
-
-echo "building libc_freebsd_large_stack^android_native_bridge_arm_armv7-a-neon_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_freebsd_large_stack,android_native_bridge_arm_armv7-a-neon_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_freebsd_large_stack^android_native_bridge_arm_armv7-a-neon_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_freebsd_large_stack^android_native_bridge_arm_armv7-a-neon_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_freebsd_large_stack^android_native_bridge_arm_armv7-a-neon_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_freebsd_large_stack^android_native_bridge_arm_armv7-a-neon_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_freebsd_large_stack^android_native_bridge_arm_armv7-a-neon_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_freebsd_large_stack^android_native_bridge_arm_armv7-a-neon_static/addition_copy_files.output
-
-echo "building libc_freebsd_large_stack^android_recovery_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_freebsd_large_stack,android_recovery_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_freebsd_large_stack^android_recovery_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_freebsd_large_stack^android_recovery_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_freebsd_large_stack^android_recovery_x86_64_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_freebsd_large_stack^android_recovery_x86_64_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_freebsd_large_stack^android_recovery_x86_64_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_freebsd_large_stack^android_recovery_x86_64_static/addition_copy_files.output
-
-echo "building libc_freebsd_large_stack^android_vendor_ramdisk_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_freebsd_large_stack,android_vendor_ramdisk_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_freebsd_large_stack^android_vendor_ramdisk_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_freebsd_large_stack^android_vendor_ramdisk_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_freebsd_large_stack^android_vendor_ramdisk_x86_64_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_freebsd_large_stack^android_vendor_ramdisk_x86_64_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_freebsd_large_stack^android_vendor_ramdisk_x86_64_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_freebsd_large_stack^android_vendor_ramdisk_x86_64_static/addition_copy_files.output
-
-echo "building libc_freebsd_large_stack^android_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_freebsd_large_stack,android_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_freebsd_large_stack^android_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_freebsd_large_stack^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_freebsd_large_stack^android_x86_64_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_freebsd_large_stack^android_x86_64_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_freebsd_large_stack^android_x86_64_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_freebsd_large_stack^android_x86_64_static/addition_copy_files.output
-
-echo "building libc_freebsd_large_stack^android_x86_64_static_apex10000"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_freebsd_large_stack,android_x86_64_static_apex10000
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_freebsd_large_stack^android_x86_64_static_apex10000
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_freebsd_large_stack^android_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_freebsd_large_stack^android_x86_64_static_apex10000
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_freebsd_large_stack^android_x86_64_static_apex10000.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_freebsd_large_stack^android_x86_64_static_apex10000 $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_freebsd_large_stack^android_x86_64_static_apex10000/addition_copy_files.output
-
-echo "building libc_freebsd_large_stack^android_x86_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_freebsd_large_stack,android_x86_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_freebsd_large_stack^android_x86_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_freebsd_large_stack^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_freebsd_large_stack^android_x86_x86_64_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_freebsd_large_stack^android_x86_x86_64_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_freebsd_large_stack^android_x86_x86_64_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_freebsd_large_stack^android_x86_x86_64_static/addition_copy_files.output
-
-echo "building libc_freebsd_large_stack^android_x86_x86_64_static_apex10000"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_freebsd_large_stack,android_x86_x86_64_static_apex10000
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_freebsd_large_stack^android_x86_x86_64_static_apex10000
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_freebsd_large_stack^android_x86_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_freebsd_large_stack^android_x86_x86_64_static_apex10000
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_freebsd_large_stack^android_x86_x86_64_static_apex10000.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_freebsd_large_stack^android_x86_x86_64_static_apex10000 $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_freebsd_large_stack^android_x86_x86_64_static_apex10000/addition_copy_files.output
-
-echo "building libc_gdtoa^android_native_bridge_arm64_armv8-a_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_gdtoa,android_native_bridge_arm64_armv8-a_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_gdtoa^android_native_bridge_arm64_armv8-a_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_gdtoa^android_native_bridge_arm64_armv8-a_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_gdtoa^android_native_bridge_arm64_armv8-a_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_gdtoa^android_native_bridge_arm64_armv8-a_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_gdtoa^android_native_bridge_arm64_armv8-a_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_gdtoa^android_native_bridge_arm64_armv8-a_static/addition_copy_files.output
-
-echo "building libc_gdtoa^android_native_bridge_arm_armv7-a-neon_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_gdtoa,android_native_bridge_arm_armv7-a-neon_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_gdtoa^android_native_bridge_arm_armv7-a-neon_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_gdtoa^android_native_bridge_arm_armv7-a-neon_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_gdtoa^android_native_bridge_arm_armv7-a-neon_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_gdtoa^android_native_bridge_arm_armv7-a-neon_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_gdtoa^android_native_bridge_arm_armv7-a-neon_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_gdtoa^android_native_bridge_arm_armv7-a-neon_static/addition_copy_files.output
-
-echo "building libc_gdtoa^android_recovery_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_gdtoa,android_recovery_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_gdtoa^android_recovery_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_gdtoa^android_recovery_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_gdtoa^android_recovery_x86_64_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_gdtoa^android_recovery_x86_64_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_gdtoa^android_recovery_x86_64_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_gdtoa^android_recovery_x86_64_static/addition_copy_files.output
-
-echo "building libc_gdtoa^android_vendor_ramdisk_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_gdtoa,android_vendor_ramdisk_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_gdtoa^android_vendor_ramdisk_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_gdtoa^android_vendor_ramdisk_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_gdtoa^android_vendor_ramdisk_x86_64_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_gdtoa^android_vendor_ramdisk_x86_64_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_gdtoa^android_vendor_ramdisk_x86_64_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_gdtoa^android_vendor_ramdisk_x86_64_static/addition_copy_files.output
-
-echo "building libc_gdtoa^android_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_gdtoa,android_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_gdtoa^android_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_gdtoa^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_gdtoa^android_x86_64_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_gdtoa^android_x86_64_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_gdtoa^android_x86_64_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_gdtoa^android_x86_64_static/addition_copy_files.output
-
-echo "building libc_gdtoa^android_x86_64_static_apex10000"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_gdtoa,android_x86_64_static_apex10000
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_gdtoa^android_x86_64_static_apex10000
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_gdtoa^android_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_gdtoa^android_x86_64_static_apex10000
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_gdtoa^android_x86_64_static_apex10000.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_gdtoa^android_x86_64_static_apex10000 $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_gdtoa^android_x86_64_static_apex10000/addition_copy_files.output
-
-echo "building libc_gdtoa^android_x86_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_gdtoa,android_x86_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_gdtoa^android_x86_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_gdtoa^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_gdtoa^android_x86_x86_64_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_gdtoa^android_x86_x86_64_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_gdtoa^android_x86_x86_64_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_gdtoa^android_x86_x86_64_static/addition_copy_files.output
-
-echo "building libc_gdtoa^android_x86_x86_64_static_apex10000"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_gdtoa,android_x86_x86_64_static_apex10000
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_gdtoa^android_x86_x86_64_static_apex10000
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_gdtoa^android_x86_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_gdtoa^android_x86_x86_64_static_apex10000
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_gdtoa^android_x86_x86_64_static_apex10000.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_gdtoa^android_x86_x86_64_static_apex10000 $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_gdtoa^android_x86_x86_64_static_apex10000/addition_copy_files.output
-
-echo "building libc_init_dynamic^android_recovery_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_init_dynamic,android_recovery_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_init_dynamic^android_recovery_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_init_dynamic^android_recovery_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_init_dynamic^android_recovery_x86_64_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_init_dynamic^android_recovery_x86_64_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_init_dynamic^android_recovery_x86_64_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_init_dynamic^android_recovery_x86_64_static/addition_copy_files.output
-
-echo "building libc_init_dynamic^android_vendor_ramdisk_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_init_dynamic,android_vendor_ramdisk_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_init_dynamic^android_vendor_ramdisk_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_init_dynamic^android_vendor_ramdisk_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_init_dynamic^android_vendor_ramdisk_x86_64_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_init_dynamic^android_vendor_ramdisk_x86_64_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_init_dynamic^android_vendor_ramdisk_x86_64_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_init_dynamic^android_vendor_ramdisk_x86_64_static/addition_copy_files.output
-
-echo "building libc_init_dynamic^android_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_init_dynamic,android_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_init_dynamic^android_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_init_dynamic^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_init_dynamic^android_x86_64_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_init_dynamic^android_x86_64_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_init_dynamic^android_x86_64_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_init_dynamic^android_x86_64_static/addition_copy_files.output
-
-echo "building libc_init_dynamic^android_x86_64_static_apex10000"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_init_dynamic,android_x86_64_static_apex10000
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_init_dynamic^android_x86_64_static_apex10000
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_init_dynamic^android_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_init_dynamic^android_x86_64_static_apex10000
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_init_dynamic^android_x86_64_static_apex10000.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_init_dynamic^android_x86_64_static_apex10000 $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_init_dynamic^android_x86_64_static_apex10000/addition_copy_files.output
-
-echo "building libc_init_dynamic^android_x86_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_init_dynamic,android_x86_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_init_dynamic^android_x86_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_init_dynamic^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_init_dynamic^android_x86_x86_64_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_init_dynamic^android_x86_x86_64_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_init_dynamic^android_x86_x86_64_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_init_dynamic^android_x86_x86_64_static/addition_copy_files.output
-
-echo "building libc_init_dynamic^android_x86_x86_64_static_apex10000"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_init_dynamic,android_x86_x86_64_static_apex10000
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_init_dynamic^android_x86_x86_64_static_apex10000
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_init_dynamic^android_x86_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_init_dynamic^android_x86_x86_64_static_apex10000
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_init_dynamic^android_x86_x86_64_static_apex10000.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_init_dynamic^android_x86_x86_64_static_apex10000 $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_init_dynamic^android_x86_x86_64_static_apex10000/addition_copy_files.output
-
-echo "building libc_init_static^android_native_bridge_arm64_armv8-a_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_init_static,android_native_bridge_arm64_armv8-a_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_init_static^android_native_bridge_arm64_armv8-a_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_init_static^android_native_bridge_arm64_armv8-a_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_init_static^android_native_bridge_arm64_armv8-a_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_init_static^android_native_bridge_arm64_armv8-a_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_init_static^android_native_bridge_arm64_armv8-a_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_init_static^android_native_bridge_arm64_armv8-a_static/addition_copy_files.output
-
-echo "building libc_init_static^android_native_bridge_arm_armv7-a-neon_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_init_static,android_native_bridge_arm_armv7-a-neon_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_init_static^android_native_bridge_arm_armv7-a-neon_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_init_static^android_native_bridge_arm_armv7-a-neon_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_init_static^android_native_bridge_arm_armv7-a-neon_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_init_static^android_native_bridge_arm_armv7-a-neon_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_init_static^android_native_bridge_arm_armv7-a-neon_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_init_static^android_native_bridge_arm_armv7-a-neon_static/addition_copy_files.output
-
-echo "building libc_init_static^android_recovery_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_init_static,android_recovery_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_init_static^android_recovery_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_init_static^android_recovery_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_init_static^android_recovery_x86_64_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_init_static^android_recovery_x86_64_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_init_static^android_recovery_x86_64_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_init_static^android_recovery_x86_64_static/addition_copy_files.output
-
-echo "building libc_init_static^android_vendor_ramdisk_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_init_static,android_vendor_ramdisk_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_init_static^android_vendor_ramdisk_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_init_static^android_vendor_ramdisk_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_init_static^android_vendor_ramdisk_x86_64_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_init_static^android_vendor_ramdisk_x86_64_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_init_static^android_vendor_ramdisk_x86_64_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_init_static^android_vendor_ramdisk_x86_64_static/addition_copy_files.output
-
-echo "building libc_init_static^android_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_init_static,android_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_init_static^android_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_init_static^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_init_static^android_x86_64_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_init_static^android_x86_64_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_init_static^android_x86_64_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_init_static^android_x86_64_static/addition_copy_files.output
-
-echo "building libc_init_static^android_x86_64_static_apex10000"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_init_static,android_x86_64_static_apex10000
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_init_static^android_x86_64_static_apex10000
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_init_static^android_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_init_static^android_x86_64_static_apex10000
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_init_static^android_x86_64_static_apex10000.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_init_static^android_x86_64_static_apex10000 $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_init_static^android_x86_64_static_apex10000/addition_copy_files.output
-
-echo "building libc_init_static^android_x86_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_init_static,android_x86_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_init_static^android_x86_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_init_static^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_init_static^android_x86_x86_64_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_init_static^android_x86_x86_64_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_init_static^android_x86_x86_64_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_init_static^android_x86_x86_64_static/addition_copy_files.output
-
-echo "building libc_init_static^android_x86_x86_64_static_apex10000"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_init_static,android_x86_x86_64_static_apex10000
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_init_static^android_x86_x86_64_static_apex10000
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_init_static^android_x86_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_init_static^android_x86_x86_64_static_apex10000
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_init_static^android_x86_x86_64_static_apex10000.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_init_static^android_x86_x86_64_static_apex10000 $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_init_static^android_x86_x86_64_static_apex10000/addition_copy_files.output
-
-echo "building libc_kernel_android_scsi^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_kernel_android_scsi,
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_kernel_android_scsi^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_kernel_android_scsi^.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_kernel_android_scsi^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_kernel_android_scsi^.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_kernel_android_scsi^ $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_kernel_android_scsi^/addition_copy_files.output
-
-echo "building libc_kernel_android_uapi_linux^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_kernel_android_uapi_linux,
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_kernel_android_uapi_linux^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_kernel_android_uapi_linux^.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_kernel_android_uapi_linux^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_kernel_android_uapi_linux^.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_kernel_android_uapi_linux^ $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_kernel_android_uapi_linux^/addition_copy_files.output
-
 echo "building libc_malloc_debug^android_x86_64_static_apex10000"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_malloc_debug,android_x86_64_static_apex10000
 mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/malloc_debug/libc_malloc_debug^android_x86_64_static_apex10000
@@ -1240,389 +1441,41 @@ mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/malloc_hooks/libc_malloc_hooks^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_malloc_hooks^android_x86_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/malloc_hooks/libc_malloc_hooks^android_x86_x86_64_static_apex10000
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_malloc_hooks^android_x86_x86_64_static_apex10000.output $GITHUB_WORKSPACE/artifacts/bionic/libc/malloc_hooks/libc_malloc_hooks^android_x86_x86_64_static_apex10000 $GITHUB_WORKSPACE/artifacts/bionic/libc/malloc_hooks/libc_malloc_hooks^android_x86_x86_64_static_apex10000/addition_copy_files.output
 
-echo "building libc_netbsd^android_native_bridge_arm64_armv8-a_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_netbsd,android_native_bridge_arm64_armv8-a_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_netbsd^android_native_bridge_arm64_armv8-a_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_netbsd^android_native_bridge_arm64_armv8-a_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_netbsd^android_native_bridge_arm64_armv8-a_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_netbsd^android_native_bridge_arm64_armv8-a_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_netbsd^android_native_bridge_arm64_armv8-a_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_netbsd^android_native_bridge_arm64_armv8-a_static/addition_copy_files.output
+echo "building libsystemproperties^android_recovery_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libsystemproperties,android_recovery_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/system_properties/libsystemproperties^android_recovery_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libsystemproperties^android_recovery_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/system_properties/libsystemproperties^android_recovery_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libsystemproperties^android_recovery_x86_64_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/system_properties/libsystemproperties^android_recovery_x86_64_static $GITHUB_WORKSPACE/artifacts/bionic/libc/system_properties/libsystemproperties^android_recovery_x86_64_static/addition_copy_files.output
 
-echo "building libc_netbsd^android_native_bridge_arm_armv7-a-neon_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_netbsd,android_native_bridge_arm_armv7-a-neon_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_netbsd^android_native_bridge_arm_armv7-a-neon_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_netbsd^android_native_bridge_arm_armv7-a-neon_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_netbsd^android_native_bridge_arm_armv7-a-neon_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_netbsd^android_native_bridge_arm_armv7-a-neon_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_netbsd^android_native_bridge_arm_armv7-a-neon_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_netbsd^android_native_bridge_arm_armv7-a-neon_static/addition_copy_files.output
+echo "building libsystemproperties^android_vendor_ramdisk_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libsystemproperties,android_vendor_ramdisk_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/system_properties/libsystemproperties^android_vendor_ramdisk_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libsystemproperties^android_vendor_ramdisk_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/system_properties/libsystemproperties^android_vendor_ramdisk_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libsystemproperties^android_vendor_ramdisk_x86_64_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/system_properties/libsystemproperties^android_vendor_ramdisk_x86_64_static $GITHUB_WORKSPACE/artifacts/bionic/libc/system_properties/libsystemproperties^android_vendor_ramdisk_x86_64_static/addition_copy_files.output
 
-echo "building libc_netbsd^android_recovery_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_netbsd,android_recovery_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_netbsd^android_recovery_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_netbsd^android_recovery_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_netbsd^android_recovery_x86_64_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_netbsd^android_recovery_x86_64_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_netbsd^android_recovery_x86_64_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_netbsd^android_recovery_x86_64_static/addition_copy_files.output
+echo "building libsystemproperties^android_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libsystemproperties,android_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/system_properties/libsystemproperties^android_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libsystemproperties^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/system_properties/libsystemproperties^android_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libsystemproperties^android_x86_64_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/system_properties/libsystemproperties^android_x86_64_static $GITHUB_WORKSPACE/artifacts/bionic/libc/system_properties/libsystemproperties^android_x86_64_static/addition_copy_files.output
 
-echo "building libc_netbsd^android_vendor_ramdisk_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_netbsd,android_vendor_ramdisk_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_netbsd^android_vendor_ramdisk_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_netbsd^android_vendor_ramdisk_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_netbsd^android_vendor_ramdisk_x86_64_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_netbsd^android_vendor_ramdisk_x86_64_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_netbsd^android_vendor_ramdisk_x86_64_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_netbsd^android_vendor_ramdisk_x86_64_static/addition_copy_files.output
+echo "building libsystemproperties^android_x86_64_static_apex10000"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libsystemproperties,android_x86_64_static_apex10000
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/system_properties/libsystemproperties^android_x86_64_static_apex10000
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libsystemproperties^android_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/system_properties/libsystemproperties^android_x86_64_static_apex10000
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libsystemproperties^android_x86_64_static_apex10000.output $GITHUB_WORKSPACE/artifacts/bionic/libc/system_properties/libsystemproperties^android_x86_64_static_apex10000 $GITHUB_WORKSPACE/artifacts/bionic/libc/system_properties/libsystemproperties^android_x86_64_static_apex10000/addition_copy_files.output
 
-echo "building libc_netbsd^android_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_netbsd,android_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_netbsd^android_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_netbsd^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_netbsd^android_x86_64_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_netbsd^android_x86_64_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_netbsd^android_x86_64_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_netbsd^android_x86_64_static/addition_copy_files.output
+echo "building libsystemproperties^android_x86_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libsystemproperties,android_x86_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/system_properties/libsystemproperties^android_x86_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libsystemproperties^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/system_properties/libsystemproperties^android_x86_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libsystemproperties^android_x86_x86_64_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/system_properties/libsystemproperties^android_x86_x86_64_static $GITHUB_WORKSPACE/artifacts/bionic/libc/system_properties/libsystemproperties^android_x86_x86_64_static/addition_copy_files.output
 
-echo "building libc_netbsd^android_x86_64_static_apex10000"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_netbsd,android_x86_64_static_apex10000
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_netbsd^android_x86_64_static_apex10000
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_netbsd^android_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_netbsd^android_x86_64_static_apex10000
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_netbsd^android_x86_64_static_apex10000.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_netbsd^android_x86_64_static_apex10000 $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_netbsd^android_x86_64_static_apex10000/addition_copy_files.output
-
-echo "building libc_netbsd^android_x86_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_netbsd,android_x86_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_netbsd^android_x86_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_netbsd^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_netbsd^android_x86_x86_64_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_netbsd^android_x86_x86_64_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_netbsd^android_x86_x86_64_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_netbsd^android_x86_x86_64_static/addition_copy_files.output
-
-echo "building libc_netbsd^android_x86_x86_64_static_apex10000"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_netbsd,android_x86_x86_64_static_apex10000
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_netbsd^android_x86_x86_64_static_apex10000
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_netbsd^android_x86_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_netbsd^android_x86_x86_64_static_apex10000
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_netbsd^android_x86_x86_64_static_apex10000.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_netbsd^android_x86_x86_64_static_apex10000 $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_netbsd^android_x86_x86_64_static_apex10000/addition_copy_files.output
-
-echo "building libc_openbsd^android_native_bridge_arm64_armv8-a_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_openbsd,android_native_bridge_arm64_armv8-a_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_openbsd^android_native_bridge_arm64_armv8-a_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_openbsd^android_native_bridge_arm64_armv8-a_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_openbsd^android_native_bridge_arm64_armv8-a_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_openbsd^android_native_bridge_arm64_armv8-a_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_openbsd^android_native_bridge_arm64_armv8-a_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_openbsd^android_native_bridge_arm64_armv8-a_static/addition_copy_files.output
-
-echo "building libc_openbsd^android_native_bridge_arm_armv7-a-neon_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_openbsd,android_native_bridge_arm_armv7-a-neon_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_openbsd^android_native_bridge_arm_armv7-a-neon_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_openbsd^android_native_bridge_arm_armv7-a-neon_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_openbsd^android_native_bridge_arm_armv7-a-neon_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_openbsd^android_native_bridge_arm_armv7-a-neon_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_openbsd^android_native_bridge_arm_armv7-a-neon_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_openbsd^android_native_bridge_arm_armv7-a-neon_static/addition_copy_files.output
-
-echo "building libc_openbsd^android_recovery_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_openbsd,android_recovery_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_openbsd^android_recovery_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_openbsd^android_recovery_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_openbsd^android_recovery_x86_64_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_openbsd^android_recovery_x86_64_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_openbsd^android_recovery_x86_64_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_openbsd^android_recovery_x86_64_static/addition_copy_files.output
-
-echo "building libc_openbsd^android_vendor_ramdisk_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_openbsd,android_vendor_ramdisk_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_openbsd^android_vendor_ramdisk_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_openbsd^android_vendor_ramdisk_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_openbsd^android_vendor_ramdisk_x86_64_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_openbsd^android_vendor_ramdisk_x86_64_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_openbsd^android_vendor_ramdisk_x86_64_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_openbsd^android_vendor_ramdisk_x86_64_static/addition_copy_files.output
-
-echo "building libc_openbsd^android_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_openbsd,android_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_openbsd^android_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_openbsd^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_openbsd^android_x86_64_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_openbsd^android_x86_64_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_openbsd^android_x86_64_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_openbsd^android_x86_64_static/addition_copy_files.output
-
-echo "building libc_openbsd^android_x86_64_static_apex10000"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_openbsd,android_x86_64_static_apex10000
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_openbsd^android_x86_64_static_apex10000
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_openbsd^android_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_openbsd^android_x86_64_static_apex10000
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_openbsd^android_x86_64_static_apex10000.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_openbsd^android_x86_64_static_apex10000 $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_openbsd^android_x86_64_static_apex10000/addition_copy_files.output
-
-echo "building libc_openbsd^android_x86_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_openbsd,android_x86_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_openbsd^android_x86_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_openbsd^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_openbsd^android_x86_x86_64_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_openbsd^android_x86_x86_64_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_openbsd^android_x86_x86_64_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_openbsd^android_x86_x86_64_static/addition_copy_files.output
-
-echo "building libc_openbsd^android_x86_x86_64_static_apex10000"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_openbsd,android_x86_x86_64_static_apex10000
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_openbsd^android_x86_x86_64_static_apex10000
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_openbsd^android_x86_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_openbsd^android_x86_x86_64_static_apex10000
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_openbsd^android_x86_x86_64_static_apex10000.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_openbsd^android_x86_x86_64_static_apex10000 $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_openbsd^android_x86_x86_64_static_apex10000/addition_copy_files.output
-
-echo "building libc_openbsd_large_stack^android_native_bridge_arm64_armv8-a_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_openbsd_large_stack,android_native_bridge_arm64_armv8-a_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_openbsd_large_stack^android_native_bridge_arm64_armv8-a_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_openbsd_large_stack^android_native_bridge_arm64_armv8-a_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_openbsd_large_stack^android_native_bridge_arm64_armv8-a_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_openbsd_large_stack^android_native_bridge_arm64_armv8-a_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_openbsd_large_stack^android_native_bridge_arm64_armv8-a_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_openbsd_large_stack^android_native_bridge_arm64_armv8-a_static/addition_copy_files.output
-
-echo "building libc_openbsd_large_stack^android_native_bridge_arm_armv7-a-neon_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_openbsd_large_stack,android_native_bridge_arm_armv7-a-neon_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_openbsd_large_stack^android_native_bridge_arm_armv7-a-neon_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_openbsd_large_stack^android_native_bridge_arm_armv7-a-neon_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_openbsd_large_stack^android_native_bridge_arm_armv7-a-neon_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_openbsd_large_stack^android_native_bridge_arm_armv7-a-neon_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_openbsd_large_stack^android_native_bridge_arm_armv7-a-neon_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_openbsd_large_stack^android_native_bridge_arm_armv7-a-neon_static/addition_copy_files.output
-
-echo "building libc_openbsd_large_stack^android_recovery_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_openbsd_large_stack,android_recovery_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_openbsd_large_stack^android_recovery_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_openbsd_large_stack^android_recovery_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_openbsd_large_stack^android_recovery_x86_64_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_openbsd_large_stack^android_recovery_x86_64_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_openbsd_large_stack^android_recovery_x86_64_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_openbsd_large_stack^android_recovery_x86_64_static/addition_copy_files.output
-
-echo "building libc_openbsd_large_stack^android_vendor_ramdisk_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_openbsd_large_stack,android_vendor_ramdisk_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_openbsd_large_stack^android_vendor_ramdisk_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_openbsd_large_stack^android_vendor_ramdisk_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_openbsd_large_stack^android_vendor_ramdisk_x86_64_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_openbsd_large_stack^android_vendor_ramdisk_x86_64_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_openbsd_large_stack^android_vendor_ramdisk_x86_64_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_openbsd_large_stack^android_vendor_ramdisk_x86_64_static/addition_copy_files.output
-
-echo "building libc_openbsd_large_stack^android_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_openbsd_large_stack,android_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_openbsd_large_stack^android_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_openbsd_large_stack^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_openbsd_large_stack^android_x86_64_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_openbsd_large_stack^android_x86_64_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_openbsd_large_stack^android_x86_64_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_openbsd_large_stack^android_x86_64_static/addition_copy_files.output
-
-echo "building libc_openbsd_large_stack^android_x86_64_static_apex10000"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_openbsd_large_stack,android_x86_64_static_apex10000
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_openbsd_large_stack^android_x86_64_static_apex10000
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_openbsd_large_stack^android_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_openbsd_large_stack^android_x86_64_static_apex10000
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_openbsd_large_stack^android_x86_64_static_apex10000.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_openbsd_large_stack^android_x86_64_static_apex10000 $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_openbsd_large_stack^android_x86_64_static_apex10000/addition_copy_files.output
-
-echo "building libc_openbsd_large_stack^android_x86_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_openbsd_large_stack,android_x86_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_openbsd_large_stack^android_x86_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_openbsd_large_stack^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_openbsd_large_stack^android_x86_x86_64_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_openbsd_large_stack^android_x86_x86_64_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_openbsd_large_stack^android_x86_x86_64_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_openbsd_large_stack^android_x86_x86_64_static/addition_copy_files.output
-
-echo "building libc_openbsd_large_stack^android_x86_x86_64_static_apex10000"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_openbsd_large_stack,android_x86_x86_64_static_apex10000
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_openbsd_large_stack^android_x86_x86_64_static_apex10000
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_openbsd_large_stack^android_x86_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_openbsd_large_stack^android_x86_x86_64_static_apex10000
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_openbsd_large_stack^android_x86_x86_64_static_apex10000.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_openbsd_large_stack^android_x86_x86_64_static_apex10000 $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_openbsd_large_stack^android_x86_x86_64_static_apex10000/addition_copy_files.output
-
-echo "building libc_openbsd_ndk^android_native_bridge_arm64_armv8-a_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_openbsd_ndk,android_native_bridge_arm64_armv8-a_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_openbsd_ndk^android_native_bridge_arm64_armv8-a_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_openbsd_ndk^android_native_bridge_arm64_armv8-a_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_openbsd_ndk^android_native_bridge_arm64_armv8-a_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_openbsd_ndk^android_native_bridge_arm64_armv8-a_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_openbsd_ndk^android_native_bridge_arm64_armv8-a_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_openbsd_ndk^android_native_bridge_arm64_armv8-a_static/addition_copy_files.output
-
-echo "building libc_openbsd_ndk^android_native_bridge_arm_armv7-a-neon_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_openbsd_ndk,android_native_bridge_arm_armv7-a-neon_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_openbsd_ndk^android_native_bridge_arm_armv7-a-neon_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_openbsd_ndk^android_native_bridge_arm_armv7-a-neon_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_openbsd_ndk^android_native_bridge_arm_armv7-a-neon_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_openbsd_ndk^android_native_bridge_arm_armv7-a-neon_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_openbsd_ndk^android_native_bridge_arm_armv7-a-neon_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_openbsd_ndk^android_native_bridge_arm_armv7-a-neon_static/addition_copy_files.output
-
-echo "building libc_openbsd_ndk^android_recovery_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_openbsd_ndk,android_recovery_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_openbsd_ndk^android_recovery_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_openbsd_ndk^android_recovery_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_openbsd_ndk^android_recovery_x86_64_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_openbsd_ndk^android_recovery_x86_64_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_openbsd_ndk^android_recovery_x86_64_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_openbsd_ndk^android_recovery_x86_64_static/addition_copy_files.output
-
-echo "building libc_openbsd_ndk^android_vendor_ramdisk_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_openbsd_ndk,android_vendor_ramdisk_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_openbsd_ndk^android_vendor_ramdisk_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_openbsd_ndk^android_vendor_ramdisk_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_openbsd_ndk^android_vendor_ramdisk_x86_64_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_openbsd_ndk^android_vendor_ramdisk_x86_64_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_openbsd_ndk^android_vendor_ramdisk_x86_64_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_openbsd_ndk^android_vendor_ramdisk_x86_64_static/addition_copy_files.output
-
-echo "building libc_openbsd_ndk^android_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_openbsd_ndk,android_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_openbsd_ndk^android_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_openbsd_ndk^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_openbsd_ndk^android_x86_64_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_openbsd_ndk^android_x86_64_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_openbsd_ndk^android_x86_64_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_openbsd_ndk^android_x86_64_static/addition_copy_files.output
-
-echo "building libc_openbsd_ndk^android_x86_64_static_apex10000"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_openbsd_ndk,android_x86_64_static_apex10000
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_openbsd_ndk^android_x86_64_static_apex10000
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_openbsd_ndk^android_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_openbsd_ndk^android_x86_64_static_apex10000
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_openbsd_ndk^android_x86_64_static_apex10000.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_openbsd_ndk^android_x86_64_static_apex10000 $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_openbsd_ndk^android_x86_64_static_apex10000/addition_copy_files.output
-
-echo "building libc_openbsd_ndk^android_x86_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_openbsd_ndk,android_x86_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_openbsd_ndk^android_x86_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_openbsd_ndk^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_openbsd_ndk^android_x86_x86_64_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_openbsd_ndk^android_x86_x86_64_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_openbsd_ndk^android_x86_x86_64_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_openbsd_ndk^android_x86_x86_64_static/addition_copy_files.output
-
-echo "building libc_openbsd_ndk^android_x86_x86_64_static_apex10000"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_openbsd_ndk,android_x86_x86_64_static_apex10000
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_openbsd_ndk^android_x86_x86_64_static_apex10000
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_openbsd_ndk^android_x86_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_openbsd_ndk^android_x86_x86_64_static_apex10000
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_openbsd_ndk^android_x86_x86_64_static_apex10000.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_openbsd_ndk^android_x86_x86_64_static_apex10000 $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_openbsd_ndk^android_x86_x86_64_static_apex10000/addition_copy_files.output
-
-echo "building libc_pthread^android_native_bridge_arm64_armv8-a_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_pthread,android_native_bridge_arm64_armv8-a_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_pthread^android_native_bridge_arm64_armv8-a_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_pthread^android_native_bridge_arm64_armv8-a_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_pthread^android_native_bridge_arm64_armv8-a_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_pthread^android_native_bridge_arm64_armv8-a_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_pthread^android_native_bridge_arm64_armv8-a_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_pthread^android_native_bridge_arm64_armv8-a_static/addition_copy_files.output
-
-echo "building libc_pthread^android_native_bridge_arm_armv7-a-neon_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_pthread,android_native_bridge_arm_armv7-a-neon_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_pthread^android_native_bridge_arm_armv7-a-neon_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_pthread^android_native_bridge_arm_armv7-a-neon_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_pthread^android_native_bridge_arm_armv7-a-neon_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_pthread^android_native_bridge_arm_armv7-a-neon_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_pthread^android_native_bridge_arm_armv7-a-neon_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_pthread^android_native_bridge_arm_armv7-a-neon_static/addition_copy_files.output
-
-echo "building libc_pthread^android_recovery_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_pthread,android_recovery_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_pthread^android_recovery_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_pthread^android_recovery_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_pthread^android_recovery_x86_64_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_pthread^android_recovery_x86_64_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_pthread^android_recovery_x86_64_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_pthread^android_recovery_x86_64_static/addition_copy_files.output
-
-echo "building libc_pthread^android_vendor_ramdisk_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_pthread,android_vendor_ramdisk_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_pthread^android_vendor_ramdisk_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_pthread^android_vendor_ramdisk_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_pthread^android_vendor_ramdisk_x86_64_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_pthread^android_vendor_ramdisk_x86_64_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_pthread^android_vendor_ramdisk_x86_64_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_pthread^android_vendor_ramdisk_x86_64_static/addition_copy_files.output
-
-echo "building libc_pthread^android_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_pthread,android_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_pthread^android_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_pthread^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_pthread^android_x86_64_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_pthread^android_x86_64_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_pthread^android_x86_64_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_pthread^android_x86_64_static/addition_copy_files.output
-
-echo "building libc_pthread^android_x86_64_static_apex10000"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_pthread,android_x86_64_static_apex10000
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_pthread^android_x86_64_static_apex10000
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_pthread^android_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_pthread^android_x86_64_static_apex10000
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_pthread^android_x86_64_static_apex10000.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_pthread^android_x86_64_static_apex10000 $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_pthread^android_x86_64_static_apex10000/addition_copy_files.output
-
-echo "building libc_pthread^android_x86_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_pthread,android_x86_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_pthread^android_x86_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_pthread^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_pthread^android_x86_x86_64_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_pthread^android_x86_x86_64_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_pthread^android_x86_x86_64_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_pthread^android_x86_x86_64_static/addition_copy_files.output
-
-echo "building libc_pthread^android_x86_x86_64_static_apex10000"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_pthread,android_x86_x86_64_static_apex10000
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_pthread^android_x86_x86_64_static_apex10000
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_pthread^android_x86_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_pthread^android_x86_x86_64_static_apex10000
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_pthread^android_x86_x86_64_static_apex10000.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_pthread^android_x86_x86_64_static_apex10000 $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_pthread^android_x86_x86_64_static_apex10000/addition_copy_files.output
-
-echo "building libc_static_dispatch^android_native_bridge_arm64_armv8-a_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_static_dispatch,android_native_bridge_arm64_armv8-a_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_static_dispatch^android_native_bridge_arm64_armv8-a_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_static_dispatch^android_native_bridge_arm64_armv8-a_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_static_dispatch^android_native_bridge_arm64_armv8-a_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_static_dispatch^android_native_bridge_arm64_armv8-a_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_static_dispatch^android_native_bridge_arm64_armv8-a_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_static_dispatch^android_native_bridge_arm64_armv8-a_static/addition_copy_files.output
-
-echo "building libc_static_dispatch^android_native_bridge_arm_armv7-a-neon_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_static_dispatch,android_native_bridge_arm_armv7-a-neon_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_static_dispatch^android_native_bridge_arm_armv7-a-neon_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_static_dispatch^android_native_bridge_arm_armv7-a-neon_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_static_dispatch^android_native_bridge_arm_armv7-a-neon_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_static_dispatch^android_native_bridge_arm_armv7-a-neon_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_static_dispatch^android_native_bridge_arm_armv7-a-neon_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_static_dispatch^android_native_bridge_arm_armv7-a-neon_static/addition_copy_files.output
-
-echo "building libc_static_dispatch^android_x86_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_static_dispatch,android_x86_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_static_dispatch^android_x86_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_static_dispatch^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_static_dispatch^android_x86_x86_64_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_static_dispatch^android_x86_x86_64_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_static_dispatch^android_x86_x86_64_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_static_dispatch^android_x86_x86_64_static/addition_copy_files.output
-
-echo "building libc_tzcode^android_native_bridge_arm64_armv8-a_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_tzcode,android_native_bridge_arm64_armv8-a_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_tzcode^android_native_bridge_arm64_armv8-a_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_tzcode^android_native_bridge_arm64_armv8-a_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_tzcode^android_native_bridge_arm64_armv8-a_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_tzcode^android_native_bridge_arm64_armv8-a_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_tzcode^android_native_bridge_arm64_armv8-a_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_tzcode^android_native_bridge_arm64_armv8-a_static/addition_copy_files.output
-
-echo "building libc_tzcode^android_native_bridge_arm_armv7-a-neon_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_tzcode,android_native_bridge_arm_armv7-a-neon_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_tzcode^android_native_bridge_arm_armv7-a-neon_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_tzcode^android_native_bridge_arm_armv7-a-neon_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_tzcode^android_native_bridge_arm_armv7-a-neon_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_tzcode^android_native_bridge_arm_armv7-a-neon_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_tzcode^android_native_bridge_arm_armv7-a-neon_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_tzcode^android_native_bridge_arm_armv7-a-neon_static/addition_copy_files.output
-
-echo "building libc_tzcode^android_recovery_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_tzcode,android_recovery_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_tzcode^android_recovery_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_tzcode^android_recovery_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_tzcode^android_recovery_x86_64_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_tzcode^android_recovery_x86_64_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_tzcode^android_recovery_x86_64_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_tzcode^android_recovery_x86_64_static/addition_copy_files.output
-
-echo "building libc_tzcode^android_vendor_ramdisk_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_tzcode,android_vendor_ramdisk_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_tzcode^android_vendor_ramdisk_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_tzcode^android_vendor_ramdisk_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_tzcode^android_vendor_ramdisk_x86_64_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_tzcode^android_vendor_ramdisk_x86_64_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_tzcode^android_vendor_ramdisk_x86_64_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_tzcode^android_vendor_ramdisk_x86_64_static/addition_copy_files.output
-
-echo "building libc_tzcode^android_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_tzcode,android_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_tzcode^android_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_tzcode^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_tzcode^android_x86_64_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_tzcode^android_x86_64_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_tzcode^android_x86_64_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_tzcode^android_x86_64_static/addition_copy_files.output
-
-echo "building libc_tzcode^android_x86_64_static_apex10000"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_tzcode,android_x86_64_static_apex10000
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_tzcode^android_x86_64_static_apex10000
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_tzcode^android_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_tzcode^android_x86_64_static_apex10000
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_tzcode^android_x86_64_static_apex10000.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_tzcode^android_x86_64_static_apex10000 $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_tzcode^android_x86_64_static_apex10000/addition_copy_files.output
-
-echo "building libc_tzcode^android_x86_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_tzcode,android_x86_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_tzcode^android_x86_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_tzcode^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_tzcode^android_x86_x86_64_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_tzcode^android_x86_x86_64_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_tzcode^android_x86_x86_64_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_tzcode^android_x86_x86_64_static/addition_copy_files.output
-
-echo "building libc_tzcode^android_x86_x86_64_static_apex10000"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_tzcode,android_x86_x86_64_static_apex10000
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_tzcode^android_x86_x86_64_static_apex10000
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_tzcode^android_x86_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_tzcode^android_x86_x86_64_static_apex10000
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_tzcode^android_x86_x86_64_static_apex10000.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_tzcode^android_x86_x86_64_static_apex10000 $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_tzcode^android_x86_x86_64_static_apex10000/addition_copy_files.output
-
-echo "building libc_uapi^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_uapi,
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_uapi^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_uapi^.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_uapi^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_uapi^.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_uapi^ $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_uapi^/addition_copy_files.output
-
-echo "building libc_unwind_static^android_native_bridge_arm64_armv8-a_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_unwind_static,android_native_bridge_arm64_armv8-a_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_unwind_static^android_native_bridge_arm64_armv8-a_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_unwind_static^android_native_bridge_arm64_armv8-a_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_unwind_static^android_native_bridge_arm64_armv8-a_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_unwind_static^android_native_bridge_arm64_armv8-a_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_unwind_static^android_native_bridge_arm64_armv8-a_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_unwind_static^android_native_bridge_arm64_armv8-a_static/addition_copy_files.output
-
-echo "building libc_unwind_static^android_native_bridge_arm_armv7-a-neon_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_unwind_static,android_native_bridge_arm_armv7-a-neon_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_unwind_static^android_native_bridge_arm_armv7-a-neon_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_unwind_static^android_native_bridge_arm_armv7-a-neon_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_unwind_static^android_native_bridge_arm_armv7-a-neon_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_unwind_static^android_native_bridge_arm_armv7-a-neon_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_unwind_static^android_native_bridge_arm_armv7-a-neon_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_unwind_static^android_native_bridge_arm_armv7-a-neon_static/addition_copy_files.output
-
-echo "building libc_unwind_static^android_recovery_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_unwind_static,android_recovery_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_unwind_static^android_recovery_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_unwind_static^android_recovery_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_unwind_static^android_recovery_x86_64_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_unwind_static^android_recovery_x86_64_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_unwind_static^android_recovery_x86_64_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_unwind_static^android_recovery_x86_64_static/addition_copy_files.output
-
-echo "building libc_unwind_static^android_vendor_ramdisk_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_unwind_static,android_vendor_ramdisk_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_unwind_static^android_vendor_ramdisk_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_unwind_static^android_vendor_ramdisk_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_unwind_static^android_vendor_ramdisk_x86_64_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_unwind_static^android_vendor_ramdisk_x86_64_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_unwind_static^android_vendor_ramdisk_x86_64_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_unwind_static^android_vendor_ramdisk_x86_64_static/addition_copy_files.output
-
-echo "building libc_unwind_static^android_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_unwind_static,android_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_unwind_static^android_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_unwind_static^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_unwind_static^android_x86_64_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_unwind_static^android_x86_64_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_unwind_static^android_x86_64_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_unwind_static^android_x86_64_static/addition_copy_files.output
-
-echo "building libc_unwind_static^android_x86_64_static_apex10000"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_unwind_static,android_x86_64_static_apex10000
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_unwind_static^android_x86_64_static_apex10000
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_unwind_static^android_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_unwind_static^android_x86_64_static_apex10000
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_unwind_static^android_x86_64_static_apex10000.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_unwind_static^android_x86_64_static_apex10000 $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_unwind_static^android_x86_64_static_apex10000/addition_copy_files.output
-
-echo "building libc_unwind_static^android_x86_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_unwind_static,android_x86_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_unwind_static^android_x86_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_unwind_static^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_unwind_static^android_x86_x86_64_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_unwind_static^android_x86_x86_64_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_unwind_static^android_x86_x86_64_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_unwind_static^android_x86_x86_64_static/addition_copy_files.output
-
-echo "building libc_unwind_static^android_x86_x86_64_static_apex10000"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libc_unwind_static,android_x86_x86_64_static_apex10000
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_unwind_static^android_x86_x86_64_static_apex10000
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_unwind_static^android_x86_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_unwind_static^android_x86_x86_64_static_apex10000
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libc_unwind_static^android_x86_x86_64_static_apex10000.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_unwind_static^android_x86_x86_64_static_apex10000 $GITHUB_WORKSPACE/artifacts/bionic/libc/libc_unwind_static^android_x86_x86_64_static_apex10000/addition_copy_files.output
-
-echo "building libdl^android_native_bridge_arm64_armv8-a_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libdl,android_native_bridge_arm64_armv8-a_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libdl/libdl^android_native_bridge_arm64_armv8-a_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libdl^android_native_bridge_arm64_armv8-a_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libdl/libdl^android_native_bridge_arm64_armv8-a_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libdl^android_native_bridge_arm64_armv8-a_static.output $GITHUB_WORKSPACE/artifacts/bionic/libdl/libdl^android_native_bridge_arm64_armv8-a_static $GITHUB_WORKSPACE/artifacts/bionic/libdl/libdl^android_native_bridge_arm64_armv8-a_static/addition_copy_files.output
-
-echo "building libdl^android_native_bridge_arm_armv7-a-neon_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libdl,android_native_bridge_arm_armv7-a-neon_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libdl/libdl^android_native_bridge_arm_armv7-a-neon_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libdl^android_native_bridge_arm_armv7-a-neon_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libdl/libdl^android_native_bridge_arm_armv7-a-neon_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libdl^android_native_bridge_arm_armv7-a-neon_static.output $GITHUB_WORKSPACE/artifacts/bionic/libdl/libdl^android_native_bridge_arm_armv7-a-neon_static $GITHUB_WORKSPACE/artifacts/bionic/libdl/libdl^android_native_bridge_arm_armv7-a-neon_static/addition_copy_files.output
-
-echo "building libdl^android_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libdl,android_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libdl/libdl^android_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libdl^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libdl/libdl^android_x86_64_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libdl^android_x86_64_static.output $GITHUB_WORKSPACE/artifacts/bionic/libdl/libdl^android_x86_64_static $GITHUB_WORKSPACE/artifacts/bionic/libdl/libdl^android_x86_64_static/addition_copy_files.output
-
-echo "building libdl^android_x86_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libdl,android_x86_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libdl/libdl^android_x86_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libdl^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libdl/libdl^android_x86_x86_64_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libdl^android_x86_x86_64_static.output $GITHUB_WORKSPACE/artifacts/bionic/libdl/libdl^android_x86_x86_64_static $GITHUB_WORKSPACE/artifacts/bionic/libdl/libdl^android_x86_x86_64_static/addition_copy_files.output
+echo "building libsystemproperties^android_x86_x86_64_static_apex10000"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libsystemproperties,android_x86_x86_64_static_apex10000
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/system_properties/libsystemproperties^android_x86_x86_64_static_apex10000
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libsystemproperties^android_x86_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/system_properties/libsystemproperties^android_x86_x86_64_static_apex10000
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libsystemproperties^android_x86_x86_64_static_apex10000.output $GITHUB_WORKSPACE/artifacts/bionic/libc/system_properties/libsystemproperties^android_x86_x86_64_static_apex10000 $GITHUB_WORKSPACE/artifacts/bionic/libc/system_properties/libsystemproperties^android_x86_x86_64_static_apex10000/addition_copy_files.output
 
 echo "building libdl_android^android_recovery_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libdl_android,android_recovery_x86_64_static
@@ -1720,6 +1573,12 @@ mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libdl/libdl_static^android_x86_x86_6
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libdl_static^android_x86_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/bionic/libdl/libdl_static^android_x86_x86_64_static_apex10000
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libdl_static^android_x86_x86_64_static_apex10000.output $GITHUB_WORKSPACE/artifacts/bionic/libdl/libdl_static^android_x86_x86_64_static_apex10000 $GITHUB_WORKSPACE/artifacts/bionic/libdl/libdl_static^android_x86_x86_64_static_apex10000/addition_copy_files.output
 
+echo "building libdl^android_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libdl,android_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libdl/libdl^android_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libdl^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libdl/libdl^android_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libdl^android_x86_64_static.output $GITHUB_WORKSPACE/artifacts/bionic/libdl/libdl^android_x86_64_static $GITHUB_WORKSPACE/artifacts/bionic/libdl/libdl^android_x86_64_static/addition_copy_files.output
+
 echo "building liblinker_main^android_recovery_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja liblinker_main,android_recovery_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/linker/liblinker_main^android_recovery_x86_64_static
@@ -1792,101 +1651,84 @@ mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/linker/liblinker_malloc^android_x86_
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/liblinker_malloc^android_x86_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/bionic/linker/liblinker_malloc^android_x86_x86_64_static_apex10000
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/liblinker_malloc^android_x86_x86_64_static_apex10000.output $GITHUB_WORKSPACE/artifacts/bionic/linker/liblinker_malloc^android_x86_x86_64_static_apex10000 $GITHUB_WORKSPACE/artifacts/bionic/linker/liblinker_malloc^android_x86_x86_64_static_apex10000/addition_copy_files.output
 
-echo "building libseccomp_gen_syscall_nrs_arm64^android_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libseccomp_gen_syscall_nrs_arm64,android_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libseccomp_gen_syscall_nrs_arm64^android_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libseccomp_gen_syscall_nrs_arm64^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libseccomp_gen_syscall_nrs_arm64^android_x86_64
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libseccomp_gen_syscall_nrs_arm64^android_x86_64.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libseccomp_gen_syscall_nrs_arm64^android_x86_64 $GITHUB_WORKSPACE/artifacts/bionic/libc/libseccomp_gen_syscall_nrs_arm64^android_x86_64/addition_copy_files.output
+echo "building ldd^android_x86_64"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja ldd,android_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/linker/ldd^android_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/ldd^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/bionic/linker/ldd^android_x86_64
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/ldd^android_x86_64.output $GITHUB_WORKSPACE/artifacts/bionic/linker/ldd^android_x86_64 $GITHUB_WORKSPACE/artifacts/bionic/linker/ldd^android_x86_64/addition_copy_files.output
 
-echo "building libseccomp_gen_syscall_nrs_arm64^android_x86_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libseccomp_gen_syscall_nrs_arm64,android_x86_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libseccomp_gen_syscall_nrs_arm64^android_x86_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libseccomp_gen_syscall_nrs_arm64^android_x86_x86_64.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libseccomp_gen_syscall_nrs_arm64^android_x86_x86_64
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libseccomp_gen_syscall_nrs_arm64^android_x86_x86_64.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libseccomp_gen_syscall_nrs_arm64^android_x86_x86_64 $GITHUB_WORKSPACE/artifacts/bionic/libc/libseccomp_gen_syscall_nrs_arm64^android_x86_x86_64/addition_copy_files.output
+echo "building ld-android^android_recovery_x86_64_shared"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja ld-android,android_recovery_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/linker/ld-android^android_recovery_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/ld-android^android_recovery_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/bionic/linker/ld-android^android_recovery_x86_64_shared
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/ld-android^android_recovery_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/bionic/linker/ld-android^android_recovery_x86_64_shared $GITHUB_WORKSPACE/artifacts/bionic/linker/ld-android^android_recovery_x86_64_shared/addition_copy_files.output
 
-echo "building libseccomp_gen_syscall_nrs_arm^android_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libseccomp_gen_syscall_nrs_arm,android_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libseccomp_gen_syscall_nrs_arm^android_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libseccomp_gen_syscall_nrs_arm^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libseccomp_gen_syscall_nrs_arm^android_x86_64
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libseccomp_gen_syscall_nrs_arm^android_x86_64.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libseccomp_gen_syscall_nrs_arm^android_x86_64 $GITHUB_WORKSPACE/artifacts/bionic/libc/libseccomp_gen_syscall_nrs_arm^android_x86_64/addition_copy_files.output
+echo "building ld-android^android_recovery_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja ld-android,android_recovery_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/linker/ld-android^android_recovery_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/ld-android^android_recovery_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bionic/linker/ld-android^android_recovery_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/ld-android^android_recovery_x86_64_static.output $GITHUB_WORKSPACE/artifacts/bionic/linker/ld-android^android_recovery_x86_64_static $GITHUB_WORKSPACE/artifacts/bionic/linker/ld-android^android_recovery_x86_64_static/addition_copy_files.output
 
-echo "building libseccomp_gen_syscall_nrs_arm^android_x86_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libseccomp_gen_syscall_nrs_arm,android_x86_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libseccomp_gen_syscall_nrs_arm^android_x86_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libseccomp_gen_syscall_nrs_arm^android_x86_x86_64.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libseccomp_gen_syscall_nrs_arm^android_x86_x86_64
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libseccomp_gen_syscall_nrs_arm^android_x86_x86_64.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libseccomp_gen_syscall_nrs_arm^android_x86_x86_64 $GITHUB_WORKSPACE/artifacts/bionic/libc/libseccomp_gen_syscall_nrs_arm^android_x86_x86_64/addition_copy_files.output
+echo "building ld-android^android_vendor_ramdisk_x86_64_shared"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja ld-android,android_vendor_ramdisk_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/linker/ld-android^android_vendor_ramdisk_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/ld-android^android_vendor_ramdisk_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/bionic/linker/ld-android^android_vendor_ramdisk_x86_64_shared
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/ld-android^android_vendor_ramdisk_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/bionic/linker/ld-android^android_vendor_ramdisk_x86_64_shared $GITHUB_WORKSPACE/artifacts/bionic/linker/ld-android^android_vendor_ramdisk_x86_64_shared/addition_copy_files.output
 
-echo "building libseccomp_gen_syscall_nrs_x86^android_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libseccomp_gen_syscall_nrs_x86,android_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libseccomp_gen_syscall_nrs_x86^android_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libseccomp_gen_syscall_nrs_x86^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libseccomp_gen_syscall_nrs_x86^android_x86_64
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libseccomp_gen_syscall_nrs_x86^android_x86_64.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libseccomp_gen_syscall_nrs_x86^android_x86_64 $GITHUB_WORKSPACE/artifacts/bionic/libc/libseccomp_gen_syscall_nrs_x86^android_x86_64/addition_copy_files.output
+echo "building ld-android^android_vendor_ramdisk_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja ld-android,android_vendor_ramdisk_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/linker/ld-android^android_vendor_ramdisk_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/ld-android^android_vendor_ramdisk_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bionic/linker/ld-android^android_vendor_ramdisk_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/ld-android^android_vendor_ramdisk_x86_64_static.output $GITHUB_WORKSPACE/artifacts/bionic/linker/ld-android^android_vendor_ramdisk_x86_64_static $GITHUB_WORKSPACE/artifacts/bionic/linker/ld-android^android_vendor_ramdisk_x86_64_static/addition_copy_files.output
 
-echo "building libseccomp_gen_syscall_nrs_x86^android_x86_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libseccomp_gen_syscall_nrs_x86,android_x86_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libseccomp_gen_syscall_nrs_x86^android_x86_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libseccomp_gen_syscall_nrs_x86^android_x86_x86_64.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libseccomp_gen_syscall_nrs_x86^android_x86_x86_64
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libseccomp_gen_syscall_nrs_x86^android_x86_x86_64.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libseccomp_gen_syscall_nrs_x86^android_x86_x86_64 $GITHUB_WORKSPACE/artifacts/bionic/libc/libseccomp_gen_syscall_nrs_x86^android_x86_x86_64/addition_copy_files.output
+echo "building ld-android^android_x86_64_shared"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja ld-android,android_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/linker/ld-android^android_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/ld-android^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/bionic/linker/ld-android^android_x86_64_shared
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/ld-android^android_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/bionic/linker/ld-android^android_x86_64_shared $GITHUB_WORKSPACE/artifacts/bionic/linker/ld-android^android_x86_64_shared/addition_copy_files.output
 
-echo "building libseccomp_gen_syscall_nrs_x86_64^android_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libseccomp_gen_syscall_nrs_x86_64,android_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libseccomp_gen_syscall_nrs_x86_64^android_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libseccomp_gen_syscall_nrs_x86_64^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libseccomp_gen_syscall_nrs_x86_64^android_x86_64
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libseccomp_gen_syscall_nrs_x86_64^android_x86_64.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libseccomp_gen_syscall_nrs_x86_64^android_x86_64 $GITHUB_WORKSPACE/artifacts/bionic/libc/libseccomp_gen_syscall_nrs_x86_64^android_x86_64/addition_copy_files.output
+echo "building ld-android^android_x86_64_shared_apex10000"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja ld-android,android_x86_64_shared_apex10000
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/linker/ld-android^android_x86_64_shared_apex10000
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/ld-android^android_x86_64_shared_apex10000.output . $GITHUB_WORKSPACE/artifacts/bionic/linker/ld-android^android_x86_64_shared_apex10000
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/ld-android^android_x86_64_shared_apex10000.output $GITHUB_WORKSPACE/artifacts/bionic/linker/ld-android^android_x86_64_shared_apex10000 $GITHUB_WORKSPACE/artifacts/bionic/linker/ld-android^android_x86_64_shared_apex10000/addition_copy_files.output
 
-echo "building libseccomp_gen_syscall_nrs_x86_64^android_x86_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libseccomp_gen_syscall_nrs_x86_64,android_x86_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libseccomp_gen_syscall_nrs_x86_64^android_x86_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libseccomp_gen_syscall_nrs_x86_64^android_x86_x86_64.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libseccomp_gen_syscall_nrs_x86_64^android_x86_x86_64
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libseccomp_gen_syscall_nrs_x86_64^android_x86_x86_64.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libseccomp_gen_syscall_nrs_x86_64^android_x86_x86_64 $GITHUB_WORKSPACE/artifacts/bionic/libc/libseccomp_gen_syscall_nrs_x86_64^android_x86_x86_64/addition_copy_files.output
+echo "building ld-android^android_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja ld-android,android_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/linker/ld-android^android_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/ld-android^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bionic/linker/ld-android^android_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/ld-android^android_x86_64_static.output $GITHUB_WORKSPACE/artifacts/bionic/linker/ld-android^android_x86_64_static $GITHUB_WORKSPACE/artifacts/bionic/linker/ld-android^android_x86_64_static/addition_copy_files.output
 
-echo "building libstdc++^android_native_bridge_arm64_armv8-a_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libstdc++,android_native_bridge_arm64_armv8-a_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libstdc++^android_native_bridge_arm64_armv8-a_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libstdc++^android_native_bridge_arm64_armv8-a_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libstdc++^android_native_bridge_arm64_armv8-a_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libstdc++^android_native_bridge_arm64_armv8-a_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libstdc++^android_native_bridge_arm64_armv8-a_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libstdc++^android_native_bridge_arm64_armv8-a_static/addition_copy_files.output
+echo "building ld-android^android_x86_64_static_apex10000"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja ld-android,android_x86_64_static_apex10000
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/linker/ld-android^android_x86_64_static_apex10000
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/ld-android^android_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/bionic/linker/ld-android^android_x86_64_static_apex10000
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/ld-android^android_x86_64_static_apex10000.output $GITHUB_WORKSPACE/artifacts/bionic/linker/ld-android^android_x86_64_static_apex10000 $GITHUB_WORKSPACE/artifacts/bionic/linker/ld-android^android_x86_64_static_apex10000/addition_copy_files.output
 
-echo "building libstdc++^android_native_bridge_arm_armv7-a-neon_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libstdc++,android_native_bridge_arm_armv7-a-neon_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libstdc++^android_native_bridge_arm_armv7-a-neon_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libstdc++^android_native_bridge_arm_armv7-a-neon_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libstdc++^android_native_bridge_arm_armv7-a-neon_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libstdc++^android_native_bridge_arm_armv7-a-neon_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libstdc++^android_native_bridge_arm_armv7-a-neon_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libstdc++^android_native_bridge_arm_armv7-a-neon_static/addition_copy_files.output
+echo "building ld-android^android_x86_x86_64_shared"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja ld-android,android_x86_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/linker/ld-android^android_x86_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/ld-android^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/bionic/linker/ld-android^android_x86_x86_64_shared
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/ld-android^android_x86_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/bionic/linker/ld-android^android_x86_x86_64_shared $GITHUB_WORKSPACE/artifacts/bionic/linker/ld-android^android_x86_x86_64_shared/addition_copy_files.output
 
-echo "building libstdc++^android_recovery_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libstdc++,android_recovery_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libstdc++^android_recovery_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libstdc++^android_recovery_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libstdc++^android_recovery_x86_64_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libstdc++^android_recovery_x86_64_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libstdc++^android_recovery_x86_64_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libstdc++^android_recovery_x86_64_static/addition_copy_files.output
+echo "building ld-android^android_x86_x86_64_shared_apex10000"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja ld-android,android_x86_x86_64_shared_apex10000
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/linker/ld-android^android_x86_x86_64_shared_apex10000
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/ld-android^android_x86_x86_64_shared_apex10000.output . $GITHUB_WORKSPACE/artifacts/bionic/linker/ld-android^android_x86_x86_64_shared_apex10000
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/ld-android^android_x86_x86_64_shared_apex10000.output $GITHUB_WORKSPACE/artifacts/bionic/linker/ld-android^android_x86_x86_64_shared_apex10000 $GITHUB_WORKSPACE/artifacts/bionic/linker/ld-android^android_x86_x86_64_shared_apex10000/addition_copy_files.output
 
-echo "building libstdc++^android_vendor_ramdisk_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libstdc++,android_vendor_ramdisk_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libstdc++^android_vendor_ramdisk_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libstdc++^android_vendor_ramdisk_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libstdc++^android_vendor_ramdisk_x86_64_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libstdc++^android_vendor_ramdisk_x86_64_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libstdc++^android_vendor_ramdisk_x86_64_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libstdc++^android_vendor_ramdisk_x86_64_static/addition_copy_files.output
+echo "building ld-android^android_x86_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja ld-android,android_x86_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/linker/ld-android^android_x86_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/ld-android^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bionic/linker/ld-android^android_x86_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/ld-android^android_x86_x86_64_static.output $GITHUB_WORKSPACE/artifacts/bionic/linker/ld-android^android_x86_x86_64_static $GITHUB_WORKSPACE/artifacts/bionic/linker/ld-android^android_x86_x86_64_static/addition_copy_files.output
 
-echo "building libstdc++^android_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libstdc++,android_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libstdc++^android_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libstdc++^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libstdc++^android_x86_64_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libstdc++^android_x86_64_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libstdc++^android_x86_64_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libstdc++^android_x86_64_static/addition_copy_files.output
+echo "building ld-android^android_x86_x86_64_static_apex10000"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja ld-android,android_x86_x86_64_static_apex10000
+mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/linker/ld-android^android_x86_x86_64_static_apex10000
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/ld-android^android_x86_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/bionic/linker/ld-android^android_x86_x86_64_static_apex10000
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/ld-android^android_x86_x86_64_static_apex10000.output $GITHUB_WORKSPACE/artifacts/bionic/linker/ld-android^android_x86_x86_64_static_apex10000 $GITHUB_WORKSPACE/artifacts/bionic/linker/ld-android^android_x86_x86_64_static_apex10000/addition_copy_files.output
 
-echo "building libstdc++^android_x86_64_static_apex10000"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libstdc++,android_x86_64_static_apex10000
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libstdc++^android_x86_64_static_apex10000
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libstdc++^android_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libstdc++^android_x86_64_static_apex10000
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libstdc++^android_x86_64_static_apex10000.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libstdc++^android_x86_64_static_apex10000 $GITHUB_WORKSPACE/artifacts/bionic/libc/libstdc++^android_x86_64_static_apex10000/addition_copy_files.output
-
-echo "building libstdc++^android_x86_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libstdc++,android_x86_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libstdc++^android_x86_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libstdc++^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libstdc++^android_x86_x86_64_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libstdc++^android_x86_x86_64_static.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libstdc++^android_x86_x86_64_static $GITHUB_WORKSPACE/artifacts/bionic/libc/libstdc++^android_x86_x86_64_static/addition_copy_files.output
-
-echo "building libstdc++^android_x86_x86_64_static_apex10000"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libstdc++,android_x86_x86_64_static_apex10000
-mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/libc/libstdc++^android_x86_x86_64_static_apex10000
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/bionic/libstdc++^android_x86_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/bionic/libc/libstdc++^android_x86_x86_64_static_apex10000
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/bionic/libstdc++^android_x86_x86_64_static_apex10000.output $GITHUB_WORKSPACE/artifacts/bionic/libc/libstdc++^android_x86_x86_64_static_apex10000 $GITHUB_WORKSPACE/artifacts/bionic/libc/libstdc++^android_x86_x86_64_static_apex10000/addition_copy_files.output
 
 rm -rf out
 
@@ -1895,6 +1737,7 @@ tar -cf bionic.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/artifa
 gh release --repo cibuilde/aosp-buildbot upload android12-gsi_01 bionic.tar.zst --clobber
 
 du -ah -d1 bionic*.tar.zst | sort -h
+
 
 if [ ! -f "$GITHUB_WORKSPACE/cache/art.tar.zst" ]; then
   echo "Compressing art -> art.tar.zst"
@@ -1952,21 +1795,9 @@ if [ ! -f "$GITHUB_WORKSPACE/cache/hardware_ril.tar.zst" ]; then
   echo "Compressing hardware/ril -> hardware_ril.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/hardware_ril.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/hardware/ril/ .
 fi
-if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_build-tools.tar.zst" ]; then
-  echo "Compressing prebuilts/build-tools -> prebuilts_build-tools.tar.zst"
-  tar -cf $GITHUB_WORKSPACE/cache/prebuilts_build-tools.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/prebuilts/build-tools/ .
-fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_clang-tools.tar.zst" ]; then
   echo "Compressing prebuilts/clang-tools -> prebuilts_clang-tools.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/prebuilts_clang-tools.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/prebuilts/clang-tools/ .
-fi
-if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_gcc_linux-x86_aarch64_aarch64-linux-android-4.9.tar.zst" ]; then
-  echo "Compressing prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9 -> prebuilts_gcc_linux-x86_aarch64_aarch64-linux-android-4.9.tar.zst"
-  tar -cf $GITHUB_WORKSPACE/cache/prebuilts_gcc_linux-x86_aarch64_aarch64-linux-android-4.9.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9/ .
-fi
-if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_gcc_linux-x86_arm_arm-linux-androideabi-4.9.tar.zst" ]; then
-  echo "Compressing prebuilts/gcc/linux-x86/arm/arm-linux-androideabi-4.9 -> prebuilts_gcc_linux-x86_arm_arm-linux-androideabi-4.9.tar.zst"
-  tar -cf $GITHUB_WORKSPACE/cache/prebuilts_gcc_linux-x86_arm_arm-linux-androideabi-4.9.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/prebuilts/gcc/linux-x86/arm/arm-linux-androideabi-4.9/ .
 fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_gcc_linux-x86_x86_x86_64-linux-android-4.9.tar.zst" ]; then
   echo "Compressing prebuilts/gcc/linux-x86/x86/x86_64-linux-android-4.9 -> prebuilts_gcc_linux-x86_x86_x86_64-linux-android-4.9.tar.zst"
@@ -1996,5 +1827,6 @@ if [ ! -f "$GITHUB_WORKSPACE/cache/system_unwinding.tar.zst" ]; then
   echo "Compressing system/unwinding -> system_unwinding.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/system_unwinding.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/system/unwinding/ .
 fi
+
 
 rm -rf aosp

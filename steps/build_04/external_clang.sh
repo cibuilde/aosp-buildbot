@@ -1,6 +1,5 @@
-set -e
 
-echo "entering external/clang"
+set -e
 
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
@@ -13,6 +12,8 @@ if [ -d "$GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86" ]; then
   mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86 prebuilts/clang/host/linux-x86
 fi
 
+echo "Preparing for external/clang"
+
 clone_depth_platform external/clang
 clone_depth_platform external/libcxx
 clone_depth_platform external/libcxxabi
@@ -22,24 +23,24 @@ clone_depth_platform frameworks/native
 clone_depth_platform hardware/libhardware
 clone_depth_platform hardware/libhardware_legacy
 clone_depth_platform hardware/ril
-clone_project platform/prebuilts/build-tools prebuilts/build-tools android12-gsi "/linux-x86/bin" "/linux-x86/lib64" "/path" "/common"
 clone_project platform/prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8 prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8 android12-gsi "/sysroot" "/lib/gcc/x86_64-linux/4.8.3" "/x86_64-linux/lib64" "/x86_64-linux/lib32"
 clone_depth_platform system/core
 clone_depth_platform system/logging
 clone_depth_platform system/media
 
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/clang/utils/TableGen/clang-tblgen^linux_glibc_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcxx/libc++^linux_glibc_x86_64_shared/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/llvm/lib/Support/libLLVMSupport^linux_glibc_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/llvm/lib/TableGen/libLLVMTableGen^linux_glibc_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/llvm/llvm-gen-attributes^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/llvm/llvm-gen-intrinsics^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/llvm/lib/Support/libLLVMSupport^linux_glibc_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/llvm/lib/TableGen/libLLVMTableGen^linux_glibc_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/llvm/utils/TableGen/llvm-tblgen^linux_glibc_x86_64/ .
 
-echo "building clang-gen-arm-neon^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja clang-gen-arm-neon,
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/clang/clang-gen-arm-neon^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/clang/clang-gen-arm-neon^.output . $GITHUB_WORKSPACE/artifacts/external/clang/clang-gen-arm-neon^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/external/clang/clang-gen-arm-neon^.output $GITHUB_WORKSPACE/artifacts/external/clang/clang-gen-arm-neon^ $GITHUB_WORKSPACE/artifacts/external/clang/clang-gen-arm-neon^/addition_copy_files.output
+echo "building clang-gen-options^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja clang-gen-options,
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/clang/clang-gen-options^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/clang/clang-gen-options^.output . $GITHUB_WORKSPACE/artifacts/external/clang/clang-gen-options^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/external/clang/clang-gen-options^.output $GITHUB_WORKSPACE/artifacts/external/clang/clang-gen-options^ $GITHUB_WORKSPACE/artifacts/external/clang/clang-gen-options^/addition_copy_files.output
 
 echo "building clang-gen-attributes^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja clang-gen-attributes,
@@ -65,17 +66,17 @@ mkdir -p $GITHUB_WORKSPACE/artifacts/external/clang/clang-gen-comment-html-named
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/clang/clang-gen-comment-html-named-character-references^.output . $GITHUB_WORKSPACE/artifacts/external/clang/clang-gen-comment-html-named-character-references^
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/external/clang/clang-gen-comment-html-named-character-references^.output $GITHUB_WORKSPACE/artifacts/external/clang/clang-gen-comment-html-named-character-references^ $GITHUB_WORKSPACE/artifacts/external/clang/clang-gen-comment-html-named-character-references^/addition_copy_files.output
 
+echo "building clang-gen-html-tags^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja clang-gen-html-tags,
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/clang/clang-gen-html-tags^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/clang/clang-gen-html-tags^.output . $GITHUB_WORKSPACE/artifacts/external/clang/clang-gen-html-tags^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/external/clang/clang-gen-html-tags^.output $GITHUB_WORKSPACE/artifacts/external/clang/clang-gen-html-tags^ $GITHUB_WORKSPACE/artifacts/external/clang/clang-gen-html-tags^/addition_copy_files.output
+
 echo "building clang-gen-comment-nodes^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja clang-gen-comment-nodes,
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/clang/clang-gen-comment-nodes^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/clang/clang-gen-comment-nodes^.output . $GITHUB_WORKSPACE/artifacts/external/clang/clang-gen-comment-nodes^
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/external/clang/clang-gen-comment-nodes^.output $GITHUB_WORKSPACE/artifacts/external/clang/clang-gen-comment-nodes^ $GITHUB_WORKSPACE/artifacts/external/clang/clang-gen-comment-nodes^/addition_copy_files.output
-
-echo "building clang-gen-declnodes^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja clang-gen-declnodes,
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/clang/clang-gen-declnodes^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/clang/clang-gen-declnodes^.output . $GITHUB_WORKSPACE/artifacts/external/clang/clang-gen-declnodes^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/external/clang/clang-gen-declnodes^.output $GITHUB_WORKSPACE/artifacts/external/clang/clang-gen-declnodes^ $GITHUB_WORKSPACE/artifacts/external/clang/clang-gen-declnodes^/addition_copy_files.output
 
 echo "building clang-gen-diagnostics^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja clang-gen-diagnostics,
@@ -83,17 +84,11 @@ mkdir -p $GITHUB_WORKSPACE/artifacts/external/clang/clang-gen-diagnostics^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/clang/clang-gen-diagnostics^.output . $GITHUB_WORKSPACE/artifacts/external/clang/clang-gen-diagnostics^
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/external/clang/clang-gen-diagnostics^.output $GITHUB_WORKSPACE/artifacts/external/clang/clang-gen-diagnostics^ $GITHUB_WORKSPACE/artifacts/external/clang/clang-gen-diagnostics^/addition_copy_files.output
 
-echo "building clang-gen-html-tags^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja clang-gen-html-tags,
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/clang/clang-gen-html-tags^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/clang/clang-gen-html-tags^.output . $GITHUB_WORKSPACE/artifacts/external/clang/clang-gen-html-tags^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/external/clang/clang-gen-html-tags^.output $GITHUB_WORKSPACE/artifacts/external/clang/clang-gen-html-tags^ $GITHUB_WORKSPACE/artifacts/external/clang/clang-gen-html-tags^/addition_copy_files.output
-
-echo "building clang-gen-options^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja clang-gen-options,
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/clang/clang-gen-options^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/clang/clang-gen-options^.output . $GITHUB_WORKSPACE/artifacts/external/clang/clang-gen-options^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/external/clang/clang-gen-options^.output $GITHUB_WORKSPACE/artifacts/external/clang/clang-gen-options^ $GITHUB_WORKSPACE/artifacts/external/clang/clang-gen-options^/addition_copy_files.output
+echo "building clang-gen-declnodes^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja clang-gen-declnodes,
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/clang/clang-gen-declnodes^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/clang/clang-gen-declnodes^.output . $GITHUB_WORKSPACE/artifacts/external/clang/clang-gen-declnodes^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/external/clang/clang-gen-declnodes^.output $GITHUB_WORKSPACE/artifacts/external/clang/clang-gen-declnodes^ $GITHUB_WORKSPACE/artifacts/external/clang/clang-gen-declnodes^/addition_copy_files.output
 
 echo "building clang-gen-statnodes^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja clang-gen-statnodes,
@@ -101,11 +96,18 @@ mkdir -p $GITHUB_WORKSPACE/artifacts/external/clang/clang-gen-statnodes^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/clang/clang-gen-statnodes^.output . $GITHUB_WORKSPACE/artifacts/external/clang/clang-gen-statnodes^
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/external/clang/clang-gen-statnodes^.output $GITHUB_WORKSPACE/artifacts/external/clang/clang-gen-statnodes^ $GITHUB_WORKSPACE/artifacts/external/clang/clang-gen-statnodes^/addition_copy_files.output
 
+echo "building clang-gen-arm-neon^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja clang-gen-arm-neon,
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/clang/clang-gen-arm-neon^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/clang/clang-gen-arm-neon^.output . $GITHUB_WORKSPACE/artifacts/external/clang/clang-gen-arm-neon^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/external/clang/clang-gen-arm-neon^.output $GITHUB_WORKSPACE/artifacts/external/clang/clang-gen-arm-neon^ $GITHUB_WORKSPACE/artifacts/external/clang/clang-gen-arm-neon^/addition_copy_files.output
+
 echo "building clang-tblgen^linux_glibc_x86_64"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja clang-tblgen,linux_glibc_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/clang/utils/TableGen/clang-tblgen^linux_glibc_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/clang/clang-tblgen^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/clang/utils/TableGen/clang-tblgen^linux_glibc_x86_64
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/external/clang/clang-tblgen^linux_glibc_x86_64.output $GITHUB_WORKSPACE/artifacts/external/clang/utils/TableGen/clang-tblgen^linux_glibc_x86_64 $GITHUB_WORKSPACE/artifacts/external/clang/utils/TableGen/clang-tblgen^linux_glibc_x86_64/addition_copy_files.output
+
 
 rm -rf out
 
@@ -114,6 +116,7 @@ tar -cf external_clang.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPAC
 gh release --repo cibuilde/aosp-buildbot upload android12-gsi_04 external_clang.tar.zst --clobber
 
 du -ah -d1 external_clang*.tar.zst | sort -h
+
 
 if [ ! -f "$GITHUB_WORKSPACE/cache/external_clang.tar.zst" ]; then
   echo "Compressing external/clang -> external_clang.tar.zst"
@@ -151,10 +154,6 @@ if [ ! -f "$GITHUB_WORKSPACE/cache/hardware_ril.tar.zst" ]; then
   echo "Compressing hardware/ril -> hardware_ril.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/hardware_ril.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/hardware/ril/ .
 fi
-if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_build-tools.tar.zst" ]; then
-  echo "Compressing prebuilts/build-tools -> prebuilts_build-tools.tar.zst"
-  tar -cf $GITHUB_WORKSPACE/cache/prebuilts_build-tools.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/prebuilts/build-tools/ .
-fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_gcc_linux-x86_host_x86_64-linux-glibc2.17-4.8.tar.zst" ]; then
   echo "Compressing prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8 -> prebuilts_gcc_linux-x86_host_x86_64-linux-glibc2.17-4.8.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/prebuilts_gcc_linux-x86_host_x86_64-linux-glibc2.17-4.8.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8/ .
@@ -171,5 +170,6 @@ if [ ! -f "$GITHUB_WORKSPACE/cache/system_media.tar.zst" ]; then
   echo "Compressing system/media -> system_media.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/system_media.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/system/media/ .
 fi
+
 
 rm -rf aosp

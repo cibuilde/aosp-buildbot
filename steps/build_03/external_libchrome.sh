@@ -1,6 +1,5 @@
-set -e
 
-echo "entering external/libchrome"
+set -e
 
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
@@ -12,6 +11,8 @@ ln -sf $GITHUB_WORKSPACE/ninja .
 if [ -d "$GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86" ]; then
   mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86 prebuilts/clang/host/linux-x86
 fi
+
+echo "Preparing for external/libchrome"
 
 clone_depth_platform art
 clone_depth_platform bionic
@@ -29,7 +30,6 @@ clone_depth_platform hardware/libhardware
 clone_depth_platform hardware/libhardware_legacy
 clone_depth_platform hardware/ril
 clone_depth_platform libnativehelper
-clone_project platform/prebuilts/build-tools prebuilts/build-tools android12-gsi "/linux-x86/bin" "/linux-x86/lib64" "/path" "/common"
 clone_depth_platform prebuilts/gcc/linux-x86/x86/x86_64-linux-android-4.9
 clone_depth_platform system/core
 clone_depth_platform system/libbase
@@ -38,8 +38,13 @@ clone_depth_platform system/media
 
 rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/cmd/merge_zips/merge_zips^linux_glibc_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/cmd/sbox/sbox^linux_glibc_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/zip/cmd/soong_zip^linux_glibc_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/cmd/zipsync/zipsync^linux_glibc_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/zip/cmd/soong_zip^linux_glibc_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/libchrome/jni_generator^linux_glibc_x86_64_PY2/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/libchrome/jni_registration_generator^linux_glibc_x86_64_PY2/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/libchrome/libmojo_jni_headers^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/libchrome/libmojo_jni_registration_headers^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/libchrome/libchrome-include^/ .
 
 echo "building jni_generator^linux_glibc_x86_64_PY2"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja jni_generator,linux_glibc_x86_64_PY2
@@ -52,6 +57,18 @@ prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/st
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/libchrome/jni_registration_generator^linux_glibc_x86_64_PY2
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/external/libchrome/jni_registration_generator^linux_glibc_x86_64_PY2.output . $GITHUB_WORKSPACE/artifacts/external/libchrome/jni_registration_generator^linux_glibc_x86_64_PY2
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/external/libchrome/jni_registration_generator^linux_glibc_x86_64_PY2.output $GITHUB_WORKSPACE/artifacts/external/libchrome/jni_registration_generator^linux_glibc_x86_64_PY2 $GITHUB_WORKSPACE/artifacts/external/libchrome/jni_registration_generator^linux_glibc_x86_64_PY2/addition_copy_files.output
+
+echo "building libmojo_jni_headers^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libmojo_jni_headers,
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/libchrome/libmojo_jni_headers^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/external/libchrome/libmojo_jni_headers^.output . $GITHUB_WORKSPACE/artifacts/external/libchrome/libmojo_jni_headers^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/external/libchrome/libmojo_jni_headers^.output $GITHUB_WORKSPACE/artifacts/external/libchrome/libmojo_jni_headers^ $GITHUB_WORKSPACE/artifacts/external/libchrome/libmojo_jni_headers^/addition_copy_files.output
+
+echo "building libmojo_jni_registration_headers^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libmojo_jni_registration_headers,
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/libchrome/libmojo_jni_registration_headers^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/external/libchrome/libmojo_jni_registration_headers^.output . $GITHUB_WORKSPACE/artifacts/external/libchrome/libmojo_jni_registration_headers^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/external/libchrome/libmojo_jni_registration_headers^.output $GITHUB_WORKSPACE/artifacts/external/libchrome/libmojo_jni_registration_headers^ $GITHUB_WORKSPACE/artifacts/external/libchrome/libmojo_jni_registration_headers^/addition_copy_files.output
 
 echo "building libchrome-include^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libchrome-include,
@@ -77,17 +94,6 @@ mkdir -p $GITHUB_WORKSPACE/artifacts/external/libchrome/libchrome^android_x86_x8
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/external/libchrome/libchrome^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/libchrome/libchrome^android_x86_x86_64_static
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/external/libchrome/libchrome^android_x86_x86_64_static.output $GITHUB_WORKSPACE/artifacts/external/libchrome/libchrome^android_x86_x86_64_static $GITHUB_WORKSPACE/artifacts/external/libchrome/libchrome^android_x86_x86_64_static/addition_copy_files.output
 
-echo "building libmojo_jni_headers^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libmojo_jni_headers,
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/libchrome/libmojo_jni_headers^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/external/libchrome/libmojo_jni_headers^.output . $GITHUB_WORKSPACE/artifacts/external/libchrome/libmojo_jni_headers^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/external/libchrome/libmojo_jni_headers^.output $GITHUB_WORKSPACE/artifacts/external/libchrome/libmojo_jni_headers^ $GITHUB_WORKSPACE/artifacts/external/libchrome/libmojo_jni_headers^/addition_copy_files.output
-
-echo "building libmojo_jni_registration_headers^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libmojo_jni_registration_headers,
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/libchrome/libmojo_jni_registration_headers^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/external/libchrome/libmojo_jni_registration_headers^.output . $GITHUB_WORKSPACE/artifacts/external/libchrome/libmojo_jni_registration_headers^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/external/libchrome/libmojo_jni_registration_headers^.output $GITHUB_WORKSPACE/artifacts/external/libchrome/libmojo_jni_registration_headers^ $GITHUB_WORKSPACE/artifacts/external/libchrome/libmojo_jni_registration_headers^/addition_copy_files.output
 
 rm -rf out
 
@@ -96,6 +102,7 @@ tar -cf external_libchrome.tar.zst --use-compress-program zstdmt -C $GITHUB_WORK
 gh release --repo cibuilde/aosp-buildbot upload android12-gsi_03 external_libchrome.tar.zst --clobber
 
 du -ah -d1 external_libchrome*.tar.zst | sort -h
+
 
 if [ ! -f "$GITHUB_WORKSPACE/cache/art.tar.zst" ]; then
   echo "Compressing art -> art.tar.zst"
@@ -161,10 +168,6 @@ if [ ! -f "$GITHUB_WORKSPACE/cache/libnativehelper.tar.zst" ]; then
   echo "Compressing libnativehelper -> libnativehelper.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/libnativehelper.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/libnativehelper/ .
 fi
-if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_build-tools.tar.zst" ]; then
-  echo "Compressing prebuilts/build-tools -> prebuilts_build-tools.tar.zst"
-  tar -cf $GITHUB_WORKSPACE/cache/prebuilts_build-tools.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/prebuilts/build-tools/ .
-fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_gcc_linux-x86_x86_x86_64-linux-android-4.9.tar.zst" ]; then
   echo "Compressing prebuilts/gcc/linux-x86/x86/x86_64-linux-android-4.9 -> prebuilts_gcc_linux-x86_x86_x86_64-linux-android-4.9.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/prebuilts_gcc_linux-x86_x86_x86_64-linux-android-4.9.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/prebuilts/gcc/linux-x86/x86/x86_64-linux-android-4.9/ .
@@ -185,5 +188,6 @@ if [ ! -f "$GITHUB_WORKSPACE/cache/system_media.tar.zst" ]; then
   echo "Compressing system/media -> system_media.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/system_media.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/system/media/ .
 fi
+
 
 rm -rf aosp

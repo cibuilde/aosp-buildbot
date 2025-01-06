@@ -1,6 +1,5 @@
-set -e
 
-echo "entering singletons"
+set -e
 
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
@@ -13,9 +12,10 @@ if [ -d "$GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86" ]; then
   mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86 prebuilts/clang/host/linux-x86
 fi
 
+echo "Preparing for singletons"
+
 clone_depth_platform art
 clone_depth_platform packages/modules/vndk
-clone_project platform/prebuilts/build-tools prebuilts/build-tools android12-gsi "/linux-x86/bin" "/linux-x86/lib64" "/path" "/common"
 
 
 echo "building api_levels^"
@@ -78,6 +78,7 @@ mkdir -p $GITHUB_WORKSPACE/artifacts/singletons/vndksp_libraries_txt^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/singletons/vndksp_libraries_txt^.output . $GITHUB_WORKSPACE/artifacts/singletons/vndksp_libraries_txt^
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/singletons/vndksp_libraries_txt^.output $GITHUB_WORKSPACE/artifacts/singletons/vndksp_libraries_txt^ $GITHUB_WORKSPACE/artifacts/singletons/vndksp_libraries_txt^/addition_copy_files.output
 
+
 rm -rf out
 
 cd $GITHUB_WORKSPACE/
@@ -85,6 +86,7 @@ tar -cf singletons.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/ar
 gh release --repo cibuilde/aosp-buildbot upload android12-gsi_01 singletons.tar.zst --clobber
 
 du -ah -d1 singletons*.tar.zst | sort -h
+
 
 if [ ! -f "$GITHUB_WORKSPACE/cache/art.tar.zst" ]; then
   echo "Compressing art -> art.tar.zst"
@@ -94,9 +96,6 @@ if [ ! -f "$GITHUB_WORKSPACE/cache/packages_modules_vndk.tar.zst" ]; then
   echo "Compressing packages/modules/vndk -> packages_modules_vndk.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/packages_modules_vndk.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/packages/modules/vndk/ .
 fi
-if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_build-tools.tar.zst" ]; then
-  echo "Compressing prebuilts/build-tools -> prebuilts_build-tools.tar.zst"
-  tar -cf $GITHUB_WORKSPACE/cache/prebuilts_build-tools.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/prebuilts/build-tools/ .
-fi
+
 
 rm -rf aosp

@@ -1,6 +1,5 @@
-set -e
 
-echo "entering system/tools/hidl"
+set -e
 
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
@@ -13,6 +12,8 @@ if [ -d "$GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86" ]; then
   mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86 prebuilts/clang/host/linux-x86
 fi
 
+echo "Preparing for system/tools/hidl"
+
 clone_depth_platform build/soong
 clone_depth_platform external/jsoncpp
 clone_depth_platform external/libcxx
@@ -22,7 +23,6 @@ clone_depth_platform frameworks/native
 clone_depth_platform hardware/libhardware
 clone_depth_platform hardware/libhardware_legacy
 clone_depth_platform hardware/ril
-clone_project platform/prebuilts/build-tools prebuilts/build-tools android12-gsi "/linux-x86/bin" "/linux-x86/lib64" "/path" "/common"
 clone_project platform/prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8 prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8 android12-gsi "/sysroot" "/lib/gcc/x86_64-linux/4.8.3" "/x86_64-linux/lib64" "/x86_64-linux/lib32"
 clone_depth_platform system/core
 clone_depth_platform system/libbase
@@ -48,16 +48,16 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/hardware/interfaces/vr/compos
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/hardware/interfaces/vr/composer/2.0/android.frameworks.vr.composer@2.0-inheritance-hierarchy^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/native/libs/binderthreadstate/1.0/binderthreadstateutilstest@1.0-inheritance-hierarchy^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/atrace/1.0/android.hardware.atrace@1.0-inheritance-hierarchy^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/audio/effect/2.0/android.hardware.audio.effect@2.0-inheritance-hierarchy^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/audio/effect/4.0/android.hardware.audio.effect@4.0-inheritance-hierarchy^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/audio/effect/5.0/android.hardware.audio.effect@5.0-inheritance-hierarchy^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/audio/effect/6.0/android.hardware.audio.effect@6.0-inheritance-hierarchy^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/audio/effect/7.0/android.hardware.audio.effect@7.0-inheritance-hierarchy^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/audio/2.0/android.hardware.audio@2.0-inheritance-hierarchy^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/audio/4.0/android.hardware.audio@4.0-inheritance-hierarchy^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/audio/5.0/android.hardware.audio@5.0-inheritance-hierarchy^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/audio/6.0/android.hardware.audio@6.0-inheritance-hierarchy^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/audio/7.0/android.hardware.audio@7.0-inheritance-hierarchy^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/audio/effect/2.0/android.hardware.audio.effect@2.0-inheritance-hierarchy^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/audio/effect/4.0/android.hardware.audio.effect@4.0-inheritance-hierarchy^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/audio/effect/5.0/android.hardware.audio.effect@5.0-inheritance-hierarchy^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/audio/effect/6.0/android.hardware.audio.effect@6.0-inheritance-hierarchy^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/audio/effect/7.0/android.hardware.audio.effect@7.0-inheritance-hierarchy^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/authsecret/1.0/android.hardware.authsecret@1.0-inheritance-hierarchy^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/automotive/audiocontrol/1.0/android.hardware.automotive.audiocontrol@1.0-inheritance-hierarchy^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/automotive/audiocontrol/2.0/android.hardware.automotive.audiocontrol@2.0-inheritance-hierarchy^/ .
@@ -70,11 +70,11 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/biometrics/face/1.0/
 rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/biometrics/fingerprint/2.1/android.hardware.biometrics.fingerprint@2.1-inheritance-hierarchy^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/biometrics/fingerprint/2.2/android.hardware.biometrics.fingerprint@2.2-inheritance-hierarchy^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/biometrics/fingerprint/2.3/android.hardware.biometrics.fingerprint@2.3-inheritance-hierarchy^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/bluetooth/1.0/android.hardware.bluetooth@1.0-inheritance-hierarchy^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/bluetooth/1.1/android.hardware.bluetooth@1.1-inheritance-hierarchy^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/bluetooth/a2dp/1.0/android.hardware.bluetooth.a2dp@1.0-inheritance-hierarchy^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/bluetooth/audio/2.0/android.hardware.bluetooth.audio@2.0-inheritance-hierarchy^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/bluetooth/audio/2.1/android.hardware.bluetooth.audio@2.1-inheritance-hierarchy^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/bluetooth/1.0/android.hardware.bluetooth@1.0-inheritance-hierarchy^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/bluetooth/1.1/android.hardware.bluetooth@1.1-inheritance-hierarchy^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/boot/1.0/android.hardware.boot@1.0-inheritance-hierarchy^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/boot/1.1/android.hardware.boot@1.1-inheritance-hierarchy^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/boot/1.2/android.hardware.boot@1.2-inheritance-hierarchy^/ .
@@ -92,10 +92,10 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/camera/provider/2.4/
 rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/camera/provider/2.5/android.hardware.camera.provider@2.5-inheritance-hierarchy^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/camera/provider/2.6/android.hardware.camera.provider@2.6-inheritance-hierarchy^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/camera/provider/2.7/android.hardware.camera.provider@2.7-inheritance-hierarchy^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/cas/native/1.0/android.hardware.cas.native@1.0-inheritance-hierarchy^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/cas/1.0/android.hardware.cas@1.0-inheritance-hierarchy^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/cas/1.1/android.hardware.cas@1.1-inheritance-hierarchy^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/cas/1.2/android.hardware.cas@1.2-inheritance-hierarchy^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/cas/native/1.0/android.hardware.cas.native@1.0-inheritance-hierarchy^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/configstore/1.0/android.hardware.configstore@1.0-inheritance-hierarchy^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/configstore/1.1/android.hardware.configstore@1.1-inheritance-hierarchy^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/confirmationui/1.0/android.hardware.confirmationui@1.0-inheritance-hierarchy^/ .
@@ -112,13 +112,13 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/dumpstate/1.1/androi
 rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/fastboot/1.0/android.hardware.fastboot@1.0-inheritance-hierarchy^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/fastboot/1.1/android.hardware.fastboot@1.1-inheritance-hierarchy^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/gatekeeper/1.0/android.hardware.gatekeeper@1.0-inheritance-hierarchy^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/gnss/measurement_corrections/1.0/android.hardware.gnss.measurement_corrections@1.0-inheritance-hierarchy^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/gnss/measurement_corrections/1.1/android.hardware.gnss.measurement_corrections@1.1-inheritance-hierarchy^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/gnss/visibility_control/1.0/android.hardware.gnss.visibility_control@1.0-inheritance-hierarchy^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/gnss/1.0/android.hardware.gnss@1.0-inheritance-hierarchy^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/gnss/1.1/android.hardware.gnss@1.1-inheritance-hierarchy^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/gnss/2.0/android.hardware.gnss@2.0-inheritance-hierarchy^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/gnss/2.1/android.hardware.gnss@2.1-inheritance-hierarchy^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/gnss/measurement_corrections/1.0/android.hardware.gnss.measurement_corrections@1.0-inheritance-hierarchy^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/gnss/measurement_corrections/1.1/android.hardware.gnss.measurement_corrections@1.1-inheritance-hierarchy^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/gnss/visibility_control/1.0/android.hardware.gnss.visibility_control@1.0-inheritance-hierarchy^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/graphics/allocator/2.0/android.hardware.graphics.allocator@2.0-inheritance-hierarchy^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/graphics/allocator/3.0/android.hardware.graphics.allocator@3.0-inheritance-hierarchy^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/graphics/allocator/4.0/android.hardware.graphics.allocator@4.0-inheritance-hierarchy^/ .
@@ -132,9 +132,9 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/graphics/mapper/2.0/
 rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/graphics/mapper/2.1/android.hardware.graphics.mapper@2.1-inheritance-hierarchy^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/graphics/mapper/3.0/android.hardware.graphics.mapper@3.0-inheritance-hierarchy^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/graphics/mapper/4.0/android.hardware.graphics.mapper@4.0-inheritance-hierarchy^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/health/storage/1.0/android.hardware.health.storage@1.0-inheritance-hierarchy^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/health/2.0/android.hardware.health@2.0-inheritance-hierarchy^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/health/2.1/android.hardware.health@2.1-inheritance-hierarchy^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/health/storage/1.0/android.hardware.health.storage@1.0-inheritance-hierarchy^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/input/classifier/1.0/android.hardware.input.classifier@1.0-inheritance-hierarchy^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/ir/1.0/android.hardware.ir@1.0-inheritance-hierarchy^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/keymaster/3.0/android.hardware.keymaster@3.0-inheritance-hierarchy^/ .
@@ -156,16 +156,11 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/nfc/1.0/android.hard
 rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/nfc/1.1/android.hardware.nfc@1.1-inheritance-hierarchy^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/nfc/1.2/android.hardware.nfc@1.2-inheritance-hierarchy^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/oemlock/1.0/android.hardware.oemlock@1.0-inheritance-hierarchy^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/power/stats/1.0/android.hardware.power.stats@1.0-inheritance-hierarchy^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/power/1.0/android.hardware.power@1.0-inheritance-hierarchy^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/power/1.1/android.hardware.power@1.1-inheritance-hierarchy^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/power/1.2/android.hardware.power@1.2-inheritance-hierarchy^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/power/1.3/android.hardware.power@1.3-inheritance-hierarchy^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/radio/config/1.0/android.hardware.radio.config@1.0-inheritance-hierarchy^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/radio/config/1.1/android.hardware.radio.config@1.1-inheritance-hierarchy^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/radio/config/1.2/android.hardware.radio.config@1.2-inheritance-hierarchy^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/radio/config/1.3/android.hardware.radio.config@1.3-inheritance-hierarchy^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/radio/deprecated/1.0/android.hardware.radio.deprecated@1.0-inheritance-hierarchy^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/power/stats/1.0/android.hardware.power.stats@1.0-inheritance-hierarchy^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/radio/1.0/android.hardware.radio@1.0-inheritance-hierarchy^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/radio/1.1/android.hardware.radio@1.1-inheritance-hierarchy^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/radio/1.2/android.hardware.radio@1.2-inheritance-hierarchy^/ .
@@ -173,6 +168,11 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/radio/1.3/android.ha
 rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/radio/1.4/android.hardware.radio@1.4-inheritance-hierarchy^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/radio/1.5/android.hardware.radio@1.5-inheritance-hierarchy^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/radio/1.6/android.hardware.radio@1.6-inheritance-hierarchy^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/radio/config/1.0/android.hardware.radio.config@1.0-inheritance-hierarchy^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/radio/config/1.1/android.hardware.radio.config@1.1-inheritance-hierarchy^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/radio/config/1.2/android.hardware.radio.config@1.2-inheritance-hierarchy^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/radio/config/1.3/android.hardware.radio.config@1.3-inheritance-hierarchy^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/radio/deprecated/1.0/android.hardware.radio.deprecated@1.0-inheritance-hierarchy^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/renderscript/1.0/android.hardware.renderscript@1.0-inheritance-hierarchy^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/secure_element/1.0/android.hardware.secure_element@1.0-inheritance-hierarchy^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/secure_element/1.1/android.hardware.secure_element@1.1-inheritance-hierarchy^/ .
@@ -198,8 +198,8 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/tests/memory/1.0/and
 rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/tests/memory/2.0/android.hardware.tests.memory@2.0-inheritance-hierarchy^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/tests/msgq/1.0/android.hardware.tests.msgq@1.0-inheritance-hierarchy^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/tests/multithread/1.0/android.hardware.tests.multithread@1.0-inheritance-hierarchy^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/tests/safeunion/cpp/1.0/android.hardware.tests.safeunion.cpp@1.0-inheritance-hierarchy^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/tests/safeunion/1.0/android.hardware.tests.safeunion@1.0-inheritance-hierarchy^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/tests/safeunion/cpp/1.0/android.hardware.tests.safeunion.cpp@1.0-inheritance-hierarchy^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/tests/trie/1.0/android.hardware.tests.trie@1.0-inheritance-hierarchy^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/tetheroffload/config/1.0/android.hardware.tetheroffload.config@1.0-inheritance-hierarchy^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/tetheroffload/control/1.0/android.hardware.tetheroffload.control@1.0-inheritance-hierarchy^/ .
@@ -212,19 +212,25 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/tv/cec/1.1/android.h
 rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/tv/input/1.0/android.hardware.tv.input@1.0-inheritance-hierarchy^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/tv/tuner/1.0/android.hardware.tv.tuner@1.0-inheritance-hierarchy^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/tv/tuner/1.1/android.hardware.tv.tuner@1.1-inheritance-hierarchy^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/usb/gadget/1.0/android.hardware.usb.gadget@1.0-inheritance-hierarchy^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/usb/gadget/1.1/android.hardware.usb.gadget@1.1-inheritance-hierarchy^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/usb/gadget/1.2/android.hardware.usb.gadget@1.2-inheritance-hierarchy^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/usb/1.0/android.hardware.usb@1.0-inheritance-hierarchy^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/usb/1.1/android.hardware.usb@1.1-inheritance-hierarchy^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/usb/1.2/android.hardware.usb@1.2-inheritance-hierarchy^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/usb/1.3/android.hardware.usb@1.3-inheritance-hierarchy^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/usb/gadget/1.0/android.hardware.usb.gadget@1.0-inheritance-hierarchy^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/usb/gadget/1.1/android.hardware.usb.gadget@1.1-inheritance-hierarchy^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/usb/gadget/1.2/android.hardware.usb.gadget@1.2-inheritance-hierarchy^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/vibrator/1.0/android.hardware.vibrator@1.0-inheritance-hierarchy^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/vibrator/1.1/android.hardware.vibrator@1.1-inheritance-hierarchy^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/vibrator/1.2/android.hardware.vibrator@1.2-inheritance-hierarchy^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/vibrator/1.3/android.hardware.vibrator@1.3-inheritance-hierarchy^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/vr/1.0/android.hardware.vr@1.0-inheritance-hierarchy^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/weaver/1.0/android.hardware.weaver@1.0-inheritance-hierarchy^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/wifi/1.0/android.hardware.wifi@1.0-inheritance-hierarchy^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/wifi/1.1/android.hardware.wifi@1.1-inheritance-hierarchy^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/wifi/1.2/android.hardware.wifi@1.2-inheritance-hierarchy^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/wifi/1.3/android.hardware.wifi@1.3-inheritance-hierarchy^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/wifi/1.4/android.hardware.wifi@1.4-inheritance-hierarchy^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/wifi/1.5/android.hardware.wifi@1.5-inheritance-hierarchy^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/wifi/hostapd/1.0/android.hardware.wifi.hostapd@1.0-inheritance-hierarchy^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/wifi/hostapd/1.1/android.hardware.wifi.hostapd@1.1-inheritance-hierarchy^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/wifi/hostapd/1.2/android.hardware.wifi.hostapd@1.2-inheritance-hierarchy^/ .
@@ -235,12 +241,6 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/wifi/supplicant/1.1/
 rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/wifi/supplicant/1.2/android.hardware.wifi.supplicant@1.2-inheritance-hierarchy^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/wifi/supplicant/1.3/android.hardware.wifi.supplicant@1.3-inheritance-hierarchy^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/wifi/supplicant/1.4/android.hardware.wifi.supplicant@1.4-inheritance-hierarchy^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/wifi/1.0/android.hardware.wifi@1.0-inheritance-hierarchy^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/wifi/1.1/android.hardware.wifi@1.1-inheritance-hierarchy^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/wifi/1.2/android.hardware.wifi@1.2-inheritance-hierarchy^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/wifi/1.3/android.hardware.wifi@1.3-inheritance-hierarchy^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/wifi/1.4/android.hardware.wifi@1.4-inheritance-hierarchy^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/wifi/1.5/android.hardware.wifi@1.5-inheritance-hierarchy^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/nxp/nfc/intf/nxpnfc/1.0/vendor.nxp.nxpnfc@1.0-inheritance-hierarchy^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/nxp/nfc/intf/nxpnfc/2.0/vendor.nxp.nxpnfc@2.0-inheritance-hierarchy^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/nxp/secure_element/intf/nxpese/1.0/vendor.nxp.nxpese@1.0-inheritance-hierarchy^/ .
@@ -254,41 +254,32 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/system/libhidl/transport/base/1.0/androi
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/libhidl/transport/manager/1.0/android.hidl.manager@1.0-inheritance-hierarchy^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/libhidl/transport/manager/1.1/android.hidl.manager@1.1-inheritance-hierarchy^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/libhidl/transport/manager/1.2/android.hidl.manager@1.2-inheritance-hierarchy^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/system/libhidl/transport/memory/token/1.0/android.hidl.memory.token@1.0-inheritance-hierarchy^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/libhidl/transport/memory/1.0/android.hidl.memory@1.0-inheritance-hierarchy^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/libhidl/transport/memory/token/1.0/android.hidl.memory.token@1.0-inheritance-hierarchy^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/libhidl/transport/token/1.0/android.hidl.token@1.0-inheritance-hierarchy^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^linux_glibc_x86_64_shared/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/system/tools/hidl/test/vendor/android/1.0/hidl.tests.vendor.android@1.0-inheritance-hierarchy^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/system/tools/hidl/test/vendor/1.0/hidl.tests.vendor@1.0-inheritance-hierarchy^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/system/tools/hidl/test/vendor/1.1/hidl.tests.vendor@1.1-inheritance-hierarchy^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/system/tools/hidl/hidl2aidl/test/extension/1.2/hidl2aidl.test.extension@1.2-inheritance-hierarchy^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/tools/hidl/build/hidl_metadata_json^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/tools/hidl/hidl2aidl/test/1.0/hidl2aidl.test@1.0-inheritance-hierarchy^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/tools/hidl/hidl2aidl/test/1.1/hidl2aidl.test@1.1-inheritance-hierarchy^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/tools/hidl/hidl2aidl/test/1.2/hidl2aidl.test@1.2-inheritance-hierarchy^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/tools/hidl/hidl2aidl/test/3.0/hidl2aidl.test@3.0-inheritance-hierarchy^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/system/tools/hidl/test/format_test/1.0/hidl_format_test_pkg@1.0-inheritance-hierarchy^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/tools/hidl/hidl2aidl/test/extension/1.2/hidl2aidl.test.extension@1.2-inheritance-hierarchy^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/tools/hidl/metadata/libhidlmetadata^linux_glibc_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/tools/hidl/metadata/hidl_metadata_parser^linux_glibc_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/system/tools/hidl/test/build_variants/2.0/hidl_test_product@2.0-inheritance-hierarchy^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/tools/hidl/metadata/hidl_metadata_in_cpp^linux_glibc_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/tools/hidl/test/build_variants/1.0/hidl_test_system_ext@1.0-inheritance-hierarchy^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/tools/hidl/test/build_variants/2.0/hidl_test_product@2.0-inheritance-hierarchy^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/tools/hidl/test/format_test/1.0/hidl_format_test_pkg@1.0-inheritance-hierarchy^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/tools/hidl/test/vendor/1.0/hidl.tests.vendor@1.0-inheritance-hierarchy^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/tools/hidl/test/vendor/1.1/hidl.tests.vendor@1.1-inheritance-hierarchy^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/tools/hidl/test/vendor/android/1.0/hidl.tests.vendor.android@1.0-inheritance-hierarchy^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/tools/hidl/utils/libhidl-gen-utils^linux_glibc_x86_64_static/ .
-
-echo "building hidl_metadata_in_cpp^linux_glibc_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja hidl_metadata_in_cpp,linux_glibc_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/tools/hidl/metadata/hidl_metadata_in_cpp^linux_glibc_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/system/tools/hidl/hidl_metadata_in_cpp^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/tools/hidl/metadata/hidl_metadata_in_cpp^linux_glibc_x86_64
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/system/tools/hidl/hidl_metadata_in_cpp^linux_glibc_x86_64.output $GITHUB_WORKSPACE/artifacts/system/tools/hidl/metadata/hidl_metadata_in_cpp^linux_glibc_x86_64 $GITHUB_WORKSPACE/artifacts/system/tools/hidl/metadata/hidl_metadata_in_cpp^linux_glibc_x86_64/addition_copy_files.output
 
 echo "building hidl_metadata_json^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja hidl_metadata_json,
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/tools/hidl/build/hidl_metadata_json^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/system/tools/hidl/hidl_metadata_json^.output . $GITHUB_WORKSPACE/artifacts/system/tools/hidl/build/hidl_metadata_json^
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/system/tools/hidl/hidl_metadata_json^.output $GITHUB_WORKSPACE/artifacts/system/tools/hidl/build/hidl_metadata_json^ $GITHUB_WORKSPACE/artifacts/system/tools/hidl/build/hidl_metadata_json^/addition_copy_files.output
-
-echo "building libhidl-gen-utils^linux_glibc_x86_64_shared"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libhidl-gen-utils,linux_glibc_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/tools/hidl/utils/libhidl-gen-utils^linux_glibc_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/system/tools/hidl/libhidl-gen-utils^linux_glibc_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/tools/hidl/utils/libhidl-gen-utils^linux_glibc_x86_64_shared
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/system/tools/hidl/libhidl-gen-utils^linux_glibc_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/system/tools/hidl/utils/libhidl-gen-utils^linux_glibc_x86_64_shared $GITHUB_WORKSPACE/artifacts/system/tools/hidl/utils/libhidl-gen-utils^linux_glibc_x86_64_shared/addition_copy_files.output
 
 echo "building libhidlmetadata^linux_glibc_x86_64_shared"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libhidlmetadata,linux_glibc_x86_64_shared
@@ -302,6 +293,19 @@ mkdir -p $GITHUB_WORKSPACE/artifacts/system/tools/hidl/metadata/libhidlmetadata^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/system/tools/hidl/libhidlmetadata^linux_glibc_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/tools/hidl/metadata/libhidlmetadata^linux_glibc_x86_64_static
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/system/tools/hidl/libhidlmetadata^linux_glibc_x86_64_static.output $GITHUB_WORKSPACE/artifacts/system/tools/hidl/metadata/libhidlmetadata^linux_glibc_x86_64_static $GITHUB_WORKSPACE/artifacts/system/tools/hidl/metadata/libhidlmetadata^linux_glibc_x86_64_static/addition_copy_files.output
 
+echo "building hidl_metadata_in_cpp^linux_glibc_x86_64"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja hidl_metadata_in_cpp,linux_glibc_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/tools/hidl/metadata/hidl_metadata_in_cpp^linux_glibc_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/system/tools/hidl/hidl_metadata_in_cpp^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/tools/hidl/metadata/hidl_metadata_in_cpp^linux_glibc_x86_64
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/system/tools/hidl/hidl_metadata_in_cpp^linux_glibc_x86_64.output $GITHUB_WORKSPACE/artifacts/system/tools/hidl/metadata/hidl_metadata_in_cpp^linux_glibc_x86_64 $GITHUB_WORKSPACE/artifacts/system/tools/hidl/metadata/hidl_metadata_in_cpp^linux_glibc_x86_64/addition_copy_files.output
+
+echo "building libhidl-gen-utils^linux_glibc_x86_64_shared"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libhidl-gen-utils,linux_glibc_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/tools/hidl/utils/libhidl-gen-utils^linux_glibc_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/system/tools/hidl/libhidl-gen-utils^linux_glibc_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/tools/hidl/utils/libhidl-gen-utils^linux_glibc_x86_64_shared
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/system/tools/hidl/libhidl-gen-utils^linux_glibc_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/system/tools/hidl/utils/libhidl-gen-utils^linux_glibc_x86_64_shared $GITHUB_WORKSPACE/artifacts/system/tools/hidl/utils/libhidl-gen-utils^linux_glibc_x86_64_shared/addition_copy_files.output
+
+
 rm -rf out
 
 cd $GITHUB_WORKSPACE/
@@ -309,6 +313,7 @@ tar -cf system_tools_hidl.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKS
 gh release --repo cibuilde/aosp-buildbot upload android12-gsi_05 system_tools_hidl.tar.zst --clobber
 
 du -ah -d1 system_tools_hidl*.tar.zst | sort -h
+
 
 if [ ! -f "$GITHUB_WORKSPACE/cache/build_soong.tar.zst" ]; then
   echo "Compressing build/soong -> build_soong.tar.zst"
@@ -346,10 +351,6 @@ if [ ! -f "$GITHUB_WORKSPACE/cache/hardware_ril.tar.zst" ]; then
   echo "Compressing hardware/ril -> hardware_ril.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/hardware_ril.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/hardware/ril/ .
 fi
-if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_build-tools.tar.zst" ]; then
-  echo "Compressing prebuilts/build-tools -> prebuilts_build-tools.tar.zst"
-  tar -cf $GITHUB_WORKSPACE/cache/prebuilts_build-tools.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/prebuilts/build-tools/ .
-fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_gcc_linux-x86_host_x86_64-linux-glibc2.17-4.8.tar.zst" ]; then
   echo "Compressing prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8 -> prebuilts_gcc_linux-x86_host_x86_64-linux-glibc2.17-4.8.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/prebuilts_gcc_linux-x86_host_x86_64-linux-glibc2.17-4.8.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8/ .
@@ -374,5 +375,6 @@ if [ ! -f "$GITHUB_WORKSPACE/cache/system_tools_hidl.tar.zst" ]; then
   echo "Compressing system/tools/hidl -> system_tools_hidl.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/system_tools_hidl.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/system/tools/hidl/ .
 fi
+
 
 rm -rf aosp

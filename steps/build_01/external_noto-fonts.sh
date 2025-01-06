@@ -1,6 +1,5 @@
-set -e
 
-echo "entering external/noto-fonts"
+set -e
 
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
@@ -13,10 +12,23 @@ if [ -d "$GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86" ]; then
   mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86 prebuilts/clang/host/linux-x86
 fi
 
+echo "Preparing for external/noto-fonts"
+
 clone_depth_platform art
 clone_depth_platform external/noto-fonts
-clone_project platform/prebuilts/build-tools prebuilts/build-tools android12-gsi "/linux-x86/bin" "/linux-x86/lib64" "/path" "/common"
 
+
+echo "building NotoSansCJK-Regular.ttc^android_x86_64"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja NotoSansCJK-Regular.ttc,android_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/noto-fonts/cjk/NotoSansCJK-Regular.ttc^android_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/noto-fonts/NotoSansCJK-Regular.ttc^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/noto-fonts/cjk/NotoSansCJK-Regular.ttc^android_x86_64
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/noto-fonts/NotoSansCJK-Regular.ttc^android_x86_64.output $GITHUB_WORKSPACE/artifacts/external/noto-fonts/cjk/NotoSansCJK-Regular.ttc^android_x86_64 $GITHUB_WORKSPACE/artifacts/external/noto-fonts/cjk/NotoSansCJK-Regular.ttc^android_x86_64/addition_copy_files.output
+
+echo "building NotoSerifCJK-Regular.ttc^android_x86_64"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja NotoSerifCJK-Regular.ttc,android_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/noto-fonts/cjk/NotoSerifCJK-Regular.ttc^android_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/noto-fonts/NotoSerifCJK-Regular.ttc^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/noto-fonts/cjk/NotoSerifCJK-Regular.ttc^android_x86_64
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/noto-fonts/NotoSerifCJK-Regular.ttc^android_x86_64.output $GITHUB_WORKSPACE/artifacts/external/noto-fonts/cjk/NotoSerifCJK-Regular.ttc^android_x86_64 $GITHUB_WORKSPACE/artifacts/external/noto-fonts/cjk/NotoSerifCJK-Regular.ttc^android_x86_64/addition_copy_files.output
 
 echo "building NotoColorEmoji.ttf^android_x86_64"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja NotoColorEmoji.ttf,android_x86_64
@@ -30,41 +42,11 @@ mkdir -p $GITHUB_WORKSPACE/artifacts/external/noto-fonts/emoji-compat/NotoColorE
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/noto-fonts/NotoColorEmojiFlags.ttf^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/noto-fonts/emoji-compat/NotoColorEmojiFlags.ttf^android_x86_64
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/noto-fonts/NotoColorEmojiFlags.ttf^android_x86_64.output $GITHUB_WORKSPACE/artifacts/external/noto-fonts/emoji-compat/NotoColorEmojiFlags.ttf^android_x86_64 $GITHUB_WORKSPACE/artifacts/external/noto-fonts/emoji-compat/NotoColorEmojiFlags.ttf^android_x86_64/addition_copy_files.output
 
-echo "building NotoNaskhArabic-Bold.ttf^android_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja NotoNaskhArabic-Bold.ttf,android_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/noto-fonts/other/NotoNaskhArabic-Bold.ttf^android_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/noto-fonts/NotoNaskhArabic-Bold.ttf^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/noto-fonts/other/NotoNaskhArabic-Bold.ttf^android_x86_64
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/noto-fonts/NotoNaskhArabic-Bold.ttf^android_x86_64.output $GITHUB_WORKSPACE/artifacts/external/noto-fonts/other/NotoNaskhArabic-Bold.ttf^android_x86_64 $GITHUB_WORKSPACE/artifacts/external/noto-fonts/other/NotoNaskhArabic-Bold.ttf^android_x86_64/addition_copy_files.output
-
-echo "building NotoNaskhArabic-Regular.ttf^android_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja NotoNaskhArabic-Regular.ttf,android_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/noto-fonts/other/NotoNaskhArabic-Regular.ttf^android_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/noto-fonts/NotoNaskhArabic-Regular.ttf^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/noto-fonts/other/NotoNaskhArabic-Regular.ttf^android_x86_64
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/noto-fonts/NotoNaskhArabic-Regular.ttf^android_x86_64.output $GITHUB_WORKSPACE/artifacts/external/noto-fonts/other/NotoNaskhArabic-Regular.ttf^android_x86_64 $GITHUB_WORKSPACE/artifacts/external/noto-fonts/other/NotoNaskhArabic-Regular.ttf^android_x86_64/addition_copy_files.output
-
-echo "building NotoNaskhArabicUI-Bold.ttf^android_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja NotoNaskhArabicUI-Bold.ttf,android_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/noto-fonts/other/NotoNaskhArabicUI-Bold.ttf^android_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/noto-fonts/NotoNaskhArabicUI-Bold.ttf^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/noto-fonts/other/NotoNaskhArabicUI-Bold.ttf^android_x86_64
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/noto-fonts/NotoNaskhArabicUI-Bold.ttf^android_x86_64.output $GITHUB_WORKSPACE/artifacts/external/noto-fonts/other/NotoNaskhArabicUI-Bold.ttf^android_x86_64 $GITHUB_WORKSPACE/artifacts/external/noto-fonts/other/NotoNaskhArabicUI-Bold.ttf^android_x86_64/addition_copy_files.output
-
-echo "building NotoNaskhArabicUI-Regular.ttf^android_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja NotoNaskhArabicUI-Regular.ttf,android_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/noto-fonts/other/NotoNaskhArabicUI-Regular.ttf^android_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/noto-fonts/NotoNaskhArabicUI-Regular.ttf^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/noto-fonts/other/NotoNaskhArabicUI-Regular.ttf^android_x86_64
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/noto-fonts/NotoNaskhArabicUI-Regular.ttf^android_x86_64.output $GITHUB_WORKSPACE/artifacts/external/noto-fonts/other/NotoNaskhArabicUI-Regular.ttf^android_x86_64 $GITHUB_WORKSPACE/artifacts/external/noto-fonts/other/NotoNaskhArabicUI-Regular.ttf^android_x86_64/addition_copy_files.output
-
-echo "building NotoSansAdlam-VF.ttf^android_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja NotoSansAdlam-VF.ttf,android_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/noto-fonts/other/NotoSansAdlam-VF.ttf^android_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/noto-fonts/NotoSansAdlam-VF.ttf^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/noto-fonts/other/NotoSansAdlam-VF.ttf^android_x86_64
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/noto-fonts/NotoSansAdlam-VF.ttf^android_x86_64.output $GITHUB_WORKSPACE/artifacts/external/noto-fonts/other/NotoSansAdlam-VF.ttf^android_x86_64 $GITHUB_WORKSPACE/artifacts/external/noto-fonts/other/NotoSansAdlam-VF.ttf^android_x86_64/addition_copy_files.output
-
-echo "building NotoSansAhom-Regular.otf^android_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja NotoSansAhom-Regular.otf,android_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/noto-fonts/other/NotoSansAhom-Regular.otf^android_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/noto-fonts/NotoSansAhom-Regular.otf^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/noto-fonts/other/NotoSansAhom-Regular.otf^android_x86_64
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/noto-fonts/NotoSansAhom-Regular.otf^android_x86_64.output $GITHUB_WORKSPACE/artifacts/external/noto-fonts/other/NotoSansAhom-Regular.otf^android_x86_64 $GITHUB_WORKSPACE/artifacts/external/noto-fonts/other/NotoSansAhom-Regular.otf^android_x86_64/addition_copy_files.output
+echo "building NotoSansKhmer-VF.ttf^android_x86_64"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja NotoSansKhmer-VF.ttf,android_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/noto-fonts/other-vf/NotoSansKhmer-VF.ttf^android_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/noto-fonts/NotoSansKhmer-VF.ttf^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/noto-fonts/other-vf/NotoSansKhmer-VF.ttf^android_x86_64
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/noto-fonts/NotoSansKhmer-VF.ttf^android_x86_64.output $GITHUB_WORKSPACE/artifacts/external/noto-fonts/other-vf/NotoSansKhmer-VF.ttf^android_x86_64 $GITHUB_WORKSPACE/artifacts/external/noto-fonts/other-vf/NotoSansKhmer-VF.ttf^android_x86_64/addition_copy_files.output
 
 echo "building NotoSansAnatolianHieroglyphs-Regular.otf^android_x86_64"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja NotoSansAnatolianHieroglyphs-Regular.otf,android_x86_64
@@ -143,12 +125,6 @@ prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/st
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/noto-fonts/other/NotoSansBuhid-Regular.ttf^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/noto-fonts/NotoSansBuhid-Regular.ttf^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/noto-fonts/other/NotoSansBuhid-Regular.ttf^android_x86_64
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/noto-fonts/NotoSansBuhid-Regular.ttf^android_x86_64.output $GITHUB_WORKSPACE/artifacts/external/noto-fonts/other/NotoSansBuhid-Regular.ttf^android_x86_64 $GITHUB_WORKSPACE/artifacts/external/noto-fonts/other/NotoSansBuhid-Regular.ttf^android_x86_64/addition_copy_files.output
-
-echo "building NotoSansCJK-Regular.ttc^android_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja NotoSansCJK-Regular.ttc,android_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/noto-fonts/cjk/NotoSansCJK-Regular.ttc^android_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/noto-fonts/NotoSansCJK-Regular.ttc^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/noto-fonts/cjk/NotoSansCJK-Regular.ttc^android_x86_64
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/noto-fonts/NotoSansCJK-Regular.ttc^android_x86_64.output $GITHUB_WORKSPACE/artifacts/external/noto-fonts/cjk/NotoSansCJK-Regular.ttc^android_x86_64 $GITHUB_WORKSPACE/artifacts/external/noto-fonts/cjk/NotoSansCJK-Regular.ttc^android_x86_64/addition_copy_files.output
 
 echo "building NotoSansCanadianAboriginal-Regular.ttf^android_x86_64"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja NotoSansCanadianAboriginal-Regular.ttf,android_x86_64
@@ -390,12 +366,6 @@ mkdir -p $GITHUB_WORKSPACE/artifacts/external/noto-fonts/other/NotoSansKharoshth
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/noto-fonts/NotoSansKharoshthi-Regular.ttf^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/noto-fonts/other/NotoSansKharoshthi-Regular.ttf^android_x86_64
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/noto-fonts/NotoSansKharoshthi-Regular.ttf^android_x86_64.output $GITHUB_WORKSPACE/artifacts/external/noto-fonts/other/NotoSansKharoshthi-Regular.ttf^android_x86_64 $GITHUB_WORKSPACE/artifacts/external/noto-fonts/other/NotoSansKharoshthi-Regular.ttf^android_x86_64/addition_copy_files.output
 
-echo "building NotoSansKhmer-VF.ttf^android_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja NotoSansKhmer-VF.ttf,android_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/noto-fonts/other-vf/NotoSansKhmer-VF.ttf^android_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/noto-fonts/NotoSansKhmer-VF.ttf^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/noto-fonts/other-vf/NotoSansKhmer-VF.ttf^android_x86_64
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/noto-fonts/NotoSansKhmer-VF.ttf^android_x86_64.output $GITHUB_WORKSPACE/artifacts/external/noto-fonts/other-vf/NotoSansKhmer-VF.ttf^android_x86_64 $GITHUB_WORKSPACE/artifacts/external/noto-fonts/other-vf/NotoSansKhmer-VF.ttf^android_x86_64/addition_copy_files.output
-
 echo "building NotoSansKhmerUI-Bold.ttf^android_x86_64"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja NotoSansKhmerUI-Bold.ttf,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/noto-fonts/other/NotoSansKhmerUI-Bold.ttf^android_x86_64
@@ -570,6 +540,12 @@ mkdir -p $GITHUB_WORKSPACE/artifacts/external/noto-fonts/other/NotoSansMyanmar-B
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/noto-fonts/NotoSansMyanmar-Bold.otf^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/noto-fonts/other/NotoSansMyanmar-Bold.otf^android_x86_64
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/noto-fonts/NotoSansMyanmar-Bold.otf^android_x86_64.output $GITHUB_WORKSPACE/artifacts/external/noto-fonts/other/NotoSansMyanmar-Bold.otf^android_x86_64 $GITHUB_WORKSPACE/artifacts/external/noto-fonts/other/NotoSansMyanmar-Bold.otf^android_x86_64/addition_copy_files.output
 
+echo "building NotoSerif-Regular.ttf^android_x86_64"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja NotoSerif-Regular.ttf,android_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/noto-fonts/other/NotoSerif-Regular.ttf^android_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/noto-fonts/NotoSerif-Regular.ttf^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/noto-fonts/other/NotoSerif-Regular.ttf^android_x86_64
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/noto-fonts/NotoSerif-Regular.ttf^android_x86_64.output $GITHUB_WORKSPACE/artifacts/external/noto-fonts/other/NotoSerif-Regular.ttf^android_x86_64 $GITHUB_WORKSPACE/artifacts/external/noto-fonts/other/NotoSerif-Regular.ttf^android_x86_64/addition_copy_files.output
+
 echo "building NotoSansMyanmar-Medium.otf^android_x86_64"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja NotoSansMyanmar-Medium.otf,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/noto-fonts/other/NotoSansMyanmar-Medium.otf^android_x86_64
@@ -600,23 +576,11 @@ mkdir -p $GITHUB_WORKSPACE/artifacts/external/noto-fonts/other/NotoSansMyanmarUI
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/noto-fonts/NotoSansMyanmarUI-Regular.otf^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/noto-fonts/other/NotoSansMyanmarUI-Regular.otf^android_x86_64
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/noto-fonts/NotoSansMyanmarUI-Regular.otf^android_x86_64.output $GITHUB_WORKSPACE/artifacts/external/noto-fonts/other/NotoSansMyanmarUI-Regular.otf^android_x86_64 $GITHUB_WORKSPACE/artifacts/external/noto-fonts/other/NotoSansMyanmarUI-Regular.otf^android_x86_64/addition_copy_files.output
 
-echo "building NotoSansNKo-Regular.ttf^android_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja NotoSansNKo-Regular.ttf,android_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/noto-fonts/other/NotoSansNKo-Regular.ttf^android_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/noto-fonts/NotoSansNKo-Regular.ttf^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/noto-fonts/other/NotoSansNKo-Regular.ttf^android_x86_64
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/noto-fonts/NotoSansNKo-Regular.ttf^android_x86_64.output $GITHUB_WORKSPACE/artifacts/external/noto-fonts/other/NotoSansNKo-Regular.ttf^android_x86_64 $GITHUB_WORKSPACE/artifacts/external/noto-fonts/other/NotoSansNKo-Regular.ttf^android_x86_64/addition_copy_files.output
-
 echo "building NotoSansNabataean-Regular.otf^android_x86_64"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja NotoSansNabataean-Regular.otf,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/noto-fonts/other/NotoSansNabataean-Regular.otf^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/noto-fonts/NotoSansNabataean-Regular.otf^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/noto-fonts/other/NotoSansNabataean-Regular.otf^android_x86_64
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/noto-fonts/NotoSansNabataean-Regular.otf^android_x86_64.output $GITHUB_WORKSPACE/artifacts/external/noto-fonts/other/NotoSansNabataean-Regular.otf^android_x86_64 $GITHUB_WORKSPACE/artifacts/external/noto-fonts/other/NotoSansNabataean-Regular.otf^android_x86_64/addition_copy_files.output
-
-echo "building NotoSansNewTaiLue-Regular.ttf^android_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja NotoSansNewTaiLue-Regular.ttf,android_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/noto-fonts/other/NotoSansNewTaiLue-Regular.ttf^android_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/noto-fonts/NotoSansNewTaiLue-Regular.ttf^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/noto-fonts/other/NotoSansNewTaiLue-Regular.ttf^android_x86_64
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/noto-fonts/NotoSansNewTaiLue-Regular.ttf^android_x86_64.output $GITHUB_WORKSPACE/artifacts/external/noto-fonts/other/NotoSansNewTaiLue-Regular.ttf^android_x86_64 $GITHUB_WORKSPACE/artifacts/external/noto-fonts/other/NotoSansNewTaiLue-Regular.ttf^android_x86_64/addition_copy_files.output
 
 echo "building NotoSansNewa-Regular.otf^android_x86_64"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja NotoSansNewa-Regular.otf,android_x86_64
@@ -624,11 +588,29 @@ mkdir -p $GITHUB_WORKSPACE/artifacts/external/noto-fonts/other/NotoSansNewa-Regu
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/noto-fonts/NotoSansNewa-Regular.otf^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/noto-fonts/other/NotoSansNewa-Regular.otf^android_x86_64
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/noto-fonts/NotoSansNewa-Regular.otf^android_x86_64.output $GITHUB_WORKSPACE/artifacts/external/noto-fonts/other/NotoSansNewa-Regular.otf^android_x86_64 $GITHUB_WORKSPACE/artifacts/external/noto-fonts/other/NotoSansNewa-Regular.otf^android_x86_64/addition_copy_files.output
 
+echo "building NotoSansNewTaiLue-Regular.ttf^android_x86_64"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja NotoSansNewTaiLue-Regular.ttf,android_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/noto-fonts/other/NotoSansNewTaiLue-Regular.ttf^android_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/noto-fonts/NotoSansNewTaiLue-Regular.ttf^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/noto-fonts/other/NotoSansNewTaiLue-Regular.ttf^android_x86_64
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/noto-fonts/NotoSansNewTaiLue-Regular.ttf^android_x86_64.output $GITHUB_WORKSPACE/artifacts/external/noto-fonts/other/NotoSansNewTaiLue-Regular.ttf^android_x86_64 $GITHUB_WORKSPACE/artifacts/external/noto-fonts/other/NotoSansNewTaiLue-Regular.ttf^android_x86_64/addition_copy_files.output
+
+echo "building NotoSansNKo-Regular.ttf^android_x86_64"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja NotoSansNKo-Regular.ttf,android_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/noto-fonts/other/NotoSansNKo-Regular.ttf^android_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/noto-fonts/NotoSansNKo-Regular.ttf^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/noto-fonts/other/NotoSansNKo-Regular.ttf^android_x86_64
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/noto-fonts/NotoSansNKo-Regular.ttf^android_x86_64.output $GITHUB_WORKSPACE/artifacts/external/noto-fonts/other/NotoSansNKo-Regular.ttf^android_x86_64 $GITHUB_WORKSPACE/artifacts/external/noto-fonts/other/NotoSansNKo-Regular.ttf^android_x86_64/addition_copy_files.output
+
 echo "building NotoSansOgham-Regular.ttf^android_x86_64"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja NotoSansOgham-Regular.ttf,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/noto-fonts/other/NotoSansOgham-Regular.ttf^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/noto-fonts/NotoSansOgham-Regular.ttf^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/noto-fonts/other/NotoSansOgham-Regular.ttf^android_x86_64
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/noto-fonts/NotoSansOgham-Regular.ttf^android_x86_64.output $GITHUB_WORKSPACE/artifacts/external/noto-fonts/other/NotoSansOgham-Regular.ttf^android_x86_64 $GITHUB_WORKSPACE/artifacts/external/noto-fonts/other/NotoSansOgham-Regular.ttf^android_x86_64/addition_copy_files.output
+
+echo "building NotoSerif-Bold.ttf^android_x86_64"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja NotoSerif-Bold.ttf,android_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/noto-fonts/other/NotoSerif-Bold.ttf^android_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/noto-fonts/NotoSerif-Bold.ttf^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/noto-fonts/other/NotoSerif-Bold.ttf^android_x86_64
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/noto-fonts/NotoSerif-Bold.ttf^android_x86_64.output $GITHUB_WORKSPACE/artifacts/external/noto-fonts/other/NotoSerif-Bold.ttf^android_x86_64 $GITHUB_WORKSPACE/artifacts/external/noto-fonts/other/NotoSerif-Bold.ttf^android_x86_64/addition_copy_files.output
 
 echo "building NotoSansOlChiki-Regular.ttf^android_x86_64"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja NotoSansOlChiki-Regular.ttf,android_x86_64
@@ -690,6 +672,12 @@ mkdir -p $GITHUB_WORKSPACE/artifacts/external/noto-fonts/other/NotoSansOriyaUI-B
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/noto-fonts/NotoSansOriyaUI-Bold.ttf^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/noto-fonts/other/NotoSansOriyaUI-Bold.ttf^android_x86_64
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/noto-fonts/NotoSansOriyaUI-Bold.ttf^android_x86_64.output $GITHUB_WORKSPACE/artifacts/external/noto-fonts/other/NotoSansOriyaUI-Bold.ttf^android_x86_64 $GITHUB_WORKSPACE/artifacts/external/noto-fonts/other/NotoSansOriyaUI-Bold.ttf^android_x86_64/addition_copy_files.output
 
+echo "building NotoSerif-Italic.ttf^android_x86_64"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja NotoSerif-Italic.ttf,android_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/noto-fonts/other/NotoSerif-Italic.ttf^android_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/noto-fonts/NotoSerif-Italic.ttf^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/noto-fonts/other/NotoSerif-Italic.ttf^android_x86_64
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/noto-fonts/NotoSerif-Italic.ttf^android_x86_64.output $GITHUB_WORKSPACE/artifacts/external/noto-fonts/other/NotoSerif-Italic.ttf^android_x86_64 $GITHUB_WORKSPACE/artifacts/external/noto-fonts/other/NotoSerif-Italic.ttf^android_x86_64/addition_copy_files.output
+
 echo "building NotoSansOriyaUI-Regular.ttf^android_x86_64"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja NotoSansOriyaUI-Regular.ttf,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/noto-fonts/other/NotoSansOriyaUI-Regular.ttf^android_x86_64
@@ -749,6 +737,12 @@ prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/st
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/noto-fonts/other/NotoSansRunic-Regular.ttf^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/noto-fonts/NotoSansRunic-Regular.ttf^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/noto-fonts/other/NotoSansRunic-Regular.ttf^android_x86_64
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/noto-fonts/NotoSansRunic-Regular.ttf^android_x86_64.output $GITHUB_WORKSPACE/artifacts/external/noto-fonts/other/NotoSansRunic-Regular.ttf^android_x86_64 $GITHUB_WORKSPACE/artifacts/external/noto-fonts/other/NotoSansRunic-Regular.ttf^android_x86_64/addition_copy_files.output
+
+echo "building NotoSerif-BoldItalic.ttf^android_x86_64"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja NotoSerif-BoldItalic.ttf,android_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/noto-fonts/other/NotoSerif-BoldItalic.ttf^android_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/noto-fonts/NotoSerif-BoldItalic.ttf^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/noto-fonts/other/NotoSerif-BoldItalic.ttf^android_x86_64
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/noto-fonts/NotoSerif-BoldItalic.ttf^android_x86_64.output $GITHUB_WORKSPACE/artifacts/external/noto-fonts/other/NotoSerif-BoldItalic.ttf^android_x86_64 $GITHUB_WORKSPACE/artifacts/external/noto-fonts/other/NotoSerif-BoldItalic.ttf^android_x86_64/addition_copy_files.output
 
 echo "building NotoSansSamaritan-Regular.ttf^android_x86_64"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja NotoSansSamaritan-Regular.ttf,android_x86_64
@@ -822,6 +816,12 @@ mkdir -p $GITHUB_WORKSPACE/artifacts/external/noto-fonts/other/NotoSansSymbols-R
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/noto-fonts/NotoSansSymbols-Regular-Subsetted2.ttf^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/noto-fonts/other/NotoSansSymbols-Regular-Subsetted2.ttf^android_x86_64
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/noto-fonts/NotoSansSymbols-Regular-Subsetted2.ttf^android_x86_64.output $GITHUB_WORKSPACE/artifacts/external/noto-fonts/other/NotoSansSymbols-Regular-Subsetted2.ttf^android_x86_64 $GITHUB_WORKSPACE/artifacts/external/noto-fonts/other/NotoSansSymbols-Regular-Subsetted2.ttf^android_x86_64/addition_copy_files.output
 
+echo "building NotoNaskhArabic-Bold.ttf^android_x86_64"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja NotoNaskhArabic-Bold.ttf,android_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/noto-fonts/other/NotoNaskhArabic-Bold.ttf^android_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/noto-fonts/NotoNaskhArabic-Bold.ttf^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/noto-fonts/other/NotoNaskhArabic-Bold.ttf^android_x86_64
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/noto-fonts/NotoNaskhArabic-Bold.ttf^android_x86_64.output $GITHUB_WORKSPACE/artifacts/external/noto-fonts/other/NotoNaskhArabic-Bold.ttf^android_x86_64 $GITHUB_WORKSPACE/artifacts/external/noto-fonts/other/NotoNaskhArabic-Bold.ttf^android_x86_64/addition_copy_files.output
+
 echo "building NotoSansSyriacEastern-Regular.ttf^android_x86_64"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja NotoSansSyriacEastern-Regular.ttf,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/noto-fonts/other/NotoSansSyriacEastern-Regular.ttf^android_x86_64
@@ -881,6 +881,12 @@ prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/st
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/noto-fonts/other/NotoSansTamil-VF.ttf^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/noto-fonts/NotoSansTamil-VF.ttf^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/noto-fonts/other/NotoSansTamil-VF.ttf^android_x86_64
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/noto-fonts/NotoSansTamil-VF.ttf^android_x86_64.output $GITHUB_WORKSPACE/artifacts/external/noto-fonts/other/NotoSansTamil-VF.ttf^android_x86_64 $GITHUB_WORKSPACE/artifacts/external/noto-fonts/other/NotoSansTamil-VF.ttf^android_x86_64/addition_copy_files.output
+
+echo "building NotoNaskhArabic-Regular.ttf^android_x86_64"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja NotoNaskhArabic-Regular.ttf,android_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/noto-fonts/other/NotoNaskhArabic-Regular.ttf^android_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/noto-fonts/NotoNaskhArabic-Regular.ttf^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/noto-fonts/other/NotoNaskhArabic-Regular.ttf^android_x86_64
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/noto-fonts/NotoNaskhArabic-Regular.ttf^android_x86_64.output $GITHUB_WORKSPACE/artifacts/external/noto-fonts/other/NotoNaskhArabic-Regular.ttf^android_x86_64 $GITHUB_WORKSPACE/artifacts/external/noto-fonts/other/NotoNaskhArabic-Regular.ttf^android_x86_64/addition_copy_files.output
 
 echo "building NotoSansTamilUI-VF.ttf^android_x86_64"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja NotoSansTamilUI-VF.ttf,android_x86_64
@@ -942,6 +948,12 @@ mkdir -p $GITHUB_WORKSPACE/artifacts/external/noto-fonts/other/NotoSansTifinagh-
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/noto-fonts/NotoSansTifinagh-Regular.otf^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/noto-fonts/other/NotoSansTifinagh-Regular.otf^android_x86_64
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/noto-fonts/NotoSansTifinagh-Regular.otf^android_x86_64.output $GITHUB_WORKSPACE/artifacts/external/noto-fonts/other/NotoSansTifinagh-Regular.otf^android_x86_64 $GITHUB_WORKSPACE/artifacts/external/noto-fonts/other/NotoSansTifinagh-Regular.otf^android_x86_64/addition_copy_files.output
 
+echo "building NotoNaskhArabicUI-Bold.ttf^android_x86_64"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja NotoNaskhArabicUI-Bold.ttf,android_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/noto-fonts/other/NotoNaskhArabicUI-Bold.ttf^android_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/noto-fonts/NotoNaskhArabicUI-Bold.ttf^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/noto-fonts/other/NotoNaskhArabicUI-Bold.ttf^android_x86_64
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/noto-fonts/NotoNaskhArabicUI-Bold.ttf^android_x86_64.output $GITHUB_WORKSPACE/artifacts/external/noto-fonts/other/NotoNaskhArabicUI-Bold.ttf^android_x86_64 $GITHUB_WORKSPACE/artifacts/external/noto-fonts/other/NotoNaskhArabicUI-Bold.ttf^android_x86_64/addition_copy_files.output
+
 echo "building NotoSansUgaritic-Regular.ttf^android_x86_64"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja NotoSansUgaritic-Regular.ttf,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/noto-fonts/other/NotoSansUgaritic-Regular.ttf^android_x86_64
@@ -972,30 +984,6 @@ mkdir -p $GITHUB_WORKSPACE/artifacts/external/noto-fonts/other/NotoSansYi-Regula
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/noto-fonts/NotoSansYi-Regular.ttf^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/noto-fonts/other/NotoSansYi-Regular.ttf^android_x86_64
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/noto-fonts/NotoSansYi-Regular.ttf^android_x86_64.output $GITHUB_WORKSPACE/artifacts/external/noto-fonts/other/NotoSansYi-Regular.ttf^android_x86_64 $GITHUB_WORKSPACE/artifacts/external/noto-fonts/other/NotoSansYi-Regular.ttf^android_x86_64/addition_copy_files.output
 
-echo "building NotoSerif-Bold.ttf^android_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja NotoSerif-Bold.ttf,android_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/noto-fonts/other/NotoSerif-Bold.ttf^android_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/noto-fonts/NotoSerif-Bold.ttf^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/noto-fonts/other/NotoSerif-Bold.ttf^android_x86_64
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/noto-fonts/NotoSerif-Bold.ttf^android_x86_64.output $GITHUB_WORKSPACE/artifacts/external/noto-fonts/other/NotoSerif-Bold.ttf^android_x86_64 $GITHUB_WORKSPACE/artifacts/external/noto-fonts/other/NotoSerif-Bold.ttf^android_x86_64/addition_copy_files.output
-
-echo "building NotoSerif-BoldItalic.ttf^android_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja NotoSerif-BoldItalic.ttf,android_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/noto-fonts/other/NotoSerif-BoldItalic.ttf^android_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/noto-fonts/NotoSerif-BoldItalic.ttf^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/noto-fonts/other/NotoSerif-BoldItalic.ttf^android_x86_64
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/noto-fonts/NotoSerif-BoldItalic.ttf^android_x86_64.output $GITHUB_WORKSPACE/artifacts/external/noto-fonts/other/NotoSerif-BoldItalic.ttf^android_x86_64 $GITHUB_WORKSPACE/artifacts/external/noto-fonts/other/NotoSerif-BoldItalic.ttf^android_x86_64/addition_copy_files.output
-
-echo "building NotoSerif-Italic.ttf^android_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja NotoSerif-Italic.ttf,android_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/noto-fonts/other/NotoSerif-Italic.ttf^android_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/noto-fonts/NotoSerif-Italic.ttf^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/noto-fonts/other/NotoSerif-Italic.ttf^android_x86_64
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/noto-fonts/NotoSerif-Italic.ttf^android_x86_64.output $GITHUB_WORKSPACE/artifacts/external/noto-fonts/other/NotoSerif-Italic.ttf^android_x86_64 $GITHUB_WORKSPACE/artifacts/external/noto-fonts/other/NotoSerif-Italic.ttf^android_x86_64/addition_copy_files.output
-
-echo "building NotoSerif-Regular.ttf^android_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja NotoSerif-Regular.ttf,android_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/noto-fonts/other/NotoSerif-Regular.ttf^android_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/noto-fonts/NotoSerif-Regular.ttf^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/noto-fonts/other/NotoSerif-Regular.ttf^android_x86_64
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/noto-fonts/NotoSerif-Regular.ttf^android_x86_64.output $GITHUB_WORKSPACE/artifacts/external/noto-fonts/other/NotoSerif-Regular.ttf^android_x86_64 $GITHUB_WORKSPACE/artifacts/external/noto-fonts/other/NotoSerif-Regular.ttf^android_x86_64/addition_copy_files.output
-
 echo "building NotoSerifArmenian-VF.ttf^android_x86_64"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja NotoSerifArmenian-VF.ttf,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/noto-fonts/other/NotoSerifArmenian-VF.ttf^android_x86_64
@@ -1007,12 +995,6 @@ prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/st
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/noto-fonts/other/NotoSerifBengali-VF.ttf^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/noto-fonts/NotoSerifBengali-VF.ttf^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/noto-fonts/other/NotoSerifBengali-VF.ttf^android_x86_64
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/noto-fonts/NotoSerifBengali-VF.ttf^android_x86_64.output $GITHUB_WORKSPACE/artifacts/external/noto-fonts/other/NotoSerifBengali-VF.ttf^android_x86_64 $GITHUB_WORKSPACE/artifacts/external/noto-fonts/other/NotoSerifBengali-VF.ttf^android_x86_64/addition_copy_files.output
-
-echo "building NotoSerifCJK-Regular.ttc^android_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja NotoSerifCJK-Regular.ttc,android_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/noto-fonts/cjk/NotoSerifCJK-Regular.ttc^android_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/noto-fonts/NotoSerifCJK-Regular.ttc^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/noto-fonts/cjk/NotoSerifCJK-Regular.ttc^android_x86_64
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/noto-fonts/NotoSerifCJK-Regular.ttc^android_x86_64.output $GITHUB_WORKSPACE/artifacts/external/noto-fonts/cjk/NotoSerifCJK-Regular.ttc^android_x86_64 $GITHUB_WORKSPACE/artifacts/external/noto-fonts/cjk/NotoSerifCJK-Regular.ttc^android_x86_64/addition_copy_files.output
 
 echo "building NotoSerifDevanagari-VF.ttf^android_x86_64"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja NotoSerifDevanagari-VF.ttf,android_x86_64
@@ -1031,6 +1013,12 @@ prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/st
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/noto-fonts/other/NotoSerifEthiopic-VF.ttf^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/noto-fonts/NotoSerifEthiopic-VF.ttf^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/noto-fonts/other/NotoSerifEthiopic-VF.ttf^android_x86_64
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/noto-fonts/NotoSerifEthiopic-VF.ttf^android_x86_64.output $GITHUB_WORKSPACE/artifacts/external/noto-fonts/other/NotoSerifEthiopic-VF.ttf^android_x86_64 $GITHUB_WORKSPACE/artifacts/external/noto-fonts/other/NotoSerifEthiopic-VF.ttf^android_x86_64/addition_copy_files.output
+
+echo "building NotoNaskhArabicUI-Regular.ttf^android_x86_64"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja NotoNaskhArabicUI-Regular.ttf,android_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/noto-fonts/other/NotoNaskhArabicUI-Regular.ttf^android_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/noto-fonts/NotoNaskhArabicUI-Regular.ttf^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/noto-fonts/other/NotoNaskhArabicUI-Regular.ttf^android_x86_64
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/noto-fonts/NotoNaskhArabicUI-Regular.ttf^android_x86_64.output $GITHUB_WORKSPACE/artifacts/external/noto-fonts/other/NotoNaskhArabicUI-Regular.ttf^android_x86_64 $GITHUB_WORKSPACE/artifacts/external/noto-fonts/other/NotoNaskhArabicUI-Regular.ttf^android_x86_64/addition_copy_files.output
 
 echo "building NotoSerifGeorgian-VF.ttf^android_x86_64"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja NotoSerifGeorgian-VF.ttf,android_x86_64
@@ -1092,6 +1080,12 @@ mkdir -p $GITHUB_WORKSPACE/artifacts/external/noto-fonts/other/NotoSerifLao-Regu
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/noto-fonts/NotoSerifLao-Regular.ttf^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/noto-fonts/other/NotoSerifLao-Regular.ttf^android_x86_64
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/noto-fonts/NotoSerifLao-Regular.ttf^android_x86_64.output $GITHUB_WORKSPACE/artifacts/external/noto-fonts/other/NotoSerifLao-Regular.ttf^android_x86_64 $GITHUB_WORKSPACE/artifacts/external/noto-fonts/other/NotoSerifLao-Regular.ttf^android_x86_64/addition_copy_files.output
 
+echo "building NotoSansAdlam-VF.ttf^android_x86_64"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja NotoSansAdlam-VF.ttf,android_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/noto-fonts/other/NotoSansAdlam-VF.ttf^android_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/noto-fonts/NotoSansAdlam-VF.ttf^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/noto-fonts/other/NotoSansAdlam-VF.ttf^android_x86_64
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/noto-fonts/NotoSansAdlam-VF.ttf^android_x86_64.output $GITHUB_WORKSPACE/artifacts/external/noto-fonts/other/NotoSansAdlam-VF.ttf^android_x86_64 $GITHUB_WORKSPACE/artifacts/external/noto-fonts/other/NotoSansAdlam-VF.ttf^android_x86_64/addition_copy_files.output
+
 echo "building NotoSerifMalayalam-VF.ttf^android_x86_64"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja NotoSerifMalayalam-VF.ttf,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/noto-fonts/other/NotoSerifMalayalam-VF.ttf^android_x86_64
@@ -1152,11 +1146,18 @@ mkdir -p $GITHUB_WORKSPACE/artifacts/external/noto-fonts/other/NotoSerifTibetan-
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/noto-fonts/NotoSerifTibetan-VF.ttf^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/noto-fonts/other/NotoSerifTibetan-VF.ttf^android_x86_64
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/noto-fonts/NotoSerifTibetan-VF.ttf^android_x86_64.output $GITHUB_WORKSPACE/artifacts/external/noto-fonts/other/NotoSerifTibetan-VF.ttf^android_x86_64 $GITHUB_WORKSPACE/artifacts/external/noto-fonts/other/NotoSerifTibetan-VF.ttf^android_x86_64/addition_copy_files.output
 
+echo "building NotoSansAhom-Regular.otf^android_x86_64"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja NotoSansAhom-Regular.otf,android_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/noto-fonts/other/NotoSansAhom-Regular.otf^android_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/noto-fonts/NotoSansAhom-Regular.otf^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/noto-fonts/other/NotoSansAhom-Regular.otf^android_x86_64
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/noto-fonts/NotoSansAhom-Regular.otf^android_x86_64.output $GITHUB_WORKSPACE/artifacts/external/noto-fonts/other/NotoSansAhom-Regular.otf^android_x86_64 $GITHUB_WORKSPACE/artifacts/external/noto-fonts/other/NotoSansAhom-Regular.otf^android_x86_64/addition_copy_files.output
+
 echo "building NotoSerifYezidi-VF.ttf^android_x86_64"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja NotoSerifYezidi-VF.ttf,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/noto-fonts/other/NotoSerifYezidi-VF.ttf^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/noto-fonts/NotoSerifYezidi-VF.ttf^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/noto-fonts/other/NotoSerifYezidi-VF.ttf^android_x86_64
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/noto-fonts/NotoSerifYezidi-VF.ttf^android_x86_64.output $GITHUB_WORKSPACE/artifacts/external/noto-fonts/other/NotoSerifYezidi-VF.ttf^android_x86_64 $GITHUB_WORKSPACE/artifacts/external/noto-fonts/other/NotoSerifYezidi-VF.ttf^android_x86_64/addition_copy_files.output
+
 
 rm -rf out
 
@@ -1166,6 +1167,7 @@ gh release --repo cibuilde/aosp-buildbot upload android12-gsi_01 external_noto-f
 
 du -ah -d1 external_noto-fonts*.tar.zst | sort -h
 
+
 if [ ! -f "$GITHUB_WORKSPACE/cache/art.tar.zst" ]; then
   echo "Compressing art -> art.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/art.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/art/ .
@@ -1174,9 +1176,6 @@ if [ ! -f "$GITHUB_WORKSPACE/cache/external_noto-fonts.tar.zst" ]; then
   echo "Compressing external/noto-fonts -> external_noto-fonts.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/external_noto-fonts.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/noto-fonts/ .
 fi
-if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_build-tools.tar.zst" ]; then
-  echo "Compressing prebuilts/build-tools -> prebuilts_build-tools.tar.zst"
-  tar -cf $GITHUB_WORKSPACE/cache/prebuilts_build-tools.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/prebuilts/build-tools/ .
-fi
+
 
 rm -rf aosp

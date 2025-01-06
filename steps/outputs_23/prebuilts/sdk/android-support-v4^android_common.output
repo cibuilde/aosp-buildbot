@@ -1,6 +1,5 @@
 out/soong/.intermediates/prebuilts/sdk/current/support/android-support-v4/android_common/combined/android-support-v4.jar
 out/soong/.intermediates/prebuilts/sdk/current/support/android-support-v4/android_common/extra_packages
-out/soong/.intermediates/prebuilts/sdk/current/support/android-support-v4/android_common/manifest_fixer/AndroidManifest.xml
 out/soong/.intermediates/prebuilts/sdk/current/support/android-support-v4/android_common/manifest_merger/AndroidManifest.xml
 out/soong/.intermediates/prebuilts/sdk/current/support/android-support-v4/android_common/package-res.apk
 out/soong/.intermediates/prebuilts/sdk/current/support/android-support-v4/android_common/turbine-combined/android-support-v4.jar

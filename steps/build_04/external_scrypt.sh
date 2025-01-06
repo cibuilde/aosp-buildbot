@@ -1,6 +1,5 @@
-set -e
 
-echo "entering external/scrypt"
+set -e
 
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
@@ -13,12 +12,13 @@ if [ -d "$GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86" ]; then
   mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86 prebuilts/clang/host/linux-x86
 fi
 
+echo "Preparing for external/scrypt"
+
 clone_depth_platform bionic
 clone_depth_platform external/boringssl
 clone_depth_platform external/libcxx
 clone_depth_platform external/libcxxabi
 clone_depth_platform external/scrypt
-clone_project platform/prebuilts/build-tools prebuilts/build-tools android12-gsi "/linux-x86/bin" "/linux-x86/lib64" "/path" "/common"
 clone_depth_platform prebuilts/gcc/linux-x86/x86/x86_64-linux-android-4.9
 
 rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/libc^android_vendor.31_x86_64_shared/ .
@@ -29,6 +29,7 @@ mkdir -p $GITHUB_WORKSPACE/artifacts/external/scrypt/libscrypt_static^android_ve
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/scrypt/libscrypt_static^android_vendor.31_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/scrypt/libscrypt_static^android_vendor.31_x86_64_static
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/external/scrypt/libscrypt_static^android_vendor.31_x86_64_static.output $GITHUB_WORKSPACE/artifacts/external/scrypt/libscrypt_static^android_vendor.31_x86_64_static $GITHUB_WORKSPACE/artifacts/external/scrypt/libscrypt_static^android_vendor.31_x86_64_static/addition_copy_files.output
 
+
 rm -rf out
 
 cd $GITHUB_WORKSPACE/
@@ -36,6 +37,7 @@ tar -cf external_scrypt.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPA
 gh release --repo cibuilde/aosp-buildbot upload android12-gsi_04 external_scrypt.tar.zst --clobber
 
 du -ah -d1 external_scrypt*.tar.zst | sort -h
+
 
 if [ ! -f "$GITHUB_WORKSPACE/cache/bionic.tar.zst" ]; then
   echo "Compressing bionic -> bionic.tar.zst"
@@ -57,13 +59,10 @@ if [ ! -f "$GITHUB_WORKSPACE/cache/external_scrypt.tar.zst" ]; then
   echo "Compressing external/scrypt -> external_scrypt.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/external_scrypt.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/scrypt/ .
 fi
-if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_build-tools.tar.zst" ]; then
-  echo "Compressing prebuilts/build-tools -> prebuilts_build-tools.tar.zst"
-  tar -cf $GITHUB_WORKSPACE/cache/prebuilts_build-tools.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/prebuilts/build-tools/ .
-fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_gcc_linux-x86_x86_x86_64-linux-android-4.9.tar.zst" ]; then
   echo "Compressing prebuilts/gcc/linux-x86/x86/x86_64-linux-android-4.9 -> prebuilts_gcc_linux-x86_x86_x86_64-linux-android-4.9.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/prebuilts_gcc_linux-x86_x86_x86_64-linux-android-4.9.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/prebuilts/gcc/linux-x86/x86/x86_64-linux-android-4.9/ .
 fi
+
 
 rm -rf aosp

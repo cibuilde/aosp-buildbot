@@ -7,7 +7,7 @@ env:
   branch: 'android12-gsi'
   GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 jobs:
-  build_6:
+  build_06:
     runs-on: ubuntu-22.04
     steps:
     - uses: actions/checkout@main
@@ -704,6 +704,10 @@ jobs:
       with:
         path: cache/packages_modules_Gki.tar.zst
         key: packages_modules_Gki@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/packages_modules_ModuleMetadata.tar.zst
+        key: packages_modules_ModuleMetadata@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/packages_modules_NetworkStack.tar.zst

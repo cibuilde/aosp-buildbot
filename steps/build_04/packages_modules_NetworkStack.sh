@@ -1,6 +1,5 @@
-set -e
 
-echo "entering packages/modules/NetworkStack"
+set -e
 
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
@@ -13,15 +12,16 @@ if [ -d "$GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86" ]; then
   mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86 prebuilts/clang/host/linux-x86
 fi
 
+echo "Preparing for packages/modules/NetworkStack"
+
 clone_sparse_exclude frameworks/base "!/data/videos" "!/media/tests/contents" "!/docs" "!/native/graphics/jni/fuzz" "!/cmd/incidentd/testdata"
 clone_depth_platform frameworks/native
 clone_depth_platform packages/modules/Connectivity
 clone_depth_platform packages/modules/NetworkStack
-clone_project platform/prebuilts/build-tools prebuilts/build-tools android12-gsi "/linux-x86/bin" "/linux-x86/lib64" "/path" "/common"
 clone_depth_platform system/tools/aidl
 
-rsync -a -r $GITHUB_WORKSPACE/downloads/build/blueprint/bpmodify^linux_glibc_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcxx/libc++^linux_glibc_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/NetworkStack/common/networkstackclient/ipmemorystore-aidl-interfaces-api^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/NetworkStack/common/networkstackclient/networkstack-aidl-interfaces-api^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/tools/aidl/aidl^linux_glibc_x86_64/ .
 
 echo "building ipmemorystore-aidl-interfaces-V10-java-source^"
@@ -48,6 +48,7 @@ mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/NetworkStack/common/networ
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/packages/modules/NetworkStack/networkstack-aidl-interfaces-api^.output . $GITHUB_WORKSPACE/artifacts/packages/modules/NetworkStack/common/networkstackclient/networkstack-aidl-interfaces-api^
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/packages/modules/NetworkStack/networkstack-aidl-interfaces-api^.output $GITHUB_WORKSPACE/artifacts/packages/modules/NetworkStack/common/networkstackclient/networkstack-aidl-interfaces-api^ $GITHUB_WORKSPACE/artifacts/packages/modules/NetworkStack/common/networkstackclient/networkstack-aidl-interfaces-api^/addition_copy_files.output
 
+
 rm -rf out
 
 cd $GITHUB_WORKSPACE/
@@ -55,6 +56,7 @@ tar -cf packages_modules_NetworkStack.tar.zst --use-compress-program zstdmt -C $
 gh release --repo cibuilde/aosp-buildbot upload android12-gsi_04 packages_modules_NetworkStack.tar.zst --clobber
 
 du -ah -d1 packages_modules_NetworkStack*.tar.zst | sort -h
+
 
 if [ ! -f "$GITHUB_WORKSPACE/cache/frameworks_base.tar.zst" ]; then
   echo "Compressing frameworks/base -> frameworks_base.tar.zst"
@@ -72,13 +74,10 @@ if [ ! -f "$GITHUB_WORKSPACE/cache/packages_modules_NetworkStack.tar.zst" ]; the
   echo "Compressing packages/modules/NetworkStack -> packages_modules_NetworkStack.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/packages_modules_NetworkStack.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/packages/modules/NetworkStack/ .
 fi
-if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_build-tools.tar.zst" ]; then
-  echo "Compressing prebuilts/build-tools -> prebuilts_build-tools.tar.zst"
-  tar -cf $GITHUB_WORKSPACE/cache/prebuilts_build-tools.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/prebuilts/build-tools/ .
-fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/system_tools_aidl.tar.zst" ]; then
   echo "Compressing system/tools/aidl -> system_tools_aidl.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/system_tools_aidl.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/system/tools/aidl/ .
 fi
+
 
 rm -rf aosp

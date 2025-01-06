@@ -1,6 +1,5 @@
-set -e
 
-echo "entering system/ca-certificates"
+set -e
 
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
@@ -13,7 +12,8 @@ if [ -d "$GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86" ]; then
   mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86 prebuilts/clang/host/linux-x86
 fi
 
-clone_project platform/prebuilts/build-tools prebuilts/build-tools android12-gsi "/linux-x86/bin" "/linux-x86/lib64" "/path" "/common"
+echo "Preparing for system/ca-certificates"
+
 clone_depth_platform system/ca-certificates
 
 
@@ -1163,6 +1163,7 @@ mkdir -p $GITHUB_WORKSPACE/artifacts/system/ca-certificates/wfa_certs/target-cac
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/ca-certificates/target-cacert-wifi-ea93cb5b.0^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/ca-certificates/wfa_certs/target-cacert-wifi-ea93cb5b.0^android_x86_64
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/system/ca-certificates/target-cacert-wifi-ea93cb5b.0^android_x86_64.output $GITHUB_WORKSPACE/artifacts/system/ca-certificates/wfa_certs/target-cacert-wifi-ea93cb5b.0^android_x86_64 $GITHUB_WORKSPACE/artifacts/system/ca-certificates/wfa_certs/target-cacert-wifi-ea93cb5b.0^android_x86_64/addition_copy_files.output
 
+
 rm -rf out
 
 cd $GITHUB_WORKSPACE/
@@ -1171,13 +1172,11 @@ gh release --repo cibuilde/aosp-buildbot upload android12-gsi_01 system_ca-certi
 
 du -ah -d1 system_ca-certificates*.tar.zst | sort -h
 
-if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_build-tools.tar.zst" ]; then
-  echo "Compressing prebuilts/build-tools -> prebuilts_build-tools.tar.zst"
-  tar -cf $GITHUB_WORKSPACE/cache/prebuilts_build-tools.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/prebuilts/build-tools/ .
-fi
+
 if [ ! -f "$GITHUB_WORKSPACE/cache/system_ca-certificates.tar.zst" ]; then
   echo "Compressing system/ca-certificates -> system_ca-certificates.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/system_ca-certificates.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/system/ca-certificates/ .
 fi
+
 
 rm -rf aosp

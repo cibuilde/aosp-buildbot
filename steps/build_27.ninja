@@ -6,20 +6,24 @@ pool highmem_pool
 
 include ninja/global.ninja
 
-include ninja/frameworks/opt/telephony/telephony-common^android_common.ninja
+include ninja/frameworks/opt/telephony/telephony-common^android_common^00.ninja
+include ninja/frameworks/opt/telephony/telephony-common^android_common^27.ninja
 include ninja/packages/apps/EmergencyInfo/EmergencyInfo-lib^android_common.ninja
 include ninja/packages/modules/Permission/PermissionController/PermissionController^android_common_apex30.ninja
+include ninja/packages/modules/Permission/com.android.permission^android_common_com.android.permission_image.ninja
 
-build telephony-common,android_common: phony out/soong/.intermediates/frameworks/opt/telephony/telephony-common/android_common/aligned/telephony-common.jar out/soong/.intermediates/frameworks/opt/telephony/telephony-common/android_common/combined/telephony-common.jar out/soong/.intermediates/frameworks/opt/telephony/telephony-common/android_common/dex-withres-aligned/telephony-common.jar out/soong/.intermediates/frameworks/opt/telephony/telephony-common/android_common/dex-withres/telephony-common.jar out/soong/.intermediates/frameworks/opt/telephony/telephony-common/android_common/dex/telephony-common.jar out/soong/.intermediates/frameworks/opt/telephony/telephony-common/android_common/jarjar/telephony-common.jar out/soong/.intermediates/frameworks/opt/telephony/telephony-common/android_common/javac/telephony-common.jar out/soong/.intermediates/frameworks/opt/telephony/telephony-common/android_common/turbine-combined/telephony-common.jar out/soong/.intermediates/frameworks/opt/telephony/telephony-common/android_common/turbine-jarjar/telephony-common.jar out/soong/.intermediates/frameworks/opt/telephony/telephony-common/android_common/turbine/telephony-common.jar out/soong/.intermediates/frameworks/opt/telephony/telephony-common/android_common/withres/telephony-common.jar
+build telephony-common,android_common: phony out/soong/.intermediates/frameworks/opt/telephony/telephony-common/android_common/dex-withres-aligned/telephony-common.jar out/soong/.intermediates/frameworks/opt/telephony/telephony-common/android_common/jarjar/telephony-common.jar out/soong/.intermediates/frameworks/opt/telephony/telephony-common/android_common/turbine-jarjar/telephony-common.jar out/soong/.intermediates/frameworks/opt/telephony/telephony-common/android_common/withres/telephony-common.jar
 
 build frameworks_opt_telephony-targets: phony telephony-common,android_common
 
-build EmergencyInfo-lib,android_common: phony out/soong/.intermediates/packages/apps/EmergencyInfo/EmergencyInfo-lib/android_common/combined/EmergencyInfo-lib.jar out/soong/.intermediates/packages/apps/EmergencyInfo/EmergencyInfo-lib/android_common/manifest_fixer/AndroidManifest.xml out/soong/.intermediates/packages/apps/EmergencyInfo/EmergencyInfo-lib/android_common/package-res.apk out/soong/.intermediates/packages/apps/EmergencyInfo/EmergencyInfo-lib/android_common/turbine-combined/EmergencyInfo-lib.jar
+build EmergencyInfo-lib,android_common: phony out/soong/.intermediates/packages/apps/EmergencyInfo/EmergencyInfo-lib/android_common/combined/EmergencyInfo-lib.jar out/soong/.intermediates/packages/apps/EmergencyInfo/EmergencyInfo-lib/android_common/package-res.apk out/soong/.intermediates/packages/apps/EmergencyInfo/EmergencyInfo-lib/android_common/turbine-combined/EmergencyInfo-lib.jar
 
 build packages_apps_EmergencyInfo-targets: phony EmergencyInfo-lib,android_common
 
+build com.android.permission,android_common_com.android.permission_image: phony out/soong/.intermediates/packages/modules/Permission/com.android.permission/android_common_com.android.permission_image/apex_manifest.pb out/soong/.intermediates/packages/modules/Permission/com.android.permission/android_common_com.android.permission_image/apex_pubkey out/soong/.intermediates/packages/modules/Permission/com.android.permission/android_common_com.android.permission_image/com.android.permission.capex
+
 build PermissionController,android_common_apex30: phony out/soong/.intermediates/packages/modules/Permission/PermissionController/PermissionController/android_common_apex30/PermissionController.apk
 
-build packages_modules_Permission-targets: phony PermissionController,android_common_apex30
+build packages_modules_Permission-targets: phony PermissionController,android_common_apex30 com.android.permission,android_common_com.android.permission_image
 
 

@@ -1,4 +1,2 @@
-out/soong/.intermediates/hardware/interfaces/gnss/measurement_corrections/1.1/android.hardware.gnss.measurement_corrections-V1.1-java/android_common/turbine/android.hardware.gnss.measurement_corrections-V1.1-java.jar
-out/soong/.intermediates/hardware/interfaces/gnss/measurement_corrections/1.1/android.hardware.gnss.measurement_corrections-V1.1-java/android_common/turbine-combined/android.hardware.gnss.measurement_corrections-V1.1-java.jar
-out/soong/.intermediates/hardware/interfaces/gnss/measurement_corrections/1.1/android.hardware.gnss.measurement_corrections-V1.1-java/android_common/javac/android.hardware.gnss.measurement_corrections-V1.1-java.jar
 out/soong/.intermediates/hardware/interfaces/gnss/measurement_corrections/1.1/android.hardware.gnss.measurement_corrections-V1.1-java/android_common/combined/android.hardware.gnss.measurement_corrections-V1.1-java.jar
+out/soong/.intermediates/hardware/interfaces/gnss/measurement_corrections/1.1/android.hardware.gnss.measurement_corrections-V1.1-java/android_common/turbine-combined/android.hardware.gnss.measurement_corrections-V1.1-java.jar

@@ -1,4 +1,2 @@
-out/soong/.intermediates/hardware/interfaces/vibrator/1.2/android.hardware.vibrator-V1.2-java/android_common/turbine/android.hardware.vibrator-V1.2-java.jar
-out/soong/.intermediates/hardware/interfaces/vibrator/1.2/android.hardware.vibrator-V1.2-java/android_common/turbine-combined/android.hardware.vibrator-V1.2-java.jar
-out/soong/.intermediates/hardware/interfaces/vibrator/1.2/android.hardware.vibrator-V1.2-java/android_common/javac/android.hardware.vibrator-V1.2-java.jar
 out/soong/.intermediates/hardware/interfaces/vibrator/1.2/android.hardware.vibrator-V1.2-java/android_common/combined/android.hardware.vibrator-V1.2-java.jar
+out/soong/.intermediates/hardware/interfaces/vibrator/1.2/android.hardware.vibrator-V1.2-java/android_common/turbine-combined/android.hardware.vibrator-V1.2-java.jar

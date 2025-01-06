@@ -1,5 +1,3 @@
-out/soong/.intermediates/frameworks/base/libs/hwui/framework-graphics/android_common/turbine/framework-graphics.jar
-out/soong/.intermediates/frameworks/base/libs/hwui/framework-graphics/android_common/turbine-combined/framework-graphics.jar
-out/soong/.intermediates/frameworks/base/libs/hwui/framework-graphics/android_common/javac/framework-graphics.jar
-out/soong/.intermediates/frameworks/base/libs/hwui/framework-graphics/android_common/dex/framework-graphics.jar
 out/soong/.intermediates/frameworks/base/libs/hwui/framework-graphics/android_common/aligned/framework-graphics.jar
+out/soong/.intermediates/frameworks/base/libs/hwui/framework-graphics/android_common/javac/framework-graphics.jar
+out/soong/.intermediates/frameworks/base/libs/hwui/framework-graphics/android_common/turbine-combined/framework-graphics.jar

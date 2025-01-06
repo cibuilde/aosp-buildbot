@@ -1,5 +1,3 @@
 out/soong/.intermediates/packages/modules/StatsD/lib/libkll/proto/libkll-protos/android_x86_x86_64_static/gen/proto/aggregator.pb.h
 out/soong/.intermediates/packages/modules/StatsD/lib/libkll/proto/libkll-protos/android_x86_x86_64_static/gen/proto/kll-quantiles.pb.h
 out/soong/.intermediates/packages/modules/StatsD/lib/libkll/proto/libkll-protos/android_x86_x86_64_static/libkll-protos.a
-out/soong/.intermediates/packages/modules/StatsD/lib/libkll/proto/libkll-protos/android_x86_x86_64_static/obj/.intermediates/packages/modules/StatsD/lib/libkll/proto/libkll-protos/android_x86_x86_64_static/gen/proto/aggregator.pb.o
-out/soong/.intermediates/packages/modules/StatsD/lib/libkll/proto/libkll-protos/android_x86_x86_64_static/obj/.intermediates/packages/modules/StatsD/lib/libkll/proto/libkll-protos/android_x86_x86_64_static/gen/proto/kll-quantiles.pb.o

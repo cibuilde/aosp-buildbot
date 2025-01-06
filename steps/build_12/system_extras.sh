@@ -1,6 +1,5 @@
-set -e
 
-echo "entering system/extras"
+set -e
 
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
@@ -13,10 +12,11 @@ if [ -d "$GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86" ]; then
   mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86 prebuilts/clang/host/linux-x86
 fi
 
+echo "Preparing for system/extras"
+
 clone_depth_platform bionic
 clone_depth_platform build/soong
 clone_depth_platform external/libcxx
-clone_depth_platform external/libcxxabi
 clone_depth_platform external/rust/crates/android_log-sys
 clone_depth_platform external/rust/crates/android_logger
 clone_depth_platform external/rust/crates/anyhow
@@ -51,7 +51,6 @@ clone_depth_platform external/rust/cxx
 clone_depth_platform external/zlib
 clone_depth_platform frameworks/native
 clone_depth_platform libcore
-clone_project platform/prebuilts/build-tools prebuilts/build-tools android12-gsi "/linux-x86/bin" "/linux-x86/lib64" "/path" "/common"
 clone_project platform/prebuilts/rust prebuilts/rust android12-gsi "/bootstrap" "/linux-x86/1.51.0"
 clone_depth_platform system/core
 clone_sparse_exclude system/extras "!/simpleperf/scripts" "!/simpleperf/testdata" "!/simpleperf/demo" "!/simpleperf/doc" "!/memory_replay/traces" "!/ioshark/*.tgz" "!/ioshark/*.tar.gz"
@@ -59,122 +58,34 @@ clone_depth_platform system/libbase
 clone_depth_platform system/logging
 clone_depth_platform system/server_configurable_flags
 
-rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/crtbegin_dynamic^android_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/crtbegin_so^android_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/crtend_android^android_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/crtend_so^android_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/libc^android_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/crtbegin_so^android_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/crtend_so^android_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/crtbegin_dynamic^android_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/crtend_android^android_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libdl/libdl^android_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libm/libm^android_x86_64_shared/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcxx/libc++^android_x86_64_shared/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/rust/crates/aho-corasick/libaho_corasick^linux_glibc_x86_64_rlib_rlib-std/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/rust/crates/android_log-sys/libandroid_log_sys^android_x86_64_dylib/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/rust/crates/android_logger/libandroid_logger^android_x86_64_dylib/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/rust/crates/anyhow/libanyhow^android_x86_64_dylib/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/rust/crates/anyhow/libanyhow^android_x86_64_rlib_dylib-std/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/rust/crates/bindgen/bindgen^linux_glibc_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/rust/crates/bindgen/copy_bindgen_build_out^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/rust/crates/bindgen/libbindgen^linux_glibc_x86_64_rlib_rlib-std/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/rust/crates/bitflags/libbitflags^linux_glibc_x86_64_rlib_rlib-std/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/rust/crates/byteorder/libbyteorder^android_x86_64_dylib/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/rust/crates/cexpr/libcexpr^linux_glibc_x86_64_rlib_rlib-std/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/rust/crates/cfg-if/libcfg_if^android_x86_64_dylib/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/rust/crates/cfg-if/libcfg_if^linux_glibc_x86_64_rlib_rlib-std/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/rust/crates/chrono/libchrono^android_x86_64_dylib/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/rust/crates/clang-sys/copy_clang-sys_build_out^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/rust/crates/clang-sys/libclang_sys^linux_glibc_x86_64_rlib_rlib-std/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/rust/crates/clap/libclap^linux_glibc_x86_64_rlib_rlib-std/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/rust/crates/crc32fast/libcrc32fast^android_x86_64_dylib/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/rust/crates/either/libeither^linux_glibc_x86_64_rlib_rlib-std/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/rust/crates/env_logger/libenv_logger^android_x86_64_dylib/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/rust/crates/flate2/libflate2^android_x86_64_dylib/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/rust/crates/getrandom/libgetrandom^android_x86_64_dylib/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/rust/crates/glob/libglob^linux_glibc_x86_64_rlib_rlib-std/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/rust/crates/itoa/libitoa^android_x86_64_dylib/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/rust/crates/lazy_static/liblazy_static^android_x86_64_dylib/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/rust/crates/lazy_static/liblazy_static^linux_glibc_x86_64_rlib_rlib-std/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/rust/crates/lazycell/liblazycell^linux_glibc_x86_64_rlib_rlib-std/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/rust/crates/libc/liblibc^android_x86_64_dylib/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/rust/crates/libc/liblibc^linux_glibc_x86_64_rlib_rlib-std/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/rust/crates/libloading/liblibloading^linux_glibc_x86_64_rlib_rlib-std/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/rust/crates/libz-sys/liblibz_sys^android_x86_64_dylib/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/rust/crates/log/liblog_rust^android_x86_64_dylib/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/rust/crates/macaddr/libmacaddr^android_x86_64_dylib/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/rust/crates/memchr/libmemchr^linux_glibc_x86_64_rlib_rlib-std/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/rust/crates/nom/libnom^linux_glibc_x86_64_rlib_rlib-std/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/rust/crates/num-integer/libnum_integer^android_x86_64_dylib/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/rust/crates/num-traits/libnum_traits^android_x86_64_dylib/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/rust/crates/peeking_take_while/libpeeking_take_while^linux_glibc_x86_64_rlib_rlib-std/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/rust/crates/ppv-lite86/libppv_lite86^android_x86_64_dylib/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/rust/crates/proc-macro2/libproc_macro2^linux_glibc_x86_64_rlib_rlib-std/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/rust/crates/quote/libquote^linux_glibc_x86_64_rlib_rlib-std/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/rust/crates/rand/librand^android_x86_64_dylib/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/rust/crates/rand_chacha/librand_chacha^android_x86_64_dylib/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/rust/crates/rand_core/librand_core^android_x86_64_dylib/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/rust/crates/regex/libregex^linux_glibc_x86_64_rlib_rlib-std/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/rust/crates/regex-syntax/libregex_syntax^linux_glibc_x86_64_rlib_rlib-std/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/rust/crates/rustc-hash/librustc_hash^linux_glibc_x86_64_rlib_rlib-std/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/rust/crates/ryu/libryu^android_x86_64_dylib/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/rust/crates/serde/libserde^android_x86_64_dylib/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/rust/crates/serde_derive/libserde_derive^linux_glibc_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/rust/crates/serde_json/libserde_json^android_x86_64_dylib/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/rust/crates/shlex/libshlex^linux_glibc_x86_64_rlib_rlib-std/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/rust/crates/syn/libsyn^linux_glibc_x86_64_rlib_rlib-std/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/rust/crates/textwrap/libtextwrap^linux_glibc_x86_64_rlib_rlib-std/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/rust/crates/thiserror/libthiserror^android_x86_64_dylib/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/rust/crates/thiserror/libthiserror^android_x86_64_rlib_dylib-std/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/rust/crates/thiserror-impl/libthiserror_impl^linux_glibc_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/rust/crates/unicode-xid/libunicode_xid^linux_glibc_x86_64_rlib_rlib-std/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/rust/crates/uuid/libuuid^android_x86_64_dylib/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/rust/crates/which/libwhich^linux_glibc_x86_64_rlib_rlib-std/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/rust/crates/zip/libzip^android_x86_64_dylib/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/rust/cxx/libcxx^android_x86_64_rlib_dylib-std/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/rust/cxx/libcxxbridge05^android_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/rust/cxx/macro/libcxxbridge_macro^linux_glibc_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/zlib/libz^android_x86_64_shared/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/native/libs/binder/ndk/libbinder_ndk^android_x86_64_shared/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/native/libs/binder/rust/libbinder_ndk_bindgen^android_x86_64_source/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/native/libs/binder/rust/libbinder_ndk_sys^android_x86_64_dylib/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/native/libs/binder/rust/libbinder_rs^android_x86_64_dylib/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/rust/liballoc.rust_sysroot^android_x86_64_rlib/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/rust/libbacktrace_rs.rust_sysroot^android_x86_64_rlib/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/rust/libbacktrace_sys.rust_sysroot^android_x86_64_rlib/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/rust/libcfg_if.rust_sysroot^android_x86_64_rlib/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/rust/libcompiler_builtins.rust_sysroot^android_x86_64_rlib/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/rust/libcore.rust_sysroot^android_x86_64_rlib/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/rust/libgetopts^android_x86_64_dylib/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/rust/libhashbrown.rust_sysroot^android_x86_64_rlib/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/rust/liblibc.rust_sysroot^android_x86_64_rlib/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/rust/libpanic_abort.rust_sysroot^android_x86_64_rlib/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/rust/libprofiler_builtins.rust_sysroot^android_x86_64_rlib/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/rust/librustc_demangle.rust_sysroot^android_x86_64_rlib/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/rust/libstd^android_x86_64_dylib/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/rust/libstd^android_x86_64_rlib/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/rust/libterm^android_x86_64_dylib/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/rust/libtest^android_x86_64_dylib/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/rust/libunicode_width.rust_sysroot^android_x86_64_rlib/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/rust/libunwind.rust_sysroot^android_x86_64_rlib/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/system/core/libutils/libutils^android_x86_64_shared/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/system/extras/profcollectd/libprofcollectd/bindings/libbase/libprofcollect_libbase^android_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/extras/profcollectd/libprofcollectd/profcollectd_aidl_interface-rust^android_x86_64_dylib/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/extras/profcollectd/libprofcollectd/libprofcollectd^android_x86_64_dylib/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/extras/profcollectd/libprofcollectd/bindings/libbase/libprofcollect_libbase_rust^android_x86_64_rlib_dylib-std/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/system/extras/profcollectd/libprofcollectd/bindings/libflags/libprofcollect_libflags^android_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/extras/profcollectd/libprofcollectd/bindings/libflags/libprofcollect_libflags_rust^android_x86_64_rlib_dylib-std/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/extras/simpleperf/libsimpleperf_profcollect^android_x86_64_shared/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/system/extras/simpleperf/libsimpleperf_profcollect_bindgen^android_x86_64_rlib_dylib-std/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/system/extras/simpleperf/libsimpleperf_profcollect_bindgen^android_x86_64_source/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/extras/simpleperf/libsimpleperf_profcollect_rust^android_x86_64_rlib_dylib-std/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/system/extras/profcollectd/libprofcollectd/profcollectd_aidl_interface-rust-source^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/system/extras/profcollectd/libprofcollectd/profcollectd_aidl_interface-rust^android_x86_64_dylib/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/system/extras/profcollectd/libprofcollectd/profcollectd_aidl_interface-rust^android_x86_64_source/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/system/libbase/libbase^android_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^android_x86_64_shared/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/system/server_configurable_flags/libflags/server_configurable_flags^android_x86_64_shared/ .
-
-echo "building libprofcollectd^android_x86_64_dylib"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_12.ninja libprofcollectd,android_x86_64_dylib
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/extras/profcollectd/libprofcollectd/libprofcollectd^android_x86_64_dylib
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_12/system/extras/libprofcollectd^android_x86_64_dylib.output . $GITHUB_WORKSPACE/artifacts/system/extras/profcollectd/libprofcollectd/libprofcollectd^android_x86_64_dylib
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_12/system/extras/libprofcollectd^android_x86_64_dylib.output $GITHUB_WORKSPACE/artifacts/system/extras/profcollectd/libprofcollectd/libprofcollectd^android_x86_64_dylib $GITHUB_WORKSPACE/artifacts/system/extras/profcollectd/libprofcollectd/libprofcollectd^android_x86_64_dylib/addition_copy_files.output
 
 echo "building profcollectctl^android_x86_64"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_12.ninja profcollectctl,android_x86_64
@@ -188,6 +99,13 @@ mkdir -p $GITHUB_WORKSPACE/artifacts/system/extras/profcollectd/profcollectd^and
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_12/system/extras/profcollectd^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/extras/profcollectd/profcollectd^android_x86_64
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_12/system/extras/profcollectd^android_x86_64.output $GITHUB_WORKSPACE/artifacts/system/extras/profcollectd/profcollectd^android_x86_64 $GITHUB_WORKSPACE/artifacts/system/extras/profcollectd/profcollectd^android_x86_64/addition_copy_files.output
 
+echo "building libprofcollectd^android_x86_64_dylib"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_12.ninja libprofcollectd,android_x86_64_dylib
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/extras/profcollectd/libprofcollectd/libprofcollectd^android_x86_64_dylib
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_12/system/extras/libprofcollectd^android_x86_64_dylib.output . $GITHUB_WORKSPACE/artifacts/system/extras/profcollectd/libprofcollectd/libprofcollectd^android_x86_64_dylib
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_12/system/extras/libprofcollectd^android_x86_64_dylib.output $GITHUB_WORKSPACE/artifacts/system/extras/profcollectd/libprofcollectd/libprofcollectd^android_x86_64_dylib $GITHUB_WORKSPACE/artifacts/system/extras/profcollectd/libprofcollectd/libprofcollectd^android_x86_64_dylib/addition_copy_files.output
+
+
 rm -rf out
 
 cd $GITHUB_WORKSPACE/
@@ -195,6 +113,7 @@ tar -cf system_extras.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE
 gh release --repo cibuilde/aosp-buildbot upload android12-gsi_12 system_extras.tar.zst --clobber
 
 du -ah -d1 system_extras*.tar.zst | sort -h
+
 
 if [ ! -f "$GITHUB_WORKSPACE/cache/bionic.tar.zst" ]; then
   echo "Compressing bionic -> bionic.tar.zst"
@@ -207,10 +126,6 @@ fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/external_libcxx.tar.zst" ]; then
   echo "Compressing external/libcxx -> external_libcxx.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/external_libcxx.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/libcxx/ .
-fi
-if [ ! -f "$GITHUB_WORKSPACE/cache/external_libcxxabi.tar.zst" ]; then
-  echo "Compressing external/libcxxabi -> external_libcxxabi.tar.zst"
-  tar -cf $GITHUB_WORKSPACE/cache/external_libcxxabi.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/libcxxabi/ .
 fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/external_rust_crates_android_log-sys.tar.zst" ]; then
   echo "Compressing external/rust/crates/android_log-sys -> external_rust_crates_android_log-sys.tar.zst"
@@ -348,10 +263,6 @@ if [ ! -f "$GITHUB_WORKSPACE/cache/libcore.tar.zst" ]; then
   echo "Compressing libcore -> libcore.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/libcore.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/libcore/ .
 fi
-if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_build-tools.tar.zst" ]; then
-  echo "Compressing prebuilts/build-tools -> prebuilts_build-tools.tar.zst"
-  tar -cf $GITHUB_WORKSPACE/cache/prebuilts_build-tools.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/prebuilts/build-tools/ .
-fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_rust.tar.zst" ]; then
   echo "Compressing prebuilts/rust -> prebuilts_rust.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/prebuilts_rust.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/prebuilts/rust/ .
@@ -376,5 +287,6 @@ if [ ! -f "$GITHUB_WORKSPACE/cache/system_server_configurable_flags.tar.zst" ]; 
   echo "Compressing system/server_configurable_flags -> system_server_configurable_flags.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/system_server_configurable_flags.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/system/server_configurable_flags/ .
 fi
+
 
 rm -rf aosp

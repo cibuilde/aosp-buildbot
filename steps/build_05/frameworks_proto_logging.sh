@@ -1,6 +1,5 @@
-set -e
 
-echo "entering frameworks/proto_logging"
+set -e
 
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
@@ -12,6 +11,8 @@ ln -sf $GITHUB_WORKSPACE/ninja .
 if [ -d "$GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86" ]; then
   mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86 prebuilts/clang/host/linux-x86
 fi
+
+echo "Preparing for frameworks/proto_logging"
 
 clone_depth_platform bionic
 clone_depth_platform external/fmtlib
@@ -26,7 +27,6 @@ clone_depth_platform hardware/libhardware
 clone_depth_platform hardware/libhardware_legacy
 clone_depth_platform hardware/ril
 clone_depth_platform packages/modules/StatsD
-clone_project platform/prebuilts/build-tools prebuilts/build-tools android12-gsi "/linux-x86/bin" "/linux-x86/lib64" "/path" "/common"
 clone_project platform/prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8 prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8 android12-gsi "/sysroot" "/lib/gcc/x86_64-linux/4.8.3" "/x86_64-linux/lib64" "/x86_64-linux/lib32"
 clone_depth_platform prebuilts/gcc/linux-x86/x86/x86_64-linux-android-4.9
 clone_depth_platform system/core
@@ -34,13 +34,14 @@ clone_depth_platform system/libbase
 clone_depth_platform system/logging
 clone_depth_platform system/media
 
-rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/cmd/dep_fixer/dep_fixer^linux_glibc_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/cmd/sbox/sbox^linux_glibc_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcxx/libc++^linux_glibc_x86_64_shared/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/protobuf/aprotoc^linux_glibc_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/protobuf/libprotobuf-cpp-full^linux_glibc_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/zlib/libz^linux_glibc_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/proto_logging/stats/libstats_proto_host^linux_glibc_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/proto_logging/stats/stats_log_api_gen/stats-log-api-gen^linux_glibc_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/proto_logging/stats/stats_log_api_gen/statslog.h^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/proto_logging/stats/stats_log_api_gen/statslog.cpp^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/libbase/libbase^linux_glibc_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^linux_glibc_x86_64_shared/ .
 
@@ -62,17 +63,18 @@ mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/proto_logging/stats/stats_log_ap
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/frameworks/proto_logging/stats-log-api-gen^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/frameworks/proto_logging/stats/stats_log_api_gen/stats-log-api-gen^linux_glibc_x86_64
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/frameworks/proto_logging/stats-log-api-gen^linux_glibc_x86_64.output $GITHUB_WORKSPACE/artifacts/frameworks/proto_logging/stats/stats_log_api_gen/stats-log-api-gen^linux_glibc_x86_64 $GITHUB_WORKSPACE/artifacts/frameworks/proto_logging/stats/stats_log_api_gen/stats-log-api-gen^linux_glibc_x86_64/addition_copy_files.output
 
+echo "building statslog.h^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja statslog.h,
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/proto_logging/stats/stats_log_api_gen/statslog.h^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/frameworks/proto_logging/statslog.h^.output . $GITHUB_WORKSPACE/artifacts/frameworks/proto_logging/stats/stats_log_api_gen/statslog.h^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/frameworks/proto_logging/statslog.h^.output $GITHUB_WORKSPACE/artifacts/frameworks/proto_logging/stats/stats_log_api_gen/statslog.h^ $GITHUB_WORKSPACE/artifacts/frameworks/proto_logging/stats/stats_log_api_gen/statslog.h^/addition_copy_files.output
+
 echo "building statslog.cpp^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja statslog.cpp,
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/proto_logging/stats/stats_log_api_gen/statslog.cpp^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/frameworks/proto_logging/statslog.cpp^.output . $GITHUB_WORKSPACE/artifacts/frameworks/proto_logging/stats/stats_log_api_gen/statslog.cpp^
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/frameworks/proto_logging/statslog.cpp^.output $GITHUB_WORKSPACE/artifacts/frameworks/proto_logging/stats/stats_log_api_gen/statslog.cpp^ $GITHUB_WORKSPACE/artifacts/frameworks/proto_logging/stats/stats_log_api_gen/statslog.cpp^/addition_copy_files.output
 
-echo "building statslog.h^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja statslog.h,
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/proto_logging/stats/stats_log_api_gen/statslog.h^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/frameworks/proto_logging/statslog.h^.output . $GITHUB_WORKSPACE/artifacts/frameworks/proto_logging/stats/stats_log_api_gen/statslog.h^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/frameworks/proto_logging/statslog.h^.output $GITHUB_WORKSPACE/artifacts/frameworks/proto_logging/stats/stats_log_api_gen/statslog.h^ $GITHUB_WORKSPACE/artifacts/frameworks/proto_logging/stats/stats_log_api_gen/statslog.h^/addition_copy_files.output
 
 rm -rf out
 
@@ -81,6 +83,7 @@ tar -cf frameworks_proto_logging.tar.zst --use-compress-program zstdmt -C $GITHU
 gh release --repo cibuilde/aosp-buildbot upload android12-gsi_05 frameworks_proto_logging.tar.zst --clobber
 
 du -ah -d1 frameworks_proto_logging*.tar.zst | sort -h
+
 
 if [ ! -f "$GITHUB_WORKSPACE/cache/bionic.tar.zst" ]; then
   echo "Compressing bionic -> bionic.tar.zst"
@@ -134,10 +137,6 @@ if [ ! -f "$GITHUB_WORKSPACE/cache/packages_modules_StatsD.tar.zst" ]; then
   echo "Compressing packages/modules/StatsD -> packages_modules_StatsD.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/packages_modules_StatsD.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/packages/modules/StatsD/ .
 fi
-if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_build-tools.tar.zst" ]; then
-  echo "Compressing prebuilts/build-tools -> prebuilts_build-tools.tar.zst"
-  tar -cf $GITHUB_WORKSPACE/cache/prebuilts_build-tools.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/prebuilts/build-tools/ .
-fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_gcc_linux-x86_host_x86_64-linux-glibc2.17-4.8.tar.zst" ]; then
   echo "Compressing prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8 -> prebuilts_gcc_linux-x86_host_x86_64-linux-glibc2.17-4.8.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/prebuilts_gcc_linux-x86_host_x86_64-linux-glibc2.17-4.8.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8/ .
@@ -162,5 +161,6 @@ if [ ! -f "$GITHUB_WORKSPACE/cache/system_media.tar.zst" ]; then
   echo "Compressing system/media -> system_media.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/system_media.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/system/media/ .
 fi
+
 
 rm -rf aosp

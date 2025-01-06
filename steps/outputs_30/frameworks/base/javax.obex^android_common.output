@@ -4,5 +4,4 @@ out/soong/.intermediates/frameworks/base/obex/javax.obex/android_common/dexpreop
 out/soong/.intermediates/frameworks/base/obex/javax.obex/android_common/dexpreopt/oat/x86/javalib.vdex
 out/soong/.intermediates/frameworks/base/obex/javax.obex/android_common/dexpreopt/oat/x86_64/javalib.odex
 out/soong/.intermediates/frameworks/base/obex/javax.obex/android_common/dexpreopt/oat/x86_64/javalib.vdex
-out/soong/.intermediates/frameworks/base/obex/javax.obex/android_common/javac/javax.obex.jar
 out/soong/.intermediates/frameworks/base/obex/javax.obex/android_common/turbine-combined/javax.obex.jar

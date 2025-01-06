@@ -1,8 +1,3 @@
-out/soong/.intermediates/frameworks/opt/net/ims/ims-common/android_common/turbine/ims-common.jar
-out/soong/.intermediates/frameworks/opt/net/ims/ims-common/android_common/turbine-combined/ims-common.jar
-out/soong/.intermediates/frameworks/opt/net/ims/ims-common/android_common/turbine-jarjar/ims-common.jar
-out/soong/.intermediates/frameworks/opt/net/ims/ims-common/android_common/javac/ims-common.jar
-out/soong/.intermediates/frameworks/opt/net/ims/ims-common/android_common/combined/ims-common.jar
-out/soong/.intermediates/frameworks/opt/net/ims/ims-common/android_common/jarjar/ims-common.jar
-out/soong/.intermediates/frameworks/opt/net/ims/ims-common/android_common/dex/ims-common.jar
 out/soong/.intermediates/frameworks/opt/net/ims/ims-common/android_common/aligned/ims-common.jar
+out/soong/.intermediates/frameworks/opt/net/ims/ims-common/android_common/jarjar/ims-common.jar
+out/soong/.intermediates/frameworks/opt/net/ims/ims-common/android_common/turbine-jarjar/ims-common.jar

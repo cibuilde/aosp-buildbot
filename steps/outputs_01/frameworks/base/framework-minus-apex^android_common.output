@@ -1,3 +1,4 @@
+out/soong/.intermediates/frameworks/base/framework-minus-apex/android_common/dexpreopt/dexpreopt.config
 out/soong/.intermediates/frameworks/base/framework-minus-apex/android_common/gen/logtags/frameworks/base/core/java/android/app/EventLogTags.java
 out/soong/.intermediates/frameworks/base/framework-minus-apex/android_common/gen/logtags/frameworks/base/core/java/android/app/admin/SecurityLogTags.java
 out/soong/.intermediates/frameworks/base/framework-minus-apex/android_common/gen/logtags/frameworks/base/core/java/android/content/EventLogTags.java
@@ -10,4 +11,3 @@ out/soong/.intermediates/frameworks/base/framework-minus-apex/android_common/gen
 out/soong/.intermediates/frameworks/base/framework-minus-apex/android_common/gen/logtags/frameworks/base/core/java/com/android/internal/logging/EventLogTags.java
 out/soong/.intermediates/frameworks/base/framework-minus-apex/android_common/gen/logtags/frameworks/base/core/java/com/android/server/DropboxLogTags.java
 out/soong/.intermediates/frameworks/base/framework-minus-apex/android_common/gen/logtags/frameworks/base/core/java/org/chromium/arc/EventLogTags.java
-out/soong/.intermediates/frameworks/base/framework-minus-apex/android_common/dexpreopt/dexpreopt.config

@@ -1,9 +1,2 @@
-out/soong/.intermediates/packages/modules/Permission/framework-s/framework-permission-s/android_common_apex30/gen/aidl/aidl0.srcjar
-out/soong/.intermediates/packages/modules/Permission/framework-s/framework-permission-s/android_common_apex30/turbine/framework-permission-s.jar
-out/soong/.intermediates/packages/modules/Permission/framework-s/framework-permission-s/android_common_apex30/turbine-combined/framework-permission-s.jar
-out/soong/.intermediates/packages/modules/Permission/framework-s/framework-permission-s/android_common_apex30/turbine-jarjar/framework-permission-s.jar
-out/soong/.intermediates/packages/modules/Permission/framework-s/framework-permission-s/android_common_apex30/javac/framework-permission-s.jar
-out/soong/.intermediates/packages/modules/Permission/framework-s/framework-permission-s/android_common_apex30/combined/framework-permission-s.jar
-out/soong/.intermediates/packages/modules/Permission/framework-s/framework-permission-s/android_common_apex30/jarjar/framework-permission-s.jar
-out/soong/.intermediates/packages/modules/Permission/framework-s/framework-permission-s/android_common_apex30/dex/framework-permission-s.jar
 out/soong/.intermediates/packages/modules/Permission/framework-s/framework-permission-s/android_common_apex30/aligned/framework-permission-s.jar
+out/soong/.intermediates/packages/modules/Permission/framework-s/framework-permission-s/android_common_apex30/turbine-jarjar/framework-permission-s.jar

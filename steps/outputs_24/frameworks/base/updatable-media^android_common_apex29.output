@@ -1,8 +1,2 @@
-out/soong/.intermediates/frameworks/base/apex/media/framework/updatable-media/android_common_apex29/turbine/updatable-media.jar
-out/soong/.intermediates/frameworks/base/apex/media/framework/updatable-media/android_common_apex29/turbine-combined/updatable-media.jar
-out/soong/.intermediates/frameworks/base/apex/media/framework/updatable-media/android_common_apex29/turbine-jarjar/updatable-media.jar
-out/soong/.intermediates/frameworks/base/apex/media/framework/updatable-media/android_common_apex29/javac/updatable-media.jar
-out/soong/.intermediates/frameworks/base/apex/media/framework/updatable-media/android_common_apex29/combined/updatable-media.jar
-out/soong/.intermediates/frameworks/base/apex/media/framework/updatable-media/android_common_apex29/jarjar/updatable-media.jar
-out/soong/.intermediates/frameworks/base/apex/media/framework/updatable-media/android_common_apex29/dex/updatable-media.jar
 out/soong/.intermediates/frameworks/base/apex/media/framework/updatable-media/android_common_apex29/aligned/updatable-media.jar
+out/soong/.intermediates/frameworks/base/apex/media/framework/updatable-media/android_common_apex29/turbine-jarjar/updatable-media.jar

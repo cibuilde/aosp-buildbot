@@ -14,48 +14,12 @@ jobs:
     - run: sudo apt update && sudo apt install -y ninja-build python2 libncurses5
     - uses: actions/cache@v4
       with:
-        path: cache/art.tar.zst
-        key: art@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/build_make.tar.zst
-        key: build_make@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
         path: cache/external_conscrypt.tar.zst
         key: external_conscrypt@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/external_icu.tar.zst
         key: external_icu@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_ims.tar.zst
-        key: external_ims@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_libphonenumber.tar.zst
-        key: external_libphonenumber@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/external_nist-sip.tar.zst
-        key: external_nist-sip@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/frameworks_base.tar.zst
-        key: frameworks_base@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/frameworks_libs_modules-utils.tar.zst
-        key: frameworks_libs_modules-utils@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/frameworks_libs_net.tar.zst
-        key: frameworks_libs_net@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/frameworks_native.tar.zst
-        key: frameworks_native@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/frameworks_opt_net_ims.tar.zst
@@ -68,14 +32,6 @@ jobs:
       with:
         path: cache/frameworks_opt_telephony.tar.zst
         key: frameworks_opt_telephony@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/hardware_interfaces.tar.zst
-        key: hardware_interfaces@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/libcore.tar.zst
-        key: libcore@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/packages_modules_Connectivity.tar.zst
@@ -106,38 +62,6 @@ jobs:
         key: packages_modules_Wifi@${{ env.branch }}
     - uses: actions/cache@v4
       with:
-        path: cache/packages_modules_common.tar.zst
-        key: packages_modules_common@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
         path: cache/packages_providers_MediaProvider.tar.zst
         key: packages_providers_MediaProvider@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/packages_services_Telephony.tar.zst
-        key: packages_services_Telephony@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/prebuilts_build-tools.tar.zst
-        key: prebuilts_build-tools@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/prebuilts_jdk_jdk11.tar.zst
-        key: prebuilts_jdk_jdk11@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/prebuilts_sdk.tar.zst
-        key: prebuilts_sdk@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/system_libsysprop.tar.zst
-        key: system_libsysprop@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/tools_apifinder.tar.zst
-        key: tools_apifinder@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/tools_platform-compat.tar.zst
-        key: tools_platform-compat@${{ env.branch }}
     - run: bash steps/build_29.sh

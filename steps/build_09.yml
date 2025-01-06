@@ -7,7 +7,7 @@ env:
   branch: 'android12-gsi'
   GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 jobs:
-  build_9:
+  build_09:
     runs-on: ubuntu-22.04
     steps:
     - uses: actions/checkout@main

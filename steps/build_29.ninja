@@ -6,75 +6,90 @@ pool highmem_pool
 
 include ninja/global.ninja
 
-include ninja/external/conscrypt/conscrypt^android_common_apex29.ninja
-include ninja/external/icu/android_icu4j/core-icu4j^android_common_apex10000.ninja
-include ninja/frameworks/opt/net/ims/ims-common^android_common.ninja
-include ninja/frameworks/opt/net/voip/voip-common^android_common.ninja
-include ninja/frameworks/opt/telephony/telephony-common^android_common.ninja
-include ninja/packages/modules/Connectivity/Tethering/common/TetheringLib/framework-tethering^android_common_apex30.ninja
-include ninja/packages/modules/Connectivity/framework/framework-connectivity^android_common_apex30.ninja
-include ninja/packages/modules/IPsec/android.net.ipsec.ike^android_common_com.android.ipsec.ninja
-include ninja/packages/modules/Permission/framework-s/framework-permission-s^android_common_apex30.ninja
-include ninja/packages/modules/Permission/framework/framework-permission^android_common_apex30.ninja
-include ninja/packages/modules/Scheduling/framework/framework-scheduling^android_common_apex10000.ninja
-include ninja/packages/modules/SdkExtensions/framework/framework-sdkextensions^android_common_apex30.ninja
-include ninja/packages/modules/StatsD/framework/framework-statsd^android_common_apex30.ninja
-include ninja/packages/modules/Wifi/framework/framework-wifi^android_common_apex30.ninja
-include ninja/packages/providers/MediaProvider/apex/framework/framework-mediaprovider^android_common_apex30.ninja
+include ninja/external/conscrypt/conscrypt^android_common_apex29^00.ninja
+include ninja/external/conscrypt/conscrypt^android_common_apex29^29.ninja
+include ninja/external/icu/android_icu4j/core-icu4j^android_common_apex10000^00.ninja
+include ninja/external/icu/android_icu4j/core-icu4j^android_common_apex10000^29.ninja
+include ninja/frameworks/opt/net/ims/ims-common^android_common^00.ninja
+include ninja/frameworks/opt/net/ims/ims-common^android_common^29.ninja
+include ninja/frameworks/opt/net/voip/voip-common^android_common^00.ninja
+include ninja/frameworks/opt/net/voip/voip-common^android_common^29.ninja
+include ninja/frameworks/opt/telephony/telephony-common^android_common^00.ninja
+include ninja/frameworks/opt/telephony/telephony-common^android_common^29.ninja
+include ninja/packages/modules/Connectivity/Tethering/common/TetheringLib/framework-tethering^android_common_apex30^00.ninja
+include ninja/packages/modules/Connectivity/Tethering/common/TetheringLib/framework-tethering^android_common_apex30^29.ninja
+include ninja/packages/modules/Connectivity/framework/framework-connectivity^android_common_apex30^00.ninja
+include ninja/packages/modules/Connectivity/framework/framework-connectivity^android_common_apex30^29.ninja
+include ninja/packages/modules/IPsec/android.net.ipsec.ike^android_common_com.android.ipsec^00.ninja
+include ninja/packages/modules/IPsec/android.net.ipsec.ike^android_common_com.android.ipsec^29.ninja
+include ninja/packages/modules/Permission/framework-s/framework-permission-s^android_common_apex30^00.ninja
+include ninja/packages/modules/Permission/framework-s/framework-permission-s^android_common_apex30^29.ninja
+include ninja/packages/modules/Permission/framework/framework-permission^android_common_apex30^00.ninja
+include ninja/packages/modules/Permission/framework/framework-permission^android_common_apex30^29.ninja
+include ninja/packages/modules/Scheduling/framework/framework-scheduling^android_common_apex10000^00.ninja
+include ninja/packages/modules/Scheduling/framework/framework-scheduling^android_common_apex10000^29.ninja
+include ninja/packages/modules/SdkExtensions/framework/framework-sdkextensions^android_common_apex30^00.ninja
+include ninja/packages/modules/SdkExtensions/framework/framework-sdkextensions^android_common_apex30^29.ninja
+include ninja/packages/modules/StatsD/framework/framework-statsd^android_common_apex30^00.ninja
+include ninja/packages/modules/StatsD/framework/framework-statsd^android_common_apex30^29.ninja
+include ninja/packages/modules/Wifi/framework/framework-wifi^android_common_apex30^00.ninja
+include ninja/packages/modules/Wifi/framework/framework-wifi^android_common_apex30^29.ninja
+include ninja/packages/providers/MediaProvider/apex/framework/framework-mediaprovider^android_common_apex30^00.ninja
+include ninja/packages/providers/MediaProvider/apex/framework/framework-mediaprovider^android_common_apex30^29.ninja
 
-build conscrypt,android_common_apex29: phony out/soong/.intermediates/external/conscrypt/conscrypt/android_common_apex29/hiddenapi/conscrypt.jar out/soong/.intermediates/external/conscrypt/conscrypt/android_common_apex29/hiddenapi/unaligned/conscrypt.jar
+build conscrypt,android_common_apex29: phony out/soong/.intermediates/external/conscrypt/conscrypt/android_common_apex29/hiddenapi/conscrypt.jar
 
 build external_conscrypt-targets: phony conscrypt,android_common_apex29
 
-build core-icu4j,android_common_apex10000: phony out/soong/.intermediates/external/icu/android_icu4j/core-icu4j/android_common_apex10000/hiddenapi/core-icu4j.jar out/soong/.intermediates/external/icu/android_icu4j/core-icu4j/android_common_apex10000/hiddenapi/unaligned/core-icu4j.jar
+build core-icu4j,android_common_apex10000: phony out/soong/.intermediates/external/icu/android_icu4j/core-icu4j/android_common_apex10000/hiddenapi/core-icu4j.jar
 
 build external_icu-targets: phony core-icu4j,android_common_apex10000
 
-build ims-common,android_common: phony out/soong/.intermediates/frameworks/opt/net/ims/ims-common/android_common/hiddenapi/ims-common.jar out/soong/.intermediates/frameworks/opt/net/ims/ims-common/android_common/hiddenapi/unaligned/ims-common.jar
+build ims-common,android_common: phony out/soong/.intermediates/frameworks/opt/net/ims/ims-common/android_common/hiddenapi/ims-common.jar
 
 build frameworks_opt_net_ims-targets: phony ims-common,android_common
 
-build voip-common,android_common: phony out/soong/.intermediates/frameworks/opt/net/voip/voip-common/android_common/hiddenapi/unaligned/voip-common.jar out/soong/.intermediates/frameworks/opt/net/voip/voip-common/android_common/hiddenapi/voip-common.jar
+build voip-common,android_common: phony out/soong/.intermediates/frameworks/opt/net/voip/voip-common/android_common/hiddenapi/voip-common.jar
 
 build frameworks_opt_net_voip-targets: phony voip-common,android_common
 
-build telephony-common,android_common: phony out/soong/.intermediates/frameworks/opt/telephony/telephony-common/android_common/hiddenapi/telephony-common.jar out/soong/.intermediates/frameworks/opt/telephony/telephony-common/android_common/hiddenapi/unaligned/telephony-common.jar
+build telephony-common,android_common: phony out/soong/.intermediates/frameworks/opt/telephony/telephony-common/android_common/hiddenapi/telephony-common.jar
 
 build frameworks_opt_telephony-targets: phony telephony-common,android_common
 
-build framework-connectivity,android_common_apex30: phony out/soong/.intermediates/packages/modules/Connectivity/framework/framework-connectivity/android_common_apex30/hiddenapi/framework-connectivity.jar out/soong/.intermediates/packages/modules/Connectivity/framework/framework-connectivity/android_common_apex30/hiddenapi/unaligned/framework-connectivity.jar
+build framework-tethering,android_common_apex30: phony out/soong/.intermediates/packages/modules/Connectivity/Tethering/common/TetheringLib/framework-tethering/android_common_apex30/hiddenapi/framework-tethering.jar
 
-build framework-tethering,android_common_apex30: phony out/soong/.intermediates/packages/modules/Connectivity/Tethering/common/TetheringLib/framework-tethering/android_common_apex30/hiddenapi/framework-tethering.jar out/soong/.intermediates/packages/modules/Connectivity/Tethering/common/TetheringLib/framework-tethering/android_common_apex30/hiddenapi/unaligned/framework-tethering.jar
+build framework-connectivity,android_common_apex30: phony out/soong/.intermediates/packages/modules/Connectivity/framework/framework-connectivity/android_common_apex30/hiddenapi/framework-connectivity.jar
 
 build packages_modules_Connectivity-targets: phony framework-connectivity,android_common_apex30 framework-tethering,android_common_apex30
 
-build android.net.ipsec.ike,android_common_com.android.ipsec: phony out/soong/.intermediates/packages/modules/IPsec/android.net.ipsec.ike/android_common_com.android.ipsec/hiddenapi/android.net.ipsec.ike.jar out/soong/.intermediates/packages/modules/IPsec/android.net.ipsec.ike/android_common_com.android.ipsec/hiddenapi/unaligned/android.net.ipsec.ike.jar
+build android.net.ipsec.ike,android_common_com.android.ipsec: phony out/soong/.intermediates/packages/modules/IPsec/android.net.ipsec.ike/android_common_com.android.ipsec/hiddenapi/android.net.ipsec.ike.jar
 
 build packages_modules_IPsec-targets: phony android.net.ipsec.ike,android_common_com.android.ipsec
 
-build framework-permission-s,android_common_apex30: phony out/soong/.intermediates/packages/modules/Permission/framework-s/framework-permission-s/android_common_apex30/hiddenapi/framework-permission-s.jar out/soong/.intermediates/packages/modules/Permission/framework-s/framework-permission-s/android_common_apex30/hiddenapi/unaligned/framework-permission-s.jar
+build framework-permission-s,android_common_apex30: phony out/soong/.intermediates/packages/modules/Permission/framework-s/framework-permission-s/android_common_apex30/hiddenapi/framework-permission-s.jar
 
-build framework-permission,android_common_apex30: phony out/soong/.intermediates/packages/modules/Permission/framework/framework-permission/android_common_apex30/hiddenapi/framework-permission.jar out/soong/.intermediates/packages/modules/Permission/framework/framework-permission/android_common_apex30/hiddenapi/unaligned/framework-permission.jar
+build framework-permission,android_common_apex30: phony out/soong/.intermediates/packages/modules/Permission/framework/framework-permission/android_common_apex30/hiddenapi/framework-permission.jar
 
-build packages_modules_Permission-targets: phony framework-permission-s,android_common_apex30 framework-permission,android_common_apex30
+build packages_modules_Permission-targets: phony framework-permission,android_common_apex30 framework-permission-s,android_common_apex30
 
-build framework-scheduling,android_common_apex10000: phony out/soong/.intermediates/packages/modules/Scheduling/framework/framework-scheduling/android_common_apex10000/hiddenapi/framework-scheduling.jar out/soong/.intermediates/packages/modules/Scheduling/framework/framework-scheduling/android_common_apex10000/hiddenapi/unaligned/framework-scheduling.jar
+build framework-scheduling,android_common_apex10000: phony out/soong/.intermediates/packages/modules/Scheduling/framework/framework-scheduling/android_common_apex10000/hiddenapi/framework-scheduling.jar
 
 build packages_modules_Scheduling-targets: phony framework-scheduling,android_common_apex10000
 
-build framework-sdkextensions,android_common_apex30: phony out/soong/.intermediates/packages/modules/SdkExtensions/framework/framework-sdkextensions/android_common_apex30/hiddenapi/framework-sdkextensions.jar out/soong/.intermediates/packages/modules/SdkExtensions/framework/framework-sdkextensions/android_common_apex30/hiddenapi/unaligned/framework-sdkextensions.jar
+build framework-sdkextensions,android_common_apex30: phony out/soong/.intermediates/packages/modules/SdkExtensions/framework/framework-sdkextensions/android_common_apex30/hiddenapi/framework-sdkextensions.jar
 
 build packages_modules_SdkExtensions-targets: phony framework-sdkextensions,android_common_apex30
 
-build framework-statsd,android_common_apex30: phony out/soong/.intermediates/packages/modules/StatsD/framework/framework-statsd/android_common_apex30/hiddenapi/framework-statsd.jar out/soong/.intermediates/packages/modules/StatsD/framework/framework-statsd/android_common_apex30/hiddenapi/unaligned/framework-statsd.jar
+build framework-statsd,android_common_apex30: phony out/soong/.intermediates/packages/modules/StatsD/framework/framework-statsd/android_common_apex30/hiddenapi/framework-statsd.jar
 
 build packages_modules_StatsD-targets: phony framework-statsd,android_common_apex30
 
-build framework-wifi,android_common_apex30: phony out/soong/.intermediates/packages/modules/Wifi/framework/framework-wifi/android_common_apex30/hiddenapi/framework-wifi.jar out/soong/.intermediates/packages/modules/Wifi/framework/framework-wifi/android_common_apex30/hiddenapi/unaligned/framework-wifi.jar
+build framework-wifi,android_common_apex30: phony out/soong/.intermediates/packages/modules/Wifi/framework/framework-wifi/android_common_apex30/hiddenapi/framework-wifi.jar
 
 build packages_modules_Wifi-targets: phony framework-wifi,android_common_apex30
 
-build framework-mediaprovider,android_common_apex30: phony out/soong/.intermediates/packages/providers/MediaProvider/apex/framework/framework-mediaprovider/android_common_apex30/hiddenapi/framework-mediaprovider.jar out/soong/.intermediates/packages/providers/MediaProvider/apex/framework/framework-mediaprovider/android_common_apex30/hiddenapi/unaligned/framework-mediaprovider.jar
+build framework-mediaprovider,android_common_apex30: phony out/soong/.intermediates/packages/providers/MediaProvider/apex/framework/framework-mediaprovider/android_common_apex30/hiddenapi/framework-mediaprovider.jar
 
 build packages_providers_MediaProvider-targets: phony framework-mediaprovider,android_common_apex30
 

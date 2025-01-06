@@ -1,6 +1,5 @@
-set -e
 
-echo "entering external/libtextclassifier"
+set -e
 
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
@@ -13,6 +12,8 @@ if [ -d "$GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86" ]; then
   mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86 prebuilts/clang/host/linux-x86
 fi
 
+echo "Preparing for external/libtextclassifier"
+
 clone_depth_platform external/flatbuffers
 clone_depth_platform external/libtextclassifier
 clone_depth_platform external/libutf
@@ -22,38 +23,31 @@ clone_depth_platform external/ruy
 clone_depth_platform external/tensorflow
 clone_depth_platform external/tflite-support
 clone_depth_platform libnativehelper
-clone_project platform/prebuilts/build-tools prebuilts/build-tools android12-gsi "/linux-x86/bin" "/linux-x86/lib64" "/path" "/common"
 clone_depth_platform prebuilts/gcc/linux-x86/x86/x86_64-linux-android-4.9
 clone_depth_platform prebuilts/ndk
 
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/libtextclassifier/native/libtextclassifier_fbgen_actions_actions-entity-data^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/libtextclassifier/native/libtextclassifier_fbgen_actions_actions_model^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/libtextclassifier/native/libtextclassifier_fbgen_annotator_datetime_datetime^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/libtextclassifier/native/libtextclassifier_fbgen_annotator_entity-data^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/libtextclassifier/native/libtextclassifier_fbgen_annotator_experimental_experimental^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/libtextclassifier/native/libtextclassifier_fbgen_annotator_model^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/libtextclassifier/native/libtextclassifier_fbgen_annotator_person_name_person_name_model^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/libtextclassifier/native/libtextclassifier_fbgen_lang_id_common_flatbuffers_embedding-network^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/libtextclassifier/native/libtextclassifier_fbgen_lang_id_common_flatbuffers_model^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/libtextclassifier/native/libtextclassifier_fbgen_utils_codepoint-range^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/singletons/ndk^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/libtextclassifier/native/libtextclassifier_fbgen_utils_zlib_buffer^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/libtextclassifier/native/libtextclassifier_fbgen_utils_container_bit-vector^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/libtextclassifier/native/libtextclassifier_fbgen_utils_flatbuffers_flatbuffers^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/libtextclassifier/native/libtextclassifier_fbgen_utils_grammar_rules^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/libtextclassifier/native/libtextclassifier_fbgen_utils_grammar_semantics_expression^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/libtextclassifier/native/libtextclassifier_fbgen_utils_i18n_language-tag^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/libtextclassifier/native/libtextclassifier_fbgen_utils_intents_intent-config^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/libtextclassifier/native/libtextclassifier_fbgen_utils_normalization^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/libtextclassifier/native/libtextclassifier_fbgen_utils_resources^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/libtextclassifier/native/libtextclassifier_fbgen_utils_tflite_text_encoder_config^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/libtextclassifier/native/libtextclassifier_fbgen_utils_grammar_semantics_expression^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/libtextclassifier/native/libtextclassifier_fbgen_utils_grammar_rules^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/libtextclassifier/native/libtextclassifier_fbgen_utils_codepoint-range^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/libtextclassifier/native/libtextclassifier_fbgen_utils_tokenizer^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/libtextclassifier/native/libtextclassifier_fbgen_utils_zlib_buffer^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/singletons/ndk^/ .
-
-echo "building libtextclassifier^android_x86_64_sdk_static_apex30"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libtextclassifier,android_x86_64_sdk_static_apex30
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/libtextclassifier/native/libtextclassifier^android_x86_64_sdk_static_apex30
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/external/libtextclassifier/libtextclassifier^android_x86_64_sdk_static_apex30.output . $GITHUB_WORKSPACE/artifacts/external/libtextclassifier/native/libtextclassifier^android_x86_64_sdk_static_apex30
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/external/libtextclassifier/libtextclassifier^android_x86_64_sdk_static_apex30.output $GITHUB_WORKSPACE/artifacts/external/libtextclassifier/native/libtextclassifier^android_x86_64_sdk_static_apex30 $GITHUB_WORKSPACE/artifacts/external/libtextclassifier/native/libtextclassifier^android_x86_64_sdk_static_apex30/addition_copy_files.output
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/libtextclassifier/native/libtextclassifier_fbgen_utils_i18n_language-tag^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/libtextclassifier/native/libtextclassifier_fbgen_actions_actions_model^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/libtextclassifier/native/libtextclassifier_fbgen_actions_actions-entity-data^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/libtextclassifier/native/libtextclassifier_fbgen_lang_id_common_flatbuffers_embedding-network^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/libtextclassifier/native/libtextclassifier_fbgen_lang_id_common_flatbuffers_model^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/libtextclassifier/native/libtextclassifier_fbgen_annotator_person_name_person_name_model^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/libtextclassifier/native/libtextclassifier_fbgen_annotator_datetime_datetime^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/libtextclassifier/native/libtextclassifier_fbgen_annotator_experimental_experimental^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/libtextclassifier/native/libtextclassifier_fbgen_annotator_entity-data^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/libtextclassifier/native/libtextclassifier_fbgen_annotator_model^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/libtextclassifier/native/libtextclassifier_fbgen_utils_flatbuffers_flatbuffers^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/libtextclassifier/native/libtextclassifier_fbgen_utils_tflite_text_encoder_config^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/libtextclassifier/native/libtextclassifier_fbgen_utils_resources^/ .
 
 echo "building libtextclassifier_abseil^android_x86_64_sdk_static_apex30"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libtextclassifier_abseil,android_x86_64_sdk_static_apex30
@@ -61,11 +55,18 @@ mkdir -p $GITHUB_WORKSPACE/artifacts/external/libtextclassifier/abseil-cpp/libte
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/external/libtextclassifier/libtextclassifier_abseil^android_x86_64_sdk_static_apex30.output . $GITHUB_WORKSPACE/artifacts/external/libtextclassifier/abseil-cpp/libtextclassifier_abseil^android_x86_64_sdk_static_apex30
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/external/libtextclassifier/libtextclassifier_abseil^android_x86_64_sdk_static_apex30.output $GITHUB_WORKSPACE/artifacts/external/libtextclassifier/abseil-cpp/libtextclassifier_abseil^android_x86_64_sdk_static_apex30 $GITHUB_WORKSPACE/artifacts/external/libtextclassifier/abseil-cpp/libtextclassifier_abseil^android_x86_64_sdk_static_apex30/addition_copy_files.output
 
+echo "building libtextclassifier^android_x86_64_sdk_static_apex30"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libtextclassifier,android_x86_64_sdk_static_apex30
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/libtextclassifier/native/libtextclassifier^android_x86_64_sdk_static_apex30
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/external/libtextclassifier/libtextclassifier^android_x86_64_sdk_static_apex30.output . $GITHUB_WORKSPACE/artifacts/external/libtextclassifier/native/libtextclassifier^android_x86_64_sdk_static_apex30
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/external/libtextclassifier/libtextclassifier^android_x86_64_sdk_static_apex30.output $GITHUB_WORKSPACE/artifacts/external/libtextclassifier/native/libtextclassifier^android_x86_64_sdk_static_apex30 $GITHUB_WORKSPACE/artifacts/external/libtextclassifier/native/libtextclassifier^android_x86_64_sdk_static_apex30/addition_copy_files.output
+
 echo "building libtextclassifier_hash_static^android_x86_64_sdk_static_apex30"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libtextclassifier_hash_static,android_x86_64_sdk_static_apex30
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/libtextclassifier/native/libtextclassifier_hash_static^android_x86_64_sdk_static_apex30
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/external/libtextclassifier/libtextclassifier_hash_static^android_x86_64_sdk_static_apex30.output . $GITHUB_WORKSPACE/artifacts/external/libtextclassifier/native/libtextclassifier_hash_static^android_x86_64_sdk_static_apex30
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/external/libtextclassifier/libtextclassifier_hash_static^android_x86_64_sdk_static_apex30.output $GITHUB_WORKSPACE/artifacts/external/libtextclassifier/native/libtextclassifier_hash_static^android_x86_64_sdk_static_apex30 $GITHUB_WORKSPACE/artifacts/external/libtextclassifier/native/libtextclassifier_hash_static^android_x86_64_sdk_static_apex30/addition_copy_files.output
+
 
 rm -rf out
 
@@ -74,6 +75,7 @@ tar -cf external_libtextclassifier.tar.zst --use-compress-program zstdmt -C $GIT
 gh release --repo cibuilde/aosp-buildbot upload android12-gsi_05 external_libtextclassifier.tar.zst --clobber
 
 du -ah -d1 external_libtextclassifier*.tar.zst | sort -h
+
 
 if [ ! -f "$GITHUB_WORKSPACE/cache/external_flatbuffers.tar.zst" ]; then
   echo "Compressing external/flatbuffers -> external_flatbuffers.tar.zst"
@@ -111,10 +113,6 @@ if [ ! -f "$GITHUB_WORKSPACE/cache/libnativehelper.tar.zst" ]; then
   echo "Compressing libnativehelper -> libnativehelper.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/libnativehelper.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/libnativehelper/ .
 fi
-if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_build-tools.tar.zst" ]; then
-  echo "Compressing prebuilts/build-tools -> prebuilts_build-tools.tar.zst"
-  tar -cf $GITHUB_WORKSPACE/cache/prebuilts_build-tools.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/prebuilts/build-tools/ .
-fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_gcc_linux-x86_x86_x86_64-linux-android-4.9.tar.zst" ]; then
   echo "Compressing prebuilts/gcc/linux-x86/x86/x86_64-linux-android-4.9 -> prebuilts_gcc_linux-x86_x86_x86_64-linux-android-4.9.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/prebuilts_gcc_linux-x86_x86_x86_64-linux-android-4.9.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/prebuilts/gcc/linux-x86/x86/x86_64-linux-android-4.9/ .
@@ -123,5 +121,6 @@ if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_ndk.tar.zst" ]; then
   echo "Compressing prebuilts/ndk -> prebuilts_ndk.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/prebuilts_ndk.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/prebuilts/ndk/ .
 fi
+
 
 rm -rf aosp

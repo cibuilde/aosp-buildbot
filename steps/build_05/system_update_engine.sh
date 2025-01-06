@@ -1,6 +1,5 @@
-set -e
 
-echo "entering system/update_engine"
+set -e
 
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
@@ -12,6 +11,8 @@ ln -sf $GITHUB_WORKSPACE/ninja .
 if [ -d "$GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86" ]; then
   mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86 prebuilts/clang/host/linux-x86
 fi
+
+echo "Preparing for system/update_engine"
 
 clone_depth_platform art
 clone_depth_platform bionic
@@ -36,7 +37,6 @@ clone_depth_platform hardware/libhardware
 clone_depth_platform hardware/libhardware_legacy
 clone_depth_platform hardware/ril
 clone_depth_platform libnativehelper
-clone_project platform/prebuilts/build-tools prebuilts/build-tools android12-gsi "/linux-x86/bin" "/linux-x86/lib64" "/path" "/common"
 clone_depth_platform prebuilts/gcc/linux-x86/x86/x86_64-linux-android-4.9
 clone_depth_platform system/core
 clone_sparse_exclude system/extras "!/simpleperf/scripts" "!/simpleperf/testdata" "!/simpleperf/demo" "!/simpleperf/doc" "!/memory_replay/traces" "!/ioshark/*.tgz" "!/ioshark/*.tar.gz"
@@ -46,8 +46,8 @@ clone_depth_platform system/logging
 clone_depth_platform system/media
 clone_depth_platform system/update_engine
 
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/libchrome/libchrome-include^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/libchrome/libmojo_jni_registration_headers^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/libchrome/libchrome-include^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/puffin/libpuffpatch^android_recovery_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/puffin/libpuffpatch^android_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/update_engine/update_metadata-protos^android_recovery_x86_64_static/ .
@@ -65,6 +65,7 @@ mkdir -p $GITHUB_WORKSPACE/artifacts/system/update_engine/libpayload_consumer^an
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/system/update_engine/libpayload_consumer^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/update_engine/libpayload_consumer^android_x86_64_static
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/system/update_engine/libpayload_consumer^android_x86_64_static.output $GITHUB_WORKSPACE/artifacts/system/update_engine/libpayload_consumer^android_x86_64_static $GITHUB_WORKSPACE/artifacts/system/update_engine/libpayload_consumer^android_x86_64_static/addition_copy_files.output
 
+
 rm -rf out
 
 cd $GITHUB_WORKSPACE/
@@ -72,6 +73,7 @@ tar -cf system_update_engine.tar.zst --use-compress-program zstdmt -C $GITHUB_WO
 gh release --repo cibuilde/aosp-buildbot upload android12-gsi_05 system_update_engine.tar.zst --clobber
 
 du -ah -d1 system_update_engine*.tar.zst | sort -h
+
 
 if [ ! -f "$GITHUB_WORKSPACE/cache/art.tar.zst" ]; then
   echo "Compressing art -> art.tar.zst"
@@ -165,10 +167,6 @@ if [ ! -f "$GITHUB_WORKSPACE/cache/libnativehelper.tar.zst" ]; then
   echo "Compressing libnativehelper -> libnativehelper.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/libnativehelper.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/libnativehelper/ .
 fi
-if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_build-tools.tar.zst" ]; then
-  echo "Compressing prebuilts/build-tools -> prebuilts_build-tools.tar.zst"
-  tar -cf $GITHUB_WORKSPACE/cache/prebuilts_build-tools.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/prebuilts/build-tools/ .
-fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_gcc_linux-x86_x86_x86_64-linux-android-4.9.tar.zst" ]; then
   echo "Compressing prebuilts/gcc/linux-x86/x86/x86_64-linux-android-4.9 -> prebuilts_gcc_linux-x86_x86_x86_64-linux-android-4.9.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/prebuilts_gcc_linux-x86_x86_x86_64-linux-android-4.9.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/prebuilts/gcc/linux-x86/x86/x86_64-linux-android-4.9/ .
@@ -201,5 +199,6 @@ if [ ! -f "$GITHUB_WORKSPACE/cache/system_update_engine.tar.zst" ]; then
   echo "Compressing system/update_engine -> system_update_engine.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/system_update_engine.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/system/update_engine/ .
 fi
+
 
 rm -rf aosp

@@ -14,23 +14,26 @@ include ninja/packages/modules/IPsec/android.net.ipsec.ike.stubs.source.system^a
 include ninja/packages/modules/IPsec/android.net.ipsec.ike.stubs.source^android_common.ninja
 include ninja/packages/modules/IPsec/android.net.ipsec.ike.stubs.system^android_common.ninja
 include ninja/packages/modules/IPsec/android.net.ipsec.ike.stubs^android_common.ninja
-include ninja/packages/modules/IPsec/android.net.ipsec.ike^android_common_com.android.ipsec.ninja
+include ninja/packages/modules/IPsec/android.net.ipsec.ike^android_common_com.android.ipsec^00.ninja
+include ninja/packages/modules/IPsec/android.net.ipsec.ike^android_common_com.android.ipsec^20.ninja
 include ninja/packages/providers/MediaProvider/apex/com.android.mediaprovider-bootclasspath-fragment^android_common_apex30.ninja
+include ninja/packages/providers/MediaProvider/apex/framework/framework-mediaprovider.impl^android_common.ninja
 include ninja/packages/providers/MediaProvider/apex/framework/framework-mediaprovider.stubs.module_lib^android_common.ninja
 include ninja/packages/providers/MediaProvider/apex/framework/framework-mediaprovider.stubs.source.module_lib^android_common.ninja
 include ninja/packages/providers/MediaProvider/apex/framework/framework-mediaprovider.stubs.source.system^android_common.ninja
 include ninja/packages/providers/MediaProvider/apex/framework/framework-mediaprovider.stubs.source^android_common.ninja
 include ninja/packages/providers/MediaProvider/apex/framework/framework-mediaprovider.stubs.system^android_common.ninja
 include ninja/packages/providers/MediaProvider/apex/framework/framework-mediaprovider.stubs^android_common.ninja
-include ninja/packages/providers/MediaProvider/apex/framework/framework-mediaprovider^android_common_apex30.ninja
+include ninja/packages/providers/MediaProvider/apex/framework/framework-mediaprovider^android_common_apex30^00.ninja
+include ninja/packages/providers/MediaProvider/apex/framework/framework-mediaprovider^android_common_apex30^20.ninja
 
-build framework-wifi-util-lib,android_common: phony out/soong/.intermediates/frameworks/base/framework-wifi-util-lib/android_common/javac/framework-wifi-util-lib.jar out/soong/.intermediates/frameworks/base/framework-wifi-util-lib/android_common/turbine-combined/framework-wifi-util-lib.jar
+build framework-wifi-util-lib,android_common: phony out/soong/.intermediates/frameworks/base/framework-wifi-util-lib/android_common/turbine-combined/framework-wifi-util-lib.jar
 
 build framework-wifi-util-lib,android_common_apex30: phony out/soong/.intermediates/frameworks/base/framework-wifi-util-lib/android_common_apex30/javac/framework-wifi-util-lib.jar out/soong/.intermediates/frameworks/base/framework-wifi-util-lib/android_common_apex30/turbine-combined/framework-wifi-util-lib.jar
 
 build frameworks_base-targets: phony framework-wifi-util-lib,android_common framework-wifi-util-lib,android_common_apex30
 
-build android.net.ipsec.ike.stubs.module_lib,android_common: phony out/soong/.intermediates/packages/modules/IPsec/android.net.ipsec.ike.stubs.module_lib/android_common/javac/android.net.ipsec.ike.stubs.module_lib.jar out/soong/.intermediates/packages/modules/IPsec/android.net.ipsec.ike.stubs.module_lib/android_common/turbine-combined/android.net.ipsec.ike.stubs.module_lib.jar
+build android.net.ipsec.ike.stubs.module_lib,android_common: phony out/soong/.intermediates/packages/modules/IPsec/android.net.ipsec.ike.stubs.module_lib/android_common/turbine-combined/android.net.ipsec.ike.stubs.module_lib.jar
 
 build android.net.ipsec.ike.stubs.source.module_lib,android_common: phony out/soong/.intermediates/packages/modules/IPsec/android.net.ipsec.ike.stubs.source.module_lib/android_common/metalava/android.net.ipsec.ike.stubs.source.module_lib-stubs.srcjar out/soong/.intermediates/packages/modules/IPsec/android.net.ipsec.ike.stubs.source.module_lib/android_common/metalava/android.net.ipsec.ike.stubs.source.module_lib_removed.txt
 
@@ -42,13 +45,15 @@ build android.net.ipsec.ike.stubs.system,android_common: phony out/soong/.interm
 
 build android.net.ipsec.ike.stubs,android_common: phony out/soong/.intermediates/packages/modules/IPsec/android.net.ipsec.ike.stubs/android_common/dex/android.net.ipsec.ike.stubs.jar out/soong/.intermediates/packages/modules/IPsec/android.net.ipsec.ike.stubs/android_common/javac/android.net.ipsec.ike.stubs.jar out/soong/.intermediates/packages/modules/IPsec/android.net.ipsec.ike.stubs/android_common/turbine-combined/android.net.ipsec.ike.stubs.jar
 
-build android.net.ipsec.ike,android_common_com.android.ipsec: phony out/soong/.intermediates/packages/modules/IPsec/android.net.ipsec.ike/android_common_com.android.ipsec/aligned/android.net.ipsec.ike.jar out/soong/.intermediates/packages/modules/IPsec/android.net.ipsec.ike/android_common_com.android.ipsec/combined/android.net.ipsec.ike.jar out/soong/.intermediates/packages/modules/IPsec/android.net.ipsec.ike/android_common_com.android.ipsec/dex/android.net.ipsec.ike.jar out/soong/.intermediates/packages/modules/IPsec/android.net.ipsec.ike/android_common_com.android.ipsec/jarjar/android.net.ipsec.ike.jar out/soong/.intermediates/packages/modules/IPsec/android.net.ipsec.ike/android_common_com.android.ipsec/javac/android.net.ipsec.ike.jar out/soong/.intermediates/packages/modules/IPsec/android.net.ipsec.ike/android_common_com.android.ipsec/turbine-combined/android.net.ipsec.ike.jar out/soong/.intermediates/packages/modules/IPsec/android.net.ipsec.ike/android_common_com.android.ipsec/turbine-jarjar/android.net.ipsec.ike.jar out/soong/.intermediates/packages/modules/IPsec/android.net.ipsec.ike/android_common_com.android.ipsec/turbine/android.net.ipsec.ike.jar
+build android.net.ipsec.ike,android_common_com.android.ipsec: phony out/soong/.intermediates/packages/modules/IPsec/android.net.ipsec.ike/android_common_com.android.ipsec/aligned/android.net.ipsec.ike.jar out/soong/.intermediates/packages/modules/IPsec/android.net.ipsec.ike/android_common_com.android.ipsec/turbine-jarjar/android.net.ipsec.ike.jar
 
-build packages_modules_IPsec-targets: phony android.net.ipsec.ike.stubs.module_lib,android_common android.net.ipsec.ike.stubs.source.module_lib,android_common android.net.ipsec.ike.stubs.source.system,android_common android.net.ipsec.ike.stubs.source,android_common android.net.ipsec.ike.stubs.system,android_common android.net.ipsec.ike.stubs,android_common android.net.ipsec.ike,android_common_com.android.ipsec
+build packages_modules_IPsec-targets: phony android.net.ipsec.ike,android_common_com.android.ipsec android.net.ipsec.ike.stubs,android_common android.net.ipsec.ike.stubs.module_lib,android_common android.net.ipsec.ike.stubs.source,android_common android.net.ipsec.ike.stubs.source.module_lib,android_common android.net.ipsec.ike.stubs.source.system,android_common android.net.ipsec.ike.stubs.system,android_common
 
 build com.android.mediaprovider-bootclasspath-fragment,android_common_apex30: phony out/soong/.intermediates/packages/providers/MediaProvider/apex/com.android.mediaprovider-bootclasspath-fragment/android_common_apex30/bootclasspath.pb out/soong/.intermediates/packages/providers/MediaProvider/apex/com.android.mediaprovider-bootclasspath-fragment/android_common_apex30/hiddenapi-modular/encoded/framework-mediaprovider.jar out/soong/.intermediates/packages/providers/MediaProvider/apex/com.android.mediaprovider-bootclasspath-fragment/android_common_apex30/modular-hiddenapi/annotation-flags.csv
 
-build framework-mediaprovider.stubs.module_lib,android_common: phony out/soong/.intermediates/packages/providers/MediaProvider/apex/framework/framework-mediaprovider.stubs.module_lib/android_common/javac/framework-mediaprovider.stubs.module_lib.jar out/soong/.intermediates/packages/providers/MediaProvider/apex/framework/framework-mediaprovider.stubs.module_lib/android_common/turbine-combined/framework-mediaprovider.stubs.module_lib.jar
+build framework-mediaprovider.impl,android_common: phony out/soong/.intermediates/packages/providers/MediaProvider/apex/framework/framework-mediaprovider.impl/android_common/turbine-combined/framework-mediaprovider.impl.jar
+
+build framework-mediaprovider.stubs.module_lib,android_common: phony out/soong/.intermediates/packages/providers/MediaProvider/apex/framework/framework-mediaprovider.stubs.module_lib/android_common/turbine-combined/framework-mediaprovider.stubs.module_lib.jar
 
 build framework-mediaprovider.stubs.source.module_lib,android_common: phony out/soong/.intermediates/packages/providers/MediaProvider/apex/framework/framework-mediaprovider.stubs.source.module_lib/android_common/metalava/framework-mediaprovider.stubs.source.module_lib-stubs.srcjar out/soong/.intermediates/packages/providers/MediaProvider/apex/framework/framework-mediaprovider.stubs.source.module_lib/android_common/metalava/framework-mediaprovider.stubs.source.module_lib_removed.txt
 
@@ -60,8 +65,8 @@ build framework-mediaprovider.stubs.system,android_common: phony out/soong/.inte
 
 build framework-mediaprovider.stubs,android_common: phony out/soong/.intermediates/packages/providers/MediaProvider/apex/framework/framework-mediaprovider.stubs/android_common/dex/framework-mediaprovider.stubs.jar out/soong/.intermediates/packages/providers/MediaProvider/apex/framework/framework-mediaprovider.stubs/android_common/javac/framework-mediaprovider.stubs.jar out/soong/.intermediates/packages/providers/MediaProvider/apex/framework/framework-mediaprovider.stubs/android_common/turbine-combined/framework-mediaprovider.stubs.jar
 
-build framework-mediaprovider,android_common_apex30: phony out/soong/.intermediates/packages/providers/MediaProvider/apex/framework/framework-mediaprovider/android_common_apex30/aligned/framework-mediaprovider.jar out/soong/.intermediates/packages/providers/MediaProvider/apex/framework/framework-mediaprovider/android_common_apex30/dex/framework-mediaprovider.jar out/soong/.intermediates/packages/providers/MediaProvider/apex/framework/framework-mediaprovider/android_common_apex30/javac/framework-mediaprovider.jar out/soong/.intermediates/packages/providers/MediaProvider/apex/framework/framework-mediaprovider/android_common_apex30/turbine-combined/framework-mediaprovider.jar out/soong/.intermediates/packages/providers/MediaProvider/apex/framework/framework-mediaprovider/android_common_apex30/turbine/framework-mediaprovider.jar
+build framework-mediaprovider,android_common_apex30: phony out/soong/.intermediates/packages/providers/MediaProvider/apex/framework/framework-mediaprovider/android_common_apex30/aligned/framework-mediaprovider.jar out/soong/.intermediates/packages/providers/MediaProvider/apex/framework/framework-mediaprovider/android_common_apex30/turbine-combined/framework-mediaprovider.jar
 
-build packages_providers_MediaProvider-targets: phony com.android.mediaprovider-bootclasspath-fragment,android_common_apex30 framework-mediaprovider.stubs.module_lib,android_common framework-mediaprovider.stubs.source.module_lib,android_common framework-mediaprovider.stubs.source.system,android_common framework-mediaprovider.stubs.source,android_common framework-mediaprovider.stubs.system,android_common framework-mediaprovider.stubs,android_common framework-mediaprovider,android_common_apex30
+build packages_providers_MediaProvider-targets: phony com.android.mediaprovider-bootclasspath-fragment,android_common_apex30 framework-mediaprovider,android_common_apex30 framework-mediaprovider.impl,android_common framework-mediaprovider.stubs,android_common framework-mediaprovider.stubs.module_lib,android_common framework-mediaprovider.stubs.source,android_common framework-mediaprovider.stubs.source.module_lib,android_common framework-mediaprovider.stubs.source.system,android_common framework-mediaprovider.stubs.system,android_common
 
 

@@ -1,6 +1,5 @@
-set -e
 
-echo "entering system/core"
+set -e
 
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
@@ -12,6 +11,8 @@ ln -sf $GITHUB_WORKSPACE/ninja .
 if [ -d "$GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86" ]; then
   mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86 prebuilts/clang/host/linux-x86
 fi
+
+echo "Preparing for system/core"
 
 clone_depth_platform art
 clone_depth_platform bionic
@@ -32,9 +33,6 @@ clone_depth_platform hardware/libhardware
 clone_depth_platform hardware/libhardware_legacy
 clone_depth_platform hardware/ril
 clone_depth_platform packages/modules/StatsD
-clone_project platform/prebuilts/build-tools prebuilts/build-tools android12-gsi "/linux-x86/bin" "/linux-x86/lib64" "/path" "/common"
-clone_depth_platform prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9
-clone_depth_platform prebuilts/gcc/linux-x86/arm/arm-linux-androideabi-4.9
 clone_project platform/prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8 prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8 android12-gsi "/sysroot" "/lib/gcc/x86_64-linux/4.8.3" "/x86_64-linux/lib64" "/x86_64-linux/lib32"
 clone_depth_platform prebuilts/gcc/linux-x86/x86/x86_64-linux-android-4.9
 clone_depth_platform system/core
@@ -46,36 +44,21 @@ clone_depth_platform system/logging
 clone_depth_platform system/media
 clone_depth_platform system/unwinding
 
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/core/libcutils/libcutils_sockets^android_recovery_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/core/libcutils/libcutils_sockets^android_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/core/libcutils/libcutils_sockets^android_x86_64_static_apex10000/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/core/libcutils/libcutils_sockets^android_x86_64_static_apex30/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/core/libcutils/libcutils_sockets^android_x86_64_static_cfi_apex29/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/core/libcutils/libcutils_sockets^android_x86_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/core/libcutils/libcutils_sockets^android_x86_x86_64_static_apex10000/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/core/libcutils/libcutils_sockets^android_x86_x86_64_static_apex30/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/core/libcutils/libcutils_sockets^linux_glibc_x86_64_static/ .
 
-echo "building cgroups.json^android_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja cgroups.json,android_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/profiles/cgroups.json^android_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/core/cgroups.json^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/profiles/cgroups.json^android_x86_64
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/system/core/cgroups.json^android_x86_64.output $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/profiles/cgroups.json^android_x86_64 $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/profiles/cgroups.json^android_x86_64/addition_copy_files.output
-
-echo "building cgroups.recovery.json^android_recovery_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja cgroups.recovery.json,android_recovery_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/profiles/cgroups.recovery.json^android_recovery_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/core/cgroups.recovery.json^android_recovery_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/profiles/cgroups.recovery.json^android_recovery_x86_64
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/system/core/cgroups.recovery.json^android_recovery_x86_64.output $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/profiles/cgroups.recovery.json^android_recovery_x86_64 $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/profiles/cgroups.recovery.json^android_recovery_x86_64/addition_copy_files.output
-
-echo "building cgroups_28.json^android_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja cgroups_28.json,android_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/profiles/cgroups_28.json^android_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/core/cgroups_28.json^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/profiles/cgroups_28.json^android_x86_64
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/system/core/cgroups_28.json^android_x86_64.output $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/profiles/cgroups_28.json^android_x86_64 $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/profiles/cgroups_28.json^android_x86_64/addition_copy_files.output
-
-echo "building cgroups_29.json^android_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja cgroups_29.json,android_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/profiles/cgroups_29.json^android_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/core/cgroups_29.json^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/profiles/cgroups_29.json^android_x86_64
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/system/core/cgroups_29.json^android_x86_64.output $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/profiles/cgroups_29.json^android_x86_64 $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/profiles/cgroups_29.json^android_x86_64/addition_copy_files.output
-
-echo "building cgroups_30.json^android_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja cgroups_30.json,android_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/profiles/cgroups_30.json^android_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/core/cgroups_30.json^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/profiles/cgroups_30.json^android_x86_64
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/system/core/cgroups_30.json^android_x86_64.output $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/profiles/cgroups_30.json^android_x86_64 $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/profiles/cgroups_30.json^android_x86_64/addition_copy_files.output
+echo "building libbootstat^android_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libbootstat,android_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/bootstat/libbootstat^android_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/core/libbootstat^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/core/bootstat/libbootstat^android_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/system/core/libbootstat^android_x86_64_static.output $GITHUB_WORKSPACE/artifacts/system/core/bootstat/libbootstat^android_x86_64_static $GITHUB_WORKSPACE/artifacts/system/core/bootstat/libbootstat^android_x86_64_static/addition_copy_files.output
 
 echo "building code_coverage.policy.other^android_x86_64"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja code_coverage.policy.other,android_x86_64
@@ -89,6 +72,18 @@ mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/code_coverage/code_coverage.pol
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/core/code_coverage.policy^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/core/code_coverage/code_coverage.policy^android_x86_64
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/system/core/code_coverage.policy^android_x86_64.output $GITHUB_WORKSPACE/artifacts/system/core/code_coverage/code_coverage.policy^android_x86_64 $GITHUB_WORKSPACE/artifacts/system/core/code_coverage/code_coverage.policy^android_x86_64/addition_copy_files.output
 
+echo "building libdebuggerd_client^android_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libdebuggerd_client,android_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/debuggerd/libdebuggerd_client^android_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/core/libdebuggerd_client^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/core/debuggerd/libdebuggerd_client^android_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/system/core/libdebuggerd_client^android_x86_64_static.output $GITHUB_WORKSPACE/artifacts/system/core/debuggerd/libdebuggerd_client^android_x86_64_static $GITHUB_WORKSPACE/artifacts/system/core/debuggerd/libdebuggerd_client^android_x86_64_static/addition_copy_files.output
+
+echo "building libdebuggerd_client^android_x86_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libdebuggerd_client,android_x86_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/debuggerd/libdebuggerd_client^android_x86_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/core/libdebuggerd_client^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/core/debuggerd/libdebuggerd_client^android_x86_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/system/core/libdebuggerd_client^android_x86_x86_64_static.output $GITHUB_WORKSPACE/artifacts/system/core/debuggerd/libdebuggerd_client^android_x86_x86_64_static $GITHUB_WORKSPACE/artifacts/system/core/debuggerd/libdebuggerd_client^android_x86_x86_64_static/addition_copy_files.output
+
 echo "building crash_dump.policy^android_x86_64"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja crash_dump.policy,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/debuggerd/crash_dump.policy^android_x86_64
@@ -101,11 +96,143 @@ mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/debuggerd/crash_dump.policy_oth
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/core/crash_dump.policy_other^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/core/debuggerd/crash_dump.policy_other^android_x86_64
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/system/core/crash_dump.policy_other^android_x86_64.output $GITHUB_WORKSPACE/artifacts/system/core/debuggerd/crash_dump.policy_other^android_x86_64 $GITHUB_WORKSPACE/artifacts/system/core/debuggerd/crash_dump.policy_other^android_x86_64/addition_copy_files.output
 
-echo "building init.rc^android_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja init.rc,android_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/rootdir/init.rc^android_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/core/init.rc^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/core/rootdir/init.rc^android_x86_64
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/system/core/init.rc^android_x86_64.output $GITHUB_WORKSPACE/artifacts/system/core/rootdir/init.rc^android_x86_64 $GITHUB_WORKSPACE/artifacts/system/core/rootdir/init.rc^android_x86_64/addition_copy_files.output
+echo "building libtombstoned_client_static^android_recovery_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libtombstoned_client_static,android_recovery_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/debuggerd/libtombstoned_client_static^android_recovery_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/core/libtombstoned_client_static^android_recovery_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/core/debuggerd/libtombstoned_client_static^android_recovery_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/system/core/libtombstoned_client_static^android_recovery_x86_64_static.output $GITHUB_WORKSPACE/artifacts/system/core/debuggerd/libtombstoned_client_static^android_recovery_x86_64_static $GITHUB_WORKSPACE/artifacts/system/core/debuggerd/libtombstoned_client_static^android_recovery_x86_64_static/addition_copy_files.output
+
+echo "building libtombstoned_client_static^android_vendor_ramdisk_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libtombstoned_client_static,android_vendor_ramdisk_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/debuggerd/libtombstoned_client_static^android_vendor_ramdisk_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/core/libtombstoned_client_static^android_vendor_ramdisk_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/core/debuggerd/libtombstoned_client_static^android_vendor_ramdisk_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/system/core/libtombstoned_client_static^android_vendor_ramdisk_x86_64_static.output $GITHUB_WORKSPACE/artifacts/system/core/debuggerd/libtombstoned_client_static^android_vendor_ramdisk_x86_64_static $GITHUB_WORKSPACE/artifacts/system/core/debuggerd/libtombstoned_client_static^android_vendor_ramdisk_x86_64_static/addition_copy_files.output
+
+echo "building libtombstoned_client_static^android_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libtombstoned_client_static,android_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/debuggerd/libtombstoned_client_static^android_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/core/libtombstoned_client_static^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/core/debuggerd/libtombstoned_client_static^android_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/system/core/libtombstoned_client_static^android_x86_64_static.output $GITHUB_WORKSPACE/artifacts/system/core/debuggerd/libtombstoned_client_static^android_x86_64_static $GITHUB_WORKSPACE/artifacts/system/core/debuggerd/libtombstoned_client_static^android_x86_64_static/addition_copy_files.output
+
+echo "building libtombstoned_client_static^android_x86_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libtombstoned_client_static,android_x86_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/debuggerd/libtombstoned_client_static^android_x86_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/core/libtombstoned_client_static^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/core/debuggerd/libtombstoned_client_static^android_x86_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/system/core/libtombstoned_client_static^android_x86_x86_64_static.output $GITHUB_WORKSPACE/artifacts/system/core/debuggerd/libtombstoned_client_static^android_x86_x86_64_static $GITHUB_WORKSPACE/artifacts/system/core/debuggerd/libtombstoned_client_static^android_x86_x86_64_static/addition_copy_files.output
+
+echo "building libdiagnose_usb^android_recovery_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libdiagnose_usb,android_recovery_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/diagnose_usb/libdiagnose_usb^android_recovery_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/core/libdiagnose_usb^android_recovery_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/core/diagnose_usb/libdiagnose_usb^android_recovery_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/system/core/libdiagnose_usb^android_recovery_x86_64_static.output $GITHUB_WORKSPACE/artifacts/system/core/diagnose_usb/libdiagnose_usb^android_recovery_x86_64_static $GITHUB_WORKSPACE/artifacts/system/core/diagnose_usb/libdiagnose_usb^android_recovery_x86_64_static/addition_copy_files.output
+
+echo "building libdiagnose_usb^android_x86_64_static_apex10000"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libdiagnose_usb,android_x86_64_static_apex10000
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/diagnose_usb/libdiagnose_usb^android_x86_64_static_apex10000
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/core/libdiagnose_usb^android_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/system/core/diagnose_usb/libdiagnose_usb^android_x86_64_static_apex10000
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/system/core/libdiagnose_usb^android_x86_64_static_apex10000.output $GITHUB_WORKSPACE/artifacts/system/core/diagnose_usb/libdiagnose_usb^android_x86_64_static_apex10000 $GITHUB_WORKSPACE/artifacts/system/core/diagnose_usb/libdiagnose_usb^android_x86_64_static_apex10000/addition_copy_files.output
+
+echo "building libfstab^android_recovery_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libfstab,android_recovery_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/libfstab^android_recovery_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/core/libfstab^android_recovery_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/libfstab^android_recovery_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/system/core/libfstab^android_recovery_x86_64_static.output $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/libfstab^android_recovery_x86_64_static $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/libfstab^android_recovery_x86_64_static/addition_copy_files.output
+
+echo "building libfstab^android_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libfstab,android_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/libfstab^android_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/core/libfstab^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/libfstab^android_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/system/core/libfstab^android_x86_64_static.output $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/libfstab^android_x86_64_static $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/libfstab^android_x86_64_static/addition_copy_files.output
+
+echo "building libdm^android_recovery_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libdm,android_recovery_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/libdm/libdm^android_recovery_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/core/libdm^android_recovery_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/libdm/libdm^android_recovery_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/system/core/libdm^android_recovery_x86_64_static.output $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/libdm/libdm^android_recovery_x86_64_static $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/libdm/libdm^android_recovery_x86_64_static/addition_copy_files.output
+
+echo "building libdm^android_vendor_ramdisk_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libdm,android_vendor_ramdisk_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/libdm/libdm^android_vendor_ramdisk_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/core/libdm^android_vendor_ramdisk_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/libdm/libdm^android_vendor_ramdisk_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/system/core/libdm^android_vendor_ramdisk_x86_64_static.output $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/libdm/libdm^android_vendor_ramdisk_x86_64_static $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/libdm/libdm^android_vendor_ramdisk_x86_64_static/addition_copy_files.output
+
+echo "building libdm^android_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libdm,android_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/libdm/libdm^android_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/core/libdm^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/libdm/libdm^android_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/system/core/libdm^android_x86_64_static.output $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/libdm/libdm^android_x86_64_static $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/libdm/libdm^android_x86_64_static/addition_copy_files.output
+
+echo "building libfs_avb^android_recovery_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libfs_avb,android_recovery_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/libfs_avb/libfs_avb^android_recovery_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/core/libfs_avb^android_recovery_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/libfs_avb/libfs_avb^android_recovery_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/system/core/libfs_avb^android_recovery_x86_64_static.output $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/libfs_avb/libfs_avb^android_recovery_x86_64_static $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/libfs_avb/libfs_avb^android_recovery_x86_64_static/addition_copy_files.output
+
+echo "building libfs_avb^android_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libfs_avb,android_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/libfs_avb/libfs_avb^android_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/core/libfs_avb^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/libfs_avb/libfs_avb^android_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/system/core/libfs_avb^android_x86_64_static.output $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/libfs_avb/libfs_avb^android_x86_64_static $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/libfs_avb/libfs_avb^android_x86_64_static/addition_copy_files.output
+
+echo "building liblp^android_recovery_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja liblp,android_recovery_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/liblp/liblp^android_recovery_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/core/liblp^android_recovery_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/liblp/liblp^android_recovery_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/system/core/liblp^android_recovery_x86_64_static.output $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/liblp/liblp^android_recovery_x86_64_static $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/liblp/liblp^android_recovery_x86_64_static/addition_copy_files.output
+
+echo "building liblp^android_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja liblp,android_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/liblp/liblp^android_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/core/liblp^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/liblp/liblp^android_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/system/core/liblp^android_x86_64_static.output $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/liblp/liblp^android_x86_64_static $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/liblp/liblp^android_x86_64_static/addition_copy_files.output
+
+echo "building liblp^linux_glibc_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja liblp,linux_glibc_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/liblp/liblp^linux_glibc_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/core/liblp^linux_glibc_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/liblp/liblp^linux_glibc_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/system/core/liblp^linux_glibc_x86_64_static.output $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/liblp/liblp^linux_glibc_x86_64_static $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/liblp/liblp^linux_glibc_x86_64_static/addition_copy_files.output
+
+echo "building libsnapshot_cow^android_recovery_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libsnapshot_cow,android_recovery_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/libsnapshot/libsnapshot_cow^android_recovery_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/core/libsnapshot_cow^android_recovery_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/libsnapshot/libsnapshot_cow^android_recovery_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/system/core/libsnapshot_cow^android_recovery_x86_64_static.output $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/libsnapshot/libsnapshot_cow^android_recovery_x86_64_static $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/libsnapshot/libsnapshot_cow^android_recovery_x86_64_static/addition_copy_files.output
+
+echo "building libsnapshot_cow^android_vendor_ramdisk_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libsnapshot_cow,android_vendor_ramdisk_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/libsnapshot/libsnapshot_cow^android_vendor_ramdisk_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/core/libsnapshot_cow^android_vendor_ramdisk_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/libsnapshot/libsnapshot_cow^android_vendor_ramdisk_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/system/core/libsnapshot_cow^android_vendor_ramdisk_x86_64_static.output $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/libsnapshot/libsnapshot_cow^android_vendor_ramdisk_x86_64_static $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/libsnapshot/libsnapshot_cow^android_vendor_ramdisk_x86_64_static/addition_copy_files.output
+
+echo "building libsnapshot_cow^android_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libsnapshot_cow,android_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/libsnapshot/libsnapshot_cow^android_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/core/libsnapshot_cow^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/libsnapshot/libsnapshot_cow^android_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/system/core/libsnapshot_cow^android_x86_64_static.output $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/libsnapshot/libsnapshot_cow^android_x86_64_static $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/libsnapshot/libsnapshot_cow^android_x86_64_static/addition_copy_files.output
+
+echo "building libsnapshot_snapuserd^android_recovery_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libsnapshot_snapuserd,android_recovery_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/libsnapshot/libsnapshot_snapuserd^android_recovery_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/core/libsnapshot_snapuserd^android_recovery_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/libsnapshot/libsnapshot_snapuserd^android_recovery_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/system/core/libsnapshot_snapuserd^android_recovery_x86_64_static.output $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/libsnapshot/libsnapshot_snapuserd^android_recovery_x86_64_static $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/libsnapshot/libsnapshot_snapuserd^android_recovery_x86_64_static/addition_copy_files.output
+
+echo "building libsnapshot_snapuserd^android_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libsnapshot_snapuserd,android_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/libsnapshot/libsnapshot_snapuserd^android_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/core/libsnapshot_snapuserd^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/libsnapshot/libsnapshot_snapuserd^android_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/system/core/libsnapshot_snapuserd^android_x86_64_static.output $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/libsnapshot/libsnapshot_snapuserd^android_x86_64_static $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/libsnapshot/libsnapshot_snapuserd^android_x86_64_static/addition_copy_files.output
+
+echo "building system_core_charger_res_images_battery_fail.png^android_x86_64"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja system_core_charger_res_images_battery_fail.png,android_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/healthd/system_core_charger_res_images_battery_fail.png^android_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/core/system_core_charger_res_images_battery_fail.png^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/core/healthd/system_core_charger_res_images_battery_fail.png^android_x86_64
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/system/core/system_core_charger_res_images_battery_fail.png^android_x86_64.output $GITHUB_WORKSPACE/artifacts/system/core/healthd/system_core_charger_res_images_battery_fail.png^android_x86_64 $GITHUB_WORKSPACE/artifacts/system/core/healthd/system_core_charger_res_images_battery_fail.png^android_x86_64/addition_copy_files.output
+
+echo "building system_core_charger_res_images_battery_scale.png^android_x86_64"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja system_core_charger_res_images_battery_scale.png,android_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/healthd/system_core_charger_res_images_battery_scale.png^android_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/core/system_core_charger_res_images_battery_scale.png^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/core/healthd/system_core_charger_res_images_battery_scale.png^android_x86_64
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/system/core/system_core_charger_res_images_battery_scale.png^android_x86_64.output $GITHUB_WORKSPACE/artifacts/system/core/healthd/system_core_charger_res_images_battery_scale.png^android_x86_64 $GITHUB_WORKSPACE/artifacts/system/core/healthd/system_core_charger_res_images_battery_scale.png^android_x86_64/addition_copy_files.output
 
 echo "building libasyncio^android_recovery_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libasyncio,android_recovery_x86_64_static
@@ -130,60 +257,6 @@ prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/st
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/libasyncio/libasyncio^android_x86_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/core/libasyncio^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/core/libasyncio/libasyncio^android_x86_x86_64_static
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/system/core/libasyncio^android_x86_x86_64_static.output $GITHUB_WORKSPACE/artifacts/system/core/libasyncio/libasyncio^android_x86_x86_64_static $GITHUB_WORKSPACE/artifacts/system/core/libasyncio/libasyncio^android_x86_x86_64_static/addition_copy_files.output
-
-echo "building libbootstat^android_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libbootstat,android_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/bootstat/libbootstat^android_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/core/libbootstat^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/core/bootstat/libbootstat^android_x86_64_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/system/core/libbootstat^android_x86_64_static.output $GITHUB_WORKSPACE/artifacts/system/core/bootstat/libbootstat^android_x86_64_static $GITHUB_WORKSPACE/artifacts/system/core/bootstat/libbootstat^android_x86_64_static/addition_copy_files.output
-
-echo "building libcgrouprc^android_recovery_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libcgrouprc,android_recovery_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/cgrouprc/libcgrouprc^android_recovery_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/core/libcgrouprc^android_recovery_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/cgrouprc/libcgrouprc^android_recovery_x86_64_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/system/core/libcgrouprc^android_recovery_x86_64_static.output $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/cgrouprc/libcgrouprc^android_recovery_x86_64_static $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/cgrouprc/libcgrouprc^android_recovery_x86_64_static/addition_copy_files.output
-
-echo "building libcgrouprc^android_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libcgrouprc,android_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/cgrouprc/libcgrouprc^android_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/core/libcgrouprc^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/cgrouprc/libcgrouprc^android_x86_64_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/system/core/libcgrouprc^android_x86_64_static.output $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/cgrouprc/libcgrouprc^android_x86_64_static $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/cgrouprc/libcgrouprc^android_x86_64_static/addition_copy_files.output
-
-echo "building libcgrouprc^android_x86_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libcgrouprc,android_x86_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/cgrouprc/libcgrouprc^android_x86_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/core/libcgrouprc^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/cgrouprc/libcgrouprc^android_x86_x86_64_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/system/core/libcgrouprc^android_x86_x86_64_static.output $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/cgrouprc/libcgrouprc^android_x86_x86_64_static $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/cgrouprc/libcgrouprc^android_x86_x86_64_static/addition_copy_files.output
-
-echo "building libcgrouprc^linux_glibc_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libcgrouprc,linux_glibc_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/cgrouprc/libcgrouprc^linux_glibc_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/core/libcgrouprc^linux_glibc_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/cgrouprc/libcgrouprc^linux_glibc_x86_64_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/system/core/libcgrouprc^linux_glibc_x86_64_static.output $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/cgrouprc/libcgrouprc^linux_glibc_x86_64_static $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/cgrouprc/libcgrouprc^linux_glibc_x86_64_static/addition_copy_files.output
-
-echo "building libcgrouprc_format^android_recovery_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libcgrouprc_format,android_recovery_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/cgrouprc_format/libcgrouprc_format^android_recovery_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/core/libcgrouprc_format^android_recovery_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/cgrouprc_format/libcgrouprc_format^android_recovery_x86_64_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/system/core/libcgrouprc_format^android_recovery_x86_64_static.output $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/cgrouprc_format/libcgrouprc_format^android_recovery_x86_64_static $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/cgrouprc_format/libcgrouprc_format^android_recovery_x86_64_static/addition_copy_files.output
-
-echo "building libcgrouprc_format^android_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libcgrouprc_format,android_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/cgrouprc_format/libcgrouprc_format^android_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/core/libcgrouprc_format^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/cgrouprc_format/libcgrouprc_format^android_x86_64_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/system/core/libcgrouprc_format^android_x86_64_static.output $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/cgrouprc_format/libcgrouprc_format^android_x86_64_static $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/cgrouprc_format/libcgrouprc_format^android_x86_64_static/addition_copy_files.output
-
-echo "building libcgrouprc_format^android_x86_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libcgrouprc_format,android_x86_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/cgrouprc_format/libcgrouprc_format^android_x86_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/core/libcgrouprc_format^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/cgrouprc_format/libcgrouprc_format^android_x86_x86_64_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/system/core/libcgrouprc_format^android_x86_x86_64_static.output $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/cgrouprc_format/libcgrouprc_format^android_x86_x86_64_static $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/cgrouprc_format/libcgrouprc_format^android_x86_x86_64_static/addition_copy_files.output
-
-echo "building libcgrouprc_format^linux_glibc_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libcgrouprc_format,linux_glibc_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/cgrouprc_format/libcgrouprc_format^linux_glibc_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/core/libcgrouprc_format^linux_glibc_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/cgrouprc_format/libcgrouprc_format^linux_glibc_x86_64_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/system/core/libcgrouprc_format^linux_glibc_x86_64_static.output $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/cgrouprc_format/libcgrouprc_format^linux_glibc_x86_64_static $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/cgrouprc_format/libcgrouprc_format^linux_glibc_x86_64_static/addition_copy_files.output
 
 echo "building libcrypto_utils^android_recovery_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libcrypto_utils,android_recovery_x86_64_static
@@ -365,77 +438,11 @@ mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/libcutils/libcutils_sockets^lin
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/core/libcutils_sockets^linux_glibc_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/core/libcutils/libcutils_sockets^linux_glibc_x86_64_static
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/system/core/libcutils_sockets^linux_glibc_x86_64_static.output $GITHUB_WORKSPACE/artifacts/system/core/libcutils/libcutils_sockets^linux_glibc_x86_64_static $GITHUB_WORKSPACE/artifacts/system/core/libcutils/libcutils_sockets^linux_glibc_x86_64_static/addition_copy_files.output
 
-echo "building libdebuggerd_client^android_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libdebuggerd_client,android_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/debuggerd/libdebuggerd_client^android_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/core/libdebuggerd_client^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/core/debuggerd/libdebuggerd_client^android_x86_64_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/system/core/libdebuggerd_client^android_x86_64_static.output $GITHUB_WORKSPACE/artifacts/system/core/debuggerd/libdebuggerd_client^android_x86_64_static $GITHUB_WORKSPACE/artifacts/system/core/debuggerd/libdebuggerd_client^android_x86_64_static/addition_copy_files.output
-
-echo "building libdebuggerd_client^android_x86_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libdebuggerd_client,android_x86_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/debuggerd/libdebuggerd_client^android_x86_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/core/libdebuggerd_client^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/core/debuggerd/libdebuggerd_client^android_x86_x86_64_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/system/core/libdebuggerd_client^android_x86_x86_64_static.output $GITHUB_WORKSPACE/artifacts/system/core/debuggerd/libdebuggerd_client^android_x86_x86_64_static $GITHUB_WORKSPACE/artifacts/system/core/debuggerd/libdebuggerd_client^android_x86_x86_64_static/addition_copy_files.output
-
-echo "building libdiagnose_usb^android_recovery_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libdiagnose_usb,android_recovery_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/diagnose_usb/libdiagnose_usb^android_recovery_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/core/libdiagnose_usb^android_recovery_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/core/diagnose_usb/libdiagnose_usb^android_recovery_x86_64_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/system/core/libdiagnose_usb^android_recovery_x86_64_static.output $GITHUB_WORKSPACE/artifacts/system/core/diagnose_usb/libdiagnose_usb^android_recovery_x86_64_static $GITHUB_WORKSPACE/artifacts/system/core/diagnose_usb/libdiagnose_usb^android_recovery_x86_64_static/addition_copy_files.output
-
-echo "building libdiagnose_usb^android_x86_64_static_apex10000"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libdiagnose_usb,android_x86_64_static_apex10000
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/diagnose_usb/libdiagnose_usb^android_x86_64_static_apex10000
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/core/libdiagnose_usb^android_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/system/core/diagnose_usb/libdiagnose_usb^android_x86_64_static_apex10000
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/system/core/libdiagnose_usb^android_x86_64_static_apex10000.output $GITHUB_WORKSPACE/artifacts/system/core/diagnose_usb/libdiagnose_usb^android_x86_64_static_apex10000 $GITHUB_WORKSPACE/artifacts/system/core/diagnose_usb/libdiagnose_usb^android_x86_64_static_apex10000/addition_copy_files.output
-
 echo "building libdiskconfig^android_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libdiskconfig,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/libdiskconfig/libdiskconfig^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/core/libdiskconfig^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/core/libdiskconfig/libdiskconfig^android_x86_64_static
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/system/core/libdiskconfig^android_x86_64_static.output $GITHUB_WORKSPACE/artifacts/system/core/libdiskconfig/libdiskconfig^android_x86_64_static $GITHUB_WORKSPACE/artifacts/system/core/libdiskconfig/libdiskconfig^android_x86_64_static/addition_copy_files.output
-
-echo "building libdm^android_recovery_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libdm,android_recovery_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/libdm/libdm^android_recovery_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/core/libdm^android_recovery_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/libdm/libdm^android_recovery_x86_64_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/system/core/libdm^android_recovery_x86_64_static.output $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/libdm/libdm^android_recovery_x86_64_static $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/libdm/libdm^android_recovery_x86_64_static/addition_copy_files.output
-
-echo "building libdm^android_vendor_ramdisk_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libdm,android_vendor_ramdisk_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/libdm/libdm^android_vendor_ramdisk_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/core/libdm^android_vendor_ramdisk_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/libdm/libdm^android_vendor_ramdisk_x86_64_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/system/core/libdm^android_vendor_ramdisk_x86_64_static.output $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/libdm/libdm^android_vendor_ramdisk_x86_64_static $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/libdm/libdm^android_vendor_ramdisk_x86_64_static/addition_copy_files.output
-
-echo "building libdm^android_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libdm,android_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/libdm/libdm^android_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/core/libdm^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/libdm/libdm^android_x86_64_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/system/core/libdm^android_x86_64_static.output $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/libdm/libdm^android_x86_64_static $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/libdm/libdm^android_x86_64_static/addition_copy_files.output
-
-echo "building libfs_avb^android_recovery_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libfs_avb,android_recovery_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/libfs_avb/libfs_avb^android_recovery_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/core/libfs_avb^android_recovery_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/libfs_avb/libfs_avb^android_recovery_x86_64_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/system/core/libfs_avb^android_recovery_x86_64_static.output $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/libfs_avb/libfs_avb^android_recovery_x86_64_static $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/libfs_avb/libfs_avb^android_recovery_x86_64_static/addition_copy_files.output
-
-echo "building libfs_avb^android_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libfs_avb,android_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/libfs_avb/libfs_avb^android_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/core/libfs_avb^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/libfs_avb/libfs_avb^android_x86_64_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/system/core/libfs_avb^android_x86_64_static.output $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/libfs_avb/libfs_avb^android_x86_64_static $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/libfs_avb/libfs_avb^android_x86_64_static/addition_copy_files.output
-
-echo "building libfstab^android_recovery_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libfstab,android_recovery_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/libfstab^android_recovery_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/core/libfstab^android_recovery_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/libfstab^android_recovery_x86_64_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/system/core/libfstab^android_recovery_x86_64_static.output $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/libfstab^android_recovery_x86_64_static $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/libfstab^android_recovery_x86_64_static/addition_copy_files.output
-
-echo "building libfstab^android_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libfstab,android_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/libfstab^android_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/core/libfstab^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/libfstab^android_x86_64_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/system/core/libfstab^android_x86_64_static.output $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/libfstab^android_x86_64_static $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/libfstab^android_x86_64_static/addition_copy_files.output
 
 echo "building libkeyutils^android_recovery_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libkeyutils,android_recovery_x86_64_static
@@ -448,36 +455,6 @@ prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/st
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/libkeyutils/libkeyutils^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/core/libkeyutils^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/core/libkeyutils/libkeyutils^android_x86_64_static
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/system/core/libkeyutils^android_x86_64_static.output $GITHUB_WORKSPACE/artifacts/system/core/libkeyutils/libkeyutils^android_x86_64_static $GITHUB_WORKSPACE/artifacts/system/core/libkeyutils/libkeyutils^android_x86_64_static/addition_copy_files.output
-
-echo "building libllkd^android_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libllkd,android_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/llkd/libllkd^android_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/core/libllkd^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/core/llkd/libllkd^android_x86_64_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/system/core/libllkd^android_x86_64_static.output $GITHUB_WORKSPACE/artifacts/system/core/llkd/libllkd^android_x86_64_static $GITHUB_WORKSPACE/artifacts/system/core/llkd/libllkd^android_x86_64_static/addition_copy_files.output
-
-echo "building liblp^android_recovery_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja liblp,android_recovery_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/liblp/liblp^android_recovery_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/core/liblp^android_recovery_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/liblp/liblp^android_recovery_x86_64_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/system/core/liblp^android_recovery_x86_64_static.output $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/liblp/liblp^android_recovery_x86_64_static $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/liblp/liblp^android_recovery_x86_64_static/addition_copy_files.output
-
-echo "building liblp^android_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja liblp,android_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/liblp/liblp^android_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/core/liblp^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/liblp/liblp^android_x86_64_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/system/core/liblp^android_x86_64_static.output $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/liblp/liblp^android_x86_64_static $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/liblp/liblp^android_x86_64_static/addition_copy_files.output
-
-echo "building liblp^linux_glibc_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja liblp,linux_glibc_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/liblp/liblp^linux_glibc_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/core/liblp^linux_glibc_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/liblp/liblp^linux_glibc_x86_64_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/system/core/liblp^linux_glibc_x86_64_static.output $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/liblp/liblp^linux_glibc_x86_64_static $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/liblp/liblp^linux_glibc_x86_64_static/addition_copy_files.output
-
-echo "building libmini_keyctl_static^android_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libmini_keyctl_static,android_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/mini_keyctl/libmini_keyctl_static^android_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/core/libmini_keyctl_static^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/core/mini_keyctl/libmini_keyctl_static^android_x86_64_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/system/core/libmini_keyctl_static^android_x86_64_static.output $GITHUB_WORKSPACE/artifacts/system/core/mini_keyctl/libmini_keyctl_static^android_x86_64_static $GITHUB_WORKSPACE/artifacts/system/core/mini_keyctl/libmini_keyctl_static^android_x86_64_static/addition_copy_files.output
 
 echo "building libmodprobe^android_recovery_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libmodprobe,android_recovery_x86_64_static
@@ -569,119 +546,113 @@ mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/libprocessgroup
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/core/libprocessgroup^linux_glibc_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/libprocessgroup^linux_glibc_x86_64_static
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/system/core/libprocessgroup^linux_glibc_x86_64_static.output $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/libprocessgroup^linux_glibc_x86_64_static $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/libprocessgroup^linux_glibc_x86_64_static/addition_copy_files.output
 
-echo "building libpropertyinfoparser^android_native_bridge_arm64_armv8-a_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libpropertyinfoparser,android_native_bridge_arm64_armv8-a_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/property_service/libpropertyinfoparser/libpropertyinfoparser^android_native_bridge_arm64_armv8-a_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/core/libpropertyinfoparser^android_native_bridge_arm64_armv8-a_static.output . $GITHUB_WORKSPACE/artifacts/system/core/property_service/libpropertyinfoparser/libpropertyinfoparser^android_native_bridge_arm64_armv8-a_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/system/core/libpropertyinfoparser^android_native_bridge_arm64_armv8-a_static.output $GITHUB_WORKSPACE/artifacts/system/core/property_service/libpropertyinfoparser/libpropertyinfoparser^android_native_bridge_arm64_armv8-a_static $GITHUB_WORKSPACE/artifacts/system/core/property_service/libpropertyinfoparser/libpropertyinfoparser^android_native_bridge_arm64_armv8-a_static/addition_copy_files.output
+echo "building libcgrouprc^android_recovery_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libcgrouprc,android_recovery_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/cgrouprc/libcgrouprc^android_recovery_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/core/libcgrouprc^android_recovery_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/cgrouprc/libcgrouprc^android_recovery_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/system/core/libcgrouprc^android_recovery_x86_64_static.output $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/cgrouprc/libcgrouprc^android_recovery_x86_64_static $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/cgrouprc/libcgrouprc^android_recovery_x86_64_static/addition_copy_files.output
 
-echo "building libpropertyinfoparser^android_native_bridge_arm_armv7-a-neon_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libpropertyinfoparser,android_native_bridge_arm_armv7-a-neon_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/property_service/libpropertyinfoparser/libpropertyinfoparser^android_native_bridge_arm_armv7-a-neon_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/core/libpropertyinfoparser^android_native_bridge_arm_armv7-a-neon_static.output . $GITHUB_WORKSPACE/artifacts/system/core/property_service/libpropertyinfoparser/libpropertyinfoparser^android_native_bridge_arm_armv7-a-neon_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/system/core/libpropertyinfoparser^android_native_bridge_arm_armv7-a-neon_static.output $GITHUB_WORKSPACE/artifacts/system/core/property_service/libpropertyinfoparser/libpropertyinfoparser^android_native_bridge_arm_armv7-a-neon_static $GITHUB_WORKSPACE/artifacts/system/core/property_service/libpropertyinfoparser/libpropertyinfoparser^android_native_bridge_arm_armv7-a-neon_static/addition_copy_files.output
+echo "building libcgrouprc^android_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libcgrouprc,android_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/cgrouprc/libcgrouprc^android_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/core/libcgrouprc^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/cgrouprc/libcgrouprc^android_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/system/core/libcgrouprc^android_x86_64_static.output $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/cgrouprc/libcgrouprc^android_x86_64_static $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/cgrouprc/libcgrouprc^android_x86_64_static/addition_copy_files.output
 
-echo "building libpropertyinfoparser^android_recovery_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libpropertyinfoparser,android_recovery_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/property_service/libpropertyinfoparser/libpropertyinfoparser^android_recovery_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/core/libpropertyinfoparser^android_recovery_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/core/property_service/libpropertyinfoparser/libpropertyinfoparser^android_recovery_x86_64_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/system/core/libpropertyinfoparser^android_recovery_x86_64_static.output $GITHUB_WORKSPACE/artifacts/system/core/property_service/libpropertyinfoparser/libpropertyinfoparser^android_recovery_x86_64_static $GITHUB_WORKSPACE/artifacts/system/core/property_service/libpropertyinfoparser/libpropertyinfoparser^android_recovery_x86_64_static/addition_copy_files.output
+echo "building libcgrouprc^android_x86_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libcgrouprc,android_x86_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/cgrouprc/libcgrouprc^android_x86_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/core/libcgrouprc^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/cgrouprc/libcgrouprc^android_x86_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/system/core/libcgrouprc^android_x86_x86_64_static.output $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/cgrouprc/libcgrouprc^android_x86_x86_64_static $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/cgrouprc/libcgrouprc^android_x86_x86_64_static/addition_copy_files.output
 
-echo "building libpropertyinfoparser^android_vendor.31_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libpropertyinfoparser,android_vendor.31_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/property_service/libpropertyinfoparser/libpropertyinfoparser^android_vendor.31_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/core/libpropertyinfoparser^android_vendor.31_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/core/property_service/libpropertyinfoparser/libpropertyinfoparser^android_vendor.31_x86_64_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/system/core/libpropertyinfoparser^android_vendor.31_x86_64_static.output $GITHUB_WORKSPACE/artifacts/system/core/property_service/libpropertyinfoparser/libpropertyinfoparser^android_vendor.31_x86_64_static $GITHUB_WORKSPACE/artifacts/system/core/property_service/libpropertyinfoparser/libpropertyinfoparser^android_vendor.31_x86_64_static/addition_copy_files.output
+echo "building libcgrouprc^linux_glibc_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libcgrouprc,linux_glibc_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/cgrouprc/libcgrouprc^linux_glibc_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/core/libcgrouprc^linux_glibc_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/cgrouprc/libcgrouprc^linux_glibc_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/system/core/libcgrouprc^linux_glibc_x86_64_static.output $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/cgrouprc/libcgrouprc^linux_glibc_x86_64_static $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/cgrouprc/libcgrouprc^linux_glibc_x86_64_static/addition_copy_files.output
 
-echo "building libpropertyinfoparser^android_vendor_ramdisk_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libpropertyinfoparser,android_vendor_ramdisk_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/property_service/libpropertyinfoparser/libpropertyinfoparser^android_vendor_ramdisk_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/core/libpropertyinfoparser^android_vendor_ramdisk_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/core/property_service/libpropertyinfoparser/libpropertyinfoparser^android_vendor_ramdisk_x86_64_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/system/core/libpropertyinfoparser^android_vendor_ramdisk_x86_64_static.output $GITHUB_WORKSPACE/artifacts/system/core/property_service/libpropertyinfoparser/libpropertyinfoparser^android_vendor_ramdisk_x86_64_static $GITHUB_WORKSPACE/artifacts/system/core/property_service/libpropertyinfoparser/libpropertyinfoparser^android_vendor_ramdisk_x86_64_static/addition_copy_files.output
+echo "building libcgrouprc_format^android_recovery_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libcgrouprc_format,android_recovery_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/cgrouprc_format/libcgrouprc_format^android_recovery_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/core/libcgrouprc_format^android_recovery_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/cgrouprc_format/libcgrouprc_format^android_recovery_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/system/core/libcgrouprc_format^android_recovery_x86_64_static.output $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/cgrouprc_format/libcgrouprc_format^android_recovery_x86_64_static $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/cgrouprc_format/libcgrouprc_format^android_recovery_x86_64_static/addition_copy_files.output
 
-echo "building libpropertyinfoparser^android_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libpropertyinfoparser,android_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/property_service/libpropertyinfoparser/libpropertyinfoparser^android_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/core/libpropertyinfoparser^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/core/property_service/libpropertyinfoparser/libpropertyinfoparser^android_x86_64_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/system/core/libpropertyinfoparser^android_x86_64_static.output $GITHUB_WORKSPACE/artifacts/system/core/property_service/libpropertyinfoparser/libpropertyinfoparser^android_x86_64_static $GITHUB_WORKSPACE/artifacts/system/core/property_service/libpropertyinfoparser/libpropertyinfoparser^android_x86_64_static/addition_copy_files.output
+echo "building libcgrouprc_format^android_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libcgrouprc_format,android_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/cgrouprc_format/libcgrouprc_format^android_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/core/libcgrouprc_format^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/cgrouprc_format/libcgrouprc_format^android_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/system/core/libcgrouprc_format^android_x86_64_static.output $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/cgrouprc_format/libcgrouprc_format^android_x86_64_static $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/cgrouprc_format/libcgrouprc_format^android_x86_64_static/addition_copy_files.output
 
-echo "building libpropertyinfoparser^android_x86_64_static_apex10000"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libpropertyinfoparser,android_x86_64_static_apex10000
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/property_service/libpropertyinfoparser/libpropertyinfoparser^android_x86_64_static_apex10000
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/core/libpropertyinfoparser^android_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/system/core/property_service/libpropertyinfoparser/libpropertyinfoparser^android_x86_64_static_apex10000
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/system/core/libpropertyinfoparser^android_x86_64_static_apex10000.output $GITHUB_WORKSPACE/artifacts/system/core/property_service/libpropertyinfoparser/libpropertyinfoparser^android_x86_64_static_apex10000 $GITHUB_WORKSPACE/artifacts/system/core/property_service/libpropertyinfoparser/libpropertyinfoparser^android_x86_64_static_apex10000/addition_copy_files.output
+echo "building libcgrouprc_format^android_x86_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libcgrouprc_format,android_x86_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/cgrouprc_format/libcgrouprc_format^android_x86_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/core/libcgrouprc_format^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/cgrouprc_format/libcgrouprc_format^android_x86_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/system/core/libcgrouprc_format^android_x86_x86_64_static.output $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/cgrouprc_format/libcgrouprc_format^android_x86_x86_64_static $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/cgrouprc_format/libcgrouprc_format^android_x86_x86_64_static/addition_copy_files.output
 
-echo "building libpropertyinfoparser^android_x86_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libpropertyinfoparser,android_x86_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/property_service/libpropertyinfoparser/libpropertyinfoparser^android_x86_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/core/libpropertyinfoparser^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/core/property_service/libpropertyinfoparser/libpropertyinfoparser^android_x86_x86_64_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/system/core/libpropertyinfoparser^android_x86_x86_64_static.output $GITHUB_WORKSPACE/artifacts/system/core/property_service/libpropertyinfoparser/libpropertyinfoparser^android_x86_x86_64_static $GITHUB_WORKSPACE/artifacts/system/core/property_service/libpropertyinfoparser/libpropertyinfoparser^android_x86_x86_64_static/addition_copy_files.output
+echo "building libcgrouprc_format^linux_glibc_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libcgrouprc_format,linux_glibc_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/cgrouprc_format/libcgrouprc_format^linux_glibc_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/core/libcgrouprc_format^linux_glibc_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/cgrouprc_format/libcgrouprc_format^linux_glibc_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/system/core/libcgrouprc_format^linux_glibc_x86_64_static.output $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/cgrouprc_format/libcgrouprc_format^linux_glibc_x86_64_static $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/cgrouprc_format/libcgrouprc_format^linux_glibc_x86_64_static/addition_copy_files.output
 
-echo "building libpropertyinfoparser^android_x86_x86_64_static_apex10000"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libpropertyinfoparser,android_x86_x86_64_static_apex10000
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/property_service/libpropertyinfoparser/libpropertyinfoparser^android_x86_x86_64_static_apex10000
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/core/libpropertyinfoparser^android_x86_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/system/core/property_service/libpropertyinfoparser/libpropertyinfoparser^android_x86_x86_64_static_apex10000
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/system/core/libpropertyinfoparser^android_x86_x86_64_static_apex10000.output $GITHUB_WORKSPACE/artifacts/system/core/property_service/libpropertyinfoparser/libpropertyinfoparser^android_x86_x86_64_static_apex10000 $GITHUB_WORKSPACE/artifacts/system/core/property_service/libpropertyinfoparser/libpropertyinfoparser^android_x86_x86_64_static_apex10000/addition_copy_files.output
+echo "building cgroups.json^android_x86_64"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja cgroups.json,android_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/profiles/cgroups.json^android_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/core/cgroups.json^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/profiles/cgroups.json^android_x86_64
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/system/core/cgroups.json^android_x86_64.output $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/profiles/cgroups.json^android_x86_64 $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/profiles/cgroups.json^android_x86_64/addition_copy_files.output
 
-echo "building libpropertyinfoparser^linux_glibc_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libpropertyinfoparser,linux_glibc_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/property_service/libpropertyinfoparser/libpropertyinfoparser^linux_glibc_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/core/libpropertyinfoparser^linux_glibc_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/core/property_service/libpropertyinfoparser/libpropertyinfoparser^linux_glibc_x86_64_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/system/core/libpropertyinfoparser^linux_glibc_x86_64_static.output $GITHUB_WORKSPACE/artifacts/system/core/property_service/libpropertyinfoparser/libpropertyinfoparser^linux_glibc_x86_64_static $GITHUB_WORKSPACE/artifacts/system/core/property_service/libpropertyinfoparser/libpropertyinfoparser^linux_glibc_x86_64_static/addition_copy_files.output
+echo "building cgroups.recovery.json^android_recovery_x86_64"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja cgroups.recovery.json,android_recovery_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/profiles/cgroups.recovery.json^android_recovery_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/core/cgroups.recovery.json^android_recovery_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/profiles/cgroups.recovery.json^android_recovery_x86_64
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/system/core/cgroups.recovery.json^android_recovery_x86_64.output $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/profiles/cgroups.recovery.json^android_recovery_x86_64 $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/profiles/cgroups.recovery.json^android_recovery_x86_64/addition_copy_files.output
 
-echo "building libpropertyinfoserializer^android_recovery_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libpropertyinfoserializer,android_recovery_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/property_service/libpropertyinfoserializer/libpropertyinfoserializer^android_recovery_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/core/libpropertyinfoserializer^android_recovery_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/core/property_service/libpropertyinfoserializer/libpropertyinfoserializer^android_recovery_x86_64_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/system/core/libpropertyinfoserializer^android_recovery_x86_64_static.output $GITHUB_WORKSPACE/artifacts/system/core/property_service/libpropertyinfoserializer/libpropertyinfoserializer^android_recovery_x86_64_static $GITHUB_WORKSPACE/artifacts/system/core/property_service/libpropertyinfoserializer/libpropertyinfoserializer^android_recovery_x86_64_static/addition_copy_files.output
+echo "building cgroups_28.json^android_x86_64"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja cgroups_28.json,android_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/profiles/cgroups_28.json^android_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/core/cgroups_28.json^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/profiles/cgroups_28.json^android_x86_64
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/system/core/cgroups_28.json^android_x86_64.output $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/profiles/cgroups_28.json^android_x86_64 $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/profiles/cgroups_28.json^android_x86_64/addition_copy_files.output
 
-echo "building libpropertyinfoserializer^android_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libpropertyinfoserializer,android_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/property_service/libpropertyinfoserializer/libpropertyinfoserializer^android_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/core/libpropertyinfoserializer^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/core/property_service/libpropertyinfoserializer/libpropertyinfoserializer^android_x86_64_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/system/core/libpropertyinfoserializer^android_x86_64_static.output $GITHUB_WORKSPACE/artifacts/system/core/property_service/libpropertyinfoserializer/libpropertyinfoserializer^android_x86_64_static $GITHUB_WORKSPACE/artifacts/system/core/property_service/libpropertyinfoserializer/libpropertyinfoserializer^android_x86_64_static/addition_copy_files.output
+echo "building cgroups_29.json^android_x86_64"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja cgroups_29.json,android_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/profiles/cgroups_29.json^android_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/core/cgroups_29.json^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/profiles/cgroups_29.json^android_x86_64
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/system/core/cgroups_29.json^android_x86_64.output $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/profiles/cgroups_29.json^android_x86_64 $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/profiles/cgroups_29.json^android_x86_64/addition_copy_files.output
 
-echo "building libpropertyinfoserializer^linux_glibc_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libpropertyinfoserializer,linux_glibc_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/property_service/libpropertyinfoserializer/libpropertyinfoserializer^linux_glibc_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/core/libpropertyinfoserializer^linux_glibc_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/core/property_service/libpropertyinfoserializer/libpropertyinfoserializer^linux_glibc_x86_64_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/system/core/libpropertyinfoserializer^linux_glibc_x86_64_static.output $GITHUB_WORKSPACE/artifacts/system/core/property_service/libpropertyinfoserializer/libpropertyinfoserializer^linux_glibc_x86_64_static $GITHUB_WORKSPACE/artifacts/system/core/property_service/libpropertyinfoserializer/libpropertyinfoserializer^linux_glibc_x86_64_static/addition_copy_files.output
+echo "building cgroups_30.json^android_x86_64"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja cgroups_30.json,android_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/profiles/cgroups_30.json^android_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/core/cgroups_30.json^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/profiles/cgroups_30.json^android_x86_64
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/system/core/cgroups_30.json^android_x86_64.output $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/profiles/cgroups_30.json^android_x86_64 $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/profiles/cgroups_30.json^android_x86_64/addition_copy_files.output
+
+echo "building task_profiles.json^android_x86_64"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja task_profiles.json,android_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/profiles/task_profiles.json^android_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/core/task_profiles.json^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/profiles/task_profiles.json^android_x86_64
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/system/core/task_profiles.json^android_x86_64.output $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/profiles/task_profiles.json^android_x86_64 $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/profiles/task_profiles.json^android_x86_64/addition_copy_files.output
+
+echo "building task_profiles_28.json^android_x86_64"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja task_profiles_28.json,android_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/profiles/task_profiles_28.json^android_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/core/task_profiles_28.json^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/profiles/task_profiles_28.json^android_x86_64
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/system/core/task_profiles_28.json^android_x86_64.output $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/profiles/task_profiles_28.json^android_x86_64 $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/profiles/task_profiles_28.json^android_x86_64/addition_copy_files.output
+
+echo "building task_profiles_29.json^android_x86_64"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja task_profiles_29.json,android_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/profiles/task_profiles_29.json^android_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/core/task_profiles_29.json^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/profiles/task_profiles_29.json^android_x86_64
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/system/core/task_profiles_29.json^android_x86_64.output $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/profiles/task_profiles_29.json^android_x86_64 $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/profiles/task_profiles_29.json^android_x86_64/addition_copy_files.output
+
+echo "building task_profiles_30.json^android_x86_64"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja task_profiles_30.json,android_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/profiles/task_profiles_30.json^android_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/core/task_profiles_30.json^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/profiles/task_profiles_30.json^android_x86_64
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/system/core/task_profiles_30.json^android_x86_64.output $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/profiles/task_profiles_30.json^android_x86_64 $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/profiles/task_profiles_30.json^android_x86_64/addition_copy_files.output
 
 echo "building libqtaguid^android_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libqtaguid,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/libqtaguid/libqtaguid^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/core/libqtaguid^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/core/libqtaguid/libqtaguid^android_x86_64_static
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/system/core/libqtaguid^android_x86_64_static.output $GITHUB_WORKSPACE/artifacts/system/core/libqtaguid/libqtaguid^android_x86_64_static $GITHUB_WORKSPACE/artifacts/system/core/libqtaguid/libqtaguid^android_x86_64_static/addition_copy_files.output
-
-echo "building libsnapshot_cow^android_recovery_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libsnapshot_cow,android_recovery_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/libsnapshot/libsnapshot_cow^android_recovery_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/core/libsnapshot_cow^android_recovery_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/libsnapshot/libsnapshot_cow^android_recovery_x86_64_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/system/core/libsnapshot_cow^android_recovery_x86_64_static.output $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/libsnapshot/libsnapshot_cow^android_recovery_x86_64_static $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/libsnapshot/libsnapshot_cow^android_recovery_x86_64_static/addition_copy_files.output
-
-echo "building libsnapshot_cow^android_vendor_ramdisk_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libsnapshot_cow,android_vendor_ramdisk_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/libsnapshot/libsnapshot_cow^android_vendor_ramdisk_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/core/libsnapshot_cow^android_vendor_ramdisk_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/libsnapshot/libsnapshot_cow^android_vendor_ramdisk_x86_64_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/system/core/libsnapshot_cow^android_vendor_ramdisk_x86_64_static.output $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/libsnapshot/libsnapshot_cow^android_vendor_ramdisk_x86_64_static $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/libsnapshot/libsnapshot_cow^android_vendor_ramdisk_x86_64_static/addition_copy_files.output
-
-echo "building libsnapshot_cow^android_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libsnapshot_cow,android_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/libsnapshot/libsnapshot_cow^android_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/core/libsnapshot_cow^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/libsnapshot/libsnapshot_cow^android_x86_64_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/system/core/libsnapshot_cow^android_x86_64_static.output $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/libsnapshot/libsnapshot_cow^android_x86_64_static $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/libsnapshot/libsnapshot_cow^android_x86_64_static/addition_copy_files.output
-
-echo "building libsnapshot_snapuserd^android_recovery_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libsnapshot_snapuserd,android_recovery_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/libsnapshot/libsnapshot_snapuserd^android_recovery_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/core/libsnapshot_snapuserd^android_recovery_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/libsnapshot/libsnapshot_snapuserd^android_recovery_x86_64_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/system/core/libsnapshot_snapuserd^android_recovery_x86_64_static.output $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/libsnapshot/libsnapshot_snapuserd^android_recovery_x86_64_static $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/libsnapshot/libsnapshot_snapuserd^android_recovery_x86_64_static/addition_copy_files.output
-
-echo "building libsnapshot_snapuserd^android_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libsnapshot_snapuserd,android_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/libsnapshot/libsnapshot_snapuserd^android_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/core/libsnapshot_snapuserd^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/libsnapshot/libsnapshot_snapuserd^android_x86_64_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/system/core/libsnapshot_snapuserd^android_x86_64_static.output $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/libsnapshot/libsnapshot_snapuserd^android_x86_64_static $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/libsnapshot/libsnapshot_snapuserd^android_x86_64_static/addition_copy_files.output
 
 echo "building libsparse^android_recovery_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libsparse,android_recovery_x86_64_static
@@ -767,6 +738,12 @@ mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/libsuspend/libsuspend^android_x
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/core/libsuspend^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/core/libsuspend/libsuspend^android_x86_64_static
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/system/core/libsuspend^android_x86_64_static.output $GITHUB_WORKSPACE/artifacts/system/core/libsuspend/libsuspend^android_x86_64_static $GITHUB_WORKSPACE/artifacts/system/core/libsuspend/libsuspend^android_x86_64_static/addition_copy_files.output
 
+echo "building libsync_headers^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libsync_headers,
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/libsync/libsync_headers^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/core/libsync_headers^.output . $GITHUB_WORKSPACE/artifacts/system/core/libsync/libsync_headers^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/system/core/libsync_headers^.output $GITHUB_WORKSPACE/artifacts/system/core/libsync/libsync_headers^ $GITHUB_WORKSPACE/artifacts/system/core/libsync/libsync_headers^/addition_copy_files.output
+
 echo "building libsync^android_recovery_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libsync,android_recovery_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/libsync/libsync^android_recovery_x86_64_static
@@ -784,12 +761,6 @@ prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/st
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/libsync/libsync^android_x86_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/core/libsync^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/core/libsync/libsync^android_x86_x86_64_static
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/system/core/libsync^android_x86_x86_64_static.output $GITHUB_WORKSPACE/artifacts/system/core/libsync/libsync^android_x86_x86_64_static $GITHUB_WORKSPACE/artifacts/system/core/libsync/libsync^android_x86_x86_64_static/addition_copy_files.output
-
-echo "building libsync_headers^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libsync_headers,
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/libsync/libsync_headers^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/core/libsync_headers^.output . $GITHUB_WORKSPACE/artifacts/system/core/libsync/libsync_headers^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/system/core/libsync_headers^.output $GITHUB_WORKSPACE/artifacts/system/core/libsync/libsync_headers^ $GITHUB_WORKSPACE/artifacts/system/core/libsync/libsync_headers^/addition_copy_files.output
 
 echo "building libsysutils^android_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libsysutils,android_x86_64_static
@@ -911,47 +882,89 @@ mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/libvndksupport/libvndksupport^a
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/core/libvndksupport^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/core/libvndksupport/libvndksupport^android_x86_x86_64_static
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/system/core/libvndksupport^android_x86_x86_64_static.output $GITHUB_WORKSPACE/artifacts/system/core/libvndksupport/libvndksupport^android_x86_x86_64_static $GITHUB_WORKSPACE/artifacts/system/core/libvndksupport/libvndksupport^android_x86_x86_64_static/addition_copy_files.output
 
-echo "building public.libraries.android.txt^android_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja public.libraries.android.txt,android_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/rootdir/public.libraries.android.txt^android_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/core/public.libraries.android.txt^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/core/rootdir/public.libraries.android.txt^android_x86_64
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/system/core/public.libraries.android.txt^android_x86_64.output $GITHUB_WORKSPACE/artifacts/system/core/rootdir/public.libraries.android.txt^android_x86_64 $GITHUB_WORKSPACE/artifacts/system/core/rootdir/public.libraries.android.txt^android_x86_64/addition_copy_files.output
+echo "building libllkd^android_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libllkd,android_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/llkd/libllkd^android_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/core/libllkd^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/core/llkd/libllkd^android_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/system/core/libllkd^android_x86_64_static.output $GITHUB_WORKSPACE/artifacts/system/core/llkd/libllkd^android_x86_64_static $GITHUB_WORKSPACE/artifacts/system/core/llkd/libllkd^android_x86_64_static/addition_copy_files.output
 
-echo "building system_core_charger_res_images_battery_fail.png^android_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja system_core_charger_res_images_battery_fail.png,android_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/healthd/system_core_charger_res_images_battery_fail.png^android_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/core/system_core_charger_res_images_battery_fail.png^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/core/healthd/system_core_charger_res_images_battery_fail.png^android_x86_64
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/system/core/system_core_charger_res_images_battery_fail.png^android_x86_64.output $GITHUB_WORKSPACE/artifacts/system/core/healthd/system_core_charger_res_images_battery_fail.png^android_x86_64 $GITHUB_WORKSPACE/artifacts/system/core/healthd/system_core_charger_res_images_battery_fail.png^android_x86_64/addition_copy_files.output
+echo "building libmini_keyctl_static^android_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libmini_keyctl_static,android_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/mini_keyctl/libmini_keyctl_static^android_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/core/libmini_keyctl_static^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/core/mini_keyctl/libmini_keyctl_static^android_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/system/core/libmini_keyctl_static^android_x86_64_static.output $GITHUB_WORKSPACE/artifacts/system/core/mini_keyctl/libmini_keyctl_static^android_x86_64_static $GITHUB_WORKSPACE/artifacts/system/core/mini_keyctl/libmini_keyctl_static^android_x86_64_static/addition_copy_files.output
 
-echo "building system_core_charger_res_images_battery_scale.png^android_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja system_core_charger_res_images_battery_scale.png,android_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/healthd/system_core_charger_res_images_battery_scale.png^android_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/core/system_core_charger_res_images_battery_scale.png^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/core/healthd/system_core_charger_res_images_battery_scale.png^android_x86_64
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/system/core/system_core_charger_res_images_battery_scale.png^android_x86_64.output $GITHUB_WORKSPACE/artifacts/system/core/healthd/system_core_charger_res_images_battery_scale.png^android_x86_64 $GITHUB_WORKSPACE/artifacts/system/core/healthd/system_core_charger_res_images_battery_scale.png^android_x86_64/addition_copy_files.output
+echo "building libpropertyinfoparser^android_recovery_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libpropertyinfoparser,android_recovery_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/property_service/libpropertyinfoparser/libpropertyinfoparser^android_recovery_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/core/libpropertyinfoparser^android_recovery_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/core/property_service/libpropertyinfoparser/libpropertyinfoparser^android_recovery_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/system/core/libpropertyinfoparser^android_recovery_x86_64_static.output $GITHUB_WORKSPACE/artifacts/system/core/property_service/libpropertyinfoparser/libpropertyinfoparser^android_recovery_x86_64_static $GITHUB_WORKSPACE/artifacts/system/core/property_service/libpropertyinfoparser/libpropertyinfoparser^android_recovery_x86_64_static/addition_copy_files.output
 
-echo "building task_profiles.json^android_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja task_profiles.json,android_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/profiles/task_profiles.json^android_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/core/task_profiles.json^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/profiles/task_profiles.json^android_x86_64
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/system/core/task_profiles.json^android_x86_64.output $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/profiles/task_profiles.json^android_x86_64 $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/profiles/task_profiles.json^android_x86_64/addition_copy_files.output
+echo "building libpropertyinfoparser^android_vendor.31_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libpropertyinfoparser,android_vendor.31_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/property_service/libpropertyinfoparser/libpropertyinfoparser^android_vendor.31_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/core/libpropertyinfoparser^android_vendor.31_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/core/property_service/libpropertyinfoparser/libpropertyinfoparser^android_vendor.31_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/system/core/libpropertyinfoparser^android_vendor.31_x86_64_static.output $GITHUB_WORKSPACE/artifacts/system/core/property_service/libpropertyinfoparser/libpropertyinfoparser^android_vendor.31_x86_64_static $GITHUB_WORKSPACE/artifacts/system/core/property_service/libpropertyinfoparser/libpropertyinfoparser^android_vendor.31_x86_64_static/addition_copy_files.output
 
-echo "building task_profiles_28.json^android_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja task_profiles_28.json,android_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/profiles/task_profiles_28.json^android_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/core/task_profiles_28.json^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/profiles/task_profiles_28.json^android_x86_64
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/system/core/task_profiles_28.json^android_x86_64.output $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/profiles/task_profiles_28.json^android_x86_64 $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/profiles/task_profiles_28.json^android_x86_64/addition_copy_files.output
+echo "building libpropertyinfoparser^android_vendor_ramdisk_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libpropertyinfoparser,android_vendor_ramdisk_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/property_service/libpropertyinfoparser/libpropertyinfoparser^android_vendor_ramdisk_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/core/libpropertyinfoparser^android_vendor_ramdisk_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/core/property_service/libpropertyinfoparser/libpropertyinfoparser^android_vendor_ramdisk_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/system/core/libpropertyinfoparser^android_vendor_ramdisk_x86_64_static.output $GITHUB_WORKSPACE/artifacts/system/core/property_service/libpropertyinfoparser/libpropertyinfoparser^android_vendor_ramdisk_x86_64_static $GITHUB_WORKSPACE/artifacts/system/core/property_service/libpropertyinfoparser/libpropertyinfoparser^android_vendor_ramdisk_x86_64_static/addition_copy_files.output
 
-echo "building task_profiles_29.json^android_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja task_profiles_29.json,android_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/profiles/task_profiles_29.json^android_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/core/task_profiles_29.json^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/profiles/task_profiles_29.json^android_x86_64
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/system/core/task_profiles_29.json^android_x86_64.output $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/profiles/task_profiles_29.json^android_x86_64 $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/profiles/task_profiles_29.json^android_x86_64/addition_copy_files.output
+echo "building libpropertyinfoparser^android_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libpropertyinfoparser,android_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/property_service/libpropertyinfoparser/libpropertyinfoparser^android_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/core/libpropertyinfoparser^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/core/property_service/libpropertyinfoparser/libpropertyinfoparser^android_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/system/core/libpropertyinfoparser^android_x86_64_static.output $GITHUB_WORKSPACE/artifacts/system/core/property_service/libpropertyinfoparser/libpropertyinfoparser^android_x86_64_static $GITHUB_WORKSPACE/artifacts/system/core/property_service/libpropertyinfoparser/libpropertyinfoparser^android_x86_64_static/addition_copy_files.output
 
-echo "building task_profiles_30.json^android_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja task_profiles_30.json,android_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/profiles/task_profiles_30.json^android_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/core/task_profiles_30.json^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/profiles/task_profiles_30.json^android_x86_64
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/system/core/task_profiles_30.json^android_x86_64.output $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/profiles/task_profiles_30.json^android_x86_64 $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/profiles/task_profiles_30.json^android_x86_64/addition_copy_files.output
+echo "building libpropertyinfoparser^android_x86_64_static_apex10000"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libpropertyinfoparser,android_x86_64_static_apex10000
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/property_service/libpropertyinfoparser/libpropertyinfoparser^android_x86_64_static_apex10000
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/core/libpropertyinfoparser^android_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/system/core/property_service/libpropertyinfoparser/libpropertyinfoparser^android_x86_64_static_apex10000
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/system/core/libpropertyinfoparser^android_x86_64_static_apex10000.output $GITHUB_WORKSPACE/artifacts/system/core/property_service/libpropertyinfoparser/libpropertyinfoparser^android_x86_64_static_apex10000 $GITHUB_WORKSPACE/artifacts/system/core/property_service/libpropertyinfoparser/libpropertyinfoparser^android_x86_64_static_apex10000/addition_copy_files.output
+
+echo "building libpropertyinfoparser^android_x86_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libpropertyinfoparser,android_x86_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/property_service/libpropertyinfoparser/libpropertyinfoparser^android_x86_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/core/libpropertyinfoparser^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/core/property_service/libpropertyinfoparser/libpropertyinfoparser^android_x86_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/system/core/libpropertyinfoparser^android_x86_x86_64_static.output $GITHUB_WORKSPACE/artifacts/system/core/property_service/libpropertyinfoparser/libpropertyinfoparser^android_x86_x86_64_static $GITHUB_WORKSPACE/artifacts/system/core/property_service/libpropertyinfoparser/libpropertyinfoparser^android_x86_x86_64_static/addition_copy_files.output
+
+echo "building libpropertyinfoparser^android_x86_x86_64_static_apex10000"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libpropertyinfoparser,android_x86_x86_64_static_apex10000
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/property_service/libpropertyinfoparser/libpropertyinfoparser^android_x86_x86_64_static_apex10000
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/core/libpropertyinfoparser^android_x86_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/system/core/property_service/libpropertyinfoparser/libpropertyinfoparser^android_x86_x86_64_static_apex10000
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/system/core/libpropertyinfoparser^android_x86_x86_64_static_apex10000.output $GITHUB_WORKSPACE/artifacts/system/core/property_service/libpropertyinfoparser/libpropertyinfoparser^android_x86_x86_64_static_apex10000 $GITHUB_WORKSPACE/artifacts/system/core/property_service/libpropertyinfoparser/libpropertyinfoparser^android_x86_x86_64_static_apex10000/addition_copy_files.output
+
+echo "building libpropertyinfoparser^linux_glibc_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libpropertyinfoparser,linux_glibc_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/property_service/libpropertyinfoparser/libpropertyinfoparser^linux_glibc_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/core/libpropertyinfoparser^linux_glibc_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/core/property_service/libpropertyinfoparser/libpropertyinfoparser^linux_glibc_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/system/core/libpropertyinfoparser^linux_glibc_x86_64_static.output $GITHUB_WORKSPACE/artifacts/system/core/property_service/libpropertyinfoparser/libpropertyinfoparser^linux_glibc_x86_64_static $GITHUB_WORKSPACE/artifacts/system/core/property_service/libpropertyinfoparser/libpropertyinfoparser^linux_glibc_x86_64_static/addition_copy_files.output
+
+echo "building libpropertyinfoserializer^android_recovery_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libpropertyinfoserializer,android_recovery_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/property_service/libpropertyinfoserializer/libpropertyinfoserializer^android_recovery_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/core/libpropertyinfoserializer^android_recovery_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/core/property_service/libpropertyinfoserializer/libpropertyinfoserializer^android_recovery_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/system/core/libpropertyinfoserializer^android_recovery_x86_64_static.output $GITHUB_WORKSPACE/artifacts/system/core/property_service/libpropertyinfoserializer/libpropertyinfoserializer^android_recovery_x86_64_static $GITHUB_WORKSPACE/artifacts/system/core/property_service/libpropertyinfoserializer/libpropertyinfoserializer^android_recovery_x86_64_static/addition_copy_files.output
+
+echo "building libpropertyinfoserializer^android_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libpropertyinfoserializer,android_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/property_service/libpropertyinfoserializer/libpropertyinfoserializer^android_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/core/libpropertyinfoserializer^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/core/property_service/libpropertyinfoserializer/libpropertyinfoserializer^android_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/system/core/libpropertyinfoserializer^android_x86_64_static.output $GITHUB_WORKSPACE/artifacts/system/core/property_service/libpropertyinfoserializer/libpropertyinfoserializer^android_x86_64_static $GITHUB_WORKSPACE/artifacts/system/core/property_service/libpropertyinfoserializer/libpropertyinfoserializer^android_x86_64_static/addition_copy_files.output
+
+echo "building libpropertyinfoserializer^linux_glibc_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libpropertyinfoserializer,linux_glibc_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/property_service/libpropertyinfoserializer/libpropertyinfoserializer^linux_glibc_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/core/libpropertyinfoserializer^linux_glibc_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/core/property_service/libpropertyinfoserializer/libpropertyinfoserializer^linux_glibc_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/system/core/libpropertyinfoserializer^linux_glibc_x86_64_static.output $GITHUB_WORKSPACE/artifacts/system/core/property_service/libpropertyinfoserializer/libpropertyinfoserializer^linux_glibc_x86_64_static $GITHUB_WORKSPACE/artifacts/system/core/property_service/libpropertyinfoserializer/libpropertyinfoserializer^linux_glibc_x86_64_static/addition_copy_files.output
+
+echo "building init.rc^android_x86_64"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja init.rc,android_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/rootdir/init.rc^android_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/core/init.rc^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/core/rootdir/init.rc^android_x86_64
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/system/core/init.rc^android_x86_64.output $GITHUB_WORKSPACE/artifacts/system/core/rootdir/init.rc^android_x86_64 $GITHUB_WORKSPACE/artifacts/system/core/rootdir/init.rc^android_x86_64/addition_copy_files.output
 
 echo "building ueventd.rc^android_recovery_x86_64"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja ueventd.rc,android_recovery_x86_64
@@ -965,6 +978,13 @@ mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/rootdir/ueventd.rc^android_x86_
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/core/ueventd.rc^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/core/rootdir/ueventd.rc^android_x86_64
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/system/core/ueventd.rc^android_x86_64.output $GITHUB_WORKSPACE/artifacts/system/core/rootdir/ueventd.rc^android_x86_64 $GITHUB_WORKSPACE/artifacts/system/core/rootdir/ueventd.rc^android_x86_64/addition_copy_files.output
 
+echo "building public.libraries.android.txt^android_x86_64"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja public.libraries.android.txt,android_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/rootdir/public.libraries.android.txt^android_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/core/public.libraries.android.txt^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/core/rootdir/public.libraries.android.txt^android_x86_64
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/system/core/public.libraries.android.txt^android_x86_64.output $GITHUB_WORKSPACE/artifacts/system/core/rootdir/public.libraries.android.txt^android_x86_64 $GITHUB_WORKSPACE/artifacts/system/core/rootdir/public.libraries.android.txt^android_x86_64/addition_copy_files.output
+
+
 rm -rf out
 
 cd $GITHUB_WORKSPACE/
@@ -972,6 +992,7 @@ tar -cf system_core.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/a
 gh release --repo cibuilde/aosp-buildbot upload android12-gsi_01 system_core.tar.zst --clobber
 
 du -ah -d1 system_core*.tar.zst | sort -h
+
 
 if [ ! -f "$GITHUB_WORKSPACE/cache/art.tar.zst" ]; then
   echo "Compressing art -> art.tar.zst"
@@ -1049,18 +1070,6 @@ if [ ! -f "$GITHUB_WORKSPACE/cache/packages_modules_StatsD.tar.zst" ]; then
   echo "Compressing packages/modules/StatsD -> packages_modules_StatsD.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/packages_modules_StatsD.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/packages/modules/StatsD/ .
 fi
-if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_build-tools.tar.zst" ]; then
-  echo "Compressing prebuilts/build-tools -> prebuilts_build-tools.tar.zst"
-  tar -cf $GITHUB_WORKSPACE/cache/prebuilts_build-tools.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/prebuilts/build-tools/ .
-fi
-if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_gcc_linux-x86_aarch64_aarch64-linux-android-4.9.tar.zst" ]; then
-  echo "Compressing prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9 -> prebuilts_gcc_linux-x86_aarch64_aarch64-linux-android-4.9.tar.zst"
-  tar -cf $GITHUB_WORKSPACE/cache/prebuilts_gcc_linux-x86_aarch64_aarch64-linux-android-4.9.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9/ .
-fi
-if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_gcc_linux-x86_arm_arm-linux-androideabi-4.9.tar.zst" ]; then
-  echo "Compressing prebuilts/gcc/linux-x86/arm/arm-linux-androideabi-4.9 -> prebuilts_gcc_linux-x86_arm_arm-linux-androideabi-4.9.tar.zst"
-  tar -cf $GITHUB_WORKSPACE/cache/prebuilts_gcc_linux-x86_arm_arm-linux-androideabi-4.9.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/prebuilts/gcc/linux-x86/arm/arm-linux-androideabi-4.9/ .
-fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_gcc_linux-x86_host_x86_64-linux-glibc2.17-4.8.tar.zst" ]; then
   echo "Compressing prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8 -> prebuilts_gcc_linux-x86_host_x86_64-linux-glibc2.17-4.8.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/prebuilts_gcc_linux-x86_host_x86_64-linux-glibc2.17-4.8.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8/ .
@@ -1101,5 +1110,6 @@ if [ ! -f "$GITHUB_WORKSPACE/cache/system_unwinding.tar.zst" ]; then
   echo "Compressing system/unwinding -> system_unwinding.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/system_unwinding.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/system/unwinding/ .
 fi
+
 
 rm -rf aosp

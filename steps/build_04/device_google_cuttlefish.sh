@@ -1,6 +1,5 @@
-set -e
 
-echo "entering device/google/cuttlefish"
+set -e
 
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
@@ -12,6 +11,8 @@ ln -sf $GITHUB_WORKSPACE/ninja .
 if [ -d "$GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86" ]; then
   mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86 prebuilts/clang/host/linux-x86
 fi
+
+echo "Preparing for device/google/cuttlefish"
 
 clone_depth_platform bionic
 clone_depth device/google/cuttlefish
@@ -27,7 +28,6 @@ clone_depth_platform frameworks/native
 clone_depth_platform hardware/libhardware
 clone_depth_platform hardware/libhardware_legacy
 clone_depth_platform hardware/ril
-clone_project platform/prebuilts/build-tools prebuilts/build-tools android12-gsi "/linux-x86/bin" "/linux-x86/lib64" "/path" "/common"
 clone_depth_platform prebuilts/gcc/linux-x86/x86/x86_64-linux-android-4.9
 clone_depth_platform system/core
 clone_depth_platform system/libbase
@@ -38,13 +38,8 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/libc^android_product.31_x86_
 rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/libc^android_vendor.31_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/libc^android_vendor.31_x86_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/cmd/dep_fixer/dep_fixer^linux_glibc_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/device/google/cuttlefish/host/libs/image_aggregator/libcdisk_spec^android_x86_64_static_apex10000/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/protobuf/aprotoc^linux_glibc_x86_64/ .
-
-echo "building libcdisk_spec^android_x86_64_static_apex10000"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libcdisk_spec,android_x86_64_static_apex10000
-mkdir -p $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/host/libs/image_aggregator/libcdisk_spec^android_x86_64_static_apex10000
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/device/google/cuttlefish/libcdisk_spec^android_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/host/libs/image_aggregator/libcdisk_spec^android_x86_64_static_apex10000
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/device/google/cuttlefish/libcdisk_spec^android_x86_64_static_apex10000.output $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/host/libs/image_aggregator/libcdisk_spec^android_x86_64_static_apex10000 $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/host/libs/image_aggregator/libcdisk_spec^android_x86_64_static_apex10000/addition_copy_files.output
 
 echo "building libcuttlefish_device_config_proto^android_vendor.31_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libcuttlefish_device_config_proto,android_vendor.31_x86_64_static
@@ -70,11 +65,18 @@ mkdir -p $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/host/commands/kern
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/device/google/cuttlefish/libcuttlefish_kernel_log_monitor_utils^android_vendor.31_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/host/commands/kernel_log_monitor/libcuttlefish_kernel_log_monitor_utils^android_vendor.31_x86_64_static
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/device/google/cuttlefish/libcuttlefish_kernel_log_monitor_utils^android_vendor.31_x86_64_static.output $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/host/commands/kernel_log_monitor/libcuttlefish_kernel_log_monitor_utils^android_vendor.31_x86_64_static $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/host/commands/kernel_log_monitor/libcuttlefish_kernel_log_monitor_utils^android_vendor.31_x86_64_static/addition_copy_files.output
 
+echo "building libcdisk_spec^android_x86_64_static_apex10000"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libcdisk_spec,android_x86_64_static_apex10000
+mkdir -p $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/host/libs/image_aggregator/libcdisk_spec^android_x86_64_static_apex10000
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/device/google/cuttlefish/libcdisk_spec^android_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/host/libs/image_aggregator/libcdisk_spec^android_x86_64_static_apex10000
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/device/google/cuttlefish/libcdisk_spec^android_x86_64_static_apex10000.output $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/host/libs/image_aggregator/libcdisk_spec^android_x86_64_static_apex10000 $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/host/libs/image_aggregator/libcdisk_spec^android_x86_64_static_apex10000/addition_copy_files.output
+
 echo "building libimage_aggregator^android_x86_64_static_apex10000"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libimage_aggregator,android_x86_64_static_apex10000
 mkdir -p $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/host/libs/image_aggregator/libimage_aggregator^android_x86_64_static_apex10000
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/device/google/cuttlefish/libimage_aggregator^android_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/host/libs/image_aggregator/libimage_aggregator^android_x86_64_static_apex10000
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/device/google/cuttlefish/libimage_aggregator^android_x86_64_static_apex10000.output $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/host/libs/image_aggregator/libimage_aggregator^android_x86_64_static_apex10000 $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish/host/libs/image_aggregator/libimage_aggregator^android_x86_64_static_apex10000/addition_copy_files.output
+
 
 rm -rf out
 
@@ -83,6 +85,7 @@ tar -cf device_google_cuttlefish.tar.zst --use-compress-program zstdmt -C $GITHU
 gh release --repo cibuilde/aosp-buildbot upload android12-gsi_04 device_google_cuttlefish.tar.zst --clobber
 
 du -ah -d1 device_google_cuttlefish*.tar.zst | sort -h
+
 
 if [ ! -f "$GITHUB_WORKSPACE/cache/bionic.tar.zst" ]; then
   echo "Compressing bionic -> bionic.tar.zst"
@@ -140,10 +143,6 @@ if [ ! -f "$GITHUB_WORKSPACE/cache/hardware_ril.tar.zst" ]; then
   echo "Compressing hardware/ril -> hardware_ril.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/hardware_ril.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/hardware/ril/ .
 fi
-if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_build-tools.tar.zst" ]; then
-  echo "Compressing prebuilts/build-tools -> prebuilts_build-tools.tar.zst"
-  tar -cf $GITHUB_WORKSPACE/cache/prebuilts_build-tools.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/prebuilts/build-tools/ .
-fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_gcc_linux-x86_x86_x86_64-linux-android-4.9.tar.zst" ]; then
   echo "Compressing prebuilts/gcc/linux-x86/x86/x86_64-linux-android-4.9 -> prebuilts_gcc_linux-x86_x86_x86_64-linux-android-4.9.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/prebuilts_gcc_linux-x86_x86_x86_64-linux-android-4.9.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/prebuilts/gcc/linux-x86/x86/x86_64-linux-android-4.9/ .
@@ -164,5 +163,6 @@ if [ ! -f "$GITHUB_WORKSPACE/cache/system_media.tar.zst" ]; then
   echo "Compressing system/media -> system_media.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/system_media.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/system/media/ .
 fi
+
 
 rm -rf aosp

@@ -1,4 +1,2 @@
-out/soong/.intermediates/hardware/interfaces/contexthub/1.0/android.hardware.contexthub-V1.0-java/android_common/turbine/android.hardware.contexthub-V1.0-java.jar
-out/soong/.intermediates/hardware/interfaces/contexthub/1.0/android.hardware.contexthub-V1.0-java/android_common/turbine-combined/android.hardware.contexthub-V1.0-java.jar
-out/soong/.intermediates/hardware/interfaces/contexthub/1.0/android.hardware.contexthub-V1.0-java/android_common/javac/android.hardware.contexthub-V1.0-java.jar
 out/soong/.intermediates/hardware/interfaces/contexthub/1.0/android.hardware.contexthub-V1.0-java/android_common/combined/android.hardware.contexthub-V1.0-java.jar
+out/soong/.intermediates/hardware/interfaces/contexthub/1.0/android.hardware.contexthub-V1.0-java/android_common/turbine-combined/android.hardware.contexthub-V1.0-java.jar

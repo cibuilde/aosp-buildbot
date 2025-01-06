@@ -1,6 +1,3 @@
-out/soong/.intermediates/frameworks/opt/net/voip/voip-common/android_common/turbine/voip-common.jar
-out/soong/.intermediates/frameworks/opt/net/voip/voip-common/android_common/turbine-combined/voip-common.jar
-out/soong/.intermediates/frameworks/opt/net/voip/voip-common/android_common/javac/voip-common.jar
-out/soong/.intermediates/frameworks/opt/net/voip/voip-common/android_common/combined/voip-common.jar
-out/soong/.intermediates/frameworks/opt/net/voip/voip-common/android_common/dex/voip-common.jar
 out/soong/.intermediates/frameworks/opt/net/voip/voip-common/android_common/aligned/voip-common.jar
+out/soong/.intermediates/frameworks/opt/net/voip/voip-common/android_common/combined/voip-common.jar
+out/soong/.intermediates/frameworks/opt/net/voip/voip-common/android_common/turbine-combined/voip-common.jar

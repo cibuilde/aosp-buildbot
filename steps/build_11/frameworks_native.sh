@@ -1,6 +1,5 @@
-set -e
 
-echo "entering frameworks/native"
+set -e
 
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
@@ -12,6 +11,8 @@ ln -sf $GITHUB_WORKSPACE/ninja .
 if [ -d "$GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86" ]; then
   mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86 prebuilts/clang/host/linux-x86
 fi
+
+echo "Preparing for frameworks/native"
 
 clone_depth_platform art
 clone_depth_platform bionic
@@ -42,7 +43,6 @@ clone_depth_platform hardware/libhardware
 clone_depth_platform hardware/libhardware_legacy
 clone_depth_platform hardware/ril
 clone_depth_platform libnativehelper
-clone_project platform/prebuilts/build-tools prebuilts/build-tools android12-gsi "/linux-x86/bin" "/linux-x86/lib64" "/path" "/common"
 clone_depth_platform prebuilts/gcc/linux-x86/x86/x86_64-linux-android-4.9
 clone_depth_platform system/apex
 clone_depth_platform system/bt
@@ -58,14 +58,14 @@ clone_depth_platform system/media
 clone_depth_platform system/unwinding
 clone_depth_platform system/vold
 
-rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/crtbegin_dynamic^android_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/crtbegin_so^android_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/crtbegin_so^android_x86_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/crtend_android^android_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/crtend_so^android_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/crtend_so^android_x86_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/libc^android_x86_64_shared_current/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/libc^android_x86_x86_64_shared_current/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/crtbegin_so^android_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/crtbegin_so^android_x86_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/crtend_so^android_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/crtend_so^android_x86_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/crtbegin_dynamic^android_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/crtend_android^android_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libdl/libdl^android_x86_64_shared_current/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libdl/libdl^android_x86_x86_64_shared_current/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libm/libm^android_x86_64_shared_current/ .
@@ -78,14 +78,12 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/external/boringssl/libcrypto^android_x86
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/e2fsprogs/lib/uuid/libext2_uuid^android_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcxx/libc++^android_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcxx/libc++^android_x86_x86_64_shared/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcxx/libc++^linux_glibc_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcxxabi/libc++demangle^android_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcxxabi/libc++demangle^android_x86_64_static_lto-thin/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcxxabi/libc++demangle^android_x86_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcxxabi/libc++demangle^android_x86_x86_64_static_lto-thin/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/libpng/libpng^android_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/libxml2/libxml2^android_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/perfetto/libperfetto_client_experimental^android_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/perfetto/perfetto_protos_perfetto_common_cpp_gen_headers^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/perfetto/perfetto_protos_perfetto_common_zero_gen_headers^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/perfetto/perfetto_protos_perfetto_config_android_cpp_gen_headers^/ .
@@ -129,10 +127,11 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/external/perfetto/perfetto_protos_perfet
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/perfetto/perfetto_protos_perfetto_trace_system_info_zero_gen_headers^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/perfetto/perfetto_protos_perfetto_trace_track_event_cpp_gen_headers^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/perfetto/perfetto_protos_perfetto_trace_track_event_zero_gen_headers^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/perfetto/libperfetto_client_experimental^android_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/perfetto/perfetto_src_base_version_gen_h^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/protobuf/aprotoc^linux_glibc_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/protobuf/libprotobuf-cpp-full^android_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/protobuf/libprotobuf-cpp-lite^android_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/protobuf/libprotobuf-cpp-full^android_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/protobuf/aprotoc^linux_glibc_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/selinux/libselinux/libselinux^android_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/skia/libskia_renderengine^android_x86_64_static_lto-thin/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/zlib/libz^android_x86_64_shared/ .
@@ -153,40 +152,31 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/hardware/interfaces/scheduler
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/hardware/interfaces/sensorservice/1.0/android.frameworks.sensorservice@1.0^android_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/hardware/interfaces/sensorservice/1.0/android.frameworks.sensorservice@1.0^android_x86_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/hardware/interfaces/sensorservice/1.0/android.frameworks.sensorservice@1.0_genc++_headers^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/native/libs/permission/framework-permission-aidl-cpp-source^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/native/opengl/libs/libEGL^android_x86_64_shared/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/native/opengl/libs/libEGL^android_x86_x86_64_shared/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/native/opengl/libs/libGLESv1_CM^android_x86_64_shared/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/native/opengl/libs/libGLESv2^android_x86_64_shared/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/native/opengl/libs/libGLESv2^android_x86_x86_64_shared/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/native/libs/gui/sysprop/libLibGuiProperties^android_x86_64_static_lto-thin/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/native/libs/gui/sysprop/libLibGuiProperties^android_x86_x86_64_static_lto-thin/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/native/services/surfaceflinger/libSurfaceFlingerProp^android_x86_64_shared/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/native/services/surfaceflinger/sysprop/libSurfaceFlingerProperties^android_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/native/cmds/dumpstate/libdumpstateutil^android_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/native/cmds/dumpstate/libdumpstateaidl^android_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/native/cmds/dumpsys/libdumpsys^android_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/native/cmds/surfacereplayer/proto/libtrace_proto^android_x86_64_static_lto-thin/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/native/libs/arect/libarect^android_x86_64_static_lto-thin/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/native/libs/binder/libbatterystats_aidl^android_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/native/libs/binder/libbatterystats_aidl^android_x86_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/native/libs/binder/libactivitymanager_aidl^android_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/native/libs/binder/libactivitymanager_aidl^android_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/native/libs/binder/libactivitymanager_aidl^android_x86_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/native/libs/binder/libactivitymanager_aidl^android_x86_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/native/libs/arect/libarect^android_x86_64_static_lto-thin/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/native/libs/binder/libbatterystats_aidl^android_x86_64_shared/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/native/libs/binder/libbatterystats_aidl^android_x86_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/native/libs/binder/libbinder^android_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/native/libs/binder/libbinder^android_x86_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/native/libs/binderdebug/libbinderdebug^android_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/native/libs/binderthreadstate/libbinderthreadstateutils^android_x86_64_static_lto-thin/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/native/libs/binderthreadstate/libbinderthreadstateutils^android_x86_x86_64_static_lto-thin/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/native/libs/vr/libbufferhub/libbufferhub^android_x86_64_shared/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/native/libs/vr/libbufferhub/libbufferhub^android_x86_x86_64_shared/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/native/libs/vr/libbufferhubqueue/libbufferhubqueue^android_x86_64_shared/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/native/libs/vr/libbufferhubqueue/libbufferhubqueue^android_x86_x86_64_shared/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/native/cmds/dumpstate/libdumpstateaidl^android_x86_64_shared/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/native/cmds/dumpstate/libdumpstateutil^android_x86_64_shared/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/native/cmds/dumpsys/libdumpsys^android_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/native/libs/dumputils/libdumputils^android_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/native/libs/gui/libgui_aidl_static^android_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/native/libs/gui/libgui_aidl_static^android_x86_64_static_lto-thin/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/native/libs/gui/libgui_aidl_static^android_x86_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/native/libs/gui/libgui_aidl_static^android_x86_x86_64_static_lto-thin/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/native/libs/gui/libgui^android_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/native/libs/gui/libgui^android_x86_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/native/libs/gui/sysprop/libLibGuiProperties^android_x86_64_static_lto-thin/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/native/libs/gui/sysprop/libLibGuiProperties^android_x86_x86_64_static_lto-thin/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/native/libs/incidentcompanion/libincidentcompanion^android_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/native/libs/input/libinput^android_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/native/libs/input/libinput^android_x86_64_static/ .
@@ -194,28 +184,46 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/native/libs/input/libinput^an
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/native/libs/input/libinput^android_x86_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/native/libs/nativewindow/libnativewindow^android_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/native/libs/nativewindow/libnativewindow^android_x86_x86_64_shared/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/native/libs/vr/libpdx_default_transport/libpdx_default_transport^android_x86_64_shared/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/native/libs/vr/libpdx_default_transport/libpdx_default_transport^android_x86_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/native/libs/permission/framework-permission-aidl-cpp-source^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/native/libs/permission/libpermission^android_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/native/libs/permission/libpermission^android_x86_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/native/libs/renderengine/librenderengine^android_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/native/libs/sensor/libsensor^android_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/native/libs/sensor/libsensor^android_x86_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/native/libs/sensorprivacy/libsensorprivacy^android_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/native/libs/sensorprivacy/libsensorprivacy^android_x86_x86_64_shared/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/native/services/utils/libserviceutils^android_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/native/services/utils/libserviceutils^android_x86_64_static_lto-thin/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/native/services/surfaceflinger/TimeStats/libtimestats^android_x86_64_shared/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/native/services/surfaceflinger/TimeStats/timestatsproto/libtimestats_proto^android_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/native/cmds/surfacereplayer/proto/libtrace_proto^android_x86_64_static_lto-thin/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/native/libs/ui/libui^android_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/native/libs/ui/libui^android_x86_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/native/libs/vr/libbufferhub/libbufferhub^android_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/native/libs/vr/libbufferhub/libbufferhub^android_x86_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/native/libs/vr/libbufferhubqueue/libbufferhubqueue^android_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/native/libs/vr/libbufferhubqueue/libbufferhubqueue^android_x86_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/native/libs/vr/libpdx_default_transport/libpdx_default_transport^android_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/native/libs/vr/libpdx_default_transport/libpdx_default_transport^android_x86_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/native/opengl/libs/libEGL^android_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/native/opengl/libs/libEGL^android_x86_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/native/opengl/libs/libGLESv1_CM^android_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/native/opengl/libs/libGLESv2^android_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/native/opengl/libs/libGLESv2^android_x86_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/native/services/displayservice/libdisplayservicehidl^android_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/native/services/sensorservice/libsensorservice^android_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/native/services/surfaceflinger/libSurfaceFlingerProp^android_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/native/services/surfaceflinger/CompositionEngine/libcompositionengine^android_x86_64_static_lto-thin/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/native/services/surfaceflinger/FrameTimeline/libframetimeline^android_x86_64_static_lto-thin/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/native/services/surfaceflinger/TimeStats/libtimestats^android_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/native/services/surfaceflinger/TimeStats/timestatsproto/libtimestats_proto^android_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/native/services/surfaceflinger/layerproto/liblayers_proto^android_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/native/services/surfaceflinger/layerproto/liblayers_proto^android_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/native/services/surfaceflinger/sysprop/libSurfaceFlingerProperties^android_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/native/services/utils/libserviceutils^android_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/native/services/utils/libserviceutils^android_x86_64_static_lto-thin/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/native/vulkan/libvulkan/libvulkan^android_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/common/aidl/android.hardware.common-V2-ndk_platform-source^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/configstore/utils/android.hardware.configstore-utils^android_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/configstore/1.0/android.hardware.configstore@1.0^android_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/configstore/1.0/android.hardware.configstore@1.0_genc++_headers^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/configstore/1.1/android.hardware.configstore@1.1^android_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/configstore/1.1/android.hardware.configstore@1.1_genc++_headers^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/configstore/utils/android.hardware.configstore-utils^android_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/dumpstate/1.0/android.hardware.dumpstate@1.0^android_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/dumpstate/1.0/android.hardware.dumpstate@1.0_genc++_headers^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/dumpstate/1.1/android.hardware.dumpstate@1.1^android_x86_64_shared/ .
@@ -230,7 +238,6 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/graphics/bufferqueue
 rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/graphics/bufferqueue/2.0/android.hardware.graphics.bufferqueue@2.0^android_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/graphics/bufferqueue/2.0/android.hardware.graphics.bufferqueue@2.0^android_x86_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/graphics/bufferqueue/2.0/android.hardware.graphics.bufferqueue@2.0_genc++_headers^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/graphics/common/aidl/android.hardware.graphics.common-V2-ndk_platform-source^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/graphics/common/1.0/android.hardware.graphics.common@1.0_genc++_headers^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/graphics/common/1.1/android.hardware.graphics.common@1.1^android_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/graphics/common/1.1/android.hardware.graphics.common@1.1^android_x86_x86_64_shared/ .
@@ -238,6 +245,7 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/graphics/common/1.1/
 rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/graphics/common/1.2/android.hardware.graphics.common@1.2^android_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/graphics/common/1.2/android.hardware.graphics.common@1.2^android_x86_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/graphics/common/1.2/android.hardware.graphics.common@1.2_genc++_headers^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/graphics/common/aidl/android.hardware.graphics.common-V2-ndk_platform-source^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/graphics/composer/2.1/android.hardware.graphics.composer@2.1^android_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/graphics/composer/2.1/android.hardware.graphics.composer@2.1_genc++_headers^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/graphics/composer/2.2/android.hardware.graphics.composer@2.2^android_x86_64_shared/ .
@@ -250,19 +258,19 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/graphics/mapper/2.0/
 rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/graphics/mapper/3.0/android.hardware.graphics.mapper@3.0_genc++_headers^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/graphics/mapper/4.0/android.hardware.graphics.mapper@4.0_genc++_headers^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/media/1.0/android.hardware.media@1.0_genc++_headers^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/power/aidl/android.hardware.power-V1-cpp-source^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/power/aidl/android.hardware.power-V1-cpp^android_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/power/1.0/android.hardware.power@1.0^android_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/power/1.0/android.hardware.power@1.0_genc++_headers^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/power/1.1/android.hardware.power@1.1_genc++_headers^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/power/1.2/android.hardware.power@1.2_genc++_headers^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/power/1.3/android.hardware.power@1.3^android_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/power/1.3/android.hardware.power@1.3_genc++_headers^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/sensors/1.0/default/android.hardware.sensors@1.0-convert^android_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/sensors/1.0/default/android.hardware.sensors@1.0-convert^android_x86_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/power/aidl/android.hardware.power-V1-cpp-source^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/power/aidl/android.hardware.power-V1-cpp^android_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/sensors/1.0/android.hardware.sensors@1.0^android_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/sensors/1.0/android.hardware.sensors@1.0^android_x86_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/sensors/1.0/android.hardware.sensors@1.0_genc++_headers^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/sensors/1.0/default/android.hardware.sensors@1.0-convert^android_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/sensors/1.0/default/android.hardware.sensors@1.0-convert^android_x86_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/sensors/2.0/android.hardware.sensors@2.0^android_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/sensors/2.0/android.hardware.sensors@2.0^android_x86_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/sensors/2.0/android.hardware.sensors@2.0_genc++_headers^/ .
@@ -273,14 +281,14 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/libhardware/libhardware^android
 rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/libhardware/libhardware^android_x86_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/libhardware_legacy/libhardware_legacy^android_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/libhardware_legacy/libhardware_legacy^android_x86_x86_64_shared/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/system/apex/proto/lib_apex_manifest_proto^android_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/system/apex/proto/lib_apex_session_state_proto^android_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/apex/apexd/libapex^android_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/apex/apexd/sysprop/libcom.android.sysprop.apex^android_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/system/core/libcutils/libcutils^android_x86_64_shared/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/system/core/libcutils/libcutils^android_x86_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/apex/proto/lib_apex_manifest_proto^android_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/apex/proto/lib_apex_session_state_proto^android_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/core/debuggerd/libdebuggerd_client^android_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/core/fs_mgr/libdm/libdm^android_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/core/libcutils/libcutils^android_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/core/libcutils/libcutils^android_x86_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/core/libprocessgroup/libprocessgroup^android_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/core/libsync/libsync^android_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/core/libsync/libsync^android_x86_x86_64_shared/ .
@@ -293,14 +301,14 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/system/libbase/libbase^android_x86_64_sh
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/libbase/libbase^android_x86_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/libfmq/libfmq^android_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/libfmq/libfmq^android_x86_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/libhidl/libhidlbase^android_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/libhidl/libhidlbase^android_x86_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/libhidl/transport/base/1.0/android.hidl.base@1.0_genc++_headers^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/libhidl/transport/manager/1.0/android.hidl.manager@1.0_genc++_headers^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/libhidl/transport/manager/1.1/android.hidl.manager@1.1_genc++_headers^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/libhidl/transport/manager/1.2/android.hidl.manager@1.2_genc++_headers^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/libhidl/transport/token/1.0/utils/android.hidl.token@1.0-utils^android_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/libhidl/transport/token/1.0/utils/android.hidl.token@1.0-utils^android_x86_x86_64_shared/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/system/libhidl/libhidlbase^android_x86_64_shared/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/system/libhidl/libhidlbase^android_x86_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/libziparchive/libziparchive^android_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^android_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^android_x86_x86_64_shared/ .
@@ -314,23 +322,11 @@ mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/native/cmds/dumpstate/dumpstate^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_11/frameworks/native/dumpstate^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/frameworks/native/cmds/dumpstate/dumpstate^android_x86_64
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_11/frameworks/native/dumpstate^android_x86_64.output $GITHUB_WORKSPACE/artifacts/frameworks/native/cmds/dumpstate/dumpstate^android_x86_64 $GITHUB_WORKSPACE/artifacts/frameworks/native/cmds/dumpstate/dumpstate^android_x86_64/addition_copy_files.output
 
-echo "building libcompositionengine^android_x86_64_static_lto-thin"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_11.ninja libcompositionengine,android_x86_64_static_lto-thin
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/native/services/surfaceflinger/CompositionEngine/libcompositionengine^android_x86_64_static_lto-thin
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_11/frameworks/native/libcompositionengine^android_x86_64_static_lto-thin.output . $GITHUB_WORKSPACE/artifacts/frameworks/native/services/surfaceflinger/CompositionEngine/libcompositionengine^android_x86_64_static_lto-thin
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_11/frameworks/native/libcompositionengine^android_x86_64_static_lto-thin.output $GITHUB_WORKSPACE/artifacts/frameworks/native/services/surfaceflinger/CompositionEngine/libcompositionengine^android_x86_64_static_lto-thin $GITHUB_WORKSPACE/artifacts/frameworks/native/services/surfaceflinger/CompositionEngine/libcompositionengine^android_x86_64_static_lto-thin/addition_copy_files.output
-
-echo "building libdisplayservicehidl^android_x86_64_shared"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_11.ninja libdisplayservicehidl,android_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/native/services/displayservice/libdisplayservicehidl^android_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_11/frameworks/native/libdisplayservicehidl^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/native/services/displayservice/libdisplayservicehidl^android_x86_64_shared
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_11/frameworks/native/libdisplayservicehidl^android_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/frameworks/native/services/displayservice/libdisplayservicehidl^android_x86_64_shared $GITHUB_WORKSPACE/artifacts/frameworks/native/services/displayservice/libdisplayservicehidl^android_x86_64_shared/addition_copy_files.output
-
-echo "building libframetimeline^android_x86_64_static_lto-thin"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_11.ninja libframetimeline,android_x86_64_static_lto-thin
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/native/services/surfaceflinger/FrameTimeline/libframetimeline^android_x86_64_static_lto-thin
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_11/frameworks/native/libframetimeline^android_x86_64_static_lto-thin.output . $GITHUB_WORKSPACE/artifacts/frameworks/native/services/surfaceflinger/FrameTimeline/libframetimeline^android_x86_64_static_lto-thin
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_11/frameworks/native/libframetimeline^android_x86_64_static_lto-thin.output $GITHUB_WORKSPACE/artifacts/frameworks/native/services/surfaceflinger/FrameTimeline/libframetimeline^android_x86_64_static_lto-thin $GITHUB_WORKSPACE/artifacts/frameworks/native/services/surfaceflinger/FrameTimeline/libframetimeline^android_x86_64_static_lto-thin/addition_copy_files.output
+echo "building otapreopt_chroot^android_x86_64"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_11.ninja otapreopt_chroot,android_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/native/cmds/installd/otapreopt_chroot^android_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_11/frameworks/native/otapreopt_chroot^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/frameworks/native/cmds/installd/otapreopt_chroot^android_x86_64
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_11/frameworks/native/otapreopt_chroot^android_x86_64.output $GITHUB_WORKSPACE/artifacts/frameworks/native/cmds/installd/otapreopt_chroot^android_x86_64 $GITHUB_WORKSPACE/artifacts/frameworks/native/cmds/installd/otapreopt_chroot^android_x86_64/addition_copy_files.output
 
 echo "building libgui^android_x86_64_shared"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_11.ninja libgui,android_x86_64_shared
@@ -343,18 +339,6 @@ prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/st
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/gui/libgui^android_x86_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_11/frameworks/native/libgui^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/gui/libgui^android_x86_x86_64_shared
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_11/frameworks/native/libgui^android_x86_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/gui/libgui^android_x86_x86_64_shared $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/gui/libgui^android_x86_x86_64_shared/addition_copy_files.output
-
-echo "building liblayers_proto^android_x86_64_shared"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_11.ninja liblayers_proto,android_x86_64_shared
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/native/services/surfaceflinger/layerproto/liblayers_proto^android_x86_64_shared
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_11/frameworks/native/liblayers_proto^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/native/services/surfaceflinger/layerproto/liblayers_proto^android_x86_64_shared
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_11/frameworks/native/liblayers_proto^android_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/frameworks/native/services/surfaceflinger/layerproto/liblayers_proto^android_x86_64_shared $GITHUB_WORKSPACE/artifacts/frameworks/native/services/surfaceflinger/layerproto/liblayers_proto^android_x86_64_shared/addition_copy_files.output
-
-echo "building liblayers_proto^android_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_11.ninja liblayers_proto,android_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/native/services/surfaceflinger/layerproto/liblayers_proto^android_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_11/frameworks/native/liblayers_proto^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/native/services/surfaceflinger/layerproto/liblayers_proto^android_x86_64_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_11/frameworks/native/liblayers_proto^android_x86_64_static.output $GITHUB_WORKSPACE/artifacts/frameworks/native/services/surfaceflinger/layerproto/liblayers_proto^android_x86_64_static $GITHUB_WORKSPACE/artifacts/frameworks/native/services/surfaceflinger/layerproto/liblayers_proto^android_x86_64_static/addition_copy_files.output
 
 echo "building libnativedisplay^android_x86_64_shared"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_11.ninja libnativedisplay,android_x86_64_shared
@@ -373,6 +357,12 @@ prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/st
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/renderengine/librenderengine^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_11/frameworks/native/librenderengine^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/renderengine/librenderengine^android_x86_64_static
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_11/frameworks/native/librenderengine^android_x86_64_static.output $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/renderengine/librenderengine^android_x86_64_static $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/renderengine/librenderengine^android_x86_64_static/addition_copy_files.output
+
+echo "building libdisplayservicehidl^android_x86_64_shared"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_11.ninja libdisplayservicehidl,android_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/native/services/displayservice/libdisplayservicehidl^android_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_11/frameworks/native/libdisplayservicehidl^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/native/services/displayservice/libdisplayservicehidl^android_x86_64_shared
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_11/frameworks/native/libdisplayservicehidl^android_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/frameworks/native/services/displayservice/libdisplayservicehidl^android_x86_64_shared $GITHUB_WORKSPACE/artifacts/frameworks/native/services/displayservice/libdisplayservicehidl^android_x86_64_shared/addition_copy_files.output
 
 echo "building libschedulerservicehidl^android_x86_64_shared"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_11.ninja libschedulerservicehidl,android_x86_64_shared
@@ -398,6 +388,12 @@ mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/native/services/sensorservice/li
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_11/frameworks/native/libsensorservice^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/native/services/sensorservice/libsensorservice^android_x86_x86_64_shared
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_11/frameworks/native/libsensorservice^android_x86_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/frameworks/native/services/sensorservice/libsensorservice^android_x86_x86_64_shared $GITHUB_WORKSPACE/artifacts/frameworks/native/services/sensorservice/libsensorservice^android_x86_x86_64_shared/addition_copy_files.output
 
+echo "building sensorservice^android_x86_64"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_11.ninja sensorservice,android_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/native/services/sensorservice/sensorservice^android_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_11/frameworks/native/sensorservice^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/frameworks/native/services/sensorservice/sensorservice^android_x86_64
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_11/frameworks/native/sensorservice^android_x86_64.output $GITHUB_WORKSPACE/artifacts/frameworks/native/services/sensorservice/sensorservice^android_x86_64 $GITHUB_WORKSPACE/artifacts/frameworks/native/services/sensorservice/sensorservice^android_x86_64/addition_copy_files.output
+
 echo "building libsensorservicehidl^android_x86_64_shared"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_11.ninja libsensorservicehidl,android_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/native/services/sensorservice/hidl/libsensorservicehidl^android_x86_64_shared
@@ -410,23 +406,36 @@ mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/native/services/sensorservice/hi
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_11/frameworks/native/libsensorservicehidl^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/native/services/sensorservice/hidl/libsensorservicehidl^android_x86_x86_64_shared
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_11/frameworks/native/libsensorservicehidl^android_x86_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/frameworks/native/services/sensorservice/hidl/libsensorservicehidl^android_x86_x86_64_shared $GITHUB_WORKSPACE/artifacts/frameworks/native/services/sensorservice/hidl/libsensorservicehidl^android_x86_x86_64_shared/addition_copy_files.output
 
-echo "building otapreopt_chroot^android_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_11.ninja otapreopt_chroot,android_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/native/cmds/installd/otapreopt_chroot^android_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_11/frameworks/native/otapreopt_chroot^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/frameworks/native/cmds/installd/otapreopt_chroot^android_x86_64
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_11/frameworks/native/otapreopt_chroot^android_x86_64.output $GITHUB_WORKSPACE/artifacts/frameworks/native/cmds/installd/otapreopt_chroot^android_x86_64 $GITHUB_WORKSPACE/artifacts/frameworks/native/cmds/installd/otapreopt_chroot^android_x86_64/addition_copy_files.output
-
-echo "building sensorservice^android_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_11.ninja sensorservice,android_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/native/services/sensorservice/sensorservice^android_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_11/frameworks/native/sensorservice^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/frameworks/native/services/sensorservice/sensorservice^android_x86_64
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_11/frameworks/native/sensorservice^android_x86_64.output $GITHUB_WORKSPACE/artifacts/frameworks/native/services/sensorservice/sensorservice^android_x86_64 $GITHUB_WORKSPACE/artifacts/frameworks/native/services/sensorservice/sensorservice^android_x86_64/addition_copy_files.output
-
 echo "building surfaceflinger^android_x86_64"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_11.ninja surfaceflinger,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/native/services/surfaceflinger/surfaceflinger^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_11/frameworks/native/surfaceflinger^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/frameworks/native/services/surfaceflinger/surfaceflinger^android_x86_64
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_11/frameworks/native/surfaceflinger^android_x86_64.output $GITHUB_WORKSPACE/artifacts/frameworks/native/services/surfaceflinger/surfaceflinger^android_x86_64 $GITHUB_WORKSPACE/artifacts/frameworks/native/services/surfaceflinger/surfaceflinger^android_x86_64/addition_copy_files.output
+
+echo "building libcompositionengine^android_x86_64_static_lto-thin"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_11.ninja libcompositionengine,android_x86_64_static_lto-thin
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/native/services/surfaceflinger/CompositionEngine/libcompositionengine^android_x86_64_static_lto-thin
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_11/frameworks/native/libcompositionengine^android_x86_64_static_lto-thin.output . $GITHUB_WORKSPACE/artifacts/frameworks/native/services/surfaceflinger/CompositionEngine/libcompositionengine^android_x86_64_static_lto-thin
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_11/frameworks/native/libcompositionengine^android_x86_64_static_lto-thin.output $GITHUB_WORKSPACE/artifacts/frameworks/native/services/surfaceflinger/CompositionEngine/libcompositionengine^android_x86_64_static_lto-thin $GITHUB_WORKSPACE/artifacts/frameworks/native/services/surfaceflinger/CompositionEngine/libcompositionengine^android_x86_64_static_lto-thin/addition_copy_files.output
+
+echo "building libframetimeline^android_x86_64_static_lto-thin"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_11.ninja libframetimeline,android_x86_64_static_lto-thin
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/native/services/surfaceflinger/FrameTimeline/libframetimeline^android_x86_64_static_lto-thin
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_11/frameworks/native/libframetimeline^android_x86_64_static_lto-thin.output . $GITHUB_WORKSPACE/artifacts/frameworks/native/services/surfaceflinger/FrameTimeline/libframetimeline^android_x86_64_static_lto-thin
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_11/frameworks/native/libframetimeline^android_x86_64_static_lto-thin.output $GITHUB_WORKSPACE/artifacts/frameworks/native/services/surfaceflinger/FrameTimeline/libframetimeline^android_x86_64_static_lto-thin $GITHUB_WORKSPACE/artifacts/frameworks/native/services/surfaceflinger/FrameTimeline/libframetimeline^android_x86_64_static_lto-thin/addition_copy_files.output
+
+echo "building liblayers_proto^android_x86_64_shared"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_11.ninja liblayers_proto,android_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/native/services/surfaceflinger/layerproto/liblayers_proto^android_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_11/frameworks/native/liblayers_proto^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/native/services/surfaceflinger/layerproto/liblayers_proto^android_x86_64_shared
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_11/frameworks/native/liblayers_proto^android_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/frameworks/native/services/surfaceflinger/layerproto/liblayers_proto^android_x86_64_shared $GITHUB_WORKSPACE/artifacts/frameworks/native/services/surfaceflinger/layerproto/liblayers_proto^android_x86_64_shared/addition_copy_files.output
+
+echo "building liblayers_proto^android_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_11.ninja liblayers_proto,android_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/native/services/surfaceflinger/layerproto/liblayers_proto^android_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_11/frameworks/native/liblayers_proto^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/native/services/surfaceflinger/layerproto/liblayers_proto^android_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_11/frameworks/native/liblayers_proto^android_x86_64_static.output $GITHUB_WORKSPACE/artifacts/frameworks/native/services/surfaceflinger/layerproto/liblayers_proto^android_x86_64_static $GITHUB_WORKSPACE/artifacts/frameworks/native/services/surfaceflinger/layerproto/liblayers_proto^android_x86_64_static/addition_copy_files.output
+
 
 rm -rf out
 
@@ -435,6 +444,7 @@ tar -cf frameworks_native.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKS
 gh release --repo cibuilde/aosp-buildbot upload android12-gsi_11 frameworks_native.tar.zst --clobber
 
 du -ah -d1 frameworks_native*.tar.zst | sort -h
+
 
 if [ ! -f "$GITHUB_WORKSPACE/cache/art.tar.zst" ]; then
   echo "Compressing art -> art.tar.zst"
@@ -552,10 +562,6 @@ if [ ! -f "$GITHUB_WORKSPACE/cache/libnativehelper.tar.zst" ]; then
   echo "Compressing libnativehelper -> libnativehelper.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/libnativehelper.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/libnativehelper/ .
 fi
-if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_build-tools.tar.zst" ]; then
-  echo "Compressing prebuilts/build-tools -> prebuilts_build-tools.tar.zst"
-  tar -cf $GITHUB_WORKSPACE/cache/prebuilts_build-tools.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/prebuilts/build-tools/ .
-fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_gcc_linux-x86_x86_x86_64-linux-android-4.9.tar.zst" ]; then
   echo "Compressing prebuilts/gcc/linux-x86/x86/x86_64-linux-android-4.9 -> prebuilts_gcc_linux-x86_x86_x86_64-linux-android-4.9.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/prebuilts_gcc_linux-x86_x86_x86_64-linux-android-4.9.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/prebuilts/gcc/linux-x86/x86/x86_64-linux-android-4.9/ .
@@ -612,5 +618,6 @@ if [ ! -f "$GITHUB_WORKSPACE/cache/system_vold.tar.zst" ]; then
   echo "Compressing system/vold -> system_vold.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/system_vold.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/system/vold/ .
 fi
+
 
 rm -rf aosp

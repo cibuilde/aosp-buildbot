@@ -1,13 +1,13 @@
-##### Tag: android12-gsi_32 Projects: 56 Targets: 92
+##### Tag: android12-gsi_32 Projects: 55 Targets: 118
 
 ###### **device/google/cuttlefish**: 1
 `CuttlefishService^android_common`
 ###### **external/chromium-webview**: 1
 `webview^android_common`
-###### **frameworks/base**: 28
-`BackupRestoreConfirmation^android_common` `BluetoothMidiService^android_common` `CameraExtensionsProxy^android_common` `CarrierDefaultApp^android_common` `CompanionDeviceManager^android_common` `DynamicSystemInstallationService^android_common` `EasterEgg^android_common` `ExtShared^android_common` `ExternalStorageProvider^android_common` `FusedLocation^android_common` `InputDevices^android_common` `LocalTransport^android_common` `PacProcessor^android_common` `PackageInstaller^android_common` `PrintRecommendationService^android_common` `PrintSpooler^android_common` `ProxyHandler^android_common` `SettingsProvider^android_common` `SharedStorageBackup^android_common` `Shell^android_common` `SimAppDialog^android_common` `SoundPicker^android_common` `StatementService^android_common` `SystemUI^android_common` `VpnDialogs^android_common` `WallpaperBackup^android_common` `WallpaperCropper^android_common` `services.coverage^android_common`
-###### **frameworks/libs/net**: 1
-`netd-client^android_common`
+###### **frameworks/base**: 61
+`BackupRestoreConfirmation^android_common` `BluetoothMidiService^android_common` `CameraExtensionsProxy^android_common` `CarrierDefaultApp^android_common` `CompanionDeviceManager^android_common` `DynamicSystemInstallationService^android_common` `EasterEgg^android_common` `ExtShared^android_common` `ExternalStorageProvider^android_common` `FusedLocation^android_common` `InputDevices^android_common` `LocalTransport^android_common` `PacProcessor^android_common` `PackageInstaller^android_common` `PrintRecommendationService^android_common` `PrintSpooler^android_common` `ProxyHandler^android_common` `SettingsProvider^android_common` `SharedStorageBackup^android_common` `Shell^android_common` `SimAppDialog^android_common` `SoundPicker^android_common` `StatementService^android_common` `SystemUI^android_common` `VpnDialogs^android_common` `WallpaperBackup^android_common` `WallpaperCropper^android_common` `backuplib^android_common` `service-blobstore^android_common` `service-jobscheduler^android_common` `services-platform-compat-config^android_common` `services.accessibility^android_common` `services.appprediction^android_common` `services.appwidget^android_common` `services.autofill^android_common` `services.backup^android_common` `services.companion^android_common` `services.contentcapture^android_common` `services.contentsuggestions^android_common` `services.core.priorityboosted^android_common` `services.core.unboosted^android_common` `services.core^android_common` `services.devicepolicy^android_common` `services.midi^android_common` `services.musicsearch^android_common` `services.people^android_common` `services.print^android_common` `services.profcollect^android_common` `services.restrictions^android_common` `services.searchui^android_common` `services.smartspace^android_common` `services.startop.iorap^android_common` `services.startop^android_common` `services.systemcaptions^android_common` `services.texttospeech^android_common` `services.translation^android_common` `services.usage^android_common` `services.usb^android_common` `services.uwb^android_common` `services.voiceinteraction^android_common` `services^android_common`
+###### **packages/apps/Bluetooth**: 1
+`Bluetooth^android_common`
 ###### **packages/apps/Browser2**: 1
 `Browser2^android_common`
 ###### **packages/apps/CarrierConfig**: 1
@@ -46,10 +46,12 @@
 `Provision^android_common`
 ###### **packages/apps/QuickSearchBox**: 1
 `QuickSearchBox^android_common`
+###### **packages/apps/RemoteProvisioner**: 1
+`RemoteProvisioner^android_common`
 ###### **packages/apps/SecureElement**: 1
 `SecureElement^android_common`
-###### **packages/apps/Settings**: 3
-`Settings-core^android_common` `Settings^android_common` `settings-platform-compat-config^android_common`
+###### **packages/apps/Settings**: 1
+`Settings^android_common`
 ###### **packages/apps/SettingsIntelligence**: 1
 `SettingsIntelligence^android_common`
 ###### **packages/apps/Stk**: 1
@@ -68,8 +70,8 @@
 `CaptivePortalLogin^android_common`
 ###### **packages/modules/NetworkPermissionConfig**: 1
 `NetworkPermissionConfig^android_common`
-###### **packages/modules/NetworkStack**: 2
-`NetworkStackApiStableLib^android_common` `NetworkStack^android_common`
+###### **packages/modules/NetworkStack**: 1
+`NetworkStack^android_common`
 ###### **packages/providers/BlockedNumberProvider**: 1
 `BlockedNumberProvider^android_common`
 ###### **packages/providers/BookmarkProvider**: 1
@@ -82,8 +84,8 @@
 `ContactsProvider^android_common`
 ###### **packages/providers/DownloadProvider**: 2
 `DownloadProviderUi^android_common` `DownloadProvider^android_common`
-###### **packages/providers/MediaProvider**: 4
-`MediaProviderLegacy^android_common` `MediaProvider^android_common` `com.android.mediaprovider^android_common_com.android.mediaprovider_image` `media-provider-platform-compat-config^android_common`
+###### **packages/providers/MediaProvider**: 1
+`MediaProviderLegacy^android_common`
 ###### **packages/providers/PartnerBookmarksProvider**: 1
 `PartnerBookmarksProvider^android_common`
 ###### **packages/providers/TelephonyProvider**: 1
@@ -108,7 +110,3 @@
 `TeleService^android_common`
 ###### **packages/wallpapers/LivePicker**: 1
 `LiveWallpapersPicker^android_common`
-###### **system/hardware/interfaces**: 1
-`android.system.keystore2-V1-java^android_common`
-###### **system/security**: 1
-`android.security.remoteprovisioning-java^android_common`

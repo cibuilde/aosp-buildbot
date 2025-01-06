@@ -1,6 +1,5 @@
-set -e
 
-echo "entering hardware/interfaces"
+set -e
 
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
@@ -12,6 +11,8 @@ ln -sf $GITHUB_WORKSPACE/ninja .
 if [ -d "$GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86" ]; then
   mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86 prebuilts/clang/host/linux-x86
 fi
+
+echo "Preparing for hardware/interfaces"
 
 clone_depth_platform bionic
 clone_project platform/cts cts android12-gsi "/libs/json"
@@ -28,7 +29,6 @@ clone_depth_platform hardware/libhardware
 clone_depth_platform hardware/libhardware_legacy
 clone_depth_platform hardware/ril
 clone_depth_platform libnativehelper
-clone_project platform/prebuilts/build-tools prebuilts/build-tools android12-gsi "/linux-x86/bin" "/linux-x86/lib64" "/path" "/common"
 clone_depth_platform prebuilts/gcc/linux-x86/x86/x86_64-linux-android-4.9
 clone_depth_platform system/bt
 clone_depth_platform system/core
@@ -42,9 +42,58 @@ clone_depth_platform system/unwinding
 
 rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/libc^android_vendor.31_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/libc^android_vendor.31_x86_x86_64_shared/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/build/blueprint/bpmodify^linux_glibc_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/zip/cmd/soong_zip^linux_glibc_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcxx/libc++^linux_glibc_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/authsecret/aidl/android.hardware.authsecret-V1-ndk_platform-source^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/authsecret/aidl/android.hardware.authsecret-api^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/automotive/occupant_awareness/aidl/android.hardware.automotive.occupant_awareness-V1-ndk_platform-source^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/automotive/occupant_awareness/aidl/android.hardware.automotive.occupant_awareness-api^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/biometrics/common/aidl/android.hardware.biometrics.common-V1-ndk_platform-source^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/biometrics/common/aidl/android.hardware.biometrics.common-api^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/biometrics/face/aidl/android.hardware.biometrics.face-V1-ndk_platform-source^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/biometrics/face/aidl/android.hardware.biometrics.face-api^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/biometrics/fingerprint/aidl/android.hardware.biometrics.fingerprint-V1-ndk_platform-source^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/biometrics/fingerprint/aidl/android.hardware.biometrics.fingerprint-api^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/common/aidl/android.hardware.common-V2-ndk_platform-source^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/common/aidl/android.hardware.common-api^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/common/fmq/aidl/android.hardware.common.fmq-V1-ndk_platform-source^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/common/fmq/aidl/android.hardware.common.fmq-api^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/gnss/aidl/android.hardware.gnss-V1-ndk_platform-source^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/gnss/aidl/android.hardware.gnss-api^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/graphics/common/aidl/android.hardware.graphics.common-V2-ndk_platform-source^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/graphics/common/aidl/android.hardware.graphics.common-api^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/health/storage/aidl/android.hardware.health.storage-V1-ndk_platform-source^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/health/storage/aidl/android.hardware.health.storage-api^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/identity/aidl/android.hardware.identity-V3-ndk_platform-source^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/identity/aidl/android.hardware.identity-api^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/keymaster/aidl/android.hardware.keymaster-V3-ndk_platform-source^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/keymaster/aidl/android.hardware.keymaster-api^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/light/aidl/android.hardware.light-V1-ndk_platform-source^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/light/aidl/android.hardware.light-api^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/memtrack/aidl/android.hardware.memtrack-V1-ndk_platform-source^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/memtrack/aidl/android.hardware.memtrack-api^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/neuralnetworks/aidl/android.hardware.neuralnetworks-V1-ndk_platform-source^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/neuralnetworks/aidl/android.hardware.neuralnetworks-api^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/oemlock/aidl/android.hardware.oemlock-V1-ndk_platform-source^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/oemlock/aidl/android.hardware.oemlock-api^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/power/aidl/android.hardware.power-V2-ndk_platform-source^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/power/aidl/android.hardware.power-api^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/power/stats/aidl/android.hardware.power.stats-V1-ndk_platform-source^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/power/stats/aidl/android.hardware.power.stats-api^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/rebootescrow/aidl/android.hardware.rebootescrow-V1-ndk_platform-source^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/rebootescrow/aidl/android.hardware.rebootescrow-api^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/security/keymint/aidl/android.hardware.security.keymint-V1-ndk_platform-source^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/security/keymint/aidl/android.hardware.security.keymint-V1-rust-source^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/security/keymint/aidl/android.hardware.security.keymint-api^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/security/secureclock/aidl/android.hardware.security.secureclock-V1-ndk_platform-source^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/security/secureclock/aidl/android.hardware.security.secureclock-V1-rust-source^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/security/secureclock/aidl/android.hardware.security.secureclock-api^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/security/sharedsecret/aidl/android.hardware.security.sharedsecret-V1-ndk_platform-source^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/security/sharedsecret/aidl/android.hardware.security.sharedsecret-V1-rust-source^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/security/sharedsecret/aidl/android.hardware.security.sharedsecret-api^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/vibrator/aidl/android.hardware.vibrator-V2-ndk_platform-source^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/vibrator/aidl/android.hardware.vibrator-api^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/weaver/aidl/android.hardware.weaver-V1-ndk_platform-source^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/weaver/aidl/android.hardware.weaver-api^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/tools/aidl/aidl^linux_glibc_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/tools/hidl/hidl-gen^linux_glibc_x86_64/ .
 
@@ -65,6 +114,84 @@ prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/st
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/atrace/1.0/android.hardware.atrace@1.0_genc++_headers^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.atrace@1.0_genc++_headers^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/atrace/1.0/android.hardware.atrace@1.0_genc++_headers^
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.atrace@1.0_genc++_headers^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/atrace/1.0/android.hardware.atrace@1.0_genc++_headers^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/atrace/1.0/android.hardware.atrace@1.0_genc++_headers^/addition_copy_files.output
+
+echo "building android.hardware.audio@2.0-inheritance-hierarchy^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.audio@2.0-inheritance-hierarchy,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/audio/2.0/android.hardware.audio@2.0-inheritance-hierarchy^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.audio@2.0-inheritance-hierarchy^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/audio/2.0/android.hardware.audio@2.0-inheritance-hierarchy^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.audio@2.0-inheritance-hierarchy^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/audio/2.0/android.hardware.audio@2.0-inheritance-hierarchy^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/audio/2.0/android.hardware.audio@2.0-inheritance-hierarchy^/addition_copy_files.output
+
+echo "building android.hardware.audio@4.0-inheritance-hierarchy^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.audio@4.0-inheritance-hierarchy,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/audio/4.0/android.hardware.audio@4.0-inheritance-hierarchy^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.audio@4.0-inheritance-hierarchy^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/audio/4.0/android.hardware.audio@4.0-inheritance-hierarchy^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.audio@4.0-inheritance-hierarchy^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/audio/4.0/android.hardware.audio@4.0-inheritance-hierarchy^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/audio/4.0/android.hardware.audio@4.0-inheritance-hierarchy^/addition_copy_files.output
+
+echo "building android.hardware.audio@4.0_genc++^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.audio@4.0_genc++,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/audio/4.0/android.hardware.audio@4.0_genc++^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.audio@4.0_genc++^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/audio/4.0/android.hardware.audio@4.0_genc++^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.audio@4.0_genc++^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/audio/4.0/android.hardware.audio@4.0_genc++^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/audio/4.0/android.hardware.audio@4.0_genc++^/addition_copy_files.output
+
+echo "building android.hardware.audio@4.0_genc++_headers^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.audio@4.0_genc++_headers,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/audio/4.0/android.hardware.audio@4.0_genc++_headers^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.audio@4.0_genc++_headers^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/audio/4.0/android.hardware.audio@4.0_genc++_headers^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.audio@4.0_genc++_headers^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/audio/4.0/android.hardware.audio@4.0_genc++_headers^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/audio/4.0/android.hardware.audio@4.0_genc++_headers^/addition_copy_files.output
+
+echo "building android.hardware.audio@5.0-inheritance-hierarchy^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.audio@5.0-inheritance-hierarchy,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/audio/5.0/android.hardware.audio@5.0-inheritance-hierarchy^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.audio@5.0-inheritance-hierarchy^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/audio/5.0/android.hardware.audio@5.0-inheritance-hierarchy^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.audio@5.0-inheritance-hierarchy^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/audio/5.0/android.hardware.audio@5.0-inheritance-hierarchy^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/audio/5.0/android.hardware.audio@5.0-inheritance-hierarchy^/addition_copy_files.output
+
+echo "building android.hardware.audio@5.0_genc++^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.audio@5.0_genc++,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/audio/5.0/android.hardware.audio@5.0_genc++^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.audio@5.0_genc++^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/audio/5.0/android.hardware.audio@5.0_genc++^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.audio@5.0_genc++^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/audio/5.0/android.hardware.audio@5.0_genc++^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/audio/5.0/android.hardware.audio@5.0_genc++^/addition_copy_files.output
+
+echo "building android.hardware.audio@5.0_genc++_headers^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.audio@5.0_genc++_headers,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/audio/5.0/android.hardware.audio@5.0_genc++_headers^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.audio@5.0_genc++_headers^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/audio/5.0/android.hardware.audio@5.0_genc++_headers^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.audio@5.0_genc++_headers^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/audio/5.0/android.hardware.audio@5.0_genc++_headers^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/audio/5.0/android.hardware.audio@5.0_genc++_headers^/addition_copy_files.output
+
+echo "building android.hardware.audio@6.0-inheritance-hierarchy^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.audio@6.0-inheritance-hierarchy,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/audio/6.0/android.hardware.audio@6.0-inheritance-hierarchy^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.audio@6.0-inheritance-hierarchy^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/audio/6.0/android.hardware.audio@6.0-inheritance-hierarchy^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.audio@6.0-inheritance-hierarchy^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/audio/6.0/android.hardware.audio@6.0-inheritance-hierarchy^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/audio/6.0/android.hardware.audio@6.0-inheritance-hierarchy^/addition_copy_files.output
+
+echo "building android.hardware.audio@6.0_genc++^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.audio@6.0_genc++,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/audio/6.0/android.hardware.audio@6.0_genc++^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.audio@6.0_genc++^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/audio/6.0/android.hardware.audio@6.0_genc++^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.audio@6.0_genc++^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/audio/6.0/android.hardware.audio@6.0_genc++^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/audio/6.0/android.hardware.audio@6.0_genc++^/addition_copy_files.output
+
+echo "building android.hardware.audio@6.0_genc++_headers^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.audio@6.0_genc++_headers,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/audio/6.0/android.hardware.audio@6.0_genc++_headers^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.audio@6.0_genc++_headers^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/audio/6.0/android.hardware.audio@6.0_genc++_headers^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.audio@6.0_genc++_headers^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/audio/6.0/android.hardware.audio@6.0_genc++_headers^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/audio/6.0/android.hardware.audio@6.0_genc++_headers^/addition_copy_files.output
+
+echo "building android.hardware.audio@7.0-inheritance-hierarchy^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.audio@7.0-inheritance-hierarchy,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/audio/7.0/android.hardware.audio@7.0-inheritance-hierarchy^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.audio@7.0-inheritance-hierarchy^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/audio/7.0/android.hardware.audio@7.0-inheritance-hierarchy^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.audio@7.0-inheritance-hierarchy^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/audio/7.0/android.hardware.audio@7.0-inheritance-hierarchy^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/audio/7.0/android.hardware.audio@7.0-inheritance-hierarchy^/addition_copy_files.output
+
+echo "building android.hardware.audio@7.0_genc++^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.audio@7.0_genc++,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/audio/7.0/android.hardware.audio@7.0_genc++^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.audio@7.0_genc++^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/audio/7.0/android.hardware.audio@7.0_genc++^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.audio@7.0_genc++^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/audio/7.0/android.hardware.audio@7.0_genc++^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/audio/7.0/android.hardware.audio@7.0_genc++^/addition_copy_files.output
+
+echo "building android.hardware.audio@7.0_genc++_headers^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.audio@7.0_genc++_headers,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/audio/7.0/android.hardware.audio@7.0_genc++_headers^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.audio@7.0_genc++_headers^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/audio/7.0/android.hardware.audio@7.0_genc++_headers^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.audio@7.0_genc++_headers^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/audio/7.0/android.hardware.audio@7.0_genc++_headers^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/audio/7.0/android.hardware.audio@7.0_genc++_headers^/addition_copy_files.output
 
 echo "building android.hardware.audio.common-V2.0-java_gen_java^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.audio.common-V2.0-java_gen_java,
@@ -210,83 +337,29 @@ mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/audio/effect/7.0/androi
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.audio.effect@7.0_genc++_headers^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/audio/effect/7.0/android.hardware.audio.effect@7.0_genc++_headers^
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.audio.effect@7.0_genc++_headers^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/audio/effect/7.0/android.hardware.audio.effect@7.0_genc++_headers^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/audio/effect/7.0/android.hardware.audio.effect@7.0_genc++_headers^/addition_copy_files.output
 
-echo "building android.hardware.audio@2.0-inheritance-hierarchy^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.audio@2.0-inheritance-hierarchy,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/audio/2.0/android.hardware.audio@2.0-inheritance-hierarchy^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.audio@2.0-inheritance-hierarchy^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/audio/2.0/android.hardware.audio@2.0-inheritance-hierarchy^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.audio@2.0-inheritance-hierarchy^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/audio/2.0/android.hardware.audio@2.0-inheritance-hierarchy^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/audio/2.0/android.hardware.audio@2.0-inheritance-hierarchy^/addition_copy_files.output
+echo "building android.hardware.authsecret-V1.0-java_gen_java^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.authsecret-V1.0-java_gen_java,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/authsecret/1.0/android.hardware.authsecret-V1.0-java_gen_java^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.authsecret-V1.0-java_gen_java^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/authsecret/1.0/android.hardware.authsecret-V1.0-java_gen_java^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.authsecret-V1.0-java_gen_java^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/authsecret/1.0/android.hardware.authsecret-V1.0-java_gen_java^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/authsecret/1.0/android.hardware.authsecret-V1.0-java_gen_java^/addition_copy_files.output
 
-echo "building android.hardware.audio@4.0-inheritance-hierarchy^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.audio@4.0-inheritance-hierarchy,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/audio/4.0/android.hardware.audio@4.0-inheritance-hierarchy^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.audio@4.0-inheritance-hierarchy^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/audio/4.0/android.hardware.audio@4.0-inheritance-hierarchy^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.audio@4.0-inheritance-hierarchy^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/audio/4.0/android.hardware.audio@4.0-inheritance-hierarchy^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/audio/4.0/android.hardware.audio@4.0-inheritance-hierarchy^/addition_copy_files.output
+echo "building android.hardware.authsecret@1.0-inheritance-hierarchy^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.authsecret@1.0-inheritance-hierarchy,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/authsecret/1.0/android.hardware.authsecret@1.0-inheritance-hierarchy^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.authsecret@1.0-inheritance-hierarchy^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/authsecret/1.0/android.hardware.authsecret@1.0-inheritance-hierarchy^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.authsecret@1.0-inheritance-hierarchy^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/authsecret/1.0/android.hardware.authsecret@1.0-inheritance-hierarchy^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/authsecret/1.0/android.hardware.authsecret@1.0-inheritance-hierarchy^/addition_copy_files.output
 
-echo "building android.hardware.audio@4.0_genc++^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.audio@4.0_genc++,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/audio/4.0/android.hardware.audio@4.0_genc++^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.audio@4.0_genc++^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/audio/4.0/android.hardware.audio@4.0_genc++^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.audio@4.0_genc++^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/audio/4.0/android.hardware.audio@4.0_genc++^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/audio/4.0/android.hardware.audio@4.0_genc++^/addition_copy_files.output
+echo "building android.hardware.authsecret@1.0_genc++^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.authsecret@1.0_genc++,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/authsecret/1.0/android.hardware.authsecret@1.0_genc++^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.authsecret@1.0_genc++^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/authsecret/1.0/android.hardware.authsecret@1.0_genc++^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.authsecret@1.0_genc++^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/authsecret/1.0/android.hardware.authsecret@1.0_genc++^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/authsecret/1.0/android.hardware.authsecret@1.0_genc++^/addition_copy_files.output
 
-echo "building android.hardware.audio@4.0_genc++_headers^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.audio@4.0_genc++_headers,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/audio/4.0/android.hardware.audio@4.0_genc++_headers^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.audio@4.0_genc++_headers^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/audio/4.0/android.hardware.audio@4.0_genc++_headers^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.audio@4.0_genc++_headers^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/audio/4.0/android.hardware.audio@4.0_genc++_headers^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/audio/4.0/android.hardware.audio@4.0_genc++_headers^/addition_copy_files.output
-
-echo "building android.hardware.audio@5.0-inheritance-hierarchy^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.audio@5.0-inheritance-hierarchy,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/audio/5.0/android.hardware.audio@5.0-inheritance-hierarchy^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.audio@5.0-inheritance-hierarchy^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/audio/5.0/android.hardware.audio@5.0-inheritance-hierarchy^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.audio@5.0-inheritance-hierarchy^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/audio/5.0/android.hardware.audio@5.0-inheritance-hierarchy^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/audio/5.0/android.hardware.audio@5.0-inheritance-hierarchy^/addition_copy_files.output
-
-echo "building android.hardware.audio@5.0_genc++^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.audio@5.0_genc++,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/audio/5.0/android.hardware.audio@5.0_genc++^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.audio@5.0_genc++^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/audio/5.0/android.hardware.audio@5.0_genc++^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.audio@5.0_genc++^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/audio/5.0/android.hardware.audio@5.0_genc++^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/audio/5.0/android.hardware.audio@5.0_genc++^/addition_copy_files.output
-
-echo "building android.hardware.audio@5.0_genc++_headers^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.audio@5.0_genc++_headers,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/audio/5.0/android.hardware.audio@5.0_genc++_headers^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.audio@5.0_genc++_headers^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/audio/5.0/android.hardware.audio@5.0_genc++_headers^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.audio@5.0_genc++_headers^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/audio/5.0/android.hardware.audio@5.0_genc++_headers^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/audio/5.0/android.hardware.audio@5.0_genc++_headers^/addition_copy_files.output
-
-echo "building android.hardware.audio@6.0-inheritance-hierarchy^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.audio@6.0-inheritance-hierarchy,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/audio/6.0/android.hardware.audio@6.0-inheritance-hierarchy^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.audio@6.0-inheritance-hierarchy^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/audio/6.0/android.hardware.audio@6.0-inheritance-hierarchy^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.audio@6.0-inheritance-hierarchy^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/audio/6.0/android.hardware.audio@6.0-inheritance-hierarchy^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/audio/6.0/android.hardware.audio@6.0-inheritance-hierarchy^/addition_copy_files.output
-
-echo "building android.hardware.audio@6.0_genc++^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.audio@6.0_genc++,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/audio/6.0/android.hardware.audio@6.0_genc++^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.audio@6.0_genc++^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/audio/6.0/android.hardware.audio@6.0_genc++^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.audio@6.0_genc++^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/audio/6.0/android.hardware.audio@6.0_genc++^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/audio/6.0/android.hardware.audio@6.0_genc++^/addition_copy_files.output
-
-echo "building android.hardware.audio@6.0_genc++_headers^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.audio@6.0_genc++_headers,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/audio/6.0/android.hardware.audio@6.0_genc++_headers^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.audio@6.0_genc++_headers^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/audio/6.0/android.hardware.audio@6.0_genc++_headers^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.audio@6.0_genc++_headers^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/audio/6.0/android.hardware.audio@6.0_genc++_headers^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/audio/6.0/android.hardware.audio@6.0_genc++_headers^/addition_copy_files.output
-
-echo "building android.hardware.audio@7.0-inheritance-hierarchy^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.audio@7.0-inheritance-hierarchy,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/audio/7.0/android.hardware.audio@7.0-inheritance-hierarchy^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.audio@7.0-inheritance-hierarchy^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/audio/7.0/android.hardware.audio@7.0-inheritance-hierarchy^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.audio@7.0-inheritance-hierarchy^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/audio/7.0/android.hardware.audio@7.0-inheritance-hierarchy^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/audio/7.0/android.hardware.audio@7.0-inheritance-hierarchy^/addition_copy_files.output
-
-echo "building android.hardware.audio@7.0_genc++^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.audio@7.0_genc++,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/audio/7.0/android.hardware.audio@7.0_genc++^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.audio@7.0_genc++^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/audio/7.0/android.hardware.audio@7.0_genc++^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.audio@7.0_genc++^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/audio/7.0/android.hardware.audio@7.0_genc++^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/audio/7.0/android.hardware.audio@7.0_genc++^/addition_copy_files.output
-
-echo "building android.hardware.audio@7.0_genc++_headers^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.audio@7.0_genc++_headers,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/audio/7.0/android.hardware.audio@7.0_genc++_headers^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.audio@7.0_genc++_headers^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/audio/7.0/android.hardware.audio@7.0_genc++_headers^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.audio@7.0_genc++_headers^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/audio/7.0/android.hardware.audio@7.0_genc++_headers^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/audio/7.0/android.hardware.audio@7.0_genc++_headers^/addition_copy_files.output
+echo "building android.hardware.authsecret@1.0_genc++_headers^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.authsecret@1.0_genc++_headers,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/authsecret/1.0/android.hardware.authsecret@1.0_genc++_headers^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.authsecret@1.0_genc++_headers^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/authsecret/1.0/android.hardware.authsecret@1.0_genc++_headers^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.authsecret@1.0_genc++_headers^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/authsecret/1.0/android.hardware.authsecret@1.0_genc++_headers^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/authsecret/1.0/android.hardware.authsecret@1.0_genc++_headers^/addition_copy_files.output
 
 echo "building android.hardware.authsecret-V1-ndk_platform-source^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.authsecret-V1-ndk_platform-source,
@@ -306,35 +379,11 @@ mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/authsecret/aidl/android
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.authsecret-V1-ndk_platform^android_vendor.31_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/authsecret/aidl/android.hardware.authsecret-V1-ndk_platform^android_vendor.31_x86_x86_64_static
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.authsecret-V1-ndk_platform^android_vendor.31_x86_x86_64_static.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/authsecret/aidl/android.hardware.authsecret-V1-ndk_platform^android_vendor.31_x86_x86_64_static $GITHUB_WORKSPACE/artifacts/hardware/interfaces/authsecret/aidl/android.hardware.authsecret-V1-ndk_platform^android_vendor.31_x86_x86_64_static/addition_copy_files.output
 
-echo "building android.hardware.authsecret-V1.0-java_gen_java^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.authsecret-V1.0-java_gen_java,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/authsecret/1.0/android.hardware.authsecret-V1.0-java_gen_java^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.authsecret-V1.0-java_gen_java^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/authsecret/1.0/android.hardware.authsecret-V1.0-java_gen_java^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.authsecret-V1.0-java_gen_java^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/authsecret/1.0/android.hardware.authsecret-V1.0-java_gen_java^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/authsecret/1.0/android.hardware.authsecret-V1.0-java_gen_java^/addition_copy_files.output
-
 echo "building android.hardware.authsecret-api^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.authsecret-api,
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/authsecret/aidl/android.hardware.authsecret-api^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.authsecret-api^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/authsecret/aidl/android.hardware.authsecret-api^
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.authsecret-api^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/authsecret/aidl/android.hardware.authsecret-api^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/authsecret/aidl/android.hardware.authsecret-api^/addition_copy_files.output
-
-echo "building android.hardware.authsecret@1.0-inheritance-hierarchy^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.authsecret@1.0-inheritance-hierarchy,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/authsecret/1.0/android.hardware.authsecret@1.0-inheritance-hierarchy^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.authsecret@1.0-inheritance-hierarchy^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/authsecret/1.0/android.hardware.authsecret@1.0-inheritance-hierarchy^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.authsecret@1.0-inheritance-hierarchy^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/authsecret/1.0/android.hardware.authsecret@1.0-inheritance-hierarchy^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/authsecret/1.0/android.hardware.authsecret@1.0-inheritance-hierarchy^/addition_copy_files.output
-
-echo "building android.hardware.authsecret@1.0_genc++^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.authsecret@1.0_genc++,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/authsecret/1.0/android.hardware.authsecret@1.0_genc++^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.authsecret@1.0_genc++^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/authsecret/1.0/android.hardware.authsecret@1.0_genc++^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.authsecret@1.0_genc++^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/authsecret/1.0/android.hardware.authsecret@1.0_genc++^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/authsecret/1.0/android.hardware.authsecret@1.0_genc++^/addition_copy_files.output
-
-echo "building android.hardware.authsecret@1.0_genc++_headers^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.authsecret@1.0_genc++_headers,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/authsecret/1.0/android.hardware.authsecret@1.0_genc++_headers^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.authsecret@1.0_genc++_headers^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/authsecret/1.0/android.hardware.authsecret@1.0_genc++_headers^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.authsecret@1.0_genc++_headers^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/authsecret/1.0/android.hardware.authsecret@1.0_genc++_headers^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/authsecret/1.0/android.hardware.authsecret@1.0_genc++_headers^/addition_copy_files.output
 
 echo "building android.hardware.automotive.audiocontrol@1.0-inheritance-hierarchy^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.automotive.audiocontrol@1.0-inheritance-hierarchy,
@@ -426,35 +475,11 @@ mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/biometrics/common/aidl/
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.biometrics.common-api^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/biometrics/common/aidl/android.hardware.biometrics.common-api^
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.biometrics.common-api^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/biometrics/common/aidl/android.hardware.biometrics.common-api^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/biometrics/common/aidl/android.hardware.biometrics.common-api^/addition_copy_files.output
 
-echo "building android.hardware.biometrics.face-V1-java-source^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.biometrics.face-V1-java-source,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/biometrics/face/aidl/android.hardware.biometrics.face-V1-java-source^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.biometrics.face-V1-java-source^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/biometrics/face/aidl/android.hardware.biometrics.face-V1-java-source^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.biometrics.face-V1-java-source^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/biometrics/face/aidl/android.hardware.biometrics.face-V1-java-source^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/biometrics/face/aidl/android.hardware.biometrics.face-V1-java-source^/addition_copy_files.output
-
-echo "building android.hardware.biometrics.face-V1-ndk_platform-source^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.biometrics.face-V1-ndk_platform-source,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/biometrics/face/aidl/android.hardware.biometrics.face-V1-ndk_platform-source^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.biometrics.face-V1-ndk_platform-source^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/biometrics/face/aidl/android.hardware.biometrics.face-V1-ndk_platform-source^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.biometrics.face-V1-ndk_platform-source^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/biometrics/face/aidl/android.hardware.biometrics.face-V1-ndk_platform-source^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/biometrics/face/aidl/android.hardware.biometrics.face-V1-ndk_platform-source^/addition_copy_files.output
-
-echo "building android.hardware.biometrics.face-V1-ndk_platform^android_vendor.31_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.biometrics.face-V1-ndk_platform,android_vendor.31_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/biometrics/face/aidl/android.hardware.biometrics.face-V1-ndk_platform^android_vendor.31_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.biometrics.face-V1-ndk_platform^android_vendor.31_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/biometrics/face/aidl/android.hardware.biometrics.face-V1-ndk_platform^android_vendor.31_x86_64_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.biometrics.face-V1-ndk_platform^android_vendor.31_x86_64_static.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/biometrics/face/aidl/android.hardware.biometrics.face-V1-ndk_platform^android_vendor.31_x86_64_static $GITHUB_WORKSPACE/artifacts/hardware/interfaces/biometrics/face/aidl/android.hardware.biometrics.face-V1-ndk_platform^android_vendor.31_x86_64_static/addition_copy_files.output
-
 echo "building android.hardware.biometrics.face-V1.0-java_gen_java^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.biometrics.face-V1.0-java_gen_java,
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/biometrics/face/1.0/android.hardware.biometrics.face-V1.0-java_gen_java^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.biometrics.face-V1.0-java_gen_java^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/biometrics/face/1.0/android.hardware.biometrics.face-V1.0-java_gen_java^
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.biometrics.face-V1.0-java_gen_java^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/biometrics/face/1.0/android.hardware.biometrics.face-V1.0-java_gen_java^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/biometrics/face/1.0/android.hardware.biometrics.face-V1.0-java_gen_java^/addition_copy_files.output
-
-echo "building android.hardware.biometrics.face-api^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.biometrics.face-api,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/biometrics/face/aidl/android.hardware.biometrics.face-api^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.biometrics.face-api^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/biometrics/face/aidl/android.hardware.biometrics.face-api^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.biometrics.face-api^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/biometrics/face/aidl/android.hardware.biometrics.face-api^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/biometrics/face/aidl/android.hardware.biometrics.face-api^/addition_copy_files.output
 
 echo "building android.hardware.biometrics.face@1.0-inheritance-hierarchy^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.biometrics.face@1.0-inheritance-hierarchy,
@@ -474,47 +499,35 @@ mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/biometrics/face/1.0/and
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.biometrics.face@1.0_genc++_headers^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/biometrics/face/1.0/android.hardware.biometrics.face@1.0_genc++_headers^
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.biometrics.face@1.0_genc++_headers^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/biometrics/face/1.0/android.hardware.biometrics.face@1.0_genc++_headers^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/biometrics/face/1.0/android.hardware.biometrics.face@1.0_genc++_headers^/addition_copy_files.output
 
-echo "building android.hardware.biometrics.fingerprint-V1-java-source^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.biometrics.fingerprint-V1-java-source,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/biometrics/fingerprint/aidl/android.hardware.biometrics.fingerprint-V1-java-source^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.biometrics.fingerprint-V1-java-source^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/biometrics/fingerprint/aidl/android.hardware.biometrics.fingerprint-V1-java-source^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.biometrics.fingerprint-V1-java-source^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/biometrics/fingerprint/aidl/android.hardware.biometrics.fingerprint-V1-java-source^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/biometrics/fingerprint/aidl/android.hardware.biometrics.fingerprint-V1-java-source^/addition_copy_files.output
+echo "building android.hardware.biometrics.face-V1-java-source^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.biometrics.face-V1-java-source,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/biometrics/face/aidl/android.hardware.biometrics.face-V1-java-source^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.biometrics.face-V1-java-source^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/biometrics/face/aidl/android.hardware.biometrics.face-V1-java-source^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.biometrics.face-V1-java-source^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/biometrics/face/aidl/android.hardware.biometrics.face-V1-java-source^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/biometrics/face/aidl/android.hardware.biometrics.face-V1-java-source^/addition_copy_files.output
 
-echo "building android.hardware.biometrics.fingerprint-V1-ndk_platform-source^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.biometrics.fingerprint-V1-ndk_platform-source,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/biometrics/fingerprint/aidl/android.hardware.biometrics.fingerprint-V1-ndk_platform-source^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.biometrics.fingerprint-V1-ndk_platform-source^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/biometrics/fingerprint/aidl/android.hardware.biometrics.fingerprint-V1-ndk_platform-source^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.biometrics.fingerprint-V1-ndk_platform-source^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/biometrics/fingerprint/aidl/android.hardware.biometrics.fingerprint-V1-ndk_platform-source^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/biometrics/fingerprint/aidl/android.hardware.biometrics.fingerprint-V1-ndk_platform-source^/addition_copy_files.output
+echo "building android.hardware.biometrics.face-V1-ndk_platform-source^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.biometrics.face-V1-ndk_platform-source,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/biometrics/face/aidl/android.hardware.biometrics.face-V1-ndk_platform-source^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.biometrics.face-V1-ndk_platform-source^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/biometrics/face/aidl/android.hardware.biometrics.face-V1-ndk_platform-source^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.biometrics.face-V1-ndk_platform-source^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/biometrics/face/aidl/android.hardware.biometrics.face-V1-ndk_platform-source^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/biometrics/face/aidl/android.hardware.biometrics.face-V1-ndk_platform-source^/addition_copy_files.output
 
-echo "building android.hardware.biometrics.fingerprint-V1-ndk_platform^android_vendor.31_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.biometrics.fingerprint-V1-ndk_platform,android_vendor.31_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/biometrics/fingerprint/aidl/android.hardware.biometrics.fingerprint-V1-ndk_platform^android_vendor.31_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.biometrics.fingerprint-V1-ndk_platform^android_vendor.31_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/biometrics/fingerprint/aidl/android.hardware.biometrics.fingerprint-V1-ndk_platform^android_vendor.31_x86_64_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.biometrics.fingerprint-V1-ndk_platform^android_vendor.31_x86_64_static.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/biometrics/fingerprint/aidl/android.hardware.biometrics.fingerprint-V1-ndk_platform^android_vendor.31_x86_64_static $GITHUB_WORKSPACE/artifacts/hardware/interfaces/biometrics/fingerprint/aidl/android.hardware.biometrics.fingerprint-V1-ndk_platform^android_vendor.31_x86_64_static/addition_copy_files.output
+echo "building android.hardware.biometrics.face-V1-ndk_platform^android_vendor.31_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.biometrics.face-V1-ndk_platform,android_vendor.31_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/biometrics/face/aidl/android.hardware.biometrics.face-V1-ndk_platform^android_vendor.31_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.biometrics.face-V1-ndk_platform^android_vendor.31_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/biometrics/face/aidl/android.hardware.biometrics.face-V1-ndk_platform^android_vendor.31_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.biometrics.face-V1-ndk_platform^android_vendor.31_x86_64_static.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/biometrics/face/aidl/android.hardware.biometrics.face-V1-ndk_platform^android_vendor.31_x86_64_static $GITHUB_WORKSPACE/artifacts/hardware/interfaces/biometrics/face/aidl/android.hardware.biometrics.face-V1-ndk_platform^android_vendor.31_x86_64_static/addition_copy_files.output
+
+echo "building android.hardware.biometrics.face-api^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.biometrics.face-api,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/biometrics/face/aidl/android.hardware.biometrics.face-api^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.biometrics.face-api^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/biometrics/face/aidl/android.hardware.biometrics.face-api^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.biometrics.face-api^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/biometrics/face/aidl/android.hardware.biometrics.face-api^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/biometrics/face/aidl/android.hardware.biometrics.face-api^/addition_copy_files.output
 
 echo "building android.hardware.biometrics.fingerprint-V2.1-java_gen_java^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.biometrics.fingerprint-V2.1-java_gen_java,
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/biometrics/fingerprint/2.1/android.hardware.biometrics.fingerprint-V2.1-java_gen_java^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.biometrics.fingerprint-V2.1-java_gen_java^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/biometrics/fingerprint/2.1/android.hardware.biometrics.fingerprint-V2.1-java_gen_java^
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.biometrics.fingerprint-V2.1-java_gen_java^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/biometrics/fingerprint/2.1/android.hardware.biometrics.fingerprint-V2.1-java_gen_java^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/biometrics/fingerprint/2.1/android.hardware.biometrics.fingerprint-V2.1-java_gen_java^/addition_copy_files.output
-
-echo "building android.hardware.biometrics.fingerprint-V2.2-java_gen_java^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.biometrics.fingerprint-V2.2-java_gen_java,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/biometrics/fingerprint/2.2/android.hardware.biometrics.fingerprint-V2.2-java_gen_java^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.biometrics.fingerprint-V2.2-java_gen_java^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/biometrics/fingerprint/2.2/android.hardware.biometrics.fingerprint-V2.2-java_gen_java^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.biometrics.fingerprint-V2.2-java_gen_java^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/biometrics/fingerprint/2.2/android.hardware.biometrics.fingerprint-V2.2-java_gen_java^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/biometrics/fingerprint/2.2/android.hardware.biometrics.fingerprint-V2.2-java_gen_java^/addition_copy_files.output
-
-echo "building android.hardware.biometrics.fingerprint-V2.3-java_gen_java^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.biometrics.fingerprint-V2.3-java_gen_java,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/biometrics/fingerprint/2.3/android.hardware.biometrics.fingerprint-V2.3-java_gen_java^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.biometrics.fingerprint-V2.3-java_gen_java^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/biometrics/fingerprint/2.3/android.hardware.biometrics.fingerprint-V2.3-java_gen_java^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.biometrics.fingerprint-V2.3-java_gen_java^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/biometrics/fingerprint/2.3/android.hardware.biometrics.fingerprint-V2.3-java_gen_java^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/biometrics/fingerprint/2.3/android.hardware.biometrics.fingerprint-V2.3-java_gen_java^/addition_copy_files.output
-
-echo "building android.hardware.biometrics.fingerprint-api^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.biometrics.fingerprint-api,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/biometrics/fingerprint/aidl/android.hardware.biometrics.fingerprint-api^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.biometrics.fingerprint-api^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/biometrics/fingerprint/aidl/android.hardware.biometrics.fingerprint-api^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.biometrics.fingerprint-api^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/biometrics/fingerprint/aidl/android.hardware.biometrics.fingerprint-api^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/biometrics/fingerprint/aidl/android.hardware.biometrics.fingerprint-api^/addition_copy_files.output
 
 echo "building android.hardware.biometrics.fingerprint@2.1-inheritance-hierarchy^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.biometrics.fingerprint@2.1-inheritance-hierarchy,
@@ -534,6 +547,12 @@ mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/biometrics/fingerprint/
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.biometrics.fingerprint@2.1_genc++_headers^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/biometrics/fingerprint/2.1/android.hardware.biometrics.fingerprint@2.1_genc++_headers^
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.biometrics.fingerprint@2.1_genc++_headers^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/biometrics/fingerprint/2.1/android.hardware.biometrics.fingerprint@2.1_genc++_headers^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/biometrics/fingerprint/2.1/android.hardware.biometrics.fingerprint@2.1_genc++_headers^/addition_copy_files.output
 
+echo "building android.hardware.biometrics.fingerprint-V2.2-java_gen_java^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.biometrics.fingerprint-V2.2-java_gen_java,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/biometrics/fingerprint/2.2/android.hardware.biometrics.fingerprint-V2.2-java_gen_java^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.biometrics.fingerprint-V2.2-java_gen_java^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/biometrics/fingerprint/2.2/android.hardware.biometrics.fingerprint-V2.2-java_gen_java^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.biometrics.fingerprint-V2.2-java_gen_java^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/biometrics/fingerprint/2.2/android.hardware.biometrics.fingerprint-V2.2-java_gen_java^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/biometrics/fingerprint/2.2/android.hardware.biometrics.fingerprint-V2.2-java_gen_java^/addition_copy_files.output
+
 echo "building android.hardware.biometrics.fingerprint@2.2-inheritance-hierarchy^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.biometrics.fingerprint@2.2-inheritance-hierarchy,
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/biometrics/fingerprint/2.2/android.hardware.biometrics.fingerprint@2.2-inheritance-hierarchy^
@@ -552,11 +571,77 @@ mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/biometrics/fingerprint/
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.biometrics.fingerprint@2.2_genc++_headers^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/biometrics/fingerprint/2.2/android.hardware.biometrics.fingerprint@2.2_genc++_headers^
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.biometrics.fingerprint@2.2_genc++_headers^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/biometrics/fingerprint/2.2/android.hardware.biometrics.fingerprint@2.2_genc++_headers^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/biometrics/fingerprint/2.2/android.hardware.biometrics.fingerprint@2.2_genc++_headers^/addition_copy_files.output
 
+echo "building android.hardware.biometrics.fingerprint-V2.3-java_gen_java^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.biometrics.fingerprint-V2.3-java_gen_java,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/biometrics/fingerprint/2.3/android.hardware.biometrics.fingerprint-V2.3-java_gen_java^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.biometrics.fingerprint-V2.3-java_gen_java^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/biometrics/fingerprint/2.3/android.hardware.biometrics.fingerprint-V2.3-java_gen_java^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.biometrics.fingerprint-V2.3-java_gen_java^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/biometrics/fingerprint/2.3/android.hardware.biometrics.fingerprint-V2.3-java_gen_java^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/biometrics/fingerprint/2.3/android.hardware.biometrics.fingerprint-V2.3-java_gen_java^/addition_copy_files.output
+
 echo "building android.hardware.biometrics.fingerprint@2.3-inheritance-hierarchy^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.biometrics.fingerprint@2.3-inheritance-hierarchy,
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/biometrics/fingerprint/2.3/android.hardware.biometrics.fingerprint@2.3-inheritance-hierarchy^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.biometrics.fingerprint@2.3-inheritance-hierarchy^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/biometrics/fingerprint/2.3/android.hardware.biometrics.fingerprint@2.3-inheritance-hierarchy^
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.biometrics.fingerprint@2.3-inheritance-hierarchy^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/biometrics/fingerprint/2.3/android.hardware.biometrics.fingerprint@2.3-inheritance-hierarchy^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/biometrics/fingerprint/2.3/android.hardware.biometrics.fingerprint@2.3-inheritance-hierarchy^/addition_copy_files.output
+
+echo "building android.hardware.biometrics.fingerprint-V1-java-source^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.biometrics.fingerprint-V1-java-source,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/biometrics/fingerprint/aidl/android.hardware.biometrics.fingerprint-V1-java-source^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.biometrics.fingerprint-V1-java-source^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/biometrics/fingerprint/aidl/android.hardware.biometrics.fingerprint-V1-java-source^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.biometrics.fingerprint-V1-java-source^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/biometrics/fingerprint/aidl/android.hardware.biometrics.fingerprint-V1-java-source^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/biometrics/fingerprint/aidl/android.hardware.biometrics.fingerprint-V1-java-source^/addition_copy_files.output
+
+echo "building android.hardware.biometrics.fingerprint-V1-ndk_platform-source^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.biometrics.fingerprint-V1-ndk_platform-source,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/biometrics/fingerprint/aidl/android.hardware.biometrics.fingerprint-V1-ndk_platform-source^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.biometrics.fingerprint-V1-ndk_platform-source^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/biometrics/fingerprint/aidl/android.hardware.biometrics.fingerprint-V1-ndk_platform-source^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.biometrics.fingerprint-V1-ndk_platform-source^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/biometrics/fingerprint/aidl/android.hardware.biometrics.fingerprint-V1-ndk_platform-source^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/biometrics/fingerprint/aidl/android.hardware.biometrics.fingerprint-V1-ndk_platform-source^/addition_copy_files.output
+
+echo "building android.hardware.biometrics.fingerprint-V1-ndk_platform^android_vendor.31_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.biometrics.fingerprint-V1-ndk_platform,android_vendor.31_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/biometrics/fingerprint/aidl/android.hardware.biometrics.fingerprint-V1-ndk_platform^android_vendor.31_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.biometrics.fingerprint-V1-ndk_platform^android_vendor.31_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/biometrics/fingerprint/aidl/android.hardware.biometrics.fingerprint-V1-ndk_platform^android_vendor.31_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.biometrics.fingerprint-V1-ndk_platform^android_vendor.31_x86_64_static.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/biometrics/fingerprint/aidl/android.hardware.biometrics.fingerprint-V1-ndk_platform^android_vendor.31_x86_64_static $GITHUB_WORKSPACE/artifacts/hardware/interfaces/biometrics/fingerprint/aidl/android.hardware.biometrics.fingerprint-V1-ndk_platform^android_vendor.31_x86_64_static/addition_copy_files.output
+
+echo "building android.hardware.biometrics.fingerprint-api^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.biometrics.fingerprint-api,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/biometrics/fingerprint/aidl/android.hardware.biometrics.fingerprint-api^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.biometrics.fingerprint-api^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/biometrics/fingerprint/aidl/android.hardware.biometrics.fingerprint-api^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.biometrics.fingerprint-api^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/biometrics/fingerprint/aidl/android.hardware.biometrics.fingerprint-api^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/biometrics/fingerprint/aidl/android.hardware.biometrics.fingerprint-api^/addition_copy_files.output
+
+echo "building android.hardware.bluetooth@1.0-inheritance-hierarchy^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.bluetooth@1.0-inheritance-hierarchy,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/bluetooth/1.0/android.hardware.bluetooth@1.0-inheritance-hierarchy^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.bluetooth@1.0-inheritance-hierarchy^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/bluetooth/1.0/android.hardware.bluetooth@1.0-inheritance-hierarchy^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.bluetooth@1.0-inheritance-hierarchy^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/bluetooth/1.0/android.hardware.bluetooth@1.0-inheritance-hierarchy^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/bluetooth/1.0/android.hardware.bluetooth@1.0-inheritance-hierarchy^/addition_copy_files.output
+
+echo "building android.hardware.bluetooth@1.0_genc++^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.bluetooth@1.0_genc++,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/bluetooth/1.0/android.hardware.bluetooth@1.0_genc++^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.bluetooth@1.0_genc++^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/bluetooth/1.0/android.hardware.bluetooth@1.0_genc++^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.bluetooth@1.0_genc++^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/bluetooth/1.0/android.hardware.bluetooth@1.0_genc++^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/bluetooth/1.0/android.hardware.bluetooth@1.0_genc++^/addition_copy_files.output
+
+echo "building android.hardware.bluetooth@1.0_genc++_headers^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.bluetooth@1.0_genc++_headers,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/bluetooth/1.0/android.hardware.bluetooth@1.0_genc++_headers^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.bluetooth@1.0_genc++_headers^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/bluetooth/1.0/android.hardware.bluetooth@1.0_genc++_headers^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.bluetooth@1.0_genc++_headers^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/bluetooth/1.0/android.hardware.bluetooth@1.0_genc++_headers^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/bluetooth/1.0/android.hardware.bluetooth@1.0_genc++_headers^/addition_copy_files.output
+
+echo "building android.hardware.bluetooth@1.1-inheritance-hierarchy^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.bluetooth@1.1-inheritance-hierarchy,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/bluetooth/1.1/android.hardware.bluetooth@1.1-inheritance-hierarchy^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.bluetooth@1.1-inheritance-hierarchy^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/bluetooth/1.1/android.hardware.bluetooth@1.1-inheritance-hierarchy^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.bluetooth@1.1-inheritance-hierarchy^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/bluetooth/1.1/android.hardware.bluetooth@1.1-inheritance-hierarchy^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/bluetooth/1.1/android.hardware.bluetooth@1.1-inheritance-hierarchy^/addition_copy_files.output
+
+echo "building android.hardware.bluetooth@1.1_genc++^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.bluetooth@1.1_genc++,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/bluetooth/1.1/android.hardware.bluetooth@1.1_genc++^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.bluetooth@1.1_genc++^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/bluetooth/1.1/android.hardware.bluetooth@1.1_genc++^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.bluetooth@1.1_genc++^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/bluetooth/1.1/android.hardware.bluetooth@1.1_genc++^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/bluetooth/1.1/android.hardware.bluetooth@1.1_genc++^/addition_copy_files.output
+
+echo "building android.hardware.bluetooth@1.1_genc++_headers^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.bluetooth@1.1_genc++_headers,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/bluetooth/1.1/android.hardware.bluetooth@1.1_genc++_headers^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.bluetooth@1.1_genc++_headers^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/bluetooth/1.1/android.hardware.bluetooth@1.1_genc++_headers^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.bluetooth@1.1_genc++_headers^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/bluetooth/1.1/android.hardware.bluetooth@1.1_genc++_headers^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/bluetooth/1.1/android.hardware.bluetooth@1.1_genc++_headers^/addition_copy_files.output
 
 echo "building android.hardware.bluetooth.a2dp@1.0-inheritance-hierarchy^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.bluetooth.a2dp@1.0-inheritance-hierarchy,
@@ -612,59 +697,11 @@ mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/bluetooth/audio/2.1/and
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.bluetooth.audio@2.1_genc++_headers^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/bluetooth/audio/2.1/android.hardware.bluetooth.audio@2.1_genc++_headers^
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.bluetooth.audio@2.1_genc++_headers^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/bluetooth/audio/2.1/android.hardware.bluetooth.audio@2.1_genc++_headers^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/bluetooth/audio/2.1/android.hardware.bluetooth.audio@2.1_genc++_headers^/addition_copy_files.output
 
-echo "building android.hardware.bluetooth@1.0-inheritance-hierarchy^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.bluetooth@1.0-inheritance-hierarchy,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/bluetooth/1.0/android.hardware.bluetooth@1.0-inheritance-hierarchy^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.bluetooth@1.0-inheritance-hierarchy^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/bluetooth/1.0/android.hardware.bluetooth@1.0-inheritance-hierarchy^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.bluetooth@1.0-inheritance-hierarchy^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/bluetooth/1.0/android.hardware.bluetooth@1.0-inheritance-hierarchy^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/bluetooth/1.0/android.hardware.bluetooth@1.0-inheritance-hierarchy^/addition_copy_files.output
-
-echo "building android.hardware.bluetooth@1.0_genc++^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.bluetooth@1.0_genc++,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/bluetooth/1.0/android.hardware.bluetooth@1.0_genc++^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.bluetooth@1.0_genc++^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/bluetooth/1.0/android.hardware.bluetooth@1.0_genc++^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.bluetooth@1.0_genc++^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/bluetooth/1.0/android.hardware.bluetooth@1.0_genc++^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/bluetooth/1.0/android.hardware.bluetooth@1.0_genc++^/addition_copy_files.output
-
-echo "building android.hardware.bluetooth@1.0_genc++_headers^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.bluetooth@1.0_genc++_headers,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/bluetooth/1.0/android.hardware.bluetooth@1.0_genc++_headers^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.bluetooth@1.0_genc++_headers^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/bluetooth/1.0/android.hardware.bluetooth@1.0_genc++_headers^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.bluetooth@1.0_genc++_headers^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/bluetooth/1.0/android.hardware.bluetooth@1.0_genc++_headers^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/bluetooth/1.0/android.hardware.bluetooth@1.0_genc++_headers^/addition_copy_files.output
-
-echo "building android.hardware.bluetooth@1.1-inheritance-hierarchy^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.bluetooth@1.1-inheritance-hierarchy,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/bluetooth/1.1/android.hardware.bluetooth@1.1-inheritance-hierarchy^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.bluetooth@1.1-inheritance-hierarchy^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/bluetooth/1.1/android.hardware.bluetooth@1.1-inheritance-hierarchy^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.bluetooth@1.1-inheritance-hierarchy^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/bluetooth/1.1/android.hardware.bluetooth@1.1-inheritance-hierarchy^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/bluetooth/1.1/android.hardware.bluetooth@1.1-inheritance-hierarchy^/addition_copy_files.output
-
-echo "building android.hardware.bluetooth@1.1_genc++^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.bluetooth@1.1_genc++,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/bluetooth/1.1/android.hardware.bluetooth@1.1_genc++^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.bluetooth@1.1_genc++^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/bluetooth/1.1/android.hardware.bluetooth@1.1_genc++^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.bluetooth@1.1_genc++^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/bluetooth/1.1/android.hardware.bluetooth@1.1_genc++^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/bluetooth/1.1/android.hardware.bluetooth@1.1_genc++^/addition_copy_files.output
-
-echo "building android.hardware.bluetooth@1.1_genc++_headers^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.bluetooth@1.1_genc++_headers,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/bluetooth/1.1/android.hardware.bluetooth@1.1_genc++_headers^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.bluetooth@1.1_genc++_headers^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/bluetooth/1.1/android.hardware.bluetooth@1.1_genc++_headers^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.bluetooth@1.1_genc++_headers^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/bluetooth/1.1/android.hardware.bluetooth@1.1_genc++_headers^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/bluetooth/1.1/android.hardware.bluetooth@1.1_genc++_headers^/addition_copy_files.output
-
 echo "building android.hardware.boot-V1.0-java_gen_java^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.boot-V1.0-java_gen_java,
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/boot/1.0/android.hardware.boot-V1.0-java_gen_java^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.boot-V1.0-java_gen_java^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/boot/1.0/android.hardware.boot-V1.0-java_gen_java^
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.boot-V1.0-java_gen_java^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/boot/1.0/android.hardware.boot-V1.0-java_gen_java^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/boot/1.0/android.hardware.boot-V1.0-java_gen_java^/addition_copy_files.output
-
-echo "building android.hardware.boot-V1.1-java_gen_java^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.boot-V1.1-java_gen_java,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/boot/1.1/android.hardware.boot-V1.1-java_gen_java^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.boot-V1.1-java_gen_java^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/boot/1.1/android.hardware.boot-V1.1-java_gen_java^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.boot-V1.1-java_gen_java^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/boot/1.1/android.hardware.boot-V1.1-java_gen_java^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/boot/1.1/android.hardware.boot-V1.1-java_gen_java^/addition_copy_files.output
-
-echo "building android.hardware.boot-V1.2-java_gen_java^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.boot-V1.2-java_gen_java,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/boot/1.2/android.hardware.boot-V1.2-java_gen_java^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.boot-V1.2-java_gen_java^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/boot/1.2/android.hardware.boot-V1.2-java_gen_java^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.boot-V1.2-java_gen_java^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/boot/1.2/android.hardware.boot-V1.2-java_gen_java^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/boot/1.2/android.hardware.boot-V1.2-java_gen_java^/addition_copy_files.output
 
 echo "building android.hardware.boot@1.0-inheritance-hierarchy^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.boot@1.0-inheritance-hierarchy,
@@ -684,6 +721,12 @@ mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/boot/1.0/android.hardwa
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.boot@1.0_genc++_headers^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/boot/1.0/android.hardware.boot@1.0_genc++_headers^
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.boot@1.0_genc++_headers^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/boot/1.0/android.hardware.boot@1.0_genc++_headers^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/boot/1.0/android.hardware.boot@1.0_genc++_headers^/addition_copy_files.output
 
+echo "building android.hardware.boot-V1.1-java_gen_java^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.boot-V1.1-java_gen_java,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/boot/1.1/android.hardware.boot-V1.1-java_gen_java^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.boot-V1.1-java_gen_java^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/boot/1.1/android.hardware.boot-V1.1-java_gen_java^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.boot-V1.1-java_gen_java^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/boot/1.1/android.hardware.boot-V1.1-java_gen_java^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/boot/1.1/android.hardware.boot-V1.1-java_gen_java^/addition_copy_files.output
+
 echo "building android.hardware.boot@1.1-inheritance-hierarchy^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.boot@1.1-inheritance-hierarchy,
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/boot/1.1/android.hardware.boot@1.1-inheritance-hierarchy^
@@ -702,6 +745,12 @@ mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/boot/1.1/android.hardwa
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.boot@1.1_genc++_headers^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/boot/1.1/android.hardware.boot@1.1_genc++_headers^
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.boot@1.1_genc++_headers^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/boot/1.1/android.hardware.boot@1.1_genc++_headers^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/boot/1.1/android.hardware.boot@1.1_genc++_headers^/addition_copy_files.output
 
+echo "building android.hardware.boot-V1.2-java_gen_java^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.boot-V1.2-java_gen_java,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/boot/1.2/android.hardware.boot-V1.2-java_gen_java^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.boot-V1.2-java_gen_java^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/boot/1.2/android.hardware.boot-V1.2-java_gen_java^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.boot-V1.2-java_gen_java^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/boot/1.2/android.hardware.boot-V1.2-java_gen_java^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/boot/1.2/android.hardware.boot-V1.2-java_gen_java^/addition_copy_files.output
+
 echo "building android.hardware.boot@1.2-inheritance-hierarchy^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.boot@1.2-inheritance-hierarchy,
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/boot/1.2/android.hardware.boot@1.2-inheritance-hierarchy^
@@ -719,12 +768,6 @@ prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/st
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/boot/1.2/android.hardware.boot@1.2_genc++_headers^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.boot@1.2_genc++_headers^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/boot/1.2/android.hardware.boot@1.2_genc++_headers^
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.boot@1.2_genc++_headers^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/boot/1.2/android.hardware.boot@1.2_genc++_headers^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/boot/1.2/android.hardware.boot@1.2_genc++_headers^/addition_copy_files.output
-
-echo "building android.hardware.broadcastradio-V2.0-java_gen_java^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.broadcastradio-V2.0-java_gen_java,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/broadcastradio/2.0/android.hardware.broadcastradio-V2.0-java_gen_java^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.broadcastradio-V2.0-java_gen_java^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/broadcastradio/2.0/android.hardware.broadcastradio-V2.0-java_gen_java^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.broadcastradio-V2.0-java_gen_java^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/broadcastradio/2.0/android.hardware.broadcastradio-V2.0-java_gen_java^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/broadcastradio/2.0/android.hardware.broadcastradio-V2.0-java_gen_java^/addition_copy_files.output
 
 echo "building android.hardware.broadcastradio@1.0-inheritance-hierarchy^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.broadcastradio@1.0-inheritance-hierarchy,
@@ -761,6 +804,12 @@ prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/st
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/broadcastradio/1.1/android.hardware.broadcastradio@1.1_genc++_headers^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.broadcastradio@1.1_genc++_headers^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/broadcastradio/1.1/android.hardware.broadcastradio@1.1_genc++_headers^
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.broadcastradio@1.1_genc++_headers^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/broadcastradio/1.1/android.hardware.broadcastradio@1.1_genc++_headers^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/broadcastradio/1.1/android.hardware.broadcastradio@1.1_genc++_headers^/addition_copy_files.output
+
+echo "building android.hardware.broadcastradio-V2.0-java_gen_java^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.broadcastradio-V2.0-java_gen_java,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/broadcastradio/2.0/android.hardware.broadcastradio-V2.0-java_gen_java^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.broadcastradio-V2.0-java_gen_java^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/broadcastradio/2.0/android.hardware.broadcastradio-V2.0-java_gen_java^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.broadcastradio-V2.0-java_gen_java^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/broadcastradio/2.0/android.hardware.broadcastradio-V2.0-java_gen_java^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/broadcastradio/2.0/android.hardware.broadcastradio-V2.0-java_gen_java^/addition_copy_files.output
 
 echo "building android.hardware.broadcastradio@2.0-inheritance-hierarchy^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.broadcastradio@2.0-inheritance-hierarchy,
@@ -1044,36 +1093,6 @@ mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/cas/1.0/android.hardwar
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.cas-V1.0-java_gen_java^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/cas/1.0/android.hardware.cas-V1.0-java_gen_java^
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.cas-V1.0-java_gen_java^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/cas/1.0/android.hardware.cas-V1.0-java_gen_java^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/cas/1.0/android.hardware.cas-V1.0-java_gen_java^/addition_copy_files.output
 
-echo "building android.hardware.cas-V1.1-java_gen_java^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.cas-V1.1-java_gen_java,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/cas/1.1/android.hardware.cas-V1.1-java_gen_java^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.cas-V1.1-java_gen_java^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/cas/1.1/android.hardware.cas-V1.1-java_gen_java^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.cas-V1.1-java_gen_java^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/cas/1.1/android.hardware.cas-V1.1-java_gen_java^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/cas/1.1/android.hardware.cas-V1.1-java_gen_java^/addition_copy_files.output
-
-echo "building android.hardware.cas-V1.2-java_gen_java^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.cas-V1.2-java_gen_java,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/cas/1.2/android.hardware.cas-V1.2-java_gen_java^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.cas-V1.2-java_gen_java^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/cas/1.2/android.hardware.cas-V1.2-java_gen_java^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.cas-V1.2-java_gen_java^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/cas/1.2/android.hardware.cas-V1.2-java_gen_java^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/cas/1.2/android.hardware.cas-V1.2-java_gen_java^/addition_copy_files.output
-
-echo "building android.hardware.cas.native@1.0-inheritance-hierarchy^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.cas.native@1.0-inheritance-hierarchy,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/cas/native/1.0/android.hardware.cas.native@1.0-inheritance-hierarchy^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.cas.native@1.0-inheritance-hierarchy^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/cas/native/1.0/android.hardware.cas.native@1.0-inheritance-hierarchy^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.cas.native@1.0-inheritance-hierarchy^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/cas/native/1.0/android.hardware.cas.native@1.0-inheritance-hierarchy^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/cas/native/1.0/android.hardware.cas.native@1.0-inheritance-hierarchy^/addition_copy_files.output
-
-echo "building android.hardware.cas.native@1.0_genc++^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.cas.native@1.0_genc++,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/cas/native/1.0/android.hardware.cas.native@1.0_genc++^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.cas.native@1.0_genc++^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/cas/native/1.0/android.hardware.cas.native@1.0_genc++^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.cas.native@1.0_genc++^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/cas/native/1.0/android.hardware.cas.native@1.0_genc++^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/cas/native/1.0/android.hardware.cas.native@1.0_genc++^/addition_copy_files.output
-
-echo "building android.hardware.cas.native@1.0_genc++_headers^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.cas.native@1.0_genc++_headers,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/cas/native/1.0/android.hardware.cas.native@1.0_genc++_headers^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.cas.native@1.0_genc++_headers^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/cas/native/1.0/android.hardware.cas.native@1.0_genc++_headers^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.cas.native@1.0_genc++_headers^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/cas/native/1.0/android.hardware.cas.native@1.0_genc++_headers^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/cas/native/1.0/android.hardware.cas.native@1.0_genc++_headers^/addition_copy_files.output
-
 echo "building android.hardware.cas@1.0-inheritance-hierarchy^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.cas@1.0-inheritance-hierarchy,
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/cas/1.0/android.hardware.cas@1.0-inheritance-hierarchy^
@@ -1091,6 +1110,12 @@ prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/st
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/cas/1.0/android.hardware.cas@1.0_genc++_headers^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.cas@1.0_genc++_headers^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/cas/1.0/android.hardware.cas@1.0_genc++_headers^
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.cas@1.0_genc++_headers^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/cas/1.0/android.hardware.cas@1.0_genc++_headers^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/cas/1.0/android.hardware.cas@1.0_genc++_headers^/addition_copy_files.output
+
+echo "building android.hardware.cas-V1.1-java_gen_java^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.cas-V1.1-java_gen_java,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/cas/1.1/android.hardware.cas-V1.1-java_gen_java^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.cas-V1.1-java_gen_java^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/cas/1.1/android.hardware.cas-V1.1-java_gen_java^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.cas-V1.1-java_gen_java^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/cas/1.1/android.hardware.cas-V1.1-java_gen_java^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/cas/1.1/android.hardware.cas-V1.1-java_gen_java^/addition_copy_files.output
 
 echo "building android.hardware.cas@1.1-inheritance-hierarchy^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.cas@1.1-inheritance-hierarchy,
@@ -1110,6 +1135,12 @@ mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/cas/1.1/android.hardwar
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.cas@1.1_genc++_headers^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/cas/1.1/android.hardware.cas@1.1_genc++_headers^
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.cas@1.1_genc++_headers^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/cas/1.1/android.hardware.cas@1.1_genc++_headers^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/cas/1.1/android.hardware.cas@1.1_genc++_headers^/addition_copy_files.output
 
+echo "building android.hardware.cas-V1.2-java_gen_java^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.cas-V1.2-java_gen_java,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/cas/1.2/android.hardware.cas-V1.2-java_gen_java^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.cas-V1.2-java_gen_java^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/cas/1.2/android.hardware.cas-V1.2-java_gen_java^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.cas-V1.2-java_gen_java^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/cas/1.2/android.hardware.cas-V1.2-java_gen_java^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/cas/1.2/android.hardware.cas-V1.2-java_gen_java^/addition_copy_files.output
+
 echo "building android.hardware.cas@1.2-inheritance-hierarchy^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.cas@1.2-inheritance-hierarchy,
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/cas/1.2/android.hardware.cas@1.2-inheritance-hierarchy^
@@ -1127,6 +1158,24 @@ prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/st
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/cas/1.2/android.hardware.cas@1.2_genc++_headers^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.cas@1.2_genc++_headers^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/cas/1.2/android.hardware.cas@1.2_genc++_headers^
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.cas@1.2_genc++_headers^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/cas/1.2/android.hardware.cas@1.2_genc++_headers^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/cas/1.2/android.hardware.cas@1.2_genc++_headers^/addition_copy_files.output
+
+echo "building android.hardware.cas.native@1.0-inheritance-hierarchy^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.cas.native@1.0-inheritance-hierarchy,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/cas/native/1.0/android.hardware.cas.native@1.0-inheritance-hierarchy^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.cas.native@1.0-inheritance-hierarchy^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/cas/native/1.0/android.hardware.cas.native@1.0-inheritance-hierarchy^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.cas.native@1.0-inheritance-hierarchy^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/cas/native/1.0/android.hardware.cas.native@1.0-inheritance-hierarchy^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/cas/native/1.0/android.hardware.cas.native@1.0-inheritance-hierarchy^/addition_copy_files.output
+
+echo "building android.hardware.cas.native@1.0_genc++^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.cas.native@1.0_genc++,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/cas/native/1.0/android.hardware.cas.native@1.0_genc++^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.cas.native@1.0_genc++^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/cas/native/1.0/android.hardware.cas.native@1.0_genc++^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.cas.native@1.0_genc++^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/cas/native/1.0/android.hardware.cas.native@1.0_genc++^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/cas/native/1.0/android.hardware.cas.native@1.0_genc++^/addition_copy_files.output
+
+echo "building android.hardware.cas.native@1.0_genc++_headers^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.cas.native@1.0_genc++_headers,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/cas/native/1.0/android.hardware.cas.native@1.0_genc++_headers^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.cas.native@1.0_genc++_headers^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/cas/native/1.0/android.hardware.cas.native@1.0_genc++_headers^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.cas.native@1.0_genc++_headers^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/cas/native/1.0/android.hardware.cas.native@1.0_genc++_headers^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/cas/native/1.0/android.hardware.cas.native@1.0_genc++_headers^/addition_copy_files.output
 
 echo "building android.hardware.common-V2-java-source^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.common-V2-java-source,
@@ -1212,17 +1261,29 @@ mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/common/fmq/aidl/android
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.common.fmq-api^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/common/fmq/aidl/android.hardware.common.fmq-api^
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.common.fmq-api^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/common/fmq/aidl/android.hardware.common.fmq-api^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/common/fmq/aidl/android.hardware.common.fmq-api^/addition_copy_files.output
 
+echo "building libaidlcommonsupport^android_vendor.31_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libaidlcommonsupport,android_vendor.31_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/common/support/libaidlcommonsupport^android_vendor.31_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/libaidlcommonsupport^android_vendor.31_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/common/support/libaidlcommonsupport^android_vendor.31_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/libaidlcommonsupport^android_vendor.31_x86_64_static.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/common/support/libaidlcommonsupport^android_vendor.31_x86_64_static $GITHUB_WORKSPACE/artifacts/hardware/interfaces/common/support/libaidlcommonsupport^android_vendor.31_x86_64_static/addition_copy_files.output
+
+echo "building libaidlcommonsupport^android_x86_64_static_apex30"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libaidlcommonsupport,android_x86_64_static_apex30
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/common/support/libaidlcommonsupport^android_x86_64_static_apex30
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/libaidlcommonsupport^android_x86_64_static_apex30.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/common/support/libaidlcommonsupport^android_x86_64_static_apex30
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/libaidlcommonsupport^android_x86_64_static_apex30.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/common/support/libaidlcommonsupport^android_x86_64_static_apex30 $GITHUB_WORKSPACE/artifacts/hardware/interfaces/common/support/libaidlcommonsupport^android_x86_64_static_apex30/addition_copy_files.output
+
+echo "building libaidlcommonsupport^android_x86_x86_64_static_apex30"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libaidlcommonsupport,android_x86_x86_64_static_apex30
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/common/support/libaidlcommonsupport^android_x86_x86_64_static_apex30
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/libaidlcommonsupport^android_x86_x86_64_static_apex30.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/common/support/libaidlcommonsupport^android_x86_x86_64_static_apex30
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/libaidlcommonsupport^android_x86_x86_64_static_apex30.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/common/support/libaidlcommonsupport^android_x86_x86_64_static_apex30 $GITHUB_WORKSPACE/artifacts/hardware/interfaces/common/support/libaidlcommonsupport^android_x86_x86_64_static_apex30/addition_copy_files.output
+
 echo "building android.hardware.configstore-V1.0-java_gen_java^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.configstore-V1.0-java_gen_java,
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/configstore/1.0/android.hardware.configstore-V1.0-java_gen_java^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.configstore-V1.0-java_gen_java^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/configstore/1.0/android.hardware.configstore-V1.0-java_gen_java^
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.configstore-V1.0-java_gen_java^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/configstore/1.0/android.hardware.configstore-V1.0-java_gen_java^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/configstore/1.0/android.hardware.configstore-V1.0-java_gen_java^/addition_copy_files.output
-
-echo "building android.hardware.configstore-V1.1-java_gen_java^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.configstore-V1.1-java_gen_java,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/configstore/1.1/android.hardware.configstore-V1.1-java_gen_java^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.configstore-V1.1-java_gen_java^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/configstore/1.1/android.hardware.configstore-V1.1-java_gen_java^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.configstore-V1.1-java_gen_java^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/configstore/1.1/android.hardware.configstore-V1.1-java_gen_java^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/configstore/1.1/android.hardware.configstore-V1.1-java_gen_java^/addition_copy_files.output
 
 echo "building android.hardware.configstore@1.0-inheritance-hierarchy^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.configstore@1.0-inheritance-hierarchy,
@@ -1242,6 +1303,12 @@ mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/configstore/1.0/android
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.configstore@1.0_genc++_headers^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/configstore/1.0/android.hardware.configstore@1.0_genc++_headers^
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.configstore@1.0_genc++_headers^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/configstore/1.0/android.hardware.configstore@1.0_genc++_headers^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/configstore/1.0/android.hardware.configstore@1.0_genc++_headers^/addition_copy_files.output
 
+echo "building android.hardware.configstore-V1.1-java_gen_java^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.configstore-V1.1-java_gen_java,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/configstore/1.1/android.hardware.configstore-V1.1-java_gen_java^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.configstore-V1.1-java_gen_java^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/configstore/1.1/android.hardware.configstore-V1.1-java_gen_java^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.configstore-V1.1-java_gen_java^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/configstore/1.1/android.hardware.configstore-V1.1-java_gen_java^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/configstore/1.1/android.hardware.configstore-V1.1-java_gen_java^/addition_copy_files.output
+
 echo "building android.hardware.configstore@1.1-inheritance-hierarchy^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.configstore@1.1-inheritance-hierarchy,
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/configstore/1.1/android.hardware.configstore@1.1-inheritance-hierarchy^
@@ -1259,18 +1326,6 @@ prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/st
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/configstore/1.1/android.hardware.configstore@1.1_genc++_headers^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.configstore@1.1_genc++_headers^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/configstore/1.1/android.hardware.configstore@1.1_genc++_headers^
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.configstore@1.1_genc++_headers^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/configstore/1.1/android.hardware.configstore@1.1_genc++_headers^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/configstore/1.1/android.hardware.configstore@1.1_genc++_headers^/addition_copy_files.output
-
-echo "building android.hardware.confirmationui-support-lib^android_vendor.31_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.confirmationui-support-lib,android_vendor.31_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/confirmationui/support/android.hardware.confirmationui-support-lib^android_vendor.31_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.confirmationui-support-lib^android_vendor.31_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/confirmationui/support/android.hardware.confirmationui-support-lib^android_vendor.31_x86_64_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.confirmationui-support-lib^android_vendor.31_x86_64_static.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/confirmationui/support/android.hardware.confirmationui-support-lib^android_vendor.31_x86_64_static $GITHUB_WORKSPACE/artifacts/hardware/interfaces/confirmationui/support/android.hardware.confirmationui-support-lib^android_vendor.31_x86_64_static/addition_copy_files.output
-
-echo "building android.hardware.confirmationui-support-lib^android_vendor.31_x86_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.confirmationui-support-lib,android_vendor.31_x86_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/confirmationui/support/android.hardware.confirmationui-support-lib^android_vendor.31_x86_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.confirmationui-support-lib^android_vendor.31_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/confirmationui/support/android.hardware.confirmationui-support-lib^android_vendor.31_x86_x86_64_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.confirmationui-support-lib^android_vendor.31_x86_x86_64_static.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/confirmationui/support/android.hardware.confirmationui-support-lib^android_vendor.31_x86_x86_64_static $GITHUB_WORKSPACE/artifacts/hardware/interfaces/confirmationui/support/android.hardware.confirmationui-support-lib^android_vendor.31_x86_x86_64_static/addition_copy_files.output
 
 echo "building android.hardware.confirmationui@1.0-inheritance-hierarchy^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.confirmationui@1.0-inheritance-hierarchy,
@@ -1290,23 +1345,23 @@ mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/confirmationui/1.0/andr
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.confirmationui@1.0_genc++_headers^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/confirmationui/1.0/android.hardware.confirmationui@1.0_genc++_headers^
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.confirmationui@1.0_genc++_headers^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/confirmationui/1.0/android.hardware.confirmationui@1.0_genc++_headers^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/confirmationui/1.0/android.hardware.confirmationui@1.0_genc++_headers^/addition_copy_files.output
 
+echo "building android.hardware.confirmationui-support-lib^android_vendor.31_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.confirmationui-support-lib,android_vendor.31_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/confirmationui/support/android.hardware.confirmationui-support-lib^android_vendor.31_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.confirmationui-support-lib^android_vendor.31_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/confirmationui/support/android.hardware.confirmationui-support-lib^android_vendor.31_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.confirmationui-support-lib^android_vendor.31_x86_64_static.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/confirmationui/support/android.hardware.confirmationui-support-lib^android_vendor.31_x86_64_static $GITHUB_WORKSPACE/artifacts/hardware/interfaces/confirmationui/support/android.hardware.confirmationui-support-lib^android_vendor.31_x86_64_static/addition_copy_files.output
+
+echo "building android.hardware.confirmationui-support-lib^android_vendor.31_x86_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.confirmationui-support-lib,android_vendor.31_x86_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/confirmationui/support/android.hardware.confirmationui-support-lib^android_vendor.31_x86_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.confirmationui-support-lib^android_vendor.31_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/confirmationui/support/android.hardware.confirmationui-support-lib^android_vendor.31_x86_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.confirmationui-support-lib^android_vendor.31_x86_x86_64_static.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/confirmationui/support/android.hardware.confirmationui-support-lib^android_vendor.31_x86_x86_64_static $GITHUB_WORKSPACE/artifacts/hardware/interfaces/confirmationui/support/android.hardware.confirmationui-support-lib^android_vendor.31_x86_x86_64_static/addition_copy_files.output
+
 echo "building android.hardware.contexthub-V1.0-java_gen_java^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.contexthub-V1.0-java_gen_java,
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/contexthub/1.0/android.hardware.contexthub-V1.0-java_gen_java^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.contexthub-V1.0-java_gen_java^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/contexthub/1.0/android.hardware.contexthub-V1.0-java_gen_java^
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.contexthub-V1.0-java_gen_java^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/contexthub/1.0/android.hardware.contexthub-V1.0-java_gen_java^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/contexthub/1.0/android.hardware.contexthub-V1.0-java_gen_java^/addition_copy_files.output
-
-echo "building android.hardware.contexthub-V1.1-java_gen_java^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.contexthub-V1.1-java_gen_java,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/contexthub/1.1/android.hardware.contexthub-V1.1-java_gen_java^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.contexthub-V1.1-java_gen_java^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/contexthub/1.1/android.hardware.contexthub-V1.1-java_gen_java^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.contexthub-V1.1-java_gen_java^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/contexthub/1.1/android.hardware.contexthub-V1.1-java_gen_java^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/contexthub/1.1/android.hardware.contexthub-V1.1-java_gen_java^/addition_copy_files.output
-
-echo "building android.hardware.contexthub-V1.2-java_gen_java^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.contexthub-V1.2-java_gen_java,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/contexthub/1.2/android.hardware.contexthub-V1.2-java_gen_java^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.contexthub-V1.2-java_gen_java^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/contexthub/1.2/android.hardware.contexthub-V1.2-java_gen_java^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.contexthub-V1.2-java_gen_java^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/contexthub/1.2/android.hardware.contexthub-V1.2-java_gen_java^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/contexthub/1.2/android.hardware.contexthub-V1.2-java_gen_java^/addition_copy_files.output
 
 echo "building android.hardware.contexthub@1.0-inheritance-hierarchy^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.contexthub@1.0-inheritance-hierarchy,
@@ -1326,6 +1381,12 @@ mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/contexthub/1.0/android.
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.contexthub@1.0_genc++_headers^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/contexthub/1.0/android.hardware.contexthub@1.0_genc++_headers^
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.contexthub@1.0_genc++_headers^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/contexthub/1.0/android.hardware.contexthub@1.0_genc++_headers^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/contexthub/1.0/android.hardware.contexthub@1.0_genc++_headers^/addition_copy_files.output
 
+echo "building android.hardware.contexthub-V1.1-java_gen_java^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.contexthub-V1.1-java_gen_java,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/contexthub/1.1/android.hardware.contexthub-V1.1-java_gen_java^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.contexthub-V1.1-java_gen_java^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/contexthub/1.1/android.hardware.contexthub-V1.1-java_gen_java^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.contexthub-V1.1-java_gen_java^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/contexthub/1.1/android.hardware.contexthub-V1.1-java_gen_java^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/contexthub/1.1/android.hardware.contexthub-V1.1-java_gen_java^/addition_copy_files.output
+
 echo "building android.hardware.contexthub@1.1-inheritance-hierarchy^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.contexthub@1.1-inheritance-hierarchy,
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/contexthub/1.1/android.hardware.contexthub@1.1-inheritance-hierarchy^
@@ -1343,6 +1404,12 @@ prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/st
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/contexthub/1.1/android.hardware.contexthub@1.1_genc++_headers^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.contexthub@1.1_genc++_headers^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/contexthub/1.1/android.hardware.contexthub@1.1_genc++_headers^
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.contexthub@1.1_genc++_headers^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/contexthub/1.1/android.hardware.contexthub@1.1_genc++_headers^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/contexthub/1.1/android.hardware.contexthub@1.1_genc++_headers^/addition_copy_files.output
+
+echo "building android.hardware.contexthub-V1.2-java_gen_java^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.contexthub-V1.2-java_gen_java,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/contexthub/1.2/android.hardware.contexthub-V1.2-java_gen_java^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.contexthub-V1.2-java_gen_java^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/contexthub/1.2/android.hardware.contexthub-V1.2-java_gen_java^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.contexthub-V1.2-java_gen_java^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/contexthub/1.2/android.hardware.contexthub-V1.2-java_gen_java^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/contexthub/1.2/android.hardware.contexthub-V1.2-java_gen_java^/addition_copy_files.output
 
 echo "building android.hardware.contexthub@1.2-inheritance-hierarchy^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.contexthub@1.2-inheritance-hierarchy,
@@ -1458,12 +1525,6 @@ mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/dumpstate/1.0/android.h
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.dumpstate-V1.0-java_gen_java^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/dumpstate/1.0/android.hardware.dumpstate-V1.0-java_gen_java^
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.dumpstate-V1.0-java_gen_java^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/dumpstate/1.0/android.hardware.dumpstate-V1.0-java_gen_java^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/dumpstate/1.0/android.hardware.dumpstate-V1.0-java_gen_java^/addition_copy_files.output
 
-echo "building android.hardware.dumpstate-V1.1-java_gen_java^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.dumpstate-V1.1-java_gen_java,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/dumpstate/1.1/android.hardware.dumpstate-V1.1-java_gen_java^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.dumpstate-V1.1-java_gen_java^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/dumpstate/1.1/android.hardware.dumpstate-V1.1-java_gen_java^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.dumpstate-V1.1-java_gen_java^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/dumpstate/1.1/android.hardware.dumpstate-V1.1-java_gen_java^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/dumpstate/1.1/android.hardware.dumpstate-V1.1-java_gen_java^/addition_copy_files.output
-
 echo "building android.hardware.dumpstate@1.0-inheritance-hierarchy^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.dumpstate@1.0-inheritance-hierarchy,
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/dumpstate/1.0/android.hardware.dumpstate@1.0-inheritance-hierarchy^
@@ -1481,6 +1542,12 @@ prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/st
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/dumpstate/1.0/android.hardware.dumpstate@1.0_genc++_headers^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.dumpstate@1.0_genc++_headers^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/dumpstate/1.0/android.hardware.dumpstate@1.0_genc++_headers^
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.dumpstate@1.0_genc++_headers^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/dumpstate/1.0/android.hardware.dumpstate@1.0_genc++_headers^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/dumpstate/1.0/android.hardware.dumpstate@1.0_genc++_headers^/addition_copy_files.output
+
+echo "building android.hardware.dumpstate-V1.1-java_gen_java^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.dumpstate-V1.1-java_gen_java,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/dumpstate/1.1/android.hardware.dumpstate-V1.1-java_gen_java^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.dumpstate-V1.1-java_gen_java^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/dumpstate/1.1/android.hardware.dumpstate-V1.1-java_gen_java^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.dumpstate-V1.1-java_gen_java^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/dumpstate/1.1/android.hardware.dumpstate-V1.1-java_gen_java^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/dumpstate/1.1/android.hardware.dumpstate-V1.1-java_gen_java^/addition_copy_files.output
 
 echo "building android.hardware.dumpstate@1.1-inheritance-hierarchy^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.dumpstate@1.1-inheritance-hierarchy,
@@ -1554,6 +1621,102 @@ mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/gatekeeper/1.0/android.
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.gatekeeper@1.0_genc++_headers^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/gatekeeper/1.0/android.hardware.gatekeeper@1.0_genc++_headers^
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.gatekeeper@1.0_genc++_headers^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/gatekeeper/1.0/android.hardware.gatekeeper@1.0_genc++_headers^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/gatekeeper/1.0/android.hardware.gatekeeper@1.0_genc++_headers^/addition_copy_files.output
 
+echo "building android.hardware.gnss-V1.0-java_gen_java^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.gnss-V1.0-java_gen_java,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/gnss/1.0/android.hardware.gnss-V1.0-java_gen_java^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.gnss-V1.0-java_gen_java^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/gnss/1.0/android.hardware.gnss-V1.0-java_gen_java^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.gnss-V1.0-java_gen_java^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/gnss/1.0/android.hardware.gnss-V1.0-java_gen_java^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/gnss/1.0/android.hardware.gnss-V1.0-java_gen_java^/addition_copy_files.output
+
+echo "building android.hardware.gnss@1.0-inheritance-hierarchy^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.gnss@1.0-inheritance-hierarchy,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/gnss/1.0/android.hardware.gnss@1.0-inheritance-hierarchy^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.gnss@1.0-inheritance-hierarchy^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/gnss/1.0/android.hardware.gnss@1.0-inheritance-hierarchy^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.gnss@1.0-inheritance-hierarchy^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/gnss/1.0/android.hardware.gnss@1.0-inheritance-hierarchy^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/gnss/1.0/android.hardware.gnss@1.0-inheritance-hierarchy^/addition_copy_files.output
+
+echo "building android.hardware.gnss@1.0_genc++^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.gnss@1.0_genc++,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/gnss/1.0/android.hardware.gnss@1.0_genc++^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.gnss@1.0_genc++^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/gnss/1.0/android.hardware.gnss@1.0_genc++^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.gnss@1.0_genc++^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/gnss/1.0/android.hardware.gnss@1.0_genc++^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/gnss/1.0/android.hardware.gnss@1.0_genc++^/addition_copy_files.output
+
+echo "building android.hardware.gnss@1.0_genc++_headers^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.gnss@1.0_genc++_headers,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/gnss/1.0/android.hardware.gnss@1.0_genc++_headers^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.gnss@1.0_genc++_headers^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/gnss/1.0/android.hardware.gnss@1.0_genc++_headers^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.gnss@1.0_genc++_headers^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/gnss/1.0/android.hardware.gnss@1.0_genc++_headers^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/gnss/1.0/android.hardware.gnss@1.0_genc++_headers^/addition_copy_files.output
+
+echo "building android.hardware.gnss-V1.1-java_gen_java^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.gnss-V1.1-java_gen_java,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/gnss/1.1/android.hardware.gnss-V1.1-java_gen_java^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.gnss-V1.1-java_gen_java^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/gnss/1.1/android.hardware.gnss-V1.1-java_gen_java^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.gnss-V1.1-java_gen_java^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/gnss/1.1/android.hardware.gnss-V1.1-java_gen_java^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/gnss/1.1/android.hardware.gnss-V1.1-java_gen_java^/addition_copy_files.output
+
+echo "building android.hardware.gnss@1.1-inheritance-hierarchy^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.gnss@1.1-inheritance-hierarchy,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/gnss/1.1/android.hardware.gnss@1.1-inheritance-hierarchy^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.gnss@1.1-inheritance-hierarchy^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/gnss/1.1/android.hardware.gnss@1.1-inheritance-hierarchy^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.gnss@1.1-inheritance-hierarchy^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/gnss/1.1/android.hardware.gnss@1.1-inheritance-hierarchy^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/gnss/1.1/android.hardware.gnss@1.1-inheritance-hierarchy^/addition_copy_files.output
+
+echo "building android.hardware.gnss@1.1_genc++^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.gnss@1.1_genc++,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/gnss/1.1/android.hardware.gnss@1.1_genc++^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.gnss@1.1_genc++^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/gnss/1.1/android.hardware.gnss@1.1_genc++^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.gnss@1.1_genc++^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/gnss/1.1/android.hardware.gnss@1.1_genc++^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/gnss/1.1/android.hardware.gnss@1.1_genc++^/addition_copy_files.output
+
+echo "building android.hardware.gnss@1.1_genc++_headers^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.gnss@1.1_genc++_headers,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/gnss/1.1/android.hardware.gnss@1.1_genc++_headers^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.gnss@1.1_genc++_headers^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/gnss/1.1/android.hardware.gnss@1.1_genc++_headers^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.gnss@1.1_genc++_headers^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/gnss/1.1/android.hardware.gnss@1.1_genc++_headers^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/gnss/1.1/android.hardware.gnss@1.1_genc++_headers^/addition_copy_files.output
+
+echo "building android.hardware.gnss-V2.0-java_gen_java^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.gnss-V2.0-java_gen_java,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/gnss/2.0/android.hardware.gnss-V2.0-java_gen_java^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.gnss-V2.0-java_gen_java^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/gnss/2.0/android.hardware.gnss-V2.0-java_gen_java^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.gnss-V2.0-java_gen_java^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/gnss/2.0/android.hardware.gnss-V2.0-java_gen_java^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/gnss/2.0/android.hardware.gnss-V2.0-java_gen_java^/addition_copy_files.output
+
+echo "building android.hardware.gnss@2.0-inheritance-hierarchy^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.gnss@2.0-inheritance-hierarchy,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/gnss/2.0/android.hardware.gnss@2.0-inheritance-hierarchy^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.gnss@2.0-inheritance-hierarchy^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/gnss/2.0/android.hardware.gnss@2.0-inheritance-hierarchy^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.gnss@2.0-inheritance-hierarchy^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/gnss/2.0/android.hardware.gnss@2.0-inheritance-hierarchy^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/gnss/2.0/android.hardware.gnss@2.0-inheritance-hierarchy^/addition_copy_files.output
+
+echo "building android.hardware.gnss@2.0_genc++^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.gnss@2.0_genc++,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/gnss/2.0/android.hardware.gnss@2.0_genc++^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.gnss@2.0_genc++^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/gnss/2.0/android.hardware.gnss@2.0_genc++^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.gnss@2.0_genc++^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/gnss/2.0/android.hardware.gnss@2.0_genc++^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/gnss/2.0/android.hardware.gnss@2.0_genc++^/addition_copy_files.output
+
+echo "building android.hardware.gnss@2.0_genc++_headers^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.gnss@2.0_genc++_headers,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/gnss/2.0/android.hardware.gnss@2.0_genc++_headers^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.gnss@2.0_genc++_headers^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/gnss/2.0/android.hardware.gnss@2.0_genc++_headers^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.gnss@2.0_genc++_headers^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/gnss/2.0/android.hardware.gnss@2.0_genc++_headers^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/gnss/2.0/android.hardware.gnss@2.0_genc++_headers^/addition_copy_files.output
+
+echo "building android.hardware.gnss-V2.1-java_gen_java^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.gnss-V2.1-java_gen_java,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/gnss/2.1/android.hardware.gnss-V2.1-java_gen_java^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.gnss-V2.1-java_gen_java^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/gnss/2.1/android.hardware.gnss-V2.1-java_gen_java^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.gnss-V2.1-java_gen_java^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/gnss/2.1/android.hardware.gnss-V2.1-java_gen_java^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/gnss/2.1/android.hardware.gnss-V2.1-java_gen_java^/addition_copy_files.output
+
+echo "building android.hardware.gnss@2.1-inheritance-hierarchy^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.gnss@2.1-inheritance-hierarchy,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/gnss/2.1/android.hardware.gnss@2.1-inheritance-hierarchy^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.gnss@2.1-inheritance-hierarchy^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/gnss/2.1/android.hardware.gnss@2.1-inheritance-hierarchy^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.gnss@2.1-inheritance-hierarchy^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/gnss/2.1/android.hardware.gnss@2.1-inheritance-hierarchy^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/gnss/2.1/android.hardware.gnss@2.1-inheritance-hierarchy^/addition_copy_files.output
+
+echo "building android.hardware.gnss@2.1_genc++^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.gnss@2.1_genc++,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/gnss/2.1/android.hardware.gnss@2.1_genc++^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.gnss@2.1_genc++^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/gnss/2.1/android.hardware.gnss@2.1_genc++^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.gnss@2.1_genc++^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/gnss/2.1/android.hardware.gnss@2.1_genc++^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/gnss/2.1/android.hardware.gnss@2.1_genc++^/addition_copy_files.output
+
+echo "building android.hardware.gnss@2.1_genc++_headers^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.gnss@2.1_genc++_headers,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/gnss/2.1/android.hardware.gnss@2.1_genc++_headers^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.gnss@2.1_genc++_headers^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/gnss/2.1/android.hardware.gnss@2.1_genc++_headers^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.gnss@2.1_genc++_headers^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/gnss/2.1/android.hardware.gnss@2.1_genc++_headers^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/gnss/2.1/android.hardware.gnss@2.1_genc++_headers^/addition_copy_files.output
+
 echo "building android.hardware.gnss-V1-cpp-source^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.gnss-V1-cpp-source,
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/gnss/aidl/android.hardware.gnss-V1-cpp-source^
@@ -1584,30 +1747,6 @@ mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/gnss/aidl/android.hardw
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.gnss-V1-ndk_platform^android_vendor.31_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/gnss/aidl/android.hardware.gnss-V1-ndk_platform^android_vendor.31_x86_x86_64_static
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.gnss-V1-ndk_platform^android_vendor.31_x86_x86_64_static.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/gnss/aidl/android.hardware.gnss-V1-ndk_platform^android_vendor.31_x86_x86_64_static $GITHUB_WORKSPACE/artifacts/hardware/interfaces/gnss/aidl/android.hardware.gnss-V1-ndk_platform^android_vendor.31_x86_x86_64_static/addition_copy_files.output
 
-echo "building android.hardware.gnss-V1.0-java_gen_java^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.gnss-V1.0-java_gen_java,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/gnss/1.0/android.hardware.gnss-V1.0-java_gen_java^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.gnss-V1.0-java_gen_java^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/gnss/1.0/android.hardware.gnss-V1.0-java_gen_java^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.gnss-V1.0-java_gen_java^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/gnss/1.0/android.hardware.gnss-V1.0-java_gen_java^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/gnss/1.0/android.hardware.gnss-V1.0-java_gen_java^/addition_copy_files.output
-
-echo "building android.hardware.gnss-V1.1-java_gen_java^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.gnss-V1.1-java_gen_java,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/gnss/1.1/android.hardware.gnss-V1.1-java_gen_java^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.gnss-V1.1-java_gen_java^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/gnss/1.1/android.hardware.gnss-V1.1-java_gen_java^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.gnss-V1.1-java_gen_java^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/gnss/1.1/android.hardware.gnss-V1.1-java_gen_java^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/gnss/1.1/android.hardware.gnss-V1.1-java_gen_java^/addition_copy_files.output
-
-echo "building android.hardware.gnss-V2.0-java_gen_java^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.gnss-V2.0-java_gen_java,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/gnss/2.0/android.hardware.gnss-V2.0-java_gen_java^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.gnss-V2.0-java_gen_java^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/gnss/2.0/android.hardware.gnss-V2.0-java_gen_java^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.gnss-V2.0-java_gen_java^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/gnss/2.0/android.hardware.gnss-V2.0-java_gen_java^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/gnss/2.0/android.hardware.gnss-V2.0-java_gen_java^/addition_copy_files.output
-
-echo "building android.hardware.gnss-V2.1-java_gen_java^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.gnss-V2.1-java_gen_java,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/gnss/2.1/android.hardware.gnss-V2.1-java_gen_java^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.gnss-V2.1-java_gen_java^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/gnss/2.1/android.hardware.gnss-V2.1-java_gen_java^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.gnss-V2.1-java_gen_java^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/gnss/2.1/android.hardware.gnss-V2.1-java_gen_java^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/gnss/2.1/android.hardware.gnss-V2.1-java_gen_java^/addition_copy_files.output
-
 echo "building android.hardware.gnss-api^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.gnss-api,
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/gnss/aidl/android.hardware.gnss-api^
@@ -1619,12 +1758,6 @@ prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/st
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/gnss/measurement_corrections/1.0/android.hardware.gnss.measurement_corrections-V1.0-java_gen_java^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.gnss.measurement_corrections-V1.0-java_gen_java^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/gnss/measurement_corrections/1.0/android.hardware.gnss.measurement_corrections-V1.0-java_gen_java^
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.gnss.measurement_corrections-V1.0-java_gen_java^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/gnss/measurement_corrections/1.0/android.hardware.gnss.measurement_corrections-V1.0-java_gen_java^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/gnss/measurement_corrections/1.0/android.hardware.gnss.measurement_corrections-V1.0-java_gen_java^/addition_copy_files.output
-
-echo "building android.hardware.gnss.measurement_corrections-V1.1-java_gen_java^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.gnss.measurement_corrections-V1.1-java_gen_java,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/gnss/measurement_corrections/1.1/android.hardware.gnss.measurement_corrections-V1.1-java_gen_java^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.gnss.measurement_corrections-V1.1-java_gen_java^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/gnss/measurement_corrections/1.1/android.hardware.gnss.measurement_corrections-V1.1-java_gen_java^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.gnss.measurement_corrections-V1.1-java_gen_java^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/gnss/measurement_corrections/1.1/android.hardware.gnss.measurement_corrections-V1.1-java_gen_java^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/gnss/measurement_corrections/1.1/android.hardware.gnss.measurement_corrections-V1.1-java_gen_java^/addition_copy_files.output
 
 echo "building android.hardware.gnss.measurement_corrections@1.0-inheritance-hierarchy^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.gnss.measurement_corrections@1.0-inheritance-hierarchy,
@@ -1643,6 +1776,12 @@ prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/st
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/gnss/measurement_corrections/1.0/android.hardware.gnss.measurement_corrections@1.0_genc++_headers^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.gnss.measurement_corrections@1.0_genc++_headers^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/gnss/measurement_corrections/1.0/android.hardware.gnss.measurement_corrections@1.0_genc++_headers^
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.gnss.measurement_corrections@1.0_genc++_headers^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/gnss/measurement_corrections/1.0/android.hardware.gnss.measurement_corrections@1.0_genc++_headers^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/gnss/measurement_corrections/1.0/android.hardware.gnss.measurement_corrections@1.0_genc++_headers^/addition_copy_files.output
+
+echo "building android.hardware.gnss.measurement_corrections-V1.1-java_gen_java^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.gnss.measurement_corrections-V1.1-java_gen_java,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/gnss/measurement_corrections/1.1/android.hardware.gnss.measurement_corrections-V1.1-java_gen_java^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.gnss.measurement_corrections-V1.1-java_gen_java^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/gnss/measurement_corrections/1.1/android.hardware.gnss.measurement_corrections-V1.1-java_gen_java^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.gnss.measurement_corrections-V1.1-java_gen_java^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/gnss/measurement_corrections/1.1/android.hardware.gnss.measurement_corrections-V1.1-java_gen_java^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/gnss/measurement_corrections/1.1/android.hardware.gnss.measurement_corrections-V1.1-java_gen_java^/addition_copy_files.output
 
 echo "building android.hardware.gnss.measurement_corrections@1.1-inheritance-hierarchy^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.gnss.measurement_corrections@1.1-inheritance-hierarchy,
@@ -1685,78 +1824,6 @@ prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/st
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/gnss/visibility_control/1.0/android.hardware.gnss.visibility_control@1.0_genc++_headers^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.gnss.visibility_control@1.0_genc++_headers^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/gnss/visibility_control/1.0/android.hardware.gnss.visibility_control@1.0_genc++_headers^
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.gnss.visibility_control@1.0_genc++_headers^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/gnss/visibility_control/1.0/android.hardware.gnss.visibility_control@1.0_genc++_headers^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/gnss/visibility_control/1.0/android.hardware.gnss.visibility_control@1.0_genc++_headers^/addition_copy_files.output
-
-echo "building android.hardware.gnss@1.0-inheritance-hierarchy^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.gnss@1.0-inheritance-hierarchy,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/gnss/1.0/android.hardware.gnss@1.0-inheritance-hierarchy^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.gnss@1.0-inheritance-hierarchy^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/gnss/1.0/android.hardware.gnss@1.0-inheritance-hierarchy^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.gnss@1.0-inheritance-hierarchy^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/gnss/1.0/android.hardware.gnss@1.0-inheritance-hierarchy^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/gnss/1.0/android.hardware.gnss@1.0-inheritance-hierarchy^/addition_copy_files.output
-
-echo "building android.hardware.gnss@1.0_genc++^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.gnss@1.0_genc++,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/gnss/1.0/android.hardware.gnss@1.0_genc++^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.gnss@1.0_genc++^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/gnss/1.0/android.hardware.gnss@1.0_genc++^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.gnss@1.0_genc++^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/gnss/1.0/android.hardware.gnss@1.0_genc++^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/gnss/1.0/android.hardware.gnss@1.0_genc++^/addition_copy_files.output
-
-echo "building android.hardware.gnss@1.0_genc++_headers^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.gnss@1.0_genc++_headers,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/gnss/1.0/android.hardware.gnss@1.0_genc++_headers^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.gnss@1.0_genc++_headers^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/gnss/1.0/android.hardware.gnss@1.0_genc++_headers^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.gnss@1.0_genc++_headers^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/gnss/1.0/android.hardware.gnss@1.0_genc++_headers^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/gnss/1.0/android.hardware.gnss@1.0_genc++_headers^/addition_copy_files.output
-
-echo "building android.hardware.gnss@1.1-inheritance-hierarchy^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.gnss@1.1-inheritance-hierarchy,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/gnss/1.1/android.hardware.gnss@1.1-inheritance-hierarchy^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.gnss@1.1-inheritance-hierarchy^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/gnss/1.1/android.hardware.gnss@1.1-inheritance-hierarchy^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.gnss@1.1-inheritance-hierarchy^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/gnss/1.1/android.hardware.gnss@1.1-inheritance-hierarchy^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/gnss/1.1/android.hardware.gnss@1.1-inheritance-hierarchy^/addition_copy_files.output
-
-echo "building android.hardware.gnss@1.1_genc++^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.gnss@1.1_genc++,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/gnss/1.1/android.hardware.gnss@1.1_genc++^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.gnss@1.1_genc++^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/gnss/1.1/android.hardware.gnss@1.1_genc++^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.gnss@1.1_genc++^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/gnss/1.1/android.hardware.gnss@1.1_genc++^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/gnss/1.1/android.hardware.gnss@1.1_genc++^/addition_copy_files.output
-
-echo "building android.hardware.gnss@1.1_genc++_headers^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.gnss@1.1_genc++_headers,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/gnss/1.1/android.hardware.gnss@1.1_genc++_headers^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.gnss@1.1_genc++_headers^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/gnss/1.1/android.hardware.gnss@1.1_genc++_headers^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.gnss@1.1_genc++_headers^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/gnss/1.1/android.hardware.gnss@1.1_genc++_headers^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/gnss/1.1/android.hardware.gnss@1.1_genc++_headers^/addition_copy_files.output
-
-echo "building android.hardware.gnss@2.0-inheritance-hierarchy^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.gnss@2.0-inheritance-hierarchy,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/gnss/2.0/android.hardware.gnss@2.0-inheritance-hierarchy^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.gnss@2.0-inheritance-hierarchy^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/gnss/2.0/android.hardware.gnss@2.0-inheritance-hierarchy^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.gnss@2.0-inheritance-hierarchy^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/gnss/2.0/android.hardware.gnss@2.0-inheritance-hierarchy^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/gnss/2.0/android.hardware.gnss@2.0-inheritance-hierarchy^/addition_copy_files.output
-
-echo "building android.hardware.gnss@2.0_genc++^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.gnss@2.0_genc++,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/gnss/2.0/android.hardware.gnss@2.0_genc++^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.gnss@2.0_genc++^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/gnss/2.0/android.hardware.gnss@2.0_genc++^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.gnss@2.0_genc++^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/gnss/2.0/android.hardware.gnss@2.0_genc++^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/gnss/2.0/android.hardware.gnss@2.0_genc++^/addition_copy_files.output
-
-echo "building android.hardware.gnss@2.0_genc++_headers^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.gnss@2.0_genc++_headers,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/gnss/2.0/android.hardware.gnss@2.0_genc++_headers^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.gnss@2.0_genc++_headers^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/gnss/2.0/android.hardware.gnss@2.0_genc++_headers^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.gnss@2.0_genc++_headers^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/gnss/2.0/android.hardware.gnss@2.0_genc++_headers^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/gnss/2.0/android.hardware.gnss@2.0_genc++_headers^/addition_copy_files.output
-
-echo "building android.hardware.gnss@2.1-inheritance-hierarchy^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.gnss@2.1-inheritance-hierarchy,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/gnss/2.1/android.hardware.gnss@2.1-inheritance-hierarchy^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.gnss@2.1-inheritance-hierarchy^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/gnss/2.1/android.hardware.gnss@2.1-inheritance-hierarchy^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.gnss@2.1-inheritance-hierarchy^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/gnss/2.1/android.hardware.gnss@2.1-inheritance-hierarchy^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/gnss/2.1/android.hardware.gnss@2.1-inheritance-hierarchy^/addition_copy_files.output
-
-echo "building android.hardware.gnss@2.1_genc++^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.gnss@2.1_genc++,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/gnss/2.1/android.hardware.gnss@2.1_genc++^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.gnss@2.1_genc++^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/gnss/2.1/android.hardware.gnss@2.1_genc++^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.gnss@2.1_genc++^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/gnss/2.1/android.hardware.gnss@2.1_genc++^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/gnss/2.1/android.hardware.gnss@2.1_genc++^/addition_copy_files.output
-
-echo "building android.hardware.gnss@2.1_genc++_headers^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.gnss@2.1_genc++_headers,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/gnss/2.1/android.hardware.gnss@2.1_genc++_headers^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.gnss@2.1_genc++_headers^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/gnss/2.1/android.hardware.gnss@2.1_genc++_headers^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.gnss@2.1_genc++_headers^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/gnss/2.1/android.hardware.gnss@2.1_genc++_headers^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/gnss/2.1/android.hardware.gnss@2.1_genc++_headers^/addition_copy_files.output
 
 echo "building android.hardware.graphics.allocator@2.0-inheritance-hierarchy^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.graphics.allocator@2.0-inheritance-hierarchy,
@@ -1848,6 +1915,42 @@ mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/graphics/bufferqueue/2.
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.graphics.bufferqueue@2.0_genc++_headers^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/graphics/bufferqueue/2.0/android.hardware.graphics.bufferqueue@2.0_genc++_headers^
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.graphics.bufferqueue@2.0_genc++_headers^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/graphics/bufferqueue/2.0/android.hardware.graphics.bufferqueue@2.0_genc++_headers^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/graphics/bufferqueue/2.0/android.hardware.graphics.bufferqueue@2.0_genc++_headers^/addition_copy_files.output
 
+echo "building android.hardware.graphics.common@1.0_genc++^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.graphics.common@1.0_genc++,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/graphics/common/1.0/android.hardware.graphics.common@1.0_genc++^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.graphics.common@1.0_genc++^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/graphics/common/1.0/android.hardware.graphics.common@1.0_genc++^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.graphics.common@1.0_genc++^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/graphics/common/1.0/android.hardware.graphics.common@1.0_genc++^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/graphics/common/1.0/android.hardware.graphics.common@1.0_genc++^/addition_copy_files.output
+
+echo "building android.hardware.graphics.common@1.0_genc++_headers^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.graphics.common@1.0_genc++_headers,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/graphics/common/1.0/android.hardware.graphics.common@1.0_genc++_headers^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.graphics.common@1.0_genc++_headers^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/graphics/common/1.0/android.hardware.graphics.common@1.0_genc++_headers^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.graphics.common@1.0_genc++_headers^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/graphics/common/1.0/android.hardware.graphics.common@1.0_genc++_headers^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/graphics/common/1.0/android.hardware.graphics.common@1.0_genc++_headers^/addition_copy_files.output
+
+echo "building android.hardware.graphics.common@1.1_genc++^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.graphics.common@1.1_genc++,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/graphics/common/1.1/android.hardware.graphics.common@1.1_genc++^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.graphics.common@1.1_genc++^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/graphics/common/1.1/android.hardware.graphics.common@1.1_genc++^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.graphics.common@1.1_genc++^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/graphics/common/1.1/android.hardware.graphics.common@1.1_genc++^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/graphics/common/1.1/android.hardware.graphics.common@1.1_genc++^/addition_copy_files.output
+
+echo "building android.hardware.graphics.common@1.1_genc++_headers^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.graphics.common@1.1_genc++_headers,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/graphics/common/1.1/android.hardware.graphics.common@1.1_genc++_headers^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.graphics.common@1.1_genc++_headers^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/graphics/common/1.1/android.hardware.graphics.common@1.1_genc++_headers^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.graphics.common@1.1_genc++_headers^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/graphics/common/1.1/android.hardware.graphics.common@1.1_genc++_headers^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/graphics/common/1.1/android.hardware.graphics.common@1.1_genc++_headers^/addition_copy_files.output
+
+echo "building android.hardware.graphics.common@1.2_genc++^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.graphics.common@1.2_genc++,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/graphics/common/1.2/android.hardware.graphics.common@1.2_genc++^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.graphics.common@1.2_genc++^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/graphics/common/1.2/android.hardware.graphics.common@1.2_genc++^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.graphics.common@1.2_genc++^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/graphics/common/1.2/android.hardware.graphics.common@1.2_genc++^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/graphics/common/1.2/android.hardware.graphics.common@1.2_genc++^/addition_copy_files.output
+
+echo "building android.hardware.graphics.common@1.2_genc++_headers^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.graphics.common@1.2_genc++_headers,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/graphics/common/1.2/android.hardware.graphics.common@1.2_genc++_headers^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.graphics.common@1.2_genc++_headers^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/graphics/common/1.2/android.hardware.graphics.common@1.2_genc++_headers^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.graphics.common@1.2_genc++_headers^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/graphics/common/1.2/android.hardware.graphics.common@1.2_genc++_headers^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/graphics/common/1.2/android.hardware.graphics.common@1.2_genc++_headers^/addition_copy_files.output
+
 echo "building android.hardware.graphics.common-V2-ndk_platform-source^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.graphics.common-V2-ndk_platform-source,
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/graphics/common/aidl/android.hardware.graphics.common-V2-ndk_platform-source^
@@ -1901,42 +2004,6 @@ prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/st
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/graphics/common/aidl/android.hardware.graphics.common-api^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.graphics.common-api^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/graphics/common/aidl/android.hardware.graphics.common-api^
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.graphics.common-api^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/graphics/common/aidl/android.hardware.graphics.common-api^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/graphics/common/aidl/android.hardware.graphics.common-api^/addition_copy_files.output
-
-echo "building android.hardware.graphics.common@1.0_genc++^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.graphics.common@1.0_genc++,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/graphics/common/1.0/android.hardware.graphics.common@1.0_genc++^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.graphics.common@1.0_genc++^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/graphics/common/1.0/android.hardware.graphics.common@1.0_genc++^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.graphics.common@1.0_genc++^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/graphics/common/1.0/android.hardware.graphics.common@1.0_genc++^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/graphics/common/1.0/android.hardware.graphics.common@1.0_genc++^/addition_copy_files.output
-
-echo "building android.hardware.graphics.common@1.0_genc++_headers^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.graphics.common@1.0_genc++_headers,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/graphics/common/1.0/android.hardware.graphics.common@1.0_genc++_headers^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.graphics.common@1.0_genc++_headers^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/graphics/common/1.0/android.hardware.graphics.common@1.0_genc++_headers^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.graphics.common@1.0_genc++_headers^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/graphics/common/1.0/android.hardware.graphics.common@1.0_genc++_headers^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/graphics/common/1.0/android.hardware.graphics.common@1.0_genc++_headers^/addition_copy_files.output
-
-echo "building android.hardware.graphics.common@1.1_genc++^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.graphics.common@1.1_genc++,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/graphics/common/1.1/android.hardware.graphics.common@1.1_genc++^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.graphics.common@1.1_genc++^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/graphics/common/1.1/android.hardware.graphics.common@1.1_genc++^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.graphics.common@1.1_genc++^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/graphics/common/1.1/android.hardware.graphics.common@1.1_genc++^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/graphics/common/1.1/android.hardware.graphics.common@1.1_genc++^/addition_copy_files.output
-
-echo "building android.hardware.graphics.common@1.1_genc++_headers^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.graphics.common@1.1_genc++_headers,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/graphics/common/1.1/android.hardware.graphics.common@1.1_genc++_headers^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.graphics.common@1.1_genc++_headers^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/graphics/common/1.1/android.hardware.graphics.common@1.1_genc++_headers^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.graphics.common@1.1_genc++_headers^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/graphics/common/1.1/android.hardware.graphics.common@1.1_genc++_headers^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/graphics/common/1.1/android.hardware.graphics.common@1.1_genc++_headers^/addition_copy_files.output
-
-echo "building android.hardware.graphics.common@1.2_genc++^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.graphics.common@1.2_genc++,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/graphics/common/1.2/android.hardware.graphics.common@1.2_genc++^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.graphics.common@1.2_genc++^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/graphics/common/1.2/android.hardware.graphics.common@1.2_genc++^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.graphics.common@1.2_genc++^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/graphics/common/1.2/android.hardware.graphics.common@1.2_genc++^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/graphics/common/1.2/android.hardware.graphics.common@1.2_genc++^/addition_copy_files.output
-
-echo "building android.hardware.graphics.common@1.2_genc++_headers^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.graphics.common@1.2_genc++_headers,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/graphics/common/1.2/android.hardware.graphics.common@1.2_genc++_headers^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.graphics.common@1.2_genc++_headers^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/graphics/common/1.2/android.hardware.graphics.common@1.2_genc++_headers^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.graphics.common@1.2_genc++_headers^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/graphics/common/1.2/android.hardware.graphics.common@1.2_genc++_headers^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/graphics/common/1.2/android.hardware.graphics.common@1.2_genc++_headers^/addition_copy_files.output
 
 echo "building android.hardware.graphics.composer@2.1-inheritance-hierarchy^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.graphics.composer@2.1-inheritance-hierarchy,
@@ -2094,17 +2161,83 @@ mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/health/1.0/android.hard
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.health-V1.0-java_gen_java^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/health/1.0/android.hardware.health-V1.0-java_gen_java^
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.health-V1.0-java_gen_java^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/health/1.0/android.hardware.health-V1.0-java_gen_java^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/health/1.0/android.hardware.health-V1.0-java_gen_java^/addition_copy_files.output
 
+echo "building android.hardware.health@1.0_genc++^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.health@1.0_genc++,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/health/1.0/android.hardware.health@1.0_genc++^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.health@1.0_genc++^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/health/1.0/android.hardware.health@1.0_genc++^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.health@1.0_genc++^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/health/1.0/android.hardware.health@1.0_genc++^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/health/1.0/android.hardware.health@1.0_genc++^/addition_copy_files.output
+
+echo "building android.hardware.health@1.0_genc++_headers^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.health@1.0_genc++_headers,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/health/1.0/android.hardware.health@1.0_genc++_headers^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.health@1.0_genc++_headers^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/health/1.0/android.hardware.health@1.0_genc++_headers^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.health@1.0_genc++_headers^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/health/1.0/android.hardware.health@1.0_genc++_headers^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/health/1.0/android.hardware.health@1.0_genc++_headers^/addition_copy_files.output
+
 echo "building android.hardware.health-V2.0-java_gen_java^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.health-V2.0-java_gen_java,
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/health/2.0/android.hardware.health-V2.0-java_gen_java^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.health-V2.0-java_gen_java^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/health/2.0/android.hardware.health-V2.0-java_gen_java^
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.health-V2.0-java_gen_java^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/health/2.0/android.hardware.health-V2.0-java_gen_java^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/health/2.0/android.hardware.health-V2.0-java_gen_java^/addition_copy_files.output
 
+echo "building android.hardware.health@2.0-inheritance-hierarchy^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.health@2.0-inheritance-hierarchy,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/health/2.0/android.hardware.health@2.0-inheritance-hierarchy^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.health@2.0-inheritance-hierarchy^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/health/2.0/android.hardware.health@2.0-inheritance-hierarchy^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.health@2.0-inheritance-hierarchy^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/health/2.0/android.hardware.health@2.0-inheritance-hierarchy^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/health/2.0/android.hardware.health@2.0-inheritance-hierarchy^/addition_copy_files.output
+
+echo "building android.hardware.health@2.0_genc++^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.health@2.0_genc++,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/health/2.0/android.hardware.health@2.0_genc++^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.health@2.0_genc++^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/health/2.0/android.hardware.health@2.0_genc++^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.health@2.0_genc++^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/health/2.0/android.hardware.health@2.0_genc++^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/health/2.0/android.hardware.health@2.0_genc++^/addition_copy_files.output
+
+echo "building android.hardware.health@2.0_genc++_headers^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.health@2.0_genc++_headers,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/health/2.0/android.hardware.health@2.0_genc++_headers^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.health@2.0_genc++_headers^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/health/2.0/android.hardware.health@2.0_genc++_headers^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.health@2.0_genc++_headers^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/health/2.0/android.hardware.health@2.0_genc++_headers^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/health/2.0/android.hardware.health@2.0_genc++_headers^/addition_copy_files.output
+
 echo "building android.hardware.health-V2.1-java_gen_java^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.health-V2.1-java_gen_java,
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/health/2.1/android.hardware.health-V2.1-java_gen_java^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.health-V2.1-java_gen_java^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/health/2.1/android.hardware.health-V2.1-java_gen_java^
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.health-V2.1-java_gen_java^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/health/2.1/android.hardware.health-V2.1-java_gen_java^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/health/2.1/android.hardware.health-V2.1-java_gen_java^/addition_copy_files.output
+
+echo "building android.hardware.health@2.1-inheritance-hierarchy^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.health@2.1-inheritance-hierarchy,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/health/2.1/android.hardware.health@2.1-inheritance-hierarchy^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.health@2.1-inheritance-hierarchy^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/health/2.1/android.hardware.health@2.1-inheritance-hierarchy^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.health@2.1-inheritance-hierarchy^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/health/2.1/android.hardware.health@2.1-inheritance-hierarchy^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/health/2.1/android.hardware.health@2.1-inheritance-hierarchy^/addition_copy_files.output
+
+echo "building android.hardware.health@2.1_genc++^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.health@2.1_genc++,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/health/2.1/android.hardware.health@2.1_genc++^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.health@2.1_genc++^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/health/2.1/android.hardware.health@2.1_genc++^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.health@2.1_genc++^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/health/2.1/android.hardware.health@2.1_genc++^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/health/2.1/android.hardware.health@2.1_genc++^/addition_copy_files.output
+
+echo "building android.hardware.health@2.1_genc++_headers^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.health@2.1_genc++_headers,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/health/2.1/android.hardware.health@2.1_genc++_headers^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.health@2.1_genc++_headers^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/health/2.1/android.hardware.health@2.1_genc++_headers^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.health@2.1_genc++_headers^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/health/2.1/android.hardware.health@2.1_genc++_headers^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/health/2.1/android.hardware.health@2.1_genc++_headers^/addition_copy_files.output
+
+echo "building android.hardware.health.storage@1.0-inheritance-hierarchy^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.health.storage@1.0-inheritance-hierarchy,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/health/storage/1.0/android.hardware.health.storage@1.0-inheritance-hierarchy^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.health.storage@1.0-inheritance-hierarchy^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/health/storage/1.0/android.hardware.health.storage@1.0-inheritance-hierarchy^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.health.storage@1.0-inheritance-hierarchy^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/health/storage/1.0/android.hardware.health.storage@1.0-inheritance-hierarchy^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/health/storage/1.0/android.hardware.health.storage@1.0-inheritance-hierarchy^/addition_copy_files.output
+
+echo "building android.hardware.health.storage@1.0_genc++^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.health.storage@1.0_genc++,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/health/storage/1.0/android.hardware.health.storage@1.0_genc++^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.health.storage@1.0_genc++^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/health/storage/1.0/android.hardware.health.storage@1.0_genc++^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.health.storage@1.0_genc++^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/health/storage/1.0/android.hardware.health.storage@1.0_genc++^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/health/storage/1.0/android.hardware.health.storage@1.0_genc++^/addition_copy_files.output
+
+echo "building android.hardware.health.storage@1.0_genc++_headers^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.health.storage@1.0_genc++_headers,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/health/storage/1.0/android.hardware.health.storage@1.0_genc++_headers^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.health.storage@1.0_genc++_headers^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/health/storage/1.0/android.hardware.health.storage@1.0_genc++_headers^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.health.storage@1.0_genc++_headers^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/health/storage/1.0/android.hardware.health.storage@1.0_genc++_headers^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/health/storage/1.0/android.hardware.health.storage@1.0_genc++_headers^/addition_copy_files.output
 
 echo "building android.hardware.health.storage-V1-ndk_platform-source^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.health.storage-V1-ndk_platform-source,
@@ -2136,71 +2269,17 @@ mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/health/storage/aidl/and
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.health.storage-api^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/health/storage/aidl/android.hardware.health.storage-api^
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.health.storage-api^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/health/storage/aidl/android.hardware.health.storage-api^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/health/storage/aidl/android.hardware.health.storage-api^/addition_copy_files.output
 
-echo "building android.hardware.health.storage@1.0-inheritance-hierarchy^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.health.storage@1.0-inheritance-hierarchy,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/health/storage/1.0/android.hardware.health.storage@1.0-inheritance-hierarchy^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.health.storage@1.0-inheritance-hierarchy^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/health/storage/1.0/android.hardware.health.storage@1.0-inheritance-hierarchy^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.health.storage@1.0-inheritance-hierarchy^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/health/storage/1.0/android.hardware.health.storage@1.0-inheritance-hierarchy^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/health/storage/1.0/android.hardware.health.storage@1.0-inheritance-hierarchy^/addition_copy_files.output
+echo "building libhealthloop^android_vendor.31_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libhealthloop,android_vendor.31_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/health/utils/libhealthloop/libhealthloop^android_vendor.31_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/libhealthloop^android_vendor.31_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/health/utils/libhealthloop/libhealthloop^android_vendor.31_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/libhealthloop^android_vendor.31_x86_64_static.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/health/utils/libhealthloop/libhealthloop^android_vendor.31_x86_64_static $GITHUB_WORKSPACE/artifacts/hardware/interfaces/health/utils/libhealthloop/libhealthloop^android_vendor.31_x86_64_static/addition_copy_files.output
 
-echo "building android.hardware.health.storage@1.0_genc++^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.health.storage@1.0_genc++,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/health/storage/1.0/android.hardware.health.storage@1.0_genc++^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.health.storage@1.0_genc++^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/health/storage/1.0/android.hardware.health.storage@1.0_genc++^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.health.storage@1.0_genc++^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/health/storage/1.0/android.hardware.health.storage@1.0_genc++^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/health/storage/1.0/android.hardware.health.storage@1.0_genc++^/addition_copy_files.output
-
-echo "building android.hardware.health.storage@1.0_genc++_headers^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.health.storage@1.0_genc++_headers,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/health/storage/1.0/android.hardware.health.storage@1.0_genc++_headers^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.health.storage@1.0_genc++_headers^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/health/storage/1.0/android.hardware.health.storage@1.0_genc++_headers^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.health.storage@1.0_genc++_headers^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/health/storage/1.0/android.hardware.health.storage@1.0_genc++_headers^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/health/storage/1.0/android.hardware.health.storage@1.0_genc++_headers^/addition_copy_files.output
-
-echo "building android.hardware.health@1.0_genc++^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.health@1.0_genc++,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/health/1.0/android.hardware.health@1.0_genc++^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.health@1.0_genc++^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/health/1.0/android.hardware.health@1.0_genc++^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.health@1.0_genc++^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/health/1.0/android.hardware.health@1.0_genc++^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/health/1.0/android.hardware.health@1.0_genc++^/addition_copy_files.output
-
-echo "building android.hardware.health@1.0_genc++_headers^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.health@1.0_genc++_headers,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/health/1.0/android.hardware.health@1.0_genc++_headers^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.health@1.0_genc++_headers^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/health/1.0/android.hardware.health@1.0_genc++_headers^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.health@1.0_genc++_headers^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/health/1.0/android.hardware.health@1.0_genc++_headers^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/health/1.0/android.hardware.health@1.0_genc++_headers^/addition_copy_files.output
-
-echo "building android.hardware.health@2.0-inheritance-hierarchy^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.health@2.0-inheritance-hierarchy,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/health/2.0/android.hardware.health@2.0-inheritance-hierarchy^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.health@2.0-inheritance-hierarchy^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/health/2.0/android.hardware.health@2.0-inheritance-hierarchy^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.health@2.0-inheritance-hierarchy^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/health/2.0/android.hardware.health@2.0-inheritance-hierarchy^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/health/2.0/android.hardware.health@2.0-inheritance-hierarchy^/addition_copy_files.output
-
-echo "building android.hardware.health@2.0_genc++^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.health@2.0_genc++,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/health/2.0/android.hardware.health@2.0_genc++^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.health@2.0_genc++^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/health/2.0/android.hardware.health@2.0_genc++^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.health@2.0_genc++^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/health/2.0/android.hardware.health@2.0_genc++^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/health/2.0/android.hardware.health@2.0_genc++^/addition_copy_files.output
-
-echo "building android.hardware.health@2.0_genc++_headers^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.health@2.0_genc++_headers,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/health/2.0/android.hardware.health@2.0_genc++_headers^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.health@2.0_genc++_headers^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/health/2.0/android.hardware.health@2.0_genc++_headers^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.health@2.0_genc++_headers^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/health/2.0/android.hardware.health@2.0_genc++_headers^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/health/2.0/android.hardware.health@2.0_genc++_headers^/addition_copy_files.output
-
-echo "building android.hardware.health@2.1-inheritance-hierarchy^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.health@2.1-inheritance-hierarchy,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/health/2.1/android.hardware.health@2.1-inheritance-hierarchy^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.health@2.1-inheritance-hierarchy^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/health/2.1/android.hardware.health@2.1-inheritance-hierarchy^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.health@2.1-inheritance-hierarchy^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/health/2.1/android.hardware.health@2.1-inheritance-hierarchy^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/health/2.1/android.hardware.health@2.1-inheritance-hierarchy^/addition_copy_files.output
-
-echo "building android.hardware.health@2.1_genc++^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.health@2.1_genc++,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/health/2.1/android.hardware.health@2.1_genc++^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.health@2.1_genc++^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/health/2.1/android.hardware.health@2.1_genc++^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.health@2.1_genc++^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/health/2.1/android.hardware.health@2.1_genc++^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/health/2.1/android.hardware.health@2.1_genc++^/addition_copy_files.output
-
-echo "building android.hardware.health@2.1_genc++_headers^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.health@2.1_genc++_headers,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/health/2.1/android.hardware.health@2.1_genc++_headers^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.health@2.1_genc++_headers^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/health/2.1/android.hardware.health@2.1_genc++_headers^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.health@2.1_genc++_headers^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/health/2.1/android.hardware.health@2.1_genc++_headers^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/health/2.1/android.hardware.health@2.1_genc++_headers^/addition_copy_files.output
+echo "building libhealthloop^android_vendor.31_x86_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libhealthloop,android_vendor.31_x86_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/health/utils/libhealthloop/libhealthloop^android_vendor.31_x86_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/libhealthloop^android_vendor.31_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/health/utils/libhealthloop/libhealthloop^android_vendor.31_x86_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/libhealthloop^android_vendor.31_x86_x86_64_static.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/health/utils/libhealthloop/libhealthloop^android_vendor.31_x86_x86_64_static $GITHUB_WORKSPACE/artifacts/hardware/interfaces/health/utils/libhealthloop/libhealthloop^android_vendor.31_x86_x86_64_static/addition_copy_files.output
 
 echo "building android.hardware.identity-V3-cpp-source^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.identity-V3-cpp-source,
@@ -2292,42 +2371,6 @@ mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/ir/1.0/android.hardware
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.ir@1.0_genc++_headers^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/ir/1.0/android.hardware.ir@1.0_genc++_headers^
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.ir@1.0_genc++_headers^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/ir/1.0/android.hardware.ir@1.0_genc++_headers^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/ir/1.0/android.hardware.ir@1.0_genc++_headers^/addition_copy_files.output
 
-echo "building android.hardware.keymaster-V3-cpp-source^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.keymaster-V3-cpp-source,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/keymaster/aidl/android.hardware.keymaster-V3-cpp-source^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.keymaster-V3-cpp-source^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/keymaster/aidl/android.hardware.keymaster-V3-cpp-source^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.keymaster-V3-cpp-source^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/keymaster/aidl/android.hardware.keymaster-V3-cpp-source^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/keymaster/aidl/android.hardware.keymaster-V3-cpp-source^/addition_copy_files.output
-
-echo "building android.hardware.keymaster-V3-java-source^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.keymaster-V3-java-source,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/keymaster/aidl/android.hardware.keymaster-V3-java-source^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.keymaster-V3-java-source^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/keymaster/aidl/android.hardware.keymaster-V3-java-source^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.keymaster-V3-java-source^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/keymaster/aidl/android.hardware.keymaster-V3-java-source^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/keymaster/aidl/android.hardware.keymaster-V3-java-source^/addition_copy_files.output
-
-echo "building android.hardware.keymaster-V3-ndk_platform-source^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.keymaster-V3-ndk_platform-source,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/keymaster/aidl/android.hardware.keymaster-V3-ndk_platform-source^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.keymaster-V3-ndk_platform-source^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/keymaster/aidl/android.hardware.keymaster-V3-ndk_platform-source^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.keymaster-V3-ndk_platform-source^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/keymaster/aidl/android.hardware.keymaster-V3-ndk_platform-source^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/keymaster/aidl/android.hardware.keymaster-V3-ndk_platform-source^/addition_copy_files.output
-
-echo "building android.hardware.keymaster-V3-ndk_platform^android_vendor.31_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.keymaster-V3-ndk_platform,android_vendor.31_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/keymaster/aidl/android.hardware.keymaster-V3-ndk_platform^android_vendor.31_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.keymaster-V3-ndk_platform^android_vendor.31_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/keymaster/aidl/android.hardware.keymaster-V3-ndk_platform^android_vendor.31_x86_64_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.keymaster-V3-ndk_platform^android_vendor.31_x86_64_static.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/keymaster/aidl/android.hardware.keymaster-V3-ndk_platform^android_vendor.31_x86_64_static $GITHUB_WORKSPACE/artifacts/hardware/interfaces/keymaster/aidl/android.hardware.keymaster-V3-ndk_platform^android_vendor.31_x86_64_static/addition_copy_files.output
-
-echo "building android.hardware.keymaster-V3-ndk_platform^android_vendor.31_x86_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.keymaster-V3-ndk_platform,android_vendor.31_x86_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/keymaster/aidl/android.hardware.keymaster-V3-ndk_platform^android_vendor.31_x86_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.keymaster-V3-ndk_platform^android_vendor.31_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/keymaster/aidl/android.hardware.keymaster-V3-ndk_platform^android_vendor.31_x86_x86_64_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.keymaster-V3-ndk_platform^android_vendor.31_x86_x86_64_static.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/keymaster/aidl/android.hardware.keymaster-V3-ndk_platform^android_vendor.31_x86_x86_64_static $GITHUB_WORKSPACE/artifacts/hardware/interfaces/keymaster/aidl/android.hardware.keymaster-V3-ndk_platform^android_vendor.31_x86_x86_64_static/addition_copy_files.output
-
-echo "building android.hardware.keymaster-api^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.keymaster-api,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/keymaster/aidl/android.hardware.keymaster-api^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.keymaster-api^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/keymaster/aidl/android.hardware.keymaster-api^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.keymaster-api^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/keymaster/aidl/android.hardware.keymaster-api^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/keymaster/aidl/android.hardware.keymaster-api^/addition_copy_files.output
-
 echo "building android.hardware.keymaster@3.0-inheritance-hierarchy^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.keymaster@3.0-inheritance-hierarchy,
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/keymaster/3.0/android.hardware.keymaster@3.0-inheritance-hierarchy^
@@ -2382,6 +2425,66 @@ mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/keymaster/4.1/android.h
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.keymaster@4.1_genc++_headers^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/keymaster/4.1/android.hardware.keymaster@4.1_genc++_headers^
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.keymaster@4.1_genc++_headers^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/keymaster/4.1/android.hardware.keymaster@4.1_genc++_headers^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/keymaster/4.1/android.hardware.keymaster@4.1_genc++_headers^/addition_copy_files.output
 
+echo "building android.hardware.keymaster-V3-cpp-source^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.keymaster-V3-cpp-source,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/keymaster/aidl/android.hardware.keymaster-V3-cpp-source^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.keymaster-V3-cpp-source^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/keymaster/aidl/android.hardware.keymaster-V3-cpp-source^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.keymaster-V3-cpp-source^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/keymaster/aidl/android.hardware.keymaster-V3-cpp-source^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/keymaster/aidl/android.hardware.keymaster-V3-cpp-source^/addition_copy_files.output
+
+echo "building android.hardware.keymaster-V3-java-source^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.keymaster-V3-java-source,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/keymaster/aidl/android.hardware.keymaster-V3-java-source^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.keymaster-V3-java-source^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/keymaster/aidl/android.hardware.keymaster-V3-java-source^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.keymaster-V3-java-source^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/keymaster/aidl/android.hardware.keymaster-V3-java-source^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/keymaster/aidl/android.hardware.keymaster-V3-java-source^/addition_copy_files.output
+
+echo "building android.hardware.keymaster-V3-ndk_platform-source^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.keymaster-V3-ndk_platform-source,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/keymaster/aidl/android.hardware.keymaster-V3-ndk_platform-source^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.keymaster-V3-ndk_platform-source^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/keymaster/aidl/android.hardware.keymaster-V3-ndk_platform-source^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.keymaster-V3-ndk_platform-source^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/keymaster/aidl/android.hardware.keymaster-V3-ndk_platform-source^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/keymaster/aidl/android.hardware.keymaster-V3-ndk_platform-source^/addition_copy_files.output
+
+echo "building android.hardware.keymaster-V3-ndk_platform^android_vendor.31_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.keymaster-V3-ndk_platform,android_vendor.31_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/keymaster/aidl/android.hardware.keymaster-V3-ndk_platform^android_vendor.31_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.keymaster-V3-ndk_platform^android_vendor.31_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/keymaster/aidl/android.hardware.keymaster-V3-ndk_platform^android_vendor.31_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.keymaster-V3-ndk_platform^android_vendor.31_x86_64_static.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/keymaster/aidl/android.hardware.keymaster-V3-ndk_platform^android_vendor.31_x86_64_static $GITHUB_WORKSPACE/artifacts/hardware/interfaces/keymaster/aidl/android.hardware.keymaster-V3-ndk_platform^android_vendor.31_x86_64_static/addition_copy_files.output
+
+echo "building android.hardware.keymaster-V3-ndk_platform^android_vendor.31_x86_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.keymaster-V3-ndk_platform,android_vendor.31_x86_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/keymaster/aidl/android.hardware.keymaster-V3-ndk_platform^android_vendor.31_x86_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.keymaster-V3-ndk_platform^android_vendor.31_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/keymaster/aidl/android.hardware.keymaster-V3-ndk_platform^android_vendor.31_x86_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.keymaster-V3-ndk_platform^android_vendor.31_x86_x86_64_static.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/keymaster/aidl/android.hardware.keymaster-V3-ndk_platform^android_vendor.31_x86_x86_64_static $GITHUB_WORKSPACE/artifacts/hardware/interfaces/keymaster/aidl/android.hardware.keymaster-V3-ndk_platform^android_vendor.31_x86_x86_64_static/addition_copy_files.output
+
+echo "building android.hardware.keymaster-api^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.keymaster-api,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/keymaster/aidl/android.hardware.keymaster-api^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.keymaster-api^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/keymaster/aidl/android.hardware.keymaster-api^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.keymaster-api^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/keymaster/aidl/android.hardware.keymaster-api^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/keymaster/aidl/android.hardware.keymaster-api^/addition_copy_files.output
+
+echo "building android.hardware.light-V2.0-java_gen_java^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.light-V2.0-java_gen_java,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/light/2.0/android.hardware.light-V2.0-java_gen_java^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.light-V2.0-java_gen_java^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/light/2.0/android.hardware.light-V2.0-java_gen_java^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.light-V2.0-java_gen_java^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/light/2.0/android.hardware.light-V2.0-java_gen_java^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/light/2.0/android.hardware.light-V2.0-java_gen_java^/addition_copy_files.output
+
+echo "building android.hardware.light@2.0-inheritance-hierarchy^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.light@2.0-inheritance-hierarchy,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/light/2.0/android.hardware.light@2.0-inheritance-hierarchy^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.light@2.0-inheritance-hierarchy^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/light/2.0/android.hardware.light@2.0-inheritance-hierarchy^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.light@2.0-inheritance-hierarchy^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/light/2.0/android.hardware.light@2.0-inheritance-hierarchy^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/light/2.0/android.hardware.light@2.0-inheritance-hierarchy^/addition_copy_files.output
+
+echo "building android.hardware.light@2.0_genc++^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.light@2.0_genc++,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/light/2.0/android.hardware.light@2.0_genc++^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.light@2.0_genc++^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/light/2.0/android.hardware.light@2.0_genc++^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.light@2.0_genc++^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/light/2.0/android.hardware.light@2.0_genc++^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/light/2.0/android.hardware.light@2.0_genc++^/addition_copy_files.output
+
+echo "building android.hardware.light@2.0_genc++_headers^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.light@2.0_genc++_headers,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/light/2.0/android.hardware.light@2.0_genc++_headers^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.light@2.0_genc++_headers^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/light/2.0/android.hardware.light@2.0_genc++_headers^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.light@2.0_genc++_headers^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/light/2.0/android.hardware.light@2.0_genc++_headers^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/light/2.0/android.hardware.light@2.0_genc++_headers^/addition_copy_files.output
+
 echo "building android.hardware.light-V1-cpp-source^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.light-V1-cpp-source,
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/light/aidl/android.hardware.light-V1-cpp-source^
@@ -2412,35 +2515,23 @@ mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/light/aidl/android.hard
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.light-V1-ndk_platform^android_vendor.31_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/light/aidl/android.hardware.light-V1-ndk_platform^android_vendor.31_x86_x86_64_static
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.light-V1-ndk_platform^android_vendor.31_x86_x86_64_static.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/light/aidl/android.hardware.light-V1-ndk_platform^android_vendor.31_x86_x86_64_static $GITHUB_WORKSPACE/artifacts/hardware/interfaces/light/aidl/android.hardware.light-V1-ndk_platform^android_vendor.31_x86_x86_64_static/addition_copy_files.output
 
-echo "building android.hardware.light-V2.0-java_gen_java^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.light-V2.0-java_gen_java,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/light/2.0/android.hardware.light-V2.0-java_gen_java^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.light-V2.0-java_gen_java^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/light/2.0/android.hardware.light-V2.0-java_gen_java^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.light-V2.0-java_gen_java^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/light/2.0/android.hardware.light-V2.0-java_gen_java^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/light/2.0/android.hardware.light-V2.0-java_gen_java^/addition_copy_files.output
-
 echo "building android.hardware.light-api^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.light-api,
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/light/aidl/android.hardware.light-api^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.light-api^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/light/aidl/android.hardware.light-api^
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.light-api^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/light/aidl/android.hardware.light-api^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/light/aidl/android.hardware.light-api^/addition_copy_files.output
 
-echo "building android.hardware.light@2.0-inheritance-hierarchy^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.light@2.0-inheritance-hierarchy,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/light/2.0/android.hardware.light@2.0-inheritance-hierarchy^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.light@2.0-inheritance-hierarchy^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/light/2.0/android.hardware.light@2.0-inheritance-hierarchy^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.light@2.0-inheritance-hierarchy^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/light/2.0/android.hardware.light@2.0-inheritance-hierarchy^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/light/2.0/android.hardware.light@2.0-inheritance-hierarchy^/addition_copy_files.output
+echo "building android.hardware.media@1.0_genc++^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.media@1.0_genc++,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/media/1.0/android.hardware.media@1.0_genc++^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.media@1.0_genc++^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/media/1.0/android.hardware.media@1.0_genc++^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.media@1.0_genc++^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/media/1.0/android.hardware.media@1.0_genc++^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/media/1.0/android.hardware.media@1.0_genc++^/addition_copy_files.output
 
-echo "building android.hardware.light@2.0_genc++^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.light@2.0_genc++,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/light/2.0/android.hardware.light@2.0_genc++^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.light@2.0_genc++^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/light/2.0/android.hardware.light@2.0_genc++^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.light@2.0_genc++^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/light/2.0/android.hardware.light@2.0_genc++^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/light/2.0/android.hardware.light@2.0_genc++^/addition_copy_files.output
-
-echo "building android.hardware.light@2.0_genc++_headers^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.light@2.0_genc++_headers,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/light/2.0/android.hardware.light@2.0_genc++_headers^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.light@2.0_genc++_headers^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/light/2.0/android.hardware.light@2.0_genc++_headers^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.light@2.0_genc++_headers^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/light/2.0/android.hardware.light@2.0_genc++_headers^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/light/2.0/android.hardware.light@2.0_genc++_headers^/addition_copy_files.output
+echo "building android.hardware.media@1.0_genc++_headers^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.media@1.0_genc++_headers,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/media/1.0/android.hardware.media@1.0_genc++_headers^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.media@1.0_genc++_headers^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/media/1.0/android.hardware.media@1.0_genc++_headers^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.media@1.0_genc++_headers^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/media/1.0/android.hardware.media@1.0_genc++_headers^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/media/1.0/android.hardware.media@1.0_genc++_headers^/addition_copy_files.output
 
 echo "building android.hardware.media.bufferpool@1.0-inheritance-hierarchy^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.media.bufferpool@1.0-inheritance-hierarchy,
@@ -2538,17 +2629,23 @@ mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/media/omx/1.0/android.h
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.media.omx@1.0_genc++_headers^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/media/omx/1.0/android.hardware.media.omx@1.0_genc++_headers^
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.media.omx@1.0_genc++_headers^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/media/omx/1.0/android.hardware.media.omx@1.0_genc++_headers^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/media/omx/1.0/android.hardware.media.omx@1.0_genc++_headers^/addition_copy_files.output
 
-echo "building android.hardware.media@1.0_genc++^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.media@1.0_genc++,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/media/1.0/android.hardware.media@1.0_genc++^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.media@1.0_genc++^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/media/1.0/android.hardware.media@1.0_genc++^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.media@1.0_genc++^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/media/1.0/android.hardware.media@1.0_genc++^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/media/1.0/android.hardware.media@1.0_genc++^/addition_copy_files.output
+echo "building android.hardware.memtrack@1.0-inheritance-hierarchy^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.memtrack@1.0-inheritance-hierarchy,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/memtrack/1.0/android.hardware.memtrack@1.0-inheritance-hierarchy^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.memtrack@1.0-inheritance-hierarchy^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/memtrack/1.0/android.hardware.memtrack@1.0-inheritance-hierarchy^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.memtrack@1.0-inheritance-hierarchy^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/memtrack/1.0/android.hardware.memtrack@1.0-inheritance-hierarchy^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/memtrack/1.0/android.hardware.memtrack@1.0-inheritance-hierarchy^/addition_copy_files.output
 
-echo "building android.hardware.media@1.0_genc++_headers^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.media@1.0_genc++_headers,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/media/1.0/android.hardware.media@1.0_genc++_headers^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.media@1.0_genc++_headers^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/media/1.0/android.hardware.media@1.0_genc++_headers^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.media@1.0_genc++_headers^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/media/1.0/android.hardware.media@1.0_genc++_headers^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/media/1.0/android.hardware.media@1.0_genc++_headers^/addition_copy_files.output
+echo "building android.hardware.memtrack@1.0_genc++^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.memtrack@1.0_genc++,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/memtrack/1.0/android.hardware.memtrack@1.0_genc++^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.memtrack@1.0_genc++^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/memtrack/1.0/android.hardware.memtrack@1.0_genc++^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.memtrack@1.0_genc++^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/memtrack/1.0/android.hardware.memtrack@1.0_genc++^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/memtrack/1.0/android.hardware.memtrack@1.0_genc++^/addition_copy_files.output
+
+echo "building android.hardware.memtrack@1.0_genc++_headers^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.memtrack@1.0_genc++_headers,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/memtrack/1.0/android.hardware.memtrack@1.0_genc++_headers^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.memtrack@1.0_genc++_headers^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/memtrack/1.0/android.hardware.memtrack@1.0_genc++_headers^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.memtrack@1.0_genc++_headers^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/memtrack/1.0/android.hardware.memtrack@1.0_genc++_headers^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/memtrack/1.0/android.hardware.memtrack@1.0_genc++_headers^/addition_copy_files.output
 
 echo "building android.hardware.memtrack-V1-ndk_platform-source^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.memtrack-V1-ndk_platform-source,
@@ -2585,54 +2682,6 @@ prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/st
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/memtrack/aidl/android.hardware.memtrack-api^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.memtrack-api^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/memtrack/aidl/android.hardware.memtrack-api^
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.memtrack-api^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/memtrack/aidl/android.hardware.memtrack-api^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/memtrack/aidl/android.hardware.memtrack-api^/addition_copy_files.output
-
-echo "building android.hardware.memtrack@1.0-inheritance-hierarchy^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.memtrack@1.0-inheritance-hierarchy,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/memtrack/1.0/android.hardware.memtrack@1.0-inheritance-hierarchy^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.memtrack@1.0-inheritance-hierarchy^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/memtrack/1.0/android.hardware.memtrack@1.0-inheritance-hierarchy^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.memtrack@1.0-inheritance-hierarchy^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/memtrack/1.0/android.hardware.memtrack@1.0-inheritance-hierarchy^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/memtrack/1.0/android.hardware.memtrack@1.0-inheritance-hierarchy^/addition_copy_files.output
-
-echo "building android.hardware.memtrack@1.0_genc++^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.memtrack@1.0_genc++,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/memtrack/1.0/android.hardware.memtrack@1.0_genc++^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.memtrack@1.0_genc++^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/memtrack/1.0/android.hardware.memtrack@1.0_genc++^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.memtrack@1.0_genc++^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/memtrack/1.0/android.hardware.memtrack@1.0_genc++^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/memtrack/1.0/android.hardware.memtrack@1.0_genc++^/addition_copy_files.output
-
-echo "building android.hardware.memtrack@1.0_genc++_headers^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.memtrack@1.0_genc++_headers,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/memtrack/1.0/android.hardware.memtrack@1.0_genc++_headers^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.memtrack@1.0_genc++_headers^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/memtrack/1.0/android.hardware.memtrack@1.0_genc++_headers^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.memtrack@1.0_genc++_headers^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/memtrack/1.0/android.hardware.memtrack@1.0_genc++_headers^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/memtrack/1.0/android.hardware.memtrack@1.0_genc++_headers^/addition_copy_files.output
-
-echo "building android.hardware.neuralnetworks-V1-ndk_platform-source^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.neuralnetworks-V1-ndk_platform-source,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/neuralnetworks/aidl/android.hardware.neuralnetworks-V1-ndk_platform-source^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.neuralnetworks-V1-ndk_platform-source^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/neuralnetworks/aidl/android.hardware.neuralnetworks-V1-ndk_platform-source^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.neuralnetworks-V1-ndk_platform-source^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/neuralnetworks/aidl/android.hardware.neuralnetworks-V1-ndk_platform-source^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/neuralnetworks/aidl/android.hardware.neuralnetworks-V1-ndk_platform-source^/addition_copy_files.output
-
-echo "building android.hardware.neuralnetworks-V1-ndk_platform^android_vendor.31_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.neuralnetworks-V1-ndk_platform,android_vendor.31_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/neuralnetworks/aidl/android.hardware.neuralnetworks-V1-ndk_platform^android_vendor.31_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.neuralnetworks-V1-ndk_platform^android_vendor.31_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/neuralnetworks/aidl/android.hardware.neuralnetworks-V1-ndk_platform^android_vendor.31_x86_64_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.neuralnetworks-V1-ndk_platform^android_vendor.31_x86_64_static.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/neuralnetworks/aidl/android.hardware.neuralnetworks-V1-ndk_platform^android_vendor.31_x86_64_static $GITHUB_WORKSPACE/artifacts/hardware/interfaces/neuralnetworks/aidl/android.hardware.neuralnetworks-V1-ndk_platform^android_vendor.31_x86_64_static/addition_copy_files.output
-
-echo "building android.hardware.neuralnetworks-V1-ndk_platform^android_x86_64_static_com.android.neuralnetworks"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.neuralnetworks-V1-ndk_platform,android_x86_64_static_com.android.neuralnetworks
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/neuralnetworks/aidl/android.hardware.neuralnetworks-V1-ndk_platform^android_x86_64_static_com.android.neuralnetworks
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.neuralnetworks-V1-ndk_platform^android_x86_64_static_com.android.neuralnetworks.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/neuralnetworks/aidl/android.hardware.neuralnetworks-V1-ndk_platform^android_x86_64_static_com.android.neuralnetworks
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.neuralnetworks-V1-ndk_platform^android_x86_64_static_com.android.neuralnetworks.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/neuralnetworks/aidl/android.hardware.neuralnetworks-V1-ndk_platform^android_x86_64_static_com.android.neuralnetworks $GITHUB_WORKSPACE/artifacts/hardware/interfaces/neuralnetworks/aidl/android.hardware.neuralnetworks-V1-ndk_platform^android_x86_64_static_com.android.neuralnetworks/addition_copy_files.output
-
-echo "building android.hardware.neuralnetworks-V1-ndk_platform^android_x86_x86_64_static_com.android.neuralnetworks"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.neuralnetworks-V1-ndk_platform,android_x86_x86_64_static_com.android.neuralnetworks
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/neuralnetworks/aidl/android.hardware.neuralnetworks-V1-ndk_platform^android_x86_x86_64_static_com.android.neuralnetworks
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.neuralnetworks-V1-ndk_platform^android_x86_x86_64_static_com.android.neuralnetworks.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/neuralnetworks/aidl/android.hardware.neuralnetworks-V1-ndk_platform^android_x86_x86_64_static_com.android.neuralnetworks
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.neuralnetworks-V1-ndk_platform^android_x86_x86_64_static_com.android.neuralnetworks.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/neuralnetworks/aidl/android.hardware.neuralnetworks-V1-ndk_platform^android_x86_x86_64_static_com.android.neuralnetworks $GITHUB_WORKSPACE/artifacts/hardware/interfaces/neuralnetworks/aidl/android.hardware.neuralnetworks-V1-ndk_platform^android_x86_x86_64_static_com.android.neuralnetworks/addition_copy_files.output
-
-echo "building android.hardware.neuralnetworks-api^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.neuralnetworks-api,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/neuralnetworks/aidl/android.hardware.neuralnetworks-api^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.neuralnetworks-api^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/neuralnetworks/aidl/android.hardware.neuralnetworks-api^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.neuralnetworks-api^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/neuralnetworks/aidl/android.hardware.neuralnetworks-api^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/neuralnetworks/aidl/android.hardware.neuralnetworks-api^/addition_copy_files.output
 
 echo "building android.hardware.neuralnetworks@1.0-inheritance-hierarchy^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.neuralnetworks@1.0-inheritance-hierarchy,
@@ -2706,6 +2755,36 @@ mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/neuralnetworks/1.3/andr
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.neuralnetworks@1.3_genc++_headers^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/neuralnetworks/1.3/android.hardware.neuralnetworks@1.3_genc++_headers^
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.neuralnetworks@1.3_genc++_headers^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/neuralnetworks/1.3/android.hardware.neuralnetworks@1.3_genc++_headers^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/neuralnetworks/1.3/android.hardware.neuralnetworks@1.3_genc++_headers^/addition_copy_files.output
 
+echo "building android.hardware.neuralnetworks-V1-ndk_platform-source^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.neuralnetworks-V1-ndk_platform-source,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/neuralnetworks/aidl/android.hardware.neuralnetworks-V1-ndk_platform-source^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.neuralnetworks-V1-ndk_platform-source^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/neuralnetworks/aidl/android.hardware.neuralnetworks-V1-ndk_platform-source^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.neuralnetworks-V1-ndk_platform-source^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/neuralnetworks/aidl/android.hardware.neuralnetworks-V1-ndk_platform-source^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/neuralnetworks/aidl/android.hardware.neuralnetworks-V1-ndk_platform-source^/addition_copy_files.output
+
+echo "building android.hardware.neuralnetworks-V1-ndk_platform^android_vendor.31_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.neuralnetworks-V1-ndk_platform,android_vendor.31_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/neuralnetworks/aidl/android.hardware.neuralnetworks-V1-ndk_platform^android_vendor.31_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.neuralnetworks-V1-ndk_platform^android_vendor.31_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/neuralnetworks/aidl/android.hardware.neuralnetworks-V1-ndk_platform^android_vendor.31_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.neuralnetworks-V1-ndk_platform^android_vendor.31_x86_64_static.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/neuralnetworks/aidl/android.hardware.neuralnetworks-V1-ndk_platform^android_vendor.31_x86_64_static $GITHUB_WORKSPACE/artifacts/hardware/interfaces/neuralnetworks/aidl/android.hardware.neuralnetworks-V1-ndk_platform^android_vendor.31_x86_64_static/addition_copy_files.output
+
+echo "building android.hardware.neuralnetworks-V1-ndk_platform^android_x86_64_static_com.android.neuralnetworks"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.neuralnetworks-V1-ndk_platform,android_x86_64_static_com.android.neuralnetworks
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/neuralnetworks/aidl/android.hardware.neuralnetworks-V1-ndk_platform^android_x86_64_static_com.android.neuralnetworks
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.neuralnetworks-V1-ndk_platform^android_x86_64_static_com.android.neuralnetworks.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/neuralnetworks/aidl/android.hardware.neuralnetworks-V1-ndk_platform^android_x86_64_static_com.android.neuralnetworks
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.neuralnetworks-V1-ndk_platform^android_x86_64_static_com.android.neuralnetworks.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/neuralnetworks/aidl/android.hardware.neuralnetworks-V1-ndk_platform^android_x86_64_static_com.android.neuralnetworks $GITHUB_WORKSPACE/artifacts/hardware/interfaces/neuralnetworks/aidl/android.hardware.neuralnetworks-V1-ndk_platform^android_x86_64_static_com.android.neuralnetworks/addition_copy_files.output
+
+echo "building android.hardware.neuralnetworks-V1-ndk_platform^android_x86_x86_64_static_com.android.neuralnetworks"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.neuralnetworks-V1-ndk_platform,android_x86_x86_64_static_com.android.neuralnetworks
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/neuralnetworks/aidl/android.hardware.neuralnetworks-V1-ndk_platform^android_x86_x86_64_static_com.android.neuralnetworks
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.neuralnetworks-V1-ndk_platform^android_x86_x86_64_static_com.android.neuralnetworks.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/neuralnetworks/aidl/android.hardware.neuralnetworks-V1-ndk_platform^android_x86_x86_64_static_com.android.neuralnetworks
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.neuralnetworks-V1-ndk_platform^android_x86_x86_64_static_com.android.neuralnetworks.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/neuralnetworks/aidl/android.hardware.neuralnetworks-V1-ndk_platform^android_x86_x86_64_static_com.android.neuralnetworks $GITHUB_WORKSPACE/artifacts/hardware/interfaces/neuralnetworks/aidl/android.hardware.neuralnetworks-V1-ndk_platform^android_x86_x86_64_static_com.android.neuralnetworks/addition_copy_files.output
+
+echo "building android.hardware.neuralnetworks-api^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.neuralnetworks-api,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/neuralnetworks/aidl/android.hardware.neuralnetworks-api^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.neuralnetworks-api^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/neuralnetworks/aidl/android.hardware.neuralnetworks-api^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.neuralnetworks-api^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/neuralnetworks/aidl/android.hardware.neuralnetworks-api^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/neuralnetworks/aidl/android.hardware.neuralnetworks-api^/addition_copy_files.output
+
 echo "building android.hardware.nfc@1.0-inheritance-hierarchy^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.nfc@1.0-inheritance-hierarchy,
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/nfc/1.0/android.hardware.nfc@1.0-inheritance-hierarchy^
@@ -2760,6 +2839,18 @@ mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/nfc/1.2/android.hardwar
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.nfc@1.2_genc++_headers^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/nfc/1.2/android.hardware.nfc@1.2_genc++_headers^
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.nfc@1.2_genc++_headers^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/nfc/1.2/android.hardware.nfc@1.2_genc++_headers^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/nfc/1.2/android.hardware.nfc@1.2_genc++_headers^/addition_copy_files.output
 
+echo "building android.hardware.oemlock-V1.0-java_gen_java^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.oemlock-V1.0-java_gen_java,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/oemlock/1.0/android.hardware.oemlock-V1.0-java_gen_java^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.oemlock-V1.0-java_gen_java^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/oemlock/1.0/android.hardware.oemlock-V1.0-java_gen_java^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.oemlock-V1.0-java_gen_java^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/oemlock/1.0/android.hardware.oemlock-V1.0-java_gen_java^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/oemlock/1.0/android.hardware.oemlock-V1.0-java_gen_java^/addition_copy_files.output
+
+echo "building android.hardware.oemlock@1.0-inheritance-hierarchy^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.oemlock@1.0-inheritance-hierarchy,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/oemlock/1.0/android.hardware.oemlock@1.0-inheritance-hierarchy^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.oemlock@1.0-inheritance-hierarchy^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/oemlock/1.0/android.hardware.oemlock@1.0-inheritance-hierarchy^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.oemlock@1.0-inheritance-hierarchy^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/oemlock/1.0/android.hardware.oemlock@1.0-inheritance-hierarchy^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/oemlock/1.0/android.hardware.oemlock@1.0-inheritance-hierarchy^/addition_copy_files.output
+
 echo "building android.hardware.oemlock-V1-ndk_platform-source^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.oemlock-V1-ndk_platform-source,
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/oemlock/aidl/android.hardware.oemlock-V1-ndk_platform-source^
@@ -2778,137 +2869,17 @@ mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/oemlock/aidl/android.ha
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.oemlock-V1-ndk_platform^android_vendor.31_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/oemlock/aidl/android.hardware.oemlock-V1-ndk_platform^android_vendor.31_x86_x86_64_static
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.oemlock-V1-ndk_platform^android_vendor.31_x86_x86_64_static.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/oemlock/aidl/android.hardware.oemlock-V1-ndk_platform^android_vendor.31_x86_x86_64_static $GITHUB_WORKSPACE/artifacts/hardware/interfaces/oemlock/aidl/android.hardware.oemlock-V1-ndk_platform^android_vendor.31_x86_x86_64_static/addition_copy_files.output
 
-echo "building android.hardware.oemlock-V1.0-java_gen_java^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.oemlock-V1.0-java_gen_java,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/oemlock/1.0/android.hardware.oemlock-V1.0-java_gen_java^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.oemlock-V1.0-java_gen_java^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/oemlock/1.0/android.hardware.oemlock-V1.0-java_gen_java^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.oemlock-V1.0-java_gen_java^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/oemlock/1.0/android.hardware.oemlock-V1.0-java_gen_java^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/oemlock/1.0/android.hardware.oemlock-V1.0-java_gen_java^/addition_copy_files.output
-
 echo "building android.hardware.oemlock-api^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.oemlock-api,
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/oemlock/aidl/android.hardware.oemlock-api^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.oemlock-api^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/oemlock/aidl/android.hardware.oemlock-api^
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.oemlock-api^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/oemlock/aidl/android.hardware.oemlock-api^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/oemlock/aidl/android.hardware.oemlock-api^/addition_copy_files.output
 
-echo "building android.hardware.oemlock@1.0-inheritance-hierarchy^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.oemlock@1.0-inheritance-hierarchy,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/oemlock/1.0/android.hardware.oemlock@1.0-inheritance-hierarchy^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.oemlock@1.0-inheritance-hierarchy^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/oemlock/1.0/android.hardware.oemlock@1.0-inheritance-hierarchy^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.oemlock@1.0-inheritance-hierarchy^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/oemlock/1.0/android.hardware.oemlock@1.0-inheritance-hierarchy^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/oemlock/1.0/android.hardware.oemlock@1.0-inheritance-hierarchy^/addition_copy_files.output
-
-echo "building android.hardware.power-V1-cpp-source^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.power-V1-cpp-source,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/power/aidl/android.hardware.power-V1-cpp-source^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.power-V1-cpp-source^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/power/aidl/android.hardware.power-V1-cpp-source^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.power-V1-cpp-source^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/power/aidl/android.hardware.power-V1-cpp-source^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/power/aidl/android.hardware.power-V1-cpp-source^/addition_copy_files.output
-
-echo "building android.hardware.power-V1-java-source^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.power-V1-java-source,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/power/aidl/android.hardware.power-V1-java-source^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.power-V1-java-source^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/power/aidl/android.hardware.power-V1-java-source^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.power-V1-java-source^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/power/aidl/android.hardware.power-V1-java-source^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/power/aidl/android.hardware.power-V1-java-source^/addition_copy_files.output
-
 echo "building android.hardware.power-V1.0-java_gen_java^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.power-V1.0-java_gen_java,
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/power/1.0/android.hardware.power-V1.0-java_gen_java^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.power-V1.0-java_gen_java^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/power/1.0/android.hardware.power-V1.0-java_gen_java^
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.power-V1.0-java_gen_java^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/power/1.0/android.hardware.power-V1.0-java_gen_java^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/power/1.0/android.hardware.power-V1.0-java_gen_java^/addition_copy_files.output
-
-echo "building android.hardware.power-V2-cpp-source^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.power-V2-cpp-source,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/power/aidl/android.hardware.power-V2-cpp-source^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.power-V2-cpp-source^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/power/aidl/android.hardware.power-V2-cpp-source^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.power-V2-cpp-source^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/power/aidl/android.hardware.power-V2-cpp-source^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/power/aidl/android.hardware.power-V2-cpp-source^/addition_copy_files.output
-
-echo "building android.hardware.power-V2-ndk_platform-source^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.power-V2-ndk_platform-source,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/power/aidl/android.hardware.power-V2-ndk_platform-source^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.power-V2-ndk_platform-source^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/power/aidl/android.hardware.power-V2-ndk_platform-source^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.power-V2-ndk_platform-source^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/power/aidl/android.hardware.power-V2-ndk_platform-source^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/power/aidl/android.hardware.power-V2-ndk_platform-source^/addition_copy_files.output
-
-echo "building android.hardware.power-V2-ndk_platform^android_vendor.31_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.power-V2-ndk_platform,android_vendor.31_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/power/aidl/android.hardware.power-V2-ndk_platform^android_vendor.31_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.power-V2-ndk_platform^android_vendor.31_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/power/aidl/android.hardware.power-V2-ndk_platform^android_vendor.31_x86_64_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.power-V2-ndk_platform^android_vendor.31_x86_64_static.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/power/aidl/android.hardware.power-V2-ndk_platform^android_vendor.31_x86_64_static $GITHUB_WORKSPACE/artifacts/hardware/interfaces/power/aidl/android.hardware.power-V2-ndk_platform^android_vendor.31_x86_64_static/addition_copy_files.output
-
-echo "building android.hardware.power-V2-ndk_platform^android_vendor.31_x86_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.power-V2-ndk_platform,android_vendor.31_x86_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/power/aidl/android.hardware.power-V2-ndk_platform^android_vendor.31_x86_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.power-V2-ndk_platform^android_vendor.31_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/power/aidl/android.hardware.power-V2-ndk_platform^android_vendor.31_x86_x86_64_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.power-V2-ndk_platform^android_vendor.31_x86_x86_64_static.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/power/aidl/android.hardware.power-V2-ndk_platform^android_vendor.31_x86_x86_64_static $GITHUB_WORKSPACE/artifacts/hardware/interfaces/power/aidl/android.hardware.power-V2-ndk_platform^android_vendor.31_x86_x86_64_static/addition_copy_files.output
-
-echo "building android.hardware.power-api^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.power-api,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/power/aidl/android.hardware.power-api^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.power-api^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/power/aidl/android.hardware.power-api^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.power-api^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/power/aidl/android.hardware.power-api^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/power/aidl/android.hardware.power-api^/addition_copy_files.output
-
-echo "building android.hardware.power.stats-V1-cpp-source^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.power.stats-V1-cpp-source,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/power/stats/aidl/android.hardware.power.stats-V1-cpp-source^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.power.stats-V1-cpp-source^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/power/stats/aidl/android.hardware.power.stats-V1-cpp-source^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.power.stats-V1-cpp-source^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/power/stats/aidl/android.hardware.power.stats-V1-cpp-source^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/power/stats/aidl/android.hardware.power.stats-V1-cpp-source^/addition_copy_files.output
-
-echo "building android.hardware.power.stats-V1-java-source^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.power.stats-V1-java-source,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/power/stats/aidl/android.hardware.power.stats-V1-java-source^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.power.stats-V1-java-source^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/power/stats/aidl/android.hardware.power.stats-V1-java-source^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.power.stats-V1-java-source^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/power/stats/aidl/android.hardware.power.stats-V1-java-source^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/power/stats/aidl/android.hardware.power.stats-V1-java-source^/addition_copy_files.output
-
-echo "building android.hardware.power.stats-V1-ndk_platform-source^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.power.stats-V1-ndk_platform-source,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/power/stats/aidl/android.hardware.power.stats-V1-ndk_platform-source^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.power.stats-V1-ndk_platform-source^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/power/stats/aidl/android.hardware.power.stats-V1-ndk_platform-source^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.power.stats-V1-ndk_platform-source^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/power/stats/aidl/android.hardware.power.stats-V1-ndk_platform-source^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/power/stats/aidl/android.hardware.power.stats-V1-ndk_platform-source^/addition_copy_files.output
-
-echo "building android.hardware.power.stats-V1-ndk_platform^android_vendor.31_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.power.stats-V1-ndk_platform,android_vendor.31_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/power/stats/aidl/android.hardware.power.stats-V1-ndk_platform^android_vendor.31_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.power.stats-V1-ndk_platform^android_vendor.31_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/power/stats/aidl/android.hardware.power.stats-V1-ndk_platform^android_vendor.31_x86_64_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.power.stats-V1-ndk_platform^android_vendor.31_x86_64_static.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/power/stats/aidl/android.hardware.power.stats-V1-ndk_platform^android_vendor.31_x86_64_static $GITHUB_WORKSPACE/artifacts/hardware/interfaces/power/stats/aidl/android.hardware.power.stats-V1-ndk_platform^android_vendor.31_x86_64_static/addition_copy_files.output
-
-echo "building android.hardware.power.stats-V1-ndk_platform^android_vendor.31_x86_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.power.stats-V1-ndk_platform,android_vendor.31_x86_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/power/stats/aidl/android.hardware.power.stats-V1-ndk_platform^android_vendor.31_x86_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.power.stats-V1-ndk_platform^android_vendor.31_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/power/stats/aidl/android.hardware.power.stats-V1-ndk_platform^android_vendor.31_x86_x86_64_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.power.stats-V1-ndk_platform^android_vendor.31_x86_x86_64_static.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/power/stats/aidl/android.hardware.power.stats-V1-ndk_platform^android_vendor.31_x86_x86_64_static $GITHUB_WORKSPACE/artifacts/hardware/interfaces/power/stats/aidl/android.hardware.power.stats-V1-ndk_platform^android_vendor.31_x86_x86_64_static/addition_copy_files.output
-
-echo "building android.hardware.power.stats-V1-ndk_platform^android_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.power.stats-V1-ndk_platform,android_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/power/stats/aidl/android.hardware.power.stats-V1-ndk_platform^android_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.power.stats-V1-ndk_platform^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/power/stats/aidl/android.hardware.power.stats-V1-ndk_platform^android_x86_64_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.power.stats-V1-ndk_platform^android_x86_64_static.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/power/stats/aidl/android.hardware.power.stats-V1-ndk_platform^android_x86_64_static $GITHUB_WORKSPACE/artifacts/hardware/interfaces/power/stats/aidl/android.hardware.power.stats-V1-ndk_platform^android_x86_64_static/addition_copy_files.output
-
-echo "building android.hardware.power.stats-V1-ndk_platform^android_x86_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.power.stats-V1-ndk_platform,android_x86_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/power/stats/aidl/android.hardware.power.stats-V1-ndk_platform^android_x86_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.power.stats-V1-ndk_platform^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/power/stats/aidl/android.hardware.power.stats-V1-ndk_platform^android_x86_x86_64_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.power.stats-V1-ndk_platform^android_x86_x86_64_static.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/power/stats/aidl/android.hardware.power.stats-V1-ndk_platform^android_x86_x86_64_static $GITHUB_WORKSPACE/artifacts/hardware/interfaces/power/stats/aidl/android.hardware.power.stats-V1-ndk_platform^android_x86_x86_64_static/addition_copy_files.output
-
-echo "building android.hardware.power.stats-api^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.power.stats-api,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/power/stats/aidl/android.hardware.power.stats-api^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.power.stats-api^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/power/stats/aidl/android.hardware.power.stats-api^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.power.stats-api^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/power/stats/aidl/android.hardware.power.stats-api^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/power/stats/aidl/android.hardware.power.stats-api^/addition_copy_files.output
-
-echo "building android.hardware.power.stats@1.0-inheritance-hierarchy^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.power.stats@1.0-inheritance-hierarchy,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/power/stats/1.0/android.hardware.power.stats@1.0-inheritance-hierarchy^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.power.stats@1.0-inheritance-hierarchy^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/power/stats/1.0/android.hardware.power.stats@1.0-inheritance-hierarchy^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.power.stats@1.0-inheritance-hierarchy^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/power/stats/1.0/android.hardware.power.stats@1.0-inheritance-hierarchy^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/power/stats/1.0/android.hardware.power.stats@1.0-inheritance-hierarchy^/addition_copy_files.output
-
-echo "building android.hardware.power.stats@1.0_genc++^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.power.stats@1.0_genc++,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/power/stats/1.0/android.hardware.power.stats@1.0_genc++^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.power.stats@1.0_genc++^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/power/stats/1.0/android.hardware.power.stats@1.0_genc++^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.power.stats@1.0_genc++^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/power/stats/1.0/android.hardware.power.stats@1.0_genc++^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/power/stats/1.0/android.hardware.power.stats@1.0_genc++^/addition_copy_files.output
-
-echo "building android.hardware.power.stats@1.0_genc++_headers^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.power.stats@1.0_genc++_headers,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/power/stats/1.0/android.hardware.power.stats@1.0_genc++_headers^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.power.stats@1.0_genc++_headers^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/power/stats/1.0/android.hardware.power.stats@1.0_genc++_headers^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.power.stats@1.0_genc++_headers^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/power/stats/1.0/android.hardware.power.stats@1.0_genc++_headers^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/power/stats/1.0/android.hardware.power.stats@1.0_genc++_headers^/addition_copy_files.output
 
 echo "building android.hardware.power@1.0-inheritance-hierarchy^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.power@1.0-inheritance-hierarchy,
@@ -2982,11 +2953,137 @@ mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/power/1.3/android.hardw
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.power@1.3_genc++_headers^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/power/1.3/android.hardware.power@1.3_genc++_headers^
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.power@1.3_genc++_headers^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/power/1.3/android.hardware.power@1.3_genc++_headers^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/power/1.3/android.hardware.power@1.3_genc++_headers^/addition_copy_files.output
 
+echo "building android.hardware.power-V1-cpp-source^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.power-V1-cpp-source,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/power/aidl/android.hardware.power-V1-cpp-source^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.power-V1-cpp-source^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/power/aidl/android.hardware.power-V1-cpp-source^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.power-V1-cpp-source^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/power/aidl/android.hardware.power-V1-cpp-source^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/power/aidl/android.hardware.power-V1-cpp-source^/addition_copy_files.output
+
+echo "building android.hardware.power-V1-java-source^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.power-V1-java-source,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/power/aidl/android.hardware.power-V1-java-source^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.power-V1-java-source^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/power/aidl/android.hardware.power-V1-java-source^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.power-V1-java-source^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/power/aidl/android.hardware.power-V1-java-source^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/power/aidl/android.hardware.power-V1-java-source^/addition_copy_files.output
+
+echo "building android.hardware.power-V2-cpp-source^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.power-V2-cpp-source,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/power/aidl/android.hardware.power-V2-cpp-source^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.power-V2-cpp-source^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/power/aidl/android.hardware.power-V2-cpp-source^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.power-V2-cpp-source^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/power/aidl/android.hardware.power-V2-cpp-source^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/power/aidl/android.hardware.power-V2-cpp-source^/addition_copy_files.output
+
+echo "building android.hardware.power-V2-ndk_platform-source^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.power-V2-ndk_platform-source,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/power/aidl/android.hardware.power-V2-ndk_platform-source^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.power-V2-ndk_platform-source^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/power/aidl/android.hardware.power-V2-ndk_platform-source^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.power-V2-ndk_platform-source^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/power/aidl/android.hardware.power-V2-ndk_platform-source^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/power/aidl/android.hardware.power-V2-ndk_platform-source^/addition_copy_files.output
+
+echo "building android.hardware.power-V2-ndk_platform^android_vendor.31_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.power-V2-ndk_platform,android_vendor.31_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/power/aidl/android.hardware.power-V2-ndk_platform^android_vendor.31_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.power-V2-ndk_platform^android_vendor.31_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/power/aidl/android.hardware.power-V2-ndk_platform^android_vendor.31_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.power-V2-ndk_platform^android_vendor.31_x86_64_static.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/power/aidl/android.hardware.power-V2-ndk_platform^android_vendor.31_x86_64_static $GITHUB_WORKSPACE/artifacts/hardware/interfaces/power/aidl/android.hardware.power-V2-ndk_platform^android_vendor.31_x86_64_static/addition_copy_files.output
+
+echo "building android.hardware.power-V2-ndk_platform^android_vendor.31_x86_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.power-V2-ndk_platform,android_vendor.31_x86_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/power/aidl/android.hardware.power-V2-ndk_platform^android_vendor.31_x86_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.power-V2-ndk_platform^android_vendor.31_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/power/aidl/android.hardware.power-V2-ndk_platform^android_vendor.31_x86_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.power-V2-ndk_platform^android_vendor.31_x86_x86_64_static.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/power/aidl/android.hardware.power-V2-ndk_platform^android_vendor.31_x86_x86_64_static $GITHUB_WORKSPACE/artifacts/hardware/interfaces/power/aidl/android.hardware.power-V2-ndk_platform^android_vendor.31_x86_x86_64_static/addition_copy_files.output
+
+echo "building android.hardware.power-api^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.power-api,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/power/aidl/android.hardware.power-api^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.power-api^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/power/aidl/android.hardware.power-api^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.power-api^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/power/aidl/android.hardware.power-api^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/power/aidl/android.hardware.power-api^/addition_copy_files.output
+
+echo "building android.hardware.power.stats@1.0-inheritance-hierarchy^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.power.stats@1.0-inheritance-hierarchy,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/power/stats/1.0/android.hardware.power.stats@1.0-inheritance-hierarchy^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.power.stats@1.0-inheritance-hierarchy^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/power/stats/1.0/android.hardware.power.stats@1.0-inheritance-hierarchy^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.power.stats@1.0-inheritance-hierarchy^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/power/stats/1.0/android.hardware.power.stats@1.0-inheritance-hierarchy^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/power/stats/1.0/android.hardware.power.stats@1.0-inheritance-hierarchy^/addition_copy_files.output
+
+echo "building android.hardware.power.stats@1.0_genc++^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.power.stats@1.0_genc++,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/power/stats/1.0/android.hardware.power.stats@1.0_genc++^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.power.stats@1.0_genc++^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/power/stats/1.0/android.hardware.power.stats@1.0_genc++^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.power.stats@1.0_genc++^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/power/stats/1.0/android.hardware.power.stats@1.0_genc++^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/power/stats/1.0/android.hardware.power.stats@1.0_genc++^/addition_copy_files.output
+
+echo "building android.hardware.power.stats@1.0_genc++_headers^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.power.stats@1.0_genc++_headers,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/power/stats/1.0/android.hardware.power.stats@1.0_genc++_headers^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.power.stats@1.0_genc++_headers^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/power/stats/1.0/android.hardware.power.stats@1.0_genc++_headers^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.power.stats@1.0_genc++_headers^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/power/stats/1.0/android.hardware.power.stats@1.0_genc++_headers^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/power/stats/1.0/android.hardware.power.stats@1.0_genc++_headers^/addition_copy_files.output
+
+echo "building android.hardware.power.stats-V1-cpp-source^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.power.stats-V1-cpp-source,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/power/stats/aidl/android.hardware.power.stats-V1-cpp-source^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.power.stats-V1-cpp-source^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/power/stats/aidl/android.hardware.power.stats-V1-cpp-source^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.power.stats-V1-cpp-source^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/power/stats/aidl/android.hardware.power.stats-V1-cpp-source^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/power/stats/aidl/android.hardware.power.stats-V1-cpp-source^/addition_copy_files.output
+
+echo "building android.hardware.power.stats-V1-java-source^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.power.stats-V1-java-source,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/power/stats/aidl/android.hardware.power.stats-V1-java-source^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.power.stats-V1-java-source^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/power/stats/aidl/android.hardware.power.stats-V1-java-source^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.power.stats-V1-java-source^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/power/stats/aidl/android.hardware.power.stats-V1-java-source^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/power/stats/aidl/android.hardware.power.stats-V1-java-source^/addition_copy_files.output
+
+echo "building android.hardware.power.stats-V1-ndk_platform-source^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.power.stats-V1-ndk_platform-source,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/power/stats/aidl/android.hardware.power.stats-V1-ndk_platform-source^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.power.stats-V1-ndk_platform-source^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/power/stats/aidl/android.hardware.power.stats-V1-ndk_platform-source^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.power.stats-V1-ndk_platform-source^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/power/stats/aidl/android.hardware.power.stats-V1-ndk_platform-source^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/power/stats/aidl/android.hardware.power.stats-V1-ndk_platform-source^/addition_copy_files.output
+
+echo "building android.hardware.power.stats-V1-ndk_platform^android_vendor.31_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.power.stats-V1-ndk_platform,android_vendor.31_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/power/stats/aidl/android.hardware.power.stats-V1-ndk_platform^android_vendor.31_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.power.stats-V1-ndk_platform^android_vendor.31_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/power/stats/aidl/android.hardware.power.stats-V1-ndk_platform^android_vendor.31_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.power.stats-V1-ndk_platform^android_vendor.31_x86_64_static.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/power/stats/aidl/android.hardware.power.stats-V1-ndk_platform^android_vendor.31_x86_64_static $GITHUB_WORKSPACE/artifacts/hardware/interfaces/power/stats/aidl/android.hardware.power.stats-V1-ndk_platform^android_vendor.31_x86_64_static/addition_copy_files.output
+
+echo "building android.hardware.power.stats-V1-ndk_platform^android_vendor.31_x86_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.power.stats-V1-ndk_platform,android_vendor.31_x86_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/power/stats/aidl/android.hardware.power.stats-V1-ndk_platform^android_vendor.31_x86_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.power.stats-V1-ndk_platform^android_vendor.31_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/power/stats/aidl/android.hardware.power.stats-V1-ndk_platform^android_vendor.31_x86_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.power.stats-V1-ndk_platform^android_vendor.31_x86_x86_64_static.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/power/stats/aidl/android.hardware.power.stats-V1-ndk_platform^android_vendor.31_x86_x86_64_static $GITHUB_WORKSPACE/artifacts/hardware/interfaces/power/stats/aidl/android.hardware.power.stats-V1-ndk_platform^android_vendor.31_x86_x86_64_static/addition_copy_files.output
+
+echo "building android.hardware.power.stats-V1-ndk_platform^android_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.power.stats-V1-ndk_platform,android_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/power/stats/aidl/android.hardware.power.stats-V1-ndk_platform^android_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.power.stats-V1-ndk_platform^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/power/stats/aidl/android.hardware.power.stats-V1-ndk_platform^android_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.power.stats-V1-ndk_platform^android_x86_64_static.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/power/stats/aidl/android.hardware.power.stats-V1-ndk_platform^android_x86_64_static $GITHUB_WORKSPACE/artifacts/hardware/interfaces/power/stats/aidl/android.hardware.power.stats-V1-ndk_platform^android_x86_64_static/addition_copy_files.output
+
+echo "building android.hardware.power.stats-V1-ndk_platform^android_x86_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.power.stats-V1-ndk_platform,android_x86_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/power/stats/aidl/android.hardware.power.stats-V1-ndk_platform^android_x86_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.power.stats-V1-ndk_platform^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/power/stats/aidl/android.hardware.power.stats-V1-ndk_platform^android_x86_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.power.stats-V1-ndk_platform^android_x86_x86_64_static.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/power/stats/aidl/android.hardware.power.stats-V1-ndk_platform^android_x86_x86_64_static $GITHUB_WORKSPACE/artifacts/hardware/interfaces/power/stats/aidl/android.hardware.power.stats-V1-ndk_platform^android_x86_x86_64_static/addition_copy_files.output
+
+echo "building android.hardware.power.stats-api^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.power.stats-api,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/power/stats/aidl/android.hardware.power.stats-api^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.power.stats-api^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/power/stats/aidl/android.hardware.power.stats-api^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.power.stats-api^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/power/stats/aidl/android.hardware.power.stats-api^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/power/stats/aidl/android.hardware.power.stats-api^/addition_copy_files.output
+
 echo "building android.hardware.radio-V1.0-java_gen_java^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.radio-V1.0-java_gen_java,
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.0/android.hardware.radio-V1.0-java_gen_java^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.radio-V1.0-java_gen_java^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.0/android.hardware.radio-V1.0-java_gen_java^
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.radio-V1.0-java_gen_java^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.0/android.hardware.radio-V1.0-java_gen_java^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.0/android.hardware.radio-V1.0-java_gen_java^/addition_copy_files.output
+
+echo "building android.hardware.radio@1.0-inheritance-hierarchy^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.radio@1.0-inheritance-hierarchy,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.0/android.hardware.radio@1.0-inheritance-hierarchy^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.radio@1.0-inheritance-hierarchy^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.0/android.hardware.radio@1.0-inheritance-hierarchy^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.radio@1.0-inheritance-hierarchy^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.0/android.hardware.radio@1.0-inheritance-hierarchy^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.0/android.hardware.radio@1.0-inheritance-hierarchy^/addition_copy_files.output
+
+echo "building android.hardware.radio@1.0_genc++^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.radio@1.0_genc++,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.0/android.hardware.radio@1.0_genc++^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.radio@1.0_genc++^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.0/android.hardware.radio@1.0_genc++^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.radio@1.0_genc++^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.0/android.hardware.radio@1.0_genc++^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.0/android.hardware.radio@1.0_genc++^/addition_copy_files.output
+
+echo "building android.hardware.radio@1.0_genc++_headers^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.radio@1.0_genc++_headers,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.0/android.hardware.radio@1.0_genc++_headers^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.radio@1.0_genc++_headers^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.0/android.hardware.radio@1.0_genc++_headers^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.radio@1.0_genc++_headers^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.0/android.hardware.radio@1.0_genc++_headers^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.0/android.hardware.radio@1.0_genc++_headers^/addition_copy_files.output
 
 echo "building android.hardware.radio-V1.1-java_gen_java^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.radio-V1.1-java_gen_java,
@@ -2994,11 +3091,47 @@ mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.1/android.hardw
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.radio-V1.1-java_gen_java^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.1/android.hardware.radio-V1.1-java_gen_java^
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.radio-V1.1-java_gen_java^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.1/android.hardware.radio-V1.1-java_gen_java^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.1/android.hardware.radio-V1.1-java_gen_java^/addition_copy_files.output
 
+echo "building android.hardware.radio@1.1-inheritance-hierarchy^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.radio@1.1-inheritance-hierarchy,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.1/android.hardware.radio@1.1-inheritance-hierarchy^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.radio@1.1-inheritance-hierarchy^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.1/android.hardware.radio@1.1-inheritance-hierarchy^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.radio@1.1-inheritance-hierarchy^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.1/android.hardware.radio@1.1-inheritance-hierarchy^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.1/android.hardware.radio@1.1-inheritance-hierarchy^/addition_copy_files.output
+
+echo "building android.hardware.radio@1.1_genc++^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.radio@1.1_genc++,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.1/android.hardware.radio@1.1_genc++^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.radio@1.1_genc++^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.1/android.hardware.radio@1.1_genc++^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.radio@1.1_genc++^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.1/android.hardware.radio@1.1_genc++^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.1/android.hardware.radio@1.1_genc++^/addition_copy_files.output
+
+echo "building android.hardware.radio@1.1_genc++_headers^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.radio@1.1_genc++_headers,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.1/android.hardware.radio@1.1_genc++_headers^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.radio@1.1_genc++_headers^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.1/android.hardware.radio@1.1_genc++_headers^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.radio@1.1_genc++_headers^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.1/android.hardware.radio@1.1_genc++_headers^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.1/android.hardware.radio@1.1_genc++_headers^/addition_copy_files.output
+
 echo "building android.hardware.radio-V1.2-java_gen_java^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.radio-V1.2-java_gen_java,
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.2/android.hardware.radio-V1.2-java_gen_java^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.radio-V1.2-java_gen_java^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.2/android.hardware.radio-V1.2-java_gen_java^
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.radio-V1.2-java_gen_java^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.2/android.hardware.radio-V1.2-java_gen_java^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.2/android.hardware.radio-V1.2-java_gen_java^/addition_copy_files.output
+
+echo "building android.hardware.radio@1.2-inheritance-hierarchy^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.radio@1.2-inheritance-hierarchy,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.2/android.hardware.radio@1.2-inheritance-hierarchy^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.radio@1.2-inheritance-hierarchy^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.2/android.hardware.radio@1.2-inheritance-hierarchy^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.radio@1.2-inheritance-hierarchy^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.2/android.hardware.radio@1.2-inheritance-hierarchy^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.2/android.hardware.radio@1.2-inheritance-hierarchy^/addition_copy_files.output
+
+echo "building android.hardware.radio@1.2_genc++^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.radio@1.2_genc++,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.2/android.hardware.radio@1.2_genc++^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.radio@1.2_genc++^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.2/android.hardware.radio@1.2_genc++^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.radio@1.2_genc++^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.2/android.hardware.radio@1.2_genc++^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.2/android.hardware.radio@1.2_genc++^/addition_copy_files.output
+
+echo "building android.hardware.radio@1.2_genc++_headers^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.radio@1.2_genc++_headers,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.2/android.hardware.radio@1.2_genc++_headers^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.radio@1.2_genc++_headers^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.2/android.hardware.radio@1.2_genc++_headers^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.radio@1.2_genc++_headers^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.2/android.hardware.radio@1.2_genc++_headers^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.2/android.hardware.radio@1.2_genc++_headers^/addition_copy_files.output
 
 echo "building android.hardware.radio-V1.3-java_gen_java^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.radio-V1.3-java_gen_java,
@@ -3006,11 +3139,47 @@ mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.3/android.hardw
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.radio-V1.3-java_gen_java^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.3/android.hardware.radio-V1.3-java_gen_java^
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.radio-V1.3-java_gen_java^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.3/android.hardware.radio-V1.3-java_gen_java^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.3/android.hardware.radio-V1.3-java_gen_java^/addition_copy_files.output
 
+echo "building android.hardware.radio@1.3-inheritance-hierarchy^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.radio@1.3-inheritance-hierarchy,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.3/android.hardware.radio@1.3-inheritance-hierarchy^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.radio@1.3-inheritance-hierarchy^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.3/android.hardware.radio@1.3-inheritance-hierarchy^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.radio@1.3-inheritance-hierarchy^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.3/android.hardware.radio@1.3-inheritance-hierarchy^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.3/android.hardware.radio@1.3-inheritance-hierarchy^/addition_copy_files.output
+
+echo "building android.hardware.radio@1.3_genc++^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.radio@1.3_genc++,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.3/android.hardware.radio@1.3_genc++^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.radio@1.3_genc++^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.3/android.hardware.radio@1.3_genc++^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.radio@1.3_genc++^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.3/android.hardware.radio@1.3_genc++^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.3/android.hardware.radio@1.3_genc++^/addition_copy_files.output
+
+echo "building android.hardware.radio@1.3_genc++_headers^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.radio@1.3_genc++_headers,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.3/android.hardware.radio@1.3_genc++_headers^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.radio@1.3_genc++_headers^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.3/android.hardware.radio@1.3_genc++_headers^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.radio@1.3_genc++_headers^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.3/android.hardware.radio@1.3_genc++_headers^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.3/android.hardware.radio@1.3_genc++_headers^/addition_copy_files.output
+
 echo "building android.hardware.radio-V1.4-java_gen_java^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.radio-V1.4-java_gen_java,
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.4/android.hardware.radio-V1.4-java_gen_java^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.radio-V1.4-java_gen_java^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.4/android.hardware.radio-V1.4-java_gen_java^
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.radio-V1.4-java_gen_java^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.4/android.hardware.radio-V1.4-java_gen_java^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.4/android.hardware.radio-V1.4-java_gen_java^/addition_copy_files.output
+
+echo "building android.hardware.radio@1.4-inheritance-hierarchy^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.radio@1.4-inheritance-hierarchy,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.4/android.hardware.radio@1.4-inheritance-hierarchy^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.radio@1.4-inheritance-hierarchy^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.4/android.hardware.radio@1.4-inheritance-hierarchy^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.radio@1.4-inheritance-hierarchy^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.4/android.hardware.radio@1.4-inheritance-hierarchy^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.4/android.hardware.radio@1.4-inheritance-hierarchy^/addition_copy_files.output
+
+echo "building android.hardware.radio@1.4_genc++^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.radio@1.4_genc++,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.4/android.hardware.radio@1.4_genc++^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.radio@1.4_genc++^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.4/android.hardware.radio@1.4_genc++^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.radio@1.4_genc++^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.4/android.hardware.radio@1.4_genc++^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.4/android.hardware.radio@1.4_genc++^/addition_copy_files.output
+
+echo "building android.hardware.radio@1.4_genc++_headers^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.radio@1.4_genc++_headers,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.4/android.hardware.radio@1.4_genc++_headers^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.radio@1.4_genc++_headers^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.4/android.hardware.radio@1.4_genc++_headers^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.radio@1.4_genc++_headers^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.4/android.hardware.radio@1.4_genc++_headers^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.4/android.hardware.radio@1.4_genc++_headers^/addition_copy_files.output
 
 echo "building android.hardware.radio-V1.5-java_gen_java^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.radio-V1.5-java_gen_java,
@@ -3018,35 +3187,53 @@ mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.5/android.hardw
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.radio-V1.5-java_gen_java^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.5/android.hardware.radio-V1.5-java_gen_java^
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.radio-V1.5-java_gen_java^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.5/android.hardware.radio-V1.5-java_gen_java^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.5/android.hardware.radio-V1.5-java_gen_java^/addition_copy_files.output
 
+echo "building android.hardware.radio@1.5-inheritance-hierarchy^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.radio@1.5-inheritance-hierarchy,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.5/android.hardware.radio@1.5-inheritance-hierarchy^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.radio@1.5-inheritance-hierarchy^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.5/android.hardware.radio@1.5-inheritance-hierarchy^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.radio@1.5-inheritance-hierarchy^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.5/android.hardware.radio@1.5-inheritance-hierarchy^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.5/android.hardware.radio@1.5-inheritance-hierarchy^/addition_copy_files.output
+
+echo "building android.hardware.radio@1.5_genc++^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.radio@1.5_genc++,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.5/android.hardware.radio@1.5_genc++^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.radio@1.5_genc++^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.5/android.hardware.radio@1.5_genc++^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.radio@1.5_genc++^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.5/android.hardware.radio@1.5_genc++^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.5/android.hardware.radio@1.5_genc++^/addition_copy_files.output
+
+echo "building android.hardware.radio@1.5_genc++_headers^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.radio@1.5_genc++_headers,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.5/android.hardware.radio@1.5_genc++_headers^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.radio@1.5_genc++_headers^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.5/android.hardware.radio@1.5_genc++_headers^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.radio@1.5_genc++_headers^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.5/android.hardware.radio@1.5_genc++_headers^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.5/android.hardware.radio@1.5_genc++_headers^/addition_copy_files.output
+
 echo "building android.hardware.radio-V1.6-java_gen_java^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.radio-V1.6-java_gen_java,
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.6/android.hardware.radio-V1.6-java_gen_java^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.radio-V1.6-java_gen_java^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.6/android.hardware.radio-V1.6-java_gen_java^
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.radio-V1.6-java_gen_java^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.6/android.hardware.radio-V1.6-java_gen_java^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.6/android.hardware.radio-V1.6-java_gen_java^/addition_copy_files.output
 
+echo "building android.hardware.radio@1.6-inheritance-hierarchy^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.radio@1.6-inheritance-hierarchy,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.6/android.hardware.radio@1.6-inheritance-hierarchy^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.radio@1.6-inheritance-hierarchy^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.6/android.hardware.radio@1.6-inheritance-hierarchy^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.radio@1.6-inheritance-hierarchy^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.6/android.hardware.radio@1.6-inheritance-hierarchy^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.6/android.hardware.radio@1.6-inheritance-hierarchy^/addition_copy_files.output
+
+echo "building android.hardware.radio@1.6_genc++^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.radio@1.6_genc++,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.6/android.hardware.radio@1.6_genc++^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.radio@1.6_genc++^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.6/android.hardware.radio@1.6_genc++^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.radio@1.6_genc++^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.6/android.hardware.radio@1.6_genc++^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.6/android.hardware.radio@1.6_genc++^/addition_copy_files.output
+
+echo "building android.hardware.radio@1.6_genc++_headers^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.radio@1.6_genc++_headers,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.6/android.hardware.radio@1.6_genc++_headers^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.radio@1.6_genc++_headers^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.6/android.hardware.radio@1.6_genc++_headers^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.radio@1.6_genc++_headers^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.6/android.hardware.radio@1.6_genc++_headers^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.6/android.hardware.radio@1.6_genc++_headers^/addition_copy_files.output
+
 echo "building android.hardware.radio.config-V1.0-java_gen_java^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.radio.config-V1.0-java_gen_java,
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/config/1.0/android.hardware.radio.config-V1.0-java_gen_java^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.radio.config-V1.0-java_gen_java^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/config/1.0/android.hardware.radio.config-V1.0-java_gen_java^
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.radio.config-V1.0-java_gen_java^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/config/1.0/android.hardware.radio.config-V1.0-java_gen_java^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/config/1.0/android.hardware.radio.config-V1.0-java_gen_java^/addition_copy_files.output
-
-echo "building android.hardware.radio.config-V1.1-java_gen_java^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.radio.config-V1.1-java_gen_java,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/config/1.1/android.hardware.radio.config-V1.1-java_gen_java^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.radio.config-V1.1-java_gen_java^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/config/1.1/android.hardware.radio.config-V1.1-java_gen_java^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.radio.config-V1.1-java_gen_java^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/config/1.1/android.hardware.radio.config-V1.1-java_gen_java^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/config/1.1/android.hardware.radio.config-V1.1-java_gen_java^/addition_copy_files.output
-
-echo "building android.hardware.radio.config-V1.2-java_gen_java^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.radio.config-V1.2-java_gen_java,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/config/1.2/android.hardware.radio.config-V1.2-java_gen_java^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.radio.config-V1.2-java_gen_java^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/config/1.2/android.hardware.radio.config-V1.2-java_gen_java^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.radio.config-V1.2-java_gen_java^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/config/1.2/android.hardware.radio.config-V1.2-java_gen_java^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/config/1.2/android.hardware.radio.config-V1.2-java_gen_java^/addition_copy_files.output
-
-echo "building android.hardware.radio.config-V1.3-java_gen_java^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.radio.config-V1.3-java_gen_java,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/config/1.3/android.hardware.radio.config-V1.3-java_gen_java^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.radio.config-V1.3-java_gen_java^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/config/1.3/android.hardware.radio.config-V1.3-java_gen_java^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.radio.config-V1.3-java_gen_java^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/config/1.3/android.hardware.radio.config-V1.3-java_gen_java^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/config/1.3/android.hardware.radio.config-V1.3-java_gen_java^/addition_copy_files.output
 
 echo "building android.hardware.radio.config@1.0-inheritance-hierarchy^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.radio.config@1.0-inheritance-hierarchy,
@@ -3066,6 +3253,12 @@ mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/config/1.0/androi
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.radio.config@1.0_genc++_headers^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/config/1.0/android.hardware.radio.config@1.0_genc++_headers^
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.radio.config@1.0_genc++_headers^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/config/1.0/android.hardware.radio.config@1.0_genc++_headers^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/config/1.0/android.hardware.radio.config@1.0_genc++_headers^/addition_copy_files.output
 
+echo "building android.hardware.radio.config-V1.1-java_gen_java^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.radio.config-V1.1-java_gen_java,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/config/1.1/android.hardware.radio.config-V1.1-java_gen_java^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.radio.config-V1.1-java_gen_java^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/config/1.1/android.hardware.radio.config-V1.1-java_gen_java^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.radio.config-V1.1-java_gen_java^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/config/1.1/android.hardware.radio.config-V1.1-java_gen_java^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/config/1.1/android.hardware.radio.config-V1.1-java_gen_java^/addition_copy_files.output
+
 echo "building android.hardware.radio.config@1.1-inheritance-hierarchy^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.radio.config@1.1-inheritance-hierarchy,
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/config/1.1/android.hardware.radio.config@1.1-inheritance-hierarchy^
@@ -3084,6 +3277,12 @@ mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/config/1.1/androi
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.radio.config@1.1_genc++_headers^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/config/1.1/android.hardware.radio.config@1.1_genc++_headers^
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.radio.config@1.1_genc++_headers^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/config/1.1/android.hardware.radio.config@1.1_genc++_headers^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/config/1.1/android.hardware.radio.config@1.1_genc++_headers^/addition_copy_files.output
 
+echo "building android.hardware.radio.config-V1.2-java_gen_java^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.radio.config-V1.2-java_gen_java,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/config/1.2/android.hardware.radio.config-V1.2-java_gen_java^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.radio.config-V1.2-java_gen_java^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/config/1.2/android.hardware.radio.config-V1.2-java_gen_java^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.radio.config-V1.2-java_gen_java^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/config/1.2/android.hardware.radio.config-V1.2-java_gen_java^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/config/1.2/android.hardware.radio.config-V1.2-java_gen_java^/addition_copy_files.output
+
 echo "building android.hardware.radio.config@1.2-inheritance-hierarchy^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.radio.config@1.2-inheritance-hierarchy,
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/config/1.2/android.hardware.radio.config@1.2-inheritance-hierarchy^
@@ -3101,6 +3300,12 @@ prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/st
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/config/1.2/android.hardware.radio.config@1.2_genc++_headers^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.radio.config@1.2_genc++_headers^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/config/1.2/android.hardware.radio.config@1.2_genc++_headers^
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.radio.config@1.2_genc++_headers^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/config/1.2/android.hardware.radio.config@1.2_genc++_headers^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/config/1.2/android.hardware.radio.config@1.2_genc++_headers^/addition_copy_files.output
+
+echo "building android.hardware.radio.config-V1.3-java_gen_java^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.radio.config-V1.3-java_gen_java,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/config/1.3/android.hardware.radio.config-V1.3-java_gen_java^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.radio.config-V1.3-java_gen_java^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/config/1.3/android.hardware.radio.config-V1.3-java_gen_java^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.radio.config-V1.3-java_gen_java^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/config/1.3/android.hardware.radio.config-V1.3-java_gen_java^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/config/1.3/android.hardware.radio.config-V1.3-java_gen_java^/addition_copy_files.output
 
 echo "building android.hardware.radio.config@1.3-inheritance-hierarchy^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.radio.config@1.3-inheritance-hierarchy,
@@ -3144,132 +3349,6 @@ mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/deprecated/1.0/an
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.radio.deprecated@1.0_genc++_headers^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/deprecated/1.0/android.hardware.radio.deprecated@1.0_genc++_headers^
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.radio.deprecated@1.0_genc++_headers^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/deprecated/1.0/android.hardware.radio.deprecated@1.0_genc++_headers^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/deprecated/1.0/android.hardware.radio.deprecated@1.0_genc++_headers^/addition_copy_files.output
 
-echo "building android.hardware.radio@1.0-inheritance-hierarchy^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.radio@1.0-inheritance-hierarchy,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.0/android.hardware.radio@1.0-inheritance-hierarchy^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.radio@1.0-inheritance-hierarchy^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.0/android.hardware.radio@1.0-inheritance-hierarchy^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.radio@1.0-inheritance-hierarchy^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.0/android.hardware.radio@1.0-inheritance-hierarchy^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.0/android.hardware.radio@1.0-inheritance-hierarchy^/addition_copy_files.output
-
-echo "building android.hardware.radio@1.0_genc++^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.radio@1.0_genc++,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.0/android.hardware.radio@1.0_genc++^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.radio@1.0_genc++^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.0/android.hardware.radio@1.0_genc++^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.radio@1.0_genc++^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.0/android.hardware.radio@1.0_genc++^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.0/android.hardware.radio@1.0_genc++^/addition_copy_files.output
-
-echo "building android.hardware.radio@1.0_genc++_headers^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.radio@1.0_genc++_headers,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.0/android.hardware.radio@1.0_genc++_headers^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.radio@1.0_genc++_headers^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.0/android.hardware.radio@1.0_genc++_headers^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.radio@1.0_genc++_headers^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.0/android.hardware.radio@1.0_genc++_headers^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.0/android.hardware.radio@1.0_genc++_headers^/addition_copy_files.output
-
-echo "building android.hardware.radio@1.1-inheritance-hierarchy^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.radio@1.1-inheritance-hierarchy,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.1/android.hardware.radio@1.1-inheritance-hierarchy^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.radio@1.1-inheritance-hierarchy^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.1/android.hardware.radio@1.1-inheritance-hierarchy^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.radio@1.1-inheritance-hierarchy^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.1/android.hardware.radio@1.1-inheritance-hierarchy^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.1/android.hardware.radio@1.1-inheritance-hierarchy^/addition_copy_files.output
-
-echo "building android.hardware.radio@1.1_genc++^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.radio@1.1_genc++,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.1/android.hardware.radio@1.1_genc++^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.radio@1.1_genc++^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.1/android.hardware.radio@1.1_genc++^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.radio@1.1_genc++^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.1/android.hardware.radio@1.1_genc++^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.1/android.hardware.radio@1.1_genc++^/addition_copy_files.output
-
-echo "building android.hardware.radio@1.1_genc++_headers^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.radio@1.1_genc++_headers,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.1/android.hardware.radio@1.1_genc++_headers^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.radio@1.1_genc++_headers^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.1/android.hardware.radio@1.1_genc++_headers^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.radio@1.1_genc++_headers^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.1/android.hardware.radio@1.1_genc++_headers^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.1/android.hardware.radio@1.1_genc++_headers^/addition_copy_files.output
-
-echo "building android.hardware.radio@1.2-inheritance-hierarchy^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.radio@1.2-inheritance-hierarchy,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.2/android.hardware.radio@1.2-inheritance-hierarchy^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.radio@1.2-inheritance-hierarchy^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.2/android.hardware.radio@1.2-inheritance-hierarchy^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.radio@1.2-inheritance-hierarchy^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.2/android.hardware.radio@1.2-inheritance-hierarchy^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.2/android.hardware.radio@1.2-inheritance-hierarchy^/addition_copy_files.output
-
-echo "building android.hardware.radio@1.2_genc++^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.radio@1.2_genc++,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.2/android.hardware.radio@1.2_genc++^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.radio@1.2_genc++^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.2/android.hardware.radio@1.2_genc++^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.radio@1.2_genc++^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.2/android.hardware.radio@1.2_genc++^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.2/android.hardware.radio@1.2_genc++^/addition_copy_files.output
-
-echo "building android.hardware.radio@1.2_genc++_headers^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.radio@1.2_genc++_headers,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.2/android.hardware.radio@1.2_genc++_headers^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.radio@1.2_genc++_headers^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.2/android.hardware.radio@1.2_genc++_headers^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.radio@1.2_genc++_headers^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.2/android.hardware.radio@1.2_genc++_headers^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.2/android.hardware.radio@1.2_genc++_headers^/addition_copy_files.output
-
-echo "building android.hardware.radio@1.3-inheritance-hierarchy^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.radio@1.3-inheritance-hierarchy,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.3/android.hardware.radio@1.3-inheritance-hierarchy^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.radio@1.3-inheritance-hierarchy^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.3/android.hardware.radio@1.3-inheritance-hierarchy^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.radio@1.3-inheritance-hierarchy^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.3/android.hardware.radio@1.3-inheritance-hierarchy^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.3/android.hardware.radio@1.3-inheritance-hierarchy^/addition_copy_files.output
-
-echo "building android.hardware.radio@1.3_genc++^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.radio@1.3_genc++,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.3/android.hardware.radio@1.3_genc++^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.radio@1.3_genc++^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.3/android.hardware.radio@1.3_genc++^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.radio@1.3_genc++^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.3/android.hardware.radio@1.3_genc++^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.3/android.hardware.radio@1.3_genc++^/addition_copy_files.output
-
-echo "building android.hardware.radio@1.3_genc++_headers^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.radio@1.3_genc++_headers,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.3/android.hardware.radio@1.3_genc++_headers^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.radio@1.3_genc++_headers^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.3/android.hardware.radio@1.3_genc++_headers^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.radio@1.3_genc++_headers^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.3/android.hardware.radio@1.3_genc++_headers^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.3/android.hardware.radio@1.3_genc++_headers^/addition_copy_files.output
-
-echo "building android.hardware.radio@1.4-inheritance-hierarchy^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.radio@1.4-inheritance-hierarchy,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.4/android.hardware.radio@1.4-inheritance-hierarchy^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.radio@1.4-inheritance-hierarchy^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.4/android.hardware.radio@1.4-inheritance-hierarchy^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.radio@1.4-inheritance-hierarchy^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.4/android.hardware.radio@1.4-inheritance-hierarchy^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.4/android.hardware.radio@1.4-inheritance-hierarchy^/addition_copy_files.output
-
-echo "building android.hardware.radio@1.4_genc++^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.radio@1.4_genc++,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.4/android.hardware.radio@1.4_genc++^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.radio@1.4_genc++^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.4/android.hardware.radio@1.4_genc++^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.radio@1.4_genc++^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.4/android.hardware.radio@1.4_genc++^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.4/android.hardware.radio@1.4_genc++^/addition_copy_files.output
-
-echo "building android.hardware.radio@1.4_genc++_headers^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.radio@1.4_genc++_headers,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.4/android.hardware.radio@1.4_genc++_headers^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.radio@1.4_genc++_headers^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.4/android.hardware.radio@1.4_genc++_headers^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.radio@1.4_genc++_headers^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.4/android.hardware.radio@1.4_genc++_headers^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.4/android.hardware.radio@1.4_genc++_headers^/addition_copy_files.output
-
-echo "building android.hardware.radio@1.5-inheritance-hierarchy^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.radio@1.5-inheritance-hierarchy,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.5/android.hardware.radio@1.5-inheritance-hierarchy^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.radio@1.5-inheritance-hierarchy^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.5/android.hardware.radio@1.5-inheritance-hierarchy^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.radio@1.5-inheritance-hierarchy^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.5/android.hardware.radio@1.5-inheritance-hierarchy^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.5/android.hardware.radio@1.5-inheritance-hierarchy^/addition_copy_files.output
-
-echo "building android.hardware.radio@1.5_genc++^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.radio@1.5_genc++,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.5/android.hardware.radio@1.5_genc++^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.radio@1.5_genc++^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.5/android.hardware.radio@1.5_genc++^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.radio@1.5_genc++^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.5/android.hardware.radio@1.5_genc++^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.5/android.hardware.radio@1.5_genc++^/addition_copy_files.output
-
-echo "building android.hardware.radio@1.5_genc++_headers^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.radio@1.5_genc++_headers,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.5/android.hardware.radio@1.5_genc++_headers^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.radio@1.5_genc++_headers^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.5/android.hardware.radio@1.5_genc++_headers^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.radio@1.5_genc++_headers^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.5/android.hardware.radio@1.5_genc++_headers^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.5/android.hardware.radio@1.5_genc++_headers^/addition_copy_files.output
-
-echo "building android.hardware.radio@1.6-inheritance-hierarchy^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.radio@1.6-inheritance-hierarchy,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.6/android.hardware.radio@1.6-inheritance-hierarchy^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.radio@1.6-inheritance-hierarchy^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.6/android.hardware.radio@1.6-inheritance-hierarchy^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.radio@1.6-inheritance-hierarchy^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.6/android.hardware.radio@1.6-inheritance-hierarchy^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.6/android.hardware.radio@1.6-inheritance-hierarchy^/addition_copy_files.output
-
-echo "building android.hardware.radio@1.6_genc++^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.radio@1.6_genc++,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.6/android.hardware.radio@1.6_genc++^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.radio@1.6_genc++^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.6/android.hardware.radio@1.6_genc++^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.radio@1.6_genc++^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.6/android.hardware.radio@1.6_genc++^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.6/android.hardware.radio@1.6_genc++^/addition_copy_files.output
-
-echo "building android.hardware.radio@1.6_genc++_headers^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.radio@1.6_genc++_headers,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.6/android.hardware.radio@1.6_genc++_headers^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.radio@1.6_genc++_headers^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.6/android.hardware.radio@1.6_genc++_headers^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.radio@1.6_genc++_headers^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.6/android.hardware.radio@1.6_genc++_headers^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/radio/1.6/android.hardware.radio@1.6_genc++_headers^/addition_copy_files.output
-
 echo "building android.hardware.rebootescrow-V1-java-source^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.rebootescrow-V1-java-source,
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/rebootescrow/aidl/android.hardware.rebootescrow-V1-java-source^
@@ -3300,6 +3379,18 @@ mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/rebootescrow/aidl/andro
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.rebootescrow-api^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/rebootescrow/aidl/android.hardware.rebootescrow-api^
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.rebootescrow-api^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/rebootescrow/aidl/android.hardware.rebootescrow-api^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/rebootescrow/aidl/android.hardware.rebootescrow-api^/addition_copy_files.output
 
+echo "building librebootescrowdefaultimpl^android_vendor.31_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja librebootescrowdefaultimpl,android_vendor.31_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/rebootescrow/aidl/default/librebootescrowdefaultimpl^android_vendor.31_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/librebootescrowdefaultimpl^android_vendor.31_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/rebootescrow/aidl/default/librebootescrowdefaultimpl^android_vendor.31_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/librebootescrowdefaultimpl^android_vendor.31_x86_64_static.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/rebootescrow/aidl/default/librebootescrowdefaultimpl^android_vendor.31_x86_64_static $GITHUB_WORKSPACE/artifacts/hardware/interfaces/rebootescrow/aidl/default/librebootescrowdefaultimpl^android_vendor.31_x86_64_static/addition_copy_files.output
+
+echo "building libhadamardutils^android_vendor.31_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libhadamardutils,android_vendor.31_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/rebootescrow/aidl/default/libhadamardutils^android_vendor.31_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/libhadamardutils^android_vendor.31_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/rebootescrow/aidl/default/libhadamardutils^android_vendor.31_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/libhadamardutils^android_vendor.31_x86_64_static.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/rebootescrow/aidl/default/libhadamardutils^android_vendor.31_x86_64_static $GITHUB_WORKSPACE/artifacts/hardware/interfaces/rebootescrow/aidl/default/libhadamardutils^android_vendor.31_x86_64_static/addition_copy_files.output
+
 echo "building android.hardware.renderscript@1.0-inheritance-hierarchy^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.renderscript@1.0-inheritance-hierarchy,
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/renderscript/1.0/android.hardware.renderscript@1.0-inheritance-hierarchy^
@@ -3324,18 +3415,6 @@ mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/secure_element/1.0/andr
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.secure_element-V1.0-java_gen_java^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/secure_element/1.0/android.hardware.secure_element-V1.0-java_gen_java^
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.secure_element-V1.0-java_gen_java^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/secure_element/1.0/android.hardware.secure_element-V1.0-java_gen_java^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/secure_element/1.0/android.hardware.secure_element-V1.0-java_gen_java^/addition_copy_files.output
 
-echo "building android.hardware.secure_element-V1.1-java_gen_java^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.secure_element-V1.1-java_gen_java,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/secure_element/1.1/android.hardware.secure_element-V1.1-java_gen_java^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.secure_element-V1.1-java_gen_java^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/secure_element/1.1/android.hardware.secure_element-V1.1-java_gen_java^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.secure_element-V1.1-java_gen_java^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/secure_element/1.1/android.hardware.secure_element-V1.1-java_gen_java^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/secure_element/1.1/android.hardware.secure_element-V1.1-java_gen_java^/addition_copy_files.output
-
-echo "building android.hardware.secure_element-V1.2-java_gen_java^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.secure_element-V1.2-java_gen_java,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/secure_element/1.2/android.hardware.secure_element-V1.2-java_gen_java^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.secure_element-V1.2-java_gen_java^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/secure_element/1.2/android.hardware.secure_element-V1.2-java_gen_java^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.secure_element-V1.2-java_gen_java^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/secure_element/1.2/android.hardware.secure_element-V1.2-java_gen_java^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/secure_element/1.2/android.hardware.secure_element-V1.2-java_gen_java^/addition_copy_files.output
-
 echo "building android.hardware.secure_element@1.0-inheritance-hierarchy^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.secure_element@1.0-inheritance-hierarchy,
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/secure_element/1.0/android.hardware.secure_element@1.0-inheritance-hierarchy^
@@ -3354,11 +3433,23 @@ mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/secure_element/1.0/andr
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.secure_element@1.0_genc++_headers^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/secure_element/1.0/android.hardware.secure_element@1.0_genc++_headers^
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.secure_element@1.0_genc++_headers^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/secure_element/1.0/android.hardware.secure_element@1.0_genc++_headers^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/secure_element/1.0/android.hardware.secure_element@1.0_genc++_headers^/addition_copy_files.output
 
+echo "building android.hardware.secure_element-V1.1-java_gen_java^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.secure_element-V1.1-java_gen_java,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/secure_element/1.1/android.hardware.secure_element-V1.1-java_gen_java^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.secure_element-V1.1-java_gen_java^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/secure_element/1.1/android.hardware.secure_element-V1.1-java_gen_java^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.secure_element-V1.1-java_gen_java^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/secure_element/1.1/android.hardware.secure_element-V1.1-java_gen_java^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/secure_element/1.1/android.hardware.secure_element-V1.1-java_gen_java^/addition_copy_files.output
+
 echo "building android.hardware.secure_element@1.1-inheritance-hierarchy^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.secure_element@1.1-inheritance-hierarchy,
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/secure_element/1.1/android.hardware.secure_element@1.1-inheritance-hierarchy^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.secure_element@1.1-inheritance-hierarchy^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/secure_element/1.1/android.hardware.secure_element@1.1-inheritance-hierarchy^
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.secure_element@1.1-inheritance-hierarchy^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/secure_element/1.1/android.hardware.secure_element@1.1-inheritance-hierarchy^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/secure_element/1.1/android.hardware.secure_element@1.1-inheritance-hierarchy^/addition_copy_files.output
+
+echo "building android.hardware.secure_element-V1.2-java_gen_java^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.secure_element-V1.2-java_gen_java,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/secure_element/1.2/android.hardware.secure_element-V1.2-java_gen_java^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.secure_element-V1.2-java_gen_java^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/secure_element/1.2/android.hardware.secure_element-V1.2-java_gen_java^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.secure_element-V1.2-java_gen_java^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/secure_element/1.2/android.hardware.secure_element-V1.2-java_gen_java^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/secure_element/1.2/android.hardware.secure_element-V1.2-java_gen_java^/addition_copy_files.output
 
 echo "building android.hardware.secure_element@1.2-inheritance-hierarchy^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.secure_element@1.2-inheritance-hierarchy,
@@ -3419,6 +3510,12 @@ prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/st
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/security/keymint/aidl/android.hardware.security.keymint-api^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.security.keymint-api^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/security/keymint/aidl/android.hardware.security.keymint-api^
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.security.keymint-api^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/security/keymint/aidl/android.hardware.security.keymint-api^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/security/keymint/aidl/android.hardware.security.keymint-api^/addition_copy_files.output
+
+echo "building libkeymint_support^android_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libkeymint_support,android_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/security/keymint/support/libkeymint_support^android_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/libkeymint_support^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/security/keymint/support/libkeymint_support^android_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/libkeymint_support^android_x86_64_static.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/security/keymint/support/libkeymint_support^android_x86_64_static $GITHUB_WORKSPACE/artifacts/hardware/interfaces/security/keymint/support/libkeymint_support^android_x86_64_static/addition_copy_files.output
 
 echo "building android.hardware.security.secureclock-V1-cpp-source^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.security.secureclock-V1-cpp-source,
@@ -3576,24 +3673,6 @@ mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/soundtrigger/2.0/androi
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.soundtrigger-V2.0-java_gen_java^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/soundtrigger/2.0/android.hardware.soundtrigger-V2.0-java_gen_java^
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.soundtrigger-V2.0-java_gen_java^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/soundtrigger/2.0/android.hardware.soundtrigger-V2.0-java_gen_java^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/soundtrigger/2.0/android.hardware.soundtrigger-V2.0-java_gen_java^/addition_copy_files.output
 
-echo "building android.hardware.soundtrigger-V2.1-java_gen_java^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.soundtrigger-V2.1-java_gen_java,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/soundtrigger/2.1/android.hardware.soundtrigger-V2.1-java_gen_java^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.soundtrigger-V2.1-java_gen_java^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/soundtrigger/2.1/android.hardware.soundtrigger-V2.1-java_gen_java^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.soundtrigger-V2.1-java_gen_java^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/soundtrigger/2.1/android.hardware.soundtrigger-V2.1-java_gen_java^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/soundtrigger/2.1/android.hardware.soundtrigger-V2.1-java_gen_java^/addition_copy_files.output
-
-echo "building android.hardware.soundtrigger-V2.2-java_gen_java^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.soundtrigger-V2.2-java_gen_java,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/soundtrigger/2.2/android.hardware.soundtrigger-V2.2-java_gen_java^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.soundtrigger-V2.2-java_gen_java^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/soundtrigger/2.2/android.hardware.soundtrigger-V2.2-java_gen_java^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.soundtrigger-V2.2-java_gen_java^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/soundtrigger/2.2/android.hardware.soundtrigger-V2.2-java_gen_java^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/soundtrigger/2.2/android.hardware.soundtrigger-V2.2-java_gen_java^/addition_copy_files.output
-
-echo "building android.hardware.soundtrigger-V2.3-java_gen_java^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.soundtrigger-V2.3-java_gen_java,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/soundtrigger/2.3/android.hardware.soundtrigger-V2.3-java_gen_java^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.soundtrigger-V2.3-java_gen_java^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/soundtrigger/2.3/android.hardware.soundtrigger-V2.3-java_gen_java^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.soundtrigger-V2.3-java_gen_java^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/soundtrigger/2.3/android.hardware.soundtrigger-V2.3-java_gen_java^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/soundtrigger/2.3/android.hardware.soundtrigger-V2.3-java_gen_java^/addition_copy_files.output
-
 echo "building android.hardware.soundtrigger@2.0-inheritance-hierarchy^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.soundtrigger@2.0-inheritance-hierarchy,
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/soundtrigger/2.0/android.hardware.soundtrigger@2.0-inheritance-hierarchy^
@@ -3612,17 +3691,35 @@ mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/soundtrigger/2.0/androi
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.soundtrigger@2.0_genc++_headers^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/soundtrigger/2.0/android.hardware.soundtrigger@2.0_genc++_headers^
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.soundtrigger@2.0_genc++_headers^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/soundtrigger/2.0/android.hardware.soundtrigger@2.0_genc++_headers^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/soundtrigger/2.0/android.hardware.soundtrigger@2.0_genc++_headers^/addition_copy_files.output
 
+echo "building android.hardware.soundtrigger-V2.1-java_gen_java^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.soundtrigger-V2.1-java_gen_java,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/soundtrigger/2.1/android.hardware.soundtrigger-V2.1-java_gen_java^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.soundtrigger-V2.1-java_gen_java^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/soundtrigger/2.1/android.hardware.soundtrigger-V2.1-java_gen_java^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.soundtrigger-V2.1-java_gen_java^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/soundtrigger/2.1/android.hardware.soundtrigger-V2.1-java_gen_java^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/soundtrigger/2.1/android.hardware.soundtrigger-V2.1-java_gen_java^/addition_copy_files.output
+
 echo "building android.hardware.soundtrigger@2.1-inheritance-hierarchy^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.soundtrigger@2.1-inheritance-hierarchy,
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/soundtrigger/2.1/android.hardware.soundtrigger@2.1-inheritance-hierarchy^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.soundtrigger@2.1-inheritance-hierarchy^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/soundtrigger/2.1/android.hardware.soundtrigger@2.1-inheritance-hierarchy^
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.soundtrigger@2.1-inheritance-hierarchy^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/soundtrigger/2.1/android.hardware.soundtrigger@2.1-inheritance-hierarchy^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/soundtrigger/2.1/android.hardware.soundtrigger@2.1-inheritance-hierarchy^/addition_copy_files.output
 
+echo "building android.hardware.soundtrigger-V2.2-java_gen_java^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.soundtrigger-V2.2-java_gen_java,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/soundtrigger/2.2/android.hardware.soundtrigger-V2.2-java_gen_java^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.soundtrigger-V2.2-java_gen_java^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/soundtrigger/2.2/android.hardware.soundtrigger-V2.2-java_gen_java^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.soundtrigger-V2.2-java_gen_java^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/soundtrigger/2.2/android.hardware.soundtrigger-V2.2-java_gen_java^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/soundtrigger/2.2/android.hardware.soundtrigger-V2.2-java_gen_java^/addition_copy_files.output
+
 echo "building android.hardware.soundtrigger@2.2-inheritance-hierarchy^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.soundtrigger@2.2-inheritance-hierarchy,
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/soundtrigger/2.2/android.hardware.soundtrigger@2.2-inheritance-hierarchy^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.soundtrigger@2.2-inheritance-hierarchy^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/soundtrigger/2.2/android.hardware.soundtrigger@2.2-inheritance-hierarchy^
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.soundtrigger@2.2-inheritance-hierarchy^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/soundtrigger/2.2/android.hardware.soundtrigger@2.2-inheritance-hierarchy^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/soundtrigger/2.2/android.hardware.soundtrigger@2.2-inheritance-hierarchy^/addition_copy_files.output
+
+echo "building android.hardware.soundtrigger-V2.3-java_gen_java^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.soundtrigger-V2.3-java_gen_java,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/soundtrigger/2.3/android.hardware.soundtrigger-V2.3-java_gen_java^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.soundtrigger-V2.3-java_gen_java^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/soundtrigger/2.3/android.hardware.soundtrigger-V2.3-java_gen_java^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.soundtrigger-V2.3-java_gen_java^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/soundtrigger/2.3/android.hardware.soundtrigger-V2.3-java_gen_java^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/soundtrigger/2.3/android.hardware.soundtrigger-V2.3-java_gen_java^/addition_copy_files.output
 
 echo "building android.hardware.soundtrigger@2.3-inheritance-hierarchy^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.soundtrigger@2.3-inheritance-hierarchy,
@@ -3738,17 +3835,17 @@ mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/tests/multithread/1.0/a
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.tests.multithread@1.0-inheritance-hierarchy^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/tests/multithread/1.0/android.hardware.tests.multithread@1.0-inheritance-hierarchy^
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.tests.multithread@1.0-inheritance-hierarchy^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/tests/multithread/1.0/android.hardware.tests.multithread@1.0-inheritance-hierarchy^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/tests/multithread/1.0/android.hardware.tests.multithread@1.0-inheritance-hierarchy^/addition_copy_files.output
 
-echo "building android.hardware.tests.safeunion.cpp@1.0-inheritance-hierarchy^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.tests.safeunion.cpp@1.0-inheritance-hierarchy,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/tests/safeunion/cpp/1.0/android.hardware.tests.safeunion.cpp@1.0-inheritance-hierarchy^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.tests.safeunion.cpp@1.0-inheritance-hierarchy^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/tests/safeunion/cpp/1.0/android.hardware.tests.safeunion.cpp@1.0-inheritance-hierarchy^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.tests.safeunion.cpp@1.0-inheritance-hierarchy^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/tests/safeunion/cpp/1.0/android.hardware.tests.safeunion.cpp@1.0-inheritance-hierarchy^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/tests/safeunion/cpp/1.0/android.hardware.tests.safeunion.cpp@1.0-inheritance-hierarchy^/addition_copy_files.output
-
 echo "building android.hardware.tests.safeunion@1.0-inheritance-hierarchy^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.tests.safeunion@1.0-inheritance-hierarchy,
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/tests/safeunion/1.0/android.hardware.tests.safeunion@1.0-inheritance-hierarchy^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.tests.safeunion@1.0-inheritance-hierarchy^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/tests/safeunion/1.0/android.hardware.tests.safeunion@1.0-inheritance-hierarchy^
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.tests.safeunion@1.0-inheritance-hierarchy^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/tests/safeunion/1.0/android.hardware.tests.safeunion@1.0-inheritance-hierarchy^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/tests/safeunion/1.0/android.hardware.tests.safeunion@1.0-inheritance-hierarchy^/addition_copy_files.output
+
+echo "building android.hardware.tests.safeunion.cpp@1.0-inheritance-hierarchy^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.tests.safeunion.cpp@1.0-inheritance-hierarchy,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/tests/safeunion/cpp/1.0/android.hardware.tests.safeunion.cpp@1.0-inheritance-hierarchy^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.tests.safeunion.cpp@1.0-inheritance-hierarchy^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/tests/safeunion/cpp/1.0/android.hardware.tests.safeunion.cpp@1.0-inheritance-hierarchy^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.tests.safeunion.cpp@1.0-inheritance-hierarchy^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/tests/safeunion/cpp/1.0/android.hardware.tests.safeunion.cpp@1.0-inheritance-hierarchy^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/tests/safeunion/cpp/1.0/android.hardware.tests.safeunion.cpp@1.0-inheritance-hierarchy^/addition_copy_files.output
 
 echo "building android.hardware.tests.trie@1.0-inheritance-hierarchy^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.tests.trie@1.0-inheritance-hierarchy,
@@ -3774,17 +3871,17 @@ mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/tetheroffload/control/1
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.tetheroffload.control-V1.0-java_gen_java^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/tetheroffload/control/1.0/android.hardware.tetheroffload.control-V1.0-java_gen_java^
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.tetheroffload.control-V1.0-java_gen_java^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/tetheroffload/control/1.0/android.hardware.tetheroffload.control-V1.0-java_gen_java^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/tetheroffload/control/1.0/android.hardware.tetheroffload.control-V1.0-java_gen_java^/addition_copy_files.output
 
-echo "building android.hardware.tetheroffload.control-V1.1-java_gen_java^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.tetheroffload.control-V1.1-java_gen_java,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/tetheroffload/control/1.1/android.hardware.tetheroffload.control-V1.1-java_gen_java^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.tetheroffload.control-V1.1-java_gen_java^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/tetheroffload/control/1.1/android.hardware.tetheroffload.control-V1.1-java_gen_java^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.tetheroffload.control-V1.1-java_gen_java^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/tetheroffload/control/1.1/android.hardware.tetheroffload.control-V1.1-java_gen_java^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/tetheroffload/control/1.1/android.hardware.tetheroffload.control-V1.1-java_gen_java^/addition_copy_files.output
-
 echo "building android.hardware.tetheroffload.control@1.0-inheritance-hierarchy^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.tetheroffload.control@1.0-inheritance-hierarchy,
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/tetheroffload/control/1.0/android.hardware.tetheroffload.control@1.0-inheritance-hierarchy^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.tetheroffload.control@1.0-inheritance-hierarchy^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/tetheroffload/control/1.0/android.hardware.tetheroffload.control@1.0-inheritance-hierarchy^
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.tetheroffload.control@1.0-inheritance-hierarchy^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/tetheroffload/control/1.0/android.hardware.tetheroffload.control@1.0-inheritance-hierarchy^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/tetheroffload/control/1.0/android.hardware.tetheroffload.control@1.0-inheritance-hierarchy^/addition_copy_files.output
+
+echo "building android.hardware.tetheroffload.control-V1.1-java_gen_java^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.tetheroffload.control-V1.1-java_gen_java,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/tetheroffload/control/1.1/android.hardware.tetheroffload.control-V1.1-java_gen_java^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.tetheroffload.control-V1.1-java_gen_java^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/tetheroffload/control/1.1/android.hardware.tetheroffload.control-V1.1-java_gen_java^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.tetheroffload.control-V1.1-java_gen_java^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/tetheroffload/control/1.1/android.hardware.tetheroffload.control-V1.1-java_gen_java^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/tetheroffload/control/1.1/android.hardware.tetheroffload.control-V1.1-java_gen_java^/addition_copy_files.output
 
 echo "building android.hardware.tetheroffload.control@1.1-inheritance-hierarchy^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.tetheroffload.control@1.1-inheritance-hierarchy,
@@ -3804,18 +3901,6 @@ mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/thermal/1.0/android.har
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.thermal-V1.0-java_gen_java^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/thermal/1.0/android.hardware.thermal-V1.0-java_gen_java^
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.thermal-V1.0-java_gen_java^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/thermal/1.0/android.hardware.thermal-V1.0-java_gen_java^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/thermal/1.0/android.hardware.thermal-V1.0-java_gen_java^/addition_copy_files.output
 
-echo "building android.hardware.thermal-V1.1-java_gen_java^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.thermal-V1.1-java_gen_java,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/thermal/1.1/android.hardware.thermal-V1.1-java_gen_java^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.thermal-V1.1-java_gen_java^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/thermal/1.1/android.hardware.thermal-V1.1-java_gen_java^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.thermal-V1.1-java_gen_java^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/thermal/1.1/android.hardware.thermal-V1.1-java_gen_java^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/thermal/1.1/android.hardware.thermal-V1.1-java_gen_java^/addition_copy_files.output
-
-echo "building android.hardware.thermal-V2.0-java_gen_java^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.thermal-V2.0-java_gen_java,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/thermal/2.0/android.hardware.thermal-V2.0-java_gen_java^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.thermal-V2.0-java_gen_java^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/thermal/2.0/android.hardware.thermal-V2.0-java_gen_java^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.thermal-V2.0-java_gen_java^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/thermal/2.0/android.hardware.thermal-V2.0-java_gen_java^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/thermal/2.0/android.hardware.thermal-V2.0-java_gen_java^/addition_copy_files.output
-
 echo "building android.hardware.thermal@1.0-inheritance-hierarchy^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.thermal@1.0-inheritance-hierarchy,
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/thermal/1.0/android.hardware.thermal@1.0-inheritance-hierarchy^
@@ -3834,11 +3919,23 @@ mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/thermal/1.0/android.har
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.thermal@1.0_genc++_headers^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/thermal/1.0/android.hardware.thermal@1.0_genc++_headers^
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.thermal@1.0_genc++_headers^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/thermal/1.0/android.hardware.thermal@1.0_genc++_headers^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/thermal/1.0/android.hardware.thermal@1.0_genc++_headers^/addition_copy_files.output
 
+echo "building android.hardware.thermal-V1.1-java_gen_java^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.thermal-V1.1-java_gen_java,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/thermal/1.1/android.hardware.thermal-V1.1-java_gen_java^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.thermal-V1.1-java_gen_java^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/thermal/1.1/android.hardware.thermal-V1.1-java_gen_java^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.thermal-V1.1-java_gen_java^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/thermal/1.1/android.hardware.thermal-V1.1-java_gen_java^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/thermal/1.1/android.hardware.thermal-V1.1-java_gen_java^/addition_copy_files.output
+
 echo "building android.hardware.thermal@1.1-inheritance-hierarchy^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.thermal@1.1-inheritance-hierarchy,
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/thermal/1.1/android.hardware.thermal@1.1-inheritance-hierarchy^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.thermal@1.1-inheritance-hierarchy^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/thermal/1.1/android.hardware.thermal@1.1-inheritance-hierarchy^
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.thermal@1.1-inheritance-hierarchy^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/thermal/1.1/android.hardware.thermal@1.1-inheritance-hierarchy^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/thermal/1.1/android.hardware.thermal@1.1-inheritance-hierarchy^/addition_copy_files.output
+
+echo "building android.hardware.thermal-V2.0-java_gen_java^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.thermal-V2.0-java_gen_java,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/thermal/2.0/android.hardware.thermal-V2.0-java_gen_java^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.thermal-V2.0-java_gen_java^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/thermal/2.0/android.hardware.thermal-V2.0-java_gen_java^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.thermal-V2.0-java_gen_java^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/thermal/2.0/android.hardware.thermal-V2.0-java_gen_java^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/thermal/2.0/android.hardware.thermal-V2.0-java_gen_java^/addition_copy_files.output
 
 echo "building android.hardware.thermal@2.0-inheritance-hierarchy^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.thermal@2.0-inheritance-hierarchy,
@@ -3864,17 +3961,17 @@ mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/tv/cec/1.0/android.hard
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.tv.cec-V1.0-java_gen_java^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/tv/cec/1.0/android.hardware.tv.cec-V1.0-java_gen_java^
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.tv.cec-V1.0-java_gen_java^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/tv/cec/1.0/android.hardware.tv.cec-V1.0-java_gen_java^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/tv/cec/1.0/android.hardware.tv.cec-V1.0-java_gen_java^/addition_copy_files.output
 
-echo "building android.hardware.tv.cec-V1.1-java_gen_java^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.tv.cec-V1.1-java_gen_java,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/tv/cec/1.1/android.hardware.tv.cec-V1.1-java_gen_java^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.tv.cec-V1.1-java_gen_java^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/tv/cec/1.1/android.hardware.tv.cec-V1.1-java_gen_java^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.tv.cec-V1.1-java_gen_java^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/tv/cec/1.1/android.hardware.tv.cec-V1.1-java_gen_java^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/tv/cec/1.1/android.hardware.tv.cec-V1.1-java_gen_java^/addition_copy_files.output
-
 echo "building android.hardware.tv.cec@1.0-inheritance-hierarchy^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.tv.cec@1.0-inheritance-hierarchy,
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/tv/cec/1.0/android.hardware.tv.cec@1.0-inheritance-hierarchy^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.tv.cec@1.0-inheritance-hierarchy^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/tv/cec/1.0/android.hardware.tv.cec@1.0-inheritance-hierarchy^
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.tv.cec@1.0-inheritance-hierarchy^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/tv/cec/1.0/android.hardware.tv.cec@1.0-inheritance-hierarchy^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/tv/cec/1.0/android.hardware.tv.cec@1.0-inheritance-hierarchy^/addition_copy_files.output
+
+echo "building android.hardware.tv.cec-V1.1-java_gen_java^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.tv.cec-V1.1-java_gen_java,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/tv/cec/1.1/android.hardware.tv.cec-V1.1-java_gen_java^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.tv.cec-V1.1-java_gen_java^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/tv/cec/1.1/android.hardware.tv.cec-V1.1-java_gen_java^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.tv.cec-V1.1-java_gen_java^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/tv/cec/1.1/android.hardware.tv.cec-V1.1-java_gen_java^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/tv/cec/1.1/android.hardware.tv.cec-V1.1-java_gen_java^/addition_copy_files.output
 
 echo "building android.hardware.tv.cec@1.1-inheritance-hierarchy^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.tv.cec@1.1-inheritance-hierarchy,
@@ -3912,17 +4009,17 @@ mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/tv/tuner/1.0/android.ha
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.tv.tuner-V1.0-java-constants_gen_java^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/tv/tuner/1.0/android.hardware.tv.tuner-V1.0-java-constants_gen_java^
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.tv.tuner-V1.0-java-constants_gen_java^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/tv/tuner/1.0/android.hardware.tv.tuner-V1.0-java-constants_gen_java^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/tv/tuner/1.0/android.hardware.tv.tuner-V1.0-java-constants_gen_java^/addition_copy_files.output
 
-echo "building android.hardware.tv.tuner-V1.1-java-constants_gen_java^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.tv.tuner-V1.1-java-constants_gen_java,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/tv/tuner/1.1/android.hardware.tv.tuner-V1.1-java-constants_gen_java^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.tv.tuner-V1.1-java-constants_gen_java^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/tv/tuner/1.1/android.hardware.tv.tuner-V1.1-java-constants_gen_java^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.tv.tuner-V1.1-java-constants_gen_java^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/tv/tuner/1.1/android.hardware.tv.tuner-V1.1-java-constants_gen_java^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/tv/tuner/1.1/android.hardware.tv.tuner-V1.1-java-constants_gen_java^/addition_copy_files.output
-
 echo "building android.hardware.tv.tuner@1.0-inheritance-hierarchy^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.tv.tuner@1.0-inheritance-hierarchy,
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/tv/tuner/1.0/android.hardware.tv.tuner@1.0-inheritance-hierarchy^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.tv.tuner@1.0-inheritance-hierarchy^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/tv/tuner/1.0/android.hardware.tv.tuner@1.0-inheritance-hierarchy^
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.tv.tuner@1.0-inheritance-hierarchy^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/tv/tuner/1.0/android.hardware.tv.tuner@1.0-inheritance-hierarchy^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/tv/tuner/1.0/android.hardware.tv.tuner@1.0-inheritance-hierarchy^/addition_copy_files.output
+
+echo "building android.hardware.tv.tuner-V1.1-java-constants_gen_java^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.tv.tuner-V1.1-java-constants_gen_java,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/tv/tuner/1.1/android.hardware.tv.tuner-V1.1-java-constants_gen_java^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.tv.tuner-V1.1-java-constants_gen_java^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/tv/tuner/1.1/android.hardware.tv.tuner-V1.1-java-constants_gen_java^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.tv.tuner-V1.1-java-constants_gen_java^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/tv/tuner/1.1/android.hardware.tv.tuner-V1.1-java-constants_gen_java^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/tv/tuner/1.1/android.hardware.tv.tuner-V1.1-java-constants_gen_java^/addition_copy_files.output
 
 echo "building android.hardware.tv.tuner@1.1-inheritance-hierarchy^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.tv.tuner@1.1-inheritance-hierarchy,
@@ -3942,6 +4039,24 @@ mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/usb/1.0/android.hardwar
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.usb-V1.0-java_gen_java^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/usb/1.0/android.hardware.usb-V1.0-java_gen_java^
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.usb-V1.0-java_gen_java^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/usb/1.0/android.hardware.usb-V1.0-java_gen_java^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/usb/1.0/android.hardware.usb-V1.0-java_gen_java^/addition_copy_files.output
 
+echo "building android.hardware.usb@1.0-inheritance-hierarchy^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.usb@1.0-inheritance-hierarchy,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/usb/1.0/android.hardware.usb@1.0-inheritance-hierarchy^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.usb@1.0-inheritance-hierarchy^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/usb/1.0/android.hardware.usb@1.0-inheritance-hierarchy^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.usb@1.0-inheritance-hierarchy^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/usb/1.0/android.hardware.usb@1.0-inheritance-hierarchy^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/usb/1.0/android.hardware.usb@1.0-inheritance-hierarchy^/addition_copy_files.output
+
+echo "building android.hardware.usb@1.0_genc++^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.usb@1.0_genc++,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/usb/1.0/android.hardware.usb@1.0_genc++^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.usb@1.0_genc++^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/usb/1.0/android.hardware.usb@1.0_genc++^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.usb@1.0_genc++^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/usb/1.0/android.hardware.usb@1.0_genc++^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/usb/1.0/android.hardware.usb@1.0_genc++^/addition_copy_files.output
+
+echo "building android.hardware.usb@1.0_genc++_headers^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.usb@1.0_genc++_headers,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/usb/1.0/android.hardware.usb@1.0_genc++_headers^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.usb@1.0_genc++_headers^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/usb/1.0/android.hardware.usb@1.0_genc++_headers^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.usb@1.0_genc++_headers^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/usb/1.0/android.hardware.usb@1.0_genc++_headers^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/usb/1.0/android.hardware.usb@1.0_genc++_headers^/addition_copy_files.output
+
 echo "building android.hardware.usb-V1.1-java-constants_gen_java^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.usb-V1.1-java-constants_gen_java,
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/usb/1.1/android.hardware.usb-V1.1-java-constants_gen_java^
@@ -3953,6 +4068,12 @@ prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/st
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/usb/1.1/android.hardware.usb-V1.1-java_gen_java^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.usb-V1.1-java_gen_java^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/usb/1.1/android.hardware.usb-V1.1-java_gen_java^
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.usb-V1.1-java_gen_java^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/usb/1.1/android.hardware.usb-V1.1-java_gen_java^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/usb/1.1/android.hardware.usb-V1.1-java_gen_java^/addition_copy_files.output
+
+echo "building android.hardware.usb@1.1-inheritance-hierarchy^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.usb@1.1-inheritance-hierarchy,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/usb/1.1/android.hardware.usb@1.1-inheritance-hierarchy^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.usb@1.1-inheritance-hierarchy^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/usb/1.1/android.hardware.usb@1.1-inheritance-hierarchy^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.usb@1.1-inheritance-hierarchy^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/usb/1.1/android.hardware.usb@1.1-inheritance-hierarchy^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/usb/1.1/android.hardware.usb@1.1-inheritance-hierarchy^/addition_copy_files.output
 
 echo "building android.hardware.usb-V1.2-java-constants_gen_java^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.usb-V1.2-java-constants_gen_java,
@@ -3966,29 +4087,29 @@ mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/usb/1.2/android.hardwar
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.usb-V1.2-java_gen_java^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/usb/1.2/android.hardware.usb-V1.2-java_gen_java^
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.usb-V1.2-java_gen_java^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/usb/1.2/android.hardware.usb-V1.2-java_gen_java^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/usb/1.2/android.hardware.usb-V1.2-java_gen_java^/addition_copy_files.output
 
+echo "building android.hardware.usb@1.2-inheritance-hierarchy^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.usb@1.2-inheritance-hierarchy,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/usb/1.2/android.hardware.usb@1.2-inheritance-hierarchy^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.usb@1.2-inheritance-hierarchy^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/usb/1.2/android.hardware.usb@1.2-inheritance-hierarchy^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.usb@1.2-inheritance-hierarchy^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/usb/1.2/android.hardware.usb@1.2-inheritance-hierarchy^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/usb/1.2/android.hardware.usb@1.2-inheritance-hierarchy^/addition_copy_files.output
+
 echo "building android.hardware.usb-V1.3-java_gen_java^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.usb-V1.3-java_gen_java,
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/usb/1.3/android.hardware.usb-V1.3-java_gen_java^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.usb-V1.3-java_gen_java^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/usb/1.3/android.hardware.usb-V1.3-java_gen_java^
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.usb-V1.3-java_gen_java^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/usb/1.3/android.hardware.usb-V1.3-java_gen_java^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/usb/1.3/android.hardware.usb-V1.3-java_gen_java^/addition_copy_files.output
 
+echo "building android.hardware.usb@1.3-inheritance-hierarchy^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.usb@1.3-inheritance-hierarchy,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/usb/1.3/android.hardware.usb@1.3-inheritance-hierarchy^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.usb@1.3-inheritance-hierarchy^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/usb/1.3/android.hardware.usb@1.3-inheritance-hierarchy^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.usb@1.3-inheritance-hierarchy^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/usb/1.3/android.hardware.usb@1.3-inheritance-hierarchy^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/usb/1.3/android.hardware.usb@1.3-inheritance-hierarchy^/addition_copy_files.output
+
 echo "building android.hardware.usb.gadget-V1.0-java_gen_java^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.usb.gadget-V1.0-java_gen_java,
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/usb/gadget/1.0/android.hardware.usb.gadget-V1.0-java_gen_java^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.usb.gadget-V1.0-java_gen_java^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/usb/gadget/1.0/android.hardware.usb.gadget-V1.0-java_gen_java^
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.usb.gadget-V1.0-java_gen_java^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/usb/gadget/1.0/android.hardware.usb.gadget-V1.0-java_gen_java^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/usb/gadget/1.0/android.hardware.usb.gadget-V1.0-java_gen_java^/addition_copy_files.output
-
-echo "building android.hardware.usb.gadget-V1.1-java_gen_java^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.usb.gadget-V1.1-java_gen_java,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/usb/gadget/1.1/android.hardware.usb.gadget-V1.1-java_gen_java^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.usb.gadget-V1.1-java_gen_java^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/usb/gadget/1.1/android.hardware.usb.gadget-V1.1-java_gen_java^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.usb.gadget-V1.1-java_gen_java^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/usb/gadget/1.1/android.hardware.usb.gadget-V1.1-java_gen_java^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/usb/gadget/1.1/android.hardware.usb.gadget-V1.1-java_gen_java^/addition_copy_files.output
-
-echo "building android.hardware.usb.gadget-V1.2-java_gen_java^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.usb.gadget-V1.2-java_gen_java,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/usb/gadget/1.2/android.hardware.usb.gadget-V1.2-java_gen_java^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.usb.gadget-V1.2-java_gen_java^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/usb/gadget/1.2/android.hardware.usb.gadget-V1.2-java_gen_java^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.usb.gadget-V1.2-java_gen_java^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/usb/gadget/1.2/android.hardware.usb.gadget-V1.2-java_gen_java^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/usb/gadget/1.2/android.hardware.usb.gadget-V1.2-java_gen_java^/addition_copy_files.output
 
 echo "building android.hardware.usb.gadget@1.0-inheritance-hierarchy^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.usb.gadget@1.0-inheritance-hierarchy,
@@ -4008,11 +4129,23 @@ mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/usb/gadget/1.0/android.
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.usb.gadget@1.0_genc++_headers^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/usb/gadget/1.0/android.hardware.usb.gadget@1.0_genc++_headers^
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.usb.gadget@1.0_genc++_headers^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/usb/gadget/1.0/android.hardware.usb.gadget@1.0_genc++_headers^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/usb/gadget/1.0/android.hardware.usb.gadget@1.0_genc++_headers^/addition_copy_files.output
 
+echo "building android.hardware.usb.gadget-V1.1-java_gen_java^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.usb.gadget-V1.1-java_gen_java,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/usb/gadget/1.1/android.hardware.usb.gadget-V1.1-java_gen_java^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.usb.gadget-V1.1-java_gen_java^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/usb/gadget/1.1/android.hardware.usb.gadget-V1.1-java_gen_java^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.usb.gadget-V1.1-java_gen_java^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/usb/gadget/1.1/android.hardware.usb.gadget-V1.1-java_gen_java^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/usb/gadget/1.1/android.hardware.usb.gadget-V1.1-java_gen_java^/addition_copy_files.output
+
 echo "building android.hardware.usb.gadget@1.1-inheritance-hierarchy^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.usb.gadget@1.1-inheritance-hierarchy,
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/usb/gadget/1.1/android.hardware.usb.gadget@1.1-inheritance-hierarchy^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.usb.gadget@1.1-inheritance-hierarchy^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/usb/gadget/1.1/android.hardware.usb.gadget@1.1-inheritance-hierarchy^
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.usb.gadget@1.1-inheritance-hierarchy^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/usb/gadget/1.1/android.hardware.usb.gadget@1.1-inheritance-hierarchy^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/usb/gadget/1.1/android.hardware.usb.gadget@1.1-inheritance-hierarchy^/addition_copy_files.output
+
+echo "building android.hardware.usb.gadget-V1.2-java_gen_java^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.usb.gadget-V1.2-java_gen_java,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/usb/gadget/1.2/android.hardware.usb.gadget-V1.2-java_gen_java^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.usb.gadget-V1.2-java_gen_java^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/usb/gadget/1.2/android.hardware.usb.gadget-V1.2-java_gen_java^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.usb.gadget-V1.2-java_gen_java^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/usb/gadget/1.2/android.hardware.usb.gadget-V1.2-java_gen_java^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/usb/gadget/1.2/android.hardware.usb.gadget-V1.2-java_gen_java^/addition_copy_files.output
 
 echo "building android.hardware.usb.gadget@1.2-inheritance-hierarchy^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.usb.gadget@1.2-inheritance-hierarchy,
@@ -4020,47 +4153,29 @@ mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/usb/gadget/1.2/android.
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.usb.gadget@1.2-inheritance-hierarchy^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/usb/gadget/1.2/android.hardware.usb.gadget@1.2-inheritance-hierarchy^
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.usb.gadget@1.2-inheritance-hierarchy^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/usb/gadget/1.2/android.hardware.usb.gadget@1.2-inheritance-hierarchy^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/usb/gadget/1.2/android.hardware.usb.gadget@1.2-inheritance-hierarchy^/addition_copy_files.output
 
-echo "building android.hardware.usb@1.0-inheritance-hierarchy^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.usb@1.0-inheritance-hierarchy,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/usb/1.0/android.hardware.usb@1.0-inheritance-hierarchy^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.usb@1.0-inheritance-hierarchy^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/usb/1.0/android.hardware.usb@1.0-inheritance-hierarchy^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.usb@1.0-inheritance-hierarchy^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/usb/1.0/android.hardware.usb@1.0-inheritance-hierarchy^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/usb/1.0/android.hardware.usb@1.0-inheritance-hierarchy^/addition_copy_files.output
-
-echo "building android.hardware.usb@1.0_genc++^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.usb@1.0_genc++,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/usb/1.0/android.hardware.usb@1.0_genc++^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.usb@1.0_genc++^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/usb/1.0/android.hardware.usb@1.0_genc++^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.usb@1.0_genc++^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/usb/1.0/android.hardware.usb@1.0_genc++^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/usb/1.0/android.hardware.usb@1.0_genc++^/addition_copy_files.output
-
-echo "building android.hardware.usb@1.0_genc++_headers^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.usb@1.0_genc++_headers,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/usb/1.0/android.hardware.usb@1.0_genc++_headers^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.usb@1.0_genc++_headers^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/usb/1.0/android.hardware.usb@1.0_genc++_headers^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.usb@1.0_genc++_headers^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/usb/1.0/android.hardware.usb@1.0_genc++_headers^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/usb/1.0/android.hardware.usb@1.0_genc++_headers^/addition_copy_files.output
-
-echo "building android.hardware.usb@1.1-inheritance-hierarchy^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.usb@1.1-inheritance-hierarchy,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/usb/1.1/android.hardware.usb@1.1-inheritance-hierarchy^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.usb@1.1-inheritance-hierarchy^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/usb/1.1/android.hardware.usb@1.1-inheritance-hierarchy^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.usb@1.1-inheritance-hierarchy^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/usb/1.1/android.hardware.usb@1.1-inheritance-hierarchy^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/usb/1.1/android.hardware.usb@1.1-inheritance-hierarchy^/addition_copy_files.output
-
-echo "building android.hardware.usb@1.2-inheritance-hierarchy^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.usb@1.2-inheritance-hierarchy,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/usb/1.2/android.hardware.usb@1.2-inheritance-hierarchy^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.usb@1.2-inheritance-hierarchy^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/usb/1.2/android.hardware.usb@1.2-inheritance-hierarchy^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.usb@1.2-inheritance-hierarchy^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/usb/1.2/android.hardware.usb@1.2-inheritance-hierarchy^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/usb/1.2/android.hardware.usb@1.2-inheritance-hierarchy^/addition_copy_files.output
-
-echo "building android.hardware.usb@1.3-inheritance-hierarchy^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.usb@1.3-inheritance-hierarchy,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/usb/1.3/android.hardware.usb@1.3-inheritance-hierarchy^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.usb@1.3-inheritance-hierarchy^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/usb/1.3/android.hardware.usb@1.3-inheritance-hierarchy^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.usb@1.3-inheritance-hierarchy^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/usb/1.3/android.hardware.usb@1.3-inheritance-hierarchy^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/usb/1.3/android.hardware.usb@1.3-inheritance-hierarchy^/addition_copy_files.output
-
 echo "building android.hardware.vibrator-V1.0-java_gen_java^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.vibrator-V1.0-java_gen_java,
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/vibrator/1.0/android.hardware.vibrator-V1.0-java_gen_java^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.vibrator-V1.0-java_gen_java^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/vibrator/1.0/android.hardware.vibrator-V1.0-java_gen_java^
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.vibrator-V1.0-java_gen_java^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/vibrator/1.0/android.hardware.vibrator-V1.0-java_gen_java^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/vibrator/1.0/android.hardware.vibrator-V1.0-java_gen_java^/addition_copy_files.output
+
+echo "building android.hardware.vibrator@1.0-inheritance-hierarchy^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.vibrator@1.0-inheritance-hierarchy,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/vibrator/1.0/android.hardware.vibrator@1.0-inheritance-hierarchy^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.vibrator@1.0-inheritance-hierarchy^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/vibrator/1.0/android.hardware.vibrator@1.0-inheritance-hierarchy^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.vibrator@1.0-inheritance-hierarchy^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/vibrator/1.0/android.hardware.vibrator@1.0-inheritance-hierarchy^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/vibrator/1.0/android.hardware.vibrator@1.0-inheritance-hierarchy^/addition_copy_files.output
+
+echo "building android.hardware.vibrator@1.0_genc++^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.vibrator@1.0_genc++,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/vibrator/1.0/android.hardware.vibrator@1.0_genc++^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.vibrator@1.0_genc++^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/vibrator/1.0/android.hardware.vibrator@1.0_genc++^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.vibrator@1.0_genc++^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/vibrator/1.0/android.hardware.vibrator@1.0_genc++^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/vibrator/1.0/android.hardware.vibrator@1.0_genc++^/addition_copy_files.output
+
+echo "building android.hardware.vibrator@1.0_genc++_headers^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.vibrator@1.0_genc++_headers,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/vibrator/1.0/android.hardware.vibrator@1.0_genc++_headers^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.vibrator@1.0_genc++_headers^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/vibrator/1.0/android.hardware.vibrator@1.0_genc++_headers^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.vibrator@1.0_genc++_headers^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/vibrator/1.0/android.hardware.vibrator@1.0_genc++_headers^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/vibrator/1.0/android.hardware.vibrator@1.0_genc++_headers^/addition_copy_files.output
 
 echo "building android.hardware.vibrator-V1.1-java_gen_java^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.vibrator-V1.1-java_gen_java,
@@ -4068,17 +4183,71 @@ mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/vibrator/1.1/android.ha
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.vibrator-V1.1-java_gen_java^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/vibrator/1.1/android.hardware.vibrator-V1.1-java_gen_java^
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.vibrator-V1.1-java_gen_java^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/vibrator/1.1/android.hardware.vibrator-V1.1-java_gen_java^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/vibrator/1.1/android.hardware.vibrator-V1.1-java_gen_java^/addition_copy_files.output
 
+echo "building android.hardware.vibrator@1.1-inheritance-hierarchy^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.vibrator@1.1-inheritance-hierarchy,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/vibrator/1.1/android.hardware.vibrator@1.1-inheritance-hierarchy^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.vibrator@1.1-inheritance-hierarchy^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/vibrator/1.1/android.hardware.vibrator@1.1-inheritance-hierarchy^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.vibrator@1.1-inheritance-hierarchy^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/vibrator/1.1/android.hardware.vibrator@1.1-inheritance-hierarchy^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/vibrator/1.1/android.hardware.vibrator@1.1-inheritance-hierarchy^/addition_copy_files.output
+
+echo "building android.hardware.vibrator@1.1_genc++^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.vibrator@1.1_genc++,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/vibrator/1.1/android.hardware.vibrator@1.1_genc++^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.vibrator@1.1_genc++^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/vibrator/1.1/android.hardware.vibrator@1.1_genc++^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.vibrator@1.1_genc++^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/vibrator/1.1/android.hardware.vibrator@1.1_genc++^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/vibrator/1.1/android.hardware.vibrator@1.1_genc++^/addition_copy_files.output
+
+echo "building android.hardware.vibrator@1.1_genc++_headers^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.vibrator@1.1_genc++_headers,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/vibrator/1.1/android.hardware.vibrator@1.1_genc++_headers^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.vibrator@1.1_genc++_headers^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/vibrator/1.1/android.hardware.vibrator@1.1_genc++_headers^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.vibrator@1.1_genc++_headers^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/vibrator/1.1/android.hardware.vibrator@1.1_genc++_headers^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/vibrator/1.1/android.hardware.vibrator@1.1_genc++_headers^/addition_copy_files.output
+
 echo "building android.hardware.vibrator-V1.2-java_gen_java^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.vibrator-V1.2-java_gen_java,
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/vibrator/1.2/android.hardware.vibrator-V1.2-java_gen_java^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.vibrator-V1.2-java_gen_java^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/vibrator/1.2/android.hardware.vibrator-V1.2-java_gen_java^
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.vibrator-V1.2-java_gen_java^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/vibrator/1.2/android.hardware.vibrator-V1.2-java_gen_java^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/vibrator/1.2/android.hardware.vibrator-V1.2-java_gen_java^/addition_copy_files.output
 
+echo "building android.hardware.vibrator@1.2-inheritance-hierarchy^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.vibrator@1.2-inheritance-hierarchy,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/vibrator/1.2/android.hardware.vibrator@1.2-inheritance-hierarchy^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.vibrator@1.2-inheritance-hierarchy^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/vibrator/1.2/android.hardware.vibrator@1.2-inheritance-hierarchy^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.vibrator@1.2-inheritance-hierarchy^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/vibrator/1.2/android.hardware.vibrator@1.2-inheritance-hierarchy^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/vibrator/1.2/android.hardware.vibrator@1.2-inheritance-hierarchy^/addition_copy_files.output
+
+echo "building android.hardware.vibrator@1.2_genc++^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.vibrator@1.2_genc++,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/vibrator/1.2/android.hardware.vibrator@1.2_genc++^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.vibrator@1.2_genc++^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/vibrator/1.2/android.hardware.vibrator@1.2_genc++^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.vibrator@1.2_genc++^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/vibrator/1.2/android.hardware.vibrator@1.2_genc++^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/vibrator/1.2/android.hardware.vibrator@1.2_genc++^/addition_copy_files.output
+
+echo "building android.hardware.vibrator@1.2_genc++_headers^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.vibrator@1.2_genc++_headers,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/vibrator/1.2/android.hardware.vibrator@1.2_genc++_headers^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.vibrator@1.2_genc++_headers^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/vibrator/1.2/android.hardware.vibrator@1.2_genc++_headers^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.vibrator@1.2_genc++_headers^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/vibrator/1.2/android.hardware.vibrator@1.2_genc++_headers^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/vibrator/1.2/android.hardware.vibrator@1.2_genc++_headers^/addition_copy_files.output
+
 echo "building android.hardware.vibrator-V1.3-java_gen_java^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.vibrator-V1.3-java_gen_java,
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/vibrator/1.3/android.hardware.vibrator-V1.3-java_gen_java^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.vibrator-V1.3-java_gen_java^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/vibrator/1.3/android.hardware.vibrator-V1.3-java_gen_java^
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.vibrator-V1.3-java_gen_java^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/vibrator/1.3/android.hardware.vibrator-V1.3-java_gen_java^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/vibrator/1.3/android.hardware.vibrator-V1.3-java_gen_java^/addition_copy_files.output
+
+echo "building android.hardware.vibrator@1.3-inheritance-hierarchy^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.vibrator@1.3-inheritance-hierarchy,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/vibrator/1.3/android.hardware.vibrator@1.3-inheritance-hierarchy^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.vibrator@1.3-inheritance-hierarchy^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/vibrator/1.3/android.hardware.vibrator@1.3-inheritance-hierarchy^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.vibrator@1.3-inheritance-hierarchy^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/vibrator/1.3/android.hardware.vibrator@1.3-inheritance-hierarchy^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/vibrator/1.3/android.hardware.vibrator@1.3-inheritance-hierarchy^/addition_copy_files.output
+
+echo "building android.hardware.vibrator@1.3_genc++^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.vibrator@1.3_genc++,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/vibrator/1.3/android.hardware.vibrator@1.3_genc++^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.vibrator@1.3_genc++^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/vibrator/1.3/android.hardware.vibrator@1.3_genc++^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.vibrator@1.3_genc++^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/vibrator/1.3/android.hardware.vibrator@1.3_genc++^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/vibrator/1.3/android.hardware.vibrator@1.3_genc++^/addition_copy_files.output
+
+echo "building android.hardware.vibrator@1.3_genc++_headers^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.vibrator@1.3_genc++_headers,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/vibrator/1.3/android.hardware.vibrator@1.3_genc++_headers^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.vibrator@1.3_genc++_headers^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/vibrator/1.3/android.hardware.vibrator@1.3_genc++_headers^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.vibrator@1.3_genc++_headers^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/vibrator/1.3/android.hardware.vibrator@1.3_genc++_headers^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/vibrator/1.3/android.hardware.vibrator@1.3_genc++_headers^/addition_copy_files.output
 
 echo "building android.hardware.vibrator-V2-cpp-source^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.vibrator-V2-cpp-source,
@@ -4122,77 +4291,11 @@ mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/vibrator/aidl/android.h
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.vibrator-api^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/vibrator/aidl/android.hardware.vibrator-api^
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.vibrator-api^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/vibrator/aidl/android.hardware.vibrator-api^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/vibrator/aidl/android.hardware.vibrator-api^/addition_copy_files.output
 
-echo "building android.hardware.vibrator@1.0-inheritance-hierarchy^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.vibrator@1.0-inheritance-hierarchy,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/vibrator/1.0/android.hardware.vibrator@1.0-inheritance-hierarchy^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.vibrator@1.0-inheritance-hierarchy^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/vibrator/1.0/android.hardware.vibrator@1.0-inheritance-hierarchy^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.vibrator@1.0-inheritance-hierarchy^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/vibrator/1.0/android.hardware.vibrator@1.0-inheritance-hierarchy^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/vibrator/1.0/android.hardware.vibrator@1.0-inheritance-hierarchy^/addition_copy_files.output
-
-echo "building android.hardware.vibrator@1.0_genc++^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.vibrator@1.0_genc++,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/vibrator/1.0/android.hardware.vibrator@1.0_genc++^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.vibrator@1.0_genc++^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/vibrator/1.0/android.hardware.vibrator@1.0_genc++^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.vibrator@1.0_genc++^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/vibrator/1.0/android.hardware.vibrator@1.0_genc++^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/vibrator/1.0/android.hardware.vibrator@1.0_genc++^/addition_copy_files.output
-
-echo "building android.hardware.vibrator@1.0_genc++_headers^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.vibrator@1.0_genc++_headers,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/vibrator/1.0/android.hardware.vibrator@1.0_genc++_headers^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.vibrator@1.0_genc++_headers^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/vibrator/1.0/android.hardware.vibrator@1.0_genc++_headers^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.vibrator@1.0_genc++_headers^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/vibrator/1.0/android.hardware.vibrator@1.0_genc++_headers^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/vibrator/1.0/android.hardware.vibrator@1.0_genc++_headers^/addition_copy_files.output
-
-echo "building android.hardware.vibrator@1.1-inheritance-hierarchy^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.vibrator@1.1-inheritance-hierarchy,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/vibrator/1.1/android.hardware.vibrator@1.1-inheritance-hierarchy^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.vibrator@1.1-inheritance-hierarchy^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/vibrator/1.1/android.hardware.vibrator@1.1-inheritance-hierarchy^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.vibrator@1.1-inheritance-hierarchy^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/vibrator/1.1/android.hardware.vibrator@1.1-inheritance-hierarchy^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/vibrator/1.1/android.hardware.vibrator@1.1-inheritance-hierarchy^/addition_copy_files.output
-
-echo "building android.hardware.vibrator@1.1_genc++^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.vibrator@1.1_genc++,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/vibrator/1.1/android.hardware.vibrator@1.1_genc++^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.vibrator@1.1_genc++^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/vibrator/1.1/android.hardware.vibrator@1.1_genc++^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.vibrator@1.1_genc++^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/vibrator/1.1/android.hardware.vibrator@1.1_genc++^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/vibrator/1.1/android.hardware.vibrator@1.1_genc++^/addition_copy_files.output
-
-echo "building android.hardware.vibrator@1.1_genc++_headers^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.vibrator@1.1_genc++_headers,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/vibrator/1.1/android.hardware.vibrator@1.1_genc++_headers^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.vibrator@1.1_genc++_headers^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/vibrator/1.1/android.hardware.vibrator@1.1_genc++_headers^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.vibrator@1.1_genc++_headers^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/vibrator/1.1/android.hardware.vibrator@1.1_genc++_headers^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/vibrator/1.1/android.hardware.vibrator@1.1_genc++_headers^/addition_copy_files.output
-
-echo "building android.hardware.vibrator@1.2-inheritance-hierarchy^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.vibrator@1.2-inheritance-hierarchy,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/vibrator/1.2/android.hardware.vibrator@1.2-inheritance-hierarchy^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.vibrator@1.2-inheritance-hierarchy^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/vibrator/1.2/android.hardware.vibrator@1.2-inheritance-hierarchy^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.vibrator@1.2-inheritance-hierarchy^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/vibrator/1.2/android.hardware.vibrator@1.2-inheritance-hierarchy^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/vibrator/1.2/android.hardware.vibrator@1.2-inheritance-hierarchy^/addition_copy_files.output
-
-echo "building android.hardware.vibrator@1.2_genc++^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.vibrator@1.2_genc++,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/vibrator/1.2/android.hardware.vibrator@1.2_genc++^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.vibrator@1.2_genc++^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/vibrator/1.2/android.hardware.vibrator@1.2_genc++^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.vibrator@1.2_genc++^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/vibrator/1.2/android.hardware.vibrator@1.2_genc++^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/vibrator/1.2/android.hardware.vibrator@1.2_genc++^/addition_copy_files.output
-
-echo "building android.hardware.vibrator@1.2_genc++_headers^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.vibrator@1.2_genc++_headers,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/vibrator/1.2/android.hardware.vibrator@1.2_genc++_headers^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.vibrator@1.2_genc++_headers^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/vibrator/1.2/android.hardware.vibrator@1.2_genc++_headers^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.vibrator@1.2_genc++_headers^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/vibrator/1.2/android.hardware.vibrator@1.2_genc++_headers^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/vibrator/1.2/android.hardware.vibrator@1.2_genc++_headers^/addition_copy_files.output
-
-echo "building android.hardware.vibrator@1.3-inheritance-hierarchy^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.vibrator@1.3-inheritance-hierarchy,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/vibrator/1.3/android.hardware.vibrator@1.3-inheritance-hierarchy^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.vibrator@1.3-inheritance-hierarchy^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/vibrator/1.3/android.hardware.vibrator@1.3-inheritance-hierarchy^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.vibrator@1.3-inheritance-hierarchy^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/vibrator/1.3/android.hardware.vibrator@1.3-inheritance-hierarchy^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/vibrator/1.3/android.hardware.vibrator@1.3-inheritance-hierarchy^/addition_copy_files.output
-
-echo "building android.hardware.vibrator@1.3_genc++^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.vibrator@1.3_genc++,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/vibrator/1.3/android.hardware.vibrator@1.3_genc++^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.vibrator@1.3_genc++^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/vibrator/1.3/android.hardware.vibrator@1.3_genc++^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.vibrator@1.3_genc++^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/vibrator/1.3/android.hardware.vibrator@1.3_genc++^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/vibrator/1.3/android.hardware.vibrator@1.3_genc++^/addition_copy_files.output
-
-echo "building android.hardware.vibrator@1.3_genc++_headers^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.vibrator@1.3_genc++_headers,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/vibrator/1.3/android.hardware.vibrator@1.3_genc++_headers^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.vibrator@1.3_genc++_headers^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/vibrator/1.3/android.hardware.vibrator@1.3_genc++_headers^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.vibrator@1.3_genc++_headers^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/vibrator/1.3/android.hardware.vibrator@1.3_genc++_headers^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/vibrator/1.3/android.hardware.vibrator@1.3_genc++_headers^/addition_copy_files.output
+echo "building libvibratorexampleimpl^android_vendor.31_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libvibratorexampleimpl,android_vendor.31_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/vibrator/aidl/default/libvibratorexampleimpl^android_vendor.31_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/libvibratorexampleimpl^android_vendor.31_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/vibrator/aidl/default/libvibratorexampleimpl^android_vendor.31_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/libvibratorexampleimpl^android_vendor.31_x86_64_static.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/vibrator/aidl/default/libvibratorexampleimpl^android_vendor.31_x86_64_static $GITHUB_WORKSPACE/artifacts/hardware/interfaces/vibrator/aidl/default/libvibratorexampleimpl^android_vendor.31_x86_64_static/addition_copy_files.output
 
 echo "building android.hardware.vr@1.0-inheritance-hierarchy^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.vr@1.0-inheritance-hierarchy,
@@ -4212,6 +4315,18 @@ mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/vr/1.0/android.hardware
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.vr@1.0_genc++_headers^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/vr/1.0/android.hardware.vr@1.0_genc++_headers^
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.vr@1.0_genc++_headers^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/vr/1.0/android.hardware.vr@1.0_genc++_headers^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/vr/1.0/android.hardware.vr@1.0_genc++_headers^/addition_copy_files.output
 
+echo "building android.hardware.weaver-V1.0-java_gen_java^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.weaver-V1.0-java_gen_java,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/weaver/1.0/android.hardware.weaver-V1.0-java_gen_java^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.weaver-V1.0-java_gen_java^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/weaver/1.0/android.hardware.weaver-V1.0-java_gen_java^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.weaver-V1.0-java_gen_java^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/weaver/1.0/android.hardware.weaver-V1.0-java_gen_java^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/weaver/1.0/android.hardware.weaver-V1.0-java_gen_java^/addition_copy_files.output
+
+echo "building android.hardware.weaver@1.0-inheritance-hierarchy^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.weaver@1.0-inheritance-hierarchy,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/weaver/1.0/android.hardware.weaver@1.0-inheritance-hierarchy^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.weaver@1.0-inheritance-hierarchy^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/weaver/1.0/android.hardware.weaver@1.0-inheritance-hierarchy^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.weaver@1.0-inheritance-hierarchy^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/weaver/1.0/android.hardware.weaver@1.0-inheritance-hierarchy^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/weaver/1.0/android.hardware.weaver@1.0-inheritance-hierarchy^/addition_copy_files.output
+
 echo "building android.hardware.weaver-V1-ndk_platform-source^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.weaver-V1-ndk_platform-source,
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/weaver/aidl/android.hardware.weaver-V1-ndk_platform-source^
@@ -4230,23 +4345,11 @@ mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/weaver/aidl/android.har
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.weaver-V1-ndk_platform^android_vendor.31_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/weaver/aidl/android.hardware.weaver-V1-ndk_platform^android_vendor.31_x86_x86_64_static
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.weaver-V1-ndk_platform^android_vendor.31_x86_x86_64_static.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/weaver/aidl/android.hardware.weaver-V1-ndk_platform^android_vendor.31_x86_x86_64_static $GITHUB_WORKSPACE/artifacts/hardware/interfaces/weaver/aidl/android.hardware.weaver-V1-ndk_platform^android_vendor.31_x86_x86_64_static/addition_copy_files.output
 
-echo "building android.hardware.weaver-V1.0-java_gen_java^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.weaver-V1.0-java_gen_java,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/weaver/1.0/android.hardware.weaver-V1.0-java_gen_java^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.weaver-V1.0-java_gen_java^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/weaver/1.0/android.hardware.weaver-V1.0-java_gen_java^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.weaver-V1.0-java_gen_java^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/weaver/1.0/android.hardware.weaver-V1.0-java_gen_java^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/weaver/1.0/android.hardware.weaver-V1.0-java_gen_java^/addition_copy_files.output
-
 echo "building android.hardware.weaver-api^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.weaver-api,
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/weaver/aidl/android.hardware.weaver-api^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.weaver-api^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/weaver/aidl/android.hardware.weaver-api^
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.weaver-api^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/weaver/aidl/android.hardware.weaver-api^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/weaver/aidl/android.hardware.weaver-api^/addition_copy_files.output
-
-echo "building android.hardware.weaver@1.0-inheritance-hierarchy^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.weaver@1.0-inheritance-hierarchy,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/weaver/1.0/android.hardware.weaver@1.0-inheritance-hierarchy^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.weaver@1.0-inheritance-hierarchy^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/weaver/1.0/android.hardware.weaver@1.0-inheritance-hierarchy^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.weaver@1.0-inheritance-hierarchy^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/weaver/1.0/android.hardware.weaver@1.0-inheritance-hierarchy^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/weaver/1.0/android.hardware.weaver@1.0-inheritance-hierarchy^/addition_copy_files.output
 
 echo "building android.hardware.wifi-V1.0-java-constants_gen_java^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.wifi-V1.0-java-constants_gen_java,
@@ -4259,150 +4362,6 @@ prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/st
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/1.0/android.hardware.wifi-V1.0-java_gen_java^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.wifi-V1.0-java_gen_java^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/1.0/android.hardware.wifi-V1.0-java_gen_java^
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.wifi-V1.0-java_gen_java^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/1.0/android.hardware.wifi-V1.0-java_gen_java^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/1.0/android.hardware.wifi-V1.0-java_gen_java^/addition_copy_files.output
-
-echo "building android.hardware.wifi-V1.1-java_gen_java^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.wifi-V1.1-java_gen_java,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/1.1/android.hardware.wifi-V1.1-java_gen_java^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.wifi-V1.1-java_gen_java^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/1.1/android.hardware.wifi-V1.1-java_gen_java^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.wifi-V1.1-java_gen_java^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/1.1/android.hardware.wifi-V1.1-java_gen_java^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/1.1/android.hardware.wifi-V1.1-java_gen_java^/addition_copy_files.output
-
-echo "building android.hardware.wifi-V1.2-java_gen_java^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.wifi-V1.2-java_gen_java,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/1.2/android.hardware.wifi-V1.2-java_gen_java^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.wifi-V1.2-java_gen_java^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/1.2/android.hardware.wifi-V1.2-java_gen_java^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.wifi-V1.2-java_gen_java^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/1.2/android.hardware.wifi-V1.2-java_gen_java^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/1.2/android.hardware.wifi-V1.2-java_gen_java^/addition_copy_files.output
-
-echo "building android.hardware.wifi-V1.3-java_gen_java^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.wifi-V1.3-java_gen_java,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/1.3/android.hardware.wifi-V1.3-java_gen_java^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.wifi-V1.3-java_gen_java^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/1.3/android.hardware.wifi-V1.3-java_gen_java^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.wifi-V1.3-java_gen_java^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/1.3/android.hardware.wifi-V1.3-java_gen_java^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/1.3/android.hardware.wifi-V1.3-java_gen_java^/addition_copy_files.output
-
-echo "building android.hardware.wifi-V1.4-java_gen_java^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.wifi-V1.4-java_gen_java,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/1.4/android.hardware.wifi-V1.4-java_gen_java^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.wifi-V1.4-java_gen_java^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/1.4/android.hardware.wifi-V1.4-java_gen_java^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.wifi-V1.4-java_gen_java^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/1.4/android.hardware.wifi-V1.4-java_gen_java^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/1.4/android.hardware.wifi-V1.4-java_gen_java^/addition_copy_files.output
-
-echo "building android.hardware.wifi-V1.5-java_gen_java^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.wifi-V1.5-java_gen_java,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/1.5/android.hardware.wifi-V1.5-java_gen_java^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.wifi-V1.5-java_gen_java^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/1.5/android.hardware.wifi-V1.5-java_gen_java^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.wifi-V1.5-java_gen_java^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/1.5/android.hardware.wifi-V1.5-java_gen_java^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/1.5/android.hardware.wifi-V1.5-java_gen_java^/addition_copy_files.output
-
-echo "building android.hardware.wifi.hostapd-V1.0-java_gen_java^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.wifi.hostapd-V1.0-java_gen_java,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/hostapd/1.0/android.hardware.wifi.hostapd-V1.0-java_gen_java^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.wifi.hostapd-V1.0-java_gen_java^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/hostapd/1.0/android.hardware.wifi.hostapd-V1.0-java_gen_java^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.wifi.hostapd-V1.0-java_gen_java^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/hostapd/1.0/android.hardware.wifi.hostapd-V1.0-java_gen_java^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/hostapd/1.0/android.hardware.wifi.hostapd-V1.0-java_gen_java^/addition_copy_files.output
-
-echo "building android.hardware.wifi.hostapd-V1.1-java_gen_java^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.wifi.hostapd-V1.1-java_gen_java,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/hostapd/1.1/android.hardware.wifi.hostapd-V1.1-java_gen_java^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.wifi.hostapd-V1.1-java_gen_java^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/hostapd/1.1/android.hardware.wifi.hostapd-V1.1-java_gen_java^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.wifi.hostapd-V1.1-java_gen_java^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/hostapd/1.1/android.hardware.wifi.hostapd-V1.1-java_gen_java^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/hostapd/1.1/android.hardware.wifi.hostapd-V1.1-java_gen_java^/addition_copy_files.output
-
-echo "building android.hardware.wifi.hostapd-V1.2-java_gen_java^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.wifi.hostapd-V1.2-java_gen_java,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/hostapd/1.2/android.hardware.wifi.hostapd-V1.2-java_gen_java^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.wifi.hostapd-V1.2-java_gen_java^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/hostapd/1.2/android.hardware.wifi.hostapd-V1.2-java_gen_java^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.wifi.hostapd-V1.2-java_gen_java^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/hostapd/1.2/android.hardware.wifi.hostapd-V1.2-java_gen_java^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/hostapd/1.2/android.hardware.wifi.hostapd-V1.2-java_gen_java^/addition_copy_files.output
-
-echo "building android.hardware.wifi.hostapd-V1.3-java_gen_java^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.wifi.hostapd-V1.3-java_gen_java,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/hostapd/1.3/android.hardware.wifi.hostapd-V1.3-java_gen_java^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.wifi.hostapd-V1.3-java_gen_java^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/hostapd/1.3/android.hardware.wifi.hostapd-V1.3-java_gen_java^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.wifi.hostapd-V1.3-java_gen_java^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/hostapd/1.3/android.hardware.wifi.hostapd-V1.3-java_gen_java^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/hostapd/1.3/android.hardware.wifi.hostapd-V1.3-java_gen_java^/addition_copy_files.output
-
-echo "building android.hardware.wifi.hostapd@1.0-inheritance-hierarchy^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.wifi.hostapd@1.0-inheritance-hierarchy,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/hostapd/1.0/android.hardware.wifi.hostapd@1.0-inheritance-hierarchy^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.wifi.hostapd@1.0-inheritance-hierarchy^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/hostapd/1.0/android.hardware.wifi.hostapd@1.0-inheritance-hierarchy^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.wifi.hostapd@1.0-inheritance-hierarchy^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/hostapd/1.0/android.hardware.wifi.hostapd@1.0-inheritance-hierarchy^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/hostapd/1.0/android.hardware.wifi.hostapd@1.0-inheritance-hierarchy^/addition_copy_files.output
-
-echo "building android.hardware.wifi.hostapd@1.1-inheritance-hierarchy^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.wifi.hostapd@1.1-inheritance-hierarchy,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/hostapd/1.1/android.hardware.wifi.hostapd@1.1-inheritance-hierarchy^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.wifi.hostapd@1.1-inheritance-hierarchy^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/hostapd/1.1/android.hardware.wifi.hostapd@1.1-inheritance-hierarchy^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.wifi.hostapd@1.1-inheritance-hierarchy^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/hostapd/1.1/android.hardware.wifi.hostapd@1.1-inheritance-hierarchy^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/hostapd/1.1/android.hardware.wifi.hostapd@1.1-inheritance-hierarchy^/addition_copy_files.output
-
-echo "building android.hardware.wifi.hostapd@1.2-inheritance-hierarchy^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.wifi.hostapd@1.2-inheritance-hierarchy,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/hostapd/1.2/android.hardware.wifi.hostapd@1.2-inheritance-hierarchy^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.wifi.hostapd@1.2-inheritance-hierarchy^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/hostapd/1.2/android.hardware.wifi.hostapd@1.2-inheritance-hierarchy^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.wifi.hostapd@1.2-inheritance-hierarchy^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/hostapd/1.2/android.hardware.wifi.hostapd@1.2-inheritance-hierarchy^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/hostapd/1.2/android.hardware.wifi.hostapd@1.2-inheritance-hierarchy^/addition_copy_files.output
-
-echo "building android.hardware.wifi.hostapd@1.3-inheritance-hierarchy^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.wifi.hostapd@1.3-inheritance-hierarchy,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/hostapd/1.3/android.hardware.wifi.hostapd@1.3-inheritance-hierarchy^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.wifi.hostapd@1.3-inheritance-hierarchy^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/hostapd/1.3/android.hardware.wifi.hostapd@1.3-inheritance-hierarchy^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.wifi.hostapd@1.3-inheritance-hierarchy^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/hostapd/1.3/android.hardware.wifi.hostapd@1.3-inheritance-hierarchy^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/hostapd/1.3/android.hardware.wifi.hostapd@1.3-inheritance-hierarchy^/addition_copy_files.output
-
-echo "building android.hardware.wifi.offload@1.0-inheritance-hierarchy^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.wifi.offload@1.0-inheritance-hierarchy,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/offload/1.0/android.hardware.wifi.offload@1.0-inheritance-hierarchy^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.wifi.offload@1.0-inheritance-hierarchy^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/offload/1.0/android.hardware.wifi.offload@1.0-inheritance-hierarchy^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.wifi.offload@1.0-inheritance-hierarchy^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/offload/1.0/android.hardware.wifi.offload@1.0-inheritance-hierarchy^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/offload/1.0/android.hardware.wifi.offload@1.0-inheritance-hierarchy^/addition_copy_files.output
-
-echo "building android.hardware.wifi.supplicant-V1.0-java_gen_java^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.wifi.supplicant-V1.0-java_gen_java,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/supplicant/1.0/android.hardware.wifi.supplicant-V1.0-java_gen_java^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.wifi.supplicant-V1.0-java_gen_java^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/supplicant/1.0/android.hardware.wifi.supplicant-V1.0-java_gen_java^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.wifi.supplicant-V1.0-java_gen_java^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/supplicant/1.0/android.hardware.wifi.supplicant-V1.0-java_gen_java^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/supplicant/1.0/android.hardware.wifi.supplicant-V1.0-java_gen_java^/addition_copy_files.output
-
-echo "building android.hardware.wifi.supplicant-V1.1-java_gen_java^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.wifi.supplicant-V1.1-java_gen_java,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/supplicant/1.1/android.hardware.wifi.supplicant-V1.1-java_gen_java^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.wifi.supplicant-V1.1-java_gen_java^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/supplicant/1.1/android.hardware.wifi.supplicant-V1.1-java_gen_java^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.wifi.supplicant-V1.1-java_gen_java^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/supplicant/1.1/android.hardware.wifi.supplicant-V1.1-java_gen_java^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/supplicant/1.1/android.hardware.wifi.supplicant-V1.1-java_gen_java^/addition_copy_files.output
-
-echo "building android.hardware.wifi.supplicant-V1.2-java_gen_java^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.wifi.supplicant-V1.2-java_gen_java,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/supplicant/1.2/android.hardware.wifi.supplicant-V1.2-java_gen_java^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.wifi.supplicant-V1.2-java_gen_java^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/supplicant/1.2/android.hardware.wifi.supplicant-V1.2-java_gen_java^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.wifi.supplicant-V1.2-java_gen_java^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/supplicant/1.2/android.hardware.wifi.supplicant-V1.2-java_gen_java^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/supplicant/1.2/android.hardware.wifi.supplicant-V1.2-java_gen_java^/addition_copy_files.output
-
-echo "building android.hardware.wifi.supplicant-V1.3-java_gen_java^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.wifi.supplicant-V1.3-java_gen_java,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/supplicant/1.3/android.hardware.wifi.supplicant-V1.3-java_gen_java^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.wifi.supplicant-V1.3-java_gen_java^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/supplicant/1.3/android.hardware.wifi.supplicant-V1.3-java_gen_java^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.wifi.supplicant-V1.3-java_gen_java^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/supplicant/1.3/android.hardware.wifi.supplicant-V1.3-java_gen_java^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/supplicant/1.3/android.hardware.wifi.supplicant-V1.3-java_gen_java^/addition_copy_files.output
-
-echo "building android.hardware.wifi.supplicant-V1.4-java_gen_java^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.wifi.supplicant-V1.4-java_gen_java,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/supplicant/1.4/android.hardware.wifi.supplicant-V1.4-java_gen_java^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.wifi.supplicant-V1.4-java_gen_java^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/supplicant/1.4/android.hardware.wifi.supplicant-V1.4-java_gen_java^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.wifi.supplicant-V1.4-java_gen_java^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/supplicant/1.4/android.hardware.wifi.supplicant-V1.4-java_gen_java^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/supplicant/1.4/android.hardware.wifi.supplicant-V1.4-java_gen_java^/addition_copy_files.output
-
-echo "building android.hardware.wifi.supplicant@1.0-inheritance-hierarchy^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.wifi.supplicant@1.0-inheritance-hierarchy,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/supplicant/1.0/android.hardware.wifi.supplicant@1.0-inheritance-hierarchy^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.wifi.supplicant@1.0-inheritance-hierarchy^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/supplicant/1.0/android.hardware.wifi.supplicant@1.0-inheritance-hierarchy^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.wifi.supplicant@1.0-inheritance-hierarchy^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/supplicant/1.0/android.hardware.wifi.supplicant@1.0-inheritance-hierarchy^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/supplicant/1.0/android.hardware.wifi.supplicant@1.0-inheritance-hierarchy^/addition_copy_files.output
-
-echo "building android.hardware.wifi.supplicant@1.1-inheritance-hierarchy^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.wifi.supplicant@1.1-inheritance-hierarchy,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/supplicant/1.1/android.hardware.wifi.supplicant@1.1-inheritance-hierarchy^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.wifi.supplicant@1.1-inheritance-hierarchy^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/supplicant/1.1/android.hardware.wifi.supplicant@1.1-inheritance-hierarchy^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.wifi.supplicant@1.1-inheritance-hierarchy^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/supplicant/1.1/android.hardware.wifi.supplicant@1.1-inheritance-hierarchy^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/supplicant/1.1/android.hardware.wifi.supplicant@1.1-inheritance-hierarchy^/addition_copy_files.output
-
-echo "building android.hardware.wifi.supplicant@1.2-inheritance-hierarchy^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.wifi.supplicant@1.2-inheritance-hierarchy,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/supplicant/1.2/android.hardware.wifi.supplicant@1.2-inheritance-hierarchy^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.wifi.supplicant@1.2-inheritance-hierarchy^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/supplicant/1.2/android.hardware.wifi.supplicant@1.2-inheritance-hierarchy^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.wifi.supplicant@1.2-inheritance-hierarchy^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/supplicant/1.2/android.hardware.wifi.supplicant@1.2-inheritance-hierarchy^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/supplicant/1.2/android.hardware.wifi.supplicant@1.2-inheritance-hierarchy^/addition_copy_files.output
-
-echo "building android.hardware.wifi.supplicant@1.3-inheritance-hierarchy^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.wifi.supplicant@1.3-inheritance-hierarchy,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/supplicant/1.3/android.hardware.wifi.supplicant@1.3-inheritance-hierarchy^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.wifi.supplicant@1.3-inheritance-hierarchy^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/supplicant/1.3/android.hardware.wifi.supplicant@1.3-inheritance-hierarchy^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.wifi.supplicant@1.3-inheritance-hierarchy^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/supplicant/1.3/android.hardware.wifi.supplicant@1.3-inheritance-hierarchy^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/supplicant/1.3/android.hardware.wifi.supplicant@1.3-inheritance-hierarchy^/addition_copy_files.output
-
-echo "building android.hardware.wifi.supplicant@1.4-inheritance-hierarchy^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.wifi.supplicant@1.4-inheritance-hierarchy,
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/supplicant/1.4/android.hardware.wifi.supplicant@1.4-inheritance-hierarchy^
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.wifi.supplicant@1.4-inheritance-hierarchy^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/supplicant/1.4/android.hardware.wifi.supplicant@1.4-inheritance-hierarchy^
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.wifi.supplicant@1.4-inheritance-hierarchy^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/supplicant/1.4/android.hardware.wifi.supplicant@1.4-inheritance-hierarchy^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/supplicant/1.4/android.hardware.wifi.supplicant@1.4-inheritance-hierarchy^/addition_copy_files.output
 
 echo "building android.hardware.wifi@1.0-inheritance-hierarchy^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.wifi@1.0-inheritance-hierarchy,
@@ -4422,11 +4381,23 @@ mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/1.0/android.hardwa
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.wifi@1.0_genc++_headers^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/1.0/android.hardware.wifi@1.0_genc++_headers^
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.wifi@1.0_genc++_headers^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/1.0/android.hardware.wifi@1.0_genc++_headers^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/1.0/android.hardware.wifi@1.0_genc++_headers^/addition_copy_files.output
 
+echo "building android.hardware.wifi-V1.1-java_gen_java^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.wifi-V1.1-java_gen_java,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/1.1/android.hardware.wifi-V1.1-java_gen_java^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.wifi-V1.1-java_gen_java^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/1.1/android.hardware.wifi-V1.1-java_gen_java^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.wifi-V1.1-java_gen_java^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/1.1/android.hardware.wifi-V1.1-java_gen_java^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/1.1/android.hardware.wifi-V1.1-java_gen_java^/addition_copy_files.output
+
 echo "building android.hardware.wifi@1.1-inheritance-hierarchy^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.wifi@1.1-inheritance-hierarchy,
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/1.1/android.hardware.wifi@1.1-inheritance-hierarchy^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.wifi@1.1-inheritance-hierarchy^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/1.1/android.hardware.wifi@1.1-inheritance-hierarchy^
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.wifi@1.1-inheritance-hierarchy^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/1.1/android.hardware.wifi@1.1-inheritance-hierarchy^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/1.1/android.hardware.wifi@1.1-inheritance-hierarchy^/addition_copy_files.output
+
+echo "building android.hardware.wifi-V1.2-java_gen_java^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.wifi-V1.2-java_gen_java,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/1.2/android.hardware.wifi-V1.2-java_gen_java^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.wifi-V1.2-java_gen_java^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/1.2/android.hardware.wifi-V1.2-java_gen_java^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.wifi-V1.2-java_gen_java^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/1.2/android.hardware.wifi-V1.2-java_gen_java^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/1.2/android.hardware.wifi-V1.2-java_gen_java^/addition_copy_files.output
 
 echo "building android.hardware.wifi@1.2-inheritance-hierarchy^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.wifi@1.2-inheritance-hierarchy,
@@ -4434,11 +4405,23 @@ mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/1.2/android.hardwa
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.wifi@1.2-inheritance-hierarchy^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/1.2/android.hardware.wifi@1.2-inheritance-hierarchy^
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.wifi@1.2-inheritance-hierarchy^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/1.2/android.hardware.wifi@1.2-inheritance-hierarchy^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/1.2/android.hardware.wifi@1.2-inheritance-hierarchy^/addition_copy_files.output
 
+echo "building android.hardware.wifi-V1.3-java_gen_java^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.wifi-V1.3-java_gen_java,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/1.3/android.hardware.wifi-V1.3-java_gen_java^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.wifi-V1.3-java_gen_java^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/1.3/android.hardware.wifi-V1.3-java_gen_java^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.wifi-V1.3-java_gen_java^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/1.3/android.hardware.wifi-V1.3-java_gen_java^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/1.3/android.hardware.wifi-V1.3-java_gen_java^/addition_copy_files.output
+
 echo "building android.hardware.wifi@1.3-inheritance-hierarchy^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.wifi@1.3-inheritance-hierarchy,
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/1.3/android.hardware.wifi@1.3-inheritance-hierarchy^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.wifi@1.3-inheritance-hierarchy^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/1.3/android.hardware.wifi@1.3-inheritance-hierarchy^
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.wifi@1.3-inheritance-hierarchy^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/1.3/android.hardware.wifi@1.3-inheritance-hierarchy^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/1.3/android.hardware.wifi@1.3-inheritance-hierarchy^/addition_copy_files.output
+
+echo "building android.hardware.wifi-V1.4-java_gen_java^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.wifi-V1.4-java_gen_java,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/1.4/android.hardware.wifi-V1.4-java_gen_java^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.wifi-V1.4-java_gen_java^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/1.4/android.hardware.wifi-V1.4-java_gen_java^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.wifi-V1.4-java_gen_java^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/1.4/android.hardware.wifi-V1.4-java_gen_java^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/1.4/android.hardware.wifi-V1.4-java_gen_java^/addition_copy_files.output
 
 echo "building android.hardware.wifi@1.4-inheritance-hierarchy^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.wifi@1.4-inheritance-hierarchy,
@@ -4446,65 +4429,132 @@ mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/1.4/android.hardwa
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.wifi@1.4-inheritance-hierarchy^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/1.4/android.hardware.wifi@1.4-inheritance-hierarchy^
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.wifi@1.4-inheritance-hierarchy^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/1.4/android.hardware.wifi@1.4-inheritance-hierarchy^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/1.4/android.hardware.wifi@1.4-inheritance-hierarchy^/addition_copy_files.output
 
+echo "building android.hardware.wifi-V1.5-java_gen_java^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.wifi-V1.5-java_gen_java,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/1.5/android.hardware.wifi-V1.5-java_gen_java^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.wifi-V1.5-java_gen_java^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/1.5/android.hardware.wifi-V1.5-java_gen_java^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.wifi-V1.5-java_gen_java^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/1.5/android.hardware.wifi-V1.5-java_gen_java^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/1.5/android.hardware.wifi-V1.5-java_gen_java^/addition_copy_files.output
+
 echo "building android.hardware.wifi@1.5-inheritance-hierarchy^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.wifi@1.5-inheritance-hierarchy,
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/1.5/android.hardware.wifi@1.5-inheritance-hierarchy^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.wifi@1.5-inheritance-hierarchy^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/1.5/android.hardware.wifi@1.5-inheritance-hierarchy^
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.wifi@1.5-inheritance-hierarchy^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/1.5/android.hardware.wifi@1.5-inheritance-hierarchy^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/1.5/android.hardware.wifi@1.5-inheritance-hierarchy^/addition_copy_files.output
 
-echo "building libaidlcommonsupport^android_vendor.31_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libaidlcommonsupport,android_vendor.31_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/common/support/libaidlcommonsupport^android_vendor.31_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/libaidlcommonsupport^android_vendor.31_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/common/support/libaidlcommonsupport^android_vendor.31_x86_64_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/libaidlcommonsupport^android_vendor.31_x86_64_static.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/common/support/libaidlcommonsupport^android_vendor.31_x86_64_static $GITHUB_WORKSPACE/artifacts/hardware/interfaces/common/support/libaidlcommonsupport^android_vendor.31_x86_64_static/addition_copy_files.output
+echo "building android.hardware.wifi.hostapd-V1.0-java_gen_java^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.wifi.hostapd-V1.0-java_gen_java,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/hostapd/1.0/android.hardware.wifi.hostapd-V1.0-java_gen_java^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.wifi.hostapd-V1.0-java_gen_java^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/hostapd/1.0/android.hardware.wifi.hostapd-V1.0-java_gen_java^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.wifi.hostapd-V1.0-java_gen_java^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/hostapd/1.0/android.hardware.wifi.hostapd-V1.0-java_gen_java^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/hostapd/1.0/android.hardware.wifi.hostapd-V1.0-java_gen_java^/addition_copy_files.output
 
-echo "building libaidlcommonsupport^android_x86_64_static_apex30"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libaidlcommonsupport,android_x86_64_static_apex30
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/common/support/libaidlcommonsupport^android_x86_64_static_apex30
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/libaidlcommonsupport^android_x86_64_static_apex30.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/common/support/libaidlcommonsupport^android_x86_64_static_apex30
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/libaidlcommonsupport^android_x86_64_static_apex30.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/common/support/libaidlcommonsupport^android_x86_64_static_apex30 $GITHUB_WORKSPACE/artifacts/hardware/interfaces/common/support/libaidlcommonsupport^android_x86_64_static_apex30/addition_copy_files.output
+echo "building android.hardware.wifi.hostapd@1.0-inheritance-hierarchy^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.wifi.hostapd@1.0-inheritance-hierarchy,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/hostapd/1.0/android.hardware.wifi.hostapd@1.0-inheritance-hierarchy^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.wifi.hostapd@1.0-inheritance-hierarchy^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/hostapd/1.0/android.hardware.wifi.hostapd@1.0-inheritance-hierarchy^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.wifi.hostapd@1.0-inheritance-hierarchy^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/hostapd/1.0/android.hardware.wifi.hostapd@1.0-inheritance-hierarchy^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/hostapd/1.0/android.hardware.wifi.hostapd@1.0-inheritance-hierarchy^/addition_copy_files.output
 
-echo "building libaidlcommonsupport^android_x86_x86_64_static_apex30"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libaidlcommonsupport,android_x86_x86_64_static_apex30
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/common/support/libaidlcommonsupport^android_x86_x86_64_static_apex30
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/libaidlcommonsupport^android_x86_x86_64_static_apex30.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/common/support/libaidlcommonsupport^android_x86_x86_64_static_apex30
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/libaidlcommonsupport^android_x86_x86_64_static_apex30.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/common/support/libaidlcommonsupport^android_x86_x86_64_static_apex30 $GITHUB_WORKSPACE/artifacts/hardware/interfaces/common/support/libaidlcommonsupport^android_x86_x86_64_static_apex30/addition_copy_files.output
+echo "building android.hardware.wifi.hostapd-V1.1-java_gen_java^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.wifi.hostapd-V1.1-java_gen_java,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/hostapd/1.1/android.hardware.wifi.hostapd-V1.1-java_gen_java^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.wifi.hostapd-V1.1-java_gen_java^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/hostapd/1.1/android.hardware.wifi.hostapd-V1.1-java_gen_java^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.wifi.hostapd-V1.1-java_gen_java^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/hostapd/1.1/android.hardware.wifi.hostapd-V1.1-java_gen_java^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/hostapd/1.1/android.hardware.wifi.hostapd-V1.1-java_gen_java^/addition_copy_files.output
 
-echo "building libhadamardutils^android_vendor.31_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libhadamardutils,android_vendor.31_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/rebootescrow/aidl/default/libhadamardutils^android_vendor.31_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/libhadamardutils^android_vendor.31_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/rebootescrow/aidl/default/libhadamardutils^android_vendor.31_x86_64_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/libhadamardutils^android_vendor.31_x86_64_static.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/rebootescrow/aidl/default/libhadamardutils^android_vendor.31_x86_64_static $GITHUB_WORKSPACE/artifacts/hardware/interfaces/rebootescrow/aidl/default/libhadamardutils^android_vendor.31_x86_64_static/addition_copy_files.output
+echo "building android.hardware.wifi.hostapd@1.1-inheritance-hierarchy^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.wifi.hostapd@1.1-inheritance-hierarchy,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/hostapd/1.1/android.hardware.wifi.hostapd@1.1-inheritance-hierarchy^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.wifi.hostapd@1.1-inheritance-hierarchy^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/hostapd/1.1/android.hardware.wifi.hostapd@1.1-inheritance-hierarchy^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.wifi.hostapd@1.1-inheritance-hierarchy^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/hostapd/1.1/android.hardware.wifi.hostapd@1.1-inheritance-hierarchy^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/hostapd/1.1/android.hardware.wifi.hostapd@1.1-inheritance-hierarchy^/addition_copy_files.output
 
-echo "building libhealthloop^android_vendor.31_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libhealthloop,android_vendor.31_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/health/utils/libhealthloop/libhealthloop^android_vendor.31_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/libhealthloop^android_vendor.31_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/health/utils/libhealthloop/libhealthloop^android_vendor.31_x86_64_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/libhealthloop^android_vendor.31_x86_64_static.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/health/utils/libhealthloop/libhealthloop^android_vendor.31_x86_64_static $GITHUB_WORKSPACE/artifacts/hardware/interfaces/health/utils/libhealthloop/libhealthloop^android_vendor.31_x86_64_static/addition_copy_files.output
+echo "building android.hardware.wifi.hostapd-V1.2-java_gen_java^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.wifi.hostapd-V1.2-java_gen_java,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/hostapd/1.2/android.hardware.wifi.hostapd-V1.2-java_gen_java^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.wifi.hostapd-V1.2-java_gen_java^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/hostapd/1.2/android.hardware.wifi.hostapd-V1.2-java_gen_java^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.wifi.hostapd-V1.2-java_gen_java^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/hostapd/1.2/android.hardware.wifi.hostapd-V1.2-java_gen_java^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/hostapd/1.2/android.hardware.wifi.hostapd-V1.2-java_gen_java^/addition_copy_files.output
 
-echo "building libhealthloop^android_vendor.31_x86_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libhealthloop,android_vendor.31_x86_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/health/utils/libhealthloop/libhealthloop^android_vendor.31_x86_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/libhealthloop^android_vendor.31_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/health/utils/libhealthloop/libhealthloop^android_vendor.31_x86_x86_64_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/libhealthloop^android_vendor.31_x86_x86_64_static.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/health/utils/libhealthloop/libhealthloop^android_vendor.31_x86_x86_64_static $GITHUB_WORKSPACE/artifacts/hardware/interfaces/health/utils/libhealthloop/libhealthloop^android_vendor.31_x86_x86_64_static/addition_copy_files.output
+echo "building android.hardware.wifi.hostapd@1.2-inheritance-hierarchy^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.wifi.hostapd@1.2-inheritance-hierarchy,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/hostapd/1.2/android.hardware.wifi.hostapd@1.2-inheritance-hierarchy^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.wifi.hostapd@1.2-inheritance-hierarchy^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/hostapd/1.2/android.hardware.wifi.hostapd@1.2-inheritance-hierarchy^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.wifi.hostapd@1.2-inheritance-hierarchy^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/hostapd/1.2/android.hardware.wifi.hostapd@1.2-inheritance-hierarchy^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/hostapd/1.2/android.hardware.wifi.hostapd@1.2-inheritance-hierarchy^/addition_copy_files.output
 
-echo "building libkeymint_support^android_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libkeymint_support,android_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/security/keymint/support/libkeymint_support^android_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/libkeymint_support^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/security/keymint/support/libkeymint_support^android_x86_64_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/libkeymint_support^android_x86_64_static.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/security/keymint/support/libkeymint_support^android_x86_64_static $GITHUB_WORKSPACE/artifacts/hardware/interfaces/security/keymint/support/libkeymint_support^android_x86_64_static/addition_copy_files.output
+echo "building android.hardware.wifi.hostapd-V1.3-java_gen_java^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.wifi.hostapd-V1.3-java_gen_java,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/hostapd/1.3/android.hardware.wifi.hostapd-V1.3-java_gen_java^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.wifi.hostapd-V1.3-java_gen_java^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/hostapd/1.3/android.hardware.wifi.hostapd-V1.3-java_gen_java^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.wifi.hostapd-V1.3-java_gen_java^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/hostapd/1.3/android.hardware.wifi.hostapd-V1.3-java_gen_java^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/hostapd/1.3/android.hardware.wifi.hostapd-V1.3-java_gen_java^/addition_copy_files.output
 
-echo "building librebootescrowdefaultimpl^android_vendor.31_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja librebootescrowdefaultimpl,android_vendor.31_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/rebootescrow/aidl/default/librebootescrowdefaultimpl^android_vendor.31_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/librebootescrowdefaultimpl^android_vendor.31_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/rebootescrow/aidl/default/librebootescrowdefaultimpl^android_vendor.31_x86_64_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/librebootescrowdefaultimpl^android_vendor.31_x86_64_static.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/rebootescrow/aidl/default/librebootescrowdefaultimpl^android_vendor.31_x86_64_static $GITHUB_WORKSPACE/artifacts/hardware/interfaces/rebootescrow/aidl/default/librebootescrowdefaultimpl^android_vendor.31_x86_64_static/addition_copy_files.output
+echo "building android.hardware.wifi.hostapd@1.3-inheritance-hierarchy^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.wifi.hostapd@1.3-inheritance-hierarchy,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/hostapd/1.3/android.hardware.wifi.hostapd@1.3-inheritance-hierarchy^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.wifi.hostapd@1.3-inheritance-hierarchy^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/hostapd/1.3/android.hardware.wifi.hostapd@1.3-inheritance-hierarchy^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.wifi.hostapd@1.3-inheritance-hierarchy^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/hostapd/1.3/android.hardware.wifi.hostapd@1.3-inheritance-hierarchy^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/hostapd/1.3/android.hardware.wifi.hostapd@1.3-inheritance-hierarchy^/addition_copy_files.output
 
-echo "building libvibratorexampleimpl^android_vendor.31_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libvibratorexampleimpl,android_vendor.31_x86_64_static
-mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/vibrator/aidl/default/libvibratorexampleimpl^android_vendor.31_x86_64_static
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/libvibratorexampleimpl^android_vendor.31_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/vibrator/aidl/default/libvibratorexampleimpl^android_vendor.31_x86_64_static
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/libvibratorexampleimpl^android_vendor.31_x86_64_static.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/vibrator/aidl/default/libvibratorexampleimpl^android_vendor.31_x86_64_static $GITHUB_WORKSPACE/artifacts/hardware/interfaces/vibrator/aidl/default/libvibratorexampleimpl^android_vendor.31_x86_64_static/addition_copy_files.output
+echo "building android.hardware.wifi.offload@1.0-inheritance-hierarchy^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.wifi.offload@1.0-inheritance-hierarchy,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/offload/1.0/android.hardware.wifi.offload@1.0-inheritance-hierarchy^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.wifi.offload@1.0-inheritance-hierarchy^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/offload/1.0/android.hardware.wifi.offload@1.0-inheritance-hierarchy^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.wifi.offload@1.0-inheritance-hierarchy^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/offload/1.0/android.hardware.wifi.offload@1.0-inheritance-hierarchy^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/offload/1.0/android.hardware.wifi.offload@1.0-inheritance-hierarchy^/addition_copy_files.output
+
+echo "building android.hardware.wifi.supplicant-V1.0-java_gen_java^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.wifi.supplicant-V1.0-java_gen_java,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/supplicant/1.0/android.hardware.wifi.supplicant-V1.0-java_gen_java^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.wifi.supplicant-V1.0-java_gen_java^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/supplicant/1.0/android.hardware.wifi.supplicant-V1.0-java_gen_java^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.wifi.supplicant-V1.0-java_gen_java^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/supplicant/1.0/android.hardware.wifi.supplicant-V1.0-java_gen_java^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/supplicant/1.0/android.hardware.wifi.supplicant-V1.0-java_gen_java^/addition_copy_files.output
+
+echo "building android.hardware.wifi.supplicant@1.0-inheritance-hierarchy^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.wifi.supplicant@1.0-inheritance-hierarchy,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/supplicant/1.0/android.hardware.wifi.supplicant@1.0-inheritance-hierarchy^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.wifi.supplicant@1.0-inheritance-hierarchy^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/supplicant/1.0/android.hardware.wifi.supplicant@1.0-inheritance-hierarchy^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.wifi.supplicant@1.0-inheritance-hierarchy^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/supplicant/1.0/android.hardware.wifi.supplicant@1.0-inheritance-hierarchy^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/supplicant/1.0/android.hardware.wifi.supplicant@1.0-inheritance-hierarchy^/addition_copy_files.output
+
+echo "building android.hardware.wifi.supplicant-V1.1-java_gen_java^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.wifi.supplicant-V1.1-java_gen_java,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/supplicant/1.1/android.hardware.wifi.supplicant-V1.1-java_gen_java^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.wifi.supplicant-V1.1-java_gen_java^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/supplicant/1.1/android.hardware.wifi.supplicant-V1.1-java_gen_java^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.wifi.supplicant-V1.1-java_gen_java^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/supplicant/1.1/android.hardware.wifi.supplicant-V1.1-java_gen_java^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/supplicant/1.1/android.hardware.wifi.supplicant-V1.1-java_gen_java^/addition_copy_files.output
+
+echo "building android.hardware.wifi.supplicant@1.1-inheritance-hierarchy^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.wifi.supplicant@1.1-inheritance-hierarchy,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/supplicant/1.1/android.hardware.wifi.supplicant@1.1-inheritance-hierarchy^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.wifi.supplicant@1.1-inheritance-hierarchy^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/supplicant/1.1/android.hardware.wifi.supplicant@1.1-inheritance-hierarchy^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.wifi.supplicant@1.1-inheritance-hierarchy^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/supplicant/1.1/android.hardware.wifi.supplicant@1.1-inheritance-hierarchy^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/supplicant/1.1/android.hardware.wifi.supplicant@1.1-inheritance-hierarchy^/addition_copy_files.output
+
+echo "building android.hardware.wifi.supplicant-V1.2-java_gen_java^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.wifi.supplicant-V1.2-java_gen_java,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/supplicant/1.2/android.hardware.wifi.supplicant-V1.2-java_gen_java^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.wifi.supplicant-V1.2-java_gen_java^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/supplicant/1.2/android.hardware.wifi.supplicant-V1.2-java_gen_java^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.wifi.supplicant-V1.2-java_gen_java^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/supplicant/1.2/android.hardware.wifi.supplicant-V1.2-java_gen_java^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/supplicant/1.2/android.hardware.wifi.supplicant-V1.2-java_gen_java^/addition_copy_files.output
+
+echo "building android.hardware.wifi.supplicant@1.2-inheritance-hierarchy^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.wifi.supplicant@1.2-inheritance-hierarchy,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/supplicant/1.2/android.hardware.wifi.supplicant@1.2-inheritance-hierarchy^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.wifi.supplicant@1.2-inheritance-hierarchy^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/supplicant/1.2/android.hardware.wifi.supplicant@1.2-inheritance-hierarchy^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.wifi.supplicant@1.2-inheritance-hierarchy^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/supplicant/1.2/android.hardware.wifi.supplicant@1.2-inheritance-hierarchy^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/supplicant/1.2/android.hardware.wifi.supplicant@1.2-inheritance-hierarchy^/addition_copy_files.output
+
+echo "building android.hardware.wifi.supplicant-V1.3-java_gen_java^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.wifi.supplicant-V1.3-java_gen_java,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/supplicant/1.3/android.hardware.wifi.supplicant-V1.3-java_gen_java^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.wifi.supplicant-V1.3-java_gen_java^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/supplicant/1.3/android.hardware.wifi.supplicant-V1.3-java_gen_java^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.wifi.supplicant-V1.3-java_gen_java^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/supplicant/1.3/android.hardware.wifi.supplicant-V1.3-java_gen_java^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/supplicant/1.3/android.hardware.wifi.supplicant-V1.3-java_gen_java^/addition_copy_files.output
+
+echo "building android.hardware.wifi.supplicant@1.3-inheritance-hierarchy^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.wifi.supplicant@1.3-inheritance-hierarchy,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/supplicant/1.3/android.hardware.wifi.supplicant@1.3-inheritance-hierarchy^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.wifi.supplicant@1.3-inheritance-hierarchy^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/supplicant/1.3/android.hardware.wifi.supplicant@1.3-inheritance-hierarchy^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.wifi.supplicant@1.3-inheritance-hierarchy^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/supplicant/1.3/android.hardware.wifi.supplicant@1.3-inheritance-hierarchy^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/supplicant/1.3/android.hardware.wifi.supplicant@1.3-inheritance-hierarchy^/addition_copy_files.output
+
+echo "building android.hardware.wifi.supplicant-V1.4-java_gen_java^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.wifi.supplicant-V1.4-java_gen_java,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/supplicant/1.4/android.hardware.wifi.supplicant-V1.4-java_gen_java^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.wifi.supplicant-V1.4-java_gen_java^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/supplicant/1.4/android.hardware.wifi.supplicant-V1.4-java_gen_java^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.wifi.supplicant-V1.4-java_gen_java^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/supplicant/1.4/android.hardware.wifi.supplicant-V1.4-java_gen_java^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/supplicant/1.4/android.hardware.wifi.supplicant-V1.4-java_gen_java^/addition_copy_files.output
+
+echo "building android.hardware.wifi.supplicant@1.4-inheritance-hierarchy^"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja android.hardware.wifi.supplicant@1.4-inheritance-hierarchy,
+mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/supplicant/1.4/android.hardware.wifi.supplicant@1.4-inheritance-hierarchy^
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.wifi.supplicant@1.4-inheritance-hierarchy^.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/supplicant/1.4/android.hardware.wifi.supplicant@1.4-inheritance-hierarchy^
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/hardware/interfaces/android.hardware.wifi.supplicant@1.4-inheritance-hierarchy^.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/supplicant/1.4/android.hardware.wifi.supplicant@1.4-inheritance-hierarchy^ $GITHUB_WORKSPACE/artifacts/hardware/interfaces/wifi/supplicant/1.4/android.hardware.wifi.supplicant@1.4-inheritance-hierarchy^/addition_copy_files.output
+
 
 rm -rf out
 
@@ -4513,6 +4563,7 @@ tar -cf hardware_interfaces.tar.zst --use-compress-program zstdmt -C $GITHUB_WOR
 gh release --repo cibuilde/aosp-buildbot upload android12-gsi_04 hardware_interfaces.tar.zst --clobber
 
 du -ah -d1 hardware_interfaces*.tar.zst | sort -h
+
 
 if [ ! -f "$GITHUB_WORKSPACE/cache/bionic.tar.zst" ]; then
   echo "Compressing bionic -> bionic.tar.zst"
@@ -4574,10 +4625,6 @@ if [ ! -f "$GITHUB_WORKSPACE/cache/libnativehelper.tar.zst" ]; then
   echo "Compressing libnativehelper -> libnativehelper.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/libnativehelper.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/libnativehelper/ .
 fi
-if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_build-tools.tar.zst" ]; then
-  echo "Compressing prebuilts/build-tools -> prebuilts_build-tools.tar.zst"
-  tar -cf $GITHUB_WORKSPACE/cache/prebuilts_build-tools.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/prebuilts/build-tools/ .
-fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_gcc_linux-x86_x86_x86_64-linux-android-4.9.tar.zst" ]; then
   echo "Compressing prebuilts/gcc/linux-x86/x86/x86_64-linux-android-4.9 -> prebuilts_gcc_linux-x86_x86_x86_64-linux-android-4.9.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/prebuilts_gcc_linux-x86_x86_x86_64-linux-android-4.9.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/prebuilts/gcc/linux-x86/x86/x86_64-linux-android-4.9/ .
@@ -4618,5 +4665,6 @@ if [ ! -f "$GITHUB_WORKSPACE/cache/system_unwinding.tar.zst" ]; then
   echo "Compressing system/unwinding -> system_unwinding.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/system_unwinding.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/system/unwinding/ .
 fi
+
 
 rm -rf aosp

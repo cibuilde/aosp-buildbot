@@ -1,4 +1,4 @@
-##### Tag: android12-gsi_05 Projects: 128 Targets: 1020
+##### Tag: android12-gsi_05 Projects: 128 Targets: 1016
 
 ###### **art**: 11
 `art-apex-cache-info^` `dalvikvm^android_x86_64_apex31` `dalvikvm^android_x86_x86_64_apex31` `libartpalette^android_x86_64_shared_apex31` `libartpalette^android_x86_x86_64_shared_apex31` `libnativebridge^android_x86_64_shared_apex31` `libnativebridge^android_x86_x86_64_shared_apex31` `libperfetto_hprof^android_x86_64_static_apex31` `libperfetto_hprof^android_x86_x86_64_static_apex31` `libsigchain^android_x86_64_shared_apex31` `libsigchain^android_x86_x86_64_shared_apex31`
@@ -8,8 +8,8 @@
 `libminadbd_services^android_recovery_x86_64_static` `librecovery_utils^android_recovery_x86_64_static` `librecovery_utils^android_x86_64_static`
 ###### **build/make**: 4
 `build_image^linux_glibc_x86_64_PY2` `signapk^linux_glibc_common` `sparse_img^linux_glibc_x86_64_PY2` `verity_utils^linux_glibc_x86_64_PY2`
-###### **build/soong**: 3
-`conv_linker_config^linux_glibc_x86_64_PY3` `generate_hiddenapi_lists^linux_glibc_x86_64_PY3` `merge_csv^linux_glibc_x86_64_PY3`
+###### **build/soong**: 2
+`conv_linker_config^linux_glibc_x86_64_PY3` `generate_hiddenapi_lists^linux_glibc_x86_64_PY3`
 ###### **device/generic/vulkan-cereal**: 1
 `libgfxstream_backend^android_x86_64_shared_apex10000`
 ###### **external/auto**: 3
@@ -202,8 +202,8 @@
 `coex-table-parser^`
 ###### **packages/modules/adb**: 7
 `libadb_pairing_auth^android_x86_64_shared_apex10000` `libadb_pairing_auth^android_x86_x86_64_shared_apex10000` `libadb_pairing_connection^android_x86_64_shared_apex10000` `libadb_pairing_connection^android_x86_x86_64_shared_apex10000` `libadbd_fs^android_recovery_x86_64_shared` `libadbd_fs^android_x86_64_shared` `libadbd_fs^android_x86_x86_64_shared`
-###### **packages/modules/common**: 4
-`conv_classpaths_proto^linux_glibc_x86_64_PY3` `cur_sdkinfo_src^` `current_sdkinfo^android_x86_64` `gen_sdkinfo^linux_glibc_x86_64_PY3`
+###### **packages/modules/common**: 3
+`conv_classpaths_proto^linux_glibc_x86_64_PY3` `cur_sdkinfo_src^` `current_sdkinfo^android_x86_64`
 ###### **prebuilts/sdk**: 25
 `androidx.annotation_annotation-experimental-nodeps^android_common_apex30` `androidx.annotation_annotation-experimental-nodeps^android_common` `androidx.arch.core_core-runtime-nodeps^android_common_apex30` `androidx.arch.core_core-runtime-nodeps^android_common` `androidx.cursoradapter_cursoradapter-nodeps^android_common_apex30` `androidx.cursoradapter_cursoradapter-nodeps^android_common` `androidx.documentfile_documentfile-nodeps^android_common_apex30` `androidx.documentfile_documentfile-nodeps^android_common` `androidx.exifinterface_exifinterface-nodeps^android_common` `androidx.interpolator_interpolator-nodeps^android_common_apex30` `androidx.interpolator_interpolator-nodeps^android_common` `androidx.lifecycle_lifecycle-viewmodel-nodeps^android_common_apex30` `androidx.lifecycle_lifecycle-viewmodel-nodeps^android_common` `androidx.localbroadcastmanager_localbroadcastmanager-nodeps^android_common_apex30` `androidx.localbroadcastmanager_localbroadcastmanager-nodeps^android_common` `androidx.print_print-nodeps^android_common_apex30` `androidx.print_print-nodeps^android_common` `androidx.remotecallback_remotecallback-nodeps^android_common` `androidx.savedstate_savedstate-nodeps^android_common_apex30` `androidx.savedstate_savedstate-nodeps^android_common` `androidx.sqlite_sqlite-nodeps^android_common` `androidx.tracing_tracing-nodeps^android_common_apex30` `androidx.tracing_tracing-nodeps^android_common` `androidx.versionedparcelable_versionedparcelable-nodeps^android_common_apex30` `androidx.versionedparcelable_versionedparcelable-nodeps^android_common`
 ###### **system/apex**: 4
@@ -224,8 +224,8 @@
 `lib_android_keymaster_keymint_utils^android_vendor.31_x86_64_static` `lib_android_keymaster_keymint_utils^android_x86_64_static` `libkeymaster_messages^android_x86_64_shared` `libkeymint^android_vendor.31_x86_64_static` `libkeymint^android_x86_64_static`
 ###### **system/libbase**: 9
 `libbase^android_product.31_x86_64_static` `libbase^android_vendor.31_x86_64_static` `libbase^android_vendor.31_x86_x86_64_static` `libbase^android_x86_64_shared_apex10000` `libbase^android_x86_64_shared_apex29` `libbase^android_x86_64_shared_apex31` `libbase^android_x86_x86_64_shared_apex10000` `libbase^android_x86_x86_64_shared_apex29` `libbase^android_x86_x86_64_shared_apex31`
-###### **system/libhidl**: 4
-`libhidlbase^android_vendor.31_x86_64_static` `libhidlbase^android_vendor.31_x86_x86_64_static` `libhidltransport^android_x86_64_shared` `libhidltransport^android_x86_x86_64_shared`
+###### **system/libhidl**: 2
+`libhidltransport^android_x86_64_shared` `libhidltransport^android_x86_x86_64_shared`
 ###### **system/libhwbinder**: 2
 `libhwbinder^android_x86_64_shared` `libhwbinder^android_x86_x86_64_shared`
 ###### **system/linkerconfig**: 6

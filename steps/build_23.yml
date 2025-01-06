@@ -18,10 +18,6 @@ jobs:
         key: art@${{ env.branch }}
     - uses: actions/cache@v4
       with:
-        path: cache/build_soong.tar.zst
-        key: build_soong@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
         path: cache/cts.tar.zst
         key: cts@${{ env.branch }}
     - uses: actions/cache@v4
@@ -184,10 +180,6 @@ jobs:
       with:
         path: cache/prebuilts_sdk.tar.zst
         key: prebuilts_sdk@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/system_core.tar.zst
-        key: system_core@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/system_netd.tar.zst

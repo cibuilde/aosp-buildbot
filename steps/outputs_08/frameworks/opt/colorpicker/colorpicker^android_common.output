@@ -1,5 +1,4 @@
 out/soong/.intermediates/frameworks/opt/colorpicker/colorpicker/android_common/extra_packages
 out/soong/.intermediates/frameworks/opt/colorpicker/colorpicker/android_common/javac/colorpicker.jar
-out/soong/.intermediates/frameworks/opt/colorpicker/colorpicker/android_common/manifest_fixer/AndroidManifest.xml
 out/soong/.intermediates/frameworks/opt/colorpicker/colorpicker/android_common/package-res.apk
 out/soong/.intermediates/frameworks/opt/colorpicker/colorpicker/android_common/turbine-combined/colorpicker.jar

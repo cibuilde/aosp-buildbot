@@ -1,3 +1,2 @@
-out/soong/.intermediates/frameworks/base/media/media_permission-aidl-java/android_common/turbine/media_permission-aidl-java.jar
-out/soong/.intermediates/frameworks/base/media/media_permission-aidl-java/android_common/turbine-combined/media_permission-aidl-java.jar
 out/soong/.intermediates/frameworks/base/media/media_permission-aidl-java/android_common/javac/media_permission-aidl-java.jar
+out/soong/.intermediates/frameworks/base/media/media_permission-aidl-java/android_common/turbine-combined/media_permission-aidl-java.jar

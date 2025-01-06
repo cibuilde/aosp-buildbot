@@ -54,6 +54,10 @@ jobs:
         key: external_icing@${{ env.branch }}
     - uses: actions/cache@v4
       with:
+        path: cache/external_jacoco.tar.zst
+        key: external_jacoco@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
         path: cache/external_jsr330.tar.zst
         key: external_jsr330@${{ env.branch }}
     - uses: actions/cache@v4
@@ -202,24 +206,12 @@ jobs:
         key: prebuilts_tools@${{ env.branch }}
     - uses: actions/cache@v4
       with:
-        path: cache/system_bt.tar.zst
-        key: system_bt@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/system_connectivity_wificond.tar.zst
-        key: system_connectivity_wificond@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
         path: cache/system_core.tar.zst
         key: system_core@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/system_extras.tar.zst
         key: system_extras@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/system_gsid.tar.zst
-        key: system_gsid@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/system_iorap.tar.zst
@@ -236,14 +228,6 @@ jobs:
       with:
         path: cache/system_sepolicy.tar.zst
         key: system_sepolicy@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/system_update_engine.tar.zst
-        key: system_update_engine@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/system_vold.tar.zst
-        key: system_vold@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/tools_apifinder.tar.zst

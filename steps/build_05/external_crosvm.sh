@@ -1,6 +1,5 @@
-set -e
 
-echo "entering external/crosvm"
+set -e
 
 mkdir -p $GITHUB_WORKSPACE/aosp && cd $GITHUB_WORKSPACE/aosp
 mkdir -p out/soong/ && echo userdebug.buildbot.20240101.000000 > out/soong/build_number.txt
@@ -13,6 +12,8 @@ if [ -d "$GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86" ]; then
   mkdir -p prebuilts/clang/host/ && ln -sf $GITHUB_WORKSPACE/prebuilts/clang/host/linux-x86 prebuilts/clang/host/linux-x86
 fi
 
+echo "Preparing for external/crosvm"
+
 clone_depth device/google/cuttlefish
 clone_project device/google/cuttlefish_vmm device/google/cuttlefish_vmm android12-gsi "/x86_64-linux-gnu/bin"
 clone_depth_platform external/crosvm
@@ -23,40 +24,21 @@ clone_depth_platform external/rust/crates/quote
 clone_depth_platform external/rust/crates/syn
 clone_depth_platform external/rust/crates/unicode-xid
 clone_depth_platform libcore
-clone_project platform/prebuilts/build-tools prebuilts/build-tools android12-gsi "/linux-x86/bin" "/linux-x86/lib64" "/path" "/common"
 clone_project platform/prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8 prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8 android12-gsi "/sysroot" "/lib/gcc/x86_64-linux/4.8.3" "/x86_64-linux/lib64" "/x86_64-linux/lib32"
 clone_project platform/prebuilts/rust prebuilts/rust android12-gsi "/bootstrap" "/linux-x86/1.51.0"
 
 rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/cmd/dep_fixer/dep_fixer^linux_glibc_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/crosvm/bit_field/bit_field_derive/libbit_field_derive^linux_glibc_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/crosvm/protos/libcdisk_spec_proto^android_x86_64_rlib_rlib-std_apex10000/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/crosvm/protos/libcdisk_spec_proto^android_x86_64_source_apex10000/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/protobuf/aprotoc^linux_glibc_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/rust/crates/bytes/libbytes^android_x86_64_rlib_rlib-std_apex10000/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/rust/crates/bytes/libbytes^linux_glibc_x86_64_rlib_rlib-std/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/rust/crates/proc-macro2/libproc_macro2^linux_glibc_x86_64_rlib_rlib-std/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/rust/crates/protobuf/copy_protobuf_build_out^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/rust/crates/protobuf/libprotobuf^android_x86_64_rlib_rlib-std_apex10000/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/rust/crates/protobuf/libprotobuf^linux_glibc_x86_64_rlib_rlib-std/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/rust/crates/protobuf-codegen/libprotobuf_codegen^linux_glibc_x86_64_rlib_rlib-std/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/rust/crates/protobuf-codegen/protoc-gen-rust^linux_glibc_x86_64/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/rust/crates/protobuf/libprotobuf^android_x86_64_rlib_rlib-std_apex10000/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/rust/crates/quote/libquote^linux_glibc_x86_64_rlib_rlib-std/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/rust/crates/syn/libsyn^linux_glibc_x86_64_rlib_rlib-std/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/rust/crates/unicode-xid/libunicode_xid^linux_glibc_x86_64_rlib_rlib-std/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/rust/liballoc.rust_sysroot^android_x86_64_rlib_apex10000/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/rust/libbacktrace_rs.rust_sysroot^android_x86_64_rlib_apex10000/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/rust/libbacktrace_sys.rust_sysroot^android_x86_64_rlib_apex10000/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/rust/libcfg_if.rust_sysroot^android_x86_64_rlib_apex10000/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/rust/libcompiler_builtins.rust_sysroot^android_x86_64_rlib_apex10000/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/rust/libcore.rust_sysroot^android_x86_64_rlib_apex10000/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/rust/libgetopts^android_x86_64_rlib_apex10000/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/rust/libhashbrown.rust_sysroot^android_x86_64_rlib_apex10000/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/rust/liblibc.rust_sysroot^android_x86_64_rlib_apex10000/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/rust/libpanic_abort.rust_sysroot^android_x86_64_rlib_apex10000/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/rust/libprofiler_builtins.rust_sysroot^android_x86_64_rlib_apex10000/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/rust/librustc_demangle.rust_sysroot^android_x86_64_rlib_apex10000/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/rust/libstd^android_x86_64_rlib_apex10000/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/rust/libterm^android_x86_64_rlib_apex10000/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/rust/libtest^android_x86_64_rlib_apex10000/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/rust/libunicode_width.rust_sysroot^android_x86_64_rlib_apex10000/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/rust/libunwind.rust_sysroot^android_x86_64_rlib_apex10000/ .
 
 echo "building libbit_field^android_x86_64_rlib_rlib-std_apex10000"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libbit_field,android_x86_64_rlib_rlib-std_apex10000
@@ -70,6 +52,18 @@ mkdir -p $GITHUB_WORKSPACE/artifacts/external/crosvm/bit_field/bit_field_derive/
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/external/crosvm/libbit_field_derive^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/crosvm/bit_field/bit_field_derive/libbit_field_derive^linux_glibc_x86_64
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/external/crosvm/libbit_field_derive^linux_glibc_x86_64.output $GITHUB_WORKSPACE/artifacts/external/crosvm/bit_field/bit_field_derive/libbit_field_derive^linux_glibc_x86_64 $GITHUB_WORKSPACE/artifacts/external/crosvm/bit_field/bit_field_derive/libbit_field_derive^linux_glibc_x86_64/addition_copy_files.output
 
+echo "building libenumn^linux_glibc_x86_64"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libenumn,linux_glibc_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/crosvm/enumn/libenumn^linux_glibc_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/external/crosvm/libenumn^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/crosvm/enumn/libenumn^linux_glibc_x86_64
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/external/crosvm/libenumn^linux_glibc_x86_64.output $GITHUB_WORKSPACE/artifacts/external/crosvm/enumn/libenumn^linux_glibc_x86_64 $GITHUB_WORKSPACE/artifacts/external/crosvm/enumn/libenumn^linux_glibc_x86_64/addition_copy_files.output
+
+echo "building libprotos^android_x86_64_rlib_rlib-std_apex10000"
+prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libprotos,android_x86_64_rlib_rlib-std_apex10000
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/crosvm/protos/libprotos^android_x86_64_rlib_rlib-std_apex10000
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/external/crosvm/libprotos^android_x86_64_rlib_rlib-std_apex10000.output . $GITHUB_WORKSPACE/artifacts/external/crosvm/protos/libprotos^android_x86_64_rlib_rlib-std_apex10000
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/external/crosvm/libprotos^android_x86_64_rlib_rlib-std_apex10000.output $GITHUB_WORKSPACE/artifacts/external/crosvm/protos/libprotos^android_x86_64_rlib_rlib-std_apex10000 $GITHUB_WORKSPACE/artifacts/external/crosvm/protos/libprotos^android_x86_64_rlib_rlib-std_apex10000/addition_copy_files.output
+
 echo "building libcdisk_spec_proto^android_x86_64_rlib_rlib-std_apex10000"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libcdisk_spec_proto,android_x86_64_rlib_rlib-std_apex10000
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/crosvm/protos/libcdisk_spec_proto^android_x86_64_rlib_rlib-std_apex10000
@@ -82,23 +76,12 @@ mkdir -p $GITHUB_WORKSPACE/artifacts/external/crosvm/protos/libcdisk_spec_proto^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/external/crosvm/libcdisk_spec_proto^android_x86_64_source_apex10000.output . $GITHUB_WORKSPACE/artifacts/external/crosvm/protos/libcdisk_spec_proto^android_x86_64_source_apex10000
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/external/crosvm/libcdisk_spec_proto^android_x86_64_source_apex10000.output $GITHUB_WORKSPACE/artifacts/external/crosvm/protos/libcdisk_spec_proto^android_x86_64_source_apex10000 $GITHUB_WORKSPACE/artifacts/external/crosvm/protos/libcdisk_spec_proto^android_x86_64_source_apex10000/addition_copy_files.output
 
-echo "building libenumn^linux_glibc_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libenumn,linux_glibc_x86_64
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/crosvm/enumn/libenumn^linux_glibc_x86_64
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/external/crosvm/libenumn^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/crosvm/enumn/libenumn^linux_glibc_x86_64
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/external/crosvm/libenumn^linux_glibc_x86_64.output $GITHUB_WORKSPACE/artifacts/external/crosvm/enumn/libenumn^linux_glibc_x86_64 $GITHUB_WORKSPACE/artifacts/external/crosvm/enumn/libenumn^linux_glibc_x86_64/addition_copy_files.output
-
 echo "building libpoll_token_derive^linux_glibc_x86_64"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libpoll_token_derive,linux_glibc_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/crosvm/sys_util/poll_token_derive/libpoll_token_derive^linux_glibc_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/external/crosvm/libpoll_token_derive^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/crosvm/sys_util/poll_token_derive/libpoll_token_derive^linux_glibc_x86_64
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/external/crosvm/libpoll_token_derive^linux_glibc_x86_64.output $GITHUB_WORKSPACE/artifacts/external/crosvm/sys_util/poll_token_derive/libpoll_token_derive^linux_glibc_x86_64 $GITHUB_WORKSPACE/artifacts/external/crosvm/sys_util/poll_token_derive/libpoll_token_derive^linux_glibc_x86_64/addition_copy_files.output
 
-echo "building libprotos^android_x86_64_rlib_rlib-std_apex10000"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libprotos,android_x86_64_rlib_rlib-std_apex10000
-mkdir -p $GITHUB_WORKSPACE/artifacts/external/crosvm/protos/libprotos^android_x86_64_rlib_rlib-std_apex10000
-rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/external/crosvm/libprotos^android_x86_64_rlib_rlib-std_apex10000.output . $GITHUB_WORKSPACE/artifacts/external/crosvm/protos/libprotos^android_x86_64_rlib_rlib-std_apex10000
-python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/external/crosvm/libprotos^android_x86_64_rlib_rlib-std_apex10000.output $GITHUB_WORKSPACE/artifacts/external/crosvm/protos/libprotos^android_x86_64_rlib_rlib-std_apex10000 $GITHUB_WORKSPACE/artifacts/external/crosvm/protos/libprotos^android_x86_64_rlib_rlib-std_apex10000/addition_copy_files.output
 
 rm -rf out
 
@@ -107,6 +90,7 @@ tar -cf external_crosvm.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPA
 gh release --repo cibuilde/aosp-buildbot upload android12-gsi_05 external_crosvm.tar.zst --clobber
 
 du -ah -d1 external_crosvm*.tar.zst | sort -h
+
 
 if [ ! -f "$GITHUB_WORKSPACE/cache/device_google_cuttlefish.tar.zst" ]; then
   echo "Compressing device/google/cuttlefish -> device_google_cuttlefish.tar.zst"
@@ -148,10 +132,6 @@ if [ ! -f "$GITHUB_WORKSPACE/cache/libcore.tar.zst" ]; then
   echo "Compressing libcore -> libcore.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/libcore.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/libcore/ .
 fi
-if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_build-tools.tar.zst" ]; then
-  echo "Compressing prebuilts/build-tools -> prebuilts_build-tools.tar.zst"
-  tar -cf $GITHUB_WORKSPACE/cache/prebuilts_build-tools.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/prebuilts/build-tools/ .
-fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_gcc_linux-x86_host_x86_64-linux-glibc2.17-4.8.tar.zst" ]; then
   echo "Compressing prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8 -> prebuilts_gcc_linux-x86_host_x86_64-linux-glibc2.17-4.8.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/prebuilts_gcc_linux-x86_host_x86_64-linux-glibc2.17-4.8.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8/ .
@@ -160,5 +140,6 @@ if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_rust.tar.zst" ]; then
   echo "Compressing prebuilts/rust -> prebuilts_rust.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/prebuilts_rust.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/prebuilts/rust/ .
 fi
+
 
 rm -rf aosp

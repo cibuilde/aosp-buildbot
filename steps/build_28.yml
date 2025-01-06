@@ -18,12 +18,12 @@ jobs:
         key: art@${{ env.branch }}
     - uses: actions/cache@v4
       with:
-        path: cache/build_make.tar.zst
-        key: build_make@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
         path: cache/cts.tar.zst
         key: cts@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/development.tar.zst
+        key: development@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/external_apache-xml.tar.zst
@@ -38,28 +38,36 @@ jobs:
         key: external_conscrypt@${{ env.branch }}
     - uses: actions/cache@v4
       with:
-        path: cache/external_exoplayer.tar.zst
-        key: external_exoplayer@${{ env.branch }}
+        path: cache/external_guava.tar.zst
+        key: external_guava@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/external_icu.tar.zst
         key: external_icu@${{ env.branch }}
     - uses: actions/cache@v4
       with:
-        path: cache/external_libphonenumber.tar.zst
-        key: external_libphonenumber@${{ env.branch }}
+        path: cache/external_jsr305.tar.zst
+        key: external_jsr305@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_lottie.tar.zst
+        key: external_lottie@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/external_okhttp.tar.zst
         key: external_okhttp@${{ env.branch }}
     - uses: actions/cache@v4
       with:
-        path: cache/external_rappor.tar.zst
-        key: external_rappor@${{ env.branch }}
+        path: cache/external_setupcompat.tar.zst
+        key: external_setupcompat@${{ env.branch }}
     - uses: actions/cache@v4
       with:
-        path: cache/external_tagsoup.tar.zst
-        key: external_tagsoup@${{ env.branch }}
+        path: cache/external_setupdesign.tar.zst
+        key: external_setupdesign@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_zxing.tar.zst
+        key: external_zxing@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/frameworks_av.tar.zst
@@ -68,14 +76,6 @@ jobs:
       with:
         path: cache/frameworks_base.tar.zst
         key: frameworks_base@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/frameworks_libs_modules-utils.tar.zst
-        key: frameworks_libs_modules-utils@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/frameworks_native.tar.zst
-        key: frameworks_native@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/frameworks_opt_net_ims.tar.zst
@@ -90,16 +90,16 @@ jobs:
         key: frameworks_opt_telephony@${{ env.branch }}
     - uses: actions/cache@v4
       with:
-        path: cache/frameworks_proto_logging.tar.zst
-        key: frameworks_proto_logging@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
         path: cache/hardware_interfaces.tar.zst
         key: hardware_interfaces@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/libcore.tar.zst
         key: libcore@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/packages_apps_Settings.tar.zst
+        key: packages_apps_Settings@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/packages_modules_Connectivity.tar.zst
@@ -134,10 +134,6 @@ jobs:
         key: packages_modules_Wifi@${{ env.branch }}
     - uses: actions/cache@v4
       with:
-        path: cache/packages_modules_common.tar.zst
-        key: packages_modules_common@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
         path: cache/packages_providers_MediaProvider.tar.zst
         key: packages_providers_MediaProvider@${{ env.branch }}
     - uses: actions/cache@v4
@@ -152,38 +148,6 @@ jobs:
       with:
         path: cache/prebuilts_sdk.tar.zst
         key: prebuilts_sdk@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/system_bt.tar.zst
-        key: system_bt@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/system_connectivity_wificond.tar.zst
-        key: system_connectivity_wificond@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/system_core.tar.zst
-        key: system_core@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/system_gsid.tar.zst
-        key: system_gsid@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/system_security.tar.zst
-        key: system_security@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/system_update_engine.tar.zst
-        key: system_update_engine@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/system_vold.tar.zst
-        key: system_vold@${{ env.branch }}
-    - uses: actions/cache@v4
-      with:
-        path: cache/tools_apifinder.tar.zst
-        key: tools_apifinder@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/tools_platform-compat.tar.zst

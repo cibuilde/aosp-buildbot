@@ -1,13 +1,5 @@
 out/soong/.intermediates/frameworks/base/framework-minus-apex/android_common/gen/aidl/aidl0.srcjar
 out/soong/.intermediates/frameworks/base/framework-minus-apex/android_common/gen/aidl/aidl1.srcjar
-out/soong/.intermediates/frameworks/base/framework-minus-apex/android_common/gen/aidl/aidl2.srcjar
-out/soong/.intermediates/frameworks/base/framework-minus-apex/android_common/gen/aidl/aidl3.srcjar
-out/soong/.intermediates/frameworks/base/framework-minus-apex/android_common/gen/aidl/aidl4.srcjar
-out/soong/.intermediates/frameworks/base/framework-minus-apex/android_common/gen/aidl/aidl5.srcjar
-out/soong/.intermediates/frameworks/base/framework-minus-apex/android_common/gen/aidl/aidl6.srcjar
-out/soong/.intermediates/frameworks/base/framework-minus-apex/android_common/gen/aidl/aidl7.srcjar
-out/soong/.intermediates/frameworks/base/framework-minus-apex/android_common/gen/aidl/aidl8.srcjar
-out/soong/.intermediates/frameworks/base/framework-minus-apex/android_common/gen/aidl/aidl9.srcjar
 out/soong/.intermediates/frameworks/base/framework-minus-apex/android_common/gen/aidl/aidl10.srcjar
 out/soong/.intermediates/frameworks/base/framework-minus-apex/android_common/gen/aidl/aidl11.srcjar
 out/soong/.intermediates/frameworks/base/framework-minus-apex/android_common/gen/aidl/aidl12.srcjar
@@ -18,6 +10,7 @@ out/soong/.intermediates/frameworks/base/framework-minus-apex/android_common/gen
 out/soong/.intermediates/frameworks/base/framework-minus-apex/android_common/gen/aidl/aidl17.srcjar
 out/soong/.intermediates/frameworks/base/framework-minus-apex/android_common/gen/aidl/aidl18.srcjar
 out/soong/.intermediates/frameworks/base/framework-minus-apex/android_common/gen/aidl/aidl19.srcjar
+out/soong/.intermediates/frameworks/base/framework-minus-apex/android_common/gen/aidl/aidl2.srcjar
 out/soong/.intermediates/frameworks/base/framework-minus-apex/android_common/gen/aidl/aidl20.srcjar
 out/soong/.intermediates/frameworks/base/framework-minus-apex/android_common/gen/aidl/aidl21.srcjar
 out/soong/.intermediates/frameworks/base/framework-minus-apex/android_common/gen/aidl/aidl22.srcjar
@@ -28,7 +21,14 @@ out/soong/.intermediates/frameworks/base/framework-minus-apex/android_common/gen
 out/soong/.intermediates/frameworks/base/framework-minus-apex/android_common/gen/aidl/aidl27.srcjar
 out/soong/.intermediates/frameworks/base/framework-minus-apex/android_common/gen/aidl/aidl28.srcjar
 out/soong/.intermediates/frameworks/base/framework-minus-apex/android_common/gen/aidl/aidl29.srcjar
+out/soong/.intermediates/frameworks/base/framework-minus-apex/android_common/gen/aidl/aidl3.srcjar
 out/soong/.intermediates/frameworks/base/framework-minus-apex/android_common/gen/aidl/aidl30.srcjar
 out/soong/.intermediates/frameworks/base/framework-minus-apex/android_common/gen/aidl/aidl31.srcjar
 out/soong/.intermediates/frameworks/base/framework-minus-apex/android_common/gen/aidl/aidl32.srcjar
 out/soong/.intermediates/frameworks/base/framework-minus-apex/android_common/gen/aidl/aidl33.srcjar
+out/soong/.intermediates/frameworks/base/framework-minus-apex/android_common/gen/aidl/aidl4.srcjar
+out/soong/.intermediates/frameworks/base/framework-minus-apex/android_common/gen/aidl/aidl5.srcjar
+out/soong/.intermediates/frameworks/base/framework-minus-apex/android_common/gen/aidl/aidl6.srcjar
+out/soong/.intermediates/frameworks/base/framework-minus-apex/android_common/gen/aidl/aidl7.srcjar
+out/soong/.intermediates/frameworks/base/framework-minus-apex/android_common/gen/aidl/aidl8.srcjar
+out/soong/.intermediates/frameworks/base/framework-minus-apex/android_common/gen/aidl/aidl9.srcjar
