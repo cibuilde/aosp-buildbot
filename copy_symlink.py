@@ -40,9 +40,9 @@ def process_path(path, output_dir, copy_result_file, result_file):
         return
 
     real_path = resolve_symlink(path)
-    if not result_file:
-        result_file = open(copy_result_file, 'a')
-    result_file.write(f'{real_path}\n')
+    if real_path.startswith('/') and (not real_path.startswith(os.path.abspath('out'))):
+        print('Skip copy file:', real_path)
+        return
 
     # Determine the relative path from the original directory
     #relative_path = os.path.relpath(real_path, start=os.path.commonpath([real_path, file_path]))
@@ -57,6 +57,10 @@ def process_path(path, output_dir, copy_result_file, result_file):
     # Copy file or directory to the output directory
     copy_file_or_directory(real_path, dest_path)
     print(f"Copied {real_path} to {dest_path}")
+
+    if not result_file:
+        result_file = open(copy_result_file, 'a')
+    result_file.write(f'{real_path}\n')
 
     process_path(real_path, output_dir, copy_result_file, result_file)
 
