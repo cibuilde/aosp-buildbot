@@ -64,4 +64,8 @@ jobs:
       with:
         path: cache/packages_providers_MediaProvider.tar.zst
         key: packages_providers_MediaProvider@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/prebuilts_build-tools.tar.zst
+        key: prebuilts_build-tools@${{ env.branch }}
     - run: bash steps/build_29.sh
