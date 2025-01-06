@@ -24,7 +24,7 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/external/turbine/turbine^linux_glibc_com
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/apex/apexd/apex_aidl_interface-java-source^/ .
 
 echo "building apex_aidl_interface-java^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja apex_aidl_interface-java,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja apex_aidl_interface-java,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/apex/apexd/apex_aidl_interface-java^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/system/apex/apex_aidl_interface-java^android_common.output . $GITHUB_WORKSPACE/artifacts/system/apex/apexd/apex_aidl_interface-java^android_common
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_08/system/apex/apex_aidl_interface-java^android_common.output $GITHUB_WORKSPACE/artifacts/system/apex/apexd/apex_aidl_interface-java^android_common $GITHUB_WORKSPACE/artifacts/system/apex/apexd/apex_aidl_interface-java^android_common/addition_copy_files.output

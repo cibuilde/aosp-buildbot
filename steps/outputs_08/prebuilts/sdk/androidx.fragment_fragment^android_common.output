@@ -1,5 +1,6 @@
 out/soong/.intermediates/prebuilts/sdk/current/androidx/androidx.fragment_fragment/android_common/combined/androidx.fragment_fragment.jar
 out/soong/.intermediates/prebuilts/sdk/current/androidx/androidx.fragment_fragment/android_common/extra_packages
+out/soong/.intermediates/prebuilts/sdk/current/androidx/androidx.fragment_fragment/android_common/manifest_fixer/AndroidManifest.xml
 out/soong/.intermediates/prebuilts/sdk/current/androidx/androidx.fragment_fragment/android_common/manifest_merger/AndroidManifest.xml
 out/soong/.intermediates/prebuilts/sdk/current/androidx/androidx.fragment_fragment/android_common/package-res.apk
 out/soong/.intermediates/prebuilts/sdk/current/androidx/androidx.fragment_fragment/android_common/turbine-combined/androidx.fragment_fragment.jar

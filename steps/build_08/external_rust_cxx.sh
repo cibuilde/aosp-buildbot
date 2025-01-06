@@ -34,7 +34,7 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/rust/libstd^android_x86_64_dyl
 rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/rust/libtest^android_x86_64_dylib/ .
 
 echo "building libcxx^android_x86_64_rlib_dylib-std"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libcxx,android_x86_64_rlib_dylib-std
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libcxx,android_x86_64_rlib_dylib-std
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/rust/cxx/libcxx^android_x86_64_rlib_dylib-std
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/external/rust/cxx/libcxx^android_x86_64_rlib_dylib-std.output . $GITHUB_WORKSPACE/artifacts/external/rust/cxx/libcxx^android_x86_64_rlib_dylib-std
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_08/external/rust/cxx/libcxx^android_x86_64_rlib_dylib-std.output $GITHUB_WORKSPACE/artifacts/external/rust/cxx/libcxx^android_x86_64_rlib_dylib-std $GITHUB_WORKSPACE/artifacts/external/rust/cxx/libcxx^android_x86_64_rlib_dylib-std/addition_copy_files.output

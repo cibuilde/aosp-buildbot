@@ -20,7 +20,7 @@ clone_project platform/development development android12-gsi "/sdk"
 rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/cmd/sbox/sbox^linux_glibc_x86_64/ .
 
 echo "building platform_tools_version^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja platform_tools_version,
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja platform_tools_version,
 mkdir -p $GITHUB_WORKSPACE/artifacts/development/sdk/platform_tools_version^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/development/platform_tools_version^.output . $GITHUB_WORKSPACE/artifacts/development/sdk/platform_tools_version^
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/development/platform_tools_version^.output $GITHUB_WORKSPACE/artifacts/development/sdk/platform_tools_version^ $GITHUB_WORKSPACE/artifacts/development/sdk/platform_tools_version^/addition_copy_files.output

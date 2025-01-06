@@ -49,13 +49,13 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^android_x86
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^android_x86_x86_64_shared_current/ .
 
 echo "building libziparchive^android_x86_64_shared_apex31"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libziparchive,android_x86_64_shared_apex31
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libziparchive,android_x86_64_shared_apex31
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/libziparchive/libziparchive^android_x86_64_shared_apex31
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/system/libziparchive/libziparchive^android_x86_64_shared_apex31.output . $GITHUB_WORKSPACE/artifacts/system/libziparchive/libziparchive^android_x86_64_shared_apex31
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_06/system/libziparchive/libziparchive^android_x86_64_shared_apex31.output $GITHUB_WORKSPACE/artifacts/system/libziparchive/libziparchive^android_x86_64_shared_apex31 $GITHUB_WORKSPACE/artifacts/system/libziparchive/libziparchive^android_x86_64_shared_apex31/addition_copy_files.output
 
 echo "building libziparchive^android_x86_x86_64_shared_apex31"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libziparchive,android_x86_x86_64_shared_apex31
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libziparchive,android_x86_x86_64_shared_apex31
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/libziparchive/libziparchive^android_x86_x86_64_shared_apex31
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/system/libziparchive/libziparchive^android_x86_x86_64_shared_apex31.output . $GITHUB_WORKSPACE/artifacts/system/libziparchive/libziparchive^android_x86_x86_64_shared_apex31
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_06/system/libziparchive/libziparchive^android_x86_x86_64_shared_apex31.output $GITHUB_WORKSPACE/artifacts/system/libziparchive/libziparchive^android_x86_x86_64_shared_apex31 $GITHUB_WORKSPACE/artifacts/system/libziparchive/libziparchive^android_x86_x86_64_shared_apex31/addition_copy_files.output

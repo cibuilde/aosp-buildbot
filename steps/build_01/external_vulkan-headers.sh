@@ -19,7 +19,7 @@ clone_depth_platform external/vulkan-headers
 
 
 echo "building ndk_vulkan_headers^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja ndk_vulkan_headers,
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja ndk_vulkan_headers,
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/vulkan-headers/ndk_vulkan_headers^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/vulkan-headers/ndk_vulkan_headers^.output . $GITHUB_WORKSPACE/artifacts/external/vulkan-headers/ndk_vulkan_headers^
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/vulkan-headers/ndk_vulkan_headers^.output $GITHUB_WORKSPACE/artifacts/external/vulkan-headers/ndk_vulkan_headers^ $GITHUB_WORKSPACE/artifacts/external/vulkan-headers/ndk_vulkan_headers^/addition_copy_files.output

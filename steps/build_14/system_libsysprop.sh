@@ -32,13 +32,13 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/system/libsysprop/srcs/PlatformPropertie
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/tools/sysprop/sysprop-library-stub-platform^android_common/ .
 
 echo "building PlatformProperties^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_14.ninja PlatformProperties,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_14.ninja PlatformProperties,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/libsysprop/srcs/PlatformProperties^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_14/system/libsysprop/PlatformProperties^android_common.output . $GITHUB_WORKSPACE/artifacts/system/libsysprop/srcs/PlatformProperties^android_common
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_14/system/libsysprop/PlatformProperties^android_common.output $GITHUB_WORKSPACE/artifacts/system/libsysprop/srcs/PlatformProperties^android_common $GITHUB_WORKSPACE/artifacts/system/libsysprop/srcs/PlatformProperties^android_common/addition_copy_files.output
 
 echo "building PlatformProperties_public^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_14.ninja PlatformProperties_public,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_14.ninja PlatformProperties_public,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/libsysprop/srcs/PlatformProperties_public^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_14/system/libsysprop/PlatformProperties_public^android_common.output . $GITHUB_WORKSPACE/artifacts/system/libsysprop/srcs/PlatformProperties_public^android_common
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_14/system/libsysprop/PlatformProperties_public^android_common.output $GITHUB_WORKSPACE/artifacts/system/libsysprop/srcs/PlatformProperties_public^android_common $GITHUB_WORKSPACE/artifacts/system/libsysprop/srcs/PlatformProperties_public^android_common/addition_copy_files.output

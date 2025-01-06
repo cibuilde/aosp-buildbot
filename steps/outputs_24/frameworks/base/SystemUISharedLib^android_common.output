@@ -1,3 +1,4 @@
 out/soong/.intermediates/frameworks/base/packages/SystemUI/shared/SystemUISharedLib/android_common/combined/SystemUISharedLib.jar
+out/soong/.intermediates/frameworks/base/packages/SystemUI/shared/SystemUISharedLib/android_common/manifest_fixer/AndroidManifest.xml
 out/soong/.intermediates/frameworks/base/packages/SystemUI/shared/SystemUISharedLib/android_common/package-res.apk
 out/soong/.intermediates/frameworks/base/packages/SystemUI/shared/SystemUISharedLib/android_common/turbine-combined/SystemUISharedLib.jar

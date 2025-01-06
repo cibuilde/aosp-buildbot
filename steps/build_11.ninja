@@ -155,7 +155,7 @@ include ninja/system/security/keystore2/src/km_compat/libkm_compat_service^andro
 include ninja/system/security/ondevice-signing/odsign^android_x86_64.ninja
 include ninja/system/update_engine/update_engine^android_x86_64.ninja
 
-build libupdate_verifier,android_x86_64_static: phony out/soong/.intermediates/bootable/recovery/update_verifier/libupdate_verifier/android_x86_64_static/libupdate_verifier.a
+build libupdate_verifier,android_x86_64_static: phony out/soong/.intermediates/bootable/recovery/update_verifier/libupdate_verifier/android_x86_64_static/gen/proto/bootable/recovery/update_verifier/care_map.pb.h out/soong/.intermediates/bootable/recovery/update_verifier/libupdate_verifier/android_x86_64_static/libupdate_verifier.a
 
 build update_verifier,android_x86_64: phony out/soong/.intermediates/bootable/recovery/update_verifier/update_verifier/android_x86_64/update_verifier
 
@@ -193,7 +193,7 @@ build libGLESv2_angle,android_x86_x86_64_shared: phony out/soong/.intermediates/
 
 build external_angle-targets: phony libEGL_angle,android_x86_64_shared libEGL_angle,android_x86_x86_64_shared libGLESv1_CM_angle,android_x86_64_shared libGLESv1_CM_angle,android_x86_x86_64_shared libGLESv2_angle,android_x86_64_shared libGLESv2_angle,android_x86_x86_64_shared
 
-build apache-xml,android_common_apex31: phony out/soong/.intermediates/external/apache-xml/apache-xml/android_common_apex31/dex-withres-aligned/apache-xml.jar out/soong/.intermediates/external/apache-xml/apache-xml/android_common_apex31/turbine-combined/apache-xml.jar out/soong/.intermediates/external/apache-xml/apache-xml/android_common_apex31/withres/apache-xml.jar
+build apache-xml,android_common_apex31: phony out/soong/.intermediates/external/apache-xml/apache-xml/android_common_apex31/dex-withres-aligned/apache-xml.jar out/soong/.intermediates/external/apache-xml/apache-xml/android_common_apex31/javac/apache-xml.jar out/soong/.intermediates/external/apache-xml/apache-xml/android_common_apex31/turbine-combined/apache-xml.jar out/soong/.intermediates/external/apache-xml/apache-xml/android_common_apex31/withres/apache-xml.jar
 
 build external_apache-xml-targets: phony apache-xml,android_common_apex31
 
@@ -203,7 +203,7 @@ build conscrypt.module.platform.api.stubs,android_common: phony out/soong/.inter
 
 build conscrypt.module.public.api.stubs.source,android_common: phony out/soong/.intermediates/external/conscrypt/conscrypt.module.public.api.stubs.source/android_common/metalava/conscrypt.module.public.api.stubs.source-stubs.srcjar out/soong/.intermediates/external/conscrypt/conscrypt.module.public.api.stubs.source/android_common/metalava/conscrypt.module.public.api.stubs.source_api.txt out/soong/.intermediates/external/conscrypt/conscrypt.module.public.api.stubs.source/android_common/metalava/conscrypt.module.public.api.stubs.source_removed.txt
 
-build conscrypt.module.public.api.stubs,android_common: phony out/soong/.intermediates/external/conscrypt/conscrypt.module.public.api.stubs/android_common/dex/conscrypt.module.public.api.stubs.jar out/soong/.intermediates/external/conscrypt/conscrypt.module.public.api.stubs/android_common/turbine-combined/conscrypt.module.public.api.stubs.jar
+build conscrypt.module.public.api.stubs,android_common: phony out/soong/.intermediates/external/conscrypt/conscrypt.module.public.api.stubs/android_common/dex/conscrypt.module.public.api.stubs.jar out/soong/.intermediates/external/conscrypt/conscrypt.module.public.api.stubs/android_common/javac/conscrypt.module.public.api.stubs.jar out/soong/.intermediates/external/conscrypt/conscrypt.module.public.api.stubs/android_common/turbine-combined/conscrypt.module.public.api.stubs.jar
 
 build external_conscrypt-targets: phony conscrypt.module.platform.api.stubs,android_common conscrypt.module.platform.api.stubs.source,android_common conscrypt.module.public.api.stubs,android_common conscrypt.module.public.api.stubs.source,android_common
 
@@ -247,7 +247,7 @@ build android.hardware.graphics.allocator@4.0-service.minigbm,android_vendor.31_
 
 build external_minigbm-targets: phony android.hardware.graphics.allocator@4.0-service.minigbm,android_vendor.31_x86_64 android.hardware.graphics.mapper@4.0-impl.minigbm,android_vendor.31_x86_64_shared android.hardware.graphics.mapper@4.0-impl.minigbm,android_vendor.31_x86_x86_64_shared
 
-build okhttp,android_common_apex31: phony out/soong/.intermediates/external/okhttp/okhttp/android_common_apex31/aligned/okhttp.jar out/soong/.intermediates/external/okhttp/okhttp/android_common_apex31/turbine-combined/okhttp.jar
+build okhttp,android_common_apex31: phony out/soong/.intermediates/external/okhttp/okhttp/android_common_apex31/aligned/okhttp.jar out/soong/.intermediates/external/okhttp/okhttp/android_common_apex31/javac/okhttp.jar out/soong/.intermediates/external/okhttp/okhttp/android_common_apex31/turbine-combined/okhttp.jar
 
 build external_okhttp-targets: phony okhttp,android_common_apex31
 
@@ -269,9 +269,9 @@ build libcodec2_vndk,android_x86_64_shared: phony out/soong/.intermediates/frame
 
 build libcodec2_vndk,android_x86_x86_64_shared: phony out/soong/.intermediates/frameworks/av/media/codec2/vndk/libcodec2_vndk/android_x86_x86_64_shared/libcodec2_vndk.so out/soong/.intermediates/frameworks/av/media/codec2/vndk/libcodec2_vndk/android_x86_x86_64_shared/libcodec2_vndk.so.toc
 
-build libmedia_omx,android_vendor.31_x86_64_shared: phony out/soong/.intermediates/frameworks/av/media/libmedia/libmedia_omx/android_vendor.31_x86_64_shared/libmedia_omx.so out/soong/.intermediates/frameworks/av/media/libmedia/libmedia_omx/android_vendor.31_x86_64_shared/libmedia_omx.so.toc
+build libmedia_omx,android_vendor.31_x86_64_shared: phony out/soong/.intermediates/frameworks/av/media/libmedia/libmedia_omx/android_vendor.31_x86_64_shared/gen/aidl/android/BnOMXBufferSource.h out/soong/.intermediates/frameworks/av/media/libmedia/libmedia_omx/android_vendor.31_x86_64_shared/gen/aidl/android/BpOMXBufferSource.h out/soong/.intermediates/frameworks/av/media/libmedia/libmedia_omx/android_vendor.31_x86_64_shared/gen/aidl/android/IOMXBufferSource.h out/soong/.intermediates/frameworks/av/media/libmedia/libmedia_omx/android_vendor.31_x86_64_shared/libmedia_omx.so out/soong/.intermediates/frameworks/av/media/libmedia/libmedia_omx/android_vendor.31_x86_64_shared/libmedia_omx.so.toc
 
-build libmedia_omx,android_vendor.31_x86_x86_64_shared: phony out/soong/.intermediates/frameworks/av/media/libmedia/libmedia_omx/android_vendor.31_x86_x86_64_shared/libmedia_omx.so out/soong/.intermediates/frameworks/av/media/libmedia/libmedia_omx/android_vendor.31_x86_x86_64_shared/libmedia_omx.so.toc
+build libmedia_omx,android_vendor.31_x86_x86_64_shared: phony out/soong/.intermediates/frameworks/av/media/libmedia/libmedia_omx/android_vendor.31_x86_x86_64_shared/gen/aidl/android/BnOMXBufferSource.h out/soong/.intermediates/frameworks/av/media/libmedia/libmedia_omx/android_vendor.31_x86_x86_64_shared/gen/aidl/android/BpOMXBufferSource.h out/soong/.intermediates/frameworks/av/media/libmedia/libmedia_omx/android_vendor.31_x86_x86_64_shared/gen/aidl/android/IOMXBufferSource.h out/soong/.intermediates/frameworks/av/media/libmedia/libmedia_omx/android_vendor.31_x86_x86_64_shared/libmedia_omx.so out/soong/.intermediates/frameworks/av/media/libmedia/libmedia_omx/android_vendor.31_x86_x86_64_shared/libmedia_omx.so.toc
 
 build libmedia_omx,android_x86_64_shared_cfi: phony out/soong/.intermediates/frameworks/av/media/libmedia/libmedia_omx/android_x86_64_shared_cfi/gen/aidl/android/BnOMXBufferSource.h out/soong/.intermediates/frameworks/av/media/libmedia/libmedia_omx/android_x86_64_shared_cfi/gen/aidl/android/BpOMXBufferSource.h out/soong/.intermediates/frameworks/av/media/libmedia/libmedia_omx/android_x86_64_shared_cfi/gen/aidl/android/IOMXBufferSource.h out/soong/.intermediates/frameworks/av/media/libmedia/libmedia_omx/android_x86_64_shared_cfi/libmedia_omx.so out/soong/.intermediates/frameworks/av/media/libmedia/libmedia_omx/android_x86_64_shared_cfi/libmedia_omx.so.toc
 
@@ -407,7 +407,7 @@ build libframetimeline,android_x86_64_static_lto-thin: phony out/soong/.intermed
 
 build liblayers_proto,android_x86_64_shared: phony out/soong/.intermediates/frameworks/native/services/surfaceflinger/layerproto/liblayers_proto/android_x86_64_shared/liblayers_proto.so out/soong/.intermediates/frameworks/native/services/surfaceflinger/layerproto/liblayers_proto/android_x86_64_shared/liblayers_proto.so.toc
 
-build liblayers_proto,android_x86_64_static: phony out/soong/.intermediates/frameworks/native/services/surfaceflinger/layerproto/liblayers_proto/android_x86_64_static/obj/.intermediates/frameworks/native/services/surfaceflinger/layerproto/liblayers_proto/android_x86_64_static/gen/proto/frameworks/native/services/surfaceflinger/layerproto/layers.pb.o out/soong/.intermediates/frameworks/native/services/surfaceflinger/layerproto/liblayers_proto/android_x86_64_static/obj/.intermediates/frameworks/native/services/surfaceflinger/layerproto/liblayers_proto/android_x86_64_static/gen/proto/frameworks/native/services/surfaceflinger/layerproto/layerstrace.pb.o out/soong/.intermediates/frameworks/native/services/surfaceflinger/layerproto/liblayers_proto/android_x86_64_static/obj/frameworks/native/services/surfaceflinger/layerproto/LayerProtoParser.o
+build liblayers_proto,android_x86_64_static: phony out/soong/.intermediates/frameworks/native/services/surfaceflinger/layerproto/liblayers_proto/android_x86_64_static/gen/proto/frameworks/native/services/surfaceflinger/layerproto/layers.pb.h out/soong/.intermediates/frameworks/native/services/surfaceflinger/layerproto/liblayers_proto/android_x86_64_static/gen/proto/frameworks/native/services/surfaceflinger/layerproto/layerstrace.pb.h out/soong/.intermediates/frameworks/native/services/surfaceflinger/layerproto/liblayers_proto/android_x86_64_static/obj/.intermediates/frameworks/native/services/surfaceflinger/layerproto/liblayers_proto/android_x86_64_static/gen/proto/frameworks/native/services/surfaceflinger/layerproto/layers.pb.o out/soong/.intermediates/frameworks/native/services/surfaceflinger/layerproto/liblayers_proto/android_x86_64_static/obj/.intermediates/frameworks/native/services/surfaceflinger/layerproto/liblayers_proto/android_x86_64_static/gen/proto/frameworks/native/services/surfaceflinger/layerproto/layerstrace.pb.o out/soong/.intermediates/frameworks/native/services/surfaceflinger/layerproto/liblayers_proto/android_x86_64_static/obj/frameworks/native/services/surfaceflinger/layerproto/LayerProtoParser.o
 
 build frameworks_native-targets: phony dumpstate,android_x86_64 libcompositionengine,android_x86_64_static_lto-thin libdisplayservicehidl,android_x86_64_shared libframetimeline,android_x86_64_static_lto-thin libgui,android_x86_64_shared libgui,android_x86_x86_64_shared liblayers_proto,android_x86_64_shared liblayers_proto,android_x86_64_static libnativedisplay,android_x86_64_shared libnativedisplay,android_x86_x86_64_shared librenderengine,android_x86_64_static libschedulerservicehidl,android_x86_64_shared libschedulerservicehidl,android_x86_x86_64_shared libsensorservice,android_x86_64_shared libsensorservice,android_x86_x86_64_shared libsensorservicehidl,android_x86_64_shared libsensorservicehidl,android_x86_x86_64_shared otapreopt_chroot,android_x86_64 sensorservice,android_x86_64 surfaceflinger,android_x86_64
 
@@ -495,7 +495,7 @@ build libkeystore2_km_compat,android_x86_64_rlib_rlib-std: phony out/soong/.inte
 
 build libkm_compat,android_x86_64_shared: phony out/soong/.intermediates/system/security/keystore2/src/km_compat/libkm_compat/android_x86_64_shared/libkm_compat.so out/soong/.intermediates/system/security/keystore2/src/km_compat/libkm_compat/android_x86_64_shared/libkm_compat.so.toc
 
-build libkm_compat_service,android_x86_64_shared: phony out/soong/.intermediates/system/security/keystore2/src/km_compat/libkm_compat_service/android_x86_64_shared/libkm_compat_service.so.toc
+build libkm_compat_service,android_x86_64_shared: phony out/soong/.intermediates/system/security/keystore2/src/km_compat/libkm_compat_service/android_x86_64_shared/libkm_compat_service.so out/soong/.intermediates/system/security/keystore2/src/km_compat/libkm_compat_service/android_x86_64_shared/libkm_compat_service.so.toc
 
 build odsign,android_x86_64: phony out/soong/.intermediates/system/security/ondevice-signing/odsign/android_x86_64/odsign
 

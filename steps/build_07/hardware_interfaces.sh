@@ -111,85 +111,85 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^android_x86
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^android_x86_x86_64_shared/ .
 
 echo "building android.hardware.audio.common@7.0-enums^android_x86_64_shared"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja android.hardware.audio.common@7.0-enums,android_x86_64_shared
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja android.hardware.audio.common@7.0-enums,android_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/audio/common/7.0/android.hardware.audio.common@7.0-enums^android_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/hardware/interfaces/android.hardware.audio.common@7.0-enums^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/audio/common/7.0/android.hardware.audio.common@7.0-enums^android_x86_64_shared
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_07/hardware/interfaces/android.hardware.audio.common@7.0-enums^android_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/audio/common/7.0/android.hardware.audio.common@7.0-enums^android_x86_64_shared $GITHUB_WORKSPACE/artifacts/hardware/interfaces/audio/common/7.0/android.hardware.audio.common@7.0-enums^android_x86_64_shared/addition_copy_files.output
 
 echo "building android.hardware.audio.common@7.0-enums^android_x86_x86_64_shared"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja android.hardware.audio.common@7.0-enums,android_x86_x86_64_shared
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja android.hardware.audio.common@7.0-enums,android_x86_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/audio/common/7.0/android.hardware.audio.common@7.0-enums^android_x86_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/hardware/interfaces/android.hardware.audio.common@7.0-enums^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/audio/common/7.0/android.hardware.audio.common@7.0-enums^android_x86_x86_64_shared
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_07/hardware/interfaces/android.hardware.audio.common@7.0-enums^android_x86_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/audio/common/7.0/android.hardware.audio.common@7.0-enums^android_x86_x86_64_shared $GITHUB_WORKSPACE/artifacts/hardware/interfaces/audio/common/7.0/android.hardware.audio.common@7.0-enums^android_x86_x86_64_shared/addition_copy_files.output
 
 echo "building android.hardware.authsecret-service.example^android_vendor.31_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja android.hardware.authsecret-service.example,android_vendor.31_x86_64
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja android.hardware.authsecret-service.example,android_vendor.31_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/authsecret/aidl/default/android.hardware.authsecret-service.example^android_vendor.31_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/hardware/interfaces/android.hardware.authsecret-service.example^android_vendor.31_x86_64.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/authsecret/aidl/default/android.hardware.authsecret-service.example^android_vendor.31_x86_64
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_07/hardware/interfaces/android.hardware.authsecret-service.example^android_vendor.31_x86_64.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/authsecret/aidl/default/android.hardware.authsecret-service.example^android_vendor.31_x86_64 $GITHUB_WORKSPACE/artifacts/hardware/interfaces/authsecret/aidl/default/android.hardware.authsecret-service.example^android_vendor.31_x86_64/addition_copy_files.output
 
 echo "building android.hardware.biometrics.face-service.example^android_vendor.31_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja android.hardware.biometrics.face-service.example,android_vendor.31_x86_64
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja android.hardware.biometrics.face-service.example,android_vendor.31_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/biometrics/face/aidl/default/android.hardware.biometrics.face-service.example^android_vendor.31_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/hardware/interfaces/android.hardware.biometrics.face-service.example^android_vendor.31_x86_64.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/biometrics/face/aidl/default/android.hardware.biometrics.face-service.example^android_vendor.31_x86_64
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_07/hardware/interfaces/android.hardware.biometrics.face-service.example^android_vendor.31_x86_64.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/biometrics/face/aidl/default/android.hardware.biometrics.face-service.example^android_vendor.31_x86_64 $GITHUB_WORKSPACE/artifacts/hardware/interfaces/biometrics/face/aidl/default/android.hardware.biometrics.face-service.example^android_vendor.31_x86_64/addition_copy_files.output
 
 echo "building android.hardware.biometrics.fingerprint-service.example^android_vendor.31_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja android.hardware.biometrics.fingerprint-service.example,android_vendor.31_x86_64
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja android.hardware.biometrics.fingerprint-service.example,android_vendor.31_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/biometrics/fingerprint/aidl/default/android.hardware.biometrics.fingerprint-service.example^android_vendor.31_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/hardware/interfaces/android.hardware.biometrics.fingerprint-service.example^android_vendor.31_x86_64.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/biometrics/fingerprint/aidl/default/android.hardware.biometrics.fingerprint-service.example^android_vendor.31_x86_64
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_07/hardware/interfaces/android.hardware.biometrics.fingerprint-service.example^android_vendor.31_x86_64.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/biometrics/fingerprint/aidl/default/android.hardware.biometrics.fingerprint-service.example^android_vendor.31_x86_64 $GITHUB_WORKSPACE/artifacts/hardware/interfaces/biometrics/fingerprint/aidl/default/android.hardware.biometrics.fingerprint-service.example^android_vendor.31_x86_64/addition_copy_files.output
 
 echo "building android.hardware.identity-service.example^android_vendor.31_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja android.hardware.identity-service.example,android_vendor.31_x86_64
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja android.hardware.identity-service.example,android_vendor.31_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/identity/aidl/default/android.hardware.identity-service.example^android_vendor.31_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/hardware/interfaces/android.hardware.identity-service.example^android_vendor.31_x86_64.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/identity/aidl/default/android.hardware.identity-service.example^android_vendor.31_x86_64
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_07/hardware/interfaces/android.hardware.identity-service.example^android_vendor.31_x86_64.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/identity/aidl/default/android.hardware.identity-service.example^android_vendor.31_x86_64 $GITHUB_WORKSPACE/artifacts/hardware/interfaces/identity/aidl/default/android.hardware.identity-service.example^android_vendor.31_x86_64/addition_copy_files.output
 
 echo "building android.hardware.lights-service.example^android_vendor.31_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja android.hardware.lights-service.example,android_vendor.31_x86_64
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja android.hardware.lights-service.example,android_vendor.31_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/light/aidl/default/android.hardware.lights-service.example^android_vendor.31_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/hardware/interfaces/android.hardware.lights-service.example^android_vendor.31_x86_64.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/light/aidl/default/android.hardware.lights-service.example^android_vendor.31_x86_64
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_07/hardware/interfaces/android.hardware.lights-service.example^android_vendor.31_x86_64.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/light/aidl/default/android.hardware.lights-service.example^android_vendor.31_x86_64 $GITHUB_WORKSPACE/artifacts/hardware/interfaces/light/aidl/default/android.hardware.lights-service.example^android_vendor.31_x86_64/addition_copy_files.output
 
 echo "building android.hardware.memtrack-service.example^android_vendor.31_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja android.hardware.memtrack-service.example,android_vendor.31_x86_64
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja android.hardware.memtrack-service.example,android_vendor.31_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/memtrack/aidl/default/android.hardware.memtrack-service.example^android_vendor.31_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/hardware/interfaces/android.hardware.memtrack-service.example^android_vendor.31_x86_64.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/memtrack/aidl/default/android.hardware.memtrack-service.example^android_vendor.31_x86_64
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_07/hardware/interfaces/android.hardware.memtrack-service.example^android_vendor.31_x86_64.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/memtrack/aidl/default/android.hardware.memtrack-service.example^android_vendor.31_x86_64 $GITHUB_WORKSPACE/artifacts/hardware/interfaces/memtrack/aidl/default/android.hardware.memtrack-service.example^android_vendor.31_x86_64/addition_copy_files.output
 
 echo "building android.hardware.oemlock-service.example^android_vendor.31_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja android.hardware.oemlock-service.example,android_vendor.31_x86_64
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja android.hardware.oemlock-service.example,android_vendor.31_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/oemlock/aidl/default/android.hardware.oemlock-service.example^android_vendor.31_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/hardware/interfaces/android.hardware.oemlock-service.example^android_vendor.31_x86_64.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/oemlock/aidl/default/android.hardware.oemlock-service.example^android_vendor.31_x86_64
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_07/hardware/interfaces/android.hardware.oemlock-service.example^android_vendor.31_x86_64.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/oemlock/aidl/default/android.hardware.oemlock-service.example^android_vendor.31_x86_64 $GITHUB_WORKSPACE/artifacts/hardware/interfaces/oemlock/aidl/default/android.hardware.oemlock-service.example^android_vendor.31_x86_64/addition_copy_files.output
 
 echo "building android.hardware.power-service.example^android_vendor.31_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja android.hardware.power-service.example,android_vendor.31_x86_64
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja android.hardware.power-service.example,android_vendor.31_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/power/aidl/default/android.hardware.power-service.example^android_vendor.31_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/hardware/interfaces/android.hardware.power-service.example^android_vendor.31_x86_64.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/power/aidl/default/android.hardware.power-service.example^android_vendor.31_x86_64
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_07/hardware/interfaces/android.hardware.power-service.example^android_vendor.31_x86_64.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/power/aidl/default/android.hardware.power-service.example^android_vendor.31_x86_64 $GITHUB_WORKSPACE/artifacts/hardware/interfaces/power/aidl/default/android.hardware.power-service.example^android_vendor.31_x86_64/addition_copy_files.output
 
 echo "building android.hardware.power.stats-service.example^android_vendor.31_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja android.hardware.power.stats-service.example,android_vendor.31_x86_64
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja android.hardware.power.stats-service.example,android_vendor.31_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/power/stats/aidl/default/android.hardware.power.stats-service.example^android_vendor.31_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/hardware/interfaces/android.hardware.power.stats-service.example^android_vendor.31_x86_64.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/power/stats/aidl/default/android.hardware.power.stats-service.example^android_vendor.31_x86_64
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_07/hardware/interfaces/android.hardware.power.stats-service.example^android_vendor.31_x86_64.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/power/stats/aidl/default/android.hardware.power.stats-service.example^android_vendor.31_x86_64 $GITHUB_WORKSPACE/artifacts/hardware/interfaces/power/stats/aidl/default/android.hardware.power.stats-service.example^android_vendor.31_x86_64/addition_copy_files.output
 
 echo "building android.hardware.rebootescrow-service.default^android_vendor.31_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja android.hardware.rebootescrow-service.default,android_vendor.31_x86_64
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja android.hardware.rebootescrow-service.default,android_vendor.31_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/rebootescrow/aidl/default/android.hardware.rebootescrow-service.default^android_vendor.31_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/hardware/interfaces/android.hardware.rebootescrow-service.default^android_vendor.31_x86_64.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/rebootescrow/aidl/default/android.hardware.rebootescrow-service.default^android_vendor.31_x86_64
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_07/hardware/interfaces/android.hardware.rebootescrow-service.default^android_vendor.31_x86_64.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/rebootescrow/aidl/default/android.hardware.rebootescrow-service.default^android_vendor.31_x86_64 $GITHUB_WORKSPACE/artifacts/hardware/interfaces/rebootescrow/aidl/default/android.hardware.rebootescrow-service.default^android_vendor.31_x86_64/addition_copy_files.output
 
 echo "building android.hardware.vibrator-service.example^android_vendor.31_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja android.hardware.vibrator-service.example,android_vendor.31_x86_64
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja android.hardware.vibrator-service.example,android_vendor.31_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/vibrator/aidl/default/android.hardware.vibrator-service.example^android_vendor.31_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/hardware/interfaces/android.hardware.vibrator-service.example^android_vendor.31_x86_64.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/vibrator/aidl/default/android.hardware.vibrator-service.example^android_vendor.31_x86_64
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_07/hardware/interfaces/android.hardware.vibrator-service.example^android_vendor.31_x86_64.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/vibrator/aidl/default/android.hardware.vibrator-service.example^android_vendor.31_x86_64 $GITHUB_WORKSPACE/artifacts/hardware/interfaces/vibrator/aidl/default/android.hardware.vibrator-service.example^android_vendor.31_x86_64/addition_copy_files.output
 
 echo "building android.hardware.weaver-service.example^android_vendor.31_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja android.hardware.weaver-service.example,android_vendor.31_x86_64
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja android.hardware.weaver-service.example,android_vendor.31_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/weaver/aidl/default/android.hardware.weaver-service.example^android_vendor.31_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/hardware/interfaces/android.hardware.weaver-service.example^android_vendor.31_x86_64.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/weaver/aidl/default/android.hardware.weaver-service.example^android_vendor.31_x86_64
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_07/hardware/interfaces/android.hardware.weaver-service.example^android_vendor.31_x86_64.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/weaver/aidl/default/android.hardware.weaver-service.example^android_vendor.31_x86_64 $GITHUB_WORKSPACE/artifacts/hardware/interfaces/weaver/aidl/default/android.hardware.weaver-service.example^android_vendor.31_x86_64/addition_copy_files.output

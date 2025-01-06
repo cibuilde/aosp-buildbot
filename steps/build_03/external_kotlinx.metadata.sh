@@ -20,7 +20,7 @@ clone_depth_platform external/kotlinx.metadata
 rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/cmd/merge_zips/merge_zips^linux_glibc_x86_64/ .
 
 echo "building kotlinx_metadata_jvm^linux_glibc_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja kotlinx_metadata_jvm,linux_glibc_common
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja kotlinx_metadata_jvm,linux_glibc_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/kotlinx.metadata/kotlinx_metadata_jvm^linux_glibc_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/external/kotlinx.metadata/kotlinx_metadata_jvm^linux_glibc_common.output . $GITHUB_WORKSPACE/artifacts/external/kotlinx.metadata/kotlinx_metadata_jvm^linux_glibc_common
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/external/kotlinx.metadata/kotlinx_metadata_jvm^linux_glibc_common.output $GITHUB_WORKSPACE/artifacts/external/kotlinx.metadata/kotlinx_metadata_jvm^linux_glibc_common $GITHUB_WORKSPACE/artifacts/external/kotlinx.metadata/kotlinx_metadata_jvm^linux_glibc_common/addition_copy_files.output

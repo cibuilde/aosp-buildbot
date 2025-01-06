@@ -75,31 +75,31 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^linux_glibc
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/server_configurable_flags/libflags/server_configurable_flags^android_x86_64_static_apex30/ .
 
 echo "building statslog-statsd-java-gen^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja statslog-statsd-java-gen,
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja statslog-statsd-java-gen,
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/StatsD/framework/statslog-statsd-java-gen^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/packages/modules/StatsD/statslog-statsd-java-gen^.output . $GITHUB_WORKSPACE/artifacts/packages/modules/StatsD/framework/statslog-statsd-java-gen^
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_06/packages/modules/StatsD/statslog-statsd-java-gen^.output $GITHUB_WORKSPACE/artifacts/packages/modules/StatsD/framework/statslog-statsd-java-gen^ $GITHUB_WORKSPACE/artifacts/packages/modules/StatsD/framework/statslog-statsd-java-gen^/addition_copy_files.output
 
 echo "building statslog_statsd.h^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja statslog_statsd.h,
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja statslog_statsd.h,
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/StatsD/statsd/statslog_statsd.h^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/packages/modules/StatsD/statslog_statsd.h^.output . $GITHUB_WORKSPACE/artifacts/packages/modules/StatsD/statsd/statslog_statsd.h^
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_06/packages/modules/StatsD/statslog_statsd.h^.output $GITHUB_WORKSPACE/artifacts/packages/modules/StatsD/statsd/statslog_statsd.h^ $GITHUB_WORKSPACE/artifacts/packages/modules/StatsD/statsd/statslog_statsd.h^/addition_copy_files.output
 
 echo "building statslog_statsd.cpp^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja statslog_statsd.cpp,
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja statslog_statsd.cpp,
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/StatsD/statsd/statslog_statsd.cpp^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/packages/modules/StatsD/statslog_statsd.cpp^.output . $GITHUB_WORKSPACE/artifacts/packages/modules/StatsD/statsd/statslog_statsd.cpp^
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_06/packages/modules/StatsD/statslog_statsd.cpp^.output $GITHUB_WORKSPACE/artifacts/packages/modules/StatsD/statsd/statslog_statsd.cpp^ $GITHUB_WORKSPACE/artifacts/packages/modules/StatsD/statsd/statslog_statsd.cpp^/addition_copy_files.output
 
 echo "building libstatslog_statsd^android_x86_64_static_com.android.os.statsd"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libstatslog_statsd,android_x86_64_static_com.android.os.statsd
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libstatslog_statsd,android_x86_64_static_com.android.os.statsd
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/StatsD/statsd/libstatslog_statsd^android_x86_64_static_com.android.os.statsd
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/packages/modules/StatsD/libstatslog_statsd^android_x86_64_static_com.android.os.statsd.output . $GITHUB_WORKSPACE/artifacts/packages/modules/StatsD/statsd/libstatslog_statsd^android_x86_64_static_com.android.os.statsd
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_06/packages/modules/StatsD/libstatslog_statsd^android_x86_64_static_com.android.os.statsd.output $GITHUB_WORKSPACE/artifacts/packages/modules/StatsD/statsd/libstatslog_statsd^android_x86_64_static_com.android.os.statsd $GITHUB_WORKSPACE/artifacts/packages/modules/StatsD/statsd/libstatslog_statsd^android_x86_64_static_com.android.os.statsd/addition_copy_files.output
 
 echo "building statsd^android_x86_64_com.android.os.statsd"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja statsd,android_x86_64_com.android.os.statsd
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja statsd,android_x86_64_com.android.os.statsd
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/StatsD/statsd/statsd^android_x86_64_com.android.os.statsd
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/packages/modules/StatsD/statsd^android_x86_64_com.android.os.statsd.output . $GITHUB_WORKSPACE/artifacts/packages/modules/StatsD/statsd/statsd^android_x86_64_com.android.os.statsd
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_06/packages/modules/StatsD/statsd^android_x86_64_com.android.os.statsd.output $GITHUB_WORKSPACE/artifacts/packages/modules/StatsD/statsd/statsd^android_x86_64_com.android.os.statsd $GITHUB_WORKSPACE/artifacts/packages/modules/StatsD/statsd/statsd^android_x86_64_com.android.os.statsd/addition_copy_files.output

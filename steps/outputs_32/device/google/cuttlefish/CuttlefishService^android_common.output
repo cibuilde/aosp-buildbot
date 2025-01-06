@@ -1,6 +1,8 @@
 out/soong/.intermediates/device/google/cuttlefish/guest/monitoring/cuttlefish_service/CuttlefishService/android_common/CuttlefishService.apk
+out/soong/.intermediates/device/google/cuttlefish/guest/monitoring/cuttlefish_service/CuttlefishService/android_common/combined/CuttlefishService.jar
 out/soong/.intermediates/device/google/cuttlefish/guest/monitoring/cuttlefish_service/CuttlefishService/android_common/dexpreopt/dexpreopt.config
 out/soong/.intermediates/device/google/cuttlefish/guest/monitoring/cuttlefish_service/CuttlefishService/android_common/dexpreopt/oat/x86_64/package.odex
 out/soong/.intermediates/device/google/cuttlefish/guest/monitoring/cuttlefish_service/CuttlefishService/android_common/dexpreopt/oat/x86_64/package.vdex
+out/soong/.intermediates/device/google/cuttlefish/guest/monitoring/cuttlefish_service/CuttlefishService/android_common/package-res.apk
 out/soong/.intermediates/device/google/cuttlefish/guest/monitoring/cuttlefish_service/CuttlefishService/android_common/proguard_dictionary
 out/soong/.intermediates/device/google/cuttlefish/guest/monitoring/cuttlefish_service/CuttlefishService/android_common/proguard_usage.zip

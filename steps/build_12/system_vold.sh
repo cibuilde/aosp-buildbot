@@ -115,13 +115,13 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/system/vold/libvold^android_x86_64_stati
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/vold/libvold_binder^android_x86_64_static/ .
 
 echo "building vold^android_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_12.ninja vold,android_x86_64
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_12.ninja vold,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/vold/vold^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_12/system/vold/vold^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/vold/vold^android_x86_64
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_12/system/vold/vold^android_x86_64.output $GITHUB_WORKSPACE/artifacts/system/vold/vold^android_x86_64 $GITHUB_WORKSPACE/artifacts/system/vold/vold^android_x86_64/addition_copy_files.output
 
 echo "building wait_for_keymaster^android_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_12.ninja wait_for_keymaster,android_x86_64
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_12.ninja wait_for_keymaster,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/vold/wait_for_keymaster^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_12/system/vold/wait_for_keymaster^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/vold/wait_for_keymaster^android_x86_64
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_12/system/vold/wait_for_keymaster^android_x86_64.output $GITHUB_WORKSPACE/artifacts/system/vold/wait_for_keymaster^android_x86_64 $GITHUB_WORKSPACE/artifacts/system/vold/wait_for_keymaster^android_x86_64/addition_copy_files.output

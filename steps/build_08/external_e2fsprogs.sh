@@ -101,115 +101,115 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/system/libbase/libbase^android_recovery_
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/libbase/libbase^android_x86_64_shared/ .
 
 echo "building e2fsdroid^android_recovery_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja e2fsdroid,android_recovery_x86_64
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja e2fsdroid,android_recovery_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/contrib/android/e2fsdroid^android_recovery_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/external/e2fsprogs/e2fsdroid^android_recovery_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/contrib/android/e2fsdroid^android_recovery_x86_64
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_08/external/e2fsprogs/e2fsdroid^android_recovery_x86_64.output $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/contrib/android/e2fsdroid^android_recovery_x86_64 $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/contrib/android/e2fsdroid^android_recovery_x86_64/addition_copy_files.output
 
 echo "building e2fsdroid^android_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja e2fsdroid,android_x86_64
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja e2fsdroid,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/contrib/android/e2fsdroid^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/external/e2fsprogs/e2fsdroid^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/contrib/android/e2fsdroid^android_x86_64
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_08/external/e2fsprogs/e2fsdroid^android_x86_64.output $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/contrib/android/e2fsdroid^android_x86_64 $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/contrib/android/e2fsdroid^android_x86_64/addition_copy_files.output
 
 echo "building e2fsck^android_vendor_ramdisk_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja e2fsck,android_vendor_ramdisk_x86_64
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja e2fsck,android_vendor_ramdisk_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/e2fsck/e2fsck^android_vendor_ramdisk_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/external/e2fsprogs/e2fsck^android_vendor_ramdisk_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/e2fsck/e2fsck^android_vendor_ramdisk_x86_64
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_08/external/e2fsprogs/e2fsck^android_vendor_ramdisk_x86_64.output $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/e2fsck/e2fsck^android_vendor_ramdisk_x86_64 $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/e2fsck/e2fsck^android_vendor_ramdisk_x86_64/addition_copy_files.output
 
 echo "building e2fsck^android_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja e2fsck,android_x86_64
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja e2fsck,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/e2fsck/e2fsck^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/external/e2fsprogs/e2fsck^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/e2fsck/e2fsck^android_x86_64
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_08/external/e2fsprogs/e2fsck^android_x86_64.output $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/e2fsck/e2fsck^android_x86_64 $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/e2fsck/e2fsck^android_x86_64/addition_copy_files.output
 
 echo "building libext2fs^android_recovery_x86_64_shared"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libext2fs,android_recovery_x86_64_shared
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libext2fs,android_recovery_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/lib/ext2fs/libext2fs^android_recovery_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/external/e2fsprogs/libext2fs^android_recovery_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/lib/ext2fs/libext2fs^android_recovery_x86_64_shared
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_08/external/e2fsprogs/libext2fs^android_recovery_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/lib/ext2fs/libext2fs^android_recovery_x86_64_shared $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/lib/ext2fs/libext2fs^android_recovery_x86_64_shared/addition_copy_files.output
 
 echo "building libext2fs^android_vendor_ramdisk_x86_64_shared"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libext2fs,android_vendor_ramdisk_x86_64_shared
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libext2fs,android_vendor_ramdisk_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/lib/ext2fs/libext2fs^android_vendor_ramdisk_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/external/e2fsprogs/libext2fs^android_vendor_ramdisk_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/lib/ext2fs/libext2fs^android_vendor_ramdisk_x86_64_shared
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_08/external/e2fsprogs/libext2fs^android_vendor_ramdisk_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/lib/ext2fs/libext2fs^android_vendor_ramdisk_x86_64_shared $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/lib/ext2fs/libext2fs^android_vendor_ramdisk_x86_64_shared/addition_copy_files.output
 
 echo "building libext2fs^android_x86_64_shared"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libext2fs,android_x86_64_shared
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libext2fs,android_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/lib/ext2fs/libext2fs^android_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/external/e2fsprogs/libext2fs^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/lib/ext2fs/libext2fs^android_x86_64_shared
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_08/external/e2fsprogs/libext2fs^android_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/lib/ext2fs/libext2fs^android_x86_64_shared $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/lib/ext2fs/libext2fs^android_x86_64_shared/addition_copy_files.output
 
 echo "building libext2_quota^android_recovery_x86_64_shared"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libext2_quota,android_recovery_x86_64_shared
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libext2_quota,android_recovery_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/lib/support/libext2_quota^android_recovery_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/external/e2fsprogs/libext2_quota^android_recovery_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/lib/support/libext2_quota^android_recovery_x86_64_shared
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_08/external/e2fsprogs/libext2_quota^android_recovery_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/lib/support/libext2_quota^android_recovery_x86_64_shared $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/lib/support/libext2_quota^android_recovery_x86_64_shared/addition_copy_files.output
 
 echo "building libext2_quota^android_vendor_ramdisk_x86_64_shared"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libext2_quota,android_vendor_ramdisk_x86_64_shared
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libext2_quota,android_vendor_ramdisk_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/lib/support/libext2_quota^android_vendor_ramdisk_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/external/e2fsprogs/libext2_quota^android_vendor_ramdisk_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/lib/support/libext2_quota^android_vendor_ramdisk_x86_64_shared
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_08/external/e2fsprogs/libext2_quota^android_vendor_ramdisk_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/lib/support/libext2_quota^android_vendor_ramdisk_x86_64_shared $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/lib/support/libext2_quota^android_vendor_ramdisk_x86_64_shared/addition_copy_files.output
 
 echo "building libext2_quota^android_x86_64_shared"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libext2_quota,android_x86_64_shared
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libext2_quota,android_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/lib/support/libext2_quota^android_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/external/e2fsprogs/libext2_quota^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/lib/support/libext2_quota^android_x86_64_shared
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_08/external/e2fsprogs/libext2_quota^android_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/lib/support/libext2_quota^android_x86_64_shared $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/lib/support/libext2_quota^android_x86_64_shared/addition_copy_files.output
 
 echo "building tune2fs^android_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja tune2fs,android_x86_64
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja tune2fs,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/misc/tune2fs^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/external/e2fsprogs/tune2fs^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/misc/tune2fs^android_x86_64
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_08/external/e2fsprogs/tune2fs^android_x86_64.output $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/misc/tune2fs^android_x86_64 $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/misc/tune2fs^android_x86_64/addition_copy_files.output
 
 echo "building libext2_misc^android_recovery_x86_64_shared"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libext2_misc,android_recovery_x86_64_shared
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libext2_misc,android_recovery_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/misc/libext2_misc^android_recovery_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/external/e2fsprogs/libext2_misc^android_recovery_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/misc/libext2_misc^android_recovery_x86_64_shared
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_08/external/e2fsprogs/libext2_misc^android_recovery_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/misc/libext2_misc^android_recovery_x86_64_shared $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/misc/libext2_misc^android_recovery_x86_64_shared/addition_copy_files.output
 
 echo "building libext2_misc^android_x86_64_shared"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libext2_misc,android_x86_64_shared
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libext2_misc,android_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/misc/libext2_misc^android_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/external/e2fsprogs/libext2_misc^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/misc/libext2_misc^android_x86_64_shared
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_08/external/e2fsprogs/libext2_misc^android_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/misc/libext2_misc^android_x86_64_shared $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/misc/libext2_misc^android_x86_64_shared/addition_copy_files.output
 
 echo "building badblocks^android_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja badblocks,android_x86_64
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja badblocks,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/misc/badblocks^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/external/e2fsprogs/badblocks^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/misc/badblocks^android_x86_64
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_08/external/e2fsprogs/badblocks^android_x86_64.output $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/misc/badblocks^android_x86_64 $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/misc/badblocks^android_x86_64/addition_copy_files.output
 
 echo "building blkid^android_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja blkid,android_x86_64
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja blkid,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/misc/blkid^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/external/e2fsprogs/blkid^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/misc/blkid^android_x86_64
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_08/external/e2fsprogs/blkid^android_x86_64.output $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/misc/blkid^android_x86_64 $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/misc/blkid^android_x86_64/addition_copy_files.output
 
 echo "building e2freefrag^android_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja e2freefrag,android_x86_64
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja e2freefrag,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/misc/e2freefrag^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/external/e2fsprogs/e2freefrag^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/misc/e2freefrag^android_x86_64
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_08/external/e2fsprogs/e2freefrag^android_x86_64.output $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/misc/e2freefrag^android_x86_64 $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/misc/e2freefrag^android_x86_64/addition_copy_files.output
 
 echo "building mke2fs^android_recovery_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja mke2fs,android_recovery_x86_64
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja mke2fs,android_recovery_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/misc/mke2fs^android_recovery_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/external/e2fsprogs/mke2fs^android_recovery_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/misc/mke2fs^android_recovery_x86_64
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_08/external/e2fsprogs/mke2fs^android_recovery_x86_64.output $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/misc/mke2fs^android_recovery_x86_64 $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/misc/mke2fs^android_recovery_x86_64/addition_copy_files.output
 
 echo "building mke2fs^android_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja mke2fs,android_x86_64
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja mke2fs,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/misc/mke2fs^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/external/e2fsprogs/mke2fs^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/misc/mke2fs^android_x86_64
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_08/external/e2fsprogs/mke2fs^android_x86_64.output $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/misc/mke2fs^android_x86_64 $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/misc/mke2fs^android_x86_64/addition_copy_files.output
 
 echo "building resize2fs^android_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja resize2fs,android_x86_64
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja resize2fs,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/resize/resize2fs^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/external/e2fsprogs/resize2fs^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/resize/resize2fs^android_x86_64
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_08/external/e2fsprogs/resize2fs^android_x86_64.output $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/resize/resize2fs^android_x86_64 $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/resize/resize2fs^android_x86_64/addition_copy_files.output

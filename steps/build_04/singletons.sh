@@ -655,7 +655,7 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog.ndk^android
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog.ndk^android_x86_x86_64_sdk_shared_current/ .
 
 echo "building ndk^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja ndk,
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja ndk,
 mkdir -p $GITHUB_WORKSPACE/artifacts/singletons/ndk^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/singletons/ndk^.output . $GITHUB_WORKSPACE/artifacts/singletons/ndk^
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/singletons/ndk^.output $GITHUB_WORKSPACE/artifacts/singletons/ndk^ $GITHUB_WORKSPACE/artifacts/singletons/ndk^/addition_copy_files.output

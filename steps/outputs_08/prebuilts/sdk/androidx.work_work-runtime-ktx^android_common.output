@@ -1,3 +1,4 @@
 out/soong/.intermediates/prebuilts/sdk/current/androidx/androidx.work_work-runtime-ktx/android_common/combined/androidx.work_work-runtime-ktx.jar
+out/soong/.intermediates/prebuilts/sdk/current/androidx/androidx.work_work-runtime-ktx/android_common/manifest_fixer/AndroidManifest.xml
 out/soong/.intermediates/prebuilts/sdk/current/androidx/androidx.work_work-runtime-ktx/android_common/package-res.apk
 out/soong/.intermediates/prebuilts/sdk/current/androidx/androidx.work_work-runtime-ktx/android_common/turbine-combined/androidx.work_work-runtime-ktx.jar

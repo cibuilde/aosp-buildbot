@@ -86,259 +86,259 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/system/unwinding/libbacktrace/libbacktra
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/unwinding/libunwindstack/libunwindstack^linux_glibc_x86_64_static/ .
 
 echo "building libadbconnection^android_x86_64_static_apex31"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libadbconnection,android_x86_64_static_apex31
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libadbconnection,android_x86_64_static_apex31
 mkdir -p $GITHUB_WORKSPACE/artifacts/art/adbconnection/libadbconnection^android_x86_64_static_apex31
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/art/libadbconnection^android_x86_64_static_apex31.output . $GITHUB_WORKSPACE/artifacts/art/adbconnection/libadbconnection^android_x86_64_static_apex31
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/art/libadbconnection^android_x86_64_static_apex31.output $GITHUB_WORKSPACE/artifacts/art/adbconnection/libadbconnection^android_x86_64_static_apex31 $GITHUB_WORKSPACE/artifacts/art/adbconnection/libadbconnection^android_x86_64_static_apex31/addition_copy_files.output
 
 echo "building libadbconnection^android_x86_x86_64_static_apex31"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libadbconnection,android_x86_x86_64_static_apex31
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libadbconnection,android_x86_x86_64_static_apex31
 mkdir -p $GITHUB_WORKSPACE/artifacts/art/adbconnection/libadbconnection^android_x86_x86_64_static_apex31
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/art/libadbconnection^android_x86_x86_64_static_apex31.output . $GITHUB_WORKSPACE/artifacts/art/adbconnection/libadbconnection^android_x86_x86_64_static_apex31
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/art/libadbconnection^android_x86_x86_64_static_apex31.output $GITHUB_WORKSPACE/artifacts/art/adbconnection/libadbconnection^android_x86_x86_64_static_apex31 $GITHUB_WORKSPACE/artifacts/art/adbconnection/libadbconnection^android_x86_x86_64_static_apex31/addition_copy_files.output
 
 echo "building art_compiler_operator_srcs^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja art_compiler_operator_srcs,
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja art_compiler_operator_srcs,
 mkdir -p $GITHUB_WORKSPACE/artifacts/art/compiler/art_compiler_operator_srcs^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/art/art_compiler_operator_srcs^.output . $GITHUB_WORKSPACE/artifacts/art/compiler/art_compiler_operator_srcs^
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/art/art_compiler_operator_srcs^.output $GITHUB_WORKSPACE/artifacts/art/compiler/art_compiler_operator_srcs^ $GITHUB_WORKSPACE/artifacts/art/compiler/art_compiler_operator_srcs^/addition_copy_files.output
 
 echo "building libartd-compiler^linux_glibc_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libartd-compiler,linux_glibc_x86_64_static
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libartd-compiler,linux_glibc_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/art/compiler/libartd-compiler^linux_glibc_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/art/libartd-compiler^linux_glibc_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/art/compiler/libartd-compiler^linux_glibc_x86_64_static
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/art/libartd-compiler^linux_glibc_x86_64_static.output $GITHUB_WORKSPACE/artifacts/art/compiler/libartd-compiler^linux_glibc_x86_64_static $GITHUB_WORKSPACE/artifacts/art/compiler/libartd-compiler^linux_glibc_x86_64_static/addition_copy_files.output
 
 echo "building libartd-dex2oat^linux_glibc_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libartd-dex2oat,linux_glibc_x86_64_static
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libartd-dex2oat,linux_glibc_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/art/dex2oat/libartd-dex2oat^linux_glibc_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/art/libartd-dex2oat^linux_glibc_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/art/dex2oat/libartd-dex2oat^linux_glibc_x86_64_static
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/art/libartd-dex2oat^linux_glibc_x86_64_static.output $GITHUB_WORKSPACE/artifacts/art/dex2oat/libartd-dex2oat^linux_glibc_x86_64_static $GITHUB_WORKSPACE/artifacts/art/dex2oat/libartd-dex2oat^linux_glibc_x86_64_static/addition_copy_files.output
 
 echo "building libdex2oatd_static^linux_glibc_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libdex2oatd_static,linux_glibc_x86_64_static
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libdex2oatd_static,linux_glibc_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/art/dex2oat/libdex2oatd_static^linux_glibc_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/art/libdex2oatd_static^linux_glibc_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/art/dex2oat/libdex2oatd_static^linux_glibc_x86_64_static
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/art/libdex2oatd_static^linux_glibc_x86_64_static.output $GITHUB_WORKSPACE/artifacts/art/dex2oat/libdex2oatd_static^linux_glibc_x86_64_static $GITHUB_WORKSPACE/artifacts/art/dex2oat/libdex2oatd_static^linux_glibc_x86_64_static/addition_copy_files.output
 
 echo "building dex2oatd^linux_glibc_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja dex2oatd,linux_glibc_x86_64
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja dex2oatd,linux_glibc_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/art/dex2oat/dex2oatd^linux_glibc_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/art/dex2oatd^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/art/dex2oat/dex2oatd^linux_glibc_x86_64
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/art/dex2oatd^linux_glibc_x86_64.output $GITHUB_WORKSPACE/artifacts/art/dex2oat/dex2oatd^linux_glibc_x86_64 $GITHUB_WORKSPACE/artifacts/art/dex2oat/dex2oatd^linux_glibc_x86_64/addition_copy_files.output
 
 echo "building art_dex2oat_operator_srcs^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja art_dex2oat_operator_srcs,
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja art_dex2oat_operator_srcs,
 mkdir -p $GITHUB_WORKSPACE/artifacts/art/dex2oat/art_dex2oat_operator_srcs^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/art/art_dex2oat_operator_srcs^.output . $GITHUB_WORKSPACE/artifacts/art/dex2oat/art_dex2oat_operator_srcs^
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/art/art_dex2oat_operator_srcs^.output $GITHUB_WORKSPACE/artifacts/art/dex2oat/art_dex2oat_operator_srcs^ $GITHUB_WORKSPACE/artifacts/art/dex2oat/art_dex2oat_operator_srcs^/addition_copy_files.output
 
 echo "building libart-dex2oat^android_x86_64_static_lto-thin_apex31"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libart-dex2oat,android_x86_64_static_lto-thin_apex31
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libart-dex2oat,android_x86_64_static_lto-thin_apex31
 mkdir -p $GITHUB_WORKSPACE/artifacts/art/dex2oat/libart-dex2oat^android_x86_64_static_lto-thin_apex31
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/art/libart-dex2oat^android_x86_64_static_lto-thin_apex31.output . $GITHUB_WORKSPACE/artifacts/art/dex2oat/libart-dex2oat^android_x86_64_static_lto-thin_apex31
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/art/libart-dex2oat^android_x86_64_static_lto-thin_apex31.output $GITHUB_WORKSPACE/artifacts/art/dex2oat/libart-dex2oat^android_x86_64_static_lto-thin_apex31 $GITHUB_WORKSPACE/artifacts/art/dex2oat/libart-dex2oat^android_x86_64_static_lto-thin_apex31/addition_copy_files.output
 
 echo "building libart-dex2oat^android_x86_x86_64_static_lto-thin_apex31"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libart-dex2oat,android_x86_x86_64_static_lto-thin_apex31
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libart-dex2oat,android_x86_x86_64_static_lto-thin_apex31
 mkdir -p $GITHUB_WORKSPACE/artifacts/art/dex2oat/libart-dex2oat^android_x86_x86_64_static_lto-thin_apex31
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/art/libart-dex2oat^android_x86_x86_64_static_lto-thin_apex31.output . $GITHUB_WORKSPACE/artifacts/art/dex2oat/libart-dex2oat^android_x86_x86_64_static_lto-thin_apex31
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/art/libart-dex2oat^android_x86_x86_64_static_lto-thin_apex31.output $GITHUB_WORKSPACE/artifacts/art/dex2oat/libart-dex2oat^android_x86_x86_64_static_lto-thin_apex31 $GITHUB_WORKSPACE/artifacts/art/dex2oat/libart-dex2oat^android_x86_x86_64_static_lto-thin_apex31/addition_copy_files.output
 
 echo "building art_libartbase_operator_srcs^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja art_libartbase_operator_srcs,
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja art_libartbase_operator_srcs,
 mkdir -p $GITHUB_WORKSPACE/artifacts/art/libartbase/art_libartbase_operator_srcs^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/art/art_libartbase_operator_srcs^.output . $GITHUB_WORKSPACE/artifacts/art/libartbase/art_libartbase_operator_srcs^
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/art/art_libartbase_operator_srcs^.output $GITHUB_WORKSPACE/artifacts/art/libartbase/art_libartbase_operator_srcs^ $GITHUB_WORKSPACE/artifacts/art/libartbase/art_libartbase_operator_srcs^/addition_copy_files.output
 
 echo "building libartbase^android_x86_64_static_apex31"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libartbase,android_x86_64_static_apex31
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libartbase,android_x86_64_static_apex31
 mkdir -p $GITHUB_WORKSPACE/artifacts/art/libartbase/libartbase^android_x86_64_static_apex31
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/art/libartbase^android_x86_64_static_apex31.output . $GITHUB_WORKSPACE/artifacts/art/libartbase/libartbase^android_x86_64_static_apex31
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/art/libartbase^android_x86_64_static_apex31.output $GITHUB_WORKSPACE/artifacts/art/libartbase/libartbase^android_x86_64_static_apex31 $GITHUB_WORKSPACE/artifacts/art/libartbase/libartbase^android_x86_64_static_apex31/addition_copy_files.output
 
 echo "building libartbase^android_x86_x86_64_static_apex31"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libartbase,android_x86_x86_64_static_apex31
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libartbase,android_x86_x86_64_static_apex31
 mkdir -p $GITHUB_WORKSPACE/artifacts/art/libartbase/libartbase^android_x86_x86_64_static_apex31
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/art/libartbase^android_x86_x86_64_static_apex31.output . $GITHUB_WORKSPACE/artifacts/art/libartbase/libartbase^android_x86_x86_64_static_apex31
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/art/libartbase^android_x86_x86_64_static_apex31.output $GITHUB_WORKSPACE/artifacts/art/libartbase/libartbase^android_x86_x86_64_static_apex31 $GITHUB_WORKSPACE/artifacts/art/libartbase/libartbase^android_x86_x86_64_static_apex31/addition_copy_files.output
 
 echo "building libartbase^linux_glibc_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libartbase,linux_glibc_x86_64_static
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libartbase,linux_glibc_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/art/libartbase/libartbase^linux_glibc_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/art/libartbase^linux_glibc_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/art/libartbase/libartbase^linux_glibc_x86_64_static
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/art/libartbase^linux_glibc_x86_64_static.output $GITHUB_WORKSPACE/artifacts/art/libartbase/libartbase^linux_glibc_x86_64_static $GITHUB_WORKSPACE/artifacts/art/libartbase/libartbase^linux_glibc_x86_64_static/addition_copy_files.output
 
 echo "building libartbased^linux_glibc_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libartbased,linux_glibc_x86_64_static
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libartbased,linux_glibc_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/art/libartbase/libartbased^linux_glibc_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/art/libartbased^linux_glibc_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/art/libartbase/libartbased^linux_glibc_x86_64_static
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/art/libartbased^linux_glibc_x86_64_static.output $GITHUB_WORKSPACE/artifacts/art/libartbase/libartbased^linux_glibc_x86_64_static $GITHUB_WORKSPACE/artifacts/art/libartbase/libartbased^linux_glibc_x86_64_static/addition_copy_files.output
 
 echo "building dexfile_operator_srcs^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja dexfile_operator_srcs,
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja dexfile_operator_srcs,
 mkdir -p $GITHUB_WORKSPACE/artifacts/art/libdexfile/dexfile_operator_srcs^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/art/dexfile_operator_srcs^.output . $GITHUB_WORKSPACE/artifacts/art/libdexfile/dexfile_operator_srcs^
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/art/dexfile_operator_srcs^.output $GITHUB_WORKSPACE/artifacts/art/libdexfile/dexfile_operator_srcs^ $GITHUB_WORKSPACE/artifacts/art/libdexfile/dexfile_operator_srcs^/addition_copy_files.output
 
 echo "building libdexfile^android_x86_64_static_apex31"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libdexfile,android_x86_64_static_apex31
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libdexfile,android_x86_64_static_apex31
 mkdir -p $GITHUB_WORKSPACE/artifacts/art/libdexfile/libdexfile^android_x86_64_static_apex31
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/art/libdexfile^android_x86_64_static_apex31.output . $GITHUB_WORKSPACE/artifacts/art/libdexfile/libdexfile^android_x86_64_static_apex31
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/art/libdexfile^android_x86_64_static_apex31.output $GITHUB_WORKSPACE/artifacts/art/libdexfile/libdexfile^android_x86_64_static_apex31 $GITHUB_WORKSPACE/artifacts/art/libdexfile/libdexfile^android_x86_64_static_apex31/addition_copy_files.output
 
 echo "building libdexfile^android_x86_x86_64_static_apex31"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libdexfile,android_x86_x86_64_static_apex31
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libdexfile,android_x86_x86_64_static_apex31
 mkdir -p $GITHUB_WORKSPACE/artifacts/art/libdexfile/libdexfile^android_x86_x86_64_static_apex31
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/art/libdexfile^android_x86_x86_64_static_apex31.output . $GITHUB_WORKSPACE/artifacts/art/libdexfile/libdexfile^android_x86_x86_64_static_apex31
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/art/libdexfile^android_x86_x86_64_static_apex31.output $GITHUB_WORKSPACE/artifacts/art/libdexfile/libdexfile^android_x86_x86_64_static_apex31 $GITHUB_WORKSPACE/artifacts/art/libdexfile/libdexfile^android_x86_x86_64_static_apex31/addition_copy_files.output
 
 echo "building libdexfile^linux_glibc_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libdexfile,linux_glibc_x86_64_static
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libdexfile,linux_glibc_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/art/libdexfile/libdexfile^linux_glibc_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/art/libdexfile^linux_glibc_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/art/libdexfile/libdexfile^linux_glibc_x86_64_static
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/art/libdexfile^linux_glibc_x86_64_static.output $GITHUB_WORKSPACE/artifacts/art/libdexfile/libdexfile^linux_glibc_x86_64_static $GITHUB_WORKSPACE/artifacts/art/libdexfile/libdexfile^linux_glibc_x86_64_static/addition_copy_files.output
 
 echo "building libdexfiled^linux_glibc_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libdexfiled,linux_glibc_x86_64_static
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libdexfiled,linux_glibc_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/art/libdexfile/libdexfiled^linux_glibc_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/art/libdexfiled^linux_glibc_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/art/libdexfile/libdexfiled^linux_glibc_x86_64_static
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/art/libdexfiled^linux_glibc_x86_64_static.output $GITHUB_WORKSPACE/artifacts/art/libdexfile/libdexfiled^linux_glibc_x86_64_static $GITHUB_WORKSPACE/artifacts/art/libdexfile/libdexfiled^linux_glibc_x86_64_static/addition_copy_files.output
 
 echo "building libnativeloader^android_x86_64_shared_current"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libnativeloader,android_x86_64_shared_current
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libnativeloader,android_x86_64_shared_current
 mkdir -p $GITHUB_WORKSPACE/artifacts/art/libnativeloader/libnativeloader^android_x86_64_shared_current
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/art/libnativeloader^android_x86_64_shared_current.output . $GITHUB_WORKSPACE/artifacts/art/libnativeloader/libnativeloader^android_x86_64_shared_current
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/art/libnativeloader^android_x86_64_shared_current.output $GITHUB_WORKSPACE/artifacts/art/libnativeloader/libnativeloader^android_x86_64_shared_current $GITHUB_WORKSPACE/artifacts/art/libnativeloader/libnativeloader^android_x86_64_shared_current/addition_copy_files.output
 
 echo "building libnativeloader^android_x86_x86_64_shared_current"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libnativeloader,android_x86_x86_64_shared_current
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libnativeloader,android_x86_x86_64_shared_current
 mkdir -p $GITHUB_WORKSPACE/artifacts/art/libnativeloader/libnativeloader^android_x86_x86_64_shared_current
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/art/libnativeloader^android_x86_x86_64_shared_current.output . $GITHUB_WORKSPACE/artifacts/art/libnativeloader/libnativeloader^android_x86_x86_64_shared_current
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/art/libnativeloader^android_x86_x86_64_shared_current.output $GITHUB_WORKSPACE/artifacts/art/libnativeloader/libnativeloader^android_x86_x86_64_shared_current $GITHUB_WORKSPACE/artifacts/art/libnativeloader/libnativeloader^android_x86_x86_64_shared_current/addition_copy_files.output
 
 echo "building art-odrefresh-operator-srcs^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja art-odrefresh-operator-srcs,
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja art-odrefresh-operator-srcs,
 mkdir -p $GITHUB_WORKSPACE/artifacts/art/odrefresh/art-odrefresh-operator-srcs^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/art/art-odrefresh-operator-srcs^.output . $GITHUB_WORKSPACE/artifacts/art/odrefresh/art-odrefresh-operator-srcs^
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/art/art-odrefresh-operator-srcs^.output $GITHUB_WORKSPACE/artifacts/art/odrefresh/art-odrefresh-operator-srcs^ $GITHUB_WORKSPACE/artifacts/art/odrefresh/art-odrefresh-operator-srcs^/addition_copy_files.output
 
 echo "building libopenjdkjvm^android_x86_64_static_apex31"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libopenjdkjvm,android_x86_64_static_apex31
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libopenjdkjvm,android_x86_64_static_apex31
 mkdir -p $GITHUB_WORKSPACE/artifacts/art/openjdkjvm/libopenjdkjvm^android_x86_64_static_apex31
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/art/libopenjdkjvm^android_x86_64_static_apex31.output . $GITHUB_WORKSPACE/artifacts/art/openjdkjvm/libopenjdkjvm^android_x86_64_static_apex31
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/art/libopenjdkjvm^android_x86_64_static_apex31.output $GITHUB_WORKSPACE/artifacts/art/openjdkjvm/libopenjdkjvm^android_x86_64_static_apex31 $GITHUB_WORKSPACE/artifacts/art/openjdkjvm/libopenjdkjvm^android_x86_64_static_apex31/addition_copy_files.output
 
 echo "building libopenjdkjvm^android_x86_x86_64_static_apex31"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libopenjdkjvm,android_x86_x86_64_static_apex31
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libopenjdkjvm,android_x86_x86_64_static_apex31
 mkdir -p $GITHUB_WORKSPACE/artifacts/art/openjdkjvm/libopenjdkjvm^android_x86_x86_64_static_apex31
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/art/libopenjdkjvm^android_x86_x86_64_static_apex31.output . $GITHUB_WORKSPACE/artifacts/art/openjdkjvm/libopenjdkjvm^android_x86_x86_64_static_apex31
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/art/libopenjdkjvm^android_x86_x86_64_static_apex31.output $GITHUB_WORKSPACE/artifacts/art/openjdkjvm/libopenjdkjvm^android_x86_x86_64_static_apex31 $GITHUB_WORKSPACE/artifacts/art/openjdkjvm/libopenjdkjvm^android_x86_x86_64_static_apex31/addition_copy_files.output
 
 echo "building libopenjdkjvmti^android_x86_64_static_apex31"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libopenjdkjvmti,android_x86_64_static_apex31
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libopenjdkjvmti,android_x86_64_static_apex31
 mkdir -p $GITHUB_WORKSPACE/artifacts/art/openjdkjvmti/libopenjdkjvmti^android_x86_64_static_apex31
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/art/libopenjdkjvmti^android_x86_64_static_apex31.output . $GITHUB_WORKSPACE/artifacts/art/openjdkjvmti/libopenjdkjvmti^android_x86_64_static_apex31
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/art/libopenjdkjvmti^android_x86_64_static_apex31.output $GITHUB_WORKSPACE/artifacts/art/openjdkjvmti/libopenjdkjvmti^android_x86_64_static_apex31 $GITHUB_WORKSPACE/artifacts/art/openjdkjvmti/libopenjdkjvmti^android_x86_64_static_apex31/addition_copy_files.output
 
 echo "building libopenjdkjvmti^android_x86_x86_64_static_apex31"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libopenjdkjvmti,android_x86_x86_64_static_apex31
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libopenjdkjvmti,android_x86_x86_64_static_apex31
 mkdir -p $GITHUB_WORKSPACE/artifacts/art/openjdkjvmti/libopenjdkjvmti^android_x86_x86_64_static_apex31
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/art/libopenjdkjvmti^android_x86_x86_64_static_apex31.output . $GITHUB_WORKSPACE/artifacts/art/openjdkjvmti/libopenjdkjvmti^android_x86_x86_64_static_apex31
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/art/libopenjdkjvmti^android_x86_x86_64_static_apex31.output $GITHUB_WORKSPACE/artifacts/art/openjdkjvmti/libopenjdkjvmti^android_x86_x86_64_static_apex31 $GITHUB_WORKSPACE/artifacts/art/openjdkjvmti/libopenjdkjvmti^android_x86_x86_64_static_apex31/addition_copy_files.output
 
 echo "building art_perfetto_hprof_operator_srcs^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja art_perfetto_hprof_operator_srcs,
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja art_perfetto_hprof_operator_srcs,
 mkdir -p $GITHUB_WORKSPACE/artifacts/art/perfetto_hprof/art_perfetto_hprof_operator_srcs^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/art/art_perfetto_hprof_operator_srcs^.output . $GITHUB_WORKSPACE/artifacts/art/perfetto_hprof/art_perfetto_hprof_operator_srcs^
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/art/art_perfetto_hprof_operator_srcs^.output $GITHUB_WORKSPACE/artifacts/art/perfetto_hprof/art_perfetto_hprof_operator_srcs^ $GITHUB_WORKSPACE/artifacts/art/perfetto_hprof/art_perfetto_hprof_operator_srcs^/addition_copy_files.output
 
 echo "building libprofman_static^linux_glibc_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libprofman_static,linux_glibc_x86_64_static
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libprofman_static,linux_glibc_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/art/profman/libprofman_static^linux_glibc_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/art/libprofman_static^linux_glibc_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/art/profman/libprofman_static^linux_glibc_x86_64_static
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/art/libprofman_static^linux_glibc_x86_64_static.output $GITHUB_WORKSPACE/artifacts/art/profman/libprofman_static^linux_glibc_x86_64_static $GITHUB_WORKSPACE/artifacts/art/profman/libprofman_static^linux_glibc_x86_64_static/addition_copy_files.output
 
 echo "building profman^linux_glibc_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja profman,linux_glibc_x86_64
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja profman,linux_glibc_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/art/profman/profman^linux_glibc_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/art/profman^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/art/profman/profman^linux_glibc_x86_64
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/art/profman^linux_glibc_x86_64.output $GITHUB_WORKSPACE/artifacts/art/profman/profman^linux_glibc_x86_64 $GITHUB_WORKSPACE/artifacts/art/profman/profman^linux_glibc_x86_64/addition_copy_files.output
 
 echo "building art_operator_srcs^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja art_operator_srcs,
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja art_operator_srcs,
 mkdir -p $GITHUB_WORKSPACE/artifacts/art/runtime/art_operator_srcs^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/art/art_operator_srcs^.output . $GITHUB_WORKSPACE/artifacts/art/runtime/art_operator_srcs^
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/art/art_operator_srcs^.output $GITHUB_WORKSPACE/artifacts/art/runtime/art_operator_srcs^ $GITHUB_WORKSPACE/artifacts/art/runtime/art_operator_srcs^/addition_copy_files.output
 
 echo "building libartd^linux_glibc_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libartd,linux_glibc_x86_64_static
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libartd,linux_glibc_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/art/runtime/libartd^linux_glibc_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/art/libartd^linux_glibc_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/art/runtime/libartd^linux_glibc_x86_64_static
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/art/libartd^linux_glibc_x86_64_static.output $GITHUB_WORKSPACE/artifacts/art/runtime/libartd^linux_glibc_x86_64_static $GITHUB_WORKSPACE/artifacts/art/runtime/libartd^linux_glibc_x86_64_static/addition_copy_files.output
 
 echo "building libart_mterp.x86^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libart_mterp.x86,
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libart_mterp.x86,
 mkdir -p $GITHUB_WORKSPACE/artifacts/art/runtime/libart_mterp.x86^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/art/libart_mterp.x86^.output . $GITHUB_WORKSPACE/artifacts/art/runtime/libart_mterp.x86^
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/art/libart_mterp.x86^.output $GITHUB_WORKSPACE/artifacts/art/runtime/libart_mterp.x86^ $GITHUB_WORKSPACE/artifacts/art/runtime/libart_mterp.x86^/addition_copy_files.output
 
 echo "building libart_mterp.x86_64^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libart_mterp.x86_64,
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libart_mterp.x86_64,
 mkdir -p $GITHUB_WORKSPACE/artifacts/art/runtime/libart_mterp.x86_64^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/art/libart_mterp.x86_64^.output . $GITHUB_WORKSPACE/artifacts/art/runtime/libart_mterp.x86_64^
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/art/libart_mterp.x86_64^.output $GITHUB_WORKSPACE/artifacts/art/runtime/libart_mterp.x86_64^ $GITHUB_WORKSPACE/artifacts/art/runtime/libart_mterp.x86_64^/addition_copy_files.output
 
 echo "building libart_mterp.x86_64ng^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libart_mterp.x86_64ng,
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libart_mterp.x86_64ng,
 mkdir -p $GITHUB_WORKSPACE/artifacts/art/runtime/libart_mterp.x86_64ng^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/art/libart_mterp.x86_64ng^.output . $GITHUB_WORKSPACE/artifacts/art/runtime/libart_mterp.x86_64ng^
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/art/libart_mterp.x86_64ng^.output $GITHUB_WORKSPACE/artifacts/art/runtime/libart_mterp.x86_64ng^ $GITHUB_WORKSPACE/artifacts/art/runtime/libart_mterp.x86_64ng^/addition_copy_files.output
 
 echo "building libsigchain^android_x86_64_shared_current"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libsigchain,android_x86_64_shared_current
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libsigchain,android_x86_64_shared_current
 mkdir -p $GITHUB_WORKSPACE/artifacts/art/sigchainlib/libsigchain^android_x86_64_shared_current
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/art/libsigchain^android_x86_64_shared_current.output . $GITHUB_WORKSPACE/artifacts/art/sigchainlib/libsigchain^android_x86_64_shared_current
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/art/libsigchain^android_x86_64_shared_current.output $GITHUB_WORKSPACE/artifacts/art/sigchainlib/libsigchain^android_x86_64_shared_current $GITHUB_WORKSPACE/artifacts/art/sigchainlib/libsigchain^android_x86_64_shared_current/addition_copy_files.output
 
 echo "building libsigchain^android_x86_x86_64_shared_current"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libsigchain,android_x86_x86_64_shared_current
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libsigchain,android_x86_x86_64_shared_current
 mkdir -p $GITHUB_WORKSPACE/artifacts/art/sigchainlib/libsigchain^android_x86_x86_64_shared_current
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/art/libsigchain^android_x86_x86_64_shared_current.output . $GITHUB_WORKSPACE/artifacts/art/sigchainlib/libsigchain^android_x86_x86_64_shared_current
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/art/libsigchain^android_x86_x86_64_shared_current.output $GITHUB_WORKSPACE/artifacts/art/sigchainlib/libsigchain^android_x86_x86_64_shared_current $GITHUB_WORKSPACE/artifacts/art/sigchainlib/libsigchain^android_x86_x86_64_shared_current/addition_copy_files.output
 
 echo "building generate_operator_out^linux_glibc_x86_64_PY2"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja generate_operator_out,linux_glibc_x86_64_PY2
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja generate_operator_out,linux_glibc_x86_64_PY2
 mkdir -p $GITHUB_WORKSPACE/artifacts/art/tools/generate_operator_out^linux_glibc_x86_64_PY2
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/art/generate_operator_out^linux_glibc_x86_64_PY2.output . $GITHUB_WORKSPACE/artifacts/art/tools/generate_operator_out^linux_glibc_x86_64_PY2
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/art/generate_operator_out^linux_glibc_x86_64_PY2.output $GITHUB_WORKSPACE/artifacts/art/tools/generate_operator_out^linux_glibc_x86_64_PY2 $GITHUB_WORKSPACE/artifacts/art/tools/generate_operator_out^linux_glibc_x86_64_PY2/addition_copy_files.output
 
 echo "building cpp-define-generator-asm-support^android_x86_64_apex31"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja cpp-define-generator-asm-support,android_x86_64_apex31
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja cpp-define-generator-asm-support,android_x86_64_apex31
 mkdir -p $GITHUB_WORKSPACE/artifacts/art/tools/cpp-define-generator/cpp-define-generator-asm-support^android_x86_64_apex31
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/art/cpp-define-generator-asm-support^android_x86_64_apex31.output . $GITHUB_WORKSPACE/artifacts/art/tools/cpp-define-generator/cpp-define-generator-asm-support^android_x86_64_apex31
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/art/cpp-define-generator-asm-support^android_x86_64_apex31.output $GITHUB_WORKSPACE/artifacts/art/tools/cpp-define-generator/cpp-define-generator-asm-support^android_x86_64_apex31 $GITHUB_WORKSPACE/artifacts/art/tools/cpp-define-generator/cpp-define-generator-asm-support^android_x86_64_apex31/addition_copy_files.output
 
 echo "building cpp-define-generator-asm-support^android_x86_x86_64_apex31"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja cpp-define-generator-asm-support,android_x86_x86_64_apex31
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja cpp-define-generator-asm-support,android_x86_x86_64_apex31
 mkdir -p $GITHUB_WORKSPACE/artifacts/art/tools/cpp-define-generator/cpp-define-generator-asm-support^android_x86_x86_64_apex31
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/art/cpp-define-generator-asm-support^android_x86_x86_64_apex31.output . $GITHUB_WORKSPACE/artifacts/art/tools/cpp-define-generator/cpp-define-generator-asm-support^android_x86_x86_64_apex31
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/art/cpp-define-generator-asm-support^android_x86_x86_64_apex31.output $GITHUB_WORKSPACE/artifacts/art/tools/cpp-define-generator/cpp-define-generator-asm-support^android_x86_x86_64_apex31 $GITHUB_WORKSPACE/artifacts/art/tools/cpp-define-generator/cpp-define-generator-asm-support^android_x86_x86_64_apex31/addition_copy_files.output
 
 echo "building cpp-define-generator-asm-support^linux_glibc_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja cpp-define-generator-asm-support,linux_glibc_x86_64
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja cpp-define-generator-asm-support,linux_glibc_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/art/tools/cpp-define-generator/cpp-define-generator-asm-support^linux_glibc_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/art/cpp-define-generator-asm-support^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/art/tools/cpp-define-generator/cpp-define-generator-asm-support^linux_glibc_x86_64
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/art/cpp-define-generator-asm-support^linux_glibc_x86_64.output $GITHUB_WORKSPACE/artifacts/art/tools/cpp-define-generator/cpp-define-generator-asm-support^linux_glibc_x86_64 $GITHUB_WORKSPACE/artifacts/art/tools/cpp-define-generator/cpp-define-generator-asm-support^linux_glibc_x86_64/addition_copy_files.output
 
 echo "building hiddenapi^linux_glibc_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja hiddenapi,linux_glibc_x86_64
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja hiddenapi,linux_glibc_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/art/tools/hiddenapi/hiddenapi^linux_glibc_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/art/hiddenapi^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/art/tools/hiddenapi/hiddenapi^linux_glibc_x86_64
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/art/hiddenapi^linux_glibc_x86_64.output $GITHUB_WORKSPACE/artifacts/art/tools/hiddenapi/hiddenapi^linux_glibc_x86_64 $GITHUB_WORKSPACE/artifacts/art/tools/hiddenapi/hiddenapi^linux_glibc_x86_64/addition_copy_files.output
 
 echo "building veridex^linux_glibc_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja veridex,linux_glibc_x86_64
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja veridex,linux_glibc_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/art/tools/veridex/veridex^linux_glibc_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/art/veridex^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/art/tools/veridex/veridex^linux_glibc_x86_64
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/art/veridex^linux_glibc_x86_64.output $GITHUB_WORKSPACE/artifacts/art/tools/veridex/veridex^linux_glibc_x86_64 $GITHUB_WORKSPACE/artifacts/art/tools/veridex/veridex^linux_glibc_x86_64/addition_copy_files.output

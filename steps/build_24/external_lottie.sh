@@ -75,7 +75,7 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/sdk/current/androidx/androidx.
 rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/sdk/current/androidx/androidx.drawerlayout_drawerlayout-nodeps^android_common/ .
 
 echo "building lottie^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_24.ninja lottie,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_24.ninja lottie,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/lottie/lottie^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_24/external/lottie/lottie^android_common.output . $GITHUB_WORKSPACE/artifacts/external/lottie/lottie^android_common
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_24/external/lottie/lottie^android_common.output $GITHUB_WORKSPACE/artifacts/external/lottie/lottie^android_common $GITHUB_WORKSPACE/artifacts/external/lottie/lottie^android_common/addition_copy_files.output

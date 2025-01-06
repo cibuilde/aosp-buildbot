@@ -38,7 +38,7 @@ build framework-graphics,android_common: phony out/soong/.intermediates/framewor
 
 build frameworks_base-targets: phony ext,android_common framework-appsearch,android_common_apex10000 framework-graphics,android_common framework-minus-apex,android_common framework-platform-compat-config,android_common platform-bootclasspath,android_common updatable-media,android_common_apex29
 
-build Settings-core,android_common: phony out/soong/.intermediates/packages/apps/Settings/Settings-core/android_common/combined/Settings-core.jar out/soong/.intermediates/packages/apps/Settings/Settings-core/android_common/package-res.apk out/soong/.intermediates/packages/apps/Settings/Settings-core/android_common/turbine-combined/Settings-core.jar
+build Settings-core,android_common: phony out/soong/.intermediates/packages/apps/Settings/Settings-core/android_common/combined/Settings-core.jar out/soong/.intermediates/packages/apps/Settings/Settings-core/android_common/manifest_fixer/AndroidManifest.xml out/soong/.intermediates/packages/apps/Settings/Settings-core/android_common/package-res.apk out/soong/.intermediates/packages/apps/Settings/Settings-core/android_common/turbine-combined/Settings-core.jar
 
 build settings-platform-compat-config,android_common: phony out/soong/.intermediates/packages/apps/Settings/settings-platform-compat-config/android_common/settings-platform-compat-config.xml
 

@@ -114,73 +114,73 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^android_x86
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/unwinding/libunwindstack/libunwindstack^android_x86_64_shared/ .
 
 echo "building libext4_utils^android_recovery_x86_64_shared"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libext4_utils,android_recovery_x86_64_shared
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libext4_utils,android_recovery_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/extras/ext4_utils/libext4_utils^android_recovery_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/system/extras/libext4_utils^android_recovery_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/extras/ext4_utils/libext4_utils^android_recovery_x86_64_shared
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_08/system/extras/libext4_utils^android_recovery_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/system/extras/ext4_utils/libext4_utils^android_recovery_x86_64_shared $GITHUB_WORKSPACE/artifacts/system/extras/ext4_utils/libext4_utils^android_recovery_x86_64_shared/addition_copy_files.output
 
 echo "building libext4_utils^android_x86_64_shared"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libext4_utils,android_x86_64_shared
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libext4_utils,android_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/extras/ext4_utils/libext4_utils^android_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/system/extras/libext4_utils^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/extras/ext4_utils/libext4_utils^android_x86_64_shared
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_08/system/extras/libext4_utils^android_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/system/extras/ext4_utils/libext4_utils^android_x86_64_shared $GITHUB_WORKSPACE/artifacts/system/extras/ext4_utils/libext4_utils^android_x86_64_shared/addition_copy_files.output
 
 echo "building libf2fs_sparseblock^android_x86_64_shared"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libf2fs_sparseblock,android_x86_64_shared
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libf2fs_sparseblock,android_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/extras/f2fs_utils/libf2fs_sparseblock^android_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/system/extras/libf2fs_sparseblock^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/extras/f2fs_utils/libf2fs_sparseblock^android_x86_64_shared
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_08/system/extras/libf2fs_sparseblock^android_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/system/extras/f2fs_utils/libf2fs_sparseblock^android_x86_64_shared $GITHUB_WORKSPACE/artifacts/system/extras/f2fs_utils/libf2fs_sparseblock^android_x86_64_shared/addition_copy_files.output
 
 echo "building libfec^android_recovery_x86_64_shared"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libfec,android_recovery_x86_64_shared
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libfec,android_recovery_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/extras/libfec/libfec^android_recovery_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/system/extras/libfec^android_recovery_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/extras/libfec/libfec^android_recovery_x86_64_shared
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_08/system/extras/libfec^android_recovery_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/system/extras/libfec/libfec^android_recovery_x86_64_shared $GITHUB_WORKSPACE/artifacts/system/extras/libfec/libfec^android_recovery_x86_64_shared/addition_copy_files.output
 
 echo "building libfec^android_x86_64_shared"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libfec,android_x86_64_shared
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libfec,android_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/extras/libfec/libfec^android_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/system/extras/libfec^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/extras/libfec/libfec^android_x86_64_shared
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_08/system/extras/libfec^android_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/system/extras/libfec/libfec^android_x86_64_shared $GITHUB_WORKSPACE/artifacts/system/extras/libfec/libfec^android_x86_64_shared/addition_copy_files.output
 
 echo "building preopt2cachename^android_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja preopt2cachename,android_x86_64
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja preopt2cachename,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/extras/preopt2cachename/preopt2cachename^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/system/extras/preopt2cachename^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/extras/preopt2cachename/preopt2cachename^android_x86_64
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_08/system/extras/preopt2cachename^android_x86_64.output $GITHUB_WORKSPACE/artifacts/system/extras/preopt2cachename/preopt2cachename^android_x86_64 $GITHUB_WORKSPACE/artifacts/system/extras/preopt2cachename/preopt2cachename^android_x86_64/addition_copy_files.output
 
 echo "building simpleperf^android_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja simpleperf,android_x86_64
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja simpleperf,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/extras/simpleperf/simpleperf^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/system/extras/simpleperf^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/extras/simpleperf/simpleperf^android_x86_64
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_08/system/extras/simpleperf^android_x86_64.output $GITHUB_WORKSPACE/artifacts/system/extras/simpleperf/simpleperf^android_x86_64 $GITHUB_WORKSPACE/artifacts/system/extras/simpleperf/simpleperf^android_x86_64/addition_copy_files.output
 
 echo "building libsimpleperf_profcollect^android_x86_64_shared"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libsimpleperf_profcollect,android_x86_64_shared
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libsimpleperf_profcollect,android_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/extras/simpleperf/libsimpleperf_profcollect^android_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/system/extras/libsimpleperf_profcollect^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/extras/simpleperf/libsimpleperf_profcollect^android_x86_64_shared
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_08/system/extras/libsimpleperf_profcollect^android_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/system/extras/simpleperf/libsimpleperf_profcollect^android_x86_64_shared $GITHUB_WORKSPACE/artifacts/system/extras/simpleperf/libsimpleperf_profcollect^android_x86_64_shared/addition_copy_files.output
 
 echo "building libsimpleperf_profcollect_rust^android_x86_64_rlib_dylib-std"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libsimpleperf_profcollect_rust,android_x86_64_rlib_dylib-std
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libsimpleperf_profcollect_rust,android_x86_64_rlib_dylib-std
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/extras/simpleperf/libsimpleperf_profcollect_rust^android_x86_64_rlib_dylib-std
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/system/extras/libsimpleperf_profcollect_rust^android_x86_64_rlib_dylib-std.output . $GITHUB_WORKSPACE/artifacts/system/extras/simpleperf/libsimpleperf_profcollect_rust^android_x86_64_rlib_dylib-std
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_08/system/extras/libsimpleperf_profcollect_rust^android_x86_64_rlib_dylib-std.output $GITHUB_WORKSPACE/artifacts/system/extras/simpleperf/libsimpleperf_profcollect_rust^android_x86_64_rlib_dylib-std $GITHUB_WORKSPACE/artifacts/system/extras/simpleperf/libsimpleperf_profcollect_rust^android_x86_64_rlib_dylib-std/addition_copy_files.output
 
 echo "building simpleperf_app_runner^android_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja simpleperf_app_runner,android_x86_64
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja simpleperf_app_runner,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/extras/simpleperf/simpleperf_app_runner/simpleperf_app_runner^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/system/extras/simpleperf_app_runner^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/extras/simpleperf/simpleperf_app_runner/simpleperf_app_runner^android_x86_64
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_08/system/extras/simpleperf_app_runner^android_x86_64.output $GITHUB_WORKSPACE/artifacts/system/extras/simpleperf/simpleperf_app_runner/simpleperf_app_runner^android_x86_64 $GITHUB_WORKSPACE/artifacts/system/extras/simpleperf/simpleperf_app_runner/simpleperf_app_runner^android_x86_64/addition_copy_files.output
 
 echo "building libsquashfs_utils^android_recovery_x86_64_shared"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libsquashfs_utils,android_recovery_x86_64_shared
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libsquashfs_utils,android_recovery_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/extras/squashfs_utils/libsquashfs_utils^android_recovery_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/system/extras/libsquashfs_utils^android_recovery_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/extras/squashfs_utils/libsquashfs_utils^android_recovery_x86_64_shared
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_08/system/extras/libsquashfs_utils^android_recovery_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/system/extras/squashfs_utils/libsquashfs_utils^android_recovery_x86_64_shared $GITHUB_WORKSPACE/artifacts/system/extras/squashfs_utils/libsquashfs_utils^android_recovery_x86_64_shared/addition_copy_files.output
 
 echo "building libsquashfs_utils^android_x86_64_shared"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libsquashfs_utils,android_x86_64_shared
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libsquashfs_utils,android_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/extras/squashfs_utils/libsquashfs_utils^android_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/system/extras/libsquashfs_utils^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/extras/squashfs_utils/libsquashfs_utils^android_x86_64_shared
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_08/system/extras/libsquashfs_utils^android_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/system/extras/squashfs_utils/libsquashfs_utils^android_x86_64_shared $GITHUB_WORKSPACE/artifacts/system/extras/squashfs_utils/libsquashfs_utils^android_x86_64_shared/addition_copy_files.output

@@ -40,19 +40,19 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/crtend_android^android_vendo
 rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/crtend_android^android_x86_64/ .
 
 echo "building sh^android_recovery_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja sh,android_recovery_x86_64
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja sh,android_recovery_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/mksh/sh^android_recovery_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/mksh/sh^android_recovery_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/mksh/sh^android_recovery_x86_64
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/external/mksh/sh^android_recovery_x86_64.output $GITHUB_WORKSPACE/artifacts/external/mksh/sh^android_recovery_x86_64 $GITHUB_WORKSPACE/artifacts/external/mksh/sh^android_recovery_x86_64/addition_copy_files.output
 
 echo "building sh^android_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja sh,android_x86_64
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja sh,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/mksh/sh^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/mksh/sh^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/mksh/sh^android_x86_64
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/external/mksh/sh^android_x86_64.output $GITHUB_WORKSPACE/artifacts/external/mksh/sh^android_x86_64 $GITHUB_WORKSPACE/artifacts/external/mksh/sh^android_x86_64/addition_copy_files.output
 
 echo "building sh_vendor^android_vendor.31_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja sh_vendor,android_vendor.31_x86_64
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja sh_vendor,android_vendor.31_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/mksh/sh_vendor^android_vendor.31_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/mksh/sh_vendor^android_vendor.31_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/mksh/sh_vendor^android_vendor.31_x86_64
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/external/mksh/sh_vendor^android_vendor.31_x86_64.output $GITHUB_WORKSPACE/artifacts/external/mksh/sh_vendor^android_vendor.31_x86_64 $GITHUB_WORKSPACE/artifacts/external/mksh/sh_vendor^android_vendor.31_x86_64/addition_copy_files.output

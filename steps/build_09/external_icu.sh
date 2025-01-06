@@ -32,13 +32,13 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/tools/metalava/metalava^linux_glibc_comm
 rsync -a -r $GITHUB_WORKSPACE/downloads/tools/metalava/metalava^linux_glibc_x86_64/ .
 
 echo "building i18n.module.intra.core.api.stubs.source^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja i18n.module.intra.core.api.stubs.source,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja i18n.module.intra.core.api.stubs.source,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/icu/android_icu4j/i18n.module.intra.core.api.stubs.source^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_09/external/icu/i18n.module.intra.core.api.stubs.source^android_common.output . $GITHUB_WORKSPACE/artifacts/external/icu/android_icu4j/i18n.module.intra.core.api.stubs.source^android_common
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_09/external/icu/i18n.module.intra.core.api.stubs.source^android_common.output $GITHUB_WORKSPACE/artifacts/external/icu/android_icu4j/i18n.module.intra.core.api.stubs.source^android_common $GITHUB_WORKSPACE/artifacts/external/icu/android_icu4j/i18n.module.intra.core.api.stubs.source^android_common/addition_copy_files.output
 
 echo "building i18n.module.intra.core.api.stubs^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja i18n.module.intra.core.api.stubs,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja i18n.module.intra.core.api.stubs,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/icu/android_icu4j/i18n.module.intra.core.api.stubs^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_09/external/icu/i18n.module.intra.core.api.stubs^android_common.output . $GITHUB_WORKSPACE/artifacts/external/icu/android_icu4j/i18n.module.intra.core.api.stubs^android_common
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_09/external/icu/i18n.module.intra.core.api.stubs^android_common.output $GITHUB_WORKSPACE/artifacts/external/icu/android_icu4j/i18n.module.intra.core.api.stubs^android_common $GITHUB_WORKSPACE/artifacts/external/icu/android_icu4j/i18n.module.intra.core.api.stubs^android_common/addition_copy_files.output

@@ -189,37 +189,37 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^android_x86
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^android_x86_x86_64_shared_current/ .
 
 echo "building com.android.neuralnetworks^android_common_com.android.neuralnetworks_image"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja com.android.neuralnetworks,android_common_com.android.neuralnetworks_image
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja com.android.neuralnetworks,android_common_com.android.neuralnetworks_image
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/NeuralNetworks/apex/com.android.neuralnetworks^android_common_com.android.neuralnetworks_image
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/packages/modules/NeuralNetworks/com.android.neuralnetworks^android_common_com.android.neuralnetworks_image.output . $GITHUB_WORKSPACE/artifacts/packages/modules/NeuralNetworks/apex/com.android.neuralnetworks^android_common_com.android.neuralnetworks_image
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_06/packages/modules/NeuralNetworks/com.android.neuralnetworks^android_common_com.android.neuralnetworks_image.output $GITHUB_WORKSPACE/artifacts/packages/modules/NeuralNetworks/apex/com.android.neuralnetworks^android_common_com.android.neuralnetworks_image $GITHUB_WORKSPACE/artifacts/packages/modules/NeuralNetworks/apex/com.android.neuralnetworks^android_common_com.android.neuralnetworks_image/addition_copy_files.output
 
 echo "building libneuralnetworks_common^android_vendor.31_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libneuralnetworks_common,android_vendor.31_x86_64_static
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libneuralnetworks_common,android_vendor.31_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/NeuralNetworks/common/libneuralnetworks_common^android_vendor.31_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/packages/modules/NeuralNetworks/libneuralnetworks_common^android_vendor.31_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/packages/modules/NeuralNetworks/common/libneuralnetworks_common^android_vendor.31_x86_64_static
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_06/packages/modules/NeuralNetworks/libneuralnetworks_common^android_vendor.31_x86_64_static.output $GITHUB_WORKSPACE/artifacts/packages/modules/NeuralNetworks/common/libneuralnetworks_common^android_vendor.31_x86_64_static $GITHUB_WORKSPACE/artifacts/packages/modules/NeuralNetworks/common/libneuralnetworks_common^android_vendor.31_x86_64_static/addition_copy_files.output
 
 echo "building libneuralnetworks_common^android_x86_64_static_com.android.neuralnetworks"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libneuralnetworks_common,android_x86_64_static_com.android.neuralnetworks
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libneuralnetworks_common,android_x86_64_static_com.android.neuralnetworks
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/NeuralNetworks/common/libneuralnetworks_common^android_x86_64_static_com.android.neuralnetworks
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/packages/modules/NeuralNetworks/libneuralnetworks_common^android_x86_64_static_com.android.neuralnetworks.output . $GITHUB_WORKSPACE/artifacts/packages/modules/NeuralNetworks/common/libneuralnetworks_common^android_x86_64_static_com.android.neuralnetworks
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_06/packages/modules/NeuralNetworks/libneuralnetworks_common^android_x86_64_static_com.android.neuralnetworks.output $GITHUB_WORKSPACE/artifacts/packages/modules/NeuralNetworks/common/libneuralnetworks_common^android_x86_64_static_com.android.neuralnetworks $GITHUB_WORKSPACE/artifacts/packages/modules/NeuralNetworks/common/libneuralnetworks_common^android_x86_64_static_com.android.neuralnetworks/addition_copy_files.output
 
 echo "building libneuralnetworks_common^android_x86_x86_64_static_com.android.neuralnetworks"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libneuralnetworks_common,android_x86_x86_64_static_com.android.neuralnetworks
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libneuralnetworks_common,android_x86_x86_64_static_com.android.neuralnetworks
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/NeuralNetworks/common/libneuralnetworks_common^android_x86_x86_64_static_com.android.neuralnetworks
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/packages/modules/NeuralNetworks/libneuralnetworks_common^android_x86_x86_64_static_com.android.neuralnetworks.output . $GITHUB_WORKSPACE/artifacts/packages/modules/NeuralNetworks/common/libneuralnetworks_common^android_x86_x86_64_static_com.android.neuralnetworks
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_06/packages/modules/NeuralNetworks/libneuralnetworks_common^android_x86_x86_64_static_com.android.neuralnetworks.output $GITHUB_WORKSPACE/artifacts/packages/modules/NeuralNetworks/common/libneuralnetworks_common^android_x86_x86_64_static_com.android.neuralnetworks $GITHUB_WORKSPACE/artifacts/packages/modules/NeuralNetworks/common/libneuralnetworks_common^android_x86_x86_64_static_com.android.neuralnetworks/addition_copy_files.output
 
 echo "building libneuralnetworks^android_x86_64_shared_com.android.neuralnetworks"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libneuralnetworks,android_x86_64_shared_com.android.neuralnetworks
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libneuralnetworks,android_x86_64_shared_com.android.neuralnetworks
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/NeuralNetworks/runtime/libneuralnetworks^android_x86_64_shared_com.android.neuralnetworks
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/packages/modules/NeuralNetworks/libneuralnetworks^android_x86_64_shared_com.android.neuralnetworks.output . $GITHUB_WORKSPACE/artifacts/packages/modules/NeuralNetworks/runtime/libneuralnetworks^android_x86_64_shared_com.android.neuralnetworks
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_06/packages/modules/NeuralNetworks/libneuralnetworks^android_x86_64_shared_com.android.neuralnetworks.output $GITHUB_WORKSPACE/artifacts/packages/modules/NeuralNetworks/runtime/libneuralnetworks^android_x86_64_shared_com.android.neuralnetworks $GITHUB_WORKSPACE/artifacts/packages/modules/NeuralNetworks/runtime/libneuralnetworks^android_x86_64_shared_com.android.neuralnetworks/addition_copy_files.output
 
 echo "building libneuralnetworks^android_x86_x86_64_shared_com.android.neuralnetworks"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libneuralnetworks,android_x86_x86_64_shared_com.android.neuralnetworks
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libneuralnetworks,android_x86_x86_64_shared_com.android.neuralnetworks
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/NeuralNetworks/runtime/libneuralnetworks^android_x86_x86_64_shared_com.android.neuralnetworks
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/packages/modules/NeuralNetworks/libneuralnetworks^android_x86_x86_64_shared_com.android.neuralnetworks.output . $GITHUB_WORKSPACE/artifacts/packages/modules/NeuralNetworks/runtime/libneuralnetworks^android_x86_x86_64_shared_com.android.neuralnetworks
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_06/packages/modules/NeuralNetworks/libneuralnetworks^android_x86_x86_64_shared_com.android.neuralnetworks.output $GITHUB_WORKSPACE/artifacts/packages/modules/NeuralNetworks/runtime/libneuralnetworks^android_x86_x86_64_shared_com.android.neuralnetworks $GITHUB_WORKSPACE/artifacts/packages/modules/NeuralNetworks/runtime/libneuralnetworks^android_x86_x86_64_shared_com.android.neuralnetworks/addition_copy_files.output

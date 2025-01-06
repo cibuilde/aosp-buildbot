@@ -21,25 +21,25 @@ clone_depth_platform external/swiftshader
 rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/cmd/sbox/sbox^linux_glibc_x86_64/ .
 
 echo "building commit_header^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja commit_header,
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja commit_header,
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/swiftshader/src/commit_header^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/external/swiftshader/commit_header^.output . $GITHUB_WORKSPACE/artifacts/external/swiftshader/src/commit_header^
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/external/swiftshader/commit_header^.output $GITHUB_WORKSPACE/artifacts/external/swiftshader/src/commit_header^ $GITHUB_WORKSPACE/artifacts/external/swiftshader/src/commit_header^/addition_copy_files.output
 
 echo "building swiftshader_spvtools_generate_registry_tables^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja swiftshader_spvtools_generate_registry_tables,
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja swiftshader_spvtools_generate_registry_tables,
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/swiftshader/third_party/SPIRV-Tools/swiftshader_spvtools_generate_registry_tables^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/external/swiftshader/swiftshader_spvtools_generate_registry_tables^.output . $GITHUB_WORKSPACE/artifacts/external/swiftshader/third_party/SPIRV-Tools/swiftshader_spvtools_generate_registry_tables^
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/external/swiftshader/swiftshader_spvtools_generate_registry_tables^.output $GITHUB_WORKSPACE/artifacts/external/swiftshader/third_party/SPIRV-Tools/swiftshader_spvtools_generate_registry_tables^ $GITHUB_WORKSPACE/artifacts/external/swiftshader/third_party/SPIRV-Tools/swiftshader_spvtools_generate_registry_tables^/addition_copy_files.output
 
 echo "building swiftshader_spvtools_update_build_version^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja swiftshader_spvtools_update_build_version,
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja swiftshader_spvtools_update_build_version,
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/swiftshader/third_party/SPIRV-Tools/swiftshader_spvtools_update_build_version^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/external/swiftshader/swiftshader_spvtools_update_build_version^.output . $GITHUB_WORKSPACE/artifacts/external/swiftshader/third_party/SPIRV-Tools/swiftshader_spvtools_update_build_version^
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/external/swiftshader/swiftshader_spvtools_update_build_version^.output $GITHUB_WORKSPACE/artifacts/external/swiftshader/third_party/SPIRV-Tools/swiftshader_spvtools_update_build_version^ $GITHUB_WORKSPACE/artifacts/external/swiftshader/third_party/SPIRV-Tools/swiftshader_spvtools_update_build_version^/addition_copy_files.output
 
 echo "building swiftshader_spvtools_generate_grammar_tables^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja swiftshader_spvtools_generate_grammar_tables,
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja swiftshader_spvtools_generate_grammar_tables,
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/swiftshader/third_party/SPIRV-Tools/swiftshader_spvtools_generate_grammar_tables^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/external/swiftshader/swiftshader_spvtools_generate_grammar_tables^.output . $GITHUB_WORKSPACE/artifacts/external/swiftshader/third_party/SPIRV-Tools/swiftshader_spvtools_generate_grammar_tables^
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/external/swiftshader/swiftshader_spvtools_generate_grammar_tables^.output $GITHUB_WORKSPACE/artifacts/external/swiftshader/third_party/SPIRV-Tools/swiftshader_spvtools_generate_grammar_tables^ $GITHUB_WORKSPACE/artifacts/external/swiftshader/third_party/SPIRV-Tools/swiftshader_spvtools_generate_grammar_tables^/addition_copy_files.output

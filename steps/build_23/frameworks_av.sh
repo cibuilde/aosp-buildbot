@@ -33,25 +33,25 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/android_system_stubs_cur
 rsync -a -r $GITHUB_WORKSPACE/downloads/libcore/core-current-stubs-system-modules^android_common/ .
 
 echo "building av-types-aidl-java^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_23.ninja av-types-aidl-java,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_23.ninja av-types-aidl-java,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/av-types-aidl-java^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_23/frameworks/av/av-types-aidl-java^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/av-types-aidl-java^android_common
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_23/frameworks/av/av-types-aidl-java^android_common.output $GITHUB_WORKSPACE/artifacts/frameworks/av/av-types-aidl-java^android_common $GITHUB_WORKSPACE/artifacts/frameworks/av/av-types-aidl-java^android_common/addition_copy_files.output
 
 echo "building capture_state_listener-aidl-java^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_23.ninja capture_state_listener-aidl-java,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_23.ninja capture_state_listener-aidl-java,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libaudioclient/capture_state_listener-aidl-java^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_23/frameworks/av/capture_state_listener-aidl-java^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libaudioclient/capture_state_listener-aidl-java^android_common
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_23/frameworks/av/capture_state_listener-aidl-java^android_common.output $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libaudioclient/capture_state_listener-aidl-java^android_common $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libaudioclient/capture_state_listener-aidl-java^android_common/addition_copy_files.output
 
 echo "building mediatranscoding_aidl_interface-java^android_common_apex29"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_23.ninja mediatranscoding_aidl_interface-java,android_common_apex29
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_23.ninja mediatranscoding_aidl_interface-java,android_common_apex29
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libmediatranscoding/mediatranscoding_aidl_interface-java^android_common_apex29
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_23/frameworks/av/mediatranscoding_aidl_interface-java^android_common_apex29.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libmediatranscoding/mediatranscoding_aidl_interface-java^android_common_apex29
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_23/frameworks/av/mediatranscoding_aidl_interface-java^android_common_apex29.output $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libmediatranscoding/mediatranscoding_aidl_interface-java^android_common_apex29 $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libmediatranscoding/mediatranscoding_aidl_interface-java^android_common_apex29/addition_copy_files.output
 
 echo "building tv_tuner_frontend_info_aidl_interface-java^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_23.ninja tv_tuner_frontend_info_aidl_interface-java,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_23.ninja tv_tuner_frontend_info_aidl_interface-java,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/services/tuner/tv_tuner_frontend_info_aidl_interface-java^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_23/frameworks/av/tv_tuner_frontend_info_aidl_interface-java^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/services/tuner/tv_tuner_frontend_info_aidl_interface-java^android_common
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_23/frameworks/av/tv_tuner_frontend_info_aidl_interface-java^android_common.output $GITHUB_WORKSPACE/artifacts/frameworks/av/services/tuner/tv_tuner_frontend_info_aidl_interface-java^android_common $GITHUB_WORKSPACE/artifacts/frameworks/av/services/tuner/tv_tuner_frontend_info_aidl_interface-java^android_common/addition_copy_files.output

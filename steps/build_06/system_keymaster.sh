@@ -35,7 +35,7 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcxx/libc++^android_vendor.31
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcxxabi/libc++demangle^android_vendor.31_x86_64_static/ .
 
 echo "building libkeymaster_messages^android_vendor.31_x86_64_shared"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libkeymaster_messages,android_vendor.31_x86_64_shared
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libkeymaster_messages,android_vendor.31_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/keymaster/libkeymaster_messages^android_vendor.31_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/system/keymaster/libkeymaster_messages^android_vendor.31_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/keymaster/libkeymaster_messages^android_vendor.31_x86_64_shared
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_06/system/keymaster/libkeymaster_messages^android_vendor.31_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/system/keymaster/libkeymaster_messages^android_vendor.31_x86_64_shared $GITHUB_WORKSPACE/artifacts/system/keymaster/libkeymaster_messages^android_vendor.31_x86_64_shared/addition_copy_files.output

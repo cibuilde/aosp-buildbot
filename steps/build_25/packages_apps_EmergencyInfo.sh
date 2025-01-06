@@ -147,13 +147,13 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/sdk/current/support/android-su
 rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/sdk/current/support/android-support-viewpager^android_common/ .
 
 echo "building EmergencyGestureAction^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_25.ninja EmergencyGestureAction,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_25.ninja EmergencyGestureAction,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/apps/EmergencyInfo/EmergencyGestureAction/EmergencyGestureAction^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_25/packages/apps/EmergencyInfo/EmergencyGestureAction^android_common.output . $GITHUB_WORKSPACE/artifacts/packages/apps/EmergencyInfo/EmergencyGestureAction/EmergencyGestureAction^android_common
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_25/packages/apps/EmergencyInfo/EmergencyGestureAction^android_common.output $GITHUB_WORKSPACE/artifacts/packages/apps/EmergencyInfo/EmergencyGestureAction/EmergencyGestureAction^android_common $GITHUB_WORKSPACE/artifacts/packages/apps/EmergencyInfo/EmergencyGestureAction/EmergencyGestureAction^android_common/addition_copy_files.output
 
 echo "building EmergencyGestureContentProvider^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_25.ninja EmergencyGestureContentProvider,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_25.ninja EmergencyGestureContentProvider,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/apps/EmergencyInfo/EmergencyGestureContentProvider/EmergencyGestureContentProvider^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_25/packages/apps/EmergencyInfo/EmergencyGestureContentProvider^android_common.output . $GITHUB_WORKSPACE/artifacts/packages/apps/EmergencyInfo/EmergencyGestureContentProvider/EmergencyGestureContentProvider^android_common
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_25/packages/apps/EmergencyInfo/EmergencyGestureContentProvider^android_common.output $GITHUB_WORKSPACE/artifacts/packages/apps/EmergencyInfo/EmergencyGestureContentProvider/EmergencyGestureContentProvider^android_common $GITHUB_WORKSPACE/artifacts/packages/apps/EmergencyInfo/EmergencyGestureContentProvider/EmergencyGestureContentProvider^android_common/addition_copy_files.output

@@ -106,37 +106,37 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^android_x86
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^android_x86_x86_64_shared/ .
 
 echo "building libEGL_angle^android_x86_64_shared"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_11.ninja libEGL_angle,android_x86_64_shared
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_11.ninja libEGL_angle,android_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/angle/libEGL_angle^android_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_11/external/angle/libEGL_angle^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/external/angle/libEGL_angle^android_x86_64_shared
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_11/external/angle/libEGL_angle^android_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/external/angle/libEGL_angle^android_x86_64_shared $GITHUB_WORKSPACE/artifacts/external/angle/libEGL_angle^android_x86_64_shared/addition_copy_files.output
 
 echo "building libEGL_angle^android_x86_x86_64_shared"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_11.ninja libEGL_angle,android_x86_x86_64_shared
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_11.ninja libEGL_angle,android_x86_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/angle/libEGL_angle^android_x86_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_11/external/angle/libEGL_angle^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/external/angle/libEGL_angle^android_x86_x86_64_shared
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_11/external/angle/libEGL_angle^android_x86_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/external/angle/libEGL_angle^android_x86_x86_64_shared $GITHUB_WORKSPACE/artifacts/external/angle/libEGL_angle^android_x86_x86_64_shared/addition_copy_files.output
 
 echo "building libGLESv1_CM_angle^android_x86_64_shared"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_11.ninja libGLESv1_CM_angle,android_x86_64_shared
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_11.ninja libGLESv1_CM_angle,android_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/angle/libGLESv1_CM_angle^android_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_11/external/angle/libGLESv1_CM_angle^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/external/angle/libGLESv1_CM_angle^android_x86_64_shared
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_11/external/angle/libGLESv1_CM_angle^android_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/external/angle/libGLESv1_CM_angle^android_x86_64_shared $GITHUB_WORKSPACE/artifacts/external/angle/libGLESv1_CM_angle^android_x86_64_shared/addition_copy_files.output
 
 echo "building libGLESv1_CM_angle^android_x86_x86_64_shared"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_11.ninja libGLESv1_CM_angle,android_x86_x86_64_shared
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_11.ninja libGLESv1_CM_angle,android_x86_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/angle/libGLESv1_CM_angle^android_x86_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_11/external/angle/libGLESv1_CM_angle^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/external/angle/libGLESv1_CM_angle^android_x86_x86_64_shared
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_11/external/angle/libGLESv1_CM_angle^android_x86_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/external/angle/libGLESv1_CM_angle^android_x86_x86_64_shared $GITHUB_WORKSPACE/artifacts/external/angle/libGLESv1_CM_angle^android_x86_x86_64_shared/addition_copy_files.output
 
 echo "building libGLESv2_angle^android_x86_64_shared"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_11.ninja libGLESv2_angle,android_x86_64_shared
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_11.ninja libGLESv2_angle,android_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/angle/libGLESv2_angle^android_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_11/external/angle/libGLESv2_angle^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/external/angle/libGLESv2_angle^android_x86_64_shared
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_11/external/angle/libGLESv2_angle^android_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/external/angle/libGLESv2_angle^android_x86_64_shared $GITHUB_WORKSPACE/artifacts/external/angle/libGLESv2_angle^android_x86_64_shared/addition_copy_files.output
 
 echo "building libGLESv2_angle^android_x86_x86_64_shared"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_11.ninja libGLESv2_angle,android_x86_x86_64_shared
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_11.ninja libGLESv2_angle,android_x86_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/angle/libGLESv2_angle^android_x86_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_11/external/angle/libGLESv2_angle^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/external/angle/libGLESv2_angle^android_x86_x86_64_shared
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_11/external/angle/libGLESv2_angle^android_x86_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/external/angle/libGLESv2_angle^android_x86_x86_64_shared $GITHUB_WORKSPACE/artifacts/external/angle/libGLESv2_angle^android_x86_x86_64_shared/addition_copy_files.output

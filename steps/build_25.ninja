@@ -93,9 +93,9 @@ build ucepresencelib,android_common: phony out/soong/.intermediates/external/ims
 
 build external_ims-targets: phony ucepresencelib,android_common
 
-build setupdesign,android_common: phony out/soong/.intermediates/external/setupdesign/setupdesign/android_common/combined/setupdesign.jar out/soong/.intermediates/external/setupdesign/setupdesign/android_common/package-res.apk out/soong/.intermediates/external/setupdesign/setupdesign/android_common/turbine-combined/setupdesign.jar
+build setupdesign,android_common: phony out/soong/.intermediates/external/setupdesign/setupdesign/android_common/combined/setupdesign.jar out/soong/.intermediates/external/setupdesign/setupdesign/android_common/manifest_fixer/AndroidManifest.xml out/soong/.intermediates/external/setupdesign/setupdesign/android_common/package-res.apk out/soong/.intermediates/external/setupdesign/setupdesign/android_common/turbine-combined/setupdesign.jar
 
-build setupdesign-lottie-loading-layout,android_common: phony out/soong/.intermediates/external/setupdesign/lottie_loading_layout/setupdesign-lottie-loading-layout/android_common/combined/setupdesign-lottie-loading-layout.jar out/soong/.intermediates/external/setupdesign/lottie_loading_layout/setupdesign-lottie-loading-layout/android_common/package-res.apk out/soong/.intermediates/external/setupdesign/lottie_loading_layout/setupdesign-lottie-loading-layout/android_common/turbine-combined/setupdesign-lottie-loading-layout.jar
+build setupdesign-lottie-loading-layout,android_common: phony out/soong/.intermediates/external/setupdesign/lottie_loading_layout/setupdesign-lottie-loading-layout/android_common/combined/setupdesign-lottie-loading-layout.jar out/soong/.intermediates/external/setupdesign/lottie_loading_layout/setupdesign-lottie-loading-layout/android_common/manifest_fixer/AndroidManifest.xml out/soong/.intermediates/external/setupdesign/lottie_loading_layout/setupdesign-lottie-loading-layout/android_common/package-res.apk out/soong/.intermediates/external/setupdesign/lottie_loading_layout/setupdesign-lottie-loading-layout/android_common/turbine-combined/setupdesign-lottie-loading-layout.jar
 
 build external_setupdesign-targets: phony setupdesign,android_common setupdesign-lottie-loading-layout,android_common
 
@@ -105,7 +105,7 @@ build com.android.media-bootclasspath-fragment,android_common_apex29: phony out/
 
 build frameworks_av-targets: phony com.android.media,android_common_cfi_com.android.media_image com.android.media-bootclasspath-fragment,android_common_apex29
 
-build SettingsLibIllustrationPreference,android_common: phony out/soong/.intermediates/frameworks/base/packages/SettingsLib/IllustrationPreference/SettingsLibIllustrationPreference/android_common/combined/SettingsLibIllustrationPreference.jar out/soong/.intermediates/frameworks/base/packages/SettingsLib/IllustrationPreference/SettingsLibIllustrationPreference/android_common/package-res.apk out/soong/.intermediates/frameworks/base/packages/SettingsLib/IllustrationPreference/SettingsLibIllustrationPreference/android_common/turbine-combined/SettingsLibIllustrationPreference.jar
+build SettingsLibIllustrationPreference,android_common: phony out/soong/.intermediates/frameworks/base/packages/SettingsLib/IllustrationPreference/SettingsLibIllustrationPreference/android_common/combined/SettingsLibIllustrationPreference.jar out/soong/.intermediates/frameworks/base/packages/SettingsLib/IllustrationPreference/SettingsLibIllustrationPreference/android_common/manifest_fixer/AndroidManifest.xml out/soong/.intermediates/frameworks/base/packages/SettingsLib/IllustrationPreference/SettingsLibIllustrationPreference/android_common/package-res.apk out/soong/.intermediates/frameworks/base/packages/SettingsLib/IllustrationPreference/SettingsLibIllustrationPreference/android_common/turbine-combined/SettingsLibIllustrationPreference.jar
 
 build services.net,android_common: phony out/soong/.intermediates/frameworks/base/services/net/services.net/android_common/combined/services.net.jar out/soong/.intermediates/frameworks/base/services/net/services.net/android_common/turbine-combined/services.net.jar
 
@@ -117,7 +117,7 @@ build voip-common,android_common: phony out/soong/.intermediates/frameworks/opt/
 
 build frameworks_opt_net_voip-targets: phony voip-common,android_common
 
-build WifiTrackerLib,android_common: phony out/soong/.intermediates/frameworks/opt/net/wifi/libs/WifiTrackerLib/WifiTrackerLib/android_common/combined/WifiTrackerLib.jar out/soong/.intermediates/frameworks/opt/net/wifi/libs/WifiTrackerLib/WifiTrackerLib/android_common/package-res.apk out/soong/.intermediates/frameworks/opt/net/wifi/libs/WifiTrackerLib/WifiTrackerLib/android_common/turbine-combined/WifiTrackerLib.jar
+build WifiTrackerLib,android_common: phony out/soong/.intermediates/frameworks/opt/net/wifi/libs/WifiTrackerLib/WifiTrackerLib/android_common/combined/WifiTrackerLib.jar out/soong/.intermediates/frameworks/opt/net/wifi/libs/WifiTrackerLib/WifiTrackerLib/android_common/manifest_fixer/AndroidManifest.xml out/soong/.intermediates/frameworks/opt/net/wifi/libs/WifiTrackerLib/WifiTrackerLib/android_common/package-res.apk out/soong/.intermediates/frameworks/opt/net/wifi/libs/WifiTrackerLib/WifiTrackerLib/android_common/turbine-combined/WifiTrackerLib.jar
 
 build frameworks_opt_net_wifi-targets: phony WifiTrackerLib,android_common
 
@@ -155,9 +155,9 @@ build CellBroadcastApp,android_common_apex30: phony out/soong/.intermediates/pac
 
 build packages_apps_CellBroadcastReceiver-targets: phony CellBroadcastApp,android_common_apex30
 
-build EmergencyGestureAction,android_common: phony out/soong/.intermediates/packages/apps/EmergencyInfo/EmergencyGestureAction/EmergencyGestureAction/android_common/combined/EmergencyGestureAction.jar out/soong/.intermediates/packages/apps/EmergencyInfo/EmergencyGestureAction/EmergencyGestureAction/android_common/package-res.apk out/soong/.intermediates/packages/apps/EmergencyInfo/EmergencyGestureAction/EmergencyGestureAction/android_common/turbine-combined/EmergencyGestureAction.jar
+build EmergencyGestureAction,android_common: phony out/soong/.intermediates/packages/apps/EmergencyInfo/EmergencyGestureAction/EmergencyGestureAction/android_common/combined/EmergencyGestureAction.jar out/soong/.intermediates/packages/apps/EmergencyInfo/EmergencyGestureAction/EmergencyGestureAction/android_common/manifest_fixer/AndroidManifest.xml out/soong/.intermediates/packages/apps/EmergencyInfo/EmergencyGestureAction/EmergencyGestureAction/android_common/package-res.apk out/soong/.intermediates/packages/apps/EmergencyInfo/EmergencyGestureAction/EmergencyGestureAction/android_common/turbine-combined/EmergencyGestureAction.jar
 
-build EmergencyGestureContentProvider,android_common: phony out/soong/.intermediates/packages/apps/EmergencyInfo/EmergencyGestureContentProvider/EmergencyGestureContentProvider/android_common/combined/EmergencyGestureContentProvider.jar out/soong/.intermediates/packages/apps/EmergencyInfo/EmergencyGestureContentProvider/EmergencyGestureContentProvider/android_common/package-res.apk out/soong/.intermediates/packages/apps/EmergencyInfo/EmergencyGestureContentProvider/EmergencyGestureContentProvider/android_common/turbine-combined/EmergencyGestureContentProvider.jar
+build EmergencyGestureContentProvider,android_common: phony out/soong/.intermediates/packages/apps/EmergencyInfo/EmergencyGestureContentProvider/EmergencyGestureContentProvider/android_common/combined/EmergencyGestureContentProvider.jar out/soong/.intermediates/packages/apps/EmergencyInfo/EmergencyGestureContentProvider/EmergencyGestureContentProvider/android_common/manifest_fixer/AndroidManifest.xml out/soong/.intermediates/packages/apps/EmergencyInfo/EmergencyGestureContentProvider/EmergencyGestureContentProvider/android_common/package-res.apk out/soong/.intermediates/packages/apps/EmergencyInfo/EmergencyGestureContentProvider/EmergencyGestureContentProvider/android_common/turbine-combined/EmergencyGestureContentProvider.jar
 
 build packages_apps_EmergencyInfo-targets: phony EmergencyGestureAction,android_common EmergencyGestureContentProvider,android_common
 
@@ -181,7 +181,7 @@ build packages_modules_CellBroadcastService-targets: phony CellBroadcastServiceM
 
 build service-connectivity-pre-jarjar,android_common_apex30: phony out/soong/.intermediates/packages/modules/Connectivity/service/service-connectivity-pre-jarjar/android_common_apex30/combined/service-connectivity-pre-jarjar.jar out/soong/.intermediates/packages/modules/Connectivity/service/service-connectivity-pre-jarjar/android_common_apex30/turbine-combined/service-connectivity-pre-jarjar.jar
 
-build service-connectivity,android_common_apex30: phony out/soong/.intermediates/packages/modules/Connectivity/service/service-connectivity/android_common_apex30/aligned/service-connectivity.jar out/soong/.intermediates/packages/modules/Connectivity/service/service-connectivity/android_common_apex30/turbine-jarjar/service-connectivity.jar
+build service-connectivity,android_common_apex30: phony out/soong/.intermediates/packages/modules/Connectivity/service/service-connectivity/android_common_apex30/aligned/service-connectivity.jar out/soong/.intermediates/packages/modules/Connectivity/service/service-connectivity/android_common_apex30/jarjar/service-connectivity.jar out/soong/.intermediates/packages/modules/Connectivity/service/service-connectivity/android_common_apex30/turbine-jarjar/service-connectivity.jar
 
 build packages_modules_Connectivity-targets: phony service-connectivity,android_common_apex30 service-connectivity-pre-jarjar,android_common_apex30
 
@@ -209,19 +209,19 @@ build service-permission.stubs.source.system_server,android_common: phony out/so
 
 build service-permission.stubs.system_server,android_common: phony out/soong/.intermediates/packages/modules/Permission/service/service-permission.stubs.system_server/android_common/turbine-combined/service-permission.stubs.system_server.jar
 
-build service-permission,android_common_apex30: phony out/soong/.intermediates/packages/modules/Permission/service/service-permission/android_common_apex30/aligned/service-permission.jar out/soong/.intermediates/packages/modules/Permission/service/service-permission/android_common_apex30/turbine-jarjar/service-permission.jar
+build service-permission,android_common_apex30: phony out/soong/.intermediates/packages/modules/Permission/service/service-permission/android_common_apex30/aligned/service-permission.jar out/soong/.intermediates/packages/modules/Permission/service/service-permission/android_common_apex30/jarjar/service-permission.jar out/soong/.intermediates/packages/modules/Permission/service/service-permission/android_common_apex30/turbine-jarjar/service-permission.jar
 
 build packages_modules_Permission-targets: phony service-permission,android_common_apex30 service-permission-shared,android_common service-permission-shared,android_common_apex30 service-permission.stubs.source.system_server,android_common service-permission.stubs.system_server,android_common
 
 build com.android.scheduling,android_common_com.android.scheduling_image: phony out/soong/.intermediates/packages/modules/Scheduling/apex/com.android.scheduling/android_common_com.android.scheduling_image/apex_manifest.pb out/soong/.intermediates/packages/modules/Scheduling/apex/com.android.scheduling/android_common_com.android.scheduling_image/apex_pubkey out/soong/.intermediates/packages/modules/Scheduling/apex/com.android.scheduling/android_common_com.android.scheduling_image/com.android.scheduling.apex
 
-build service-scheduling,android_common_apex10000: phony out/soong/.intermediates/packages/modules/Scheduling/service/service-scheduling/android_common_apex10000/aligned/service-scheduling.jar out/soong/.intermediates/packages/modules/Scheduling/service/service-scheduling/android_common_apex10000/turbine-jarjar/service-scheduling.jar
+build service-scheduling,android_common_apex10000: phony out/soong/.intermediates/packages/modules/Scheduling/service/service-scheduling/android_common_apex10000/aligned/service-scheduling.jar out/soong/.intermediates/packages/modules/Scheduling/service/service-scheduling/android_common_apex10000/jarjar/service-scheduling.jar out/soong/.intermediates/packages/modules/Scheduling/service/service-scheduling/android_common_apex10000/turbine-jarjar/service-scheduling.jar
 
 build packages_modules_Scheduling-targets: phony com.android.scheduling,android_common_com.android.scheduling_image service-scheduling,android_common_apex10000
 
 build com.android.os.statsd,android_common_com.android.os.statsd_image: phony out/soong/.intermediates/packages/modules/StatsD/apex/com.android.os.statsd/android_common_com.android.os.statsd_image/apex_manifest.pb out/soong/.intermediates/packages/modules/StatsD/apex/com.android.os.statsd/android_common_com.android.os.statsd_image/apex_pubkey out/soong/.intermediates/packages/modules/StatsD/apex/com.android.os.statsd/android_common_com.android.os.statsd_image/com.android.os.statsd.apex
 
-build service-statsd,android_common_apex30: phony out/soong/.intermediates/packages/modules/StatsD/service/service-statsd/android_common_apex30/aligned/service-statsd.jar out/soong/.intermediates/packages/modules/StatsD/service/service-statsd/android_common_apex30/turbine-combined/service-statsd.jar
+build service-statsd,android_common_apex30: phony out/soong/.intermediates/packages/modules/StatsD/service/service-statsd/android_common_apex30/aligned/service-statsd.jar out/soong/.intermediates/packages/modules/StatsD/service/service-statsd/android_common_apex30/combined/service-statsd.jar out/soong/.intermediates/packages/modules/StatsD/service/service-statsd/android_common_apex30/turbine-combined/service-statsd.jar
 
 build packages_modules_StatsD-targets: phony com.android.os.statsd,android_common_com.android.os.statsd_image service-statsd,android_common_apex30
 

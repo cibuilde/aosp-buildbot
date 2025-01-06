@@ -1,3 +1,4 @@
 out/soong/.intermediates/prebuilts/sdk/current/androidx/androidx.interpolator_interpolator/android_common/combined/androidx.interpolator_interpolator.jar
+out/soong/.intermediates/prebuilts/sdk/current/androidx/androidx.interpolator_interpolator/android_common/manifest_fixer/AndroidManifest.xml
 out/soong/.intermediates/prebuilts/sdk/current/androidx/androidx.interpolator_interpolator/android_common/package-res.apk
 out/soong/.intermediates/prebuilts/sdk/current/androidx/androidx.interpolator_interpolator/android_common/turbine-combined/androidx.interpolator_interpolator.jar

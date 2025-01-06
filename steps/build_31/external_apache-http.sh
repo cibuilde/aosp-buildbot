@@ -40,7 +40,7 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/libcore/mmodules/core_platform_api/stabl
 rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/r8/d8^linux_glibc_x86_64/ .
 
 echo "building org.apache.http.legacy^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_31.ninja org.apache.http.legacy,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_31.ninja org.apache.http.legacy,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/apache-http/org.apache.http.legacy^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_31/external/apache-http/org.apache.http.legacy^android_common.output . $GITHUB_WORKSPACE/artifacts/external/apache-http/org.apache.http.legacy^android_common
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_31/external/apache-http/org.apache.http.legacy^android_common.output $GITHUB_WORKSPACE/artifacts/external/apache-http/org.apache.http.legacy^android_common $GITHUB_WORKSPACE/artifacts/external/apache-http/org.apache.http.legacy^android_common/addition_copy_files.output

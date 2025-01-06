@@ -33,7 +33,7 @@ build framework-wifi.stubs.system,android_common: phony out/soong/.intermediates
 
 build framework-wifi.stubs,android_common: phony out/soong/.intermediates/packages/modules/Wifi/framework/framework-wifi.stubs/android_common/dex/framework-wifi.stubs.jar out/soong/.intermediates/packages/modules/Wifi/framework/framework-wifi.stubs/android_common/javac/framework-wifi.stubs.jar out/soong/.intermediates/packages/modules/Wifi/framework/framework-wifi.stubs/android_common/turbine-combined/framework-wifi.stubs.jar
 
-build framework-wifi,android_common_apex30: phony out/soong/.intermediates/packages/modules/Wifi/framework/framework-wifi/android_common_apex30/aligned/framework-wifi.jar out/soong/.intermediates/packages/modules/Wifi/framework/framework-wifi/android_common_apex30/turbine-jarjar/framework-wifi.jar
+build framework-wifi,android_common_apex30: phony out/soong/.intermediates/packages/modules/Wifi/framework/framework-wifi/android_common_apex30/aligned/framework-wifi.jar out/soong/.intermediates/packages/modules/Wifi/framework/framework-wifi/android_common_apex30/jarjar/framework-wifi.jar out/soong/.intermediates/packages/modules/Wifi/framework/framework-wifi/android_common_apex30/turbine-jarjar/framework-wifi.jar
 
 build packages_modules_Wifi-targets: phony framework-wifi,android_common_apex30 framework-wifi-pre-jarjar,android_common framework-wifi.impl,android_common framework-wifi.stubs,android_common framework-wifi.stubs.module_lib,android_common framework-wifi.stubs.source,android_common framework-wifi.stubs.source.module_lib,android_common framework-wifi.stubs.source.system,android_common framework-wifi.stubs.system,android_common
 

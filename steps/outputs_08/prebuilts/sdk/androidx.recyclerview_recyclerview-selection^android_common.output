@@ -1,3 +1,4 @@
 out/soong/.intermediates/prebuilts/sdk/current/androidx/androidx.recyclerview_recyclerview-selection/android_common/combined/androidx.recyclerview_recyclerview-selection.jar
+out/soong/.intermediates/prebuilts/sdk/current/androidx/androidx.recyclerview_recyclerview-selection/android_common/manifest_fixer/AndroidManifest.xml
 out/soong/.intermediates/prebuilts/sdk/current/androidx/androidx.recyclerview_recyclerview-selection/android_common/package-res.apk
 out/soong/.intermediates/prebuilts/sdk/current/androidx/androidx.recyclerview_recyclerview-selection/android_common/turbine-combined/androidx.recyclerview_recyclerview-selection.jar

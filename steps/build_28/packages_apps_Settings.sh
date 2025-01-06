@@ -204,13 +204,13 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/tools/platform-compat/java/android/compa
 rsync -a -r $GITHUB_WORKSPACE/downloads/tools/platform-compat/java/android/processor/compat/changeid/compat-changeid-annotation-processor^linux_glibc_common/ .
 
 echo "building Settings-core^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_28.ninja Settings-core,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_28.ninja Settings-core,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/apps/Settings/Settings-core^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_28/packages/apps/Settings/Settings-core^android_common.output . $GITHUB_WORKSPACE/artifacts/packages/apps/Settings/Settings-core^android_common
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_28/packages/apps/Settings/Settings-core^android_common.output $GITHUB_WORKSPACE/artifacts/packages/apps/Settings/Settings-core^android_common $GITHUB_WORKSPACE/artifacts/packages/apps/Settings/Settings-core^android_common/addition_copy_files.output
 
 echo "building settings-platform-compat-config^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_28.ninja settings-platform-compat-config,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_28.ninja settings-platform-compat-config,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/apps/Settings/settings-platform-compat-config^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_28/packages/apps/Settings/settings-platform-compat-config^android_common.output . $GITHUB_WORKSPACE/artifacts/packages/apps/Settings/settings-platform-compat-config^android_common
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_28/packages/apps/Settings/settings-platform-compat-config^android_common.output $GITHUB_WORKSPACE/artifacts/packages/apps/Settings/settings-platform-compat-config^android_common $GITHUB_WORKSPACE/artifacts/packages/apps/Settings/settings-platform-compat-config^android_common/addition_copy_files.output

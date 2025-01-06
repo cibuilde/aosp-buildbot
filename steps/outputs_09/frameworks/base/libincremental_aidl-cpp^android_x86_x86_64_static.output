@@ -5,3 +5,5 @@ out/soong/.intermediates/frameworks/base/core/java/libincremental_aidl-cpp/andro
 out/soong/.intermediates/frameworks/base/core/java/libincremental_aidl-cpp/android_x86_x86_64_static/gen/aidl/android/os/incremental/IIncrementalServiceConnector.h
 out/soong/.intermediates/frameworks/base/core/java/libincremental_aidl-cpp/android_x86_x86_64_static/gen/aidl/android/os/incremental/IncrementalFileSystemControlParcel.h
 out/soong/.intermediates/frameworks/base/core/java/libincremental_aidl-cpp/android_x86_x86_64_static/libincremental_aidl-cpp.a
+out/soong/.intermediates/frameworks/base/core/java/libincremental_aidl-cpp/android_x86_x86_64_static/obj/.intermediates/frameworks/base/core/java/libincremental_aidl-cpp/android_x86_x86_64_static/gen/aidl/android/os/incremental/IIncrementalServiceConnector.o
+out/soong/.intermediates/frameworks/base/core/java/libincremental_aidl-cpp/android_x86_x86_64_static/obj/.intermediates/frameworks/base/core/java/libincremental_aidl-cpp/android_x86_x86_64_static/gen/aidl/android/os/incremental/IncrementalFileSystemControlParcel.o

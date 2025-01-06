@@ -697,9 +697,9 @@ build libcore-platform-compat-config,android_common: phony out/soong/.intermedia
 
 build core-all-system-modules,android_common: phony out/soong/.intermediates/libcore/core-all-system-modules/android_common/system/lib/jrt-fs.jar out/soong/.intermediates/libcore/core-all-system-modules/android_common/system/lib/modules out/soong/.intermediates/libcore/core-all-system-modules/android_common/system/release
 
-build core-oj,android_common_apex31: phony out/soong/.intermediates/libcore/core-oj/android_common_apex31/dex-withres-aligned/core-oj.jar out/soong/.intermediates/libcore/core-oj/android_common_apex31/turbine-combined/core-oj.jar out/soong/.intermediates/libcore/core-oj/android_common_apex31/withres/core-oj.jar
+build core-oj,android_common_apex31: phony out/soong/.intermediates/libcore/core-oj/android_common_apex31/dex-withres-aligned/core-oj.jar out/soong/.intermediates/libcore/core-oj/android_common_apex31/javac/core-oj.jar out/soong/.intermediates/libcore/core-oj/android_common_apex31/turbine-combined/core-oj.jar out/soong/.intermediates/libcore/core-oj/android_common_apex31/withres/core-oj.jar
 
-build core-libart,android_common_apex31: phony out/soong/.intermediates/libcore/core-libart/android_common_apex31/aligned/core-libart.jar out/soong/.intermediates/libcore/core-libart/android_common_apex31/turbine-combined/core-libart.jar
+build core-libart,android_common_apex31: phony out/soong/.intermediates/libcore/core-libart/android_common_apex31/aligned/core-libart.jar out/soong/.intermediates/libcore/core-libart/android_common_apex31/javac/core-libart.jar out/soong/.intermediates/libcore/core-libart/android_common_apex31/turbine-combined/core-libart.jar
 
 build core-oj-hiddenapi-annotations,android_common: phony out/soong/.intermediates/libcore/core-oj-hiddenapi-annotations/android_common/javac/core-oj-hiddenapi-annotations.jar
 
@@ -711,7 +711,7 @@ build core-generated-annotation-stubs,android_common: phony out/soong/.intermedi
 
 build framework-api-annotations-lib,android_common: phony out/soong/.intermediates/libcore/framework-api-annotations-lib/android_common/turbine-combined/framework-api-annotations-lib.jar
 
-build art.module.public.api.stubs.module_lib,android_common: phony out/soong/.intermediates/libcore/art.module.public.api.stubs.module_lib/android_common/dex/art.module.public.api.stubs.module_lib.jar out/soong/.intermediates/libcore/art.module.public.api.stubs.module_lib/android_common/turbine-combined/art.module.public.api.stubs.module_lib.jar
+build art.module.public.api.stubs.module_lib,android_common: phony out/soong/.intermediates/libcore/art.module.public.api.stubs.module_lib/android_common/combined/art.module.public.api.stubs.module_lib.jar out/soong/.intermediates/libcore/art.module.public.api.stubs.module_lib/android_common/dex/art.module.public.api.stubs.module_lib.jar out/soong/.intermediates/libcore/art.module.public.api.stubs.module_lib/android_common/turbine-combined/art.module.public.api.stubs.module_lib.jar
 
 build art.module.public.api.stubs.source.module_lib,android_common: phony out/soong/.intermediates/libcore/art.module.public.api.stubs.source.module_lib/android_common/metalava/art.module.public.api.stubs.source.module_lib-stubs.srcjar out/soong/.intermediates/libcore/art.module.public.api.stubs.source.module_lib/android_common/metalava/art.module.public.api.stubs.source.module_lib_removed.txt
 
@@ -719,9 +719,9 @@ build art.module.public.api.stubs.source.system,android_common: phony out/soong/
 
 build art.module.public.api.stubs.source,android_common: phony out/soong/.intermediates/libcore/art.module.public.api.stubs.source/android_common/metalava/art.module.public.api.stubs.source-stubs.srcjar out/soong/.intermediates/libcore/art.module.public.api.stubs.source/android_common/metalava/art.module.public.api.stubs.source_api.txt out/soong/.intermediates/libcore/art.module.public.api.stubs.source/android_common/metalava/art.module.public.api.stubs.source_removed.txt
 
-build art.module.public.api.stubs.system,android_common: phony out/soong/.intermediates/libcore/art.module.public.api.stubs.system/android_common/dex/art.module.public.api.stubs.system.jar out/soong/.intermediates/libcore/art.module.public.api.stubs.system/android_common/turbine-combined/art.module.public.api.stubs.system.jar
+build art.module.public.api.stubs.system,android_common: phony out/soong/.intermediates/libcore/art.module.public.api.stubs.system/android_common/combined/art.module.public.api.stubs.system.jar out/soong/.intermediates/libcore/art.module.public.api.stubs.system/android_common/dex/art.module.public.api.stubs.system.jar out/soong/.intermediates/libcore/art.module.public.api.stubs.system/android_common/turbine-combined/art.module.public.api.stubs.system.jar
 
-build art.module.public.api.stubs,android_common: phony out/soong/.intermediates/libcore/art.module.public.api.stubs/android_common/dex/art.module.public.api.stubs.jar out/soong/.intermediates/libcore/art.module.public.api.stubs/android_common/turbine-combined/art.module.public.api.stubs.jar
+build art.module.public.api.stubs,android_common: phony out/soong/.intermediates/libcore/art.module.public.api.stubs/android_common/combined/art.module.public.api.stubs.jar out/soong/.intermediates/libcore/art.module.public.api.stubs/android_common/dex/art.module.public.api.stubs.jar out/soong/.intermediates/libcore/art.module.public.api.stubs/android_common/turbine-combined/art.module.public.api.stubs.jar
 
 build art-module-public-api-stubs-system-modules,android_common: phony out/soong/.intermediates/libcore/art-module-public-api-stubs-system-modules/android_common/system/lib/jrt-fs.jar out/soong/.intermediates/libcore/art-module-public-api-stubs-system-modules/android_common/system/lib/modules out/soong/.intermediates/libcore/art-module-public-api-stubs-system-modules/android_common/system/release
 
@@ -897,7 +897,7 @@ build system_tools_hidl-targets: phony hidl_lazy_test_server,android_x86_64
 
 build libupdate_engine_boot_control,android_x86_64_static: phony out/soong/.intermediates/system/update_engine/libupdate_engine_boot_control/android_x86_64_static/libupdate_engine_boot_control.a
 
-build libupdate_engine_android,android_x86_64_static: phony out/soong/.intermediates/system/update_engine/libupdate_engine_android/android_x86_64_static/libupdate_engine_android.a
+build libupdate_engine_android,android_x86_64_static: phony out/soong/.intermediates/system/update_engine/libupdate_engine_android/android_x86_64_static/gen/aidl/android/os/BnUpdateEngine.h out/soong/.intermediates/system/update_engine/libupdate_engine_android/android_x86_64_static/gen/aidl/android/os/BnUpdateEngineCallback.h out/soong/.intermediates/system/update_engine/libupdate_engine_android/android_x86_64_static/gen/aidl/android/os/BpUpdateEngine.h out/soong/.intermediates/system/update_engine/libupdate_engine_android/android_x86_64_static/gen/aidl/android/os/BpUpdateEngineCallback.h out/soong/.intermediates/system/update_engine/libupdate_engine_android/android_x86_64_static/gen/aidl/android/os/IUpdateEngine.h out/soong/.intermediates/system/update_engine/libupdate_engine_android/android_x86_64_static/gen/aidl/android/os/IUpdateEngineCallback.h out/soong/.intermediates/system/update_engine/libupdate_engine_android/android_x86_64_static/libupdate_engine_android.a
 
 build update_engine_sideload,android_recovery_x86_64: phony out/soong/.intermediates/system/update_engine/update_engine_sideload/android_recovery_x86_64/update_engine_sideload
 

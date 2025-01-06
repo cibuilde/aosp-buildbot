@@ -1,3 +1,4 @@
 out/soong/.intermediates/external/icu/android_icu4j/core-icu4j/android_common_apex10000/dex-withres-aligned/core-icu4j.jar
+out/soong/.intermediates/external/icu/android_icu4j/core-icu4j/android_common_apex10000/jarjar/core-icu4j.jar
 out/soong/.intermediates/external/icu/android_icu4j/core-icu4j/android_common_apex10000/turbine-jarjar/core-icu4j.jar
 out/soong/.intermediates/external/icu/android_icu4j/core-icu4j/android_common_apex10000/withres/core-icu4j.jar

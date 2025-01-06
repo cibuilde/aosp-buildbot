@@ -34,19 +34,19 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/external/jarjar/jarjar^linux_glibc_commo
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/jsr330/jsr330^linux_glibc_common/ .
 
 echo "building dagger2-bootstrap-compiler^linux_glibc_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja dagger2-bootstrap-compiler,linux_glibc_common
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja dagger2-bootstrap-compiler,linux_glibc_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/dagger2/dagger2-bootstrap-compiler^linux_glibc_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/external/dagger2/dagger2-bootstrap-compiler^linux_glibc_common.output . $GITHUB_WORKSPACE/artifacts/external/dagger2/dagger2-bootstrap-compiler^linux_glibc_common
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/external/dagger2/dagger2-bootstrap-compiler^linux_glibc_common.output $GITHUB_WORKSPACE/artifacts/external/dagger2/dagger2-bootstrap-compiler^linux_glibc_common $GITHUB_WORKSPACE/artifacts/external/dagger2/dagger2-bootstrap-compiler^linux_glibc_common/addition_copy_files.output
 
 echo "building dagger2^linux_glibc_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja dagger2,linux_glibc_common
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja dagger2,linux_glibc_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/dagger2/dagger2^linux_glibc_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/external/dagger2/dagger2^linux_glibc_common.output . $GITHUB_WORKSPACE/artifacts/external/dagger2/dagger2^linux_glibc_common
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/external/dagger2/dagger2^linux_glibc_common.output $GITHUB_WORKSPACE/artifacts/external/dagger2/dagger2^linux_glibc_common $GITHUB_WORKSPACE/artifacts/external/dagger2/dagger2^linux_glibc_common/addition_copy_files.output
 
 echo "building dagger2-producers^linux_glibc_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja dagger2-producers,linux_glibc_common
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja dagger2-producers,linux_glibc_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/dagger2/dagger2-producers^linux_glibc_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/external/dagger2/dagger2-producers^linux_glibc_common.output . $GITHUB_WORKSPACE/artifacts/external/dagger2/dagger2-producers^linux_glibc_common
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/external/dagger2/dagger2-producers^linux_glibc_common.output $GITHUB_WORKSPACE/artifacts/external/dagger2/dagger2-producers^linux_glibc_common $GITHUB_WORKSPACE/artifacts/external/dagger2/dagger2-producers^linux_glibc_common/addition_copy_files.output

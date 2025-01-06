@@ -1,3 +1,4 @@
 out/soong/.intermediates/packages/apps/ImsServiceEntitlement/ImsServiceEntitlementLib/android_common/combined/ImsServiceEntitlementLib.jar
+out/soong/.intermediates/packages/apps/ImsServiceEntitlement/ImsServiceEntitlementLib/android_common/manifest_fixer/AndroidManifest.xml
 out/soong/.intermediates/packages/apps/ImsServiceEntitlement/ImsServiceEntitlementLib/android_common/package-res.apk
 out/soong/.intermediates/packages/apps/ImsServiceEntitlement/ImsServiceEntitlementLib/android_common/turbine-combined/ImsServiceEntitlementLib.jar

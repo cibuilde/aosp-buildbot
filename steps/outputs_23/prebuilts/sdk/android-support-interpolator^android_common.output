@@ -1,3 +1,4 @@
 out/soong/.intermediates/prebuilts/sdk/current/support/android-support-interpolator/android_common/combined/android-support-interpolator.jar
+out/soong/.intermediates/prebuilts/sdk/current/support/android-support-interpolator/android_common/manifest_fixer/AndroidManifest.xml
 out/soong/.intermediates/prebuilts/sdk/current/support/android-support-interpolator/android_common/package-res.apk
 out/soong/.intermediates/prebuilts/sdk/current/support/android-support-interpolator/android_common/turbine-combined/android-support-interpolator.jar

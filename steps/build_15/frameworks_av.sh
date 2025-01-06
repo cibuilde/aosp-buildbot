@@ -120,25 +120,25 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/system/media/camera/libcamera_metadata^a
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/media/camera/libcamera_metadata^android_x86_x86_64_shared/ .
 
 echo "building libcamera2ndk^android_x86_64_shared"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_15.ninja libcamera2ndk,android_x86_64_shared
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_15.ninja libcamera2ndk,android_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/camera/ndk/libcamera2ndk^android_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_15/frameworks/av/libcamera2ndk^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/camera/ndk/libcamera2ndk^android_x86_64_shared
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_15/frameworks/av/libcamera2ndk^android_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/frameworks/av/camera/ndk/libcamera2ndk^android_x86_64_shared $GITHUB_WORKSPACE/artifacts/frameworks/av/camera/ndk/libcamera2ndk^android_x86_64_shared/addition_copy_files.output
 
 echo "building libcamera2ndk^android_x86_x86_64_shared"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_15.ninja libcamera2ndk,android_x86_x86_64_shared
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_15.ninja libcamera2ndk,android_x86_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/camera/ndk/libcamera2ndk^android_x86_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_15/frameworks/av/libcamera2ndk^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/camera/ndk/libcamera2ndk^android_x86_x86_64_shared
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_15/frameworks/av/libcamera2ndk^android_x86_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/frameworks/av/camera/ndk/libcamera2ndk^android_x86_x86_64_shared $GITHUB_WORKSPACE/artifacts/frameworks/av/camera/ndk/libcamera2ndk^android_x86_x86_64_shared/addition_copy_files.output
 
 echo "building libstagefright_http_support^android_x86_64_shared_cfi"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_15.ninja libstagefright_http_support,android_x86_64_shared_cfi
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_15.ninja libstagefright_http_support,android_x86_64_shared_cfi
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libstagefright/http/libstagefright_http_support^android_x86_64_shared_cfi
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_15/frameworks/av/libstagefright_http_support^android_x86_64_shared_cfi.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libstagefright/http/libstagefright_http_support^android_x86_64_shared_cfi
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_15/frameworks/av/libstagefright_http_support^android_x86_64_shared_cfi.output $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libstagefright/http/libstagefright_http_support^android_x86_64_shared_cfi $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libstagefright/http/libstagefright_http_support^android_x86_64_shared_cfi/addition_copy_files.output
 
 echo "building libstagefright_http_support^android_x86_x86_64_shared_cfi"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_15.ninja libstagefright_http_support,android_x86_x86_64_shared_cfi
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_15.ninja libstagefright_http_support,android_x86_x86_64_shared_cfi
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libstagefright/http/libstagefright_http_support^android_x86_x86_64_shared_cfi
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_15/frameworks/av/libstagefright_http_support^android_x86_x86_64_shared_cfi.output . $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libstagefright/http/libstagefright_http_support^android_x86_x86_64_shared_cfi
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_15/frameworks/av/libstagefright_http_support^android_x86_x86_64_shared_cfi.output $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libstagefright/http/libstagefright_http_support^android_x86_x86_64_shared_cfi $GITHUB_WORKSPACE/artifacts/frameworks/av/media/libstagefright/http/libstagefright_http_support^android_x86_x86_64_shared_cfi/addition_copy_files.output

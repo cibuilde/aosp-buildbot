@@ -34,55 +34,55 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/cmd/zipsync/zipsync^linux_gl
 rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/zip/cmd/soong_zip^linux_glibc_x86_64/ .
 
 echo "building libext4^android_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libext4,android_x86_64_static
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libext4,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/iptables/extensions/libext4^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/external/iptables/libext4^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/iptables/extensions/libext4^android_x86_64_static
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/external/iptables/libext4^android_x86_64_static.output $GITHUB_WORKSPACE/artifacts/external/iptables/extensions/libext4^android_x86_64_static $GITHUB_WORKSPACE/artifacts/external/iptables/extensions/libext4^android_x86_64_static/addition_copy_files.output
 
 echo "building libext6_init^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libext6_init,
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libext6_init,
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/iptables/extensions/libext6_init^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/external/iptables/libext6_init^.output . $GITHUB_WORKSPACE/artifacts/external/iptables/extensions/libext6_init^
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/external/iptables/libext6_init^.output $GITHUB_WORKSPACE/artifacts/external/iptables/extensions/libext6_init^ $GITHUB_WORKSPACE/artifacts/external/iptables/extensions/libext6_init^/addition_copy_files.output
 
 echo "building libext6_srcs^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libext6_srcs,
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libext6_srcs,
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/iptables/extensions/libext6_srcs^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/external/iptables/libext6_srcs^.output . $GITHUB_WORKSPACE/artifacts/external/iptables/extensions/libext6_srcs^
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/external/iptables/libext6_srcs^.output $GITHUB_WORKSPACE/artifacts/external/iptables/extensions/libext6_srcs^ $GITHUB_WORKSPACE/artifacts/external/iptables/extensions/libext6_srcs^/addition_copy_files.output
 
 echo "building libext6^android_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libext6,android_x86_64_static
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libext6,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/iptables/extensions/libext6^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/external/iptables/libext6^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/iptables/extensions/libext6^android_x86_64_static
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/external/iptables/libext6^android_x86_64_static.output $GITHUB_WORKSPACE/artifacts/external/iptables/extensions/libext6^android_x86_64_static $GITHUB_WORKSPACE/artifacts/external/iptables/extensions/libext6^android_x86_64_static/addition_copy_files.output
 
 echo "building libext_init^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libext_init,
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libext_init,
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/iptables/extensions/libext_init^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/external/iptables/libext_init^.output . $GITHUB_WORKSPACE/artifacts/external/iptables/extensions/libext_init^
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/external/iptables/libext_init^.output $GITHUB_WORKSPACE/artifacts/external/iptables/extensions/libext_init^ $GITHUB_WORKSPACE/artifacts/external/iptables/extensions/libext_init^/addition_copy_files.output
 
 echo "building libext_srcs^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libext_srcs,
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libext_srcs,
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/iptables/extensions/libext_srcs^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/external/iptables/libext_srcs^.output . $GITHUB_WORKSPACE/artifacts/external/iptables/extensions/libext_srcs^
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/external/iptables/libext_srcs^.output $GITHUB_WORKSPACE/artifacts/external/iptables/extensions/libext_srcs^ $GITHUB_WORKSPACE/artifacts/external/iptables/extensions/libext_srcs^/addition_copy_files.output
 
 echo "building libext^android_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libext,android_x86_64_static
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libext,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/iptables/extensions/libext^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/external/iptables/libext^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/iptables/extensions/libext^android_x86_64_static
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/external/iptables/libext^android_x86_64_static.output $GITHUB_WORKSPACE/artifacts/external/iptables/extensions/libext^android_x86_64_static $GITHUB_WORKSPACE/artifacts/external/iptables/extensions/libext^android_x86_64_static/addition_copy_files.output
 
 echo "building libext4_init^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libext4_init,
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libext4_init,
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/iptables/extensions/libext4_init^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/external/iptables/libext4_init^.output . $GITHUB_WORKSPACE/artifacts/external/iptables/extensions/libext4_init^
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/external/iptables/libext4_init^.output $GITHUB_WORKSPACE/artifacts/external/iptables/extensions/libext4_init^ $GITHUB_WORKSPACE/artifacts/external/iptables/extensions/libext4_init^/addition_copy_files.output
 
 echo "building libext4_srcs^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libext4_srcs,
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libext4_srcs,
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/iptables/extensions/libext4_srcs^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/external/iptables/libext4_srcs^.output . $GITHUB_WORKSPACE/artifacts/external/iptables/extensions/libext4_srcs^
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/external/iptables/libext4_srcs^.output $GITHUB_WORKSPACE/artifacts/external/iptables/extensions/libext4_srcs^ $GITHUB_WORKSPACE/artifacts/external/iptables/extensions/libext4_srcs^/addition_copy_files.output

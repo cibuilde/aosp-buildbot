@@ -28,7 +28,7 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/external/tflite-support/tflite_support_s
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/tflite-support/tflite_support_spm_encoder_config^/ .
 
 echo "building tflite_support^android_x86_64_sdk_static_apex30"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja tflite_support,android_x86_64_sdk_static_apex30
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja tflite_support,android_x86_64_sdk_static_apex30
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/tflite-support/tflite_support^android_x86_64_sdk_static_apex30
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/external/tflite-support/tflite_support^android_x86_64_sdk_static_apex30.output . $GITHUB_WORKSPACE/artifacts/external/tflite-support/tflite_support^android_x86_64_sdk_static_apex30
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/external/tflite-support/tflite_support^android_x86_64_sdk_static_apex30.output $GITHUB_WORKSPACE/artifacts/external/tflite-support/tflite_support^android_x86_64_sdk_static_apex30 $GITHUB_WORKSPACE/artifacts/external/tflite-support/tflite_support^android_x86_64_sdk_static_apex30/addition_copy_files.output

@@ -38,7 +38,7 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/ExtServices/native/libe
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog.ndk^android_x86_64_sdk_shared_current/ .
 
 echo "building libextservices_jni^android_x86_64_sdk_shared_apex30"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libextservices_jni,android_x86_64_sdk_shared_apex30
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libextservices_jni,android_x86_64_sdk_shared_apex30
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/ExtServices/jni/libextservices_jni^android_x86_64_sdk_shared_apex30
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/packages/modules/ExtServices/libextservices_jni^android_x86_64_sdk_shared_apex30.output . $GITHUB_WORKSPACE/artifacts/packages/modules/ExtServices/jni/libextservices_jni^android_x86_64_sdk_shared_apex30
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_07/packages/modules/ExtServices/libextservices_jni^android_x86_64_sdk_shared_apex30.output $GITHUB_WORKSPACE/artifacts/packages/modules/ExtServices/jni/libextservices_jni^android_x86_64_sdk_shared_apex30 $GITHUB_WORKSPACE/artifacts/packages/modules/ExtServices/jni/libextservices_jni^android_x86_64_sdk_shared_apex30/addition_copy_files.output

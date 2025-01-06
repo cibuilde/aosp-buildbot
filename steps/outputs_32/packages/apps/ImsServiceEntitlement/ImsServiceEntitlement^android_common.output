@@ -1,6 +1,8 @@
 out/soong/.intermediates/packages/apps/ImsServiceEntitlement/ImsServiceEntitlement/android_common/ImsServiceEntitlement.apk
+out/soong/.intermediates/packages/apps/ImsServiceEntitlement/ImsServiceEntitlement/android_common/combined/ImsServiceEntitlement.jar
 out/soong/.intermediates/packages/apps/ImsServiceEntitlement/ImsServiceEntitlement/android_common/dexpreopt/dexpreopt.config
 out/soong/.intermediates/packages/apps/ImsServiceEntitlement/ImsServiceEntitlement/android_common/dexpreopt/oat/x86_64/package.odex
 out/soong/.intermediates/packages/apps/ImsServiceEntitlement/ImsServiceEntitlement/android_common/dexpreopt/oat/x86_64/package.vdex
+out/soong/.intermediates/packages/apps/ImsServiceEntitlement/ImsServiceEntitlement/android_common/package-res.apk
 out/soong/.intermediates/packages/apps/ImsServiceEntitlement/ImsServiceEntitlement/android_common/proguard_dictionary
 out/soong/.intermediates/packages/apps/ImsServiceEntitlement/ImsServiceEntitlement/android_common/proguard_usage.zip

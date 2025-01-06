@@ -49,7 +49,7 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/system/netd/client/libnetd_client^androi
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/security/keystore-engine/libkeystore-engine^android_x86_64_shared/ .
 
 echo "building racoon^android_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_12.ninja racoon,android_x86_64
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_12.ninja racoon,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/ipsec-tools/racoon^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_12/external/ipsec-tools/racoon^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/ipsec-tools/racoon^android_x86_64
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_12/external/ipsec-tools/racoon^android_x86_64.output $GITHUB_WORKSPACE/artifacts/external/ipsec-tools/racoon^android_x86_64 $GITHUB_WORKSPACE/artifacts/external/ipsec-tools/racoon^android_x86_64/addition_copy_files.output

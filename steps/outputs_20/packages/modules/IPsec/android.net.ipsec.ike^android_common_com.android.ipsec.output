@@ -1,2 +1,3 @@
 out/soong/.intermediates/packages/modules/IPsec/android.net.ipsec.ike/android_common_com.android.ipsec/aligned/android.net.ipsec.ike.jar
+out/soong/.intermediates/packages/modules/IPsec/android.net.ipsec.ike/android_common_com.android.ipsec/jarjar/android.net.ipsec.ike.jar
 out/soong/.intermediates/packages/modules/IPsec/android.net.ipsec.ike/android_common_com.android.ipsec/turbine-jarjar/android.net.ipsec.ike.jar

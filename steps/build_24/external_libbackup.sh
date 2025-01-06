@@ -82,7 +82,7 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/sdk/current/support/android-su
 rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/sdk/current/support/android-support-viewpager^android_common/ .
 
 echo "building libbackup^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_24.ninja libbackup,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_24.ninja libbackup,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/libbackup/libbackup^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_24/external/libbackup/libbackup^android_common.output . $GITHUB_WORKSPACE/artifacts/external/libbackup/libbackup^android_common
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_24/external/libbackup/libbackup^android_common.output $GITHUB_WORKSPACE/artifacts/external/libbackup/libbackup^android_common $GITHUB_WORKSPACE/artifacts/external/libbackup/libbackup^android_common/addition_copy_files.output

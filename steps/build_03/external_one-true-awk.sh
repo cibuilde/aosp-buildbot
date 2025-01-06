@@ -29,25 +29,25 @@ clone_depth_platform system/media
 rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/cmd/sbox/sbox^linux_glibc_x86_64/ .
 
 echo "building awkgram.tab.c^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja awkgram.tab.c,
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja awkgram.tab.c,
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/one-true-awk/awkgram.tab.c^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/external/one-true-awk/awkgram.tab.c^.output . $GITHUB_WORKSPACE/artifacts/external/one-true-awk/awkgram.tab.c^
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/external/one-true-awk/awkgram.tab.c^.output $GITHUB_WORKSPACE/artifacts/external/one-true-awk/awkgram.tab.c^ $GITHUB_WORKSPACE/artifacts/external/one-true-awk/awkgram.tab.c^/addition_copy_files.output
 
 echo "building awkgram.tab.h^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja awkgram.tab.h,
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja awkgram.tab.h,
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/one-true-awk/awkgram.tab.h^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/external/one-true-awk/awkgram.tab.h^.output . $GITHUB_WORKSPACE/artifacts/external/one-true-awk/awkgram.tab.h^
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/external/one-true-awk/awkgram.tab.h^.output $GITHUB_WORKSPACE/artifacts/external/one-true-awk/awkgram.tab.h^ $GITHUB_WORKSPACE/artifacts/external/one-true-awk/awkgram.tab.h^/addition_copy_files.output
 
 echo "building proctab.c^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja proctab.c,
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja proctab.c,
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/one-true-awk/proctab.c^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/external/one-true-awk/proctab.c^.output . $GITHUB_WORKSPACE/artifacts/external/one-true-awk/proctab.c^
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/external/one-true-awk/proctab.c^.output $GITHUB_WORKSPACE/artifacts/external/one-true-awk/proctab.c^ $GITHUB_WORKSPACE/artifacts/external/one-true-awk/proctab.c^/addition_copy_files.output
 
 echo "building awk-maketab^linux_glibc_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja awk-maketab,linux_glibc_x86_64
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja awk-maketab,linux_glibc_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/one-true-awk/awk-maketab^linux_glibc_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/external/one-true-awk/awk-maketab^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/one-true-awk/awk-maketab^linux_glibc_x86_64
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/external/one-true-awk/awk-maketab^linux_glibc_x86_64.output $GITHUB_WORKSPACE/artifacts/external/one-true-awk/awk-maketab^linux_glibc_x86_64 $GITHUB_WORKSPACE/artifacts/external/one-true-awk/awk-maketab^linux_glibc_x86_64/addition_copy_files.output

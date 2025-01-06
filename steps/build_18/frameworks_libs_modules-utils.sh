@@ -37,31 +37,31 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/tools/platform-compat/java/android/compa
 rsync -a -r $GITHUB_WORKSPACE/downloads/tools/platform-compat/java/android/processor/compat/unsupportedappusage/unsupportedappusage-annotation-processor^linux_glibc_common/ .
 
 echo "building modules-utils-preconditions^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_18.ninja modules-utils-preconditions,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_18.ninja modules-utils-preconditions,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/libs/modules-utils/java/com/android/internal/util/modules-utils-preconditions^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_18/frameworks/libs/modules-utils/modules-utils-preconditions^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/libs/modules-utils/java/com/android/internal/util/modules-utils-preconditions^android_common
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_18/frameworks/libs/modules-utils/modules-utils-preconditions^android_common.output $GITHUB_WORKSPACE/artifacts/frameworks/libs/modules-utils/java/com/android/internal/util/modules-utils-preconditions^android_common $GITHUB_WORKSPACE/artifacts/frameworks/libs/modules-utils/java/com/android/internal/util/modules-utils-preconditions^android_common/addition_copy_files.output
 
 echo "building modules-utils-preconditions^android_common_apex10000"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_18.ninja modules-utils-preconditions,android_common_apex10000
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_18.ninja modules-utils-preconditions,android_common_apex10000
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/libs/modules-utils/java/com/android/internal/util/modules-utils-preconditions^android_common_apex10000
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_18/frameworks/libs/modules-utils/modules-utils-preconditions^android_common_apex10000.output . $GITHUB_WORKSPACE/artifacts/frameworks/libs/modules-utils/java/com/android/internal/util/modules-utils-preconditions^android_common_apex10000
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_18/frameworks/libs/modules-utils/modules-utils-preconditions^android_common_apex10000.output $GITHUB_WORKSPACE/artifacts/frameworks/libs/modules-utils/java/com/android/internal/util/modules-utils-preconditions^android_common_apex10000 $GITHUB_WORKSPACE/artifacts/frameworks/libs/modules-utils/java/com/android/internal/util/modules-utils-preconditions^android_common_apex10000/addition_copy_files.output
 
 echo "building modules-utils-build^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_18.ninja modules-utils-build,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_18.ninja modules-utils-build,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/libs/modules-utils/java/com/android/modules/utils/build/modules-utils-build^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_18/frameworks/libs/modules-utils/modules-utils-build^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/libs/modules-utils/java/com/android/modules/utils/build/modules-utils-build^android_common
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_18/frameworks/libs/modules-utils/modules-utils-build^android_common.output $GITHUB_WORKSPACE/artifacts/frameworks/libs/modules-utils/java/com/android/modules/utils/build/modules-utils-build^android_common $GITHUB_WORKSPACE/artifacts/frameworks/libs/modules-utils/java/com/android/modules/utils/build/modules-utils-build^android_common/addition_copy_files.output
 
 echo "building modules-utils-build^android_common_apex29"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_18.ninja modules-utils-build,android_common_apex29
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_18.ninja modules-utils-build,android_common_apex29
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/libs/modules-utils/java/com/android/modules/utils/build/modules-utils-build^android_common_apex29
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_18/frameworks/libs/modules-utils/modules-utils-build^android_common_apex29.output . $GITHUB_WORKSPACE/artifacts/frameworks/libs/modules-utils/java/com/android/modules/utils/build/modules-utils-build^android_common_apex29
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_18/frameworks/libs/modules-utils/modules-utils-build^android_common_apex29.output $GITHUB_WORKSPACE/artifacts/frameworks/libs/modules-utils/java/com/android/modules/utils/build/modules-utils-build^android_common_apex29 $GITHUB_WORKSPACE/artifacts/frameworks/libs/modules-utils/java/com/android/modules/utils/build/modules-utils-build^android_common_apex29/addition_copy_files.output
 
 echo "building modules-utils-build^android_common_apex30"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_18.ninja modules-utils-build,android_common_apex30
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_18.ninja modules-utils-build,android_common_apex30
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/libs/modules-utils/java/com/android/modules/utils/build/modules-utils-build^android_common_apex30
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_18/frameworks/libs/modules-utils/modules-utils-build^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/frameworks/libs/modules-utils/java/com/android/modules/utils/build/modules-utils-build^android_common_apex30
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_18/frameworks/libs/modules-utils/modules-utils-build^android_common_apex30.output $GITHUB_WORKSPACE/artifacts/frameworks/libs/modules-utils/java/com/android/modules/utils/build/modules-utils-build^android_common_apex30 $GITHUB_WORKSPACE/artifacts/frameworks/libs/modules-utils/java/com/android/modules/utils/build/modules-utils-build^android_common_apex30/addition_copy_files.output

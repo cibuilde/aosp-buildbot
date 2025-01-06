@@ -49,7 +49,7 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/system/core/fs_mgr/libfs_mgr^android_x86
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/libbase/libbase^android_x86_64_shared/ .
 
 echo "building avbctl^android_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja avbctl,android_x86_64
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja avbctl,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/avb/avbctl^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/external/avb/avbctl^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/avb/avbctl^android_x86_64
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_07/external/avb/avbctl^android_x86_64.output $GITHUB_WORKSPACE/artifacts/external/avb/avbctl^android_x86_64 $GITHUB_WORKSPACE/artifacts/external/avb/avbctl^android_x86_64/addition_copy_files.output

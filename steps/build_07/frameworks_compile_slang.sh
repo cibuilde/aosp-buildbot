@@ -58,7 +58,7 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/sdk/tools/prebuilt_libLLVM_and
 rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/sdk/tools/prebuilt_libclang_android^linux_glibc_x86_64_shared/ .
 
 echo "building llvm-rs-cc^linux_glibc_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja llvm-rs-cc,linux_glibc_x86_64
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja llvm-rs-cc,linux_glibc_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/compile/slang/llvm-rs-cc^linux_glibc_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/frameworks/compile/slang/llvm-rs-cc^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/frameworks/compile/slang/llvm-rs-cc^linux_glibc_x86_64
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_07/frameworks/compile/slang/llvm-rs-cc^linux_glibc_x86_64.output $GITHUB_WORKSPACE/artifacts/frameworks/compile/slang/llvm-rs-cc^linux_glibc_x86_64 $GITHUB_WORKSPACE/artifacts/frameworks/compile/slang/llvm-rs-cc^linux_glibc_x86_64/addition_copy_files.output

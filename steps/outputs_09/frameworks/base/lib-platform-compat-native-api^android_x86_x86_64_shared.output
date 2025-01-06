@@ -1,2 +1,5 @@
+out/soong/.intermediates/frameworks/base/native/android/lib-platform-compat-native-api/android_x86_x86_64_shared/gen/aidl/com/android/internal/compat/BnPlatformCompatNative.h
+out/soong/.intermediates/frameworks/base/native/android/lib-platform-compat-native-api/android_x86_x86_64_shared/gen/aidl/com/android/internal/compat/BpPlatformCompatNative.h
+out/soong/.intermediates/frameworks/base/native/android/lib-platform-compat-native-api/android_x86_x86_64_shared/gen/aidl/com/android/internal/compat/IPlatformCompatNative.h
 out/soong/.intermediates/frameworks/base/native/android/lib-platform-compat-native-api/android_x86_x86_64_shared/lib-platform-compat-native-api.so
 out/soong/.intermediates/frameworks/base/native/android/lib-platform-compat-native-api/android_x86_x86_64_shared/lib-platform-compat-native-api.so.toc

@@ -67,13 +67,13 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/tools/platform-compat/java/android/compa
 rsync -a -r $GITHUB_WORKSPACE/downloads/tools/platform-compat/java/android/processor/compat/unsupportedappusage/unsupportedappusage-annotation-processor^linux_glibc_common/ .
 
 echo "building com.android.scheduling^android_common_com.android.scheduling_image"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_25.ninja com.android.scheduling,android_common_com.android.scheduling_image
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_25.ninja com.android.scheduling,android_common_com.android.scheduling_image
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/Scheduling/apex/com.android.scheduling^android_common_com.android.scheduling_image
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_25/packages/modules/Scheduling/com.android.scheduling^android_common_com.android.scheduling_image.output . $GITHUB_WORKSPACE/artifacts/packages/modules/Scheduling/apex/com.android.scheduling^android_common_com.android.scheduling_image
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_25/packages/modules/Scheduling/com.android.scheduling^android_common_com.android.scheduling_image.output $GITHUB_WORKSPACE/artifacts/packages/modules/Scheduling/apex/com.android.scheduling^android_common_com.android.scheduling_image $GITHUB_WORKSPACE/artifacts/packages/modules/Scheduling/apex/com.android.scheduling^android_common_com.android.scheduling_image/addition_copy_files.output
 
 echo "building service-scheduling^android_common_apex10000"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_25.ninja service-scheduling,android_common_apex10000
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_25.ninja service-scheduling,android_common_apex10000
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/Scheduling/service/service-scheduling^android_common_apex10000
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_25/packages/modules/Scheduling/service-scheduling^android_common_apex10000.output . $GITHUB_WORKSPACE/artifacts/packages/modules/Scheduling/service/service-scheduling^android_common_apex10000
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_25/packages/modules/Scheduling/service-scheduling^android_common_apex10000.output $GITHUB_WORKSPACE/artifacts/packages/modules/Scheduling/service/service-scheduling^android_common_apex10000 $GITHUB_WORKSPACE/artifacts/packages/modules/Scheduling/service/service-scheduling^android_common_apex10000/addition_copy_files.output

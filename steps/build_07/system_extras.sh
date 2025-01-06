@@ -64,19 +64,19 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^android_x86
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^linux_glibc_x86_64_shared/ .
 
 echo "building iotop^android_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja iotop,android_x86_64
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja iotop,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/extras/iotop/iotop^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/extras/iotop^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/extras/iotop/iotop^android_x86_64
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_07/system/extras/iotop^android_x86_64.output $GITHUB_WORKSPACE/artifacts/system/extras/iotop/iotop^android_x86_64 $GITHUB_WORKSPACE/artifacts/system/extras/iotop/iotop^android_x86_64/addition_copy_files.output
 
 echo "building lpmake^linux_glibc_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja lpmake,linux_glibc_x86_64
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja lpmake,linux_glibc_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/extras/partition_tools/lpmake^linux_glibc_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/extras/lpmake^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/extras/partition_tools/lpmake^linux_glibc_x86_64
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_07/system/extras/lpmake^linux_glibc_x86_64.output $GITHUB_WORKSPACE/artifacts/system/extras/partition_tools/lpmake^linux_glibc_x86_64 $GITHUB_WORKSPACE/artifacts/system/extras/partition_tools/lpmake^linux_glibc_x86_64/addition_copy_files.output
 
 echo "building libsimpleperf_profcollect_bindgen^android_x86_64_rlib_dylib-std"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libsimpleperf_profcollect_bindgen,android_x86_64_rlib_dylib-std
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libsimpleperf_profcollect_bindgen,android_x86_64_rlib_dylib-std
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/extras/simpleperf/libsimpleperf_profcollect_bindgen^android_x86_64_rlib_dylib-std
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/system/extras/libsimpleperf_profcollect_bindgen^android_x86_64_rlib_dylib-std.output . $GITHUB_WORKSPACE/artifacts/system/extras/simpleperf/libsimpleperf_profcollect_bindgen^android_x86_64_rlib_dylib-std
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_07/system/extras/libsimpleperf_profcollect_bindgen^android_x86_64_rlib_dylib-std.output $GITHUB_WORKSPACE/artifacts/system/extras/simpleperf/libsimpleperf_profcollect_bindgen^android_x86_64_rlib_dylib-std $GITHUB_WORKSPACE/artifacts/system/extras/simpleperf/libsimpleperf_profcollect_bindgen^android_x86_64_rlib_dylib-std/addition_copy_files.output

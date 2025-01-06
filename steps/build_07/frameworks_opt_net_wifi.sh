@@ -52,19 +52,19 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/system/libbase/libbase^android_vendor.31
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/libbase/libbase^android_x86_64_shared/ .
 
 echo "building libwifi-system-iface^android_vendor.31_x86_64_shared"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libwifi-system-iface,android_vendor.31_x86_64_shared
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libwifi-system-iface,android_vendor.31_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/opt/net/wifi/libwifi_system_iface/libwifi-system-iface^android_vendor.31_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/frameworks/opt/net/wifi/libwifi-system-iface^android_vendor.31_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/opt/net/wifi/libwifi_system_iface/libwifi-system-iface^android_vendor.31_x86_64_shared
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_07/frameworks/opt/net/wifi/libwifi-system-iface^android_vendor.31_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/frameworks/opt/net/wifi/libwifi_system_iface/libwifi-system-iface^android_vendor.31_x86_64_shared $GITHUB_WORKSPACE/artifacts/frameworks/opt/net/wifi/libwifi_system_iface/libwifi-system-iface^android_vendor.31_x86_64_shared/addition_copy_files.output
 
 echo "building libwifi-system-iface^android_vendor.31_x86_x86_64_shared"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libwifi-system-iface,android_vendor.31_x86_x86_64_shared
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libwifi-system-iface,android_vendor.31_x86_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/opt/net/wifi/libwifi_system_iface/libwifi-system-iface^android_vendor.31_x86_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/frameworks/opt/net/wifi/libwifi-system-iface^android_vendor.31_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/opt/net/wifi/libwifi_system_iface/libwifi-system-iface^android_vendor.31_x86_x86_64_shared
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_07/frameworks/opt/net/wifi/libwifi-system-iface^android_vendor.31_x86_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/frameworks/opt/net/wifi/libwifi_system_iface/libwifi-system-iface^android_vendor.31_x86_x86_64_shared $GITHUB_WORKSPACE/artifacts/frameworks/opt/net/wifi/libwifi_system_iface/libwifi-system-iface^android_vendor.31_x86_x86_64_shared/addition_copy_files.output
 
 echo "building libwifi-system-iface^android_x86_64_shared"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libwifi-system-iface,android_x86_64_shared
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libwifi-system-iface,android_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/opt/net/wifi/libwifi_system_iface/libwifi-system-iface^android_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/frameworks/opt/net/wifi/libwifi-system-iface^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/opt/net/wifi/libwifi_system_iface/libwifi-system-iface^android_x86_64_shared
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_07/frameworks/opt/net/wifi/libwifi-system-iface^android_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/frameworks/opt/net/wifi/libwifi_system_iface/libwifi-system-iface^android_x86_64_shared $GITHUB_WORKSPACE/artifacts/frameworks/opt/net/wifi/libwifi_system_iface/libwifi-system-iface^android_x86_64_shared/addition_copy_files.output

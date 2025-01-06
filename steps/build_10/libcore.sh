@@ -59,115 +59,115 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/tools/platform-compat/java/android/proce
 rsync -a -r $GITHUB_WORKSPACE/downloads/tools/platform-compat/java/android/processor/compat/unsupportedappusage/unsupportedappusage-annotation-processor^linux_glibc_common/ .
 
 echo "building api-annotations-system-modules^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja api-annotations-system-modules,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja api-annotations-system-modules,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/libcore/api-annotations-system-modules^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/libcore/api-annotations-system-modules^android_common.output . $GITHUB_WORKSPACE/artifacts/libcore/api-annotations-system-modules^android_common
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_10/libcore/api-annotations-system-modules^android_common.output $GITHUB_WORKSPACE/artifacts/libcore/api-annotations-system-modules^android_common $GITHUB_WORKSPACE/artifacts/libcore/api-annotations-system-modules^android_common/addition_copy_files.output
 
 echo "building art.module.api.annotations.for.system.modules^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja art.module.api.annotations.for.system.modules,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja art.module.api.annotations.for.system.modules,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/libcore/art.module.api.annotations.for.system.modules^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/libcore/art.module.api.annotations.for.system.modules^android_common.output . $GITHUB_WORKSPACE/artifacts/libcore/art.module.api.annotations.for.system.modules^android_common
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_10/libcore/art.module.api.annotations.for.system.modules^android_common.output $GITHUB_WORKSPACE/artifacts/libcore/art.module.api.annotations.for.system.modules^android_common $GITHUB_WORKSPACE/artifacts/libcore/art.module.api.annotations.for.system.modules^android_common/addition_copy_files.output
 
 echo "building core-all^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja core-all,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja core-all,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/libcore/core-all^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/libcore/core-all^android_common.output . $GITHUB_WORKSPACE/artifacts/libcore/core-all^android_common
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_10/libcore/core-all^android_common.output $GITHUB_WORKSPACE/artifacts/libcore/core-all^android_common $GITHUB_WORKSPACE/artifacts/libcore/core-all^android_common/addition_copy_files.output
 
 echo "building libcore-platform-compat-config^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja libcore-platform-compat-config,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja libcore-platform-compat-config,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/libcore/libcore-platform-compat-config^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/libcore/libcore-platform-compat-config^android_common.output . $GITHUB_WORKSPACE/artifacts/libcore/libcore-platform-compat-config^android_common
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_10/libcore/libcore-platform-compat-config^android_common.output $GITHUB_WORKSPACE/artifacts/libcore/libcore-platform-compat-config^android_common $GITHUB_WORKSPACE/artifacts/libcore/libcore-platform-compat-config^android_common/addition_copy_files.output
 
 echo "building core-all-system-modules^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja core-all-system-modules,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja core-all-system-modules,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/libcore/core-all-system-modules^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/libcore/core-all-system-modules^android_common.output . $GITHUB_WORKSPACE/artifacts/libcore/core-all-system-modules^android_common
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_10/libcore/core-all-system-modules^android_common.output $GITHUB_WORKSPACE/artifacts/libcore/core-all-system-modules^android_common $GITHUB_WORKSPACE/artifacts/libcore/core-all-system-modules^android_common/addition_copy_files.output
 
 echo "building core-oj^android_common_apex31"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja core-oj,android_common_apex31
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja core-oj,android_common_apex31
 mkdir -p $GITHUB_WORKSPACE/artifacts/libcore/core-oj^android_common_apex31
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/libcore/core-oj^android_common_apex31.output . $GITHUB_WORKSPACE/artifacts/libcore/core-oj^android_common_apex31
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_10/libcore/core-oj^android_common_apex31.output $GITHUB_WORKSPACE/artifacts/libcore/core-oj^android_common_apex31 $GITHUB_WORKSPACE/artifacts/libcore/core-oj^android_common_apex31/addition_copy_files.output
 
 echo "building core-libart^android_common_apex31"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja core-libart,android_common_apex31
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja core-libart,android_common_apex31
 mkdir -p $GITHUB_WORKSPACE/artifacts/libcore/core-libart^android_common_apex31
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/libcore/core-libart^android_common_apex31.output . $GITHUB_WORKSPACE/artifacts/libcore/core-libart^android_common_apex31
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_10/libcore/core-libart^android_common_apex31.output $GITHUB_WORKSPACE/artifacts/libcore/core-libart^android_common_apex31 $GITHUB_WORKSPACE/artifacts/libcore/core-libart^android_common_apex31/addition_copy_files.output
 
 echo "building core-oj-hiddenapi-annotations^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja core-oj-hiddenapi-annotations,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja core-oj-hiddenapi-annotations,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/libcore/core-oj-hiddenapi-annotations^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/libcore/core-oj-hiddenapi-annotations^android_common.output . $GITHUB_WORKSPACE/artifacts/libcore/core-oj-hiddenapi-annotations^android_common
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_10/libcore/core-oj-hiddenapi-annotations^android_common.output $GITHUB_WORKSPACE/artifacts/libcore/core-oj-hiddenapi-annotations^android_common $GITHUB_WORKSPACE/artifacts/libcore/core-oj-hiddenapi-annotations^android_common/addition_copy_files.output
 
 echo "building core-lambda-stubs^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja core-lambda-stubs,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja core-lambda-stubs,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/libcore/core-lambda-stubs^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/libcore/core-lambda-stubs^android_common.output . $GITHUB_WORKSPACE/artifacts/libcore/core-lambda-stubs^android_common
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_10/libcore/core-lambda-stubs^android_common.output $GITHUB_WORKSPACE/artifacts/libcore/core-lambda-stubs^android_common $GITHUB_WORKSPACE/artifacts/libcore/core-lambda-stubs^android_common/addition_copy_files.output
 
 echo "building core-lambda-stubs-for-system-modules^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja core-lambda-stubs-for-system-modules,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja core-lambda-stubs-for-system-modules,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/libcore/core-lambda-stubs-for-system-modules^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/libcore/core-lambda-stubs-for-system-modules^android_common.output . $GITHUB_WORKSPACE/artifacts/libcore/core-lambda-stubs-for-system-modules^android_common
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_10/libcore/core-lambda-stubs-for-system-modules^android_common.output $GITHUB_WORKSPACE/artifacts/libcore/core-lambda-stubs-for-system-modules^android_common $GITHUB_WORKSPACE/artifacts/libcore/core-lambda-stubs-for-system-modules^android_common/addition_copy_files.output
 
 echo "building core-generated-annotation-stubs^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja core-generated-annotation-stubs,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja core-generated-annotation-stubs,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/libcore/core-generated-annotation-stubs^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/libcore/core-generated-annotation-stubs^android_common.output . $GITHUB_WORKSPACE/artifacts/libcore/core-generated-annotation-stubs^android_common
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_10/libcore/core-generated-annotation-stubs^android_common.output $GITHUB_WORKSPACE/artifacts/libcore/core-generated-annotation-stubs^android_common $GITHUB_WORKSPACE/artifacts/libcore/core-generated-annotation-stubs^android_common/addition_copy_files.output
 
 echo "building framework-api-annotations-lib^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja framework-api-annotations-lib,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja framework-api-annotations-lib,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/libcore/framework-api-annotations-lib^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/libcore/framework-api-annotations-lib^android_common.output . $GITHUB_WORKSPACE/artifacts/libcore/framework-api-annotations-lib^android_common
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_10/libcore/framework-api-annotations-lib^android_common.output $GITHUB_WORKSPACE/artifacts/libcore/framework-api-annotations-lib^android_common $GITHUB_WORKSPACE/artifacts/libcore/framework-api-annotations-lib^android_common/addition_copy_files.output
 
 echo "building art.module.public.api.stubs.module_lib^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja art.module.public.api.stubs.module_lib,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja art.module.public.api.stubs.module_lib,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/libcore/art.module.public.api.stubs.module_lib^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/libcore/art.module.public.api.stubs.module_lib^android_common.output . $GITHUB_WORKSPACE/artifacts/libcore/art.module.public.api.stubs.module_lib^android_common
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_10/libcore/art.module.public.api.stubs.module_lib^android_common.output $GITHUB_WORKSPACE/artifacts/libcore/art.module.public.api.stubs.module_lib^android_common $GITHUB_WORKSPACE/artifacts/libcore/art.module.public.api.stubs.module_lib^android_common/addition_copy_files.output
 
 echo "building art.module.public.api.stubs.source.module_lib^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja art.module.public.api.stubs.source.module_lib,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja art.module.public.api.stubs.source.module_lib,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/libcore/art.module.public.api.stubs.source.module_lib^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/libcore/art.module.public.api.stubs.source.module_lib^android_common.output . $GITHUB_WORKSPACE/artifacts/libcore/art.module.public.api.stubs.source.module_lib^android_common
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_10/libcore/art.module.public.api.stubs.source.module_lib^android_common.output $GITHUB_WORKSPACE/artifacts/libcore/art.module.public.api.stubs.source.module_lib^android_common $GITHUB_WORKSPACE/artifacts/libcore/art.module.public.api.stubs.source.module_lib^android_common/addition_copy_files.output
 
 echo "building art.module.public.api.stubs.source.system^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja art.module.public.api.stubs.source.system,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja art.module.public.api.stubs.source.system,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/libcore/art.module.public.api.stubs.source.system^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/libcore/art.module.public.api.stubs.source.system^android_common.output . $GITHUB_WORKSPACE/artifacts/libcore/art.module.public.api.stubs.source.system^android_common
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_10/libcore/art.module.public.api.stubs.source.system^android_common.output $GITHUB_WORKSPACE/artifacts/libcore/art.module.public.api.stubs.source.system^android_common $GITHUB_WORKSPACE/artifacts/libcore/art.module.public.api.stubs.source.system^android_common/addition_copy_files.output
 
 echo "building art.module.public.api.stubs.source^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja art.module.public.api.stubs.source,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja art.module.public.api.stubs.source,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/libcore/art.module.public.api.stubs.source^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/libcore/art.module.public.api.stubs.source^android_common.output . $GITHUB_WORKSPACE/artifacts/libcore/art.module.public.api.stubs.source^android_common
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_10/libcore/art.module.public.api.stubs.source^android_common.output $GITHUB_WORKSPACE/artifacts/libcore/art.module.public.api.stubs.source^android_common $GITHUB_WORKSPACE/artifacts/libcore/art.module.public.api.stubs.source^android_common/addition_copy_files.output
 
 echo "building art.module.public.api.stubs.system^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja art.module.public.api.stubs.system,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja art.module.public.api.stubs.system,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/libcore/art.module.public.api.stubs.system^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/libcore/art.module.public.api.stubs.system^android_common.output . $GITHUB_WORKSPACE/artifacts/libcore/art.module.public.api.stubs.system^android_common
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_10/libcore/art.module.public.api.stubs.system^android_common.output $GITHUB_WORKSPACE/artifacts/libcore/art.module.public.api.stubs.system^android_common $GITHUB_WORKSPACE/artifacts/libcore/art.module.public.api.stubs.system^android_common/addition_copy_files.output
 
 echo "building art.module.public.api.stubs^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja art.module.public.api.stubs,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja art.module.public.api.stubs,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/libcore/art.module.public.api.stubs^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/libcore/art.module.public.api.stubs^android_common.output . $GITHUB_WORKSPACE/artifacts/libcore/art.module.public.api.stubs^android_common
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_10/libcore/art.module.public.api.stubs^android_common.output $GITHUB_WORKSPACE/artifacts/libcore/art.module.public.api.stubs^android_common $GITHUB_WORKSPACE/artifacts/libcore/art.module.public.api.stubs^android_common/addition_copy_files.output
 
 echo "building art-module-public-api-stubs-system-modules^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja art-module-public-api-stubs-system-modules,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja art-module-public-api-stubs-system-modules,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/libcore/art-module-public-api-stubs-system-modules^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/libcore/art-module-public-api-stubs-system-modules^android_common.output . $GITHUB_WORKSPACE/artifacts/libcore/art-module-public-api-stubs-system-modules^android_common
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_10/libcore/art-module-public-api-stubs-system-modules^android_common.output $GITHUB_WORKSPACE/artifacts/libcore/art-module-public-api-stubs-system-modules^android_common $GITHUB_WORKSPACE/artifacts/libcore/art-module-public-api-stubs-system-modules^android_common/addition_copy_files.output

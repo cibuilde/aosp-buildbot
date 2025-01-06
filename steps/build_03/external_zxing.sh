@@ -20,7 +20,7 @@ clone_depth_platform external/zxing
 rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/cmd/merge_zips/merge_zips^linux_glibc_x86_64/ .
 
 echo "building zxing-core-1.7^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja zxing-core-1.7,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja zxing-core-1.7,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/zxing/core/zxing-core-1.7^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/external/zxing/zxing-core-1.7^android_common.output . $GITHUB_WORKSPACE/artifacts/external/zxing/core/zxing-core-1.7^android_common
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/external/zxing/zxing-core-1.7^android_common.output $GITHUB_WORKSPACE/artifacts/external/zxing/core/zxing-core-1.7^android_common $GITHUB_WORKSPACE/artifacts/external/zxing/core/zxing-core-1.7^android_common/addition_copy_files.output

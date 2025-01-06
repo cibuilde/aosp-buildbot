@@ -137,157 +137,157 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/rust/libtest^android_x86_64_rl
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^android_x86_64_shared/ .
 
 echo "building libbase_rust^android_x86_64_rlib_rlib-std_apex10000"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja libbase_rust,android_x86_64_rlib_rlib-std_apex10000
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja libbase_rust,android_x86_64_rlib_rlib-std_apex10000
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/crosvm/base/libbase_rust^android_x86_64_rlib_rlib-std_apex10000
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_09/external/crosvm/libbase_rust^android_x86_64_rlib_rlib-std_apex10000.output . $GITHUB_WORKSPACE/artifacts/external/crosvm/base/libbase_rust^android_x86_64_rlib_rlib-std_apex10000
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_09/external/crosvm/libbase_rust^android_x86_64_rlib_rlib-std_apex10000.output $GITHUB_WORKSPACE/artifacts/external/crosvm/base/libbase_rust^android_x86_64_rlib_rlib-std_apex10000 $GITHUB_WORKSPACE/artifacts/external/crosvm/base/libbase_rust^android_x86_64_rlib_rlib-std_apex10000/addition_copy_files.output
 
 echo "building libcros_async^android_x86_64_rlib_rlib-std_apex10000"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja libcros_async,android_x86_64_rlib_rlib-std_apex10000
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja libcros_async,android_x86_64_rlib_rlib-std_apex10000
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/crosvm/cros_async/libcros_async^android_x86_64_rlib_rlib-std_apex10000
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_09/external/crosvm/libcros_async^android_x86_64_rlib_rlib-std_apex10000.output . $GITHUB_WORKSPACE/artifacts/external/crosvm/cros_async/libcros_async^android_x86_64_rlib_rlib-std_apex10000
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_09/external/crosvm/libcros_async^android_x86_64_rlib_rlib-std_apex10000.output $GITHUB_WORKSPACE/artifacts/external/crosvm/cros_async/libcros_async^android_x86_64_rlib_rlib-std_apex10000 $GITHUB_WORKSPACE/artifacts/external/crosvm/cros_async/libcros_async^android_x86_64_rlib_rlib-std_apex10000/addition_copy_files.output
 
 echo "building libdisk^android_x86_64_rlib_rlib-std_apex10000"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja libdisk,android_x86_64_rlib_rlib-std_apex10000
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja libdisk,android_x86_64_rlib_rlib-std_apex10000
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/crosvm/disk/libdisk^android_x86_64_rlib_rlib-std_apex10000
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_09/external/crosvm/libdisk^android_x86_64_rlib_rlib-std_apex10000.output . $GITHUB_WORKSPACE/artifacts/external/crosvm/disk/libdisk^android_x86_64_rlib_rlib-std_apex10000
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_09/external/crosvm/libdisk^android_x86_64_rlib_rlib-std_apex10000.output $GITHUB_WORKSPACE/artifacts/external/crosvm/disk/libdisk^android_x86_64_rlib_rlib-std_apex10000 $GITHUB_WORKSPACE/artifacts/external/crosvm/disk/libdisk^android_x86_64_rlib_rlib-std_apex10000/addition_copy_files.output
 
 echo "building libfuse_rust^android_x86_64_rlib_rlib-std_apex10000"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja libfuse_rust,android_x86_64_rlib_rlib-std_apex10000
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja libfuse_rust,android_x86_64_rlib_rlib-std_apex10000
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/crosvm/fuse/libfuse_rust^android_x86_64_rlib_rlib-std_apex10000
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_09/external/crosvm/libfuse_rust^android_x86_64_rlib_rlib-std_apex10000.output . $GITHUB_WORKSPACE/artifacts/external/crosvm/fuse/libfuse_rust^android_x86_64_rlib_rlib-std_apex10000
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_09/external/crosvm/libfuse_rust^android_x86_64_rlib_rlib-std_apex10000.output $GITHUB_WORKSPACE/artifacts/external/crosvm/fuse/libfuse_rust^android_x86_64_rlib_rlib-std_apex10000 $GITHUB_WORKSPACE/artifacts/external/crosvm/fuse/libfuse_rust^android_x86_64_rlib_rlib-std_apex10000/addition_copy_files.output
 
 echo "building libgpu_display^android_x86_64_rlib_rlib-std_apex10000"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja libgpu_display,android_x86_64_rlib_rlib-std_apex10000
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja libgpu_display,android_x86_64_rlib_rlib-std_apex10000
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/crosvm/gpu_display/libgpu_display^android_x86_64_rlib_rlib-std_apex10000
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_09/external/crosvm/libgpu_display^android_x86_64_rlib_rlib-std_apex10000.output . $GITHUB_WORKSPACE/artifacts/external/crosvm/gpu_display/libgpu_display^android_x86_64_rlib_rlib-std_apex10000
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_09/external/crosvm/libgpu_display^android_x86_64_rlib_rlib-std_apex10000.output $GITHUB_WORKSPACE/artifacts/external/crosvm/gpu_display/libgpu_display^android_x86_64_rlib_rlib-std_apex10000 $GITHUB_WORKSPACE/artifacts/external/crosvm/gpu_display/libgpu_display^android_x86_64_rlib_rlib-std_apex10000/addition_copy_files.output
 
 echo "building libhypervisor^android_x86_64_rlib_rlib-std_apex10000"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja libhypervisor,android_x86_64_rlib_rlib-std_apex10000
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja libhypervisor,android_x86_64_rlib_rlib-std_apex10000
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/crosvm/hypervisor/libhypervisor^android_x86_64_rlib_rlib-std_apex10000
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_09/external/crosvm/libhypervisor^android_x86_64_rlib_rlib-std_apex10000.output . $GITHUB_WORKSPACE/artifacts/external/crosvm/hypervisor/libhypervisor^android_x86_64_rlib_rlib-std_apex10000
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_09/external/crosvm/libhypervisor^android_x86_64_rlib_rlib-std_apex10000.output $GITHUB_WORKSPACE/artifacts/external/crosvm/hypervisor/libhypervisor^android_x86_64_rlib_rlib-std_apex10000 $GITHUB_WORKSPACE/artifacts/external/crosvm/hypervisor/libhypervisor^android_x86_64_rlib_rlib-std_apex10000/addition_copy_files.output
 
 echo "building libio_uring^android_x86_64_dylib"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja libio_uring,android_x86_64_dylib
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja libio_uring,android_x86_64_dylib
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/crosvm/io_uring/libio_uring^android_x86_64_dylib
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_09/external/crosvm/libio_uring^android_x86_64_dylib.output . $GITHUB_WORKSPACE/artifacts/external/crosvm/io_uring/libio_uring^android_x86_64_dylib
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_09/external/crosvm/libio_uring^android_x86_64_dylib.output $GITHUB_WORKSPACE/artifacts/external/crosvm/io_uring/libio_uring^android_x86_64_dylib $GITHUB_WORKSPACE/artifacts/external/crosvm/io_uring/libio_uring^android_x86_64_dylib/addition_copy_files.output
 
 echo "building libio_uring^android_x86_64_dylib_apex10000"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja libio_uring,android_x86_64_dylib_apex10000
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja libio_uring,android_x86_64_dylib_apex10000
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/crosvm/io_uring/libio_uring^android_x86_64_dylib_apex10000
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_09/external/crosvm/libio_uring^android_x86_64_dylib_apex10000.output . $GITHUB_WORKSPACE/artifacts/external/crosvm/io_uring/libio_uring^android_x86_64_dylib_apex10000
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_09/external/crosvm/libio_uring^android_x86_64_dylib_apex10000.output $GITHUB_WORKSPACE/artifacts/external/crosvm/io_uring/libio_uring^android_x86_64_dylib_apex10000 $GITHUB_WORKSPACE/artifacts/external/crosvm/io_uring/libio_uring^android_x86_64_dylib_apex10000/addition_copy_files.output
 
 echo "building libkernel_loader^android_x86_64_rlib_rlib-std_apex10000"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja libkernel_loader,android_x86_64_rlib_rlib-std_apex10000
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja libkernel_loader,android_x86_64_rlib_rlib-std_apex10000
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/crosvm/kernel_loader/libkernel_loader^android_x86_64_rlib_rlib-std_apex10000
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_09/external/crosvm/libkernel_loader^android_x86_64_rlib_rlib-std_apex10000.output . $GITHUB_WORKSPACE/artifacts/external/crosvm/kernel_loader/libkernel_loader^android_x86_64_rlib_rlib-std_apex10000
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_09/external/crosvm/libkernel_loader^android_x86_64_rlib_rlib-std_apex10000.output $GITHUB_WORKSPACE/artifacts/external/crosvm/kernel_loader/libkernel_loader^android_x86_64_rlib_rlib-std_apex10000 $GITHUB_WORKSPACE/artifacts/external/crosvm/kernel_loader/libkernel_loader^android_x86_64_rlib_rlib-std_apex10000/addition_copy_files.output
 
 echo "building libkvm^android_x86_64_rlib_rlib-std_apex10000"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja libkvm,android_x86_64_rlib_rlib-std_apex10000
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja libkvm,android_x86_64_rlib_rlib-std_apex10000
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/crosvm/kvm/libkvm^android_x86_64_rlib_rlib-std_apex10000
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_09/external/crosvm/libkvm^android_x86_64_rlib_rlib-std_apex10000.output . $GITHUB_WORKSPACE/artifacts/external/crosvm/kvm/libkvm^android_x86_64_rlib_rlib-std_apex10000
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_09/external/crosvm/libkvm^android_x86_64_rlib_rlib-std_apex10000.output $GITHUB_WORKSPACE/artifacts/external/crosvm/kvm/libkvm^android_x86_64_rlib_rlib-std_apex10000 $GITHUB_WORKSPACE/artifacts/external/crosvm/kvm/libkvm^android_x86_64_rlib_rlib-std_apex10000/addition_copy_files.output
 
 echo "building libkvm_sys^android_x86_64_rlib_rlib-std_apex10000"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja libkvm_sys,android_x86_64_rlib_rlib-std_apex10000
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja libkvm_sys,android_x86_64_rlib_rlib-std_apex10000
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/crosvm/kvm_sys/libkvm_sys^android_x86_64_rlib_rlib-std_apex10000
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_09/external/crosvm/libkvm_sys^android_x86_64_rlib_rlib-std_apex10000.output . $GITHUB_WORKSPACE/artifacts/external/crosvm/kvm_sys/libkvm_sys^android_x86_64_rlib_rlib-std_apex10000
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_09/external/crosvm/libkvm_sys^android_x86_64_rlib_rlib-std_apex10000.output $GITHUB_WORKSPACE/artifacts/external/crosvm/kvm_sys/libkvm_sys^android_x86_64_rlib_rlib-std_apex10000 $GITHUB_WORKSPACE/artifacts/external/crosvm/kvm_sys/libkvm_sys^android_x86_64_rlib_rlib-std_apex10000/addition_copy_files.output
 
 echo "building liblinux_input_sys^android_x86_64_rlib_rlib-std_apex10000"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja liblinux_input_sys,android_x86_64_rlib_rlib-std_apex10000
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja liblinux_input_sys,android_x86_64_rlib_rlib-std_apex10000
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/crosvm/linux_input_sys/liblinux_input_sys^android_x86_64_rlib_rlib-std_apex10000
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_09/external/crosvm/liblinux_input_sys^android_x86_64_rlib_rlib-std_apex10000.output . $GITHUB_WORKSPACE/artifacts/external/crosvm/linux_input_sys/liblinux_input_sys^android_x86_64_rlib_rlib-std_apex10000
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_09/external/crosvm/liblinux_input_sys^android_x86_64_rlib_rlib-std_apex10000.output $GITHUB_WORKSPACE/artifacts/external/crosvm/linux_input_sys/liblinux_input_sys^android_x86_64_rlib_rlib-std_apex10000 $GITHUB_WORKSPACE/artifacts/external/crosvm/linux_input_sys/liblinux_input_sys^android_x86_64_rlib_rlib-std_apex10000/addition_copy_files.output
 
 echo "building libnet_sys^android_x86_64_rlib_rlib-std_apex10000"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja libnet_sys,android_x86_64_rlib_rlib-std_apex10000
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja libnet_sys,android_x86_64_rlib_rlib-std_apex10000
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/crosvm/net_sys/libnet_sys^android_x86_64_rlib_rlib-std_apex10000
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_09/external/crosvm/libnet_sys^android_x86_64_rlib_rlib-std_apex10000.output . $GITHUB_WORKSPACE/artifacts/external/crosvm/net_sys/libnet_sys^android_x86_64_rlib_rlib-std_apex10000
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_09/external/crosvm/libnet_sys^android_x86_64_rlib_rlib-std_apex10000.output $GITHUB_WORKSPACE/artifacts/external/crosvm/net_sys/libnet_sys^android_x86_64_rlib_rlib-std_apex10000 $GITHUB_WORKSPACE/artifacts/external/crosvm/net_sys/libnet_sys^android_x86_64_rlib_rlib-std_apex10000/addition_copy_files.output
 
 echo "building libnet_util^android_x86_64_rlib_rlib-std_apex10000"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja libnet_util,android_x86_64_rlib_rlib-std_apex10000
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja libnet_util,android_x86_64_rlib_rlib-std_apex10000
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/crosvm/net_util/libnet_util^android_x86_64_rlib_rlib-std_apex10000
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_09/external/crosvm/libnet_util^android_x86_64_rlib_rlib-std_apex10000.output . $GITHUB_WORKSPACE/artifacts/external/crosvm/net_util/libnet_util^android_x86_64_rlib_rlib-std_apex10000
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_09/external/crosvm/libnet_util^android_x86_64_rlib_rlib-std_apex10000.output $GITHUB_WORKSPACE/artifacts/external/crosvm/net_util/libnet_util^android_x86_64_rlib_rlib-std_apex10000 $GITHUB_WORKSPACE/artifacts/external/crosvm/net_util/libnet_util^android_x86_64_rlib_rlib-std_apex10000/addition_copy_files.output
 
 echo "building libpower_monitor^android_x86_64_rlib_rlib-std_apex10000"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja libpower_monitor,android_x86_64_rlib_rlib-std_apex10000
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja libpower_monitor,android_x86_64_rlib_rlib-std_apex10000
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/crosvm/power_monitor/libpower_monitor^android_x86_64_rlib_rlib-std_apex10000
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_09/external/crosvm/libpower_monitor^android_x86_64_rlib_rlib-std_apex10000.output . $GITHUB_WORKSPACE/artifacts/external/crosvm/power_monitor/libpower_monitor^android_x86_64_rlib_rlib-std_apex10000
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_09/external/crosvm/libpower_monitor^android_x86_64_rlib_rlib-std_apex10000.output $GITHUB_WORKSPACE/artifacts/external/crosvm/power_monitor/libpower_monitor^android_x86_64_rlib_rlib-std_apex10000 $GITHUB_WORKSPACE/artifacts/external/crosvm/power_monitor/libpower_monitor^android_x86_64_rlib_rlib-std_apex10000/addition_copy_files.output
 
 echo "building libresources^android_x86_64_rlib_rlib-std_apex10000"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja libresources,android_x86_64_rlib_rlib-std_apex10000
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja libresources,android_x86_64_rlib_rlib-std_apex10000
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/crosvm/resources/libresources^android_x86_64_rlib_rlib-std_apex10000
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_09/external/crosvm/libresources^android_x86_64_rlib_rlib-std_apex10000.output . $GITHUB_WORKSPACE/artifacts/external/crosvm/resources/libresources^android_x86_64_rlib_rlib-std_apex10000
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_09/external/crosvm/libresources^android_x86_64_rlib_rlib-std_apex10000.output $GITHUB_WORKSPACE/artifacts/external/crosvm/resources/libresources^android_x86_64_rlib_rlib-std_apex10000 $GITHUB_WORKSPACE/artifacts/external/crosvm/resources/libresources^android_x86_64_rlib_rlib-std_apex10000/addition_copy_files.output
 
 echo "building librutabaga_gfx^android_x86_64_rlib_rlib-std_apex10000"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja librutabaga_gfx,android_x86_64_rlib_rlib-std_apex10000
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja librutabaga_gfx,android_x86_64_rlib_rlib-std_apex10000
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/crosvm/rutabaga_gfx/librutabaga_gfx^android_x86_64_rlib_rlib-std_apex10000
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_09/external/crosvm/librutabaga_gfx^android_x86_64_rlib_rlib-std_apex10000.output . $GITHUB_WORKSPACE/artifacts/external/crosvm/rutabaga_gfx/librutabaga_gfx^android_x86_64_rlib_rlib-std_apex10000
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_09/external/crosvm/librutabaga_gfx^android_x86_64_rlib_rlib-std_apex10000.output $GITHUB_WORKSPACE/artifacts/external/crosvm/rutabaga_gfx/librutabaga_gfx^android_x86_64_rlib_rlib-std_apex10000 $GITHUB_WORKSPACE/artifacts/external/crosvm/rutabaga_gfx/librutabaga_gfx^android_x86_64_rlib_rlib-std_apex10000/addition_copy_files.output
 
 echo "building libsys_util^android_x86_64_dylib"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja libsys_util,android_x86_64_dylib
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja libsys_util,android_x86_64_dylib
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/crosvm/sys_util/libsys_util^android_x86_64_dylib
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_09/external/crosvm/libsys_util^android_x86_64_dylib.output . $GITHUB_WORKSPACE/artifacts/external/crosvm/sys_util/libsys_util^android_x86_64_dylib
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_09/external/crosvm/libsys_util^android_x86_64_dylib.output $GITHUB_WORKSPACE/artifacts/external/crosvm/sys_util/libsys_util^android_x86_64_dylib $GITHUB_WORKSPACE/artifacts/external/crosvm/sys_util/libsys_util^android_x86_64_dylib/addition_copy_files.output
 
 echo "building libsys_util^android_x86_64_dylib_apex10000"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja libsys_util,android_x86_64_dylib_apex10000
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja libsys_util,android_x86_64_dylib_apex10000
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/crosvm/sys_util/libsys_util^android_x86_64_dylib_apex10000
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_09/external/crosvm/libsys_util^android_x86_64_dylib_apex10000.output . $GITHUB_WORKSPACE/artifacts/external/crosvm/sys_util/libsys_util^android_x86_64_dylib_apex10000
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_09/external/crosvm/libsys_util^android_x86_64_dylib_apex10000.output $GITHUB_WORKSPACE/artifacts/external/crosvm/sys_util/libsys_util^android_x86_64_dylib_apex10000 $GITHUB_WORKSPACE/artifacts/external/crosvm/sys_util/libsys_util^android_x86_64_dylib_apex10000/addition_copy_files.output
 
 echo "building libusb_sys^android_x86_64_rlib_rlib-std_apex10000"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja libusb_sys,android_x86_64_rlib_rlib-std_apex10000
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja libusb_sys,android_x86_64_rlib_rlib-std_apex10000
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/crosvm/usb_sys/libusb_sys^android_x86_64_rlib_rlib-std_apex10000
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_09/external/crosvm/libusb_sys^android_x86_64_rlib_rlib-std_apex10000.output . $GITHUB_WORKSPACE/artifacts/external/crosvm/usb_sys/libusb_sys^android_x86_64_rlib_rlib-std_apex10000
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_09/external/crosvm/libusb_sys^android_x86_64_rlib_rlib-std_apex10000.output $GITHUB_WORKSPACE/artifacts/external/crosvm/usb_sys/libusb_sys^android_x86_64_rlib_rlib-std_apex10000 $GITHUB_WORKSPACE/artifacts/external/crosvm/usb_sys/libusb_sys^android_x86_64_rlib_rlib-std_apex10000/addition_copy_files.output
 
 echo "building libusb_util^android_x86_64_rlib_rlib-std_apex10000"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja libusb_util,android_x86_64_rlib_rlib-std_apex10000
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja libusb_util,android_x86_64_rlib_rlib-std_apex10000
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/crosvm/usb_util/libusb_util^android_x86_64_rlib_rlib-std_apex10000
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_09/external/crosvm/libusb_util^android_x86_64_rlib_rlib-std_apex10000.output . $GITHUB_WORKSPACE/artifacts/external/crosvm/usb_util/libusb_util^android_x86_64_rlib_rlib-std_apex10000
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_09/external/crosvm/libusb_util^android_x86_64_rlib_rlib-std_apex10000.output $GITHUB_WORKSPACE/artifacts/external/crosvm/usb_util/libusb_util^android_x86_64_rlib_rlib-std_apex10000 $GITHUB_WORKSPACE/artifacts/external/crosvm/usb_util/libusb_util^android_x86_64_rlib_rlib-std_apex10000/addition_copy_files.output
 
 echo "building libvfio_sys^android_x86_64_rlib_rlib-std_apex10000"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja libvfio_sys,android_x86_64_rlib_rlib-std_apex10000
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja libvfio_sys,android_x86_64_rlib_rlib-std_apex10000
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/crosvm/vfio_sys/libvfio_sys^android_x86_64_rlib_rlib-std_apex10000
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_09/external/crosvm/libvfio_sys^android_x86_64_rlib_rlib-std_apex10000.output . $GITHUB_WORKSPACE/artifacts/external/crosvm/vfio_sys/libvfio_sys^android_x86_64_rlib_rlib-std_apex10000
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_09/external/crosvm/libvfio_sys^android_x86_64_rlib_rlib-std_apex10000.output $GITHUB_WORKSPACE/artifacts/external/crosvm/vfio_sys/libvfio_sys^android_x86_64_rlib_rlib-std_apex10000 $GITHUB_WORKSPACE/artifacts/external/crosvm/vfio_sys/libvfio_sys^android_x86_64_rlib_rlib-std_apex10000/addition_copy_files.output
 
 echo "building libvhost^android_x86_64_rlib_rlib-std_apex10000"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja libvhost,android_x86_64_rlib_rlib-std_apex10000
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja libvhost,android_x86_64_rlib_rlib-std_apex10000
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/crosvm/vhost/libvhost^android_x86_64_rlib_rlib-std_apex10000
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_09/external/crosvm/libvhost^android_x86_64_rlib_rlib-std_apex10000.output . $GITHUB_WORKSPACE/artifacts/external/crosvm/vhost/libvhost^android_x86_64_rlib_rlib-std_apex10000
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_09/external/crosvm/libvhost^android_x86_64_rlib_rlib-std_apex10000.output $GITHUB_WORKSPACE/artifacts/external/crosvm/vhost/libvhost^android_x86_64_rlib_rlib-std_apex10000 $GITHUB_WORKSPACE/artifacts/external/crosvm/vhost/libvhost^android_x86_64_rlib_rlib-std_apex10000/addition_copy_files.output
 
 echo "building libvirtio_sys^android_x86_64_rlib_rlib-std_apex10000"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja libvirtio_sys,android_x86_64_rlib_rlib-std_apex10000
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja libvirtio_sys,android_x86_64_rlib_rlib-std_apex10000
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/crosvm/virtio_sys/libvirtio_sys^android_x86_64_rlib_rlib-std_apex10000
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_09/external/crosvm/libvirtio_sys^android_x86_64_rlib_rlib-std_apex10000.output . $GITHUB_WORKSPACE/artifacts/external/crosvm/virtio_sys/libvirtio_sys^android_x86_64_rlib_rlib-std_apex10000
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_09/external/crosvm/libvirtio_sys^android_x86_64_rlib_rlib-std_apex10000.output $GITHUB_WORKSPACE/artifacts/external/crosvm/virtio_sys/libvirtio_sys^android_x86_64_rlib_rlib-std_apex10000 $GITHUB_WORKSPACE/artifacts/external/crosvm/virtio_sys/libvirtio_sys^android_x86_64_rlib_rlib-std_apex10000/addition_copy_files.output
 
 echo "building libvm_control^android_x86_64_rlib_rlib-std_apex10000"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja libvm_control,android_x86_64_rlib_rlib-std_apex10000
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja libvm_control,android_x86_64_rlib_rlib-std_apex10000
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/crosvm/vm_control/libvm_control^android_x86_64_rlib_rlib-std_apex10000
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_09/external/crosvm/libvm_control^android_x86_64_rlib_rlib-std_apex10000.output . $GITHUB_WORKSPACE/artifacts/external/crosvm/vm_control/libvm_control^android_x86_64_rlib_rlib-std_apex10000
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_09/external/crosvm/libvm_control^android_x86_64_rlib_rlib-std_apex10000.output $GITHUB_WORKSPACE/artifacts/external/crosvm/vm_control/libvm_control^android_x86_64_rlib_rlib-std_apex10000 $GITHUB_WORKSPACE/artifacts/external/crosvm/vm_control/libvm_control^android_x86_64_rlib_rlib-std_apex10000/addition_copy_files.output
 
 echo "building libvm_memory^android_x86_64_rlib_rlib-std_apex10000"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja libvm_memory,android_x86_64_rlib_rlib-std_apex10000
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja libvm_memory,android_x86_64_rlib_rlib-std_apex10000
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/crosvm/vm_memory/libvm_memory^android_x86_64_rlib_rlib-std_apex10000
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_09/external/crosvm/libvm_memory^android_x86_64_rlib_rlib-std_apex10000.output . $GITHUB_WORKSPACE/artifacts/external/crosvm/vm_memory/libvm_memory^android_x86_64_rlib_rlib-std_apex10000
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_09/external/crosvm/libvm_memory^android_x86_64_rlib_rlib-std_apex10000.output $GITHUB_WORKSPACE/artifacts/external/crosvm/vm_memory/libvm_memory^android_x86_64_rlib_rlib-std_apex10000 $GITHUB_WORKSPACE/artifacts/external/crosvm/vm_memory/libvm_memory^android_x86_64_rlib_rlib-std_apex10000/addition_copy_files.output

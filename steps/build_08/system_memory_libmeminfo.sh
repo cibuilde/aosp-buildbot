@@ -77,37 +77,37 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/system/memory/libmeminfo/libdmabufinfo/l
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/memory/libmeminfo/libdmabufinfo/libdmabufinfo^android_x86_x86_64_static/ .
 
 echo "building libmeminfo^android_vendor.31_x86_64_shared"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libmeminfo,android_vendor.31_x86_64_shared
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libmeminfo,android_vendor.31_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/memory/libmeminfo/libmeminfo^android_vendor.31_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/system/memory/libmeminfo/libmeminfo^android_vendor.31_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/memory/libmeminfo/libmeminfo^android_vendor.31_x86_64_shared
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_08/system/memory/libmeminfo/libmeminfo^android_vendor.31_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/system/memory/libmeminfo/libmeminfo^android_vendor.31_x86_64_shared $GITHUB_WORKSPACE/artifacts/system/memory/libmeminfo/libmeminfo^android_vendor.31_x86_64_shared/addition_copy_files.output
 
 echo "building libmeminfo^android_x86_64_shared"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libmeminfo,android_x86_64_shared
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libmeminfo,android_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/memory/libmeminfo/libmeminfo^android_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/system/memory/libmeminfo/libmeminfo^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/memory/libmeminfo/libmeminfo^android_x86_64_shared
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_08/system/memory/libmeminfo/libmeminfo^android_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/system/memory/libmeminfo/libmeminfo^android_x86_64_shared $GITHUB_WORKSPACE/artifacts/system/memory/libmeminfo/libmeminfo^android_x86_64_shared/addition_copy_files.output
 
 echo "building libmeminfo^android_x86_x86_64_shared"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libmeminfo,android_x86_x86_64_shared
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libmeminfo,android_x86_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/memory/libmeminfo/libmeminfo^android_x86_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/system/memory/libmeminfo/libmeminfo^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/memory/libmeminfo/libmeminfo^android_x86_x86_64_shared
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_08/system/memory/libmeminfo/libmeminfo^android_x86_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/system/memory/libmeminfo/libmeminfo^android_x86_x86_64_shared $GITHUB_WORKSPACE/artifacts/system/memory/libmeminfo/libmeminfo^android_x86_x86_64_shared/addition_copy_files.output
 
 echo "building librank^android_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja librank,android_x86_64
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja librank,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/memory/libmeminfo/tools/librank^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/system/memory/libmeminfo/librank^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/memory/libmeminfo/tools/librank^android_x86_64
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_08/system/memory/libmeminfo/librank^android_x86_64.output $GITHUB_WORKSPACE/artifacts/system/memory/libmeminfo/tools/librank^android_x86_64 $GITHUB_WORKSPACE/artifacts/system/memory/libmeminfo/tools/librank^android_x86_64/addition_copy_files.output
 
 echo "building procrank^android_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja procrank,android_x86_64
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja procrank,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/memory/libmeminfo/tools/procrank^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/system/memory/libmeminfo/procrank^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/memory/libmeminfo/tools/procrank^android_x86_64
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_08/system/memory/libmeminfo/procrank^android_x86_64.output $GITHUB_WORKSPACE/artifacts/system/memory/libmeminfo/tools/procrank^android_x86_64 $GITHUB_WORKSPACE/artifacts/system/memory/libmeminfo/tools/procrank^android_x86_64/addition_copy_files.output
 
 echo "building showmap^android_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja showmap,android_x86_64
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja showmap,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/memory/libmeminfo/tools/showmap^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/system/memory/libmeminfo/showmap^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/memory/libmeminfo/tools/showmap^android_x86_64
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_08/system/memory/libmeminfo/showmap^android_x86_64.output $GITHUB_WORKSPACE/artifacts/system/memory/libmeminfo/tools/showmap^android_x86_64 $GITHUB_WORKSPACE/artifacts/system/memory/libmeminfo/tools/showmap^android_x86_64/addition_copy_files.output

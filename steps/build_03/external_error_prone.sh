@@ -20,19 +20,19 @@ clone_depth_platform external/error_prone
 rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/cmd/merge_zips/merge_zips^linux_glibc_x86_64/ .
 
 echo "building error_prone_annotations^android_common_apex30"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja error_prone_annotations,android_common_apex30
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja error_prone_annotations,android_common_apex30
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/error_prone/error_prone_annotations^android_common_apex30
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/external/error_prone/error_prone_annotations^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/external/error_prone/error_prone_annotations^android_common_apex30
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/external/error_prone/error_prone_annotations^android_common_apex30.output $GITHUB_WORKSPACE/artifacts/external/error_prone/error_prone_annotations^android_common_apex30 $GITHUB_WORKSPACE/artifacts/external/error_prone/error_prone_annotations^android_common_apex30/addition_copy_files.output
 
 echo "building error_prone_annotations^linux_glibc_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja error_prone_annotations,linux_glibc_common
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja error_prone_annotations,linux_glibc_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/error_prone/error_prone_annotations^linux_glibc_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/external/error_prone/error_prone_annotations^linux_glibc_common.output . $GITHUB_WORKSPACE/artifacts/external/error_prone/error_prone_annotations^linux_glibc_common
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/external/error_prone/error_prone_annotations^linux_glibc_common.output $GITHUB_WORKSPACE/artifacts/external/error_prone/error_prone_annotations^linux_glibc_common $GITHUB_WORKSPACE/artifacts/external/error_prone/error_prone_annotations^linux_glibc_common/addition_copy_files.output
 
 echo "building error_prone_core^linux_glibc_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja error_prone_core,linux_glibc_common
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja error_prone_core,linux_glibc_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/error_prone/error_prone_core^linux_glibc_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/external/error_prone/error_prone_core^linux_glibc_common.output . $GITHUB_WORKSPACE/artifacts/external/error_prone/error_prone_core^linux_glibc_common
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/external/error_prone/error_prone_core^linux_glibc_common.output $GITHUB_WORKSPACE/artifacts/external/error_prone/error_prone_core^linux_glibc_common $GITHUB_WORKSPACE/artifacts/external/error_prone/error_prone_core^linux_glibc_common/addition_copy_files.output

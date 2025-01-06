@@ -34,13 +34,13 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/system/libbase/libbase^linux_glibc_x86_6
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^linux_glibc_x86_64_shared/ .
 
 echo "building com.android.permission-systemserverclasspath-fragment^android_common_apex30"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja com.android.permission-systemserverclasspath-fragment,android_common_apex30
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja com.android.permission-systemserverclasspath-fragment,android_common_apex30
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/Permission/com.android.permission-systemserverclasspath-fragment^android_common_apex30
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/packages/modules/Permission/com.android.permission-systemserverclasspath-fragment^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/packages/modules/Permission/com.android.permission-systemserverclasspath-fragment^android_common_apex30
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_06/packages/modules/Permission/com.android.permission-systemserverclasspath-fragment^android_common_apex30.output $GITHUB_WORKSPACE/artifacts/packages/modules/Permission/com.android.permission-systemserverclasspath-fragment^android_common_apex30 $GITHUB_WORKSPACE/artifacts/packages/modules/Permission/com.android.permission-systemserverclasspath-fragment^android_common_apex30/addition_copy_files.output
 
 echo "building statslog-permissioncontroller-java-gen^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja statslog-permissioncontroller-java-gen,
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja statslog-permissioncontroller-java-gen,
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/Permission/PermissionController/statslog-permissioncontroller-java-gen^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/packages/modules/Permission/statslog-permissioncontroller-java-gen^.output . $GITHUB_WORKSPACE/artifacts/packages/modules/Permission/PermissionController/statslog-permissioncontroller-java-gen^
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_06/packages/modules/Permission/statslog-permissioncontroller-java-gen^.output $GITHUB_WORKSPACE/artifacts/packages/modules/Permission/PermissionController/statslog-permissioncontroller-java-gen^ $GITHUB_WORKSPACE/artifacts/packages/modules/Permission/PermissionController/statslog-permissioncontroller-java-gen^/addition_copy_files.output

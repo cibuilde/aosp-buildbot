@@ -33,7 +33,7 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/proto_logging/stats/enums/sta
 rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/sdk/sdk_public_31_system_modules^android_common/ .
 
 echo "building statsprotos^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_15.ninja statsprotos,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_15.ninja statsprotos,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/NetworkStack/statsprotos^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_15/packages/modules/NetworkStack/statsprotos^android_common.output . $GITHUB_WORKSPACE/artifacts/packages/modules/NetworkStack/statsprotos^android_common
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_15/packages/modules/NetworkStack/statsprotos^android_common.output $GITHUB_WORKSPACE/artifacts/packages/modules/NetworkStack/statsprotos^android_common $GITHUB_WORKSPACE/artifacts/packages/modules/NetworkStack/statsprotos^android_common/addition_copy_files.output

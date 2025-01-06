@@ -41,25 +41,25 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/sdk/sdk_public_31_system_modul
 rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/sdk/current/androidx/androidx.annotation_annotation^android_common_apex30/ .
 
 echo "building NetworkStackApi31Shims^android_common_apex30"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_25.ninja NetworkStackApi31Shims,android_common_apex30
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_25.ninja NetworkStackApi31Shims,android_common_apex30
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/NetworkStack/NetworkStackApi31Shims^android_common_apex30
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_25/packages/modules/NetworkStack/NetworkStackApi31Shims^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/packages/modules/NetworkStack/NetworkStackApi31Shims^android_common_apex30
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_25/packages/modules/NetworkStack/NetworkStackApi31Shims^android_common_apex30.output $GITHUB_WORKSPACE/artifacts/packages/modules/NetworkStack/NetworkStackApi31Shims^android_common_apex30 $GITHUB_WORKSPACE/artifacts/packages/modules/NetworkStack/NetworkStackApi31Shims^android_common_apex30/addition_copy_files.output
 
 echo "building NetworkStackApi32Shims^android_common_apex30"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_25.ninja NetworkStackApi32Shims,android_common_apex30
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_25.ninja NetworkStackApi32Shims,android_common_apex30
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/NetworkStack/NetworkStackApi32Shims^android_common_apex30
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_25/packages/modules/NetworkStack/NetworkStackApi32Shims^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/packages/modules/NetworkStack/NetworkStackApi32Shims^android_common_apex30
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_25/packages/modules/NetworkStack/NetworkStackApi32Shims^android_common_apex30.output $GITHUB_WORKSPACE/artifacts/packages/modules/NetworkStack/NetworkStackApi32Shims^android_common_apex30 $GITHUB_WORKSPACE/artifacts/packages/modules/NetworkStack/NetworkStackApi32Shims^android_common_apex30/addition_copy_files.output
 
 echo "building NetworkStackApiCurrentShims^android_common_apex30"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_25.ninja NetworkStackApiCurrentShims,android_common_apex30
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_25.ninja NetworkStackApiCurrentShims,android_common_apex30
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/NetworkStack/NetworkStackApiCurrentShims^android_common_apex30
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_25/packages/modules/NetworkStack/NetworkStackApiCurrentShims^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/packages/modules/NetworkStack/NetworkStackApiCurrentShims^android_common_apex30
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_25/packages/modules/NetworkStack/NetworkStackApiCurrentShims^android_common_apex30.output $GITHUB_WORKSPACE/artifacts/packages/modules/NetworkStack/NetworkStackApiCurrentShims^android_common_apex30 $GITHUB_WORKSPACE/artifacts/packages/modules/NetworkStack/NetworkStackApiCurrentShims^android_common_apex30/addition_copy_files.output
 
 echo "building NetworkStackApiStableShims^android_common_apex30"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_25.ninja NetworkStackApiStableShims,android_common_apex30
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_25.ninja NetworkStackApiStableShims,android_common_apex30
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/NetworkStack/NetworkStackApiStableShims^android_common_apex30
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_25/packages/modules/NetworkStack/NetworkStackApiStableShims^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/packages/modules/NetworkStack/NetworkStackApiStableShims^android_common_apex30
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_25/packages/modules/NetworkStack/NetworkStackApiStableShims^android_common_apex30.output $GITHUB_WORKSPACE/artifacts/packages/modules/NetworkStack/NetworkStackApiStableShims^android_common_apex30 $GITHUB_WORKSPACE/artifacts/packages/modules/NetworkStack/NetworkStackApiStableShims^android_common_apex30/addition_copy_files.output

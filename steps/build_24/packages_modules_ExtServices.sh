@@ -54,7 +54,7 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/sdk/current/androidx/androidx.
 rsync -a -r $GITHUB_WORKSPACE/downloads/tools/apifinder/java_api_used_by_mainline_module^linux_glibc_common/ .
 
 echo "building ExtServices-core^android_common_apex30"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_24.ninja ExtServices-core,android_common_apex30
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_24.ninja ExtServices-core,android_common_apex30
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/ExtServices/ExtServices-core^android_common_apex30
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_24/packages/modules/ExtServices/ExtServices-core^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/packages/modules/ExtServices/ExtServices-core^android_common_apex30
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_24/packages/modules/ExtServices/ExtServices-core^android_common_apex30.output $GITHUB_WORKSPACE/artifacts/packages/modules/ExtServices/ExtServices-core^android_common_apex30 $GITHUB_WORKSPACE/artifacts/packages/modules/ExtServices/ExtServices-core^android_common_apex30/addition_copy_files.output

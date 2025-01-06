@@ -31,61 +31,61 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/external/sqlite/dist/libsqlite^linux_gli
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/sepolicy/plat_30.0.cil^android_common/ .
 
 echo "building plat_26.0.cil^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja plat_26.0.cil,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja plat_26.0.cil,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/sepolicy/plat_26.0.cil^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/system/sepolicy/plat_26.0.cil^android_common.output . $GITHUB_WORKSPACE/artifacts/system/sepolicy/plat_26.0.cil^android_common
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/system/sepolicy/plat_26.0.cil^android_common.output $GITHUB_WORKSPACE/artifacts/system/sepolicy/plat_26.0.cil^android_common $GITHUB_WORKSPACE/artifacts/system/sepolicy/plat_26.0.cil^android_common/addition_copy_files.output
 
 echo "building plat_27.0.cil^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja plat_27.0.cil,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja plat_27.0.cil,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/sepolicy/plat_27.0.cil^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/system/sepolicy/plat_27.0.cil^android_common.output . $GITHUB_WORKSPACE/artifacts/system/sepolicy/plat_27.0.cil^android_common
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/system/sepolicy/plat_27.0.cil^android_common.output $GITHUB_WORKSPACE/artifacts/system/sepolicy/plat_27.0.cil^android_common $GITHUB_WORKSPACE/artifacts/system/sepolicy/plat_27.0.cil^android_common/addition_copy_files.output
 
 echo "building plat_28.0.cil^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja plat_28.0.cil,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja plat_28.0.cil,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/sepolicy/plat_28.0.cil^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/system/sepolicy/plat_28.0.cil^android_common.output . $GITHUB_WORKSPACE/artifacts/system/sepolicy/plat_28.0.cil^android_common
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/system/sepolicy/plat_28.0.cil^android_common.output $GITHUB_WORKSPACE/artifacts/system/sepolicy/plat_28.0.cil^android_common $GITHUB_WORKSPACE/artifacts/system/sepolicy/plat_28.0.cil^android_common/addition_copy_files.output
 
 echo "building plat_29.0.cil^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja plat_29.0.cil,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja plat_29.0.cil,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/sepolicy/plat_29.0.cil^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/system/sepolicy/plat_29.0.cil^android_common.output . $GITHUB_WORKSPACE/artifacts/system/sepolicy/plat_29.0.cil^android_common
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/system/sepolicy/plat_29.0.cil^android_common.output $GITHUB_WORKSPACE/artifacts/system/sepolicy/plat_29.0.cil^android_common $GITHUB_WORKSPACE/artifacts/system/sepolicy/plat_29.0.cil^android_common/addition_copy_files.output
 
 echo "building plat_file_contexts^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja plat_file_contexts,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja plat_file_contexts,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/sepolicy/plat_file_contexts^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/system/sepolicy/plat_file_contexts^android_common.output . $GITHUB_WORKSPACE/artifacts/system/sepolicy/plat_file_contexts^android_common
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/system/sepolicy/plat_file_contexts^android_common.output $GITHUB_WORKSPACE/artifacts/system/sepolicy/plat_file_contexts^android_common $GITHUB_WORKSPACE/artifacts/system/sepolicy/plat_file_contexts^android_common/addition_copy_files.output
 
 echo "building vendor_file_contexts^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja vendor_file_contexts,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja vendor_file_contexts,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/sepolicy/vendor_file_contexts^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/system/sepolicy/vendor_file_contexts^android_common.output . $GITHUB_WORKSPACE/artifacts/system/sepolicy/vendor_file_contexts^android_common
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/system/sepolicy/vendor_file_contexts^android_common.output $GITHUB_WORKSPACE/artifacts/system/sepolicy/vendor_file_contexts^android_common $GITHUB_WORKSPACE/artifacts/system/sepolicy/vendor_file_contexts^android_common/addition_copy_files.output
 
 echo "building system_ext_file_contexts^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja system_ext_file_contexts,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja system_ext_file_contexts,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/sepolicy/system_ext_file_contexts^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/system/sepolicy/system_ext_file_contexts^android_common.output . $GITHUB_WORKSPACE/artifacts/system/sepolicy/system_ext_file_contexts^android_common
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/system/sepolicy/system_ext_file_contexts^android_common.output $GITHUB_WORKSPACE/artifacts/system/sepolicy/system_ext_file_contexts^android_common $GITHUB_WORKSPACE/artifacts/system/sepolicy/system_ext_file_contexts^android_common/addition_copy_files.output
 
 echo "building product_file_contexts^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja product_file_contexts,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja product_file_contexts,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/sepolicy/product_file_contexts^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/system/sepolicy/product_file_contexts^android_common.output . $GITHUB_WORKSPACE/artifacts/system/sepolicy/product_file_contexts^android_common
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/system/sepolicy/product_file_contexts^android_common.output $GITHUB_WORKSPACE/artifacts/system/sepolicy/product_file_contexts^android_common $GITHUB_WORKSPACE/artifacts/system/sepolicy/product_file_contexts^android_common/addition_copy_files.output
 
 echo "building combine_maps^linux_glibc_x86_64_PY2"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja combine_maps,linux_glibc_x86_64_PY2
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja combine_maps,linux_glibc_x86_64_PY2
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/sepolicy/tests/combine_maps^linux_glibc_x86_64_PY2
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/system/sepolicy/combine_maps^linux_glibc_x86_64_PY2.output . $GITHUB_WORKSPACE/artifacts/system/sepolicy/tests/combine_maps^linux_glibc_x86_64_PY2
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/system/sepolicy/combine_maps^linux_glibc_x86_64_PY2.output $GITHUB_WORKSPACE/artifacts/system/sepolicy/tests/combine_maps^linux_glibc_x86_64_PY2 $GITHUB_WORKSPACE/artifacts/system/sepolicy/tests/combine_maps^linux_glibc_x86_64_PY2/addition_copy_files.output
 
 echo "building fc_sort^linux_glibc_x86_64_PY2"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja fc_sort,linux_glibc_x86_64_PY2
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja fc_sort,linux_glibc_x86_64_PY2
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/sepolicy/tests/fc_sort^linux_glibc_x86_64_PY2
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/system/sepolicy/fc_sort^linux_glibc_x86_64_PY2.output . $GITHUB_WORKSPACE/artifacts/system/sepolicy/tests/fc_sort^linux_glibc_x86_64_PY2
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/system/sepolicy/fc_sort^linux_glibc_x86_64_PY2.output $GITHUB_WORKSPACE/artifacts/system/sepolicy/tests/fc_sort^linux_glibc_x86_64_PY2 $GITHUB_WORKSPACE/artifacts/system/sepolicy/tests/fc_sort^linux_glibc_x86_64_PY2/addition_copy_files.output

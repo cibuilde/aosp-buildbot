@@ -106,19 +106,19 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/tools/platform-compat/java/android/compa
 rsync -a -r $GITHUB_WORKSPACE/downloads/tools/platform-compat/java/android/processor/compat/unsupportedappusage/unsupportedappusage-annotation-processor^linux_glibc_common/ .
 
 echo "building SettingsLibIllustrationPreference^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_25.ninja SettingsLibIllustrationPreference,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_25.ninja SettingsLibIllustrationPreference,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/IllustrationPreference/SettingsLibIllustrationPreference^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_25/frameworks/base/SettingsLibIllustrationPreference^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/IllustrationPreference/SettingsLibIllustrationPreference^android_common
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_25/frameworks/base/SettingsLibIllustrationPreference^android_common.output $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/IllustrationPreference/SettingsLibIllustrationPreference^android_common $GITHUB_WORKSPACE/artifacts/frameworks/base/packages/SettingsLib/IllustrationPreference/SettingsLibIllustrationPreference^android_common/addition_copy_files.output
 
 echo "building services.net^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_25.ninja services.net,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_25.ninja services.net,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/services/net/services.net^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_25/frameworks/base/services.net^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/services/net/services.net^android_common
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_25/frameworks/base/services.net^android_common.output $GITHUB_WORKSPACE/artifacts/frameworks/base/services/net/services.net^android_common $GITHUB_WORKSPACE/artifacts/frameworks/base/services/net/services.net^android_common/addition_copy_files.output
 
 echo "building services.net-module-wifi^android_common_apex30"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_25.ninja services.net-module-wifi,android_common_apex30
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_25.ninja services.net-module-wifi,android_common_apex30
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/base/services/net/services.net-module-wifi^android_common_apex30
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_25/frameworks/base/services.net-module-wifi^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/frameworks/base/services/net/services.net-module-wifi^android_common_apex30
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_25/frameworks/base/services.net-module-wifi^android_common_apex30.output $GITHUB_WORKSPACE/artifacts/frameworks/base/services/net/services.net-module-wifi^android_common_apex30 $GITHUB_WORKSPACE/artifacts/frameworks/base/services/net/services.net-module-wifi^android_common_apex30/addition_copy_files.output

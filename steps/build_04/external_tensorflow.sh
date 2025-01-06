@@ -32,13 +32,13 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/external/flatbuffers/flatc^linux_glibc_x
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcxx/libc++^linux_glibc_x86_64_shared/ .
 
 echo "building libtflite_mutable_schema^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libtflite_mutable_schema,
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libtflite_mutable_schema,
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/tensorflow/libtflite_mutable_schema^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/tensorflow/libtflite_mutable_schema^.output . $GITHUB_WORKSPACE/artifacts/external/tensorflow/libtflite_mutable_schema^
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/external/tensorflow/libtflite_mutable_schema^.output $GITHUB_WORKSPACE/artifacts/external/tensorflow/libtflite_mutable_schema^ $GITHUB_WORKSPACE/artifacts/external/tensorflow/libtflite_mutable_schema^/addition_copy_files.output
 
 echo "building libtflite_kernel_utils^android_vendor.31_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libtflite_kernel_utils,android_vendor.31_x86_64_static
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libtflite_kernel_utils,android_vendor.31_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/tensorflow/tensorflow/lite/kernels/libtflite_kernel_utils^android_vendor.31_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/tensorflow/libtflite_kernel_utils^android_vendor.31_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/tensorflow/tensorflow/lite/kernels/libtflite_kernel_utils^android_vendor.31_x86_64_static
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/external/tensorflow/libtflite_kernel_utils^android_vendor.31_x86_64_static.output $GITHUB_WORKSPACE/artifacts/external/tensorflow/tensorflow/lite/kernels/libtflite_kernel_utils^android_vendor.31_x86_64_static $GITHUB_WORKSPACE/artifacts/external/tensorflow/tensorflow/lite/kernels/libtflite_kernel_utils^android_vendor.31_x86_64_static/addition_copy_files.output

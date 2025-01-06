@@ -1,3 +1,6 @@
+out/soong/.intermediates/frameworks/base/libs/hwui/libhwui/android_x86_x86_64_static/gen/proto/frameworks/base/libs/hwui/protos/graphicsstats.pb.h
+out/soong/.intermediates/frameworks/base/libs/hwui/libhwui/android_x86_x86_64_static/gen/sysprop/include/HWUIProperties.sysprop.h
+out/soong/.intermediates/frameworks/base/libs/hwui/libhwui/android_x86_x86_64_static/gen/sysprop/public/include/HWUIProperties.sysprop.h
 out/soong/.intermediates/frameworks/base/libs/hwui/libhwui/android_x86_x86_64_static/obj/.intermediates/frameworks/base/libs/hwui/libhwui/android_x86_x86_64_static/gen/proto/frameworks/base/libs/hwui/protos/graphicsstats.pb.o
 out/soong/.intermediates/frameworks/base/libs/hwui/libhwui/android_x86_x86_64_static/obj/.intermediates/frameworks/base/libs/hwui/libhwui/android_x86_x86_64_static/gen/sysprop/HWUIProperties.sysprop.o
 out/soong/.intermediates/frameworks/base/libs/hwui/libhwui/android_x86_x86_64_static/obj/frameworks/base/libs/hwui/AnimationContext.o

@@ -1,4 +1,5 @@
 out/soong/.intermediates/packages/modules/ExtServices/ExtServices-core/android_common_apex30/assets.zip
 out/soong/.intermediates/packages/modules/ExtServices/ExtServices-core/android_common_apex30/combined/ExtServices-core.jar
+out/soong/.intermediates/packages/modules/ExtServices/ExtServices-core/android_common_apex30/manifest_fixer/AndroidManifest.xml
 out/soong/.intermediates/packages/modules/ExtServices/ExtServices-core/android_common_apex30/package-res.apk
 out/soong/.intermediates/packages/modules/ExtServices/ExtServices-core/android_common_apex30/turbine-combined/ExtServices-core.jar

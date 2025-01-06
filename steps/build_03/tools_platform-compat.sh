@@ -22,7 +22,7 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/cmd/merge_zips/merge_zips^li
 rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/zip/cmd/soong_zip^linux_glibc_x86_64/ .
 
 echo "building process-compat-config^linux_glibc_x86_64_PY2"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja process-compat-config,linux_glibc_x86_64_PY2
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja process-compat-config,linux_glibc_x86_64_PY2
 mkdir -p $GITHUB_WORKSPACE/artifacts/tools/platform-compat/build/process-compat-config^linux_glibc_x86_64_PY2
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/tools/platform-compat/process-compat-config^linux_glibc_x86_64_PY2.output . $GITHUB_WORKSPACE/artifacts/tools/platform-compat/build/process-compat-config^linux_glibc_x86_64_PY2
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/tools/platform-compat/process-compat-config^linux_glibc_x86_64_PY2.output $GITHUB_WORKSPACE/artifacts/tools/platform-compat/build/process-compat-config^linux_glibc_x86_64_PY2 $GITHUB_WORKSPACE/artifacts/tools/platform-compat/build/process-compat-config^linux_glibc_x86_64_PY2/addition_copy_files.output

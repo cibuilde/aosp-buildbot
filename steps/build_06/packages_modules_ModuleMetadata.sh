@@ -36,7 +36,7 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/tools/aapt/aapt^linux_gl
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/tools/aapt2/aapt2^linux_glibc_x86_64/ .
 
 echo "building ModuleMetadata^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja ModuleMetadata,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja ModuleMetadata,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/ModuleMetadata/ModuleMetadata^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/packages/modules/ModuleMetadata/ModuleMetadata^android_common.output . $GITHUB_WORKSPACE/artifacts/packages/modules/ModuleMetadata/ModuleMetadata^android_common
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_06/packages/modules/ModuleMetadata/ModuleMetadata^android_common.output $GITHUB_WORKSPACE/artifacts/packages/modules/ModuleMetadata/ModuleMetadata^android_common $GITHUB_WORKSPACE/artifacts/packages/modules/ModuleMetadata/ModuleMetadata^android_common/addition_copy_files.output

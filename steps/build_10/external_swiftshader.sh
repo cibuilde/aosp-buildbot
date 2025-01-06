@@ -95,13 +95,13 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^android_ven
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^android_vendor.31_x86_x86_64_shared/ .
 
 echo "building vulkan.pastel^android_vendor.31_x86_64_shared"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja vulkan.pastel,android_vendor.31_x86_64_shared
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja vulkan.pastel,android_vendor.31_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/swiftshader/src/vulkan.pastel^android_vendor.31_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/external/swiftshader/vulkan.pastel^android_vendor.31_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/external/swiftshader/src/vulkan.pastel^android_vendor.31_x86_64_shared
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_10/external/swiftshader/vulkan.pastel^android_vendor.31_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/external/swiftshader/src/vulkan.pastel^android_vendor.31_x86_64_shared $GITHUB_WORKSPACE/artifacts/external/swiftshader/src/vulkan.pastel^android_vendor.31_x86_64_shared/addition_copy_files.output
 
 echo "building vulkan.pastel^android_vendor.31_x86_x86_64_shared"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja vulkan.pastel,android_vendor.31_x86_x86_64_shared
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja vulkan.pastel,android_vendor.31_x86_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/swiftshader/src/vulkan.pastel^android_vendor.31_x86_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/external/swiftshader/vulkan.pastel^android_vendor.31_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/external/swiftshader/src/vulkan.pastel^android_vendor.31_x86_x86_64_shared
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_10/external/swiftshader/vulkan.pastel^android_vendor.31_x86_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/external/swiftshader/src/vulkan.pastel^android_vendor.31_x86_x86_64_shared $GITHUB_WORKSPACE/artifacts/external/swiftshader/src/vulkan.pastel^android_vendor.31_x86_x86_64_shared/addition_copy_files.output

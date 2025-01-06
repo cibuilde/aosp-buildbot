@@ -44,31 +44,31 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/system/libbase/libbase^linux_glibc_x86_6
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^linux_glibc_x86_64_shared/ .
 
 echo "building libstatslog^android_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libstatslog,android_x86_64_static
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libstatslog,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/proto_logging/stats/stats_log_api_gen/libstatslog^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/frameworks/proto_logging/libstatslog^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/proto_logging/stats/stats_log_api_gen/libstatslog^android_x86_64_static
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/frameworks/proto_logging/libstatslog^android_x86_64_static.output $GITHUB_WORKSPACE/artifacts/frameworks/proto_logging/stats/stats_log_api_gen/libstatslog^android_x86_64_static $GITHUB_WORKSPACE/artifacts/frameworks/proto_logging/stats/stats_log_api_gen/libstatslog^android_x86_64_static/addition_copy_files.output
 
 echo "building libstatslog^android_x86_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libstatslog,android_x86_x86_64_static
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libstatslog,android_x86_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/proto_logging/stats/stats_log_api_gen/libstatslog^android_x86_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/frameworks/proto_logging/libstatslog^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/proto_logging/stats/stats_log_api_gen/libstatslog^android_x86_x86_64_static
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/frameworks/proto_logging/libstatslog^android_x86_x86_64_static.output $GITHUB_WORKSPACE/artifacts/frameworks/proto_logging/stats/stats_log_api_gen/libstatslog^android_x86_x86_64_static $GITHUB_WORKSPACE/artifacts/frameworks/proto_logging/stats/stats_log_api_gen/libstatslog^android_x86_x86_64_static/addition_copy_files.output
 
 echo "building stats-log-api-gen^linux_glibc_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja stats-log-api-gen,linux_glibc_x86_64
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja stats-log-api-gen,linux_glibc_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/proto_logging/stats/stats_log_api_gen/stats-log-api-gen^linux_glibc_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/frameworks/proto_logging/stats-log-api-gen^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/frameworks/proto_logging/stats/stats_log_api_gen/stats-log-api-gen^linux_glibc_x86_64
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/frameworks/proto_logging/stats-log-api-gen^linux_glibc_x86_64.output $GITHUB_WORKSPACE/artifacts/frameworks/proto_logging/stats/stats_log_api_gen/stats-log-api-gen^linux_glibc_x86_64 $GITHUB_WORKSPACE/artifacts/frameworks/proto_logging/stats/stats_log_api_gen/stats-log-api-gen^linux_glibc_x86_64/addition_copy_files.output
 
 echo "building statslog.h^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja statslog.h,
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja statslog.h,
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/proto_logging/stats/stats_log_api_gen/statslog.h^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/frameworks/proto_logging/statslog.h^.output . $GITHUB_WORKSPACE/artifacts/frameworks/proto_logging/stats/stats_log_api_gen/statslog.h^
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/frameworks/proto_logging/statslog.h^.output $GITHUB_WORKSPACE/artifacts/frameworks/proto_logging/stats/stats_log_api_gen/statslog.h^ $GITHUB_WORKSPACE/artifacts/frameworks/proto_logging/stats/stats_log_api_gen/statslog.h^/addition_copy_files.output
 
 echo "building statslog.cpp^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja statslog.cpp,
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja statslog.cpp,
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/proto_logging/stats/stats_log_api_gen/statslog.cpp^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/frameworks/proto_logging/statslog.cpp^.output . $GITHUB_WORKSPACE/artifacts/frameworks/proto_logging/stats/stats_log_api_gen/statslog.cpp^
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/frameworks/proto_logging/statslog.cpp^.output $GITHUB_WORKSPACE/artifacts/frameworks/proto_logging/stats/stats_log_api_gen/statslog.cpp^ $GITHUB_WORKSPACE/artifacts/frameworks/proto_logging/stats/stats_log_api_gen/statslog.cpp^/addition_copy_files.output

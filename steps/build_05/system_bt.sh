@@ -33,19 +33,19 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/external/rust/crates/quote/libquote^linu
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/rust/crates/syn/libsyn^linux_glibc_x86_64_rlib_rlib-std/ .
 
 echo "building libbt_facade_proto^android_x86_64_source"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libbt_facade_proto,android_x86_64_source
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libbt_facade_proto,android_x86_64_source
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/bt/gd/libbt_facade_proto^android_x86_64_source
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/system/bt/libbt_facade_proto^android_x86_64_source.output . $GITHUB_WORKSPACE/artifacts/system/bt/gd/libbt_facade_proto^android_x86_64_source
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/system/bt/libbt_facade_proto^android_x86_64_source.output $GITHUB_WORKSPACE/artifacts/system/bt/gd/libbt_facade_proto^android_x86_64_source $GITHUB_WORKSPACE/artifacts/system/bt/gd/libbt_facade_proto^android_x86_64_source/addition_copy_files.output
 
 echo "building libbt_facade_proto^android_x86_x86_64_source"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libbt_facade_proto,android_x86_x86_64_source
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libbt_facade_proto,android_x86_x86_64_source
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/bt/gd/libbt_facade_proto^android_x86_x86_64_source
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/system/bt/libbt_facade_proto^android_x86_x86_64_source.output . $GITHUB_WORKSPACE/artifacts/system/bt/gd/libbt_facade_proto^android_x86_x86_64_source
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/system/bt/libbt_facade_proto^android_x86_x86_64_source.output $GITHUB_WORKSPACE/artifacts/system/bt/gd/libbt_facade_proto^android_x86_x86_64_source $GITHUB_WORKSPACE/artifacts/system/bt/gd/libbt_facade_proto^android_x86_x86_64_source/addition_copy_files.output
 
 echo "building libgddi_macros^linux_glibc_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libgddi_macros,linux_glibc_x86_64
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libgddi_macros,linux_glibc_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/bt/gd/rust/gddi/libgddi_macros^linux_glibc_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/system/bt/libgddi_macros^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/bt/gd/rust/gddi/libgddi_macros^linux_glibc_x86_64
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/system/bt/libgddi_macros^linux_glibc_x86_64.output $GITHUB_WORKSPACE/artifacts/system/bt/gd/rust/gddi/libgddi_macros^linux_glibc_x86_64 $GITHUB_WORKSPACE/artifacts/system/bt/gd/rust/gddi/libgddi_macros^linux_glibc_x86_64/addition_copy_files.output

@@ -8,7 +8,7 @@ include ninja/global.ninja
 
 include ninja/frameworks/opt/net/ethernet/ethernet-service^android_common.ninja
 
-build ethernet-service,android_common: phony out/soong/.intermediates/frameworks/opt/net/ethernet/ethernet-service/android_common/aligned/ethernet-service.jar out/soong/.intermediates/frameworks/opt/net/ethernet/ethernet-service/android_common/dexpreopt/dexpreopt.config out/soong/.intermediates/frameworks/opt/net/ethernet/ethernet-service/android_common/dexpreopt/oat/x86_64/javalib.odex out/soong/.intermediates/frameworks/opt/net/ethernet/ethernet-service/android_common/dexpreopt/oat/x86_64/javalib.vdex out/soong/.intermediates/frameworks/opt/net/ethernet/ethernet-service/android_common/turbine-combined/ethernet-service.jar
+build ethernet-service,android_common: phony out/soong/.intermediates/frameworks/opt/net/ethernet/ethernet-service/android_common/aligned/ethernet-service.jar out/soong/.intermediates/frameworks/opt/net/ethernet/ethernet-service/android_common/dexpreopt/dexpreopt.config out/soong/.intermediates/frameworks/opt/net/ethernet/ethernet-service/android_common/dexpreopt/oat/x86_64/javalib.odex out/soong/.intermediates/frameworks/opt/net/ethernet/ethernet-service/android_common/dexpreopt/oat/x86_64/javalib.vdex out/soong/.intermediates/frameworks/opt/net/ethernet/ethernet-service/android_common/javac/ethernet-service.jar out/soong/.intermediates/frameworks/opt/net/ethernet/ethernet-service/android_common/turbine-combined/ethernet-service.jar
 
 build frameworks_opt_net_ethernet-targets: phony ethernet-service,android_common
 

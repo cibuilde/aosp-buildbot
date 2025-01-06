@@ -33,7 +33,7 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/system/libbase/libbase^linux_glibc_x86_6
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^linux_glibc_x86_64_shared/ .
 
 echo "building statslog-telecom-java-gen^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja statslog-telecom-java-gen,
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja statslog-telecom-java-gen,
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/services/Telecomm/statslog-telecom-java-gen^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/packages/services/Telecomm/statslog-telecom-java-gen^.output . $GITHUB_WORKSPACE/artifacts/packages/services/Telecomm/statslog-telecom-java-gen^
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_06/packages/services/Telecomm/statslog-telecom-java-gen^.output $GITHUB_WORKSPACE/artifacts/packages/services/Telecomm/statslog-telecom-java-gen^ $GITHUB_WORKSPACE/artifacts/packages/services/Telecomm/statslog-telecom-java-gen^/addition_copy_files.output

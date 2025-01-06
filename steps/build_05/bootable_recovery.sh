@@ -50,19 +50,19 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/system/libhidl/transport/manager/1.1/and
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/libhidl/transport/manager/1.2/android.hidl.manager@1.2_genc++_headers^/ .
 
 echo "building libminadbd_services^android_recovery_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libminadbd_services,android_recovery_x86_64_static
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libminadbd_services,android_recovery_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/bootable/recovery/minadbd/libminadbd_services^android_recovery_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/bootable/recovery/libminadbd_services^android_recovery_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bootable/recovery/minadbd/libminadbd_services^android_recovery_x86_64_static
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/bootable/recovery/libminadbd_services^android_recovery_x86_64_static.output $GITHUB_WORKSPACE/artifacts/bootable/recovery/minadbd/libminadbd_services^android_recovery_x86_64_static $GITHUB_WORKSPACE/artifacts/bootable/recovery/minadbd/libminadbd_services^android_recovery_x86_64_static/addition_copy_files.output
 
 echo "building librecovery_utils^android_recovery_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja librecovery_utils,android_recovery_x86_64_static
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja librecovery_utils,android_recovery_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/bootable/recovery/recovery_utils/librecovery_utils^android_recovery_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/bootable/recovery/librecovery_utils^android_recovery_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bootable/recovery/recovery_utils/librecovery_utils^android_recovery_x86_64_static
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/bootable/recovery/librecovery_utils^android_recovery_x86_64_static.output $GITHUB_WORKSPACE/artifacts/bootable/recovery/recovery_utils/librecovery_utils^android_recovery_x86_64_static $GITHUB_WORKSPACE/artifacts/bootable/recovery/recovery_utils/librecovery_utils^android_recovery_x86_64_static/addition_copy_files.output
 
 echo "building librecovery_utils^android_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja librecovery_utils,android_x86_64_static
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja librecovery_utils,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/bootable/recovery/recovery_utils/librecovery_utils^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/bootable/recovery/librecovery_utils^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bootable/recovery/recovery_utils/librecovery_utils^android_x86_64_static
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/bootable/recovery/librecovery_utils^android_x86_64_static.output $GITHUB_WORKSPACE/artifacts/bootable/recovery/recovery_utils/librecovery_utils^android_x86_64_static $GITHUB_WORKSPACE/artifacts/bootable/recovery/recovery_utils/librecovery_utils^android_x86_64_static/addition_copy_files.output

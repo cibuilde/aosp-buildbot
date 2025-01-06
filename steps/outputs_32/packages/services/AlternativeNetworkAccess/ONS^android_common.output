@@ -2,5 +2,7 @@ out/soong/.intermediates/packages/services/AlternativeNetworkAccess/ONS/android_
 out/soong/.intermediates/packages/services/AlternativeNetworkAccess/ONS/android_common/dexpreopt/dexpreopt.config
 out/soong/.intermediates/packages/services/AlternativeNetworkAccess/ONS/android_common/dexpreopt/oat/x86_64/package.odex
 out/soong/.intermediates/packages/services/AlternativeNetworkAccess/ONS/android_common/dexpreopt/oat/x86_64/package.vdex
+out/soong/.intermediates/packages/services/AlternativeNetworkAccess/ONS/android_common/javac/ONS.jar
+out/soong/.intermediates/packages/services/AlternativeNetworkAccess/ONS/android_common/package-res.apk
 out/soong/.intermediates/packages/services/AlternativeNetworkAccess/ONS/android_common/proguard_dictionary
 out/soong/.intermediates/packages/services/AlternativeNetworkAccess/ONS/android_common/proguard_usage.zip

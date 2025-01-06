@@ -2,5 +2,7 @@ out/soong/.intermediates/frameworks/base/packages/FusedLocation/FusedLocation/an
 out/soong/.intermediates/frameworks/base/packages/FusedLocation/FusedLocation/android_common/dexpreopt/dexpreopt.config
 out/soong/.intermediates/frameworks/base/packages/FusedLocation/FusedLocation/android_common/dexpreopt/oat/x86_64/package.odex
 out/soong/.intermediates/frameworks/base/packages/FusedLocation/FusedLocation/android_common/dexpreopt/oat/x86_64/package.vdex
+out/soong/.intermediates/frameworks/base/packages/FusedLocation/FusedLocation/android_common/javac/FusedLocation.jar
+out/soong/.intermediates/frameworks/base/packages/FusedLocation/FusedLocation/android_common/package-res.apk
 out/soong/.intermediates/frameworks/base/packages/FusedLocation/FusedLocation/android_common/proguard_dictionary
 out/soong/.intermediates/frameworks/base/packages/FusedLocation/FusedLocation/android_common/proguard_usage.zip

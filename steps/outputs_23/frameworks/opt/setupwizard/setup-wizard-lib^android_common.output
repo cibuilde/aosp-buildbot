@@ -1,3 +1,4 @@
 out/soong/.intermediates/frameworks/opt/setupwizard/library/setup-wizard-lib/android_common/javac/setup-wizard-lib.jar
+out/soong/.intermediates/frameworks/opt/setupwizard/library/setup-wizard-lib/android_common/manifest_fixer/AndroidManifest.xml
 out/soong/.intermediates/frameworks/opt/setupwizard/library/setup-wizard-lib/android_common/package-res.apk
 out/soong/.intermediates/frameworks/opt/setupwizard/library/setup-wizard-lib/android_common/turbine-combined/setup-wizard-lib.jar

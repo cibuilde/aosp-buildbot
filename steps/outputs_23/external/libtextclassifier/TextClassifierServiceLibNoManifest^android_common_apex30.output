@@ -1,4 +1,5 @@
 out/soong/.intermediates/external/libtextclassifier/java/TextClassifierServiceLibNoManifest/android_common_apex30/assets.zip
 out/soong/.intermediates/external/libtextclassifier/java/TextClassifierServiceLibNoManifest/android_common_apex30/combined/TextClassifierServiceLibNoManifest.jar
+out/soong/.intermediates/external/libtextclassifier/java/TextClassifierServiceLibNoManifest/android_common_apex30/manifest_fixer/AndroidManifest.xml
 out/soong/.intermediates/external/libtextclassifier/java/TextClassifierServiceLibNoManifest/android_common_apex30/package-res.apk
 out/soong/.intermediates/external/libtextclassifier/java/TextClassifierServiceLibNoManifest/android_common_apex30/turbine-combined/TextClassifierServiceLibNoManifest.jar

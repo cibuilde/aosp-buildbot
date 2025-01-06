@@ -4,5 +4,6 @@ out/soong/.intermediates/frameworks/base/location/lib/com.android.location.provi
 out/soong/.intermediates/frameworks/base/location/lib/com.android.location.provider/android_common/dexpreopt/oat/x86/javalib.vdex
 out/soong/.intermediates/frameworks/base/location/lib/com.android.location.provider/android_common/dexpreopt/oat/x86_64/javalib.odex
 out/soong/.intermediates/frameworks/base/location/lib/com.android.location.provider/android_common/dexpreopt/oat/x86_64/javalib.vdex
+out/soong/.intermediates/frameworks/base/location/lib/com.android.location.provider/android_common/javac/com.android.location.provider.jar
 out/soong/.intermediates/frameworks/base/location/lib/com.android.location.provider/android_common/turbine-combined/com.android.location.provider.jar
 out/soong/system_server_dexjars/com.android.location.provider.jar

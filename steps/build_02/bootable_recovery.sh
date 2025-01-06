@@ -40,13 +40,13 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/system/core/libsync/libsync^android_reco
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/core/libsync/libsync^android_x86_64_static/ .
 
 echo "building libminui^android_recovery_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_02.ninja libminui,android_recovery_x86_64_static
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_02.ninja libminui,android_recovery_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/bootable/recovery/minui/libminui^android_recovery_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_02/bootable/recovery/libminui^android_recovery_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bootable/recovery/minui/libminui^android_recovery_x86_64_static
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_02/bootable/recovery/libminui^android_recovery_x86_64_static.output $GITHUB_WORKSPACE/artifacts/bootable/recovery/minui/libminui^android_recovery_x86_64_static $GITHUB_WORKSPACE/artifacts/bootable/recovery/minui/libminui^android_recovery_x86_64_static/addition_copy_files.output
 
 echo "building libminui^android_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_02.ninja libminui,android_x86_64_static
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_02.ninja libminui,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/bootable/recovery/minui/libminui^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_02/bootable/recovery/libminui^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/bootable/recovery/minui/libminui^android_x86_64_static
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_02/bootable/recovery/libminui^android_x86_64_static.output $GITHUB_WORKSPACE/artifacts/bootable/recovery/minui/libminui^android_x86_64_static $GITHUB_WORKSPACE/artifacts/bootable/recovery/minui/libminui^android_x86_64_static/addition_copy_files.output

@@ -29,31 +29,31 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/libcore/core-current-stubs-system-module
 rsync -a -r $GITHUB_WORKSPACE/downloads/libcore/core-lambda-stubs^android_common/ .
 
 echo "building bouncycastle-repackaged-unbundled^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_13.ninja bouncycastle-repackaged-unbundled,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_13.ninja bouncycastle-repackaged-unbundled,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/bouncycastle/bouncycastle-repackaged-unbundled^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_13/external/bouncycastle/bouncycastle-repackaged-unbundled^android_common.output . $GITHUB_WORKSPACE/artifacts/external/bouncycastle/bouncycastle-repackaged-unbundled^android_common
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_13/external/bouncycastle/bouncycastle-repackaged-unbundled^android_common.output $GITHUB_WORKSPACE/artifacts/external/bouncycastle/bouncycastle-repackaged-unbundled^android_common $GITHUB_WORKSPACE/artifacts/external/bouncycastle/bouncycastle-repackaged-unbundled^android_common/addition_copy_files.output
 
 echo "building bouncycastle-unbundled^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_13.ninja bouncycastle-unbundled,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_13.ninja bouncycastle-unbundled,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/bouncycastle/bouncycastle-unbundled^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_13/external/bouncycastle/bouncycastle-unbundled^android_common.output . $GITHUB_WORKSPACE/artifacts/external/bouncycastle/bouncycastle-unbundled^android_common
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_13/external/bouncycastle/bouncycastle-unbundled^android_common.output $GITHUB_WORKSPACE/artifacts/external/bouncycastle/bouncycastle-unbundled^android_common $GITHUB_WORKSPACE/artifacts/external/bouncycastle/bouncycastle-unbundled^android_common/addition_copy_files.output
 
 echo "building bouncycastle-unbundled^android_common_apex30"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_13.ninja bouncycastle-unbundled,android_common_apex30
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_13.ninja bouncycastle-unbundled,android_common_apex30
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/bouncycastle/bouncycastle-unbundled^android_common_apex30
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_13/external/bouncycastle/bouncycastle-unbundled^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/external/bouncycastle/bouncycastle-unbundled^android_common_apex30
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_13/external/bouncycastle/bouncycastle-unbundled^android_common_apex30.output $GITHUB_WORKSPACE/artifacts/external/bouncycastle/bouncycastle-unbundled^android_common_apex30 $GITHUB_WORKSPACE/artifacts/external/bouncycastle/bouncycastle-unbundled^android_common_apex30/addition_copy_files.output
 
 echo "building bouncycastle_ike_digests^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_13.ninja bouncycastle_ike_digests,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_13.ninja bouncycastle_ike_digests,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/bouncycastle/bouncycastle_ike_digests^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_13/external/bouncycastle/bouncycastle_ike_digests^android_common.output . $GITHUB_WORKSPACE/artifacts/external/bouncycastle/bouncycastle_ike_digests^android_common
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_13/external/bouncycastle/bouncycastle_ike_digests^android_common.output $GITHUB_WORKSPACE/artifacts/external/bouncycastle/bouncycastle_ike_digests^android_common $GITHUB_WORKSPACE/artifacts/external/bouncycastle/bouncycastle_ike_digests^android_common/addition_copy_files.output
 
 echo "building bouncycastle_ike_digests^android_common_apex30"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_13.ninja bouncycastle_ike_digests,android_common_apex30
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_13.ninja bouncycastle_ike_digests,android_common_apex30
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/bouncycastle/bouncycastle_ike_digests^android_common_apex30
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_13/external/bouncycastle/bouncycastle_ike_digests^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/external/bouncycastle/bouncycastle_ike_digests^android_common_apex30
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_13/external/bouncycastle/bouncycastle_ike_digests^android_common_apex30.output $GITHUB_WORKSPACE/artifacts/external/bouncycastle/bouncycastle_ike_digests^android_common_apex30 $GITHUB_WORKSPACE/artifacts/external/bouncycastle/bouncycastle_ike_digests^android_common_apex30/addition_copy_files.output

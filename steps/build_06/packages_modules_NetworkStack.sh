@@ -33,7 +33,7 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/system/libbase/libbase^linux_glibc_x86_6
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^linux_glibc_x86_64_shared/ .
 
 echo "building statslog-networkstack-java-gen-stable^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja statslog-networkstack-java-gen-stable,
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja statslog-networkstack-java-gen-stable,
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/NetworkStack/statslog-networkstack-java-gen-stable^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/packages/modules/NetworkStack/statslog-networkstack-java-gen-stable^.output . $GITHUB_WORKSPACE/artifacts/packages/modules/NetworkStack/statslog-networkstack-java-gen-stable^
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_06/packages/modules/NetworkStack/statslog-networkstack-java-gen-stable^.output $GITHUB_WORKSPACE/artifacts/packages/modules/NetworkStack/statslog-networkstack-java-gen-stable^ $GITHUB_WORKSPACE/artifacts/packages/modules/NetworkStack/statslog-networkstack-java-gen-stable^/addition_copy_files.output

@@ -30,7 +30,7 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/audio/common/2.0/and
 rsync -a -r $GITHUB_WORKSPACE/downloads/libcore/core-current-stubs-system-modules^android_common/ .
 
 echo "building android.hardware.audio.common-V2.0-java^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_15.ninja android.hardware.audio.common-V2.0-java,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_15.ninja android.hardware.audio.common-V2.0-java,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/audio/common/2.0/android.hardware.audio.common-V2.0-java^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_15/hardware/interfaces/android.hardware.audio.common-V2.0-java^android_common.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/audio/common/2.0/android.hardware.audio.common-V2.0-java^android_common
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_15/hardware/interfaces/android.hardware.audio.common-V2.0-java^android_common.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/audio/common/2.0/android.hardware.audio.common-V2.0-java^android_common $GITHUB_WORKSPACE/artifacts/hardware/interfaces/audio/common/2.0/android.hardware.audio.common-V2.0-java^android_common/addition_copy_files.output

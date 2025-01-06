@@ -35,43 +35,43 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/sdk/current/androidx/androidx.
 rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/sdk/current/androidx/androidx.annotation_annotation^android_common_apex30/ .
 
 echo "building captiveportal-lib^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_23.ninja captiveportal-lib,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_23.ninja captiveportal-lib,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/NetworkStack/common/captiveportal/captiveportal-lib^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_23/packages/modules/NetworkStack/captiveportal-lib^android_common.output . $GITHUB_WORKSPACE/artifacts/packages/modules/NetworkStack/common/captiveportal/captiveportal-lib^android_common
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_23/packages/modules/NetworkStack/captiveportal-lib^android_common.output $GITHUB_WORKSPACE/artifacts/packages/modules/NetworkStack/common/captiveportal/captiveportal-lib^android_common $GITHUB_WORKSPACE/artifacts/packages/modules/NetworkStack/common/captiveportal/captiveportal-lib^android_common/addition_copy_files.output
 
 echo "building netlink-client^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_23.ninja netlink-client,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_23.ninja netlink-client,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/NetworkStack/common/netlinkclient/netlink-client^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_23/packages/modules/NetworkStack/netlink-client^android_common.output . $GITHUB_WORKSPACE/artifacts/packages/modules/NetworkStack/common/netlinkclient/netlink-client^android_common
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_23/packages/modules/NetworkStack/netlink-client^android_common.output $GITHUB_WORKSPACE/artifacts/packages/modules/NetworkStack/common/netlinkclient/netlink-client^android_common $GITHUB_WORKSPACE/artifacts/packages/modules/NetworkStack/common/netlinkclient/netlink-client^android_common/addition_copy_files.output
 
 echo "building netlink-client^android_common_apex30"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_23.ninja netlink-client,android_common_apex30
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_23.ninja netlink-client,android_common_apex30
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/NetworkStack/common/netlinkclient/netlink-client^android_common_apex30
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_23/packages/modules/NetworkStack/netlink-client^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/packages/modules/NetworkStack/common/netlinkclient/netlink-client^android_common_apex30
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_23/packages/modules/NetworkStack/netlink-client^android_common_apex30.output $GITHUB_WORKSPACE/artifacts/packages/modules/NetworkStack/common/netlinkclient/netlink-client^android_common_apex30 $GITHUB_WORKSPACE/artifacts/packages/modules/NetworkStack/common/netlinkclient/netlink-client^android_common_apex30/addition_copy_files.output
 
 echo "building ipmemorystore-aidl-interfaces-V10-java^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_23.ninja ipmemorystore-aidl-interfaces-V10-java,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_23.ninja ipmemorystore-aidl-interfaces-V10-java,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/NetworkStack/common/networkstackclient/ipmemorystore-aidl-interfaces-V10-java^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_23/packages/modules/NetworkStack/ipmemorystore-aidl-interfaces-V10-java^android_common.output . $GITHUB_WORKSPACE/artifacts/packages/modules/NetworkStack/common/networkstackclient/ipmemorystore-aidl-interfaces-V10-java^android_common
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_23/packages/modules/NetworkStack/ipmemorystore-aidl-interfaces-V10-java^android_common.output $GITHUB_WORKSPACE/artifacts/packages/modules/NetworkStack/common/networkstackclient/ipmemorystore-aidl-interfaces-V10-java^android_common $GITHUB_WORKSPACE/artifacts/packages/modules/NetworkStack/common/networkstackclient/ipmemorystore-aidl-interfaces-V10-java^android_common/addition_copy_files.output
 
 echo "building ipmemorystore-aidl-interfaces-V10-java^android_common_apex30"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_23.ninja ipmemorystore-aidl-interfaces-V10-java,android_common_apex30
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_23.ninja ipmemorystore-aidl-interfaces-V10-java,android_common_apex30
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/NetworkStack/common/networkstackclient/ipmemorystore-aidl-interfaces-V10-java^android_common_apex30
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_23/packages/modules/NetworkStack/ipmemorystore-aidl-interfaces-V10-java^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/packages/modules/NetworkStack/common/networkstackclient/ipmemorystore-aidl-interfaces-V10-java^android_common_apex30
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_23/packages/modules/NetworkStack/ipmemorystore-aidl-interfaces-V10-java^android_common_apex30.output $GITHUB_WORKSPACE/artifacts/packages/modules/NetworkStack/common/networkstackclient/ipmemorystore-aidl-interfaces-V10-java^android_common_apex30 $GITHUB_WORKSPACE/artifacts/packages/modules/NetworkStack/common/networkstackclient/ipmemorystore-aidl-interfaces-V10-java^android_common_apex30/addition_copy_files.output
 
 echo "building networkstack-aidl-interfaces-V10-java^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_23.ninja networkstack-aidl-interfaces-V10-java,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_23.ninja networkstack-aidl-interfaces-V10-java,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/NetworkStack/common/networkstackclient/networkstack-aidl-interfaces-V10-java^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_23/packages/modules/NetworkStack/networkstack-aidl-interfaces-V10-java^android_common.output . $GITHUB_WORKSPACE/artifacts/packages/modules/NetworkStack/common/networkstackclient/networkstack-aidl-interfaces-V10-java^android_common
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_23/packages/modules/NetworkStack/networkstack-aidl-interfaces-V10-java^android_common.output $GITHUB_WORKSPACE/artifacts/packages/modules/NetworkStack/common/networkstackclient/networkstack-aidl-interfaces-V10-java^android_common $GITHUB_WORKSPACE/artifacts/packages/modules/NetworkStack/common/networkstackclient/networkstack-aidl-interfaces-V10-java^android_common/addition_copy_files.output
 
 echo "building networkstack-aidl-interfaces-V10-java^android_common_apex30"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_23.ninja networkstack-aidl-interfaces-V10-java,android_common_apex30
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_23.ninja networkstack-aidl-interfaces-V10-java,android_common_apex30
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/NetworkStack/common/networkstackclient/networkstack-aidl-interfaces-V10-java^android_common_apex30
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_23/packages/modules/NetworkStack/networkstack-aidl-interfaces-V10-java^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/packages/modules/NetworkStack/common/networkstackclient/networkstack-aidl-interfaces-V10-java^android_common_apex30
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_23/packages/modules/NetworkStack/networkstack-aidl-interfaces-V10-java^android_common_apex30.output $GITHUB_WORKSPACE/artifacts/packages/modules/NetworkStack/common/networkstackclient/networkstack-aidl-interfaces-V10-java^android_common_apex30 $GITHUB_WORKSPACE/artifacts/packages/modules/NetworkStack/common/networkstackclient/networkstack-aidl-interfaces-V10-java^android_common_apex30/addition_copy_files.output

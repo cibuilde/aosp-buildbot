@@ -1,3 +1,4 @@
 out/soong/.intermediates/packages/apps/Settings/Settings-core/android_common/combined/Settings-core.jar
+out/soong/.intermediates/packages/apps/Settings/Settings-core/android_common/manifest_fixer/AndroidManifest.xml
 out/soong/.intermediates/packages/apps/Settings/Settings-core/android_common/package-res.apk
 out/soong/.intermediates/packages/apps/Settings/Settings-core/android_common/turbine-combined/Settings-core.jar

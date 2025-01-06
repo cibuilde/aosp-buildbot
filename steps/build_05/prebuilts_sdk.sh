@@ -24,151 +24,151 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/zip/cmd/soong_zip^linux_glib
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/tools/aapt2/aapt2^linux_glibc_x86_64/ .
 
 echo "building androidx.annotation_annotation-experimental-nodeps^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja androidx.annotation_annotation-experimental-nodeps,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja androidx.annotation_annotation-experimental-nodeps,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.annotation_annotation-experimental-nodeps^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/prebuilts/sdk/androidx.annotation_annotation-experimental-nodeps^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.annotation_annotation-experimental-nodeps^android_common
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/prebuilts/sdk/androidx.annotation_annotation-experimental-nodeps^android_common.output $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.annotation_annotation-experimental-nodeps^android_common $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.annotation_annotation-experimental-nodeps^android_common/addition_copy_files.output
 
 echo "building androidx.annotation_annotation-experimental-nodeps^android_common_apex30"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja androidx.annotation_annotation-experimental-nodeps,android_common_apex30
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja androidx.annotation_annotation-experimental-nodeps,android_common_apex30
 mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.annotation_annotation-experimental-nodeps^android_common_apex30
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/prebuilts/sdk/androidx.annotation_annotation-experimental-nodeps^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.annotation_annotation-experimental-nodeps^android_common_apex30
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/prebuilts/sdk/androidx.annotation_annotation-experimental-nodeps^android_common_apex30.output $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.annotation_annotation-experimental-nodeps^android_common_apex30 $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.annotation_annotation-experimental-nodeps^android_common_apex30/addition_copy_files.output
 
 echo "building androidx.exifinterface_exifinterface-nodeps^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja androidx.exifinterface_exifinterface-nodeps,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja androidx.exifinterface_exifinterface-nodeps,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.exifinterface_exifinterface-nodeps^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/prebuilts/sdk/androidx.exifinterface_exifinterface-nodeps^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.exifinterface_exifinterface-nodeps^android_common
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/prebuilts/sdk/androidx.exifinterface_exifinterface-nodeps^android_common.output $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.exifinterface_exifinterface-nodeps^android_common $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.exifinterface_exifinterface-nodeps^android_common/addition_copy_files.output
 
 echo "building androidx.interpolator_interpolator-nodeps^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja androidx.interpolator_interpolator-nodeps,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja androidx.interpolator_interpolator-nodeps,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.interpolator_interpolator-nodeps^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/prebuilts/sdk/androidx.interpolator_interpolator-nodeps^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.interpolator_interpolator-nodeps^android_common
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/prebuilts/sdk/androidx.interpolator_interpolator-nodeps^android_common.output $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.interpolator_interpolator-nodeps^android_common $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.interpolator_interpolator-nodeps^android_common/addition_copy_files.output
 
 echo "building androidx.interpolator_interpolator-nodeps^android_common_apex30"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja androidx.interpolator_interpolator-nodeps,android_common_apex30
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja androidx.interpolator_interpolator-nodeps,android_common_apex30
 mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.interpolator_interpolator-nodeps^android_common_apex30
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/prebuilts/sdk/androidx.interpolator_interpolator-nodeps^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.interpolator_interpolator-nodeps^android_common_apex30
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/prebuilts/sdk/androidx.interpolator_interpolator-nodeps^android_common_apex30.output $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.interpolator_interpolator-nodeps^android_common_apex30 $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.interpolator_interpolator-nodeps^android_common_apex30/addition_copy_files.output
 
 echo "building androidx.lifecycle_lifecycle-viewmodel-nodeps^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja androidx.lifecycle_lifecycle-viewmodel-nodeps,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja androidx.lifecycle_lifecycle-viewmodel-nodeps,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.lifecycle_lifecycle-viewmodel-nodeps^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/prebuilts/sdk/androidx.lifecycle_lifecycle-viewmodel-nodeps^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.lifecycle_lifecycle-viewmodel-nodeps^android_common
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/prebuilts/sdk/androidx.lifecycle_lifecycle-viewmodel-nodeps^android_common.output $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.lifecycle_lifecycle-viewmodel-nodeps^android_common $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.lifecycle_lifecycle-viewmodel-nodeps^android_common/addition_copy_files.output
 
 echo "building androidx.lifecycle_lifecycle-viewmodel-nodeps^android_common_apex30"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja androidx.lifecycle_lifecycle-viewmodel-nodeps,android_common_apex30
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja androidx.lifecycle_lifecycle-viewmodel-nodeps,android_common_apex30
 mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.lifecycle_lifecycle-viewmodel-nodeps^android_common_apex30
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/prebuilts/sdk/androidx.lifecycle_lifecycle-viewmodel-nodeps^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.lifecycle_lifecycle-viewmodel-nodeps^android_common_apex30
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/prebuilts/sdk/androidx.lifecycle_lifecycle-viewmodel-nodeps^android_common_apex30.output $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.lifecycle_lifecycle-viewmodel-nodeps^android_common_apex30 $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.lifecycle_lifecycle-viewmodel-nodeps^android_common_apex30/addition_copy_files.output
 
 echo "building androidx.localbroadcastmanager_localbroadcastmanager-nodeps^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja androidx.localbroadcastmanager_localbroadcastmanager-nodeps,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja androidx.localbroadcastmanager_localbroadcastmanager-nodeps,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.localbroadcastmanager_localbroadcastmanager-nodeps^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/prebuilts/sdk/androidx.localbroadcastmanager_localbroadcastmanager-nodeps^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.localbroadcastmanager_localbroadcastmanager-nodeps^android_common
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/prebuilts/sdk/androidx.localbroadcastmanager_localbroadcastmanager-nodeps^android_common.output $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.localbroadcastmanager_localbroadcastmanager-nodeps^android_common $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.localbroadcastmanager_localbroadcastmanager-nodeps^android_common/addition_copy_files.output
 
 echo "building androidx.localbroadcastmanager_localbroadcastmanager-nodeps^android_common_apex30"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja androidx.localbroadcastmanager_localbroadcastmanager-nodeps,android_common_apex30
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja androidx.localbroadcastmanager_localbroadcastmanager-nodeps,android_common_apex30
 mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.localbroadcastmanager_localbroadcastmanager-nodeps^android_common_apex30
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/prebuilts/sdk/androidx.localbroadcastmanager_localbroadcastmanager-nodeps^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.localbroadcastmanager_localbroadcastmanager-nodeps^android_common_apex30
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/prebuilts/sdk/androidx.localbroadcastmanager_localbroadcastmanager-nodeps^android_common_apex30.output $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.localbroadcastmanager_localbroadcastmanager-nodeps^android_common_apex30 $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.localbroadcastmanager_localbroadcastmanager-nodeps^android_common_apex30/addition_copy_files.output
 
 echo "building androidx.print_print-nodeps^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja androidx.print_print-nodeps,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja androidx.print_print-nodeps,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.print_print-nodeps^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/prebuilts/sdk/androidx.print_print-nodeps^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.print_print-nodeps^android_common
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/prebuilts/sdk/androidx.print_print-nodeps^android_common.output $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.print_print-nodeps^android_common $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.print_print-nodeps^android_common/addition_copy_files.output
 
 echo "building androidx.print_print-nodeps^android_common_apex30"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja androidx.print_print-nodeps,android_common_apex30
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja androidx.print_print-nodeps,android_common_apex30
 mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.print_print-nodeps^android_common_apex30
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/prebuilts/sdk/androidx.print_print-nodeps^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.print_print-nodeps^android_common_apex30
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/prebuilts/sdk/androidx.print_print-nodeps^android_common_apex30.output $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.print_print-nodeps^android_common_apex30 $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.print_print-nodeps^android_common_apex30/addition_copy_files.output
 
 echo "building androidx.remotecallback_remotecallback-nodeps^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja androidx.remotecallback_remotecallback-nodeps,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja androidx.remotecallback_remotecallback-nodeps,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.remotecallback_remotecallback-nodeps^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/prebuilts/sdk/androidx.remotecallback_remotecallback-nodeps^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.remotecallback_remotecallback-nodeps^android_common
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/prebuilts/sdk/androidx.remotecallback_remotecallback-nodeps^android_common.output $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.remotecallback_remotecallback-nodeps^android_common $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.remotecallback_remotecallback-nodeps^android_common/addition_copy_files.output
 
 echo "building androidx.savedstate_savedstate-nodeps^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja androidx.savedstate_savedstate-nodeps,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja androidx.savedstate_savedstate-nodeps,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.savedstate_savedstate-nodeps^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/prebuilts/sdk/androidx.savedstate_savedstate-nodeps^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.savedstate_savedstate-nodeps^android_common
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/prebuilts/sdk/androidx.savedstate_savedstate-nodeps^android_common.output $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.savedstate_savedstate-nodeps^android_common $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.savedstate_savedstate-nodeps^android_common/addition_copy_files.output
 
 echo "building androidx.savedstate_savedstate-nodeps^android_common_apex30"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja androidx.savedstate_savedstate-nodeps,android_common_apex30
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja androidx.savedstate_savedstate-nodeps,android_common_apex30
 mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.savedstate_savedstate-nodeps^android_common_apex30
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/prebuilts/sdk/androidx.savedstate_savedstate-nodeps^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.savedstate_savedstate-nodeps^android_common_apex30
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/prebuilts/sdk/androidx.savedstate_savedstate-nodeps^android_common_apex30.output $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.savedstate_savedstate-nodeps^android_common_apex30 $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.savedstate_savedstate-nodeps^android_common_apex30/addition_copy_files.output
 
 echo "building androidx.sqlite_sqlite-nodeps^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja androidx.sqlite_sqlite-nodeps,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja androidx.sqlite_sqlite-nodeps,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.sqlite_sqlite-nodeps^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/prebuilts/sdk/androidx.sqlite_sqlite-nodeps^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.sqlite_sqlite-nodeps^android_common
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/prebuilts/sdk/androidx.sqlite_sqlite-nodeps^android_common.output $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.sqlite_sqlite-nodeps^android_common $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.sqlite_sqlite-nodeps^android_common/addition_copy_files.output
 
 echo "building androidx.tracing_tracing-nodeps^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja androidx.tracing_tracing-nodeps,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja androidx.tracing_tracing-nodeps,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.tracing_tracing-nodeps^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/prebuilts/sdk/androidx.tracing_tracing-nodeps^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.tracing_tracing-nodeps^android_common
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/prebuilts/sdk/androidx.tracing_tracing-nodeps^android_common.output $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.tracing_tracing-nodeps^android_common $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.tracing_tracing-nodeps^android_common/addition_copy_files.output
 
 echo "building androidx.tracing_tracing-nodeps^android_common_apex30"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja androidx.tracing_tracing-nodeps,android_common_apex30
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja androidx.tracing_tracing-nodeps,android_common_apex30
 mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.tracing_tracing-nodeps^android_common_apex30
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/prebuilts/sdk/androidx.tracing_tracing-nodeps^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.tracing_tracing-nodeps^android_common_apex30
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/prebuilts/sdk/androidx.tracing_tracing-nodeps^android_common_apex30.output $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.tracing_tracing-nodeps^android_common_apex30 $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.tracing_tracing-nodeps^android_common_apex30/addition_copy_files.output
 
 echo "building androidx.versionedparcelable_versionedparcelable-nodeps^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja androidx.versionedparcelable_versionedparcelable-nodeps,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja androidx.versionedparcelable_versionedparcelable-nodeps,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.versionedparcelable_versionedparcelable-nodeps^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/prebuilts/sdk/androidx.versionedparcelable_versionedparcelable-nodeps^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.versionedparcelable_versionedparcelable-nodeps^android_common
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/prebuilts/sdk/androidx.versionedparcelable_versionedparcelable-nodeps^android_common.output $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.versionedparcelable_versionedparcelable-nodeps^android_common $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.versionedparcelable_versionedparcelable-nodeps^android_common/addition_copy_files.output
 
 echo "building androidx.versionedparcelable_versionedparcelable-nodeps^android_common_apex30"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja androidx.versionedparcelable_versionedparcelable-nodeps,android_common_apex30
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja androidx.versionedparcelable_versionedparcelable-nodeps,android_common_apex30
 mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.versionedparcelable_versionedparcelable-nodeps^android_common_apex30
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/prebuilts/sdk/androidx.versionedparcelable_versionedparcelable-nodeps^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.versionedparcelable_versionedparcelable-nodeps^android_common_apex30
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/prebuilts/sdk/androidx.versionedparcelable_versionedparcelable-nodeps^android_common_apex30.output $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.versionedparcelable_versionedparcelable-nodeps^android_common_apex30 $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.versionedparcelable_versionedparcelable-nodeps^android_common_apex30/addition_copy_files.output
 
 echo "building androidx.arch.core_core-runtime-nodeps^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja androidx.arch.core_core-runtime-nodeps,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja androidx.arch.core_core-runtime-nodeps,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.arch.core_core-runtime-nodeps^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/prebuilts/sdk/androidx.arch.core_core-runtime-nodeps^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.arch.core_core-runtime-nodeps^android_common
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/prebuilts/sdk/androidx.arch.core_core-runtime-nodeps^android_common.output $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.arch.core_core-runtime-nodeps^android_common $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.arch.core_core-runtime-nodeps^android_common/addition_copy_files.output
 
 echo "building androidx.arch.core_core-runtime-nodeps^android_common_apex30"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja androidx.arch.core_core-runtime-nodeps,android_common_apex30
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja androidx.arch.core_core-runtime-nodeps,android_common_apex30
 mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.arch.core_core-runtime-nodeps^android_common_apex30
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/prebuilts/sdk/androidx.arch.core_core-runtime-nodeps^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.arch.core_core-runtime-nodeps^android_common_apex30
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/prebuilts/sdk/androidx.arch.core_core-runtime-nodeps^android_common_apex30.output $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.arch.core_core-runtime-nodeps^android_common_apex30 $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.arch.core_core-runtime-nodeps^android_common_apex30/addition_copy_files.output
 
 echo "building androidx.cursoradapter_cursoradapter-nodeps^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja androidx.cursoradapter_cursoradapter-nodeps,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja androidx.cursoradapter_cursoradapter-nodeps,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.cursoradapter_cursoradapter-nodeps^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/prebuilts/sdk/androidx.cursoradapter_cursoradapter-nodeps^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.cursoradapter_cursoradapter-nodeps^android_common
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/prebuilts/sdk/androidx.cursoradapter_cursoradapter-nodeps^android_common.output $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.cursoradapter_cursoradapter-nodeps^android_common $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.cursoradapter_cursoradapter-nodeps^android_common/addition_copy_files.output
 
 echo "building androidx.cursoradapter_cursoradapter-nodeps^android_common_apex30"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja androidx.cursoradapter_cursoradapter-nodeps,android_common_apex30
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja androidx.cursoradapter_cursoradapter-nodeps,android_common_apex30
 mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.cursoradapter_cursoradapter-nodeps^android_common_apex30
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/prebuilts/sdk/androidx.cursoradapter_cursoradapter-nodeps^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.cursoradapter_cursoradapter-nodeps^android_common_apex30
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/prebuilts/sdk/androidx.cursoradapter_cursoradapter-nodeps^android_common_apex30.output $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.cursoradapter_cursoradapter-nodeps^android_common_apex30 $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.cursoradapter_cursoradapter-nodeps^android_common_apex30/addition_copy_files.output
 
 echo "building androidx.documentfile_documentfile-nodeps^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja androidx.documentfile_documentfile-nodeps,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja androidx.documentfile_documentfile-nodeps,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.documentfile_documentfile-nodeps^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/prebuilts/sdk/androidx.documentfile_documentfile-nodeps^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.documentfile_documentfile-nodeps^android_common
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/prebuilts/sdk/androidx.documentfile_documentfile-nodeps^android_common.output $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.documentfile_documentfile-nodeps^android_common $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.documentfile_documentfile-nodeps^android_common/addition_copy_files.output
 
 echo "building androidx.documentfile_documentfile-nodeps^android_common_apex30"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja androidx.documentfile_documentfile-nodeps,android_common_apex30
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja androidx.documentfile_documentfile-nodeps,android_common_apex30
 mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.documentfile_documentfile-nodeps^android_common_apex30
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/prebuilts/sdk/androidx.documentfile_documentfile-nodeps^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.documentfile_documentfile-nodeps^android_common_apex30
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/prebuilts/sdk/androidx.documentfile_documentfile-nodeps^android_common_apex30.output $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.documentfile_documentfile-nodeps^android_common_apex30 $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.documentfile_documentfile-nodeps^android_common_apex30/addition_copy_files.output

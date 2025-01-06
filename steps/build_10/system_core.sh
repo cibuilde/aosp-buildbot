@@ -189,73 +189,73 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/system/update_engine/update_metadata-pro
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/update_engine/update_metadata-protos^android_x86_64_static/ .
 
 echo "building fastbootd^android_recovery_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja fastbootd,android_recovery_x86_64
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja fastbootd,android_recovery_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/fastboot/fastbootd^android_recovery_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/system/core/fastbootd^android_recovery_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/core/fastboot/fastbootd^android_recovery_x86_64
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_10/system/core/fastbootd^android_recovery_x86_64.output $GITHUB_WORKSPACE/artifacts/system/core/fastboot/fastbootd^android_recovery_x86_64 $GITHUB_WORKSPACE/artifacts/system/core/fastboot/fastbootd^android_recovery_x86_64/addition_copy_files.output
 
 echo "building libfs_mgr_binder^android_x86_64_shared"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja libfs_mgr_binder,android_x86_64_shared
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja libfs_mgr_binder,android_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/libfs_mgr_binder^android_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/system/core/libfs_mgr_binder^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/libfs_mgr_binder^android_x86_64_shared
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_10/system/core/libfs_mgr_binder^android_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/libfs_mgr_binder^android_x86_64_shared $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/libfs_mgr_binder^android_x86_64_shared/addition_copy_files.output
 
 echo "building libfs_mgr_binder^android_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja libfs_mgr_binder,android_x86_64_static
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja libfs_mgr_binder,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/libfs_mgr_binder^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/system/core/libfs_mgr_binder^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/libfs_mgr_binder^android_x86_64_static
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_10/system/core/libfs_mgr_binder^android_x86_64_static.output $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/libfs_mgr_binder^android_x86_64_static $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/libfs_mgr_binder^android_x86_64_static/addition_copy_files.output
 
 echo "building clean_scratch_files^android_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja clean_scratch_files,android_x86_64
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja clean_scratch_files,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/clean_scratch_files^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/system/core/clean_scratch_files^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/clean_scratch_files^android_x86_64
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_10/system/core/clean_scratch_files^android_x86_64.output $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/clean_scratch_files^android_x86_64 $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/clean_scratch_files^android_x86_64/addition_copy_files.output
 
 echo "building snapshotctl^android_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja snapshotctl,android_x86_64
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja snapshotctl,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/libsnapshot/snapshotctl^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/system/core/snapshotctl^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/libsnapshot/snapshotctl^android_x86_64
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_10/system/core/snapshotctl^android_x86_64.output $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/libsnapshot/snapshotctl^android_x86_64 $GITHUB_WORKSPACE/artifacts/system/core/fs_mgr/libsnapshot/snapshotctl^android_x86_64/addition_copy_files.output
 
 echo "building charger^android_recovery_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja charger,android_recovery_x86_64
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja charger,android_recovery_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/healthd/charger^android_recovery_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/system/core/charger^android_recovery_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/core/healthd/charger^android_recovery_x86_64
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_10/system/core/charger^android_recovery_x86_64.output $GITHUB_WORKSPACE/artifacts/system/core/healthd/charger^android_recovery_x86_64 $GITHUB_WORKSPACE/artifacts/system/core/healthd/charger^android_recovery_x86_64/addition_copy_files.output
 
 echo "building charger^android_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja charger,android_x86_64
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja charger,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/healthd/charger^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/system/core/charger^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/core/healthd/charger^android_x86_64
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_10/system/core/charger^android_x86_64.output $GITHUB_WORKSPACE/artifacts/system/core/healthd/charger^android_x86_64 $GITHUB_WORKSPACE/artifacts/system/core/healthd/charger^android_x86_64/addition_copy_files.output
 
 echo "building libgrallocusage^android_vendor.31_x86_64_shared"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja libgrallocusage,android_vendor.31_x86_64_shared
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja libgrallocusage,android_vendor.31_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/libgrallocusage/libgrallocusage^android_vendor.31_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/system/core/libgrallocusage^android_vendor.31_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/core/libgrallocusage/libgrallocusage^android_vendor.31_x86_64_shared
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_10/system/core/libgrallocusage^android_vendor.31_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/system/core/libgrallocusage/libgrallocusage^android_vendor.31_x86_64_shared $GITHUB_WORKSPACE/artifacts/system/core/libgrallocusage/libgrallocusage^android_vendor.31_x86_64_shared/addition_copy_files.output
 
 echo "building libgrallocusage^android_vendor.31_x86_x86_64_shared"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja libgrallocusage,android_vendor.31_x86_x86_64_shared
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja libgrallocusage,android_vendor.31_x86_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/libgrallocusage/libgrallocusage^android_vendor.31_x86_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/system/core/libgrallocusage^android_vendor.31_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/core/libgrallocusage/libgrallocusage^android_vendor.31_x86_x86_64_shared
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_10/system/core/libgrallocusage^android_vendor.31_x86_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/system/core/libgrallocusage/libgrallocusage^android_vendor.31_x86_x86_64_shared $GITHUB_WORKSPACE/artifacts/system/core/libgrallocusage/libgrallocusage^android_vendor.31_x86_x86_64_shared/addition_copy_files.output
 
 echo "building set-verity-state^android_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja set-verity-state,android_x86_64
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja set-verity-state,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/set-verity-state/set-verity-state^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/system/core/set-verity-state^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/core/set-verity-state/set-verity-state^android_x86_64
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_10/system/core/set-verity-state^android_x86_64.output $GITHUB_WORKSPACE/artifacts/system/core/set-verity-state/set-verity-state^android_x86_64 $GITHUB_WORKSPACE/artifacts/system/core/set-verity-state/set-verity-state^android_x86_64/addition_copy_files.output
 
 echo "building storaged^android_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja storaged,android_x86_64
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja storaged,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/storaged/storaged^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/system/core/storaged^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/core/storaged/storaged^android_x86_64
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_10/system/core/storaged^android_x86_64.output $GITHUB_WORKSPACE/artifacts/system/core/storaged/storaged^android_x86_64 $GITHUB_WORKSPACE/artifacts/system/core/storaged/storaged^android_x86_64/addition_copy_files.output
 
 echo "building usbd^android_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja usbd,android_x86_64
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja usbd,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/usbd/usbd^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/system/core/usbd^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/core/usbd/usbd^android_x86_64
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_10/system/core/usbd^android_x86_64.output $GITHUB_WORKSPACE/artifacts/system/core/usbd/usbd^android_x86_64 $GITHUB_WORKSPACE/artifacts/system/core/usbd/usbd^android_x86_64/addition_copy_files.output

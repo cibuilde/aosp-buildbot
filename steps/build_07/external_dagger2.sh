@@ -55,13 +55,13 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/external/kotlinx.metadata/kotlinx_metada
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/protobuf/libprotobuf-java-full^linux_glibc_common/ .
 
 echo "building dagger2-compiler^linux_glibc_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja dagger2-compiler,linux_glibc_common
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja dagger2-compiler,linux_glibc_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/dagger2/dagger2-compiler^linux_glibc_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/external/dagger2/dagger2-compiler^linux_glibc_common.output . $GITHUB_WORKSPACE/artifacts/external/dagger2/dagger2-compiler^linux_glibc_common
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_07/external/dagger2/dagger2-compiler^linux_glibc_common.output $GITHUB_WORKSPACE/artifacts/external/dagger2/dagger2-compiler^linux_glibc_common $GITHUB_WORKSPACE/artifacts/external/dagger2/dagger2-compiler^linux_glibc_common/addition_copy_files.output
 
 echo "building dagger2-compiler-lib^linux_glibc_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja dagger2-compiler-lib,linux_glibc_common
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja dagger2-compiler-lib,linux_glibc_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/dagger2/dagger2-compiler-lib^linux_glibc_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/external/dagger2/dagger2-compiler-lib^linux_glibc_common.output . $GITHUB_WORKSPACE/artifacts/external/dagger2/dagger2-compiler-lib^linux_glibc_common
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_07/external/dagger2/dagger2-compiler-lib^linux_glibc_common.output $GITHUB_WORKSPACE/artifacts/external/dagger2/dagger2-compiler-lib^linux_glibc_common $GITHUB_WORKSPACE/artifacts/external/dagger2/dagger2-compiler-lib^linux_glibc_common/addition_copy_files.output

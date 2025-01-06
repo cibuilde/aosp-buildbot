@@ -36,25 +36,25 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/zip/cmd/soong_zip^linux_glib
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/protobuf/aprotoc^linux_glibc_x86_64/ .
 
 echo "building linker_config_proto^linux_glibc_x86_64_PY3"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja linker_config_proto,linux_glibc_x86_64_PY3
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja linker_config_proto,linux_glibc_x86_64_PY3
 mkdir -p $GITHUB_WORKSPACE/artifacts/build/soong/linkerconfig/proto/linker_config_proto^linux_glibc_x86_64_PY3
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/build/soong/linker_config_proto^linux_glibc_x86_64_PY3.output . $GITHUB_WORKSPACE/artifacts/build/soong/linkerconfig/proto/linker_config_proto^linux_glibc_x86_64_PY3
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/build/soong/linker_config_proto^linux_glibc_x86_64_PY3.output $GITHUB_WORKSPACE/artifacts/build/soong/linkerconfig/proto/linker_config_proto^linux_glibc_x86_64_PY3 $GITHUB_WORKSPACE/artifacts/build/soong/linkerconfig/proto/linker_config_proto^linux_glibc_x86_64_PY3/addition_copy_files.output
 
 echo "building lib_linker_config_proto_lite^android_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja lib_linker_config_proto_lite,android_x86_64_static
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja lib_linker_config_proto_lite,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/build/soong/linkerconfig/proto/lib_linker_config_proto_lite^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/build/soong/lib_linker_config_proto_lite^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/build/soong/linkerconfig/proto/lib_linker_config_proto_lite^android_x86_64_static
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/build/soong/lib_linker_config_proto_lite^android_x86_64_static.output $GITHUB_WORKSPACE/artifacts/build/soong/linkerconfig/proto/lib_linker_config_proto_lite^android_x86_64_static $GITHUB_WORKSPACE/artifacts/build/soong/linkerconfig/proto/lib_linker_config_proto_lite^android_x86_64_static/addition_copy_files.output
 
 echo "building lib_linker_config_proto_lite^android_x86_64_static_apex10000"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja lib_linker_config_proto_lite,android_x86_64_static_apex10000
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja lib_linker_config_proto_lite,android_x86_64_static_apex10000
 mkdir -p $GITHUB_WORKSPACE/artifacts/build/soong/linkerconfig/proto/lib_linker_config_proto_lite^android_x86_64_static_apex10000
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/build/soong/lib_linker_config_proto_lite^android_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/build/soong/linkerconfig/proto/lib_linker_config_proto_lite^android_x86_64_static_apex10000
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/build/soong/lib_linker_config_proto_lite^android_x86_64_static_apex10000.output $GITHUB_WORKSPACE/artifacts/build/soong/linkerconfig/proto/lib_linker_config_proto_lite^android_x86_64_static_apex10000 $GITHUB_WORKSPACE/artifacts/build/soong/linkerconfig/proto/lib_linker_config_proto_lite^android_x86_64_static_apex10000/addition_copy_files.output
 
 echo "building lib_linker_config_proto_lite^linux_glibc_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja lib_linker_config_proto_lite,linux_glibc_x86_64_static
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja lib_linker_config_proto_lite,linux_glibc_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/build/soong/linkerconfig/proto/lib_linker_config_proto_lite^linux_glibc_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/build/soong/lib_linker_config_proto_lite^linux_glibc_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/build/soong/linkerconfig/proto/lib_linker_config_proto_lite^linux_glibc_x86_64_static
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/build/soong/lib_linker_config_proto_lite^linux_glibc_x86_64_static.output $GITHUB_WORKSPACE/artifacts/build/soong/linkerconfig/proto/lib_linker_config_proto_lite^linux_glibc_x86_64_static $GITHUB_WORKSPACE/artifacts/build/soong/linkerconfig/proto/lib_linker_config_proto_lite^linux_glibc_x86_64_static/addition_copy_files.output

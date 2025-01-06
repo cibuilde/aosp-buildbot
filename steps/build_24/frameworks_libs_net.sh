@@ -43,19 +43,19 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/system/netd/server/netd_aidl_interface-V
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/netd/server/netd_aidl_interface-V7-java^android_common_apex30/ .
 
 echo "building netd-client^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_24.ninja netd-client,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_24.ninja netd-client,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/libs/net/client-libs/netd-client^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_24/frameworks/libs/net/netd-client^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/libs/net/client-libs/netd-client^android_common
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_24/frameworks/libs/net/netd-client^android_common.output $GITHUB_WORKSPACE/artifacts/frameworks/libs/net/client-libs/netd-client^android_common $GITHUB_WORKSPACE/artifacts/frameworks/libs/net/client-libs/netd-client^android_common/addition_copy_files.output
 
 echo "building netd-client^android_common_apex30"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_24.ninja netd-client,android_common_apex30
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_24.ninja netd-client,android_common_apex30
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/libs/net/client-libs/netd-client^android_common_apex30
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_24/frameworks/libs/net/netd-client^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/frameworks/libs/net/client-libs/netd-client^android_common_apex30
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_24/frameworks/libs/net/netd-client^android_common_apex30.output $GITHUB_WORKSPACE/artifacts/frameworks/libs/net/client-libs/netd-client^android_common_apex30 $GITHUB_WORKSPACE/artifacts/frameworks/libs/net/client-libs/netd-client^android_common_apex30/addition_copy_files.output
 
 echo "building net-utils-services-common^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_24.ninja net-utils-services-common,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_24.ninja net-utils-services-common,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/libs/net/common/net-utils-services-common^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_24/frameworks/libs/net/net-utils-services-common^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/libs/net/common/net-utils-services-common^android_common
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_24/frameworks/libs/net/net-utils-services-common^android_common.output $GITHUB_WORKSPACE/artifacts/frameworks/libs/net/common/net-utils-services-common^android_common $GITHUB_WORKSPACE/artifacts/frameworks/libs/net/common/net-utils-services-common^android_common/addition_copy_files.output

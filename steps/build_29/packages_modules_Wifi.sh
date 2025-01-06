@@ -24,7 +24,7 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/zip/cmd/soong_zip^linux_glib
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/boot/platform-bootclasspath^android_common/ .
 
 echo "building framework-wifi^android_common_apex30"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_29.ninja framework-wifi,android_common_apex30
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_29.ninja framework-wifi,android_common_apex30
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/Wifi/framework/framework-wifi^android_common_apex30
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_29/packages/modules/Wifi/framework-wifi^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/packages/modules/Wifi/framework/framework-wifi^android_common_apex30
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_29/packages/modules/Wifi/framework-wifi^android_common_apex30.output $GITHUB_WORKSPACE/artifacts/packages/modules/Wifi/framework/framework-wifi^android_common_apex30 $GITHUB_WORKSPACE/artifacts/packages/modules/Wifi/framework/framework-wifi^android_common_apex30/addition_copy_files.output

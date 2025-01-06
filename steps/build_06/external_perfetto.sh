@@ -148,49 +148,49 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^android_x86
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^linux_glibc_x86_64_shared/ .
 
 echo "building statslog_perfetto.h^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja statslog_perfetto.h,
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja statslog_perfetto.h,
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/perfetto/statslog_perfetto.h^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/external/perfetto/statslog_perfetto.h^.output . $GITHUB_WORKSPACE/artifacts/external/perfetto/statslog_perfetto.h^
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_06/external/perfetto/statslog_perfetto.h^.output $GITHUB_WORKSPACE/artifacts/external/perfetto/statslog_perfetto.h^ $GITHUB_WORKSPACE/artifacts/external/perfetto/statslog_perfetto.h^/addition_copy_files.output
 
 echo "building statslog_perfetto.cpp^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja statslog_perfetto.cpp,
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja statslog_perfetto.cpp,
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/perfetto/statslog_perfetto.cpp^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/external/perfetto/statslog_perfetto.cpp^.output . $GITHUB_WORKSPACE/artifacts/external/perfetto/statslog_perfetto.cpp^
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_06/external/perfetto/statslog_perfetto.cpp^.output $GITHUB_WORKSPACE/artifacts/external/perfetto/statslog_perfetto.cpp^ $GITHUB_WORKSPACE/artifacts/external/perfetto/statslog_perfetto.cpp^/addition_copy_files.output
 
 echo "building libperfetto^android_x86_64_shared"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libperfetto,android_x86_64_shared
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libperfetto,android_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/perfetto/libperfetto^android_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/external/perfetto/libperfetto^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/external/perfetto/libperfetto^android_x86_64_shared
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_06/external/perfetto/libperfetto^android_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/external/perfetto/libperfetto^android_x86_64_shared $GITHUB_WORKSPACE/artifacts/external/perfetto/libperfetto^android_x86_64_shared/addition_copy_files.output
 
 echo "building perfetto^android_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja perfetto,android_x86_64
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja perfetto,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/perfetto/perfetto^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/external/perfetto/perfetto^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/perfetto/perfetto^android_x86_64
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_06/external/perfetto/perfetto^android_x86_64.output $GITHUB_WORKSPACE/artifacts/external/perfetto/perfetto^android_x86_64 $GITHUB_WORKSPACE/artifacts/external/perfetto/perfetto^android_x86_64/addition_copy_files.output
 
 echo "building traced^android_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja traced,android_x86_64
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja traced,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/perfetto/traced^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/external/perfetto/traced^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/perfetto/traced^android_x86_64
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_06/external/perfetto/traced^android_x86_64.output $GITHUB_WORKSPACE/artifacts/external/perfetto/traced^android_x86_64 $GITHUB_WORKSPACE/artifacts/external/perfetto/traced^android_x86_64/addition_copy_files.output
 
 echo "building traced_probes^android_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja traced_probes,android_x86_64
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja traced_probes,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/perfetto/traced_probes^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/external/perfetto/traced_probes^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/perfetto/traced_probes^android_x86_64
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_06/external/perfetto/traced_probes^android_x86_64.output $GITHUB_WORKSPACE/artifacts/external/perfetto/traced_probes^android_x86_64 $GITHUB_WORKSPACE/artifacts/external/perfetto/traced_probes^android_x86_64/addition_copy_files.output
 
 echo "building trigger_perfetto^android_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja trigger_perfetto,android_x86_64
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja trigger_perfetto,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/perfetto/trigger_perfetto^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/external/perfetto/trigger_perfetto^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/perfetto/trigger_perfetto^android_x86_64
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_06/external/perfetto/trigger_perfetto^android_x86_64.output $GITHUB_WORKSPACE/artifacts/external/perfetto/trigger_perfetto^android_x86_64 $GITHUB_WORKSPACE/artifacts/external/perfetto/trigger_perfetto^android_x86_64/addition_copy_files.output
 
 echo "building libstatslog_perfetto^android_x86_64_static_lto-thin"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libstatslog_perfetto,android_x86_64_static_lto-thin
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libstatslog_perfetto,android_x86_64_static_lto-thin
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/perfetto/libstatslog_perfetto^android_x86_64_static_lto-thin
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/external/perfetto/libstatslog_perfetto^android_x86_64_static_lto-thin.output . $GITHUB_WORKSPACE/artifacts/external/perfetto/libstatslog_perfetto^android_x86_64_static_lto-thin
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_06/external/perfetto/libstatslog_perfetto^android_x86_64_static_lto-thin.output $GITHUB_WORKSPACE/artifacts/external/perfetto/libstatslog_perfetto^android_x86_64_static_lto-thin $GITHUB_WORKSPACE/artifacts/external/perfetto/libstatslog_perfetto^android_x86_64_static_lto-thin/addition_copy_files.output

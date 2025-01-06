@@ -45,25 +45,25 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/external/sqlite/dist/libsqlite^linux_gli
 rsync -a -r $GITHUB_WORKSPACE/downloads/tools/apksig/apksig^linux_glibc_common/ .
 
 echo "building build_image^linux_glibc_x86_64_PY2"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja build_image,linux_glibc_x86_64_PY2
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja build_image,linux_glibc_x86_64_PY2
 mkdir -p $GITHUB_WORKSPACE/artifacts/build/make/tools/releasetools/build_image^linux_glibc_x86_64_PY2
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/build/make/build_image^linux_glibc_x86_64_PY2.output . $GITHUB_WORKSPACE/artifacts/build/make/tools/releasetools/build_image^linux_glibc_x86_64_PY2
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/build/make/build_image^linux_glibc_x86_64_PY2.output $GITHUB_WORKSPACE/artifacts/build/make/tools/releasetools/build_image^linux_glibc_x86_64_PY2 $GITHUB_WORKSPACE/artifacts/build/make/tools/releasetools/build_image^linux_glibc_x86_64_PY2/addition_copy_files.output
 
 echo "building sparse_img^linux_glibc_x86_64_PY2"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja sparse_img,linux_glibc_x86_64_PY2
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja sparse_img,linux_glibc_x86_64_PY2
 mkdir -p $GITHUB_WORKSPACE/artifacts/build/make/tools/releasetools/sparse_img^linux_glibc_x86_64_PY2
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/build/make/sparse_img^linux_glibc_x86_64_PY2.output . $GITHUB_WORKSPACE/artifacts/build/make/tools/releasetools/sparse_img^linux_glibc_x86_64_PY2
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/build/make/sparse_img^linux_glibc_x86_64_PY2.output $GITHUB_WORKSPACE/artifacts/build/make/tools/releasetools/sparse_img^linux_glibc_x86_64_PY2 $GITHUB_WORKSPACE/artifacts/build/make/tools/releasetools/sparse_img^linux_glibc_x86_64_PY2/addition_copy_files.output
 
 echo "building verity_utils^linux_glibc_x86_64_PY2"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja verity_utils,linux_glibc_x86_64_PY2
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja verity_utils,linux_glibc_x86_64_PY2
 mkdir -p $GITHUB_WORKSPACE/artifacts/build/make/tools/releasetools/verity_utils^linux_glibc_x86_64_PY2
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/build/make/verity_utils^linux_glibc_x86_64_PY2.output . $GITHUB_WORKSPACE/artifacts/build/make/tools/releasetools/verity_utils^linux_glibc_x86_64_PY2
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/build/make/verity_utils^linux_glibc_x86_64_PY2.output $GITHUB_WORKSPACE/artifacts/build/make/tools/releasetools/verity_utils^linux_glibc_x86_64_PY2 $GITHUB_WORKSPACE/artifacts/build/make/tools/releasetools/verity_utils^linux_glibc_x86_64_PY2/addition_copy_files.output
 
 echo "building signapk^linux_glibc_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja signapk,linux_glibc_common
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja signapk,linux_glibc_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/build/make/tools/signapk/signapk^linux_glibc_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/build/make/signapk^linux_glibc_common.output . $GITHUB_WORKSPACE/artifacts/build/make/tools/signapk/signapk^linux_glibc_common
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/build/make/signapk^linux_glibc_common.output $GITHUB_WORKSPACE/artifacts/build/make/tools/signapk/signapk^linux_glibc_common $GITHUB_WORKSPACE/artifacts/build/make/tools/signapk/signapk^linux_glibc_common/addition_copy_files.output

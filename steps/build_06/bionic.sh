@@ -20,7 +20,7 @@ clone_depth_platform bionic
 rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/scripts/conv_linker_config^linux_glibc_x86_64_PY3/ .
 
 echo "building bionic-linker-config^android_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja bionic-linker-config,android_x86_64
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja bionic-linker-config,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/bionic/apex/bionic-linker-config^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/bionic/bionic-linker-config^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/bionic/apex/bionic-linker-config^android_x86_64
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_06/bionic/bionic-linker-config^android_x86_64.output $GITHUB_WORKSPACE/artifacts/bionic/apex/bionic-linker-config^android_x86_64 $GITHUB_WORKSPACE/artifacts/bionic/apex/bionic-linker-config^android_x86_64/addition_copy_files.output

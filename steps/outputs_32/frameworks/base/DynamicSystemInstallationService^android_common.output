@@ -2,3 +2,5 @@ out/soong/.intermediates/frameworks/base/packages/DynamicSystemInstallationServi
 out/soong/.intermediates/frameworks/base/packages/DynamicSystemInstallationService/DynamicSystemInstallationService/android_common/dexpreopt/dexpreopt.config
 out/soong/.intermediates/frameworks/base/packages/DynamicSystemInstallationService/DynamicSystemInstallationService/android_common/dexpreopt/oat/x86_64/package.odex
 out/soong/.intermediates/frameworks/base/packages/DynamicSystemInstallationService/DynamicSystemInstallationService/android_common/dexpreopt/oat/x86_64/package.vdex
+out/soong/.intermediates/frameworks/base/packages/DynamicSystemInstallationService/DynamicSystemInstallationService/android_common/javac/DynamicSystemInstallationService.jar
+out/soong/.intermediates/frameworks/base/packages/DynamicSystemInstallationService/DynamicSystemInstallationService/android_common/package-res.apk

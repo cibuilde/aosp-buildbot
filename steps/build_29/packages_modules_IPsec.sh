@@ -24,7 +24,7 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/zip/cmd/soong_zip^linux_glib
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/boot/platform-bootclasspath^android_common/ .
 
 echo "building android.net.ipsec.ike^android_common_com.android.ipsec"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_29.ninja android.net.ipsec.ike,android_common_com.android.ipsec
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_29.ninja android.net.ipsec.ike,android_common_com.android.ipsec
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/IPsec/android.net.ipsec.ike^android_common_com.android.ipsec
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_29/packages/modules/IPsec/android.net.ipsec.ike^android_common_com.android.ipsec.output . $GITHUB_WORKSPACE/artifacts/packages/modules/IPsec/android.net.ipsec.ike^android_common_com.android.ipsec
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_29/packages/modules/IPsec/android.net.ipsec.ike^android_common_com.android.ipsec.output $GITHUB_WORKSPACE/artifacts/packages/modules/IPsec/android.net.ipsec.ike^android_common_com.android.ipsec $GITHUB_WORKSPACE/artifacts/packages/modules/IPsec/android.net.ipsec.ike^android_common_com.android.ipsec/addition_copy_files.output

@@ -41,7 +41,7 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/system/core/libvndksupport/libvndksuppor
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^android_x86_64_shared/ .
 
 echo "building bcc^android_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja bcc,android_x86_64
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja bcc,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/compile/libbcc/tools/bcc/bcc^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/frameworks/compile/libbcc/bcc^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/frameworks/compile/libbcc/tools/bcc/bcc^android_x86_64
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_07/frameworks/compile/libbcc/bcc^android_x86_64.output $GITHUB_WORKSPACE/artifacts/frameworks/compile/libbcc/tools/bcc/bcc^android_x86_64 $GITHUB_WORKSPACE/artifacts/frameworks/compile/libbcc/tools/bcc/bcc^android_x86_64/addition_copy_files.output

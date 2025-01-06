@@ -1,3 +1,4 @@
 out/soong/.intermediates/frameworks/base/core/res/framework-res/android_common/framework-res.apk
 out/soong/.intermediates/frameworks/base/core/res/framework-res/android_common/gen/android/R.srcjar
+out/soong/.intermediates/frameworks/base/core/res/framework-res/android_common/manifest_fixer/AndroidManifest.xml
 out/soong/.intermediates/frameworks/base/core/res/framework-res/android_common/package-res.apk

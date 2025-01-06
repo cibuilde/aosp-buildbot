@@ -83,55 +83,55 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/tools/metalava/stub-annotations^android_
 rsync -a -r $GITHUB_WORKSPACE/downloads/tools/platform-compat/java/com/android/class2nonsdklist/class2nonsdklist^linux_glibc_x86_64/ .
 
 echo "building com.android.sdkext^android_common_com.android.sdkext_image"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_19.ninja com.android.sdkext,android_common_com.android.sdkext_image
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_19.ninja com.android.sdkext,android_common_com.android.sdkext_image
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/SdkExtensions/com.android.sdkext^android_common_com.android.sdkext_image
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_19/packages/modules/SdkExtensions/com.android.sdkext^android_common_com.android.sdkext_image.output . $GITHUB_WORKSPACE/artifacts/packages/modules/SdkExtensions/com.android.sdkext^android_common_com.android.sdkext_image
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_19/packages/modules/SdkExtensions/com.android.sdkext^android_common_com.android.sdkext_image.output $GITHUB_WORKSPACE/artifacts/packages/modules/SdkExtensions/com.android.sdkext^android_common_com.android.sdkext_image $GITHUB_WORKSPACE/artifacts/packages/modules/SdkExtensions/com.android.sdkext^android_common_com.android.sdkext_image/addition_copy_files.output
 
 echo "building com.android.sdkext-bootclasspath-fragment^android_common_apex30"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_19.ninja com.android.sdkext-bootclasspath-fragment,android_common_apex30
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_19.ninja com.android.sdkext-bootclasspath-fragment,android_common_apex30
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/SdkExtensions/com.android.sdkext-bootclasspath-fragment^android_common_apex30
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_19/packages/modules/SdkExtensions/com.android.sdkext-bootclasspath-fragment^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/packages/modules/SdkExtensions/com.android.sdkext-bootclasspath-fragment^android_common_apex30
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_19/packages/modules/SdkExtensions/com.android.sdkext-bootclasspath-fragment^android_common_apex30.output $GITHUB_WORKSPACE/artifacts/packages/modules/SdkExtensions/com.android.sdkext-bootclasspath-fragment^android_common_apex30 $GITHUB_WORKSPACE/artifacts/packages/modules/SdkExtensions/com.android.sdkext-bootclasspath-fragment^android_common_apex30/addition_copy_files.output
 
 echo "building framework-sdkextensions.stubs.module_lib^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_19.ninja framework-sdkextensions.stubs.module_lib,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_19.ninja framework-sdkextensions.stubs.module_lib,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/SdkExtensions/framework/framework-sdkextensions.stubs.module_lib^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_19/packages/modules/SdkExtensions/framework-sdkextensions.stubs.module_lib^android_common.output . $GITHUB_WORKSPACE/artifacts/packages/modules/SdkExtensions/framework/framework-sdkextensions.stubs.module_lib^android_common
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_19/packages/modules/SdkExtensions/framework-sdkextensions.stubs.module_lib^android_common.output $GITHUB_WORKSPACE/artifacts/packages/modules/SdkExtensions/framework/framework-sdkextensions.stubs.module_lib^android_common $GITHUB_WORKSPACE/artifacts/packages/modules/SdkExtensions/framework/framework-sdkextensions.stubs.module_lib^android_common/addition_copy_files.output
 
 echo "building framework-sdkextensions.stubs.source.module_lib^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_19.ninja framework-sdkextensions.stubs.source.module_lib,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_19.ninja framework-sdkextensions.stubs.source.module_lib,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/SdkExtensions/framework/framework-sdkextensions.stubs.source.module_lib^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_19/packages/modules/SdkExtensions/framework-sdkextensions.stubs.source.module_lib^android_common.output . $GITHUB_WORKSPACE/artifacts/packages/modules/SdkExtensions/framework/framework-sdkextensions.stubs.source.module_lib^android_common
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_19/packages/modules/SdkExtensions/framework-sdkextensions.stubs.source.module_lib^android_common.output $GITHUB_WORKSPACE/artifacts/packages/modules/SdkExtensions/framework/framework-sdkextensions.stubs.source.module_lib^android_common $GITHUB_WORKSPACE/artifacts/packages/modules/SdkExtensions/framework/framework-sdkextensions.stubs.source.module_lib^android_common/addition_copy_files.output
 
 echo "building framework-sdkextensions.stubs.source.system^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_19.ninja framework-sdkextensions.stubs.source.system,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_19.ninja framework-sdkextensions.stubs.source.system,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/SdkExtensions/framework/framework-sdkextensions.stubs.source.system^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_19/packages/modules/SdkExtensions/framework-sdkextensions.stubs.source.system^android_common.output . $GITHUB_WORKSPACE/artifacts/packages/modules/SdkExtensions/framework/framework-sdkextensions.stubs.source.system^android_common
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_19/packages/modules/SdkExtensions/framework-sdkextensions.stubs.source.system^android_common.output $GITHUB_WORKSPACE/artifacts/packages/modules/SdkExtensions/framework/framework-sdkextensions.stubs.source.system^android_common $GITHUB_WORKSPACE/artifacts/packages/modules/SdkExtensions/framework/framework-sdkextensions.stubs.source.system^android_common/addition_copy_files.output
 
 echo "building framework-sdkextensions.stubs.source^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_19.ninja framework-sdkextensions.stubs.source,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_19.ninja framework-sdkextensions.stubs.source,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/SdkExtensions/framework/framework-sdkextensions.stubs.source^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_19/packages/modules/SdkExtensions/framework-sdkextensions.stubs.source^android_common.output . $GITHUB_WORKSPACE/artifacts/packages/modules/SdkExtensions/framework/framework-sdkextensions.stubs.source^android_common
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_19/packages/modules/SdkExtensions/framework-sdkextensions.stubs.source^android_common.output $GITHUB_WORKSPACE/artifacts/packages/modules/SdkExtensions/framework/framework-sdkextensions.stubs.source^android_common $GITHUB_WORKSPACE/artifacts/packages/modules/SdkExtensions/framework/framework-sdkextensions.stubs.source^android_common/addition_copy_files.output
 
 echo "building framework-sdkextensions.stubs.system^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_19.ninja framework-sdkextensions.stubs.system,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_19.ninja framework-sdkextensions.stubs.system,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/SdkExtensions/framework/framework-sdkextensions.stubs.system^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_19/packages/modules/SdkExtensions/framework-sdkextensions.stubs.system^android_common.output . $GITHUB_WORKSPACE/artifacts/packages/modules/SdkExtensions/framework/framework-sdkextensions.stubs.system^android_common
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_19/packages/modules/SdkExtensions/framework-sdkextensions.stubs.system^android_common.output $GITHUB_WORKSPACE/artifacts/packages/modules/SdkExtensions/framework/framework-sdkextensions.stubs.system^android_common $GITHUB_WORKSPACE/artifacts/packages/modules/SdkExtensions/framework/framework-sdkextensions.stubs.system^android_common/addition_copy_files.output
 
 echo "building framework-sdkextensions.stubs^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_19.ninja framework-sdkextensions.stubs,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_19.ninja framework-sdkextensions.stubs,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/SdkExtensions/framework/framework-sdkextensions.stubs^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_19/packages/modules/SdkExtensions/framework-sdkextensions.stubs^android_common.output . $GITHUB_WORKSPACE/artifacts/packages/modules/SdkExtensions/framework/framework-sdkextensions.stubs^android_common
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_19/packages/modules/SdkExtensions/framework-sdkextensions.stubs^android_common.output $GITHUB_WORKSPACE/artifacts/packages/modules/SdkExtensions/framework/framework-sdkextensions.stubs^android_common $GITHUB_WORKSPACE/artifacts/packages/modules/SdkExtensions/framework/framework-sdkextensions.stubs^android_common/addition_copy_files.output
 
 echo "building framework-sdkextensions^android_common_apex30"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_19.ninja framework-sdkextensions,android_common_apex30
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_19.ninja framework-sdkextensions,android_common_apex30
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/SdkExtensions/framework/framework-sdkextensions^android_common_apex30
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_19/packages/modules/SdkExtensions/framework-sdkextensions^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/packages/modules/SdkExtensions/framework/framework-sdkextensions^android_common_apex30
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_19/packages/modules/SdkExtensions/framework-sdkextensions^android_common_apex30.output $GITHUB_WORKSPACE/artifacts/packages/modules/SdkExtensions/framework/framework-sdkextensions^android_common_apex30 $GITHUB_WORKSPACE/artifacts/packages/modules/SdkExtensions/framework/framework-sdkextensions^android_common_apex30/addition_copy_files.output

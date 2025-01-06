@@ -33,13 +33,13 @@ clone_depth_platform system/media
 
 
 echo "building libhevcdec^android_x86_64_static_cfi_apex29"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libhevcdec,android_x86_64_static_cfi_apex29
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libhevcdec,android_x86_64_static_cfi_apex29
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/libhevc/libhevcdec^android_x86_64_static_cfi_apex29
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/libhevc/libhevcdec^android_x86_64_static_cfi_apex29.output . $GITHUB_WORKSPACE/artifacts/external/libhevc/libhevcdec^android_x86_64_static_cfi_apex29
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/libhevc/libhevcdec^android_x86_64_static_cfi_apex29.output $GITHUB_WORKSPACE/artifacts/external/libhevc/libhevcdec^android_x86_64_static_cfi_apex29 $GITHUB_WORKSPACE/artifacts/external/libhevc/libhevcdec^android_x86_64_static_cfi_apex29/addition_copy_files.output
 
 echo "building libhevcenc^android_x86_64_static_cfi_apex29"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libhevcenc,android_x86_64_static_cfi_apex29
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libhevcenc,android_x86_64_static_cfi_apex29
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/libhevc/libhevcenc^android_x86_64_static_cfi_apex29
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/libhevc/libhevcenc^android_x86_64_static_cfi_apex29.output . $GITHUB_WORKSPACE/artifacts/external/libhevc/libhevcenc^android_x86_64_static_cfi_apex29
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/libhevc/libhevcenc^android_x86_64_static_cfi_apex29.output $GITHUB_WORKSPACE/artifacts/external/libhevc/libhevcenc^android_x86_64_static_cfi_apex29 $GITHUB_WORKSPACE/artifacts/external/libhevc/libhevcenc^android_x86_64_static_cfi_apex29/addition_copy_files.output

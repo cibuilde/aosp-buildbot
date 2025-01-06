@@ -39,25 +39,25 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/libcore/mmodules/core_platform_api/stabl
 rsync -a -r $GITHUB_WORKSPACE/downloads/packages/apps/Settings/statslog-settings-java-gen^/ .
 
 echo "building settings-logtags^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_25.ninja settings-logtags,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_25.ninja settings-logtags,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/apps/Settings/settings-logtags^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_25/packages/apps/Settings/settings-logtags^android_common.output . $GITHUB_WORKSPACE/artifacts/packages/apps/Settings/settings-logtags^android_common
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_25/packages/apps/Settings/settings-logtags^android_common.output $GITHUB_WORKSPACE/artifacts/packages/apps/Settings/settings-logtags^android_common $GITHUB_WORKSPACE/artifacts/packages/apps/Settings/settings-logtags^android_common/addition_copy_files.output
 
 echo "building statslog-settings^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_25.ninja statslog-settings,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_25.ninja statslog-settings,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/apps/Settings/statslog-settings^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_25/packages/apps/Settings/statslog-settings^android_common.output . $GITHUB_WORKSPACE/artifacts/packages/apps/Settings/statslog-settings^android_common
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_25/packages/apps/Settings/statslog-settings^android_common.output $GITHUB_WORKSPACE/artifacts/packages/apps/Settings/statslog-settings^android_common $GITHUB_WORKSPACE/artifacts/packages/apps/Settings/statslog-settings^android_common/addition_copy_files.output
 
 echo "building settings-contextual-card-protos-lite^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_25.ninja settings-contextual-card-protos-lite,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_25.ninja settings-contextual-card-protos-lite,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/apps/Settings/protos/settings-contextual-card-protos-lite^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_25/packages/apps/Settings/settings-contextual-card-protos-lite^android_common.output . $GITHUB_WORKSPACE/artifacts/packages/apps/Settings/protos/settings-contextual-card-protos-lite^android_common
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_25/packages/apps/Settings/settings-contextual-card-protos-lite^android_common.output $GITHUB_WORKSPACE/artifacts/packages/apps/Settings/protos/settings-contextual-card-protos-lite^android_common $GITHUB_WORKSPACE/artifacts/packages/apps/Settings/protos/settings-contextual-card-protos-lite^android_common/addition_copy_files.output
 
 echo "building settings-log-bridge-protos-lite^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_25.ninja settings-log-bridge-protos-lite,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_25.ninja settings-log-bridge-protos-lite,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/apps/Settings/protos/settings-log-bridge-protos-lite^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_25/packages/apps/Settings/settings-log-bridge-protos-lite^android_common.output . $GITHUB_WORKSPACE/artifacts/packages/apps/Settings/protos/settings-log-bridge-protos-lite^android_common
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_25/packages/apps/Settings/settings-log-bridge-protos-lite^android_common.output $GITHUB_WORKSPACE/artifacts/packages/apps/Settings/protos/settings-log-bridge-protos-lite^android_common $GITHUB_WORKSPACE/artifacts/packages/apps/Settings/protos/settings-log-bridge-protos-lite^android_common/addition_copy_files.output

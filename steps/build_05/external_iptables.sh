@@ -46,7 +46,7 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcxx/libc++^android_x86_64_sh
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcxxabi/libc++demangle^android_x86_64_static/ .
 
 echo "building iptables^android_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja iptables,android_x86_64
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja iptables,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/iptables/iptables/iptables^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/external/iptables/iptables^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/iptables/iptables/iptables^android_x86_64
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/external/iptables/iptables^android_x86_64.output $GITHUB_WORKSPACE/artifacts/external/iptables/iptables/iptables^android_x86_64 $GITHUB_WORKSPACE/artifacts/external/iptables/iptables/iptables^android_x86_64/addition_copy_files.output

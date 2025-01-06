@@ -29,7 +29,7 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/android_system_stubs_cur
 rsync -a -r $GITHUB_WORKSPACE/downloads/libcore/core-current-stubs-system-modules^android_common/ .
 
 echo "building ksoap2^android_common_apex30"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_23.ninja ksoap2,android_common_apex30
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_23.ninja ksoap2,android_common_apex30
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/ksoap2/ksoap2^android_common_apex30
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_23/external/ksoap2/ksoap2^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/external/ksoap2/ksoap2^android_common_apex30
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_23/external/ksoap2/ksoap2^android_common_apex30.output $GITHUB_WORKSPACE/artifacts/external/ksoap2/ksoap2^android_common_apex30 $GITHUB_WORKSPACE/artifacts/external/ksoap2/ksoap2^android_common_apex30/addition_copy_files.output

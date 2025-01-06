@@ -47,13 +47,13 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/StatsD/lib/libkll/proto
 rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/StatsD/lib/libkll/proto/libkll-protos^android_x86_x86_64_static/ .
 
 echo "building libkll^android_x86_64_shared"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libkll,android_x86_64_shared
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libkll,android_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/StatsD/lib/libkll/libkll^android_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/packages/modules/StatsD/libkll^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/packages/modules/StatsD/lib/libkll/libkll^android_x86_64_shared
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_07/packages/modules/StatsD/libkll^android_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/packages/modules/StatsD/lib/libkll/libkll^android_x86_64_shared $GITHUB_WORKSPACE/artifacts/packages/modules/StatsD/lib/libkll/libkll^android_x86_64_shared/addition_copy_files.output
 
 echo "building libkll^android_x86_x86_64_shared"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libkll,android_x86_x86_64_shared
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libkll,android_x86_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/StatsD/lib/libkll/libkll^android_x86_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/packages/modules/StatsD/libkll^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/packages/modules/StatsD/lib/libkll/libkll^android_x86_x86_64_shared
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_07/packages/modules/StatsD/libkll^android_x86_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/packages/modules/StatsD/lib/libkll/libkll^android_x86_x86_64_shared $GITHUB_WORKSPACE/artifacts/packages/modules/StatsD/lib/libkll/libkll^android_x86_x86_64_shared/addition_copy_files.output

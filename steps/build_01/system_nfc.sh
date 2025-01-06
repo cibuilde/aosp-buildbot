@@ -34,13 +34,13 @@ clone_depth_platform system/nfc
 
 
 echo "building libnfc-nci.conf-default^android_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libnfc-nci.conf-default,android_x86_64
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libnfc-nci.conf-default,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/nfc/conf/libnfc-nci.conf-default^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/nfc/libnfc-nci.conf-default^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/nfc/conf/libnfc-nci.conf-default^android_x86_64
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/system/nfc/libnfc-nci.conf-default^android_x86_64.output $GITHUB_WORKSPACE/artifacts/system/nfc/conf/libnfc-nci.conf-default^android_x86_64 $GITHUB_WORKSPACE/artifacts/system/nfc/conf/libnfc-nci.conf-default^android_x86_64/addition_copy_files.output
 
 echo "building libnfcutils^android_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libnfcutils,android_x86_64_static
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libnfcutils,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/nfc/utils/libnfcutils^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/nfc/libnfcutils^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/nfc/utils/libnfcutils^android_x86_64_static
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/system/nfc/libnfcutils^android_x86_64_static.output $GITHUB_WORKSPACE/artifacts/system/nfc/utils/libnfcutils^android_x86_64_static $GITHUB_WORKSPACE/artifacts/system/nfc/utils/libnfcutils^android_x86_64_static/addition_copy_files.output

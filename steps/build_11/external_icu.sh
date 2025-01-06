@@ -44,37 +44,37 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/tools/metalava/metalava^linux_glibc_x86_
 rsync -a -r $GITHUB_WORKSPACE/downloads/tools/metalava/stub-annotations^android_common/ .
 
 echo "building i18n.module.public.api.stubs.source^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_11.ninja i18n.module.public.api.stubs.source,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_11.ninja i18n.module.public.api.stubs.source,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/icu/android_icu4j/i18n.module.public.api.stubs.source^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_11/external/icu/i18n.module.public.api.stubs.source^android_common.output . $GITHUB_WORKSPACE/artifacts/external/icu/android_icu4j/i18n.module.public.api.stubs.source^android_common
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_11/external/icu/i18n.module.public.api.stubs.source^android_common.output $GITHUB_WORKSPACE/artifacts/external/icu/android_icu4j/i18n.module.public.api.stubs.source^android_common $GITHUB_WORKSPACE/artifacts/external/icu/android_icu4j/i18n.module.public.api.stubs.source^android_common/addition_copy_files.output
 
 echo "building i18n.module.public.api.stubs^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_11.ninja i18n.module.public.api.stubs,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_11.ninja i18n.module.public.api.stubs,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/icu/android_icu4j/i18n.module.public.api.stubs^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_11/external/icu/i18n.module.public.api.stubs^android_common.output . $GITHUB_WORKSPACE/artifacts/external/icu/android_icu4j/i18n.module.public.api.stubs^android_common
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_11/external/icu/i18n.module.public.api.stubs^android_common.output $GITHUB_WORKSPACE/artifacts/external/icu/android_icu4j/i18n.module.public.api.stubs^android_common $GITHUB_WORKSPACE/artifacts/external/icu/android_icu4j/i18n.module.public.api.stubs^android_common/addition_copy_files.output
 
 echo "building legacy.i18n.module.platform.api.stubs.source^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_11.ninja legacy.i18n.module.platform.api.stubs.source,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_11.ninja legacy.i18n.module.platform.api.stubs.source,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/icu/android_icu4j/legacy.i18n.module.platform.api.stubs.source^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_11/external/icu/legacy.i18n.module.platform.api.stubs.source^android_common.output . $GITHUB_WORKSPACE/artifacts/external/icu/android_icu4j/legacy.i18n.module.platform.api.stubs.source^android_common
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_11/external/icu/legacy.i18n.module.platform.api.stubs.source^android_common.output $GITHUB_WORKSPACE/artifacts/external/icu/android_icu4j/legacy.i18n.module.platform.api.stubs.source^android_common $GITHUB_WORKSPACE/artifacts/external/icu/android_icu4j/legacy.i18n.module.platform.api.stubs.source^android_common/addition_copy_files.output
 
 echo "building legacy.i18n.module.platform.api.stubs^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_11.ninja legacy.i18n.module.platform.api.stubs,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_11.ninja legacy.i18n.module.platform.api.stubs,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/icu/android_icu4j/legacy.i18n.module.platform.api.stubs^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_11/external/icu/legacy.i18n.module.platform.api.stubs^android_common.output . $GITHUB_WORKSPACE/artifacts/external/icu/android_icu4j/legacy.i18n.module.platform.api.stubs^android_common
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_11/external/icu/legacy.i18n.module.platform.api.stubs^android_common.output $GITHUB_WORKSPACE/artifacts/external/icu/android_icu4j/legacy.i18n.module.platform.api.stubs^android_common $GITHUB_WORKSPACE/artifacts/external/icu/android_icu4j/legacy.i18n.module.platform.api.stubs^android_common/addition_copy_files.output
 
 echo "building stable.i18n.module.platform.api.stubs.source^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_11.ninja stable.i18n.module.platform.api.stubs.source,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_11.ninja stable.i18n.module.platform.api.stubs.source,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/icu/android_icu4j/stable.i18n.module.platform.api.stubs.source^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_11/external/icu/stable.i18n.module.platform.api.stubs.source^android_common.output . $GITHUB_WORKSPACE/artifacts/external/icu/android_icu4j/stable.i18n.module.platform.api.stubs.source^android_common
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_11/external/icu/stable.i18n.module.platform.api.stubs.source^android_common.output $GITHUB_WORKSPACE/artifacts/external/icu/android_icu4j/stable.i18n.module.platform.api.stubs.source^android_common $GITHUB_WORKSPACE/artifacts/external/icu/android_icu4j/stable.i18n.module.platform.api.stubs.source^android_common/addition_copy_files.output
 
 echo "building stable.i18n.module.platform.api.stubs^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_11.ninja stable.i18n.module.platform.api.stubs,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_11.ninja stable.i18n.module.platform.api.stubs,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/icu/android_icu4j/stable.i18n.module.platform.api.stubs^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_11/external/icu/stable.i18n.module.platform.api.stubs^android_common.output . $GITHUB_WORKSPACE/artifacts/external/icu/android_icu4j/stable.i18n.module.platform.api.stubs^android_common
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_11/external/icu/stable.i18n.module.platform.api.stubs^android_common.output $GITHUB_WORKSPACE/artifacts/external/icu/android_icu4j/stable.i18n.module.platform.api.stubs^android_common $GITHUB_WORKSPACE/artifacts/external/icu/android_icu4j/stable.i18n.module.platform.api.stubs^android_common/addition_copy_files.output

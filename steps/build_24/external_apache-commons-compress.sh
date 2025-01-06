@@ -33,7 +33,7 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/android_stubs_current^an
 rsync -a -r $GITHUB_WORKSPACE/downloads/libcore/core-current-stubs-system-modules^android_common/ .
 
 echo "building apache-commons-compress^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_24.ninja apache-commons-compress,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_24.ninja apache-commons-compress,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/apache-commons-compress/apache-commons-compress^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_24/external/apache-commons-compress/apache-commons-compress^android_common.output . $GITHUB_WORKSPACE/artifacts/external/apache-commons-compress/apache-commons-compress^android_common
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_24/external/apache-commons-compress/apache-commons-compress^android_common.output $GITHUB_WORKSPACE/artifacts/external/apache-commons-compress/apache-commons-compress^android_common $GITHUB_WORKSPACE/artifacts/external/apache-commons-compress/apache-commons-compress^android_common/addition_copy_files.output

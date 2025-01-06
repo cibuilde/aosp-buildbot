@@ -43,7 +43,7 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/system/timezone/output_data/apex_tzdata^
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/timezone/output_data/apex_icu_tzdata.dat^android_x86_64/ .
 
 echo "building com.android.tzdata^android_common_com.android.tzdata_image"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja com.android.tzdata,android_common_com.android.tzdata_image
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja com.android.tzdata,android_common_com.android.tzdata_image
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/timezone/apex/com.android.tzdata^android_common_com.android.tzdata_image
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/system/timezone/com.android.tzdata^android_common_com.android.tzdata_image.output . $GITHUB_WORKSPACE/artifacts/system/timezone/apex/com.android.tzdata^android_common_com.android.tzdata_image
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_06/system/timezone/com.android.tzdata^android_common_com.android.tzdata_image.output $GITHUB_WORKSPACE/artifacts/system/timezone/apex/com.android.tzdata^android_common_com.android.tzdata_image $GITHUB_WORKSPACE/artifacts/system/timezone/apex/com.android.tzdata^android_common_com.android.tzdata_image/addition_copy_files.output

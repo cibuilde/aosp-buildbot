@@ -41,6 +41,11 @@ out/soong/vsoc_x86_64/dex_bootjars/android/system/framework/x86_64/boot-voip-com
 out/soong/vsoc_x86_64/dex_bootjars/android/system/framework/x86_64/boot-voip-common.oat
 out/soong/vsoc_x86_64/dex_bootjars/android/system/framework/x86_64/boot-voip-common.vdex
 out/soong/vsoc_x86_64/dex_bootjars/boot.bprof
+out/soong/vsoc_x86_64/dex_bootjars/boot.prof
+out/soong/vsoc_x86_64/dex_bootjars_input/core-icu4j.jar
+out/soong/vsoc_x86_64/dex_bootjars_input/ims-common.jar
+out/soong/vsoc_x86_64/dex_bootjars_input/telephony-common.jar
+out/soong/vsoc_x86_64/dex_bootjars_input/voip-common.jar
 out/soong/vsoc_x86_64/dex_bootjars_unstripped/android/system/framework/x86/boot-core-icu4j.oat
 out/soong/vsoc_x86_64/dex_bootjars_unstripped/android/system/framework/x86/boot-ext.oat
 out/soong/vsoc_x86_64/dex_bootjars_unstripped/android/system/framework/x86/boot-framework-graphics.oat

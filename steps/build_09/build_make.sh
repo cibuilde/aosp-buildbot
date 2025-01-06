@@ -35,7 +35,7 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/external/protobuf/protoc-gen-javanano^li
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/turbine/turbine^linux_glibc_common/ .
 
 echo "building ota_metadata_proto_java^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja ota_metadata_proto_java,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja ota_metadata_proto_java,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/build/make/tools/releasetools/ota_metadata_proto_java^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_09/build/make/ota_metadata_proto_java^android_common.output . $GITHUB_WORKSPACE/artifacts/build/make/tools/releasetools/ota_metadata_proto_java^android_common
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_09/build/make/ota_metadata_proto_java^android_common.output $GITHUB_WORKSPACE/artifacts/build/make/tools/releasetools/ota_metadata_proto_java^android_common $GITHUB_WORKSPACE/artifacts/build/make/tools/releasetools/ota_metadata_proto_java^android_common/addition_copy_files.output

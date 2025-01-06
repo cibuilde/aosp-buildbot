@@ -1,6 +1,8 @@
 out/soong/.intermediates/frameworks/base/packages/SoundPicker/SoundPicker/android_common/SoundPicker.apk
+out/soong/.intermediates/frameworks/base/packages/SoundPicker/SoundPicker/android_common/combined/SoundPicker.jar
 out/soong/.intermediates/frameworks/base/packages/SoundPicker/SoundPicker/android_common/dexpreopt/dexpreopt.config
 out/soong/.intermediates/frameworks/base/packages/SoundPicker/SoundPicker/android_common/dexpreopt/oat/x86_64/package.odex
 out/soong/.intermediates/frameworks/base/packages/SoundPicker/SoundPicker/android_common/dexpreopt/oat/x86_64/package.vdex
+out/soong/.intermediates/frameworks/base/packages/SoundPicker/SoundPicker/android_common/package-res.apk
 out/soong/.intermediates/frameworks/base/packages/SoundPicker/SoundPicker/android_common/proguard_dictionary
 out/soong/.intermediates/frameworks/base/packages/SoundPicker/SoundPicker/android_common/proguard_usage.zip

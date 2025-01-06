@@ -88,49 +88,49 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/system/libbase/libbase^android_x86_x86_6
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^android_x86_64_shared/ .
 
 echo "building recovery-persist^android_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja recovery-persist,android_x86_64
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja recovery-persist,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/bootable/recovery/recovery-persist^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/bootable/recovery/recovery-persist^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/bootable/recovery/recovery-persist^android_x86_64
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_07/bootable/recovery/recovery-persist^android_x86_64.output $GITHUB_WORKSPACE/artifacts/bootable/recovery/recovery-persist^android_x86_64 $GITHUB_WORKSPACE/artifacts/bootable/recovery/recovery-persist^android_x86_64/addition_copy_files.output
 
 echo "building recovery-refresh^android_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja recovery-refresh,android_x86_64
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja recovery-refresh,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/bootable/recovery/recovery-refresh^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/bootable/recovery/recovery-refresh^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/bootable/recovery/recovery-refresh^android_x86_64
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_07/bootable/recovery/recovery-refresh^android_x86_64.output $GITHUB_WORKSPACE/artifacts/bootable/recovery/recovery-refresh^android_x86_64 $GITHUB_WORKSPACE/artifacts/bootable/recovery/recovery-refresh^android_x86_64/addition_copy_files.output
 
 echo "building libbootloader_message^android_recovery_x86_64_shared"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libbootloader_message,android_recovery_x86_64_shared
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libbootloader_message,android_recovery_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/bootable/recovery/bootloader_message/libbootloader_message^android_recovery_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/bootable/recovery/libbootloader_message^android_recovery_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/bootable/recovery/bootloader_message/libbootloader_message^android_recovery_x86_64_shared
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_07/bootable/recovery/libbootloader_message^android_recovery_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/bootable/recovery/bootloader_message/libbootloader_message^android_recovery_x86_64_shared $GITHUB_WORKSPACE/artifacts/bootable/recovery/bootloader_message/libbootloader_message^android_recovery_x86_64_shared/addition_copy_files.output
 
 echo "building libbootloader_message^android_x86_64_shared"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libbootloader_message,android_x86_64_shared
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libbootloader_message,android_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/bootable/recovery/bootloader_message/libbootloader_message^android_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/bootable/recovery/libbootloader_message^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/bootable/recovery/bootloader_message/libbootloader_message^android_x86_64_shared
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_07/bootable/recovery/libbootloader_message^android_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/bootable/recovery/bootloader_message/libbootloader_message^android_x86_64_shared $GITHUB_WORKSPACE/artifacts/bootable/recovery/bootloader_message/libbootloader_message^android_x86_64_shared/addition_copy_files.output
 
 echo "building libfusesideload^android_recovery_x86_64_shared"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libfusesideload,android_recovery_x86_64_shared
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libfusesideload,android_recovery_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/bootable/recovery/fuse_sideload/libfusesideload^android_recovery_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/bootable/recovery/libfusesideload^android_recovery_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/bootable/recovery/fuse_sideload/libfusesideload^android_recovery_x86_64_shared
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_07/bootable/recovery/libfusesideload^android_recovery_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/bootable/recovery/fuse_sideload/libfusesideload^android_recovery_x86_64_shared $GITHUB_WORKSPACE/artifacts/bootable/recovery/fuse_sideload/libfusesideload^android_recovery_x86_64_shared/addition_copy_files.output
 
 echo "building libminui^android_x86_64_shared"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libminui,android_x86_64_shared
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libminui,android_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/bootable/recovery/minui/libminui^android_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/bootable/recovery/libminui^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/bootable/recovery/minui/libminui^android_x86_64_shared
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_07/bootable/recovery/libminui^android_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/bootable/recovery/minui/libminui^android_x86_64_shared $GITHUB_WORKSPACE/artifacts/bootable/recovery/minui/libminui^android_x86_64_shared/addition_copy_files.output
 
 echo "building libminui^android_x86_x86_64_shared"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libminui,android_x86_x86_64_shared
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja libminui,android_x86_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/bootable/recovery/minui/libminui^android_x86_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/bootable/recovery/libminui^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/bootable/recovery/minui/libminui^android_x86_x86_64_shared
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_07/bootable/recovery/libminui^android_x86_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/bootable/recovery/minui/libminui^android_x86_x86_64_shared $GITHUB_WORKSPACE/artifacts/bootable/recovery/minui/libminui^android_x86_x86_64_shared/addition_copy_files.output
 
 echo "building librecovery_ui^android_recovery_x86_64_shared"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja librecovery_ui,android_recovery_x86_64_shared
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_07.ninja librecovery_ui,android_recovery_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/bootable/recovery/recovery_ui/librecovery_ui^android_recovery_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_07/bootable/recovery/librecovery_ui^android_recovery_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/bootable/recovery/recovery_ui/librecovery_ui^android_recovery_x86_64_shared
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_07/bootable/recovery/librecovery_ui^android_recovery_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/bootable/recovery/recovery_ui/librecovery_ui^android_recovery_x86_64_shared $GITHUB_WORKSPACE/artifacts/bootable/recovery/recovery_ui/librecovery_ui^android_recovery_x86_64_shared/addition_copy_files.output

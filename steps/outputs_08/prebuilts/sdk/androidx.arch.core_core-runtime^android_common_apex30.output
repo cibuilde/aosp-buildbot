@@ -1,3 +1,4 @@
 out/soong/.intermediates/prebuilts/sdk/current/androidx/androidx.arch.core_core-runtime/android_common_apex30/combined/androidx.arch.core_core-runtime.jar
+out/soong/.intermediates/prebuilts/sdk/current/androidx/androidx.arch.core_core-runtime/android_common_apex30/manifest_fixer/AndroidManifest.xml
 out/soong/.intermediates/prebuilts/sdk/current/androidx/androidx.arch.core_core-runtime/android_common_apex30/package-res.apk
 out/soong/.intermediates/prebuilts/sdk/current/androidx/androidx.arch.core_core-runtime/android_common_apex30/turbine-combined/androidx.arch.core_core-runtime.jar

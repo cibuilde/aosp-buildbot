@@ -32,13 +32,13 @@ clone_depth_platform system/media
 
 
 echo "building libogg^android_x86_64_static_cfi"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libogg,android_x86_64_static_cfi
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libogg,android_x86_64_static_cfi
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/libogg/libogg^android_x86_64_static_cfi
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/libogg/libogg^android_x86_64_static_cfi.output . $GITHUB_WORKSPACE/artifacts/external/libogg/libogg^android_x86_64_static_cfi
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/libogg/libogg^android_x86_64_static_cfi.output $GITHUB_WORKSPACE/artifacts/external/libogg/libogg^android_x86_64_static_cfi $GITHUB_WORKSPACE/artifacts/external/libogg/libogg^android_x86_64_static_cfi/addition_copy_files.output
 
 echo "building libogg^android_x86_x86_64_static_cfi"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libogg,android_x86_x86_64_static_cfi
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libogg,android_x86_x86_64_static_cfi
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/libogg/libogg^android_x86_x86_64_static_cfi
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/libogg/libogg^android_x86_x86_64_static_cfi.output . $GITHUB_WORKSPACE/artifacts/external/libogg/libogg^android_x86_x86_64_static_cfi
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/libogg/libogg^android_x86_x86_64_static_cfi.output $GITHUB_WORKSPACE/artifacts/external/libogg/libogg^android_x86_x86_64_static_cfi $GITHUB_WORKSPACE/artifacts/external/libogg/libogg^android_x86_x86_64_static_cfi/addition_copy_files.output

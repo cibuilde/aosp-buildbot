@@ -75,25 +75,25 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/system/libhidl/transport/manager/1.2/and
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^android_x86_64_shared/ .
 
 echo "building bootctl^android_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja bootctl,android_x86_64
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja bootctl,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/extras/bootctl/bootctl^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/system/extras/bootctl^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/extras/bootctl/bootctl^android_x86_64
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_10/system/extras/bootctl^android_x86_64.output $GITHUB_WORKSPACE/artifacts/system/extras/bootctl/bootctl^android_x86_64 $GITHUB_WORKSPACE/artifacts/system/extras/bootctl/bootctl^android_x86_64/addition_copy_files.output
 
 echo "building lpdumpd^android_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja lpdumpd,android_x86_64
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja lpdumpd,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/extras/partition_tools/lpdumpd^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/system/extras/lpdumpd^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/extras/partition_tools/lpdumpd^android_x86_64
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_10/system/extras/lpdumpd^android_x86_64.output $GITHUB_WORKSPACE/artifacts/system/extras/partition_tools/lpdumpd^android_x86_64 $GITHUB_WORKSPACE/artifacts/system/extras/partition_tools/lpdumpd^android_x86_64/addition_copy_files.output
 
 echo "building liblpdump^android_x86_64_shared"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja liblpdump,android_x86_64_shared
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja liblpdump,android_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/extras/partition_tools/liblpdump^android_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/system/extras/liblpdump^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/extras/partition_tools/liblpdump^android_x86_64_shared
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_10/system/extras/liblpdump^android_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/system/extras/partition_tools/liblpdump^android_x86_64_shared $GITHUB_WORKSPACE/artifacts/system/extras/partition_tools/liblpdump^android_x86_64_shared/addition_copy_files.output
 
 echo "building lpdump^android_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja lpdump,android_x86_64
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_10.ninja lpdump,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/extras/partition_tools/lpdump^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_10/system/extras/lpdump^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/extras/partition_tools/lpdump^android_x86_64
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_10/system/extras/lpdump^android_x86_64.output $GITHUB_WORKSPACE/artifacts/system/extras/partition_tools/lpdump^android_x86_64 $GITHUB_WORKSPACE/artifacts/system/extras/partition_tools/lpdump^android_x86_64/addition_copy_files.output

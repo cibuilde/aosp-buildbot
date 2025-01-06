@@ -33,7 +33,7 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/external/snakeyaml/snakeyaml^linux_glibc
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/testng/testng-generated-srcs^/ .
 
 echo "building testng^linux_glibc_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja testng,linux_glibc_common
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja testng,linux_glibc_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/testng/testng^linux_glibc_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/external/testng/testng^linux_glibc_common.output . $GITHUB_WORKSPACE/artifacts/external/testng/testng^linux_glibc_common
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_06/external/testng/testng^linux_glibc_common.output $GITHUB_WORKSPACE/artifacts/external/testng/testng^linux_glibc_common $GITHUB_WORKSPACE/artifacts/external/testng/testng^linux_glibc_common/addition_copy_files.output

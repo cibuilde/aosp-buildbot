@@ -1,3 +1,4 @@
 out/soong/.intermediates/prebuilts/sdk/current/androidx/androidx.slice_slice-builders/android_common/combined/androidx.slice_slice-builders.jar
+out/soong/.intermediates/prebuilts/sdk/current/androidx/androidx.slice_slice-builders/android_common/manifest_fixer/AndroidManifest.xml
 out/soong/.intermediates/prebuilts/sdk/current/androidx/androidx.slice_slice-builders/android_common/package-res.apk
 out/soong/.intermediates/prebuilts/sdk/current/androidx/androidx.slice_slice-builders/android_common/turbine-combined/androidx.slice_slice-builders.jar

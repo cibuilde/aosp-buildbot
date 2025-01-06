@@ -21,7 +21,7 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/zip/cmd/soong_zip^linux_glib
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/tools/xsdc/xsdc^linux_glibc_x86_64/ .
 
 echo "building coex-table-parser^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja coex-table-parser,
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja coex-table-parser,
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/Wifi/service/coex-table-parser/coex-table-parser^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/packages/modules/Wifi/coex-table-parser^.output . $GITHUB_WORKSPACE/artifacts/packages/modules/Wifi/service/coex-table-parser/coex-table-parser^
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/packages/modules/Wifi/coex-table-parser^.output $GITHUB_WORKSPACE/artifacts/packages/modules/Wifi/service/coex-table-parser/coex-table-parser^ $GITHUB_WORKSPACE/artifacts/packages/modules/Wifi/service/coex-table-parser/coex-table-parser^/addition_copy_files.output

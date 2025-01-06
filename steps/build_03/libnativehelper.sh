@@ -32,13 +32,13 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/singletons/api_levels^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/cc/ndkstubgen/ndkstubgen^linux_glibc_x86_64_PY3/ .
 
 echo "building libnativehelper^android_x86_64_shared_current"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libnativehelper,android_x86_64_shared_current
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libnativehelper,android_x86_64_shared_current
 mkdir -p $GITHUB_WORKSPACE/artifacts/libnativehelper/libnativehelper^android_x86_64_shared_current
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/libnativehelper/libnativehelper^android_x86_64_shared_current.output . $GITHUB_WORKSPACE/artifacts/libnativehelper/libnativehelper^android_x86_64_shared_current
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/libnativehelper/libnativehelper^android_x86_64_shared_current.output $GITHUB_WORKSPACE/artifacts/libnativehelper/libnativehelper^android_x86_64_shared_current $GITHUB_WORKSPACE/artifacts/libnativehelper/libnativehelper^android_x86_64_shared_current/addition_copy_files.output
 
 echo "building libnativehelper^android_x86_x86_64_shared_current"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libnativehelper,android_x86_x86_64_shared_current
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libnativehelper,android_x86_x86_64_shared_current
 mkdir -p $GITHUB_WORKSPACE/artifacts/libnativehelper/libnativehelper^android_x86_x86_64_shared_current
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/libnativehelper/libnativehelper^android_x86_x86_64_shared_current.output . $GITHUB_WORKSPACE/artifacts/libnativehelper/libnativehelper^android_x86_x86_64_shared_current
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/libnativehelper/libnativehelper^android_x86_x86_64_shared_current.output $GITHUB_WORKSPACE/artifacts/libnativehelper/libnativehelper^android_x86_x86_64_shared_current $GITHUB_WORKSPACE/artifacts/libnativehelper/libnativehelper^android_x86_x86_64_shared_current/addition_copy_files.output

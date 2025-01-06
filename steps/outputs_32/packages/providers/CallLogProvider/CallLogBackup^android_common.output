@@ -2,5 +2,7 @@ out/soong/.intermediates/packages/providers/CallLogProvider/CallLogBackup/androi
 out/soong/.intermediates/packages/providers/CallLogProvider/CallLogBackup/android_common/dexpreopt/dexpreopt.config
 out/soong/.intermediates/packages/providers/CallLogProvider/CallLogBackup/android_common/dexpreopt/oat/x86_64/package.odex
 out/soong/.intermediates/packages/providers/CallLogProvider/CallLogBackup/android_common/dexpreopt/oat/x86_64/package.vdex
+out/soong/.intermediates/packages/providers/CallLogProvider/CallLogBackup/android_common/javac/CallLogBackup.jar
+out/soong/.intermediates/packages/providers/CallLogProvider/CallLogBackup/android_common/package-res.apk
 out/soong/.intermediates/packages/providers/CallLogProvider/CallLogBackup/android_common/proguard_dictionary
 out/soong/.intermediates/packages/providers/CallLogProvider/CallLogBackup/android_common/proguard_usage.zip

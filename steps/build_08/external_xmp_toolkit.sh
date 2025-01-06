@@ -26,7 +26,7 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/zip/cmd/soong_zip^linux_glib
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/turbine/turbine^linux_glibc_common/ .
 
 echo "building xmp_toolkit^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja xmp_toolkit,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja xmp_toolkit,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/xmp_toolkit/XMPCore/xmp_toolkit^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/external/xmp_toolkit/xmp_toolkit^android_common.output . $GITHUB_WORKSPACE/artifacts/external/xmp_toolkit/XMPCore/xmp_toolkit^android_common
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_08/external/xmp_toolkit/xmp_toolkit^android_common.output $GITHUB_WORKSPACE/artifacts/external/xmp_toolkit/XMPCore/xmp_toolkit^android_common $GITHUB_WORKSPACE/artifacts/external/xmp_toolkit/XMPCore/xmp_toolkit^android_common/addition_copy_files.output

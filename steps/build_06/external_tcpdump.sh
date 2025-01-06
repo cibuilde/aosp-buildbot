@@ -45,7 +45,7 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcxxabi/libc++demangle^androi
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/libpcap/libpcap^android_x86_64_shared/ .
 
 echo "building tcpdump^android_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja tcpdump,android_x86_64
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja tcpdump,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/tcpdump/tcpdump^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/external/tcpdump/tcpdump^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/tcpdump/tcpdump^android_x86_64
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_06/external/tcpdump/tcpdump^android_x86_64.output $GITHUB_WORKSPACE/artifacts/external/tcpdump/tcpdump^android_x86_64 $GITHUB_WORKSPACE/artifacts/external/tcpdump/tcpdump^android_x86_64/addition_copy_files.output

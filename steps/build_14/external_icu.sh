@@ -39,31 +39,31 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/tools/platform-compat/java/android/proce
 rsync -a -r $GITHUB_WORKSPACE/downloads/tools/platform-compat/java/android/processor/compat/unsupportedappusage/unsupportedappusage-annotation-processor^linux_glibc_common/ .
 
 echo "building core-icu4j^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_14.ninja core-icu4j,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_14.ninja core-icu4j,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/icu/android_icu4j/core-icu4j^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_14/external/icu/core-icu4j^android_common.output . $GITHUB_WORKSPACE/artifacts/external/icu/android_icu4j/core-icu4j^android_common
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_14/external/icu/core-icu4j^android_common.output $GITHUB_WORKSPACE/artifacts/external/icu/android_icu4j/core-icu4j^android_common $GITHUB_WORKSPACE/artifacts/external/icu/android_icu4j/core-icu4j^android_common/addition_copy_files.output
 
 echo "building core-icu4j^android_common_apex10000"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_14.ninja core-icu4j,android_common_apex10000
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_14.ninja core-icu4j,android_common_apex10000
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/icu/android_icu4j/core-icu4j^android_common_apex10000
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_14/external/icu/core-icu4j^android_common_apex10000.output . $GITHUB_WORKSPACE/artifacts/external/icu/android_icu4j/core-icu4j^android_common_apex10000
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_14/external/icu/core-icu4j^android_common_apex10000.output $GITHUB_WORKSPACE/artifacts/external/icu/android_icu4j/core-icu4j^android_common_apex10000 $GITHUB_WORKSPACE/artifacts/external/icu/android_icu4j/core-icu4j^android_common_apex10000/addition_copy_files.output
 
 echo "building icu4j-platform-compat-config^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_14.ninja icu4j-platform-compat-config,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_14.ninja icu4j-platform-compat-config,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/icu/android_icu4j/icu4j-platform-compat-config^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_14/external/icu/icu4j-platform-compat-config^android_common.output . $GITHUB_WORKSPACE/artifacts/external/icu/android_icu4j/icu4j-platform-compat-config^android_common
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_14/external/icu/icu4j-platform-compat-config^android_common.output $GITHUB_WORKSPACE/artifacts/external/icu/android_icu4j/icu4j-platform-compat-config^android_common $GITHUB_WORKSPACE/artifacts/external/icu/android_icu4j/icu4j-platform-compat-config^android_common/addition_copy_files.output
 
 echo "building core-repackaged-icu4j^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_14.ninja core-repackaged-icu4j,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_14.ninja core-repackaged-icu4j,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/icu/android_icu4j/core-repackaged-icu4j^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_14/external/icu/core-repackaged-icu4j^android_common.output . $GITHUB_WORKSPACE/artifacts/external/icu/android_icu4j/core-repackaged-icu4j^android_common
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_14/external/icu/core-repackaged-icu4j^android_common.output $GITHUB_WORKSPACE/artifacts/external/icu/android_icu4j/core-repackaged-icu4j^android_common $GITHUB_WORKSPACE/artifacts/external/icu/android_icu4j/core-repackaged-icu4j^android_common/addition_copy_files.output
 
 echo "building core-repackaged-icu4j^android_common_apex10000"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_14.ninja core-repackaged-icu4j,android_common_apex10000
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_14.ninja core-repackaged-icu4j,android_common_apex10000
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/icu/android_icu4j/core-repackaged-icu4j^android_common_apex10000
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_14/external/icu/core-repackaged-icu4j^android_common_apex10000.output . $GITHUB_WORKSPACE/artifacts/external/icu/android_icu4j/core-repackaged-icu4j^android_common_apex10000
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_14/external/icu/core-repackaged-icu4j^android_common_apex10000.output $GITHUB_WORKSPACE/artifacts/external/icu/android_icu4j/core-repackaged-icu4j^android_common_apex10000 $GITHUB_WORKSPACE/artifacts/external/icu/android_icu4j/core-repackaged-icu4j^android_common_apex10000/addition_copy_files.output

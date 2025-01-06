@@ -40,7 +40,7 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/system/memory/libdmabufheap/libdmabufhea
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/memory/libion/libion^android_x86_64_static_apex29/ .
 
 echo "building libdmabufheap^android_x86_64_shared_apex29"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libdmabufheap,android_x86_64_shared_apex29
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libdmabufheap,android_x86_64_shared_apex29
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/memory/libdmabufheap/libdmabufheap^android_x86_64_shared_apex29
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/system/memory/libdmabufheap/libdmabufheap^android_x86_64_shared_apex29.output . $GITHUB_WORKSPACE/artifacts/system/memory/libdmabufheap/libdmabufheap^android_x86_64_shared_apex29
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/system/memory/libdmabufheap/libdmabufheap^android_x86_64_shared_apex29.output $GITHUB_WORKSPACE/artifacts/system/memory/libdmabufheap/libdmabufheap^android_x86_64_shared_apex29 $GITHUB_WORKSPACE/artifacts/system/memory/libdmabufheap/libdmabufheap^android_x86_64_shared_apex29/addition_copy_files.output

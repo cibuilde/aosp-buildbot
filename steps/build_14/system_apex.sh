@@ -30,7 +30,7 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/system/apex/apexd/sysprop/com.android.sy
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/tools/sysprop/sysprop-library-stub-platform^android_common/ .
 
 echo "building com.android.sysprop.apex^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_14.ninja com.android.sysprop.apex,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_14.ninja com.android.sysprop.apex,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/apex/apexd/sysprop/com.android.sysprop.apex^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_14/system/apex/com.android.sysprop.apex^android_common.output . $GITHUB_WORKSPACE/artifacts/system/apex/apexd/sysprop/com.android.sysprop.apex^android_common
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_14/system/apex/com.android.sysprop.apex^android_common.output $GITHUB_WORKSPACE/artifacts/system/apex/apexd/sysprop/com.android.sysprop.apex^android_common $GITHUB_WORKSPACE/artifacts/system/apex/apexd/sysprop/com.android.sysprop.apex^android_common/addition_copy_files.output

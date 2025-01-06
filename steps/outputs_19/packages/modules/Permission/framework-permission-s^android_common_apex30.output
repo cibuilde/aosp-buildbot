@@ -1,2 +1,3 @@
 out/soong/.intermediates/packages/modules/Permission/framework-s/framework-permission-s/android_common_apex30/aligned/framework-permission-s.jar
+out/soong/.intermediates/packages/modules/Permission/framework-s/framework-permission-s/android_common_apex30/jarjar/framework-permission-s.jar
 out/soong/.intermediates/packages/modules/Permission/framework-s/framework-permission-s/android_common_apex30/turbine-jarjar/framework-permission-s.jar

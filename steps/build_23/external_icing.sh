@@ -34,7 +34,7 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/libcore/core-current-stubs-system-module
 rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/sdk/current/androidx/androidx.annotation_annotation^android_common/ .
 
 echo "building libicing-java^android_common_apex10000"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_23.ninja libicing-java,android_common_apex10000
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_23.ninja libicing-java,android_common_apex10000
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/icing/java/libicing-java^android_common_apex10000
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_23/external/icing/libicing-java^android_common_apex10000.output . $GITHUB_WORKSPACE/artifacts/external/icing/java/libicing-java^android_common_apex10000
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_23/external/icing/libicing-java^android_common_apex10000.output $GITHUB_WORKSPACE/artifacts/external/icing/java/libicing-java^android_common_apex10000 $GITHUB_WORKSPACE/artifacts/external/icing/java/libicing-java^android_common_apex10000/addition_copy_files.output

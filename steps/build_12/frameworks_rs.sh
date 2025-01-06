@@ -86,25 +86,25 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^android_x86
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^android_x86_x86_64_shared/ .
 
 echo "building libRScpp^android_x86_64_shared"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_12.ninja libRScpp,android_x86_64_shared
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_12.ninja libRScpp,android_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/rs/cpp/libRScpp^android_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_12/frameworks/rs/libRScpp^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/rs/cpp/libRScpp^android_x86_64_shared
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_12/frameworks/rs/libRScpp^android_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/frameworks/rs/cpp/libRScpp^android_x86_64_shared $GITHUB_WORKSPACE/artifacts/frameworks/rs/cpp/libRScpp^android_x86_64_shared/addition_copy_files.output
 
 echo "building libRScpp^android_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_12.ninja libRScpp,android_x86_64_static
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_12.ninja libRScpp,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/rs/cpp/libRScpp^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_12/frameworks/rs/libRScpp^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/rs/cpp/libRScpp^android_x86_64_static
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_12/frameworks/rs/libRScpp^android_x86_64_static.output $GITHUB_WORKSPACE/artifacts/frameworks/rs/cpp/libRScpp^android_x86_64_static $GITHUB_WORKSPACE/artifacts/frameworks/rs/cpp/libRScpp^android_x86_64_static/addition_copy_files.output
 
 echo "building libRScpp^android_x86_x86_64_shared"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_12.ninja libRScpp,android_x86_x86_64_shared
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_12.ninja libRScpp,android_x86_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/rs/cpp/libRScpp^android_x86_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_12/frameworks/rs/libRScpp^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/rs/cpp/libRScpp^android_x86_x86_64_shared
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_12/frameworks/rs/libRScpp^android_x86_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/frameworks/rs/cpp/libRScpp^android_x86_x86_64_shared $GITHUB_WORKSPACE/artifacts/frameworks/rs/cpp/libRScpp^android_x86_x86_64_shared/addition_copy_files.output
 
 echo "building libRScpp^android_x86_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_12.ninja libRScpp,android_x86_x86_64_static
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_12.ninja libRScpp,android_x86_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/rs/cpp/libRScpp^android_x86_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_12/frameworks/rs/libRScpp^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/rs/cpp/libRScpp^android_x86_x86_64_static
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_12/frameworks/rs/libRScpp^android_x86_x86_64_static.output $GITHUB_WORKSPACE/artifacts/frameworks/rs/cpp/libRScpp^android_x86_x86_64_static $GITHUB_WORKSPACE/artifacts/frameworks/rs/cpp/libRScpp^android_x86_x86_64_static/addition_copy_files.output

@@ -78,19 +78,19 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/tools/platform-compat/java/android/proce
 rsync -a -r $GITHUB_WORKSPACE/downloads/tools/platform-compat/java/com/android/class2nonsdklist/class2nonsdklist^linux_glibc_x86_64/ .
 
 echo "building conscrypt^android_common_apex29"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_14.ninja conscrypt,android_common_apex29
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_14.ninja conscrypt,android_common_apex29
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/conscrypt/conscrypt^android_common_apex29
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_14/external/conscrypt/conscrypt^android_common_apex29.output . $GITHUB_WORKSPACE/artifacts/external/conscrypt/conscrypt^android_common_apex29
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_14/external/conscrypt/conscrypt^android_common_apex29.output $GITHUB_WORKSPACE/artifacts/external/conscrypt/conscrypt^android_common_apex29 $GITHUB_WORKSPACE/artifacts/external/conscrypt/conscrypt^android_common_apex29/addition_copy_files.output
 
 echo "building com.android.conscrypt^android_common_com.android.conscrypt_image"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_14.ninja com.android.conscrypt,android_common_com.android.conscrypt_image
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_14.ninja com.android.conscrypt,android_common_com.android.conscrypt_image
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/conscrypt/apex/com.android.conscrypt^android_common_com.android.conscrypt_image
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_14/external/conscrypt/com.android.conscrypt^android_common_com.android.conscrypt_image.output . $GITHUB_WORKSPACE/artifacts/external/conscrypt/apex/com.android.conscrypt^android_common_com.android.conscrypt_image
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_14/external/conscrypt/com.android.conscrypt^android_common_com.android.conscrypt_image.output $GITHUB_WORKSPACE/artifacts/external/conscrypt/apex/com.android.conscrypt^android_common_com.android.conscrypt_image $GITHUB_WORKSPACE/artifacts/external/conscrypt/apex/com.android.conscrypt^android_common_com.android.conscrypt_image/addition_copy_files.output
 
 echo "building com.android.conscrypt-bootclasspath-fragment^android_common_apex29"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_14.ninja com.android.conscrypt-bootclasspath-fragment,android_common_apex29
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_14.ninja com.android.conscrypt-bootclasspath-fragment,android_common_apex29
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/conscrypt/apex/com.android.conscrypt-bootclasspath-fragment^android_common_apex29
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_14/external/conscrypt/com.android.conscrypt-bootclasspath-fragment^android_common_apex29.output . $GITHUB_WORKSPACE/artifacts/external/conscrypt/apex/com.android.conscrypt-bootclasspath-fragment^android_common_apex29
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_14/external/conscrypt/com.android.conscrypt-bootclasspath-fragment^android_common_apex29.output $GITHUB_WORKSPACE/artifacts/external/conscrypt/apex/com.android.conscrypt-bootclasspath-fragment^android_common_apex29 $GITHUB_WORKSPACE/artifacts/external/conscrypt/apex/com.android.conscrypt-bootclasspath-fragment^android_common_apex29/addition_copy_files.output

@@ -41,7 +41,7 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/system/apex/apexer/conv_apex_manifest^li
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/apex/tools/apex_compression_tool^linux_glibc_x86_64_PY3/ .
 
 echo "building com.android.cellbroadcast^android_common_com.android.cellbroadcast_image"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_26.ninja com.android.cellbroadcast,android_common_com.android.cellbroadcast_image
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_26.ninja com.android.cellbroadcast,android_common_com.android.cellbroadcast_image
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/apps/CellBroadcastReceiver/apex/com.android.cellbroadcast^android_common_com.android.cellbroadcast_image
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_26/packages/apps/CellBroadcastReceiver/com.android.cellbroadcast^android_common_com.android.cellbroadcast_image.output . $GITHUB_WORKSPACE/artifacts/packages/apps/CellBroadcastReceiver/apex/com.android.cellbroadcast^android_common_com.android.cellbroadcast_image
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_26/packages/apps/CellBroadcastReceiver/com.android.cellbroadcast^android_common_com.android.cellbroadcast_image.output $GITHUB_WORKSPACE/artifacts/packages/apps/CellBroadcastReceiver/apex/com.android.cellbroadcast^android_common_com.android.cellbroadcast_image $GITHUB_WORKSPACE/artifacts/packages/apps/CellBroadcastReceiver/apex/com.android.cellbroadcast^android_common_com.android.cellbroadcast_image/addition_copy_files.output

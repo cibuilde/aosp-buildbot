@@ -1,3 +1,4 @@
 out/soong/.intermediates/frameworks/base/packages/SettingsLib/AdaptiveIcon/SettingsLibAdaptiveIcon/android_common/combined/SettingsLibAdaptiveIcon.jar
+out/soong/.intermediates/frameworks/base/packages/SettingsLib/AdaptiveIcon/SettingsLibAdaptiveIcon/android_common/manifest_fixer/AndroidManifest.xml
 out/soong/.intermediates/frameworks/base/packages/SettingsLib/AdaptiveIcon/SettingsLibAdaptiveIcon/android_common/package-res.apk
 out/soong/.intermediates/frameworks/base/packages/SettingsLib/AdaptiveIcon/SettingsLibAdaptiveIcon/android_common/turbine-combined/SettingsLibAdaptiveIcon.jar

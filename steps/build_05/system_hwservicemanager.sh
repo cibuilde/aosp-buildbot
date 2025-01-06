@@ -48,13 +48,13 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/system/libhidl/transport/manager/1.2/and
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/libhidl/transport/token/1.0/android.hidl.token@1.0_genc++_headers^/ .
 
 echo "building libhwservicemanager^android_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libhwservicemanager,android_x86_64_static
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libhwservicemanager,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/hwservicemanager/libhwservicemanager^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/system/hwservicemanager/libhwservicemanager^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/hwservicemanager/libhwservicemanager^android_x86_64_static
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/system/hwservicemanager/libhwservicemanager^android_x86_64_static.output $GITHUB_WORKSPACE/artifacts/system/hwservicemanager/libhwservicemanager^android_x86_64_static $GITHUB_WORKSPACE/artifacts/system/hwservicemanager/libhwservicemanager^android_x86_64_static/addition_copy_files.output
 
 echo "building libtokenmanager^android_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libtokenmanager,android_x86_64_static
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libtokenmanager,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/hwservicemanager/libtokenmanager^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/system/hwservicemanager/libtokenmanager^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/system/hwservicemanager/libtokenmanager^android_x86_64_static
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/system/hwservicemanager/libtokenmanager^android_x86_64_static.output $GITHUB_WORKSPACE/artifacts/system/hwservicemanager/libtokenmanager^android_x86_64_static $GITHUB_WORKSPACE/artifacts/system/hwservicemanager/libtokenmanager^android_x86_64_static/addition_copy_files.output

@@ -43,25 +43,25 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/tools/metalava/metalava^linux_glibc_x86_
 rsync -a -r $GITHUB_WORKSPACE/downloads/tools/metalava/stub-annotations^android_common/ .
 
 echo "building conscrypt.module.platform.api.stubs.source^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_11.ninja conscrypt.module.platform.api.stubs.source,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_11.ninja conscrypt.module.platform.api.stubs.source,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/conscrypt/conscrypt.module.platform.api.stubs.source^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_11/external/conscrypt/conscrypt.module.platform.api.stubs.source^android_common.output . $GITHUB_WORKSPACE/artifacts/external/conscrypt/conscrypt.module.platform.api.stubs.source^android_common
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_11/external/conscrypt/conscrypt.module.platform.api.stubs.source^android_common.output $GITHUB_WORKSPACE/artifacts/external/conscrypt/conscrypt.module.platform.api.stubs.source^android_common $GITHUB_WORKSPACE/artifacts/external/conscrypt/conscrypt.module.platform.api.stubs.source^android_common/addition_copy_files.output
 
 echo "building conscrypt.module.platform.api.stubs^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_11.ninja conscrypt.module.platform.api.stubs,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_11.ninja conscrypt.module.platform.api.stubs,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/conscrypt/conscrypt.module.platform.api.stubs^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_11/external/conscrypt/conscrypt.module.platform.api.stubs^android_common.output . $GITHUB_WORKSPACE/artifacts/external/conscrypt/conscrypt.module.platform.api.stubs^android_common
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_11/external/conscrypt/conscrypt.module.platform.api.stubs^android_common.output $GITHUB_WORKSPACE/artifacts/external/conscrypt/conscrypt.module.platform.api.stubs^android_common $GITHUB_WORKSPACE/artifacts/external/conscrypt/conscrypt.module.platform.api.stubs^android_common/addition_copy_files.output
 
 echo "building conscrypt.module.public.api.stubs.source^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_11.ninja conscrypt.module.public.api.stubs.source,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_11.ninja conscrypt.module.public.api.stubs.source,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/conscrypt/conscrypt.module.public.api.stubs.source^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_11/external/conscrypt/conscrypt.module.public.api.stubs.source^android_common.output . $GITHUB_WORKSPACE/artifacts/external/conscrypt/conscrypt.module.public.api.stubs.source^android_common
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_11/external/conscrypt/conscrypt.module.public.api.stubs.source^android_common.output $GITHUB_WORKSPACE/artifacts/external/conscrypt/conscrypt.module.public.api.stubs.source^android_common $GITHUB_WORKSPACE/artifacts/external/conscrypt/conscrypt.module.public.api.stubs.source^android_common/addition_copy_files.output
 
 echo "building conscrypt.module.public.api.stubs^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_11.ninja conscrypt.module.public.api.stubs,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_11.ninja conscrypt.module.public.api.stubs,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/conscrypt/conscrypt.module.public.api.stubs^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_11/external/conscrypt/conscrypt.module.public.api.stubs^android_common.output . $GITHUB_WORKSPACE/artifacts/external/conscrypt/conscrypt.module.public.api.stubs^android_common
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_11/external/conscrypt/conscrypt.module.public.api.stubs^android_common.output $GITHUB_WORKSPACE/artifacts/external/conscrypt/conscrypt.module.public.api.stubs^android_common $GITHUB_WORKSPACE/artifacts/external/conscrypt/conscrypt.module.public.api.stubs^android_common/addition_copy_files.output

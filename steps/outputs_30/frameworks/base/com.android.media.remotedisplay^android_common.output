@@ -4,4 +4,5 @@ out/soong/.intermediates/frameworks/base/media/lib/remotedisplay/com.android.med
 out/soong/.intermediates/frameworks/base/media/lib/remotedisplay/com.android.media.remotedisplay/android_common/dexpreopt/oat/x86/javalib.vdex
 out/soong/.intermediates/frameworks/base/media/lib/remotedisplay/com.android.media.remotedisplay/android_common/dexpreopt/oat/x86_64/javalib.odex
 out/soong/.intermediates/frameworks/base/media/lib/remotedisplay/com.android.media.remotedisplay/android_common/dexpreopt/oat/x86_64/javalib.vdex
+out/soong/.intermediates/frameworks/base/media/lib/remotedisplay/com.android.media.remotedisplay/android_common/javac/com.android.media.remotedisplay.jar
 out/soong/.intermediates/frameworks/base/media/lib/remotedisplay/com.android.media.remotedisplay/android_common/turbine-combined/com.android.media.remotedisplay.jar

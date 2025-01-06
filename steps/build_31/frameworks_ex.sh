@@ -37,7 +37,7 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/libcore/core-lambda-stubs^android_common
 rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/r8/d8^linux_glibc_x86_64/ .
 
 echo "building androidx.camera.extensions.impl^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_31.ninja androidx.camera.extensions.impl,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_31.ninja androidx.camera.extensions.impl,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/ex/camera2/extensions/sample/androidx.camera.extensions.impl^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_31/frameworks/ex/androidx.camera.extensions.impl^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/ex/camera2/extensions/sample/androidx.camera.extensions.impl^android_common
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_31/frameworks/ex/androidx.camera.extensions.impl^android_common.output $GITHUB_WORKSPACE/artifacts/frameworks/ex/camera2/extensions/sample/androidx.camera.extensions.impl^android_common $GITHUB_WORKSPACE/artifacts/frameworks/ex/camera2/extensions/sample/androidx.camera.extensions.impl^android_common/addition_copy_files.output

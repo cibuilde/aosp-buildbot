@@ -51,13 +51,13 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^android_x86
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^android_x86_x86_64_shared/ .
 
 echo "building libstatslog^android_x86_64_shared"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libstatslog,android_x86_64_shared
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libstatslog,android_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/proto_logging/stats/stats_log_api_gen/libstatslog^android_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/frameworks/proto_logging/libstatslog^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/proto_logging/stats/stats_log_api_gen/libstatslog^android_x86_64_shared
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_08/frameworks/proto_logging/libstatslog^android_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/frameworks/proto_logging/stats/stats_log_api_gen/libstatslog^android_x86_64_shared $GITHUB_WORKSPACE/artifacts/frameworks/proto_logging/stats/stats_log_api_gen/libstatslog^android_x86_64_shared/addition_copy_files.output
 
 echo "building libstatslog^android_x86_x86_64_shared"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libstatslog,android_x86_x86_64_shared
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja libstatslog,android_x86_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/proto_logging/stats/stats_log_api_gen/libstatslog^android_x86_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/frameworks/proto_logging/libstatslog^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/proto_logging/stats/stats_log_api_gen/libstatslog^android_x86_x86_64_shared
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_08/frameworks/proto_logging/libstatslog^android_x86_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/frameworks/proto_logging/stats/stats_log_api_gen/libstatslog^android_x86_x86_64_shared $GITHUB_WORKSPACE/artifacts/frameworks/proto_logging/stats/stats_log_api_gen/libstatslog^android_x86_x86_64_shared/addition_copy_files.output

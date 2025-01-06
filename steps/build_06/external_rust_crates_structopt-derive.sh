@@ -35,7 +35,7 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/external/rust/crates/quote/libquote^linu
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/rust/crates/syn/libsyn^linux_glibc_x86_64_rlib_rlib-std/ .
 
 echo "building libstructopt_derive^linux_glibc_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libstructopt_derive,linux_glibc_x86_64
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libstructopt_derive,linux_glibc_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/rust/crates/structopt-derive/libstructopt_derive^linux_glibc_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/external/rust/crates/structopt-derive/libstructopt_derive^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/rust/crates/structopt-derive/libstructopt_derive^linux_glibc_x86_64
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_06/external/rust/crates/structopt-derive/libstructopt_derive^linux_glibc_x86_64.output $GITHUB_WORKSPACE/artifacts/external/rust/crates/structopt-derive/libstructopt_derive^linux_glibc_x86_64 $GITHUB_WORKSPACE/artifacts/external/rust/crates/structopt-derive/libstructopt_derive^linux_glibc_x86_64/addition_copy_files.output

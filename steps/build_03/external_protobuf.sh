@@ -46,49 +46,49 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/external/zlib/libz^linux_glibc_x86_64_sh
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/zlib/libz^linux_glibc_x86_64_static/ .
 
 echo "building libprotobuf-cpp-lite^linux_glibc_x86_64_shared"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libprotobuf-cpp-lite,linux_glibc_x86_64_shared
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libprotobuf-cpp-lite,linux_glibc_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/protobuf/libprotobuf-cpp-lite^linux_glibc_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/external/protobuf/libprotobuf-cpp-lite^linux_glibc_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/external/protobuf/libprotobuf-cpp-lite^linux_glibc_x86_64_shared
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/external/protobuf/libprotobuf-cpp-lite^linux_glibc_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/external/protobuf/libprotobuf-cpp-lite^linux_glibc_x86_64_shared $GITHUB_WORKSPACE/artifacts/external/protobuf/libprotobuf-cpp-lite^linux_glibc_x86_64_shared/addition_copy_files.output
 
 echo "building libprotobuf-cpp-full^linux_glibc_x86_64_shared"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libprotobuf-cpp-full,linux_glibc_x86_64_shared
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libprotobuf-cpp-full,linux_glibc_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/protobuf/libprotobuf-cpp-full^linux_glibc_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/external/protobuf/libprotobuf-cpp-full^linux_glibc_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/external/protobuf/libprotobuf-cpp-full^linux_glibc_x86_64_shared
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/external/protobuf/libprotobuf-cpp-full^linux_glibc_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/external/protobuf/libprotobuf-cpp-full^linux_glibc_x86_64_shared $GITHUB_WORKSPACE/artifacts/external/protobuf/libprotobuf-cpp-full^linux_glibc_x86_64_shared/addition_copy_files.output
 
 echo "building aprotoc^linux_glibc_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja aprotoc,linux_glibc_x86_64
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja aprotoc,linux_glibc_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/protobuf/aprotoc^linux_glibc_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/external/protobuf/aprotoc^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/protobuf/aprotoc^linux_glibc_x86_64
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/external/protobuf/aprotoc^linux_glibc_x86_64.output $GITHUB_WORKSPACE/artifacts/external/protobuf/aprotoc^linux_glibc_x86_64 $GITHUB_WORKSPACE/artifacts/external/protobuf/aprotoc^linux_glibc_x86_64/addition_copy_files.output
 
 echo "building libprotobuf-java-full^linux_glibc_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libprotobuf-java-full,linux_glibc_common
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libprotobuf-java-full,linux_glibc_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/protobuf/libprotobuf-java-full^linux_glibc_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/external/protobuf/libprotobuf-java-full^linux_glibc_common.output . $GITHUB_WORKSPACE/artifacts/external/protobuf/libprotobuf-java-full^linux_glibc_common
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/external/protobuf/libprotobuf-java-full^linux_glibc_common.output $GITHUB_WORKSPACE/artifacts/external/protobuf/libprotobuf-java-full^linux_glibc_common $GITHUB_WORKSPACE/artifacts/external/protobuf/libprotobuf-java-full^linux_glibc_common/addition_copy_files.output
 
 echo "building libprotobuf-python^linux_glibc_x86_64_PY2"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libprotobuf-python,linux_glibc_x86_64_PY2
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libprotobuf-python,linux_glibc_x86_64_PY2
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/protobuf/libprotobuf-python^linux_glibc_x86_64_PY2
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/external/protobuf/libprotobuf-python^linux_glibc_x86_64_PY2.output . $GITHUB_WORKSPACE/artifacts/external/protobuf/libprotobuf-python^linux_glibc_x86_64_PY2
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/external/protobuf/libprotobuf-python^linux_glibc_x86_64_PY2.output $GITHUB_WORKSPACE/artifacts/external/protobuf/libprotobuf-python^linux_glibc_x86_64_PY2 $GITHUB_WORKSPACE/artifacts/external/protobuf/libprotobuf-python^linux_glibc_x86_64_PY2/addition_copy_files.output
 
 echo "building libprotobuf-python^linux_glibc_x86_64_PY3"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libprotobuf-python,linux_glibc_x86_64_PY3
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libprotobuf-python,linux_glibc_x86_64_PY3
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/protobuf/libprotobuf-python^linux_glibc_x86_64_PY3
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/external/protobuf/libprotobuf-python^linux_glibc_x86_64_PY3.output . $GITHUB_WORKSPACE/artifacts/external/protobuf/libprotobuf-python^linux_glibc_x86_64_PY3
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/external/protobuf/libprotobuf-python^linux_glibc_x86_64_PY3.output $GITHUB_WORKSPACE/artifacts/external/protobuf/libprotobuf-python^linux_glibc_x86_64_PY3 $GITHUB_WORKSPACE/artifacts/external/protobuf/libprotobuf-python^linux_glibc_x86_64_PY3/addition_copy_files.output
 
 echo "building protoc-gen-javamicro^linux_glibc_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja protoc-gen-javamicro,linux_glibc_x86_64
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja protoc-gen-javamicro,linux_glibc_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/protobuf/protoc-gen-javamicro^linux_glibc_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/external/protobuf/protoc-gen-javamicro^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/protobuf/protoc-gen-javamicro^linux_glibc_x86_64
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/external/protobuf/protoc-gen-javamicro^linux_glibc_x86_64.output $GITHUB_WORKSPACE/artifacts/external/protobuf/protoc-gen-javamicro^linux_glibc_x86_64 $GITHUB_WORKSPACE/artifacts/external/protobuf/protoc-gen-javamicro^linux_glibc_x86_64/addition_copy_files.output
 
 echo "building protoc-gen-javanano^linux_glibc_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja protoc-gen-javanano,linux_glibc_x86_64
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja protoc-gen-javanano,linux_glibc_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/protobuf/protoc-gen-javanano^linux_glibc_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/external/protobuf/protoc-gen-javanano^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/protobuf/protoc-gen-javanano^linux_glibc_x86_64
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/external/protobuf/protoc-gen-javanano^linux_glibc_x86_64.output $GITHUB_WORKSPACE/artifacts/external/protobuf/protoc-gen-javanano^linux_glibc_x86_64 $GITHUB_WORKSPACE/artifacts/external/protobuf/protoc-gen-javanano^linux_glibc_x86_64/addition_copy_files.output

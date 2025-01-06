@@ -26,7 +26,7 @@ clone_depth_platform prebuilts/gcc/linux-x86/x86/x86_64-linux-android-4.9
 rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/libc^android_vendor.31_x86_x86_64_shared/ .
 
 echo "building libhevcdec^android_vendor.31_x86_x86_64_static_cfi"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libhevcdec,android_vendor.31_x86_x86_64_static_cfi
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libhevcdec,android_vendor.31_x86_x86_64_static_cfi
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/libhevc/libhevcdec^android_vendor.31_x86_x86_64_static_cfi
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/libhevc/libhevcdec^android_vendor.31_x86_x86_64_static_cfi.output . $GITHUB_WORKSPACE/artifacts/external/libhevc/libhevcdec^android_vendor.31_x86_x86_64_static_cfi
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/external/libhevc/libhevcdec^android_vendor.31_x86_x86_64_static_cfi.output $GITHUB_WORKSPACE/artifacts/external/libhevc/libhevcdec^android_vendor.31_x86_x86_64_static_cfi $GITHUB_WORKSPACE/artifacts/external/libhevc/libhevcdec^android_vendor.31_x86_x86_64_static_cfi/addition_copy_files.output

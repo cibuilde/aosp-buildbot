@@ -32,25 +32,25 @@ clone_depth_platform system/media
 
 
 echo "building libtinyxml2^android_recovery_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libtinyxml2,android_recovery_x86_64_static
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libtinyxml2,android_recovery_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/tinyxml2/libtinyxml2^android_recovery_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/tinyxml2/libtinyxml2^android_recovery_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/tinyxml2/libtinyxml2^android_recovery_x86_64_static
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/tinyxml2/libtinyxml2^android_recovery_x86_64_static.output $GITHUB_WORKSPACE/artifacts/external/tinyxml2/libtinyxml2^android_recovery_x86_64_static $GITHUB_WORKSPACE/artifacts/external/tinyxml2/libtinyxml2^android_recovery_x86_64_static/addition_copy_files.output
 
 echo "building libtinyxml2^android_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libtinyxml2,android_x86_64_static
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libtinyxml2,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/tinyxml2/libtinyxml2^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/tinyxml2/libtinyxml2^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/tinyxml2/libtinyxml2^android_x86_64_static
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/tinyxml2/libtinyxml2^android_x86_64_static.output $GITHUB_WORKSPACE/artifacts/external/tinyxml2/libtinyxml2^android_x86_64_static $GITHUB_WORKSPACE/artifacts/external/tinyxml2/libtinyxml2^android_x86_64_static/addition_copy_files.output
 
 echo "building libtinyxml2^android_x86_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libtinyxml2,android_x86_x86_64_static
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libtinyxml2,android_x86_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/tinyxml2/libtinyxml2^android_x86_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/tinyxml2/libtinyxml2^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/tinyxml2/libtinyxml2^android_x86_x86_64_static
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/tinyxml2/libtinyxml2^android_x86_x86_64_static.output $GITHUB_WORKSPACE/artifacts/external/tinyxml2/libtinyxml2^android_x86_x86_64_static $GITHUB_WORKSPACE/artifacts/external/tinyxml2/libtinyxml2^android_x86_x86_64_static/addition_copy_files.output
 
 echo "building libtinyxml2^linux_glibc_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libtinyxml2,linux_glibc_x86_64_static
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libtinyxml2,linux_glibc_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/tinyxml2/libtinyxml2^linux_glibc_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/tinyxml2/libtinyxml2^linux_glibc_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/tinyxml2/libtinyxml2^linux_glibc_x86_64_static
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/tinyxml2/libtinyxml2^linux_glibc_x86_64_static.output $GITHUB_WORKSPACE/artifacts/external/tinyxml2/libtinyxml2^linux_glibc_x86_64_static $GITHUB_WORKSPACE/artifacts/external/tinyxml2/libtinyxml2^linux_glibc_x86_64_static/addition_copy_files.output

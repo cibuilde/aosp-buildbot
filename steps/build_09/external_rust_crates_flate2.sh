@@ -41,7 +41,7 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/rust/libtest^android_x86_64_dy
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^android_x86_64_shared/ .
 
 echo "building libflate2^android_x86_64_dylib"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja libflate2,android_x86_64_dylib
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja libflate2,android_x86_64_dylib
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/rust/crates/flate2/libflate2^android_x86_64_dylib
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_09/external/rust/crates/flate2/libflate2^android_x86_64_dylib.output . $GITHUB_WORKSPACE/artifacts/external/rust/crates/flate2/libflate2^android_x86_64_dylib
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_09/external/rust/crates/flate2/libflate2^android_x86_64_dylib.output $GITHUB_WORKSPACE/artifacts/external/rust/crates/flate2/libflate2^android_x86_64_dylib $GITHUB_WORKSPACE/artifacts/external/rust/crates/flate2/libflate2^android_x86_64_dylib/addition_copy_files.output

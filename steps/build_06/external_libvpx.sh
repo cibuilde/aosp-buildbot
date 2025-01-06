@@ -32,7 +32,7 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcxxabi/libc++demangle^androi
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/libvpx/libvpx^android_vendor.31_x86_x86_64_static_cfi/ .
 
 echo "building libvpx^android_vendor.31_x86_x86_64_shared_cfi"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libvpx,android_vendor.31_x86_x86_64_shared_cfi
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libvpx,android_vendor.31_x86_x86_64_shared_cfi
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/libvpx/libvpx^android_vendor.31_x86_x86_64_shared_cfi
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/external/libvpx/libvpx^android_vendor.31_x86_x86_64_shared_cfi.output . $GITHUB_WORKSPACE/artifacts/external/libvpx/libvpx^android_vendor.31_x86_x86_64_shared_cfi
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_06/external/libvpx/libvpx^android_vendor.31_x86_x86_64_shared_cfi.output $GITHUB_WORKSPACE/artifacts/external/libvpx/libvpx^android_vendor.31_x86_x86_64_shared_cfi $GITHUB_WORKSPACE/artifacts/external/libvpx/libvpx^android_vendor.31_x86_x86_64_shared_cfi/addition_copy_files.output

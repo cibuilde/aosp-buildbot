@@ -60,31 +60,31 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/rust/libstd^android_x86_64_rli
 rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/rust/libtest^android_x86_64_rlib_apex10000/ .
 
 echo "building libminijail^android_x86_64_shared"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libminijail,android_x86_64_shared
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libminijail,android_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/minijail/libminijail^android_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/external/minijail/libminijail^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/external/minijail/libminijail^android_x86_64_shared
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_06/external/minijail/libminijail^android_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/external/minijail/libminijail^android_x86_64_shared $GITHUB_WORKSPACE/artifacts/external/minijail/libminijail^android_x86_64_shared/addition_copy_files.output
 
 echo "building libminijail^android_x86_64_shared_apex10000"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libminijail,android_x86_64_shared_apex10000
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libminijail,android_x86_64_shared_apex10000
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/minijail/libminijail^android_x86_64_shared_apex10000
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/external/minijail/libminijail^android_x86_64_shared_apex10000.output . $GITHUB_WORKSPACE/artifacts/external/minijail/libminijail^android_x86_64_shared_apex10000
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_06/external/minijail/libminijail^android_x86_64_shared_apex10000.output $GITHUB_WORKSPACE/artifacts/external/minijail/libminijail^android_x86_64_shared_apex10000 $GITHUB_WORKSPACE/artifacts/external/minijail/libminijail^android_x86_64_shared_apex10000/addition_copy_files.output
 
 echo "building libminijail^android_x86_64_shared_apex29"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libminijail,android_x86_64_shared_apex29
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libminijail,android_x86_64_shared_apex29
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/minijail/libminijail^android_x86_64_shared_apex29
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/external/minijail/libminijail^android_x86_64_shared_apex29.output . $GITHUB_WORKSPACE/artifacts/external/minijail/libminijail^android_x86_64_shared_apex29
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_06/external/minijail/libminijail^android_x86_64_shared_apex29.output $GITHUB_WORKSPACE/artifacts/external/minijail/libminijail^android_x86_64_shared_apex29 $GITHUB_WORKSPACE/artifacts/external/minijail/libminijail^android_x86_64_shared_apex29/addition_copy_files.output
 
 echo "building libminijail_sys^android_x86_64_rlib_rlib-std_apex10000"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libminijail_sys,android_x86_64_rlib_rlib-std_apex10000
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libminijail_sys,android_x86_64_rlib_rlib-std_apex10000
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/minijail/libminijail_sys^android_x86_64_rlib_rlib-std_apex10000
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/external/minijail/libminijail_sys^android_x86_64_rlib_rlib-std_apex10000.output . $GITHUB_WORKSPACE/artifacts/external/minijail/libminijail_sys^android_x86_64_rlib_rlib-std_apex10000
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_06/external/minijail/libminijail_sys^android_x86_64_rlib_rlib-std_apex10000.output $GITHUB_WORKSPACE/artifacts/external/minijail/libminijail_sys^android_x86_64_rlib_rlib-std_apex10000 $GITHUB_WORKSPACE/artifacts/external/minijail/libminijail_sys^android_x86_64_rlib_rlib-std_apex10000/addition_copy_files.output
 
 echo "building libminijail_rust^android_x86_64_rlib_rlib-std_apex10000"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libminijail_rust,android_x86_64_rlib_rlib-std_apex10000
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libminijail_rust,android_x86_64_rlib_rlib-std_apex10000
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/minijail/libminijail_rust^android_x86_64_rlib_rlib-std_apex10000
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/external/minijail/libminijail_rust^android_x86_64_rlib_rlib-std_apex10000.output . $GITHUB_WORKSPACE/artifacts/external/minijail/libminijail_rust^android_x86_64_rlib_rlib-std_apex10000
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_06/external/minijail/libminijail_rust^android_x86_64_rlib_rlib-std_apex10000.output $GITHUB_WORKSPACE/artifacts/external/minijail/libminijail_rust^android_x86_64_rlib_rlib-std_apex10000 $GITHUB_WORKSPACE/artifacts/external/minijail/libminijail_rust^android_x86_64_rlib_rlib-std_apex10000/addition_copy_files.output

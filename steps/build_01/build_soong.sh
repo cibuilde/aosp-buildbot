@@ -34,115 +34,115 @@ clone_depth_platform system/media
 
 
 echo "building androidmk-parser^linux_glibc_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja androidmk-parser,linux_glibc_x86_64
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja androidmk-parser,linux_glibc_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/build/soong/androidmk/androidmk-parser^linux_glibc_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/build/soong/androidmk-parser^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/build/soong/androidmk/androidmk-parser^linux_glibc_x86_64
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/build/soong/androidmk-parser^linux_glibc_x86_64.output $GITHUB_WORKSPACE/artifacts/build/soong/androidmk/androidmk-parser^linux_glibc_x86_64 $GITHUB_WORKSPACE/artifacts/build/soong/androidmk/androidmk-parser^linux_glibc_x86_64/addition_copy_files.output
 
 echo "building soong-cquery^linux_glibc_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja soong-cquery,linux_glibc_x86_64
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja soong-cquery,linux_glibc_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/build/soong/bazel/cquery/soong-cquery^linux_glibc_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/build/soong/soong-cquery^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/build/soong/bazel/cquery/soong-cquery^linux_glibc_x86_64
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/build/soong/soong-cquery^linux_glibc_x86_64.output $GITHUB_WORKSPACE/artifacts/build/soong/bazel/cquery/soong-cquery^linux_glibc_x86_64 $GITHUB_WORKSPACE/artifacts/build/soong/bazel/cquery/soong-cquery^linux_glibc_x86_64/addition_copy_files.output
 
 echo "building libbuildversion^android_recovery_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libbuildversion,android_recovery_x86_64_static
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libbuildversion,android_recovery_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/build/soong/cc/libbuildversion/libbuildversion^android_recovery_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/build/soong/libbuildversion^android_recovery_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/build/soong/cc/libbuildversion/libbuildversion^android_recovery_x86_64_static
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/build/soong/libbuildversion^android_recovery_x86_64_static.output $GITHUB_WORKSPACE/artifacts/build/soong/cc/libbuildversion/libbuildversion^android_recovery_x86_64_static $GITHUB_WORKSPACE/artifacts/build/soong/cc/libbuildversion/libbuildversion^android_recovery_x86_64_static/addition_copy_files.output
 
 echo "building libbuildversion^android_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libbuildversion,android_x86_64_static
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libbuildversion,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/build/soong/cc/libbuildversion/libbuildversion^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/build/soong/libbuildversion^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/build/soong/cc/libbuildversion/libbuildversion^android_x86_64_static
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/build/soong/libbuildversion^android_x86_64_static.output $GITHUB_WORKSPACE/artifacts/build/soong/cc/libbuildversion/libbuildversion^android_x86_64_static $GITHUB_WORKSPACE/artifacts/build/soong/cc/libbuildversion/libbuildversion^android_x86_64_static/addition_copy_files.output
 
 echo "building libbuildversion^android_x86_64_static_apex10000"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libbuildversion,android_x86_64_static_apex10000
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libbuildversion,android_x86_64_static_apex10000
 mkdir -p $GITHUB_WORKSPACE/artifacts/build/soong/cc/libbuildversion/libbuildversion^android_x86_64_static_apex10000
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/build/soong/libbuildversion^android_x86_64_static_apex10000.output . $GITHUB_WORKSPACE/artifacts/build/soong/cc/libbuildversion/libbuildversion^android_x86_64_static_apex10000
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/build/soong/libbuildversion^android_x86_64_static_apex10000.output $GITHUB_WORKSPACE/artifacts/build/soong/cc/libbuildversion/libbuildversion^android_x86_64_static_apex10000 $GITHUB_WORKSPACE/artifacts/build/soong/cc/libbuildversion/libbuildversion^android_x86_64_static_apex10000/addition_copy_files.output
 
 echo "building libbuildversion^android_x86_64_static_apex30"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libbuildversion,android_x86_64_static_apex30
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libbuildversion,android_x86_64_static_apex30
 mkdir -p $GITHUB_WORKSPACE/artifacts/build/soong/cc/libbuildversion/libbuildversion^android_x86_64_static_apex30
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/build/soong/libbuildversion^android_x86_64_static_apex30.output . $GITHUB_WORKSPACE/artifacts/build/soong/cc/libbuildversion/libbuildversion^android_x86_64_static_apex30
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/build/soong/libbuildversion^android_x86_64_static_apex30.output $GITHUB_WORKSPACE/artifacts/build/soong/cc/libbuildversion/libbuildversion^android_x86_64_static_apex30 $GITHUB_WORKSPACE/artifacts/build/soong/cc/libbuildversion/libbuildversion^android_x86_64_static_apex30/addition_copy_files.output
 
 echo "building libbuildversion^android_x86_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libbuildversion,android_x86_x86_64_static
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libbuildversion,android_x86_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/build/soong/cc/libbuildversion/libbuildversion^android_x86_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/build/soong/libbuildversion^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/build/soong/cc/libbuildversion/libbuildversion^android_x86_x86_64_static
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/build/soong/libbuildversion^android_x86_x86_64_static.output $GITHUB_WORKSPACE/artifacts/build/soong/cc/libbuildversion/libbuildversion^android_x86_x86_64_static $GITHUB_WORKSPACE/artifacts/build/soong/cc/libbuildversion/libbuildversion^android_x86_x86_64_static/addition_copy_files.output
 
 echo "building libbuildversion^android_x86_x86_64_static_apex30"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libbuildversion,android_x86_x86_64_static_apex30
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libbuildversion,android_x86_x86_64_static_apex30
 mkdir -p $GITHUB_WORKSPACE/artifacts/build/soong/cc/libbuildversion/libbuildversion^android_x86_x86_64_static_apex30
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/build/soong/libbuildversion^android_x86_x86_64_static_apex30.output . $GITHUB_WORKSPACE/artifacts/build/soong/cc/libbuildversion/libbuildversion^android_x86_x86_64_static_apex30
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/build/soong/libbuildversion^android_x86_x86_64_static_apex30.output $GITHUB_WORKSPACE/artifacts/build/soong/cc/libbuildversion/libbuildversion^android_x86_x86_64_static_apex30 $GITHUB_WORKSPACE/artifacts/build/soong/cc/libbuildversion/libbuildversion^android_x86_x86_64_static_apex30/addition_copy_files.output
 
 echo "building libbuildversion^linux_glibc_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libbuildversion,linux_glibc_x86_64_static
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libbuildversion,linux_glibc_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/build/soong/cc/libbuildversion/libbuildversion^linux_glibc_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/build/soong/libbuildversion^linux_glibc_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/build/soong/cc/libbuildversion/libbuildversion^linux_glibc_x86_64_static
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/build/soong/libbuildversion^linux_glibc_x86_64_static.output $GITHUB_WORKSPACE/artifacts/build/soong/cc/libbuildversion/libbuildversion^linux_glibc_x86_64_static $GITHUB_WORKSPACE/artifacts/build/soong/cc/libbuildversion/libbuildversion^linux_glibc_x86_64_static/addition_copy_files.output
 
 echo "building dep_fixer^linux_glibc_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja dep_fixer,linux_glibc_x86_64
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja dep_fixer,linux_glibc_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/build/soong/cmd/dep_fixer/dep_fixer^linux_glibc_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/build/soong/dep_fixer^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/build/soong/cmd/dep_fixer/dep_fixer^linux_glibc_x86_64
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/build/soong/dep_fixer^linux_glibc_x86_64.output $GITHUB_WORKSPACE/artifacts/build/soong/cmd/dep_fixer/dep_fixer^linux_glibc_x86_64 $GITHUB_WORKSPACE/artifacts/build/soong/cmd/dep_fixer/dep_fixer^linux_glibc_x86_64/addition_copy_files.output
 
 echo "building soong_javac_wrapper^linux_glibc_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja soong_javac_wrapper,linux_glibc_x86_64
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja soong_javac_wrapper,linux_glibc_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/build/soong/cmd/javac_wrapper/soong_javac_wrapper^linux_glibc_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/build/soong/soong_javac_wrapper^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/build/soong/cmd/javac_wrapper/soong_javac_wrapper^linux_glibc_x86_64
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/build/soong/soong_javac_wrapper^linux_glibc_x86_64.output $GITHUB_WORKSPACE/artifacts/build/soong/cmd/javac_wrapper/soong_javac_wrapper^linux_glibc_x86_64 $GITHUB_WORKSPACE/artifacts/build/soong/cmd/javac_wrapper/soong_javac_wrapper^linux_glibc_x86_64/addition_copy_files.output
 
 echo "building run_with_timeout^linux_glibc_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja run_with_timeout,linux_glibc_x86_64
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja run_with_timeout,linux_glibc_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/build/soong/cmd/run_with_timeout/run_with_timeout^linux_glibc_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/build/soong/run_with_timeout^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/build/soong/cmd/run_with_timeout/run_with_timeout^linux_glibc_x86_64
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/build/soong/run_with_timeout^linux_glibc_x86_64.output $GITHUB_WORKSPACE/artifacts/build/soong/cmd/run_with_timeout/run_with_timeout^linux_glibc_x86_64 $GITHUB_WORKSPACE/artifacts/build/soong/cmd/run_with_timeout/run_with_timeout^linux_glibc_x86_64/addition_copy_files.output
 
 echo "building soong-jar^linux_glibc_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja soong-jar,linux_glibc_x86_64
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja soong-jar,linux_glibc_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/build/soong/jar/soong-jar^linux_glibc_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/build/soong/soong-jar^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/build/soong/jar/soong-jar^linux_glibc_x86_64
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/build/soong/soong-jar^linux_glibc_x86_64.output $GITHUB_WORKSPACE/artifacts/build/soong/jar/soong-jar^linux_glibc_x86_64 $GITHUB_WORKSPACE/artifacts/build/soong/jar/soong-jar^linux_glibc_x86_64/addition_copy_files.output
 
 echo "building soong-makedeps^linux_glibc_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja soong-makedeps,linux_glibc_x86_64
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja soong-makedeps,linux_glibc_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/build/soong/makedeps/soong-makedeps^linux_glibc_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/build/soong/soong-makedeps^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/build/soong/makedeps/soong-makedeps^linux_glibc_x86_64
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/build/soong/soong-makedeps^linux_glibc_x86_64.output $GITHUB_WORKSPACE/artifacts/build/soong/makedeps/soong-makedeps^linux_glibc_x86_64 $GITHUB_WORKSPACE/artifacts/build/soong/makedeps/soong-makedeps^linux_glibc_x86_64/addition_copy_files.output
 
 echo "building soong-remoteexec^linux_glibc_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja soong-remoteexec,linux_glibc_x86_64
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja soong-remoteexec,linux_glibc_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/build/soong/remoteexec/soong-remoteexec^linux_glibc_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/build/soong/soong-remoteexec^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/build/soong/remoteexec/soong-remoteexec^linux_glibc_x86_64
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/build/soong/soong-remoteexec^linux_glibc_x86_64.output $GITHUB_WORKSPACE/artifacts/build/soong/remoteexec/soong-remoteexec^linux_glibc_x86_64 $GITHUB_WORKSPACE/artifacts/build/soong/remoteexec/soong-remoteexec^linux_glibc_x86_64/addition_copy_files.output
 
 echo "building soong-response^linux_glibc_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja soong-response,linux_glibc_x86_64
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja soong-response,linux_glibc_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/build/soong/response/soong-response^linux_glibc_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/build/soong/soong-response^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/build/soong/response/soong-response^linux_glibc_x86_64
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/build/soong/soong-response^linux_glibc_x86_64.output $GITHUB_WORKSPACE/artifacts/build/soong/response/soong-response^linux_glibc_x86_64 $GITHUB_WORKSPACE/artifacts/build/soong/response/soong-response^linux_glibc_x86_64/addition_copy_files.output
 
 echo "building soong-symbol_inject^linux_glibc_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja soong-symbol_inject,linux_glibc_x86_64
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja soong-symbol_inject,linux_glibc_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/build/soong/symbol_inject/soong-symbol_inject^linux_glibc_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/build/soong/soong-symbol_inject^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/build/soong/symbol_inject/soong-symbol_inject^linux_glibc_x86_64
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/build/soong/soong-symbol_inject^linux_glibc_x86_64.output $GITHUB_WORKSPACE/artifacts/build/soong/symbol_inject/soong-symbol_inject^linux_glibc_x86_64 $GITHUB_WORKSPACE/artifacts/build/soong/symbol_inject/soong-symbol_inject^linux_glibc_x86_64/addition_copy_files.output
 
 echo "building symbol_inject^linux_glibc_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja symbol_inject,linux_glibc_x86_64
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja symbol_inject,linux_glibc_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/build/soong/symbol_inject/cmd/symbol_inject^linux_glibc_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/build/soong/symbol_inject^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/build/soong/symbol_inject/cmd/symbol_inject^linux_glibc_x86_64
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/build/soong/symbol_inject^linux_glibc_x86_64.output $GITHUB_WORKSPACE/artifacts/build/soong/symbol_inject/cmd/symbol_inject^linux_glibc_x86_64 $GITHUB_WORKSPACE/artifacts/build/soong/symbol_inject/cmd/symbol_inject^linux_glibc_x86_64/addition_copy_files.output
 
 echo "building android-archive-zip^linux_glibc_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja android-archive-zip,linux_glibc_x86_64
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja android-archive-zip,linux_glibc_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/build/soong/third_party/zip/android-archive-zip^linux_glibc_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/build/soong/android-archive-zip^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/build/soong/third_party/zip/android-archive-zip^linux_glibc_x86_64
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/build/soong/android-archive-zip^linux_glibc_x86_64.output $GITHUB_WORKSPACE/artifacts/build/soong/third_party/zip/android-archive-zip^linux_glibc_x86_64 $GITHUB_WORKSPACE/artifacts/build/soong/third_party/zip/android-archive-zip^linux_glibc_x86_64/addition_copy_files.output

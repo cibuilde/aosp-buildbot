@@ -46,7 +46,7 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/system/core/libutils/libutils^android_x8
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^android_x86_64_shared/ .
 
 echo "building sqlite3^android_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja sqlite3,android_x86_64
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja sqlite3,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/sqlite/dist/sqlite3^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/external/sqlite/sqlite3^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/sqlite/dist/sqlite3^android_x86_64
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_08/external/sqlite/sqlite3^android_x86_64.output $GITHUB_WORKSPACE/artifacts/external/sqlite/dist/sqlite3^android_x86_64 $GITHUB_WORKSPACE/artifacts/external/sqlite/dist/sqlite3^android_x86_64/addition_copy_files.output

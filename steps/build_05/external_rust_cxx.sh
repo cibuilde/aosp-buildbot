@@ -37,25 +37,25 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/external/rust/crates/quote/libquote^linu
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/rust/crates/syn/libsyn^linux_glibc_x86_64_rlib_rlib-std/ .
 
 echo "building cxx-bridge-header^"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja cxx-bridge-header,
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja cxx-bridge-header,
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/rust/cxx/cxx-bridge-header^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/external/rust/cxx/cxx-bridge-header^.output . $GITHUB_WORKSPACE/artifacts/external/rust/cxx/cxx-bridge-header^
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/external/rust/cxx/cxx-bridge-header^.output $GITHUB_WORKSPACE/artifacts/external/rust/cxx/cxx-bridge-header^ $GITHUB_WORKSPACE/artifacts/external/rust/cxx/cxx-bridge-header^/addition_copy_files.output
 
 echo "building cxxbridge^linux_glibc_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja cxxbridge,linux_glibc_x86_64
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja cxxbridge,linux_glibc_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/rust/cxx/gen/cmd/cxxbridge^linux_glibc_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/external/rust/cxx/cxxbridge^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/rust/cxx/gen/cmd/cxxbridge^linux_glibc_x86_64
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/external/rust/cxx/cxxbridge^linux_glibc_x86_64.output $GITHUB_WORKSPACE/artifacts/external/rust/cxx/gen/cmd/cxxbridge^linux_glibc_x86_64 $GITHUB_WORKSPACE/artifacts/external/rust/cxx/gen/cmd/cxxbridge^linux_glibc_x86_64/addition_copy_files.output
 
 echo "building libcxxbridge_cmd^linux_glibc_x86_64_rlib_rlib-std"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libcxxbridge_cmd,linux_glibc_x86_64_rlib_rlib-std
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libcxxbridge_cmd,linux_glibc_x86_64_rlib_rlib-std
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/rust/cxx/gen/cmd/libcxxbridge_cmd^linux_glibc_x86_64_rlib_rlib-std
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/external/rust/cxx/libcxxbridge_cmd^linux_glibc_x86_64_rlib_rlib-std.output . $GITHUB_WORKSPACE/artifacts/external/rust/cxx/gen/cmd/libcxxbridge_cmd^linux_glibc_x86_64_rlib_rlib-std
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/external/rust/cxx/libcxxbridge_cmd^linux_glibc_x86_64_rlib_rlib-std.output $GITHUB_WORKSPACE/artifacts/external/rust/cxx/gen/cmd/libcxxbridge_cmd^linux_glibc_x86_64_rlib_rlib-std $GITHUB_WORKSPACE/artifacts/external/rust/cxx/gen/cmd/libcxxbridge_cmd^linux_glibc_x86_64_rlib_rlib-std/addition_copy_files.output
 
 echo "building libcxxbridge_macro^linux_glibc_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libcxxbridge_macro,linux_glibc_x86_64
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libcxxbridge_macro,linux_glibc_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/rust/cxx/macro/libcxxbridge_macro^linux_glibc_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/external/rust/cxx/libcxxbridge_macro^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/rust/cxx/macro/libcxxbridge_macro^linux_glibc_x86_64
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/external/rust/cxx/libcxxbridge_macro^linux_glibc_x86_64.output $GITHUB_WORKSPACE/artifacts/external/rust/cxx/macro/libcxxbridge_macro^linux_glibc_x86_64 $GITHUB_WORKSPACE/artifacts/external/rust/cxx/macro/libcxxbridge_macro^linux_glibc_x86_64/addition_copy_files.output

@@ -29,7 +29,7 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/external/turbine/turbine^linux_glibc_com
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/tools/aapt2/aapt2^linux_glibc_x86_64/ .
 
 echo "building colorpicker^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja colorpicker,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja colorpicker,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/opt/colorpicker/colorpicker^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/frameworks/opt/colorpicker/colorpicker^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/opt/colorpicker/colorpicker^android_common
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_08/frameworks/opt/colorpicker/colorpicker^android_common.output $GITHUB_WORKSPACE/artifacts/frameworks/opt/colorpicker/colorpicker^android_common $GITHUB_WORKSPACE/artifacts/frameworks/opt/colorpicker/colorpicker^android_common/addition_copy_files.output

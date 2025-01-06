@@ -34,25 +34,25 @@ clone_depth_platform system/unwinding
 
 
 echo "building libhealthloop^android_recovery_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libhealthloop,android_recovery_x86_64_static
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libhealthloop,android_recovery_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/health/utils/libhealthloop/libhealthloop^android_recovery_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/hardware/interfaces/libhealthloop^android_recovery_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/health/utils/libhealthloop/libhealthloop^android_recovery_x86_64_static
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/hardware/interfaces/libhealthloop^android_recovery_x86_64_static.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/health/utils/libhealthloop/libhealthloop^android_recovery_x86_64_static $GITHUB_WORKSPACE/artifacts/hardware/interfaces/health/utils/libhealthloop/libhealthloop^android_recovery_x86_64_static/addition_copy_files.output
 
 echo "building libhealthloop^android_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libhealthloop,android_x86_64_static
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libhealthloop,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/health/utils/libhealthloop/libhealthloop^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/hardware/interfaces/libhealthloop^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/health/utils/libhealthloop/libhealthloop^android_x86_64_static
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/hardware/interfaces/libhealthloop^android_x86_64_static.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/health/utils/libhealthloop/libhealthloop^android_x86_64_static $GITHUB_WORKSPACE/artifacts/hardware/interfaces/health/utils/libhealthloop/libhealthloop^android_x86_64_static/addition_copy_files.output
 
 echo "building android.hardware.identity_credential.xml^android_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja android.hardware.identity_credential.xml,android_x86_64
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja android.hardware.identity_credential.xml,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/identity/aidl/default/android.hardware.identity_credential.xml^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/hardware/interfaces/android.hardware.identity_credential.xml^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/identity/aidl/default/android.hardware.identity_credential.xml^android_x86_64
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/hardware/interfaces/android.hardware.identity_credential.xml^android_x86_64.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/identity/aidl/default/android.hardware.identity_credential.xml^android_x86_64 $GITHUB_WORKSPACE/artifacts/hardware/interfaces/identity/aidl/default/android.hardware.identity_credential.xml^android_x86_64/addition_copy_files.output
 
 echo "building android.hardware.hardware_keystore.xml^android_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja android.hardware.hardware_keystore.xml,android_x86_64
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja android.hardware.hardware_keystore.xml,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/hardware/interfaces/security/keymint/aidl/default/android.hardware.hardware_keystore.xml^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/hardware/interfaces/android.hardware.hardware_keystore.xml^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/hardware/interfaces/security/keymint/aidl/default/android.hardware.hardware_keystore.xml^android_x86_64
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/hardware/interfaces/android.hardware.hardware_keystore.xml^android_x86_64.output $GITHUB_WORKSPACE/artifacts/hardware/interfaces/security/keymint/aidl/default/android.hardware.hardware_keystore.xml^android_x86_64 $GITHUB_WORKSPACE/artifacts/hardware/interfaces/security/keymint/aidl/default/android.hardware.hardware_keystore.xml^android_x86_64/addition_copy_files.output

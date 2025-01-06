@@ -309,121 +309,121 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/system/tools/aidl/aidl-cpp^linux_glibc_x
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/vold/libvold_binder^android_x86_64_static/ .
 
 echo "building dumpstate^android_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_11.ninja dumpstate,android_x86_64
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_11.ninja dumpstate,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/native/cmds/dumpstate/dumpstate^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_11/frameworks/native/dumpstate^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/frameworks/native/cmds/dumpstate/dumpstate^android_x86_64
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_11/frameworks/native/dumpstate^android_x86_64.output $GITHUB_WORKSPACE/artifacts/frameworks/native/cmds/dumpstate/dumpstate^android_x86_64 $GITHUB_WORKSPACE/artifacts/frameworks/native/cmds/dumpstate/dumpstate^android_x86_64/addition_copy_files.output
 
 echo "building otapreopt_chroot^android_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_11.ninja otapreopt_chroot,android_x86_64
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_11.ninja otapreopt_chroot,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/native/cmds/installd/otapreopt_chroot^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_11/frameworks/native/otapreopt_chroot^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/frameworks/native/cmds/installd/otapreopt_chroot^android_x86_64
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_11/frameworks/native/otapreopt_chroot^android_x86_64.output $GITHUB_WORKSPACE/artifacts/frameworks/native/cmds/installd/otapreopt_chroot^android_x86_64 $GITHUB_WORKSPACE/artifacts/frameworks/native/cmds/installd/otapreopt_chroot^android_x86_64/addition_copy_files.output
 
 echo "building libgui^android_x86_64_shared"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_11.ninja libgui,android_x86_64_shared
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_11.ninja libgui,android_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/gui/libgui^android_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_11/frameworks/native/libgui^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/gui/libgui^android_x86_64_shared
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_11/frameworks/native/libgui^android_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/gui/libgui^android_x86_64_shared $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/gui/libgui^android_x86_64_shared/addition_copy_files.output
 
 echo "building libgui^android_x86_x86_64_shared"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_11.ninja libgui,android_x86_x86_64_shared
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_11.ninja libgui,android_x86_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/gui/libgui^android_x86_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_11/frameworks/native/libgui^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/gui/libgui^android_x86_x86_64_shared
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_11/frameworks/native/libgui^android_x86_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/gui/libgui^android_x86_x86_64_shared $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/gui/libgui^android_x86_x86_64_shared/addition_copy_files.output
 
 echo "building libnativedisplay^android_x86_64_shared"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_11.ninja libnativedisplay,android_x86_64_shared
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_11.ninja libnativedisplay,android_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/nativedisplay/libnativedisplay^android_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_11/frameworks/native/libnativedisplay^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/nativedisplay/libnativedisplay^android_x86_64_shared
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_11/frameworks/native/libnativedisplay^android_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/nativedisplay/libnativedisplay^android_x86_64_shared $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/nativedisplay/libnativedisplay^android_x86_64_shared/addition_copy_files.output
 
 echo "building libnativedisplay^android_x86_x86_64_shared"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_11.ninja libnativedisplay,android_x86_x86_64_shared
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_11.ninja libnativedisplay,android_x86_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/nativedisplay/libnativedisplay^android_x86_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_11/frameworks/native/libnativedisplay^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/nativedisplay/libnativedisplay^android_x86_x86_64_shared
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_11/frameworks/native/libnativedisplay^android_x86_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/nativedisplay/libnativedisplay^android_x86_x86_64_shared $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/nativedisplay/libnativedisplay^android_x86_x86_64_shared/addition_copy_files.output
 
 echo "building librenderengine^android_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_11.ninja librenderengine,android_x86_64_static
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_11.ninja librenderengine,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/renderengine/librenderengine^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_11/frameworks/native/librenderengine^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/renderengine/librenderengine^android_x86_64_static
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_11/frameworks/native/librenderengine^android_x86_64_static.output $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/renderengine/librenderengine^android_x86_64_static $GITHUB_WORKSPACE/artifacts/frameworks/native/libs/renderengine/librenderengine^android_x86_64_static/addition_copy_files.output
 
 echo "building libdisplayservicehidl^android_x86_64_shared"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_11.ninja libdisplayservicehidl,android_x86_64_shared
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_11.ninja libdisplayservicehidl,android_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/native/services/displayservice/libdisplayservicehidl^android_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_11/frameworks/native/libdisplayservicehidl^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/native/services/displayservice/libdisplayservicehidl^android_x86_64_shared
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_11/frameworks/native/libdisplayservicehidl^android_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/frameworks/native/services/displayservice/libdisplayservicehidl^android_x86_64_shared $GITHUB_WORKSPACE/artifacts/frameworks/native/services/displayservice/libdisplayservicehidl^android_x86_64_shared/addition_copy_files.output
 
 echo "building libschedulerservicehidl^android_x86_64_shared"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_11.ninja libschedulerservicehidl,android_x86_64_shared
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_11.ninja libschedulerservicehidl,android_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/native/services/schedulerservice/libschedulerservicehidl^android_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_11/frameworks/native/libschedulerservicehidl^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/native/services/schedulerservice/libschedulerservicehidl^android_x86_64_shared
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_11/frameworks/native/libschedulerservicehidl^android_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/frameworks/native/services/schedulerservice/libschedulerservicehidl^android_x86_64_shared $GITHUB_WORKSPACE/artifacts/frameworks/native/services/schedulerservice/libschedulerservicehidl^android_x86_64_shared/addition_copy_files.output
 
 echo "building libschedulerservicehidl^android_x86_x86_64_shared"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_11.ninja libschedulerservicehidl,android_x86_x86_64_shared
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_11.ninja libschedulerservicehidl,android_x86_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/native/services/schedulerservice/libschedulerservicehidl^android_x86_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_11/frameworks/native/libschedulerservicehidl^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/native/services/schedulerservice/libschedulerservicehidl^android_x86_x86_64_shared
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_11/frameworks/native/libschedulerservicehidl^android_x86_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/frameworks/native/services/schedulerservice/libschedulerservicehidl^android_x86_x86_64_shared $GITHUB_WORKSPACE/artifacts/frameworks/native/services/schedulerservice/libschedulerservicehidl^android_x86_x86_64_shared/addition_copy_files.output
 
 echo "building libsensorservice^android_x86_64_shared"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_11.ninja libsensorservice,android_x86_64_shared
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_11.ninja libsensorservice,android_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/native/services/sensorservice/libsensorservice^android_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_11/frameworks/native/libsensorservice^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/native/services/sensorservice/libsensorservice^android_x86_64_shared
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_11/frameworks/native/libsensorservice^android_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/frameworks/native/services/sensorservice/libsensorservice^android_x86_64_shared $GITHUB_WORKSPACE/artifacts/frameworks/native/services/sensorservice/libsensorservice^android_x86_64_shared/addition_copy_files.output
 
 echo "building libsensorservice^android_x86_x86_64_shared"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_11.ninja libsensorservice,android_x86_x86_64_shared
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_11.ninja libsensorservice,android_x86_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/native/services/sensorservice/libsensorservice^android_x86_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_11/frameworks/native/libsensorservice^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/native/services/sensorservice/libsensorservice^android_x86_x86_64_shared
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_11/frameworks/native/libsensorservice^android_x86_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/frameworks/native/services/sensorservice/libsensorservice^android_x86_x86_64_shared $GITHUB_WORKSPACE/artifacts/frameworks/native/services/sensorservice/libsensorservice^android_x86_x86_64_shared/addition_copy_files.output
 
 echo "building sensorservice^android_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_11.ninja sensorservice,android_x86_64
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_11.ninja sensorservice,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/native/services/sensorservice/sensorservice^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_11/frameworks/native/sensorservice^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/frameworks/native/services/sensorservice/sensorservice^android_x86_64
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_11/frameworks/native/sensorservice^android_x86_64.output $GITHUB_WORKSPACE/artifacts/frameworks/native/services/sensorservice/sensorservice^android_x86_64 $GITHUB_WORKSPACE/artifacts/frameworks/native/services/sensorservice/sensorservice^android_x86_64/addition_copy_files.output
 
 echo "building libsensorservicehidl^android_x86_64_shared"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_11.ninja libsensorservicehidl,android_x86_64_shared
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_11.ninja libsensorservicehidl,android_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/native/services/sensorservice/hidl/libsensorservicehidl^android_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_11/frameworks/native/libsensorservicehidl^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/native/services/sensorservice/hidl/libsensorservicehidl^android_x86_64_shared
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_11/frameworks/native/libsensorservicehidl^android_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/frameworks/native/services/sensorservice/hidl/libsensorservicehidl^android_x86_64_shared $GITHUB_WORKSPACE/artifacts/frameworks/native/services/sensorservice/hidl/libsensorservicehidl^android_x86_64_shared/addition_copy_files.output
 
 echo "building libsensorservicehidl^android_x86_x86_64_shared"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_11.ninja libsensorservicehidl,android_x86_x86_64_shared
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_11.ninja libsensorservicehidl,android_x86_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/native/services/sensorservice/hidl/libsensorservicehidl^android_x86_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_11/frameworks/native/libsensorservicehidl^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/native/services/sensorservice/hidl/libsensorservicehidl^android_x86_x86_64_shared
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_11/frameworks/native/libsensorservicehidl^android_x86_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/frameworks/native/services/sensorservice/hidl/libsensorservicehidl^android_x86_x86_64_shared $GITHUB_WORKSPACE/artifacts/frameworks/native/services/sensorservice/hidl/libsensorservicehidl^android_x86_x86_64_shared/addition_copy_files.output
 
 echo "building surfaceflinger^android_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_11.ninja surfaceflinger,android_x86_64
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_11.ninja surfaceflinger,android_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/native/services/surfaceflinger/surfaceflinger^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_11/frameworks/native/surfaceflinger^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/frameworks/native/services/surfaceflinger/surfaceflinger^android_x86_64
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_11/frameworks/native/surfaceflinger^android_x86_64.output $GITHUB_WORKSPACE/artifacts/frameworks/native/services/surfaceflinger/surfaceflinger^android_x86_64 $GITHUB_WORKSPACE/artifacts/frameworks/native/services/surfaceflinger/surfaceflinger^android_x86_64/addition_copy_files.output
 
 echo "building libcompositionengine^android_x86_64_static_lto-thin"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_11.ninja libcompositionengine,android_x86_64_static_lto-thin
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_11.ninja libcompositionengine,android_x86_64_static_lto-thin
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/native/services/surfaceflinger/CompositionEngine/libcompositionengine^android_x86_64_static_lto-thin
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_11/frameworks/native/libcompositionengine^android_x86_64_static_lto-thin.output . $GITHUB_WORKSPACE/artifacts/frameworks/native/services/surfaceflinger/CompositionEngine/libcompositionengine^android_x86_64_static_lto-thin
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_11/frameworks/native/libcompositionengine^android_x86_64_static_lto-thin.output $GITHUB_WORKSPACE/artifacts/frameworks/native/services/surfaceflinger/CompositionEngine/libcompositionengine^android_x86_64_static_lto-thin $GITHUB_WORKSPACE/artifacts/frameworks/native/services/surfaceflinger/CompositionEngine/libcompositionengine^android_x86_64_static_lto-thin/addition_copy_files.output
 
 echo "building libframetimeline^android_x86_64_static_lto-thin"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_11.ninja libframetimeline,android_x86_64_static_lto-thin
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_11.ninja libframetimeline,android_x86_64_static_lto-thin
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/native/services/surfaceflinger/FrameTimeline/libframetimeline^android_x86_64_static_lto-thin
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_11/frameworks/native/libframetimeline^android_x86_64_static_lto-thin.output . $GITHUB_WORKSPACE/artifacts/frameworks/native/services/surfaceflinger/FrameTimeline/libframetimeline^android_x86_64_static_lto-thin
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_11/frameworks/native/libframetimeline^android_x86_64_static_lto-thin.output $GITHUB_WORKSPACE/artifacts/frameworks/native/services/surfaceflinger/FrameTimeline/libframetimeline^android_x86_64_static_lto-thin $GITHUB_WORKSPACE/artifacts/frameworks/native/services/surfaceflinger/FrameTimeline/libframetimeline^android_x86_64_static_lto-thin/addition_copy_files.output
 
 echo "building liblayers_proto^android_x86_64_shared"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_11.ninja liblayers_proto,android_x86_64_shared
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_11.ninja liblayers_proto,android_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/native/services/surfaceflinger/layerproto/liblayers_proto^android_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_11/frameworks/native/liblayers_proto^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/frameworks/native/services/surfaceflinger/layerproto/liblayers_proto^android_x86_64_shared
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_11/frameworks/native/liblayers_proto^android_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/frameworks/native/services/surfaceflinger/layerproto/liblayers_proto^android_x86_64_shared $GITHUB_WORKSPACE/artifacts/frameworks/native/services/surfaceflinger/layerproto/liblayers_proto^android_x86_64_shared/addition_copy_files.output
 
 echo "building liblayers_proto^android_x86_64_static"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_11.ninja liblayers_proto,android_x86_64_static
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_11.ninja liblayers_proto,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/native/services/surfaceflinger/layerproto/liblayers_proto^android_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_11/frameworks/native/liblayers_proto^android_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/frameworks/native/services/surfaceflinger/layerproto/liblayers_proto^android_x86_64_static
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_11/frameworks/native/liblayers_proto^android_x86_64_static.output $GITHUB_WORKSPACE/artifacts/frameworks/native/services/surfaceflinger/layerproto/liblayers_proto^android_x86_64_static $GITHUB_WORKSPACE/artifacts/frameworks/native/services/surfaceflinger/layerproto/liblayers_proto^android_x86_64_static/addition_copy_files.output

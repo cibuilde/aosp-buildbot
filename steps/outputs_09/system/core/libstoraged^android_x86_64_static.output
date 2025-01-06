@@ -1,1 +1,8 @@
+out/soong/.intermediates/system/core/storaged/libstoraged/android_x86_64_static/gen/aidl/android/os/BnStoraged.h
+out/soong/.intermediates/system/core/storaged/libstoraged/android_x86_64_static/gen/aidl/android/os/BpStoraged.h
+out/soong/.intermediates/system/core/storaged/libstoraged/android_x86_64_static/gen/aidl/android/os/IStoraged.h
+out/soong/.intermediates/system/core/storaged/libstoraged/android_x86_64_static/gen/aidl/android/os/storaged/BnStoragedPrivate.h
+out/soong/.intermediates/system/core/storaged/libstoraged/android_x86_64_static/gen/aidl/android/os/storaged/BpStoragedPrivate.h
+out/soong/.intermediates/system/core/storaged/libstoraged/android_x86_64_static/gen/aidl/android/os/storaged/IStoragedPrivate.h
+out/soong/.intermediates/system/core/storaged/libstoraged/android_x86_64_static/gen/proto/system/core/storaged/storaged.pb.h
 out/soong/.intermediates/system/core/storaged/libstoraged/android_x86_64_static/libstoraged.a

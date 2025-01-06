@@ -176,25 +176,25 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/tools/platform-compat/java/android/proce
 rsync -a -r $GITHUB_WORKSPACE/downloads/tools/platform-compat/java/android/processor/compat/unsupportedappusage/unsupportedappusage-annotation-processor^linux_glibc_common/ .
 
 echo "building media-provider-platform-compat-config^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_25.ninja media-provider-platform-compat-config,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_25.ninja media-provider-platform-compat-config,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/providers/MediaProvider/media-provider-platform-compat-config^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_25/packages/providers/MediaProvider/media-provider-platform-compat-config^android_common.output . $GITHUB_WORKSPACE/artifacts/packages/providers/MediaProvider/media-provider-platform-compat-config^android_common
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_25/packages/providers/MediaProvider/media-provider-platform-compat-config^android_common.output $GITHUB_WORKSPACE/artifacts/packages/providers/MediaProvider/media-provider-platform-compat-config^android_common $GITHUB_WORKSPACE/artifacts/packages/providers/MediaProvider/media-provider-platform-compat-config^android_common/addition_copy_files.output
 
 echo "building MediaProvider^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_25.ninja MediaProvider,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_25.ninja MediaProvider,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/providers/MediaProvider/MediaProvider^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_25/packages/providers/MediaProvider/MediaProvider^android_common.output . $GITHUB_WORKSPACE/artifacts/packages/providers/MediaProvider/MediaProvider^android_common
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_25/packages/providers/MediaProvider/MediaProvider^android_common.output $GITHUB_WORKSPACE/artifacts/packages/providers/MediaProvider/MediaProvider^android_common $GITHUB_WORKSPACE/artifacts/packages/providers/MediaProvider/MediaProvider^android_common/addition_copy_files.output
 
 echo "building MediaProvider^android_common_apex30"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_25.ninja MediaProvider,android_common_apex30
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_25.ninja MediaProvider,android_common_apex30
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/providers/MediaProvider/MediaProvider^android_common_apex30
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_25/packages/providers/MediaProvider/MediaProvider^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/packages/providers/MediaProvider/MediaProvider^android_common_apex30
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_25/packages/providers/MediaProvider/MediaProvider^android_common_apex30.output $GITHUB_WORKSPACE/artifacts/packages/providers/MediaProvider/MediaProvider^android_common_apex30 $GITHUB_WORKSPACE/artifacts/packages/providers/MediaProvider/MediaProvider^android_common_apex30/addition_copy_files.output
 
 echo "building com.android.mediaprovider^android_common_com.android.mediaprovider_image"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_25.ninja com.android.mediaprovider,android_common_com.android.mediaprovider_image
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_25.ninja com.android.mediaprovider,android_common_com.android.mediaprovider_image
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/providers/MediaProvider/apex/com.android.mediaprovider^android_common_com.android.mediaprovider_image
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_25/packages/providers/MediaProvider/com.android.mediaprovider^android_common_com.android.mediaprovider_image.output . $GITHUB_WORKSPACE/artifacts/packages/providers/MediaProvider/apex/com.android.mediaprovider^android_common_com.android.mediaprovider_image
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_25/packages/providers/MediaProvider/com.android.mediaprovider^android_common_com.android.mediaprovider_image.output $GITHUB_WORKSPACE/artifacts/packages/providers/MediaProvider/apex/com.android.mediaprovider^android_common_com.android.mediaprovider_image $GITHUB_WORKSPACE/artifacts/packages/providers/MediaProvider/apex/com.android.mediaprovider^android_common_com.android.mediaprovider_image/addition_copy_files.output

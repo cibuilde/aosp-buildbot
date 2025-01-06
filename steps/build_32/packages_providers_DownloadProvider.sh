@@ -60,13 +60,13 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/system/libhidl/transport/base/1.0/androi
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/libhidl/transport/manager/1.0/android.hidl.manager-V1.0-java^android_common/ .
 
 echo "building DownloadProvider^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_32.ninja DownloadProvider,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_32.ninja DownloadProvider,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/providers/DownloadProvider/DownloadProvider^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_32/packages/providers/DownloadProvider/DownloadProvider^android_common.output . $GITHUB_WORKSPACE/artifacts/packages/providers/DownloadProvider/DownloadProvider^android_common
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_32/packages/providers/DownloadProvider/DownloadProvider^android_common.output $GITHUB_WORKSPACE/artifacts/packages/providers/DownloadProvider/DownloadProvider^android_common $GITHUB_WORKSPACE/artifacts/packages/providers/DownloadProvider/DownloadProvider^android_common/addition_copy_files.output
 
 echo "building DownloadProviderUi^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_32.ninja DownloadProviderUi,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_32.ninja DownloadProviderUi,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/providers/DownloadProvider/ui/DownloadProviderUi^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_32/packages/providers/DownloadProvider/DownloadProviderUi^android_common.output . $GITHUB_WORKSPACE/artifacts/packages/providers/DownloadProvider/ui/DownloadProviderUi^android_common
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_32/packages/providers/DownloadProvider/DownloadProviderUi^android_common.output $GITHUB_WORKSPACE/artifacts/packages/providers/DownloadProvider/ui/DownloadProviderUi^android_common $GITHUB_WORKSPACE/artifacts/packages/providers/DownloadProvider/ui/DownloadProviderUi^android_common/addition_copy_files.output

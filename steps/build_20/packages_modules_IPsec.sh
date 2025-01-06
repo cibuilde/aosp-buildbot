@@ -61,43 +61,43 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/tools/platform-compat/java/android/compa
 rsync -a -r $GITHUB_WORKSPACE/downloads/tools/platform-compat/java/android/processor/compat/unsupportedappusage/unsupportedappusage-annotation-processor^linux_glibc_common/ .
 
 echo "building android.net.ipsec.ike.stubs.module_lib^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_20.ninja android.net.ipsec.ike.stubs.module_lib,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_20.ninja android.net.ipsec.ike.stubs.module_lib,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/IPsec/android.net.ipsec.ike.stubs.module_lib^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_20/packages/modules/IPsec/android.net.ipsec.ike.stubs.module_lib^android_common.output . $GITHUB_WORKSPACE/artifacts/packages/modules/IPsec/android.net.ipsec.ike.stubs.module_lib^android_common
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_20/packages/modules/IPsec/android.net.ipsec.ike.stubs.module_lib^android_common.output $GITHUB_WORKSPACE/artifacts/packages/modules/IPsec/android.net.ipsec.ike.stubs.module_lib^android_common $GITHUB_WORKSPACE/artifacts/packages/modules/IPsec/android.net.ipsec.ike.stubs.module_lib^android_common/addition_copy_files.output
 
 echo "building android.net.ipsec.ike.stubs.source.module_lib^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_20.ninja android.net.ipsec.ike.stubs.source.module_lib,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_20.ninja android.net.ipsec.ike.stubs.source.module_lib,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/IPsec/android.net.ipsec.ike.stubs.source.module_lib^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_20/packages/modules/IPsec/android.net.ipsec.ike.stubs.source.module_lib^android_common.output . $GITHUB_WORKSPACE/artifacts/packages/modules/IPsec/android.net.ipsec.ike.stubs.source.module_lib^android_common
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_20/packages/modules/IPsec/android.net.ipsec.ike.stubs.source.module_lib^android_common.output $GITHUB_WORKSPACE/artifacts/packages/modules/IPsec/android.net.ipsec.ike.stubs.source.module_lib^android_common $GITHUB_WORKSPACE/artifacts/packages/modules/IPsec/android.net.ipsec.ike.stubs.source.module_lib^android_common/addition_copy_files.output
 
 echo "building android.net.ipsec.ike.stubs.source.system^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_20.ninja android.net.ipsec.ike.stubs.source.system,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_20.ninja android.net.ipsec.ike.stubs.source.system,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/IPsec/android.net.ipsec.ike.stubs.source.system^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_20/packages/modules/IPsec/android.net.ipsec.ike.stubs.source.system^android_common.output . $GITHUB_WORKSPACE/artifacts/packages/modules/IPsec/android.net.ipsec.ike.stubs.source.system^android_common
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_20/packages/modules/IPsec/android.net.ipsec.ike.stubs.source.system^android_common.output $GITHUB_WORKSPACE/artifacts/packages/modules/IPsec/android.net.ipsec.ike.stubs.source.system^android_common $GITHUB_WORKSPACE/artifacts/packages/modules/IPsec/android.net.ipsec.ike.stubs.source.system^android_common/addition_copy_files.output
 
 echo "building android.net.ipsec.ike.stubs.source^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_20.ninja android.net.ipsec.ike.stubs.source,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_20.ninja android.net.ipsec.ike.stubs.source,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/IPsec/android.net.ipsec.ike.stubs.source^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_20/packages/modules/IPsec/android.net.ipsec.ike.stubs.source^android_common.output . $GITHUB_WORKSPACE/artifacts/packages/modules/IPsec/android.net.ipsec.ike.stubs.source^android_common
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_20/packages/modules/IPsec/android.net.ipsec.ike.stubs.source^android_common.output $GITHUB_WORKSPACE/artifacts/packages/modules/IPsec/android.net.ipsec.ike.stubs.source^android_common $GITHUB_WORKSPACE/artifacts/packages/modules/IPsec/android.net.ipsec.ike.stubs.source^android_common/addition_copy_files.output
 
 echo "building android.net.ipsec.ike.stubs.system^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_20.ninja android.net.ipsec.ike.stubs.system,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_20.ninja android.net.ipsec.ike.stubs.system,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/IPsec/android.net.ipsec.ike.stubs.system^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_20/packages/modules/IPsec/android.net.ipsec.ike.stubs.system^android_common.output . $GITHUB_WORKSPACE/artifacts/packages/modules/IPsec/android.net.ipsec.ike.stubs.system^android_common
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_20/packages/modules/IPsec/android.net.ipsec.ike.stubs.system^android_common.output $GITHUB_WORKSPACE/artifacts/packages/modules/IPsec/android.net.ipsec.ike.stubs.system^android_common $GITHUB_WORKSPACE/artifacts/packages/modules/IPsec/android.net.ipsec.ike.stubs.system^android_common/addition_copy_files.output
 
 echo "building android.net.ipsec.ike.stubs^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_20.ninja android.net.ipsec.ike.stubs,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_20.ninja android.net.ipsec.ike.stubs,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/IPsec/android.net.ipsec.ike.stubs^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_20/packages/modules/IPsec/android.net.ipsec.ike.stubs^android_common.output . $GITHUB_WORKSPACE/artifacts/packages/modules/IPsec/android.net.ipsec.ike.stubs^android_common
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_20/packages/modules/IPsec/android.net.ipsec.ike.stubs^android_common.output $GITHUB_WORKSPACE/artifacts/packages/modules/IPsec/android.net.ipsec.ike.stubs^android_common $GITHUB_WORKSPACE/artifacts/packages/modules/IPsec/android.net.ipsec.ike.stubs^android_common/addition_copy_files.output
 
 echo "building android.net.ipsec.ike^android_common_com.android.ipsec"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_20.ninja android.net.ipsec.ike,android_common_com.android.ipsec
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_20.ninja android.net.ipsec.ike,android_common_com.android.ipsec
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/IPsec/android.net.ipsec.ike^android_common_com.android.ipsec
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_20/packages/modules/IPsec/android.net.ipsec.ike^android_common_com.android.ipsec.output . $GITHUB_WORKSPACE/artifacts/packages/modules/IPsec/android.net.ipsec.ike^android_common_com.android.ipsec
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_20/packages/modules/IPsec/android.net.ipsec.ike^android_common_com.android.ipsec.output $GITHUB_WORKSPACE/artifacts/packages/modules/IPsec/android.net.ipsec.ike^android_common_com.android.ipsec $GITHUB_WORKSPACE/artifacts/packages/modules/IPsec/android.net.ipsec.ike^android_common_com.android.ipsec/addition_copy_files.output

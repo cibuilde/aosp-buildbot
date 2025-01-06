@@ -80,13 +80,13 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/system/apex/apexer/conv_apex_manifest^li
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/apex/tools/apex_compression_tool^linux_glibc_x86_64_PY3/ .
 
 echo "building ExtServices^android_common_apex30"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_25.ninja ExtServices,android_common_apex30
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_25.ninja ExtServices,android_common_apex30
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/ExtServices/ExtServices^android_common_apex30
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_25/packages/modules/ExtServices/ExtServices^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/packages/modules/ExtServices/ExtServices^android_common_apex30
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_25/packages/modules/ExtServices/ExtServices^android_common_apex30.output $GITHUB_WORKSPACE/artifacts/packages/modules/ExtServices/ExtServices^android_common_apex30 $GITHUB_WORKSPACE/artifacts/packages/modules/ExtServices/ExtServices^android_common_apex30/addition_copy_files.output
 
 echo "building com.android.extservices^android_common_com.android.extservices_image"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_25.ninja com.android.extservices,android_common_com.android.extservices_image
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_25.ninja com.android.extservices,android_common_com.android.extservices_image
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/ExtServices/apex/com.android.extservices^android_common_com.android.extservices_image
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_25/packages/modules/ExtServices/com.android.extservices^android_common_com.android.extservices_image.output . $GITHUB_WORKSPACE/artifacts/packages/modules/ExtServices/apex/com.android.extservices^android_common_com.android.extservices_image
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_25/packages/modules/ExtServices/com.android.extservices^android_common_com.android.extservices_image.output $GITHUB_WORKSPACE/artifacts/packages/modules/ExtServices/apex/com.android.extservices^android_common_com.android.extservices_image $GITHUB_WORKSPACE/artifacts/packages/modules/ExtServices/apex/com.android.extservices^android_common_com.android.extservices_image/addition_copy_files.output

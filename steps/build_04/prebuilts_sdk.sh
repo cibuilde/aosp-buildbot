@@ -36,25 +36,25 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/tools/common/m2/gson-prebuilt-
 rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/tools/common/m2/guava-listenablefuture-prebuilt-jar^android_common/ .
 
 echo "building androidx.room_room-migration^linux_glibc_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja androidx.room_room-migration,linux_glibc_common
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja androidx.room_room-migration,linux_glibc_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.room_room-migration^linux_glibc_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/prebuilts/sdk/androidx.room_room-migration^linux_glibc_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.room_room-migration^linux_glibc_common
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/prebuilts/sdk/androidx.room_room-migration^linux_glibc_common.output $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.room_room-migration^linux_glibc_common $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.room_room-migration^linux_glibc_common/addition_copy_files.output
 
 echo "building androidx.collection_collection-ktx^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja androidx.collection_collection-ktx,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja androidx.collection_collection-ktx,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.collection_collection-ktx^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/prebuilts/sdk/androidx.collection_collection-ktx^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.collection_collection-ktx^android_common
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/prebuilts/sdk/androidx.collection_collection-ktx^android_common.output $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.collection_collection-ktx^android_common $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.collection_collection-ktx^android_common/addition_copy_files.output
 
 echo "building androidx.collection_collection-ktx^android_common_apex30"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja androidx.collection_collection-ktx,android_common_apex30
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja androidx.collection_collection-ktx,android_common_apex30
 mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.collection_collection-ktx^android_common_apex30
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/prebuilts/sdk/androidx.collection_collection-ktx^android_common_apex30.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.collection_collection-ktx^android_common_apex30
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/prebuilts/sdk/androidx.collection_collection-ktx^android_common_apex30.output $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.collection_collection-ktx^android_common_apex30 $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.collection_collection-ktx^android_common_apex30/addition_copy_files.output
 
 echo "building androidx.concurrent_concurrent-futures^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja androidx.concurrent_concurrent-futures,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja androidx.concurrent_concurrent-futures,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.concurrent_concurrent-futures^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/prebuilts/sdk/androidx.concurrent_concurrent-futures^android_common.output . $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.concurrent_concurrent-futures^android_common
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/prebuilts/sdk/androidx.concurrent_concurrent-futures^android_common.output $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.concurrent_concurrent-futures^android_common $GITHUB_WORKSPACE/artifacts/prebuilts/sdk/current/androidx/androidx.concurrent_concurrent-futures^android_common/addition_copy_files.output

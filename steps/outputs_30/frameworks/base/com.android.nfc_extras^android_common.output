@@ -4,4 +4,5 @@ out/soong/.intermediates/frameworks/base/nfc-extras/com.android.nfc_extras/andro
 out/soong/.intermediates/frameworks/base/nfc-extras/com.android.nfc_extras/android_common/dexpreopt/oat/x86/javalib.vdex
 out/soong/.intermediates/frameworks/base/nfc-extras/com.android.nfc_extras/android_common/dexpreopt/oat/x86_64/javalib.odex
 out/soong/.intermediates/frameworks/base/nfc-extras/com.android.nfc_extras/android_common/dexpreopt/oat/x86_64/javalib.vdex
+out/soong/.intermediates/frameworks/base/nfc-extras/com.android.nfc_extras/android_common/javac/com.android.nfc_extras.jar
 out/soong/.intermediates/frameworks/base/nfc-extras/com.android.nfc_extras/android_common/turbine-combined/com.android.nfc_extras.jar

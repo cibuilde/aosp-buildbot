@@ -59,37 +59,37 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/external/icu/libandroidicu/libandroidicu
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcxx/libc++^linux_glibc_x86_64_shared/ .
 
 echo "building libxml2^android_vendor.31_x86_64_shared"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libxml2,android_vendor.31_x86_64_shared
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libxml2,android_vendor.31_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/libxml2/libxml2^android_vendor.31_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/libxml2/libxml2^android_vendor.31_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/external/libxml2/libxml2^android_vendor.31_x86_64_shared
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/external/libxml2/libxml2^android_vendor.31_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/external/libxml2/libxml2^android_vendor.31_x86_64_shared $GITHUB_WORKSPACE/artifacts/external/libxml2/libxml2^android_vendor.31_x86_64_shared/addition_copy_files.output
 
 echo "building libxml2^android_vendor.31_x86_x86_64_shared"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libxml2,android_vendor.31_x86_x86_64_shared
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libxml2,android_vendor.31_x86_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/libxml2/libxml2^android_vendor.31_x86_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/libxml2/libxml2^android_vendor.31_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/external/libxml2/libxml2^android_vendor.31_x86_x86_64_shared
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/external/libxml2/libxml2^android_vendor.31_x86_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/external/libxml2/libxml2^android_vendor.31_x86_x86_64_shared $GITHUB_WORKSPACE/artifacts/external/libxml2/libxml2^android_vendor.31_x86_x86_64_shared/addition_copy_files.output
 
 echo "building libxml2^android_x86_64_shared"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libxml2,android_x86_64_shared
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libxml2,android_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/libxml2/libxml2^android_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/libxml2/libxml2^android_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/external/libxml2/libxml2^android_x86_64_shared
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/external/libxml2/libxml2^android_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/external/libxml2/libxml2^android_x86_64_shared $GITHUB_WORKSPACE/artifacts/external/libxml2/libxml2^android_x86_64_shared/addition_copy_files.output
 
 echo "building libxml2^android_x86_x86_64_shared"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libxml2,android_x86_x86_64_shared
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libxml2,android_x86_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/libxml2/libxml2^android_x86_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/libxml2/libxml2^android_x86_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/external/libxml2/libxml2^android_x86_x86_64_shared
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/external/libxml2/libxml2^android_x86_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/external/libxml2/libxml2^android_x86_x86_64_shared $GITHUB_WORKSPACE/artifacts/external/libxml2/libxml2^android_x86_x86_64_shared/addition_copy_files.output
 
 echo "building libxml2^linux_glibc_x86_64_shared"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libxml2,linux_glibc_x86_64_shared
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libxml2,linux_glibc_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/libxml2/libxml2^linux_glibc_x86_64_shared
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/libxml2/libxml2^linux_glibc_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/external/libxml2/libxml2^linux_glibc_x86_64_shared
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/external/libxml2/libxml2^linux_glibc_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/external/libxml2/libxml2^linux_glibc_x86_64_shared $GITHUB_WORKSPACE/artifacts/external/libxml2/libxml2^linux_glibc_x86_64_shared/addition_copy_files.output
 
 echo "building xmllint^linux_glibc_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja xmllint,linux_glibc_x86_64
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja xmllint,linux_glibc_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/libxml2/xmllint^linux_glibc_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/libxml2/xmllint^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/libxml2/xmllint^linux_glibc_x86_64
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/external/libxml2/xmllint^linux_glibc_x86_64.output $GITHUB_WORKSPACE/artifacts/external/libxml2/xmllint^linux_glibc_x86_64 $GITHUB_WORKSPACE/artifacts/external/libxml2/xmllint^linux_glibc_x86_64/addition_copy_files.output

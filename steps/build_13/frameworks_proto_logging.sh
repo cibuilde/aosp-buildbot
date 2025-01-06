@@ -34,7 +34,7 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/libcore/core-lambda-stubs^android_common
 rsync -a -r $GITHUB_WORKSPACE/downloads/libcore/mmodules/core_platform_api/stable.core.platform.api.stubs^android_common/ .
 
 echo "building devicepolicyprotosnano^android_common"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_13.ninja devicepolicyprotosnano,android_common
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_13.ninja devicepolicyprotosnano,android_common
 mkdir -p $GITHUB_WORKSPACE/artifacts/frameworks/proto_logging/stats/enums/stats/devicepolicy/devicepolicyprotosnano^android_common
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_13/frameworks/proto_logging/devicepolicyprotosnano^android_common.output . $GITHUB_WORKSPACE/artifacts/frameworks/proto_logging/stats/enums/stats/devicepolicy/devicepolicyprotosnano^android_common
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_13/frameworks/proto_logging/devicepolicyprotosnano^android_common.output $GITHUB_WORKSPACE/artifacts/frameworks/proto_logging/stats/enums/stats/devicepolicy/devicepolicyprotosnano^android_common $GITHUB_WORKSPACE/artifacts/frameworks/proto_logging/stats/enums/stats/devicepolicy/devicepolicyprotosnano^android_common/addition_copy_files.output

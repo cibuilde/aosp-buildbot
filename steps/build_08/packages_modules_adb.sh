@@ -80,7 +80,7 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/system/libbase/libbase^android_recovery_
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^android_recovery_x86_64_shared/ .
 
 echo "building adbd^android_recovery_x86_64"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja adbd,android_recovery_x86_64
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_08.ninja adbd,android_recovery_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/packages/modules/adb/adbd^android_recovery_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_08/packages/modules/adb/adbd^android_recovery_x86_64.output . $GITHUB_WORKSPACE/artifacts/packages/modules/adb/adbd^android_recovery_x86_64
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_08/packages/modules/adb/adbd^android_recovery_x86_64.output $GITHUB_WORKSPACE/artifacts/packages/modules/adb/adbd^android_recovery_x86_64 $GITHUB_WORKSPACE/artifacts/packages/modules/adb/adbd^android_recovery_x86_64/addition_copy_files.output

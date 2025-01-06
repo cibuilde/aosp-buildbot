@@ -1,4 +1,5 @@
 out/soong/.intermediates/frameworks/base/services/services/android_common/aligned/services.jar
+out/soong/.intermediates/frameworks/base/services/services/android_common/combined/services.jar
 out/soong/.intermediates/frameworks/base/services/services/android_common/dexpreopt/dexpreopt.config
 out/soong/.intermediates/frameworks/base/services/services/android_common/dexpreopt/oat/x86_64/javalib.art
 out/soong/.intermediates/frameworks/base/services/services/android_common/dexpreopt/oat/x86_64/javalib.odex

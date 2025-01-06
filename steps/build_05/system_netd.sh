@@ -40,13 +40,13 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/system/netd/client/libnetd_client^androi
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/netd/client/libnetd_client^android_x86_x86_64_static_cfi/ .
 
 echo "building libnetd_client^android_x86_64_shared_cfi"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libnetd_client,android_x86_64_shared_cfi
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libnetd_client,android_x86_64_shared_cfi
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/netd/client/libnetd_client^android_x86_64_shared_cfi
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/system/netd/libnetd_client^android_x86_64_shared_cfi.output . $GITHUB_WORKSPACE/artifacts/system/netd/client/libnetd_client^android_x86_64_shared_cfi
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/system/netd/libnetd_client^android_x86_64_shared_cfi.output $GITHUB_WORKSPACE/artifacts/system/netd/client/libnetd_client^android_x86_64_shared_cfi $GITHUB_WORKSPACE/artifacts/system/netd/client/libnetd_client^android_x86_64_shared_cfi/addition_copy_files.output
 
 echo "building libnetd_client^android_x86_x86_64_shared_cfi"
-prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libnetd_client,android_x86_x86_64_shared_cfi
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libnetd_client,android_x86_x86_64_shared_cfi
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/netd/client/libnetd_client^android_x86_x86_64_shared_cfi
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_05/system/netd/libnetd_client^android_x86_x86_64_shared_cfi.output . $GITHUB_WORKSPACE/artifacts/system/netd/client/libnetd_client^android_x86_x86_64_shared_cfi
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_05/system/netd/libnetd_client^android_x86_x86_64_shared_cfi.output $GITHUB_WORKSPACE/artifacts/system/netd/client/libnetd_client^android_x86_x86_64_shared_cfi $GITHUB_WORKSPACE/artifacts/system/netd/client/libnetd_client^android_x86_x86_64_shared_cfi/addition_copy_files.output
