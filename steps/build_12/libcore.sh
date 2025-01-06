@@ -29,15 +29,10 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/external/conscrypt/conscrypt.module.publ
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/icu/android_icu4j/i18n.module.public.api.stubs^android_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/icu/android_icu4j/legacy.i18n.module.platform.api.stubs^android_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/icu/android_icu4j/stable.i18n.module.platform.api.stubs^android_common/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/libcore/core.current.stubs^android_common/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/libcore/core-current-stubs-for-system-modules^android_common/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/libcore/core.module_lib.stubs^android_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/libcore/core-lambda-stubs-for-system-modules^android_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/libcore/core-generated-annotation-stubs^android_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/libcore/art.module.public.api.stubs.module_lib^android_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/libcore/art.module.public.api.stubs^android_common/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/libcore/mmodules/core_platform_api/legacy.core.platform.api.stubs^android_common/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/libcore/mmodules/core_platform_api/stable.core.platform.api.stubs^android_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/r8/d8^linux_glibc_x86_64/ .
 
 echo "building core.current.stubs^android_common"

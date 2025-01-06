@@ -60,10 +60,6 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/libc_nomalloc^android_x86_x8
 rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/libc_nomalloc^android_x86_x86_64_static_apex10000/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/libc^android_x86_64_shared_apex10000/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/libc^android_x86_x86_64_shared_apex10000/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/crtbrand^android_x86_64_sdk_21/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/crtbrand^android_x86_64_sdk_29/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/crtbrand^android_x86_64_sdk_29_apex30/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/crtbrand^android_x86_64_sdk_30_apex30/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/crtbegin_so^android_x86_64_apex10000/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/crtbegin_so^android_x86_x86_64_apex10000/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/crtend_so^android_x86_64_apex10000/ .

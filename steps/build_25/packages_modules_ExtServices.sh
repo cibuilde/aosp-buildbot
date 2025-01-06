@@ -60,7 +60,6 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/libcore/core-lambda-stubs^android_common
 rsync -a -r $GITHUB_WORKSPACE/downloads/libcore/mmodules/core_platform_api/legacy.core.platform.api.stubs^android_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/libnativehelper/libnativehelper_compat_libc++^android_x86_64_sdk_shared_apex30/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/ExtServices/ExtServices-core^android_common_apex30/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/ExtServices/ExtServices^android_common_apex30/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/ExtServices/jni/libextservices_jni^android_x86_64_sdk_shared_apex30/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/manifest-merger/manifest-merger^linux_glibc_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/r8/r8-compat-proguard^linux_glibc_common/ .

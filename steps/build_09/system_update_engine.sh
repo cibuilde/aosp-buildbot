@@ -42,7 +42,6 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcxxabi/libc++demangle^androi
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/native/libs/binder/libbinder^android_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/core/libutils/libutils^android_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/update_engine/stable/libupdate_engine_stable-V1-cpp-source^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/system/update_engine/stable/libupdate_engine_stable-V1-cpp^android_x86_64_static/ .
 
 echo "building libupdate_engine_stable-V1-cpp^android_x86_64_shared"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja libupdate_engine_stable-V1-cpp,android_x86_64_shared

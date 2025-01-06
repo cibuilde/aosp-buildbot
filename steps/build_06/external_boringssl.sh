@@ -40,8 +40,6 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libm/libm^android_vendor.31_x86_x
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/boringssl/bcm_object^android_vendor.31_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/boringssl/bcm_object^android_vendor.31_x86_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/boringssl/bssl_inject_hash^linux_glibc_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/boringssl/libcrypto^android_vendor.31_x86_64_shared/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/boringssl/libcrypto^android_vendor.31_x86_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/boringssl/libssl^android_vendor.31_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/boringssl/libssl^android_vendor.31_x86_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcxx/libc++^android_vendor.31_x86_64_shared/ .

@@ -32,7 +32,6 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/scripts/manifest_fixer^linux
 rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/zip/cmd/soong_zip^linux_glibc_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/lottie/lottie^android_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/setupcompat/setupcompat^android_common/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/setupdesign/setupdesign^android_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/setupdesign/setupdesign-strings^android_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/turbine/turbine^linux_glibc_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/android_stubs_current^android_common/ .

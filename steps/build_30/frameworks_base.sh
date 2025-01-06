@@ -56,7 +56,6 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/external/protobuf/libprotobuf-java-lite^
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/turbine/turbine^linux_glibc_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/framework^android_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/ext^android_common/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/boot/platform-bootclasspath^android_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/cmds/uiautomator/library/uiautomator.core^android_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/test-base/android.test.base.stubs.system^android_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/test-mock/android.test.mock.stubs.system^android_common/ .

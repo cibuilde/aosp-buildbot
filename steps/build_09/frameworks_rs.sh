@@ -73,10 +73,6 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/native/opengl/libs/libGLESv2^
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/native/opengl/libs/libGLESv2^android_vendor.31_x86_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/rs/rs_generated_headers^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/rs/rs_generated_sources^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/rs/libRS_internal^android_vendor.31_x86_64_shared/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/rs/libRS_internal^android_vendor.31_x86_x86_64_shared/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/rs/cpu_ref/libRSCpuRef^android_vendor.31_x86_64_shared/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/rs/cpu_ref/libRSCpuRef^android_vendor.31_x86_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/core/libutils/libutils^android_vendor.31_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/core/libutils/libutils^android_vendor.31_x86_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/core/libutils/libutilscallstack^android_vendor.31_x86_64_shared/ .

@@ -64,7 +64,6 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/system/core/fs_mgr/liblp/liblp^android_x
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/core/libcutils/libcutils^android_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/core/libutils/libutils^android_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/extras/libjsonpb/parse/libjsonpbparse^android_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/system/extras/partition_tools/liblpdump^android_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/extras/partition_tools/aidl/liblpdump_interface-cpp-source^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/extras/partition_tools/aidl/liblpdump_interface-cpp^android_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/libbase/libbase^android_x86_64_shared/ .

@@ -70,7 +70,6 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^android_ven
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^android_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^android_x86_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/memory/libmeminfo/libmeminfo^android_vendor.31_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/system/memory/libmeminfo/libmeminfo^android_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/memory/libmeminfo/libmeminfo^android_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/memory/libmeminfo/libmeminfo^android_x86_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/memory/libmeminfo/libdmabufinfo/libdmabufinfo^android_vendor.31_x86_64_static/ .

@@ -28,7 +28,6 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/external/kotlinc/kotlin-stdlib^android_c
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/kotlinc/kotlin-stdlib-jdk7^android_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/kotlinc/kotlin-stdlib-jdk8^android_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/kotlinx.atomicfu/kotlinx_atomicfu^android_common/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/kotlinx.coroutines/kotlinx_coroutines^android_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/sdk/current/androidx/androidx.annotation_annotation^android_common/ .
 
 echo "building kotlinx_coroutines^android_common"

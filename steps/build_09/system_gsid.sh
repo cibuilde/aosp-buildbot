@@ -47,10 +47,7 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/native/libs/binder/libbinder^
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/core/libcutils/libcutils^android_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/core/libutils/libutils^android_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/gsid/gsi_aidl_interface-cpp-source^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/system/gsid/gsi_aidl_interface-cpp^android_x86_64_shared/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/system/gsid/gsi_aidl_interface-cpp^android_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/gsid/libgsi^android_x86_64_shared/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/system/gsid/libgsid^android_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/libbase/libbase^android_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^android_x86_64_shared/ .
 

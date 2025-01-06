@@ -30,7 +30,6 @@ clone_depth_platform system/logging
 clone_depth_platform system/media
 
 rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/cmd/sbox/sbox^linux_glibc_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/libffi/ffi_header^/ .
 
 echo "building ffi_header^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja ffi_header,

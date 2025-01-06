@@ -31,7 +31,6 @@ clone_depth_platform system/logging
 clone_depth_platform system/media
 clone_depth_platform system/unwinding
 
-rsync -a -r $GITHUB_WORKSPACE/downloads/system/media/audio_utils/libaudioutils_fixedfft^android_x86_64_static_cfi_apex29/ .
 
 echo "building libsndfile^android_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libsndfile,android_x86_64_static

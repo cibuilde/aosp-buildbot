@@ -51,20 +51,9 @@ clone_depth_platform system/media
 clone_depth_platform system/unwinding
 
 rsync -a -r $GITHUB_WORKSPACE/downloads/singletons/api_levels^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/art/compiler/art_compiler_operator_srcs^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/art/compiler/libartd-compiler^linux_glibc_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/art/dex2oat/libartd-dex2oat^linux_glibc_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/art/dex2oat/libdex2oatd_static^linux_glibc_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/art/dex2oat/art_dex2oat_operator_srcs^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/art/dexlayout/libartd-dexlayout^linux_glibc_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/art/disassembler/libartd-disassembler^linux_glibc_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/art/libartbase/art_libartbase_operator_srcs^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/art/libartbase/libartbase^linux_glibc_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/art/libartbase/libartbased^linux_glibc_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/art/libartpalette/libartpalette^linux_glibc_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/art/libdexfile/dexfile_operator_srcs^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/art/libdexfile/libdexfile^linux_glibc_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/art/libdexfile/libdexfiled^linux_glibc_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/art/libdexfile/libdexfile_support_static^linux_glibc_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/art/libelffile/libelffiled^linux_glibc_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/art/libnativebridge/libnativebridge^linux_glibc_x86_64_static/ .
@@ -72,19 +61,10 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/art/libnativeloader/libnativeloader^linu
 rsync -a -r $GITHUB_WORKSPACE/downloads/art/libprofile/libprofile^linux_glibc_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/art/libprofile/libprofiled^linux_glibc_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/art/odrefresh/libodrstatslog^linux_glibc_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/art/profman/libprofman_static^linux_glibc_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/art/runtime/art_operator_srcs^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/art/runtime/libartd^linux_glibc_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/art/runtime/libart_mterp.x86_64^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/art/runtime/libart_mterp.x86_64ng^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/art/sigchainlib/libsigchain_fake^linux_glibc_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/art/tools/generate_operator_out^linux_glibc_x86_64_PY2/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/art/tools/cpp-define-generator/asm_defines.s^android_x86_64_apex31/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/art/tools/cpp-define-generator/asm_defines.s^android_x86_x86_64_apex31/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/art/tools/cpp-define-generator/asm_defines.s^linux_glibc_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/art/tools/cpp-define-generator/cpp-define-generator-asm-support^android_x86_64_apex31/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/art/tools/cpp-define-generator/cpp-define-generator-asm-support^android_x86_x86_64_apex31/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/art/tools/cpp-define-generator/cpp-define-generator-asm-support^linux_glibc_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/cc/ndkstubgen/ndkstubgen^linux_glibc_x86_64_PY3/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/cmd/merge_zips/merge_zips^linux_glibc_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/cmd/sbox/sbox^linux_glibc_x86_64/ .

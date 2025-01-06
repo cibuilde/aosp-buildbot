@@ -44,8 +44,6 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcxx/libc++^android_x86_64_sh
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcxx/libc++^android_x86_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcxxabi/libc++demangle^android_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcxxabi/libc++demangle^android_x86_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/libldac/libldacBT_enc^android_x86_64_shared/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/libldac/libldacBT_enc^android_x86_x86_64_shared/ .
 
 echo "building libldacBT_enc^android_x86_64_shared"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_05.ninja libldacBT_enc,android_x86_64_shared

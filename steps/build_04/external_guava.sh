@@ -26,9 +26,7 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/cmd/merge_zips/merge_zips^li
 rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/cmd/zipsync/zipsync^linux_glibc_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/zip/cmd/soong_zip^linux_glibc_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/error_prone/error_prone_annotations^linux_glibc_common/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/guava/guava-android-host^linux_glibc_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/guava/guava-android-annotation-stubs^linux_glibc_common/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/guava/guava-both^linux_glibc_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/jsr305/jsr305^linux_glibc_common/ .
 
 echo "building guava-android-host^linux_glibc_common"

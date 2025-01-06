@@ -55,12 +55,7 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/external/protobuf/libprotobuf-java-nano^
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/protobuf/protoc-gen-javanano^linux_glibc_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/turbine/turbine^linux_glibc_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/test-api-stubs-docs-non-updatable^android_common/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/android-non-updatable.stubs^android_common/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/android-non-updatable.stubs.system^android_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/android-non-updatable.stubs.module_lib^android_common/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/android-non-updatable.stubs.test^android_common/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/android_stubs_current^android_common/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/android_system_stubs_current^android_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/api-stubs-docs-non-updatable^android_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/system-api-stubs-docs-non-updatable^android_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/apex/appsearch/framework/framework-appsearch.stubs.module_lib^android_common/ .
@@ -84,14 +79,8 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/libs/hwui/framework-grap
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/libs/hwui/framework-graphics.stubs.system^android_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/libs/hwui/framework-graphics.stubs^android_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/media/audio_common-aidl-java-source^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/media/audio_common-aidl-java^android_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/media/media_permission-aidl-java-source^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/media/media_permission-aidl-java^android_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/media/soundtrigger_middleware-aidl-java-source^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/packages/SettingsLib/SettingsTheme/SettingsLibSettingsTheme^android_common/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/packages/SettingsLib/SettingsTheme/SettingsLibSettingsTheme^android_common_apex30/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/packages/SettingsLib/Utils/SettingsLibUtils^android_common/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/packages/SettingsLib/Utils/SettingsLibUtils^android_common_apex30/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/tools/aapt2/aapt2^linux_glibc_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/libcore/core-current-stubs-system-modules^android_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/libcore/core-lambda-stubs^android_common/ .

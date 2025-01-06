@@ -34,10 +34,8 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/external/auto/common/auto_common^linux_g
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/auto/factory/auto_factory_annotations^linux_glibc_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/auto/service/auto_service_annotations^linux_glibc_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/auto/service/auto_service_plugin^linux_glibc_common/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/auto/value/libauto_value_plugin^linux_glibc_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/auto/value/auto_value_extension^linux_glibc_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/auto/value/auto_value_annotations^linux_glibc_common/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/auto/value/auto_value_plugin^linux_glibc_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/error_prone/error_prone_annotations^linux_glibc_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/escapevelocity/escapevelocity^linux_glibc_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/google-java-format/google_java_format^linux_glibc_common/ .

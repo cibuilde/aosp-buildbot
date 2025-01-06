@@ -90,7 +90,6 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/packages/apps/Car/libs/car-ui-lib/car-ro
 rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/Permission/com.android.permission-bootclasspath-fragment^android_common_apex30/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/Permission/com.android.permission-systemserverclasspath-fragment^android_common_apex30/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/Permission/PermissionController/permissioncontroller-statsd^android_common_apex30/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/Permission/PermissionController/PermissionController^android_common_apex30/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/Permission/service/service-permission^android_common_apex30/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/common/tools/current_sdkinfo^android_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/packages/services/Car/car-lib/android.car-stubs^android_common/ .

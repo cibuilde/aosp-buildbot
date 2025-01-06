@@ -36,7 +36,6 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/external/python/six/py-six^linux_glibc_x
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/sqlite/dist/libsqlite^linux_glibc_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/common/proto/classpaths_proto_python^linux_glibc_x86_64_PY3/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/common/tools/gen_sdkinfo^linux_glibc_x86_64_PY3/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/common/tools/cur_sdkinfo_src^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/build-tools/prebuilt_py3-launcher-autorun^linux_glibc_x86_64/ .
 
 echo "building conv_classpaths_proto^linux_glibc_x86_64_PY3"

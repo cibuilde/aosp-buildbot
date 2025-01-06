@@ -93,7 +93,6 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/libcore/mmodules/core_platform_api/legac
 rsync -a -r $GITHUB_WORKSPACE/downloads/packages/apps/Settings/contextualcards^android_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/packages/apps/Settings/settings-logtags^android_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/packages/apps/Settings/statslog-settings^android_common/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/packages/apps/Settings/Settings-core^android_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/packages/apps/Settings/protos/settings-contextual-card-protos-lite^android_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/packages/apps/Settings/protos/settings-log-bridge-protos-lite^android_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/sdk/current/androidx-legacy/androidx.legacy_legacy-support-core-ui^android_common/ .

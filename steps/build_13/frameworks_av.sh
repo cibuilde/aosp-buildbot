@@ -134,7 +134,6 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/av/media/libmediahelper/libme
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/av/media/libmediahelper/libmedia_helper^android_x86_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/av/media/libmediametrics/libmediametrics^android_x86_64_shared_cfi/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/av/media/libmediametrics/libmediametrics^android_x86_x86_64_shared_cfi/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/av/media/libmediaplayerservice/libmediaplayerservice^android_x86_x86_64_shared_cfi/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/av/media/libmediaplayerservice/libmediaplayerservice^android_x86_x86_64_static_cfi/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/av/media/libmediaplayerservice/datasource/libplayerservice_datasource^android_x86_x86_64_static_cfi/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/av/media/libmediaplayerservice/nuplayer/libstagefright_nuplayer^android_x86_x86_64_static_cfi/ .
@@ -143,9 +142,7 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/av/media/libstagefright/libst
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/av/media/libstagefright/libstagefright_codecbase^android_x86_x86_64_shared_cfi/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/av/media/libstagefright/libstagefright_framecapture_utils^android_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/av/media/libstagefright/libstagefright_framecapture_utils^android_x86_x86_64_shared/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/av/media/libstagefright/libstagefright^android_x86_64_shared_cfi/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/av/media/libstagefright/libstagefright^android_x86_64_static_cfi/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/av/media/libstagefright/libstagefright^android_x86_x86_64_shared_cfi/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/av/media/libstagefright/libstagefright^android_x86_x86_64_static_cfi/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/av/media/libstagefright/libstagefright_esds^android_x86_64_static_cfi/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/av/media/libstagefright/libstagefright_esds^android_x86_x86_64_static_cfi/ .
@@ -156,7 +153,6 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/av/media/libstagefright/filte
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/av/media/libstagefright/filters/libstagefright_mediafilter^android_x86_x86_64_static_cfi/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/av/media/libstagefright/foundation/libstagefright_foundation^android_x86_64_shared_cfi/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/av/media/libstagefright/foundation/libstagefright_foundation^android_x86_x86_64_shared_cfi/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/av/media/libstagefright/httplive/libstagefright_httplive^android_x86_x86_64_shared_cfi/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/av/media/libstagefright/httplive/libstagefright_httplive^android_x86_x86_64_static_cfi/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/av/media/libstagefright/id3/libstagefright_id3^android_x86_64_static_cfi/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/av/media/libstagefright/id3/libstagefright_id3^android_x86_x86_64_static_cfi/ .
@@ -173,12 +169,8 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/av/media/ndk/libmediandk_util
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/av/media/ndk/libmediandk_utils^android_x86_x86_64_shared_cfi/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/av/media/ndk/libmediandk_format^android_x86_64_static_cfi/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/av/media/ndk/libmediandk_format^android_x86_x86_64_static_cfi/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/av/media/ndk/libmediandk^android_x86_64_shared/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/av/media/ndk/libmediandk^android_x86_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/av/media/utils/libmediautils^android_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/av/media/utils/libmediautils^android_x86_x86_64_shared/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/av/services/camera/libcameraservice/libcameraservice^android_x86_64_shared/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/av/services/mediaextractor/libmediaextractorservice^android_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/av/services/mediaresourcemanager/resourcemanager_aidl_interface-ndk_platform-source^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/av/services/mediaresourcemanager/libresourcemanagerservice^android_x86_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/av/services/minijail/libavservices_minijail^android_x86_64_shared/ .

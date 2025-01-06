@@ -31,7 +31,6 @@ clone_depth_platform system/sepolicy
 rsync -a -r $GITHUB_WORKSPACE/downloads/art/adbconnection/libadbconnection^android_x86_64_shared_apex31/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/art/adbconnection/libadbconnection^android_x86_x86_64_shared_apex31/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/art/build/apex/art-linker-config^android_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/art/build/boot/art-bootclasspath-fragment^android_common_apex31/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/art/compiler/libart-compiler^android_x86_64_shared_apex31/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/art/compiler/libart-compiler^android_x86_x86_64_shared_apex31/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/art/dalvikvm/dalvikvm^android_x86_64_apex31/ .

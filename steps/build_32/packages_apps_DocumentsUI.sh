@@ -62,7 +62,6 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/libcore/core-current-stubs-system-module
 rsync -a -r $GITHUB_WORKSPACE/downloads/libcore/core-lambda-stubs^android_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/libcore/mmodules/core_platform_api/legacy.core.platform.api.stubs^android_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/packages/apps/DocumentsUI/statslog-docsui-java-gen^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/packages/apps/DocumentsUI/DocumentsUI^android_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/manifest-merger/manifest-merger^linux_glibc_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/r8/r8-compat-proguard^linux_glibc_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/sdk/current/androidx-legacy/androidx.legacy_legacy-support-core-ui^android_common/ .

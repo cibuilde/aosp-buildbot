@@ -78,10 +78,7 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/native/libs/gralloc/types/lib
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/native/libs/ui/libui^android_vendor.31_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/native/libs/ui/libui^android_vendor.31_x86_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/google/camera/common/apex_update_listener/libapex_update_listener^android_vendor.31_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/google/camera/common/hal/google_camera_hal/libgooglecamerahal^android_vendor.31_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/google/camera/common/hal/hidl_service/hidl_camera_build_version^android_vendor.31_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/google/camera/common/hal/utils/libgooglecamerahalutils^android_vendor.31_x86_64_shared/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/google/camera/common/hal/utils/libgooglecamerahalutils^android_vendor.31_x86_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/google/camera/common/profiler/lib_profiler_proto^android_vendor.31_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/google/camera/common/profiler/lib_profiler_proto^android_vendor.31_x86_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/google/camera/common/profiler/lib_profiler^android_vendor.31_x86_64_shared/ .

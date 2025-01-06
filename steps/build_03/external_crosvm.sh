@@ -21,27 +21,6 @@ clone_depth_platform libcore
 clone_project platform/prebuilts/rust prebuilts/rust android12-gsi "/bootstrap" "/linux-x86/1.51.0"
 
 rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/cmd/sbox/sbox^linux_glibc_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/crosvm/seccomp/wl_device.policy_inline_x86_64^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/crosvm/seccomp/net_device.policy_inline_x86_64^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/crosvm/seccomp/9p_device.policy_inline_x86_64^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/crosvm/seccomp/cras_audio_device.policy_inline_x86_64^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/crosvm/seccomp/vfio_device.policy_inline_x86_64^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/crosvm/seccomp/vhost_vsock_device.policy_inline_x86_64^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/crosvm/seccomp/block_device.policy_inline_x86_64^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/crosvm/seccomp/vhost_net_device.policy_inline_x86_64^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/crosvm/seccomp/vios_audio_device.policy_inline_x86_64^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/crosvm/seccomp/fs_device.policy_inline_x86_64^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/crosvm/seccomp/rng_device.policy_inline_x86_64^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/crosvm/seccomp/tpm_device.policy_inline_x86_64^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/crosvm/seccomp/null_audio_device.policy_inline_x86_64^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/crosvm/seccomp/battery.policy_inline_x86_64^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/crosvm/seccomp/video_device.policy_inline_x86_64^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/crosvm/seccomp/gpu_device.policy_inline_x86_64^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/crosvm/seccomp/balloon_device.policy_inline_x86_64^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/crosvm/seccomp/xhci.policy_inline_x86_64^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/crosvm/seccomp/serial.policy_inline_x86_64^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/crosvm/seccomp/input_device.policy_inline_x86_64^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/crosvm/seccomp/pmem_device.policy_inline_x86_64^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/rust/crates/libc/liblibc^android_x86_64_rlib_rlib-std_apex10000/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/rust/libstd^android_x86_64_rlib_apex10000/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/rust/libtest^android_x86_64_rlib_apex10000/ .

@@ -31,9 +31,6 @@ clone_depth_platform system/logging
 clone_depth_platform system/media
 
 rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/cmd/sbox/sbox^linux_glibc_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcap/cap_names.list.h^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcap/cap_names.h^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcap/_makenames^linux_glibc_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcxx/libc++^linux_glibc_x86_64_shared/ .
 
 echo "building cap_names.list.h^"

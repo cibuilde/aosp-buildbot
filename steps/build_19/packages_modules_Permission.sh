@@ -40,11 +40,6 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/android_module_lib_stubs
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/libs/modules-utils/java/framework-annotations-lib^android_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/libcore/core-module-lib-stubs-system-modules^android_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/libcore/core-lambda-stubs^android_common/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/Permission/framework-s/framework-permission-s-shared^android_common/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/Permission/framework-s/framework-permission-s-shared^android_common_apex30/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/Permission/framework-s/framework-permission-s.stubs.source.module_lib^android_common/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/Permission/framework-s/framework-permission-s.stubs.source.system^android_common/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/Permission/framework-s/framework-permission-s.stubs.source^android_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/common/java/com/android/modules/annotation/modules-annotation-minsdk^android_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/r8/d8^linux_glibc_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/sdk/framework-permission-s-incompatibilities.api.module-lib.latest^/ .

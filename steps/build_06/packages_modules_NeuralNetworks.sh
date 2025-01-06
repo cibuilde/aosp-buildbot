@@ -144,16 +144,12 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/neuralnetworks/utils
 rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/neuralnetworks/utils/service/neuralnetworks_utils_hal_service^android_vendor.31_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/neuralnetworks/utils/service/neuralnetworks_utils_hal_service^android_x86_64_static_com.android.neuralnetworks/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/neuralnetworks/utils/service/neuralnetworks_utils_hal_service^android_x86_x86_64_static_com.android.neuralnetworks/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/NeuralNetworks/common/libneuralnetworks_common^android_x86_64_static_com.android.neuralnetworks/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/NeuralNetworks/common/libneuralnetworks_common^android_x86_x86_64_static_com.android.neuralnetworks/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/NeuralNetworks/common/neuralnetworks_types^android_vendor.31_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/NeuralNetworks/common/neuralnetworks_types^android_x86_64_static_apex30/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/NeuralNetworks/common/neuralnetworks_types^android_x86_x86_64_static_apex30/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/NeuralNetworks/common/random/philox_random^android_vendor.31_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/NeuralNetworks/common/random/philox_random^android_x86_64_static_apex30/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/NeuralNetworks/common/random/philox_random^android_x86_x86_64_static_apex30/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/NeuralNetworks/runtime/libneuralnetworks^android_x86_64_shared_com.android.neuralnetworks/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/NeuralNetworks/runtime/libneuralnetworks^android_x86_x86_64_shared_com.android.neuralnetworks/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/NeuralNetworks/runtime/packageinfo/libneuralnetworks_packageinfo^android_x86_64_shared_current/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/NeuralNetworks/runtime/packageinfo/libneuralnetworks_packageinfo^android_x86_x86_64_shared_current/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/apex/apexer/apexer^linux_glibc_x86_64_PY2/ .

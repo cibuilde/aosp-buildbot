@@ -41,9 +41,6 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/libs/modules-utils/java/frame
 rsync -a -r $GITHUB_WORKSPACE/downloads/libcore/core-module-lib-stubs-system-modules^android_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/libcore/core-lambda-stubs^android_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/Connectivity/framework/framework-connectivity.stubs.module_lib^android_common/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/IPsec/android.net.ipsec.ike.stubs.source.module_lib^android_common/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/IPsec/android.net.ipsec.ike.stubs.source.system^android_common/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/IPsec/android.net.ipsec.ike.stubs.source^android_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/IPsec/ike-internals^android_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/IPsec/ike-internals^android_common_apex30/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/r8/d8^linux_glibc_x86_64/ .

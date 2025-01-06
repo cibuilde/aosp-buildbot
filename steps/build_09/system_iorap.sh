@@ -92,15 +92,6 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/native/libs/binder/libbinder^
 rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/clang/host/linux-x86/libclang_rt.ubsan_standalone-x86_64-android^android_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/core/libcutils/libcutils^android_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/core/libutils/libutils^android_x86_64_shared/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/system/iorap/libiorap-binder^android_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/system/iorap/libiorap-manager^android_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/system/iorap/libiorap-inode2filename^android_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/system/iorap/libiorap-perfetto^android_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/system/iorap/libiorap-compiler^android_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/system/iorap/libiorap-serialize^android_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/system/iorap/libiorap-prefetcher^android_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/system/iorap/libiorap-db^android_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/system/iorap/libiorap-maintenance^android_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/libbase/libbase^android_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/server_configurable_flags/libflags/server_configurable_flags^android_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/tools/aidl/aidl-cpp^linux_glibc_x86_64/ .

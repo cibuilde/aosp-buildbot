@@ -76,12 +76,6 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/system/bt/gd/proto/libbt-protos-lite^and
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/bt/gd/proto/libbt-protos-lite^android_x86_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/bt/gd/proto/libbluetooth-protos^android_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/bt/gd/proto/libbluetooth-protos^android_x86_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/system/bt/gd/rust/common/libbt_common_sys_prop_bridge_code^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/system/bt/gd/rust/hal/libbt_hidl_hal_bridge_header^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/system/bt/gd/rust/hal/libbt_hidl_hal_bridge_code^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/system/bt/gd/rust/shim/libbt_shim_bridge_header^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/system/bt/gd/rust/shim/libbt_init_flags_bridge_header^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/system/bt/gd/rust/shim/libbt_message_loop_thread_bridge_header^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/bt/vendor_libs/test_vendor_lib/RootCanalGeneratedPackets_h^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/bt/vendor_libs/test_vendor_lib/libscriptedbeaconpayload-protos-lite^android_vendor.31_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/hardware/interfaces/suspend/1.0/android.system.suspend@1.0_genc++_headers^/ .

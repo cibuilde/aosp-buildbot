@@ -31,10 +31,6 @@ clone_depth_platform system/core
 clone_depth_platform system/logging
 clone_depth_platform system/media
 
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/boringssl/bcm_object^linux_glibc_x86/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/boringssl/bcm_object^linux_glibc_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/boringssl/bssl_ar^linux_glibc_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/boringssl/bssl_fipscommon^linux_glibc_x86_64/ .
 
 echo "building bcm_object^android_recovery_x86_64"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja bcm_object,android_recovery_x86_64

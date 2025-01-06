@@ -21,8 +21,6 @@ clone_depth_platform packages/modules/Connectivity
 clone_depth_platform packages/modules/NetworkStack
 clone_depth_platform system/tools/aidl
 
-rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/NetworkStack/common/networkstackclient/ipmemorystore-aidl-interfaces-api^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/NetworkStack/common/networkstackclient/networkstack-aidl-interfaces-api^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/tools/aidl/aidl^linux_glibc_x86_64/ .
 
 echo "building ipmemorystore-aidl-interfaces-V10-java-source^"

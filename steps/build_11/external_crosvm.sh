@@ -84,15 +84,12 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libm/libm^android_x86_64_shared_a
 rsync -a -r $GITHUB_WORKSPACE/downloads/device/generic/vulkan-cereal/stream-servers/libgfxstream_backend^android_x86_64_shared_apex10000/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/adhd/audio_streams/libaudio_streams^android_x86_64_rlib_rlib-std_apex10000/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/adhd/cras/client/libcras/liblibcras^android_x86_64_rlib_rlib-std_apex10000/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/crosvm/libcrosvm^android_x86_64_rlib_rlib-std_apex10000/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/crosvm/acpi_tables/libacpi_tables^android_x86_64_rlib_rlib-std_apex10000/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/crosvm/arch/libarch^android_x86_64_rlib_rlib-std_apex10000/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/crosvm/assertions/libassertions^android_x86_64_rlib_rlib-std_apex10000/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/crosvm/base/libbase_rust^android_x86_64_rlib_rlib-std_apex10000/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/crosvm/bit_field/libbit_field^android_x86_64_rlib_rlib-std_apex10000/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/crosvm/cros_async/libcros_async^android_x86_64_rlib_rlib-std_apex10000/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/crosvm/data_model/libdata_model^android_x86_64_rlib_rlib-std_apex10000/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/crosvm/devices/libdevices^android_x86_64_rlib_rlib-std_apex10000/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/crosvm/disk/libdisk^android_x86_64_rlib_rlib-std_apex10000/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/crosvm/enumn/libenumn^linux_glibc_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/crosvm/fuse/libfuse_rust^android_x86_64_rlib_rlib-std_apex10000/ .
@@ -118,7 +115,6 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/external/crosvm/vhost/libvhost^android_x
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/crosvm/virtio_sys/libvirtio_sys^android_x86_64_rlib_rlib-std_apex10000/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/crosvm/vm_control/libvm_control^android_x86_64_rlib_rlib-std_apex10000/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/crosvm/vm_memory/libvm_memory^android_x86_64_rlib_rlib-std_apex10000/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/crosvm/x86_64/libx86_64_rust^android_x86_64_rlib_rlib-std_apex10000/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/dtc/libfdt/libfdt^android_x86_64_shared_apex10000/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/libchromeos-rs/liblibchromeos^android_x86_64_rlib_rlib-std_apex10000/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/minijail/libminijail_rust^android_x86_64_rlib_rlib-std_apex10000/ .

@@ -43,9 +43,6 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/Permission/framework-s/
 rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/Permission/framework-s/framework-permission-s-shared^android_common_apex30/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/Permission/framework-s/framework-permission-s.impl^android_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/Permission/service/service-permission-javastream-protos^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/Permission/service/service-permission-shared^android_common/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/Permission/service/service-permission-shared^android_common_apex30/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/Permission/service/service-permission.stubs.source.system_server^android_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/common/java/com/android/modules/annotation/modules-annotation-minsdk^android_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/r8/d8^linux_glibc_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/sdk/service-permission-incompatibilities.api.system-server.latest^/ .

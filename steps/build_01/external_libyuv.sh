@@ -31,9 +31,6 @@ clone_depth_platform system/core
 clone_depth_platform system/logging
 clone_depth_platform system/media
 
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/libyuv/files/libyuv^android_x86_64_static_cfi/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/libyuv/files/libyuv^android_x86_64_static_cfi_apex29/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/libyuv/files/libyuv^android_x86_x86_64_static_cfi/ .
 
 echo "building libyuv_static^android_x86_64_static_cfi"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libyuv_static,android_x86_64_static_cfi

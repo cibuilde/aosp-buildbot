@@ -62,9 +62,6 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/external/protobuf/libprotobuf-cpp-full^a
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/selinux/libselinux/libselinux^android_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/core/java/libincremental_aidl-cpp^android_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/native/libs/binder/libbinder^android_x86_64_shared/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/system/apex/apexd/libapexd^android_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/system/apex/apexd/libapexd_checkpoint_vold^android_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/system/apex/apexd/libapexservice^android_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/apex/apexd/libapex^android_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/apex/apexd/apex-info-list^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/apex/apexd/apex_aidl_interface-cpp-source^/ .

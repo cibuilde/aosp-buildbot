@@ -41,7 +41,6 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/external/auto/value/auto_value_plugin^li
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/auto/value/auto_annotation_plugin^linux_glibc_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/auto/value/auto_value_memoized_extension_annotations^linux_glibc_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/auto/value/auto_value_memoized_extension_plugin^linux_glibc_common/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/dagger2/dagger2-compiler-lib^linux_glibc_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/dagger2/dagger2-android-annotation-stubs^linux_glibc_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/dagger2/dagger2-bootstrap-compiler^linux_glibc_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/dagger2/dagger2^linux_glibc_common/ .

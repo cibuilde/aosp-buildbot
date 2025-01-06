@@ -30,20 +30,12 @@ clone_depth_platform system/logging
 clone_depth_platform system/media
 
 rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/cmd/sbox/sbox^linux_glibc_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/minijail/libminijail_gen_syscall^android_recovery_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/minijail/libminijail_gen_syscall^android_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/minijail/libminijail_gen_syscall^android_x86_64_apex10000/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/minijail/libminijail_gen_syscall^android_x86_64_apex29/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/minijail/libminijail_gen_constants_obj^android_recovery_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/minijail/libminijail_gen_constants_obj^android_vendor.31_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/minijail/libminijail_gen_constants_obj^android_vendor.31_x86_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/minijail/libminijail_gen_constants_obj^android_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/minijail/libminijail_gen_constants_obj^android_x86_64_apex10000/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/minijail/libminijail_gen_constants_obj^android_x86_64_apex29/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/minijail/libminijail_gen_constants^android_recovery_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/minijail/libminijail_gen_constants^android_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/minijail/libminijail_gen_constants^android_x86_64_apex10000/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/minijail/libminijail_gen_constants^android_x86_64_apex29/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/minijail/libminijail_gen_syscall_obj^android_recovery_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/minijail/libminijail_gen_syscall_obj^android_vendor.31_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/minijail/libminijail_gen_syscall_obj^android_vendor.31_x86_x86_64/ .

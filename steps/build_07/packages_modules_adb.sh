@@ -79,9 +79,7 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/adb/libs/adbconnection/
 rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/adb/libs/adbconnection/libadbconnection_client^android_x86_x86_64_shared_apex10000/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/adb/pairing_auth/libadb_pairing_auth^android_x86_64_shared_apex10000/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/adb/pairing_auth/libadb_pairing_auth^android_x86_x86_64_shared_apex10000/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/adb/pairing_connection/libadb_pairing_server^android_x86_64_shared_apex10000/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/adb/pairing_connection/libadb_pairing_server^android_x86_64_static_apex10000/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/adb/pairing_connection/libadb_pairing_server^android_x86_x86_64_shared_apex10000/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/adb/pairing_connection/libadb_pairing_server^android_x86_x86_64_static_apex10000/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/adb/pairing_connection/libadb_pairing_connection^android_x86_64_shared_apex10000/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/adb/pairing_connection/libadb_pairing_connection^android_x86_x86_64_shared_apex10000/ .

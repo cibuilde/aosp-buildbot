@@ -32,12 +32,6 @@ clone_depth_platform system/media
 rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/cmd/sbox/sbox^linux_glibc_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/cmd/zipsync/zipsync^linux_glibc_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/zip/cmd/soong_zip^linux_glibc_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/iptables/extensions/libext6_init^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/iptables/extensions/libext6_srcs^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/iptables/extensions/libext_init^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/iptables/extensions/libext_srcs^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/iptables/extensions/libext4_init^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/iptables/extensions/libext4_srcs^/ .
 
 echo "building libext4^android_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja libext4,android_x86_64_static

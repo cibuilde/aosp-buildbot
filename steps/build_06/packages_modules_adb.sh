@@ -74,7 +74,6 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/adb/libs/adbconnection/
 rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/adb/libs/libadbd_fs/libadbd_fs^android_x86_64_shared_current/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/adb/pairing_connection/libadb_pairing_connection^android_x86_64_static_apex10000/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/adb/proto/libapp_processes_protos_lite^android_x86_64_static_apex10000/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/adb/proto/libadb_protos^android_x86_64_shared_apex10000/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/adb/proto/libadb_protos^android_x86_64_static_apex10000/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/adb/tls/libadb_tls_connection^android_x86_64_static_apex10000/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/core/diagnose_usb/libdiagnose_usb^android_x86_64_static_apex10000/ .

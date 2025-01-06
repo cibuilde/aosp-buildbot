@@ -111,9 +111,6 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/av/media/libmedia/libmedia_om
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/av/media/libshmem/shared-file-region-aidl-cpp-source^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/av/services/mediaresourcemanager/resourcemanager_aidl_interface-ndk_platform-source^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/framework-javastream-protos^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/module-lib-api-stubs-docs-non-updatable^android_common/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/android-non-updatable.stubs.module_lib^android_common/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/android_module_lib_stubs_current^android_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/cmds/bootanimation/libbootanimation^android_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/core/java/statslog-framework-java-gen^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/core/jni/libandroid_runtime^android_x86_64_shared/ .
@@ -121,9 +118,6 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/core/jni/libandroid_runt
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/core/res/framework-res^android_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/core/res/framework-res-package-jar^android_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/libs/androidfw/libandroidfw^android_x86_64_shared/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/libs/hwui/framework-graphics.stubs.source.module_lib^android_common/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/libs/hwui/framework-graphics.stubs.source.system^android_common/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/libs/hwui/framework-graphics.stubs.source^android_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/media/audio_common-aidl-cpp-source^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/proto/framework-protos^android_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/telephony/common/statslog-telephony-common-java-gen^/ .

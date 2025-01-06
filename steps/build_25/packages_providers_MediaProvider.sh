@@ -70,10 +70,7 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/libcore/core-lambda-stubs^android_common
 rsync -a -r $GITHUB_WORKSPACE/downloads/libcore/mmodules/core_platform_api/legacy.core.platform.api.stubs^android_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/StatsD/framework/framework-statsd.stubs.module_lib^android_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/common/tools/current_sdkinfo^android_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/packages/providers/MediaProvider/media-provider-platform-compat-config^android_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/packages/providers/MediaProvider/statslog-mediaprovider-java-gen^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/packages/providers/MediaProvider/MediaProvider^android_common/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/packages/providers/MediaProvider/MediaProvider^android_common_apex30/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/packages/providers/MediaProvider/apex/com.android.mediaprovider-bootclasspath-fragment^android_common_apex30/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/packages/providers/MediaProvider/apex/framework/framework-mediaprovider.impl^android_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/packages/providers/MediaProvider/errorprone/error_prone_mediaprovider_lib^linux_glibc_common/ .

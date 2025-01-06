@@ -95,9 +95,7 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/Wifi/OsuLogin/OsuLogin^
 rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/Wifi/apex/com.android.wifi-bootclasspath-fragment^android_common_apex30/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/Wifi/framework/framework-wifi-pre-jarjar^android_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/Wifi/framework/framework-wifi.impl^android_common/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/Wifi/service/service-wifi^android_common_apex30/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/Wifi/service/statslog-wifi-java-gen^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/Wifi/service/wifi-service-pre-jarjar^android_common_apex30/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/Wifi/service/ServiceWifiResources/ServiceWifiResources^android_common_apex30/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/Wifi/service/coex-table-parser/coex-table-parser^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/Wifi/service/proto/wifi-lite-protos^android_common_apex30/ .

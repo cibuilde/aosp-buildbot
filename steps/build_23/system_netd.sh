@@ -28,12 +28,8 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/external/turbine/turbine^linux_glibc_com
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/android_system_stubs_current^android_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/libcore/core-current-stubs-system-modules^android_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/netd/server/netd_event_listener_interface-V1-java-source^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/system/netd/server/netd_event_listener_interface-V1-java^android_common/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/system/netd/server/netd_event_listener_interface-V1-java^android_common_apex30/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/netd/server/netd_aidl_interface-V3-java-source^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/netd/server/netd_aidl_interface-V7-java-source^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/system/netd/server/netd_aidl_interface-V7-java^android_common/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/system/netd/server/netd_aidl_interface-V7-java^android_common_apex30/ .
 
 echo "building netd_aidl_interface-lateststable-java^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_23.ninja netd_aidl_interface-lateststable-java,android_common

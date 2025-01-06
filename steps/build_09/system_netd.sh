@@ -67,13 +67,9 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/system/netd/libnetdbpf/libnetdbpf^androi
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/netd/libnetdutils/libnetdutils^android_x86_64_shared_cfi/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/netd/libnetdutils/libnetdutils^android_x86_x86_64_shared_cfi/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/netd/server/netd_event_listener_interface-V1-cpp-source^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/system/netd/server/netd_event_listener_interface-V1-cpp^android_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/netd/server/oemnetd_aidl_interface-cpp-source^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/system/netd/server/oemnetd_aidl_interface-cpp^android_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/netd/server/netd_aidl_interface-V6-cpp-source^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/system/netd/server/netd_aidl_interface-V6-cpp^android_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/netd/server/netd_aidl_interface-V7-cpp-source^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/system/netd/server/netd_aidl_interface-V7-cpp^android_x86_64_static/ .
 
 echo "building libnetdbpf^android_x86_64_shared_cfi"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja libnetdbpf,android_x86_64_shared_cfi

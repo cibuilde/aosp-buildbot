@@ -29,9 +29,6 @@ clone_project platform/prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8 p
 clone_project platform/prebuilts/rust prebuilts/rust android12-gsi "/bootstrap" "/linux-x86/1.51.0"
 
 rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/cmd/dep_fixer/dep_fixer^linux_glibc_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/crosvm/bit_field/bit_field_derive/libbit_field_derive^linux_glibc_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/crosvm/protos/libcdisk_spec_proto^android_x86_64_rlib_rlib-std_apex10000/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/crosvm/protos/libcdisk_spec_proto^android_x86_64_source_apex10000/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/protobuf/aprotoc^linux_glibc_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/rust/crates/proc-macro2/libproc_macro2^linux_glibc_x86_64_rlib_rlib-std/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/rust/crates/protobuf-codegen/protoc-gen-rust^linux_glibc_x86_64/ .

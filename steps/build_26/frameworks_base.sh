@@ -59,7 +59,6 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/libs/WindowManager/Shell
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/packages/SettingsLib/ActionBarShadow/SettingsLibActionBarShadow^android_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/packages/SettingsLib/ActionButtonsPreference/SettingsLibActionButtonsPreference^android_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/packages/SettingsLib/AdaptiveIcon/SettingsLibAdaptiveIcon^android_common/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/packages/SettingsLib/SettingsLib^android_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/packages/SettingsLib/AppPreference/SettingsLibAppPreference^android_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/packages/SettingsLib/BannerMessagePreference/SettingsLibBannerMessagePreference^android_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/packages/SettingsLib/BarChartPreference/SettingsLibBarChartPreference^android_common/ .

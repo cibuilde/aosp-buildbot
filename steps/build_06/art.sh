@@ -58,10 +58,6 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/art/libnativebridge/libnativebridge_lazy
 rsync -a -r $GITHUB_WORKSPACE/downloads/art/libnativebridge/libnativebridge_lazy^android_x86_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/art/libnativeloader/libnativeloader_lazy^android_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/art/libnativeloader/libnativeloader_lazy^android_x86_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/art/odrefresh/statslog_odrefresh.h^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/art/odrefresh/statslog_odrefresh.cpp^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/art/runtime/statslog_art.h^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/art/runtime/statslog_art.cpp^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/art/runtime/art_operator_srcs^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/art/runtime/libart_mterp.x86^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/art/runtime/libart_mterp.x86_64^/ .

@@ -50,9 +50,6 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/external/libchrome/libmojo_jni_registrat
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/libchrome/libchrome-include^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcxx/libc++^linux_glibc_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/protobuf/aprotoc^linux_glibc_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/system/bt/gd/BluetoothGeneratedDumpsysBinarySchema_bfbs^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/system/bt/gd/dumpsys/bundler/BluetoothGeneratedBundlerSchema_h_bfbs^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/system/bt/gd/dumpsys/bundler/bluetooth_flatbuffer_bundler^linux_glibc_x86_64/ .
 
 echo "building BluetoothGeneratedDumpsysBinarySchema_bfbs^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja BluetoothGeneratedDumpsysBinarySchema_bfbs,

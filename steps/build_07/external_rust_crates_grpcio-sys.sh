@@ -45,9 +45,7 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcxx/libc++^android_x86_64_sh
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcxx/libc++^android_x86_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcxxabi/libc++demangle^android_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcxxabi/libc++demangle^android_x86_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/rust/crates/grpcio-sys/libgrpc_wrap^android_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/rust/crates/grpcio-sys/libgrpc_wrap^android_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/rust/crates/grpcio-sys/libgrpc_wrap^android_x86_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/rust/crates/grpcio-sys/libgrpc_wrap^android_x86_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/rust/crates/grpcio-sys/libgrpc_bindgen^android_x86_64_source/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/rust/crates/grpcio-sys/libgrpc_bindgen^android_x86_x86_64_source/ .

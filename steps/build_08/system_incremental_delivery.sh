@@ -50,9 +50,7 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/libnativehelper/libnativehelper_lazy^and
 rsync -a -r $GITHUB_WORKSPACE/downloads/libnativehelper/libnativehelper_lazy^android_x86_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/core/libutils/libutils^android_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/core/libutils/libutils^android_x86_x86_64_shared/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/system/incremental_delivery/incfs/libincfs^android_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/incremental_delivery/incfs/libincfs^android_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/system/incremental_delivery/incfs/libincfs^android_x86_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/incremental_delivery/incfs/libincfs^android_x86_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/incremental_delivery/libdataloader/libdataloader^android_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/incremental_delivery/libdataloader/libdataloader^android_x86_x86_64_static/ .

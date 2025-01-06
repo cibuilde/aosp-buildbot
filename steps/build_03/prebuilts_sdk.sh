@@ -24,31 +24,6 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/cmd/merge_zips/merge_zips^li
 rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/cmd/sbox/sbox^linux_glibc_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/zip/cmd/soong_zip^linux_glibc_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcxx/libc++^linux_glibc_x86_64_shared/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/sdk/sdk_public_30_core-for-system-modules^android_common/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/sdk/sdk_public_31_core-for-system-modules^android_common/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/sdk/current/androidx/androidx.annotation_annotation-nodeps^android_common/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/sdk/current/androidx/androidx.annotation_annotation-nodeps^android_common_apex29/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/sdk/current/androidx/androidx.annotation_annotation-nodeps^android_common_apex30/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/sdk/current/androidx/androidx.annotation_annotation-nodeps^linux_glibc_common/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/sdk/current/androidx/androidx.annotation_annotation^android_common/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/sdk/current/androidx/androidx.annotation_annotation^android_common_apex30/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/sdk/current/androidx/androidx.lifecycle_lifecycle-common-java8-nodeps^android_common_apex30/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/sdk/current/androidx/androidx.lifecycle_lifecycle-common-nodeps^android_common/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/sdk/current/androidx/androidx.lifecycle_lifecycle-common-nodeps^android_common_apex30/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/sdk/current/androidx/androidx.lifecycle_lifecycle-common^android_common_apex30/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/sdk/current/androidx/androidx.room_room-common-nodeps^android_common/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/sdk/current/androidx/androidx.room_room-common-nodeps^linux_glibc_common/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/sdk/current/androidx/androidx.arch.core_core-common-nodeps^android_common/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/sdk/current/androidx/androidx.arch.core_core-common-nodeps^android_common_apex30/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/sdk/current/androidx/androidx.collection_collection-nodeps^android_common/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/sdk/current/androidx/androidx.collection_collection-nodeps^android_common_apex30/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/sdk/current/extras/app-toolkit/android-arch-core-common-nodeps^android_common/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/sdk/current/extras/app-toolkit/android-arch-lifecycle-common-nodeps^android_common/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/sdk/current/extras/constraint-layout-x/androidx-constraintlayout_constraintlayout-solver-nodeps^android_common/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/sdk/current/extras/constraint-layout-x/androidx-constraintlayout_constraintlayout-solver-nodeps^android_common_apex30/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/sdk/current/support/android-support-collections-nodeps^android_common/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/sdk/current/support/android-support-annotations-nodeps^android_common/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/sdk/current/support/android-support-annotations^android_common/ .
 
 echo "building android-non-updatable-incompatibilities.api.public.latest^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja android-non-updatable-incompatibilities.api.public.latest,

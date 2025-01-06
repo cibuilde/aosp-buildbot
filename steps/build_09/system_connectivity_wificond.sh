@@ -39,7 +39,6 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/external/fmtlib/fmtlib^android_x86_64_st
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/native/libs/binder/libbinder^android_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/connectivity/wificond/libwificond_nl^android_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/connectivity/wificond/libwificond_event_loop^android_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/system/connectivity/wificond/libwificond_ipc^android_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/core/libutils/libutils^android_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/libbase/libbase^android_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^android_x86_64_static/ .

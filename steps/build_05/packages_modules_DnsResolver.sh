@@ -33,7 +33,6 @@ clone_depth_platform system/media
 clone_depth_platform system/netd
 
 rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/DnsResolver/dnsresolver_aidl_interface-V9-ndk_platform-source^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/DnsResolver/dnsresolver_aidl_interface-V9-ndk_platform^android_x86_64_static_cfi_com.android.resolv/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/netd/server/netd_event_listener_interface-V1-ndk_platform-source^/ .
 
 echo "building dnsresolver_aidl_interface-lateststable-ndk_platform^android_x86_64_static_cfi_com.android.resolv"

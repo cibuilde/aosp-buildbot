@@ -27,8 +27,6 @@ clone_depth_platform system/logging
 clone_depth_platform system/media
 
 rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/cmd/sbox/sbox^linux_glibc_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/one-true-awk/awkgram.tab.h^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/one-true-awk/awk-maketab^linux_glibc_x86_64/ .
 
 echo "building awkgram.tab.c^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja awkgram.tab.c,

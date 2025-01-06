@@ -33,9 +33,6 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/external/guava/guava-android-host^linux_
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/guava/guava^android_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/turbine/turbine^linux_glibc_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/android_system_stubs_current^android_common/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/libs/service_entitlement/service-entitlement-impl^android_common/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/libs/service_entitlement/service-entitlement-api^android_common/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/libs/service_entitlement/service-entitlement-data^android_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/libcore/core-current-stubs-system-modules^android_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/sdk/current/androidx/androidx.annotation_annotation^android_common/ .
 

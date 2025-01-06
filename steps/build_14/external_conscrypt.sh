@@ -43,7 +43,6 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/external/boringssl/selftest/boringssl_se
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/boringssl/selftest/boringssl_self_test^android_x86_x86_64_apex29/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/conscrypt/libconscrypt_openjdk_jni^linux_glibc_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/conscrypt/conscrypt_generated_constants^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/conscrypt/conscrypt^android_common_apex29/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/conscrypt/conscrypt.module.platform.api.stubs.source^android_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/conscrypt/conscrypt.module.platform.api.stubs^android_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/conscrypt/conscrypt.module.public.api.stubs.source^android_common/ .
@@ -51,7 +50,6 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/external/conscrypt/conscrypt.module.publ
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/conscrypt/libjavacrypto^android_x86_64_shared_apex29/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/conscrypt/libjavacrypto^android_x86_x86_64_shared_apex29/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/conscrypt/apex/com.android.conscrypt.ld.config.txt^android_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/conscrypt/apex/com.android.conscrypt-bootclasspath-fragment^android_common_apex29/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/e2fsprogs/contrib/android/e2fsdroid^linux_glibc_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/e2fsprogs/misc/mke2fs^linux_glibc_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/e2fsprogs/resize/resize2fs^linux_glibc_x86_64/ .

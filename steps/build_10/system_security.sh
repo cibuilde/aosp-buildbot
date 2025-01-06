@@ -103,16 +103,13 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/system/libhidl/transport/manager/1.0/and
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/libhidl/transport/manager/1.1/android.hidl.manager@1.1_genc++_headers^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/libhidl/transport/manager/1.2/android.hidl.manager@1.2_genc++_headers^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^android_vendor.31_x86_64_shared/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/system/security/identity/libcredstore_aidl^android_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/security/keystore/libkeystore-attestation-application-id^android_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/security/keystore2/aidl/android.security.remoteprovisioning-rust^android_x86_64_source/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/security/keystore2/aidl/android.security.authorization-ndk_platform-source^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/system/security/keystore2/aidl/android.security.authorization-ndk_platform^android_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/security/keystore2/aidl/android.security.authorization-ndk_platform^android_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/security/keystore2/aidl/android.security.authorization-rust^android_x86_64_source/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/security/keystore2/aidl/android.security.compat-ndk_platform^android_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/security/keystore2/aidl/android.security.compat-rust^android_x86_64_source/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/system/security/keystore2/apc_compat/libkeystore2_apc_compat^android_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/security/keystore2/apc_compat/libkeystore2_apc_compat^android_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/security/keystore2/apc_compat/libkeystore2_apc_compat_bindgen^android_x86_64_rlib_rlib-std/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/tools/aidl/aidl-cpp^linux_glibc_x86_64/ .

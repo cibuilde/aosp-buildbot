@@ -74,11 +74,6 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/system/apex/proto/lib_apex_manifest_prot
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/libbase/libbase^android_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/libbase/libbase^android_x86_64_static_apex10000/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/libbase/libbase^linux_glibc_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/system/linkerconfig/linkerconfig^linux_glibc_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/system/linkerconfig/generate_recovery_linker_config^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/system/linkerconfig/linkerconfig_modules^android_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/system/linkerconfig/linkerconfig_modules^android_x86_64_static_apex10000/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/system/linkerconfig/linkerconfig_modules^linux_glibc_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/linkerconfig/linkerconfig_contents^android_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/linkerconfig/linkerconfig_contents^android_x86_64_static_apex10000/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/linkerconfig/linkerconfig_contents^linux_glibc_x86_64_static/ .

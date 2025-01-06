@@ -29,7 +29,6 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/framework^android_common
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/ext^android_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/libcore/mmodules/core_platform_api/stable-core-platform-api-stubs-system-modules^android_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/libcore/mmodules/core_platform_api/legacy-core-platform-api-stubs-system-modules^android_common/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/system/timezone/distro/core/time_zone_distro^android_common/ .
 
 echo "building time_zone_distro^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_25.ninja time_zone_distro,android_common

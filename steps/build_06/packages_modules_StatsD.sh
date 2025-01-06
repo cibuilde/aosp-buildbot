@@ -65,9 +65,6 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/proto_logging/stats/stats_log
 rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/StatsD/aidl/statsd-aidl-ndk_platform-source^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/StatsD/aidl/statsd-aidl-ndk_platform^android_x86_64_static_com.android.os.statsd/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/StatsD/lib/libstatssocket/libstatssocket^android_x86_64_shared_apex30/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/StatsD/statsd/statslog_statsd.h^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/StatsD/statsd/statslog_statsd.cpp^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/StatsD/statsd/libstatslog_statsd^android_x86_64_static_com.android.os.statsd/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/core/libcutils/libcutils^android_x86_64_static_apex30/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/core/libsysutils/libsysutils^android_x86_64_static_apex30/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/core/libutils/libutils^android_x86_64_static_apex30/ .

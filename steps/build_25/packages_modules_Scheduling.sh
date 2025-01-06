@@ -57,7 +57,6 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/Connectivity/Tethering/
 rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/Scheduling/apex/com.android.scheduling-bootclasspath-fragment^android_common_apex10000/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/Scheduling/framework/framework-scheduling.impl^android_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/Scheduling/service/scheduling-statsd^android_common_apex10000/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/Scheduling/service/service-scheduling^android_common_apex10000/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/Scheduling/service/reboot-stats-parser/reboot-stats-parser^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/common/tools/current_sdkinfo^android_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/r8/d8^linux_glibc_x86_64/ .

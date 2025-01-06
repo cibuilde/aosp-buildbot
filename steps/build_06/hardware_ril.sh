@@ -42,8 +42,6 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/external/nanopb-c/libprotobuf-c-nano-ena
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/nanopb-c/libprotobuf-c-nano-enable_malloc-32bit^android_vendor.31_x86_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/nanopb-c/generator/protoc-gen-nanopb^linux_glibc_x86_64_PY2/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/protobuf/aprotoc^linux_glibc_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/ril/librilutils/librilutils^android_vendor.31_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/ril/librilutils/librilutils^android_vendor.31_x86_x86_64_static/ .
 
 echo "building librilutils^android_vendor.31_x86_64_shared"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja librilutils,android_vendor.31_x86_64_shared

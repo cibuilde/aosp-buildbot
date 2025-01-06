@@ -43,9 +43,7 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/external/parameter-framework/libparamete
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/parameter-framework/libparameter^android_x86_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/parameter-framework/libpfw_utility^android_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/parameter-framework/libpfw_utility^android_x86_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/parameter-framework/libremote-processor^android_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/parameter-framework/libremote-processor^android_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/parameter-framework/libremote-processor^android_x86_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/parameter-framework/libremote-processor^android_x86_x86_64_static/ .
 
 echo "building libparameter^android_x86_64_shared"

@@ -44,7 +44,6 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/external/selinux/libselinux/sefcontext_c
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/av/apex/com.android.media-systemserverclasspath-fragment^android_common_apex29/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/av/apex/com.android.media-mediatranscoding.rc^android_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/av/apex/media-linker-config^android_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/av/apex/com.android.media-bootclasspath-fragment^android_common_apex29/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/av/media/extractors/aac/libaacextractor^android_x86_64_shared_cfi_com.android.media/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/av/media/extractors/amr/libamrextractor^android_x86_64_shared_cfi_apex29/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/av/media/extractors/flac/libflacextractor^android_x86_64_shared_cfi_com.android.media/ .

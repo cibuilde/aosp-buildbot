@@ -76,12 +76,7 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/tools/aapt2/aapt2^linux_
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/native/libs/binder/ndk/libbinder_ndk^android_x86_64_shared_current/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/proto_logging/stats/libstats_proto_host^linux_glibc_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/proto_logging/stats/stats_log_api_gen/stats-log-api-gen^linux_glibc_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/DnsResolver/libnetd_resolv^android_x86_64_shared_cfi_com.android.resolv/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/DnsResolver/libnetd_resolv^android_x86_64_static_cfi_com.android.resolv/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/DnsResolver/stats_proto^android_x86_64_static_cfi_apex29/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/DnsResolver/statslog_resolv.h^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/DnsResolver/statslog_resolv.cpp^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/DnsResolver/libstatslog_resolv^android_x86_64_static_cfi_apex29/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/DnsResolver/dnsresolver_aidl_interface-lateststable-ndk_platform^android_x86_64_static_cfi_com.android.resolv/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/DnsResolver/dnsresolver_aidl_interface-V9-ndk_platform-source^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/apex/apexer/apexer^linux_glibc_x86_64_PY2/ .

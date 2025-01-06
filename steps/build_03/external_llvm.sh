@@ -32,16 +32,8 @@ clone_depth_platform system/logging
 clone_depth_platform system/media
 
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcxx/libc++^linux_glibc_x86_64_shared/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/llvm/llvm-gen-attributes^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/llvm/llvm-gen-intrinsics^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/llvm/lib/IR/llvm-gen-core^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/llvm/lib/LibDriver/llvm-gen-libdriver^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/llvm/lib/Support/libLLVMSupport^linux_glibc_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/llvm/lib/TableGen/libLLVMTableGen^linux_glibc_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/llvm/lib/Target/AArch64/llvm-gen-aarch64^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/llvm/lib/Target/ARM/llvm-gen-arm^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/llvm/lib/Target/X86/llvm-gen-x86^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/llvm/utils/TableGen/llvm-tblgen^linux_glibc_x86_64/ .
 
 echo "building llvm-gen-attributes^"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja llvm-gen-attributes,

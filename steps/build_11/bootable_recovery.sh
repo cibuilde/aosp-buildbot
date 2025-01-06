@@ -48,7 +48,6 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/crtend_android^android_x86_6
 rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libdl/libdl^android_x86_64_shared_current/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libm/libm^android_x86_64_shared_current/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/bootable/recovery/otautil/libotautil^android_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/bootable/recovery/update_verifier/libupdate_verifier^android_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/cmd/dep_fixer/dep_fixer^linux_glibc_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcxx/libc++^android_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcxxabi/libc++demangle^android_x86_64_static/ .

@@ -32,10 +32,6 @@ clone_depth_platform system/media
 clone_depth_platform system/netd
 clone_depth_platform system/tools/aidl
 
-rsync -a -r $GITHUB_WORKSPACE/downloads/system/netd/server/netd_event_listener_interface-V1-ndk_platform-source^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/system/netd/server/netd_event_listener_interface-V1-ndk_platform^android_x86_64_static_cfi_com.android.resolv/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/system/netd/server/netd_event_listener_interface-api^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/system/netd/server/netd_aidl_interface-api^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/tools/aidl/aidl^linux_glibc_x86_64/ .
 
 echo "building netd_event_listener_interface-V1-cpp-source^"

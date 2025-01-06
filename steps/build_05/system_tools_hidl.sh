@@ -259,15 +259,12 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/system/libhidl/transport/memory/1.0/andr
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/libhidl/transport/memory/token/1.0/android.hidl.memory.token@1.0-inheritance-hierarchy^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/libhidl/transport/token/1.0/android.hidl.token@1.0-inheritance-hierarchy^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^linux_glibc_x86_64_shared/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/system/tools/hidl/build/hidl_metadata_json^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/tools/hidl/hidl2aidl/test/1.0/hidl2aidl.test@1.0-inheritance-hierarchy^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/tools/hidl/hidl2aidl/test/1.1/hidl2aidl.test@1.1-inheritance-hierarchy^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/tools/hidl/hidl2aidl/test/1.2/hidl2aidl.test@1.2-inheritance-hierarchy^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/tools/hidl/hidl2aidl/test/3.0/hidl2aidl.test@3.0-inheritance-hierarchy^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/tools/hidl/hidl2aidl/test/extension/1.2/hidl2aidl.test.extension@1.2-inheritance-hierarchy^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/system/tools/hidl/metadata/libhidlmetadata^linux_glibc_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/tools/hidl/metadata/hidl_metadata_parser^linux_glibc_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/system/tools/hidl/metadata/hidl_metadata_in_cpp^linux_glibc_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/tools/hidl/test/build_variants/1.0/hidl_test_system_ext@1.0-inheritance-hierarchy^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/tools/hidl/test/build_variants/2.0/hidl_test_product@2.0-inheritance-hierarchy^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/tools/hidl/test/format_test/1.0/hidl_format_test_pkg@1.0-inheritance-hierarchy^/ .

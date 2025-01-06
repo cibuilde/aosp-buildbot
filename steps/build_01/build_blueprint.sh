@@ -18,12 +18,6 @@ echo "Preparing for build/blueprint"
 clone_depth_platform build/blueprint
 clone_depth_platform prebuilts/go/linux-x86
 
-rsync -a -r $GITHUB_WORKSPACE/downloads/build/blueprint/blueprint-bootstrap-bpdoc^linux_glibc_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/build/blueprint/blueprint^linux_glibc_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/build/blueprint/blueprint-parser^linux_glibc_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/build/blueprint/blueprint-deptools^linux_glibc_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/build/blueprint/blueprint-pathtools^linux_glibc_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/build/blueprint/blueprint-proptools^linux_glibc_x86_64/ .
 
 echo "building blueprint-bootstrap^linux_glibc_x86_64"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja blueprint-bootstrap,linux_glibc_x86_64

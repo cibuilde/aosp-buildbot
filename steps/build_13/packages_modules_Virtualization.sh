@@ -105,7 +105,6 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/external/selinux/libselinux/sefcontext_c
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/tools/aapt2/aapt2^linux_glibc_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/Virtualization/apex/com.android.virt.init.rc^android_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/Virtualization/authfs/libauthfs_crypto_bindgen^android_x86_64_dylib_apex10000/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/Virtualization/authfs/authfs^android_x86_64_apex10000/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/Virtualization/authfs/aidl/authfs_aidl_interface-rust^android_x86_64_dylib_apex10000/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/Virtualization/authfs/fd_server/fd_server^android_x86_64_apex10000/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/Virtualization/microdroid/microdroid_super^android_x86_64/ .

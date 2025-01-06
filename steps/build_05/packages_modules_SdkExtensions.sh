@@ -59,10 +59,6 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/external/python/cpython3/Lib/py3-stdlib^
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/python/six/py-six^linux_glibc_x86_64_PY3/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/sqlite/dist/libsqlite^linux_glibc_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/libs/modules-utils/build/libmodules-utils-build^android_x86_64_static_apex30/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/SdkExtensions/derive_classpath/libderive_classpath^android_x86_64_static_apex30/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/SdkExtensions/derive_sdk/libderive_sdk^android_x86_64_static_apex30/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/SdkExtensions/gen_sdk/gen_sdk^linux_glibc_x86_64_PY3/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/SdkExtensions/gen_sdk/extensions_db.pb^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/common/proto/sdk_proto_python^linux_glibc_x86_64_PY3/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/common/proto/libsdk_proto^android_x86_64_static_apex30/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/common/proto/libclasspaths_proto^android_x86_64_static_apex30/ .

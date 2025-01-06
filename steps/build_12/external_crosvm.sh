@@ -66,10 +66,6 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libdl/libdl^android_x86_64_shared
 rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libdl/libdl^android_x86_64_shared_apex10000/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libm/libm^android_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libm/libm^android_x86_64_shared_apex10000/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/crosvm/base/libbase_rust^android_x86_64_dylib/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/crosvm/base/libbase_rust^android_x86_64_dylib_apex10000/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/crosvm/cros_async/libcros_async^android_x86_64_dylib/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/crosvm/cros_async/libcros_async^android_x86_64_dylib_apex10000/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/crosvm/data_model/libdata_model^android_x86_64_dylib/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/crosvm/data_model/libdata_model^android_x86_64_dylib_apex10000/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/crosvm/enumn/libenumn^linux_glibc_x86_64/ .

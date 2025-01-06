@@ -46,12 +46,6 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/zip/cmd/soong_zip^linux_glib
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/jarjar/jarjar^linux_glibc_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/turbine/turbine^linux_glibc_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/android_module_lib_stubs_current^android_common/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/apex/appsearch/framework/framework-appsearch.stubs.source.module_lib^android_common/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/apex/appsearch/framework/framework-appsearch.stubs.source.system^android_common/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/apex/appsearch/framework/framework-appsearch.stubs.source^android_common/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/apex/media/framework/framework-media.stubs.source.module_lib^android_common/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/apex/media/framework/framework-media.stubs.source.system^android_common/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/apex/media/framework/framework-media.stubs.source^android_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/core/sysprop/com.android.sysprop.localization^android_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/graphics/proto/updatable-driver-protos^android_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/proto/framework-protos^android_common/ .

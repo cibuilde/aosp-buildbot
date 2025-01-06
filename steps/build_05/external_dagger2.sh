@@ -28,7 +28,6 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/cmd/zipsync/zipsync^linux_gl
 rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/zip/cmd/soong_zip^linux_glibc_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/dagger2/dagger2-android-annotation-stubs^linux_glibc_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/dagger2/dagger2-bootstrap-compiler-jar^linux_glibc_common/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/dagger2/dagger2^linux_glibc_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/error_prone/error_prone_annotations^linux_glibc_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/guava/guava-jre^linux_glibc_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/jarjar/jarjar^linux_glibc_common/ .

@@ -32,38 +32,6 @@ clone_depth_platform system/logging
 clone_depth_platform system/media
 
 rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/cmd/sbox/sbox^linux_glibc_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/angle/third_party_vulkan_deps_spirv_tools_src_spvtools_vendor_tables_spv-amd-shader-trinary-minmax^android_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/angle/third_party_vulkan_deps_spirv_tools_src_spvtools_vendor_tables_spv-amd-shader-trinary-minmax^android_x86_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/angle/third_party_vulkan_deps_spirv_tools_src_spvtools_vendor_tables_spv-amd-shader-explicit-vertex-parameter^android_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/angle/third_party_vulkan_deps_spirv_tools_src_spvtools_vendor_tables_spv-amd-shader-explicit-vertex-parameter^android_x86_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/angle/third_party_vulkan_deps_spirv_tools_src_spvtools_vendor_tables_spv-amd-shader-ballot^android_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/angle/third_party_vulkan_deps_spirv_tools_src_spvtools_vendor_tables_spv-amd-shader-ballot^android_x86_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/angle/third_party_vulkan_deps_spirv_tools_src_spvtools_vendor_tables_spv-amd-gcn-shader^android_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/angle/third_party_vulkan_deps_spirv_tools_src_spvtools_vendor_tables_spv-amd-gcn-shader^android_x86_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/angle/third_party_vulkan_deps_spirv_tools_src_spvtools_vendor_tables_opencl.debuginfo.100^android_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/angle/third_party_vulkan_deps_spirv_tools_src_spvtools_vendor_tables_opencl.debuginfo.100^android_x86_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/angle/third_party_vulkan_deps_spirv_tools_src_spvtools_vendor_tables_nonsemantic.shader.debuginfo.100^android_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/angle/third_party_vulkan_deps_spirv_tools_src_spvtools_vendor_tables_nonsemantic.shader.debuginfo.100^android_x86_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/angle/third_party_vulkan_deps_spirv_tools_src_spvtools_vendor_tables_nonsemantic.clspvreflection^android_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/angle/third_party_vulkan_deps_spirv_tools_src_spvtools_vendor_tables_nonsemantic.clspvreflection^android_x86_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/angle/third_party_vulkan_deps_spirv_tools_src_spvtools_vendor_tables_debuginfo^android_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/angle/third_party_vulkan_deps_spirv_tools_src_spvtools_vendor_tables_debuginfo^android_x86_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/angle/third_party_vulkan_deps_spirv_tools_src_spvtools_opencl_tables_opencl1-0^android_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/angle/third_party_vulkan_deps_spirv_tools_src_spvtools_opencl_tables_opencl1-0^android_x86_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/angle/third_party_vulkan_deps_spirv_tools_src_spvtools_language_header_vkdebuginfo100^android_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/angle/third_party_vulkan_deps_spirv_tools_src_spvtools_language_header_vkdebuginfo100^android_x86_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/angle/third_party_vulkan_deps_spirv_tools_src_spvtools_language_header_debuginfo^android_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/angle/third_party_vulkan_deps_spirv_tools_src_spvtools_language_header_debuginfo^android_x86_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/angle/third_party_vulkan_deps_spirv_tools_src_spvtools_language_header_cldebuginfo100^android_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/angle/third_party_vulkan_deps_spirv_tools_src_spvtools_language_header_cldebuginfo100^android_x86_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/angle/third_party_vulkan_deps_spirv_tools_src_spvtools_glsl_tables_glsl1-0^android_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/angle/third_party_vulkan_deps_spirv_tools_src_spvtools_glsl_tables_glsl1-0^android_x86_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/angle/third_party_vulkan_deps_spirv_tools_src_spvtools_generators_inc^android_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/angle/third_party_vulkan_deps_spirv_tools_src_spvtools_generators_inc^android_x86_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/angle/third_party_vulkan_deps_spirv_tools_src_spvtools_core_tables_unified1^android_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/angle/third_party_vulkan_deps_spirv_tools_src_spvtools_core_tables_unified1^android_x86_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/angle/third_party_vulkan_deps_spirv_tools_src_spvtools_core_enums_unified1^android_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/angle/third_party_vulkan_deps_spirv_tools_src_spvtools_core_enums_unified1^android_x86_x86_64/ .
 
 echo "building third_party_vulkan_deps_spirv_tools_src_spvtools_val^android_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja third_party_vulkan_deps_spirv_tools_src_spvtools_val,android_x86_64_static

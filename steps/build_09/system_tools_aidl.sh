@@ -44,7 +44,6 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/native/libs/binder/libbinder^
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/core/libutils/libutils^android_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^android_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/tools/aidl/tests/lazy_test/lazy_test_service_aidl-cpp-source^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/system/tools/aidl/tests/lazy_test/lazy_test_service_aidl-cpp^android_x86_64_static/ .
 
 echo "building aidl_lazy_test_server^android_x86_64"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_09.ninja aidl_lazy_test_server,android_x86_64

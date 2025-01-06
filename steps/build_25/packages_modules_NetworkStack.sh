@@ -34,8 +34,6 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/libs/modules-utils/java/com/a
 rsync -a -r $GITHUB_WORKSPACE/downloads/libcore/core-module-lib-stubs-system-modules^android_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/Connectivity/framework/framework-connectivity^android_common_apex30/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/NetworkStack/NetworkStackApi30Shims^android_common_apex30/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/NetworkStack/NetworkStackApi31Shims^android_common_apex30/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/NetworkStack/NetworkStackApi32Shims^android_common_apex30/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/NetworkStack/NetworkStackShimsCommon^android_common_apex30/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/NetworkStack/NetworkStackApi29Shims^android_common_apex30/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/NetworkStack/common/networkstackclient/networkstack-client^android_common_apex30/ .

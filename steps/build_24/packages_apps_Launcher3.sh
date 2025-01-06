@@ -35,7 +35,6 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/core/res/framework-res^a
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/tools/aapt2/aapt2^linux_glibc_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/libs/systemui/iconloaderlib/iconloader_base^android_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/libcore/core-current-stubs-system-modules^android_common/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/packages/apps/Launcher3/Launcher3ResLib^android_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/packages/apps/Launcher3/launcher_quickstep_log_protos_lite^android_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/packages/apps/Launcher3/LauncherPluginLib^android_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/manifest-merger/manifest-merger^linux_glibc_x86_64/ .

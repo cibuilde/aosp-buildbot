@@ -38,9 +38,6 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/libs/modules-utils/java/frame
 rsync -a -r $GITHUB_WORKSPACE/downloads/libcore/core-module-lib-stubs-system-modules^android_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/libcore/core-lambda-stubs^android_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/StatsD/framework/statslog-statsd-java-gen^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/StatsD/framework/framework-statsd.stubs.source.module_lib^android_common/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/StatsD/framework/framework-statsd.stubs.source.system^android_common/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/StatsD/framework/framework-statsd.stubs.source^android_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/r8/d8^linux_glibc_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/sdk/framework-statsd-incompatibilities.api.module-lib.latest^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/prebuilts/sdk/framework-statsd-incompatibilities.api.public.latest^/ .

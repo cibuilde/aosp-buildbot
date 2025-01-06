@@ -44,7 +44,6 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/libcore/core-module-lib-stubs-system-mod
 rsync -a -r $GITHUB_WORKSPACE/downloads/libcore/core-lambda-stubs^android_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/Connectivity/Tethering/common/TetheringLib/framework-tethering.stubs.module_lib^android_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/Connectivity/framework/framework-connectivity.impl^android_common/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/Connectivity/service/service-connectivity-pre-jarjar^android_common_apex30/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/Connectivity/service/service-connectivity-protos^android_common_apex30/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/Connectivity/service/ServiceConnectivityResources/ServiceConnectivityResources^android_common_apex30/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/DnsResolver/dnsresolver_aidl_interface-V9-java^android_common_apex30/ .

@@ -40,18 +40,7 @@ clone_depth_platform system/logging
 clone_depth_platform system/media
 clone_depth_platform system/unwinding
 
-rsync -a -r $GITHUB_WORKSPACE/downloads/build/make/tools/fs_config/passwd_gen_odm^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/build/make/tools/fs_config/passwd_gen_product^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/build/make/tools/fs_config/passwd_gen_system_ext^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/build/make/tools/fs_config/group_gen_system^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/build/make/tools/fs_config/group_gen_vendor^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/build/make/tools/fs_config/group_gen_odm^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/build/make/tools/fs_config/group_gen_product^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/build/make/tools/fs_config/group_gen_system_ext^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/build/make/tools/fs_config/target_fs_config_gen^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/build/make/tools/fs_config/passwd_gen_system^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/build/make/tools/fs_config/passwd_gen_vendor^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/build/make/tools/zipalign/libzipalign^linux_glibc_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/cmd/merge_zips/merge_zips^linux_glibc_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/cmd/sbox/sbox^linux_glibc_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/zip/cmd/soong_zip^linux_glibc_x86_64/ .

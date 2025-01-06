@@ -60,8 +60,6 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/external/angle/third_party_zlib_google_c
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/angle/third_party_zlib_google_compression_utils_portable^android_x86_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/angle/angle_common^android_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/angle/angle_common^android_x86_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/angle/libGLESv2_angle^android_x86_64_shared/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/angle/libGLESv2_angle^android_x86_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/angle/third_party_vulkan_deps_spirv_tools_src_spvtools_vendor_tables_spv-amd-shader-trinary-minmax^android_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/angle/third_party_vulkan_deps_spirv_tools_src_spvtools_vendor_tables_spv-amd-shader-trinary-minmax^android_x86_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/angle/third_party_vulkan_deps_spirv_tools_src_spvtools_vendor_tables_spv-amd-shader-explicit-vertex-parameter^android_x86_64/ .

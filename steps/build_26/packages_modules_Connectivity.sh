@@ -73,8 +73,6 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/libcore/core-module-lib-stubs-system-mod
 rsync -a -r $GITHUB_WORKSPACE/downloads/libcore/core-lambda-stubs^android_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/libcore/mmodules/core_platform_api/legacy.core.platform.api.stubs^android_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/libnativehelper/libnativehelper_compat_libc++^android_x86_64_sdk_shared_apex30/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/Connectivity/Tethering/Tethering^android_common_apex30/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/Connectivity/Tethering/TetheringApiCurrentLib^android_common_apex30/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/Connectivity/Tethering/libtetherutilsjni^android_x86_64_sdk_shared_apex30/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/Connectivity/Tethering/apex/com.android.tethering-bootclasspath-fragment^android_common_apex30/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/Connectivity/Tethering/bpf_progs/offload.o^android_common/ .

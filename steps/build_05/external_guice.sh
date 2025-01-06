@@ -28,10 +28,8 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/cmd/sbox/sbox^linux_glibc_x8
 rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/cmd/zipsync/zipsync^linux_glibc_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/zip/cmd/soong_zip^linux_glibc_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/guava/guava-jre^linux_glibc_common/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/guice/guice_munged_srcs^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/guice/guice_munge_srcjar^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/guice/guice_munge_manifest^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/guice/guice_munge^linux_glibc_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/jsr330/jsr330^linux_glibc_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/junit/junit^linux_glibc_common/ .
 

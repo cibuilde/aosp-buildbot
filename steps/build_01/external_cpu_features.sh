@@ -30,8 +30,6 @@ clone_depth_platform system/core
 clone_depth_platform system/logging
 clone_depth_platform system/media
 
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/cpu_features/libcpu_features-utils^android_x86_64_static_lto-thin_apex31/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/cpu_features/libcpu_features-utils^android_x86_x86_64_static_lto-thin_apex31/ .
 
 echo "building libcpu_features-utils^android_x86_64_static_lto-thin_apex31"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libcpu_features-utils,android_x86_64_static_lto-thin_apex31

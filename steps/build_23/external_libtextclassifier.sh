@@ -33,9 +33,7 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/zip/cmd/soong_zip^linux_glib
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/error_prone/error_prone_annotations^android_common_apex30/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/guava/guava-android-host^linux_glibc_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/guava/guava^android_common_apex30/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/libtextclassifier/java/textclassifier-statsd^android_common_apex30/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/libtextclassifier/java/statslog-textclassifier-java-gen^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/libtextclassifier/jni/libtextclassifier-java^android_common_apex30/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/turbine/turbine^linux_glibc_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/android_system_stubs_current^android_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/core/res/framework-res^android_common/ .

@@ -49,7 +49,6 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/system/core/libcutils/libcutils^android_
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/core/libutils/libutils^android_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/keymaster/libkeymaster_portable^android_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/keymaster/libpuresoftkeymasterdevice^android_x86_64_shared/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/system/keymaster/lib_android_keymaster_keymint_utils^android_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/keymaster/lib_android_keymaster_keymint_utils^android_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/keymaster/libkeymint^android_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/keymaster/libkeymaster_messages^android_x86_64_shared/ .

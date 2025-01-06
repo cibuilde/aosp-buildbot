@@ -32,7 +32,6 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/external/turbine/turbine^linux_glibc_com
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/android_stubs_current^android_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/packages/SystemUI/plugin_core/PluginCoreLib^android_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/libcore/core-current-stubs-system-modules^android_common/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/packages/apps/Launcher3/launcher_log_protos_lite^android_common/ .
 
 echo "building launcher_log_protos_lite^android_common"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_23.ninja launcher_log_protos_lite,android_common

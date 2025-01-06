@@ -45,7 +45,6 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libdl/libdl^android_x86_64_shared
 rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libm/libm^android_x86_64_shared_current/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/boringssl/libcrypto^android_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/boringssl/libssl^android_x86_64_shared/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/external/libbrillo/libbrillo^android_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/libbrillo/libbrillo^android_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/libbrillo/libbrillo-stream^android_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/libchrome/libmojo_jni_registration_headers^/ .

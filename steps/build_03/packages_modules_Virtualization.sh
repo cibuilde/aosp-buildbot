@@ -20,7 +20,6 @@ clone_project device/google/cuttlefish_prebuilts device/google/cuttlefish_prebui
 clone_depth_platform packages/modules/Virtualization
 
 rsync -a -r $GITHUB_WORKSPACE/downloads/build/soong/cmd/sbox/sbox^linux_glibc_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/Virtualization/microdroid/microdroid_uboot_env_gen_x86_64^/ .
 
 echo "building microdroid_uboot_env^android_x86_64"
 prebuilts/build-tools/linux-x86/bin/ninja -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja microdroid_uboot_env,android_x86_64

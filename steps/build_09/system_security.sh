@@ -77,17 +77,13 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/system/libhidl/transport/manager/1.2/and
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/libvintf/libvintf^android_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^android_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/logwrapper/liblogwrap^android_x86_64_shared/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/system/security/keystore/libkeystore-attestation-application-id^android_x86_64_shared/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/system/security/keystore2/aaid/libkeystore2_aaid^android_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/security/keystore2/aaid/libkeystore2_aaid^android_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/security/keystore2/aaid/libkeystore2_aaid_bindgen^android_x86_64_rlib_rlib-std/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/security/keystore2/aidl/android.security.legacykeystore-ndk_platform^android_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/security/keystore2/aidl/android.security.legacykeystore-rust^android_x86_64_source/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/security/keystore2/aidl/android.security.apc-ndk_platform^android_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/security/keystore2/aidl/android.security.apc-rust^android_x86_64_source/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/system/security/keystore2/src/vintf/libkeystore2_vintf_cpp^android_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/security/keystore2/src/vintf/libkeystore2_vintf_cpp^android_x86_64_static/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/system/security/keystore2/src/vintf/libkeystore2_vintf_bindgen^android_x86_64_rlib_rlib-std/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/security/keystore2/src/vintf/libkeystore2_vintf_bindgen^android_x86_64_source/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/tools/aidl/aidl-cpp^linux_glibc_x86_64/ .
 
