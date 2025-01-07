@@ -87,6 +87,7 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/external/rust/crates/which/libwhich^linu
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/rust/cxx/libcxx^android_x86_64_rlib_dylib-std/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/rust/cxx/macro/libcxxbridge_macro^linux_glibc_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/native/libs/binder/libbinder^android_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/native/libs/binder/ndk/libbinder_ndk^android_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/native/libs/binder/rust/libbinder_rs^android_x86_64_dylib/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/native/libs/binder/rust/libbinder_ndk_sys^android_x86_64_dylib/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/native/libs/binder/rust/libbinder_ndk_bindgen^android_x86_64_source/ .

@@ -69,7 +69,6 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/SdkExtensions/derive_cl
 rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/SdkExtensions/derive_classpath/derive_classpath.rc^android_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/SdkExtensions/derive_sdk/derive_sdk^android_x86_64_apex30/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/SdkExtensions/derive_sdk/derive_sdk.rc^android_x86_64/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/SdkExtensions/framework/framework-sdkextensions^android_common_apex30/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/SdkExtensions/gen_sdk/extensions_db^android_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/common/tools/conv_classpaths_proto^linux_glibc_x86_64_PY3/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/packages/modules/common/tools/current_sdkinfo^android_x86_64/ .

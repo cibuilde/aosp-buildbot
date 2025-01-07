@@ -118,7 +118,6 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/core/res/framework-res^a
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/errorprone/error_prone_android_framework_lib^linux_glibc_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/media/soundtrigger_middleware-aidl-java^android_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/media/java/android/media/tv/tunerresourcemanager/tv_tuner_resource_manager_aidl_interface-java-source^/ .
-rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/media/java/android/media/tv/tunerresourcemanager/tv_tuner_resource_manager_aidl_interface-java^android_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/mime/mimemap^android_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/packages/SettingsLib/SettingsTheme/SettingsLibSettingsTheme^android_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/packages/SettingsLib/SettingsTheme/SettingsLibSettingsTheme^android_common_apex30/ .
