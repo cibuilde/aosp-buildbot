@@ -27,6 +27,7 @@ clone_depth_platform frameworks/native
 clone_depth_platform hardware/libhardware
 clone_depth_platform hardware/libhardware_legacy
 clone_depth_platform hardware/ril
+clone_project platform/prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8 prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8 android12-gsi "/sysroot" "/lib/gcc/x86_64-linux/4.8.3" "/x86_64-linux/lib64" "/x86_64-linux/lib32"
 clone_depth_platform prebuilts/gcc/linux-x86/x86/x86_64-linux-android-4.9
 clone_depth_platform system/core
 clone_depth_platform system/logging
@@ -34,74 +35,116 @@ clone_depth_platform system/media
 
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/grpc-grpc/libgrpc_resolver_fake^android_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/grpc-grpc/libgrpc_resolver_fake^android_x86_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/grpc-grpc/libgrpc_resolver_fake^linux_glibc_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/grpc-grpc/libgrpc_base^android_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/grpc-grpc/libgrpc_base^android_x86_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/grpc-grpc/libgrpc_base^linux_glibc_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/grpc-grpc/libgrpc_resolver_sockaddr^android_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/grpc-grpc/libgrpc_resolver_sockaddr^android_x86_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/grpc-grpc/libgrpc_resolver_sockaddr^linux_glibc_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/grpc-grpc/libgrpc_deadline_filter^android_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/grpc-grpc/libgrpc_deadline_filter^android_x86_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/grpc-grpc/libgrpc_deadline_filter^linux_glibc_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/grpc-grpc/libgrpc_server_backward_compatibility^android_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/grpc-grpc/libgrpc_server_backward_compatibility^android_x86_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/grpc-grpc/libgrpc_server_backward_compatibility^linux_glibc_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/grpc-grpc/libgrpc_workaround_cronet_compression_filter^android_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/grpc-grpc/libgrpc_workaround_cronet_compression_filter^android_x86_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/grpc-grpc/libgrpc_workaround_cronet_compression_filter^linux_glibc_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/grpc-grpc/libgrpc_client_authority_filter^android_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/grpc-grpc/libgrpc_client_authority_filter^android_x86_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/grpc-grpc/libgrpc_client_authority_filter^linux_glibc_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/grpc-grpc/libgrpc_lb_policy_round_robin^android_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/grpc-grpc/libgrpc_lb_policy_round_robin^android_x86_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/grpc-grpc/libgrpc_lb_policy_round_robin^linux_glibc_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/grpc-grpc/libgrpc_lb_policy_pick_first^android_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/grpc-grpc/libgrpc_lb_policy_pick_first^android_x86_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/grpc-grpc/libgrpc_lb_policy_pick_first^linux_glibc_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/grpc-grpc/libgrpc_max_age_filter^android_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/grpc-grpc/libgrpc_max_age_filter^android_x86_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/grpc-grpc/libgrpc_max_age_filter^linux_glibc_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/grpc-grpc/libgrpc_transport_chttp2_alpn^android_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/grpc-grpc/libgrpc_transport_chttp2_alpn^android_x86_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/grpc-grpc/libgrpc_transport_chttp2_alpn^linux_glibc_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/grpc-grpc/libgrpc_transport_chttp2_client_connector^android_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/grpc-grpc/libgrpc_transport_chttp2_client_connector^android_x86_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/grpc-grpc/libgrpc_transport_chttp2_client_connector^linux_glibc_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/grpc-grpc/libgrpc_transport_chttp2_server_insecure^android_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/grpc-grpc/libgrpc_transport_chttp2_server_insecure^android_x86_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/grpc-grpc/libgrpc_transport_chttp2_server_insecure^linux_glibc_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/grpc-grpc/libgrpc_transport_chttp2_server_secure^android_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/grpc-grpc/libgrpc_transport_chttp2_server_secure^android_x86_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/grpc-grpc/libgrpc_transport_chttp2_server_secure^linux_glibc_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/grpc-grpc/libgrpc_transport_chttp2_client_insecure^android_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/grpc-grpc/libgrpc_transport_chttp2_client_insecure^android_x86_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/grpc-grpc/libgrpc_transport_chttp2_client_insecure^linux_glibc_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/grpc-grpc/libgrpc_transport_chttp2_client_secure^android_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/grpc-grpc/libgrpc_transport_chttp2_client_secure^android_x86_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/grpc-grpc/libgrpc_transport_chttp2_client_secure^linux_glibc_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/grpc-grpc/libgrpc_message_size_filter^android_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/grpc-grpc/libgrpc_message_size_filter^android_x86_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/grpc-grpc/libgrpc_message_size_filter^linux_glibc_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/grpc-grpc/libgrpc_transport_inproc^android_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/grpc-grpc/libgrpc_transport_inproc^android_x86_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/grpc-grpc/libgrpc_transport_inproc^linux_glibc_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/grpc-grpc/libgrpc_resolver_dns_ares^android_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/grpc-grpc/libgrpc_resolver_dns_ares^android_x86_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/grpc-grpc/libgrpc_resolver_dns_ares^linux_glibc_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/grpc-grpc/libgrpc_resolver_dns_native^android_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/grpc-grpc/libgrpc_resolver_dns_native^android_x86_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/grpc-grpc/libgrpc_resolver_dns_native^linux_glibc_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/grpc-grpc/libgrpc_http_filters^android_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/grpc-grpc/libgrpc_http_filters^android_x86_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/grpc-grpc/libgrpc_http_filters^linux_glibc_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/grpc-grpc/libgrpc_secure^android_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/grpc-grpc/libgrpc_secure^android_x86_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/grpc-grpc/libgrpc_secure^linux_glibc_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/grpc-grpc/libalts_util^android_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/grpc-grpc/libalts_util^android_x86_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/grpc-grpc/libalts_util^linux_glibc_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/grpc-grpc/libtsi^android_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/grpc-grpc/libtsi^android_x86_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/grpc-grpc/libtsi^linux_glibc_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/grpc-grpc/libalts_frame_protector^android_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/grpc-grpc/libalts_frame_protector^android_x86_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/grpc-grpc/libalts_frame_protector^linux_glibc_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/grpc-grpc/libtsi_interface^android_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/grpc-grpc/libtsi_interface^android_x86_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/grpc-grpc/libtsi_interface^linux_glibc_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/grpc-grpc/libgrpc_transport_chttp2^android_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/grpc-grpc/libgrpc_transport_chttp2^android_x86_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/grpc-grpc/libgrpc_transport_chttp2^linux_glibc_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/grpc-grpc/libgrpc_lb_policy_grpclb^linux_glibc_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/grpc-grpc/libgrpc_lb_policy_grpclb_secure^android_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/grpc-grpc/libgrpc_lb_policy_grpclb_secure^android_x86_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/grpc-grpc/libgrpc_lb_policy_grpclb_secure^linux_glibc_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/grpc-grpc/gpr_base^android_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/grpc-grpc/gpr_base^android_x86_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/grpc-grpc/gpr_base^linux_glibc_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/grpc-grpc/libgrpc_client_channel^android_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/grpc-grpc/libgrpc_client_channel^android_x86_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/grpc-grpc/libgrpc_client_channel^linux_glibc_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/grpc-grpc/libgrpc_trace^android_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/grpc-grpc/libgrpc_trace^android_x86_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/grpc-grpc/libgrpc_trace^linux_glibc_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/grpc-grpc/libgrpc_base_c^android_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/grpc-grpc/libgrpc_base_c^android_x86_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/grpc-grpc/libgrpc_base_c^linux_glibc_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/grpc-grpc/census^android_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/grpc-grpc/census^android_x86_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/grpc-grpc/census^linux_glibc_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/nanopb-c/libprotobuf-c-nano^android_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/nanopb-c/libprotobuf-c-nano^android_x86_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/nanopb-c/libprotobuf-c-nano^linux_glibc_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/zlib/libz^android_x86_64_static/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/zlib/libz^android_x86_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/zlib/libz^linux_glibc_x86_64_static/ .
+
+echo "building libgrpc_unsecure^linux_glibc_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_02.ninja libgrpc_unsecure,linux_glibc_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_unsecure^linux_glibc_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_02/external/grpc-grpc/libgrpc_unsecure^linux_glibc_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_unsecure^linux_glibc_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_02/external/grpc-grpc/libgrpc_unsecure^linux_glibc_x86_64_static.output $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_unsecure^linux_glibc_x86_64_static $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_unsecure^linux_glibc_x86_64_static/addition_copy_files.output
 
 echo "building libgrpc^android_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_02.ninja libgrpc,android_x86_64_static
@@ -114,6 +157,12 @@ prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc^android_x86_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_02/external/grpc-grpc/libgrpc^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc^android_x86_x86_64_static
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_02/external/grpc-grpc/libgrpc^android_x86_x86_64_static.output $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc^android_x86_x86_64_static $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc^android_x86_x86_64_static/addition_copy_files.output
+
+echo "building libgrpc^linux_glibc_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_02.ninja libgrpc,linux_glibc_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc^linux_glibc_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_02/external/grpc-grpc/libgrpc^linux_glibc_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc^linux_glibc_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_02/external/grpc-grpc/libgrpc^linux_glibc_x86_64_static.output $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc^linux_glibc_x86_64_static $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc^linux_glibc_x86_64_static/addition_copy_files.output
 
 
 rm -rf out
@@ -172,6 +221,10 @@ fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/hardware_ril.tar.zst" ]; then
   echo "Compressing hardware/ril -> hardware_ril.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/hardware_ril.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/hardware/ril/ .
+fi
+if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_gcc_linux-x86_host_x86_64-linux-glibc2.17-4.8.tar.zst" ]; then
+  echo "Compressing prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8 -> prebuilts_gcc_linux-x86_host_x86_64-linux-glibc2.17-4.8.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/prebuilts_gcc_linux-x86_host_x86_64-linux-glibc2.17-4.8.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8/ .
 fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_gcc_linux-x86_x86_x86_64-linux-android-4.9.tar.zst" ]; then
   echo "Compressing prebuilts/gcc/linux-x86/x86/x86_64-linux-android-4.9 -> prebuilts_gcc_linux-x86_x86_x86_64-linux-android-4.9.tar.zst"

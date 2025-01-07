@@ -1,0 +1,2 @@
+out/soong/.intermediates/device/google/cuttlefish_vmm/x86_64_linux_gnu_libminijail.so_for_crosvm/linux_glibc_x86_64/libminijail.so
+out/soong/host/linux-x86/bin/x86_64-linux-gnu/libminijail.so

@@ -438,6 +438,10 @@ gh release --repo cibuilde/aosp-buildbot download android12-gsi_02 --pattern ext
 mkdir -p $GITHUB_WORKSPACE/downloads/external/rust/crates/anyhow
 tar xf $GITHUB_WORKSPACE/external_rust_crates_anyhow-02.tar.zst -C $GITHUB_WORKSPACE/downloads/external/rust/crates/anyhow/
 
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_03 --pattern external_rust_crates_bindgen.tar.zst --output external_rust_crates_bindgen-03.tar.zst
+mkdir -p $GITHUB_WORKSPACE/downloads/external/rust/crates/bindgen
+tar xf $GITHUB_WORKSPACE/external_rust_crates_bindgen-03.tar.zst -C $GITHUB_WORKSPACE/downloads/external/rust/crates/bindgen/
+
 gh release --repo cibuilde/aosp-buildbot download android12-gsi_04 --pattern external_rust_crates_bindgen.tar.zst --output external_rust_crates_bindgen-04.tar.zst
 mkdir -p $GITHUB_WORKSPACE/downloads/external/rust/crates/bindgen
 tar xf $GITHUB_WORKSPACE/external_rust_crates_bindgen-04.tar.zst -C $GITHUB_WORKSPACE/downloads/external/rust/crates/bindgen/
@@ -1021,6 +1025,10 @@ tar xf $GITHUB_WORKSPACE/system_libziparchive-01.tar.zst -C $GITHUB_WORKSPACE/do
 gh release --repo cibuilde/aosp-buildbot download android12-gsi_04 --pattern system_libziparchive.tar.zst --output system_libziparchive-04.tar.zst
 mkdir -p $GITHUB_WORKSPACE/downloads/system/libziparchive
 tar xf $GITHUB_WORKSPACE/system_libziparchive-04.tar.zst -C $GITHUB_WORKSPACE/downloads/system/libziparchive/
+
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_05 --pattern system_libziparchive.tar.zst --output system_libziparchive-05.tar.zst
+mkdir -p $GITHUB_WORKSPACE/downloads/system/libziparchive
+tar xf $GITHUB_WORKSPACE/system_libziparchive-05.tar.zst -C $GITHUB_WORKSPACE/downloads/system/libziparchive/
 
 gh release --repo cibuilde/aosp-buildbot download android12-gsi_06 --pattern system_libziparchive.tar.zst --output system_libziparchive-06.tar.zst
 mkdir -p $GITHUB_WORKSPACE/downloads/system/libziparchive

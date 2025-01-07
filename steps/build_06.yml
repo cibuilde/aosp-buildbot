@@ -106,6 +106,10 @@ jobs:
         key: external_eigen@${{ env.branch }}
     - uses: actions/cache@v4
       with:
+        path: cache/external_erofs-utils.tar.zst
+        key: external_erofs-utils@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
         path: cache/external_error_prone.tar.zst
         key: external_error_prone@${{ env.branch }}
     - uses: actions/cache@v4
@@ -116,6 +120,10 @@ jobs:
       with:
         path: cache/external_expat.tar.zst
         key: external_expat@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_f2fs-tools.tar.zst
+        key: external_f2fs-tools@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/external_fec.tar.zst
@@ -224,6 +232,10 @@ jobs:
       with:
         path: cache/external_libchrome.tar.zst
         key: external_libchrome@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_libcppbor.tar.zst
+        key: external_libcppbor@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/external_libcups.tar.zst

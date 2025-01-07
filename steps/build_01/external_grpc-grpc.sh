@@ -22,12 +22,14 @@ clone_depth_platform external/grpc-grpc
 clone_depth_platform external/libcxx
 clone_depth_platform external/libcxxabi
 clone_depth_platform external/nanopb-c
+clone_depth_platform external/protobuf
 clone_depth_platform external/zlib
 clone_depth_platform frameworks/av
 clone_depth_platform frameworks/native
 clone_depth_platform hardware/libhardware
 clone_depth_platform hardware/libhardware_legacy
 clone_depth_platform hardware/ril
+clone_project platform/prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8 prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8 android12-gsi "/sysroot" "/lib/gcc/x86_64-linux/4.8.3" "/x86_64-linux/lib64" "/x86_64-linux/lib32"
 clone_depth_platform prebuilts/gcc/linux-x86/x86/x86_64-linux-android-4.9
 clone_depth_platform system/core
 clone_depth_platform system/logging
@@ -46,6 +48,12 @@ mkdir -p $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_resolver_fake^an
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/grpc-grpc/libgrpc_resolver_fake^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_resolver_fake^android_x86_x86_64_static
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/grpc-grpc/libgrpc_resolver_fake^android_x86_x86_64_static.output $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_resolver_fake^android_x86_x86_64_static $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_resolver_fake^android_x86_x86_64_static/addition_copy_files.output
 
+echo "building libgrpc_resolver_fake^linux_glibc_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libgrpc_resolver_fake,linux_glibc_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_resolver_fake^linux_glibc_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/grpc-grpc/libgrpc_resolver_fake^linux_glibc_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_resolver_fake^linux_glibc_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/grpc-grpc/libgrpc_resolver_fake^linux_glibc_x86_64_static.output $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_resolver_fake^linux_glibc_x86_64_static $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_resolver_fake^linux_glibc_x86_64_static/addition_copy_files.output
+
 echo "building libgrpc++_base^android_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libgrpc++_base,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc++_base^android_x86_64_static
@@ -57,6 +65,18 @@ prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc++_base^android_x86_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/grpc-grpc/libgrpc++_base^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc++_base^android_x86_x86_64_static
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/grpc-grpc/libgrpc++_base^android_x86_x86_64_static.output $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc++_base^android_x86_x86_64_static $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc++_base^android_x86_x86_64_static/addition_copy_files.output
+
+echo "building libgrpc++_base^linux_glibc_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libgrpc++_base,linux_glibc_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc++_base^linux_glibc_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/grpc-grpc/libgrpc++_base^linux_glibc_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc++_base^linux_glibc_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/grpc-grpc/libgrpc++_base^linux_glibc_x86_64_static.output $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc++_base^linux_glibc_x86_64_static $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc++_base^linux_glibc_x86_64_static/addition_copy_files.output
+
+echo "building libgrpc++_base_unsecure^linux_glibc_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libgrpc++_base_unsecure,linux_glibc_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc++_base_unsecure^linux_glibc_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/grpc-grpc/libgrpc++_base_unsecure^linux_glibc_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc++_base_unsecure^linux_glibc_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/grpc-grpc/libgrpc++_base_unsecure^linux_glibc_x86_64_static.output $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc++_base_unsecure^linux_glibc_x86_64_static $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc++_base_unsecure^linux_glibc_x86_64_static/addition_copy_files.output
 
 echo "building libgrpc_base^android_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libgrpc_base,android_x86_64_static
@@ -70,6 +90,12 @@ mkdir -p $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_base^android_x86
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/grpc-grpc/libgrpc_base^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_base^android_x86_x86_64_static
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/grpc-grpc/libgrpc_base^android_x86_x86_64_static.output $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_base^android_x86_x86_64_static $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_base^android_x86_x86_64_static/addition_copy_files.output
 
+echo "building libgrpc_base^linux_glibc_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libgrpc_base,linux_glibc_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_base^linux_glibc_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/grpc-grpc/libgrpc_base^linux_glibc_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_base^linux_glibc_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/grpc-grpc/libgrpc_base^linux_glibc_x86_64_static.output $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_base^linux_glibc_x86_64_static $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_base^linux_glibc_x86_64_static/addition_copy_files.output
+
 echo "building libgrpc_resolver_sockaddr^android_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libgrpc_resolver_sockaddr,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_resolver_sockaddr^android_x86_64_static
@@ -81,6 +107,12 @@ prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_resolver_sockaddr^android_x86_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/grpc-grpc/libgrpc_resolver_sockaddr^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_resolver_sockaddr^android_x86_x86_64_static
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/grpc-grpc/libgrpc_resolver_sockaddr^android_x86_x86_64_static.output $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_resolver_sockaddr^android_x86_x86_64_static $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_resolver_sockaddr^android_x86_x86_64_static/addition_copy_files.output
+
+echo "building libgrpc_resolver_sockaddr^linux_glibc_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libgrpc_resolver_sockaddr,linux_glibc_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_resolver_sockaddr^linux_glibc_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/grpc-grpc/libgrpc_resolver_sockaddr^linux_glibc_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_resolver_sockaddr^linux_glibc_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/grpc-grpc/libgrpc_resolver_sockaddr^linux_glibc_x86_64_static.output $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_resolver_sockaddr^linux_glibc_x86_64_static $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_resolver_sockaddr^linux_glibc_x86_64_static/addition_copy_files.output
 
 echo "building libgrpc_deadline_filter^android_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libgrpc_deadline_filter,android_x86_64_static
@@ -94,6 +126,12 @@ mkdir -p $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_deadline_filter^
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/grpc-grpc/libgrpc_deadline_filter^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_deadline_filter^android_x86_x86_64_static
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/grpc-grpc/libgrpc_deadline_filter^android_x86_x86_64_static.output $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_deadline_filter^android_x86_x86_64_static $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_deadline_filter^android_x86_x86_64_static/addition_copy_files.output
 
+echo "building libgrpc_deadline_filter^linux_glibc_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libgrpc_deadline_filter,linux_glibc_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_deadline_filter^linux_glibc_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/grpc-grpc/libgrpc_deadline_filter^linux_glibc_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_deadline_filter^linux_glibc_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/grpc-grpc/libgrpc_deadline_filter^linux_glibc_x86_64_static.output $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_deadline_filter^linux_glibc_x86_64_static $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_deadline_filter^linux_glibc_x86_64_static/addition_copy_files.output
+
 echo "building libgrpc_server_backward_compatibility^android_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libgrpc_server_backward_compatibility,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_server_backward_compatibility^android_x86_64_static
@@ -105,6 +143,12 @@ prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_server_backward_compatibility^android_x86_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/grpc-grpc/libgrpc_server_backward_compatibility^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_server_backward_compatibility^android_x86_x86_64_static
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/grpc-grpc/libgrpc_server_backward_compatibility^android_x86_x86_64_static.output $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_server_backward_compatibility^android_x86_x86_64_static $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_server_backward_compatibility^android_x86_x86_64_static/addition_copy_files.output
+
+echo "building libgrpc_server_backward_compatibility^linux_glibc_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libgrpc_server_backward_compatibility,linux_glibc_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_server_backward_compatibility^linux_glibc_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/grpc-grpc/libgrpc_server_backward_compatibility^linux_glibc_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_server_backward_compatibility^linux_glibc_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/grpc-grpc/libgrpc_server_backward_compatibility^linux_glibc_x86_64_static.output $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_server_backward_compatibility^linux_glibc_x86_64_static $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_server_backward_compatibility^linux_glibc_x86_64_static/addition_copy_files.output
 
 echo "building libgrpc_workaround_cronet_compression_filter^android_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libgrpc_workaround_cronet_compression_filter,android_x86_64_static
@@ -118,6 +162,12 @@ mkdir -p $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_workaround_crone
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/grpc-grpc/libgrpc_workaround_cronet_compression_filter^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_workaround_cronet_compression_filter^android_x86_x86_64_static
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/grpc-grpc/libgrpc_workaround_cronet_compression_filter^android_x86_x86_64_static.output $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_workaround_cronet_compression_filter^android_x86_x86_64_static $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_workaround_cronet_compression_filter^android_x86_x86_64_static/addition_copy_files.output
 
+echo "building libgrpc_workaround_cronet_compression_filter^linux_glibc_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libgrpc_workaround_cronet_compression_filter,linux_glibc_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_workaround_cronet_compression_filter^linux_glibc_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/grpc-grpc/libgrpc_workaround_cronet_compression_filter^linux_glibc_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_workaround_cronet_compression_filter^linux_glibc_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/grpc-grpc/libgrpc_workaround_cronet_compression_filter^linux_glibc_x86_64_static.output $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_workaround_cronet_compression_filter^linux_glibc_x86_64_static $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_workaround_cronet_compression_filter^linux_glibc_x86_64_static/addition_copy_files.output
+
 echo "building libgrpc_client_authority_filter^android_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libgrpc_client_authority_filter,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_client_authority_filter^android_x86_64_static
@@ -129,6 +179,12 @@ prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_client_authority_filter^android_x86_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/grpc-grpc/libgrpc_client_authority_filter^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_client_authority_filter^android_x86_x86_64_static
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/grpc-grpc/libgrpc_client_authority_filter^android_x86_x86_64_static.output $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_client_authority_filter^android_x86_x86_64_static $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_client_authority_filter^android_x86_x86_64_static/addition_copy_files.output
+
+echo "building libgrpc_client_authority_filter^linux_glibc_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libgrpc_client_authority_filter,linux_glibc_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_client_authority_filter^linux_glibc_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/grpc-grpc/libgrpc_client_authority_filter^linux_glibc_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_client_authority_filter^linux_glibc_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/grpc-grpc/libgrpc_client_authority_filter^linux_glibc_x86_64_static.output $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_client_authority_filter^linux_glibc_x86_64_static $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_client_authority_filter^linux_glibc_x86_64_static/addition_copy_files.output
 
 echo "building libgrpc_lb_policy_round_robin^android_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libgrpc_lb_policy_round_robin,android_x86_64_static
@@ -142,6 +198,12 @@ mkdir -p $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_lb_policy_round_
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/grpc-grpc/libgrpc_lb_policy_round_robin^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_lb_policy_round_robin^android_x86_x86_64_static
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/grpc-grpc/libgrpc_lb_policy_round_robin^android_x86_x86_64_static.output $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_lb_policy_round_robin^android_x86_x86_64_static $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_lb_policy_round_robin^android_x86_x86_64_static/addition_copy_files.output
 
+echo "building libgrpc_lb_policy_round_robin^linux_glibc_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libgrpc_lb_policy_round_robin,linux_glibc_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_lb_policy_round_robin^linux_glibc_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/grpc-grpc/libgrpc_lb_policy_round_robin^linux_glibc_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_lb_policy_round_robin^linux_glibc_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/grpc-grpc/libgrpc_lb_policy_round_robin^linux_glibc_x86_64_static.output $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_lb_policy_round_robin^linux_glibc_x86_64_static $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_lb_policy_round_robin^linux_glibc_x86_64_static/addition_copy_files.output
+
 echo "building libgrpc_lb_policy_pick_first^android_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libgrpc_lb_policy_pick_first,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_lb_policy_pick_first^android_x86_64_static
@@ -153,6 +215,12 @@ prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_lb_policy_pick_first^android_x86_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/grpc-grpc/libgrpc_lb_policy_pick_first^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_lb_policy_pick_first^android_x86_x86_64_static
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/grpc-grpc/libgrpc_lb_policy_pick_first^android_x86_x86_64_static.output $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_lb_policy_pick_first^android_x86_x86_64_static $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_lb_policy_pick_first^android_x86_x86_64_static/addition_copy_files.output
+
+echo "building libgrpc_lb_policy_pick_first^linux_glibc_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libgrpc_lb_policy_pick_first,linux_glibc_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_lb_policy_pick_first^linux_glibc_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/grpc-grpc/libgrpc_lb_policy_pick_first^linux_glibc_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_lb_policy_pick_first^linux_glibc_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/grpc-grpc/libgrpc_lb_policy_pick_first^linux_glibc_x86_64_static.output $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_lb_policy_pick_first^linux_glibc_x86_64_static $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_lb_policy_pick_first^linux_glibc_x86_64_static/addition_copy_files.output
 
 echo "building libgrpc_max_age_filter^android_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libgrpc_max_age_filter,android_x86_64_static
@@ -166,6 +234,12 @@ mkdir -p $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_max_age_filter^a
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/grpc-grpc/libgrpc_max_age_filter^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_max_age_filter^android_x86_x86_64_static
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/grpc-grpc/libgrpc_max_age_filter^android_x86_x86_64_static.output $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_max_age_filter^android_x86_x86_64_static $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_max_age_filter^android_x86_x86_64_static/addition_copy_files.output
 
+echo "building libgrpc_max_age_filter^linux_glibc_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libgrpc_max_age_filter,linux_glibc_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_max_age_filter^linux_glibc_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/grpc-grpc/libgrpc_max_age_filter^linux_glibc_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_max_age_filter^linux_glibc_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/grpc-grpc/libgrpc_max_age_filter^linux_glibc_x86_64_static.output $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_max_age_filter^linux_glibc_x86_64_static $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_max_age_filter^linux_glibc_x86_64_static/addition_copy_files.output
+
 echo "building libgrpc_transport_chttp2_alpn^android_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libgrpc_transport_chttp2_alpn,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_transport_chttp2_alpn^android_x86_64_static
@@ -177,6 +251,12 @@ prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_transport_chttp2_alpn^android_x86_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/grpc-grpc/libgrpc_transport_chttp2_alpn^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_transport_chttp2_alpn^android_x86_x86_64_static
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/grpc-grpc/libgrpc_transport_chttp2_alpn^android_x86_x86_64_static.output $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_transport_chttp2_alpn^android_x86_x86_64_static $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_transport_chttp2_alpn^android_x86_x86_64_static/addition_copy_files.output
+
+echo "building libgrpc_transport_chttp2_alpn^linux_glibc_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libgrpc_transport_chttp2_alpn,linux_glibc_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_transport_chttp2_alpn^linux_glibc_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/grpc-grpc/libgrpc_transport_chttp2_alpn^linux_glibc_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_transport_chttp2_alpn^linux_glibc_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/grpc-grpc/libgrpc_transport_chttp2_alpn^linux_glibc_x86_64_static.output $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_transport_chttp2_alpn^linux_glibc_x86_64_static $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_transport_chttp2_alpn^linux_glibc_x86_64_static/addition_copy_files.output
 
 echo "building libgrpc_transport_chttp2_client_connector^android_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libgrpc_transport_chttp2_client_connector,android_x86_64_static
@@ -190,6 +270,12 @@ mkdir -p $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_transport_chttp2
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/grpc-grpc/libgrpc_transport_chttp2_client_connector^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_transport_chttp2_client_connector^android_x86_x86_64_static
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/grpc-grpc/libgrpc_transport_chttp2_client_connector^android_x86_x86_64_static.output $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_transport_chttp2_client_connector^android_x86_x86_64_static $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_transport_chttp2_client_connector^android_x86_x86_64_static/addition_copy_files.output
 
+echo "building libgrpc_transport_chttp2_client_connector^linux_glibc_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libgrpc_transport_chttp2_client_connector,linux_glibc_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_transport_chttp2_client_connector^linux_glibc_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/grpc-grpc/libgrpc_transport_chttp2_client_connector^linux_glibc_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_transport_chttp2_client_connector^linux_glibc_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/grpc-grpc/libgrpc_transport_chttp2_client_connector^linux_glibc_x86_64_static.output $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_transport_chttp2_client_connector^linux_glibc_x86_64_static $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_transport_chttp2_client_connector^linux_glibc_x86_64_static/addition_copy_files.output
+
 echo "building libgrpc_transport_chttp2_server_insecure^android_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libgrpc_transport_chttp2_server_insecure,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_transport_chttp2_server_insecure^android_x86_64_static
@@ -201,6 +287,12 @@ prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_transport_chttp2_server_insecure^android_x86_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/grpc-grpc/libgrpc_transport_chttp2_server_insecure^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_transport_chttp2_server_insecure^android_x86_x86_64_static
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/grpc-grpc/libgrpc_transport_chttp2_server_insecure^android_x86_x86_64_static.output $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_transport_chttp2_server_insecure^android_x86_x86_64_static $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_transport_chttp2_server_insecure^android_x86_x86_64_static/addition_copy_files.output
+
+echo "building libgrpc_transport_chttp2_server_insecure^linux_glibc_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libgrpc_transport_chttp2_server_insecure,linux_glibc_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_transport_chttp2_server_insecure^linux_glibc_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/grpc-grpc/libgrpc_transport_chttp2_server_insecure^linux_glibc_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_transport_chttp2_server_insecure^linux_glibc_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/grpc-grpc/libgrpc_transport_chttp2_server_insecure^linux_glibc_x86_64_static.output $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_transport_chttp2_server_insecure^linux_glibc_x86_64_static $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_transport_chttp2_server_insecure^linux_glibc_x86_64_static/addition_copy_files.output
 
 echo "building libgrpc_transport_chttp2_server_secure^android_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libgrpc_transport_chttp2_server_secure,android_x86_64_static
@@ -214,6 +306,12 @@ mkdir -p $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_transport_chttp2
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/grpc-grpc/libgrpc_transport_chttp2_server_secure^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_transport_chttp2_server_secure^android_x86_x86_64_static
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/grpc-grpc/libgrpc_transport_chttp2_server_secure^android_x86_x86_64_static.output $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_transport_chttp2_server_secure^android_x86_x86_64_static $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_transport_chttp2_server_secure^android_x86_x86_64_static/addition_copy_files.output
 
+echo "building libgrpc_transport_chttp2_server_secure^linux_glibc_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libgrpc_transport_chttp2_server_secure,linux_glibc_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_transport_chttp2_server_secure^linux_glibc_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/grpc-grpc/libgrpc_transport_chttp2_server_secure^linux_glibc_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_transport_chttp2_server_secure^linux_glibc_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/grpc-grpc/libgrpc_transport_chttp2_server_secure^linux_glibc_x86_64_static.output $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_transport_chttp2_server_secure^linux_glibc_x86_64_static $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_transport_chttp2_server_secure^linux_glibc_x86_64_static/addition_copy_files.output
+
 echo "building libgrpc_transport_chttp2_client_insecure^android_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libgrpc_transport_chttp2_client_insecure,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_transport_chttp2_client_insecure^android_x86_64_static
@@ -225,6 +323,12 @@ prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_transport_chttp2_client_insecure^android_x86_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/grpc-grpc/libgrpc_transport_chttp2_client_insecure^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_transport_chttp2_client_insecure^android_x86_x86_64_static
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/grpc-grpc/libgrpc_transport_chttp2_client_insecure^android_x86_x86_64_static.output $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_transport_chttp2_client_insecure^android_x86_x86_64_static $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_transport_chttp2_client_insecure^android_x86_x86_64_static/addition_copy_files.output
+
+echo "building libgrpc_transport_chttp2_client_insecure^linux_glibc_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libgrpc_transport_chttp2_client_insecure,linux_glibc_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_transport_chttp2_client_insecure^linux_glibc_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/grpc-grpc/libgrpc_transport_chttp2_client_insecure^linux_glibc_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_transport_chttp2_client_insecure^linux_glibc_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/grpc-grpc/libgrpc_transport_chttp2_client_insecure^linux_glibc_x86_64_static.output $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_transport_chttp2_client_insecure^linux_glibc_x86_64_static $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_transport_chttp2_client_insecure^linux_glibc_x86_64_static/addition_copy_files.output
 
 echo "building libgrpc_transport_chttp2_client_secure^android_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libgrpc_transport_chttp2_client_secure,android_x86_64_static
@@ -238,6 +342,12 @@ mkdir -p $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_transport_chttp2
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/grpc-grpc/libgrpc_transport_chttp2_client_secure^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_transport_chttp2_client_secure^android_x86_x86_64_static
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/grpc-grpc/libgrpc_transport_chttp2_client_secure^android_x86_x86_64_static.output $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_transport_chttp2_client_secure^android_x86_x86_64_static $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_transport_chttp2_client_secure^android_x86_x86_64_static/addition_copy_files.output
 
+echo "building libgrpc_transport_chttp2_client_secure^linux_glibc_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libgrpc_transport_chttp2_client_secure,linux_glibc_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_transport_chttp2_client_secure^linux_glibc_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/grpc-grpc/libgrpc_transport_chttp2_client_secure^linux_glibc_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_transport_chttp2_client_secure^linux_glibc_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/grpc-grpc/libgrpc_transport_chttp2_client_secure^linux_glibc_x86_64_static.output $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_transport_chttp2_client_secure^linux_glibc_x86_64_static $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_transport_chttp2_client_secure^linux_glibc_x86_64_static/addition_copy_files.output
+
 echo "building libgrpc_message_size_filter^android_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libgrpc_message_size_filter,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_message_size_filter^android_x86_64_static
@@ -249,6 +359,12 @@ prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_message_size_filter^android_x86_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/grpc-grpc/libgrpc_message_size_filter^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_message_size_filter^android_x86_x86_64_static
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/grpc-grpc/libgrpc_message_size_filter^android_x86_x86_64_static.output $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_message_size_filter^android_x86_x86_64_static $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_message_size_filter^android_x86_x86_64_static/addition_copy_files.output
+
+echo "building libgrpc_message_size_filter^linux_glibc_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libgrpc_message_size_filter,linux_glibc_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_message_size_filter^linux_glibc_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/grpc-grpc/libgrpc_message_size_filter^linux_glibc_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_message_size_filter^linux_glibc_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/grpc-grpc/libgrpc_message_size_filter^linux_glibc_x86_64_static.output $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_message_size_filter^linux_glibc_x86_64_static $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_message_size_filter^linux_glibc_x86_64_static/addition_copy_files.output
 
 echo "building libgrpc_transport_inproc^android_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libgrpc_transport_inproc,android_x86_64_static
@@ -262,6 +378,12 @@ mkdir -p $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_transport_inproc
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/grpc-grpc/libgrpc_transport_inproc^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_transport_inproc^android_x86_x86_64_static
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/grpc-grpc/libgrpc_transport_inproc^android_x86_x86_64_static.output $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_transport_inproc^android_x86_x86_64_static $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_transport_inproc^android_x86_x86_64_static/addition_copy_files.output
 
+echo "building libgrpc_transport_inproc^linux_glibc_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libgrpc_transport_inproc,linux_glibc_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_transport_inproc^linux_glibc_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/grpc-grpc/libgrpc_transport_inproc^linux_glibc_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_transport_inproc^linux_glibc_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/grpc-grpc/libgrpc_transport_inproc^linux_glibc_x86_64_static.output $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_transport_inproc^linux_glibc_x86_64_static $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_transport_inproc^linux_glibc_x86_64_static/addition_copy_files.output
+
 echo "building libgrpc_resolver_dns_ares^android_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libgrpc_resolver_dns_ares,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_resolver_dns_ares^android_x86_64_static
@@ -273,6 +395,12 @@ prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_resolver_dns_ares^android_x86_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/grpc-grpc/libgrpc_resolver_dns_ares^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_resolver_dns_ares^android_x86_x86_64_static
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/grpc-grpc/libgrpc_resolver_dns_ares^android_x86_x86_64_static.output $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_resolver_dns_ares^android_x86_x86_64_static $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_resolver_dns_ares^android_x86_x86_64_static/addition_copy_files.output
+
+echo "building libgrpc_resolver_dns_ares^linux_glibc_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libgrpc_resolver_dns_ares,linux_glibc_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_resolver_dns_ares^linux_glibc_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/grpc-grpc/libgrpc_resolver_dns_ares^linux_glibc_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_resolver_dns_ares^linux_glibc_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/grpc-grpc/libgrpc_resolver_dns_ares^linux_glibc_x86_64_static.output $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_resolver_dns_ares^linux_glibc_x86_64_static $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_resolver_dns_ares^linux_glibc_x86_64_static/addition_copy_files.output
 
 echo "building libgrpc_resolver_dns_native^android_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libgrpc_resolver_dns_native,android_x86_64_static
@@ -286,6 +414,12 @@ mkdir -p $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_resolver_dns_nat
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/grpc-grpc/libgrpc_resolver_dns_native^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_resolver_dns_native^android_x86_x86_64_static
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/grpc-grpc/libgrpc_resolver_dns_native^android_x86_x86_64_static.output $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_resolver_dns_native^android_x86_x86_64_static $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_resolver_dns_native^android_x86_x86_64_static/addition_copy_files.output
 
+echo "building libgrpc_resolver_dns_native^linux_glibc_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libgrpc_resolver_dns_native,linux_glibc_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_resolver_dns_native^linux_glibc_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/grpc-grpc/libgrpc_resolver_dns_native^linux_glibc_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_resolver_dns_native^linux_glibc_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/grpc-grpc/libgrpc_resolver_dns_native^linux_glibc_x86_64_static.output $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_resolver_dns_native^linux_glibc_x86_64_static $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_resolver_dns_native^linux_glibc_x86_64_static/addition_copy_files.output
+
 echo "building libgrpc_http_filters^android_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libgrpc_http_filters,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_http_filters^android_x86_64_static
@@ -297,6 +431,12 @@ prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_http_filters^android_x86_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/grpc-grpc/libgrpc_http_filters^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_http_filters^android_x86_x86_64_static
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/grpc-grpc/libgrpc_http_filters^android_x86_x86_64_static.output $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_http_filters^android_x86_x86_64_static $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_http_filters^android_x86_x86_64_static/addition_copy_files.output
+
+echo "building libgrpc_http_filters^linux_glibc_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libgrpc_http_filters,linux_glibc_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_http_filters^linux_glibc_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/grpc-grpc/libgrpc_http_filters^linux_glibc_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_http_filters^linux_glibc_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/grpc-grpc/libgrpc_http_filters^linux_glibc_x86_64_static.output $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_http_filters^linux_glibc_x86_64_static $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_http_filters^linux_glibc_x86_64_static/addition_copy_files.output
 
 echo "building libgrpc_secure^android_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libgrpc_secure,android_x86_64_static
@@ -310,6 +450,12 @@ mkdir -p $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_secure^android_x
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/grpc-grpc/libgrpc_secure^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_secure^android_x86_x86_64_static
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/grpc-grpc/libgrpc_secure^android_x86_x86_64_static.output $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_secure^android_x86_x86_64_static $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_secure^android_x86_x86_64_static/addition_copy_files.output
 
+echo "building libgrpc_secure^linux_glibc_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libgrpc_secure,linux_glibc_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_secure^linux_glibc_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/grpc-grpc/libgrpc_secure^linux_glibc_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_secure^linux_glibc_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/grpc-grpc/libgrpc_secure^linux_glibc_x86_64_static.output $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_secure^linux_glibc_x86_64_static $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_secure^linux_glibc_x86_64_static/addition_copy_files.output
+
 echo "building libalts_util^android_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libalts_util,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libalts_util^android_x86_64_static
@@ -321,6 +467,12 @@ prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libalts_util^android_x86_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/grpc-grpc/libalts_util^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libalts_util^android_x86_x86_64_static
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/grpc-grpc/libalts_util^android_x86_x86_64_static.output $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libalts_util^android_x86_x86_64_static $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libalts_util^android_x86_x86_64_static/addition_copy_files.output
+
+echo "building libalts_util^linux_glibc_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libalts_util,linux_glibc_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libalts_util^linux_glibc_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/grpc-grpc/libalts_util^linux_glibc_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libalts_util^linux_glibc_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/grpc-grpc/libalts_util^linux_glibc_x86_64_static.output $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libalts_util^linux_glibc_x86_64_static $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libalts_util^linux_glibc_x86_64_static/addition_copy_files.output
 
 echo "building libtsi^android_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libtsi,android_x86_64_static
@@ -334,6 +486,18 @@ mkdir -p $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libtsi^android_x86_x86_6
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/grpc-grpc/libtsi^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libtsi^android_x86_x86_64_static
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/grpc-grpc/libtsi^android_x86_x86_64_static.output $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libtsi^android_x86_x86_64_static $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libtsi^android_x86_x86_64_static/addition_copy_files.output
 
+echo "building libtsi^linux_glibc_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libtsi,linux_glibc_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libtsi^linux_glibc_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/grpc-grpc/libtsi^linux_glibc_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libtsi^linux_glibc_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/grpc-grpc/libtsi^linux_glibc_x86_64_static.output $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libtsi^linux_glibc_x86_64_static $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libtsi^linux_glibc_x86_64_static/addition_copy_files.output
+
+echo "building libgrpc_plugin_support^linux_glibc_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libgrpc_plugin_support,linux_glibc_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_plugin_support^linux_glibc_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/grpc-grpc/libgrpc_plugin_support^linux_glibc_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_plugin_support^linux_glibc_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/grpc-grpc/libgrpc_plugin_support^linux_glibc_x86_64_static.output $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_plugin_support^linux_glibc_x86_64_static $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_plugin_support^linux_glibc_x86_64_static/addition_copy_files.output
+
 echo "building libalts_frame_protector^android_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libalts_frame_protector,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libalts_frame_protector^android_x86_64_static
@@ -345,6 +509,12 @@ prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libalts_frame_protector^android_x86_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/grpc-grpc/libalts_frame_protector^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libalts_frame_protector^android_x86_x86_64_static
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/grpc-grpc/libalts_frame_protector^android_x86_x86_64_static.output $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libalts_frame_protector^android_x86_x86_64_static $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libalts_frame_protector^android_x86_x86_64_static/addition_copy_files.output
+
+echo "building libalts_frame_protector^linux_glibc_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libalts_frame_protector,linux_glibc_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libalts_frame_protector^linux_glibc_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/grpc-grpc/libalts_frame_protector^linux_glibc_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libalts_frame_protector^linux_glibc_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/grpc-grpc/libalts_frame_protector^linux_glibc_x86_64_static.output $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libalts_frame_protector^linux_glibc_x86_64_static $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libalts_frame_protector^linux_glibc_x86_64_static/addition_copy_files.output
 
 echo "building libtsi_interface^android_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libtsi_interface,android_x86_64_static
@@ -358,6 +528,12 @@ mkdir -p $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libtsi_interface^android
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/grpc-grpc/libtsi_interface^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libtsi_interface^android_x86_x86_64_static
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/grpc-grpc/libtsi_interface^android_x86_x86_64_static.output $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libtsi_interface^android_x86_x86_64_static $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libtsi_interface^android_x86_x86_64_static/addition_copy_files.output
 
+echo "building libtsi_interface^linux_glibc_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libtsi_interface,linux_glibc_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libtsi_interface^linux_glibc_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/grpc-grpc/libtsi_interface^linux_glibc_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libtsi_interface^linux_glibc_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/grpc-grpc/libtsi_interface^linux_glibc_x86_64_static.output $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libtsi_interface^linux_glibc_x86_64_static $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libtsi_interface^linux_glibc_x86_64_static/addition_copy_files.output
+
 echo "building libgrpc_transport_chttp2^android_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libgrpc_transport_chttp2,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_transport_chttp2^android_x86_64_static
@@ -369,6 +545,18 @@ prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_transport_chttp2^android_x86_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/grpc-grpc/libgrpc_transport_chttp2^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_transport_chttp2^android_x86_x86_64_static
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/grpc-grpc/libgrpc_transport_chttp2^android_x86_x86_64_static.output $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_transport_chttp2^android_x86_x86_64_static $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_transport_chttp2^android_x86_x86_64_static/addition_copy_files.output
+
+echo "building libgrpc_transport_chttp2^linux_glibc_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libgrpc_transport_chttp2,linux_glibc_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_transport_chttp2^linux_glibc_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/grpc-grpc/libgrpc_transport_chttp2^linux_glibc_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_transport_chttp2^linux_glibc_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/grpc-grpc/libgrpc_transport_chttp2^linux_glibc_x86_64_static.output $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_transport_chttp2^linux_glibc_x86_64_static $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_transport_chttp2^linux_glibc_x86_64_static/addition_copy_files.output
+
+echo "building libgrpc_lb_policy_grpclb^linux_glibc_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libgrpc_lb_policy_grpclb,linux_glibc_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_lb_policy_grpclb^linux_glibc_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/grpc-grpc/libgrpc_lb_policy_grpclb^linux_glibc_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_lb_policy_grpclb^linux_glibc_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/grpc-grpc/libgrpc_lb_policy_grpclb^linux_glibc_x86_64_static.output $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_lb_policy_grpclb^linux_glibc_x86_64_static $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_lb_policy_grpclb^linux_glibc_x86_64_static/addition_copy_files.output
 
 echo "building libgrpc_lb_policy_grpclb_secure^android_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libgrpc_lb_policy_grpclb_secure,android_x86_64_static
@@ -382,6 +570,12 @@ mkdir -p $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_lb_policy_grpclb
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/grpc-grpc/libgrpc_lb_policy_grpclb_secure^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_lb_policy_grpclb_secure^android_x86_x86_64_static
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/grpc-grpc/libgrpc_lb_policy_grpclb_secure^android_x86_x86_64_static.output $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_lb_policy_grpclb_secure^android_x86_x86_64_static $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_lb_policy_grpclb_secure^android_x86_x86_64_static/addition_copy_files.output
 
+echo "building libgrpc_lb_policy_grpclb_secure^linux_glibc_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libgrpc_lb_policy_grpclb_secure,linux_glibc_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_lb_policy_grpclb_secure^linux_glibc_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/grpc-grpc/libgrpc_lb_policy_grpclb_secure^linux_glibc_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_lb_policy_grpclb_secure^linux_glibc_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/grpc-grpc/libgrpc_lb_policy_grpclb_secure^linux_glibc_x86_64_static.output $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_lb_policy_grpclb_secure^linux_glibc_x86_64_static $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_lb_policy_grpclb_secure^linux_glibc_x86_64_static/addition_copy_files.output
+
 echo "building libgrpc++_codegen_base_src^android_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libgrpc++_codegen_base_src,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc++_codegen_base_src^android_x86_64_static
@@ -393,6 +587,12 @@ prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc++_codegen_base_src^android_x86_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/grpc-grpc/libgrpc++_codegen_base_src^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc++_codegen_base_src^android_x86_x86_64_static
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/grpc-grpc/libgrpc++_codegen_base_src^android_x86_x86_64_static.output $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc++_codegen_base_src^android_x86_x86_64_static $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc++_codegen_base_src^android_x86_x86_64_static/addition_copy_files.output
+
+echo "building libgrpc++_codegen_base_src^linux_glibc_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libgrpc++_codegen_base_src,linux_glibc_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc++_codegen_base_src^linux_glibc_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/grpc-grpc/libgrpc++_codegen_base_src^linux_glibc_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc++_codegen_base_src^linux_glibc_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/grpc-grpc/libgrpc++_codegen_base_src^linux_glibc_x86_64_static.output $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc++_codegen_base_src^linux_glibc_x86_64_static $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc++_codegen_base_src^linux_glibc_x86_64_static/addition_copy_files.output
 
 echo "building gpr_base^android_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja gpr_base,android_x86_64_static
@@ -406,6 +606,12 @@ mkdir -p $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/gpr_base^android_x86_x86
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/grpc-grpc/gpr_base^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/gpr_base^android_x86_x86_64_static
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/grpc-grpc/gpr_base^android_x86_x86_64_static.output $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/gpr_base^android_x86_x86_64_static $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/gpr_base^android_x86_x86_64_static/addition_copy_files.output
 
+echo "building gpr_base^linux_glibc_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja gpr_base,linux_glibc_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/gpr_base^linux_glibc_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/grpc-grpc/gpr_base^linux_glibc_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/gpr_base^linux_glibc_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/grpc-grpc/gpr_base^linux_glibc_x86_64_static.output $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/gpr_base^linux_glibc_x86_64_static $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/gpr_base^linux_glibc_x86_64_static/addition_copy_files.output
+
 echo "building libgrpc_client_channel^android_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libgrpc_client_channel,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_client_channel^android_x86_64_static
@@ -417,6 +623,12 @@ prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_client_channel^android_x86_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/grpc-grpc/libgrpc_client_channel^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_client_channel^android_x86_x86_64_static
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/grpc-grpc/libgrpc_client_channel^android_x86_x86_64_static.output $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_client_channel^android_x86_x86_64_static $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_client_channel^android_x86_x86_64_static/addition_copy_files.output
+
+echo "building libgrpc_client_channel^linux_glibc_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libgrpc_client_channel,linux_glibc_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_client_channel^linux_glibc_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/grpc-grpc/libgrpc_client_channel^linux_glibc_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_client_channel^linux_glibc_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/grpc-grpc/libgrpc_client_channel^linux_glibc_x86_64_static.output $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_client_channel^linux_glibc_x86_64_static $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_client_channel^linux_glibc_x86_64_static/addition_copy_files.output
 
 echo "building libgrpc_trace^android_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libgrpc_trace,android_x86_64_static
@@ -430,6 +642,12 @@ mkdir -p $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_trace^android_x8
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/grpc-grpc/libgrpc_trace^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_trace^android_x86_x86_64_static
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/grpc-grpc/libgrpc_trace^android_x86_x86_64_static.output $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_trace^android_x86_x86_64_static $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_trace^android_x86_x86_64_static/addition_copy_files.output
 
+echo "building libgrpc_trace^linux_glibc_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libgrpc_trace,linux_glibc_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_trace^linux_glibc_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/grpc-grpc/libgrpc_trace^linux_glibc_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_trace^linux_glibc_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/grpc-grpc/libgrpc_trace^linux_glibc_x86_64_static.output $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_trace^linux_glibc_x86_64_static $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_trace^linux_glibc_x86_64_static/addition_copy_files.output
+
 echo "building libgrpc_base_c^android_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libgrpc_base_c,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_base_c^android_x86_64_static
@@ -442,6 +660,12 @@ mkdir -p $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_base_c^android_x
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/grpc-grpc/libgrpc_base_c^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_base_c^android_x86_x86_64_static
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/grpc-grpc/libgrpc_base_c^android_x86_x86_64_static.output $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_base_c^android_x86_x86_64_static $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_base_c^android_x86_x86_64_static/addition_copy_files.output
 
+echo "building libgrpc_base_c^linux_glibc_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libgrpc_base_c,linux_glibc_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_base_c^linux_glibc_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/grpc-grpc/libgrpc_base_c^linux_glibc_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_base_c^linux_glibc_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/grpc-grpc/libgrpc_base_c^linux_glibc_x86_64_static.output $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_base_c^linux_glibc_x86_64_static $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/libgrpc_base_c^linux_glibc_x86_64_static/addition_copy_files.output
+
 echo "building census^android_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja census,android_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/census^android_x86_64_static
@@ -453,6 +677,12 @@ prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/census^android_x86_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/grpc-grpc/census^android_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/census^android_x86_x86_64_static
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/grpc-grpc/census^android_x86_x86_64_static.output $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/census^android_x86_x86_64_static $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/census^android_x86_x86_64_static/addition_copy_files.output
+
+echo "building census^linux_glibc_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja census,linux_glibc_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/census^linux_glibc_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/grpc-grpc/census^linux_glibc_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/census^linux_glibc_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/grpc-grpc/census^linux_glibc_x86_64_static.output $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/census^linux_glibc_x86_64_static $GITHUB_WORKSPACE/artifacts/external/grpc-grpc/census^linux_glibc_x86_64_static/addition_copy_files.output
 
 
 rm -rf out
@@ -492,6 +722,10 @@ if [ ! -f "$GITHUB_WORKSPACE/cache/external_nanopb-c.tar.zst" ]; then
   echo "Compressing external/nanopb-c -> external_nanopb-c.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/external_nanopb-c.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/nanopb-c/ .
 fi
+if [ ! -f "$GITHUB_WORKSPACE/cache/external_protobuf.tar.zst" ]; then
+  echo "Compressing external/protobuf -> external_protobuf.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/external_protobuf.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/protobuf/ .
+fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/external_zlib.tar.zst" ]; then
   echo "Compressing external/zlib -> external_zlib.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/external_zlib.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/zlib/ .
@@ -515,6 +749,10 @@ fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/hardware_ril.tar.zst" ]; then
   echo "Compressing hardware/ril -> hardware_ril.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/hardware_ril.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/hardware/ril/ .
+fi
+if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_gcc_linux-x86_host_x86_64-linux-glibc2.17-4.8.tar.zst" ]; then
+  echo "Compressing prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8 -> prebuilts_gcc_linux-x86_host_x86_64-linux-glibc2.17-4.8.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/prebuilts_gcc_linux-x86_host_x86_64-linux-glibc2.17-4.8.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8/ .
 fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_gcc_linux-x86_x86_x86_64-linux-android-4.9.tar.zst" ]; then
   echo "Compressing prebuilts/gcc/linux-x86/x86/x86_64-linux-android-4.9 -> prebuilts_gcc_linux-x86_x86_x86_64-linux-android-4.9.tar.zst"

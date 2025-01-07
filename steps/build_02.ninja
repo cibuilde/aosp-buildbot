@@ -45,6 +45,8 @@ include ninja/external/crosvm/sync/libsync_rust^android_x86_64_rlib_rlib-std_ape
 include ninja/external/crosvm/syscall_defines/libsyscall_defines^android_x86_64_rlib_rlib-std_apex10000.ninja
 include ninja/external/grpc-grpc/libgrpc^android_x86_64_static.ninja
 include ninja/external/grpc-grpc/libgrpc^android_x86_x86_64_static.ninja
+include ninja/external/grpc-grpc/libgrpc^linux_glibc_x86_64_static.ninja
+include ninja/external/grpc-grpc/libgrpc_unsecure^linux_glibc_x86_64_static.ninja
 include ninja/external/libcxx/libc++^linux_glibc_x86_64_shared.ninja
 include ninja/external/libcxx/libc++^linux_glibc_x86_shared.ninja
 include ninja/external/libcxx/libc++_static^android_recovery_x86_64_static.ninja
@@ -242,11 +244,15 @@ build libsyscall_defines,android_x86_64_rlib_rlib-std_apex10000: phony out/soong
 
 build external_crosvm-targets: phony libassertions,android_x86_64_rlib_rlib-std_apex10000 librand_ish,android_x86_64_rlib_rlib-std_apex10000 libsync_rust,android_x86_64_rlib_rlib-std_apex10000 libsyscall_defines,android_x86_64_rlib_rlib-std_apex10000
 
+build libgrpc_unsecure,linux_glibc_x86_64_static: phony out/soong/.intermediates/external/grpc-grpc/libgrpc_unsecure/linux_glibc_x86_64_static/libgrpc_unsecure.a
+
 build libgrpc,android_x86_64_static: phony out/soong/.intermediates/external/grpc-grpc/libgrpc/android_x86_64_static/libgrpc.a
 
 build libgrpc,android_x86_x86_64_static: phony out/soong/.intermediates/external/grpc-grpc/libgrpc/android_x86_x86_64_static/libgrpc.a
 
-build external_grpc-grpc-targets: phony libgrpc,android_x86_64_static libgrpc,android_x86_x86_64_static
+build libgrpc,linux_glibc_x86_64_static: phony out/soong/.intermediates/external/grpc-grpc/libgrpc/linux_glibc_x86_64_static/libgrpc.a
+
+build external_grpc-grpc-targets: phony libgrpc,android_x86_64_static libgrpc,android_x86_x86_64_static libgrpc,linux_glibc_x86_64_static libgrpc_unsecure,linux_glibc_x86_64_static
 
 build libc++,linux_glibc_x86_64_shared: phony out/soong/.intermediates/external/libcxx/libc++/linux_glibc_x86_64_shared/libc++.so out/soong/.intermediates/external/libcxx/libc++/linux_glibc_x86_64_shared/libc++.so.toc out/soong/host/linux-x86/lib64/libc++.so
 

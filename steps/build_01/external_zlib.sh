@@ -84,6 +84,12 @@ mkdir -p $GITHUB_WORKSPACE/artifacts/external/zlib/libz^linux_glibc_x86_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/zlib/libz^linux_glibc_x86_static.output . $GITHUB_WORKSPACE/artifacts/external/zlib/libz^linux_glibc_x86_static
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/zlib/libz^linux_glibc_x86_static.output $GITHUB_WORKSPACE/artifacts/external/zlib/libz^linux_glibc_x86_static $GITHUB_WORKSPACE/artifacts/external/zlib/libz^linux_glibc_x86_static/addition_copy_files.output
 
+echo "building libz_stable^linux_glibc_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libz_stable,linux_glibc_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/zlib/libz_stable^linux_glibc_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/zlib/libz_stable^linux_glibc_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/zlib/libz_stable^linux_glibc_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/zlib/libz_stable^linux_glibc_x86_64_static.output $GITHUB_WORKSPACE/artifacts/external/zlib/libz_stable^linux_glibc_x86_64_static $GITHUB_WORKSPACE/artifacts/external/zlib/libz_stable^linux_glibc_x86_64_static/addition_copy_files.output
+
 echo "building minigzip^linux_glibc_x86_64"
 prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja minigzip,linux_glibc_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/zlib/minigzip^linux_glibc_x86_64

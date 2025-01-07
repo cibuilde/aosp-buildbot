@@ -20,10 +20,14 @@ clone_depth_platform external/libcxx
 clone_depth_platform external/libcxxabi
 clone_depth_platform external/libjpeg-turbo
 clone_depth_platform external/libyuv
+clone_project platform/prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8 prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8 android12-gsi "/sysroot" "/lib/gcc/x86_64-linux/4.8.3" "/x86_64-linux/lib64" "/x86_64-linux/lib32"
 clone_depth_platform prebuilts/gcc/linux-x86/x86/x86_64-linux-android-4.9
 
 rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/libc^android_vendor.31_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/libc^android_vendor.31_x86_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcxx/libc++^linux_glibc_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/libjpeg-turbo/libjpeg^linux_glibc_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/libyuv/files/libyuv^linux_glibc_x86_64_static/ .
 
 echo "building libyuv_static^android_vendor.31_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libyuv_static,android_vendor.31_x86_64_static
@@ -48,6 +52,12 @@ prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/libyuv/files/libyuv^android_vendor.31_x86_x86_64_static
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/libyuv/libyuv^android_vendor.31_x86_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/external/libyuv/files/libyuv^android_vendor.31_x86_x86_64_static
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/external/libyuv/libyuv^android_vendor.31_x86_x86_64_static.output $GITHUB_WORKSPACE/artifacts/external/libyuv/files/libyuv^android_vendor.31_x86_x86_64_static $GITHUB_WORKSPACE/artifacts/external/libyuv/files/libyuv^android_vendor.31_x86_x86_64_static/addition_copy_files.output
+
+echo "building libyuv^linux_glibc_x86_64_shared"
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_04.ninja libyuv,linux_glibc_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/libyuv/files/libyuv^linux_glibc_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_04/external/libyuv/libyuv^linux_glibc_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/external/libyuv/files/libyuv^linux_glibc_x86_64_shared
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_04/external/libyuv/libyuv^linux_glibc_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/external/libyuv/files/libyuv^linux_glibc_x86_64_shared $GITHUB_WORKSPACE/artifacts/external/libyuv/files/libyuv^linux_glibc_x86_64_shared/addition_copy_files.output
 
 
 rm -rf out
@@ -78,6 +88,10 @@ fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/external_libyuv.tar.zst" ]; then
   echo "Compressing external/libyuv -> external_libyuv.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/external_libyuv.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/libyuv/ .
+fi
+if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_gcc_linux-x86_host_x86_64-linux-glibc2.17-4.8.tar.zst" ]; then
+  echo "Compressing prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8 -> prebuilts_gcc_linux-x86_host_x86_64-linux-glibc2.17-4.8.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/prebuilts_gcc_linux-x86_host_x86_64-linux-glibc2.17-4.8.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8/ .
 fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_gcc_linux-x86_x86_x86_64-linux-android-4.9.tar.zst" ]; then
   echo "Compressing prebuilts/gcc/linux-x86/x86/x86_64-linux-android-4.9 -> prebuilts_gcc_linux-x86_x86_x86_64-linux-android-4.9.tar.zst"

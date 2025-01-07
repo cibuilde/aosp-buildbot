@@ -42,6 +42,12 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/system/core/libsparse/libsparse^linux_gl
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/libbase/libbase^linux_glibc_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^linux_glibc_x86_64_shared/ .
 
+echo "building e2fsck^linux_glibc_x86_64"
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja e2fsck,linux_glibc_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/e2fsck/e2fsck^linux_glibc_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/external/e2fsprogs/e2fsck^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/e2fsck/e2fsck^linux_glibc_x86_64
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_06/external/e2fsprogs/e2fsck^linux_glibc_x86_64.output $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/e2fsck/e2fsck^linux_glibc_x86_64 $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/e2fsck/e2fsck^linux_glibc_x86_64/addition_copy_files.output
+
 echo "building libext2fs^linux_glibc_x86_64_shared"
 prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libext2fs,linux_glibc_x86_64_shared
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/lib/ext2fs/libext2fs^linux_glibc_x86_64_shared
@@ -59,6 +65,12 @@ prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/misc/tune2fs^linux_glibc_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/external/e2fsprogs/tune2fs^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/misc/tune2fs^linux_glibc_x86_64
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_06/external/e2fsprogs/tune2fs^linux_glibc_x86_64.output $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/misc/tune2fs^linux_glibc_x86_64 $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/misc/tune2fs^linux_glibc_x86_64/addition_copy_files.output
+
+echo "building badblocks^linux_glibc_x86_64"
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja badblocks,linux_glibc_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/misc/badblocks^linux_glibc_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/external/e2fsprogs/badblocks^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/misc/badblocks^linux_glibc_x86_64
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_06/external/e2fsprogs/badblocks^linux_glibc_x86_64.output $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/misc/badblocks^linux_glibc_x86_64 $GITHUB_WORKSPACE/artifacts/external/e2fsprogs/misc/badblocks^linux_glibc_x86_64/addition_copy_files.output
 
 
 rm -rf out

@@ -1,0 +1,3 @@
+out/soong/.intermediates/system/unwinding/libunwindstack/libunwindstack/linux_glibc_x86_64_shared/libunwindstack.so
+out/soong/.intermediates/system/unwinding/libunwindstack/libunwindstack/linux_glibc_x86_64_shared/libunwindstack.so.toc
+out/soong/host/linux-x86/lib64/libunwindstack.so

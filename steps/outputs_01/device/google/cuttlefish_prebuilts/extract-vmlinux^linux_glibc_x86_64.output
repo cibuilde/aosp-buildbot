@@ -1,0 +1,2 @@
+out/soong/.intermediates/device/google/cuttlefish_prebuilts/extract-vmlinux/linux_glibc_x86_64/extract-vmlinux
+out/soong/host/linux-x86/bin/extract-vmlinux

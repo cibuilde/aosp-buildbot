@@ -1,0 +1,14 @@
+out/soong/.intermediates/external/grpc-grpc/libalts_frame_protector/linux_glibc_x86_64_static/obj/external/grpc-grpc/src/core/tsi/alts/crypt/aes_gcm.o
+out/soong/.intermediates/external/grpc-grpc/libalts_frame_protector/linux_glibc_x86_64_static/obj/external/grpc-grpc/src/core/tsi/alts/crypt/gsec.o
+out/soong/.intermediates/external/grpc-grpc/libalts_frame_protector/linux_glibc_x86_64_static/obj/external/grpc-grpc/src/core/tsi/alts/frame_protector/alts_counter.o
+out/soong/.intermediates/external/grpc-grpc/libalts_frame_protector/linux_glibc_x86_64_static/obj/external/grpc-grpc/src/core/tsi/alts/frame_protector/alts_crypter.o
+out/soong/.intermediates/external/grpc-grpc/libalts_frame_protector/linux_glibc_x86_64_static/obj/external/grpc-grpc/src/core/tsi/alts/frame_protector/alts_frame_protector.o
+out/soong/.intermediates/external/grpc-grpc/libalts_frame_protector/linux_glibc_x86_64_static/obj/external/grpc-grpc/src/core/tsi/alts/frame_protector/alts_record_protocol_crypter_common.o
+out/soong/.intermediates/external/grpc-grpc/libalts_frame_protector/linux_glibc_x86_64_static/obj/external/grpc-grpc/src/core/tsi/alts/frame_protector/alts_seal_privacy_integrity_crypter.o
+out/soong/.intermediates/external/grpc-grpc/libalts_frame_protector/linux_glibc_x86_64_static/obj/external/grpc-grpc/src/core/tsi/alts/frame_protector/alts_unseal_privacy_integrity_crypter.o
+out/soong/.intermediates/external/grpc-grpc/libalts_frame_protector/linux_glibc_x86_64_static/obj/external/grpc-grpc/src/core/tsi/alts/frame_protector/frame_handler.o
+out/soong/.intermediates/external/grpc-grpc/libalts_frame_protector/linux_glibc_x86_64_static/obj/external/grpc-grpc/src/core/tsi/alts/zero_copy_frame_protector/alts_grpc_integrity_only_record_protocol.o
+out/soong/.intermediates/external/grpc-grpc/libalts_frame_protector/linux_glibc_x86_64_static/obj/external/grpc-grpc/src/core/tsi/alts/zero_copy_frame_protector/alts_grpc_privacy_integrity_record_protocol.o
+out/soong/.intermediates/external/grpc-grpc/libalts_frame_protector/linux_glibc_x86_64_static/obj/external/grpc-grpc/src/core/tsi/alts/zero_copy_frame_protector/alts_grpc_record_protocol_common.o
+out/soong/.intermediates/external/grpc-grpc/libalts_frame_protector/linux_glibc_x86_64_static/obj/external/grpc-grpc/src/core/tsi/alts/zero_copy_frame_protector/alts_iovec_record_protocol.o
+out/soong/.intermediates/external/grpc-grpc/libalts_frame_protector/linux_glibc_x86_64_static/obj/external/grpc-grpc/src/core/tsi/alts/zero_copy_frame_protector/alts_zero_copy_grpc_protector.o

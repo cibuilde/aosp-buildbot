@@ -1,0 +1,2 @@
+out/soong/.intermediates/device/google/cuttlefish_vmm/x86_64-linux-gnu/swap_monitor.policy_at_x86_64/linux_glibc_common/swap_monitor.policy
+out/soong/host/linux-x86/usr/share/cuttlefish/x86_64-linux-gnu/seccomp/swap_monitor.policy

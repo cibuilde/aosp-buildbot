@@ -1,0 +1,2 @@
+out/soong/.intermediates/device/google/cuttlefish/host/commands/gnss_grpc_proxy/gnss_grpc_proxy/linux_glibc_x86_64/gnss_grpc_proxy
+out/soong/host/linux-x86/bin/gnss_grpc_proxy

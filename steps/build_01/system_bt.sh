@@ -30,6 +30,18 @@ mkdir -p $GITHUB_WORKSPACE/artifacts/system/bt/conf/bt_did.conf^android_x86_64
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/bt/bt_did.conf^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/bt/conf/bt_did.conf^android_x86_64
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/system/bt/bt_did.conf^android_x86_64.output $GITHUB_WORKSPACE/artifacts/system/bt/conf/bt_did.conf^android_x86_64 $GITHUB_WORKSPACE/artifacts/system/bt/conf/bt_did.conf^android_x86_64/addition_copy_files.output
 
+echo "building root-canal^linux_glibc_x86_64"
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja root-canal,linux_glibc_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/bt/vendor_libs/test_vendor_lib/root-canal^linux_glibc_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/bt/root-canal^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/bt/vendor_libs/test_vendor_lib/root-canal^linux_glibc_x86_64
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/system/bt/root-canal^linux_glibc_x86_64.output $GITHUB_WORKSPACE/artifacts/system/bt/vendor_libs/test_vendor_lib/root-canal^linux_glibc_x86_64 $GITHUB_WORKSPACE/artifacts/system/bt/vendor_libs/test_vendor_lib/root-canal^linux_glibc_x86_64/addition_copy_files.output
+
+echo "building controller_properties.json^linux_glibc_common"
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja controller_properties.json,linux_glibc_common
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/bt/vendor_libs/test_vendor_lib/data/controller_properties.json^linux_glibc_common
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/bt/controller_properties.json^linux_glibc_common.output . $GITHUB_WORKSPACE/artifacts/system/bt/vendor_libs/test_vendor_lib/data/controller_properties.json^linux_glibc_common
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/system/bt/controller_properties.json^linux_glibc_common.output $GITHUB_WORKSPACE/artifacts/system/bt/vendor_libs/test_vendor_lib/data/controller_properties.json^linux_glibc_common $GITHUB_WORKSPACE/artifacts/system/bt/vendor_libs/test_vendor_lib/data/controller_properties.json^linux_glibc_common/addition_copy_files.output
+
 
 rm -rf out
 

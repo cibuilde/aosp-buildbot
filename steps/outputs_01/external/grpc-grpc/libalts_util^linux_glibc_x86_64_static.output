@@ -1,0 +1,13 @@
+out/soong/.intermediates/external/grpc-grpc/libalts_util/linux_glibc_x86_64_static/obj/external/grpc-grpc/src/core/lib/security/credentials/alts/check_gcp_environment.o
+out/soong/.intermediates/external/grpc-grpc/libalts_util/linux_glibc_x86_64_static/obj/external/grpc-grpc/src/core/lib/security/credentials/alts/check_gcp_environment_linux.o
+out/soong/.intermediates/external/grpc-grpc/libalts_util/linux_glibc_x86_64_static/obj/external/grpc-grpc/src/core/lib/security/credentials/alts/check_gcp_environment_no_op.o
+out/soong/.intermediates/external/grpc-grpc/libalts_util/linux_glibc_x86_64_static/obj/external/grpc-grpc/src/core/lib/security/credentials/alts/check_gcp_environment_windows.o
+out/soong/.intermediates/external/grpc-grpc/libalts_util/linux_glibc_x86_64_static/obj/external/grpc-grpc/src/core/lib/security/credentials/alts/grpc_alts_credentials_client_options.o
+out/soong/.intermediates/external/grpc-grpc/libalts_util/linux_glibc_x86_64_static/obj/external/grpc-grpc/src/core/lib/security/credentials/alts/grpc_alts_credentials_options.o
+out/soong/.intermediates/external/grpc-grpc/libalts_util/linux_glibc_x86_64_static/obj/external/grpc-grpc/src/core/lib/security/credentials/alts/grpc_alts_credentials_server_options.o
+out/soong/.intermediates/external/grpc-grpc/libalts_util/linux_glibc_x86_64_static/obj/external/grpc-grpc/src/core/tsi/alts/handshaker/alts_handshaker_service_api.o
+out/soong/.intermediates/external/grpc-grpc/libalts_util/linux_glibc_x86_64_static/obj/external/grpc-grpc/src/core/tsi/alts/handshaker/alts_handshaker_service_api_util.o
+out/soong/.intermediates/external/grpc-grpc/libalts_util/linux_glibc_x86_64_static/obj/external/grpc-grpc/src/core/tsi/alts/handshaker/altscontext.pb.o
+out/soong/.intermediates/external/grpc-grpc/libalts_util/linux_glibc_x86_64_static/obj/external/grpc-grpc/src/core/tsi/alts/handshaker/handshaker.pb.o
+out/soong/.intermediates/external/grpc-grpc/libalts_util/linux_glibc_x86_64_static/obj/external/grpc-grpc/src/core/tsi/alts/handshaker/transport_security_common.pb.o
+out/soong/.intermediates/external/grpc-grpc/libalts_util/linux_glibc_x86_64_static/obj/external/grpc-grpc/src/core/tsi/alts/handshaker/transport_security_common_api.o

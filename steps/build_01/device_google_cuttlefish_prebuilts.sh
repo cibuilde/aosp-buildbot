@@ -16,8 +16,20 @@ fi
 echo "Preparing for device/google/cuttlefish_prebuilts"
 
 clone_depth device/google/cuttlefish
-clone_project device/google/cuttlefish_prebuilts device/google/cuttlefish_prebuilts android12-gsi "/bootloader/crosvm_x86_64/u-boot.rom" "/uboot_tools/mkenvimage"
+clone_project device/google/cuttlefish_prebuilts device/google/cuttlefish_prebuilts android12-gsi "/bootloader/crosvm_x86_64/u-boot.rom" "/uboot_tools/mkenvimage" "/scripts/extract-vmlinux" "/scripts/extract-ikconfig"
 
+
+echo "building extract-vmlinux^linux_glibc_x86_64"
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja extract-vmlinux,linux_glibc_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish_prebuilts/extract-vmlinux^linux_glibc_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/device/google/cuttlefish_prebuilts/extract-vmlinux^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish_prebuilts/extract-vmlinux^linux_glibc_x86_64
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/device/google/cuttlefish_prebuilts/extract-vmlinux^linux_glibc_x86_64.output $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish_prebuilts/extract-vmlinux^linux_glibc_x86_64 $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish_prebuilts/extract-vmlinux^linux_glibc_x86_64/addition_copy_files.output
+
+echo "building extract-ikconfig^linux_glibc_x86_64"
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja extract-ikconfig,linux_glibc_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish_prebuilts/extract-ikconfig^linux_glibc_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/device/google/cuttlefish_prebuilts/extract-ikconfig^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish_prebuilts/extract-ikconfig^linux_glibc_x86_64
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/device/google/cuttlefish_prebuilts/extract-ikconfig^linux_glibc_x86_64.output $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish_prebuilts/extract-ikconfig^linux_glibc_x86_64 $GITHUB_WORKSPACE/artifacts/device/google/cuttlefish_prebuilts/extract-ikconfig^linux_glibc_x86_64/addition_copy_files.output
 
 echo "building cuttlefish_crosvm_bootloader^android_x86_64"
 prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja cuttlefish_crosvm_bootloader,android_x86_64

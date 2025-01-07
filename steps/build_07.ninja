@@ -308,6 +308,7 @@ include ninja/system/core/watchdogd/watchdogd^android_recovery_x86_64.ninja
 include ninja/system/core/watchdogd/watchdogd^android_x86_64.ninja
 include ninja/system/extras/iotop/iotop^android_x86_64.ninja
 include ninja/system/extras/partition_tools/lpmake^linux_glibc_x86_64.ninja
+include ninja/system/extras/partition_tools/lpunpack^linux_glibc_x86_64.ninja
 include ninja/system/extras/simpleperf/libsimpleperf_profcollect_bindgen^android_x86_64_rlib_dylib-std.ninja
 include ninja/system/gsid/libgsi^android_recovery_x86_64_shared.ninja
 include ninja/system/gsid/libgsi^android_x86_64_shared.ninja
@@ -350,11 +351,13 @@ include ninja/system/unwinding/libbacktrace/libbacktrace^android_vendor.31_x86_6
 include ninja/system/unwinding/libbacktrace/libbacktrace^android_vendor.31_x86_x86_64_shared.ninja
 include ninja/system/unwinding/libbacktrace/libbacktrace^android_x86_64_shared.ninja
 include ninja/system/unwinding/libbacktrace/libbacktrace^android_x86_x86_64_shared.ninja
+include ninja/system/unwinding/libbacktrace/libbacktrace^linux_glibc_x86_64_shared.ninja
 include ninja/system/unwinding/libunwindstack/libunwindstack^android_recovery_x86_64_shared.ninja
 include ninja/system/unwinding/libunwindstack/libunwindstack^android_vendor.31_x86_64_shared.ninja
 include ninja/system/unwinding/libunwindstack/libunwindstack^android_vendor.31_x86_x86_64_shared.ninja
 include ninja/system/unwinding/libunwindstack/libunwindstack^android_x86_64_shared.ninja
 include ninja/system/unwinding/libunwindstack/libunwindstack^android_x86_x86_64_shared.ninja
+include ninja/system/unwinding/libunwindstack/libunwindstack^linux_glibc_x86_64_shared.ninja
 include ninja/system/unwinding/libunwindstack/unwind_info^android_x86_64.ninja
 include ninja/system/unwinding/libunwindstack/unwind_reg_info^android_x86_64.ninja
 include ninja/system/unwinding/libunwindstack/unwind_symbols^android_x86_64.ninja
@@ -1105,11 +1108,13 @@ build system_core-targets: phony crash_dump,android_x86_64_apex10000 crash_dump,
 
 build iotop,android_x86_64: phony out/soong/.intermediates/system/extras/iotop/iotop/android_x86_64/iotop
 
-build lpmake,linux_glibc_x86_64: phony out/soong/host/linux-x86/bin/lpmake
+build lpmake,linux_glibc_x86_64: phony out/soong/.intermediates/system/extras/partition_tools/lpmake/linux_glibc_x86_64/lpmake out/soong/host/linux-x86/bin/lpmake
+
+build lpunpack,linux_glibc_x86_64: phony out/soong/.intermediates/system/extras/partition_tools/lpunpack/linux_glibc_x86_64/lpunpack out/soong/host/linux-x86/bin/lpunpack
 
 build libsimpleperf_profcollect_bindgen,android_x86_64_rlib_dylib-std: phony out/soong/.intermediates/system/extras/simpleperf/libsimpleperf_profcollect_bindgen/android_x86_64_rlib_dylib-std/libsimpleperf_profcollect_bindgen.rlib
 
-build system_extras-targets: phony iotop,android_x86_64 libsimpleperf_profcollect_bindgen,android_x86_64_rlib_dylib-std lpmake,linux_glibc_x86_64
+build system_extras-targets: phony iotop,android_x86_64 libsimpleperf_profcollect_bindgen,android_x86_64_rlib_dylib-std lpmake,linux_glibc_x86_64 lpunpack,linux_glibc_x86_64
 
 build libgsi,android_recovery_x86_64_shared: phony out/soong/.intermediates/system/gsid/libgsi/android_recovery_x86_64_shared/libgsi.so out/soong/.intermediates/system/gsid/libgsi/android_recovery_x86_64_shared/libgsi.so.toc
 
@@ -1217,6 +1222,8 @@ build libbacktrace,android_x86_64_shared: phony out/soong/.intermediates/system/
 
 build libbacktrace,android_x86_x86_64_shared: phony out/soong/.intermediates/system/unwinding/libbacktrace/libbacktrace/android_x86_x86_64_shared/libbacktrace.so out/soong/.intermediates/system/unwinding/libbacktrace/libbacktrace/android_x86_x86_64_shared/libbacktrace.so.toc
 
+build libbacktrace,linux_glibc_x86_64_shared: phony out/soong/.intermediates/system/unwinding/libbacktrace/libbacktrace/linux_glibc_x86_64_shared/libbacktrace.so out/soong/host/linux-x86/lib64/libbacktrace.so
+
 build libunwindstack,android_recovery_x86_64_shared: phony out/soong/.intermediates/system/unwinding/libunwindstack/libunwindstack/android_recovery_x86_64_shared/libunwindstack.so out/soong/.intermediates/system/unwinding/libunwindstack/libunwindstack/android_recovery_x86_64_shared/libunwindstack.so.toc
 
 build libunwindstack,android_vendor.31_x86_64_shared: phony out/soong/.intermediates/system/unwinding/libunwindstack/libunwindstack/android_vendor.31_x86_64_shared/libunwindstack.so out/soong/.intermediates/system/unwinding/libunwindstack/libunwindstack/android_vendor.31_x86_64_shared/libunwindstack.so.toc
@@ -1227,13 +1234,15 @@ build libunwindstack,android_x86_64_shared: phony out/soong/.intermediates/syste
 
 build libunwindstack,android_x86_x86_64_shared: phony out/soong/.intermediates/system/unwinding/libunwindstack/libunwindstack/android_x86_x86_64_shared/libunwindstack.so out/soong/.intermediates/system/unwinding/libunwindstack/libunwindstack/android_x86_x86_64_shared/libunwindstack.so.toc
 
+build libunwindstack,linux_glibc_x86_64_shared: phony out/soong/.intermediates/system/unwinding/libunwindstack/libunwindstack/linux_glibc_x86_64_shared/libunwindstack.so out/soong/.intermediates/system/unwinding/libunwindstack/libunwindstack/linux_glibc_x86_64_shared/libunwindstack.so.toc out/soong/host/linux-x86/lib64/libunwindstack.so
+
 build unwind_info,android_x86_64: phony out/soong/.intermediates/system/unwinding/libunwindstack/unwind_info/android_x86_64/unwind_info
 
 build unwind_symbols,android_x86_64: phony out/soong/.intermediates/system/unwinding/libunwindstack/unwind_symbols/android_x86_64/unwind_symbols
 
 build unwind_reg_info,android_x86_64: phony out/soong/.intermediates/system/unwinding/libunwindstack/unwind_reg_info/android_x86_64/unwind_reg_info
 
-build system_unwinding-targets: phony libbacktrace,android_recovery_x86_64_shared libbacktrace,android_vendor.31_x86_64_shared libbacktrace,android_vendor.31_x86_x86_64_shared libbacktrace,android_x86_64_shared libbacktrace,android_x86_x86_64_shared libunwindstack,android_recovery_x86_64_shared libunwindstack,android_vendor.31_x86_64_shared libunwindstack,android_vendor.31_x86_x86_64_shared libunwindstack,android_x86_64_shared libunwindstack,android_x86_x86_64_shared unwind_info,android_x86_64 unwind_reg_info,android_x86_64 unwind_symbols,android_x86_64
+build system_unwinding-targets: phony libbacktrace,android_recovery_x86_64_shared libbacktrace,android_vendor.31_x86_64_shared libbacktrace,android_vendor.31_x86_x86_64_shared libbacktrace,android_x86_64_shared libbacktrace,android_x86_x86_64_shared libbacktrace,linux_glibc_x86_64_shared libunwindstack,android_recovery_x86_64_shared libunwindstack,android_vendor.31_x86_64_shared libunwindstack,android_vendor.31_x86_x86_64_shared libunwindstack,android_x86_64_shared libunwindstack,android_x86_x86_64_shared libunwindstack,linux_glibc_x86_64_shared unwind_info,android_x86_64 unwind_reg_info,android_x86_64 unwind_symbols,android_x86_64
 
 build secdiscard,android_x86_64: phony out/soong/.intermediates/system/vold/secdiscard/android_x86_64/secdiscard
 

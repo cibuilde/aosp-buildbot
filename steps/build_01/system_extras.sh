@@ -100,6 +100,12 @@ mkdir -p $GITHUB_WORKSPACE/artifacts/system/extras/ext4_utils/mke2fs.conf^androi
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/extras/mke2fs.conf^android_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/extras/ext4_utils/mke2fs.conf^android_x86_64
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/system/extras/mke2fs.conf^android_x86_64.output $GITHUB_WORKSPACE/artifacts/system/extras/ext4_utils/mke2fs.conf^android_x86_64 $GITHUB_WORKSPACE/artifacts/system/extras/ext4_utils/mke2fs.conf^android_x86_64/addition_copy_files.output
 
+echo "building mkf2fsuserimg.sh^linux_glibc_x86_64"
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja mkf2fsuserimg.sh,linux_glibc_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/extras/f2fs_utils/mkf2fsuserimg.sh^linux_glibc_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/system/extras/mkf2fsuserimg.sh^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/extras/f2fs_utils/mkf2fsuserimg.sh^linux_glibc_x86_64
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/system/extras/mkf2fsuserimg.sh^linux_glibc_x86_64.output $GITHUB_WORKSPACE/artifacts/system/extras/f2fs_utils/mkf2fsuserimg.sh^linux_glibc_x86_64 $GITHUB_WORKSPACE/artifacts/system/extras/f2fs_utils/mkf2fsuserimg.sh^linux_glibc_x86_64/addition_copy_files.output
+
 echo "building libfec^android_recovery_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libfec,android_recovery_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/extras/libfec/libfec^android_recovery_x86_64_static

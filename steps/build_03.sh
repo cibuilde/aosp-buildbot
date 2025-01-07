@@ -30,6 +30,10 @@ gh release --repo cibuilde/aosp-buildbot download android12-gsi_02 --pattern bio
 mkdir -p $GITHUB_WORKSPACE/downloads/bionic
 tar xf $GITHUB_WORKSPACE/bionic-02.tar.zst -C $GITHUB_WORKSPACE/downloads/bionic/
 
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern bootable_recovery.tar.zst --output bootable_recovery-01.tar.zst
+mkdir -p $GITHUB_WORKSPACE/downloads/bootable/recovery
+tar xf $GITHUB_WORKSPACE/bootable_recovery-01.tar.zst -C $GITHUB_WORKSPACE/downloads/bootable/recovery/
+
 gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern build_make.tar.zst --output build_make-01.tar.zst
 mkdir -p $GITHUB_WORKSPACE/downloads/build/make
 tar xf $GITHUB_WORKSPACE/build_make-01.tar.zst -C $GITHUB_WORKSPACE/downloads/build/make/
@@ -53,6 +57,18 @@ tar xf $GITHUB_WORKSPACE/external_avb-01.tar.zst -C $GITHUB_WORKSPACE/downloads/
 gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_boringssl.tar.zst --output external_boringssl-01.tar.zst
 mkdir -p $GITHUB_WORKSPACE/downloads/external/boringssl
 tar xf $GITHUB_WORKSPACE/external_boringssl-01.tar.zst -C $GITHUB_WORKSPACE/downloads/external/boringssl/
+
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_brotli.tar.zst --output external_brotli-01.tar.zst
+mkdir -p $GITHUB_WORKSPACE/downloads/external/brotli
+tar xf $GITHUB_WORKSPACE/external_brotli-01.tar.zst -C $GITHUB_WORKSPACE/downloads/external/brotli/
+
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_bsdiff.tar.zst --output external_bsdiff-01.tar.zst
+mkdir -p $GITHUB_WORKSPACE/downloads/external/bsdiff
+tar xf $GITHUB_WORKSPACE/external_bsdiff-01.tar.zst -C $GITHUB_WORKSPACE/downloads/external/bsdiff/
+
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_bzip2.tar.zst --output external_bzip2-01.tar.zst
+mkdir -p $GITHUB_WORKSPACE/downloads/external/bzip2
+tar xf $GITHUB_WORKSPACE/external_bzip2-01.tar.zst -C $GITHUB_WORKSPACE/downloads/external/bzip2/
 
 gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_cpu_features.tar.zst --output external_cpu_features-01.tar.zst
 mkdir -p $GITHUB_WORKSPACE/downloads/external/cpu_features
@@ -110,9 +126,33 @@ gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern ext
 mkdir -p $GITHUB_WORKSPACE/downloads/external/libcxxabi
 tar xf $GITHUB_WORKSPACE/external_libcxxabi-01.tar.zst -C $GITHUB_WORKSPACE/downloads/external/libcxxabi/
 
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_libdivsufsort.tar.zst --output external_libdivsufsort-01.tar.zst
+mkdir -p $GITHUB_WORKSPACE/downloads/external/libdivsufsort
+tar xf $GITHUB_WORKSPACE/external_libdivsufsort-01.tar.zst -C $GITHUB_WORKSPACE/downloads/external/libdivsufsort/
+
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_libevent.tar.zst --output external_libevent-01.tar.zst
+mkdir -p $GITHUB_WORKSPACE/downloads/external/libevent
+tar xf $GITHUB_WORKSPACE/external_libevent-01.tar.zst -C $GITHUB_WORKSPACE/downloads/external/libevent/
+
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_libjpeg-turbo.tar.zst --output external_libjpeg-turbo-01.tar.zst
+mkdir -p $GITHUB_WORKSPACE/downloads/external/libjpeg-turbo
+tar xf $GITHUB_WORKSPACE/external_libjpeg-turbo-01.tar.zst -C $GITHUB_WORKSPACE/downloads/external/libjpeg-turbo/
+
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_libnl.tar.zst --output external_libnl-01.tar.zst
+mkdir -p $GITHUB_WORKSPACE/downloads/external/libnl
+tar xf $GITHUB_WORKSPACE/external_libnl-01.tar.zst -C $GITHUB_WORKSPACE/downloads/external/libnl/
+
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_libopus.tar.zst --output external_libopus-01.tar.zst
+mkdir -p $GITHUB_WORKSPACE/downloads/external/libopus
+tar xf $GITHUB_WORKSPACE/external_libopus-01.tar.zst -C $GITHUB_WORKSPACE/downloads/external/libopus/
+
 gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_libpng.tar.zst --output external_libpng-01.tar.zst
 mkdir -p $GITHUB_WORKSPACE/downloads/external/libpng
 tar xf $GITHUB_WORKSPACE/external_libpng-01.tar.zst -C $GITHUB_WORKSPACE/downloads/external/libpng/
+
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_libvpx.tar.zst --output external_libvpx-01.tar.zst
+mkdir -p $GITHUB_WORKSPACE/downloads/external/libvpx
+tar xf $GITHUB_WORKSPACE/external_libvpx-01.tar.zst -C $GITHUB_WORKSPACE/downloads/external/libvpx/
 
 gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_llvm.tar.zst --output external_llvm-01.tar.zst
 mkdir -p $GITHUB_WORKSPACE/downloads/external/llvm
@@ -297,9 +337,11 @@ export PATH=$GITHUB_WORKSPACE/.bin:$PATH
 
 time source steps/build_03/art.sh
 time source steps/build_03/bionic.sh
+time source steps/build_03/bootable_recovery.sh
 time source steps/build_03/build_make.sh
 time source steps/build_03/cts.sh
 time source steps/build_03/development.sh
+time source steps/build_03/device_google_cuttlefish_vmm.sh
 time source steps/build_03/external_angle.sh
 time source steps/build_03/external_apache-commons-bcel.sh
 time source steps/build_03/external_apache-xml.sh
@@ -307,11 +349,14 @@ time source steps/build_03/external_auto.sh
 time source steps/build_03/external_bc.sh
 time source steps/build_03/external_boringssl.sh
 time source steps/build_03/external_bouncycastle.sh
+time source steps/build_03/external_brotli.sh
+time source steps/build_03/external_bsdiff.sh
 time source steps/build_03/external_clang.sh
 time source steps/build_03/external_conscrypt.sh
 time source steps/build_03/external_crosvm.sh
 time source steps/build_03/external_dagger2.sh
 time source steps/build_03/external_e2fsprogs.sh
+time source steps/build_03/external_erofs-utils.sh
 time source steps/build_03/external_error_prone.sh
 time source steps/build_03/external_f2fs-tools.sh
 time source steps/build_03/external_firebase-messaging.sh
@@ -336,11 +381,17 @@ time source steps/build_03/external_kotlinc.sh
 time source steps/build_03/external_kotlinx.metadata.sh
 time source steps/build_03/external_libcap.sh
 time source steps/build_03/external_libchrome.sh
+time source steps/build_03/external_libevent.sh
 time source steps/build_03/external_libffi.sh
+time source steps/build_03/external_libjpeg-turbo.sh
+time source steps/build_03/external_libnl.sh
+time source steps/build_03/external_libopus.sh
+time source steps/build_03/external_libvpx.sh
 time source steps/build_03/external_llvm.sh
 time source steps/build_03/external_lz4.sh
 time source steps/build_03/external_mime-support.sh
 time source steps/build_03/external_minijail.sh
+time source steps/build_03/external_newfs_msdos.sh
 time source steps/build_03/external_oj-libjdwp.sh
 time source steps/build_03/external_one-true-awk.sh
 time source steps/build_03/external_perfetto.sh
@@ -397,6 +448,8 @@ time source steps/build_03/system_apex.sh
 time source steps/build_03/system_bt.sh
 time source steps/build_03/system_core.sh
 time source steps/build_03/system_extras.sh
+time source steps/build_03/system_gatekeeper.sh
+time source steps/build_03/system_keymaster.sh
 time source steps/build_03/system_logging.sh
 time source steps/build_03/system_sepolicy.sh
 time source steps/build_03/system_tools_aidl.sh

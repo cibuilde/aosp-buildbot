@@ -143,6 +143,12 @@ mkdir -p $GITHUB_WORKSPACE/artifacts/art/libdexfile/libdexfile_support^android_x
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/art/libdexfile_support^android_x86_x86_64_static_apex31.output . $GITHUB_WORKSPACE/artifacts/art/libdexfile/libdexfile_support^android_x86_x86_64_static_apex31
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/art/libdexfile_support^android_x86_x86_64_static_apex31.output $GITHUB_WORKSPACE/artifacts/art/libdexfile/libdexfile_support^android_x86_x86_64_static_apex31 $GITHUB_WORKSPACE/artifacts/art/libdexfile/libdexfile_support^android_x86_x86_64_static_apex31/addition_copy_files.output
 
+echo "building libdexfile_support^linux_glibc_x86_64_static"
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libdexfile_support,linux_glibc_x86_64_static
+mkdir -p $GITHUB_WORKSPACE/artifacts/art/libdexfile/libdexfile_support^linux_glibc_x86_64_static
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/art/libdexfile_support^linux_glibc_x86_64_static.output . $GITHUB_WORKSPACE/artifacts/art/libdexfile/libdexfile_support^linux_glibc_x86_64_static
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/art/libdexfile_support^linux_glibc_x86_64_static.output $GITHUB_WORKSPACE/artifacts/art/libdexfile/libdexfile_support^linux_glibc_x86_64_static $GITHUB_WORKSPACE/artifacts/art/libdexfile/libdexfile_support^linux_glibc_x86_64_static/addition_copy_files.output
+
 echo "building libdexfile_support_static^linux_glibc_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja libdexfile_support_static,linux_glibc_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/art/libdexfile/libdexfile_support_static^linux_glibc_x86_64_static

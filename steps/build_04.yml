@@ -74,6 +74,10 @@ jobs:
         key: external_boringssl@${{ env.branch }}
     - uses: actions/cache@v4
       with:
+        path: cache/external_bouncycastle.tar.zst
+        key: external_bouncycastle@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
         path: cache/external_brotli.tar.zst
         key: external_brotli@${{ env.branch }}
     - uses: actions/cache@v4
@@ -152,6 +156,10 @@ jobs:
       with:
         path: cache/external_googletest.tar.zst
         key: external_googletest@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_grpc-grpc.tar.zst
+        key: external_grpc-grpc@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/external_guava.tar.zst
@@ -596,6 +604,10 @@ jobs:
       with:
         path: cache/external_tinyxml2.tar.zst
         key: external_tinyxml2@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_toybox.tar.zst
+        key: external_toybox@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/external_tremolo.tar.zst

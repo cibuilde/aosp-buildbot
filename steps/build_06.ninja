@@ -11,6 +11,8 @@ include ninja/art/disassembler/libart-disassembler^android_x86_64_shared_apex31.
 include ninja/art/disassembler/libart-disassembler^android_x86_x86_64_shared_apex31.ninja
 include ninja/art/dt_fd_forward/libdt_fd_forward^android_x86_64_shared_apex31.ninja
 include ninja/art/dt_fd_forward/libdt_fd_forward^android_x86_x86_64_shared_apex31.ninja
+include ninja/art/libartbase/libartbase^linux_glibc_x86_64_shared.ninja
+include ninja/art/libdexfile/libdexfile^linux_glibc_x86_64_shared.ninja
 include ninja/art/libnativebridge/libnativebridge_lazy^android_x86_64_shared.ninja
 include ninja/art/libnativebridge/libnativebridge_lazy^android_x86_x86_64_shared.ninja
 include ninja/art/libnativeloader/libnativeloader_lazy^android_x86_64_shared.ninja
@@ -32,6 +34,8 @@ include ninja/device/google/cuttlefish/common/libs/fs/libcuttlefish_fs^android_x
 include ninja/device/google/cuttlefish/common/libs/utils/libcuttlefish_utils^android_x86_64_shared_apex10000.ninja
 include ninja/device/google/cuttlefish/guest/monitoring/tombstone_transmit/tombstone_producer^android_product.31_x86_64.ninja
 include ninja/device/google/cuttlefish/guest/monitoring/tombstone_transmit/tombstone_transmit^android_product.31_x86_64.ninja
+include ninja/device/google/cuttlefish/host/commands/assemble_cvd/assemble_cvd^linux_glibc_x86_64.ninja
+include ninja/device/google/cuttlefish/host/commands/cvd_host_bugreport/cvd_host_bugreport^linux_glibc_x86_64.ninja
 include ninja/device/google/cuttlefish/host/commands/mk_cdisk/mk_cdisk^android_x86_64_apex10000.ninja
 include ninja/external/auto/factory/auto_factory_plugin^linux_glibc_common.ninja
 include ninja/external/auto/value/auto_annotation_plugin^linux_glibc_common.ninja
@@ -52,9 +56,13 @@ include ninja/external/compiler-rt/libcompiler_rt^android_x86_64_shared.ninja
 include ninja/external/compiler-rt/libcompiler_rt^android_x86_x86_64_shared.ninja
 include ninja/external/dng_sdk/libdng_sdk^android_x86_64_shared.ninja
 include ninja/external/dng_sdk/libdng_sdk^android_x86_x86_64_shared.ninja
+include ninja/external/e2fsprogs/e2fsck/e2fsck^linux_glibc_x86_64.ninja
 include ninja/external/e2fsprogs/lib/ext2fs/libext2fs^linux_glibc_x86_64_shared.ninja
 include ninja/external/e2fsprogs/lib/support/libext2_quota^linux_glibc_x86_64_shared.ninja
+include ninja/external/e2fsprogs/misc/badblocks^linux_glibc_x86_64.ninja
 include ninja/external/e2fsprogs/misc/tune2fs^linux_glibc_x86_64.ninja
+include ninja/external/erofs-utils/mkfs.erofs^linux_glibc_x86_64.ninja
+include ninja/external/f2fs-tools/fsck.f2fs^linux_glibc_x86_64.ninja
 include ninja/external/freetype/libft2^android_x86_64_shared.ninja
 include ninja/external/freetype/libft2^android_x86_x86_64_shared.ninja
 include ninja/external/gptfdisk/sgdisk^android_x86_64.ninja
@@ -438,6 +446,7 @@ include ninja/system/core/libutils/libutils^android_x86_x86_64_shared_apex29.nin
 include ninja/system/core/libvndksupport/libvndksupport^android_x86_64_shared.ninja
 include ninja/system/core/libvndksupport/libvndksupport^android_x86_x86_64_shared.ninja
 include ninja/system/core/rootdir/system_linker_config^android_x86_64.ninja
+include ninja/system/extras/ext4_utils/blk_alloc_to_base_fs^linux_glibc_x86_64.ninja
 include ninja/system/extras/profcollectd/libprofcollectd/bindings/libbase/libprofcollect_libbase^android_x86_64_static.ninja
 include ninja/system/extras/profcollectd/libprofcollectd/bindings/libbase/libprofcollect_libbase_bridge_code^.ninja
 include ninja/system/extras/profcollectd/libprofcollectd/bindings/libflags/libprofcollect_libflags^android_x86_64_static.ninja
@@ -450,7 +459,11 @@ include ninja/system/incremental_delivery/incfs/libincfs^android_x86_64_static.n
 include ninja/system/incremental_delivery/incfs/libincfs^android_x86_x86_64_static.ninja
 include ninja/system/incremental_delivery/sysprop/libcom.android.sysprop.incremental^android_x86_64_static.ninja
 include ninja/system/incremental_delivery/sysprop/libcom.android.sysprop.incremental^android_x86_x86_64_static.ninja
+include ninja/system/keymaster/libcppcose_rkp^linux_glibc_x86_64_shared.ninja
 include ninja/system/keymaster/libkeymaster_messages^android_vendor.31_x86_64_shared.ninja
+include ninja/system/keymaster/libkeymaster_portable^linux_glibc_x86_64_shared.ninja
+include ninja/system/keymaster/libpuresoftkeymasterdevice_host^linux_glibc_x86_64_shared.ninja
+include ninja/system/keymaster/libsoft_attestation_cert^linux_glibc_x86_64_shared.ninja
 include ninja/system/libbase/libbase^android_recovery_x86_64_shared.ninja
 include ninja/system/libbase/libbase^android_vendor.31_x86_64_shared.ninja
 include ninja/system/libbase/libbase^android_vendor.31_x86_x86_64_shared.ninja
@@ -519,6 +532,10 @@ build libdt_fd_forward,android_x86_64_shared_apex31: phony out/soong/.intermedia
 
 build libdt_fd_forward,android_x86_x86_64_shared_apex31: phony out/soong/.intermediates/art/dt_fd_forward/libdt_fd_forward/android_x86_x86_64_shared_apex31/libdt_fd_forward.so
 
+build libartbase,linux_glibc_x86_64_shared: phony out/soong/.intermediates/art/libartbase/libartbase/linux_glibc_x86_64_shared/libartbase.so out/soong/.intermediates/art/libartbase/libartbase/linux_glibc_x86_64_shared/libartbase.so.toc out/soong/host/linux-x86/lib64/libartbase.so
+
+build libdexfile,linux_glibc_x86_64_shared: phony out/soong/.intermediates/art/libdexfile/libdexfile/linux_glibc_x86_64_shared/libdexfile.so out/soong/host/linux-x86/lib64/libdexfile.so
+
 build libnativebridge_lazy,android_x86_64_shared: phony out/soong/.intermediates/art/libnativebridge/libnativebridge_lazy/android_x86_64_shared/libnativebridge_lazy.so out/soong/.intermediates/art/libnativebridge/libnativebridge_lazy/android_x86_64_shared/libnativebridge_lazy.so.toc
 
 build libnativebridge_lazy,android_x86_x86_64_shared: phony out/soong/.intermediates/art/libnativebridge/libnativebridge_lazy/android_x86_x86_64_shared/libnativebridge_lazy.so out/soong/.intermediates/art/libnativebridge/libnativebridge_lazy/android_x86_x86_64_shared/libnativebridge_lazy.so.toc
@@ -547,7 +564,7 @@ build libstatslog_art,android_x86_64_static_lto-thin_apex31: phony out/soong/.in
 
 build libstatslog_art,android_x86_x86_64_static_lto-thin_apex31: phony out/soong/.intermediates/art/runtime/libstatslog_art/android_x86_x86_64_static_lto-thin_apex31/libstatslog_art.a
 
-build art-targets: phony art-linker-config,android_x86_64 libart,android_x86_64_static_apex31 libart,android_x86_x86_64_static_apex31 libart-disassembler,android_x86_64_shared_apex31 libart-disassembler,android_x86_x86_64_shared_apex31 libdt_fd_forward,android_x86_64_shared_apex31 libdt_fd_forward,android_x86_x86_64_shared_apex31 libnativebridge_lazy,android_x86_64_shared libnativebridge_lazy,android_x86_x86_64_shared libnativeloader_lazy,android_x86_64_shared libnativeloader_lazy,android_x86_x86_64_shared libodrstatslog,android_x86_64_static_lto-thin_apex31 libodrstatslog,android_x86_x86_64_static_lto-thin_apex31 libstatslog_art,android_x86_64_static_lto-thin_apex31 libstatslog_art,android_x86_x86_64_static_lto-thin_apex31 statslog_art.cpp, statslog_art.h, statslog_odrefresh.cpp, statslog_odrefresh.h,
+build art-targets: phony art-linker-config,android_x86_64 libart,android_x86_64_static_apex31 libart,android_x86_x86_64_static_apex31 libart-disassembler,android_x86_64_shared_apex31 libart-disassembler,android_x86_x86_64_shared_apex31 libartbase,linux_glibc_x86_64_shared libdexfile,linux_glibc_x86_64_shared libdt_fd_forward,android_x86_64_shared_apex31 libdt_fd_forward,android_x86_x86_64_shared_apex31 libnativebridge_lazy,android_x86_64_shared libnativebridge_lazy,android_x86_x86_64_shared libnativeloader_lazy,android_x86_64_shared libnativeloader_lazy,android_x86_x86_64_shared libodrstatslog,android_x86_64_static_lto-thin_apex31 libodrstatslog,android_x86_x86_64_static_lto-thin_apex31 libstatslog_art,android_x86_64_static_lto-thin_apex31 libstatslog_art,android_x86_x86_64_static_lto-thin_apex31 statslog_art.cpp, statslog_art.h, statslog_odrefresh.cpp, statslog_odrefresh.h,
 
 build bionic-linker-config,android_x86_64: phony out/soong/.intermediates/bionic/apex/bionic-linker-config/android_x86_64/linker.config.pb
 
@@ -567,9 +584,13 @@ build tombstone_transmit,android_product.31_x86_64: phony out/soong/.intermediat
 
 build tombstone_producer,android_product.31_x86_64: phony out/soong/.intermediates/device/google/cuttlefish/guest/monitoring/tombstone_transmit/tombstone_producer/android_product.31_x86_64/tombstone_producer
 
+build assemble_cvd,linux_glibc_x86_64: phony out/soong/.intermediates/device/google/cuttlefish/host/commands/assemble_cvd/assemble_cvd/linux_glibc_x86_64/assemble_cvd out/soong/host/linux-x86/bin/assemble_cvd
+
+build cvd_host_bugreport,linux_glibc_x86_64: phony out/soong/.intermediates/device/google/cuttlefish/host/commands/cvd_host_bugreport/cvd_host_bugreport/linux_glibc_x86_64/cvd_host_bugreport out/soong/host/linux-x86/bin/cvd_host_bugreport
+
 build mk_cdisk,android_x86_64_apex10000: phony out/soong/.intermediates/device/google/cuttlefish/host/commands/mk_cdisk/mk_cdisk/android_x86_64_apex10000/mk_cdisk
 
-build device_google_cuttlefish-targets: phony libcuttlefish_fs,android_x86_64_shared_apex10000 libcuttlefish_utils,android_x86_64_shared_apex10000 mk_cdisk,android_x86_64_apex10000 tombstone_producer,android_product.31_x86_64 tombstone_transmit,android_product.31_x86_64
+build device_google_cuttlefish-targets: phony assemble_cvd,linux_glibc_x86_64 cvd_host_bugreport,linux_glibc_x86_64 libcuttlefish_fs,android_x86_64_shared_apex10000 libcuttlefish_utils,android_x86_64_shared_apex10000 mk_cdisk,android_x86_64_apex10000 tombstone_producer,android_product.31_x86_64 tombstone_transmit,android_product.31_x86_64
 
 build auto_factory_plugin,linux_glibc_common: phony out/soong/.intermediates/external/auto/factory/auto_factory_plugin/linux_glibc_common/combined/auto_factory_plugin.jar
 
@@ -621,13 +642,25 @@ build libdng_sdk,android_x86_x86_64_shared: phony out/soong/.intermediates/exter
 
 build external_dng_sdk-targets: phony libdng_sdk,android_x86_64_shared libdng_sdk,android_x86_x86_64_shared
 
+build e2fsck,linux_glibc_x86_64: phony out/soong/host/linux-x86/bin/e2fsck
+
 build libext2fs,linux_glibc_x86_64_shared: phony out/soong/.intermediates/external/e2fsprogs/lib/ext2fs/libext2fs/linux_glibc_x86_64_shared/libext2fs-host.so out/soong/.intermediates/external/e2fsprogs/lib/ext2fs/libext2fs/linux_glibc_x86_64_shared/libext2fs-host.so.toc out/soong/host/linux-x86/lib64/libext2fs-host.so
 
 build libext2_quota,linux_glibc_x86_64_shared: phony out/soong/.intermediates/external/e2fsprogs/lib/support/libext2_quota/linux_glibc_x86_64_shared/libext2_quota-host.so out/soong/.intermediates/external/e2fsprogs/lib/support/libext2_quota/linux_glibc_x86_64_shared/libext2_quota-host.so.toc out/soong/host/linux-x86/lib64/libext2_quota-host.so
 
 build tune2fs,linux_glibc_x86_64: phony out/soong/host/linux-x86/bin/tune2fs
 
-build external_e2fsprogs-targets: phony libext2_quota,linux_glibc_x86_64_shared libext2fs,linux_glibc_x86_64_shared tune2fs,linux_glibc_x86_64
+build badblocks,linux_glibc_x86_64: phony out/soong/host/linux-x86/bin/badblocks
+
+build external_e2fsprogs-targets: phony badblocks,linux_glibc_x86_64 e2fsck,linux_glibc_x86_64 libext2_quota,linux_glibc_x86_64_shared libext2fs,linux_glibc_x86_64_shared tune2fs,linux_glibc_x86_64
+
+build mkfs.erofs,linux_glibc_x86_64: phony out/soong/host/linux-x86/bin/mkfs.erofs
+
+build external_erofs-utils-targets: phony mkfs.erofs,linux_glibc_x86_64
+
+build fsck.f2fs,linux_glibc_x86_64: phony out/soong/.intermediates/external/f2fs-tools/fsck.f2fs/linux_glibc_x86_64/fsck.f2fs out/soong/host/linux-x86/bin/defrag.f2fs out/soong/host/linux-x86/bin/dump.f2fs out/soong/host/linux-x86/bin/fsck.f2fs out/soong/host/linux-x86/bin/resize.f2fs
+
+build external_f2fs-tools-targets: phony fsck.f2fs,linux_glibc_x86_64
 
 build libft2,android_x86_64_shared: phony out/soong/.intermediates/external/freetype/libft2/android_x86_64_shared/libft2.so out/soong/.intermediates/external/freetype/libft2/android_x86_64_shared/libft2.so.toc
 
@@ -1559,6 +1592,8 @@ build system_linker_config,android_x86_64: phony out/soong/.intermediates/system
 
 build system_core-targets: phony com.android.sysprop.init_java_gen, com.android.sysprop.init_sysprop_library, host_init_verifier,linux_glibc_x86_64 libcharger_sysprop,android_recovery_x86_64_static libcharger_sysprop,android_x86_64_static libcom.android.sysprop.init,android_recovery_x86_64_static libcom.android.sysprop.init,android_x86_64_static libcutils,android_x86_64_shared_apex10000 libcutils,android_x86_64_shared_apex29 libcutils,android_x86_x86_64_shared_apex10000 libcutils,android_x86_x86_64_shared_apex29 libcutils_bindgen,android_x86_64_rlib_rlib-std libhealthd_charger,android_x86_64_static libhealthd_draw,android_x86_64_static liblp,linux_glibc_x86_64_shared libpackagelistparser,android_recovery_x86_64_shared libpackagelistparser,android_x86_64_shared libpackagelistparser,android_x86_x86_64_shared libprocessgroup,android_x86_64_shared_apex10000 libprocessgroup,android_x86_64_shared_apex29 libprocessgroup,android_x86_x86_64_shared_apex29 libqtaguid,android_x86_64_shared libusbhost,android_vendor.31_x86_64_shared libusbhost,android_vendor.31_x86_x86_64_shared libusbhost,android_x86_64_shared libusbhost,android_x86_x86_64_shared libutils,android_x86_64_shared_apex10000 libutils,android_x86_64_shared_apex29 libutils,android_x86_x86_64_shared_apex29 libvndksupport,android_x86_64_shared libvndksupport,android_x86_x86_64_shared system_linker_config,android_x86_64
 
+build blk_alloc_to_base_fs,linux_glibc_x86_64: phony out/soong/host/linux-x86/bin/blk_alloc_to_base_fs
+
 build libprofcollect_libbase,android_x86_64_static: phony out/soong/.intermediates/system/extras/profcollectd/libprofcollectd/bindings/libbase/libprofcollect_libbase/android_x86_64_static/libprofcollect_libbase.a
 
 build libprofcollect_libbase_bridge_code,: phony out/soong/.intermediates/system/extras/profcollectd/libprofcollectd/bindings/libbase/libprofcollect_libbase_bridge_code/gen/libprofcollect_libbase_cxx_generated.cc
@@ -1567,7 +1602,7 @@ build libprofcollect_libflags,android_x86_64_static: phony out/soong/.intermedia
 
 build libprofcollect_libflags_bridge_code,: phony out/soong/.intermediates/system/extras/profcollectd/libprofcollectd/bindings/libflags/libprofcollect_libflags_bridge_code/gen/libprofcollect_libflags_cxx_generated.cc
 
-build system_extras-targets: phony libprofcollect_libbase,android_x86_64_static libprofcollect_libbase_bridge_code, libprofcollect_libflags,android_x86_64_static libprofcollect_libflags_bridge_code,
+build system_extras-targets: phony blk_alloc_to_base_fs,linux_glibc_x86_64 libprofcollect_libbase,android_x86_64_static libprofcollect_libbase_bridge_code, libprofcollect_libflags,android_x86_64_static libprofcollect_libflags_bridge_code,
 
 build libgatekeeper,android_vendor.31_x86_64_shared: phony out/soong/.intermediates/system/gatekeeper/libgatekeeper/android_vendor.31_x86_64_shared/libgatekeeper.so out/soong/.intermediates/system/gatekeeper/libgatekeeper/android_vendor.31_x86_64_shared/libgatekeeper.so.toc
 
@@ -1591,9 +1626,17 @@ build libcom.android.sysprop.incremental,android_x86_x86_64_static: phony out/so
 
 build system_incremental_delivery-targets: phony libcom.android.sysprop.incremental,android_x86_64_static libcom.android.sysprop.incremental,android_x86_x86_64_static libincfs,android_x86_64_static libincfs,android_x86_x86_64_static
 
+build libkeymaster_portable,linux_glibc_x86_64_shared: phony out/soong/.intermediates/system/keymaster/libkeymaster_portable/linux_glibc_x86_64_shared/libkeymaster_portable.so out/soong/.intermediates/system/keymaster/libkeymaster_portable/linux_glibc_x86_64_shared/libkeymaster_portable.so.toc out/soong/host/linux-x86/lib64/libkeymaster_portable.so
+
+build libsoft_attestation_cert,linux_glibc_x86_64_shared: phony out/soong/.intermediates/system/keymaster/libsoft_attestation_cert/linux_glibc_x86_64_shared/libsoft_attestation_cert.so out/soong/.intermediates/system/keymaster/libsoft_attestation_cert/linux_glibc_x86_64_shared/libsoft_attestation_cert.so.toc out/soong/host/linux-x86/lib64/libsoft_attestation_cert.so
+
+build libpuresoftkeymasterdevice_host,linux_glibc_x86_64_shared: phony out/soong/.intermediates/system/keymaster/libpuresoftkeymasterdevice_host/linux_glibc_x86_64_shared/libpuresoftkeymasterdevice_host.so out/soong/host/linux-x86/lib64/libpuresoftkeymasterdevice_host.so
+
+build libcppcose_rkp,linux_glibc_x86_64_shared: phony out/soong/.intermediates/system/keymaster/libcppcose_rkp/linux_glibc_x86_64_shared/libcppcose_rkp.so out/soong/.intermediates/system/keymaster/libcppcose_rkp/linux_glibc_x86_64_shared/libcppcose_rkp.so.toc out/soong/host/linux-x86/lib64/libcppcose_rkp.so
+
 build libkeymaster_messages,android_vendor.31_x86_64_shared: phony out/soong/.intermediates/system/keymaster/libkeymaster_messages/android_vendor.31_x86_64_shared/libkeymaster_messages.so out/soong/.intermediates/system/keymaster/libkeymaster_messages/android_vendor.31_x86_64_shared/libkeymaster_messages.so.toc
 
-build system_keymaster-targets: phony libkeymaster_messages,android_vendor.31_x86_64_shared
+build system_keymaster-targets: phony libcppcose_rkp,linux_glibc_x86_64_shared libkeymaster_messages,android_vendor.31_x86_64_shared libkeymaster_portable,linux_glibc_x86_64_shared libpuresoftkeymasterdevice_host,linux_glibc_x86_64_shared libsoft_attestation_cert,linux_glibc_x86_64_shared
 
 build libbase,android_recovery_x86_64_shared: phony out/soong/.intermediates/system/libbase/libbase/android_recovery_x86_64_shared/libbase.so out/soong/.intermediates/system/libbase/libbase/android_recovery_x86_64_shared/libbase.so.toc
 

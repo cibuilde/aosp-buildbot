@@ -1,0 +1,2 @@
+out/soong/.intermediates/device/google/cuttlefish/host/commands/kernel_log_monitor/kernel_log_monitor/linux_glibc_x86_64/kernel_log_monitor
+out/soong/host/linux-x86/bin/kernel_log_monitor

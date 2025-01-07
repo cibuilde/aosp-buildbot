@@ -1,0 +1,2 @@
+out/soong/.intermediates/device/google/cuttlefish_vmm/x86_64-linux-gnu/jail_warden.policy_at_x86_64/linux_glibc_common/jail_warden.policy
+out/soong/host/linux-x86/usr/share/cuttlefish/x86_64-linux-gnu/seccomp/jail_warden.policy

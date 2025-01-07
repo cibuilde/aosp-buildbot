@@ -1,17 +1,19 @@
-##### Tag: android12-gsi_05 Projects: 128 Targets: 1016
+##### Tag: android12-gsi_05 Projects: 132 Targets: 1053
 
-###### **art**: 11
-`art-apex-cache-info^` `dalvikvm^android_x86_64_apex31` `dalvikvm^android_x86_x86_64_apex31` `libartpalette^android_x86_64_shared_apex31` `libartpalette^android_x86_x86_64_shared_apex31` `libnativebridge^android_x86_64_shared_apex31` `libnativebridge^android_x86_x86_64_shared_apex31` `libperfetto_hprof^android_x86_64_static_apex31` `libperfetto_hprof^android_x86_x86_64_static_apex31` `libsigchain^android_x86_64_shared_apex31` `libsigchain^android_x86_x86_64_shared_apex31`
+###### **art**: 12
+`art-apex-cache-info^` `dalvikvm^android_x86_64_apex31` `dalvikvm^android_x86_x86_64_apex31` `libartpalette^android_x86_64_shared_apex31` `libartpalette^android_x86_x86_64_shared_apex31` `libartpalette^linux_glibc_x86_64_shared` `libnativebridge^android_x86_64_shared_apex31` `libnativebridge^android_x86_x86_64_shared_apex31` `libperfetto_hprof^android_x86_64_static_apex31` `libperfetto_hprof^android_x86_x86_64_static_apex31` `libsigchain^android_x86_64_shared_apex31` `libsigchain^android_x86_x86_64_shared_apex31`
 ###### **bionic**: 20
 `crtbegin_so^android_x86_64_sdk_21` `crtbegin_so^android_x86_64_sdk_29_apex30` `crtbegin_so^android_x86_64_sdk_29` `crtbegin_so^android_x86_64_sdk_30_apex30` `crtbrand^android_x86_64_sdk_21` `crtbrand^android_x86_64_sdk_29_apex30` `crtbrand^android_x86_64_sdk_29` `crtbrand^android_x86_64_sdk_30_apex30` `crtend_so^android_x86_64_sdk_21` `crtend_so^android_x86_64_sdk_29_apex30` `crtend_so^android_x86_64_sdk_29` `crtend_so^android_x86_64_sdk_30_apex30` `libc_malloc_hooks^android_x86_64_shared_apex10000` `libc_malloc_hooks^android_x86_x86_64_shared_apex10000` `linker^android_recovery_x86_64` `linker^android_vendor_ramdisk_x86_64` `linker^android_x86_64_apex10000` `linker^android_x86_64` `linker^android_x86_x86_64_apex10000` `linker^android_x86_x86_64`
 ###### **bootable/recovery**: 3
 `libminadbd_services^android_recovery_x86_64_static` `librecovery_utils^android_recovery_x86_64_static` `librecovery_utils^android_x86_64_static`
-###### **build/make**: 4
-`build_image^linux_glibc_x86_64_PY2` `signapk^linux_glibc_common` `sparse_img^linux_glibc_x86_64_PY2` `verity_utils^linux_glibc_x86_64_PY2`
+###### **build/make**: 6
+`build_image^linux_glibc_x86_64_PY2` `build_super_image^linux_glibc_x86_64_PY2` `signapk^linux_glibc_common` `signapk^linux_glibc_x86_64` `sparse_img^linux_glibc_x86_64_PY2` `verity_utils^linux_glibc_x86_64_PY2`
 ###### **build/soong**: 2
 `conv_linker_config^linux_glibc_x86_64_PY3` `generate_hiddenapi_lists^linux_glibc_x86_64_PY3`
 ###### **device/generic/vulkan-cereal**: 1
 `libgfxstream_backend^android_x86_64_shared_apex10000`
+###### **device/google/cuttlefish**: 29
+`GnssGrpcProxyStub_cc^` `GnssGrpcProxyStub_h^` `adb_connector^linux_glibc_x86_64` `adbshell^linux_glibc_x86_64` `allocd^linux_glibc_x86_64` `allocd_client^linux_glibc_x86_64` `bt_connector^linux_glibc_x86_64` `config_server^linux_glibc_x86_64` `console_forwarder^linux_glibc_x86_64` `cvd_status^linux_glibc_x86_64` `gnss_grpc_proxy^linux_glibc_x86_64` `kernel_log_monitor^linux_glibc_x86_64` `launch_cvd^linux_glibc_x86_64` `libcuttlefish_allocd_utils^linux_glibc_x86_64_shared` `libcuttlefish_device_config^linux_glibc_x86_64_shared` `libcuttlefish_fs^linux_glibc_x86_64_shared` `libcuttlefish_kernel_log_monitor_utils^linux_glibc_x86_64_shared` `libcuttlefish_security^linux_glibc_x86_64_shared` `libcuttlefish_utils^linux_glibc_x86_64_shared` `log_tee^linux_glibc_x86_64` `logcat_receiver^linux_glibc_x86_64` `metrics^linux_glibc_x86_64` `modem_simulator^linux_glibc_x86_64` `powerwash_cvd^linux_glibc_x86_64` `restart_cvd^linux_glibc_x86_64` `run_cvd^linux_glibc_x86_64` `socket_vsock_proxy^linux_glibc_x86_64` `stop_cvd^linux_glibc_x86_64` `tombstone_receiver^linux_glibc_x86_64`
 ###### **external/auto**: 3
 `auto_common^linux_glibc_common` `auto_service_plugin^linux_glibc_common` `auto_value_extension^linux_glibc_common`
 ###### **external/avb**: 1
@@ -66,6 +68,10 @@
 `libjsoncpp^android_recovery_x86_64_shared` `libjsoncpp^android_x86_64_shared_apex10000` `libjsoncpp^android_x86_64_shared`
 ###### **external/libcap**: 4
 `libcap^android_x86_64_shared_apex10000` `libcap^android_x86_64_shared_apex29` `libcap^android_x86_64_shared` `libcap^android_x86_x86_64_shared`
+###### **external/libchrome**: 1
+`libchrome^linux_glibc_x86_64_shared`
+###### **external/libcppbor**: 1
+`libcppbor_external^linux_glibc_x86_64_shared`
 ###### **external/libcxx**: 6
 `libc++^android_product.31_x86_64_shared` `libc++^android_vendor.31_x86_64_shared` `libc++^android_vendor.31_x86_x86_64_shared` `libc++_static^android_product.31_x86_64_static` `libc++_static^android_vendor.31_x86_64_static` `libc++_static^android_vendor.31_x86_x86_64_static`
 ###### **external/libdrm**: 3
@@ -206,8 +212,8 @@
 `conv_classpaths_proto^linux_glibc_x86_64_PY3` `cur_sdkinfo_src^` `current_sdkinfo^android_x86_64`
 ###### **prebuilts/sdk**: 25
 `androidx.annotation_annotation-experimental-nodeps^android_common_apex30` `androidx.annotation_annotation-experimental-nodeps^android_common` `androidx.arch.core_core-runtime-nodeps^android_common_apex30` `androidx.arch.core_core-runtime-nodeps^android_common` `androidx.cursoradapter_cursoradapter-nodeps^android_common_apex30` `androidx.cursoradapter_cursoradapter-nodeps^android_common` `androidx.documentfile_documentfile-nodeps^android_common_apex30` `androidx.documentfile_documentfile-nodeps^android_common` `androidx.exifinterface_exifinterface-nodeps^android_common` `androidx.interpolator_interpolator-nodeps^android_common_apex30` `androidx.interpolator_interpolator-nodeps^android_common` `androidx.lifecycle_lifecycle-viewmodel-nodeps^android_common_apex30` `androidx.lifecycle_lifecycle-viewmodel-nodeps^android_common` `androidx.localbroadcastmanager_localbroadcastmanager-nodeps^android_common_apex30` `androidx.localbroadcastmanager_localbroadcastmanager-nodeps^android_common` `androidx.print_print-nodeps^android_common_apex30` `androidx.print_print-nodeps^android_common` `androidx.remotecallback_remotecallback-nodeps^android_common` `androidx.savedstate_savedstate-nodeps^android_common_apex30` `androidx.savedstate_savedstate-nodeps^android_common` `androidx.sqlite_sqlite-nodeps^android_common` `androidx.tracing_tracing-nodeps^android_common_apex30` `androidx.tracing_tracing-nodeps^android_common` `androidx.versionedparcelable_versionedparcelable-nodeps^android_common_apex30` `androidx.versionedparcelable_versionedparcelable-nodeps^android_common`
-###### **system/apex**: 4
-`apex-info-list^` `apex_compression_tool^linux_glibc_x86_64_PY3` `apexer^linux_glibc_x86_64_PY2` `conv_apex_manifest^linux_glibc_x86_64_PY2`
+###### **system/apex**: 5
+`apex-info-list^` `apex_compression_tool^linux_glibc_x86_64_PY3` `apexer^linux_glibc_x86_64_PY2` `conv_apex_manifest^linux_glibc_x86_64_PY2` `deapexer^linux_glibc_x86_64_PY3`
 ###### **system/bt**: 3
 `libbt_facade_proto^android_x86_64_source` `libbt_facade_proto^android_x86_x86_64_source` `libgddi_macros^linux_glibc_x86_64`
 ###### **system/core**: 29
@@ -228,6 +234,8 @@
 `libhidltransport^android_x86_64_shared` `libhidltransport^android_x86_x86_64_shared`
 ###### **system/libhwbinder**: 2
 `libhwbinder^android_x86_64_shared` `libhwbinder^android_x86_x86_64_shared`
+###### **system/libziparchive**: 1
+`libziparchive^linux_glibc_x86_64_shared`
 ###### **system/linkerconfig**: 6
 `linkerconfig_contents^android_x86_64_static_apex10000` `linkerconfig_contents^android_x86_64_static` `linkerconfig_contents^linux_glibc_x86_64_static` `linkerconfig_generator^android_x86_64_static_apex10000` `linkerconfig_generator^android_x86_64_static` `linkerconfig_generator^linux_glibc_x86_64_static`
 ###### **system/logging**: 7
@@ -244,8 +252,8 @@
 `combine_maps^linux_glibc_x86_64_PY2` `fc_sort^linux_glibc_x86_64_PY2` `plat_26.0.cil^android_common` `plat_27.0.cil^android_common` `plat_28.0.cil^android_common` `plat_29.0.cil^android_common` `plat_file_contexts^android_common` `product_file_contexts^android_common` `system_ext_file_contexts^android_common` `vendor_file_contexts^android_common`
 ###### **system/tools/hidl**: 5
 `hidl_metadata_in_cpp^linux_glibc_x86_64` `hidl_metadata_json^` `libhidl-gen-utils^linux_glibc_x86_64_shared` `libhidlmetadata^linux_glibc_x86_64_shared` `libhidlmetadata^linux_glibc_x86_64_static`
-###### **system/tools/mkbootimg**: 1
-`mkbootimg^linux_glibc_x86_64_PY3`
+###### **system/tools/mkbootimg**: 2
+`mkbootimg^linux_glibc_x86_64_PY3` `unpack_bootimg^linux_glibc_x86_64_PY3`
 ###### **system/tools/sysprop**: 4
 `sysprop_api_checker^linux_glibc_x86_64` `sysprop_api_dump^linux_glibc_x86_64` `sysprop_cpp^linux_glibc_x86_64` `sysprop_java^linux_glibc_x86_64`
 ###### **system/update_engine**: 2

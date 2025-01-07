@@ -1,0 +1,2 @@
+out/soong/.intermediates/external/crosvm/cuttlefish/common_crosvm/linux_glibc_x86_64/crosvm
+out/soong/host/linux-x86/bin/crosvm

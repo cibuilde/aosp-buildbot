@@ -50,6 +50,14 @@ jobs:
         key: device_google_cuttlefish@${{ env.branch }}
     - uses: actions/cache@v4
       with:
+        path: cache/device_google_cuttlefish_prebuilts.tar.zst
+        key: device_google_cuttlefish_prebuilts@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/device_google_cuttlefish_vmm.tar.zst
+        key: device_google_cuttlefish_vmm@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
         path: cache/external_OpenCSD.tar.zst
         key: external_OpenCSD@${{ env.branch }}
     - uses: actions/cache@v4
@@ -134,6 +142,10 @@ jobs:
         key: external_googletest@${{ env.branch }}
     - uses: actions/cache@v4
       with:
+        path: cache/external_grpc-grpc.tar.zst
+        key: external_grpc-grpc@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
         path: cache/external_harfbuzz_ng.tar.zst
         key: external_harfbuzz_ng@${{ env.branch }}
     - uses: actions/cache@v4
@@ -152,6 +164,10 @@ jobs:
       with:
         path: cache/external_jsmn.tar.zst
         key: external_jsmn@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_jsoncpp.tar.zst
+        key: external_jsoncpp@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/external_kotlinc.tar.zst
@@ -186,12 +202,32 @@ jobs:
         key: external_libevent@${{ env.branch }}
     - uses: actions/cache@v4
       with:
+        path: cache/external_libjpeg-turbo.tar.zst
+        key: external_libjpeg-turbo@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
         path: cache/external_libnl.tar.zst
         key: external_libnl@${{ env.branch }}
     - uses: actions/cache@v4
       with:
+        path: cache/external_libopus.tar.zst
+        key: external_libopus@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
         path: cache/external_libphonenumber.tar.zst
         key: external_libphonenumber@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_libvpx.tar.zst
+        key: external_libvpx@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_libxml2.tar.zst
+        key: external_libxml2@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_libyuv.tar.zst
+        key: external_libyuv@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/external_llvm.tar.zst
@@ -228,6 +264,10 @@ jobs:
       with:
         path: cache/external_mtpd.tar.zst
         key: external_mtpd@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_newfs_msdos.tar.zst
+        key: external_newfs_msdos@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/external_perfetto.tar.zst
@@ -654,6 +694,10 @@ jobs:
         key: system_extras@${{ env.branch }}
     - uses: actions/cache@v4
       with:
+        path: cache/system_gatekeeper.tar.zst
+        key: system_gatekeeper@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
         path: cache/system_hardware_interfaces.tar.zst
         key: system_hardware_interfaces@${{ env.branch }}
     - uses: actions/cache@v4
@@ -744,6 +788,10 @@ jobs:
       with:
         path: cache/system_tools_hidl.tar.zst
         key: system_tools_hidl@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/system_tools_mkbootimg.tar.zst
+        key: system_tools_mkbootimg@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/system_unwinding.tar.zst

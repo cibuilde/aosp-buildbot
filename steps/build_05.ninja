@@ -10,6 +10,7 @@ include ninja/art/dalvikvm/dalvikvm^android_x86_64_apex31.ninja
 include ninja/art/dalvikvm/dalvikvm^android_x86_x86_64_apex31.ninja
 include ninja/art/libartpalette/libartpalette^android_x86_64_shared_apex31.ninja
 include ninja/art/libartpalette/libartpalette^android_x86_x86_64_shared_apex31.ninja
+include ninja/art/libartpalette/libartpalette^linux_glibc_x86_64_shared.ninja
 include ninja/art/libnativebridge/libnativebridge^android_x86_64_shared_apex31.ninja
 include ninja/art/libnativebridge/libnativebridge^android_x86_x86_64_shared_apex31.ninja
 include ninja/art/odrefresh/art-apex-cache-info^.ninja
@@ -41,12 +42,43 @@ include ninja/bootable/recovery/minadbd/libminadbd_services^android_recovery_x86
 include ninja/bootable/recovery/recovery_utils/librecovery_utils^android_recovery_x86_64_static.ninja
 include ninja/bootable/recovery/recovery_utils/librecovery_utils^android_x86_64_static.ninja
 include ninja/build/make/tools/releasetools/build_image^linux_glibc_x86_64_PY2.ninja
+include ninja/build/make/tools/releasetools/build_super_image^linux_glibc_x86_64_PY2.ninja
 include ninja/build/make/tools/releasetools/sparse_img^linux_glibc_x86_64_PY2.ninja
 include ninja/build/make/tools/releasetools/verity_utils^linux_glibc_x86_64_PY2.ninja
 include ninja/build/make/tools/signapk/signapk^linux_glibc_common.ninja
+include ninja/build/make/tools/signapk/signapk^linux_glibc_x86_64.ninja
 include ninja/build/soong/scripts/conv_linker_config^linux_glibc_x86_64_PY3.ninja
 include ninja/build/soong/scripts/hiddenapi/generate_hiddenapi_lists^linux_glibc_x86_64_PY3.ninja
 include ninja/device/generic/vulkan-cereal/stream-servers/libgfxstream_backend^android_x86_64_shared_apex10000.ninja
+include ninja/device/google/cuttlefish/common/frontend/socket_vsock_proxy/socket_vsock_proxy^linux_glibc_x86_64.ninja
+include ninja/device/google/cuttlefish/common/libs/device_config/libcuttlefish_device_config^linux_glibc_x86_64_shared.ninja
+include ninja/device/google/cuttlefish/common/libs/fs/libcuttlefish_fs^linux_glibc_x86_64_shared.ninja
+include ninja/device/google/cuttlefish/common/libs/security/libcuttlefish_security^linux_glibc_x86_64_shared.ninja
+include ninja/device/google/cuttlefish/common/libs/utils/libcuttlefish_utils^linux_glibc_x86_64_shared.ninja
+include ninja/device/google/cuttlefish/host/commands/adbshell/adbshell^linux_glibc_x86_64.ninja
+include ninja/device/google/cuttlefish/host/commands/bt_connector/bt_connector^linux_glibc_x86_64.ninja
+include ninja/device/google/cuttlefish/host/commands/config_server/config_server^linux_glibc_x86_64.ninja
+include ninja/device/google/cuttlefish/host/commands/console_forwarder/console_forwarder^linux_glibc_x86_64.ninja
+include ninja/device/google/cuttlefish/host/commands/cvd_status/cvd_status^linux_glibc_x86_64.ninja
+include ninja/device/google/cuttlefish/host/commands/gnss_grpc_proxy/GnssGrpcProxyStub_cc^.ninja
+include ninja/device/google/cuttlefish/host/commands/gnss_grpc_proxy/GnssGrpcProxyStub_h^.ninja
+include ninja/device/google/cuttlefish/host/commands/gnss_grpc_proxy/gnss_grpc_proxy^linux_glibc_x86_64.ninja
+include ninja/device/google/cuttlefish/host/commands/kernel_log_monitor/kernel_log_monitor^linux_glibc_x86_64.ninja
+include ninja/device/google/cuttlefish/host/commands/kernel_log_monitor/libcuttlefish_kernel_log_monitor_utils^linux_glibc_x86_64_shared.ninja
+include ninja/device/google/cuttlefish/host/commands/launch/launch_cvd^linux_glibc_x86_64.ninja
+include ninja/device/google/cuttlefish/host/commands/log_tee/log_tee^linux_glibc_x86_64.ninja
+include ninja/device/google/cuttlefish/host/commands/logcat_receiver/logcat_receiver^linux_glibc_x86_64.ninja
+include ninja/device/google/cuttlefish/host/commands/metrics/metrics^linux_glibc_x86_64.ninja
+include ninja/device/google/cuttlefish/host/commands/modem_simulator/modem_simulator^linux_glibc_x86_64.ninja
+include ninja/device/google/cuttlefish/host/commands/powerwash_cvd/powerwash_cvd^linux_glibc_x86_64.ninja
+include ninja/device/google/cuttlefish/host/commands/restart_cvd/restart_cvd^linux_glibc_x86_64.ninja
+include ninja/device/google/cuttlefish/host/commands/run_cvd/run_cvd^linux_glibc_x86_64.ninja
+include ninja/device/google/cuttlefish/host/commands/stop_cvd/stop_cvd^linux_glibc_x86_64.ninja
+include ninja/device/google/cuttlefish/host/commands/tombstone_receiver/tombstone_receiver^linux_glibc_x86_64.ninja
+include ninja/device/google/cuttlefish/host/frontend/adb_connector/adb_connector^linux_glibc_x86_64.ninja
+include ninja/device/google/cuttlefish/host/libs/allocd/allocd^linux_glibc_x86_64.ninja
+include ninja/device/google/cuttlefish/host/libs/allocd/allocd_client^linux_glibc_x86_64.ninja
+include ninja/device/google/cuttlefish/host/libs/allocd/libcuttlefish_allocd_utils^linux_glibc_x86_64_shared.ninja
 include ninja/external/auto/common/auto_common^linux_glibc_common.ninja
 include ninja/external/auto/service/auto_service_plugin^linux_glibc_common.ninja
 include ninja/external/auto/value/auto_value_extension^linux_glibc_common.ninja
@@ -120,6 +152,8 @@ include ninja/external/libcap/libcap^android_x86_64_shared.ninja
 include ninja/external/libcap/libcap^android_x86_64_shared_apex10000.ninja
 include ninja/external/libcap/libcap^android_x86_64_shared_apex29.ninja
 include ninja/external/libcap/libcap^android_x86_x86_64_shared.ninja
+include ninja/external/libchrome/libchrome^linux_glibc_x86_64_shared.ninja
+include ninja/external/libcppbor/libcppbor_external^linux_glibc_x86_64_shared.ninja
 include ninja/external/libcxx/libc++^android_product.31_x86_64_shared.ninja
 include ninja/external/libcxx/libc++^android_vendor.31_x86_64_shared.ninja
 include ninja/external/libcxx/libc++^android_vendor.31_x86_x86_64_shared.ninja
@@ -895,6 +929,7 @@ include ninja/system/apex/apexd/apex-info-list^.ninja
 include ninja/system/apex/apexer/apexer^linux_glibc_x86_64_PY2.ninja
 include ninja/system/apex/apexer/conv_apex_manifest^linux_glibc_x86_64_PY2.ninja
 include ninja/system/apex/tools/apex_compression_tool^linux_glibc_x86_64_PY3.ninja
+include ninja/system/apex/tools/deapexer^linux_glibc_x86_64_PY3.ninja
 include ninja/system/bt/gd/libbt_facade_proto^android_x86_64_source.ninja
 include ninja/system/bt/gd/libbt_facade_proto^android_x86_x86_64_source.ninja
 include ninja/system/bt/gd/rust/gddi/libgddi_macros^linux_glibc_x86_64.ninja
@@ -964,6 +999,7 @@ include ninja/system/libhidl/libhidltransport^android_x86_64_shared.ninja
 include ninja/system/libhidl/libhidltransport^android_x86_x86_64_shared.ninja
 include ninja/system/libhwbinder/libhwbinder^android_x86_64_shared.ninja
 include ninja/system/libhwbinder/libhwbinder^android_x86_x86_64_shared.ninja
+include ninja/system/libziparchive/libziparchive^linux_glibc_x86_64_shared.ninja
 include ninja/system/linkerconfig/linkerconfig_contents^android_x86_64_static.ninja
 include ninja/system/linkerconfig/linkerconfig_contents^android_x86_64_static_apex10000.ninja
 include ninja/system/linkerconfig/linkerconfig_contents^linux_glibc_x86_64_static.ninja
@@ -1008,6 +1044,7 @@ include ninja/system/tools/hidl/metadata/libhidlmetadata^linux_glibc_x86_64_shar
 include ninja/system/tools/hidl/metadata/libhidlmetadata^linux_glibc_x86_64_static.ninja
 include ninja/system/tools/hidl/utils/libhidl-gen-utils^linux_glibc_x86_64_shared.ninja
 include ninja/system/tools/mkbootimg/mkbootimg^linux_glibc_x86_64_PY3.ninja
+include ninja/system/tools/mkbootimg/unpack_bootimg^linux_glibc_x86_64_PY3.ninja
 include ninja/system/tools/sysprop/sysprop_api_checker^linux_glibc_x86_64.ninja
 include ninja/system/tools/sysprop/sysprop_api_dump^linux_glibc_x86_64.ninja
 include ninja/system/tools/sysprop/sysprop_cpp^linux_glibc_x86_64.ninja
@@ -1031,6 +1068,8 @@ build libartpalette,android_x86_64_shared_apex31: phony out/soong/.intermediates
 
 build libartpalette,android_x86_x86_64_shared_apex31: phony out/soong/.intermediates/art/libartpalette/libartpalette/android_x86_x86_64_shared_apex31/libartpalette.so out/soong/.intermediates/art/libartpalette/libartpalette/android_x86_x86_64_shared_apex31/libartpalette.so.toc
 
+build libartpalette,linux_glibc_x86_64_shared: phony out/soong/.intermediates/art/libartpalette/libartpalette/linux_glibc_x86_64_shared/libartpalette.so out/soong/.intermediates/art/libartpalette/libartpalette/linux_glibc_x86_64_shared/libartpalette.so.toc out/soong/host/linux-x86/lib64/libartpalette.so
+
 build libnativebridge,android_x86_64_shared_apex31: phony out/soong/.intermediates/art/libnativebridge/libnativebridge/android_x86_64_shared_apex31/libnativebridge.so out/soong/.intermediates/art/libnativebridge/libnativebridge/android_x86_64_shared_apex31/libnativebridge.so.toc
 
 build libnativebridge,android_x86_x86_64_shared_apex31: phony out/soong/.intermediates/art/libnativebridge/libnativebridge/android_x86_x86_64_shared_apex31/libnativebridge.so out/soong/.intermediates/art/libnativebridge/libnativebridge/android_x86_x86_64_shared_apex31/libnativebridge.so.toc
@@ -1045,7 +1084,7 @@ build libsigchain,android_x86_64_shared_apex31: phony out/soong/.intermediates/a
 
 build libsigchain,android_x86_x86_64_shared_apex31: phony out/soong/.intermediates/art/sigchainlib/libsigchain/android_x86_x86_64_shared_apex31/libsigchain.so out/soong/.intermediates/art/sigchainlib/libsigchain/android_x86_x86_64_shared_apex31/libsigchain.so.toc
 
-build art-targets: phony art-apex-cache-info, dalvikvm,android_x86_64_apex31 dalvikvm,android_x86_x86_64_apex31 libartpalette,android_x86_64_shared_apex31 libartpalette,android_x86_x86_64_shared_apex31 libnativebridge,android_x86_64_shared_apex31 libnativebridge,android_x86_x86_64_shared_apex31 libperfetto_hprof,android_x86_64_static_apex31 libperfetto_hprof,android_x86_x86_64_static_apex31 libsigchain,android_x86_64_shared_apex31 libsigchain,android_x86_x86_64_shared_apex31
+build art-targets: phony art-apex-cache-info, dalvikvm,android_x86_64_apex31 dalvikvm,android_x86_x86_64_apex31 libartpalette,android_x86_64_shared_apex31 libartpalette,android_x86_x86_64_shared_apex31 libartpalette,linux_glibc_x86_64_shared libnativebridge,android_x86_64_shared_apex31 libnativebridge,android_x86_x86_64_shared_apex31 libperfetto_hprof,android_x86_64_static_apex31 libperfetto_hprof,android_x86_x86_64_static_apex31 libsigchain,android_x86_64_shared_apex31 libsigchain,android_x86_x86_64_shared_apex31
 
 build crtbrand,android_x86_64_sdk_21: phony out/soong/.intermediates/bionic/libc/crtbrand/android_x86_64_sdk_21/obj/bionic/libc/arch-common/bionic/crtbrand.o
 
@@ -1099,13 +1138,17 @@ build bootable_recovery-targets: phony libminadbd_services,android_recovery_x86_
 
 build build_image,linux_glibc_x86_64_PY2: phony out/soong/host/linux-x86/bin/build_image
 
+build build_super_image,linux_glibc_x86_64_PY2: phony out/soong/host/linux-x86/bin/build_super_image
+
 build sparse_img,linux_glibc_x86_64_PY2: phony out/soong/host/linux-x86/bin/sparse_img
 
 build verity_utils,linux_glibc_x86_64_PY2: phony out/soong/host/linux-x86/bin/verity_utils
 
-build signapk,linux_glibc_common: phony out/soong/host/linux-x86/framework/signapk.jar
+build signapk,linux_glibc_common: phony out/soong/.intermediates/build/make/tools/signapk/signapk/linux_glibc_common/combined/signapk.jar out/soong/host/linux-x86/framework/signapk.jar
 
-build build_make-targets: phony build_image,linux_glibc_x86_64_PY2 signapk,linux_glibc_common sparse_img,linux_glibc_x86_64_PY2 verity_utils,linux_glibc_x86_64_PY2
+build signapk,linux_glibc_x86_64: phony out/soong/host/linux-x86/bin/signapk
+
+build build_make-targets: phony build_image,linux_glibc_x86_64_PY2 build_super_image,linux_glibc_x86_64_PY2 signapk,linux_glibc_common signapk,linux_glibc_x86_64 sparse_img,linux_glibc_x86_64_PY2 verity_utils,linux_glibc_x86_64_PY2
 
 build conv_linker_config,linux_glibc_x86_64_PY3: phony out/soong/host/linux-x86/bin/conv_linker_config
 
@@ -1117,6 +1160,66 @@ build libgfxstream_backend,android_x86_64_shared_apex10000: phony out/soong/.int
 
 build device_generic_vulkan-cereal-targets: phony libgfxstream_backend,android_x86_64_shared_apex10000
 
+build socket_vsock_proxy,linux_glibc_x86_64: phony out/soong/.intermediates/device/google/cuttlefish/common/frontend/socket_vsock_proxy/socket_vsock_proxy/linux_glibc_x86_64/socket_vsock_proxy out/soong/host/linux-x86/bin/socket_vsock_proxy
+
+build libcuttlefish_device_config,linux_glibc_x86_64_shared: phony out/soong/.intermediates/device/google/cuttlefish/common/libs/device_config/libcuttlefish_device_config/linux_glibc_x86_64_shared/libcuttlefish_device_config.so out/soong/.intermediates/device/google/cuttlefish/common/libs/device_config/libcuttlefish_device_config/linux_glibc_x86_64_shared/libcuttlefish_device_config.so.toc out/soong/host/linux-x86/lib64/libcuttlefish_device_config.so
+
+build libcuttlefish_fs,linux_glibc_x86_64_shared: phony out/soong/.intermediates/device/google/cuttlefish/common/libs/fs/libcuttlefish_fs/linux_glibc_x86_64_shared/libcuttlefish_fs.so out/soong/.intermediates/device/google/cuttlefish/common/libs/fs/libcuttlefish_fs/linux_glibc_x86_64_shared/libcuttlefish_fs.so.toc out/soong/host/linux-x86/lib64/libcuttlefish_fs.so
+
+build libcuttlefish_security,linux_glibc_x86_64_shared: phony out/soong/.intermediates/device/google/cuttlefish/common/libs/security/libcuttlefish_security/linux_glibc_x86_64_shared/libcuttlefish_security.so out/soong/host/linux-x86/lib64/libcuttlefish_security.so
+
+build libcuttlefish_utils,linux_glibc_x86_64_shared: phony out/soong/.intermediates/device/google/cuttlefish/common/libs/utils/libcuttlefish_utils/linux_glibc_x86_64_shared/libcuttlefish_utils.so out/soong/.intermediates/device/google/cuttlefish/common/libs/utils/libcuttlefish_utils/linux_glibc_x86_64_shared/libcuttlefish_utils.so.toc out/soong/host/linux-x86/lib64/libcuttlefish_utils.so
+
+build adbshell,linux_glibc_x86_64: phony out/soong/.intermediates/device/google/cuttlefish/host/commands/adbshell/adbshell/linux_glibc_x86_64/adbshell out/soong/host/linux-x86/bin/adbshell
+
+build bt_connector,linux_glibc_x86_64: phony out/soong/.intermediates/device/google/cuttlefish/host/commands/bt_connector/bt_connector/linux_glibc_x86_64/bt_connector out/soong/host/linux-x86/bin/bt_connector
+
+build config_server,linux_glibc_x86_64: phony out/soong/.intermediates/device/google/cuttlefish/host/commands/config_server/config_server/linux_glibc_x86_64/config_server out/soong/host/linux-x86/bin/config_server
+
+build console_forwarder,linux_glibc_x86_64: phony out/soong/.intermediates/device/google/cuttlefish/host/commands/console_forwarder/console_forwarder/linux_glibc_x86_64/console_forwarder out/soong/host/linux-x86/bin/console_forwarder
+
+build cvd_status,linux_glibc_x86_64: phony out/soong/.intermediates/device/google/cuttlefish/host/commands/cvd_status/cvd_status/linux_glibc_x86_64/cvd_status out/soong/host/linux-x86/bin/cvd_status
+
+build gnss_grpc_proxy,linux_glibc_x86_64: phony out/soong/.intermediates/device/google/cuttlefish/host/commands/gnss_grpc_proxy/gnss_grpc_proxy/linux_glibc_x86_64/gnss_grpc_proxy out/soong/host/linux-x86/bin/gnss_grpc_proxy
+
+build GnssGrpcProxyStub_h,: phony out/soong/.intermediates/device/google/cuttlefish/host/commands/gnss_grpc_proxy/GnssGrpcProxyStub_h/gen/gnss_grpc_proxy.grpc.pb.h out/soong/.intermediates/device/google/cuttlefish/host/commands/gnss_grpc_proxy/GnssGrpcProxyStub_h/gen/gnss_grpc_proxy.pb.h
+
+build GnssGrpcProxyStub_cc,: phony out/soong/.intermediates/device/google/cuttlefish/host/commands/gnss_grpc_proxy/GnssGrpcProxyStub_cc/gen/gnss_grpc_proxy.grpc.pb.cc out/soong/.intermediates/device/google/cuttlefish/host/commands/gnss_grpc_proxy/GnssGrpcProxyStub_cc/gen/gnss_grpc_proxy.pb.cc
+
+build kernel_log_monitor,linux_glibc_x86_64: phony out/soong/.intermediates/device/google/cuttlefish/host/commands/kernel_log_monitor/kernel_log_monitor/linux_glibc_x86_64/kernel_log_monitor out/soong/host/linux-x86/bin/kernel_log_monitor
+
+build libcuttlefish_kernel_log_monitor_utils,linux_glibc_x86_64_shared: phony out/soong/.intermediates/device/google/cuttlefish/host/commands/kernel_log_monitor/libcuttlefish_kernel_log_monitor_utils/linux_glibc_x86_64_shared/libcuttlefish_kernel_log_monitor_utils.so out/soong/.intermediates/device/google/cuttlefish/host/commands/kernel_log_monitor/libcuttlefish_kernel_log_monitor_utils/linux_glibc_x86_64_shared/libcuttlefish_kernel_log_monitor_utils.so.toc out/soong/host/linux-x86/lib64/libcuttlefish_kernel_log_monitor_utils.so
+
+build launch_cvd,linux_glibc_x86_64: phony out/soong/.intermediates/device/google/cuttlefish/host/commands/launch/launch_cvd/linux_glibc_x86_64/launch_cvd out/soong/host/linux-x86/bin/launch_cvd
+
+build log_tee,linux_glibc_x86_64: phony out/soong/.intermediates/device/google/cuttlefish/host/commands/log_tee/log_tee/linux_glibc_x86_64/log_tee out/soong/host/linux-x86/bin/log_tee
+
+build logcat_receiver,linux_glibc_x86_64: phony out/soong/.intermediates/device/google/cuttlefish/host/commands/logcat_receiver/logcat_receiver/linux_glibc_x86_64/logcat_receiver out/soong/host/linux-x86/bin/logcat_receiver
+
+build metrics,linux_glibc_x86_64: phony out/soong/.intermediates/device/google/cuttlefish/host/commands/metrics/metrics/linux_glibc_x86_64/metrics out/soong/host/linux-x86/bin/metrics
+
+build modem_simulator,linux_glibc_x86_64: phony out/soong/.intermediates/device/google/cuttlefish/host/commands/modem_simulator/modem_simulator/linux_glibc_x86_64/modem_simulator out/soong/host/linux-x86/bin/modem_simulator
+
+build powerwash_cvd,linux_glibc_x86_64: phony out/soong/.intermediates/device/google/cuttlefish/host/commands/powerwash_cvd/powerwash_cvd/linux_glibc_x86_64/powerwash_cvd out/soong/host/linux-x86/bin/powerwash_cvd
+
+build restart_cvd,linux_glibc_x86_64: phony out/soong/.intermediates/device/google/cuttlefish/host/commands/restart_cvd/restart_cvd/linux_glibc_x86_64/restart_cvd out/soong/host/linux-x86/bin/restart_cvd
+
+build run_cvd,linux_glibc_x86_64: phony out/soong/.intermediates/device/google/cuttlefish/host/commands/run_cvd/run_cvd/linux_glibc_x86_64/run_cvd out/soong/host/linux-x86/bin/run_cvd
+
+build stop_cvd,linux_glibc_x86_64: phony out/soong/.intermediates/device/google/cuttlefish/host/commands/stop_cvd/stop_cvd/linux_glibc_x86_64/stop_cvd out/soong/host/linux-x86/bin/stop_cvd
+
+build tombstone_receiver,linux_glibc_x86_64: phony out/soong/.intermediates/device/google/cuttlefish/host/commands/tombstone_receiver/tombstone_receiver/linux_glibc_x86_64/tombstone_receiver out/soong/host/linux-x86/bin/tombstone_receiver
+
+build adb_connector,linux_glibc_x86_64: phony out/soong/.intermediates/device/google/cuttlefish/host/frontend/adb_connector/adb_connector/linux_glibc_x86_64/adb_connector out/soong/host/linux-x86/bin/adb_connector
+
+build libcuttlefish_allocd_utils,linux_glibc_x86_64_shared: phony out/soong/.intermediates/device/google/cuttlefish/host/libs/allocd/libcuttlefish_allocd_utils/linux_glibc_x86_64_shared/libcuttlefish_allocd_utils.so out/soong/.intermediates/device/google/cuttlefish/host/libs/allocd/libcuttlefish_allocd_utils/linux_glibc_x86_64_shared/libcuttlefish_allocd_utils.so.toc out/soong/host/linux-x86/lib64/libcuttlefish_allocd_utils.so
+
+build allocd,linux_glibc_x86_64: phony out/soong/.intermediates/device/google/cuttlefish/host/libs/allocd/allocd/linux_glibc_x86_64/allocd out/soong/host/linux-x86/bin/allocd
+
+build allocd_client,linux_glibc_x86_64: phony out/soong/.intermediates/device/google/cuttlefish/host/libs/allocd/allocd_client/linux_glibc_x86_64/allocd_client out/soong/host/linux-x86/bin/allocd_client
+
+build device_google_cuttlefish-targets: phony GnssGrpcProxyStub_cc, GnssGrpcProxyStub_h, adb_connector,linux_glibc_x86_64 adbshell,linux_glibc_x86_64 allocd,linux_glibc_x86_64 allocd_client,linux_glibc_x86_64 bt_connector,linux_glibc_x86_64 config_server,linux_glibc_x86_64 console_forwarder,linux_glibc_x86_64 cvd_status,linux_glibc_x86_64 gnss_grpc_proxy,linux_glibc_x86_64 kernel_log_monitor,linux_glibc_x86_64 launch_cvd,linux_glibc_x86_64 libcuttlefish_allocd_utils,linux_glibc_x86_64_shared libcuttlefish_device_config,linux_glibc_x86_64_shared libcuttlefish_fs,linux_glibc_x86_64_shared libcuttlefish_kernel_log_monitor_utils,linux_glibc_x86_64_shared libcuttlefish_security,linux_glibc_x86_64_shared libcuttlefish_utils,linux_glibc_x86_64_shared log_tee,linux_glibc_x86_64 logcat_receiver,linux_glibc_x86_64 metrics,linux_glibc_x86_64 modem_simulator,linux_glibc_x86_64 powerwash_cvd,linux_glibc_x86_64 restart_cvd,linux_glibc_x86_64 run_cvd,linux_glibc_x86_64 socket_vsock_proxy,linux_glibc_x86_64 stop_cvd,linux_glibc_x86_64 tombstone_receiver,linux_glibc_x86_64
+
 build auto_common,linux_glibc_common: phony out/soong/.intermediates/external/auto/common/auto_common/linux_glibc_common/javac/auto_common.jar
 
 build auto_service_plugin,linux_glibc_common: phony out/soong/.intermediates/external/auto/service/auto_service_plugin/linux_glibc_common/combined/auto_service_plugin.jar
@@ -1125,7 +1228,7 @@ build auto_value_extension,linux_glibc_common: phony out/soong/.intermediates/ex
 
 build external_auto-targets: phony auto_common,linux_glibc_common auto_service_plugin,linux_glibc_common auto_value_extension,linux_glibc_common
 
-build avbtool,linux_glibc_x86_64_PY3: phony out/soong/host/linux-x86/bin/avbtool
+build avbtool,linux_glibc_x86_64_PY3: phony out/soong/.intermediates/external/avb/avbtool/linux_glibc_x86_64_PY3/avbtool out/soong/host/linux-x86/bin/avbtool
 
 build external_avb-targets: phony avbtool,linux_glibc_x86_64_PY3
 
@@ -1316,6 +1419,14 @@ build libcap,android_x86_64_shared_apex29: phony out/soong/.intermediates/extern
 build libcap,android_x86_x86_64_shared: phony out/soong/.intermediates/external/libcap/libcap/android_x86_x86_64_shared/libcap.so out/soong/.intermediates/external/libcap/libcap/android_x86_x86_64_shared/libcap.so.toc
 
 build external_libcap-targets: phony libcap,android_x86_64_shared libcap,android_x86_64_shared_apex10000 libcap,android_x86_64_shared_apex29 libcap,android_x86_x86_64_shared
+
+build libchrome,linux_glibc_x86_64_shared: phony out/soong/.intermediates/external/libchrome/libchrome/linux_glibc_x86_64_shared/libchrome.so out/soong/host/linux-x86/lib64/libchrome.so
+
+build external_libchrome-targets: phony libchrome,linux_glibc_x86_64_shared
+
+build libcppbor_external,linux_glibc_x86_64_shared: phony out/soong/.intermediates/external/libcppbor/libcppbor_external/linux_glibc_x86_64_shared/libcppbor_external.so out/soong/.intermediates/external/libcppbor/libcppbor_external/linux_glibc_x86_64_shared/libcppbor_external.so.toc out/soong/host/linux-x86/lib64/libcppbor_external.so
+
+build external_libcppbor-targets: phony libcppbor_external,linux_glibc_x86_64_shared
 
 build libc++,android_product.31_x86_64_shared: phony out/soong/.intermediates/external/libcxx/libc++/android_product.31_x86_64_shared/libc++.so out/soong/.intermediates/external/libcxx/libc++/android_product.31_x86_64_shared/libc++.so.toc
 
@@ -3005,9 +3116,11 @@ build apexer,linux_glibc_x86_64_PY2: phony out/soong/host/linux-x86/bin/apexer
 
 build conv_apex_manifest,linux_glibc_x86_64_PY2: phony out/soong/host/linux-x86/bin/conv_apex_manifest
 
+build deapexer,linux_glibc_x86_64_PY3: phony out/soong/host/linux-x86/bin/deapexer
+
 build apex_compression_tool,linux_glibc_x86_64_PY3: phony out/soong/host/linux-x86/bin/apex_compression_tool
 
-build system_apex-targets: phony apex-info-list, apex_compression_tool,linux_glibc_x86_64_PY3 apexer,linux_glibc_x86_64_PY2 conv_apex_manifest,linux_glibc_x86_64_PY2
+build system_apex-targets: phony apex-info-list, apex_compression_tool,linux_glibc_x86_64_PY3 apexer,linux_glibc_x86_64_PY2 conv_apex_manifest,linux_glibc_x86_64_PY2 deapexer,linux_glibc_x86_64_PY3
 
 build libbt_facade_proto,android_x86_64_source: phony out/soong/.intermediates/system/bt/gd/libbt_facade_proto/android_x86_64_source/common.d out/soong/.intermediates/system/bt/gd/libbt_facade_proto/android_x86_64_source/common.rs out/soong/.intermediates/system/bt/gd/libbt_facade_proto/android_x86_64_source/controller_facade.d out/soong/.intermediates/system/bt/gd/libbt_facade_proto/android_x86_64_source/controller_facade.rs out/soong/.intermediates/system/bt/gd/libbt_facade_proto/android_x86_64_source/controller_facade_grpc.rs out/soong/.intermediates/system/bt/gd/libbt_facade_proto/android_x86_64_source/hal_facade.d out/soong/.intermediates/system/bt/gd/libbt_facade_proto/android_x86_64_source/hal_facade.rs out/soong/.intermediates/system/bt/gd/libbt_facade_proto/android_x86_64_source/hal_facade_grpc.rs out/soong/.intermediates/system/bt/gd/libbt_facade_proto/android_x86_64_source/hci_facade.d out/soong/.intermediates/system/bt/gd/libbt_facade_proto/android_x86_64_source/hci_facade.rs out/soong/.intermediates/system/bt/gd/libbt_facade_proto/android_x86_64_source/hci_facade_grpc.rs out/soong/.intermediates/system/bt/gd/libbt_facade_proto/android_x86_64_source/mod_facade.rs out/soong/.intermediates/system/bt/gd/libbt_facade_proto/android_x86_64_source/rootservice.d out/soong/.intermediates/system/bt/gd/libbt_facade_proto/android_x86_64_source/rootservice.rs out/soong/.intermediates/system/bt/gd/libbt_facade_proto/android_x86_64_source/rootservice_grpc.rs
 
@@ -3167,6 +3280,10 @@ build libhwbinder,android_x86_x86_64_shared: phony out/soong/.intermediates/syst
 
 build system_libhwbinder-targets: phony libhwbinder,android_x86_64_shared libhwbinder,android_x86_x86_64_shared
 
+build libziparchive,linux_glibc_x86_64_shared: phony out/soong/.intermediates/system/libziparchive/libziparchive/linux_glibc_x86_64_shared/libziparchive.so out/soong/.intermediates/system/libziparchive/libziparchive/linux_glibc_x86_64_shared/libziparchive.so.toc out/soong/host/linux-x86/lib64/libziparchive.so
+
+build system_libziparchive-targets: phony libziparchive,linux_glibc_x86_64_shared
+
 build linkerconfig_contents,android_x86_64_static: phony out/soong/.intermediates/system/linkerconfig/linkerconfig_contents/android_x86_64_static/linkerconfig_contents.a
 
 build linkerconfig_contents,android_x86_64_static_apex10000: phony out/soong/.intermediates/system/linkerconfig/linkerconfig_contents/android_x86_64_static_apex10000/linkerconfig_contents.a
@@ -3269,9 +3386,11 @@ build libhidl-gen-utils,linux_glibc_x86_64_shared: phony out/soong/.intermediate
 
 build system_tools_hidl-targets: phony hidl_metadata_in_cpp,linux_glibc_x86_64 hidl_metadata_json, libhidl-gen-utils,linux_glibc_x86_64_shared libhidlmetadata,linux_glibc_x86_64_shared libhidlmetadata,linux_glibc_x86_64_static
 
-build mkbootimg,linux_glibc_x86_64_PY3: phony out/soong/host/linux-x86/bin/mkbootimg
+build mkbootimg,linux_glibc_x86_64_PY3: phony out/soong/.intermediates/system/tools/mkbootimg/mkbootimg/linux_glibc_x86_64_PY3/mkbootimg out/soong/host/linux-x86/bin/mkbootimg
 
-build system_tools_mkbootimg-targets: phony mkbootimg,linux_glibc_x86_64_PY3
+build unpack_bootimg,linux_glibc_x86_64_PY3: phony out/soong/.intermediates/system/tools/mkbootimg/unpack_bootimg/linux_glibc_x86_64_PY3/unpack_bootimg out/soong/host/linux-x86/bin/unpack_bootimg
+
+build system_tools_mkbootimg-targets: phony mkbootimg,linux_glibc_x86_64_PY3 unpack_bootimg,linux_glibc_x86_64_PY3
 
 build sysprop_cpp,linux_glibc_x86_64: phony out/soong/host/linux-x86/bin/sysprop_cpp
 

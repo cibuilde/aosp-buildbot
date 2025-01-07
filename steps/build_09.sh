@@ -126,6 +126,10 @@ gh release --repo cibuilde/aosp-buildbot download android12-gsi_05 --pattern ext
 mkdir -p $GITHUB_WORKSPACE/downloads/external/google-fruit
 tar xf $GITHUB_WORKSPACE/external_google-fruit-05.tar.zst -C $GITHUB_WORKSPACE/downloads/external/google-fruit/
 
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_06 --pattern external_grpc-grpc.tar.zst --output external_grpc-grpc-06.tar.zst
+mkdir -p $GITHUB_WORKSPACE/downloads/external/grpc-grpc
+tar xf $GITHUB_WORKSPACE/external_grpc-grpc-06.tar.zst -C $GITHUB_WORKSPACE/downloads/external/grpc-grpc/
+
 gh release --repo cibuilde/aosp-buildbot download android12-gsi_08 --pattern external_harfbuzz_ng.tar.zst --output external_harfbuzz_ng-08.tar.zst
 mkdir -p $GITHUB_WORKSPACE/downloads/external/harfbuzz_ng
 tar xf $GITHUB_WORKSPACE/external_harfbuzz_ng-08.tar.zst -C $GITHUB_WORKSPACE/downloads/external/harfbuzz_ng/
@@ -281,6 +285,10 @@ tar xf $GITHUB_WORKSPACE/external_rust_crates_async-task-02.tar.zst -C $GITHUB_W
 gh release --repo cibuilde/aosp-buildbot download android12-gsi_05 --pattern external_rust_crates_async-trait.tar.zst --output external_rust_crates_async-trait-05.tar.zst
 mkdir -p $GITHUB_WORKSPACE/downloads/external/rust/crates/async-trait
 tar xf $GITHUB_WORKSPACE/external_rust_crates_async-trait-05.tar.zst -C $GITHUB_WORKSPACE/downloads/external/rust/crates/async-trait/
+
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_03 --pattern external_rust_crates_bindgen.tar.zst --output external_rust_crates_bindgen-03.tar.zst
+mkdir -p $GITHUB_WORKSPACE/downloads/external/rust/crates/bindgen
+tar xf $GITHUB_WORKSPACE/external_rust_crates_bindgen-03.tar.zst -C $GITHUB_WORKSPACE/downloads/external/rust/crates/bindgen/
 
 gh release --repo cibuilde/aosp-buildbot download android12-gsi_04 --pattern external_rust_crates_bindgen.tar.zst --output external_rust_crates_bindgen-04.tar.zst
 mkdir -p $GITHUB_WORKSPACE/downloads/external/rust/crates/bindgen
@@ -701,6 +709,10 @@ tar xf $GITHUB_WORKSPACE/external_rust_crates_unicode-xid-01.tar.zst -C $GITHUB_
 gh release --repo cibuilde/aosp-buildbot download android12-gsi_02 --pattern external_rust_crates_which.tar.zst --output external_rust_crates_which-02.tar.zst
 mkdir -p $GITHUB_WORKSPACE/downloads/external/rust/crates/which
 tar xf $GITHUB_WORKSPACE/external_rust_crates_which-02.tar.zst -C $GITHUB_WORKSPACE/downloads/external/rust/crates/which/
+
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_rust_cxx.tar.zst --output external_rust_cxx-01.tar.zst
+mkdir -p $GITHUB_WORKSPACE/downloads/external/rust/cxx
+tar xf $GITHUB_WORKSPACE/external_rust_cxx-01.tar.zst -C $GITHUB_WORKSPACE/downloads/external/rust/cxx/
 
 gh release --repo cibuilde/aosp-buildbot download android12-gsi_05 --pattern external_rust_cxx.tar.zst --output external_rust_cxx-05.tar.zst
 mkdir -p $GITHUB_WORKSPACE/downloads/external/rust/cxx
@@ -1171,6 +1183,34 @@ mkdir -p $GITHUB_WORKSPACE/.bin
 ln -sf /usr/bin/python2 $GITHUB_WORKSPACE/.bin/python
 export PATH=$GITHUB_WORKSPACE/.bin:$PATH
 
+time source steps/build_09/build_make.sh
+time source steps/build_09/external_adhd.sh
+time source steps/build_09/external_conscrypt.sh
+time source steps/build_09/external_crosvm.sh
+time source steps/build_09/external_icu.sh
+time source steps/build_09/external_libbrillo.sh
+time source steps/build_09/external_libchromeos-rs.sh
+time source steps/build_09/external_rust_crates_chrono.sh
+time source steps/build_09/external_rust_crates_env_logger.sh
+time source steps/build_09/external_rust_crates_flate2.sh
+time source steps/build_09/external_rust_crates_futures-util.sh
+time source steps/build_09/external_rust_crates_grpcio.sh
+time source steps/build_09/external_rust_crates_rand_core.sh
+time source steps/build_09/external_rust_crates_structopt.sh
+time source steps/build_09/external_rust_crates_vmm_vhost.sh
+time source steps/build_09/frameworks_av.sh
+time source steps/build_09/frameworks_base.sh
+time source steps/build_09/frameworks_hardware_interfaces.sh
+time source steps/build_09/frameworks_minikin.sh
+time source steps/build_09/frameworks_native.sh
+time source steps/build_09/frameworks_opt_telephony.sh
+time source steps/build_09/frameworks_rs.sh
+time source steps/build_09/hardware_interfaces.sh
+time source steps/build_09/hardware_libhardware_legacy.sh
+time source steps/build_09/packages_apps_Bluetooth.sh
+time source steps/build_09/packages_modules_DnsResolver.sh
+time source steps/build_09/packages_modules_NeuralNetworks.sh
+time source steps/build_09/packages_modules_StatsD.sh
 time source steps/build_09/packages_modules_Virtualization.sh
 time source steps/build_09/packages_modules_adb.sh
 time source steps/build_09/system_apex.sh

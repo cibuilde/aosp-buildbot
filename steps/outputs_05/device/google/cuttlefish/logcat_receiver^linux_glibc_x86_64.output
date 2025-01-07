@@ -1,0 +1,2 @@
+out/soong/.intermediates/device/google/cuttlefish/host/commands/logcat_receiver/logcat_receiver/linux_glibc_x86_64/logcat_receiver
+out/soong/host/linux-x86/bin/logcat_receiver

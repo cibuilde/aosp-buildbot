@@ -1,0 +1,2 @@
+out/soong/.intermediates/device/google/cuttlefish/common/frontend/socket_vsock_proxy/socket_vsock_proxy/linux_glibc_x86_64/socket_vsock_proxy
+out/soong/host/linux-x86/bin/socket_vsock_proxy

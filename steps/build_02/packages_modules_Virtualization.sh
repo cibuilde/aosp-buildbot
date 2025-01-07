@@ -16,7 +16,7 @@ fi
 echo "Preparing for packages/modules/Virtualization"
 
 clone_depth device/google/cuttlefish
-clone_project device/google/cuttlefish_prebuilts device/google/cuttlefish_prebuilts android12-gsi "/bootloader/crosvm_x86_64/u-boot.rom" "/uboot_tools/mkenvimage"
+clone_project device/google/cuttlefish_prebuilts device/google/cuttlefish_prebuilts android12-gsi "/bootloader/crosvm_x86_64/u-boot.rom" "/uboot_tools/mkenvimage" "/scripts/extract-vmlinux" "/scripts/extract-ikconfig"
 clone_depth_platform packages/modules/Virtualization
 
 rsync -a -r $GITHUB_WORKSPACE/downloads/device/google/cuttlefish_prebuilts/bootloader/cuttlefish_crosvm_bootloader^android_x86_64/ .

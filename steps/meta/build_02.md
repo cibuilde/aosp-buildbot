@@ -1,4 +1,4 @@
-##### Tag: android12-gsi_02 Projects: 50 Targets: 153
+##### Tag: android12-gsi_02 Projects: 50 Targets: 155
 
 ###### **bionic**: 6
 `libm^android_recovery_x86_64_static` `libm^android_vendor_ramdisk_x86_64_static` `libm^android_x86_64_static_apex10000` `libm^android_x86_64_static` `libm^android_x86_x86_64_static_apex10000` `libm^android_x86_x86_64_static`
@@ -8,8 +8,8 @@
 `construct_context^linux_glibc_x86_64_PY2` `dexpreopt_gen^linux_glibc_x86_64` `extract_jar_packages^linux_glibc_x86_64` `gen-kotlin-build-file.py^linux_glibc_x86_64_PY3` `jsonmodify^linux_glibc_x86_64_PY2` `manifest_check^linux_glibc_x86_64_PY2` `manifest_fixer^linux_glibc_x86_64_PY2` `manifest_utils^linux_glibc_x86_64_PY2` `merge_zips^linux_glibc_x86_64` `ndkstubgen^linux_glibc_x86_64_PY3` `ninja_rsp^linux_glibc_x86_64_PY3` `sbox^linux_glibc_x86_64` `sbox_proto^linux_glibc_x86_64` `soong-android-soongconfig^linux_glibc_x86_64` `soong-android^linux_glibc_x86_64` `soong-bazel^linux_glibc_x86_64` `soong-dexpreopt^linux_glibc_x86_64` `soong-shared^linux_glibc_x86_64` `soong-ui-metrics_proto^linux_glibc_x86_64` `soong-zip^linux_glibc_x86_64` `soong^linux_glibc_x86_64` `soong_zip^linux_glibc_x86_64` `symbolfile^linux_glibc_x86_64_PY3` `zip2zip^linux_glibc_x86_64` `zipsync^linux_glibc_x86_64`
 ###### **external/crosvm**: 4
 `libassertions^android_x86_64_rlib_rlib-std_apex10000` `librand_ish^android_x86_64_rlib_rlib-std_apex10000` `libsync_rust^android_x86_64_rlib_rlib-std_apex10000` `libsyscall_defines^android_x86_64_rlib_rlib-std_apex10000`
-###### **external/grpc-grpc**: 2
-`libgrpc^android_x86_64_static` `libgrpc^android_x86_x86_64_static`
+###### **external/grpc-grpc**: 4
+`libgrpc^android_x86_64_static` `libgrpc^android_x86_x86_64_static` `libgrpc^linux_glibc_x86_64_static` `libgrpc_unsecure^linux_glibc_x86_64_static`
 ###### **external/libcxx**: 17
 `libc++^linux_glibc_x86_64_shared` `libc++^linux_glibc_x86_shared` `libc++_static^android_recovery_x86_64_static` `libc++_static^android_vendor_ramdisk_x86_64_static` `libc++_static^android_x86_64_static_apex10000` `libc++_static^android_x86_64_static_apex29` `libc++_static^android_x86_64_static_apex30` `libc++_static^android_x86_64_static_apex31` `libc++_static^android_x86_64_static_cfi_apex29` `libc++_static^android_x86_64_static` `libc++_static^android_x86_x86_64_static_apex10000` `libc++_static^android_x86_x86_64_static_apex29` `libc++_static^android_x86_x86_64_static_apex30` `libc++_static^android_x86_x86_64_static_apex31` `libc++_static^android_x86_x86_64_static` `libc++_static^linux_glibc_x86_64_static` `libc++_static^linux_glibc_x86_static`
 ###### **external/rust/crates/aho-corasick**: 1

@@ -1,0 +1,2 @@
+out/soong/.intermediates/device/google/cuttlefish_vmm/x86_64-linux-gnu/9p_device.policy_at_x86_64/linux_glibc_common/9p_device.policy
+out/soong/host/linux-x86/usr/share/cuttlefish/x86_64-linux-gnu/seccomp/9p_device.policy

@@ -1,0 +1,3 @@
+out/soong/.intermediates/external/nanopb-c/libprotobuf-c-nano/linux_glibc_x86_64_static/obj/external/nanopb-c/pb_common.o
+out/soong/.intermediates/external/nanopb-c/libprotobuf-c-nano/linux_glibc_x86_64_static/obj/external/nanopb-c/pb_decode.o
+out/soong/.intermediates/external/nanopb-c/libprotobuf-c-nano/linux_glibc_x86_64_static/obj/external/nanopb-c/pb_encode.o

@@ -1,13 +1,13 @@
-##### Tag: android12-gsi_06 Projects: 115 Targets: 501
+##### Tag: android12-gsi_06 Projects: 117 Targets: 514
 
-###### **art**: 19
-`art-linker-config^android_x86_64` `libart-disassembler^android_x86_64_shared_apex31` `libart-disassembler^android_x86_x86_64_shared_apex31` `libart^android_x86_64_static_apex31` `libart^android_x86_x86_64_static_apex31` `libdt_fd_forward^android_x86_64_shared_apex31` `libdt_fd_forward^android_x86_x86_64_shared_apex31` `libnativebridge_lazy^android_x86_64_shared` `libnativebridge_lazy^android_x86_x86_64_shared` `libnativeloader_lazy^android_x86_64_shared` `libnativeloader_lazy^android_x86_x86_64_shared` `libodrstatslog^android_x86_64_static_lto-thin_apex31` `libodrstatslog^android_x86_x86_64_static_lto-thin_apex31` `libstatslog_art^android_x86_64_static_lto-thin_apex31` `libstatslog_art^android_x86_x86_64_static_lto-thin_apex31` `statslog_art.cpp^` `statslog_art.h^` `statslog_odrefresh.cpp^` `statslog_odrefresh.h^`
+###### **art**: 21
+`art-linker-config^android_x86_64` `libart-disassembler^android_x86_64_shared_apex31` `libart-disassembler^android_x86_x86_64_shared_apex31` `libart^android_x86_64_static_apex31` `libart^android_x86_x86_64_static_apex31` `libartbase^linux_glibc_x86_64_shared` `libdexfile^linux_glibc_x86_64_shared` `libdt_fd_forward^android_x86_64_shared_apex31` `libdt_fd_forward^android_x86_x86_64_shared_apex31` `libnativebridge_lazy^android_x86_64_shared` `libnativebridge_lazy^android_x86_x86_64_shared` `libnativeloader_lazy^android_x86_64_shared` `libnativeloader_lazy^android_x86_x86_64_shared` `libodrstatslog^android_x86_64_static_lto-thin_apex31` `libodrstatslog^android_x86_x86_64_static_lto-thin_apex31` `libstatslog_art^android_x86_64_static_lto-thin_apex31` `libstatslog_art^android_x86_x86_64_static_lto-thin_apex31` `statslog_art.cpp^` `statslog_art.h^` `statslog_odrefresh.cpp^` `statslog_odrefresh.h^`
 ###### **bionic**: 1
 `bionic-linker-config^android_x86_64`
 ###### **bootable/recovery**: 2
 `libinstall^android_recovery_x86_64_static` `librecovery^android_recovery_x86_64_static`
-###### **device/google/cuttlefish**: 5
-`libcuttlefish_fs^android_x86_64_shared_apex10000` `libcuttlefish_utils^android_x86_64_shared_apex10000` `mk_cdisk^android_x86_64_apex10000` `tombstone_producer^android_product.31_x86_64` `tombstone_transmit^android_product.31_x86_64`
+###### **device/google/cuttlefish**: 7
+`assemble_cvd^linux_glibc_x86_64` `cvd_host_bugreport^linux_glibc_x86_64` `libcuttlefish_fs^android_x86_64_shared_apex10000` `libcuttlefish_utils^android_x86_64_shared_apex10000` `mk_cdisk^android_x86_64_apex10000` `tombstone_producer^android_product.31_x86_64` `tombstone_transmit^android_product.31_x86_64`
 ###### **external/auto**: 5
 `auto_annotation_plugin^linux_glibc_common` `auto_factory_plugin^linux_glibc_common` `auto_value_memoized_extension_plugin^linux_glibc_common` `auto_value_plugin^linux_glibc_common` `libauto_value_plugin^linux_glibc_common`
 ###### **external/boringssl**: 6
@@ -20,8 +20,12 @@
 `libcompiler_rt^android_x86_64_shared` `libcompiler_rt^android_x86_x86_64_shared`
 ###### **external/dng_sdk**: 2
 `libdng_sdk^android_x86_64_shared` `libdng_sdk^android_x86_x86_64_shared`
-###### **external/e2fsprogs**: 3
-`libext2_quota^linux_glibc_x86_64_shared` `libext2fs^linux_glibc_x86_64_shared` `tune2fs^linux_glibc_x86_64`
+###### **external/e2fsprogs**: 5
+`badblocks^linux_glibc_x86_64` `e2fsck^linux_glibc_x86_64` `libext2_quota^linux_glibc_x86_64_shared` `libext2fs^linux_glibc_x86_64_shared` `tune2fs^linux_glibc_x86_64`
+###### **external/erofs-utils**: 1
+`mkfs.erofs^linux_glibc_x86_64`
+###### **external/f2fs-tools**: 1
+`fsck.f2fs^linux_glibc_x86_64`
 ###### **external/freetype**: 2
 `libft2^android_x86_64_shared` `libft2^android_x86_x86_64_shared`
 ###### **external/gptfdisk**: 1
@@ -188,16 +192,16 @@
 `audio.a2dp.default^android_x86_64_static` `audio.a2dp.default^android_x86_x86_64_static` `audio.hearing_aid.default^android_x86_64_static` `audio.hearing_aid.default^android_x86_x86_64_static` `avrcp-target-service^android_x86_64_static` `avrcp-target-service^android_x86_x86_64_static` `libaudio-a2dp-hw-utils^android_x86_64_static` `libaudio-a2dp-hw-utils^android_x86_x86_64_static` `libbluetooth_gd^android_x86_64_static` `libbluetooth_gd^android_x86_x86_64_static` `libbt-audio-hal-interface^android_x86_64_static` `libbt-audio-hal-interface^android_x86_x86_64_static` `libbt-bta^android_x86_64_static` `libbt-bta^android_x86_x86_64_static` `libbt-common^android_x86_64_static` `libbt-common^android_x86_x86_64_static` `libbt-hci^android_x86_64_static` `libbt-hci^android_x86_x86_64_static` `libbt-rootcanal^android_vendor.31_x86_64_static` `libbt-sbc-decoder^android_x86_64_static` `libbt-sbc-decoder^android_x86_x86_64_static` `libbt-sbc-encoder^android_x86_64_static` `libbt-sbc-encoder^android_x86_x86_64_static` `libbt-stack^android_x86_64_static` `libbt-stack^android_x86_x86_64_static` `libbt-utils^android_x86_64_static` `libbt-utils^android_x86_x86_64_static` `libbt_callbacks_cxx^android_x86_64_static` `libbt_callbacks_cxx^android_x86_x86_64_static` `libbt_common_sys_prop_bridge_code^` `libbt_common_sys_prop_cxx^android_x86_64_static` `libbt_common_sys_prop_cxx^android_x86_x86_64_static` `libbt_hidl_hal_bridge_code^` `libbt_hidl_hal_bridge_header^` `libbt_hidl_hal_cxx^android_x86_64_static` `libbt_hidl_hal_cxx^android_x86_x86_64_static` `libbt_init_flags_bridge_code^` `libbt_init_flags_bridge_header^` `libbt_message_loop_thread_bridge_code^` `libbt_message_loop_thread_bridge_header^` `libbt_shim_bridge_code^` `libbt_shim_bridge_header^` `libbtcore^android_x86_64_static` `libbtcore^android_x86_x86_64_static` `libbtdevice^android_x86_64_static` `libbtdevice^android_x86_x86_64_static` `libbte^android_x86_64_static` `libbte^android_x86_x86_64_static` `libg722codec^android_x86_64_static` `libg722codec^android_x86_x86_64_static` `libosi^android_x86_64_static` `libosi^android_x86_x86_64_static` `libudrv-uipc^android_x86_64_static` `libudrv-uipc^android_x86_x86_64_static`
 ###### **system/core**: 32
 `com.android.sysprop.init_java_gen^` `com.android.sysprop.init_sysprop_library^` `host_init_verifier^linux_glibc_x86_64` `libcharger_sysprop^android_recovery_x86_64_static` `libcharger_sysprop^android_x86_64_static` `libcom.android.sysprop.init^android_recovery_x86_64_static` `libcom.android.sysprop.init^android_x86_64_static` `libcutils^android_x86_64_shared_apex10000` `libcutils^android_x86_64_shared_apex29` `libcutils^android_x86_x86_64_shared_apex10000` `libcutils^android_x86_x86_64_shared_apex29` `libcutils_bindgen^android_x86_64_rlib_rlib-std` `libhealthd_charger^android_x86_64_static` `libhealthd_draw^android_x86_64_static` `liblp^linux_glibc_x86_64_shared` `libpackagelistparser^android_recovery_x86_64_shared` `libpackagelistparser^android_x86_64_shared` `libpackagelistparser^android_x86_x86_64_shared` `libprocessgroup^android_x86_64_shared_apex10000` `libprocessgroup^android_x86_64_shared_apex29` `libprocessgroup^android_x86_x86_64_shared_apex29` `libqtaguid^android_x86_64_shared` `libusbhost^android_vendor.31_x86_64_shared` `libusbhost^android_vendor.31_x86_x86_64_shared` `libusbhost^android_x86_64_shared` `libusbhost^android_x86_x86_64_shared` `libutils^android_x86_64_shared_apex10000` `libutils^android_x86_64_shared_apex29` `libutils^android_x86_x86_64_shared_apex29` `libvndksupport^android_x86_64_shared` `libvndksupport^android_x86_x86_64_shared` `system_linker_config^android_x86_64`
-###### **system/extras**: 4
-`libprofcollect_libbase^android_x86_64_static` `libprofcollect_libbase_bridge_code^` `libprofcollect_libflags^android_x86_64_static` `libprofcollect_libflags_bridge_code^`
+###### **system/extras**: 5
+`blk_alloc_to_base_fs^linux_glibc_x86_64` `libprofcollect_libbase^android_x86_64_static` `libprofcollect_libbase_bridge_code^` `libprofcollect_libflags^android_x86_64_static` `libprofcollect_libflags_bridge_code^`
 ###### **system/gatekeeper**: 2
 `libgatekeeper^android_vendor.31_x86_64_shared` `libgatekeeper^android_vendor.31_x86_x86_64_shared`
 ###### **system/hardware/interfaces**: 2
 `libSuspendProperties^android_x86_64_shared` `libSuspendProperties^android_x86_64_static`
 ###### **system/incremental_delivery**: 4
 `libcom.android.sysprop.incremental^android_x86_64_static` `libcom.android.sysprop.incremental^android_x86_x86_64_static` `libincfs^android_x86_64_static` `libincfs^android_x86_x86_64_static`
-###### **system/keymaster**: 1
-`libkeymaster_messages^android_vendor.31_x86_64_shared`
+###### **system/keymaster**: 5
+`libcppcose_rkp^linux_glibc_x86_64_shared` `libkeymaster_messages^android_vendor.31_x86_64_shared` `libkeymaster_portable^linux_glibc_x86_64_shared` `libpuresoftkeymasterdevice_host^linux_glibc_x86_64_shared` `libsoft_attestation_cert^linux_glibc_x86_64_shared`
 ###### **system/libbase**: 7
 `libbase^android_recovery_x86_64_shared` `libbase^android_vendor.31_x86_64_shared` `libbase^android_vendor.31_x86_x86_64_shared` `libbase^android_vendor_ramdisk_x86_64_shared` `libbase^android_x86_64_shared` `libbase^android_x86_x86_64_shared` `libbase_ndk^android_x86_64_sdk_static_apex30`
 ###### **system/libprocinfo**: 2

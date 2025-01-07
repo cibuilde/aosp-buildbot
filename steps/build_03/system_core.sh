@@ -103,6 +103,12 @@ mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/cgrouprc/libcgr
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/system/core/libcgrouprc^android_x86_x86_64_shared_current.output . $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/cgrouprc/libcgrouprc^android_x86_x86_64_shared_current
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/system/core/libcgrouprc^android_x86_x86_64_shared_current.output $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/cgrouprc/libcgrouprc^android_x86_x86_64_shared_current $GITHUB_WORKSPACE/artifacts/system/core/libprocessgroup/cgrouprc/libcgrouprc^android_x86_x86_64_shared_current/addition_copy_files.output
 
+echo "building simg2img^linux_glibc_x86_64"
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja simg2img,linux_glibc_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/libsparse/simg2img^linux_glibc_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_03/system/core/simg2img^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/system/core/libsparse/simg2img^linux_glibc_x86_64
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_03/system/core/simg2img^linux_glibc_x86_64.output $GITHUB_WORKSPACE/artifacts/system/core/libsparse/simg2img^linux_glibc_x86_64 $GITHUB_WORKSPACE/artifacts/system/core/libsparse/simg2img^linux_glibc_x86_64/addition_copy_files.output
+
 echo "building img2simg^linux_glibc_x86_64"
 prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_03.ninja img2simg,linux_glibc_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/system/core/libsparse/img2simg^linux_glibc_x86_64

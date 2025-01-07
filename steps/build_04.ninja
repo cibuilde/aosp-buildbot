@@ -28,10 +28,15 @@ include ninja/device/generic/goldfish-opengl/shared/qemupipe/libqemupipe.ranchu^
 include ninja/device/generic/goldfish-opengl/shared/qemupipe/libqemupipe.ranchu^android_vendor.31_x86_x86_64_static.ninja
 include ninja/device/google/cuttlefish/common/libs/device_config/libcuttlefish_device_config_proto^android_vendor.31_x86_64_static.ninja
 include ninja/device/google/cuttlefish/common/libs/device_config/libcuttlefish_device_config_proto^android_vendor.31_x86_x86_64_static.ninja
+include ninja/device/google/cuttlefish/common/libs/device_config/libcuttlefish_device_config_proto^linux_glibc_x86_64_shared.ninja
+include ninja/device/google/cuttlefish/common/libs/device_config/libcuttlefish_device_config_proto^linux_glibc_x86_64_static.ninja
 include ninja/device/google/cuttlefish/common/libs/fs/libcuttlefish_fs_product^android_product.31_x86_64_static.ninja
 include ninja/device/google/cuttlefish/host/commands/kernel_log_monitor/libcuttlefish_kernel_log_monitor_utils^android_vendor.31_x86_64_static.ninja
+include ninja/device/google/cuttlefish/host/commands/mkenvimage_slim/mkenvimage_slim^linux_glibc_x86_64.ninja
 include ninja/device/google/cuttlefish/host/libs/image_aggregator/libcdisk_spec^android_x86_64_static_apex10000.ninja
+include ninja/device/google/cuttlefish/host/libs/image_aggregator/libcdisk_spec^linux_glibc_x86_64_static.ninja
 include ninja/device/google/cuttlefish/host/libs/image_aggregator/libimage_aggregator^android_x86_64_static_apex10000.ninja
+include ninja/device/google/cuttlefish/host/libs/image_aggregator/libimage_aggregator^linux_glibc_x86_64_static.ninja
 include ninja/external/aac/libFraunhoferAAC^android_vendor.31_x86_x86_64_static_cfi.ninja
 include ninja/external/bc/bc^android_x86_64.ninja
 include ninja/external/boringssl/libcrypto^android_recovery_x86_64_shared.ninja
@@ -100,6 +105,9 @@ include ninja/external/gemmlowp/eight_bit_int_gemm/libbnnmlowp^android_vendor.31
 include ninja/external/gemmlowp/eight_bit_int_gemm/libbnnmlowp^android_vendor.31_x86_x86_64_static.ninja
 include ninja/external/gflags/libgflags^android_product.31_x86_64_static.ninja
 include ninja/external/gflags/libgflags^android_vendor.31_x86_64_static.ninja
+include ninja/external/grpc-grpc/libgrpc++^linux_glibc_x86_64_shared.ninja
+include ninja/external/grpc-grpc/libgrpc++_unsecure^linux_glibc_x86_64_shared.ninja
+include ninja/external/grpc-grpc/protoc-gen-grpc-cpp-plugin^linux_glibc_x86_64.ninja
 include ninja/external/guava/guava-android-host^linux_glibc_common.ninja
 include ninja/external/guava/guava-both^linux_glibc_common.ninja
 include ninja/external/guava/guava-jre^linux_glibc_common.ninja
@@ -183,6 +191,7 @@ include ninja/external/libxml2/libxml2^linux_glibc_x86_64_shared.ninja
 include ninja/external/libxml2/xmllint^linux_glibc_x86_64.ninja
 include ninja/external/libyuv/files/libyuv^android_vendor.31_x86_64_static.ninja
 include ninja/external/libyuv/files/libyuv^android_vendor.31_x86_x86_64_static.ninja
+include ninja/external/libyuv/files/libyuv^linux_glibc_x86_64_shared.ninja
 include ninja/external/libyuv/files/libyuv_static^android_vendor.31_x86_64_static.ninja
 include ninja/external/libyuv/files/libyuv_static^android_vendor.31_x86_x86_64_static.ninja
 include ninja/external/llvm/lib/Bitcode/Reader/libLLVMBitReader^android_vendor.31_x86_64_static.ninja
@@ -437,6 +446,7 @@ include ninja/external/tinyalsa/libtinyalsa^android_vendor.31_x86_x86_64_static.
 include ninja/external/tinyxml2/libtinyxml2^android_vendor.31_x86_64_static.ninja
 include ninja/external/tinyxml2/libtinyxml2^android_vendor.31_x86_x86_64_static.ninja
 include ninja/external/tinyxml2/libtinyxml2^linux_glibc_x86_64_shared.ninja
+include ninja/external/toybox/toybox^linux_glibc_x86_64.ninja
 include ninja/external/tremolo/libvorbisidec^android_vendor.31_x86_x86_64_static.ninja
 include ninja/external/wayland/libwayland_client_static^android_x86_64_static_apex10000.ninja
 include ninja/external/webrtc/webrtc_aec3__aec3^android_vendor.31_x86_64_static.ninja
@@ -1712,6 +1722,8 @@ include ninja/system/extras/profcollectd/libprofcollectd/profcollectd_aidl_inter
 include ninja/system/extras/simpleperf/libsimpleperf^android_x86_64_static.ninja
 include ninja/system/extras/simpleperf/libsimpleperf_etm_decoder^android_x86_64_static.ninja
 include ninja/system/extras/simpleperf/libsimpleperf_profcollect^android_x86_64_static.ninja
+include ninja/system/extras/verity/boot_signer^linux_glibc_common.ninja
+include ninja/system/extras/verity/boot_signer^linux_glibc_x86_64.ninja
 include ninja/system/gsid/gsi_aidl_interface-cpp-source^.ninja
 include ninja/system/hardware/interfaces/keystore2/aidl/android.system.keystore2-V1-cpp-source^.ninja
 include ninja/system/hardware/interfaces/keystore2/aidl/android.system.keystore2-V1-java-source^.ninja
@@ -1985,15 +1997,25 @@ build libcuttlefish_device_config_proto,android_vendor.31_x86_64_static: phony o
 
 build libcuttlefish_device_config_proto,android_vendor.31_x86_x86_64_static: phony out/soong/.intermediates/device/google/cuttlefish/common/libs/device_config/libcuttlefish_device_config_proto/android_vendor.31_x86_x86_64_static/gen/proto/device/google/cuttlefish/common/libs/device_config/device_config.pb.h out/soong/.intermediates/device/google/cuttlefish/common/libs/device_config/libcuttlefish_device_config_proto/android_vendor.31_x86_x86_64_static/obj/.intermediates/device/google/cuttlefish/common/libs/device_config/libcuttlefish_device_config_proto/android_vendor.31_x86_x86_64_static/gen/proto/device/google/cuttlefish/common/libs/device_config/device_config.pb.o
 
+build libcuttlefish_device_config_proto,linux_glibc_x86_64_shared: phony out/soong/.intermediates/device/google/cuttlefish/common/libs/device_config/libcuttlefish_device_config_proto/linux_glibc_x86_64_shared/libcuttlefish_device_config_proto.so out/soong/.intermediates/device/google/cuttlefish/common/libs/device_config/libcuttlefish_device_config_proto/linux_glibc_x86_64_shared/libcuttlefish_device_config_proto.so.toc out/soong/host/linux-x86/lib64/libcuttlefish_device_config_proto.so
+
+build libcuttlefish_device_config_proto,linux_glibc_x86_64_static: phony out/soong/.intermediates/device/google/cuttlefish/common/libs/device_config/libcuttlefish_device_config_proto/linux_glibc_x86_64_static/gen/proto/device/google/cuttlefish/common/libs/device_config/device_config.pb.h out/soong/.intermediates/device/google/cuttlefish/common/libs/device_config/libcuttlefish_device_config_proto/linux_glibc_x86_64_static/obj/.intermediates/device/google/cuttlefish/common/libs/device_config/libcuttlefish_device_config_proto/linux_glibc_x86_64_static/gen/proto/device/google/cuttlefish/common/libs/device_config/device_config.pb.o
+
 build libcuttlefish_fs_product,android_product.31_x86_64_static: phony out/soong/.intermediates/device/google/cuttlefish/common/libs/fs/libcuttlefish_fs_product/android_product.31_x86_64_static/libcuttlefish_fs_product.a
 
 build libcuttlefish_kernel_log_monitor_utils,android_vendor.31_x86_64_static: phony out/soong/.intermediates/device/google/cuttlefish/host/commands/kernel_log_monitor/libcuttlefish_kernel_log_monitor_utils/android_vendor.31_x86_64_static/obj/device/google/cuttlefish/host/commands/kernel_log_monitor/utils.o
 
+build mkenvimage_slim,linux_glibc_x86_64: phony out/soong/.intermediates/device/google/cuttlefish/host/commands/mkenvimage_slim/mkenvimage_slim/linux_glibc_x86_64/mkenvimage_slim out/soong/host/linux-x86/bin/mkenvimage_slim
+
 build libcdisk_spec,android_x86_64_static_apex10000: phony out/soong/.intermediates/device/google/cuttlefish/host/libs/image_aggregator/libcdisk_spec/android_x86_64_static_apex10000/gen/proto/device/google/cuttlefish/host/libs/image_aggregator/cdisk_spec.pb.h out/soong/.intermediates/device/google/cuttlefish/host/libs/image_aggregator/libcdisk_spec/android_x86_64_static_apex10000/libcdisk_spec.a
+
+build libcdisk_spec,linux_glibc_x86_64_static: phony out/soong/.intermediates/device/google/cuttlefish/host/libs/image_aggregator/libcdisk_spec/linux_glibc_x86_64_static/gen/proto/device/google/cuttlefish/host/libs/image_aggregator/cdisk_spec.pb.h out/soong/.intermediates/device/google/cuttlefish/host/libs/image_aggregator/libcdisk_spec/linux_glibc_x86_64_static/libcdisk_spec.a
 
 build libimage_aggregator,android_x86_64_static_apex10000: phony out/soong/.intermediates/device/google/cuttlefish/host/libs/image_aggregator/libimage_aggregator/android_x86_64_static_apex10000/libimage_aggregator.a
 
-build device_google_cuttlefish-targets: phony libcdisk_spec,android_x86_64_static_apex10000 libcuttlefish_device_config_proto,android_vendor.31_x86_64_static libcuttlefish_device_config_proto,android_vendor.31_x86_x86_64_static libcuttlefish_fs_product,android_product.31_x86_64_static libcuttlefish_kernel_log_monitor_utils,android_vendor.31_x86_64_static libimage_aggregator,android_x86_64_static_apex10000
+build libimage_aggregator,linux_glibc_x86_64_static: phony out/soong/.intermediates/device/google/cuttlefish/host/libs/image_aggregator/libimage_aggregator/linux_glibc_x86_64_static/libimage_aggregator.a
+
+build device_google_cuttlefish-targets: phony libcdisk_spec,android_x86_64_static_apex10000 libcdisk_spec,linux_glibc_x86_64_static libcuttlefish_device_config_proto,android_vendor.31_x86_64_static libcuttlefish_device_config_proto,android_vendor.31_x86_x86_64_static libcuttlefish_device_config_proto,linux_glibc_x86_64_shared libcuttlefish_device_config_proto,linux_glibc_x86_64_static libcuttlefish_fs_product,android_product.31_x86_64_static libcuttlefish_kernel_log_monitor_utils,android_vendor.31_x86_64_static libimage_aggregator,android_x86_64_static_apex10000 libimage_aggregator,linux_glibc_x86_64_static mkenvimage_slim,linux_glibc_x86_64
 
 build libFraunhoferAAC,android_vendor.31_x86_x86_64_static_cfi: phony out/soong/.intermediates/external/aac/libFraunhoferAAC/android_vendor.31_x86_x86_64_static_cfi/libFraunhoferAAC.a
 
@@ -2168,6 +2190,14 @@ build libgflags,android_product.31_x86_64_static: phony out/soong/.intermediates
 build libgflags,android_vendor.31_x86_64_static: phony out/soong/.intermediates/external/gflags/libgflags/android_vendor.31_x86_64_static/libgflags.a
 
 build external_gflags-targets: phony libgflags,android_product.31_x86_64_static libgflags,android_vendor.31_x86_64_static
+
+build libgrpc++_unsecure,linux_glibc_x86_64_shared: phony out/soong/.intermediates/external/grpc-grpc/libgrpc++_unsecure/linux_glibc_x86_64_shared/libgrpc++_unsecure.so out/soong/.intermediates/external/grpc-grpc/libgrpc++_unsecure/linux_glibc_x86_64_shared/libgrpc++_unsecure.so.toc out/soong/host/linux-x86/lib64/libgrpc++_unsecure.so
+
+build libgrpc++,linux_glibc_x86_64_shared: phony out/soong/.intermediates/external/grpc-grpc/libgrpc++/linux_glibc_x86_64_shared/libgrpc++.so out/soong/host/linux-x86/lib64/libgrpc++.so
+
+build protoc-gen-grpc-cpp-plugin,linux_glibc_x86_64: phony out/soong/.intermediates/external/grpc-grpc/protoc-gen-grpc-cpp-plugin/linux_glibc_x86_64/protoc-gen-grpc-cpp-plugin
+
+build external_grpc-grpc-targets: phony libgrpc++,linux_glibc_x86_64_shared libgrpc++_unsecure,linux_glibc_x86_64_shared protoc-gen-grpc-cpp-plugin,linux_glibc_x86_64
 
 build guava-android-host,linux_glibc_common: phony out/soong/.intermediates/external/guava/guava-android-host/linux_glibc_common/combined/guava-android-host.jar
 
@@ -2387,7 +2417,9 @@ build libyuv,android_vendor.31_x86_64_static: phony out/soong/.intermediates/ext
 
 build libyuv,android_vendor.31_x86_x86_64_static: phony out/soong/.intermediates/external/libyuv/files/libyuv/android_vendor.31_x86_x86_64_static/obj/external/libyuv/files/source/compare.o out/soong/.intermediates/external/libyuv/files/libyuv/android_vendor.31_x86_x86_64_static/obj/external/libyuv/files/source/compare_common.o out/soong/.intermediates/external/libyuv/files/libyuv/android_vendor.31_x86_x86_64_static/obj/external/libyuv/files/source/compare_gcc.o out/soong/.intermediates/external/libyuv/files/libyuv/android_vendor.31_x86_x86_64_static/obj/external/libyuv/files/source/compare_mmi.o out/soong/.intermediates/external/libyuv/files/libyuv/android_vendor.31_x86_x86_64_static/obj/external/libyuv/files/source/compare_msa.o out/soong/.intermediates/external/libyuv/files/libyuv/android_vendor.31_x86_x86_64_static/obj/external/libyuv/files/source/compare_neon.o out/soong/.intermediates/external/libyuv/files/libyuv/android_vendor.31_x86_x86_64_static/obj/external/libyuv/files/source/compare_neon64.o out/soong/.intermediates/external/libyuv/files/libyuv/android_vendor.31_x86_x86_64_static/obj/external/libyuv/files/source/convert.o out/soong/.intermediates/external/libyuv/files/libyuv/android_vendor.31_x86_x86_64_static/obj/external/libyuv/files/source/convert_argb.o out/soong/.intermediates/external/libyuv/files/libyuv/android_vendor.31_x86_x86_64_static/obj/external/libyuv/files/source/convert_from.o out/soong/.intermediates/external/libyuv/files/libyuv/android_vendor.31_x86_x86_64_static/obj/external/libyuv/files/source/convert_from_argb.o out/soong/.intermediates/external/libyuv/files/libyuv/android_vendor.31_x86_x86_64_static/obj/external/libyuv/files/source/convert_jpeg.o out/soong/.intermediates/external/libyuv/files/libyuv/android_vendor.31_x86_x86_64_static/obj/external/libyuv/files/source/convert_to_argb.o out/soong/.intermediates/external/libyuv/files/libyuv/android_vendor.31_x86_x86_64_static/obj/external/libyuv/files/source/convert_to_i420.o out/soong/.intermediates/external/libyuv/files/libyuv/android_vendor.31_x86_x86_64_static/obj/external/libyuv/files/source/cpu_id.o out/soong/.intermediates/external/libyuv/files/libyuv/android_vendor.31_x86_x86_64_static/obj/external/libyuv/files/source/mjpeg_decoder.o out/soong/.intermediates/external/libyuv/files/libyuv/android_vendor.31_x86_x86_64_static/obj/external/libyuv/files/source/mjpeg_validate.o out/soong/.intermediates/external/libyuv/files/libyuv/android_vendor.31_x86_x86_64_static/obj/external/libyuv/files/source/planar_functions.o out/soong/.intermediates/external/libyuv/files/libyuv/android_vendor.31_x86_x86_64_static/obj/external/libyuv/files/source/rotate.o out/soong/.intermediates/external/libyuv/files/libyuv/android_vendor.31_x86_x86_64_static/obj/external/libyuv/files/source/rotate_any.o out/soong/.intermediates/external/libyuv/files/libyuv/android_vendor.31_x86_x86_64_static/obj/external/libyuv/files/source/rotate_argb.o out/soong/.intermediates/external/libyuv/files/libyuv/android_vendor.31_x86_x86_64_static/obj/external/libyuv/files/source/rotate_common.o out/soong/.intermediates/external/libyuv/files/libyuv/android_vendor.31_x86_x86_64_static/obj/external/libyuv/files/source/rotate_gcc.o out/soong/.intermediates/external/libyuv/files/libyuv/android_vendor.31_x86_x86_64_static/obj/external/libyuv/files/source/rotate_mmi.o out/soong/.intermediates/external/libyuv/files/libyuv/android_vendor.31_x86_x86_64_static/obj/external/libyuv/files/source/rotate_msa.o out/soong/.intermediates/external/libyuv/files/libyuv/android_vendor.31_x86_x86_64_static/obj/external/libyuv/files/source/rotate_neon.o out/soong/.intermediates/external/libyuv/files/libyuv/android_vendor.31_x86_x86_64_static/obj/external/libyuv/files/source/rotate_neon64.o out/soong/.intermediates/external/libyuv/files/libyuv/android_vendor.31_x86_x86_64_static/obj/external/libyuv/files/source/row_any.o out/soong/.intermediates/external/libyuv/files/libyuv/android_vendor.31_x86_x86_64_static/obj/external/libyuv/files/source/row_common.o out/soong/.intermediates/external/libyuv/files/libyuv/android_vendor.31_x86_x86_64_static/obj/external/libyuv/files/source/row_gcc.o out/soong/.intermediates/external/libyuv/files/libyuv/android_vendor.31_x86_x86_64_static/obj/external/libyuv/files/source/row_mmi.o out/soong/.intermediates/external/libyuv/files/libyuv/android_vendor.31_x86_x86_64_static/obj/external/libyuv/files/source/row_msa.o out/soong/.intermediates/external/libyuv/files/libyuv/android_vendor.31_x86_x86_64_static/obj/external/libyuv/files/source/row_neon.o out/soong/.intermediates/external/libyuv/files/libyuv/android_vendor.31_x86_x86_64_static/obj/external/libyuv/files/source/row_neon64.o out/soong/.intermediates/external/libyuv/files/libyuv/android_vendor.31_x86_x86_64_static/obj/external/libyuv/files/source/scale.o out/soong/.intermediates/external/libyuv/files/libyuv/android_vendor.31_x86_x86_64_static/obj/external/libyuv/files/source/scale_any.o out/soong/.intermediates/external/libyuv/files/libyuv/android_vendor.31_x86_x86_64_static/obj/external/libyuv/files/source/scale_argb.o out/soong/.intermediates/external/libyuv/files/libyuv/android_vendor.31_x86_x86_64_static/obj/external/libyuv/files/source/scale_common.o out/soong/.intermediates/external/libyuv/files/libyuv/android_vendor.31_x86_x86_64_static/obj/external/libyuv/files/source/scale_gcc.o out/soong/.intermediates/external/libyuv/files/libyuv/android_vendor.31_x86_x86_64_static/obj/external/libyuv/files/source/scale_mmi.o out/soong/.intermediates/external/libyuv/files/libyuv/android_vendor.31_x86_x86_64_static/obj/external/libyuv/files/source/scale_msa.o out/soong/.intermediates/external/libyuv/files/libyuv/android_vendor.31_x86_x86_64_static/obj/external/libyuv/files/source/scale_neon.o out/soong/.intermediates/external/libyuv/files/libyuv/android_vendor.31_x86_x86_64_static/obj/external/libyuv/files/source/scale_neon64.o out/soong/.intermediates/external/libyuv/files/libyuv/android_vendor.31_x86_x86_64_static/obj/external/libyuv/files/source/video_common.o
 
-build external_libyuv-targets: phony libyuv,android_vendor.31_x86_64_static libyuv,android_vendor.31_x86_x86_64_static libyuv_static,android_vendor.31_x86_64_static libyuv_static,android_vendor.31_x86_x86_64_static
+build libyuv,linux_glibc_x86_64_shared: phony out/soong/.intermediates/external/libyuv/files/libyuv/linux_glibc_x86_64_shared/libyuv.so out/soong/host/linux-x86/lib64/libyuv.so
+
+build external_libyuv-targets: phony libyuv,android_vendor.31_x86_64_static libyuv,android_vendor.31_x86_x86_64_static libyuv,linux_glibc_x86_64_shared libyuv_static,android_vendor.31_x86_64_static libyuv_static,android_vendor.31_x86_x86_64_static
 
 build libLLVMBitReader,android_vendor.31_x86_64_static: phony out/soong/.intermediates/external/llvm/lib/Bitcode/Reader/libLLVMBitReader/android_vendor.31_x86_64_static/libLLVMBitReader.a
 
@@ -2960,6 +2992,10 @@ build libtinyxml2,android_vendor.31_x86_x86_64_static: phony out/soong/.intermed
 build libtinyxml2,linux_glibc_x86_64_shared: phony out/soong/.intermediates/external/tinyxml2/libtinyxml2/linux_glibc_x86_64_shared/libtinyxml2.so out/soong/.intermediates/external/tinyxml2/libtinyxml2/linux_glibc_x86_64_shared/libtinyxml2.so.toc out/soong/host/linux-x86/lib64/libtinyxml2.so
 
 build external_tinyxml2-targets: phony libtinyxml2,android_vendor.31_x86_64_static libtinyxml2,android_vendor.31_x86_x86_64_static libtinyxml2,linux_glibc_x86_64_shared
+
+build toybox,linux_glibc_x86_64: phony out/soong/.intermediates/external/toybox/toybox/linux_glibc_x86_64/toybox out/soong/host/linux-x86/bin/toybox
+
+build external_toybox-targets: phony toybox,linux_glibc_x86_64
 
 build libvorbisidec,android_vendor.31_x86_x86_64_static: phony out/soong/.intermediates/external/tremolo/libvorbisidec/android_vendor.31_x86_x86_64_static/obj/external/tremolo/Tremolo/bitwise.o out/soong/.intermediates/external/tremolo/libvorbisidec/android_vendor.31_x86_x86_64_static/obj/external/tremolo/Tremolo/codebook.o out/soong/.intermediates/external/tremolo/libvorbisidec/android_vendor.31_x86_x86_64_static/obj/external/tremolo/Tremolo/dsp.o out/soong/.intermediates/external/tremolo/libvorbisidec/android_vendor.31_x86_x86_64_static/obj/external/tremolo/Tremolo/floor0.o out/soong/.intermediates/external/tremolo/libvorbisidec/android_vendor.31_x86_x86_64_static/obj/external/tremolo/Tremolo/floor1.o out/soong/.intermediates/external/tremolo/libvorbisidec/android_vendor.31_x86_x86_64_static/obj/external/tremolo/Tremolo/floor_lookup.o out/soong/.intermediates/external/tremolo/libvorbisidec/android_vendor.31_x86_x86_64_static/obj/external/tremolo/Tremolo/framing.o out/soong/.intermediates/external/tremolo/libvorbisidec/android_vendor.31_x86_x86_64_static/obj/external/tremolo/Tremolo/mapping0.o out/soong/.intermediates/external/tremolo/libvorbisidec/android_vendor.31_x86_x86_64_static/obj/external/tremolo/Tremolo/mdct.o out/soong/.intermediates/external/tremolo/libvorbisidec/android_vendor.31_x86_x86_64_static/obj/external/tremolo/Tremolo/misc.o out/soong/.intermediates/external/tremolo/libvorbisidec/android_vendor.31_x86_x86_64_static/obj/external/tremolo/Tremolo/res012.o out/soong/.intermediates/external/tremolo/libvorbisidec/android_vendor.31_x86_x86_64_static/obj/external/tremolo/Tremolo/treminfo.o out/soong/.intermediates/external/tremolo/libvorbisidec/android_vendor.31_x86_x86_64_static/obj/external/tremolo/Tremolo/vorbisfile.o
 
@@ -5581,7 +5617,11 @@ build libsimpleperf_profcollect,android_x86_64_static: phony out/soong/.intermed
 
 build libsimpleperf_etm_decoder,android_x86_64_static: phony out/soong/.intermediates/system/extras/simpleperf/libsimpleperf_etm_decoder/android_x86_64_static/libsimpleperf_etm_decoder.a
 
-build system_extras-targets: phony liblpdump_interface-cpp-source, libsimpleperf,android_x86_64_static libsimpleperf_etm_decoder,android_x86_64_static libsimpleperf_profcollect,android_x86_64_static profcollectd_aidl_interface-rust,android_x86_64_source profcollectd_aidl_interface-rust-source,
+build boot_signer,linux_glibc_common: phony out/soong/.intermediates/system/extras/verity/boot_signer/linux_glibc_common/combined/boot_signer.jar out/soong/host/linux-x86/framework/boot_signer.jar
+
+build boot_signer,linux_glibc_x86_64: phony out/soong/host/linux-x86/bin/boot_signer
+
+build system_extras-targets: phony boot_signer,linux_glibc_common boot_signer,linux_glibc_x86_64 liblpdump_interface-cpp-source, libsimpleperf,android_x86_64_static libsimpleperf_etm_decoder,android_x86_64_static libsimpleperf_profcollect,android_x86_64_static profcollectd_aidl_interface-rust,android_x86_64_source profcollectd_aidl_interface-rust-source,
 
 build gsi_aidl_interface-cpp-source,: phony out/soong/.intermediates/system/gsid/gsi_aidl_interface-cpp-source/gen/android/gsi/AvbPublicKey.cpp out/soong/.intermediates/system/gsid/gsi_aidl_interface-cpp-source/gen/android/gsi/GsiProgress.cpp out/soong/.intermediates/system/gsid/gsi_aidl_interface-cpp-source/gen/android/gsi/IGsiService.cpp out/soong/.intermediates/system/gsid/gsi_aidl_interface-cpp-source/gen/android/gsi/IGsiServiceCallback.cpp out/soong/.intermediates/system/gsid/gsi_aidl_interface-cpp-source/gen/android/gsi/IImageService.cpp out/soong/.intermediates/system/gsid/gsi_aidl_interface-cpp-source/gen/android/gsi/IProgressCallback.cpp out/soong/.intermediates/system/gsid/gsi_aidl_interface-cpp-source/gen/android/gsi/MappedImage.cpp out/soong/.intermediates/system/gsid/gsi_aidl_interface-cpp-source/gen/include/android/gsi/AvbPublicKey.h out/soong/.intermediates/system/gsid/gsi_aidl_interface-cpp-source/gen/include/android/gsi/BnAvbPublicKey.h out/soong/.intermediates/system/gsid/gsi_aidl_interface-cpp-source/gen/include/android/gsi/BnGsiProgress.h out/soong/.intermediates/system/gsid/gsi_aidl_interface-cpp-source/gen/include/android/gsi/BnGsiService.h out/soong/.intermediates/system/gsid/gsi_aidl_interface-cpp-source/gen/include/android/gsi/BnGsiServiceCallback.h out/soong/.intermediates/system/gsid/gsi_aidl_interface-cpp-source/gen/include/android/gsi/BnImageService.h out/soong/.intermediates/system/gsid/gsi_aidl_interface-cpp-source/gen/include/android/gsi/BnMappedImage.h out/soong/.intermediates/system/gsid/gsi_aidl_interface-cpp-source/gen/include/android/gsi/BnProgressCallback.h out/soong/.intermediates/system/gsid/gsi_aidl_interface-cpp-source/gen/include/android/gsi/BpAvbPublicKey.h out/soong/.intermediates/system/gsid/gsi_aidl_interface-cpp-source/gen/include/android/gsi/BpGsiProgress.h out/soong/.intermediates/system/gsid/gsi_aidl_interface-cpp-source/gen/include/android/gsi/BpGsiService.h out/soong/.intermediates/system/gsid/gsi_aidl_interface-cpp-source/gen/include/android/gsi/BpGsiServiceCallback.h out/soong/.intermediates/system/gsid/gsi_aidl_interface-cpp-source/gen/include/android/gsi/BpImageService.h out/soong/.intermediates/system/gsid/gsi_aidl_interface-cpp-source/gen/include/android/gsi/BpMappedImage.h out/soong/.intermediates/system/gsid/gsi_aidl_interface-cpp-source/gen/include/android/gsi/BpProgressCallback.h out/soong/.intermediates/system/gsid/gsi_aidl_interface-cpp-source/gen/include/android/gsi/GsiProgress.h out/soong/.intermediates/system/gsid/gsi_aidl_interface-cpp-source/gen/include/android/gsi/IGsiService.h out/soong/.intermediates/system/gsid/gsi_aidl_interface-cpp-source/gen/include/android/gsi/IGsiServiceCallback.h out/soong/.intermediates/system/gsid/gsi_aidl_interface-cpp-source/gen/include/android/gsi/IImageService.h out/soong/.intermediates/system/gsid/gsi_aidl_interface-cpp-source/gen/include/android/gsi/IProgressCallback.h out/soong/.intermediates/system/gsid/gsi_aidl_interface-cpp-source/gen/include/android/gsi/MappedImage.h
 

@@ -10,6 +10,7 @@ include ninja/bionic/apex/com.android.runtime^android_common_com.android.runtime
 include ninja/bootable/recovery/applypatch/applypatch^android_vendor.31_x86_64.ninja
 include ninja/device/generic/goldfish-opengl/android-emu/libandroidemu^android_vendor.31_x86_64_shared.ninja
 include ninja/device/generic/goldfish-opengl/android-emu/libandroidemu^android_vendor.31_x86_x86_64_shared.ninja
+include ninja/device/google/cuttlefish/build/cvd-host_package^linux_glibc_x86_64.ninja
 include ninja/device/google/cuttlefish/common/libs/device_config/libcuttlefish_device_config^android_vendor.31_x86_64_shared.ninja
 include ninja/device/google/cuttlefish/common/libs/device_config/libcuttlefish_device_config^android_vendor.31_x86_x86_64_shared.ninja
 include ninja/device/google/cuttlefish/guest/commands/bt_vhci_forwarder/bt_vhci_forwarder^android_vendor.31_x86_64.ninja
@@ -604,6 +605,8 @@ build libandroidemu,android_vendor.31_x86_x86_64_shared: phony out/soong/.interm
 
 build device_generic_goldfish-opengl-targets: phony libandroidemu,android_vendor.31_x86_64_shared libandroidemu,android_vendor.31_x86_x86_64_shared
 
+build cvd-host_package,linux_glibc_x86_64: phony out/soong/host/linux-x86/cvd-host_package.tar.gz
+
 build libcuttlefish_device_config,android_vendor.31_x86_64_shared: phony out/soong/.intermediates/device/google/cuttlefish/common/libs/device_config/libcuttlefish_device_config/android_vendor.31_x86_64_shared/libcuttlefish_device_config.so out/soong/.intermediates/device/google/cuttlefish/common/libs/device_config/libcuttlefish_device_config/android_vendor.31_x86_64_shared/libcuttlefish_device_config.so.toc
 
 build libcuttlefish_device_config,android_vendor.31_x86_x86_64_shared: phony out/soong/.intermediates/device/google/cuttlefish/common/libs/device_config/libcuttlefish_device_config/android_vendor.31_x86_x86_64_shared/libcuttlefish_device_config.so out/soong/.intermediates/device/google/cuttlefish/common/libs/device_config/libcuttlefish_device_config/android_vendor.31_x86_x86_64_shared/libcuttlefish_device_config.so.toc
@@ -616,7 +619,7 @@ build vsoc_input_service,android_vendor.31_x86_64: phony out/soong/.intermediate
 
 build android.hardware.health.storage-service.cuttlefish,android_vendor.31_x86_64: phony out/soong/.intermediates/device/google/cuttlefish/guest/hals/health/storage/android.hardware.health.storage-service.cuttlefish/android_vendor.31_x86_64/android.hardware.health.storage-service.cuttlefish
 
-build device_google_cuttlefish-targets: phony android.hardware.health.storage-service.cuttlefish,android_vendor.31_x86_64 bt_vhci_forwarder,android_vendor.31_x86_64 libcuttlefish_device_config,android_vendor.31_x86_64_shared libcuttlefish_device_config,android_vendor.31_x86_x86_64_shared setup_wifi,android_vendor.31_x86_64 vsoc_input_service,android_vendor.31_x86_64
+build device_google_cuttlefish-targets: phony android.hardware.health.storage-service.cuttlefish,android_vendor.31_x86_64 bt_vhci_forwarder,android_vendor.31_x86_64 cvd-host_package,linux_glibc_x86_64 libcuttlefish_device_config,android_vendor.31_x86_64_shared libcuttlefish_device_config,android_vendor.31_x86_x86_64_shared setup_wifi,android_vendor.31_x86_64 vsoc_input_service,android_vendor.31_x86_64
 
 build clatd,android_x86_64: phony out/soong/.intermediates/external/android-clat/clatd/android_x86_64/clatd
 

@@ -54,6 +54,10 @@ jobs:
         key: device_google_cuttlefish_prebuilts@${{ env.branch }}
     - uses: actions/cache@v4
       with:
+        path: cache/device_google_cuttlefish_vmm.tar.zst
+        key: device_google_cuttlefish_vmm@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
         path: cache/external_OpenCSD.tar.zst
         key: external_OpenCSD@${{ env.branch }}
     - uses: actions/cache@v4
@@ -114,6 +118,10 @@ jobs:
         key: external_cpu_features@${{ env.branch }}
     - uses: actions/cache@v4
       with:
+        path: cache/external_crosvm.tar.zst
+        key: external_crosvm@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
         path: cache/external_curl.tar.zst
         key: external_curl@${{ env.branch }}
     - uses: actions/cache@v4
@@ -140,6 +148,10 @@ jobs:
       with:
         path: cache/external_eigen.tar.zst
         key: external_eigen@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_erofs-utils.tar.zst
+        key: external_erofs-utils@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/external_expat.tar.zst
@@ -276,6 +288,10 @@ jobs:
       with:
         path: cache/external_libcxxabi.tar.zst
         key: external_libcxxabi@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_libdivsufsort.tar.zst
+        key: external_libdivsufsort@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/external_libdrm.tar.zst
@@ -840,6 +856,10 @@ jobs:
       with:
         path: cache/system_extras.tar.zst
         key: system_extras@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/system_gatekeeper.tar.zst
+        key: system_gatekeeper@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/system_gsid.tar.zst

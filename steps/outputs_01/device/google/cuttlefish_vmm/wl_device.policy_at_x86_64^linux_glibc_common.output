@@ -1,0 +1,2 @@
+out/soong/.intermediates/device/google/cuttlefish_vmm/x86_64-linux-gnu/wl_device.policy_at_x86_64/linux_glibc_common/wl_device.policy
+out/soong/host/linux-x86/usr/share/cuttlefish/x86_64-linux-gnu/seccomp/wl_device.policy

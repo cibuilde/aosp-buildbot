@@ -32,6 +32,7 @@ time source steps/build_01/build_soong.sh
 time source steps/build_01/device_generic_vulkan-cereal.sh
 time source steps/build_01/device_google_cuttlefish.sh
 time source steps/build_01/device_google_cuttlefish_prebuilts.sh
+time source steps/build_01/device_google_cuttlefish_vmm.sh
 time source steps/build_01/external_OpenCSD.sh
 time source steps/build_01/external_aac.sh
 time source steps/build_01/external_angle.sh
@@ -46,12 +47,14 @@ time source steps/build_01/external_bzip2.sh
 time source steps/build_01/external_compiler-rt.sh
 time source steps/build_01/external_conscrypt.sh
 time source steps/build_01/external_cpu_features.sh
+time source steps/build_01/external_crosvm.sh
 time source steps/build_01/external_curl.sh
 time source steps/build_01/external_dng_sdk.sh
 time source steps/build_01/external_dtc.sh
 time source steps/build_01/external_dynamic_depth.sh
 time source steps/build_01/external_e2fsprogs.sh
 time source steps/build_01/external_eigen.sh
+time source steps/build_01/external_erofs-utils.sh
 time source steps/build_01/external_expat.sh
 time source steps/build_01/external_f2fs-tools.sh
 time source steps/build_01/external_fdlibm.sh
@@ -86,6 +89,7 @@ time source steps/build_01/external_libavc.sh
 time source steps/build_01/external_libcppbor.sh
 time source steps/build_01/external_libcxx.sh
 time source steps/build_01/external_libcxxabi.sh
+time source steps/build_01/external_libdivsufsort.sh
 time source steps/build_01/external_libdrm.sh
 time source steps/build_01/external_libepoxy.sh
 time source steps/build_01/external_libevent.sh

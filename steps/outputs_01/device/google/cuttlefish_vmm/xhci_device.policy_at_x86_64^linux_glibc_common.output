@@ -1,0 +1,2 @@
+out/soong/.intermediates/device/google/cuttlefish_vmm/x86_64-linux-gnu/xhci_device.policy_at_x86_64/linux_glibc_common/xhci_device.policy
+out/soong/host/linux-x86/usr/share/cuttlefish/x86_64-linux-gnu/seccomp/xhci_device.policy

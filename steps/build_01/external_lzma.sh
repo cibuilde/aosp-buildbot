@@ -16,6 +16,7 @@ fi
 echo "Preparing for external/lzma"
 
 clone_depth_platform bionic
+clone_depth_platform build/soong
 clone_depth_platform external/lzma
 clone_depth_platform frameworks/av
 clone_depth_platform frameworks/native
@@ -77,6 +78,12 @@ mkdir -p $GITHUB_WORKSPACE/artifacts/external/lzma/C/liblzma^android_x86_x86_64_
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/lzma/liblzma^android_x86_x86_64_static_apex31.output . $GITHUB_WORKSPACE/artifacts/external/lzma/C/liblzma^android_x86_x86_64_static_apex31
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/lzma/liblzma^android_x86_x86_64_static_apex31.output $GITHUB_WORKSPACE/artifacts/external/lzma/C/liblzma^android_x86_x86_64_static_apex31 $GITHUB_WORKSPACE/artifacts/external/lzma/C/liblzma^android_x86_x86_64_static_apex31/addition_copy_files.output
 
+echo "building liblzma^linux_glibc_x86_64_shared"
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja liblzma,linux_glibc_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/external/lzma/C/liblzma^linux_glibc_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/external/lzma/liblzma^linux_glibc_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/external/lzma/C/liblzma^linux_glibc_x86_64_shared
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/external/lzma/liblzma^linux_glibc_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/external/lzma/C/liblzma^linux_glibc_x86_64_shared $GITHUB_WORKSPACE/artifacts/external/lzma/C/liblzma^linux_glibc_x86_64_shared/addition_copy_files.output
+
 echo "building liblzma^linux_glibc_x86_64_static"
 prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja liblzma,linux_glibc_x86_64_static
 mkdir -p $GITHUB_WORKSPACE/artifacts/external/lzma/C/liblzma^linux_glibc_x86_64_static
@@ -96,6 +103,10 @@ du -ah -d1 external_lzma*.tar.zst | sort -h
 if [ ! -f "$GITHUB_WORKSPACE/cache/bionic.tar.zst" ]; then
   echo "Compressing bionic -> bionic.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/bionic.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/bionic/ .
+fi
+if [ ! -f "$GITHUB_WORKSPACE/cache/build_soong.tar.zst" ]; then
+  echo "Compressing build/soong -> build_soong.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/build_soong.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/build/soong/ .
 fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/external_lzma.tar.zst" ]; then
   echo "Compressing external/lzma -> external_lzma.tar.zst"

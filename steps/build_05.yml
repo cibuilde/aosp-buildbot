@@ -182,6 +182,10 @@ jobs:
         key: external_fsverity-utils@${{ env.branch }}
     - uses: actions/cache@v4
       with:
+        path: cache/external_gflags.tar.zst
+        key: external_gflags@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
         path: cache/external_google-fruit.tar.zst
         key: external_google-fruit@${{ env.branch }}
     - uses: actions/cache@v4
@@ -728,6 +732,10 @@ jobs:
       with:
         path: cache/external_tinyalsa.tar.zst
         key: external_tinyalsa@${{ env.branch }}
+    - uses: actions/cache@v4
+      with:
+        path: cache/external_tinyxml2.tar.zst
+        key: external_tinyxml2@${{ env.branch }}
     - uses: actions/cache@v4
       with:
         path: cache/external_tremolo.tar.zst

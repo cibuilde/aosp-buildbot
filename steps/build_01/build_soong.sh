@@ -93,6 +93,12 @@ mkdir -p $GITHUB_WORKSPACE/artifacts/build/soong/cmd/dep_fixer/dep_fixer^linux_g
 rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/build/soong/dep_fixer^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/build/soong/cmd/dep_fixer/dep_fixer^linux_glibc_x86_64
 python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/build/soong/dep_fixer^linux_glibc_x86_64.output $GITHUB_WORKSPACE/artifacts/build/soong/cmd/dep_fixer/dep_fixer^linux_glibc_x86_64 $GITHUB_WORKSPACE/artifacts/build/soong/cmd/dep_fixer/dep_fixer^linux_glibc_x86_64/addition_copy_files.output
 
+echo "building fileslist^linux_glibc_x86_64"
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja fileslist,linux_glibc_x86_64
+mkdir -p $GITHUB_WORKSPACE/artifacts/build/soong/cmd/fileslist/fileslist^linux_glibc_x86_64
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_01/build/soong/fileslist^linux_glibc_x86_64.output . $GITHUB_WORKSPACE/artifacts/build/soong/cmd/fileslist/fileslist^linux_glibc_x86_64
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_01/build/soong/fileslist^linux_glibc_x86_64.output $GITHUB_WORKSPACE/artifacts/build/soong/cmd/fileslist/fileslist^linux_glibc_x86_64 $GITHUB_WORKSPACE/artifacts/build/soong/cmd/fileslist/fileslist^linux_glibc_x86_64/addition_copy_files.output
+
 echo "building soong_javac_wrapper^linux_glibc_x86_64"
 prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_01.ninja soong_javac_wrapper,linux_glibc_x86_64
 mkdir -p $GITHUB_WORKSPACE/artifacts/build/soong/cmd/javac_wrapper/soong_javac_wrapper^linux_glibc_x86_64

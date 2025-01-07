@@ -1,0 +1,3 @@
+out/soong/.intermediates/external/libcppbor/libcppbor_external/linux_glibc_x86_64_shared/libcppbor_external.so
+out/soong/.intermediates/external/libcppbor/libcppbor_external/linux_glibc_x86_64_shared/libcppbor_external.so.toc
+out/soong/host/linux-x86/lib64/libcppbor_external.so

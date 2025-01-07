@@ -46,6 +46,10 @@ gh release --repo cibuilde/aosp-buildbot download android12-gsi_03 --pattern dev
 mkdir -p $GITHUB_WORKSPACE/downloads/development
 tar xf $GITHUB_WORKSPACE/development-03.tar.zst -C $GITHUB_WORKSPACE/downloads/development/
 
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern device_google_cuttlefish.tar.zst --output device_google_cuttlefish-01.tar.zst
+mkdir -p $GITHUB_WORKSPACE/downloads/device/google/cuttlefish
+tar xf $GITHUB_WORKSPACE/device_google_cuttlefish-01.tar.zst -C $GITHUB_WORKSPACE/downloads/device/google/cuttlefish/
+
 gh release --repo cibuilde/aosp-buildbot download android12-gsi_03 --pattern external_bc.tar.zst --output external_bc-03.tar.zst
 mkdir -p $GITHUB_WORKSPACE/downloads/external/bc
 tar xf $GITHUB_WORKSPACE/external_bc-03.tar.zst -C $GITHUB_WORKSPACE/downloads/external/bc/
@@ -57,6 +61,10 @@ tar xf $GITHUB_WORKSPACE/external_boringssl-01.tar.zst -C $GITHUB_WORKSPACE/down
 gh release --repo cibuilde/aosp-buildbot download android12-gsi_03 --pattern external_boringssl.tar.zst --output external_boringssl-03.tar.zst
 mkdir -p $GITHUB_WORKSPACE/downloads/external/boringssl
 tar xf $GITHUB_WORKSPACE/external_boringssl-03.tar.zst -C $GITHUB_WORKSPACE/downloads/external/boringssl/
+
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_03 --pattern external_bouncycastle.tar.zst --output external_bouncycastle-03.tar.zst
+mkdir -p $GITHUB_WORKSPACE/downloads/external/bouncycastle
+tar xf $GITHUB_WORKSPACE/external_bouncycastle-03.tar.zst -C $GITHUB_WORKSPACE/downloads/external/bouncycastle/
 
 gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_brotli.tar.zst --output external_brotli-01.tar.zst
 mkdir -p $GITHUB_WORKSPACE/downloads/external/brotli
@@ -89,6 +97,14 @@ tar xf $GITHUB_WORKSPACE/external_fmtlib-01.tar.zst -C $GITHUB_WORKSPACE/downloa
 gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_gflags.tar.zst --output external_gflags-01.tar.zst
 mkdir -p $GITHUB_WORKSPACE/downloads/external/gflags
 tar xf $GITHUB_WORKSPACE/external_gflags-01.tar.zst -C $GITHUB_WORKSPACE/downloads/external/gflags/
+
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_grpc-grpc.tar.zst --output external_grpc-grpc-01.tar.zst
+mkdir -p $GITHUB_WORKSPACE/downloads/external/grpc-grpc
+tar xf $GITHUB_WORKSPACE/external_grpc-grpc-01.tar.zst -C $GITHUB_WORKSPACE/downloads/external/grpc-grpc/
+
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_02 --pattern external_grpc-grpc.tar.zst --output external_grpc-grpc-02.tar.zst
+mkdir -p $GITHUB_WORKSPACE/downloads/external/grpc-grpc
+tar xf $GITHUB_WORKSPACE/external_grpc-grpc-02.tar.zst -C $GITHUB_WORKSPACE/downloads/external/grpc-grpc/
 
 gh release --repo cibuilde/aosp-buildbot download android12-gsi_03 --pattern external_guava.tar.zst --output external_guava-03.tar.zst
 mkdir -p $GITHUB_WORKSPACE/downloads/external/guava
@@ -162,9 +178,17 @@ gh release --repo cibuilde/aosp-buildbot download android12-gsi_03 --pattern ext
 mkdir -p $GITHUB_WORKSPACE/downloads/external/libffi
 tar xf $GITHUB_WORKSPACE/external_libffi-03.tar.zst -C $GITHUB_WORKSPACE/downloads/external/libffi/
 
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_03 --pattern external_libjpeg-turbo.tar.zst --output external_libjpeg-turbo-03.tar.zst
+mkdir -p $GITHUB_WORKSPACE/downloads/external/libjpeg-turbo
+tar xf $GITHUB_WORKSPACE/external_libjpeg-turbo-03.tar.zst -C $GITHUB_WORKSPACE/downloads/external/libjpeg-turbo/
+
 gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_libpng.tar.zst --output external_libpng-01.tar.zst
 mkdir -p $GITHUB_WORKSPACE/downloads/external/libpng
 tar xf $GITHUB_WORKSPACE/external_libpng-01.tar.zst -C $GITHUB_WORKSPACE/downloads/external/libpng/
+
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_libyuv.tar.zst --output external_libyuv-01.tar.zst
+mkdir -p $GITHUB_WORKSPACE/downloads/external/libyuv
+tar xf $GITHUB_WORKSPACE/external_libyuv-01.tar.zst -C $GITHUB_WORKSPACE/downloads/external/libyuv/
 
 gh release --repo cibuilde/aosp-buildbot download android12-gsi_01 --pattern external_llvm.tar.zst --output external_llvm-01.tar.zst
 mkdir -p $GITHUB_WORKSPACE/downloads/external/llvm
@@ -579,6 +603,7 @@ time source steps/build_04/external_flac.sh
 time source steps/build_04/external_fmtlib.sh
 time source steps/build_04/external_gemmlowp.sh
 time source steps/build_04/external_gflags.sh
+time source steps/build_04/external_grpc-grpc.sh
 time source steps/build_04/external_guava.sh
 time source steps/build_04/external_icing.sh
 time source steps/build_04/external_jarjar.sh
@@ -638,6 +663,7 @@ time source steps/build_04/external_tensorflow.sh
 time source steps/build_04/external_tflite-support.sh
 time source steps/build_04/external_tinyalsa.sh
 time source steps/build_04/external_tinyxml2.sh
+time source steps/build_04/external_toybox.sh
 time source steps/build_04/external_tremolo.sh
 time source steps/build_04/external_wayland.sh
 time source steps/build_04/external_webrtc.sh

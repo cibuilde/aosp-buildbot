@@ -1,0 +1,2 @@
+out/soong/.intermediates/device/google/cuttlefish/common/libs/security/libcuttlefish_security/linux_glibc_x86_64_static/obj/device/google/cuttlefish/common/libs/security/gatekeeper_channel.o
+out/soong/.intermediates/device/google/cuttlefish/common/libs/security/libcuttlefish_security/linux_glibc_x86_64_static/obj/device/google/cuttlefish/common/libs/security/keymaster_channel.o

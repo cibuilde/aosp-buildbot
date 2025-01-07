@@ -17,13 +17,18 @@ echo "Preparing for system/keymaster"
 
 clone_depth_platform bionic
 clone_depth_platform build/soong
+clone_depth_platform external/boringssl
+clone_depth_platform external/libcppbor
 clone_depth_platform external/libcxx
 clone_depth_platform external/libcxxabi
 clone_depth_platform hardware/libhardware
+clone_project platform/prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8 prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8 android12-gsi "/sysroot" "/lib/gcc/x86_64-linux/4.8.3" "/x86_64-linux/lib64" "/x86_64-linux/lib32"
 clone_depth_platform prebuilts/gcc/linux-x86/x86/x86_64-linux-android-4.9
 clone_depth_platform system/bt
 clone_depth_platform system/core
 clone_depth_platform system/keymaster
+clone_depth_platform system/libbase
+clone_depth_platform system/logging
 clone_depth_platform system/media
 
 rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/libc^android_vendor.31_x86_64_shared/ .
@@ -31,8 +36,43 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/crtbegin_so^android_vendor.3
 rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libc/crtend_so^android_vendor.31_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libdl/libdl^android_vendor.31_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/bionic/libm/libm^android_vendor.31_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/boringssl/libcrypto^linux_glibc_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcppbor/libcppbor_external^linux_glibc_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcxx/libc++^android_vendor.31_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcxx/libc++^linux_glibc_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/libcxxabi/libc++demangle^android_vendor.31_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/core/libcutils/libcutils^linux_glibc_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/keymaster/libkeymaster_portable^linux_glibc_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/keymaster/libsoft_attestation_cert^linux_glibc_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/keymaster/libpuresoftkeymasterdevice_host^linux_glibc_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/keymaster/libcppcose_rkp^linux_glibc_x86_64_static/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/keymaster/libkeymaster_messages^linux_glibc_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/libbase/libbase^linux_glibc_x86_64_shared/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/system/logging/liblog/liblog^linux_glibc_x86_64_shared/ .
+
+echo "building libkeymaster_portable^linux_glibc_x86_64_shared"
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libkeymaster_portable,linux_glibc_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/keymaster/libkeymaster_portable^linux_glibc_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/system/keymaster/libkeymaster_portable^linux_glibc_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/keymaster/libkeymaster_portable^linux_glibc_x86_64_shared
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_06/system/keymaster/libkeymaster_portable^linux_glibc_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/system/keymaster/libkeymaster_portable^linux_glibc_x86_64_shared $GITHUB_WORKSPACE/artifacts/system/keymaster/libkeymaster_portable^linux_glibc_x86_64_shared/addition_copy_files.output
+
+echo "building libsoft_attestation_cert^linux_glibc_x86_64_shared"
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libsoft_attestation_cert,linux_glibc_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/keymaster/libsoft_attestation_cert^linux_glibc_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/system/keymaster/libsoft_attestation_cert^linux_glibc_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/keymaster/libsoft_attestation_cert^linux_glibc_x86_64_shared
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_06/system/keymaster/libsoft_attestation_cert^linux_glibc_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/system/keymaster/libsoft_attestation_cert^linux_glibc_x86_64_shared $GITHUB_WORKSPACE/artifacts/system/keymaster/libsoft_attestation_cert^linux_glibc_x86_64_shared/addition_copy_files.output
+
+echo "building libpuresoftkeymasterdevice_host^linux_glibc_x86_64_shared"
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libpuresoftkeymasterdevice_host,linux_glibc_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/keymaster/libpuresoftkeymasterdevice_host^linux_glibc_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/system/keymaster/libpuresoftkeymasterdevice_host^linux_glibc_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/keymaster/libpuresoftkeymasterdevice_host^linux_glibc_x86_64_shared
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_06/system/keymaster/libpuresoftkeymasterdevice_host^linux_glibc_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/system/keymaster/libpuresoftkeymasterdevice_host^linux_glibc_x86_64_shared $GITHUB_WORKSPACE/artifacts/system/keymaster/libpuresoftkeymasterdevice_host^linux_glibc_x86_64_shared/addition_copy_files.output
+
+echo "building libcppcose_rkp^linux_glibc_x86_64_shared"
+prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libcppcose_rkp,linux_glibc_x86_64_shared
+mkdir -p $GITHUB_WORKSPACE/artifacts/system/keymaster/libcppcose_rkp^linux_glibc_x86_64_shared
+rsync -a -r --files-from=$GITHUB_WORKSPACE/steps/outputs_06/system/keymaster/libcppcose_rkp^linux_glibc_x86_64_shared.output . $GITHUB_WORKSPACE/artifacts/system/keymaster/libcppcose_rkp^linux_glibc_x86_64_shared
+python3 $GITHUB_WORKSPACE/copy_symlink.py $GITHUB_WORKSPACE/steps/outputs_06/system/keymaster/libcppcose_rkp^linux_glibc_x86_64_shared.output $GITHUB_WORKSPACE/artifacts/system/keymaster/libcppcose_rkp^linux_glibc_x86_64_shared $GITHUB_WORKSPACE/artifacts/system/keymaster/libcppcose_rkp^linux_glibc_x86_64_shared/addition_copy_files.output
 
 echo "building libkeymaster_messages^android_vendor.31_x86_64_shared"
 prebuilts/build-tools/linux-x86/bin/ninja -j $(nproc) -d keepdepfile -f $GITHUB_WORKSPACE/steps/build_06.ninja libkeymaster_messages,android_vendor.31_x86_64_shared
@@ -58,6 +98,14 @@ if [ ! -f "$GITHUB_WORKSPACE/cache/build_soong.tar.zst" ]; then
   echo "Compressing build/soong -> build_soong.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/build_soong.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/build/soong/ .
 fi
+if [ ! -f "$GITHUB_WORKSPACE/cache/external_boringssl.tar.zst" ]; then
+  echo "Compressing external/boringssl -> external_boringssl.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/external_boringssl.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/boringssl/ .
+fi
+if [ ! -f "$GITHUB_WORKSPACE/cache/external_libcppbor.tar.zst" ]; then
+  echo "Compressing external/libcppbor -> external_libcppbor.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/external_libcppbor.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/libcppbor/ .
+fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/external_libcxx.tar.zst" ]; then
   echo "Compressing external/libcxx -> external_libcxx.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/external_libcxx.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/external/libcxx/ .
@@ -69,6 +117,10 @@ fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/hardware_libhardware.tar.zst" ]; then
   echo "Compressing hardware/libhardware -> hardware_libhardware.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/hardware_libhardware.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/hardware/libhardware/ .
+fi
+if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_gcc_linux-x86_host_x86_64-linux-glibc2.17-4.8.tar.zst" ]; then
+  echo "Compressing prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8 -> prebuilts_gcc_linux-x86_host_x86_64-linux-glibc2.17-4.8.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/prebuilts_gcc_linux-x86_host_x86_64-linux-glibc2.17-4.8.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8/ .
 fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/prebuilts_gcc_linux-x86_x86_x86_64-linux-android-4.9.tar.zst" ]; then
   echo "Compressing prebuilts/gcc/linux-x86/x86/x86_64-linux-android-4.9 -> prebuilts_gcc_linux-x86_x86_x86_64-linux-android-4.9.tar.zst"
@@ -85,6 +137,14 @@ fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/system_keymaster.tar.zst" ]; then
   echo "Compressing system/keymaster -> system_keymaster.tar.zst"
   tar -cf $GITHUB_WORKSPACE/cache/system_keymaster.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/system/keymaster/ .
+fi
+if [ ! -f "$GITHUB_WORKSPACE/cache/system_libbase.tar.zst" ]; then
+  echo "Compressing system/libbase -> system_libbase.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/system_libbase.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/system/libbase/ .
+fi
+if [ ! -f "$GITHUB_WORKSPACE/cache/system_logging.tar.zst" ]; then
+  echo "Compressing system/logging -> system_logging.tar.zst"
+  tar -cf $GITHUB_WORKSPACE/cache/system_logging.tar.zst --use-compress-program zstdmt -C $GITHUB_WORKSPACE/aosp/system/logging/ .
 fi
 if [ ! -f "$GITHUB_WORKSPACE/cache/system_media.tar.zst" ]; then
   echo "Compressing system/media -> system_media.tar.zst"

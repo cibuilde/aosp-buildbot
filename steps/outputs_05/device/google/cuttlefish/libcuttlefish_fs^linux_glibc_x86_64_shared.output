@@ -1,0 +1,3 @@
+out/soong/.intermediates/device/google/cuttlefish/common/libs/fs/libcuttlefish_fs/linux_glibc_x86_64_shared/libcuttlefish_fs.so
+out/soong/.intermediates/device/google/cuttlefish/common/libs/fs/libcuttlefish_fs/linux_glibc_x86_64_shared/libcuttlefish_fs.so.toc
+out/soong/host/linux-x86/lib64/libcuttlefish_fs.so

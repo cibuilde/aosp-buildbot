@@ -1,4 +1,4 @@
-##### Tag: android12-gsi_04 Projects: 146 Targets: 1921
+##### Tag: android12-gsi_04 Projects: 148 Targets: 1933
 
 ###### **bootable/recovery**: 6
 `libapplypatch^android_vendor.31_x86_64_static` `libapplypatch_modes^android_vendor.31_x86_64_static` `libbootloader_message_vendor^android_vendor.31_x86_64_static` `libbootloader_message_vendor^android_vendor.31_x86_x86_64_static` `libedify^android_vendor.31_x86_64_static` `libotautil^android_vendor.31_x86_64_static`
@@ -8,8 +8,8 @@
 `lib_linker_config_proto_lite^android_x86_64_static_apex10000` `lib_linker_config_proto_lite^android_x86_64_static` `lib_linker_config_proto_lite^linux_glibc_x86_64_static` `linker_config_proto^linux_glibc_x86_64_PY3`
 ###### **device/generic/goldfish-opengl**: 8
 `libGoldfishAddressSpace^android_vendor.31_x86_64_static` `libGoldfishAddressSpace^android_vendor.31_x86_x86_64_static` `libplatform^android_vendor.31_x86_64_static` `libplatform^android_vendor.31_x86_x86_64_static` `libqemupipe.ranchu^android_vendor.31_x86_64_static` `libqemupipe.ranchu^android_vendor.31_x86_x86_64_static` `libringbuffer^android_vendor.31_x86_64_static` `libringbuffer^android_vendor.31_x86_x86_64_static`
-###### **device/google/cuttlefish**: 6
-`libcdisk_spec^android_x86_64_static_apex10000` `libcuttlefish_device_config_proto^android_vendor.31_x86_64_static` `libcuttlefish_device_config_proto^android_vendor.31_x86_x86_64_static` `libcuttlefish_fs_product^android_product.31_x86_64_static` `libcuttlefish_kernel_log_monitor_utils^android_vendor.31_x86_64_static` `libimage_aggregator^android_x86_64_static_apex10000`
+###### **device/google/cuttlefish**: 11
+`libcdisk_spec^android_x86_64_static_apex10000` `libcdisk_spec^linux_glibc_x86_64_static` `libcuttlefish_device_config_proto^android_vendor.31_x86_64_static` `libcuttlefish_device_config_proto^android_vendor.31_x86_x86_64_static` `libcuttlefish_device_config_proto^linux_glibc_x86_64_shared` `libcuttlefish_device_config_proto^linux_glibc_x86_64_static` `libcuttlefish_fs_product^android_product.31_x86_64_static` `libcuttlefish_kernel_log_monitor_utils^android_vendor.31_x86_64_static` `libimage_aggregator^android_x86_64_static_apex10000` `libimage_aggregator^linux_glibc_x86_64_static` `mkenvimage_slim^linux_glibc_x86_64`
 ###### **external/aac**: 1
 `libFraunhoferAAC^android_vendor.31_x86_x86_64_static_cfi`
 ###### **external/bc**: 1
@@ -48,6 +48,8 @@
 `libbnnmlowp^android_vendor.31_x86_64_static` `libbnnmlowp^android_vendor.31_x86_x86_64_static`
 ###### **external/gflags**: 2
 `libgflags^android_product.31_x86_64_static` `libgflags^android_vendor.31_x86_64_static`
+###### **external/grpc-grpc**: 3
+`libgrpc++^linux_glibc_x86_64_shared` `libgrpc++_unsecure^linux_glibc_x86_64_shared` `protoc-gen-grpc-cpp-plugin^linux_glibc_x86_64`
 ###### **external/guava**: 5
 `guava-android-host^linux_glibc_common` `guava-both^linux_glibc_common` `guava-jre^linux_glibc_common` `guava^android_common_apex30` `guava^android_common`
 ###### **external/icing**: 1
@@ -96,8 +98,8 @@
 `libvpx^android_vendor.31_x86_x86_64_static_cfi`
 ###### **external/libxml2**: 6
 `libxml2^android_vendor.31_x86_64_shared` `libxml2^android_vendor.31_x86_x86_64_shared` `libxml2^android_x86_64_shared` `libxml2^android_x86_x86_64_shared` `libxml2^linux_glibc_x86_64_shared` `xmllint^linux_glibc_x86_64`
-###### **external/libyuv**: 4
-`libyuv^android_vendor.31_x86_64_static` `libyuv^android_vendor.31_x86_x86_64_static` `libyuv_static^android_vendor.31_x86_64_static` `libyuv_static^android_vendor.31_x86_x86_64_static`
+###### **external/libyuv**: 5
+`libyuv^android_vendor.31_x86_64_static` `libyuv^android_vendor.31_x86_x86_64_static` `libyuv^linux_glibc_x86_64_shared` `libyuv_static^android_vendor.31_x86_64_static` `libyuv_static^android_vendor.31_x86_x86_64_static`
 ###### **external/llvm**: 6
 `libLLVMBitReader^android_vendor.31_x86_64_static` `libLLVMBitReader^android_vendor.31_x86_x86_64_static` `libLLVMCore^android_vendor.31_x86_64_static` `libLLVMCore^android_vendor.31_x86_x86_64_static` `libLLVMSupport^android_vendor.31_x86_64_static` `libLLVMSupport^android_vendor.31_x86_x86_64_static`
 ###### **external/lz4**: 2
@@ -166,6 +168,8 @@
 `libtinyalsa^android_vendor.31_x86_64_static` `libtinyalsa^android_vendor.31_x86_x86_64_static`
 ###### **external/tinyxml2**: 3
 `libtinyxml2^android_vendor.31_x86_64_static` `libtinyxml2^android_vendor.31_x86_x86_64_static` `libtinyxml2^linux_glibc_x86_64_shared`
+###### **external/toybox**: 1
+`toybox^linux_glibc_x86_64`
 ###### **external/tremolo**: 1
 `libvorbisidec^android_vendor.31_x86_x86_64_static`
 ###### **external/wayland**: 1
@@ -246,8 +250,8 @@
 `BluetoothGeneratedBundlerSchema_h_bfbs^` `BluetoothGeneratedDumpsysBinarySchema_bfbs^` `BluetoothGeneratedDumpsysBundledSchema_h^` `BluetoothGeneratedDumpsysDataSchema_h^` `async_fd_watcher^android_vendor.31_x86_64_static` `bluetooth_flatbuffer_bundler^linux_glibc_x86_64` `lib-bt-packets-avrcp^android_x86_64_static` `lib-bt-packets-avrcp^android_x86_x86_64_static` `lib-bt-packets-base^android_x86_64_static` `lib-bt-packets-base^android_x86_x86_64_static` `libbluetooth-protos^android_x86_64_static` `libbluetooth-protos^android_x86_x86_64_static` `libbluetooth-types^android_x86_64_static` `libbluetooth-types^android_x86_x86_64_static` `libbt-protos-lite^android_x86_64_static` `libbt-protos-lite^android_x86_x86_64_static` `libscriptedbeaconpayload-protos-lite^android_vendor.31_x86_64_static`
 ###### **system/core**: 53
 `libcrypto_utils^android_vendor.31_x86_64_static` `libcrypto_utils^android_vendor.31_x86_x86_64_static` `libcrypto_utils^linux_glibc_x86_64_shared` `libcutils^android_product.31_x86_64_static` `libcutils^android_vendor.31_x86_64_static` `libcutils^android_vendor.31_x86_x86_64_static` `libcutils_sockets^android_product.31_x86_64_static` `libcutils_sockets^android_vendor.31_x86_64_static` `libcutils_sockets^android_vendor.31_x86_x86_64_static` `libdebuggerd^android_recovery_x86_64_static` `libdebuggerd^android_vendor_ramdisk_x86_64_static` `libdebuggerd^android_x86_64_static_apex10000` `libdebuggerd^android_x86_64_static` `libdebuggerd^android_x86_x86_64_static_apex10000` `libdebuggerd^android_x86_x86_64_static` `libdebuggerd_handler_core^android_recovery_x86_64_static` `libdebuggerd_handler_core^android_vendor_ramdisk_x86_64_static` `libdebuggerd_handler_core^android_x86_64_static_apex10000` `libdebuggerd_handler_core^android_x86_64_static` `libdebuggerd_handler_core^android_x86_x86_64_static_apex10000` `libdebuggerd_handler_core^android_x86_x86_64_static` `libdebuggerd_handler_fallback^android_recovery_x86_64_static` `libdebuggerd_handler_fallback^android_vendor_ramdisk_x86_64_static` `libdebuggerd_handler_fallback^android_x86_64_static_apex10000` `libdebuggerd_handler_fallback^android_x86_64_static` `libdebuggerd_handler_fallback^android_x86_x86_64_static_apex10000` `libdebuggerd_handler_fallback^android_x86_x86_64_static` `libdiskconfig^android_vendor.31_x86_64_static` `libdiskconfig^android_vendor.31_x86_x86_64_static` `libfstab^android_vendor.31_x86_64_static` `libfstab^android_vendor.31_x86_x86_64_static` `libkeyutils^android_recovery_x86_64_shared` `libkeyutils^android_x86_64_shared` `libmodprobe^android_vendor.31_x86_64_static` `libprocessgroup^android_vendor.31_x86_64_static` `libprocessgroup^android_vendor.31_x86_x86_64_static` `libsysutils^android_vendor.31_x86_64_static` `libsysutils^android_vendor.31_x86_x86_64_static` `libtombstone_proto^android_recovery_x86_64_static` `libtombstone_proto^android_vendor_ramdisk_x86_64_static` `libtombstone_proto^android_x86_64_static_apex10000` `libtombstone_proto^android_x86_64_static` `libtombstone_proto^android_x86_x86_64_static_apex10000` `libtombstone_proto^android_x86_x86_64_static` `libusbhost^android_vendor.31_x86_64_static` `libusbhost^android_vendor.31_x86_x86_64_static` `libutils^android_vendor.31_x86_64_static` `libutils^android_vendor.31_x86_x86_64_static` `libutilscallstack^android_vendor.31_x86_64_static` `libutilscallstack^android_vendor.31_x86_x86_64_static` `snapuserd^android_recovery_x86_64` `snapuserd^android_vendor_ramdisk_x86_64` `snapuserd^android_x86_64`
-###### **system/extras**: 6
-`liblpdump_interface-cpp-source^` `libsimpleperf^android_x86_64_static` `libsimpleperf_etm_decoder^android_x86_64_static` `libsimpleperf_profcollect^android_x86_64_static` `profcollectd_aidl_interface-rust-source^` `profcollectd_aidl_interface-rust^android_x86_64_source`
+###### **system/extras**: 8
+`boot_signer^linux_glibc_common` `boot_signer^linux_glibc_x86_64` `liblpdump_interface-cpp-source^` `libsimpleperf^android_x86_64_static` `libsimpleperf_etm_decoder^android_x86_64_static` `libsimpleperf_profcollect^android_x86_64_static` `profcollectd_aidl_interface-rust-source^` `profcollectd_aidl_interface-rust^android_x86_64_source`
 ###### **system/gsid**: 1
 `gsi_aidl_interface-cpp-source^`
 ###### **system/hardware/interfaces**: 26
