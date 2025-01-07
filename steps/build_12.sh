@@ -922,6 +922,10 @@ gh release --repo cibuilde/aosp-buildbot download android12-gsi_05 --pattern sys
 mkdir -p $GITHUB_WORKSPACE/downloads/system/extras
 tar xf $GITHUB_WORKSPACE/system_extras-05.tar.zst -C $GITHUB_WORKSPACE/downloads/system/extras/
 
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_06 --pattern system_extras.tar.zst --output system_extras-06.tar.zst
+mkdir -p $GITHUB_WORKSPACE/downloads/system/extras
+tar xf $GITHUB_WORKSPACE/system_extras-06.tar.zst -C $GITHUB_WORKSPACE/downloads/system/extras/
+
 gh release --repo cibuilde/aosp-buildbot download android12-gsi_07 --pattern system_extras.tar.zst --output system_extras-07.tar.zst
 mkdir -p $GITHUB_WORKSPACE/downloads/system/extras
 tar xf $GITHUB_WORKSPACE/system_extras-07.tar.zst -C $GITHUB_WORKSPACE/downloads/system/extras/
@@ -1065,6 +1069,10 @@ tar xf $GITHUB_WORKSPACE/system_sepolicy-04.tar.zst -C $GITHUB_WORKSPACE/downloa
 gh release --repo cibuilde/aosp-buildbot download android12-gsi_05 --pattern system_sepolicy.tar.zst --output system_sepolicy-05.tar.zst
 mkdir -p $GITHUB_WORKSPACE/downloads/system/sepolicy
 tar xf $GITHUB_WORKSPACE/system_sepolicy-05.tar.zst -C $GITHUB_WORKSPACE/downloads/system/sepolicy/
+
+gh release --repo cibuilde/aosp-buildbot download android12-gsi_08 --pattern system_server_configurable_flags.tar.zst --output system_server_configurable_flags-08.tar.zst
+mkdir -p $GITHUB_WORKSPACE/downloads/system/server_configurable_flags
+tar xf $GITHUB_WORKSPACE/system_server_configurable_flags-08.tar.zst -C $GITHUB_WORKSPACE/downloads/system/server_configurable_flags/
 
 gh release --repo cibuilde/aosp-buildbot download android12-gsi_03 --pattern system_tools_aidl.tar.zst --output system_tools_aidl-03.tar.zst
 mkdir -p $GITHUB_WORKSPACE/downloads/system/tools/aidl

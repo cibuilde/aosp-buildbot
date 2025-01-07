@@ -1171,34 +1171,6 @@ mkdir -p $GITHUB_WORKSPACE/.bin
 ln -sf /usr/bin/python2 $GITHUB_WORKSPACE/.bin/python
 export PATH=$GITHUB_WORKSPACE/.bin:$PATH
 
-time source steps/build_09/build_make.sh
-time source steps/build_09/external_adhd.sh
-time source steps/build_09/external_conscrypt.sh
-time source steps/build_09/external_crosvm.sh
-time source steps/build_09/external_icu.sh
-time source steps/build_09/external_libbrillo.sh
-time source steps/build_09/external_libchromeos-rs.sh
-time source steps/build_09/external_rust_crates_chrono.sh
-time source steps/build_09/external_rust_crates_env_logger.sh
-time source steps/build_09/external_rust_crates_flate2.sh
-time source steps/build_09/external_rust_crates_futures-util.sh
-time source steps/build_09/external_rust_crates_grpcio.sh
-time source steps/build_09/external_rust_crates_rand_core.sh
-time source steps/build_09/external_rust_crates_structopt.sh
-time source steps/build_09/external_rust_crates_vmm_vhost.sh
-time source steps/build_09/frameworks_av.sh
-time source steps/build_09/frameworks_base.sh
-time source steps/build_09/frameworks_hardware_interfaces.sh
-time source steps/build_09/frameworks_minikin.sh
-time source steps/build_09/frameworks_native.sh
-time source steps/build_09/frameworks_opt_telephony.sh
-time source steps/build_09/frameworks_rs.sh
-time source steps/build_09/hardware_interfaces.sh
-time source steps/build_09/hardware_libhardware_legacy.sh
-time source steps/build_09/packages_apps_Bluetooth.sh
-time source steps/build_09/packages_modules_DnsResolver.sh
-time source steps/build_09/packages_modules_NeuralNetworks.sh
-time source steps/build_09/packages_modules_StatsD.sh
 time source steps/build_09/packages_modules_Virtualization.sh
 time source steps/build_09/packages_modules_adb.sh
 time source steps/build_09/system_apex.sh
