@@ -1447,6 +1447,12 @@ mkdir -p $GITHUB_WORKSPACE/.bin
 ln -sf /usr/bin/python2 $GITHUB_WORKSPACE/.bin/python
 export PATH=$GITHUB_WORKSPACE/.bin:$PATH
 
+time source steps/build_11/bootable_recovery.sh
+time source steps/build_11/device_generic_vulkan-cereal.sh
+time source steps/build_11/device_google_cuttlefish.sh
+time source steps/build_11/external_angle.sh
+time source steps/build_11/external_apache-xml.sh
+time source steps/build_11/external_conscrypt.sh
 time source steps/build_11/external_crosvm.sh
 time source steps/build_11/external_drm_hwcomposer.sh
 time source steps/build_11/external_icu.sh
