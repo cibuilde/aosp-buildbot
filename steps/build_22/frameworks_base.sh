@@ -85,7 +85,9 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/libs/hwui/framework-grap
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/libs/hwui/framework-graphics.stubs.system^android_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/libs/hwui/framework-graphics.stubs^android_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/media/audio_common-aidl-java-source^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/media/audio_common-aidl-java^android_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/media/media_permission-aidl-java-source^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/media/media_permission-aidl-java^android_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/media/soundtrigger_middleware-aidl-java-source^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/tools/aapt2/aapt2^linux_glibc_x86_64/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/libcore/core-current-stubs-system-modules^android_common/ .

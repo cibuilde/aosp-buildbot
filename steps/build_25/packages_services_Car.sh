@@ -39,6 +39,7 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/libcore/mmodules/core_platform_api/stabl
 rsync -a -r $GITHUB_WORKSPACE/downloads/libcore/mmodules/core_platform_api/legacy-core-platform-api-stubs-system-modules^android_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/packages/services/Car/car-lib/android-car-last-released-api^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/packages/services/Car/car-lib/android-car-last-released-system-api^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/packages/services/Car/car-lib/android.car^android_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/tools/metalava/metalava^linux_glibc_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/tools/metalava/metalava^linux_glibc_x86_64/ .
 

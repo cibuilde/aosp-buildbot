@@ -46,6 +46,7 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/external/boringssl/selftest/boringssl_se
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/boringssl/selftest/boringssl_self_test^android_x86_x86_64_apex29/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/conscrypt/libconscrypt_openjdk_jni^linux_glibc_x86_64_shared/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/conscrypt/conscrypt_generated_constants^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/external/conscrypt/conscrypt^android_common_apex29/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/conscrypt/conscrypt.module.platform.api.stubs.source^android_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/conscrypt/conscrypt.module.platform.api.stubs^android_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/external/conscrypt/conscrypt.module.public.api.stubs.source^android_common/ .

@@ -103,6 +103,7 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/av/media/libmediatranscoding/
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/av/services/tuner/tv_tuner_frontend_info_aidl_interface-java^android_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/framework-updatable-stubs-module_libs_api^android_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/framework-internal-utils^android_common/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/framework-minus-apex^android_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/ext^android_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/framework-javastream-protos^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/android_system_stubs_current^android_common/ .
@@ -111,11 +112,13 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/apex/appsearch/com.andro
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/apex/appsearch/com.android.appsearch-systemserverclasspath-fragment^android_common_apex10000/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/apex/appsearch/framework/framework-appsearch.impl^android_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/apex/appsearch/service/statslog-appsearch-java-gen^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/apex/media/framework/updatable-media^android_common_apex29/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/core/java/statslog-framework-java-gen^/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/core/res/framework-res^android_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/errorprone/error_prone_android_framework_lib^linux_glibc_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/media/soundtrigger_middleware-aidl-java^android_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/media/java/android/media/tv/tunerresourcemanager/tv_tuner_resource_manager_aidl_interface-java-source^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/media/java/android/media/tv/tunerresourcemanager/tv_tuner_resource_manager_aidl_interface-java^android_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/mime/mimemap^android_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/packages/SettingsLib/SettingsTheme/SettingsLibSettingsTheme^android_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/base/packages/SettingsLib/SettingsTheme/SettingsLibSettingsTheme^android_common_apex30/ .

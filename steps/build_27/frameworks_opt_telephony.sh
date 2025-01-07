@@ -47,6 +47,7 @@ rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/libs/net/common/net-utils-fra
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/opt/net/ims/ims-common^android_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/opt/net/voip/voip-common^android_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/opt/telephony/statslog-telephony-java-gen^/ .
+rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/opt/telephony/telephony-common^android_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/frameworks/opt/telephony/proto/telephony-protos^android_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/radio/1.0/android.hardware.radio-V1.0-java^android_common/ .
 rsync -a -r $GITHUB_WORKSPACE/downloads/hardware/interfaces/radio/1.1/android.hardware.radio-V1.1-java^android_common/ .
